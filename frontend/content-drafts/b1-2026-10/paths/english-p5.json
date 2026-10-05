@@ -1,0 +1,1898 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Könnten Sie mir sagen …?"
+  },
+  "subtitle": {
+    "de": "Stelle höfliche Rückfragen zu Terminen, Unterlagen und Zuständigkeiten."
+  },
+  "anchor": "Von Fable am 05.10.2026 gelesen und arbitriert. Form A: Eine zunächst unbekannte Einschränkung führt zu einer präzisen zweiten Frage. Neuere Fable-Stufung vom 03.10.2026: L1–3 indirekte Fragen mit Aussagesatzstellung; L4–6 if und whether; L7–8 I'd like to know what und do you know if; L9–10 Verbindung der Muster. Jede Ergänzungsübung enthält ein Frage- oder Einleitungswort und eine Verbform; if und whether stehen wegen ihrer Austauschbarkeit nie gemeinsam zur Auswahl. Die genaue Trophäenzuordnung bleibt erhalten. Lizenzierte enge Vorschau: whether ist die verbindliche Trophäe von L1 und erscheint dort als einzelne eingebettete Ja-Nein-Frage, während L1–3 die Aussagesatzstellung lehren; produktiv wird if/whether erst in L4–6 gestuft. Anpassung der älteren Szenen an die neuere amerikanische Architektur: L1 Führerscheinstelle, L2 Krankenversicherung, L3 Adressänderung bei der Führerscheinstelle, L4 Versorgungsvertrag, L5 Bankantrag, L6 Anwohnerparken, L7 Kursanmeldung, L8 Identitätsnachweis bei der Sozialversicherungsbehörde, L9 Mietvertrag, L10 Kursgebühr. Insbesondere fragt L8 nach Identität statt der älteren Adressnachweis-Idee. Ausschließlich formelle Gespräche mit einzelnen Ansprechpersonen; erfundene Einzelfälle ohne allgemeine Behauptungen über Behördenregeln.",
+  "lessons": [
+    {
+      "slug": "whether-a-license-renewal-needs-an-appointment",
+      "title": {
+        "de": "Ein Termin für den Führerschein"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei der Führerscheinstelle nach einer Verlängerung. Frage, ob du dafür einen Termin brauchst.",
+        "en": "You ask at the DMV about renewing your driver's license. Find out whether you need an appointment."
+      },
+      "pedagogicalGoal": "Eine höfliche indirekte Ja-Nein-Frage mit Aussagesatzstellung bilden; whether erscheint wegen der festen Trophäenzuordnung als von Fable lizenzierte frühe Vorschau.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to know about renewing your license?",
+          "baseText": {
+            "de": "Was möchten Sie über die Verlängerung Ihres Führerscheins wissen?"
+          }
+        },
+        {
+          "targetText": "Could you tell me whether I need an appointment to renew my license?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob ich einen Termin brauche, um meinen Führerschein zu verlängern?"
+          }
+        },
+        {
+          "targetText": "Yes, but today's appointments are full. There's an opening tomorrow afternoon.",
+          "baseText": {
+            "de": "Ja, aber die heutigen Termine sind ausgebucht. Morgen Nachmittag ist noch etwas frei."
+          }
+        },
+        {
+          "targetText": "Could you tell me how the booking system works?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wie das Buchungssystem funktioniert?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indirect questions: statement order",
+        "rule": {
+          "de": "Nach could you tell me steht in der eingebetteten Frage das Subjekt vor dem Verb, wie in whether I need oder how the booking system works."
+        },
+        "examples": [
+          {
+            "targetText": "Could you tell me whether I need an appointment to renew my license?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob ich einen Termin brauche, um meinen Führerschein zu verlängern?"
+            },
+            "highlight": "whether I need an appointment"
+          },
+          {
+            "targetText": "Could you tell me how the booking system works?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, wie das Buchungssystem funktioniert?"
+            },
+            "highlight": "how the booking system works"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you tell me ",
+        {
+          "kind": "connector",
+          "answer": "how",
+          "choices": [
+            "whose",
+            "how",
+            "which",
+            "whom"
+          ]
+        },
+        " the booking system ",
+        {
+          "kind": "form",
+          "answer": "works",
+          "cue": "work",
+          "choices": [
+            "working",
+            "works",
+            "to work",
+            "work"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Could you",
+          "baseText": {
+            "de": "Könnten Sie"
+          }
+        },
+        {
+          "targetText": "tell me",
+          "baseText": {
+            "de": "mir sagen,"
+          }
+        },
+        {
+          "targetText": "whether I need an appointment",
+          "baseText": {
+            "de": "ob ich einen Termin brauche,"
+          }
+        },
+        {
+          "targetText": "to renew my license?",
+          "baseText": {
+            "de": "um meinen Führerschein zu verlängern?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "whether I need",
+          "baseText": {
+            "de": "ob ich brauche"
+          }
+        },
+        {
+          "targetText": "appointment",
+          "baseText": {
+            "de": "Termin"
+          }
+        },
+        {
+          "targetText": "renew my license",
+          "baseText": {
+            "de": "meinen Führerschein verlängern"
+          }
+        },
+        {
+          "targetText": "an opening",
+          "baseText": {
+            "de": "ein freier Termin"
+          }
+        },
+        {
+          "targetText": "tomorrow afternoon",
+          "baseText": {
+            "de": "morgen Nachmittag"
+          }
+        },
+        {
+          "targetText": "booking system",
+          "baseText": {
+            "de": "Buchungssystem"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Could you tell me whether I need an appointment to ",
+        "answer": "renew",
+        "after": " my license?",
+        "fallbackChoices": [
+          "renewed",
+          "renew",
+          "renewing",
+          "renews"
+        ]
+      },
+      "speakRequired": [
+        "whether",
+        "appointment",
+        "license"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter der Führerscheinstelle fragt die Mitarbeiterin: „What would you like to know about renewing your license?“"
+      },
+      "trophyWord": {
+        "word": "whether",
+        "meaning": {
+          "de": "ob"
+        },
+        "example": "Could you tell me whether I need an appointment?",
+        "whyThisWord": {
+          "de": "Damit bettest du eine Frage, die mit Ja oder Nein beantwortet wird, höflich in einen längeren Satz ein."
+        }
+      },
+      "distractors": [
+        "tell my brother",
+        "to replace my license?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Informationsschalter für Führerscheinangelegenheiten mit einem Terminkalender."
+      },
+      "songMood": "Ruhiges Klären eines notwendigen Behördentermins.",
+      "visualNotes": "Eine Person steht am Informationsschalter; ein Kalender und ein Formular liegen auf dem Tresen."
+    },
+    {
+      "slug": "deadline-for-an-insurance-application",
+      "title": {
+        "de": "Die Frist für den Antrag"
+      },
+      "situation": {
+        "de": "Du füllst einen Antrag für eine Krankenversicherung aus. Frage in der Geschäftsstelle nach der Abgabefrist.",
+        "en": "You are completing a health insurance application. Ask at the office about the submission deadline."
+      },
+      "pedagogicalGoal": "In einer indirekten Zeitfrage die Aussagesatzstellung verwenden und nach einer neuen Einschränkung den Abgabeweg klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to know about the enrollment form?",
+          "baseText": {
+            "de": "Was möchten Sie über das Anmeldeformular wissen?"
+          }
+        },
+        {
+          "targetText": "Could you tell me when the deadline for this application is?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wann die Frist für diesen Antrag endet?"
+          }
+        },
+        {
+          "targetText": "The deadline is Friday, but this office closes at noon that day.",
+          "baseText": {
+            "de": "Die Frist endet am Freitag, aber an diesem Tag schließt die Geschäftsstelle mittags."
+          }
+        },
+        {
+          "targetText": "Could you explain how I can submit the form online?",
+          "baseText": {
+            "de": "Könnten Sie mir erklären, wie ich das Formular online einreichen kann?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Indirect questions with when and how",
+        "rule": {
+          "de": "Nach when und how bleibt in einer indirekten Frage die Reihenfolge Subjekt vor Verb erhalten; du stellst das Hilfsverb nicht vor das Subjekt."
+        },
+        "examples": [
+          {
+            "targetText": "Could you tell me when the deadline for this application is?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, wann die Frist für diesen Antrag endet?"
+            },
+            "highlight": "when the deadline for this application is"
+          },
+          {
+            "targetText": "Could you explain how I can submit the form online?",
+            "baseText": {
+              "de": "Könnten Sie mir erklären, wie ich das Formular online einreichen kann?"
+            },
+            "highlight": "how I can submit"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you explain ",
+        {
+          "kind": "connector",
+          "answer": "how",
+          "choices": [
+            "whom",
+            "which",
+            "how",
+            "whose"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "submit",
+          "cue": "submit",
+          "choices": [
+            "submits",
+            "submitted",
+            "submit",
+            "submitting"
+          ]
+        },
+        " the form online?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Could you tell me",
+          "baseText": {
+            "de": "Könnten Sie mir sagen,"
+          }
+        },
+        {
+          "targetText": "when the deadline",
+          "baseText": {
+            "de": "wann die Frist"
+          }
+        },
+        {
+          "targetText": "for this application",
+          "baseText": {
+            "de": "für diesen Antrag"
+          }
+        },
+        {
+          "targetText": "is?",
+          "baseText": {
+            "de": "endet?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "deadline",
+          "baseText": {
+            "de": "Frist"
+          }
+        },
+        {
+          "targetText": "application",
+          "baseText": {
+            "de": "Antrag"
+          }
+        },
+        {
+          "targetText": "enrollment form",
+          "baseText": {
+            "de": "Anmeldeformular"
+          }
+        },
+        {
+          "targetText": "at noon",
+          "baseText": {
+            "de": "mittags; um zwölf Uhr"
+          }
+        },
+        {
+          "targetText": "submit",
+          "baseText": {
+            "de": "einreichen"
+          }
+        },
+        {
+          "targetText": "online",
+          "baseText": {
+            "de": "online"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Could you tell me when the ",
+        "answer": "deadline",
+        "after": " for this application is?",
+        "fallbackChoices": [
+          "interview",
+          "deadline",
+          "meeting",
+          "delivery"
+        ]
+      },
+      "speakRequired": [
+        "tell",
+        "deadline",
+        "application"
+      ],
+      "sceneCaption": {
+        "de": "In der Versicherungsstelle fragt der Mitarbeiter: „What would you like to know about the enrollment form?“"
+      },
+      "trophyWord": {
+        "word": "deadline",
+        "meaning": {
+          "de": "Frist; letzter Abgabetermin"
+        },
+        "example": "Could you tell me when the application deadline is?",
+        "whyThisWord": {
+          "de": "Mit diesem Wort fragst du gezielt nach dem letzten Zeitpunkt, zu dem du etwas erledigen kannst."
+        }
+      },
+      "distractors": [
+        "for this delivery",
+        "was?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Antrag und ein Kalender auf dem Tisch einer Versicherungsstelle."
+      },
+      "songMood": "Konzentrierte Planung vor einem Abgabetermin.",
+      "visualNotes": "Eine Person zeigt auf einen Antragsbogen; neben dem Bildschirm steht ein kleiner Kalender."
+    },
+    {
+      "slug": "form-for-an-address-update",
+      "title": {
+        "de": "Das Formular für die neue Adresse"
+      },
+      "situation": {
+        "de": "Du möchtest deine neue Adresse bei der Führerscheinstelle melden. Frage nach dem passenden Formular.",
+        "en": "You want to update your address with the DMV. Ask which form to use."
+      },
+      "pedagogicalGoal": "Mit which und einem Nomen eine indirekte Auswahlfrage bilden und die richtige Formularstelle erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What information would you like to update today?",
+          "baseText": {
+            "de": "Welche Angaben möchten Sie heute ändern?"
+          }
+        },
+        {
+          "targetText": "Could you tell me which form I need to update my address?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, welches Formular ich brauche, um meine Adresse zu ändern?"
+          }
+        },
+        {
+          "targetText": "Use this one, but the top section is only for businesses.",
+          "baseText": {
+            "de": "Nehmen Sie dieses, aber der obere Abschnitt ist nur für Unternehmen."
+          }
+        },
+        {
+          "targetText": "Could you show me which section I should complete first?",
+          "baseText": {
+            "de": "Könnten Sie mir zeigen, welchen Abschnitt ich zuerst ausfüllen soll?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Which plus a noun",
+        "rule": {
+          "de": "Which mit einem Nomen grenzt eine Auswahl ein; in der anschließenden indirekten Frage steht das Subjekt vor dem Verb."
+        },
+        "examples": [
+          {
+            "targetText": "Could you tell me which form I need to update my address?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, welches Formular ich brauche, um meine Adresse zu ändern?"
+            },
+            "highlight": "which form I need"
+          },
+          {
+            "targetText": "Could you show me which section I should complete first?",
+            "baseText": {
+              "de": "Könnten Sie mir zeigen, welchen Abschnitt ich zuerst ausfüllen soll?"
+            },
+            "highlight": "which section I should complete"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you show me ",
+        {
+          "kind": "connector",
+          "answer": "which",
+          "choices": [
+            "when",
+            "which",
+            "where",
+            "how"
+          ]
+        },
+        " section I should ",
+        {
+          "kind": "form",
+          "answer": "complete",
+          "cue": "complete",
+          "choices": [
+            "completed",
+            "completes",
+            "completing",
+            "complete"
+          ]
+        },
+        " first?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Could you",
+          "baseText": {
+            "de": "Könnten Sie"
+          }
+        },
+        {
+          "targetText": "tell me",
+          "baseText": {
+            "de": "mir sagen,"
+          }
+        },
+        {
+          "targetText": "which form I need",
+          "baseText": {
+            "de": "welches Formular ich brauche,"
+          }
+        },
+        {
+          "targetText": "to update my address?",
+          "baseText": {
+            "de": "um meine Adresse zu ändern?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "form",
+          "baseText": {
+            "de": "Formular"
+          }
+        },
+        {
+          "targetText": "update my address",
+          "baseText": {
+            "de": "meine Adresse ändern"
+          }
+        },
+        {
+          "targetText": "top section",
+          "baseText": {
+            "de": "oberer Abschnitt"
+          }
+        },
+        {
+          "targetText": "businesses",
+          "baseText": {
+            "de": "Unternehmen"
+          }
+        },
+        {
+          "targetText": "complete",
+          "baseText": {
+            "de": "ausfüllen; vervollständigen"
+          }
+        },
+        {
+          "targetText": "show me",
+          "baseText": {
+            "de": "mir zeigen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Could you tell me which ",
+        "answer": "form",
+        "after": " I need to update my address?",
+        "fallbackChoices": [
+          "form",
+          "number",
+          "password",
+          "receipt"
+        ]
+      },
+      "speakRequired": [
+        "form",
+        "update",
+        "address"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fragt die Mitarbeiterin: „What information would you like to update today?“"
+      },
+      "trophyWord": {
+        "word": "form",
+        "meaning": {
+          "de": "Formular"
+        },
+        "example": "Could you show me which form I should complete?",
+        "whyThisWord": {
+          "de": "Damit kannst du nach dem richtigen Vordruck fragen und anschließend seine einzelnen Abschnitte klären."
+        }
+      },
+      "distractors": [
+        "show my colleague",
+        "to update my phone number?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Formular mit mehreren deutlich getrennten Abschnitten liegt auf einem Schalter."
+      },
+      "songMood": "Schrittweises Klären einer alltäglichen Anmeldung.",
+      "visualNotes": "Ein Mitarbeiter zeigt auf die unterschiedlichen Abschnitte eines Formulars zur Adressänderung."
+    },
+    {
+      "slug": "address-on-the-utility-form",
+      "title": {
+        "de": "Die neue Adresse eintragen"
+      },
+      "situation": {
+        "de": "Beim Einrichten eines Versorgungsvertrags bist du unsicher, wo deine neue Adresse auf das Formular gehört. Frage gezielt nach.",
+        "en": "While setting up a utility account, you are unsure where to enter your new address. Ask for clarification."
+      },
+      "pedagogicalGoal": "Mit if und whether eine indirekte Ja-Nein-Frage stellen und zwei Adressfelder auseinanderhalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you need help filling out the utility account form?",
+          "baseText": {
+            "de": "Brauchen Sie Hilfe beim Ausfüllen des Formulars für den Versorgungsvertrag?"
+          }
+        },
+        {
+          "targetText": "Could you tell me if my new address belongs in this box?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob meine neue Adresse in dieses Feld gehört?"
+          }
+        },
+        {
+          "targetText": "That's the service address. We send bills to the address in the next box.",
+          "baseText": {
+            "de": "Das ist die Versorgungsadresse. Rechnungen schicken wir an die Adresse im nächsten Feld."
+          }
+        },
+        {
+          "targetText": "Could you confirm whether I should put my apartment number there?",
+          "baseText": {
+            "de": "Könnten Sie mir bestätigen, ob ich dort meine Wohnungsnummer eintragen soll?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "If and whether in indirect questions",
+        "rule": {
+          "de": "If und whether bedeuten in diesen indirekten Ja-Nein-Fragen beide ob; danach bleibt das Subjekt vor dem Verb."
+        },
+        "examples": [
+          {
+            "targetText": "Could you tell me if my new address belongs in this box?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob meine neue Adresse in dieses Feld gehört?"
+            },
+            "highlight": "if my new address belongs"
+          },
+          {
+            "targetText": "Could you confirm whether I should put my apartment number there?",
+            "baseText": {
+              "de": "Könnten Sie mir bestätigen, ob ich dort meine Wohnungsnummer eintragen soll?"
+            },
+            "highlight": "whether I should put"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you confirm ",
+        {
+          "kind": "connector",
+          "answer": "whether",
+          "choices": [
+            "whose",
+            "which",
+            "whether",
+            "whom"
+          ]
+        },
+        " I should ",
+        {
+          "kind": "form",
+          "answer": "put",
+          "cue": "put",
+          "choices": [
+            "putting",
+            "puts",
+            "to put",
+            "put"
+          ]
+        },
+        " my apartment number there?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Could you",
+          "baseText": {
+            "de": "Könnten Sie"
+          }
+        },
+        {
+          "targetText": "tell me",
+          "baseText": {
+            "de": "mir sagen,"
+          }
+        },
+        {
+          "targetText": "if my new address",
+          "baseText": {
+            "de": "ob meine neue Adresse"
+          }
+        },
+        {
+          "targetText": "belongs in this box?",
+          "baseText": {
+            "de": "in dieses Feld gehört?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "utility account",
+          "baseText": {
+            "de": "Kundenkonto beim Versorgungsunternehmen"
+          }
+        },
+        {
+          "targetText": "address",
+          "baseText": {
+            "de": "Adresse"
+          }
+        },
+        {
+          "targetText": "box",
+          "baseText": {
+            "de": "Formularfeld"
+          }
+        },
+        {
+          "targetText": "service address",
+          "baseText": {
+            "de": "Versorgungsadresse; Adresse des versorgten Haushalts"
+          }
+        },
+        {
+          "targetText": "bills",
+          "baseText": {
+            "de": "Rechnungen"
+          }
+        },
+        {
+          "targetText": "apartment number",
+          "baseText": {
+            "de": "Wohnungsnummer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Could you tell me if my new ",
+        "answer": "address",
+        "after": " belongs in this box?",
+        "fallbackChoices": [
+          "signature",
+          "address",
+          "password",
+          "photo"
+        ]
+      },
+      "speakRequired": [
+        "new",
+        "address",
+        "box"
+      ],
+      "sceneCaption": {
+        "de": "Der Mitarbeiter sieht Ihr Formular und fragt: „Do you need help filling out the utility account form?“"
+      },
+      "trophyWord": {
+        "word": "address",
+        "meaning": {
+          "de": "Adresse"
+        },
+        "example": "Could you confirm whether this is the correct address for bills?",
+        "whyThisWord": {
+          "de": "Damit klärst du, welche Anschrift für einen bestimmten Zweck eingetragen werden soll."
+        }
+      },
+      "distractors": [
+        "if my old address",
+        "belongs on the envelope?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Vertragsformular mit getrennten Feldern für verschiedene Anschriften."
+      },
+      "songMood": "Sorgfältiges Ordnen der Angaben nach einem Umzug.",
+      "visualNotes": "Ein Formular für einen Versorgungsvertrag liegt neben einem Umschlag und einem Stift."
+    },
+    {
+      "slug": "application-with-missing-information",
+      "title": {
+        "de": "Ist der Antrag vollständig?"
+      },
+      "situation": {
+        "de": "Du möchtest bei einer Bank ein Konto eröffnen und hast den Antrag ausgefüllt. Bitte um eine Prüfung auf fehlende Angaben.",
+        "en": "You want to open a bank account and have filled out the application. Ask whether any information is missing."
+      },
+      "pedagogicalGoal": "Eine kurze Erklärung mit einer indirekten whether-Frage verbinden und das Nachtragen einer Angabe klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "How can I help with your account application?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen bei Ihrem Antrag zur Kontoeröffnung helfen?"
+          }
+        },
+        {
+          "targetText": "My application is ready; could you tell me whether anything is missing?",
+          "baseText": {
+            "de": "Mein Antrag ist fertig; könnten Sie mir sagen, ob etwas fehlt?"
+          }
+        },
+        {
+          "targetText": "We need your previous address, and I don't see it on this page.",
+          "baseText": {
+            "de": "Wir brauchen Ihre vorige Adresse, und die sehe ich auf dieser Seite nicht."
+          }
+        },
+        {
+          "targetText": "Could you confirm whether I can add it on the back?",
+          "baseText": {
+            "de": "Könnten Sie mir bestätigen, ob ich sie auf der Rückseite ergänzen kann?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Checking details with whether",
+        "rule": {
+          "de": "Mit whether fragst du höflich nach, ob eine Vermutung stimmt oder eine Handlung möglich ist; das Verb bleibt hinter dem Subjekt."
+        },
+        "examples": [
+          {
+            "targetText": "My application is ready; could you tell me whether anything is missing?",
+            "baseText": {
+              "de": "Mein Antrag ist fertig; könnten Sie mir sagen, ob etwas fehlt?"
+            },
+            "highlight": "whether anything is missing"
+          },
+          {
+            "targetText": "Could you confirm whether I can add it on the back?",
+            "baseText": {
+              "de": "Könnten Sie mir bestätigen, ob ich sie auf der Rückseite ergänzen kann?"
+            },
+            "highlight": "whether I can add it"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you confirm ",
+        {
+          "kind": "connector",
+          "answer": "whether",
+          "choices": [
+            "which",
+            "whether",
+            "whom",
+            "whose"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "add",
+          "cue": "add",
+          "choices": [
+            "added",
+            "adding",
+            "add",
+            "adds"
+          ]
+        },
+        " it on the back?"
+      ],
+      "chunks": [
+        {
+          "targetText": "My application is ready;",
+          "baseText": {
+            "de": "Mein Antrag ist fertig;"
+          }
+        },
+        {
+          "targetText": "could you tell me",
+          "baseText": {
+            "de": "könnten Sie mir sagen,"
+          }
+        },
+        {
+          "targetText": "whether anything",
+          "baseText": {
+            "de": "ob etwas"
+          }
+        },
+        {
+          "targetText": "is missing?",
+          "baseText": {
+            "de": "fehlt?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "application",
+          "baseText": {
+            "de": "Antrag"
+          }
+        },
+        {
+          "targetText": "account",
+          "baseText": {
+            "de": "Konto"
+          }
+        },
+        {
+          "targetText": "missing",
+          "baseText": {
+            "de": "fehlend"
+          }
+        },
+        {
+          "targetText": "previous address",
+          "baseText": {
+            "de": "vorige Adresse"
+          }
+        },
+        {
+          "targetText": "add",
+          "baseText": {
+            "de": "ergänzen"
+          }
+        },
+        {
+          "targetText": "on the back",
+          "baseText": {
+            "de": "auf der Rückseite"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My ",
+        "answer": "application",
+        "after": " is ready; could you tell me whether anything is missing?",
+        "fallbackChoices": [
+          "application",
+          "passport",
+          "check",
+          "receipt"
+        ]
+      },
+      "speakRequired": [
+        "application",
+        "ready",
+        "missing"
+      ],
+      "sceneCaption": {
+        "de": "Am Bankschalter fragt die Mitarbeiterin: „How can I help with your account application?“"
+      },
+      "trophyWord": {
+        "word": "application",
+        "meaning": {
+          "de": "Antrag"
+        },
+        "example": "Could you check whether my application is complete?",
+        "whyThisWord": {
+          "de": "Damit benennst du einen formellen Antrag und kannst fehlende Bestandteile gezielt nachfragen."
+        }
+      },
+      "distractors": [
+        "My payment is ready;",
+        "is unclear?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Antrag zur Kontoeröffnung liegt zur Prüfung am Bankschalter."
+      },
+      "songMood": "Sorgfältiges Vervollständigen eines wichtigen Antrags.",
+      "visualNotes": "Eine Person reicht einer Bankmitarbeiterin ein ausgefülltes Formular mit mehreren Adressfeldern."
+    },
+    {
+      "slug": "permit-and-a-temporary-option",
+      "title": {
+        "de": "Einen Parkausweis beantragen"
+      },
+      "situation": {
+        "de": "Du möchtest einen Anwohnerparkausweis beantragen. Prüfe zuerst, ob du bei der richtigen Stelle bist.",
+        "en": "You want to apply for a resident parking permit. First check whether you are at the right office."
+      },
+      "pedagogicalGoal": "Eine Zuständigkeit mit whether klären und nach einer neuen Wartezeit höflich eine vorläufige Lösung erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What can I help you with today?",
+          "baseText": {
+            "de": "Wobei kann ich Ihnen heute helfen?"
+          }
+        },
+        {
+          "targetText": "I need a parking permit; could you tell me whether this office handles applications?",
+          "baseText": {
+            "de": "Ich brauche einen Parkausweis; könnten Sie mir sagen, ob diese Stelle Anträge bearbeitet?"
+          }
+        },
+        {
+          "targetText": "Yes, but approval takes several days, and your permit starts after that.",
+          "baseText": {
+            "de": "Ja, aber die Genehmigung dauert einige Tage, und Ihr Ausweis gilt erst danach."
+          }
+        },
+        {
+          "targetText": "Could you confirm whether or not I can get a temporary permit?",
+          "baseText": {
+            "de": "Könnten Sie mir bestätigen, ob ich einen vorläufigen Parkausweis bekommen kann oder nicht?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Whether with a practical alternative",
+        "rule": {
+          "de": "Mit whether fragst du nach einer verfügbaren Möglichkeit; das unmittelbar folgende or not macht die Entscheidung zwischen Ja und Nein ausdrücklich."
+        },
+        "examples": [
+          {
+            "targetText": "I need a parking permit; could you tell me whether this office handles applications?",
+            "baseText": {
+              "de": "Ich brauche einen Parkausweis; könnten Sie mir sagen, ob diese Stelle Anträge bearbeitet?"
+            },
+            "highlight": "whether this office handles applications"
+          },
+          {
+            "targetText": "Could you confirm whether or not I can get a temporary permit?",
+            "baseText": {
+              "de": "Könnten Sie mir bestätigen, ob ich einen vorläufigen Parkausweis bekommen kann oder nicht?"
+            },
+            "highlight": "whether or not I can get"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you confirm ",
+        {
+          "kind": "connector",
+          "answer": "whether",
+          "choices": [
+            "how",
+            "when",
+            "whether",
+            "where"
+          ]
+        },
+        " or not I can ",
+        {
+          "kind": "form",
+          "answer": "get",
+          "cue": "get",
+          "choices": [
+            "getting",
+            "get",
+            "gets",
+            "got"
+          ]
+        },
+        " a temporary permit?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I need a parking permit;",
+          "baseText": {
+            "de": "Ich brauche einen Parkausweis;"
+          }
+        },
+        {
+          "targetText": "could you tell me",
+          "baseText": {
+            "de": "könnten Sie mir sagen,"
+          }
+        },
+        {
+          "targetText": "whether this office",
+          "baseText": {
+            "de": "ob diese Stelle"
+          }
+        },
+        {
+          "targetText": "handles applications?",
+          "baseText": {
+            "de": "Anträge bearbeitet?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "parking permit",
+          "baseText": {
+            "de": "Parkausweis"
+          }
+        },
+        {
+          "targetText": "handles applications",
+          "baseText": {
+            "de": "bearbeitet Anträge"
+          }
+        },
+        {
+          "targetText": "approval",
+          "baseText": {
+            "de": "Genehmigung"
+          }
+        },
+        {
+          "targetText": "several days",
+          "baseText": {
+            "de": "einige Tage"
+          }
+        },
+        {
+          "targetText": "temporary",
+          "baseText": {
+            "de": "vorläufig; befristet"
+          }
+        },
+        {
+          "targetText": "confirm",
+          "baseText": {
+            "de": "bestätigen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I need a parking ",
+        "answer": "permit",
+        "after": "; could you tell me whether this office handles applications?",
+        "fallbackChoices": [
+          "ticket",
+          "space",
+          "meter",
+          "permit"
+        ]
+      },
+      "speakRequired": [
+        "parking",
+        "permit",
+        "applications"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter für städtische Anträge fragt der Mitarbeiter: „What can I help you with today?“"
+      },
+      "trophyWord": {
+        "word": "permit",
+        "meaning": {
+          "de": "Genehmigung; Ausweis als Nachweis einer Erlaubnis"
+        },
+        "example": "Could you tell me whether I need a parking permit?",
+        "whyThisWord": {
+          "de": "Damit fragst du nach einer offiziellen Erlaubnis, beispielsweise zum Parken in deinem Wohngebiet."
+        }
+      },
+      "distractors": [
+        "I need a parking space;",
+        "handles complaints?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein städtischer Informationsschalter mit Hinweisen zum Anwohnerparken."
+      },
+      "songMood": "Geduldiges Suchen nach einer Lösung für die nächsten Tage.",
+      "visualNotes": "Ein Formular für einen Parkausweis liegt neben einer kleinen Karte des Wohngebiets."
+    },
+    {
+      "slug": "registration-and-the-waiting-list",
+      "title": {
+        "de": "Die Anmeldung zum Abendkurs"
+      },
+      "situation": {
+        "de": "Du möchtest dich für einen Abendkurs anmelden. Frage nach den benötigten Unterlagen.",
+        "en": "You want to register for an evening class. Ask what documents you need."
+      },
+      "pedagogicalGoal": "Mit I'd like to know what eine indirekte Informationsfrage stellen und nach einer geänderten Anmeldemöglichkeit fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "You mentioned the evening class. What would you like to know?",
+          "baseText": {
+            "de": "Sie hatten den Abendkurs erwähnt. Was möchten Sie wissen?"
+          }
+        },
+        {
+          "targetText": "Before registration, I'd like to know what documents you need from me.",
+          "baseText": {
+            "de": "Vor der Anmeldung möchte ich wissen, welche Unterlagen Sie von mir brauchen."
+          }
+        },
+        {
+          "targetText": "The class is full, but we can add you to the waiting list.",
+          "baseText": {
+            "de": "Der Kurs ist voll, aber wir können Sie auf die Warteliste setzen."
+          }
+        },
+        {
+          "targetText": "I'd like to know how I can join that list.",
+          "baseText": {
+            "de": "Ich möchte wissen, wie ich auf diese Liste komme."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "I'd like to know what",
+        "rule": {
+          "de": "I'd like to know leitet einen höflichen Informationswunsch ein; danach folgt das Fragewort mit Aussagesatzstellung, ohne zusätzliche Frageumstellung."
+        },
+        "examples": [
+          {
+            "targetText": "Before registration, I'd like to know what documents you need from me.",
+            "baseText": {
+              "de": "Vor der Anmeldung möchte ich wissen, welche Unterlagen Sie von mir brauchen."
+            },
+            "highlight": "what documents you need from me"
+          },
+          {
+            "targetText": "I'd like to know how I can join that list.",
+            "baseText": {
+              "de": "Ich möchte wissen, wie ich auf diese Liste komme."
+            },
+            "highlight": "how I can join that list"
+          }
+        ]
+      },
+      "cloze": [
+        "I'd like to know ",
+        {
+          "kind": "connector",
+          "answer": "how",
+          "choices": [
+            "which",
+            "whose",
+            "how",
+            "whom"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "join",
+          "cue": "join",
+          "choices": [
+            "joins",
+            "joining",
+            "joined",
+            "join"
+          ]
+        },
+        " that list."
+      ],
+      "chunks": [
+        {
+          "targetText": "Before registration,",
+          "baseText": {
+            "de": "Vor der Anmeldung"
+          }
+        },
+        {
+          "targetText": "I'd like to know",
+          "baseText": {
+            "de": "möchte ich wissen,"
+          }
+        },
+        {
+          "targetText": "what documents",
+          "baseText": {
+            "de": "welche Unterlagen"
+          }
+        },
+        {
+          "targetText": "you need from me.",
+          "baseText": {
+            "de": "Sie von mir brauchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "registration",
+          "baseText": {
+            "de": "Anmeldung"
+          }
+        },
+        {
+          "targetText": "would like to know",
+          "baseText": {
+            "de": "möchte wissen"
+          }
+        },
+        {
+          "targetText": "documents",
+          "baseText": {
+            "de": "Unterlagen"
+          }
+        },
+        {
+          "targetText": "evening class",
+          "baseText": {
+            "de": "Abendkurs"
+          }
+        },
+        {
+          "targetText": "waiting list",
+          "baseText": {
+            "de": "Warteliste"
+          }
+        },
+        {
+          "targetText": "join that list",
+          "baseText": {
+            "de": "auf diese Liste kommen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Before ",
+        "answer": "registration",
+        "after": ", I'd like to know what documents you need from me.",
+        "fallbackChoices": [
+          "registration",
+          "departure",
+          "payment",
+          "lunch"
+        ]
+      },
+      "speakRequired": [
+        "registration",
+        "documents",
+        "need"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt die Mitarbeiterin: „You mentioned the evening class. What would you like to know?“"
+      },
+      "trophyWord": {
+        "word": "registration",
+        "meaning": {
+          "de": "Anmeldung"
+        },
+        "example": "I'd like to know what I need for registration.",
+        "whyThisWord": {
+          "de": "Damit sprichst du über die formelle Anmeldung zu einem Kurs oder einer Veranstaltung."
+        }
+      },
+      "distractors": [
+        "After registration,",
+        "you already have."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kursbüro mit Programmheften und Anmeldeunterlagen."
+      },
+      "songMood": "Freundliches Nachfragen nach einer Chance zur Teilnahme.",
+      "visualNotes": "Eine Person sitzt vor dem Schreibtisch im Kursbüro; neben ihr liegt ein Programm für Abendkurse."
+    },
+    {
+      "slug": "document-to-prove-my-identity",
+      "title": {
+        "de": "Ein geeigneter Nachweis"
+      },
+      "situation": {
+        "de": "Du besprichst bei der Sozialversicherungsbehörde einen Antrag und hast einen möglichen Identitätsnachweis dabei. Frage, ob er geeignet ist.",
+        "en": "You are discussing an application at a Social Security office and have brought a possible identity document. Ask whether it is suitable."
+      },
+      "pedagogicalGoal": "Mit do you know if höflich eine Einschätzung erfragen und bei einer Anforderung an das Original nach einer möglichen Alternative fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you have a question about the identity documents for your application?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zu den Identitätsnachweisen für Ihren Antrag?"
+          }
+        },
+        {
+          "targetText": "I have this document; do you know if it proves my identity?",
+          "baseText": {
+            "de": "Ich habe dieses Dokument; wissen Sie, ob es meine Identität belegt?"
+          }
+        },
+        {
+          "targetText": "For this application, I need to see the original, not a photocopy.",
+          "baseText": {
+            "de": "Für diesen Antrag muss ich das Original sehen, keine Fotokopie."
+          }
+        },
+        {
+          "targetText": "Could you tell me whether you can accept a digital copy?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob Sie eine digitale Kopie akzeptieren können?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Do you know if",
+        "rule": {
+          "de": "Nach do you know if folgt die Aussageform mit Subjekt vor Verb; dieselbe Reihenfolge gilt nach could you tell me whether."
+        },
+        "examples": [
+          {
+            "targetText": "I have this document; do you know if it proves my identity?",
+            "baseText": {
+              "de": "Ich habe dieses Dokument; wissen Sie, ob es meine Identität belegt?"
+            },
+            "highlight": "do you know if it proves my identity"
+          },
+          {
+            "targetText": "Could you tell me whether you can accept a digital copy?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob Sie eine digitale Kopie akzeptieren können?"
+            },
+            "highlight": "whether you can accept"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you tell me ",
+        {
+          "kind": "connector",
+          "answer": "whether",
+          "choices": [
+            "which",
+            "whom",
+            "whose",
+            "whether"
+          ]
+        },
+        " you can ",
+        {
+          "kind": "form",
+          "answer": "accept",
+          "cue": "accept",
+          "choices": [
+            "accepting",
+            "accept",
+            "accepted",
+            "accepts"
+          ]
+        },
+        " a digital copy?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I have this document;",
+          "baseText": {
+            "de": "Ich habe dieses Dokument;"
+          }
+        },
+        {
+          "targetText": "do you know",
+          "baseText": {
+            "de": "wissen Sie,"
+          }
+        },
+        {
+          "targetText": "if it",
+          "baseText": {
+            "de": "ob es"
+          }
+        },
+        {
+          "targetText": "proves my identity?",
+          "baseText": {
+            "de": "meine Identität belegt?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "document",
+          "baseText": {
+            "de": "Dokument; Unterlage"
+          }
+        },
+        {
+          "targetText": "proves my identity",
+          "baseText": {
+            "de": "belegt meine Identität"
+          }
+        },
+        {
+          "targetText": "original",
+          "baseText": {
+            "de": "Original"
+          }
+        },
+        {
+          "targetText": "photocopy",
+          "baseText": {
+            "de": "Fotokopie"
+          }
+        },
+        {
+          "targetText": "accept",
+          "baseText": {
+            "de": "akzeptieren"
+          }
+        },
+        {
+          "targetText": "digital copy",
+          "baseText": {
+            "de": "digitale Kopie"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I have this ",
+        "answer": "document",
+        "after": "; do you know if it proves my identity?",
+        "fallbackChoices": [
+          "appointment",
+          "document",
+          "application",
+          "question"
+        ]
+      },
+      "speakRequired": [
+        "document",
+        "proves",
+        "identity"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin am Schalter fragt: „Do you have a question about the identity documents for your application?“"
+      },
+      "trophyWord": {
+        "word": "document",
+        "meaning": {
+          "de": "Dokument; Unterlage"
+        },
+        "example": "Do you know if this document proves my identity?",
+        "whyThisWord": {
+          "de": "Damit kannst du nachfragen, ob eine mitgebrachte Unterlage für einen bestimmten Nachweis geeignet ist."
+        }
+      },
+      "distractors": [
+        "I have this receipt;",
+        "shows my address?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person legt eine Unterlage zur Prüfung an einem Behördenschalter vor."
+      },
+      "songMood": "Sorgfältiges Klären, welcher Nachweis benötigt wird.",
+      "visualNotes": "Auf einem neutralen Behördentresen liegen eine Dokumentenmappe und eine Kopie ohne lesbare persönliche Daten."
+    },
+    {
+      "slug": "signature-on-the-rental-agreement",
+      "title": {
+        "de": "Wo soll ich unterschreiben?"
+      },
+      "situation": {
+        "de": "Du gehst einen Mietvertrag mit einer Mitarbeiterin der Hausverwaltung durch. Frage, wo du unterschreiben sollst.",
+        "en": "You are reviewing a rental agreement with a property manager. Ask where you should sign."
+      },
+      "pedagogicalGoal": "Eine kurze Erklärung mit einer indirekten Ortsfrage verbinden und mit whose nach der zuständigen Person fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you have any questions about the rental agreement?",
+          "baseText": {
+            "de": "Haben Sie Fragen zum Mietvertrag?"
+          }
+        },
+        {
+          "targetText": "This agreement needs my signature; could you tell me where I should sign?",
+          "baseText": {
+            "de": "Dieser Vertrag braucht meine Unterschrift; könnten Sie mir sagen, wo ich unterschreiben soll?"
+          }
+        },
+        {
+          "targetText": "Sign the top line, but this agreement also needs a second signature.",
+          "baseText": {
+            "de": "Unterschreiben Sie auf der oberen Zeile, aber dieser Vertrag braucht auch eine zweite Unterschrift."
+          }
+        },
+        {
+          "targetText": "Could you explain whose signature I should get on that line?",
+          "baseText": {
+            "de": "Könnten Sie mir erklären, wessen Unterschrift ich für diese Zeile brauche?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Where and whose in indirect questions",
+        "rule": {
+          "de": "Where fragt nach einem Ort, whose mit einem Nomen nach der zugehörigen Person; in beiden indirekten Fragen bleibt die Aussagesatzstellung erhalten."
+        },
+        "examples": [
+          {
+            "targetText": "This agreement needs my signature; could you tell me where I should sign?",
+            "baseText": {
+              "de": "Dieser Vertrag braucht meine Unterschrift; könnten Sie mir sagen, wo ich unterschreiben soll?"
+            },
+            "highlight": "where I should sign"
+          },
+          {
+            "targetText": "Could you explain whose signature I should get on that line?",
+            "baseText": {
+              "de": "Könnten Sie mir erklären, wessen Unterschrift ich für diese Zeile brauche?"
+            },
+            "highlight": "whose signature I should get"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you explain ",
+        {
+          "kind": "connector",
+          "answer": "whose",
+          "choices": [
+            "who",
+            "whose",
+            "when",
+            "where"
+          ]
+        },
+        " signature I should ",
+        {
+          "kind": "form",
+          "answer": "get",
+          "cue": "get",
+          "choices": [
+            "gets",
+            "getting",
+            "get",
+            "got"
+          ]
+        },
+        " on that line?"
+      ],
+      "chunks": [
+        {
+          "targetText": "This agreement",
+          "baseText": {
+            "de": "Dieser Vertrag"
+          }
+        },
+        {
+          "targetText": "needs my signature;",
+          "baseText": {
+            "de": "braucht meine Unterschrift;"
+          }
+        },
+        {
+          "targetText": "could you tell me",
+          "baseText": {
+            "de": "könnten Sie mir sagen,"
+          }
+        },
+        {
+          "targetText": "where I should sign?",
+          "baseText": {
+            "de": "wo ich unterschreiben soll?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rental agreement",
+          "baseText": {
+            "de": "Mietvertrag"
+          }
+        },
+        {
+          "targetText": "signature",
+          "baseText": {
+            "de": "Unterschrift"
+          }
+        },
+        {
+          "targetText": "sign",
+          "baseText": {
+            "de": "unterschreiben"
+          }
+        },
+        {
+          "targetText": "top line",
+          "baseText": {
+            "de": "obere Zeile"
+          }
+        },
+        {
+          "targetText": "second signature",
+          "baseText": {
+            "de": "zweite Unterschrift"
+          }
+        },
+        {
+          "targetText": "whose signature",
+          "baseText": {
+            "de": "wessen Unterschrift"
+          }
+        }
+      ],
+      "recall": {
+        "before": "This agreement needs my ",
+        "answer": "signature",
+        "after": "; could you tell me where I should sign?",
+        "fallbackChoices": [
+          "address",
+          "approval",
+          "signature",
+          "photo"
+        ]
+      },
+      "speakRequired": [
+        "agreement",
+        "signature",
+        "sign"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin legt den Vertrag vor Sie und fragt: „Do you have any questions about the rental agreement?“"
+      },
+      "trophyWord": {
+        "word": "signature",
+        "meaning": {
+          "de": "Unterschrift"
+        },
+        "example": "Could you tell me where my signature belongs?",
+        "whyThisWord": {
+          "de": "Damit kannst du klären, an welcher Stelle und von welcher Person eine Unterschrift gebraucht wird."
+        }
+      },
+      "distractors": [
+        "This application",
+        "needs your signature;"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mietvertrag mit mehreren Unterschriftszeilen liegt zur Besprechung auf einem Tisch."
+      },
+      "songMood": "Aufmerksames Nachfragen vor einem wichtigen Abschluss.",
+      "visualNotes": "Eine Hausverwalterin zeigt auf zwei Unterschriftszeilen in einem Mietvertrag; daneben liegt ein Stift."
+    },
+    {
+      "slug": "fee-and-course-materials",
+      "title": {
+        "de": "Was ist im Preis enthalten?"
+      },
+      "situation": {
+        "de": "Vor der Anmeldung zu einem Kurs möchtest du die Kosten verstehen. Frage nach der Gebühr und den enthaltenen Leistungen.",
+        "en": "Before registering for a course, you want to understand the costs. Ask about the fee and what it includes."
+      },
+      "pedagogicalGoal": "Zwei indirekte Fragen verbinden und nach einem optionalen Zusatzangebot die tatsächlich benötigten Materialien klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to know before you register?",
+          "baseText": {
+            "de": "Was möchten Sie vor der Anmeldung wissen?"
+          }
+        },
+        {
+          "targetText": "I'd like to know how much the registration fee is and what it covers.",
+          "baseText": {
+            "de": "Ich möchte wissen, wie hoch die Anmeldegebühr ist und was sie abdeckt."
+          }
+        },
+        {
+          "targetText": "It covers the course, but printed materials cost extra and are optional.",
+          "baseText": {
+            "de": "Sie deckt den Kurs ab, aber gedruckte Materialien kosten extra und sind freiwillig."
+          }
+        },
+        {
+          "targetText": "Could you tell me which materials I should bring myself?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, welche Materialien ich selbst mitbringen soll?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Combining indirect questions",
+        "rule": {
+          "de": "Nach I'd like to know kannst du mehrere Fragen mit and verbinden; jede eingebettete Frage behält die Reihenfolge Subjekt vor Verb."
+        },
+        "examples": [
+          {
+            "targetText": "I'd like to know how much the registration fee is and what it covers.",
+            "baseText": {
+              "de": "Ich möchte wissen, wie hoch die Anmeldegebühr ist und was sie abdeckt."
+            },
+            "highlight": "how much the registration fee is and what it covers"
+          },
+          {
+            "targetText": "Could you tell me which materials I should bring myself?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, welche Materialien ich selbst mitbringen soll?"
+            },
+            "highlight": "which materials I should bring"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you tell me ",
+        {
+          "kind": "connector",
+          "answer": "which",
+          "choices": [
+            "when",
+            "where",
+            "which",
+            "how"
+          ]
+        },
+        " materials I should ",
+        {
+          "kind": "form",
+          "answer": "bring",
+          "cue": "bring",
+          "choices": [
+            "brings",
+            "brought",
+            "bringing",
+            "bring"
+          ]
+        },
+        " myself?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd like to know",
+          "baseText": {
+            "de": "Ich möchte wissen,"
+          }
+        },
+        {
+          "targetText": "how much the registration fee is",
+          "baseText": {
+            "de": "wie hoch die Anmeldegebühr ist"
+          }
+        },
+        {
+          "targetText": "and what",
+          "baseText": {
+            "de": "und was"
+          }
+        },
+        {
+          "targetText": "it covers.",
+          "baseText": {
+            "de": "sie abdeckt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "registration fee",
+          "baseText": {
+            "de": "Anmeldegebühr"
+          }
+        },
+        {
+          "targetText": "covers",
+          "baseText": {
+            "de": "deckt ab; schließt ein"
+          }
+        },
+        {
+          "targetText": "printed materials",
+          "baseText": {
+            "de": "gedruckte Materialien"
+          }
+        },
+        {
+          "targetText": "cost extra",
+          "baseText": {
+            "de": "kosten extra"
+          }
+        },
+        {
+          "targetText": "optional",
+          "baseText": {
+            "de": "freiwillig; optional"
+          }
+        },
+        {
+          "targetText": "bring myself",
+          "baseText": {
+            "de": "selbst mitbringen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd like to know how much the registration ",
+        "answer": "fee",
+        "after": " is and what it covers.",
+        "fallbackChoices": [
+          "fee",
+          "discount",
+          "deposit",
+          "total"
+        ]
+      },
+      "speakRequired": [
+        "registration",
+        "fee",
+        "covers"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragt der Mitarbeiter: „What would you like to know before you register?“"
+      },
+      "trophyWord": {
+        "word": "fee",
+        "meaning": {
+          "de": "Gebühr"
+        },
+        "example": "I'd like to know what the course fee covers.",
+        "whyThisWord": {
+          "de": "Damit fragst du nach einem festgelegten Betrag und kannst prüfen, welche Leistungen darin enthalten sind."
+        }
+      },
+      "distractors": [
+        "how much the registration deposit is",
+        "it excludes."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kursprogramm mit Gebührenübersicht und Materialliste."
+      },
+      "songMood": "Klarheit über Kosten und Vorbereitung vor einem neuen Kurs.",
+      "visualNotes": "Ein Programmheft, eine Materialliste und mehrere Kursunterlagen liegen auf einem Beratungstisch."
+    }
+  ]
+}

@@ -1,0 +1,698 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local staging and recording only; not publication approval.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "english-p4.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Staging who/which/that L1–4, zero relative L5–6, where/whose L7–8, what L9, mix L10 matches my table; whose at L8 is my staging, the anchor's conflict note refers to an older plan. Every choice chip tested in the visible sentence: no second grammatical relative (boxes which/are, garden which/gets, someone who/keeps, sleeves which/let, what matters, what I need). Form chips after can/let/plural antecedents force one form. Chunks and recall reconstruct exactly; contractions never recall or speak tokens; US spelling throughout; register mixed as specified; German explanations coherent.",
+        "remainingConcerns": "L6 situation foreshadows the Sam suggestion (edit below). Restrictive which in L1/L3 is acceptable US usage given the lesson label; no change."
+      },
+      {
+        "file": "english-p5.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Statement order L1–3, if/whether L4–6, I'd like to know what and do you know if L7–8, mix L9–10; if and whether never co-offered; connector chips (whom/whose/which/how/when/where) each ungrammatical in the visible slot; form chips after can/should or singular subjects unique. All formal, no banned casual markers, settings DMV/insurance/utility/bank/permit/class/Social Security/lease/fee as specified. Trophies whether…fee intact.",
+        "remainingConcerns": "whether at L1 is a trophy-forced preview; licensed below with anchor and pedagogicalGoal edits. Titles L4, L6, L9 preview them₂ (edits below)."
+      },
+      {
+        "file": "spanish-p4.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "que L1–4, la que/el que L5–6, donde L7–8, lo que L9, mix L10; article-form chips excluded by gender agreement (La que es más estrecha, El que es mío); donde vs que chips never both grammatical; every form cue has its literal subject before the blank. Gender-free learner lines (mío agrees with abrigo, doblada with tela, colocada with batería). Chunks/recall/cloze reconstruct; accepted trophies intact.",
+        "remainingConcerns": "L1 follow-up 'que da allí' is stilted; adapted below. L7 opening 'se atasca la chaqueta' misassigns the fault; reviewer repair accepted. All ten lessons usted although my table says mixed: licensed, since every episode is a service encounter where tú toward staff would be the worse error."
+      },
+      {
+        "file": "spanish-p5.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "¿Sabe dónde/qué/cómo? L1–3, podría decirme si L4–6, me han dicho que and hay que L7–8, mix L9–10; written accents kept in indirect questions; explicit usted/yo/noun subjects before each form blank (slightly emphatic but grammatical and defensible for formal speech); L7 hay que connector unique. Formal throughout, settings padrón, banco, seguro, tarjeta sanitaria per spec. Chunks/recall/cloze reconstruct.",
+        "remainingConcerns": "L1 title 'Die zuständige Stelle finden / Finding the right office' previews the referral to the district office (edit below). L6 them₂ answers about a response rather than receipt; tolerable."
+      },
+      {
+        "file": "french-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "à mon avis/je trouve que/parce que/donc L1–3, même si + indicative L4–6, pourtant and quand même L7–8, mixed L9–10; no bien que, no speaker adjectives, no gender-dependent participles; space before ? ! and ; present in every target string; no apostrophe blanked; connector chips (avant que, pour que, sans que, donc, ensuite) ungrammatical in slot; form cues carry literal subjects. tu with one friend matches my register table. Chunks (including the ' ;' chunk in L7) reconstruct exactly.",
+        "remainingConcerns": "malgré at L5 and cependant at L8 are trophy-forced previews; licensed below. L3 follow-up 'et ils étudient' is flat but correct."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "EN-P5-06-SPOILER title 'Parken bis zur Genehmigung'",
+        "decision": "accept",
+        "reason": "Previews the approval delay introduced only in them₂."
+      },
+      {
+        "finding": "EN-P5-09-SPOILER plural 'Unterschriften'",
+        "decision": "accept",
+        "reason": "Plural reveals the second-signature complication."
+      },
+      {
+        "finding": "ES-P4-07-OPENING chaqueta→cremallera with coupled edits",
+        "decision": "accept",
+        "reason": "The zipper jams, not the jacket; sceneCaption must quote the new opening, titles follow."
+      },
+      {
+        "finding": "EN-P4-RELATIVE-SUBJECT note",
+        "decision": "accept",
+        "reason": "English agreement slots are governed by the visible antecedent and complete syntax; the whole-literal-subject rail is an Italian/Portuguese validator guard, not an English rule. No repairs needed."
+      },
+      {
+        "finding": "EN-P5-WHETHER-PREVIEW",
+        "decision": "accept with license",
+        "reason": "Trophy allocation is frozen; one embedded whether clause in L1 while L1–3 teach statement order is a narrow preview. Anchor and pedagogicalGoal revised to say licensed, not open."
+      },
+      {
+        "finding": "FR-P2-TROPHY-PREVIEWS malgré L5, cependant L8",
+        "decision": "accept with license",
+        "reason": "Both are connector-level opinion-family items beside the staged carriers même si and quand même; anchor revised from 'must accept or adapt' to licensed."
+      },
+      {
+        "finding": "Cleared author flags (whose L8, US settings, donde uses, Lo que, ofrece conversación, qué/cuándo, hay que, French tu)",
+        "decision": "accept",
+        "reason": "All consistent with my staging and register tables."
+      },
+      {
+        "finding": "Own: EN-P5 L4 title 'Wohin die Rechnung soll'",
+        "decision": "adapt",
+        "reason": "Billing-address distinction is the them₂ reveal."
+      },
+      {
+        "finding": "Own: EN-P4 L6 situation 'Vergleiche … mit einem neuen Vorschlag'",
+        "decision": "adapt",
+        "reason": "Foreshadows Sam's suggestion."
+      },
+      {
+        "finding": "Own: ES-P5 L1 title",
+        "decision": "adapt",
+        "reason": "'Right office / zuständige Stelle' previews the district-office referral."
+      },
+      {
+        "finding": "Own: ES-P4 L1 'que da allí'",
+        "decision": "adapt",
+        "reason": "dar a needs a complement; 'que da a esa calle' is the native phrasing and echoes them₂."
+      },
+      {
+        "finding": "Own: Spanish P4 all-usted vs table 'mixed'",
+        "decision": "accept deviation",
+        "reason": "Service-only settings; introducing tú toward staff is the reviewer failure mode I pre-empted."
+      }
+    ],
+    "edits": [
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/5/title/de",
+        "oldValue": "Parken bis zur Genehmigung",
+        "newValue": "Einen Parkausweis beantragen",
+        "reason": "Delay spoiler."
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/8/title/de",
+        "oldValue": "Die Unterschriften auf dem Mietvertrag",
+        "newValue": "Wo soll ich unterschreiben?",
+        "reason": "Second-signature spoiler."
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/3/title/de",
+        "oldValue": "Wohin die Rechnung soll",
+        "newValue": "Die neue Adresse eintragen",
+        "reason": "Billing-address spoiler."
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/0/pedagogicalGoal",
+        "oldValue": "Eine höfliche indirekte Ja-Nein-Frage mit Aussagesatzstellung bilden; whether erscheint wegen der festen Trophäenzuordnung als vorläufige frühe Vorschau.",
+        "newValue": "Eine höfliche indirekte Ja-Nein-Frage mit Aussagesatzstellung bilden; whether erscheint wegen der festen Trophäenzuordnung als von Fable lizenzierte frühe Vorschau.",
+        "reason": "Preview licensed."
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Vorläufiger Entwurf für Fables persönliche Prüfung. Form A: Eine zunächst unbekannte Einschränkung führt zu einer präzisen zweiten Frage. Neuere Fable-Stufung vom 03.10.2026: L1–3 indirekte Fragen mit Aussagesatzstellung; L4–6 if und whether; L7–8 I'd like to know what und do you know if; L9–10 Verbindung der Muster. Jede Ergänzungsübung enthält ein Frage- oder Einleitungswort und eine Verbform; if und whether stehen wegen ihrer Austauschbarkeit nie gemeinsam zur Auswahl. Die genaue Trophäenzuordnung bleibt erhalten. Offener Stufenkonflikt: whether ist bereits die verbindliche Trophäe von L1 und erscheint dort als nicht freigegebene Vorschau. Anpassung der älteren Szenen an die neuere amerikanische Architektur: L1 Führerscheinstelle, L2 Krankenversicherung, L3 Adressänderung bei der Führerscheinstelle, L4 Versorgungsvertrag, L5 Bankantrag, L6 Anwohnerparken, L7 Kursanmeldung, L8 Identitätsnachweis bei der Sozialversicherungsbehörde, L9 Mietvertrag, L10 Kursgebühr. Insbesondere fragt L8 nach Identität statt der älteren Adressnachweis-Idee. Ausschließlich formelle Gespräche mit einzelnen Ansprechpersonen; erfundene Einzelfälle ohne allgemeine Behauptungen über Behördenregeln.",
+        "newValue": "Von Fable am 05.10.2026 gelesen und arbitriert. Form A: Eine zunächst unbekannte Einschränkung führt zu einer präzisen zweiten Frage. Neuere Fable-Stufung vom 03.10.2026: L1–3 indirekte Fragen mit Aussagesatzstellung; L4–6 if und whether; L7–8 I'd like to know what und do you know if; L9–10 Verbindung der Muster. Jede Ergänzungsübung enthält ein Frage- oder Einleitungswort und eine Verbform; if und whether stehen wegen ihrer Austauschbarkeit nie gemeinsam zur Auswahl. Die genaue Trophäenzuordnung bleibt erhalten. Lizenzierte enge Vorschau: whether ist die verbindliche Trophäe von L1 und erscheint dort als einzelne eingebettete Ja-Nein-Frage, während L1–3 die Aussagesatzstellung lehren; produktiv wird if/whether erst in L4–6 gestuft. Anpassung der älteren Szenen an die neuere amerikanische Architektur: L1 Führerscheinstelle, L2 Krankenversicherung, L3 Adressänderung bei der Führerscheinstelle, L4 Versorgungsvertrag, L5 Bankantrag, L6 Anwohnerparken, L7 Kursanmeldung, L8 Identitätsnachweis bei der Sozialversicherungsbehörde, L9 Mietvertrag, L10 Kursgebühr. Insbesondere fragt L8 nach Identität statt der älteren Adressnachweis-Idee. Ausschließlich formelle Gespräche mit einzelnen Ansprechpersonen; erfundene Einzelfälle ohne allgemeine Behauptungen über Behördenregeln.",
+        "reason": "Explicit license replaces the open conflict."
+      },
+      {
+        "file": "english-p4.json",
+        "jsonPointer": "/lessons/5/situation",
+        "oldValue": {
+          "de": "Du erzählst einer Freundin von der Suche nach einer Person für deine Wohngemeinschaft. Vergleiche einen ersten Eindruck mit einem neuen Vorschlag.",
+          "en": "You tell a friend about your search for a roommate. Compare your first impression with a new suggestion."
+        },
+        "newValue": {
+          "de": "Du erzählst einer Freundin von der Suche nach einer Person für deine Wohngemeinschaft. Beschreibe deinen ersten Eindruck.",
+          "en": "You tell a friend about your search for a roommate. Describe your first impression."
+        },
+        "reason": "Foreshadowed them₂."
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/dialogue/0",
+        "oldValue": {
+          "targetText": "¿Dónde se atasca la chaqueta?",
+          "baseText": {
+            "de": "Wo klemmt die Jacke?",
+            "en": "Where does the jacket get stuck?"
+          }
+        },
+        "newValue": {
+          "targetText": "¿Dónde se atasca la cremallera?",
+          "baseText": {
+            "de": "Wo klemmt der Reißverschluss?",
+            "en": "Where does the zip get stuck?"
+          }
+        },
+        "reason": "Correct referent."
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/sceneCaption",
+        "oldValue": {
+          "de": "In der Änderungsschneiderei fragt die Mitarbeiterin: „¿Dónde se atasca la chaqueta?“",
+          "en": "At the alterations shop, the staff member asks: “¿Dónde se atasca la chaqueta?”"
+        },
+        "newValue": {
+          "de": "In der Änderungsschneiderei fragt die Mitarbeiterin: „¿Dónde se atasca la cremallera?“",
+          "en": "At the alterations shop, the staff member asks: “¿Dónde se atasca la cremallera?”"
+        },
+        "reason": "Scene must quote opening."
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/title",
+        "oldValue": {
+          "de": "Die klemmende Jacke",
+          "en": "The jammed jacket"
+        },
+        "newValue": {
+          "de": "Der klemmende Reißverschluss",
+          "en": "The jammed zip"
+        },
+        "reason": "Coupled with opening."
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/0/dialogue/3",
+        "oldValue": {
+          "targetText": "Acepto el balcón que da allí; la tranquilidad me importa.",
+          "baseText": {
+            "de": "Ich nehme den Balkon zu dieser Seite; die Ruhe ist mir wichtig.",
+            "en": "I'll take the balcony facing that way; the peace and quiet matters to me."
+          }
+        },
+        "newValue": {
+          "targetText": "Acepto el balcón que da a esa calle; la tranquilidad me importa.",
+          "baseText": {
+            "de": "Ich nehme den Balkon zu dieser Straße; die Ruhe ist mir wichtig.",
+            "en": "I'll take the balcony facing that street; the peace and quiet matters to me."
+          }
+        },
+        "reason": "Native dar a + complement; 11 words."
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/0/cloze",
+        "oldValue": [
+          "Acepto el balcón ",
+          {
+            "kind": "choice",
+            "answer": "que",
+            "choices": [
+              "donde",
+              "el que",
+              "que",
+              "lo que"
+            ]
+          },
+          " da allí; la tranquilidad me ",
+          {
+            "kind": "form",
+            "answer": "importa",
+            "cue": "importar (la tranquilidad)",
+            "choices": [
+              "importan",
+              "importamos",
+              "importo",
+              "importa"
+            ]
+          },
+          "."
+        ],
+        "newValue": [
+          "Acepto el balcón ",
+          {
+            "kind": "choice",
+            "answer": "que",
+            "choices": [
+              "donde",
+              "el que",
+              "que",
+              "lo que"
+            ]
+          },
+          " da a esa calle; la tranquilidad me ",
+          {
+            "kind": "form",
+            "answer": "importa",
+            "cue": "importar (la tranquilidad)",
+            "choices": [
+              "importan",
+              "importamos",
+              "importo",
+              "importa"
+            ]
+          },
+          "."
+        ],
+        "reason": "Concat identity with new follow-up."
+      },
+      {
+        "file": "spanish-p5.json",
+        "jsonPointer": "/lessons/0/title",
+        "oldValue": {
+          "de": "Die zuständige Stelle finden",
+          "en": "Finding the right office"
+        },
+        "newValue": {
+          "de": "Die Meldeadresse ändern",
+          "en": "Changing your registered address"
+        },
+        "reason": "Referral spoiler."
+      },
+      {
+        "file": "french-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "DRAFT — awaiting Fable read-through and arbitration. Shape B, interested listener: the two learner turns develop one connected view. Informal tu with one friend throughout, following Fable's native P2 register rather than the older plan's proposed vous. Native staging: L1–3 à mon avis, je trouve que, parce que, donc; L4–6 même si + indicative; L7–8 pourtant and quand même; L9–10 mixed reuse. Explicit narrow arbitration flags: the immutable trophy allocation introduces malgré + noun at L5 and cependant at L8 in addition to the native-stage carriers, so Fable must accept or adapt those two additions. No bien que, no speaker-gender adjectives, no gender-dependent learner participles. Cloze connector choices are constrained by the visible French construction; form cues retain an explicit literal subject before each slot.",
+        "newValue": "Fable read-through and arbitration 2026-10-05 complete. Shape B, interested listener: the two learner turns develop one connected view. Informal tu with one friend throughout, following Fable's native P2 register rather than the older plan's proposed vous. Native staging: L1–3 à mon avis, je trouve que, parce que, donc; L4–6 même si + indicative; L7–8 pourtant and quand même; L9–10 mixed reuse. Licensed narrow previews: the immutable trophy allocation introduces malgré + noun at L5 and cependant at L8 alongside the native-stage carriers même si and quand même; Fable accepts both as connector-level additions within the P2 opinion family. No bien que, no speaker-gender adjectives, no gender-dependent learner participles. Cloze connector choices are constrained by the visible French construction; form cues retain an explicit literal subject before each slot.",
+        "reason": "Explicit license replaces the open flag."
+      }
+    ],
+    "finalChecks": [
+      "Rerun validateB1Draft on all five files after edits; expected effects: ES P4 L1 cloze still reconstructs the new follow-up (11 words), ES P4 L7 sceneCaption.de contains the new opening, no chunk/recall/trophy changes anywhere.",
+      "Trophy allocations untouched in all 50 lessons; no shipped IDs or text affected.",
+      "Source hashes will change for english-p4, english-p5, spanish-p4, spanish-p5, french-p2; re-freeze after Codex applies.",
+      "Content approval only: no production SQL, edition regeneration, TTS spend or device gate approved; iPhone pass and two-turn recognition in en-US/es-ES/fr-FR remain owner-gated; no human native review is claimed."
+    ]
+  },
+  "independent": {
+    "schemaVersion": 1,
+    "reviewDate": "2026-10-05",
+    "reviewer": "Independent Codex reviewer b1_next_batch_review; same fresh reviewer as the original 50-lesson review, not an author or fixer",
+    "reviewRound": 2,
+    "verdict": "PASS",
+    "finalVerdict": "PASS",
+    "scope": "Exact-edit re-review of English P4/P5, Spanish P4/P5 and French P2: 50 lessons in reviewed-content. The first review personally read every field of all 50 lessons; this round personally reread every field of the eight changed episodes plus both changed path anchors.",
+    "reviewedDirectory": "tmp/V4_EXPANSION_20261003/reviewed-content",
+    "reviewedSources": {
+      "english-p4.json": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "english-p5.json": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "spanish-p4.json": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "spanish-p5.json": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "french-p2.json": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047"
+    },
+    "originalSources": {
+      "english-p4.json": "cf5a426ba0cd4bb3c3503755b8f2c09fd4041207e4a5b251f5ea8e1ffdf86a4b",
+      "english-p5.json": "0688ef5ed2ab3e8d7cef461057c8063285979c2062b87461fd28f11b5a0ffa80",
+      "spanish-p4.json": "2600841aec36bbd6c2cbd4dd68a8c9a1e406f8e32a4ad29cef81b69a5a43e7a4",
+      "spanish-p5.json": "c7fe402a3568a31ac0e34142202dc0a9b472460282e5f73c7a2cb12cb11753a6",
+      "french-p2.json": "8a73e2a99053a9fd720f40f8e6d9104df803d8b32902b91b58133b34562b8049"
+    },
+    "unresolvedLocalTtsBlockers": [],
+    "remainingPublicationFindings": [],
+    "resolvedOriginalFindings": [
+      {
+        "id": "EN-P5-06-SPOILER",
+        "status": "RESOLVED",
+        "evidence": "All proposed new values, including every coupled field in the original finding, were asserted equal to the reviewed copy."
+      },
+      {
+        "id": "EN-P5-09-SPOILER",
+        "status": "RESOLVED",
+        "evidence": "All proposed new values, including every coupled field in the original finding, were asserted equal to the reviewed copy."
+      },
+      {
+        "id": "ES-P4-07-OPENING",
+        "status": "RESOLVED",
+        "evidence": "All proposed new values, including every coupled field in the original finding, were asserted equal to the reviewed copy."
+      }
+    ],
+    "checks": {
+      "exactApprovedEditCount": {
+        "status": "PASS",
+        "expected": 13,
+        "actual": 13
+      },
+      "oldValueReplay": {
+        "status": "PASS",
+        "detail": "Every RFC 6901 edit pointer resolved to its exact oldValue in the hash-pinned original. Replayed all 13 edits in memory."
+      },
+      "reviewedContentEquality": {
+        "status": "PASS",
+        "detail": "Each reviewed JSON object is deeply equal to the corresponding original with only Fable's approved edits replayed. No unapproved content change exists.",
+        "byFile": {
+          "english-p4.json": {
+            "exactReplay": true,
+            "noUnapprovedContentChanges": true,
+            "editCount": 1
+          },
+          "english-p5.json": {
+            "exactReplay": true,
+            "noUnapprovedContentChanges": true,
+            "editCount": 5
+          },
+          "spanish-p4.json": {
+            "exactReplay": true,
+            "noUnapprovedContentChanges": true,
+            "editCount": 5
+          },
+          "spanish-p5.json": {
+            "exactReplay": true,
+            "noUnapprovedContentChanges": true,
+            "editCount": 1
+          },
+          "french-p2.json": {
+            "exactReplay": true,
+            "noUnapprovedContentChanges": true,
+            "editCount": 1
+          }
+        }
+      },
+      "frozenOriginals": {
+        "status": "PASS",
+        "detail": "Actual SHA256 of every new-content original equals B1_NEXT_BATCH_REVIEWED_SOURCE_HASHES.json and the first independent review's source hash."
+      },
+      "frozenReviewedSources": {
+        "status": "PASS",
+        "detail": "Actual SHA256 of every reviewed-content file equals B1_NEXT_BATCH_APPLIED_HASHES.json.",
+        "sha256Map": {
+          "english-p4.json": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+          "english-p5.json": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+          "spanish-p4.json": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+          "spanish-p5.json": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+          "french-p2.json": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047"
+        }
+      },
+      "currentOfflineContract": {
+        "status": "PASS",
+        "detail": "Ran the current validateB1Draft directly with node --import tsx on all five reviewed files.",
+        "lessonsValidated": 50,
+        "files": [
+          {
+            "file": "english-p4.json",
+            "validateB1Draft": "PASS",
+            "trophyMap": "PASS",
+            "trophiesUnchanged": true
+          },
+          {
+            "file": "english-p5.json",
+            "validateB1Draft": "PASS",
+            "trophyMap": "PASS",
+            "trophiesUnchanged": true
+          },
+          {
+            "file": "spanish-p4.json",
+            "validateB1Draft": "PASS",
+            "trophyMap": "PASS",
+            "trophiesUnchanged": true
+          },
+          {
+            "file": "spanish-p5.json",
+            "validateB1Draft": "PASS",
+            "trophyMap": "PASS",
+            "trophiesUnchanged": true
+          },
+          {
+            "file": "french-p2.json",
+            "validateB1Draft": "PASS",
+            "trophyMap": "PASS",
+            "trophiesUnchanged": true
+          }
+        ]
+      },
+      "trophyAllocation": {
+        "status": "PASS",
+        "detail": "All 50 trophy words equal both the originals and the exact matching path cells in the immutable language-plan maps. No trophy changed."
+      },
+      "originalFindings": {
+        "status": "PASS",
+        "resolved": 3,
+        "unresolved": 0
+      },
+      "changedEpisodeReadThrough": {
+        "status": "PASS",
+        "detail": "Personally reread all fields of English P4 L6; English P5 L1, L4, L6, L9; Spanish P4 L1, L7; Spanish P5 L1. No new linguistic, translation, cloze-ambiguity, register, delayed-reveal or four-turn-story defect found."
+      },
+      "changedAnchors": {
+        "status": "PASS",
+        "detail": "Personally read the reviewed English P5 and French P2 anchors. They now record Fable's specific licenses rather than unresolved flags."
+      },
+      "fableReadThroughEvidence": {
+        "status": "PASS",
+        "detail": "The raw completed Fable response records lessonsRead 1–10 for each of the five files, with per-file content checks and arbitration."
+      },
+      "englishRelativeSubjectJudgment": {
+        "status": "PASS",
+        "decision": "Fable explicitly accepts visible antecedent plus complete syntax as sufficient evidence for the English relative-agreement slots; the whole-literal-subject guard is specific to Italian/Portuguese, so no English repairs are required.",
+        "reference": "decoded Fable result /arbitration/3"
+      },
+      "narrowPreviewLicenses": {
+        "status": "PASS",
+        "licenses": [
+          {
+            "languagePath": "English P5",
+            "lesson": 1,
+            "form": "whether",
+            "scope": "Single embedded yes/no question while L1–3 teach statement order; productive if/whether remains L4–6.",
+            "reference": "decoded Fable result /arbitration/4; reviewed /anchor and /lessons/0/pedagogicalGoal"
+          },
+          {
+            "languagePath": "French P2",
+            "lesson": 5,
+            "form": "malgré + noun",
+            "scope": "Connector-level opinion-family addition alongside même si.",
+            "reference": "decoded Fable result /arbitration/5; reviewed /anchor"
+          },
+          {
+            "languagePath": "French P2",
+            "lesson": 8,
+            "form": "cependant",
+            "scope": "Connector-level opinion-family addition alongside quand même.",
+            "reference": "decoded Fable result /arbitration/5; reviewed /anchor"
+          }
+        ]
+      },
+      "additionalFableRepairs": {
+        "status": "PASS",
+        "detail": "English P4 L6 situation no longer announces a new suggestion; English P5 L4 title no longer previews the billing-address distinction; Spanish P5 L1 title no longer announces the office referral; Spanish P4 L1 now uses native dar a + a named street, with matching translation and cloze."
+      },
+      "revisedSpanishFollowUp": {
+        "status": "PASS",
+        "lesson": 1,
+        "text": "Acepto el balcón que da a esa calle; la tranquilidad me importa.",
+        "wordCount": 12,
+        "clozeEqualsTurn": true,
+        "note": "The actual whitespace word count is 12, within the 6–12 contract. Fable's prose called it 11; that arithmetic slip does not affect the approved content or validation."
+      }
+    },
+    "personallyReread": [
+      {
+        "file": "english-p4.json",
+        "lesson": 6,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "english-p5.json",
+        "lesson": 1,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "english-p5.json",
+        "lesson": 4,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "english-p5.json",
+        "lesson": 6,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "english-p5.json",
+        "lesson": 9,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "spanish-p4.json",
+        "lesson": 1,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "spanish-p4.json",
+        "lesson": 7,
+        "allFields": true,
+        "result": "PASS"
+      },
+      {
+        "file": "spanish-p5.json",
+        "lesson": 1,
+        "allFields": true,
+        "result": "PASS"
+      }
+    ],
+    "editEvidence": [
+      {
+        "file": "english-p4.json",
+        "jsonPointer": "/lessons/5/situation",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/5/title/de",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/8/title/de",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/3/title/de",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/lessons/0/pedagogicalGoal",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "english-p5.json",
+        "jsonPointer": "/anchor",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/dialogue/0",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/sceneCaption",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/6/title",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/0/dialogue/3",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p4.json",
+        "jsonPointer": "/lessons/0/cloze",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "spanish-p5.json",
+        "jsonPointer": "/lessons/0/title",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      },
+      {
+        "file": "french-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValueMatched": true,
+        "newValueMatched": true
+      }
+    ],
+    "evidenceFiles": [
+      "tmp/V4_EXPANSION_20261003/B1_NEXT_BATCH_INDEPENDENT_REVIEW.json",
+      "tmp/V4_EXPANSION_20261003/B1_NEXT_BATCH_FABLE_REVIEW_RAW.json",
+      "tmp/V4_EXPANSION_20261003/B1_NEXT_BATCH_REVIEWED_SOURCE_HASHES.json",
+      "tmp/V4_EXPANSION_20261003/B1_NEXT_BATCH_APPLIED_HASHES.json",
+      "orchestrator/frontend/scripts/lib/guidedB1Drafts.ts",
+      "orchestrator/frontend/content-drafts/b1-2026-10/english-plan.json",
+      "orchestrator/frontend/content-drafts/b1-2026-10/spanish-plan.json",
+      "orchestrator/frontend/content-drafts/b1-2026-10/french-plan.json"
+    ],
+    "boundary": "PASS covers content correctness and exact application of the approved repairs for these 50 lessons. It records no unresolved local TTS text blocker or publication content finding in this batch. It does not close the separate English P2 distractor finding from the first 40 lessons, which is out of scope. No audio generation, provider call, database operation, git operation, app edit, device test or publication occurred in this re-review.",
+    "reviewerMutations": [
+      "tmp/V4_EXPANSION_20261003/B1_NEXT_BATCH_INDEPENDENT_REREVIEW.json"
+    ]
+  }
+}

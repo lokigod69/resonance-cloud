@@ -1,0 +1,2177 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meiner Meinung nach",
+    "en": "In my opinion"
+  },
+  "subtitle": {
+    "de": "Begründe deinen Standpunkt und gehe auf neue Gesichtspunkte ein.",
+    "en": "Explain your view and respond to new perspectives."
+  },
+  "anchor": "Fable read-through and arbitration 2026-10-05 complete. Shape B, interested listener: the two learner turns develop one connected view. Informal tu with one friend throughout, following Fable's native P2 register rather than the older plan's proposed vous. Native staging: L1–3 à mon avis, je trouve que, parce que, donc; L4–6 même si + indicative; L7–8 pourtant and quand même; L9–10 mixed reuse. Licensed narrow previews: the immutable trophy allocation introduces malgré + noun at L5 and cependant at L8 alongside the native-stage carriers même si and quand même; Fable accepts both as connector-level additions within the P2 opinion family. No bien que, no speaker-gender adjectives, no gender-dependent learner participles. Cloze connector choices are constrained by the visible French construction; form cues retain an explicit literal subject before each slot.",
+  "lessons": [
+    {
+      "slug": "avis-sur-la-rue-pietonne",
+      "title": {
+        "de": "Eine Straße für Fußgänger",
+        "en": "A street for pedestrians"
+      },
+      "situation": {
+        "de": "Sprich mit einem Freund über die neue Fußgängerzone in eurem Viertel.",
+        "en": "Talk to a friend about the new pedestrian street in your neighborhood."
+      },
+      "pedagogicalGoal": "Eine Meinung mit à mon avis formulieren und ihren wirtschaftlichen Nutzen an einem konkreten Verhalten erklären.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu penses quoi de la nouvelle rue piétonne ?",
+          "baseText": {
+            "de": "Was hältst du von der neuen Fußgängerzone?",
+            "en": "What do you think of the new pedestrian street?"
+          }
+        },
+        {
+          "targetText": "À mon avis, cette rue piétonne profite aussi aux petits commerces.",
+          "baseText": {
+            "de": "Meiner Meinung nach nützt diese Fußgängerzone auch den kleinen Geschäften.",
+            "en": "In my opinion, this pedestrian street also benefits small shops."
+          }
+        },
+        {
+          "targetText": "Même sans places de stationnement devant les boutiques ?",
+          "baseText": {
+            "de": "Auch ohne Parkplätze vor den Läden?",
+            "en": "Even without parking spaces in front of the shops?"
+          }
+        },
+        {
+          "targetText": "Oui, les passants prennent leur temps et ils regardent les vitrines.",
+          "baseText": {
+            "de": "Ja, die Passanten lassen sich Zeit und schauen sich die Schaufenster an.",
+            "en": "Yes, passersby take their time and look at the shop windows."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "À mon avis",
+        "rule": {
+          "de": "Mit à mon avis kennzeichnest du deine Meinung; eine weitere Aussage kann erklären, worauf sie beruht.",
+          "en": "Use à mon avis to mark your opinion; another statement can explain what it is based on."
+        },
+        "examples": [
+          {
+            "targetText": "À mon avis, cette rue piétonne profite aussi aux petits commerces.",
+            "baseText": {
+              "de": "Meiner Meinung nach nützt diese Fußgängerzone auch den kleinen Geschäften.",
+              "en": "In my opinion, this pedestrian street also benefits small shops."
+            },
+            "highlight": "À mon avis"
+          },
+          {
+            "targetText": "À mon avis, ce parc rend le quartier plus agréable.",
+            "baseText": {
+              "de": "Meiner Meinung nach macht dieser Park das Viertel angenehmer.",
+              "en": "In my opinion, this park makes the neighborhood more pleasant."
+            },
+            "highlight": "À mon avis"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, les passants ",
+        {
+          "kind": "form",
+          "answer": "prennent",
+          "cue": "prendre (les passants)",
+          "choices": [
+            "prenez",
+            "prennent",
+            "prenons",
+            "prends"
+          ]
+        },
+        " leur temps et ils ",
+        {
+          "kind": "form",
+          "answer": "regardent",
+          "cue": "regarder (ils)",
+          "choices": [
+            "regardons",
+            "regardez",
+            "regardent",
+            "regardes"
+          ]
+        },
+        " les vitrines."
+      ],
+      "chunks": [
+        {
+          "targetText": "À mon avis,",
+          "baseText": {
+            "de": "Meiner Meinung nach,",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "cette rue piétonne",
+          "baseText": {
+            "de": "diese Fußgängerzone",
+            "en": "this pedestrian street"
+          }
+        },
+        {
+          "targetText": "profite aussi",
+          "baseText": {
+            "de": "nützt auch",
+            "en": "also benefits"
+          }
+        },
+        {
+          "targetText": "aux petits commerces.",
+          "baseText": {
+            "de": "den kleinen Geschäften.",
+            "en": "small shops."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "à mon avis",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "une rue piétonne",
+          "baseText": {
+            "de": "eine Fußgängerzone",
+            "en": "a pedestrian street"
+          }
+        },
+        {
+          "targetText": "profiter aux commerces",
+          "baseText": {
+            "de": "den Geschäften nützen",
+            "en": "to benefit shops"
+          }
+        },
+        {
+          "targetText": "le stationnement",
+          "baseText": {
+            "de": "das Parken",
+            "en": "parking"
+          }
+        },
+        {
+          "targetText": "prendre son temps",
+          "baseText": {
+            "de": "sich Zeit lassen",
+            "en": "to take one's time"
+          }
+        },
+        {
+          "targetText": "les vitrines",
+          "baseText": {
+            "de": "die Schaufenster",
+            "en": "the shop windows"
+          }
+        }
+      ],
+      "recall": {
+        "before": "À mon avis, cette rue piétonne ",
+        "answer": "profite",
+        "after": " aussi aux petits commerces.",
+        "fallbackChoices": [
+          "profite",
+          "nuit",
+          "appartient",
+          "ressemble"
+        ]
+      },
+      "speakRequired": [
+        "avis",
+        "piétonne",
+        "commerces"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund spricht dich auf die neue Fußgängerzone an: „Tu penses quoi de la nouvelle rue piétonne ?“",
+        "en": "A friend asks about the new pedestrian street: “Tu penses quoi de la nouvelle rue piétonne ?”"
+      },
+      "trophyWord": {
+        "word": "avis",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "Ton avis compte dans cette discussion.",
+        "whyThisWord": {
+          "de": "Mit avis kannst du eine persönliche Einschätzung ausdrücklich als solche vorstellen.",
+          "en": "Avis lets you introduce a personal judgment as your opinion."
+        }
+      },
+      "distractors": [
+        "aux grandes surfaces.",
+        "cette route nationale"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich am Eingang einer Einkaufsstraße.",
+        "en": "Two friends talk at the entrance to a shopping street."
+      },
+      "songMood": "a thoughtful conversational chanson with an easy walking rhythm",
+      "visualNotes": "Two friends near a pedestrian street sign; only the opening topic is visible."
+    },
+    {
+      "slug": "petit-cinema-du-quartier",
+      "title": {
+        "de": "Das kleine Kino",
+        "en": "The small cinema"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach deiner Meinung zum kleinen Kino im Viertel.",
+        "en": "A friend asks what you think of the small neighborhood cinema."
+      },
+      "pedagogicalGoal": "Eine Einschätzung mit je trouve que ausdrücken und mit c'est parce que eine Erklärung nachreichen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu aimes ce petit cinéma du quartier ?",
+          "baseText": {
+            "de": "Magst du dieses kleine Kino im Viertel?",
+            "en": "Do you like this small neighborhood cinema?"
+          }
+        },
+        {
+          "targetText": "Je trouve que le petit cinéma est plutôt chaleureux après les séances.",
+          "baseText": {
+            "de": "Ich finde, dass das kleine Kino nach den Vorstellungen eine recht herzliche Atmosphäre hat.",
+            "en": "I find that the small cinema has a fairly warm atmosphere after screenings."
+          }
+        },
+        {
+          "targetText": "Qu'est-ce qui rend l'ambiance différente d'un grand cinéma ?",
+          "baseText": {
+            "de": "Was macht die Atmosphäre anders als in einem großen Kino?",
+            "en": "What makes the atmosphere different from a large cinema?"
+          }
+        },
+        {
+          "targetText": "C'est parce que les habitués échangent, sans se presser.",
+          "baseText": {
+            "de": "Das liegt daran, dass die Stammgäste sich unterhalten, ohne sich zu beeilen.",
+            "en": "It's because the regulars talk to one another without rushing."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je trouve que",
+        "rule": {
+          "de": "Nach je trouve que folgt eine Aussage mit Subjekt und Verb; c'est parce que leitet die Erklärung deiner Einschätzung ein.",
+          "en": "Je trouve que is followed by a statement with a subject and verb; c'est parce que introduces the explanation for your judgment."
+        },
+        "examples": [
+          {
+            "targetText": "Je trouve que le petit cinéma est plutôt chaleureux après les séances.",
+            "baseText": {
+              "de": "Ich finde, dass das kleine Kino nach den Vorstellungen eine recht herzliche Atmosphäre hat.",
+              "en": "I find that the small cinema has a fairly warm atmosphere after screenings."
+            },
+            "highlight": "Je trouve que"
+          },
+          {
+            "targetText": "Je trouve que cette salle donne envie de discuter.",
+            "baseText": {
+              "de": "Ich finde, dass dieser Saal zum Reden einlädt.",
+              "en": "I find that this room makes people want to talk."
+            },
+            "highlight": "Je trouve que"
+          }
+        ]
+      },
+      "cloze": [
+        "C'est ",
+        {
+          "kind": "connector",
+          "answer": "parce que",
+          "choices": [
+            "donc",
+            "pourtant",
+            "parce que",
+            "ensuite"
+          ]
+        },
+        " les habitués ",
+        {
+          "kind": "form",
+          "answer": "échangent",
+          "cue": "échanger (les habitués)",
+          "choices": [
+            "échangez",
+            "échanges",
+            "échangent",
+            "échangeons"
+          ]
+        },
+        ", sans se presser."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je trouve que",
+          "baseText": {
+            "de": "Ich finde, dass",
+            "en": "I find that"
+          }
+        },
+        {
+          "targetText": "le petit cinéma",
+          "baseText": {
+            "de": "das kleine Kino",
+            "en": "the small cinema"
+          }
+        },
+        {
+          "targetText": "est plutôt chaleureux",
+          "baseText": {
+            "de": "eine recht herzliche Atmosphäre hat",
+            "en": "has a fairly warm atmosphere"
+          }
+        },
+        {
+          "targetText": "après les séances.",
+          "baseText": {
+            "de": "nach den Vorstellungen.",
+            "en": "after screenings."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "je trouve que",
+          "baseText": {
+            "de": "ich finde, dass",
+            "en": "I find that"
+          }
+        },
+        {
+          "targetText": "plutôt chaleureux",
+          "baseText": {
+            "de": "recht herzlich",
+            "en": "fairly warm and friendly"
+          }
+        },
+        {
+          "targetText": "une séance",
+          "baseText": {
+            "de": "eine Vorstellung",
+            "en": "a screening"
+          }
+        },
+        {
+          "targetText": "les habitués",
+          "baseText": {
+            "de": "die Stammgäste",
+            "en": "the regulars"
+          }
+        },
+        {
+          "targetText": "échanger",
+          "baseText": {
+            "de": "sich austauschen",
+            "en": "to exchange ideas"
+          }
+        },
+        {
+          "targetText": "sans se presser",
+          "baseText": {
+            "de": "ohne sich zu beeilen",
+            "en": "without rushing"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je trouve que le petit cinéma est plutôt ",
+        "answer": "chaleureux",
+        "after": " après les séances.",
+        "fallbackChoices": [
+          "chaleureux",
+          "bruyant",
+          "anonyme",
+          "froid"
+        ]
+      },
+      "speakRequired": [
+        "cinéma",
+        "plutôt",
+        "séances"
+      ],
+      "sceneCaption": {
+        "de": "Beim Spaziergang fragt ein Freund: „Tu aimes ce petit cinéma du quartier ?“",
+        "en": "During a walk, a friend asks: “Tu aimes ce petit cinéma du quartier ?”"
+      },
+      "trophyWord": {
+        "word": "plutôt",
+        "meaning": {
+          "de": "eher; ziemlich",
+          "en": "rather; fairly"
+        },
+        "example": "Je trouve ce café plutôt agréable.",
+        "whyThisWord": {
+          "de": "Plutôt mildert ein Urteil ab, statt eine absolute Bewertung zu geben.",
+          "en": "Plutôt softens a judgment instead of making it absolute."
+        }
+      },
+      "distractors": [
+        "le grand théâtre",
+        "avant les séances."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde stehen vor dem Programm eines kleinen Kinos.",
+        "en": "Two friends stand in front of a small cinema's program."
+      },
+      "songMood": "a relaxed evening chanson with a small cinema atmosphere",
+      "visualNotes": "Neighborhood cinema entrance and two friends; do not show post-screening conversations."
+    },
+    {
+      "slug": "bibliotheque-le-dimanche",
+      "title": {
+        "de": "Sonntags in die Bibliothek",
+        "en": "The library on Sundays"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte deine Meinung zu Sonntagsöffnungszeiten der Bibliothek hören.",
+        "en": "A friend wants your opinion on Sunday opening hours at the library."
+      },
+      "pedagogicalGoal": "Eine Meinung kausal begründen und mit donc eine konkrete Folgerung für eine weitere Nutzergruppe ziehen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "La bibliothèque ouverte le dimanche, tu trouves ça intéressant ?",
+          "baseText": {
+            "de": "Die Bibliothek sonntags geöffnet: Findest du das interessant?",
+            "en": "Do you think opening the library on Sundays is a good idea?"
+          }
+        },
+        {
+          "targetText": "À mon avis, la bibliothèque est utile le dimanche, parce que les étudiants peuvent y travailler.",
+          "baseText": {
+            "de": "Meiner Meinung nach ist die Bibliothek sonntags nützlich, weil Studierende dort arbeiten können.",
+            "en": "In my opinion, the library is useful on Sundays because students can work there."
+          }
+        },
+        {
+          "targetText": "Et les familles sans table pour étudier chez elles ?",
+          "baseText": {
+            "de": "Und die Familien, die zu Hause keinen Tisch zum Lernen haben?",
+            "en": "And families without a table to study at home?"
+          }
+        },
+        {
+          "targetText": "Leurs enfants y trouvent donc une place et ils étudient.",
+          "baseText": {
+            "de": "Ihre Kinder finden dort also einen Platz und lernen.",
+            "en": "Their children therefore find a place there and study."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Parce que et donc",
+        "rule": {
+          "de": "Parce que gibt einen Grund an; donc stellt die daraus gezogene Folgerung vor.",
+          "en": "Parce que gives a reason; donc introduces the conclusion drawn from it."
+        },
+        "examples": [
+          {
+            "targetText": "À mon avis, la bibliothèque est utile le dimanche, parce que les étudiants peuvent y travailler.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist die Bibliothek sonntags nützlich, weil Studierende dort arbeiten können.",
+              "en": "In my opinion, the library is useful on Sundays because students can work there."
+            },
+            "highlight": "parce que"
+          },
+          {
+            "targetText": "Leurs enfants y trouvent donc une place et ils étudient.",
+            "baseText": {
+              "de": "Ihre Kinder finden dort also einen Platz und lernen.",
+              "en": "Their children therefore find a place there and study."
+            },
+            "highlight": "donc"
+          }
+        ]
+      },
+      "cloze": [
+        "Leurs enfants y ",
+        {
+          "kind": "form",
+          "answer": "trouvent",
+          "cue": "trouver (leurs enfants)",
+          "choices": [
+            "trouvez",
+            "trouvons",
+            "trouves",
+            "trouvent"
+          ]
+        },
+        " donc une place et ils ",
+        {
+          "kind": "form",
+          "answer": "étudient",
+          "cue": "étudier (ils)",
+          "choices": [
+            "étudies",
+            "étudiez",
+            "étudient",
+            "étudions"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "À mon avis,",
+          "baseText": {
+            "de": "Meiner Meinung nach,",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "la bibliothèque est utile",
+          "baseText": {
+            "de": "ist die Bibliothek nützlich",
+            "en": "the library is useful"
+          }
+        },
+        {
+          "targetText": "le dimanche,",
+          "baseText": {
+            "de": "sonntags,",
+            "en": "on Sundays,"
+          }
+        },
+        {
+          "targetText": "parce que les étudiants",
+          "baseText": {
+            "de": "weil die Studierenden",
+            "en": "because the students"
+          }
+        },
+        {
+          "targetText": "peuvent y travailler.",
+          "baseText": {
+            "de": "dort arbeiten können.",
+            "en": "can work there."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "utile",
+          "baseText": {
+            "de": "nützlich",
+            "en": "useful"
+          }
+        },
+        {
+          "targetText": "le dimanche",
+          "baseText": {
+            "de": "sonntags",
+            "en": "on Sundays"
+          }
+        },
+        {
+          "targetText": "les étudiants",
+          "baseText": {
+            "de": "die Studierenden",
+            "en": "the students"
+          }
+        },
+        {
+          "targetText": "parce que",
+          "baseText": {
+            "de": "weil",
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "y travailler",
+          "baseText": {
+            "de": "dort arbeiten",
+            "en": "to work there"
+          }
+        },
+        {
+          "targetText": "donc",
+          "baseText": {
+            "de": "also; folglich",
+            "en": "therefore"
+          }
+        },
+        {
+          "targetText": "une place",
+          "baseText": {
+            "de": "ein Platz",
+            "en": "a place"
+          }
+        }
+      ],
+      "recall": {
+        "before": "À mon avis, la bibliothèque est ",
+        "answer": "utile",
+        "after": " le dimanche, parce que les étudiants peuvent y travailler.",
+        "fallbackChoices": [
+          "utile",
+          "fermée",
+          "bruyante",
+          "déserte"
+        ]
+      },
+      "speakRequired": [
+        "bibliothèque",
+        "utile",
+        "étudiants"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin spricht über die Öffnungszeiten: „La bibliothèque ouverte le dimanche, tu trouves ça intéressant ?“",
+        "en": "A friend brings up the opening hours: “La bibliothèque ouverte le dimanche, tu trouves ça intéressant ?”"
+      },
+      "trophyWord": {
+        "word": "utile",
+        "meaning": {
+          "de": "nützlich",
+          "en": "useful"
+        },
+        "example": "Une salle calme est utile pour étudier.",
+        "whyThisWord": {
+          "de": "Mit utile begründest du eine Meinung durch den konkreten Nutzen eines Angebots.",
+          "en": "Utile helps you support an opinion with a service's practical benefit."
+        }
+      },
+      "distractors": [
+        "le samedi,",
+        "la piscine est utile"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde betrachten den Eingang einer Bibliothek.",
+        "en": "Two friends look at a library entrance."
+      },
+      "songMood": "a gentle daytime chanson with a thoughtful optimistic pulse",
+      "visualNotes": "Library entrance and two friends, with no family or study-space reveal."
+    },
+    {
+      "slug": "espace-calme-pour-lire",
+      "title": {
+        "de": "Ruhe in der Bibliothek",
+        "en": "Quiet in the library"
+      },
+      "situation": {
+        "de": "Du sprichst mit einem Freund über Lesen und Veranstaltungen in derselben Bibliothek.",
+        "en": "You talk to a friend about reading and events in the same library."
+      },
+      "pedagogicalGoal": "Mit même si einen Einwand anerkennen, ohne die eigene Position aufzugeben, und eine konkrete räumliche Lösung nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu veux garder un coin lecture dans cette bibliothèque ?",
+          "baseText": {
+            "de": "Möchtest du in dieser Bibliothek eine Leseecke behalten?",
+            "en": "Do you want to keep a reading area in this library?"
+          }
+        },
+        {
+          "targetText": "Même si la bibliothèque propose des activités, un espace calme reste essentiel pour lire.",
+          "baseText": {
+            "de": "Auch wenn die Bibliothek Aktivitäten anbietet, bleibt ein ruhiger Bereich zum Lesen unverzichtbar.",
+            "en": "Even if the library offers activities, a quiet space remains essential for reading."
+          }
+        },
+        {
+          "targetText": "Les animations se passent juste à côté des tables de lecture.",
+          "baseText": {
+            "de": "Die Veranstaltungen finden direkt neben den Lesetischen statt.",
+            "en": "The events take place right beside the reading tables."
+          }
+        },
+        {
+          "targetText": "Une cloison réduit le bruit, même si la salle est petite.",
+          "baseText": {
+            "de": "Eine Trennwand verringert den Lärm, auch wenn der Raum klein ist.",
+            "en": "A partition reduces the noise even if the room is small."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Même si + indicatif",
+        "rule": {
+          "de": "Mit même si und dem Indikativ erkennst du eine Schwierigkeit an, die deine Hauptaussage nicht aufhebt.",
+          "en": "Use même si with the indicative to acknowledge a difficulty that does not invalidate your main point."
+        },
+        "examples": [
+          {
+            "targetText": "Même si la bibliothèque propose des activités, un espace calme reste essentiel pour lire.",
+            "baseText": {
+              "de": "Auch wenn die Bibliothek Aktivitäten anbietet, bleibt ein ruhiger Bereich zum Lesen unverzichtbar.",
+              "en": "Even if the library offers activities, a quiet space remains essential for reading."
+            },
+            "highlight": "Même si"
+          },
+          {
+            "targetText": "Une cloison réduit le bruit, même si la salle est petite.",
+            "baseText": {
+              "de": "Eine Trennwand verringert den Lärm, auch wenn der Raum klein ist.",
+              "en": "A partition reduces the noise even if the room is small."
+            },
+            "highlight": "même si la salle est petite"
+          }
+        ]
+      },
+      "cloze": [
+        "Une cloison ",
+        {
+          "kind": "form",
+          "answer": "réduit",
+          "cue": "réduire (une cloison)",
+          "choices": [
+            "réduisons",
+            "réduit",
+            "réduisent",
+            "réduisez"
+          ]
+        },
+        " le bruit, ",
+        {
+          "kind": "connector",
+          "answer": "même si",
+          "choices": [
+            "avant que",
+            "même si",
+            "pour que",
+            "sans que"
+          ]
+        },
+        " la salle est petite."
+      ],
+      "chunks": [
+        {
+          "targetText": "Même si la bibliothèque",
+          "baseText": {
+            "de": "Auch wenn die Bibliothek",
+            "en": "Even if the library"
+          }
+        },
+        {
+          "targetText": "propose des activités,",
+          "baseText": {
+            "de": "Aktivitäten anbietet,",
+            "en": "offers activities,"
+          }
+        },
+        {
+          "targetText": "un espace calme",
+          "baseText": {
+            "de": "ein ruhiger Bereich",
+            "en": "a quiet space"
+          }
+        },
+        {
+          "targetText": "reste essentiel",
+          "baseText": {
+            "de": "bleibt unverzichtbar",
+            "en": "remains essential"
+          }
+        },
+        {
+          "targetText": "pour lire.",
+          "baseText": {
+            "de": "zum Lesen.",
+            "en": "for reading."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "même si",
+          "baseText": {
+            "de": "auch wenn",
+            "en": "even if"
+          }
+        },
+        {
+          "targetText": "un espace calme",
+          "baseText": {
+            "de": "ein ruhiger Bereich",
+            "en": "a quiet space"
+          }
+        },
+        {
+          "targetText": "essentiel",
+          "baseText": {
+            "de": "wesentlich; unverzichtbar",
+            "en": "essential"
+          }
+        },
+        {
+          "targetText": "les animations",
+          "baseText": {
+            "de": "die Veranstaltungen",
+            "en": "the events"
+          }
+        },
+        {
+          "targetText": "une cloison",
+          "baseText": {
+            "de": "eine Trennwand",
+            "en": "a partition"
+          }
+        },
+        {
+          "targetText": "réduire le bruit",
+          "baseText": {
+            "de": "den Lärm verringern",
+            "en": "to reduce noise"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Même si la bibliothèque propose des activités, un espace calme reste ",
+        "answer": "essentiel",
+        "after": " pour lire.",
+        "fallbackChoices": [
+          "essentiel",
+          "secondaire",
+          "accessoire",
+          "inutile"
+        ]
+      },
+      "speakRequired": [
+        "bibliothèque",
+        "calme",
+        "essentiel"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt dich nach der Leseecke: „Tu veux garder un coin lecture dans cette bibliothèque ?“",
+        "en": "A friend asks about the reading area: “Tu veux garder un coin lecture dans cette bibliothèque ?”"
+      },
+      "trophyWord": {
+        "word": "essentiel",
+        "meaning": {
+          "de": "wesentlich; unverzichtbar",
+          "en": "essential"
+        },
+        "example": "Le silence reste essentiel pendant cet exercice.",
+        "whyThisWord": {
+          "de": "Essentiel hilft dir, eine wichtige Anforderung trotz eines Einwands klar beizubehalten.",
+          "en": "Essentiel helps you maintain an important requirement despite an objection."
+        }
+      },
+      "distractors": [
+        "un espace bruyant",
+        "pour danser."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen vor einem Bücherregal miteinander.",
+        "en": "Two friends talk beside a bookcase."
+      },
+      "songMood": "a calm reflective chanson with a gently insistent refrain",
+      "visualNotes": "Bookcase and discussion, without showing a partition or the location of activities."
+    },
+    {
+      "slug": "marche-sous-la-pluie",
+      "title": {
+        "de": "Der Markt bei Regen",
+        "en": "The market in the rain"
+      },
+      "situation": {
+        "de": "Du unterhältst dich mit einer Freundin über den Wochenmarkt an einem regnerischen Tag.",
+        "en": "You talk to a friend about the weekly market on a rainy day."
+      },
+      "pedagogicalGoal": "Eine Einschränkung mit malgré plus Nomen nennen, même si plus Indikativ wiederverwenden und den eigenen Standpunkt begründen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu trouves encore ce marché agréable quand il pleut ?",
+          "baseText": {
+            "de": "Findest du diesen Markt auch bei Regen noch angenehm?",
+            "en": "Do you still find this market pleasant when it rains?"
+          }
+        },
+        {
+          "targetText": "Malgré la pluie, ce marché reste agréable, même si les allées sont humides.",
+          "baseText": {
+            "de": "Trotz des Regens bleibt dieser Markt angenehm, auch wenn die Gänge feucht sind.",
+            "en": "Despite the rain, this market remains pleasant even if the aisles are damp."
+          }
+        },
+        {
+          "targetText": "Qu'est-ce qui donne envie aux habitants de venir sous la pluie ?",
+          "baseText": {
+            "de": "Was bringt die Bewohner dazu, bei Regen zu kommen?",
+            "en": "What makes local residents want to come in the rain?"
+          }
+        },
+        {
+          "targetText": "Ils reviennent parce que les producteurs donnent des conseils.",
+          "baseText": {
+            "de": "Sie kommen wieder, weil die Erzeuger Tipps geben.",
+            "en": "They come back because the producers give advice."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Malgré un nom, même si une phrase",
+        "rule": {
+          "de": "Malgré steht vor einer Nominalgruppe wie la pluie; même si leitet eine Aussage mit Subjekt und Verb im Indikativ ein.",
+          "en": "Malgré comes before a noun phrase such as la pluie; même si introduces a clause with a subject and an indicative verb."
+        },
+        "examples": [
+          {
+            "targetText": "Malgré la pluie, ce marché reste agréable, même si les allées sont humides.",
+            "baseText": {
+              "de": "Trotz des Regens bleibt dieser Markt angenehm, auch wenn die Gänge feucht sind.",
+              "en": "Despite the rain, this market remains pleasant even if the aisles are damp."
+            },
+            "highlight": "Malgré la pluie"
+          },
+          {
+            "targetText": "Même si les prix sont élevés, les clients reviennent.",
+            "baseText": {
+              "de": "Auch wenn die Preise hoch sind, kommen die Kunden wieder.",
+              "en": "Even if the prices are high, customers come back."
+            },
+            "highlight": "Même si les prix sont élevés"
+          }
+        ]
+      },
+      "cloze": [
+        "Ils ",
+        {
+          "kind": "form",
+          "answer": "reviennent",
+          "cue": "revenir (ils)",
+          "choices": [
+            "revenons",
+            "revenez",
+            "revient",
+            "reviennent"
+          ]
+        },
+        " parce que les producteurs ",
+        {
+          "kind": "form",
+          "answer": "donnent",
+          "cue": "donner (les producteurs)",
+          "choices": [
+            "donne",
+            "donnez",
+            "donnent",
+            "donnons"
+          ]
+        },
+        " des conseils."
+      ],
+      "chunks": [
+        {
+          "targetText": "Malgré la pluie,",
+          "baseText": {
+            "de": "Trotz des Regens,",
+            "en": "Despite the rain,"
+          }
+        },
+        {
+          "targetText": "ce marché reste agréable,",
+          "baseText": {
+            "de": "bleibt dieser Markt angenehm,",
+            "en": "this market remains pleasant,"
+          }
+        },
+        {
+          "targetText": "même si les allées",
+          "baseText": {
+            "de": "auch wenn die Gänge",
+            "en": "even if the aisles"
+          }
+        },
+        {
+          "targetText": "sont humides.",
+          "baseText": {
+            "de": "feucht sind.",
+            "en": "are damp."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "malgré la pluie",
+          "baseText": {
+            "de": "trotz des Regens",
+            "en": "despite the rain"
+          }
+        },
+        {
+          "targetText": "une allée",
+          "baseText": {
+            "de": "ein Gang",
+            "en": "an aisle"
+          }
+        },
+        {
+          "targetText": "humide",
+          "baseText": {
+            "de": "feucht",
+            "en": "damp"
+          }
+        },
+        {
+          "targetText": "revenir",
+          "baseText": {
+            "de": "wiederkommen",
+            "en": "to come back"
+          }
+        },
+        {
+          "targetText": "les producteurs",
+          "baseText": {
+            "de": "die Erzeuger",
+            "en": "the producers"
+          }
+        },
+        {
+          "targetText": "donner des conseils",
+          "baseText": {
+            "de": "Tipps geben",
+            "en": "to give advice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Malgré la pluie, ce marché reste agréable, même si les allées sont ",
+        "answer": "humides",
+        "after": ".",
+        "fallbackChoices": [
+          "humides",
+          "sèches",
+          "couvertes",
+          "fermées"
+        ]
+      },
+      "speakRequired": [
+        "malgré",
+        "marché",
+        "humides"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt nach dem Marktbesuch bei Regen: „Tu trouves encore ce marché agréable quand il pleut ?“",
+        "en": "A friend asks about visiting the market in the rain: “Tu trouves encore ce marché agréable quand il pleut ?”"
+      },
+      "trophyWord": {
+        "word": "malgré",
+        "meaning": {
+          "de": "trotz",
+          "en": "despite"
+        },
+        "example": "Malgré le vent, les clients viennent au marché.",
+        "whyThisWord": {
+          "de": "Malgré verbindet einen Einwand knapp mit einer Nominalgruppe, etwa trotz des Regens.",
+          "en": "Malgré introduces an obstacle in a compact noun phrase, such as despite the rain."
+        }
+      },
+      "distractors": [
+        "Malgré le soleil,",
+        "sont désertes."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde stehen mit Regenschirmen am Rand eines Marktplatzes.",
+        "en": "Two friends with umbrellas stand at the edge of a market square."
+      },
+      "songMood": "a warm rainy-day chanson with soft percussion",
+      "visualNotes": "Rainy market square viewed from its edge; do not show producers giving advice."
+    },
+    {
+      "slug": "argument-pour-le-velo",
+      "title": {
+        "de": "Mit dem Rad durch die Stadt",
+        "en": "Cycling through town"
+      },
+      "situation": {
+        "de": "Ein Freund fragt dich, was für das Fahrrad als Verkehrsmittel im Alltag spricht.",
+        "en": "A friend asks what makes cycling a good option for everyday travel."
+      },
+      "pedagogicalGoal": "Ein Argument bewerten, eine Schwierigkeit mit même si einräumen und eine begrenzte Ausnahme erklären.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Le vélo coûte moins cher au quotidien, tu en penses quoi ?",
+          "baseText": {
+            "de": "Radfahren ist im Alltag günstiger. Was meinst du dazu?",
+            "en": "Cycling costs less day to day. What do you think?"
+          }
+        },
+        {
+          "targetText": "Cet argument pour le vélo me paraît solide, même si certaines rues montent beaucoup.",
+          "baseText": {
+            "de": "Dieses Argument für das Fahrrad erscheint mir stichhaltig, auch wenn manche Straßen sehr steil sind.",
+            "en": "This argument for cycling seems sound to me, even if some streets are very steep."
+          }
+        },
+        {
+          "targetText": "Mais comment tu fais quand tes courses sont trop lourdes ?",
+          "baseText": {
+            "de": "Aber wie machst du es, wenn deine Einkäufe zu schwer sind?",
+            "en": "But what do you do when your shopping is too heavy?"
+          }
+        },
+        {
+          "targetText": "Je prends le bus, même si je préfère le vélo.",
+          "baseText": {
+            "de": "Ich nehme den Bus, auch wenn ich das Fahrrad bevorzuge.",
+            "en": "I take the bus even though I prefer cycling."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une concession avec même si",
+        "rule": {
+          "de": "Même si mit dem Indikativ lässt dich einen Einwand anerkennen; die andere Teilaussage hält deine Entscheidung oder Einschätzung fest.",
+          "en": "Même si with the indicative acknowledges an objection; the other clause states your decision or judgment."
+        },
+        "examples": [
+          {
+            "targetText": "Cet argument pour le vélo me paraît solide, même si certaines rues montent beaucoup.",
+            "baseText": {
+              "de": "Dieses Argument für das Fahrrad erscheint mir stichhaltig, auch wenn manche Straßen sehr steil sind.",
+              "en": "This argument for cycling seems sound to me, even if some streets are very steep."
+            },
+            "highlight": "même si certaines rues montent beaucoup"
+          },
+          {
+            "targetText": "Je prends le bus, même si je préfère le vélo.",
+            "baseText": {
+              "de": "Ich nehme den Bus, auch wenn ich das Fahrrad bevorzuge.",
+              "en": "I take the bus even though I prefer cycling."
+            },
+            "highlight": "même si je préfère le vélo"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "prends",
+          "cue": "prendre (je)",
+          "choices": [
+            "prennent",
+            "prenez",
+            "prends",
+            "prenons"
+          ]
+        },
+        " le bus, même si je ",
+        {
+          "kind": "form",
+          "answer": "préfère",
+          "cue": "préférer (je)",
+          "choices": [
+            "préférez",
+            "préfère",
+            "préfèrent",
+            "préférons"
+          ]
+        },
+        " le vélo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Cet argument pour le vélo",
+          "baseText": {
+            "de": "Dieses Argument für das Fahrrad",
+            "en": "This argument for cycling"
+          }
+        },
+        {
+          "targetText": "me paraît solide,",
+          "baseText": {
+            "de": "erscheint mir stichhaltig,",
+            "en": "seems sound to me,"
+          }
+        },
+        {
+          "targetText": "même si certaines rues",
+          "baseText": {
+            "de": "auch wenn manche Straßen",
+            "en": "even if some streets"
+          }
+        },
+        {
+          "targetText": "montent beaucoup.",
+          "baseText": {
+            "de": "sehr steil sind.",
+            "en": "are very steep."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un argument",
+          "baseText": {
+            "de": "ein Argument",
+            "en": "an argument"
+          }
+        },
+        {
+          "targetText": "paraître solide",
+          "baseText": {
+            "de": "stichhaltig erscheinen",
+            "en": "to seem sound"
+          }
+        },
+        {
+          "targetText": "au quotidien",
+          "baseText": {
+            "de": "im Alltag",
+            "en": "day to day"
+          }
+        },
+        {
+          "targetText": "une rue qui monte",
+          "baseText": {
+            "de": "eine ansteigende Straße",
+            "en": "a street that goes uphill"
+          }
+        },
+        {
+          "targetText": "les courses",
+          "baseText": {
+            "de": "die Einkäufe",
+            "en": "the shopping"
+          }
+        },
+        {
+          "targetText": "lourd",
+          "baseText": {
+            "de": "schwer",
+            "en": "heavy"
+          }
+        },
+        {
+          "targetText": "prendre le bus",
+          "baseText": {
+            "de": "den Bus nehmen",
+            "en": "to take the bus"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Cet argument pour le vélo me paraît ",
+        "answer": "solide",
+        "after": ", même si certaines rues montent beaucoup.",
+        "fallbackChoices": [
+          "solide",
+          "faible",
+          "contestable",
+          "absurde"
+        ]
+      },
+      "speakRequired": [
+        "argument",
+        "vélo",
+        "solide"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund beginnt ein Gespräch über Alltagswege: „Le vélo coûte moins cher au quotidien, tu en penses quoi ?“",
+        "en": "A friend starts a conversation about everyday travel: “Le vélo coûte moins cher au quotidien, tu en penses quoi ?”"
+      },
+      "trophyWord": {
+        "word": "argument",
+        "meaning": {
+          "de": "Argument",
+          "en": "argument"
+        },
+        "example": "Cet argument change ma façon de voir les choses.",
+        "whyThisWord": {
+          "de": "Argument benennt einen Grund, den du bewerten und mit einer Einschränkung weiterentwickeln kannst.",
+          "en": "Argument names a reason you can assess and develop while acknowledging a limitation."
+        }
+      },
+      "distractors": [
+        "Cet argument pour la voiture",
+        "descendent beaucoup."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen neben einem abgestellten Fahrrad.",
+        "en": "Two friends talk beside a parked bicycle."
+      },
+      "songMood": "a lightly rhythmic chanson with a practical city-life feel",
+      "visualNotes": "Two friends and a parked bicycle; no heavy groceries or bus reveal."
+    },
+    {
+      "slug": "atelier-peu-frequente",
+      "title": {
+        "de": "Das Reparaturatelier",
+        "en": "The repair workshop"
+      },
+      "situation": {
+        "de": "Eine Freundin spricht mit dir über ein kostenloses Reparaturatelier im Viertel.",
+        "en": "A friend talks to you about a free repair workshop in the neighborhood."
+      },
+      "pedagogicalGoal": "Mit pourtant einen Gegensatz zwischen geringer Teilnahme und praktischem Nutzen ausdrücken und neue Hinweise einordnen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu as vu le nouvel atelier gratuit du quartier ?",
+          "baseText": {
+            "de": "Hast du das neue kostenlose Atelier im Viertel gesehen?",
+            "en": "Have you seen the new free workshop in the neighborhood?"
+          }
+        },
+        {
+          "targetText": "L'atelier attire peu de monde ; pourtant, on y apprend à réparer ses meubles.",
+          "baseText": {
+            "de": "Das Atelier zieht nur wenige Leute an; dabei lernt man dort, seine Möbel zu reparieren.",
+            "en": "The workshop attracts few people; yet you can learn to repair your furniture there."
+          }
+        },
+        {
+          "targetText": "J'ai vu l'affiche, mais aucun horaire n'était indiqué.",
+          "baseText": {
+            "de": "Ich habe das Plakat gesehen, aber es waren keine Zeiten angegeben.",
+            "en": "I saw the poster, but no times were listed."
+          }
+        },
+        {
+          "targetText": "Les habitants connaissent donc le lieu, mais ils ignorent les horaires.",
+          "baseText": {
+            "de": "Die Bewohner kennen also den Ort, aber sie kennen die Zeiten nicht.",
+            "en": "So residents know the location, but they don't know the times."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pourtant",
+        "rule": {
+          "de": "Pourtant verbindet zwei Aussagen, deren Inhalte im Gegensatz zur Erwartung stehen; ein nachgereichter Hinweis kann diesen Gegensatz erklären.",
+          "en": "Pourtant links two statements that contrast with expectations; a later detail can help explain the contrast."
+        },
+        "examples": [
+          {
+            "targetText": "L'atelier attire peu de monde ; pourtant, on y apprend à réparer ses meubles.",
+            "baseText": {
+              "de": "Das Atelier zieht nur wenige Leute an; dabei lernt man dort, seine Möbel zu reparieren.",
+              "en": "The workshop attracts few people; yet you can learn to repair your furniture there."
+            },
+            "highlight": "pourtant"
+          },
+          {
+            "targetText": "Le cours est gratuit ; pourtant, il reste des places.",
+            "baseText": {
+              "de": "Der Kurs ist kostenlos; trotzdem sind noch Plätze frei.",
+              "en": "The course is free; yet places are still available."
+            },
+            "highlight": "pourtant"
+          }
+        ]
+      },
+      "cloze": [
+        "Les habitants ",
+        {
+          "kind": "form",
+          "answer": "connaissent",
+          "cue": "connaître (les habitants)",
+          "choices": [
+            "connaissez",
+            "connais",
+            "connaissent",
+            "connaissons"
+          ]
+        },
+        " donc le lieu, mais ils ",
+        {
+          "kind": "form",
+          "answer": "ignorent",
+          "cue": "ignorer (ils)",
+          "choices": [
+            "ignores",
+            "ignorent",
+            "ignorons",
+            "ignorez"
+          ]
+        },
+        " les horaires."
+      ],
+      "chunks": [
+        {
+          "targetText": "L'atelier attire",
+          "baseText": {
+            "de": "Das Atelier zieht an",
+            "en": "The workshop attracts"
+          }
+        },
+        {
+          "targetText": "peu de monde ;",
+          "baseText": {
+            "de": "nur wenige Leute;",
+            "en": "few people;"
+          }
+        },
+        {
+          "targetText": "pourtant, on y apprend",
+          "baseText": {
+            "de": "dabei lernt man dort",
+            "en": "yet you can learn there"
+          }
+        },
+        {
+          "targetText": "à réparer ses meubles.",
+          "baseText": {
+            "de": "seine Möbel zu reparieren.",
+            "en": "to repair your furniture."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "attirer du monde",
+          "baseText": {
+            "de": "Leute anziehen",
+            "en": "to attract people"
+          }
+        },
+        {
+          "targetText": "pourtant",
+          "baseText": {
+            "de": "trotzdem; dennoch",
+            "en": "yet; nevertheless"
+          }
+        },
+        {
+          "targetText": "réparer ses meubles",
+          "baseText": {
+            "de": "seine Möbel reparieren",
+            "en": "to repair one's furniture"
+          }
+        },
+        {
+          "targetText": "une affiche",
+          "baseText": {
+            "de": "ein Plakat",
+            "en": "a poster"
+          }
+        },
+        {
+          "targetText": "le lieu",
+          "baseText": {
+            "de": "der Ort",
+            "en": "the location"
+          }
+        },
+        {
+          "targetText": "ignorer les horaires",
+          "baseText": {
+            "de": "die Zeiten nicht kennen",
+            "en": "not to know the times"
+          }
+        }
+      ],
+      "recall": {
+        "before": "L'atelier attire peu de monde ; pourtant, on y apprend à ",
+        "answer": "réparer",
+        "after": " ses meubles.",
+        "fallbackChoices": [
+          "réparer",
+          "vendre",
+          "déménager",
+          "jeter"
+        ]
+      },
+      "speakRequired": [
+        "atelier",
+        "pourtant",
+        "meubles"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin spricht dich auf ein Angebot im Viertel an: „Tu as vu le nouvel atelier gratuit du quartier ?“",
+        "en": "A friend asks about a neighborhood activity: “Tu as vu le nouvel atelier gratuit du quartier ?”"
+      },
+      "trophyWord": {
+        "word": "pourtant",
+        "meaning": {
+          "de": "trotzdem; dennoch",
+          "en": "yet; nevertheless"
+        },
+        "example": "Le jardin est petit ; pourtant, on y trouve beaucoup de fleurs.",
+        "whyThisWord": {
+          "de": "Pourtant hebt einen Gegensatz hervor, der die Zuhörenden überraschen kann.",
+          "en": "Pourtant highlights a contrast that may surprise the listener."
+        }
+      },
+      "distractors": [
+        "beaucoup de monde ;",
+        "à vendre ses meubles."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen vor dem Eingang eines Nachbarschaftshauses.",
+        "en": "Two friends talk outside a neighborhood center."
+      },
+      "songMood": "a curious neighborhood chanson with a small unresolved question",
+      "visualNotes": "Neighborhood center entrance; do not show a poster or missing opening times."
+    },
+    {
+      "slug": "annonces-sonores-dans-le-bus",
+      "title": {
+        "de": "Informationen im Bus",
+        "en": "Information on the bus"
+      },
+      "situation": {
+        "de": "Du besprichst mit einem Freund die neuen Informationsbildschirme im Bus.",
+        "en": "You discuss the new information screens on the bus with a friend."
+      },
+      "pedagogicalGoal": "Eine positive Einschätzung mit cependant einschränken und mit quand même einen weiterhin bestehenden Bedarf betonen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu trouves les nouveaux écrans du bus pratiques ?",
+          "baseText": {
+            "de": "Findest du die neuen Bildschirme im Bus praktisch?",
+            "en": "Do you find the new bus screens useful?"
+          }
+        },
+        {
+          "targetText": "Les écrans sont pratiques ; cependant, je trouve les annonces sonores nécessaires.",
+          "baseText": {
+            "de": "Die Bildschirme sind praktisch; allerdings finde ich die Durchsagen notwendig.",
+            "en": "The screens are useful; however, I think audio announcements are necessary."
+          }
+        },
+        {
+          "targetText": "Même quand les prochains arrêts sont écrits en gros ?",
+          "baseText": {
+            "de": "Auch wenn die nächsten Haltestellen groß geschrieben stehen?",
+            "en": "Even when the next stops are displayed in large letters?"
+          }
+        },
+        {
+          "targetText": "Certains voyageurs voient mal ; ils ont quand même besoin d'informations.",
+          "baseText": {
+            "de": "Manche Fahrgäste sehen schlecht; sie brauchen trotzdem Informationen.",
+            "en": "Some passengers have poor eyesight; they still need information."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Cependant et quand même",
+        "rule": {
+          "de": "Cependant leitet eine Einschränkung ein; quand même betont, dass etwas trotz des genannten Umstands gilt.",
+          "en": "Cependant introduces a qualification; quand même emphasizes that something still holds despite the circumstance mentioned."
+        },
+        "examples": [
+          {
+            "targetText": "Les écrans sont pratiques ; cependant, je trouve les annonces sonores nécessaires.",
+            "baseText": {
+              "de": "Die Bildschirme sind praktisch; allerdings finde ich die Durchsagen notwendig.",
+              "en": "The screens are useful; however, I think audio announcements are necessary."
+            },
+            "highlight": "cependant"
+          },
+          {
+            "targetText": "Certains voyageurs voient mal ; ils ont quand même besoin d'informations.",
+            "baseText": {
+              "de": "Manche Fahrgäste sehen schlecht; sie brauchen trotzdem Informationen.",
+              "en": "Some passengers have poor eyesight; they still need information."
+            },
+            "highlight": "quand même"
+          }
+        ]
+      },
+      "cloze": [
+        "Certains voyageurs ",
+        {
+          "kind": "form",
+          "answer": "voient",
+          "cue": "voir (certains voyageurs)",
+          "choices": [
+            "voyez",
+            "voient",
+            "voyons",
+            "vois"
+          ]
+        },
+        " mal ; ils ",
+        {
+          "kind": "form",
+          "answer": "ont",
+          "cue": "avoir (ils)",
+          "choices": [
+            "avez",
+            "avons",
+            "ont",
+            "as"
+          ]
+        },
+        " quand même besoin d'informations."
+      ],
+      "chunks": [
+        {
+          "targetText": "Les écrans",
+          "baseText": {
+            "de": "Die Bildschirme",
+            "en": "The screens"
+          }
+        },
+        {
+          "targetText": "sont pratiques ;",
+          "baseText": {
+            "de": "sind praktisch;",
+            "en": "are useful;"
+          }
+        },
+        {
+          "targetText": "cependant, je trouve",
+          "baseText": {
+            "de": "allerdings finde ich",
+            "en": "however, I find"
+          }
+        },
+        {
+          "targetText": "les annonces sonores nécessaires.",
+          "baseText": {
+            "de": "die Durchsagen notwendig.",
+            "en": "audio announcements necessary."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un écran",
+          "baseText": {
+            "de": "ein Bildschirm",
+            "en": "a screen"
+          }
+        },
+        {
+          "targetText": "cependant",
+          "baseText": {
+            "de": "allerdings; jedoch",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "les annonces sonores",
+          "baseText": {
+            "de": "die Durchsagen",
+            "en": "audio announcements"
+          }
+        },
+        {
+          "targetText": "nécessaire",
+          "baseText": {
+            "de": "notwendig",
+            "en": "necessary"
+          }
+        },
+        {
+          "targetText": "un arrêt",
+          "baseText": {
+            "de": "eine Haltestelle",
+            "en": "a stop"
+          }
+        },
+        {
+          "targetText": "voir mal",
+          "baseText": {
+            "de": "schlecht sehen",
+            "en": "to have poor eyesight"
+          }
+        },
+        {
+          "targetText": "quand même",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "still; all the same"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Les écrans sont pratiques ; cependant, je trouve les annonces sonores ",
+        "answer": "nécessaires",
+        "after": ".",
+        "fallbackChoices": [
+          "nécessaires",
+          "inutiles",
+          "gênantes",
+          "facultatives"
+        ]
+      },
+      "speakRequired": [
+        "écrans",
+        "cependant",
+        "sonores"
+      ],
+      "sceneCaption": {
+        "de": "Im Bus fragt ein Freund nach deiner Meinung: „Tu trouves les nouveaux écrans du bus pratiques ?“",
+        "en": "On the bus, a friend asks for your opinion: “Tu trouves les nouveaux écrans du bus pratiques ?”"
+      },
+      "trophyWord": {
+        "word": "cependant",
+        "meaning": {
+          "de": "allerdings; jedoch",
+          "en": "however"
+        },
+        "example": "Ce trajet est court ; cependant, il coûte cher.",
+        "whyThisWord": {
+          "de": "Cependant hilft dir, nach einem Vorteil eine Einschränkung oder einen weiteren Gesichtspunkt einzuführen.",
+          "en": "Cependant lets you introduce a qualification or another consideration after an advantage."
+        }
+      },
+      "distractors": [
+        "sont fatigants ;",
+        "les annonces sonores gênantes."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich in einem Bus mit einem Informationsbildschirm.",
+        "en": "Two friends talk on a bus with an information screen."
+      },
+      "songMood": "an even-paced urban chanson with a thoughtful accessible tone",
+      "visualNotes": "Bus interior, friends and an information screen; no depiction of the later accessibility explanation."
+    },
+    {
+      "slug": "economies-energie-et-travaux",
+      "title": {
+        "de": "Energie sparen",
+        "en": "Saving energy"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte wissen, ob dich ein Vorschlag zum Energiesparen überzeugt.",
+        "en": "A friend wants to know whether a proposal to save energy convinces you."
+      },
+      "pedagogicalGoal": "Ein Argument differenziert bewerten und einen finanziellen Vorteil von seiner Reichweite unterscheiden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu trouves cet argument sur les économies d'énergie sérieux ?",
+          "baseText": {
+            "de": "Findest du dieses Argument über Energieeinsparungen stichhaltig?",
+            "en": "Do you think this argument about energy savings is sound?"
+          }
+        },
+        {
+          "targetText": "L'argument sur les économies d'énergie est convaincant, même si les travaux coûtent cher.",
+          "baseText": {
+            "de": "Das Argument zu den Energieeinsparungen ist überzeugend, auch wenn die Arbeiten teuer sind.",
+            "en": "The argument about energy savings is convincing, even if the work is expensive."
+          }
+        },
+        {
+          "targetText": "Tu penses que les économies suffisent à payer tous les travaux ?",
+          "baseText": {
+            "de": "Glaubst du, dass die Einsparungen ausreichen, um alle Arbeiten zu bezahlen?",
+            "en": "Do you think the savings are enough to pay for all the work?"
+          }
+        },
+        {
+          "targetText": "Elles réduisent les factures, mais elles couvrent seulement une partie.",
+          "baseText": {
+            "de": "Sie senken die Rechnungen, decken aber nur einen Teil ab.",
+            "en": "They reduce the bills, but they cover only part of the cost."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une opinion nuancée",
+        "rule": {
+          "de": "Mit même si erkennst du einen Nachteil an; mais kann anschließend eine Grenze des zuvor genannten Vorteils präzisieren.",
+          "en": "Use même si to acknowledge a drawback; mais can then specify a limit to the advantage mentioned earlier."
+        },
+        "examples": [
+          {
+            "targetText": "L'argument sur les économies d'énergie est convaincant, même si les travaux coûtent cher.",
+            "baseText": {
+              "de": "Das Argument zu den Energieeinsparungen ist überzeugend, auch wenn die Arbeiten teuer sind.",
+              "en": "The argument about energy savings is convincing, even if the work is expensive."
+            },
+            "highlight": "même si les travaux coûtent cher"
+          },
+          {
+            "targetText": "Elles réduisent les factures, mais elles couvrent seulement une partie.",
+            "baseText": {
+              "de": "Sie senken die Rechnungen, decken aber nur einen Teil ab.",
+              "en": "They reduce the bills, but they cover only part of the cost."
+            },
+            "highlight": "mais"
+          }
+        ]
+      },
+      "cloze": [
+        "Elles ",
+        {
+          "kind": "form",
+          "answer": "réduisent",
+          "cue": "réduire (elles)",
+          "choices": [
+            "réduisons",
+            "réduisez",
+            "réduis",
+            "réduisent"
+          ]
+        },
+        " les factures, mais elles ",
+        {
+          "kind": "form",
+          "answer": "couvrent",
+          "cue": "couvrir (elles)",
+          "choices": [
+            "couvres",
+            "couvrent",
+            "couvrons",
+            "couvrez"
+          ]
+        },
+        " seulement une partie."
+      ],
+      "chunks": [
+        {
+          "targetText": "L'argument sur les économies d'énergie",
+          "baseText": {
+            "de": "Das Argument zu den Energieeinsparungen",
+            "en": "The argument about energy savings"
+          }
+        },
+        {
+          "targetText": "est convaincant,",
+          "baseText": {
+            "de": "ist überzeugend,",
+            "en": "is convincing,"
+          }
+        },
+        {
+          "targetText": "même si les travaux",
+          "baseText": {
+            "de": "auch wenn die Arbeiten",
+            "en": "even if the work"
+          }
+        },
+        {
+          "targetText": "coûtent cher.",
+          "baseText": {
+            "de": "teuer sind.",
+            "en": "is expensive."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "les économies d'énergie",
+          "baseText": {
+            "de": "die Energieeinsparungen",
+            "en": "energy savings"
+          }
+        },
+        {
+          "targetText": "convaincant",
+          "baseText": {
+            "de": "überzeugend",
+            "en": "convincing"
+          }
+        },
+        {
+          "targetText": "les travaux",
+          "baseText": {
+            "de": "die Arbeiten",
+            "en": "the work"
+          }
+        },
+        {
+          "targetText": "coûter cher",
+          "baseText": {
+            "de": "teuer sein",
+            "en": "to be expensive"
+          }
+        },
+        {
+          "targetText": "réduire les factures",
+          "baseText": {
+            "de": "die Rechnungen senken",
+            "en": "to reduce bills"
+          }
+        },
+        {
+          "targetText": "couvrir une partie",
+          "baseText": {
+            "de": "einen Teil abdecken",
+            "en": "to cover part of something"
+          }
+        }
+      ],
+      "recall": {
+        "before": "L'argument sur les économies d'énergie est ",
+        "answer": "convaincant",
+        "after": ", même si les travaux coûtent cher.",
+        "fallbackChoices": [
+          "convaincant",
+          "trompeur",
+          "incomplet",
+          "exagéré"
+        ]
+      },
+      "speakRequired": [
+        "économies",
+        "convaincant",
+        "travaux"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt nach deinem Urteil über einen Vorschlag: „Tu trouves cet argument sur les économies d'énergie sérieux ?“",
+        "en": "A friend asks what you think of a proposal: “Tu trouves cet argument sur les économies d'énergie sérieux ?”"
+      },
+      "trophyWord": {
+        "word": "convaincant",
+        "meaning": {
+          "de": "überzeugend",
+          "en": "convincing"
+        },
+        "example": "Cet exemple rend son argument plus convaincant.",
+        "whyThisWord": {
+          "de": "Convaincant bewertet die Stärke eines Arguments, ohne zu behaupten, dass alle Einwände verschwinden.",
+          "en": "Convaincant assesses the strength of an argument without claiming that every objection disappears."
+        }
+      },
+      "distractors": [
+        "est exagéré,",
+        "coûtent peu."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sitzen mit einem Prospekt zum Energiesparen am Tisch.",
+        "en": "Two friends sit at a table with a leaflet about saving energy."
+      },
+      "songMood": "a measured reflective chanson with a steady pulse",
+      "visualNotes": "Friends and a generic energy-saving leaflet; no costs, savings figures or later conclusion shown."
+    },
+    {
+      "slug": "equilibre-dans-la-residence",
+      "title": {
+        "de": "Gemeinsam wohnen",
+        "en": "Living together"
+      },
+      "situation": {
+        "de": "Du besprichst mit einem Freund das Zusammenleben und gemeinsame Veranstaltungen in eurer Wohnanlage.",
+        "en": "You discuss shared living and community activities in your residence with a friend."
+      },
+      "pedagogicalGoal": "Eine Meinung zusammenfassen, individuelle Bedürfnisse anerkennen und aus einer neuen Information eine konkrete Folgerung ziehen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu penses quoi des animations dans notre résidence ?",
+          "baseText": {
+            "de": "Was hältst du von den Veranstaltungen in unserer Wohnanlage?",
+            "en": "What do you think of the activities in our residence?"
+          }
+        },
+        {
+          "targetText": "À mon avis, un équilibre entre animations et tranquillité reste possible dans notre résidence.",
+          "baseText": {
+            "de": "Meiner Meinung nach bleibt ein Gleichgewicht zwischen Veranstaltungen und Ruhe in unserer Wohnanlage möglich.",
+            "en": "In my opinion, a balance between activities and peace and quiet remains possible in our residence."
+          }
+        },
+        {
+          "targetText": "Notre voisine travaille la nuit et elle dort pendant la journée.",
+          "baseText": {
+            "de": "Unsere Nachbarin arbeitet nachts und schläft tagsüber.",
+            "en": "Our neighbor works at night and sleeps during the day."
+          }
+        },
+        {
+          "targetText": "Les animations restent possibles, mais nous respectons ses heures de sommeil.",
+          "baseText": {
+            "de": "Veranstaltungen bleiben möglich, aber wir respektieren ihre Schlafenszeiten.",
+            "en": "Activities remain possible, but we respect her sleeping hours."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Préciser une opinion",
+        "rule": {
+          "de": "À mon avis stellt deinen Standpunkt vor; mais ermöglicht eine Einschränkung, die auf eine neue Information eingeht.",
+          "en": "À mon avis introduces your view; mais lets you add a qualification in response to new information."
+        },
+        "examples": [
+          {
+            "targetText": "À mon avis, un équilibre entre animations et tranquillité reste possible dans notre résidence.",
+            "baseText": {
+              "de": "Meiner Meinung nach bleibt ein Gleichgewicht zwischen Veranstaltungen und Ruhe in unserer Wohnanlage möglich.",
+              "en": "In my opinion, a balance between activities and peace and quiet remains possible in our residence."
+            },
+            "highlight": "À mon avis"
+          },
+          {
+            "targetText": "Les animations restent possibles, mais nous respectons ses heures de sommeil.",
+            "baseText": {
+              "de": "Veranstaltungen bleiben möglich, aber wir respektieren ihre Schlafenszeiten.",
+              "en": "Activities remain possible, but we respect her sleeping hours."
+            },
+            "highlight": "mais nous respectons ses heures de sommeil"
+          }
+        ]
+      },
+      "cloze": [
+        "Les animations ",
+        {
+          "kind": "form",
+          "answer": "restent",
+          "cue": "rester (les animations)",
+          "choices": [
+            "restons",
+            "restez",
+            "restes",
+            "restent"
+          ]
+        },
+        " possibles, mais nous ",
+        {
+          "kind": "form",
+          "answer": "respectons",
+          "cue": "respecter (nous)",
+          "choices": [
+            "respectez",
+            "respectons",
+            "respectent",
+            "respectes"
+          ]
+        },
+        " ses heures de sommeil."
+      ],
+      "chunks": [
+        {
+          "targetText": "À mon avis,",
+          "baseText": {
+            "de": "Meiner Meinung nach,",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "un équilibre",
+          "baseText": {
+            "de": "ein Gleichgewicht",
+            "en": "a balance"
+          }
+        },
+        {
+          "targetText": "entre animations et tranquillité",
+          "baseText": {
+            "de": "zwischen Veranstaltungen und Ruhe",
+            "en": "between activities and peace and quiet"
+          }
+        },
+        {
+          "targetText": "reste possible",
+          "baseText": {
+            "de": "bleibt möglich",
+            "en": "remains possible"
+          }
+        },
+        {
+          "targetText": "dans notre résidence.",
+          "baseText": {
+            "de": "in unserer Wohnanlage.",
+            "en": "in our residence."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un équilibre",
+          "baseText": {
+            "de": "ein Gleichgewicht",
+            "en": "a balance"
+          }
+        },
+        {
+          "targetText": "les animations",
+          "baseText": {
+            "de": "die Veranstaltungen",
+            "en": "the activities"
+          }
+        },
+        {
+          "targetText": "une résidence",
+          "baseText": {
+            "de": "eine Wohnanlage",
+            "en": "a residential complex"
+          }
+        },
+        {
+          "targetText": "la tranquillité",
+          "baseText": {
+            "de": "die Ruhe",
+            "en": "peace and quiet"
+          }
+        },
+        {
+          "targetText": "travailler la nuit",
+          "baseText": {
+            "de": "nachts arbeiten",
+            "en": "to work at night"
+          }
+        },
+        {
+          "targetText": "les heures de sommeil",
+          "baseText": {
+            "de": "die Schlafenszeiten",
+            "en": "sleeping hours"
+          }
+        },
+        {
+          "targetText": "respecter",
+          "baseText": {
+            "de": "respektieren; Rücksicht nehmen auf",
+            "en": "to respect"
+          }
+        }
+      ],
+      "recall": {
+        "before": "À mon avis, un équilibre entre animations et tranquillité reste ",
+        "answer": "possible",
+        "after": " dans notre résidence.",
+        "fallbackChoices": [
+          "fragile",
+          "possible",
+          "difficile",
+          "inutile"
+        ]
+      },
+      "speakRequired": [
+        "équilibre",
+        "animations",
+        "tranquillité"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund spricht über das Zusammenleben in eurer Wohnanlage: „Tu penses quoi des animations dans notre résidence ?“",
+        "en": "A friend brings up life in your residence: “Tu penses quoi des animations dans notre résidence ?”"
+      },
+      "trophyWord": {
+        "word": "équilibre",
+        "meaning": {
+          "de": "Gleichgewicht; Ausgewogenheit",
+          "en": "balance"
+        },
+        "example": "Nous cherchons un équilibre entre les fêtes et le repos.",
+        "whyThisWord": {
+          "de": "Équilibre bezeichnet eine Lösung, die unterschiedliche Bedürfnisse miteinander vereinbart.",
+          "en": "Équilibre describes a solution that accommodates different needs."
+        }
+      },
+      "distractors": [
+        "entre travail et loisirs",
+        "dans notre entreprise."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich im Hof einer Wohnanlage.",
+        "en": "Two friends talk in the courtyard of a residential complex."
+      },
+      "songMood": "a warm communal chanson with a calm closing cadence",
+      "visualNotes": "Two friends in a residential courtyard; do not show a night worker or an event schedule."
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p4.json",
+      "sha256": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "targetLanguage": "English",
+      "pathNumber": 4,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p5.json",
+      "sha256": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "targetLanguage": "English",
+      "pathNumber": 5,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p4.json",
+      "sha256": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "targetLanguage": "Spanish",
+      "pathNumber": 4,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p5.json",
+      "sha256": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "targetLanguage": "Spanish",
+      "pathNumber": 5,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p2.json",
+      "sha256": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047",
+      "targetLanguage": "French",
+      "pathNumber": 2,
+      "reviewedVoiceId": "z1rEShu1SmowIOAmbHl1"
+    }
+  ],
+  "reviewScope": "Local staging and recording only; not publication approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p4.json",
+      "reviewedScratchSha256": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "stagedSha256": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p5.json",
+      "reviewedScratchSha256": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "stagedSha256": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p4.json",
+      "reviewedScratchSha256": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "stagedSha256": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p5.json",
+      "reviewedScratchSha256": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "stagedSha256": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/french-p2.json",
+      "reviewedScratchSha256": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047",
+      "stagedSha256": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    }
+  ],
+  "fableReview": {
+    "model": "claude-fable-5-1",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "f52c869e670f8f458f0e1bed9577ac73aa4bf64a87c6f488a4898abfa4b56afa",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/english-p4.json": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "frontend/content-drafts/b1-2026-10/paths/english-p5.json": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p4.json": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p5.json": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "frontend/content-drafts/b1-2026-10/paths/french-p2.json": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047"
+    },
+    "approvalBasis": "Personal 50-lesson read; all 13 exact edits applied and mechanically validated; final independent re-review passed local staging/TTS."
+  },
+  "independentReview": {
+    "reviewer": "Independent Codex reviewer b1_next_batch_review; same fresh reviewer as the original 50-lesson review, not an author or fixer",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "9f3efef10441cbc6145c02925a6b6f61ba56c3bc9867416a5cccb0c899912afd",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/english-p4.json": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7",
+      "frontend/content-drafts/b1-2026-10/paths/english-p5.json": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p4.json": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p5.json": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5",
+      "frontend/content-drafts/b1-2026-10/paths/french-p2.json": "a609227c7a7fd75aca507ae1ce7cb15d51b6eac3a7bfc783126ad265af973047"
+    },
+    "scope": "Zero unresolved local-TTS blockers only."
+  },
+  "unresolvedPublicationFindings": [],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

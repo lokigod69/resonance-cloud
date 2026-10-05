@@ -1,0 +1,2129 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Ich möchte wissen",
+    "en": "I'd like to know"
+  },
+  "subtitle": {
+    "de": "Bei einer Auskunft gezielt nachfragen",
+    "en": "Ask precise follow-up questions at an information desk"
+  },
+  "anchor": "Fable staging: L1–L3 saber with indirect information questions; L4–L6 podría decirme si; L7–L8 me han dicho que and hay que; L9–L10 mixed information questions. Formal singular usted throughout, es-ES. Wh-words retain their written accents in indirect questions. Complications remain hidden until turn 3. Draft awaiting Fable personal review.",
+  "lessons": [
+    {
+      "slug": "tramite-para-cambiar-el-domicilio",
+      "title": {
+        "de": "Die Meldeadresse ändern",
+        "en": "Changing your registered address"
+      },
+      "situation": {
+        "de": "Am Auskunftsschalter des Rathauses fragst du nach der Änderung deiner Meldeadresse. Kläre, wo du anfangen kannst.",
+        "en": "At the town hall information desk, you ask about changing your registered address. Find out where to start."
+      },
+      "pedagogicalGoal": "Mit sabe dónde nach einem Ort fragen und nach einer neuen Zuständigkeit gezielt weiterfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué necesita saber sobre los trámites del padrón?",
+          "baseText": {
+            "de": "Was möchten Sie über die Meldeangelegenheiten wissen?",
+            "en": "What do you need to know about registration procedures?"
+          }
+        },
+        {
+          "targetText": "¿Sabe dónde puedo iniciar el trámite para cambiar mi domicilio en el padrón?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich die Änderung meiner Meldeadresse beantragen kann?",
+            "en": "Do you know where I can start the process of changing my registered address?"
+          }
+        },
+        {
+          "targetText": "Aquí solo damos información; ese trámite corresponde a la oficina del distrito.",
+          "baseText": {
+            "de": "Hier erteilen wir nur Auskünfte; für diesen Vorgang ist das Bezirksbüro zuständig.",
+            "en": "We only provide information here; that procedure is handled by the district office."
+          }
+        },
+        {
+          "targetText": "¿Usted sabe dónde está la oficina? Yo necesito ir hoy.",
+          "baseText": {
+            "de": "Wissen Sie, wo das Büro ist? Ich muss heute dorthin.",
+            "en": "Do you know where the office is? I need to go today."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "¿Sabe dónde…?",
+        "rule": {
+          "de": "Nach sabe kannst du mit dónde nach einem Ort fragen; dónde behält auch in der indirekten Frage seinen Akzent.",
+          "en": "After sabe, use dónde to ask about a place; dónde keeps its written accent in an indirect question."
+        },
+        "examples": [
+          {
+            "targetText": "¿Sabe dónde puedo iniciar el trámite para cambiar mi domicilio en el padrón?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich die Änderung meiner Meldeadresse beantragen kann?",
+              "en": "Do you know where I can start the process of changing my registered address?"
+            },
+            "highlight": "Sabe dónde"
+          },
+          {
+            "targetText": "¿Sabe dónde está el mostrador de información?",
+            "baseText": {
+              "de": "Wissen Sie, wo der Auskunftsschalter ist?",
+              "en": "Do you know where the information desk is?"
+            },
+            "highlight": "dónde está"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "sabes",
+            "sabemos",
+            "saben",
+            "sabe"
+          ]
+        },
+        " dónde está la oficina? Yo ",
+        {
+          "kind": "form",
+          "answer": "necesito",
+          "cue": "necesitar (yo)",
+          "choices": [
+            "necesita",
+            "necesito",
+            "necesitamos",
+            "necesitan"
+          ]
+        },
+        " ir hoy."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Sabe dónde puedo iniciar",
+          "baseText": {
+            "de": "Wissen Sie, wo ich beginnen kann",
+            "en": "Do you know where I can start"
+          }
+        },
+        {
+          "targetText": "el trámite",
+          "baseText": {
+            "de": "mit dem Verfahren",
+            "en": "the process"
+          }
+        },
+        {
+          "targetText": "para cambiar mi domicilio",
+          "baseText": {
+            "de": "zur Änderung meiner Adresse",
+            "en": "to change my address"
+          }
+        },
+        {
+          "targetText": "en el padrón?",
+          "baseText": {
+            "de": "im Melderegister?",
+            "en": "in the municipal register?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "¿Sabe dónde…?",
+          "baseText": {
+            "de": "Wissen Sie, wo …?",
+            "en": "Do you know where…?"
+          }
+        },
+        {
+          "targetText": "iniciar",
+          "baseText": {
+            "de": "beginnen; einleiten",
+            "en": "to start"
+          }
+        },
+        {
+          "targetText": "trámite",
+          "baseText": {
+            "de": "Behördengang; Verfahren",
+            "en": "administrative procedure"
+          }
+        },
+        {
+          "targetText": "cambiar mi domicilio",
+          "baseText": {
+            "de": "meine Adresse ändern",
+            "en": "to change my address"
+          }
+        },
+        {
+          "targetText": "el padrón",
+          "baseText": {
+            "de": "das Melderegister",
+            "en": "the municipal register"
+          }
+        },
+        {
+          "targetText": "la oficina del distrito",
+          "baseText": {
+            "de": "das Bezirksbüro",
+            "en": "the district office"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Sabe dónde puedo iniciar el ",
+        "answer": "trámite",
+        "after": " para cambiar mi domicilio en el padrón?",
+        "fallbackChoices": [
+          "trámite",
+          "abrigo",
+          "enchufe",
+          "alquiler"
+        ]
+      },
+      "speakRequired": [
+        "trámite",
+        "domicilio",
+        "padrón"
+      ],
+      "sceneCaption": {
+        "de": "Am Rathausauskunftsschalter fragt die Mitarbeiterin: „¿Qué necesita saber sobre los trámites del padrón?“",
+        "en": "At the town hall information desk, the staff member asks: “¿Qué necesita saber sobre los trámites del padrón?”"
+      },
+      "trophyWord": {
+        "word": "trámite",
+        "meaning": {
+          "de": "Behördengang; Verfahren",
+          "en": "administrative procedure"
+        },
+        "example": "Necesito información sobre el trámite para cambiar mi domicilio.",
+        "whyThisWord": {
+          "de": "Trámite benennt einen Verwaltungsvorgang, auch wenn du die einzelnen Schritte noch nicht kennst.",
+          "en": "Trámite names an administrative process even when you do not yet know its individual steps."
+        }
+      },
+      "distractors": [
+        "¿Sabe cuándo puedo iniciar",
+        "para renovar mi documento"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Auskunft am Rathaus.",
+        "en": "An enquiry at a town hall."
+      },
+      "songMood": "Calm, clear acoustic pop.",
+      "visualNotes": "Town hall information desk in Spain; no district-office referral shown."
+    },
+    {
+      "slug": "documento-para-acreditar-el-domicilio",
+      "title": {
+        "de": "Die Adresse nachweisen",
+        "en": "Proving your address"
+      },
+      "situation": {
+        "de": "Bei einer Anmeldung brauchst du einen Nachweis deiner Adresse. Frage nach dem passenden Dokument.",
+        "en": "For a registration, you need proof of your address. Ask which document is suitable."
+      },
+      "pedagogicalGoal": "Mit sabe qué eine bestimmte Information erfragen und eine unpassende Nachweisform ansprechen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Para esta inscripción necesitamos comprobar su domicilio. ¿Tiene alguna duda?",
+          "baseText": {
+            "de": "Für diese Anmeldung müssen wir Ihre Adresse überprüfen. Haben Sie eine Frage?",
+            "en": "For this registration we need to verify your address. Do you have any questions?"
+          }
+        },
+        {
+          "targetText": "¿Sabe qué documento necesito para demostrar que vivo en esta dirección?",
+          "baseText": {
+            "de": "Wissen Sie, welches Dokument ich als Nachweis brauche, dass ich an dieser Adresse wohne?",
+            "en": "Do you know which document I need to prove that I live at this address?"
+          }
+        },
+        {
+          "targetText": "Un recibo reciente, pero debe estar a su nombre. ¿El suyo lo está?",
+          "baseText": {
+            "de": "Eine aktuelle Rechnung, aber sie muss auf Ihren Namen ausgestellt sein. Ist das bei Ihrer so?",
+            "en": "A recent bill, but it must be in your name. Is yours?"
+          }
+        },
+        {
+          "targetText": "El recibo lleva otro nombre; ¿usted sabe qué alternativa sirve?",
+          "baseText": {
+            "de": "Die Rechnung läuft auf einen anderen Namen; wissen Sie, welcher andere Nachweis geeignet ist?",
+            "en": "The bill is in another name; do you know what alternative would work?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sabe + qué o cuándo",
+        "rule": {
+          "de": "Mit qué fragst du nach dem benötigten Dokument; cuándo fragt nach dem Zeitpunkt der Abgabe.",
+          "en": "Qué asks which document is needed; cuándo asks when it should be submitted."
+        },
+        "examples": [
+          {
+            "targetText": "¿Sabe qué documento necesito para demostrar que vivo en esta dirección?",
+            "baseText": {
+              "de": "Wissen Sie, welches Dokument ich als Nachweis brauche, dass ich an dieser Adresse wohne?",
+              "en": "Do you know which document I need to prove that I live at this address?"
+            },
+            "highlight": "qué documento necesito"
+          },
+          {
+            "targetText": "¿Sabe cuándo tengo que presentar el documento?",
+            "baseText": {
+              "de": "Wissen Sie, wann ich das Dokument vorlegen muss?",
+              "en": "Do you know when I need to submit the document?"
+            },
+            "highlight": "cuándo tengo que presentar"
+          }
+        ]
+      },
+      "cloze": [
+        "El recibo ",
+        {
+          "kind": "form",
+          "answer": "lleva",
+          "cue": "llevar (el recibo)",
+          "choices": [
+            "llevamos",
+            "llevo",
+            "llevan",
+            "lleva"
+          ]
+        },
+        " otro nombre; ¿usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "sabemos",
+            "sabe",
+            "sabes",
+            "saben"
+          ]
+        },
+        " qué alternativa sirve?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Sabe qué documento necesito",
+          "baseText": {
+            "de": "Wissen Sie, welches Dokument ich brauche",
+            "en": "Do you know which document I need"
+          }
+        },
+        {
+          "targetText": "para demostrar",
+          "baseText": {
+            "de": "um nachzuweisen",
+            "en": "to prove"
+          }
+        },
+        {
+          "targetText": "que vivo",
+          "baseText": {
+            "de": "dass ich wohne",
+            "en": "that I live"
+          }
+        },
+        {
+          "targetText": "en esta dirección?",
+          "baseText": {
+            "de": "an dieser Adresse?",
+            "en": "at this address?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "documento",
+          "baseText": {
+            "de": "Dokument",
+            "en": "document"
+          }
+        },
+        {
+          "targetText": "demostrar",
+          "baseText": {
+            "de": "nachweisen",
+            "en": "to prove"
+          }
+        },
+        {
+          "targetText": "la dirección",
+          "baseText": {
+            "de": "die Adresse",
+            "en": "the address"
+          }
+        },
+        {
+          "targetText": "un recibo reciente",
+          "baseText": {
+            "de": "eine aktuelle Rechnung",
+            "en": "a recent bill"
+          }
+        },
+        {
+          "targetText": "a su nombre",
+          "baseText": {
+            "de": "auf Ihren Namen",
+            "en": "in your name"
+          }
+        },
+        {
+          "targetText": "otro nombre",
+          "baseText": {
+            "de": "ein anderer Name",
+            "en": "another name"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Sabe qué ",
+        "answer": "documento",
+        "after": " necesito para demostrar que vivo en esta dirección?",
+        "fallbackChoices": [
+          "documento",
+          "balcón",
+          "tráfico",
+          "ambiente"
+        ]
+      },
+      "speakRequired": [
+        "documento",
+        "demostrar",
+        "dirección"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Anmeldung sagt der Mitarbeiter: „Para esta inscripción necesitamos comprobar su domicilio. ¿Tiene alguna duda?“",
+        "en": "During registration, the staff member says: “Para esta inscripción necesitamos comprobar su domicilio. ¿Tiene alguna duda?”"
+      },
+      "trophyWord": {
+        "word": "documento",
+        "meaning": {
+          "de": "Dokument",
+          "en": "document"
+        },
+        "example": "Necesito un documento para demostrar mi domicilio.",
+        "whyThisWord": {
+          "de": "Documento hilft dir, nach dem richtigen Nachweis zu fragen, bevor du etwas einreichst.",
+          "en": "Documento helps you ask for the right proof before submitting anything."
+        }
+      },
+      "distractors": [
+        "que trabajo",
+        "en ese edificio?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über eine Anmeldung am Schalter.",
+        "en": "A conversation about registration at a counter."
+      },
+      "songMood": "Steady, reassuring acoustic pop.",
+      "visualNotes": "Registration counter with generic documents; no receipt-name condition shown."
+    },
+    {
+      "slug": "formulario-sin-otra-visita",
+      "title": {
+        "de": "Das Formular abgeben",
+        "en": "Submitting the form"
+      },
+      "situation": {
+        "de": "Du hast ein Formular ausgefüllt und fragst nach der Abgabe. Du möchtest dafür nicht noch einmal zum Schalter kommen.",
+        "en": "You have completed a form and ask how to submit it. You would like to avoid another visit to the desk."
+      },
+      "pedagogicalGoal": "Mit sabe cómo nach einem Ablauf fragen und bei einem fehlenden Bedienelement weiterfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Tiene listo el formulario? ¿Qué necesita saber?",
+          "baseText": {
+            "de": "Ist das Formular fertig? Was möchten Sie wissen?",
+            "en": "Is the form ready? What do you need to know?"
+          }
+        },
+        {
+          "targetText": "¿Sabe cómo puedo entregar este formulario sin venir otra vez a la oficina?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich dieses Formular abgeben kann, ohne noch einmal ins Büro zu kommen?",
+            "en": "Do you know how I can submit this form without coming to the office again?"
+          }
+        },
+        {
+          "targetText": "Puede enviarlo desde su cuenta, con el botón azul al final.",
+          "baseText": {
+            "de": "Sie können es über Ihr Benutzerkonto mit dem blauen Knopf am Ende absenden.",
+            "en": "You can send it from your account using the blue button at the bottom."
+          }
+        },
+        {
+          "targetText": "El botón no aparece; ¿usted sabe cómo puedo continuar?",
+          "baseText": {
+            "de": "Der Knopf wird nicht angezeigt; wissen Sie, wie ich weitermachen kann?",
+            "en": "The button isn't showing; do you know how I can continue?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "¿Sabe cómo…?",
+        "rule": {
+          "de": "Cómo fragt nach der Art und Weise einer Handlung und behält nach sabe seinen Akzent.",
+          "en": "Cómo asks how an action is done and keeps its written accent after sabe."
+        },
+        "examples": [
+          {
+            "targetText": "El botón no aparece; ¿usted sabe cómo puedo continuar?",
+            "baseText": {
+              "de": "Der Knopf wird nicht angezeigt; wissen Sie, wie ich weitermachen kann?",
+              "en": "The button isn't showing; do you know how I can continue?"
+            },
+            "highlight": "sabe cómo puedo continuar"
+          },
+          {
+            "targetText": "¿Sabe cómo puedo guardar una copia del formulario?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich eine Kopie des Formulars speichern kann?",
+              "en": "Do you know how I can save a copy of the form?"
+            },
+            "highlight": "Sabe cómo"
+          }
+        ]
+      },
+      "cloze": [
+        "El botón no ",
+        {
+          "kind": "form",
+          "answer": "aparece",
+          "cue": "aparecer (el botón)",
+          "choices": [
+            "aparecen",
+            "aparezco",
+            "aparece",
+            "aparecemos"
+          ]
+        },
+        "; ¿usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "sabe",
+            "saben",
+            "sabes",
+            "sabemos"
+          ]
+        },
+        " cómo puedo continuar?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Sabe cómo puedo entregar",
+          "baseText": {
+            "de": "Wissen Sie, wie ich abgeben kann",
+            "en": "Do you know how I can submit"
+          }
+        },
+        {
+          "targetText": "este formulario",
+          "baseText": {
+            "de": "dieses Formular",
+            "en": "this form"
+          }
+        },
+        {
+          "targetText": "sin venir otra vez",
+          "baseText": {
+            "de": "ohne noch einmal zu kommen",
+            "en": "without coming again"
+          }
+        },
+        {
+          "targetText": "a la oficina?",
+          "baseText": {
+            "de": "ins Büro?",
+            "en": "to the office?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "formulario",
+          "baseText": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "entregar",
+          "baseText": {
+            "de": "abgeben; einreichen",
+            "en": "to submit"
+          }
+        },
+        {
+          "targetText": "otra vez",
+          "baseText": {
+            "de": "noch einmal",
+            "en": "again"
+          }
+        },
+        {
+          "targetText": "su cuenta",
+          "baseText": {
+            "de": "Ihr Benutzerkonto",
+            "en": "your account"
+          }
+        },
+        {
+          "targetText": "el botón azul",
+          "baseText": {
+            "de": "der blaue Knopf",
+            "en": "the blue button"
+          }
+        },
+        {
+          "targetText": "continuar",
+          "baseText": {
+            "de": "weitermachen",
+            "en": "to continue"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Sabe cómo puedo entregar este ",
+        "answer": "formulario",
+        "after": " sin venir otra vez a la oficina?",
+        "fallbackChoices": [
+          "abrigo",
+          "formulario",
+          "enchufe",
+          "balcón"
+        ]
+      },
+      "speakRequired": [
+        "entregar",
+        "formulario",
+        "oficina"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fragt die Mitarbeiterin: „¿Tiene listo el formulario? ¿Qué necesita saber?“",
+        "en": "At the desk, the staff member asks: “¿Tiene listo el formulario? ¿Qué necesita saber?”"
+      },
+      "trophyWord": {
+        "word": "formulario",
+        "meaning": {
+          "de": "Formular",
+          "en": "form"
+        },
+        "example": "Este formulario contiene los datos de mi solicitud.",
+        "whyThisWord": {
+          "de": "Formulario bezeichnet ein Dokument mit Feldern für deine Angaben und hilft dir, nach dem Ausfüllen und Einreichen zu fragen.",
+          "en": "Formulario names a document with fields for your details and helps you ask how to complete and submit it."
+        }
+      },
+      "distractors": [
+        "sin llamar otra vez",
+        "a la biblioteca?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein ausgefülltes Formular wird am Schalter besprochen.",
+        "en": "A completed form is discussed at a counter."
+      },
+      "songMood": "Light, patient acoustic pop.",
+      "visualNotes": "Enquiry desk and completed generic form; no missing digital button shown."
+    },
+    {
+      "slug": "firma-en-el-formulario-del-banco",
+      "title": {
+        "de": "Wo unterschreibe ich?",
+        "en": "Where do I sign?"
+      },
+      "situation": {
+        "de": "Beim Bankservice fragst du nach der richtigen Stelle für deine Unterschrift auf einem Formular für ein gemeinsames Konto.",
+        "en": "At a bank service desk, ask where to sign a form for a joint account."
+      },
+      "pedagogicalGoal": "Mit podría decirme si eine Annahme prüfen und nach einer weiteren unterschreibenden Person fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Tiene alguna duda sobre este formulario de la cuenta conjunta?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zu diesem Formular für das Gemeinschaftskonto?",
+            "en": "Do you have a question about this joint-account form?"
+          }
+        },
+        {
+          "targetText": "¿Podría decirme si mi firma va aquí, debajo de los datos de contacto?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob meine Unterschrift hier unter die Kontaktdaten gehört?",
+            "en": "Could you tell me whether my signature goes here, below the contact details?"
+          }
+        },
+        {
+          "targetText": "Sí, pero la otra persona también tiene que firmar en la segunda página.",
+          "baseText": {
+            "de": "Ja, aber die andere Person muss auch auf der zweiten Seite unterschreiben.",
+            "en": "Yes, but the other person also needs to sign on the second page."
+          }
+        },
+        {
+          "targetText": "¿Usted podría confirmar si mi pareja necesita venir en persona?",
+          "baseText": {
+            "de": "Könnten Sie bestätigen, ob mein Partner oder meine Partnerin persönlich kommen muss?",
+            "en": "Could you confirm whether my partner needs to come in person?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "¿Podría decirme si…?",
+        "rule": {
+          "de": "Si leitet nach decirme eine Frage ein, auf die man mit ja oder nein antworten kann; podría macht die Bitte höflich.",
+          "en": "After decirme, si introduces a question that can be answered yes or no; podría makes the request polite."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría decirme si mi firma va aquí, debajo de los datos de contacto?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob meine Unterschrift hier unter die Kontaktdaten gehört?",
+              "en": "Could you tell me whether my signature goes here, below the contact details?"
+            },
+            "highlight": "Podría decirme si"
+          },
+          {
+            "targetText": "¿Podría decirme si tengo que firmar las dos páginas?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob ich beide Seiten unterschreiben muss?",
+              "en": "Could you tell me whether I need to sign both pages?"
+            },
+            "highlight": "si tengo que firmar"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "podría",
+          "cue": "poder (usted)",
+          "choices": [
+            "podrías",
+            "podrían",
+            "podría",
+            "podríamos"
+          ]
+        },
+        " confirmar si mi pareja ",
+        {
+          "kind": "form",
+          "answer": "necesita",
+          "cue": "necesitar (mi pareja)",
+          "choices": [
+            "necesitamos",
+            "necesita",
+            "necesito",
+            "necesitan"
+          ]
+        },
+        " venir en persona?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría decirme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "si mi firma",
+          "baseText": {
+            "de": "ob meine Unterschrift",
+            "en": "whether my signature"
+          }
+        },
+        {
+          "targetText": "va aquí,",
+          "baseText": {
+            "de": "hierher gehört,",
+            "en": "goes here,"
+          }
+        },
+        {
+          "targetText": "debajo de los datos de contacto?",
+          "baseText": {
+            "de": "unter die Kontaktdaten?",
+            "en": "below the contact details?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "podría decirme",
+          "baseText": {
+            "de": "könnten Sie mir sagen",
+            "en": "could you tell me"
+          }
+        },
+        {
+          "targetText": "firma",
+          "baseText": {
+            "de": "Unterschrift",
+            "en": "signature"
+          }
+        },
+        {
+          "targetText": "debajo de",
+          "baseText": {
+            "de": "unterhalb von",
+            "en": "below"
+          }
+        },
+        {
+          "targetText": "los datos de contacto",
+          "baseText": {
+            "de": "die Kontaktdaten",
+            "en": "the contact details"
+          }
+        },
+        {
+          "targetText": "la segunda página",
+          "baseText": {
+            "de": "die zweite Seite",
+            "en": "the second page"
+          }
+        },
+        {
+          "targetText": "en persona",
+          "baseText": {
+            "de": "persönlich",
+            "en": "in person"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría decirme si mi ",
+        "answer": "firma",
+        "after": " va aquí, debajo de los datos de contacto?",
+        "fallbackChoices": [
+          "firma",
+          "opinión",
+          "costumbre",
+          "ventaja"
+        ]
+      },
+      "speakRequired": [
+        "firma",
+        "debajo",
+        "contacto"
+      ],
+      "sceneCaption": {
+        "de": "Beim Bankservice fragt der Mitarbeiter: „¿Tiene alguna duda sobre este formulario de la cuenta conjunta?“",
+        "en": "At the bank service desk, the staff member asks: “¿Tiene alguna duda sobre este formulario de la cuenta conjunta?”"
+      },
+      "trophyWord": {
+        "word": "firma",
+        "meaning": {
+          "de": "Unterschrift",
+          "en": "signature"
+        },
+        "example": "Mi firma va debajo de los datos de contacto.",
+        "whyThisWord": {
+          "de": "Firma hilft dir, auf einem Formular genau nach der Stelle für deine Unterschrift zu fragen.",
+          "en": "Firma helps you ask precisely where your signature belongs on a form."
+        }
+      },
+      "distractors": [
+        "si mi dirección",
+        "encima de los datos de contacto?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Bankformular liegt zur Besprechung auf dem Tisch.",
+        "en": "A bank form lies on a desk for discussion."
+      },
+      "songMood": "Clear, restrained acoustic pop.",
+      "visualNotes": "Bank service desk and joint-account form; no second signature section visible."
+    },
+    {
+      "slug": "plazo-y-fecha-de-recepcion",
+      "title": {
+        "de": "Bis wann reicht es?",
+        "en": "When is the deadline?"
+      },
+      "situation": {
+        "de": "Du fragst bei einer Verwaltungsstelle nach der Frist für Unterlagen. Kläre, welches Datum für die Abgabe gilt.",
+        "en": "You ask an administrative office about the deadline for documents. Find out which date applies to submission."
+      },
+      "pedagogicalGoal": "Mit podría decirme si nach einer Frist fragen und die Bedeutung des maßgeblichen Datums prüfen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué quiere saber sobre la entrega de los documentos?",
+          "baseText": {
+            "de": "Was möchten Sie über die Abgabe der Unterlagen wissen?",
+            "en": "What would you like to know about submitting the documents?"
+          }
+        },
+        {
+          "targetText": "¿Podría decirme si el plazo termina este viernes o sigue abierto el lunes?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob die Frist diesen Freitag endet oder am Montag noch läuft?",
+            "en": "Could you tell me whether the deadline is this Friday or submissions are still open on Monday?"
+          }
+        },
+        {
+          "targetText": "Termina el viernes y puede enviar el documento por correo.",
+          "baseText": {
+            "de": "Sie endet am Freitag, und Sie können das Dokument per Post schicken.",
+            "en": "It ends on Friday, and you can send the document by post."
+          }
+        },
+        {
+          "targetText": "¿Usted podría confirmar si la fecha de recepción cuenta para el plazo?",
+          "baseText": {
+            "de": "Könnten Sie bestätigen, ob für die Frist das Eingangsdatum zählt?",
+            "en": "Could you confirm whether the date of receipt is what counts for the deadline?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si: comprobar una condición",
+        "rule": {
+          "de": "Mit si fragst du innerhalb einer höflichen Bitte, ob eine Aussage stimmt; auch zwei Möglichkeiten mit o sind möglich.",
+          "en": "Si lets you check whether a statement is true within a polite request; you can also present two alternatives with o."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría decirme si el plazo termina este viernes o sigue abierto el lunes?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob die Frist diesen Freitag endet oder am Montag noch läuft?",
+              "en": "Could you tell me whether the deadline is this Friday or submissions are still open on Monday?"
+            },
+            "highlight": "si el plazo termina este viernes"
+          },
+          {
+            "targetText": "¿Podría decirme si cuenta la fecha de envío?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob das Versanddatum zählt?",
+              "en": "Could you tell me whether the sending date counts?"
+            },
+            "highlight": "si cuenta la fecha de envío"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "podría",
+          "cue": "poder (usted)",
+          "choices": [
+            "podría",
+            "podrías",
+            "podríamos",
+            "podrían"
+          ]
+        },
+        " confirmar si la fecha de recepción ",
+        {
+          "kind": "form",
+          "answer": "cuenta",
+          "cue": "contar (la fecha de recepción)",
+          "choices": [
+            "contamos",
+            "cuentan",
+            "cuenta",
+            "cuento"
+          ]
+        },
+        " para el plazo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría decirme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "si el plazo termina",
+          "baseText": {
+            "de": "ob die Frist endet",
+            "en": "whether the deadline falls"
+          }
+        },
+        {
+          "targetText": "este viernes",
+          "baseText": {
+            "de": "diesen Freitag",
+            "en": "this Friday"
+          }
+        },
+        {
+          "targetText": "o sigue abierto el lunes?",
+          "baseText": {
+            "de": "oder am Montag noch läuft?",
+            "en": "or submissions are still open on Monday?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "plazo",
+          "baseText": {
+            "de": "Frist",
+            "en": "deadline; time limit"
+          }
+        },
+        {
+          "targetText": "termina",
+          "baseText": {
+            "de": "sie endet",
+            "en": "it ends"
+          }
+        },
+        {
+          "targetText": "sigue abierto",
+          "baseText": {
+            "de": "es läuft noch",
+            "en": "it is still open"
+          }
+        },
+        {
+          "targetText": "por correo",
+          "baseText": {
+            "de": "per Post",
+            "en": "by post"
+          }
+        },
+        {
+          "targetText": "la fecha de recepción",
+          "baseText": {
+            "de": "das Eingangsdatum",
+            "en": "the date of receipt"
+          }
+        },
+        {
+          "targetText": "la fecha de envío",
+          "baseText": {
+            "de": "das Versanddatum",
+            "en": "the sending date"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría decirme si el ",
+        "answer": "plazo",
+        "after": " termina este viernes o sigue abierto el lunes?",
+        "fallbackChoices": [
+          "alquiler",
+          "plazo",
+          "abrigo",
+          "ascensor"
+        ]
+      },
+      "speakRequired": [
+        "plazo",
+        "viernes",
+        "lunes"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Verwaltungsstelle fragt die Mitarbeiterin: „¿Qué quiere saber sobre la entrega de los documentos?“",
+        "en": "At the administrative office, the staff member asks: “¿Qué quiere saber sobre la entrega de los documentos?”"
+      },
+      "trophyWord": {
+        "word": "plazo",
+        "meaning": {
+          "de": "Frist",
+          "en": "deadline; time limit"
+        },
+        "example": "El plazo para entregar el documento termina el viernes.",
+        "whyThisWord": {
+          "de": "Mit plazo fragst du nach einer verbindlichen Zeitgrenze und kannst klären, welches Datum zählt.",
+          "en": "Plazo lets you ask about a time limit and clarify which date matters."
+        }
+      },
+      "distractors": [
+        "este jueves",
+        "o empieza el lunes?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachfrage zur Abgabe von Unterlagen.",
+        "en": "An enquiry about submitting documents."
+      },
+      "songMood": "Measured acoustic pop with a focused pulse.",
+      "visualNotes": "Administrative counter and unmarked calendar; no postal submission instruction displayed."
+    },
+    {
+      "slug": "solicitud-de-la-tarjeta-del-centro",
+      "title": {
+        "de": "Ist der Antrag angekommen?",
+        "en": "Has the application arrived?"
+      },
+      "situation": {
+        "de": "Du fragst beim Bürgerzentrum nach einem eingereichten Kartenantrag. Kläre, ob er dort angekommen ist.",
+        "en": "You ask a community centre about a card application you submitted. Find out whether it has arrived."
+      },
+      "pedagogicalGoal": "Mit podría decirme si nach dem Eingang einer Anfrage fragen und eine Möglichkeit zur Überprüfung suchen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Sobre qué gestión quiere consultar?",
+          "baseText": {
+            "de": "Zu welchem Vorgang möchten Sie etwas wissen?",
+            "en": "Which procedure would you like to ask about?"
+          }
+        },
+        {
+          "targetText": "¿Podría decirme si ya han recibido mi solicitud para la tarjeta del centro?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, ob mein Antrag für die Karte des Zentrums schon angekommen ist?",
+            "en": "Could you tell me whether you have received my application for the centre's card yet?"
+          }
+        },
+        {
+          "targetText": "Todavía no aparece ninguna respuesta en su expediente.",
+          "baseText": {
+            "de": "In Ihrer Akte ist noch keine Antwort vermerkt.",
+            "en": "There is no response showing in your file yet."
+          }
+        },
+        {
+          "targetText": "¿Usted sabe cómo puedo comprobarlo? Mi solicitud tiene un número.",
+          "baseText": {
+            "de": "Wissen Sie, wie ich das überprüfen kann? Mein Antrag hat eine Nummer.",
+            "en": "Do you know how I can check it? My application has a number."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si para confirmar, cómo para comprobar",
+        "rule": {
+          "de": "Mit si prüfst du, ob etwas geschehen ist; mit cómo fragst du anschließend nach dem Weg, es zu überprüfen.",
+          "en": "Si checks whether something has happened; cómo then asks how you can verify it."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría decirme si ya han recibido mi solicitud para la tarjeta del centro?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, ob mein Antrag für die Karte des Zentrums schon angekommen ist?",
+              "en": "Could you tell me whether you have received my application for the centre's card yet?"
+            },
+            "highlight": "si ya han recibido mi solicitud"
+          },
+          {
+            "targetText": "¿Sabe cómo puedo consultar mi expediente?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich meine Akte einsehen kann?",
+              "en": "Do you know how I can check my file?"
+            },
+            "highlight": "cómo puedo consultar"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "sabemos",
+            "saben",
+            "sabe",
+            "sabes"
+          ]
+        },
+        " cómo puedo comprobarlo? Mi solicitud ",
+        {
+          "kind": "form",
+          "answer": "tiene",
+          "cue": "tener (mi solicitud)",
+          "choices": [
+            "tengo",
+            "tiene",
+            "tienen",
+            "tenemos"
+          ]
+        },
+        " un número."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría decirme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "si ya han recibido",
+          "baseText": {
+            "de": "ob bereits eingegangen ist",
+            "en": "whether you have received"
+          }
+        },
+        {
+          "targetText": "mi solicitud",
+          "baseText": {
+            "de": "mein Antrag",
+            "en": "my application"
+          }
+        },
+        {
+          "targetText": "para la tarjeta del centro?",
+          "baseText": {
+            "de": "für die Karte des Zentrums?",
+            "en": "for the centre's card yet?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "solicitud",
+          "baseText": {
+            "de": "Antrag",
+            "en": "application"
+          }
+        },
+        {
+          "targetText": "han recibido",
+          "baseText": {
+            "de": "sie haben erhalten",
+            "en": "they have received"
+          }
+        },
+        {
+          "targetText": "la tarjeta del centro",
+          "baseText": {
+            "de": "die Karte des Zentrums",
+            "en": "the centre's card"
+          }
+        },
+        {
+          "targetText": "una respuesta",
+          "baseText": {
+            "de": "eine Antwort",
+            "en": "a response"
+          }
+        },
+        {
+          "targetText": "el expediente",
+          "baseText": {
+            "de": "die Akte",
+            "en": "the file"
+          }
+        },
+        {
+          "targetText": "comprobarlo",
+          "baseText": {
+            "de": "es überprüfen",
+            "en": "to check it"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría decirme si ya han recibido mi ",
+        "answer": "solicitud",
+        "after": " para la tarjeta del centro?",
+        "fallbackChoices": [
+          "solicitud",
+          "estantería",
+          "cremallera",
+          "costumbre"
+        ]
+      },
+      "speakRequired": [
+        "recibido",
+        "solicitud",
+        "tarjeta"
+      ],
+      "sceneCaption": {
+        "de": "Am Bürgerzentrum fragt der Mitarbeiter: „¿Sobre qué gestión quiere consultar?“",
+        "en": "At the community centre, the staff member asks: “¿Sobre qué gestión quiere consultar?”"
+      },
+      "trophyWord": {
+        "word": "solicitud",
+        "meaning": {
+          "de": "Antrag",
+          "en": "application"
+        },
+        "example": "Mi solicitud tiene un número para consultar su estado.",
+        "whyThisWord": {
+          "de": "Solicitud benennt deinen eingereichten Antrag, dessen Eingang oder Bearbeitung du überprüfen möchtest.",
+          "en": "Solicitud names the application whose arrival or progress you want to check."
+        }
+      },
+      "distractors": [
+        "si ya han enviado",
+        "para el curso del centro?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über einen Antrag am Bürgerzentrum.",
+        "en": "A conversation about an application at a community centre."
+      },
+      "songMood": "Quietly persistent acoustic pop.",
+      "visualNotes": "Community centre enquiry desk; no empty-response screen or application number shown."
+    },
+    {
+      "slug": "justificante-digital-para-el-seguro",
+      "title": {
+        "de": "Ein digitaler Nachweis",
+        "en": "Digital proof"
+      },
+      "situation": {
+        "de": "Bei einer Versicherungsangelegenheit zeigst du einen digitalen Nachweis. Du möchtest wissen, ob du ihn verwenden kannst.",
+        "en": "During an insurance enquiry, you show a digital supporting document. Find out whether you can use it."
+      },
+      "pedagogicalGoal": "Mit me han dicho que eine erhaltene Auskunft aufgreifen und mit hay que nach einem nötigen Schritt fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué documento trae para la gestión del seguro?",
+          "baseText": {
+            "de": "Welches Dokument haben Sie für die Versicherungsangelegenheit dabei?",
+            "en": "Which document have you brought for the insurance procedure?"
+          }
+        },
+        {
+          "targetText": "Me han dicho que este justificante digital sirve para completar la gestión del seguro.",
+          "baseText": {
+            "de": "Mir wurde gesagt, dass dieser digitale Nachweis ausreicht, um die Versicherungsangelegenheit abzuschließen.",
+            "en": "I've been told that this digital supporting document works for completing the insurance procedure."
+          }
+        },
+        {
+          "targetText": "Solo aceptamos una copia legible; esa imagen tiene la letra demasiado pequeña.",
+          "baseText": {
+            "de": "Wir akzeptieren nur eine lesbare Kopie; auf diesem Bild ist die Schrift zu klein.",
+            "en": "We only accept a readable copy; the text in that image is too small."
+          }
+        },
+        {
+          "targetText": "¿Hay que imprimirlo? Yo amplío las letras antes de imprimir.",
+          "baseText": {
+            "de": "Muss man es ausdrucken? Ich vergrößere die Schrift vor dem Drucken.",
+            "en": "Does it need to be printed? I'll enlarge the letters before printing."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Me han dicho que · hay que",
+        "rule": {
+          "de": "Me han dicho que gibt eine erhaltene Auskunft wieder; hay que mit Infinitiv benennt einen notwendigen Schritt ohne persönliche Verbform.",
+          "en": "Me han dicho que reports information you received; hay que followed by an infinitive names a necessary step without a personal verb form."
+        },
+        "examples": [
+          {
+            "targetText": "Me han dicho que este justificante digital sirve para completar la gestión del seguro.",
+            "baseText": {
+              "de": "Mir wurde gesagt, dass dieser digitale Nachweis ausreicht, um die Versicherungsangelegenheit abzuschließen.",
+              "en": "I've been told that this digital supporting document works for completing the insurance procedure."
+            },
+            "highlight": "Me han dicho que"
+          },
+          {
+            "targetText": "¿Hay que imprimirlo? Yo amplío las letras antes de imprimir.",
+            "baseText": {
+              "de": "Muss man es ausdrucken? Ich vergrößere die Schrift vor dem Drucken.",
+              "en": "Does it need to be printed? I'll enlarge the letters before printing."
+            },
+            "highlight": "Hay que imprimirlo"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Hay ",
+        {
+          "kind": "connector",
+          "answer": "que",
+          "choices": [
+            "aunque",
+            "que",
+            "porque",
+            "para que"
+          ]
+        },
+        " imprimirlo? Yo ",
+        {
+          "kind": "form",
+          "answer": "amplío",
+          "cue": "ampliar (yo)",
+          "choices": [
+            "amplía",
+            "ampliamos",
+            "amplían",
+            "amplío"
+          ]
+        },
+        " las letras antes de imprimir."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me han dicho que",
+          "baseText": {
+            "de": "Mir wurde gesagt, dass",
+            "en": "I've been told that"
+          }
+        },
+        {
+          "targetText": "este justificante digital sirve",
+          "baseText": {
+            "de": "dieser digitale Nachweis geeignet ist",
+            "en": "this digital supporting document works"
+          }
+        },
+        {
+          "targetText": "para completar",
+          "baseText": {
+            "de": "zum Abschließen",
+            "en": "for completing"
+          }
+        },
+        {
+          "targetText": "la gestión del seguro.",
+          "baseText": {
+            "de": "der Versicherungsangelegenheit.",
+            "en": "the insurance procedure."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "me han dicho que",
+          "baseText": {
+            "de": "mir wurde gesagt, dass",
+            "en": "I've been told that"
+          }
+        },
+        {
+          "targetText": "justificante",
+          "baseText": {
+            "de": "Nachweis; Beleg",
+            "en": "supporting document; proof"
+          }
+        },
+        {
+          "targetText": "digital",
+          "baseText": {
+            "de": "digital",
+            "en": "digital"
+          }
+        },
+        {
+          "targetText": "el seguro",
+          "baseText": {
+            "de": "die Versicherung",
+            "en": "the insurance"
+          }
+        },
+        {
+          "targetText": "una copia legible",
+          "baseText": {
+            "de": "eine lesbare Kopie",
+            "en": "a readable copy"
+          }
+        },
+        {
+          "targetText": "amplío las letras",
+          "baseText": {
+            "de": "ich vergrößere die Schrift",
+            "en": "I enlarge the letters"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me han dicho que este ",
+        "answer": "justificante",
+        "after": " digital sirve para completar la gestión del seguro.",
+        "fallbackChoices": [
+          "balcón",
+          "horario",
+          "justificante",
+          "ascensor"
+        ]
+      },
+      "speakRequired": [
+        "justificante",
+        "digital",
+        "seguro"
+      ],
+      "sceneCaption": {
+        "de": "Beim Versicherungsservice fragt die Mitarbeiterin: „¿Qué documento trae para la gestión del seguro?“",
+        "en": "At the insurance service desk, the staff member asks: “¿Qué documento trae para la gestión del seguro?”"
+      },
+      "trophyWord": {
+        "word": "justificante",
+        "meaning": {
+          "de": "Nachweis; Beleg",
+          "en": "supporting document; proof"
+        },
+        "example": "Este justificante confirma que he realizado el pago.",
+        "whyThisWord": {
+          "de": "Justificante benennt einen Beleg, der eine Handlung oder einen Sachverhalt nachweist.",
+          "en": "Justificante names a document that proves an action or fact."
+        }
+      },
+      "distractors": [
+        "este documento en papel sirve",
+        "la gestión del banco."
+      ],
+      "placeholderCaption": {
+        "de": "Ein digitaler Beleg wird bei einer Auskunft gezeigt.",
+        "en": "A digital supporting document is shown during an enquiry."
+      },
+      "songMood": "Patient, clear acoustic pop.",
+      "visualNotes": "Insurance counter and phone with generic document; no small-font rejection shown."
+    },
+    {
+      "slug": "certificado-reciente-para-renovar",
+      "title": {
+        "de": "Wie aktuell ist die Bescheinigung?",
+        "en": "How recent is the certificate?"
+      },
+      "situation": {
+        "de": "Du hast eine Bescheinigung für die Verlängerung einer Versicherung dabei. Prüfe die Auskunft, die du zuvor bekommen hast.",
+        "en": "You have brought a certificate to renew an insurance policy. Check the information you were given earlier."
+      },
+      "pedagogicalGoal": "Me han dicho que und hay que verbinden und anschließend die Gültigkeit eines konkreten Dokuments klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué le han indicado sobre los documentos para renovar el seguro?",
+          "baseText": {
+            "de": "Was wurde Ihnen über die Unterlagen zur Verlängerung der Versicherung gesagt?",
+            "en": "What were you told about the documents for renewing the insurance?"
+          }
+        },
+        {
+          "targetText": "Me han dicho que hay que traer un certificado reciente para renovar el seguro.",
+          "baseText": {
+            "de": "Mir wurde gesagt, dass man eine aktuelle Bescheinigung mitbringen muss, um die Versicherung zu verlängern.",
+            "en": "I've been told that you need to bring a recent certificate to renew the insurance."
+          }
+        },
+        {
+          "targetText": "Sí, el certificado tiene que ser de los últimos tres meses.",
+          "baseText": {
+            "de": "Ja, die Bescheinigung muss aus den letzten drei Monaten stammen.",
+            "en": "Yes, the certificate must be from the last three months."
+          }
+        },
+        {
+          "targetText": "Tiene dos meses; ¿usted puede confirmar que el certificado sirve?",
+          "baseText": {
+            "de": "Sie ist zwei Monate alt; können Sie bestätigen, dass die Bescheinigung geeignet ist?",
+            "en": "It's two months old; can you confirm that the certificate is suitable?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Me han dicho que hay que…",
+        "rule": {
+          "de": "Nach me han dicho que kann mit hay que eine allgemeine Anforderung folgen; der Infinitiv nennt die nötige Handlung.",
+          "en": "Me han dicho que can be followed by hay que to report a general requirement; the infinitive names the necessary action."
+        },
+        "examples": [
+          {
+            "targetText": "Me han dicho que hay que traer un certificado reciente para renovar el seguro.",
+            "baseText": {
+              "de": "Mir wurde gesagt, dass man eine aktuelle Bescheinigung mitbringen muss, um die Versicherung zu verlängern.",
+              "en": "I've been told that you need to bring a recent certificate to renew the insurance."
+            },
+            "highlight": "hay que traer"
+          },
+          {
+            "targetText": "Me han dicho que hay que comprobar la fecha del documento.",
+            "baseText": {
+              "de": "Mir wurde gesagt, dass man das Datum des Dokuments prüfen muss.",
+              "en": "I've been told that the document's date needs to be checked."
+            },
+            "highlight": "Me han dicho que hay que"
+          }
+        ]
+      },
+      "cloze": [
+        "Tiene dos meses; ¿usted ",
+        {
+          "kind": "form",
+          "answer": "puede",
+          "cue": "poder (usted)",
+          "choices": [
+            "puedes",
+            "pueden",
+            "podemos",
+            "puede"
+          ]
+        },
+        " confirmar que el certificado ",
+        {
+          "kind": "form",
+          "answer": "sirve",
+          "cue": "servir (el certificado)",
+          "choices": [
+            "sirvo",
+            "sirve",
+            "sirven",
+            "servimos"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Me han dicho que",
+          "baseText": {
+            "de": "Mir wurde gesagt, dass",
+            "en": "I've been told that"
+          }
+        },
+        {
+          "targetText": "hay que traer",
+          "baseText": {
+            "de": "man mitbringen muss",
+            "en": "you need to bring"
+          }
+        },
+        {
+          "targetText": "un certificado reciente",
+          "baseText": {
+            "de": "eine aktuelle Bescheinigung",
+            "en": "a recent certificate"
+          }
+        },
+        {
+          "targetText": "para renovar el seguro.",
+          "baseText": {
+            "de": "um die Versicherung zu verlängern.",
+            "en": "to renew the insurance."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hay que traer",
+          "baseText": {
+            "de": "man muss mitbringen",
+            "en": "you need to bring"
+          }
+        },
+        {
+          "targetText": "certificado",
+          "baseText": {
+            "de": "Bescheinigung",
+            "en": "certificate"
+          }
+        },
+        {
+          "targetText": "reciente",
+          "baseText": {
+            "de": "aktuell; neueren Datums",
+            "en": "recent"
+          }
+        },
+        {
+          "targetText": "renovar el seguro",
+          "baseText": {
+            "de": "die Versicherung verlängern",
+            "en": "to renew the insurance"
+          }
+        },
+        {
+          "targetText": "los últimos tres meses",
+          "baseText": {
+            "de": "die letzten drei Monate",
+            "en": "the last three months"
+          }
+        },
+        {
+          "targetText": "confirmar",
+          "baseText": {
+            "de": "bestätigen",
+            "en": "to confirm"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me han dicho que hay que traer un ",
+        "answer": "certificado",
+        "after": " reciente para renovar el seguro.",
+        "fallbackChoices": [
+          "certificado",
+          "balcón",
+          "abrigo",
+          "enchufe"
+        ]
+      },
+      "speakRequired": [
+        "certificado",
+        "reciente",
+        "renovar"
+      ],
+      "sceneCaption": {
+        "de": "Beim Versicherungsservice fragt der Mitarbeiter: „¿Qué le han indicado sobre los documentos para renovar el seguro?“",
+        "en": "At the insurance service desk, the staff member asks: “¿Qué le han indicado sobre los documentos para renovar el seguro?”"
+      },
+      "trophyWord": {
+        "word": "certificado",
+        "meaning": {
+          "de": "Bescheinigung",
+          "en": "certificate"
+        },
+        "example": "El certificado lleva una fecha y confirma mis datos.",
+        "whyThisWord": {
+          "de": "Certificado bezeichnet eine offizielle Bescheinigung, bei der oft auch das Ausstellungsdatum wichtig ist.",
+          "en": "Certificado names an official certificate whose issue date may also matter."
+        }
+      },
+      "distractors": [
+        "un documento original",
+        "para solicitar la tarjeta."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bescheinigung wird bei einem Versicherungsservice besprochen.",
+        "en": "A certificate is discussed at an insurance service desk."
+      },
+      "songMood": "Even, reassuring acoustic pop.",
+      "visualNotes": "Insurance enquiry and undated generic certificate; no three-month limit displayed."
+    },
+    {
+      "slug": "registro-con-direccion-incompleta",
+      "title": {
+        "de": "Eine Angabe berichtigen",
+        "en": "Correcting a detail"
+      },
+      "situation": {
+        "de": "Im Registerbüro möchtest du eine unvollständige Adresse berichtigen lassen. Frage nach dem richtigen Vorgehen.",
+        "en": "At a registration office, you want to correct an incomplete address. Ask how to proceed."
+      },
+      "pedagogicalGoal": "Mit podría decirme cómo eine Korrektur klären und mit sabe qué nach dem nächsten Schritt fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué dato quiere consultar en su ficha?",
+          "baseText": {
+            "de": "Welche Angabe in Ihrem Eintrag möchten Sie besprechen?",
+            "en": "Which detail in your record would you like to ask about?"
+          }
+        },
+        {
+          "targetText": "¿Podría decirme cómo corrijo un dato del registro? Mi dirección aparece incompleta.",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wie ich eine Registerangabe korrigiere? Meine Adresse ist unvollständig eingetragen.",
+            "en": "Could you tell me how to correct a detail in the register? My address appears incomplete."
+          }
+        },
+        {
+          "targetText": "La corrección tarda varios días porque hay que revisar el expediente.",
+          "baseText": {
+            "de": "Die Korrektur dauert mehrere Tage, weil die Akte überprüft werden muss.",
+            "en": "The correction takes several days because the file needs to be checked."
+          }
+        },
+        {
+          "targetText": "¿Usted sabe qué debo hacer mientras tanto? Yo necesito un justificante.",
+          "baseText": {
+            "de": "Wissen Sie, was ich in der Zwischenzeit tun soll? Ich brauche einen Nachweis.",
+            "en": "Do you know what I should do in the meantime? I need proof."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Cómo y qué: del proceso al siguiente paso",
+        "rule": {
+          "de": "Cómo fragt nach dem Vorgehen; qué debo hacer fragt nach der nächsten Handlung, wenn neue Informationen dazukommen.",
+          "en": "Cómo asks about the method; qué debo hacer asks about the next action when new information comes up."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría decirme cómo corrijo un dato del registro? Mi dirección aparece incompleta.",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, wie ich eine Registerangabe korrigiere? Meine Adresse ist unvollständig eingetragen.",
+              "en": "Could you tell me how to correct a detail in the register? My address appears incomplete."
+            },
+            "highlight": "cómo corrijo"
+          },
+          {
+            "targetText": "¿Sabe qué documento debo presentar para corregir la dirección?",
+            "baseText": {
+              "de": "Wissen Sie, welches Dokument ich zur Berichtigung der Adresse vorlegen muss?",
+              "en": "Do you know which document I need to submit to correct the address?"
+            },
+            "highlight": "qué documento debo presentar"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "sabes",
+            "sabe",
+            "sabemos",
+            "saben"
+          ]
+        },
+        " qué debo hacer mientras tanto? Yo ",
+        {
+          "kind": "form",
+          "answer": "necesito",
+          "cue": "necesitar (yo)",
+          "choices": [
+            "necesitan",
+            "necesita",
+            "necesito",
+            "necesitamos"
+          ]
+        },
+        " un justificante."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría decirme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "cómo corrijo un dato",
+          "baseText": {
+            "de": "wie ich eine Angabe korrigiere",
+            "en": "how to correct a detail"
+          }
+        },
+        {
+          "targetText": "del registro?",
+          "baseText": {
+            "de": "im Register?",
+            "en": "in the register?"
+          }
+        },
+        {
+          "targetText": "Mi dirección aparece incompleta.",
+          "baseText": {
+            "de": "Meine Adresse ist unvollständig eingetragen.",
+            "en": "My address appears incomplete."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "corrijo",
+          "baseText": {
+            "de": "ich korrigiere",
+            "en": "I correct"
+          }
+        },
+        {
+          "targetText": "un dato",
+          "baseText": {
+            "de": "eine Angabe",
+            "en": "a detail"
+          }
+        },
+        {
+          "targetText": "registro",
+          "baseText": {
+            "de": "Register",
+            "en": "register"
+          }
+        },
+        {
+          "targetText": "incompleta",
+          "baseText": {
+            "de": "unvollständig",
+            "en": "incomplete"
+          }
+        },
+        {
+          "targetText": "revisar el expediente",
+          "baseText": {
+            "de": "die Akte überprüfen",
+            "en": "to check the file"
+          }
+        },
+        {
+          "targetText": "mientras tanto",
+          "baseText": {
+            "de": "in der Zwischenzeit",
+            "en": "in the meantime"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría decirme cómo corrijo un dato del ",
+        "answer": "registro",
+        "after": "? Mi dirección aparece incompleta.",
+        "fallbackChoices": [
+          "registro",
+          "abrigo",
+          "balcón",
+          "ambiente"
+        ]
+      },
+      "speakRequired": [
+        "corrijo",
+        "registro",
+        "dirección"
+      ],
+      "sceneCaption": {
+        "de": "Im Registerbüro fragt die Mitarbeiterin: „¿Qué dato quiere consultar en su ficha?“",
+        "en": "At the registration office, the staff member asks: “¿Qué dato quiere consultar en su ficha?”"
+      },
+      "trophyWord": {
+        "word": "registro",
+        "meaning": {
+          "de": "Register",
+          "en": "register"
+        },
+        "example": "Mi dirección en el registro necesita una corrección.",
+        "whyThisWord": {
+          "de": "Registro benennt die offizielle Sammlung deiner Angaben, wenn du einen Eintrag prüfen oder korrigieren möchtest.",
+          "en": "Registro names the official record when you want to check or correct an entry."
+        }
+      },
+      "distractors": [
+        "cómo consulto un dato",
+        "Mi dirección aparece dos veces."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachfrage zu einer gespeicherten Adresse.",
+        "en": "An enquiry about an address on record."
+      },
+      "songMood": "Steady, thoughtful acoustic pop.",
+      "visualNotes": "Registration desk and generic address form; no processing delay shown."
+    },
+    {
+      "slug": "requisito-para-la-tarjeta-sanitaria",
+      "title": {
+        "de": "Was fehlt noch?",
+        "en": "What is still missing?"
+      },
+      "situation": {
+        "de": "Am Gesundheitsschalter fragst du nach den Unterlagen für deine Gesundheitskarte. Kläre, was zur vollständigen Bearbeitung noch nötig ist.",
+        "en": "At a health-service desk, ask about the documents for your health card. Find out what is still needed to complete the process."
+      },
+      "pedagogicalGoal": "Mit qué nach einer fehlenden Voraussetzung fragen und mit si die Möglichkeit einer weiteren Abgabe klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Tiene alguna pregunta sobre la gestión de su tarjeta sanitaria?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zur Bearbeitung Ihrer Gesundheitskarte?",
+            "en": "Do you have a question about the processing of your health card?"
+          }
+        },
+        {
+          "targetText": "¿Podría decirme qué requisito falta para terminar la gestión de mi tarjeta sanitaria?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, welche Voraussetzung noch fehlt, um den Vorgang für meine Gesundheitskarte abzuschließen?",
+            "en": "Could you tell me which requirement is still missing to complete the process for my health card?"
+          }
+        },
+        {
+          "targetText": "Falta una copia del documento de identidad; tiene que traerla en papel.",
+          "baseText": {
+            "de": "Eine Kopie des Ausweises fehlt; Sie müssen sie auf Papier mitbringen.",
+            "en": "A copy of your identity document is missing; you need to bring it on paper."
+          }
+        },
+        {
+          "targetText": "¿Usted sabe si puedo entregarla sin otra cita? Yo trabajo por turnos.",
+          "baseText": {
+            "de": "Wissen Sie, ob ich sie ohne einen weiteren Termin abgeben kann? Ich arbeite im Schichtdienst.",
+            "en": "Do you know whether I can submit it without another appointment? I work shifts."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qué falta · si puedo",
+        "rule": {
+          "de": "Qué erfragt die fehlende Sache; si erfragt, ob ein vorgeschlagener nächster Schritt möglich ist.",
+          "en": "Qué asks what is missing; si asks whether a proposed next step is possible."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría decirme qué requisito falta para terminar la gestión de mi tarjeta sanitaria?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, welche Voraussetzung noch fehlt, um den Vorgang für meine Gesundheitskarte abzuschließen?",
+              "en": "Could you tell me which requirement is still missing to complete the process for my health card?"
+            },
+            "highlight": "qué requisito falta"
+          },
+          {
+            "targetText": "¿Sabe si puedo traer la copia mañana?",
+            "baseText": {
+              "de": "Wissen Sie, ob ich die Kopie morgen bringen kann?",
+              "en": "Do you know whether I can bring the copy tomorrow?"
+            },
+            "highlight": "si puedo traer"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "cue": "saber (usted)",
+          "choices": [
+            "saben",
+            "sabemos",
+            "sabes",
+            "sabe"
+          ]
+        },
+        " si puedo entregarla sin otra cita? Yo ",
+        {
+          "kind": "form",
+          "answer": "trabajo",
+          "cue": "trabajar (yo)",
+          "choices": [
+            "trabaja",
+            "trabajo",
+            "trabajan",
+            "trabajamos"
+          ]
+        },
+        " por turnos."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría decirme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "qué requisito falta",
+          "baseText": {
+            "de": "welche Voraussetzung fehlt",
+            "en": "which requirement is missing"
+          }
+        },
+        {
+          "targetText": "para terminar la gestión",
+          "baseText": {
+            "de": "um den Vorgang abzuschließen",
+            "en": "to complete the process"
+          }
+        },
+        {
+          "targetText": "de mi tarjeta sanitaria?",
+          "baseText": {
+            "de": "für meine Gesundheitskarte?",
+            "en": "for my health card?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "requisito",
+          "baseText": {
+            "de": "Voraussetzung; Anforderung",
+            "en": "requirement"
+          }
+        },
+        {
+          "targetText": "falta",
+          "baseText": {
+            "de": "es fehlt",
+            "en": "it is missing"
+          }
+        },
+        {
+          "targetText": "la tarjeta sanitaria",
+          "baseText": {
+            "de": "die Gesundheitskarte",
+            "en": "the health card"
+          }
+        },
+        {
+          "targetText": "el documento de identidad",
+          "baseText": {
+            "de": "der Ausweis",
+            "en": "the identity document"
+          }
+        },
+        {
+          "targetText": "sin otra cita",
+          "baseText": {
+            "de": "ohne einen weiteren Termin",
+            "en": "without another appointment"
+          }
+        },
+        {
+          "targetText": "trabajo por turnos",
+          "baseText": {
+            "de": "ich arbeite im Schichtdienst",
+            "en": "I work shifts"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría decirme qué ",
+        "answer": "requisito",
+        "after": " falta para terminar la gestión de mi tarjeta sanitaria?",
+        "fallbackChoices": [
+          "horario",
+          "requisito",
+          "escritorio",
+          "abrigo"
+        ]
+      },
+      "speakRequired": [
+        "requisito",
+        "tarjeta",
+        "sanitaria"
+      ],
+      "sceneCaption": {
+        "de": "Am Gesundheitsschalter fragt der Mitarbeiter: „¿Tiene alguna pregunta sobre la gestión de su tarjeta sanitaria?“",
+        "en": "At the health-service desk, the staff member asks: “¿Tiene alguna pregunta sobre la gestión de su tarjeta sanitaria?”"
+      },
+      "trophyWord": {
+        "word": "requisito",
+        "meaning": {
+          "de": "Voraussetzung; Anforderung",
+          "en": "requirement"
+        },
+        "example": "Quiero comprobar qué requisito falta para completar la gestión.",
+        "whyThisWord": {
+          "de": "Requisito hilft dir, gezielt nach der noch fehlenden Voraussetzung eines Vorgangs zu fragen.",
+          "en": "Requisito helps you ask precisely which requirement still needs to be met."
+        }
+      },
+      "distractors": [
+        "qué documento sirve",
+        "de mi cuenta bancaria?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Auskunft zur Gesundheitskarte am Schalter.",
+        "en": "An enquiry about a health card at a service desk."
+      },
+      "songMood": "Calm, practical acoustic pop.",
+      "visualNotes": "Health-service administrative desk; no missing identity-copy requirement revealed."
+    }
+  ]
+}

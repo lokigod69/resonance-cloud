@@ -1,0 +1,1898 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Genau das meine ich"
+  },
+  "subtitle": {
+    "de": "Beschreibe genau, wen oder was du meinst, und prüfe passende Alternativen."
+  },
+  "anchor": "Vorläufiger Entwurf für Fables persönliche Prüfung. Form C: Das Gegenüber bietet eine Alternative; du greifst sie auf und hältst eine wichtige Bedingung fest. Neuere Fable-Stufung vom 03.10.2026: L1–4 who, which, that; L5–6 Relativsätze ohne ausgesprochenes Objektpronomen; L7–8 where und whose; L9 what-Sätze; L10 Verbindung der Muster. Jede Ergänzungsübung verbindet eine Auswahl zum Relativsatz mit einer Verbform. Austauschbare Formen wie who und that stehen nie gemeinsam als Antwortmöglichkeiten. Stufenkonflikt zur älteren Planung: whose war dort ausgeschlossen, wird hier gemäß der neueren Fable-Architektur in L8 eingeführt. Alle zugeteilten Trophäen bleiben erhalten. Amerikanisches Englisch; Register nach Gegenüber.",
+  "lessons": [
+    {
+      "slug": "neighbor-who-helped-with-the-desk",
+      "title": {
+        "de": "Den hilfsbereiten Nachbarn finden"
+      },
+      "situation": {
+        "de": "Du möchtest dich bei dem Nachbarn bedanken, der dir beim Tragen eines Schreibtischs geholfen hat. Ein anderer Nachbar spricht dich an.",
+        "en": "You want to thank the neighbor who helped you carry a desk. Another neighbor approaches you."
+      },
+      "pedagogicalGoal": "Eine Person mit who genauer bestimmen und ein Hilfsangebot unter Nennung der nächsten Aufgabe annehmen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Which neighbor are you looking for?",
+          "baseText": {
+            "de": "Welchen Nachbarn suchst du?"
+          }
+        },
+        {
+          "targetText": "I'm looking for the neighbor who helped me carry this desk.",
+          "baseText": {
+            "de": "Ich suche den Nachbarn, der mir geholfen hat, diesen Schreibtisch zu tragen."
+          }
+        },
+        {
+          "targetText": "Daniel's out, but I can help with the rest.",
+          "baseText": {
+            "de": "Daniel ist nicht da, aber ich kann dir beim Rest helfen."
+          }
+        },
+        {
+          "targetText": "Thanks, let's move the boxes which are still downstairs.",
+          "baseText": {
+            "de": "Danke, lass uns die Kisten tragen, die noch unten stehen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Who and which",
+        "rule": {
+          "de": "Mit who beschreibst du eine Person genauer; mit which beschreibst du eine Sache, wobei in diesen notwendigen Relativsätzen auch that möglich ist."
+        },
+        "examples": [
+          {
+            "targetText": "I'm looking for the neighbor who helped me carry this desk.",
+            "baseText": {
+              "de": "Ich suche den Nachbarn, der mir geholfen hat, diesen Schreibtisch zu tragen."
+            },
+            "highlight": "who helped me carry this desk"
+          },
+          {
+            "targetText": "Thanks, let's move the boxes which are still downstairs.",
+            "baseText": {
+              "de": "Danke, lass uns die Kisten tragen, die noch unten stehen."
+            },
+            "highlight": "which are still downstairs"
+          }
+        ]
+      },
+      "cloze": [
+        "Thanks, let's move the boxes ",
+        {
+          "kind": "choice",
+          "answer": "which",
+          "choices": [
+            "whose",
+            "where",
+            "which",
+            "who"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "are",
+          "cue": "be",
+          "choices": [
+            "is",
+            "are",
+            "being",
+            "be"
+          ]
+        },
+        " still downstairs."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'm looking for",
+          "baseText": {
+            "de": "Ich suche"
+          }
+        },
+        {
+          "targetText": "the neighbor",
+          "baseText": {
+            "de": "den Nachbarn,"
+          }
+        },
+        {
+          "targetText": "who helped me",
+          "baseText": {
+            "de": "der mir geholfen hat,"
+          }
+        },
+        {
+          "targetText": "carry this desk.",
+          "baseText": {
+            "de": "diesen Schreibtisch zu tragen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "looking for",
+          "baseText": {
+            "de": "suchen"
+          }
+        },
+        {
+          "targetText": "neighbor",
+          "baseText": {
+            "de": "Nachbar"
+          }
+        },
+        {
+          "targetText": "who helped me",
+          "baseText": {
+            "de": "der mir geholfen hat"
+          }
+        },
+        {
+          "targetText": "carry this desk",
+          "baseText": {
+            "de": "diesen Schreibtisch tragen"
+          }
+        },
+        {
+          "targetText": "the rest",
+          "baseText": {
+            "de": "der Rest"
+          }
+        },
+        {
+          "targetText": "downstairs",
+          "baseText": {
+            "de": "unten; im unteren Stockwerk"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'm looking for the neighbor who ",
+        "answer": "helped",
+        "after": " me carry this desk.",
+        "fallbackChoices": [
+          "helping",
+          "helped",
+          "to help",
+          "help"
+        ]
+      },
+      "speakRequired": [
+        "neighbor",
+        "helped",
+        "desk"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus fragt dich ein Nachbar: „Which neighbor are you looking for?“"
+      },
+      "trophyWord": {
+        "word": "who",
+        "meaning": {
+          "de": "der; die; das bei Personen im Relativsatz"
+        },
+        "example": "The neighbor who helped me lives upstairs.",
+        "whyThisWord": {
+          "de": "Damit fügst du eine Information hinzu, die klar macht, welche Person du meinst."
+        }
+      },
+      "distractors": [
+        "the landlord",
+        "carry this sofa."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn stehen zwischen einem Schreibtisch und Umzugskisten im Hausflur."
+      },
+      "songMood": "Dankbare Nachbarschaftshilfe bei einem kleinen Umzug.",
+      "visualNotes": "Ein breites Treppenhaus mit einigen Kartons und einem kleinen Schreibtisch."
+    },
+    {
+      "slug": "chair-that-fits-under-the-desk",
+      "title": {
+        "de": "Ein Stuhl für den Schreibtisch"
+      },
+      "situation": {
+        "de": "Du suchst im Möbelgeschäft einen Stuhl, der unter deinen Schreibtisch passt. Erkläre der Verkäuferin deine wichtigste Anforderung.",
+        "en": "You are looking for a chair that fits under your desk. Explain your main requirement to the sales assistant."
+      },
+      "pedagogicalGoal": "Eine Sache mit that genau beschreiben und bei einer angebotenen Alternative an der Größenanforderung festhalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What kind of chair are you looking for?",
+          "baseText": {
+            "de": "Was für einen Stuhl suchen Sie?"
+          }
+        },
+        {
+          "targetText": "I need a chair that fits under my desk without touching it.",
+          "baseText": {
+            "de": "Ich brauche einen Stuhl, der unter meinen Schreibtisch passt, ohne ihn zu berühren."
+          }
+        },
+        {
+          "targetText": "This one is wider, but its back is lower.",
+          "baseText": {
+            "de": "Dieser ist breiter, aber seine Rückenlehne ist niedriger."
+          }
+        },
+        {
+          "targetText": "That works, but I need one that can slide underneath.",
+          "baseText": {
+            "de": "Das passt, aber ich brauche einen, der sich darunterschieben lässt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Defining clauses with that",
+        "rule": {
+          "de": "That leitet eine notwendige Beschreibung ein, die festlegt, welche Sache du meinst; für Sachen ist hier auch which möglich."
+        },
+        "examples": [
+          {
+            "targetText": "I need a chair that fits under my desk without touching it.",
+            "baseText": {
+              "de": "Ich brauche einen Stuhl, der unter meinen Schreibtisch passt, ohne ihn zu berühren."
+            },
+            "highlight": "that fits under my desk"
+          },
+          {
+            "targetText": "That works, but I need one that can slide underneath.",
+            "baseText": {
+              "de": "Das passt, aber ich brauche einen, der sich darunterschieben lässt."
+            },
+            "highlight": "that can slide underneath"
+          }
+        ]
+      },
+      "cloze": [
+        "That works, but I need one ",
+        {
+          "kind": "choice",
+          "answer": "that",
+          "choices": [
+            "where",
+            "whose",
+            "when",
+            "that"
+          ]
+        },
+        " can ",
+        {
+          "kind": "form",
+          "answer": "slide",
+          "cue": "slide",
+          "choices": [
+            "slid",
+            "slides",
+            "slide",
+            "sliding"
+          ]
+        },
+        " underneath."
+      ],
+      "chunks": [
+        {
+          "targetText": "I need",
+          "baseText": {
+            "de": "Ich brauche"
+          }
+        },
+        {
+          "targetText": "a chair",
+          "baseText": {
+            "de": "einen Stuhl,"
+          }
+        },
+        {
+          "targetText": "that fits under my desk",
+          "baseText": {
+            "de": "der unter meinen Schreibtisch passt,"
+          }
+        },
+        {
+          "targetText": "without touching it.",
+          "baseText": {
+            "de": "ohne ihn zu berühren."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "chair",
+          "baseText": {
+            "de": "Stuhl"
+          }
+        },
+        {
+          "targetText": "fits",
+          "baseText": {
+            "de": "passt"
+          }
+        },
+        {
+          "targetText": "under my desk",
+          "baseText": {
+            "de": "unter meinen Schreibtisch"
+          }
+        },
+        {
+          "targetText": "without touching it",
+          "baseText": {
+            "de": "ohne ihn zu berühren"
+          }
+        },
+        {
+          "targetText": "lower",
+          "baseText": {
+            "de": "niedriger"
+          }
+        },
+        {
+          "targetText": "slide underneath",
+          "baseText": {
+            "de": "daruntergleiten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I need a chair that ",
+        "answer": "fits",
+        "after": " under my desk without touching it.",
+        "fallbackChoices": [
+          "fit",
+          "fitting",
+          "fits",
+          "to fit"
+        ]
+      },
+      "speakRequired": [
+        "chair",
+        "fits",
+        "desk"
+      ],
+      "sceneCaption": {
+        "de": "Die Verkäuferin fragt Sie zwischen den ausgestellten Stühlen: „What kind of chair are you looking for?“"
+      },
+      "trophyWord": {
+        "word": "that",
+        "meaning": {
+          "de": "der; die; das im notwendigen Relativsatz"
+        },
+        "example": "I need a chair that fits under the desk.",
+        "whyThisWord": {
+          "de": "Damit ergänzt du ein entscheidendes Merkmal, statt nur den Gegenstand zu nennen."
+        }
+      },
+      "distractors": [
+        "I need a stool",
+        "beside my desk"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Auswahl verschieden hoher Stühle in einem Möbelgeschäft."
+      },
+      "songMood": "Praktische Suche nach dem passenden Möbelstück.",
+      "visualNotes": "Ein niedriger Schreibtisch steht neben mehreren Stühlen; ein Maßband liegt auf der Tischplatte."
+    },
+    {
+      "slug": "lamp-which-lights-the-page",
+      "title": {
+        "de": "Genug Licht zum Lesen"
+      },
+      "situation": {
+        "de": "Du suchst eine Leselampe. Beschreibe im Geschäft, welche Aufgabe sie gut erfüllen muss.",
+        "en": "You are shopping for a reading lamp. Explain what it needs to do well."
+      },
+      "pedagogicalGoal": "Mit which die Funktion eines Gegenstands beschreiben und eine andere Farbe bei gleicher Funktion akzeptieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What do you need the lamp for?",
+          "baseText": {
+            "de": "Wofür brauchen Sie die Lampe?"
+          }
+        },
+        {
+          "targetText": "I'd like a lamp which lights up the whole page while I read.",
+          "baseText": {
+            "de": "Ich hätte gern eine Lampe, die die ganze Seite beleuchtet, während ich lese."
+          }
+        },
+        {
+          "targetText": "The white one is sold out, but this blue one tilts.",
+          "baseText": {
+            "de": "Die weiße ist ausverkauft, aber diese blaue lässt sich neigen."
+          }
+        },
+        {
+          "targetText": "Blue works; I need one that can light the whole page.",
+          "baseText": {
+            "de": "Blau passt; ich brauche eine, die die ganze Seite beleuchten kann."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Which for things",
+        "rule": {
+          "de": "Which kann eine Sache näher bestimmen; in notwendigen Relativsätzen wie hier ist that ebenfalls richtig."
+        },
+        "examples": [
+          {
+            "targetText": "I'd like a lamp which lights up the whole page while I read.",
+            "baseText": {
+              "de": "Ich hätte gern eine Lampe, die die ganze Seite beleuchtet, während ich lese."
+            },
+            "highlight": "which lights up the whole page"
+          },
+          {
+            "targetText": "Blue works; I need one that can light the whole page.",
+            "baseText": {
+              "de": "Blau passt; ich brauche eine, die die ganze Seite beleuchten kann."
+            },
+            "highlight": "that can light the whole page"
+          }
+        ]
+      },
+      "cloze": [
+        "Blue works; I need one ",
+        {
+          "kind": "choice",
+          "answer": "that",
+          "choices": [
+            "whose",
+            "that",
+            "when",
+            "where"
+          ]
+        },
+        " can ",
+        {
+          "kind": "form",
+          "answer": "light",
+          "cue": "light",
+          "choices": [
+            "lighting",
+            "lit",
+            "lights",
+            "light"
+          ]
+        },
+        " the whole page."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd like",
+          "baseText": {
+            "de": "Ich hätte gern"
+          }
+        },
+        {
+          "targetText": "a lamp",
+          "baseText": {
+            "de": "eine Lampe,"
+          }
+        },
+        {
+          "targetText": "which lights up the whole page",
+          "baseText": {
+            "de": "die die ganze Seite beleuchtet,"
+          }
+        },
+        {
+          "targetText": "while I read.",
+          "baseText": {
+            "de": "während ich lese."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lamp",
+          "baseText": {
+            "de": "Lampe"
+          }
+        },
+        {
+          "targetText": "lights up",
+          "baseText": {
+            "de": "beleuchtet"
+          }
+        },
+        {
+          "targetText": "while I read",
+          "baseText": {
+            "de": "während ich lese"
+          }
+        },
+        {
+          "targetText": "sold out",
+          "baseText": {
+            "de": "ausverkauft"
+          }
+        },
+        {
+          "targetText": "tilts",
+          "baseText": {
+            "de": "lässt sich neigen"
+          }
+        },
+        {
+          "targetText": "whole page",
+          "baseText": {
+            "de": "ganze Seite"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd like a lamp which ",
+        "answer": "lights",
+        "after": " up the whole page while I read.",
+        "fallbackChoices": [
+          "lighting",
+          "light",
+          "to light",
+          "lights"
+        ]
+      },
+      "speakRequired": [
+        "lamp",
+        "lights",
+        "page"
+      ],
+      "sceneCaption": {
+        "de": "Neben dem Lampenregal fragt der Verkäufer: „What do you need the lamp for?“"
+      },
+      "trophyWord": {
+        "word": "which",
+        "meaning": {
+          "de": "der; die; das bei Sachen im Relativsatz"
+        },
+        "example": "This is a lamp which gives enough light for reading.",
+        "whyThisWord": {
+          "de": "Damit kannst du die Eigenschaft erklären, die einen Gegenstand für dich passend macht."
+        }
+      },
+      "distractors": [
+        "a flashlight",
+        "while I draw."
+      ],
+      "placeholderCaption": {
+        "de": "Verstellbare Leselampen beleuchten ein aufgeschlagenes Buch."
+      },
+      "songMood": "Ruhige Suche nach gutem Licht für lange Leseabende.",
+      "visualNotes": "Weiße und blaue Tischlampen stehen auf einem Regal neben einem offenen Buch."
+    },
+    {
+      "slug": "entrance-facing-the-parking-lot",
+      "title": {
+        "de": "Der passende Eingang"
+      },
+      "situation": {
+        "de": "Du verabredest dich mit einem Freund an einem großen Gebäude. Beschreibe den Eingang, den du meinst.",
+        "en": "You are arranging to meet a friend at a large building. Describe the entrance you mean."
+      },
+      "pedagogicalGoal": "Einen Ort mit that unterscheiden und bei einem neuen Treffpunkt an einer Zugangsanforderung festhalten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Where should I meet you at the building?",
+          "baseText": {
+            "de": "Wo soll ich dich am Gebäude treffen?"
+          }
+        },
+        {
+          "targetText": "The entrance that faces the parking lot is easiest for me to reach.",
+          "baseText": {
+            "de": "Der Eingang, der zum Parkplatz zeigt, ist für mich am einfachsten zu erreichen."
+          }
+        },
+        {
+          "targetText": "That door is locked today. Can we meet at the front?",
+          "baseText": {
+            "de": "Diese Tür ist heute abgeschlossen. Können wir uns vorne treffen?"
+          }
+        },
+        {
+          "targetText": "Sure, but I need an entrance that has no steps.",
+          "baseText": {
+            "de": "Klar, aber ich brauche einen Eingang, der keine Stufen hat."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Identifying places with that",
+        "rule": {
+          "de": "Auch einen Ort kannst du mit that und einer Eigenschaft genauer bestimmen, wenn that im Relativsatz die Rolle des Subjekts übernimmt."
+        },
+        "examples": [
+          {
+            "targetText": "The entrance that faces the parking lot is easiest for me to reach.",
+            "baseText": {
+              "de": "Der Eingang, der zum Parkplatz zeigt, ist für mich am einfachsten zu erreichen."
+            },
+            "highlight": "that faces the parking lot"
+          },
+          {
+            "targetText": "Sure, but I need an entrance that has no steps.",
+            "baseText": {
+              "de": "Klar, aber ich brauche einen Eingang, der keine Stufen hat."
+            },
+            "highlight": "that has no steps"
+          }
+        ]
+      },
+      "cloze": [
+        "Sure, but I need an entrance ",
+        {
+          "kind": "choice",
+          "answer": "that",
+          "choices": [
+            "where",
+            "when",
+            "that",
+            "whose"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "has",
+          "cue": "have",
+          "choices": [
+            "having",
+            "has",
+            "have",
+            "to have"
+          ]
+        },
+        " no steps."
+      ],
+      "chunks": [
+        {
+          "targetText": "The entrance",
+          "baseText": {
+            "de": "Der Eingang,"
+          }
+        },
+        {
+          "targetText": "that faces the parking lot",
+          "baseText": {
+            "de": "der zum Parkplatz zeigt,"
+          }
+        },
+        {
+          "targetText": "is easiest for me",
+          "baseText": {
+            "de": "ist für mich am einfachsten"
+          }
+        },
+        {
+          "targetText": "to reach.",
+          "baseText": {
+            "de": "zu erreichen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "entrance",
+          "baseText": {
+            "de": "Eingang"
+          }
+        },
+        {
+          "targetText": "faces",
+          "baseText": {
+            "de": "zeigt zu; liegt gegenüber"
+          }
+        },
+        {
+          "targetText": "parking lot",
+          "baseText": {
+            "de": "Parkplatz"
+          }
+        },
+        {
+          "targetText": "to reach",
+          "baseText": {
+            "de": "zu erreichen"
+          }
+        },
+        {
+          "targetText": "locked",
+          "baseText": {
+            "de": "abgeschlossen"
+          }
+        },
+        {
+          "targetText": "steps",
+          "baseText": {
+            "de": "Stufen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The ",
+        "answer": "entrance",
+        "after": " that faces the parking lot is easiest for me to reach.",
+        "fallbackChoices": [
+          "elevator",
+          "entrance",
+          "counter",
+          "fountain"
+        ]
+      },
+      "speakRequired": [
+        "entrance",
+        "faces",
+        "parking"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund ruft an und fragt: „Where should I meet you at the building?“"
+      },
+      "trophyWord": {
+        "word": "entrance",
+        "meaning": {
+          "de": "Eingang"
+        },
+        "example": "I need an entrance that has no steps.",
+        "whyThisWord": {
+          "de": "Damit bestimmst du einen Treffpunkt und kannst erklären, welcher Zugang für dich passt."
+        }
+      },
+      "distractors": [
+        "The side door",
+        "is harder for me"
+      ],
+      "placeholderCaption": {
+        "de": "Ein großes Gebäude mit mehreren Eingängen und einem Parkplatz dahinter."
+      },
+      "songMood": "Gemeinsames Finden eines gut erreichbaren Treffpunkts.",
+      "visualNotes": "Eine Gebäudeskizze zeigt einen Parkplatz, einen vorderen Eingang und einen stufenlosen Seitenzugang."
+    },
+    {
+      "slug": "balcony-in-the-apartment-i-saw",
+      "title": {
+        "de": "Platz für Pflanzen"
+      },
+      "situation": {
+        "de": "Bei der Wohnungssuche sprichst du mit einer Maklerin über eine besichtigte Wohnung. Erkläre, warum sie dich interessiert.",
+        "en": "During your apartment search, you discuss a place you viewed with an agent. Explain why it interested you."
+      },
+      "pedagogicalGoal": "Das Objektpronomen in einem notwendigen Relativsatz weglassen und eine andere Form von Außenfläche in Betracht ziehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which apartment caught your attention yesterday?",
+          "baseText": {
+            "de": "Welche Wohnung hat gestern Ihr Interesse geweckt?"
+          }
+        },
+        {
+          "targetText": "The apartment I saw yesterday had a balcony with room for plants.",
+          "baseText": {
+            "de": "Die Wohnung, die ich gestern gesehen habe, hatte einen Balkon mit Platz für Pflanzen."
+          }
+        },
+        {
+          "targetText": "It's taken, but I can show you one with a shared garden.",
+          "baseText": {
+            "de": "Sie ist vergeben, aber ich kann Ihnen eine mit einem Gemeinschaftsgarten zeigen."
+          }
+        },
+        {
+          "targetText": "That sounds good; I need a garden which gets enough sun.",
+          "baseText": {
+            "de": "Das klingt gut; ich brauche einen Garten, der genug Sonne bekommt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zero relative pronoun",
+        "rule": {
+          "de": "Ist that oder which das Objekt eines notwendigen Relativsatzes, kannst du es weglassen; das Subjekt wie I bleibt stehen."
+        },
+        "examples": [
+          {
+            "targetText": "The apartment I saw yesterday had a balcony with room for plants.",
+            "baseText": {
+              "de": "Die Wohnung, die ich gestern gesehen habe, hatte einen Balkon mit Platz für Pflanzen."
+            },
+            "highlight": "The apartment I saw yesterday"
+          },
+          {
+            "targetText": "The balcony I want has room for plants.",
+            "baseText": {
+              "de": "Der Balkon, den ich möchte, bietet Platz für Pflanzen."
+            },
+            "highlight": "The balcony I want"
+          }
+        ]
+      },
+      "cloze": [
+        "That sounds good; I need a garden ",
+        {
+          "kind": "choice",
+          "answer": "which",
+          "choices": [
+            "where",
+            "which",
+            "who",
+            "whose"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "gets",
+          "cue": "get",
+          "choices": [
+            "getting",
+            "gets",
+            "get",
+            "to get"
+          ]
+        },
+        " enough sun."
+      ],
+      "chunks": [
+        {
+          "targetText": "The apartment I saw yesterday",
+          "baseText": {
+            "de": "Die Wohnung, die ich gestern gesehen habe,"
+          }
+        },
+        {
+          "targetText": "had a balcony",
+          "baseText": {
+            "de": "hatte einen Balkon"
+          }
+        },
+        {
+          "targetText": "with room",
+          "baseText": {
+            "de": "mit Platz"
+          }
+        },
+        {
+          "targetText": "for plants.",
+          "baseText": {
+            "de": "für Pflanzen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "caught your attention",
+          "baseText": {
+            "de": "Ihr Interesse geweckt"
+          }
+        },
+        {
+          "targetText": "balcony",
+          "baseText": {
+            "de": "Balkon"
+          }
+        },
+        {
+          "targetText": "room for plants",
+          "baseText": {
+            "de": "Platz für Pflanzen"
+          }
+        },
+        {
+          "targetText": "taken",
+          "baseText": {
+            "de": "vergeben"
+          }
+        },
+        {
+          "targetText": "shared garden",
+          "baseText": {
+            "de": "Gemeinschaftsgarten"
+          }
+        },
+        {
+          "targetText": "gets enough sun",
+          "baseText": {
+            "de": "bekommt genug Sonne"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The apartment I saw yesterday had a ",
+        "answer": "balcony",
+        "after": " with room for plants.",
+        "fallbackChoices": [
+          "basement",
+          "garage",
+          "balcony",
+          "hallway"
+        ]
+      },
+      "speakRequired": [
+        "apartment",
+        "balcony",
+        "plants"
+      ],
+      "sceneCaption": {
+        "de": "Die Maklerin fragt Sie beim nächsten Gespräch: „Which apartment caught your attention yesterday?“"
+      },
+      "trophyWord": {
+        "word": "balcony",
+        "meaning": {
+          "de": "Balkon"
+        },
+        "example": "The apartment I saw had a sunny balcony.",
+        "whyThisWord": {
+          "de": "Damit beschreibst du eine Außenfläche, die bei deiner Wohnungswahl wichtig ist."
+        }
+      },
+      "distractors": [
+        "had a basement",
+        "for bicycles."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Wohnungsanzeige zeigt einen kleinen Balkon mit Pflanzentöpfen."
+      },
+      "songMood": "Offene Suche nach einem Zuhause mit etwas Grün.",
+      "visualNotes": "Fotos einer Balkonwohnung und eines Gemeinschaftsgartens liegen nebeneinander auf einem Schreibtisch."
+    },
+    {
+      "slug": "roommate-i-met-yesterday",
+      "title": {
+        "de": "Ein passender Mitbewohner"
+      },
+      "situation": {
+        "de": "Du erzählst einer Freundin von der Suche nach einer Person für deine Wohngemeinschaft. Beschreibe deinen ersten Eindruck.",
+        "en": "You tell a friend about your search for a roommate. Describe your first impression."
+      },
+      "pedagogicalGoal": "Eine Person mit einem Relativsatz ohne Objektpronomen beschreiben und bei einer Alternative passende Arbeitszeiten verlangen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How did the search for a roommate go?",
+          "baseText": {
+            "de": "Wie lief die Suche nach einem Mitbewohner?"
+          }
+        },
+        {
+          "targetText": "The potential roommate I met yesterday keeps the kitchen clean and works nights.",
+          "baseText": {
+            "de": "Der mögliche Mitbewohner, den ich gestern getroffen habe, hält die Küche sauber und arbeitet nachts."
+          }
+        },
+        {
+          "targetText": "That sounds promising, but my friend Sam is also looking for a room.",
+          "baseText": {
+            "de": "Das klingt vielversprechend, aber mein Freund Sam sucht auch ein Zimmer."
+          }
+        },
+        {
+          "targetText": "Sam could work; I need someone who keeps similar hours.",
+          "baseText": {
+            "de": "Sam käme infrage; ich brauche jemanden, der ähnliche Arbeitszeiten hat."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Object and subject relatives",
+        "rule": {
+          "de": "Ein Objektpronomen kannst du vor einem eigenen Subjekt weglassen, wie in the roommate I met; das Subjektpronomen in who keeps muss bleiben."
+        },
+        "examples": [
+          {
+            "targetText": "The potential roommate I met yesterday keeps the kitchen clean and works nights.",
+            "baseText": {
+              "de": "Der mögliche Mitbewohner, den ich gestern getroffen habe, hält die Küche sauber und arbeitet nachts."
+            },
+            "highlight": "The potential roommate I met yesterday"
+          },
+          {
+            "targetText": "Sam could work; I need someone who keeps similar hours.",
+            "baseText": {
+              "de": "Sam käme infrage; ich brauche jemanden, der ähnliche Arbeitszeiten hat."
+            },
+            "highlight": "who keeps similar hours"
+          }
+        ]
+      },
+      "cloze": [
+        "Sam could work; I need someone ",
+        {
+          "kind": "choice",
+          "answer": "who",
+          "choices": [
+            "where",
+            "whose",
+            "which",
+            "who"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "keeps",
+          "cue": "keep",
+          "choices": [
+            "keeping",
+            "keep",
+            "keeps",
+            "to keep"
+          ]
+        },
+        " similar hours."
+      ],
+      "chunks": [
+        {
+          "targetText": "The potential roommate I met yesterday",
+          "baseText": {
+            "de": "Der mögliche Mitbewohner, den ich gestern getroffen habe,"
+          }
+        },
+        {
+          "targetText": "keeps the kitchen clean",
+          "baseText": {
+            "de": "hält die Küche sauber"
+          }
+        },
+        {
+          "targetText": "and works",
+          "baseText": {
+            "de": "und arbeitet"
+          }
+        },
+        {
+          "targetText": "nights.",
+          "baseText": {
+            "de": "nachts."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "potential roommate",
+          "baseText": {
+            "de": "möglicher Mitbewohner; mögliche Mitbewohnerin"
+          }
+        },
+        {
+          "targetText": "met yesterday",
+          "baseText": {
+            "de": "gestern getroffen"
+          }
+        },
+        {
+          "targetText": "keeps the kitchen clean",
+          "baseText": {
+            "de": "hält die Küche sauber"
+          }
+        },
+        {
+          "targetText": "works nights",
+          "baseText": {
+            "de": "arbeitet nachts"
+          }
+        },
+        {
+          "targetText": "promising",
+          "baseText": {
+            "de": "vielversprechend"
+          }
+        },
+        {
+          "targetText": "similar hours",
+          "baseText": {
+            "de": "ähnliche Arbeitszeiten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The potential ",
+        "answer": "roommate",
+        "after": " I met yesterday keeps the kitchen clean and works nights.",
+        "fallbackChoices": [
+          "landlord",
+          "roommate",
+          "customer",
+          "instructor"
+        ]
+      },
+      "speakRequired": [
+        "roommate",
+        "kitchen",
+        "nights"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt beim Frühstück: „How did the search for a roommate go?“"
+      },
+      "trophyWord": {
+        "word": "roommate",
+        "meaning": {
+          "de": "Mitbewohner; Mitbewohnerin"
+        },
+        "example": "My ideal roommate keeps the kitchen clean.",
+        "whyThisWord": {
+          "de": "Damit bezeichnest du im amerikanischen Englisch eine Person, mit der du eine Wohnung teilst."
+        }
+      },
+      "distractors": [
+        "leaves the kitchen messy",
+        "weekends."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen in einer gemeinsamen Küche über die Zimmersuche."
+      },
+      "songMood": "Aufmerksames Abwägen, mit wem der Alltag gut funktionieren könnte.",
+      "visualNotes": "Eine aufgeräumte Gemeinschaftsküche mit einem freien Platz am Frühstückstisch."
+    },
+    {
+      "slug": "table-where-i-left-my-charger",
+      "title": {
+        "de": "Das Ladegerät am Fenstertisch"
+      },
+      "situation": {
+        "de": "Du fragst im Café nach deinem vergessenen Ladegerät. Erkläre, wo du gesessen hast.",
+        "en": "You ask at a café about a charger you left behind. Explain where you were sitting."
+      },
+      "pedagogicalGoal": "Mit where einen Ort näher beschreiben und einen angebotenen Gegenstand anhand eines Merkmals prüfen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which table were you using yesterday?",
+          "baseText": {
+            "de": "An welchem Tisch haben Sie gestern gesessen?"
+          }
+        },
+        {
+          "targetText": "The table where I left my charger was beside that window.",
+          "baseText": {
+            "de": "Der Tisch, an dem ich mein Ladegerät liegen gelassen habe, stand neben diesem Fenster."
+          }
+        },
+        {
+          "targetText": "I found a white charger there. Could this be yours?",
+          "baseText": {
+            "de": "Ich habe dort ein weißes Ladegerät gefunden. Könnte das Ihres sein?"
+          }
+        },
+        {
+          "targetText": "Possibly, but mine has a cable which is bright blue.",
+          "baseText": {
+            "de": "Möglicherweise, aber meines hat ein Kabel, das leuchtend blau ist."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Where in relative clauses",
+        "rule": {
+          "de": "Where verbindet einen Ort mit dem, was dort geschieht, und entspricht hier an dem oder dort, wo."
+        },
+        "examples": [
+          {
+            "targetText": "The table where I left my charger was beside that window.",
+            "baseText": {
+              "de": "Der Tisch, an dem ich mein Ladegerät liegen gelassen habe, stand neben diesem Fenster."
+            },
+            "highlight": "where I left my charger"
+          },
+          {
+            "targetText": "The café where I work has a quiet corner.",
+            "baseText": {
+              "de": "Das Café, in dem ich arbeite, hat eine ruhige Ecke."
+            },
+            "highlight": "where I work"
+          }
+        ]
+      },
+      "cloze": [
+        "Possibly, but mine has a cable ",
+        {
+          "kind": "choice",
+          "answer": "which",
+          "choices": [
+            "whose",
+            "who",
+            "which",
+            "where"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "is",
+          "cue": "be",
+          "choices": [
+            "are",
+            "being",
+            "is",
+            "be"
+          ]
+        },
+        " bright blue."
+      ],
+      "chunks": [
+        {
+          "targetText": "The table",
+          "baseText": {
+            "de": "Der Tisch,"
+          }
+        },
+        {
+          "targetText": "where I left my charger",
+          "baseText": {
+            "de": "an dem ich mein Ladegerät liegen gelassen habe,"
+          }
+        },
+        {
+          "targetText": "was beside",
+          "baseText": {
+            "de": "stand neben"
+          }
+        },
+        {
+          "targetText": "that window.",
+          "baseText": {
+            "de": "diesem Fenster."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "charger",
+          "baseText": {
+            "de": "Ladegerät"
+          }
+        },
+        {
+          "targetText": "left my charger",
+          "baseText": {
+            "de": "mein Ladegerät liegen gelassen"
+          }
+        },
+        {
+          "targetText": "beside",
+          "baseText": {
+            "de": "neben"
+          }
+        },
+        {
+          "targetText": "window",
+          "baseText": {
+            "de": "Fenster"
+          }
+        },
+        {
+          "targetText": "cable",
+          "baseText": {
+            "de": "Kabel"
+          }
+        },
+        {
+          "targetText": "bright blue",
+          "baseText": {
+            "de": "leuchtend blau"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The table where I left my ",
+        "answer": "charger",
+        "after": " was beside that window.",
+        "fallbackChoices": [
+          "notebook",
+          "jacket",
+          "charger",
+          "wallet"
+        ]
+      },
+      "speakRequired": [
+        "table",
+        "charger",
+        "window"
+      ],
+      "sceneCaption": {
+        "de": "Am Cafétresen fragt der Mitarbeiter: „Which table were you using yesterday?“"
+      },
+      "trophyWord": {
+        "word": "charger",
+        "meaning": {
+          "de": "Ladegerät"
+        },
+        "example": "The table where I left my charger is near the window.",
+        "whyThisWord": {
+          "de": "Damit benennst du einen häufig vergessenen Gegenstand und kannst ihn gezielt wiederfinden."
+        }
+      },
+      "distractors": [
+        "was opposite",
+        "the front door."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Cafétisch am Fenster mit einer Steckdose an der Wand."
+      },
+      "songMood": "Ruhige Suche nach einem kleinen verlorenen Alltagsgegenstand.",
+      "visualNotes": "Ein Mitarbeiter zeigt ein Ladegerät; im Hintergrund stehen Tische nahe einem großen Fenster."
+    },
+    {
+      "slug": "jacket-whose-sleeves-felt-comfortable",
+      "title": {
+        "de": "Die Jacke mit den passenden Ärmeln"
+      },
+      "situation": {
+        "de": "Du möchtest eine Jacke kaufen, die du bereits anprobiert hast. Beschreibe der Verkäuferin, welches Modell du meinst.",
+        "en": "You want to buy a jacket you tried on earlier. Describe the model to the sales assistant."
+      },
+      "pedagogicalGoal": "Mit whose einen zugehörigen Teil beschreiben und eine andere Farbe bei gleicher Passform akzeptieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which jacket would you like to try again?",
+          "baseText": {
+            "de": "Welche Jacke möchten Sie noch einmal anprobieren?"
+          }
+        },
+        {
+          "targetText": "I'd like the jacket whose sleeves felt comfortable when I tried it on.",
+          "baseText": {
+            "de": "Ich hätte gern die Jacke, deren Ärmel sich angenehm angefühlt haben, als ich sie anprobiert habe."
+          }
+        },
+        {
+          "targetText": "That color is sold out, but the same jacket comes in green.",
+          "baseText": {
+            "de": "Diese Farbe ist ausverkauft, aber dieselbe Jacke gibt es in Grün."
+          }
+        },
+        {
+          "targetText": "Green works; I need sleeves which let me move freely.",
+          "baseText": {
+            "de": "Grün passt; ich brauche Ärmel, in denen ich mich frei bewegen kann."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Whose for possession",
+        "rule": {
+          "de": "Whose steht vor dem Nomen eines zugehörigen Teils und bedeutet dessen oder deren; es kann sich auch auf Sachen beziehen."
+        },
+        "examples": [
+          {
+            "targetText": "I'd like the jacket whose sleeves felt comfortable when I tried it on.",
+            "baseText": {
+              "de": "Ich hätte gern die Jacke, deren Ärmel sich angenehm angefühlt haben, als ich sie anprobiert habe."
+            },
+            "highlight": "whose sleeves felt comfortable"
+          },
+          {
+            "targetText": "I'd like the coat whose collar feels soft.",
+            "baseText": {
+              "de": "Ich hätte gern den Mantel, dessen Kragen sich weich anfühlt."
+            },
+            "highlight": "whose collar feels soft"
+          }
+        ]
+      },
+      "cloze": [
+        "Green works; I need sleeves ",
+        {
+          "kind": "choice",
+          "answer": "which",
+          "choices": [
+            "where",
+            "whose",
+            "who",
+            "which"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "let",
+          "cue": "let",
+          "choices": [
+            "lets",
+            "let",
+            "letting",
+            "to let"
+          ]
+        },
+        " me move freely."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd like",
+          "baseText": {
+            "de": "Ich hätte gern"
+          }
+        },
+        {
+          "targetText": "the jacket",
+          "baseText": {
+            "de": "die Jacke,"
+          }
+        },
+        {
+          "targetText": "whose sleeves felt comfortable",
+          "baseText": {
+            "de": "deren Ärmel sich angenehm angefühlt haben,"
+          }
+        },
+        {
+          "targetText": "when I tried it on.",
+          "baseText": {
+            "de": "als ich sie anprobiert habe."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "jacket",
+          "baseText": {
+            "de": "Jacke"
+          }
+        },
+        {
+          "targetText": "whose sleeves",
+          "baseText": {
+            "de": "deren Ärmel"
+          }
+        },
+        {
+          "targetText": "felt comfortable",
+          "baseText": {
+            "de": "haben sich angenehm angefühlt"
+          }
+        },
+        {
+          "targetText": "tried it on",
+          "baseText": {
+            "de": "sie anprobiert"
+          }
+        },
+        {
+          "targetText": "comes in green",
+          "baseText": {
+            "de": "ist in Grün erhältlich"
+          }
+        },
+        {
+          "targetText": "move freely",
+          "baseText": {
+            "de": "sich frei bewegen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd like the ",
+        "answer": "jacket",
+        "after": " whose sleeves felt comfortable when I tried it on.",
+        "fallbackChoices": [
+          "shirt",
+          "sweater",
+          "jacket",
+          "coat"
+        ]
+      },
+      "speakRequired": [
+        "jacket",
+        "sleeves",
+        "comfortable"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Umkleidekabine fragt die Verkäuferin: „Which jacket would you like to try again?“"
+      },
+      "trophyWord": {
+        "word": "jacket",
+        "meaning": {
+          "de": "Jacke"
+        },
+        "example": "I prefer the jacket whose sleeves feel comfortable.",
+        "whyThisWord": {
+          "de": "Du lernst, ein Kleidungsstück anhand eines passenden Details eindeutig zu beschreiben."
+        }
+      },
+      "distractors": [
+        "the coat",
+        "when I wore it outside."
+      ],
+      "placeholderCaption": {
+        "de": "Mehrere Farben desselben Jackenmodells hängen neben einer Umkleidekabine."
+      },
+      "songMood": "Entspannte Entscheidung für bequeme Kleidung.",
+      "visualNotes": "Eine grüne Jacke hängt neben einem Spiegel; eine Kundin oder ein Kunde prüft die Bewegungsfreiheit der Ärmel."
+    },
+    {
+      "slug": "what-identifies-my-suitcase",
+      "title": {
+        "de": "Den richtigen Koffer erkennen"
+      },
+      "situation": {
+        "de": "Am Fundschalter beschreibst du deinen Koffer. Nenne ein Merkmal, das beim Wiederfinden hilft.",
+        "en": "At a lost-property desk, you describe your suitcase. Mention a feature that helps identify it."
+      },
+      "pedagogicalGoal": "Mit what eine Sache als das, was etwas bewirkt, hervorheben und einen ähnlichen Gegenstand genauer prüfen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What makes your suitcase easy to recognize?",
+          "baseText": {
+            "de": "Woran lässt sich Ihr Koffer leicht erkennen?"
+          }
+        },
+        {
+          "targetText": "What makes my suitcase easy to spot is the red ribbon on the handle.",
+          "baseText": {
+            "de": "Was meinen Koffer leicht erkennbar macht, ist das rote Band am Griff."
+          }
+        },
+        {
+          "targetText": "This one has a red ribbon too, but the handle is silver.",
+          "baseText": {
+            "de": "Dieser hat auch ein rotes Band, aber der Griff ist silbern."
+          }
+        },
+        {
+          "targetText": "That might be it; what matters is the broken zipper.",
+          "baseText": {
+            "de": "Das könnte er sein; entscheidend ist der kaputte Reißverschluss."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "What-clauses",
+        "rule": {
+          "de": "Ein what-Satz kann für das, was stehen und braucht dann kein vorher genanntes Nomen als Bezug."
+        },
+        "examples": [
+          {
+            "targetText": "What makes my suitcase easy to spot is the red ribbon on the handle.",
+            "baseText": {
+              "de": "Was meinen Koffer leicht erkennbar macht, ist das rote Band am Griff."
+            },
+            "highlight": "What makes my suitcase easy to spot"
+          },
+          {
+            "targetText": "That might be it; what matters is the broken zipper.",
+            "baseText": {
+              "de": "Das könnte er sein; entscheidend ist der kaputte Reißverschluss."
+            },
+            "highlight": "what matters"
+          }
+        ]
+      },
+      "cloze": [
+        "That might be it; ",
+        {
+          "kind": "choice",
+          "answer": "what",
+          "choices": [
+            "where",
+            "which",
+            "what",
+            "whose"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "matters",
+          "cue": "matter",
+          "choices": [
+            "matter",
+            "matters",
+            "mattering",
+            "to matter"
+          ]
+        },
+        " is the broken zipper."
+      ],
+      "chunks": [
+        {
+          "targetText": "What makes my suitcase",
+          "baseText": {
+            "de": "Was meinen Koffer"
+          }
+        },
+        {
+          "targetText": "easy to spot",
+          "baseText": {
+            "de": "leicht erkennbar macht,"
+          }
+        },
+        {
+          "targetText": "is the red ribbon",
+          "baseText": {
+            "de": "ist das rote Band"
+          }
+        },
+        {
+          "targetText": "on the handle.",
+          "baseText": {
+            "de": "am Griff."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "suitcase",
+          "baseText": {
+            "de": "Koffer"
+          }
+        },
+        {
+          "targetText": "easy to spot",
+          "baseText": {
+            "de": "leicht erkennbar"
+          }
+        },
+        {
+          "targetText": "red ribbon",
+          "baseText": {
+            "de": "rotes Band"
+          }
+        },
+        {
+          "targetText": "handle",
+          "baseText": {
+            "de": "Griff"
+          }
+        },
+        {
+          "targetText": "what matters",
+          "baseText": {
+            "de": "was wichtig ist"
+          }
+        },
+        {
+          "targetText": "broken zipper",
+          "baseText": {
+            "de": "kaputter Reißverschluss"
+          }
+        }
+      ],
+      "recall": {
+        "before": "What makes my ",
+        "answer": "suitcase",
+        "after": " easy to spot is the red ribbon on the handle.",
+        "fallbackChoices": [
+          "backpack",
+          "suitcase",
+          "briefcase",
+          "umbrella"
+        ]
+      },
+      "speakRequired": [
+        "suitcase",
+        "ribbon",
+        "handle"
+      ],
+      "sceneCaption": {
+        "de": "Am Fundschalter fragt der Mitarbeiter: „What makes your suitcase easy to recognize?“"
+      },
+      "trophyWord": {
+        "word": "suitcase",
+        "meaning": {
+          "de": "Koffer"
+        },
+        "example": "What identifies my suitcase is the ribbon on its handle.",
+        "whyThisWord": {
+          "de": "Du kannst damit ein Reisegepäckstück benennen und seine besonderen Merkmale beschreiben."
+        }
+      },
+      "distractors": [
+        "is the blue label",
+        "on the side."
+      ],
+      "placeholderCaption": {
+        "de": "Mehrere Koffer stehen hinter einem Fundschalter, einer trägt ein rotes Band."
+      },
+      "songMood": "Aufmerksames Vergleichen beim Wiederfinden eines Gepäckstücks.",
+      "visualNotes": "Ein Fundbüro mit zwei ähnlichen Koffern, farbigen Bändern und gut sichtbaren Griffen."
+    },
+    {
+      "slug": "department-for-damaged-deliveries",
+      "title": {
+        "de": "Zur richtigen Abteilung"
+      },
+      "situation": {
+        "de": "Nach einer beschädigten Möbellieferung rufst du im Geschäft an. Beschreibe, welche Abteilung du brauchst.",
+        "en": "After receiving damaged furniture, you call the store. Describe which department you need."
+      },
+      "pedagogicalGoal": "Relativsätze mit und ohne Pronomen sowie einen what-Satz verbinden, um bei einer Weiterleitung das Anliegen klar zu halten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which department are you trying to reach?",
+          "baseText": {
+            "de": "Welche Abteilung möchten Sie erreichen?"
+          }
+        },
+        {
+          "targetText": "The department that handles damaged deliveries is the one I need.",
+          "baseText": {
+            "de": "Die Abteilung, die beschädigte Lieferungen bearbeitet, ist diejenige, die ich brauche."
+          }
+        },
+        {
+          "targetText": "I can connect you to customer service, but they handle several kinds of complaints.",
+          "baseText": {
+            "de": "Ich kann Sie mit dem Kundenservice verbinden, aber dort bearbeitet man verschiedene Arten von Beschwerden."
+          }
+        },
+        {
+          "targetText": "That works; what I need is help with a broken table.",
+          "baseText": {
+            "de": "Das passt; was ich brauche, ist Hilfe wegen eines kaputten Tisches."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Combining relative clauses",
+        "rule": {
+          "de": "Mit that bestimmst du das Subjekt eines Relativsatzes, ein Objektpronomen kannst du weglassen, und what fasst das, was zu einem eigenen Satzteil zusammen."
+        },
+        "examples": [
+          {
+            "targetText": "The department that handles damaged deliveries is the one I need.",
+            "baseText": {
+              "de": "Die Abteilung, die beschädigte Lieferungen bearbeitet, ist diejenige, die ich brauche."
+            },
+            "highlight": "the one I need"
+          },
+          {
+            "targetText": "That works; what I need is help with a broken table.",
+            "baseText": {
+              "de": "Das passt; was ich brauche, ist Hilfe wegen eines kaputten Tisches."
+            },
+            "highlight": "what I need"
+          }
+        ]
+      },
+      "cloze": [
+        "That works; ",
+        {
+          "kind": "choice",
+          "answer": "what",
+          "choices": [
+            "which",
+            "what",
+            "whose",
+            "where"
+          ]
+        },
+        " I ",
+        {
+          "kind": "form",
+          "answer": "need",
+          "cue": "need",
+          "choices": [
+            "needing",
+            "needs",
+            "to need",
+            "need"
+          ]
+        },
+        " is help with a broken table."
+      ],
+      "chunks": [
+        {
+          "targetText": "The department",
+          "baseText": {
+            "de": "Die Abteilung,"
+          }
+        },
+        {
+          "targetText": "that handles damaged deliveries",
+          "baseText": {
+            "de": "die beschädigte Lieferungen bearbeitet,"
+          }
+        },
+        {
+          "targetText": "is the one",
+          "baseText": {
+            "de": "ist diejenige,"
+          }
+        },
+        {
+          "targetText": "I need.",
+          "baseText": {
+            "de": "die ich brauche."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "department",
+          "baseText": {
+            "de": "Abteilung"
+          }
+        },
+        {
+          "targetText": "handles",
+          "baseText": {
+            "de": "bearbeitet; kümmert sich um"
+          }
+        },
+        {
+          "targetText": "damaged deliveries",
+          "baseText": {
+            "de": "beschädigte Lieferungen"
+          }
+        },
+        {
+          "targetText": "connect you",
+          "baseText": {
+            "de": "Sie verbinden"
+          }
+        },
+        {
+          "targetText": "customer service",
+          "baseText": {
+            "de": "Kundenservice"
+          }
+        },
+        {
+          "targetText": "complaints",
+          "baseText": {
+            "de": "Beschwerden"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The ",
+        "answer": "department",
+        "after": " that handles damaged deliveries is the one I need.",
+        "fallbackChoices": [
+          "warehouse",
+          "department",
+          "workshop",
+          "office"
+        ]
+      },
+      "speakRequired": [
+        "department",
+        "handles",
+        "deliveries"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt die Mitarbeiterin: „Which department are you trying to reach?“"
+      },
+      "trophyWord": {
+        "word": "department",
+        "meaning": {
+          "de": "Abteilung"
+        },
+        "example": "The department I need handles delivery problems.",
+        "whyThisWord": {
+          "de": "Damit findest du in einem größeren Unternehmen die zuständige Stelle für dein Anliegen."
+        }
+      },
+      "distractors": [
+        "that handles new orders",
+        "is the place"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Telefongespräch über eine beschädigte Möbellieferung."
+      },
+      "songMood": "Sachliche Weiterleitung mit einem klar formulierten Anliegen.",
+      "visualNotes": "Auf einem Tisch liegen eine Lieferbestätigung und ein Foto eines beschädigten Tischbeins."
+    }
+  ]
+}

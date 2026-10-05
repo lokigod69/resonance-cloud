@@ -1,0 +1,2116 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Genau das suche ich",
+    "en": "That's the one I need"
+  },
+  "subtitle": {
+    "de": "Dinge genauer beschreiben und Angebote anpassen",
+    "en": "Describe things precisely and adapt to an offer"
+  },
+  "anchor": "Fable staging: L1–L4 que; L5–L6 el que/la que; L7–L8 donde; L9 lo que; L10 mixed relatives. Negotiation episodes, formal singular usted in service settings. Indicative relatives describe identified objects; no new subjunctive family. es-ES, gender-neutral learner production. Draft awaiting Fable personal review.",
+  "lessons": [
+    {
+      "slug": "balcon-a-una-calle-tranquila",
+      "title": {
+        "de": "Ein Balkon zum Sitzen",
+        "en": "A balcony to sit on"
+      },
+      "situation": {
+        "de": "Bei einer Wohnungsbesichtigung besprichst du mit dem Makler die Balkone. Erkläre, welcher dir gefällt und was dir daran wichtig ist.",
+        "en": "During a flat viewing, you discuss the balconies with the agent. Explain which one you like and what matters to you."
+      },
+      "pedagogicalGoal": "Mit que einen bestimmten Balkon beschreiben und nach einem Einwand das wichtigste Kriterium beibehalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Cuál de estos balcones le interesa más?",
+          "baseText": {
+            "de": "Welcher dieser Balkone interessiert Sie am meisten?",
+            "en": "Which of these balconies interests you most?"
+          }
+        },
+        {
+          "targetText": "Prefiero el balcón que da a una calle tranquila y tiene sitio para una silla.",
+          "baseText": {
+            "de": "Ich bevorzuge den Balkon, der zu einer ruhigen Straße liegt und Platz für einen Stuhl hat.",
+            "en": "I prefer the balcony that faces a quiet street and has room for a chair."
+          }
+        },
+        {
+          "targetText": "El de esa calle es más pequeño que en la foto.",
+          "baseText": {
+            "de": "Der zu dieser Straße ist kleiner als auf dem Foto.",
+            "en": "The one facing that street is smaller than it looks in the photo."
+          }
+        },
+        {
+          "targetText": "Acepto el balcón que da a esa calle; la tranquilidad me importa.",
+          "baseText": {
+            "de": "Ich nehme den Balkon zu dieser Straße; die Ruhe ist mir wichtig.",
+            "en": "I'll take the balcony facing that street; the peace and quiet matters to me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El balcón que…",
+        "rule": {
+          "de": "Mit que schließt du eine Eigenschaft an ein genanntes Ding an und machst klar, welches du meinst.",
+          "en": "Use que to attach a characteristic to a named thing and make clear which one you mean."
+        },
+        "examples": [
+          {
+            "targetText": "Prefiero el balcón que da a una calle tranquila y tiene sitio para una silla.",
+            "baseText": {
+              "de": "Ich bevorzuge den Balkon, der zu einer ruhigen Straße liegt und Platz für einen Stuhl hat.",
+              "en": "I prefer the balcony that faces a quiet street and has room for a chair."
+            },
+            "highlight": "que da a una calle tranquila"
+          },
+          {
+            "targetText": "La ventana que da al patio deja entrar mucha luz.",
+            "baseText": {
+              "de": "Das Fenster zum Innenhof lässt viel Licht herein.",
+              "en": "The window facing the courtyard lets in plenty of light."
+            },
+            "highlight": "que da al patio"
+          }
+        ]
+      },
+      "cloze": [
+        "Acepto el balcón ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "donde",
+            "el que",
+            "que",
+            "lo que"
+          ]
+        },
+        " da a esa calle; la tranquilidad me ",
+        {
+          "kind": "form",
+          "answer": "importa",
+          "cue": "importar (la tranquilidad)",
+          "choices": [
+            "importan",
+            "importamos",
+            "importo",
+            "importa"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prefiero el balcón",
+          "baseText": {
+            "de": "Ich bevorzuge den Balkon",
+            "en": "I prefer the balcony"
+          }
+        },
+        {
+          "targetText": "que da a una calle tranquila",
+          "baseText": {
+            "de": "der zu einer ruhigen Straße liegt",
+            "en": "that faces a quiet street"
+          }
+        },
+        {
+          "targetText": "y tiene sitio",
+          "baseText": {
+            "de": "und Platz hat",
+            "en": "and has room"
+          }
+        },
+        {
+          "targetText": "para una silla.",
+          "baseText": {
+            "de": "für einen Stuhl.",
+            "en": "for a chair."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "balcón",
+          "baseText": {
+            "de": "Balkon",
+            "en": "balcony"
+          }
+        },
+        {
+          "targetText": "da a la calle",
+          "baseText": {
+            "de": "liegt zur Straße",
+            "en": "faces the street"
+          }
+        },
+        {
+          "targetText": "una calle tranquila",
+          "baseText": {
+            "de": "eine ruhige Straße",
+            "en": "a quiet street"
+          }
+        },
+        {
+          "targetText": "tener sitio",
+          "baseText": {
+            "de": "Platz haben",
+            "en": "to have room"
+          }
+        },
+        {
+          "targetText": "una silla",
+          "baseText": {
+            "de": "ein Stuhl",
+            "en": "a chair"
+          }
+        },
+        {
+          "targetText": "la tranquilidad",
+          "baseText": {
+            "de": "die Ruhe",
+            "en": "peace and quiet"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prefiero el ",
+        "answer": "balcón",
+        "after": " que da a una calle tranquila y tiene sitio para una silla.",
+        "fallbackChoices": [
+          "balcón",
+          "horario",
+          "alquiler",
+          "tráfico"
+        ]
+      },
+      "speakRequired": [
+        "balcón",
+        "tranquila",
+        "silla"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Besichtigung fragt der Makler: „¿Cuál de estos balcones le interesa más?“",
+        "en": "During the viewing, the agent asks: “¿Cuál de estos balcones le interesa más?”"
+      },
+      "trophyWord": {
+        "word": "balcón",
+        "meaning": {
+          "de": "Balkon",
+          "en": "balcony"
+        },
+        "example": "El balcón que da al patio recibe sol por la mañana.",
+        "whyThisWord": {
+          "de": "Mit balcón kannst du einen konkreten Teil einer Wohnung benennen und seine Lage beschreiben.",
+          "en": "Balcón lets you name a specific part of a flat and describe where it faces."
+        }
+      },
+      "distractors": [
+        "Prefiero el dormitorio",
+        "para una mesa."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch bei einer Wohnungsbesichtigung.",
+        "en": "A conversation during a flat viewing."
+      },
+      "songMood": "Warm, unhurried acoustic pop.",
+      "visualNotes": "Flat viewing in Spain, balcony doors and an agent; no size discrepancy shown."
+    },
+    {
+      "slug": "ascensor-hasta-la-quinta-planta",
+      "title": {
+        "de": "Bis in den fünften Stock",
+        "en": "Up to the fifth floor"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei einer Immobilienverwaltung nach einem Gebäude aus einer Anzeige. Der Zugang zur Wohnung ist dir wichtig.",
+        "en": "You ask a property manager about a building in an advert. Access to the flat matters to you."
+      },
+      "pedagogicalGoal": "Mit que einen Aufzug genauer bestimmen und eine Zugangsbeschränkung gezielt klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué edificio del anuncio le interesa?",
+          "baseText": {
+            "de": "Welches Gebäude aus der Anzeige interessiert Sie?",
+            "en": "Which building in the advert interests you?"
+          }
+        },
+        {
+          "targetText": "Me interesa el edificio con ascensor que llega directamente hasta la quinta planta.",
+          "baseText": {
+            "de": "Mich interessiert das Gebäude mit dem Aufzug, der direkt bis in den fünften Stock fährt.",
+            "en": "I'm interested in the building with the lift that goes directly to the fifth floor."
+          }
+        },
+        {
+          "targetText": "El ascensor llega a la cuarta; para la quinta hay un tramo de escaleras.",
+          "baseText": {
+            "de": "Der Aufzug fährt bis zum vierten Stock; zum fünften gibt es noch einen Treppenabschnitt.",
+            "en": "The lift reaches the fourth floor; there is a flight of stairs to the fifth."
+          }
+        },
+        {
+          "targetText": "¿El tramo que falta tiene muchos escalones? Llevo equipaje.",
+          "baseText": {
+            "de": "Hat das verbleibende Stück viele Stufen? Ich habe Gepäck dabei.",
+            "en": "Does the remaining section have many steps? I have luggage."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un objeto y la parte que falta",
+        "rule": {
+          "de": "Que verbindet ein Ding mit einer näheren Beschreibung; es bleibt gleich, auch wenn das Bezugswort wechselt.",
+          "en": "Que connects a thing to a more precise description; its form stays the same even when the noun changes."
+        },
+        "examples": [
+          {
+            "targetText": "¿El tramo que falta tiene muchos escalones? Llevo equipaje.",
+            "baseText": {
+              "de": "Hat das verbleibende Stück viele Stufen? Ich habe Gepäck dabei.",
+              "en": "Does the remaining section have many steps? I have luggage."
+            },
+            "highlight": "que falta"
+          },
+          {
+            "targetText": "El ascensor que usamos llega a todas las plantas.",
+            "baseText": {
+              "de": "Der Aufzug, den wir benutzen, fährt in alle Stockwerke.",
+              "en": "The lift we use reaches every floor."
+            },
+            "highlight": "que usamos"
+          }
+        ]
+      },
+      "cloze": [
+        "¿El tramo ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "el que",
+            "que",
+            "lo que",
+            "donde"
+          ]
+        },
+        " falta ",
+        {
+          "kind": "form",
+          "answer": "tiene",
+          "cue": "tener (el tramo)",
+          "choices": [
+            "tengo",
+            "tienen",
+            "tiene",
+            "tenemos"
+          ]
+        },
+        " muchos escalones? Llevo equipaje."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me interesa el edificio",
+          "baseText": {
+            "de": "Mich interessiert das Gebäude",
+            "en": "I'm interested in the building"
+          }
+        },
+        {
+          "targetText": "con ascensor",
+          "baseText": {
+            "de": "mit Aufzug",
+            "en": "with a lift"
+          }
+        },
+        {
+          "targetText": "que llega directamente",
+          "baseText": {
+            "de": "der direkt fährt",
+            "en": "that goes directly"
+          }
+        },
+        {
+          "targetText": "hasta la quinta planta.",
+          "baseText": {
+            "de": "bis in den fünften Stock.",
+            "en": "to the fifth floor."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "el edificio",
+          "baseText": {
+            "de": "das Gebäude",
+            "en": "the building"
+          }
+        },
+        {
+          "targetText": "ascensor",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "lift"
+          }
+        },
+        {
+          "targetText": "la quinta planta",
+          "baseText": {
+            "de": "der fünfte Stock",
+            "en": "the fifth floor"
+          }
+        },
+        {
+          "targetText": "un tramo de escaleras",
+          "baseText": {
+            "de": "ein Treppenabschnitt",
+            "en": "a flight of stairs"
+          }
+        },
+        {
+          "targetText": "los escalones",
+          "baseText": {
+            "de": "die Stufen",
+            "en": "the steps"
+          }
+        },
+        {
+          "targetText": "equipaje",
+          "baseText": {
+            "de": "Gepäck",
+            "en": "luggage"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me interesa el edificio con ",
+        "answer": "ascensor",
+        "after": " que llega directamente hasta la quinta planta.",
+        "fallbackChoices": [
+          "descanso",
+          "ascensor",
+          "ambiente",
+          "alquiler"
+        ]
+      },
+      "speakRequired": [
+        "edificio",
+        "ascensor",
+        "quinta"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Immobilienverwaltung fragt der Mitarbeiter: „¿Qué edificio del anuncio le interesa?“",
+        "en": "At the property office, the staff member asks: “¿Qué edificio del anuncio le interesa?”"
+      },
+      "trophyWord": {
+        "word": "ascensor",
+        "meaning": {
+          "de": "Aufzug",
+          "en": "lift"
+        },
+        "example": "El ascensor que llega a mi planta está junto a la entrada.",
+        "whyThisWord": {
+          "de": "Ascensor hilft dir, die Erreichbarkeit einer Wohnung konkret zu besprechen.",
+          "en": "Ascensor helps you discuss the practical accessibility of a flat."
+        }
+      },
+      "distractors": [
+        "Me interesa el hotel",
+        "hasta la tercera planta."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Immobilienanzeige wird am Schalter besprochen.",
+        "en": "A property advert is discussed at a desk."
+      },
+      "songMood": "Clear, measured acoustic pop.",
+      "visualNotes": "Property office and building advert; no stairs limitation shown."
+    },
+    {
+      "slug": "enchufe-para-el-cargador",
+      "title": {
+        "de": "Den Anschluss finden",
+        "en": "Finding the right connection"
+      },
+      "situation": {
+        "de": "Im Elektrogeschäft zeigst du ein Foto eines Anschlusses. Erkläre, was du für dein Ladegerät suchst.",
+        "en": "In an electrical shop, you show a photo of a connection. Explain what you need for your charger."
+      },
+      "pedagogicalGoal": "Mit que einen fotografierten Gegenstand bestimmen und eine angebotene Alternative zuordnen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué necesita para conectar su cargador?",
+          "baseText": {
+            "de": "Was brauchen Sie, um Ihr Ladegerät anzuschließen?",
+            "en": "What do you need to connect your charger?"
+          }
+        },
+        {
+          "targetText": "Busco el enchufe que aparece en esta foto para conectar mi cargador.",
+          "baseText": {
+            "de": "Ich suche den Anschluss auf diesem Foto, um mein Ladegerät anzuschließen.",
+            "en": "I'm looking for the socket shown in this photo to connect my charger."
+          }
+        },
+        {
+          "targetText": "No tenemos esa toma, pero este adaptador permite usar su cargador.",
+          "baseText": {
+            "de": "Diese Steckdose haben wir nicht, aber mit diesem Adapter können Sie Ihr Ladegerät benutzen.",
+            "en": "We don't have that socket, but this adapter lets you use your charger."
+          }
+        },
+        {
+          "targetText": "Elijo el adaptador que recomienda; mi cargador tiene dos clavijas.",
+          "baseText": {
+            "de": "Ich nehme den Adapter, den Sie empfehlen; mein Ladegerät hat zwei Stifte.",
+            "en": "I'll choose the adapter you recommend; my charger has two pins."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Que: identificar por una imagen o recomendación",
+        "rule": {
+          "de": "Mit que kannst du angeben, welches Ding auf einem Bild zu sehen ist oder welche Person es empfiehlt.",
+          "en": "Que can identify a thing by what appears in a picture or by the person recommending it."
+        },
+        "examples": [
+          {
+            "targetText": "Busco el enchufe que aparece en esta foto para conectar mi cargador.",
+            "baseText": {
+              "de": "Ich suche den Anschluss auf diesem Foto, um mein Ladegerät anzuschließen.",
+              "en": "I'm looking for the socket shown in this photo to connect my charger."
+            },
+            "highlight": "que aparece en esta foto"
+          },
+          {
+            "targetText": "El cable que recomienda sirve para mi móvil.",
+            "baseText": {
+              "de": "Das Kabel, das Sie empfehlen, passt für mein Handy.",
+              "en": "The cable you recommend works with my phone."
+            },
+            "highlight": "que recomienda"
+          }
+        ]
+      },
+      "cloze": [
+        "Elijo el adaptador ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "lo que",
+            "donde",
+            "el que",
+            "que"
+          ]
+        },
+        " recomienda; mi cargador ",
+        {
+          "kind": "form",
+          "answer": "tiene",
+          "cue": "tener (mi cargador)",
+          "choices": [
+            "tiene",
+            "tienen",
+            "tengo",
+            "tenemos"
+          ]
+        },
+        " dos clavijas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Busco el enchufe",
+          "baseText": {
+            "de": "Ich suche den Anschluss",
+            "en": "I'm looking for the socket"
+          }
+        },
+        {
+          "targetText": "que aparece",
+          "baseText": {
+            "de": "der zu sehen ist",
+            "en": "that appears"
+          }
+        },
+        {
+          "targetText": "en esta foto",
+          "baseText": {
+            "de": "auf diesem Foto",
+            "en": "in this photo"
+          }
+        },
+        {
+          "targetText": "para conectar mi cargador.",
+          "baseText": {
+            "de": "um mein Ladegerät anzuschließen.",
+            "en": "to connect my charger."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "enchufe",
+          "baseText": {
+            "de": "Steckdose; Anschluss",
+            "en": "socket; connection"
+          }
+        },
+        {
+          "targetText": "aparece en la foto",
+          "baseText": {
+            "de": "ist auf dem Foto zu sehen",
+            "en": "appears in the photo"
+          }
+        },
+        {
+          "targetText": "conectar",
+          "baseText": {
+            "de": "anschließen",
+            "en": "to connect"
+          }
+        },
+        {
+          "targetText": "el cargador",
+          "baseText": {
+            "de": "das Ladegerät",
+            "en": "the charger"
+          }
+        },
+        {
+          "targetText": "el adaptador",
+          "baseText": {
+            "de": "der Adapter",
+            "en": "the adapter"
+          }
+        },
+        {
+          "targetText": "dos clavijas",
+          "baseText": {
+            "de": "zwei Kontaktstifte",
+            "en": "two pins"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Busco el ",
+        "answer": "enchufe",
+        "after": " que aparece en esta foto para conectar mi cargador.",
+        "fallbackChoices": [
+          "balcón",
+          "enchufe",
+          "horario",
+          "abrigo"
+        ]
+      },
+      "speakRequired": [
+        "enchufe",
+        "foto",
+        "cargador"
+      ],
+      "sceneCaption": {
+        "de": "Im Elektrogeschäft fragt die Verkäuferin: „¿Qué necesita para conectar su cargador?“",
+        "en": "In the electrical shop, the assistant asks: “¿Qué necesita para conectar su cargador?”"
+      },
+      "trophyWord": {
+        "word": "enchufe",
+        "meaning": {
+          "de": "Steckdose; Anschluss",
+          "en": "socket; connection"
+        },
+        "example": "El enchufe que necesito tiene dos agujeros redondos.",
+        "whyThisWord": {
+          "de": "Enchufe hilft dir, den Stromanschluss eines Geräts zu beschreiben.",
+          "en": "Enchufe helps you describe the electrical connection a device needs."
+        }
+      },
+      "distractors": [
+        "Busco el cable",
+        "para conectar mi ordenador."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Foto hilft beim Einkauf im Elektrogeschäft.",
+        "en": "A photo helps with a purchase in an electrical shop."
+      },
+      "songMood": "Light practical acoustic pop.",
+      "visualNotes": "Electrical shop counter, charger and reference photo; no adapter solution displayed."
+    },
+    {
+      "slug": "escritorio-junto-a-la-ventana",
+      "title": {
+        "de": "Ein Arbeitsplatz am Fenster",
+        "en": "A workspace by the window"
+      },
+      "situation": {
+        "de": "Im Möbelgeschäft vergleichst du Schreibtische für deine Wohnung. Beschreibe den Platz am Fenster und das Modell, das dir gefällt.",
+        "en": "In a furniture shop, you compare desks for your flat. Describe the space by the window and the model you like."
+      },
+      "pedagogicalGoal": "Mit que ein passendes Möbelstück beschreiben und die Nutzbarkeit eines anderen Modells bewerten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué escritorio le gusta para su habitación?",
+          "baseText": {
+            "de": "Welcher Schreibtisch gefällt Ihnen für Ihr Zimmer?",
+            "en": "Which desk do you like for your room?"
+          }
+        },
+        {
+          "targetText": "Me gusta el escritorio que cabe junto a la ventana y deja espacio para pasar.",
+          "baseText": {
+            "de": "Mir gefällt der Schreibtisch, der neben das Fenster passt und Platz zum Durchgehen lässt.",
+            "en": "I like the desk that fits beside the window and leaves room to walk past."
+          }
+        },
+        {
+          "targetText": "Ese modelo está agotado; tenemos uno más estrecho con la misma profundidad.",
+          "baseText": {
+            "de": "Dieses Modell ist ausverkauft; wir haben ein schmaleres mit derselben Tiefe.",
+            "en": "That model is sold out; we have a narrower one with the same depth."
+          }
+        },
+        {
+          "targetText": "Acepto el modelo que ofrece; mis libros caben sobre él.",
+          "baseText": {
+            "de": "Ich nehme das angebotene Modell; meine Bücher passen darauf.",
+            "en": "I'll take the model you offer; my books fit on it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El modelo que…",
+        "rule": {
+          "de": "Que ergänzt eine Eigenschaft oder Handlung, die das gemeinte Modell von anderen unterscheidet.",
+          "en": "Que adds a characteristic or action that distinguishes the intended model from others."
+        },
+        "examples": [
+          {
+            "targetText": "Acepto el modelo que ofrece; mis libros caben sobre él.",
+            "baseText": {
+              "de": "Ich nehme das angebotene Modell; meine Bücher passen darauf.",
+              "en": "I'll take the model you offer; my books fit on it."
+            },
+            "highlight": "que ofrece"
+          },
+          {
+            "targetText": "El escritorio que tengo deja poco espacio para pasar.",
+            "baseText": {
+              "de": "Mein jetziger Schreibtisch lässt wenig Platz zum Durchgehen.",
+              "en": "The desk I have leaves little room to walk past."
+            },
+            "highlight": "que tengo"
+          }
+        ]
+      },
+      "cloze": [
+        "Acepto el modelo ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "que",
+            "el que",
+            "donde",
+            "lo que"
+          ]
+        },
+        " ofrece; mis libros ",
+        {
+          "kind": "form",
+          "answer": "caben",
+          "cue": "caber (mis libros)",
+          "choices": [
+            "quepo",
+            "cabe",
+            "cabemos",
+            "caben"
+          ]
+        },
+        " sobre él."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me gusta el escritorio",
+          "baseText": {
+            "de": "Mir gefällt der Schreibtisch",
+            "en": "I like the desk"
+          }
+        },
+        {
+          "targetText": "que cabe junto a la ventana",
+          "baseText": {
+            "de": "der neben das Fenster passt",
+            "en": "that fits beside the window"
+          }
+        },
+        {
+          "targetText": "y deja espacio",
+          "baseText": {
+            "de": "und Platz lässt",
+            "en": "and leaves room"
+          }
+        },
+        {
+          "targetText": "para pasar.",
+          "baseText": {
+            "de": "zum Durchgehen.",
+            "en": "to walk past."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "escritorio",
+          "baseText": {
+            "de": "Schreibtisch",
+            "en": "desk"
+          }
+        },
+        {
+          "targetText": "cabe",
+          "baseText": {
+            "de": "es passt hinein",
+            "en": "it fits"
+          }
+        },
+        {
+          "targetText": "junto a la ventana",
+          "baseText": {
+            "de": "neben dem Fenster",
+            "en": "beside the window"
+          }
+        },
+        {
+          "targetText": "dejar espacio",
+          "baseText": {
+            "de": "Platz lassen",
+            "en": "to leave room"
+          }
+        },
+        {
+          "targetText": "más estrecho",
+          "baseText": {
+            "de": "schmaler",
+            "en": "narrower"
+          }
+        },
+        {
+          "targetText": "la profundidad",
+          "baseText": {
+            "de": "die Tiefe",
+            "en": "the depth"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me gusta el ",
+        "answer": "escritorio",
+        "after": " que cabe junto a la ventana y deja espacio para pasar.",
+        "fallbackChoices": [
+          "alquiler",
+          "escritorio",
+          "permiso",
+          "descanso"
+        ]
+      },
+      "speakRequired": [
+        "escritorio",
+        "ventana",
+        "espacio"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelgeschäft fragt der Verkäufer: „¿Qué escritorio le gusta para su habitación?“",
+        "en": "In the furniture shop, the assistant asks: “¿Qué escritorio le gusta para su habitación?”"
+      },
+      "trophyWord": {
+        "word": "escritorio",
+        "meaning": {
+          "de": "Schreibtisch",
+          "en": "desk"
+        },
+        "example": "El escritorio que cabe en ese rincón tiene dos cajones.",
+        "whyThisWord": {
+          "de": "Mit escritorio besprichst du ein Möbelstück, bei dem Größe und Arbeitsfläche wichtig sind.",
+          "en": "Escritorio names furniture whose size and work surface matter when choosing it."
+        }
+      },
+      "distractors": [
+        "Me gusta el armario",
+        "para abrir la puerta."
+      ],
+      "placeholderCaption": {
+        "de": "Schreibtische werden im Möbelgeschäft verglichen.",
+        "en": "Desks are compared in a furniture shop."
+      },
+      "songMood": "Bright, measured acoustic pop.",
+      "visualNotes": "Desk display and room measurements; no sold-out sign or narrower replacement shown."
+    },
+    {
+      "slug": "estanteria-para-libros-grandes",
+      "title": {
+        "de": "Platz für große Bücher",
+        "en": "Room for large books"
+      },
+      "situation": {
+        "de": "Du suchst im Möbelgeschäft ein Regal für schwere Bücher. Erkläre, welche Ausführung du brauchst.",
+        "en": "You are looking for shelving for heavy books in a furniture shop. Explain which version you need."
+      },
+      "pedagogicalGoal": "Mit la que auf ein bereits genanntes weibliches Nomen zurückverweisen und die Platzierung verhandeln.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué estantería necesita para sus libros?",
+          "baseText": {
+            "de": "Welches Regal brauchen Sie für Ihre Bücher?",
+            "en": "Which shelving unit do you need for your books?"
+          }
+        },
+        {
+          "targetText": "Para los libros grandes necesito la estantería de madera, la que soporta más peso.",
+          "baseText": {
+            "de": "Für die großen Bücher brauche ich das Holzregal, das mehr Gewicht trägt.",
+            "en": "For the large books I need the wooden shelving unit, the one that holds more weight."
+          }
+        },
+        {
+          "targetText": "Esa ocupa casi toda la pared; solo queda sitio junto a la puerta.",
+          "baseText": {
+            "de": "Das nimmt fast die ganze Wand ein; Platz bleibt nur neben der Tür.",
+            "en": "That one takes up almost the whole wall; there is only space beside the door."
+          }
+        },
+        {
+          "targetText": "La que es más estrecha cabe allí; los libros quedan accesibles.",
+          "baseText": {
+            "de": "Das schmalere passt dort hin; die Bücher bleiben gut erreichbar.",
+            "en": "The narrower one fits there; the books remain easy to reach."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "La que: volver a una estantería",
+        "rule": {
+          "de": "La que ersetzt hier la estantería que; der Artikel richtet sich nach dem spanischen Bezugswort.",
+          "en": "Here, la que replaces la estantería que; the article follows the gender and number of the Spanish noun."
+        },
+        "examples": [
+          {
+            "targetText": "La que es más estrecha cabe allí; los libros quedan accesibles.",
+            "baseText": {
+              "de": "Das schmalere passt dort hin; die Bücher bleiben gut erreichbar.",
+              "en": "The narrower one fits there; the books remain easy to reach."
+            },
+            "highlight": "La que es más estrecha"
+          },
+          {
+            "targetText": "Prefiero la que tiene los estantes más anchos.",
+            "baseText": {
+              "de": "Ich bevorzuge das Regal mit den breiteren Böden.",
+              "en": "I prefer the one with wider shelves."
+            },
+            "highlight": "la que"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "La que",
+          "choices": [
+            "El que",
+            "Los que",
+            "La que",
+            "Las que"
+          ]
+        },
+        " es más estrecha cabe allí; los libros ",
+        {
+          "kind": "form",
+          "answer": "quedan",
+          "cue": "quedar (los libros)",
+          "choices": [
+            "queda",
+            "quedamos",
+            "quedan",
+            "quedo"
+          ]
+        },
+        " accesibles."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para los libros grandes",
+          "baseText": {
+            "de": "Für die großen Bücher",
+            "en": "For the large books"
+          }
+        },
+        {
+          "targetText": "necesito la estantería",
+          "baseText": {
+            "de": "brauche ich das Regal",
+            "en": "I need the shelving unit"
+          }
+        },
+        {
+          "targetText": "de madera,",
+          "baseText": {
+            "de": "aus Holz,",
+            "en": "made of wood,"
+          }
+        },
+        {
+          "targetText": "la que soporta más peso.",
+          "baseText": {
+            "de": "das mehr Gewicht trägt.",
+            "en": "the one that holds more weight."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "estantería",
+          "baseText": {
+            "de": "Regal",
+            "en": "shelving unit"
+          }
+        },
+        {
+          "targetText": "de madera",
+          "baseText": {
+            "de": "aus Holz",
+            "en": "wooden"
+          }
+        },
+        {
+          "targetText": "soportar peso",
+          "baseText": {
+            "de": "Gewicht tragen",
+            "en": "to hold weight"
+          }
+        },
+        {
+          "targetText": "la pared",
+          "baseText": {
+            "de": "die Wand",
+            "en": "the wall"
+          }
+        },
+        {
+          "targetText": "estrecha",
+          "baseText": {
+            "de": "schmal",
+            "en": "narrow"
+          }
+        },
+        {
+          "targetText": "accesibles",
+          "baseText": {
+            "de": "gut erreichbar",
+            "en": "easy to reach"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para los libros grandes necesito la ",
+        "answer": "estantería",
+        "after": " de madera, la que soporta más peso.",
+        "fallbackChoices": [
+          "estantería",
+          "opinión",
+          "costumbre",
+          "tarifa"
+        ]
+      },
+      "speakRequired": [
+        "libros",
+        "estantería",
+        "peso"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelgeschäft fragt die Verkäuferin: „¿Qué estantería necesita para sus libros?“",
+        "en": "In the furniture shop, the assistant asks: “¿Qué estantería necesita para sus libros?”"
+      },
+      "trophyWord": {
+        "word": "estantería",
+        "meaning": {
+          "de": "Regal",
+          "en": "shelving unit"
+        },
+        "example": "La estantería de madera tiene espacio para los libros grandes.",
+        "whyThisWord": {
+          "de": "Estantería hilft dir, über Stauraum und die Belastbarkeit eines Möbelstücks zu sprechen.",
+          "en": "Estantería helps you discuss storage space and how much weight furniture can hold."
+        }
+      },
+      "distractors": [
+        "necesito la mesa",
+        "la que tiene menos estantes."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Regal wird für eine Büchersammlung ausgesucht.",
+        "en": "Shelving is being chosen for a book collection."
+      },
+      "songMood": "Calm, tactile acoustic pop.",
+      "visualNotes": "Shelving display with large books; no wall-space limitation illustrated."
+    },
+    {
+      "slug": "abrigo-del-guardarropa",
+      "title": {
+        "de": "Den eigenen Mantel finden",
+        "en": "Finding your coat"
+      },
+      "situation": {
+        "de": "Du fragst an einer Garderobe nach deinem Mantel vom Vortag. Beschreibe ihn so, dass das Personal ihn erkennen kann.",
+        "en": "You ask at a cloakroom about the coat you left the day before. Describe it so the attendant can identify it."
+      },
+      "pedagogicalGoal": "Mit el que auf abrigo zurückverweisen und ein unterscheidendes Merkmal ergänzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué prenda dejó aquí ayer?",
+          "baseText": {
+            "de": "Welches Kleidungsstück haben Sie gestern hier gelassen?",
+            "en": "Which item of clothing did you leave here yesterday?"
+          }
+        },
+        {
+          "targetText": "Busco mi abrigo, el que dejé ayer aquí; es azul y tiene botones grandes.",
+          "baseText": {
+            "de": "Ich suche meinen Mantel, den ich gestern hier gelassen habe; er ist blau und hat große Knöpfe.",
+            "en": "I'm looking for my coat, the one I left here yesterday; it's blue and has large buttons."
+          }
+        },
+        {
+          "targetText": "Tengo dos abrigos azules con botones grandes. ¿Recuerda algún otro detalle?",
+          "baseText": {
+            "de": "Ich habe zwei blaue Mäntel mit großen Knöpfen. Erinnern Sie sich an ein weiteres Merkmal?",
+            "en": "I have two blue coats with large buttons. Do you remember another detail?"
+          }
+        },
+        {
+          "targetText": "El que es mío tiene forro rojo; los botones son metálicos.",
+          "baseText": {
+            "de": "Meiner hat ein rotes Futter; die Knöpfe sind aus Metall.",
+            "en": "The one that is mine has a red lining; the buttons are metal."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El que: identificar un abrigo",
+        "rule": {
+          "de": "El que nimmt das männliche Nomen abrigo wieder auf; auch mío bezieht sich hier auf den Mantel, nicht auf dein Geschlecht.",
+          "en": "El que refers back to the masculine noun abrigo; mío also agrees with the coat here, not with your gender."
+        },
+        "examples": [
+          {
+            "targetText": "El que es mío tiene forro rojo; los botones son metálicos.",
+            "baseText": {
+              "de": "Meiner hat ein rotes Futter; die Knöpfe sind aus Metall.",
+              "en": "The one that is mine has a red lining; the buttons are metal."
+            },
+            "highlight": "El que es mío"
+          },
+          {
+            "targetText": "Mi abrigo es el que tiene un bolsillo interior.",
+            "baseText": {
+              "de": "Mein Mantel ist der mit einer Innentasche.",
+              "en": "My coat is the one with an inside pocket."
+            },
+            "highlight": "el que"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "El que",
+          "choices": [
+            "La que",
+            "El que",
+            "Las que",
+            "Los que"
+          ]
+        },
+        " es mío tiene forro rojo; los botones ",
+        {
+          "kind": "form",
+          "answer": "son",
+          "cue": "ser (los botones)",
+          "choices": [
+            "soy",
+            "es",
+            "son",
+            "somos"
+          ]
+        },
+        " metálicos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Busco mi abrigo,",
+          "baseText": {
+            "de": "Ich suche meinen Mantel,",
+            "en": "I'm looking for my coat,"
+          }
+        },
+        {
+          "targetText": "el que dejé ayer aquí;",
+          "baseText": {
+            "de": "den ich gestern hier gelassen habe;",
+            "en": "the one I left here yesterday;"
+          }
+        },
+        {
+          "targetText": "es azul",
+          "baseText": {
+            "de": "er ist blau",
+            "en": "it's blue"
+          }
+        },
+        {
+          "targetText": "y tiene botones grandes.",
+          "baseText": {
+            "de": "und hat große Knöpfe.",
+            "en": "and has large buttons."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "abrigo",
+          "baseText": {
+            "de": "Mantel",
+            "en": "coat"
+          }
+        },
+        {
+          "targetText": "dejé",
+          "baseText": {
+            "de": "ich ließ zurück",
+            "en": "I left"
+          }
+        },
+        {
+          "targetText": "azul",
+          "baseText": {
+            "de": "blau",
+            "en": "blue"
+          }
+        },
+        {
+          "targetText": "los botones",
+          "baseText": {
+            "de": "die Knöpfe",
+            "en": "the buttons"
+          }
+        },
+        {
+          "targetText": "forro rojo",
+          "baseText": {
+            "de": "rotes Futter",
+            "en": "red lining"
+          }
+        },
+        {
+          "targetText": "metálicos",
+          "baseText": {
+            "de": "aus Metall",
+            "en": "metal"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Busco mi ",
+        "answer": "abrigo",
+        "after": ", el que dejé ayer aquí; es azul y tiene botones grandes.",
+        "fallbackChoices": [
+          "escritorio",
+          "horario",
+          "abrigo",
+          "enchufe"
+        ]
+      },
+      "speakRequired": [
+        "abrigo",
+        "azul",
+        "botones"
+      ],
+      "sceneCaption": {
+        "de": "An der Garderobe fragt der Mitarbeiter: „¿Qué prenda dejó aquí ayer?“",
+        "en": "At the cloakroom, the attendant asks: “¿Qué prenda dejó aquí ayer?”"
+      },
+      "trophyWord": {
+        "word": "abrigo",
+        "meaning": {
+          "de": "Mantel",
+          "en": "coat"
+        },
+        "example": "El abrigo que dejé en el guardarropa tiene botones de metal.",
+        "whyThisWord": {
+          "de": "Abrigo gibt dir ein klares Bezugswort, um ein vergessenes Kleidungsstück genauer zu identifizieren.",
+          "en": "Abrigo gives you a clear noun to identify an item of clothing you left behind."
+        }
+      },
+      "distractors": [
+        "el que compré ayer aquí;",
+        "y tiene bolsillos pequeños."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch an einer Garderobe.",
+        "en": "A conversation at a cloakroom."
+      },
+      "songMood": "Gentle, attentive acoustic pop.",
+      "visualNotes": "Cloakroom counter with coats out of focus; no duplicate coats or red lining revealed."
+    },
+    {
+      "slug": "cremallera-atascada-junto-al-bolsillo",
+      "title": {
+        "de": "Der klemmende Reißverschluss",
+        "en": "The jammed zip"
+      },
+      "situation": {
+        "de": "In einer Änderungsschneiderei zeigst du deine Jacke. Erkläre, an welcher Stelle der Reißverschluss klemmt.",
+        "en": "At an alterations shop, you show your jacket. Explain where its zip gets stuck."
+      },
+      "pedagogicalGoal": "Mit donde die Stelle eines Problems beschreiben und die Position eines Ersatzteils festlegen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Dónde se atasca la cremallera?",
+          "baseText": {
+            "de": "Wo klemmt der Reißverschluss?",
+            "en": "Where does the zip get stuck?"
+          }
+        },
+        {
+          "targetText": "La cremallera se atasca donde la tela está doblada, cerca del bolsillo.",
+          "baseText": {
+            "de": "Der Reißverschluss klemmt dort, wo der Stoff gefaltet ist, in der Nähe der Tasche.",
+            "en": "The zip gets stuck where the fabric is folded, near the pocket."
+          }
+        },
+        {
+          "targetText": "Puedo cambiarla, pero solo tengo una cremallera negra.",
+          "baseText": {
+            "de": "Ich kann ihn austauschen, habe aber nur einen schwarzen Reißverschluss.",
+            "en": "I can replace it, but I only have a black zip."
+          }
+        },
+        {
+          "targetText": "Puede ponerla donde está ahora; el negro combina con todo.",
+          "baseText": {
+            "de": "Sie können ihn an derselben Stelle einsetzen; Schwarz passt zu allem.",
+            "en": "You can put it where it is now; black goes with everything."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Donde: señalar un lugar",
+        "rule": {
+          "de": "Donde verbindet eine Handlung mit dem Ort, an dem sie passiert; du kannst damit auch eine kleine Stelle an einem Gegenstand beschreiben.",
+          "en": "Donde links an action to the place where it happens, including a small spot on an object."
+        },
+        "examples": [
+          {
+            "targetText": "La cremallera se atasca donde la tela está doblada, cerca del bolsillo.",
+            "baseText": {
+              "de": "Der Reißverschluss klemmt dort, wo der Stoff gefaltet ist, in der Nähe der Tasche.",
+              "en": "The zip gets stuck where the fabric is folded, near the pocket."
+            },
+            "highlight": "donde la tela está doblada"
+          },
+          {
+            "targetText": "El hilo se rompe donde empieza la costura.",
+            "baseText": {
+              "de": "Der Faden reißt dort, wo die Naht beginnt.",
+              "en": "The thread breaks where the seam begins."
+            },
+            "highlight": "donde empieza la costura"
+          }
+        ]
+      },
+      "cloze": [
+        "Puede ponerla ",
+        {
+          "kind": "choice",
+          "answer": "donde",
+          "choices": [
+            "el que",
+            "que",
+            "donde",
+            "lo que"
+          ]
+        },
+        " está ahora; el negro ",
+        {
+          "kind": "form",
+          "answer": "combina",
+          "cue": "combinar (el negro)",
+          "choices": [
+            "combino",
+            "combinamos",
+            "combinan",
+            "combina"
+          ]
+        },
+        " con todo."
+      ],
+      "chunks": [
+        {
+          "targetText": "La cremallera se atasca",
+          "baseText": {
+            "de": "Der Reißverschluss klemmt",
+            "en": "The zip gets stuck"
+          }
+        },
+        {
+          "targetText": "donde la tela",
+          "baseText": {
+            "de": "dort, wo der Stoff",
+            "en": "where the fabric"
+          }
+        },
+        {
+          "targetText": "está doblada,",
+          "baseText": {
+            "de": "gefaltet ist,",
+            "en": "is folded,"
+          }
+        },
+        {
+          "targetText": "cerca del bolsillo.",
+          "baseText": {
+            "de": "in der Nähe der Tasche.",
+            "en": "near the pocket."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cremallera",
+          "baseText": {
+            "de": "Reißverschluss",
+            "en": "zip"
+          }
+        },
+        {
+          "targetText": "se atasca",
+          "baseText": {
+            "de": "es klemmt",
+            "en": "it gets stuck"
+          }
+        },
+        {
+          "targetText": "la tela",
+          "baseText": {
+            "de": "der Stoff",
+            "en": "the fabric"
+          }
+        },
+        {
+          "targetText": "doblada",
+          "baseText": {
+            "de": "gefaltet",
+            "en": "folded"
+          }
+        },
+        {
+          "targetText": "el bolsillo",
+          "baseText": {
+            "de": "die Tasche am Kleidungsstück",
+            "en": "the pocket"
+          }
+        },
+        {
+          "targetText": "combina con todo",
+          "baseText": {
+            "de": "passt zu allem",
+            "en": "goes with everything"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La ",
+        "answer": "cremallera",
+        "after": " se atasca donde la tela está doblada, cerca del bolsillo.",
+        "fallbackChoices": [
+          "biblioteca",
+          "cremallera",
+          "opinión",
+          "oportunidad"
+        ]
+      },
+      "speakRequired": [
+        "cremallera",
+        "tela",
+        "bolsillo"
+      ],
+      "sceneCaption": {
+        "de": "In der Änderungsschneiderei fragt die Mitarbeiterin: „¿Dónde se atasca la cremallera?“",
+        "en": "At the alterations shop, the staff member asks: “¿Dónde se atasca la cremallera?”"
+      },
+      "trophyWord": {
+        "word": "cremallera",
+        "meaning": {
+          "de": "Reißverschluss",
+          "en": "zip"
+        },
+        "example": "La cremallera de la chaqueta se atasca cerca del bolsillo.",
+        "whyThisWord": {
+          "de": "Mit cremallera kannst du genau benennen, welches Teil eines Kleidungsstücks repariert werden muss.",
+          "en": "Cremallera names the exact part of a garment that needs repair."
+        }
+      },
+      "distractors": [
+        "La tela se rompe",
+        "cerca del cuello."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Jacke liegt auf dem Tisch einer Änderungsschneiderei.",
+        "en": "A jacket lies on an alterations-shop table."
+      },
+      "songMood": "Soft, steady workshop acoustic pop.",
+      "visualNotes": "Jacket inspection at a sewing counter; no replacement zip or colour offered visually."
+    },
+    {
+      "slug": "bateria-para-el-mando",
+      "title": {
+        "de": "Das Batteriefach",
+        "en": "The battery compartment"
+      },
+      "situation": {
+        "de": "Im Elektronikgeschäft zeigst du die Fernbedienung mit geöffnetem Batteriefach. Erkläre, welches Ersatzteil du suchst.",
+        "en": "In an electronics shop, you show a remote control with its battery compartment open. Explain which replacement you need."
+      },
+      "pedagogicalGoal": "Mit donde den Einbauort beschreiben und eine angebotene Batterie anhand dieses Ortes vergleichen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué pieza necesita para ese mando?",
+          "baseText": {
+            "de": "Welches Teil brauchen Sie für diese Fernbedienung?",
+            "en": "Which part do you need for that remote control?"
+          }
+        },
+        {
+          "targetText": "Necesito una batería para el mando; aquí está el hueco donde va colocada.",
+          "baseText": {
+            "de": "Ich brauche einen Akku für die Fernbedienung; hier ist das Fach, in das er eingesetzt wird.",
+            "en": "I need a battery for the remote control; here is the space where it fits."
+          }
+        },
+        {
+          "targetText": "La original ya no se vende; esta tiene la misma potencia y el mismo tamaño.",
+          "baseText": {
+            "de": "Das Original wird nicht mehr verkauft; dieser Akku hat dieselbe Leistung und dieselbe Größe.",
+            "en": "The original is no longer sold; this one has the same power and size."
+          }
+        },
+        {
+          "targetText": "Si encaja donde va la original, esta batería me sirve.",
+          "baseText": {
+            "de": "Wenn er an die Stelle des Originals passt, kann ich diesen Akku benutzen.",
+            "en": "If it fits where the original goes, this battery works for me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El hueco donde…",
+        "rule": {
+          "de": "Donde beschreibt einen Ort; nach einem Wort wie hueco zeigt der Relativsatz, wofür dieser Platz bestimmt ist.",
+          "en": "Donde describes a place; after a word such as hueco, the relative clause identifies what that space is for."
+        },
+        "examples": [
+          {
+            "targetText": "Necesito una batería para el mando; aquí está el hueco donde va colocada.",
+            "baseText": {
+              "de": "Ich brauche einen Akku für die Fernbedienung; hier ist das Fach, in das er eingesetzt wird.",
+              "en": "I need a battery for the remote control; here is the space where it fits."
+            },
+            "highlight": "el hueco donde va colocada"
+          },
+          {
+            "targetText": "La tapa cubre el espacio donde va la batería.",
+            "baseText": {
+              "de": "Der Deckel verschließt das Fach für den Akku.",
+              "en": "The cover closes the space where the battery goes."
+            },
+            "highlight": "donde va la batería"
+          }
+        ]
+      },
+      "cloze": [
+        "Si encaja ",
+        {
+          "kind": "choice",
+          "answer": "donde",
+          "choices": [
+            "que",
+            "lo que",
+            "donde",
+            "el que"
+          ]
+        },
+        " va la original, esta batería me ",
+        {
+          "kind": "form",
+          "answer": "sirve",
+          "cue": "servir (esta batería)",
+          "choices": [
+            "sirven",
+            "sirvo",
+            "servimos",
+            "sirve"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Necesito una batería",
+          "baseText": {
+            "de": "Ich brauche einen Akku",
+            "en": "I need a battery"
+          }
+        },
+        {
+          "targetText": "para el mando;",
+          "baseText": {
+            "de": "für die Fernbedienung;",
+            "en": "for the remote control;"
+          }
+        },
+        {
+          "targetText": "aquí está el hueco",
+          "baseText": {
+            "de": "hier ist das Fach",
+            "en": "here is the space"
+          }
+        },
+        {
+          "targetText": "donde va colocada.",
+          "baseText": {
+            "de": "in das er eingesetzt wird.",
+            "en": "where it fits."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "batería",
+          "baseText": {
+            "de": "Akku; Batterie",
+            "en": "battery"
+          }
+        },
+        {
+          "targetText": "el mando",
+          "baseText": {
+            "de": "die Fernbedienung",
+            "en": "the remote control"
+          }
+        },
+        {
+          "targetText": "el hueco",
+          "baseText": {
+            "de": "das Fach; der freie Platz",
+            "en": "the space; the compartment"
+          }
+        },
+        {
+          "targetText": "la original",
+          "baseText": {
+            "de": "die ursprüngliche Batterie",
+            "en": "the original battery"
+          }
+        },
+        {
+          "targetText": "la potencia",
+          "baseText": {
+            "de": "die Leistung",
+            "en": "the power"
+          }
+        },
+        {
+          "targetText": "encaja",
+          "baseText": {
+            "de": "es passt hinein",
+            "en": "it fits"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Necesito una ",
+        "answer": "batería",
+        "after": " para el mando; aquí está el hueco donde va colocada.",
+        "fallbackChoices": [
+          "costumbre",
+          "batería",
+          "oportunidad",
+          "estantería"
+        ]
+      },
+      "speakRequired": [
+        "batería",
+        "mando",
+        "hueco"
+      ],
+      "sceneCaption": {
+        "de": "Im Elektronikgeschäft fragt der Verkäufer: „¿Qué pieza necesita para ese mando?“",
+        "en": "In the electronics shop, the assistant asks: “¿Qué pieza necesita para ese mando?”"
+      },
+      "trophyWord": {
+        "word": "batería",
+        "meaning": {
+          "de": "Akku; Batterie",
+          "en": "battery"
+        },
+        "example": "La batería debe encajar en el hueco del mando.",
+        "whyThisWord": {
+          "de": "Batería hilft dir, über die Stromversorgung eines Geräts und passende Ersatzteile zu sprechen.",
+          "en": "Batería helps you discuss a device's power supply and a suitable replacement."
+        }
+      },
+      "distractors": [
+        "para la cámara;",
+        "aquí está la tapa"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Fernbedienung wird im Elektronikgeschäft gezeigt.",
+        "en": "A remote control is shown in an electronics shop."
+      },
+      "songMood": "Light, focused acoustic pop.",
+      "visualNotes": "Open remote battery compartment at a shop counter; no replacement battery shown."
+    },
+    {
+      "slug": "entrada-para-reunirse-con-el-grupo",
+      "title": {
+        "de": "Den Treffpunkt finden",
+        "en": "Finding the meeting point"
+      },
+      "situation": {
+        "de": "Du suchst am Museum den Treffpunkt deiner Gruppe. Beschreibe dem Mitarbeiter, was du finden möchtest.",
+        "en": "You are looking for your group's meeting point at a museum. Explain to a staff member what you need to find."
+      },
+      "pedagogicalGoal": "Mit lo que das eigentliche Anliegen hervorheben und es bei einem neuen Treffpunkt beibehalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué está buscando junto al museo?",
+          "baseText": {
+            "de": "Was suchen Sie beim Museum?",
+            "en": "What are you looking for beside the museum?"
+          }
+        },
+        {
+          "targetText": "Lo que necesito es encontrar la entrada del museo donde espera el grupo.",
+          "baseText": {
+            "de": "Ich muss den Museumseingang finden, an dem die Gruppe wartet.",
+            "en": "What I need is to find the museum entrance where the group is waiting."
+          }
+        },
+        {
+          "targetText": "Esa entrada está cerrada; el grupo puede esperar junto a la taquilla.",
+          "baseText": {
+            "de": "Dieser Eingang ist geschlossen; die Gruppe kann neben der Kasse warten.",
+            "en": "That entrance is closed; the group can wait beside the ticket office."
+          }
+        },
+        {
+          "targetText": "Lo que importa es reunirnos; la taquilla queda cerca.",
+          "baseText": {
+            "de": "Wichtig ist, dass wir zusammenfinden; die Kasse ist in der Nähe.",
+            "en": "What matters is meeting up; the ticket office is nearby."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Lo que: destacar una idea",
+        "rule": {
+          "de": "Lo que bezieht sich hier auf ein Anliegen oder eine Idee; danach stellst du mit es heraus, worum es dir geht.",
+          "en": "Here, lo que refers to a need or idea; es then brings out what matters to you."
+        },
+        "examples": [
+          {
+            "targetText": "Lo que importa es reunirnos; la taquilla queda cerca.",
+            "baseText": {
+              "de": "Wichtig ist, dass wir zusammenfinden; die Kasse ist in der Nähe.",
+              "en": "What matters is meeting up; the ticket office is nearby."
+            },
+            "highlight": "Lo que importa"
+          },
+          {
+            "targetText": "Lo que necesito es hablar con la guía.",
+            "baseText": {
+              "de": "Ich muss mit der Führerin sprechen.",
+              "en": "What I need is to speak to the guide."
+            },
+            "highlight": "Lo que necesito"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Lo que",
+          "choices": [
+            "Los que",
+            "La que",
+            "Lo que",
+            "El que"
+          ]
+        },
+        " importa es reunirnos; la taquilla ",
+        {
+          "kind": "form",
+          "answer": "queda",
+          "cue": "quedar (la taquilla)",
+          "choices": [
+            "quedan",
+            "quedamos",
+            "quedo",
+            "queda"
+          ]
+        },
+        " cerca."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lo que necesito",
+          "baseText": {
+            "de": "Was ich brauche,",
+            "en": "What I need"
+          }
+        },
+        {
+          "targetText": "es encontrar",
+          "baseText": {
+            "de": "ist, zu finden",
+            "en": "is to find"
+          }
+        },
+        {
+          "targetText": "la entrada del museo",
+          "baseText": {
+            "de": "den Museumseingang",
+            "en": "the museum entrance"
+          }
+        },
+        {
+          "targetText": "donde espera el grupo.",
+          "baseText": {
+            "de": "an dem die Gruppe wartet.",
+            "en": "where the group is waiting."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lo que necesito",
+          "baseText": {
+            "de": "was ich brauche",
+            "en": "what I need"
+          }
+        },
+        {
+          "targetText": "entrada",
+          "baseText": {
+            "de": "Eingang",
+            "en": "entrance"
+          }
+        },
+        {
+          "targetText": "el museo",
+          "baseText": {
+            "de": "das Museum",
+            "en": "the museum"
+          }
+        },
+        {
+          "targetText": "el grupo",
+          "baseText": {
+            "de": "die Gruppe",
+            "en": "the group"
+          }
+        },
+        {
+          "targetText": "la taquilla",
+          "baseText": {
+            "de": "die Kasse",
+            "en": "the ticket office"
+          }
+        },
+        {
+          "targetText": "reunirnos",
+          "baseText": {
+            "de": "uns treffen; zusammenfinden",
+            "en": "to meet up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lo que necesito es encontrar la ",
+        "answer": "entrada",
+        "after": " del museo donde espera el grupo.",
+        "fallbackChoices": [
+          "batería",
+          "costumbre",
+          "entrada",
+          "opinión"
+        ]
+      },
+      "speakRequired": [
+        "entrada",
+        "museo",
+        "grupo"
+      ],
+      "sceneCaption": {
+        "de": "Beim Museum fragt der Mitarbeiter: „¿Qué está buscando junto al museo?“",
+        "en": "Beside the museum, the staff member asks: “¿Qué está buscando junto al museo?”"
+      },
+      "trophyWord": {
+        "word": "entrada",
+        "meaning": {
+          "de": "Eingang",
+          "en": "entrance"
+        },
+        "example": "La entrada del museo está al final de esta calle.",
+        "whyThisWord": {
+          "de": "Entrada bezeichnet hier den Zugang zu einem Gebäude und hilft dir, einen Treffpunkt zu bestimmen.",
+          "en": "Entrada names the access to a building here and helps you identify a meeting point."
+        }
+      },
+      "distractors": [
+        "la salida del teatro",
+        "donde trabaja mi amiga."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Besucher fragt vor einem Museum nach dem Weg.",
+        "en": "A visitor asks for directions outside a museum."
+      },
+      "songMood": "Open, gently moving acoustic pop.",
+      "visualNotes": "Museum exterior with staff member; no closed entrance or ticket-office alternative shown."
+    },
+    {
+      "slug": "asociacion-con-conversacion-en-espanol",
+      "title": {
+        "de": "Eine Gesprächsgruppe suchen",
+        "en": "Looking for a conversation group"
+      },
+      "situation": {
+        "de": "Bei einer Stadtteilberatung erkundigst du dich nach Gesprächsangeboten auf Spanisch. Beschreibe, welche Einrichtung du suchst.",
+        "en": "At a neighbourhood advice desk, you ask about Spanish conversation activities. Describe the organisation you are looking for."
+      },
+      "pedagogicalGoal": "Que und la que zusammen verwenden, um eine Einrichtung zu bestimmen und eine andere passende Niederlassung zu wählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué actividad busca en el barrio?",
+          "baseText": {
+            "de": "Welche Aktivität suchen Sie im Viertel?",
+            "en": "Which activity are you looking for in the neighbourhood?"
+          }
+        },
+        {
+          "targetText": "Busco la asociación que ofrece conversación en español y tiene una sede cerca del metro.",
+          "baseText": {
+            "de": "Ich suche den Verein, der Gesprächsrunden auf Spanisch anbietet und einen Standort nahe der Metro hat.",
+            "en": "I'm looking for the association that offers Spanish conversation and has premises near the metro."
+          }
+        },
+        {
+          "targetText": "La sede del metro está cerrada por obras; la del mercado mantiene las mismas actividades.",
+          "baseText": {
+            "de": "Der Standort an der Metro ist wegen Bauarbeiten geschlossen; am Markt gibt es weiterhin dieselben Aktivitäten.",
+            "en": "The premises by the metro are closed for building work; the market location still offers the same activities."
+          }
+        },
+        {
+          "targetText": "La que está abierta me sirve; el mercado queda cerca.",
+          "baseText": {
+            "de": "Der geöffnete Standort passt für mich; der Markt ist in der Nähe.",
+            "en": "The one that is open works for me; the market is nearby."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Que y la que: mantener el referente",
+        "rule": {
+          "de": "Que folgt auf das genannte Nomen; mit la que nimmst du danach ein weibliches Nomen wie sede wieder auf.",
+          "en": "Que follows the named noun; la que then refers back to a feminine noun such as sede."
+        },
+        "examples": [
+          {
+            "targetText": "La que está abierta me sirve; el mercado queda cerca.",
+            "baseText": {
+              "de": "Der geöffnete Standort passt für mich; der Markt ist in der Nähe.",
+              "en": "The one that is open works for me; the market is nearby."
+            },
+            "highlight": "La que está abierta"
+          },
+          {
+            "targetText": "La sede que abre por la tarde está junto al mercado.",
+            "baseText": {
+              "de": "Der Standort, der nachmittags öffnet, liegt neben dem Markt.",
+              "en": "The premises that open in the afternoon are beside the market."
+            },
+            "highlight": "que abre por la tarde"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "La que",
+          "choices": [
+            "Las que",
+            "El que",
+            "Los que",
+            "La que"
+          ]
+        },
+        " está abierta me sirve; el mercado ",
+        {
+          "kind": "form",
+          "answer": "queda",
+          "cue": "quedar (el mercado)",
+          "choices": [
+            "quedan",
+            "queda",
+            "quedo",
+            "quedamos"
+          ]
+        },
+        " cerca."
+      ],
+      "chunks": [
+        {
+          "targetText": "Busco la asociación",
+          "baseText": {
+            "de": "Ich suche den Verein",
+            "en": "I'm looking for the association"
+          }
+        },
+        {
+          "targetText": "que ofrece conversación en español",
+          "baseText": {
+            "de": "der Gesprächsrunden auf Spanisch anbietet",
+            "en": "that offers Spanish conversation"
+          }
+        },
+        {
+          "targetText": "y tiene una sede",
+          "baseText": {
+            "de": "und einen Standort hat",
+            "en": "and has premises"
+          }
+        },
+        {
+          "targetText": "cerca del metro.",
+          "baseText": {
+            "de": "nahe der Metro.",
+            "en": "near the metro."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "asociación",
+          "baseText": {
+            "de": "Verein",
+            "en": "association"
+          }
+        },
+        {
+          "targetText": "ofrece",
+          "baseText": {
+            "de": "sie bietet an",
+            "en": "it offers"
+          }
+        },
+        {
+          "targetText": "conversación en español",
+          "baseText": {
+            "de": "Gesprächsrunden auf Spanisch",
+            "en": "Spanish conversation"
+          }
+        },
+        {
+          "targetText": "una sede",
+          "baseText": {
+            "de": "ein Standort",
+            "en": "premises; a location"
+          }
+        },
+        {
+          "targetText": "por obras",
+          "baseText": {
+            "de": "wegen Bauarbeiten",
+            "en": "for building work"
+          }
+        },
+        {
+          "targetText": "abierta",
+          "baseText": {
+            "de": "geöffnet",
+            "en": "open"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Busco la ",
+        "answer": "asociación",
+        "after": " que ofrece conversación en español y tiene una sede cerca del metro.",
+        "fallbackChoices": [
+          "asociación",
+          "cremallera",
+          "batería",
+          "ventaja"
+        ]
+      },
+      "speakRequired": [
+        "asociación",
+        "conversación",
+        "sede"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Stadtteilberatung fragt die Mitarbeiterin: „¿Qué actividad busca en el barrio?“",
+        "en": "At the neighbourhood advice desk, the staff member asks: “¿Qué actividad busca en el barrio?”"
+      },
+      "trophyWord": {
+        "word": "asociación",
+        "meaning": {
+          "de": "Verein",
+          "en": "association"
+        },
+        "example": "La asociación del barrio ofrece actividades para practicar español.",
+        "whyThisWord": {
+          "de": "Asociación hilft dir, eine örtliche Gemeinschaft und ihre Angebote genauer zu beschreiben.",
+          "en": "Asociación helps you describe a local community organisation and its activities."
+        }
+      },
+      "distractors": [
+        "Busco la academia",
+        "cerca de la estación."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Beratung über Aktivitäten im Stadtteil.",
+        "en": "An enquiry about neighbourhood activities."
+      },
+      "songMood": "Welcoming acoustic pop with a social warmth.",
+      "visualNotes": "Neighbourhood information desk with activity leaflets; no building-work closure revealed."
+    }
+  ]
+}
