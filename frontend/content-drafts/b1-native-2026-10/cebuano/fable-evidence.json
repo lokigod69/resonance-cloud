@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/cebuano/p1.json": "7ee023db7a85d44a9a45dec765309c35385f96742b3d4dbd93dca5f0e07da861",
+    "frontend/content-drafts/b1-native-2026-10/cebuano/p2.json": "0d192faf93d193ad97f1c41c3036cfe926ac2bd418e84e69d5fcc2fd3a1b6bd2"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/cebuano/specification.json": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383"
+  },
+  "scope": "Local staging and canonical-spoken-text TTS only. One nonspoken exercise finding remains; not publication or native-human approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/cebuano/p1.json",
+      "reviewedScratchSha256": "7ee023db7a85d44a9a45dec765309c35385f96742b3d4dbd93dca5f0e07da861",
+      "stagedSha256": "7ee023db7a85d44a9a45dec765309c35385f96742b3d4dbd93dca5f0e07da861",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/cebuano/p2.json",
+      "reviewedScratchSha256": "0d192faf93d193ad97f1c41c3036cfe926ac2bd418e84e69d5fcc2fd3a1b6bd2",
+      "stagedSha256": "0d192faf93d193ad97f1c41c3036cfe926ac2bd418e84e69d5fcc2fd3a1b6bd2",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    }
+  ],
+  "specificationCanonicalization": {
+    "reviewedScratchSha256": "831742a6a0fb64d02741c123c41ca4d8695da87838b4087d2c5ed6f65dbef5cc",
+    "stagedSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+    "transformation": "CRLF to LF only; parsed content unchanged."
+  },
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "CEB-R01",
+      "severity": "MEDIUM",
+      "file": "reviewed-content/cebuano-p1.json",
+      "line": 311,
+      "pointer": "/lessons/1/cloze/3",
+      "scope": "P1 L2 time-choice uniqueness after the hedged arrival guess",
+      "visibleInterlocutor": "Mga alas singko siguro ka niabot; abli na ba ang mga tindahan?",
+      "visibleInterlocutorEnglish": "You probably arrived around five; were the stalls already open?",
+      "visibleCloze": "Oo, ___ (baligya, progressive) na sila og isda sa ___.",
+      "current": {
+        "kind": "choice",
+        "answer": "alas singko",
+        "choices": [
+          "alas singko",
+          "alas dose",
+          "alas tres",
+          "alas otso"
+        ]
+      },
+      "reason": "The first clause offers a guess, not an established arrival time, and Oo can answer the explicit open-stalls question. 'Oo, nagbaligya na sila og isda sa alas tres.' is a coherent supporting reply: they were already selling as early as three. Neither the progressive cue nor the visible earlier dialogue rules this out. Five is the expected echo of the guess, but it is not uniquely correct under the actual UI. The hidden learner-reply translation and the optional pattern answer do not establish an unambiguous initial exercise cue. This re-review therefore does not carry forward the prior no-issue statement about this time blank.",
+      "rejectedPlausibleReply": "Oo, nagbaligya na sila og isda sa alas tres.",
+      "requiresSpokenTextChange": false,
+      "proposedFixForFable": {
+        "pointer": "/lessons/1/cloze/3/choices",
+        "oldValue": [
+          "alas singko",
+          "alas dose",
+          "alas tres",
+          "alas otso"
+        ],
+        "newValue": [
+          "alas singko",
+          "singko alas",
+          "ka singko",
+          "singko nga"
+        ],
+        "reason": "Test the correct familiar clock phrase with grammatically impossible alternatives in the sa ___ slot, rather than requiring the learner to infer a precise time from a guess. Fable may choose another equally unambiguous exercise-only repair."
+      },
+      "coupledChanges": "None needed for the proposed choice-only repair: keep answer alas singko, both learner turns, both translations, pattern example, terms, chunks, recall, speech tokens, trophy and captions unchanged.",
+      "localTtsImpact": "The finding concerns nonspoken distractor choices. Current canonical spoken text is acceptable; resolving it need not invalidate those TTS texts."
+    }
+  ],
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson read and exact arbitration"
+  },
+  "approvalBasis": "All 5 exact old/new corrections replayed and the entire result equals final independently reviewed sources.",
+  "rawProviderReviewSha256": "98e74e3f8603ae766d5deb43265492719864de2c4d84cc96db35b69606fa028d",
+  "originalSourceSha256": {
+    "cebuano-p1.json": "6afd77bfd0b2e5ddc861b9164091f7441fdf28e594769eb432dca402f627c668",
+    "cebuano-p2.json": "faf9cd8bb38017e8c41effb847cb90aece460d225dfae1b3ba5a59855917043b"
+  },
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "cebuano-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field read: dialogue four-turn logic, word counts (youOne 10/9/11/11/12/14/13/11/12/12; youTwo 8/8/9/7/8/9/8/9/9/9), chunks join byte-exact, speech tokens whole words and non-clitic, recall reconstructs, cloze reconstructs with cue-disambiguated form blanks and single-fit connectors, pattern examples reuse a learner turn, captions quote opening in de/en and never dialogue[2], trophies whole-word in youOne and example and equal to allocation, nag- past readings licensed by ganina/gahapon/gabii/kaniadto or a preceding ni-/na- clause, wala/dili traps absent, no Tagalog tokens, hyphen words only in dialogue/example text, register per scene (landlady/vendor/driver neutral, others informal).",
+        "remainingConcerns": "L2 them-line asserted the learner's arrival time as fact the neighbor could not know (fixed as a hedged guess below). L8 chunk reorder (CEB-01) fixed. L5 chunks 'nisakay ko,' and 'niulan,' are swappable, but the visible base cue fixes event order; accepted as-is."
+      },
+      {
+        "file": "cebuano-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Every field read: stance/connector/comparative blanks single-fit under visible context (uyon ko vs dili ko uyon decided by Oo or by the interlocutor's prior claim), apan/pero and kung/kon never co-occur, mas/pinaka-/kasing- form distractors impossible under the comparative cue, bisan/apan/kay staged per lesson range, basta inclusive ta only in friend scene L8, palihug on the one learner request (L9), Lola/tag-iya refer to third parties only, gusto/unya appear only outside trophies, terms 7–8 distinct, captions and situations hide complications (price, noise, late start, discount).",
+        "remainingConcerns": "L4 'aron' distractor yields a plausible purpose reading (CEB-02, fixed). L6 youTwo lacked 'ang' before 'akong gusto' (fixed). Sentence-initial 'Aron' after 'Oo, uyon ko.' in L7/L8/L9 is a headless purpose fragment, not a native acceptance; kept as impossible distractor."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "CEB-01 P1 L8 chunk 'dinhi kaniadto' can follow the coordinated predicates with the same displayed meaning; BuildPhraseStep rejects it",
+        "decision": "accept",
+        "reason": "Nagpuyo ko ug nagbaligya og isda dinhi kaniadto tapad sa pantalan is grammatical and meaning-preserving; merging the first two chunks removes the ambiguity, keeps four chunks, and leaves youOne, recall, speech tokens and distractor distinctness untouched."
+      },
+      {
+        "finding": "CEB-02 P2 L4 'aron' admits 'Lisod karon, aron mas luwas ang dalan human niini' as a purpose reading",
+        "decision": "accept",
+        "reason": "aron + stative clause is native Cebuano and the learner-reply translation is not displayed in ComplicationStep; gikan cannot introduce a bare adjectival clause, so the set [apan, gikan, tungod, nga] has exactly one answer. The same 'Aron' distractor in L7/L8/L9 is not changed: 'Oo, uyon ko. Aron kinahanglan hilom sila…/Aron mouli ko…/Aron mopalit ko…' are headless purpose fragments no native uses as an acceptance."
+      },
+      {
+        "finding": "Reviewer note that spec's 'pattern.rule stays a string' is stale against the shared schema (bilingual object)",
+        "decision": "accept",
+        "reason": "The shared Zod schema defines pattern.rule as base {de,en}; the drafts comply; the spec sentence is superseded prose."
+      },
+      {
+        "finding": "Reviewer noIssue on P1 L10 nagpahuway licensing after 'Nalipong ba ka sa biyahe?'",
+        "decision": "accept",
+        "reason": "The na- completed question sets the past frame and samtang naglayag ang barko is bound to that trip; the Praeteritum/past translations are licensed."
+      },
+      {
+        "finding": "Reviewer noIssue on P1 L7 'nilakaw na lang ko' clitic order",
+        "decision": "accept",
+        "reason": "Attested native order (ni-verb + na lang + ko); the whole cluster stays in one chunk."
+      },
+      {
+        "finding": "Own finding: P1 L2 dialogue[2] 'Alas singko ka niabot;' states as fact a time the neighbor cannot know",
+        "decision": "adapt",
+        "reason": "Reword as a hedged guess 'Mga alas singko siguro ka niabot; …' so the five o'clock choice blank stays anchored while the them-line is coherent; siguro is recognition-only in a them-line, caption and cloze unaffected."
+      },
+      {
+        "finding": "Own finding: P2 L6 youTwo 'Adobong manok akong gusto …' drops the predicate marker",
+        "decision": "adapt",
+        "reason": "Canonical learner line needs 'Adobong manok ang akong gusto'; coupled cloze literal updated, word count 12 within 6–12, pattern examples and chunks unaffected."
+      },
+      {
+        "finding": "No author flags were supplied in the path anchors or independent report",
+        "decision": "noted",
+        "reason": "Nothing to review beyond the two reviewer findings and own checks; no staging preview is licensed."
+      }
+    ],
+    "edits": [
+      {
+        "file": "cebuano-p1.json",
+        "jsonPointer": "/lessons/1/dialogue/2",
+        "oldValue": {
+          "targetText": "Alas singko ka niabot; abli na ba ang mga tindahan?",
+          "baseText": {
+            "de": "Du bist um fünf angekommen; waren die Stände da schon offen?",
+            "en": "You arrived at five; were the stalls already open?"
+          }
+        },
+        "newValue": {
+          "targetText": "Mga alas singko siguro ka niabot; abli na ba ang mga tindahan?",
+          "baseText": {
+            "de": "Du bist wohl so gegen fünf angekommen; waren die Stände da schon offen?",
+            "en": "You probably arrived around five; were the stalls already open?"
+          }
+        },
+        "reason": "Neighbor cannot know the arrival time; hedged guess keeps the alas singko anchor for the cloze choice blank and makes the complication coherent."
+      },
+      {
+        "file": "cebuano-p1.json",
+        "jsonPointer": "/lessons/7/chunks",
+        "oldValue": [
+          {
+            "targetText": "Nagpuyo ko",
+            "baseText": {
+              "de": "Ich habe gewohnt",
+              "en": "I used to live"
+            }
+          },
+          {
+            "targetText": "dinhi kaniadto",
+            "baseText": {
+              "de": "früher hier",
+              "en": "here in the past"
+            }
+          },
+          {
+            "targetText": "ug nagbaligya",
+            "baseText": {
+              "de": "und verkauft",
+              "en": "and sell"
+            }
+          },
+          {
+            "targetText": "og isda",
+            "baseText": {
+              "de": "Fisch",
+              "en": "fish"
+            }
+          },
+          {
+            "targetText": "tapad sa pantalan.",
+            "baseText": {
+              "de": "neben dem Hafen.",
+              "en": "beside the harbor."
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Nagpuyo ko dinhi kaniadto",
+            "baseText": {
+              "de": "Ich habe früher hier gewohnt",
+              "en": "I used to live here"
+            }
+          },
+          {
+            "targetText": "ug nagbaligya",
+            "baseText": {
+              "de": "und verkauft",
+              "en": "and sell"
+            }
+          },
+          {
+            "targetText": "og isda",
+            "baseText": {
+              "de": "Fisch",
+              "en": "fish"
+            }
+          },
+          {
+            "targetText": "tapad sa pantalan.",
+            "baseText": {
+              "de": "neben dem Hafen.",
+              "en": "beside the harbor."
+            }
+          }
+        ],
+        "reason": "CEB-01: removes a grammatical same-meaning reorder that the exact-string build check would reject; join still equals youOne, 4 chunks, distractors remain distinct."
+      },
+      {
+        "file": "cebuano-p2.json",
+        "jsonPointer": "/lessons/3/cloze/1/choices/1",
+        "oldValue": "aron",
+        "newValue": "gikan",
+        "reason": "CEB-02: aron gave a plausible purpose reading in the visible context; gikan cannot introduce the clause, so apan is uniquely valid."
+      },
+      {
+        "file": "cebuano-p2.json",
+        "jsonPointer": "/lessons/5/dialogue/3/targetText",
+        "oldValue": "Adobong manok akong gusto kay mas dali kini maluto kaysa baboy.",
+        "newValue": "Adobong manok ang akong gusto kay mas dali kini maluto kaysa baboy.",
+        "reason": "Native canonical fronted-predicate form requires ang before akong gusto; 12 words, within limit."
+      },
+      {
+        "file": "cebuano-p2.json",
+        "jsonPointer": "/lessons/5/cloze/0",
+        "oldValue": "Adobong manok akong gusto ",
+        "newValue": "Adobong manok ang akong gusto ",
+        "reason": "Coupled cloze literal so the join still reconstructs youTwo exactly."
+      }
+    ],
+    "finalChecks": "After edits: P1 L2 caption still quotes dialogue[0] only; P1 L8 chunks join 'Nagpuyo ko dinhi kaniadto ug nagbaligya og isda tapad sa pantalan.' byte-exact with distractors 'tapad sa simbahan.'/'og utanon' distinct; P2 L4 choices [apan, gikan, tungod, nga] have one answer; P2 L6 cloze parts join to the new youTwo, connector kay and form mas dali untouched, pattern examples unaffected. All trophies match allocation and remain whole-word in youOne and trophyWord.example; no speech token, recall answer or trophy carries a hyphen or fused form; no Tagalog tokens. Content approval only, no production approval; no human native review is claimed. Re-run the native gate on the frozen resulting files and record new hashes."
+  },
+  "exactReplayEdits": 5
+}

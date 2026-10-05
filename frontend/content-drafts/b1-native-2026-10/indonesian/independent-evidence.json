@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/indonesian/p1.json": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+    "frontend/content-drafts/b1-native-2026-10/indonesian/p2.json": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+  },
+  "scope": "Local staging and TTS only; not listening, native-human or production approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p1.json",
+      "reviewedScratchSha256": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "stagedSha256": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p2.json",
+      "reviewedScratchSha256": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "stagedSha256": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    }
+  ],
+  "specificationCanonicalization": {
+    "reviewedScratchSha256": "35aea8685aac608d5f45380ab8b174d02769add26455330afe16f5d11fee92e2",
+    "stagedSha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef",
+    "transformation": "CRLF to LF only; parsed content unchanged."
+  },
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "/root/indonesian_p1_p2_independent",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "d1dda457ca3a1654221b6ac47adb62f4e2a82a43c5096c8ae6f50b19b44c5465",
+  "rawReview": {
+    "verdict": "PASS",
+    "reviewer": "/root/indonesian_p1_p2_independent",
+    "reviewDate": "2026-10-05",
+    "round": 2,
+    "approvalScope": "Content approval for local staging and TTS of the two reviewed frozen paths. No production publication, runtime activation, native-human review, or audio-listening approval is implied.",
+    "reviewedSources": {
+      "reviewed-content/indonesian-p1.json": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "reviewed-content/indonesian-p2.json": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "B1_INDONESIAN_P1_P2_FABLE_REVIEW_RAW.json": "372f46937279b952bd119305dc6ee51f634b7f3985dd8180027d0e0d2f13b3d8",
+      "B1_INDONESIAN_P1_P2_APPLIED_HASHES.json": "b011f12784c4ddfd8ecdd24333faf2877201d87f356f5c3b74ccc78a6573621e",
+      "B1_INDONESIAN_P1_P2_INDEPENDENT_REVIEW.json": "9320c742e2a4df7883100edd3d6ad3714cbdd357e204588959d992f5e0e4092b",
+      "new-content/indonesian-p1.json": "cf910a88040c8383617024473e25f22d3588b027c8e4a052005ff2c9876fc853",
+      "new-content/indonesian-p2.json": "ed469379d1dd19b621297bd84070195c49cb7854c083991e908f84a3b453d287",
+      "B1_NATIVE_INDONESIAN_SPEC.json": "35aea8685aac608d5f45380ab8b174d02769add26455330afe16f5d11fee92e2",
+      "../../orchestrator/frontend/src/components/today/ComplicationStep.tsx": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+      "../../orchestrator/frontend/src/components/today/BuildPhraseStep.tsx": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9"
+    },
+    "sourcePathBase": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003",
+    "exactReplay": {
+      "approvedEdits": 18,
+      "oldValueMatches": 18,
+      "appliedNewValueMatches": 18,
+      "unapprovedJsonChanges": 0,
+      "appliedHashBindingsMatch": true,
+      "method": "Parsed Fable RAW.result, required every oldValue to match the frozen original, replayed all 18 pointers in memory, and compared both complete resulting objects with reviewed-content. No source writes."
+    },
+    "countCoverage": {
+      "initialFullFieldRead": {
+        "P1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "P2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "changedFieldsAndCouplingsReread": {
+        "P1": [
+          3,
+          6,
+          8
+        ],
+        "P2": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          9
+        ],
+        "pathAnchors": [
+          1,
+          2
+        ]
+      },
+      "finalCounts": {
+        "paths": 2,
+        "lessons": 20,
+        "dialogueTurns": 80,
+        "chunks": 80,
+        "terms": 122,
+        "clozeBlanks": 40,
+        "patternExamples": 40
+      },
+      "reconstructionChecks": {
+        "chunkJoins": 20,
+        "clozeJoins": 20,
+        "recallJoins": 20,
+        "bilingualOpeningQuotes": 40
+      },
+      "choiceSetsChecked": 40,
+      "firstAndSecondTurnWordBoundsChecked": 40,
+      "P2L2SecondTurnWords": 12,
+      "P2L5SecondTurnWords": 10
+    },
+    "unresolvedLocalTtsBlockers": [],
+    "remainingPublicationFindings": [],
+    "findings": [],
+    "resolutions": [
+      {
+        "id": "ID-01",
+        "status": "resolved",
+        "detail": "P1 L8 now uses Malam itu kamu masih sempat naik kereta? with natural German/English that-evening bases. Both captions quote it exactly. The time expression is explicit and coherent with the retrospective episode."
+      },
+      {
+        "id": "ID-02",
+        "status": "resolved",
+        "detail": "P1 L3 and P2 L4 merge the movable locatives into their governing chunks. Each now has four chunks, accurate glosses, and the unchanged canonical join. Standalone Walaupun is the staged connector permitted by the spec."
+      },
+      {
+        "id": "ID-03",
+        "status": "resolved",
+        "detail": "The stray on is removed from P1 L6's English situation."
+      },
+      {
+        "id": "FABLE-ADDITIONS",
+        "status": "accepted and verified",
+        "detail": "Read all added degree-choice edits, P2 L1's clarified bagian akhirnya, P2 L2's explicitly rejected coffee-price judgement, and P2 L5's daripada comparison. Revised follow-up bases and cloze segments stay aligned; captions, patterns, recall and trophies need no further text changes."
+      },
+      {
+        "id": "VISIBLE-CLOZE-CUES",
+        "status": "verified",
+        "detail": "ComplicationStep renders them2 and its base at lines 192–196, and each blank.cue at 303–304; it does not display you2's base as an answer cue. The revised form cues explicitly specify comparison, rejection, or excessive degree. Remaining grammatical opposite-meaning options are not same-meaning answers under those visible cues. The soup connector now offers no concessive synonym."
+      },
+      {
+        "id": "FABLE-WORD-COUNT",
+        "status": "non-blocking evidence correction",
+        "detail": "Fable's prose says P2 L2 has 11 words; the frozen target contains 12, within the specified 6–12 bound. P2 L5 has 10. No lesson-text amendment is required."
+      }
+    ],
+    "validation": "Independent offline replay, hash binding, count, reconstruction, caption, word-bound and choice-cardinality checks passed. Root reports the actual native gate passed; this content reviewer did not rerun that suite. Unchanged fields retain the initial full-read coverage.",
+    "limitations": "Static source/UI-code review only. No paid/provider calls, database access, git operations, app edits, recordings or listening occurred. Full base-edition/runtime integration is outside local recording approval."
+  }
+}

@@ -1,0 +1,860 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Indonesian",
+  "targetLanguageCode": "id-ID",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "Two coherent registers chosen per path and held constant within the path. Service paths (P3, P4, P5, P6, P9): learner uses saya; address terms (Pak/Bu/Mbak/Mas) and Anda are optional and context-appropriate, never mandatory per turn; natural pronoun omission is allowed; softeners tolong/boleh/permisi/maaf. Friend paths (P1, P2, P7, P8, P10): learner uses saya or aku with kamu, or omits the pronoun where natural; no gue/lu/nggak/banget/dong/sih and no Malay (awak, sila, tandas, macam mana, boleh tak). Where the interlocutor addresses the learner, the author writes one natural term fitting the scene or none, never a literal 'Bapak/Ibu' slash. Standard natural spoken Indonesian: meN-/ber- where natives use them, natural clipped counter verbs (cari, bayar, tukar) where A2 already established them; no Jakartan slang morphology.",
+  "genderSafety": "Indonesian has no grammatical gender; the only gender-coded items are address terms (Pak/Bu/Mbak/Mas/Bapak/Ibu). They never appear as required speech tokens, recall answers, cloze answers or trophies, and no learner line asserts the learner's gender. Captions may name the interlocutor's role (Barista, Petugas); the base-locale caption may use any gender. Where the learner addresses staff, the term matches the depicted interlocutor; where the learner is addressed, one natural term or none. A reviewed per-lesson accepted-variant list may add the alternate term or its omission when meaning and politeness are unchanged.",
+  "orthography": "Standard Indonesian (EYD V): Latin, NFC, no diacritics. Numbers in words in spoken lines (tiga puluh, dua ratus ribu rupiah); digits allowed only in captions/situations. Nasal prefix spelling checked (meN- sandhi: menukar, mengganggu, membawa, menghemat). Loanwords Indonesians actually use (diskon, konfirmasi, garansi, kursus, jadwal) are correct Indonesian; each gets a per-lesson-id loanword exemption, never global. Hyphenated reduplication (kira-kira, hati-hati) allowed in lines but never as trophy, recall answer or speech token.",
+  "segmentation": {
+    "youOne": "Learner's first reply: 8-16 words, single sentence or two short sentences, ends with a completion that invites the follow-up (a question to the friend, or a request/statement to staff). Contains the trophy as a whitespace-bounded token and all three speech tokens.",
+    "youTwo": "Learner's second reply: 6-12 words; continuation (shape B), resolution (shape A) or accept-with-modification (shape C). Source of the 2-3 cloze blanks.",
+    "chunks": "4-7 meaningful chunks whose concatenation with single ASCII spaces equals the first reply exactly, including punctuation on the last token of a chunk. Chunks are phrase-sized (prepositional phrase, verb phrase, connector + clause head), never single function words except a connector that is the lesson's target form.",
+    "speechTokens": "Three distinct lowercase whole-word tokens present in the first reply; content words or the staged connector; never Pak/Bu/Mbak/Mas/Bapak/Ibu/saya/Anda/kamu/aku. The trophy is normally one of them, but the author may choose three better tokens. Numbers as words are allowed tokens.",
+    "trophyAnchoring": "Trophy is a bare dictionary surface form (no -nya, -lah, -kah, ku-, -mu attached; no hyphen), appearing identically in the first learner reply and in its own pattern example. Derived forms (ter-, ke-an, di-, ber-) are allowed as trophies only when they are the lesson's staged form and carry a distinct meaning from any A1/A2 trophy (kehujanan, ketinggalan, tersesat, terbuat, diperiksa), never as a re-spelling of a taught word.",
+    "acceptedInput": "Exact canonical first reply; case-insensitive, punctuation-insensitive. Beyond that only explicitly reviewed per-lesson accepted variants that keep meaning, stance and addressee identical (e.g. ya/iya; saya/aku in friend paths; alternate or omitted address term where reviewed). No generic token-ignoring, no stance particles (sih, kok, dong) accepted, no rule-generated address swaps; Malay or slang substitutions rejected."
+  },
+  "knownTraps": [
+    "Atemporal verbs: every German/English past, perfect or future base clause must be licensed by an explicit time/aspect marker in the SAME target line (sudah/tadi/kemarin/waktu itu/dulu/pernah for past; akan/mau/nanti/besok/tahun depan/minggu depan for future). Sequencing connectors (lalu, kemudian, setelah itu, akhirnya) never license tense on their own; each P1 narration line carries its own marker or its base stays present tense. telah is recognition-only written register (interlocutor or pattern lines), never productive learner speech.",
+    "Passive di- requires agent with oleh only when agent is expressed; agentless di- passive is the natural default for processes (Paketnya sudah dikirim). Do not calque German 'wurde von'.",
+    "ter- has three readings (accidental: tersesat; stative result: terbuat; ability: terjangkau). Only the accidental and result readings are productive; ability reading is recognition-only.",
+    "Concession: walaupun/meskipun + clause and tetapi are never combined in one sentence as a calque of German 'obwohl ... aber'. Validator flags 'walaupun ... tetapi' co-occurrence.",
+    "Negation: tidak for verbs/adjectives, bukan for nouns/pronouns; cloze distractors may exploit this but recall must not.",
+    "Hypotheticals: kalau is neutral, jika slightly formal, seandainya counterfactual; sekiranya is formal written register and recognition-only at B1. Pairing seandainya with a realis consequence is wrong; P3 stages seandainya only from L7, P7 stays with kalau/jika/asalkan.",
+    "Relative yang clauses: possessive description is 'yang warnanya hitam' or 'yang berwarna hitam', never 'yang hitam warnanya' in the canonical line.",
+    "Address terms: at most one address term per turn, used only where a native would; omission is natural and allowed; Mas/Mbak for visibly young staff and friends-of-friends, Pak/Bu as default; never 'Anda' plus 'kamu' in one path.",
+    "Loanwords: diskon, garansi, konfirmasi, kursus, jadwal are Indonesian; antre (not antri) is the KBBI form; exemption per lesson id.",
+    "Derived trophies kehujanan and ketinggalan are new lexemes (caught in rain; left behind/missed), not evasions of the A1/A2 trophies hujan and tinggal; mesin, hasil and other roots stay bare.",
+    "Spoken numbers: rupiah amounts spoken in full (dua ratus ribu), times with jam only when needed and jam itself is a frozen A1 trophy, so never a B1 trophy.",
+    "Speech recognizer: id-ID B1 keeps the inherited 0.65 threshold and recording window until a measured pilot with the guidedSpeechCheck scorer; any longer window for 8-16 word lines is set from pilot data, not here."
+  ],
+  "mechanicalValidationRules": [
+    "Exactly 10 paths × 10 lessons; lesson ids follow the frozen pattern indonesian-b1-<pathslug>-<n>-<nnn>-<trophy-slug> and never reuse an A1/A2 id.",
+    "Trophy set: 100 strings, NFC + casefold unique against each other and the full A1+A2 trophy list; regex ^[a-z]+$ (no hyphen, apostrophe, space, digit).",
+    "Trophy appears as a whitespace/punctuation-bounded token in corePhrase.targetText (first reply), in at least one pattern example targetText and in trophyWord.example; -nya/-lah/-kah suffixed occurrences do not count.",
+    "chunks.join(' ') === corePhrase.targetText; 4 ≤ chunks.length ≤ 7; no chunk is a lone function word unless it equals the staged connector of that lesson.",
+    "speakRequired: exactly 3 distinct lowercase tokens, each a whole-word match in the first reply, none in {pak,bu,mbak,mas,bapak,ibu,saya,anda,kamu,aku}.",
+    "First reply word count 8-16, second reply 6-12 (split on ASCII space after stripping punctuation).",
+    "Cloze: 2-3 blank parts on the second reply in the existing parts schema {kind: form|connector|choice, answer, cue?, choices[4]}; exactly one choice equals the removed surface token(s); blank ≤ 3 space-separated units; blank is never a lone token from {saya,anda,kamu,aku,dia,kita,kami,mereka,itu,ini,yang}; cue optional.",
+    "Recall: reconstructs first reply, 4 choices, blank is a content word or staged connector, never an address term or pronoun.",
+    "Base-tense licence: a line whose authored de/en tense tag is past/perfect/future must contain one of {sudah, tadi, kemarin, waktu itu, dulu, pernah, akan, mau, nanti, besok, tahun depan, minggu depan}; telah counts only in interlocutor or pattern lines; lalu/kemudian/setelah itu/akhirnya never satisfy this check.",
+    "Register lexicon: service-path learner lines must not contain kamu/aku; friend-path learner lines must not contain Anda; banned everywhere in learner lines: gue, lu, nggak, gak, banget, dong, sih, kok, awak, sila, tandas, macam, boleh tak, kalian as singular. No pronoun or address term is ever required to be present.",
+    "Staged-form gate: a grammatical form named in staging.productive (e.g. passive di- from P6 L1-4) may not appear in any learner line of an earlier path or earlier lesson; recognitionOnly forms may appear only in interlocutor or pattern lines. Ordinary vocabulary (nouns, plain verbs, adjectives) is not staged; only named forms are gated.",
+    "Co-occurrence ban (mechanical): 'walaupun|meskipun' with 'tetapi|tapi|namun' in one sentence. Irrealis consequence after seandainya and relativiser stacking are semantic review items, not regex.",
+    "Both de and en present on every base field; pedagogicalGoal is a German string; caption quotes the opening Indonesian line verbatim inside both locales.",
+    "Caption: both locales contain the opening Indonesian line verbatim and no verbatim quote of the follow-up line; absence of future leakage (facts known only after the follow-up) is a semantic review check, not a token diff.",
+    "Spoken numbers: digits forbidden in targetText, interlocutor lines, pattern examples; allowed in captions/situations."
+  ],
+  "semanticReviewRules": [
+    "Follow-up turn adds a genuinely new fact, objection or constraint; a mere acknowledgement (Oh begitu) fails.",
+    "Shape C: learner's second reply accepts the staff proposal with one explicit modification; learner never states that a refund, room change or cancellation 'is done' (only staff decides); learner may request, propose, ask whether.",
+    "Shape A: complication is plausible and resolvable in one learner turn; resolution uses the path's family, not an unrelated form.",
+    "Shape B: learner's two replies form one connected narrative or argument (same topic, anaphoric link such as itu/tadi/setelah itu).",
+    "Concession lessons: the conceded point and the main point must genuinely conflict; reviewer rejects pseudo-concessions.",
+    "Hypothetical lessons: counterfactuals use seandainya only with irrealis consequence; soft requests use kalau boleh / kalau tidak keberatan / mohon + verb with a real request; sekiranya appears only in interlocutor or pattern lines.",
+    "Cloze choices: the three wrong choices are grammatical-looking builds (wrong negation, wrong aspect marker, wrong connector, wrong register) and none is a synonym that would also fit; reviewer checks every blank against a native reading.",
+    "Base parity: German and English carry the same aspect and politeness; German Konjunktiv II only where Indonesian has seandainya/sekiranya/kalau; otherwise indicative.",
+    "Pattern examples: 2-3 lines, highlight is one contiguous span of the target line containing the staged form; at least one example is the actual learner reply and contains the trophy; others recycle earlier-path vocabulary.",
+    "No Malay, no Jakarta slang, no calqued German word order (verb-final, 'doch', 'mal' equivalents).",
+    "Recycling honoured: each lesson's second reply reuses at least one form from the stated recycles field.",
+    "Trophy naturalness: trophy carries the communicative weight of the first reply; reviewer rejects incidental trophies. Derived trophies (ter-, ke-an, di-) pass when the reviewer confirms a distinct lexical meaning from the root and from every A1/A2 trophy."
+  ],
+  "requiredSchemaExtensions": [
+    "Existing identities unchanged: dialogue tuple4, cloze parts string|{kind:form|connector|choice,answer,cue?,choices[4]}, pattern{label,rule,examples[{targetText,baseText,highlight}]}, recall{before,answer,after,fallbackChoices}, speakRequired[3], trophyWord{word,meaning,example,whyThisWord}. The existing B1 enum in exporters is reused.",
+    "Indonesian registration: id-ID B1 added wherever language/level codes are enumerated for lesson bodies and pickers; no new episode fields.",
+    "Native validator rules for id-ID: trophy regex ^[a-z]+$, banned-lexicon list, licensing-marker list, walaupun/tetapi co-occurrence, digits-in-speech check, address/pronoun exclusion from speakRequired and recall.",
+    "Optional reviewed accepted-variant metadata: acceptedVariants?: string[] per lesson, hand-reviewed, never rule-generated.",
+    "Staging metadata, loanword exemptions, derived-trophy root notes and per-line base tense tags live in this external spec and validator config, not in the app schema."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Cerita Akhir Pekan",
+      "anchor": "Telling a friend what happened on a weekend trip to Yogyakarta and the coast",
+      "register": "friend (kamu)",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "sequencing lalu / kemudian / setelah itu with an explicit time anchor in the same line (tadi, kemarin, waktu itu); background sedang; accidental ter- as lexical item (tersesat)",
+          "recognitionOnly": "ketika / saat clause"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "ketika / waktu + clause; sambil for simultaneous actions; mendadak / tiba-tiba as event markers",
+          "recognitionOnly": "adversative ke-an (kehujanan)"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "adversative ke-an (ketinggalan, kehujanan); akhirnya closing with its own past marker",
+          "recognitionOnly": "telah as written-register past"
+        }
+      ],
+      "clozeSchema": "Blanks on the sequencing connector, the time anchor and one aspect marker (sedang/sudah); distractors are other connectors or markers that break sequence.",
+      "recycles": "A2 P3 sudah/belum/tadi; A2 P4 mau/nanti; A1 place vocabulary (pasar, stasiun, pantai).",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "berjalan",
+          "beat": "Friend asks how Saturday started; you walked to the station, she asks where next."
+        },
+        {
+          "number": 2,
+          "trophy": "pasar",
+          "beat": "You describe the morning market; friend asks what you bought there."
+        },
+        {
+          "number": 3,
+          "trophy": "tersesat",
+          "beat": "You admit getting lost in the old town; friend asks who helped you."
+        },
+        {
+          "number": 4,
+          "trophy": "jembatan",
+          "beat": "You recall crossing the bridge while it drizzled; friend asks about photos."
+        },
+        {
+          "number": 5,
+          "trophy": "pantai",
+          "beat": "You reached the beach at sunset while eating; friend asks about the water."
+        },
+        {
+          "number": 6,
+          "trophy": "mendadak",
+          "beat": "Suddenly the bus did not come; friend asks how you got back."
+        },
+        {
+          "number": 7,
+          "trophy": "mampir",
+          "beat": "You dropped by a warung on the way; friend asks what was tasty."
+        },
+        {
+          "number": 8,
+          "trophy": "ketinggalan",
+          "beat": "You missed the last train; friend asks where you slept."
+        },
+        {
+          "number": 9,
+          "trophy": "kehujanan",
+          "beat": "You got soaked walking to the hostel; friend asks if you fell ill."
+        },
+        {
+          "number": 10,
+          "trophy": "akhirnya",
+          "beat": "Finally home Sunday night; friend asks whether you would go again."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Menurut Saya",
+      "anchor": "Discussing films, food and city life with a friend who often disagrees",
+      "register": "friend (kamu)",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "menurut saya / pendapat saya; setuju / tidak setuju; sebenarnya",
+          "recognitionOnly": "walaupun clause"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "walaupun / meskipun + clause; tetapi contrast in separate sentence; terlalu + adjective",
+          "recognitionOnly": "memang ... tetapi"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "memang ... tetapi / tapi ya; namun as sentence opener; comparative lebih recycled with concession",
+          "recognitionOnly": "sebaliknya"
+        }
+      ],
+      "clozeSchema": "Blanks on the concession connector, the stance word (setuju/memang/sebenarnya) and degree word (terlalu/lebih); distractors are connectors producing the wrong logic.",
+      "recycles": "A2 P2 lebih + adjective, karena; A1 enak, bagus, menarik contexts; P1 sequencing in anecdotes.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "menurut",
+          "beat": "Friend asks about last night's film; you give your view, she asks why."
+        },
+        {
+          "number": 2,
+          "trophy": "pendapat",
+          "beat": "Friend asks your opinion on the new café; she probes the prices."
+        },
+        {
+          "number": 3,
+          "trophy": "setuju",
+          "beat": "Friend says city traffic is hopeless; you partly agree, she asks solutions."
+        },
+        {
+          "number": 4,
+          "trophy": "walaupun",
+          "beat": "You liked the beach although crowded; friend asks about a quieter spot."
+        },
+        {
+          "number": 5,
+          "trophy": "sebenarnya",
+          "beat": "Friend assumes you love spicy food; you correct her, she asks favourites."
+        },
+        {
+          "number": 6,
+          "trophy": "menarik",
+          "beat": "You found the museum interesting despite the heat; friend asks what stood out."
+        },
+        {
+          "number": 7,
+          "trophy": "membosankan",
+          "beat": "You call the series boring though well acted; friend defends the plot."
+        },
+        {
+          "number": 8,
+          "trophy": "terlalu",
+          "beat": "Friend suggests the mall; you find it too expensive, she proposes a market."
+        },
+        {
+          "number": 9,
+          "trophy": "mahal",
+          "beat": "Friend says rent downtown is reasonable; you argue it's expensive, she compares areas."
+        },
+        {
+          "number": 10,
+          "trophy": "memang",
+          "beat": "Friend criticises your neighbourhood; you concede the noise yet praise neighbours, she asks more."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Kalau Boleh",
+      "anchor": "Soft requests and hypotheticals at a guesthouse front desk and a travel agency",
+      "register": "service (saya/Anda, Pak/Bu/Mbak/Mas)",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "kalau boleh / boleh saya + verb; maaf mengganggu opener; tolong + verb; menukar and pilihan lain as request vocabulary",
+          "recognitionOnly": "kalau tidak keberatan"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "mohon + verb polite request; kalau tidak keberatan; kalau bisa; menunda as request verb",
+          "recognitionOnly": "sekiranya (formal written); seandainya counterfactual"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "seandainya + irrealis consequence (saya akan / mungkin); membatalkan as request verb; ada tambahan / diskon questions",
+          "recognitionOnly": "andai saja"
+        }
+      ],
+      "clozeSchema": "Blanks on the request softener, the request verb and the hypothetical connector; distractors include realis kalau vs irrealis seandainya mismatches.",
+      "recycles": "A2 P1 service formulas; A1 reservasi, kamar, sewa; P2 tetapi for polite objection.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "mengganggu",
+          "beat": "Receptionist greets you; you apologise for disturbing and ask about late checkout, she offers noon."
+        },
+        {
+          "number": 2,
+          "trophy": "menukar",
+          "beat": "Clerk asks how to help; you ask to swap rooms, he offers a different floor."
+        },
+        {
+          "number": 3,
+          "trophy": "pilihan",
+          "beat": "Agent lists one tour; you ask for other options, she suggests a morning one."
+        },
+        {
+          "number": 4,
+          "trophy": "mohon",
+          "beat": "You politely request (mohon disiapkan) an early breakfast; staff offers a packed box."
+        },
+        {
+          "number": 5,
+          "trophy": "keberatan",
+          "beat": "You ask whether they'd mind storing bags; clerk sets a time limit."
+        },
+        {
+          "number": 6,
+          "trophy": "menunda",
+          "beat": "You ask to postpone the tour a day; agent mentions a small fee."
+        },
+        {
+          "number": 7,
+          "trophy": "seandainya",
+          "beat": "You ask what would happen if you cancelled; agent explains partial refund."
+        },
+        {
+          "number": 8,
+          "trophy": "membatalkan",
+          "beat": "You consider cancelling the second night; receptionist proposes keeping it cheaper."
+        },
+        {
+          "number": 9,
+          "trophy": "tambahan",
+          "beat": "You ask about an extra bed; staff offers one with surcharge."
+        },
+        {
+          "number": 10,
+          "trophy": "diskon",
+          "beat": "You ask whether a discount exists for three nights; agent counters with breakfast included."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Yang Warnanya Hitam",
+      "anchor": "Describing lost items, people and places at a lost-and-found desk and a mall information point",
+      "register": "service (saya/Anda, Pak/Bu/Mbak/Mas)",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "yang + adjective; yang warnanya + colour; berwarna + colour",
+          "recognitionOnly": "yang + clause with verb"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "yang + verb clause (yang saya bawa, yang tertinggal di meja); ber- descriptive (bergaris, berkantong); bentuk / ukuran descriptions",
+          "recognitionOnly": "terbuat dari"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "terbuat dari + material; result ter- (tertulis, tertempel); pemilik / milik ownership phrasing",
+          "recognitionOnly": "yang mana?"
+        }
+      ],
+      "clozeSchema": "Blanks on yang vs. bare adjective choice, the ber-/ter- descriptive and the material/possessive phrase; distractors are wrong relativiser placements or wrong prefix.",
+      "recycles": "A1 colours and sizes; A2 P2 yang ini / yang itu; P1 tadi / kemarin for when the item was lost.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "hitam",
+          "beat": "Staff asks what you lost; you describe a black bag, she finds two black bags."
+        },
+        {
+          "number": 2,
+          "trophy": "berwarna",
+          "beat": "Staff asks the colour of the umbrella; yours is green, hers is blue."
+        },
+        {
+          "number": 3,
+          "trophy": "dompet",
+          "beat": "You describe a brown wallet; staff asks about contents to verify."
+        },
+        {
+          "number": 4,
+          "trophy": "jaket",
+          "beat": "You report a jacket left at the café; staff found one without hood."
+        },
+        {
+          "number": 5,
+          "trophy": "kacamata",
+          "beat": "You describe glasses in a red case; staff shows a similar black case."
+        },
+        {
+          "number": 6,
+          "trophy": "bergaris",
+          "beat": "Staff asks about a striped shirt; yours is striped blue, theirs is plain."
+        },
+        {
+          "number": 7,
+          "trophy": "bentuk",
+          "beat": "Staff asks the shape of the box; you say round, she shows square."
+        },
+        {
+          "number": 8,
+          "trophy": "terbuat",
+          "beat": "You say the bracelet is made of silver; staff asks for identifying marks."
+        },
+        {
+          "number": 9,
+          "trophy": "lebar",
+          "beat": "You describe a wide wooden tray; staff asks whether it had a sticker."
+        },
+        {
+          "number": 10,
+          "trophy": "pemilik",
+          "beat": "You ask about the owner of a found phone; staff asks you to describe where."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Saya Ingin Tahu",
+      "anchor": "Indirect enquiries at a clinic registration, a bank counter and a city office",
+      "register": "service (saya/Anda, Pak/Bu/Mbak/Mas)",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "boleh saya tanya + question word; saya ingin tahu + kapan / di mana; embedded question word order",
+          "recognitionOnly": "apakah embedded yes/no"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "saya ingin tahu apakah ...; Anda tahu apakah ...; jadwal / biaya / syarat as enquiry nouns",
+          "recognitionOnly": "masih berlaku"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "apakah ... masih berlaku; harus mendaftar + where/when; antre procedures with sebelum/setelah",
+          "recognitionOnly": "bisakah / dapatkah"
+        }
+      ],
+      "clozeSchema": "Blanks on the embedding verb (tahu/tanya), the embedded question word or apakah, and the enquiry noun; distractors swap direct for indirect order.",
+      "recycles": "A1 jam/menit for schedules; A2 P1 kartu / tagihan; P3 kalau boleh softener before enquiry.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "tanya",
+          "beat": "Clinic clerk asks your business; you ask when the doctor arrives, she says delayed."
+        },
+        {
+          "number": 2,
+          "trophy": "ingin",
+          "beat": "You want to know where to register; clerk sends you upstairs, system down."
+        },
+        {
+          "number": 3,
+          "trophy": "kapan",
+          "beat": "You ask when results are ready; nurse says tomorrow, you need them today."
+        },
+        {
+          "number": 4,
+          "trophy": "apakah",
+          "beat": "You ask whether the bank opens Saturday; teller says only mornings."
+        },
+        {
+          "number": 5,
+          "trophy": "jadwal",
+          "beat": "You ask about the counselling schedule; officer says it changed this week."
+        },
+        {
+          "number": 6,
+          "trophy": "biaya",
+          "beat": "You ask the cost of a new card; teller adds an unexpected stamp fee."
+        },
+        {
+          "number": 7,
+          "trophy": "syarat",
+          "beat": "You ask the requirements for a permit; clerk needs a document you lack."
+        },
+        {
+          "number": 8,
+          "trophy": "berlaku",
+          "beat": "You ask whether your visa is still valid; officer spots an expiring date."
+        },
+        {
+          "number": 9,
+          "trophy": "mendaftar",
+          "beat": "You ask where to register online; clerk says the site is down, offers paper."
+        },
+        {
+          "number": 10,
+          "trophy": "antre",
+          "beat": "You ask whether you must queue again; officer explains a priority window."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Sudah Diproses",
+      "anchor": "Following up on processes and results at a repair shop, a courier office and a bank",
+      "register": "service (saya/Anda, Pak/Bu/Mbak/Mas)",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-4",
+          "productive": "agentless di- passive with sudah/belum (sudah diperiksa, belum dikirim); selesai as result",
+          "recognitionOnly": "passive with oleh"
+        },
+        {
+          "lessons": "5-7",
+          "productive": "di- passive with oleh agent; ternyata result reveal; hasil + possessive",
+          "recognitionOnly": "stative ter- result (terkirim)"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "gagal / berhasil + verb; mesin and system subjects with di- passive; konfirmasi request (minta konfirmasi)",
+          "recognitionOnly": "akan di- future passive"
+        }
+      ],
+      "clozeSchema": "Blanks on the passive prefix form, the aspect marker (sudah/belum) and the result word (ternyata/selesai/gagal); distractors use active meN- or wrong aspect.",
+      "recycles": "A2 P3 sudah/belum bayar; A2 P9 rusak / perbaiki contexts; P5 apakah embedded for status questions.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "diperiksa",
+          "beat": "Technician asks your ticket number; you ask if the laptop was checked, part missing."
+        },
+        {
+          "number": 2,
+          "trophy": "dikirim",
+          "beat": "You ask whether the parcel was sent; clerk says address incomplete."
+        },
+        {
+          "number": 3,
+          "trophy": "selesai",
+          "beat": "You ask if the repair is finished; technician needs one more day."
+        },
+        {
+          "number": 4,
+          "trophy": "diproses",
+          "beat": "You ask whether your transfer is processed; teller says pending verification."
+        },
+        {
+          "number": 5,
+          "trophy": "ternyata",
+          "beat": "You report the phone still fails; technician says battery turned out faulty."
+        },
+        {
+          "number": 6,
+          "trophy": "hasil",
+          "beat": "You ask for the test result; clinic says results sent to wrong email."
+        },
+        {
+          "number": 7,
+          "trophy": "diantar",
+          "beat": "You ask when the package is delivered; courier says driver's bike broke."
+        },
+        {
+          "number": 8,
+          "trophy": "gagal",
+          "beat": "You report the payment failed twice; teller finds a daily limit."
+        },
+        {
+          "number": 9,
+          "trophy": "mesin",
+          "beat": "You say the ATM machine ate your card; staff needs form plus wait."
+        },
+        {
+          "number": 10,
+          "trophy": "konfirmasi",
+          "beat": "You request written confirmation of the repair; staff can only send tomorrow."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Supaya Lancar",
+      "anchor": "Planning a hiking weekend and a budget with a friend, with purposes and conditions",
+      "register": "friend (kamu)",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "untuk + verb purpose; supaya + clause; kalau + condition with akan/mau consequence; libur / cuaca planning nouns",
+          "recognitionOnly": "agar"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "agar as formal purpose; jika + condition; asalkan condition-with-concession",
+          "recognitionOnly": "selama + duration"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "membawa / menghemat in plan statements; combined purpose + condition in one turn (kalau ..., supaya ...); mendaki itinerary",
+          "recognitionOnly": "kecuali kalau"
+        }
+      ],
+      "clozeSchema": "Blanks on the purpose connector, the condition connector and the future licence (akan/mau); distractors swap purpose for cause (karena) or realis for irrealis.",
+      "recycles": "A2 P4 mau / bagaimana kalau; P3 seandainya recognition; P1 sequencing for itinerary.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "supaya",
+          "beat": "Friend proposes leaving at seven; you prefer six so it's cooler, she accepts if breakfast."
+        },
+        {
+          "number": 2,
+          "trophy": "libur",
+          "beat": "Friend asks when you are off; you name the long weekend, she suggests Friday."
+        },
+        {
+          "number": 3,
+          "trophy": "cuaca",
+          "beat": "Friend asks about the weather; you plan to go if dry, she proposes backup."
+        },
+        {
+          "number": 4,
+          "trophy": "agar",
+          "beat": "You suggest booking early so prices stay low; friend wants flexible dates."
+        },
+        {
+          "number": 5,
+          "trophy": "jika",
+          "beat": "If the trail closes you propose the lake; friend adds a morning check."
+        },
+        {
+          "number": 6,
+          "trophy": "asalkan",
+          "beat": "You agree to camp provided it's not raining; friend offers a cabin."
+        },
+        {
+          "number": 7,
+          "trophy": "gunung",
+          "beat": "Friend wants the higher mountain; you prefer the lower one, she proposes both."
+        },
+        {
+          "number": 8,
+          "trophy": "mendaki",
+          "beat": "You plan to hike at dawn; friend suggests a guide for safety."
+        },
+        {
+          "number": 9,
+          "trophy": "membawa",
+          "beat": "You list what to bring to save money; friend asks who carries water."
+        },
+        {
+          "number": 10,
+          "trophy": "menghemat",
+          "beat": "You propose sharing a car to save; friend agrees if you drive back."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Dulu dan Kini",
+      "anchor": "Comparing childhood habits and current routines with a friend over tea",
+      "register": "friend (kamu)",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "dulu ... sekarang contrast; pernah for experience; masih for continuing",
+          "recognitionOnly": "tidak ... lagi"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "tidak ... lagi; jarang / setiap frequency; sejak + time or clause; olahraga as activity noun",
+          "recognitionOnly": "kebiasaan as noun"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "kebiasaan + possessive; berubah with sejak; sudah tidak + verb lagi; berenang as hobby verb",
+          "recognitionOnly": "semakin"
+        }
+      ],
+      "clozeSchema": "Blanks on the temporal contrast marker, the frequency word and the sejak phrase; distractors are markers producing the wrong time frame.",
+      "recycles": "A2 P3 past markers; P2 memang concession on habits; P1 waktu + clause for childhood.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "pernah",
+          "beat": "Friend asks if you ever lived abroad; you did, she asks what you miss."
+        },
+        {
+          "number": 2,
+          "trophy": "masih",
+          "beat": "Friend asks whether you still play guitar; you do, she asks how often."
+        },
+        {
+          "number": 3,
+          "trophy": "sepeda",
+          "beat": "You used to cycle to school daily; friend asks about now."
+        },
+        {
+          "number": 4,
+          "trophy": "jarang",
+          "beat": "You rarely cook anymore since work; friend asks what you eat."
+        },
+        {
+          "number": 5,
+          "trophy": "setiap",
+          "beat": "You swim every morning now; friend asks when that started."
+        },
+        {
+          "number": 6,
+          "trophy": "sejak",
+          "beat": "Since moving you sleep earlier; friend asks whether you feel better."
+        },
+        {
+          "number": 7,
+          "trophy": "olahraga",
+          "beat": "Friend asks about sport; you exercise more than before, she asks which."
+        },
+        {
+          "number": 8,
+          "trophy": "kebiasaan",
+          "beat": "You describe one habit you dropped, coffee at night; friend asks substitutes."
+        },
+        {
+          "number": 9,
+          "trophy": "berubah",
+          "beat": "Friend says you've changed; you agree partly, she asks what remains."
+        },
+        {
+          "number": 10,
+          "trophy": "berenang",
+          "beat": "You rarely swam as a child, now weekly; friend asks to join."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Keluhan dan Solusi",
+      "anchor": "Capstone: complaints and negotiated resolutions at a hotel, a repair shop and a food delivery service",
+      "register": "service (saya/Anda, Pak/Bu/Mbak/Mas)",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "complaint frame maaf, saya mau menyampaikan keluhan; seharusnya + verb for expected state; kecewa karena",
+          "recognitionOnly": "sebaiknya"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "sebaiknya suggestions; passive recycled in complaints (belum dibersihkan); garansi / solusi negotiation nouns; bocor / kotor states",
+          "recognitionOnly": "kalau tidak"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "menerima + modified offer; sepakat / setuju closing; conditional accept (saya menerima, asalkan ...); combined concession + request",
+          "recognitionOnly": "kompensasi"
+        }
+      ],
+      "clozeSchema": "Blanks on seharusnya/sebaiknya choice, the passive or state word, and the acceptance connector (asalkan/tetapi); distractors mix deontic markers or realis/irrealis.",
+      "recycles": "P3 soft requests, P4 descriptions, P6 passives and results, P2 concession, P7 asalkan; A2 service formulas.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "kecewa",
+          "beat": "Receptionist asks how the room is; you're disappointed, she offers late checkout, you ask cleaning."
+        },
+        {
+          "number": 2,
+          "trophy": "seharusnya",
+          "beat": "You say breakfast should have been included; staff offers voucher, you ask tomorrow's too."
+        },
+        {
+          "number": 3,
+          "trophy": "keluhan",
+          "beat": "You lodge a complaint about noise; manager offers earplugs, you request another floor."
+        },
+        {
+          "number": 4,
+          "trophy": "bocor",
+          "beat": "The shower leaks; technician comes tonight, you accept if before nine."
+        },
+        {
+          "number": 5,
+          "trophy": "kotor",
+          "beat": "Table still dirty at the café; waiter moves you, you accept near window."
+        },
+        {
+          "number": 6,
+          "trophy": "sebaiknya",
+          "beat": "You suggest they should check the AC; staff proposes a fan, you ask a repair date."
+        },
+        {
+          "number": 7,
+          "trophy": "garansi",
+          "beat": "Repair failed under warranty; shop offers partial refund, you ask full exchange."
+        },
+        {
+          "number": 8,
+          "trophy": "solusi",
+          "beat": "Delivery arrived cold; agent offers coupon, you propose redelivery plus coupon."
+        },
+        {
+          "number": 9,
+          "trophy": "menerima",
+          "beat": "You accept the replacement provided delivery is free; agent confirms next day."
+        },
+        {
+          "number": 10,
+          "trophy": "sepakat",
+          "beat": "Manager summarises the deal; you agree on condition of written confirmation."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Setahun Ini",
+      "anchor": "Capstone: telling a friend the story of your year in Indonesia and your plans ahead",
+      "register": "friend (kamu)",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "selama + duration; past narration with sudah/pernah recycled; pengalaman + yang clause; kursus as milestone noun",
+          "recognitionOnly": "sepanjang tahun"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "future plans with tahun depan / akan / berencana-free framing (saya mau); menabung untuk; lulus milestone; terus + verb continuation",
+          "recognitionOnly": "semoga"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "semoga + hope clause; harapan saya + clause; bersyukur karena closing",
+          "recognitionOnly": "mudah-mudahan"
+        }
+      ],
+      "clozeSchema": "Blanks on the duration or future marker, the purpose connector (untuk/supaya) and the hope frame (semoga/harapan); distractors are past markers in future slots and vice versa.",
+      "recycles": "P1 narration, P2 opinion, P7 purpose and condition, P8 habit contrast; A1/A2 time vocabulary.",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "selama",
+          "beat": "Friend asks how long you've been here; a year, she asks the hardest part."
+        },
+        {
+          "number": 2,
+          "trophy": "pengalaman",
+          "beat": "You share your best experience, a village stay; friend asks what you learned."
+        },
+        {
+          "number": 3,
+          "trophy": "kursus",
+          "beat": "You took a language course for six months; friend asks if it helped."
+        },
+        {
+          "number": 4,
+          "trophy": "lulus",
+          "beat": "You passed the exam last month; friend asks what comes next."
+        },
+        {
+          "number": 5,
+          "trophy": "depan",
+          "beat": "Next year you want to work in Bali; friend asks about housing."
+        },
+        {
+          "number": 6,
+          "trophy": "menabung",
+          "beat": "You're saving to visit home; friend asks how much you've saved."
+        },
+        {
+          "number": 7,
+          "trophy": "terus",
+          "beat": "You will keep studying Indonesian; friend offers weekly conversation."
+        },
+        {
+          "number": 8,
+          "trophy": "semoga",
+          "beat": "You hope your visa gets extended; friend asks about the deadline."
+        },
+        {
+          "number": 9,
+          "trophy": "harapan",
+          "beat": "Your hope is to bring your family; friend asks when."
+        },
+        {
+          "number": 10,
+          "trophy": "bersyukur",
+          "beat": "You feel grateful for the year; friend asks what you'd tell newcomers."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": [
+    "Resolved: friend-path canonical lines may use saya, aku or pronoun omission as natural; the other pronoun is a reviewed accepted variant where the line stays identical in meaning.",
+    "Resolved: derived-form trophies (tersesat, kehujanan, ketinggalan, terbuat, diperiksa, dikirim, diproses, diantar) are legal distinct lexemes under the non-evasion rule; roots stay bare elsewhere.",
+    "Resolved: sekiranya is recognition-only at B1; P3 L4 trophy is mohon."
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "Cebuano has no du/Sie split: informal ka/nimo/imong second person throughout. Service tone: palihug on lines that make a request (not on every line), full sentences, no slang clitics (bitaw, uy) in learner lines; ta/kita allowed in service lines only when genuinely inclusive of the interlocutor (Magkita ta sa Lunes). Friend tone adds lang/man softeners and inclusive ta/kita freely; host/elder tone keeps full sentences and no slang. Each path names a DEFAULT register; a lesson whose beat names a different interlocutor follows its own scene (P4 lessons 1 and 5 friend; P7 lessons 5, 8 and 9 service), the caption states the role, and within one lesson the register never shifts. Tagalog po/opo/pakisuyo/kayo/hindi banned; 'Ma'am/Sir' allowed only inside them-lines, never learner lines, speech, recall or trophies.",
+  "genderSafety": "Cebuano has no grammatical gender and no gendered agreement: siya/niya cover all referents, adjectives and verbs never agree. Learner lines never assert the learner's own gender or marital status (no self-labels such as dalaga, ulitawo, asawa, bana as identity). Describing an interlocutor or third person as babaye/lalaki, or using gendered kin terms (lola, iyaan, uyoan), is normal Cebuano and allowed wherever the scene makes it meaningful and respectful. Captions name the role (ang kahera, ang drayber). No gender alternatives and no gendered-token check exist for ceb-PH; the generic validator pass is empty by design.",
+  "orthography": "Standard Visayan spelling as in A1/A2: ni- completed, nag- progressive, mo-/mag- future/intent; conjunction 'ug', indefinite object marker 'og'; 'kung' canonical, 'kon' accepted only where explicitly listed; glottal-stop hyphen words (bag-o, dad-on, kat-on) allowed in dialogue text only and never in speech tokens, recall answers or trophies. Loanwords keep A2 spellings (reserbasyon, resibo, taksi, kape, selpon). Numbers: native (duha, tulo, lima) for counts, Spanish-derived for clock/money/dates (alas tres, singkwenta, trese) matching A2. DECIDED: (1) fused pronoun forms are written koy/kay/tay without apostrophe in dialogue text (naa koy, wala kay); ko'y is never written; fused forms never appear as speech tokens, recall answers or trophies. (2) mi- completed is never canonical; it may appear only inside a reviewed acceptedVariants full line on a learner turn and never in speech tokens. (3) gi- object focus is recognition-only in them-lines until P6 lesson 4, productive from P6 lesson 4 onward and in P9; -on/i- instruction forms productive from P6 lesson 1 on familiar verbs only.",
+  "segmentation": {
+    "youOne": "First learner reply 8-16 words, one or two sentences, connected to the opening; contains the trophy as exact surface word and all three speech tokens; no hyphenated or fused forms among tokens.",
+    "youTwo": "Second learner reply 6-12 words, resolves or continues; reconstructed by 2-3 cloze blanks; must not restate youOne verbatim.",
+    "chunks": "4-7 chunks, joined by single ASCII space equal youOne exactly. Cut at phrase edges; clitic clusters (na ko, ra gihapon, pa ba, lang ko) never split from their host word; 'kay/kung/aron/bisan' start their clause chunk.",
+    "speechTokens": "Three distinct whole words from youOne: at least one content verb or noun, one connector or aspect-bearing word; never bare clitics (na, ko, ka, ra, ba, lang, pa, man), never hyphenated or fused words (koy/kay/tay). A canonical loanword in its A2 spelling (resibo, reserbasyon, taksi, selpon) is a valid token; only unanchored alternative spellings (taxi, Wi-Fi) are excluded. Threshold 0.55 and the established B1 recording duration 15 s; revisit only after a measured pilot.",
+    "trophyAnchoring": "Trophy is the exact lowercase surface word in youOne and in trophyWord.example; Cebuano affixation changes surface (sugod vs nagsugod), so verb trophies are the affixed form actually spoken (nagdali, nisakay, gisagol) or a root that stands bare natively as noun or stative predicate (sa sugod 'at the start', bukal na 'already boiling', wala pay sulbad 'no solution yet', hangyo ko nga 'my request is'). No substring matches: 'una' must be the word, not inside 'unang'. Never strip or add affixes or clitics to satisfy the validator; if the taught form is affixed, the trophy is the affixed word.",
+    "acceptedInput": "Only explicitly reviewed spelling variants per turn (kung/kon, og/ug, taksi/taxi, Wi-Fi/wifi, ni-/mi- where listed). No clitic dropping, no synonym substitution, no automatic normalization beyond NFC and casefold."
+  },
+  "knownTraps": [
+    "dili negates future/habitual/adjectives/intent (dili ko mobayad, dili mahal); wala negates past, existence and progressive, and the verb after wala takes the mo-/mag- base form or the ka-/naka- abilitative, never ni-/nag- in canonical lines: Wala ko mobayad (I did not pay), Wala ko katulog og maayo (I could not sleep well), Wala pa ko mangaon, walay tubig. The dili/wala pair is never interchangeable in cloze, and the prefix after wala is not what marks past: wala itself does.",
+    "Clitics attach to the first full word of the clause, but there is no single universal stack: monosyllabic na/pa/ra/lang normally precede the pronoun (Nahuman na ko; Mangutana lang ko; Mohulat ra ko), ba follows na/pa and precedes the pronoun in questions (Nakakaon na ba ka?; Mahimo ba ko mangutana?), while ko lang / ko ra also occurs natively after longer hosts (Mohulat ko lang diri). Canonical lines use the ordering of these examples; a reviewer flags order semantically, never auto-reorders, and an order not attested in the examples is a review item, not an automatic error.",
+    "ni- (A2 canonical) vs mi- completed: keep ni- canonical in all canonical lines; mi- only as reviewed accepted variant, never in speech tokens.",
+    "Object-focus gi-/-on/i- changes word order and pronoun forms (gihugas nako vs naghugas ko); do not mix focuses inside one clause.",
+    "'kay' is both subordinator (because) and topic marker (ako kay); cloze connector blanks must make the reading unambiguous.",
+    "'nga' linker vs 'ka' numeral linker (usa ka tawo, tawo nga taas): never swap.",
+    "Trophy surface: forbidden list is trophy-only; forbidden words (kabalo, gusto, unya) remain usable in dialogue, just never as B1 trophies.",
+    "Tagalog bleed: po, opo, pakisuyo, kayo, hindi, kasi, kumain, magkano; also careless calques of German tense ('Ich habe gewartet' needs naghulat/nihulat, not naa ko).",
+    "Hyphenated glottal words (bag-o, kat-on, dad-on) are correct spelling but excluded from speech, recall, trophies; prefer hyphen-free synonyms in those slots.",
+    "'kung' doubles as if-condition and indirect-question introducer; stage the two readings in separate paths (P3 vs P5) and never cloze on it where both fit.",
+    "Spanish-derived time and money numbers must stay in their A2 forms; do not introduce English digits as words."
+  ],
+  "mechanicalValidationRules": [
+    "Trophies: lowercase, single token, NFC+casefold unique against A1, A2 and all B1; not in forbiddenTrophies; no hyphen, apostrophe, digit, capital; must appear as whole word in dialogue[1].targetText and trophyWord.example.",
+    "Dialogue tuple4 order: them, learner, them, learner; learner turns 8-16 and 6-12 words; sceneCaption.de and .en each contain dialogue[0].targetText verbatim inside quotation marks and do not contain dialogue[2].targetText as a full line; quoted target text inside a German or English caption is expected and never flagged. Whether the caption foreshadows the complication of dialogue[2] is a semantic review item, not a substring check.",
+    "Chunks joined by one ASCII space equal dialogue[1].targetText exactly; 4-7 chunks; 6-8 terms.",
+    "speakRequired has exactly 3 distinct tokens, each a whole word of dialogue[1], none in a stoplist of clitics, none containing '-' or an apostrophe.",
+    "Cloze: 2-3 blank parts, each exactly 4 distinct choices with exactly one answer; join of parts equals dialogue[3].targetText; kind in form/connector/choice; cue (single string, root + aspect, e.g. 'bayad, completed') present only on form blanks; every answer is a whole inflected word or a phrase of at most 3 space-separated units, never a bound morpheme, bare prefix or anything containing '-' or an apostrophe; no blank whose answer is a bare pronoun, clitic or article.",
+    "Recall: before+answer+after equals dialogue[1].targetText; fallbackChoices exactly 4 distinct, answer included, answer is a content word of 3+ letters.",
+    "Pattern: 2-3 examples, highlight is a contiguous substring of its targetText; at least one example equals dialogue[1] or dialogue[3] targetText.",
+    "Every base text field has both de and en; pedagogicalGoal is a German string; no en text in .de fields (heuristic: common English function words).",
+    "Banned tokens anywhere in target text: po, opo, pakisuyo, kayo, hindi, kasi, magkano, kumain.",
+    "Flag for review: 'dili' immediately before ni-/nag-/naka-/gi-/naa; 'wala' immediately before ni-/nag- (colloquial, not canonical). 'wala' + mo-/mag- and 'wala' + ka-/naka- are the regular negated past and pass.",
+    "Aspect license per learner turn: a completed base tense (de Perfekt/Praeteritum, en past) is licensed by ni-/naka-/gi-/na- in the same turn, by wala + mo-/mag-/ka- negated past, or by nag- when the same turn or the directly preceding them-line carries a past frame (ganina, gahapon, kaniadto, sauna, gabii, a ni-/gi- clause); a future base (de Futur or Praesens mit Zeitangabe, en will/going to) requires mo-/mag-/ma- or a future time word (ugma, sunod semana) or a kung/aron/basta clause in the same turn; unta alone licenses only wish/irrealis (de Konjunktiv II, en would/wish), never plain future."
+  ],
+  "semanticReviewRules": [
+    "Each learner turn is a real reply to the preceding them-line; dialogue[2] adds new information (complication, interest or counter-offer), not a repeat.",
+    "Learner never asserts staff-only decisions (refund granted, room changed); learner requests or accepts with modification.",
+    "Focus and aspect choices match the pathʼs staged productive set; recognition-only forms appear only in them-lines.",
+    "German is idiomatic and not a gloss of English; English is not a gloss of German; both carry the same aspect meaning the target licenses.",
+    "Register coherence is checked per lesson against the scene named in its beat: service scenes use palihug on request lines and neutral full sentences, with ta/kita only when genuinely inclusive; friend and host scenes may use ta/kita and lang; the path register is the default and the exception lessons listed in registerPolicy (P4 L1/L5, P7 L5/L8/L9) are reviewed as their own scene.",
+    "Cloze distractors are grammatically or contextually impossible in that exact slot, never near-synonyms or spelling variants: apan/pero, kung/kon, og/ug, lang/ra, ni-/mi- forms must never co-occur as choices; the pairs dili/wala, kung/aron, bisan/apan, nga/ka, sa/og are each checked to admit exactly one native answer in context.",
+    "whyThisWord explains reuse value and the exact surface form taught, in both locales.",
+    "No Tagalog, no Hiligaynon forms, no invented loanwords; loanwords must match A2 spelling precedents.",
+    "P9 and P10 lessons visibly recycle at least two earlier families each; check the recycling map is honored, not only stated."
+  ],
+  "requiredSchemaExtensions": [
+    "Register ceb-PH in the offline Latin-target list (currently five targets) so B1 offline bundles build; no new field shapes.",
+    "Register ceb-PH B1 in the existing native-check tooling (banned-token list, trophy uniqueness against the frozen forbiddenTrophies list plus all B1 trophies, whole-word anchoring, caption quote check); all checks run on the existing schema.",
+    "Dialogue learner turns only: OPTIONAL acceptedVariants string[] of reviewed exact full-line spellings (kon for kung, og/ug, taksi/taxi, mi- for ni- where listed); no token-level rules, no auto-generation.",
+    "No other schema change: cloze cue stays a single string present only on form blanks, trophyWord.example stays a string, pattern.rule stays a string, meaning and whyThisWord stay {de,en} as in A2. Speech thresholds and recording seconds are source audit metadata, not runtime schema: ceb-PH B1 uses threshold 0.55 and the established B1 recording duration 15 s."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Unsay nahitabo? — connected narration",
+      "anchor": "Narrating a day, a trip or an incident in order with completed aspect and sequence connectors",
+      "register": "friend",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "ni-/nag- completed and progressive sequencing with dayon, sayo, samtang; two-event sentences",
+          "recognitionOnly": "gi- object focus in them-lines; human/pagkahuman"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "pagkahuman + clause, nahitabo, sugod, tungod sa + noun; three-event narration",
+          "recognitionOnly": "naka- abilitative; kaniadto"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "kaniadto background vs event, nagdali/nisakay vivid narration, mixed order with dayon/human",
+          "recognitionOnly": "-on object focus future"
+        }
+      ],
+      "clozeSchema": "form blank on the whole aspect-marked verb (nibayad/nagbayad/mobayad; cue: root + completed/progressive/future) + connector blank (dayon/samtang/pagkahuman/tungod) + optional choice blank on time word",
+      "recycles": "A2 P3 completed whitelist (nibayad, niabot), A2 time words (ganina, gahapon, ugma), A2 kay subordinator",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "dayon",
+          "beat": "Friend asks about your morning; you narrate waking then coffee; she asks what came next."
+        },
+        {
+          "number": 2,
+          "trophy": "sayo",
+          "beat": "Neighbor asks how the market trip went; you left early; he asks if stalls were open."
+        },
+        {
+          "number": 3,
+          "trophy": "samtang",
+          "beat": "Coworker asks about the storm day; you cooked while rain fell; she asks about power."
+        },
+        {
+          "number": 4,
+          "trophy": "pagkahuman",
+          "beat": "Host asks about your Sunday; after church you ate downtown; he asks where exactly."
+        },
+        {
+          "number": 5,
+          "trophy": "nahitabo",
+          "beat": "Friend notices your wet bag; you explain what happened on the jeepney; she asks damage."
+        },
+        {
+          "number": 6,
+          "trophy": "sugod",
+          "beat": "Cousin asks how the fiesta began; you describe the parade start with sugod as a noun (Sa sugod naglinya ang mga banda sa plasa, dayon nilakaw sila paingon sa simbahan); he asks the ending."
+        },
+        {
+          "number": 7,
+          "trophy": "tungod",
+          "beat": "Landlady asks why you were late; because of traffic you walked; she asks from where."
+        },
+        {
+          "number": 8,
+          "trophy": "kaniadto",
+          "beat": "Vendor asks if you lived here before; you describe life back then; she asks changes."
+        },
+        {
+          "number": 9,
+          "trophy": "nagdali",
+          "beat": "Driver asks why you ran; you hurried for the last trip; he asks if you caught it."
+        },
+        {
+          "number": 10,
+          "trophy": "nisakay",
+          "beat": "Friend asks how you reached the island; you boarded the ferry at dawn; she asks seasickness."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Sa akong hunahuna — opinion and concession",
+      "anchor": "Giving an opinion, hearing a counterpoint, conceding with bisan/apan/hinuon and holding a view",
+      "register": "friend",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "sa akong hunahuna + clause, bisan + clause, hinuon as 'rather'; mas + adjective recycled",
+          "recognitionOnly": "gani, tinuod nga"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "uyon ko/dili ko uyon, lisod/sayon + infinitive-like verb, apan contrast",
+          "recognitionOnly": "bisan unsa/bisan kinsa"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "angay + verb, basta + condition, apan + concession, importante kay; two-clause opinions",
+          "recognitionOnly": "siguro, tingali reinforcement"
+        }
+      ],
+      "clozeSchema": "connector blank (bisan/apan/kay/hinuon) + choice blank on stance phrase (uyon ko/dili ko uyon/angay) + optional form blank on the whole degree form (mas lami/pinakalami; cue: root + comparative/superlative)",
+      "recycles": "A2 P2 mas comparatives, A2 P7 pinaka-, A2 kay; P1 tungod",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "hunahuna",
+          "beat": "Coworker asks about the new canteen; you share your thought; she counters price; you weigh."
+        },
+        {
+          "number": 2,
+          "trophy": "bisan",
+          "beat": "Friend praises the beach resort; you agree even though it was far; he asks worth."
+        },
+        {
+          "number": 3,
+          "trophy": "hinuon",
+          "beat": "Host asks if the film was good; rather boring, you say; she defends it; you soften."
+        },
+        {
+          "number": 4,
+          "trophy": "uyon",
+          "beat": "Neighbor says the road project is useless; you partly agree; he pushes; you add benefit."
+        },
+        {
+          "number": 5,
+          "trophy": "lisod",
+          "beat": "Tutor asks about Cebuano grammar; hard, you say; she claims easy; you name what."
+        },
+        {
+          "number": 6,
+          "trophy": "sayon",
+          "beat": "Friend claims cooking adobo is easy; easy but slow, you say; he asks your version."
+        },
+        {
+          "number": 7,
+          "trophy": "angay",
+          "beat": "Landlady asks whether pets should be allowed; fitting with rules; she objects noise; you answer."
+        },
+        {
+          "number": 8,
+          "trophy": "basta",
+          "beat": "Coworker invites karaoke; fine as long as early; she says late start; you negotiate end."
+        },
+        {
+          "number": 9,
+          "trophy": "apan",
+          "beat": "Vendor insists mangoes are sweetest now; nice but expensive; she lowers; you decide."
+        },
+        {
+          "number": 10,
+          "trophy": "importante",
+          "beat": "Friend doubts learning dialects matters; important for family, you argue; he asks why."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Mahimo ba unta — hypotheticals and soft requests",
+      "anchor": "Softening requests with unta, kung conditions and mahimo ba, then accepting a counter-offer",
+      "register": "service",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "unta + wish, kung + condition with mo-/mag- result, mahimo ba nga + verb",
+          "recognitionOnly": "puwede ba, kon variant"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "hangyo ko nga + clause, pahulam ko sa + object, mahimo ba nga sulayan nako + object, palihug recycled inside conditions",
+          "recognitionOnly": "-i/-a imperative object forms in them-lines"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "pabor, ibalhin sa + day, ilisan + object, mangayo og; accepting with modification (sige, apan)",
+          "recognitionOnly": "kung mahimo pa"
+        }
+      ],
+      "clozeSchema": "choice blank on the softener/condition slot (unta/mahimo/kung, exactly one fits the context) + choice blank on modification word (apan/basta; apan and pero never together) + optional form blank on the whole mo-/mag- result verb (cue: root + future)",
+      "recycles": "A2 P4 mo-/mag- + time words, A2 palihug, P2 basta/apan",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "unta",
+          "beat": "You hope the room could face the sea; receptionist offers garden side; you accept with discount."
+        },
+        {
+          "number": 2,
+          "trophy": "kung",
+          "beat": "If it rains tomorrow, could the tour move? Guide offers morning slot; you adjust."
+        },
+        {
+          "number": 3,
+          "trophy": "mahimo",
+          "beat": "Ask whether the shop could deliver; owner says only nearby; you agree to pick up."
+        },
+        {
+          "number": 4,
+          "trophy": "hangyo",
+          "beat": "Request a quieter table; waiter offers one by kitchen; you accept the window later."
+        },
+        {
+          "number": 5,
+          "trophy": "pahulam",
+          "beat": "Ask to borrow the neighborʼs ladder tomorrow; he needs it morning; you take afternoon."
+        },
+        {
+          "number": 6,
+          "trophy": "sulayan",
+          "beat": "Ask to try the dress first (Mahimo ba nga sulayan nako una kini nga sinina?); vendor allows only one; you try the larger."
+        },
+        {
+          "number": 7,
+          "trophy": "pabor",
+          "beat": "Ask a favor to watch your bag; stranger agrees five minutes; you hurry back."
+        },
+        {
+          "number": 8,
+          "trophy": "ibalhin",
+          "beat": "Ask to move your booking to Friday (Mahimo ba nga ibalhin ang akong reserbasyon sa Biyernes?); clerk offers Saturday; you accept morning."
+        },
+        {
+          "number": 9,
+          "trophy": "ilisan",
+          "beat": "Ask to change the sauce (Mahimo ba nga ilisan ang sarsa niini?); cook says extra charge; you agree if small portion."
+        },
+        {
+          "number": 10,
+          "trophy": "mangayo",
+          "beat": "Ask for a receipt copy by email (Mahimo ba nga mangayo ko og kopya sa resibo pinaagi sa email?); staff offers printed; you accept, give address."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Kadtong taas nga... — reference and description",
+      "anchor": "Identifying people and things with nga-linked descriptions, color, shape, texture and relative clauses",
+      "register": "service default; lessons 1 and 5 are friend scenes (a friend asks) and keep friend tone within those lessons",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "adjective + nga + noun, kadtong/kining + description, taas/mubo/lapad",
+          "recognitionOnly": "nga + clause relative (ang tawo nga nagpuyo)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "daan/bag-o contrast (bag-o dialogue-only), hitsura niya, kolor nga + color, nga + clause relative productive",
+          "recognitionOnly": "-on/-an derived adjectives"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "porma, humok/gahi/nipis, dili + adjective contrast, two-feature descriptions joined by ug",
+          "recognitionOnly": "murag comparisons"
+        }
+      ],
+      "clozeSchema": "choice blank on descriptor (taas/mubo/lapad or color) + form blank on linker nga/ka/og with cue + optional connector ug/apan",
+      "recycles": "A2 P2 mas comparatives, A2 colors (asul, puti dialogue), P2 apan",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "taas",
+          "beat": "Friend asks which building; the tall one with blue roof; he asks the floor."
+        },
+        {
+          "number": 2,
+          "trophy": "mubo",
+          "beat": "Lost-and-found asks about your umbrella; short, folding, green; she asks the handle."
+        },
+        {
+          "number": 3,
+          "trophy": "lapad",
+          "beat": "Seller asks which mat; the wide one near the door; she asks color preference."
+        },
+        {
+          "number": 4,
+          "trophy": "daan",
+          "beat": "Guard asks which house; the old one with a mango tree; he asks the gate."
+        },
+        {
+          "number": 5,
+          "trophy": "hitsura",
+          "beat": "Friend asks what the new neighbor looks like; you describe; she asks his job."
+        },
+        {
+          "number": 6,
+          "trophy": "kolor",
+          "beat": "Tailor asks the barong color; cream like the sample; he asks sleeve length."
+        },
+        {
+          "number": 7,
+          "trophy": "porma",
+          "beat": "Baker asks the cake shape; round with mango on top; she asks the size."
+        },
+        {
+          "number": 8,
+          "trophy": "humok",
+          "beat": "Shop asks which pillow; the soft one, not firm; clerk asks how many."
+        },
+        {
+          "number": 9,
+          "trophy": "gahi",
+          "beat": "Mechanic asks the brake problem; hard pedal, slow stop; he asks since when."
+        },
+        {
+          "number": 10,
+          "trophy": "nipis",
+          "beat": "Vendor asks which fabric; the thin one for heat; she asks meters needed."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Wala ko kahibalo kung... — indirect inquiries",
+      "anchor": "Embedding questions with kung + question word, reporting what was said and asking politely for certainty",
+      "register": "service",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "pangutana ko kung + clause, wala ko kahibalo kung + question word, kung asa/kanus-a embedded, nisulti ba + kung embedded question (L3: Nisulti ba ang drayber kung kanus-a siya mobalik?)",
+          "recognitionOnly": "nahibalo affirmative and gisulti niya nga (object focus) in them-lines; kuno hearsay"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "nisulti/miingon nga + reported content, pasabot/klaro + nga clause, sigurado ba nga, dili klaro kung",
+          "recognitionOnly": "mahimong"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "tubag, kung kinsa/ngano/unsaon embedded, asking who decides and how",
+          "recognitionOnly": "kon variant"
+        }
+      ],
+      "clozeSchema": "connector blank (kung/nga/ba) with single-fit context + choice blank on embedded question word (asa/kanus-a/kinsa/ngano/unsaon) + optional form blank on wala/dili with cue",
+      "recycles": "A2 P1 question words, dili vs wala from A1/A2, P3 kung condition contrasted",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "pangutana",
+          "beat": "Ask at the hall whether anyone knows the schedule; clerk unsure; you ask who does."
+        },
+        {
+          "number": 2,
+          "trophy": "kahibalo",
+          "beat": "Say you do not know if the bank opens Saturday (Wala ko kahibalo kung abli ba ang bangko sa Sabado); guard says half day; you ask hours."
+        },
+        {
+          "number": 3,
+          "trophy": "nisulti",
+          "beat": "Ask whether the driver said when he returns (Nisulti ba ang drayber kung kanus-a siya mobalik?); conductor unsure; you ask alternatives."
+        },
+        {
+          "number": 4,
+          "trophy": "pasabot",
+          "beat": "Ask what the parking sign means; attendant explains towing; you ask where else."
+        },
+        {
+          "number": 5,
+          "trophy": "klaro",
+          "beat": "Say it is not clear which window; staff points; you confirm documents needed."
+        },
+        {
+          "number": 6,
+          "trophy": "sigurado",
+          "beat": "Ask if they are sure the ferry runs tonight; weather permitting; you ask refund."
+        },
+        {
+          "number": 7,
+          "trophy": "tubag",
+          "beat": "Ask whether the landlord answered about repairs; caretaker says not yet; you ask deadline."
+        },
+        {
+          "number": 8,
+          "trophy": "kinsa",
+          "beat": "Ask who handles the lost card; cashier names office; you ask opening time."
+        },
+        {
+          "number": 9,
+          "trophy": "ngano",
+          "beat": "Ask why the water was cut; neighbor explains pipe; you ask when it returns."
+        },
+        {
+          "number": 10,
+          "trophy": "unsaon",
+          "beat": "Ask how to renew the visa online; officer says office only; you ask requirements."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Una, ... unya ... — processes and results",
+      "anchor": "Explaining how something is done step by step with object focus, then stating the result",
+      "register": "host",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "una/ikaduha/dayon ordinal sequencing, lakang, -on/i- instruction forms on familiar verbs",
+          "recognitionOnly": "gi- completed object focus in them-lines"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "paagi + sa, andam na, gi- completed object focus productive (gisagol, gihugas)",
+          "recognitionOnly": "ma- resultative"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "bukal + duration, resulta + nga, nahimo na, mao nga result link",
+          "recognitionOnly": "pagka- nominalized process"
+        }
+      ],
+      "clozeSchema": "form blank on the whole object-focus word (gisagol/sagolon/isagol; cue: root + completed/instruction) + connector blank (una/dayon/pagkahuman/mao nga) + optional choice blank on quantity/duration",
+      "recycles": "P1 dayon/pagkahuman, A2 P3 completed, A2 numbers for minutes",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "una",
+          "beat": "Host asks how you cook sinigang; first boil, then add; she asks the souring agent."
+        },
+        {
+          "number": 2,
+          "trophy": "ikaduha",
+          "beat": "Friend asks registration steps; second you submit photos; he asks about fees."
+        },
+        {
+          "number": 3,
+          "trophy": "lakang",
+          "beat": "Tutor asks your study steps; you list three; she asks which helps most."
+        },
+        {
+          "number": 4,
+          "trophy": "paagi",
+          "beat": "Cousin asks your method for cheap flights; you explain alerts; he asks timing."
+        },
+        {
+          "number": 5,
+          "trophy": "andam",
+          "beat": "Neighbor asks how you prepared for the storm; water ready, candles; she asks food."
+        },
+        {
+          "number": 6,
+          "trophy": "gisagol",
+          "beat": "Host asks how you make the dip; you mixed vinegar, garlic, chili (Gisagol nako ang suka, ahos ug sili, dayon gibutangan og gamay nga asin); she asks ratio."
+        },
+        {
+          "number": 7,
+          "trophy": "gihugas",
+          "beat": "Friend asks why your mango tastes better; washed, chilled, sliced (Gihugas nako og maayo, dayon gipabugnaw sa ref una hiwaon); he asks the knife."
+        },
+        {
+          "number": 8,
+          "trophy": "bukal",
+          "beat": "Aunt asks how long to boil eggs; once the water is boiling, seven minutes then cold, bukal as stative (Kung bukal na ang tubig, pito ka minutos, dayon ibutang sa bugnaw nga tubig); she asks peeling."
+        },
+        {
+          "number": 9,
+          "trophy": "resulta",
+          "beat": "Doctor asks what happened after the medicine; result better sleep; she asks side effects."
+        },
+        {
+          "number": 10,
+          "trophy": "nahimo",
+          "beat": "Friend asks how the repair went; done but noisy; she asks what they replaced."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Aron ... kung ... — purpose, plans and conditions",
+      "anchor": "Stating purpose with aron, plans with mo-/mag- + time, and conditions with kung, then adjusting a plan",
+      "register": "friend default; lessons 5, 8 and 9 are service scenes (clerk, agent, boss) and keep service tone within those lessons",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "aron + clause, plano nga + verb, tumong, future mo-/mag- with umaabot time phrases",
+          "recognitionOnly": "para + noun purpose"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "kung + condition with future result, umaabot nga, balik + time, padayon + verb",
+          "recognitionOnly": "gawas kung exception"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "tigom para sa, biyahe + date, hinungdan + sa, bakasyon plans; compromise with sige, apan + alternative",
+          "recognitionOnly": "unta recycled inside plans"
+        }
+      ],
+      "clozeSchema": "connector blank (aron/kung/kay single-fit) + form blank on the whole future verb (moadto/magluto; cue: root + future) + choice blank on time or alternative word",
+      "recycles": "A2 P4 future + time, P3 kung/unta, P2 basta/apan, P1 tungod contrasted with aron",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "aron",
+          "beat": "Friend asks why you wake early; so you can jog; he suggests evening; you compromise."
+        },
+        {
+          "number": 2,
+          "trophy": "plano",
+          "beat": "Coworker asks your weekend plan; beach if sunny; she proposes market; you combine."
+        },
+        {
+          "number": 3,
+          "trophy": "tumong",
+          "beat": "Coach asks your goal; run five km by December; he suggests three; you adjust."
+        },
+        {
+          "number": 4,
+          "trophy": "umaabot",
+          "beat": "Landlady asks about the coming month; you stay if rent holds; she adds fee; you negotiate."
+        },
+        {
+          "number": 5,
+          "trophy": "balik",
+          "beat": "Clerk asks when you return the bike; tomorrow if dry; she wants today; you compromise."
+        },
+        {
+          "number": 6,
+          "trophy": "padayon",
+          "beat": "Tutor asks if you continue lessons; yes if twice weekly; she offers once; you decide."
+        },
+        {
+          "number": 7,
+          "trophy": "tigom",
+          "beat": "Friend asks why you skip dinners; saving for a trip; he proposes cheap place; you agree."
+        },
+        {
+          "number": 8,
+          "trophy": "biyahe",
+          "beat": "Agent asks the trip dates; June if fares drop; she offers May; you accept."
+        },
+        {
+          "number": 9,
+          "trophy": "hinungdan",
+          "beat": "Boss asks the reason for leave; family event; she asks shorter; you propose dates."
+        },
+        {
+          "number": 10,
+          "trophy": "bakasyon",
+          "beat": "Cousin asks your vacation plan; island if ferry runs; he suggests mountains; you combine."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Sauna ... karon ... — past habits and now",
+      "anchor": "Contrasting former habits with the present using sauna/kaniadto, frequency words and mag- habitual",
+      "register": "host",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "sauna + mag-/mo- habitual, karon + present, sagad frequency; two-clause contrast",
+          "recognitionOnly": "kada + time unit"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "usahay/permi placement before verb, batasan nako nga, naandan na nako",
+          "recognitionOnly": "-an habitual nouns"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "matag + time unit, nausab na, lahi na karon, wala na + habit (wala na ko mag-)",
+          "recognitionOnly": "gihapon reinforcement, pa vs na"
+        }
+      ],
+      "clozeSchema": "choice blank on frequency word (sagad/usahay/permi/matag) + form blank on the whole verb, habitual mag-/mo- vs completed ni- form (magsakay/nisakay; cue: root + habitual/completed) + connector blank sauna/karon/apan",
+      "recycles": "P1 kaniadto, A2 gihapon/rutina, dili vs wala with na/pa",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "sauna",
+          "beat": "Grandmother asks your childhood food; before rice porridge, now bread; she asks why."
+        },
+        {
+          "number": 2,
+          "trophy": "karon",
+          "beat": "Friend asks what changed; now you cook at home; he asks what you cooked before."
+        },
+        {
+          "number": 3,
+          "trophy": "sagad",
+          "beat": "Coworker asks your old commute; usually jeepney, now walking; she asks the distance."
+        },
+        {
+          "number": 4,
+          "trophy": "usahay",
+          "beat": "Neighbor asks about your weekends; sometimes beach, mostly rest; he asks who joins."
+        },
+        {
+          "number": 5,
+          "trophy": "permi",
+          "beat": "Host asks about your old job; always night shifts, now days; she asks sleep."
+        },
+        {
+          "number": 6,
+          "trophy": "batasan",
+          "beat": "Friend asks about habits you dropped; late snacks; she asks what replaced them."
+        },
+        {
+          "number": 7,
+          "trophy": "naandan",
+          "beat": "Tutor asks about adjusting to heat; used to it now; he asks the first months."
+        },
+        {
+          "number": 8,
+          "trophy": "matag",
+          "beat": "Cousin asks your routine before; gym every morning, now yoga; she asks why."
+        },
+        {
+          "number": 9,
+          "trophy": "nausab",
+          "beat": "Barber asks if the town changed; much changed, more cars; he asks what is missing."
+        },
+        {
+          "number": 10,
+          "trophy": "lahi",
+          "beat": "Elder asks how fiestas differ now; different music, same food; she asks the dances."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Naa koy reklamo — complaint and resolution capstone",
+      "anchor": "Stating a problem, narrating what happened, asking what can be done and accepting a fix with modification",
+      "register": "service",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "naa koy reklamo/problema bahin sa, narration with ni-/gi- (P1, P6), wala pa + ma- (not solved yet)",
+          "recognitionOnly": "ipa- causative in them-lines (ipaayo)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "bayad disputes with dili vs wala, pasensya accepted and countered, tarong + nga clause, soft requests mahimo ba (P3)",
+          "recognitionOnly": "-on future object focus"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "sakto/dili sakto, kuwarta + gi- object focus, pahibalo indirect inquiry (P5), garantiya + kung condition; acceptance sige apan + modification",
+          "recognitionOnly": "ipa- productive deferred to B2"
+        }
+      ],
+      "clozeSchema": "form blank on dili/wala with cue + connector blank (kay/apan/kung/aron) + choice blank on request verb (ilis/balik/ayo as dialogue forms)",
+      "recycles": "P1 narration, P3 soft requests, P5 indirect inquiry, P6 gi- object focus, P2 apan/basta",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "reklamo",
+          "beat": "Hotel asks the issue; complaint about noise all night; manager offers move; you accept with discount."
+        },
+        {
+          "number": 2,
+          "trophy": "problema",
+          "beat": "Shop asks what is wrong; charger stopped; clerk offers repair; you want replacement."
+        },
+        {
+          "number": 3,
+          "trophy": "sulbad",
+          "beat": "Landlord asks the leak status; not solved yet, sulbad as a noun (Wala pay sulbad ang tulo sa gripo hangtod karon); he sends plumber Friday; you ask sooner."
+        },
+        {
+          "number": 4,
+          "trophy": "bayad",
+          "beat": "Restaurant asks why unpaid; wrong dish served; cashier removes it; you pay the rest."
+        },
+        {
+          "number": 5,
+          "trophy": "pasensya",
+          "beat": "Courier apologizes for delay; you ask new date; he says Monday; you accept with call."
+        },
+        {
+          "number": 6,
+          "trophy": "tarong",
+          "beat": "Tailor asks the fit issue; sleeve not right; he refits Tuesday; you need Monday."
+        },
+        {
+          "number": 7,
+          "trophy": "sakto",
+          "beat": "Pharmacy asks the problem; wrong dose given; staff corrects; you ask the difference back."
+        },
+        {
+          "number": 8,
+          "trophy": "kuwarta",
+          "beat": "Agent asks the concern; money charged twice; she refunds in days; you want a receipt."
+        },
+        {
+          "number": 9,
+          "trophy": "pahibalo",
+          "beat": "Utility asks the complaint; no notice before cut; clerk promises text alerts; you ask timing."
+        },
+        {
+          "number": 10,
+          "trophy": "garantiya",
+          "beat": "Store asks the fan issue; stopped within warranty; clerk offers credit; you want exchange."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Ang akong tuig — year story and plans capstone",
+      "anchor": "Telling the story of a year with narration, contrast, opinion and plans in connected discourse",
+      "register": "friend",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "bulan/time framing with ni-/nag- narration (P1), sauna/karon contrast (P8), kausaban + nga",
+          "recognitionOnly": "pagka- nominalizations"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "pasalamat sa + reason (P1 tungod), damgo/paglaum nga + mo- future (P7), opinion with hunahuna/bisan (P2)",
+          "recognitionOnly": "unta wish recycled"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "kalampusan/hagit narration with resulta (P6), tibuok + time unit, handumanan + relative nga clause (P4); plans with aron/kung (P7)",
+          "recognitionOnly": "mahimong future copula"
+        }
+      ],
+      "clozeSchema": "connector blank (bisan/apan/aron/kay/dayon single-fit) + form blank on the whole aspect-marked verb (nitrabaho/nagtrabaho/motrabaho; cue: root + completed/progressive/future) + choice blank on time or evaluation word",
+      "recycles": "P1 narration, P2 opinion/concession, P4 nga descriptions, P7 plans, P8 contrast, P6 result",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "bulan",
+          "beat": "Friend asks your best month; June with fiesta and family; she asks the hardest."
+        },
+        {
+          "number": 2,
+          "trophy": "kinabuhi",
+          "beat": "Elder asks how life here went; slow at first, then friends; he asks the turning point."
+        },
+        {
+          "number": 3,
+          "trophy": "kausaban",
+          "beat": "Coworker asks the biggest change; new job, new flat; she asks what stayed."
+        },
+        {
+          "number": 4,
+          "trophy": "pasalamat",
+          "beat": "Host asks what you are thankful for; neighbors who helped; she asks how."
+        },
+        {
+          "number": 5,
+          "trophy": "damgo",
+          "beat": "Friend asks your dream for next year; open a small cafe; he asks the location."
+        },
+        {
+          "number": 6,
+          "trophy": "paglaum",
+          "beat": "Tutor asks your hope for Cebuano; talk with grandmother; she asks the topics."
+        },
+        {
+          "number": 7,
+          "trophy": "kalampusan",
+          "beat": "Cousin asks your success this year; passed the exam; she asks what comes next."
+        },
+        {
+          "number": 8,
+          "trophy": "hagit",
+          "beat": "Friend asks the hardest challenge; typhoon week without power; he asks lessons learned."
+        },
+        {
+          "number": 9,
+          "trophy": "tibuok",
+          "beat": "Elder asks about the whole year; mixed, mostly good; she asks one word."
+        },
+        {
+          "number": 10,
+          "trophy": "handumanan",
+          "beat": "Friend asks your favorite memory; sunset ferry with cousins; she asks the date."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": [
+    "Lesson-level native read-through of every authored line for clitic order, wala + base form and aspect license (reviewer flags, never auto-fix); bare-root trophies (balik, tigom, pahulam, hangyo, pasensya) are confirmed anchored as noun/predicate at authoring time.",
+    "Pilot measurement of speech threshold 0.55 and 15 s recording for ceb-PH B1 before any change.",
+    "Integration check that registering ceb-PH in the offline Latin-target list builds B1 bundles with no new field shapes."
+  ]
+}

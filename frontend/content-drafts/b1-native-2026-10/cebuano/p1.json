@@ -1,0 +1,2208 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Unsay nahitabo? — Was ist passiert?",
+    "en": "Unsay nahitabo? — What happened?"
+  },
+  "subtitle": {
+    "de": "Erlebnisse in ihrer Reihenfolge erzählen",
+    "en": "Tell events in order"
+  },
+  "anchor": "Abgeschlossene Ereignisse, gleichzeitige Handlungen und Gründe zu einer zusammenhängenden Erzählung verbinden.",
+  "lessons": [
+    {
+      "slug": "dayon-morning-coffee",
+      "title": {
+        "de": "Erst wach, dann Kaffee",
+        "en": "First awake, then coffee"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt nach deinem Morgen.",
+        "en": "A friend asks about your morning."
+      },
+      "pedagogicalGoal": "Zwei abgeschlossene Handlungen mit dayon in eine zeitliche Reihenfolge bringen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa imong gibuhat ganinang buntag?",
+          "baseText": {
+            "de": "Was hast du heute Morgen gemacht?",
+            "en": "What did you do this morning?"
+          }
+        },
+        {
+          "targetText": "Nimata ko ganina, dayon niinom ko og kape sa kusina.",
+          "baseText": {
+            "de": "Ich bin vorhin aufgewacht und habe dann in der Küche Kaffee getrunken.",
+            "en": "I woke up earlier, then drank coffee in the kitchen."
+          }
+        },
+        {
+          "targetText": "Unsa ang sunod nimo nga gibuhat?",
+          "baseText": {
+            "de": "Was hast du als Nächstes gemacht?",
+            "en": "What did you do next?"
+          }
+        },
+        {
+          "targetText": "Nikaon ko una, dayon nilakaw paingon sa trabaho.",
+          "baseText": {
+            "de": "Ich habe erst gegessen und bin dann zur Arbeit gegangen.",
+            "en": "I ate first, then walked to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "dayon: das nächste Ereignis",
+        "rule": {
+          "de": "Mit ni- erzählst du abgeschlossene Handlungen; dayon führt zum nächsten Ereignis.",
+          "en": "Use ni- for completed actions; dayon moves the story to the next event."
+        },
+        "examples": [
+          {
+            "targetText": "Nimata ko ganina, dayon niinom ko og kape sa kusina.",
+            "baseText": {
+              "de": "Ich bin vorhin aufgewacht und habe dann in der Küche Kaffee getrunken.",
+              "en": "I woke up earlier, then drank coffee in the kitchen."
+            },
+            "highlight": "dayon niinom ko"
+          },
+          {
+            "targetText": "Nikaon ko una, dayon nilakaw paingon sa trabaho.",
+            "baseText": {
+              "de": "Ich habe erst gegessen und bin dann zur Arbeit gegangen.",
+              "en": "I ate first, then walked to work."
+            },
+            "highlight": "dayon nilakaw"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Nikaon",
+          "cue": "kaon, completed",
+          "choices": [
+            "Nikaon",
+            "Nagkaon",
+            "Mokaon",
+            "Mangaon"
+          ]
+        },
+        " ko una, ",
+        {
+          "kind": "connector",
+          "answer": "dayon",
+          "choices": [
+            "dayon",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " nilakaw paingon sa trabaho."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nimata ko ganina,",
+          "baseText": {
+            "de": "Ich bin vorhin aufgewacht,",
+            "en": "I woke up earlier,"
+          }
+        },
+        {
+          "targetText": "dayon niinom ko",
+          "baseText": {
+            "de": "dann habe ich getrunken",
+            "en": "then I drank"
+          }
+        },
+        {
+          "targetText": "og kape",
+          "baseText": {
+            "de": "Kaffee",
+            "en": "coffee"
+          }
+        },
+        {
+          "targetText": "sa kusina.",
+          "baseText": {
+            "de": "in der Küche.",
+            "en": "in the kitchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nimata",
+          "baseText": {
+            "de": "aufgewacht",
+            "en": "woke up"
+          }
+        },
+        {
+          "targetText": "niinom",
+          "baseText": {
+            "de": "getrunken",
+            "en": "drank"
+          }
+        },
+        {
+          "targetText": "dayon",
+          "baseText": {
+            "de": "dann",
+            "en": "then"
+          }
+        },
+        {
+          "targetText": "kusina",
+          "baseText": {
+            "de": "Küche",
+            "en": "kitchen"
+          }
+        },
+        {
+          "targetText": "nikaon",
+          "baseText": {
+            "de": "gegessen",
+            "en": "ate"
+          }
+        },
+        {
+          "targetText": "paingon sa trabaho",
+          "baseText": {
+            "de": "auf dem Weg zur Arbeit",
+            "en": "on the way to work"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nimata ko ganina, dayon ",
+        "answer": "niinom",
+        "after": " ko og kape sa kusina.",
+        "fallbackChoices": [
+          "niinom",
+          "niluto",
+          "nilakaw",
+          "nitulog"
+        ]
+      },
+      "speakRequired": [
+        "nimata",
+        "dayon",
+        "kape"
+      ],
+      "sceneCaption": {
+        "de": "Beim Frühstück fragt deine Freundin: „Unsa imong gibuhat ganinang buntag?“",
+        "en": "Over breakfast, your friend asks: “Unsa imong gibuhat ganinang buntag?”"
+      },
+      "trophyWord": {
+        "word": "dayon",
+        "meaning": {
+          "de": "dann; anschließend",
+          "en": "then; next"
+        },
+        "example": "Nimata ko, dayon niinom ko og kape.",
+        "whyThisWord": {
+          "de": "Mit dayon verbindest du Ereignisse in ihrer Reihenfolge, ohne für jedes neu anzusetzen.",
+          "en": "Use dayon to connect events in order without restarting your story each time."
+        }
+      },
+      "distractors": [
+        "sa sala.",
+        "og tsa"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Tasse Kaffee in einer hellen Küche.",
+        "en": "A cup of coffee in a bright kitchen."
+      },
+      "songMood": "Warm acoustic morning rhythm",
+      "visualNotes": "Sunlit Cebu kitchen, coffee cup and open window; no text."
+    },
+    {
+      "slug": "sayo-market-arrival",
+      "title": {
+        "de": "Früh auf dem Markt",
+        "en": "Early at the market"
+      },
+      "situation": {
+        "de": "Nach deinem Marktbesuch triffst du einen Nachbarn.",
+        "en": "You meet a neighbor after visiting the market."
+      },
+      "pedagogicalGoal": "Mit sayo einen frühen Zeitpunkt angeben und eine damals laufende Handlung mit nag- beschreiben.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Kumusta ang imong pag-adto sa merkado ganina?",
+          "baseText": {
+            "de": "Wie war dein Marktbesuch vorhin?",
+            "en": "How was your trip to the market earlier?"
+          }
+        },
+        {
+          "targetText": "Nilakaw ko og sayo ganina, dayon niabot sa merkado.",
+          "baseText": {
+            "de": "Ich bin vorhin früh losgegangen und dann auf dem Markt angekommen.",
+            "en": "I left early this morning, then arrived at the market."
+          }
+        },
+        {
+          "targetText": "Mga alas singko siguro ka niabot; abli na ba ang mga tindahan?",
+          "baseText": {
+            "de": "Du bist wohl so gegen fünf angekommen; waren die Stände da schon offen?",
+            "en": "You probably arrived around five; were the stalls already open?"
+          }
+        },
+        {
+          "targetText": "Oo, nagbaligya na sila og isda sa alas singko.",
+          "baseText": {
+            "de": "Ja, um fünf haben sie schon Fisch verkauft.",
+            "en": "Yes, they were already selling fish at five."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sayo und eine laufende Handlung",
+        "rule": {
+          "de": "Sayo bedeutet früh; nag- zeigt im vergangenen Zeitrahmen, was zu diesem Zeitpunkt gerade geschah.",
+          "en": "Sayo means early; within a past time frame, nag- describes what was happening at that time."
+        },
+        "examples": [
+          {
+            "targetText": "Nilakaw ko og sayo ganina, dayon niabot sa merkado.",
+            "baseText": {
+              "de": "Ich bin vorhin früh losgegangen und dann auf dem Markt angekommen.",
+              "en": "I left early this morning, then arrived at the market."
+            },
+            "highlight": "og sayo ganina"
+          },
+          {
+            "targetText": "Oo, nagbaligya na sila og isda sa alas singko.",
+            "baseText": {
+              "de": "Ja, um fünf haben sie schon Fisch verkauft.",
+              "en": "Yes, they were already selling fish at five."
+            },
+            "highlight": "nagbaligya na sila"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, ",
+        {
+          "kind": "form",
+          "answer": "nagbaligya",
+          "cue": "baligya, progressive",
+          "choices": [
+            "nagbaligya",
+            "nibaligya",
+            "mobaligya",
+            "magbaligya"
+          ]
+        },
+        " na sila og isda sa ",
+        {
+          "kind": "choice",
+          "answer": "alas singko",
+          "choices": [
+            "alas singko",
+            "alas dose",
+            "alas tres",
+            "alas otso"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nilakaw ko",
+          "baseText": {
+            "de": "Ich bin losgegangen",
+            "en": "I left"
+          }
+        },
+        {
+          "targetText": "og sayo ganina,",
+          "baseText": {
+            "de": "vorhin schon früh,",
+            "en": "early this morning,"
+          }
+        },
+        {
+          "targetText": "dayon niabot",
+          "baseText": {
+            "de": "und dann angekommen",
+            "en": "then arrived"
+          }
+        },
+        {
+          "targetText": "sa merkado.",
+          "baseText": {
+            "de": "auf dem Markt.",
+            "en": "at the market."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sayo",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "nilakaw",
+          "baseText": {
+            "de": "losgegangen",
+            "en": "left on foot"
+          }
+        },
+        {
+          "targetText": "niabot",
+          "baseText": {
+            "de": "angekommen",
+            "en": "arrived"
+          }
+        },
+        {
+          "targetText": "nagbaligya",
+          "baseText": {
+            "de": "gerade verkaufen",
+            "en": "be selling"
+          }
+        },
+        {
+          "targetText": "isda",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "alas singko",
+          "baseText": {
+            "de": "um fünf Uhr",
+            "en": "at five o'clock"
+          }
+        },
+        {
+          "targetText": "tindahan",
+          "baseText": {
+            "de": "Laden; Stand",
+            "en": "shop; stall"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nilakaw ko og ",
+        "answer": "sayo",
+        "after": " ganina, dayon niabot sa merkado.",
+        "fallbackChoices": [
+          "sayo",
+          "ulahi",
+          "hinay",
+          "paspas"
+        ]
+      },
+      "speakRequired": [
+        "nilakaw",
+        "sayo",
+        "dayon"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar fragt nach dem Marktbesuch: „Kumusta ang imong pag-adto sa merkado ganina?“",
+        "en": "Your neighbor asks about your market trip: “Kumusta ang imong pag-adto sa merkado ganina?”"
+      },
+      "trophyWord": {
+        "word": "sayo",
+        "meaning": {
+          "de": "früh",
+          "en": "early"
+        },
+        "example": "Nilakaw ko og sayo paingon sa merkado.",
+        "whyThisWord": {
+          "de": "Sayo beschreibt eine frühe Abfahrt, Ankunft oder Tageszeit und passt zu vielen Alltagserzählungen.",
+          "en": "Sayo describes an early departure, arrival or time of day in everyday stories."
+        }
+      },
+      "distractors": [
+        "sa pantalan.",
+        "og ulahi ganina,"
+      ],
+      "placeholderCaption": {
+        "de": "Marktstände im ersten Morgenlicht.",
+        "en": "Market stalls in the first morning light."
+      },
+      "songMood": "Light plucked strings with a steady walking pulse",
+      "visualNotes": "Cebu public market at dawn, baskets of fish, pale light; no readable signs."
+    },
+    {
+      "slug": "samtang-storm-soup",
+      "title": {
+        "de": "Kochen im Sturm",
+        "en": "Cooking through the storm"
+      },
+      "situation": {
+        "de": "Am Tag nach einem Sturm spricht dich eine Kollegin auf den gestrigen Tag an.",
+        "en": "The day after a storm, a coworker asks about your day."
+      },
+      "pedagogicalGoal": "Mit samtang gleichzeitig ablaufende Ereignisse verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa imong gibuhat gahapon samtang kusog ang bagyo?",
+          "baseText": {
+            "de": "Was hast du gestern während des starken Sturms gemacht?",
+            "en": "What were you doing yesterday during the strong storm?"
+          }
+        },
+        {
+          "targetText": "Nagluto ko og sabaw gahapon samtang kusog ang ulan sa gawas.",
+          "baseText": {
+            "de": "Ich habe gestern Suppe gekocht, während es draußen stark geregnet hat.",
+            "en": "I was cooking soup yesterday while it rained heavily outside."
+          }
+        },
+        {
+          "targetText": "Unsa ang nahitabo sa kuryente atol sa bagyo?",
+          "baseText": {
+            "de": "Was ist während des Sturms mit dem Strom passiert?",
+            "en": "What happened to the electricity during the storm?"
+          }
+        },
+        {
+          "targetText": "Nawala ang kuryente, dayon nihunong usab ang among radyo.",
+          "baseText": {
+            "de": "Der Strom fiel aus, dann spielte auch unser Radio nicht mehr.",
+            "en": "The power went out, then our radio stopped playing too."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "samtang: gleichzeitig",
+        "rule": {
+          "de": "Samtang verbindet zwei gleichzeitig geltende Situationen; nag- kann dabei eine laufende Handlung im vergangenen Zeitrahmen ausdrücken.",
+          "en": "Samtang links simultaneous situations; nag- can describe an action in progress within a past time frame."
+        },
+        "examples": [
+          {
+            "targetText": "Nagluto ko og sabaw gahapon samtang kusog ang ulan sa gawas.",
+            "baseText": {
+              "de": "Ich habe gestern Suppe gekocht, während es draußen stark geregnet hat.",
+              "en": "I was cooking soup yesterday while it rained heavily outside."
+            },
+            "highlight": "samtang kusog ang ulan"
+          },
+          {
+            "targetText": "Naghulat ko sa balay gahapon samtang kusog ang hangin.",
+            "baseText": {
+              "de": "Ich habe gestern zu Hause gewartet, während starker Wind wehte.",
+              "en": "I was waiting at home yesterday while the wind was strong."
+            },
+            "highlight": "samtang kusog ang hangin"
+          }
+        ]
+      },
+      "cloze": [
+        "Nawala ang kuryente, ",
+        {
+          "kind": "connector",
+          "answer": "dayon",
+          "choices": [
+            "dayon",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nihunong",
+          "cue": "hunong, completed",
+          "choices": [
+            "nihunong",
+            "naghunong",
+            "mohunong",
+            "maghunong"
+          ]
+        },
+        " usab ang among radyo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nagluto ko",
+          "baseText": {
+            "de": "Ich habe gekocht",
+            "en": "I was cooking"
+          }
+        },
+        {
+          "targetText": "og sabaw gahapon",
+          "baseText": {
+            "de": "gestern Suppe",
+            "en": "soup yesterday"
+          }
+        },
+        {
+          "targetText": "samtang kusog ang ulan",
+          "baseText": {
+            "de": "während es stark regnete",
+            "en": "while the rain was heavy"
+          }
+        },
+        {
+          "targetText": "sa gawas.",
+          "baseText": {
+            "de": "draußen.",
+            "en": "outside."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "samtang",
+          "baseText": {
+            "de": "während",
+            "en": "while"
+          }
+        },
+        {
+          "targetText": "nagluto",
+          "baseText": {
+            "de": "gerade kochen",
+            "en": "be cooking"
+          }
+        },
+        {
+          "targetText": "sabaw",
+          "baseText": {
+            "de": "Suppe; Brühe",
+            "en": "soup; broth"
+          }
+        },
+        {
+          "targetText": "kusog ang ulan",
+          "baseText": {
+            "de": "es regnet stark",
+            "en": "the rain is heavy"
+          }
+        },
+        {
+          "targetText": "kuryente",
+          "baseText": {
+            "de": "Strom",
+            "en": "electricity"
+          }
+        },
+        {
+          "targetText": "nihunong",
+          "baseText": {
+            "de": "aufgehört; angehalten",
+            "en": "stopped"
+          }
+        },
+        {
+          "targetText": "radyo",
+          "baseText": {
+            "de": "Radio",
+            "en": "radio"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nagluto ko og ",
+        "answer": "sabaw",
+        "after": " gahapon samtang kusog ang ulan sa gawas.",
+        "fallbackChoices": [
+          "sabaw",
+          "kape",
+          "pan",
+          "saging"
+        ]
+      },
+      "speakRequired": [
+        "nagluto",
+        "sabaw",
+        "samtang"
+      ],
+      "sceneCaption": {
+        "de": "Deine Kollegin fragt am nächsten Morgen: „Unsa imong gibuhat gahapon samtang kusog ang bagyo?“",
+        "en": "Your coworker asks the next morning: “Unsa imong gibuhat gahapon samtang kusog ang bagyo?”"
+      },
+      "trophyWord": {
+        "word": "samtang",
+        "meaning": {
+          "de": "während",
+          "en": "while"
+        },
+        "example": "Nagluto ko samtang nag-ulan sa gawas.",
+        "whyThisWord": {
+          "de": "Samtang hilft dir, zwei gleichzeitige Vorgänge zu einer zusammenhängenden Szene zu verbinden.",
+          "en": "Samtang helps you describe two simultaneous events as one connected scene."
+        }
+      },
+      "distractors": [
+        "og isda gahapon",
+        "sa kusina."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Suppentopf am Fenster bei starkem Regen.",
+        "en": "A soup pot beside a window in heavy rain."
+      },
+      "songMood": "Soft percussion beneath a calm acoustic melody",
+      "visualNotes": "Covered kitchen window with tropical rain outside and a pot of soup; no power-outage reveal."
+    },
+    {
+      "slug": "pagkahuman-sunday-lunch",
+      "title": {
+        "de": "Nach der Kirche",
+        "en": "After church"
+      },
+      "situation": {
+        "de": "Ein Gastgeber fragt dich nach deinem Sonntag.",
+        "en": "A host asks about your Sunday."
+      },
+      "pedagogicalGoal": "Mit pagkahuman drei Stationen eines Tages in eine nachvollziehbare Reihenfolge bringen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta ang imong Domingo?",
+          "baseText": {
+            "de": "Wie war dein Sonntag?",
+            "en": "How was your Sunday?"
+          }
+        },
+        {
+          "targetText": "Nisimba ko sa buntag; pagkahuman nikaon ko sa sentro ug nipauli.",
+          "baseText": {
+            "de": "Ich war morgens in der Kirche; danach habe ich im Zentrum gegessen und bin nach Hause gegangen.",
+            "en": "I went to church in the morning; afterward I ate downtown and went home."
+          }
+        },
+        {
+          "targetText": "Asa man ka dapit nikaon sa sentro?",
+          "baseText": {
+            "de": "Wo genau im Zentrum hast du gegessen?",
+            "en": "Where exactly did you eat downtown?"
+          }
+        },
+        {
+          "targetText": "Sa karinderya tapad sa merkado; pagkahuman nipauli ko.",
+          "baseText": {
+            "de": "In der kleinen Gaststätte neben dem Markt; danach bin ich nach Hause gegangen.",
+            "en": "At the small eatery next to the market; afterward I went home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "pagkahuman: danach",
+        "rule": {
+          "de": "Pagkahuman führt nach einem abgeschlossenen Ereignis die nächste Handlung ein; ug verbindet anschließend weitere Handlungen.",
+          "en": "Pagkahuman introduces the next action after a completed event; ug can then link another action."
+        },
+        "examples": [
+          {
+            "targetText": "Nisimba ko sa buntag; pagkahuman nikaon ko sa sentro ug nipauli.",
+            "baseText": {
+              "de": "Ich war morgens in der Kirche; danach habe ich im Zentrum gegessen und bin nach Hause gegangen.",
+              "en": "I went to church in the morning; afterward I ate downtown and went home."
+            },
+            "highlight": "pagkahuman nikaon ko"
+          },
+          {
+            "targetText": "Nikaon ko sa sentro; pagkahuman nilakaw ko paingon sa balay.",
+            "baseText": {
+              "de": "Ich habe im Zentrum gegessen; danach bin ich nach Hause gelaufen.",
+              "en": "I ate downtown; afterward I walked home."
+            },
+            "highlight": "pagkahuman nilakaw ko"
+          }
+        ]
+      },
+      "cloze": [
+        "Sa karinderya tapad sa merkado; ",
+        {
+          "kind": "connector",
+          "answer": "pagkahuman",
+          "choices": [
+            "pagkahuman",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nipauli",
+          "cue": "pauli, completed",
+          "choices": [
+            "nipauli",
+            "nagpauli",
+            "mopauli",
+            "magpauli"
+          ]
+        },
+        " ko."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nisimba ko",
+          "baseText": {
+            "de": "Ich war in der Kirche",
+            "en": "I went to church"
+          }
+        },
+        {
+          "targetText": "sa buntag;",
+          "baseText": {
+            "de": "am Morgen;",
+            "en": "in the morning;"
+          }
+        },
+        {
+          "targetText": "pagkahuman nikaon ko",
+          "baseText": {
+            "de": "danach habe ich gegessen",
+            "en": "afterward I ate"
+          }
+        },
+        {
+          "targetText": "sa sentro",
+          "baseText": {
+            "de": "im Zentrum",
+            "en": "downtown"
+          }
+        },
+        {
+          "targetText": "ug nipauli.",
+          "baseText": {
+            "de": "und bin nach Hause gegangen.",
+            "en": "and went home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pagkahuman",
+          "baseText": {
+            "de": "danach",
+            "en": "afterward"
+          }
+        },
+        {
+          "targetText": "nisimba",
+          "baseText": {
+            "de": "in die Kirche gegangen",
+            "en": "went to church"
+          }
+        },
+        {
+          "targetText": "sentro",
+          "baseText": {
+            "de": "Zentrum",
+            "en": "town center"
+          }
+        },
+        {
+          "targetText": "nipauli",
+          "baseText": {
+            "de": "nach Hause gegangen",
+            "en": "went home"
+          }
+        },
+        {
+          "targetText": "karinderya",
+          "baseText": {
+            "de": "kleine Gaststätte",
+            "en": "small eatery"
+          }
+        },
+        {
+          "targetText": "tapad sa merkado",
+          "baseText": {
+            "de": "neben dem Markt",
+            "en": "next to the market"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nisimba ko sa buntag; ",
+        "answer": "pagkahuman",
+        "after": " nikaon ko sa sentro ug nipauli.",
+        "fallbackChoices": [
+          "pagkahuman",
+          "samtang",
+          "tungod",
+          "bisan"
+        ]
+      },
+      "speakRequired": [
+        "nisimba",
+        "pagkahuman",
+        "nikaon"
+      ],
+      "sceneCaption": {
+        "de": "Dein Gastgeber beginnt das Gespräch: „Kumusta ang imong Domingo?“",
+        "en": "Your host starts the conversation: “Kumusta ang imong Domingo?”"
+      },
+      "trophyWord": {
+        "word": "pagkahuman",
+        "meaning": {
+          "de": "danach; anschließend",
+          "en": "afterward"
+        },
+        "example": "Nisimba ko; pagkahuman nikaon ko sa sentro.",
+        "whyThisWord": {
+          "de": "Mit pagkahuman führst du eine Erzählung nach einem bereits abgeschlossenen Abschnitt weiter.",
+          "en": "Pagkahuman moves a story on after an earlier part has finished."
+        }
+      },
+      "distractors": [
+        "sa hapon;",
+        "sa baybayon"
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiger Sonntag vor einer Kirche.",
+        "en": "A quiet Sunday outside a church."
+      },
+      "songMood": "Gentle Sunday guitar with warm sustained notes",
+      "visualNotes": "Church courtyard on a bright Sunday, nearby street leading toward town; no named restaurant."
+    },
+    {
+      "slug": "nahitabo-wet-bag",
+      "title": {
+        "de": "Die nasse Tasche",
+        "en": "The wet bag"
+      },
+      "situation": {
+        "de": "Eine Freundin bemerkt nach deiner Fahrt deine nasse Tasche.",
+        "en": "A friend notices your wet bag after your ride."
+      },
+      "pedagogicalGoal": "Mit nahitabo ein Ereignis einführen und den Hergang in drei Schritten erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Ngano man nga basa ang imong bag?",
+          "baseText": {
+            "de": "Warum ist deine Tasche denn nass?",
+            "en": "Why is your bag wet?"
+          }
+        },
+        {
+          "targetText": "Mao kini ang nahitabo: nisakay ko, niulan, dayon nabasa ang akong bag.",
+          "baseText": {
+            "de": "Das ist passiert: Ich bin eingestiegen, es fing an zu regnen, und dann wurde meine Tasche nass.",
+            "en": "This is what happened: I got in, it started raining, then my bag got wet."
+          }
+        },
+        {
+          "targetText": "Naa bay nadaot sulod sa imong bag?",
+          "baseText": {
+            "de": "Ist in deiner Tasche etwas beschädigt worden?",
+            "en": "Was anything inside your bag damaged?"
+          }
+        },
+        {
+          "targetText": "Nisulod ang tubig, dayon nabasa ang mga papel.",
+          "baseText": {
+            "de": "Wasser kam hinein, dann wurden die Papiere nass.",
+            "en": "Water got in, then the papers got wet."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "nahitabo: was passiert ist",
+        "rule": {
+          "de": "Mao kini ang nahitabo leitet eine Erklärung ein; die folgenden Verben erzählen den Hergang.",
+          "en": "Mao kini ang nahitabo introduces an explanation; the following verbs tell the sequence of events."
+        },
+        "examples": [
+          {
+            "targetText": "Mao kini ang nahitabo: nisakay ko, niulan, dayon nabasa ang akong bag.",
+            "baseText": {
+              "de": "Das ist passiert: Ich bin eingestiegen, es fing an zu regnen, und dann wurde meine Tasche nass.",
+              "en": "This is what happened: I got in, it started raining, then my bag got wet."
+            },
+            "highlight": "ang nahitabo"
+          },
+          {
+            "targetText": "Mao kini ang nahitabo: nihunong ang jeep, dayon nilakaw ko.",
+            "baseText": {
+              "de": "Das ist passiert: Der Jeepney hielt an, dann bin ich zu Fuß weitergegangen.",
+              "en": "This is what happened: the jeepney stopped, then I continued on foot."
+            },
+            "highlight": "ang nahitabo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Nisulod",
+          "cue": "sulod, completed",
+          "choices": [
+            "Nisulod",
+            "Nagsulod",
+            "Mosulod",
+            "Magsulod"
+          ]
+        },
+        " ang tubig, ",
+        {
+          "kind": "connector",
+          "answer": "dayon",
+          "choices": [
+            "dayon",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " nabasa ang mga papel."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mao kini",
+          "baseText": {
+            "de": "Das ist es",
+            "en": "This is"
+          }
+        },
+        {
+          "targetText": "ang nahitabo:",
+          "baseText": {
+            "de": "was passiert ist:",
+            "en": "what happened:"
+          }
+        },
+        {
+          "targetText": "nisakay ko,",
+          "baseText": {
+            "de": "ich bin eingestiegen,",
+            "en": "I got in,"
+          }
+        },
+        {
+          "targetText": "niulan,",
+          "baseText": {
+            "de": "es fing an zu regnen,",
+            "en": "it started raining,"
+          }
+        },
+        {
+          "targetText": "dayon nabasa",
+          "baseText": {
+            "de": "dann wurde nass",
+            "en": "then got wet"
+          }
+        },
+        {
+          "targetText": "ang akong bag.",
+          "baseText": {
+            "de": "meine Tasche.",
+            "en": "my bag."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nahitabo",
+          "baseText": {
+            "de": "passiert; geschehen",
+            "en": "happened"
+          }
+        },
+        {
+          "targetText": "nisakay",
+          "baseText": {
+            "de": "eingestiegen",
+            "en": "got in; boarded"
+          }
+        },
+        {
+          "targetText": "niulan",
+          "baseText": {
+            "de": "es fing an zu regnen",
+            "en": "it started raining"
+          }
+        },
+        {
+          "targetText": "nabasa",
+          "baseText": {
+            "de": "nass geworden",
+            "en": "got wet"
+          }
+        },
+        {
+          "targetText": "nisulod",
+          "baseText": {
+            "de": "hineingekommen",
+            "en": "came in"
+          }
+        },
+        {
+          "targetText": "papel",
+          "baseText": {
+            "de": "Papier; Dokument",
+            "en": "paper; document"
+          }
+        },
+        {
+          "targetText": "nadaot",
+          "baseText": {
+            "de": "beschädigt worden",
+            "en": "was damaged"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mao kini ang ",
+        "answer": "nahitabo",
+        "after": ": nisakay ko, niulan, dayon nabasa ang akong bag.",
+        "fallbackChoices": [
+          "nahitabo",
+          "nahuman",
+          "nawala",
+          "niabot"
+        ]
+      },
+      "speakRequired": [
+        "nahitabo",
+        "nisakay",
+        "dayon"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Jeepneyfahrt zeigt deine Freundin auf die Tasche: „Ngano man nga basa ang imong bag?“",
+        "en": "After your jeepney ride, your friend points at the bag: “Ngano man nga basa ang imong bag?”"
+      },
+      "trophyWord": {
+        "word": "nahitabo",
+        "meaning": {
+          "de": "passiert; geschehen",
+          "en": "happened"
+        },
+        "example": "Mao kini ang nahitabo sa jeep ganina.",
+        "whyThisWord": {
+          "de": "Nahitabo ist die vollständige Form für ein geschehenes Ereignis; mit ang nahitabo sprichst du über das Geschehene.",
+          "en": "Nahitabo is the complete form for an event that happened; ang nahitabo refers to what happened."
+        }
+      },
+      "distractors": [
+        "ang imong bag.",
+        "dayon nihunong"
+      ],
+      "placeholderCaption": {
+        "de": "Eine regennasse Tasche neben einem Jeepney.",
+        "en": "A rain-soaked bag beside a jeepney."
+      },
+      "songMood": "Conversational rhythm with quick light percussion",
+      "visualNotes": "Wet canvas bag on a jeepney bench after rain; contents remain out of view."
+    },
+    {
+      "slug": "sugod-fiesta-parade",
+      "title": {
+        "de": "So begann die Fiesta",
+        "en": "How the fiesta began"
+      },
+      "situation": {
+        "de": "Dein Cousin hat den Beginn der Fiesta verpasst und fragt dich danach.",
+        "en": "Your cousin missed the start of the fiesta and asks about it."
+      },
+      "pedagogicalGoal": "Sugod als Nomen in sa sugod verwenden und eine Festfolge erzählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Giunsa pagsugod ang pista gahapon?",
+          "baseText": {
+            "de": "Wie hat die Fiesta gestern begonnen?",
+            "en": "How did the fiesta start yesterday?"
+          }
+        },
+        {
+          "targetText": "Sa sugod naglinya ang mga banda sa plasa, dayon nilakaw sila paingon sa simbahan.",
+          "baseText": {
+            "de": "Zu Beginn stellten sich die Kapellen auf dem Platz auf, dann gingen sie zur Kirche.",
+            "en": "At the start, the bands lined up in the square, then walked toward the church."
+          }
+        },
+        {
+          "targetText": "Unsa ang ilang gibuhat sa kataposan?",
+          "baseText": {
+            "de": "Was haben sie zum Schluss gemacht?",
+            "en": "What did they do at the end?"
+          }
+        },
+        {
+          "targetText": "Nihunong sila sa simbahan, dayon nitugtog hangtod sa udto.",
+          "baseText": {
+            "de": "Sie hielten an der Kirche an und spielten dann bis mittags.",
+            "en": "They stopped at the church, then played until noon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sa sugod: zu Beginn",
+        "rule": {
+          "de": "In sa sugod ist sugod ein Nomen; danach kann dayon den nächsten Schritt der Erzählung einführen.",
+          "en": "In sa sugod, sugod is a noun; dayon can then introduce the next step of the story."
+        },
+        "examples": [
+          {
+            "targetText": "Sa sugod naglinya ang mga banda sa plasa, dayon nilakaw sila paingon sa simbahan.",
+            "baseText": {
+              "de": "Zu Beginn stellten sich die Kapellen auf dem Platz auf, dann gingen sie zur Kirche.",
+              "en": "At the start, the bands lined up in the square, then walked toward the church."
+            },
+            "highlight": "Sa sugod"
+          },
+          {
+            "targetText": "Sa sugod naghulat mi sa plasa gahapon, dayon niabot ang banda.",
+            "baseText": {
+              "de": "Zu Beginn warteten wir gestern auf dem Platz, dann kam die Kapelle.",
+              "en": "At the start, we were waiting in the square yesterday, then the band arrived."
+            },
+            "highlight": "Sa sugod"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Nihunong",
+          "cue": "hunong, completed",
+          "choices": [
+            "Nihunong",
+            "Naghunong",
+            "Mohunong",
+            "Maghunong"
+          ]
+        },
+        " sila sa simbahan, ",
+        {
+          "kind": "connector",
+          "answer": "dayon",
+          "choices": [
+            "dayon",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " nitugtog hangtod sa udto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa sugod",
+          "baseText": {
+            "de": "Zu Beginn",
+            "en": "At the start"
+          }
+        },
+        {
+          "targetText": "naglinya ang mga banda",
+          "baseText": {
+            "de": "stellten sich die Kapellen auf",
+            "en": "the bands lined up"
+          }
+        },
+        {
+          "targetText": "sa plasa,",
+          "baseText": {
+            "de": "auf dem Platz,",
+            "en": "in the square,"
+          }
+        },
+        {
+          "targetText": "dayon nilakaw sila",
+          "baseText": {
+            "de": "dann gingen sie",
+            "en": "then they walked"
+          }
+        },
+        {
+          "targetText": "paingon sa simbahan.",
+          "baseText": {
+            "de": "zur Kirche.",
+            "en": "toward the church."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sa sugod",
+          "baseText": {
+            "de": "zu Beginn",
+            "en": "at the start"
+          }
+        },
+        {
+          "targetText": "naglinya",
+          "baseText": {
+            "de": "sich aufstellen",
+            "en": "line up"
+          }
+        },
+        {
+          "targetText": "banda",
+          "baseText": {
+            "de": "Musikkapelle",
+            "en": "band"
+          }
+        },
+        {
+          "targetText": "nitugtog",
+          "baseText": {
+            "de": "Musik gespielt",
+            "en": "played music"
+          }
+        },
+        {
+          "targetText": "sa kataposan",
+          "baseText": {
+            "de": "zum Schluss",
+            "en": "at the end"
+          }
+        },
+        {
+          "targetText": "udto",
+          "baseText": {
+            "de": "Mittag",
+            "en": "noon"
+          }
+        },
+        {
+          "targetText": "pista",
+          "baseText": {
+            "de": "Fiesta; Ortsfest",
+            "en": "fiesta; local festival"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa ",
+        "answer": "sugod",
+        "after": " naglinya ang mga banda sa plasa, dayon nilakaw sila paingon sa simbahan.",
+        "fallbackChoices": [
+          "sugod",
+          "kataposan",
+          "kilid",
+          "tumoy"
+        ]
+      },
+      "speakRequired": [
+        "sugod",
+        "banda",
+        "dayon"
+      ],
+      "sceneCaption": {
+        "de": "Dein Cousin fragt nach dem Festauftakt: „Giunsa pagsugod ang pista gahapon?“",
+        "en": "Your cousin asks about the opening of the fiesta: “Giunsa pagsugod ang pista gahapon?”"
+      },
+      "trophyWord": {
+        "word": "sugod",
+        "meaning": {
+          "de": "Anfang; Beginn",
+          "en": "start; beginning"
+        },
+        "example": "Sa sugod naglinya ang mga banda sa plasa.",
+        "whyThisWord": {
+          "de": "In sa sugod bleibt sugod ein Nomen und setzt einen klaren Ausgangspunkt für deine Erzählung.",
+          "en": "In sa sugod, sugod stays a noun and gives your story a clear starting point."
+        }
+      },
+      "distractors": [
+        "sa pantalan,",
+        "paingon sa merkado."
+      ],
+      "placeholderCaption": {
+        "de": "Musikkapellen auf dem Platz am Festtag.",
+        "en": "Bands gathering in the square on fiesta day."
+      },
+      "songMood": "Festive brass colors over a light parade pulse",
+      "visualNotes": "Local fiesta square with several brass bands assembling near a church; no text."
+    },
+    {
+      "slug": "tungod-traffic-walk",
+      "title": {
+        "de": "Wegen des Verkehrs",
+        "en": "Because of the traffic"
+      },
+      "situation": {
+        "de": "Du kommst verspätet nach Hause und deine Vermieterin fragt nach dem Grund.",
+        "en": "You arrive home late and your landlady asks why."
+      },
+      "pedagogicalGoal": "Mit tungod sa und einem Nomen den Grund einer Verzögerung erklären.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Ngano nga naulahi ka ganina?",
+          "baseText": {
+            "de": "Warum bist du vorhin zu spät gekommen?",
+            "en": "Why were you late earlier?"
+          }
+        },
+        {
+          "targetText": "Nilarga ko, nihunong ang jeep tungod sa trapiko, dayon nilakaw na lang ko.",
+          "baseText": {
+            "de": "Ich fuhr los, der Jeepney blieb im Verkehr stehen, und dann ging ich einfach zu Fuß weiter.",
+            "en": "I set off, the jeepney stopped because of traffic, then I just continued on foot."
+          }
+        },
+        {
+          "targetText": "Gikan asa ka nilakaw?",
+          "baseText": {
+            "de": "Von wo bist du zu Fuß gegangen?",
+            "en": "Where did you walk from?"
+          }
+        },
+        {
+          "targetText": "Gikan sa tulay; nilakaw ko tungod sa trapiko.",
+          "baseText": {
+            "de": "Von der Brücke aus; wegen des Verkehrs bin ich zu Fuß gegangen.",
+            "en": "From the bridge; I walked because of the traffic."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "tungod sa: ein Grund als Nomen",
+        "rule": {
+          "de": "Tungod sa steht vor einem Nomen wie trapiko und nennt den Grund für das Ereignis.",
+          "en": "Tungod sa comes before a noun such as trapiko and gives the reason for an event."
+        },
+        "examples": [
+          {
+            "targetText": "Nilarga ko, nihunong ang jeep tungod sa trapiko, dayon nilakaw na lang ko.",
+            "baseText": {
+              "de": "Ich fuhr los, der Jeepney blieb im Verkehr stehen, und dann ging ich einfach zu Fuß weiter.",
+              "en": "I set off, the jeepney stopped because of traffic, then I just continued on foot."
+            },
+            "highlight": "tungod sa trapiko"
+          },
+          {
+            "targetText": "Nihunong ang bus tungod sa kusog nga ulan gahapon.",
+            "baseText": {
+              "de": "Der Bus hielt gestern wegen des starken Regens an.",
+              "en": "The bus stopped because of the heavy rain yesterday."
+            },
+            "highlight": "tungod sa kusog nga ulan"
+          }
+        ]
+      },
+      "cloze": [
+        "Gikan sa tulay; ",
+        {
+          "kind": "form",
+          "answer": "nilakaw",
+          "cue": "lakaw, completed",
+          "choices": [
+            "nilakaw",
+            "naglakaw",
+            "molakaw",
+            "maglakaw"
+          ]
+        },
+        " ko ",
+        {
+          "kind": "connector",
+          "answer": "tungod",
+          "choices": [
+            "tungod",
+            "kay",
+            "samtang",
+            "aron"
+          ]
+        },
+        " sa trapiko."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nilarga ko,",
+          "baseText": {
+            "de": "Ich fuhr los,",
+            "en": "I set off,"
+          }
+        },
+        {
+          "targetText": "nihunong ang jeep",
+          "baseText": {
+            "de": "der Jeepney hielt an",
+            "en": "the jeepney stopped"
+          }
+        },
+        {
+          "targetText": "tungod sa trapiko,",
+          "baseText": {
+            "de": "wegen des Verkehrs,",
+            "en": "because of traffic,"
+          }
+        },
+        {
+          "targetText": "dayon nilakaw na lang ko.",
+          "baseText": {
+            "de": "dann bin ich einfach zu Fuß weitergegangen.",
+            "en": "then I just continued on foot."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tungod sa",
+          "baseText": {
+            "de": "wegen",
+            "en": "because of"
+          }
+        },
+        {
+          "targetText": "trapiko",
+          "baseText": {
+            "de": "Verkehr; Stau",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "nilarga",
+          "baseText": {
+            "de": "losgefahren",
+            "en": "set off"
+          }
+        },
+        {
+          "targetText": "nihunong",
+          "baseText": {
+            "de": "angehalten",
+            "en": "stopped"
+          }
+        },
+        {
+          "targetText": "jeep",
+          "baseText": {
+            "de": "Jeepney",
+            "en": "jeepney"
+          }
+        },
+        {
+          "targetText": "tulay",
+          "baseText": {
+            "de": "Brücke",
+            "en": "bridge"
+          }
+        },
+        {
+          "targetText": "gikan sa",
+          "baseText": {
+            "de": "von; ausgehend von",
+            "en": "from"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nilarga ko, nihunong ang jeep tungod sa ",
+        "answer": "trapiko",
+        "after": ", dayon nilakaw na lang ko.",
+        "fallbackChoices": [
+          "trapiko",
+          "ulan",
+          "init",
+          "hangin"
+        ]
+      },
+      "speakRequired": [
+        "nihunong",
+        "tungod",
+        "trapiko"
+      ],
+      "sceneCaption": {
+        "de": "Am Hauseingang fragt deine Vermieterin: „Ngano nga naulahi ka ganina?“",
+        "en": "At the entrance to the house, your landlady asks: “Ngano nga naulahi ka ganina?”"
+      },
+      "trophyWord": {
+        "word": "tungod",
+        "meaning": {
+          "de": "wegen; aufgrund",
+          "en": "because of"
+        },
+        "example": "Nilakaw ko tungod sa trapiko.",
+        "whyThisWord": {
+          "de": "Tungod bildet mit sa einen häufigen Ausdruck, mit dem du einen Grund als Nomen nennst.",
+          "en": "Tungod combines with sa in a common expression for giving a reason as a noun."
+        }
+      },
+      "distractors": [
+        "tungod sa ulan,",
+        "niabot ang bus"
+      ],
+      "placeholderCaption": {
+        "de": "Stockender Verkehr auf einer Stadtstraße.",
+        "en": "Slow traffic on a city street."
+      },
+      "songMood": "Steady walking groove with muted percussion",
+      "visualNotes": "Jeepney in Cebu traffic, pedestrian sidewalk visible; no later bridge location."
+    },
+    {
+      "slug": "kaniadto-harbor-life",
+      "title": {
+        "de": "Damals am Hafen",
+        "en": "Life by the harbor then"
+      },
+      "situation": {
+        "de": "Eine Verkäuferin am Hafen fragt, ob du früher hier gewohnt hast.",
+        "en": "A vendor at the harbor asks whether you used to live here."
+      },
+      "pedagogicalGoal": "Mit kaniadto einen vergangenen Lebensabschnitt beschreiben und eine Veränderung benennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Nagpuyo ka dinhi kaniadto?",
+          "baseText": {
+            "de": "Hast du früher hier gewohnt?",
+            "en": "Did you live here in the past?"
+          }
+        },
+        {
+          "targetText": "Nagpuyo ko dinhi kaniadto ug nagbaligya og isda tapad sa pantalan.",
+          "baseText": {
+            "de": "Ich habe früher hier gewohnt und neben dem Hafen Fisch verkauft.",
+            "en": "I used to live here and sell fish beside the harbor."
+          }
+        },
+        {
+          "targetText": "Unsa ang pinakadakong kausaban nga imong nakita?",
+          "baseText": {
+            "de": "Was ist die größte Veränderung, die dir aufgefallen ist?",
+            "en": "What is the biggest change you have noticed?"
+          }
+        },
+        {
+          "targetText": "Daghang tindahan karon; kaniadto nagtanom og mais ang mga silingan.",
+          "baseText": {
+            "de": "Jetzt gibt es viele Geschäfte; früher haben die Nachbarn Mais angebaut.",
+            "en": "There are many shops now; the neighbors used to grow corn."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "kaniadto: ein vergangener Hintergrund",
+        "rule": {
+          "de": "Kaniadto verankert eine Beschreibung in der Vergangenheit und kann den Hintergrund für einen Vergleich mit heute setzen.",
+          "en": "Kaniadto places a description in the past and can provide the background for a comparison with today."
+        },
+        "examples": [
+          {
+            "targetText": "Nagpuyo ko dinhi kaniadto ug nagbaligya og isda tapad sa pantalan.",
+            "baseText": {
+              "de": "Ich habe früher hier gewohnt und neben dem Hafen Fisch verkauft.",
+              "en": "I used to live here and sell fish beside the harbor."
+            },
+            "highlight": "dinhi kaniadto"
+          },
+          {
+            "targetText": "Daghang tindahan karon; kaniadto nagtanom og mais ang mga silingan.",
+            "baseText": {
+              "de": "Jetzt gibt es viele Geschäfte; früher haben die Nachbarn Mais angebaut.",
+              "en": "There are many shops now; the neighbors used to grow corn."
+            },
+            "highlight": "kaniadto nagtanom"
+          }
+        ]
+      },
+      "cloze": [
+        "Daghang tindahan karon; ",
+        {
+          "kind": "choice",
+          "answer": "kaniadto",
+          "choices": [
+            "kaniadto",
+            "ugma",
+            "sunod semana",
+            "karong gabii"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nagtanom",
+          "cue": "tanom, progressive",
+          "choices": [
+            "nagtanom",
+            "nitanom",
+            "motanom",
+            "magtanom"
+          ]
+        },
+        " og mais ang mga silingan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nagpuyo ko dinhi kaniadto",
+          "baseText": {
+            "de": "Ich habe früher hier gewohnt",
+            "en": "I used to live here"
+          }
+        },
+        {
+          "targetText": "ug nagbaligya",
+          "baseText": {
+            "de": "und verkauft",
+            "en": "and sell"
+          }
+        },
+        {
+          "targetText": "og isda",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "tapad sa pantalan.",
+          "baseText": {
+            "de": "neben dem Hafen.",
+            "en": "beside the harbor."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kaniadto",
+          "baseText": {
+            "de": "früher; damals",
+            "en": "in the past; back then"
+          }
+        },
+        {
+          "targetText": "nagpuyo",
+          "baseText": {
+            "de": "wohnen",
+            "en": "live; reside"
+          }
+        },
+        {
+          "targetText": "nagbaligya",
+          "baseText": {
+            "de": "verkaufen",
+            "en": "sell"
+          }
+        },
+        {
+          "targetText": "pantalan",
+          "baseText": {
+            "de": "Hafen",
+            "en": "harbor"
+          }
+        },
+        {
+          "targetText": "nagtanom",
+          "baseText": {
+            "de": "anbauen; pflanzen",
+            "en": "grow; plant"
+          }
+        },
+        {
+          "targetText": "mais",
+          "baseText": {
+            "de": "Mais",
+            "en": "corn"
+          }
+        },
+        {
+          "targetText": "silingan",
+          "baseText": {
+            "de": "Nachbar; Nachbarin",
+            "en": "neighbor"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nagpuyo ko dinhi ",
+        "answer": "kaniadto",
+        "after": " ug nagbaligya og isda tapad sa pantalan.",
+        "fallbackChoices": [
+          "kaniadto",
+          "ugma",
+          "karon",
+          "unya"
+        ]
+      },
+      "speakRequired": [
+        "nagpuyo",
+        "kaniadto",
+        "isda"
+      ],
+      "sceneCaption": {
+        "de": "Am Fischstand fragt die Verkäuferin: „Nagpuyo ka dinhi kaniadto?“",
+        "en": "At the fish stall, the vendor asks: “Nagpuyo ka dinhi kaniadto?”"
+      },
+      "trophyWord": {
+        "word": "kaniadto",
+        "meaning": {
+          "de": "früher; damals",
+          "en": "in the past; back then"
+        },
+        "example": "Nagpuyo ko tapad sa pantalan kaniadto.",
+        "whyThisWord": {
+          "de": "Kaniadto setzt einen vergangenen Zeitrahmen, etwa für einen früheren Wohnort oder Alltag.",
+          "en": "Kaniadto sets a past time frame for a former home or way of life."
+        }
+      },
+      "distractors": [
+        "tapad sa simbahan.",
+        "og utanon"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Fischstand am vertrauten Hafen.",
+        "en": "A fish stall by a familiar harbor."
+      },
+      "songMood": "Reflective acoustic melody with gentle sea-like motion",
+      "visualNotes": "Harbor market seen from a fish stall with boats behind; no comparison inset."
+    },
+    {
+      "slug": "nagdali-last-bus",
+      "title": {
+        "de": "Der letzte Bus",
+        "en": "The last bus"
+      },
+      "situation": {
+        "de": "Ein Fahrer hat dich am Vorabend rennen sehen und fragt danach.",
+        "en": "A driver saw you running the previous evening and asks about it."
+      },
+      "pedagogicalGoal": "Mit nagdali die Eile einer vergangenen Situation erklären und den Ausgang erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Ngano man nga nidagan ka gabii?",
+          "baseText": {
+            "de": "Warum bist du gestern Abend gerannt?",
+            "en": "Why were you running last night?"
+          }
+        },
+        {
+          "targetText": "Nidagan ko kay nagdali ko para sa kataposang biyahe sa bus gabii.",
+          "baseText": {
+            "de": "Ich bin gerannt, weil ich gestern Abend zum letzten Bus musste.",
+            "en": "I ran because I was hurrying for the last bus trip last night."
+          }
+        },
+        {
+          "targetText": "Nakaapas ba ka sa bus?",
+          "baseText": {
+            "de": "Hast du den Bus noch erwischt?",
+            "en": "Did you catch the bus?"
+          }
+        },
+        {
+          "targetText": "Oo, nihunong ang bus, dayon nisulod ko ug nilingkod.",
+          "baseText": {
+            "de": "Ja, der Bus hielt an, dann stieg ich ein und setzte mich.",
+            "en": "Yes, the bus stopped, then I got in and sat down."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "nagdali: in Eile sein",
+        "rule": {
+          "de": "Nagdali beschreibt die laufende Eile; gabii oder ein vergangenes Ereignis legt den vergangenen Zeitrahmen fest.",
+          "en": "Nagdali describes being in a hurry; gabii or a past event establishes the past time frame."
+        },
+        "examples": [
+          {
+            "targetText": "Nidagan ko kay nagdali ko para sa kataposang biyahe sa bus gabii.",
+            "baseText": {
+              "de": "Ich bin gerannt, weil ich gestern Abend zum letzten Bus musste.",
+              "en": "I ran because I was hurrying for the last bus trip last night."
+            },
+            "highlight": "kay nagdali ko"
+          },
+          {
+            "targetText": "Nagdali ko gabii, dayon niabot ang bus.",
+            "baseText": {
+              "de": "Ich war gestern Abend in Eile, dann kam der Bus.",
+              "en": "I was hurrying last night, then the bus arrived."
+            },
+            "highlight": "Nagdali ko gabii"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, nihunong ang bus, ",
+        {
+          "kind": "connector",
+          "answer": "dayon",
+          "choices": [
+            "dayon",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nisulod",
+          "cue": "sulod, completed",
+          "choices": [
+            "nisulod",
+            "nagsulod",
+            "mosulod",
+            "magsulod"
+          ]
+        },
+        " ko ug nilingkod."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nidagan ko",
+          "baseText": {
+            "de": "Ich bin gerannt",
+            "en": "I ran"
+          }
+        },
+        {
+          "targetText": "kay nagdali ko",
+          "baseText": {
+            "de": "weil ich in Eile war",
+            "en": "because I was hurrying"
+          }
+        },
+        {
+          "targetText": "para sa kataposang biyahe",
+          "baseText": {
+            "de": "für die letzte Fahrt",
+            "en": "for the last trip"
+          }
+        },
+        {
+          "targetText": "sa bus gabii.",
+          "baseText": {
+            "de": "des Busses gestern Abend.",
+            "en": "of the bus last night."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nagdali",
+          "baseText": {
+            "de": "in Eile sein",
+            "en": "be in a hurry"
+          }
+        },
+        {
+          "targetText": "nidagan",
+          "baseText": {
+            "de": "gerannt",
+            "en": "ran"
+          }
+        },
+        {
+          "targetText": "kataposang biyahe",
+          "baseText": {
+            "de": "letzte Fahrt",
+            "en": "last trip"
+          }
+        },
+        {
+          "targetText": "nakaapas",
+          "baseText": {
+            "de": "noch erwischt; rechtzeitig erreicht",
+            "en": "caught; reached in time"
+          }
+        },
+        {
+          "targetText": "nisulod",
+          "baseText": {
+            "de": "eingestiegen; hineingegangen",
+            "en": "got in; entered"
+          }
+        },
+        {
+          "targetText": "nilingkod",
+          "baseText": {
+            "de": "sich hingesetzt",
+            "en": "sat down"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nidagan ko kay ",
+        "answer": "nagdali",
+        "after": " ko para sa kataposang biyahe sa bus gabii.",
+        "fallbackChoices": [
+          "nagdali",
+          "naghulat",
+          "nagpahuway",
+          "nagluto"
+        ]
+      },
+      "speakRequired": [
+        "nidagan",
+        "nagdali",
+        "bus"
+      ],
+      "sceneCaption": {
+        "de": "Der Fahrer erinnert sich an gestern Abend und fragt: „Ngano man nga nidagan ka gabii?“",
+        "en": "The driver recalls last night and asks: “Ngano man nga nidagan ka gabii?”"
+      },
+      "trophyWord": {
+        "word": "nagdali",
+        "meaning": {
+          "de": "in Eile sein; sich beeilen",
+          "en": "be hurrying; be in a hurry"
+        },
+        "example": "Nagdali ko gabii para sa kataposang bus.",
+        "whyThisWord": {
+          "de": "Nagdali ist die ganze Verbform für eine laufende Eile; ein Zeitwort zeigt, ob du von damals erzählst.",
+          "en": "Nagdali is the full verb form for being in a hurry; a time expression shows when you mean a past situation."
+        }
+      },
+      "distractors": [
+        "para sa unang biyahe",
+        "sa tren gabii."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Bus an einer abendlichen Haltestelle.",
+        "en": "A bus at an evening stop."
+      },
+      "songMood": "Quick footstep pulse settling into a relaxed rhythm",
+      "visualNotes": "Evening bus stop with an approaching traveler; no boarding outcome shown."
+    },
+    {
+      "slug": "nisakay-dawn-ferry",
+      "title": {
+        "de": "Mit der Fähre zur Insel",
+        "en": "Taking the ferry to the island"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, wie du auf die Insel gekommen bist.",
+        "en": "A friend asks how you reached the island."
+      },
+      "pedagogicalGoal": "Mit nisakay eine abgeschlossene Fahrt einleiten und ihren Verlauf ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Giunsa nimo pag-abot sa isla?",
+          "baseText": {
+            "de": "Wie bist du auf die Insel gekommen?",
+            "en": "How did you reach the island?"
+          }
+        },
+        {
+          "targetText": "Sa kaadlawon nisakay ko sa barko, dayon niabot sa isla sa buntag.",
+          "baseText": {
+            "de": "Im Morgengrauen bin ich auf die Fähre gestiegen und morgens auf der Insel angekommen.",
+            "en": "I boarded the ferry at dawn, then arrived on the island in the morning."
+          }
+        },
+        {
+          "targetText": "Nalipong ba ka sa biyahe?",
+          "baseText": {
+            "de": "Ist dir auf der Fahrt übel geworden?",
+            "en": "Did you get seasick on the trip?"
+          }
+        },
+        {
+          "targetText": "Maayo ra akong paminaw; nagpahuway ko samtang naglayag ang barko.",
+          "baseText": {
+            "de": "Mir ging es gut; ich habe mich ausgeruht, während die Fähre unterwegs war.",
+            "en": "I felt fine; I was resting while the ferry was sailing."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "nisakay: eine abgeschlossene Fahrt",
+        "rule": {
+          "de": "Nisakay bezeichnet das abgeschlossene Einsteigen; sa nennt das Verkehrsmittel und dayon führt die Reise weiter.",
+          "en": "Nisakay describes completed boarding; sa introduces the vehicle and dayon continues the journey."
+        },
+        "examples": [
+          {
+            "targetText": "Sa kaadlawon nisakay ko sa barko, dayon niabot sa isla sa buntag.",
+            "baseText": {
+              "de": "Im Morgengrauen bin ich auf die Fähre gestiegen und morgens auf der Insel angekommen.",
+              "en": "I boarded the ferry at dawn, then arrived on the island in the morning."
+            },
+            "highlight": "nisakay ko sa barko"
+          },
+          {
+            "targetText": "Nisakay ko sa bus ganina, dayon niabot sa pantalan.",
+            "baseText": {
+              "de": "Ich bin vorhin in den Bus gestiegen und dann am Hafen angekommen.",
+              "en": "I boarded the bus earlier, then arrived at the harbor."
+            },
+            "highlight": "Nisakay ko sa bus"
+          }
+        ]
+      },
+      "cloze": [
+        "Maayo ra akong paminaw; ",
+        {
+          "kind": "form",
+          "answer": "nagpahuway",
+          "cue": "pahuway, progressive",
+          "choices": [
+            "nagpahuway",
+            "nipahuway",
+            "mopahuway",
+            "magpahuway"
+          ]
+        },
+        " ko ",
+        {
+          "kind": "connector",
+          "answer": "samtang",
+          "choices": [
+            "samtang",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " naglayag ang barko."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa kaadlawon",
+          "baseText": {
+            "de": "Im Morgengrauen",
+            "en": "At dawn"
+          }
+        },
+        {
+          "targetText": "nisakay ko",
+          "baseText": {
+            "de": "bin ich eingestiegen",
+            "en": "I boarded"
+          }
+        },
+        {
+          "targetText": "sa barko,",
+          "baseText": {
+            "de": "auf die Fähre,",
+            "en": "the ferry,"
+          }
+        },
+        {
+          "targetText": "dayon niabot",
+          "baseText": {
+            "de": "und dann angekommen",
+            "en": "then arrived"
+          }
+        },
+        {
+          "targetText": "sa isla",
+          "baseText": {
+            "de": "auf der Insel",
+            "en": "on the island"
+          }
+        },
+        {
+          "targetText": "sa buntag.",
+          "baseText": {
+            "de": "am Morgen.",
+            "en": "in the morning."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nisakay",
+          "baseText": {
+            "de": "eingestiegen; an Bord gegangen",
+            "en": "boarded"
+          }
+        },
+        {
+          "targetText": "kaadlawon",
+          "baseText": {
+            "de": "Morgengrauen",
+            "en": "dawn"
+          }
+        },
+        {
+          "targetText": "barko",
+          "baseText": {
+            "de": "Schiff; Fähre",
+            "en": "ship; ferry"
+          }
+        },
+        {
+          "targetText": "isla",
+          "baseText": {
+            "de": "Insel",
+            "en": "island"
+          }
+        },
+        {
+          "targetText": "paminaw",
+          "baseText": {
+            "de": "Befinden; Gefühl",
+            "en": "feeling; physical condition"
+          }
+        },
+        {
+          "targetText": "nagpahuway",
+          "baseText": {
+            "de": "sich ausruhen",
+            "en": "be resting"
+          }
+        },
+        {
+          "targetText": "naglayag",
+          "baseText": {
+            "de": "auf See unterwegs sein",
+            "en": "be sailing"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa kaadlawon ",
+        "answer": "nisakay",
+        "after": " ko sa barko, dayon niabot sa isla sa buntag.",
+        "fallbackChoices": [
+          "nisakay",
+          "nipauli",
+          "nilingkod",
+          "nitanom"
+        ]
+      },
+      "speakRequired": [
+        "nisakay",
+        "barko",
+        "dayon"
+      ],
+      "sceneCaption": {
+        "de": "Nach deiner Reise fragt deine Freundin: „Giunsa nimo pag-abot sa isla?“",
+        "en": "After your trip, your friend asks: “Giunsa nimo pag-abot sa isla?”"
+      },
+      "trophyWord": {
+        "word": "nisakay",
+        "meaning": {
+          "de": "eingestiegen; an Bord gegangen",
+          "en": "boarded"
+        },
+        "example": "Sa kaadlawon nisakay ko sa barko.",
+        "whyThisWord": {
+          "de": "Nisakay ist die abgeschlossene Form für das Einsteigen und passt zu Bus, Jeepney oder Schiff.",
+          "en": "Nisakay is the completed form for boarding a bus, jeepney or boat."
+        }
+      },
+      "distractors": [
+        "sa gabii.",
+        "sa bus,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Fähre im ersten Licht am Kai.",
+        "en": "A ferry beside the quay at first light."
+      },
+      "songMood": "Open airy melody over a gentle rolling pulse",
+      "visualNotes": "Passenger ferry at dawn with island silhouette far away; no seasickness imagery."
+    }
+  ]
+}

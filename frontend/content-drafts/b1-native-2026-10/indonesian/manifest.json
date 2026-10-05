@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p1.json",
+      "sha256": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "targetLanguage": "Indonesian",
+      "pathNumber": 1,
+      "reviewedVoiceId": "gjhfBUoH6DHh0DG1X4u0",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json",
+        "sha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p2.json",
+      "sha256": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "targetLanguage": "Indonesian",
+      "pathNumber": 2,
+      "reviewedVoiceId": "gjhfBUoH6DHh0DG1X4u0",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json",
+        "sha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Indonesian": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/indonesian/fable-evidence.json",
+    "sha256": "bb25972186974244a49c4bd3a636f60df562407c931f6a4f319b81890a7aa6c9"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/indonesian/independent-evidence.json",
+    "sha256": "1331e4d85bdf368614837afb350bb5234ade26c6a977b57531ffed79c7432b2f"
+  }
+}

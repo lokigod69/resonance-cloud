@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/cebuano/p1.json",
+      "sha256": "7ee023db7a85d44a9a45dec765309c35385f96742b3d4dbd93dca5f0e07da861",
+      "targetLanguage": "Cebuano",
+      "pathNumber": 1,
+      "reviewedVoiceId": "LR0CUgPwE0CmrIZg4enh",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/cebuano/specification.json",
+        "sha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/cebuano/p2.json",
+      "sha256": "0d192faf93d193ad97f1c41c3036cfe926ac2bd418e84e69d5fcc2fd3a1b6bd2",
+      "targetLanguage": "Cebuano",
+      "pathNumber": 2,
+      "reviewedVoiceId": "LR0CUgPwE0CmrIZg4enh",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/cebuano/specification.json",
+        "sha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Cebuano": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-corazon-added-voice-evidence.json",
+      "sha256": "7bddf3b888c9763a100f3630a4579725c6783cdb88aacc7d0956511c6e5622ef"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/cebuano/fable-evidence.json",
+    "sha256": "8545edda890db975099b6cba948e8cc625b8bb8b325077f4c8298cd08dd158a1"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/cebuano/independent-evidence.json",
+    "sha256": "2673e0fd93e18410f7dcee60499065c464c5465e44f742d0caaff1a625474170"
+  }
+}

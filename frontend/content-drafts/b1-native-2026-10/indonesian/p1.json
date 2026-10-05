@@ -1,0 +1,2113 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Indonesian",
+  "targetLanguageCode": "id-ID",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Geschichten vom Wochenende",
+    "en": "Weekend stories"
+  },
+  "subtitle": {
+    "de": "Von einer Reise erzählen und auf interessierte Nachfragen eingehen",
+    "en": "Tell a travel story and respond to an interested friend"
+  },
+  "anchor": "Fable content review applied 2026-10-05. Friend register with aku/kamu and natural omission. L1–3: time-anchored sequencing with lalu/kemudian/setelah itu, sedang background, lexical tersesat. L4–7: ketika/waktu clauses, sambil and sudden events. L8–10: adversative ke-an and akhirnya with its own past marker. Four-turn shape B; each reply continues the same narrative. No new app fields or accepted variants.",
+  "lessons": [
+    {
+      "slug": "berjalan-ke-stasiun",
+      "title": {
+        "de": "Der Reisebeginn",
+        "en": "The start of the trip"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, wo deine Reise am vergangenen Samstag begonnen hat.",
+        "en": "A friend asks where your trip began last Saturday."
+      },
+      "pedagogicalGoal": "Mit einem ausdrücklichen Zeitanker und lalu zwei abgeschlossene Reisehandlungen verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Sabtu kemarin kamu mulai perjalanan dari mana?",
+          "baseText": {
+            "de": "Wo hast du letzten Samstag deine Reise begonnen?",
+            "en": "Where did you start your trip last Saturday?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku berjalan ke stasiun, lalu naik kereta ke Yogyakarta.",
+          "baseText": {
+            "de": "Letzten Samstag bin ich zu Fuß zum Bahnhof gegangen und dann mit dem Zug nach Yogyakarta gefahren.",
+            "en": "Last Saturday I walked to the station, then took a train to Yogyakarta."
+          }
+        },
+        {
+          "targetText": "Sebelum naik kereta waktu itu, kamu sempat sarapan di stasiun?",
+          "baseText": {
+            "de": "Hattest du damals vor der Zugfahrt Zeit, am Bahnhof zu frühstücken?",
+            "en": "Before taking the train that time, did you have time for breakfast at the station?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sudah sarapan di stasiun sebelum kereta berangkat.",
+          "baseText": {
+            "de": "Damals hatte ich am Bahnhof schon gefrühstückt, bevor der Zug abfuhr.",
+            "en": "I had already eaten breakfast at the station that time before the train left."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Urutan dengan lalu",
+        "rule": {
+          "de": "Ein Zeitanker wie kemarin verortet die Erzählung in der Vergangenheit; lalu verbindet die nächste Handlung.",
+          "en": "A time anchor such as kemarin places the story in the past; lalu connects the next action."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku berjalan ke stasiun, lalu naik kereta ke Yogyakarta.",
+            "baseText": {
+              "de": "Letzten Samstag bin ich zu Fuß zum Bahnhof gegangen und dann mit dem Zug nach Yogyakarta gefahren.",
+              "en": "Last Saturday I walked to the station, then took a train to Yogyakarta."
+            },
+            "highlight": "lalu naik kereta"
+          },
+          {
+            "targetText": "Kemarin aku sarapan, lalu pergi ke stasiun.",
+            "baseText": {
+              "de": "Gestern habe ich gefrühstückt und bin dann zum Bahnhof gegangen.",
+              "en": "Yesterday I had breakfast, then went to the station."
+            },
+            "highlight": "lalu pergi"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Besok",
+            "Waktu itu",
+            "Sekarang",
+            "Minggu depan"
+          ]
+        },
+        " aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "sarapan (selesai sebelum berangkat)",
+          "choices": [
+            "sedang",
+            "belum",
+            "sudah",
+            "akan"
+          ]
+        },
+        " sarapan di stasiun sebelum kereta berangkat."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin",
+          "baseText": {
+            "de": "letzten Samstag",
+            "en": "last Saturday"
+          }
+        },
+        {
+          "targetText": "aku berjalan ke stasiun,",
+          "baseText": {
+            "de": "zu Fuß zum Bahnhof gehen",
+            "en": "walk to the station"
+          }
+        },
+        {
+          "targetText": "lalu naik kereta",
+          "baseText": {
+            "de": "dann mit dem Zug fahren",
+            "en": "then take the train"
+          }
+        },
+        {
+          "targetText": "ke Yogyakarta.",
+          "baseText": {
+            "de": "nach Yogyakarta.",
+            "en": "to Yogyakarta."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "berjalan",
+          "baseText": {
+            "de": "zu Fuß gehen",
+            "en": "walk"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin",
+          "baseText": {
+            "de": "letzten Samstag",
+            "en": "last Saturday"
+          }
+        },
+        {
+          "targetText": "stasiun",
+          "baseText": {
+            "de": "Bahnhof",
+            "en": "station"
+          }
+        },
+        {
+          "targetText": "naik kereta",
+          "baseText": {
+            "de": "mit dem Zug fahren",
+            "en": "take the train"
+          }
+        },
+        {
+          "targetText": "sarapan",
+          "baseText": {
+            "de": "frühstücken",
+            "en": "have breakfast"
+          }
+        },
+        {
+          "targetText": "sebelum berangkat",
+          "baseText": {
+            "de": "vor der Abfahrt",
+            "en": "before leaving"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku ",
+        "answer": "berjalan",
+        "after": " ke stasiun, lalu naik kereta ke Yogyakarta.",
+        "fallbackChoices": [
+          "berjalan",
+          "berenang",
+          "berlari",
+          "bersepeda"
+        ]
+      },
+      "speakRequired": [
+        "berjalan",
+        "stasiun",
+        "kereta"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem Reisebeginn: „Sabtu kemarin kamu mulai perjalanan dari mana?“",
+        "en": "Your friend asks about the start of the trip: “Sabtu kemarin kamu mulai perjalanan dari mana?”"
+      },
+      "trophyWord": {
+        "word": "berjalan",
+        "meaning": {
+          "de": "zu Fuß gehen",
+          "en": "walk"
+        },
+        "example": "Kemarin aku berjalan ke stasiun bersama teman.",
+        "whyThisWord": {
+          "de": "Mit berjalan erzählst du, wie du eine Strecke zu Fuß zurücklegst.",
+          "en": "Berjalan lets you say that you cover a distance on foot."
+        }
+      },
+      "distractors": [
+        "aku naik taksi ke stasiun,",
+        "ke Surabaya."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sitzen mit einer Landkarte an einem Tisch.",
+        "en": "Two friends sit at a table with a map."
+      },
+      "songMood": "light anticipation of a weekend journey",
+      "visualNotes": "A friend asks about the trip; no station breakfast or onward travel is shown."
+    },
+    {
+      "slug": "pasar-dekat-stasiun",
+      "title": {
+        "de": "Der erste Vormittag",
+        "en": "The first morning"
+      },
+      "situation": {
+        "de": "Deine Freundin möchte wissen, wohin du nach der Ankunft in Yogyakarta gegangen bist.",
+        "en": "Your friend wants to know where you went after arriving in Yogyakarta."
+      },
+      "pedagogicalGoal": "Einen besuchten Ort nennen und mit lalu die Erzählung zeitlich fortsetzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Waktu itu kamu pergi ke mana setelah tiba di Yogyakarta?",
+          "baseText": {
+            "de": "Wohin bist du damals nach deiner Ankunft in Yogyakarta gegangen?",
+            "en": "Where did you go that time after arriving in Yogyakarta?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku mengunjungi pasar dekat stasiun, lalu melihat banyak makanan khas.",
+          "baseText": {
+            "de": "Letzten Samstag habe ich den Markt in Bahnhofsnähe besucht und dann viele regionale Spezialitäten gesehen.",
+            "en": "Last Saturday I visited the market near the station, then saw lots of local specialities."
+          }
+        },
+        {
+          "targetText": "Waktu itu kamu membeli makanan untuk dimakan di sana?",
+          "baseText": {
+            "de": "Hast du damals etwas zu essen gekauft, um es dort zu essen?",
+            "en": "Did you buy food that time to eat there?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sudah membeli roti, lalu mencari tempat duduk.",
+          "baseText": {
+            "de": "Damals hatte ich schon Brot gekauft und habe dann einen Sitzplatz gesucht.",
+            "en": "At that time I had already bought bread, then looked for somewhere to sit."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tempat dan urutan",
+        "rule": {
+          "de": "Nenne mit kemarin den vergangenen Tag und mit lalu die Handlung, die auf den Besuch folgt.",
+          "en": "Use kemarin to name the past day and lalu for the action that follows the visit."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku mengunjungi pasar dekat stasiun, lalu melihat banyak makanan khas.",
+            "baseText": {
+              "de": "Letzten Samstag habe ich den Markt in Bahnhofsnähe besucht und dann viele regionale Spezialitäten gesehen.",
+              "en": "Last Saturday I visited the market near the station, then saw lots of local specialities."
+            },
+            "highlight": "lalu melihat"
+          },
+          {
+            "targetText": "Kemarin aku masuk toko, lalu membeli roti.",
+            "baseText": {
+              "de": "Gestern bin ich in einen Laden gegangen und habe dann Brot gekauft.",
+              "en": "Yesterday I went into a shop, then bought bread."
+            },
+            "highlight": "lalu membeli"
+          }
+        ]
+      },
+      "cloze": [
+        "Waktu itu aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "membeli (selesai sebelum mencari tempat)",
+          "choices": [
+            "akan",
+            "sedang",
+            "sudah",
+            "belum"
+          ]
+        },
+        " membeli roti, ",
+        {
+          "kind": "connector",
+          "answer": "lalu",
+          "choices": [
+            "supaya",
+            "lalu",
+            "walaupun",
+            "karena"
+          ]
+        },
+        " mencari tempat duduk."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin aku mengunjungi",
+          "baseText": {
+            "de": "letzten Samstag habe ich besucht",
+            "en": "last Saturday I visited"
+          }
+        },
+        {
+          "targetText": "pasar dekat stasiun,",
+          "baseText": {
+            "de": "den Markt in Bahnhofsnähe",
+            "en": "the market near the station"
+          }
+        },
+        {
+          "targetText": "lalu melihat",
+          "baseText": {
+            "de": "dann sehen",
+            "en": "then see"
+          }
+        },
+        {
+          "targetText": "banyak makanan khas.",
+          "baseText": {
+            "de": "viele regionale Spezialitäten.",
+            "en": "lots of local specialities."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pasar",
+          "baseText": {
+            "de": "Markt",
+            "en": "market"
+          }
+        },
+        {
+          "targetText": "mengunjungi",
+          "baseText": {
+            "de": "besuchen",
+            "en": "visit"
+          }
+        },
+        {
+          "targetText": "makanan khas",
+          "baseText": {
+            "de": "regionale Spezialitäten",
+            "en": "local specialities"
+          }
+        },
+        {
+          "targetText": "membeli roti",
+          "baseText": {
+            "de": "Brot kaufen",
+            "en": "buy bread"
+          }
+        },
+        {
+          "targetText": "mencari",
+          "baseText": {
+            "de": "suchen",
+            "en": "look for"
+          }
+        },
+        {
+          "targetText": "tempat duduk",
+          "baseText": {
+            "de": "Sitzplatz",
+            "en": "somewhere to sit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku mengunjungi ",
+        "answer": "pasar",
+        "after": " dekat stasiun, lalu melihat banyak makanan khas.",
+        "fallbackChoices": [
+          "kantor",
+          "sekolah",
+          "pasar",
+          "apotek"
+        ]
+      },
+      "speakRequired": [
+        "pasar",
+        "melihat",
+        "makanan"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach deiner Ankunft: „Waktu itu kamu pergi ke mana setelah tiba di Yogyakarta?“",
+        "en": "Your friend asks about your arrival: “Waktu itu kamu pergi ke mana setelah tiba di Yogyakarta?”"
+      },
+      "trophyWord": {
+        "word": "pasar",
+        "meaning": {
+          "de": "Markt",
+          "en": "market"
+        },
+        "example": "Kemarin aku membeli buah di pasar.",
+        "whyThisWord": {
+          "de": "Pasar gibt deiner Reisegeschichte einen konkreten Ort mit Ständen, Essen und Begegnungen.",
+          "en": "Pasar gives your travel story a concrete setting with stalls, food and people."
+        }
+      },
+      "distractors": [
+        "museum dekat stasiun,",
+        "banyak lukisan lama."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin hört am Tisch aufmerksam zu.",
+        "en": "A friend listens attentively at the table."
+      },
+      "songMood": "curious morning market rhythm",
+      "visualNotes": "Present-day conversation only; keep purchases and seating out of the opening scene."
+    },
+    {
+      "slug": "tersesat-di-kota-lama",
+      "title": {
+        "de": "Länger in der Altstadt",
+        "en": "Longer in the old town"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, warum du so lange in der Altstadt geblieben bist.",
+        "en": "Your friend asks why you spent so long in the old town."
+      },
+      "pedagogicalGoal": "Mit tersesat ein unbeabsichtigtes Erlebnis benennen und mit sedang den Hintergrund einer weiteren Handlung zeigen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Waktu itu, kenapa kamu lama sekali di kota lama?",
+          "baseText": {
+            "de": "Warum warst du damals so lange in der Altstadt?",
+            "en": "Why did you spend so long in the old town that time?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku tersesat di kota lama, kemudian kembali ke jalan utama.",
+          "baseText": {
+            "de": "Damals habe ich mich in der Altstadt verlaufen und bin dann zur Hauptstraße zurückgekehrt.",
+            "en": "That time I got lost in the old town, then returned to the main road."
+          }
+        },
+        {
+          "targetText": "Waktu itu kamu menemukan jalan sendiri atau ada yang membantu?",
+          "baseText": {
+            "de": "Hast du damals den Weg allein gefunden, oder hat dir jemand geholfen?",
+            "en": "Did you find the way yourself that time, or did someone help?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sedang mencari peta, lalu seorang pedagang membantu.",
+          "baseText": {
+            "de": "Damals suchte ich gerade nach einer Karte, dann half mir ein Händler.",
+            "en": "I was looking for a map at the time, then a trader helped."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tersesat dan latar sedang",
+        "rule": {
+          "de": "Tersesat bedeutet sich verlaufen; sedang zeigt eine gerade laufende Handlung, deren Vergangenheit ein eigener Zeitanker festlegt.",
+          "en": "Tersesat means get lost; sedang marks an action in progress, while a separate time anchor places it in the past."
+        },
+        "examples": [
+          {
+            "targetText": "Waktu itu aku tersesat di kota lama, kemudian kembali ke jalan utama.",
+            "baseText": {
+              "de": "Damals habe ich mich in der Altstadt verlaufen und bin dann zur Hauptstraße zurückgekehrt.",
+              "en": "That time I got lost in the old town, then returned to the main road."
+            },
+            "highlight": "tersesat di kota lama"
+          },
+          {
+            "targetText": "Waktu itu aku sedang mencari stasiun.",
+            "baseText": {
+              "de": "Damals suchte ich gerade den Bahnhof.",
+              "en": "I was looking for the station at the time."
+            },
+            "highlight": "sedang mencari"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Minggu depan",
+            "Besok pagi",
+            "Waktu itu",
+            "Sekarang"
+          ]
+        },
+        " aku ",
+        {
+          "kind": "form",
+          "answer": "sedang",
+          "cue": "mencari (berlangsung saat bantuan datang)",
+          "choices": [
+            "sudah",
+            "sedang",
+            "belum",
+            "akan"
+          ]
+        },
+        " mencari peta, lalu seorang pedagang membantu."
+      ],
+      "chunks": [
+        {
+          "targetText": "Waktu itu",
+          "baseText": {
+            "de": "damals",
+            "en": "at that time"
+          }
+        },
+        {
+          "targetText": "aku tersesat di kota lama,",
+          "baseText": {
+            "de": "sich in der Altstadt verlaufen",
+            "en": "get lost in the old town"
+          }
+        },
+        {
+          "targetText": "kemudian kembali",
+          "baseText": {
+            "de": "dann zurückkehren",
+            "en": "then return"
+          }
+        },
+        {
+          "targetText": "ke jalan utama.",
+          "baseText": {
+            "de": "zur Hauptstraße.",
+            "en": "to the main road."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tersesat",
+          "baseText": {
+            "de": "sich verlaufen",
+            "en": "get lost"
+          }
+        },
+        {
+          "targetText": "kota lama",
+          "baseText": {
+            "de": "Altstadt",
+            "en": "old town"
+          }
+        },
+        {
+          "targetText": "jalan utama",
+          "baseText": {
+            "de": "Hauptstraße",
+            "en": "main road"
+          }
+        },
+        {
+          "targetText": "kembali",
+          "baseText": {
+            "de": "zurückkehren",
+            "en": "return"
+          }
+        },
+        {
+          "targetText": "mencari peta",
+          "baseText": {
+            "de": "nach einer Karte suchen",
+            "en": "look for a map"
+          }
+        },
+        {
+          "targetText": "pedagang",
+          "baseText": {
+            "de": "Händler",
+            "en": "trader"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Waktu itu aku ",
+        "answer": "tersesat",
+        "after": " di kota lama, kemudian kembali ke jalan utama.",
+        "fallbackChoices": [
+          "tersesat",
+          "berbelanja",
+          "beristirahat",
+          "makan"
+        ]
+      },
+      "speakRequired": [
+        "tersesat",
+        "kota",
+        "utama"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem langen Aufenthalt: „Waktu itu, kenapa kamu lama sekali di kota lama?“",
+        "en": "Your friend asks about the long stop: “Waktu itu, kenapa kamu lama sekali di kota lama?”"
+      },
+      "trophyWord": {
+        "word": "tersesat",
+        "meaning": {
+          "de": "sich verlaufen",
+          "en": "get lost"
+        },
+        "example": "Kemarin aku tersesat dekat pasar.",
+        "whyThisWord": {
+          "de": "Tersesat benennt das unbeabsichtigte Verlaufen als eigenes Erlebnis; es ist kein anderes Wort für gehen.",
+          "en": "Tersesat names the accidental experience of losing your way; it does not simply mean going somewhere."
+        }
+      },
+      "distractors": [
+        "di dekat hotel,",
+        "kemudian beristirahat"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin zeigt neugierig auf den Altstadtbereich einer Karte.",
+        "en": "A friend points curiously to the old-town area on a map."
+      },
+      "songMood": "brief uncertainty followed by relief",
+      "visualNotes": "The opening may show a map but must not depict the trader who appears in the continuation."
+    },
+    {
+      "slug": "jembatan-saat-gerimis",
+      "title": {
+        "de": "Der Weg zum Fluss",
+        "en": "The way to the river"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt nach dem Weg, den du am Samstag zum Fluss genommen hast.",
+        "en": "Your friend asks about the route you took to the river on Saturday."
+      },
+      "pedagogicalGoal": "Mit ketika zwei zeitlich zusammenfallende Ereignisse beschreiben und mit sedang eine laufende Handlung markieren.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Bagaimana jalan menuju sungai yang kamu lewati waktu itu?",
+          "baseText": {
+            "de": "Wie war der Weg zum Fluss, den du damals genommen hast?",
+            "en": "What was the route to the river like that time?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku menyeberangi jembatan ketika gerimis mulai turun di dekat sungai.",
+          "baseText": {
+            "de": "Letzten Samstag habe ich die Brücke überquert, als es in Flussnähe zu nieseln begann.",
+            "en": "Last Saturday I crossed the bridge when it started drizzling near the river."
+          }
+        },
+        {
+          "targetText": "Waktu itu hujan mengganggu kamu saat mengambil foto?",
+          "baseText": {
+            "de": "Hat dich der Regen damals beim Fotografieren gestört?",
+            "en": "Did the rain bother you while you were taking photos that time?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sedang memotret ketika hujan mulai deras.",
+          "baseText": {
+            "de": "Damals fotografierte ich gerade, als es stärker zu regnen begann.",
+            "en": "I was taking photos at the time when the rain became heavy."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ketika: dua kejadian bersamaan",
+        "rule": {
+          "de": "Ketika verbindet ein Ereignis mit dem Moment einer anderen Handlung; sedang betont, dass diese gerade läuft.",
+          "en": "Ketika links an event to the time of another action; sedang emphasises that the action is in progress."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku menyeberangi jembatan ketika gerimis mulai turun di dekat sungai.",
+            "baseText": {
+              "de": "Letzten Samstag habe ich die Brücke überquert, als es in Flussnähe zu nieseln begann.",
+              "en": "Last Saturday I crossed the bridge when it started drizzling near the river."
+            },
+            "highlight": "ketika gerimis mulai turun"
+          },
+          {
+            "targetText": "Kemarin aku sedang makan ketika teman datang.",
+            "baseText": {
+              "de": "Gestern aß ich gerade, als ein Freund kam.",
+              "en": "Yesterday I was eating when a friend arrived."
+            },
+            "highlight": "sedang makan ketika teman datang"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Besok pagi",
+            "Waktu itu",
+            "Minggu depan",
+            "Setiap hari"
+          ]
+        },
+        " aku ",
+        {
+          "kind": "form",
+          "answer": "sedang",
+          "cue": "memotret (berlangsung ketika hujan mengganggu)",
+          "choices": [
+            "belum",
+            "akan",
+            "sedang",
+            "sudah"
+          ]
+        },
+        " memotret ketika hujan mulai deras."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin aku menyeberangi",
+          "baseText": {
+            "de": "letzten Samstag habe ich überquert",
+            "en": "last Saturday I crossed"
+          }
+        },
+        {
+          "targetText": "jembatan",
+          "baseText": {
+            "de": "die Brücke",
+            "en": "the bridge"
+          }
+        },
+        {
+          "targetText": "ketika gerimis mulai turun",
+          "baseText": {
+            "de": "wenn es zu nieseln beginnt",
+            "en": "when it starts drizzling"
+          }
+        },
+        {
+          "targetText": "di dekat sungai.",
+          "baseText": {
+            "de": "in Flussnähe.",
+            "en": "near the river."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "jembatan",
+          "baseText": {
+            "de": "Brücke",
+            "en": "bridge"
+          }
+        },
+        {
+          "targetText": "menyeberangi",
+          "baseText": {
+            "de": "überqueren",
+            "en": "cross"
+          }
+        },
+        {
+          "targetText": "gerimis",
+          "baseText": {
+            "de": "Nieselregen",
+            "en": "drizzle"
+          }
+        },
+        {
+          "targetText": "sungai",
+          "baseText": {
+            "de": "Fluss",
+            "en": "river"
+          }
+        },
+        {
+          "targetText": "memotret",
+          "baseText": {
+            "de": "fotografieren",
+            "en": "take photos"
+          }
+        },
+        {
+          "targetText": "hujan deras",
+          "baseText": {
+            "de": "starker Regen",
+            "en": "heavy rain"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku menyeberangi ",
+        "answer": "jembatan",
+        "after": " ketika gerimis mulai turun di dekat sungai.",
+        "fallbackChoices": [
+          "jalan",
+          "jembatan",
+          "lapangan",
+          "halaman"
+        ]
+      },
+      "speakRequired": [
+        "menyeberangi",
+        "jembatan",
+        "gerimis"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem Weg: „Bagaimana jalan menuju sungai yang kamu lewati waktu itu?“",
+        "en": "Your friend asks about the route: “Bagaimana jalan menuju sungai yang kamu lewati waktu itu?”"
+      },
+      "trophyWord": {
+        "word": "jembatan",
+        "meaning": {
+          "de": "Brücke",
+          "en": "bridge"
+        },
+        "example": "Kemarin aku menyeberangi jembatan sambil melihat sungai.",
+        "whyThisWord": {
+          "de": "Jembatan hilft dir, einen Weg mit einem klaren Orientierungspunkt zu beschreiben.",
+          "en": "Jembatan helps you describe a route using a clear landmark."
+        }
+      },
+      "distractors": [
+        "jalan utama",
+        "di dekat pasar."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen über eine Route am Fluss.",
+        "en": "Two friends discuss a route by the river."
+      },
+      "songMood": "gentle river walk with a change in weather",
+      "visualNotes": "Do not show photographs or heavy rain before the follow-up introduces that detail."
+    },
+    {
+      "slug": "pantai-saat-senja",
+      "title": {
+        "de": "Am späten Nachmittag",
+        "en": "In the late afternoon"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, wohin dich die Reise am Samstag am späten Nachmittag geführt hat.",
+        "en": "Your friend asks where your trip took you late Saturday afternoon."
+      },
+      "pedagogicalGoal": "Mit ketika einen Zeitpunkt und mit sambil eine gleichzeitige eigene Handlung ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Waktu itu, sore hari kamu sampai di mana?",
+          "baseText": {
+            "de": "Wo bist du damals am späten Nachmittag angekommen?",
+            "en": "Where did you arrive late that afternoon?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku tiba di pantai ketika matahari terbenam, sambil makan roti.",
+          "baseText": {
+            "de": "Letzten Samstag bin ich bei Sonnenuntergang am Strand angekommen und habe dabei Brot gegessen.",
+            "en": "Last Saturday I arrived at the beach at sunset while eating bread."
+          }
+        },
+        {
+          "targetText": "Waktu itu air lautnya dingin, atau kamu bisa berenang?",
+          "baseText": {
+            "de": "War das Meerwasser damals kalt, oder konntest du schwimmen gehen?",
+            "en": "Was the sea cold that time, or could you go swimming?"
+          }
+        },
+        {
+          "targetText": "Waktu itu airnya dingin, jadi aku belum mau berenang.",
+          "baseText": {
+            "de": "Damals war das Wasser kalt, deshalb wollte ich noch nicht schwimmen gehen.",
+            "en": "The water was cold at the time, so I did not want to swim yet."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ketika dan sambil",
+        "rule": {
+          "de": "Ketika verknüpft einen Zeitpunkt mit einem Ereignis; sambil verbindet zwei Handlungen derselben Person, die gleichzeitig stattfinden.",
+          "en": "Ketika connects an event to a point in time; sambil links two actions performed by the same person at the same time."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku tiba di pantai ketika matahari terbenam, sambil makan roti.",
+            "baseText": {
+              "de": "Letzten Samstag bin ich bei Sonnenuntergang am Strand angekommen und habe dabei Brot gegessen.",
+              "en": "Last Saturday I arrived at the beach at sunset while eating bread."
+            },
+            "highlight": "sambil makan roti"
+          },
+          {
+            "targetText": "Kemarin aku berjalan sambil makan roti.",
+            "baseText": {
+              "de": "Gestern bin ich zu Fuß gegangen und habe dabei Brot gegessen.",
+              "en": "Yesterday I walked while eating bread."
+            },
+            "highlight": "sambil makan roti"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Besok",
+            "Minggu depan",
+            "Waktu itu",
+            "Sekarang"
+          ]
+        },
+        " airnya dingin, jadi aku ",
+        {
+          "kind": "form",
+          "answer": "belum",
+          "cue": "mau berenang (tidak pada waktu itu)",
+          "choices": [
+            "sudah",
+            "belum",
+            "selalu",
+            "masih"
+          ]
+        },
+        " mau berenang."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin aku tiba",
+          "baseText": {
+            "de": "letzten Samstag bin ich angekommen",
+            "en": "last Saturday I arrived"
+          }
+        },
+        {
+          "targetText": "di pantai",
+          "baseText": {
+            "de": "am Strand",
+            "en": "at the beach"
+          }
+        },
+        {
+          "targetText": "ketika matahari terbenam,",
+          "baseText": {
+            "de": "bei Sonnenuntergang",
+            "en": "at sunset"
+          }
+        },
+        {
+          "targetText": "sambil makan roti.",
+          "baseText": {
+            "de": "und dabei Brot essen.",
+            "en": "while eating bread."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pantai",
+          "baseText": {
+            "de": "Strand",
+            "en": "beach"
+          }
+        },
+        {
+          "targetText": "matahari terbenam",
+          "baseText": {
+            "de": "die Sonne geht unter",
+            "en": "the sun sets"
+          }
+        },
+        {
+          "targetText": "sambil makan",
+          "baseText": {
+            "de": "während des Essens",
+            "en": "while eating"
+          }
+        },
+        {
+          "targetText": "air laut",
+          "baseText": {
+            "de": "Meerwasser",
+            "en": "seawater"
+          }
+        },
+        {
+          "targetText": "dingin",
+          "baseText": {
+            "de": "kalt",
+            "en": "cold"
+          }
+        },
+        {
+          "targetText": "berenang",
+          "baseText": {
+            "de": "schwimmen",
+            "en": "swim"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku tiba di ",
+        "answer": "pantai",
+        "after": " ketika matahari terbenam, sambil makan roti.",
+        "fallbackChoices": [
+          "kantor",
+          "stasiun",
+          "sekolah",
+          "pantai"
+        ]
+      },
+      "speakRequired": [
+        "pantai",
+        "matahari",
+        "roti"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem späten Nachmittag: „Waktu itu, sore hari kamu sampai di mana?“",
+        "en": "Your friend asks about late afternoon: “Waktu itu, sore hari kamu sampai di mana?”"
+      },
+      "trophyWord": {
+        "word": "pantai",
+        "meaning": {
+          "de": "Strand",
+          "en": "beach"
+        },
+        "example": "Kemarin aku duduk di pantai sambil makan roti.",
+        "whyThisWord": {
+          "de": "Mit pantai erzählst du von einem konkreten Ausflugsziel am Meer.",
+          "en": "Pantai gives you a specific seaside destination to talk about."
+        }
+      },
+      "distractors": [
+        "di taman",
+        "sambil minum teh."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen bei einer Tasse Tee über einen Ausflug.",
+        "en": "Two friends talk about a trip over tea."
+      },
+      "songMood": "quiet coastal sunset",
+      "visualNotes": "Opening conversation does not show swimming or establish the water temperature."
+    },
+    {
+      "slug": "perubahan-mendadak",
+      "title": {
+        "de": "Die Rückfahrt vom Strand",
+        "en": "The return from the beach"
+      },
+      "situation": {
+        "de": "Deine Freundin erkundigt sich, ob die Rückfahrt vom Strand am Samstag reibungslos war.",
+        "en": "Your friend asks whether Saturday's return from the beach went smoothly."
+      },
+      "pedagogicalGoal": "Mit mendadak eine unerwartete Änderung hervorheben und mit lalu erzählen, was danach geschah.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Perjalanan pulang dari pantai waktu itu lancar?",
+          "baseText": {
+            "de": "War die Rückfahrt vom Strand damals problemlos?",
+            "en": "Did the return from the beach go smoothly that time?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin ada perubahan mendadak, jadi bus ke kota tidak datang.",
+          "baseText": {
+            "de": "Letzten Samstag gab es eine plötzliche Änderung, deshalb kam der Bus in die Stadt nicht.",
+            "en": "Last Saturday there was a sudden change, so the bus to the city did not come."
+          }
+        },
+        {
+          "targetText": "Waktu itu tidak ada bus, jadi kamu pulang naik apa?",
+          "baseText": {
+            "de": "Damals gab es keinen Bus; womit bist du also zurückgefahren?",
+            "en": "There was no bus that time, so how did you get back?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sudah menunggu lama, lalu naik taksi.",
+          "baseText": {
+            "de": "Damals hatte ich schon lange gewartet und bin dann mit dem Taxi gefahren.",
+            "en": "I had already waited a long time, then took a taxi."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Peristiwa mendadak",
+        "rule": {
+          "de": "Mendadak beschreibt etwas plötzlich Eintretendes; ein eigener Zeitanker wie kemarin macht daraus eine vergangene Begebenheit.",
+          "en": "Mendadak describes something sudden; a separate time anchor such as kemarin places the event in the past."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin ada perubahan mendadak, jadi bus ke kota tidak datang.",
+            "baseText": {
+              "de": "Letzten Samstag gab es eine plötzliche Änderung, deshalb kam der Bus in die Stadt nicht.",
+              "en": "Last Saturday there was a sudden change, so the bus to the city did not come."
+            },
+            "highlight": "perubahan mendadak"
+          },
+          {
+            "targetText": "Kemarin hujan mendadak turun ketika aku menunggu bus.",
+            "baseText": {
+              "de": "Gestern fing es plötzlich an zu regnen, als ich auf den Bus wartete.",
+              "en": "Yesterday rain suddenly started while I was waiting for the bus."
+            },
+            "highlight": "mendadak turun"
+          }
+        ]
+      },
+      "cloze": [
+        "Waktu itu aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "menunggu (selesai sebelum naik taksi)",
+          "choices": [
+            "belum",
+            "sudah",
+            "akan",
+            "sedang"
+          ]
+        },
+        " menunggu lama, ",
+        {
+          "kind": "connector",
+          "answer": "lalu",
+          "choices": [
+            "karena",
+            "supaya",
+            "walaupun",
+            "lalu"
+          ]
+        },
+        " naik taksi."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin ada",
+          "baseText": {
+            "de": "letzten Samstag gab es",
+            "en": "last Saturday there was"
+          }
+        },
+        {
+          "targetText": "perubahan mendadak,",
+          "baseText": {
+            "de": "eine plötzliche Änderung",
+            "en": "a sudden change"
+          }
+        },
+        {
+          "targetText": "jadi bus ke kota",
+          "baseText": {
+            "de": "deshalb der Bus in die Stadt",
+            "en": "so the bus to the city"
+          }
+        },
+        {
+          "targetText": "tidak datang.",
+          "baseText": {
+            "de": "kommt nicht.",
+            "en": "does not come."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mendadak",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "sudden; suddenly"
+          }
+        },
+        {
+          "targetText": "perubahan",
+          "baseText": {
+            "de": "Änderung",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "ke kota",
+          "baseText": {
+            "de": "in die Stadt",
+            "en": "to the city"
+          }
+        },
+        {
+          "targetText": "tidak datang",
+          "baseText": {
+            "de": "nicht kommen",
+            "en": "not come"
+          }
+        },
+        {
+          "targetText": "menunggu lama",
+          "baseText": {
+            "de": "lange warten",
+            "en": "wait a long time"
+          }
+        },
+        {
+          "targetText": "naik taksi",
+          "baseText": {
+            "de": "mit dem Taxi fahren",
+            "en": "take a taxi"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin ada perubahan ",
+        "answer": "mendadak",
+        "after": ", jadi bus ke kota tidak datang.",
+        "fallbackChoices": [
+          "kecil",
+          "mendadak",
+          "besar",
+          "rutin"
+        ]
+      },
+      "speakRequired": [
+        "perubahan",
+        "mendadak",
+        "kota"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin erkundigt sich nach der Rückfahrt: „Perjalanan pulang dari pantai waktu itu lancar?“",
+        "en": "Your friend asks about the return journey: “Perjalanan pulang dari pantai waktu itu lancar?”"
+      },
+      "trophyWord": {
+        "word": "mendadak",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "sudden; suddenly"
+        },
+        "example": "Kemarin ada perubahan mendadak dalam perjalanan.",
+        "whyThisWord": {
+          "de": "Mendadak zeigt, dass eine Änderung überraschend eintritt und nicht lange geplant ist.",
+          "en": "Mendadak shows that a change happens unexpectedly rather than being planned in advance."
+        }
+      },
+      "distractors": [
+        "perubahan kecil,",
+        "datang tepat waktu."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin fragt beim Gespräch nach der Rückreise.",
+        "en": "A friend asks about the return journey during a conversation."
+      },
+      "songMood": "interrupted plans with a practical response",
+      "visualNotes": "Keep the substitute transport out of the opening scene."
+    },
+    {
+      "slug": "mampir-ke-warung",
+      "title": {
+        "de": "Eine Pause unterwegs",
+        "en": "A stop on the way"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, was du am Samstag während der Wartezeit gemacht hast.",
+        "en": "Your friend asks what you did while waiting on Saturday."
+      },
+      "pedagogicalGoal": "Mit mampir einen kurzen Zwischenstopp und mit sambil die gleichzeitige Wartehandlung beschreiben.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Waktu itu kamu hanya menunggu taksi di tepi jalan?",
+          "baseText": {
+            "de": "Hast du damals nur am Straßenrand auf das Taxi gewartet?",
+            "en": "Did you just wait for the taxi at the roadside that time?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku mampir ke warung sambil menunggu taksi di dekat pantai.",
+          "baseText": {
+            "de": "Letzten Samstag bin ich kurz in einem kleinen Lokal eingekehrt, während ich in Strandnähe auf das Taxi wartete.",
+            "en": "Last Saturday I stopped at a small eatery while waiting for the taxi near the beach."
+          }
+        },
+        {
+          "targetText": "Apa yang paling enak di warung itu menurut kamu?",
+          "baseText": {
+            "de": "Was schmeckt deiner Meinung nach in dem kleinen Lokal am besten?",
+            "en": "What do you think tastes best at that eatery?"
+          }
+        },
+        {
+          "targetText": "Waktu itu ikannya enak, jadi aku sudah kenyang sebelum nasi datang.",
+          "baseText": {
+            "de": "Damals war der Fisch lecker, deshalb war ich schon satt, bevor der Reis kam.",
+            "en": "At that time the fish was delicious, so I was already full before the rice arrived."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mampir sambil menunggu",
+        "rule": {
+          "de": "Mampir bedeutet kurz vorbeischauen oder einkehren; sambil verbindet den Zwischenstopp mit einer gleichzeitig laufenden Handlung.",
+          "en": "Mampir means to drop by or make a brief stop; sambil links the stop to another action happening at the same time."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku mampir ke warung sambil menunggu taksi di dekat pantai.",
+            "baseText": {
+              "de": "Letzten Samstag bin ich kurz in einem kleinen Lokal eingekehrt, während ich in Strandnähe auf das Taxi wartete.",
+              "en": "Last Saturday I stopped at a small eatery while waiting for the taxi near the beach."
+            },
+            "highlight": "sambil menunggu taksi"
+          },
+          {
+            "targetText": "Kemarin aku minum teh sambil menunggu teman.",
+            "baseText": {
+              "de": "Gestern habe ich Tee getrunken, während ich auf einen Freund wartete.",
+              "en": "Yesterday I drank tea while waiting for a friend."
+            },
+            "highlight": "sambil menunggu teman"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Sekarang",
+            "Besok",
+            "Waktu itu",
+            "Minggu depan"
+          ]
+        },
+        " ikannya enak, jadi aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "kenyang (keadaan tercapai sebelum nasi datang)",
+          "choices": [
+            "belum",
+            "akan",
+            "sudah",
+            "jarang"
+          ]
+        },
+        " kenyang sebelum nasi datang."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin aku mampir",
+          "baseText": {
+            "de": "letzten Samstag bin ich kurz eingekehrt",
+            "en": "last Saturday I stopped briefly"
+          }
+        },
+        {
+          "targetText": "ke warung",
+          "baseText": {
+            "de": "in einem kleinen Lokal",
+            "en": "at a small eatery"
+          }
+        },
+        {
+          "targetText": "sambil menunggu taksi",
+          "baseText": {
+            "de": "während des Wartens auf ein Taxi",
+            "en": "while waiting for a taxi"
+          }
+        },
+        {
+          "targetText": "di dekat pantai.",
+          "baseText": {
+            "de": "in Strandnähe.",
+            "en": "near the beach."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mampir",
+          "baseText": {
+            "de": "kurz vorbeischauen",
+            "en": "drop by"
+          }
+        },
+        {
+          "targetText": "warung",
+          "baseText": {
+            "de": "kleines Lokal",
+            "en": "small eatery"
+          }
+        },
+        {
+          "targetText": "tepi jalan",
+          "baseText": {
+            "de": "Straßenrand",
+            "en": "roadside"
+          }
+        },
+        {
+          "targetText": "ikan",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "kenyang",
+          "baseText": {
+            "de": "satt",
+            "en": "full after eating"
+          }
+        },
+        {
+          "targetText": "nasi",
+          "baseText": {
+            "de": "gekochter Reis",
+            "en": "cooked rice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku ",
+        "answer": "mampir",
+        "after": " ke warung sambil menunggu taksi di dekat pantai.",
+        "fallbackChoices": [
+          "mampir",
+          "pulang",
+          "berlari",
+          "bersepeda"
+        ]
+      },
+      "speakRequired": [
+        "mampir",
+        "warung",
+        "menunggu"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach der Wartezeit: „Waktu itu kamu hanya menunggu taksi di tepi jalan?“",
+        "en": "Your friend asks about the wait: “Waktu itu kamu hanya menunggu taksi di tepi jalan?”"
+      },
+      "trophyWord": {
+        "word": "mampir",
+        "meaning": {
+          "de": "kurz vorbeischauen",
+          "en": "drop by"
+        },
+        "example": "Kemarin aku mampir ke warung sebelum pulang.",
+        "whyThisWord": {
+          "de": "Mampir macht deutlich, dass ein Besuch ein kurzer Zwischenstopp auf deinem Weg ist.",
+          "en": "Mampir makes clear that a visit is a brief stop along your way."
+        }
+      },
+      "distractors": [
+        "ke toko roti",
+        "sambil menunggu teman"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich entspannt über einen Reisetag.",
+        "en": "Two friends chat casually about a day of travel."
+      },
+      "songMood": "warm roadside pause",
+      "visualNotes": "Food preferences and the order of dishes belong to the follow-up, not the scene."
+    },
+    {
+      "slug": "ketinggalan-kereta-terakhir",
+      "title": {
+        "de": "Am späten Abend",
+        "en": "Late in the evening"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt nach dem letzten Abschnitt deiner Reise am Samstagabend.",
+        "en": "Your friend asks about the last part of your journey on Saturday evening."
+      },
+      "pedagogicalGoal": "Mit ketinggalan ausdrücken, dass man ein Verkehrsmittel verpasst hat, und eine Folge anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Malam itu kamu masih sempat naik kereta?",
+          "baseText": {
+            "de": "Hast du an dem Abend noch den Zug geschafft?",
+            "en": "Did you still manage to catch the train that evening?"
+          }
+        },
+        {
+          "targetText": "Sabtu malam kemarin aku ketinggalan kereta terakhir, jadi harus mencari tempat menginap.",
+          "baseText": {
+            "de": "Letzten Samstagabend habe ich den letzten Zug verpasst und musste deshalb eine Übernachtungsmöglichkeit suchen.",
+            "en": "Last Saturday evening I missed the last train, so I had to find somewhere to stay."
+          }
+        },
+        {
+          "targetText": "Waktu itu kamu tidur di stasiun atau menemukan penginapan?",
+          "baseText": {
+            "de": "Hast du damals am Bahnhof geschlafen, oder hast du eine Unterkunft gefunden?",
+            "en": "Did you sleep at the station that time, or did you find accommodation?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sudah menemukan penginapan dekat stasiun sebelum tengah malam.",
+          "baseText": {
+            "de": "Damals hatte ich schon vor Mitternacht eine Unterkunft in Bahnhofsnähe gefunden.",
+            "en": "I had already found accommodation near the station before midnight that time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ketinggalan: kejadian tidak sengaja",
+        "rule": {
+          "de": "Ketinggalan benennt hier das unbeabsichtigte Verpassen eines Verkehrsmittels; der Zeitanker legt fest, wann es geschah.",
+          "en": "Ketinggalan here names unintentionally missing a form of transport; the time anchor establishes when it happened."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu malam kemarin aku ketinggalan kereta terakhir, jadi harus mencari tempat menginap.",
+            "baseText": {
+              "de": "Letzten Samstagabend habe ich den letzten Zug verpasst und musste deshalb eine Übernachtungsmöglichkeit suchen.",
+              "en": "Last Saturday evening I missed the last train, so I had to find somewhere to stay."
+            },
+            "highlight": "ketinggalan kereta terakhir"
+          },
+          {
+            "targetText": "Kemarin aku ketinggalan bus karena terlambat.",
+            "baseText": {
+              "de": "Gestern habe ich den Bus verpasst, weil ich zu spät war.",
+              "en": "Yesterday I missed the bus because I was late."
+            },
+            "highlight": "ketinggalan bus"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Minggu depan",
+            "Waktu itu",
+            "Besok pagi",
+            "Sekarang"
+          ]
+        },
+        " aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "menemukan (selesai sebelum tengah malam)",
+          "choices": [
+            "sudah",
+            "belum",
+            "sedang",
+            "akan"
+          ]
+        },
+        " menemukan penginapan dekat stasiun sebelum tengah malam."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu malam kemarin",
+          "baseText": {
+            "de": "letzten Samstagabend",
+            "en": "last Saturday evening"
+          }
+        },
+        {
+          "targetText": "aku ketinggalan kereta terakhir,",
+          "baseText": {
+            "de": "den letzten Zug verpassen",
+            "en": "miss the last train"
+          }
+        },
+        {
+          "targetText": "jadi harus mencari",
+          "baseText": {
+            "de": "deshalb suchen müssen",
+            "en": "so have to look for"
+          }
+        },
+        {
+          "targetText": "tempat menginap.",
+          "baseText": {
+            "de": "eine Übernachtungsmöglichkeit.",
+            "en": "somewhere to stay."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ketinggalan",
+          "baseText": {
+            "de": "verpassen",
+            "en": "miss a departure"
+          }
+        },
+        {
+          "targetText": "kereta terakhir",
+          "baseText": {
+            "de": "letzter Zug",
+            "en": "last train"
+          }
+        },
+        {
+          "targetText": "tempat menginap",
+          "baseText": {
+            "de": "Übernachtungsmöglichkeit",
+            "en": "somewhere to stay"
+          }
+        },
+        {
+          "targetText": "menemukan",
+          "baseText": {
+            "de": "finden",
+            "en": "find"
+          }
+        },
+        {
+          "targetText": "penginapan",
+          "baseText": {
+            "de": "Unterkunft",
+            "en": "accommodation"
+          }
+        },
+        {
+          "targetText": "tengah malam",
+          "baseText": {
+            "de": "Mitternacht",
+            "en": "midnight"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu malam kemarin aku ",
+        "answer": "ketinggalan",
+        "after": " kereta terakhir, jadi harus mencari tempat menginap.",
+        "fallbackChoices": [
+          "menunggu",
+          "melihat",
+          "ketinggalan",
+          "memotret"
+        ]
+      },
+      "speakRequired": [
+        "ketinggalan",
+        "terakhir",
+        "menginap"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem Abend: „Malam itu kamu masih sempat naik kereta?“",
+        "en": "Your friend asks about the evening: “Malam itu kamu masih sempat naik kereta?”"
+      },
+      "trophyWord": {
+        "word": "ketinggalan",
+        "meaning": {
+          "de": "verpassen",
+          "en": "miss a departure"
+        },
+        "example": "Kemarin aku ketinggalan kereta terakhir.",
+        "whyThisWord": {
+          "de": "Ketinggalan bedeutet hier einen Zug oder Bus verpassen; das ist eine eigene Bedeutung gegenüber tinggal für wohnen oder bleiben.",
+          "en": "Ketinggalan here means to miss a train or bus, a distinct meaning from tinggal, to live or stay."
+        }
+      },
+      "distractors": [
+        "aku menunggu kereta terakhir,",
+        "tempat makan."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin hört der Erzählung über den Reiseabend zu.",
+        "en": "A friend listens to a story about the evening journey."
+      },
+      "songMood": "late travel uncertainty with quiet resourcefulness",
+      "visualNotes": "Do not show a lodging choice or midnight clock before the continuation."
+    },
+    {
+      "slug": "kehujanan-ke-penginapan",
+      "title": {
+        "de": "Unterwegs zur Unterkunft",
+        "en": "On the way to the accommodation"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt nach dem Weg vom Bahnhof zur Unterkunft.",
+        "en": "Your friend asks about the walk from the station to the accommodation."
+      },
+      "pedagogicalGoal": "Mit kehujanan eine unerwünschte Betroffenheit ausdrücken und den Anlass mit ketika verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Bagaimana perjalanan ke penginapan waktu itu?",
+          "baseText": {
+            "de": "Wie war damals der Weg zur Unterkunft?",
+            "en": "How was the journey to the accommodation that time?"
+          }
+        },
+        {
+          "targetText": "Sabtu kemarin aku kehujanan ketika berjalan ke penginapan, sampai semua pakaian basah.",
+          "baseText": {
+            "de": "Letzten Samstag bin ich auf dem Weg zur Unterkunft in den Regen geraten, sodass meine ganze Kleidung nass war.",
+            "en": "Last Saturday I got caught in the rain while walking to the accommodation, until all my clothes were wet."
+          }
+        },
+        {
+          "targetText": "Setelah kehujanan waktu itu, kamu sakit atau tetap sehat?",
+          "baseText": {
+            "de": "Bist du damals nach dem Regenguss krank geworden, oder bist du gesund geblieben?",
+            "en": "After getting caught in the rain that time, did you get ill or stay well?"
+          }
+        },
+        {
+          "targetText": "Waktu itu aku sudah mengganti pakaian basah dan tetap sehat.",
+          "baseText": {
+            "de": "Damals hatte ich die nasse Kleidung schon gewechselt und bin gesund geblieben.",
+            "en": "At that time I had already changed my wet clothes and stayed well."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Kehujanan: terkena hujan",
+        "rule": {
+          "de": "Kehujanan bedeutet unfreiwillig in den Regen geraten; ketika nennt die Handlung, während der das passiert.",
+          "en": "Kehujanan means being caught in the rain unintentionally; ketika names the action during which it happens."
+        },
+        "examples": [
+          {
+            "targetText": "Sabtu kemarin aku kehujanan ketika berjalan ke penginapan, sampai semua pakaian basah.",
+            "baseText": {
+              "de": "Letzten Samstag bin ich auf dem Weg zur Unterkunft in den Regen geraten, sodass meine ganze Kleidung nass war.",
+              "en": "Last Saturday I got caught in the rain while walking to the accommodation, until all my clothes were wet."
+            },
+            "highlight": "kehujanan ketika berjalan"
+          },
+          {
+            "targetText": "Kemarin aku kehujanan ketika menunggu bus.",
+            "baseText": {
+              "de": "Gestern bin ich beim Warten auf den Bus in den Regen geraten.",
+              "en": "Yesterday I got caught in the rain while waiting for the bus."
+            },
+            "highlight": "kehujanan ketika menunggu"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Waktu itu",
+          "choices": [
+            "Besok",
+            "Sekarang",
+            "Minggu depan",
+            "Waktu itu"
+          ]
+        },
+        " aku ",
+        {
+          "kind": "form",
+          "answer": "sudah",
+          "cue": "mengganti (selesai pada malam itu)",
+          "choices": [
+            "akan",
+            "sudah",
+            "belum",
+            "sedang"
+          ]
+        },
+        " mengganti pakaian basah dan tetap sehat."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sabtu kemarin aku kehujanan",
+          "baseText": {
+            "de": "letzten Samstag bin ich in den Regen geraten",
+            "en": "last Saturday I got caught in the rain"
+          }
+        },
+        {
+          "targetText": "ketika berjalan",
+          "baseText": {
+            "de": "beim Gehen",
+            "en": "while walking"
+          }
+        },
+        {
+          "targetText": "ke penginapan,",
+          "baseText": {
+            "de": "zur Unterkunft",
+            "en": "to the accommodation"
+          }
+        },
+        {
+          "targetText": "sampai semua pakaian basah.",
+          "baseText": {
+            "de": "bis die ganze Kleidung nass ist.",
+            "en": "until all the clothes are wet."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kehujanan",
+          "baseText": {
+            "de": "in den Regen geraten",
+            "en": "get caught in the rain"
+          }
+        },
+        {
+          "targetText": "berjalan",
+          "baseText": {
+            "de": "zu Fuß gehen",
+            "en": "walk"
+          }
+        },
+        {
+          "targetText": "pakaian basah",
+          "baseText": {
+            "de": "nasse Kleidung",
+            "en": "wet clothes"
+          }
+        },
+        {
+          "targetText": "mengganti pakaian",
+          "baseText": {
+            "de": "die Kleidung wechseln",
+            "en": "change clothes"
+          }
+        },
+        {
+          "targetText": "tetap sehat",
+          "baseText": {
+            "de": "gesund bleiben",
+            "en": "stay well"
+          }
+        },
+        {
+          "targetText": "tidak sakit",
+          "baseText": {
+            "de": "nicht krank",
+            "en": "not ill"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sabtu kemarin aku ",
+        "answer": "kehujanan",
+        "after": " ketika berjalan ke penginapan, sampai semua pakaian basah.",
+        "fallbackChoices": [
+          "beristirahat",
+          "kehujanan",
+          "berbelanja",
+          "bernyanyi"
+        ]
+      },
+      "speakRequired": [
+        "kehujanan",
+        "pakaian",
+        "basah"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem Weg: „Bagaimana perjalanan ke penginapan waktu itu?“",
+        "en": "Your friend asks about the journey: “Bagaimana perjalanan ke penginapan waktu itu?”"
+      },
+      "trophyWord": {
+        "word": "kehujanan",
+        "meaning": {
+          "de": "in den Regen geraten",
+          "en": "get caught in the rain"
+        },
+        "example": "Kemarin aku kehujanan di dekat stasiun.",
+        "whyThisWord": {
+          "de": "Kehujanan beschreibt, dass eine Person unfreiwillig Regen abbekommt; hujan allein bezeichnet den Regen.",
+          "en": "Kehujanan describes a person being caught in rain unintentionally; hujan alone names the rain."
+        }
+      },
+      "distractors": [
+        "ke warung,",
+        "sampai semua orang datang."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde besprechen eine Reise bei trockenem Wetter.",
+        "en": "Two friends discuss a trip in dry weather."
+      },
+      "songMood": "rainy memory with a reassuring ending",
+      "visualNotes": "No change of clothes or health outcome is visible in the initial scene."
+    },
+    {
+      "slug": "akhirnya-sampai-rumah",
+      "title": {
+        "de": "Das Ende der Reise",
+        "en": "The end of the trip"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, wann du nach dem Wochenendausflug wieder zu Hause warst.",
+        "en": "Your friend asks when you got home after the weekend trip."
+      },
+      "pedagogicalGoal": "Mit akhirnya und einem eigenen Zeitanker eine Erzählung abschließen und mit mau sowie nanti einen weiteren Plan anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Kapan kamu sampai di rumah setelah perjalanan akhir pekan kemarin?",
+          "baseText": {
+            "de": "Wann bist du nach dem letzten Wochenendausflug zu Hause angekommen?",
+            "en": "When did you get home after last weekend's trip?"
+          }
+        },
+        {
+          "targetText": "Minggu malam kemarin aku akhirnya sampai di rumah setelah perjalanan panjang.",
+          "baseText": {
+            "de": "Letzten Sonntagabend bin ich nach einer langen Reise endlich zu Hause angekommen.",
+            "en": "Last Sunday evening I finally arrived home after a long journey."
+          }
+        },
+        {
+          "targetText": "Perjalanannya melelahkan. Kamu mau ke sana lagi nanti?",
+          "baseText": {
+            "de": "Die Reise ist anstrengend. Willst du später noch einmal dorthin fahren?",
+            "en": "The journey is tiring. Do you want to go there again sometime?"
+          }
+        },
+        {
+          "targetText": "Aku mau kembali nanti, lalu menginap lebih dekat pantai.",
+          "baseText": {
+            "de": "Ich will später wieder hinfahren und dann näher am Strand übernachten.",
+            "en": "I want to return sometime, then stay closer to the beach."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Akhirnya dengan penanda waktu",
+        "rule": {
+          "de": "Akhirnya markiert den erreichten Abschluss; ein Zeitanker wie Minggu kemarin zeigt zusätzlich, dass du von der Vergangenheit erzählst.",
+          "en": "Akhirnya marks the eventual outcome; a time anchor such as Minggu kemarin also shows that you are talking about the past."
+        },
+        "examples": [
+          {
+            "targetText": "Minggu malam kemarin aku akhirnya sampai di rumah setelah perjalanan panjang.",
+            "baseText": {
+              "de": "Letzten Sonntagabend bin ich nach einer langen Reise endlich zu Hause angekommen.",
+              "en": "Last Sunday evening I finally arrived home after a long journey."
+            },
+            "highlight": "akhirnya sampai di rumah"
+          },
+          {
+            "targetText": "Kemarin aku akhirnya menemukan kunci di tas.",
+            "baseText": {
+              "de": "Gestern habe ich den Schlüssel endlich in der Tasche gefunden.",
+              "en": "Yesterday I finally found the key in my bag."
+            },
+            "highlight": "akhirnya menemukan"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "mau",
+          "cue": "kembali (keinginan untuk perjalanan berikutnya)",
+          "choices": [
+            "pernah",
+            "sedang",
+            "mau",
+            "sudah"
+          ]
+        },
+        " kembali ",
+        {
+          "kind": "choice",
+          "answer": "nanti",
+          "choices": [
+            "kemarin",
+            "tadi",
+            "dulu",
+            "nanti"
+          ]
+        },
+        ", lalu menginap lebih dekat pantai."
+      ],
+      "chunks": [
+        {
+          "targetText": "Minggu malam kemarin",
+          "baseText": {
+            "de": "letzten Sonntagabend",
+            "en": "last Sunday evening"
+          }
+        },
+        {
+          "targetText": "aku akhirnya sampai",
+          "baseText": {
+            "de": "endlich ankommen",
+            "en": "finally arrive"
+          }
+        },
+        {
+          "targetText": "di rumah",
+          "baseText": {
+            "de": "zu Hause",
+            "en": "home"
+          }
+        },
+        {
+          "targetText": "setelah perjalanan panjang.",
+          "baseText": {
+            "de": "nach einer langen Reise.",
+            "en": "after a long journey."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "akhirnya",
+          "baseText": {
+            "de": "endlich; schließlich",
+            "en": "finally; eventually"
+          }
+        },
+        {
+          "targetText": "Minggu malam kemarin",
+          "baseText": {
+            "de": "letzten Sonntagabend",
+            "en": "last Sunday evening"
+          }
+        },
+        {
+          "targetText": "perjalanan panjang",
+          "baseText": {
+            "de": "lange Reise",
+            "en": "long journey"
+          }
+        },
+        {
+          "targetText": "panjang",
+          "baseText": {
+            "de": "lang",
+            "en": "long"
+          }
+        },
+        {
+          "targetText": "melelahkan",
+          "baseText": {
+            "de": "anstrengend",
+            "en": "tiring"
+          }
+        },
+        {
+          "targetText": "menginap",
+          "baseText": {
+            "de": "übernachten",
+            "en": "stay overnight"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Minggu malam kemarin aku ",
+        "answer": "akhirnya",
+        "after": " sampai di rumah setelah perjalanan panjang.",
+        "fallbackChoices": [
+          "belum",
+          "hampir",
+          "akhirnya",
+          "jarang"
+        ]
+      },
+      "speakRequired": [
+        "akhirnya",
+        "rumah",
+        "panjang"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach der Heimkehr: „Kapan kamu sampai di rumah setelah perjalanan akhir pekan kemarin?“",
+        "en": "Your friend asks about getting home: “Kapan kamu sampai di rumah setelah perjalanan akhir pekan kemarin?”"
+      },
+      "trophyWord": {
+        "word": "akhirnya",
+        "meaning": {
+          "de": "endlich; schließlich",
+          "en": "finally; eventually"
+        },
+        "example": "Kemarin aku akhirnya sampai di rumah sebelum malam.",
+        "whyThisWord": {
+          "de": "Mit akhirnya gibst du einer längeren Erzählung einen klaren Abschluss.",
+          "en": "Akhirnya gives a longer story a clear ending."
+        }
+      },
+      "distractors": [
+        "di stasiun",
+        "setelah perjalanan singkat."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin fragt zum Abschluss des Gesprächs nach der Heimkehr.",
+        "en": "A friend asks about getting home near the end of a conversation."
+      },
+      "songMood": "homecoming and a wish to travel again",
+      "visualNotes": "Keep plans for another visit and a different lodging location out of the initial scene."
+    }
+  ]
+}

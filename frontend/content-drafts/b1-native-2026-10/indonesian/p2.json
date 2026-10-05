@@ -1,0 +1,2137 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Indonesian",
+  "targetLanguageCode": "id-ID",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meine Meinung",
+    "en": "My point of view"
+  },
+  "subtitle": {
+    "de": "Meinungen begründen, widersprechen und Zugeständnisse machen",
+    "en": "Explain opinions, disagree and make concessions"
+  },
+  "anchor": "Fable content review applied 2026-10-05. Friend register with aku/kamu and natural omission. L1–3: menurut/pendapat, setuju/tidak setuju and sebenarnya; no productive concession. L4–7: walaupun/meskipun and degree with terlalu. L8–10: memang ... tetapi with recycled comparisons. Four-turn shape B: an opinion develops in response to a friend's different view. Cloze targets follow the staged menu rather than requiring every listed class in every lesson.",
+  "lessons": [
+    {
+      "slug": "menurut-aku-filmnya-bagus",
+      "title": {
+        "de": "Ein Filmgespräch",
+        "en": "Talking about a film"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt nach deiner Meinung zum Film vom Vorabend.",
+        "en": "Your friend asks what you think of last night's film."
+      },
+      "pedagogicalGoal": "Eine persönliche Einschätzung mit menurut einführen und mit karena begründen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Bagaimana film tadi malam menurut kamu?",
+          "baseText": {
+            "de": "Wie findest du den Film von gestern Abend?",
+            "en": "What do you think of last night's film?"
+          }
+        },
+        {
+          "targetText": "Menurut aku, film tadi malam bagus karena ceritanya dekat dengan kehidupan sehari-hari.",
+          "baseText": {
+            "de": "Meiner Meinung nach ist der Film von gestern Abend gut, weil seine Geschichte nah am Alltag ist.",
+            "en": "In my opinion, last night's film is good because its story is close to everyday life."
+          }
+        },
+        {
+          "targetText": "Aku kurang suka bagian akhirnya. Kamu paling suka bagian mana?",
+          "baseText": {
+            "de": "Das Ende gefällt mir weniger. Welchen Teil magst du am liebsten?",
+            "en": "I am less keen on the ending. Which part do you like best?"
+          }
+        },
+        {
+          "targetText": "Bagian awalnya lebih kuat karena masalah keluarganya terasa nyata.",
+          "baseText": {
+            "de": "Der Anfang ist stärker, weil die familiären Probleme real wirken.",
+            "en": "The beginning is stronger because the family problems feel real."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Menurut aku ... karena ...",
+        "rule": {
+          "de": "Menurut aku kennzeichnet deine eigene Sicht; karena schließt einen Grund für diese Einschätzung an.",
+          "en": "Menurut aku marks your personal view; karena adds a reason for that assessment."
+        },
+        "examples": [
+          {
+            "targetText": "Menurut aku, film tadi malam bagus karena ceritanya dekat dengan kehidupan sehari-hari.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist der Film von gestern Abend gut, weil seine Geschichte nah am Alltag ist.",
+              "en": "In my opinion, last night's film is good because its story is close to everyday life."
+            },
+            "highlight": "Menurut aku"
+          },
+          {
+            "targetText": "Menurut aku, tempat ini nyaman karena tenang.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist dieser Ort angenehm, weil er ruhig ist.",
+              "en": "In my opinion, this place is comfortable because it is quiet."
+            },
+            "highlight": "Menurut aku"
+          }
+        ]
+      },
+      "cloze": [
+        "Bagian awalnya ",
+        {
+          "kind": "form",
+          "answer": "lebih",
+          "cue": "kuat (perbandingan dengan bagian akhir)",
+          "choices": [
+            "tidak",
+            "kurang",
+            "lebih",
+            "terlalu"
+          ]
+        },
+        " kuat ",
+        {
+          "kind": "connector",
+          "answer": "karena",
+          "choices": [
+            "meskipun",
+            "karena",
+            "supaya",
+            "sebelum"
+          ]
+        },
+        " masalah keluarganya terasa nyata."
+      ],
+      "chunks": [
+        {
+          "targetText": "Menurut aku,",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "film tadi malam bagus",
+          "baseText": {
+            "de": "der Film von gestern Abend ist gut",
+            "en": "last night's film is good"
+          }
+        },
+        {
+          "targetText": "karena ceritanya dekat",
+          "baseText": {
+            "de": "weil seine Geschichte nah ist",
+            "en": "because its story is close"
+          }
+        },
+        {
+          "targetText": "dengan kehidupan sehari-hari.",
+          "baseText": {
+            "de": "am Alltag.",
+            "en": "to everyday life."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "menurut",
+          "baseText": {
+            "de": "nach der Ansicht von",
+            "en": "according to"
+          }
+        },
+        {
+          "targetText": "film",
+          "baseText": {
+            "de": "Film",
+            "en": "film"
+          }
+        },
+        {
+          "targetText": "ceritanya",
+          "baseText": {
+            "de": "seine Geschichte",
+            "en": "its story"
+          }
+        },
+        {
+          "targetText": "kehidupan sehari-hari",
+          "baseText": {
+            "de": "Alltag",
+            "en": "everyday life"
+          }
+        },
+        {
+          "targetText": "bagian awal",
+          "baseText": {
+            "de": "Anfangsteil",
+            "en": "opening section"
+          }
+        },
+        {
+          "targetText": "terasa nyata",
+          "baseText": {
+            "de": "real wirken",
+            "en": "feel real"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Menurut aku, film tadi malam bagus karena ceritanya dekat dengan ",
+        "answer": "kehidupan",
+        "after": " sehari-hari.",
+        "fallbackChoices": [
+          "pekerjaan",
+          "kehidupan",
+          "perjalanan",
+          "belanja"
+        ]
+      },
+      "speakRequired": [
+        "menurut",
+        "film",
+        "kehidupan"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt nach dem Film: „Bagaimana film tadi malam menurut kamu?“",
+        "en": "Your friend asks about the film: “Bagaimana film tadi malam menurut kamu?”"
+      },
+      "trophyWord": {
+        "word": "menurut",
+        "meaning": {
+          "de": "nach der Ansicht von",
+          "en": "according to"
+        },
+        "example": "Film ini bagus menurut aku.",
+        "whyThisWord": {
+          "de": "Menurut macht deutlich, wessen Sichtweise du wiedergibst, ohne sie als allgemeine Wahrheit auszugeben.",
+          "en": "Menurut makes clear whose view you are expressing without presenting it as a universal fact."
+        }
+      },
+      "distractors": [
+        "film tadi malam lucu",
+        "dengan perjalanan keluarga."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen nach einem Filmabend miteinander.",
+        "en": "Two friends chat after a film night."
+      },
+      "songMood": "thoughtful conversation after a film",
+      "visualNotes": "Do not reveal the friend's view of the ending before the follow-up."
+    },
+    {
+      "slug": "pendapat-tentang-kafe",
+      "title": {
+        "de": "Das neue Café",
+        "en": "The new café"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, was du vom neuen Café hältst.",
+        "en": "Your friend asks what you think of the new café."
+      },
+      "pedagogicalGoal": "Mit pendapat eine persönliche Meinung formulieren und einer Preiseinschätzung begründet widersprechen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Apa pendapat kamu tentang kafe baru itu?",
+          "baseText": {
+            "de": "Was hältst du von dem neuen Café?",
+            "en": "What is your opinion of that new café?"
+          }
+        },
+        {
+          "targetText": "Menurut pendapat aku, kafe baru itu nyaman karena suasananya tenang dan kopinya enak.",
+          "baseText": {
+            "de": "Meiner Meinung nach ist das neue Café angenehm, weil die Atmosphäre ruhig ist und der Kaffee gut schmeckt.",
+            "en": "In my opinion, that new café is comfortable because the atmosphere is calm and the coffee tastes good."
+          }
+        },
+        {
+          "targetText": "Kopinya cukup mahal. Kamu tetap merasa harga itu masuk akal?",
+          "baseText": {
+            "de": "Der Kaffee ist ziemlich teuer. Findest du den Preis trotzdem angemessen?",
+            "en": "The coffee is quite expensive. Do you still think the price is reasonable?"
+          }
+        },
+        {
+          "targetText": "Aku tidak setuju kopinya mahal, karena harganya lebih murah daripada di sini.",
+          "baseText": {
+            "de": "Ich stimme nicht zu, dass der Kaffee teuer ist, denn er ist günstiger als hier.",
+            "en": "I disagree that the coffee is expensive, because it is cheaper than here."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Menurut pendapat aku",
+        "rule": {
+          "de": "Pendapat benennt eine Meinung; mit menurut pendapat aku leitest du deine Einschätzung ein und kannst anschließend einen Grund nennen.",
+          "en": "Pendapat names an opinion; menurut pendapat aku introduces your assessment, which you can then support with a reason."
+        },
+        "examples": [
+          {
+            "targetText": "Menurut pendapat aku, kafe baru itu nyaman karena suasananya tenang dan kopinya enak.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist das neue Café angenehm, weil die Atmosphäre ruhig ist und der Kaffee gut schmeckt.",
+              "en": "In my opinion, that new café is comfortable because the atmosphere is calm and the coffee tastes good."
+            },
+            "highlight": "Menurut pendapat aku"
+          },
+          {
+            "targetText": "Menurut pendapat aku, tempat ini cukup tenang.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist dieser Ort recht ruhig.",
+              "en": "In my opinion, this place is fairly quiet."
+            },
+            "highlight": "Menurut pendapat aku"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "tidak setuju",
+          "cue": "setuju (menolak penilaian kopi mahal)",
+          "choices": [
+            "sangat setuju",
+            "tidak setuju",
+            "tetap setuju",
+            "sudah setuju"
+          ]
+        },
+        " kopinya mahal, karena harganya ",
+        {
+          "kind": "form",
+          "answer": "lebih murah",
+          "cue": "murah (perbandingan harga)",
+          "choices": [
+            "lebih mahal",
+            "lebih manis",
+            "lebih murah",
+            "lebih pedas"
+          ]
+        },
+        " daripada di sini."
+      ],
+      "chunks": [
+        {
+          "targetText": "Menurut pendapat aku,",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "kafe baru itu nyaman",
+          "baseText": {
+            "de": "das neue Café ist angenehm",
+            "en": "that new café is comfortable"
+          }
+        },
+        {
+          "targetText": "karena suasananya tenang",
+          "baseText": {
+            "de": "weil die Atmosphäre ruhig ist",
+            "en": "because the atmosphere is calm"
+          }
+        },
+        {
+          "targetText": "dan kopinya enak.",
+          "baseText": {
+            "de": "und der Kaffee gut schmeckt.",
+            "en": "and the coffee tastes good."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pendapat",
+          "baseText": {
+            "de": "Meinung",
+            "en": "opinion"
+          }
+        },
+        {
+          "targetText": "kafe baru",
+          "baseText": {
+            "de": "neues Café",
+            "en": "new café"
+          }
+        },
+        {
+          "targetText": "suasana",
+          "baseText": {
+            "de": "Atmosphäre",
+            "en": "atmosphere"
+          }
+        },
+        {
+          "targetText": "masuk akal",
+          "baseText": {
+            "de": "sinnvoll; angemessen",
+            "en": "reasonable"
+          }
+        },
+        {
+          "targetText": "tidak setuju",
+          "baseText": {
+            "de": "nicht zustimmen",
+            "en": "disagree"
+          }
+        },
+        {
+          "targetText": "lebih murah",
+          "baseText": {
+            "de": "günstiger",
+            "en": "cheaper"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Menurut ",
+        "answer": "pendapat",
+        "after": " aku, kafe baru itu nyaman karena suasananya tenang dan kopinya enak.",
+        "fallbackChoices": [
+          "pendapat",
+          "catatan",
+          "ingatan",
+          "pengalaman"
+        ]
+      },
+      "speakRequired": [
+        "pendapat",
+        "nyaman",
+        "suasananya"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Apa pendapat kamu tentang kafe baru itu?“",
+        "en": "Your friend asks: “Apa pendapat kamu tentang kafe baru itu?”"
+      },
+      "trophyWord": {
+        "word": "pendapat",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "Pendapat aku berbeda tentang harga kopi itu.",
+        "whyThisWord": {
+          "de": "Mit pendapat kannst du eine persönliche Einschätzung benennen und mit anderen vergleichen.",
+          "en": "Pendapat lets you name a personal assessment and compare it with someone else's."
+        }
+      },
+      "distractors": [
+        "kafe baru itu ramai",
+        "dan tehnya enak."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich an einem Cafétisch.",
+        "en": "Two friends talk at a café table."
+      },
+      "songMood": "relaxed café debate",
+      "visualNotes": "No visible price tags or price judgement in the opening scene."
+    },
+    {
+      "slug": "setuju-soal-kemacetan",
+      "title": {
+        "de": "Verkehr in der Stadt",
+        "en": "Traffic in the city"
+      },
+      "situation": {
+        "de": "Deine Freundin klagt über den Verkehr im Stadtzentrum.",
+        "en": "Your friend complains about traffic in the city centre."
+      },
+      "pedagogicalGoal": "Einem klar eingegrenzten Punkt mit setuju zustimmen und einen anderen Lösungsvorschlag begründen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Lalu lintas di pusat kota selalu macet. Tidak ada harapan!",
+          "baseText": {
+            "de": "Im Stadtzentrum ist immer Stau. Das ist hoffnungslos!",
+            "en": "Traffic in the city centre is always jammed. It is hopeless!"
+          }
+        },
+        {
+          "targetText": "Aku setuju jalan utama macet, terutama dekat pasar pada sore hari.",
+          "baseText": {
+            "de": "Ich stimme zu, dass die Hauptstraße verstopft ist, besonders am späten Nachmittag in Marktnähe.",
+            "en": "I agree the main road is congested, especially near the market in the late afternoon."
+          }
+        },
+        {
+          "targetText": "Kalau begitu, kita harus melarang semua mobil masuk pusat kota?",
+          "baseText": {
+            "de": "Müssen wir dann allen Autos die Einfahrt ins Stadtzentrum verbieten?",
+            "en": "In that case, should we ban all cars from the city centre?"
+          }
+        },
+        {
+          "targetText": "Aku tidak setuju, karena menambah bus lebih membantu daripada melarang mobil.",
+          "baseText": {
+            "de": "Ich stimme nicht zu, denn mehr Busse helfen mehr als ein Autoverbot.",
+            "en": "I disagree, because adding buses helps more than banning cars."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Setuju pada satu hal",
+        "rule": {
+          "de": "Setuju zeigt Zustimmung zu einem bestimmten Punkt; daraus muss keine Zustimmung zu jedem anschließenden Vorschlag folgen.",
+          "en": "Setuju expresses agreement with a particular point; it does not commit you to agreeing with every subsequent proposal."
+        },
+        "examples": [
+          {
+            "targetText": "Aku setuju jalan utama macet, terutama dekat pasar pada sore hari.",
+            "baseText": {
+              "de": "Ich stimme zu, dass die Hauptstraße verstopft ist, besonders am späten Nachmittag in Marktnähe.",
+              "en": "I agree the main road is congested, especially near the market in the late afternoon."
+            },
+            "highlight": "Aku setuju"
+          },
+          {
+            "targetText": "Aku tidak setuju, karena menambah bus lebih membantu daripada melarang mobil.",
+            "baseText": {
+              "de": "Ich stimme nicht zu, denn mehr Busse helfen mehr als ein Autoverbot.",
+              "en": "I disagree, because adding buses helps more than banning cars."
+            },
+            "highlight": "Aku tidak setuju"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "tidak setuju",
+          "cue": "setuju (menolak larangan mobil)",
+          "choices": [
+            "sudah setuju",
+            "sangat setuju",
+            "tidak setuju",
+            "tetap setuju"
+          ]
+        },
+        ", karena menambah bus ",
+        {
+          "kind": "form",
+          "answer": "lebih membantu",
+          "cue": "membantu (perbandingan yang mengunggulkan bus)",
+          "choices": [
+            "lebih merepotkan",
+            "lebih mahal",
+            "lebih membantu",
+            "lebih lambat"
+          ]
+        },
+        " daripada melarang mobil."
+      ],
+      "chunks": [
+        {
+          "targetText": "Aku setuju",
+          "baseText": {
+            "de": "ich stimme zu",
+            "en": "I agree"
+          }
+        },
+        {
+          "targetText": "jalan utama macet,",
+          "baseText": {
+            "de": "die Hauptstraße ist verstopft",
+            "en": "the main road is congested"
+          }
+        },
+        {
+          "targetText": "terutama dekat pasar",
+          "baseText": {
+            "de": "besonders in Marktnähe",
+            "en": "especially near the market"
+          }
+        },
+        {
+          "targetText": "pada sore hari.",
+          "baseText": {
+            "de": "am späten Nachmittag.",
+            "en": "in the late afternoon."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "setuju",
+          "baseText": {
+            "de": "zustimmen",
+            "en": "agree"
+          }
+        },
+        {
+          "targetText": "lalu lintas",
+          "baseText": {
+            "de": "Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "macet",
+          "baseText": {
+            "de": "verstopft; im Stau",
+            "en": "congested; jammed"
+          }
+        },
+        {
+          "targetText": "terutama",
+          "baseText": {
+            "de": "besonders",
+            "en": "especially"
+          }
+        },
+        {
+          "targetText": "menambah bus",
+          "baseText": {
+            "de": "mehr Busse einsetzen",
+            "en": "add buses"
+          }
+        },
+        {
+          "targetText": "melarang mobil",
+          "baseText": {
+            "de": "Autos verbieten",
+            "en": "ban cars"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Aku ",
+        "answer": "setuju",
+        "after": " jalan utama macet, terutama dekat pasar pada sore hari.",
+        "fallbackChoices": [
+          "menduga",
+          "setuju",
+          "berharap",
+          "membayangkan"
+        ]
+      },
+      "speakRequired": [
+        "setuju",
+        "macet",
+        "pasar"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin klagt: „Lalu lintas di pusat kota selalu macet. Tidak ada harapan!“",
+        "en": "Your friend complains: “Lalu lintas di pusat kota selalu macet. Tidak ada harapan!”"
+      },
+      "trophyWord": {
+        "word": "setuju",
+        "meaning": {
+          "de": "zustimmen",
+          "en": "agree"
+        },
+        "example": "Aku setuju dengan pendapat kamu tentang jalan itu.",
+        "whyThisWord": {
+          "de": "Setuju lässt dich klar sagen, welchem Punkt du zustimmst, bevor ihr über Lösungen sprecht.",
+          "en": "Setuju lets you state clearly which point you agree with before discussing solutions."
+        }
+      },
+      "distractors": [
+        "jalan utama sepi,",
+        "pada pagi hari."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin spricht am Fenster über den dichten Stadtverkehr.",
+        "en": "A friend by a window talks about heavy city traffic."
+      },
+      "songMood": "lively discussion of city life",
+      "visualNotes": "The opening establishes congestion, not the later proposal to ban cars."
+    },
+    {
+      "slug": "walaupun-pantainya-ramai",
+      "title": {
+        "de": "Ein voller Strand",
+        "en": "A crowded beach"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, ob dir der belebte Strand gefällt.",
+        "en": "Your friend asks whether you like the busy beach."
+      },
+      "pedagogicalGoal": "Mit walaupun einen echten Nachteil anerkennen und trotzdem eine positive Einschätzung ausdrücken.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Pantai itu ramai sekali. Kamu suka tempat seperti itu?",
+          "baseText": {
+            "de": "Der Strand ist sehr voll. Magst du solche Orte?",
+            "en": "That beach is very crowded. Do you like places like that?"
+          }
+        },
+        {
+          "targetText": "Walaupun pantai itu ramai, aku suka duduk dekat laut pada sore hari.",
+          "baseText": {
+            "de": "Obwohl der Strand voll ist, sitze ich dort am späten Nachmittag gern in Meeresnähe.",
+            "en": "Although that beach is crowded, I like sitting near the sea in the late afternoon."
+          }
+        },
+        {
+          "targetText": "Aku lebih suka tempat sepi. Ada sudut yang lebih tenang di sana?",
+          "baseText": {
+            "de": "Ich mag ruhige Orte lieber. Gibt es dort eine ruhigere Ecke?",
+            "en": "I prefer quiet places. Is there a quieter corner there?"
+          }
+        },
+        {
+          "targetText": "Di ujung pantai lebih tenang, walaupun jalannya cukup jauh.",
+          "baseText": {
+            "de": "Am Ende des Strandes ist es ruhiger, obwohl der Weg ziemlich weit ist.",
+            "en": "It is quieter at the far end of the beach, although the walk is quite long."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Walaupun: mengakui kekurangan",
+        "rule": {
+          "de": "Walaupun leitet einen eingeräumten Nachteil ein; der andere Satzteil sagt, was trotzdem gilt, ohne zusätzlich tetapi zu verwenden.",
+          "en": "Walaupun introduces an acknowledged drawback; the other clause says what still holds, without adding tetapi."
+        },
+        "examples": [
+          {
+            "targetText": "Walaupun pantai itu ramai, aku suka duduk dekat laut pada sore hari.",
+            "baseText": {
+              "de": "Obwohl der Strand voll ist, sitze ich dort am späten Nachmittag gern in Meeresnähe.",
+              "en": "Although that beach is crowded, I like sitting near the sea in the late afternoon."
+            },
+            "highlight": "Walaupun pantai itu ramai"
+          },
+          {
+            "targetText": "Walaupun tempat ini kecil, aku merasa nyaman.",
+            "baseText": {
+              "de": "Obwohl dieser Ort klein ist, fühle ich mich wohl.",
+              "en": "Although this place is small, I feel comfortable."
+            },
+            "highlight": "Walaupun tempat ini kecil"
+          }
+        ]
+      },
+      "cloze": [
+        "Di ujung pantai ",
+        {
+          "kind": "form",
+          "answer": "lebih",
+          "cue": "tenang (perbandingan dengan bagian ramai)",
+          "choices": [
+            "kurang",
+            "lebih",
+            "tidak",
+            "terlalu"
+          ]
+        },
+        " tenang, ",
+        {
+          "kind": "connector",
+          "answer": "walaupun",
+          "choices": [
+            "supaya",
+            "sebelum",
+            "walaupun",
+            "sehingga"
+          ]
+        },
+        " jalannya cukup jauh."
+      ],
+      "chunks": [
+        {
+          "targetText": "Walaupun",
+          "baseText": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "pantai itu ramai,",
+          "baseText": {
+            "de": "der Strand voll ist",
+            "en": "that beach is crowded"
+          }
+        },
+        {
+          "targetText": "aku suka duduk dekat laut",
+          "baseText": {
+            "de": "ich sitze gern in Meeresnähe",
+            "en": "I like sitting near the sea"
+          }
+        },
+        {
+          "targetText": "pada sore hari.",
+          "baseText": {
+            "de": "am späten Nachmittag.",
+            "en": "in the late afternoon."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "walaupun",
+          "baseText": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "dekat laut",
+          "baseText": {
+            "de": "in Meeresnähe",
+            "en": "near the sea"
+          }
+        },
+        {
+          "targetText": "sore hari",
+          "baseText": {
+            "de": "später Nachmittag",
+            "en": "late afternoon"
+          }
+        },
+        {
+          "targetText": "tempat sepi",
+          "baseText": {
+            "de": "ruhiger Ort",
+            "en": "quiet place"
+          }
+        },
+        {
+          "targetText": "ujung pantai",
+          "baseText": {
+            "de": "Ende des Strandes",
+            "en": "far end of the beach"
+          }
+        },
+        {
+          "targetText": "cukup jauh",
+          "baseText": {
+            "de": "ziemlich weit",
+            "en": "quite far"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Walaupun pantai itu ",
+        "answer": "ramai",
+        "after": ", aku suka duduk dekat laut pada sore hari.",
+        "fallbackChoices": [
+          "luas",
+          "bersih",
+          "sepi",
+          "ramai"
+        ]
+      },
+      "speakRequired": [
+        "walaupun",
+        "pantai",
+        "duduk"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Pantai itu ramai sekali. Kamu suka tempat seperti itu?“",
+        "en": "Your friend asks: “Pantai itu ramai sekali. Kamu suka tempat seperti itu?”"
+      },
+      "trophyWord": {
+        "word": "walaupun",
+        "meaning": {
+          "de": "obwohl",
+          "en": "although"
+        },
+        "example": "Aku suka pantai ini walaupun ramai.",
+        "whyThisWord": {
+          "de": "Walaupun verbindet einen echten Einwand mit einer Einschätzung, die trotzdem bestehen bleibt.",
+          "en": "Walaupun connects a genuine objection to an assessment that still holds."
+        }
+      },
+      "distractors": [
+        "jauh dari laut",
+        "pada pagi hari."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen über einen Strandbesuch.",
+        "en": "Two friends talk about visiting a beach."
+      },
+      "songMood": "calm enjoyment amid a crowd",
+      "visualNotes": "Do not show or identify the quieter far end before the follow-up."
+    },
+    {
+      "slug": "sebenarnya-tidak-suka-pedas",
+      "title": {
+        "de": "Eine falsche Annahme",
+        "en": "A mistaken assumption"
+      },
+      "situation": {
+        "de": "Deine Freundin nimmt an, dass du scharfes Essen besonders gern magst.",
+        "en": "Your friend assumes you especially like spicy food."
+      },
+      "pedagogicalGoal": "Mit sebenarnya eine Annahme richtigstellen und mit walaupun erklären, warum sie trotzdem naheliegt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Kamu sering makan di sini, jadi pasti suka makanan pedas!",
+          "baseText": {
+            "de": "Du isst oft hier, also magst du bestimmt scharfes Essen!",
+            "en": "You eat here often, so you must like spicy food!"
+          }
+        },
+        {
+          "targetText": "Sebenarnya aku tidak suka makanan pedas, walaupun aku sering makan di sini.",
+          "baseText": {
+            "de": "Eigentlich mag ich scharfes Essen nicht, obwohl ich oft hier esse.",
+            "en": "Actually, I do not like spicy food, although I eat here often."
+          }
+        },
+        {
+          "targetText": "Kalau begitu, masakan apa yang paling kamu suka di sini?",
+          "baseText": {
+            "de": "Welches Gericht magst du hier dann am liebsten?",
+            "en": "Which dish do you like best here, then?"
+          }
+        },
+        {
+          "targetText": "Aku lebih suka sup daripada makanan pedas karena rasanya ringan.",
+          "baseText": {
+            "de": "Ich mag Suppe lieber als scharfes Essen, weil sie mild schmeckt.",
+            "en": "I prefer soup to spicy food because it tastes mild."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sebenarnya: meluruskan dugaan",
+        "rule": {
+          "de": "Sebenarnya korrigiert eine Annahme; mit walaupun kannst du zusätzlich einen Umstand nennen, der diese Annahme verständlich macht.",
+          "en": "Sebenarnya corrects an assumption; walaupun can add a circumstance that makes the assumption understandable."
+        },
+        "examples": [
+          {
+            "targetText": "Sebenarnya aku tidak suka makanan pedas, walaupun aku sering makan di sini.",
+            "baseText": {
+              "de": "Eigentlich mag ich scharfes Essen nicht, obwohl ich oft hier esse.",
+              "en": "Actually, I do not like spicy food, although I eat here often."
+            },
+            "highlight": "Sebenarnya aku tidak suka"
+          },
+          {
+            "targetText": "Sebenarnya aku lebih suka teh daripada kopi.",
+            "baseText": {
+              "de": "Eigentlich mag ich Tee lieber als Kaffee.",
+              "en": "Actually, I prefer tea to coffee."
+            },
+            "highlight": "Sebenarnya"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "lebih",
+          "cue": "suka (perbandingan dengan makanan pedas)",
+          "choices": [
+            "kurang",
+            "paling",
+            "lebih",
+            "terlalu"
+          ]
+        },
+        " suka sup daripada makanan pedas ",
+        {
+          "kind": "connector",
+          "answer": "karena",
+          "choices": [
+            "lalu",
+            "supaya",
+            "sebelum",
+            "karena"
+          ]
+        },
+        " rasanya ringan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sebenarnya aku tidak suka",
+          "baseText": {
+            "de": "eigentlich mag ich nicht",
+            "en": "actually, I do not like"
+          }
+        },
+        {
+          "targetText": "makanan pedas,",
+          "baseText": {
+            "de": "scharfes Essen",
+            "en": "spicy food"
+          }
+        },
+        {
+          "targetText": "walaupun aku sering makan",
+          "baseText": {
+            "de": "obwohl ich oft esse",
+            "en": "although I often eat"
+          }
+        },
+        {
+          "targetText": "di sini.",
+          "baseText": {
+            "de": "hier.",
+            "en": "here."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sebenarnya",
+          "baseText": {
+            "de": "eigentlich; tatsächlich",
+            "en": "actually"
+          }
+        },
+        {
+          "targetText": "makanan pedas",
+          "baseText": {
+            "de": "scharfes Essen",
+            "en": "spicy food"
+          }
+        },
+        {
+          "targetText": "sering makan",
+          "baseText": {
+            "de": "oft essen",
+            "en": "eat often"
+          }
+        },
+        {
+          "targetText": "masakan",
+          "baseText": {
+            "de": "Gericht",
+            "en": "dish"
+          }
+        },
+        {
+          "targetText": "sup",
+          "baseText": {
+            "de": "Suppe",
+            "en": "soup"
+          }
+        },
+        {
+          "targetText": "rasanya ringan",
+          "baseText": {
+            "de": "es schmeckt mild",
+            "en": "it tastes mild"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sebenarnya aku tidak suka makanan ",
+        "answer": "pedas",
+        "after": ", walaupun aku sering makan di sini.",
+        "fallbackChoices": [
+          "manis",
+          "dingin",
+          "pedas",
+          "asin"
+        ]
+      },
+      "speakRequired": [
+        "sebenarnya",
+        "pedas",
+        "sering"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin vermutet: „Kamu sering makan di sini, jadi pasti suka makanan pedas!“",
+        "en": "Your friend assumes: “Kamu sering makan di sini, jadi pasti suka makanan pedas!”"
+      },
+      "trophyWord": {
+        "word": "sebenarnya",
+        "meaning": {
+          "de": "eigentlich; tatsächlich",
+          "en": "actually"
+        },
+        "example": "Aku sebenarnya lebih suka makanan ringan dan tidak pedas.",
+        "whyThisWord": {
+          "de": "Sebenarnya hilft dir, eine freundliche, aber falsche Vermutung sachlich zu korrigieren.",
+          "en": "Sebenarnya helps you correct a friendly but mistaken assumption matter-of-factly."
+        }
+      },
+      "distractors": [
+        "makanan manis,",
+        "di rumah."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sitzen in einem kleinen Restaurant beim Gespräch.",
+        "en": "Two friends sit talking in a small restaurant."
+      },
+      "songMood": "friendly correction over a meal",
+      "visualNotes": "Do not display the preferred soup in the opening scene."
+    },
+    {
+      "slug": "museum-tetap-menarik",
+      "title": {
+        "de": "Ein heißer Museumsbesuch",
+        "en": "A hot museum visit"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt nach dem Museumsbesuch und erwähnt die Hitze in den Räumen.",
+        "en": "Your friend asks about the museum visit and mentions the heat indoors."
+      },
+      "pedagogicalGoal": "Mit meskipun einen störenden Umstand einräumen und die positive Bewertung mit menarik beibehalten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Bagaimana kunjungan ke museum kemarin? Ruangannya panas, ya?",
+          "baseText": {
+            "de": "Wie war gestern der Museumsbesuch? Die Räume sind heiß, oder?",
+            "en": "How was the museum visit yesterday? The rooms are hot, aren't they?"
+          }
+        },
+        {
+          "targetText": "Museum itu menarik, meskipun kemarin ruang pamerannya panas dan penuh pengunjung.",
+          "baseText": {
+            "de": "Das Museum ist interessant, obwohl der Ausstellungsraum gestern heiß und voller Besucher war.",
+            "en": "The museum is interesting, although its exhibition room was hot and full of visitors yesterday."
+          }
+        },
+        {
+          "targetText": "Bagian mana yang paling berkesan, lukisan atau benda lamanya?",
+          "baseText": {
+            "de": "Was beeindruckt dich am meisten, die Gemälde oder die alten Gegenstände?",
+            "en": "What makes the strongest impression, the paintings or the old objects?"
+          }
+        },
+        {
+          "targetText": "Lukisannya lebih berkesan, karena wajah orang di dalamnya tampak hidup.",
+          "baseText": {
+            "de": "Die Gemälde sind eindrucksvoller, weil die Gesichter der Menschen darin lebendig wirken.",
+            "en": "The paintings make a stronger impression because the people's faces in them look alive."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Meskipun: penilaian tetap berlaku",
+        "rule": {
+          "de": "Meskipun räumt einen Nachteil ein, der deine Hauptaussage nicht aufhebt; verwende in derselben Verbindung kein zusätzliches tetapi.",
+          "en": "Meskipun acknowledges a drawback that does not overturn your main assessment; do not add tetapi to the same construction."
+        },
+        "examples": [
+          {
+            "targetText": "Museum itu menarik, meskipun kemarin ruang pamerannya panas dan penuh pengunjung.",
+            "baseText": {
+              "de": "Das Museum ist interessant, obwohl der Ausstellungsraum gestern heiß und voller Besucher war.",
+              "en": "The museum is interesting, although its exhibition room was hot and full of visitors yesterday."
+            },
+            "highlight": "meskipun kemarin ruang pamerannya panas"
+          },
+          {
+            "targetText": "Tempat itu nyaman meskipun kecil.",
+            "baseText": {
+              "de": "Der Ort ist angenehm, obwohl er klein ist.",
+              "en": "That place is comfortable although it is small."
+            },
+            "highlight": "meskipun kecil"
+          }
+        ]
+      },
+      "cloze": [
+        "Lukisannya ",
+        {
+          "kind": "form",
+          "answer": "lebih",
+          "cue": "berkesan (perbandingan dengan benda lama)",
+          "choices": [
+            "tidak",
+            "terlalu",
+            "kurang",
+            "lebih"
+          ]
+        },
+        " berkesan, ",
+        {
+          "kind": "connector",
+          "answer": "karena",
+          "choices": [
+            "karena",
+            "walaupun",
+            "supaya",
+            "sebelum"
+          ]
+        },
+        " wajah orang di dalamnya tampak hidup."
+      ],
+      "chunks": [
+        {
+          "targetText": "Museum itu menarik,",
+          "baseText": {
+            "de": "das Museum ist interessant",
+            "en": "the museum is interesting"
+          }
+        },
+        {
+          "targetText": "meskipun kemarin",
+          "baseText": {
+            "de": "obwohl gestern",
+            "en": "although yesterday"
+          }
+        },
+        {
+          "targetText": "ruang pamerannya panas",
+          "baseText": {
+            "de": "sein Ausstellungsraum heiß ist",
+            "en": "its exhibition room is hot"
+          }
+        },
+        {
+          "targetText": "dan penuh pengunjung.",
+          "baseText": {
+            "de": "und voller Besucher.",
+            "en": "and full of visitors."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "menarik",
+          "baseText": {
+            "de": "interessant",
+            "en": "interesting"
+          }
+        },
+        {
+          "targetText": "ruang pameran",
+          "baseText": {
+            "de": "Ausstellungsraum",
+            "en": "exhibition room"
+          }
+        },
+        {
+          "targetText": "pengunjung",
+          "baseText": {
+            "de": "Besucher",
+            "en": "visitor"
+          }
+        },
+        {
+          "targetText": "lukisan",
+          "baseText": {
+            "de": "Gemälde",
+            "en": "painting"
+          }
+        },
+        {
+          "targetText": "berkesan",
+          "baseText": {
+            "de": "eindrucksvoll",
+            "en": "memorable; impressive"
+          }
+        },
+        {
+          "targetText": "tampak hidup",
+          "baseText": {
+            "de": "lebendig wirken",
+            "en": "look alive"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Museum itu ",
+        "answer": "menarik",
+        "after": ", meskipun kemarin ruang pamerannya panas dan penuh pengunjung.",
+        "fallbackChoices": [
+          "kosong",
+          "menarik",
+          "tutup",
+          "mahal"
+        ]
+      },
+      "speakRequired": [
+        "menarik",
+        "pamerannya",
+        "pengunjung"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Bagaimana kunjungan ke museum kemarin? Ruangannya panas, ya?“",
+        "en": "Your friend asks: “Bagaimana kunjungan ke museum kemarin? Ruangannya panas, ya?”"
+      },
+      "trophyWord": {
+        "word": "menarik",
+        "meaning": {
+          "de": "interessant",
+          "en": "interesting"
+        },
+        "example": "Lukisan di museum itu menarik meskipun sederhana.",
+        "whyThisWord": {
+          "de": "Menarik bewertet etwas als interessant und gibt dir einen Ausgangspunkt für eine genauere Begründung.",
+          "en": "Menarik describes something as interesting and gives you a starting point for a more specific reason."
+        }
+      },
+      "distractors": [
+        "Museum itu mahal,",
+        "dan cukup sepi."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen über ein Museum mit einem Faltblatt auf dem Tisch.",
+        "en": "Two friends discuss a museum with a leaflet on the table."
+      },
+      "songMood": "curiosity despite an uncomfortable visit",
+      "visualNotes": "Opening may suggest a museum visit but must not single out the paintings."
+    },
+    {
+      "slug": "serial-membosankan",
+      "title": {
+        "de": "Eine neue Serie",
+        "en": "A new series"
+      },
+      "situation": {
+        "de": "Deine Freundin fragt, ob dir eure neue Serie gefällt.",
+        "en": "Your friend asks whether you like the new series you are watching."
+      },
+      "pedagogicalGoal": "Eine negative Gesamtbewertung mit membosankan formulieren und mit walaupun eine Stärke anerkennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Kamu suka serial baru yang kita tonton tadi?",
+          "baseText": {
+            "de": "Magst du die neue Serie, die wir vorhin gesehen haben?",
+            "en": "Do you like the new series we watched earlier?"
+          }
+        },
+        {
+          "targetText": "Serial itu membosankan, walaupun para pemainnya bagus dan tokoh utamanya cukup lucu.",
+          "baseText": {
+            "de": "Die Serie ist langweilig, obwohl die Schauspieler gut sind und die Hauptfigur recht lustig ist.",
+            "en": "The series is boring, although the actors are good and the main character is quite funny."
+          }
+        },
+        {
+          "targetText": "Aku suka alurnya. Menurut kamu, ceritanya terlalu lambat?",
+          "baseText": {
+            "de": "Mir gefällt die Handlung. Findest du, dass die Geschichte zu langsam vorangeht?",
+            "en": "I like the plot. Do you think the story moves too slowly?"
+          }
+        },
+        {
+          "targetText": "Ceritanya terlalu lambat, karena banyak adegan hanya mengulang masalah lama.",
+          "baseText": {
+            "de": "Die Geschichte geht zu langsam voran, weil viele Szenen nur alte Probleme wiederholen.",
+            "en": "The story moves too slowly because many scenes only repeat old problems."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Kritik dengan walaupun",
+        "rule": {
+          "de": "Mit walaupun kannst du eine Stärke anerkennen und trotzdem an einer negativen Gesamtbewertung festhalten.",
+          "en": "Walaupun lets you acknowledge a strength while maintaining a negative overall assessment."
+        },
+        "examples": [
+          {
+            "targetText": "Serial itu membosankan, walaupun para pemainnya bagus dan tokoh utamanya cukup lucu.",
+            "baseText": {
+              "de": "Die Serie ist langweilig, obwohl die Schauspieler gut sind und die Hauptfigur recht lustig ist.",
+              "en": "The series is boring, although the actors are good and the main character is quite funny."
+            },
+            "highlight": "walaupun para pemainnya bagus"
+          },
+          {
+            "targetText": "Film itu membosankan walaupun gambarnya bagus.",
+            "baseText": {
+              "de": "Der Film ist langweilig, obwohl die Bilder gut sind.",
+              "en": "The film is boring although its images are good."
+            },
+            "highlight": "walaupun gambarnya bagus"
+          }
+        ]
+      },
+      "cloze": [
+        "Ceritanya ",
+        {
+          "kind": "form",
+          "answer": "terlalu",
+          "cue": "lambat (melebihi batas yang nyaman)",
+          "choices": [
+            "kurang",
+            "tidak",
+            "terlalu",
+            "paling"
+          ]
+        },
+        " lambat, ",
+        {
+          "kind": "connector",
+          "answer": "karena",
+          "choices": [
+            "supaya",
+            "karena",
+            "meskipun",
+            "sebelum"
+          ]
+        },
+        " banyak adegan hanya mengulang masalah lama."
+      ],
+      "chunks": [
+        {
+          "targetText": "Serial itu membosankan,",
+          "baseText": {
+            "de": "die Serie ist langweilig",
+            "en": "the series is boring"
+          }
+        },
+        {
+          "targetText": "walaupun para pemainnya bagus",
+          "baseText": {
+            "de": "obwohl die Schauspieler gut sind",
+            "en": "although the actors are good"
+          }
+        },
+        {
+          "targetText": "dan tokoh utamanya",
+          "baseText": {
+            "de": "und die Hauptfigur",
+            "en": "and the main character"
+          }
+        },
+        {
+          "targetText": "cukup lucu.",
+          "baseText": {
+            "de": "recht lustig ist.",
+            "en": "is quite funny."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "membosankan",
+          "baseText": {
+            "de": "langweilig",
+            "en": "boring"
+          }
+        },
+        {
+          "targetText": "serial",
+          "baseText": {
+            "de": "Serie",
+            "en": "series"
+          }
+        },
+        {
+          "targetText": "pemain",
+          "baseText": {
+            "de": "Schauspieler",
+            "en": "actor"
+          }
+        },
+        {
+          "targetText": "tokoh utama",
+          "baseText": {
+            "de": "Hauptfigur",
+            "en": "main character"
+          }
+        },
+        {
+          "targetText": "alur",
+          "baseText": {
+            "de": "Handlung",
+            "en": "plot"
+          }
+        },
+        {
+          "targetText": "adegan",
+          "baseText": {
+            "de": "Szene",
+            "en": "scene"
+          }
+        },
+        {
+          "targetText": "mengulang",
+          "baseText": {
+            "de": "wiederholen",
+            "en": "repeat"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Serial itu ",
+        "answer": "membosankan",
+        "after": ", walaupun para pemainnya bagus dan tokoh utamanya cukup lucu.",
+        "fallbackChoices": [
+          "menarik",
+          "menyenangkan",
+          "membosankan",
+          "menakutkan"
+        ]
+      },
+      "speakRequired": [
+        "membosankan",
+        "pemainnya",
+        "lucu"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Kamu suka serial baru yang kita tonton tadi?“",
+        "en": "Your friend asks: “Kamu suka serial baru yang kita tonton tadi?”"
+      },
+      "trophyWord": {
+        "word": "membosankan",
+        "meaning": {
+          "de": "langweilig",
+          "en": "boring"
+        },
+        "example": "Serial itu membosankan karena ceritanya lambat.",
+        "whyThisWord": {
+          "de": "Membosankan beschreibt etwas, das Langeweile auslöst, und lässt sich mit konkreten Gründen verbinden.",
+          "en": "Membosankan describes something that causes boredom and can be supported with specific reasons."
+        }
+      },
+      "distractors": [
+        "Serial itu menarik,",
+        "cukup serius."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich vor einem ausgeschalteten Fernseher.",
+        "en": "Two friends talk in front of a switched-off television."
+      },
+      "songMood": "friendly disagreement about a television series",
+      "visualNotes": "No plot pacing judgement is shown before the friend introduces it."
+    },
+    {
+      "slug": "terlalu-mahal-di-mal",
+      "title": {
+        "de": "Wohin zum Mittagessen?",
+        "en": "Where to have lunch?"
+      },
+      "situation": {
+        "de": "Deine Freundin schlägt das Einkaufszentrum zum Mittagessen vor.",
+        "en": "Your friend suggests the shopping centre for lunch."
+      },
+      "pedagogicalGoal": "Mit memang einen Vorteil anerkennen und mit tetapi sowie terlalu eine entscheidende Einschränkung nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Kita makan siang di mal saja? Tempatnya nyaman.",
+          "baseText": {
+            "de": "Essen wir einfach im Einkaufszentrum zu Mittag? Dort ist es angenehm.",
+            "en": "Shall we just have lunch at the shopping centre? It is comfortable there."
+          }
+        },
+        {
+          "targetText": "Mal itu memang nyaman, tetapi makanan di sana terlalu mahal bagi mahasiswa.",
+          "baseText": {
+            "de": "Das Einkaufszentrum ist tatsächlich angenehm, aber das Essen dort ist für Studierende zu teuer.",
+            "en": "That shopping centre is indeed comfortable, but the food there is too expensive for students."
+          }
+        },
+        {
+          "targetText": "Kalau begitu, bagaimana dengan pasar? Pilihan makanannya lebih murah.",
+          "baseText": {
+            "de": "Wie wäre es dann mit dem Markt? Das Essensangebot ist günstiger.",
+            "en": "How about the market, then? Its food options are cheaper."
+          }
+        },
+        {
+          "targetText": "Aku setuju ke pasar karena makanannya lebih murah daripada di mal.",
+          "baseText": {
+            "de": "Ich bin für den Markt, weil das Essen dort günstiger ist als im Einkaufszentrum.",
+            "en": "I agree to go to the market because the food is cheaper than at the shopping centre."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Memang ... tetapi terlalu ...",
+        "rule": {
+          "de": "Memang erkennt einen Punkt an; tetapi führt die Einschränkung ein, und terlalu bezeichnet ein übermäßiges Maß.",
+          "en": "Memang acknowledges a point; tetapi introduces the limitation, and terlalu marks an excessive degree."
+        },
+        "examples": [
+          {
+            "targetText": "Mal itu memang nyaman, tetapi makanan di sana terlalu mahal bagi mahasiswa.",
+            "baseText": {
+              "de": "Das Einkaufszentrum ist tatsächlich angenehm, aber das Essen dort ist für Studierende zu teuer.",
+              "en": "That shopping centre is indeed comfortable, but the food there is too expensive for students."
+            },
+            "highlight": "memang nyaman, tetapi makanan di sana terlalu mahal"
+          },
+          {
+            "targetText": "Tempat itu memang bagus, tetapi terlalu ramai.",
+            "baseText": {
+              "de": "Der Ort ist tatsächlich schön, aber zu voll.",
+              "en": "That place is indeed nice, but too crowded."
+            },
+            "highlight": "memang bagus, tetapi terlalu ramai"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "setuju",
+          "cue": "setuju (menerima usulan pasar)",
+          "choices": [
+            "belum setuju",
+            "setuju",
+            "tidak setuju",
+            "kurang setuju"
+          ]
+        },
+        " ke pasar karena makanannya ",
+        {
+          "kind": "form",
+          "answer": "lebih murah",
+          "cue": "murah (perbandingan dengan mal)",
+          "choices": [
+            "lebih mahal",
+            "lebih manis",
+            "lebih murah",
+            "lebih pedas"
+          ]
+        },
+        " daripada di mal."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mal itu memang nyaman,",
+          "baseText": {
+            "de": "das Einkaufszentrum ist tatsächlich angenehm",
+            "en": "that shopping centre is indeed comfortable"
+          }
+        },
+        {
+          "targetText": "tetapi makanan di sana",
+          "baseText": {
+            "de": "aber das Essen dort",
+            "en": "but the food there"
+          }
+        },
+        {
+          "targetText": "terlalu mahal",
+          "baseText": {
+            "de": "ist zu teuer",
+            "en": "is too expensive"
+          }
+        },
+        {
+          "targetText": "bagi mahasiswa.",
+          "baseText": {
+            "de": "für Studierende.",
+            "en": "for students."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "terlalu",
+          "baseText": {
+            "de": "zu; übermäßig",
+            "en": "too; excessively"
+          }
+        },
+        {
+          "targetText": "mal",
+          "baseText": {
+            "de": "Einkaufszentrum",
+            "en": "shopping centre"
+          }
+        },
+        {
+          "targetText": "makan siang",
+          "baseText": {
+            "de": "Mittagessen",
+            "en": "lunch"
+          }
+        },
+        {
+          "targetText": "mahasiswa",
+          "baseText": {
+            "de": "Studierende",
+            "en": "university student"
+          }
+        },
+        {
+          "targetText": "pilihan makanan",
+          "baseText": {
+            "de": "Essensangebot",
+            "en": "food options"
+          }
+        },
+        {
+          "targetText": "lebih murah",
+          "baseText": {
+            "de": "günstiger",
+            "en": "cheaper"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mal itu memang nyaman, tetapi makanan di sana ",
+        "answer": "terlalu",
+        "after": " mahal bagi mahasiswa.",
+        "fallbackChoices": [
+          "kurang",
+          "cukup",
+          "paling",
+          "terlalu"
+        ]
+      },
+      "speakRequired": [
+        "terlalu",
+        "mahal",
+        "mahasiswa"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin schlägt vor: „Kita makan siang di mal saja? Tempatnya nyaman.“",
+        "en": "Your friend suggests: “Kita makan siang di mal saja? Tempatnya nyaman.”"
+      },
+      "trophyWord": {
+        "word": "terlalu",
+        "meaning": {
+          "de": "zu; übermäßig",
+          "en": "too; excessively"
+        },
+        "example": "Makanan di mal itu terlalu mahal bagi aku.",
+        "whyThisWord": {
+          "de": "Terlalu zeigt, dass etwas eine passende Grenze überschreitet, statt nur stark ausgeprägt zu sein.",
+          "en": "Terlalu shows that something exceeds a suitable limit rather than simply being intense."
+        }
+      },
+      "distractors": [
+        "terlalu pedas",
+        "bagi anak kecil."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde überlegen, wo sie zu Mittag essen möchten.",
+        "en": "Two friends consider where to have lunch."
+      },
+      "songMood": "practical lunchtime choices",
+      "visualNotes": "The market alternative belongs only to the follow-up."
+    },
+    {
+      "slug": "sewa-pusat-kota-mahal",
+      "title": {
+        "de": "Wohnen im Zentrum",
+        "en": "Living in the centre"
+      },
+      "situation": {
+        "de": "Deine Freundin hält die Miete im Stadtzentrum für angemessen und fragt nach deiner Sicht.",
+        "en": "Your friend thinks city-centre rent is reasonable and asks for your view."
+      },
+      "pedagogicalGoal": "Eine abweichende Kostenbewertung mit mahal formulieren und mit memang sowie tetapi einen Vorteil anerkennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Menurut aku, sewa di pusat kota masih masuk akal. Bagaimana menurut kamu?",
+          "baseText": {
+            "de": "Ich finde die Miete im Stadtzentrum noch angemessen. Wie siehst du das?",
+            "en": "I think rent in the city centre is still reasonable. What do you think?"
+          }
+        },
+        {
+          "targetText": "Sewa rumah di pusat kota memang mahal, tetapi lokasinya dekat dengan kantor.",
+          "baseText": {
+            "de": "Ein Haus im Zentrum zu mieten ist tatsächlich teuer, aber es liegt nah am Büro.",
+            "en": "Renting a house in the city centre is indeed expensive, but its location is close to the office."
+          }
+        },
+        {
+          "targetText": "Di pinggiran lebih murah, tetapi perjalanan ke kantor lebih lama.",
+          "baseText": {
+            "de": "Am Stadtrand ist es günstiger, aber der Weg ins Büro dauert länger.",
+            "en": "It is cheaper on the outskirts, but the journey to the office takes longer."
+          }
+        },
+        {
+          "targetText": "Memang lebih murah di sana, tetapi aku ingin berjalan ke kantor.",
+          "baseText": {
+            "de": "Dort ist es tatsächlich günstiger, aber ich will zu Fuß ins Büro gehen.",
+            "en": "It is indeed cheaper there, but I want to walk to the office."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mengakui harga, menimbang jarak",
+        "rule": {
+          "de": "Mit memang räumst du eine Einschätzung ein und mit tetapi stellst du einen anders gewichteten Vorteil oder Wunsch daneben.",
+          "en": "Use memang to acknowledge an assessment and tetapi to set beside it a benefit or preference that carries different weight."
+        },
+        "examples": [
+          {
+            "targetText": "Sewa rumah di pusat kota memang mahal, tetapi lokasinya dekat dengan kantor.",
+            "baseText": {
+              "de": "Ein Haus im Zentrum zu mieten ist tatsächlich teuer, aber es liegt nah am Büro.",
+              "en": "Renting a house in the city centre is indeed expensive, but its location is close to the office."
+            },
+            "highlight": "memang mahal, tetapi lokasinya dekat"
+          },
+          {
+            "targetText": "Tempat itu memang kecil, tetapi dekat stasiun.",
+            "baseText": {
+              "de": "Der Ort ist tatsächlich klein, aber nah am Bahnhof.",
+              "en": "That place is indeed small, but close to the station."
+            },
+            "highlight": "memang kecil, tetapi dekat stasiun"
+          }
+        ]
+      },
+      "cloze": [
+        "Memang ",
+        {
+          "kind": "form",
+          "answer": "lebih",
+          "cue": "murah (perbandingan dengan pusat kota)",
+          "choices": [
+            "kurang",
+            "tidak",
+            "lebih",
+            "terlalu"
+          ]
+        },
+        " murah di sana, ",
+        {
+          "kind": "connector",
+          "answer": "tetapi",
+          "choices": [
+            "karena",
+            "supaya",
+            "sebelum",
+            "tetapi"
+          ]
+        },
+        " aku ingin berjalan ke kantor."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sewa rumah di pusat kota",
+          "baseText": {
+            "de": "die Miete für ein Haus im Zentrum",
+            "en": "renting a house in the city centre"
+          }
+        },
+        {
+          "targetText": "memang mahal,",
+          "baseText": {
+            "de": "ist tatsächlich teuer",
+            "en": "is indeed expensive"
+          }
+        },
+        {
+          "targetText": "tetapi lokasinya dekat",
+          "baseText": {
+            "de": "aber es liegt nah",
+            "en": "but its location is close"
+          }
+        },
+        {
+          "targetText": "dengan kantor.",
+          "baseText": {
+            "de": "am Büro.",
+            "en": "to the office."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mahal",
+          "baseText": {
+            "de": "teuer",
+            "en": "expensive"
+          }
+        },
+        {
+          "targetText": "sewa",
+          "baseText": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "pusat kota",
+          "baseText": {
+            "de": "Stadtzentrum",
+            "en": "city centre"
+          }
+        },
+        {
+          "targetText": "tempat kerja",
+          "baseText": {
+            "de": "Arbeitsplatz",
+            "en": "workplace"
+          }
+        },
+        {
+          "targetText": "pinggiran",
+          "baseText": {
+            "de": "Stadtrand",
+            "en": "outskirts"
+          }
+        },
+        {
+          "targetText": "berjalan ke kantor",
+          "baseText": {
+            "de": "zu Fuß ins Büro gehen",
+            "en": "walk to the office"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sewa rumah di pusat kota memang ",
+        "answer": "mahal",
+        "after": ", tetapi lokasinya dekat dengan kantor.",
+        "fallbackChoices": [
+          "murah",
+          "ringan",
+          "rendah",
+          "mahal"
+        ]
+      },
+      "speakRequired": [
+        "sewa",
+        "mahal",
+        "kantor"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Menurut aku, sewa di pusat kota masih masuk akal. Bagaimana menurut kamu?“",
+        "en": "Your friend asks: “Menurut aku, sewa di pusat kota masih masuk akal. Bagaimana menurut kamu?”"
+      },
+      "trophyWord": {
+        "word": "mahal",
+        "meaning": {
+          "de": "teuer",
+          "en": "expensive"
+        },
+        "example": "Sewa di sini mahal, tetapi tempat kerja dekat.",
+        "whyThisWord": {
+          "de": "Mahal benennt hohe Kosten und lässt dich Preis und Lage gegeneinander abwägen.",
+          "en": "Mahal names a high cost and lets you weigh price against location."
+        }
+      },
+      "distractors": [
+        "sewa di pinggiran kota",
+        "tetapi jauh dari tempat kerja."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen über Wohnungen in der Stadt.",
+        "en": "Two friends discuss homes in the city."
+      },
+      "songMood": "thoughtful trade-offs about where to live",
+      "visualNotes": "Do not establish the outskirts comparison before the friend raises it."
+    },
+    {
+      "slug": "memang-berisik-tetapi-ramah",
+      "title": {
+        "de": "Deine Nachbarschaft",
+        "en": "Your neighbourhood"
+      },
+      "situation": {
+        "de": "Deine Freundin findet deine Wohngegend laut und fragt, warum du gern dort wohnst.",
+        "en": "Your friend finds your neighbourhood noisy and asks why you like living there."
+      },
+      "pedagogicalGoal": "Mit memang einen Einwand ausdrücklich anerkennen und mit tetapi einen wichtigen positiven Gegenpunkt setzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Lingkungan rumahmu berisik sekali. Kamu tetap betah tinggal di sana?",
+          "baseText": {
+            "de": "Deine Wohngegend ist sehr laut. Wohnst du trotzdem gern dort?",
+            "en": "Your neighbourhood is very noisy. Do you still feel at home there?"
+          }
+        },
+        {
+          "targetText": "Lingkunganku memang berisik, tetapi tetangga di sini ramah dan suka membantu.",
+          "baseText": {
+            "de": "Meine Wohngegend ist tatsächlich laut, aber die Nachbarn hier sind freundlich und hilfsbereit.",
+            "en": "My neighbourhood is indeed noisy, but the neighbours here are friendly and like helping."
+          }
+        },
+        {
+          "targetText": "Tetangga yang ramah itu penting. Mereka membantu dalam hal apa?",
+          "baseText": {
+            "de": "Freundliche Nachbarn sind wichtig. Wobei helfen sie?",
+            "en": "Friendly neighbours matter. What do they help with?"
+          }
+        },
+        {
+          "targetText": "Aku memang suka mereka karena sering membantu ketika tetangga sakit.",
+          "baseText": {
+            "de": "Ich mag sie tatsächlich, weil sie oft helfen, wenn Nachbarn krank sind.",
+            "en": "I do like them because they often help when neighbours are ill."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Memang ... tetapi ...",
+        "rule": {
+          "de": "Memang bestätigt einen berechtigten Einwand; tetapi leitet den Gegenpunkt ein, der deine Gesamtbewertung erklärt.",
+          "en": "Memang confirms a valid objection; tetapi introduces the counterpoint that explains your overall assessment."
+        },
+        "examples": [
+          {
+            "targetText": "Lingkunganku memang berisik, tetapi tetangga di sini ramah dan suka membantu.",
+            "baseText": {
+              "de": "Meine Wohngegend ist tatsächlich laut, aber die Nachbarn hier sind freundlich und hilfsbereit.",
+              "en": "My neighbourhood is indeed noisy, but the neighbours here are friendly and like helping."
+            },
+            "highlight": "memang berisik, tetapi"
+          },
+          {
+            "targetText": "Rumah itu memang kecil, tetapi nyaman.",
+            "baseText": {
+              "de": "Das Haus ist tatsächlich klein, aber gemütlich.",
+              "en": "That house is indeed small, but comfortable."
+            },
+            "highlight": "memang kecil, tetapi nyaman"
+          }
+        ]
+      },
+      "cloze": [
+        "Aku ",
+        {
+          "kind": "form",
+          "answer": "memang",
+          "cue": "suka (menegaskan penilaian positif)",
+          "choices": [
+            "belum",
+            "tidak",
+            "memang",
+            "kurang"
+          ]
+        },
+        " suka mereka ",
+        {
+          "kind": "connector",
+          "answer": "karena",
+          "choices": [
+            "walaupun",
+            "supaya",
+            "karena",
+            "sebelum"
+          ]
+        },
+        " sering membantu ketika tetangga sakit."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lingkunganku memang berisik,",
+          "baseText": {
+            "de": "meine Wohngegend ist tatsächlich laut",
+            "en": "my neighbourhood is indeed noisy"
+          }
+        },
+        {
+          "targetText": "tetapi tetangga di sini",
+          "baseText": {
+            "de": "aber die Nachbarn hier",
+            "en": "but the neighbours here"
+          }
+        },
+        {
+          "targetText": "ramah",
+          "baseText": {
+            "de": "sind freundlich",
+            "en": "are friendly"
+          }
+        },
+        {
+          "targetText": "dan suka membantu.",
+          "baseText": {
+            "de": "und helfen gern.",
+            "en": "and like helping."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "memang",
+          "baseText": {
+            "de": "tatsächlich; in der Tat",
+            "en": "indeed; it is true that"
+          }
+        },
+        {
+          "targetText": "lingkungan",
+          "baseText": {
+            "de": "Wohngegend",
+            "en": "neighbourhood"
+          }
+        },
+        {
+          "targetText": "berisik",
+          "baseText": {
+            "de": "laut",
+            "en": "noisy"
+          }
+        },
+        {
+          "targetText": "tetangga",
+          "baseText": {
+            "de": "Nachbar",
+            "en": "neighbour"
+          }
+        },
+        {
+          "targetText": "ramah",
+          "baseText": {
+            "de": "freundlich",
+            "en": "friendly"
+          }
+        },
+        {
+          "targetText": "suka membantu",
+          "baseText": {
+            "de": "hilfsbereit",
+            "en": "likes helping"
+          }
+        },
+        {
+          "targetText": "betah",
+          "baseText": {
+            "de": "sich heimisch fühlen",
+            "en": "feel at home"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lingkunganku memang berisik, tetapi tetangga di sini ",
+        "answer": "ramah",
+        "after": " dan suka membantu.",
+        "fallbackChoices": [
+          "sibuk",
+          "ramah",
+          "pendiam",
+          "pemalu"
+        ]
+      },
+      "speakRequired": [
+        "memang",
+        "tetangga",
+        "ramah"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: „Lingkungan rumahmu berisik sekali. Kamu tetap betah tinggal di sana?“",
+        "en": "Your friend asks: “Lingkungan rumahmu berisik sekali. Kamu tetap betah tinggal di sana?”"
+      },
+      "trophyWord": {
+        "word": "memang",
+        "meaning": {
+          "de": "tatsächlich; in der Tat",
+          "en": "indeed; it is true that"
+        },
+        "example": "Lingkungan ini memang ramai, tetapi tetangganya ramah.",
+        "whyThisWord": {
+          "de": "Memang zeigt, dass du einen Punkt ausdrücklich anerkennst, bevor du dein eigenes Urteil ergänzt.",
+          "en": "Memang shows that you explicitly acknowledge a point before adding your own assessment."
+        }
+      },
+      "distractors": [
+        "Lingkunganku memang tenang,",
+        "dan jarang membantu."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen vor einem Wohnhaus über die Nachbarschaft.",
+        "en": "Two friends talk about the neighbourhood outside a home."
+      },
+      "songMood": "warm appreciation of helpful neighbours",
+      "visualNotes": "Do not show neighbours helping an ill person before the follow-up asks for details."
+    }
+  ]
+}

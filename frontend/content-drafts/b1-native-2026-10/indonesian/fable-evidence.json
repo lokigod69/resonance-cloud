@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/indonesian/p1.json": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+    "frontend/content-drafts/b1-native-2026-10/indonesian/p2.json": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/indonesian/specification.json": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef"
+  },
+  "scope": "Local staging and TTS only; not listening, native-human or production approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p1.json",
+      "reviewedScratchSha256": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "stagedSha256": "f30c2c66d333beae473b10a3b2d6b3a10e14ea2ad196423419e2685c0e5668ea",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/indonesian/p2.json",
+      "reviewedScratchSha256": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "stagedSha256": "f620eb9ef829c570dea23dfc8a3a1b1cbc249ec67fae38354febf764864b4593",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    }
+  ],
+  "specificationCanonicalization": {
+    "reviewedScratchSha256": "35aea8685aac608d5f45380ab8b174d02769add26455330afe16f5d11fee92e2",
+    "stagedSha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef",
+    "transformation": "CRLF to LF only; parsed content unchanged."
+  },
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson read and exact arbitration"
+  },
+  "approvalBasis": "All 18 exact old/new corrections replayed and the entire result equals final independently reviewed sources.",
+  "rawProviderReviewSha256": "372f46937279b952bd119305dc6ee51f634b7f3985dd8180027d0e0d2f13b3d8",
+  "originalSourceSha256": {
+    "indonesian-p1.json": "cf910a88040c8383617024473e25f22d3588b027c8e4a052005ff2c9876fc853",
+    "indonesian-p2.json": "ed469379d1dd19b621297bd84070195c49cb7854c083991e908f84a3b453d287"
+  },
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "indonesian-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All four turns, both bases, pattern rules/examples/highlights, every cloze part and cue, chunks and glosses, terms, recall sets, speakRequired, captions, trophy fields, distractors, visualNotes read against spec staging. Chunk joins, cloze/recall reconstruction, 8-16/6-12 word counts, trophy anchors (first reply, pattern example, trophyWord.example), caption quoting in „“ and “” all verified by hand. Tense licensing: every de/en past base sits in a target line with kemarin/waktu itu/sudah; L10 follow-up future licensed by mau/nanti (A2 recycle named in spec). Staging: lalu/kemudian + anchor and sedang in L1-3, ketika/sambil/mendadak from L4, ketinggalan/kehujanan/akhirnya from L8; di- passive 'dimakan' only in an interlocutor line (L2). No Malay, no slang, no Anda in learner lines, no address terms as tokens. L8 opening is malformed (ID-01). L3 chunking admits a reordered same-meaning build (ID-02). L6 en situation has a stray 'on' (ID-03).",
+        "remainingConcerns": "L5 'tiba di pantai ... sambil makan roti' is tolerable colloquial Indonesian but sambil with a punctual verb is slightly stiff; the spec beat mandates it, kept. L2/L9 follow-ups use sudah mainly to feed the aspect blank; grammatical and base-consistent, kept. L10 interlocutor 'Perjalanannya melelahkan' has no past marker so the German stays present; accepted trade-off. Sudah/belum blanks rely on the cue to pick the completed reading; belum is a spec-licensed wrong-negation distractor, not a synonym."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Same full-field pass. Chunk joins, cloze/recall reconstruction, word counts, trophy anchors, caption quotes verified. Register coherent aku/kamu; 'menurut aku' / 'menurut pendapat aku' accepted as natural colloquial friend register. No walaupun/meskipun + tetapi in one sentence; concession appears productively only from L4, memang ... tetapi only from L8. Follow-ups add real new facts. Found: L2 follow-up 'Aku tidak setuju, karena kopinya lebih murah daripada di sini' is stance-ambiguous, so 'tetap setuju'/'sangat setuju' also yield a coherent reply with the same stance (price reasonable). L1/L4/L6/L9 'paling' and L7 'cukup' are near-synonym degree words that fit the literal follow-up ('Aku paling suka sup', 'Lukisannya paling berkesan', 'Ceritanya cukup lambat'); L5 fixed by adding daripada, the rest by swapping the synonym for a contradiction-producing negation. L1 interlocutor 'Aku kurang suka akhirnya' reads as 'finally' before 'ending'; 'bagian akhirnya' needed. L4 chunking admits a marginal reorder (ID-02).",
+        "remainingConcerns": "speakRequired tokens 'suasananya', 'pamerannya', 'pemainnya' carry -nya; allowed for speech tokens (ban is trophy-only), kept. L8 trophy example 'bagi aku' is slightly bookish beside 'bagiku'; acceptable, kept. Recall fallback sets in L6/L9 contain grammatical alternatives (mahal/murah) that change meaning; recall reconstructs a learned line, acceptable."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "ID-01 P1 L8 malformed 'Waktu itu malam'",
+        "decision": "adapt",
+        "reason": "Agree it is ungrammatical in all three languages. Prefer the shorter native 'Malam itu kamu masih sempat naik kereta?' over repeating 'Sabtu malam kemarin', which the learner's reply then echoes verbatim; captions updated identically in both locales."
+      },
+      {
+        "finding": "ID-02 P1 L3 rechunk",
+        "decision": "accept",
+        "reason": "'di kota lama,' is a movable locative chip; merging it with 'aku tersesat' keeps 4 chunks and removes the alternate order. Gloss supplied."
+      },
+      {
+        "finding": "ID-02 P2 L4 rechunk",
+        "decision": "accept",
+        "reason": "Fronted 'dekat laut' is marked but grammatical; merging 'aku suka duduk dekat laut' removes it. Standalone 'Walaupun' is this lesson's staged connector and therefore a permitted lone chunk."
+      },
+      {
+        "finding": "ID-03 P1 L6 en situation",
+        "decision": "accept",
+        "reason": "Stray 'on' breaks the subordinate clause."
+      },
+      {
+        "finding": "Reviewer noIssue: all 40 cloze blanks uniquely valid",
+        "decision": "reject in part",
+        "reason": "P2 L2 'tetap setuju'/'sangat setuju' produce the same stance as the answer; P2 L1/L4/L5/L6/L9 'paling' and L7 'cukup' are degree synonyms that fit natively. Spec forbids synonyms that also fit. Fixed with exact edits below; P1 sudah/belum blanks stand because wrong negation is spec-licensed."
+      },
+      {
+        "finding": "Reviewer noIssue: P1 L10 mau/nanti and L5 terbenam",
+        "decision": "accept",
+        "reason": "Both are ordinary vocabulary or named A2 recycling, not gated forms."
+      },
+      {
+        "finding": "Author anchors read 'Fable review pending'",
+        "decision": "adapt",
+        "reason": "Stale after this review; replaced with a dated content-review note. No staging deviation needs licensing in either path."
+      }
+    ],
+    "edits": [
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Fable review pending. Friend register with aku/kamu and natural omission. L1–3: time-anchored sequencing with lalu/kemudian/setelah itu, sedang background, lexical tersesat. L4–7: ketika/waktu clauses, sambil and sudden events. L8–10: adversative ke-an and akhirnya with its own past marker. Four-turn shape B; each reply continues the same narrative. No new app fields or accepted variants.",
+        "newValue": "Fable content review applied 2026-10-05. Friend register with aku/kamu and natural omission. L1–3: time-anchored sequencing with lalu/kemudian/setelah itu, sedang background, lexical tersesat. L4–7: ketika/waktu clauses, sambil and sudden events. L8–10: adversative ke-an and akhirnya with its own past marker. Four-turn shape B; each reply continues the same narrative. No new app fields or accepted variants.",
+        "reason": "Remove stale review marker."
+      },
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/lessons/2/chunks",
+        "oldValue": [
+          {
+            "targetText": "Waktu itu",
+            "baseText": {
+              "de": "damals",
+              "en": "at that time"
+            }
+          },
+          {
+            "targetText": "aku tersesat",
+            "baseText": {
+              "de": "sich verlaufen",
+              "en": "get lost"
+            }
+          },
+          {
+            "targetText": "di kota lama,",
+            "baseText": {
+              "de": "in der Altstadt",
+              "en": "in the old town"
+            }
+          },
+          {
+            "targetText": "kemudian kembali",
+            "baseText": {
+              "de": "dann zurückkehren",
+              "en": "then return"
+            }
+          },
+          {
+            "targetText": "ke jalan utama.",
+            "baseText": {
+              "de": "zur Hauptstraße.",
+              "en": "to the main road."
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Waktu itu",
+            "baseText": {
+              "de": "damals",
+              "en": "at that time"
+            }
+          },
+          {
+            "targetText": "aku tersesat di kota lama,",
+            "baseText": {
+              "de": "sich in der Altstadt verlaufen",
+              "en": "get lost in the old town"
+            }
+          },
+          {
+            "targetText": "kemudian kembali",
+            "baseText": {
+              "de": "dann zurückkehren",
+              "en": "then return"
+            }
+          },
+          {
+            "targetText": "ke jalan utama.",
+            "baseText": {
+              "de": "zur Hauptstraße.",
+              "en": "to the main road."
+            }
+          }
+        ],
+        "reason": "ID-02: remove movable locative chip; join still equals first reply."
+      },
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/lessons/5/situation/en",
+        "oldValue": "Your friend asks whether on Saturday's return from the beach went smoothly.",
+        "newValue": "Your friend asks whether Saturday's return from the beach went smoothly.",
+        "reason": "ID-03 grammar."
+      },
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/lessons/7/dialogue/0",
+        "oldValue": {
+          "targetText": "Waktu itu malam kamu masih sempat naik kereta?",
+          "baseText": {
+            "de": "Hast du damals Abend noch den Zug geschafft?",
+            "en": "Did you still manage to catch the train that time evening?"
+          }
+        },
+        "newValue": {
+          "targetText": "Malam itu kamu masih sempat naik kereta?",
+          "baseText": {
+            "de": "Hast du an dem Abend noch den Zug geschafft?",
+            "en": "Did you still manage to catch the train that evening?"
+          }
+        },
+        "reason": "ID-01 adapted: native time expression in all three languages."
+      },
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/lessons/7/sceneCaption/de",
+        "oldValue": "Deine Freundin fragt nach dem Abend: „Waktu itu malam kamu masih sempat naik kereta?“",
+        "newValue": "Deine Freundin fragt nach dem Abend: „Malam itu kamu masih sempat naik kereta?“",
+        "reason": "Caption must quote the corrected opening verbatim."
+      },
+      {
+        "file": "indonesian-p1.json",
+        "jsonPointer": "/lessons/7/sceneCaption/en",
+        "oldValue": "Your friend asks about the evening: “Waktu itu malam kamu masih sempat naik kereta?”",
+        "newValue": "Your friend asks about the evening: “Malam itu kamu masih sempat naik kereta?”",
+        "reason": "Caption must quote the corrected opening verbatim."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Fable review pending. Friend register with aku/kamu and natural omission. L1–3: menurut/pendapat, setuju/tidak setuju and sebenarnya; no productive concession. L4–7: walaupun/meskipun and degree with terlalu. L8–10: memang ... tetapi with recycled comparisons. Four-turn shape B: an opinion develops in response to a friend's different view. Cloze targets follow the staged menu rather than requiring every listed class in every lesson.",
+        "newValue": "Fable content review applied 2026-10-05. Friend register with aku/kamu and natural omission. L1–3: menurut/pendapat, setuju/tidak setuju and sebenarnya; no productive concession. L4–7: walaupun/meskipun and degree with terlalu. L8–10: memang ... tetapi with recycled comparisons. Four-turn shape B: an opinion develops in response to a friend's different view. Cloze targets follow the staged menu rather than requiring every listed class in every lesson.",
+        "reason": "Remove stale review marker."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/0/dialogue/2/targetText",
+        "oldValue": "Aku kurang suka akhirnya. Bagian mana yang paling kamu suka?",
+        "newValue": "Aku kurang suka bagian akhirnya. Kamu paling suka bagian mana?",
+        "reason": "'akhirnya' alone reads as 'finally'; 'bagian akhirnya' is the ending. Base texts already match."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/0/cloze/1/choices",
+        "oldValue": [
+          "paling",
+          "kurang",
+          "lebih",
+          "terlalu"
+        ],
+        "newValue": [
+          "tidak",
+          "kurang",
+          "lebih",
+          "terlalu"
+        ],
+        "reason": "'Bagian awalnya paling kuat' is a natural alternative; 'tidak kuat karena ... terasa nyata' is a contradiction, so only lebih fits."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/1/dialogue/3",
+        "oldValue": {
+          "targetText": "Aku tidak setuju, karena kopinya lebih murah daripada di sini.",
+          "baseText": {
+            "de": "Ich stimme nicht zu, denn der Kaffee ist günstiger als hier.",
+            "en": "I disagree, because the coffee is cheaper than here."
+          }
+        },
+        "newValue": {
+          "targetText": "Aku tidak setuju kopinya mahal, karena harganya lebih murah daripada di sini.",
+          "baseText": {
+            "de": "Ich stimme nicht zu, dass der Kaffee teuer ist, denn er ist günstiger als hier.",
+            "en": "I disagree that the coffee is expensive, because it is cheaper than here."
+          }
+        },
+        "reason": "Original stance was ambiguous so 'tetap/sangat setuju' also fit; naming the rejected judgement makes tidak setuju the only coherent blank. 11 words."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/1/cloze",
+        "oldValue": [
+          "Aku ",
+          {
+            "kind": "form",
+            "answer": "tidak setuju",
+            "cue": "setuju (menolak penilaian mahal)",
+            "choices": [
+              "sangat setuju",
+              "tidak setuju",
+              "tetap setuju",
+              "sudah setuju"
+            ]
+          },
+          ", karena kopinya ",
+          {
+            "kind": "form",
+            "answer": "lebih murah",
+            "cue": "murah (perbandingan harga)",
+            "choices": [
+              "lebih mahal",
+              "lebih manis",
+              "lebih murah",
+              "lebih pedas"
+            ]
+          },
+          " daripada di sini."
+        ],
+        "newValue": [
+          "Aku ",
+          {
+            "kind": "form",
+            "answer": "tidak setuju",
+            "cue": "setuju (menolak penilaian kopi mahal)",
+            "choices": [
+              "sangat setuju",
+              "tidak setuju",
+              "tetap setuju",
+              "sudah setuju"
+            ]
+          },
+          " kopinya mahal, karena harganya ",
+          {
+            "kind": "form",
+            "answer": "lebih murah",
+            "cue": "murah (perbandingan harga)",
+            "choices": [
+              "lebih mahal",
+              "lebih manis",
+              "lebih murah",
+              "lebih pedas"
+            ]
+          },
+          " daripada di sini."
+        ],
+        "reason": "Coupled to the rewritten follow-up; reconstructs it exactly."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/3/chunks",
+        "oldValue": [
+          {
+            "targetText": "Walaupun pantai itu ramai,",
+            "baseText": {
+              "de": "obwohl der Strand voll ist",
+              "en": "although that beach is crowded"
+            }
+          },
+          {
+            "targetText": "aku suka duduk",
+            "baseText": {
+              "de": "ich sitze gern",
+              "en": "I like sitting"
+            }
+          },
+          {
+            "targetText": "dekat laut",
+            "baseText": {
+              "de": "in Meeresnähe",
+              "en": "near the sea"
+            }
+          },
+          {
+            "targetText": "pada sore hari.",
+            "baseText": {
+              "de": "am späten Nachmittag.",
+              "en": "in the late afternoon."
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "Walaupun",
+            "baseText": {
+              "de": "obwohl",
+              "en": "although"
+            }
+          },
+          {
+            "targetText": "pantai itu ramai,",
+            "baseText": {
+              "de": "der Strand voll ist",
+              "en": "that beach is crowded"
+            }
+          },
+          {
+            "targetText": "aku suka duduk dekat laut",
+            "baseText": {
+              "de": "ich sitze gern in Meeresnähe",
+              "en": "I like sitting near the sea"
+            }
+          },
+          {
+            "targetText": "pada sore hari.",
+            "baseText": {
+              "de": "am späten Nachmittag.",
+              "en": "in the late afternoon."
+            }
+          }
+        ],
+        "reason": "ID-02: remove movable 'dekat laut' chip; lone Walaupun is the staged connector of this lesson."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/3/cloze/1/choices",
+        "oldValue": [
+          "kurang",
+          "lebih",
+          "paling",
+          "terlalu"
+        ],
+        "newValue": [
+          "kurang",
+          "lebih",
+          "tidak",
+          "terlalu"
+        ],
+        "reason": "'paling tenang' fits natively; 'tidak tenang, walaupun jauh' breaks the concession."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/4/dialogue/3",
+        "oldValue": {
+          "targetText": "Aku lebih suka sup karena rasanya ringan dan tidak pedas.",
+          "baseText": {
+            "de": "Ich mag die Suppe lieber, weil sie mild schmeckt und nicht scharf ist.",
+            "en": "I prefer the soup because it tastes mild and is not spicy."
+          }
+        },
+        "newValue": {
+          "targetText": "Aku lebih suka sup daripada makanan pedas karena rasanya ringan.",
+          "baseText": {
+            "de": "Ich mag Suppe lieber als scharfes Essen, weil sie mild schmeckt.",
+            "en": "I prefer soup to spicy food because it tastes mild."
+          }
+        },
+        "reason": "'Aku paling suka sup' answered the friend's 'paling' question perfectly, so lebih was not unique; daripada forces the comparative. 10 words, lebih + karena recycled."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/4/cloze",
+        "oldValue": [
+          "Aku ",
+          {
+            "kind": "form",
+            "answer": "lebih",
+            "cue": "suka (preferensi dibanding makanan pedas)",
+            "choices": [
+              "kurang",
+              "paling",
+              "lebih",
+              "terlalu"
+            ]
+          },
+          " suka sup ",
+          {
+            "kind": "connector",
+            "answer": "karena",
+            "choices": [
+              "meskipun",
+              "supaya",
+              "sebelum",
+              "karena"
+            ]
+          },
+          " rasanya ringan dan tidak pedas."
+        ],
+        "newValue": [
+          "Aku ",
+          {
+            "kind": "form",
+            "answer": "lebih",
+            "cue": "suka (perbandingan dengan makanan pedas)",
+            "choices": [
+              "kurang",
+              "paling",
+              "lebih",
+              "terlalu"
+            ]
+          },
+          " suka sup daripada makanan pedas ",
+          {
+            "kind": "connector",
+            "answer": "karena",
+            "choices": [
+              "lalu",
+              "supaya",
+              "sebelum",
+              "karena"
+            ]
+          },
+          " rasanya ringan."
+        ],
+        "reason": "Coupled to the rewritten follow-up; 'meskipun rasanya ringan' would have been a coherent alternative, replaced by sequence-breaking lalu."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/5/cloze/1/choices",
+        "oldValue": [
+          "paling",
+          "terlalu",
+          "kurang",
+          "lebih"
+        ],
+        "newValue": [
+          "tidak",
+          "terlalu",
+          "kurang",
+          "lebih"
+        ],
+        "reason": "'Lukisannya paling berkesan' fits natively; 'tidak berkesan, karena ... tampak hidup' contradicts."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/6/cloze/1/choices",
+        "oldValue": [
+          "kurang",
+          "cukup",
+          "terlalu",
+          "paling"
+        ],
+        "newValue": [
+          "kurang",
+          "tidak",
+          "terlalu",
+          "paling"
+        ],
+        "reason": "'Ceritanya cukup lambat' is a valid reading; 'tidak lambat, karena ... mengulang masalah lama' contradicts."
+      },
+      {
+        "file": "indonesian-p2.json",
+        "jsonPointer": "/lessons/8/cloze/1/choices",
+        "oldValue": [
+          "kurang",
+          "paling",
+          "lebih",
+          "terlalu"
+        ],
+        "newValue": [
+          "kurang",
+          "tidak",
+          "lebih",
+          "terlalu"
+        ],
+        "reason": "'Memang paling murah di sana' fits; 'Memang tidak murah di sana, tetapi ...' breaks the memang/tetapi concession."
+      }
+    ],
+    "finalChecks": "After edits: every chunks.join(' ') equals its first reply (P1 L3 and P2 L4 now 4 chunks); P2 L2 and L5 cloze arrays reconstruct the new follow-ups exactly with whole-word spans, 11 and 10 words; all choice arrays keep 4 distinct entries including the answer; build chips remain distinct from distractors; P1 L8 captions quote the new opening in both locales and quote no later turn; trophies unchanged and anchored in first reply, pattern example and trophyWord.example; no digits, Anda, slang or Malay in learner lines; no walaupun/meskipun + tetapi in one sentence; tense licences unchanged. Content approval only for these two paths once Codex applies these exact edits and the frozen files are re-hashed; no production or engineering approval implied, and no claim of human native review."
+  },
+  "exactReplayEdits": 18
+}

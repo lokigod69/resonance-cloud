@@ -1,0 +1,11 @@
+# Native B1 drafts
+
+Indonesian P1 and P2 contain twenty complete four-turn lessons. Fable read every field and supplied eighteen exact corrections. The independent final review verified their replay and passed with no unresolved local recording or publication findings. Each path retains its original `draft` status; separate evidence records model review without claiming native-human certification.
+
+The `indonesian` folder contains both paths, the full hundred-lesson trophy and progression specification, review evidence and an exact source manifest. The recording projection covers all eighty dialogue turns, chunks, vocabulary, patterns, trophy words and trophy examples: 314 distinct local v4 files, 362 uses and 9,340 characters. The selected voice is Gavrila (`gjhfBUoH6DHh0DG1X4u0`).
+
+The native recording adapter validates the full specification and source files, executes the exact captured TypeScript validator bundle, and binds dependency metadata, runtime files, content evidence and voice evidence. Dispatch additionally requires a separate independent execution review and checked-in inputs. It uses the existing capped API campaign and saves one file per phrase; it does not create a second credit budget.
+
+These drafts are absent from the active course registry. Audio completion and listening checks, runtime and catalog integration, all twelve explanation editions and approval naming the production rows remain before publication. No native draft in this folder is advertised as a live course.
+
+Cebuano P1 and P2 add twenty complete four-turn lessons. Fable read all twenty and supplied five exact corrections; the independent final review confirmed their exact replay and approved the canonical spoken text for local TTS. Its publication verdict remains **REWORK**: P1 L2's time-choice distractors are ambiguous after a hedged arrival guess. This nonspoken exercise finding is preserved in both evidence files and must be resolved before activation. Corazon (`LR0CUgPwE0CmrIZg4enh`) is the selected Cebuano voice; the authenticated provider evidence confirms Cebuano but supplies no verified locale. Its queued pilot must yield a positive receipt before full recording can be authorized by the execution review.

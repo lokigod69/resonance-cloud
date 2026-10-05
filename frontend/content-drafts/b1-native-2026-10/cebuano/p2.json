@@ -1,0 +1,2203 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Sa akong hunahuna — Meiner Meinung nach",
+    "en": "Sa akong hunahuna — In my opinion"
+  },
+  "subtitle": {
+    "de": "Eine Meinung begründen und auf Einwände reagieren",
+    "en": "Explain your view and respond to objections"
+  },
+  "anchor": "Persönliche Einschätzungen, Zugeständnisse, Zustimmung und Bedingungen in einem zusammenhängenden Gespräch ausdrücken.",
+  "lessons": [
+    {
+      "slug": "hunahuna-new-canteen",
+      "title": {
+        "de": "Deine Meinung zur Kantine",
+        "en": "Your view of the canteen"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt nach deinem ersten Eindruck von der neuen Kantine.",
+        "en": "A coworker asks for your first impression of the new canteen."
+      },
+      "pedagogicalGoal": "Mit sa akong hunahuna eine persönliche Einschätzung geben und einen Einwand abwägen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa imong hunahuna bahin sa bag-ong kantina?",
+          "baseText": {
+            "de": "Was hältst du von der neuen Kantine?",
+            "en": "What do you think of the new canteen?"
+          }
+        },
+        {
+          "targetText": "Sa akong hunahuna, lami ang pagkaon bisan gamay ang bag-ong kantina.",
+          "baseText": {
+            "de": "Meiner Meinung nach schmeckt das Essen gut, auch wenn die neue Kantine klein ist.",
+            "en": "In my opinion, the food is tasty even though the new canteen is small."
+          }
+        },
+        {
+          "targetText": "Apan mas mahal didto kaysa sa daang kantina.",
+          "baseText": {
+            "de": "Aber dort ist es teurer als in der alten Kantine.",
+            "en": "But it is more expensive there than at the old canteen."
+          }
+        },
+        {
+          "targetText": "Mahal, bisan pa og lami; mas barato sa daang kantina.",
+          "baseText": {
+            "de": "Es ist teuer, auch wenn es gut schmeckt; in der alten Kantine ist es günstiger.",
+            "en": "It is expensive, even though it is tasty; the old canteen is cheaper."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sa akong hunahuna: meine Einschätzung",
+        "rule": {
+          "de": "Sa akong hunahuna kennzeichnet eine persönliche Meinung; bisan kann einen Punkt einräumen, der diese Meinung nicht aufhebt.",
+          "en": "Sa akong hunahuna marks a personal opinion; bisan can acknowledge a point without cancelling that opinion."
+        },
+        "examples": [
+          {
+            "targetText": "Sa akong hunahuna, lami ang pagkaon bisan gamay ang bag-ong kantina.",
+            "baseText": {
+              "de": "Meiner Meinung nach schmeckt das Essen gut, auch wenn die neue Kantine klein ist.",
+              "en": "In my opinion, the food is tasty even though the new canteen is small."
+            },
+            "highlight": "Sa akong hunahuna"
+          },
+          {
+            "targetText": "Sa akong hunahuna, presko ang mga utanon dinhi.",
+            "baseText": {
+              "de": "Meiner Meinung nach ist das Gemüse hier frisch.",
+              "en": "In my opinion, the vegetables here are fresh."
+            },
+            "highlight": "Sa akong hunahuna"
+          }
+        ]
+      },
+      "cloze": [
+        "Mahal, ",
+        {
+          "kind": "connector",
+          "answer": "bisan",
+          "choices": [
+            "bisan",
+            "tungod",
+            "aron",
+            "nga"
+          ]
+        },
+        " pa og lami; ",
+        {
+          "kind": "form",
+          "answer": "mas barato",
+          "cue": "barato, comparative",
+          "choices": [
+            "mas barato",
+            "pinakabarato",
+            "kasingbarato",
+            "baratong"
+          ]
+        },
+        " sa daang kantina."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa akong hunahuna,",
+          "baseText": {
+            "de": "Meiner Meinung nach",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "lami ang pagkaon",
+          "baseText": {
+            "de": "schmeckt das Essen gut",
+            "en": "the food is tasty"
+          }
+        },
+        {
+          "targetText": "bisan gamay",
+          "baseText": {
+            "de": "auch wenn klein",
+            "en": "even though small"
+          }
+        },
+        {
+          "targetText": "ang bag-ong kantina.",
+          "baseText": {
+            "de": "die neue Kantine ist.",
+            "en": "the new canteen is."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sa akong hunahuna",
+          "baseText": {
+            "de": "meiner Meinung nach",
+            "en": "in my opinion"
+          }
+        },
+        {
+          "targetText": "lami",
+          "baseText": {
+            "de": "lecker",
+            "en": "tasty"
+          }
+        },
+        {
+          "targetText": "bisan",
+          "baseText": {
+            "de": "obwohl; auch wenn",
+            "en": "although; even though"
+          }
+        },
+        {
+          "targetText": "kantina",
+          "baseText": {
+            "de": "Kantine",
+            "en": "canteen"
+          }
+        },
+        {
+          "targetText": "mas barato",
+          "baseText": {
+            "de": "günstiger",
+            "en": "cheaper"
+          }
+        },
+        {
+          "targetText": "daang kantina",
+          "baseText": {
+            "de": "alte Kantine",
+            "en": "old canteen"
+          }
+        },
+        {
+          "targetText": "mahal",
+          "baseText": {
+            "de": "teuer",
+            "en": "expensive"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa akong ",
+        "answer": "hunahuna",
+        "after": ", lami ang pagkaon bisan gamay ang bag-ong kantina.",
+        "fallbackChoices": [
+          "hunahuna",
+          "pamilya",
+          "trabaho",
+          "balay"
+        ]
+      },
+      "speakRequired": [
+        "hunahuna",
+        "pagkaon",
+        "bisan"
+      ],
+      "sceneCaption": {
+        "de": "In der Mittagspause fragt deine Kollegin: „Unsa imong hunahuna bahin sa bag-ong kantina?“",
+        "en": "During lunch break, your coworker asks: “Unsa imong hunahuna bahin sa bag-ong kantina?”"
+      },
+      "trophyWord": {
+        "word": "hunahuna",
+        "meaning": {
+          "de": "Gedanke; Meinung",
+          "en": "thought; opinion"
+        },
+        "example": "Sa akong hunahuna, lami ang pagkaon dinhi.",
+        "whyThisWord": {
+          "de": "Hunahuna steht in sa akong hunahuna für deine persönliche Einschätzung und hilft, eine Meinung freundlich einzuordnen.",
+          "en": "In sa akong hunahuna, hunahuna expresses your personal view and helps you frame an opinion politely."
+        }
+      },
+      "distractors": [
+        "Sa imong hunahuna,",
+        "mahal ang pagkaon"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mittagessen in einer kleinen Kantine.",
+        "en": "A lunch in a small canteen."
+      },
+      "songMood": "Easy lunchtime acoustic pop",
+      "visualNotes": "Small bright workplace canteen with lunch trays and coworkers; no price signs."
+    },
+    {
+      "slug": "bisan-distant-resort",
+      "title": {
+        "de": "Weit weg, trotzdem schön",
+        "en": "Far away, still lovely"
+      },
+      "situation": {
+        "de": "Ein Freund schwärmt nach eurem Ausflug von einem Strandresort.",
+        "en": "A friend praises a beach resort after your trip."
+      },
+      "pedagogicalGoal": "Mit bisan einen Nachteil einräumen, ohne die positive Einschätzung zurückzunehmen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Nindot kaayo ang resort nga atong giadtoan, dili ba?",
+          "baseText": {
+            "de": "Das Resort, in dem wir waren, war wirklich schön, oder?",
+            "en": "The resort we visited was lovely, wasn't it?"
+          }
+        },
+        {
+          "targetText": "Nalingaw ko sa resort bisan layo kaayo kini gikan sa atong balay.",
+          "baseText": {
+            "de": "Mir hat es im Resort gefallen, obwohl es sehr weit von unserem Haus entfernt war.",
+            "en": "I enjoyed the resort even though it was very far from our house."
+          }
+        },
+        {
+          "targetText": "Takos ba gyud ang taas nga biyahe?",
+          "baseText": {
+            "de": "Hat sich die lange Fahrt wirklich gelohnt?",
+            "en": "Was the long trip really worth it?"
+          }
+        },
+        {
+          "targetText": "Oo, bisan layo, mas limpyo ang tubig kaysa dinhi.",
+          "baseText": {
+            "de": "Ja, trotz der Entfernung ist das Wasser dort sauberer als hier.",
+            "en": "Yes, even though it is far, the water is cleaner than here."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "bisan: ein Nachteil bleibt bestehen",
+        "rule": {
+          "de": "Bisan leitet einen Einwand ein, der die Aussage im Hauptsatz nicht verhindert; mas mit kaysa bildet einen Vergleich.",
+          "en": "Bisan introduces an obstacle that does not prevent the main statement; mas with kaysa makes a comparison."
+        },
+        "examples": [
+          {
+            "targetText": "Nalingaw ko sa resort bisan layo kaayo kini gikan sa atong balay.",
+            "baseText": {
+              "de": "Mir hat es im Resort gefallen, obwohl es sehr weit von unserem Haus entfernt war.",
+              "en": "I enjoyed the resort even though it was very far from our house."
+            },
+            "highlight": "bisan layo kaayo kini"
+          },
+          {
+            "targetText": "Oo, bisan layo, mas limpyo ang tubig kaysa dinhi.",
+            "baseText": {
+              "de": "Ja, trotz der Entfernung ist das Wasser dort sauberer als hier.",
+              "en": "Yes, even though it is far, the water is cleaner than here."
+            },
+            "highlight": "bisan layo"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, ",
+        {
+          "kind": "connector",
+          "answer": "bisan",
+          "choices": [
+            "bisan",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " layo, ",
+        {
+          "kind": "form",
+          "answer": "mas limpyo",
+          "cue": "limpyo, comparative",
+          "choices": [
+            "mas limpyo",
+            "pinakalimpyo",
+            "kasinglimpyo",
+            "limpyong"
+          ]
+        },
+        " ang tubig kaysa dinhi."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nalingaw ko",
+          "baseText": {
+            "de": "Mir hat es gefallen",
+            "en": "I enjoyed myself"
+          }
+        },
+        {
+          "targetText": "sa resort",
+          "baseText": {
+            "de": "im Resort",
+            "en": "at the resort"
+          }
+        },
+        {
+          "targetText": "bisan layo kaayo kini",
+          "baseText": {
+            "de": "obwohl es sehr weit entfernt war",
+            "en": "even though it was very far"
+          }
+        },
+        {
+          "targetText": "gikan sa atong balay.",
+          "baseText": {
+            "de": "von unserem Haus.",
+            "en": "from our house."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bisan",
+          "baseText": {
+            "de": "obwohl; auch wenn",
+            "en": "although; even though"
+          }
+        },
+        {
+          "targetText": "nalingaw",
+          "baseText": {
+            "de": "Spaß gehabt",
+            "en": "enjoyed oneself"
+          }
+        },
+        {
+          "targetText": "resort",
+          "baseText": {
+            "de": "Ferienanlage",
+            "en": "resort"
+          }
+        },
+        {
+          "targetText": "layo kaayo",
+          "baseText": {
+            "de": "sehr weit weg",
+            "en": "very far away"
+          }
+        },
+        {
+          "targetText": "takos",
+          "baseText": {
+            "de": "lohnend; wert",
+            "en": "worthwhile; worth"
+          }
+        },
+        {
+          "targetText": "mas limpyo",
+          "baseText": {
+            "de": "sauberer",
+            "en": "cleaner"
+          }
+        },
+        {
+          "targetText": "taas nga biyahe",
+          "baseText": {
+            "de": "lange Fahrt",
+            "en": "long trip"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nalingaw ko sa resort ",
+        "answer": "bisan",
+        "after": " layo kaayo kini gikan sa atong balay.",
+        "fallbackChoices": [
+          "bisan",
+          "dayon",
+          "aron",
+          "tungod"
+        ]
+      },
+      "speakRequired": [
+        "nalingaw",
+        "bisan",
+        "resort"
+      ],
+      "sceneCaption": {
+        "de": "Beim Erzählen vom Ausflug sagt dein Freund: „Nindot kaayo ang resort nga atong giadtoan, dili ba?“",
+        "en": "Talking about the trip, your friend says: “Nindot kaayo ang resort nga atong giadtoan, dili ba?”"
+      },
+      "trophyWord": {
+        "word": "bisan",
+        "meaning": {
+          "de": "obwohl; auch wenn",
+          "en": "although; even though"
+        },
+        "example": "Nalingaw ko bisan layo ang resort.",
+        "whyThisWord": {
+          "de": "Mit bisan kannst du einen echten Nachteil nennen und trotzdem bei deiner positiven Aussage bleiben.",
+          "en": "Bisan lets you acknowledge a real drawback while keeping your positive statement."
+        }
+      },
+      "distractors": [
+        "gikan sa inyong balay.",
+        "sa merkado"
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiger Strand an einer Ferienanlage.",
+        "en": "A quiet beach at a resort."
+      },
+      "songMood": "Warm island guitar with a relaxed pulse",
+      "visualNotes": "Beach resort with open shoreline and distant hills; no text or travel-distance graphic."
+    },
+    {
+      "slug": "hinuon-slow-film",
+      "title": {
+        "de": "Eher langweilig",
+        "en": "Rather dull"
+      },
+      "situation": {
+        "de": "Eine Gastgeberin fragt nach deiner Meinung zum gemeinsam gesehenen Film.",
+        "en": "A host asks what you thought of the film you watched together."
+      },
+      "pedagogicalGoal": "Mit hinuon eine Erwartung korrigieren und das Urteil anschließend abschwächen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Nindot ba ang salida para nimo?",
+          "baseText": {
+            "de": "Fandest du den Film gut?",
+            "en": "Did you think the film was good?"
+          }
+        },
+        {
+          "targetText": "Laay hinuon ang salida kay hinay kaayo ang dagan sa istorya para nako.",
+          "baseText": {
+            "de": "Ich finde den Film eher langweilig, weil sich die Handlung für mich sehr langsam entwickelt.",
+            "en": "I find the film rather dull because the story moves very slowly for me."
+          }
+        },
+        {
+          "targetText": "Ganahan ko sa kataposan; wala ba ka ganahi niini?",
+          "baseText": {
+            "de": "Mir hat das Ende gefallen; hat es dir denn nicht gefallen?",
+            "en": "I liked the ending; didn't you like it?"
+          }
+        },
+        {
+          "targetText": "Mas maayo ang kataposan kaysa sa sugod, bisan hinay ang istorya.",
+          "baseText": {
+            "de": "Das Ende ist besser als der Anfang, auch wenn die Geschichte langsam ist.",
+            "en": "The ending is better than the beginning, even though the story is slow."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "hinuon: eine andere Einschätzung",
+        "rule": {
+          "de": "Hinuon kann eine erwartete Einschätzung korrigieren; ein anschließender Vergleich lässt Raum für eine mildere Bewertung.",
+          "en": "Hinuon can correct an expected assessment; a following comparison leaves room for a softer judgment."
+        },
+        "examples": [
+          {
+            "targetText": "Laay hinuon ang salida kay hinay kaayo ang dagan sa istorya para nako.",
+            "baseText": {
+              "de": "Ich finde den Film eher langweilig, weil sich die Handlung für mich sehr langsam entwickelt.",
+              "en": "I find the film rather dull because the story moves very slowly for me."
+            },
+            "highlight": "Laay hinuon"
+          },
+          {
+            "targetText": "Hilom hinuon ang lugar kay gamay ra ang mga tawo.",
+            "baseText": {
+              "de": "Der Ort ist eher ruhig, weil nur wenige Leute da sind.",
+              "en": "The place is rather quiet because there are few people."
+            },
+            "highlight": "Hilom hinuon"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Mas maayo",
+          "cue": "maayo, comparative",
+          "choices": [
+            "Mas maayo",
+            "Pinakamaayo",
+            "Kasingmaayo",
+            "Maayong"
+          ]
+        },
+        " ang kataposan kaysa sa sugod, ",
+        {
+          "kind": "connector",
+          "answer": "bisan",
+          "choices": [
+            "bisan",
+            "tungod",
+            "nga",
+            "aron"
+          ]
+        },
+        " hinay ang istorya."
+      ],
+      "chunks": [
+        {
+          "targetText": "Laay hinuon ang salida",
+          "baseText": {
+            "de": "Der Film ist eher langweilig",
+            "en": "The film is rather dull"
+          }
+        },
+        {
+          "targetText": "kay hinay kaayo",
+          "baseText": {
+            "de": "weil sehr langsam",
+            "en": "because very slowly"
+          }
+        },
+        {
+          "targetText": "ang dagan sa istorya",
+          "baseText": {
+            "de": "sich die Handlung entwickelt",
+            "en": "the story moves"
+          }
+        },
+        {
+          "targetText": "para nako.",
+          "baseText": {
+            "de": "für mich.",
+            "en": "for me."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hinuon",
+          "baseText": {
+            "de": "eher; vielmehr",
+            "en": "rather; instead"
+          }
+        },
+        {
+          "targetText": "laay",
+          "baseText": {
+            "de": "langweilig",
+            "en": "boring"
+          }
+        },
+        {
+          "targetText": "salida",
+          "baseText": {
+            "de": "Film",
+            "en": "film"
+          }
+        },
+        {
+          "targetText": "dagan sa istorya",
+          "baseText": {
+            "de": "Verlauf der Handlung",
+            "en": "flow of the story"
+          }
+        },
+        {
+          "targetText": "kataposan",
+          "baseText": {
+            "de": "Ende",
+            "en": "ending"
+          }
+        },
+        {
+          "targetText": "sugod",
+          "baseText": {
+            "de": "Anfang",
+            "en": "beginning"
+          }
+        },
+        {
+          "targetText": "mas maayo",
+          "baseText": {
+            "de": "besser",
+            "en": "better"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Laay ",
+        "answer": "hinuon",
+        "after": " ang salida kay hinay kaayo ang dagan sa istorya para nako.",
+        "fallbackChoices": [
+          "hinuon",
+          "dayon",
+          "ugma",
+          "kaniadto"
+        ]
+      },
+      "speakRequired": [
+        "laay",
+        "hinuon",
+        "istorya"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Film fragt deine Gastgeberin: „Nindot ba ang salida para nimo?“",
+        "en": "After the film, your host asks: “Nindot ba ang salida para nimo?”"
+      },
+      "trophyWord": {
+        "word": "hinuon",
+        "meaning": {
+          "de": "eher; vielmehr",
+          "en": "rather; instead"
+        },
+        "example": "Laay hinuon ang salida para nako.",
+        "whyThisWord": {
+          "de": "Hinuon hilft dir, einer erwarteten Bewertung eine andere entgegenzustellen, ohne schroff abzubrechen.",
+          "en": "Hinuon helps you offer a different assessment from the expected one without sounding abrupt."
+        }
+      },
+      "distractors": [
+        "kay paspas kaayo",
+        "para nimo."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch nach einem Filmabend.",
+        "en": "A conversation after a film night."
+      },
+      "songMood": "Understated mellow guitar with a thoughtful cadence",
+      "visualNotes": "Living room after a movie, dim screen and two cups; no movie plot shown."
+    },
+    {
+      "slug": "uyon-road-project",
+      "title": {
+        "de": "Teilweise einverstanden",
+        "en": "Partly in agreement"
+      },
+      "situation": {
+        "de": "Ein Nachbar ärgert sich über die lange Baustelle an der Straße.",
+        "en": "A neighbor complains about the long roadworks."
+      },
+      "pedagogicalGoal": "Mit uyon ko teilweise zustimmen und mit apan einen Nutzen dagegenhalten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Dugay kaayo kining proyekto sa dalan; walay pulos!",
+          "baseText": {
+            "de": "Dieses Straßenprojekt dauert ewig; völlig nutzlos!",
+            "en": "This road project is taking forever; it is useless!"
+          }
+        },
+        {
+          "targetText": "Uyon ko nga dugay ang proyekto, apan makatabang kini sa mga drayber.",
+          "baseText": {
+            "de": "Ich stimme zu, dass das Projekt lange dauert, aber es hilft den Fahrern.",
+            "en": "I agree that the project is taking a long time, but it helps drivers."
+          }
+        },
+        {
+          "targetText": "Apan sa pagkakaron, lisod man gihapon ang pag-agi.",
+          "baseText": {
+            "de": "Aber im Moment ist es immer noch schwierig, dort durchzukommen.",
+            "en": "But for now, getting through is still difficult."
+          }
+        },
+        {
+          "targetText": "Lisod karon, apan mas luwas ang dalan human niini.",
+          "baseText": {
+            "de": "Jetzt ist es schwierig, aber die Straße ist danach sicherer.",
+            "en": "It is difficult now, but the road is safer afterward."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "uyon ko, apan: begrenzte Zustimmung",
+        "rule": {
+          "de": "Uyon ko stimmt zu und dili ko uyon widerspricht; apan kann einen gegensätzlichen Gesichtspunkt anschließen.",
+          "en": "Uyon ko expresses agreement and dili ko uyon disagreement; apan adds a contrasting point."
+        },
+        "examples": [
+          {
+            "targetText": "Uyon ko nga dugay ang proyekto, apan makatabang kini sa mga drayber.",
+            "baseText": {
+              "de": "Ich stimme zu, dass das Projekt lange dauert, aber es hilft den Fahrern.",
+              "en": "I agree that the project is taking a long time, but it helps drivers."
+            },
+            "highlight": "Uyon ko nga dugay ang proyekto, apan"
+          },
+          {
+            "targetText": "Lisod karon, apan mas luwas ang dalan human niini.",
+            "baseText": {
+              "de": "Jetzt ist es schwierig, aber die Straße ist danach sicherer.",
+              "en": "It is difficult now, but the road is safer afterward."
+            },
+            "highlight": "apan mas luwas"
+          }
+        ]
+      },
+      "cloze": [
+        "Lisod karon, ",
+        {
+          "kind": "connector",
+          "answer": "apan",
+          "choices": [
+            "apan",
+            "gikan",
+            "tungod",
+            "nga"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "mas luwas",
+          "cue": "luwas, comparative",
+          "choices": [
+            "mas luwas",
+            "pinakaluwas",
+            "kasingluwas",
+            "luwas nga"
+          ]
+        },
+        " ang dalan human niini."
+      ],
+      "chunks": [
+        {
+          "targetText": "Uyon ko",
+          "baseText": {
+            "de": "Ich stimme zu",
+            "en": "I agree"
+          }
+        },
+        {
+          "targetText": "nga dugay ang proyekto,",
+          "baseText": {
+            "de": "dass das Projekt lange dauert,",
+            "en": "that the project takes a long time,"
+          }
+        },
+        {
+          "targetText": "apan makatabang kini",
+          "baseText": {
+            "de": "aber es hilft",
+            "en": "but it helps"
+          }
+        },
+        {
+          "targetText": "sa mga drayber.",
+          "baseText": {
+            "de": "den Fahrern.",
+            "en": "drivers."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "uyon",
+          "baseText": {
+            "de": "einverstanden",
+            "en": "in agreement"
+          }
+        },
+        {
+          "targetText": "dili ko uyon",
+          "baseText": {
+            "de": "ich bin nicht einverstanden",
+            "en": "I disagree"
+          }
+        },
+        {
+          "targetText": "proyekto",
+          "baseText": {
+            "de": "Projekt",
+            "en": "project"
+          }
+        },
+        {
+          "targetText": "dalan",
+          "baseText": {
+            "de": "Straße",
+            "en": "road"
+          }
+        },
+        {
+          "targetText": "makatabang",
+          "baseText": {
+            "de": "helfen können",
+            "en": "can help"
+          }
+        },
+        {
+          "targetText": "mas luwas",
+          "baseText": {
+            "de": "sicherer",
+            "en": "safer"
+          }
+        },
+        {
+          "targetText": "apan",
+          "baseText": {
+            "de": "aber",
+            "en": "but"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Uyon ko nga dugay ang ",
+        "answer": "proyekto",
+        "after": ", apan makatabang kini sa mga drayber.",
+        "fallbackChoices": [
+          "proyekto",
+          "biyahe",
+          "salida",
+          "pista"
+        ]
+      },
+      "speakRequired": [
+        "uyon",
+        "apan",
+        "drayber"
+      ],
+      "sceneCaption": {
+        "de": "An der Baustelle schimpft dein Nachbar: „Dugay kaayo kining proyekto sa dalan; walay pulos!“",
+        "en": "By the roadworks, your neighbor complains: “Dugay kaayo kining proyekto sa dalan; walay pulos!”"
+      },
+      "trophyWord": {
+        "word": "uyon",
+        "meaning": {
+          "de": "einverstanden; zustimmend",
+          "en": "in agreement"
+        },
+        "example": "Uyon ko nga dugay ang proyekto.",
+        "whyThisWord": {
+          "de": "Uyon ko ist eine kurze, wiederverwendbare Zustimmung; dili ko uyon erlaubt einen klaren Widerspruch.",
+          "en": "Uyon ko is a reusable way to agree; dili ko uyon gives you a clear way to disagree."
+        }
+      },
+      "distractors": [
+        "sa mga tindero.",
+        "apan makasamok kini"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch neben einer Straßenbaustelle.",
+        "en": "A conversation beside roadworks."
+      },
+      "songMood": "Steady conversational beat with a hopeful lift",
+      "visualNotes": "Neighborhood roadworks with a clear pedestrian route, two neighbors talking; no finished road."
+    },
+    {
+      "slug": "lisod-cebuano-grammar",
+      "title": {
+        "de": "Was an der Grammatik schwer ist",
+        "en": "What is hard about the grammar"
+      },
+      "situation": {
+        "de": "Deine Lehrerin fragt, wie du mit der Cebuano-Grammatik zurechtkommst.",
+        "en": "Your tutor asks how you are finding Cebuano grammar."
+      },
+      "pedagogicalGoal": "Mit lisod eine Schwierigkeit benennen und einen Widerspruch begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta ang pagtuon nimo sa gramatika sa Cebuano?",
+          "baseText": {
+            "de": "Wie kommst du mit der Cebuano-Grammatik zurecht?",
+            "en": "How are you getting on with Cebuano grammar?"
+          }
+        },
+        {
+          "targetText": "Lisod para nako ang gramatika, apan ganahan ko nga magpadayon sa pagtuon.",
+          "baseText": {
+            "de": "Die Grammatik ist für mich schwierig, aber ich möchte weiterlernen.",
+            "en": "The grammar is difficult for me, but I want to continue learning."
+          }
+        },
+        {
+          "targetText": "Sayon ra man; asa ka maglisod?",
+          "baseText": {
+            "de": "Sie ist doch einfach; was fällt dir schwer?",
+            "en": "It is quite easy; what do you find difficult?"
+          }
+        },
+        {
+          "targetText": "Dili ko uyon kay lisod ang hustong paggamit sa mga berbo.",
+          "baseText": {
+            "de": "Ich bin nicht einverstanden, denn die richtige Verwendung der Verben ist schwierig.",
+            "en": "I disagree because using the verbs correctly is difficult."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "lisod: eine Schwierigkeit benennen",
+        "rule": {
+          "de": "Lisod beschreibt etwas Schwieriges; mit kay gibst du den Grund für deine Einschätzung oder deinen Widerspruch an.",
+          "en": "Lisod describes something difficult; kay gives the reason for your assessment or disagreement."
+        },
+        "examples": [
+          {
+            "targetText": "Lisod para nako ang gramatika, apan ganahan ko nga magpadayon sa pagtuon.",
+            "baseText": {
+              "de": "Die Grammatik ist für mich schwierig, aber ich möchte weiterlernen.",
+              "en": "The grammar is difficult for me, but I want to continue learning."
+            },
+            "highlight": "Lisod para nako"
+          },
+          {
+            "targetText": "Dili ko uyon kay lisod ang hustong paggamit sa mga berbo.",
+            "baseText": {
+              "de": "Ich bin nicht einverstanden, denn die richtige Verwendung der Verben ist schwierig.",
+              "en": "I disagree because using the verbs correctly is difficult."
+            },
+            "highlight": "kay lisod ang hustong paggamit"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Dili ko uyon",
+          "choices": [
+            "Dili ko uyon",
+            "Uyon ko",
+            "Kontento ko",
+            "Nalipay ko"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "kay",
+            "tungod",
+            "aron",
+            "dayon"
+          ]
+        },
+        " lisod ang hustong paggamit sa mga berbo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lisod para nako",
+          "baseText": {
+            "de": "Für mich ist schwierig",
+            "en": "It is difficult for me"
+          }
+        },
+        {
+          "targetText": "ang gramatika,",
+          "baseText": {
+            "de": "die Grammatik,",
+            "en": "the grammar,"
+          }
+        },
+        {
+          "targetText": "apan ganahan ko",
+          "baseText": {
+            "de": "aber ich möchte",
+            "en": "but I want"
+          }
+        },
+        {
+          "targetText": "nga magpadayon",
+          "baseText": {
+            "de": "weitermachen",
+            "en": "to continue"
+          }
+        },
+        {
+          "targetText": "sa pagtuon.",
+          "baseText": {
+            "de": "mit dem Lernen.",
+            "en": "learning."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lisod",
+          "baseText": {
+            "de": "schwierig",
+            "en": "difficult"
+          }
+        },
+        {
+          "targetText": "gramatika",
+          "baseText": {
+            "de": "Grammatik",
+            "en": "grammar"
+          }
+        },
+        {
+          "targetText": "magpadayon",
+          "baseText": {
+            "de": "weitermachen",
+            "en": "continue"
+          }
+        },
+        {
+          "targetText": "pagtuon",
+          "baseText": {
+            "de": "Lernen",
+            "en": "learning"
+          }
+        },
+        {
+          "targetText": "hustong paggamit",
+          "baseText": {
+            "de": "richtige Verwendung",
+            "en": "correct use"
+          }
+        },
+        {
+          "targetText": "berbo",
+          "baseText": {
+            "de": "Verb",
+            "en": "verb"
+          }
+        },
+        {
+          "targetText": "dili ko uyon",
+          "baseText": {
+            "de": "ich bin nicht einverstanden",
+            "en": "I disagree"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lisod para nako ang ",
+        "answer": "gramatika",
+        "after": ", apan ganahan ko nga magpadayon sa pagtuon.",
+        "fallbackChoices": [
+          "gramatika",
+          "pagkaon",
+          "trapiko",
+          "panahon"
+        ]
+      },
+      "speakRequired": [
+        "lisod",
+        "apan",
+        "pagtuon"
+      ],
+      "sceneCaption": {
+        "de": "Zu Beginn der Stunde fragt deine Lehrerin: „Kumusta ang pagtuon nimo sa gramatika sa Cebuano?“",
+        "en": "At the start of the lesson, your tutor asks: “Kumusta ang pagtuon nimo sa gramatika sa Cebuano?”"
+      },
+      "trophyWord": {
+        "word": "lisod",
+        "meaning": {
+          "de": "schwierig; schwer",
+          "en": "difficult; hard"
+        },
+        "example": "Lisod para nako ang hustong paggamit sa mga berbo.",
+        "whyThisWord": {
+          "de": "Mit lisod benennst du eine konkrete Schwierigkeit und kannst erklären, wobei du Unterstützung brauchst.",
+          "en": "Lisod names a specific difficulty and helps you explain where you need support."
+        }
+      },
+      "distractors": [
+        "ang pagbasa,",
+        "nga mohunong"
+      ],
+      "placeholderCaption": {
+        "de": "Ein aufgeschlagenes Heft im Sprachunterricht.",
+        "en": "An open notebook in a language lesson."
+      },
+      "songMood": "Patient encouraging acoustic rhythm",
+      "visualNotes": "Tutor and learner at a desk with an open notebook; no readable grammar answers."
+    },
+    {
+      "slug": "sayon-cooking-adobo",
+      "title": {
+        "de": "Einfach, aber langsam",
+        "en": "Easy, but slow"
+      },
+      "situation": {
+        "de": "Ein Freund behauptet, Adobo sei einfach zu kochen.",
+        "en": "A friend says adobo is easy to cook."
+      },
+      "pedagogicalGoal": "Mit sayon zustimmen und mit apan einen praktischen Nachteil ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Sayon ra kaayo magluto og adobo, dili ba?",
+          "baseText": {
+            "de": "Adobo zu kochen ist doch ganz einfach, oder?",
+            "en": "Cooking adobo is really easy, isn't it?"
+          }
+        },
+        {
+          "targetText": "Sayon ra ang pagluto og adobo, apan dugay mahumok ang karne sa baboy.",
+          "baseText": {
+            "de": "Adobo zu kochen ist einfach, aber es dauert lange, bis das Schweinefleisch weich wird.",
+            "en": "Cooking adobo is easy, but the pork takes a long time to become tender."
+          }
+        },
+        {
+          "targetText": "Manok ba o baboy ang imong adobo?",
+          "baseText": {
+            "de": "Machst du Adobo mit Hähnchen oder Schweinefleisch?",
+            "en": "Do you make chicken or pork adobo?"
+          }
+        },
+        {
+          "targetText": "Adobong manok ang akong gusto kay mas dali kini maluto kaysa baboy.",
+          "baseText": {
+            "de": "Ich mag lieber Hähnchen-Adobo, weil es schneller gar wird als Schweinefleisch.",
+            "en": "I prefer chicken adobo because it cooks faster than pork."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sayon, apan: einfach mit einem Haken",
+        "rule": {
+          "de": "Sayon bewertet eine Tätigkeit als einfach; apan ergänzt einen gegensätzlichen Punkt, etwa den Zeitaufwand.",
+          "en": "Sayon describes an activity as easy; apan adds a contrasting point, such as the time it takes."
+        },
+        "examples": [
+          {
+            "targetText": "Sayon ra ang pagluto og adobo, apan dugay mahumok ang karne sa baboy.",
+            "baseText": {
+              "de": "Adobo zu kochen ist einfach, aber es dauert lange, bis das Schweinefleisch weich wird.",
+              "en": "Cooking adobo is easy, but the pork takes a long time to become tender."
+            },
+            "highlight": "Sayon ra ang pagluto og adobo, apan"
+          },
+          {
+            "targetText": "Sayon ang pagluto og sabaw, apan kinahanglan og preskong utanon.",
+            "baseText": {
+              "de": "Suppe zu kochen ist einfach, aber man braucht frisches Gemüse.",
+              "en": "Cooking soup is easy, but it needs fresh vegetables."
+            },
+            "highlight": "Sayon ang pagluto og sabaw, apan"
+          }
+        ]
+      },
+      "cloze": [
+        "Adobong manok ang akong gusto ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "kay",
+            "tungod",
+            "aron",
+            "dayon"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "mas dali",
+          "cue": "dali, comparative",
+          "choices": [
+            "mas dali",
+            "pinakadali",
+            "kasingdali",
+            "daling"
+          ]
+        },
+        " kini maluto kaysa baboy."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sayon ra",
+          "baseText": {
+            "de": "Es ist einfach",
+            "en": "It is easy"
+          }
+        },
+        {
+          "targetText": "ang pagluto og adobo,",
+          "baseText": {
+            "de": "Adobo zu kochen,",
+            "en": "to cook adobo,"
+          }
+        },
+        {
+          "targetText": "apan dugay mahumok",
+          "baseText": {
+            "de": "aber es dauert lange, bis weich wird",
+            "en": "but it takes a long time to become tender"
+          }
+        },
+        {
+          "targetText": "ang karne sa baboy.",
+          "baseText": {
+            "de": "das Schweinefleisch.",
+            "en": "the pork."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sayon",
+          "baseText": {
+            "de": "einfach; leicht",
+            "en": "easy"
+          }
+        },
+        {
+          "targetText": "pagluto",
+          "baseText": {
+            "de": "Kochen",
+            "en": "cooking"
+          }
+        },
+        {
+          "targetText": "adobo",
+          "baseText": {
+            "de": "Adobo; Schmorgericht mit Essig",
+            "en": "adobo; vinegar-based braised dish"
+          }
+        },
+        {
+          "targetText": "mahumok",
+          "baseText": {
+            "de": "weich werden",
+            "en": "become tender"
+          }
+        },
+        {
+          "targetText": "karne sa baboy",
+          "baseText": {
+            "de": "Schweinefleisch",
+            "en": "pork"
+          }
+        },
+        {
+          "targetText": "adobong manok",
+          "baseText": {
+            "de": "Hähnchen-Adobo",
+            "en": "chicken adobo"
+          }
+        },
+        {
+          "targetText": "mas dali",
+          "baseText": {
+            "de": "schneller",
+            "en": "faster"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sayon ra ang ",
+        "answer": "pagluto",
+        "after": " og adobo, apan dugay mahumok ang karne sa baboy.",
+        "fallbackChoices": [
+          "pagluto",
+          "pagbasa",
+          "paglakaw",
+          "pagkanta"
+        ]
+      },
+      "speakRequired": [
+        "sayon",
+        "pagluto",
+        "apan"
+      ],
+      "sceneCaption": {
+        "de": "Beim Gespräch übers Kochen meint dein Freund: „Sayon ra kaayo magluto og adobo, dili ba?“",
+        "en": "Talking about cooking, your friend says: “Sayon ra kaayo magluto og adobo, dili ba?”"
+      },
+      "trophyWord": {
+        "word": "sayon",
+        "meaning": {
+          "de": "einfach; leicht",
+          "en": "easy"
+        },
+        "example": "Sayon ang pagluto og adobo.",
+        "whyThisWord": {
+          "de": "Sayon ist die direkte Gegenüberstellung zu lisod und hilft dir, Aufwand und Schwierigkeit zu vergleichen.",
+          "en": "Sayon is the direct counterpart of lisod and helps you compare effort and difficulty."
+        }
+      },
+      "distractors": [
+        "ang karne sa manok.",
+        "apan dali mahumok"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Topf Adobo auf dem Herd.",
+        "en": "A pot of adobo on the stove."
+      },
+      "songMood": "Warm kitchen groove with light hand percussion",
+      "visualNotes": "Home kitchen with a pot of adobo and simple ingredients; no recipe instructions."
+    },
+    {
+      "slug": "angay-pets-at-home",
+      "title": {
+        "de": "Haustiere mit Regeln",
+        "en": "Pets with rules"
+      },
+      "situation": {
+        "de": "Deine Vermieterin fragt, ob Haustiere im Haus erlaubt sein sollten.",
+        "en": "Your landlady asks whether pets should be allowed in the house."
+      },
+      "pedagogicalGoal": "Mit angay eine angemessene Regel vorschlagen und sie durch basta einschränken.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Angay ba nga tugotan ang mga binuhi dinhi?",
+          "baseText": {
+            "de": "Sollten Haustiere hier erlaubt sein?",
+            "en": "Should pets be allowed here?"
+          }
+        },
+        {
+          "targetText": "Angay magbuhi og iro dinhi basta limpyo ang balay ug responsable ang tag-iya.",
+          "baseText": {
+            "de": "Hier einen Hund zu halten ist angemessen, solange das Haus sauber und der Besitzer verantwortungsbewusst ist.",
+            "en": "Keeping a dog here is appropriate as long as the house is clean and the owner is responsible."
+          }
+        },
+        {
+          "targetText": "Apan saba sila sa gabii. Uyon ka nga sulod ra sila?",
+          "baseText": {
+            "de": "Aber sie sind nachts laut. Bist du einverstanden, dass sie drinnen bleiben?",
+            "en": "But they are noisy at night. Do you agree they should stay indoors?"
+          }
+        },
+        {
+          "targetText": "Oo, uyon ko. Apan kinahanglan hilom sila sa gabii.",
+          "baseText": {
+            "de": "Ja, ich bin einverstanden. Aber sie müssen nachts ruhig sein.",
+            "en": "Yes, I agree. But they need to be quiet at night."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "angay und basta: passend unter einer Bedingung",
+        "rule": {
+          "de": "Angay beschreibt, was angemessen ist; basta nennt die Bedingung, unter der es passt.",
+          "en": "Angay describes what is appropriate; basta states the condition under which it is acceptable."
+        },
+        "examples": [
+          {
+            "targetText": "Angay magbuhi og iro dinhi basta limpyo ang balay ug responsable ang tag-iya.",
+            "baseText": {
+              "de": "Hier einen Hund zu halten ist angemessen, solange das Haus sauber und der Besitzer verantwortungsbewusst ist.",
+              "en": "Keeping a dog here is appropriate as long as the house is clean and the owner is responsible."
+            },
+            "highlight": "Angay magbuhi og iro dinhi basta"
+          },
+          {
+            "targetText": "Angay mopahuway ang iro dinhi basta hilom ang lugar.",
+            "baseText": {
+              "de": "Der Hund sollte sich hier ausruhen, solange der Ort ruhig ist.",
+              "en": "The dog should rest here as long as the place is quiet."
+            },
+            "highlight": "Angay mopahuway"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, ",
+        {
+          "kind": "choice",
+          "answer": "uyon ko",
+          "choices": [
+            "uyon ko",
+            "dili ko uyon",
+            "supak ko",
+            "nagdumili ko"
+          ]
+        },
+        ". ",
+        {
+          "kind": "connector",
+          "answer": "Apan",
+          "choices": [
+            "Apan",
+            "Aron",
+            "Tungod",
+            "Nga"
+          ]
+        },
+        " kinahanglan hilom sila sa gabii."
+      ],
+      "chunks": [
+        {
+          "targetText": "Angay magbuhi",
+          "baseText": {
+            "de": "Es ist angemessen, zu halten",
+            "en": "It is appropriate to keep"
+          }
+        },
+        {
+          "targetText": "og iro dinhi",
+          "baseText": {
+            "de": "hier einen Hund",
+            "en": "a dog here"
+          }
+        },
+        {
+          "targetText": "basta limpyo ang balay",
+          "baseText": {
+            "de": "solange das Haus sauber ist",
+            "en": "as long as the house is clean"
+          }
+        },
+        {
+          "targetText": "ug responsable ang tag-iya.",
+          "baseText": {
+            "de": "und der Besitzer verantwortungsbewusst ist.",
+            "en": "and the owner is responsible."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "angay",
+          "baseText": {
+            "de": "angemessen; sollte",
+            "en": "appropriate; should"
+          }
+        },
+        {
+          "targetText": "magbuhi og iro",
+          "baseText": {
+            "de": "einen Hund halten",
+            "en": "keep a dog"
+          }
+        },
+        {
+          "targetText": "binuhi",
+          "baseText": {
+            "de": "Haustier",
+            "en": "pet"
+          }
+        },
+        {
+          "targetText": "basta",
+          "baseText": {
+            "de": "solange; vorausgesetzt",
+            "en": "as long as; provided"
+          }
+        },
+        {
+          "targetText": "responsable",
+          "baseText": {
+            "de": "verantwortungsbewusst",
+            "en": "responsible"
+          }
+        },
+        {
+          "targetText": "tag-iya",
+          "baseText": {
+            "de": "Besitzer; Besitzerin",
+            "en": "owner"
+          }
+        },
+        {
+          "targetText": "hilom",
+          "baseText": {
+            "de": "ruhig; leise",
+            "en": "quiet"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Angay magbuhi og iro dinhi basta limpyo ang balay ug ",
+        "answer": "responsable",
+        "after": " ang tag-iya.",
+        "fallbackChoices": [
+          "responsable",
+          "kapoy",
+          "ulahi",
+          "gutom"
+        ]
+      },
+      "speakRequired": [
+        "angay",
+        "basta",
+        "balay"
+      ],
+      "sceneCaption": {
+        "de": "Deine Vermieterin spricht die Hausregeln an: „Angay ba nga tugotan ang mga binuhi dinhi?“",
+        "en": "Your landlady raises the house rules: “Angay ba nga tugotan ang mga binuhi dinhi?”"
+      },
+      "trophyWord": {
+        "word": "angay",
+        "meaning": {
+          "de": "angemessen; sollte",
+          "en": "appropriate; should"
+        },
+        "example": "Angay magbuhi og iro basta responsable ang tag-iya.",
+        "whyThisWord": {
+          "de": "Angay hilft dir zu sagen, welche Handlung angemessen ist, ohne sie als persönliche Vorliebe darzustellen.",
+          "en": "Angay lets you say what action is appropriate rather than simply stating a personal preference."
+        }
+      },
+      "distractors": [
+        "ug responsable ang silingan.",
+        "og iring dinhi"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hund am Eingang eines Wohnhauses.",
+        "en": "A dog at the entrance to a house."
+      },
+      "songMood": "Friendly measured acoustic conversation",
+      "visualNotes": "Quiet house entrance with a dog beside its owner; no noise symbols or rule text."
+    },
+    {
+      "slug": "basta-karaoke-time",
+      "title": {
+        "de": "Karaoke mit Zeitlimit",
+        "en": "Karaoke with a time limit"
+      },
+      "situation": {
+        "de": "Eine Kollegin lädt dich für heute Abend zum Karaoke ein.",
+        "en": "A coworker invites you to karaoke tonight."
+      },
+      "pedagogicalGoal": "Mit basta eine Zusage an eine Bedingung knüpfen und nach einem Gegenvorschlag nachverhandeln.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Mouban ka namo sa karaoke karong gabii?",
+          "baseText": {
+            "de": "Kommst du heute Abend mit uns zum Karaoke?",
+            "en": "Will you come to karaoke with us tonight?"
+          }
+        },
+        {
+          "targetText": "Ganahan ko mokanta basta sayo ta mahuman kay naa koy trabaho ugma.",
+          "baseText": {
+            "de": "Ich würde gern singen, solange wir früh fertig sind, denn ich muss morgen arbeiten.",
+            "en": "I would like to sing as long as we finish early, because I have work tomorrow."
+          }
+        },
+        {
+          "targetText": "Alas nuwebe pa magsugod; mouban ka bisan ulahi?",
+          "baseText": {
+            "de": "Es geht erst um neun los; kommst du auch mit, wenn es spät wird?",
+            "en": "It starts at nine; will you join us even though it is late?"
+          }
+        },
+        {
+          "targetText": "Oo, uyon ko. Apan mouli ko sa alas onse.",
+          "baseText": {
+            "de": "Ja, ich bin einverstanden. Aber ich gehe um elf nach Hause.",
+            "en": "Yes, I agree. But I will go home at eleven."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "basta: eine Bedingung für die Zusage",
+        "rule": {
+          "de": "Basta bedeutet solange oder vorausgesetzt; mit apan kannst du nach einer neuen Information eine Grenze ergänzen.",
+          "en": "Basta means as long as or provided; apan can add a limit after new information."
+        },
+        "examples": [
+          {
+            "targetText": "Ganahan ko mokanta basta sayo ta mahuman kay naa koy trabaho ugma.",
+            "baseText": {
+              "de": "Ich würde gern singen, solange wir früh fertig sind, denn ich muss morgen arbeiten.",
+              "en": "I would like to sing as long as we finish early, because I have work tomorrow."
+            },
+            "highlight": "basta sayo ta mahuman"
+          },
+          {
+            "targetText": "Mouban ko basta sayo ta mouli.",
+            "baseText": {
+              "de": "Ich komme mit, solange wir früh nach Hause gehen.",
+              "en": "I will join you as long as we go home early."
+            },
+            "highlight": "basta sayo ta mouli"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, ",
+        {
+          "kind": "choice",
+          "answer": "uyon ko",
+          "choices": [
+            "uyon ko",
+            "dili ko uyon",
+            "supak ko",
+            "nagdumili ko"
+          ]
+        },
+        ". ",
+        {
+          "kind": "connector",
+          "answer": "Apan",
+          "choices": [
+            "Apan",
+            "Aron",
+            "Tungod",
+            "Nga"
+          ]
+        },
+        " mouli ko sa alas onse."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ganahan ko mokanta",
+          "baseText": {
+            "de": "Ich würde gern singen",
+            "en": "I would like to sing"
+          }
+        },
+        {
+          "targetText": "basta sayo ta mahuman",
+          "baseText": {
+            "de": "solange wir früh fertig sind",
+            "en": "as long as we finish early"
+          }
+        },
+        {
+          "targetText": "kay naa koy trabaho",
+          "baseText": {
+            "de": "denn ich habe Arbeit",
+            "en": "because I have work"
+          }
+        },
+        {
+          "targetText": "ugma.",
+          "baseText": {
+            "de": "morgen.",
+            "en": "tomorrow."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "basta",
+          "baseText": {
+            "de": "solange; vorausgesetzt",
+            "en": "as long as; provided"
+          }
+        },
+        {
+          "targetText": "mokanta",
+          "baseText": {
+            "de": "singen",
+            "en": "sing"
+          }
+        },
+        {
+          "targetText": "mahuman",
+          "baseText": {
+            "de": "fertig werden",
+            "en": "finish"
+          }
+        },
+        {
+          "targetText": "mouban",
+          "baseText": {
+            "de": "mitkommen",
+            "en": "join; come along"
+          }
+        },
+        {
+          "targetText": "mouli",
+          "baseText": {
+            "de": "nach Hause gehen",
+            "en": "go home"
+          }
+        },
+        {
+          "targetText": "alas nuwebe",
+          "baseText": {
+            "de": "um neun Uhr",
+            "en": "at nine o'clock"
+          }
+        },
+        {
+          "targetText": "alas onse",
+          "baseText": {
+            "de": "um elf Uhr",
+            "en": "at eleven o'clock"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ganahan ko ",
+        "answer": "mokanta",
+        "after": " basta sayo ta mahuman kay naa koy trabaho ugma.",
+        "fallbackChoices": [
+          "mokanta",
+          "moluto",
+          "mobasa",
+          "modagan"
+        ]
+      },
+      "speakRequired": [
+        "mokanta",
+        "basta",
+        "trabaho"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Arbeit lädt deine Kollegin dich ein: „Mouban ka namo sa karaoke karong gabii?“",
+        "en": "After work, your coworker invites you: “Mouban ka namo sa karaoke karong gabii?”"
+      },
+      "trophyWord": {
+        "word": "basta",
+        "meaning": {
+          "de": "solange; vorausgesetzt",
+          "en": "as long as; provided"
+        },
+        "example": "Mouban ko basta sayo ta mahuman.",
+        "whyThisWord": {
+          "de": "Mit basta sagst du zu und nennst gleichzeitig eine klare Voraussetzung für deine Zusage.",
+          "en": "Basta lets you agree while stating a clear condition for your agreement."
+        }
+      },
+      "distractors": [
+        "basta ulahi ta mahuman",
+        "karon."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mikrofon für einen Karaokeabend.",
+        "en": "A microphone ready for a karaoke evening."
+      },
+      "songMood": "Playful light pop with an easy singalong pulse",
+      "visualNotes": "Small karaoke room with microphone and warm lights; no clock or end-time reveal."
+    },
+    {
+      "slug": "apan-mango-price",
+      "title": {
+        "de": "Gut, aber zu teuer",
+        "en": "Good, but too expensive"
+      },
+      "situation": {
+        "de": "Eine Obstverkäuferin empfiehlt dir ihre süßen Mangos.",
+        "en": "A fruit vendor recommends her sweet mangoes."
+      },
+      "pedagogicalGoal": "Mit apan eine positive Bewertung einschränken und auf ein günstigeres Angebot reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Pinakatam-is ang mga mangga karon; mopalit ka?",
+          "baseText": {
+            "de": "Die Mangos sind gerade besonders süß; möchtest du welche kaufen?",
+            "en": "The mangoes are at their sweetest now; would you like some?"
+          }
+        },
+        {
+          "targetText": "Lami ang mga mangga apan mahal ra alang sa akong badyet karon.",
+          "baseText": {
+            "de": "Die Mangos sind lecker, aber für mein Budget gerade zu teuer.",
+            "en": "The mangoes are tasty, but they are too expensive for my budget right now."
+          }
+        },
+        {
+          "targetText": "Sige, singkwenta na lang ang kilo imbis otsenta.",
+          "baseText": {
+            "de": "Gut, das Kilo kostet dann nur noch fünfzig statt achtzig.",
+            "en": "All right, just fifty per kilo instead of eighty."
+          }
+        },
+        {
+          "targetText": "Oo, uyon ko. Apan mopalit ko og tunga sa kilo, palihug.",
+          "baseText": {
+            "de": "Ja, ich bin einverstanden. Aber ich kaufe bitte nur ein halbes Kilo.",
+            "en": "Yes, I agree. But I will buy half a kilo, please."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "apan: einen Vorbehalt ergänzen",
+        "rule": {
+          "de": "Apan verbindet eine positive Aussage mit einem Vorbehalt; nach einem Angebot kann es auch eine eigene Einschränkung einführen.",
+          "en": "Apan links a positive statement to a reservation; after an offer it can also introduce your own limitation."
+        },
+        "examples": [
+          {
+            "targetText": "Lami ang mga mangga apan mahal ra alang sa akong badyet karon.",
+            "baseText": {
+              "de": "Die Mangos sind lecker, aber für mein Budget gerade zu teuer.",
+              "en": "The mangoes are tasty, but they are too expensive for my budget right now."
+            },
+            "highlight": "apan mahal ra"
+          },
+          {
+            "targetText": "Oo, uyon ko. Apan mopalit ko og tunga sa kilo, palihug.",
+            "baseText": {
+              "de": "Ja, ich bin einverstanden. Aber ich kaufe bitte nur ein halbes Kilo.",
+              "en": "Yes, I agree. But I will buy half a kilo, please."
+            },
+            "highlight": "Apan mopalit ko og tunga sa kilo"
+          }
+        ]
+      },
+      "cloze": [
+        "Oo, ",
+        {
+          "kind": "choice",
+          "answer": "uyon ko",
+          "choices": [
+            "uyon ko",
+            "dili ko uyon",
+            "supak ko",
+            "nagdumili ko"
+          ]
+        },
+        ". ",
+        {
+          "kind": "connector",
+          "answer": "Apan",
+          "choices": [
+            "Apan",
+            "Aron",
+            "Tungod",
+            "Nga"
+          ]
+        },
+        " mopalit ko og tunga sa kilo, palihug."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lami ang mga mangga",
+          "baseText": {
+            "de": "Die Mangos sind lecker",
+            "en": "The mangoes are tasty"
+          }
+        },
+        {
+          "targetText": "apan mahal ra",
+          "baseText": {
+            "de": "aber zu teuer",
+            "en": "but too expensive"
+          }
+        },
+        {
+          "targetText": "alang sa akong badyet",
+          "baseText": {
+            "de": "für mein Budget",
+            "en": "for my budget"
+          }
+        },
+        {
+          "targetText": "karon.",
+          "baseText": {
+            "de": "gerade.",
+            "en": "right now."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "apan",
+          "baseText": {
+            "de": "aber",
+            "en": "but"
+          }
+        },
+        {
+          "targetText": "mangga",
+          "baseText": {
+            "de": "Mango",
+            "en": "mango"
+          }
+        },
+        {
+          "targetText": "mahal ra",
+          "baseText": {
+            "de": "zu teuer",
+            "en": "too expensive"
+          }
+        },
+        {
+          "targetText": "badyet",
+          "baseText": {
+            "de": "Budget",
+            "en": "budget"
+          }
+        },
+        {
+          "targetText": "otsenta",
+          "baseText": {
+            "de": "achtzig",
+            "en": "eighty"
+          }
+        },
+        {
+          "targetText": "singkwenta",
+          "baseText": {
+            "de": "fünfzig",
+            "en": "fifty"
+          }
+        },
+        {
+          "targetText": "tunga sa kilo",
+          "baseText": {
+            "de": "ein halbes Kilo",
+            "en": "half a kilo"
+          }
+        },
+        {
+          "targetText": "mopalit",
+          "baseText": {
+            "de": "kaufen",
+            "en": "buy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lami ang mga mangga apan ",
+        "answer": "mahal",
+        "after": " ra alang sa akong badyet karon.",
+        "fallbackChoices": [
+          "mahal",
+          "barato",
+          "humok",
+          "gamay"
+        ]
+      },
+      "speakRequired": [
+        "mangga",
+        "apan",
+        "mahal"
+      ],
+      "sceneCaption": {
+        "de": "Am Obststand wirbt die Verkäuferin für ihre Mangos: „Pinakatam-is ang mga mangga karon; mopalit ka?“",
+        "en": "At the fruit stall, the vendor recommends her mangoes: “Pinakatam-is ang mga mangga karon; mopalit ka?”"
+      },
+      "trophyWord": {
+        "word": "apan",
+        "meaning": {
+          "de": "aber",
+          "en": "but"
+        },
+        "example": "Lami ang mga mangga apan mahal ra.",
+        "whyThisWord": {
+          "de": "Apan ergänzt einen klaren Gegensatz, etwa zwischen guter Qualität und einem zu hohen Preis.",
+          "en": "Apan introduces a clear contrast, such as good quality versus a price that is too high."
+        }
+      },
+      "distractors": [
+        "alang sa akong pamilya",
+        "apan barato ra"
+      ],
+      "placeholderCaption": {
+        "de": "Reife Mangos auf einem Marktstand.",
+        "en": "Ripe mangoes on a market stall."
+      },
+      "songMood": "Bright market rhythm with gentle plucked strings",
+      "visualNotes": "Mango vendor and baskets of ripe fruit; no readable prices or half-kilo scale."
+    },
+    {
+      "slug": "importante-family-language",
+      "title": {
+        "de": "Die Sprache der Familie",
+        "en": "The family's language"
+      },
+      "situation": {
+        "de": "Ein Freund bezweifelt, dass es sich lohnt, eine lokale Sprache zu lernen.",
+        "en": "A friend doubts that learning a local language is worthwhile."
+      },
+      "pedagogicalGoal": "Mit importante eine begründete Haltung vertreten und sie mit einem konkreten Familienbeispiel stützen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Dili man kinahanglan magtuon og lokal nga pinulongan, dili ba?",
+          "baseText": {
+            "de": "Man muss doch keine lokale Sprache lernen, oder?",
+            "en": "You don't really need to study a local language, do you?"
+          }
+        },
+        {
+          "targetText": "Importante ang Cebuano bisan lisod tun-an kay mao kini ang pinulongan sa akong pamilya.",
+          "baseText": {
+            "de": "Cebuano ist wichtig, auch wenn es schwer zu lernen ist, denn es ist die Sprache meiner Familie.",
+            "en": "Cebuano is important even though it is hard to learn, because it is my family's language."
+          }
+        },
+        {
+          "targetText": "Dili ba igo nga mag-Iningles lang mo sa balay?",
+          "baseText": {
+            "de": "Reicht es nicht, wenn ihr zu Hause einfach Englisch sprecht?",
+            "en": "Isn't it enough just to speak English at home?"
+          }
+        },
+        {
+          "targetText": "Dili ko uyon kay dili komportable si Lola sa Iningles.",
+          "baseText": {
+            "de": "Ich bin nicht einverstanden, denn Oma fühlt sich mit Englisch nicht wohl.",
+            "en": "I disagree because Grandma is not comfortable speaking English."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "importante kay: eine Bedeutung begründen",
+        "rule": {
+          "de": "Importante beschreibt, was dir wichtig ist; kay liefert die Begründung und bisan lässt eine Schwierigkeit ausdrücklich bestehen.",
+          "en": "Importante states what matters to you; kay supplies the reason and bisan acknowledges a difficulty."
+        },
+        "examples": [
+          {
+            "targetText": "Importante ang Cebuano bisan lisod tun-an kay mao kini ang pinulongan sa akong pamilya.",
+            "baseText": {
+              "de": "Cebuano ist wichtig, auch wenn es schwer zu lernen ist, denn es ist die Sprache meiner Familie.",
+              "en": "Cebuano is important even though it is hard to learn, because it is my family's language."
+            },
+            "highlight": "Importante ang Cebuano bisan lisod tun-an"
+          },
+          {
+            "targetText": "Importante ang pagtuon kay mas sayon ang pagpakigstorya sa pamilya.",
+            "baseText": {
+              "de": "Das Lernen ist wichtig, weil Gespräche mit der Familie dadurch leichter sind.",
+              "en": "Learning is important because talking with the family is easier."
+            },
+            "highlight": "Importante ang pagtuon kay"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Dili ko uyon",
+          "choices": [
+            "Dili ko uyon",
+            "Uyon ko",
+            "Kontento ko",
+            "Nalipay ko"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "kay",
+            "aron",
+            "tungod",
+            "dayon"
+          ]
+        },
+        " dili komportable si Lola sa Iningles."
+      ],
+      "chunks": [
+        {
+          "targetText": "Importante ang Cebuano",
+          "baseText": {
+            "de": "Cebuano ist wichtig",
+            "en": "Cebuano is important"
+          }
+        },
+        {
+          "targetText": "bisan lisod tun-an",
+          "baseText": {
+            "de": "auch wenn es schwer zu lernen ist",
+            "en": "even though it is hard to learn"
+          }
+        },
+        {
+          "targetText": "kay mao kini",
+          "baseText": {
+            "de": "denn es ist",
+            "en": "because it is"
+          }
+        },
+        {
+          "targetText": "ang pinulongan",
+          "baseText": {
+            "de": "die Sprache",
+            "en": "the language"
+          }
+        },
+        {
+          "targetText": "sa akong pamilya.",
+          "baseText": {
+            "de": "meiner Familie.",
+            "en": "of my family."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "importante",
+          "baseText": {
+            "de": "wichtig",
+            "en": "important"
+          }
+        },
+        {
+          "targetText": "pinulongan",
+          "baseText": {
+            "de": "Sprache",
+            "en": "language"
+          }
+        },
+        {
+          "targetText": "lokal",
+          "baseText": {
+            "de": "lokal; örtlich",
+            "en": "local"
+          }
+        },
+        {
+          "targetText": "komportable",
+          "baseText": {
+            "de": "sich wohlfühlend; vertraut",
+            "en": "comfortable"
+          }
+        },
+        {
+          "targetText": "igo",
+          "baseText": {
+            "de": "ausreichend",
+            "en": "enough"
+          }
+        },
+        {
+          "targetText": "pagpakigstorya",
+          "baseText": {
+            "de": "Gespräche führen",
+            "en": "talking with others"
+          }
+        },
+        {
+          "targetText": "pamilya",
+          "baseText": {
+            "de": "Familie",
+            "en": "family"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Importante ang Cebuano bisan lisod tun-an kay mao kini ang ",
+        "answer": "pinulongan",
+        "after": " sa akong pamilya.",
+        "fallbackChoices": [
+          "pinulongan",
+          "trabaho",
+          "balay",
+          "pagkaon"
+        ]
+      },
+      "speakRequired": [
+        "importante",
+        "bisan",
+        "pinulongan"
+      ],
+      "sceneCaption": {
+        "de": "Im Gespräch über Sprachen meint dein Freund: „Dili man kinahanglan magtuon og lokal nga pinulongan, dili ba?“",
+        "en": "Talking about languages, your friend says: “Dili man kinahanglan magtuon og lokal nga pinulongan, dili ba?”"
+      },
+      "trophyWord": {
+        "word": "importante",
+        "meaning": {
+          "de": "wichtig",
+          "en": "important"
+        },
+        "example": "Importante ang Cebuano kay mao kini ang pinulongan sa akong pamilya.",
+        "whyThisWord": {
+          "de": "Mit importante erklärst du, was Bedeutung für dich hat, und kannst mit kay einen persönlichen Grund anschließen.",
+          "en": "Importante explains what matters to you, and kay lets you add a personal reason."
+        }
+      },
+      "distractors": [
+        "sa imong pamilya.",
+        "bisan sayon tun-an"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Familiengespräch an einem Tisch.",
+        "en": "A family conversation around a table."
+      },
+      "songMood": "Warm intimate acoustic melody",
+      "visualNotes": "Multigenerational family sharing an unhurried conversation around a table; no text."
+    }
+  ]
+}
