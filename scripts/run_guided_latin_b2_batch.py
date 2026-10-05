@@ -137,6 +137,44 @@ def voice_evidence(root, manifest, targets):
     return voices, authority
 
 
+def content_review(root, manifest, name, sources, specifications):
+    authority = native.content_review(root, manifest, name, sources, specifications)
+    envelope, current = read_binding(root, manifest[name])
+    if current != authority: raise ERROR("latin_b2_review_changed_during_validation")
+    def zero(value):
+        return (type(value) is int and value == 0) or (isinstance(value, list) and not value)
+    findings, verdict = envelope.get("unresolvedPublicationFindings"), envelope.get("publicationVerdict")
+    if (envelope.get("localTtsContentVerdict") != "PASS" or not zero(envelope.get("unresolvedLocalTtsBlockers"))
+            or not isinstance(findings, list) or verdict not in {"PASS", "REWORK"}
+            or (verdict == "PASS") != (not findings)):
+        raise ERROR("explicit_latin_b2_spoken_approval_required")
+    ids = []
+    for finding in findings:
+        if (not isinstance(finding, dict) or not isinstance(finding.get("id"), str) or not finding["id"].strip()
+                or finding.get("severity") not in {"BLOCKER", "HIGH", "MEDIUM", "LOW"}):
+            raise ERROR("complete_latin_b2_publication_findings_required")
+        ids.append(finding["id"])
+    if len(set(ids)) != len(ids): raise ERROR("duplicate_latin_b2_publication_finding")
+    if name == "independentReview":
+        raw = envelope.get("rawReview", {})
+        if (raw.get("localTtsContentVerdict") != "PASS" or not zero(raw.get("unresolvedLocalTtsBlockers"))
+                or raw.get("publicationVerdict") != verdict or raw.get("remainingPublicationFindings") != findings):
+            raise ERROR("embedded_latin_b2_review_scope_mismatch")
+    else:
+        chain = envelope.get("reviewChain")
+        required = {f"{Path(path).parent.name}-b2-{Path(path).name}" for path in sources}
+        if not isinstance(chain, list) or not chain: raise ERROR("complete_latin_b2_fable_read_required")
+        for review in chain:
+            raw = review.get("rawReview", {}); read_through = raw.get("readThrough", [])
+            if (raw.get("verdict") not in {"PASS", "APPLY_EXACT_EDITS"} or not isinstance(read_through, list)
+                    or not required <= {row.get("file") for row in read_through}
+                    or any(row.get("lessonsRead") != list(range(1, 11)) for row in read_through)
+                    or type(review.get("exactEdits")) is not int or review["exactEdits"] != len(raw.get("edits", []))):
+                raise ERROR("complete_latin_b2_fable_read_required")
+    return authority, {"review": name, "evidence": authority, "localTtsContentVerdict": "PASS",
+        "unresolvedLocalTtsBlockers": [], "publicationVerdict": verdict, "unresolvedPublicationFindings": findings}
+
+
 def prepare_inputs(root, manifest_path):
     root, path = Path(root).resolve(), Path(manifest_path).resolve()
     if not path.is_relative_to(root):
@@ -171,8 +209,12 @@ def prepare_inputs(root, manifest_path):
             specifications[item["path"]] = item["sha256"]; authority.append(item)
             loaded["b1Plan" if key == "b1Reservation" else key] = value
         inputs.append(loaded)
+    content_scopes = []
     for name in ("fableReview", "independentReview"):
-        authority.append(native.content_review(root, manifest, name, sources, specifications))
+        item, scope = content_review(root, manifest, name, sources, specifications)
+        authority.append(item); content_scopes.append(scope)
+    if any(content_scopes[0][key] != content_scopes[1][key] for key in ("publicationVerdict", "unresolvedPublicationFindings")):
+        raise ERROR("latin_b2_review_publication_scope_disagrees")
     targets = [target for target in VOICES if any(scope[0] == target for scope in scopes)]
     voices, voice_authority = voice_evidence(root, manifest, targets); authority.extend(voice_authority)
     snapshot = export_latin(root, inputs)
@@ -211,7 +253,9 @@ def prepare_inputs(root, manifest_path):
             "proposedVoiceProfile": profile, "nativeVoiceVerification": voices[target], "items": items})
     code = code_evidence(root)
     plan = {"schemaVersion": 1, "projectionVersion": VERSION, "status": "reviewed-staged-local-audio-only",
-        "publicationAuthorized": False, "publicationHolds": ["listening", "runtime-and-catalog-integration", "twelve-base-editions", "named-production-approval"],
+        "publicationAuthorized": False, "publicationHolds": ["listening", "runtime-and-catalog-integration", "twelve-base-editions", "named-production-approval",
+            *[finding["id"] for finding in content_scopes[1]["unresolvedPublicationFindings"]]],
+        "contentReviewScopes": content_scopes,
         "level": "B2", "model": "eleven_v4", "creditBudgetCeiling": campaign.API_CAP,
         "normalizationVersion": inventory.NORMALIZATION_VERSION, "targets": targets, "groups": groups,
         "manifestSha256": campaign.digest(raw), "sourceEvidence": sources, "specificationEvidence": specifications,

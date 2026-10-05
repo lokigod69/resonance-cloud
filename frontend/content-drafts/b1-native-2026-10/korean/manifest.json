@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "korean-b1-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p1.json",
+      "sha256": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "targetLanguage": "Korean",
+      "pathNumber": 1,
+      "reviewedVoiceId": "0oqpliV6dVSr9XomngOW",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/korean/specification.json",
+        "sha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p2.json",
+      "sha256": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "targetLanguage": "Korean",
+      "pathNumber": 2,
+      "reviewedVoiceId": "0oqpliV6dVSr9XomngOW",
+      "specification": {
+        "file": "frontend/content-drafts/b1-native-2026-10/korean/specification.json",
+        "sha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "Korean": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/korean/fable-evidence.json",
+    "sha256": "adfcd99b4dfedca79f65d7ddf974af2c78c866dd1a2b53f0f80ade3df1c207be"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b1-native-2026-10/korean/independent-evidence.json",
+    "sha256": "f14cac932f0196bc6806b3a2e90008cd04551134737d9376122de4ea0264c09d"
+  }
+}

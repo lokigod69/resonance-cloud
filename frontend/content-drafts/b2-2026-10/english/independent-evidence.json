@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/english/p1.json": "980db4ae5a8de7211b5064285524b0c14aef0f68aff5b038efb287446f56ced2",
+    "frontend/content-drafts/b2-2026-10/english/p2.json": "8a83da77e3006699a6c7cda91340147f119078f8f93a038521416e7fc8c39312"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/english/specification.json": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/english-plan.json": "b4910cc2b4b6ca7d11fa74ba8a7a03c929a6b26be57dbc196e0ab9be733bb3f8"
+  },
+  "scope": "Reviewed canonical content for local TTS only; not listening, native-human or publication approval.",
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "R04",
+      "severity": "HIGH",
+      "category": "answer acceptance",
+      "affectsEnglishLocalTts": false,
+      "title": "Required carriers remain uncued exact-answer tests",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/2/cloze/blanks/0",
+            "/lessons/2/cloze/blanks/1",
+            "/lessons/7/cloze/blanks/0"
+          ]
+        },
+        {
+          "file": "english-b2-p2.json",
+          "jsonPointers": [
+            "/lessons/0/cloze/blanks/0",
+            "/lessons/5/cloze/blanks/1",
+            "/lessons/9/synthesis/blanks/0"
+          ]
+        }
+      ],
+      "evidence": [
+        "P1L3 accepts only Admittedly / that said; Granted / even so fits the same concession and continuation and has already been taught.",
+        "P1L8 accepts only By growth I mean before marketable skills; What I mean is, modeled in this very lesson, also produces a coherent explanation.",
+        "P2L1 accepts only What I mean is before line three; I mean is equally grammatical and coherent.",
+        "P2L6 accepts provided that / providing that but rejects if in mail counts ... it’s postmarked by Friday.",
+        "P2L10 accepts only for the record where in summary also introduces the requested summary."
+      ],
+      "whyArbitrationDoesNotCloseIt": "The author-facing requirement B2-EN-17 and a previously modeled sentence do not tell the learner that the current open blank is exact reproduction. No implemented B2 instruction or explicit retrieval cue has been demonstrated. A German meaning cue alone would not distinguish these synonyms.",
+      "proposedCorrection": "At minimum accept the known valid alternatives in the authored lists, then check other open frames for the same failure. Where one exact carrier must be retrieved, provide and verify a visible instruction or existing-schema choice that actually constrains that carrier; respect the one-choice-blank limit. Do not assume future runtime alias expansion. P2L4's newly accepted In short closes that specific subcase only."
+    },
+    {
+      "id": "R05",
+      "severity": "HIGH",
+      "category": "B2 integration evidence",
+      "affectsEnglishLocalTts": false,
+      "title": "Detail distractors need the intended meaning on the B2 screen",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/2/build/distractors",
+            "/lessons/3/build/distractors",
+            "/lessons/6/build/distractors",
+            "/lessons/7/build/distractors",
+            "/lessons/8/build/distractors"
+          ]
+        },
+        {
+          "file": "english-b2-p2.json",
+          "jsonPointers": [
+            "/lessons/2/build/distractors",
+            "/lessons/3/build/distractors",
+            "/lessons/4/build/distractors",
+            "/lessons/5/build/distractors",
+            "/lessons/8/build/distractors",
+            "/lessons/9/build/distractors"
+          ]
+        }
+      ],
+      "evidence": "Alternatives such as a large team in P1L8, three hundred in P2L4, or fourteen weeks in P2L6 are grammatical invented details unless the learner has a visible required meaning. Their offscreen German source field is not itself a screen cue. The original P2L7 January example is repaired and is no longer part of this hold.",
+      "proposedCorrection": "Before publication, implement or demonstrate the B2 adapter rendering the correct dialogue[1].base.de beside the build task and verify it with these exact sources. Review the detail distractors against that rendered context. Alternatively replace individual distractors with options already contradicted by the visible English frame. Existing A1/A2/B1 cue rendering is useful precedent, not acceptance evidence for B2."
+    },
+    {
+      "id": "R07",
+      "severity": "HIGH",
+      "category": "German meaning accuracy",
+      "affectsEnglishLocalTts": false,
+      "title": "Split the difference still glossed as sharing an extra fare",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/4/dialogue/3/base/de",
+            "/lessons/4/pattern/examples/0/base/de"
+          ]
+        }
+      ],
+      "evidence": "Both revised bases say teilen wir uns die Differenz zum Busticket. That describes sharing an additional cost between people. The spoken idiom proposes meeting halfway or compromising between positions. Merely identifying a fare gap does not establish an agreement to divide that cost.",
+      "proposedCorrection": "Keep the English recording text and render the proposal as a price compromise in both German bases. For example: Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, finden wir einen preislichen Mittelweg; andernfalls verkürzen wir die Küstenreise. Do not teach the phrase as an idiom for sharing extra costs.",
+      "localTtsSeparation": "This narrower disposition supersedes the initial precautionary hold on the English line: the idiom is valid as a compromise proposal even though its German gloss is wrong. No fare amount, exact halfway price, or cost-sharing contract is asserted by this recording clearance."
+    }
+  ],
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "Codex independent content reviewer; not the English B2 author",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "7be0c4986f76d6837d076b7dfe75e3b4aca7372ea3458287fd517078efa28c51",
+  "rawReview": {
+    "reviewType": "single independent rereview after Fable arbitration",
+    "reviewDate": "2026-10-05",
+    "reviewer": "Codex independent content reviewer; not the English B2 author",
+    "scope": "Bounded rereview of the 25 arbitration edits, their coupled fields, all prior findings, and the canonical English spoken text across all 20 lessons. No draft, app, schema, database, git, or provider changes. Only this requested scratch report was written.",
+    "verdict": "REWORK",
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "localTtsContentRationale": "The exact final English text is grammatical and independently usable as spoken lesson material. All 120 dialogue turns and 40 pattern examples were reread, including the four changed sentence assets; all 20 unchanged trophy examples were also checked. The new arguably term is attested in its new example. The P1L5 English idiom can express a compromise between the competing travel preferences; it does not itself assert that the speakers share an additional fare. Its incorrect German explanation remains a publication hold, not a defect that requires changing the English recording text. This verdict concerns English source text only, not audio quality, execution approval, German audio, or publication readiness.",
+    "publicationVerdict": "REWORK",
+    "publicationRationale": "Three HIGH findings remain: uncued open-answer frames reject valid responses, meaning-based build distractors require an implemented visible B2 meaning cue, and the German rendering of split the difference still describes cost sharing. Fable's arbitration does not establish a B2 runtime cue or automatic synonym support.",
+    "reviewedSources": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-content/english-b2-p1.json",
+        "sha256": "980db4ae5a8de7211b5064285524b0c14aef0f68aff5b038efb287446f56ced2",
+        "lessons": 10,
+        "dialogueTurns": 60
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/final-content/english-b2-p2.json",
+        "sha256": "8a83da77e3006699a6c7cda91340147f119078f8f93a038521416e7fc8c39312",
+        "lessons": 10,
+        "dialogueTurns": 60
+      }
+    ],
+    "authorityAndEvidence": [
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_SPEC.json",
+        "sha256": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+        "role": "Controlling path and trophy specification; unchanged."
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_LATIN_PREREQUISITES.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+        "role": "English record with 471 earlier trophy exclusions supplied to the actual gate."
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_INDEPENDENT_REVIEW.json",
+        "sha256": "984ea29e5ee2444ece1ee425e652cf5ca3756af2fe116b4a9114ad06cf07e6da",
+        "role": "Initial every-field review and R01-R13 findings; unchanged fields retain that coverage."
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_ARBITRATION_FABLE_REVIEW_RAW.json",
+        "sha256": "a511b1ebc40d064eb7c5a5e4217e1639f277c1112448bd0121c5188f5e6ca4e1",
+        "role": "All arbitration decisions and all 25 edits read; independently assessed rather than adopted as instructions."
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/scripts/lib/guidedLatinB2Drafts.ts",
+        "sha256": "374fdad69e9468aee8429c08ac7f0c28d9401e1021874edb54943e023b5c0503",
+        "role": "Actual unchanged validator executed against both exact final sources."
+      }
+    ],
+    "checks": [
+      {
+        "name": "Exact edit replay and source identity",
+        "result": "PASS",
+        "detail": "Independently replayed all 25 edits in memory against the initial reviewed sources. Every oldValue matched, including the declared append of the ninth P1L3 term. Both resulting JSON objects exactly equal the final JSON objects. No extra content changes were found. Both final SHA-256 values match the requested identities."
+      },
+      {
+        "name": "Actual validateLatinB2Draft gate",
+        "result": "PASS",
+        "detail": "Ran the real TypeScript validator through node --import tsx from frontend, using the exact spec hash as both pathSpecSha256 and ledgerSha256, the spec trophyLedger.rows, and the English prerequisite forbiddenTrophies. Both paths passed. No broad app suite or provider call was run."
+      },
+      {
+        "name": "Length and reconstruction couplings",
+        "result": "PASS",
+        "detail": "P1L1 opener is now 20 tokens and sceneCaption quotes it exactly. Recut P1L1, P2L1, and P2L7 builds reconstruct the unchanged turn. P2L4 revised turn is 21 tokens; synthesis and German base follow it. P2L9 revised turn is 23 tokens; German base, build suffix, and recall suffix include the added in. The gate verified all other required reconstructions and bounds."
+      },
+      {
+        "name": "Repaired build ordering",
+        "result": "PASS",
+        "detail": "P1L1 binds on the other, the to its following noun; the prior parenthetical permutation is no longer possible. P2L1 binds later hours cost and the hours worked, removing the earlier participle permutation. P2L7 binds pay in June, preventing the alternative fronted month. These fixes rely on syntax, not punctuation alone. No new credible alternative order was found in the changed builds."
+      },
+      {
+        "name": "Choice and recall repairs",
+        "result": "PASS",
+        "detail": "P2L8 unless is the only supplied option that can govern the reduced flagged clause. P2L2 separate is the only supplied verb form that fits in order to. P1L10 no longer offers the previously valid instead. The new P1L2 are distractor produces an agreement error. This does not resolve the separate open-input finding R04."
+      },
+      {
+        "name": "Staging, trophy and speech-token integrity",
+        "result": "PASS",
+        "detail": "P1L3 now models arguably in its second example and includes it as a ninth term, without moving the P1L8 trophy. All 20 trophy allocations and all speech-token objects are unchanged from the initial reviewed sources; the actual gate verifies their permitted positions and attestations. No prior-tier exclusion, identity, locale, review-status, or trophy change was introduced."
+      },
+      {
+        "name": "Canonical English spoken content",
+        "result": "PASS_WITH_RECORDED_STYLE_TRADEOFFS",
+        "detail": "The repaired opener and new arguably example are natural and clear. P2L9 driven in clarifies the travel claim. P2L4's nominalized expiry sentence remains more written than casual conversation but is intelligible, grammatical, and expressly licensed by the spec; it is not a local recording blocker. The unchanged elliptical about twenty coffees answer is acceptable in its preceding question context."
+      },
+      {
+        "name": "Existing UI versus B2 integration",
+        "result": "PUBLICATION_HOLD",
+        "detail": "Read-only code inspection confirms that existing BuildPhraseStep renders a base-language cue when build.targetText equals corePhrase.targetText. It reads lesson.build.chips, not the B2 framePrefix/chunks/frameSuffix structure. No B2 adapter or B2-specific cue integration was found in the inspected today components or guidedLessons.ts. Therefore existing UI behavior is not proof that these B2 sources will show dialogue[1].base.de. No future implementation or synonym support is assumed."
+      }
+    ],
+    "runtimeEvidence": [
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/BuildPhraseStep.tsx",
+        "lines": [
+          49,
+          69,
+          100,
+          103,
+          111,
+          119
+        ],
+        "observation": "Current build uses chips and exact targetText equality; a guarded corePhrase.baseText cue is rendered. This is an existing runtime contract, not a demonstrated B2 adapter."
+      },
+      {
+        "path": "D:/CODING/ResonanceTEST/orchestrator/frontend/src/components/today/TypeRecallStep.tsx",
+        "lines": [
+          57,
+          101,
+          119
+        ],
+        "observation": "Current recall checks explicit acceptedAnswers and displays before/input/after. It provides no evidence of automatic semantic alias acceptance or a German cue for future B2 open frames."
+      }
+    ],
+    "priorFindingDispositions": [
+      {
+        "id": "R01",
+        "status": "RESOLVED",
+        "reason": "P1L1 opener reduced from 21 to 20 tokens with by train; caption synchronized and gate passes."
+      },
+      {
+        "id": "R02",
+        "status": "RESOLVED",
+        "reason": "P2L1 rechunking removes the grammatical alternative ordering and preserves the canonical sentence."
+      },
+      {
+        "id": "R03",
+        "status": "RESOLVED",
+        "reason": "P2L7 now binds pay in June, preventing the previous alternative placement."
+      },
+      {
+        "id": "R04",
+        "status": "PARTIALLY_RESOLVED_PUBLICATION_HOLD",
+        "reason": "P2L4 now accepts In short, but the five other cited open frames remain strict without visible constraints. A carrier being required by the authoring spec or just modeled is not a visible instruction to reproduce that exact expression."
+      },
+      {
+        "id": "R05",
+        "status": "RETAINED_AS_INTEGRATION_PUBLICATION_HOLD",
+        "reason": "Meaning-based distractors are acceptable when a specific intended meaning is visible. Fable expressly records that B2 must render the German base. That integration is not yet demonstrated; the authored German field and the older build component cannot discharge the hold by themselves. This does not demand rewriting every detail distractor."
+      },
+      {
+        "id": "R06",
+        "status": "RESOLVED",
+        "reason": "P2L8 replaces although/because/once with despite/instead/owing to; only unless fits the displayed reduced clause."
+      },
+      {
+        "id": "R07",
+        "status": "NARROWED_TO_TRANSLATION_PUBLICATION_HOLD",
+        "reason": "The English idiom is a legitimate compromise proposal, so no mandatory English text repair is needed for local recording. The revised German still says the speakers share the fare difference. Naming the fare gap does not make that the meaning of split the difference. Fable's asserted equivalence is not accepted. Preserve the spoken English and correct both German bases to a midpoint/compromise meaning before publication."
+      },
+      {
+        "id": "R08",
+        "status": "RESOLVED",
+        "reason": "The determiner is now attached to on the other, preventing the parenthetical alternative independently of commas."
+      },
+      {
+        "id": "R09",
+        "status": "RESOLVED_FOR_REPORTED_CHOICES",
+        "reason": "The reported valid instead and inspect/weigh alternatives are removed. Open-answer uniqueness remains covered by R04 rather than being inferred from these fallback choices."
+      },
+      {
+        "id": "R10",
+        "status": "RESOLVED",
+        "reason": "arguably now has a model and term at P1L3, satisfying the stated staging without altering its P1L8 trophy allocation."
+      },
+      {
+        "id": "R11",
+        "status": "PARTIALLY_REVISED_REMAINDER_RECORDED",
+        "reason": "The expiry follows construction is replaced with with expiry after; its synthesis and base are coupled. Residual formality is a recorded spec-driven style tradeoff. The short elliptical twenty coffees response is grammatical in context. Neither is a local TTS blocker."
+      },
+      {
+        "id": "R12",
+        "status": "PARTIALLY_REVISED_REMAINDER_RECORDED",
+        "reason": "P2L9 driven in is fixed and synchronized. journeys, stronger future, and caretaker are understandable English; the retained alternatives reflect regional/style preference rather than an incorrect spoken form."
+      },
+      {
+        "id": "R13",
+        "status": "RESOLVED",
+        "reason": "P2L10 German now says gezählt for counted, without claiming analysis."
+      },
+      {
+        "id": "FABLE_OWN_P1L2",
+        "status": "RESOLVED",
+        "reason": "The for passengers distractor was replaced by are; the replacement is wrong in the displayed singular-subject frame."
+      }
+    ],
+    "remainingPublicationFindings": [
+      {
+        "id": "R04",
+        "severity": "HIGH",
+        "category": "answer acceptance",
+        "affectsEnglishLocalTts": false,
+        "title": "Required carriers remain uncued exact-answer tests",
+        "locations": [
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointers": [
+              "/lessons/2/cloze/blanks/0",
+              "/lessons/2/cloze/blanks/1",
+              "/lessons/7/cloze/blanks/0"
+            ]
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointers": [
+              "/lessons/0/cloze/blanks/0",
+              "/lessons/5/cloze/blanks/1",
+              "/lessons/9/synthesis/blanks/0"
+            ]
+          }
+        ],
+        "evidence": [
+          "P1L3 accepts only Admittedly / that said; Granted / even so fits the same concession and continuation and has already been taught.",
+          "P1L8 accepts only By growth I mean before marketable skills; What I mean is, modeled in this very lesson, also produces a coherent explanation.",
+          "P2L1 accepts only What I mean is before line three; I mean is equally grammatical and coherent.",
+          "P2L6 accepts provided that / providing that but rejects if in mail counts ... it’s postmarked by Friday.",
+          "P2L10 accepts only for the record where in summary also introduces the requested summary."
+        ],
+        "whyArbitrationDoesNotCloseIt": "The author-facing requirement B2-EN-17 and a previously modeled sentence do not tell the learner that the current open blank is exact reproduction. No implemented B2 instruction or explicit retrieval cue has been demonstrated. A German meaning cue alone would not distinguish these synonyms.",
+        "proposedCorrection": "At minimum accept the known valid alternatives in the authored lists, then check other open frames for the same failure. Where one exact carrier must be retrieved, provide and verify a visible instruction or existing-schema choice that actually constrains that carrier; respect the one-choice-blank limit. Do not assume future runtime alias expansion. P2L4's newly accepted In short closes that specific subcase only."
+      },
+      {
+        "id": "R05",
+        "severity": "HIGH",
+        "category": "B2 integration evidence",
+        "affectsEnglishLocalTts": false,
+        "title": "Detail distractors need the intended meaning on the B2 screen",
+        "locations": [
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointers": [
+              "/lessons/2/build/distractors",
+              "/lessons/3/build/distractors",
+              "/lessons/6/build/distractors",
+              "/lessons/7/build/distractors",
+              "/lessons/8/build/distractors"
+            ]
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointers": [
+              "/lessons/2/build/distractors",
+              "/lessons/3/build/distractors",
+              "/lessons/4/build/distractors",
+              "/lessons/5/build/distractors",
+              "/lessons/8/build/distractors",
+              "/lessons/9/build/distractors"
+            ]
+          }
+        ],
+        "evidence": "Alternatives such as a large team in P1L8, three hundred in P2L4, or fourteen weeks in P2L6 are grammatical invented details unless the learner has a visible required meaning. Their offscreen German source field is not itself a screen cue. The original P2L7 January example is repaired and is no longer part of this hold.",
+        "proposedCorrection": "Before publication, implement or demonstrate the B2 adapter rendering the correct dialogue[1].base.de beside the build task and verify it with these exact sources. Review the detail distractors against that rendered context. Alternatively replace individual distractors with options already contradicted by the visible English frame. Existing A1/A2/B1 cue rendering is useful precedent, not acceptance evidence for B2."
+      },
+      {
+        "id": "R07",
+        "severity": "HIGH",
+        "category": "German meaning accuracy",
+        "affectsEnglishLocalTts": false,
+        "title": "Split the difference still glossed as sharing an extra fare",
+        "locations": [
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointers": [
+              "/lessons/4/dialogue/3/base/de",
+              "/lessons/4/pattern/examples/0/base/de"
+            ]
+          }
+        ],
+        "evidence": "Both revised bases say teilen wir uns die Differenz zum Busticket. That describes sharing an additional cost between people. The spoken idiom proposes meeting halfway or compromising between positions. Merely identifying a fare gap does not establish an agreement to divide that cost.",
+        "proposedCorrection": "Keep the English recording text and render the proposal as a price compromise in both German bases. For example: Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, finden wir einen preislichen Mittelweg; andernfalls verkürzen wir die Küstenreise. Do not teach the phrase as an idiom for sharing extra costs.",
+        "localTtsSeparation": "This narrower disposition supersedes the initial precautionary hold on the English line: the idiom is valid as a compromise proposal even though its German gloss is wrong. No fare amount, exact halfway price, or cost-sharing contract is asserted by this recording clearance."
+      }
+    ],
+    "full20Coverage": [
+      {
+        "path": 1,
+        "lesson": 1,
+        "localEnglish": "PASS",
+        "rereview": "Opener, caption, chunks, lengths, dialogue and examples checked."
+      },
+      {
+        "path": 1,
+        "lesson": 2,
+        "localEnglish": "PASS",
+        "rereview": "New distractor, dialogue and examples checked."
+      },
+      {
+        "path": 1,
+        "lesson": 3,
+        "localEnglish": "PASS",
+        "rereview": "New staging example and term, dialogue, open frames and build context checked; R04/R05 retained."
+      },
+      {
+        "path": 1,
+        "lesson": 4,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; R05 retained."
+      },
+      {
+        "path": 1,
+        "lesson": 5,
+        "localEnglish": "PASS",
+        "rereview": "Full compromise exchange and coupled German bases checked; R07 remains nonspoken publication hold."
+      },
+      {
+        "path": 1,
+        "lesson": 6,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; initial every-field coverage retained."
+      },
+      {
+        "path": 1,
+        "lesson": 7,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; R05 retained."
+      },
+      {
+        "path": 1,
+        "lesson": 8,
+        "localEnglish": "PASS",
+        "rereview": "Dialogue, examples and cloze checked; R04/R05 retained; no new chip-permutation finding."
+      },
+      {
+        "path": 1,
+        "lesson": 9,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; R05 retained."
+      },
+      {
+        "path": 1,
+        "lesson": 10,
+        "localEnglish": "PASS",
+        "rereview": "Repaired recall choices, dialogue and examples checked."
+      },
+      {
+        "path": 2,
+        "lesson": 1,
+        "localEnglish": "PASS",
+        "rereview": "Rechunking, distractors, dialogue, examples and open cloze checked; R04 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 2,
+        "localEnglish": "PASS",
+        "rereview": "Recall form alternatives, dialogue and examples checked."
+      },
+      {
+        "path": 2,
+        "lesson": 3,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; R05 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 4,
+        "localEnglish": "PASS",
+        "rereview": "Revised summary, synthesis, alias and bases checked; residual style recorded, R05 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 5,
+        "localEnglish": "PASS",
+        "rereview": "Unchanged dialogue and examples reread; R05 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 6,
+        "localEnglish": "PASS",
+        "rereview": "Dialogue, examples and provided that blank checked; R04/R05 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 7,
+        "localEnglish": "PASS",
+        "rereview": "Rechunking and distractors checked against complete exchange and examples."
+      },
+      {
+        "path": 2,
+        "lesson": 8,
+        "localEnglish": "PASS",
+        "rereview": "Queue synthesis choices checked against complete exchange and examples; no new chip-permutation finding."
+      },
+      {
+        "path": 2,
+        "lesson": 9,
+        "localEnglish": "PASS",
+        "rereview": "Added in and all affected bases/reconstructions checked; R05 retained."
+      },
+      {
+        "path": 2,
+        "lesson": 10,
+        "localEnglish": "PASS",
+        "rereview": "Counted translation, dialogue, examples and synthesis checked; R04/R05 retained."
+      }
+    ],
+    "limits": [
+      "This is the one requested rereview after the initial independent review, not a fresh authoring pass.",
+      "The exact-source local TTS verdict does not clear the lesson package for learner publication.",
+      "No B2 learner screen was rendered and no B2 cue or alias implementation is presumed.",
+      "No audio was generated, listened to, uploaded, or approved by this review.",
+      "A validator PASS establishes structural constraints, not semantic uniqueness of all correct answers.",
+      "The sources retain their pending review metadata; this report does not claim native human review."
+    ]
+  }
+}

@@ -1,0 +1,2204 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Meinung mit Einschränkung",
+    "en": "Opinion with concession"
+  },
+  "subtitle": {
+    "de": "Abwägen, vorsichtig bewerten und eine Entscheidung begründen",
+    "en": "Weigh options, hedge opinions and explain a decision"
+  },
+  "anchor": "Polite conversations in a workplace book-and-film club, team lunch decisions and neighborhood comparisons.",
+  "lessons": [
+    {
+      "slug": "ama-lunch-spot",
+      "title": {
+        "de": "Ein Ort fürs Mittagessen",
+        "en": "A place for lunch"
+      },
+      "situation": {
+        "de": "Im Team überlegt ihr, wo ihr heute Mittag essen könnt.",
+        "en": "Your team is deciding where to eat lunch today."
+      },
+      "pedagogicalGoal": "Mit -지만 einen Nachteil einräumen und mit 아마 sowie 것 같아요 eine vorsichtige Einschätzung geben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘 점심 어디에서 먹을까요? 괜찮은 데 있어요?",
+          "baseText": {
+            "de": "Wo wollen wir heute Mittag essen? Kennst du etwas Gutes?",
+            "en": "Where shall we have lunch today? Do you know a good place?"
+          }
+        },
+        {
+          "targetText": "새 식당이 조금 멀지만 아마 괜찮은 것 같아요.",
+          "baseText": {
+            "de": "Das neue Restaurant ist etwas weit weg, aber ich glaube, es ist ganz gut.",
+            "en": "The new restaurant is a little far away, but I think it's probably quite good."
+          }
+        },
+        {
+          "targetText": "걸어서 얼마나 걸려요? 점심시간에 돌아올 수 있어요?",
+          "baseText": {
+            "de": "Wie lange läuft man hin? Schaffen wir es in der Mittagspause zurück?",
+            "en": "How long is the walk? Can we get back within our lunch break?"
+          }
+        },
+        {
+          "targetText": "걸어서 20분쯤 걸리지만 점심시간에는 돌아올 수 있어요.",
+          "baseText": {
+            "de": "Zu Fuß dauert es zwar etwa 20 Minuten, aber wir schaffen es in der Mittagspause zurück.",
+            "en": "It takes about 20 minutes to walk there, but we can get back within our lunch break."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-지만 und -(으)ㄴ 것 같아요",
+        "rule": {
+          "de": "-지만 räumt einen Gegensatz ein. Bei einer vorsichtigen Einschätzung mit einem Adjektiv folgt -(으)ㄴ 것 같아요, etwa 괜찮은 것 같아요.",
+          "en": "-지만 acknowledges a contrast. A cautious assessment with an adjective uses -(으)ㄴ 것 같아요, as in 괜찮은 것 같아요."
+        },
+        "examples": [
+          {
+            "targetText": "새 식당이 조금 멀지만 아마 괜찮은 것 같아요.",
+            "baseText": {
+              "de": "Das neue Restaurant ist etwas weit weg, aber ich glaube, es ist ganz gut.",
+              "en": "The new restaurant is a little far away, but I think it's probably quite good."
+            },
+            "highlight": "멀지만"
+          },
+          {
+            "targetText": "이 카페는 작지만 조용한 것 같아요.",
+            "baseText": {
+              "de": "Dieses Café ist klein, scheint aber ruhig zu sein.",
+              "en": "This cafe is small, but it seems quiet."
+            },
+            "highlight": "조용한 것 같아요"
+          }
+        ]
+      },
+      "cloze": [
+        "걸어서 ",
+        {
+          "kind": "choice",
+          "answer": "20분쯤",
+          "choices": [
+            "20분쯤",
+            "두 시간쯤",
+            "하루쯤",
+            "사흘쯤"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "걸리지만",
+          "cue": "Einräumung -지만 / concession -지만",
+          "choices": [
+            "걸리지만",
+            "걸려요",
+            "걸린",
+            "걸릴"
+          ]
+        },
+        " 점심시간에는 돌아올 수 있어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "새 식당이",
+          "baseText": {
+            "de": "das neue Restaurant",
+            "en": "the new restaurant"
+          }
+        },
+        {
+          "targetText": "조금 멀지만",
+          "baseText": {
+            "de": "ist etwas weit weg, aber",
+            "en": "is a little far away, but"
+          }
+        },
+        {
+          "targetText": "아마",
+          "baseText": {
+            "de": "wahrscheinlich",
+            "en": "probably"
+          }
+        },
+        {
+          "targetText": "괜찮은 것 같아요.",
+          "baseText": {
+            "de": "ist es wohl ganz gut.",
+            "en": "I think it's quite good."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "아마",
+          "baseText": {
+            "de": "wahrscheinlich",
+            "en": "probably"
+          }
+        },
+        {
+          "targetText": "새 식당",
+          "baseText": {
+            "de": "neues Restaurant",
+            "en": "new restaurant"
+          }
+        },
+        {
+          "targetText": "멀지만",
+          "baseText": {
+            "de": "es ist weit weg, aber",
+            "en": "it is far away, but"
+          }
+        },
+        {
+          "targetText": "괜찮은 것 같아요",
+          "baseText": {
+            "de": "ich glaube, es ist ganz gut",
+            "en": "I think it is quite good"
+          }
+        },
+        {
+          "targetText": "걸어서",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        },
+        {
+          "targetText": "20분쯤",
+          "baseText": {
+            "de": "etwa 20 Minuten",
+            "en": "about 20 minutes"
+          }
+        },
+        {
+          "targetText": "점심시간에는",
+          "baseText": {
+            "de": "in der Mittagspause",
+            "en": "within the lunch break"
+          }
+        }
+      ],
+      "recall": {
+        "before": "새 식당이 조금 멀지만 ",
+        "answer": "아마",
+        "after": " 괜찮은 것 같아요.",
+        "fallbackChoices": [
+          "아마",
+          "절대로",
+          "전혀",
+          "도저히"
+        ]
+      },
+      "speakRequired": [
+        "식당이",
+        "멀지만",
+        "아마"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Mittagspause kommt die Frage: „오늘 점심 어디에서 먹을까요? 괜찮은 데 있어요?“",
+        "en": "Before lunch, a teammate asks: “오늘 점심 어디에서 먹을까요? 괜찮은 데 있어요?”"
+      },
+      "trophyWord": {
+        "word": "아마",
+        "meaning": {
+          "de": "wahrscheinlich / vermutlich",
+          "en": "probably / perhaps"
+        },
+        "example": "아마 오늘은 사람이 적을 거예요.",
+        "whyThisWord": {
+          "de": "아마 kennzeichnet eine Vermutung und lässt Raum dafür, dass du dich irren könntest.",
+          "en": "아마 marks a prediction or guess and leaves room for you to be wrong."
+        }
+      },
+      "distractors": [
+        "새 식당은 가깝지만 별로인 것 같아요.",
+        "그 식당은 점심에는 문을 안 열어요."
+      ],
+      "placeholderCaption": {
+        "de": "Gemeinsam vor dem Mittagessen überlegen.",
+        "en": "Deciding together before lunch."
+      },
+      "songMood": "Light collaborative cafe rhythm.",
+      "visualNotes": "Office kitchen, colleagues considering lunch; no route distance on screen."
+    },
+    {
+      "slug": "sasil-long-novel",
+      "title": {
+        "de": "Der Roman im Lesekreis",
+        "en": "The book-club novel"
+      },
+      "situation": {
+        "de": "Im Lesekreis tauscht ihr euch über den aktuellen Roman aus.",
+        "en": "At your book club, you discuss the current novel."
+      },
+      "pedagogicalGoal": "Mit 사실 eine persönliche Einschätzung einleiten und trotz eines Nachteils eine Stärke nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 소설은 어땠어요? 끝까지 다 읽었어요?",
+          "baseText": {
+            "de": "Wie fandest du den Roman? Hast du ihn ganz gelesen?",
+            "en": "What did you think of this novel? Did you finish it?"
+          }
+        },
+        {
+          "targetText": "사실 이 소설은 길지만 이야기가 정말 감동적인 것 같아요.",
+          "baseText": {
+            "de": "Ehrlich gesagt ist der Roman lang, aber ich finde die Geschichte wirklich bewegend.",
+            "en": "Actually, the novel is long, but I think the story is really moving."
+          }
+        },
+        {
+          "targetText": "어느 부분이 가장 좋았어요? 마지막 장면도 좋았어요?",
+          "baseText": {
+            "de": "Welchen Teil fandest du am besten? Hat dir auch die letzte Szene gefallen?",
+            "en": "Which part did you like best? Did you like the final scene too?"
+          }
+        },
+        {
+          "targetText": "네, 결말이 슬프지만 가족의 대화가 가장 좋았어요.",
+          "baseText": {
+            "de": "Ja, das Ende ist zwar traurig, aber das Gespräch der Familie hat mir am besten gefallen.",
+            "en": "Yes, the ending is sad, but I liked the family's conversation best."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-지만: Zwei Seiten einer Bewertung",
+        "rule": {
+          "de": "-지만 verbindet zwei Bewertungen, die nicht in dieselbe Richtung weisen. 것 같아요 macht die Einschätzung weniger absolut.",
+          "en": "-지만 connects two evaluations that point in different directions. 것 같아요 makes an assessment less absolute."
+        },
+        "examples": [
+          {
+            "targetText": "사실 이 소설은 길지만 이야기가 정말 감동적인 것 같아요.",
+            "baseText": {
+              "de": "Ehrlich gesagt ist der Roman lang, aber ich finde die Geschichte wirklich bewegend.",
+              "en": "Actually, the novel is long, but I think the story is really moving."
+            },
+            "highlight": "길지만"
+          },
+          {
+            "targetText": "네, 결말이 슬프지만 가족의 대화가 가장 좋았어요.",
+            "baseText": {
+              "de": "Ja, das Ende ist zwar traurig, aber das Gespräch der Familie hat mir am besten gefallen.",
+              "en": "Yes, the ending is sad, but I liked the family's conversation best."
+            },
+            "highlight": "슬프지만"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 결말이 ",
+        {
+          "kind": "form",
+          "answer": "슬프지만",
+          "cue": "Einräumung -지만 / concession -지만",
+          "choices": [
+            "슬프지만",
+            "슬퍼요",
+            "슬픈",
+            "슬플"
+          ]
+        },
+        " 가족의 ",
+        {
+          "kind": "choice",
+          "answer": "대화가",
+          "choices": [
+            "대화가",
+            "식탁이",
+            "주소가",
+            "차고가"
+          ]
+        },
+        " 가장 좋았어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "사실",
+          "baseText": {
+            "de": "ehrlich gesagt",
+            "en": "actually"
+          }
+        },
+        {
+          "targetText": "이 소설은 길지만",
+          "baseText": {
+            "de": "ist der Roman lang, aber",
+            "en": "this novel is long, but"
+          }
+        },
+        {
+          "targetText": "이야기가 정말",
+          "baseText": {
+            "de": "die Geschichte wirklich",
+            "en": "the story really"
+          }
+        },
+        {
+          "targetText": "감동적인 것 같아요.",
+          "baseText": {
+            "de": "finde ich bewegend.",
+            "en": "seems moving."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "사실",
+          "baseText": {
+            "de": "ehrlich gesagt / tatsächlich",
+            "en": "actually / in fact"
+          }
+        },
+        {
+          "targetText": "이 소설",
+          "baseText": {
+            "de": "dieser Roman",
+            "en": "this novel"
+          }
+        },
+        {
+          "targetText": "길지만",
+          "baseText": {
+            "de": "ist lang, aber",
+            "en": "is long, but"
+          }
+        },
+        {
+          "targetText": "감동적인 것 같아요",
+          "baseText": {
+            "de": "ich finde es bewegend",
+            "en": "I think it is moving"
+          }
+        },
+        {
+          "targetText": "마지막 장면",
+          "baseText": {
+            "de": "letzte Szene",
+            "en": "final scene"
+          }
+        },
+        {
+          "targetText": "결말이",
+          "baseText": {
+            "de": "das Ende",
+            "en": "the ending"
+          }
+        },
+        {
+          "targetText": "가족의 대화",
+          "baseText": {
+            "de": "das Gespräch der Familie",
+            "en": "the family's conversation"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "사실",
+        "after": " 이 소설은 길지만 이야기가 정말 감동적인 것 같아요.",
+        "fallbackChoices": [
+          "사실",
+          "만약",
+          "도저히",
+          "전혀"
+        ]
+      },
+      "speakRequired": [
+        "사실",
+        "길지만",
+        "감동적인"
+      ],
+      "sceneCaption": {
+        "de": "Im Lesekreis fragt die Leitung: „이번 소설은 어땠어요? 끝까지 다 읽었어요?“",
+        "en": "The book-club host asks: “이번 소설은 어땠어요? 끝까지 다 읽었어요?”"
+      },
+      "trophyWord": {
+        "word": "사실",
+        "meaning": {
+          "de": "ehrlich gesagt / tatsächlich",
+          "en": "actually / in fact"
+        },
+        "example": "사실 저는 이 책을 두 번 읽었어요.",
+        "whyThisWord": {
+          "de": "사실 leitet eine offene Aussage ein, die das Gegenüber vielleicht nicht erwartet.",
+          "en": "사실 introduces a candid statement that the listener may not expect."
+        }
+      },
+      "distractors": [
+        "소설이 너무 짧아서 이야기가 부족한 것 같아요.",
+        "이 소설은 아직 한 장도 안 읽었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Eine offene Gesprächsrunde über einen Roman.",
+        "en": "An open discussion about a novel."
+      },
+      "songMood": "Reflective piano with a quiet, thoughtful rhythm.",
+      "visualNotes": "Book-club table with unbranded books; no story ending illustrated."
+    },
+    {
+      "slug": "soljikhi-presentation-feedback",
+      "title": {
+        "de": "Rückmeldung zur Präsentation",
+        "en": "Feedback on a presentation"
+      },
+      "situation": {
+        "de": "Nach einer Probepräsentation bittet dich jemand aus dem Team um Rückmeldung.",
+        "en": "After a practice presentation, a teammate asks for your feedback."
+      },
+      "pedagogicalGoal": "Mit 솔직히 eine ehrliche Rückmeldung geben, sie durch -지만 ausbalancieren und einen konkreten Wunsch formulieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "방금 발표는 어땠어요? 이해하기 괜찮았어요?",
+          "baseText": {
+            "de": "Wie fandest du die Präsentation gerade? War sie gut verständlich?",
+            "en": "What did you think of that presentation? Was it easy enough to follow?"
+          }
+        },
+        {
+          "targetText": "솔직히 발표 내용은 좋지만 말이 조금 빠른 것 같아요.",
+          "baseText": {
+            "de": "Ehrlich gesagt ist der Inhalt gut, aber ich finde das Sprechtempo etwas hoch.",
+            "en": "Honestly, the content is good, but I think you're speaking a little fast."
+          }
+        },
+        {
+          "targetText": "고마워요. 다음에는 어떤 부분을 좀 바꾸면 좋을까요?",
+          "baseText": {
+            "de": "Danke. Was sollte ich nächstes Mal konkret ändern?",
+            "en": "Thanks. Which part should I change next time?"
+          }
+        },
+        {
+          "targetText": "내용은 괜찮지만 핵심 부분에서는 조금 천천히 말해 주세요.",
+          "baseText": {
+            "de": "Der Inhalt ist gut, aber sprich bei den wichtigsten Punkten bitte etwas langsamer.",
+            "en": "The content is fine, but please speak a little more slowly at the key points."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Positive Rückmeldung mit einer Einschränkung",
+        "rule": {
+          "de": "Mit -지만 stellst du einer Stärke eine konkrete Einschränkung gegenüber. 빠른 것 같아요 gibt deine Wahrnehmung als Einschätzung wieder.",
+          "en": "Use -지만 to balance a strength with a specific limitation. 빠른 것 같아요 presents your impression as an assessment."
+        },
+        "examples": [
+          {
+            "targetText": "솔직히 발표 내용은 좋지만 말이 조금 빠른 것 같아요.",
+            "baseText": {
+              "de": "Ehrlich gesagt ist der Inhalt gut, aber ich finde das Sprechtempo etwas hoch.",
+              "en": "Honestly, the content is good, but I think you're speaking a little fast."
+            },
+            "highlight": "좋지만"
+          },
+          {
+            "targetText": "설명은 좋지만 글씨가 작은 것 같아요.",
+            "baseText": {
+              "de": "Die Erklärung ist gut, aber die Schrift wirkt auf mich klein.",
+              "en": "The explanation is good, but the text looks small to me."
+            },
+            "highlight": "작은 것 같아요"
+          }
+        ]
+      },
+      "cloze": [
+        "내용은 ",
+        {
+          "kind": "form",
+          "answer": "괜찮지만",
+          "cue": "Einräumung -지만 / concession -지만",
+          "choices": [
+            "괜찮지만",
+            "괜찮아요",
+            "괜찮은",
+            "괜찮을"
+          ]
+        },
+        " 핵심 부분에서는 조금 ",
+        {
+          "kind": "choice",
+          "answer": "천천히",
+          "choices": [
+            "천천히",
+            "빠르게",
+            "작게",
+            "짧게"
+          ]
+        },
+        " 말해 주세요."
+      ],
+      "chunks": [
+        {
+          "targetText": "솔직히",
+          "baseText": {
+            "de": "ehrlich gesagt",
+            "en": "honestly"
+          }
+        },
+        {
+          "targetText": "발표 내용은 좋지만",
+          "baseText": {
+            "de": "ist der Präsentationsinhalt gut, aber",
+            "en": "the presentation content is good, but"
+          }
+        },
+        {
+          "targetText": "말이 조금",
+          "baseText": {
+            "de": "das Sprechtempo etwas",
+            "en": "the speaking pace is a little"
+          }
+        },
+        {
+          "targetText": "빠른 것 같아요.",
+          "baseText": {
+            "de": "finde ich schnell.",
+            "en": "fast, I think."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "솔직히",
+          "baseText": {
+            "de": "ehrlich gesagt",
+            "en": "honestly"
+          }
+        },
+        {
+          "targetText": "발표 내용",
+          "baseText": {
+            "de": "Inhalt der Präsentation",
+            "en": "presentation content"
+          }
+        },
+        {
+          "targetText": "좋지만",
+          "baseText": {
+            "de": "ist gut, aber",
+            "en": "is good, but"
+          }
+        },
+        {
+          "targetText": "빠른 것 같아요",
+          "baseText": {
+            "de": "ich finde es schnell",
+            "en": "I think it is fast"
+          }
+        },
+        {
+          "targetText": "다음에는",
+          "baseText": {
+            "de": "nächstes Mal",
+            "en": "next time"
+          }
+        },
+        {
+          "targetText": "핵심 부분에서는",
+          "baseText": {
+            "de": "bei den wichtigsten Punkten",
+            "en": "at the key points"
+          }
+        },
+        {
+          "targetText": "천천히 말해 주세요",
+          "baseText": {
+            "de": "sprich bitte langsam",
+            "en": "please speak slowly"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "솔직히",
+        "after": " 발표 내용은 좋지만 말이 조금 빠른 것 같아요.",
+        "fallbackChoices": [
+          "솔직히",
+          "아직도",
+          "하필",
+          "도저히"
+        ]
+      },
+      "speakRequired": [
+        "솔직히",
+        "좋지만",
+        "빠른"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Probe hörst du: „방금 발표는 어땠어요? 이해하기 괜찮았어요?“",
+        "en": "After the practice run, your teammate asks: “방금 발표는 어땠어요? 이해하기 괜찮았어요?”"
+      },
+      "trophyWord": {
+        "word": "솔직히",
+        "meaning": {
+          "de": "ehrlich gesagt / offen gesagt",
+          "en": "honestly / frankly"
+        },
+        "example": "솔직히 이 부분은 조금 어려워요.",
+        "whyThisWord": {
+          "de": "솔직히 kündigt eine ehrliche persönliche Einschätzung an; mit einer konkreten Begründung bleibt sie hilfreich.",
+          "en": "솔직히 signals an honest personal assessment; a specific explanation keeps it helpful."
+        }
+      },
+      "distractors": [
+        "말은 천천히 하지만 내용이 너무 어려워요.",
+        "발표 내용도 좋고 속도도 딱 좋아요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein kurzes Gespräch nach der Probe.",
+        "en": "A brief conversation after the practice run."
+      },
+      "songMood": "Clear, supportive rhythm with understated energy.",
+      "visualNotes": "Meeting room after a presentation, blank screen and notes; no written feedback revealed."
+    },
+    {
+      "slug": "byeollo-film-opinion",
+      "title": {
+        "de": "Nach dem Film",
+        "en": "After the film"
+      },
+      "situation": {
+        "de": "Nach dem Film fragt dich jemand aus deinem Freundeskreis nach deinem Eindruck.",
+        "en": "After the film, a friend asks what you thought."
+      },
+      "pedagogicalGoal": "Mit -기는 한데 eine Stärke anerkennen und mit 별로 plus Verneinung die eigene Bewertung einschränken.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 영화는 어땠어요? 많이 웃었어요?",
+          "baseText": {
+            "de": "Wie fandest du den Film? Hast du viel gelacht?",
+            "en": "What did you think of the film? Did you laugh a lot?"
+          }
+        },
+        {
+          "targetText": "배우들의 연기는 좋기는 한데 영화는 별로 안 웃겨요.",
+          "baseText": {
+            "de": "Die schauspielerische Leistung ist zwar gut, aber der Film ist nicht besonders lustig.",
+            "en": "The acting is good, I'll give it that, but the film isn't very funny."
+          }
+        },
+        {
+          "targetText": "끝부분도 재미없어요? 결말은 예상대로 끝나요?",
+          "baseText": {
+            "de": "Ist auch der Schluss langweilig? Geht es so aus wie erwartet?",
+            "en": "Is the final part boring too? Does it end the way you'd expect?"
+          }
+        },
+        {
+          "targetText": "결말이 뻔하기는 하지만 마지막 장면은 꽤 따뜻해요.",
+          "baseText": {
+            "de": "Das Ende ist zwar vorhersehbar, aber die letzte Szene ist ziemlich herzlich.",
+            "en": "The ending is predictable, but the final scene is quite heartwarming."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기는 한데 / -기는 하지만",
+        "rule": {
+          "de": "-기는 한데 und -기는 하지만 erkennen den ersten Punkt ausdrücklich an, bevor eine Einschränkung folgt. 별로 steht hier mit 안: nicht besonders.",
+          "en": "-기는 한데 and -기는 하지만 explicitly concede the first point before a qualification. Here, 별로 goes with 안 to mean not particularly."
+        },
+        "examples": [
+          {
+            "targetText": "배우들의 연기는 좋기는 한데 영화는 별로 안 웃겨요.",
+            "baseText": {
+              "de": "Die schauspielerische Leistung ist zwar gut, aber der Film ist nicht besonders lustig.",
+              "en": "The acting is good, I'll give it that, but the film isn't very funny."
+            },
+            "highlight": "좋기는 한데"
+          },
+          {
+            "targetText": "결말이 뻔하기는 하지만 마지막 장면은 꽤 따뜻해요.",
+            "baseText": {
+              "de": "Das Ende ist zwar vorhersehbar, aber die letzte Szene ist ziemlich herzlich.",
+              "en": "The ending is predictable, but the final scene is quite heartwarming."
+            },
+            "highlight": "뻔하기는 하지만"
+          }
+        ]
+      },
+      "cloze": [
+        "결말이 ",
+        {
+          "kind": "form",
+          "answer": "뻔하기는 하지만",
+          "cue": "Ausdrückliche Einräumung -기는 하지만 / explicit concession -기는 하지만",
+          "choices": [
+            "뻔하기는 하지만",
+            "뻔해요",
+            "뻔한",
+            "뻔할"
+          ]
+        },
+        " 마지막 장면은 꽤 ",
+        {
+          "kind": "choice",
+          "answer": "따뜻해요",
+          "choices": [
+            "따뜻해요",
+            "잔인해요",
+            "지루해요",
+            "복잡해요"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "배우들의 연기는",
+          "baseText": {
+            "de": "die schauspielerische Leistung",
+            "en": "the acting"
+          }
+        },
+        {
+          "targetText": "좋기는 한데",
+          "baseText": {
+            "de": "ist zwar gut, aber",
+            "en": "is good, I'll give it that, but"
+          }
+        },
+        {
+          "targetText": "영화는",
+          "baseText": {
+            "de": "der Film",
+            "en": "the film"
+          }
+        },
+        {
+          "targetText": "별로 안 웃겨요.",
+          "baseText": {
+            "de": "ist nicht besonders lustig.",
+            "en": "isn't very funny."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "별로",
+          "baseText": {
+            "de": "nicht besonders, mit Verneinung",
+            "en": "not particularly, with a negative"
+          }
+        },
+        {
+          "targetText": "배우들의 연기",
+          "baseText": {
+            "de": "die schauspielerische Leistung",
+            "en": "the actors' performances"
+          }
+        },
+        {
+          "targetText": "좋기는 한데",
+          "baseText": {
+            "de": "ist zwar gut, aber",
+            "en": "is good, admittedly, but"
+          }
+        },
+        {
+          "targetText": "안 웃겨요",
+          "baseText": {
+            "de": "ist nicht lustig",
+            "en": "is not funny"
+          }
+        },
+        {
+          "targetText": "예상대로",
+          "baseText": {
+            "de": "wie erwartet",
+            "en": "as expected"
+          }
+        },
+        {
+          "targetText": "뻔하기는 하지만",
+          "baseText": {
+            "de": "ist zwar vorhersehbar, aber",
+            "en": "is admittedly predictable, but"
+          }
+        },
+        {
+          "targetText": "꽤 따뜻해요",
+          "baseText": {
+            "de": "ist ziemlich herzlich",
+            "en": "is quite heartwarming"
+          }
+        }
+      ],
+      "recall": {
+        "before": "배우들의 연기는 좋기는 한데 영화는 ",
+        "answer": "별로",
+        "after": " 안 웃겨요.",
+        "fallbackChoices": [
+          "별로",
+          "방금",
+          "자주",
+          "미리"
+        ]
+      },
+      "speakRequired": [
+        "연기는",
+        "좋기는",
+        "별로"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Film kommt die Frage: „이번 영화는 어땠어요? 많이 웃었어요?“",
+        "en": "After the film, your friend asks: “이번 영화는 어땠어요? 많이 웃었어요?”"
+      },
+      "trophyWord": {
+        "word": "별로",
+        "meaning": {
+          "de": "nicht besonders, mit Verneinung",
+          "en": "not particularly, with a negative"
+        },
+        "example": "이 음식은 별로 안 매워요.",
+        "whyThisWord": {
+          "de": "별로 schwächt eine negative Bewertung ab: nicht besonders statt überhaupt nicht.",
+          "en": "별로 softens a negative assessment: not particularly rather than not at all."
+        }
+      },
+      "distractors": [
+        "연기도 좋고 영화도 정말 웃겨요.",
+        "영화는 웃기지만 배우들의 연기는 어색해요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch auf dem Weg aus dem Kino.",
+        "en": "A conversation on the way out of the cinema."
+      },
+      "songMood": "Easygoing film-night groove with a thoughtful finish.",
+      "visualNotes": "Cinema foyer and neutral posters; no ending or actor details shown."
+    },
+    {
+      "slug": "hwolssin-market-comparison",
+      "title": {
+        "de": "Zwei Märkte vergleichen",
+        "en": "Comparing two markets"
+      },
+      "situation": {
+        "de": "Im Hausflur sprecht ihr über Einkaufsmöglichkeiten in der Umgebung.",
+        "en": "In the hallway, you discuss places to shop nearby."
+      },
+      "pedagogicalGoal": "Mit 훨씬 einen Vergleich verstärken und mit -기는 한데 einen praktischen Nachteil ergänzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "두 시장 중에 어디가 더 좋아요? 둘 다 가봤어요?",
+          "baseText": {
+            "de": "Welcher der beiden Märkte ist besser? Warst du auf beiden?",
+            "en": "Which of the two markets is better? Have you been to both?"
+          }
+        },
+        {
+          "targetText": "먼 시장이 훨씬 싸기는 한데 사람이 너무 많아요.",
+          "baseText": {
+            "de": "Der weiter entfernte Markt ist zwar viel günstiger, aber dort sind zu viele Leute.",
+            "en": "The farther market is much cheaper, admittedly, but it's too crowded."
+          }
+        },
+        {
+          "targetText": "저도 가 보고 싶어요. 언제 가는 게 좋아요?",
+          "baseText": {
+            "de": "Ich würde auch gern hingehen. Wann geht man am besten hin?",
+            "en": "I'd like to go too. When is the best time to go?"
+          }
+        },
+        {
+          "targetText": "주말에는 붐비기는 하지만 평일 아침에는 좀 한산해요.",
+          "baseText": {
+            "de": "Am Wochenende ist es zwar voll, aber an Werktagen ist morgens etwas weniger los.",
+            "en": "It is crowded at weekends, but weekday mornings are a little quieter."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Einen Vergleich einräumen",
+        "rule": {
+          "de": "훨씬 verstärkt den Unterschied im Vergleich. Mit -기는 한데 oder -기는 하지만 erkennst du einen Punkt an und ergänzt eine Einschränkung.",
+          "en": "훨씬 emphasizes a large difference in a comparison. -기는 한데 or -기는 하지만 concedes one point before adding a qualification."
+        },
+        "examples": [
+          {
+            "targetText": "먼 시장이 훨씬 싸기는 한데 사람이 너무 많아요.",
+            "baseText": {
+              "de": "Der weiter entfernte Markt ist zwar viel günstiger, aber dort sind zu viele Leute.",
+              "en": "The farther market is much cheaper, admittedly, but it's too crowded."
+            },
+            "highlight": "싸기는 한데"
+          },
+          {
+            "targetText": "주말에는 붐비기는 하지만 평일 아침에는 좀 한산해요.",
+            "baseText": {
+              "de": "Am Wochenende ist es zwar voll, aber an Werktagen ist morgens etwas weniger los.",
+              "en": "It is crowded at weekends, but weekday mornings are a little quieter."
+            },
+            "highlight": "붐비기는 하지만"
+          }
+        ]
+      },
+      "cloze": [
+        "주말에는 ",
+        {
+          "kind": "form",
+          "answer": "붐비기는 하지만",
+          "cue": "Ausdrückliche Einräumung -기는 하지만 / explicit concession -기는 하지만",
+          "choices": [
+            "붐비기는 하지만",
+            "붐벼요",
+            "붐비는",
+            "붐빌"
+          ]
+        },
+        " 평일 아침에는 좀 ",
+        {
+          "kind": "choice",
+          "answer": "한산해요",
+          "choices": [
+            "한산해요",
+            "복잡해요",
+            "비싸요",
+            "더러워요"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "먼 시장이",
+          "baseText": {
+            "de": "der weiter entfernte Markt",
+            "en": "the farther market"
+          }
+        },
+        {
+          "targetText": "훨씬",
+          "baseText": {
+            "de": "viel",
+            "en": "much"
+          }
+        },
+        {
+          "targetText": "싸기는 한데",
+          "baseText": {
+            "de": "ist zwar günstiger, aber",
+            "en": "is cheaper, admittedly, but"
+          }
+        },
+        {
+          "targetText": "사람이 너무 많아요.",
+          "baseText": {
+            "de": "dort sind zu viele Leute.",
+            "en": "there are too many people."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "훨씬",
+          "baseText": {
+            "de": "viel / wesentlich, im Vergleich",
+            "en": "much / far, in a comparison"
+          }
+        },
+        {
+          "targetText": "먼 시장",
+          "baseText": {
+            "de": "weiter entfernter Markt",
+            "en": "farther market"
+          }
+        },
+        {
+          "targetText": "싸기는 한데",
+          "baseText": {
+            "de": "ist zwar günstig, aber",
+            "en": "is cheap, admittedly, but"
+          }
+        },
+        {
+          "targetText": "사람이 너무 많아요",
+          "baseText": {
+            "de": "es sind zu viele Leute da",
+            "en": "there are too many people"
+          }
+        },
+        {
+          "targetText": "주말에는",
+          "baseText": {
+            "de": "am Wochenende",
+            "en": "at weekends"
+          }
+        },
+        {
+          "targetText": "평일 아침에는",
+          "baseText": {
+            "de": "an Werktagen morgens",
+            "en": "on weekday mornings"
+          }
+        },
+        {
+          "targetText": "한산해요",
+          "baseText": {
+            "de": "es ist wenig los",
+            "en": "it is quiet / uncrowded"
+          }
+        }
+      ],
+      "recall": {
+        "before": "먼 시장이 ",
+        "answer": "훨씬",
+        "after": " 싸기는 한데 사람이 너무 많아요.",
+        "fallbackChoices": [
+          "훨씬",
+          "전혀",
+          "별로",
+          "절대로"
+        ]
+      },
+      "speakRequired": [
+        "훨씬",
+        "싸기는",
+        "많아요"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur hörst du: „두 시장 중에 어디가 더 좋아요? 둘 다 가봤어요?“",
+        "en": "In the hallway, your neighbor asks: “두 시장 중에 어디가 더 좋아요? 둘 다 가봤어요?”"
+      },
+      "trophyWord": {
+        "word": "훨씬",
+        "meaning": {
+          "de": "viel / wesentlich, im Vergleich",
+          "en": "much / far, in a comparison"
+        },
+        "example": "오늘은 어제보다 훨씬 따뜻해요.",
+        "whyThisWord": {
+          "de": "훨씬 macht deutlich, dass ein Unterschied groß und nicht nur gering ist.",
+          "en": "훨씬 makes clear that a difference is substantial rather than small."
+        }
+      },
+      "distractors": [
+        "먼 시장은 비싸지만 사람이 별로 없어요.",
+        "두 시장은 가격도 비슷하고 사람도 적어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Einkaufsgespräch zwischen Tür und Angel.",
+        "en": "A quick conversation about shopping."
+      },
+      "songMood": "Bright market-day rhythm with soft acoustic textures.",
+      "visualNotes": "Apartment hallway and shopping bags; no crowded-market answer image."
+    },
+    {
+      "slug": "mullon-film-sequel",
+      "title": {
+        "de": "Die Fortsetzung",
+        "en": "The sequel"
+      },
+      "situation": {
+        "de": "Im Filmclub tauscht ihr erste Eindrücke von einer Fortsetzung aus.",
+        "en": "At your film club, you share first impressions of a sequel."
+      },
+      "pedagogicalGoal": "Mit 물론 einen gemeinsamen positiven Punkt anerkennen und mit -기는 하지만 eine Einschränkung begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 후속편은 어땠어요? 전편만큼 재미있었어요?",
+          "baseText": {
+            "de": "Wie fandest du die Fortsetzung? War sie so unterhaltsam wie der erste Teil?",
+            "en": "What did you think of the sequel? Was it as entertaining as the first film?"
+          }
+        },
+        {
+          "targetText": "물론 재미있기는 하지만 전편과 내용이 너무 비슷한 것 같아요.",
+          "baseText": {
+            "de": "Natürlich ist sie unterhaltsam, aber ich finde die Handlung der des ersten Teils zu ähnlich.",
+            "en": "Of course it's entertaining, but I think the plot is too similar to the first film."
+          }
+        },
+        {
+          "targetText": "저는 전편은 안 봤어요. 그래도 이번 영화는 추천해요?",
+          "baseText": {
+            "de": "Ich habe den ersten Teil nicht gesehen. Würdest du mir diesen Film trotzdem empfehlen?",
+            "en": "I haven't seen the first film. Would you still recommend this one to me?"
+          }
+        },
+        {
+          "targetText": "전편과 비슷하기는 하지만 그래도 충분히 재미있어서 추천해요.",
+          "baseText": {
+            "de": "Sie ähnelt dem ersten Teil zwar, aber ich empfehle sie trotzdem, weil sie unterhaltsam genug ist.",
+            "en": "It is similar to the first film, but I still recommend it because it's entertaining enough."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Einen Einwand trotz Empfehlung stehen lassen",
+        "rule": {
+          "de": "-기는 하지만 räumt einen Punkt ausdrücklich ein. 그래도 führt anschließend etwas an, das trotz dieses Einwands gilt.",
+          "en": "-기는 하지만 explicitly concedes a point. 그래도 introduces something that still holds despite that reservation."
+        },
+        "examples": [
+          {
+            "targetText": "물론 재미있기는 하지만 전편과 내용이 너무 비슷한 것 같아요.",
+            "baseText": {
+              "de": "Natürlich ist sie unterhaltsam, aber ich finde die Handlung der des ersten Teils zu ähnlich.",
+              "en": "Of course it's entertaining, but I think the plot is too similar to the first film."
+            },
+            "highlight": "재미있기는 하지만"
+          },
+          {
+            "targetText": "전편과 비슷하기는 하지만 그래도 충분히 재미있어서 추천해요.",
+            "baseText": {
+              "de": "Sie ähnelt dem ersten Teil zwar, aber ich empfehle sie trotzdem, weil sie unterhaltsam genug ist.",
+              "en": "It is similar to the first film, but I still recommend it because it's entertaining enough."
+            },
+            "highlight": "비슷하기는 하지만"
+          }
+        ]
+      },
+      "cloze": [
+        "전편과 ",
+        {
+          "kind": "form",
+          "answer": "비슷하기는 하지만",
+          "cue": "Ausdrückliche Einräumung -기는 하지만 / explicit concession -기는 하지만",
+          "choices": [
+            "비슷하기는 하지만",
+            "비슷해요",
+            "비슷한",
+            "비슷할"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "그래도",
+            "그러면",
+            "왜냐하면",
+            "따라서"
+          ]
+        },
+        " 충분히 재미있어서 추천해요."
+      ],
+      "chunks": [
+        {
+          "targetText": "물론",
+          "baseText": {
+            "de": "natürlich",
+            "en": "of course"
+          }
+        },
+        {
+          "targetText": "재미있기는 하지만",
+          "baseText": {
+            "de": "ist sie unterhaltsam, aber",
+            "en": "it's entertaining, but"
+          }
+        },
+        {
+          "targetText": "전편과",
+          "baseText": {
+            "de": "im Vergleich zum ersten Teil",
+            "en": "compared with the first film"
+          }
+        },
+        {
+          "targetText": "내용이 너무",
+          "baseText": {
+            "de": "die Handlung ist zu",
+            "en": "the plot is too"
+          }
+        },
+        {
+          "targetText": "비슷한 것 같아요.",
+          "baseText": {
+            "de": "ähnlich, finde ich.",
+            "en": "similar, I think."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "물론",
+          "baseText": {
+            "de": "natürlich / selbstverständlich",
+            "en": "of course"
+          }
+        },
+        {
+          "targetText": "후속편",
+          "baseText": {
+            "de": "Fortsetzung",
+            "en": "sequel"
+          }
+        },
+        {
+          "targetText": "재미있기는 하지만",
+          "baseText": {
+            "de": "ist zwar unterhaltsam, aber",
+            "en": "is entertaining, admittedly, but"
+          }
+        },
+        {
+          "targetText": "전편과",
+          "baseText": {
+            "de": "im Vergleich zum ersten Teil",
+            "en": "compared with the first film"
+          }
+        },
+        {
+          "targetText": "비슷한 것 같아요",
+          "baseText": {
+            "de": "ich finde es ähnlich",
+            "en": "I think it is similar"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "even so / still"
+          }
+        },
+        {
+          "targetText": "충분히 재미있어서",
+          "baseText": {
+            "de": "weil es unterhaltsam genug ist",
+            "en": "because it is entertaining enough"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "물론",
+        "after": " 재미있기는 하지만 전편과 내용이 너무 비슷한 것 같아요.",
+        "fallbackChoices": [
+          "물론",
+          "전혀",
+          "도저히",
+          "결코"
+        ]
+      },
+      "speakRequired": [
+        "물론",
+        "재미있기는",
+        "비슷한"
+      ],
+      "sceneCaption": {
+        "de": "Im Filmclub fragt jemand: „이번 후속편은 어땠어요? 전편만큼 재미있었어요?“",
+        "en": "At the film club, someone asks: “이번 후속편은 어땠어요? 전편만큼 재미있었어요?”"
+      },
+      "trophyWord": {
+        "word": "물론",
+        "meaning": {
+          "de": "natürlich / selbstverständlich",
+          "en": "of course"
+        },
+        "example": "물론 저도 같이 가고 싶어요.",
+        "whyThisWord": {
+          "de": "물론 erkennt einen offensichtlichen oder gemeinsamen Punkt an, bevor du deine eigene Einschränkung ergänzen kannst.",
+          "en": "물론 acknowledges an obvious or shared point before you add a qualification of your own."
+        }
+      },
+      "distractors": [
+        "전편과 내용이 완전히 달라서 놀랐어요.",
+        "이번 후속편은 전혀 재미없어서 끝까지 못 봤어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Filmgespräch nach der Vorführung.",
+        "en": "A film discussion after the screening."
+      },
+      "songMood": "Thoughtful, friendly lounge rhythm.",
+      "visualNotes": "Small film-club gathering, unbranded posters, no plot spoilers."
+    },
+    {
+      "slug": "ohiryeo-meeting-time",
+      "title": {
+        "de": "Die Besprechung verlegen",
+        "en": "Moving the meeting"
+      },
+      "situation": {
+        "de": "Im Team wird ein früherer Termin für eine kurze Besprechung vorgeschlagen.",
+        "en": "A teammate suggests an earlier slot for a short meeting."
+      },
+      "pedagogicalGoal": "Mit -아/어도 zeigen, dass ein Vorteil die Schwierigkeit nicht aufhebt, und mit 오히려 eine unerwartete Gegenrichtung markieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "회의를 아침으로 옮길까요? 짧게 하면 괜찮아요?",
+          "baseText": {
+            "de": "Sollen wir die Besprechung auf den Morgen legen? Wäre es okay, wenn wir sie kurz halten?",
+            "en": "Shall we move the meeting to the morning? Would that work if we keep it short?"
+          }
+        },
+        {
+          "targetText": "회의가 짧아도 아침에는 오히려 시간이 더 안 맞아요.",
+          "baseText": {
+            "de": "Auch wenn die Besprechung kurz ist, passt es morgens für mich sogar noch schlechter.",
+            "en": "Even if the meeting is short, the morning actually works even less well for me."
+          }
+        },
+        {
+          "targetText": "오전에는 다른 일이 있어요? 몇 시가 괜찮아요?",
+          "baseText": {
+            "de": "Hast du vormittags etwas anderes vor? Welche Uhrzeit passt dir?",
+            "en": "Do you have something else in the morning? What time works for you?"
+          }
+        },
+        {
+          "targetText": "회의가 길어도 오후 두 시에는 참석할 수 있어요.",
+          "baseText": {
+            "de": "Auch wenn die Besprechung länger dauert, kann ich um zwei Uhr nachmittags teilnehmen.",
+            "en": "Even if the meeting is long, I can attend at two in the afternoon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어도: Eine Bedingung ändert das Ergebnis nicht",
+        "rule": {
+          "de": "-아/어도 bedeutet hier auch wenn. Die zweite Aussage gilt selbst unter der ersten Bedingung. 오히려 zeigt, dass das Ergebnis der Erwartung entgegenläuft.",
+          "en": "Here, -아/어도 means even if. The second statement holds even under the first condition. 오히려 marks an outcome that runs against expectations."
+        },
+        "examples": [
+          {
+            "targetText": "회의가 짧아도 아침에는 오히려 시간이 더 안 맞아요.",
+            "baseText": {
+              "de": "Auch wenn die Besprechung kurz ist, passt es morgens für mich sogar noch schlechter.",
+              "en": "Even if the meeting is short, the morning actually works even less well for me."
+            },
+            "highlight": "짧아도"
+          },
+          {
+            "targetText": "회의가 길어도 오후 두 시에는 참석할 수 있어요.",
+            "baseText": {
+              "de": "Auch wenn die Besprechung länger dauert, kann ich um zwei Uhr nachmittags teilnehmen.",
+              "en": "Even if the meeting is long, I can attend at two in the afternoon."
+            },
+            "highlight": "길어도"
+          }
+        ]
+      },
+      "cloze": [
+        "회의가 ",
+        {
+          "kind": "form",
+          "answer": "길어도",
+          "cue": "Einräumende Bedingung -어도 / concessive condition -어도",
+          "choices": [
+            "길어도",
+            "길어요",
+            "긴",
+            "길"
+          ]
+        },
+        " 오후 ",
+        {
+          "kind": "choice",
+          "answer": "두 시에는",
+          "choices": [
+            "두 시에는",
+            "한 시에는",
+            "세 시에는",
+            "네 시에는"
+          ]
+        },
+        " 참석할 수 있어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "회의가 짧아도",
+          "baseText": {
+            "de": "auch wenn die Besprechung kurz ist",
+            "en": "even if the meeting is short"
+          }
+        },
+        {
+          "targetText": "아침에는",
+          "baseText": {
+            "de": "morgens",
+            "en": "in the morning"
+          }
+        },
+        {
+          "targetText": "오히려",
+          "baseText": {
+            "de": "sogar im Gegenteil",
+            "en": "actually, contrary to expectations"
+          }
+        },
+        {
+          "targetText": "시간이 더",
+          "baseText": {
+            "de": "passt der Zeitpunkt noch",
+            "en": "the time works even"
+          }
+        },
+        {
+          "targetText": "안 맞아요.",
+          "baseText": {
+            "de": "weniger.",
+            "en": "less well."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "오히려",
+          "baseText": {
+            "de": "im Gegenteil / sogar eher",
+            "en": "actually / on the contrary"
+          }
+        },
+        {
+          "targetText": "회의가",
+          "baseText": {
+            "de": "die Besprechung",
+            "en": "the meeting"
+          }
+        },
+        {
+          "targetText": "짧아도",
+          "baseText": {
+            "de": "auch wenn sie kurz ist",
+            "en": "even if it is short"
+          }
+        },
+        {
+          "targetText": "아침에는",
+          "baseText": {
+            "de": "morgens",
+            "en": "in the morning"
+          }
+        },
+        {
+          "targetText": "안 맞아요",
+          "baseText": {
+            "de": "es passt nicht",
+            "en": "it does not work for me"
+          }
+        },
+        {
+          "targetText": "오후 두 시에는",
+          "baseText": {
+            "de": "um zwei Uhr nachmittags",
+            "en": "at two in the afternoon"
+          }
+        },
+        {
+          "targetText": "참석할 수 있어요",
+          "baseText": {
+            "de": "ich kann teilnehmen",
+            "en": "I can attend"
+          }
+        }
+      ],
+      "recall": {
+        "before": "회의가 짧아도 아침에는 ",
+        "answer": "오히려",
+        "after": " 시간이 더 안 맞아요.",
+        "fallbackChoices": [
+          "오히려",
+          "예상대로",
+          "반드시",
+          "일부러"
+        ]
+      },
+      "speakRequired": [
+        "짧아도",
+        "오히려",
+        "맞아요"
+      ],
+      "sceneCaption": {
+        "de": "Im Team wird vorgeschlagen: „회의를 아침으로 옮길까요? 짧게 하면 괜찮아요?“",
+        "en": "A teammate suggests: “회의를 아침으로 옮길까요? 짧게 하면 괜찮아요?”"
+      },
+      "trophyWord": {
+        "word": "오히려",
+        "meaning": {
+          "de": "im Gegenteil / entgegen der Erwartung",
+          "en": "on the contrary / contrary to expectations"
+        },
+        "example": "일찍 나왔는데 오히려 더 늦었어요.",
+        "whyThisWord": {
+          "de": "오히려 hilft dir zu erklären, dass ein gut gemeinter Vorschlag das Gegenteil der erhofften Wirkung hat.",
+          "en": "오히려 helps explain that a well-meant suggestion has the opposite of the expected effect."
+        }
+      },
+      "distractors": [
+        "회의가 길어도 아침 시간이 제일 좋아요.",
+        "오후에는 안 되지만 아침에는 언제든 괜찮아요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Termin wird im Team besprochen.",
+        "en": "A team discusses a meeting slot."
+      },
+      "songMood": "Steady collaborative rhythm, clear and calm.",
+      "visualNotes": "Meeting table with an unmarked planner; no alternative appointment revealed."
+    },
+    {
+      "slug": "geuraedo-concert-tickets",
+      "title": {
+        "de": "Zum Konzert gehen",
+        "en": "Going to the concert"
+      },
+      "situation": {
+        "de": "Du besprichst mit jemandem aus deinem Freundeskreis einen Konzertbesuch.",
+        "en": "You discuss going to a concert with a friend."
+      },
+      "pedagogicalGoal": "Mit 그래도 an einem Wunsch festhalten und mit -아/어도 einen möglichen Hinderungsgrund einräumen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 공연 표가 꽤 비싸요. 정말 갈 거예요?",
+          "baseText": {
+            "de": "Die Karten für dieses Konzert sind ziemlich teuer. Willst du wirklich hingehen?",
+            "en": "Tickets for this concert are quite expensive. Are you really going?"
+          }
+        },
+        {
+          "targetText": "표가 비싸도 그래도 이번에는 직접 듣고 싶어요.",
+          "baseText": {
+            "de": "Auch wenn die Karten teuer sind, möchte ich diesmal trotzdem live dabei sein.",
+            "en": "Even if the tickets are expensive, I still want to hear it live this time."
+          }
+        },
+        {
+          "targetText": "표는 언제 살 거예요? 오늘 예매가 시작돼요.",
+          "baseText": {
+            "de": "Wann kaufst du die Karten? Der Vorverkauf beginnt heute.",
+            "en": "When will you buy the tickets? Booking opens today."
+          }
+        },
+        {
+          "targetText": "오늘 바빠도 점심시간에 휴대폰으로 바로 예매할게요.",
+          "baseText": {
+            "de": "Auch wenn ich heute viel zu tun habe, buche ich in der Mittagspause direkt am Handy.",
+            "en": "Even if I'm busy today, I'll book straight away on my phone during lunch."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "그래도 und -아/어도",
+        "rule": {
+          "de": "그래도 reagiert auf einen Einwand des Gegenübers. -아/어도 nennt einen Umstand, der deinen Wunsch oder Entschluss nicht ändert.",
+          "en": "그래도 responds to the other person's reservation. -아/어도 names a circumstance that does not change your wish or decision."
+        },
+        "examples": [
+          {
+            "targetText": "표가 비싸도 그래도 이번에는 직접 듣고 싶어요.",
+            "baseText": {
+              "de": "Auch wenn die Karten teuer sind, möchte ich diesmal trotzdem live dabei sein.",
+              "en": "Even if the tickets are expensive, I still want to hear it live this time."
+            },
+            "highlight": "비싸도"
+          },
+          {
+            "targetText": "오늘 바빠도 점심시간에 휴대폰으로 바로 예매할게요.",
+            "baseText": {
+              "de": "Auch wenn ich heute viel zu tun habe, buche ich in der Mittagspause direkt am Handy.",
+              "en": "Even if I'm busy today, I'll book straight away on my phone during lunch."
+            },
+            "highlight": "바빠도"
+          }
+        ]
+      },
+      "cloze": [
+        "오늘 ",
+        {
+          "kind": "form",
+          "answer": "바빠도",
+          "cue": "Einräumende Bedingung -아도 / concessive condition -아도",
+          "choices": [
+            "바빠도",
+            "바빠요",
+            "바쁜",
+            "바쁠"
+          ]
+        },
+        " 점심시간에 ",
+        {
+          "kind": "choice",
+          "answer": "휴대폰으로",
+          "choices": [
+            "휴대폰으로",
+            "우편으로",
+            "팩스로",
+            "편지로"
+          ]
+        },
+        " 바로 예매할게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "표가 비싸도",
+          "baseText": {
+            "de": "auch wenn die Karten teuer sind",
+            "en": "even if the tickets are expensive"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "이번에는",
+          "baseText": {
+            "de": "diesmal",
+            "en": "this time"
+          }
+        },
+        {
+          "targetText": "직접 듣고 싶어요.",
+          "baseText": {
+            "de": "möchte ich es live hören.",
+            "en": "I want to hear it live."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "그래도",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "even so / still"
+          }
+        },
+        {
+          "targetText": "공연 표",
+          "baseText": {
+            "de": "Konzertkarte",
+            "en": "concert ticket"
+          }
+        },
+        {
+          "targetText": "비싸도",
+          "baseText": {
+            "de": "auch wenn es teuer ist",
+            "en": "even if it is expensive"
+          }
+        },
+        {
+          "targetText": "직접 듣고 싶어요",
+          "baseText": {
+            "de": "ich möchte es live hören",
+            "en": "I want to hear it in person"
+          }
+        },
+        {
+          "targetText": "예매가 시작돼요",
+          "baseText": {
+            "de": "der Vorverkauf beginnt",
+            "en": "advance booking opens"
+          }
+        },
+        {
+          "targetText": "휴대폰으로",
+          "baseText": {
+            "de": "mit dem Handy",
+            "en": "on my phone"
+          }
+        },
+        {
+          "targetText": "예매할게요",
+          "baseText": {
+            "de": "ich werde die Karten buchen",
+            "en": "I'll book the tickets"
+          }
+        }
+      ],
+      "recall": {
+        "before": "표가 비싸도 ",
+        "answer": "그래도",
+        "after": " 이번에는 직접 듣고 싶어요.",
+        "fallbackChoices": [
+          "그래도",
+          "왜냐하면",
+          "예를 들어",
+          "다시 말해서"
+        ]
+      },
+      "speakRequired": [
+        "그래도",
+        "비싸도",
+        "직접"
+      ],
+      "sceneCaption": {
+        "de": "Beim Gespräch über das Konzert hörst du: „이번 공연 표가 꽤 비싸요. 정말 갈 거예요?“",
+        "en": "While discussing the concert, your friend says: “이번 공연 표가 꽤 비싸요. 정말 갈 거예요?”"
+      },
+      "trophyWord": {
+        "word": "그래도",
+        "meaning": {
+          "de": "trotzdem / dennoch",
+          "en": "even so / nevertheless"
+        },
+        "example": "좀 멀어요. 그래도 같이 가고 싶어요.",
+        "whyThisWord": {
+          "de": "Mit 그래도 zeigst du, dass du einen Einwand gehört hast und dennoch an deiner Haltung festhältst.",
+          "en": "그래도 shows that you have heard a reservation and still keep your position."
+        }
+      },
+      "distractors": [
+        "표가 비싸서 이번에는 집에서 들을 거예요.",
+        "이번에는 표가 싸서 친구에게 선물할 거예요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein gemeinsamer Blick auf ein Konzertplakat.",
+        "en": "Looking at a concert poster together."
+      },
+      "songMood": "Anticipatory live-music energy with a relaxed beat.",
+      "visualNotes": "Friends beside a fictional concert poster with no ticket timing visible."
+    },
+    {
+      "slug": "yeoksi-cafe-trial",
+      "title": {
+        "de": "Das Café testen",
+        "en": "Trying the cafe"
+      },
+      "situation": {
+        "de": "Nach einem gemeinsamen Cafébesuch fragt jemand im Team nach deinem Eindruck.",
+        "en": "After visiting a cafe together, a teammate asks for your impression."
+      },
+      "pedagogicalGoal": "Mit -는데도 einen unerwarteten Gegensatz ausdrücken und mit 역시 eine bestätigte Erwartung markieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "추천받은 카페는 어땠어요? 직접 가보니 괜찮았어요?",
+          "baseText": {
+            "de": "Wie war das empfohlene Café? Hat es dir beim Besuch gefallen?",
+            "en": "How was the recommended cafe? Did you like it when you went?"
+          }
+        },
+        {
+          "targetText": "서비스가 느린데도 커피는 역시 맛있는 것 같아요.",
+          "baseText": {
+            "de": "Obwohl die Bedienung langsam ist, finde ich den Kaffee wie erwartet lecker.",
+            "en": "Although the service is slow, I think the coffee is as good as expected."
+          }
+        },
+        {
+          "targetText": "다음에도 여기로 갈까요? 점심시간에는 기다리기 좀 어려워요.",
+          "baseText": {
+            "de": "Wollen wir nächstes Mal wieder hierherkommen? In der Mittagspause ist langes Warten schwierig.",
+            "en": "Shall we come here again next time? It's hard to wait during our lunch break."
+          }
+        },
+        {
+          "targetText": "커피가 맛있는데도 대기가 길어서 다음에는 다른 데로 가요.",
+          "baseText": {
+            "de": "Obwohl der Kaffee gut ist, dauert das Warten lange, also gehen wir nächstes Mal woandershin.",
+            "en": "Although the coffee is good, the wait is long, so let's go somewhere else next time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ/는데도: Trotz eines bestehenden Umstands",
+        "rule": {
+          "de": "Bei -는데도 besteht der erste Umstand tatsächlich, und die zweite Aussage fällt dennoch anders aus als erwartet. Bei 느리다 lautet die Form 느린데도; bei 맛있다 heißt sie 맛있는데도.",
+          "en": "With -는데도, the first circumstance is real, yet the second statement runs against an expectation. 느리다 becomes 느린데도, while 맛있다 becomes 맛있는데도."
+        },
+        "examples": [
+          {
+            "targetText": "서비스가 느린데도 커피는 역시 맛있는 것 같아요.",
+            "baseText": {
+              "de": "Obwohl die Bedienung langsam ist, finde ich den Kaffee wie erwartet lecker.",
+              "en": "Although the service is slow, I think the coffee is as good as expected."
+            },
+            "highlight": "느린데도"
+          },
+          {
+            "targetText": "커피가 맛있는데도 대기가 길어서 다음에는 다른 데로 가요.",
+            "baseText": {
+              "de": "Obwohl der Kaffee gut ist, dauert das Warten lange, also gehen wir nächstes Mal woandershin.",
+              "en": "Although the coffee is good, the wait is long, so let's go somewhere else next time."
+            },
+            "highlight": "맛있는데도"
+          }
+        ]
+      },
+      "cloze": [
+        "커피가 ",
+        {
+          "kind": "form",
+          "answer": "맛있는데도",
+          "cue": "Unerwarteter Gegensatz -는데도 / unexpected contrast -는데도",
+          "choices": [
+            "맛있는데도",
+            "맛있어요",
+            "맛있는",
+            "맛있을"
+          ]
+        },
+        " 대기가 길어서 다음에는 ",
+        {
+          "kind": "choice",
+          "answer": "다른 데로",
+          "choices": [
+            "다른 데로",
+            "같은 데로",
+            "이 자리로",
+            "다시 여기로"
+          ]
+        },
+        " 가요."
+      ],
+      "chunks": [
+        {
+          "targetText": "서비스가 느린데도",
+          "baseText": {
+            "de": "obwohl die Bedienung langsam ist",
+            "en": "although the service is slow"
+          }
+        },
+        {
+          "targetText": "커피는",
+          "baseText": {
+            "de": "der Kaffee",
+            "en": "the coffee"
+          }
+        },
+        {
+          "targetText": "역시",
+          "baseText": {
+            "de": "wie erwartet",
+            "en": "as expected"
+          }
+        },
+        {
+          "targetText": "맛있는 것 같아요.",
+          "baseText": {
+            "de": "ist meiner Meinung nach lecker.",
+            "en": "seems delicious to me."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "역시",
+          "baseText": {
+            "de": "wie erwartet",
+            "en": "as expected"
+          }
+        },
+        {
+          "targetText": "서비스가",
+          "baseText": {
+            "de": "die Bedienung / der Service",
+            "en": "the service"
+          }
+        },
+        {
+          "targetText": "느린데도",
+          "baseText": {
+            "de": "obwohl sie langsam ist",
+            "en": "although it is slow"
+          }
+        },
+        {
+          "targetText": "맛있는 것 같아요",
+          "baseText": {
+            "de": "ich finde es lecker",
+            "en": "I think it tastes good"
+          }
+        },
+        {
+          "targetText": "대기가 길어서",
+          "baseText": {
+            "de": "weil die Wartezeit lang ist",
+            "en": "because the wait is long"
+          }
+        },
+        {
+          "targetText": "다음에는",
+          "baseText": {
+            "de": "nächstes Mal",
+            "en": "next time"
+          }
+        },
+        {
+          "targetText": "다른 데로",
+          "baseText": {
+            "de": "woandershin",
+            "en": "somewhere else"
+          }
+        }
+      ],
+      "recall": {
+        "before": "서비스가 느린데도 커피는 ",
+        "answer": "역시",
+        "after": " 맛있는 것 같아요.",
+        "fallbackChoices": [
+          "역시",
+          "전혀",
+          "별로",
+          "절대로"
+        ]
+      },
+      "speakRequired": [
+        "느린데도",
+        "역시",
+        "맛있는"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Cafébesuch kommt die Frage: „추천받은 카페는 어땠어요? 직접 가보니 괜찮았어요?“",
+        "en": "After the cafe visit, your teammate asks: “추천받은 카페는 어땠어요? 직접 가보니 괜찮았어요?”"
+      },
+      "trophyWord": {
+        "word": "역시",
+        "meaning": {
+          "de": "wie erwartet / wie gedacht",
+          "en": "as expected / just as I thought"
+        },
+        "example": "이 집 커피는 역시 맛있어요.",
+        "whyThisWord": {
+          "de": "역시 zeigt, dass eine Erfahrung deine vorherige Erwartung bestätigt.",
+          "en": "역시 shows that an experience confirms what you expected beforehand."
+        }
+      },
+      "distractors": [
+        "서비스는 빠른데 커피는 별로인 것 같아요.",
+        "커피도 맛없고 서비스도 느린 것 같아요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Teamgespräch nach einer Kaffeepause.",
+        "en": "A team conversation after a coffee break."
+      },
+      "songMood": "Measured cafe rhythm with a practical, thoughtful tone.",
+      "visualNotes": "Colleagues returning from a cafe; no waiting-time graphics in the opening scene."
+    },
+    {
+      "slug": "teukhi-next-book",
+      "title": {
+        "de": "Das nächste Buch wählen",
+        "en": "Choosing the next book"
+      },
+      "situation": {
+        "de": "Im Lesekreis steht die Auswahl des nächsten Buchs an.",
+        "en": "Your book club is choosing its next book."
+      },
+      "pedagogicalGoal": "Mit 특히 eine Vorliebe hervorheben und trotz eines bestehenden Nachteils mit -는데도 eine begründete Bewertung geben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "다음에는 어떤 책을 읽을까요? 이 수필집은 어때요?",
+          "baseText": {
+            "de": "Welches Buch wollen wir als Nächstes lesen? Wie wäre es mit diesem Essayband?",
+            "en": "What shall we read next? How about this collection of essays?"
+          }
+        },
+        {
+          "targetText": "책이 긴데도 특히 유머가 많은 수필이 마음에 들어요.",
+          "baseText": {
+            "de": "Obwohl das Buch lang ist, gefallen mir besonders die humorvollen Essays.",
+            "en": "Although the book is long, I especially like the humorous essays."
+          }
+        },
+        {
+          "targetText": "소설보다 수필이 더 좋아요? 어떤 점이 좋아요?",
+          "baseText": {
+            "de": "Magst du Essays lieber als Romane? Was gefällt dir daran?",
+            "en": "Do you prefer essays to novels? What do you like about them?"
+          }
+        },
+        {
+          "targetText": "내용이 가벼운데도 깊이가 있어서 저는 더 좋아요.",
+          "baseText": {
+            "de": "Obwohl die Texte leicht sind, haben sie Tiefe, deshalb gefallen sie mir besser.",
+            "en": "Although the content is light, it has depth, so I prefer it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Vorliebe trotz eines Einwands begründen",
+        "rule": {
+          "de": "-는데도 verbindet einen tatsächlichen Umstand mit einer unerwarteten Bewertung. 특히 hebt innerhalb einer Gruppe etwas besonders hervor.",
+          "en": "-는데도 links a real circumstance to an unexpected evaluation. 특히 singles out something within a group."
+        },
+        "examples": [
+          {
+            "targetText": "책이 긴데도 특히 유머가 많은 수필이 마음에 들어요.",
+            "baseText": {
+              "de": "Obwohl das Buch lang ist, gefallen mir besonders die humorvollen Essays.",
+              "en": "Although the book is long, I especially like the humorous essays."
+            },
+            "highlight": "긴데도"
+          },
+          {
+            "targetText": "내용이 가벼운데도 깊이가 있어서 저는 더 좋아요.",
+            "baseText": {
+              "de": "Obwohl die Texte leicht sind, haben sie Tiefe, deshalb gefallen sie mir besser.",
+              "en": "Although the content is light, it has depth, so I prefer it."
+            },
+            "highlight": "가벼운데도"
+          }
+        ]
+      },
+      "cloze": [
+        "내용이 ",
+        {
+          "kind": "form",
+          "answer": "가벼운데도",
+          "cue": "Unerwarteter Gegensatz -ㄴ데도 / unexpected contrast -ㄴ데도",
+          "choices": [
+            "가벼운데도",
+            "가벼워요",
+            "가벼운",
+            "가벼울"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "깊이가",
+          "choices": [
+            "깊이가",
+            "오타가",
+            "오류가",
+            "중복이"
+          ]
+        },
+        " 있어서 저는 더 좋아요."
+      ],
+      "chunks": [
+        {
+          "targetText": "책이 긴데도",
+          "baseText": {
+            "de": "obwohl das Buch lang ist",
+            "en": "although the book is long"
+          }
+        },
+        {
+          "targetText": "특히",
+          "baseText": {
+            "de": "besonders",
+            "en": "especially"
+          }
+        },
+        {
+          "targetText": "유머가 많은 수필이",
+          "baseText": {
+            "de": "die humorvollen Essays",
+            "en": "the humorous essays"
+          }
+        },
+        {
+          "targetText": "마음에 들어요.",
+          "baseText": {
+            "de": "gefallen mir.",
+            "en": "appeal to me."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "특히",
+          "baseText": {
+            "de": "besonders / insbesondere",
+            "en": "especially / in particular"
+          }
+        },
+        {
+          "targetText": "수필집",
+          "baseText": {
+            "de": "Essayband",
+            "en": "essay collection"
+          }
+        },
+        {
+          "targetText": "긴데도",
+          "baseText": {
+            "de": "obwohl es lang ist",
+            "en": "although it is long"
+          }
+        },
+        {
+          "targetText": "유머가 많은",
+          "baseText": {
+            "de": "humorvoll",
+            "en": "full of humor"
+          }
+        },
+        {
+          "targetText": "마음에 들어요",
+          "baseText": {
+            "de": "es gefällt mir",
+            "en": "I like it"
+          }
+        },
+        {
+          "targetText": "가벼운데도",
+          "baseText": {
+            "de": "obwohl es leicht ist",
+            "en": "although it is light"
+          }
+        },
+        {
+          "targetText": "깊이가 있어서",
+          "baseText": {
+            "de": "weil es Tiefe hat",
+            "en": "because it has depth"
+          }
+        }
+      ],
+      "recall": {
+        "before": "책이 긴데도 ",
+        "answer": "특히",
+        "after": " 유머가 많은 수필이 마음에 들어요.",
+        "fallbackChoices": [
+          "특히",
+          "전혀",
+          "도저히",
+          "결코"
+        ]
+      },
+      "speakRequired": [
+        "긴데도",
+        "특히",
+        "수필이"
+      ],
+      "sceneCaption": {
+        "de": "Im Lesekreis wird gefragt: „다음에는 어떤 책을 읽을까요? 이 수필집은 어때요?“",
+        "en": "At the book club, the host asks: “다음에는 어떤 책을 읽을까요? 이 수필집은 어때요?”"
+      },
+      "trophyWord": {
+        "word": "특히",
+        "meaning": {
+          "de": "besonders / insbesondere",
+          "en": "especially / in particular"
+        },
+        "example": "저는 과일을 좋아해요. 특히 딸기를 좋아해요.",
+        "whyThisWord": {
+          "de": "특히 hebt eine konkrete Vorliebe oder einen wichtigen Punkt aus einer größeren Gruppe heraus.",
+          "en": "특히 highlights a specific preference or important point within a larger group."
+        }
+      },
+      "distractors": [
+        "수필보다는 긴 소설을 읽고 싶어요.",
+        "책은 짧지만 유머가 없어서 마음에 안 들어요."
+      ],
+      "placeholderCaption": {
+        "de": "Bücher liegen zur Auswahl in der Mitte.",
+        "en": "Books are laid out for the group to choose from."
+      },
+      "songMood": "Warm thoughtful close with a gentle sense of choice.",
+      "visualNotes": "Book-club circle with unbranded covers, no highlighted evaluation or answer text."
+    }
+  ]
+}

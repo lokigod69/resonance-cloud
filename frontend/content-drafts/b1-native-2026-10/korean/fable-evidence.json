@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/korean/p1.json": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+    "frontend/content-drafts/b1-native-2026-10/korean/p2.json": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/korean/specification.json": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+  },
+  "scope": "Full-content read; PASS applies only to canonical spoken text for local TTS. Three exercise findings remain held from publication; no native-human or listening approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p1.json",
+      "reviewedScratchSha256": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "stagedSha256": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p2.json",
+      "reviewedScratchSha256": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "stagedSha256": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    }
+  ],
+  "specificationCanonicalization": {
+    "reviewedScratchSha256": "5e2ebf52d4fee320839b49c8426d29c81db7af5bbb1d5d3b59f4d1aa962c8bf3",
+    "stagedSha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd",
+    "transformation": "CRLF to LF only; parsed content unchanged."
+  },
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "KO-CONTENT-01",
+      "severity": "MEDIUM",
+      "scope": "publication-only cloze correctness",
+      "title": "Visible context does not select one answer in several choice blanks",
+      "evidence": "These supplied alternatives create grammatical, plausible replies to the visible follow-up. The hidden learner-base translation cannot distinguish them. The strongest examples are the unconstrained conversation topic, film genre and afternoon meeting time.",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/0/cloze/4",
+          "alternative": "기차에서",
+          "completedReply": "그래서 옷이 젖었는데 기차에서 잠깐 쉬었어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/4/cloze/1",
+          "alternative": "아침을",
+          "completedReply": "아니요, 아침을 먹고 나서 카페에 다시 갔어요.",
+          "reason": "The question asks whether it was evening; breakfast also answers no."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/7/cloze/3",
+          "alternative": "공항 안에서",
+          "reason": "The city-hall direction does not identify the transfer location or rule out an airport interchange."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/8/cloze/3",
+          "alternative": "세금",
+          "completedReply": "그때 커피를 마셨는데 친구와 세금 이야기를 오래 했어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/9/cloze/2",
+          "alternative": "전쟁",
+          "completedReply": "그래서 전쟁 영화를 봤는데 내용이 재미있어서 추천해요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/3/cloze/3",
+          "alternative": "복잡해요",
+          "completedReply": "결말이 뻔하기는 하지만 마지막 장면은 꽤 복잡해요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/cloze/3",
+          "alternative": "세 시에는",
+          "completedReply": "회의가 길어도 오후 세 시에는 참석할 수 있어요.",
+          "reason": "One, three and four are as compatible with the stated morning conflict as two."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/7/cloze/3",
+          "alternative": "팩스로",
+          "completedReply": "오늘 바빠도 점심시간에 팩스로 바로 예매할게요.",
+          "reason": "Less usual than a phone, but the fictional booking context does not exclude an immediate fax reservation."
+        }
+      ],
+      "concreteFix": "Have Fable replace the implicated distractors with alternatives demonstrably invalid in the visible sentence/context, preserving canonical speech where possible. For example, P1 L5 can retain 점심을 while replacing other meals with clearly inedible objects; P2 L7 can use invalid case forms instead of three equally possible afternoon times. Fable must supply final exact sets and check the remaining alternatives. Otherwise retain an explicit publication hold. Do not rely on the hidden translation or expose the delayed answer in the opening.",
+      "changesCanonicalSpeechRequired": false
+    },
+    {
+      "id": "KO-CONTENT-02",
+      "severity": "MEDIUM",
+      "scope": "publication-only build correctness",
+      "title": "Actual indivisible chips allow equivalent Korean orders rejected by the checker",
+      "evidence": "Each permutation below uses every existing correct chip exactly once, preserves punctuation and conveys the displayed base meaning. BuildPhraseStep.tsx:68 accepts only exact targetText; a translated meaning cue cannot establish Korean adverb order.",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/3/chunks",
+          "indexes": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "alternative": "호텔에서 마지막 날 나올 때 비가 많이 왔어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/4/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "여기저기 찾아봤는데 카페에서 결국 카드를 다시 찾았어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3,
+            4
+          ],
+          "alternative": "회의가 짧아도 오히려 아침에는 시간이 더 안 맞아요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/7/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "표가 비싸도 이번에는 그래도 직접 듣고 싶어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/8/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "서비스가 느린데도 역시 커피는 맛있는 것 같아요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/9/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "책이 긴데도 유머가 많은 수필이 특히 마음에 들어요."
+        }
+      ],
+      "concreteFix": "Retain the publication hold pending Fable-owned resegmentation or coupled wording changes that make the actual 4-7 chip exercise fair. Keep 1-3 eojeol per meaningful chunk and recheck permitted permutations. If preserving these canonical sentences requires supporting alternative orders, record that separately as future publication work; it is not a condition of this spoken-content PASS.",
+      "fableClaimCorrection": "The UI does not show chunk glosses. Conversely, Fable's P1 L7 example 집에서 혼자 쉬다가 cannot be made from its existing whole chips, and moving 갑자기 before 산에 갔는데 in L1 changes scope; neither is used as evidence here."
+    },
+    {
+      "id": "KO-CONTENT-03",
+      "severity": "LOW",
+      "scope": "nonspoken fallback metadata / specification fidelity",
+      "title": "Some unused recall alternatives still satisfy the surrounding narrative",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/2/recall/fallbackChoices",
+          "alternative": "매일",
+          "completedReply": "새 식당에 매일 갔는데 줄이 정말 길었어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/6/recall/fallbackChoices",
+          "alternative": "함께",
+          "completedReply": "함께 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/recall/fallbackChoices",
+          "alternative": "예상대로",
+          "completedReply": "회의가 짧아도 아침에는 예상대로 시간이 더 안 맞아요."
+        }
+      ],
+      "evidence": "These are different memories but valid contextual sentences. They do not meet the specification's semanticReviewRules[3] demand that recall distractors likewise be ungrammatical or clearly wrong in context. Current TypeRecall intentionally tests the previously learned canonical wording and does not display these choices, so this is not a current recall-screen correctness defect.",
+      "concreteFix": "Have Fable supply exact invalid replacements for this metadata, or explicitly arbitrate the stronger distractor requirement as inapplicable to the present memory-only UI. Do not claim all remaining fallback alternatives are linguistically impossible. Canonical speech can stay unchanged."
+    }
+  ],
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 full twenty-lesson read and exact arbitration"
+  },
+  "approvalBasis": "All 11 exact old/new corrections replayed and the entire result equals final independently reviewed sources.",
+  "rawProviderReviewSha256": "156f2ea6530637f655106b3f3d5f7eb5de74c092a697e0d1af954aabd28f28a2",
+  "originalSourceSha256": {
+    "korean-p1.json": "bccd32b4b0da65d747341a63762efed2b77e023070241b9409c7ee6083867e1c",
+    "korean-p2.json": "21207bafe0b4e2bb447d63ba92e52622e85e2d63de4e84c816ddd37e7f46b7eb"
+  },
+  "rawReview": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "korean-p1.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All 40 turns read in Korean against the P1 spec staging: L1-3 -는데 background only, L4-6 -(으)ㄹ 때/-고 나서, L7-8 -다가, L9-10 two-sentence chaining with 그때/결국; no recognition-only form leaks into learner turns. Every first reply 6-12 eojeol, second reply 5-9, chunks join byte-exact, recall before+answer+after exact, speech tokens are whole lexical eojeol, trophies bare and matching allocation, captions quote only the opening in both bases, no delayed complication in title/situation/sceneCaption/visualNotes, all four turns 해요체, no gendered address, humble/honorific direction correct, form cues match the actual stem vowel (젖었는데/많았는데/나왔는데/마셨는데/봤는데). German/English bases read as speech; -는데 never rendered as weil.",
+        "remainingConcerns": "Adverb-order alternatives in build (e.g. 집에서 혼자 쉬다가 in L7, 토요일에 갑자기 산에 갔는데 in L1) remain possible; the build cue shows the base sentence and chunk glosses so the authored order is recoverable. L1 turn-3 sentence-initial 그래서 after 그다음에는 어떻게 했어요? is acceptable but not the most idiomatic (옷이 다 젖어서 would be). L10 계속 비가 왔는데 is a background -는데 with causal flavor; kept per trap rule since the base uses und. Trophy uniqueness against A1/A2 trusted to the gate."
+      },
+      {
+        "file": "korean-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Staging verified: L1-3 -(으)ㄴ/는 것 같아요 + -지만, L4-6 -기는 한데/-기는 하지만, L7-8 -아/어도, L9-10 -(으)ㄴ/는데도 + 그래도/역시; 느린데도/맛있는데도/긴데도/가벼운데도 all correctly formed and explained in the L9 rule. Reconstructions, recall spans, speech tokens, bare trophy anchors, captions, register and gender policy all pass my read. Cloze choice blanks are disambiguated by the turn's own base (20분쯤, 대화가, 천천히, 따뜻해요, 한산해요, 두 시에는, 휴대폰으로, 다른 데로, 깊이가); connector blanks 그래도 unique against 그러면/왜냐하면/따라서. German 'der des ersten Teils zu ähnlich' in L6 is correct.",
+        "remainingConcerns": "L1 아마 괜찮은 것 같아요 is heard in speech though 아마 pairs more idiomatically with -(으)ㄹ 것 같아요; left as licensed present-adjective hedge. 가봤어요 (L5 opening) and 가보니 (L9 opening) use the permitted attached 보조용언 spelling while L9 P1 and L5 turn 3 use the spaced form; both are standard, flag for a later consistency pass since changing the opening would also require caption edits. L10 concession link (book length vs liking humorous essays) is loose but matches the allocated beat."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "Author: mechanical Korean gate PASS for both paths",
+        "decision": "accept",
+        "reason": "Taken as mechanical evidence only; this read supplies the content review, no native human review is claimed."
+      },
+      {
+        "finding": "Author: P1 L6 is a personal recollection, not medical guidance",
+        "decision": "accept",
+        "reason": "Line content is a mundane clinic wait with a good outcome; the pattern rule's extra 'ohne eine allgemeine Zusage' clause is meta-noise for learners and is trimmed."
+      },
+      {
+        "finding": "Author: P2 L8 deliberately keeps 그래도 alongside 비싸도; native rhythm to be assessed",
+        "decision": "adapt",
+        "reason": "Sentence-initial 그래도 immediately followed by a second concessive 표가 비싸도 stacks two concessions awkwardly; the idiomatic spoken order is 표가 비싸도 그래도 이번에는 직접 듣고 싶어요 (concession, then reinforcing 그래도), which L6 turn 3 already models. Coupled dialogue, pattern example, chunks, recall replaced exactly; speech tokens and terms unchanged."
+      },
+      {
+        "finding": "Author: several adverbs permit alternative word orders; build uniqueness not proven",
+        "decision": "accept",
+        "reason": "Inherent to Korean; the build shows the base sentence and chunk glosses, so the authored order is recoverable. No rewrite; logged as residual."
+      },
+      {
+        "finding": "Author: concession scope in P2 L9/L10 to be assessed",
+        "decision": "accept",
+        "reason": "느린데도/맛있는데도/긴데도/가벼운데도 are natural and the second clauses genuinely run against expectation."
+      },
+      {
+        "finding": "Fable: recall distractors that fit the line equally well (P1 L3 다시, P1 L8 뒤늦게, P2 L4 전혀/하나도/절대로, P2 L5 조금/약간/살짝, P2 L9 의외로/뜻밖에도/예상외로)",
+        "decision": "edit",
+        "reason": "Spec requires recall distractors to be ungrammatical or clearly wrong in context; these produce valid native sentences, so they are replaced with options that cannot occupy the slot."
+      },
+      {
+        "finding": "Fable: P1 L1 turn-3 base starts with 'Ja,' though the Korean has no 네 and the clause is 그래서",
+        "decision": "edit",
+        "reason": "Base must mirror the target for the cloze turn; replaced with a deshalb/so rendering."
+      }
+    ],
+    "edits": [
+      {
+        "file": "korean-p1.json",
+        "jsonPointer": "/lessons/0/dialogue/3/baseText",
+        "oldValue": {
+          "de": "Ja, meine Kleidung war dadurch nass, und ich habe kurz in einem Café Pause gemacht.",
+          "en": "Yes, my clothes got wet as a result, and I took a short break in a cafe."
+        },
+        "newValue": {
+          "de": "Deshalb war meine Kleidung nass, und ich habe kurz in einem Café Pause gemacht.",
+          "en": "So my clothes got wet, and I took a short break in a cafe."
+        },
+        "reason": "Target has 그래서 and no 네; base must not add 'Ja'."
+      },
+      {
+        "file": "korean-p1.json",
+        "jsonPointer": "/lessons/2/recall/fallbackChoices",
+        "oldValue": [
+          "처음",
+          "매일",
+          "항상",
+          "다시"
+        ],
+        "newValue": [
+          "처음",
+          "매일",
+          "항상",
+          "아직"
+        ],
+        "reason": "새 식당에 다시 갔는데 is a fully valid alternative; 아직 cannot fill the slot."
+      },
+      {
+        "file": "korean-p1.json",
+        "jsonPointer": "/lessons/5/pattern/rule",
+        "oldValue": {
+          "de": "Bei -고 나서 ist die erste Handlung abgeschlossen. 다행히 bewertet einen günstigen Ausgang aus deiner Sicht, ohne eine allgemeine Zusage zu machen.",
+          "en": "With -고 나서, the first action is complete. 다행히 expresses your relief about a favorable outcome, without making a general promise."
+        },
+        "newValue": {
+          "de": "Bei -고 나서 ist die erste Handlung abgeschlossen. 다행히 bewertet einen günstigen Ausgang aus deiner Sicht.",
+          "en": "With -고 나서, the first action is complete. 다행히 expresses your relief about a favorable outcome."
+        },
+        "reason": "Removes a disclaimer clause that reads as meta-text, not grammar explanation."
+      },
+      {
+        "file": "korean-p1.json",
+        "jsonPointer": "/lessons/7/recall/fallbackChoices",
+        "oldValue": [
+          "금방",
+          "어제",
+          "미리",
+          "뒤늦게"
+        ],
+        "newValue": [
+          "금방",
+          "어제",
+          "미리",
+          "전혀"
+        ],
+        "reason": "버스가 뒤늦게 왔어요 is a coherent alternative (and even explains the lateness); 전혀 is ungrammatical with 왔어요."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/3/recall/fallbackChoices",
+        "oldValue": [
+          "별로",
+          "절대로",
+          "전혀",
+          "하나도"
+        ],
+        "newValue": [
+          "별로",
+          "방금",
+          "자주",
+          "미리"
+        ],
+        "reason": "전혀 안 웃겨요 and 하나도 안 웃겨요 are fully natural; replacements cannot modify 안 웃겨요 for a single film."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/4/recall/fallbackChoices",
+        "oldValue": [
+          "훨씬",
+          "조금",
+          "약간",
+          "살짝"
+        ],
+        "newValue": [
+          "훨씬",
+          "전혀",
+          "별로",
+          "절대로"
+        ],
+        "reason": "조금/약간/살짝 싸기는 한데 are all valid degree alternatives; negative-polarity adverbs cannot precede positive 싸기는 한데."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/7/dialogue/1",
+        "oldValue": {
+          "targetText": "그래도 표가 비싸도 이번에는 직접 듣고 싶어요.",
+          "baseText": {
+            "de": "Trotzdem möchte ich diesmal live dabei sein, auch wenn die Karten teuer sind.",
+            "en": "Even so, I want to hear it live this time, even if the tickets are expensive."
+          }
+        },
+        "newValue": {
+          "targetText": "표가 비싸도 그래도 이번에는 직접 듣고 싶어요.",
+          "baseText": {
+            "de": "Auch wenn die Karten teuer sind, möchte ich diesmal trotzdem live dabei sein.",
+            "en": "Even if the tickets are expensive, I still want to hear it live this time."
+          }
+        },
+        "reason": "Idiomatic concession order; 그래도 reinforces after 비싸도 as in L6 turn 3. Trophy 그래도 and tokens 그래도/비싸도/직접 remain whole eojeol."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/7/pattern/examples/0",
+        "oldValue": {
+          "targetText": "그래도 표가 비싸도 이번에는 직접 듣고 싶어요.",
+          "baseText": {
+            "de": "Trotzdem möchte ich diesmal live dabei sein, auch wenn die Karten teuer sind.",
+            "en": "Even so, I want to hear it live this time, even if the tickets are expensive."
+          },
+          "highlight": "비싸도"
+        },
+        "newValue": {
+          "targetText": "표가 비싸도 그래도 이번에는 직접 듣고 싶어요.",
+          "baseText": {
+            "de": "Auch wenn die Karten teuer sind, möchte ich diesmal trotzdem live dabei sein.",
+            "en": "Even if the tickets are expensive, I still want to hear it live this time."
+          },
+          "highlight": "비싸도"
+        },
+        "reason": "Coupled to the revised first reply so the pattern still reuses a learner turn."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/7/chunks",
+        "oldValue": [
+          {
+            "targetText": "그래도",
+            "baseText": {
+              "de": "trotzdem",
+              "en": "even so"
+            }
+          },
+          {
+            "targetText": "표가 비싸도",
+            "baseText": {
+              "de": "auch wenn die Karten teuer sind",
+              "en": "even if the tickets are expensive"
+            }
+          },
+          {
+            "targetText": "이번에는",
+            "baseText": {
+              "de": "diesmal",
+              "en": "this time"
+            }
+          },
+          {
+            "targetText": "직접 듣고 싶어요.",
+            "baseText": {
+              "de": "möchte ich es live hören.",
+              "en": "I want to hear it live."
+            }
+          }
+        ],
+        "newValue": [
+          {
+            "targetText": "표가 비싸도",
+            "baseText": {
+              "de": "auch wenn die Karten teuer sind",
+              "en": "even if the tickets are expensive"
+            }
+          },
+          {
+            "targetText": "그래도",
+            "baseText": {
+              "de": "trotzdem",
+              "en": "still"
+            }
+          },
+          {
+            "targetText": "이번에는",
+            "baseText": {
+              "de": "diesmal",
+              "en": "this time"
+            }
+          },
+          {
+            "targetText": "직접 듣고 싶어요.",
+            "baseText": {
+              "de": "möchte ich es live hören.",
+              "en": "I want to hear it live."
+            }
+          }
+        ],
+        "reason": "Chunks must join to the revised reply exactly."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/7/recall",
+        "oldValue": {
+          "before": "",
+          "answer": "그래도",
+          "after": " 표가 비싸도 이번에는 직접 듣고 싶어요.",
+          "fallbackChoices": [
+            "그래도",
+            "왜냐하면",
+            "예를 들어",
+            "다시 말해서"
+          ]
+        },
+        "newValue": {
+          "before": "표가 비싸도 ",
+          "answer": "그래도",
+          "after": " 이번에는 직접 듣고 싶어요.",
+          "fallbackChoices": [
+            "그래도",
+            "왜냐하면",
+            "예를 들어",
+            "다시 말해서"
+          ]
+        },
+        "reason": "Recall must reconstruct the revised reply with the trophy as the blanked whole eojeol."
+      },
+      {
+        "file": "korean-p2.json",
+        "jsonPointer": "/lessons/8/recall/fallbackChoices",
+        "oldValue": [
+          "역시",
+          "뜻밖에도",
+          "의외로",
+          "예상외로"
+        ],
+        "newValue": [
+          "역시",
+          "전혀",
+          "별로",
+          "절대로"
+        ],
+        "reason": "커피는 의외로 맛있는 것 같아요 (and 뜻밖에도/예상외로) are valid native sentences; negative-polarity adverbs cannot precede 맛있는 것 같아요."
+      }
+    ],
+    "finalChecks": "After edits: P2 L8 first reply 표가 비싸도 그래도 이번에는 직접 듣고 싶어요. = 6 eojeol, one sentence; chunks join exactly; recall before+answer+after exact with 그래도 at a whole-eojeol boundary; pattern example 0 equals dialogue[1]; speakRequired 그래도/비싸도/직접 all present; trophy 그래도 bare in reply and example; distractors still distinct from chunks. All replaced fallbackChoices contain the answer and four distinct Hangul-only values. No trophy allocations, slugs, openings or captions changed; cloze arrays untouched. This is content approval of the drafts as edited, not production approval, and no human native review is claimed."
+  },
+  "exactReplayEdits": 11
+}

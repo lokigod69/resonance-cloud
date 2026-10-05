@@ -1,0 +1,1181 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/english/p1.json": "980db4ae5a8de7211b5064285524b0c14aef0f68aff5b038efb287446f56ced2",
+    "frontend/content-drafts/b2-2026-10/english/p2.json": "8a83da77e3006699a6c7cda91340147f119078f8f93a038521416e7fc8c39312"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b2-2026-10/english/specification.json": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+    "frontend/content-drafts/b2-2026-10/latin-prerequisites.json": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32",
+    "frontend/content-drafts/b1-2026-10/english-plan.json": "b4910cc2b4b6ca7d11fa74ba8a7a03c929a6b26be57dbc196e0ab9be733bb3f8"
+  },
+  "scope": "Reviewed canonical content for local TTS only; not listening, native-human or publication approval.",
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "R04",
+      "severity": "HIGH",
+      "category": "answer acceptance",
+      "affectsEnglishLocalTts": false,
+      "title": "Required carriers remain uncued exact-answer tests",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/2/cloze/blanks/0",
+            "/lessons/2/cloze/blanks/1",
+            "/lessons/7/cloze/blanks/0"
+          ]
+        },
+        {
+          "file": "english-b2-p2.json",
+          "jsonPointers": [
+            "/lessons/0/cloze/blanks/0",
+            "/lessons/5/cloze/blanks/1",
+            "/lessons/9/synthesis/blanks/0"
+          ]
+        }
+      ],
+      "evidence": [
+        "P1L3 accepts only Admittedly / that said; Granted / even so fits the same concession and continuation and has already been taught.",
+        "P1L8 accepts only By growth I mean before marketable skills; What I mean is, modeled in this very lesson, also produces a coherent explanation.",
+        "P2L1 accepts only What I mean is before line three; I mean is equally grammatical and coherent.",
+        "P2L6 accepts provided that / providing that but rejects if in mail counts ... it’s postmarked by Friday.",
+        "P2L10 accepts only for the record where in summary also introduces the requested summary."
+      ],
+      "whyArbitrationDoesNotCloseIt": "The author-facing requirement B2-EN-17 and a previously modeled sentence do not tell the learner that the current open blank is exact reproduction. No implemented B2 instruction or explicit retrieval cue has been demonstrated. A German meaning cue alone would not distinguish these synonyms.",
+      "proposedCorrection": "At minimum accept the known valid alternatives in the authored lists, then check other open frames for the same failure. Where one exact carrier must be retrieved, provide and verify a visible instruction or existing-schema choice that actually constrains that carrier; respect the one-choice-blank limit. Do not assume future runtime alias expansion. P2L4's newly accepted In short closes that specific subcase only."
+    },
+    {
+      "id": "R05",
+      "severity": "HIGH",
+      "category": "B2 integration evidence",
+      "affectsEnglishLocalTts": false,
+      "title": "Detail distractors need the intended meaning on the B2 screen",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/2/build/distractors",
+            "/lessons/3/build/distractors",
+            "/lessons/6/build/distractors",
+            "/lessons/7/build/distractors",
+            "/lessons/8/build/distractors"
+          ]
+        },
+        {
+          "file": "english-b2-p2.json",
+          "jsonPointers": [
+            "/lessons/2/build/distractors",
+            "/lessons/3/build/distractors",
+            "/lessons/4/build/distractors",
+            "/lessons/5/build/distractors",
+            "/lessons/8/build/distractors",
+            "/lessons/9/build/distractors"
+          ]
+        }
+      ],
+      "evidence": "Alternatives such as a large team in P1L8, three hundred in P2L4, or fourteen weeks in P2L6 are grammatical invented details unless the learner has a visible required meaning. Their offscreen German source field is not itself a screen cue. The original P2L7 January example is repaired and is no longer part of this hold.",
+      "proposedCorrection": "Before publication, implement or demonstrate the B2 adapter rendering the correct dialogue[1].base.de beside the build task and verify it with these exact sources. Review the detail distractors against that rendered context. Alternatively replace individual distractors with options already contradicted by the visible English frame. Existing A1/A2/B1 cue rendering is useful precedent, not acceptance evidence for B2."
+    },
+    {
+      "id": "R07",
+      "severity": "HIGH",
+      "category": "German meaning accuracy",
+      "affectsEnglishLocalTts": false,
+      "title": "Split the difference still glossed as sharing an extra fare",
+      "locations": [
+        {
+          "file": "english-b2-p1.json",
+          "jsonPointers": [
+            "/lessons/4/dialogue/3/base/de",
+            "/lessons/4/pattern/examples/0/base/de"
+          ]
+        }
+      ],
+      "evidence": "Both revised bases say teilen wir uns die Differenz zum Busticket. That describes sharing an additional cost between people. The spoken idiom proposes meeting halfway or compromising between positions. Merely identifying a fare gap does not establish an agreement to divide that cost.",
+      "proposedCorrection": "Keep the English recording text and render the proposal as a price compromise in both German bases. For example: Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, finden wir einen preislichen Mittelweg; andernfalls verkürzen wir die Küstenreise. Do not teach the phrase as an idiom for sharing extra costs.",
+      "localTtsSeparation": "This narrower disposition supersedes the initial precautionary hold on the English line: the idiom is valid as a compromise proposal even though its German gloss is wrong. No fare amount, exact halfway price, or cost-sharing contract is asserted by this recording clearance."
+    }
+  ],
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "reviewer": {
+    "id": "Fable 5.1 complete twenty-lesson read and exact arbitration"
+  },
+  "reviewChain": [
+    {
+      "batch": "B2_ENGLISH_P1_P2",
+      "rawProviderReviewSha256": "013ef2b1b6e175b7cb0fdfb83f90ee9205f17f1339a9538dadaeff6954aef3b8",
+      "exactEdits": 44,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "english-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": [
+              "every them/you turn token-counted against 6–20/14–26/12–24/10–22: all pass before and after edits (L1 them0 20, L2 you3 20, L5 you2 23, L5 you3 20, L7 you2 21, L7 you3 22)",
+              "build reconstruction byte-checked for all ten; focus spans 10/9/10/10/10/10/10/9/9/9; alternative chip orders tried, canonical order forced by comma- or conjunction-initial chips in every lesson",
+              "cloze/synthesis/recall reconstruction byte-checked; form cues visible and present on every form blank; one choices blank max per exercise",
+              "formal episodes L1/L3/L10: no contractions in any you or them turn; neutral/informal episodes contract naturally; approved informal set only (no way)",
+              "gender: no learner self-marking; she said in L6 refers to a third party; role nouns neutral (Ausschussvorsitz, Vermietungsfachkraft)",
+              "orthography: US spellings (favors, canceled, neighborhood, behavior), words for all numbers, U+2019 throughout, straight-apostrophe variants listed for every apostrophe answer, UK variants listed (tradeoff, focussed)",
+              "carrier staging L1–L10 verified against carriersStaged; nonetheless, let me finish, fair point, to be fair first appear in L9; in which/to whom first in L8; how about we/shall we/what if we first in L7",
+              "trophies match ledger rows 1–10, surfaces whole tokens of declared turns, examples contain lemma/surface, S8 glosses correct (trade-off Abwägung, drawback Nachteil)",
+              "title/situation/sceneCaption disclosure checked: L3, L7, L9 titles leaked challenge or resolution and are retitled; captions quote the opener verbatim (L1 caption re-synced with edited opener)"
+            ],
+            "remainingConcerns": [
+              "detail-level distractors (L3 less focused work/see more, L4 looks wasteful, L8 a large team, L9 is higher there/less) are wrong only against the German base shown during build; confirm the build UI shows the base, otherwise these need grammar-wrong replacements",
+              "carriersStaged P1 L3 lists arguably but arguably is the L8 trophy and is not produced in L3; requiredCarrier for L3 is satisfied; spec tension left for the spec owner, no content change",
+              "free-input frame blanks (Granted, Admittedly, That is true) accept only the taught carrier, per exemplar precedent; a runtime hint naming the carrier would reduce false negatives",
+              "L2 term reserved carries lemma reserve although the adjective is not inflected; harmless",
+              "L5 journeys is UK-flavored lexis (not spelling); acceptable but a native reviewer may prefer rides"
+            ]
+          },
+          {
+            "file": "english-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": [
+              "token counts all pass before and after edits (L3 them3 18, L6 you2 22)",
+              "build reconstruction byte-checked for all ten; focus spans 9/8/10/8/8/9/10/9/9/11; alternative orders tried (L8 a referral/a specialist slot swap is grammatical but implausible)",
+              "cloze/synthesis/recall reconstruction byte-checked; cues present on all form blanks; backshift (L8 had not arrived), modal passive (L4), mixed conditional (L7) correctly formed",
+              "formal episodes L1/L3/L8/L10: no contractions in any turn; informal/neutral contract naturally",
+              "scene-specific fictional policies (bin notice, hauler letter, leaflet, fine notice, clinic rule, pilot report) are explicitly situated with our notice/this notice/this clinic; no universal legal or medical claim",
+              "carrier staging L1–L10 verified; modal passives first in L4; even if I had/the assumption was that first in L7; the client needs to hear now modeled in L3 them3",
+              "trophies match ledger rows 11–20; surfaces whole tokens; glosses correct (discrepancy Abweichung, referral Überweisung, outage Ausfall, consequently folglich)",
+              "gender neutral throughout (ärztliche Person, Praxiskoordination, Radnutzende, Hausbetreuung)",
+              "L10 synthesis had two adjacent free-input frame blanks whose grammatical permutation (For the record, ultimately) would be marked wrong; restructured"
+            ],
+            "remainingConcerns": [
+              "detail-level distractors (L4 three hundred, L5 a year, L6 fourteen weeks, L7 in January, L10 favored a ban) are wrong only against the visible base; same UI dependency as P1",
+              "L4 expiry follows twelve months without activity is stiff but spec-mandated nominalization; expiration accepted",
+              "L4 In other words opening a quantity answer is spec-driven and slightly off idiom",
+              "L9 driven at eight is cryptic without in; acceptable B2 ellipsis, native review may prefer driven in at eight",
+              "L2 caretaker is less US than building manager; understandable, left",
+              "after the L10 restructure the trophy ultimately is produced only in speak turn 5 and recall is as a consequence; no rule requires the trophy in synthesis"
+            ]
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "No independent findings supplied (pre-review Fable read)",
+            "decision": "noted",
+            "reason": "nothing to arbitrate; no independent or native approval is implied by this read; review flags stay false, verdict pending, nativeStatus unreviewed"
+          },
+          {
+            "finding": "Author point: P2 L4 keeps spec-mandated expiry with expiration accepted",
+            "decision": "accept",
+            "reason": "nominalization is the staged L4 carrier; US variant explicitly listed; no auto-expansion relied on"
+          },
+          {
+            "finding": "Author point: fictional notices/policies in P2 L2, L4, L5, L6, L8",
+            "decision": "accept",
+            "reason": "every rule statement is anchored to our notice, the hauler’s letter, the leaflet, this notice, this clinic; no universal deadline or medical claim"
+          },
+          {
+            "finding": "Author point: P1 L4 resale conditional, L5 budget expectation, L8 equity uncertain",
+            "decision": "accept",
+            "reason": "might well resell, I’d expect ... to stay under, without guaranteeing a return all hedge correctly; no invented facts"
+          },
+          {
+            "finding": "Author point: P2 L9 funding tied to measured congestion",
+            "decision": "accept",
+            "reason": "pilot report and survey marked fictional in situation; proposal conditions year two on measurement"
+          },
+          {
+            "finding": "Author point: build orders tried and distractors checked",
+            "decision": "adapt",
+            "reason": "author check missed also-correct chips/choices that stay valid in the visible frame regardless of base (P1 L4 would exceed/exceed, P1 L5 although/because, P1 L7 who remind me, P1 L8 undeniably, P2 L4 spent/transferred/donated, P2 L7 everyone could travel); exact replacements supplied"
+          },
+          {
+            "finding": "Author point: hauler’s letter term carries both apostrophe spellings",
+            "decision": "accept",
+            "reason": "gate-attested phrase with lemma hauler; U+0027 form listed as required"
+          }
+        ],
+        "edits": [
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/0/targetText",
+            "oldValue": "This downtown apartment costs more, but the suburban option means an hour on the train each way. Your thoughts?",
+            "newValue": "This downtown apartment costs more, but the suburban option means an hour on the train each way. What do you think?",
+            "reason": "S11: them turns must be complete spoken sentences; Your thoughts? is a fragment; base already says Was meinst du?; 20 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/0/sceneCaption/de",
+            "oldValue": "Die Vermietungsfachkraft fragt: “This downtown apartment costs more, but the suburban option means an hour on the train each way. Your thoughts?”",
+            "newValue": "Die Vermietungsfachkraft fragt: “This downtown apartment costs more, but the suburban option means an hour on the train each way. What do you think?”",
+            "reason": "caption must quote dialogue[0] verbatim after the opener edit"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/1/dialogue/5/targetText",
+            "oldValue": "Even so, I gain working time on the train; as a result, I’d still choose it with free parking.",
+            "newValue": "Even so, I gain working time on the train; as a result, I’d still choose it even with free parking.",
+            "reason": "choose it with free parking attaches ambiguously to the train; even with matches the steer and the base (auch bei); 20 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/1/synthesis/segments/3/text",
+            "oldValue": ", I’d still choose it with free parking.",
+            "newValue": ", I’d still choose it even with free parking.",
+            "reason": "synthesis reconstruction must equal edited dialogue[5]"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/1/terms/1/base",
+            "oldValue": {
+              "de": "während hingegen"
+            },
+            "newValue": {
+              "de": "wohingegen; während (im Gegensatz dazu)"
+            },
+            "reason": "S8: während hingegen is not an idiomatic German gloss; wohingegen is the direct equivalent"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/2/title",
+            "oldValue": {
+              "de": "Konzentriert arbeiten und im Team bleiben"
+            },
+            "newValue": {
+              "de": "Homeoffice oder Präsenz"
+            },
+            "reason": "visible title pre-announces the cohesion challenge; neutral two-option title keeps the challenge delayed"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/2/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "I would offer"
+            ],
+            "newValue": [
+              "I would offer",
+              "I would propose",
+              "I would suggest"
+            ],
+            "reason": "single free-input frame blank; I would propose/suggest are equally valid formal counteroffer frames in this frame and must be listed explicitly (no runtime expansion)"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/3/build/distractors/0",
+            "oldValue": "would exceed",
+            "newValue": "would cancel",
+            "reason": "S5: rental payments would exceed the purchase price, so buying looks sensible is an equally valid argument in the visible frame; would cancel is meaning-wrong"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/3/recall/fallbackChoices",
+            "oldValue": [
+              "equal",
+              "exceed",
+              "double",
+              "halve"
+            ],
+            "newValue": [
+              "equal",
+              "cancel",
+              "halve",
+              "postpone"
+            ],
+            "reason": "S5: exceed and double both yield a coherent reason for buying; cancel/halve/postpone are meaning-wrong with the purchase price"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/3/targetText",
+            "oldValue": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, shorten the coast trip.",
+            "newValue": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip.",
+            "reason": "bare imperative shorten reads as an order to the friend; we shorten matches the base (verkürzen wir) and the counteroffer move; 23 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/cloze/segments/3/text",
+            "oldValue": " Tuesday’s fare is gone, let’s split the difference; failing that, shorten the coast trip.",
+            "newValue": " Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip.",
+            "reason": "cloze reconstruction must equal edited dialogue[3]"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/cloze/blanks/1/choices",
+            "oldValue": [
+              "unless",
+              "although",
+              "because",
+              "whenever"
+            ],
+            "newValue": [
+              "unless",
+              "despite",
+              "instead",
+              "owing to"
+            ],
+            "reason": "S5: although/because Tuesday’s fare is gone, let’s split the difference are grammatical and plausible; the replacements cannot introduce a finite clause"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/pattern/examples/0/targetText",
+            "oldValue": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, shorten the coast trip.",
+            "newValue": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip.",
+            "reason": "pattern example must equal the learner turn"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/5/targetText",
+            "oldValue": "On balance, I’d expect the coast to stay under five hundred each; the rest outweighs the extra fare.",
+            "newValue": "On balance, I’d expect the coast to stay under five hundred each; the rest we get outweighs the extra fare.",
+            "reason": "the rest is read by natives as the remainder; the author’s own cue admits the ambiguity; the rest we get (spec wording) disambiguates; 20 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/segments/2/text",
+            "oldValue": " the coast to stay under five hundred each; the rest ",
+            "newValue": " the coast to stay under five hundred each; the rest we get ",
+            "reason": "synthesis reconstruction must equal edited dialogue[5]"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/1/cue",
+            "oldValue": {
+              "de": "outweigh; Gegenwart; das Subjekt the rest ist hier die Erholung"
+            },
+            "newValue": {
+              "de": "outweigh; Gegenwart; Subjekt ist the rest we get, also die Erholung"
+            },
+            "reason": "cue aligned with the disambiguated subject"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/terms/0/base",
+            "oldValue": {
+              "de": "während hingegen"
+            },
+            "newValue": {
+              "de": "wohingegen; während (im Gegensatz dazu)"
+            },
+            "reason": "S8 gloss accuracy"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/title",
+            "oldValue": {
+              "de": "Sprachkurs und App kombinieren"
+            },
+            "newValue": {
+              "de": "Sprachkurs oder App"
+            },
+            "reason": "title discloses the closing solution (keep both)"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/3/targetText",
+            "oldValue": "That’s true, but being able to skip is precisely the problem; the class builds discipline I don’t manage alone.",
+            "newValue": "That’s true, but being able to skip is precisely the problem; the class builds discipline I don’t have on my own.",
+            "reason": "discipline I don’t manage alone is not native English; spec wording discipline I don’t have; 21 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/cloze/segments/3/text",
+            "oldValue": " I don’t manage alone.",
+            "newValue": " I don’t have on my own.",
+            "reason": "cloze reconstruction must equal edited dialogue[3]"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/5/targetText",
+            "oldValue": "What if we keep Tuesday’s class and use the app otherwise? So we’re agreed that neither gets dropped?",
+            "newValue": "What if we keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets dropped?",
+            "reason": "otherwise here means the rest of the time, conflicting with its taught L4 sense (else); the rest of the week is the natural phrasing; 22 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/dialogue/5/base",
+            "oldValue": {
+              "de": "Was wäre, wenn wir den Dienstagskurs behalten und sonst die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+            },
+            "newValue": {
+              "de": "Was wäre, wenn wir den Dienstagskurs behalten und an den übrigen Tagen die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+            },
+            "reason": "base aligned with edited turn"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/synthesis/segments/1/text",
+            "oldValue": " keep Tuesday’s class and use the app otherwise? So we’re agreed that neither gets ",
+            "newValue": " keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets ",
+            "reason": "synthesis reconstruction must equal edited dialogue[5]"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/pattern/examples/0/targetText",
+            "oldValue": "What if we keep Tuesday’s class and use the app otherwise? So we’re agreed that neither gets dropped?",
+            "newValue": "What if we keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets dropped?",
+            "reason": "pattern example must equal the learner turn"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/pattern/examples/0/base",
+            "oldValue": {
+              "de": "Was wäre, wenn wir den Dienstagskurs behalten und sonst die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+            },
+            "newValue": {
+              "de": "Was wäre, wenn wir den Dienstagskurs behalten und an den übrigen Tagen die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+            },
+            "reason": "base aligned with edited example"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/speak/2/requiredTokens",
+            "oldValue": [
+              "Tuesday’s",
+              "otherwise",
+              "dropped"
+            ],
+            "newValue": [
+              "Tuesday’s",
+              "agreed",
+              "dropped"
+            ],
+            "reason": "otherwise no longer occurs in turn 5; agreed is a whole token of the turn"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/build/distractors/1",
+            "oldValue": "who remind me",
+            "newValue": "who expects me",
+            "reason": "S5: people who remind me to show up is grammatical and plausible in the frame; who expects me breaks agreement"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/6/terms/0/base",
+            "oldValue": {
+              "de": "während hingegen"
+            },
+            "newValue": {
+              "de": "wohingegen; während (im Gegensatz dazu)"
+            },
+            "reason": "S8 gloss accuracy"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/7/recall/fallbackChoices",
+            "oldValue": [
+              "arguably",
+              "undeniably",
+              "rarely",
+              "accidentally"
+            ],
+            "newValue": [
+              "arguably",
+              "arguable",
+              "rarely",
+              "accidentally"
+            ],
+            "reason": "S5: undeniably offers more growth is grammatical and plausible; arguable is grammar-wrong in the adverb slot and tests the trophy form"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/8/title",
+            "oldValue": {
+              "de": "Umziehen und Verbindungen erhalten"
+            },
+            "newValue": {
+              "de": "Umziehen oder bleiben"
+            },
+            "reason": "title discloses the network challenge and the concession that follows"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/9/terms/2/kind",
+            "oldValue": "frame",
+            "newValue": "adverb",
+            "reason": "ultimately is a single-word adverb; P2 L10 classifies it as adverb; discourse coverage remains 2 (firstly, moreover)"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/4/targetText",
+            "oldValue": "How should we explain this to the client without shifting responsibility onto the vendor?",
+            "newValue": "The client needs to hear this without us shifting responsibility onto the vendor. How would you phrase it?",
+            "reason": "carriersStaged P2 L3 lists the client needs to hear that, which no turn modeled; steer now models it and keeps the audience change; 18 tokens, formal"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/4/base",
+            "oldValue": {
+              "de": "Wie sollten wir dies der Kundschaft erklären, ohne die Verantwortung auf den Lieferanten abzuwälzen?"
+            },
+            "newValue": {
+              "de": "Die Kundschaft muss das hören, ohne dass wir die Verantwortung auf den Lieferanten abwälzen. Wie würdest du es formulieren?"
+            },
+            "reason": "base aligned with edited steer"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/2/terms/1/kind",
+            "oldValue": "frame",
+            "newValue": "adverb",
+            "reason": "admittedly classified as adverb in P1 L3 (its trophy lesson); discourse coverage remains 2 (stems from, I would propose that)"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/build/distractors/0",
+            "oldValue": "spent",
+            "newValue": "collect",
+            "reason": "S5: points can be redeemed after you’ve spent two hundred is an equally plausible scheme in the visible frame; collect is grammar-wrong after you’ve"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/recall/fallbackChoices",
+            "oldValue": [
+              "redeemed",
+              "deleted",
+              "transferred",
+              "donated"
+            ],
+            "newValue": [
+              "redeemed",
+              "redeem",
+              "redeeming",
+              "deleted"
+            ],
+            "reason": "S5: transferred/donated are plausible in the frame; redeem/redeeming are grammar-wrong after can be, deleted is meaning-wrong"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/4/title",
+            "oldValue": {
+              "de": "Preis und Zuverlässigkeit trennen"
+            },
+            "newValue": {
+              "de": "Den Anbieterwechsel begründen"
+            },
+            "reason": "title discloses the cheaper-means-worse challenge and the rebuttal"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "fixed term"
+            ],
+            "newValue": [
+              "fixed term",
+              "contract"
+            ],
+            "reason": "free-input lexical blank; my plan has no contract is equally correct (spec closing says no contract) and must be listed explicitly"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/4/terms/0/base",
+            "oldValue": {
+              "de": "während hingegen"
+            },
+            "newValue": {
+              "de": "wohingegen; während (im Gegensatz dazu)"
+            },
+            "reason": "S8 gloss accuracy"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/3/targetText",
+            "oldValue": "Online filing is immediate, whereas this notice accepts mail provided that it’s postmarked by Friday; confirm that using the printed number.",
+            "newValue": "Online filing is immediate, whereas this notice says mail counts provided that it’s postmarked by Friday; confirm that using the printed number.",
+            "reason": "a notice cannot accept mail; says mail counts keeps the scene-specific attribution (spec: the notice says they go by the postmark); 22 tokens"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/segments/2/text",
+            "oldValue": " this notice accepts mail ",
+            "newValue": " this notice says mail counts ",
+            "reason": "cloze reconstruction must equal edited dialogue[3]"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/0/targetText",
+            "oldValue": "Online filing is immediate, whereas this notice accepts mail provided that it’s postmarked by Friday; confirm that using the printed number.",
+            "newValue": "Online filing is immediate, whereas this notice says mail counts provided that it’s postmarked by Friday; confirm that using the printed number.",
+            "reason": "pattern example must equal the learner turn"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/6/build/distractors/0",
+            "oldValue": "everyone could travel",
+            "newValue": "nobody could pay",
+            "reason": "S5: one wrong assumption: everyone could travel in June, so we booked non-refundable fares is an equally coherent chain; nobody could pay contradicts the so-clause"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/9/synthesis",
+            "oldValue": {
+              "segments": [
+                {
+                  "kind": "blank",
+                  "index": 0
+                },
+                {
+                  "kind": "text",
+                  "text": ", "
+                },
+                {
+                  "kind": "blank",
+                  "index": 1
+                },
+                {
+                  "kind": "text",
+                  "text": ", the decision followed consultation, cost modeling, and a committee vote, in that order."
+                }
+              ],
+              "blanks": [
+                {
+                  "answer": "Ultimately",
+                  "acceptedAnswers": [
+                    "Ultimately"
+                  ],
+                  "kind": "frame"
+                },
+                {
+                  "answer": "for the record",
+                  "acceptedAnswers": [
+                    "for the record"
+                  ],
+                  "kind": "frame"
+                }
+              ],
+              "moveBlankIndex": 0
+            },
+            "newValue": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Ultimately, "
+                },
+                {
+                  "kind": "blank",
+                  "index": 0
+                },
+                {
+                  "kind": "text",
+                  "text": ", the decision followed consultation, cost modeling, and a committee vote, in that "
+                },
+                {
+                  "kind": "blank",
+                  "index": 1
+                },
+                {
+                  "kind": "text",
+                  "text": "."
+                }
+              ],
+              "blanks": [
+                {
+                  "answer": "for the record",
+                  "acceptedAnswers": [
+                    "for the record"
+                  ],
+                  "kind": "frame"
+                },
+                {
+                  "answer": "order",
+                  "acceptedAnswers": [
+                    "order",
+                    "sequence"
+                  ],
+                  "kind": "lexical"
+                }
+              ],
+              "moveBlankIndex": 0
+            },
+            "reason": "two adjacent free-input frame blanks allowed the grammatical permutation For the record, ultimately, which would fail both blanks; anchoring Ultimately in text removes the permutation; reconstruction remains byte-equal to dialogue[5]; the trophy stays required in speak turn 5"
+          }
+        ],
+        "finalChecks": [
+          "every edited targetText re-counted within rail bounds; every coupled cloze/synthesis/pattern/speak/base field listed so build/cloze/synthesis/recall reconstructions stay byte-equal",
+          "no digits, em dashes, Mr/Ms, U+0027 or gendered role nouns introduced; all new answers containing an apostrophe already list their U+0027 form (none added)",
+          "all twenty trophies, familyKeys, pos, surfaces and turnIndexes untouched; no frozen A1/A2/B1 ids or texts touched",
+          "base objects remain {de} only; situation {de,en} untouched; no en key added elsewhere",
+          "review flags, verdict pending, empty reviewers and nativeStatus unreviewed left unchanged; this read is not a reviewer row and asserts no native or independent approval",
+          "both files’ SHA-256 will change after the edits; re-run validateLatinB2Draft on both files and re-pin hashes before independent review",
+          "open items for owners, not Codex: build/recall UI base visibility (detail-level distractors), carriersStaged arguably-at-L3 tension, free-input frame blank hinting; no provider, TTS, production or activation authorization is implied"
+        ]
+      }
+    },
+    {
+      "batch": "B2_ENGLISH_P1_P2_ARBITRATION",
+      "rawProviderReviewSha256": "a511b1ebc40d064eb7c5a5e4217e1639f277c1112448bd0121c5188f5e6ca4e1",
+      "exactEdits": 25,
+      "rawReview": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "english-b2-p1.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": [
+              "every them/you targetText re-tokenized by the gate regex: only P1 L1 turn 0 (21) breaks a bound, all other 59 turns inside bounds",
+              "formal episodes (L1,L3,L10) contain no you-turn contractions; neutral/informal contract naturally; them register follows episode",
+              "all 10 build frames reconstruct byte-equal; alternative chip orders tried for every lesson: L1 blocked only by comma placement (R08), L2 distractor 'for passengers.' yields a grammatical scene-coherent sentence (own finding), others hold on syntax/meaning",
+              "all cloze/synthesis reconstruct; form cues present and constraining; choices sets have one accepted answer; U+0027 variants present wherever an answer carries U+2019",
+              "recall frames reconstruct; L10 'instead' can occupy the connector slot (R09)",
+              "trophies L1–L10 equal ledger rows, surfaces whole tokens of declared turns, examples contain surface/lemma, de glosses match S8",
+              "carriers: granted/on balance L1, since/which means that/as a result/that's true L2, admittedly/that said/even though/I would argue L3, mixed conditional/otherwise/in case/might well L4, I'm not prepared to/unless/failing that/I'd expect L5, backshift/regarding/as for/I would suggest L6, what if we/so we're agreed that L7 (how about we, shall we as terms), in which/to whom/by X I mean L8, fair point/let me finish/to be fair/nonetheless L9, firstly/moreover/ultimately L10; arguably absent from L3 despite carriersStaged (R10)",
+              "titles/situations/sceneCaptions quote only turn 0 and disclose no challenge or steer",
+              "no digits, em dashes, UK canonical spellings or gendered role nouns; learner self-reference gender-neutral in all 30 you turns",
+              "P1 L5 base 'teilen wir die Mehrkosten' under-specifies what difference is split (R07)"
+            ],
+            "remainingConcerns": [
+              "open lexical blanks (trade-off, convenience, discipline, equity, compromise) accept only the retrieved lemma; acceptable because the exercise reconstructs a just-modeled turn, but a runtime hint design should be confirmed before activation",
+              "build distractors that are wrong by meaning rather than grammar rely on the B2 build screen rendering dialogue[1].base.de as the existing BuildPhraseStep does; integration precondition, not a content error"
+            ]
+          },
+          {
+            "file": "english-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": [
+              "all 60 turns inside token bounds (gate PASS reproduced by hand on the longest turns: L1 you1 21, L2 you1 22, L6 you2 21, L10 you1 22)",
+              "formal episodes (L1,L3,L8,L10) uncontracted in you turns; informal/neutral contract; every them turn a complete spoken sentence",
+              "build reconstructions byte-equal; alternative orders: L1 'later hours worked cost more than the hours before it' (R02) and L7 fronted 'in June,' (R03) are grammatical meaning-preserving permutations; L8 subject swap is implausible, others blocked",
+              "cloze/synthesis reconstruct; L8 synthesis choices 'although/once flagged' are grammatical and not excluded by visible context (R06); L4 you3 'expiry follows twelve months' stiff (R11)",
+              "recall: L2 'inspect/weigh the streams' grammatical and plausible (R09); others blocked by meaning or form",
+              "trophies L1–L10 equal ledger rows; discrepancy→Abweichung, consequently, underestimate, redeem, outage→Ausfall, appeal, assumption, referral→Überweisung, congestion, ultimately all surface-anchored",
+              "fictional policies (bin notice, hauler letter, leaflet, plan terms, fine notice, clinic rule, pilot report) are situated by situation/sceneCaption and dialogue, no universal legal/medical claims",
+              "carriers staged per lesson: due to/which means that/what I mean is/in short L1; so that/in order to/consequently/to sum up L2; stems from/admittedly/I would propose that L3 (the client needs to hear modeled in them turn); modal passive/expiry/in other words L4; whereas/in which/the difference is that/on top of that L5; otherwise/in case/provided that/failing that L6; even if I had/the assumption was that/might well L7; backshift/regarding/as for/unless L8; fair point/let me finish/to be fair/how about we L9; firstly/moreover/as a consequence/for the record/ultimately L10",
+              "L9 you1 omits spec 'driven in at eight' (R12 item 4); L10 base 'ausgewertet' stronger than 'counted' (R13)",
+              "orthography US (canceled, favored, modeling, fiber+fibre accepted, expiry spec-licensed, expiration accepted); apostrophe variants complete"
+            ],
+            "remainingConcerns": [
+              "same base-cue integration precondition for meaning-based build distractors as P1",
+              "'caretaker' is spec-authored and kept though US listeners may expect 'building manager'; revisit only through the spec"
+            ]
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "R01",
+            "decision": "accept",
+            "reason": "Independent count confirms 21 tokens; 'by train' gives 20, keeps meaning; sceneCaption synchronized, German base already fits."
+          },
+          {
+            "finding": "R02",
+            "decision": "accept-adapted",
+            "reason": "'later hours worked cost more than the hours before it' is a grammatical permutation; rechunked so subject+verb and 'the hours worked' are bound; distractors re-cut to the new boundaries and made frame-contradicting."
+          },
+          {
+            "finding": "R03",
+            "decision": "accept-adapted",
+            "reason": "Fronted 'in June,' is grammatical; 'pay in June,' now one chip so the time phrase cannot move; distractors re-cut ('pay on June,' ungrammatical, 'nobody could' incoherent after 'because of one wrong assumption')."
+          },
+          {
+            "finding": "R04",
+            "decision": "adapt-partial",
+            "reason": "Open frame blanks that test the lesson's required carrier or trophy keep the authored list by design (the turn was just modeled and B2-EN-17 anchors that carrier): P1L3 admittedly/that said, P1L8 by growth I mean, P2L1 what I mean is, P2L6 provided that, P2L10 for the record stay strict. P2L4 'To sum up' is not an L4 required carrier, so 'In short' is added. No automatic synonym acceptance is assumed."
+          },
+          {
+            "finding": "R05",
+            "decision": "reject-as-class",
+            "reason": "S5 licenses meaning-wrong distractors; the contract's dialogue[1].base is the authored visible cue, the exemplar relies on it, and the existing BuildPhraseStep renders baseText. The heard them turn is also visible context (e.g. bus vs train). Where chunks were re-cut anyway I chose ungrammatical or frame-contradicting distractors. Rendering base.de on the B2 build screen is recorded as an integration precondition."
+          },
+          {
+            "finding": "R06",
+            "decision": "accept",
+            "reason": "'although flagged' and 'once flagged' are grammatical and the staff turn has not stated the queue rule; replaced with competitors that cannot govern the reduced clause."
+          },
+          {
+            "finding": "R07",
+            "decision": "adapt",
+            "reason": "Spoken idiom is spec-authored; 'the difference' here is the fare gap between bus and flight and splitting it is a halfway offer, so the base is tightened to name that gap ('die Differenz zum Busticket') and to render 'I'm not prepared to' accurately; no spoken change, pattern example base synchronized."
+          },
+          {
+            "finding": "R08",
+            "decision": "accept",
+            "reason": "S4 forbids uniqueness by punctuation alone; 'on the other, the' now binds the connector to the following noun phrase; existing distractors remain wrong (double article or contradiction of the heard opener)."
+          },
+          {
+            "finding": "R09",
+            "decision": "accept",
+            "reason": "P1L10 'instead' replaced by 'whether' which cannot fill the connector slot; P2L2 recall now tests the verb form after 'in order to'."
+          },
+          {
+            "finding": "R10",
+            "decision": "accept-adapted",
+            "reason": "carriersStaged names L3 for arguably and the draft must conform to the spec; a non-trophy model is added to the L3 second pattern example plus an L3 term; trophy allocation stays L8."
+          },
+          {
+            "finding": "R11",
+            "decision": "adapt-partial",
+            "reason": "you2 kept: 'In other words, about twenty coffees' is a natural elliptical answer carrying the required carrier. you3 reworded to 'with expiry after twelve months without activity' keeping the spec nominalization; synthesis segments synchronized, speak tokens unchanged."
+          },
+          {
+            "finding": "R12",
+            "decision": "adapt-partial",
+            "reason": "Items 1–3 are regional preference against spec-authored wording (journeys, prospects, caretaker) and are rejected; item 4 is accepted because the spec openingMove itself reads 'driven in at eight' and it clarifies the commute argument; frameSuffix, recall and base synchronized."
+          },
+          {
+            "finding": "R13",
+            "decision": "accept",
+            "reason": "'ausgewertet' asserts analysis the English does not; 'gezählt' preserves the counted form the cloze cue tests."
+          },
+          {
+            "finding": "OWN-P1L2",
+            "decision": "edit",
+            "reason": "Distractor 'for passengers.' yields 'whereas the main drawback of driving is searching for passengers.', grammatical and coherent in a carpool scene; replaced by 'are' (agreement error)."
+          },
+          {
+            "finding": "author-flags",
+            "decision": "accept",
+            "reason": "expiry per spec with expiration accepted; fictional notices/plans/clinic rule clearly situated; resale/equity/budget phrased as possibilities, not quotes or guarantees; no review or native claims inserted."
+          }
+        ],
+        "edits": [
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/0/dialogue/0/targetText",
+            "oldValue": "This downtown apartment costs more, but the suburban option means an hour on the train each way. What do you think?",
+            "newValue": "This downtown apartment costs more, but the suburban option means an hour by train each way. What do you think?",
+            "reason": "R01: 21→20 tokens"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/0/sceneCaption/de",
+            "oldValue": "Die Vermietungsfachkraft fragt: “This downtown apartment costs more, but the suburban option means an hour on the train each way. What do you think?”",
+            "newValue": "Die Vermietungsfachkraft fragt: “This downtown apartment costs more, but the suburban option means an hour by train each way. What do you think?”",
+            "reason": "R01: caption must quote turn 0 verbatim"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/0/build/chunks",
+            "oldValue": [
+              "downtown costs",
+              "far more;",
+              "on the other,",
+              "the suburban apartment",
+              "means"
+            ],
+            "newValue": [
+              "downtown costs",
+              "far more;",
+              "on the other, the",
+              "suburban apartment",
+              "means"
+            ],
+            "reason": "R08: bind connector to following NP; reconstruction unchanged, 10-token focus, speak tokens still in focus"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/1/build/distractors",
+            "oldValue": [
+              "whereas the main benefit",
+              "for passengers."
+            ],
+            "newValue": [
+              "whereas the main benefit",
+              "are"
+            ],
+            "reason": "OWN-P1L2: 'searching for passengers.' was grammatical and scene-coherent"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/2/pattern/examples/1",
+            "oldValue": {
+              "targetText": "Admittedly, the schedule is complicated; that said, everyone knows when help is available.",
+              "base": {
+                "de": "Zugegeben, der Zeitplan ist kompliziert; allerdings weiß jede Person, wann Unterstützung verfügbar ist."
+              },
+              "highlights": [
+                "Admittedly",
+                "that said"
+              ]
+            },
+            "newValue": {
+              "targetText": "Admittedly, the schedule is complicated; that said, it is arguably the fairest option for everyone.",
+              "base": {
+                "de": "Zugegeben, der Zeitplan ist kompliziert; allerdings ist er wohl die fairste Lösung für alle."
+              },
+              "highlights": [
+                "Admittedly",
+                "that said",
+                "arguably"
+              ]
+            },
+            "reason": "R10: model arguably in L3 per carriersStaged; new ex-2 asset"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/2/terms/8",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "arguably",
+              "kind": "adverb",
+              "base": {
+                "de": "wohl; mit guten Gründen vertretbar"
+              }
+            },
+            "reason": "R10: append ninth term (8–10 allowed), attested in the new pattern example"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/dialogue/3/base/de",
+            "oldValue": "Ich will keine zwanzig Stunden verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir die Mehrkosten; andernfalls verkürzen wir die Küstenreise.",
+            "newValue": "Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir uns die Differenz zum Busticket; andernfalls verkürzen wir die Küstenreise.",
+            "reason": "R07: split the difference = share the fare gap; accurate rendering of I'm not prepared to"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/4/pattern/examples/0/base/de",
+            "oldValue": "Ich will keine zwanzig Stunden verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir die Mehrkosten; andernfalls verkürzen wir die Küstenreise.",
+            "newValue": "Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir uns die Differenz zum Busticket; andernfalls verkürzen wir die Küstenreise.",
+            "reason": "R07: coupled pattern base"
+          },
+          {
+            "file": "english-b2-p1.json",
+            "jsonPointer": "/lessons/9/recall/fallbackChoices",
+            "oldValue": [
+              "moreover",
+              "previously",
+              "instead",
+              "unfortunately"
+            ],
+            "newValue": [
+              "moreover",
+              "previously",
+              "whether",
+              "unfortunately"
+            ],
+            "reason": "R09: 'instead' could fill the connector slot"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/chunks",
+            "oldValue": [
+              "later hours",
+              "cost more",
+              "than the hours",
+              "worked",
+              "before it."
+            ],
+            "newValue": [
+              "later hours cost",
+              "more than",
+              "the hours worked",
+              "before",
+              "it."
+            ],
+            "reason": "R02: participle bound to its NP; reconstruction unchanged, 10-token focus, 5 chunks of 1–3 tokens"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/0/build/distractors",
+            "oldValue": [
+              "cost less",
+              "after it."
+            ],
+            "newValue": [
+              "less than",
+              "after"
+            ],
+            "reason": "R02: distractors re-cut to new boundaries; both contradict the visible 'rate increase, which means that' frame"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/1/recall/fallbackChoices",
+            "oldValue": [
+              "separate",
+              "combine",
+              "inspect",
+              "weigh"
+            ],
+            "newValue": [
+              "separate",
+              "separates",
+              "separated",
+              "separating"
+            ],
+            "reason": "R09: test the form after 'in order to'; inspect/weigh were plausible"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/dialogue/5/targetText",
+            "oldValue": "To sum up, points arrive the next day and unlock rewards at two hundred; expiry follows twelve months without activity.",
+            "newValue": "To sum up, points arrive the next day and unlock rewards at two hundred, with expiry after twelve months without activity.",
+            "reason": "R11: natural informal phrasing, keeps spec nominalization expiry; 21 tokens"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/dialogue/5/base/de",
+            "oldValue": "Zusammengefasst kommen die Punkte am nächsten Tag und ermöglichen ab zweihundert Prämien; nach zwölf Monaten ohne Aktivität verfallen sie.",
+            "newValue": "Zusammengefasst kommen die Punkte am nächsten Tag und ermöglichen ab zweihundert Prämien, mit Verfall nach zwölf Monaten ohne Aktivität.",
+            "reason": "R11: coupled base"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/segments/1/text",
+            "oldValue": ", points arrive the next day and unlock rewards at two hundred; ",
+            "newValue": ", points arrive the next day and unlock rewards at two hundred, with ",
+            "reason": "R11: synthesis reconstruction"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/segments/3/text",
+            "oldValue": " follows twelve months without activity.",
+            "newValue": " after twelve months without activity.",
+            "reason": "R11: synthesis reconstruction"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "To sum up"
+            ],
+            "newValue": [
+              "To sum up",
+              "In short"
+            ],
+            "reason": "R04: equally valid taught summary frame, not an L4 required carrier"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/6/build/chunks",
+            "oldValue": [
+              "one wrong assumption:",
+              "everyone could pay",
+              "in June,",
+              "so we",
+              "booked"
+            ],
+            "newValue": [
+              "one wrong assumption:",
+              "everyone could",
+              "pay in June,",
+              "so we",
+              "booked"
+            ],
+            "reason": "R03: time phrase cannot be fronted; reconstruction unchanged, 11-token focus"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/6/build/distractors",
+            "oldValue": [
+              "nobody could pay",
+              "in January,"
+            ],
+            "newValue": [
+              "nobody could",
+              "pay on June,"
+            ],
+            "reason": "R03: re-cut to new boundaries; 'pay on June,' ungrammatical, 'nobody could' incoherent after 'one wrong assumption:'"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/1/choices",
+            "oldValue": [
+              "unless",
+              "although",
+              "because",
+              "once"
+            ],
+            "newValue": [
+              "unless",
+              "despite",
+              "instead",
+              "owing to"
+            ],
+            "reason": "R06: competitors cannot govern 'flagged, requests join…'"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/targetText",
+            "oldValue": "Our pilot report puts congestion costs above the scheme’s budget; a third of the riders surveyed would otherwise have driven at eight.",
+            "newValue": "Our pilot report puts congestion costs above the scheme’s budget; a third of the riders surveyed would otherwise have driven in at eight.",
+            "reason": "R12 item 4: spec openingMove wording; 23 tokens"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/1/base/de",
+            "oldValue": "Unser Pilotbericht beziffert die Staukosten höher als das Projektbudget; ein Drittel der befragten Radnutzenden wäre sonst um acht Auto gefahren.",
+            "newValue": "Unser Pilotbericht beziffert die Staukosten höher als das Projektbudget; ein Drittel der befragten Radnutzenden wäre sonst um acht mit dem Auto in die Stadt gefahren.",
+            "reason": "R12: coupled base"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/8/build/frameSuffix",
+            "oldValue": " at eight.",
+            "newValue": " in at eight.",
+            "reason": "R12: build reconstruction"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/8/recall/after",
+            "oldValue": " costs above the scheme’s budget; a third of the riders surveyed would otherwise have driven at eight.",
+            "newValue": " costs above the scheme’s budget; a third of the riders surveyed would otherwise have driven in at eight.",
+            "reason": "R12: recall reconstruction"
+          },
+          {
+            "file": "english-b2-p2.json",
+            "jsonPointer": "/lessons/9/dialogue/3/base/de",
+            "oldValue": "Mit der Befragung meine ich die öffentliche Beteiligung; vierhundert Antworten wurden ausgewertet, bevor das Kostenmodell entstand.",
+            "newValue": "Mit der Befragung meine ich die öffentliche Beteiligung; vierhundert Antworten wurden gezählt, bevor das Kostenmodell erstellt wurde.",
+            "reason": "R13: counted ≠ analyzed"
+          }
+        ],
+        "finalChecks": {
+          "lengths": "P1 L1 turn 0 now 20; P2 L4 you3 21; P2 L9 you1 23; all other turns unchanged and in bounds",
+          "reconstructions": "P1 L1, P2 L1, P2 L7 builds reconstruct byte-equal with 10/10/11-token focus and 5 chunks of 1–4 tokens; P2 L4 synthesis and P2 L9 build/recall reconstruct; all distractors distinct from chunks after normalization",
+          "speak": "P1 L1 ['downtown','suburban','means'], P2 L1 ['later','cost','worked'], P2 L7 ['assumption','pay','June'] remain whole tokens with ≥2 in focus; P2 L4 ['sum','expiry','activity'] still in turn 5",
+          "trophies": "all twenty lemma/familyKey/surface/turnIndex rows untouched; P1 L3 term 'arguably' is a term only, trophy stays P1 L8",
+          "terms": "P1 L3 now 9 terms, new term attested in pattern example 2; all other term counts and attestations unchanged",
+          "review": "all review objects stay pending/unreviewed with false flags and empty reviewers; no native or human review claimed; no provider, TTS, git or activation authorization implied",
+          "holds": "recording of P1 L1 turn 0, P1 L3 ex-2, P2 L4 turn 5 and P2 L9 turn 1 waits for the edited text; publication additionally waits for the B2 build screen to render dialogue[1].base.de as cue",
+          "rerun": "after edits rerun validateLatinB2Draft on both files with the dc6d…b3f0 spec/ledger and 471 prerequisites; expected zero errors; re-review on the new hashes limited to edited pointers and coupled fields"
+        }
+      }
+    }
+  ],
+  "approvalBasis": "Every exact old/new edit replayed through all full-content reviews; final independent source hashes match."
+}

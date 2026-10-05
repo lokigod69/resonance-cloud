@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "latin-b2-content-manifest",
+  "status": "reviewed-staged",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/english/p1.json",
+      "sha256": "980db4ae5a8de7211b5064285524b0c14aef0f68aff5b038efb287446f56ced2",
+      "targetLanguage": "English",
+      "pathNumber": 1,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/english/specification.json",
+        "sha256": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+        "referenceName": "tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/english-plan.json",
+        "sha256": "b4910cc2b4b6ca7d11fa74ba8a7a03c929a6b26be57dbc196e0ab9be733bb3f8"
+      }
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/english/p2.json",
+      "sha256": "8a83da77e3006699a6c7cda91340147f119078f8f93a038521416e7fc8c39312",
+      "targetLanguage": "English",
+      "pathNumber": 2,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g",
+      "specification": {
+        "file": "frontend/content-drafts/b2-2026-10/english/specification.json",
+        "sha256": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+        "referenceName": "tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_SPEC.json"
+      },
+      "prerequisites": {
+        "file": "frontend/content-drafts/b2-2026-10/latin-prerequisites.json",
+        "sha256": "72f074b845ee0b2165cae99ab1739d9315a00e5b273f132d2f45c5bb3396af32"
+      },
+      "b1Reservation": {
+        "file": "frontend/content-drafts/b1-2026-10/english-plan.json",
+        "sha256": "b4910cc2b4b6ca7d11fa74ba8a7a03c929a6b26be57dbc196e0ab9be733bb3f8"
+      }
+    }
+  ],
+  "voiceEvidence": {
+    "English": {
+      "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+      "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+    }
+  },
+  "fableReview": {
+    "file": "frontend/content-drafts/b2-2026-10/english/fable-evidence.json",
+    "sha256": "ac3ab8c8a4c54e30d96a00f06499c7b5f223a7f92abd173e9920ea942e585bd8"
+  },
+  "independentReview": {
+    "file": "frontend/content-drafts/b2-2026-10/english/independent-evidence.json",
+    "sha256": "63c947b0d2a0934a74b25f402fd3c02e3f573ad09ef5b1a6fa58fdfdc4711451"
+  }
+}

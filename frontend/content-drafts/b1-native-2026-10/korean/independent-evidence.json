@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "coverage": "full-content-all-fields",
+  "reviewedSources": {
+    "frontend/content-drafts/b1-native-2026-10/korean/p1.json": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+    "frontend/content-drafts/b1-native-2026-10/korean/p2.json": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb"
+  },
+  "reviewedSpecifications": {
+    "frontend/content-drafts/b1-native-2026-10/korean/specification.json": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
+  },
+  "scope": "Full-content read; PASS applies only to canonical spoken text for local TTS. Three exercise findings remain held from publication; no native-human or listening approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p1.json",
+      "reviewedScratchSha256": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "stagedSha256": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    },
+    {
+      "file": "frontend/content-drafts/b1-native-2026-10/korean/p2.json",
+      "reviewedScratchSha256": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "stagedSha256": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "transformation": "CRLF to LF only; byte equality asserted after normalization."
+    }
+  ],
+  "specificationCanonicalization": {
+    "reviewedScratchSha256": "5e2ebf52d4fee320839b49c8426d29c81db7af5bbb1d5d3b59f4d1aa962c8bf3",
+    "stagedSha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd",
+    "transformation": "CRLF to LF only; parsed content unchanged."
+  },
+  "localTtsContentVerdict": "PASS",
+  "unresolvedLocalTtsBlockers": [],
+  "publicationVerdict": "REWORK",
+  "unresolvedPublicationFindings": [
+    {
+      "id": "KO-CONTENT-01",
+      "severity": "MEDIUM",
+      "scope": "publication-only cloze correctness",
+      "title": "Visible context does not select one answer in several choice blanks",
+      "evidence": "These supplied alternatives create grammatical, plausible replies to the visible follow-up. The hidden learner-base translation cannot distinguish them. The strongest examples are the unconstrained conversation topic, film genre and afternoon meeting time.",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/0/cloze/4",
+          "alternative": "기차에서",
+          "completedReply": "그래서 옷이 젖었는데 기차에서 잠깐 쉬었어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/4/cloze/1",
+          "alternative": "아침을",
+          "completedReply": "아니요, 아침을 먹고 나서 카페에 다시 갔어요.",
+          "reason": "The question asks whether it was evening; breakfast also answers no."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/7/cloze/3",
+          "alternative": "공항 안에서",
+          "reason": "The city-hall direction does not identify the transfer location or rule out an airport interchange."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/8/cloze/3",
+          "alternative": "세금",
+          "completedReply": "그때 커피를 마셨는데 친구와 세금 이야기를 오래 했어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/9/cloze/2",
+          "alternative": "전쟁",
+          "completedReply": "그래서 전쟁 영화를 봤는데 내용이 재미있어서 추천해요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/3/cloze/3",
+          "alternative": "복잡해요",
+          "completedReply": "결말이 뻔하기는 하지만 마지막 장면은 꽤 복잡해요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/cloze/3",
+          "alternative": "세 시에는",
+          "completedReply": "회의가 길어도 오후 세 시에는 참석할 수 있어요.",
+          "reason": "One, three and four are as compatible with the stated morning conflict as two."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/7/cloze/3",
+          "alternative": "팩스로",
+          "completedReply": "오늘 바빠도 점심시간에 팩스로 바로 예매할게요.",
+          "reason": "Less usual than a phone, but the fictional booking context does not exclude an immediate fax reservation."
+        }
+      ],
+      "concreteFix": "Have Fable replace the implicated distractors with alternatives demonstrably invalid in the visible sentence/context, preserving canonical speech where possible. For example, P1 L5 can retain 점심을 while replacing other meals with clearly inedible objects; P2 L7 can use invalid case forms instead of three equally possible afternoon times. Fable must supply final exact sets and check the remaining alternatives. Otherwise retain an explicit publication hold. Do not rely on the hidden translation or expose the delayed answer in the opening.",
+      "changesCanonicalSpeechRequired": false
+    },
+    {
+      "id": "KO-CONTENT-02",
+      "severity": "MEDIUM",
+      "scope": "publication-only build correctness",
+      "title": "Actual indivisible chips allow equivalent Korean orders rejected by the checker",
+      "evidence": "Each permutation below uses every existing correct chip exactly once, preserves punctuation and conveys the displayed base meaning. BuildPhraseStep.tsx:68 accepts only exact targetText; a translated meaning cue cannot establish Korean adverb order.",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/3/chunks",
+          "indexes": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "alternative": "호텔에서 마지막 날 나올 때 비가 많이 왔어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/4/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "여기저기 찾아봤는데 카페에서 결국 카드를 다시 찾았어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3,
+            4
+          ],
+          "alternative": "회의가 짧아도 오히려 아침에는 시간이 더 안 맞아요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/7/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "표가 비싸도 이번에는 그래도 직접 듣고 싶어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/8/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "서비스가 느린데도 역시 커피는 맛있는 것 같아요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/9/chunks",
+          "indexes": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "alternative": "책이 긴데도 유머가 많은 수필이 특히 마음에 들어요."
+        }
+      ],
+      "concreteFix": "Retain the publication hold pending Fable-owned resegmentation or coupled wording changes that make the actual 4-7 chip exercise fair. Keep 1-3 eojeol per meaningful chunk and recheck permitted permutations. If preserving these canonical sentences requires supporting alternative orders, record that separately as future publication work; it is not a condition of this spoken-content PASS.",
+      "fableClaimCorrection": "The UI does not show chunk glosses. Conversely, Fable's P1 L7 example 집에서 혼자 쉬다가 cannot be made from its existing whole chips, and moving 갑자기 before 산에 갔는데 in L1 changes scope; neither is used as evidence here."
+    },
+    {
+      "id": "KO-CONTENT-03",
+      "severity": "LOW",
+      "scope": "nonspoken fallback metadata / specification fidelity",
+      "title": "Some unused recall alternatives still satisfy the surrounding narrative",
+      "instances": [
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/2/recall/fallbackChoices",
+          "alternative": "매일",
+          "completedReply": "새 식당에 매일 갔는데 줄이 정말 길었어요."
+        },
+        {
+          "file": "korean-p1.json",
+          "pointer": "/lessons/6/recall/fallbackChoices",
+          "alternative": "함께",
+          "completedReply": "함께 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요."
+        },
+        {
+          "file": "korean-p2.json",
+          "pointer": "/lessons/6/recall/fallbackChoices",
+          "alternative": "예상대로",
+          "completedReply": "회의가 짧아도 아침에는 예상대로 시간이 더 안 맞아요."
+        }
+      ],
+      "evidence": "These are different memories but valid contextual sentences. They do not meet the specification's semanticReviewRules[3] demand that recall distractors likewise be ungrammatical or clearly wrong in context. Current TypeRecall intentionally tests the previously learned canonical wording and does not display these choices, so this is not a current recall-screen correctness defect.",
+      "concreteFix": "Have Fable supply exact invalid replacements for this metadata, or explicitly arbitrate the stronger distractor requirement as inapplicable to the present memory-only UI. Do not claim all remaining fallback alternatives are linguistically impossible. Canonical speech can stay unchanged."
+    }
+  ],
+  "kind": "independentReview",
+  "reviewer": {
+    "id": "Codex independent agent /root/latin_b2_gate_review; did not author the content or Fable edits",
+    "kind": "independent-agent",
+    "authorOfReviewedContent": false
+  },
+  "rawReviewSha256": "c134e0f2e4e861287c054de45b3b8a5b34ee9118b4a43e67f9b88781f997446f",
+  "rawReview": {
+    "schemaVersion": 1,
+    "reviewedAt": "2026-10-05",
+    "reviewer": "Codex independent agent /root/latin_b2_gate_review; did not author the content or Fable edits",
+    "authorOfContent": false,
+    "verdict": "REWORK",
+    "findingCount": 3,
+    "localTtsContentVerdict": "PASS",
+    "unresolvedLocalTtsBlockers": [],
+    "publicationVerdict": "REWORK",
+    "remainingPublicationFindings": [
+      "KO-CONTENT-01",
+      "KO-CONTENT-02",
+      "KO-CONTENT-03"
+    ],
+    "reviewedSources": {
+      "korean-p1.json": "8e188744b45433ea12e8d96297d15fe1bec6928b77be7211a88801f1dfa14a50",
+      "korean-p2.json": "2e45cdebb9def870d24c72be8ee633fb0e37007d8b342d5b9fb95bdad8f2ccfb",
+      "B1_KOREAN_P1_P2_FABLE_REVIEW_RAW.json": "156f2ea6530637f655106b3f3d5f7eb5de74c092a697e0d1af954aabd28f28a2"
+    },
+    "additionalBindings": {
+      "new-content/korean-p1.json": "bccd32b4b0da65d747341a63762efed2b77e023070241b9409c7ee6083867e1c",
+      "new-content/korean-p2.json": "21207bafe0b4e2bb447d63ba92e52622e85e2d63de4e84c816ddd37e7f46b7eb",
+      "B1_NATIVE_KOREAN_SPEC.json": "5e2ebf52d4fee320839b49c8426d29c81db7af5bbb1d5d3b59f4d1aa962c8bf3",
+      "curriculum/KOREAN_STAGE0.json": "4a80e5f0130792d755b1a96e2d5faffbafb385de502dc31619d1defcdcb0334a",
+      "new-content/korean-p1-p2-author-report.md": "95536a74b04bf28d46a30c5598d08f3f25dc56da97fdf058e56a8acc93728472",
+      "B1_KOREAN_P1_P2_APPLIED_HASHES.json": "fae3eaed2a946ebc42b7e3d988989f95c06cf38b9ab0061b1abe777bb6ce8409",
+      "frontend/scripts/lib/guidedKoreanB1Drafts.ts": "340342607d55fd0b25624c8a7ae80fc2e2f0f80895a66e5f9847206f9ae04784",
+      "frontend/scripts/lib/guidedB1Drafts.ts": "b04badcb7a3835e0faf352e7f9d09c2cd235052f5388dc42b3908f362b24e15e",
+      "frontend/src/components/today/ComplicationStep.tsx": "26dbba90f8d79bab3daa4a265481f4b58e85f337f2bc2e7af7ec5417f065f4d2",
+      "frontend/src/components/today/BuildPhraseStep.tsx": "3fa4b962b91045d88ade7a435c1d1e016ef6b53484e2d746ac40544329e16bb9",
+      "frontend/src/components/today/TypeRecallStep.tsx": "a0a738b243c005a51154dde621d8edcfb049f64a7e849241c3bce36b8312d218",
+      "frontend/src/data/guided/koreanA1.ts": "15b37fa923e12e3d2e307000cecc9c67ac798bf9540a9665c9a163ba08a36931",
+      "frontend/src/data/guided/koreanA2.ts": "7db4157b4b015fa391820f45b0a005903d0a69d931c25fd1d67dff152415fb02"
+    },
+    "replay": {
+      "exactEdits": 11,
+      "oldValueMatches": 11,
+      "filesDeepEqualToReplayedOriginals": [
+        "korean-p1.json",
+        "korean-p2.json"
+      ],
+      "unexpectedChanges": [],
+      "couplings": "P2 L8 dialogue, pattern, chunks and recall agree after the reorder. Trophy example is a separate valid sentence; terms and required tokens remain correctly anchored. Its revised first reply has seven eojeol."
+    },
+    "fullCoverage": {
+      "personallyReadEveryField": true,
+      "path1Lessons": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "path2Lessons": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "lessonCount": 20,
+      "dialogueTurns": 80,
+      "chunks": 83,
+      "terms": 140,
+      "patternExamples": 40,
+      "clozeBlanks": 43,
+      "recallItems": 20,
+      "requiredSpeechTokens": 60,
+      "trophyWordsAndExamples": 20,
+      "fields": "Read path metadata; every lesson title, situation, goal, register, all four turns and both bases, pattern label/rule/examples/highlights, every cloze alternative/cue, every chunk and term/gloss, recall alternatives, speech tokens, captions, trophy explanations, distractors, mood and visual notes. Read the full controlling specification and Fable result; checked Stage 0 identity, register/base evidence and all 200 frozen trophy strings against the bound corpus."
+    },
+    "validation": {
+      "actualGate": "validateKoreanB1Draft imported directly through node --import tsx, applied to both reviewed-content files with B1_NATIVE_KOREAN_SPEC.json",
+      "path1": "PASS: 10 lessons, 40 turns, 23 cloze blanks",
+      "path2": "PASS: 10 lessons, 40 turns, 20 cloze blanks",
+      "fullAllocation": {
+        "count": 100,
+        "unique": 100,
+        "frozenTrophies": 200,
+        "collisions": 0
+      },
+      "sourceHeadersMatchStage0": true,
+      "checks": [
+        "No issue: native Korean morphology, particles, standard spacing, NFC and whole-eojeol reconstruction; no substring speech/recall/cloze anchors.",
+        "No issue: consistent polite 해요체, appropriate requests and honorific direction, no gendered learner identity/address.",
+        "No issue: P1 background, sequence, interruption and two-sentence progression; P2 -지만, -기는 한데/하지만, -아/어도 and -(으)ㄴ/는데도 progression. Recognition-only forms are not promoted into learner production.",
+        "No issue: canonical target/base meanings in German and English, 140 meaningful terms, explicit form cues, natural bare trophy anchors and examples, no opening/scene disclosure of delayed follow-up.",
+        "No issue: clinic lesson is a personal recollection; P2 L8 revised concession order is acceptable speech. No medical promise or new spoken blocker identified.",
+        "Six actual whole-chip alternative permutations were constructed in memory; all fail the exact comparison used at BuildPhraseStep.tsx:68 despite equivalent meaning.",
+        "ComplicationStep.tsx:94 and :178-241 display the interlocutor's base and the cloze, not dialogue[3].baseText. BuildPhraseStep.tsx:100-163 displays the whole meaning cue and target chips, not individual chunk glosses.",
+        "TypeRecallStep.tsx:57-84 tests the learned sentence from memory; fallback reveals the canonical answer and does not render fallbackChoices. Finding 03 concerns the stronger specification requirement for unused metadata, not an ambiguous live recall choice screen."
+      ],
+      "visualVerification": "Not performed; source-level rendering/checker inspection only. No runtime integration, audio quality, provider, billing or execution authorization is claimed."
+    },
+    "findings": [
+      {
+        "id": "KO-CONTENT-01",
+        "severity": "MEDIUM",
+        "scope": "publication-only cloze correctness",
+        "title": "Visible context does not select one answer in several choice blanks",
+        "evidence": "These supplied alternatives create grammatical, plausible replies to the visible follow-up. The hidden learner-base translation cannot distinguish them. The strongest examples are the unconstrained conversation topic, film genre and afternoon meeting time.",
+        "instances": [
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/0/cloze/4",
+            "alternative": "기차에서",
+            "completedReply": "그래서 옷이 젖었는데 기차에서 잠깐 쉬었어요."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/4/cloze/1",
+            "alternative": "아침을",
+            "completedReply": "아니요, 아침을 먹고 나서 카페에 다시 갔어요.",
+            "reason": "The question asks whether it was evening; breakfast also answers no."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/7/cloze/3",
+            "alternative": "공항 안에서",
+            "reason": "The city-hall direction does not identify the transfer location or rule out an airport interchange."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/8/cloze/3",
+            "alternative": "세금",
+            "completedReply": "그때 커피를 마셨는데 친구와 세금 이야기를 오래 했어요."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/9/cloze/2",
+            "alternative": "전쟁",
+            "completedReply": "그래서 전쟁 영화를 봤는데 내용이 재미있어서 추천해요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/3/cloze/3",
+            "alternative": "복잡해요",
+            "completedReply": "결말이 뻔하기는 하지만 마지막 장면은 꽤 복잡해요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/6/cloze/3",
+            "alternative": "세 시에는",
+            "completedReply": "회의가 길어도 오후 세 시에는 참석할 수 있어요.",
+            "reason": "One, three and four are as compatible with the stated morning conflict as two."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/7/cloze/3",
+            "alternative": "팩스로",
+            "completedReply": "오늘 바빠도 점심시간에 팩스로 바로 예매할게요.",
+            "reason": "Less usual than a phone, but the fictional booking context does not exclude an immediate fax reservation."
+          }
+        ],
+        "concreteFix": "Have Fable replace the implicated distractors with alternatives demonstrably invalid in the visible sentence/context, preserving canonical speech where possible. For example, P1 L5 can retain 점심을 while replacing other meals with clearly inedible objects; P2 L7 can use invalid case forms instead of three equally possible afternoon times. Fable must supply final exact sets and check the remaining alternatives. Otherwise retain an explicit publication hold. Do not rely on the hidden translation or expose the delayed answer in the opening.",
+        "changesCanonicalSpeechRequired": false
+      },
+      {
+        "id": "KO-CONTENT-02",
+        "severity": "MEDIUM",
+        "scope": "publication-only build correctness",
+        "title": "Actual indivisible chips allow equivalent Korean orders rejected by the checker",
+        "evidence": "Each permutation below uses every existing correct chip exactly once, preserves punctuation and conveys the displayed base meaning. BuildPhraseStep.tsx:68 accepts only exact targetText; a translated meaning cue cannot establish Korean adverb order.",
+        "instances": [
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/3/chunks",
+            "indexes": [
+              1,
+              0,
+              2,
+              3
+            ],
+            "alternative": "호텔에서 마지막 날 나올 때 비가 많이 왔어요."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/4/chunks",
+            "indexes": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "alternative": "여기저기 찾아봤는데 카페에서 결국 카드를 다시 찾았어요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/6/chunks",
+            "indexes": [
+              0,
+              2,
+              1,
+              3,
+              4
+            ],
+            "alternative": "회의가 짧아도 오히려 아침에는 시간이 더 안 맞아요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/7/chunks",
+            "indexes": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "alternative": "표가 비싸도 이번에는 그래도 직접 듣고 싶어요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/8/chunks",
+            "indexes": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "alternative": "서비스가 느린데도 역시 커피는 맛있는 것 같아요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/9/chunks",
+            "indexes": [
+              0,
+              2,
+              1,
+              3
+            ],
+            "alternative": "책이 긴데도 유머가 많은 수필이 특히 마음에 들어요."
+          }
+        ],
+        "concreteFix": "Retain the publication hold pending Fable-owned resegmentation or coupled wording changes that make the actual 4-7 chip exercise fair. Keep 1-3 eojeol per meaningful chunk and recheck permitted permutations. If preserving these canonical sentences requires supporting alternative orders, record that separately as future publication work; it is not a condition of this spoken-content PASS.",
+        "fableClaimCorrection": "The UI does not show chunk glosses. Conversely, Fable's P1 L7 example 집에서 혼자 쉬다가 cannot be made from its existing whole chips, and moving 갑자기 before 산에 갔는데 in L1 changes scope; neither is used as evidence here."
+      },
+      {
+        "id": "KO-CONTENT-03",
+        "severity": "LOW",
+        "scope": "nonspoken fallback metadata / specification fidelity",
+        "title": "Some unused recall alternatives still satisfy the surrounding narrative",
+        "instances": [
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/2/recall/fallbackChoices",
+            "alternative": "매일",
+            "completedReply": "새 식당에 매일 갔는데 줄이 정말 길었어요."
+          },
+          {
+            "file": "korean-p1.json",
+            "pointer": "/lessons/6/recall/fallbackChoices",
+            "alternative": "함께",
+            "completedReply": "함께 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요."
+          },
+          {
+            "file": "korean-p2.json",
+            "pointer": "/lessons/6/recall/fallbackChoices",
+            "alternative": "예상대로",
+            "completedReply": "회의가 짧아도 아침에는 예상대로 시간이 더 안 맞아요."
+          }
+        ],
+        "evidence": "These are different memories but valid contextual sentences. They do not meet the specification's semanticReviewRules[3] demand that recall distractors likewise be ungrammatical or clearly wrong in context. Current TypeRecall intentionally tests the previously learned canonical wording and does not display these choices, so this is not a current recall-screen correctness defect.",
+        "concreteFix": "Have Fable supply exact invalid replacements for this metadata, or explicitly arbitrate the stronger distractor requirement as inapplicable to the present memory-only UI. Do not claim all remaining fallback alternatives are linguistically impossible. Canonical speech can stay unchanged."
+      }
+    ],
+    "claimLimits": "Local TTS content PASS covers the exact reviewed canonical Korean speech, including dialogue, chunks, terms, pattern examples and trophies. It is independent agent content review, not a human-native credential or audio listening test. It does not approve paid execution, provider settings, publication, runtime integration or production writes. No app files, providers, databases or git state were changed; only this requested scratch report was written."
+  }
+}

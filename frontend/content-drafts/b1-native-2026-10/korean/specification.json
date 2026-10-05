@@ -1,0 +1,904 @@
+{
+  "status": "architect-spec",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "baseLanguage": "German",
+  "registerPolicy": "해요체 in every learner line, all ten paths, including friend paths. By explicit policy 반말 never appears in any of the four turns, so the sentence-final 반말 ban runs on interlocutor lines too. Interlocutors (staff, colleagues, neighbors, friends) also speak 해요체; the fixed chunks 안녕하세요/죄송합니다/감사합니다/알겠습니다 are the only 습니다 forms in any turn (decided: no further 습니다 in staff openings). Honorific direction has two separate mechanisms: (1) humble verbs 드리다/말씀드리다/부탁드리다 lower the learner as actor toward a respected recipient, so the learner is the correct grammatical subject: 내일 다시 연락 드릴게요, 서류를 드렸어요, 확인 부탁드려요, 제가 보내 드릴게요. (2) subject-honorific -(으)시- raises its grammatical subject, so in learner lines it appears only with the other person as subject (언제 오세요?, 확인해 주시겠어요?, 시간이 되시면) and never with the learner as subject (no 제가 가세요, no 제가 연락 드리세요). -아/어 주시겠어요?/주시면 안 될까요?/주세요 ask the respected interlocutor to act; -아/어 드릴게요 offers the learner's own action. Staff may use -(으)시- toward the learner (손님, 내일 오시면 연락 주세요). Learner never asserts a decision only staff can make (refund granted, visit date fixed); learner asks, staff decides, learner accepts with modification.",
+  "genderSafety": "Korean verbs, adjectives and past forms carry no speaker gender, so no agreement hazards. By authoring choice, not as a claim about adult native usage (언니/형/오빠 are normal between intimates), the lessons stay role-neutral: no gender-marked address or role terms in any of the four turns (오빠/언니/누나/형/아저씨/아줌마); use 선배, 동료분, 이웃분, 선생님, 사장님, 직원분, 기사님. Kinship referents inside narration (어머니, 할머니 in P8 L5/L10) are allowed; they are referents, not address. Captions describe roles (die Kollegin/the colleague acceptable in base text only; target text stays role-neutral). Validator check is exact-token: after edge punctuation stripping, an eojeol equals a banned term or banned term + 아/야/는/은/이/가/도/한테/들; never a substring regex, so 형 inside 형태/인형/유형/모형 is not flagged. No gendered recall, trophy or required speech tokens are possible.",
+  "orthography": "Standard Hangul with 표준어 spacing (것 같아요, 수 있어요, 못 해요 spaced; 안 돼요 spaced; -고 나서 spaced). Prices and dates Arabic digits plus Sino-Korean reading context (3만 원, 15일, 7시 반 digits allowed as in A2); small counts native numeral plus counter (두 개, 세 번). Loanwords in 외래어 표기법 spelling. Captions quote the opening in base text with German „…“ and English “…” exactly as A2. Target punctuation: . ? , only; no ellipses, no emoji, no romaji.",
+  "segmentation": {
+    "youOne": "First learner reply: 6-12 eojeol, one or two sentences, ends in 요-form or 요-question; contains trophy surface and the three speech tokens.",
+    "youTwo": "Second learner reply (continuation/resolution): 5-9 eojeol, one sentence, carries the 2-3 cloze blanks and resolves or modifies.",
+    "chunks": "4-7 chunks; each chunk one meaningful eojeol group (1-3 eojeol) that joins with single ASCII spaces to exactly the first reply string; never split inside an eojeol; endings stay attached to their stem.",
+    "speechTokens": "Three distinct whole lexical eojeol taken verbatim from the first reply after stripping edge punctuation .?, from each eojeol (가능할까요 from 가능할까요?, never the token with ?); tokens contain Hangul/digits only, suffixes included (왔는데, 가능할까요, 연락); choose content eojeol, never 네/저/그/좀; optional tokens cover the rest; matching is whole-eojeol against the punctuation-stripped reply, no substring, stem or suffix tolerance.",
+    "trophyAnchoring": "Trophy is the canonical dictionary form (adverb or noun). The lesson declares the exact reviewed surface eojeol in which it occurs in the first reply and in its example (e.g. canonical 가능, surface 가능할까요; canonical 예전, surface 예전에는; canonical 갑자기, surface 갑자기). Validator checks that the declared surface eojeol is present verbatim and that surface minus canonical is empty or in the reviewed per-lesson remainder list (particles 이/가/을/를/은/는/에/에서/에는/도/로/으로/만/까지/부터, copula 예요/이에요, 하다-inflections for 하다-nouns). No automatic substring search: 강 inside 강남 or 일 inside 일정 must fail. Prefer natural bare surfaces (adverbs, noun compounds like 신청 방법, colloquial object omission like 연락 드릴게요); particles are never dropped merely to make the surface bare.",
+    "acceptedInput": "Only explicit reviewed variant rows: documented spacing/contraction pairs (것 같아요 / 거 같아요), 저는/전, 그것은/그건, and digit vs Hangul numeral for the same number. Variant matching compares whole eojeol after edge punctuation stripping on both sides, so punctuation-only differences (수 있을까요 / 수 있을까요?) need no variant row. No blanket word dropping, no automatic particle tolerance, no substring/stem guessing, no semantic substitutions. Threshold 0.65 and the existing B1 recording window of 15 s stay unchanged; A2's 12 s is historical evidence, not a B1 requirement."
+  },
+  "knownTraps": [
+    "-는데 (background) vs -아/어서 (cause) and 때문에 (noun cause): staff and review must check the German base does not force weil onto a background clause.",
+    "-(으)ㄹ 때 (time) vs -(으)면 (condition): German wenn covers both; English base disambiguates with when/if.",
+    "-(으)려고 (해요): authoring scope for B1 learner lines is first-person intention only (저는 5킬로를 뛰려고 해요); the language itself allows third-person -(으)려고 해요 when the speaker has evidence of that intention (동료분이 이사하려고 해요), so interlocutor lines may use it. Announced third-person plans in learner lines use -(으)ㄹ 거예요/예정이에요.",
+    "Relative-clause tense: -는 (present verb), -(으)ㄴ (past verb or adjective), -(으)ㄹ (future), -던 (recalled/incomplete); 어제 간 카페 not 어제 가는 카페.",
+    "Indirect questions: -는지 after verbs, -(으)ㄴ지 after adjectives, (이)ㄴ지 after nouns, -(으)ㄹ지 for uncertain future; 언제인지 not 언제는지.",
+    "안 vs 못: inability in P3/P9 refusals needs 못.",
+    "-고 있어요 (progressive) vs -아/어 있어요 (resultant state): 문이 열려 있어요 not 열고 있어요.",
+    "Topic/subject switch inside narration: 저는 ... 그런데 버스가 ... keep 이/가 for newly introduced actors.",
+    "Honorific direction pair: learner offering own action uses humble 드리다 with the learner as subject (내일 다시 연락 드릴게요); learner asking the other person uses -(으)시-/주시- with that person as subject (내일 다시 연락 주시겠어요?). Wrong in learner lines: 제가 연락 드리세요 (imperative aimed at self) and 제가 내일 오세요 (-(으)시- on self). Correct staff line: 내일 오시면 연락 주세요.",
+    "Spacing traps: 것 같아요, 수 있어요, 한 지, 할 수밖에, 못 해요; -곤 했어요 attaches to the stem.",
+    "Double past -았/었었어요 only for states no longer true; not a generic strong past.",
+    "Trophy false substrings: 일/일정, 강/강남, 차/차이, 방/방학; validator requires declared surface eojeol.",
+    "Base-text rendering of -(으)ㄴ/는 것 같아요: choose by context among German scheint/wohl/wahrscheinlich/ich glaube/ich denke and English seems/I think/probably; all mark uncertain assessment and are acceptable when they hedge accurately. Ban only mechanical calques that shift meaning (a flat ich denke, dass where the Korean reports a sensory impression, or ich glaube where the Korean asserts a known fact).",
+    "Caption must quote only the opening; openings must not leak the complication of turn three."
+  ],
+  "mechanicalValidationRules": [
+    "Exactly 10 paths, ids korean-b1-* , 10 lessons each; all 100 trophies unique under NFC+casefold against each other and the full A1+A2 trophy list.",
+    "dialogue is tuple4 them/learner/them/learner, every targetText non-empty, every baseText has both de and en.",
+    "First reply 6-12 eojeol; second reply 5-9 eojeol; opening and follow-up 4-10 eojeol; eojeol counted by splitting on single spaces with punctuation left attached (가능할까요? is one eojeol); chunk reconstruction keeps punctuation verbatim.",
+    "chunks length 4-7, joined by one ASCII space equals dialogue[1].targetText exactly; terms 6-8 entries, each with de and en.",
+    "speakRequired has 3 distinct entries, each equal to a whole eojeol of dialogue[1].targetText after edge punctuation .?, is stripped from that eojeol; entries contain Hangul/digits only; none in the banned address list.",
+    "Cloze: 2-3 blanks, each kind form|connector|choice, exactly 4 choices, exactly one equals answer; form blanks carry cue (string only, German + English form label); connector and choice blanks carry no cue; every answer is a whole inflected lexical eojeol or a 1-3 eojeol phrase usable on its own, never a bare particle, pronoun, bound morpheme, bare stem or bare 것/분/곳; concatenated parts equal dialogue[3].targetText.",
+    "Recall before+answer+after equals dialogue[1].targetText; answer is one content eojeol; fallbackChoices 4 distinct including answer.",
+    "Pattern 2-3 examples; highlight is a contiguous substring of its targetText; at least one example equals dialogue[1] or dialogue[3] targetText.",
+    "trophyWord.word equals the lesson trophy; declared surface eojeol equals a whole eojeol (edge punctuation stripped) of dialogue[1].targetText and of trophyWord.example; surface minus canonical is empty or in the reviewed remainder list; no substring search.",
+    "Regex bans: sentence-final 반말 endings (어./아./야./지?/니?/자. without 요) on all four turns by explicit policy, -십시오, -습니다 except the four fixed chunks, romaji letters in targetText. Address-term check is exact-token per genderSafety, never substring. Honorific-direction checks (no -(으)시- with learner subject) run on learner turns only; staff -(으)시- toward the learner is expected.",
+    "pedagogicalGoal is a German string; situation and sceneCaption carry de and en; caption contains dialogue[0].targetText verbatim inside quotes.",
+    "Grammar-range gate: per-path staged forms may appear in learner turns only from their productive lesson range onward, or anywhere once an earlier path has made them productive; recognition-only forms appear in interlocutor turns only; P9/P10 learner turns use only families already productive in P1-P8."
+  ],
+  "semanticReviewRules": [
+    "Particle correctness (이/가, 을/를, 은/는, 에/에서, 에게/께) checked line by line; colloquial omission allowed only where a native speaker would drop it in speech.",
+    "Each follow-up (turn three) adds new information or a real counter-offer; it may not restate the opening.",
+    "Learner never states what staff decide; acceptance in C paths always modifies something (time, size, quantity, method).",
+    "Cloze distractors must be either ungrammatical in slot or clearly wrong in context; no near-synonym also fits; recall distractors likewise.",
+    "German and English bases read as native speech, not glosses; concessive and background clauses rendered idiomatically.",
+    "Register coherence per lesson: same interlocutor relationship across all four turns; friend paths stay warm but 요-form.",
+    "Trophy meaning taught is the sense used in the line; whyThisWord explains reuse value in both bases.",
+    "Numbers, times and prices realistic for Korea in 2026.",
+    "Recycled A2 vocabulary may appear freely in text; only trophies are uniqueness-gated."
+  ],
+  "requiredSchemaExtensions": [
+    "trophyWord.surface (optional reviewed extension): {core: string, example: string} explicit surface eojeol for the first reply and the example; validator matches whole eojeol after edge punctuation stripping, no substring heuristics.",
+    "trophyWord.remainder (optional reviewed extension): string list of allowed surface-minus-canonical remainders for this lesson (particles/copula/하다-inflection); absent or empty means exact bare form.",
+    "acceptedPhraseVariants (optional reviewed extension): explicit alternative first-reply strings per lesson (spacing/contraction/numeral), no generated variants, matched whole-eojeol after edge punctuation stripping.",
+    "Cloze stays {kind, answer, cue?: string, choices[4]}: form blanks carry a cue string like 'Hintergrund -는데 / background -는데'; connector and choice blanks carry no cue; answers are whole inflected eojeol or 1-3 eojeol phrases.",
+    "Dialogue stays the existing tuple4 with roles fixed by index (them/you/them/you); no role field is added.",
+    "Validator config, not lesson schema: the ko-KR language validator config sets its length unit to eojeol so the shared range checks count eojeol instead of Latin words.",
+    "Speech config for B1 keeps the existing values (threshold 0.65, 15 s window) unchanged; an optional pilot flag may log durations, no numeric change before measured data."
+  ],
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Mein Wochenende erzählen / Narrating my days",
+      "anchor": "Monday small talk with a colleague, mailbox chat with a neighbor, language-exchange catch-up",
+      "register": "colleague/neighbor 해요체, listener asks interested questions",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-는데 background clause, connectors 그런데/그래서, A2 past",
+          "recognitionOnly": "-다가"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)ㄹ 때, -고 나서",
+          "recognitionOnly": "-(으)ㄴ 지 ... 됐어요"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-다가 interrupted action",
+          "recognitionOnly": "-더라고요 in listener line"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "two-sentence connected narration chaining -는데/-(으)ㄹ 때/-다가 with 그때/결국",
+          "recognitionOnly": "-더니"
+        }
+      ],
+      "clozeSchema": "form blank on the narrative ending (-는데/-(으)ㄹ 때/-다가) with cue, connector blank 그런데/그래서/그리고/그래도, choice blank on a content noun or adverb",
+      "recycles": "A2 past -았/었어요, A2 time words, A2 transport and food vocabulary",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "갑자기",
+          "beat": "Colleague asks about weekend; hike where rain suddenly came; she asks what you did next."
+        },
+        {
+          "number": 2,
+          "trophy": "그동안",
+          "beat": "Neighbor back from trip asks for news; summarize meanwhile; she asks about the festival."
+        },
+        {
+          "number": 3,
+          "trophy": "처음",
+          "beat": "Partner asks about new restaurant; first visit, long wait; partner asks whether worth it."
+        },
+        {
+          "number": 4,
+          "trophy": "마지막",
+          "beat": "Colleague asks how trip ended; last day leaving hotel; he asks about the flight."
+        },
+        {
+          "number": 5,
+          "trophy": "결국",
+          "beat": "Friend asks about lost card; searched, finally found at cafe; asks when exactly."
+        },
+        {
+          "number": 6,
+          "trophy": "다행히",
+          "beat": "Coworker asks about clinic visit; long wait, luckily nothing serious; asks about rest days."
+        },
+        {
+          "number": 7,
+          "trophy": "혼자",
+          "beat": "Neighbor asks about holiday; alone at home then joined friends; asks what you cooked."
+        },
+        {
+          "number": 8,
+          "trophy": "금방",
+          "beat": "Colleague asks about late arrival; bus delayed then came quickly; asks which route."
+        },
+        {
+          "number": 9,
+          "trophy": "오래",
+          "beat": "Partner asks about old friend; met after long time while shopping; asks what you discussed."
+        },
+        {
+          "number": 10,
+          "trophy": "계속",
+          "beat": "Coworker asks about plans outcome; rain kept falling, stayed in; asks movie recommendation."
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Meinung mit Einschränkung / Opinion with concession",
+      "anchor": "workplace book-and-film club, team lunch decisions, neighbor comparisons",
+      "register": "colleague/club 해요체, hedged opinions",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-(으)ㄴ/는 것 같아요 plus -지만",
+          "recognitionOnly": "-기는 하지만"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-기는 하지만 / -기는 한데",
+          "recognitionOnly": "-아/어도"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-아/어도 concession",
+          "recognitionOnly": "-는데도"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "opinion + -(으)ㄴ/는데도 + conclusion 그래도/역시",
+          "recognitionOnly": "-더라도"
+        }
+      ],
+      "clozeSchema": "form blank on the concessive ending with cue, answer a whole inflected eojeol or 1-3 eojeol phrase carrying the ending (재미있기는 한데, 비싸도), never a bare stem or detached suffix; connector blank 그래도/하지만/그래서/그러면; choice blank on the evaluative adjective as a whole inflected eojeol in context (맛있어요, 느린)",
+      "recycles": "P1 -는데 background, A2 comparison 더/제일, A2 food and place vocabulary",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "아마",
+          "beat": "Team asks lunch spot; probably new place good but far; colleague asks how far."
+        },
+        {
+          "number": 2,
+          "trophy": "사실",
+          "beat": "Club leader asks about novel; actually long but moving; leader asks favorite part."
+        },
+        {
+          "number": 3,
+          "trophy": "솔직히",
+          "beat": "Colleague asks about presentation; honestly fine but too fast; she asks what to improve."
+        },
+        {
+          "number": 4,
+          "trophy": "별로",
+          "beat": "Friend asks about film; not really funny though actors good; asks about ending."
+        },
+        {
+          "number": 5,
+          "trophy": "훨씬",
+          "beat": "Neighbor compares markets; far one much cheaper but crowded; asks best time."
+        },
+        {
+          "number": 6,
+          "trophy": "물론",
+          "beat": "Club asks about sequel; of course interesting but repetitive; member asks whether to recommend."
+        },
+        {
+          "number": 7,
+          "trophy": "오히려",
+          "beat": "Coworker suggests earlier meeting; earlier actually harder even if short; asks alternative time."
+        },
+        {
+          "number": 8,
+          "trophy": "그래도",
+          "beat": "Friend says concert expensive; agree, still worth going even so; asks ticket timing."
+        },
+        {
+          "number": 9,
+          "trophy": "역시",
+          "beat": "Team reviews cafe trial; as expected tasty though service slow; manager asks keep it?"
+        },
+        {
+          "number": 10,
+          "trophy": "특히",
+          "beat": "Club votes next book; prefer essays, especially humor, despite length; leader asks why."
+        }
+      ]
+    },
+    {
+      "pathNumber": 3,
+      "title": "Höfliche Bitten, Was-wäre-wenn / Soft requests and hypotheticals",
+      "anchor": "gym desk, phone shop, building management office, library, school office, rental agent",
+      "register": "service 해요체 with 드리다/주시다 direction; staff decide",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-(으)면 ... -(으)ㄹ 수 있을까요?",
+          "recognitionOnly": "-(으)면 좋겠어요"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-아/어 주시면 안 될까요?, -(으)면 좋겠어요 (주시면 is a fixed request frame with the other person as subject, licensed by registerPolicy; not a general -(으)시- conditional)",
+          "recognitionOnly": "-(으)ㄹ 것 같은데요"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-(으)ㄹ 것 같은데요 as soft counter-proposal, -아/어 주시겠어요? polite request (연장해 주시겠어요?)",
+          "recognitionOnly": "staff -(으)시면 on non-주다 verbs (오시면, 필요하시면)"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "full negotiation 그러면/대신 + accept with modified detail",
+          "recognitionOnly": "-(으)ㄹ 테니까"
+        }
+      ],
+      "clozeSchema": "form blank on the conditional or request ending with cue, connector blank 그러면/대신/그래도/그런데, choice blank on the modified detail (time, size, quantity)",
+      "recycles": "A2 -(으)ㄹ까요 proposals, A2 주세요 requests, A2 prices and days",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "혹시",
+          "beat": "Gym desk explains schedule; perhaps evening class possible?; waitlist offered; accept with time condition."
+        },
+        {
+          "number": 2,
+          "trophy": "만약",
+          "beat": "Phone shop explains plan; what if cancel early?; fee named; accept smaller plan instead."
+        },
+        {
+          "number": 3,
+          "trophy": "가능",
+          "beat": "Management office about parcel; evening pickup possible?; until seven offered; agree six-thirty."
+        },
+        {
+          "number": 4,
+          "trophy": "대신",
+          "beat": "Cafe confirms reservation; window seat instead if free?; later slot offered; accept."
+        },
+        {
+          "number": 5,
+          "trophy": "미리",
+          "beat": "School office mentions exam room; notify in advance if changed?; text message offered; agree."
+        },
+        {
+          "number": 6,
+          "trophy": "잠시",
+          "beat": "Bank desk busy; leave bag briefly while copying?; locker suggested; accept locker."
+        },
+        {
+          "number": 7,
+          "trophy": "연장",
+          "beat": "Library about due book; extension possible?; one week offered; ask two, accept one."
+        },
+        {
+          "number": 8,
+          "trophy": "할인",
+          "beat": "Clerk mentions sale; discount on this coat?; partial discount offered; accept it."
+        },
+        {
+          "number": 9,
+          "trophy": "환불",
+          "beat": "Store desk about shoes; refund possible?; exchange offered instead; accept exchange, new size."
+        },
+        {
+          "number": 10,
+          "trophy": "연락",
+          "beat": "Rental agent plans repair visit; contact beforehand please; morning proposed; agree afternoon call."
+        }
+      ]
+    },
+    {
+      "pathNumber": 4,
+      "title": "Beschreiben und Wiedererkennen / Describing and identifying",
+      "anchor": "reception and lost-and-found desks, real-estate agent, meeting points with friends",
+      "register": "service and friend 해요체, descriptive answers",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-는 N (present verb), -(으)ㄴ N (adjective)",
+          "recognitionOnly": "-(으)ㄴ N (past verb)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)ㄴ N past, -(으)ㄹ N future",
+          "recognitionOnly": "-던 N"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-던 N recalled",
+          "recognitionOnly": "-았/었던 N"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "-았/었던 N recalled-completed (부산에서 샀던 열쇠고리) + stacked modifiers with 것/분/곳",
+          "recognitionOnly": "-(으)ㄴ/는 데 (place)"
+        }
+      ],
+      "clozeSchema": "form blank on the modifier ending (-는/-(으)ㄴ/-(으)ㄹ/-던) with cue, answer a whole inflected eojeol or 1-3 eojeol phrase (어제 간, 창문이 큰); choice blank on the described feature or on the full head phrase (안경 쓴 분, 큰 창문이 있는 방), never bare 것/분/곳 alone; optional connector 그리고/그런데",
+      "recycles": "A2 colors and sizes, A2 location words, P1 past narration",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "안경",
+          "beat": "Reception asks who you meet; colleague wearing glasses, blue coat; asks which seat."
+        },
+        {
+          "number": 2,
+          "trophy": "가방",
+          "beat": "Lost-and-found asks item; bag with many pockets; staff asks what was inside."
+        },
+        {
+          "number": 3,
+          "trophy": "창문",
+          "beat": "Agent asks preferences; room with big windows; agent asks preferred floor."
+        },
+        {
+          "number": 4,
+          "trophy": "위치",
+          "beat": "Friend asks cafe choice; the one visited yesterday, good location; asks opening hours."
+        },
+        {
+          "number": 5,
+          "trophy": "교통",
+          "beat": "Agent asks area; neighborhood with easy transport where you worked before; asks budget."
+        },
+        {
+          "number": 6,
+          "trophy": "분위기",
+          "beat": "Colleague asks farewell dinner place; warm-atmosphere restaurant we visited; asks group size."
+        },
+        {
+          "number": 7,
+          "trophy": "입구",
+          "beat": "Friend asks meeting point; the entrance we used last time; asks what time."
+        },
+        {
+          "number": 8,
+          "trophy": "건물",
+          "beat": "Courier asks address; building that used to be a bank; asks which floor."
+        },
+        {
+          "number": 9,
+          "trophy": "모양",
+          "beat": "Lost-and-found asks item; round-shaped keyring bought in Busan; asks when lost."
+        },
+        {
+          "number": 10,
+          "trophy": "색깔",
+          "beat": "Acquaintance arrives; recognized by jacket color described earlier; she asks how you knew."
+        }
+      ]
+    },
+    {
+      "pathNumber": 5,
+      "title": "Indirekt nachfragen / Indirect inquiries",
+      "anchor": "new-job onboarding, city office, university desk, bank, clinic",
+      "register": "service/colleague 해요체 with 아세요?/모르겠어요 hedges",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "question word + -는지 아세요?/알아요?",
+          "recognitionOnly": "-(으)ㄴ지 (adjective)"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)ㄴ지 / (이)ㄴ지, -는지 모르겠어요",
+          "recognitionOnly": "-(으)ㄹ지"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-(으)ㄹ지 모르겠어요 / 궁금해요",
+          "recognitionOnly": "-는지 물어보다"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "reporting the inquiry -는지 물어봤는데 + resolution",
+          "recognitionOnly": "-냐고 (staff report)"
+        }
+      ],
+      "clozeSchema": "form blank on the embedded question ending with cue, choice blank on the question word 언제/어디서/어떻게/얼마나, connector 그런데/그러면/그래서",
+      "recycles": "P3 -(으)ㄹ 수 있을까요, A2 shop and office vocabulary",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "방법",
+          "beat": "Colleague offers help; ask how transit card application works; needs ID; ask alternative."
+        },
+        {
+          "number": 2,
+          "trophy": "이유",
+          "beat": "Admin says class canceled; ask if reason known; unknown; ask when announced."
+        },
+        {
+          "number": 3,
+          "trophy": "일정",
+          "beat": "Coworker mentions training; ask whether schedule known; changed; ask new date."
+        },
+        {
+          "number": 4,
+          "trophy": "마감",
+          "beat": "Office asks about form; ask when deadline is; was yesterday; ask extension."
+        },
+        {
+          "number": 5,
+          "trophy": "신청",
+          "beat": "University desk; ask whether online application works; site down; ask paper option."
+        },
+        {
+          "number": 6,
+          "trophy": "서류",
+          "beat": "Bank clerk; ask what documents needed; one missing; ask if copy acceptable."
+        },
+        {
+          "number": 7,
+          "trophy": "요금",
+          "beat": "Phone shop; ask how much monthly fee might be; depends; ask cheapest plan."
+        },
+        {
+          "number": 8,
+          "trophy": "기간",
+          "beat": "City office; ask how long processing might take; longer now; ask express option."
+        },
+        {
+          "number": 9,
+          "trophy": "조건",
+          "beat": "Gym desk; report asked earlier whether pause allowed; conditions clarified; accept them."
+        },
+        {
+          "number": 10,
+          "trophy": "순서",
+          "beat": "Clinic desk; ask how order works; number system; admit asked wrong desk; thank."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": "Schritt für Schritt und Ergebnis / Processes and results",
+      "anchor": "cooking class, furniture assembly with neighbor, IT setup at work, move-in tasks",
+      "register": "instructor/neighbor/colleague 해요체, process reports",
+      "episodeShape": "A",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-아/어서 sequence, -(으)ㄴ 다음에",
+          "recognitionOnly": "-아/어 놓다"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-아/어 놓다/두다",
+          "recognitionOnly": "-아/어 있다"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-아/어 있다 resultant state",
+          "recognitionOnly": "-게 되었어요, -(으)면서"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "-게 되었어요 + -(으)면서 simultaneous action (짐을 정리하면서 이웃분들을 만났어요) + full process report",
+          "recognitionOnly": "-아/어지다"
+        }
+      ],
+      "clozeSchema": "form blank on sequence or state ending with cue, answer a whole inflected eojeol or 1-3 eojeol phrase (씻어서, 열려 있어요, 놓아 뒀어요), never a bare stem; connector blank 그런데/그래서/그다음에; choice blank on the process verb as a whole inflected eojeol",
+      "recycles": "P1 -고 나서, A2 object counting, A2 household vocabulary",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "재료",
+          "beat": "Instructor asks progress; washed ingredients then cut; stove not working; ask other burner."
+        },
+        {
+          "number": 2,
+          "trophy": "준비",
+          "beat": "Neighbor asks assembly; preparation done after reading manual; screw missing; ask spare."
+        },
+        {
+          "number": 3,
+          "trophy": "설치",
+          "beat": "IT asks printer; installed after download; still offline; ask network setting."
+        },
+        {
+          "number": 4,
+          "trophy": "조립",
+          "beat": "Neighbor checks shelf; assembled and placed by wall; wobbly; ask how to fix."
+        },
+        {
+          "number": 5,
+          "trophy": "정리",
+          "beat": "Manager asks desk; files tidied into drawer; one missing; ask where else."
+        },
+        {
+          "number": 6,
+          "trophy": "설정",
+          "beat": "Colleague asks phone; settings changed and saved; language reverted; ask reset method."
+        },
+        {
+          "number": 7,
+          "trophy": "확인",
+          "beat": "Instructor asks oven; checked, door left open; asks temperature now."
+        },
+        {
+          "number": 8,
+          "trophy": "저장",
+          "beat": "Coworker asks file; saved and attached; attachment missing; offer resend."
+        },
+        {
+          "number": 9,
+          "trophy": "완성",
+          "beat": "Instructor asks dish; completed and plated; too salty; ask fix."
+        },
+        {
+          "number": 10,
+          "trophy": "마무리",
+          "beat": "Neighbor asks move-in; finishing done, met neighbors; elevator broken; ask stairs access."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": "Pläne, Zwecke, Bedingungen / Purpose, plans, conditions",
+      "anchor": "running coach, colleague planning, mentor, rental agent, course office",
+      "register": "friend/colleague/coach 해요체, cooperative planning",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-(으)려고 해요 / -(으)려고",
+          "recognitionOnly": "-(으)려면"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)려면 ... -아/어야 돼요",
+          "recognitionOnly": "-기 위해서"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-기 위해서, -(으)ㄹ 계획이에요",
+          "recognitionOnly": "-(으)ㄹ 예정이에요, -기로 했어요"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "-기로 했어요 / accepted plan -기로 해요 (일주일에 두 번 하기로 해요), -(으)ㄹ 예정이에요, combined with condition + purpose and accept-modify",
+          "recognitionOnly": "-도록"
+        }
+      ],
+      "clozeSchema": "form blank on purpose/condition ending with cue, connector blank 그러면/그래서/대신/그래도, choice blank on frequency or time detail",
+      "recycles": "P3 negotiation moves, P2 concession, A2 future -(으)ㄹ 거예요",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "목표",
+          "beat": "Coach asks goal; set target to run five kilometers; suggests mornings; accept weekends."
+        },
+        {
+          "number": 2,
+          "trophy": "건강",
+          "beat": "Colleague proposes late dinner; eating early because of health (건강 때문에, not 위해서 yet); suggests weekend; accept."
+        },
+        {
+          "number": 3,
+          "trophy": "자격증",
+          "beat": "Friend suggests May trip; getting certificate first; suggests June; accept June."
+        },
+        {
+          "number": 4,
+          "trophy": "면접",
+          "beat": "Mentor offers help; to pass interview must practice; proposes daily; accept three weekly."
+        },
+        {
+          "number": 5,
+          "trophy": "저축",
+          "beat": "Friend suggests costly trip; must save first; cheaper option proposed; agree."
+        },
+        {
+          "number": 6,
+          "trophy": "휴가",
+          "beat": "Manager asks leave; to take vacation must finish report; earlier date proposed; accept."
+        },
+        {
+          "number": 7,
+          "trophy": "이사",
+          "beat": "Agent asks timing; moving to be near work; month-end proposed; accept early next."
+        },
+        {
+          "number": 8,
+          "trophy": "등록",
+          "beat": "Course office suggests class; registering for test prep; intensive proposed; accept evening."
+        },
+        {
+          "number": 9,
+          "trophy": "열심히",
+          "beat": "Teammate proposes study group; join to study hard; daily proposed; accept twice weekly."
+        },
+        {
+          "number": 10,
+          "trophy": "일찍",
+          "beat": "Partner suggests late start; prefer early to avoid traffic; compromise proposed; accept."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": "Früher und heute / Then and now",
+      "anchor": "neighbor friend over photos, hometown chat, language partner, routines",
+      "register": "warm friend 해요체, reflective",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "예전에는 ... -았/었어요 vs 지금은 ... -아/어요 contrast",
+          "recognitionOnly": "-곤 했어요"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-곤 했어요",
+          "recognitionOnly": "-았/었었어요, -(으)ㄴ 지 ... 됐어요"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-(으)ㄹ 때마다, -았/었었어요, -(으)ㄴ 지 ... 됐어요 (학생 때부터 커피를 마신 지 10년 됐어요)",
+          "recognitionOnly": "-더라고요 in listener line (recognition-only throughout B1)"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "full then-vs-now with -게 되었어요 (P6) and -았/었던 N (P4): 방학 때마다 갔던 할머니 집",
+          "recognitionOnly": "-(으)ㄹ 줄 몰랐어요"
+        }
+      ],
+      "clozeSchema": "form blank on habit/past ending with cue, connector blank 그런데/지금은/그래서/그때는, choice blank on frequency adverb",
+      "recycles": "P1 narration, P4 -던, P6 -게 되었어요, A2 hobbies",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "예전",
+          "beat": "Friend shows photo; back then lived by sea, now city; asks if you miss it."
+        },
+        {
+          "number": 2,
+          "trophy": "옛날",
+          "beat": "Friend asks childhood food; old-time snacks; asks whether you still eat them."
+        },
+        {
+          "number": 3,
+          "trophy": "고향",
+          "beat": "Friend asks hometown; small town, hiked often; asks how often you visit."
+        },
+        {
+          "number": 4,
+          "trophy": "추억",
+          "beat": "Friend asks school days; many memories, used to play soccer; asks still play."
+        },
+        {
+          "number": 5,
+          "trophy": "가끔",
+          "beat": "Friend asks cooking; mother used to cook, now you sometimes; asks which dish."
+        },
+        {
+          "number": 6,
+          "trophy": "자주",
+          "beat": "Friend asks reading; used to read often; asks why you stopped."
+        },
+        {
+          "number": 7,
+          "trophy": "거의",
+          "beat": "Friend asks TV; almost never watched before; asks what you watch now."
+        },
+        {
+          "number": 8,
+          "trophy": "최근",
+          "beat": "Friend asks weekends; recently changed to hiking every weekend; asks why."
+        },
+        {
+          "number": 9,
+          "trophy": "습관",
+          "beat": "Friend asks mornings; coffee habit since student days; asks about tea."
+        },
+        {
+          "number": 10,
+          "trophy": "방학",
+          "beat": "Friend asks summer breaks; every break visited grandmother; asks what now."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": "Beschwerde und Lösung / Complaint and resolution capstone",
+      "anchor": "building management office, customer service, rental agent, courier, shop",
+      "register": "polite complaint 해요체, softened openings, staff decide remedies",
+      "episodeShape": "C",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "-는데요 / -(으)ㄴ 것 같은데요 (P2, P3) + -아/어 주시겠어요? (P3 L7-8), all recycled",
+          "recognitionOnly": "-(으)ㄹ 수밖에 없어요"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)ㄴ 지 ... 됐어요 (P8 L7-8) with -아/어 있어요 (P6) recycled",
+          "recognitionOnly": "-(으)ㄹ게요 (staff promise)"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "counter-proposal 그러면/대신 + -(으)면 안 될까요 (P3) recycled",
+          "recognitionOnly": "-다고 하다 reported speech"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "complaint + -는데도 (P2) + -는지 (P5) + accepted remedy, all recycled",
+          "recognitionOnly": "-더라고요 in staff recounting"
+        }
+      ],
+      "clozeSchema": "form blank on softened or duration ending with cue, connector blank 그러면/그래도/대신/그래서, choice blank on remedy detail",
+      "recycles": "P3 requests, P5 indirect questions, P6 result states, P2 concession",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "소음",
+          "beat": "Office asks issue; construction noise since morning; notice offered; ask schedule."
+        },
+        {
+          "number": 2,
+          "trophy": "고장",
+          "beat": "Agent asks; heater seems broken; Friday visit offered; ask earlier, accept Thursday."
+        },
+        {
+          "number": 3,
+          "trophy": "공사",
+          "beat": "Office asks; hallway construction blocks door; moving materials offered; agree."
+        },
+        {
+          "number": 4,
+          "trophy": "냄새",
+          "beat": "Office asks; hallway smell for three days; check tomorrow offered; accept."
+        },
+        {
+          "number": 5,
+          "trophy": "불편",
+          "beat": "Service asks; inconvenient since app update week ago; guide offered; accept."
+        },
+        {
+          "number": 6,
+          "trophy": "실수",
+          "beat": "Shop asks; mistaken charge on receipt; card refund offered; accept."
+        },
+        {
+          "number": 7,
+          "trophy": "해결",
+          "beat": "Courier asks; parcel missing two days; reship offered; ask faster option."
+        },
+        {
+          "number": 8,
+          "trophy": "점검",
+          "beat": "Office asks; low water pressure; next-week inspection offered; ask sooner, accept."
+        },
+        {
+          "number": 9,
+          "trophy": "교체",
+          "beat": "Shop asks; defective charger; repair offered; ask replacement; accept."
+        },
+        {
+          "number": 10,
+          "trophy": "조치",
+          "beat": "Office asks; recurring elevator failure; meeting offered; accept with date."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": "Mein Jahr und was kommt / The year told, the year ahead",
+      "anchor": "year-end chats with colleague, friend, language partner, mentor",
+      "register": "reflective colleague/friend 해요체",
+      "episodeShape": "B",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "P1 narration + -았/었던 N (P4 L9-10) recycled",
+          "recognitionOnly": "-더라고요 in listener line"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "-(으)면서 (P6 L9-10) + -게 되었어요 (P6, P8) recycled",
+          "recognitionOnly": "-(으)ㄹ 줄 몰랐어요"
+        },
+        {
+          "lessons": "7-8",
+          "productive": "-기로 했어요 (P7 L9-10) + -(으)ㄹ 것 같아요 (P2) recycled",
+          "recognitionOnly": "-다고 하다 reported speech"
+        },
+        {
+          "lessons": "9-10",
+          "productive": "-(으)ㄹ 예정이에요 (P7 L9-10) + full year story and plans, only P1-P8 families",
+          "recognitionOnly": "-(으)ㄹ 테니까"
+        }
+      ],
+      "clozeSchema": "form blank on recalled or plan ending with cue, connector blank 그래서/그리고/그런데/그래도, choice blank on season or month",
+      "recycles": "all P1-P9 families, A2 future and seasons",
+      "lessons": [
+        {
+          "number": 1,
+          "trophy": "올해",
+          "beat": "Colleague asks best memory this year; spring trip taken; asks where."
+        },
+        {
+          "number": 2,
+          "trophy": "작년",
+          "beat": "Friend compares with last year; hard job then, easier now; asks how."
+        },
+        {
+          "number": 3,
+          "trophy": "가을",
+          "beat": "Partner asks favorite season; autumn hike you took; asks for photos."
+        },
+        {
+          "number": 4,
+          "trophy": "겨울",
+          "beat": "Colleague asks winter plans; studying Korean while working; asks which class."
+        },
+        {
+          "number": 5,
+          "trophy": "경험",
+          "beat": "Mentor asks lessons learned; presenting while nervous; asks for tips."
+        },
+        {
+          "number": 6,
+          "trophy": "변화",
+          "beat": "Friend asks changes; started cooking while living alone; asks signature dish."
+        },
+        {
+          "number": 7,
+          "trophy": "도전",
+          "beat": "Partner asks challenges; decided to try the exam; asks when."
+        },
+        {
+          "number": 8,
+          "trophy": "보람",
+          "beat": "Colleague asks volunteering; rewarding though tiring, decided to continue; asks frequency."
+        },
+        {
+          "number": 9,
+          "trophy": "다음",
+          "beat": "Friend asks plans; next month moving, already planned; asks if help needed."
+        },
+        {
+          "number": 10,
+          "trophy": "새해",
+          "beat": "Colleague asks new year wishes; trip and health planned; asks which first."
+        }
+      ]
+    }
+  ],
+  "unresolvedDecisions": []
+}

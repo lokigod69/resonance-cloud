@@ -1,0 +1,1206 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "English",
+  "code": "en-US",
+  "level": "B2",
+  "baseLocales": [
+    "de"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "values": [
+      "formal",
+      "neutral",
+      "informal"
+    ],
+    "formal": "course convention for formal you turns: no contractions, no gonna/wanna/kinda/gotta, full modal forms (I would, I will), formal lexis where a plain-register word competes (purchase/buy allowed either way, but no slang); sentence-final prepositions are native in every register and are never flagged; fronted forms (to whom, in which) are a taught option in L8-type lessons, not a rule",
+    "neutral": "contractions allowed (I'd, that's, doesn't), everyday lexis, no slang list items",
+    "informal": "contractions expected, phrasal verbs welcome (sort out, put off, go for), interjection openers allowed (Honestly, Look), slang list still limited to the approved informal set (kind of, a bit, no way)",
+    "stability": "all three you registers identical within every P1/P2 episode (registerPlan.mode constant); shift mode and relay reserved for later paths",
+    "themTurns": "interlocutor register follows the register chosen for the episode (in this course formal-role them turns use full forms and friend/neighbor them turns contract) so the learner hears the target register before producing it; this is an instructional choice, not a claim about how real speakers in those roles talk",
+    "grammarNote": "English marks register by contraction, modal choice and lexis, not by pronoun; registerPlan.registers carries the three string values above in place of Sie/du, field shape unchanged"
+  },
+  "genderSafety": {
+    "speakerGender": "neutral on all twenty lessons; no alternates objects anywhere in P1/P2",
+    "rule": "learner turns never contain gender-marked self-reference; them turns may address the learner only with you; gendered role nouns (chairman, waitress, policeman, spokesman) are banned in all turns and replaced by chair, server, officer, spokesperson; detector emits a warning, not an error, because some surface forms (host, actor) are neutral in US usage",
+    "canonicalGender": "omitted on every lesson (only required when marked)"
+  },
+  "orthography": {
+    "spelling": "US canonical (favor, center, organize, traveling, check, program, license); UK forms in canonical text are warnings; where a blank or recall answer has a UK spelling the author lists it explicitly in acceptedAnswers; nothing is expanded automatically",
+    "apostrophe": "U+2019 canonical in every targetText and chunk; apostrophe unification of learner input (U+0027, U+02BC) is a planned runtime-integration item, not present today, so authors list the U+0027 form of any answer containing an apostrophe in acceptedAnswers; validator rewrites nothing",
+    "numbers": "always words in voiced text (two hundred dollars, thirty percent, three days); digits are errors in any targetText, chunk, blank answer or example",
+    "dashes": "no em dashes in canonical text; use a comma, semicolon or colon so chunk boundaries stay inside the token rule",
+    "titles": "no periods after Mr/Ms in canonical text to avoid TTS pauses; prefer first names or roles"
+  },
+  "segmentation": {
+    "unit": "token = maximal run of letters and digits with internal apostrophes or hyphens; the space U+0020 is the joiner",
+    "contractions": "one token (I’d, don’t, that’s, we’ll); the apostrophe never opens a boundary",
+    "hyphens": "one token (trade-off, long-term, self-paced, on-site, part-time); a hyphenated trophy is therefore a legal single-token lemma",
+    "punctuation": "attached to the chunk it ends (whereas,); commas inside a chunk are allowed only when the chunk still has 1–4 tokens",
+    "lengths": "them 6–20, you1 14–26, build focus span 7–12, you2 12–24, you3 10–22; scale 1, no rounding"
+  },
+  "acceptedInput": {
+    "normalization": "planned (runtime integration, not yet implemented): NFC, trim, collapse spaces, lowercase (en-US), strip terminal . ! ? , ;, unify apostrophes, then compare; until it ships, drafts rely only on the explicit acceptedAnswers list and the existing comparison",
+    "variants": "nothing is auto-added; the author writes every accepted variant explicitly (draft acceptedAnswers: US form, UK form where one exists, U+0027 apostrophe form); plural/possessive variants are listed only when they are correct in the frame; the new English gate checks list structure, correctness stays with semantic review",
+    "registerBearing": "a contracted and an uncontracted form are never mutually accepted unless both are listed explicitly, because the contraction carries the register the blank is testing",
+    "chips": "visible chips must be semantically distinct after normalization; two chips that differ only by punctuation are a validator error (B2-EN-CHIP-DUP)"
+  },
+  "carriersStaged": {
+    "P1": [
+      {
+        "lessons": [
+          1
+        ],
+        "carriers": [
+          "on the one hand … on the other",
+          "whereas",
+          "far more than",
+          "the main advantage is that",
+          "granted, … but",
+          "on balance"
+        ],
+        "note": "concession opener granted and closing frame on balance are taught here because every later synthesis may require a closing frame"
+      },
+      {
+        "lessons": [
+          2
+        ],
+        "carriers": [
+          "since",
+          "so that",
+          "as a result",
+          "which means that",
+          "that’s true, but",
+          "even so"
+        ]
+      },
+      {
+        "lessons": [
+          3
+        ],
+        "carriers": [
+          "although / even though",
+          "admittedly",
+          "that said",
+          "arguably",
+          "I would argue that"
+        ]
+      },
+      {
+        "lessons": [
+          4
+        ],
+        "carriers": [
+          "third and mixed conditionals (if we had bought … we would be)",
+          "otherwise",
+          "in case",
+          "might well"
+        ]
+      },
+      {
+        "lessons": [
+          5
+        ],
+        "carriers": [
+          "I would expect",
+          "I’m not prepared to",
+          "unless",
+          "failing that"
+        ]
+      },
+      {
+        "lessons": [
+          6
+        ],
+        "carriers": [
+          "backshifted reported speech (said it was, told me they had)",
+          "regarding / as for",
+          "I would suggest"
+        ]
+      },
+      {
+        "lessons": [
+          7
+        ],
+        "carriers": [
+          "how about we",
+          "what if we",
+          "shall we",
+          "so we’re agreed that"
+        ]
+      },
+      {
+        "lessons": [
+          8
+        ],
+        "carriers": [
+          "in which / to whom relatives",
+          "what I mean is",
+          "by X I mean"
+        ]
+      },
+      {
+        "lessons": [
+          9
+        ],
+        "carriers": [
+          "let me finish",
+          "fair point, but",
+          "to be fair",
+          "nonetheless"
+        ],
+        "note": "first productive teaching of all four here; no earlier lesson models them, so the L9 challenge (them) opens the interruption and the learner answers with fair point, but / let me finish; nonetheless is the L9 trophy and may not appear in any earlier turn"
+      },
+      {
+        "lessons": [
+          10
+        ],
+        "carriers": [
+          "firstly / secondly",
+          "moreover",
+          "ultimately",
+          "the compromise I would recommend is"
+        ]
+      }
+    ],
+    "P2": [
+      {
+        "lessons": [
+          1
+        ],
+        "carriers": [
+          "because of / due to",
+          "which means that (recycled P1)",
+          "what I mean is (recycled P1)",
+          "in short"
+        ]
+      },
+      {
+        "lessons": [
+          2
+        ],
+        "carriers": [
+          "so that",
+          "in order to",
+          "consequently",
+          "the reason is that",
+          "to sum up"
+        ]
+      },
+      {
+        "lessons": [
+          3
+        ],
+        "carriers": [
+          "stems from",
+          "admittedly (recycled P1)",
+          "I would propose that",
+          "the client needs to hear that"
+        ]
+      },
+      {
+        "lessons": [
+          4
+        ],
+        "carriers": [
+          "modal passives (can be redeemed, must be used)",
+          "nominalization (expiry, activation)",
+          "in other words"
+        ]
+      },
+      {
+        "lessons": [
+          5
+        ],
+        "carriers": [
+          "in which relatives (recycled P1)",
+          "whereas (recycled P1)",
+          "the difference is that",
+          "on top of that"
+        ]
+      },
+      {
+        "lessons": [
+          6
+        ],
+        "carriers": [
+          "otherwise",
+          "in case",
+          "provided that",
+          "failing that (recycled P1)"
+        ]
+      },
+      {
+        "lessons": [
+          7
+        ],
+        "carriers": [
+          "third and mixed conditionals (recycled P1 L4)",
+          "even if I had",
+          "the assumption was that",
+          "might well"
+        ]
+      },
+      {
+        "lessons": [
+          8
+        ],
+        "carriers": [
+          "backshifted reported speech (recycled P1 L6)",
+          "regarding / as for",
+          "unless (recycled P1)"
+        ]
+      },
+      {
+        "lessons": [
+          9
+        ],
+        "carriers": [
+          "let me finish (recycled P1 L9)",
+          "fair point, but (recycled P1 L9)",
+          "to be fair (recycled P1 L9)",
+          "how about we (recycled P1 L7)"
+        ]
+      },
+      {
+        "lessons": [
+          10
+        ],
+        "carriers": [
+          "firstly / moreover / ultimately (recycled P1 L10)",
+          "as a consequence",
+          "for the record"
+        ]
+      }
+    ]
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": {
+        "de": "Optionen abwägen"
+      },
+      "function": {
+        "de": "Vor- und Nachteile von zwei oder drei Optionen vergleichen und eine begründet empfehlen"
+      },
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "you1 from whitelist; you2 from contract set, preferring concede/rebut/compare/counteroffer; you3 from contract set, conclude as default with propose/counteroffer where the steer invites a deal; constant register per episode: formal for agent/manager/committee, neutral for colleague/service/shop/mentor, informal for friend/neighbor",
+      "staging": [
+        {
+          "lessons": [
+            1,
+            2,
+            3
+          ],
+          "productive": [
+            "on the one hand … on the other",
+            "whereas",
+            "far more than",
+            "the main advantage is that",
+            "granted, … but",
+            "on balance",
+            "since",
+            "so that",
+            "as a result",
+            "which means that",
+            "that’s true, but",
+            "even so",
+            "although / even though",
+            "admittedly",
+            "that said",
+            "arguably",
+            "I would argue that"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "since",
+            "although",
+            "however",
+            "if",
+            "while",
+            "whether",
+            "which",
+            "who (all on the B1 ledger; recycled as carriers, never trophies)"
+          ],
+          "note": "each carrier is first taught productively in the lesson named in carriersStaged; no learner carrier is recognition-only in this band"
+        },
+        {
+          "lessons": [
+            4,
+            5,
+            6
+          ],
+          "productive": [
+            "third and mixed conditionals",
+            "otherwise",
+            "in case",
+            "might well",
+            "I would expect",
+            "I’m not prepared to",
+            "unless",
+            "failing that",
+            "backshifted reported speech",
+            "regarding / as for",
+            "I would suggest"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "if",
+            "would",
+            "could"
+          ],
+          "note": "how about we, shall we and in which are not modeled before L7/L8; they are first taught there"
+        },
+        {
+          "lessons": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "productive": [
+            "how about we",
+            "what if we",
+            "shall we",
+            "so we’re agreed that",
+            "in which / to whom relatives",
+            "what I mean is",
+            "by X I mean",
+            "let me finish",
+            "fair point, but",
+            "to be fair",
+            "nonetheless",
+            "firstly / secondly",
+            "moreover",
+            "ultimately",
+            "the compromise I would recommend is"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "which",
+            "who"
+          ]
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "rent-versus-commute",
+          "scene": "viewing a pricier downtown apartment; the leasing agent compares it with a cheaper one in the suburbs",
+          "interlocutor": "leasing agent",
+          "register": "formal",
+          "openingMove": "compare: on the one hand downtown costs far more, on the other the suburb means an hour on the train each way",
+          "challenge": "objection: are two hours a day really worth three hundred dollars a month?",
+          "answerMove": "concede: granted, the premium is steep, but the main advantage is that evenings stay free, and that matters far more than the number",
+          "steer": "bottom line: sign today or keep looking?",
+          "closingMove": "conclude: on balance the trade-off favors time, so I will take the downtown unit",
+          "trophyLemma": "trade-off",
+          "trophySurface": "trade-off",
+          "trophyFamilyKey": "trade-off",
+          "pos": "noun",
+          "requiredCarrier": "on the one hand … on the other; granted; on balance",
+          "recycles": [
+            "rent",
+            "expensive",
+            "cheaper",
+            "train"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "car-versus-transit",
+          "scene": "a colleague wants to carpool; you prefer the train for the daily commute",
+          "interlocutor": "colleague",
+          "register": "neutral",
+          "openingMove": "position: the train suits me, since I can work on the way, whereas the main drawback of driving is parking",
+          "challenge": "counter-example: the trains were canceled twice last week",
+          "answerMove": "rebut: that’s true, but one bad week doesn’t change the pattern; I lose twenty minutes a day hunting for a space, which means driving costs more time, not less",
+          "steer": "edge case: what if the company paid for parking?",
+          "closingMove": "conclude: even so, the train wins, as a result of the working time it gives back",
+          "trophyLemma": "drawback",
+          "trophySurface": "drawback",
+          "trophyFamilyKey": "drawback",
+          "pos": "noun",
+          "requiredCarrier": "since; which means that; as a result; that’s true, but",
+          "recycles": [
+            "whereas",
+            "traffic",
+            "canceled",
+            "faster"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "remote-versus-on-site",
+          "scene": "your manager reviews a request to work from home three days a week",
+          "interlocutor": "manager",
+          "register": "formal",
+          "openingMove": "position: I would argue that remote days produce more focused work, even though they cost some visibility",
+          "challenge": "objection: team cohesion suffers when half the team is at home",
+          "answerMove": "concede: admittedly, cohesion needs face time; that said, a fixed overlap day solves most of it",
+          "steer": "final condition: a minimum of three office days, non-negotiable?",
+          "closingMove": "counteroffer: two fixed office days with a shared core window, reviewed after a quarter",
+          "trophyLemma": "admittedly",
+          "trophySurface": "admittedly",
+          "trophyFamilyKey": "admit",
+          "pos": "adverb",
+          "requiredCarrier": "although/even though; admittedly; that said; I would argue",
+          "recycles": [
+            "focused",
+            "schedule",
+            "on the other hand"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "buy-versus-rent-equipment",
+          "scene": "at an equipment rental desk you decide whether to rent or buy a projector for a six-month project",
+          "interlocutor": "rental clerk",
+          "register": "neutral",
+          "openingMove": "reason: after six months of rental we’ll have paid the purchase price, so buying looks smarter",
+          "challenge": "constraint: the model is updated every year; if you had bought last year you’d be stuck with the old one now",
+          "answerMove": "rebut: even if that were true, a one-year-old model would still do the job; otherwise we’d be renting forever",
+          "steer": "edge case: what if the project ends after three months?",
+          "closingMove": "conclude: in case it ends early we might well resell it, so buying is worthwhile either way",
+          "trophyLemma": "worthwhile",
+          "trophySurface": "worthwhile",
+          "trophyFamilyKey": "worthwhile",
+          "pos": "adjective",
+          "requiredCarrier": "mixed conditional; otherwise; in case; might well",
+          "recycles": [
+            "cost",
+            "warranty",
+            "which means that"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "two-holiday-plans",
+          "scene": "a friend pushes a cheap mountain week by bus; you prefer four days at the coast by plane",
+          "interlocutor": "friend",
+          "register": "informal",
+          "openingMove": "compare: the mountains are cheaper, whereas the coast gives us actual rest",
+          "challenge": "refusal: no way I’m paying three hundred for a flight; the bus is ten hours, but it’s nearly free",
+          "answerMove": "counteroffer: I’m not prepared to spend ten hours on a bus each way; unless the Tuesday fare is gone, we fly and split the difference; failing that, a shorter coast trip",
+          "steer": "final condition: a hard cap of five hundred dollars each",
+          "closingMove": "conclude: I’d expect the coast to come in under that, and the rest we get outweighs the extra fare",
+          "trophyLemma": "outweigh",
+          "trophySurface": "outweighs",
+          "trophyFamilyKey": "weigh",
+          "pos": "verb",
+          "requiredCarrier": "I’d expect; I’m not prepared to; unless; failing that",
+          "recycles": [
+            "trip",
+            "expensive",
+            "on the one hand … on the other"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "cash-versus-app-payments",
+          "scene": "a shop owner you know asks whether to accept app payments or stay cash-only",
+          "interlocutor": "shop owner",
+          "register": "neutral",
+          "openingMove": "reason: regarding fees, the app takes two percent, whereas cash costs you counting time and bank runs",
+          "challenge": "reported objection: my accountant said cash was simpler and safer",
+          "answerMove": "rebut: she said it was simpler, but as for safety, a till full of cash is the bigger risk",
+          "steer": "audience: half the customers are older and distrust phones",
+          "closingMove": "propose: I would suggest keeping both for a year, so the convenience is there without forcing anyone",
+          "trophyLemma": "convenience",
+          "trophySurface": "convenience",
+          "trophyFamilyKey": "convenience",
+          "pos": "noun",
+          "requiredCarrier": "backshifted reported speech; regarding/as for; I would suggest",
+          "recycles": [
+            "pay",
+            "price",
+            "fee",
+            "admittedly"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "class-versus-app-learning",
+          "scene": "a friend says you should drop the evening language class and just use an app",
+          "interlocutor": "friend",
+          "register": "informal",
+          "openingMove": "compare: the app is cheaper and portable, whereas the class gives me real speaking practice",
+          "challenge": "objection: you can speak with the app too, and nobody notices when you skip",
+          "answerMove": "concede: true, but that’s exactly the point; the class gives me discipline that I don’t have alone",
+          "steer": "constraint: you only have two free evenings a week",
+          "closingMove": "counteroffer: what if we do the class on Tuesdays and the app the rest, so we’re agreed that neither gets dropped",
+          "trophyLemma": "discipline",
+          "trophySurface": "discipline",
+          "trophyFamilyKey": "discipline",
+          "pos": "noun",
+          "requiredCarrier": "what if we; so we’re agreed that (how about we and shall we appear as terms, not required)",
+          "recycles": [
+            "lesson",
+            "learn",
+            "that’s true, but"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "two-job-offers",
+          "scene": "a mentor helps you weigh a startup offer against a bank offer paying thirty percent more",
+          "interlocutor": "mentor",
+          "register": "neutral",
+          "openingMove": "position: arguably the startup, in which I’d lead a small team, offers more growth",
+          "challenge": "objection: growth doesn’t pay the rent; thirty percent is a lot of growth",
+          "answerMove": "rebut: by growth I mean skills I can sell later, something the bank managers, to whom I’d be one analyst in two hundred, won’t give me",
+          "steer": "edge case: could you go back and negotiate?",
+          "closingMove": "counteroffer: I’d go back to the startup and ask for equity, in which case the gap shrinks",
+          "trophyLemma": "arguably",
+          "trophySurface": "arguably",
+          "trophyFamilyKey": "argue",
+          "pos": "adverb",
+          "requiredCarrier": "in which; to whom; by X I mean (what I mean is appears as a term, not required)",
+          "recycles": [
+            "opportunity",
+            "I would argue",
+            "whereas"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "move-city-or-stay",
+          "scene": "a neighbor hears you might move to another city for a job and tries to talk you out of it",
+          "interlocutor": "neighbor",
+          "register": "informal",
+          "openingMove": "reason: the job is better, and since the rent there is lower I’d save, even though I’d lose the neighborhood",
+          "challenge": "interruption-objection: you’d lose your whole network, and networks take years",
+          "answerMove": "concede: fair point, but let me finish; to be fair, most of my network is online anyway",
+          "steer": "audience: what will you tell your parents, who’ll hate it?",
+          "closingMove": "conclude: nonetheless, I’ll tell them the move is the right call, and I’ll visit every month",
+          "trophyLemma": "nonetheless",
+          "trophySurface": "nonetheless",
+          "trophyFamilyKey": "nonetheless",
+          "pos": "connector",
+          "requiredCarrier": "let me finish; fair point, but; to be fair",
+          "recycles": [
+            "neighborhood",
+            "community",
+            "admittedly",
+            "that said"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "recommend-a-policy-option",
+          "scene": "a residents’ committee must pick one parking policy: a ban, paid permits, or no change",
+          "interlocutor": "committee chair",
+          "register": "formal",
+          "openingMove": "compare: firstly a ban is cleanest, moreover permits bring income, whereas doing nothing costs least but solves nothing",
+          "challenge": "objection: permits need staff and enforcement we cannot afford",
+          "answerMove": "rebut: that is true, but the fees cover the staff within a year, which a ban never does",
+          "steer": "summary: give the committee one recommendation to vote on",
+          "closingMove": "conclude: ultimately paid permits are the compromise I recommend, because they change behavior without a ban",
+          "trophyLemma": "compromise",
+          "trophySurface": "compromise",
+          "trophyFamilyKey": "compromise",
+          "pos": "noun",
+          "requiredCarrier": "firstly; moreover; ultimately",
+          "recycles": [
+            "permit",
+            "public",
+            "on balance",
+            "trade-off"
+          ]
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": {
+        "de": "Erklären, wie und warum"
+      },
+      "function": {
+        "de": "Ursachen, Folgen oder einen Ablauf ausführlich erklären und unter Nachfragen präzise bleiben"
+      },
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "you1 from whitelist (explain/reason/compare); you2 from contract set, preferring clarify/rebut/concede/compare; you3 summarize/conclude/propose; constant register per episode: formal for accountant/manager/expert/official, neutral for colleague/skeptic, informal for friend/neighbor/newcomer",
+      "staging": [
+        {
+          "lessons": [
+            1,
+            2,
+            3
+          ],
+          "productive": [
+            "because of / due to",
+            "which means that (recycled P1 L2)",
+            "what I mean is (recycled P1 L8)",
+            "in short",
+            "so that (recycled P1 L2)",
+            "in order to",
+            "consequently",
+            "the reason is that",
+            "to sum up",
+            "stems from",
+            "admittedly (recycled P1 L3)",
+            "I would propose that",
+            "the client needs to hear that"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "because",
+            "since",
+            "although",
+            "which"
+          ],
+          "note": "modal passives are first taught in L4; plain passives in them turns before L4 are B1 material, not a carrier"
+        },
+        {
+          "lessons": [
+            4,
+            5,
+            6
+          ],
+          "productive": [
+            "modal passives (can be redeemed, must be used)",
+            "nominalization (expiry, activation)",
+            "in other words",
+            "in which relatives (recycled P1 L8)",
+            "whereas (recycled P1 L1)",
+            "the difference is that",
+            "on top of that",
+            "otherwise (recycled P1 L4)",
+            "in case (recycled P1 L4)",
+            "provided that",
+            "failing that (recycled P1 L5)"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "if",
+            "which",
+            "cheaper"
+          ],
+          "note": "even if I had and the assumption was that are not modeled before L7; first taught there"
+        },
+        {
+          "lessons": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "productive": [
+            "third and mixed conditionals (recycled P1 L4)",
+            "even if I had",
+            "the assumption was that",
+            "might well (recycled P1 L4)",
+            "backshifted reported speech (recycled P1 L6)",
+            "regarding / as for (recycled P1 L6)",
+            "unless (recycled P1 L5)",
+            "let me finish / fair point, but / to be fair (recycled P1 L9)",
+            "how about we (recycled P1 L7)",
+            "firstly / moreover / ultimately (recycled P1 L10)",
+            "as a consequence",
+            "for the record"
+          ],
+          "recognitionOnly": [],
+          "earlierB1Recycling": [
+            "if",
+            "would",
+            "that"
+          ]
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "why-the-invoice-differs",
+          "scene": "your accountant asks why the supplier invoice is two hundred dollars above the quote",
+          "interlocutor": "accountant",
+          "register": "formal",
+          "openingMove": "explain: the difference is due to a rate change mid-month, which means the second half was billed at the new hourly rate",
+          "challenge": "precision request: which line exactly, and why was the change not announced?",
+          "answerMove": "clarify: what I mean is line three; the notice went to the old address, so nobody saw it",
+          "steer": "bottom line: can the discrepancy be corrected, or do we pay it?",
+          "closingMove": "summarize: in short, the discrepancy comes from one unannounced rate change, and I will request a credit for the notice failure",
+          "trophyLemma": "discrepancy",
+          "trophySurface": "discrepancy",
+          "trophyFamilyKey": "discrepancy",
+          "pos": "noun",
+          "requiredCarrier": "due to; which means that; what I mean is; in short",
+          "recycles": [
+            "bill",
+            "receipt",
+            "address",
+            "whereas"
+          ]
+        },
+        {
+          "number": 2,
+          "slug": "how-recycling-works",
+          "scene": "a newcomer in your building asks how the recycling works here; you explain the building’s own posted bin notice (a fictional house rule, not a general law)",
+          "interlocutor": "newcomer",
+          "register": "informal",
+          "openingMove": "explain: according to the notice in our bin room, paper goes in the blue bin so that it stays dry, plastics in the yellow one in order to keep the two streams separate",
+          "challenge": "counter-example: the guy upstairs throws greasy pizza boxes in blue and nobody cares",
+          "answerMove": "rebut: the hauler’s letter says grease contaminates the batch; consequently they can refuse the container and the building pays for an extra pickup",
+          "steer": "edge case: and glass with a lid still on?",
+          "closingMove": "summarize: to sum up, by our notice it’s lids off, grease out, and when in doubt ask the caretaker rather than guess",
+          "trophyLemma": "consequently",
+          "trophySurface": "consequently",
+          "trophyFamilyKey": "consequence",
+          "pos": "connector",
+          "requiredCarrier": "so that; in order to; consequently; to sum up",
+          "recycles": [
+            "clean",
+            "neighbor",
+            "because of"
+          ]
+        },
+        {
+          "number": 3,
+          "slug": "why-the-project-slipped",
+          "scene": "your manager wants the causal chain behind a two-week delay before a client call",
+          "interlocutor": "manager",
+          "register": "formal",
+          "openingMove": "reason: the delay stems from the vendor delivering late, which pushed testing into the holiday week, which halved our capacity",
+          "challenge": "objection: that sounds like a list of excuses rather than a cause",
+          "answerMove": "concede: admittedly, we underestimated testing time from the start; the vendor only made it visible",
+          "steer": "audience: say it the way the client needs to hear it",
+          "closingMove": "propose: I would propose that we tell the client the root cause was our estimate, and that the new date carries a buffer",
+          "trophyLemma": "underestimate",
+          "trophySurface": "underestimated",
+          "trophyFamilyKey": "underestimate",
+          "pos": "verb",
+          "requiredCarrier": "stems from; admittedly; I would propose that",
+          "recycles": [
+            "deadline",
+            "delayed",
+            "consequently"
+          ]
+        },
+        {
+          "number": 4,
+          "slug": "how-the-loyalty-scheme-works",
+          "scene": "a friend asks how the coffee chain’s points scheme actually works",
+          "interlocutor": "friend",
+          "register": "informal",
+          "openingMove": "explain: points are credited the day after a purchase and can be redeemed once you hit two hundred",
+          "challenge": "precision request: so how many coffees is two hundred points, and why the one-day delay?",
+          "answerMove": "clarify: in other words about twenty coffees; the delay is for refund checks, so a canceled order can’t earn anything",
+          "steer": "edge case: and if I don’t use them for a year?",
+          "closingMove": "summarize: to sum up, earn after a day, redeem at two hundred, and expiry after twelve months of inactivity",
+          "trophyLemma": "redeem",
+          "trophySurface": "redeemed",
+          "trophyFamilyKey": "redeem",
+          "pos": "verb",
+          "requiredCarrier": "modal passives; nominalization (expiry); in other words",
+          "recycles": [
+            "refund",
+            "coffee",
+            "so that"
+          ]
+        },
+        {
+          "number": 5,
+          "slug": "why-you-switched-providers",
+          "scene": "a neighbor asks why you left the internet provider everyone uses",
+          "interlocutor": "neighbor",
+          "register": "informal",
+          "openingMove": "reason: the old one had three outages a month, whereas the new one, which runs on fiber, hasn’t dropped once",
+          "challenge": "objection: the new one’s cheaper, so it’s probably worse",
+          "answerMove": "rebut: the difference is that they own the network in which our street’s cable runs, so they pay no rental fees to the old provider; cheap isn’t the cause here",
+          "steer": "final condition: but you’re locked in for two years?",
+          "closingMove": "conclude: on top of that there’s no contract, so if the outages come back I just leave",
+          "trophyLemma": "outage",
+          "trophySurface": "outages",
+          "trophyFamilyKey": "outage",
+          "pos": "noun",
+          "requiredCarrier": "in which relatives; whereas; the difference is that; on top of that",
+          "recycles": [
+            "connection",
+            "wi-fi",
+            "cheaper",
+            "in other words"
+          ]
+        },
+        {
+          "number": 6,
+          "slug": "how-to-appeal-a-fine",
+          "scene": "a colleague got a parking fine and asks what the notice itself says about appealing; you explain the process printed on that notice (a fictional issuer, not legal advice)",
+          "interlocutor": "colleague",
+          "register": "neutral",
+          "openingMove": "explain: the notice says you file the appeal online within its fourteen-day window, otherwise the reduced amount lapses; in case they ask for proof, keep the photos",
+          "challenge": "constraint: the deadline is Friday and the portal is down",
+          "answerMove": "compare: online is instant, whereas by mail the notice says they go by the postmark; provided that it’s stamped by Friday it should count, but confirm that on the number printed on the letter",
+          "steer": "summary: give me the three steps in order",
+          "closingMove": "summarize: firstly write the appeal, then attach the photos and send it through the portal; failing that, mail it and keep a dated receipt",
+          "trophyLemma": "appeal",
+          "trophySurface": "appeal",
+          "trophyFamilyKey": "appeal",
+          "pos": "noun",
+          "requiredCarrier": "otherwise; in case; provided that; failing that",
+          "recycles": [
+            "deadline",
+            "photo",
+            "evidence",
+            "firstly"
+          ]
+        },
+        {
+          "number": 7,
+          "slug": "why-the-plan-failed",
+          "scene": "a friend asks why your group trip collapsed a week before departure",
+          "interlocutor": "friend",
+          "register": "informal",
+          "openingMove": "reason: it failed because of one wrong assumption; we assumed everyone could pay in June, so we booked nothing refundable",
+          "challenge": "counter-example: if you’d booked earlier, the prices would’ve been fine",
+          "answerMove": "rebut: even if I had, two people still couldn’t pay; the assumption was that everyone had the money, and that was the problem, not the timing",
+          "steer": "lesson learned: what would you do differently?",
+          "closingMove": "conclude: next time we might well collect deposits first, so a dropout doesn’t sink the rest",
+          "trophyLemma": "assumption",
+          "trophySurface": "assumption",
+          "trophyFamilyKey": "assume",
+          "pos": "noun",
+          "requiredCarrier": "mixed conditional; even if I had; the assumption was that; might well",
+          "recycles": [
+            "trip",
+            "paid",
+            "consequently"
+          ]
+        },
+        {
+          "number": 8,
+          "slug": "how-the-appointment-process-works",
+          "scene": "a clinic coordinator has explained why your specialist booking was refused and now checks that you understood the clinic’s own booking rule (a fictional clinic policy, no medical advice)",
+          "interlocutor": "clinic coordinator",
+          "register": "formal",
+          "openingMove": "explain: as I understand it, a specialist slot can only be booked once a referral has been entered by a general practitioner",
+          "challenge": "precision request: what exactly did the receptionist tell you on the phone?",
+          "answerMove": "clarify: she said that a referral was required and that mine had not arrived, so I called my doctor that afternoon; regarding the timing, she said nothing",
+          "steer": "edge case: and what did you understand about urgent cases?",
+          "closingMove": "summarize: as for urgent cases, you said the practitioner can flag the referral, but unless that flag is set the request waits like any other",
+          "trophyLemma": "referral",
+          "trophySurface": "referral",
+          "trophyFamilyKey": "refer",
+          "pos": "noun",
+          "requiredCarrier": "backshifted reported speech; regarding / as for; unless",
+          "recycles": [
+            "doctor",
+            "appointment",
+            "modal passive"
+          ]
+        },
+        {
+          "number": 9,
+          "slug": "why-a-bike-scheme-matters",
+          "scene": "at a town meeting a skeptical neighbor asks why a bike-share scheme deserves public money; you argue from the pilot’s own survey (fictional figures)",
+          "interlocutor": "skeptical neighbor",
+          "register": "neutral",
+          "openingMove": "reason: congestion costs the town more than the scheme; in the pilot survey about a third of riders said they would otherwise have driven in at eight",
+          "challenge": "interruption-objection: nobody rides in winter, so it’s money for six months",
+          "answerMove": "concede: fair point, but let me finish; to be fair, the car numbers drop in summer too, which is when the road is dug up",
+          "steer": "bottom line: would you pay for it from your own taxes?",
+          "closingMove": "propose: how about we fund a one-year pilot and tie year two to measured congestion",
+          "trophyLemma": "congestion",
+          "trophySurface": "congestion",
+          "trophyFamilyKey": "congest",
+          "pos": "noun",
+          "requiredCarrier": "let me finish; fair point, but; to be fair; how about we",
+          "recycles": [
+            "traffic",
+            "public",
+            "consequently"
+          ]
+        },
+        {
+          "number": 10,
+          "slug": "trace-a-decision-chain",
+          "scene": "a city official asks you to trace how the committee reached its parking decision",
+          "interlocutor": "city official",
+          "register": "formal",
+          "openingMove": "explain: firstly the survey showed demand, moreover the cost model favored permits, and as a consequence the committee voted",
+          "challenge": "objection: that chain skips the public consultation entirely",
+          "answerMove": "clarify: by the survey I mean the consultation; four hundred responses were counted before the cost model was built",
+          "steer": "summary: state the chain for the record in one sentence",
+          "closingMove": "conclude: ultimately, for the record, the decision followed from the consultation, the cost model and the vote, in that order",
+          "trophyLemma": "ultimately",
+          "trophySurface": "ultimately",
+          "trophyFamilyKey": "ultimate",
+          "pos": "adverb",
+          "requiredCarrier": "firstly; moreover; ultimately; as a consequence; for the record",
+          "recycles": [
+            "permit",
+            "compromise",
+            "by X I mean"
+          ]
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "trade-off",
+        "familyKey": "trade-off",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "drawback",
+        "familyKey": "drawback",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "admittedly",
+        "familyKey": "admit",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "worthwhile",
+        "familyKey": "worthwhile",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "outweigh",
+        "familyKey": "weigh",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "convenience",
+        "familyKey": "convenience",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "discipline",
+        "familyKey": "discipline",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "arguably",
+        "familyKey": "argue",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "nonetheless",
+        "familyKey": "nonetheless",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "compromise",
+        "familyKey": "compromise",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "discrepancy",
+        "familyKey": "discrepancy",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "consequently",
+        "familyKey": "consequence",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "underestimate",
+        "familyKey": "underestimate",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "redeem",
+        "familyKey": "redeem",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "outage",
+        "familyKey": "outage",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "appeal",
+        "familyKey": "appeal",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "assumption",
+        "familyKey": "assume",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "referral",
+        "familyKey": "refer",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "congestion",
+        "familyKey": "congest",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "ultimately",
+        "familyKey": "ultimate",
+        "pos": "adverb"
+      }
+    ],
+    "forbiddenCheck": "all twenty lemmas and all twenty familyKeys checked case-folded against the 471-entry forbidden A1/A2/reservedB1 list supplied in the prerequisites: zero exact hits, zero inflectional hits (no plural, past or comparative of a forbidden lemma), twenty distinct families within P1/P2; every lemma is one token (hyphen internal), none is a function word, auxiliary, phrasal verb or proper noun; six stance/argument items (admittedly, arguably, nonetheless, consequently, ultimately, trade-off) meet the rail’s aim list; semantic near-family review remains open per nearFamilyDecisions",
+    "nearFamilyDecisions": [
+      {
+        "lemma": "worthwhile",
+        "nearForbidden": "while",
+        "decision": "allowed: opaque compound, adjective family worthwhile ≠ connector while; not a derivation",
+        "risk": "low"
+      },
+      {
+        "lemma": "ultimately",
+        "nearForbidden": "eventually",
+        "decision": "allowed: different lexeme and different sense (final judgment versus temporal); not a synonym swap because the B1 lemma is temporal",
+        "risk": "medium, flagged for native review"
+      },
+      {
+        "lemma": "discrepancy",
+        "nearForbidden": "different",
+        "decision": "allowed: Latin differ- family versus discrep-; no shared stem in English",
+        "risk": "low"
+      },
+      {
+        "lemma": "convenience",
+        "nearForbidden": "comfortable",
+        "decision": "allowed: distinct family and sense (ease of transaction versus physical comfort)",
+        "risk": "low"
+      },
+      {
+        "lemma": "underestimate",
+        "nearForbidden": "none",
+        "decision": "familyKey underestimate kept separate from estimate deliberately; a later estimate trophy would be a near-family error and is reserved against",
+        "risk": "low"
+      },
+      {
+        "lemma": "outweigh",
+        "nearForbidden": "none",
+        "decision": "familyKey weigh; weight and weigh are reserved against for later paths",
+        "risk": "low"
+      },
+      {
+        "lemma": "appeal",
+        "nearForbidden": "none",
+        "decision": "noun pos declared; the verb sense appears in the same lesson and is accepted as the same family, so no second appeal trophy may exist",
+        "risk": "low"
+      },
+      {
+        "lemma": "drawback",
+        "nearForbidden": "none",
+        "decision": "compound family drawback, independent of draw/back; disadvantage reserved as a term, never a trophy, to avoid the inflated-B1 synonym trap",
+        "risk": "low"
+      },
+      {
+        "lemma": "trade-off",
+        "nearForbidden": "none",
+        "decision": "hyphenated single token per rail; validator must treat U+002D as token-internal; non-hyphenated tradeoff is accepted input only",
+        "risk": "tooling, see unresolvedDecisions"
+      }
+    ]
+  },
+  "mechanicalValidationRules": [
+    "B2-EN-01 contraction regex (\\b\\w+’(s|re|ve|ll|d|m|t)\\b, n’t, let’s) in any you turn whose register is formal → error; in them turns of formal interlocutors → warning",
+    "B2-EN-02 slang list (gonna, wanna, kinda, gotta, ain’t, y’all, dunno) outside register informal → error; inside informal → warning if more than one per turn",
+    "B2-EN-03 UK spelling detector (-our, -ise, -re, -ll- doubling, programme, cheque) in canonical text → warning; validator never rewrites",
+    "B2-EN-04 any digit in targetText, chunk, blank answer, recall answer, term or example → error",
+    "B2-EN-05 apostrophe: U+0027 in canonical text → warning (autofix suggested), U+2019 canonical; any answer containing U+2019 must also list its U+0027 form in acceptedAnswers → error if missing (runtime unification is a later item)",
+    "B2-EN-06 lengths by token rule: them 6–20, you1 14–26, focus span 7–12 (framePrefix+chunks+frameSuffix minus frames counted as chunk tokens), you2 12–24, you3 10–22; hyphen and apostrophe are token-internal",
+    "B2-EN-07 build: 5–8 chunks, each 1–4 tokens, no edge whitespace, reconstruction byte-equal after NFC; exactly 2 distractors; a distractor equal to a chunk after normalization → error",
+    "B2-EN-08 cloze/synthesis: 2–4 / 1–2 blanks, indices once in order, reconstruction byte-equal; choices exactly 4 distinct after normalization and apostrophe unification, exactly one accepted, at most one choices blank per cloze",
+    "B2-EN-09 recall answer 1–3 tokens, acceptedAnswers includes answer, fallbackChoices 4 distinct",
+    "B2-EN-10 trophy: lemma single token, equals ledger row by pathNumber+lessonNumber, surface is a whole token of dialogue[turnIndex], lemma and familyKey not in forbidden set and unique across the language B2 ledger",
+    "B2-EN-11 moves: you1 in path whitelist, you2 in {concede,rebut,clarify,explain,compare,counteroffer}, you3 in {conclude,propose,summarize,counteroffer,relay,request}, pairwise distinct; relay forbidden in P1/P2",
+    "B2-EN-12 registerPlan.mode constant and all three registers equal and in {formal,neutral,informal}; speakerGender neutral, no alternates, no canonicalGender",
+    "B2-EN-13 gendered role noun list (chairman, waitress, policeman, spokesman, fireman, stewardess) anywhere → warning",
+    "B2-EN-14 base objects: every base is {de:S} only; situation is {de:S,en:S}; any en key elsewhere → error",
+    "B2-EN-15 chips: two chunks identical after normalization → error B2-EN-CHIP-DUP; reorder-uniqueness is not checked mechanically and is delegated to semantic rule S4",
+    "B2-EN-16 terms 8–10, each targetText occurs folded in dialogue or a pattern example; speak 3 entries with turnIndex 1,3,5 and 2–4 distinct whole tokens of that turn",
+    "B2-EN-17 requiredCarrier of lesson n must appear verbatim (folded) in a dialogue turn, pattern example or term of lesson ≤ n before any blank or choices set of lesson n requires it",
+    "B2-EN-18 sentence-initial However count across a path > 3 → warning"
+  ],
+  "semanticReviewRules": [
+    "S1 argument coherence: the challenge changes something real (constraint, counter-example, refusal, precision) and the steer changes the task; you3 answers the steer, not you1",
+    "S2 B2 not inflated B1: the lesson carries reasons, implications and a qualified recommendation or a causal chain, not harder nouns in A2 frames",
+    "S3 register native: formal turns read as a careful US speaker without contractions, informal turns as a friend; no mixed register inside a you turn",
+    "S4 build order uniqueness: the canonical chunk order must be the only grammatical and plausible order given syntax and meaning, not punctuation alone; a native reviewer must try at least one alternative order",
+    "S5 also-correct check: distractors and the three wrong choices must be wrong in this frame (grammar, meaning or register), not merely less common",
+    "S6 hedging naturalness: arguably, admittedly, I would argue, might well used where a native speaker would hedge; no stacking of two hedges in one clause",
+    "S7 connector truthfulness: pattern.rule describes what the carrier actually does (whereas contrasts, consequently states result, nonetheless concedes-then-holds)",
+    "S8 de glosses accurate and idiomatic: trade-off → Abwägung/Kompromiss between two goods, not Handel; drawback → Nachteil; discrepancy → Abweichung; referral → Überweisung; outage → Ausfall",
+    "S9 regional neutrality: no US-only institutions the German base cannot gloss; apartment/leasing/parking fine/permit accepted as US-neutral",
+    "S10 near-family non-evasion: reviewer confirms each trophy is not a thin synonym or derivation of a forbidden lemma beyond the nearFamilyDecisions already recorded",
+    "S11 TTS readability: no abbreviations, no digits, no em dashes, every them turn a complete spoken sentence",
+    "S12 no filler: every token in a you turn carries meaning or a taught carrier; no well/basically/you know padding"
+  ],
+  "unresolvedDecisions": [
+    {
+      "id": "U1",
+      "topic": "you3 move set for P1",
+      "issue": "resolved by B2-EN-11 and the contract: moveWhitelist binds you1 only; you2 from {concede,rebut,clarify,explain,compare,counteroffer}; you3 from {conclude,propose,summarize,counteroffer,request}; relay forbidden in P1/P2; pairwise distinct; P1 L3, L6, L7, L8 keep propose/counteroffer",
+      "blocksDrafting": false
+    },
+    {
+      "id": "U2",
+      "topic": "hyphenated trophy tokenization in the new English gate",
+      "issue": "trade-off stays the P1 L1 trophy; the independent English gate must declare the token rule as written in segmentation (letters and digits with internal apostrophe or hyphen, space joiner) and treat U+002D as token-internal; until that gate runs, P1 L1 cannot be mechanically validated; no trophy swap",
+      "blocksDrafting": false
+    },
+    {
+      "id": "U3",
+      "topic": "register label values",
+      "issue": "resolved: registerPlan.registers takes formal/neutral/informal for en-US per registerContract.values; adding the three strings to the zod mirror and rail table is a reversible implementation step that needs no owner question",
+      "blocksDrafting": false
+    }
+  ]
+}

@@ -154,7 +154,15 @@ def bundle(tmp_path, monkeypatch, real_reservations):
         review = {"schemaVersion": 1, "kind": name, "verdict": "PASS", "unresolvedFindings": 0, "coverage": "full-content-all-fields",
             "reviewedSources": sources, "reviewedSpecifications": specifications,
             "reviewer": {"id": "SYNTHETIC TEST ONLY", "kind": "independent-agent", "authorOfReviewedContent": False}}
-        if name == "fableReview": review["model"] = "claude-fable-5-1"
+        findings = [{"id": f"SYNTHETIC-{n}", "severity": "HIGH", "scope": "Synthetic publication-only hold"} for n in range(1, 4)]
+        review.update(localTtsContentVerdict="PASS", unresolvedLocalTtsBlockers=[], publicationVerdict="REWORK", unresolvedPublicationFindings=findings)
+        if name == "fableReview":
+            review["model"] = "claude-fable-5-1"
+            review["reviewChain"] = [{"exactEdits": 0, "rawReview": {"verdict": "PASS", "edits": [], "readThrough": [
+                {"file": f"{Path(path).parent.name}-b2-{Path(path).name}", "lessonsRead": list(range(1, 11))} for path in sources]}}]
+        else:
+            review["rawReview"] = {"verdict": "REWORK", "localTtsContentVerdict": "PASS", "unresolvedLocalTtsBlockers": [],
+                "publicationVerdict": "REWORK", "remainingPublicationFindings": findings}
         manifest[name] = save(root, f"{name}.json", review)
     path = root / "manifest.json"; save(root, path.name, manifest)
     monkeypatch.setattr(runner.shared, "runtime_evidence", lambda: {"files": [{"path": "synthetic-runtime", "sha256": "0"*64}]})
@@ -221,6 +229,9 @@ def test_complete_rows_and_actual_voice_profiles(bundle):
     assert plan["usageRows"] == 920 and len(plan["groups"]) == 4
     assert plan["publicationAuthorized"] is False and plan["level"] == "B2"
     assert runner.LEDGER_PATH in {item["path"] for item in authority}
+    assert all(f"SYNTHETIC-{n}" in plan["publicationHolds"] for n in range(1, 4))
+    assert [scope["review"] for scope in plan["contentReviewScopes"]] == ["fableReview", "independentReview"]
+    assert all(len(scope["unresolvedPublicationFindings"]) == 3 and scope["evidence"]["sha256"] for scope in plan["contentReviewScopes"])
     for group in plan["groups"]:
         target = group["targetLanguage"]; profile = group["proposedVoiceProfile"]
         assert profile["provider_voice_id"] == runner.VOICES[target]
@@ -232,6 +243,37 @@ def test_complete_rows_and_actual_voice_profiles(bundle):
         assert sum("/terms/" in item["sourceCoordinate"]["sourcePointer"] for item in group["items"]) == 80
         assert sum(item["surface"] == "trophyExample" for item in group["items"]) == 10
         assert group["nativeVoiceVerification"]["verifiedGender"] == ("female" if target == "English" else "male")
+
+
+@pytest.mark.parametrize("kind", ["fableReview", "independentReview"])
+@pytest.mark.parametrize("mutation", ["missing_local", "local_rework", "spoken_blockers", "boolean_zero", "missing_publication", "missing_findings", "bad_finding", "false_publication_pass", "raw_scope"])
+def test_explicit_spoken_scope_and_publication_holds(bundle, kind, mutation):
+    root, path, manifest, _ = bundle; name = manifest[kind]["file"]; review = json.loads((root / name).read_bytes())
+    if mutation == "missing_local": review.pop("localTtsContentVerdict")
+    elif mutation == "local_rework": review["localTtsContentVerdict"] = "REWORK"
+    elif mutation == "spoken_blockers": review["unresolvedLocalTtsBlockers"] = ["SYNTHETIC BLOCKER"]
+    elif mutation == "boolean_zero": review["unresolvedLocalTtsBlockers"] = False
+    elif mutation == "missing_publication": review.pop("publicationVerdict")
+    elif mutation == "missing_findings": review.pop("unresolvedPublicationFindings")
+    elif mutation == "bad_finding": review["unresolvedPublicationFindings"] = ["SYNTHETIC"]
+    elif mutation == "false_publication_pass": review["publicationVerdict"] = "PASS"
+    elif kind == "fableReview": review["reviewChain"][0]["rawReview"]["readThrough"][0]["lessonsRead"] = [1]
+    else: review["rawReview"]["localTtsContentVerdict"] = "REWORK"
+    manifest[kind] = save(root, name, review); save(root, path.name, manifest)
+    with pytest.raises(campaign.CampaignError): runner.prepare_inputs(root, path)
+
+
+@pytest.mark.parametrize("mutation", ["raw_blocker", "raw_boolean", "dropped_finding", "changed_finding", "raw_findings", "raw_publication"])
+def test_independent_embedded_scope_matches_wrapper(bundle, mutation):
+    root, path, manifest, _ = bundle; name = manifest["independentReview"]["file"]; review = json.loads((root / name).read_bytes())
+    if mutation == "raw_blocker": review["rawReview"]["unresolvedLocalTtsBlockers"] = ["BLOCKER"]
+    elif mutation == "raw_boolean": review["rawReview"]["unresolvedLocalTtsBlockers"] = False
+    elif mutation == "dropped_finding": review["unresolvedPublicationFindings"].pop()
+    elif mutation == "changed_finding": review["unresolvedPublicationFindings"][0]["scope"] = "Changed"
+    elif mutation == "raw_findings": review["rawReview"]["remainingPublicationFindings"] = []
+    else: review["rawReview"]["publicationVerdict"] = "PASS"
+    manifest["independentReview"] = save(root, name, review); save(root, path.name, manifest)
+    with pytest.raises(campaign.CampaignError): runner.prepare_inputs(root, path)
 
 
 @pytest.mark.parametrize("kind", ["fableReview", "independentReview"])
@@ -248,6 +290,18 @@ def test_review_envelope_semantics_not_outer_hash(bundle, kind, mutation):
     else: envelope["reviewer"]["authorOfReviewedContent"] = True
     manifest[kind] = save(root, name, envelope); save(root, path.name, manifest)
     with pytest.raises(campaign.CampaignError): runner.prepare_inputs(root, path)
+
+
+def test_changed_publication_scope_invalidates_saved_plan(bundle):
+    root, path, manifest, _ = bundle; plan_path, rates_path, review_path = seal_execution(bundle)
+    for kind in ("fableReview", "independentReview"):
+        name = manifest[kind]["file"]; review = json.loads((root / name).read_bytes())
+        review["unresolvedPublicationFindings"][0]["scope"] = "Revised synthetic hold"
+        if kind == "independentReview": review["rawReview"]["remainingPublicationFindings"] = copy.deepcopy(review["unresolvedPublicationFindings"])
+        manifest[kind] = save(root, name, review)
+    save(root, path.name, manifest)
+    with pytest.raises(campaign.CampaignError, match="rebuilt_plan_mismatch"):
+        runner.load_inputs(root, path, plan_path, rates_path, review_path)
 
 
 @pytest.mark.parametrize("mutation", ["duplicate", "unknown", "path", "source", "spec", "ledger", "reservation"])

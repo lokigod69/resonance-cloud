@@ -1,0 +1,3572 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Optionen abwägen"
+  },
+  "pathFunction": {
+    "de": "Vor- und Nachteile vergleichen, auf Einwände eingehen und eine begründete Empfehlung geben."
+  },
+  "specRef": {
+    "pathSpec": "tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_SPEC.json",
+    "pathSpecSha256": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f",
+    "ledger": "tmp/V4_EXPANSION_20261003/B2_ENGLISH_P1_P2_SPEC.json",
+    "ledgerSha256": "dc6d8d710c2be847c001dca4cd3c243f5dceb24882b72625fe0908d8f1db3b3f"
+  },
+  "authoring": {
+    "source": "gpt-6",
+    "runId": "english-b2-p1-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "rent-versus-commute",
+      "title": {
+        "de": "Miete gegen Pendelzeit"
+      },
+      "situation": {
+        "de": "Du besichtigst mit einer Vermietungsfachkraft eine teurere Innenstadtwohnung und vergleichst sie mit einer günstigeren im Vorort.",
+        "en": "You are viewing a more expensive downtown apartment with a leasing agent and comparing it with a cheaper suburban one."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "agent",
+          "role": {
+            "de": "Vermietungsfachkraft"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Vermietungsfachkraft fragt: “This downtown apartment costs more, but the suburban option means an hour by train each way. What do you think?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "agent",
+          "targetText": "This downtown apartment costs more, but the suburban option means an hour by train each way. What do you think?",
+          "base": {
+            "de": "Diese Innenstadtwohnung kostet mehr, aber bei der Wohnung im Vorort fährst du pro Strecke eine Stunde mit dem Zug. Was meinst du?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "On the one hand, downtown costs far more; on the other, the suburban apartment means two hours of commuting daily.",
+          "base": {
+            "de": "Einerseits kostet die Innenstadt deutlich mehr; andererseits bedeutet die Vorortwohnung täglich zwei Stunden Pendeln."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agent",
+          "targetText": "Are those two hours really worth an extra three hundred dollars every month?",
+          "base": {
+            "de": "Sind diese zwei Stunden wirklich dreihundert Dollar zusätzlich im Monat wert?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "formal",
+          "targetText": "Granted, the premium is steep, but free evenings matter far more than the cost; the main advantage is that I regain time.",
+          "base": {
+            "de": "Zugegeben, der Aufpreis ist hoch, aber freie Abende sind mir deutlich wichtiger als die Kosten; der Hauptvorteil ist die zurückgewonnene Zeit."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "agent",
+          "targetText": "Will you sign for this apartment today, or would you prefer to keep looking?",
+          "base": {
+            "de": "Unterschreibst du heute für diese Wohnung, oder möchtest du lieber weitersuchen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "On balance, this trade-off favors time, so I will take the downtown apartment rather than keep looking.",
+          "base": {
+            "de": "Insgesamt fällt diese Abwägung zugunsten der Zeit aus, deshalb nehme ich die Innenstadtwohnung, statt weiterzusuchen."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "On the one hand, ",
+        "chunks": [
+          "downtown costs",
+          "far more;",
+          "on the other, the",
+          "suburban apartment",
+          "means"
+        ],
+        "distractors": [
+          "far less;",
+          "the downtown apartment"
+        ],
+        "frameSuffix": " two hours of commuting daily."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", the premium is steep, but free evenings "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " far more than the cost; the main advantage is that I regain time."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Granted",
+            "acceptedAnswers": [
+              "Granted"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "matter",
+            "acceptedAnswers": [
+              "matter"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "matter; Gegenwart; das Subjekt free evenings steht im Plural"
+            },
+            "choices": [
+              "matter",
+              "matters",
+              "mattered",
+              "mattering"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", this "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " favors time, so I will take the downtown apartment rather than keep looking."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "On balance",
+            "acceptedAnswers": [
+              "On balance"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "trade-off",
+            "acceptedAnswers": [
+              "trade-off",
+              "tradeoff"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "On the one hand, downtown costs far more; on the other, the suburban apartment means two hours of ",
+        "answer": "commuting",
+        "acceptedAnswers": [
+          "commuting"
+        ],
+        "after": " daily.",
+        "fallbackChoices": [
+          "commuting",
+          "shopping",
+          "cooking",
+          "training"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei Seiten einer Entscheidung"
+        },
+        "rule": {
+          "de": "Mit on the one hand und on the other stellst du zwei Seiten gegenüber; whereas verbindet einen ähnlichen Gegensatz in einem Satz."
+        },
+        "examples": [
+          {
+            "targetText": "On the one hand, downtown costs far more; on the other, the suburban apartment means two hours of commuting daily.",
+            "base": {
+              "de": "Einerseits kostet die Innenstadt deutlich mehr; andererseits bedeutet die Vorortwohnung täglich zwei Stunden Pendeln."
+            },
+            "highlights": [
+              "On the one hand",
+              "on the other"
+            ]
+          },
+          {
+            "targetText": "The suburban apartment is cheaper, whereas the downtown one protects my evenings.",
+            "base": {
+              "de": "Die Vorortwohnung ist günstiger, während die Innenstadtwohnung meine Abende freihält."
+            },
+            "highlights": [
+              "whereas"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "on the one hand",
+          "kind": "frame",
+          "base": {
+            "de": "einerseits"
+          }
+        },
+        {
+          "targetText": "on the other",
+          "kind": "frame",
+          "base": {
+            "de": "andererseits"
+          }
+        },
+        {
+          "targetText": "granted",
+          "kind": "frame",
+          "base": {
+            "de": "zugegeben"
+          }
+        },
+        {
+          "targetText": "on balance",
+          "kind": "frame",
+          "base": {
+            "de": "insgesamt; nach Abwägung"
+          }
+        },
+        {
+          "targetText": "premium",
+          "kind": "noun",
+          "base": {
+            "de": "Aufpreis"
+          }
+        },
+        {
+          "targetText": "commuting",
+          "kind": "noun",
+          "base": {
+            "de": "Pendeln"
+          }
+        },
+        {
+          "targetText": "trade-off",
+          "kind": "noun",
+          "base": {
+            "de": "Abwägung zwischen zwei Vorteilen"
+          },
+          "acceptedAnswers": [
+            "trade-off",
+            "tradeoff"
+          ]
+        },
+        {
+          "targetText": "steep",
+          "kind": "adjective",
+          "base": {
+            "de": "hoch; beträchtlich bei Preisen"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "downtown",
+            "suburban",
+            "means"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Granted",
+            "premium",
+            "regain"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "balance",
+            "trade-off",
+            "favors"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "trade-off",
+        "familyKey": "trade-off",
+        "surface": "trade-off",
+        "turnIndex": 5,
+        "pos": "noun",
+        "example": {
+          "targetText": "The trade-off is higher rent in exchange for a shorter commute.",
+          "base": {
+            "de": "Die Abwägung besteht aus höherer Miete im Tausch gegen einen kürzeren Arbeitsweg."
+          }
+        },
+        "base": {
+          "de": "Abwägung; Kompromiss zwischen zwei Vorteilen"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "car-versus-transit",
+      "title": {
+        "de": "Auto oder Bahn zur Arbeit"
+      },
+      "situation": {
+        "de": "Eine Person aus deinem Team schlägt eine Fahrgemeinschaft vor. Du vergleichst sie mit deinem täglichen Arbeitsweg per Bahn.",
+        "en": "A colleague suggests carpooling, and you compare it with taking the train to work every day."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "colleague",
+          "role": {
+            "de": "Person aus deinem Team"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person fragt: “We could share the drive to work. Wouldn’t that be easier than taking the train every day?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "colleague",
+          "targetText": "We could share the drive to work. Wouldn’t that be easier than taking the train every day?",
+          "base": {
+            "de": "Wir könnten gemeinsam zur Arbeit fahren. Wäre das nicht einfacher, als jeden Tag den Zug zu nehmen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "neutral",
+          "targetText": "I prefer the train since I can work while traveling, whereas the main drawback of driving is searching for parking.",
+          "base": {
+            "de": "Ich bevorzuge die Bahn, da ich unterwegs arbeiten kann, während der größte Nachteil des Autofahrens die Parkplatzsuche ist."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "colleague",
+          "targetText": "But the trains were canceled twice last week. Doesn’t that undermine your whole argument?",
+          "base": {
+            "de": "Aber letzte Woche fielen die Züge zweimal aus. Schwächt das nicht dein ganzes Argument?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "That’s true, but I usually lose twenty minutes finding parking, which means that driving still costs me more usable time.",
+          "base": {
+            "de": "Das stimmt, aber gewöhnlich verliere ich zwanzig Minuten bei der Parkplatzsuche; das heißt, Autofahren kostet mich weiterhin mehr nutzbare Zeit."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "colleague",
+          "targetText": "What if the company paid for a reserved parking space right beside the office?",
+          "base": {
+            "de": "Und wenn die Firma einen reservierten Parkplatz direkt neben dem Büro bezahlt?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "Even so, I gain working time on the train; as a result, I’d still choose it even with free parking.",
+          "base": {
+            "de": "Trotzdem gewinne ich im Zug Arbeitszeit; deshalb würde ich ihn auch bei einem kostenlosen Parkplatz wählen."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "I prefer the train since I can work while traveling, ",
+        "chunks": [
+          "whereas the main drawback",
+          "of driving",
+          "is",
+          "searching",
+          "for parking."
+        ],
+        "distractors": [
+          "whereas the main benefit",
+          "are"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", but I usually lose twenty minutes finding parking, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " driving still costs me more usable time."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "That’s true",
+            "acceptedAnswers": [
+              "That’s true",
+              "That's true"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "which means that",
+            "acceptedAnswers": [
+              "which means that"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", I gain working time on the train; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", I’d still choose it even with free parking."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Even so",
+            "acceptedAnswers": [
+              "Even so"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "as a result",
+            "acceptedAnswers": [
+              "as a result"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "I prefer the train since I can work while traveling, whereas the main ",
+        "answer": "drawback",
+        "acceptedAnswers": [
+          "drawback"
+        ],
+        "after": " of driving is searching for parking.",
+        "fallbackChoices": [
+          "drawback",
+          "advantage",
+          "purpose",
+          "attraction"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Ein Detail anerkennen, die Schlussfolgerung zurückweisen"
+        },
+        "rule": {
+          "de": "Mit that’s true, but erkennst du einen Einwand an und erklärst anschließend, warum er deine Schlussfolgerung nicht ändert."
+        },
+        "examples": [
+          {
+            "targetText": "That’s true, but I usually lose twenty minutes finding parking, which means that driving still costs me more usable time.",
+            "base": {
+              "de": "Das stimmt, aber gewöhnlich verliere ich zwanzig Minuten bei der Parkplatzsuche; das heißt, Autofahren kostet mich weiterhin mehr nutzbare Zeit."
+            },
+            "highlights": [
+              "That’s true, but",
+              "which means that"
+            ]
+          },
+          {
+            "targetText": "That’s true, but I leave early so that one delayed train does not make me late.",
+            "base": {
+              "de": "Das stimmt, aber ich fahre früh los, damit ein verspäteter Zug mich nicht zu spät kommen lässt."
+            },
+            "highlights": [
+              "That’s true, but",
+              "so that"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "since",
+          "kind": "connector",
+          "base": {
+            "de": "da; weil"
+          }
+        },
+        {
+          "targetText": "whereas",
+          "kind": "connector",
+          "base": {
+            "de": "wohingegen; während (im Gegensatz dazu)"
+          }
+        },
+        {
+          "targetText": "which means that",
+          "kind": "frame",
+          "base": {
+            "de": "was bedeutet, dass"
+          }
+        },
+        {
+          "targetText": "as a result",
+          "kind": "connector",
+          "base": {
+            "de": "infolgedessen"
+          }
+        },
+        {
+          "targetText": "drawback",
+          "kind": "noun",
+          "base": {
+            "de": "Nachteil"
+          }
+        },
+        {
+          "targetText": "parking",
+          "kind": "noun",
+          "base": {
+            "de": "Parken; Parkmöglichkeit"
+          }
+        },
+        {
+          "targetText": "usable",
+          "kind": "adjective",
+          "base": {
+            "de": "nutzbar"
+          }
+        },
+        {
+          "targetText": "reserved",
+          "lemma": "reserve",
+          "kind": "adjective",
+          "base": {
+            "de": "reserviert"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "drawback",
+            "driving",
+            "parking"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "true",
+            "twenty",
+            "usable"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Even",
+            "gain",
+            "result"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "drawback",
+        "familyKey": "drawback",
+        "surface": "drawback",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "The main drawback is the time spent looking for parking.",
+          "base": {
+            "de": "Der größte Nachteil ist die Zeit, die bei der Parkplatzsuche verloren geht."
+          }
+        },
+        "base": {
+          "de": "Nachteil"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "remote-versus-on-site",
+      "title": {
+        "de": "Homeoffice oder Präsenz"
+      },
+      "situation": {
+        "de": "Du besprichst mit deiner Führungskraft deinen Antrag, an drei Tagen pro Woche von zu Hause zu arbeiten.",
+        "en": "You discuss your request to work from home three days a week with your manager."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "manager",
+          "role": {
+            "de": "Führungskraft"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Führungskraft fragt: “You have requested three remote days each week. What would the team gain from that arrangement?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "manager",
+          "targetText": "You have requested three remote days each week. What would the team gain from that arrangement?",
+          "base": {
+            "de": "Du hast drei Tage Homeoffice pro Woche beantragt. Was würde das Team durch diese Regelung gewinnen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "formal",
+          "targetText": "I would argue that remote days allow more focused work, even though colleagues see less of me during the week.",
+          "base": {
+            "de": "Ich würde sagen, dass Tage im Homeoffice konzentrierteres Arbeiten ermöglichen, auch wenn mich das Team unter der Woche weniger sieht."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "manager",
+          "targetText": "But team cohesion suffers when half the team works at home. How would you address that?",
+          "base": {
+            "de": "Aber der Zusammenhalt leidet, wenn das halbe Team zu Hause arbeitet. Wie würdest du dem begegnen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "formal",
+          "targetText": "Admittedly, cohesion needs regular face time; that said, one fixed overlap day would give us a shared anchor.",
+          "base": {
+            "de": "Zugegeben, Zusammenhalt braucht regelmäßigen persönlichen Kontakt; allerdings würde uns ein fester gemeinsamer Präsenztag einen verlässlichen Bezugspunkt geben."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "manager",
+          "targetText": "I normally require three office days. What arrangement would you offer instead?",
+          "base": {
+            "de": "Normalerweise verlange ich drei Bürotage. Welche Regelung würdest du stattdessen anbieten?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "formal",
+          "targetText": "I would offer two fixed office days with shared core hours, followed by a review after one quarter.",
+          "base": {
+            "de": "Ich würde zwei feste Bürotage mit gemeinsamen Kernzeiten anbieten, gefolgt von einer Überprüfung nach einem Quartal."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "I would argue that ",
+        "chunks": [
+          "remote days",
+          "allow",
+          "more focused work,",
+          "even though colleagues",
+          "see less"
+        ],
+        "distractors": [
+          "less focused work,",
+          "see more"
+        ],
+        "frameSuffix": " of me during the week."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", cohesion needs regular face time; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", one fixed overlap day would give us a shared anchor."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Admittedly",
+            "acceptedAnswers": [
+              "Admittedly"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "that said",
+            "acceptedAnswers": [
+              "that said"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " two fixed office days with shared core hours, followed by a review after one quarter."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "I would offer",
+            "acceptedAnswers": [
+              "I would offer",
+              "I would propose",
+              "I would suggest"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "I would argue that remote days allow more ",
+        "answer": "focused",
+        "acceptedAnswers": [
+          "focused",
+          "focussed"
+        ],
+        "after": " work, even though colleagues see less of me during the week.",
+        "fallbackChoices": [
+          "focused",
+          "rushed",
+          "fragmented",
+          "repetitive"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Nachteil anerkennen und abfedern"
+        },
+        "rule": {
+          "de": "Admittedly erkennt einen berechtigten Nachteil an; that said führt danach einen ausgleichenden Gesichtspunkt ein."
+        },
+        "examples": [
+          {
+            "targetText": "Admittedly, cohesion needs regular face time; that said, one fixed overlap day would give us a shared anchor.",
+            "base": {
+              "de": "Zugegeben, Zusammenhalt braucht regelmäßigen persönlichen Kontakt; allerdings würde uns ein fester gemeinsamer Präsenztag einen verlässlichen Bezugspunkt geben."
+            },
+            "highlights": [
+              "Admittedly",
+              "that said"
+            ]
+          },
+          {
+            "targetText": "Admittedly, the schedule is complicated; that said, it is arguably the fairest option for everyone.",
+            "base": {
+              "de": "Zugegeben, der Zeitplan ist kompliziert; allerdings ist er wohl die fairste Lösung für alle."
+            },
+            "highlights": [
+              "Admittedly",
+              "that said",
+              "arguably"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "I would argue that",
+          "kind": "frame",
+          "base": {
+            "de": "ich würde sagen, dass"
+          }
+        },
+        {
+          "targetText": "even though",
+          "kind": "connector",
+          "base": {
+            "de": "auch wenn; obwohl"
+          }
+        },
+        {
+          "targetText": "admittedly",
+          "kind": "adverb",
+          "base": {
+            "de": "zugegeben"
+          }
+        },
+        {
+          "targetText": "that said",
+          "kind": "frame",
+          "base": {
+            "de": "allerdings; bei alledem"
+          }
+        },
+        {
+          "targetText": "cohesion",
+          "kind": "noun",
+          "base": {
+            "de": "Zusammenhalt"
+          }
+        },
+        {
+          "targetText": "face time",
+          "kind": "noun",
+          "base": {
+            "de": "persönlicher Kontakt"
+          }
+        },
+        {
+          "targetText": "core hours",
+          "kind": "noun",
+          "base": {
+            "de": "Kernarbeitszeiten"
+          }
+        },
+        {
+          "targetText": "quarter",
+          "kind": "noun",
+          "base": {
+            "de": "Quartal"
+          }
+        },
+        {
+          "targetText": "arguably",
+          "kind": "adverb",
+          "base": {
+            "de": "wohl; mit guten Gründen vertretbar"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "remote",
+            "focused",
+            "colleagues"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Admittedly",
+            "cohesion",
+            "anchor"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "offer",
+            "core",
+            "quarter"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "admittedly",
+        "familyKey": "admit",
+        "surface": "admittedly",
+        "turnIndex": 3,
+        "pos": "adverb",
+        "example": {
+          "targetText": "Admittedly, working remotely makes spontaneous conversations harder.",
+          "base": {
+            "de": "Zugegeben, die Arbeit aus der Ferne erschwert spontane Gespräche."
+          }
+        },
+        "base": {
+          "de": "zugegeben; eingestandenermaßen"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "buy-versus-rent-equipment",
+      "title": {
+        "de": "Projektor kaufen oder mieten"
+      },
+      "situation": {
+        "de": "Du vergleichst am Verleihschalter den Kauf und die Miete eines Projektors für ein sechsmonatiges Projekt.",
+        "en": "At a rental counter, you compare buying and renting a projector for a six-month project."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "clerk",
+          "role": {
+            "de": "Person am Verleihschalter"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Schalter hörst du: “You need a projector for six months. Have you compared our rental quote with the purchase price?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "clerk",
+          "targetText": "You need a projector for six months. Have you compared our rental quote with the purchase price?",
+          "base": {
+            "de": "Du brauchst sechs Monate lang einen Projektor. Hast du unser Mietangebot mit dem Kaufpreis verglichen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "neutral",
+          "targetText": "After six months of use, rental payments would equal the purchase price, so buying looks sensible.",
+          "base": {
+            "de": "Nach sechs Monaten Nutzung würden die Mietzahlungen dem Kaufpreis entsprechen, deshalb scheint der Kauf sinnvoll."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "clerk",
+          "targetText": "But models change yearly. If you’d bought last year, you’d have the old version now.",
+          "base": {
+            "de": "Aber die Modelle wechseln jährlich. Hättest du letztes Jahr gekauft, hättest du jetzt die alte Version."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "If we’d bought last year, we’d still have a suitable projector now; otherwise, we’d be renting forever just to stay current.",
+          "base": {
+            "de": "Hätten wir letztes Jahr gekauft, hätten wir jetzt immer noch einen geeigneten Projektor; sonst würden wir ewig mieten, nur um aktuell zu bleiben."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "clerk",
+          "targetText": "And what happens if your project ends after three months instead of six?",
+          "base": {
+            "de": "Und was passiert, wenn dein Projekt schon nach drei statt sechs Monaten endet?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "neutral",
+          "targetText": "On balance, buying is worthwhile; in case we finish early, I’ll check resale options, since we might well resell.",
+          "base": {
+            "de": "Insgesamt lohnt sich der Kauf; für den Fall eines frühen Projektendes prüfe ich Wiederverkaufsmöglichkeiten, da wir durchaus weiterverkaufen könnten."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "After six months of use, ",
+        "chunks": [
+          "rental payments",
+          "would equal",
+          "the purchase price,",
+          "so buying",
+          "looks sensible."
+        ],
+        "distractors": [
+          "would cancel",
+          "looks wasteful."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "If we’d "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " last year, we’d still have a suitable projector now; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", we’d be renting forever just to stay current."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "bought",
+            "acceptedAnswers": [
+              "bought"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "buy; Partizip nach we’d im irrealen Rückblick"
+            },
+            "choices": [
+              "bought",
+              "buy",
+              "buying",
+              "buys"
+            ]
+          },
+          {
+            "answer": "otherwise",
+            "acceptedAnswers": [
+              "otherwise"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", buying is "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; in case we finish early, I’ll check resale options, since we might well resell."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "On balance",
+            "acceptedAnswers": [
+              "On balance"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "worthwhile",
+            "acceptedAnswers": [
+              "worthwhile"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "After six months of use, rental payments would ",
+        "answer": "equal",
+        "acceptedAnswers": [
+          "equal"
+        ],
+        "after": " the purchase price, so buying looks sensible.",
+        "fallbackChoices": [
+          "equal",
+          "cancel",
+          "halve",
+          "postpone"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Vergangene Entscheidung, heutige Folge"
+        },
+        "rule": {
+          "de": "Mit if we’d bought und we’d still have stellst du eine nicht getroffene Kaufentscheidung ihrer möglichen heutigen Folge gegenüber."
+        },
+        "examples": [
+          {
+            "targetText": "If we’d bought last year, we’d still have a suitable projector now; otherwise, we’d be renting forever just to stay current.",
+            "base": {
+              "de": "Hätten wir letztes Jahr gekauft, hätten wir jetzt immer noch einen geeigneten Projektor; sonst würden wir ewig mieten, nur um aktuell zu bleiben."
+            },
+            "highlights": [
+              "If we’d bought",
+              "we’d still have"
+            ]
+          },
+          {
+            "targetText": "If we’d rented the equipment, we wouldn’t own anything now.",
+            "base": {
+              "de": "Hätten wir die Ausrüstung gemietet, würden wir jetzt nichts davon besitzen."
+            },
+            "highlights": [
+              "If we’d rented",
+              "wouldn’t own"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "otherwise",
+          "kind": "connector",
+          "base": {
+            "de": "sonst; andernfalls"
+          }
+        },
+        {
+          "targetText": "in case",
+          "kind": "connector",
+          "base": {
+            "de": "für den Fall, dass"
+          }
+        },
+        {
+          "targetText": "might well",
+          "kind": "frame",
+          "base": {
+            "de": "könnte durchaus"
+          }
+        },
+        {
+          "targetText": "rental payments",
+          "kind": "noun",
+          "base": {
+            "de": "Mietzahlungen"
+          }
+        },
+        {
+          "targetText": "purchase price",
+          "kind": "noun",
+          "base": {
+            "de": "Kaufpreis"
+          }
+        },
+        {
+          "targetText": "suitable",
+          "kind": "adjective",
+          "base": {
+            "de": "geeignet"
+          }
+        },
+        {
+          "targetText": "resale",
+          "kind": "noun",
+          "base": {
+            "de": "Wiederverkauf"
+          }
+        },
+        {
+          "targetText": "worthwhile",
+          "kind": "adjective",
+          "base": {
+            "de": "lohnend"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "rental",
+            "equal",
+            "purchase"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "bought",
+            "otherwise",
+            "current"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "worthwhile",
+            "resale",
+            "might"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "worthwhile",
+        "familyKey": "worthwhile",
+        "surface": "worthwhile",
+        "turnIndex": 5,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Buying becomes worthwhile when the equipment will remain useful for several projects.",
+          "base": {
+            "de": "Ein Kauf lohnt sich, wenn die Ausrüstung für mehrere Projekte nützlich bleibt."
+          }
+        },
+        "base": {
+          "de": "lohnend; die Mühe oder Kosten wert"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "two-holiday-plans",
+      "title": {
+        "de": "Erholung oder niedriger Fahrpreis"
+      },
+      "situation": {
+        "de": "Ein Freund schlägt eine günstige Busreise in die Berge vor. Du möchtest lieber vier Tage ans Meer fliegen.",
+        "en": "A friend suggests a cheap bus trip to the mountains. You would rather fly to the coast for four days."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "informal",
+          "informal",
+          "informal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "friend",
+          "role": {
+            "de": "Freund"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Dein Freund fragt: “The mountain trip’s almost free if we take the bus. Why spend more for fewer days at the coast?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "The mountain trip’s almost free if we take the bus. Why spend more for fewer days at the coast?",
+          "base": {
+            "de": "Die Bergreise ist mit dem Bus fast kostenlos. Warum für weniger Tage am Meer mehr ausgeben?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "informal",
+          "targetText": "The mountains cost less, whereas the coast offers rest we’d miss on the overnight bus journeys.",
+          "base": {
+            "de": "Die Berge kosten weniger, während die Küste Erholung bietet, die uns auf den nächtlichen Busfahrten fehlen würde."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "No way I’m paying three hundred for a flight. The bus takes ten hours, but it’s nearly free.",
+          "base": {
+            "de": "Auf keinen Fall zahle ich dreihundert für einen Flug. Der Bus braucht zehn Stunden, ist aber fast kostenlos."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "informal",
+          "targetText": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip.",
+          "base": {
+            "de": "Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir uns die Differenz zum Busticket; andernfalls verkürzen wir die Küstenreise."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "I’ve got a hard limit of five hundred dollars each, including the flight and accommodation.",
+          "base": {
+            "de": "Meine feste Grenze liegt bei fünfhundert Dollar pro Person, einschließlich Flug und Unterkunft."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "informal",
+          "targetText": "On balance, I’d expect the coast to stay under five hundred each; the rest we get outweighs the extra fare.",
+          "base": {
+            "de": "Insgesamt würde ich erwarten, dass die Küstenreise unter fünfhundert pro Person bleibt; die Erholung wiegt den höheren Fahrpreis auf."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "The mountains cost less, whereas ",
+        "chunks": [
+          "the coast",
+          "offers rest",
+          "we’d miss",
+          "on the overnight",
+          "bus journeys."
+        ],
+        "distractors": [
+          "offers work",
+          "train journeys."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " lose twenty hours; "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "I’m not prepared to",
+            "acceptedAnswers": [
+              "I’m not prepared to",
+              "I'm not prepared to"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "unless",
+            "acceptedAnswers": [
+              "unless"
+            ],
+            "kind": "connector",
+            "choices": [
+              "unless",
+              "despite",
+              "instead",
+              "owing to"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "On balance, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " the coast to stay under five hundred each; the rest we get "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " the extra fare."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "I’d expect",
+            "acceptedAnswers": [
+              "I’d expect",
+              "I'd expect"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "outweighs",
+            "acceptedAnswers": [
+              "outweighs"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "outweigh; Gegenwart; Subjekt ist the rest we get, also die Erholung"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "The mountains cost less, whereas the coast offers ",
+        "answer": "rest",
+        "acceptedAnswers": [
+          "rest"
+        ],
+        "after": " we’d miss on the overnight bus journeys.",
+        "fallbackChoices": [
+          "rest",
+          "work",
+          "noise",
+          "traffic"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Grenze und Ausweichplan nennen"
+        },
+        "rule": {
+          "de": "I’m not prepared to setzt eine Grenze, unless nennt die Ausnahme und failing that eröffnet einen Ersatzplan."
+        },
+        "examples": [
+          {
+            "targetText": "I’m not prepared to lose twenty hours; unless Tuesday’s fare is gone, let’s split the difference; failing that, we shorten the coast trip.",
+            "base": {
+              "de": "Ich bin nicht bereit, zwanzig Stunden zu verlieren; sofern der Dienstagstarif noch verfügbar ist, teilen wir uns die Differenz zum Busticket; andernfalls verkürzen wir die Küstenreise."
+            },
+            "highlights": [
+              "I’m not prepared to",
+              "unless",
+              "failing that"
+            ]
+          },
+          {
+            "targetText": "I’m not prepared to travel overnight; unless the morning train is full, let’s book it; failing that, leave tomorrow.",
+            "base": {
+              "de": "Ich will nicht über Nacht reisen; sofern der Morgenzug nicht voll ist, buchen wir ihn; andernfalls fahren wir morgen."
+            },
+            "highlights": [
+              "I’m not prepared to",
+              "unless",
+              "failing that"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "whereas",
+          "kind": "connector",
+          "base": {
+            "de": "wohingegen; während (im Gegensatz dazu)"
+          }
+        },
+        {
+          "targetText": "unless",
+          "kind": "connector",
+          "base": {
+            "de": "es sei denn, dass"
+          }
+        },
+        {
+          "targetText": "failing that",
+          "kind": "frame",
+          "base": {
+            "de": "falls das nicht klappt"
+          }
+        },
+        {
+          "targetText": "I’d expect",
+          "kind": "frame",
+          "base": {
+            "de": "ich würde erwarten"
+          },
+          "acceptedAnswers": [
+            "I’d expect",
+            "I'd expect"
+          ]
+        },
+        {
+          "targetText": "overnight",
+          "kind": "adjective",
+          "base": {
+            "de": "über Nacht"
+          }
+        },
+        {
+          "targetText": "fare",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrpreis; Flugpreis"
+          }
+        },
+        {
+          "targetText": "accommodation",
+          "kind": "noun",
+          "base": {
+            "de": "Unterkunft"
+          }
+        },
+        {
+          "targetText": "outweighs",
+          "lemma": "outweigh",
+          "kind": "verb",
+          "base": {
+            "de": "überwiegt; wiegt auf"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "coast",
+            "rest",
+            "overnight"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "prepared",
+            "unless",
+            "failing"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "expect",
+            "hundred",
+            "outweighs"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "outweigh",
+        "familyKey": "weigh",
+        "surface": "outweighs",
+        "turnIndex": 5,
+        "pos": "verb",
+        "example": {
+          "targetText": "For this trip, the extra rest outweighs the higher fare.",
+          "base": {
+            "de": "Bei dieser Reise wiegt die zusätzliche Erholung den höheren Fahrpreis auf."
+          }
+        },
+        "base": {
+          "de": "überwiegen; schwerer wiegen als"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "cash-versus-app-payments",
+      "title": {
+        "de": "Bargeld oder Zahlung per App"
+      },
+      "situation": {
+        "de": "Eine bekannte Person mit eigenem Geschäft fragt dich, ob sie zusätzlich zum Bargeld Zahlungen per App anbieten sollte.",
+        "en": "A shop owner you know asks whether to add app payments or stay cash-only."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "owner",
+          "role": {
+            "de": "Person mit eigenem Geschäft"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Geschäft hörst du: “This payment app charges two percent per sale. Is it worth adding, or should I stay cash-only?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "owner",
+          "targetText": "This payment app charges two percent per sale. Is it worth adding, or should I stay cash-only?",
+          "base": {
+            "de": "Diese Zahlungs-App verlangt zwei Prozent pro Verkauf. Lohnt sie sich zusätzlich, oder sollte ich nur Bargeld annehmen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "neutral",
+          "targetText": "Regarding fees, the app charges two percent, whereas cash costs you counting time and trips to the bank.",
+          "base": {
+            "de": "Was die Gebühren angeht, verlangt die App zwei Prozent, während Bargeld dich Zeit zum Zählen und Wege zur Bank kostet."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "owner",
+          "targetText": "My accountant said cash was simpler and safer. Isn’t that a good reason to keep it?",
+          "base": {
+            "de": "Meine Buchhalterin sagte, Bargeld sei einfacher und sicherer. Ist das kein guter Grund, dabei zu bleiben?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "She said it was simpler, but as for safety, a drawer full of cash can pose a greater risk than electronic records.",
+          "base": {
+            "de": "Sie sagte, es sei einfacher, aber was die Sicherheit betrifft, kann eine Schublade voller Bargeld ein größeres Risiko darstellen als elektronische Aufzeichnungen."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "owner",
+          "targetText": "Half my customers are older and don’t trust phones for payment. What would you tell them?",
+          "base": {
+            "de": "Die Hälfte meiner Kundschaft ist älter und vertraut Handys beim Bezahlen nicht. Was würdest du diesen Menschen sagen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "propose",
+          "register": "neutral",
+          "targetText": "I would suggest keeping both for a year, so everyone can choose convenience without being forced to use a phone.",
+          "base": {
+            "de": "Ich würde vorschlagen, ein Jahr lang beides anzubieten, damit alle die bequeme Lösung wählen können, ohne zum Handy gezwungen zu werden."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Regarding fees, the app charges two percent, ",
+        "chunks": [
+          "whereas cash",
+          "costs you",
+          "counting time",
+          "and trips",
+          "to the bank."
+        ],
+        "distractors": [
+          "saves you",
+          "to the warehouse."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "She said it "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " simpler, but "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " safety, a drawer full of cash can pose a greater risk than electronic records."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "be; indirekte Wiedergabe mit zurückversetzter Zeit nach said; Subjekt it"
+            },
+            "choices": [
+              "was",
+              "were",
+              "been",
+              "being"
+            ]
+          },
+          {
+            "answer": "as for",
+            "acceptedAnswers": [
+              "as for",
+              "regarding"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " keeping both for a year, so everyone can choose "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " without being forced to use a phone."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "I would suggest",
+            "acceptedAnswers": [
+              "I would suggest",
+              "I’d suggest",
+              "I'd suggest"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "convenience",
+            "acceptedAnswers": [
+              "convenience"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Regarding ",
+        "answer": "fees",
+        "acceptedAnswers": [
+          "fees"
+        ],
+        "after": ", the app charges two percent, whereas cash costs you counting time and trips to the bank.",
+        "fallbackChoices": [
+          "fees",
+          "colors",
+          "deliveries",
+          "opening hours"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine Aussage wiedergeben und einordnen"
+        },
+        "rule": {
+          "de": "Mit said it was gibst du eine frühere Aussage wieder; as for lenkt die anschließende Bewertung auf einen bestimmten Aspekt."
+        },
+        "examples": [
+          {
+            "targetText": "She said it was simpler, but as for safety, a drawer full of cash can pose a greater risk than electronic records.",
+            "base": {
+              "de": "Sie sagte, es sei einfacher, aber was die Sicherheit betrifft, kann eine Schublade voller Bargeld ein größeres Risiko darstellen als elektronische Aufzeichnungen."
+            },
+            "highlights": [
+              "said it was",
+              "as for"
+            ]
+          },
+          {
+            "targetText": "They told me the system had improved; as for costs, I still need the latest quote.",
+            "base": {
+              "de": "Man sagte mir, das System habe sich verbessert; was die Kosten angeht, brauche ich noch das aktuelle Angebot."
+            },
+            "highlights": [
+              "told me the system had improved",
+              "as for"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "regarding",
+          "kind": "frame",
+          "base": {
+            "de": "hinsichtlich; was … betrifft"
+          }
+        },
+        {
+          "targetText": "as for",
+          "kind": "frame",
+          "base": {
+            "de": "was … angeht"
+          }
+        },
+        {
+          "targetText": "I would suggest",
+          "kind": "frame",
+          "base": {
+            "de": "ich würde vorschlagen"
+          }
+        },
+        {
+          "targetText": "fees",
+          "lemma": "fee",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühren"
+          }
+        },
+        {
+          "targetText": "drawer",
+          "kind": "noun",
+          "base": {
+            "de": "Schublade"
+          }
+        },
+        {
+          "targetText": "records",
+          "lemma": "record",
+          "kind": "noun",
+          "base": {
+            "de": "Aufzeichnungen"
+          }
+        },
+        {
+          "targetText": "convenience",
+          "kind": "noun",
+          "base": {
+            "de": "Bequemlichkeit; einfache Handhabung"
+          }
+        },
+        {
+          "targetText": "cash-only",
+          "kind": "adjective",
+          "base": {
+            "de": "nur mit Barzahlung"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "cash",
+            "counting",
+            "bank"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "said",
+            "safety",
+            "risk"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "suggest",
+            "both",
+            "convenience"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "convenience",
+        "familyKey": "convenience",
+        "surface": "convenience",
+        "turnIndex": 5,
+        "pos": "noun",
+        "example": {
+          "targetText": "Customers value the convenience of having several ways to pay.",
+          "base": {
+            "de": "Die Kundschaft schätzt die einfache Handhabung durch mehrere Zahlungsmöglichkeiten."
+          }
+        },
+        "base": {
+          "de": "Bequemlichkeit; einfache Handhabung"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "class-versus-app-learning",
+      "title": {
+        "de": "Sprachkurs oder App"
+      },
+      "situation": {
+        "de": "Eine Freundin findet, du solltest deinen abendlichen Sprachkurs aufgeben und nur noch mit einer App lernen.",
+        "en": "A friend thinks you should drop your evening language class and study only with an app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "informal",
+          "informal",
+          "informal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "friend",
+          "role": {
+            "de": "Freundin"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Freundin fragt: “Why keep paying for that evening class? There’s an app you can use wherever you are.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "Why keep paying for that evening class? There’s an app you can use wherever you are.",
+          "base": {
+            "de": "Warum weiter für den Abendkurs zahlen? Es gibt eine App, die du überall nutzen kannst."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "informal",
+          "targetText": "The app’s cheaper and portable, whereas the class gives me speaking practice with people who expect me to show up.",
+          "base": {
+            "de": "Die App ist günstiger und überall nutzbar, während ich im Kurs mit Menschen spreche, die damit rechnen, dass ich komme."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "But you can speak with the app too, and nobody notices when you skip a session.",
+          "base": {
+            "de": "Aber mit der App kannst du auch sprechen, und niemand merkt, wenn du eine Einheit auslässt."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "informal",
+          "targetText": "That’s true, but being able to skip is precisely the problem; the class builds discipline I don’t have on my own.",
+          "base": {
+            "de": "Das stimmt, aber gerade das Auslassenkönnen ist das Problem; der Kurs fördert eine Disziplin, die ich allein nicht aufbringe."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "friend",
+          "targetText": "You’ve only got two free evenings a week. How will you fit both options in?",
+          "base": {
+            "de": "Du hast nur zwei freie Abende pro Woche. Wie willst du beides unterbringen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "informal",
+          "targetText": "What if we keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets dropped?",
+          "base": {
+            "de": "Was wäre, wenn wir den Dienstagskurs behalten und an den übrigen Tagen die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "The app’s cheaper and portable, whereas ",
+        "chunks": [
+          "the class",
+          "gives me",
+          "speaking practice",
+          "with people",
+          "who expect me"
+        ],
+        "distractors": [
+          "writing practice",
+          "who expects me"
+        ],
+        "frameSuffix": " to show up."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", but being able to skip is precisely the problem; the class builds "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " I don’t have on my own."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "That’s true",
+            "acceptedAnswers": [
+              "That’s true",
+              "That's true"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "discipline",
+            "acceptedAnswers": [
+              "discipline"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "What if we",
+            "acceptedAnswers": [
+              "What if we",
+              "How about we"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "dropped",
+            "acceptedAnswers": [
+              "dropped"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "drop; Partizip nach gets; keine der beiden Optionen wird aufgegeben"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "The app’s cheaper and ",
+        "answer": "portable",
+        "acceptedAnswers": [
+          "portable"
+        ],
+        "after": ", whereas the class gives me speaking practice with people who expect me to show up.",
+        "fallbackChoices": [
+          "portable",
+          "crowded",
+          "exhausting",
+          "compulsory"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine gemeinsame Lösung vorschlagen"
+        },
+        "rule": {
+          "de": "What if we, how about we und shall we eröffnen Vorschläge, während so we’re agreed that eine mögliche Einigung überprüft."
+        },
+        "examples": [
+          {
+            "targetText": "What if we keep Tuesday’s class and use the app the rest of the week? So we’re agreed that neither gets dropped?",
+            "base": {
+              "de": "Was wäre, wenn wir den Dienstagskurs behalten und an den übrigen Tagen die App nutzen? Sind wir uns also einig, dass nichts wegfällt?"
+            },
+            "highlights": [
+              "What if we",
+              "So we’re agreed that"
+            ]
+          },
+          {
+            "targetText": "How about we keep one class each week? Shall we try that for a month?",
+            "base": {
+              "de": "Wie wäre es, wenn wir einen Kursabend pro Woche behalten? Wollen wir das einen Monat ausprobieren?"
+            },
+            "highlights": [
+              "How about we",
+              "Shall we"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "whereas",
+          "kind": "connector",
+          "base": {
+            "de": "wohingegen; während (im Gegensatz dazu)"
+          }
+        },
+        {
+          "targetText": "what if we",
+          "kind": "frame",
+          "base": {
+            "de": "was wäre, wenn wir"
+          }
+        },
+        {
+          "targetText": "so we’re agreed that",
+          "kind": "frame",
+          "base": {
+            "de": "also sind wir uns einig, dass"
+          },
+          "acceptedAnswers": [
+            "so we’re agreed that",
+            "so we're agreed that"
+          ]
+        },
+        {
+          "targetText": "how about we",
+          "kind": "frame",
+          "base": {
+            "de": "wie wäre es, wenn wir"
+          }
+        },
+        {
+          "targetText": "shall we",
+          "kind": "frame",
+          "base": {
+            "de": "wollen wir"
+          }
+        },
+        {
+          "targetText": "discipline",
+          "kind": "noun",
+          "base": {
+            "de": "Disziplin"
+          }
+        },
+        {
+          "targetText": "portable",
+          "kind": "adjective",
+          "base": {
+            "de": "tragbar; überall nutzbar"
+          }
+        },
+        {
+          "targetText": "speaking practice",
+          "kind": "noun",
+          "base": {
+            "de": "Sprechpraxis"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "class",
+            "speaking",
+            "expect"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "true",
+            "skip",
+            "discipline"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Tuesday’s",
+            "agreed",
+            "dropped"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "discipline",
+        "familyKey": "discipline",
+        "surface": "discipline",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "A fixed class gives me the discipline to practice regularly.",
+          "base": {
+            "de": "Ein fester Kurs gibt mir die Disziplin, regelmäßig zu üben."
+          }
+        },
+        "base": {
+          "de": "Disziplin; Selbstdisziplin"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "two-job-offers",
+      "title": {
+        "de": "Gehalt und Entwicklungschancen"
+      },
+      "situation": {
+        "de": "Du vergleichst mit einer beratenden Vertrauensperson zwei Stellenangebote: ein Start-up und eine Bank mit dreißig Prozent mehr Gehalt.",
+        "en": "You compare two job offers with a mentor: a startup and a bank paying thirty percent more."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "neutral",
+          "neutral",
+          "neutral"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "mentor",
+          "role": {
+            "de": "beratende Vertrauensperson"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Vertrauensperson fragt: “The bank’s offering thirty percent more, but the startup promises responsibility. Which offer gives you the stronger future?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "mentor",
+          "targetText": "The bank’s offering thirty percent more, but the startup promises responsibility. Which offer gives you the stronger future?",
+          "base": {
+            "de": "Die Bank bietet dreißig Prozent mehr, aber das Start-up verspricht Verantwortung. Welches Angebot bietet dir die besseren Zukunftsaussichten?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "position",
+          "register": "neutral",
+          "targetText": "The startup, in which I’d lead a small team, arguably offers more growth than the bank’s better-paid but narrower role.",
+          "base": {
+            "de": "Das Start-up, in dem ich ein kleines Team leiten würde, bietet wohl mehr Entwicklung als die besser bezahlte, aber enger gefasste Bankstelle."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentor",
+          "targetText": "Growth doesn’t pay the rent, though. Isn’t thirty percent too much to dismiss?",
+          "base": {
+            "de": "Entwicklung zahlt allerdings keine Miete. Sind dreißig Prozent nicht zu viel, um sie abzutun?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "neutral",
+          "targetText": "By growth I mean marketable skills; bank managers, to whom I’d be one analyst among two hundred, would offer less responsibility.",
+          "base": {
+            "de": "Mit Entwicklung meine ich verwertbare Fähigkeiten; die Bankführung, für die ich eine von zweihundert Analysekräften wäre, würde weniger Verantwortung bieten."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "mentor",
+          "targetText": "Could you negotiate with the startup before accepting such a large salary gap?",
+          "base": {
+            "de": "Könntest du mit dem Start-up verhandeln, bevor du einen so großen Gehaltsunterschied akzeptierst?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "counteroffer",
+          "register": "neutral",
+          "targetText": "I’d ask the startup for equity alongside salary, in which case future ownership could narrow the gap without guaranteeing a return.",
+          "base": {
+            "de": "Ich würde das Start-up neben dem Gehalt um Anteile bitten; dann könnte eine spätere Beteiligung die Lücke verkleinern, ohne eine Rendite zu garantieren."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "The startup, ",
+        "chunks": [
+          "in which",
+          "I’d lead",
+          "a small team,",
+          "arguably offers",
+          "more growth"
+        ],
+        "distractors": [
+          "a large team,",
+          "less growth"
+        ],
+        "frameSuffix": " than the bank’s better-paid but narrower role."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " marketable skills; bank managers, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " I’d be one analyst among two hundred, would offer less responsibility."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "By growth I mean",
+            "acceptedAnswers": [
+              "By growth I mean"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "to whom",
+            "acceptedAnswers": [
+              "to whom"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Beziehe dich nach to auf die Bankführung als Personen."
+            },
+            "choices": [
+              "to whom",
+              "to which",
+              "to whose",
+              "to where"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " the startup for "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " alongside salary, in which case future ownership could narrow the gap without guaranteeing a return."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "I’d ask",
+            "acceptedAnswers": [
+              "I’d ask",
+              "I'd ask",
+              "I would ask"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "equity",
+            "acceptedAnswers": [
+              "equity"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "The startup, in which I’d lead a small team, ",
+        "answer": "arguably",
+        "acceptedAnswers": [
+          "arguably"
+        ],
+        "after": " offers more growth than the bank’s better-paid but narrower role.",
+        "fallbackChoices": [
+          "arguably",
+          "arguable",
+          "rarely",
+          "accidentally"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Möglichkeit mit Zusatzinformation begründen"
+        },
+        "rule": {
+          "de": "In which fügt eine nähere Beschreibung hinzu; arguably kennzeichnet die anschließende Bewertung als begründbar, aber nicht unbestreitbar."
+        },
+        "examples": [
+          {
+            "targetText": "The startup, in which I’d lead a small team, arguably offers more growth than the bank’s better-paid but narrower role.",
+            "base": {
+              "de": "Das Start-up, in dem ich ein kleines Team leiten würde, bietet wohl mehr Entwicklung als die besser bezahlte, aber enger gefasste Bankstelle."
+            },
+            "highlights": [
+              "in which",
+              "arguably"
+            ]
+          },
+          {
+            "targetText": "What I mean is a role in which I can make decisions, rather than simply process requests.",
+            "base": {
+              "de": "Ich meine eine Stelle, in der ich Entscheidungen treffen kann, statt nur Anfragen zu bearbeiten."
+            },
+            "highlights": [
+              "What I mean is",
+              "in which"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "in which",
+          "kind": "frame",
+          "base": {
+            "de": "in dem; in der"
+          }
+        },
+        {
+          "targetText": "what I mean is",
+          "kind": "frame",
+          "base": {
+            "de": "was ich meine, ist"
+          }
+        },
+        {
+          "targetText": "by growth I mean",
+          "kind": "frame",
+          "base": {
+            "de": "mit Entwicklung meine ich"
+          }
+        },
+        {
+          "targetText": "arguably",
+          "kind": "adverb",
+          "base": {
+            "de": "wohl; mit guten Gründen vertretbar"
+          }
+        },
+        {
+          "targetText": "marketable",
+          "kind": "adjective",
+          "base": {
+            "de": "auf dem Markt verwertbar"
+          }
+        },
+        {
+          "targetText": "equity",
+          "kind": "noun",
+          "base": {
+            "de": "Unternehmensanteile"
+          }
+        },
+        {
+          "targetText": "responsibility",
+          "kind": "noun",
+          "base": {
+            "de": "Verantwortung"
+          }
+        },
+        {
+          "targetText": "salary gap",
+          "kind": "noun",
+          "base": {
+            "de": "Gehaltsunterschied"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "lead",
+            "arguably",
+            "growth"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "marketable",
+            "whom",
+            "responsibility"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "equity",
+            "ownership",
+            "return"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "arguably",
+        "familyKey": "argue",
+        "surface": "arguably",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "A role with real responsibility is arguably the better investment in my future.",
+          "base": {
+            "de": "Eine Stelle mit echter Verantwortung ist wohl die bessere Investition in meine Zukunft."
+          }
+        },
+        "base": {
+          "de": "wohl; mit guten Gründen vertretbar"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "move-city-or-stay",
+      "title": {
+        "de": "Umziehen oder bleiben"
+      },
+      "situation": {
+        "de": "Eine Person aus deiner Nachbarschaft hört von deinem möglichen Umzug für eine neue Stelle und will dich zum Bleiben bewegen.",
+        "en": "A neighbor hears you might move for a new job and tries to persuade you to stay."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "informal",
+          "informal",
+          "informal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "neighbor",
+          "role": {
+            "de": "Person aus der Nachbarschaft"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person fragt: “I’ve heard you might leave for that new job. Is it really worth giving up this neighborhood?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "neighbor",
+          "targetText": "I’ve heard you might leave for that new job. Is it really worth giving up this neighborhood?",
+          "base": {
+            "de": "Ich habe gehört, du könntest wegen der neuen Stelle wegziehen. Lohnt es sich wirklich, diese Nachbarschaft aufzugeben?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "informal",
+          "targetText": "The new job pays better, and since rent is lower there, I’d save more, even though I’d miss this neighborhood.",
+          "base": {
+            "de": "Die neue Stelle wird besser bezahlt, und da die Miete dort niedriger ist, würde ich mehr sparen, obwohl mir diese Nachbarschaft fehlen würde."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "neighbor",
+          "targetText": "But wait, you’d lose your whole network! Those connections take years to build.",
+          "base": {
+            "de": "Aber warte, du würdest dein ganzes Netzwerk verlieren! Solche Kontakte entstehen erst über Jahre."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "concede",
+          "register": "informal",
+          "targetText": "Fair point, but let me finish: to be fair, most of my network is online, so moving wouldn’t erase those connections.",
+          "base": {
+            "de": "Berechtigter Einwand, aber lass mich ausreden: Fairerweise muss man sagen, dass die meisten Kontakte online bestehen, ein Umzug würde sie also nicht auslöschen."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "neighbor",
+          "targetText": "Your parents won’t like it at all. What are you going to tell them?",
+          "base": {
+            "de": "Deinen Eltern wird das gar nicht gefallen. Was wirst du ihnen sagen?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "informal",
+          "targetText": "Nonetheless, I’ll tell my parents this is the right move for me, and I’ll commit to visiting every month.",
+          "base": {
+            "de": "Dennoch werde ich meinen Eltern sagen, dass der Umzug für mich richtig ist, und ihnen monatliche Besuche zusagen."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "The new job pays better, and ",
+        "chunks": [
+          "since rent",
+          "is lower there,",
+          "I’d save",
+          "more,",
+          "even though"
+        ],
+        "distractors": [
+          "is higher there,",
+          "less,"
+        ],
+        "frameSuffix": " I’d miss this neighborhood."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", but "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ": to be fair, most of my network is online, so moving wouldn’t erase those connections."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Fair point",
+            "acceptedAnswers": [
+              "Fair point"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "let me finish",
+            "acceptedAnswers": [
+              "let me finish"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", I’ll tell my parents this is the right move for me, and I’ll commit to "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " every month."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Nonetheless",
+            "acceptedAnswers": [
+              "Nonetheless",
+              "Nevertheless"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "visiting",
+            "acceptedAnswers": [
+              "visiting"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "visit; Form nach commit to"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "The new job pays better, and since rent is lower there, I’d ",
+        "answer": "save",
+        "acceptedAnswers": [
+          "save"
+        ],
+        "after": " more, even though I’d miss this neighborhood.",
+        "fallbackChoices": [
+          "save",
+          "spend",
+          "borrow",
+          "owe"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Einwand aufnehmen und ausreden"
+        },
+        "rule": {
+          "de": "Fair point würdigt den Einwand, let me finish bittet ums Ausreden und to be fair leitet eine faire Einordnung ein."
+        },
+        "examples": [
+          {
+            "targetText": "Fair point, but let me finish: to be fair, most of my network is online, so moving wouldn’t erase those connections.",
+            "base": {
+              "de": "Berechtigter Einwand, aber lass mich ausreden: Fairerweise muss man sagen, dass die meisten Kontakte online bestehen, ein Umzug würde sie also nicht auslöschen."
+            },
+            "highlights": [
+              "Fair point",
+              "let me finish",
+              "to be fair"
+            ]
+          },
+          {
+            "targetText": "Fair point, but let me finish: to be fair, the journey home is much shorter than it used to be.",
+            "base": {
+              "de": "Berechtigter Einwand, aber lass mich ausreden: Fairerweise ist die Heimreise viel kürzer als früher."
+            },
+            "highlights": [
+              "Fair point",
+              "let me finish",
+              "to be fair"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "fair point",
+          "kind": "frame",
+          "base": {
+            "de": "berechtigter Einwand"
+          }
+        },
+        {
+          "targetText": "let me finish",
+          "kind": "frame",
+          "base": {
+            "de": "lass mich ausreden"
+          }
+        },
+        {
+          "targetText": "to be fair",
+          "kind": "frame",
+          "base": {
+            "de": "fairerweise"
+          }
+        },
+        {
+          "targetText": "nonetheless",
+          "kind": "connector",
+          "base": {
+            "de": "dennoch"
+          }
+        },
+        {
+          "targetText": "network",
+          "kind": "noun",
+          "base": {
+            "de": "Netzwerk; Kontaktkreis"
+          }
+        },
+        {
+          "targetText": "connections",
+          "lemma": "connection",
+          "kind": "noun",
+          "base": {
+            "de": "Kontakte; Verbindungen"
+          }
+        },
+        {
+          "targetText": "erase",
+          "kind": "verb",
+          "base": {
+            "de": "auslöschen"
+          }
+        },
+        {
+          "targetText": "commit",
+          "kind": "verb",
+          "base": {
+            "de": "sich verpflichten"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "rent",
+            "lower",
+            "save"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Fair",
+            "finish",
+            "network"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Nonetheless",
+            "parents",
+            "visiting"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "nonetheless",
+        "familyKey": "nonetheless",
+        "surface": "nonetheless",
+        "turnIndex": 5,
+        "pos": "connector",
+        "example": {
+          "targetText": "Moving will be difficult; nonetheless, the opportunity is worth pursuing.",
+          "base": {
+            "de": "Der Umzug wird schwierig; dennoch lohnt es sich, die Chance zu verfolgen."
+          }
+        },
+        "base": {
+          "de": "dennoch; nichtsdestotrotz"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "recommend-a-policy-option",
+      "title": {
+        "de": "Eine Parkregelung empfehlen"
+      },
+      "situation": {
+        "de": "Ein Wohnviertelausschuss vergleicht ein Parkverbot, kostenpflichtige Parkberechtigungen und den unveränderten Zustand anhand eines eigenen Kostenmodells.",
+        "en": "A residents’ committee compares a parking ban, paid permits, and no change using its own cost model."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "formal",
+          "formal",
+          "formal"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "chair",
+          "role": {
+            "de": "Ausschussvorsitz"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Ausschussvorsitz fragt: “We have three options: ban parking, introduce paid permits, or change nothing. How do you compare them?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "chair",
+          "targetText": "We have three options: ban parking, introduce paid permits, or change nothing. How do you compare them?",
+          "base": {
+            "de": "Wir haben drei Optionen: Parken verbieten, kostenpflichtige Parkberechtigungen einführen oder nichts ändern. Wie vergleichst du sie?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "formal",
+          "targetText": "Firstly, a ban clears the streets; moreover, permits generate income, whereas doing nothing costs least but leaves the parking problem untouched.",
+          "base": {
+            "de": "Erstens hält ein Verbot die Straßen frei; außerdem bringen Parkberechtigungen Einnahmen, während Nichtstun am wenigsten kostet, das Parkproblem aber bestehen lässt."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "chair",
+          "targetText": "But permits require additional staff and enforcement. How could this committee afford those costs?",
+          "base": {
+            "de": "Aber Parkberechtigungen erfordern zusätzliches Personal und Kontrollen. Wie könnte sich der Ausschuss diese Kosten leisten?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "rebut",
+          "register": "formal",
+          "targetText": "That is true, but our cost model predicts that permit fees will cover staffing within a year; a ban generates no revenue.",
+          "base": {
+            "de": "Das stimmt, aber unser Kostenmodell erwartet, dass die Gebühren das Personal innerhalb eines Jahres finanzieren; ein Verbot erzeugt keine Einnahmen."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "chair",
+          "targetText": "Please give us one recommendation that the committee can put to a vote today.",
+          "base": {
+            "de": "Bitte gib uns eine Empfehlung, über die der Ausschuss heute abstimmen kann."
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "formal",
+          "targetText": "Ultimately, paid permits offer the compromise I recommend: changing parking behavior without imposing a complete ban.",
+          "base": {
+            "de": "Letztlich bieten kostenpflichtige Parkberechtigungen den von mir empfohlenen Kompromiss: das Parkverhalten ändern, ohne ein vollständiges Verbot einzuführen."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Firstly, a ban clears the streets; moreover, ",
+        "chunks": [
+          "permits generate",
+          "income,",
+          "whereas doing nothing",
+          "costs least",
+          "but leaves"
+        ],
+        "distractors": [
+          "costs most",
+          "permits consume"
+        ],
+        "frameSuffix": " the parking problem untouched."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", but our cost model predicts that permit fees will "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " staffing within a year; a ban generates no revenue."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "That is true",
+            "acceptedAnswers": [
+              "That is true"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "cover",
+            "acceptedAnswers": [
+              "cover"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "cover; Verbform nach will"
+            },
+            "choices": [
+              "cover",
+              "covers",
+              "covered",
+              "covering"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", paid permits offer the "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " I recommend: changing parking behavior without imposing a complete ban."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ultimately",
+            "acceptedAnswers": [
+              "Ultimately"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "compromise",
+            "acceptedAnswers": [
+              "compromise"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Firstly, a ban clears the streets; ",
+        "answer": "moreover",
+        "acceptedAnswers": [
+          "moreover"
+        ],
+        "after": ", permits generate income, whereas doing nothing costs least but leaves the parking problem untouched.",
+        "fallbackChoices": [
+          "moreover",
+          "previously",
+          "whether",
+          "unfortunately"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Drei Optionen geordnet vergleichen"
+        },
+        "rule": {
+          "de": "Firstly eröffnet den Vergleich, moreover ergänzt einen Gesichtspunkt und whereas stellt ihm eine andere Option gegenüber."
+        },
+        "examples": [
+          {
+            "targetText": "Firstly, a ban clears the streets; moreover, permits generate income, whereas doing nothing costs least but leaves the parking problem untouched.",
+            "base": {
+              "de": "Erstens hält ein Verbot die Straßen frei; außerdem bringen Parkberechtigungen Einnahmen, während Nichtstun am wenigsten kostet, das Parkproblem aber bestehen lässt."
+            },
+            "highlights": [
+              "Firstly",
+              "moreover",
+              "whereas"
+            ]
+          },
+          {
+            "targetText": "Firstly, the plan limits parking; secondly, it protects access; moreover, the fees support enforcement.",
+            "base": {
+              "de": "Erstens begrenzt der Plan das Parken; zweitens erhält er den Zugang; außerdem finanzieren die Gebühren die Kontrolle."
+            },
+            "highlights": [
+              "Firstly",
+              "secondly",
+              "moreover"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "firstly",
+          "kind": "frame",
+          "base": {
+            "de": "erstens"
+          }
+        },
+        {
+          "targetText": "moreover",
+          "kind": "connector",
+          "base": {
+            "de": "außerdem"
+          }
+        },
+        {
+          "targetText": "ultimately",
+          "kind": "adverb",
+          "base": {
+            "de": "letztlich"
+          }
+        },
+        {
+          "targetText": "compromise",
+          "kind": "noun",
+          "base": {
+            "de": "Kompromiss"
+          }
+        },
+        {
+          "targetText": "permits",
+          "lemma": "permit",
+          "kind": "noun",
+          "base": {
+            "de": "Parkberechtigungen"
+          }
+        },
+        {
+          "targetText": "enforcement",
+          "kind": "noun",
+          "base": {
+            "de": "Durchsetzung; Kontrolle"
+          }
+        },
+        {
+          "targetText": "revenue",
+          "kind": "noun",
+          "base": {
+            "de": "Einnahmen"
+          }
+        },
+        {
+          "targetText": "untouched",
+          "kind": "adjective",
+          "base": {
+            "de": "unverändert; unangetastet"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "permits",
+            "income",
+            "least"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "model",
+            "staffing",
+            "revenue"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Ultimately",
+            "compromise",
+            "behavior"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "compromise",
+        "familyKey": "compromise",
+        "surface": "compromise",
+        "turnIndex": 5,
+        "pos": "noun",
+        "example": {
+          "targetText": "Paid permits offer a compromise between unrestricted parking and a complete ban.",
+          "base": {
+            "de": "Kostenpflichtige Parkberechtigungen bieten einen Kompromiss zwischen unbegrenztem Parken und einem vollständigen Verbot."
+          }
+        },
+        "base": {
+          "de": "Kompromiss"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

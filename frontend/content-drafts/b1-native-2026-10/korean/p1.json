@@ -1,0 +1,2228 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 1,
+  "title": {
+    "de": "Mein Wochenende erzählen",
+    "en": "Narrating my days"
+  },
+  "subtitle": {
+    "de": "Erlebnisse verbinden und auf Nachfragen eingehen",
+    "en": "Connect events and respond to follow-up questions"
+  },
+  "anchor": "Monday small talk with colleagues, neighbor conversations and language-exchange catch-ups in polite Korean.",
+  "lessons": [
+    {
+      "slug": "gapjagi-weekend-rain",
+      "title": {
+        "de": "Ein Ausflug ins Grüne",
+        "en": "A trip to the hills"
+      },
+      "situation": {
+        "de": "Am Montag sprichst du in der Büroküche über deinen Wochenendausflug.",
+        "en": "On Monday, you chat about your weekend outing in the office kitchen."
+      },
+      "pedagogicalGoal": "Mit -는데 den Hintergrund einer vergangenen Begebenheit nennen und mit 갑자기 eine unerwartete Wendung markieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "주말에 산에 다녀왔어요? 날씨는 어땠어요?",
+          "baseText": {
+            "de": "Warst du am Wochenende in den Bergen? Wie war das Wetter?",
+            "en": "Did you go to the mountains at the weekend? How was the weather?"
+          }
+        },
+        {
+          "targetText": "토요일에 산에 갔는데 갑자기 비가 많이 왔어요.",
+          "baseText": {
+            "de": "Am Samstag war ich in den Bergen, und plötzlich hat es stark geregnet.",
+            "en": "I went to the mountains on Saturday, and suddenly it rained heavily."
+          }
+        },
+        {
+          "targetText": "비를 많이 맞았어요? 그다음에는 어떻게 했어요?",
+          "baseText": {
+            "de": "Bist du sehr nass geworden? Was hast du danach gemacht?",
+            "en": "Did you get very wet? What did you do after that?"
+          }
+        },
+        {
+          "targetText": "그래서 옷이 젖었는데 카페에서 잠깐 쉬었어요.",
+          "baseText": {
+            "de": "Deshalb war meine Kleidung nass, und ich habe kurz in einem Café Pause gemacht.",
+            "en": "So my clothes got wet, and I took a short break in a cafe."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었는데: Hintergrund einer Erzählung",
+        "rule": {
+          "de": "Die Vergangenheitsform mit -는데 liefert den Hintergrund für das nächste Ereignis. Sie behauptet nicht automatisch eine Ursache.",
+          "en": "A past form ending in -는데 sets the background for the next event. It does not automatically express a cause."
+        },
+        "examples": [
+          {
+            "targetText": "토요일에 산에 갔는데 갑자기 비가 많이 왔어요.",
+            "baseText": {
+              "de": "Am Samstag war ich in den Bergen, und plötzlich hat es stark geregnet.",
+              "en": "I went to the mountains on Saturday, and suddenly it rained heavily."
+            },
+            "highlight": "갔는데"
+          },
+          {
+            "targetText": "밖에서 기다렸는데 친구가 곧 왔어요.",
+            "baseText": {
+              "de": "Ich habe draußen gewartet, und mein Freund kam bald.",
+              "en": "I was waiting outside, and my friend arrived soon."
+            },
+            "highlight": "기다렸는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그래서",
+            "그러면",
+            "왜냐하면",
+            "예를 들어"
+          ]
+        },
+        " 옷이 ",
+        {
+          "kind": "form",
+          "answer": "젖었는데",
+          "cue": "Vergangener Hintergrund -었는데 / past background -었는데",
+          "choices": [
+            "젖었는데",
+            "젖었어요",
+            "젖은",
+            "젖을"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "카페에서",
+          "choices": [
+            "카페에서",
+            "기차에서",
+            "공항에서",
+            "회사에서"
+          ]
+        },
+        " 잠깐 쉬었어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "토요일에",
+          "baseText": {
+            "de": "am Samstag",
+            "en": "on Saturday"
+          }
+        },
+        {
+          "targetText": "산에 갔는데",
+          "baseText": {
+            "de": "war ich in den Bergen, und",
+            "en": "I went to the mountains, and"
+          }
+        },
+        {
+          "targetText": "갑자기",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "비가 많이 왔어요.",
+          "baseText": {
+            "de": "es hat stark geregnet.",
+            "en": "it rained heavily."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "갑자기",
+          "baseText": {
+            "de": "plötzlich",
+            "en": "suddenly"
+          }
+        },
+        {
+          "targetText": "산에",
+          "baseText": {
+            "de": "in die Berge",
+            "en": "to the mountains"
+          }
+        },
+        {
+          "targetText": "갔는데",
+          "baseText": {
+            "de": "ich ging dorthin, und",
+            "en": "I went there, and"
+          }
+        },
+        {
+          "targetText": "비가 많이 왔어요",
+          "baseText": {
+            "de": "es hat stark geregnet",
+            "en": "it rained heavily"
+          }
+        },
+        {
+          "targetText": "그래서",
+          "baseText": {
+            "de": "deshalb / dadurch",
+            "en": "so / as a result"
+          }
+        },
+        {
+          "targetText": "젖었는데",
+          "baseText": {
+            "de": "war nass geworden, und",
+            "en": "had got wet, and"
+          }
+        },
+        {
+          "targetText": "잠깐 쉬었어요",
+          "baseText": {
+            "de": "ich habe kurz Pause gemacht",
+            "en": "I took a short break"
+          }
+        }
+      ],
+      "recall": {
+        "before": "토요일에 산에 갔는데 ",
+        "answer": "갑자기",
+        "after": " 비가 많이 왔어요.",
+        "fallbackChoices": [
+          "갑자기",
+          "천천히",
+          "조용히",
+          "미리"
+        ]
+      },
+      "speakRequired": [
+        "갔는데",
+        "갑자기",
+        "왔어요"
+      ],
+      "sceneCaption": {
+        "de": "In der Büroküche kommt die Frage: „주말에 산에 다녀왔어요? 날씨는 어땠어요?“",
+        "en": "In the office kitchen, a colleague asks: “주말에 산에 다녀왔어요? 날씨는 어땠어요?”"
+      },
+      "trophyWord": {
+        "word": "갑자기",
+        "meaning": {
+          "de": "plötzlich",
+          "en": "suddenly"
+        },
+        "example": "갑자기 전화가 왔어요.",
+        "whyThisWord": {
+          "de": "Mit 갑자기 bringst du eine unerwartete Wendung in eine Alltagserzählung.",
+          "en": "Use 갑자기 to introduce an unexpected turn in an everyday story."
+        }
+      },
+      "distractors": [
+        "토요일에 산에 갔는데 비가 전혀 안 왔어요.",
+        "토요일에는 집에서 하루 종일 쉬었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch beim ersten Kaffee am Montag.",
+        "en": "A conversation over Monday's first coffee."
+      },
+      "songMood": "Light acoustic warmth with a brief playful turn.",
+      "visualNotes": "Office kitchenette, two neutral adult silhouettes, Monday morning light; no rain imagery before the learner reply."
+    },
+    {
+      "slug": "geudongan-neighborhood-festival",
+      "title": {
+        "de": "Neuigkeiten aus dem Viertel",
+        "en": "News from the neighborhood"
+      },
+      "situation": {
+        "de": "Im Hausflur triffst du jemanden aus der Nachbarschaft nach einer Reise wieder.",
+        "en": "In the hallway, you meet a neighbor who has returned from a trip."
+      },
+      "pedagogicalGoal": "Mit 그동안 einen gemeinsamen Zeitraum aufgreifen und ein vergangenes Ereignis mit -는데 weiterführen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "여행 다녀왔어요. 그동안 동네에 무슨 일 있었어요?",
+          "baseText": {
+            "de": "Ich bin wieder von der Reise zurück. Was war inzwischen im Viertel los?",
+            "en": "I'm back from my trip. What happened in the neighborhood while I was away?"
+          }
+        },
+        {
+          "targetText": "그동안 동네 축제가 열렸는데 저는 친구랑 구경했어요.",
+          "baseText": {
+            "de": "In der Zwischenzeit gab es ein Fest im Viertel, das ich mir mit einem Freund angesehen habe.",
+            "en": "There was a neighborhood festival while you were away, and I went to look around with a friend."
+          }
+        },
+        {
+          "targetText": "축제에 아이들도 많았어요? 어떤 공연이 있었어요?",
+          "baseText": {
+            "de": "Waren auch viele Kinder auf dem Fest? Was für Aufführungen gab es?",
+            "en": "Were there lots of children at the festival too? What performances were there?"
+          }
+        },
+        {
+          "targetText": "네, 아이들이 많았는데 모두 인형극을 정말 좋아했어요.",
+          "baseText": {
+            "de": "Ja, es waren viele Kinder da, und alle fanden das Puppentheater richtig toll.",
+            "en": "Yes, there were lots of children, and they all really enjoyed the puppet show."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zeitlicher Rahmen und -는데",
+        "rule": {
+          "de": "그동안 greift den bereits bekannten Zeitraum auf. Mit -는데 verbindest du eine Hintergrundinformation mit dem, was du dazu erzählen möchtest.",
+          "en": "그동안 refers back to an understood period of time. Use -는데 to connect background information to the part you want to tell."
+        },
+        "examples": [
+          {
+            "targetText": "그동안 동네 축제가 열렸는데 저는 친구랑 구경했어요.",
+            "baseText": {
+              "de": "In der Zwischenzeit gab es ein Fest im Viertel, das ich mir mit einem Freund angesehen habe.",
+              "en": "There was a neighborhood festival while you were away, and I went to look around with a friend."
+            },
+            "highlight": "열렸는데"
+          },
+          {
+            "targetText": "사람이 많았는데 자리는 있었어요.",
+            "baseText": {
+              "de": "Es waren viele Leute da, aber es gab noch Plätze.",
+              "en": "There were lots of people, but there were seats available."
+            },
+            "highlight": "많았는데"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 아이들이 ",
+        {
+          "kind": "form",
+          "answer": "많았는데",
+          "cue": "Vergangener Hintergrund -았는데 / past background -았는데",
+          "choices": [
+            "많았는데",
+            "많았어요",
+            "많은",
+            "많을"
+          ]
+        },
+        " 모두 ",
+        {
+          "kind": "choice",
+          "answer": "인형극을",
+          "choices": [
+            "인형극을",
+            "계단을",
+            "영수증을",
+            "시간표를"
+          ]
+        },
+        " 정말 좋아했어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "그동안",
+          "baseText": {
+            "de": "in der Zwischenzeit",
+            "en": "while you were away"
+          }
+        },
+        {
+          "targetText": "동네 축제가 열렸는데",
+          "baseText": {
+            "de": "gab es ein Fest im Viertel, und",
+            "en": "there was a neighborhood festival, and"
+          }
+        },
+        {
+          "targetText": "저는 친구랑",
+          "baseText": {
+            "de": "ich habe es mir mit einem Freund",
+            "en": "with a friend, I"
+          }
+        },
+        {
+          "targetText": "구경했어요.",
+          "baseText": {
+            "de": "angesehen.",
+            "en": "went to look around."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "그동안",
+          "baseText": {
+            "de": "in der Zwischenzeit",
+            "en": "during that time"
+          }
+        },
+        {
+          "targetText": "동네 축제",
+          "baseText": {
+            "de": "Fest im Viertel",
+            "en": "neighborhood festival"
+          }
+        },
+        {
+          "targetText": "열렸는데",
+          "baseText": {
+            "de": "fand statt, und",
+            "en": "was held, and"
+          }
+        },
+        {
+          "targetText": "친구랑",
+          "baseText": {
+            "de": "mit einem Freund",
+            "en": "with a friend"
+          }
+        },
+        {
+          "targetText": "구경했어요",
+          "baseText": {
+            "de": "ich habe mich umgesehen",
+            "en": "I looked around"
+          }
+        },
+        {
+          "targetText": "아이들이",
+          "baseText": {
+            "de": "die Kinder",
+            "en": "the children"
+          }
+        },
+        {
+          "targetText": "인형극을",
+          "baseText": {
+            "de": "das Puppentheater",
+            "en": "the puppet show"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "그동안",
+        "after": " 동네 축제가 열렸는데 저는 친구랑 구경했어요.",
+        "fallbackChoices": [
+          "그동안",
+          "내일부터",
+          "내년에",
+          "다음부터"
+        ]
+      },
+      "speakRequired": [
+        "그동안",
+        "열렸는데",
+        "구경했어요"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur hörst du: „여행 다녀왔어요. 그동안 동네에 무슨 일 있었어요?“",
+        "en": "In the hallway, your neighbor says: “여행 다녀왔어요. 그동안 동네에 무슨 일 있었어요?”"
+      },
+      "trophyWord": {
+        "word": "그동안",
+        "meaning": {
+          "de": "in der Zwischenzeit / während dieser Zeit",
+          "en": "during that time / in the meantime"
+        },
+        "example": "그동안 잘 지냈어요?",
+        "whyThisWord": {
+          "de": "그동안 verbindet ein Wiedersehen mit der Zeit, in der man keinen Kontakt hatte.",
+          "en": "그동안 connects a reunion to the time when you were apart."
+        }
+      },
+      "distractors": [
+        "축제는 다음 달에 열릴 거예요.",
+        "저는 그동안 다른 동네로 이사했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Wiedersehen neben den Briefkästen.",
+        "en": "Catching up beside the mailboxes."
+      },
+      "songMood": "Friendly conversational rhythm with soft percussion.",
+      "visualNotes": "Apartment hallway and mailboxes; a returning neighbor with a travel bag, no festival shown yet."
+    },
+    {
+      "slug": "cheoeum-new-restaurant",
+      "title": {
+        "de": "Das neue Restaurant",
+        "en": "The new restaurant"
+      },
+      "situation": {
+        "de": "Beim Sprachtandem fragt dein Gegenüber nach einem neuen Restaurant im Viertel.",
+        "en": "At your language exchange, your partner asks about a new neighborhood restaurant."
+      },
+      "pedagogicalGoal": "Einen ersten Besuch mit 처음 erzählen und mit -는데 Hintergrund und Bewertung verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "새 식당에 다녀왔어요? 거기는 어땠어요?",
+          "baseText": {
+            "de": "Warst du im neuen Restaurant? Wie war es dort?",
+            "en": "Did you go to the new restaurant? What was it like?"
+          }
+        },
+        {
+          "targetText": "새 식당에 처음 갔는데 줄이 정말 길었어요.",
+          "baseText": {
+            "de": "Ich war zum ersten Mal im neuen Restaurant, und die Schlange war richtig lang.",
+            "en": "I went to the new restaurant for the first time, and the line was really long."
+          }
+        },
+        {
+          "targetText": "기다린 보람이 있었어요? 음식은 입에 맞았어요?",
+          "baseText": {
+            "de": "Hat sich das Warten gelohnt? Hat dir das Essen geschmeckt?",
+            "en": "Was it worth the wait? Did you enjoy the food?"
+          }
+        },
+        {
+          "targetText": "음식이 늦게 나왔는데 그래도 맛은 정말 좋았어요.",
+          "baseText": {
+            "de": "Das Essen kam spät, hat aber trotzdem wirklich gut geschmeckt.",
+            "en": "The food came late, but it still tasted really good."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는데: Von der Situation zur Bewertung",
+        "rule": {
+          "de": "-는데 kann eine Situation vor einer anschließenden Bewertung nennen. Im Zusammenhang kann dabei ein Gegensatz entstehen.",
+          "en": "-는데 can set up a situation before an evaluation. Depending on the context, the two parts can contrast."
+        },
+        "examples": [
+          {
+            "targetText": "새 식당에 처음 갔는데 줄이 정말 길었어요.",
+            "baseText": {
+              "de": "Ich war zum ersten Mal im neuen Restaurant, und die Schlange war richtig lang.",
+              "en": "I went to the new restaurant for the first time, and the line was really long."
+            },
+            "highlight": "갔는데"
+          },
+          {
+            "targetText": "음식이 늦게 나왔는데 그래도 맛은 정말 좋았어요.",
+            "baseText": {
+              "de": "Das Essen kam spät, hat aber trotzdem wirklich gut geschmeckt.",
+              "en": "The food came late, but it still tasted really good."
+            },
+            "highlight": "나왔는데"
+          }
+        ]
+      },
+      "cloze": [
+        "음식이 늦게 ",
+        {
+          "kind": "form",
+          "answer": "나왔는데",
+          "cue": "Vergangener Hintergrund -았는데 / past background -았는데",
+          "choices": [
+            "나왔는데",
+            "나왔어요",
+            "나온",
+            "나올"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "그래도",
+            "그러면",
+            "왜냐하면",
+            "따라서"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "맛은",
+          "choices": [
+            "맛은",
+            "날씨는",
+            "신발은",
+            "비밀번호는"
+          ]
+        },
+        " 정말 좋았어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "새 식당에",
+          "baseText": {
+            "de": "ins neue Restaurant",
+            "en": "to the new restaurant"
+          }
+        },
+        {
+          "targetText": "처음 갔는데",
+          "baseText": {
+            "de": "ging ich zum ersten Mal, und",
+            "en": "I went for the first time, and"
+          }
+        },
+        {
+          "targetText": "줄이",
+          "baseText": {
+            "de": "die Schlange",
+            "en": "the line"
+          }
+        },
+        {
+          "targetText": "정말 길었어요.",
+          "baseText": {
+            "de": "war richtig lang.",
+            "en": "was really long."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "처음",
+          "baseText": {
+            "de": "zum ersten Mal",
+            "en": "for the first time"
+          }
+        },
+        {
+          "targetText": "새 식당",
+          "baseText": {
+            "de": "neues Restaurant",
+            "en": "new restaurant"
+          }
+        },
+        {
+          "targetText": "줄이",
+          "baseText": {
+            "de": "die Schlange",
+            "en": "the line"
+          }
+        },
+        {
+          "targetText": "길었어요",
+          "baseText": {
+            "de": "war lang",
+            "en": "was long"
+          }
+        },
+        {
+          "targetText": "입에 맞았어요",
+          "baseText": {
+            "de": "es hat geschmeckt",
+            "en": "it suited your taste"
+          }
+        },
+        {
+          "targetText": "늦게 나왔는데",
+          "baseText": {
+            "de": "kam spät, aber",
+            "en": "came late, but"
+          }
+        },
+        {
+          "targetText": "맛은",
+          "baseText": {
+            "de": "was den Geschmack betrifft",
+            "en": "as for the taste"
+          }
+        }
+      ],
+      "recall": {
+        "before": "새 식당에 ",
+        "answer": "처음",
+        "after": " 갔는데 줄이 정말 길었어요.",
+        "fallbackChoices": [
+          "처음",
+          "매일",
+          "항상",
+          "아직"
+        ]
+      },
+      "speakRequired": [
+        "처음",
+        "갔는데",
+        "길었어요"
+      ],
+      "sceneCaption": {
+        "de": "Beim Sprachtandem kommt die Frage: „새 식당에 다녀왔어요? 거기는 어땠어요?“",
+        "en": "Your language partner asks: “새 식당에 다녀왔어요? 거기는 어땠어요?”"
+      },
+      "trophyWord": {
+        "word": "처음",
+        "meaning": {
+          "de": "zum ersten Mal",
+          "en": "for the first time"
+        },
+        "example": "이 음식을 처음 먹었어요.",
+        "whyThisWord": {
+          "de": "Mit 처음 kennzeichnest du neue Erfahrungen, ohne eine lange Zeitangabe zu brauchen.",
+          "en": "처음 marks a first experience without a long explanation of when it happened."
+        }
+      },
+      "distractors": [
+        "그 식당에 매일 가는데 늘 조용해요.",
+        "새 식당은 아직 문을 안 열었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Getränke und ein Gespräch über das Viertel.",
+        "en": "Two drinks and a conversation about the neighborhood."
+      },
+      "songMood": "Relaxed cafe groove, curious and understated.",
+      "visualNotes": "Language-exchange table, notebooks and drinks; no queue or food outcome shown."
+    },
+    {
+      "slug": "majimak-trip-home",
+      "title": {
+        "de": "Das Ende der Reise",
+        "en": "The end of the trip"
+      },
+      "situation": {
+        "de": "Zurück im Büro erzählst du vom Abschluss deiner Reise.",
+        "en": "Back at the office, you talk about the end of your trip."
+      },
+      "pedagogicalGoal": "Mit -(으)ㄹ 때 einen vergangenen Zeitpunkt und mit -고 나서 die Reihenfolge zweier Handlungen ausdrücken.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "여행 잘 다녀왔어요? 돌아오는 날은 어땠어요?",
+          "baseText": {
+            "de": "Hattest du eine schöne Reise? Wie war der Rückreisetag?",
+            "en": "Did you have a good trip? How was the day you came back?"
+          }
+        },
+        {
+          "targetText": "마지막 날 호텔에서 나올 때 비가 많이 왔어요.",
+          "baseText": {
+            "de": "Am letzten Tag hat es stark geregnet, als ich aus dem Hotel kam.",
+            "en": "On the last day, it was raining heavily when I left the hotel."
+          }
+        },
+        {
+          "targetText": "공항까지 길이 막혔어요? 비행기는 제시간에 탔어요?",
+          "baseText": {
+            "de": "Gab es auf dem Weg zum Flughafen Stau? Hast du deinen Flug rechtzeitig erreicht?",
+            "en": "Was there traffic on the way to the airport? Did you catch your flight on time?"
+          }
+        },
+        {
+          "targetText": "네, 공항에 도착하고 나서 바로 비행기에 탔어요.",
+          "baseText": {
+            "de": "Ja, nach der Ankunft am Flughafen bin ich direkt ins Flugzeug gestiegen.",
+            "en": "Yes, after arriving at the airport, I boarded the plane straight away."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 때 und -고 나서",
+        "rule": {
+          "de": "-(으)ㄹ 때 meint hier als, nicht falls. -고 나서 zeigt, dass die erste Handlung abgeschlossen ist, bevor die nächste beginnt.",
+          "en": "Here, -(으)ㄹ 때 means when, not if. -고 나서 shows that the first action is completed before the next begins."
+        },
+        "examples": [
+          {
+            "targetText": "마지막 날 호텔에서 나올 때 비가 많이 왔어요.",
+            "baseText": {
+              "de": "Am letzten Tag hat es stark geregnet, als ich aus dem Hotel kam.",
+              "en": "On the last day, it was raining heavily when I left the hotel."
+            },
+            "highlight": "나올 때"
+          },
+          {
+            "targetText": "네, 공항에 도착하고 나서 바로 비행기에 탔어요.",
+            "baseText": {
+              "de": "Ja, nach der Ankunft am Flughafen bin ich direkt ins Flugzeug gestiegen.",
+              "en": "Yes, after arriving at the airport, I boarded the plane straight away."
+            },
+            "highlight": "도착하고 나서"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 공항에 ",
+        {
+          "kind": "form",
+          "answer": "도착하고 나서",
+          "cue": "Abgeschlossene Reihenfolge -고 나서 / completed sequence -고 나서",
+          "choices": [
+            "도착하고 나서",
+            "도착했어요",
+            "도착한",
+            "도착할"
+          ]
+        },
+        " 바로 ",
+        {
+          "kind": "choice",
+          "answer": "비행기에",
+          "choices": [
+            "비행기에",
+            "엘리베이터에",
+            "자전거에",
+            "배에"
+          ]
+        },
+        " 탔어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "마지막 날",
+          "baseText": {
+            "de": "am letzten Tag",
+            "en": "on the last day"
+          }
+        },
+        {
+          "targetText": "호텔에서",
+          "baseText": {
+            "de": "aus dem Hotel",
+            "en": "from the hotel"
+          }
+        },
+        {
+          "targetText": "나올 때",
+          "baseText": {
+            "de": "als ich herauskam",
+            "en": "when I left"
+          }
+        },
+        {
+          "targetText": "비가 많이 왔어요.",
+          "baseText": {
+            "de": "hat es stark geregnet.",
+            "en": "it was raining heavily."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "마지막 날",
+          "baseText": {
+            "de": "der letzte Tag",
+            "en": "the last day"
+          }
+        },
+        {
+          "targetText": "호텔에서",
+          "baseText": {
+            "de": "aus dem Hotel",
+            "en": "from the hotel"
+          }
+        },
+        {
+          "targetText": "나올 때",
+          "baseText": {
+            "de": "als ich herauskam",
+            "en": "when I left"
+          }
+        },
+        {
+          "targetText": "길이 막혔어요",
+          "baseText": {
+            "de": "es gab Stau",
+            "en": "there was traffic"
+          }
+        },
+        {
+          "targetText": "제시간에",
+          "baseText": {
+            "de": "rechtzeitig",
+            "en": "on time"
+          }
+        },
+        {
+          "targetText": "도착하고 나서",
+          "baseText": {
+            "de": "nach der Ankunft",
+            "en": "after arriving"
+          }
+        },
+        {
+          "targetText": "비행기에 탔어요",
+          "baseText": {
+            "de": "ich bin ins Flugzeug gestiegen",
+            "en": "I boarded the plane"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "마지막",
+        "after": " 날 호텔에서 나올 때 비가 많이 왔어요.",
+        "fallbackChoices": [
+          "마지막",
+          "첫",
+          "다음",
+          "어느"
+        ]
+      },
+      "speakRequired": [
+        "마지막",
+        "호텔에서",
+        "나올"
+      ],
+      "sceneCaption": {
+        "de": "Zurück im Büro wirst du gefragt: „여행 잘 다녀왔어요? 돌아오는 날은 어땠어요?“",
+        "en": "Back at the office, a colleague asks: “여행 잘 다녀왔어요? 돌아오는 날은 어땠어요?”"
+      },
+      "trophyWord": {
+        "word": "마지막",
+        "meaning": {
+          "de": "letzter / Abschluss",
+          "en": "last / final"
+        },
+        "example": "오늘이 여행 마지막 날이에요.",
+        "whyThisWord": {
+          "de": "마지막 steht vor Nomen wie 날 oder 수업 und markiert das Ende einer Reihe.",
+          "en": "마지막 comes before nouns such as 날 or 수업 to mark the final item in a sequence."
+        }
+      },
+      "distractors": [
+        "첫날 호텔에 도착할 때 날씨가 좋았어요.",
+        "마지막 날에는 호텔에서 하루 종일 잤어요."
+      ],
+      "placeholderCaption": {
+        "de": "Die erste Pause nach der Rückkehr.",
+        "en": "The first break after returning."
+      },
+      "songMood": "Gentle travel recollection with a steady pulse.",
+      "visualNotes": "Office desk with a closed travel notebook; no airport or weather result in the opening view."
+    },
+    {
+      "slug": "gyeolguk-lost-card",
+      "title": {
+        "de": "Die gesuchte Karte",
+        "en": "The missing card"
+      },
+      "situation": {
+        "de": "Bei einem Treffen fragt jemand aus deinem Freundeskreis nach deiner verlorenen Karte.",
+        "en": "At a get-together, a friend asks about the card you lost."
+      },
+      "pedagogicalGoal": "Mit 결국 den Ausgang einer Suche nennen und eine Nachfrage mit -고 나서 zeitlich präzisieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어제 카드를 잃어버렸어요? 그 카드는 찾았어요?",
+          "baseText": {
+            "de": "Hast du gestern deine Karte verloren? Hast du sie wiedergefunden?",
+            "en": "Did you lose your card yesterday? Did you find it?"
+          }
+        },
+        {
+          "targetText": "여기저기 찾아봤는데 결국 카페에서 카드를 다시 찾았어요.",
+          "baseText": {
+            "de": "Ich habe überall gesucht und die Karte schließlich im Café wiedergefunden.",
+            "en": "I looked everywhere and eventually found the card again at the cafe."
+          }
+        },
+        {
+          "targetText": "카페에는 언제 다시 갔어요? 저녁에 찾았어요?",
+          "baseText": {
+            "de": "Wann bist du wieder ins Café gegangen? Hast du sie abends gefunden?",
+            "en": "When did you go back to the cafe? Did you find it in the evening?"
+          }
+        },
+        {
+          "targetText": "아니요, 점심을 먹고 나서 카페에 다시 갔어요.",
+          "baseText": {
+            "de": "Nein, ich bin nach dem Mittagessen wieder ins Café gegangen.",
+            "en": "No, I went back to the cafe after eating lunch."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-고 나서: Was kam danach?",
+        "rule": {
+          "de": "-고 나서 verbindet eine abgeschlossene Handlung mit dem nächsten Schritt. 결국 bezeichnet den Ausgang nach einem längeren Weg oder mehreren Versuchen.",
+          "en": "-고 나서 links a completed action to the next step. 결국 introduces the eventual outcome after a process or several attempts."
+        },
+        "examples": [
+          {
+            "targetText": "아니요, 점심을 먹고 나서 카페에 다시 갔어요.",
+            "baseText": {
+              "de": "Nein, ich bin nach dem Mittagessen wieder ins Café gegangen.",
+              "en": "No, I went back to the cafe after eating lunch."
+            },
+            "highlight": "먹고 나서"
+          },
+          {
+            "targetText": "친구와 통화하고 나서 밖에 나갔어요.",
+            "baseText": {
+              "de": "Nach dem Telefonat mit einem Freund bin ich rausgegangen.",
+              "en": "After talking to a friend on the phone, I went outside."
+            },
+            "highlight": "통화하고 나서"
+          }
+        ]
+      },
+      "cloze": [
+        "아니요, ",
+        {
+          "kind": "choice",
+          "answer": "점심을",
+          "choices": [
+            "점심을",
+            "저녁을",
+            "아침을",
+            "야식을"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "먹고 나서",
+          "cue": "Abgeschlossene Reihenfolge -고 나서 / completed sequence -고 나서",
+          "choices": [
+            "먹고 나서",
+            "먹었어요",
+            "먹은",
+            "먹을"
+          ]
+        },
+        " 카페에 다시 갔어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "여기저기 찾아봤는데",
+          "baseText": {
+            "de": "ich habe überall gesucht, und",
+            "en": "I looked everywhere, and"
+          }
+        },
+        {
+          "targetText": "결국",
+          "baseText": {
+            "de": "schließlich",
+            "en": "eventually"
+          }
+        },
+        {
+          "targetText": "카페에서",
+          "baseText": {
+            "de": "im Café",
+            "en": "at the cafe"
+          }
+        },
+        {
+          "targetText": "카드를 다시 찾았어요.",
+          "baseText": {
+            "de": "habe ich die Karte wiedergefunden.",
+            "en": "I found the card again."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "결국",
+          "baseText": {
+            "de": "schließlich / am Ende",
+            "en": "eventually / in the end"
+          }
+        },
+        {
+          "targetText": "여기저기",
+          "baseText": {
+            "de": "hier und dort / überall",
+            "en": "here and there / everywhere"
+          }
+        },
+        {
+          "targetText": "찾아봤는데",
+          "baseText": {
+            "de": "ich habe gesucht, und",
+            "en": "I tried looking, and"
+          }
+        },
+        {
+          "targetText": "카페에서",
+          "baseText": {
+            "de": "im Café",
+            "en": "at the cafe"
+          }
+        },
+        {
+          "targetText": "다시 찾았어요",
+          "baseText": {
+            "de": "ich habe es wiedergefunden",
+            "en": "I found it again"
+          }
+        },
+        {
+          "targetText": "점심을",
+          "baseText": {
+            "de": "das Mittagessen",
+            "en": "lunch"
+          }
+        },
+        {
+          "targetText": "먹고 나서",
+          "baseText": {
+            "de": "nach dem Essen",
+            "en": "after eating"
+          }
+        }
+      ],
+      "recall": {
+        "before": "여기저기 찾아봤는데 ",
+        "answer": "결국",
+        "after": " 카페에서 카드를 다시 찾았어요.",
+        "fallbackChoices": [
+          "결국",
+          "미리",
+          "아직",
+          "앞으로"
+        ]
+      },
+      "speakRequired": [
+        "찾아봤는데",
+        "결국",
+        "찾았어요"
+      ],
+      "sceneCaption": {
+        "de": "Beim Treffen kommt die Frage: „어제 카드를 잃어버렸어요? 그 카드는 찾았어요?“",
+        "en": "At your get-together, your friend asks: “어제 카드를 잃어버렸어요? 그 카드는 찾았어요?”"
+      },
+      "trophyWord": {
+        "word": "결국",
+        "meaning": {
+          "de": "schließlich / am Ende",
+          "en": "eventually / in the end"
+        },
+        "example": "결국 친구가 도와줬어요.",
+        "whyThisWord": {
+          "de": "Mit 결국 erzählst du, wie eine Suche, ein Versuch oder eine Diskussion ausgegangen ist.",
+          "en": "결국 tells how a search, an attempt or a discussion finally turned out."
+        }
+      },
+      "distractors": [
+        "아직 카드를 못 찾았어요.",
+        "카페에 가기 전에 집에서 카드를 찾았어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein kurzer Austausch vor dem gemeinsamen Essen.",
+        "en": "A quick catch-up before a meal together."
+      },
+      "songMood": "Curious acoustic motif settling into a relaxed cadence.",
+      "visualNotes": "Friends at a table before food arrives; no visible card location."
+    },
+    {
+      "slug": "dahaenghi-clinic-visit",
+      "title": {
+        "de": "Nach dem Arztbesuch",
+        "en": "After the clinic visit"
+      },
+      "situation": {
+        "de": "Im Büro fragt jemand, wie dein gestriger Arztbesuch verlaufen ist.",
+        "en": "At the office, a colleague asks how your visit to the clinic went yesterday."
+      },
+      "pedagogicalGoal": "Mit 다행히 Erleichterung ausdrücken und mit -고 나서 den weiteren Verlauf erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어제 병원에 다녀왔어요? 진료는 잘 받았어요?",
+          "baseText": {
+            "de": "Warst du gestern beim Arzt? Ist der Termin gut gelaufen?",
+            "en": "Did you go to the clinic yesterday? Did the appointment go well?"
+          }
+        },
+        {
+          "targetText": "병원에서 오래 기다렸는데 다행히 큰 문제는 없었어요.",
+          "baseText": {
+            "de": "Ich habe in der Klinik lange gewartet, aber zum Glück war es nichts Ernstes.",
+            "en": "I waited a long time at the clinic, but luckily it was nothing serious."
+          }
+        },
+        {
+          "targetText": "오늘은 좀 괜찮아요? 집에서 며칠 쉬었어요?",
+          "baseText": {
+            "de": "Geht es dir heute etwas besser? Wie viele Tage hast du dich zu Hause ausgeruht?",
+            "en": "Are you feeling a bit better today? How many days did you rest at home?"
+          }
+        },
+        {
+          "targetText": "진료를 받고 나서 집에서 하루 푹 쉬었어요.",
+          "baseText": {
+            "de": "Nach dem Arzttermin habe ich mich einen Tag lang zu Hause richtig ausgeruht.",
+            "en": "After the appointment, I rested properly at home for a day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-고 나서: Nach dem Termin",
+        "rule": {
+          "de": "Bei -고 나서 ist die erste Handlung abgeschlossen. 다행히 bewertet einen günstigen Ausgang aus deiner Sicht.",
+          "en": "With -고 나서, the first action is complete. 다행히 expresses your relief about a favorable outcome."
+        },
+        "examples": [
+          {
+            "targetText": "진료를 받고 나서 집에서 하루 푹 쉬었어요.",
+            "baseText": {
+              "de": "Nach dem Arzttermin habe ich mich einen Tag lang zu Hause richtig ausgeruht.",
+              "en": "After the appointment, I rested properly at home for a day."
+            },
+            "highlight": "받고 나서"
+          },
+          {
+            "targetText": "약을 먹고 나서 일찍 잤어요.",
+            "baseText": {
+              "de": "Nach der Einnahme des Medikaments bin ich früh schlafen gegangen.",
+              "en": "After taking the medicine, I went to sleep early."
+            },
+            "highlight": "먹고 나서"
+          }
+        ]
+      },
+      "cloze": [
+        "진료를 ",
+        {
+          "kind": "form",
+          "answer": "받고 나서",
+          "cue": "Abgeschlossene Reihenfolge -고 나서 / completed sequence -고 나서",
+          "choices": [
+            "받고 나서",
+            "받았어요",
+            "받은",
+            "받을"
+          ]
+        },
+        " 집에서 ",
+        {
+          "kind": "choice",
+          "answer": "하루",
+          "choices": [
+            "하루",
+            "일주일",
+            "한 달",
+            "일 년"
+          ]
+        },
+        " 푹 쉬었어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "병원에서",
+          "baseText": {
+            "de": "in der Klinik",
+            "en": "at the clinic"
+          }
+        },
+        {
+          "targetText": "오래 기다렸는데",
+          "baseText": {
+            "de": "habe ich lange gewartet, aber",
+            "en": "I waited a long time, but"
+          }
+        },
+        {
+          "targetText": "다행히",
+          "baseText": {
+            "de": "zum Glück",
+            "en": "luckily"
+          }
+        },
+        {
+          "targetText": "큰 문제는 없었어요.",
+          "baseText": {
+            "de": "war es nichts Ernstes.",
+            "en": "it was nothing serious."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "다행히",
+          "baseText": {
+            "de": "zum Glück",
+            "en": "luckily"
+          }
+        },
+        {
+          "targetText": "병원에서",
+          "baseText": {
+            "de": "in der Klinik",
+            "en": "at the clinic"
+          }
+        },
+        {
+          "targetText": "오래 기다렸는데",
+          "baseText": {
+            "de": "ich habe lange gewartet, aber",
+            "en": "I waited a long time, but"
+          }
+        },
+        {
+          "targetText": "큰 문제",
+          "baseText": {
+            "de": "ernstes Problem",
+            "en": "serious problem"
+          }
+        },
+        {
+          "targetText": "진료를",
+          "baseText": {
+            "de": "die ärztliche Untersuchung",
+            "en": "the medical consultation"
+          }
+        },
+        {
+          "targetText": "받고 나서",
+          "baseText": {
+            "de": "nachdem ich sie bekommen hatte",
+            "en": "after receiving it"
+          }
+        },
+        {
+          "targetText": "푹 쉬었어요",
+          "baseText": {
+            "de": "ich habe mich gründlich ausgeruht",
+            "en": "I rested properly"
+          }
+        }
+      ],
+      "recall": {
+        "before": "병원에서 오래 기다렸는데 ",
+        "answer": "다행히",
+        "after": " 큰 문제는 없었어요.",
+        "fallbackChoices": [
+          "다행히",
+          "안타깝게도",
+          "불행히도",
+          "유감스럽게도"
+        ]
+      },
+      "speakRequired": [
+        "기다렸는데",
+        "다행히",
+        "없었어요"
+      ],
+      "sceneCaption": {
+        "de": "Im Büro fragt jemand nach: „어제 병원에 다녀왔어요? 진료는 잘 받았어요?“",
+        "en": "At the office, a colleague asks: “어제 병원에 다녀왔어요? 진료는 잘 받았어요?”"
+      },
+      "trophyWord": {
+        "word": "다행히",
+        "meaning": {
+          "de": "zum Glück / glücklicherweise",
+          "en": "luckily / fortunately"
+        },
+        "example": "다행히 버스를 놓치지 않았어요.",
+        "whyThisWord": {
+          "de": "다행히 zeigt deine Erleichterung, wenn etwas besser ausgeht als befürchtet.",
+          "en": "다행히 expresses relief when something turns out better than you feared."
+        }
+      },
+      "distractors": [
+        "병원에서 기다리지 않고 바로 진료를 받았어요.",
+        "아직 병원에 못 가서 결과를 몰라요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein ruhiger Austausch in der Büropause.",
+        "en": "A quiet conversation during an office break."
+      },
+      "songMood": "Calm, reassuring acoustic texture.",
+      "visualNotes": "Colleagues talking by office lockers. This is a personal recollection, not a medical instruction or guarantee."
+    },
+    {
+      "slug": "honja-holiday-dinner",
+      "title": {
+        "de": "Über die Feiertage",
+        "en": "Over the holiday"
+      },
+      "situation": {
+        "de": "Nach dem langen Wochenende unterhältst du dich vor dem Haus mit jemandem aus der Nachbarschaft.",
+        "en": "After the long weekend, you chat with a neighbor outside your building."
+      },
+      "pedagogicalGoal": "Mit -다가 einen Wechsel während einer laufenden Handlung erzählen und 혼자 natürlich einbetten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 연휴에는 어떻게 지냈어요? 어디 다녀왔어요?",
+          "baseText": {
+            "de": "Wie hast du die Feiertage verbracht? Bist du irgendwo hingefahren?",
+            "en": "How did you spend the holiday? Did you go anywhere?"
+          }
+        },
+        {
+          "targetText": "혼자 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요.",
+          "baseText": {
+            "de": "Ich habe mich erst allein zu Hause ausgeruht und dann mit Freunden Abendessen gekocht und gegessen.",
+            "en": "I was relaxing at home alone, then cooked and ate dinner with friends."
+          }
+        },
+        {
+          "targetText": "같이 요리해서 먹었어요? 무슨 음식을 만들었어요?",
+          "baseText": {
+            "de": "Ihr habt gemeinsam gekocht? Was habt ihr gemacht?",
+            "en": "You cooked together? What did you make?"
+          }
+        },
+        {
+          "targetText": "김치볶음밥을 만들다가 친구가 와서 같이 마무리했어요.",
+          "baseText": {
+            "de": "Ich war gerade dabei, Kimchi-Bratreis zu machen, als ein Freund kam, und wir haben zusammen fertig gekocht.",
+            "en": "I was making kimchi fried rice when a friend arrived, and we finished it together."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-다가: Eine Handlung nimmt eine Wendung",
+        "rule": {
+          "de": "-다가 zeigt, dass während einer laufenden Handlung etwas dazukommt oder die Handlung wechselt. Es bedeutet nicht einfach nach dem vollständigen Abschluss.",
+          "en": "-다가 marks something happening during an ongoing action or a change of activity. It does not simply mean after the first action was completed."
+        },
+        "examples": [
+          {
+            "targetText": "혼자 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요.",
+            "baseText": {
+              "de": "Ich habe mich erst allein zu Hause ausgeruht und dann mit Freunden Abendessen gekocht und gegessen.",
+              "en": "I was relaxing at home alone, then cooked and ate dinner with friends."
+            },
+            "highlight": "쉬다가"
+          },
+          {
+            "targetText": "김치볶음밥을 만들다가 친구가 와서 같이 마무리했어요.",
+            "baseText": {
+              "de": "Ich war gerade dabei, Kimchi-Bratreis zu machen, als ein Freund kam, und wir haben zusammen fertig gekocht.",
+              "en": "I was making kimchi fried rice when a friend arrived, and we finished it together."
+            },
+            "highlight": "만들다가"
+          }
+        ]
+      },
+      "cloze": [
+        "김치볶음밥을 ",
+        {
+          "kind": "form",
+          "answer": "만들다가",
+          "cue": "Unterbrochene Handlung -다가 / interrupted action -다가",
+          "choices": [
+            "만들다가",
+            "만들었어요",
+            "만든",
+            "만들"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "친구가",
+          "choices": [
+            "친구가",
+            "주문서가",
+            "버스가",
+            "소포가"
+          ]
+        },
+        " 와서 같이 마무리했어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "혼자",
+          "baseText": {
+            "de": "allein",
+            "en": "alone"
+          }
+        },
+        {
+          "targetText": "집에서 쉬다가",
+          "baseText": {
+            "de": "habe ich mich zu Hause ausgeruht, dann",
+            "en": "I was relaxing at home, then"
+          }
+        },
+        {
+          "targetText": "친구들과",
+          "baseText": {
+            "de": "mit Freunden",
+            "en": "with friends"
+          }
+        },
+        {
+          "targetText": "저녁을 만들어 먹었어요.",
+          "baseText": {
+            "de": "habe ich Abendessen gekocht und gegessen.",
+            "en": "I cooked and ate dinner."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "혼자",
+          "baseText": {
+            "de": "allein",
+            "en": "alone"
+          }
+        },
+        {
+          "targetText": "연휴",
+          "baseText": {
+            "de": "mehrere freie Tage am Stück",
+            "en": "a stretch of holidays"
+          }
+        },
+        {
+          "targetText": "쉬다가",
+          "baseText": {
+            "de": "während ich mich ausruhte / erst ausruhen, dann",
+            "en": "while relaxing / relaxing, then"
+          }
+        },
+        {
+          "targetText": "친구들과",
+          "baseText": {
+            "de": "mit Freunden",
+            "en": "with friends"
+          }
+        },
+        {
+          "targetText": "만들어 먹었어요",
+          "baseText": {
+            "de": "ich habe es zubereitet und gegessen",
+            "en": "I made it and ate it"
+          }
+        },
+        {
+          "targetText": "김치볶음밥을",
+          "baseText": {
+            "de": "Kimchi-Bratreis",
+            "en": "kimchi fried rice"
+          }
+        },
+        {
+          "targetText": "마무리했어요",
+          "baseText": {
+            "de": "wir haben es fertig gemacht",
+            "en": "we finished it"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "혼자",
+        "after": " 집에서 쉬다가 친구들과 저녁을 만들어 먹었어요.",
+        "fallbackChoices": [
+          "혼자",
+          "함께",
+          "다 같이",
+          "모두"
+        ]
+      },
+      "speakRequired": [
+        "혼자",
+        "쉬다가",
+        "친구들과"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Haus wirst du gefragt: „이번 연휴에는 어떻게 지냈어요? 어디 다녀왔어요?“",
+        "en": "Outside your building, your neighbor asks: “이번 연휴에는 어떻게 지냈어요? 어디 다녀왔어요?”"
+      },
+      "trophyWord": {
+        "word": "혼자",
+        "meaning": {
+          "de": "allein",
+          "en": "alone / by oneself"
+        },
+        "example": "오늘은 혼자 점심을 먹었어요.",
+        "whyThisWord": {
+          "de": "혼자 beschreibt sachlich, dass du etwas ohne Begleitung machst; es bedeutet nicht automatisch einsam.",
+          "en": "혼자 simply says you are doing something without company; it does not automatically mean lonely."
+        }
+      },
+      "distractors": [
+        "연휴 내내 친구들과 여행을 했어요.",
+        "혼자 집에서 배달 음식을 시켜 먹었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch am Hauseingang nach den Feiertagen.",
+        "en": "A chat at the building entrance after the holiday."
+      },
+      "songMood": "Warm domestic rhythm, relaxed and sociable.",
+      "visualNotes": "Apartment entrance, neighbors with everyday bags; cooking details remain for later turns."
+    },
+    {
+      "slug": "geumbang-late-bus",
+      "title": {
+        "de": "Der Weg ins Büro",
+        "en": "Getting to the office"
+      },
+      "situation": {
+        "de": "Du kommst später ins Büro. Jemand erkundigt sich nach deiner Fahrt.",
+        "en": "You arrive at the office late, and a colleague asks about your journey."
+      },
+      "pedagogicalGoal": "Mit -다가 einen Planwechsel erzählen und mit 금방 eine kurze Zeitspanne markieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘 조금 늦었네요. 출근길에 무슨 일 있었어요?",
+          "baseText": {
+            "de": "Du bist heute etwas spät dran. War auf dem Weg zur Arbeit etwas los?",
+            "en": "You're a little late today. Did something happen on your way to work?"
+          }
+        },
+        {
+          "targetText": "버스를 기다리다가 택시를 불렀는데 버스가 금방 왔어요.",
+          "baseText": {
+            "de": "Ich habe auf den Bus gewartet und dann ein Taxi gerufen, aber kurz darauf kam der Bus.",
+            "en": "I was waiting for the bus and called a taxi, but the bus arrived soon after."
+          }
+        },
+        {
+          "targetText": "어느 쪽으로 왔어요? 시청 쪽으로 왔어요?",
+          "baseText": {
+            "de": "Welche Strecke bist du gefahren? Über das Rathaus?",
+            "en": "Which way did you come? Via City Hall?"
+          }
+        },
+        {
+          "targetText": "네, 시청으로 가다가 시장 앞에서 한 번 갈아탔어요.",
+          "baseText": {
+            "de": "Ja, auf dem Weg zum Rathaus bin ich vor dem Markt einmal umgestiegen.",
+            "en": "Yes, on the way toward City Hall, I changed buses once in front of the market."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-다가: Unterwegs die Handlung wechseln",
+        "rule": {
+          "de": "Mit -다가 erzählst du, was während des Wartens oder Unterwegsseins geschah. 금방 bedeutet je nach Zusammenhang gleich oder kurz darauf.",
+          "en": "Use -다가 to tell what happened while waiting or traveling. Depending on context, 금방 means very soon or shortly afterward."
+        },
+        "examples": [
+          {
+            "targetText": "버스를 기다리다가 택시를 불렀는데 버스가 금방 왔어요.",
+            "baseText": {
+              "de": "Ich habe auf den Bus gewartet und dann ein Taxi gerufen, aber kurz darauf kam der Bus.",
+              "en": "I was waiting for the bus and called a taxi, but the bus arrived soon after."
+            },
+            "highlight": "기다리다가"
+          },
+          {
+            "targetText": "네, 시청으로 가다가 시장 앞에서 한 번 갈아탔어요.",
+            "baseText": {
+              "de": "Ja, auf dem Weg zum Rathaus bin ich vor dem Markt einmal umgestiegen.",
+              "en": "Yes, on the way toward City Hall, I changed buses once in front of the market."
+            },
+            "highlight": "가다가"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 시청으로 ",
+        {
+          "kind": "form",
+          "answer": "가다가",
+          "cue": "Handlungswechsel unterwegs -다가 / change during an action -다가",
+          "choices": [
+            "가다가",
+            "갔어요",
+            "가는",
+            "갈"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "시장 앞에서",
+          "choices": [
+            "시장 앞에서",
+            "공항 안에서",
+            "집 안에서",
+            "호텔 방에서"
+          ]
+        },
+        " 한 번 갈아탔어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "버스를 기다리다가",
+          "baseText": {
+            "de": "während ich auf den Bus wartete",
+            "en": "while I was waiting for the bus"
+          }
+        },
+        {
+          "targetText": "택시를 불렀는데",
+          "baseText": {
+            "de": "rief ich ein Taxi, aber",
+            "en": "I called a taxi, but"
+          }
+        },
+        {
+          "targetText": "버스가",
+          "baseText": {
+            "de": "der Bus",
+            "en": "the bus"
+          }
+        },
+        {
+          "targetText": "금방 왔어요.",
+          "baseText": {
+            "de": "kam kurz darauf.",
+            "en": "arrived soon after."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "금방",
+          "baseText": {
+            "de": "kurz darauf / sehr bald",
+            "en": "soon after / very soon"
+          }
+        },
+        {
+          "targetText": "출근길에",
+          "baseText": {
+            "de": "auf dem Weg zur Arbeit",
+            "en": "on the way to work"
+          }
+        },
+        {
+          "targetText": "기다리다가",
+          "baseText": {
+            "de": "während ich wartete",
+            "en": "while I was waiting"
+          }
+        },
+        {
+          "targetText": "택시를 불렀는데",
+          "baseText": {
+            "de": "ich rief ein Taxi, aber",
+            "en": "I called a taxi, but"
+          }
+        },
+        {
+          "targetText": "시청으로",
+          "baseText": {
+            "de": "in Richtung Rathaus",
+            "en": "toward City Hall"
+          }
+        },
+        {
+          "targetText": "시장 앞에서",
+          "baseText": {
+            "de": "vor dem Markt",
+            "en": "in front of the market"
+          }
+        },
+        {
+          "targetText": "갈아탔어요",
+          "baseText": {
+            "de": "ich bin umgestiegen",
+            "en": "I changed buses"
+          }
+        }
+      ],
+      "recall": {
+        "before": "버스를 기다리다가 택시를 불렀는데 버스가 ",
+        "answer": "금방",
+        "after": " 왔어요.",
+        "fallbackChoices": [
+          "금방",
+          "어제",
+          "미리",
+          "전혀"
+        ]
+      },
+      "speakRequired": [
+        "기다리다가",
+        "불렀는데",
+        "금방"
+      ],
+      "sceneCaption": {
+        "de": "Am Büroeingang hörst du: „오늘 조금 늦었네요. 출근길에 무슨 일 있었어요?“",
+        "en": "At the office entrance, a colleague says: “오늘 조금 늦었네요. 출근길에 무슨 일 있었어요?”"
+      },
+      "trophyWord": {
+        "word": "금방",
+        "meaning": {
+          "de": "sehr bald / kurz darauf",
+          "en": "very soon / soon afterward"
+        },
+        "example": "택시가 금방 왔어요.",
+        "whyThisWord": {
+          "de": "금방 beschreibt eine kurze Wartezeit, ohne eine genaue Minutenzahl zu nennen.",
+          "en": "금방 describes a short wait without giving an exact number of minutes."
+        }
+      },
+      "distractors": [
+        "버스를 놓쳐서 집까지 걸어갔어요.",
+        "택시가 먼저 와서 버스는 안 탔어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ankommen und die Jacke ablegen.",
+        "en": "Arriving and taking off your jacket."
+      },
+      "songMood": "Light moving pulse resolving into a calm office groove.",
+      "visualNotes": "Office entrance and coat hooks, no route or vehicle outcome revealed."
+    },
+    {
+      "slug": "orae-old-friend",
+      "title": {
+        "de": "Ein unerwartetes Wiedersehen",
+        "en": "An unexpected reunion"
+      },
+      "situation": {
+        "de": "Beim Sprachtandem erzählst du von einem Freund, den du lange nicht gesehen hattest.",
+        "en": "At your language exchange, you talk about a friend you had not seen for a long time."
+      },
+      "pedagogicalGoal": "Zwei Sätze zu einer kleinen Erzählung verbinden und mit -다가 eine zufällige Begegnung einführen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "그 친구는 요즘 어떻게 지내요? 만나 봤어요?",
+          "baseText": {
+            "de": "Wie geht es deinem Freund zurzeit? Habt ihr euch getroffen?",
+            "en": "How is your friend doing these days? Have you seen each other?"
+          }
+        },
+        {
+          "targetText": "친구를 오래 못 만났어요. 어제 장을 보다가 만났어요.",
+          "baseText": {
+            "de": "Ich hatte meinen Freund lange nicht gesehen. Gestern habe ich ihn beim Einkaufen getroffen.",
+            "en": "I hadn't seen my friend for a long time. Yesterday, I ran into them while grocery shopping."
+          }
+        },
+        {
+          "targetText": "반가웠어요? 두 분은 무슨 이야기를 했어요?",
+          "baseText": {
+            "de": "War das ein schönes Wiedersehen? Worüber habt ihr gesprochen?",
+            "en": "Was it nice to see each other? What did you two talk about?"
+          }
+        },
+        {
+          "targetText": "그때 커피를 마셨는데 친구와 여행 이야기를 오래 했어요.",
+          "baseText": {
+            "de": "Wir haben bei der Gelegenheit Kaffee getrunken und lange über Reisen gesprochen.",
+            "en": "We had coffee then and talked about travel for a long time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Erst der Hintergrund, dann die Begegnung",
+        "rule": {
+          "de": "Ein kurzer erster Satz setzt den Rahmen. -다가 führt das Ereignis während einer Tätigkeit ein; 그때 greift den Zeitpunkt anschließend wieder auf.",
+          "en": "A short first sentence sets the scene. -다가 introduces an event during an activity; 그때 then refers back to that moment."
+        },
+        "examples": [
+          {
+            "targetText": "친구를 오래 못 만났어요. 어제 장을 보다가 만났어요.",
+            "baseText": {
+              "de": "Ich hatte meinen Freund lange nicht gesehen. Gestern habe ich ihn beim Einkaufen getroffen.",
+              "en": "I hadn't seen my friend for a long time. Yesterday, I ran into them while grocery shopping."
+            },
+            "highlight": "장을 보다가"
+          },
+          {
+            "targetText": "길을 걷다가 이웃분을 만났어요.",
+            "baseText": {
+              "de": "Als ich die Straße entlangging, habe ich jemanden aus der Nachbarschaft getroffen.",
+              "en": "While walking down the street, I met a neighbor."
+            },
+            "highlight": "걷다가"
+          }
+        ]
+      },
+      "cloze": [
+        "그때 커피를 ",
+        {
+          "kind": "form",
+          "answer": "마셨는데",
+          "cue": "Vergangener Hintergrund -었는데 / past background -었는데",
+          "choices": [
+            "마셨는데",
+            "마셨어요",
+            "마신",
+            "마실"
+          ]
+        },
+        " 친구와 ",
+        {
+          "kind": "choice",
+          "answer": "여행",
+          "choices": [
+            "여행",
+            "난방",
+            "주차",
+            "세금"
+          ]
+        },
+        " 이야기를 오래 했어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "친구를",
+          "baseText": {
+            "de": "meinen Freund",
+            "en": "my friend"
+          }
+        },
+        {
+          "targetText": "오래 못 만났어요.",
+          "baseText": {
+            "de": "hatte ich lange nicht gesehen.",
+            "en": "I hadn't seen for a long time."
+          }
+        },
+        {
+          "targetText": "어제",
+          "baseText": {
+            "de": "gestern",
+            "en": "yesterday"
+          }
+        },
+        {
+          "targetText": "장을 보다가",
+          "baseText": {
+            "de": "beim Einkaufen",
+            "en": "while grocery shopping"
+          }
+        },
+        {
+          "targetText": "만났어요.",
+          "baseText": {
+            "de": "habe ich ihn getroffen.",
+            "en": "I ran into them."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "오래",
+          "baseText": {
+            "de": "lange",
+            "en": "for a long time"
+          }
+        },
+        {
+          "targetText": "못 만났어요",
+          "baseText": {
+            "de": "ich konnte die Person nicht treffen",
+            "en": "I hadn't been able to see them"
+          }
+        },
+        {
+          "targetText": "장을 보다가",
+          "baseText": {
+            "de": "beim Lebensmitteleinkauf",
+            "en": "while grocery shopping"
+          }
+        },
+        {
+          "targetText": "반가웠어요",
+          "baseText": {
+            "de": "es war schön, die Person zu sehen",
+            "en": "it was nice to see them"
+          }
+        },
+        {
+          "targetText": "그때",
+          "baseText": {
+            "de": "damals / bei der Gelegenheit",
+            "en": "then / on that occasion"
+          }
+        },
+        {
+          "targetText": "커피를 마셨는데",
+          "baseText": {
+            "de": "wir haben Kaffee getrunken, und",
+            "en": "we had coffee, and"
+          }
+        },
+        {
+          "targetText": "여행 이야기",
+          "baseText": {
+            "de": "Gespräche über Reisen",
+            "en": "talk about travel"
+          }
+        }
+      ],
+      "recall": {
+        "before": "친구를 ",
+        "answer": "오래",
+        "after": " 못 만났어요. 어제 장을 보다가 만났어요.",
+        "fallbackChoices": [
+          "오래",
+          "미리",
+          "일부러",
+          "조용히"
+        ]
+      },
+      "speakRequired": [
+        "오래",
+        "보다가",
+        "만났어요"
+      ],
+      "sceneCaption": {
+        "de": "Beim Sprachtandem kommt die Frage: „그 친구는 요즘 어떻게 지내요? 만나 봤어요?“",
+        "en": "Your language partner asks: “그 친구는 요즘 어떻게 지내요? 만나 봤어요?”"
+      },
+      "trophyWord": {
+        "word": "오래",
+        "meaning": {
+          "de": "lange / lange Zeit",
+          "en": "for a long time"
+        },
+        "example": "오늘은 친구와 오래 이야기했어요.",
+        "whyThisWord": {
+          "de": "오래 beschreibt die Dauer einer Handlung, etwa warten, wohnen oder miteinander sprechen.",
+          "en": "오래 describes how long an action lasts, such as waiting, living somewhere or talking."
+        }
+      },
+      "distractors": [
+        "친구를 매주 만나서 어제도 같이 장을 봤어요.",
+        "어제 친구에게 전화했는데 만나지는 못했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein persönliches Gespräch am Tandemtisch.",
+        "en": "A personal conversation at the language-exchange table."
+      },
+      "songMood": "Warm reflective melody with a gentle conversational pace.",
+      "visualNotes": "Language-exchange notebooks and two cups; no shopping scene in the opener."
+    },
+    {
+      "slug": "gyesok-rainy-weekend",
+      "title": {
+        "de": "Was aus den Plänen wurde",
+        "en": "How the plans turned out"
+      },
+      "situation": {
+        "de": "Am Montag erkundigt sich jemand nach deinen Wochenendplänen.",
+        "en": "On Monday, a colleague asks how your weekend plans turned out."
+      },
+      "pedagogicalGoal": "Mit 계속 und 결국 einen Verlauf und sein Ergebnis in zwei zusammenhängenden Sätzen erzählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "주말에 밖에 나갔어요? 계획대로 잘 보냈어요?",
+          "baseText": {
+            "de": "Warst du am Wochenende unterwegs? Hat alles wie geplant geklappt?",
+            "en": "Did you go out at the weekend? Did it go as planned?"
+          }
+        },
+        {
+          "targetText": "계속 비가 왔는데 밖에는 못 나갔어요. 결국 집에서 쉬었어요.",
+          "baseText": {
+            "de": "Es hat die ganze Zeit geregnet, und ich konnte nicht raus. Am Ende habe ich mich zu Hause ausgeruht.",
+            "en": "It kept raining, and I couldn't go out. In the end, I relaxed at home."
+          }
+        },
+        {
+          "targetText": "영화는 봤어요? 재미있는 영화 하나 추천해 주세요.",
+          "baseText": {
+            "de": "Hast du einen Film gesehen? Empfiehl mir doch einen guten.",
+            "en": "Did you watch a film? Recommend a good one to me."
+          }
+        },
+        {
+          "targetText": "그래서 요리 영화를 봤는데 내용이 재미있어서 추천해요.",
+          "baseText": {
+            "de": "Deshalb habe ich einen Film übers Kochen gesehen, den ich wegen der unterhaltsamen Geschichte empfehle.",
+            "en": "So I watched a film about cooking, and I recommend it because the story was entertaining."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Verlauf, Ergebnis und Begründung",
+        "rule": {
+          "de": "계속 betont den anhaltenden Verlauf, 결국 den Ausgang. -는데 liefert Hintergrund, während -아서 oder -어서 einen Grund ausdrücken kann.",
+          "en": "계속 emphasizes an ongoing situation, while 결국 marks its outcome. -는데 sets background; -아서 or -어서 can give a reason."
+        },
+        "examples": [
+          {
+            "targetText": "계속 비가 왔는데 밖에는 못 나갔어요. 결국 집에서 쉬었어요.",
+            "baseText": {
+              "de": "Es hat die ganze Zeit geregnet, und ich konnte nicht raus. Am Ende habe ich mich zu Hause ausgeruht.",
+              "en": "It kept raining, and I couldn't go out. In the end, I relaxed at home."
+            },
+            "highlight": "결국 집에서 쉬었어요"
+          },
+          {
+            "targetText": "그래서 요리 영화를 봤는데 내용이 재미있어서 추천해요.",
+            "baseText": {
+              "de": "Deshalb habe ich einen Film übers Kochen gesehen, den ich wegen der unterhaltsamen Geschichte empfehle.",
+              "en": "So I watched a film about cooking, and I recommend it because the story was entertaining."
+            },
+            "highlight": "봤는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그래서",
+            "그러면",
+            "왜냐하면",
+            "예를 들어"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "요리",
+          "choices": [
+            "요리",
+            "우주",
+            "역사",
+            "전쟁"
+          ]
+        },
+        " 영화를 ",
+        {
+          "kind": "form",
+          "answer": "봤는데",
+          "cue": "Vergangener Hintergrund -았는데 / past background -았는데",
+          "choices": [
+            "봤는데",
+            "봤어요",
+            "본",
+            "볼"
+          ]
+        },
+        " 내용이 재미있어서 추천해요."
+      ],
+      "chunks": [
+        {
+          "targetText": "계속 비가 왔는데",
+          "baseText": {
+            "de": "es hat die ganze Zeit geregnet, und",
+            "en": "it kept raining, and"
+          }
+        },
+        {
+          "targetText": "밖에는 못 나갔어요.",
+          "baseText": {
+            "de": "ich konnte nicht raus.",
+            "en": "I couldn't go out."
+          }
+        },
+        {
+          "targetText": "결국",
+          "baseText": {
+            "de": "am Ende",
+            "en": "in the end"
+          }
+        },
+        {
+          "targetText": "집에서 쉬었어요.",
+          "baseText": {
+            "de": "habe ich mich zu Hause ausgeruht.",
+            "en": "I relaxed at home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "계속",
+          "baseText": {
+            "de": "die ganze Zeit / weiterhin",
+            "en": "continuously / still"
+          }
+        },
+        {
+          "targetText": "계획대로",
+          "baseText": {
+            "de": "wie geplant",
+            "en": "as planned"
+          }
+        },
+        {
+          "targetText": "밖에는 못 나갔어요",
+          "baseText": {
+            "de": "ich konnte nicht raus",
+            "en": "I couldn't go out"
+          }
+        },
+        {
+          "targetText": "결국",
+          "baseText": {
+            "de": "am Ende",
+            "en": "in the end"
+          }
+        },
+        {
+          "targetText": "요리 영화",
+          "baseText": {
+            "de": "Film übers Kochen",
+            "en": "film about cooking"
+          }
+        },
+        {
+          "targetText": "내용이 재미있어서",
+          "baseText": {
+            "de": "weil die Geschichte unterhaltsam ist",
+            "en": "because the story is entertaining"
+          }
+        },
+        {
+          "targetText": "추천해요",
+          "baseText": {
+            "de": "ich empfehle es",
+            "en": "I recommend it"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "계속",
+        "after": " 비가 왔는데 밖에는 못 나갔어요. 결국 집에서 쉬었어요.",
+        "fallbackChoices": [
+          "계속",
+          "잠깐만",
+          "가끔만",
+          "한 번만"
+        ]
+      },
+      "speakRequired": [
+        "계속",
+        "나갔어요",
+        "결국"
+      ],
+      "sceneCaption": {
+        "de": "Am Montag wirst du gefragt: „주말에 밖에 나갔어요? 계획대로 잘 보냈어요?“",
+        "en": "On Monday, a colleague asks: “주말에 밖에 나갔어요? 계획대로 잘 보냈어요?”"
+      },
+      "trophyWord": {
+        "word": "계속",
+        "meaning": {
+          "de": "die ganze Zeit / weiter",
+          "en": "continuously / keep doing"
+        },
+        "example": "아침부터 계속 비가 와요.",
+        "whyThisWord": {
+          "de": "계속 zeigt, dass eine Handlung oder ein Zustand anhält, statt nur einmal aufzutreten.",
+          "en": "계속 shows that an action or situation continues rather than happening just once."
+        }
+      },
+      "distractors": [
+        "날씨가 좋아서 계획대로 산에 갔어요.",
+        "비가 잠깐 와서 오후에는 밖에 나갔어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch zum Wochenstart.",
+        "en": "A conversation at the start of the week."
+      },
+      "songMood": "Gentle rainy-day atmosphere with a warm indoor finish.",
+      "visualNotes": "Office break area on Monday; the opener contains no film title or weather outcome."
+    }
+  ]
+}
