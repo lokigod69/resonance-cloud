@@ -1,0 +1,2211 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Andere Möglichkeiten",
+    "en": "Other possibilities"
+  },
+  "subtitle": {
+    "de": "Höflich bitten und eine passende Alternative finden",
+    "en": "Make polite requests and find a workable alternative"
+  },
+  "anchor": "L1–L3: me gustaría and preferiría. L4–L5: podría and debería. L6–L7: si + presente with presente or ir a. L8–L9: tendría, sería and haría. L10: mixed polite request and concession. Complication episodes: every them2 introduces a new constraint, and situation, title and sceneCaption show only the goal and them1. Formal singular usted at service counters, informal singular tú with a familiar activity leader or colleague. No imperfecto de subjuntivo. es-ES; gender-neutral learner production. Fable read-through and arbitration applied 2026-10-05.",
+  "lessons": [
+    {
+      "slug": "gustaria-aprender-cocina",
+      "title": {
+        "de": "Ein Platz im Kochkurs",
+        "en": "A place in the cooking workshop"
+      },
+      "situation": {
+        "de": "Du erkundigst dich im Kulturzentrum nach einem Kochkurs. Erkläre, was du dort gern lernen möchtest.",
+        "en": "You ask at the cultural centre about a cooking workshop. Explain what you would like to learn there."
+      },
+      "pedagogicalGoal": "Mit me gustaría einen Wunsch äußern und mit preferiría eine angebotene Alternative auswählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿En qué actividad le interesa participar?",
+          "baseText": {
+            "de": "An welcher Aktivität möchten Sie teilnehmen?",
+            "en": "Which activity are you interested in joining?"
+          }
+        },
+        {
+          "targetText": "Me gustaría apuntarme al taller de cocina para aprender a preparar platos de aquí.",
+          "baseText": {
+            "de": "Ich würde mich gern für den Kochkurs anmelden, um Gerichte von hier zubereiten zu lernen.",
+            "en": "I would like to sign up for the cooking workshop to learn to prepare local dishes."
+          }
+        },
+        {
+          "targetText": "Ese grupo está completo, pero quedan plazas en el taller del sábado.",
+          "baseText": {
+            "de": "Diese Gruppe ist voll, aber im Samstagskurs gibt es noch Plätze.",
+            "en": "That group is full, but there are places in the Saturday workshop."
+          }
+        },
+        {
+          "targetText": "Entonces yo preferiría asistir el sábado, porque quiero empezar pronto.",
+          "baseText": {
+            "de": "Dann würde ich lieber am Samstag teilnehmen, weil ich bald anfangen möchte.",
+            "en": "Then I would prefer to attend on Saturday because I want to start soon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Me gustaría · preferiría",
+        "rule": {
+          "de": "Me gustaría mit Infinitiv äußert einen Wunsch höflich; mit preferiría wählst du die Möglichkeit, die dir lieber ist.",
+          "en": "Me gustaría followed by an infinitive expresses a wish politely; preferiría selects the option you would prefer."
+        },
+        "examples": [
+          {
+            "targetText": "Me gustaría apuntarme al taller de cocina para aprender a preparar platos de aquí.",
+            "baseText": {
+              "de": "Ich würde mich gern für den Kochkurs anmelden, um Gerichte von hier zubereiten zu lernen.",
+              "en": "I would like to sign up for the cooking workshop to learn to prepare local dishes."
+            },
+            "highlight": "Me gustaría apuntarme"
+          },
+          {
+            "targetText": "Preferiría empezar esta semana.",
+            "baseText": {
+              "de": "Ich würde lieber diese Woche anfangen.",
+              "en": "I would prefer to start this week."
+            },
+            "highlight": "Preferiría"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces yo ",
+        {
+          "kind": "form",
+          "answer": "preferiría",
+          "cue": "preferir (yo)",
+          "choices": [
+            "preferirías",
+            "preferiríamos",
+            "preferiría",
+            "preferirían"
+          ]
+        },
+        " asistir el sábado, ",
+        {
+          "kind": "connector",
+          "answer": "porque",
+          "choices": [
+            "por eso",
+            "para que",
+            "porque",
+            "sin embargo"
+          ]
+        },
+        " quiero empezar pronto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me gustaría apuntarme",
+          "baseText": {
+            "de": "Ich würde mich gern anmelden",
+            "en": "I would like to sign up"
+          }
+        },
+        {
+          "targetText": "al taller de cocina",
+          "baseText": {
+            "de": "für den Kochkurs",
+            "en": "for the cooking workshop"
+          }
+        },
+        {
+          "targetText": "para aprender a preparar",
+          "baseText": {
+            "de": "um zubereiten zu lernen",
+            "en": "to learn to prepare"
+          }
+        },
+        {
+          "targetText": "platos de aquí.",
+          "baseText": {
+            "de": "Gerichte von hier.",
+            "en": "local dishes."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "me gustaría",
+          "baseText": {
+            "de": "ich würde gern",
+            "en": "I would like"
+          }
+        },
+        {
+          "targetText": "apuntarme",
+          "baseText": {
+            "de": "mich anmelden",
+            "en": "to sign up"
+          }
+        },
+        {
+          "targetText": "el taller de cocina",
+          "baseText": {
+            "de": "der Kochkurs",
+            "en": "the cooking workshop"
+          }
+        },
+        {
+          "targetText": "preparar platos",
+          "baseText": {
+            "de": "Gerichte zubereiten",
+            "en": "to prepare dishes"
+          }
+        },
+        {
+          "targetText": "el grupo está completo",
+          "baseText": {
+            "de": "die Gruppe ist voll",
+            "en": "the group is full"
+          }
+        },
+        {
+          "targetText": "quedan plazas",
+          "baseText": {
+            "de": "es gibt noch freie Plätze",
+            "en": "there are places left"
+          }
+        },
+        {
+          "targetText": "asistir",
+          "baseText": {
+            "de": "teilnehmen; hingehen",
+            "en": "to attend"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me ",
+        "answer": "gustaría",
+        "after": " apuntarme al taller de cocina para aprender a preparar platos de aquí.",
+        "fallbackChoices": [
+          "gustarían",
+          "gustaría",
+          "gustaríamos",
+          "gustarías"
+        ]
+      },
+      "speakRequired": [
+        "gustaría",
+        "taller",
+        "cocina"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang des Kulturzentrums fragt die Mitarbeiterin: „¿En qué actividad le interesa participar?“",
+        "en": "At the cultural centre reception, the staff member asks: “¿En qué actividad le interesa participar?”"
+      },
+      "trophyWord": {
+        "word": "gustaría",
+        "meaning": {
+          "de": "würde gefallen; in me gustaría: ich würde gern",
+          "en": "would please; in me gustaría: I would like"
+        },
+        "example": "Me gustaría aprender a preparar una tortilla de patatas.",
+        "whyThisWord": {
+          "de": "Me gustaría macht aus einem direkten Wunsch eine höfliche Bitte und passt vor viele Tätigkeiten.",
+          "en": "Me gustaría turns a direct wish into a polite request and works before many activities."
+        }
+      },
+      "distractors": [
+        "al taller de pintura",
+        "platos para una fiesta."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anmeldung am Empfang eines spanischen Kulturzentrums.",
+        "en": "A course enquiry at the reception of a Spanish cultural centre."
+      },
+      "songMood": "Warm acoustic pop with a curious, welcoming tone.",
+      "visualNotes": "Cultural centre reception, cooking workshop leaflet, learner and staff member; no full-group notice or Saturday solution."
+    },
+    {
+      "slug": "preferiria-una-mesa-dentro",
+      "title": {
+        "de": "Ein Tisch ohne Wind",
+        "en": "A table out of the wind"
+      },
+      "situation": {
+        "de": "Im Restaurant bittest du um einen Tisch im Innenraum. Erkläre, warum dir dieser Bereich lieber ist.",
+        "en": "At a restaurant, ask for an indoor table. Explain why you prefer that area."
+      },
+      "pedagogicalGoal": "Mit preferiría einen höflichen Wunsch äußern und nach einer Einschränkung eine begründete neue Wahl treffen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Tiene alguna preferencia para la mesa?",
+          "baseText": {
+            "de": "Haben Sie einen Wunsch für den Tisch?",
+            "en": "Do you have a preference for your table?"
+          }
+        },
+        {
+          "targetText": "Preferiría una mesa dentro, porque en la terraza suele hacer bastante viento.",
+          "baseText": {
+            "de": "Ich hätte lieber einen Tisch drinnen, weil es auf der Terrasse oft ziemlich windig ist.",
+            "en": "I would prefer a table inside because it is often quite windy on the terrace."
+          }
+        },
+        {
+          "targetText": "Dentro está todo reservado, pero queda una mesa en el patio cerrado.",
+          "baseText": {
+            "de": "Drinnen ist alles reserviert, aber im geschlossenen Innenhof ist noch ein Tisch frei.",
+            "en": "Everything inside is reserved, but there is a table in the enclosed courtyard."
+          }
+        },
+        {
+          "targetText": "Entonces yo preferiría el patio, porque allí no hace viento.",
+          "baseText": {
+            "de": "Dann würde ich lieber den Innenhof nehmen, weil es dort nicht windig ist.",
+            "en": "Then I would prefer the courtyard because it is not windy there."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Preferiría + una opción",
+        "rule": {
+          "de": "Preferiría nennt eine Vorliebe höflich; danach kann eine Sache oder eine Tätigkeit im Infinitiv stehen.",
+          "en": "Preferiría expresses a preference politely; it can be followed by a thing or by an infinitive describing an activity."
+        },
+        "examples": [
+          {
+            "targetText": "Preferiría una mesa dentro, porque en la terraza suele hacer bastante viento.",
+            "baseText": {
+              "de": "Ich hätte lieber einen Tisch drinnen, weil es auf der Terrasse oft ziemlich windig ist.",
+              "en": "I would prefer a table inside because it is often quite windy on the terrace."
+            },
+            "highlight": "Preferiría una mesa dentro"
+          },
+          {
+            "targetText": "Preferiría comer lejos de la puerta.",
+            "baseText": {
+              "de": "Ich würde lieber weiter weg von der Tür essen.",
+              "en": "I would prefer to eat away from the door."
+            },
+            "highlight": "Preferiría comer"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces yo ",
+        {
+          "kind": "form",
+          "answer": "preferiría",
+          "cue": "preferir (yo)",
+          "choices": [
+            "preferirían",
+            "preferiría",
+            "preferirías",
+            "preferiríamos"
+          ]
+        },
+        " el patio, ",
+        {
+          "kind": "connector",
+          "answer": "porque",
+          "choices": [
+            "sin embargo",
+            "por eso",
+            "porque",
+            "para que"
+          ]
+        },
+        " allí no hace viento."
+      ],
+      "chunks": [
+        {
+          "targetText": "Preferiría una mesa dentro,",
+          "baseText": {
+            "de": "Ich hätte lieber einen Tisch drinnen,",
+            "en": "I would prefer a table inside,"
+          }
+        },
+        {
+          "targetText": "porque en la terraza",
+          "baseText": {
+            "de": "weil es auf der Terrasse",
+            "en": "because on the terrace"
+          }
+        },
+        {
+          "targetText": "suele hacer",
+          "baseText": {
+            "de": "oft herrscht",
+            "en": "there is often"
+          }
+        },
+        {
+          "targetText": "bastante viento.",
+          "baseText": {
+            "de": "ziemlich viel Wind.",
+            "en": "quite a lot of wind."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "preferiría",
+          "baseText": {
+            "de": "ich hätte lieber; ich würde vorziehen",
+            "en": "I would prefer"
+          }
+        },
+        {
+          "targetText": "una mesa dentro",
+          "baseText": {
+            "de": "ein Tisch drinnen",
+            "en": "an indoor table"
+          }
+        },
+        {
+          "targetText": "la terraza",
+          "baseText": {
+            "de": "die Terrasse",
+            "en": "the terrace"
+          }
+        },
+        {
+          "targetText": "hacer viento",
+          "baseText": {
+            "de": "windig sein",
+            "en": "to be windy"
+          }
+        },
+        {
+          "targetText": "reservado",
+          "baseText": {
+            "de": "reserviert",
+            "en": "reserved"
+          }
+        },
+        {
+          "targetText": "el patio cerrado",
+          "baseText": {
+            "de": "der geschlossene Innenhof",
+            "en": "the enclosed courtyard"
+          }
+        },
+        {
+          "targetText": "alguna preferencia",
+          "baseText": {
+            "de": "ein bestimmter Wunsch",
+            "en": "a preference"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Preferiría",
+        "after": " una mesa dentro, porque en la terraza suele hacer bastante viento.",
+        "fallbackChoices": [
+          "Preferiríamos",
+          "Preferirías",
+          "Preferiría",
+          "Preferirían"
+        ]
+      },
+      "speakRequired": [
+        "preferiría",
+        "mesa",
+        "terraza"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang des Restaurants fragt der Kellner: „¿Tiene alguna preferencia para la mesa?“",
+        "en": "At the restaurant entrance, the waiter asks: “¿Tiene alguna preferencia para la mesa?”"
+      },
+      "trophyWord": {
+        "word": "preferiría",
+        "meaning": {
+          "de": "ich hätte lieber; ich würde vorziehen",
+          "en": "I would prefer"
+        },
+        "example": "Yo preferiría una mesa junto a la ventana.",
+        "whyThisWord": {
+          "de": "Preferiría lässt dich einen Wunsch klar und höflich nennen, auch wenn du zwischen mehreren Möglichkeiten neu wählen musst.",
+          "en": "Preferiría lets you state a preference clearly and politely, including when you have to choose a different option."
+        }
+      },
+      "distractors": [
+        "Preferiría una mesa fuera,",
+        "porque junto a la ventana"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gast bespricht am Restauranteingang die Tischwahl.",
+        "en": "A guest discusses table preferences at a restaurant entrance."
+      },
+      "songMood": "Gentle restaurant acoustic pop with a light, unhurried beat.",
+      "visualNotes": "Spanish restaurant entrance with an indoor dining area and terrace in view; no reservation complication shown."
+    },
+    {
+      "slug": "oportunidad-de-voluntariado",
+      "title": {
+        "de": "Eine Gelegenheit mitzuhelfen",
+        "en": "An opportunity to help"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei einem sozialen Verein nach freiwilliger Mitarbeit. Erkläre, warum dich das Angebot interessiert.",
+        "en": "You ask a community charity about volunteering. Explain why the opportunity interests you."
+      },
+      "pedagogicalGoal": "Mit me gustaría Interesse bekunden und mit preferiría eine konkrete Verfügbarkeit innerhalb einer Bedingung anbieten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué le interesa de nuestro programa de voluntariado?",
+          "baseText": {
+            "de": "Was interessiert Sie an unserem Freiwilligenprogramm?",
+            "en": "What interests you about our volunteering programme?"
+          }
+        },
+        {
+          "targetText": "Me gustaría aprovechar esta oportunidad de voluntariado y ayudar en el comedor del barrio.",
+          "baseText": {
+            "de": "Ich würde diese Gelegenheit zum Ehrenamt gern nutzen und in der Essensausgabe im Viertel helfen.",
+            "en": "I would like to take this volunteering opportunity and help in the neighbourhood community kitchen."
+          }
+        },
+        {
+          "targetText": "Necesita venir dos mañanas por semana. ¿Tiene esa disponibilidad?",
+          "baseText": {
+            "de": "Sie müssen an zwei Vormittagen pro Woche kommen. Haben Sie dafür Zeit?",
+            "en": "You need to come two mornings a week. Are you available for that?"
+          }
+        },
+        {
+          "targetText": "Yo preferiría venir martes y jueves; ambas mañanas me van bien.",
+          "baseText": {
+            "de": "Ich würde lieber dienstags und donnerstags kommen; beide Vormittage passen mir gut.",
+            "en": "I would prefer to come on Tuesdays and Thursdays; both mornings suit me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "De un deseo a una disponibilidad concreta",
+        "rule": {
+          "de": "Me gustaría nennt dein Interesse; preferiría mit venir und Wochentagen macht daraus einen konkreten Vorschlag.",
+          "en": "Me gustaría states your interest; preferiría with venir and days of the week turns it into a specific proposal."
+        },
+        "examples": [
+          {
+            "targetText": "Yo preferiría venir martes y jueves; ambas mañanas me van bien.",
+            "baseText": {
+              "de": "Ich würde lieber dienstags und donnerstags kommen; beide Vormittage passen mir gut.",
+              "en": "I would prefer to come on Tuesdays and Thursdays; both mornings suit me."
+            },
+            "highlight": "Yo preferiría venir martes y jueves"
+          },
+          {
+            "targetText": "Me gustaría ayudar una mañana por semana.",
+            "baseText": {
+              "de": "Ich würde gern an einem Vormittag pro Woche helfen.",
+              "en": "I would like to help one morning a week."
+            },
+            "highlight": "Me gustaría ayudar"
+          }
+        ]
+      },
+      "cloze": [
+        "Yo ",
+        {
+          "kind": "form",
+          "answer": "preferiría",
+          "cue": "preferir (yo)",
+          "choices": [
+            "preferirían",
+            "preferiríamos",
+            "preferirías",
+            "preferiría"
+          ]
+        },
+        " venir martes y jueves; ambas mañanas me ",
+        {
+          "kind": "form",
+          "answer": "van",
+          "cue": "ir (ambas mañanas)",
+          "choices": [
+            "voy",
+            "va",
+            "van",
+            "vamos"
+          ]
+        },
+        " bien."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me gustaría aprovechar",
+          "baseText": {
+            "de": "Ich würde gern nutzen",
+            "en": "I would like to take"
+          }
+        },
+        {
+          "targetText": "esta oportunidad de voluntariado",
+          "baseText": {
+            "de": "diese Gelegenheit zum Ehrenamt",
+            "en": "this volunteering opportunity"
+          }
+        },
+        {
+          "targetText": "y ayudar",
+          "baseText": {
+            "de": "und helfen",
+            "en": "and help"
+          }
+        },
+        {
+          "targetText": "en el comedor del barrio.",
+          "baseText": {
+            "de": "in der Essensausgabe im Viertel.",
+            "en": "in the neighbourhood community kitchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aprovechar",
+          "baseText": {
+            "de": "nutzen",
+            "en": "to make use of"
+          }
+        },
+        {
+          "targetText": "oportunidad",
+          "baseText": {
+            "de": "Gelegenheit",
+            "en": "opportunity"
+          }
+        },
+        {
+          "targetText": "voluntariado",
+          "baseText": {
+            "de": "Freiwilligenarbeit; Ehrenamt",
+            "en": "volunteering"
+          }
+        },
+        {
+          "targetText": "el comedor del barrio",
+          "baseText": {
+            "de": "die Essensausgabe im Viertel",
+            "en": "the neighbourhood community kitchen"
+          }
+        },
+        {
+          "targetText": "dos mañanas por semana",
+          "baseText": {
+            "de": "zwei Vormittage pro Woche",
+            "en": "two mornings a week"
+          }
+        },
+        {
+          "targetText": "disponibilidad",
+          "baseText": {
+            "de": "Verfügbarkeit",
+            "en": "availability"
+          }
+        },
+        {
+          "targetText": "me van bien",
+          "baseText": {
+            "de": "sie passen mir gut",
+            "en": "they suit me"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me gustaría aprovechar esta ",
+        "answer": "oportunidad",
+        "after": " de voluntariado y ayudar en el comedor del barrio.",
+        "fallbackChoices": [
+          "oportunidad",
+          "tormenta",
+          "costumbre",
+          "avería"
+        ]
+      },
+      "speakRequired": [
+        "oportunidad",
+        "voluntariado",
+        "comedor"
+      ],
+      "sceneCaption": {
+        "de": "Beim sozialen Verein fragt der Mitarbeiter: „¿Qué le interesa de nuestro programa de voluntariado?“",
+        "en": "At the community charity, the staff member asks: “¿Qué le interesa de nuestro programa de voluntariado?”"
+      },
+      "trophyWord": {
+        "word": "oportunidad",
+        "meaning": {
+          "de": "Gelegenheit",
+          "en": "opportunity"
+        },
+        "example": "Esta oportunidad de voluntariado permite ayudar a otras personas del barrio.",
+        "whyThisWord": {
+          "de": "Mit oportunidad beschreibst du eine konkrete Möglichkeit, etwas Neues zu tun oder dich einzubringen.",
+          "en": "Oportunidad describes a concrete chance to try something new or contribute."
+        }
+      },
+      "distractors": [
+        "esta actividad de los sábados",
+        "en la biblioteca del barrio."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über freiwillige Mitarbeit bei einem Nachbarschaftsverein.",
+        "en": "A conversation about volunteering at a neighbourhood charity."
+      },
+      "songMood": "Sincere acoustic pop with a warm communal feel.",
+      "visualNotes": "Community charity office in Spain, volunteering leaflet, two adults; no weekly attendance requirement shown."
+    },
+    {
+      "slug": "podria-explicar-la-tarifa",
+      "title": {
+        "de": "Was ist im Preis enthalten?",
+        "en": "What does the price include?"
+      },
+      "situation": {
+        "de": "Am Schalter erkundigst du dich nach einer Monatskarte. Du möchtest einen Tarif wählen, der zu deinen Fahrten passt.",
+        "en": "At a ticket counter, ask about a monthly pass. You want to choose a fare that suits your journeys."
+      },
+      "pedagogicalGoal": "Mit podría eine höfliche Bitte formulieren und nach einer genannten Einschränkung mit podría um eine konkrete Klärung bitten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Quiere comprar ya el abono mensual?",
+          "baseText": {
+            "de": "Möchten Sie die Monatskarte schon kaufen?",
+            "en": "Would you like to buy the monthly pass now?"
+          }
+        },
+        {
+          "targetText": "¿Me podría explicar la tarifa con más detalle antes de elegir el abono mensual?",
+          "baseText": {
+            "de": "Könnten Sie mir den Tarif genauer erklären, bevor ich mich für die Monatskarte entscheide?",
+            "en": "Could you explain the fare in more detail before I choose the monthly pass?"
+          }
+        },
+        {
+          "targetText": "El abono básico tiene algunas limitaciones según el día de viaje.",
+          "baseText": {
+            "de": "Für die einfache Monatskarte gelten je nach Reisetag bestimmte Einschränkungen.",
+            "en": "The basic pass has some restrictions depending on the day you travel."
+          }
+        },
+        {
+          "targetText": "¿Usted podría aclararlo? ¿El abono incluye los fines de semana?",
+          "baseText": {
+            "de": "Könnten Sie das klären? Gilt die Karte auch am Wochenende?",
+            "en": "Could you clarify that? Does the pass include weekends?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Podría + infinitivo: una petición cortés",
+        "rule": {
+          "de": "Podría mit Infinitiv macht die Bitte höflich; bei usted bezeichnet podría die Person, die du um Hilfe bittest.",
+          "en": "Podría followed by an infinitive makes a request polite; with usted, podría refers to the person you are asking for help."
+        },
+        "examples": [
+          {
+            "targetText": "¿Me podría explicar la tarifa con más detalle antes de elegir el abono mensual?",
+            "baseText": {
+              "de": "Könnten Sie mir den Tarif genauer erklären, bevor ich mich für die Monatskarte entscheide?",
+              "en": "Could you explain the fare in more detail before I choose the monthly pass?"
+            },
+            "highlight": "Me podría explicar"
+          },
+          {
+            "targetText": "¿Podría repetir el precio del abono mensual, por favor?",
+            "baseText": {
+              "de": "Könnten Sie bitte den Preis der Monatskarte wiederholen?",
+              "en": "Could you repeat the price of the monthly pass, please?"
+            },
+            "highlight": "Podría repetir"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "podría",
+          "cue": "poder (usted)",
+          "choices": [
+            "podrían",
+            "podrías",
+            "podría",
+            "podríamos"
+          ]
+        },
+        " aclararlo? ¿El abono ",
+        {
+          "kind": "form",
+          "answer": "incluye",
+          "cue": "incluir (el abono)",
+          "choices": [
+            "incluyo",
+            "incluimos",
+            "incluyen",
+            "incluye"
+          ]
+        },
+        " los fines de semana?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Me podría explicar",
+          "baseText": {
+            "de": "Könnten Sie mir erklären",
+            "en": "Could you explain to me"
+          }
+        },
+        {
+          "targetText": "la tarifa",
+          "baseText": {
+            "de": "den Tarif",
+            "en": "the fare"
+          }
+        },
+        {
+          "targetText": "con más detalle",
+          "baseText": {
+            "de": "genauer",
+            "en": "in more detail"
+          }
+        },
+        {
+          "targetText": "antes de elegir",
+          "baseText": {
+            "de": "bevor ich mich entscheide",
+            "en": "before choosing"
+          }
+        },
+        {
+          "targetText": "el abono mensual?",
+          "baseText": {
+            "de": "für die Monatskarte?",
+            "en": "the monthly pass?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "podría",
+          "baseText": {
+            "de": "Sie könnten; ich könnte",
+            "en": "you could; I could"
+          }
+        },
+        {
+          "targetText": "explicar",
+          "baseText": {
+            "de": "erklären",
+            "en": "to explain"
+          }
+        },
+        {
+          "targetText": "la tarifa",
+          "baseText": {
+            "de": "der Tarif",
+            "en": "the fare"
+          }
+        },
+        {
+          "targetText": "con más detalle",
+          "baseText": {
+            "de": "genauer",
+            "en": "in more detail"
+          }
+        },
+        {
+          "targetText": "el abono mensual",
+          "baseText": {
+            "de": "die Monatskarte",
+            "en": "the monthly pass"
+          }
+        },
+        {
+          "targetText": "incluye",
+          "baseText": {
+            "de": "es schließt ein",
+            "en": "it includes"
+          }
+        },
+        {
+          "targetText": "los fines de semana",
+          "baseText": {
+            "de": "die Wochenenden",
+            "en": "weekends"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Me ",
+        "answer": "podría",
+        "after": " explicar la tarifa con más detalle antes de elegir el abono mensual?",
+        "fallbackChoices": [
+          "podríamos",
+          "podrías",
+          "podrían",
+          "podría"
+        ]
+      },
+      "speakRequired": [
+        "podría",
+        "tarifa",
+        "mensual"
+      ],
+      "sceneCaption": {
+        "de": "Am Fahrkartenschalter fragt die Mitarbeiterin: „¿Quiere comprar ya el abono mensual?“",
+        "en": "At the ticket counter, the staff member asks: “¿Quiere comprar ya el abono mensual?”"
+      },
+      "trophyWord": {
+        "word": "podría",
+        "meaning": {
+          "de": "Sie könnten; ich könnte",
+          "en": "you could; I could"
+        },
+        "example": "¿Me podría explicar el precio antes de pagar?",
+        "whyThisWord": {
+          "de": "Podría hilft dir, höflich um eine Handlung zu bitten, etwa um eine Erklärung oder Wiederholung.",
+          "en": "Podría helps you politely request an action, such as an explanation or repetition."
+        }
+      },
+      "distractors": [
+        "con menos detalle",
+        "el billete de ida?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über Fahrkarten an einem Verkaufsschalter.",
+        "en": "A conversation about travel passes at a ticket counter."
+      },
+      "songMood": "Clear, steady acoustic pop with a patient tone.",
+      "visualNotes": "Spanish transport ticket counter, fare leaflet, staff member and learner; no weekend inclusion answer on signage."
+    },
+    {
+      "slug": "deberia-completar-la-inscripcion",
+      "title": {
+        "de": "Die Anmeldung abschließen",
+        "en": "Completing the enrolment"
+      },
+      "situation": {
+        "de": "Du meldest dich für einen Fotokurs an. Frage die Mitarbeiterin, wie es mit dem Formular weitergeht.",
+        "en": "You are enrolling in a photography course. Ask the staff member what to do next with the form."
+      },
+      "pedagogicalGoal": "Mit debería nach dem sinnvollen nächsten Schritt fragen und mit podría um Hilfe bei einer fehlenden Angabe bitten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Aquí tiene el formulario del curso de fotografía. ¿Tiene alguna duda?",
+          "baseText": {
+            "de": "Hier ist das Formular für den Fotokurs. Haben Sie eine Frage?",
+            "en": "Here is the form for the photography course. Do you have any questions?"
+          }
+        },
+        {
+          "targetText": "¿Qué debería hacer ahora para completar la inscripción en el curso de fotografía?",
+          "baseText": {
+            "de": "Was sollte ich jetzt tun, um die Anmeldung für den Fotokurs abzuschließen?",
+            "en": "What should I do now to complete my enrolment in the photography course?"
+          }
+        },
+        {
+          "targetText": "Falta el código postal, pero ya tengo su dirección.",
+          "baseText": {
+            "de": "Die Postleitzahl fehlt, aber Ihre Adresse habe ich schon.",
+            "en": "The postcode is missing, but I already have your address."
+          }
+        },
+        {
+          "targetText": "¿Usted podría buscarlo? Mi dirección está en el formulario.",
+          "baseText": {
+            "de": "Könnten Sie sie nachschlagen? Meine Adresse steht im Formular.",
+            "en": "Could you look it up? My address is on the form."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Debería: preguntar por el siguiente paso",
+        "rule": {
+          "de": "Mit qué debería hacer fragst du nach einem sinnvollen Vorgehen; soll dir jemand dabei helfen, folgt eine Bitte mit podría.",
+          "en": "Qué debería hacer asks what it would be sensible to do; a request with podría then asks someone to help."
+        },
+        "examples": [
+          {
+            "targetText": "¿Qué debería hacer ahora para completar la inscripción en el curso de fotografía?",
+            "baseText": {
+              "de": "Was sollte ich jetzt tun, um die Anmeldung für den Fotokurs abzuschließen?",
+              "en": "What should I do now to complete my enrolment in the photography course?"
+            },
+            "highlight": "Qué debería hacer"
+          },
+          {
+            "targetText": "Debería comprobar la dirección antes de entregar el formulario.",
+            "baseText": {
+              "de": "Ich sollte die Adresse prüfen, bevor ich das Formular abgebe.",
+              "en": "I should check the address before handing in the form."
+            },
+            "highlight": "Debería comprobar"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Usted ",
+        {
+          "kind": "form",
+          "answer": "podría",
+          "cue": "poder (usted)",
+          "choices": [
+            "podrías",
+            "podría",
+            "podríamos",
+            "podrían"
+          ]
+        },
+        " buscarlo? Mi dirección ",
+        {
+          "kind": "form",
+          "answer": "está",
+          "cue": "estar (mi dirección)",
+          "choices": [
+            "están",
+            "estoy",
+            "está",
+            "estamos"
+          ]
+        },
+        " en el formulario."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Qué debería hacer ahora",
+          "baseText": {
+            "de": "Was sollte ich jetzt tun",
+            "en": "What should I do now"
+          }
+        },
+        {
+          "targetText": "para completar",
+          "baseText": {
+            "de": "um abzuschließen",
+            "en": "to complete"
+          }
+        },
+        {
+          "targetText": "la inscripción",
+          "baseText": {
+            "de": "die Anmeldung",
+            "en": "the enrolment"
+          }
+        },
+        {
+          "targetText": "en el curso de fotografía?",
+          "baseText": {
+            "de": "für den Fotokurs?",
+            "en": "in the photography course?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "debería",
+          "baseText": {
+            "de": "ich sollte; Sie sollten",
+            "en": "I should; you should"
+          }
+        },
+        {
+          "targetText": "completar la inscripción",
+          "baseText": {
+            "de": "die Anmeldung abschließen",
+            "en": "to complete enrolment"
+          }
+        },
+        {
+          "targetText": "el curso de fotografía",
+          "baseText": {
+            "de": "der Fotokurs",
+            "en": "the photography course"
+          }
+        },
+        {
+          "targetText": "el código postal",
+          "baseText": {
+            "de": "die Postleitzahl",
+            "en": "the postcode"
+          }
+        },
+        {
+          "targetText": "la dirección",
+          "baseText": {
+            "de": "die Adresse",
+            "en": "the address"
+          }
+        },
+        {
+          "targetText": "buscarlo",
+          "baseText": {
+            "de": "sie nachschlagen (die Postleitzahl)",
+            "en": "to look it up (the postcode)"
+          }
+        },
+        {
+          "targetText": "el formulario",
+          "baseText": {
+            "de": "das Formular",
+            "en": "the form"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Qué ",
+        "answer": "debería",
+        "after": " hacer ahora para completar la inscripción en el curso de fotografía?",
+        "fallbackChoices": [
+          "deberían",
+          "deberíamos",
+          "debería",
+          "deberías"
+        ]
+      },
+      "speakRequired": [
+        "debería",
+        "inscripción",
+        "fotografía"
+      ],
+      "sceneCaption": {
+        "de": "Am Kursschalter sagt die Mitarbeiterin: „Aquí tiene el formulario del curso de fotografía. ¿Tiene alguna duda?“",
+        "en": "At the course desk, the staff member says: “Aquí tiene el formulario del curso de fotografía. ¿Tiene alguna duda?”"
+      },
+      "trophyWord": {
+        "word": "debería",
+        "meaning": {
+          "de": "ich sollte; Sie sollten",
+          "en": "I should; you should"
+        },
+        "example": "Antes de entregar el formulario, yo debería revisar mis datos.",
+        "whyThisWord": {
+          "de": "Debería lässt dich über einen sinnvollen nächsten Schritt sprechen und danach fragen, ohne eine Pflicht als bereits feststehend darzustellen.",
+          "en": "Debería lets you discuss or ask about a sensible next step without presenting it as an established obligation."
+        }
+      },
+      "distractors": [
+        "¿Qué puedo pagar ahora",
+        "en el curso de cerámica?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Formular für einen Fotokurs liegt auf einem Beratungstisch.",
+        "en": "A photography-course form lies on an enquiry desk."
+      },
+      "songMood": "Patient acoustic pop with a simple, reassuring groove.",
+      "visualNotes": "Course enrolment desk with an unfilled generic form; no missing postcode highlighted."
+    },
+    {
+      "slug": "permiso-para-salir-antes",
+      "title": {
+        "de": "Die Arbeit später fertigstellen",
+        "en": "Finishing the work later"
+      },
+      "situation": {
+        "de": "In deiner vertrauten Keramikgruppe bittest du die Kursleitung, früher gehen zu dürfen. Ihr sucht einen Weg, die angefangene Arbeit fertigzustellen.",
+        "en": "In your regular pottery group, ask the instructor you know if you can leave early. Find a way to finish the piece you have started."
+      },
+      "pedagogicalGoal": "Mit si und Präsens eine realistische Bedingung nennen und daran eine mögliche Fortsetzung im Präsens knüpfen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Necesitas comentarme algo antes de empezar la actividad?",
+          "baseText": {
+            "de": "Möchtest du mir vor Beginn der Aktivität noch etwas sagen?",
+            "en": "Is there anything you need to tell me before we start the activity?"
+          }
+        },
+        {
+          "targetText": "¿Me das permiso para salir antes? Si puedo, termino la pieza mañana.",
+          "baseText": {
+            "de": "Darf ich früher gehen? Wenn es geht, stelle ich das Stück morgen fertig.",
+            "en": "Can I have permission to leave early? If I can, I'll finish the piece tomorrow."
+          }
+        },
+        {
+          "targetText": "Mañana no hay clase; la próxima sesión es el jueves.",
+          "baseText": {
+            "de": "Morgen ist kein Kurs; die nächste Stunde ist am Donnerstag.",
+            "en": "There is no class tomorrow; the next session is on Thursday."
+          }
+        },
+        {
+          "targetText": "Si tú guardas mi pieza, yo la termino el jueves.",
+          "baseText": {
+            "de": "Wenn du mein Stück aufbewahrst, mache ich es am Donnerstag fertig.",
+            "en": "If you keep my piece, I'll finish it on Thursday."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si + presente, presente",
+        "rule": {
+          "de": "Für eine realistische Bedingung steht nach si das Präsens; auch die geplante Folge kann hier im Präsens stehen.",
+          "en": "Use the present tense after si for a realistic condition; the planned result can also use the present here."
+        },
+        "examples": [
+          {
+            "targetText": "Si tú guardas mi pieza, yo la termino el jueves.",
+            "baseText": {
+              "de": "Wenn du mein Stück aufbewahrst, mache ich es am Donnerstag fertig.",
+              "en": "If you keep my piece, I'll finish it on Thursday."
+            },
+            "highlight": "Si tú guardas mi pieza"
+          },
+          {
+            "targetText": "Si tengo tiempo mañana, preparo el material en casa.",
+            "baseText": {
+              "de": "Wenn ich morgen Zeit habe, bereite ich das Material zu Hause vor.",
+              "en": "If I have time tomorrow, I'll prepare the materials at home."
+            },
+            "highlight": "Si tengo tiempo mañana"
+          }
+        ]
+      },
+      "cloze": [
+        "Si tú ",
+        {
+          "kind": "form",
+          "answer": "guardas",
+          "cue": "guardar (tú)",
+          "choices": [
+            "guarda",
+            "guardas",
+            "guardan",
+            "guardo"
+          ]
+        },
+        " mi pieza, yo la ",
+        {
+          "kind": "form",
+          "answer": "termino",
+          "cue": "terminar (yo)",
+          "choices": [
+            "terminan",
+            "terminamos",
+            "termina",
+            "termino"
+          ]
+        },
+        " el jueves."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Me das permiso",
+          "baseText": {
+            "de": "Erlaubst du mir",
+            "en": "Do you give me permission"
+          }
+        },
+        {
+          "targetText": "para salir antes?",
+          "baseText": {
+            "de": "früher zu gehen?",
+            "en": "to leave early?"
+          }
+        },
+        {
+          "targetText": "Si puedo,",
+          "baseText": {
+            "de": "Wenn es geht,",
+            "en": "If I can,"
+          }
+        },
+        {
+          "targetText": "termino la pieza mañana.",
+          "baseText": {
+            "de": "stelle ich das Stück morgen fertig.",
+            "en": "I'll finish the piece tomorrow."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "permiso",
+          "baseText": {
+            "de": "Erlaubnis",
+            "en": "permission"
+          }
+        },
+        {
+          "targetText": "salir antes",
+          "baseText": {
+            "de": "früher gehen",
+            "en": "to leave early"
+          }
+        },
+        {
+          "targetText": "si puedo",
+          "baseText": {
+            "de": "wenn ich kann; wenn es geht",
+            "en": "if I can"
+          }
+        },
+        {
+          "targetText": "terminar la pieza",
+          "baseText": {
+            "de": "das Stück fertigstellen",
+            "en": "to finish the piece"
+          }
+        },
+        {
+          "targetText": "la próxima sesión",
+          "baseText": {
+            "de": "die nächste Stunde",
+            "en": "the next session"
+          }
+        },
+        {
+          "targetText": "guardar",
+          "baseText": {
+            "de": "aufbewahren",
+            "en": "to keep; to store"
+          }
+        },
+        {
+          "targetText": "el jueves",
+          "baseText": {
+            "de": "am Donnerstag",
+            "en": "on Thursday"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Me das ",
+        "answer": "permiso",
+        "after": " para salir antes? Si puedo, termino la pieza mañana.",
+        "fallbackChoices": [
+          "permiso",
+          "tráfico",
+          "descanso",
+          "alquiler"
+        ]
+      },
+      "speakRequired": [
+        "permiso",
+        "salir",
+        "pieza"
+      ],
+      "sceneCaption": {
+        "de": "In der Keramikgruppe fragt die vertraute Kursleiterin: „¿Necesitas comentarme algo antes de empezar la actividad?“",
+        "en": "In the pottery group, the instructor you know asks: “¿Necesitas comentarme algo antes de empezar la actividad?”"
+      },
+      "trophyWord": {
+        "word": "permiso",
+        "meaning": {
+          "de": "Erlaubnis",
+          "en": "permission"
+        },
+        "example": "Pido permiso para salir antes y terminar la pieza otro día.",
+        "whyThisWord": {
+          "de": "Mit permiso machst du deutlich, dass eine Änderung die Zustimmung einer anderen Person braucht.",
+          "en": "Permiso makes clear that a change needs another person's agreement."
+        }
+      },
+      "distractors": [
+        "para llegar después?",
+        "termino la pieza en casa."
+      ],
+      "placeholderCaption": {
+        "de": "Eine vertraute Keramikgruppe bereitet sich auf ihre Stunde vor.",
+        "en": "A regular pottery group prepares for its session."
+      },
+      "songMood": "Unhurried acoustic pop with a warm workshop feel.",
+      "visualNotes": "Spanish community pottery room, unfinished clay piece and two adults; no Thursday schedule shown."
+    },
+    {
+      "slug": "cambio-de-fecha-para-la-excursion",
+      "title": {
+        "de": "Ein anderer Ausflugstag",
+        "en": "A different day for the trip"
+      },
+      "situation": {
+        "de": "Am Ausflugsschalter möchtest du auf einen anderen Tag wechseln, falls noch ein Platz frei ist. Erkläre, welche Änderung du dir wünschst.",
+        "en": "At the excursion desk, you want to switch days if a place is available. Explain the change you would like."
+      },
+      "pedagogicalGoal": "Mit si und Präsens eine verfügbare Möglichkeit prüfen und mit ir a die daran geknüpfte eigene Absicht ausdrücken.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Quiere mantener su reserva para la excursión del viernes?",
+          "baseText": {
+            "de": "Möchten Sie Ihre Reservierung für den Ausflug am Freitag behalten?",
+            "en": "Would you like to keep your booking for Friday's excursion?"
+          }
+        },
+        {
+          "targetText": "Si queda alguna plaza el sábado, voy a pedir un cambio de fecha.",
+          "baseText": {
+            "de": "Wenn am Samstag noch ein Platz frei ist, werde ich um eine Terminänderung bitten.",
+            "en": "If there is a place left on Saturday, I'm going to request a change of date."
+          }
+        },
+        {
+          "targetText": "El sábado ya tenemos otra reserva para el grupo; quedan plazas el domingo.",
+          "baseText": {
+            "de": "Am Samstag haben wir schon eine andere Reservierung für die Gruppe; am Sonntag sind noch Plätze frei.",
+            "en": "We already have another booking for the group on Saturday; there are places on Sunday."
+          }
+        },
+        {
+          "targetText": "Si la excursión del domingo sale temprano, yo voy a reservar.",
+          "baseText": {
+            "de": "Wenn der Ausflug am Sonntag früh startet, werde ich buchen.",
+            "en": "If the Sunday excursion leaves early, I'm going to book."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si + presente, voy a + infinitivo",
+        "rule": {
+          "de": "Nach si steht bei dieser realistischen Bedingung Präsens; voy a mit Infinitiv sagt, was du dann vorhast.",
+          "en": "Si takes the present tense in this realistic condition; voy a followed by an infinitive states what you then plan to do."
+        },
+        "examples": [
+          {
+            "targetText": "Si queda alguna plaza el sábado, voy a pedir un cambio de fecha.",
+            "baseText": {
+              "de": "Wenn am Samstag noch ein Platz frei ist, werde ich um eine Terminänderung bitten.",
+              "en": "If there is a place left on Saturday, I'm going to request a change of date."
+            },
+            "highlight": "voy a pedir"
+          },
+          {
+            "targetText": "Si hay sitio en el autobús, voy a reservar hoy.",
+            "baseText": {
+              "de": "Wenn im Bus Platz ist, werde ich heute buchen.",
+              "en": "If there is room on the bus, I'm going to book today."
+            },
+            "highlight": "Si hay sitio"
+          }
+        ]
+      },
+      "cloze": [
+        "Si la excursión del domingo ",
+        {
+          "kind": "form",
+          "answer": "sale",
+          "cue": "salir (la excursión del domingo)",
+          "choices": [
+            "salen",
+            "salgo",
+            "sale",
+            "salimos"
+          ]
+        },
+        " temprano, yo ",
+        {
+          "kind": "form",
+          "answer": "voy",
+          "cue": "ir (yo)",
+          "choices": [
+            "va",
+            "vamos",
+            "van",
+            "voy"
+          ]
+        },
+        " a reservar."
+      ],
+      "chunks": [
+        {
+          "targetText": "Si queda alguna plaza",
+          "baseText": {
+            "de": "Wenn noch ein Platz frei ist",
+            "en": "If there is a place left"
+          }
+        },
+        {
+          "targetText": "el sábado,",
+          "baseText": {
+            "de": "am Samstag,",
+            "en": "on Saturday,"
+          }
+        },
+        {
+          "targetText": "voy a pedir",
+          "baseText": {
+            "de": "werde ich bitten",
+            "en": "I'm going to request"
+          }
+        },
+        {
+          "targetText": "un cambio de fecha.",
+          "baseText": {
+            "de": "um eine Terminänderung.",
+            "en": "a change of date."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "queda alguna plaza",
+          "baseText": {
+            "de": "es ist noch ein Platz frei",
+            "en": "there is a place left"
+          }
+        },
+        {
+          "targetText": "el sábado",
+          "baseText": {
+            "de": "am Samstag",
+            "en": "on Saturday"
+          }
+        },
+        {
+          "targetText": "voy a pedir",
+          "baseText": {
+            "de": "ich werde bitten; ich habe vor zu beantragen",
+            "en": "I'm going to request"
+          }
+        },
+        {
+          "targetText": "cambio",
+          "baseText": {
+            "de": "Änderung; Wechsel",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "la fecha",
+          "baseText": {
+            "de": "das Datum; der Termin",
+            "en": "the date"
+          }
+        },
+        {
+          "targetText": "la excursión del domingo",
+          "baseText": {
+            "de": "der Ausflug am Sonntag",
+            "en": "the Sunday excursion"
+          }
+        },
+        {
+          "targetText": "reservar",
+          "baseText": {
+            "de": "buchen; reservieren",
+            "en": "to book"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Si queda alguna plaza el sábado, voy a pedir un ",
+        "answer": "cambio",
+        "after": " de fecha.",
+        "fallbackChoices": [
+          "descanso",
+          "ambiente",
+          "cambio",
+          "encuentro"
+        ]
+      },
+      "speakRequired": [
+        "plaza",
+        "cambio",
+        "fecha"
+      ],
+      "sceneCaption": {
+        "de": "Am Ausflugsschalter fragt der Mitarbeiter: „¿Quiere mantener su reserva para la excursión del viernes?“",
+        "en": "At the excursion desk, the staff member asks: “¿Quiere mantener su reserva para la excursión del viernes?”"
+      },
+      "trophyWord": {
+        "word": "cambio",
+        "meaning": {
+          "de": "Änderung; Wechsel",
+          "en": "change"
+        },
+        "example": "Si hay una plaza libre, pido un cambio de fecha.",
+        "whyThisWord": {
+          "de": "Cambio hilft dir, eine konkrete Anpassung zu beantragen und sie von einer verfügbaren Möglichkeit abhängig zu machen.",
+          "en": "Cambio helps you request a specific adjustment and make it depend on what is available."
+        }
+      },
+      "distractors": [
+        "el lunes,",
+        "una reserva para dos personas."
+      ],
+      "placeholderCaption": {
+        "de": "Eine bestehende Ausflugsbuchung wird am Schalter besprochen.",
+        "en": "An existing excursion booking is discussed at a desk."
+      },
+      "songMood": "Light travel-themed acoustic pop with a forward-moving beat.",
+      "visualNotes": "Excursion booking desk in Spain, generic route leaflet and calendar; no Saturday booking conflict revealed."
+    },
+    {
+      "slug": "tendria-tiempo-con-otro-turno",
+      "title": {
+        "de": "Die Heimfahrt mitbedenken",
+        "en": "Thinking about the journey home"
+      },
+      "situation": {
+        "de": "Mit einem Kollegen überlegst du, die Schicht zu wechseln. Erkläre, welchen Vorteil du darin siehst.",
+        "en": "Discuss changing shifts with a colleague. Explain what benefit you see in the change."
+      },
+      "pedagogicalGoal": "Mit tendría eine mögliche Folge abschätzen und diese Einschätzung nach einer neuen Information durch sería ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué ganas con el turno de tarde?",
+          "baseText": {
+            "de": "Was bringt dir die Nachmittagsschicht?",
+            "en": "What do you gain from the afternoon shift?"
+          }
+        },
+        {
+          "targetText": "Con el turno de tarde, yo tendría más tiempo libre por las mañanas.",
+          "baseText": {
+            "de": "Mit der Nachmittagsschicht hätte ich vormittags mehr freie Zeit.",
+            "en": "With the afternoon shift, I would have more free time in the mornings."
+          }
+        },
+        {
+          "targetText": "Pero el último autobús sale a las diez, una hora antes de tu salida.",
+          "baseText": {
+            "de": "Aber der letzte Bus fährt um zehn, eine Stunde vor deinem Feierabend.",
+            "en": "But the last bus leaves at ten, an hour before you finish."
+          }
+        },
+        {
+          "targetText": "Entonces yo tendría menos tiempo; la vuelta a pie sería larga.",
+          "baseText": {
+            "de": "Dann hätte ich weniger Zeit; der Rückweg zu Fuß wäre lang.",
+            "en": "Then I would have less time; the walk home would be long."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tendría · sería · haría",
+        "rule": {
+          "de": "Mit tendría, sería und haría schätzt du Folgen einer möglichen Wahl ein, ohne zu behaupten, dass du sie schon getroffen hast.",
+          "en": "Tendría, sería and haría let you consider the consequences of a possible choice without claiming that you have already made it."
+        },
+        "examples": [
+          {
+            "targetText": "Con el turno de tarde, yo tendría más tiempo libre por las mañanas.",
+            "baseText": {
+              "de": "Mit der Nachmittagsschicht hätte ich vormittags mehr freie Zeit.",
+              "en": "With the afternoon shift, I would have more free time in the mornings."
+            },
+            "highlight": "yo tendría"
+          },
+          {
+            "targetText": "Con ese horario haría la compra por la mañana.",
+            "baseText": {
+              "de": "Mit diesen Arbeitszeiten würde ich morgens einkaufen.",
+              "en": "With those hours, I would do the shopping in the morning."
+            },
+            "highlight": "haría"
+          },
+          {
+            "targetText": "Entonces yo tendría menos tiempo; la vuelta a pie sería larga.",
+            "baseText": {
+              "de": "Dann hätte ich weniger Zeit; der Rückweg zu Fuß wäre lang.",
+              "en": "Then I would have less time; the walk home would be long."
+            },
+            "highlight": "sería"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces yo ",
+        {
+          "kind": "form",
+          "answer": "tendría",
+          "cue": "tener (yo)",
+          "choices": [
+            "tendrías",
+            "tendrían",
+            "tendría",
+            "tendríamos"
+          ]
+        },
+        " menos tiempo; la vuelta a pie ",
+        {
+          "kind": "form",
+          "answer": "sería",
+          "cue": "ser (la vuelta a pie)",
+          "choices": [
+            "serían",
+            "sería",
+            "serías",
+            "seríamos"
+          ]
+        },
+        " larga."
+      ],
+      "chunks": [
+        {
+          "targetText": "Con el turno de tarde,",
+          "baseText": {
+            "de": "Mit der Nachmittagsschicht",
+            "en": "With the afternoon shift,"
+          }
+        },
+        {
+          "targetText": "yo tendría",
+          "baseText": {
+            "de": "hätte ich",
+            "en": "I would have"
+          }
+        },
+        {
+          "targetText": "más tiempo libre",
+          "baseText": {
+            "de": "mehr freie Zeit",
+            "en": "more free time"
+          }
+        },
+        {
+          "targetText": "por las mañanas.",
+          "baseText": {
+            "de": "vormittags.",
+            "en": "in the mornings."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "el turno de tarde",
+          "baseText": {
+            "de": "die Nachmittagsschicht",
+            "en": "the afternoon shift"
+          }
+        },
+        {
+          "targetText": "tendría",
+          "baseText": {
+            "de": "ich hätte",
+            "en": "I would have"
+          }
+        },
+        {
+          "targetText": "tiempo libre",
+          "baseText": {
+            "de": "freie Zeit",
+            "en": "free time"
+          }
+        },
+        {
+          "targetText": "por las mañanas",
+          "baseText": {
+            "de": "vormittags",
+            "en": "in the mornings"
+          }
+        },
+        {
+          "targetText": "el último autobús",
+          "baseText": {
+            "de": "der letzte Bus",
+            "en": "the last bus"
+          }
+        },
+        {
+          "targetText": "la vuelta a pie",
+          "baseText": {
+            "de": "der Rückweg zu Fuß",
+            "en": "the walk back"
+          }
+        },
+        {
+          "targetText": "sería larga",
+          "baseText": {
+            "de": "sie wäre lang",
+            "en": "it would be long"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Con el turno de tarde, yo ",
+        "answer": "tendría",
+        "after": " más tiempo libre por las mañanas.",
+        "fallbackChoices": [
+          "tendrían",
+          "tendría",
+          "tendríamos",
+          "tendrías"
+        ]
+      },
+      "speakRequired": [
+        "turno",
+        "tendría",
+        "mañanas"
+      ],
+      "sceneCaption": {
+        "de": "In der Pause fragt dein Kollege: „¿Qué ganas con el turno de tarde?“",
+        "en": "During a break, your colleague asks: “¿Qué ganas con el turno de tarde?”"
+      },
+      "trophyWord": {
+        "word": "tendría",
+        "meaning": {
+          "de": "ich hätte",
+          "en": "I would have"
+        },
+        "example": "Con un turno distinto, yo tendría las mañanas libres.",
+        "whyThisWord": {
+          "de": "Tendría lässt dich verfügbare Zeit oder andere mögliche Vorteile abschätzen, bevor du dich entscheidest.",
+          "en": "Tendría lets you estimate available time or other possible benefits before deciding."
+        }
+      },
+      "distractors": [
+        "Con el turno de mañana,",
+        "menos tiempo para estudiar"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kollegen vergleichen während einer Pause ihre Schichten.",
+        "en": "Two colleagues compare shifts during a break."
+      },
+      "songMood": "Reflective acoustic pop with a gentle, thoughtful pulse.",
+      "visualNotes": "Workplace break room, simple shift chart and two colleagues; no last-bus time visible."
+    },
+    {
+      "slug": "seria-util-una-confirmacion",
+      "title": {
+        "de": "Die Buchungsdaten aufheben",
+        "en": "Keeping the booking details"
+      },
+      "situation": {
+        "de": "An einem Reservierungsschalter bittest du um eine Bestätigung per E-Mail. Erkläre, warum du die Buchungsdaten aufheben möchtest.",
+        "en": "At a booking desk, ask for email confirmation. Explain why you want to keep the booking details."
+      },
+      "pedagogicalGoal": "Mit sería den Nutzen einer Option erklären und mit haría eine eigene Handlung als Alternative vorschlagen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Necesita algún comprobante de la reserva?",
+          "baseText": {
+            "de": "Brauchen Sie eine Bestätigung Ihrer Reservierung?",
+            "en": "Do you need confirmation of your booking?"
+          }
+        },
+        {
+          "targetText": "Para mí sería útil recibir la confirmación por correo electrónico y guardar todos los datos.",
+          "baseText": {
+            "de": "Für mich wäre es hilfreich, die Bestätigung per E-Mail zu bekommen und alle Angaben aufzubewahren.",
+            "en": "It would be useful for me to receive confirmation by email and keep all the details."
+          }
+        },
+        {
+          "targetText": "El sistema no permite enviarla por correo electrónico; puedo imprimir una copia.",
+          "baseText": {
+            "de": "Das System erlaubt keinen Versand per E-Mail; ich kann ein Exemplar ausdrucken.",
+            "en": "The system cannot send it by email; I can print a copy."
+          }
+        },
+        {
+          "targetText": "La copia sería suficiente; yo haría una foto con el móvil.",
+          "baseText": {
+            "de": "Der Ausdruck würde reichen; ich würde ihn mit dem Handy fotografieren.",
+            "en": "The copy would be enough; I would take a photo with my phone."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sería útil · haría una foto",
+        "rule": {
+          "de": "Sería bewertet eine mögliche Lösung; haría beschreibt, was du selbst mit dieser Lösung tun würdest.",
+          "en": "Sería evaluates a possible solution; haría describes what you would do with that solution yourself."
+        },
+        "examples": [
+          {
+            "targetText": "Para mí sería útil recibir la confirmación por correo electrónico y guardar todos los datos.",
+            "baseText": {
+              "de": "Für mich wäre es hilfreich, die Bestätigung per E-Mail zu bekommen und alle Angaben aufzubewahren.",
+              "en": "It would be useful for me to receive confirmation by email and keep all the details."
+            },
+            "highlight": "sería útil"
+          },
+          {
+            "targetText": "La copia sería suficiente; yo haría una foto con el móvil.",
+            "baseText": {
+              "de": "Der Ausdruck würde reichen; ich würde ihn mit dem Handy fotografieren.",
+              "en": "The copy would be enough; I would take a photo with my phone."
+            },
+            "highlight": "yo haría"
+          }
+        ]
+      },
+      "cloze": [
+        "La copia ",
+        {
+          "kind": "form",
+          "answer": "sería",
+          "cue": "ser (la copia)",
+          "choices": [
+            "seríamos",
+            "serían",
+            "sería",
+            "serías"
+          ]
+        },
+        " suficiente; yo ",
+        {
+          "kind": "form",
+          "answer": "haría",
+          "cue": "hacer (yo)",
+          "choices": [
+            "harían",
+            "haría",
+            "harías",
+            "haríamos"
+          ]
+        },
+        " una foto con el móvil."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para mí sería útil",
+          "baseText": {
+            "de": "Für mich wäre es hilfreich",
+            "en": "It would be useful for me"
+          }
+        },
+        {
+          "targetText": "recibir la confirmación",
+          "baseText": {
+            "de": "die Bestätigung zu bekommen",
+            "en": "to receive confirmation"
+          }
+        },
+        {
+          "targetText": "por correo electrónico",
+          "baseText": {
+            "de": "per E-Mail",
+            "en": "by email"
+          }
+        },
+        {
+          "targetText": "y guardar todos los datos.",
+          "baseText": {
+            "de": "und alle Angaben aufzubewahren.",
+            "en": "and keep all the details."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sería útil",
+          "baseText": {
+            "de": "es wäre hilfreich",
+            "en": "it would be useful"
+          }
+        },
+        {
+          "targetText": "la confirmación",
+          "baseText": {
+            "de": "die Bestätigung",
+            "en": "the confirmation"
+          }
+        },
+        {
+          "targetText": "por correo electrónico",
+          "baseText": {
+            "de": "per E-Mail",
+            "en": "by email"
+          }
+        },
+        {
+          "targetText": "guardar los datos",
+          "baseText": {
+            "de": "die Angaben aufbewahren",
+            "en": "to keep the details"
+          }
+        },
+        {
+          "targetText": "imprimir una copia",
+          "baseText": {
+            "de": "ein Exemplar ausdrucken",
+            "en": "to print a copy"
+          }
+        },
+        {
+          "targetText": "suficiente",
+          "baseText": {
+            "de": "ausreichend",
+            "en": "enough"
+          }
+        },
+        {
+          "targetText": "haría una foto",
+          "baseText": {
+            "de": "ich würde ein Foto machen",
+            "en": "I would take a photo"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para mí ",
+        "answer": "sería",
+        "after": " útil recibir la confirmación por correo electrónico y guardar todos los datos.",
+        "fallbackChoices": [
+          "serías",
+          "sería",
+          "serían",
+          "seríamos"
+        ]
+      },
+      "speakRequired": [
+        "sería",
+        "confirmación",
+        "datos"
+      ],
+      "sceneCaption": {
+        "de": "Am Reservierungsschalter fragt die Mitarbeiterin: „¿Necesita algún comprobante de la reserva?“",
+        "en": "At the booking desk, the staff member asks: “¿Necesita algún comprobante de la reserva?”"
+      },
+      "trophyWord": {
+        "word": "sería",
+        "meaning": {
+          "de": "es wäre",
+          "en": "it would be"
+        },
+        "example": "Una copia de la reserva sería útil para comprobar la hora.",
+        "whyThisWord": {
+          "de": "Sería hilft dir, den möglichen Nutzen einer Lösung zu erklären und eine andere Möglichkeit zu bewerten.",
+          "en": "Sería helps you explain the potential benefit of a solution and evaluate another option."
+        }
+      },
+      "distractors": [
+        "recibir la factura",
+        "y comprobar solo la fecha."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gast fragt an einem Schalter nach einem Buchungsbeleg.",
+        "en": "A guest asks at a desk about proof of a booking."
+      },
+      "songMood": "Calm acoustic pop with a practical, optimistic feel.",
+      "visualNotes": "Reservation desk in Spain, computer turned away, learner with phone; do not show the printing alternative."
+    },
+    {
+      "slug": "alternativa-a-una-habitacion-ruidosa",
+      "title": {
+        "de": "Eine ruhigere Nacht",
+        "en": "A quieter night"
+      },
+      "situation": {
+        "de": "An der Hotelrezeption bittest du wegen Lärm um ein anderes Zimmer. Erkläre, was du für eine erholsame Nacht brauchst.",
+        "en": "At a hotel reception, ask for another room because of noise. Explain what you need for a restful night."
+      },
+      "pedagogicalGoal": "Eine höfliche Bitte mit me gustaría nach einer Einschränkung durch preferiría und eine sachliche Konzession anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Buenas noches. ¿Qué problema tiene con la habitación?",
+          "baseText": {
+            "de": "Guten Abend. Welches Problem haben Sie mit dem Zimmer?",
+            "en": "Good evening. What is the problem with your room?"
+          }
+        },
+        {
+          "targetText": "Me gustaría una alternativa a esta habitación, porque el ruido no me deja dormir.",
+          "baseText": {
+            "de": "Ich hätte gern eine Alternative zu diesem Zimmer, weil ich bei dem Lärm nicht schlafen kann.",
+            "en": "I would like an alternative to this room because the noise is keeping me awake."
+          }
+        },
+        {
+          "targetText": "Solo queda una habitación junto al ascensor, algo más tranquila.",
+          "baseText": {
+            "de": "Es ist nur noch ein etwas ruhigeres Zimmer neben dem Aufzug frei.",
+            "en": "There is only one room left, beside the lift, which is a little quieter."
+          }
+        },
+        {
+          "targetText": "Aunque está junto al ascensor, yo preferiría cambiar para dormir.",
+          "baseText": {
+            "de": "Obwohl es neben dem Aufzug liegt, würde ich lieber wechseln, um schlafen zu können.",
+            "en": "Although it is beside the lift, I would prefer to move so I can sleep."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una petición y una alternativa aceptable",
+        "rule": {
+          "de": "Me gustaría eröffnet die Bitte; preferiría drückt deine neue Wahl aus, während aunque eine bekannte Einschränkung anerkennt.",
+          "en": "Me gustaría opens the request; preferiría states your revised choice, while aunque acknowledges a known limitation."
+        },
+        "examples": [
+          {
+            "targetText": "Aunque está junto al ascensor, yo preferiría cambiar para dormir.",
+            "baseText": {
+              "de": "Obwohl es neben dem Aufzug liegt, würde ich lieber wechseln, um schlafen zu können.",
+              "en": "Although it is beside the lift, I would prefer to move so I can sleep."
+            },
+            "highlight": "yo preferiría cambiar"
+          },
+          {
+            "targetText": "Me gustaría una habitación más tranquila para dormir esta noche.",
+            "baseText": {
+              "de": "Ich hätte gern ein ruhigeres Zimmer, um heute Nacht zu schlafen.",
+              "en": "I would like a quieter room so I can sleep tonight."
+            },
+            "highlight": "Me gustaría"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Aunque",
+          "choices": [
+            "Sin embargo",
+            "Aunque",
+            "Además",
+            "Por eso"
+          ]
+        },
+        " está junto al ascensor, yo ",
+        {
+          "kind": "form",
+          "answer": "preferiría",
+          "cue": "preferir (yo)",
+          "choices": [
+            "preferiríamos",
+            "preferiría",
+            "preferirían",
+            "preferirías"
+          ]
+        },
+        " cambiar para dormir."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me gustaría una alternativa",
+          "baseText": {
+            "de": "Ich hätte gern eine Alternative",
+            "en": "I would like an alternative"
+          }
+        },
+        {
+          "targetText": "a esta habitación,",
+          "baseText": {
+            "de": "zu diesem Zimmer,",
+            "en": "to this room,"
+          }
+        },
+        {
+          "targetText": "porque el ruido",
+          "baseText": {
+            "de": "weil der Lärm",
+            "en": "because the noise"
+          }
+        },
+        {
+          "targetText": "no me deja dormir.",
+          "baseText": {
+            "de": "mich nicht schlafen lässt.",
+            "en": "does not let me sleep."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "alternativa",
+          "baseText": {
+            "de": "Alternative",
+            "en": "alternative"
+          }
+        },
+        {
+          "targetText": "la habitación",
+          "baseText": {
+            "de": "das Zimmer",
+            "en": "the room"
+          }
+        },
+        {
+          "targetText": "el ruido",
+          "baseText": {
+            "de": "der Lärm",
+            "en": "the noise"
+          }
+        },
+        {
+          "targetText": "no me deja dormir",
+          "baseText": {
+            "de": "es lässt mich nicht schlafen",
+            "en": "it does not let me sleep"
+          }
+        },
+        {
+          "targetText": "junto al ascensor",
+          "baseText": {
+            "de": "neben dem Aufzug",
+            "en": "beside the lift"
+          }
+        },
+        {
+          "targetText": "más tranquila",
+          "baseText": {
+            "de": "ruhiger",
+            "en": "quieter"
+          }
+        },
+        {
+          "targetText": "cambiar",
+          "baseText": {
+            "de": "wechseln",
+            "en": "to change; to move"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me gustaría una ",
+        "answer": "alternativa",
+        "after": " a esta habitación, porque el ruido no me deja dormir.",
+        "fallbackChoices": [
+          "costumbre",
+          "entrada",
+          "alternativa",
+          "revisión"
+        ]
+      },
+      "speakRequired": [
+        "alternativa",
+        "habitación",
+        "dormir"
+      ],
+      "sceneCaption": {
+        "de": "An der Rezeption fragt der Mitarbeiter: „Buenas noches. ¿Qué problema tiene con la habitación?“",
+        "en": "At reception, the staff member asks: “Buenas noches. ¿Qué problema tiene con la habitación?”"
+      },
+      "trophyWord": {
+        "word": "alternativa",
+        "meaning": {
+          "de": "Alternative",
+          "en": "alternative"
+        },
+        "example": "Busco una alternativa porque necesito dormir sin tanto ruido.",
+        "whyThisWord": {
+          "de": "Alternativa lässt dir Spielraum für eine andere Lösung, während du dein eigentliches Bedürfnis klar benennst.",
+          "en": "Alternativa leaves room for a different solution while you make your real need clear."
+        }
+      },
+      "distractors": [
+        "a esta reserva,",
+        "no me permite trabajar."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gast schildert an einer Hotelrezeption sein Zimmerproblem.",
+        "en": "A guest explains a room problem at a hotel reception."
+      },
+      "songMood": "Quiet evening acoustic pop with a calm, resolving tone.",
+      "visualNotes": "Spanish hotel reception in the evening, one staff member and one guest; no replacement room shown."
+    }
+  ]
+}

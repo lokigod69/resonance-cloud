@@ -1,0 +1,777 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local staging and recording only; not publication approval.",
+  "fable": {
+    "verdict": "APPLY_EXACT_EDITS",
+    "readThrough": [
+      {
+        "file": "english-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "All four turns, base texts, pattern rules/examples/highlights, cloze chips in slot, chunks concat, terms, recall, trophies, scene/situation spoilers, informal register rails, en-US spelling. Form B stories coherent. L3 although preview licensed explicitly (anchor edit). L7 'however' chip in but-blank is a legitimate test of the L7 punctuation point and stays.",
+        "remainingConcerns": "None beyond edits."
+      },
+      {
+        "file": "english-p3.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Form A complications real in every lesson; second conditional only L4–6 and L10; no third/mixed conditionals; formal lessons (L5, L8, L10) use Sie in base/scene; contractions never blanked. L2 if as open present condition and L8/L9 revised beats licensed in anchor.",
+        "remainingConcerns": "L10 learner offers seven when eight was required; coherent as goodwill, left unchanged."
+      },
+      {
+        "file": "spanish-p2.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "Tú throughout, gender-free learner production (niños/pequeño refer to children/local, not speaker), aunque+indicativo only L4+, form cues carry literal visible subjects, connector chips tested in slot, chunks/cloze/recall identities verified.",
+        "remainingConcerns": "Base en strings use British spellings (neighbourhood, centre, organised); convention for the en base locale should be settled by the owner before edition regeneration, not patched piecemeal here."
+      },
+      {
+        "file": "spanish-p3.json",
+        "lessonsRead": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "checks": "No subjunctive in learner lines, usted/tú split coherent, si+presente only L6–7, condicional staged as specced, cues literal. Situations and two titles revealed them2 (fixed). L4 them2 was not a complication (fixed). L7 you2 conditioned on a fact them2 had just confirmed (fixed).",
+        "remainingConcerns": "Validator has no Spanish/English/French LANGUAGE_RULES block yet, so cue-subject and register rails are unenforced for these files; per-language config remains an engine task."
+      }
+    ],
+    "arbitration": [
+      {
+        "finding": "H1 situation/title spoilers Spanish P3",
+        "decision": "accept",
+        "reason": "B1SetupStep shows situation; reviewer wording verified and adopted verbatim for L1–L5, L7–L10."
+      },
+      {
+        "finding": "H2 Spanish P2 L7 por eso / L8 en primer lugar chips",
+        "decision": "accept",
+        "reason": "Both yield coherent fills; ya que and aunque cannot fit the fixed punctuation."
+      },
+      {
+        "finding": "M1 therefore chips English P2 L2/L3",
+        "decision": "accept",
+        "reason": "Avoidable punctuation-only distinction before L7 teaches it; same logic applied to L3 recall 'however'."
+      },
+      {
+        "finding": "M2 L9 chunk pairing",
+        "decision": "accept",
+        "reason": "Fragment produced wrong German order; concat identity preserved."
+      },
+      {
+        "finding": "M3 L10 cloze lacks connector",
+        "decision": "accept",
+        "reason": "Path blank schema is connector+form; reviewer array reconstructs you2 exactly."
+      },
+      {
+        "finding": "M4 unusable build distractor",
+        "decision": "accept",
+        "reason": "Replacement substitutes chunk 3 grammatically."
+      },
+      {
+        "finding": "M5 Spanish P3 L4 no complication",
+        "decision": "accept",
+        "reason": "Shape A requires a new constraint; pedagogicalGoal realigned too."
+      },
+      {
+        "finding": "Author flag English P2 L3 although",
+        "decision": "accept as licensed narrow preview",
+        "reason": "Allocated trophy forces it; anchor now states the license and that concession work proper starts L4."
+      },
+      {
+        "finding": "Author flag English P3 L2 if",
+        "decision": "accept",
+        "reason": "Open present condition as polite qualifier; no conditional clause before L4, no will before P7; recorded in anchor."
+      },
+      {
+        "finding": "Author flag English P3 L8/L9 rewritten beats",
+        "decision": "accept",
+        "reason": "Consistent with newer staging; older prose beats must be updated to match."
+      },
+      {
+        "finding": "Own: English P2 L1 recall chip neighborhood",
+        "decision": "edit",
+        "reason": "'In my neighborhood, the market needs…' is a fully valid sentence."
+      },
+      {
+        "finding": "Own: English P3 L2 'Shall we' them1",
+        "decision": "edit",
+        "reason": "Not natural en-US casual speech between friends; scene quote coupled."
+      },
+      {
+        "finding": "Own: Spanish P2 L8 'una hora común'",
+        "decision": "edit",
+        "reason": "'una hora en común' is the native phrasing; cloze string and term coupled."
+      },
+      {
+        "finding": "Own: Spanish P3 L7 you2 redundant condition",
+        "decision": "edit",
+        "reason": "Conditioning on 'plazas' them2 had just confirmed; new real condition 'sale temprano' with cue/term coupling."
+      },
+      {
+        "finding": "Own: German wording fixes",
+        "decision": "edit",
+        "reason": "'Nebenkosten für Versorgung' and 'könnte jemand dabei helfen' are unidiomatic."
+      }
+    ],
+    "edits": [
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Vorläufiger Entwurf für Fables persönliche Prüfung. Form B: Ein interessiertes Gegenüber fragt nach; beide eigenen Antworten bilden einen zusammenhängenden Gedanken. Nach Fables Architektur vom 03.10.2026: L1–3 Meinungen und Gründe; L4–6 although und even though; L7–8 however und anyway; L9–10 Verbindung der Muster. Offener Stufenkonflikt: Die verbindliche Trophäe although in L3 erfordert eine frühe Vorschau auf die Konzession. Diese Ausnahme ist nicht freigegeben und muss von Fable entschieden werden. Alle zehn Trophäen entsprechen der bestehenden Zuordnung. Durchgehend vertrauliche Gespräche, amerikanisches Englisch.",
+        "newValue": "Form B: Ein interessiertes Gegenüber fragt nach; beide eigenen Antworten bilden einen zusammenhängenden Gedanken. Stufung nach Fables Architektur vom 03.10.2026: L1–3 Meinungen und Gründe (in my opinion, I think, because, so); L4–6 although und even though; L7–8 however und anyway; L9–10 Verbindung der Muster. Von Fable am 05.10.2026 freigegebene enge Vorschau: L3 führt although als einzelnen Konzessionssatz ein, weil die fest zugeteilte Trophäe although in L3 liegt; die eigentliche Konzessionsarbeit (Stellung, even though, Kontrast) beginnt in L4. Alle zehn Trophäen entsprechen der bestehenden Zuordnung. Durchgehend vertrauliche Gespräche, amerikanisches Englisch.",
+        "reason": "License the forced L3 preview explicitly instead of leaving it unresolved."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/0/recall/fallbackChoices",
+        "oldValue": [
+          "kitchen",
+          "opinion",
+          "absence",
+          "neighborhood"
+        ],
+        "newValue": [
+          "kitchen",
+          "opinion",
+          "garden",
+          "pocket"
+        ],
+        "reason": "'In my neighborhood, the market needs longer hours…' is also correct."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/1/cloze/1/choices/3",
+        "oldValue": "therefore",
+        "newValue": "because of",
+        "reason": "M1: so/therefore hinge on punctuation only."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/2/cloze/1/choices/2",
+        "oldValue": "therefore",
+        "newValue": "because of",
+        "reason": "M1."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/2/recall/fallbackChoices/1",
+        "oldValue": "however",
+        "newValue": "because of",
+        "reason": "Same punctuation-only trap in the recall chips."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/8/chunks/2",
+        "oldValue": {
+          "targetText": "however, the center",
+          "baseText": {
+            "de": "allerdings das Zentrum"
+          }
+        },
+        "newValue": {
+          "targetText": "however,",
+          "baseText": {
+            "de": "allerdings"
+          }
+        },
+        "reason": "M2: German fragment order."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/8/chunks/3",
+        "oldValue": {
+          "targetText": "needs more staff.",
+          "baseText": {
+            "de": "braucht mehr Personal."
+          }
+        },
+        "newValue": {
+          "targetText": "the center needs more staff.",
+          "baseText": {
+            "de": "braucht das Zentrum mehr Personal."
+          }
+        },
+        "reason": "M2; concat remains you1 byte-identical."
+      },
+      {
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/9/cloze",
+        "oldValue": [
+          "Although we ",
+          {
+            "kind": "form",
+            "answer": "argued",
+            "cue": "argue",
+            "choices": [
+              "argues",
+              "arguing",
+              "argued",
+              "to argue"
+            ]
+          },
+          " yesterday, sharing tools helped us ",
+          {
+            "kind": "form",
+            "answer": "work",
+            "cue": "work",
+            "choices": [
+              "worked",
+              "working",
+              "works",
+              "work"
+            ]
+          },
+          " together."
+        ],
+        "newValue": [
+          {
+            "kind": "connector",
+            "answer": "Although",
+            "choices": [
+              "Despite",
+              "However",
+              "Although",
+              "Nevertheless"
+            ]
+          },
+          " we ",
+          {
+            "kind": "form",
+            "answer": "argued",
+            "cue": "argue",
+            "choices": [
+              "argues",
+              "arguing",
+              "argued",
+              "to argue"
+            ]
+          },
+          " yesterday, sharing tools helped us work together."
+        ],
+        "reason": "M3: path schema connector+form."
+      },
+      {
+        "file": "english-p3.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "Vorläufiger Entwurf für Fables persönliche Prüfung. Form A: Das Gegenüber nennt erst nach der ersten eigenen Antwort eine neue Einschränkung; die zweite eigene Antwort geht darauf ein. Fables Architektur vom 03.10.2026: L1–3 would love to, would prefer und would rather; L4–6 zweiter Bedingungssatz; L7–8 could, might, would it be possible und I was wondering if; L9 should für Ratschläge; L10 Verbindung der Muster. Die Trophäen bleiben genau wie zugeteilt. In L2 steht if in einer offenen gegenwärtigen Bedingung zur Präferenz, noch ohne zweiten Bedingungssatz. L8 und L9 setzen die ältere Szenenidee gemäß der neueren Grammatikstufung um. Gemischtes Register nach Gegenüber, amerikanisches Englisch; keine rückblickenden irrealen Bedingungen.",
+        "newValue": "Form A: Das Gegenüber nennt erst nach der ersten eigenen Antwort eine neue Einschränkung; die zweite eigene Antwort geht darauf ein. Stufung nach Fables Architektur vom 03.10.2026: L1–3 would love to, would prefer und would rather; L4–6 zweiter Bedingungssatz; L7–8 could, might, would it be possible und I was wondering if; L9 should für Ratschläge; L10 Verbindung der Muster. Von Fable am 05.10.2026 freigegebene Ausnahmen: In L2 trägt die zugeteilte Trophäe if eine offene gegenwärtige Bedingung (if that works for you too) als höflichen Vorbehalt zur Präferenz; kein zweiter Bedingungssatz vor L4, kein will-Bedingungssatz vor P7. L8 und L9 setzen die älteren Szenenideen gemäß dieser Grammatikstufung um; die älteren Beat-Texte sind entsprechend zu aktualisieren. Die Trophäen bleiben genau wie zugeteilt. Gemischtes Register nach Gegenüber, amerikanisches Englisch; keine rückblickenden irrealen Bedingungen.",
+        "reason": "Record the three licensed staging decisions."
+      },
+      {
+        "file": "english-p3.json",
+        "jsonPointer": "/lessons/1/dialogue/0",
+        "oldValue": {
+          "targetText": "Shall we try the weekend cooking class together?",
+          "baseText": {
+            "de": "Wollen wir zusammen den Kochkurs am Wochenende ausprobieren?"
+          }
+        },
+        "newValue": {
+          "targetText": "Do you want to try the weekend cooking class together?",
+          "baseText": {
+            "de": "Hast du Lust, den Kochkurs am Wochenende zusammen auszuprobieren?"
+          }
+        },
+        "reason": "'Shall we' is not natural en-US casual speech between friends."
+      },
+      {
+        "file": "english-p3.json",
+        "jsonPointer": "/lessons/1/sceneCaption/de",
+        "oldValue": "Deine Freundin zeigt dir das Kursprogramm und fragt: „Shall we try the weekend cooking class together?“",
+        "newValue": "Deine Freundin zeigt dir das Kursprogramm und fragt: „Do you want to try the weekend cooking class together?“",
+        "reason": "Scene must quote the new opening turn."
+      },
+      {
+        "file": "english-p3.json",
+        "jsonPointer": "/lessons/4/terms/3/baseText/de",
+        "oldValue": "Nebenkosten für Versorgung",
+        "newValue": "Nebenkosten (Strom, Wasser, Heizung)",
+        "reason": "Unidiomatic German gloss."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/5/distractors/1",
+        "oldValue": "más espacio en casa.",
+        "newValue": "aunque tengo más intimidad",
+        "reason": "M4: distractor must be a usable chip."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/6/cloze/1/choices/0",
+        "oldValue": "por eso",
+        "newValue": "ya que",
+        "reason": "H2: por eso yields a coherent fill."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/7/cloze/3/choices/3",
+        "oldValue": "en primer lugar",
+        "newValue": "aunque",
+        "reason": "H2: en primer lugar yields a coherent fill."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/7/dialogue/3/targetText",
+        "oldValue": "Nuestros turnos varían; de todas formas, mantenemos una hora común.",
+        "newValue": "Nuestros turnos varían; de todas formas, mantenemos una hora en común.",
+        "reason": "Native phrasing 'en común'."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/7/cloze/4",
+        "oldValue": ", mantenemos una hora común.",
+        "newValue": ", mantenemos una hora en común.",
+        "reason": "Cloze reconstruction of the revised you2."
+      },
+      {
+        "file": "spanish-p2.json",
+        "jsonPointer": "/lessons/7/terms/6/targetText",
+        "oldValue": "mantener una hora común",
+        "newValue": "mantener una hora en común",
+        "reason": "Term coupled to the revised phrasing."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/anchor",
+        "oldValue": "L1–L3: me gustaría and preferiría. L4–L5: podría and debería. L6–L7: si + presente with presente or ir a. L8–L9: tendría, sería and haría. L10: mixed polite request and concession. Complication episodes; formal singular usted at service counters, informal singular tú with a familiar activity leader or colleague. No imperfecto de subjuntivo. es-ES; gender-neutral learner production. Draft awaiting Fable personal review.",
+        "newValue": "L1–L3: me gustaría and preferiría. L4–L5: podría and debería. L6–L7: si + presente with presente or ir a. L8–L9: tendría, sería and haría. L10: mixed polite request and concession. Complication episodes: every them2 introduces a new constraint, and situation, title and sceneCaption show only the goal and them1. Formal singular usted at service counters, informal singular tú with a familiar activity leader or colleague. No imperfecto de subjuntivo. es-ES; gender-neutral learner production. Fable read-through and arbitration applied 2026-10-05.",
+        "reason": "State the Shape A contract and the opening-only spoiler rule that the H1/M5 edits enforce."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/0/situation",
+        "oldValue": {
+          "de": "Du erkundigst dich im Kulturzentrum nach einem Kochkurs. Als die gewünschte Gruppe voll ist, passt du deine Bitte an das Angebot an.",
+          "en": "You ask at the cultural centre about a cooking workshop. When the group you wanted is full, adapt your request to the available option."
+        },
+        "newValue": {
+          "de": "Du erkundigst dich im Kulturzentrum nach einem Kochkurs. Erkläre, was du dort gern lernen möchtest.",
+          "en": "You ask at the cultural centre about a cooking workshop. Explain what you would like to learn there."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/1/situation",
+        "oldValue": {
+          "de": "Im Restaurant bittest du um einen Tisch im Innenraum. Als dort alles reserviert ist, entscheidest du dich für einen geschützten anderen Bereich.",
+          "en": "At a restaurant, ask for an indoor table. When those tables are all reserved, choose another sheltered area."
+        },
+        "newValue": {
+          "de": "Im Restaurant bittest du um einen Tisch im Innenraum. Erkläre, warum dir dieser Bereich lieber ist.",
+          "en": "At a restaurant, ask for an indoor table. Explain why you prefer that area."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/2/title",
+        "oldValue": {
+          "de": "Zwei Vormittage helfen",
+          "en": "Helping two mornings a week"
+        },
+        "newValue": {
+          "de": "Eine Gelegenheit mitzuhelfen",
+          "en": "An opportunity to help"
+        },
+        "reason": "H1: title revealed them2's requirement."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/2/situation",
+        "oldValue": {
+          "de": "Bei einem sozialen Verein erkundigst du dich nach freiwilliger Mitarbeit. Du reagierst auf die verlangte Regelmäßigkeit mit konkreten freien Vormittagen.",
+          "en": "At a community charity, ask about volunteering. Respond to the attendance requirement by naming specific mornings you are available."
+        },
+        "newValue": {
+          "de": "Du erkundigst dich bei einem sozialen Verein nach freiwilliger Mitarbeit. Erkläre, warum dich das Angebot interessiert.",
+          "en": "You ask a community charity about volunteering. Explain why the opportunity interests you."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/3/situation",
+        "oldValue": {
+          "de": "Am Schalter erkundigst du dich nach einer Monatskarte. Auf Nachfrage präzisierst du, welcher Teil des Tarifs unklar ist.",
+          "en": "At a ticket counter, ask about a monthly pass. When the staff member asks, specify which part of the fare is unclear."
+        },
+        "newValue": {
+          "de": "Am Schalter erkundigst du dich nach einer Monatskarte. Du möchtest einen Tarif wählen, der zu deinen Fahrten passt.",
+          "en": "At a ticket counter, ask about a monthly pass. You want to choose a fare that suits your journeys."
+        },
+        "reason": "H1; aligned with the new L4 complication."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/3/dialogue/2",
+        "oldValue": {
+          "targetText": "Claro. ¿Qué parte de la tarifa no entiende?",
+          "baseText": {
+            "de": "Natürlich. Welchen Teil des Tarifs verstehen Sie nicht?",
+            "en": "Of course. Which part of the fare do you not understand?"
+          }
+        },
+        "newValue": {
+          "targetText": "El abono básico tiene algunas limitaciones según el día de viaje.",
+          "baseText": {
+            "de": "Für die einfache Monatskarte gelten je nach Reisetag bestimmte Einschränkungen.",
+            "en": "The basic pass has some restrictions depending on the day you travel."
+          }
+        },
+        "reason": "M5: Shape A needs a real complication; existing you2 answers it."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/3/pedagogicalGoal",
+        "oldValue": "Mit podría eine höfliche Bitte formulieren und die gewünschte Erklärung im zweiten Gesprächsschritt eingrenzen.",
+        "newValue": "Mit podría eine höfliche Bitte formulieren und nach einer genannten Einschränkung mit podría um eine konkrete Klärung bitten.",
+        "reason": "Goal coupled to the new complication."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/4/title",
+        "oldValue": {
+          "de": "Eine fehlende Angabe",
+          "en": "One missing detail"
+        },
+        "newValue": {
+          "de": "Die Anmeldung abschließen",
+          "en": "Completing the enrolment"
+        },
+        "reason": "H1: title revealed them2."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/4/situation",
+        "oldValue": {
+          "de": "Du meldest dich für einen Fotokurs an und fragst nach dem nächsten Schritt. Als eine Angabe fehlt, bittest du gezielt um Hilfe.",
+          "en": "You are enrolling in a photography course and ask about the next step. When a detail is missing, ask for specific help."
+        },
+        "newValue": {
+          "de": "Du meldest dich für einen Fotokurs an. Frage die Mitarbeiterin, wie es mit dem Formular weitergeht.",
+          "en": "You are enrolling in a photography course. Ask the staff member what to do next with the form."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/4/pattern/rule/de",
+        "oldValue": "Mit qué debería hacer fragst du nach einem sinnvollen Vorgehen; könnte jemand dabei helfen, folgt eine Bitte mit podría.",
+        "newValue": "Mit qué debería hacer fragst du nach einem sinnvollen Vorgehen; soll dir jemand dabei helfen, folgt eine Bitte mit podría.",
+        "reason": "Unidiomatic German clause."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/6/situation",
+        "oldValue": {
+          "de": "Am Ausflugsschalter möchtest du auf einen anderen Tag wechseln, falls noch ein Platz frei ist. Wegen einer Gruppenreservierung musst du neu planen.",
+          "en": "At the excursion desk, you want to switch days if a place is available. A group booking means you need to adjust your plan."
+        },
+        "newValue": {
+          "de": "Am Ausflugsschalter möchtest du auf einen anderen Tag wechseln, falls noch ein Platz frei ist. Erkläre, welche Änderung du dir wünschst.",
+          "en": "At the excursion desk, you want to switch days if a place is available. Explain the change you would like."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/6/dialogue/3",
+        "oldValue": {
+          "targetText": "Si la salida del domingo tiene plazas, yo voy a reservar.",
+          "baseText": {
+            "de": "Wenn beim Ausflug am Sonntag Plätze frei sind, werde ich buchen.",
+            "en": "If the Sunday departure has places available, I'm going to book."
+          }
+        },
+        "newValue": {
+          "targetText": "Si la excursión del domingo sale temprano, yo voy a reservar.",
+          "baseText": {
+            "de": "Wenn der Ausflug am Sonntag früh startet, werde ich buchen.",
+            "en": "If the Sunday excursion leaves early, I'm going to book."
+          }
+        },
+        "reason": "Them2 had just confirmed Sunday places; condition on an open fact instead."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/6/cloze",
+        "oldValue": [
+          "Si la salida del domingo ",
+          {
+            "kind": "form",
+            "answer": "tiene",
+            "cue": "tener (la salida del domingo)",
+            "choices": [
+              "tienen",
+              "tengo",
+              "tiene",
+              "tenemos"
+            ]
+          },
+          " plazas, yo ",
+          {
+            "kind": "form",
+            "answer": "voy",
+            "cue": "ir (yo)",
+            "choices": [
+              "va",
+              "vamos",
+              "van",
+              "voy"
+            ]
+          },
+          " a reservar."
+        ],
+        "newValue": [
+          "Si la excursión del domingo ",
+          {
+            "kind": "form",
+            "answer": "sale",
+            "cue": "salir (la excursión del domingo)",
+            "choices": [
+              "salen",
+              "salgo",
+              "sale",
+              "salimos"
+            ]
+          },
+          " temprano, yo ",
+          {
+            "kind": "form",
+            "answer": "voy",
+            "cue": "ir (yo)",
+            "choices": [
+              "va",
+              "vamos",
+              "van",
+              "voy"
+            ]
+          },
+          " a reservar."
+        ],
+        "reason": "Cloze coupled to revised you2; literal subject precedes blank."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/6/terms/5",
+        "oldValue": {
+          "targetText": "la salida del domingo",
+          "baseText": {
+            "de": "die Ausflugsfahrt am Sonntag",
+            "en": "the Sunday departure"
+          }
+        },
+        "newValue": {
+          "targetText": "la excursión del domingo",
+          "baseText": {
+            "de": "der Ausflug am Sonntag",
+            "en": "the Sunday excursion"
+          }
+        },
+        "reason": "Term coupled to revised you2."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/7/situation",
+        "oldValue": {
+          "de": "Mit einem Kollegen überlegst du, die Schicht zu wechseln. Neue Informationen über den letzten Bus verändern deine Rechnung zur freien Zeit.",
+          "en": "You discuss changing shifts with a colleague. New information about the last bus changes your estimate of the free time you would have."
+        },
+        "newValue": {
+          "de": "Mit einem Kollegen überlegst du, die Schicht zu wechseln. Erkläre, welchen Vorteil du darin siehst.",
+          "en": "Discuss changing shifts with a colleague. Explain what benefit you see in the change."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/8/situation",
+        "oldValue": {
+          "de": "An einem Reservierungsschalter bittest du um eine Bestätigung per E-Mail. Als das System das nicht erlaubt, findest du eine andere Möglichkeit, die Daten zu behalten.",
+          "en": "At a booking desk, ask for email confirmation. When the system cannot provide it, find another way to keep the details."
+        },
+        "newValue": {
+          "de": "An einem Reservierungsschalter bittest du um eine Bestätigung per E-Mail. Erkläre, warum du die Buchungsdaten aufheben möchtest.",
+          "en": "At a booking desk, ask for email confirmation. Explain why you want to keep the booking details."
+        },
+        "reason": "H1 spoiler."
+      },
+      {
+        "file": "spanish-p3.json",
+        "jsonPointer": "/lessons/9/situation",
+        "oldValue": {
+          "de": "An der Hotelrezeption bittest du wegen Lärm um ein anderes Zimmer. Du nimmst eine eingeschränkte Alternative an und hältst an deinem wichtigsten Bedarf fest.",
+          "en": "At a hotel reception, ask for another room because of noise. Accept a limited alternative while keeping your main need clear."
+        },
+        "newValue": {
+          "de": "An der Hotelrezeption bittest du wegen Lärm um ein anderes Zimmer. Erkläre, was du für eine erholsame Nacht brauchst.",
+          "en": "At a hotel reception, ask for another room because of noise. Explain what you need for a restful night."
+        },
+        "reason": "H1 spoiler."
+      }
+    ],
+    "finalChecks": "After edits: every chunk concat equals you1, every cloze concat equals you2, recall identities untouched, speak tokens still present in you1, scene captions quote dialogue[0], trophies and IDs unchanged, learner-turn word counts within 8–16 / 6–12 (Spanish P3 L7 you2 = 11), all chips distinct with one canonical answer. Changed target audio strings: english-p3 L2 them1; english-p2 L9 chunks 3–4; spanish-p2 L8 you2 + term 7; spanish-p3 L4 them2; spanish-p3 L7 you2 + term 6 — regenerate TTS for these only after Codex applies and validator passes. Run validateB1Draft on all four files and send new hashes for the independent re-review. Content approval only; no production, edition, catalog or TTS spend approval; no claim of human native review."
+  },
+  "independent": {
+    "schemaVersion": 1,
+    "date": "2026-10-05",
+    "reviewer": "/root/b1_p2_p3_independent",
+    "reviewRound": 2,
+    "verdict": "PASS",
+    "scope": "Exact reviewed content may be staged and its canonical speech queued for local TTS under the separately approved budget. This is not a production-publication verdict.",
+    "unresolvedLocalTtsBlockers": 0,
+    "unresolvedPublicationFindings": 1,
+    "sourceDirectory": "D:/CODING/ResonanceTEST/tmp/V4_EXPANSION_20261003/reviewed-content",
+    "reviewedSources": {
+      "english-p2.json": "8f4b154d2ed205668297b3b3a323271e95a29c8956e1cdbf410b117cd5054bf4",
+      "english-p3.json": "698c38e998cc07b0055166e8585ffac321b63f62a4e476ab6bc25a9c0f142b3d",
+      "spanish-p2.json": "37ad1d0630bd91927c8ba3addc2a34ffe9048da68e79f1feb049c4d7d420f50b",
+      "spanish-p3.json": "982f10988afc560c3a609009697393a8d13f60ec59e5fc70cf7cd51b98a612b1"
+    },
+    "evidence": {
+      "priorIndependentReport": "B1_EN_ES_P2_P3_INDEPENDENT_REVIEW.json",
+      "priorIndependentReportSha256": "40b955818862a17428d3f9376440147aaf1a1c2b8416c74f9fe5f5cfa005ebc5",
+      "fableRawResponse": "B1_EN_ES_P2_P3_FABLE_REVIEW_RAW.json",
+      "fableRawResponseSha256": "6292af0f12e21c30ec129e2b01adba5c644460034e14f57a476d780652203302",
+      "fableModelUsage": "claude-fable-5-1",
+      "fableIsError": false,
+      "fableVerdict": "APPLY_EXACT_EDITS",
+      "fableExactEdits": 36,
+      "appliedHashManifestSha256": "a5fefe63fa94baf340e76b4a71f4e0efcef643be95f85d1a1abd143bb8837b70"
+    },
+    "checks": [
+      "Independently hashed all four original new-content files and confirmed they still match the first review's frozen hashes.",
+      "Replayed each of Fable's 36 edits in memory against the originals, checking every oldValue at its JSONPointer. Deep equality against each reviewed-content JSON proves there are no missing or additional content edits: English P2 8, English P3 4, Spanish P2 6, Spanish P3 18.",
+      "Independently hashed the four reviewed files and matched every value against the applied-hash manifest.",
+      "Personally re-read every field of all 19 changed lessons and all three changed path anchors. The other 21 lessons are object-identical to the fully read originals. This preserves a complete 40-lesson personal-read chain.",
+      "Ran actual validateB1Draft on all four reviewed files: PASS. Exact trophy allocations still match the saved plans. Each draftTtsLessons projection produces 10 lessons; 40 total.",
+      "Checked every changed dialogue line in its complete four-turn exchange, its base meaning, cloze and terms. Revised Spanish P3 L7 has a genuinely open early-departure condition, visible singular subject before sale, visible yo before voy, and matching term. Revised Spanish P3 L4 now introduces a real fare restriction that the weekend question addresses.",
+      "Read Spanish form blanks and register manually because the current validator lacks complete Spanish language-specific rails. No competing person-form answer or prohibited learner subjunctive found in this batch.",
+      "No lesson files, application files, database rows or provider state were changed by this reviewer. No audio pronunciation or listening-quality claim is made."
+    ],
+    "changedLessonsPersonallyReread": {
+      "english-p2.json": [
+        1,
+        2,
+        3,
+        9,
+        10
+      ],
+      "english-p3.json": [
+        2,
+        5
+      ],
+      "spanish-p2.json": [
+        6,
+        7,
+        8
+      ],
+      "spanish-p3.json": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "priorFindings": [
+      {
+        "id": "H1",
+        "status": "resolved",
+        "reason": "Spanish P3 situations and affected titles now establish the initial goal without revealing later unavailability, attendance, bus or system constraints."
+      },
+      {
+        "id": "H2",
+        "status": "resolved",
+        "reason": "Spanish P2 L7 por eso and L8 en primer lugar alternatives were replaced exactly as arbitrated. The new choices do not admit the former coherent alternative readings in their fixed slots."
+      },
+      {
+        "id": "M1",
+        "status": "resolved",
+        "reason": "English P2 L2/L3 therefore alternatives removed; Fable also corrected the L3 recall alternative. The later L7 punctuation exercise was explicitly retained by Fable with a rationale."
+      },
+      {
+        "id": "M2",
+        "status": "resolved",
+        "reason": "English P2 L9 now keeps the connector separate and the center with its verb; target reconstruction and German meaning are sound. A new non-audio distractor coupling issue is recorded separately below."
+      },
+      {
+        "id": "M3",
+        "status": "resolved",
+        "reason": "English P2 L10 now tests Although plus argued and reconstructs the unchanged follow-up exactly."
+      },
+      {
+        "id": "M4",
+        "status": "resolved",
+        "reason": "Spanish P2 L6 replacement distractor can replace the concession chunk grammatically."
+      },
+      {
+        "id": "M5",
+        "status": "resolved",
+        "reason": "Spanish P3 L4 now introduces a fare restriction; its situation and pedagogical goal were coupled to the new turn."
+      }
+    ],
+    "stagingArbitration": "Fable explicitly licenses the English P2 L3 although preview, English P3 L2 open present if qualifier, and P3 revised grammar-aligned beats. New path anchors record these decisions. Older proposal-plan prose should be synchronized before reuse in future authoring; it does not override the reviewed anchors.",
+    "remainingPublicationFindings": [
+      {
+        "id": "M6",
+        "severity": "MEDIUM",
+        "file": "english-p2.json",
+        "jsonPointer": "/lessons/8/distractors/1",
+        "currentValue": "needs more space.",
+        "reason": "Fable's chunk repair moved 'the center' into the final chunk. Substituting this unchanged distractor for that chunk now leaves 'however, needs more space.' without a subject. The distractor should be coupled to the new chunk boundary before learner publication.",
+        "proposedLaterFableOwnedValue": "the center needs more space.",
+        "disposition": "Deferred publication follow-up, explicitly accepted as such by the root. Do not claim zero publication findings or apply new wording without Fable ownership. This field is not synthesized by draftTtsLessons, so fixing it later does not invalidate any reviewed speech or require rerecording.",
+        "blocksLocalTts": false,
+        "requiresThirdIndependentRound": false
+      }
+    ],
+    "acceptedConventions": [
+      "Retain existing British spellings in Spanish lessons' English base explanations. This is compatible with a Spanish target and does not change en-US target-speech requirements in the English course.",
+      "Existing production publication gates remain separate: full tier/runtime integration, base editions, catalog work and audio listening review are not approved by this content/TTS-staging verdict."
+    ],
+    "finalDisposition": "PASS for local staging and recording these exact canonical speech strings. Zero unresolved local-TTS blockers; one transparently recorded non-audio publication finding. Do not relabel this as an unrestricted production-content PASS."
+  }
+}

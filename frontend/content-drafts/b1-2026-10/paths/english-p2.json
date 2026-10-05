@@ -1,0 +1,1893 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Was ich darüber denke"
+  },
+  "subtitle": {
+    "de": "Begründe deine Meinung, räume Einwände ein und führe Gedanken weiter."
+  },
+  "anchor": "Form B: Ein interessiertes Gegenüber fragt nach; beide eigenen Antworten bilden einen zusammenhängenden Gedanken. Stufung nach Fables Architektur vom 03.10.2026: L1–3 Meinungen und Gründe (in my opinion, I think, because, so); L4–6 although und even though; L7–8 however und anyway; L9–10 Verbindung der Muster. Von Fable am 05.10.2026 freigegebene enge Vorschau: L3 führt although als einzelnen Konzessionssatz ein, weil die fest zugeteilte Trophäe although in L3 liegt; die eigentliche Konzessionsarbeit (Stellung, even though, Kontrast) beginnt in L4. Alle zehn Trophäen entsprechen der bestehenden Zuordnung. Durchgehend vertrauliche Gespräche, amerikanisches Englisch.",
+  "lessons": [
+    {
+      "slug": "opinion-on-market-hours",
+      "title": {
+        "de": "Länger auf dem Markt einkaufen"
+      },
+      "situation": {
+        "de": "Eine Freundin erzählt dir, dass der Wochenmarkt künftig länger öffnen könnte. Erkläre, was du von der Idee hältst.",
+        "en": "A friend tells you the neighborhood market may stay open later. Explain what you think of the idea."
+      },
+      "pedagogicalGoal": "Eine Meinung äußern und den Nutzen für eine bestimmte Gruppe mit einem Grund erklären.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What do you think about keeping the market open later?",
+          "baseText": {
+            "de": "Was hältst du davon, den Markt länger offen zu halten?"
+          }
+        },
+        {
+          "targetText": "In my opinion, the market needs longer hours for working neighbors.",
+          "baseText": {
+            "de": "Meiner Meinung nach braucht der Markt längere Öffnungszeiten für berufstätige Nachbarn."
+          }
+        },
+        {
+          "targetText": "Why do you think those neighbors need more time?",
+          "baseText": {
+            "de": "Warum brauchen diese Nachbarn deiner Meinung nach mehr Zeit?"
+          }
+        },
+        {
+          "targetText": "Because they work late, they need more time to shop.",
+          "baseText": {
+            "de": "Weil sie lange arbeiten, brauchen sie mehr Zeit zum Einkaufen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Opinions and reasons",
+        "rule": {
+          "de": "Mit in my opinion kennzeichnest du deine Meinung; mit because und einem vollständigen Satz erklärst du den Grund."
+        },
+        "examples": [
+          {
+            "targetText": "In my opinion, the market needs longer hours for working neighbors.",
+            "baseText": {
+              "de": "Meiner Meinung nach braucht der Markt längere Öffnungszeiten für berufstätige Nachbarn."
+            },
+            "highlight": "In my opinion"
+          },
+          {
+            "targetText": "Because they work late, they need more time to shop.",
+            "baseText": {
+              "de": "Weil sie lange arbeiten, brauchen sie mehr Zeit zum Einkaufen."
+            },
+            "highlight": "Because they work late"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Because",
+          "choices": [
+            "Despite",
+            "Because",
+            "However",
+            "Therefore"
+          ]
+        },
+        " they work late, they need more time to ",
+        {
+          "kind": "form",
+          "answer": "shop",
+          "cue": "shop",
+          "choices": [
+            "shopping",
+            "shops",
+            "shop",
+            "shopped"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "In my opinion,",
+          "baseText": {
+            "de": "Meiner Meinung nach"
+          }
+        },
+        {
+          "targetText": "the market needs",
+          "baseText": {
+            "de": "braucht der Markt"
+          }
+        },
+        {
+          "targetText": "longer hours",
+          "baseText": {
+            "de": "längere Öffnungszeiten"
+          }
+        },
+        {
+          "targetText": "for working neighbors.",
+          "baseText": {
+            "de": "für berufstätige Nachbarn."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "opinion",
+          "baseText": {
+            "de": "Meinung"
+          }
+        },
+        {
+          "targetText": "market",
+          "baseText": {
+            "de": "Markt"
+          }
+        },
+        {
+          "targetText": "longer hours",
+          "baseText": {
+            "de": "längere Öffnungszeiten"
+          }
+        },
+        {
+          "targetText": "working neighbors",
+          "baseText": {
+            "de": "berufstätige Nachbarn"
+          }
+        },
+        {
+          "targetText": "work late",
+          "baseText": {
+            "de": "bis spät arbeiten"
+          }
+        },
+        {
+          "targetText": "time to shop",
+          "baseText": {
+            "de": "Zeit zum Einkaufen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "In my ",
+        "answer": "opinion",
+        "after": ", the market needs longer hours for working neighbors.",
+        "fallbackChoices": [
+          "kitchen",
+          "opinion",
+          "garden",
+          "pocket"
+        ]
+      },
+      "speakRequired": [
+        "opinion",
+        "market",
+        "neighbors"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin bleibt am Marktstand stehen und fragt: „What do you think about keeping the market open later?“"
+      },
+      "trophyWord": {
+        "word": "opinion",
+        "meaning": {
+          "de": "Meinung"
+        },
+        "example": "In my opinion, longer market hours help working people.",
+        "whyThisWord": {
+          "de": "Mit diesem Wort machst du deutlich, dass du eine persönliche Einschätzung gibst."
+        }
+      },
+      "distractors": [
+        "shorter hours",
+        "for visiting tourists."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde betrachten die Öffnungszeiten an einem Marktstand."
+      },
+      "songMood": "Nachdenkliches Gespräch beim letzten Einkauf am Nachmittag.",
+      "visualNotes": "Ein kleiner Wochenmarkt mit Gemüsekisten und einem handgeschriebenen Schild mit Öffnungszeiten."
+    },
+    {
+      "slug": "reason-for-a-cooking-class",
+      "title": {
+        "de": "Ein Kurs zum Kennenlernen"
+      },
+      "situation": {
+        "de": "Ein Freund möchte wissen, warum du dich für einen Kochkurs im Viertel interessierst. Erkläre, was dir daran wichtig ist.",
+        "en": "A friend wants to know why you are interested in a neighborhood cooking class. Explain what matters to you."
+      },
+      "pedagogicalGoal": "Eine persönliche Motivation mit I think ausdrücken und mit so eine passende Folge anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why are you thinking about joining a class?",
+          "baseText": {
+            "de": "Warum überlegst du, einen Kurs zu besuchen?"
+          }
+        },
+        {
+          "targetText": "I think meeting people is the main reason to join this cooking class.",
+          "baseText": {
+            "de": "Ich denke, neue Leute kennenzulernen ist der Hauptgrund, diesen Kochkurs zu besuchen."
+          }
+        },
+        {
+          "targetText": "What makes a cooking class better for you than a language class?",
+          "baseText": {
+            "de": "Was macht einen Kochkurs für dich geeigneter als einen Sprachkurs?"
+          }
+        },
+        {
+          "targetText": "I enjoy cooking, so I can meet people while having fun.",
+          "baseText": {
+            "de": "Ich koche gern, also kann ich Leute kennenlernen und dabei Spaß haben."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "I think and so",
+        "rule": {
+          "de": "Nach I think folgt deine Einschätzung; so verbindet einen Grund mit der daraus entstehenden Folge."
+        },
+        "examples": [
+          {
+            "targetText": "I enjoy cooking, so I can meet people while having fun.",
+            "baseText": {
+              "de": "Ich koche gern, also kann ich Leute kennenlernen und dabei Spaß haben."
+            },
+            "highlight": "so I can meet people"
+          },
+          {
+            "targetText": "I think shared interests make conversation easier.",
+            "baseText": {
+              "de": "Ich denke, gemeinsame Interessen erleichtern das Gespräch."
+            },
+            "highlight": "I think"
+          }
+        ]
+      },
+      "cloze": [
+        "I enjoy cooking, ",
+        {
+          "kind": "connector",
+          "answer": "so",
+          "choices": [
+            "despite",
+            "nevertheless",
+            "so",
+            "because of"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "meet",
+          "cue": "meet",
+          "choices": [
+            "meeting",
+            "met",
+            "meet",
+            "meets"
+          ]
+        },
+        " people while having fun."
+      ],
+      "chunks": [
+        {
+          "targetText": "I think",
+          "baseText": {
+            "de": "Ich denke,"
+          }
+        },
+        {
+          "targetText": "meeting people",
+          "baseText": {
+            "de": "neue Leute kennenzulernen"
+          }
+        },
+        {
+          "targetText": "is the main reason",
+          "baseText": {
+            "de": "ist der Hauptgrund,"
+          }
+        },
+        {
+          "targetText": "to join this cooking class.",
+          "baseText": {
+            "de": "diesen Kochkurs zu besuchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "main reason",
+          "baseText": {
+            "de": "Hauptgrund"
+          }
+        },
+        {
+          "targetText": "meeting people",
+          "baseText": {
+            "de": "Leute kennenlernen"
+          }
+        },
+        {
+          "targetText": "join a class",
+          "baseText": {
+            "de": "einen Kurs besuchen"
+          }
+        },
+        {
+          "targetText": "cooking class",
+          "baseText": {
+            "de": "Kochkurs"
+          }
+        },
+        {
+          "targetText": "enjoy cooking",
+          "baseText": {
+            "de": "gern kochen"
+          }
+        },
+        {
+          "targetText": "having fun",
+          "baseText": {
+            "de": "Spaß haben"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I think meeting people is the main ",
+        "answer": "reason",
+        "after": " to join this cooking class.",
+        "fallbackChoices": [
+          "season",
+          "ingredient",
+          "reason",
+          "recipe"
+        ]
+      },
+      "speakRequired": [
+        "meeting",
+        "reason",
+        "cooking"
+      ],
+      "sceneCaption": {
+        "de": "Beim Blick auf das Kursprogramm fragt dein Freund: „Why are you thinking about joining a class?“"
+      },
+      "trophyWord": {
+        "word": "reason",
+        "meaning": {
+          "de": "Grund"
+        },
+        "example": "My main reason for joining is to meet people.",
+        "whyThisWord": {
+          "de": "Damit benennst du die Motivation hinter einer Entscheidung."
+        }
+      },
+      "distractors": [
+        "learning a language",
+        "to leave this cooking class."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde blättern an einem Küchentisch durch ein Kursprogramm."
+      },
+      "songMood": "Neugier auf neue Bekanntschaften und gemeinsames Kochen.",
+      "visualNotes": "Ein Kursheft liegt neben einem Schneidebrett und einer Schüssel mit frischem Gemüse."
+    },
+    {
+      "slug": "although-weekends-get-noisy",
+      "title": {
+        "de": "Trotz des Wochenendlärms"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, wie du dein neues Viertel findest. Gib eine ehrliche Einschätzung mit einer Einschränkung.",
+        "en": "A friend asks how you like your new neighborhood. Give an honest opinion with one reservation."
+      },
+      "pedagogicalGoal": "Eine positive Meinung mit although einschränken und ihren konkreten Vorteil erklären; vorläufige frühe Vorschau wegen der fest zugeteilten Trophäe.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How do you like your new neighborhood?",
+          "baseText": {
+            "de": "Wie gefällt dir dein neues Viertel?"
+          }
+        },
+        {
+          "targetText": "I like this neighborhood, although the streets get noisy on weekends.",
+          "baseText": {
+            "de": "Ich mag dieses Viertel, obwohl es auf den Straßen am Wochenende laut wird."
+          }
+        },
+        {
+          "targetText": "What makes it worth putting up with the noise?",
+          "baseText": {
+            "de": "Was macht es für dich lohnenswert, den Lärm in Kauf zu nehmen?"
+          }
+        },
+        {
+          "targetText": "The shops are close, so I can walk everywhere.",
+          "baseText": {
+            "de": "Die Geschäfte sind in der Nähe, also kann ich überallhin zu Fuß gehen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Concession with although",
+        "rule": {
+          "de": "Mit although und einem vollständigen Satz räumst du einen Einwand ein, ohne deine Hauptaussage zurückzunehmen."
+        },
+        "examples": [
+          {
+            "targetText": "I like this neighborhood, although the streets get noisy on weekends.",
+            "baseText": {
+              "de": "Ich mag dieses Viertel, obwohl es auf den Straßen am Wochenende laut wird."
+            },
+            "highlight": "although the streets get noisy"
+          },
+          {
+            "targetText": "I like the apartment, although the kitchen is small.",
+            "baseText": {
+              "de": "Ich mag die Wohnung, obwohl die Küche klein ist."
+            },
+            "highlight": "although the kitchen is small"
+          }
+        ]
+      },
+      "cloze": [
+        "The shops are close, ",
+        {
+          "kind": "connector",
+          "answer": "so",
+          "choices": [
+            "however",
+            "despite",
+            "because of",
+            "so"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "walk",
+          "cue": "walk",
+          "choices": [
+            "walked",
+            "walk",
+            "walking",
+            "walks"
+          ]
+        },
+        " everywhere."
+      ],
+      "chunks": [
+        {
+          "targetText": "I like this neighborhood,",
+          "baseText": {
+            "de": "Ich mag dieses Viertel,"
+          }
+        },
+        {
+          "targetText": "although the streets",
+          "baseText": {
+            "de": "obwohl die Straßen"
+          }
+        },
+        {
+          "targetText": "get noisy",
+          "baseText": {
+            "de": "laut werden"
+          }
+        },
+        {
+          "targetText": "on weekends.",
+          "baseText": {
+            "de": "am Wochenende."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "although",
+          "baseText": {
+            "de": "obwohl"
+          }
+        },
+        {
+          "targetText": "neighborhood",
+          "baseText": {
+            "de": "Viertel"
+          }
+        },
+        {
+          "targetText": "get noisy",
+          "baseText": {
+            "de": "laut werden"
+          }
+        },
+        {
+          "targetText": "on weekends",
+          "baseText": {
+            "de": "am Wochenende"
+          }
+        },
+        {
+          "targetText": "put up with",
+          "baseText": {
+            "de": "in Kauf nehmen"
+          }
+        },
+        {
+          "targetText": "walk everywhere",
+          "baseText": {
+            "de": "überallhin zu Fuß gehen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I like this neighborhood, ",
+        "answer": "although",
+        "after": " the streets get noisy on weekends.",
+        "fallbackChoices": [
+          "despite",
+          "because of",
+          "although",
+          "instead"
+        ]
+      },
+      "speakRequired": [
+        "although",
+        "streets",
+        "weekends"
+      ],
+      "sceneCaption": {
+        "de": "Auf einem Spaziergang fragt deine Freundin: „How do you like your new neighborhood?“"
+      },
+      "trophyWord": {
+        "word": "although",
+        "meaning": {
+          "de": "obwohl"
+        },
+        "example": "I like living here, although it gets noisy.",
+        "whyThisWord": {
+          "de": "So bleibt deine Meinung klar, auch wenn du einen Nachteil zugibst."
+        }
+      },
+      "distractors": [
+        "stay quiet",
+        "on weekday mornings."
+      ],
+      "placeholderCaption": {
+        "de": "Ein lebhaftes Wohnviertel mit kleinen Geschäften und offenen Straßencafés."
+      },
+      "songMood": "Zuneigung zum Viertel trotz seiner kleinen Nachteile.",
+      "visualNotes": "Zwei Menschen gehen an einer Bäckerei und einem belebten Café vorbei."
+    },
+    {
+      "slug": "useful-neighborhood-message-board",
+      "title": {
+        "de": "Ein hilfreiches schwarzes Brett"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt nach dem schwarzen Brett im Haus. Erkläre, weshalb du es trotz älterer Aushänge hilfreich findest.",
+        "en": "A neighbor asks about the building's message board. Explain why you find it helpful despite some older notices."
+      },
+      "pedagogicalGoal": "Mit although einen Mangel anerkennen und den praktischen Nutzen einer Sache erläutern.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you ever read the neighborhood message board?",
+          "baseText": {
+            "de": "Liest du manchmal das schwarze Brett für die Nachbarschaft?"
+          }
+        },
+        {
+          "targetText": "I find the neighborhood message board useful, although some posts are old.",
+          "baseText": {
+            "de": "Ich finde das schwarze Brett für die Nachbarschaft nützlich, obwohl einige Aushänge alt sind."
+          }
+        },
+        {
+          "targetText": "What useful information can you actually find there?",
+          "baseText": {
+            "de": "Welche nützlichen Informationen findest du dort denn?"
+          }
+        },
+        {
+          "targetText": "Although some posts are old, I found my book club there.",
+          "baseText": {
+            "de": "Obwohl einige Aushänge alt sind, habe ich dort meine Lesegruppe gefunden."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Although at the start or end",
+        "rule": {
+          "de": "Der Satz mit although kann vor oder nach der Hauptaussage stehen; steht er zuerst, trennst du ihn mit einem Komma ab."
+        },
+        "examples": [
+          {
+            "targetText": "Although some posts are old, I found my book club there.",
+            "baseText": {
+              "de": "Obwohl einige Aushänge alt sind, habe ich dort meine Lesegruppe gefunden."
+            },
+            "highlight": "Although some posts are old"
+          },
+          {
+            "targetText": "The board helps me, although nobody updates it every day.",
+            "baseText": {
+              "de": "Das schwarze Brett hilft mir, obwohl es niemand täglich aktualisiert."
+            },
+            "highlight": "although nobody updates it every day"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Although",
+          "choices": [
+            "Despite",
+            "However",
+            "Although",
+            "Nevertheless"
+          ]
+        },
+        " some posts are old, I ",
+        {
+          "kind": "form",
+          "answer": "found",
+          "cue": "find",
+          "choices": [
+            "finding",
+            "found",
+            "finds",
+            "to find"
+          ]
+        },
+        " my book club there."
+      ],
+      "chunks": [
+        {
+          "targetText": "I find",
+          "baseText": {
+            "de": "Ich finde"
+          }
+        },
+        {
+          "targetText": "the neighborhood message board useful,",
+          "baseText": {
+            "de": "das schwarze Brett für die Nachbarschaft nützlich,"
+          }
+        },
+        {
+          "targetText": "although some posts",
+          "baseText": {
+            "de": "obwohl einige Aushänge"
+          }
+        },
+        {
+          "targetText": "are old.",
+          "baseText": {
+            "de": "alt sind."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "message board",
+          "baseText": {
+            "de": "schwarzes Brett"
+          }
+        },
+        {
+          "targetText": "useful",
+          "baseText": {
+            "de": "nützlich"
+          }
+        },
+        {
+          "targetText": "posts",
+          "baseText": {
+            "de": "Aushänge"
+          }
+        },
+        {
+          "targetText": "book club",
+          "baseText": {
+            "de": "Lesegruppe"
+          }
+        },
+        {
+          "targetText": "information",
+          "baseText": {
+            "de": "Informationen"
+          }
+        },
+        {
+          "targetText": "found",
+          "baseText": {
+            "de": "gefunden"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I find the neighborhood message board ",
+        "answer": "useful",
+        "after": ", although some posts are old.",
+        "fallbackChoices": [
+          "empty",
+          "private",
+          "useful",
+          "broken"
+        ]
+      },
+      "speakRequired": [
+        "board",
+        "useful",
+        "posts"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur zeigt dein Nachbar auf die Aushänge und fragt: „Do you ever read the neighborhood message board?“"
+      },
+      "trophyWord": {
+        "word": "useful",
+        "meaning": {
+          "de": "nützlich"
+        },
+        "example": "The message board is useful for finding local events.",
+        "whyThisWord": {
+          "de": "Damit bewertest du, ob dir eine Sache im Alltag tatsächlich hilft."
+        }
+      },
+      "distractors": [
+        "the neighborhood message board confusing,",
+        "are new."
+      ],
+      "placeholderCaption": {
+        "de": "Ein schwarzes Brett mit älteren Zetteln und aktuellen Veranstaltungshinweisen."
+      },
+      "songMood": "Aufmerksames Entdecken kleiner Angebote in der Nachbarschaft.",
+      "visualNotes": "Zwei Nachbarn stehen vor einer Pinnwand im hellen Treppenhaus."
+    },
+    {
+      "slug": "expensive-but-close-fitness-class",
+      "title": {
+        "de": "Der kurze Weg zählt"
+      },
+      "situation": {
+        "de": "Eine Freundin spricht dich auf die Kosten deines Fitnesskurses an. Erkläre, warum du trotzdem gern hingehst.",
+        "en": "A friend asks about the cost of your fitness class. Explain why you still like going."
+      },
+      "pedagogicalGoal": "Mit even though einen deutlichen Nachteil einräumen und die eigene Gewichtung begründen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Is that fitness class really worth the money?",
+          "baseText": {
+            "de": "Ist dieser Fitnesskurs das Geld wirklich wert?"
+          }
+        },
+        {
+          "targetText": "Even though the fitness class is expensive, I like walking there after work.",
+          "baseText": {
+            "de": "Obwohl der Fitnesskurs teuer ist, gehe ich nach der Arbeit gern zu Fuß dorthin."
+          }
+        },
+        {
+          "targetText": "What matters more to you, the location or the instructors?",
+          "baseText": {
+            "de": "Was ist dir wichtiger: die Lage oder die Kursleitung?"
+          }
+        },
+        {
+          "targetText": "The location matters because I can walk home afterward.",
+          "baseText": {
+            "de": "Die Lage ist wichtig, weil ich danach zu Fuß nach Hause gehen kann."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Even though",
+        "rule": {
+          "de": "Even though hebt einen tatsächlichen Einwand stärker hervor als although; danach folgt ein vollständiger Satz."
+        },
+        "examples": [
+          {
+            "targetText": "Even though the fitness class is expensive, I like walking there after work.",
+            "baseText": {
+              "de": "Obwohl der Fitnesskurs teuer ist, gehe ich nach der Arbeit gern zu Fuß dorthin."
+            },
+            "highlight": "Even though the fitness class is expensive"
+          },
+          {
+            "targetText": "Even though the room is small, the class works well.",
+            "baseText": {
+              "de": "Obwohl der Raum klein ist, funktioniert der Kurs gut."
+            },
+            "highlight": "Even though the room is small"
+          }
+        ]
+      },
+      "cloze": [
+        "The location matters ",
+        {
+          "kind": "connector",
+          "answer": "because",
+          "choices": [
+            "despite",
+            "because of",
+            "however",
+            "because"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "walk",
+          "cue": "walk",
+          "choices": [
+            "walks",
+            "walking",
+            "walked",
+            "walk"
+          ]
+        },
+        " home afterward."
+      ],
+      "chunks": [
+        {
+          "targetText": "Even though",
+          "baseText": {
+            "de": "Obwohl"
+          }
+        },
+        {
+          "targetText": "the fitness class is expensive,",
+          "baseText": {
+            "de": "der Fitnesskurs teuer ist,"
+          }
+        },
+        {
+          "targetText": "I like walking there",
+          "baseText": {
+            "de": "gehe ich gern zu Fuß dorthin"
+          }
+        },
+        {
+          "targetText": "after work.",
+          "baseText": {
+            "de": "nach der Arbeit."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "even though",
+          "baseText": {
+            "de": "obwohl; auch wenn"
+          }
+        },
+        {
+          "targetText": "fitness class",
+          "baseText": {
+            "de": "Fitnesskurs"
+          }
+        },
+        {
+          "targetText": "expensive",
+          "baseText": {
+            "de": "teuer"
+          }
+        },
+        {
+          "targetText": "location",
+          "baseText": {
+            "de": "Lage"
+          }
+        },
+        {
+          "targetText": "instructors",
+          "baseText": {
+            "de": "Kursleiterinnen und Kursleiter"
+          }
+        },
+        {
+          "targetText": "afterward",
+          "baseText": {
+            "de": "danach"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Even though the fitness class is ",
+        "answer": "expensive",
+        "after": ", I like walking there after work.",
+        "fallbackChoices": [
+          "empty",
+          "expensive",
+          "free",
+          "full"
+        ]
+      },
+      "speakRequired": [
+        "fitness",
+        "expensive",
+        "walking"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Kursraum fragt deine Freundin: „Is that fitness class really worth the money?“"
+      },
+      "trophyWord": {
+        "word": "expensive",
+        "meaning": {
+          "de": "teuer"
+        },
+        "example": "The class is expensive, but the location suits me.",
+        "whyThisWord": {
+          "de": "Du benennst damit einen Preisnachteil, den du gegen andere Vorteile abwägen kannst."
+        }
+      },
+      "distractors": [
+        "the fitness class is free,",
+        "before breakfast."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Menschen mit Sporttaschen unterhalten sich vor einem kleinen Kursraum."
+      },
+      "songMood": "Ruhiges Abwägen zwischen Kosten und einem angenehmen Alltag.",
+      "visualNotes": "Ein Sportstudio in einer begehbaren Wohnstraße, vor der Tür stehen zwei Menschen mit Taschen."
+    },
+    {
+      "slug": "public-transport-and-reading-time",
+      "title": {
+        "de": "Zeit zum Lesen im Bus"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, warum du für den Arbeitsweg lieber Bus und Bahn nutzt. Erkläre, was dir daran gefällt.",
+        "en": "A friend asks why you prefer buses and trains for your commute. Explain what you like about them."
+      },
+      "pedagogicalGoal": "Eine Vorliebe trotz eines Nachteils mit although und even though ausdrücken.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why don't you drive to work more often?",
+          "baseText": {
+            "de": "Warum fährst du nicht öfter mit dem Auto zur Arbeit?"
+          }
+        },
+        {
+          "targetText": "I prefer public transportation, although the trip takes longer than driving.",
+          "baseText": {
+            "de": "Ich nutze lieber öffentliche Verkehrsmittel, obwohl die Fahrt länger dauert als mit dem Auto."
+          }
+        },
+        {
+          "targetText": "What do you enjoy about that extra time on the bus?",
+          "baseText": {
+            "de": "Was gefällt dir an der zusätzlichen Zeit im Bus?"
+          }
+        },
+        {
+          "targetText": "Even though the bus is slow, I can read.",
+          "baseText": {
+            "de": "Auch wenn der Bus langsam ist, kann ich lesen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Although and even though",
+        "rule": {
+          "de": "Although und even though verbinden einen eingeräumten Nachteil mit einer Aussage, die trotzdem gilt."
+        },
+        "examples": [
+          {
+            "targetText": "Even though the bus is slow, I can read.",
+            "baseText": {
+              "de": "Auch wenn der Bus langsam ist, kann ich lesen."
+            },
+            "highlight": "Even though the bus is slow"
+          },
+          {
+            "targetText": "I take the train, although the station is far from home.",
+            "baseText": {
+              "de": "Ich nehme den Zug, obwohl der Bahnhof weit von zu Hause entfernt ist."
+            },
+            "highlight": "although the station is far from home"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Even though",
+          "choices": [
+            "However",
+            "Even though",
+            "Despite",
+            "Because of"
+          ]
+        },
+        " the bus is slow, I can ",
+        {
+          "kind": "form",
+          "answer": "read",
+          "cue": "read",
+          "choices": [
+            "reads",
+            "to read",
+            "read",
+            "reading"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "I prefer public transportation,",
+          "baseText": {
+            "de": "Ich nutze lieber öffentliche Verkehrsmittel,"
+          }
+        },
+        {
+          "targetText": "although the trip",
+          "baseText": {
+            "de": "obwohl die Fahrt"
+          }
+        },
+        {
+          "targetText": "takes longer",
+          "baseText": {
+            "de": "länger dauert"
+          }
+        },
+        {
+          "targetText": "than driving.",
+          "baseText": {
+            "de": "als mit dem Auto."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "public transportation",
+          "baseText": {
+            "de": "öffentliche Verkehrsmittel"
+          }
+        },
+        {
+          "targetText": "prefer",
+          "baseText": {
+            "de": "lieber mögen; bevorzugen"
+          }
+        },
+        {
+          "targetText": "trip",
+          "baseText": {
+            "de": "Fahrt"
+          }
+        },
+        {
+          "targetText": "takes longer",
+          "baseText": {
+            "de": "dauert länger"
+          }
+        },
+        {
+          "targetText": "driving",
+          "baseText": {
+            "de": "Autofahren"
+          }
+        },
+        {
+          "targetText": "extra time",
+          "baseText": {
+            "de": "zusätzliche Zeit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I prefer ",
+        "answer": "public",
+        "after": " transportation, although the trip takes longer than driving.",
+        "fallbackChoices": [
+          "private",
+          "public",
+          "medical",
+          "international"
+        ]
+      },
+      "speakRequired": [
+        "public",
+        "transportation",
+        "longer"
+      ],
+      "sceneCaption": {
+        "de": "An der Haltestelle fragt dein Freund: „Why don't you drive to work more often?“"
+      },
+      "trophyWord": {
+        "word": "public",
+        "meaning": {
+          "de": "öffentlich"
+        },
+        "example": "I prefer public transportation for my daily trip to work.",
+        "whyThisWord": {
+          "de": "In public transportation bezeichnet es Busse und Bahnen, die allen zur Verfügung stehen."
+        }
+      },
+      "distractors": [
+        "I avoid public transportation,",
+        "takes less time"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Fahrgast wartet mit einem Buch an einer Bushaltestelle."
+      },
+      "songMood": "Gelassener Arbeitsweg mit Zeit für eine Geschichte.",
+      "visualNotes": "Eine Haltestelle am Morgen; auf einer Bank liegt ein geöffnetes Buch neben einer Tasche."
+    },
+    {
+      "slug": "traffic-and-a-bike-lane",
+      "title": {
+        "de": "Ein Radweg für die Straße"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt nach deiner Haltung zum geplanten Radweg. Erkläre, warum du ihn unterstützt und welchen Einwand du ernst nimmst.",
+        "en": "A neighbor asks for your view on a proposed bike lane. Explain why you support it and which concern you take seriously."
+      },
+      "pedagogicalGoal": "Mit however einen Gegenpunkt anschließen und zwei berechtigte Bedürfnisse gegeneinander abwägen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you support a bike lane on this street?",
+          "baseText": {
+            "de": "Bist du für einen Radweg in dieser Straße?"
+          }
+        },
+        {
+          "targetText": "I support a bike lane because of the traffic; however, parking matters too.",
+          "baseText": {
+            "de": "Wegen des Verkehrs bin ich für einen Radweg; allerdings sind auch Parkplätze wichtig."
+          }
+        },
+        {
+          "targetText": "What about the parking spaces the stores rely on?",
+          "baseText": {
+            "de": "Und was ist mit den Parkplätzen, auf die die Geschäfte angewiesen sind?"
+          }
+        },
+        {
+          "targetText": "Drivers need somewhere to park, but cyclists need protection too.",
+          "baseText": {
+            "de": "Autofahrer brauchen Parkmöglichkeiten, aber Radfahrer brauchen auch Schutz."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Contrast with however",
+        "rule": {
+          "de": "However leitet einen Gegenpunkt ein; zwischen zwei vollständigen Sätzen steht davor ein Punkt oder Semikolon und danach ein Komma."
+        },
+        "examples": [
+          {
+            "targetText": "I support a bike lane because of the traffic; however, parking matters too.",
+            "baseText": {
+              "de": "Wegen des Verkehrs bin ich für einen Radweg; allerdings sind auch Parkplätze wichtig."
+            },
+            "highlight": "however, parking matters too"
+          },
+          {
+            "targetText": "The street needs parking. However, cyclists need a safe route.",
+            "baseText": {
+              "de": "Die Straße braucht Parkplätze. Allerdings brauchen Radfahrer eine sichere Strecke."
+            },
+            "highlight": "However, cyclists need a safe route"
+          }
+        ]
+      },
+      "cloze": [
+        "Drivers need somewhere to ",
+        {
+          "kind": "form",
+          "answer": "park",
+          "cue": "park",
+          "choices": [
+            "parks",
+            "parked",
+            "parking",
+            "park"
+          ]
+        },
+        ", ",
+        {
+          "kind": "connector",
+          "answer": "but",
+          "choices": [
+            "despite",
+            "however",
+            "but",
+            "nevertheless"
+          ]
+        },
+        " cyclists need protection too."
+      ],
+      "chunks": [
+        {
+          "targetText": "I support a bike lane",
+          "baseText": {
+            "de": "Ich bin für einen Radweg"
+          }
+        },
+        {
+          "targetText": "because of the traffic;",
+          "baseText": {
+            "de": "wegen des Verkehrs;"
+          }
+        },
+        {
+          "targetText": "however,",
+          "baseText": {
+            "de": "allerdings"
+          }
+        },
+        {
+          "targetText": "parking matters too.",
+          "baseText": {
+            "de": "sind auch Parkplätze wichtig."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "support",
+          "baseText": {
+            "de": "unterstützen; dafür sein"
+          }
+        },
+        {
+          "targetText": "bike lane",
+          "baseText": {
+            "de": "Radweg"
+          }
+        },
+        {
+          "targetText": "traffic",
+          "baseText": {
+            "de": "Verkehr"
+          }
+        },
+        {
+          "targetText": "parking spaces",
+          "baseText": {
+            "de": "Parkplätze"
+          }
+        },
+        {
+          "targetText": "rely on",
+          "baseText": {
+            "de": "angewiesen sein auf"
+          }
+        },
+        {
+          "targetText": "protection",
+          "baseText": {
+            "de": "Schutz"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I support a bike lane because of the ",
+        "answer": "traffic",
+        "after": "; however, parking matters too.",
+        "fallbackChoices": [
+          "weather",
+          "traffic",
+          "rent",
+          "noise"
+        ]
+      },
+      "speakRequired": [
+        "support",
+        "traffic",
+        "parking"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar zeigt auf die Straße und fragt: „Do you support a bike lane on this street?“"
+      },
+      "trophyWord": {
+        "word": "traffic",
+        "meaning": {
+          "de": "Verkehr"
+        },
+        "example": "The heavy traffic makes cycling difficult.",
+        "whyThisWord": {
+          "de": "Damit kannst du einen konkreten Grund für Veränderungen auf deiner Straße nennen."
+        }
+      },
+      "distractors": [
+        "I oppose a bike lane",
+        "because of the hills;"
+      ],
+      "placeholderCaption": {
+        "de": "Eine belebte Geschäftsstraße mit Radfahrern und geparkten Autos."
+      },
+      "songMood": "Sachliches Nachdenken über eine Straße, die alle nutzen.",
+      "visualNotes": "Zwei Nachbarn stehen auf einem Gehweg neben Läden und beobachten den Straßenverkehr."
+    },
+    {
+      "slug": "crowded-market-worth-visiting",
+      "title": {
+        "de": "Früh auf den vollen Markt"
+      },
+      "situation": {
+        "de": "Eine Freundin überlegt, mit dir auf den Wochenmarkt zu gehen. Erkläre, warum du trotz des Gedränges dort einkaufst.",
+        "en": "A friend is thinking of going to the weekend market with you. Explain why you shop there despite the crowds."
+      },
+      "pedagogicalGoal": "Mit however einen Vorteil ergänzen und mit anyway an einer Entscheidung trotz eines Einwands festhalten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Is the weekend market a good place to buy vegetables?",
+          "baseText": {
+            "de": "Kann man auf dem Wochenmarkt gut Gemüse kaufen?"
+          }
+        },
+        {
+          "targetText": "The market is crowded; however, I usually find fresher vegetables there.",
+          "baseText": {
+            "de": "Der Markt ist voll; allerdings finde ich dort meistens frischeres Gemüse."
+          }
+        },
+        {
+          "targetText": "Doesn't the crowd make shopping there stressful?",
+          "baseText": {
+            "de": "Ist das Einkaufen dort durch das Gedränge nicht stressig?"
+          }
+        },
+        {
+          "targetText": "I shop early anyway, so the crowds rarely bother me.",
+          "baseText": {
+            "de": "Ich kaufe sowieso früh ein, deshalb stört mich das Gedränge selten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "However and anyway",
+        "rule": {
+          "de": "However führt einen Gegenpunkt ein; anyway zeigt hier, dass deine Gewohnheit unabhängig von dem Einwand ohnehin besteht."
+        },
+        "examples": [
+          {
+            "targetText": "The market is crowded; however, I usually find fresher vegetables there.",
+            "baseText": {
+              "de": "Der Markt ist voll; allerdings finde ich dort meistens frischeres Gemüse."
+            },
+            "highlight": "however"
+          },
+          {
+            "targetText": "I shop early anyway, so the crowds rarely bother me.",
+            "baseText": {
+              "de": "Ich kaufe sowieso früh ein, deshalb stört mich das Gedränge selten."
+            },
+            "highlight": "anyway"
+          }
+        ]
+      },
+      "cloze": [
+        "I shop early ",
+        {
+          "kind": "connector",
+          "answer": "anyway",
+          "choices": [
+            "although",
+            "anyway",
+            "despite",
+            "even though"
+          ]
+        },
+        ", so the crowds rarely ",
+        {
+          "kind": "form",
+          "answer": "bother",
+          "cue": "bother",
+          "choices": [
+            "bothers",
+            "bothering",
+            "to bother",
+            "bother"
+          ]
+        },
+        " me."
+      ],
+      "chunks": [
+        {
+          "targetText": "The market",
+          "baseText": {
+            "de": "Der Markt"
+          }
+        },
+        {
+          "targetText": "is crowded;",
+          "baseText": {
+            "de": "ist voll;"
+          }
+        },
+        {
+          "targetText": "however, I usually find",
+          "baseText": {
+            "de": "allerdings finde ich meistens"
+          }
+        },
+        {
+          "targetText": "fresher vegetables there.",
+          "baseText": {
+            "de": "dort frischeres Gemüse."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "crowded",
+          "baseText": {
+            "de": "voll; überfüllt"
+          }
+        },
+        {
+          "targetText": "fresher vegetables",
+          "baseText": {
+            "de": "frischeres Gemüse"
+          }
+        },
+        {
+          "targetText": "usually",
+          "baseText": {
+            "de": "meistens"
+          }
+        },
+        {
+          "targetText": "anyway",
+          "baseText": {
+            "de": "sowieso"
+          }
+        },
+        {
+          "targetText": "rarely",
+          "baseText": {
+            "de": "selten"
+          }
+        },
+        {
+          "targetText": "bother",
+          "baseText": {
+            "de": "stören"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The market is ",
+        "answer": "crowded",
+        "after": "; however, I usually find fresher vegetables there.",
+        "fallbackChoices": [
+          "closed",
+          "empty",
+          "crowded",
+          "quiet"
+        ]
+      },
+      "speakRequired": [
+        "crowded",
+        "fresher",
+        "vegetables"
+      ],
+      "sceneCaption": {
+        "de": "Beim Planen des Einkaufs fragt deine Freundin: „Is the weekend market a good place to buy vegetables?“"
+      },
+      "trophyWord": {
+        "word": "crowded",
+        "meaning": {
+          "de": "voll; überfüllt"
+        },
+        "example": "The market gets crowded on Saturday mornings.",
+        "whyThisWord": {
+          "de": "Du beschreibst damit einen Ort mit vielen Menschen und wenig freiem Platz."
+        }
+      },
+      "distractors": [
+        "The market is empty;",
+        "cheaper flowers"
+      ],
+      "placeholderCaption": {
+        "de": "Frische Gemüsekisten auf einem gut besuchten Wochenmarkt."
+      },
+      "songMood": "Lebendiger Marktmorgen mit einer gelassenen Einkaufsroutine.",
+      "visualNotes": "Ein enger Marktgang zwischen Gemüseständen; die ersten Kunden tragen Stofftaschen."
+    },
+    {
+      "slug": "however-the-center-needs-staff",
+      "title": {
+        "de": "Sonntags ins Nachbarschaftszentrum"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach längeren Öffnungszeiten des Nachbarschaftszentrums. Betrachte den Nutzen und den Aufwand.",
+        "en": "A friend asks about extending the community center's opening hours. Consider both the benefit and the work involved."
+      },
+      "pedagogicalGoal": "Mit however zwei Seiten einer Idee darstellen und mit although eine mögliche Lösung einschränken.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What do you think about opening the community center on Sundays?",
+          "baseText": {
+            "de": "Was hältst du davon, das Nachbarschaftszentrum sonntags zu öffnen?"
+          }
+        },
+        {
+          "targetText": "Sunday opening gives families more time together; however, the center needs more staff.",
+          "baseText": {
+            "de": "Sonntagsöffnungszeiten geben Familien mehr gemeinsame Zeit; allerdings braucht das Zentrum mehr Personal."
+          }
+        },
+        {
+          "targetText": "What makes finding enough staff difficult?",
+          "baseText": {
+            "de": "Was macht es schwierig, genug Personal zu finden?"
+          }
+        },
+        {
+          "targetText": "Although volunteers can help, someone has to organize each shift.",
+          "baseText": {
+            "de": "Obwohl Freiwillige helfen können, muss jemand jede Schicht organisieren."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "However and although",
+        "rule": {
+          "de": "However verbindet zwei eigenständige Aussagen als Gegenpunkte; although ordnet den eingeräumten Punkt einer Hauptaussage unter."
+        },
+        "examples": [
+          {
+            "targetText": "Sunday opening gives families more time together; however, the center needs more staff.",
+            "baseText": {
+              "de": "Sonntagsöffnungszeiten geben Familien mehr gemeinsame Zeit; allerdings braucht das Zentrum mehr Personal."
+            },
+            "highlight": "however, the center needs more staff"
+          },
+          {
+            "targetText": "Although volunteers can help, someone has to organize each shift.",
+            "baseText": {
+              "de": "Obwohl Freiwillige helfen können, muss jemand jede Schicht organisieren."
+            },
+            "highlight": "Although volunteers can help"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Although",
+          "choices": [
+            "However",
+            "Despite",
+            "Nevertheless",
+            "Although"
+          ]
+        },
+        " volunteers can help, someone has to ",
+        {
+          "kind": "form",
+          "answer": "organize",
+          "cue": "organize",
+          "choices": [
+            "organizes",
+            "organize",
+            "organizing",
+            "organized"
+          ]
+        },
+        " each shift."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sunday opening",
+          "baseText": {
+            "de": "Sonntagsöffnungszeiten"
+          }
+        },
+        {
+          "targetText": "gives families more time together;",
+          "baseText": {
+            "de": "geben Familien mehr gemeinsame Zeit;"
+          }
+        },
+        {
+          "targetText": "however,",
+          "baseText": {
+            "de": "allerdings"
+          }
+        },
+        {
+          "targetText": "the center needs more staff.",
+          "baseText": {
+            "de": "braucht das Zentrum mehr Personal."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "Sunday opening",
+          "baseText": {
+            "de": "Sonntagsöffnung"
+          }
+        },
+        {
+          "targetText": "time together",
+          "baseText": {
+            "de": "gemeinsame Zeit"
+          }
+        },
+        {
+          "targetText": "however",
+          "baseText": {
+            "de": "allerdings; jedoch"
+          }
+        },
+        {
+          "targetText": "staff",
+          "baseText": {
+            "de": "Personal"
+          }
+        },
+        {
+          "targetText": "volunteers",
+          "baseText": {
+            "de": "Freiwillige"
+          }
+        },
+        {
+          "targetText": "each shift",
+          "baseText": {
+            "de": "jede Schicht"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sunday opening gives families more time together; ",
+        "answer": "however",
+        "after": ", the center needs more staff.",
+        "fallbackChoices": [
+          "although",
+          "however",
+          "despite",
+          "unless"
+        ]
+      },
+      "speakRequired": [
+        "families",
+        "however",
+        "staff"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Nachbarschaftszentrum fragt dein Freund: „What do you think about opening the community center on Sundays?“"
+      },
+      "trophyWord": {
+        "word": "however",
+        "meaning": {
+          "de": "allerdings; jedoch"
+        },
+        "example": "The center has space; however, it needs more staff.",
+        "whyThisWord": {
+          "de": "Damit lenkst du vom Vorteil einer Idee auf einen wichtigen Gegenpunkt."
+        }
+      },
+      "distractors": [
+        "Evening opening",
+        "needs more space."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Nachbarschaftszentrum mit einem Wochenplan neben der Eingangstür."
+      },
+      "songMood": "Nachdenkliches Abwägen einer gemeinsamen Idee.",
+      "visualNotes": "Im Eingangsbereich hängen ein Wochenplan und eine Liste für freiwillige Helfer."
+    },
+    {
+      "slug": "community-in-the-shared-garden",
+      "title": {
+        "de": "Zusammen im Garten"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte wissen, ob sich der gemeinsame Garten im Haus lohnt. Erkläre deinen Standpunkt mit einer persönlichen Erfahrung.",
+        "en": "A friend wants to know whether the building's shared garden is worth the effort. Explain your view using a personal experience."
+      },
+      "pedagogicalGoal": "Eine begründete Meinung mit einer Konzession und einem konkreten gemeinsamen Erlebnis verbinden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Is the shared garden worth all the work?",
+          "baseText": {
+            "de": "Lohnt sich der gemeinsame Garten bei all der Arbeit?"
+          }
+        },
+        {
+          "targetText": "The garden strengthens our community, although looking after it takes real effort.",
+          "baseText": {
+            "de": "Der Garten stärkt unsere Gemeinschaft, obwohl seine Pflege wirklich Mühe kostet."
+          }
+        },
+        {
+          "targetText": "What happened when you worked with your neighbors yesterday?",
+          "baseText": {
+            "de": "Wie war es, als du gestern mit deinen Nachbarn gearbeitet hast?"
+          }
+        },
+        {
+          "targetText": "Although we argued yesterday, sharing tools helped us work together.",
+          "baseText": {
+            "de": "Obwohl wir gestern gestritten haben, hat uns das Teilen der Werkzeuge bei der Zusammenarbeit geholfen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Concession with a concrete example",
+        "rule": {
+          "de": "Mit although kannst du sowohl einen allgemeinen Nachteil als auch einen Einwand aus einem konkreten Erlebnis einräumen."
+        },
+        "examples": [
+          {
+            "targetText": "The garden strengthens our community, although looking after it takes real effort.",
+            "baseText": {
+              "de": "Der Garten stärkt unsere Gemeinschaft, obwohl seine Pflege wirklich Mühe kostet."
+            },
+            "highlight": "although looking after it takes real effort"
+          },
+          {
+            "targetText": "Although we argued yesterday, sharing tools helped us work together.",
+            "baseText": {
+              "de": "Obwohl wir gestern gestritten haben, hat uns das Teilen der Werkzeuge bei der Zusammenarbeit geholfen."
+            },
+            "highlight": "Although we argued yesterday"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Although",
+          "choices": [
+            "Despite",
+            "However",
+            "Although",
+            "Nevertheless"
+          ]
+        },
+        " we ",
+        {
+          "kind": "form",
+          "answer": "argued",
+          "cue": "argue",
+          "choices": [
+            "argues",
+            "arguing",
+            "argued",
+            "to argue"
+          ]
+        },
+        " yesterday, sharing tools helped us work together."
+      ],
+      "chunks": [
+        {
+          "targetText": "The garden strengthens",
+          "baseText": {
+            "de": "Der Garten stärkt"
+          }
+        },
+        {
+          "targetText": "our community,",
+          "baseText": {
+            "de": "unsere Gemeinschaft,"
+          }
+        },
+        {
+          "targetText": "although looking after it",
+          "baseText": {
+            "de": "obwohl seine Pflege"
+          }
+        },
+        {
+          "targetText": "takes real effort.",
+          "baseText": {
+            "de": "wirklich Mühe kostet."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "strengthens",
+          "baseText": {
+            "de": "stärkt"
+          }
+        },
+        {
+          "targetText": "community",
+          "baseText": {
+            "de": "Gemeinschaft"
+          }
+        },
+        {
+          "targetText": "looking after",
+          "baseText": {
+            "de": "sich kümmern um"
+          }
+        },
+        {
+          "targetText": "effort",
+          "baseText": {
+            "de": "Mühe"
+          }
+        },
+        {
+          "targetText": "argued",
+          "baseText": {
+            "de": "gestritten"
+          }
+        },
+        {
+          "targetText": "sharing tools",
+          "baseText": {
+            "de": "Werkzeuge teilen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The garden ",
+        "answer": "strengthens",
+        "after": " our community, although looking after it takes real effort.",
+        "fallbackChoices": [
+          "strengthen",
+          "strengthening",
+          "strengthens",
+          "to strengthen"
+        ]
+      },
+      "speakRequired": [
+        "garden",
+        "community",
+        "effort"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin betrachtet die Beete und fragt: „Is the shared garden worth all the work?“"
+      },
+      "trophyWord": {
+        "word": "community",
+        "meaning": {
+          "de": "Gemeinschaft"
+        },
+        "example": "Sharing a garden brings our community together.",
+        "whyThisWord": {
+          "de": "Mit diesem Wort sprichst du über das Zusammenleben und den Zusammenhalt einer Gruppe."
+        }
+      },
+      "distractors": [
+        "The garden divides",
+        "takes very little effort."
+      ],
+      "placeholderCaption": {
+        "de": "Nachbarn pflegen gemeinsam Gemüsebeete in einem Innenhof."
+      },
+      "songMood": "Versöhnliche Zusammenarbeit nach einer kleinen Meinungsverschiedenheit.",
+      "visualNotes": "Ein gemeinsamer Hofgarten mit Beeten, Handschuhen und einer Kiste geteilter Werkzeuge."
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # B1 expansion: English, Spanish, French, Italian and Portuguese
 
+October 5 continuation: forty additional English/Spanish P2–P3 episodes have passed review for local recording. See [the later-path package](paths/README.md) for its exact scope, evidence and publication holds. The original P1 milestone below remains its historical record.
+
 Prepared 2026-10-03. This is an authoring package, not a released course. The live app still has 100 A1 and 100 A2 lessons in each of twelve targets, plus 100 German B1 lessons. Eight targets are currently offered in the beta picker.
 
 The first milestone is Practical 1: ten complete B1 episodes in each of five languages. The accompanying plans allocate the full ten-path, 100-lesson progression per language. The remaining 450 beats are outlines, not authored lessons. B2 and C1/C2 are not part of this batch.

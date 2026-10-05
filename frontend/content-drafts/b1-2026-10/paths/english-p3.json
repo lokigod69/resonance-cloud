@@ -1,0 +1,1913 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Wenn ich könnte"
+  },
+  "subtitle": {
+    "de": "Sprich über Wünsche, denkbare Möglichkeiten und höfliche Bitten."
+  },
+  "anchor": "Form A: Das Gegenüber nennt erst nach der ersten eigenen Antwort eine neue Einschränkung; die zweite eigene Antwort geht darauf ein. Stufung nach Fables Architektur vom 03.10.2026: L1–3 would love to, would prefer und would rather; L4–6 zweiter Bedingungssatz; L7–8 could, might, would it be possible und I was wondering if; L9 should für Ratschläge; L10 Verbindung der Muster. Von Fable am 05.10.2026 freigegebene Ausnahmen: In L2 trägt die zugeteilte Trophäe if eine offene gegenwärtige Bedingung (if that works for you too) als höflichen Vorbehalt zur Präferenz; kein zweiter Bedingungssatz vor L4, kein will-Bedingungssatz vor P7. L8 und L9 setzen die älteren Szenenideen gemäß dieser Grammatikstufung um; die älteren Beat-Texte sind entsprechend zu aktualisieren. Die Trophäen bleiben genau wie zugeteilt. Gemischtes Register nach Gegenüber, amerikanisches Englisch; keine rückblickenden irrealen Bedingungen.",
+  "lessons": [
+    {
+      "slug": "would-love-an-afternoon-at-the-museum",
+      "title": {
+        "de": "Ein freier Nachmittag"
+      },
+      "situation": {
+        "de": "Du hast unerwartet einen freien Nachmittag. Erzähle einem Freund, was du gern unternehmen möchtest.",
+        "en": "You unexpectedly have a free afternoon. Tell a friend what you would like to do."
+      },
+      "pedagogicalGoal": "Mit would love to einen Wunsch äußern und mit would prefer eine Alternative wählen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to do with your free afternoon?",
+          "baseText": {
+            "de": "Was würdest du gern an deinem freien Nachmittag machen?"
+          }
+        },
+        {
+          "targetText": "I would love to spend the afternoon at the art museum.",
+          "baseText": {
+            "de": "Ich würde den Nachmittag sehr gern im Kunstmuseum verbringen."
+          }
+        },
+        {
+          "targetText": "The museum is closed on Mondays. How about a walk instead?",
+          "baseText": {
+            "de": "Das Museum ist montags geschlossen. Wie wäre es stattdessen mit einem Spaziergang?"
+          }
+        },
+        {
+          "targetText": "Then I'd prefer to visit the gallery near the station.",
+          "baseText": {
+            "de": "Dann würde ich lieber die Galerie beim Bahnhof besuchen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Would love to and would prefer",
+        "rule": {
+          "de": "Nach would love und would prefer steht bei einer Tätigkeit to mit der Grundform; I'd ist die Kurzform von I would."
+        },
+        "examples": [
+          {
+            "targetText": "I would love to spend the afternoon at the art museum.",
+            "baseText": {
+              "de": "Ich würde den Nachmittag sehr gern im Kunstmuseum verbringen."
+            },
+            "highlight": "would love to spend"
+          },
+          {
+            "targetText": "Then I'd prefer to visit the gallery near the station.",
+            "baseText": {
+              "de": "Dann würde ich lieber die Galerie beim Bahnhof besuchen."
+            },
+            "highlight": "I'd prefer to visit"
+          }
+        ]
+      },
+      "cloze": [
+        "Then I'd ",
+        {
+          "kind": "form",
+          "answer": "prefer",
+          "cue": "prefer",
+          "choices": [
+            "prefers",
+            "preferred",
+            "prefer",
+            "preferring"
+          ]
+        },
+        " to ",
+        {
+          "kind": "form",
+          "answer": "visit",
+          "cue": "visit",
+          "choices": [
+            "visiting",
+            "visit",
+            "visited",
+            "visits"
+          ]
+        },
+        " the gallery near the station."
+      ],
+      "chunks": [
+        {
+          "targetText": "I would love",
+          "baseText": {
+            "de": "Ich würde sehr gern"
+          }
+        },
+        {
+          "targetText": "to spend",
+          "baseText": {
+            "de": "verbringen"
+          }
+        },
+        {
+          "targetText": "the afternoon",
+          "baseText": {
+            "de": "den Nachmittag"
+          }
+        },
+        {
+          "targetText": "at the art museum.",
+          "baseText": {
+            "de": "im Kunstmuseum."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "would love to",
+          "baseText": {
+            "de": "würde sehr gern"
+          }
+        },
+        {
+          "targetText": "spend the afternoon",
+          "baseText": {
+            "de": "den Nachmittag verbringen"
+          }
+        },
+        {
+          "targetText": "art museum",
+          "baseText": {
+            "de": "Kunstmuseum"
+          }
+        },
+        {
+          "targetText": "closed",
+          "baseText": {
+            "de": "geschlossen"
+          }
+        },
+        {
+          "targetText": "would prefer",
+          "baseText": {
+            "de": "würde lieber"
+          }
+        },
+        {
+          "targetText": "gallery",
+          "baseText": {
+            "de": "Galerie"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I would love to ",
+        "answer": "spend",
+        "after": " the afternoon at the art museum.",
+        "fallbackChoices": [
+          "spent",
+          "spending",
+          "spend",
+          "spends"
+        ]
+      },
+      "speakRequired": [
+        "would",
+        "afternoon",
+        "museum"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund sieht deinen freien Kalender und fragt: „What would you like to do with your free afternoon?“"
+      },
+      "trophyWord": {
+        "word": "would",
+        "meaning": {
+          "de": "würde"
+        },
+        "example": "I would love to visit the museum today.",
+        "whyThisWord": {
+          "de": "In would love to hilft es dir, einen Wunsch freundlich und deutlich auszudrücken."
+        }
+      },
+      "distractors": [
+        "the evening",
+        "at the shopping mall."
+      ],
+      "placeholderCaption": {
+        "de": "Ein freier Nachmittag, ein Stadtplan und zwei Freunde mit Zeit für einen Ausflug."
+      },
+      "songMood": "Vorfreude auf einen spontan freien Nachmittag.",
+      "visualNotes": "Ein Stadtplan mit Museum und Galerie liegt auf einem Cafétisch neben einem Kalender."
+    },
+    {
+      "slug": "evening-class-if-it-suits-you",
+      "title": {
+        "de": "Ein Kurs, der zu uns passt"
+      },
+      "situation": {
+        "de": "Eine Freundin schlägt einen gemeinsamen Kochkurs vor. Sage, welche Zeit dir besser passt.",
+        "en": "A friend suggests taking a cooking class together. Say which time would suit you better."
+      },
+      "pedagogicalGoal": "Mit would prefer und would rather Vorlieben nennen; if that works for you als offene Rücksichtnahme auf das Gegenüber verwenden.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you want to try the weekend cooking class together?",
+          "baseText": {
+            "de": "Hast du Lust, den Kochkurs am Wochenende zusammen auszuprobieren?"
+          }
+        },
+        {
+          "targetText": "I'd prefer the evening class if that works for you too.",
+          "baseText": {
+            "de": "Mir wäre der Abendkurs lieber, wenn dir das auch passt."
+          }
+        },
+        {
+          "targetText": "That class lasts three hours, but there's a shorter one nearby.",
+          "baseText": {
+            "de": "Dieser Kurs dauert drei Stunden, aber in der Nähe gibt es einen kürzeren."
+          }
+        },
+        {
+          "targetText": "I'd rather take the shorter class and keep Saturday free.",
+          "baseText": {
+            "de": "Ich würde lieber den kürzeren Kurs nehmen und mir den Samstag freihalten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Would prefer and would rather",
+        "rule": {
+          "de": "Would prefer kann direkt vor einem Nomen stehen; nach would rather folgt eine Tätigkeit in der Grundform ohne to."
+        },
+        "examples": [
+          {
+            "targetText": "I'd prefer the evening class if that works for you too.",
+            "baseText": {
+              "de": "Mir wäre der Abendkurs lieber, wenn dir das auch passt."
+            },
+            "highlight": "I'd prefer the evening class"
+          },
+          {
+            "targetText": "I'd rather take the shorter class and keep Saturday free.",
+            "baseText": {
+              "de": "Ich würde lieber den kürzeren Kurs nehmen und mir den Samstag freihalten."
+            },
+            "highlight": "I'd rather take"
+          }
+        ]
+      },
+      "cloze": [
+        "I'd rather ",
+        {
+          "kind": "form",
+          "answer": "take",
+          "cue": "take",
+          "choices": [
+            "taken",
+            "takes",
+            "taking",
+            "take"
+          ]
+        },
+        " the shorter class and ",
+        {
+          "kind": "form",
+          "answer": "keep",
+          "cue": "keep",
+          "choices": [
+            "keeps",
+            "keeping",
+            "keep",
+            "kept"
+          ]
+        },
+        " Saturday free."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd prefer",
+          "baseText": {
+            "de": "Mir wäre lieber"
+          }
+        },
+        {
+          "targetText": "the evening class",
+          "baseText": {
+            "de": "der Abendkurs,"
+          }
+        },
+        {
+          "targetText": "if that works",
+          "baseText": {
+            "de": "wenn das passt"
+          }
+        },
+        {
+          "targetText": "for you too.",
+          "baseText": {
+            "de": "für dich auch."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "evening class",
+          "baseText": {
+            "de": "Abendkurs"
+          }
+        },
+        {
+          "targetText": "if that works",
+          "baseText": {
+            "de": "wenn das passt"
+          }
+        },
+        {
+          "targetText": "lasts three hours",
+          "baseText": {
+            "de": "dauert drei Stunden"
+          }
+        },
+        {
+          "targetText": "nearby",
+          "baseText": {
+            "de": "in der Nähe"
+          }
+        },
+        {
+          "targetText": "would rather",
+          "baseText": {
+            "de": "würde lieber"
+          }
+        },
+        {
+          "targetText": "keep Saturday free",
+          "baseText": {
+            "de": "sich den Samstag freihalten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd ",
+        "answer": "prefer",
+        "after": " the evening class if that works for you too.",
+        "fallbackChoices": [
+          "prefers",
+          "prefer",
+          "preferring",
+          "preferred"
+        ]
+      },
+      "speakRequired": [
+        "evening",
+        "class",
+        "works"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin zeigt dir das Kursprogramm und fragt: „Do you want to try the weekend cooking class together?“"
+      },
+      "trophyWord": {
+        "word": "if",
+        "meaning": {
+          "de": "wenn; falls"
+        },
+        "example": "I'd prefer an evening class if that suits you.",
+        "whyThisWord": {
+          "de": "Hier machst du deine Vorliebe davon abhängig, ob sie auch für das Gegenüber passt."
+        }
+      },
+      "distractors": [
+        "the morning class",
+        "for your sister."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde vergleichen verschiedene Kurstermine."
+      },
+      "songMood": "Entspanntes Abstimmen eines gemeinsamen Vorhabens.",
+      "visualNotes": "Auf einem Küchentisch liegen ein Stundenplan und ein Kochkursprogramm mit mehreren Terminen."
+    },
+    {
+      "slug": "more-space-for-friends",
+      "title": {
+        "de": "Platz für die Runde"
+      },
+      "situation": {
+        "de": "Ein Freund sucht mit dir einen Ort für ein kleines Treffen. Deine Wohnung ist eng, also nenne eine andere Möglichkeit.",
+        "en": "A friend is choosing a place for a small gathering with you. Your apartment is cramped, so suggest another option."
+      },
+      "pedagogicalGoal": "Eine Vorliebe mit would rather begründen und nach einer neuen Einschränkung mit would prefer anpassen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Where would you like to meet everyone on Friday?",
+          "baseText": {
+            "de": "Wo möchtest du dich am Freitag mit allen treffen?"
+          }
+        },
+        {
+          "targetText": "I'd rather meet at the café; my apartment has very little space.",
+          "baseText": {
+            "de": "Ich würde mich lieber im Café treffen; meine Wohnung bietet sehr wenig Platz."
+          }
+        },
+        {
+          "targetText": "It's going to rain, and that café only has outdoor tables.",
+          "baseText": {
+            "de": "Es soll regnen, und dieses Café hat nur draußen Tische."
+          }
+        },
+        {
+          "targetText": "I'd prefer to use the common room in my building.",
+          "baseText": {
+            "de": "Ich würde lieber den Gemeinschaftsraum in meinem Haus nutzen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Would rather or would prefer to",
+        "rule": {
+          "de": "Für dieselbe Vorliebe verwendest du nach would rather die Grundform und nach would prefer die Verbindung to mit Grundform."
+        },
+        "examples": [
+          {
+            "targetText": "I'd rather meet at the café; my apartment has very little space.",
+            "baseText": {
+              "de": "Ich würde mich lieber im Café treffen; meine Wohnung bietet sehr wenig Platz."
+            },
+            "highlight": "I'd rather meet"
+          },
+          {
+            "targetText": "I'd prefer to use the common room in my building.",
+            "baseText": {
+              "de": "Ich würde lieber den Gemeinschaftsraum in meinem Haus nutzen."
+            },
+            "highlight": "I'd prefer to use"
+          }
+        ]
+      },
+      "cloze": [
+        "I'd ",
+        {
+          "kind": "form",
+          "answer": "prefer",
+          "cue": "prefer",
+          "choices": [
+            "preferred",
+            "preferring",
+            "prefers",
+            "prefer"
+          ]
+        },
+        " to ",
+        {
+          "kind": "form",
+          "answer": "use",
+          "cue": "use",
+          "choices": [
+            "used",
+            "use",
+            "using",
+            "uses"
+          ]
+        },
+        " the common room in my building."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd rather meet",
+          "baseText": {
+            "de": "Ich würde mich lieber treffen"
+          }
+        },
+        {
+          "targetText": "at the café;",
+          "baseText": {
+            "de": "im Café;"
+          }
+        },
+        {
+          "targetText": "my apartment has",
+          "baseText": {
+            "de": "meine Wohnung bietet"
+          }
+        },
+        {
+          "targetText": "very little space.",
+          "baseText": {
+            "de": "sehr wenig Platz."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "would rather meet",
+          "baseText": {
+            "de": "würde sich lieber treffen"
+          }
+        },
+        {
+          "targetText": "apartment",
+          "baseText": {
+            "de": "Wohnung"
+          }
+        },
+        {
+          "targetText": "space",
+          "baseText": {
+            "de": "Platz"
+          }
+        },
+        {
+          "targetText": "outdoor tables",
+          "baseText": {
+            "de": "Tische im Freien"
+          }
+        },
+        {
+          "targetText": "common room",
+          "baseText": {
+            "de": "Gemeinschaftsraum"
+          }
+        },
+        {
+          "targetText": "building",
+          "baseText": {
+            "de": "Gebäude; Haus"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd rather meet at the café; my apartment has very little ",
+        "answer": "space",
+        "after": ".",
+        "fallbackChoices": [
+          "light",
+          "space",
+          "furniture",
+          "storage"
+        ]
+      },
+      "speakRequired": [
+        "meet",
+        "apartment",
+        "space"
+      ],
+      "sceneCaption": {
+        "de": "Beim Planen des Treffens fragt dein Freund: „Where would you like to meet everyone on Friday?“"
+      },
+      "trophyWord": {
+        "word": "space",
+        "meaning": {
+          "de": "Platz"
+        },
+        "example": "My apartment has little space for a large group.",
+        "whyThisWord": {
+          "de": "Mit diesem Wort erklärst du, ob ein Ort genug Platz für eine Aktivität bietet."
+        }
+      },
+      "distractors": [
+        "at the library;",
+        "plenty of space."
+      ],
+      "placeholderCaption": {
+        "de": "Ein kleiner Wohnraum und ein Plan für ein Treffen mit Freunden."
+      },
+      "songMood": "Gesellige Vorfreude und eine praktische neue Idee.",
+      "visualNotes": "Zwei Menschen sitzen in einer kleinen Wohnung; auf dem Tisch liegt ein Zettel mit einer Gästeliste."
+    },
+    {
+      "slug": "flexible-work-hours",
+      "title": {
+        "de": "Ein anderer Arbeitsrhythmus"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt, was du an deinen Arbeitszeiten ändern würdest. Beschreibe eine denkbare Verbesserung.",
+        "en": "A coworker asks what you would change about your work hours. Describe a possible improvement."
+      },
+      "pedagogicalGoal": "Mit if und Vergangenheitsform eine gedachte Bedingung sowie mit would oder could ihre mögliche Folge ausdrücken.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What would you change about your work schedule?",
+          "baseText": {
+            "de": "Was würdest du an deinem Arbeitsplan ändern?"
+          }
+        },
+        {
+          "targetText": "If my work hours were more flexible, I would start earlier.",
+          "baseText": {
+            "de": "Wenn meine Arbeitszeiten flexibler wären, würde ich früher anfangen."
+          }
+        },
+        {
+          "targetText": "The morning team is full, but there's an opening after lunch.",
+          "baseText": {
+            "de": "Das Vormittagsteam ist voll besetzt, aber nach dem Mittagessen ist noch ein Platz frei."
+          }
+        },
+        {
+          "targetText": "If I started later, I could exercise before work.",
+          "baseText": {
+            "de": "Wenn ich später anfangen würde, könnte ich vor der Arbeit Sport machen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Second conditional",
+        "rule": {
+          "de": "Für eine gedachte Situation steht nach if die Vergangenheitsform; die mögliche Folge bildest du mit would oder could und der Grundform."
+        },
+        "examples": [
+          {
+            "targetText": "If my work hours were more flexible, I would start earlier.",
+            "baseText": {
+              "de": "Wenn meine Arbeitszeiten flexibler wären, würde ich früher anfangen."
+            },
+            "highlight": "If my work hours were more flexible"
+          },
+          {
+            "targetText": "If I started later, I could exercise before work.",
+            "baseText": {
+              "de": "Wenn ich später anfangen würde, könnte ich vor der Arbeit Sport machen."
+            },
+            "highlight": "I could exercise"
+          }
+        ]
+      },
+      "cloze": [
+        "If I ",
+        {
+          "kind": "form",
+          "answer": "started",
+          "cue": "start",
+          "choices": [
+            "starts",
+            "to start",
+            "started",
+            "starting"
+          ]
+        },
+        " later, I could ",
+        {
+          "kind": "form",
+          "answer": "exercise",
+          "cue": "exercise",
+          "choices": [
+            "exercising",
+            "exercise",
+            "exercised",
+            "exercises"
+          ]
+        },
+        " before work."
+      ],
+      "chunks": [
+        {
+          "targetText": "If my work hours",
+          "baseText": {
+            "de": "Wenn meine Arbeitszeiten"
+          }
+        },
+        {
+          "targetText": "were more flexible,",
+          "baseText": {
+            "de": "flexibler wären,"
+          }
+        },
+        {
+          "targetText": "I would start",
+          "baseText": {
+            "de": "würde ich anfangen"
+          }
+        },
+        {
+          "targetText": "earlier.",
+          "baseText": {
+            "de": "früher."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "work hours",
+          "baseText": {
+            "de": "Arbeitszeiten"
+          }
+        },
+        {
+          "targetText": "flexible",
+          "baseText": {
+            "de": "flexibel"
+          }
+        },
+        {
+          "targetText": "earlier",
+          "baseText": {
+            "de": "früher"
+          }
+        },
+        {
+          "targetText": "morning team",
+          "baseText": {
+            "de": "Vormittagsteam"
+          }
+        },
+        {
+          "targetText": "an opening",
+          "baseText": {
+            "de": "ein freier Platz"
+          }
+        },
+        {
+          "targetText": "exercise",
+          "baseText": {
+            "de": "Sport machen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If my work hours were more ",
+        "answer": "flexible",
+        "after": ", I would start earlier.",
+        "fallbackChoices": [
+          "regular",
+          "flexible",
+          "predictable",
+          "limited"
+        ]
+      },
+      "speakRequired": [
+        "hours",
+        "flexible",
+        "earlier"
+      ],
+      "sceneCaption": {
+        "de": "In der Pause fragt deine Kollegin: „What would you change about your work schedule?“"
+      },
+      "trophyWord": {
+        "word": "flexible",
+        "meaning": {
+          "de": "flexibel"
+        },
+        "example": "If my hours were flexible, I could choose when to start.",
+        "whyThisWord": {
+          "de": "Damit beschreibst du etwas, das sich an persönliche Bedürfnisse anpassen lässt."
+        }
+      },
+      "distractors": [
+        "were less flexible,",
+        "later."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kollegen sprechen in der Pause über einen Wochenplan."
+      },
+      "songMood": "Ruhige Überlegung zu einem besseren Tagesrhythmus.",
+      "visualNotes": "Ein Pausenraum mit einer Tasse Tee und einem ausgedruckten Schichtplan auf dem Tisch."
+    },
+    {
+      "slug": "afford-the-upstairs-apartment",
+      "title": {
+        "de": "Die Wohnung im Budget"
+      },
+      "situation": {
+        "de": "Bei einer Wohnungsbesichtigung fragt die Maklerin nach deiner Wahl. Erkläre, welche Wohnung du unter anderen finanziellen Bedingungen nehmen würdest.",
+        "en": "During an apartment viewing, the agent asks which one you prefer. Explain which apartment you would choose under different financial circumstances."
+      },
+      "pedagogicalGoal": "Mit if I could und would eine finanzielle Bedingung beschreiben und auf zusätzliche Kosten reagieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which of these apartments would you choose?",
+          "baseText": {
+            "de": "Welche dieser Wohnungen würden Sie wählen?"
+          }
+        },
+        {
+          "targetText": "If I could afford it, I would choose the apartment upstairs.",
+          "baseText": {
+            "de": "Wenn ich sie mir leisten könnte, würde ich die Wohnung oben wählen."
+          }
+        },
+        {
+          "targetText": "Utilities aren't included, so the monthly cost is higher than this figure.",
+          "baseText": {
+            "de": "Die Nebenkosten sind nicht enthalten, daher liegen die monatlichen Kosten über diesem Betrag."
+          }
+        },
+        {
+          "targetText": "Then I would need a smaller place to stay within budget.",
+          "baseText": {
+            "de": "Dann bräuchte ich eine kleinere Wohnung, um im Budget zu bleiben."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "If I could, I would",
+        "rule": {
+          "de": "If I could mit Grundform beschreibt eine gedachte Möglichkeit; I would mit Grundform nennt, was du dann tun würdest."
+        },
+        "examples": [
+          {
+            "targetText": "If I could afford it, I would choose the apartment upstairs.",
+            "baseText": {
+              "de": "Wenn ich sie mir leisten könnte, würde ich die Wohnung oben wählen."
+            },
+            "highlight": "If I could afford it"
+          },
+          {
+            "targetText": "If I could spend more, I would choose a larger place.",
+            "baseText": {
+              "de": "Wenn ich mehr ausgeben könnte, würde ich eine größere Wohnung wählen."
+            },
+            "highlight": "I would choose"
+          }
+        ]
+      },
+      "cloze": [
+        "Then I would ",
+        {
+          "kind": "form",
+          "answer": "need",
+          "cue": "need",
+          "choices": [
+            "needed",
+            "need",
+            "needs",
+            "needing"
+          ]
+        },
+        " a smaller place to ",
+        {
+          "kind": "form",
+          "answer": "stay",
+          "cue": "stay",
+          "choices": [
+            "stays",
+            "staying",
+            "stay",
+            "stayed"
+          ]
+        },
+        " within budget."
+      ],
+      "chunks": [
+        {
+          "targetText": "If I could afford it,",
+          "baseText": {
+            "de": "Wenn ich sie mir leisten könnte,"
+          }
+        },
+        {
+          "targetText": "I would choose",
+          "baseText": {
+            "de": "würde ich wählen"
+          }
+        },
+        {
+          "targetText": "the apartment",
+          "baseText": {
+            "de": "die Wohnung"
+          }
+        },
+        {
+          "targetText": "upstairs.",
+          "baseText": {
+            "de": "oben."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "afford",
+          "baseText": {
+            "de": "sich leisten können"
+          }
+        },
+        {
+          "targetText": "choose",
+          "baseText": {
+            "de": "wählen"
+          }
+        },
+        {
+          "targetText": "upstairs",
+          "baseText": {
+            "de": "oben; im oberen Stockwerk"
+          }
+        },
+        {
+          "targetText": "utilities",
+          "baseText": {
+            "de": "Nebenkosten (Strom, Wasser, Heizung)"
+          }
+        },
+        {
+          "targetText": "monthly cost",
+          "baseText": {
+            "de": "monatliche Kosten"
+          }
+        },
+        {
+          "targetText": "within budget",
+          "baseText": {
+            "de": "im Budget"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If I could ",
+        "answer": "afford",
+        "after": " it, I would choose the apartment upstairs.",
+        "fallbackChoices": [
+          "affording",
+          "afford",
+          "afforded",
+          "affords"
+        ]
+      },
+      "speakRequired": [
+        "afford",
+        "choose",
+        "apartment"
+      ],
+      "sceneCaption": {
+        "de": "Die Maklerin zeigt Ihnen zwei Grundrisse und fragt: „Which of these apartments would you choose?“"
+      },
+      "trophyWord": {
+        "word": "afford",
+        "meaning": {
+          "de": "sich leisten können"
+        },
+        "example": "If I could afford a larger apartment, I would move.",
+        "whyThisWord": {
+          "de": "Damit drückst du aus, ob deine finanziellen Möglichkeiten für etwas reichen."
+        }
+      },
+      "distractors": [
+        "If I could inspect it,",
+        "downstairs."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Wohnungsbesichtigung mit Grundrissen und einer Kostenübersicht."
+      },
+      "songMood": "Abwägen zwischen Wunschwohnung und verfügbaren Mitteln.",
+      "visualNotes": "Eine Maklerin erläutert in einer leeren Wohnung zwei Grundrisse und eine übersichtliche Kostenliste."
+    },
+    {
+      "slug": "within-walking-distance",
+      "title": {
+        "de": "Zu Fuß zur Arbeit"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, warum du über einen Umzug in die Nähe deiner Arbeit nachdenkst. Beschreibe den möglichen Vorteil.",
+        "en": "A friend asks why you are thinking about moving closer to work. Describe the possible benefit."
+      },
+      "pedagogicalGoal": "Eine gedachte Wohnsituation mit if und would beschreiben und mit could eine passende Alternative ergänzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why are you interested in that apartment near your office?",
+          "baseText": {
+            "de": "Warum interessiert dich diese Wohnung in der Nähe deines Büros?"
+          }
+        },
+        {
+          "targetText": "If I lived within walking distance, I would leave my car at home.",
+          "baseText": {
+            "de": "Wenn ich nah genug für den Fußweg wohnen würde, würde ich mein Auto zu Hause lassen."
+          }
+        },
+        {
+          "targetText": "There are some steep hills between that building and your office.",
+          "baseText": {
+            "de": "Zwischen diesem Haus und deinem Büro liegen einige steile Hügel."
+          }
+        },
+        {
+          "targetText": "If the hills were too steep, I could take the bus.",
+          "baseText": {
+            "de": "Wenn die Hügel zu steil wären, könnte ich den Bus nehmen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Second conditional alternatives",
+        "rule": {
+          "de": "Mit if und Vergangenheitsform denkst du eine Bedingung durch; would nennt die beabsichtigte Folge, could eine mögliche Alternative."
+        },
+        "examples": [
+          {
+            "targetText": "If I lived within walking distance, I would leave my car at home.",
+            "baseText": {
+              "de": "Wenn ich nah genug für den Fußweg wohnen würde, würde ich mein Auto zu Hause lassen."
+            },
+            "highlight": "If I lived within walking distance"
+          },
+          {
+            "targetText": "If the hills were too steep, I could take the bus.",
+            "baseText": {
+              "de": "Wenn die Hügel zu steil wären, könnte ich den Bus nehmen."
+            },
+            "highlight": "I could take the bus"
+          }
+        ]
+      },
+      "cloze": [
+        "If the hills ",
+        {
+          "kind": "form",
+          "answer": "were",
+          "cue": "be",
+          "choices": [
+            "was",
+            "is",
+            "were",
+            "be"
+          ]
+        },
+        " too steep, I could ",
+        {
+          "kind": "form",
+          "answer": "take",
+          "cue": "take",
+          "choices": [
+            "takes",
+            "taken",
+            "taking",
+            "take"
+          ]
+        },
+        " the bus."
+      ],
+      "chunks": [
+        {
+          "targetText": "If I lived",
+          "baseText": {
+            "de": "Wenn ich wohnen würde"
+          }
+        },
+        {
+          "targetText": "within walking distance,",
+          "baseText": {
+            "de": "nah genug für den Fußweg,"
+          }
+        },
+        {
+          "targetText": "I would leave my car",
+          "baseText": {
+            "de": "würde ich mein Auto lassen"
+          }
+        },
+        {
+          "targetText": "at home.",
+          "baseText": {
+            "de": "zu Hause."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "within walking distance",
+          "baseText": {
+            "de": "zu Fuß erreichbar"
+          }
+        },
+        {
+          "targetText": "leave my car at home",
+          "baseText": {
+            "de": "mein Auto zu Hause lassen"
+          }
+        },
+        {
+          "targetText": "steep",
+          "baseText": {
+            "de": "steil"
+          }
+        },
+        {
+          "targetText": "hills",
+          "baseText": {
+            "de": "Hügel"
+          }
+        },
+        {
+          "targetText": "office",
+          "baseText": {
+            "de": "Büro"
+          }
+        },
+        {
+          "targetText": "take the bus",
+          "baseText": {
+            "de": "den Bus nehmen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If I lived within walking ",
+        "answer": "distance",
+        "after": ", I would leave my car at home.",
+        "fallbackChoices": [
+          "speed",
+          "distance",
+          "practice",
+          "equipment"
+        ]
+      },
+      "speakRequired": [
+        "walking",
+        "distance",
+        "car"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund sieht die Wohnungsanzeige und fragt: „Why are you interested in that apartment near your office?“"
+      },
+      "trophyWord": {
+        "word": "distance",
+        "meaning": {
+          "de": "Entfernung"
+        },
+        "example": "If I lived within walking distance, I could walk to work.",
+        "whyThisWord": {
+          "de": "In within walking distance beschreibst du eine Entfernung, die sich gut zu Fuß bewältigen lässt."
+        }
+      },
+      "distractors": [
+        "far from the office,",
+        "at the station."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Stadtplan zeigt den Weg zwischen einer Wohnung und einem Büro."
+      },
+      "songMood": "Vorstellung eines ruhigeren Arbeitswegs mit mehreren Möglichkeiten.",
+      "visualNotes": "Zwei Freunde vergleichen eine Wohnungsanzeige mit einer Stadtkarte, auf der eine hügelige Strecke zu sehen ist."
+    },
+    {
+      "slug": "borrow-a-folding-chair",
+      "title": {
+        "de": "Ein Stuhl für den Abend"
+      },
+      "situation": {
+        "de": "Für ein Abendessen fehlt dir ein Stuhl. Bitte einen Nachbarn höflich, dir seinen Klappstuhl zu leihen.",
+        "en": "You need one more chair for dinner. Politely ask a neighbor to lend you a folding chair."
+      },
+      "pedagogicalGoal": "Mit would it be possible eine höfliche Bitte stellen und mit could einen Rückgabevorschlag machen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you have enough chairs for your guests tonight?",
+          "baseText": {
+            "de": "Hast du heute Abend genug Stühle für deine Gäste?"
+          }
+        },
+        {
+          "targetText": "Would it be possible to borrow your folding chair for dinner tonight?",
+          "baseText": {
+            "de": "Könnte ich mir deinen Klappstuhl für das Abendessen heute ausleihen?"
+          }
+        },
+        {
+          "targetText": "Sure, but I need it for a visitor tomorrow morning.",
+          "baseText": {
+            "de": "Klar, aber ich brauche ihn morgen früh für einen Besuch."
+          }
+        },
+        {
+          "targetText": "Could I bring it back tonight instead of tomorrow?",
+          "baseText": {
+            "de": "Könnte ich ihn heute Abend statt morgen zurückbringen?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Would it be possible and could",
+        "rule": {
+          "de": "Mit would it be possible to und could I formulierst du Bitten höflich; nach could folgt die Grundform ohne to."
+        },
+        "examples": [
+          {
+            "targetText": "Would it be possible to borrow your folding chair for dinner tonight?",
+            "baseText": {
+              "de": "Könnte ich mir deinen Klappstuhl für das Abendessen heute ausleihen?"
+            },
+            "highlight": "Would it be possible to borrow"
+          },
+          {
+            "targetText": "Could I bring it back tonight instead of tomorrow?",
+            "baseText": {
+              "de": "Könnte ich ihn heute Abend statt morgen zurückbringen?"
+            },
+            "highlight": "Could I bring"
+          }
+        ]
+      },
+      "cloze": [
+        "Could I ",
+        {
+          "kind": "form",
+          "answer": "bring",
+          "cue": "bring",
+          "choices": [
+            "brought",
+            "brings",
+            "bring",
+            "bringing"
+          ]
+        },
+        " it back tonight ",
+        {
+          "kind": "connector",
+          "answer": "instead of",
+          "choices": [
+            "even though",
+            "instead of",
+            "although",
+            "so that"
+          ]
+        },
+        " tomorrow?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Would it be possible",
+          "baseText": {
+            "de": "Wäre es möglich,"
+          }
+        },
+        {
+          "targetText": "to borrow",
+          "baseText": {
+            "de": "auszuleihen"
+          }
+        },
+        {
+          "targetText": "your folding chair",
+          "baseText": {
+            "de": "deinen Klappstuhl"
+          }
+        },
+        {
+          "targetText": "for dinner tonight?",
+          "baseText": {
+            "de": "für das Abendessen heute?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "would it be possible",
+          "baseText": {
+            "de": "wäre es möglich"
+          }
+        },
+        {
+          "targetText": "borrow",
+          "baseText": {
+            "de": "ausleihen"
+          }
+        },
+        {
+          "targetText": "folding chair",
+          "baseText": {
+            "de": "Klappstuhl"
+          }
+        },
+        {
+          "targetText": "visitor",
+          "baseText": {
+            "de": "Besuch; Gast"
+          }
+        },
+        {
+          "targetText": "bring it back",
+          "baseText": {
+            "de": "ihn zurückbringen"
+          }
+        },
+        {
+          "targetText": "instead of",
+          "baseText": {
+            "de": "statt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Would it be possible to ",
+        "answer": "borrow",
+        "after": " your folding chair for dinner tonight?",
+        "fallbackChoices": [
+          "borrowing",
+          "borrowed",
+          "borrows",
+          "borrow"
+        ]
+      },
+      "speakRequired": [
+        "possible",
+        "borrow",
+        "chair"
+      ],
+      "sceneCaption": {
+        "de": "An seiner Wohnungstür fragt dein Nachbar: „Do you have enough chairs for your guests tonight?“"
+      },
+      "trophyWord": {
+        "word": "borrow",
+        "meaning": {
+          "de": "ausleihen"
+        },
+        "example": "Could I borrow your folding chair for the evening?",
+        "whyThisWord": {
+          "de": "Du bittest damit um etwas, das du nur vorübergehend benutzen und wieder zurückgeben möchtest."
+        }
+      },
+      "distractors": [
+        "to buy",
+        "for breakfast tomorrow?"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sprechen im Hausflur neben einem zusammengeklappten Stuhl."
+      },
+      "songMood": "Freundliche Nachbarschaftshilfe mit einer klaren Absprache.",
+      "visualNotes": "Ein Klappstuhl lehnt neben einer Wohnungstür; im Hintergrund ist ein gedeckter Esstisch zu sehen."
+    },
+    {
+      "slug": "imagine-a-move-near-the-coast",
+      "title": {
+        "de": "Arbeiten in Wassernähe"
+      },
+      "situation": {
+        "de": "Deine Vorgesetzte spricht mit dir über kleinere Standorte der Firma. Beschreibe einen Wohnwunsch und erkundige dich nach einer passenden Möglichkeit.",
+        "en": "Your manager discusses the company's smaller offices with you. Describe where you would like to live and ask about a suitable option."
+      },
+      "pedagogicalGoal": "Mit might eine Möglichkeit vorsichtig einschätzen und mit I was wondering if I could höflich nach einer Alternative fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Have you thought about moving to one of our smaller offices?",
+          "baseText": {
+            "de": "Haben Sie darüber nachgedacht, an einen unserer kleineren Standorte zu wechseln?"
+          }
+        },
+        {
+          "targetText": "I can imagine living near the coast; a transfer might help.",
+          "baseText": {
+            "de": "Ich kann mir vorstellen, in Küstennähe zu leben; ein Standortwechsel könnte dabei helfen."
+          }
+        },
+        {
+          "targetText": "The coastal branch has no openings, but the lakeside office does.",
+          "baseText": {
+            "de": "Die Niederlassung an der Küste hat keine freien Stellen, aber der Standort am See schon."
+          }
+        },
+        {
+          "targetText": "I was wondering if I could transfer to that office.",
+          "baseText": {
+            "de": "Ich wollte fragen, ob ich an diesen Standort wechseln könnte."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Might and I was wondering if",
+        "rule": {
+          "de": "Might bezeichnet eine unsichere Möglichkeit; I was wondering if mit could macht eine gegenwärtige Anfrage besonders höflich."
+        },
+        "examples": [
+          {
+            "targetText": "I was wondering if I could transfer to that office.",
+            "baseText": {
+              "de": "Ich wollte fragen, ob ich an diesen Standort wechseln könnte."
+            },
+            "highlight": "I was wondering if I could"
+          },
+          {
+            "targetText": "A transfer might make living near the water possible.",
+            "baseText": {
+              "de": "Ein Standortwechsel könnte ein Leben in Wassernähe ermöglichen."
+            },
+            "highlight": "might make"
+          }
+        ]
+      },
+      "cloze": [
+        "I was ",
+        {
+          "kind": "form",
+          "answer": "wondering",
+          "cue": "wonder",
+          "choices": [
+            "wonders",
+            "wondering",
+            "wonder",
+            "wondered"
+          ]
+        },
+        " if I could ",
+        {
+          "kind": "form",
+          "answer": "transfer",
+          "cue": "transfer",
+          "choices": [
+            "transferred",
+            "transfers",
+            "transferring",
+            "transfer"
+          ]
+        },
+        " to that office."
+      ],
+      "chunks": [
+        {
+          "targetText": "I can imagine",
+          "baseText": {
+            "de": "Ich kann mir vorstellen,"
+          }
+        },
+        {
+          "targetText": "living near the coast;",
+          "baseText": {
+            "de": "in Küstennähe zu leben;"
+          }
+        },
+        {
+          "targetText": "a transfer",
+          "baseText": {
+            "de": "ein Standortwechsel"
+          }
+        },
+        {
+          "targetText": "might help.",
+          "baseText": {
+            "de": "könnte dabei helfen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "imagine",
+          "baseText": {
+            "de": "sich vorstellen"
+          }
+        },
+        {
+          "targetText": "coast",
+          "baseText": {
+            "de": "Küste"
+          }
+        },
+        {
+          "targetText": "might help",
+          "baseText": {
+            "de": "könnte helfen"
+          }
+        },
+        {
+          "targetText": "branch",
+          "baseText": {
+            "de": "Niederlassung"
+          }
+        },
+        {
+          "targetText": "lakeside",
+          "baseText": {
+            "de": "am See gelegen"
+          }
+        },
+        {
+          "targetText": "transfer",
+          "baseText": {
+            "de": "an einen anderen Standort wechseln"
+          }
+        },
+        {
+          "targetText": "I was wondering if",
+          "baseText": {
+            "de": "ich wollte fragen, ob"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I can ",
+        "answer": "imagine",
+        "after": " living near the coast; a transfer might help.",
+        "fallbackChoices": [
+          "imagined",
+          "imagine",
+          "imagining",
+          "imagines"
+        ]
+      },
+      "speakRequired": [
+        "imagine",
+        "coast",
+        "transfer"
+      ],
+      "sceneCaption": {
+        "de": "Ihre Vorgesetzte fragt im Gespräch über die Standorte: „Have you thought about moving to one of our smaller offices?“"
+      },
+      "trophyWord": {
+        "word": "imagine",
+        "meaning": {
+          "de": "sich vorstellen"
+        },
+        "example": "I can imagine living in a quiet town near the coast.",
+        "whyThisWord": {
+          "de": "Damit beschreibst du eine mögliche Lebenssituation, die du dir gedanklich ausmalst."
+        }
+      },
+      "distractors": [
+        "living near the mountains;",
+        "might be difficult."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über Firmenstandorte an der Küste und an einem See."
+      },
+      "songMood": "Vorsichtige Hoffnung auf einen neuen Lebensort.",
+      "visualNotes": "In einem Büro liegt eine Karte mit mehreren kleinen Firmenstandorten neben einem Notizbuch."
+    },
+    {
+      "slug": "advice-about-the-class-schedule",
+      "title": {
+        "de": "Eine passendere Kurszeit"
+      },
+      "situation": {
+        "de": "Ein Bekannter aus deinem Kurs kann die neue Anfangszeit kaum schaffen. Gib ihm einen konkreten Rat.",
+        "en": "Someone from your class is struggling with the new start time. Give a practical suggestion."
+      },
+      "pedagogicalGoal": "Mit should einen Ratschlag geben und ihn nach einer neuen Einschränkung gemeinsam weiterentwickeln.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "The class now starts before I finish work. Any ideas?",
+          "baseText": {
+            "de": "Der Kurs beginnt jetzt vor meinem Feierabend. Hast du eine Idee?"
+          }
+        },
+        {
+          "targetText": "You should ask the organizer about a small change to the schedule.",
+          "baseText": {
+            "de": "Du solltest die Kursleitung nach einer kleinen Änderung des Zeitplans fragen."
+          }
+        },
+        {
+          "targetText": "I already asked. The room isn't available any later on weekdays.",
+          "baseText": {
+            "de": "Ich habe schon gefragt. Unter der Woche ist der Raum später nicht verfügbar."
+          }
+        },
+        {
+          "targetText": "Then we should suggest Saturday and offer to check another room.",
+          "baseText": {
+            "de": "Dann sollten wir Samstag vorschlagen und anbieten, nach einem anderen Raum zu schauen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Should for advice",
+        "rule": {
+          "de": "Mit should und der Grundform gibst du einen Rat; mit we should beziehst du dich selbst in den Vorschlag ein."
+        },
+        "examples": [
+          {
+            "targetText": "You should ask the organizer about a small change to the schedule.",
+            "baseText": {
+              "de": "Du solltest die Kursleitung nach einer kleinen Änderung des Zeitplans fragen."
+            },
+            "highlight": "You should ask"
+          },
+          {
+            "targetText": "Then we should suggest Saturday and offer to check another room.",
+            "baseText": {
+              "de": "Dann sollten wir Samstag vorschlagen und anbieten, nach einem anderen Raum zu schauen."
+            },
+            "highlight": "we should suggest"
+          }
+        ]
+      },
+      "cloze": [
+        "Then we should ",
+        {
+          "kind": "form",
+          "answer": "suggest",
+          "cue": "suggest",
+          "choices": [
+            "suggested",
+            "suggest",
+            "suggests",
+            "suggesting"
+          ]
+        },
+        " Saturday and ",
+        {
+          "kind": "form",
+          "answer": "offer",
+          "cue": "offer",
+          "choices": [
+            "offered",
+            "offering",
+            "offer",
+            "offers"
+          ]
+        },
+        " to check another room."
+      ],
+      "chunks": [
+        {
+          "targetText": "You should ask",
+          "baseText": {
+            "de": "Du solltest fragen"
+          }
+        },
+        {
+          "targetText": "the organizer",
+          "baseText": {
+            "de": "die Kursleitung"
+          }
+        },
+        {
+          "targetText": "about a small change",
+          "baseText": {
+            "de": "nach einer kleinen Änderung"
+          }
+        },
+        {
+          "targetText": "to the schedule.",
+          "baseText": {
+            "de": "des Zeitplans."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "should ask",
+          "baseText": {
+            "de": "sollte fragen"
+          }
+        },
+        {
+          "targetText": "organizer",
+          "baseText": {
+            "de": "Kursleitung; veranstaltende Person"
+          }
+        },
+        {
+          "targetText": "schedule",
+          "baseText": {
+            "de": "Zeitplan"
+          }
+        },
+        {
+          "targetText": "on weekdays",
+          "baseText": {
+            "de": "unter der Woche"
+          }
+        },
+        {
+          "targetText": "suggest",
+          "baseText": {
+            "de": "vorschlagen"
+          }
+        },
+        {
+          "targetText": "offer",
+          "baseText": {
+            "de": "anbieten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "You should ask the organizer about a small change to the ",
+        "answer": "schedule",
+        "after": ".",
+        "fallbackChoices": [
+          "price",
+          "entrance",
+          "schedule",
+          "equipment"
+        ]
+      },
+      "speakRequired": [
+        "organizer",
+        "change",
+        "schedule"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Kurs sagt dein Bekannter: „The class now starts before I finish work. Any ideas?“"
+      },
+      "trophyWord": {
+        "word": "schedule",
+        "meaning": {
+          "de": "Zeitplan"
+        },
+        "example": "We should ask about changing the class schedule.",
+        "whyThisWord": {
+          "de": "Damit sprichst du über die zeitliche Organisation von Kursen, Arbeit und anderen Terminen."
+        }
+      },
+      "distractors": [
+        "You should tell",
+        "about a lower price"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kursteilnehmer sprechen vor einem Raum mit ausgehängtem Stundenplan."
+      },
+      "songMood": "Hilfsbereite Suche nach einer praktikablen Kurszeit.",
+      "visualNotes": "Vor einem Unterrichtsraum stehen zwei Menschen; daneben hängt ein Wochenplan mit Raumbelegung."
+    },
+    {
+      "slug": "permission-for-a-courtyard-gathering",
+      "title": {
+        "de": "Ein Treffen im Innenhof"
+      },
+      "situation": {
+        "de": "Du möchtest einige Nachbarn im gemeinsamen Innenhof einladen. Besprich dein Vorhaben mit der Hausverwaltung.",
+        "en": "You want to invite a few neighbors to the shared courtyard. Discuss your plan with the building manager."
+      },
+      "pedagogicalGoal": "Einen Wunsch höflich äußern und mit einem zweiten Bedingungssatz eine Lösung anbieten, ohne die Zustimmung vorwegzunehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "How can I help you with your gathering?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen bei Ihrem Treffen helfen?"
+          }
+        },
+        {
+          "targetText": "I would like permission to invite a few neighbors into the courtyard.",
+          "baseText": {
+            "de": "Ich hätte gern die Erlaubnis, ein paar Nachbarn in den Innenhof einzuladen."
+          }
+        },
+        {
+          "targetText": "Sound carries into the bedrooms, so gatherings must end by eight.",
+          "baseText": {
+            "de": "Geräusche dringen bis in die Schlafzimmer, deshalb müssen Treffen um acht beendet sein."
+          }
+        },
+        {
+          "targetText": "If we finished by seven, would that be acceptable?",
+          "baseText": {
+            "de": "Wenn wir bis sieben fertig wären, wäre das in Ordnung?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Polite wishes and conditional offers",
+        "rule": {
+          "de": "I would like leitet einen höflichen Wunsch ein; mit if und Vergangenheitsform sowie would fragst du nach einer denkbaren Lösung."
+        },
+        "examples": [
+          {
+            "targetText": "I would like permission to invite a few neighbors into the courtyard.",
+            "baseText": {
+              "de": "Ich hätte gern die Erlaubnis, ein paar Nachbarn in den Innenhof einzuladen."
+            },
+            "highlight": "I would like permission"
+          },
+          {
+            "targetText": "If we finished by seven, would that be acceptable?",
+            "baseText": {
+              "de": "Wenn wir bis sieben fertig wären, wäre das in Ordnung?"
+            },
+            "highlight": "If we finished by seven"
+          }
+        ]
+      },
+      "cloze": [
+        "If we ",
+        {
+          "kind": "form",
+          "answer": "finished",
+          "cue": "finish",
+          "choices": [
+            "finishes",
+            "finished",
+            "finishing",
+            "to finish"
+          ]
+        },
+        " by seven, would that ",
+        {
+          "kind": "form",
+          "answer": "be",
+          "cue": "be",
+          "choices": [
+            "was",
+            "being",
+            "been",
+            "be"
+          ]
+        },
+        " acceptable?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I would like permission",
+          "baseText": {
+            "de": "Ich hätte gern die Erlaubnis,"
+          }
+        },
+        {
+          "targetText": "to invite",
+          "baseText": {
+            "de": "einzuladen"
+          }
+        },
+        {
+          "targetText": "a few neighbors",
+          "baseText": {
+            "de": "ein paar Nachbarn"
+          }
+        },
+        {
+          "targetText": "into the courtyard.",
+          "baseText": {
+            "de": "in den Innenhof."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "permission",
+          "baseText": {
+            "de": "Erlaubnis"
+          }
+        },
+        {
+          "targetText": "invite",
+          "baseText": {
+            "de": "einladen"
+          }
+        },
+        {
+          "targetText": "courtyard",
+          "baseText": {
+            "de": "Innenhof"
+          }
+        },
+        {
+          "targetText": "sound carries",
+          "baseText": {
+            "de": "Geräusche sind weit zu hören"
+          }
+        },
+        {
+          "targetText": "by seven",
+          "baseText": {
+            "de": "bis spätestens sieben"
+          }
+        },
+        {
+          "targetText": "acceptable",
+          "baseText": {
+            "de": "akzeptabel; in Ordnung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I would like ",
+        "answer": "permission",
+        "after": " to invite a few neighbors into the courtyard.",
+        "fallbackChoices": [
+          "advice",
+          "permission",
+          "help",
+          "time"
+        ]
+      },
+      "speakRequired": [
+        "permission",
+        "invite",
+        "courtyard"
+      ],
+      "sceneCaption": {
+        "de": "Die Hausverwaltung fragt Sie nach Ihrem Vorhaben: „How can I help you with your gathering?“"
+      },
+      "trophyWord": {
+        "word": "permission",
+        "meaning": {
+          "de": "Erlaubnis"
+        },
+        "example": "I would like permission to use the courtyard on Saturday.",
+        "whyThisWord": {
+          "de": "Du bittest damit ausdrücklich um Zustimmung, bevor du einen gemeinsamen Raum nutzt."
+        }
+      },
+      "distractors": [
+        "a few coworkers",
+        "into the meeting room."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch mit der Hausverwaltung über ein kleines Treffen im Innenhof."
+      },
+      "songMood": "Rücksichtsvoll geplantes Zusammensein in der Nachbarschaft.",
+      "visualNotes": "Ein heller Innenhof mit wenigen Stühlen; am Eingang besprechen zwei Menschen einen kleinen Terminplan."
+    }
+  ]
+}

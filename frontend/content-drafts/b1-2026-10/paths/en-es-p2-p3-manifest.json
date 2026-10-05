@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "status": "reviewed-staged",
+  "level": "B1",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p2.json",
+      "sha256": "2dd2103726384442f7459205d2ec0083a8584a87005a2cd641a54a96425c4413",
+      "targetLanguage": "English",
+      "pathNumber": 2,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p3.json",
+      "sha256": "ae80bf4cbfe7aea5bb4f701b7fe594cc2fba61039e506eedda5bcfcf10e4af86",
+      "targetLanguage": "English",
+      "pathNumber": 3,
+      "reviewedVoiceId": "4tRn1lSkEn13EVTuqb0g"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p2.json",
+      "sha256": "d526f84e68fdbc0a5ccff2807e0c32fc7f3953963e36ecc0f94a6c6db3814fb8",
+      "targetLanguage": "Spanish",
+      "pathNumber": 2,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p3.json",
+      "sha256": "a07d13f30320db28d777a79df8f45cead640d1176cae2d2d555154ed5fd0acbf",
+      "targetLanguage": "Spanish",
+      "pathNumber": 3,
+      "reviewedVoiceId": "ZCh4e9eZSUf41K4cmCEL"
+    }
+  ],
+  "reviewScope": "Local staging and recording only; not publication approval.",
+  "sourceCanonicalization": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p2.json",
+      "reviewedScratchSha256": "8f4b154d2ed205668297b3b3a323271e95a29c8956e1cdbf410b117cd5054bf4",
+      "stagedSha256": "2dd2103726384442f7459205d2ec0083a8584a87005a2cd641a54a96425c4413",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p3.json",
+      "reviewedScratchSha256": "698c38e998cc07b0055166e8585ffac321b63f62a4e476ab6bc25a9c0f142b3d",
+      "stagedSha256": "ae80bf4cbfe7aea5bb4f701b7fe594cc2fba61039e506eedda5bcfcf10e4af86",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p2.json",
+      "reviewedScratchSha256": "37ad1d0630bd91927c8ba3addc2a34ffe9048da68e79f1feb049c4d7d420f50b",
+      "stagedSha256": "d526f84e68fdbc0a5ccff2807e0c32fc7f3953963e36ecc0f94a6c6db3814fb8",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p3.json",
+      "reviewedScratchSha256": "982f10988afc560c3a609009697393a8d13f60ec59e5fc70cf7cd51b98a612b1",
+      "stagedSha256": "a07d13f30320db28d777a79df8f45cead640d1176cae2d2d555154ed5fd0acbf",
+      "transformation": "CRLF to LF only, byte equality asserted after normalization; parsed content unchanged."
+    }
+  ],
+  "fableReview": {
+    "model": "claude-fable-5-1",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "6292af0f12e21c30ec129e2b01adba5c644460034e14f57a476d780652203302",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/english-p2.json": "2dd2103726384442f7459205d2ec0083a8584a87005a2cd641a54a96425c4413",
+      "frontend/content-drafts/b1-2026-10/paths/english-p3.json": "ae80bf4cbfe7aea5bb4f701b7fe594cc2fba61039e506eedda5bcfcf10e4af86",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p2.json": "d526f84e68fdbc0a5ccff2807e0c32fc7f3953963e36ecc0f94a6c6db3814fb8",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p3.json": "a07d13f30320db28d777a79df8f45cead640d1176cae2d2d555154ed5fd0acbf"
+    },
+    "approvalBasis": "Personal forty-lesson read; all36 exact edits applied and mechanically validated; final independent re-review passed local staging/TTS."
+  },
+  "independentReview": {
+    "reviewer": "/root/b1_p2_p3_independent",
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "evidenceSha256": "26349c55bbff3e940d6d8dab1650477fc172f5a1f622aa50334641e27006ca2f",
+    "reviewedSources": {
+      "frontend/content-drafts/b1-2026-10/paths/english-p2.json": "2dd2103726384442f7459205d2ec0083a8584a87005a2cd641a54a96425c4413",
+      "frontend/content-drafts/b1-2026-10/paths/english-p3.json": "ae80bf4cbfe7aea5bb4f701b7fe594cc2fba61039e506eedda5bcfcf10e4af86",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p2.json": "d526f84e68fdbc0a5ccff2807e0c32fc7f3953963e36ecc0f94a6c6db3814fb8",
+      "frontend/content-drafts/b1-2026-10/paths/spanish-p3.json": "a07d13f30320db28d777a79df8f45cead640d1176cae2d2d555154ed5fd0acbf"
+    },
+    "scope": "Zero unresolved local-TTS blockers only."
+  },
+  "unresolvedPublicationFindings": [
+    {
+      "id": "M6",
+      "severity": "MEDIUM",
+      "file": "english-p2.json",
+      "jsonPointer": "/lessons/8/distractors/1",
+      "currentValue": "needs more space.",
+      "reason": "Fable's chunk repair moved 'the center' into the final chunk. Substituting this unchanged distractor for that chunk now leaves 'however, needs more space.' without a subject. The distractor should be coupled to the new chunk boundary before learner publication.",
+      "proposedLaterFableOwnedValue": "the center needs more space.",
+      "disposition": "Deferred publication follow-up, explicitly accepted as such by the root. Do not claim zero publication findings or apply new wording without Fable ownership. This field is not synthesized by draftTtsLessons, so fixing it later does not invalidate any reviewed speech or require rerecording.",
+      "blocksLocalTts": false,
+      "requiresThirdIndependentRound": false
+    }
+  ],
+  "publicationStatus": "held",
+  "listeningStatus": "not-started"
+}

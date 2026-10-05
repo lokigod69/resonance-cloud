@@ -1,0 +1,2214 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 2,
+  "title": {
+    "de": "Aus meiner Sicht",
+    "en": "From my point of view"
+  },
+  "subtitle": {
+    "de": "Eine Meinung begründen und auf Einwände eingehen",
+    "en": "Give reasons for an opinion and respond to objections"
+  },
+  "anchor": "L1–L3: creo que, me parece que, porque, por eso. L4–L6: aunque with indicative for acknowledged facts. L7–L8: sin embargo and de todas formas. L9–L10: mixed opinion, reason and concession. Interested-listener episodes in informal singular tú; es-ES; gender-neutral learner production. Draft awaiting Fable personal review.",
+  "lessons": [
+    {
+      "slug": "opinion-sobre-la-biblioteca",
+      "title": {
+        "de": "Die Bibliothek am Nachmittag",
+        "en": "The library in the afternoon"
+      },
+      "situation": {
+        "de": "Eine Freundin zeigt dir die Öffnungszeiten der Stadtbibliothek. Du erklärst, warum längere Öffnungszeiten helfen, und nennst die Menschen, die sie brauchen.",
+        "en": "A friend shows you the public library's opening hours. Explain why longer hours help and who needs them."
+      },
+      "pedagogicalGoal": "Eine Meinung mit porque begründen und mit por eso die Folge für eine konkrete Gruppe nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué opinas de abrir la biblioteca también por la tarde?",
+          "baseText": {
+            "de": "Was hältst du davon, die Bibliothek auch nachmittags zu öffnen?",
+            "en": "What do you think about opening the library in the afternoon too?"
+          }
+        },
+        {
+          "targetText": "En mi opinión, la biblioteca debe abrir más horas porque mucha gente trabaja.",
+          "baseText": {
+            "de": "Meiner Meinung nach sollte die Bibliothek länger öffnen, weil viele Menschen arbeiten.",
+            "en": "In my opinion, the library should open longer because many people work."
+          }
+        },
+        {
+          "targetText": "¿A quién le viene bien ese horario?",
+          "baseText": {
+            "de": "Wem kommen diese Öffnungszeiten entgegen?",
+            "en": "Who do those opening hours suit?"
+          }
+        },
+        {
+          "targetText": "Las familias salen tarde del trabajo; por eso necesitan ese horario.",
+          "baseText": {
+            "de": "Die Familien kommen spät von der Arbeit; deshalb brauchen sie diese Öffnungszeiten.",
+            "en": "Families leave work late, so they need those opening hours."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Porque: razón · por eso: consecuencia",
+        "rule": {
+          "de": "Porque leitet den Grund ein; mit por eso schließt du die Folge an deine Begründung an.",
+          "en": "Porque introduces the reason; por eso links that reason to its consequence."
+        },
+        "examples": [
+          {
+            "targetText": "En mi opinión, la biblioteca debe abrir más horas porque mucha gente trabaja.",
+            "baseText": {
+              "de": "Meiner Meinung nach sollte die Bibliothek länger öffnen, weil viele Menschen arbeiten.",
+              "en": "In my opinion, the library should open longer because many people work."
+            },
+            "highlight": "porque mucha gente trabaja"
+          },
+          {
+            "targetText": "Creo que el horario es corto; por eso apoyo el cambio.",
+            "baseText": {
+              "de": "Ich finde die Öffnungszeiten zu kurz; deshalb unterstütze ich die Änderung.",
+              "en": "I think the opening hours are too short, so I support the change."
+            },
+            "highlight": "por eso"
+          }
+        ]
+      },
+      "cloze": [
+        "Las familias ",
+        {
+          "kind": "form",
+          "answer": "salen",
+          "cue": "salir (las familias)",
+          "choices": [
+            "sale",
+            "salgo",
+            "salen",
+            "salimos"
+          ]
+        },
+        " tarde del trabajo; ",
+        {
+          "kind": "connector",
+          "answer": "por eso",
+          "choices": [
+            "sin embargo",
+            "por ejemplo",
+            "por eso",
+            "en cambio"
+          ]
+        },
+        " necesitan ese horario."
+      ],
+      "chunks": [
+        {
+          "targetText": "En mi opinión,",
+          "baseText": {
+            "de": "Meiner Meinung nach",
+            "en": "In my opinion,"
+          }
+        },
+        {
+          "targetText": "la biblioteca",
+          "baseText": {
+            "de": "die Bibliothek",
+            "en": "the library"
+          }
+        },
+        {
+          "targetText": "debe abrir más horas",
+          "baseText": {
+            "de": "sollte länger öffnen",
+            "en": "should open longer"
+          }
+        },
+        {
+          "targetText": "porque mucha gente trabaja.",
+          "baseText": {
+            "de": "weil viele Menschen arbeiten.",
+            "en": "because many people work."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "opinión",
+          "baseText": {
+            "de": "Meinung",
+            "en": "opinion"
+          }
+        },
+        {
+          "targetText": "la biblioteca",
+          "baseText": {
+            "de": "die Bibliothek",
+            "en": "the library"
+          }
+        },
+        {
+          "targetText": "abrir más horas",
+          "baseText": {
+            "de": "länger öffnen",
+            "en": "to open longer"
+          }
+        },
+        {
+          "targetText": "mucha gente",
+          "baseText": {
+            "de": "viele Menschen",
+            "en": "many people"
+          }
+        },
+        {
+          "targetText": "salir del trabajo",
+          "baseText": {
+            "de": "die Arbeit verlassen",
+            "en": "to leave work"
+          }
+        },
+        {
+          "targetText": "por eso",
+          "baseText": {
+            "de": "deshalb",
+            "en": "so; for that reason"
+          }
+        },
+        {
+          "targetText": "ese horario",
+          "baseText": {
+            "de": "diese Öffnungszeiten",
+            "en": "those opening hours"
+          }
+        }
+      ],
+      "recall": {
+        "before": "En mi ",
+        "answer": "opinión",
+        "after": ", la biblioteca debe abrir más horas porque mucha gente trabaja.",
+        "fallbackChoices": [
+          "opinión",
+          "mochila",
+          "tormenta",
+          "entrada"
+        ]
+      },
+      "speakRequired": [
+        "opinión",
+        "biblioteca",
+        "trabaja"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Aushang der Bibliothek fragt deine Freundin: „¿Qué opinas de abrir la biblioteca también por la tarde?“",
+        "en": "Looking at the library notice, your friend asks: “¿Qué opinas de abrir la biblioteca también por la tarde?”"
+      },
+      "trophyWord": {
+        "word": "opinión",
+        "meaning": {
+          "de": "Meinung",
+          "en": "opinion"
+        },
+        "example": "Mi opinión es que la biblioteca necesita más horas de apertura.",
+        "whyThisWord": {
+          "de": "Mit opinión kennzeichnest du eine persönliche Einschätzung und kannst anschließend deine Gründe erklären.",
+          "en": "Opinión marks a personal view that you can then support with reasons."
+        }
+      },
+      "distractors": [
+        "En mi barrio,",
+        "porque hoy es domingo."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde lesen die Öffnungszeiten einer Stadtbibliothek.",
+        "en": "Two friends read the opening hours outside a public library."
+      },
+      "songMood": "Warm acoustic pop with an inquisitive, conversational pulse.",
+      "visualNotes": "A Spanish public library entrance, afternoon light, opening-hours notice, two adults talking; no later dialogue shown."
+    },
+    {
+      "slug": "ventaja-del-comercio-cercano",
+      "title": {
+        "de": "Hier kennt man dich",
+        "en": "They know you here"
+      },
+      "situation": {
+        "de": "Vor einer Bäckerei sprichst du mit einem Freund über kleine Geschäfte. Ein persönliches Erlebnis erklärt, warum du dort gern einkaufst.",
+        "en": "Outside a bakery, you talk with a friend about small shops. A personal experience explains why you like shopping there."
+      },
+      "pedagogicalGoal": "Mit creo que eine Einschätzung einführen und sie durch eine konkrete Erfahrung mit porque begründen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Por qué prefieres comprar en las tiendas del barrio?",
+          "baseText": {
+            "de": "Warum kaufst du lieber in den Geschäften im Viertel ein?",
+            "en": "Why do you prefer shopping in the neighbourhood shops?"
+          }
+        },
+        {
+          "targetText": "Creo que comprar aquí tiene una ventaja: en las tiendas pequeñas te conocen.",
+          "baseText": {
+            "de": "Ich finde, hier einzukaufen hat einen Vorteil: In den kleinen Geschäften kennt man dich.",
+            "en": "I think shopping here has an advantage: they know you in the small shops."
+          }
+        },
+        {
+          "targetText": "¿Te han ayudado alguna vez con una compra difícil?",
+          "baseText": {
+            "de": "Hat man dir schon einmal bei einem schwierigen Einkauf geholfen?",
+            "en": "Have they ever helped you with a difficult purchase?"
+          }
+        },
+        {
+          "targetText": "Sí, la panadera me aconsejó porque yo buscaba pan sin sal.",
+          "baseText": {
+            "de": "Ja, die Bäckerin hat mich beraten, weil ich Brot ohne Salz gesucht habe.",
+            "en": "Yes, the baker advised me because I was looking for bread without salt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Creo que… porque…",
+        "rule": {
+          "de": "Mit creo que sagst du, was du denkst; porque verbindet deine Einschätzung mit einem Grund oder einer Erfahrung.",
+          "en": "Creo que states what you think; porque connects your view to a reason or an experience."
+        },
+        "examples": [
+          {
+            "targetText": "Creo que comprar aquí tiene una ventaja: en las tiendas pequeñas te conocen.",
+            "baseText": {
+              "de": "Ich finde, hier einzukaufen hat einen Vorteil: In den kleinen Geschäften kennt man dich.",
+              "en": "I think shopping here has an advantage: they know you in the small shops."
+            },
+            "highlight": "Creo que"
+          },
+          {
+            "targetText": "Creo que merece la pena porque la panadera conoce mis gustos.",
+            "baseText": {
+              "de": "Ich finde, es lohnt sich, weil die Bäckerin meinen Geschmack kennt.",
+              "en": "I think it is worth it because the baker knows what I like."
+            },
+            "highlight": "porque la panadera conoce mis gustos"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, la panadera me ",
+        {
+          "kind": "form",
+          "answer": "aconsejó",
+          "cue": "aconsejar (la panadera)",
+          "choices": [
+            "aconsejé",
+            "aconsejaron",
+            "aconsejamos",
+            "aconsejó"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "porque",
+          "choices": [
+            "para que",
+            "porque",
+            "sin embargo",
+            "por eso"
+          ]
+        },
+        " yo buscaba pan sin sal."
+      ],
+      "chunks": [
+        {
+          "targetText": "Creo que comprar aquí",
+          "baseText": {
+            "de": "Ich finde, hier einzukaufen",
+            "en": "I think shopping here"
+          }
+        },
+        {
+          "targetText": "tiene una ventaja:",
+          "baseText": {
+            "de": "hat einen Vorteil:",
+            "en": "has an advantage:"
+          }
+        },
+        {
+          "targetText": "en las tiendas pequeñas",
+          "baseText": {
+            "de": "in den kleinen Geschäften",
+            "en": "in the small shops"
+          }
+        },
+        {
+          "targetText": "te conocen.",
+          "baseText": {
+            "de": "kennt man dich.",
+            "en": "they know you."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "creo que",
+          "baseText": {
+            "de": "ich finde, dass",
+            "en": "I think that"
+          }
+        },
+        {
+          "targetText": "ventaja",
+          "baseText": {
+            "de": "Vorteil",
+            "en": "advantage"
+          }
+        },
+        {
+          "targetText": "las tiendas pequeñas",
+          "baseText": {
+            "de": "die kleinen Geschäfte",
+            "en": "the small shops"
+          }
+        },
+        {
+          "targetText": "te conocen",
+          "baseText": {
+            "de": "man kennt dich",
+            "en": "they know you"
+          }
+        },
+        {
+          "targetText": "la panadera",
+          "baseText": {
+            "de": "die Bäckerin",
+            "en": "the baker"
+          }
+        },
+        {
+          "targetText": "me aconsejó",
+          "baseText": {
+            "de": "sie hat mich beraten",
+            "en": "she advised me"
+          }
+        },
+        {
+          "targetText": "pan sin sal",
+          "baseText": {
+            "de": "Brot ohne Salz",
+            "en": "bread without salt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Creo que comprar aquí tiene una ",
+        "answer": "ventaja",
+        "after": ": en las tiendas pequeñas te conocen.",
+        "fallbackChoices": [
+          "tormenta",
+          "ventaja",
+          "cocina",
+          "tarifa"
+        ]
+      },
+      "speakRequired": [
+        "ventaja",
+        "tiendas",
+        "conocen"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Bäckerei fragt dein Freund: „¿Por qué prefieres comprar en las tiendas del barrio?“",
+        "en": "Outside the bakery, your friend asks: “¿Por qué prefieres comprar en las tiendas del barrio?”"
+      },
+      "trophyWord": {
+        "word": "ventaja",
+        "meaning": {
+          "de": "Vorteil",
+          "en": "advantage"
+        },
+        "example": "La atención personal es una ventaja del comercio de barrio.",
+        "whyThisWord": {
+          "de": "Mit ventaja benennst du den konkreten Nutzen einer Entscheidung und kannst ihn mit einem Beispiel belegen.",
+          "en": "Ventaja names a specific benefit of a choice that you can support with an example."
+        }
+      },
+      "distractors": [
+        "tiene otro precio:",
+        "en los grandes almacenes"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch vor einer kleinen Bäckerei im Wohnviertel.",
+        "en": "A conversation outside a small neighbourhood bakery."
+      },
+      "songMood": "Friendly acoustic pop with light hand percussion.",
+      "visualNotes": "Neighbourhood bakery in Spain, bread in the window, two friends outside; no salt-free bread answer printed."
+    },
+    {
+      "slug": "inconveniente-de-la-calle-peatonal",
+      "title": {
+        "de": "Pakete ohne Autoverkehr",
+        "en": "Deliveries without cars"
+      },
+      "situation": {
+        "de": "Ein Freund spricht die Lieferprobleme in eurer Fußgängerstraße an. Du erkennst das Problem an und erklärst, warum du die Straße trotzdem gut findest.",
+        "en": "A friend raises the delivery problems on your pedestrian street. Acknowledge the problem and explain why you still support the street."
+      },
+      "pedagogicalGoal": "Einen Nachteil benennen und mit creo que sowie por eso eine begründete Position halten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué tal funciona la calle desde que no pasan coches?",
+          "baseText": {
+            "de": "Wie läuft es in der Straße, seit dort keine Autos mehr fahren?",
+            "en": "How is the street working out now that cars no longer pass through?"
+          }
+        },
+        {
+          "targetText": "El inconveniente es recibir las compras, pero creo que la calle peatonal merece la pena.",
+          "baseText": {
+            "de": "Der Nachteil ist die Lieferung der Einkäufe, aber ich finde, die Fußgängerstraße lohnt sich.",
+            "en": "The drawback is getting shopping delivered, but I think the pedestrian street is worth it."
+          }
+        },
+        {
+          "targetText": "¿Y no es mejor dejar pasar los coches otra vez?",
+          "baseText": {
+            "de": "Wäre es nicht besser, wieder Autos durchzulassen?",
+            "en": "Wouldn't it be better to let cars through again?"
+          }
+        },
+        {
+          "targetText": "Muchos niños juegan aquí; por eso yo prefiero una calle peatonal.",
+          "baseText": {
+            "de": "Viele Kinder spielen hier; deshalb ist mir eine Fußgängerstraße lieber.",
+            "en": "Many children play here, so I prefer a pedestrian street."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Reconocer un problema y dar una razón",
+        "rule": {
+          "de": "Du kannst mit pero eine andere Bewertung anschließen und sie anschließend durch eine Folge mit por eso begründen.",
+          "en": "Use pero to add a different assessment, then support it by linking a reason to a consequence with por eso."
+        },
+        "examples": [
+          {
+            "targetText": "Muchos niños juegan aquí; por eso yo prefiero una calle peatonal.",
+            "baseText": {
+              "de": "Viele Kinder spielen hier; deshalb ist mir eine Fußgängerstraße lieber.",
+              "en": "Many children play here, so I prefer a pedestrian street."
+            },
+            "highlight": "por eso"
+          },
+          {
+            "targetText": "Me parece que hay menos ruido porque ya no pasan coches.",
+            "baseText": {
+              "de": "Ich habe den Eindruck, dass es ruhiger ist, weil keine Autos mehr durchfahren.",
+              "en": "It seems quieter to me because cars no longer pass through."
+            },
+            "highlight": "Me parece que"
+          }
+        ]
+      },
+      "cloze": [
+        "Muchos niños ",
+        {
+          "kind": "form",
+          "answer": "juegan",
+          "cue": "jugar (muchos niños)",
+          "choices": [
+            "jugamos",
+            "juega",
+            "juegan",
+            "juego"
+          ]
+        },
+        " aquí; ",
+        {
+          "kind": "connector",
+          "answer": "por eso",
+          "choices": [
+            "en cambio",
+            "sin embargo",
+            "por eso",
+            "es decir"
+          ]
+        },
+        " yo prefiero una calle peatonal."
+      ],
+      "chunks": [
+        {
+          "targetText": "El inconveniente",
+          "baseText": {
+            "de": "Der Nachteil",
+            "en": "The drawback"
+          }
+        },
+        {
+          "targetText": "es recibir las compras,",
+          "baseText": {
+            "de": "ist die Lieferung der Einkäufe,",
+            "en": "is getting shopping delivered,"
+          }
+        },
+        {
+          "targetText": "pero creo que",
+          "baseText": {
+            "de": "aber ich finde,",
+            "en": "but I think"
+          }
+        },
+        {
+          "targetText": "la calle peatonal",
+          "baseText": {
+            "de": "die Fußgängerstraße",
+            "en": "the pedestrian street"
+          }
+        },
+        {
+          "targetText": "merece la pena.",
+          "baseText": {
+            "de": "lohnt sich.",
+            "en": "is worth it."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "inconveniente",
+          "baseText": {
+            "de": "Nachteil",
+            "en": "drawback"
+          }
+        },
+        {
+          "targetText": "recibir las compras",
+          "baseText": {
+            "de": "die Einkäufe geliefert bekommen",
+            "en": "to receive shopping deliveries"
+          }
+        },
+        {
+          "targetText": "la calle peatonal",
+          "baseText": {
+            "de": "die Fußgängerstraße",
+            "en": "the pedestrian street"
+          }
+        },
+        {
+          "targetText": "merece la pena",
+          "baseText": {
+            "de": "es lohnt sich",
+            "en": "it is worth it"
+          }
+        },
+        {
+          "targetText": "dejar pasar",
+          "baseText": {
+            "de": "durchlassen",
+            "en": "to let through"
+          }
+        },
+        {
+          "targetText": "juegan",
+          "baseText": {
+            "de": "sie spielen",
+            "en": "they play"
+          }
+        },
+        {
+          "targetText": "prefiero",
+          "baseText": {
+            "de": "mir ist lieber",
+            "en": "I prefer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "El ",
+        "answer": "inconveniente",
+        "after": " es recibir las compras, pero creo que la calle peatonal merece la pena.",
+        "fallbackChoices": [
+          "encuentro",
+          "alivio",
+          "inconveniente",
+          "permiso"
+        ]
+      },
+      "speakRequired": [
+        "inconveniente",
+        "compras",
+        "peatonal"
+      ],
+      "sceneCaption": {
+        "de": "In eurer Straße fragt dein Freund: „¿Qué tal funciona la calle desde que no pasan coches?“",
+        "en": "On your street, your friend asks: “¿Qué tal funciona la calle desde que no pasan coches?”"
+      },
+      "trophyWord": {
+        "word": "inconveniente",
+        "meaning": {
+          "de": "Nachteil",
+          "en": "drawback"
+        },
+        "example": "El inconveniente de esta calle es el acceso para las entregas.",
+        "whyThisWord": {
+          "de": "Mit inconveniente kannst du ein echtes Problem anerkennen, ohne deine gesamte Meinung aufzugeben.",
+          "en": "Inconveniente lets you acknowledge a real problem without abandoning your overall view."
+        }
+      },
+      "distractors": [
+        "porque sé que",
+        "la carretera principal"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde unterhalten sich in einer ruhigen Fußgängerstraße.",
+        "en": "Two friends talk on a quiet pedestrian street."
+      },
+      "songMood": "Thoughtful mid-tempo acoustic pop with a steady walking rhythm.",
+      "visualNotes": "A pedestrian street in a Spanish neighbourhood, bollards and shopfronts; opening conversation only."
+    },
+    {
+      "slug": "trafico-y-tramo-del-rio",
+      "title": {
+        "de": "Mit dem Rad am Fluss",
+        "en": "Cycling by the river"
+      },
+      "situation": {
+        "de": "Eine Freundin vergleicht mit dir Radstrecken. Du räumst Verkehr am Anfang ein und erklärst, welcher Teil der Strecke sicher ist.",
+        "en": "A friend compares cycling routes with you. Acknowledge the traffic at the start and explain which part of the route is safe."
+      },
+      "pedagogicalGoal": "Mit aunque und Indikativ eine bekannte Einschränkung anerkennen und die eigene Bewertung fortführen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Por qué quieres ir por esta ruta en bicicleta?",
+          "baseText": {
+            "de": "Warum willst du mit dem Fahrrad diese Strecke nehmen?",
+            "en": "Why do you want to take this route by bike?"
+          }
+        },
+        {
+          "targetText": "Aunque hay tráfico al principio, creo que esta ruta es buena para ir en bicicleta.",
+          "baseText": {
+            "de": "Obwohl am Anfang Verkehr ist, finde ich diese Strecke gut zum Radfahren.",
+            "en": "Although there is traffic at the start, I think this route is good for cycling."
+          }
+        },
+        {
+          "targetText": "Pero esa avenida tiene muchos coches. ¿Dónde empieza la parte segura?",
+          "baseText": {
+            "de": "Aber auf dieser Allee fahren viele Autos. Wo beginnt der sichere Abschnitt?",
+            "en": "But that avenue has a lot of cars. Where does the safe part begin?"
+          }
+        },
+        {
+          "targetText": "Aunque esa avenida tiene coches, el tramo del río es seguro.",
+          "baseText": {
+            "de": "Obwohl auf dieser Allee Autos fahren, ist der Abschnitt am Fluss sicher.",
+            "en": "Although that avenue has cars, the stretch by the river is safe."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Aunque + indicativo",
+        "rule": {
+          "de": "Aunque mit Indikativ bestätigt eine bekannte Tatsache, die deiner anschließenden Bewertung nicht im Weg steht.",
+          "en": "Aunque with the indicative acknowledges a known fact that does not overturn your assessment."
+        },
+        "examples": [
+          {
+            "targetText": "Aunque hay tráfico al principio, creo que esta ruta es buena para ir en bicicleta.",
+            "baseText": {
+              "de": "Obwohl am Anfang Verkehr ist, finde ich diese Strecke gut zum Radfahren.",
+              "en": "Although there is traffic at the start, I think this route is good for cycling."
+            },
+            "highlight": "Aunque hay tráfico"
+          },
+          {
+            "targetText": "Aunque el camino es largo, el paisaje merece la pena.",
+            "baseText": {
+              "de": "Obwohl der Weg lang ist, ist die Landschaft die Mühe wert.",
+              "en": "Although the path is long, the scenery is worth it."
+            },
+            "highlight": "Aunque el camino es largo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Aunque",
+          "choices": [
+            "Por eso",
+            "Además",
+            "Aunque",
+            "Sin embargo"
+          ]
+        },
+        " esa avenida ",
+        {
+          "kind": "form",
+          "answer": "tiene",
+          "cue": "tener (esa avenida)",
+          "choices": [
+            "tienen",
+            "tenemos",
+            "tengo",
+            "tiene"
+          ]
+        },
+        " coches, el tramo del río es seguro."
+      ],
+      "chunks": [
+        {
+          "targetText": "Aunque hay tráfico",
+          "baseText": {
+            "de": "Obwohl Verkehr ist",
+            "en": "Although there is traffic"
+          }
+        },
+        {
+          "targetText": "al principio,",
+          "baseText": {
+            "de": "am Anfang,",
+            "en": "at the start,"
+          }
+        },
+        {
+          "targetText": "creo que esta ruta",
+          "baseText": {
+            "de": "finde ich diese Strecke",
+            "en": "I think this route"
+          }
+        },
+        {
+          "targetText": "es buena",
+          "baseText": {
+            "de": "ist gut",
+            "en": "is good"
+          }
+        },
+        {
+          "targetText": "para ir en bicicleta.",
+          "baseText": {
+            "de": "zum Radfahren.",
+            "en": "for cycling."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aunque",
+          "baseText": {
+            "de": "obwohl",
+            "en": "although"
+          }
+        },
+        {
+          "targetText": "tráfico",
+          "baseText": {
+            "de": "Verkehr",
+            "en": "traffic"
+          }
+        },
+        {
+          "targetText": "al principio",
+          "baseText": {
+            "de": "am Anfang",
+            "en": "at the start"
+          }
+        },
+        {
+          "targetText": "la ruta",
+          "baseText": {
+            "de": "die Strecke",
+            "en": "the route"
+          }
+        },
+        {
+          "targetText": "ir en bicicleta",
+          "baseText": {
+            "de": "Rad fahren",
+            "en": "to cycle"
+          }
+        },
+        {
+          "targetText": "la avenida",
+          "baseText": {
+            "de": "die Allee; die breite Straße",
+            "en": "the avenue"
+          }
+        },
+        {
+          "targetText": "el tramo del río",
+          "baseText": {
+            "de": "der Abschnitt am Fluss",
+            "en": "the stretch by the river"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Aunque hay ",
+        "answer": "tráfico",
+        "after": " al principio, creo que esta ruta es buena para ir en bicicleta.",
+        "fallbackChoices": [
+          "alquiler",
+          "tráfico",
+          "equilibrio",
+          "horario"
+        ]
+      },
+      "speakRequired": [
+        "tráfico",
+        "ruta",
+        "bicicleta"
+      ],
+      "sceneCaption": {
+        "de": "Neben den Fahrrädern fragt deine Freundin: „¿Por qué quieres ir por esta ruta en bicicleta?“",
+        "en": "Standing by the bikes, your friend asks: “¿Por qué quieres ir por esta ruta en bicicleta?”"
+      },
+      "trophyWord": {
+        "word": "tráfico",
+        "meaning": {
+          "de": "Verkehr",
+          "en": "traffic"
+        },
+        "example": "Aunque hay tráfico en la avenida, el paseo del río es tranquilo.",
+        "whyThisWord": {
+          "de": "Mit tráfico kannst du einen konkreten Einwand gegen eine Strecke nennen und anschließend genauer abwägen.",
+          "en": "Tráfico lets you name a concrete concern about a route before weighing up the rest of it."
+        }
+      },
+      "distractors": [
+        "al final,",
+        "para ir a pie."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Fahrräder stehen neben einer Übersicht der Wege am Fluss.",
+        "en": "Two bicycles stand beside a map of paths along the river."
+      },
+      "songMood": "Light rhythmic acoustic pop with a sense of movement.",
+      "visualNotes": "Friends beside bicycles and a route map in Spain; do not show a highlighted solution route."
+    },
+    {
+      "slug": "transporte-sin-aparcamiento",
+      "title": {
+        "de": "Ohne Parkplatzsuche",
+        "en": "No search for parking"
+      },
+      "situation": {
+        "de": "An der Haltestelle fragt ein Freund nach deiner Fahrt in die Innenstadt. Du wägest langsame Verbindungen gegen die Parkplatzsuche ab.",
+        "en": "At a bus stop, a friend asks about your journey into the city centre. Weigh slower services against having to find parking."
+      },
+      "pedagogicalGoal": "Mit me parece eine Bewertung formulieren und mit aunque einen tatsächlichen Nachteil einräumen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué te parece ir al centro en autobús?",
+          "baseText": {
+            "de": "Was hältst du davon, mit dem Bus ins Zentrum zu fahren?",
+            "en": "What do you think about taking the bus into the centre?"
+          }
+        },
+        {
+          "targetText": "El transporte público me parece cómodo, aunque algunos trayectos son bastante lentos.",
+          "baseText": {
+            "de": "Ich finde öffentliche Verkehrsmittel bequem, obwohl manche Strecken ziemlich langsam sind.",
+            "en": "I find public transport convenient, although some journeys are quite slow."
+          }
+        },
+        {
+          "targetText": "¿Y no pierdes demasiado tiempo de camino?",
+          "baseText": {
+            "de": "Verlierst du unterwegs nicht zu viel Zeit?",
+            "en": "Don't you lose too much time on the way?"
+          }
+        },
+        {
+          "targetText": "Aunque el autobús tarda, yo llego sin buscar aparcamiento.",
+          "baseText": {
+            "de": "Obwohl der Bus lange braucht, komme ich ohne Parkplatzsuche an.",
+            "en": "Although the bus takes a while, I arrive without having to find parking."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una valoración con una concesión",
+        "rule": {
+          "de": "Me parece drückt deine Bewertung aus; aunque mit Indikativ räumt einen Nachteil ein, der diese Bewertung nicht aufhebt.",
+          "en": "Me parece expresses your assessment; aunque with the indicative acknowledges a drawback that does not cancel it out."
+        },
+        "examples": [
+          {
+            "targetText": "El transporte público me parece cómodo, aunque algunos trayectos son bastante lentos.",
+            "baseText": {
+              "de": "Ich finde öffentliche Verkehrsmittel bequem, obwohl manche Strecken ziemlich langsam sind.",
+              "en": "I find public transport convenient, although some journeys are quite slow."
+            },
+            "highlight": "aunque algunos trayectos son bastante lentos"
+          },
+          {
+            "targetText": "Aunque la parada queda lejos, el autobús me deja junto al trabajo.",
+            "baseText": {
+              "de": "Obwohl die Haltestelle weit weg ist, bringt mich der Bus direkt zur Arbeit.",
+              "en": "Although the stop is far away, the bus drops me right by work."
+            },
+            "highlight": "Aunque la parada queda lejos"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Aunque",
+          "choices": [
+            "Sin embargo",
+            "Aunque",
+            "Por eso",
+            "Además"
+          ]
+        },
+        " el autobús ",
+        {
+          "kind": "form",
+          "answer": "tarda",
+          "cue": "tardar (el autobús)",
+          "choices": [
+            "tardan",
+            "tardo",
+            "tarda",
+            "tardamos"
+          ]
+        },
+        ", yo llego sin buscar aparcamiento."
+      ],
+      "chunks": [
+        {
+          "targetText": "El transporte público",
+          "baseText": {
+            "de": "Öffentliche Verkehrsmittel",
+            "en": "Public transport"
+          }
+        },
+        {
+          "targetText": "me parece cómodo,",
+          "baseText": {
+            "de": "finde ich bequem,",
+            "en": "seems convenient to me,"
+          }
+        },
+        {
+          "targetText": "aunque algunos trayectos",
+          "baseText": {
+            "de": "obwohl manche Strecken",
+            "en": "although some journeys"
+          }
+        },
+        {
+          "targetText": "son bastante lentos.",
+          "baseText": {
+            "de": "ziemlich langsam sind.",
+            "en": "are quite slow."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "transporte",
+          "baseText": {
+            "de": "Verkehr; Beförderung",
+            "en": "transport"
+          }
+        },
+        {
+          "targetText": "público",
+          "baseText": {
+            "de": "öffentlich",
+            "en": "public"
+          }
+        },
+        {
+          "targetText": "me parece cómodo",
+          "baseText": {
+            "de": "ich finde es bequem",
+            "en": "I find it convenient"
+          }
+        },
+        {
+          "targetText": "los trayectos",
+          "baseText": {
+            "de": "die Fahrtstrecken",
+            "en": "the journeys"
+          }
+        },
+        {
+          "targetText": "bastante lentos",
+          "baseText": {
+            "de": "ziemlich langsam",
+            "en": "quite slow"
+          }
+        },
+        {
+          "targetText": "tarda",
+          "baseText": {
+            "de": "es dauert; er braucht lange",
+            "en": "it takes a while"
+          }
+        },
+        {
+          "targetText": "buscar aparcamiento",
+          "baseText": {
+            "de": "einen Parkplatz suchen",
+            "en": "to look for parking"
+          }
+        }
+      ],
+      "recall": {
+        "before": "El ",
+        "answer": "transporte",
+        "after": " público me parece cómodo, aunque algunos trayectos son bastante lentos.",
+        "fallbackChoices": [
+          "encuentro",
+          "alquiler",
+          "transporte",
+          "descanso"
+        ]
+      },
+      "speakRequired": [
+        "transporte",
+        "trayectos",
+        "lentos"
+      ],
+      "sceneCaption": {
+        "de": "An der Haltestelle fragt dein Freund: „¿Qué te parece ir al centro en autobús?“",
+        "en": "At the bus stop, your friend asks: “¿Qué te parece ir al centro en autobús?”"
+      },
+      "trophyWord": {
+        "word": "transporte",
+        "meaning": {
+          "de": "Verkehr; Beförderung",
+          "en": "transport"
+        },
+        "example": "El transporte público evita la búsqueda de aparcamiento.",
+        "whyThisWord": {
+          "de": "Transporte hilft dir, verschiedene Wege durch die Stadt nach ihren Vor- und Nachteilen zu bewerten.",
+          "en": "Transporte helps you assess different ways of getting around the city by their benefits and drawbacks."
+        }
+      },
+      "distractors": [
+        "me parece caro,",
+        "son bastante cortos."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch unter Freunden an einer städtischen Bushaltestelle.",
+        "en": "Friends talking at a city bus stop."
+      },
+      "songMood": "Easy urban acoustic pop with a relaxed beat.",
+      "visualNotes": "A bus shelter in a Spanish city, route board, two adults chatting; no parking solution shown."
+    },
+    {
+      "slug": "alquiler-y-gastos-compartidos",
+      "title": {
+        "de": "Miete und Privatsphäre",
+        "en": "Rent and privacy"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, ob sich deine Wohngemeinschaft lohnt. Du sprichst über weniger Privatsphäre und darüber, welche Rechnungen ihr teilt.",
+        "en": "A friend asks whether sharing your flat is worthwhile. Talk about reduced privacy and the bills you split."
+      },
+      "pedagogicalGoal": "Mit aunque einen persönlichen Nachteil anerkennen und dem einen konkreten finanziellen Vorteil gegenüberstellen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué tal llevas compartir piso? ¿Te compensa?",
+          "baseText": {
+            "de": "Wie kommst du mit der Wohngemeinschaft zurecht? Lohnt es sich für dich?",
+            "en": "How are you finding sharing a flat? Is it worthwhile for you?"
+          }
+        },
+        {
+          "targetText": "Creo que compartir el alquiler compensa, aunque tengo menos intimidad en casa.",
+          "baseText": {
+            "de": "Ich finde, die Miete zu teilen lohnt sich, obwohl ich zu Hause weniger Privatsphäre habe.",
+            "en": "I think splitting the rent is worthwhile, although I have less privacy at home."
+          }
+        },
+        {
+          "targetText": "¿Y qué otros gastos se pueden repartir?",
+          "baseText": {
+            "de": "Und welche anderen Kosten kann man teilen?",
+            "en": "And what other expenses can be split?"
+          }
+        },
+        {
+          "targetText": "Aunque perdemos intimidad, nosotros ahorramos también en luz e internet.",
+          "baseText": {
+            "de": "Obwohl wir Privatsphäre verlieren, sparen wir auch bei Strom und Internet.",
+            "en": "Although we lose some privacy, we also save on electricity and internet."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Aunque: admitir un coste",
+        "rule": {
+          "de": "Mit aunque bestätigst du einen Nachteil als Tatsache und zeigst danach, was dennoch für deine Entscheidung spricht.",
+          "en": "Aunque acknowledges a drawback as a fact before you explain what still supports your choice."
+        },
+        "examples": [
+          {
+            "targetText": "Creo que compartir el alquiler compensa, aunque tengo menos intimidad en casa.",
+            "baseText": {
+              "de": "Ich finde, die Miete zu teilen lohnt sich, obwohl ich zu Hause weniger Privatsphäre habe.",
+              "en": "I think splitting the rent is worthwhile, although I have less privacy at home."
+            },
+            "highlight": "aunque tengo menos intimidad"
+          },
+          {
+            "targetText": "Aunque la cocina es compartida, cada persona tiene su habitación.",
+            "baseText": {
+              "de": "Obwohl die Küche gemeinsam genutzt wird, hat jede Person ein eigenes Zimmer.",
+              "en": "Although the kitchen is shared, each person has their own room."
+            },
+            "highlight": "Aunque la cocina es compartida"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Aunque",
+          "choices": [
+            "Por eso",
+            "Aunque",
+            "Además",
+            "Sin embargo"
+          ]
+        },
+        " perdemos intimidad, nosotros ",
+        {
+          "kind": "form",
+          "answer": "ahorramos",
+          "cue": "ahorrar (nosotros)",
+          "choices": [
+            "ahorro",
+            "ahorran",
+            "ahorra",
+            "ahorramos"
+          ]
+        },
+        " también en luz e internet."
+      ],
+      "chunks": [
+        {
+          "targetText": "Creo que",
+          "baseText": {
+            "de": "Ich finde,",
+            "en": "I think"
+          }
+        },
+        {
+          "targetText": "compartir el alquiler compensa,",
+          "baseText": {
+            "de": "die Miete zu teilen lohnt sich,",
+            "en": "splitting the rent is worthwhile,"
+          }
+        },
+        {
+          "targetText": "aunque tengo menos intimidad",
+          "baseText": {
+            "de": "obwohl ich weniger Privatsphäre habe",
+            "en": "although I have less privacy"
+          }
+        },
+        {
+          "targetText": "en casa.",
+          "baseText": {
+            "de": "zu Hause.",
+            "en": "at home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "alquiler",
+          "baseText": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "compartir",
+          "baseText": {
+            "de": "teilen; gemeinsam nutzen",
+            "en": "to share"
+          }
+        },
+        {
+          "targetText": "compensa",
+          "baseText": {
+            "de": "es lohnt sich",
+            "en": "it is worthwhile"
+          }
+        },
+        {
+          "targetText": "intimidad",
+          "baseText": {
+            "de": "Privatsphäre",
+            "en": "privacy"
+          }
+        },
+        {
+          "targetText": "repartir los gastos",
+          "baseText": {
+            "de": "die Kosten aufteilen",
+            "en": "to split the expenses"
+          }
+        },
+        {
+          "targetText": "ahorramos",
+          "baseText": {
+            "de": "wir sparen",
+            "en": "we save"
+          }
+        },
+        {
+          "targetText": "luz e internet",
+          "baseText": {
+            "de": "Strom und Internet",
+            "en": "electricity and internet"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Creo que compartir el ",
+        "answer": "alquiler",
+        "after": " compensa, aunque tengo menos intimidad en casa.",
+        "fallbackChoices": [
+          "paisaje",
+          "alquiler",
+          "mercado",
+          "descanso"
+        ]
+      },
+      "speakRequired": [
+        "compartir",
+        "alquiler",
+        "intimidad"
+      ],
+      "sceneCaption": {
+        "de": "Beim Kaffee fragt deine Freundin: „¿Qué tal llevas compartir piso? ¿Te compensa?“",
+        "en": "Over coffee, your friend asks: “¿Qué tal llevas compartir piso? ¿Te compensa?”"
+      },
+      "trophyWord": {
+        "word": "alquiler",
+        "meaning": {
+          "de": "Miete",
+          "en": "rent"
+        },
+        "example": "Compartir el alquiler deja más dinero para otros gastos.",
+        "whyThisWord": {
+          "de": "Mit alquiler kannst du über einen wichtigen Teil deiner Wohnkosten sprechen und das gemeinsame Wohnen abwägen.",
+          "en": "Alquiler lets you discuss a major housing cost and weigh up sharing a home."
+        }
+      },
+      "distractors": [
+        "vivir cerca del centro compensa,",
+        "aunque tengo más intimidad"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde sprechen bei einem Kaffee über das Wohnen.",
+        "en": "Two friends discuss housing over coffee."
+      },
+      "songMood": "Intimate acoustic pop with a calm, practical tone.",
+      "visualNotes": "A small shared-flat kitchen, two adults and coffee cups; no utility bills or later answer text."
+    },
+    {
+      "slug": "ambiente-en-un-local-pequeno",
+      "title": {
+        "de": "Klein und gesellig",
+        "en": "Small and welcoming"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach einem kleinen Lokal. Du beschreibst die Atmosphäre und erzählst, wie euer Gespräch beim letzten Besuch lief.",
+        "en": "A friend asks about a small bar. Describe its atmosphere and how your conversation went on your last visit."
+      },
+      "pedagogicalGoal": "Mit sin embargo eine positive Bewertung gegen einen eingeräumten Nachteil stellen und durch ein Erlebnis stützen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué te parece el local nuevo de la plaza?",
+          "baseText": {
+            "de": "Was hältst du von dem neuen Lokal am Platz?",
+            "en": "What do you think of the new place on the square?"
+          }
+        },
+        {
+          "targetText": "El local es pequeño; sin embargo, tiene un ambiente estupendo para charlar.",
+          "baseText": {
+            "de": "Das Lokal ist klein; trotzdem hat es eine tolle Atmosphäre zum Plaudern.",
+            "en": "The place is small; nevertheless, it has a lovely atmosphere for chatting."
+          }
+        },
+        {
+          "targetText": "¿Qué te gustó cuando fuiste la última vez?",
+          "baseText": {
+            "de": "Was hat dir bei deinem letzten Besuch gefallen?",
+            "en": "What did you like when you went last time?"
+          }
+        },
+        {
+          "targetText": "Había mucha gente; sin embargo, nosotros charlamos sin levantar la voz.",
+          "baseText": {
+            "de": "Es waren viele Leute da; trotzdem plauderten wir, ohne die Stimme zu heben.",
+            "en": "There were lots of people there; nevertheless, we chatted without raising our voices."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sin embargo: una idea que contrasta",
+        "rule": {
+          "de": "Sin embargo verbindet zwei vollständige Aussagen, wenn die zweite etwas Unerwartetes zur ersten ergänzt.",
+          "en": "Sin embargo connects two complete statements when the second adds an unexpected contrast to the first."
+        },
+        "examples": [
+          {
+            "targetText": "El local es pequeño; sin embargo, tiene un ambiente estupendo para charlar.",
+            "baseText": {
+              "de": "Das Lokal ist klein; trotzdem hat es eine tolle Atmosphäre zum Plaudern.",
+              "en": "The place is small; nevertheless, it has a lovely atmosphere for chatting."
+            },
+            "highlight": "sin embargo"
+          },
+          {
+            "targetText": "La música estaba alta; sin embargo, encontramos un rincón tranquilo.",
+            "baseText": {
+              "de": "Die Musik war laut; trotzdem fanden wir eine ruhige Ecke.",
+              "en": "The music was loud; nevertheless, we found a quiet corner."
+            },
+            "highlight": "sin embargo"
+          }
+        ]
+      },
+      "cloze": [
+        "Había mucha gente; ",
+        {
+          "kind": "connector",
+          "answer": "sin embargo",
+          "choices": [
+            "ya que",
+            "es decir",
+            "sin embargo",
+            "por ejemplo"
+          ]
+        },
+        ", nosotros ",
+        {
+          "kind": "form",
+          "answer": "charlamos",
+          "cue": "charlar (nosotros)",
+          "choices": [
+            "charlaron",
+            "charlé",
+            "charló",
+            "charlamos"
+          ]
+        },
+        " sin levantar la voz."
+      ],
+      "chunks": [
+        {
+          "targetText": "El local es pequeño;",
+          "baseText": {
+            "de": "Das Lokal ist klein;",
+            "en": "The place is small;"
+          }
+        },
+        {
+          "targetText": "sin embargo,",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "nevertheless,"
+          }
+        },
+        {
+          "targetText": "tiene un ambiente estupendo",
+          "baseText": {
+            "de": "hat es eine tolle Atmosphäre",
+            "en": "it has a lovely atmosphere"
+          }
+        },
+        {
+          "targetText": "para charlar.",
+          "baseText": {
+            "de": "zum Plaudern.",
+            "en": "for chatting."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "el local",
+          "baseText": {
+            "de": "das Lokal",
+            "en": "the bar; the place"
+          }
+        },
+        {
+          "targetText": "sin embargo",
+          "baseText": {
+            "de": "trotzdem; jedoch",
+            "en": "nevertheless; however"
+          }
+        },
+        {
+          "targetText": "ambiente",
+          "baseText": {
+            "de": "Atmosphäre",
+            "en": "atmosphere"
+          }
+        },
+        {
+          "targetText": "estupendo",
+          "baseText": {
+            "de": "toll",
+            "en": "lovely; great"
+          }
+        },
+        {
+          "targetText": "charlar",
+          "baseText": {
+            "de": "plaudern",
+            "en": "to chat"
+          }
+        },
+        {
+          "targetText": "la última vez",
+          "baseText": {
+            "de": "das letzte Mal",
+            "en": "last time"
+          }
+        },
+        {
+          "targetText": "levantar la voz",
+          "baseText": {
+            "de": "die Stimme heben",
+            "en": "to raise your voice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "El local es pequeño; sin embargo, tiene un ",
+        "answer": "ambiente",
+        "after": " estupendo para charlar.",
+        "fallbackChoices": [
+          "horario",
+          "ambiente",
+          "despiste",
+          "alquiler"
+        ]
+      },
+      "speakRequired": [
+        "local",
+        "ambiente",
+        "charlar"
+      ],
+      "sceneCaption": {
+        "de": "Beim Spaziergang über den Platz fragt dein Freund: „¿Qué te parece el local nuevo de la plaza?“",
+        "en": "Walking across the square, your friend asks: “¿Qué te parece el local nuevo de la plaza?”"
+      },
+      "trophyWord": {
+        "word": "ambiente",
+        "meaning": {
+          "de": "Atmosphäre",
+          "en": "atmosphere"
+        },
+        "example": "El ambiente del local invita a quedarse un rato.",
+        "whyThisWord": {
+          "de": "Ambiente beschreibt, wie sich ein Ort anfühlt, und ergänzt Fakten wie Größe oder Preis um deine persönliche Erfahrung.",
+          "en": "Ambiente describes how a place feels, adding your personal experience to facts such as its size or price."
+        }
+      },
+      "distractors": [
+        "El local es antiguo;",
+        "para celebrar un cumpleaños."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde betrachten ein kleines Lokal an einem Platz.",
+        "en": "Two friends look at a small bar on a square."
+      },
+      "songMood": "Warm café pop with gentle guitar and understated percussion.",
+      "visualNotes": "Exterior of a small Spanish bar on a neighbourhood square, friends talking; no flashback resolution."
+    },
+    {
+      "slug": "horario-flexible-y-coordinacion",
+      "title": {
+        "de": "Eine gemeinsame Stunde",
+        "en": "An hour in common"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt nach flexiblen Arbeitszeiten. Du erklärst den Nutzen und wie du dich trotz der schwierigeren Planung mit anderen abstimmst.",
+        "en": "A colleague asks about flexible working hours. Explain their benefit and how you coordinate with others despite the extra planning."
+      },
+      "pedagogicalGoal": "Mit de todas formas eine Entscheidung trotz eines bekannten Problems beibehalten und einen praktischen Umgang damit nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Te convence lo del horario flexible?",
+          "baseText": {
+            "de": "Überzeugt dich die Idee mit den flexiblen Arbeitszeiten?",
+            "en": "Are you convinced by the idea of flexible hours?"
+          }
+        },
+        {
+          "targetText": "Organizarse cuesta; de todas formas, creo que el horario flexible nos da más libertad.",
+          "baseText": {
+            "de": "Die Abstimmung ist aufwendig; trotzdem finde ich, dass flexible Arbeitszeiten uns mehr Freiheit geben.",
+            "en": "Getting organised takes effort; even so, I think flexible hours give us more freedom."
+          }
+        },
+        {
+          "targetText": "¿Y cómo te coordinas con la persona que trabaja contigo?",
+          "baseText": {
+            "de": "Und wie stimmst du dich mit der Person ab, die mit dir arbeitet?",
+            "en": "And how do you coordinate with the person who works with you?"
+          }
+        },
+        {
+          "targetText": "Nuestros turnos varían; de todas formas, mantenemos una hora en común.",
+          "baseText": {
+            "de": "Unsere Schichten wechseln; trotzdem behalten wir eine gemeinsame Stunde bei.",
+            "en": "Our shifts vary; even so, we keep an hour when we are both available."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "De todas formas: seguir adelante",
+        "rule": {
+          "de": "De todas formas zeigt hier, dass ein bereits genanntes Problem deine Entscheidung oder deinen nächsten Schritt nicht verhindert.",
+          "en": "Here, de todas formas shows that a problem already mentioned does not prevent your decision or next step."
+        },
+        "examples": [
+          {
+            "targetText": "Organizarse cuesta; de todas formas, creo que el horario flexible nos da más libertad.",
+            "baseText": {
+              "de": "Die Abstimmung ist aufwendig; trotzdem finde ich, dass flexible Arbeitszeiten uns mehr Freiheit geben.",
+              "en": "Getting organised takes effort; even so, I think flexible hours give us more freedom."
+            },
+            "highlight": "de todas formas"
+          },
+          {
+            "targetText": "No siempre coincidimos; de todas formas, hablamos cada mañana.",
+            "baseText": {
+              "de": "Wir sind nicht immer gleichzeitig da; trotzdem sprechen wir jeden Morgen miteinander.",
+              "en": "We are not always there at the same time; even so, we talk every morning."
+            },
+            "highlight": "de todas formas"
+          }
+        ]
+      },
+      "cloze": [
+        "Nuestros turnos ",
+        {
+          "kind": "form",
+          "answer": "varían",
+          "cue": "variar (nuestros turnos)",
+          "choices": [
+            "varía",
+            "varían",
+            "variamos",
+            "varío"
+          ]
+        },
+        "; ",
+        {
+          "kind": "connector",
+          "answer": "de todas formas",
+          "choices": [
+            "es decir",
+            "por ejemplo",
+            "de todas formas",
+            "aunque"
+          ]
+        },
+        ", mantenemos una hora en común."
+      ],
+      "chunks": [
+        {
+          "targetText": "Organizarse cuesta;",
+          "baseText": {
+            "de": "Die Abstimmung ist aufwendig;",
+            "en": "Getting organised takes effort;"
+          }
+        },
+        {
+          "targetText": "de todas formas,",
+          "baseText": {
+            "de": "trotzdem",
+            "en": "even so,"
+          }
+        },
+        {
+          "targetText": "creo que el horario flexible",
+          "baseText": {
+            "de": "finde ich, dass flexible Arbeitszeiten",
+            "en": "I think flexible hours"
+          }
+        },
+        {
+          "targetText": "nos da más libertad.",
+          "baseText": {
+            "de": "uns mehr Freiheit geben.",
+            "en": "give us more freedom."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "organizarse",
+          "baseText": {
+            "de": "sich organisieren; sich abstimmen",
+            "en": "to get organised"
+          }
+        },
+        {
+          "targetText": "de todas formas",
+          "baseText": {
+            "de": "trotzdem; auf jeden Fall",
+            "en": "even so; in any case"
+          }
+        },
+        {
+          "targetText": "horario",
+          "baseText": {
+            "de": "Arbeitszeiten; Zeitplan",
+            "en": "working hours; schedule"
+          }
+        },
+        {
+          "targetText": "flexible",
+          "baseText": {
+            "de": "flexibel",
+            "en": "flexible"
+          }
+        },
+        {
+          "targetText": "libertad",
+          "baseText": {
+            "de": "Freiheit",
+            "en": "freedom"
+          }
+        },
+        {
+          "targetText": "coordinarse",
+          "baseText": {
+            "de": "sich abstimmen",
+            "en": "to coordinate with each other"
+          }
+        },
+        {
+          "targetText": "mantener una hora en común",
+          "baseText": {
+            "de": "eine gemeinsame Stunde beibehalten",
+            "en": "to keep an hour when everyone is available"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Organizarse cuesta; de todas formas, creo que el ",
+        "answer": "horario",
+        "after": " flexible nos da más libertad.",
+        "fallbackChoices": [
+          "cruce",
+          "horario",
+          "local",
+          "tráfico"
+        ]
+      },
+      "speakRequired": [
+        "horario",
+        "flexible",
+        "libertad"
+      ],
+      "sceneCaption": {
+        "de": "In der Pause fragt deine Kollegin: „¿Te convence lo del horario flexible?“",
+        "en": "During a break, your colleague asks: “¿Te convence lo del horario flexible?”"
+      },
+      "trophyWord": {
+        "word": "horario",
+        "meaning": {
+          "de": "Arbeitszeiten; Zeitplan",
+          "en": "working hours; schedule"
+        },
+        "example": "El horario flexible permite empezar antes algunos días.",
+        "whyThisWord": {
+          "de": "Mit horario kannst du besprechen, wann Arbeit oder andere Aktivitäten stattfinden, und verschiedene Zeitmodelle bewerten.",
+          "en": "Horario lets you discuss the hours an activity or service runs, including working hours and opening times."
+        }
+      },
+      "distractors": [
+        "El trayecto es largo;",
+        "nos permite salir antes."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kollegen sprechen während einer Arbeitspause über ihre Zeiten.",
+        "en": "Two colleagues discuss their hours during a work break."
+      },
+      "songMood": "Measured acoustic pop with a quietly optimistic rhythm.",
+      "visualNotes": "A shared workroom in Spain, coffee break, two colleagues talking; no common-hour solution on a calendar."
+    },
+    {
+      "slug": "costumbre-de-comer-tarde",
+      "title": {
+        "de": "Essen nach der Arbeit",
+        "en": "Lunch after work"
+      },
+      "situation": {
+        "de": "Ein Freund wundert sich über deine späte Mittagspause. Du erklärst deine Gewohnheit und den Unterschied zu freien Tagen.",
+        "en": "A friend is surprised by your late lunch. Explain your habit and how days off are different."
+      },
+      "pedagogicalGoal": "Eine Gewohnheit mit porque begründen, ihre Grenze mit aunque benennen und einen anderen Tagesablauf erklären.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Siempre comes a estas horas?",
+          "baseText": {
+            "de": "Isst du immer um diese Zeit?",
+            "en": "Do you always eat at this time?"
+          }
+        },
+        {
+          "targetText": "Tengo la costumbre de comer tarde porque trabajo hasta las tres, aunque no siempre funciona.",
+          "baseText": {
+            "de": "Ich esse gewöhnlich spät, weil ich bis drei arbeite, obwohl das nicht immer gut passt.",
+            "en": "I have a habit of eating late because I work until three, although it does not always work well."
+          }
+        },
+        {
+          "targetText": "¿También comes a esa hora cuando descansas?",
+          "baseText": {
+            "de": "Isst du auch um diese Zeit, wenn du frei hast?",
+            "en": "Do you eat at that time on your days off too?"
+          }
+        },
+        {
+          "targetText": "Los días libres yo como antes porque así aprovecho la tarde.",
+          "baseText": {
+            "de": "An freien Tagen esse ich früher, weil ich so den Nachmittag nutzen kann.",
+            "en": "On days off I eat earlier because that lets me make the most of the afternoon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una razón y sus límites",
+        "rule": {
+          "de": "Porque erklärt den Grund für eine Gewohnheit; aunque ergänzt eine Einschränkung, ohne diesen Grund zurückzunehmen.",
+          "en": "Porque explains the reason for a habit; aunque adds a limitation without withdrawing that reason."
+        },
+        "examples": [
+          {
+            "targetText": "Tengo la costumbre de comer tarde porque trabajo hasta las tres, aunque no siempre funciona.",
+            "baseText": {
+              "de": "Ich esse gewöhnlich spät, weil ich bis drei arbeite, obwohl das nicht immer gut passt.",
+              "en": "I have a habit of eating late because I work until three, although it does not always work well."
+            },
+            "highlight": "aunque no siempre funciona"
+          },
+          {
+            "targetText": "Aunque los sábados tengo más tiempo, prefiero comer pronto.",
+            "baseText": {
+              "de": "Obwohl ich samstags mehr Zeit habe, esse ich lieber früh.",
+              "en": "Although I have more time on Saturdays, I prefer to eat early."
+            },
+            "highlight": "Aunque los sábados tengo más tiempo"
+          }
+        ]
+      },
+      "cloze": [
+        "Los días libres yo ",
+        {
+          "kind": "form",
+          "answer": "como",
+          "cue": "comer (yo)",
+          "choices": [
+            "comen",
+            "como",
+            "comemos",
+            "come"
+          ]
+        },
+        " antes ",
+        {
+          "kind": "connector",
+          "answer": "porque",
+          "choices": [
+            "sin embargo",
+            "porque",
+            "para que",
+            "por eso"
+          ]
+        },
+        " así aprovecho la tarde."
+      ],
+      "chunks": [
+        {
+          "targetText": "Tengo la costumbre",
+          "baseText": {
+            "de": "Ich habe die Gewohnheit,",
+            "en": "I have a habit"
+          }
+        },
+        {
+          "targetText": "de comer tarde",
+          "baseText": {
+            "de": "spät zu essen",
+            "en": "of eating late"
+          }
+        },
+        {
+          "targetText": "porque trabajo",
+          "baseText": {
+            "de": "weil ich arbeite",
+            "en": "because I work"
+          }
+        },
+        {
+          "targetText": "hasta las tres,",
+          "baseText": {
+            "de": "bis drei,",
+            "en": "until three,"
+          }
+        },
+        {
+          "targetText": "aunque no siempre funciona.",
+          "baseText": {
+            "de": "obwohl das nicht immer gut passt.",
+            "en": "although it does not always work well."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "costumbre",
+          "baseText": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          }
+        },
+        {
+          "targetText": "comer tarde",
+          "baseText": {
+            "de": "spät essen",
+            "en": "to eat late"
+          }
+        },
+        {
+          "targetText": "hasta las tres",
+          "baseText": {
+            "de": "bis drei Uhr",
+            "en": "until three"
+          }
+        },
+        {
+          "targetText": "no siempre",
+          "baseText": {
+            "de": "nicht immer",
+            "en": "not always"
+          }
+        },
+        {
+          "targetText": "los días libres",
+          "baseText": {
+            "de": "die freien Tage",
+            "en": "days off"
+          }
+        },
+        {
+          "targetText": "comer antes",
+          "baseText": {
+            "de": "früher essen",
+            "en": "to eat earlier"
+          }
+        },
+        {
+          "targetText": "aprovechar la tarde",
+          "baseText": {
+            "de": "den Nachmittag nutzen",
+            "en": "to make the most of the afternoon"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Tengo la ",
+        "answer": "costumbre",
+        "after": " de comer tarde porque trabajo hasta las tres, aunque no siempre funciona.",
+        "fallbackChoices": [
+          "dirección",
+          "costumbre",
+          "tormenta",
+          "entrada"
+        ]
+      },
+      "speakRequired": [
+        "costumbre",
+        "comer",
+        "trabajo"
+      ],
+      "sceneCaption": {
+        "de": "Als du dein Mittagessen auspackst, fragt dein Freund: „¿Siempre comes a estas horas?“",
+        "en": "As you unpack your lunch, your friend asks: “¿Siempre comes a estas horas?”"
+      },
+      "trophyWord": {
+        "word": "costumbre",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "La costumbre de comer tarde depende de mi jornada de trabajo.",
+        "whyThisWord": {
+          "de": "Costumbre hilft dir, eine wiederkehrende Handlung zu erklären und zu zeigen, wann du davon abweichst.",
+          "en": "Costumbre helps you explain something you regularly do and show when you do it differently."
+        }
+      },
+      "distractors": [
+        "de cenar pronto",
+        "hasta las dos,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein spätes Mittagessen und ein Gespräch unter Freunden.",
+        "en": "A late lunch and a conversation between friends."
+      },
+      "songMood": "Relaxed afternoon acoustic pop with a gentle backbeat.",
+      "visualNotes": "Two friends at a table, one unpacking lunch, afternoon daylight; no days-off comparison shown."
+    },
+    {
+      "slug": "equilibrio-entre-fiesta-y-descanso",
+      "title": {
+        "de": "Feiern und schlafen",
+        "en": "Celebrating and sleeping"
+      },
+      "situation": {
+        "de": "Eine Freundin bespricht mit dir die Musik bei einem Nachbarschaftsfest. Du schlägst eine Endzeit vor und gehst auf die Bedürfnisse früh schlafender Nachbarn ein.",
+        "en": "A friend discusses the music at a neighbourhood party. Suggest a finishing time and respond to the needs of neighbours who go to bed early."
+      },
+      "pedagogicalGoal": "Eine begründete Position mit creo que vertreten und sie durch eine konkrete Anpassung nach aunque stützen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿A qué hora crees que debe terminar la música en las fiestas?",
+          "baseText": {
+            "de": "Um wie viel Uhr sollte die Musik bei den Festen deiner Meinung nach enden?",
+            "en": "What time do you think the music should finish at the parties?"
+          }
+        },
+        {
+          "targetText": "Creo que acabar a medianoche mantiene el equilibrio entre las fiestas y el descanso.",
+          "baseText": {
+            "de": "Ich finde, ein Ende um Mitternacht hält Feiern und Nachtruhe im Gleichgewicht.",
+            "en": "I think finishing at midnight maintains a balance between the parties and people's rest."
+          }
+        },
+        {
+          "targetText": "¿Y los vecinos que se acuestan antes de medianoche?",
+          "baseText": {
+            "de": "Und die Nachbarn, die vor Mitternacht schlafen gehen?",
+            "en": "What about neighbours who go to bed before midnight?"
+          }
+        },
+        {
+          "targetText": "Aunque la fiesta continúa, nosotros bajamos el volumen desde las diez.",
+          "baseText": {
+            "de": "Obwohl das Fest weitergeht, drehen wir die Lautstärke ab zehn herunter.",
+            "en": "Although the party continues, we turn the volume down from ten onwards."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Creo que… aunque…",
+        "rule": {
+          "de": "Creo que stellt deine Position vor; mit aunque erkennst du den Einwand an und ergänzt eine passende Anpassung.",
+          "en": "Creo que introduces your position; aunque acknowledges the objection before you add an appropriate adjustment."
+        },
+        "examples": [
+          {
+            "targetText": "Creo que acabar a medianoche mantiene el equilibrio entre las fiestas y el descanso.",
+            "baseText": {
+              "de": "Ich finde, ein Ende um Mitternacht hält Feiern und Nachtruhe im Gleichgewicht.",
+              "en": "I think finishing at midnight maintains a balance between the parties and people's rest."
+            },
+            "highlight": "Creo que"
+          },
+          {
+            "targetText": "Aunque la fiesta continúa, la música baja a partir de las diez.",
+            "baseText": {
+              "de": "Obwohl das Fest weitergeht, wird die Musik ab zehn leiser.",
+              "en": "Although the party continues, the music gets quieter from ten onwards."
+            },
+            "highlight": "Aunque la fiesta continúa"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "Aunque",
+          "choices": [
+            "Además",
+            "Por eso",
+            "Aunque",
+            "Sin embargo"
+          ]
+        },
+        " la fiesta ",
+        {
+          "kind": "form",
+          "answer": "continúa",
+          "cue": "continuar (la fiesta)",
+          "choices": [
+            "continúan",
+            "continuamos",
+            "continúo",
+            "continúa"
+          ]
+        },
+        ", nosotros bajamos el volumen desde las diez."
+      ],
+      "chunks": [
+        {
+          "targetText": "Creo que",
+          "baseText": {
+            "de": "Ich finde,",
+            "en": "I think"
+          }
+        },
+        {
+          "targetText": "acabar a medianoche",
+          "baseText": {
+            "de": "um Mitternacht aufzuhören",
+            "en": "finishing at midnight"
+          }
+        },
+        {
+          "targetText": "mantiene el equilibrio",
+          "baseText": {
+            "de": "hält das Gleichgewicht",
+            "en": "maintains a balance"
+          }
+        },
+        {
+          "targetText": "entre las fiestas",
+          "baseText": {
+            "de": "zwischen den Festen",
+            "en": "between the parties"
+          }
+        },
+        {
+          "targetText": "y el descanso.",
+          "baseText": {
+            "de": "und der Nachtruhe.",
+            "en": "and people's rest."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "acabar a medianoche",
+          "baseText": {
+            "de": "um Mitternacht aufhören",
+            "en": "to finish at midnight"
+          }
+        },
+        {
+          "targetText": "equilibrio",
+          "baseText": {
+            "de": "Gleichgewicht",
+            "en": "balance"
+          }
+        },
+        {
+          "targetText": "las fiestas",
+          "baseText": {
+            "de": "die Feste",
+            "en": "the parties; the celebrations"
+          }
+        },
+        {
+          "targetText": "el descanso",
+          "baseText": {
+            "de": "die Ruhe; die Erholung",
+            "en": "rest"
+          }
+        },
+        {
+          "targetText": "los vecinos",
+          "baseText": {
+            "de": "die Nachbarn",
+            "en": "the neighbours"
+          }
+        },
+        {
+          "targetText": "acostarse",
+          "baseText": {
+            "de": "schlafen gehen",
+            "en": "to go to bed"
+          }
+        },
+        {
+          "targetText": "bajar el volumen",
+          "baseText": {
+            "de": "die Lautstärke herunterdrehen",
+            "en": "to turn the volume down"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Creo que acabar a medianoche mantiene el ",
+        "answer": "equilibrio",
+        "after": " entre las fiestas y el descanso.",
+        "fallbackChoices": [
+          "alquiler",
+          "equilibrio",
+          "tráfico",
+          "encuentro"
+        ]
+      },
+      "speakRequired": [
+        "medianoche",
+        "equilibrio",
+        "descanso"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Festplanung fragt deine Freundin: „¿A qué hora crees que debe terminar la música en las fiestas?“",
+        "en": "While planning the party, your friend asks: “¿A qué hora crees que debe terminar la música en las fiestas?”"
+      },
+      "trophyWord": {
+        "word": "equilibrio",
+        "meaning": {
+          "de": "Gleichgewicht",
+          "en": "balance"
+        },
+        "example": "El equilibrio entre la celebración y el descanso requiere un horario claro.",
+        "whyThisWord": {
+          "de": "Mit equilibrio kannst du eine Lösung beschreiben, die zwei berechtigte Bedürfnisse berücksichtigt.",
+          "en": "Equilibrio lets you describe a solution that takes two reasonable needs into account."
+        }
+      },
+      "distractors": [
+        "acabar a las once",
+        "entre los conciertos"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn planen ein gemeinsames Fest am Tisch.",
+        "en": "Two neighbours plan a shared celebration at a table."
+      },
+      "songMood": "Warm celebratory acoustic pop kept gentle and conversational.",
+      "visualNotes": "Neighbourhood celebration planning in Spain, plain schedule sheet and two adults; no later volume adjustment written down."
+    }
+  ]
+}
