@@ -1,0 +1,20 @@
+{
+  "mode": "pilot",
+  "models": {
+    "eleven_v4": {
+      "modelCharacterCostMultiplier": 1,
+      "voices": {
+        "AeRdCCKzvd23BpJoofzx": {
+          "sharingRate": 1.0,
+          "creditMultiplier": 10,
+          "verification": "Conservative multiplier ten retained from existing campaign policy; sharing.rate is not a billing multiplier. Fresh provider metadata and pilot receipt required."
+        },
+        "ZCh4e9eZSUf41K4cmCEL": {
+          "sharingRate": 1.0,
+          "creditMultiplier": 10,
+          "verification": "Conservative multiplier ten retained from existing campaign policy; sharing.rate is not a billing multiplier. Fresh provider metadata and pilot receipt required."
+        }
+      }
+    }
+  }
+}

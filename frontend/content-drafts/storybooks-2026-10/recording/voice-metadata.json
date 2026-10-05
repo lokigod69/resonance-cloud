@@ -1,0 +1,186 @@
+{
+  "observedAt": "2026-10-05T13:53:34.996445+00:00",
+  "method": "Authenticated GET and readonly existing-receipt query",
+  "originalEvidenceSha256": "549e5ec0be6819f7c17137d45732773284b0ba707569443c2479106315495424",
+  "voices": [
+    {
+      "voice_id": "AeRdCCKzvd23BpJoofzx",
+      "name": "Nathaniel C - Suspense, British calm ",
+      "category": "professional",
+      "labels": {
+        "accent": "british",
+        "age": "middle_aged",
+        "descriptive": "calm",
+        "language": "en",
+        "use_case": "narrative_story",
+        "gender": "male"
+      },
+      "sharingRate": 1.0,
+      "verified_languages": [
+        {
+          "language": "en",
+          "model_id": "eleven_flash_v2_5",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_multilingual_v2",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_flash_v2",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_multilingual_sts_v2",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_turbo_v2_5",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_v2_5_flash",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_turbo_v2",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "en",
+          "model_id": "eleven_v2_flash",
+          "accent": "british",
+          "locale": "en-GB"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_turbo_v2_5",
+          "accent": "standard",
+          "locale": "es-ES"
+        }
+      ]
+    },
+    {
+      "voice_id": "ZCh4e9eZSUf41K4cmCEL",
+      "name": "Emilio - Warm and Professional",
+      "category": "professional",
+      "labels": {
+        "language": "es",
+        "gender": "male",
+        "accent": "peninsular",
+        "descriptive": "confident",
+        "use_case": "informative_educational",
+        "age": "middle_aged"
+      },
+      "sharingRate": 1.0,
+      "verified_languages": [
+        {
+          "language": "es",
+          "model_id": "eleven_turbo_v2_5",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_v2_5_flash",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_flash_v2_5",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_multilingual_v2",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_multilingual_sts_v2",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_turbo_v2_5",
+          "accent": "canary islands",
+          "locale": "es-ES"
+        },
+        {
+          "language": "es",
+          "model_id": "eleven_multilingual_v2",
+          "accent": "peninsular",
+          "locale": "es-ES"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "model_id": "eleven_v4",
+      "name": "Eleven v4",
+      "can_do_text_to_speech": true,
+      "model_rates": {
+        "character_cost_multiplier": 1.0,
+        "cost_discount_multiplier": 1.0
+      }
+    }
+  ],
+  "existingPositiveReceipts": [
+    {
+      "cache_key": "130eee81c59892b69733f80a5c650253bbb946ab135468ad0f3f2caad0d4b343",
+      "model_id": "eleven_v4",
+      "settings": {
+        "similarity_boost": 0.75,
+        "stability": 0.5
+      },
+      "text": "Ayer tuve un encuentro inesperado con una compañera y charlamos junto al mercado.",
+      "voice_id": "ZCh4e9eZSUf41K4cmCEL",
+      "state": "ready",
+      "charged": "8"
+    },
+    {
+      "cache_key": "dde01de3f5c2b3695f505215b4f902fcd311c6ee81d7fdb5a430b150a12acddc",
+      "model_id": "eleven_v4",
+      "settings": {
+        "similarity_boost": 0.75,
+        "stability": 0.5
+      },
+      "text": "Ayer tuve",
+      "voice_id": "ZCh4e9eZSUf41K4cmCEL",
+      "state": "ready",
+      "charged": "1"
+    },
+    {
+      "cache_key": "0d33d179b0bfc4dca364730e7ac0514c6bb870958b7f62f92d12948f09c90c3d",
+      "model_id": "eleven_v4",
+      "settings": {
+        "similarity_boost": 0.75,
+        "stability": 0.5
+      },
+      "text": "un encuentro inesperado",
+      "voice_id": "ZCh4e9eZSUf41K4cmCEL",
+      "state": "ready",
+      "charged": "2"
+    }
+  ],
+  "accentListeningVerified": false,
+  "synthesisPerformed": false
+}

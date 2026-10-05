@@ -1,0 +1,617 @@
+{
+  "workingName": "Lingwave Storybook (working title: Tidebooks)",
+  "promise": "Short original picture-stories you can hear line by line: tap a phrase to hear it, tap a thing in the scene to hear it named, open a plain explanation in your own language, and leave each page having noticed something you did not expect.",
+  "editorialRules": [
+    "Every episode is original: no adapted folk tales, fables with known names, licensed characters, brands or recognisable franchises. A later exact-overlap audit against existing course text is required before any episode is marked ready; nothing here is claimed as novelty-verified.",
+    "Six pages must deliver setup, problem, attempts, turn, resolution and a satisfying final image. No page may be filler or recap.",
+    "Every episode carries one meaningful surprise or reframe. Absence, misreading, mistaken scale, or a hidden kindness beat a lost object; at most one lost-object plot per language per wave (currently zero).",
+    "Three recorded phrases per page, two tappable objects per page, one spoken page title, one spoken story title. Phrases are narrative or dialogue in the target language only; nothing scaffolding-side is ever recorded.",
+    "Reader choice is a lens, not a branch: on each page the reader chooses which of the two objects to examine first, and that choice sets what the page illustration foregrounds and the order of the two object descriptions. The three story phrases and all audio assets are identical for every reader. No branching audio permutations.",
+    "Each phrase ships with an English meaning and a German meaning/explanation in the preview; explanations state grammar in one sentence and never introduce a second new structure.",
+    "Spanish episodes are authored in es-ES from their own premises; English episodes in en-GB. No episode is a sentence-level translation of another. Idiom, register and humour are native to each language.",
+    "Country and language are distinct. Settings may be specific towns or coasts, but no line generalises a nation, a people or a national character. Characters are individuals.",
+    "Curiosity leads: protagonists look, ask, test and revise. The reader should finish a page knowing one more thing about how the world works, even in absurd worlds.",
+    "No fabricated history or science. Natural-history and cosmos episodes use only safe general concepts (tides turn, rock layers record time, telescopes pick up local interference). Specific places, dates, species names and institutions are fictional and marked as such in the fictionNote.",
+    "Tone is adult-respectful all-ages: no cuteness-by-default, no moralising ending line, no sarcasm aimed at a character's dignity.",
+    "Level is a contract, not a word count. B2 is not a longer A1; it is more implied than said. Caption length stays compact at every level.",
+    "Object labels are natural noun phrases a speaker would actually say (the kettle, la caja de tomates), not dictionary headwords with articles stripped."
+  ],
+  "levelContracts": {
+    "A1": "Simple present, can/can't, imperatives, there is/there are (hay). Phrases up to about 8 words. Concrete nouns, high-frequency verbs. At most 3 explicitly glossed thematic words per story, each used at least twice. Dialogue is direct; no idiom. The surprise must be visible in the picture and readable in the words.",
+    "A2": "Past simple with imperfect/past continuous for setting, sequencing (first, then, in the end), wants and reasons (because, so), simple comparisons. Phrases up to about 12 words. One light idiom per story with an explanation. Characters state a plan and revise it on the page.",
+    "B1": "Reported speech, first/second conditional, modal hedging (might, could, must have / quizás, debe de), connected narration across pages. Motive may be implied for a page and confirmed later. One register contrast per story (formal notice vs. spoken line). Humour from situation, not wordplay.",
+    "B2": "Subtext and implicature: a line that means more than it says, irony without a wink, register shifts, idiom used precisely with explanation, concession and understatement, subjunctive (es-ES) and inversion or cleft forms (en-GB) used naturally. The surprise is partly interpretive: the reader revises what an earlier page meant. Captions stay compact; density comes from what is left unsaid."
+  },
+  "worlds": [
+    {
+      "id": "culture",
+      "name": "Everyday Culture",
+      "purpose": "Streets, shops, buses, lifts, benches, kitchens; the most reusable vocabulary and the most recognisable kindnesses and misunderstandings."
+    },
+    {
+      "id": "ocean",
+      "name": "Ocean and Shore",
+      "purpose": "Tides, rock pools, harbours, caves; attention to natural rhythm and change; a world where waiting is part of the plot."
+    },
+    {
+      "id": "deep-time",
+      "name": "Deep Time",
+      "purpose": "Cliffs, layers, footprints in rock, slow change; wonder at scale without any specific scientific claims; explicitly fictional sites."
+    },
+    {
+      "id": "cosmos",
+      "name": "Cosmos",
+      "purpose": "Night sky, instruments, memory of sky events; the cosmos as something people notice from the ground, with modest human drama."
+    },
+    {
+      "id": "absurd",
+      "name": "Gentle Absurdity",
+      "purpose": "One rule of the world is slightly wrong and everyone copes sensibly; a safe place for humour that does not depend on culture-specific references."
+    },
+    {
+      "id": "fables",
+      "name": "Animal Fables",
+      "purpose": "Animals with ordinary problems and committee instincts; subtext and social language at higher levels; no borrowed fable plots."
+    }
+  ],
+  "episodes": [
+    {
+      "id": "en-a1-blue-bus",
+      "language": "en-GB",
+      "level": "A1",
+      "world": "culture",
+      "title": "The Blue Bus",
+      "premise": "Nia takes the number 7 bus every morning. Today the bus is blue, the driver says there are no stops, and Nia needs to get to work.",
+      "beats": [
+        "Nia waits at the stop with her coffee; every day the bus is red and stops at the bank.",
+        "Today the bus is blue; the driver says: no stops today. Nia gets on anyway.",
+        "Nia presses the button, reads the map, asks the man next to her; nobody knows the route.",
+        "The bus turns left, not right, and stops at the sea.",
+        "The driver shows a small sign: new sea route, first day; the bank is a ten-minute walk.",
+        "Nia drinks her coffee on the wall by the water, ten minutes late and happy."
+      ],
+      "learningFocus": "Simple present routines, can/can't, short imperatives (stop, look, wait), telling a place.",
+      "newWords": [
+        {
+          "text": "stop",
+          "meaning": "a bus stop / to stop"
+        },
+        {
+          "text": "route",
+          "meaning": "the path a bus follows"
+        },
+        {
+          "text": "late",
+          "meaning": "after the expected time"
+        }
+      ],
+      "fictionNote": "Fictional town and bus company; no real transport operator or route."
+    },
+    {
+      "id": "en-a1-day-owl",
+      "language": "en-GB",
+      "level": "A1",
+      "world": "fables",
+      "title": "Pip Can See Green",
+      "premise": "Pip is an owl who sleeps at night. The other owls are awake in the dark; Pip is tired. Then morning comes and Pip sees something no owl talks about.",
+      "beats": [
+        "Night in the wood: the owls are awake and hunting. Pip is sleepy.",
+        "Pip cannot hunt at night; the other owls say: owls do not sleep now.",
+        "Pip counts stars, hoots, flies in circles; she still falls asleep on the branch.",
+        "Morning. Pip wakes. The wood is green. The owls have never seen green.",
+        "Pip watches the day birds and the colours all morning, then tells the owls at dusk.",
+        "Dusk: the owls sit in a row listening to Pip, who is wide awake for the first time."
+      ],
+      "learningFocus": "Simple present, can/can't see, colours, basic time words (night, morning, now).",
+      "newWords": [
+        {
+          "text": "owl",
+          "meaning": "a night bird with big eyes"
+        },
+        {
+          "text": "dusk",
+          "meaning": "the time when day becomes night"
+        },
+        {
+          "text": "branch",
+          "meaning": "a tree's arm"
+        }
+      ],
+      "fictionNote": "Fable; no claim about real owl behaviour beyond the premise that owls are usually night birds."
+    },
+    {
+      "id": "en-a2-low-tide",
+      "language": "en-GB",
+      "level": "A2",
+      "world": "ocean",
+      "title": "The Lowest Tide",
+      "premise": "Eli helps count creatures in rock pools once a month. This month the tide goes out further than anyone remembers, and a path to a sandbank appears, but the tide will turn.",
+      "beats": [
+        "Eli arrived at the beach with a clipboard and a bucket; the sea was far away, much further than last month.",
+        "Where the water usually was, there was a wet sandy path to a low bank nobody had walked on.",
+        "Eli and the group walked out, counted shells, and argued about whether to go further.",
+        "The water started to come back, faster than they expected; the path got narrower.",
+        "They walked back with wet boots. The leader explained: this bank appears once a year at the lowest tide.",
+        "On the dry beach, Eli wrote the date on the map and drew the bank with no name."
+      ],
+      "learningFocus": "Past simple and past continuous for setting, comparisons (further, lower), sequencing words.",
+      "newWords": [
+        {
+          "text": "tide",
+          "meaning": "the sea going out and coming in"
+        },
+        {
+          "text": "sandbank",
+          "meaning": "a raised area of sand in the sea"
+        },
+        {
+          "text": "count",
+          "meaning": "to find how many"
+        }
+      ],
+      "fictionNote": "Fictional beach and survey group; tide behaviour is general, not tied to a real location."
+    },
+    {
+      "id": "en-a2-the-queue",
+      "language": "en-GB",
+      "level": "A2",
+      "world": "absurd",
+      "title": "The Queue Outside Number 14",
+      "premise": "A queue forms outside a closed shop early one morning. People join because others are there. The first person in the queue is waiting for something else entirely.",
+      "beats": [
+        "At seven, one man stood outside number 14. The shop was closed and the window was empty.",
+        "A woman joined him. Then two students. Then a man with a dog. Nobody asked why.",
+        "People guessed: a sale, a famous baker, free tickets. They compared ideas and phones.",
+        "At eight the man at the front stepped forward, but not into the shop: the bus had arrived.",
+        "The shop stayed closed. The people laughed, then someone fetched coffee and a box of pastries.",
+        "The pavement outside number 14 became a breakfast for twelve strangers and a dog."
+      ],
+      "learningFocus": "Past simple narration, guessing with maybe/perhaps, reasons with because and so.",
+      "newWords": [
+        {
+          "text": "queue",
+          "meaning": "a line of waiting people"
+        },
+        {
+          "text": "pavement",
+          "meaning": "the path beside the road"
+        },
+        {
+          "text": "stranger",
+          "meaning": "a person you do not know"
+        }
+      ],
+      "fictionNote": "Gentle absurdity about people everywhere, not a comment on any nationality; fictional street."
+    },
+    {
+      "id": "en-b1-cliff-dark-line",
+      "language": "en-GB",
+      "level": "B1",
+      "world": "deep-time",
+      "title": "The Dark Line in the Cliff",
+      "premise": "On a guided cliff walk at fictional Morrow Bay, Asha notices a thin dark layer the guide has not mentioned. The guide admits she does not know what it is, and the group becomes a small investigation.",
+      "beats": [
+        "Asha was half-listening while the guide explained that each layer took longer to form than any town has existed.",
+        "Then she asked about a thin dark line; the guide paused and said she had never been asked.",
+        "They compared it along the bay, measured it with a tape, and photographed it near the stairs.",
+        "At the far end the line vanished; where it vanished, the rock above it was a different colour.",
+        "The guide said it might have been a single event, a flood or a fire, but she would ask someone who knew.",
+        "Asha's photo on the noticeboard, labelled: the Morrow line, unexplained, noticed by a visitor."
+      ],
+      "learningFocus": "Reported speech, might have / could have, past perfect for backstory, asking careful questions.",
+      "newWords": [
+        {
+          "text": "layer",
+          "meaning": "one band of rock laid down over time"
+        },
+        {
+          "text": "event",
+          "meaning": "something that happened once"
+        },
+        {
+          "text": "unexplained",
+          "meaning": "not yet understood"
+        }
+      ],
+      "fictionNote": "Morrow Bay is fictional. Only the general idea that rock layers record time is used; no specific geological claim."
+    },
+    {
+      "id": "en-b1-the-listener",
+      "language": "en-GB",
+      "level": "B1",
+      "world": "cosmos",
+      "title": "Something at 2.14",
+      "premise": "On night shift at a small fictional radio observatory, Tom sees a signal that repeats at 2.14 every night. He tests everything before he dares to log it.",
+      "beats": [
+        "Tom's job was mostly to watch screens and keep the heater working; nothing had happened for weeks.",
+        "At 2.14 a short burst appeared, and the next night it appeared again.",
+        "He checked the cables, moved the dish, asked the day team; they said it was probably nothing.",
+        "On the fourth night he watched the kitchen and saw the night cleaner switch on the kettle at 2.14.",
+        "Writing the explanation, he noticed a second, fainter pattern he had ignored while chasing the first.",
+        "Two lines in the log: kettle, explained; the other, not yet. Tom put the kettle on."
+      ],
+      "learningFocus": "Second conditional, probably/likely hedges, process description, reported advice.",
+      "newWords": [
+        {
+          "text": "signal",
+          "meaning": "a pattern an instrument picks up"
+        },
+        {
+          "text": "interference",
+          "meaning": "unwanted noise from nearby equipment"
+        },
+        {
+          "text": "log",
+          "meaning": "a written record of events"
+        }
+      ],
+      "fictionNote": "Fictional observatory and staff; no reference to any real discovery or incident."
+    },
+    {
+      "id": "en-b2-herons-committee",
+      "language": "en-GB",
+      "level": "B2",
+      "world": "fables",
+      "title": "Minutes of the Heron Committee",
+      "premise": "The pond is shrinking and the herons hold a meeting about the beaver dam upstream they have always resented. The oldest heron has already decided to leave, and says so without saying so.",
+      "beats": [
+        "The pond is lower each week; the herons convene on the fallen willow, as they do whenever something is somebody's fault.",
+        "The motion is to blame the beavers; the oldest heron abstains, which nobody notices.",
+        "Younger herons propose dismantling the dam, petitioning the ducks, waiting it out; each plan ends in a pause.",
+        "A heron flies upstream to look and reports: the dam is holding the only water left; without it the pond would be mud.",
+        "The vote is quietly withdrawn. The oldest heron says the far lake is pleasant in autumn, and nobody asks why she knows.",
+        "Dawn: a line of herons facing the dam, saying nothing, while one is already a small shape in the sky."
+      ],
+      "learningFocus": "Implicature, understatement, concession (admittedly, granted), formal register parodied gently, inversion and cleft sentences.",
+      "newWords": [
+        {
+          "text": "abstain",
+          "meaning": "to choose not to vote"
+        },
+        {
+          "text": "upstream",
+          "meaning": "towards the source of the river"
+        },
+        {
+          "text": "withdraw",
+          "meaning": "to take back a proposal"
+        }
+      ],
+      "fictionNote": "Fable; no claim about real heron or beaver ecology beyond the obvious."
+    },
+    {
+      "id": "en-b2-bench-with-a-name",
+      "language": "en-GB",
+      "level": "B2",
+      "world": "culture",
+      "title": "Bench 31",
+      "premise": "Dev has a list of old memorial benches to remove from the park. Bench 31 has a plaque for a woman who, he discovers, sits on it every morning and reads the plaque as if it were news.",
+      "beats": [
+        "The council form lists benches by number and condition; Dev prefers the form to the park.",
+        "Bench 31 is sound but out of date; the plaque reads: for Margaret, who liked this view. The removal date is Friday.",
+        "He drafts a notice, asks the office, checks the records: the bench was donated twenty years ago by a husband.",
+        "On Thursday a woman is sitting there at eight; she introduces herself as Margaret and says the view has improved.",
+        "Dev's report does not lie, exactly; it records a bench in active use, with a request for an exception.",
+        "Friday, eight o'clock: two people on bench 31, one holding a form, both looking at the view."
+      ],
+      "learningFocus": "Subtext in bureaucratic language, understatement, modal verbs of obligation and permission, politeness as plot.",
+      "newWords": [
+        {
+          "text": "plaque",
+          "meaning": "a small metal sign with words"
+        },
+        {
+          "text": "exception",
+          "meaning": "a case where the rule does not apply"
+        },
+        {
+          "text": "condition",
+          "meaning": "the state something is in"
+        }
+      ],
+      "fictionNote": "Fictional council, park and people; no real memorial scheme referenced."
+    },
+    {
+      "id": "es-a1-mercado-sin-tomates",
+      "language": "es-ES",
+      "level": "A1",
+      "world": "culture",
+      "title": "Hoy no hay tomates",
+      "premise": "Marta goes to the market for tomatoes for lunch. There are none at any stall. The stallholder gives her something smaller instead, and lunch is not the end of the story.",
+      "beats": [
+        "Marta está en el mercado con una bolsa. Quiere tomates para la comida.",
+        "En el primer puesto no hay tomates. En el segundo, tampoco.",
+        "Marta pregunta, mira las cajas, va a tres puestos más; hay pan, hay fruta, no hay tomates.",
+        "Un señor del último puesto dice: hoy no hay tomates, pero hay semillas.",
+        "Marta compra semillas y una maceta pequeña y come pan con queso.",
+        "En el balcón de Marta hay una maceta verde y un papel: tomates, en verano."
+      ],
+      "learningFocus": "Presente, hay/no hay, querer + sustantivo, números pequeños, imperativos de tienda (mira, toma).",
+      "newWords": [
+        {
+          "text": "puesto",
+          "meaning": "a market stall"
+        },
+        {
+          "text": "semilla",
+          "meaning": "a seed"
+        },
+        {
+          "text": "maceta",
+          "meaning": "a flowerpot"
+        }
+      ],
+      "fictionNote": "Fictional town market; no real market or region named."
+    },
+    {
+      "id": "es-a1-gato-que-dice-no",
+      "language": "es-ES",
+      "level": "A1",
+      "world": "fables",
+      "title": "El gato que dice no",
+      "premise": "Bruno the cat says no to everything: food, the door, the rain. One night of rain, the family tries everything, and Bruno says a different word.",
+      "beats": [
+        "Bruno es un gato. Bruno dice no: no a la cama, no a la puerta, no al agua.",
+        "Llueve. Bruno está en el jardín. Bruno dice no a la casa.",
+        "La niña abre la puerta. El abuelo trae comida. El perro ladra. Bruno dice no.",
+        "La niña se sienta en la lluvia con Bruno. Los dos están mojados.",
+        "Bruno mira a la niña y dice: sí. Los dos entran en la casa.",
+        "Bruno y la niña en una toalla grande; fuera, la lluvia dice no."
+      ],
+      "learningFocus": "Presente de verbos básicos, sí/no, imperativos (ven, entra, mira), estar + adjetivo.",
+      "newWords": [
+        {
+          "text": "llover",
+          "meaning": "to rain"
+        },
+        {
+          "text": "mojado",
+          "meaning": "wet"
+        },
+        {
+          "text": "toalla",
+          "meaning": "a towel"
+        }
+      ],
+      "fictionNote": "Fable with gentle absurdity; the cat speaks one word by convention of the world."
+    },
+    {
+      "id": "es-a2-la-roca-que-canta",
+      "language": "es-ES",
+      "level": "A2",
+      "world": "ocean",
+      "title": "La roca que canta",
+      "premise": "In a fishing village, a rock at the end of the bay sings on some evenings. Two cousins try to find out when and why, and discover the answer depends on the wind, not the sea.",
+      "beats": [
+        "Los primos Iker y Sara vivían cerca del puerto y oían la roca algunas tardes, no todas.",
+        "Decidieron apuntar los días: la roca cantó el lunes y el jueves, pero no el martes.",
+        "Fueron en barca, miraron la roca, tocaron las paredes; había un agujero grande y nada más.",
+        "El jueves subieron al faro y vieron que el viento venía del oeste, igual que el lunes.",
+        "Volvieron al puerto y lo explicaron: la roca canta cuando el viento entra en la cueva.",
+        "Noche de viento del oeste: todo el pueblo en el muelle, escuchando la roca."
+      ],
+      "learningFocus": "Pretérito indefinido e imperfecto, los días de la semana, causa con porque/cuando, comparaciones sencillas.",
+      "newWords": [
+        {
+          "text": "cueva",
+          "meaning": "a cave"
+        },
+        {
+          "text": "muelle",
+          "meaning": "a pier / quay"
+        },
+        {
+          "text": "apuntar",
+          "meaning": "to write down"
+        }
+      ],
+      "fictionNote": "Fictional village, bay and lighthouse; only the general idea that wind through a cavity makes sound."
+    },
+    {
+      "id": "es-a2-ascensor-del-segundo",
+      "language": "es-ES",
+      "level": "A2",
+      "world": "absurd",
+      "title": "El ascensor del segundo",
+      "premise": "In a block of flats the lift stops only at the second floor, whatever button you press. The neighbours complain, meet on the landing, and discover who arranged it.",
+      "beats": [
+        "El ascensor del número 9 se paraba siempre en el segundo. Daba igual el botón.",
+        "Los vecinos subían andando y se quejaban en el rellano del segundo, cada día más gente.",
+        "Llamaron al técnico, escribieron una carta, pegaron un cartel; nadie encontró el fallo.",
+        "La vecina del segundo, doña Pilar, salió con una bandeja de café: ella había pedido el cambio.",
+        "Explicó que antes nadie se saludaba; ahora todos conocían a todos. Arreglaron el ascensor igualmente.",
+        "Un cartel nuevo en el rellano: café los viernes a las seis, segundo piso, sin ascensor."
+      ],
+      "learningFocus": "Imperfecto para hábitos, quejarse y pedir ayuda, pluscuamperfecto introducido en una sola línea, explicación con antes/ahora.",
+      "newWords": [
+        {
+          "text": "rellano",
+          "meaning": "a landing between floors"
+        },
+        {
+          "text": "vecino",
+          "meaning": "a neighbour"
+        },
+        {
+          "text": "fallo",
+          "meaning": "a fault / breakdown"
+        }
+      ],
+      "fictionNote": "Fictional building; the lift is a gentle absurdity, not a safety claim."
+    },
+    {
+      "id": "es-b1-el-cometa-de-la-abuela",
+      "language": "es-ES",
+      "level": "B1",
+      "world": "cosmos",
+      "title": "El cometa de la abuela",
+      "premise": "Grandmother Carmen insists she saw a comet from the village roof as a girl. Her grandson finds nothing online and sets out to prove her wrong, which is not what happens.",
+      "beats": [
+        "Carmen contaba que había visto un cometa desde el tejado, y Nico siempre sonreía sin creerla.",
+        "Buscó listas, fechas, mapas del cielo; según internet, aquel año no hubo ningún cometa visible.",
+        "Preguntó a los vecinos mayores, revisó fotos viejas, subió al tejado de noche para medir el cielo.",
+        "En una caja de la abuela encontró un periódico local que hablaba de luces en el cielo esa semana.",
+        "Era una lluvia de estrellas, no un cometa; Carmen dijo que daba igual el nombre, que ella lo había visto.",
+        "Los dos en el tejado, sin cometa, con una manta y un cuaderno nuevo con la fecha de hoy."
+      ],
+      "learningFocus": "Estilo indirecto, pluscuamperfecto, expresar duda y certeza (según, debe de, seguro que), contraste entre memoria y registro.",
+      "newWords": [
+        {
+          "text": "tejado",
+          "meaning": "a roof"
+        },
+        {
+          "text": "lluvia de estrellas",
+          "meaning": "a meteor shower"
+        },
+        {
+          "text": "periódico local",
+          "meaning": "a local newspaper"
+        }
+      ],
+      "fictionNote": "Fictional village, newspaper and year; no real comet or astronomical event is claimed."
+    },
+    {
+      "id": "es-b1-huellas-del-monte",
+      "language": "es-ES",
+      "level": "B1",
+      "world": "deep-time",
+      "title": "Las huellas del monte",
+      "premise": "A shepherd in a fictional sierra finds marks in the rock that look like giant footprints. The village argues, a geologist arrives, and the real discovery is not the footprints.",
+      "beats": [
+        "Tomás pasaba cada día junto a una losa con marcas que parecían pisadas enormes.",
+        "El pueblo discutía: unos decían dinosaurio, otros decían dragón, el alcalde decía turismo.",
+        "Llegó una geóloga; midió, fotografió, preguntó a Tomás dónde había más marcas.",
+        "Las marcas eran ondas de agua antigua, no pisadas; el pueblo se desanimó.",
+        "Pero la geóloga señaló lo que Tomás había apuntado durante años: las capas cambiaban de color monte arriba.",
+        "Un cartel en el monte con dos nombres: la geóloga y Tomás, pastor, observador."
+      ],
+      "learningFocus": "Condicionales, hipótesis con quizás/puede que, estilo indirecto, contraste entre opinión y evidencia, registro oficial del cartel frente al habla.",
+      "newWords": [
+        {
+          "text": "losa",
+          "meaning": "a flat slab of rock"
+        },
+        {
+          "text": "capa",
+          "meaning": "a layer"
+        },
+        {
+          "text": "onda",
+          "meaning": "a ripple / wave mark"
+        }
+      ],
+      "fictionNote": "Fictional sierra, village and scientist. Only the general idea that ripple marks and layers can be preserved in rock is used; no species or dating claim."
+    },
+    {
+      "id": "es-b2-asamblea-de-las-grullas",
+      "language": "es-ES",
+      "level": "B2",
+      "world": "fables",
+      "title": "La asamblea de las grullas",
+      "premise": "The cranes meet to decide whether to leave early this year. A young crane proposes staying. The eldest argues against it with such precision that the others slowly realise she stayed last winter.",
+      "beats": [
+        "Las grullas se reúnen en la laguna cuando el frío llega pronto; hablar no cambia el viento, pero tranquiliza.",
+        "Una grulla joven propone quedarse; se hace un silencio que no es exactamente desacuerdo.",
+        "Las mayores enumeran riesgos: el hielo, el hambre, el cazador; cada riesgo con un detalle demasiado exacto.",
+        "La joven pregunta cómo saben lo del hielo de enero si nunca lo han visto; la mayor no contesta.",
+        "Al amanecer la bandada se va, salvo dos: la mayor, que dice que ya conoce el camino, y la joven.",
+        "Dos grullas en la laguna helada, una enseñando a la otra dónde no pisar."
+      ],
+      "learningFocus": "Subjuntivo en opiniones y concesiones, ironía y sobreentendido, registro de asamblea, enumeración retórica, lo que no se dice.",
+      "newWords": [
+        {
+          "text": "laguna",
+          "meaning": "a lagoon / small lake"
+        },
+        {
+          "text": "bandada",
+          "meaning": "a flock"
+        },
+        {
+          "text": "sobreentendido",
+          "meaning": "something understood without being said"
+        }
+      ],
+      "fictionNote": "Fable; no claim about real crane migration patterns."
+    },
+    {
+      "id": "es-b2-bar-de-los-jueves",
+      "language": "es-ES",
+      "level": "B2",
+      "world": "culture",
+      "title": "El bar de los jueves",
+      "premise": "Lucía inherits a run-down neighbourhood bar with four regulars who come only on Thursdays. She plans to modernise it and discovers why the Thursdays exist.",
+      "beats": [
+        "El bar de su padre tenía una barra de madera, cuatro sillas gastadas y un cartel que ya no encendía.",
+        "Los jueves venían los mismos cuatro, pedían lo mismo, hablaban poco; Lucía decidió cambiarlo todo.",
+        "Pintó, cambió la carta, quitó las sillas; los cuatro vinieron igual y se sentaron en el suelo.",
+        "Uno le contó, sin dramatismo, que los jueves eran el día en que su padre cerraba tarde para no cenar solo.",
+        "Lucía no dijo nada; devolvió las sillas, dejó la carta nueva y añadió una línea: jueves, cena de la casa.",
+        "Un jueves cualquiera: cinco sillas ocupadas, un cartel que vuelve a encenderse."
+      ],
+      "learningFocus": "Subjuntivo con deseo y duda, pretérito pluscuamperfecto, implicatura, cambio de registro entre carta escrita y conversación, eufemismo y contención.",
+      "newWords": [
+        {
+          "text": "barra",
+          "meaning": "the bar counter"
+        },
+        {
+          "text": "carta",
+          "meaning": "the menu"
+        },
+        {
+          "text": "gastado",
+          "meaning": "worn out"
+        }
+      ],
+      "fictionNote": "Fictional bar and family; no real establishment or neighbourhood."
+    }
+  ],
+  "readerDirections": [
+    {
+      "name": "Lantern Page",
+      "description": "Full-bleed illustration dimmed behind dark glass; the three phrases sit on a single frosted panel at the foot of the page in warm off-white, the active phrase underlined in vermillion. Tappable objects are marked by small gold pulse-rings that fade once heard. Page title is a quiet gold caption at the top. No bottom-bar or route changes; the reader is a modal surface over the current lesson."
+    },
+    {
+      "name": "Museum Plate",
+      "description": "Each page is a dark card like a specimen drawer: illustration vignette on the left third, phrases as three labelled lines on the right, objects shown as two small gold-outlined callouts with their spoken label beneath. Suits deep time, cosmos and ocean episodes. Explanations slide up as a second drawer in the base language, never replacing the target text."
+    },
+    {
+      "name": "Night Window",
+      "description": "The illustration fills a rounded window; swiping pages moves the window across the scene like a slow pan. Phrases appear one at a time as vermillion-edged glass chips that stack; tapping an object dims the window and brightens that object with a gold halo while its description plays. Minimal chrome, no new tabs, respects existing dark-glass tokens."
+    }
+  ],
+  "recordingRules": [
+    "One narrator per language for the first wave; speaker role metadata (narrator, character name, label, title) is stored on every clip so character voices can be assigned after auditions without re-editing text.",
+    "Record exactly the phrase as written; no added words, no reading of punctuation; one clip per phrase, per object label, per object description, per page title, per story title.",
+    "Nothing in English or German scaffolding is recorded; meanings and explanations are text only.",
+    "en-GB: contemporary, clear, unhurried; no exaggerated received pronunciation, no regional caricature. es-ES: standard peninsular with distinción, natural rhythm, no stage accent.",
+    "Object labels are read as a speaker would say them in context (the kettle / la bandeja de café), with the article included.",
+    "Levels above A1 may carry one marked line per page with lighter emphasis to signal subtext, noted in metadata, but never a different wording.",
+    "This document proposes; it has no recording authority. Nothing is recorded until premises, full texts and the overlap audit are approved."
+  ],
+  "risks": [
+    "Exact overlap with existing drill sentences is unverified; a full audit is required before any phrase is approved.",
+    "A1 contracts (three glossed words, simple present only) are hard to hold across six pages with a real plot; expect rewrites.",
+    "Spanish episodes must be reviewed by a native es-ES editor for idiom and register; the English-first team cannot certify them.",
+    "Humour in Gentle Absurdity may read differently across cultures; test with learners before locking.",
+    "B2 subtext relies on readers inferring; explanations must make the implicature explicit without flattening the line.",
+    "Natural-history and cosmos episodes could drift into factual claims during full writing; keep fictionNote constraints binding.",
+    "Asset volume is significant: roughly 37 recorded clips per episode, about 592 for the wave, before any character voices.",
+    "Lens-based choice must be implemented so it never alters phrase order or audio; otherwise permutations creep in.",
+    "Later languages with non-Latin scripts will need the page layout to handle vertical rhythm and script-specific line breaking from the start."
+  ],
+  "status": "editorial-outline-with-parent-corrections",
+  "parentCorrections": [
+    "The Blue Bus: replace the contradictory no-stops trip with a parked blue bus that is a small lending library. Nia wants to travel; the librarian shows a picture book of the sea. The final image is a reading journey, explicitly imaginative. No missed-work reward or unclear transport advice.",
+    "Pip: the other owls simply missed THAT morning or a green ribbon because they were asleep. Never claim owls cannot see green or have never seen colours. Clearly fictional talking animals.",
+    "Lowest Tide: observe a newly visible sandbank from a dry marked promenade with a ranger; do not walk out, race rising water, collect creatures, or state annual recurrence. The path is a line seen from shore, not a route to walk.",
+    "Dark Line: remove the assertion that every layer took longer than any town; use a fictional exhibit/sample observed from a safe public path. Do not guess fire/flood as fact. A guide can say we do not yet know.",
+    "Heron Committee: change the grievance to noisy beavers disturbing a meeting. An upstream visit reveals a seat/platform being repaired for everyone, not a dam wrongly claimed to provide downstream water. Keep B2 implicature, bureaucratic reticence and unresolved credit-taking, no ecological lesson.",
+    "Lift story: reject deliberate lift sabotage and celebrating exclusion. The lift has a real temporary fault, maintenance is called, neighbours with access needs receive help only if wanted, coffee is optional and in an accessible shared space. Repair restores access; voluntary Friday coffee continues. A2: no pluperfect.",
+    "Crane Assembly: do not turn staying on a frozen lake into practical instruction. Confession about a previous hard winter leads to a revised departure plan; older and younger crane leave together after an unspoken reconciliation. Distinct from the English heron comedy.",
+    "Bar: customers pause at the counter when familiar chairs disappear; do not make them sit on the floor. Let B2 inference and precise dialogue carry the scene. No requirement to consume alcohol.",
+    "Exact asset math: 1 story title + up to 3 vocabulary labels + 6*(1 page title + 3 lines + 2 labels + 2 descriptions) = up to 52 speech uses per episode. Do not repeat the incorrect 37/592 estimate."
+  ]
+}

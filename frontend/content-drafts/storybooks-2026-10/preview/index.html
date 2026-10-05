@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Lingwave · Worlds reader study</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/reader.js"></script>
+</head>
+<body data-direction="atlas">
+  <a class="skip" href="#book">Skip to story</a>
+  <header class="masthead"><a class="wordmark" href="/" aria-label="Lingwave Worlds">lingwave<span>Worlds</span></a><span class="prototype" data-t="prototype">Reader study · local preview</span><label class="base-select"><span data-t="base">Explain in</span><select id="base"><option value="en">English</option><option value="de">Deutsch</option></select></label></header>
+  <main>
+    <div class="introduction"><div><p class="eyebrow" data-t="eyebrow">SMALL STORIES. WIDER WORLDS.</p><h1 data-t="headline">Follow your curiosity.</h1><p class="lede" data-t="lede">Read a little. Look closer. Find a new way to say it.</p></div><fieldset class="directions"><legend data-t="directions">Choose a reader treatment</legend><label><input type="radio" name="direction" value="atlas" checked><span>01 <b data-t="atlas">Atlas</b></span></label><label><input type="radio" name="direction" value="folio"><span>02 <b data-t="folio">Folio</b></span></label><label><input type="radio" name="direction" value="stage"><span>03 <b data-t="stage">Stage</b></span></label></fieldset></div>
+    <div class="workspace">
+      <aside class="library"><h2 data-t="collection">Your next small adventure</h2><div class="filters"><label><span data-t="language">Read in</span><select id="language"><option value="en-GB">British English</option><option value="es-ES">Español de España</option></select></label><label><span data-t="level">Level</span><select id="level"><option value="all">All levels</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option></select></label></div><div id="shelf" class="shelf"></div><p class="library-note" data-t="libraryNote">Original fiction. Six pages at a time. Choose any world.</p></aside>
+      <article id="book" class="book" tabindex="-1" aria-labelledby="story-title">
+        <header class="book-header"><div><p id="story-meta" class="eyebrow"></p><h2 id="story-title"></h2><p id="story-meaning"></p></div><button id="resume" class="quiet" type="button" data-t="restart">Start again</button></header>
+        <div class="reading-tools"><button id="vocab-toggle" aria-expanded="false" aria-controls="vocabulary" type="button" data-t="wordPocket">A few words before you go</button><label class="translation-toggle"><input id="meanings" type="checkbox"><span data-t="showMeanings">Show meanings</span></label></div>
+        <section id="vocabulary" hidden></section>
+        <div class="spread"><section class="scene" aria-labelledby="scene-heading"><div class="scene-rings" aria-hidden="true"><i></i><i></i><i></i></div><div class="scene-caption"><p class="eyebrow" data-t="lookCloser">LOOK CLOSER</p><h3 id="scene-heading"></h3><p data-t="sceneHint">Tap a detail to explore its words.</p></div><div id="hotspots"></div><p class="art-placeholder" data-t="artPlaceholder">Scene study · illustration to follow</p></section><section class="story-page"><div class="page-heading"><span id="page-number"></span><button id="page-title" class="page-title" type="button"></button></div><div id="lines"></div><p class="read-hint" data-t="readHint">Tap a line for its meaning and a language note.</p></section></div>
+        <section id="detail" class="detail" aria-live="polite"><div><p class="eyebrow" data-t="notice">A LITTLE DISCOVERY</p><h3 id="detail-text"></h3><p id="detail-meaning"></p><p id="detail-note" class="detail-note"></p></div><div class="audio"><button id="listen" type="button" disabled data-t="listen">Listen</button><span data-t="audioPending">Recording pending</span></div></section>
+        <footer class="page-nav"><button id="previous" type="button" data-t="previous">← Previous</button><nav id="page-dots" aria-label="Story pages"></nav><button id="next" type="button" data-t="next">Next page →</button></footer>
+        <section id="ending" class="ending" hidden><h3 data-t="ending">The story stays with you.</h3><p data-t="endingHint">Return to any page, or open another world.</p><button id="next-story" type="button" data-t="nextStory">Another story →</button></section>
+        <details class="story-notes"><summary data-t="aboutStory">About this story</summary><p id="focus"></p><p id="fiction"></p><p data-t="previewNote">English and German explanations are available in this study. Audio, illustrations and other explanation languages are still to come. The three reader treatments await your choice.</p></details>
+      </article>
+    </div>
+    <p id="status" role="status"></p>
+  </main>
+</body>
+</html>

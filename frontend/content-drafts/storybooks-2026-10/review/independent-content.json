@@ -1,0 +1,122 @@
+{
+  "verdict": "PASS",
+  "reviewer": "/root/storybook_content_review",
+  "sources": {
+    "english.json": "30b311f182202cd5e19f686c92ae9ab51b0bc2b67e8590d5b334203ad0dfe823",
+    "spanish.json": "654febba54895b81020579a9800bb504bc3426a4f310552043aa47b11b6df041"
+  },
+  "fullReadSources": {
+    "english.json": "4a78c039b181d33750eca25b4290f77c988c928761253463a72fe8f4d7dac457",
+    "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+  },
+  "readThrough": {
+    "episodes": 16,
+    "pages": 96,
+    "lines": 288,
+    "hotspots": 192,
+    "preTaughtWords": 48,
+    "scalarFields": 4836,
+    "allFieldsRead": true
+  },
+  "initialFindingsClosed": [
+    "A1 idioms, meanings, grammar notes and chronology",
+    "A2 lift access, translations, rock chronology and queue count",
+    "B1 unsupported scientific conclusions, geological interpretation and translations",
+    "B2 crane ending, log repair, menu/sign/form continuity and language notes"
+  ],
+  "finalVerdict": "PASS: no BLOCKER, HIGH or MEDIUM; LOW owl count exact corrections prescribed. No further independent review required for those replacements.",
+  "unresolvedFindings": 0,
+  "exactFinalCorrections": [
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/0/hotspots/0/text",
+      "oldValue": "Five owls sit on a long branch.",
+      "newValue": "Six owls sit on a long branch.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/0/hotspots/0/meaning/en",
+      "oldValue": "Five owls sit on a long branch.",
+      "newValue": "Six owls sit on a long branch.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/0/hotspots/0/meaning/de",
+      "oldValue": "Fünf Eulen sitzen auf einem langen Ast.",
+      "newValue": "Sechs Eulen sitzen auf einem langen Ast.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/0/hotspots/0/note/en",
+      "oldValue": "After a number above one, the noun is plural: five owls.",
+      "newValue": "After a number above one, the noun is plural: six owls.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/0/hotspots/0/note/de",
+      "oldValue": "Nach einer Zahl über eins steht der Plural: five owls.",
+      "newValue": "Nach einer Zahl über eins steht der Plural: six owls.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/5/artBrief",
+      "oldValue": "Orange and purple dusk sky with the first star out. Six owls sit in a neat line on the high branch, all turned towards Pip at the end, who stands tall with wings half open, mid-speech, eyes bright and wide.",
+      "newValue": "Orange and purple dusk sky with the first star out. Six owls are on the high branch: five sit in a neat line, turned towards Pip, the sixth, at the end. Pip stands tall with wings half open, mid-speech, eyes bright and wide.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/5/hotspots/0/text",
+      "oldValue": "Six owls sit in a line and listen.",
+      "newValue": "Five owls sit in a line and listen.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/5/hotspots/0/meaning/en",
+      "oldValue": "Six owls sit in a line and listen.",
+      "newValue": "Five owls sit in a line and listen.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/1/pages/5/hotspots/0/meaning/de",
+      "oldValue": "Sechs Eulen sitzen in einer Reihe und hören zu.",
+      "newValue": "Fünf Eulen sitzen in einer Reihe und hören zu.",
+      "prescribedBy": "independent final reviewer"
+    },
+    {
+      "file": "english.json",
+      "pointer": "/episodes/2/pages/4/artBrief",
+      "oldValue": "An hour later. The sea is full and calm right up to the beach; no sandbank, no line. Eli sits on the promenade wall swinging two clean dry boots. Mara leans beside Eli with binoculars around her neck, pointing at the empty water.",
+      "newValue": "An hour later. The sea is full and calm right up to the beach; no sandbank, no line. Eli sits on the promenade wall swinging two clean dry boots. Mara leans beside Eli, pointing at the empty water; Eli's binoculars rest on the wall between them.",
+      "prescribedBy": "Fable optional neutral art clarification; independent reviewer says harmless but unnecessary"
+    }
+  ],
+  "closureMethod": "Parent asserted every oldValue, applied the nine independent-prescribed replacements plus Fable optional art clarification, and hashed the resulting files. No claim that the reviewer separately reread these derived bytes.",
+  "limitations": [
+    "Model editorial review, not native-human certification.",
+    "Originality checked separately by conservative string overlap, not plagiarism certification."
+  ],
+  "reviewedByteSources": {
+    "english.json": "2e176ce42e3405cca8e5a26e60162e12faab4467f26f1e87c3b19be6cd16c5ec",
+    "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+  },
+  "byteCanonicalization": {
+    "reason": "Match repository .gitattributes eol=lf before committing.",
+    "method": "CRLF to LF only; parsed JSON equality asserted for every file.",
+    "before": {
+      "english.json": "2e176ce42e3405cca8e5a26e60162e12faab4467f26f1e87c3b19be6cd16c5ec",
+      "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+    },
+    "after": {
+      "english.json": "30b311f182202cd5e19f686c92ae9ab51b0bc2b67e8590d5b334203ad0dfe823",
+      "spanish.json": "654febba54895b81020579a9800bb504bc3426a4f310552043aa47b11b6df041"
+    }
+  }
+}

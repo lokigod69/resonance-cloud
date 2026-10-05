@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "method": "Whole-string exact and case/punctuation-normalised comparison; not semantic or plagiarism detection",
+  "scope": "Existing authored A1/A2 and live German B1 snapshot, plus complete staged English/Spanish B1/B2 JSON at this observation",
+  "sourceHashes": {
+    "english.json": "30b311f182202cd5e19f686c92ae9ab51b0bc2b67e8590d5b334203ad0dfe823",
+    "spanish.json": "654febba54895b81020579a9800bb504bc3426a4f310552043aa47b11b6df041"
+  },
+  "corpusSnapshotSha256": "321a97ff8d1dcc85f114154a9f789a7a4acc47122bae8781ed31dd8a00741818",
+  "verifiedCorpusFiles": [
+    {
+      "path": "frontend/src/data/guidedLessonsAuthoring.ts",
+      "sha256": "40384aaab45aceec1f137bfcb7b9ab03aff8445bb98b751b1e4e85e1a1da3963"
+    },
+    {
+      "path": "frontend/src/data/guidedLessons.ts",
+      "sha256": "1011e892864751323bc403ca2ca8eb14e5890ea2dab75e52e2358bf2ee361472"
+    },
+    {
+      "path": "frontend/src/data/guidedVibes.ts",
+      "sha256": "a445eb5f84725ab2020a57da9d19f78d401a449d61de8df2d7fae08ad2b26650"
+    },
+    {
+      "path": "frontend/src/data/guided/cebuanoA2.ts",
+      "sha256": "c7cc9f9968708d87365abcc2a52d50bdac048268de456a4118fe0f59a1adec3d"
+    },
+    {
+      "path": "frontend/src/data/guided/englishA2.ts",
+      "sha256": "f72cf4acd0dc378a17f7465d14a32e57670f04363cb26ef6548f993d088494f9"
+    },
+    {
+      "path": "frontend/src/data/guided/frenchA2.ts",
+      "sha256": "2e68d176c0bb578708d059988a8d4d05270e7254c7f7a8ab2315bbb0ad3a5a3e"
+    },
+    {
+      "path": "frontend/src/data/guided/germanA2.ts",
+      "sha256": "f386faa40c5e4fbac84134d3b8dbf9185957b429e6310f02e102b63e0bc4ed27"
+    },
+    {
+      "path": "frontend/src/data/guided/germanB1.ts",
+      "sha256": "0d74cf9c8af92b87cb46022657353977607cb14827db5ae901027ad0185fd1bf"
+    },
+    {
+      "path": "frontend/src/data/guided/indonesianA2.ts",
+      "sha256": "16583697c7777f3da1bdd97a7e9196bf913fa4838f7928273f1b897d86d7930d"
+    },
+    {
+      "path": "frontend/src/data/guided/italianA2.ts",
+      "sha256": "cb9490cbc19dc353691ffe13a551c00de65363219a3144e42511bbedb497a5df"
+    },
+    {
+      "path": "frontend/src/data/guided/japaneseA1.ts",
+      "sha256": "9b8f5911a4d269a360e0ca0078fe3c0c37549da8a472fc4f8eac68b2be975919"
+    },
+    {
+      "path": "frontend/src/data/guided/japaneseA2.ts",
+      "sha256": "6ddf4a8054d068f2dfdd65c8df9ffc2fff81e73abda89e068edf15ba2667a835"
+    },
+    {
+      "path": "frontend/src/data/guided/koreanA1.ts",
+      "sha256": "15b37fa923e12e3d2e307000cecc9c67ac798bf9540a9665c9a163ba08a36931"
+    },
+    {
+      "path": "frontend/src/data/guided/koreanA2.ts",
+      "sha256": "7db4157b4b015fa391820f45b0a005903d0a69d931c25fd1d67dff152415fb02"
+    },
+    {
+      "path": "frontend/src/data/guided/polishA2.ts",
+      "sha256": "c83688b3b868d64d0ec85c8a3e987550b5a8e9565934e05e1eea8403342d470f"
+    },
+    {
+      "path": "frontend/src/data/guided/portugueseA2.ts",
+      "sha256": "1905fe47751439965a59de996713540995de67c359e5d3e9da42412dd6fd42ff"
+    },
+    {
+      "path": "frontend/src/data/guided/russianA1.ts",
+      "sha256": "aa8a345434baaebd32ed33183f201031d7df009edc84022e3a74946bcaa6576a"
+    },
+    {
+      "path": "frontend/src/data/guided/russianA2.ts",
+      "sha256": "c527208d7dc7bc486c84eb1cc3f1a597ba6549bcd89568c6875baabbf3c9a8dc"
+    },
+    {
+      "path": "frontend/src/data/guided/spanishA2.ts",
+      "sha256": "0e79a88c5ae57dc4a7655527cf7424ee555a7a758e9c35f73317942ba7bbec43"
+    }
+  ],
+  "additionalDrafts": [
+    {
+      "file": "frontend/content-drafts/b1-2026-10/english.json",
+      "sha256": "9e00819305d4bd3b187187b2de806e2b8589bba0d73334b65c30e6ab5dd8c4f5"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p2.json",
+      "sha256": "2dd2103726384442f7459205d2ec0083a8584a87005a2cd641a54a96425c4413"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p3.json",
+      "sha256": "ae80bf4cbfe7aea5bb4f701b7fe594cc2fba61039e506eedda5bcfcf10e4af86"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p4.json",
+      "sha256": "3b90610ead1b27ca9963ae63dc7839cff3a35de62b1be2cc52c5265ac1a263e7"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/english-p5.json",
+      "sha256": "b5a153f1a4d3f2da447b12980642b70fb51f9cff23bf99614ed8d67773a6997b"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p2.json",
+      "sha256": "d526f84e68fdbc0a5ccff2807e0c32fc7f3953963e36ecc0f94a6c6db3814fb8"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p3.json",
+      "sha256": "a07d13f30320db28d777a79df8f45cead640d1176cae2d2d555154ed5fd0acbf"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p4.json",
+      "sha256": "a0a3c4e04fc4a5c80bff59813b9daab8ebbd2eae413d14a4d57a8959b4930ac8"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/paths/spanish-p5.json",
+      "sha256": "707bd824511654be46b473cb766d1599a43f8abbf753020c7b0a940c6b5129f5"
+    },
+    {
+      "file": "frontend/content-drafts/b1-2026-10/spanish.json",
+      "sha256": "2742692a634b75049a5a85efdb7540634bfdbb97888f97e0aa196e61b0198aeb"
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/english/p1.json",
+      "sha256": "980db4ae5a8de7211b5064285524b0c14aef0f68aff5b038efb287446f56ced2"
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/english/p2.json",
+      "sha256": "8a83da77e3006699a6c7cda91340147f119078f8f93a038521416e7fc8c39312"
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/spanish/p1.json",
+      "sha256": "1bd42900b06500ac2da60e57cd31a44e1151dcb339452f9267208deae4c691f5"
+    },
+    {
+      "file": "frontend/content-drafts/b2-2026-10/spanish/p2.json",
+      "sha256": "f1e5306ad2f726eafa6bfdae22326968f76c3787fa8091be1f6c834c49063288"
+    }
+  ],
+  "uniqueStoryPhrases": 830,
+  "longMatches": [],
+  "shortCommonLanguageMatches": [
+    {
+      "text": "stop",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a1-blue-bus/0/word-1/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "stop",
+          "location": "existing/english-a1-practical-006-the-train/vibeVariants/wistful/typeRecall/fallbackChoices/2"
+        },
+        {
+          "text": "stop",
+          "location": "existing/english-a1-practical-3-005-the-next-stop/vibeVariants/bright/lessonItems/2/targetText"
+        },
+        {
+          "text": "stop",
+          "location": "existing/english-a1-practical-3-005-the-next-stop/vibeVariants/bright/lessonItems/2/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "library",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a1-blue-bus/0/word-2/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "library",
+          "location": "existing/english-a2-practical-1-008-the-subway-is-at-the-end-of-the-street/vibeVariants/bright/typeRecall/fallbackChoices/2"
+        },
+        {
+          "text": "library",
+          "location": "existing/english-a2-practical-7-065-i-recommend-the-cafe-next-to-the-library/vibeVariants/bright/lessonItems/2/targetText"
+        },
+        {
+          "text": "library",
+          "location": "existing/english-a2-practical-7-065-i-recommend-the-cafe-next-to-the-library/vibeVariants/bright/lessonItems/2/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "The Bus Stop",
+      "locale": "en-GB",
+      "words": 3,
+      "uses": [
+        "en-a1-blue-bus/1/page/title"
+      ],
+      "matches": [
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/chunks/1/targetText"
+        },
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/lessonItems/1/targetText"
+        },
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/lessonItems/1/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "the bus stop",
+      "locale": "en-GB",
+      "words": 3,
+      "uses": [
+        "en-a1-blue-bus/1/p1-object1/label"
+      ],
+      "matches": [
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/chunks/1/targetText"
+        },
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/lessonItems/1/targetText"
+        },
+        {
+          "text": "the bus stop",
+          "location": "existing/english-a1-practical-7-002-where-is-the-bus/vibeVariants/bright/lessonItems/1/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "branch",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a1-day-owl/0/word-3/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "branch",
+          "location": "frontend/content-drafts/b1-2026-10/paths/english-p3.json/7/terms/3/targetText"
+        }
+      ]
+    },
+    {
+      "text": "Morning",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a1-day-owl/4/page/title"
+      ],
+      "matches": [
+        {
+          "text": "morning",
+          "location": "existing/english-a1-practical-8-009-what-time-is-breakfast/vibeVariants/bright/lessonItems/3/id"
+        },
+        {
+          "text": "morning",
+          "location": "existing/english-a1-practical-8-009-what-time-is-breakfast/vibeVariants/bright/lessonItems/3/targetText"
+        },
+        {
+          "text": "morning",
+          "location": "existing/english-a1-practical-8-009-what-time-is-breakfast/vibeVariants/bright/lessonItems/3/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "count",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a2-low-tide/0/word-3/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "count",
+          "location": "frontend/content-drafts/b2-2026-10/english/p2.json/9/cloze/blanks/1/choices/1"
+        }
+      ]
+    },
+    {
+      "text": "queue",
+      "locale": "en-GB",
+      "words": 1,
+      "uses": [
+        "en-a2-the-queue/0/word-1/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "queue",
+          "location": "frontend/content-drafts/b2-2026-10/english/p2.json/7/terms/6/targetText"
+        },
+        {
+          "text": "queue",
+          "location": "frontend/content-drafts/b2-2026-10/english/p2.json/7/speak/2/requiredTokens/2"
+        }
+      ]
+    },
+    {
+      "text": "toalla",
+      "locale": "es-ES",
+      "words": 1,
+      "uses": [
+        "es-a1-gato-que-dice-no/0/word-3/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "toalla",
+          "location": "existing/spanish-a1-practical-8-007-una-toalla/vibeVariants/bright/lessonItems/0/id"
+        },
+        {
+          "text": "toalla",
+          "location": "existing/spanish-a1-practical-8-007-una-toalla/vibeVariants/bright/lessonItems/0/targetText"
+        },
+        {
+          "text": "toalla",
+          "location": "existing/spanish-a1-practical-8-007-una-toalla/vibeVariants/bright/lessonItems/0/acceptedAnswers/0"
+        }
+      ]
+    },
+    {
+      "text": "Sí.",
+      "locale": "es-ES",
+      "words": 1,
+      "uses": [
+        "es-a1-gato-que-dice-no/5/p5-line2/line"
+      ],
+      "matches": [
+        {
+          "text": "Sí,",
+          "location": "existing/spanish-a2-practical-1-001-lo-de-siempre/vibeVariants/bright/chunks/0/targetText"
+        },
+        {
+          "text": "Sí,",
+          "location": "existing/spanish-a2-practical-1-001-lo-de-siempre/vibeVariants/bright/build/chips/0"
+        },
+        {
+          "text": "sí",
+          "location": "existing/spanish-a2-practical-1-001-lo-de-siempre/vibeVariants/bright/speakTarget/optionalTokens/0"
+        }
+      ]
+    },
+    {
+      "text": "apuntar",
+      "locale": "es-ES",
+      "words": 1,
+      "uses": [
+        "es-a2-la-roca-que-canta/0/word-3/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "apuntar",
+          "location": "frontend/content-drafts/b1-2026-10/spanish.json/7/cloze/3/cue"
+        }
+      ]
+    },
+    {
+      "text": "vecino",
+      "locale": "es-ES",
+      "words": 1,
+      "uses": [
+        "es-a2-ascensor-del-segundo/0/word-2/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "vecino",
+          "location": "frontend/content-drafts/b2-2026-10/spanish/p1.json/8/interlocutors/0/id"
+        },
+        {
+          "text": "vecino",
+          "location": "frontend/content-drafts/b2-2026-10/spanish/p1.json/8/dialogue/0/interlocutorId"
+        },
+        {
+          "text": "vecino",
+          "location": "frontend/content-drafts/b2-2026-10/spanish/p1.json/8/dialogue/2/interlocutorId"
+        }
+      ]
+    },
+    {
+      "text": "la carta",
+      "locale": "es-ES",
+      "words": 2,
+      "uses": [
+        "es-b2-bar-de-los-jueves/0/word-2/vocabulary"
+      ],
+      "matches": [
+        {
+          "text": "¿La carta,",
+          "location": "existing/spanish-a1-practical-4-002-la-carta/vibeVariants/bright/chunks/0/targetText"
+        },
+        {
+          "text": "¿La carta,",
+          "location": "existing/spanish-a1-practical-4-002-la-carta/vibeVariants/bright/build/chips/0"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Short shared words/phrases are expected. Long matches require editorial inspection; a match can also occur in an explanation. Zero matches is not a claim of conceptual uniqueness."
+}

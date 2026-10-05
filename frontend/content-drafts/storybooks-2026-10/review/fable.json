@@ -1,0 +1,76 @@
+{
+  "verdict": "PASS",
+  "sources": {
+    "english.json": "30b311f182202cd5e19f686c92ae9ab51b0bc2b67e8590d5b334203ad0dfe823",
+    "spanish.json": "654febba54895b81020579a9800bb504bc3426a4f310552043aa47b11b6df041"
+  },
+  "unresolvedFindings": 0,
+  "findings": [],
+  "reviewBasis": "Full read of both affected final stories (en-a1-day-owl, en-a2-low-tide) against the ten exact changes. Owl count is now coherent: p1 artBrief (five alert owls plus Pip at the end) matches hotspot 'Six owls sit on a long branch' in text/meaning/notes (en+de); p6 artBrief (six on the branch, five in a line turned towards Pip the sixth) matches hotspot 'Five owls sit in a line and listen' and the de meaning; narrator line 'The owls sit in a row' remains neutral; p3/p4/p5 'the other owls' references unaffected. Binoculars continuity: p1 Eli holds them, p3 Eli looks through them, p5 they rest on the wall between Eli and Mara; p6 bench scene does not reference them. No new inconsistencies introduced; German meanings and notes in changed fields are accurate. Both prior LOW observations are resolved.",
+  "limitations": [
+    "No tools: final sourceHashes echoed from the prompt, not recomputed.",
+    "Only the two affected stories were re-read; the other 14 stories (including all Spanish) are accepted as unchanged on the parent's assertion and the identical spanish.json hash.",
+    "Editor-model check of English/German text; no native-human review or originality certification is claimed."
+  ],
+  "priorFullRead": {
+    "verdict": "PASS",
+    "sources": {
+      "english.json": "4a78c039b181d33750eca25b4290f77c988c928761253463a72fe8f4d7dac457",
+      "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+    },
+    "readThrough": [
+      {
+        "file": "english.json",
+        "episodes": 8,
+        "pages": 48,
+        "allFieldsRead": true
+      },
+      {
+        "file": "spanish.json",
+        "episodes": 8,
+        "pages": 48,
+        "allFieldsRead": true
+      }
+    ],
+    "unresolvedFindings": 2,
+    "findings": [
+      {
+        "severity": "LOW",
+        "file": "english.json",
+        "pointer": "/episodes/1/pages/0/hotspots/0/text",
+        "problem": "Page 1 art brief reads as five alert owls plus Pip at the end of the branch (six on the branch), and page 6 explicitly shows six owls in a row. Hotspot text 'Five owls sit on a long branch.' undercounts if Pip is included; ambiguous rather than wrong.",
+        "exactFix": "Either change the text/meaning to 'Six owls sit on a long branch.' / 'Sechs Eulen sitzen auf einem langen Ast.' or edit the artBrief to 'Four owls sit alert ... At the end of the branch, Pip' so five is exact."
+      },
+      {
+        "severity": "LOW",
+        "file": "english.json",
+        "pointer": "/episodes/2/pages/4/artBrief",
+        "problem": "Pages 1 and 3 give Eli the binoculars (hotspot 'Eli looks through heavy binoculars'); page 5 art has Mara wearing binoculars around her neck with no handover. Minor art continuity drift, defensible as a shared pair.",
+        "exactFix": "Change 'Mara leans beside Eli with binoculars around her neck, pointing at the empty water.' to 'Mara leans beside Eli, pointing at the empty water; Eli's binoculars rest on the wall between them.'"
+      }
+    ],
+    "scopeLimitations": [
+      "No tools: hashes echoed from the prompt, not recomputed.",
+      "Parent arbitration items confirmed as resolved in text: es-a2 ascensor p4 shows ground-floor coffee with Tomás beside the closed faulty lift; es-b2 grullas p5-p6 has Serena and Tula departing together, and the p6 water-gleam hotspot carries no ice advice. Not reverted.",
+      "Target-language text, meanings and notes checked by an editor model; no native-human certification or originality certification is claimed.",
+      "Shared first names across unrelated stories (Marta, Tomás in two Spanish episodes; Tom, Dev, Priya across English episodes) noted but not flagged: each episode is self-contained and no requirement for cross-episode uniqueness was given.",
+      "Irregular-participle and gender notes (impreso, roto, el agua/el ala, azul, grande, cada, hacia/hacía) checked for accuracy and found correct; no further factual claims in the texts exceed the fiction notes."
+    ]
+  },
+  "reviewedByteSources": {
+    "english.json": "2e176ce42e3405cca8e5a26e60162e12faab4467f26f1e87c3b19be6cd16c5ec",
+    "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+  },
+  "byteCanonicalization": {
+    "reason": "Match repository .gitattributes eol=lf before committing.",
+    "method": "CRLF to LF only; parsed JSON equality asserted for every file.",
+    "before": {
+      "english.json": "2e176ce42e3405cca8e5a26e60162e12faab4467f26f1e87c3b19be6cd16c5ec",
+      "spanish.json": "e873f37a5134b65f5f0c1442e024cb2b1099bafae8e663e08be4ebb88eb7a7be"
+    },
+    "after": {
+      "english.json": "30b311f182202cd5e19f686c92ae9ab51b0bc2b67e8590d5b334203ad0dfe823",
+      "spanish.json": "654febba54895b81020579a9800bb504bc3426a4f310552043aa47b11b6df041"
+    }
+  }
+}
