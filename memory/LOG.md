@@ -2,6 +2,11 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-10-05 — German B2 P2 reviewed; English B2 with Fable
+- Ten more German B2 episodes passed Fable's complete read and 36 exact changes. The independent single final rereview verified 31 replacements and five explicit pattern-example appends, resolved all three medium findings and passed with zero remaining findings. The actual structural gate passes sixty turns and the original spec/ledger bindings. Final source SHA `5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960`.
+- P2 local plan: 220 clips, 255 uses, 11,030 characters; fingerprint `1dc28004db663462309fff94741116dabe8bcb1d99fe6b446976185de023e834`, queued after Portuguese P2/P3 with the unchanged reviewed German executor. No app/runtime/publication activation. Portuguese package was committed/pushed `2d2fb2cd` and its 280-file queue is active.
+- English B2 P1/P2 now has twenty complete gate-passing episodes, 120 dialogue turns and sixty speaking targets, frozen for Fable's full read. A separate isolated English/Spanish B2 execution candidate is being authored; existing native/German/refresh executors remain sealed. Korean B1 P1/P2 and French B1 P3/P4 are being authored in scratch.
+
 ## 2026-10-05 — Portuguese B1 P2/P3 ready for the v4 queue
 - Twenty complete pt-BR lessons passed Fable's personal full-field read and four exact corrections, followed by an independent full review with no recording or publication findings. Both paths pass the real B1 gate. The unchanged hundred-lesson trophy plan has zero collisions against 199 frozen trophy surfaces. The archived P3 addendum explicitly stages the required polite-request and conditional forms.
 - Local plan: 280 unique clips, 340 uses, 7,875 characters; receipt-verified Carla, fingerprint `542190ffec143235c07b3f0c7020841f282c1bf366e0368091b3df22cd2ac0b5`. Queue order is after the 314-file Indonesian batch; same existing ledger/cap/lock and no production publication. This brings staged Latin B1 to 180, plus Indonesian's twenty reviewed episodes and Cebuano's twenty spoken-text-approved episodes with its publication hold.

@@ -1,0 +1,3997 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "German",
+  "targetLanguageCode": "de-DE",
+  "authoredBaseLanguage": "English",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "erklaeren-warum",
+  "pathTitle": {
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "en": "Explain a process or a chain of causes, refine the explanation when questioned, and draw a practical conclusion."
+  },
+  "specRef": {
+    "pathSpec": "tmp/V4_EXPANSION_20261003/GERMAN_B2_PATH_SPEC.json",
+    "pathSpecSha256": "8fca9baa36cab59663e50b6c827124c34cbfab109f75fccf798cda2a5aa5ffaa",
+    "ledger": "tmp/V4_EXPANSION_20261003/GERMAN_B2_TROPHY_LEDGER.json",
+    "ledgerSha256": "a9b4baebe7c771266a3553c172103cee1d0325d7aac097dfaa4eb924606914a6"
+  },
+  "authoring": {
+    "source": "gpt-6",
+    "runId": "german-b2-p2-20261005",
+    "date": "2026-10-05"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "rechnung-weicht-ab",
+      "title": {
+        "en": "An invoice that differs from the quote"
+      },
+      "situation": {
+        "de": "Du gehst mit deiner Steuerberaterin eine Rechnung durch, deren Endbetrag höher ist als im ursprünglichen Angebot.",
+        "en": "You are going through an invoice with your tax adviser; its total is higher than the original quote."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "steuerberaterin",
+          "role": {
+            "en": "tax adviser"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your tax adviser asks: „Die Rechnung ist höher als das ursprüngliche Angebot. Können Sie mir den Unterschied erklären?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "steuerberaterin",
+          "targetText": "Die Rechnung ist höher als das ursprüngliche Angebot. Können Sie mir den Unterschied erklären?",
+          "base": {
+            "en": "The invoice is higher than the original quote. Can you explain the difference to me?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "Sie",
+          "targetText": "Da die Montage im Angebot fehlte, erklärt dieser Posten die Abweichung, sodass der Gesamtbetrag deutlich höher ausfällt.",
+          "base": {
+            "en": "Since installation was missing from the quote, this item explains the discrepancy, making the total substantially higher."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "steuerberaterin",
+          "targetText": "Aber die Montage wurde doch schon bezahlt. Wie passt das zu Ihrer Erklärung?",
+          "base": {
+            "en": "But the installation has already been paid for. How does that fit your explanation?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Das heißt, die Leistung ist korrekt aufgeführt, aber die Anzahlung fehlt; deshalb bleibt nur der noch offene Betrag zu zahlen.",
+          "base": {
+            "en": "That means the service is listed correctly, but the advance payment is missing; only the outstanding amount therefore remains to be paid."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "steuerberaterin",
+          "targetText": "Welche Unterlagen brauchen wir, um die tatsächliche Restforderung zu prüfen?",
+          "base": {
+            "en": "Which documents do we need to check the amount actually still owed?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Sie",
+          "targetText": "Daraus folgt, dass wir die Anzahlung mit dem Kontoauszug abgleichen müssen, bevor wir den Restbetrag freigeben.",
+          "base": {
+            "en": "It follows that we need to check the advance payment against the bank statement before authorising payment of the balance."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Da die Montage im Angebot fehlte, ",
+        "chunks": [
+          "erklärt dieser Posten",
+          "die Abweichung,",
+          "sodass der Gesamtbetrag",
+          "deutlich höher",
+          "ausfällt."
+        ],
+        "distractors": [
+          "die Rückzahlung,",
+          "deutlich niedriger"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", die Leistung ist korrekt aufgeführt, aber die Anzahlung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": " bleibt nur der noch offene Betrag zu zahlen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Das heißt",
+            "acceptedAnswers": [
+              "Das heißt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "fehlt",
+            "acceptedAnswers": [
+              "fehlt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "fehlen; present tense; the subject is die Anzahlung"
+            },
+            "choices": [
+              "fehlt",
+              "fehlen",
+              "fehlst",
+              "fehle"
+            ]
+          },
+          {
+            "answer": "deshalb",
+            "acceptedAnswers": [
+              "deshalb",
+              "deswegen",
+              "daher",
+              "darum",
+              "somit",
+              "folglich"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", dass wir die Anzahlung mit dem Kontoauszug "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " müssen, bevor wir den Restbetrag freigeben."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Daraus folgt",
+            "acceptedAnswers": [
+              "Daraus folgt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "abgleichen",
+            "acceptedAnswers": [
+              "abgleichen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "abgleichen; use the form required by müssen"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Da die Montage im Angebot fehlte, erklärt dieser Posten die ",
+        "answer": "Abweichung",
+        "acceptedAnswers": [
+          "Abweichung"
+        ],
+        "after": ", sodass der Gesamtbetrag deutlich höher ausfällt.",
+        "fallbackChoices": [
+          "Abweichung",
+          "Rückzahlung",
+          "Lieferzeit",
+          "Gutschrift"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "en": "Link a cause to its result"
+        },
+        "rule": {
+          "en": "Use da to give the reason and sodass to connect it to the result."
+        },
+        "examples": [
+          {
+            "targetText": "Da die Montage im Angebot fehlte, erklärt dieser Posten die Abweichung, sodass der Gesamtbetrag deutlich höher ausfällt.",
+            "base": {
+              "en": "Since installation was missing from the quote, this item explains the discrepancy, making the total substantially higher."
+            },
+            "highlights": [
+              "Da",
+              "sodass"
+            ]
+          },
+          {
+            "targetText": "Da ein Posten doppelt berechnet wurde, stimmt die Summe nicht, sodass wir eine korrigierte Rechnung brauchen.",
+            "base": {
+              "en": "Since one item was charged twice, the total is wrong, so we need a corrected invoice."
+            },
+            "highlights": [
+              "Da",
+              "sodass"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "da",
+          "kind": "connector",
+          "base": {
+            "en": "since; because"
+          }
+        },
+        {
+          "targetText": "sodass",
+          "kind": "connector",
+          "base": {
+            "en": "with the result that; so that"
+          }
+        },
+        {
+          "targetText": "das heißt",
+          "kind": "frame",
+          "base": {
+            "en": "that means; in other words"
+          }
+        },
+        {
+          "targetText": "daraus folgt",
+          "kind": "frame",
+          "base": {
+            "en": "it follows from that"
+          }
+        },
+        {
+          "targetText": "Montage",
+          "kind": "noun",
+          "base": {
+            "en": "installation; assembly"
+          }
+        },
+        {
+          "targetText": "Posten",
+          "kind": "noun",
+          "base": {
+            "en": "item on an invoice"
+          }
+        },
+        {
+          "targetText": "Abweichung",
+          "kind": "noun",
+          "base": {
+            "en": "discrepancy; difference from an expected value"
+          }
+        },
+        {
+          "targetText": "Anzahlung",
+          "kind": "noun",
+          "base": {
+            "en": "advance payment; deposit"
+          }
+        },
+        {
+          "targetText": "Kontoauszug",
+          "kind": "noun",
+          "base": {
+            "en": "bank statement"
+          }
+        },
+        {
+          "targetText": "abgleichen",
+          "kind": "verb",
+          "base": {
+            "en": "to cross-check; to reconcile"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Posten",
+            "Abweichung",
+            "sodass"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Leistung",
+            "Anzahlung",
+            "deshalb"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "folgt",
+            "Kontoauszug",
+            "abgleichen"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Abweichung",
+        "familyKey": "Abweichung",
+        "surface": "Abweichung",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Die Abweichung vom Angebot lässt sich durch die zusätzlichen Montagekosten erklären.",
+          "base": {
+            "en": "The difference from the quote can be explained by the additional installation costs."
+          }
+        },
+        "base": {
+          "en": "discrepancy; deviation"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "muelltrennung-erklaeren",
+      "title": {
+        "en": "Explaining the local sorting rules"
+      },
+      "situation": {
+        "de": "Du erklärst einem neu eingezogenen Nachbarn den Abfallplan, der neben den Tonnen eures Hauses hängt.",
+        "en": "You are explaining the waste-sorting chart beside your building's bins to a neighbour who has just moved in."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "neuer-nachbar",
+          "role": {
+            "en": "new neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your new neighbour asks: „Auf diesem Plan stehen mehrere Tonnen. Können Sie mir erklären, welcher Abfall wohin gehört?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "neuer-nachbar",
+          "targetText": "Auf diesem Plan stehen mehrere Tonnen. Können Sie mir erklären, welcher Abfall wohin gehört?",
+          "base": {
+            "en": "This chart lists several bins. Can you explain which waste goes where?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "Sie",
+          "targetText": "Ich kann Ihnen die Regeln nach Material aufschlüsseln, weil unterschiedliche Stoffe getrennt gesammelt werden müssen, bevor die Verwertung beginnt.",
+          "base": {
+            "en": "I can break the rules down by material for you, because different materials have to be collected separately before recovery begins."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "neuer-nachbar",
+          "targetText": "Aber diese Pizzaschachtel hat Fettflecken. Gehört sie trotzdem zum Altpapier?",
+          "base": {
+            "en": "But this pizza box has grease stains. Does it still go with the waste paper?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Das heißt, bei Papier zählt auch die Verschmutzung: Laut unserem Aushang muss fettiger Karton nämlich über den Restmüll entsorgt werden.",
+          "base": {
+            "en": "That means the amount of soiling matters with paper too: according to our notice, greasy cardboard has to be disposed of with general waste."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "neuer-nachbar",
+          "targetText": "Und was mache ich, wenn der Plan für einen Gegenstand keine eindeutige Zuordnung enthält?",
+          "base": {
+            "en": "And what do I do if the chart doesn't clearly assign an item to a category?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Sie",
+          "targetText": "Kurz gesagt, schauen Sie bei Zweifeln im Abfallverzeichnis nach, statt den Gegenstand ohne Prüfung irgendeiner Tonne zuzuordnen.",
+          "base": {
+            "en": "In short, if you are unsure, look it up in the waste directory instead of assigning the item to an arbitrary bin without checking."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich kann Ihnen die Regeln nach Material aufschlüsseln, ",
+        "chunks": [
+          "weil unterschiedliche Stoffe",
+          "getrennt",
+          "gesammelt werden müssen,",
+          "bevor die Verwertung",
+          "beginnt."
+        ],
+        "distractors": [
+          "gemeinsam",
+          "nachdem die Verwertung"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", bei Papier zählt auch die Verschmutzung: Laut unserem Aushang "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " fettiger Karton nämlich über den Restmüll "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Das heißt",
+            "acceptedAnswers": [
+              "Das heißt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "muss",
+            "acceptedAnswers": [
+              "muss"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "müssen; present tense; the subject is fettiger Karton"
+            },
+            "choices": [
+              "muss",
+              "müssen",
+              "musst",
+              "müsst"
+            ]
+          },
+          {
+            "answer": "entsorgt werden",
+            "acceptedAnswers": [
+              "entsorgt werden"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "entsorgen; passive form after muss; the cardboard receives the action"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", schauen Sie bei Zweifeln im "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " nach, statt den Gegenstand ohne Prüfung irgendeiner Tonne zuzuordnen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kurz gesagt",
+            "acceptedAnswers": [
+              "Kurz gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "Abfallverzeichnis",
+            "acceptedAnswers": [
+              "Abfallverzeichnis"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "Abfallverzeichnis",
+              "Kalender",
+              "Grundriss",
+              "Vertrag"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich kann Ihnen die Regeln nach Material ",
+        "answer": "aufschlüsseln",
+        "acceptedAnswers": [
+          "aufschlüsseln"
+        ],
+        "after": ", weil unterschiedliche Stoffe getrennt gesammelt werden müssen, bevor die Verwertung beginnt.",
+        "fallbackChoices": [
+          "aufschlüsseln",
+          "abschaffen",
+          "verschärfen",
+          "übersetzen"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "en": "Explain a required step"
+        },
+        "rule": {
+          "en": "Use gesammelt werden müssen to explain what has to happen to the materials without naming the people doing it."
+        },
+        "examples": [
+          {
+            "targetText": "Ich kann Ihnen die Regeln nach Material aufschlüsseln, weil unterschiedliche Stoffe getrennt gesammelt werden müssen, bevor die Verwertung beginnt.",
+            "base": {
+              "en": "I can break the rules down by material for you, because different materials have to be collected separately before recovery begins."
+            },
+            "highlights": [
+              "gesammelt werden müssen"
+            ]
+          },
+          {
+            "targetText": "Laut diesem Plan müssen beschichtete Verpackungen gesondert gesammelt werden.",
+            "base": {
+              "en": "According to this chart, coated packaging has to be collected separately."
+            },
+            "highlights": [
+              "müssen",
+              "gesammelt werden"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "aufschlüsseln",
+          "kind": "verb",
+          "base": {
+            "en": "to break down into categories"
+          }
+        },
+        {
+          "targetText": "weil",
+          "kind": "connector",
+          "base": {
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "nämlich",
+          "kind": "connector",
+          "base": {
+            "en": "you see; introduces an explanation"
+          }
+        },
+        {
+          "targetText": "kurz gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "in short"
+          }
+        },
+        {
+          "targetText": "Stoffe",
+          "lemma": "Stoff",
+          "kind": "noun",
+          "base": {
+            "en": "materials; substances"
+          }
+        },
+        {
+          "targetText": "Verwertung",
+          "kind": "noun",
+          "base": {
+            "en": "recovery of materials for reuse"
+          }
+        },
+        {
+          "targetText": "Verschmutzung",
+          "kind": "noun",
+          "base": {
+            "en": "soiling; contamination"
+          }
+        },
+        {
+          "targetText": "fettiger Karton",
+          "kind": "phrase",
+          "base": {
+            "en": "greasy cardboard"
+          }
+        },
+        {
+          "targetText": "entsorgt werden",
+          "lemma": "entsorgen",
+          "kind": "verb",
+          "base": {
+            "en": "to be disposed of"
+          }
+        },
+        {
+          "targetText": "Abfallverzeichnis",
+          "kind": "noun",
+          "base": {
+            "en": "waste directory; disposal lookup guide"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Stoffe",
+            "getrennt",
+            "gesammelt"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Verschmutzung",
+            "Aushang",
+            "Restmüll"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Kurz",
+            "Zweifeln",
+            "Abfallverzeichnis"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "aufschlüsseln",
+        "familyKey": "aufschlüsseln",
+        "surface": "aufschlüsseln",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Können Sie die Abfallmengen nach Material aufschlüsseln?",
+          "base": {
+            "en": "Can you break down the amounts of waste by material?"
+          }
+        },
+        "base": {
+          "en": "to break down; to itemise"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "projekt-verzoegert",
+      "title": {
+        "en": "Why the project is behind schedule"
+      },
+      "situation": {
+        "de": "Du besprichst mit deinem Vorgesetzten, warum ein Projekt hinter dem vereinbarten Zeitplan liegt.",
+        "en": "You are discussing with your manager why a project is behind its agreed schedule."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "vorgesetzter",
+          "role": {
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your manager asks: „Der Testlauf hätte gestern beginnen sollen. Warum liegt das Projekt hinter unserem vereinbarten Zeitplan?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "vorgesetzter",
+          "targetText": "Der Testlauf hätte gestern beginnen sollen. Warum liegt das Projekt hinter unserem vereinbarten Zeitplan?",
+          "base": {
+            "en": "The test run should have started yesterday. Why is the project behind our agreed schedule?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "Sie",
+          "targetText": "Wir mussten erst eine Entscheidung über die Schnittstelle treffen, da die Zuständigkeiten unklar waren und die Freigabe fehlte.",
+          "base": {
+            "en": "We first had to make a decision about the interface, because responsibilities were unclear and approval was missing."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vorgesetzter",
+          "targetText": "Aber laut Statusbericht war die Programmierung am Dienstag fertig. Was hat danach noch gefehlt?",
+          "base": {
+            "en": "But according to the status report, the programming was finished on Tuesday. What was still missing after that?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Genauer gesagt, nur die fehlende Freigabe hat den Testlauf verzögert; die Programmierung selbst war bereits am Dienstag abgeschlossen.",
+          "base": {
+            "en": "More precisely, only the missing approval held up the test run; the programming itself was already complete on Tuesday."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "vorgesetzter",
+          "targetText": "Jetzt liegt die Freigabe vor. Welche Folgen hat das für die Übergabe am Freitag?",
+          "base": {
+            "en": "Approval has now come through. What does that mean for the handover on Friday?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Sie",
+          "targetText": "Daraus folgt, dass wir den Testlauf heute nachholen können; die Übergabe am Freitag bleibt möglich, sofern dabei keine Fehler auftreten.",
+          "base": {
+            "en": "It follows that we can make up the test run today; the Friday handover remains possible, provided no errors arise."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Wir mussten erst eine Entscheidung über die Schnittstelle treffen, ",
+        "chunks": [
+          "da die Zuständigkeiten",
+          "unklar",
+          "waren",
+          "und die Freigabe",
+          "fehlte."
+        ],
+        "distractors": [
+          "klar",
+          "und die Zeit"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", nur die fehlende Freigabe "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " den Testlauf "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": "; die Programmierung selbst war bereits am Dienstag abgeschlossen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt",
+              "Genauer betrachtet"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "hat",
+            "acceptedAnswers": [
+              "hat"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "haben; present perfect auxiliary; the subject is die fehlende Freigabe"
+            }
+          },
+          {
+            "answer": "verzögert",
+            "acceptedAnswers": [
+              "verzögert"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "verzögern; past participle after hat"
+            },
+            "choices": [
+              "verzögert",
+              "verzögern",
+              "verzögerte",
+              "zu verzögern"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", dass wir den Testlauf heute "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " können; die Übergabe am Freitag bleibt möglich, sofern dabei keine Fehler auftreten."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Daraus folgt",
+            "acceptedAnswers": [
+              "Daraus folgt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "nachholen",
+            "acceptedAnswers": [
+              "nachholen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "nachholen; use the form required by können"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Wir mussten erst eine ",
+        "answer": "Entscheidung",
+        "acceptedAnswers": [
+          "Entscheidung"
+        ],
+        "after": " über die Schnittstelle treffen, da die Zuständigkeiten unklar waren und die Freigabe fehlte.",
+        "fallbackChoices": [
+          "Entscheidung",
+          "Lösung",
+          "Antwort",
+          "Erklärung"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "en": "Name a decision and give its reason"
+        },
+        "rule": {
+          "en": "Use eine Entscheidung treffen to name the action and da to explain why it was necessary."
+        },
+        "examples": [
+          {
+            "targetText": "Wir mussten erst eine Entscheidung über die Schnittstelle treffen, da die Zuständigkeiten unklar waren und die Freigabe fehlte.",
+            "base": {
+              "en": "We first had to make a decision about the interface, because responsibilities were unclear and approval was missing."
+            },
+            "highlights": [
+              "eine Entscheidung",
+              "treffen",
+              "da"
+            ]
+          },
+          {
+            "targetText": "Da zwei Termine zur Auswahl stehen, müssen wir heute eine Entscheidung treffen.",
+            "base": {
+              "en": "Since there are two dates to choose from, we have to make a decision today."
+            },
+            "highlights": [
+              "Da",
+              "eine Entscheidung treffen"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "da",
+          "kind": "connector",
+          "base": {
+            "en": "because; since"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "daraus folgt",
+          "kind": "frame",
+          "base": {
+            "en": "it follows from that"
+          }
+        },
+        {
+          "targetText": "eine Entscheidung treffen",
+          "kind": "phrase",
+          "base": {
+            "en": "to make a decision"
+          }
+        },
+        {
+          "targetText": "Schnittstelle",
+          "kind": "noun",
+          "base": {
+            "en": "interface"
+          }
+        },
+        {
+          "targetText": "Zuständigkeiten",
+          "lemma": "Zuständigkeit",
+          "kind": "noun",
+          "base": {
+            "en": "responsibilities; areas of responsibility"
+          }
+        },
+        {
+          "targetText": "Freigabe",
+          "kind": "noun",
+          "base": {
+            "en": "approval; authorisation to proceed"
+          }
+        },
+        {
+          "targetText": "verzögert",
+          "lemma": "verzögern",
+          "kind": "verb",
+          "base": {
+            "en": "delayed; held up"
+          }
+        },
+        {
+          "targetText": "nachholen",
+          "kind": "verb",
+          "base": {
+            "en": "to make up something missed"
+          }
+        },
+        {
+          "targetText": "Übergabe",
+          "kind": "noun",
+          "base": {
+            "en": "handover"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Zuständigkeiten",
+            "unklar",
+            "fehlte"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Genauer",
+            "Freigabe",
+            "verzögert"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "folgt",
+            "nachholen",
+            "sofern"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "verzögern",
+        "familyKey": "verzögern",
+        "surface": "verzögert",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Eine fehlende Freigabe kann den gesamten Testlauf verzögern.",
+          "base": {
+            "en": "Missing approval can delay the entire test run."
+          }
+        },
+        "base": {
+          "en": "to delay; to hold up"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "bonusprogramm",
+      "title": {
+        "en": "Understanding a points programme"
+      },
+      "situation": {
+        "de": "Du erklärst einem Freund das Bonusprogramm eines Geschäfts, in dem ihr gelegentlich einkauft.",
+        "en": "You are explaining the loyalty programme of a shop where you and a friend occasionally buy things."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "freund",
+          "role": {
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your friend asks: „An der Kasse wurde mir dieses Bonusprogramm angeboten. Bekomme ich damit bei jedem Einkauf sofort einen Rabatt?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "freund",
+          "targetText": "An der Kasse wurde mir dieses Bonusprogramm angeboten. Bekomme ich damit bei jedem Einkauf sofort einen Rabatt?",
+          "base": {
+            "en": "I was offered this loyalty programme at the checkout. Does it give me an immediate discount on every purchase?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "compare",
+          "register": "du",
+          "targetText": "Im Gegensatz zu einem Sofortrabatt bekommst du hier Punkte; einen Gutschein erhältst du erst, wenn du sie einlöst.",
+          "base": {
+            "en": "Unlike an immediate discount, you get points here; you only receive a voucher when you redeem them."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "freund",
+          "targetText": "Aber gestern hatte ich mehr Punkte. Wo sehe ich, welche nach einer Rückgabe wegfallen?",
+          "base": {
+            "en": "But I had more points yesterday. Where can I see which ones are removed after a return?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "du",
+          "targetText": "Aufgrund einer Rückgabe werden Punkte abgezogen; in der monatlichen Übersicht kannst du nachvollziehen, welche Buchung deinen Punktestand verändert hat.",
+          "base": {
+            "en": "Points are deducted because of a return; in the monthly overview you can track which entry changed your points balance."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "freund",
+          "targetText": "Und wenn die Gutscheine schnell verfallen, lohnt sich das Sammeln für mich überhaupt?",
+          "base": {
+            "en": "And if the vouchers expire quickly, is collecting points worth it for me at all?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "du",
+          "targetText": "Letztlich lohnt sich das Programm für dich nur, wenn du ohnehin dort einkaufst und die Gutscheine rechtzeitig einlöst.",
+          "base": {
+            "en": "Ultimately, the programme is only worthwhile for you if you shop there anyway and redeem the vouchers in time."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Im Gegensatz zu einem Sofortrabatt bekommst du hier ",
+        "chunks": [
+          "Punkte;",
+          "einen Gutschein",
+          "erhältst du erst,",
+          "wenn du sie",
+          "einlöst."
+        ],
+        "distractors": [
+          "Gutschriften;",
+          "löschst."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " einer Rückgabe werden Punkte "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; in der monatlichen Übersicht kannst du "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": ", welche Buchung deinen Punktestand verändert hat."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Aufgrund",
+            "acceptedAnswers": [
+              "Aufgrund",
+              "Wegen",
+              "Infolge"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Aufgrund",
+              "Obwohl",
+              "Sofern",
+              "Damit"
+            ]
+          },
+          {
+            "answer": "abgezogen",
+            "acceptedAnswers": [
+              "abgezogen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "abziehen; past participle after werden"
+            }
+          },
+          {
+            "answer": "nachvollziehen",
+            "acceptedAnswers": [
+              "nachvollziehen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "nachvollziehen; use the form required by kannst"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " lohnt sich das Programm für dich nur, wenn du ohnehin dort einkaufst und die Gutscheine rechtzeitig "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Letztlich",
+            "acceptedAnswers": [
+              "Letztlich",
+              "Letztendlich",
+              "Letzten Endes",
+              "Unterm Strich"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "einlöst",
+            "acceptedAnswers": [
+              "einlöst"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "einlösen; present tense; the shared subject is du"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Im ",
+        "answer": "Gegensatz",
+        "acceptedAnswers": [
+          "Gegensatz"
+        ],
+        "after": " zu einem Sofortrabatt bekommst du hier Punkte; einen Gutschein erhältst du erst, wenn du sie einlöst.",
+        "fallbackChoices": [
+          "Gegensatz",
+          "Anschluss",
+          "Zweifel",
+          "Abstand"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "en": "Explain through a contrast"
+        },
+        "rule": {
+          "en": "Use im Gegensatz zu to distinguish how one arrangement works from another."
+        },
+        "examples": [
+          {
+            "targetText": "Im Gegensatz zu einem Sofortrabatt bekommst du hier Punkte; einen Gutschein erhältst du erst, wenn du sie einlöst.",
+            "base": {
+              "en": "Unlike an immediate discount, you get points here; you only receive a voucher when you redeem them."
+            },
+            "highlights": [
+              "Im Gegensatz zu"
+            ]
+          },
+          {
+            "targetText": "Im Gegensatz zu Bargeld gilt dieser Gutschein nur in einem bestimmten Geschäft.",
+            "base": {
+              "en": "Unlike cash, this voucher is only valid in one particular shop."
+            },
+            "highlights": [
+              "Im Gegensatz zu"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "im Gegensatz zu",
+          "kind": "frame",
+          "base": {
+            "en": "in contrast to; unlike"
+          }
+        },
+        {
+          "targetText": "aufgrund",
+          "kind": "connector",
+          "base": {
+            "en": "because of; on the basis of"
+          }
+        },
+        {
+          "targetText": "letztlich",
+          "kind": "frame",
+          "base": {
+            "en": "ultimately"
+          }
+        },
+        {
+          "targetText": "Sofortrabatt",
+          "kind": "noun",
+          "base": {
+            "en": "immediate discount"
+          }
+        },
+        {
+          "targetText": "Gutschein",
+          "kind": "noun",
+          "base": {
+            "en": "voucher"
+          }
+        },
+        {
+          "targetText": "Übersicht",
+          "kind": "noun",
+          "base": {
+            "en": "overview; summary"
+          }
+        },
+        {
+          "targetText": "nachvollziehen",
+          "kind": "verb",
+          "base": {
+            "en": "to follow; to understand how something happened"
+          }
+        },
+        {
+          "targetText": "abgezogen",
+          "lemma": "abziehen",
+          "kind": "verb",
+          "base": {
+            "en": "deducted; subtracted"
+          }
+        },
+        {
+          "targetText": "verfallen",
+          "kind": "verb",
+          "base": {
+            "en": "to expire"
+          }
+        },
+        {
+          "targetText": "einlöst",
+          "lemma": "einlösen",
+          "kind": "verb",
+          "base": {
+            "en": "redeem; cash in"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Punkte",
+            "Gutschein",
+            "erhältst"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Aufgrund",
+            "nachvollziehen",
+            "Punktestand"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Letztlich",
+            "ohnehin",
+            "einlöst"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "nachvollziehen",
+        "familyKey": "nachvollziehen",
+        "surface": "nachvollziehen",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Mit dieser Übersicht kann ich jede Änderung meines Punktestands nachvollziehen.",
+          "base": {
+            "en": "With this overview, I can follow every change to my points balance."
+          }
+        },
+        "base": {
+          "en": "to follow; to understand the reasoning or sequence"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "anbieter-gewechselt",
+      "title": {
+        "en": "Explaining a change of provider"
+      },
+      "situation": {
+        "de": "Du sprichst mit deinem Nachbarn darüber, warum du trotz eines höheren Monatspreises den Internetanbieter gewechselt hast.",
+        "en": "You are talking to your neighbour about why you changed internet provider despite a higher monthly price."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "nachbar",
+          "role": {
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your neighbour asks: „Ihr neuer Internettarif kostet mehr als der alte. Was hat Sie trotzdem zu dem Wechsel bewogen?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "nachbar",
+          "targetText": "Ihr neuer Internettarif kostet mehr als der alte. Was hat Sie trotzdem zu dem Wechsel bewogen?",
+          "base": {
+            "en": "Your new internet plan costs more than the old one. What made you switch anyway?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "reason",
+          "register": "Sie",
+          "targetText": "Infolge wiederholter Ausfälle habe ich den Anbieter gewechselt; mein wichtigster Beweggrund war die Zuverlässigkeit, die ich täglich brauche.",
+          "base": {
+            "en": "I changed provider as a result of repeated outages; my main motive was the reliability I need every day."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "nachbar",
+          "targetText": "Aber beide Anbieter nutzen dieselbe Leitung. Warum sollte die Verbindung jetzt stabiler sein?",
+          "base": {
+            "en": "But both providers use the same line. Why should the connection be more stable now?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Genauer gesagt, die Leitung war nicht die Ursache; der alte Router fiel regelmäßig aus, und beim Wechsel wurde er ersetzt.",
+          "base": {
+            "en": "More precisely, the line was not the cause; the old router kept failing, and it was replaced when I switched."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "nachbar",
+          "targetText": "Dann lag es wohl am Router. Was würden Sie vor einem weiteren Wechsel zuerst prüfen?",
+          "base": {
+            "en": "Then the router seems to have been the problem. What would you check first before switching again?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Sie",
+          "targetText": "Zusammengefasst würde ich zunächst die technische Ursache klären, damit ein Anbieterwechsel auch tatsächlich das ursprüngliche Problem behebt.",
+          "base": {
+            "en": "To sum up, I would first establish the technical cause so that changing provider actually solves the original problem."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Infolge wiederholter Ausfälle habe ich den Anbieter gewechselt; ",
+        "chunks": [
+          "mein wichtigster Beweggrund",
+          "war die Zuverlässigkeit,",
+          "die ich",
+          "täglich",
+          "brauche."
+        ],
+        "distractors": [
+          "war die Geschwindigkeit,",
+          "selten"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", die Leitung war nicht die Ursache; der alte Router "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " regelmäßig aus, und beim Wechsel wurde er "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "fiel",
+            "acceptedAnswers": [
+              "fiel"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "ausfallen; simple past; der alte Router is the subject and aus is already shown"
+            },
+            "choices": [
+              "fiel",
+              "fielen",
+              "fielst",
+              "fielt"
+            ]
+          },
+          {
+            "answer": "ersetzt",
+            "acceptedAnswers": [
+              "ersetzt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "ersetzen; past participle after wurde"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " würde ich zunächst die technische Ursache klären, damit ein Anbieterwechsel auch tatsächlich das ursprüngliche Problem "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Zusammengefasst",
+            "acceptedAnswers": [
+              "Zusammengefasst",
+              "Kurz gesagt",
+              "Alles in allem"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "behebt",
+            "acceptedAnswers": [
+              "behebt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "beheben; present tense; the subject is ein Anbieterwechsel"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Infolge wiederholter Ausfälle habe ich den Anbieter gewechselt; mein wichtigster ",
+        "answer": "Beweggrund",
+        "acceptedAnswers": [
+          "Beweggrund"
+        ],
+        "after": " war die Zuverlässigkeit, die ich täglich brauche.",
+        "fallbackChoices": [
+          "Beweggrund",
+          "Nachteil",
+          "Einwand",
+          "Irrtum"
+        ]
+      },
+      "pattern": {
+        "moveType": "reason",
+        "label": {
+          "en": "Name the event behind a decision"
+        },
+        "rule": {
+          "en": "Use infolge to link a decision to the event that caused it, then name the motive with mein Beweggrund war."
+        },
+        "examples": [
+          {
+            "targetText": "Infolge wiederholter Ausfälle habe ich den Anbieter gewechselt; mein wichtigster Beweggrund war die Zuverlässigkeit, die ich täglich brauche.",
+            "base": {
+              "en": "I changed provider as a result of repeated outages; my main motive was the reliability I need every day."
+            },
+            "highlights": [
+              "Infolge",
+              "mein wichtigster Beweggrund war"
+            ]
+          },
+          {
+            "targetText": "Infolge der Preiserhöhung habe ich gekündigt; mein Beweggrund war, die monatlichen Kosten zu begrenzen.",
+            "base": {
+              "en": "I cancelled as a result of the price increase; my motive was to limit the monthly costs."
+            },
+            "highlights": [
+              "Infolge",
+              "mein Beweggrund war"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "infolge",
+          "kind": "connector",
+          "base": {
+            "en": "as a result of"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "zusammengefasst",
+          "kind": "frame",
+          "base": {
+            "en": "to sum up"
+          }
+        },
+        {
+          "targetText": "Ausfälle",
+          "lemma": "Ausfall",
+          "kind": "noun",
+          "base": {
+            "en": "outages; failures"
+          }
+        },
+        {
+          "targetText": "Beweggrund",
+          "kind": "noun",
+          "base": {
+            "en": "motive; reason for acting"
+          }
+        },
+        {
+          "targetText": "Zuverlässigkeit",
+          "kind": "noun",
+          "base": {
+            "en": "reliability"
+          }
+        },
+        {
+          "targetText": "Leitung",
+          "kind": "noun",
+          "base": {
+            "en": "line; physical connection"
+          }
+        },
+        {
+          "targetText": "Ursache",
+          "kind": "noun",
+          "base": {
+            "en": "cause"
+          }
+        },
+        {
+          "targetText": "ersetzt",
+          "lemma": "ersetzen",
+          "kind": "verb",
+          "base": {
+            "en": "replaced"
+          }
+        },
+        {
+          "targetText": "behebt",
+          "lemma": "beheben",
+          "kind": "verb",
+          "base": {
+            "en": "resolves; fixes"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Beweggrund",
+            "Zuverlässigkeit",
+            "brauche"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Genauer",
+            "Router",
+            "ersetzt"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Zusammengefasst",
+            "Ursache",
+            "behebt"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Beweggrund",
+        "familyKey": "Beweggrund",
+        "surface": "Beweggrund",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Mein Beweggrund für den Wechsel war der Wunsch nach einer zuverlässigeren Verbindung.",
+          "base": {
+            "en": "My motive for switching was the desire for a more reliable connection."
+          }
+        },
+        "base": {
+          "en": "motive; reason for acting"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "bussgeld-einspruch",
+      "title": {
+        "en": "Reading the instructions for an objection"
+      },
+      "situation": {
+        "de": "Du gehst mit einer Kollegin einen Bußgeldbescheid durch und hilfst ihr, die Hinweise zum Einspruch zu verstehen.",
+        "en": "You are going through a fine notice with a colleague and helping her understand its instructions for lodging an objection."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "kollegin",
+          "role": {
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your colleague asks: „Ich will diesen Bußgeldbescheid anfechten. Kannst du mir erklären, wie ich dabei vorgehen muss?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "kollegin",
+          "targetText": "Ich will diesen Bußgeldbescheid anfechten. Kannst du mir erklären, wie ich dabei vorgehen muss?",
+          "base": {
+            "en": "I want to challenge this fine notice. Can you explain how I need to go about it?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "du",
+          "targetText": "Um es kurz zu machen: Der Rechtsbehelf gegen diesen Bußgeldbescheid heißt Einspruch; ein Widerspruch wäre hier die falsche Bezeichnung für dein Anliegen.",
+          "base": {
+            "en": "To keep it brief: the remedy against this fine notice is called an Einspruch; Widerspruch would be the wrong term for what you want to do here."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "kollegin",
+          "targetText": "Aber genügt dafür eine gewöhnliche E-Mail, oder muss ich einen bestimmten Übermittlungsweg beachten?",
+          "base": {
+            "en": "But is an ordinary email enough, or do I have to use a particular method of submission?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "du",
+          "targetText": "Genauer gesagt, entscheidend ist die Rechtsbehelfsbelehrung: Dort steht, welche Form verlangt wird; eine gewöhnliche E-Mail genügt nicht automatisch.",
+          "base": {
+            "en": "More precisely, the instructions on legal remedies are what matter: they state the required form; an ordinary email is not automatically sufficient."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "kollegin",
+          "targetText": "Die Frist endet bald, und ich verstehe einen Absatz nicht. Was sollte ich jetzt zuerst tun?",
+          "base": {
+            "en": "The deadline is coming up, and I don't understand one paragraph. What should I do first now?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "du",
+          "targetText": "Kurz gesagt, kläre die unverständliche Passage sofort mit einer Beratungsstelle und behalte dabei die im Bescheid genannte Frist im Blick.",
+          "base": {
+            "en": "In short, clarify the unclear passage with an advice service straight away, while keeping track of the deadline stated in the notice."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Um es kurz zu machen: Der Rechtsbehelf gegen ",
+        "chunks": [
+          "diesen Bußgeldbescheid",
+          "heißt",
+          "Einspruch;",
+          "ein Widerspruch wäre",
+          "hier die falsche Bezeichnung"
+        ],
+        "distractors": [
+          "hier die richtige Bezeichnung",
+          "ein Widerruf wäre"
+        ],
+        "frameSuffix": " für dein Anliegen."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", entscheidend ist die Rechtsbehelfsbelehrung: Dort steht, welche Form "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; eine gewöhnliche E-Mail "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": " nicht automatisch."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "verlangt wird",
+            "acceptedAnswers": [
+              "verlangt wird"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "verlangen; present passive; welche Form is the singular subject"
+            }
+          },
+          {
+            "answer": "genügt",
+            "acceptedAnswers": [
+              "genügt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "genügen; present tense; the subject is eine gewöhnliche E-Mail"
+            },
+            "choices": [
+              "genügt",
+              "genügen",
+              "genügst",
+              "genüge"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kläre die unverständliche Passage sofort mit einer Beratungsstelle und "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " dabei die im Bescheid genannte Frist im Blick."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kurz gesagt",
+            "acceptedAnswers": [
+              "Kurz gesagt",
+              "Zusammengefasst",
+              "Um es kurz zu machen"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "behalte",
+            "acceptedAnswers": [
+              "behalte",
+              "behalt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "behalten; give an instruction to one person you address as du"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Um es kurz zu machen: Der Rechtsbehelf gegen diesen Bußgeldbescheid heißt Einspruch; ein ",
+        "answer": "Widerspruch",
+        "acceptedAnswers": [
+          "Widerspruch"
+        ],
+        "after": " wäre hier die falsche Bezeichnung für dein Anliegen.",
+        "fallbackChoices": [
+          "Widerspruch",
+          "Einspruch",
+          "Widerruf",
+          "Antrag"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "en": "State the key distinction briefly"
+        },
+        "rule": {
+          "en": "Use um es kurz zu machen to signal that you will explain the essential point first."
+        },
+        "examples": [
+          {
+            "targetText": "Um es kurz zu machen: Der Rechtsbehelf gegen diesen Bußgeldbescheid heißt Einspruch; ein Widerspruch wäre hier die falsche Bezeichnung für dein Anliegen.",
+            "base": {
+              "en": "To keep it brief: the remedy against this fine notice is called an Einspruch; Widerspruch would be the wrong term for what you want to do here."
+            },
+            "highlights": [
+              "Um es kurz zu machen"
+            ]
+          },
+          {
+            "targetText": "Um es kurz zu machen: Eine Eingangsbestätigung ist noch keine Zustimmung zu deinem Antrag.",
+            "base": {
+              "en": "To keep it brief: confirmation of receipt is not yet approval of your application."
+            },
+            "highlights": [
+              "Um es kurz zu machen"
+            ]
+          },
+          {
+            "targetText": "Um es kurz zu machen: Zwar läuft die Frist noch zwei Wochen, aber du solltest den Einspruch nicht aufschieben.",
+            "base": {
+              "en": "To keep it brief: the deadline does still run for two weeks, but you should not put off the objection."
+            },
+            "highlights": [
+              "Um es kurz zu machen",
+              "Zwar",
+              "aber"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "um es kurz zu machen",
+          "kind": "frame",
+          "base": {
+            "en": "to keep it brief"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "kurz gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "in short"
+          }
+        },
+        {
+          "targetText": "anfechten",
+          "kind": "verb",
+          "base": {
+            "en": "to challenge formally"
+          }
+        },
+        {
+          "targetText": "Rechtsbehelf",
+          "kind": "noun",
+          "base": {
+            "en": "legal remedy; formal means of challenge"
+          }
+        },
+        {
+          "targetText": "Einspruch",
+          "kind": "noun",
+          "base": {
+            "en": "formal objection, the term used for this fine notice"
+          }
+        },
+        {
+          "targetText": "Widerspruch",
+          "kind": "noun",
+          "base": {
+            "en": "objection; a legal term distinct from Einspruch"
+          }
+        },
+        {
+          "targetText": "Rechtsbehelfsbelehrung",
+          "kind": "noun",
+          "base": {
+            "en": "instructions on available legal remedies"
+          }
+        },
+        {
+          "targetText": "Übermittlungsweg",
+          "kind": "noun",
+          "base": {
+            "en": "method of submission or transmission"
+          }
+        },
+        {
+          "targetText": "im Blick",
+          "kind": "phrase",
+          "base": {
+            "en": "in view; under consideration"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Einspruch",
+            "Widerspruch",
+            "Bezeichnung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Rechtsbehelfsbelehrung",
+            "Form",
+            "automatisch"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Kurz",
+            "Beratungsstelle",
+            "Frist"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Widerspruch",
+        "familyKey": "Widerspruch",
+        "surface": "Widerspruch",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Mit Widerspruch kann man auch ausdrücken, dass man einer Behauptung nicht zustimmt.",
+          "base": {
+            "en": "Widerspruch can also express disagreement with a claim."
+          }
+        },
+        "base": {
+          "en": "objection; contradiction"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "plan-gescheitert",
+      "title": {
+        "en": "Finding the flaw in a plan"
+      },
+      "situation": {
+        "de": "Du sprichst mit einer Freundin über euren misslungenen Ausflug und erklärst, was bei der Planung schiefging.",
+        "en": "You are talking to a friend about your unsuccessful outing and explaining what went wrong in the planning."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "freundin",
+          "role": {
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your friend asks: „Wir haben den Einlass ins Museum verpasst, obwohl der Ausflug gut geplant schien. Wo lag der Fehler?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "freundin",
+          "targetText": "Wir haben den Einlass ins Museum verpasst, obwohl der Ausflug gut geplant schien. Wo lag der Fehler?",
+          "base": {
+            "en": "We missed admission to the museum, although the outing seemed well planned. Where was the mistake?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "du",
+          "targetText": "Dadurch, dass ich die Fahrzeiten nur grob geschätzt habe, fehlte uns am Ende genau die Stunde, die wir gebraucht hätten.",
+          "base": {
+            "en": "Because I had only estimated the journey times roughly, we ended up missing exactly the hour we would have needed."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "freundin",
+          "targetText": "Aber wir sind doch früher losgefahren als geplant. Warum hat das nicht gereicht?",
+          "base": {
+            "en": "But we did set off earlier than planned. Why wasn't that enough?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "du",
+          "targetText": "Genauer gesagt, meine Fehleinschätzung betraf den Anschluss: Beide Züge hatten denselben Anschlusszug, sodass die frühere Abfahrt am Ziel keinen Zeitgewinn brachte.",
+          "base": {
+            "en": "More precisely, I misjudged the connection: both trains connected with the same onward train, so leaving earlier saved no time in reaching the destination."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "freundin",
+          "targetText": "Wie würdest du den nächsten Ausflug planen, wenn die Eintrittskarten wieder nur für eine feste Uhrzeit gelten?",
+          "base": {
+            "en": "How would you plan the next outing if the tickets are again only valid for a fixed entry time?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "du",
+          "targetText": "Zusammengefasst prüfe ich künftig jede Verbindung bis zum Ziel und plane ausreichend Puffer ein, bevor ich feste Eintrittszeiten buche.",
+          "base": {
+            "en": "To sum up, in future I will check every connection all the way to the destination and allow enough buffer time before booking fixed entry times."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Dadurch, dass ich die Fahrzeiten nur grob geschätzt habe, ",
+        "chunks": [
+          "fehlte uns am Ende",
+          "genau",
+          "die Stunde,",
+          "die wir",
+          "gebraucht hätten."
+        ],
+        "distractors": [
+          "die Minute,",
+          "gewonnen hätten."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", meine Fehleinschätzung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " den Anschluss: Beide Züge hatten denselben Anschlusszug, sodass die frühere Abfahrt am Ziel keinen Zeitgewinn "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "betraf",
+            "acceptedAnswers": [
+              "betraf"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "betreffen; simple past; the subject is meine Fehleinschätzung"
+            },
+            "choices": [
+              "betraf",
+              "betrafen",
+              "betrafst",
+              "betraft"
+            ]
+          },
+          {
+            "answer": "brachte",
+            "acceptedAnswers": [
+              "brachte"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "bringen; simple past; the subject is die frühere Abfahrt"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " prüfe ich künftig jede Verbindung bis zum Ziel und plane ausreichend "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ein, bevor ich feste Eintrittszeiten buche."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Zusammengefasst",
+            "acceptedAnswers": [
+              "Zusammengefasst",
+              "Kurz gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "Puffer",
+            "acceptedAnswers": [
+              "Puffer",
+              "Zeitpuffer"
+            ],
+            "kind": "lexical",
+            "choices": [
+              "Puffer",
+              "Gepäck",
+              "Lärm",
+              "Werbung"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Dadurch, dass ich die Fahrzeiten nur grob ",
+        "answer": "geschätzt",
+        "acceptedAnswers": [
+          "geschätzt"
+        ],
+        "after": " habe, fehlte uns am Ende genau die Stunde, die wir gebraucht hätten.",
+        "fallbackChoices": [
+          "geschätzt",
+          "verkürzt",
+          "verlängert",
+          "veröffentlicht"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "en": "Show how a problem arose"
+        },
+        "rule": {
+          "en": "Use dadurch, dass to connect the action that caused a problem directly to its consequence."
+        },
+        "examples": [
+          {
+            "targetText": "Dadurch, dass ich die Fahrzeiten nur grob geschätzt habe, fehlte uns am Ende genau die Stunde, die wir gebraucht hätten.",
+            "base": {
+              "en": "Because I had only estimated the journey times roughly, we ended up missing exactly the hour we would have needed."
+            },
+            "highlights": [
+              "Dadurch, dass"
+            ]
+          },
+          {
+            "targetText": "Dadurch, dass wir den letzten Anschluss übersehen haben, mussten wir die Rückfahrt neu planen.",
+            "base": {
+              "en": "Because we overlooked the last connection, we had to replan the return journey."
+            },
+            "highlights": [
+              "Dadurch, dass"
+            ]
+          },
+          {
+            "targetText": "Dadurch, dass wir den Plan nicht geprüft haben, verpassten wir den Einlass; zugegeben, das war vermeidbar.",
+            "base": {
+              "en": "Because we did not check the plan, we missed admission; granted, that was avoidable."
+            },
+            "highlights": [
+              "Dadurch, dass",
+              "zugegeben"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "dadurch, dass",
+          "kind": "connector",
+          "base": {
+            "en": "through the fact that; because"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "zusammengefasst",
+          "kind": "frame",
+          "base": {
+            "en": "to sum up"
+          }
+        },
+        {
+          "targetText": "grob",
+          "kind": "adverb",
+          "base": {
+            "en": "roughly; approximately"
+          }
+        },
+        {
+          "targetText": "geschätzt",
+          "lemma": "schätzen",
+          "kind": "verb",
+          "base": {
+            "en": "estimated"
+          }
+        },
+        {
+          "targetText": "Fehleinschätzung",
+          "kind": "noun",
+          "base": {
+            "en": "misjudgement; incorrect assessment"
+          }
+        },
+        {
+          "targetText": "Anschluss",
+          "kind": "noun",
+          "base": {
+            "en": "connecting train or service"
+          }
+        },
+        {
+          "targetText": "Anschlusszug",
+          "kind": "noun",
+          "base": {
+            "en": "onward connecting train"
+          }
+        },
+        {
+          "targetText": "Puffer",
+          "kind": "noun",
+          "base": {
+            "en": "buffer; extra time allowed"
+          }
+        },
+        {
+          "targetText": "Eintrittszeiten",
+          "lemma": "Eintrittszeit",
+          "kind": "noun",
+          "base": {
+            "en": "admission times"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "fehlte",
+            "Stunde",
+            "gebraucht"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Genauer",
+            "Fehleinschätzung",
+            "Anschluss"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Zusammengefasst",
+            "Verbindung",
+            "Puffer"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Fehleinschätzung",
+        "familyKey": "Fehleinschätzung",
+        "surface": "Fehleinschätzung",
+        "turnIndex": 3,
+        "pos": "noun",
+        "example": {
+          "targetText": "Meine Fehleinschätzung der Umsteigezeit brachte den gesamten Plan durcheinander.",
+          "base": {
+            "en": "My misjudgement of the transfer time threw the entire plan off."
+          }
+        },
+        "base": {
+          "en": "misjudgement; incorrect assessment"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "terminvergabe",
+      "title": {
+        "en": "From an appointment request to a booking"
+      },
+      "situation": {
+        "de": "Du erläuterst einer Fachärztin den geplanten Ablauf der Terminvergabe für ihre Praxis.",
+        "en": "You are explaining the proposed appointment-booking process to a specialist doctor for her practice."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "fachaerztin",
+          "role": {
+            "en": "specialist doctor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "The doctor asks: „Wie läuft die Terminvergabe in unserem neuen System ab, wenn eine Anfrage über das Onlineformular eingeht?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "fachaerztin",
+          "targetText": "Wie läuft die Terminvergabe in unserem neuen System ab, wenn eine Anfrage über das Onlineformular eingeht?",
+          "base": {
+            "en": "How does appointment booking work in our new system when a request arrives through the online form?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "Sie",
+          "targetText": "Nach Eingang einer Anfrage wird zunächst die gewünschte Sprechstunde geprüft, sodass die Abwicklung nachvollziehbar bleibt und jede Rückmeldung beim richtigen Team landet.",
+          "base": {
+            "en": "Once a request arrives, the desired clinic session is checked first, so the handling remains traceable and every response reaches the right team."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "fachaerztin",
+          "targetText": "Aber eine Person ohne Internet kann das Formular nicht nutzen. Wie passt sie in diesen Ablauf?",
+          "base": {
+            "en": "But someone without internet access cannot use the form. How do they fit into this process?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Das heißt, das Formular ist nur ein Zugangsweg; telefonische Anfragen müssen nach denselben Kriterien erfasst werden, damit niemand ausgeschlossen wird.",
+          "base": {
+            "en": "That means the form is only one way in; telephone requests have to be recorded using the same criteria so that nobody is excluded."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "fachaerztin",
+          "targetText": "Und wie unterscheiden wir dabei eine eingegangene Anfrage von einem tatsächlich zugesagten Termin?",
+          "base": {
+            "en": "And how do we distinguish a request that has arrived from an appointment that has actually been confirmed?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "summarize",
+          "register": "Sie",
+          "targetText": "Kurz gesagt, die Eingangsbestätigung bestätigt lediglich den Eingang; verbindlich wird ein Termin erst durch die ausdrückliche Zusage der Praxis.",
+          "base": {
+            "en": "In short, an acknowledgement only confirms receipt; an appointment becomes binding only when the practice explicitly confirms it."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Nach Eingang einer Anfrage wird zunächst die gewünschte Sprechstunde geprüft, ",
+        "chunks": [
+          "sodass die Abwicklung",
+          "nachvollziehbar bleibt",
+          "und jede Rückmeldung",
+          "beim richtigen Team",
+          "landet."
+        ],
+        "distractors": [
+          "unübersichtlich bleibt",
+          "beim falschen Team"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", das Formular ist nur ein Zugangsweg; telefonische Anfragen "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " nach denselben Kriterien "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": ", damit niemand ausgeschlossen wird."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Das heißt",
+            "acceptedAnswers": [
+              "Das heißt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "müssen",
+            "acceptedAnswers": [
+              "müssen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "müssen; present tense; the subject is telefonische Anfragen"
+            },
+            "choices": [
+              "müssen",
+              "muss",
+              "musst",
+              "müsst"
+            ]
+          },
+          {
+            "answer": "erfasst werden",
+            "acceptedAnswers": [
+              "erfasst werden"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "erfassen; passive form after müssen; requests receive the action"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", die Eingangsbestätigung bestätigt lediglich den Eingang; verbindlich wird ein Termin erst durch die ausdrückliche "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " der Praxis."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kurz gesagt",
+            "acceptedAnswers": [
+              "Kurz gesagt",
+              "Zusammengefasst"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "Zusage",
+            "acceptedAnswers": [
+              "Zusage",
+              "Bestätigung",
+              "Terminbestätigung"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nach Eingang einer Anfrage wird zunächst die gewünschte Sprechstunde geprüft, sodass die ",
+        "answer": "Abwicklung",
+        "acceptedAnswers": [
+          "Abwicklung"
+        ],
+        "after": " nachvollziehbar bleibt und jede Rückmeldung beim richtigen Team landet.",
+        "fallbackChoices": [
+          "Abwicklung",
+          "Verschiebung",
+          "Ablehnung",
+          "Kündigung"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "en": "Clarify what a procedure covers"
+        },
+        "rule": {
+          "en": "Use das heißt to sharpen the explanation, then name what must apply equally to the additional case."
+        },
+        "examples": [
+          {
+            "targetText": "Das heißt, das Formular ist nur ein Zugangsweg; telefonische Anfragen müssen nach denselben Kriterien erfasst werden, damit niemand ausgeschlossen wird.",
+            "base": {
+              "en": "That means the form is only one way in; telephone requests have to be recorded using the same criteria so that nobody is excluded."
+            },
+            "highlights": [
+              "Das heißt",
+              "nach denselben Kriterien"
+            ]
+          },
+          {
+            "targetText": "Das heißt, auch schriftliche Anfragen müssen nach denselben Kriterien geprüft werden.",
+            "base": {
+              "en": "That means written requests also have to be checked using the same criteria."
+            },
+            "highlights": [
+              "Das heißt",
+              "nach denselben Kriterien"
+            ]
+          },
+          {
+            "targetText": "Das heißt, auch Anfragen per Post müssen nach denselben Kriterien geprüft werden, zumal nicht alle Menschen online erreichbar sind.",
+            "base": {
+              "en": "That means requests by post also have to be checked using the same criteria, especially since not everyone can be reached online."
+            },
+            "highlights": [
+              "Das heißt",
+              "nach denselben Kriterien",
+              "zumal"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sodass",
+          "kind": "connector",
+          "base": {
+            "en": "with the result that; so that"
+          }
+        },
+        {
+          "targetText": "das heißt",
+          "kind": "frame",
+          "base": {
+            "en": "that means; in other words"
+          }
+        },
+        {
+          "targetText": "kurz gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "in short"
+          }
+        },
+        {
+          "targetText": "Abwicklung",
+          "kind": "noun",
+          "base": {
+            "en": "handling; processing"
+          }
+        },
+        {
+          "targetText": "nachvollziehbar",
+          "kind": "adjective",
+          "base": {
+            "en": "traceable; easy to follow"
+          }
+        },
+        {
+          "targetText": "Zugangsweg",
+          "kind": "noun",
+          "base": {
+            "en": "way of accessing a service"
+          }
+        },
+        {
+          "targetText": "erfasst werden",
+          "lemma": "erfassen",
+          "kind": "verb",
+          "base": {
+            "en": "to be recorded"
+          }
+        },
+        {
+          "targetText": "Eingangsbestätigung",
+          "kind": "noun",
+          "base": {
+            "en": "acknowledgement of receipt"
+          }
+        },
+        {
+          "targetText": "verbindlich",
+          "kind": "adjective",
+          "base": {
+            "en": "binding; firmly agreed"
+          }
+        },
+        {
+          "targetText": "Zusage",
+          "kind": "noun",
+          "base": {
+            "en": "confirmation; commitment"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Abwicklung",
+            "nachvollziehbar",
+            "Rückmeldung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Zugangsweg",
+            "Kriterien",
+            "erfasst"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Kurz",
+            "verbindlich",
+            "Zusage"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Abwicklung",
+        "familyKey": "Abwicklung",
+        "surface": "Abwicklung",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Eine klare Zuständigkeit erleichtert die Abwicklung jeder Terminanfrage.",
+          "base": {
+            "en": "Clear responsibility makes every appointment request easier to process."
+          }
+        },
+        "base": {
+          "en": "handling; processing of a procedure"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "leihrad-system",
+      "title": {
+        "en": "What bike sharing can change"
+      },
+      "situation": {
+        "de": "Du erklärst bei einer Stadtteilrunde einer skeptischen Person, welchen Nutzen ein öffentliches Leihradsystem haben könnte.",
+        "en": "At a neighbourhood discussion, you are explaining to a sceptical participant what benefits a public bike-sharing scheme could bring."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "skeptische-person",
+          "role": {
+            "en": "sceptical participant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A participant asks: „Die Stadt will Geld für öffentliche Leihräder ausgeben. Können Sie erklären, welchen Nutzen das für unseren Verkehr hätte?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "skeptische-person",
+          "targetText": "Die Stadt will Geld für öffentliche Leihräder ausgeben. Können Sie erklären, welchen Nutzen das für unseren Verkehr hätte?",
+          "base": {
+            "en": "The city wants to spend money on public hire bikes. Can you explain how that would benefit local traffic?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "Sie",
+          "targetText": "Ein Leihradsystem mit vielen Stationen kann kurze Autofahrten ersetzen, sodass weniger Verkehr entsteht; seine Auswirkung hängt jedoch von der tatsächlichen Nutzung ab.",
+          "base": {
+            "en": "A bike-sharing scheme with many stations can replace short car journeys, reducing traffic; its impact, however, depends on actual use."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "skeptische-person",
+          "targetText": "Aber wenn damit nur Fußwege ersetzt werden, verschwindet doch kein einziges Auto. Wie prüfen Sie das?",
+          "base": {
+            "en": "But if it only replaces walking, not a single car disappears. How would you check that?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Genauer gesagt, die Zahl der Ausleihen allein belegt keinen Nutzen; entscheidend ist, welches Verkehrsmittel die Menschen sonst genommen hätten.",
+          "base": {
+            "en": "More precisely, the number of rentals alone does not prove a benefit; what matters is which form of transport people would otherwise have used."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "skeptische-person",
+          "targetText": "Und welche Bedingung würden Sie festlegen, bevor die Stadt das System dauerhaft ausweitet?",
+          "base": {
+            "en": "And what condition would you set before the city permanently expands the scheme?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Sie",
+          "targetText": "Letztlich sollte die Stadt nur dann ausbauen, wenn Befragungen einen Rückgang kurzer Autofahrten zeigen und die Betriebskosten vertretbar bleiben.",
+          "base": {
+            "en": "Ultimately, the city should only expand it if surveys show a reduction in short car journeys and operating costs remain reasonable."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Ein Leihradsystem mit vielen Stationen ",
+        "chunks": [
+          "kann",
+          "kurze Autofahrten",
+          "ersetzen,",
+          "sodass weniger Verkehr",
+          "entsteht;"
+        ],
+        "distractors": [
+          "lange Bahnfahrten",
+          "sodass mehr Verkehr"
+        ],
+        "frameSuffix": " seine Auswirkung hängt jedoch von der tatsächlichen Nutzung ab."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", die Zahl der Ausleihen allein "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " keinen Nutzen; entscheidend ist, welches Verkehrsmittel die Menschen sonst "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "belegt",
+            "acceptedAnswers": [
+              "belegt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "belegen; present tense; the subject is die Zahl, not Ausleihen"
+            },
+            "choices": [
+              "belegt",
+              "belegen",
+              "belegst",
+              "belege"
+            ]
+          },
+          {
+            "answer": "genommen hätten",
+            "acceptedAnswers": [
+              "genommen hätten"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "nehmen; past hypothetical; the subject is die Menschen"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sollte die Stadt nur dann ausbauen, wenn Befragungen einen "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kurzer Autofahrten zeigen und die Betriebskosten vertretbar bleiben."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Letztlich",
+            "acceptedAnswers": [
+              "Letztlich",
+              "Letztendlich",
+              "Letzten Endes",
+              "Unterm Strich"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "Rückgang",
+            "acceptedAnswers": [
+              "Rückgang"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ein Leihradsystem mit vielen Stationen kann kurze Autofahrten ersetzen, sodass weniger Verkehr entsteht; seine ",
+        "answer": "Auswirkung",
+        "acceptedAnswers": [
+          "Auswirkung"
+        ],
+        "after": " hängt jedoch von der tatsächlichen Nutzung ab.",
+        "fallbackChoices": [
+          "Auswirkung",
+          "Farbe",
+          "Bezeichnung",
+          "Geschwindigkeit"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "en": "Separate a number from what it proves"
+        },
+        "rule": {
+          "en": "Use genauer gesagt to refine a claim, then distinguish the visible figure from the evidence that would support the conclusion."
+        },
+        "examples": [
+          {
+            "targetText": "Genauer gesagt, die Zahl der Ausleihen allein belegt keinen Nutzen; entscheidend ist, welches Verkehrsmittel die Menschen sonst genommen hätten.",
+            "base": {
+              "en": "More precisely, the number of rentals alone does not prove a benefit; what matters is which form of transport people would otherwise have used."
+            },
+            "highlights": [
+              "Genauer gesagt",
+              "allein belegt keinen Nutzen",
+              "entscheidend ist"
+            ]
+          },
+          {
+            "targetText": "Genauer gesagt, viele Anmeldungen allein belegen keinen Erfolg; entscheidend ist, wie viele Menschen regelmäßig teilnehmen.",
+            "base": {
+              "en": "More precisely, many registrations alone do not prove success; what matters is how many people participate regularly."
+            },
+            "highlights": [
+              "Genauer gesagt",
+              "allein belegen keinen Erfolg",
+              "entscheidend ist"
+            ]
+          },
+          {
+            "targetText": "Genauer gesagt, volle Stationen allein belegen keinen Nutzen; entscheidend ist, ob im Vergleich zu früher weniger Autos unterwegs sind.",
+            "base": {
+              "en": "More precisely, full stations alone do not prove a benefit; what matters is whether fewer cars are on the road compared with before."
+            },
+            "highlights": [
+              "Genauer gesagt",
+              "allein belegen keinen Nutzen",
+              "entscheidend ist",
+              "im Vergleich zu"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sodass",
+          "kind": "connector",
+          "base": {
+            "en": "with the result that; so that"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "letztlich",
+          "kind": "frame",
+          "base": {
+            "en": "ultimately"
+          }
+        },
+        {
+          "targetText": "Auswirkung",
+          "kind": "noun",
+          "base": {
+            "en": "effect; impact"
+          }
+        },
+        {
+          "targetText": "Ausleihen",
+          "lemma": "Ausleihe",
+          "kind": "noun",
+          "base": {
+            "en": "rentals; occasions of borrowing"
+          }
+        },
+        {
+          "targetText": "belegt",
+          "lemma": "belegen",
+          "kind": "verb",
+          "base": {
+            "en": "demonstrates; provides evidence of"
+          }
+        },
+        {
+          "targetText": "Verkehrsmittel",
+          "kind": "noun",
+          "base": {
+            "en": "means of transport"
+          }
+        },
+        {
+          "targetText": "Befragungen",
+          "lemma": "Befragung",
+          "kind": "noun",
+          "base": {
+            "en": "surveys"
+          }
+        },
+        {
+          "targetText": "Rückgang",
+          "kind": "noun",
+          "base": {
+            "en": "decrease; decline"
+          }
+        },
+        {
+          "targetText": "vertretbar",
+          "kind": "adjective",
+          "base": {
+            "en": "reasonable; defensible"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Autofahrten",
+            "ersetzen",
+            "Verkehr"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Genauer",
+            "belegt",
+            "Verkehrsmittel"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Letztlich",
+            "Rückgang",
+            "vertretbar"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Auswirkung",
+        "familyKey": "Auswirkung",
+        "surface": "Auswirkung",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Die Auswirkung des neuen Angebots auf den Autoverkehr muss erst untersucht werden.",
+          "base": {
+            "en": "The effect of the new service on car traffic still needs to be investigated."
+          }
+        },
+        "base": {
+          "en": "effect; impact"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "entscheidungskette",
+      "title": {
+        "en": "Tracing a chain of decisions"
+      },
+      "situation": {
+        "de": "Du erläuterst einem Sachbearbeiter, wie sich der Antrag eurer Initiative für ein Wohnprojekt im Laufe der Planung verändert hat.",
+        "en": "You are explaining to a case officer how your group's application for a housing project has changed during planning."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "sachbearbeiter",
+          "role": {
+            "en": "case officer"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "The case officer asks: „In Ihrem Antrag wurden zuerst der Standort und dann der Umfang geändert. Wie hängen diese Entscheidungen zusammen?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "interlocutorId": "sachbearbeiter",
+          "targetText": "In Ihrem Antrag wurden zuerst der Standort und dann der Umfang geändert. Wie hängen diese Entscheidungen zusammen?",
+          "base": {
+            "en": "In your application, first the site changed and then the scale. How are those decisions connected?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "explain",
+          "register": "Sie",
+          "targetText": "Da der erste Standort abgelehnt wurde, brauchten wir einen Entwurf, der die kleinere Fläche berücksichtigt und weniger Wohnungen vorsieht.",
+          "base": {
+            "en": "Since the first site was rejected, we needed a design that takes the smaller plot into account and provides for fewer homes."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "sachbearbeiter",
+          "targetText": "Aber im neuen Entwurf fehlen auch Gemeinschaftsräume. Lässt sich das wirklich nur mit der kleineren Fläche erklären?",
+          "base": {
+            "en": "But communal rooms are also missing from the new design. Can that really be explained by the smaller plot alone?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "clarify",
+          "register": "Sie",
+          "targetText": "Genauer gesagt, den Wegfall der Gemeinschaftsräume müssen wir auf die gekürzte Förderung zurückführen; die kleinere Fläche erklärt lediglich die geringere Wohnungszahl.",
+          "base": {
+            "en": "More precisely, we must attribute the loss of the communal rooms to the funding cut; the smaller plot only explains the lower number of homes."
+          }
+        },
+        {
+          "speaker": "them",
+          "interlocutorId": "sachbearbeiter",
+          "targetText": "Welche Änderung müsste also zuerst rückgängig gemacht werden, damit die Gemeinschaftsräume wieder in den Entwurf aufgenommen werden können?",
+          "base": {
+            "en": "So which change would have to be reversed first for the communal rooms to be included in the design again?"
+          }
+        },
+        {
+          "speaker": "you",
+          "move": "conclude",
+          "register": "Sie",
+          "targetText": "Daraus folgt, dass zunächst die Finanzierung der Gemeinschaftsräume gesichert sein müsste; ein größerer Standort allein würde dieses Problem nicht lösen.",
+          "base": {
+            "en": "It follows that funding for the communal rooms would first have to be secured; a larger site alone would not solve this problem."
+          }
+        }
+      ],
+      "build": {
+        "framePrefix": "Da der erste Standort abgelehnt wurde, brauchten wir ",
+        "chunks": [
+          "einen Entwurf,",
+          "der die kleinere Fläche",
+          "berücksichtigt",
+          "und weniger Wohnungen",
+          "vorsieht."
+        ],
+        "distractors": [
+          "ignoriert",
+          "und mehr Wohnungen"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", den Wegfall der Gemeinschaftsräume müssen wir auf die gekürzte Förderung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; die kleinere Fläche erklärt "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": " die geringere Wohnungszahl."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Genauer gesagt",
+            "acceptedAnswers": [
+              "Genauer gesagt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "zurückführen",
+            "acceptedAnswers": [
+              "zurückführen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "zurückführen; use the form required by müssen"
+            },
+            "choices": [
+              "zurückführen",
+              "zurückgeführt",
+              "zurückzuführen",
+              "zurückführt"
+            ]
+          },
+          {
+            "answer": "lediglich",
+            "acceptedAnswers": [
+              "lediglich",
+              "nur",
+              "bloß"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", dass zunächst die Finanzierung der Gemeinschaftsräume gesichert sein "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "; ein größerer Standort allein würde dieses Problem nicht lösen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Daraus folgt",
+            "acceptedAnswers": [
+              "Daraus folgt"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "müsste",
+            "acceptedAnswers": [
+              "müsste"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "müssen; present hypothetical; the subject is die Finanzierung"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Da der erste Standort abgelehnt wurde, brauchten wir einen Entwurf, der die kleinere Fläche ",
+        "answer": "berücksichtigt",
+        "acceptedAnswers": [
+          "berücksichtigt"
+        ],
+        "after": " und weniger Wohnungen vorsieht.",
+        "fallbackChoices": [
+          "berücksichtigt",
+          "ignoriert",
+          "vergrößert",
+          "vermietet"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "en": "Attribute separate outcomes to separate causes"
+        },
+        "rule": {
+          "en": "Use auf … zurückführen to identify a cause and lediglich to limit what a different cause explains."
+        },
+        "examples": [
+          {
+            "targetText": "Genauer gesagt, den Wegfall der Gemeinschaftsräume müssen wir auf die gekürzte Förderung zurückführen; die kleinere Fläche erklärt lediglich die geringere Wohnungszahl.",
+            "base": {
+              "en": "More precisely, we must attribute the loss of the communal rooms to the funding cut; the smaller plot only explains the lower number of homes."
+            },
+            "highlights": [
+              "auf die gekürzte Förderung zurückführen",
+              "lediglich"
+            ]
+          },
+          {
+            "targetText": "Die Verspätung lässt sich auf den Zugausfall zurückführen; der längere Fußweg erklärt lediglich die letzten fünf Minuten.",
+            "base": {
+              "en": "The delay can be attributed to the cancelled train; the longer walk explains only the final five minutes."
+            },
+            "highlights": [
+              "auf den Zugausfall zurückführen",
+              "lediglich"
+            ]
+          },
+          {
+            "targetText": "Dennoch lässt sich der höhere Preis nicht allein auf die Inflation zurückführen; sie erklärt lediglich einen Teil des Anstiegs.",
+            "base": {
+              "en": "Nevertheless, the higher price cannot be attributed to inflation alone; it explains only part of the increase."
+            },
+            "highlights": [
+              "Dennoch",
+              "auf die Inflation zurückführen",
+              "lediglich"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "da",
+          "kind": "connector",
+          "base": {
+            "en": "since; because"
+          }
+        },
+        {
+          "targetText": "genauer gesagt",
+          "kind": "frame",
+          "base": {
+            "en": "more precisely"
+          }
+        },
+        {
+          "targetText": "daraus folgt",
+          "kind": "frame",
+          "base": {
+            "en": "it follows from that"
+          }
+        },
+        {
+          "targetText": "abgelehnt",
+          "lemma": "ablehnen",
+          "kind": "verb",
+          "base": {
+            "en": "rejected"
+          }
+        },
+        {
+          "targetText": "Entwurf",
+          "kind": "noun",
+          "base": {
+            "en": "design; draft proposal"
+          }
+        },
+        {
+          "targetText": "Wegfall",
+          "kind": "noun",
+          "base": {
+            "en": "loss; removal"
+          }
+        },
+        {
+          "targetText": "Förderung",
+          "kind": "noun",
+          "base": {
+            "en": "funding; financial support"
+          }
+        },
+        {
+          "targetText": "zurückführen",
+          "kind": "verb",
+          "base": {
+            "en": "to attribute; to trace back"
+          }
+        },
+        {
+          "targetText": "lediglich",
+          "kind": "adverb",
+          "base": {
+            "en": "only; merely"
+          }
+        },
+        {
+          "targetText": "gesichert",
+          "lemma": "sichern",
+          "kind": "verb",
+          "base": {
+            "en": "secured; ensured"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Entwurf",
+            "berücksichtigt",
+            "Wohnungen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Genauer",
+            "Förderung",
+            "zurückführen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "folgt",
+            "Finanzierung",
+            "allein"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "zurückführen",
+        "familyKey": "zurückführen",
+        "surface": "zurückführen",
+        "turnIndex": 3,
+        "pos": "verb",
+        "example": {
+          "targetText": "Wir können diese Änderung auf die gekürzte Förderung zurückführen.",
+          "base": {
+            "en": "We can attribute this change to the funding cut."
+          }
+        },
+        "base": {
+          "en": "to attribute to; to trace back to"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

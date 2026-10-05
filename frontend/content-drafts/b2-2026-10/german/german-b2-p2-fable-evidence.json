@@ -1,0 +1,702 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "unresolvedFindings": 0,
+  "reviewedSources": {
+    "frontend/content-drafts/b2-2026-10/german/german-b2-p2.json": "5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960"
+  },
+  "scope": "Exact offline content and local TTS preparation only; not native-human certification or publication approval.",
+  "kind": "fableReview",
+  "model": "claude-fable-5-1",
+  "approvalBasis": "Resolved conditional approval: Fable personally read every field of all ten episodes and required 36 exact edits, including five explicit pattern-example appends. All 36 applied without discretion. Independent replay, full reread and actual structural validation passed on these final bytes. Raw model verdicts below remain APPLY_EXACT_EDITS.",
+  "originalSourceSha256": "d1d0148a524c013277ff4feb77a3bd032758b927704ba56f8d33fff12c6682f7",
+  "chains": [
+    {
+      "rawEvidenceFile": "B2_GERMAN_P2_FABLE_REVIEW_RAW.json",
+      "rawEvidenceSha256": "bd15c55ef160c99fdf591f6bcf586600b175cf29be094b0fcb47f0cd0b9cdca7",
+      "review": {
+        "verdict": "APPLY_EXACT_EDITS",
+        "readThrough": [
+          {
+            "file": "german-b2-p2.json",
+            "lessonsRead": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "checks": "Read every root and lesson field. Reconstruction verified by hand for all 10 builds, clozes, syntheses and recalls; turn lengths and focus spans inside rail bounds; three distinct whitelisted moves per lesson with you2 ∈ answering set and you3 ∈ closing set; them2 is a genuine challenge and them4 a genuine steer in every lesson; titles/situations/scenes disclose only the opener hook; all learner turns gender-neutral, registers constant and matching spec (du only with Freund/Kollegin/Freundin); carriers staged to P2 L1–L7 and nothing used before its lesson; all 10 trophies match ledger lemma/familyKey/pos and are whole tokens of the declared turn; terms attested in spoken material; speak tokens whole tokens with ≥2 inside the build focus; scene-specific policies (L2 Aushang, L8 Praxis) situated; L6 legal distinction Einspruch/Widerspruch for a Bußgeldbescheid is accurate for Germany and anchored to the notice itself; review flags remain false/pending/unreviewed.",
+            "remainingConcerns": [
+              "L3 you3 'konnte den Testlauf verzögern' reads as unidiomatic for stating a past cause → fixed below with coupled fields.",
+              "L6 you3 opened with 'Das heißt' although nothing precedes to paraphrase → replaced by 'Genauer gesagt' with coupled fields.",
+              "L3 recall fallbacks Vereinbarung/Absprache/Aussage all collocate with treffen and yield valid sentences → replaced.",
+              "L4 recall fallback 'Verhältnis' (im Verhältnis zu) is a competing valid reading → replaced.",
+              "Free-typed lexical blanks L2 Abfallverzeichnis and L7 Puffer admit other valid nouns (Internet, Zeit, Reserve) → given choices.",
+              "L4 cloze connector Aufgrund admits Infolge/Nach/Bei when free-typed → choices moved from abgezogen (cue already determines it) to Aufgrund.",
+              "L9 them2 'bisher' presupposes an existing scheme the opener says is only planned → 'damit'.",
+              "Situations address the learner as du while the exemplar used Sie; not a contract rule, but Codex should confirm consistency with the reviewed P1 file before freeze.",
+              "Native accuracy remains model-reviewed only; no native-human row exists."
+            ]
+          }
+        ],
+        "arbitration": [
+          {
+            "finding": "P2-IR-01",
+            "decision": "accept-adapted",
+            "reason": "Permutation [0,2,3,1,4] is grammatical and meaning-preserving; bind am Ende to its clause as proposed and additionally change distractor 'genau die Minute,' to 'die Minute,' so the standalone chip 'genau' is not doubled."
+          },
+          {
+            "finding": "P2-IR-02",
+            "decision": "accept-adapted",
+            "reason": "Recovered B2-22 stands (not superseded by the contract). Rather than altering blank answers, append one truthful third pattern example to L6–L10 each containing a P1 carrier as a highlight (zwar…aber, zugegeben, zumal, im Vergleich zu, dennoch), keeping 2–3 examples and ≥1 learner turn per pattern; no waiver recorded."
+          },
+          {
+            "finding": "P2-IR-03",
+            "decision": "accept-adapted",
+            "reason": "Kurz gesagt and Zusammengefasst are interchangeable summaries in these frames; accept both in L5–L8 (plus Alles in allem in L5 and Um es kurz zu machen in L6). Canonical answers and TTS text unchanged. Same logic extended to Letztlich blanks (L4, L9: Letzten Endes, Unterm Strich) and L1 deshalb (darum, somit, folglich)."
+          },
+          {
+            "finding": "independent checks claiming no idiom issues",
+            "decision": "partially rejected",
+            "reason": "L3 you3 and L6 you3 openers are learner-isms; corrected with exact coupled edits rather than regeneration."
+          },
+          {
+            "finding": "author note: L6 Widerspruch taught contrastively",
+            "decision": "accept",
+            "reason": "Trophy surface is a whole token of turn 1, term and trophy bases give the distinct sense, and the distinction is genuine B2 substance; allocated trophy preserved."
+          }
+        ],
+        "edits": [
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/0/cloze/blanks/2/acceptedAnswers",
+            "oldValue": [
+              "deshalb",
+              "deswegen",
+              "daher"
+            ],
+            "newValue": [
+              "deshalb",
+              "deswegen",
+              "daher",
+              "darum",
+              "somit",
+              "folglich"
+            ],
+            "reason": "Free-typed connector; all are equally valid consecutive connectors here."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/1/synthesis/blanks/1",
+            "oldValue": {
+              "answer": "Abfallverzeichnis",
+              "acceptedAnswers": [
+                "Abfallverzeichnis"
+              ],
+              "kind": "lexical"
+            },
+            "newValue": {
+              "answer": "Abfallverzeichnis",
+              "acceptedAnswers": [
+                "Abfallverzeichnis"
+              ],
+              "kind": "lexical",
+              "choices": [
+                "Abfallverzeichnis",
+                "Kalender",
+                "Grundriss",
+                "Vertrag"
+              ]
+            },
+            "reason": "Free-typed lexical blank admitted Internet/Aushang; choices remove ambiguity (synthesis had no choice blank)."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/3/targetText",
+            "oldValue": "Genauer gesagt, nur die fehlende Freigabe konnte den Testlauf verzögern; die Programmierung selbst war bereits am Dienstag abgeschlossen.",
+            "newValue": "Genauer gesagt, nur die fehlende Freigabe hat den Testlauf verzögert; die Programmierung selbst war bereits am Dienstag abgeschlossen.",
+            "reason": "Perfekt states the actual past cause idiomatically; 'konnte … verzögern' reads as ability."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/dialogue/3/base/en",
+            "oldValue": "More precisely, only the missing approval could hold up the test run; the programming itself was already complete on Tuesday.",
+            "newValue": "More precisely, only the missing approval held up the test run; the programming itself was already complete on Tuesday.",
+            "reason": "Base follows the corrected turn."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/1",
+            "oldValue": {
+              "answer": "konnte",
+              "acceptedAnswers": [
+                "konnte"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "können; simple past; the subject is die fehlende Freigabe"
+              },
+              "choices": [
+                "konnte",
+                "konnten",
+                "konntest",
+                "konntet"
+              ]
+            },
+            "newValue": {
+              "answer": "hat",
+              "acceptedAnswers": [
+                "hat"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "haben; present perfect auxiliary; the subject is die fehlende Freigabe"
+              }
+            },
+            "reason": "Coupled to turn 3; segments unchanged still reconstruct."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/cloze/blanks/2",
+            "oldValue": {
+              "answer": "verzögern",
+              "acceptedAnswers": [
+                "verzögern"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "verzögern; use the form required by konnte"
+              }
+            },
+            "newValue": {
+              "answer": "verzögert",
+              "acceptedAnswers": [
+                "verzögert"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "verzögern; past participle after hat"
+              },
+              "choices": [
+                "verzögert",
+                "verzögern",
+                "verzögerte",
+                "zu verzögern"
+              ]
+            },
+            "reason": "Coupled to turn 3; the single choice blank moves to the trophy verb form."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/terms/7",
+            "oldValue": {
+              "targetText": "verzögern",
+              "kind": "verb",
+              "base": {
+                "en": "to delay; to hold up"
+              }
+            },
+            "newValue": {
+              "targetText": "verzögert",
+              "lemma": "verzögern",
+              "kind": "verb",
+              "base": {
+                "en": "delayed; held up"
+              }
+            },
+            "reason": "Term must occur verbatim in spoken material after the turn change."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/speak/1/requiredTokens",
+            "oldValue": [
+              "Genauer",
+              "Freigabe",
+              "verzögern"
+            ],
+            "newValue": [
+              "Genauer",
+              "Freigabe",
+              "verzögert"
+            ],
+            "reason": "Required tokens must be whole units of turn 3."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/trophy/surface",
+            "oldValue": "verzögern",
+            "newValue": "verzögert",
+            "reason": "Surface must be a whole token of turn 3; lemma, familyKey and example unchanged."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/2/recall/fallbackChoices",
+            "oldValue": [
+              "Entscheidung",
+              "Aussage",
+              "Vereinbarung",
+              "Absprache"
+            ],
+            "newValue": [
+              "Entscheidung",
+              "Lösung",
+              "Antwort",
+              "Erklärung"
+            ],
+            "reason": "Vereinbarung/Absprache/Aussage treffen are all valid collocations producing competing readings."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/0",
+            "oldValue": {
+              "answer": "Aufgrund",
+              "acceptedAnswers": [
+                "Aufgrund",
+                "Wegen"
+              ],
+              "kind": "connector"
+            },
+            "newValue": {
+              "answer": "Aufgrund",
+              "acceptedAnswers": [
+                "Aufgrund",
+                "Wegen",
+                "Infolge"
+              ],
+              "kind": "connector",
+              "choices": [
+                "Aufgrund",
+                "Obwohl",
+                "Sofern",
+                "Damit"
+              ]
+            },
+            "reason": "Free-typed causal preposition was open-ended; choices constrain the carrier blank."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/3/cloze/blanks/1",
+            "oldValue": {
+              "answer": "abgezogen",
+              "acceptedAnswers": [
+                "abgezogen"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "abziehen; past participle after werden"
+              },
+              "choices": [
+                "abgezogen",
+                "abziehen",
+                "abzuziehen",
+                "abzieht"
+              ]
+            },
+            "newValue": {
+              "answer": "abgezogen",
+              "acceptedAnswers": [
+                "abgezogen"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "abziehen; past participle after werden"
+              }
+            },
+            "reason": "Only one choice blank per cloze; the cue already determines this form."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/3/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Letztlich",
+              "Letztendlich"
+            ],
+            "newValue": [
+              "Letztlich",
+              "Letztendlich",
+              "Letzten Endes",
+              "Unterm Strich"
+            ],
+            "reason": "Equally natural concluding frames in this slot."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/3/recall/fallbackChoices",
+            "oldValue": [
+              "Gegensatz",
+              "Anschluss",
+              "Verhältnis",
+              "Abstand"
+            ],
+            "newValue": [
+              "Gegensatz",
+              "Anschluss",
+              "Zweifel",
+              "Abstand"
+            ],
+            "reason": "'Im Verhältnis zu' yields a valid competing sentence."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/4/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Zusammengefasst"
+            ],
+            "newValue": [
+              "Zusammengefasst",
+              "Kurz gesagt",
+              "Alles in allem"
+            ],
+            "reason": "P2-IR-03; taught frames with the same meaning."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/3/targetText",
+            "oldValue": "Das heißt, entscheidend ist die Rechtsbehelfsbelehrung: Dort steht, welche Form verlangt wird; eine gewöhnliche E-Mail genügt nicht automatisch.",
+            "newValue": "Genauer gesagt, entscheidend ist die Rechtsbehelfsbelehrung: Dort steht, welche Form verlangt wird; eine gewöhnliche E-Mail genügt nicht automatisch.",
+            "reason": "'Das heißt' had nothing to paraphrase; precision frame fits the clarify move (staged L3)."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/dialogue/3/base/en",
+            "oldValue": "That means the instructions on legal remedies are what matter: they state the required form; an ordinary email is not automatically sufficient.",
+            "newValue": "More precisely, the instructions on legal remedies are what matter: they state the required form; an ordinary email is not automatically sufficient.",
+            "reason": "Base follows the corrected turn."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/cloze/blanks/0",
+            "oldValue": {
+              "answer": "Das heißt",
+              "acceptedAnswers": [
+                "Das heißt"
+              ],
+              "kind": "frame"
+            },
+            "newValue": {
+              "answer": "Genauer gesagt",
+              "acceptedAnswers": [
+                "Genauer gesagt"
+              ],
+              "kind": "frame"
+            },
+            "reason": "Coupled move blank; segments unchanged still reconstruct."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/terms/1",
+            "oldValue": {
+              "targetText": "das heißt",
+              "kind": "frame",
+              "base": {
+                "en": "that means; in other words"
+              }
+            },
+            "newValue": {
+              "targetText": "genauer gesagt",
+              "kind": "frame",
+              "base": {
+                "en": "more precisely"
+              }
+            },
+            "reason": "das heißt no longer occurs in spoken material."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kurz gesagt"
+            ],
+            "newValue": [
+              "Kurz gesagt",
+              "Zusammengefasst",
+              "Um es kurz zu machen"
+            ],
+            "reason": "P2-IR-03; equivalent taught frames."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/synthesis/blanks/1",
+            "oldValue": {
+              "answer": "behalte",
+              "acceptedAnswers": [
+                "behalte"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "behalten; give an instruction to one person you address as du"
+              }
+            },
+            "newValue": {
+              "answer": "behalte",
+              "acceptedAnswers": [
+                "behalte",
+                "behalt"
+              ],
+              "kind": "form",
+              "cue": {
+                "en": "behalten; give an instruction to one person you address as du"
+              }
+            },
+            "reason": "behalt is an equally valid du-imperative."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/5/pattern/examples/2",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "Um es kurz zu machen: Zwar läuft die Frist noch zwei Wochen, aber du solltest den Einspruch nicht aufschieben.",
+              "base": {
+                "en": "To keep it brief: the deadline does still run for two weeks, but you should not put off the objection."
+              },
+              "highlights": [
+                "Um es kurz zu machen",
+                "Zwar",
+                "aber"
+              ]
+            },
+            "reason": "P2-IR-02 recycling of P1 carrier zwar … aber; append as third example."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/6/build/chunks",
+            "oldValue": [
+              "fehlte uns",
+              "am Ende",
+              "genau die Stunde,",
+              "die wir",
+              "gebraucht hätten."
+            ],
+            "newValue": [
+              "fehlte uns am Ende",
+              "genau",
+              "die Stunde,",
+              "die wir",
+              "gebraucht hätten."
+            ],
+            "reason": "P2-IR-01; binds am Ende so no meaning-preserving permutation is rejected; focus text unchanged."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/6/build/distractors",
+            "oldValue": [
+              "genau die Minute,",
+              "gewonnen hätten."
+            ],
+            "newValue": [
+              "die Minute,",
+              "gewonnen hätten."
+            ],
+            "reason": "Parallel to the new chip 'die Stunde,'; avoids doubled genau."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/6/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Zusammengefasst"
+            ],
+            "newValue": [
+              "Zusammengefasst",
+              "Kurz gesagt"
+            ],
+            "reason": "P2-IR-03."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/6/synthesis/blanks/1",
+            "oldValue": {
+              "answer": "Puffer",
+              "acceptedAnswers": [
+                "Puffer",
+                "Zeitpuffer"
+              ],
+              "kind": "lexical"
+            },
+            "newValue": {
+              "answer": "Puffer",
+              "acceptedAnswers": [
+                "Puffer",
+                "Zeitpuffer"
+              ],
+              "kind": "lexical",
+              "choices": [
+                "Puffer",
+                "Gepäck",
+                "Lärm",
+                "Werbung"
+              ]
+            },
+            "reason": "Free-typed slot also admitted Zeit/Reserve; choices make it unambiguous."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/6/pattern/examples/2",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "Dadurch, dass wir den Plan nicht geprüft haben, verpassten wir den Einlass; zugegeben, das war vermeidbar.",
+              "base": {
+                "en": "Because we did not check the plan, we missed admission; granted, that was avoidable."
+              },
+              "highlights": [
+                "Dadurch, dass",
+                "zugegeben"
+              ]
+            },
+            "reason": "P2-IR-02 recycling of P1 carrier zugegeben."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Kurz gesagt"
+            ],
+            "newValue": [
+              "Kurz gesagt",
+              "Zusammengefasst"
+            ],
+            "reason": "P2-IR-03."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/7/synthesis/blanks/1/acceptedAnswers",
+            "oldValue": [
+              "Zusage",
+              "Bestätigung"
+            ],
+            "newValue": [
+              "Zusage",
+              "Bestätigung",
+              "Terminbestätigung"
+            ],
+            "reason": "Equally valid in 'durch die ausdrückliche … der Praxis'."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/7/pattern/examples/2",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "Das heißt, auch Anfragen per Post müssen nach denselben Kriterien geprüft werden, zumal nicht alle Menschen online erreichbar sind.",
+              "base": {
+                "en": "That means requests by post also have to be checked using the same criteria, especially since not everyone can be reached online."
+              },
+              "highlights": [
+                "Das heißt",
+                "nach denselben Kriterien",
+                "zumal"
+              ]
+            },
+            "reason": "P2-IR-02 recycling of P1 carrier zumal."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/2/targetText",
+            "oldValue": "Aber wenn bisher nur Fußwege ersetzt werden, verschwindet doch kein einziges Auto. Wie prüfen Sie das?",
+            "newValue": "Aber wenn damit nur Fußwege ersetzt werden, verschwindet doch kein einziges Auto. Wie prüfen Sie das?",
+            "reason": "The opener presents the scheme as planned; 'bisher' presupposed it already runs."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/8/dialogue/2/base/en",
+            "oldValue": "But if it has only replaced walking so far, not a single car disappears. How would you check that?",
+            "newValue": "But if it only replaces walking, not a single car disappears. How would you check that?",
+            "reason": "Base follows the corrected turn."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/8/synthesis/blanks/0/acceptedAnswers",
+            "oldValue": [
+              "Letztlich",
+              "Letztendlich"
+            ],
+            "newValue": [
+              "Letztlich",
+              "Letztendlich",
+              "Letzten Endes",
+              "Unterm Strich"
+            ],
+            "reason": "Equally natural concluding frames in this slot."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/8/pattern/examples/2",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "Genauer gesagt, volle Stationen allein belegen keinen Nutzen; entscheidend ist, ob im Vergleich zu früher weniger Autos unterwegs sind.",
+              "base": {
+                "en": "More precisely, full stations alone do not prove a benefit; what matters is whether fewer cars are on the road compared with before."
+              },
+              "highlights": [
+                "Genauer gesagt",
+                "allein belegen keinen Nutzen",
+                "entscheidend ist",
+                "im Vergleich zu"
+              ]
+            },
+            "reason": "P2-IR-02 recycling of P1 carrier im Vergleich zu."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/9/cloze/blanks/2/acceptedAnswers",
+            "oldValue": [
+              "lediglich",
+              "nur"
+            ],
+            "newValue": [
+              "lediglich",
+              "nur",
+              "bloß"
+            ],
+            "reason": "Equally valid restrictive adverb."
+          },
+          {
+            "file": "german-b2-p2.json",
+            "jsonPointer": "/lessons/9/pattern/examples/2",
+            "oldValue": null,
+            "newValue": {
+              "targetText": "Dennoch lässt sich der höhere Preis nicht allein auf die Inflation zurückführen; sie erklärt lediglich einen Teil des Anstiegs.",
+              "base": {
+                "en": "Nevertheless, the higher price cannot be attributed to inflation alone; it explains only part of the increase."
+              },
+              "highlights": [
+                "Dennoch",
+                "auf die Inflation zurückführen",
+                "lediglich"
+              ]
+            },
+            "reason": "P2-IR-02 recycling of P1 carrier dennoch."
+          }
+        ],
+        "finalChecks": [
+          "Apply edits verbatim (pointers with oldValue null are appends creating index 2 of a 2-element examples array), then rerun validateGermanB2Draft with the same spec/ledger evidence; expected PASS. Record the new file SHA-256; the reviewed hash d1d0148a… is superseded.",
+          "Hand-verified after edits: L3 and L6 cloze segments reconstruct dialogue[3]; L7 build chunks join to the unchanged focus; every cloze/synthesis still has at most one choice blank with exactly one accepted choice; all acceptedAnswers distinct after normalization; L3 trophy surface verzögert is a whole token of turn 3 and example contains lemma; L3/L6 replaced terms occur in spoken material; speak tokens remain whole units.",
+          "Voiced surfaces changed in L3 turn 3, L6 turn 3, L9 turn 2 and five new pattern examples; no TTS has been run, so no capture is invalidated. No digits, URLs or annotations in new text.",
+          "Review metadata untouched: all flags false, verdict pending, nativeStatus unreviewed, no reviewer rows; no human or native review is claimed by this arbitration. Allocated trophies and frozen A1/A2/B1 ids/texts unchanged.",
+          "Open for Codex to confirm before freeze: situation du-address consistency with reviewed P1; recovered B2-22 wording against the five appended highlights."
+        ]
+      }
+    }
+  ],
+  "independentResolution": {
+    "result": "PASS",
+    "editCount": 36,
+    "exactReplacementCount": 31,
+    "appendCount": 5,
+    "oldValueMismatches": 0,
+    "unexpectedChanges": 0,
+    "completeFinalObjectMatches": true,
+    "appends": [
+      "/lessons/5/pattern/examples/2",
+      "/lessons/6/pattern/examples/2",
+      "/lessons/7/pattern/examples/2",
+      "/lessons/8/pattern/examples/2",
+      "/lessons/9/pattern/examples/2"
+    ],
+    "method": "Independently replayed every exact oldValue/newValue from the genuine claude-fable-5-1 raw result. Only the five explicitly authorized oldValue:null pointers appended at index two of two-element arrays. Compared the entire result with the final file; original/spec/ledger hashes remain sealed."
+  }
+}

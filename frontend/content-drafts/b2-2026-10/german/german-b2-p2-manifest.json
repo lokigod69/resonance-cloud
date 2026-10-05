@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 3,
+  "status": "reviewed-staged",
+  "level": "B2",
+  "sources": [
+    {
+      "file": "frontend/content-drafts/b2-2026-10/german/german-b2-p2.json",
+      "sha256": "5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960",
+      "targetLanguage": "German",
+      "pathNumber": 2,
+      "reviewedVoiceId": "Qy4b2JlSGxY7I9M9Bqxb"
+    }
+  ],
+  "scope": "Exact offline content and local TTS preparation only; not native-human certification or publication approval.",
+  "publicationStatus": "held",
+  "listeningStatus": "not-started",
+  "fableReview": {
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "reviewedSources": {
+      "frontend/content-drafts/b2-2026-10/german/german-b2-p2.json": "5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960"
+    },
+    "model": "claude-fable-5-1",
+    "evidenceFile": "frontend/content-drafts/b2-2026-10/german/german-b2-p2-fable-evidence.json",
+    "evidenceSha256": "3ab9824e5fc560892202c139059e1d89fb64d56e80556dfdb5ef9de9eec6a819"
+  },
+  "independentReview": {
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "reviewedSources": {
+      "frontend/content-drafts/b2-2026-10/german/german-b2-p2.json": "5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960"
+    },
+    "evidenceFile": "frontend/content-drafts/b2-2026-10/german/german-b2-p2-independent-evidence.json",
+    "evidenceSha256": "7e598abbbade8a6c2d6b655fcc881e099ce5361d51d69ddba14809dfc60787ca"
+  },
+  "structuralValidation": {
+    "verdict": "PASS",
+    "unresolvedFindings": 0,
+    "reviewedSources": {
+      "frontend/content-drafts/b2-2026-10/german/german-b2-p2.json": "5098534676f494a75f30432a65dd9ee2eac330d98feacdf77fa89938de563960"
+    },
+    "validatorSha256": "d2eb15bc692a5191bfe00c2f8bb8fd52cbfed2be7e2a4112034d52d453263fa0",
+    "contractSha256": "fd1995825fcf6c1a2af74d31ea6ef59225b2862ea99b60a21a6b9d0153cb8bbb",
+    "evidenceFile": "frontend/content-drafts/b2-2026-10/german/german-b2-p2-validation-evidence.json",
+    "evidenceSha256": "ea99822ea71863a8068d94f4009187ca9c0c7154c9c55c9a5ce0f927b286561c"
+  },
+  "voiceEvidence": {
+    "file": "review-artifacts/guided-audio-20261003/20261005-voice-evidence.json",
+    "sha256": "9334821f3d06923a307226b670f8aa52a28b747541a0f7a4dde2698fb797fe75"
+  }
+}
