@@ -1,5 +1,7 @@
 # Native B1 drafts
 
+Korean P1/P2 now has a separate offline structural gate with true `Korean`/`ko-KR` identity. Its independent rereview passed after five fixes, with six positive fixtures and 53 rejection cases. It checks whole space-delimited eojeol at the actual exercise position, native-script answer options, polite complete examples, sentence limits and the specification's named self-honorific errors. Full grammar, meaning and content review remain separate; this gate alone does not approve a Korean course or paid recording.
+
 Indonesian P1 and P2 contain twenty complete four-turn lessons. Fable read every field and supplied eighteen exact corrections. The independent final review verified their replay and passed with no unresolved local recording or publication findings. Each path retains its original `draft` status; separate evidence records model review without claiming native-human certification.
 
 The `indonesian` folder contains both paths, the full hundred-lesson trophy and progression specification, review evidence and an exact source manifest. The recording projection covers all eighty dialogue turns, chunks, vocabulary, patterns, trophy words and trophy examples: 314 distinct local v4 files, 362 uses and 9,340 characters. The selected voice is Gavrila (`gjhfBUoH6DHh0DG1X4u0`).

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"],
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.guided-korean-b1-drafts.tsbuildinfo"
+  },
+  "include": [
+    "scripts/lib/guidedKoreanB1Drafts.ts",
+    "scripts/test-guided-korean-b1-drafts.ts"
+  ]
+}
