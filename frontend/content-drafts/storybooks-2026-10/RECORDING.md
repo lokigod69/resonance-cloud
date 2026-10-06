@@ -60,3 +60,26 @@ authenticated subscription reset at 04:27:32 UTC (12:27:32 Manila).
 Audio stays local for listening review. This handoff does not authorise Supabase
 writes, publication, a new live route, or translations into the remaining ten base
 languages.
+
+## Free-account pilot continuation — 2026-10-06
+
+The owner renewed recording after the expired window with a 10,000-credit story
+limit, and the curriculum owner released recording ownership at 09:58 UTC.
+The prepared Voice Library voices are unavailable through the free API; both are
+selectable through ElevenLabs' normal website. `scripts/storybooks/web_pilot.py`
+supports only the two pilot lines, one locale per invocation. It never generates
+speech itself: an operator verifies the bound browser setup, clicks Generate
+once after `READY_FOR_UI`, and signals completion. It reserves within the original
+ledger and lock before that click, then retrieves exact new history and audio by
+read-only API calls. Any uncertain result stops without retry.
+
+Website cache identities and receipts are explicitly distinct from API receipts.
+The receipt stores a null synthesis HTTP status, since that response was not
+observed, and preserves provider history, account credit delta, audio hash and
+hashed browser settings evidence. It cannot establish API rates or satisfy the
+existing API listening gate. Both samples still require actual human listening.
+
+Do not use the original full API runner after website spending without a new
+review: its story allowance currently counts API identities only. Any future
+batch must account for both transports within the owner's cumulative 10,000
+credits, bind the listening decisions, and retain one file per phrase.
