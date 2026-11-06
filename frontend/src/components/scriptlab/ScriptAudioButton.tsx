@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import { motion } from 'framer-motion'
 import { Volume2, VolumeX } from 'lucide-react'
 import type { ScriptAudioSpec, ScriptDefinition } from '@/lib/scriptlab/types'
@@ -25,6 +25,8 @@ function subscribeToVoices(onChange: () => void) {
 export function ScriptAudioButton({ script, spec, size = 'sm', className }: ScriptAudioButtonProps) {
   const { t } = useTranslation()
   const available = useSyncExternalStore(subscribeToVoices, () => canPlayScriptAudio(script, spec), () => false)
+  const noticeId = useId()
+  const synthesized = resolveScriptAudio(script, spec).audioUrl?.includes('/local-tts/')
   const [playing, setPlaying] = useState(false)
   const resetRef = useRef<number | null>(null)
 
@@ -42,7 +44,7 @@ export function ScriptAudioButton({ script, spec, size = 'sm', className }: Scri
     void playPronunciation(resolveScriptAudio(script, spec))
   }, [script, spec])
 
-  return (
+  const button = (
     <motion.button
       type="button"
       disabled={!available}
@@ -51,6 +53,7 @@ export function ScriptAudioButton({ script, spec, size = 'sm', className }: Scri
       whileTap={{ scale: 0.9 }}
       animate={playing ? { scale: [1, 1.09, 1] } : { scale: 1 }}
       transition={{ duration: 0.28 }}
+      aria-describedby={synthesized ? noticeId : undefined}
       aria-label={available ? t('scriptlab.play') : t('study.noAudioTitle')}
       className={cn(
         'inline-flex flex-shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--on-accent)] shadow-[0_6px_18px_var(--accent-glow)] transition-shadow hover:shadow-[0_10px_26px_var(--accent-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30',
@@ -61,5 +64,12 @@ export function ScriptAudioButton({ script, spec, size = 'sm', className }: Scri
     >
       {available ? <Volume2 size={ICON_SIZE[size]} aria-hidden="true" /> : <VolumeX size={ICON_SIZE[size]} aria-hidden="true" />}
     </motion.button>
+  )
+  if (!synthesized) return button
+  return (
+    <span className="inline-flex max-w-24 shrink-0 flex-col items-center gap-1 text-center">
+      {button}
+      <span id={noticeId} className="text-xs leading-tight text-[var(--text-secondary)]">{t('scriptlab.syntheticVoice')}</span>
+    </span>
   )
 }

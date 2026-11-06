@@ -102,8 +102,8 @@ export async function playPronunciation(input: PronunciationInput): Promise<'aud
     // The file exists but this attempt did not start (autoplay policy, a
     // transient network error). Staying silent keeps the caller's replay
     // control honest; a synthetic voice here would sound like the answer.
-    if (input.allowSpeechFallback === false) return 'none'
   }
+  if (input.audioUrl && input.allowSpeechFallback === false) return 'none'
 
   return speakWithBrowser({ text, lang: input.lang })
 }

@@ -16,8 +16,7 @@
 //   `homophone:o` tag and identical IPA so the quiz never plays one against the other.
 //   を only ever appears as the object-marker particle, never word-initial, so its
 //   example illustrates it in that role (ほんをよむ).
-// - Audio degrades gracefully to browser speech-synthesis (ja-JP), exactly like the
-//   Russian pack: no static clips exist for Japanese yet.
+// - Kana use human recordings. Example words have their own local TTS clips.
 // - V1 scope is the 46 base gojūon kana only. Dakuten/handakuten (が…ぱ) and yōon
 //   (きゃ…) are derivational — base kana plus a diacritic or a small kana — and would
 //   roughly triple the pack; they belong in a later `advanced: true` pass (see the

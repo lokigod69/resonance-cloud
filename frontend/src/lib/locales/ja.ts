@@ -7,6 +7,7 @@ const messages = {
   "scriptlab.practice.korean-hangul": "ハングルの練習",
   "scriptlab.practice.japanese-hiragana": "ひらがなの練習",
   "scriptlab.practice.russian-cyrillic": "キリル文字の練習",
+  "scriptlab.syntheticVoice": "合成音声",
   "scriptlab.audioCredits": "音声のクレジット",
   "today.practice.answerShown": "答えを表示しました。ヘルプを続けられます。",
   "today.practice.deckName": "ガイド付きフレーズ — {language}",

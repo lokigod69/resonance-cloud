@@ -275,10 +275,10 @@ export default function ScriptLab() {
 
       {tab === 'quiz' && <QuizMode key={script.id} script={script} />}
 
-      {GENERATED_SCRIPT_AUDIO[script.id] && (script.id === 'japanese-hiragana' || script.id === 'russian-cyrillic') && (
+      {GENERATED_SCRIPT_AUDIO[script.id] && (
         <footer className="mt-8 text-center">
           <a
-            href={`/scripts/${script.id}/credits.html`}
+            href={`/scripts/pronunciation-credits.html#${script.id}`}
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-11 items-center rounded-full px-3 text-sm text-[var(--text-secondary)] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"

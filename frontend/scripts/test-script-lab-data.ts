@@ -8,6 +8,7 @@
 import { SCRIPTS } from '../src/lib/scriptlab/registry.ts'
 import type { LocalizedText, ScriptDefinition, ScriptSymbol } from '../src/lib/scriptlab/types.ts'
 import { LANGUAGES, getLanguageCode } from '../src/lib/languages.ts'
+import { canPlayScriptAudio, resolveScriptAudio } from '../src/lib/scriptlab/audio.ts'
 import { composeHangul, decomposeHangul } from '../src/lib/scriptlab/hangul.ts'
 
 let passes = 0
@@ -79,6 +80,20 @@ function validateHangul(script: ScriptDefinition) {
   const starter = composition.compose('g', 'a')
   assert('Build uses the recorded 가 syllable', starter?.audio.itemId === 'syllable-g' && starter.audio.text === '가', starter)
 
+  assert('a recorded syllable cannot fall back to a different device voice', Boolean(starter && resolveScriptAudio(script, starter.audio).allowSpeechFallback === false))
+  const unavailable: string[] = []
+  const blocks = new Set<string>()
+  for (const initial of composition.initialIds) {
+    for (const medial of composition.medialIds) {
+      for (const final of [undefined, ...(composition.finalIds ?? [])]) {
+        const composed = composition.compose(initial, medial, final)
+        if (!composed) throw new Error(`Invalid syllable: ${initial}/${medial}/${final}`)
+        blocks.add(composed.text)
+        if (!resolveScriptAudio(script, composed.audio).audioUrl || !canPlayScriptAudio(script, composed.audio)) unavailable.push(composed.text)
+      }
+    }
+  }
+  assert('all 3,192 reachable Hangul blocks have a recording', blocks.size === 3192 && !unavailable.length, unavailable)
   for (const symbol of script.symbols) {
     const ctx = `${script.id}/${symbol.id}`
     if (symbol.type === 'consonant' || symbol.type === 'double-consonant') {
@@ -347,6 +362,7 @@ for (const entry of SCRIPTS) {
     assert(`${ctx}: exampleWord.word non-empty`, nonEmpty(symbol.exampleWord.word), symbol.exampleWord.word)
     assert(`${ctx}: exampleWord.romanization non-empty`, nonEmpty(symbol.exampleWord.romanization), symbol.exampleWord.romanization)
     assertLocalized(ctx, 'exampleWord.meaning', symbol.exampleWord.meaning)
+    assert(`${ctx}: example word is playable from a recording`, Boolean(resolveScriptAudio(script, symbol.exampleWord.audio).audioUrl) && canPlayScriptAudio(script, symbol.exampleWord.audio))
     assert(`${ctx}: exampleWord.audio.itemId non-empty`, nonEmpty(symbol.exampleWord.audio.itemId), symbol.exampleWord.audio)
     assert(`${ctx}: exampleWord.audio.text non-empty`, nonEmpty(symbol.exampleWord.audio.text), symbol.exampleWord.audio)
 

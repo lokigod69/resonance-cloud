@@ -25,7 +25,7 @@
     "test:base-languages": "tsx scripts/test-base-language-contract.ts",
     "test:guided-base": "tsx scripts/test-guided-base-editions.ts && tsx scripts/test-guided-translation-quality.ts && tsx scripts/test-guided-base-overlay-quality.ts && tsx scripts/test-guided-phrase-catalog.ts && tsx scripts/test-guided-phrase-locale-migration.ts",
     "test:guided-b1-drafts": "tsc -p tsconfig.guided-drafts.json && tsx scripts/test-guided-b1-drafts.ts",
-    "test:script-lab": "tsx scripts/test-script-lab-data.ts && tsx scripts/test-script-content-locales.ts",
+    "test:script-lab": "tsx scripts/test-script-lab-data.ts && tsx scripts/test-script-content-locales.ts && tsx scripts/rebuild-script-lab-audio-manifest.ts --check",
     "test:word-stream": "tsx scripts/test-home-word-stream.ts",
     "preview": "vite preview",
     "typecheck:api": "tsc -p tsconfig.api.json --noEmit",

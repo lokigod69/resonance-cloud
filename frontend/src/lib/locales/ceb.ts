@@ -7,6 +7,7 @@ const messages = {
   "scriptlab.practice.korean-hangul": "Pagpraktis og Hangul",
   "scriptlab.practice.japanese-hiragana": "Pagpraktis og hiragana",
   "scriptlab.practice.russian-cyrillic": "Pagpraktis og Siriliko",
+  "scriptlab.syntheticVoice": "Artipisyal nga tingog",
   "scriptlab.audioCredits": "Mga tinubdan sa audio",
   "today.practice.answerShown": "Gipakita ang tubag. Makapadayon ka uban sa tabang.",
   "today.practice.deckName": "Mga giya nga hugpong sa mga pulong — {language}",

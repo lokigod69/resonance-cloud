@@ -7,6 +7,7 @@ const messages = {
   "scriptlab.practice.korean-hangul": "Latihan Hangul",
   "scriptlab.practice.japanese-hiragana": "Latihan hiragana",
   "scriptlab.practice.russian-cyrillic": "Latihan aksara Kiril",
+  "scriptlab.syntheticVoice": "Suara sintetis",
   "scriptlab.audioCredits": "Kredit audio",
   "today.practice.answerShown": "Jawaban ditampilkan. Kamu bisa lanjut dengan bantuan.",
   "today.practice.deckName": "Frasa terpandu — {language}",

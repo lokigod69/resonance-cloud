@@ -709,6 +709,7 @@ const koreanHangul: ScriptDefinition = {
       const composed = composeHangul(initial.character, medial.character, final)
       if (!composed) return null
       const recorded = symbols.find((symbol) => symbol.exampleSyllableAudio?.text === composed.syllable)?.exampleSyllableAudio
+        ?? symbols.find((symbol) => symbol.exampleWord.audio.text === composed.syllable)?.exampleWord.audio
       return {
         text: composed.syllable,
         romanization: composed.romanization,

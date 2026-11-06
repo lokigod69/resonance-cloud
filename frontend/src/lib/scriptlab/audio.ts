@@ -1,27 +1,22 @@
-// Script Lab audio resolution.
-//
-// Every playable surface in a script (symbol, syllable, example word) carries a
-// ScriptAudioSpec { itemId, text }. This module turns that into something
-// playPronunciation (hooks/usePronunciation.ts) can play:
-//   1. a pre-generated static asset from the manifest below, when one exists;
-//   2. otherwise browser speechSynthesis speaking spec.text in the script's locale.
-//
-// No paid TTS provider is ever called from the client. To upgrade a script to
-// studio audio, batch-generate files (ElevenLabs or any provider) into
-// public/scripts/<scriptId>/<itemId>.mp3 and list them in the manifest — the
-// resolution order above picks them up with zero component changes. See
-// docs/Product/FABLE_SCRIPT_AUDIO_PROVIDER_PLAN.md.
+// Script Lab recordings are downloaded on demand. New, unrecorded inventory
+// can still use the device voice until its pronunciation pack is published.
 
 import type { ScriptAudioSpec, ScriptDefinition } from './types'
-import { GENERATED_SCRIPT_AUDIO } from './audioManifest.generated'
+import { GENERATED_HANGUL_BLOCKS, GENERATED_SCRIPT_AUDIO } from './audioManifest.generated'
 
-/** scriptId → itemId → asset URL. Rebuilt from the files on disk by
- * scripts/generate-script-lab-audio.ts — never edited by hand. */
-const SCRIPT_AUDIO_MANIFEST: Record<string, Record<string, string>> = GENERATED_SCRIPT_AUDIO
+function recordedUrl(id: string, spec: ScriptAudioSpec): string | null {
+  if (id === 'korean-hangul' && spec.text.length === 1
+    && spec.itemId === `composed-${spec.text.charCodeAt(0).toString(16)}`
+    && GENERATED_HANGUL_BLOCKS.includes(spec.text)) {
+    return `/scripts/${id}/local-tts/${spec.itemId}.mp3`
+  }
+  return GENERATED_SCRIPT_AUDIO[id]?.[spec.itemId] ?? null
+}
 
 export type ScriptPronunciationInput = {
   text: string
   audioUrl?: string | null
+  allowSpeechFallback: boolean
   lang?: string | null
 }
 
@@ -29,9 +24,11 @@ export function resolveScriptAudio(
   script: Pick<ScriptDefinition, 'id' | 'speechLang'>,
   spec: ScriptAudioSpec,
 ): ScriptPronunciationInput {
+  const audioUrl = recordedUrl(script.id, spec)
   return {
     text: spec.text,
-    audioUrl: SCRIPT_AUDIO_MANIFEST[script.id]?.[spec.itemId] ?? null,
+    audioUrl,
+    allowSpeechFallback: !audioUrl,
     lang: script.speechLang,
   }
 }
@@ -43,7 +40,7 @@ export function canPlayScriptAudio(
   script: Pick<ScriptDefinition, 'id' | 'speechLang'>,
   spec: ScriptAudioSpec,
 ): boolean {
-  if (SCRIPT_AUDIO_MANIFEST[script.id]?.[spec.itemId]) return true
+  if (recordedUrl(script.id, spec)) return true
   if (!('speechSynthesis' in globalThis)) return false
   const voices = globalThis.speechSynthesis.getVoices()
   const wanted = script.speechLang.toLowerCase().split('-')[0]
