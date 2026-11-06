@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Italian B1 writing complete
+
+Added seventy Italian lessons across P4–P10 to the November text archive and local guided reader. Italian now has 100 written B1 lessons with 100 distinct planned trophy words. The new episodes include German and English translations. Separate writers and reviewers worked from the approved outlines. Reviews addressed ambiguous exercises, sentence ordering, service encounters and agreement across translations. Eight speaking exercises now use anchors the app can recognise in Italian phrases containing elisions. The archive verifier exercises the actual speech grader with text in all seventy lessons.
+
+The independent and Fable verdicts identify the same final files for all seven paths. All 36 B1 archive checks passed. The reader matched its sources across 1,040 lessons and 4,840 dialogue turns. Browser checks opened Italian P4 and P10, revealed the four turns and switched between German and English. Across the twelve languages, 400 B1 lessons and 860 B2 lessons still need writing. Today activation and audio are deferred.
+
 ## 2026-11-07 — First internal TestFlight handoff
 
 App commit `15f5dd2a`. A read-only Apple API check on the configured team found no matching iOS app record or registered bundle ID. `frontend/ios/TESTFLIGHT.md` takes the Mac from provisioning through signed archive verification, internal upload, processing and assignment to the owner's group. The Apple upload and physical iPhone pass remain open.

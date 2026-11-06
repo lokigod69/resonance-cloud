@@ -1,0 +1,824 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 8,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+  "editorial": {
+    "sourceSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Turn 1 (14 w) 'Durante la mia infanzia costruivo…' is gender-neutral imperfetto habit; follow-up 'come faceva a tener su il tetto' causally elicits the 6–12-word detail 'Due sedie reggevano il tetto fatto con una coperta' (9 w). Form gap reggevano cued 'reggere (due sedie)' with visible subject, cue does not contain the answer; choice fatto has only one masculine-singular attachment. Four chips, interim chips end without .?!, the period-bearing 'del divano di mia nonna.' pins the order; foils are same-context. Title/caption do not reveal the roof question."
+      },
+      {
+        "n": 2,
+        "observation": "'Prima di vivere in città avevo l'abitudine di fare il pane ogni sabato' (13 w) matches the beat; 'E adesso prepara ancora il pane a casa?' leads to 'Adesso compro la pagnotta del sabato al forno sotto casa' (10 w). Both choice blanks (la, al) are unique; recall 'fare' and speak tokens are apostrophe-free. Trophy 'abitudine' is the outline word and the token after the elided article; 'forno' = bakery gloss is correct colloquial usage. Transfer example 'Sul lavoro avevo l'abitudine di annotare…' is independent."
+      },
+      {
+        "n": 3,
+        "observation": "Previous required fix verified: cloze now blanks 'nella' (unique before paglia) instead of tiepida/tiepide; chips merge 'dai nonni' into the quando-clause and split 'prima di' / 'colazione.' so the time phrase cannot float; distractor 'cena.' is a believable same-slot foil. Turn 1 12 w, last turn 9 w, 'Mi manca cercare…' answers 'Che cosa le manca di più'. Term glosses faithful (tiepida = lauwarm)."
+      },
+      {
+        "n": 4,
+        "observation": "'Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume' (14 w) uses the staged age frame, no 'da piccolo'; follow-up on walking today yields 'Oggi per andare al lavoro devo prendere due autobus' (9 w). whyThisWord now correctly attributes the habitual reading to the imperfetto; DE follow-up 'zwei Busse nehmen' aligned with the term list. Choice blanks al/prendere unique; recall costeggiava with person foils."
+      },
+      {
+        "n": 5,
+        "observation": "'In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora' (12 w) + cause 'Il mio turno finisce tardi e la sveglia suona presto' (10 w). Previous fix verified: suona is now a cue-free choice with four displayed forms, finisce keeps cue 'finire (il mio turno)' with visible subject and no literal answer. Trophy 'passato' is the noun in 'In passato' (trap noted, string-level). mentre/quando not co-offered; recall 'intere' unique."
+      },
+      {
+        "n": 6,
+        "observation": "'Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina' (13 w) contrasts present and imperfetto; 'Che cosa le permette…' leads to 'I negozi qui vicino restano aperti fino alle otto' (9 w). Form gap restano cued 'restare (i negozi)', choice aperti unique with plural subject. Five chips, 'a piedi,' ends in comma; chip glosses faithful; trophy case handled by fold."
+      },
+      {
+        "n": 7,
+        "observation": "'Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni' (15 w) uses licensed comparative più…di prima; 'C'è qualcosa che adesso riesce a fare più spesso?' → 'Adesso ceno con mia figlia quasi tutte le sere' (9 w). Choice blanks mia/tutte unique; recall regolare with non-adjective foils; transfer example 'La cucina è più luminosa di prima…' independent. Lei forms both ways."
+      },
+      {
+        "n": 8,
+        "observation": "'Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio' (12 w); 'accompagnarla' is correct formal object form; last turn 'Mia sorella mi accompagnava a comprare i sacchi di terriccio' (10 w) narrates the situation where help was needed. Form gap accompagnava cued 'accompagnare (mia sorella)' with visible subject; comprare choice unique after 'a'. Title 'Mit der neuen Tramlinie' now matches the scene; EN follow-up pair reads naturally."
+      },
+      {
+        "n": 9,
+        "observation": "'Con l'esperienza ho scoperto il mercato del quartiere e da allora compro lì la verdura' (15 w): passato prossimo for the one-off discovery, presente + da allora for the ongoing habit, no passato prossimo + da. Follow-up 'Da quanto tempo…' → 'Compro qui le verdure di stagione da quasi due anni' (10 w). Chip 0 and both base texts now carry 'Mit wachsender Erfahrung / With growing experience'. 'da' choice foils agli/nella/allo are syntactically impossible, per correctly excluded by the da/per trap. Transfer example 'Suono il violino da sei mesi…' independent."
+      },
+      {
+        "n": 10,
+        "observation": "'Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate' (13 w) uses staged rispetto a + imperfetto, gender-neutral; follow-up with 'in cui' (P4 recycle) → 'Ieri ho fissato una visita senza chiedere aiuto a nessuno' (10 w), a concrete episode. Title 'Italienisch im Alltag' no longer pre-empts the phone call. Choice blanks una/chiedere unique; recall evitavo; terms and chip glosses faithful."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Childhood is expressed with infanzia and habitual costruivo; a blanket and chairs complete the den, and night-shift tea supplies a different habitual model."
+      },
+      {
+        "n": 2,
+        "observation": "Making bread every Saturday becomes buying a loaf locally. The register, level and office notebook example fit, and both choice banks are determinate."
+      },
+      {
+        "n": 3,
+        "observation": "The second gap now selects nella before paglia, leaving tiepida fixed and ending the egg/straw agreement ambiguity. Binding dai nonni to in campagna eliminates the second valid build. The cinema example remains independent."
+      },
+      {
+        "n": 4,
+        "observation": "The gender-safe age expression sets up a river path contrasted with a two-bus commute. The revised German now explicitly requires two buses. The trophy explanation correctly links habitual meaning to andavo in this episode."
+      },
+      {
+        "n": 5,
+        "observation": "Whole evenings and half an hour are a clear comparison, with a late shift and an early alarm as its cause. Suona now has a cue-free bank with the only third-person singular choice. The telephone/web transfer remains independent."
+      },
+      {
+        "n": 6,
+        "observation": "Attualmente introduces the current errands, while the imperfect marks driving in the past. Late opening enables evening shopping; the office transfer is independent."
+      },
+      {
+        "n": 7,
+        "observation": "The change from three shifts makes meals with the daughter more frequent. The brighter-kitchen transfer exercises the same comparative and the choice answers agree unambiguously."
+      },
+      {
+        "n": 8,
+        "observation": "The updated title describes the new tram mentioned at the opening. The present tram/previous lift contrast, natural English dialogue on the purchase and the sister who used to take the shopper all agree; accompanying a habitual soil purchase takes the imperfect."
+      },
+      {
+        "n": 9,
+        "observation": "The first-person avere past describes discovery; present plus da allora and da quasi due anni correctly describe ongoing shopping. The violin example independently illustrates continuing duration. The revised base glosses retain the trophy concept."
+      },
+      {
+        "n": 10,
+        "observation": "The new everyday-Italian title reflects the actual scene. A medical appointment provides concrete evidence of improved confidence in speaking; swimming models the comparison with meno."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "2e307479ea1de68b764338a7ced188ef021836a82fa2824382c0a5e49f5acf27",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The childhood den is gender-safe; two chairs support the blanket roof. Night-shift tea changes both setting and details while retaining the habitual imperfect. The typed reggevano is grounded by the habitual past question."
+      },
+      {
+        "n": 2,
+        "observation": "The former weekly bread-making habit becomes buying a loaf in the city, with note-taking at work as transfer. The bakery scene gives atmosphere without supplying the new habit."
+      },
+      {
+        "n": 3,
+        "observation": "The grandparents, trip to the countryside and egg collecting match the beat. The straw detail is concrete, but the choices allow two adjective attachments and the build admits a second ordinary sequence."
+      },
+      {
+        "n": 4,
+        "observation": "Quando avevo dieci anni introduces the gender-free age expression; the path beside the river contrasts with a two-bus commute. The jazz band adds a distinct age-based transfer. The German return-trip wording needs precision."
+      },
+      {
+        "n": 5,
+        "observation": "The late shift and early alarm give a concrete reason for less evening reading. The current habitual question grounds both present-tense typed answers. The telephone/web comparison remains independent."
+      },
+      {
+        "n": 6,
+        "observation": "Walking errands rather than driving and nearby shops staying open until eight answer the two questions. The office-sharing example transfers the opposite order of present/past contrast."
+      },
+      {
+        "n": 7,
+        "observation": "Three-shift work versus regular hours leads to family dinners. Più regolare di prima and the brighter kitchen give distinct comparison examples. Feminine singular mia and plural tutte are determined."
+      },
+      {
+        "n": 8,
+        "observation": "The new tram explains independent shopping and the former car lift makes bags of soil plausible. The old need is habitual, grounding the imperfect. The English/German follow-up would benefit from making the actual transport clearer."
+      },
+      {
+        "n": 9,
+        "observation": "The market changes the learner’s regular vegetable shopping. Da allora and da quasi due anni describe a continuing fact with the present; the violin model independently shows duration. No perfect + da occurs."
+      },
+      {
+        "n": 10,
+        "observation": "The learner contrasts confidence now with avoidance then and gives booking an appointment as evidence. The swimming transfer uses meno and rispetto a quando. The current title suggests that the scene itself is a phone call."
+      }
+    ],
+    "findings": [
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "cloze (tiepida), chunks",
+        "issue": "There are two potential agreement controllers in «cercare le uova nella paglia ancora ___»: tiepida describes the straw, but tiepide can describe the eggs, with nella paglia as an intervening location. The learner sees no target-language intention that selects what is warm. Also «Quando andavo in campagna raccoglievo le uova dai nonni prima di colazione» is another natural build with exactly the same meaning.",
+        "recommendation": "Fix the adjective attachment by reordering (e.g. «Mi manca cercare nella paglia ancora tiepida le uova delle galline») or test a different unique blank. Bind «in campagna dai nonni» to eliminate the second chip order, keeping 4–7 chips."
+      },
+      {
+        "n": 4,
+        "severity": "LOW",
+        "field": "dialogue[3].baseText.de; trophyWord.whyThisWord",
+        "issue": "«Zweimal mit dem Bus fahren» describes two journeys and misses that this one commute requires two different buses. «Andare a scuola» means go to/attend school; the infinitive itself does not mean a regular route despite the explanation.",
+        "recommendation": "Use «Heute muss ich zwei Busse nehmen, um zur Arbeit zu kommen». Explain that andavo in this context presents the regular trip; the lexical infinitive simply means zur Schule gehen/to go to school."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "dialogue[2–3].baseText, EN especially",
+        "issue": "The setup explicitly says the learner used to request un passaggio. “To accompany you to buy” sounds translated, and “come with me” leaves unclear why access to the tram changes things.",
+        "recommendation": "Render the interaction naturally in context, e.g. “What did you need a lift to buy?” / “My sister used to take me to buy bags of potting soil”; adjust German accordingly."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "title",
+        "issue": "«A conversation on the phone»/«Ein Gespräch am Telefon» places the current exchange on the phone, although it is a face-to-face conversation after a language café.",
+        "recommendation": "Use a title such as «Speaking Italian in daily life» / «Italienisch im Alltag», leaving the concrete achievement for the last exchange."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8ec0fd63a78c96094090219685fcde5c19561d62208c976433827e6676e6299d",
+      "sourceSha256": "2e307479ea1de68b764338a7ced188ef021836a82fa2824382c0a5e49f5acf27",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Durante la mia infanzia costruivo capanne (14 words) is gender-neutral; follow-up Due sedie reggevano il tetto fatto con una coperta (9) answers the roof question; form blank reggevano has visible subject due sedie and only impossible persons; chips unique (capital Durante fixes order); night-shift tea transfer is independent; trophy infanzia present."
+        },
+        {
+          "n": 2,
+          "observation": "Avevo l'abitudine di fare il pane ogni sabato (13) and Adesso compro la pagnotta del sabato al forno sotto casa (10) realise the beat; both choice blanks (la, al) are unique; final chip ogni sabato. carries the period so the movable time phrase cannot reorder; notebook transfer independent; trophy abitudine in turn 1."
+        },
+        {
+          "n": 3,
+          "observation": "Egg-collecting at the grandparents' fits the beat and quando+imperfetto staging, but the choice blank tiepida/tiepide admits two attachments (paglia or uova) and the chip dai nonni can move (raccoglievo le uova dai nonni prima di colazione) producing a second grammatical build."
+        },
+        {
+          "n": 4,
+          "observation": "Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume (14) uses the staged age frame; two-bus commute (9) gives today's contrast; choice blanks al/prendere unique; jazz-band transfer independent; whyThisWord overstates andare a scuola as meaning a regular route."
+        },
+        {
+          "n": 5,
+          "observation": "In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora (12) and the late shift/early alarm (10) give the cause; both form blanks have visible noun subjects and present tense is grounded by le rimane; recall intere has no apostrophe; mentre not co-offered with quando."
+        },
+        {
+          "n": 6,
+          "observation": "Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina (13) matches the beat; shops open until eight (9); form blank restano with i negozi, choice aperti unique; five chips, comma chips allowed; office-sharing transfer independent."
+        },
+        {
+          "n": 7,
+          "observation": "Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni (15) uses the licensed comparative; dinner with daughter (9) answers what improved; mia/tutte determined by figlia/sere; kitchen transfer independent."
+        },
+        {
+          "n": 8,
+          "observation": "Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio (12); Mia sorella mi accompagnava a comprare i sacchi di terriccio (10) gives the former-help situation; imperfetto grounded by doveva; form cue accompagnare (mia sorella) with subject visible; glosses accurate if a little literal."
+        },
+        {
+          "n": 9,
+          "observation": "Con l'esperienza ho scoperto il mercato … e da allora compro lì la verdura (15) and Compro qui le verdure di stagione da quasi due anni (10) use presente + da, never passato prossimo + da; per is not co-offered with da; chunk gloss Mit der Zeit does not render con l'esperienza."
+        },
+        {
+          "n": 10,
+          "observation": "Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate (13) and Ieri ho fissato una visita senza chiedere aiuto a nessuno (10) match the beat; una/chiedere unique; swimming transfer uses meno; title places the face-to-face scene on the phone."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Choice blank tiepida/tiepide has two grammatical attachments (nella paglia … tiepida vs le uova … tiepide) with no cue; and chip dai nonni can be placed after le uova, yielding a second correct build.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Mi manca ",
+                {
+                  "kind": "choice",
+                  "answer": "cercare",
+                  "choices": [
+                    "cercavo",
+                    "cercano",
+                    "cercare",
+                    "cercando"
+                  ]
+                },
+                " le uova nella paglia ancora ",
+                {
+                  "kind": "choice",
+                  "answer": "tiepida",
+                  "choices": [
+                    "tiepide",
+                    "tiepida",
+                    "tiepido",
+                    "tiepidi"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Mi manca ",
+                {
+                  "kind": "choice",
+                  "answer": "cercare",
+                  "choices": [
+                    "cercavo",
+                    "cercano",
+                    "cercare",
+                    "cercando"
+                  ]
+                },
+                " le uova ",
+                {
+                  "kind": "choice",
+                  "answer": "nella",
+                  "choices": [
+                    "nel",
+                    "nella",
+                    "nei",
+                    "nelle"
+                  ]
+                },
+                " paglia ancora tiepida."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/chunks",
+              "old": [
+                {
+                  "targetText": "Quando andavo in campagna",
+                  "baseText": {
+                    "de": "Wenn ich aufs Land fuhr",
+                    "en": "When I went to the countryside"
+                  }
+                },
+                {
+                  "targetText": "dai nonni",
+                  "baseText": {
+                    "de": "zu meinen Großeltern",
+                    "en": "to my grandparents' place"
+                  }
+                },
+                {
+                  "targetText": "raccoglievo le uova",
+                  "baseText": {
+                    "de": "sammelte ich die Eier ein",
+                    "en": "I used to collect the eggs"
+                  }
+                },
+                {
+                  "targetText": "prima di colazione.",
+                  "baseText": {
+                    "de": "vor dem Frühstück.",
+                    "en": "before breakfast."
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Quando andavo in campagna dai nonni",
+                  "baseText": {
+                    "de": "Wenn ich aufs Land zu meinen Großeltern fuhr",
+                    "en": "When I went to the countryside to my grandparents' place"
+                  }
+                },
+                {
+                  "targetText": "raccoglievo le uova",
+                  "baseText": {
+                    "de": "sammelte ich die Eier ein",
+                    "en": "I used to collect the eggs"
+                  }
+                },
+                {
+                  "targetText": "prima di",
+                  "baseText": {
+                    "de": "vor",
+                    "en": "before"
+                  }
+                },
+                {
+                  "targetText": "colazione.",
+                  "baseText": {
+                    "de": "dem Frühstück.",
+                    "en": "breakfast."
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/distractors",
+              "old": [
+                "Quando andavo al mare",
+                "dopo il tramonto."
+              ],
+              "new": [
+                "Quando andavo al mare dai nonni",
+                "cena."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "whyThisWord claims andare a scuola itself denotes a regular route; the infinitive means to go to school, the habitual reading comes from the imperfetto.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/trophyWord/whyThisWord",
+              "old": {
+                "de": "Andare a scuola bezeichnet den regelmäßigen Schulweg. Im Imperfetto wird daraus andavo a scuola.",
+                "en": "Andare a scuola describes going to school regularly. In the imperfect it becomes andavo a scuola."
+              },
+              "new": {
+                "de": "Andare a scuola heißt zur Schule gehen. Erst das Imperfetto andavo a scuola beschreibt den damaligen regelmäßigen Schulweg.",
+                "en": "Andare a scuola means to go to school. It is the imperfect andavo a scuola that describes the regular school route back then."
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "German follow-up 'zweimal mit dem Bus fahren' is understandable but less precise than 'zwei Busse nehmen', which the term list already uses.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText/de",
+              "old": "Heute muss ich auf dem Weg zur Arbeit zweimal mit dem Bus fahren.",
+              "new": "Heute muss ich zwei Busse nehmen, um zur Arbeit zu kommen."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "English follow-up pair reads slightly translated; 'took me' makes the former lift explicit. Title 'Der Weg zum Markt' names a market that never appears (and L9 is the market episode).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/2/baseText/en",
+              "old": "What did you have to ask someone to accompany you to buy?",
+              "new": "Which purchase did you need someone to come along for?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText/en",
+              "old": "My sister used to come with me to buy bags of potting soil.",
+              "new": "My sister used to take me to buy bags of potting soil."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/title",
+              "old": {
+                "de": "Der Weg zum Markt",
+                "en": "The way to the market"
+              },
+              "new": {
+                "de": "Mit der neuen Tramlinie",
+                "en": "With the new tram line"
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Chunk gloss and dialogue render con l'esperienza as 'Mit der Zeit' / 'As I got to know the area', which drops the trophy concept esperienza; the chip gloss must be faithful.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks/0/baseText",
+              "old": {
+                "de": "Mit der Zeit habe ich entdeckt",
+                "en": "With experience I discovered"
+              },
+              "new": {
+                "de": "Mit wachsender Erfahrung habe ich entdeckt",
+                "en": "With growing experience I discovered"
+              }
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/8",
+              "old": "Mit der Zeit habe ich den Markt im Viertel entdeckt",
+              "new": "Mit wachsender Erfahrung habe ich den Markt im Viertel entdeckt"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/8",
+              "old": "As I got to know the area, I discovered the neighbourhood market",
+              "new": "With growing experience I discovered the neighbourhood market"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Reviewer-style concern that agli/nella/allo are weak foils for 'da' is dismissed: per is deliberately excluded by the da/per trap, and the remaining foils are all syntactically impossible, which is the required property.",
+          "edits": []
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Title 'Ein Gespräch am Telefon / A conversation on the phone' misdescribes the face-to-face scene after the language café and pre-empts the phone-call evidence of the last turn.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/title",
+              "old": {
+                "de": "Ein Gespräch am Telefon",
+                "en": "A conversation on the phone"
+              },
+              "new": {
+                "de": "Italienisch im Alltag",
+                "en": "Italian in daily life"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "5a566531ecd4ad3e054da1bf09678fcffae28c35b2b41879e9ab7333b27400dd",
+      "sourceSha256": "7295957de69379fc603cb4bea8c2c6034269b54a1e26890ff8b52895677463c3",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (14 words) gender-neutral with durante la mia infanzia + costruivo; follow-up asks about the roof, turn 2 (9 words) answers causally; form blank reggevano has visible subject 'Due sedie' and cue not containing answer; choice fatto unique; chips 4, foils believable; trophy infanzia present; title and caption do not pre-empt the roof detail."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 (13 words) avevo l'abitudine di + infinito, turn 2 (10 words) adesso contrast; cloze la/al both uniquely grammatical; chunks interim chips without .?!; DE/EN glosses faithful; trophy abitudine in turn 1."
+        },
+        {
+          "n": 3,
+          "observation": "Previous fix applied: nella choice is unique, dai nonni merged into the capitalized quando chip, foil 'cena.' coupled; mi manca cercare choice only infinitive works; turn 2 9 words; pattern and glosses consistent."
+        },
+        {
+          "n": 4,
+          "observation": "Quando avevo dieci anni + andavo, turn 1 14 words; whyThisWord corrected to attribute habit to imperfetto; cloze al/prendere unique; recall costeggiava with only wrong-person foils; DE 'zweimal mit dem Bus fahren' remains a mild imprecision only."
+        },
+        {
+          "n": 5,
+          "observation": "In passato … mentre oggi contrast, 12/10 words, no mentre/quando co-offer; first form blank finisce fine; second form blank suona carries cue 'suonare (la sveglia)' whose infinitive literally contains the answer string suona, violating the no-giveaway cue rule for typed exact-graded gaps."
+        },
+        {
+          "n": 6,
+          "observation": "Attualmente + presente vs mentre prima + imperfetto, 13/9 words; form restano has subject 'I negozi' visible, cue restare does not contain answer; aperti unique; 5 chips, two same-context foils; speak token 'Attualmente' matches turn 1 casing."
+        },
+        {
+          "n": 7,
+          "observation": "Comparative più regolare di prima + quando lavoravo, 15/9 words; mia/tutte choices unique; recall regolare with non-adjective foils; pattern second example uses c'era with explicit noun; mia figlia keeps speaker gender-neutral."
+        },
+        {
+          "n": 8,
+          "observation": "Adesso ho più autonomia … mentre prima chiedevo, 12/10 words; accompagnarla is correct formal-Lei object; form accompagnava subject 'Mia sorella' visible; title 'Der Weg zum Markt' names a market absent from the episode (and belonging to L9), and EN follow-up pair reads stiffly — preference-level, not errors."
+        },
+        {
+          "n": 9,
+          "observation": "Previous fix applied: con l'esperienza glossed as Erfahrung/experience in chip and dialogue; presente + da (compro … da quasi due anni) without passato prossimo + da; da choice has only impossible foils (per excluded by trap); 15/10 words; recall scoperto."
+        },
+        {
+          "n": 10,
+          "observation": "Rispetto a quando + evitavo, 13/10 words; title corrected to 'Italienisch im Alltag', scene is face-to-face and does not reveal the phone-call episode; una/chiedere choices unique; fissare una visita glossed as medical appointment consistently; recycled passato prossimo in turn 2 fits P1 recycling."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Typed form gap 'suona' is cued with the infinitive 'suonare (la sveglia)', which literally contains the answer; the cue gives the answer away on a first-attempt exact-graded blank. Convert to a cue-free choice blank whose four forms of suonare are all displayed up front; foils remain syntactically impossible with subject la sveglia.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                "Il mio turno ",
+                {
+                  "kind": "form",
+                  "answer": "finisce",
+                  "choices": [
+                    "finisce",
+                    "finiscono",
+                    "finisco",
+                    "finiamo"
+                  ],
+                  "cue": "finire (il mio turno)"
+                },
+                " tardi e la sveglia ",
+                {
+                  "kind": "form",
+                  "answer": "suona",
+                  "choices": [
+                    "suonano",
+                    "suono",
+                    "suoniamo",
+                    "suona"
+                  ],
+                  "cue": "suonare (la sveglia)"
+                },
+                " presto."
+              ],
+              "new": [
+                "Il mio turno ",
+                {
+                  "kind": "form",
+                  "answer": "finisce",
+                  "choices": [
+                    "finisce",
+                    "finiscono",
+                    "finisco",
+                    "finiamo"
+                  ],
+                  "cue": "finire (il mio turno)"
+                },
+                " tardi e la sveglia ",
+                {
+                  "kind": "choice",
+                  "answer": "suona",
+                  "choices": [
+                    "suonano",
+                    "suono",
+                    "suoniamo",
+                    "suona"
+                  ]
+                },
+                " presto."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "DE follow-up 'zweimal mit dem Bus fahren' is understandable but less precise than the term-list wording 'zwei Busse nehmen' (independent LOW item).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText/de",
+              "old": "Heute muss ich auf dem Weg zur Arbeit zweimal mit dem Bus fahren.",
+              "new": "Heute muss ich zwei Busse nehmen, um zur Arbeit zu kommen."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Title names a market that never appears in the episode (the market is L9's beat) and the EN follow-up pair is stiff though correct (independent LOW item).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/title",
+              "old": {
+                "de": "Der Weg zum Markt",
+                "en": "The way to the market"
+              },
+              "new": {
+                "de": "Mit der neuen Tramlinie",
+                "en": "With the new tram line"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/2/baseText/en",
+              "old": "What did you have to ask someone to accompany you to buy?",
+              "new": "Which purchase did you need someone to come along for?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText/en",
+              "old": "My sister used to come with me to buy bags of potting soil.",
+              "new": "My sister used to take me to buy bags of potting soil."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c031d3c50eeba922ba9a547fa23ed8d930f8d8959ee9d6c07da449dcdb999a92",
+      "sourceSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (14 w) 'Durante la mia infanzia costruivo…' is gender-neutral imperfetto habit; follow-up 'come faceva a tener su il tetto' causally elicits the 6–12-word detail 'Due sedie reggevano il tetto fatto con una coperta' (9 w). Form gap reggevano cued 'reggere (due sedie)' with visible subject, cue does not contain the answer; choice fatto has only one masculine-singular attachment. Four chips, interim chips end without .?!, the period-bearing 'del divano di mia nonna.' pins the order; foils are same-context. Title/caption do not reveal the roof question."
+        },
+        {
+          "n": 2,
+          "observation": "'Prima di vivere in città avevo l'abitudine di fare il pane ogni sabato' (13 w) matches the beat; 'E adesso prepara ancora il pane a casa?' leads to 'Adesso compro la pagnotta del sabato al forno sotto casa' (10 w). Both choice blanks (la, al) are unique; recall 'fare' and speak tokens are apostrophe-free. Trophy 'abitudine' is the outline word and the token after the elided article; 'forno' = bakery gloss is correct colloquial usage. Transfer example 'Sul lavoro avevo l'abitudine di annotare…' is independent."
+        },
+        {
+          "n": 3,
+          "observation": "Previous required fix verified: cloze now blanks 'nella' (unique before paglia) instead of tiepida/tiepide; chips merge 'dai nonni' into the quando-clause and split 'prima di' / 'colazione.' so the time phrase cannot float; distractor 'cena.' is a believable same-slot foil. Turn 1 12 w, last turn 9 w, 'Mi manca cercare…' answers 'Che cosa le manca di più'. Term glosses faithful (tiepida = lauwarm)."
+        },
+        {
+          "n": 4,
+          "observation": "'Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume' (14 w) uses the staged age frame, no 'da piccolo'; follow-up on walking today yields 'Oggi per andare al lavoro devo prendere due autobus' (9 w). whyThisWord now correctly attributes the habitual reading to the imperfetto; DE follow-up 'zwei Busse nehmen' aligned with the term list. Choice blanks al/prendere unique; recall costeggiava with person foils."
+        },
+        {
+          "n": 5,
+          "observation": "'In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora' (12 w) + cause 'Il mio turno finisce tardi e la sveglia suona presto' (10 w). Previous fix verified: suona is now a cue-free choice with four displayed forms, finisce keeps cue 'finire (il mio turno)' with visible subject and no literal answer. Trophy 'passato' is the noun in 'In passato' (trap noted, string-level). mentre/quando not co-offered; recall 'intere' unique."
+        },
+        {
+          "n": 6,
+          "observation": "'Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina' (13 w) contrasts present and imperfetto; 'Che cosa le permette…' leads to 'I negozi qui vicino restano aperti fino alle otto' (9 w). Form gap restano cued 'restare (i negozi)', choice aperti unique with plural subject. Five chips, 'a piedi,' ends in comma; chip glosses faithful; trophy case handled by fold."
+        },
+        {
+          "n": 7,
+          "observation": "'Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni' (15 w) uses licensed comparative più…di prima; 'C'è qualcosa che adesso riesce a fare più spesso?' → 'Adesso ceno con mia figlia quasi tutte le sere' (9 w). Choice blanks mia/tutte unique; recall regolare with non-adjective foils; transfer example 'La cucina è più luminosa di prima…' independent. Lei forms both ways."
+        },
+        {
+          "n": 8,
+          "observation": "'Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio' (12 w); 'accompagnarla' is correct formal object form; last turn 'Mia sorella mi accompagnava a comprare i sacchi di terriccio' (10 w) narrates the situation where help was needed. Form gap accompagnava cued 'accompagnare (mia sorella)' with visible subject; comprare choice unique after 'a'. Title 'Mit der neuen Tramlinie' now matches the scene; EN follow-up pair reads naturally."
+        },
+        {
+          "n": 9,
+          "observation": "'Con l'esperienza ho scoperto il mercato del quartiere e da allora compro lì la verdura' (15 w): passato prossimo for the one-off discovery, presente + da allora for the ongoing habit, no passato prossimo + da. Follow-up 'Da quanto tempo…' → 'Compro qui le verdure di stagione da quasi due anni' (10 w). Chip 0 and both base texts now carry 'Mit wachsender Erfahrung / With growing experience'. 'da' choice foils agli/nella/allo are syntactically impossible, per correctly excluded by the da/per trap. Transfer example 'Suono il violino da sei mesi…' independent."
+        },
+        {
+          "n": 10,
+          "observation": "'Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate' (13 w) uses staged rispetto a + imperfetto, gender-neutral; follow-up with 'in cui' (P4 recycle) → 'Ieri ho fissato una visita senza chiedere aiuto a nessuno' (10 w), a concrete episode. Title 'Italienisch im Alltag' no longer pre-empts the phone call. Choice blanks una/chiedere unique; recall evitavo; terms and chip glosses faithful."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Concern that the fronted quando-clause chip could be rebuilt after 'raccoglievo le uova' is dismissed: 'prima di' + 'colazione.' are forced last, and 'Raccoglievo le uova quando andavo in campagna dai nonni prima di colazione' misattaches the time phrase to andavo and is not an acceptable rendering of the modelled turn; the same reasoning covers the 'Durante la mia infanzia' and 'Quando avevo dieci anni' openers in L1/L4.",
+          "edits": []
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Transfer example renders 'il tè' as 'meinen Tee' / 'my tea'; a possessive is not in the Italian. Harmless and idiomatic, so left as a preference.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "fromSha256": "7295957de69379fc603cb4bea8c2c6034269b54a1e26890ff8b52895677463c3",
+      "toSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+      "authoritySha256": "4c8419229e1f071962ced7bed0d67823210608b9ac099670e948f408fdf2397f",
+      "implementedFindings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Typed form gap 'suona' is cued with the infinitive 'suonare (la sveglia)', which literally contains the answer; the cue gives the answer away on a first-attempt exact-graded blank. Convert to a cue-free choice blank whose four forms of suonare are all displayed up front; foils remain syntactically impossible with subject la sveglia.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                "Il mio turno ",
+                {
+                  "kind": "form",
+                  "answer": "finisce",
+                  "choices": [
+                    "finisce",
+                    "finiscono",
+                    "finisco",
+                    "finiamo"
+                  ],
+                  "cue": "finire (il mio turno)"
+                },
+                " tardi e la sveglia ",
+                {
+                  "kind": "form",
+                  "answer": "suona",
+                  "choices": [
+                    "suonano",
+                    "suono",
+                    "suoniamo",
+                    "suona"
+                  ],
+                  "cue": "suonare (la sveglia)"
+                },
+                " presto."
+              ],
+              "new": [
+                "Il mio turno ",
+                {
+                  "kind": "form",
+                  "answer": "finisce",
+                  "choices": [
+                    "finisce",
+                    "finiscono",
+                    "finisco",
+                    "finiamo"
+                  ],
+                  "cue": "finire (il mio turno)"
+                },
+                " tardi e la sveglia ",
+                {
+                  "kind": "choice",
+                  "answer": "suona",
+                  "choices": [
+                    "suonano",
+                    "suono",
+                    "suoniamo",
+                    "suona"
+                  ]
+                },
+                " presto."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "DE follow-up 'zweimal mit dem Bus fahren' is understandable but less precise than the term-list wording 'zwei Busse nehmen' (independent LOW item).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText/de",
+              "old": "Heute muss ich auf dem Weg zur Arbeit zweimal mit dem Bus fahren.",
+              "new": "Heute muss ich zwei Busse nehmen, um zur Arbeit zu kommen."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Title names a market that never appears in the episode (the market is L9's beat) and the EN follow-up pair is stiff though correct (independent LOW item).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/title",
+              "old": {
+                "de": "Der Weg zum Markt",
+                "en": "The way to the market"
+              },
+              "new": {
+                "de": "Mit der neuen Tramlinie",
+                "en": "With the new tram line"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/2/baseText/en",
+              "old": "What did you have to ask someone to accompany you to buy?",
+              "new": "Which purchase did you need someone to come along for?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText/en",
+              "old": "My sister used to come with me to buy bags of potting soil.",
+              "new": "My sister used to take me to buy bags of potting soil."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

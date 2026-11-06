@@ -93,9 +93,7 @@
       "writtenPaths": [
         1,
         2,
-        3
-      ],
-      "pathsToWrite": [
+        3,
         4,
         5,
         6,
@@ -104,12 +102,12 @@
         9,
         10
       ],
-      "remainingLessonCount": 70,
+      "pathsToWrite": [],
+      "remainingLessonCount": 0,
       "tenPathSpec": "b1-2026-10/italian-plan.json",
       "specRoot": "frontend/content-drafts",
       "specSha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079",
-      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json",
-      "nextPathObjective": "Proprio quello"
+      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json"
     },
     {
       "language": "Italian",

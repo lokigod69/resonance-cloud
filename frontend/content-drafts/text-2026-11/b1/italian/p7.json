@@ -1,0 +1,2132 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Damit es klappt",
+    "en": "Making it work"
+  },
+  "subtitle": {
+    "de": "Schlagen Sie etwas vor, erklären Sie den Zweck und passen Sie den Plan an.",
+    "en": "Make a suggestion, explain its purpose and adapt the plan."
+  },
+  "anchor": "Forma C. Esplicitare uno scopo con per/per non + infinito e in modo da; collegare azioni e risultato con così. Eventuali futuro semplice e se + presente sono da introdurre solo nella progressione scelta da Fable, senza calcare strutture finali inglesi.",
+  "lessons": [
+    {
+      "slug": "libri-da-scambiare",
+      "title": {
+        "de": "Zwischen zwei Bücherregalen",
+        "en": "Between two bookshelves"
+      },
+      "situation": {
+        "de": "Eine Nachbarin zeigt Ihnen die vollen Regale im Hauseingang.",
+        "en": "A neighbour shows you the crowded bookshelves in the entrance hall."
+      },
+      "pedagogicalGoal": "Einen Büchertausch vorschlagen und ihn an einen kleineren Raum anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha un'idea per tutti questi romanzi che nessuno prende più?",
+          "baseText": {
+            "de": "Haben Sie eine Idee für all diese Romane, nach denen niemand mehr greift?",
+            "en": "Do you have an idea for all these novels that nobody picks up any more?"
+          }
+        },
+        {
+          "targetText": "Potremmo organizzare uno scambio in cortile per trovare nuovi lettori per questi libri.",
+          "baseText": {
+            "de": "Wir könnten im Hof einen Büchertausch organisieren, damit diese Bücher neue Leser finden.",
+            "en": "We could organise a swap in the courtyard to find new readers for these books."
+          }
+        },
+        {
+          "targetText": "In cortile ci sono i muratori. Nella portineria entra solo un tavolino.",
+          "baseText": {
+            "de": "Im Hof arbeiten die Maurer. In die Pförtnerloge passt nur ein kleiner Tisch.",
+            "en": "Builders are working in the courtyard. There's only room for a small table in the porter's office."
+          }
+        },
+        {
+          "targetText": "Un tavolino basta per scambiare un libro a testa.",
+          "baseText": {
+            "de": "Ein kleiner Tisch reicht, um pro Person ein Buch zu tauschen.",
+            "en": "A small table is enough to swap one book each."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Per + infinito",
+        "rule": {
+          "de": "Per mit Infinitiv nennt den Zweck der vorgeschlagenen Handlung. Wer den Tausch organisiert, möchte damit neue Leser finden.",
+          "en": "Per followed by an infinitive explains the purpose of the proposal. The people organising the swap want to find new readers."
+        },
+        "examples": [
+          {
+            "targetText": "Potremmo organizzare uno scambio in cortile per trovare nuovi lettori per questi libri.",
+            "baseText": {
+              "de": "Wir könnten im Hof einen Büchertausch organisieren, damit diese Bücher neue Leser finden.",
+              "en": "We could organise a swap in the courtyard to find new readers for these books."
+            },
+            "highlight": "per trovare nuovi lettori"
+          },
+          {
+            "targetText": "Potremmo piantare della lavanda per attirare le farfalle sul balcone.",
+            "baseText": {
+              "de": "Wir könnten Lavendel pflanzen, um Schmetterlinge auf den Balkon zu locken.",
+              "en": "We could plant lavender to attract butterflies to the balcony."
+            },
+            "highlight": "per attirare le farfalle"
+          }
+        ]
+      },
+      "cloze": [
+        "Un tavolino ",
+        {
+          "kind": "choice",
+          "answer": "basta",
+          "choices": [
+            "basto",
+            "basta",
+            "bastano",
+            "bastiamo"
+          ]
+        },
+        " per ",
+        {
+          "kind": "choice",
+          "answer": "scambiare",
+          "choices": [
+            "scambiare",
+            "scambiamo",
+            "scambiato",
+            "scambiando"
+          ]
+        },
+        " un libro a testa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Potremmo organizzare",
+          "baseText": {
+            "de": "Wir könnten organisieren",
+            "en": "We could organise"
+          }
+        },
+        {
+          "targetText": "uno scambio in cortile",
+          "baseText": {
+            "de": "eine Tauschaktion im Hof",
+            "en": "a swap in the courtyard"
+          }
+        },
+        {
+          "targetText": "per trovare nuovi lettori",
+          "baseText": {
+            "de": "um neue Leser zu finden",
+            "en": "to find new readers"
+          }
+        },
+        {
+          "targetText": "per questi libri.",
+          "baseText": {
+            "de": "für diese Bücher.",
+            "en": "for these books."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "organizzare",
+          "baseText": {
+            "de": "organisieren",
+            "en": "to organise"
+          }
+        },
+        {
+          "targetText": "scambio",
+          "baseText": {
+            "de": "Tausch",
+            "en": "swap"
+          }
+        },
+        {
+          "targetText": "cortile",
+          "baseText": {
+            "de": "Hof",
+            "en": "courtyard"
+          }
+        },
+        {
+          "targetText": "lettori",
+          "baseText": {
+            "de": "Leser",
+            "en": "readers"
+          }
+        },
+        {
+          "targetText": "portineria",
+          "baseText": {
+            "de": "Pförtnerloge",
+            "en": "porter's office"
+          }
+        },
+        {
+          "targetText": "a testa",
+          "baseText": {
+            "de": "pro Person",
+            "en": "each"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Potremmo organizzare uno scambio in cortile per ",
+        "answer": "trovare",
+        "after": " nuovi lettori per questi libri.",
+        "fallbackChoices": [
+          "trovare",
+          "troviamo",
+          "trovato",
+          "trovando"
+        ]
+      },
+      "speakRequired": [
+        "organizzare",
+        "scambio",
+        "lettori"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin zeigt Ihnen die vollen Regale im Hauseingang. „Ha un'idea per tutti questi romanzi che nessuno prende più?“",
+        "en": "A neighbour shows you the crowded bookshelves in the entrance hall. “Ha un'idea per tutti questi romanzi che nessuno prende più?”"
+      },
+      "trophyWord": {
+        "word": "organizzare",
+        "meaning": {
+          "de": "organisieren",
+          "en": "to organise"
+        },
+        "example": "Potremmo organizzare uno scambio in cortile per trovare nuovi lettori per questi libri.",
+        "whyThisWord": {
+          "de": "Organizzare gehört zu einem Vorschlag, bei dem jemand die Vorbereitung übernimmt. Uno scambio gibt an, was geplant ist.",
+          "en": "Organizzare is useful when a proposal involves arranging something. Uno scambio specifies what's being planned."
+        }
+      },
+      "distractors": [
+        "Potremmo chiudere",
+        "una vendita in cortile"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachbarin zeigt Ihnen die vollen Regale im Hauseingang.",
+        "en": "A neighbour shows you the crowded bookshelves in the entrance hall."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "A neighbour shows you the crowded bookshelves in the entrance hall."
+    },
+    {
+      "slug": "cena-tra-vicini",
+      "title": {
+        "de": "Vor dem gemeinsamen Essen",
+        "en": "Before the shared meal"
+      },
+      "situation": {
+        "de": "In der Gemeinschaftsküche breitet ein Nachbar das Rezept vor Ihnen aus.",
+        "en": "In the communal kitchen, a neighbour spreads the recipe out in front of you."
+      },
+      "pedagogicalGoal": "Aufgaben beim gemeinsamen Essen aufteilen und eine fehlende Person berücksichtigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Secondo Lei riusciamo a preparare la cena entro le otto?",
+          "baseText": {
+            "de": "Glauben Sie, dass wir das Essen bis acht Uhr fertigbekommen?",
+            "en": "Do you think we can have dinner ready by eight?"
+          }
+        },
+        {
+          "targetText": "Vorrei dividere i compiti per non lasciare tutta la cena sulle sue spalle.",
+          "baseText": {
+            "de": "Ich würde die Aufgaben gern aufteilen, damit die Arbeit für das Essen nicht allein an Ihnen hängen bleibt.",
+            "en": "I'd like to divide up the tasks so you don't have to do all the work for dinner."
+          }
+        },
+        {
+          "targetText": "Chi doveva affettare il pane non viene. Io intanto preparo la salsa.",
+          "baseText": {
+            "de": "Wer das Brot schneiden sollte, kommt nicht. Ich mache inzwischen die Soße.",
+            "en": "The person who was going to slice the bread can't come. I'll get on with the sauce."
+          }
+        },
+        {
+          "targetText": "Posso affettare io il pane mentre Lei prepara la salsa.",
+          "baseText": {
+            "de": "Ich kann das Brot schneiden, während Sie die Soße zubereiten.",
+            "en": "I can slice the bread while you make the sauce."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Per non + infinito",
+        "rule": {
+          "de": "Per non mit Infinitiv nennt etwas, das Sie vermeiden möchten. Non steht direkt vor dem Infinitiv.",
+          "en": "Per non with an infinitive names something you want to avoid. Non goes immediately before the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei dividere i compiti per non lasciare tutta la cena sulle sue spalle.",
+            "baseText": {
+              "de": "Ich würde die Aufgaben gern aufteilen, damit die Arbeit für das Essen nicht allein an Ihnen hängen bleibt.",
+              "en": "I'd like to divide up the tasks so you don't have to do all the work for dinner."
+            },
+            "highlight": "per non lasciare"
+          },
+          {
+            "targetText": "Vorrei segnare la fermata sulla mappa per non perdere la coincidenza.",
+            "baseText": {
+              "de": "Ich würde die Haltestelle gern auf der Karte markieren, um den Anschluss nicht zu verpassen.",
+              "en": "I'd like to mark the stop on the map so I don't miss the connection."
+            },
+            "highlight": "per non perdere"
+          }
+        ]
+      },
+      "cloze": [
+        "Posso ",
+        {
+          "kind": "choice",
+          "answer": "affettare",
+          "choices": [
+            "affettare",
+            "affettando",
+            "affetto",
+            "affettato"
+          ]
+        },
+        " io il pane mentre Lei ",
+        {
+          "kind": "form",
+          "answer": "prepara",
+          "choices": [
+            "preparo",
+            "prepariamo",
+            "preparano",
+            "prepara"
+          ],
+          "cue": "preparare (Lei)"
+        },
+        " la salsa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei dividere",
+          "baseText": {
+            "de": "Ich würde gern aufteilen",
+            "en": "I'd like to divide up"
+          }
+        },
+        {
+          "targetText": "i compiti",
+          "baseText": {
+            "de": "die Aufgaben",
+            "en": "the tasks"
+          }
+        },
+        {
+          "targetText": "per non lasciare",
+          "baseText": {
+            "de": "um nicht zu lassen",
+            "en": "so as not to leave"
+          }
+        },
+        {
+          "targetText": "tutta la cena",
+          "baseText": {
+            "de": "das ganze Abendessen",
+            "en": "the whole dinner"
+          }
+        },
+        {
+          "targetText": "sulle sue spalle.",
+          "baseText": {
+            "de": "auf Ihren Schultern.",
+            "en": "on your shoulders."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "dividere",
+          "baseText": {
+            "de": "aufteilen",
+            "en": "to divide up"
+          }
+        },
+        {
+          "targetText": "compiti",
+          "baseText": {
+            "de": "Aufgaben",
+            "en": "tasks"
+          }
+        },
+        {
+          "targetText": "sulle sue spalle",
+          "baseText": {
+            "de": "auf Ihren Schultern",
+            "en": "on your shoulders"
+          }
+        },
+        {
+          "targetText": "affettare",
+          "baseText": {
+            "de": "in Scheiben schneiden",
+            "en": "to slice"
+          }
+        },
+        {
+          "targetText": "pane",
+          "baseText": {
+            "de": "Brot",
+            "en": "bread"
+          }
+        },
+        {
+          "targetText": "salsa",
+          "baseText": {
+            "de": "Soße",
+            "en": "sauce"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei ",
+        "answer": "dividere",
+        "after": " i compiti per non lasciare tutta la cena sulle sue spalle.",
+        "fallbackChoices": [
+          "divido",
+          "diviso",
+          "dividendo",
+          "dividere"
+        ]
+      },
+      "speakRequired": [
+        "dividere",
+        "compiti",
+        "cena"
+      ],
+      "sceneCaption": {
+        "de": "In der Gemeinschaftsküche breitet ein Nachbar das Rezept vor Ihnen aus. „Secondo Lei riusciamo a preparare la cena entro le otto?“",
+        "en": "In the communal kitchen, a neighbour spreads the recipe out in front of you. “Secondo Lei riusciamo a preparare la cena entro le otto?”"
+      },
+      "trophyWord": {
+        "word": "dividere",
+        "meaning": {
+          "de": "aufteilen",
+          "en": "to divide up"
+        },
+        "example": "Vorrei dividere i compiti per non lasciare tutta la cena sulle sue spalle.",
+        "whyThisWord": {
+          "de": "Dividere i compiti heißt, die anstehende Arbeit auf mehrere Personen zu verteilen. Damit lässt sich konkrete Hilfe anbieten.",
+          "en": "Dividere i compiti means sharing the work among several people. It gives you a way to offer practical help."
+        }
+      },
+      "distractors": [
+        "Vorrei rimandare",
+        "sulle mie spalle."
+      ],
+      "placeholderCaption": {
+        "de": "In der Gemeinschaftsküche breitet ein Nachbar das Rezept vor Ihnen aus.",
+        "en": "In the communal kitchen, a neighbour spreads the recipe out in front of you."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "In the communal kitchen, a neighbour spreads the recipe out in front of you."
+    },
+    {
+      "slug": "apertura-della-sala",
+      "title": {
+        "de": "Kurz vor der Eröffnung",
+        "en": "Just before opening"
+      },
+      "situation": {
+        "de": "Der Leiter eines Nachbarschaftszentrums schließt den Veranstaltungsraum auf.",
+        "en": "The manager of a neighbourhood centre unlocks the event room."
+      },
+      "pedagogicalGoal": "Vor einer Veranstaltung die Vorbereitung erklären und einen einfacheren Aufbau vereinbaren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Da dove cominciamo prima di aprire la sala al pubblico?",
+          "baseText": {
+            "de": "Womit fangen wir an, bevor wir den Saal für das Publikum öffnen?",
+            "en": "Where should we start before we open the hall to the public?"
+          }
+        },
+        {
+          "targetText": "Nei preparativi darei la precedenza alle sedie per lasciare libero l'ingresso della sala.",
+          "baseText": {
+            "de": "Bei den Vorbereitungen würde ich mich zuerst um die Stühle kümmern, um den Saaleingang freizuhalten.",
+            "en": "In getting ready, I'd deal with the chairs first to keep the entrance to the hall clear."
+          }
+        },
+        {
+          "targetText": "Basta spostare la prima fila. Il resto può rimanere com'è.",
+          "baseText": {
+            "de": "Es reicht, die erste Reihe umzustellen. Der Rest kann so bleiben.",
+            "en": "We just need to move the first row. The rest can stay as it is."
+          }
+        },
+        {
+          "targetText": "Va bene, spostiamo soltanto le sedie della prima fila.",
+          "baseText": {
+            "de": "Einverstanden, wir stellen nur die Stühle der ersten Reihe um.",
+            "en": "All right, let's just move the chairs in the front row."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Per lasciare libero…",
+        "rule": {
+          "de": "Per lasciare libero beschreibt das Ziel, etwas freizuhalten. Libero richtet sich nach dem Gegenstand, hier l'ingresso oder il piano.",
+          "en": "Use per lasciare libero to explain that you want to keep a place clear. Libero agrees with the object, here l'ingresso or il piano."
+        },
+        "examples": [
+          {
+            "targetText": "Nei preparativi darei la precedenza alle sedie per lasciare libero l'ingresso della sala.",
+            "baseText": {
+              "de": "Bei den Vorbereitungen würde ich mich zuerst um die Stühle kümmern, um den Saaleingang freizuhalten.",
+              "en": "In getting ready, I'd deal with the chairs first to keep the entrance to the hall clear."
+            },
+            "highlight": "per lasciare libero l'ingresso"
+          },
+          {
+            "targetText": "Appendo le tazze per lasciare libero il piano della cucina.",
+            "baseText": {
+              "de": "Ich hänge die Tassen auf, um die Arbeitsfläche in der Küche freizuhalten.",
+              "en": "I hang up the cups to keep the kitchen worktop clear."
+            },
+            "highlight": "per lasciare libero il piano"
+          }
+        ]
+      },
+      "cloze": [
+        "Va bene, spostiamo soltanto ",
+        {
+          "kind": "choice",
+          "answer": "le",
+          "choices": [
+            "gli",
+            "lo",
+            "il",
+            "le"
+          ]
+        },
+        " sedie della ",
+        {
+          "kind": "choice",
+          "answer": "prima",
+          "choices": [
+            "primi",
+            "prime",
+            "prima",
+            "primo"
+          ]
+        },
+        " fila."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nei preparativi darei la precedenza",
+          "baseText": {
+            "de": "Bei den Vorbereitungen würde ich Vorrang geben",
+            "en": "In the preparations I'd give priority"
+          }
+        },
+        {
+          "targetText": "alle sedie",
+          "baseText": {
+            "de": "den Stühlen",
+            "en": "to the chairs"
+          }
+        },
+        {
+          "targetText": "per lasciare libero",
+          "baseText": {
+            "de": "um frei zu halten",
+            "en": "to keep clear"
+          }
+        },
+        {
+          "targetText": "l'ingresso della sala.",
+          "baseText": {
+            "de": "den Eingang zum Saal.",
+            "en": "the entrance to the hall."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "preparativi",
+          "baseText": {
+            "de": "Vorbereitungen",
+            "en": "preparations"
+          }
+        },
+        {
+          "targetText": "dare la precedenza",
+          "baseText": {
+            "de": "Vorrang geben",
+            "en": "to give priority"
+          }
+        },
+        {
+          "targetText": "sedie",
+          "baseText": {
+            "de": "Stühle",
+            "en": "chairs"
+          }
+        },
+        {
+          "targetText": "ingresso",
+          "baseText": {
+            "de": "Eingang",
+            "en": "entrance"
+          }
+        },
+        {
+          "targetText": "spostare",
+          "baseText": {
+            "de": "umstellen",
+            "en": "to move"
+          }
+        },
+        {
+          "targetText": "prima fila",
+          "baseText": {
+            "de": "erste Reihe",
+            "en": "front row"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nei preparativi darei la precedenza alle sedie per lasciare ",
+        "answer": "libero",
+        "after": " l'ingresso della sala.",
+        "fallbackChoices": [
+          "liberi",
+          "libere",
+          "libero",
+          "libera"
+        ]
+      },
+      "speakRequired": [
+        "preparativi",
+        "precedenza",
+        "sedie"
+      ],
+      "sceneCaption": {
+        "de": "Der Leiter eines Nachbarschaftszentrums schließt den Veranstaltungsraum auf. „Da dove cominciamo prima di aprire la sala al pubblico?“",
+        "en": "The manager of a neighbourhood centre unlocks the event room. “Da dove cominciamo prima di aprire la sala al pubblico?”"
+      },
+      "trophyWord": {
+        "word": "preparativi",
+        "meaning": {
+          "de": "Vorbereitungen",
+          "en": "preparations"
+        },
+        "example": "Nei preparativi darei la precedenza alle sedie per lasciare libero l'ingresso della sala.",
+        "whyThisWord": {
+          "de": "Preparativi sind die Arbeiten vor dem eigentlichen Ereignis. Hier gehören die Stühle schon vor dem Einlass an ihren Platz.",
+          "en": "Preparativi are the jobs that come before the event itself. Here the chairs need to be in position before people come in."
+        }
+      },
+      "distractors": [
+        "Nei preventivi darei la precedenza",
+        "l'uscita del garage."
+      ],
+      "placeholderCaption": {
+        "de": "Der Leiter eines Nachbarschaftszentrums schließt den Veranstaltungsraum auf.",
+        "en": "The manager of a neighbourhood centre unlocks the event room."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "The manager of a neighbourhood centre unlocks the event room."
+    },
+    {
+      "slug": "tavolo-del-laboratorio",
+      "title": {
+        "de": "Beim Aufbau des Workshops",
+        "en": "Setting up the workshop"
+      },
+      "situation": {
+        "de": "Sie helfen der Kursleiterin, einen Raum für einen Workshop einzurichten.",
+        "en": "You are helping the instructor set up a room for a workshop."
+      },
+      "pedagogicalGoal": "Einen Sammelplatz für Material vorschlagen und dabei den Durchgang freihalten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Dove mettiamo forbici, carta e colori?",
+          "baseText": {
+            "de": "Wohin legen wir Scheren, Papier und Farben?",
+            "en": "Where shall we put the scissors, paper and paints?"
+          }
+        },
+        {
+          "targetText": "Riunirei il materiale su un tavolo in modo da trovarlo subito durante il laboratorio.",
+          "baseText": {
+            "de": "Ich würde das Material auf einem Tisch sammeln, um es beim Workshop gleich zu finden.",
+            "en": "I'd gather the material on one table so as to find it quickly during the workshop."
+          }
+        },
+        {
+          "targetText": "Vicino alla porta il tavolo blocca il passaggio. C'è spazio sotto la finestra.",
+          "baseText": {
+            "de": "Neben der Tür versperrt der Tisch den Durchgang. Unter dem Fenster ist Platz.",
+            "en": "By the door the table blocks the way. There's room under the window."
+          }
+        },
+        {
+          "targetText": "Sotto la finestra il tavolo lascia libero il passaggio.",
+          "baseText": {
+            "de": "Unter dem Fenster lässt der Tisch den Durchgang frei.",
+            "en": "Under the window the table leaves the passage clear."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "In modo da + infinito",
+        "rule": {
+          "de": "In modo da mit Infinitiv verbindet die Handlung mit ihrem beabsichtigten Ergebnis. In trovarlo verweist lo auf il materiale.",
+          "en": "In modo da with an infinitive links an action to the intended result. In trovarlo, lo refers to il materiale."
+        },
+        "examples": [
+          {
+            "targetText": "Riunirei il materiale su un tavolo in modo da trovarlo subito durante il laboratorio.",
+            "baseText": {
+              "de": "Ich würde das Material auf einem Tisch sammeln, um es beim Workshop gleich zu finden.",
+              "en": "I'd gather the material on one table so as to find it quickly during the workshop."
+            },
+            "highlight": "in modo da trovarlo subito"
+          },
+          {
+            "targetText": "Abbasso il volume della radio in modo da sentire gli annunci del treno.",
+            "baseText": {
+              "de": "Ich stelle das Radio leiser, damit ich die Durchsagen im Zug hören kann.",
+              "en": "I turn the radio down so I can hear the train announcements."
+            },
+            "highlight": "in modo da sentire gli annunci"
+          }
+        ]
+      },
+      "cloze": [
+        "Sotto la finestra il tavolo ",
+        {
+          "kind": "choice",
+          "answer": "lascia",
+          "choices": [
+            "lasciamo",
+            "lascio",
+            "lascia",
+            "lasciano"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "libero",
+          "choices": [
+            "libere",
+            "libero",
+            "libera",
+            "liberi"
+          ]
+        },
+        " il passaggio."
+      ],
+      "chunks": [
+        {
+          "targetText": "Riunirei",
+          "baseText": {
+            "de": "Ich würde sammeln",
+            "en": "I'd gather"
+          }
+        },
+        {
+          "targetText": "il materiale su un tavolo",
+          "baseText": {
+            "de": "das Material auf einem Tisch",
+            "en": "the material on one table"
+          }
+        },
+        {
+          "targetText": "in modo da trovarlo",
+          "baseText": {
+            "de": "um es finden zu können",
+            "en": "so as to find it"
+          }
+        },
+        {
+          "targetText": "subito durante il laboratorio.",
+          "baseText": {
+            "de": "beim Workshop gleich.",
+            "en": "quickly during the workshop."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "materiale",
+          "baseText": {
+            "de": "Material",
+            "en": "materials"
+          }
+        },
+        {
+          "targetText": "riunire",
+          "baseText": {
+            "de": "zusammentragen",
+            "en": "to gather together"
+          }
+        },
+        {
+          "targetText": "un tavolo",
+          "baseText": {
+            "de": "ein Tisch",
+            "en": "a table"
+          }
+        },
+        {
+          "targetText": "laboratorio",
+          "baseText": {
+            "de": "Workshop",
+            "en": "workshop"
+          }
+        },
+        {
+          "targetText": "passaggio",
+          "baseText": {
+            "de": "Durchgang",
+            "en": "passage"
+          }
+        },
+        {
+          "targetText": "sotto la finestra",
+          "baseText": {
+            "de": "unter dem Fenster",
+            "en": "under the window"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Riunirei il materiale su un tavolo in modo da ",
+        "answer": "trovarlo",
+        "after": " subito durante il laboratorio.",
+        "fallbackChoices": [
+          "trovarle",
+          "trovarlo",
+          "trovarli",
+          "trovarla"
+        ]
+      },
+      "speakRequired": [
+        "materiale",
+        "tavolo",
+        "laboratorio"
+      ],
+      "sceneCaption": {
+        "de": "Sie helfen der Kursleiterin, einen Raum für einen Workshop einzurichten. „Dove mettiamo forbici, carta e colori?“",
+        "en": "You are helping the instructor set up a room for a workshop. “Dove mettiamo forbici, carta e colori?”"
+      },
+      "trophyWord": {
+        "word": "materiale",
+        "meaning": {
+          "de": "Material",
+          "en": "materials"
+        },
+        "example": "Riunirei il materiale su un tavolo in modo da trovarlo subito durante il laboratorio.",
+        "whyThisWord": {
+          "de": "Materiale fasst die einzelnen Dinge zusammen, die für den Workshop gebraucht werden. Im Italienischen steht es hier im Singular.",
+          "en": "Materiale groups the items the workshop needs into one word. In Italian it is singular here."
+        }
+      },
+      "distractors": [
+        "il materiale su due ripiani",
+        "subito dopo il trasloco."
+      ],
+      "placeholderCaption": {
+        "de": "Sie helfen der Kursleiterin, einen Raum für einen Workshop einzurichten.",
+        "en": "You are helping the instructor set up a room for a workshop."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "You are helping the instructor set up a room for a workshop."
+    },
+    {
+      "slug": "spesa-in-comune",
+      "title": {
+        "de": "Vor dem Einkauf",
+        "en": "Before shopping"
+      },
+      "situation": {
+        "de": "Bei der Vorbereitung eines Picknicks vergleichen Sie mit einem Nachbarn die Einkaufszettel.",
+        "en": "While planning a picnic, you and a neighbour compare shopping notes."
+      },
+      "pedagogicalGoal": "Doppelte Einkäufe mit einer gemeinsamen Liste vermeiden und deren Form abstimmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "L'ultima volta tre persone hanno comprato il pane. Come ci regoliamo?",
+          "baseText": {
+            "de": "Letztes Mal haben drei Leute Brot gekauft. Wie gehen wir diesmal vor?",
+            "en": "Last time three people bought bread. How shall we organise it this time?"
+          }
+        },
+        {
+          "targetText": "Porterò un elenco di quello che serve, così non compriamo due volte le stesse cose.",
+          "baseText": {
+            "de": "Ich bringe eine Liste mit allem mit, was wir brauchen. So kaufen wir nichts doppelt.",
+            "en": "I'll bring a list of what we need so we don't buy the same things twice."
+          }
+        },
+        {
+          "targetText": "Invece di mandarlo a tutti per messaggio, lo scriviamo su un foglio unico in portineria?",
+          "baseText": {
+            "de": "Schreiben wir die Liste, statt sie allen per Nachricht zu schicken, auf ein gemeinsames Blatt in der Pförtnerloge?",
+            "en": "Instead of sending it to everyone by message, shall we write it on one shared sheet in the porter's office?"
+          }
+        },
+        {
+          "targetText": "Sì, sul foglio comune ognuno scrive cosa porta.",
+          "baseText": {
+            "de": "Ja, auf dem gemeinsamen Blatt trägt jeder ein, was er mitbringt.",
+            "en": "Yes, everyone can write what they're bringing on the shared sheet."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Così + presente",
+        "rule": {
+          "de": "Der erste Teil nennt eine Absicht im Futur. Così mit Präsens zeigt, was die geplante Handlung bewirkt.",
+          "en": "The first part states an intention in the future tense. Così followed by the present shows the result the plan is meant to produce."
+        },
+        "examples": [
+          {
+            "targetText": "Porterò un elenco di quello che serve, così non compriamo due volte le stesse cose.",
+            "baseText": {
+              "de": "Ich bringe eine Liste mit allem mit, was wir brauchen. So kaufen wir nichts doppelt.",
+              "en": "I'll bring a list of what we need so we don't buy the same things twice."
+            },
+            "highlight": "così non compriamo"
+          },
+          {
+            "targetText": "Porterò le chiavi di casa, così non sveglio nessuno con il campanello.",
+            "baseText": {
+              "de": "Ich nehme den Haustürschlüssel mit, damit ich niemanden mit der Klingel wecke.",
+              "en": "I'll take the house keys so I don't wake anyone by ringing the bell."
+            },
+            "highlight": "così non sveglio"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, sul foglio ",
+        {
+          "kind": "choice",
+          "answer": "comune",
+          "choices": [
+            "comunitari",
+            "comune",
+            "comuni",
+            "comunità"
+          ]
+        },
+        " ognuno ",
+        {
+          "kind": "choice",
+          "answer": "scrive",
+          "choices": [
+            "scrive",
+            "scrivono",
+            "scriviamo",
+            "scrivo"
+          ]
+        },
+        " cosa porta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Porterò un elenco",
+          "baseText": {
+            "de": "Ich werde eine Liste mitbringen",
+            "en": "I'll bring a list"
+          }
+        },
+        {
+          "targetText": "di quello che serve,",
+          "baseText": {
+            "de": "von dem, was wir brauchen,",
+            "en": "of what's needed,"
+          }
+        },
+        {
+          "targetText": "così non compriamo",
+          "baseText": {
+            "de": "so kaufen wir nicht",
+            "en": "so we don't buy"
+          }
+        },
+        {
+          "targetText": "due volte le stesse cose.",
+          "baseText": {
+            "de": "zweimal die gleichen Sachen.",
+            "en": "the same things twice."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "elenco",
+          "baseText": {
+            "de": "Liste",
+            "en": "list"
+          }
+        },
+        {
+          "targetText": "porterò",
+          "baseText": {
+            "de": "ich werde mitbringen",
+            "en": "I will bring"
+          }
+        },
+        {
+          "targetText": "quello che serve",
+          "baseText": {
+            "de": "das, was man braucht",
+            "en": "what is needed"
+          }
+        },
+        {
+          "targetText": "due volte",
+          "baseText": {
+            "de": "zweimal",
+            "en": "twice"
+          }
+        },
+        {
+          "targetText": "foglio comune",
+          "baseText": {
+            "de": "gemeinsames Blatt",
+            "en": "shared sheet"
+          }
+        },
+        {
+          "targetText": "ognuno",
+          "baseText": {
+            "de": "jeder",
+            "en": "everyone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Porterò un elenco di quello che serve, così non compriamo due volte le ",
+        "answer": "stesse",
+        "after": " cose.",
+        "fallbackChoices": [
+          "stesse",
+          "stesso",
+          "stessa",
+          "stessi"
+        ]
+      },
+      "speakRequired": [
+        "elenco",
+        "compriamo",
+        "cose"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Vorbereitung eines Picknicks vergleichen Sie mit einem Nachbarn die Einkaufszettel. „L'ultima volta tre persone hanno comprato il pane. Come ci regoliamo?“",
+        "en": "While planning a picnic, you and a neighbour compare shopping notes. “L'ultima volta tre persone hanno comprato il pane. Come ci regoliamo?”"
+      },
+      "trophyWord": {
+        "word": "elenco",
+        "meaning": {
+          "de": "Liste",
+          "en": "list"
+        },
+        "example": "Porterò un elenco di quello che serve, così non compriamo due volte le stesse cose.",
+        "whyThisWord": {
+          "de": "Elenco bezeichnet die geordnete Liste der Dinge, die noch mitzubringen sind. Mit einem Namen neben jedem Eintrag vermeiden Sie Doppeleinkäufe.",
+          "en": "Elenco means the list of things people need to bring. A name against each item helps prevent duplicate purchases."
+        }
+      },
+      "distractors": [
+        "Porterò un campione",
+        "due volte lo stesso pane."
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Vorbereitung eines Picknicks vergleichen Sie mit einem Nachbarn die Einkaufszettel.",
+        "en": "While planning a picnic, you and a neighbour compare shopping notes."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "While planning a picnic, you and a neighbour compare shopping notes."
+    },
+    {
+      "slug": "cambio-di-aula",
+      "title": {
+        "de": "Eine Änderung im Kursplan",
+        "en": "A change to the class schedule"
+      },
+      "situation": {
+        "de": "Die Kursleiterin zeigt Ihnen einen korrigierten Raumplan.",
+        "en": "The instructor shows you a revised room plan."
+      },
+      "pedagogicalGoal": "Anbieten, die Gruppe zu benachrichtigen, und dafür den richtigen Zeitpunkt vereinbaren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "La lezione cambia aula e alcuni partecipanti vengono da lontano.",
+          "baseText": {
+            "de": "Der Unterricht findet in einem anderen Raum statt, und einige Teilnehmende haben eine weite Anreise.",
+            "en": "The class is changing rooms and some participants travel a long way."
+          }
+        },
+        {
+          "targetText": "Posso avvertire io i partecipanti del cambio di sala, così tutti ricevono la stessa indicazione.",
+          "baseText": {
+            "de": "Ich kann den Teilnehmenden den Raumwechsel mitteilen. So bekommen alle dieselbe Auskunft.",
+            "en": "I can tell the participants about the room change so everyone gets the same information."
+          }
+        },
+        {
+          "targetText": "Aspetti la conferma della segreteria, altrimenti rischiamo di dare due numeri diversi.",
+          "baseText": {
+            "de": "Warten Sie bitte auf die Bestätigung des Sekretariats, sonst nennen wir womöglich zwei verschiedene Raumnummern.",
+            "en": "Please wait for confirmation from the office, or we risk giving out two different room numbers."
+          }
+        },
+        {
+          "targetText": "Allora io aspetto la conferma e poi avviserò il gruppo.",
+          "baseText": {
+            "de": "Dann warte ich auf die Bestätigung und gebe anschließend der Gruppe Bescheid.",
+            "en": "Then I'll wait for confirmation and let the group know afterwards."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Così spiega lo scopo",
+        "rule": {
+          "de": "Così leitet einen ganzen Satz ein. Der Satz kann ein anderes Subjekt haben: Eine Person gibt Bescheid, aber alle erhalten die Auskunft.",
+          "en": "Così introduces a full clause. Its subject can change: one person sends the update and everyone receives it."
+        },
+        "examples": [
+          {
+            "targetText": "Posso avvertire io i partecipanti del cambio di sala, così tutti ricevono la stessa indicazione.",
+            "baseText": {
+              "de": "Ich kann den Teilnehmenden den Raumwechsel mitteilen. So bekommen alle dieselbe Auskunft.",
+              "en": "I can tell the participants about the room change so everyone gets the same information."
+            },
+            "highlight": "così tutti ricevono"
+          },
+          {
+            "targetText": "Metto il prezzo sulla cassetta, così i clienti leggono la cifra da lontano.",
+            "baseText": {
+              "de": "Ich schreibe den Preis auf die Kiste, damit die Kundschaft den Betrag von Weitem lesen kann.",
+              "en": "I put the price on the crate so customers can read the figure from a distance."
+            },
+            "highlight": "così i clienti leggono"
+          }
+        ]
+      },
+      "cloze": [
+        "Allora io ",
+        {
+          "kind": "choice",
+          "answer": "aspetto",
+          "choices": [
+            "aspetto",
+            "aspetta",
+            "aspettano",
+            "aspettiamo"
+          ]
+        },
+        " la conferma e poi ",
+        {
+          "kind": "choice",
+          "answer": "avviserò",
+          "choices": [
+            "avviserà",
+            "avviseranno",
+            "avviseremo",
+            "avviserò"
+          ]
+        },
+        " il gruppo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Posso avvertire io",
+          "baseText": {
+            "de": "Ich kann Bescheid geben",
+            "en": "I can be the one to tell"
+          }
+        },
+        {
+          "targetText": "i partecipanti",
+          "baseText": {
+            "de": "den Teilnehmenden",
+            "en": "the participants"
+          }
+        },
+        {
+          "targetText": "del cambio di sala,",
+          "baseText": {
+            "de": "über den Raumwechsel,",
+            "en": "about the room change,"
+          }
+        },
+        {
+          "targetText": "così tutti ricevono",
+          "baseText": {
+            "de": "so bekommen alle",
+            "en": "so everyone receives"
+          }
+        },
+        {
+          "targetText": "la stessa indicazione.",
+          "baseText": {
+            "de": "dieselbe Auskunft.",
+            "en": "the same information."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "avvertire",
+          "baseText": {
+            "de": "benachrichtigen",
+            "en": "to notify"
+          }
+        },
+        {
+          "targetText": "partecipanti",
+          "baseText": {
+            "de": "Teilnehmende",
+            "en": "participants"
+          }
+        },
+        {
+          "targetText": "cambio di sala",
+          "baseText": {
+            "de": "Raumwechsel",
+            "en": "room change"
+          }
+        },
+        {
+          "targetText": "indicazione",
+          "baseText": {
+            "de": "Auskunft",
+            "en": "information"
+          }
+        },
+        {
+          "targetText": "segreteria",
+          "baseText": {
+            "de": "Sekretariat",
+            "en": "administrative office"
+          }
+        },
+        {
+          "targetText": "avviserò",
+          "baseText": {
+            "de": "ich werde Bescheid geben",
+            "en": "I will let someone know"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Posso avvertire io i partecipanti del cambio di sala, così tutti ",
+        "answer": "ricevono",
+        "after": " la stessa indicazione.",
+        "fallbackChoices": [
+          "riceviamo",
+          "riceve",
+          "ricevo",
+          "ricevono"
+        ]
+      },
+      "speakRequired": [
+        "avvertire",
+        "partecipanti",
+        "indicazione"
+      ],
+      "sceneCaption": {
+        "de": "Die Kursleiterin zeigt Ihnen einen korrigierten Raumplan. „La lezione cambia aula e alcuni partecipanti vengono da lontano.“",
+        "en": "The instructor shows you a revised room plan. “La lezione cambia aula e alcuni partecipanti vengono da lontano.”"
+      },
+      "trophyWord": {
+        "word": "avvertire",
+        "meaning": {
+          "de": "benachrichtigen",
+          "en": "to notify"
+        },
+        "example": "Posso avvertire io i partecipanti del cambio di sala, così tutti ricevono la stessa indicazione.",
+        "whyThisWord": {
+          "de": "Avvertire bedeutet hier, jemanden über eine Änderung zu informieren. Nach dem Verb können Sie direkt die betroffenen Personen nennen.",
+          "en": "Avvertire means notifying someone of a change here. The people affected can follow the verb directly."
+        }
+      },
+      "distractors": [
+        "del cambio di orario,",
+        "la vecchia indicazione."
+      ],
+      "placeholderCaption": {
+        "de": "Die Kursleiterin zeigt Ihnen einen korrigierten Raumplan.",
+        "en": "The instructor shows you a revised room plan."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "The instructor shows you a revised room plan."
+    },
+    {
+      "slug": "orari-in-cortile",
+      "title": {
+        "de": "Arbeiten im Innenhof",
+        "en": "Working in the courtyard"
+      },
+      "situation": {
+        "de": "Ein Nachbar bespricht mit Ihnen den Aufbau neuer Regale im Hof.",
+        "en": "A neighbour talks to you about putting up new shelves in the courtyard."
+      },
+      "pedagogicalGoal": "Eine passende Zeit für laute Arbeit aushandeln.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quando possiamo usare il trapano senza disturbare chi riposa?",
+          "baseText": {
+            "de": "Wann können wir bohren, ohne jemanden bei der Mittagsruhe zu stören?",
+            "en": "When can we use the drill without disturbing people who are resting?"
+          }
+        },
+        {
+          "targetText": "Per evitare rumore durante il riposo, porterò il trapano solo dopo le quattro.",
+          "baseText": {
+            "de": "Damit es während der Ruhezeit ruhig bleibt, bringe ich die Bohrmaschine erst nach vier Uhr mit.",
+            "en": "To avoid making noise during the rest period, I'll bring the drill only after four."
+          }
+        },
+        {
+          "targetText": "Chi lavora fino alle sei vorrebbe aiutare. Possiamo iniziare un po' più tardi?",
+          "baseText": {
+            "de": "Wer bis sechs Uhr arbeitet, würde gern helfen. Können wir etwas später anfangen?",
+            "en": "Those working until six would like to help. Could we start a little later?"
+          }
+        },
+        {
+          "targetText": "Allora il lavoro potrà cominciare alle sei e mezza.",
+          "baseText": {
+            "de": "Dann können die Arbeiten um halb sieben beginnen.",
+            "en": "Then the work can start at half past six."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Per… porterò…",
+        "rule": {
+          "de": "Der vorangestellte Teil mit per und Infinitiv nennt den Zweck. Porterò kündigt anschließend an, was Sie mitbringen werden.",
+          "en": "Put per and an infinitive first to state your purpose. Porterò then says what you will bring."
+        },
+        "examples": [
+          {
+            "targetText": "Per evitare rumore durante il riposo, porterò il trapano solo dopo le quattro.",
+            "baseText": {
+              "de": "Damit es während der Ruhezeit ruhig bleibt, bringe ich die Bohrmaschine erst nach vier Uhr mit.",
+              "en": "To avoid making noise during the rest period, I'll bring the drill only after four."
+            },
+            "highlight": "Per evitare rumore durante il riposo, porterò"
+          },
+          {
+            "targetText": "Per proteggere gli occhi, porterò gli occhiali da sole in barca.",
+            "baseText": {
+              "de": "Um meine Augen zu schützen, nehme ich eine Sonnenbrille mit aufs Boot.",
+              "en": "To protect my eyes, I'll take sunglasses on the boat."
+            },
+            "highlight": "Per proteggere gli occhi, porterò"
+          }
+        ]
+      },
+      "cloze": [
+        "Allora il lavoro ",
+        {
+          "kind": "choice",
+          "answer": "potrà",
+          "choices": [
+            "potremo",
+            "potranno",
+            "potrò",
+            "potrà"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "cominciare",
+          "choices": [
+            "cominciando",
+            "cominciato",
+            "cominciare",
+            "comincia"
+          ]
+        },
+        " alle sei e mezza."
+      ],
+      "chunks": [
+        {
+          "targetText": "Per evitare rumore",
+          "baseText": {
+            "de": "Um Lärm zu vermeiden",
+            "en": "To avoid noise"
+          }
+        },
+        {
+          "targetText": "durante il riposo,",
+          "baseText": {
+            "de": "während der Ruhezeit,",
+            "en": "during the rest period,"
+          }
+        },
+        {
+          "targetText": "porterò il trapano",
+          "baseText": {
+            "de": "bringe ich die Bohrmaschine mit",
+            "en": "I'll bring the drill"
+          }
+        },
+        {
+          "targetText": "solo dopo le quattro.",
+          "baseText": {
+            "de": "erst nach vier.",
+            "en": "only after four."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "evitare",
+          "baseText": {
+            "de": "vermeiden",
+            "en": "to avoid"
+          }
+        },
+        {
+          "targetText": "rumore",
+          "baseText": {
+            "de": "Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "riposo",
+          "baseText": {
+            "de": "Ruhezeit",
+            "en": "rest period"
+          }
+        },
+        {
+          "targetText": "trapano",
+          "baseText": {
+            "de": "Bohrmaschine",
+            "en": "drill"
+          }
+        },
+        {
+          "targetText": "dopo le quattro",
+          "baseText": {
+            "de": "nach vier Uhr",
+            "en": "after four"
+          }
+        },
+        {
+          "targetText": "alle sei e mezza",
+          "baseText": {
+            "de": "um halb sieben",
+            "en": "at half past six"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Per evitare rumore durante il riposo, ",
+        "answer": "porterò",
+        "after": " il trapano solo dopo le quattro.",
+        "fallbackChoices": [
+          "portato",
+          "portare",
+          "porterò",
+          "portando"
+        ]
+      },
+      "speakRequired": [
+        "evitare",
+        "rumore",
+        "trapano"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar bespricht mit Ihnen den Aufbau neuer Regale im Hof. „Quando possiamo usare il trapano senza disturbare chi riposa?“",
+        "en": "A neighbour talks to you about putting up new shelves in the courtyard. “Quando possiamo usare il trapano senza disturbare chi riposa?”"
+      },
+      "trophyWord": {
+        "word": "evitare",
+        "meaning": {
+          "de": "vermeiden",
+          "en": "to avoid"
+        },
+        "example": "Per evitare rumore durante il riposo, porterò il trapano solo dopo le quattro.",
+        "whyThisWord": {
+          "de": "Evitare nennt das, was ein guter Zeitplan verhindern soll. Mit rumore wird deutlich, warum die Uhrzeit wichtig ist.",
+          "en": "Evitare identifies what a good schedule should prevent. Rumore makes clear why the timing matters."
+        }
+      },
+      "distractors": [
+        "durante la cena,",
+        "solo prima di pranzo."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Nachbar bespricht mit Ihnen den Aufbau neuer Regale im Hof.",
+        "en": "A neighbour talks to you about putting up new shelves in the courtyard."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "A neighbour talks to you about putting up new shelves in the courtyard."
+    },
+    {
+      "slug": "posti-a-tavola",
+      "title": {
+        "de": "Sitzplätze für das Treffen",
+        "en": "Seating for the meeting"
+      },
+      "situation": {
+        "de": "Vor einem Treffen betrachten Sie mit der Organisatorin den Grundriss des Raums.",
+        "en": "Before a meeting, you and the organiser look at a floor plan of the room."
+      },
+      "pedagogicalGoal": "Die Teilnahme erleichtern und eine andere Tischordnung annehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come possiamo accogliere anche i genitori con il passeggino?",
+          "baseText": {
+            "de": "Wie können wir auch Eltern mit Kinderwagen einen Platz bieten?",
+            "en": "How can we make room for parents with pushchairs too?"
+          }
+        },
+        {
+          "targetText": "Se togliamo un tavolo, potrà partecipare anche chi arriva con il passeggino.",
+          "baseText": {
+            "de": "Wenn wir einen Tisch herausnehmen, kann auch teilnehmen, wer mit dem Kinderwagen kommt.",
+            "en": "If we take out one table, people coming with a pushchair will be able to join in too."
+          }
+        },
+        {
+          "targetText": "Ci servono tutti i tavoli. Proviamo a metterli contro le pareti?",
+          "baseText": {
+            "de": "Wir brauchen alle Tische. Wollen wir sie an die Wände stellen?",
+            "en": "We need all the tables. Shall we try putting them against the walls?"
+          }
+        },
+        {
+          "targetText": "Sì, con i tavoli alle pareti il centro resta libero.",
+          "baseText": {
+            "de": "Ja, mit den Tischen an den Wänden bleibt die Mitte frei.",
+            "en": "Yes, with the tables against the walls the centre stays clear."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se + presente, potrà + infinito",
+        "rule": {
+          "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+          "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+        },
+        "examples": [
+          {
+            "targetText": "Se togliamo un tavolo, potrà partecipare anche chi arriva con il passeggino.",
+            "baseText": {
+              "de": "Wenn wir einen Tisch herausnehmen, kann auch teilnehmen, wer mit dem Kinderwagen kommt.",
+              "en": "If we take out one table, people coming with a pushchair will be able to join in too."
+            },
+            "highlight": "Se togliamo un tavolo, potrà partecipare"
+          },
+          {
+            "targetText": "Se parte presto, potrà vedere il sole sorgere dalla cima.",
+            "baseText": {
+              "de": "Wenn Sie früh losgehen, können Sie den Sonnenaufgang auf dem Gipfel sehen.",
+              "en": "If you set off early, you'll be able to see the sun rise from the summit."
+            },
+            "highlight": "Se parte presto, potrà vedere"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, con i tavoli alle pareti il centro ",
+        {
+          "kind": "choice",
+          "answer": "resta",
+          "choices": [
+            "restiamo",
+            "resto",
+            "resta",
+            "restano"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "libero",
+          "choices": [
+            "libere",
+            "libero",
+            "libera",
+            "liberi"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Se togliamo",
+          "baseText": {
+            "de": "Wenn wir herausnehmen",
+            "en": "If we remove"
+          }
+        },
+        {
+          "targetText": "un tavolo,",
+          "baseText": {
+            "de": "einen Tisch,",
+            "en": "a table,"
+          }
+        },
+        {
+          "targetText": "potrà partecipare anche chi arriva",
+          "baseText": {
+            "de": "kann auch teilnehmen, wer kommt",
+            "en": "anyone who comes will also be able to attend"
+          }
+        },
+        {
+          "targetText": "con il passeggino.",
+          "baseText": {
+            "de": "mit dem Kinderwagen.",
+            "en": "with a pushchair."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "partecipare",
+          "baseText": {
+            "de": "teilnehmen",
+            "en": "to take part"
+          }
+        },
+        {
+          "targetText": "togliere",
+          "baseText": {
+            "de": "wegnehmen",
+            "en": "to remove"
+          }
+        },
+        {
+          "targetText": "passeggino",
+          "baseText": {
+            "de": "Kinderwagen",
+            "en": "pushchair"
+          }
+        },
+        {
+          "targetText": "potrà",
+          "baseText": {
+            "de": "wird können",
+            "en": "will be able to"
+          }
+        },
+        {
+          "targetText": "pareti",
+          "baseText": {
+            "de": "Wände",
+            "en": "walls"
+          }
+        },
+        {
+          "targetText": "centro",
+          "baseText": {
+            "de": "Mitte",
+            "en": "centre"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Se togliamo un tavolo, potrà ",
+        "answer": "partecipare",
+        "after": " anche chi arriva con il passeggino.",
+        "fallbackChoices": [
+          "partecipa",
+          "partecipare",
+          "partecipando",
+          "partecipato"
+        ]
+      },
+      "speakRequired": [
+        "togliamo",
+        "partecipare",
+        "passeggino"
+      ],
+      "sceneCaption": {
+        "de": "Vor einem Treffen betrachten Sie mit der Organisatorin den Grundriss des Raums. „Come possiamo accogliere anche i genitori con il passeggino?“",
+        "en": "Before a meeting, you and the organiser look at a floor plan of the room. “Come possiamo accogliere anche i genitori con il passeggino?”"
+      },
+      "trophyWord": {
+        "word": "partecipare",
+        "meaning": {
+          "de": "teilnehmen",
+          "en": "to take part"
+        },
+        "example": "Se togliamo un tavolo, potrà partecipare anche chi arriva con il passeggino.",
+        "whyThisWord": {
+          "de": "Partecipare bezeichnet die tatsächliche Teilnahme. Hier erklären Sie, wem die Einrichtung des Raums das Kommen ermöglicht.",
+          "en": "Partecipare means taking part. Here you explain who can attend if the room is arranged differently."
+        }
+      },
+      "distractors": [
+        "Se chiudiamo",
+        "con la bicicletta."
+      ],
+      "placeholderCaption": {
+        "de": "Vor einem Treffen betrachten Sie mit der Organisatorin den Grundriss des Raums.",
+        "en": "Before a meeting, you and the organiser look at a floor plan of the room."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "Before a meeting, you and the organiser look at a floor plan of the room."
+    },
+    {
+      "slug": "un-ora-a-disposizione",
+      "title": {
+        "de": "Eine halbe Stunde Zeit",
+        "en": "Half an hour to spare"
+      },
+      "situation": {
+        "de": "In einer sozialen Kantine sprechen Sie mit dem Koordinator der Mittagsschicht.",
+        "en": "At a community canteen, you speak to the coordinator of the lunch shift."
+      },
+      "pedagogicalGoal": "Eine kurze ehrenamtliche Tätigkeit vorschlagen und eine konkrete Aufgabe übernehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Molti vorrebbero aiutare, ma in pausa pranzo hanno pochissimo tempo.",
+          "baseText": {
+            "de": "Viele würden gern helfen, haben aber in der Mittagspause nur wenig Zeit.",
+            "en": "Lots of people want to help, but they have very little time on their lunch break."
+          }
+        },
+        {
+          "targetText": "Se facciamo turni di mezz'ora, sarà più facile fare volontariato durante la pausa pranzo.",
+          "baseText": {
+            "de": "Wenn wir Schichten von einer halben Stunde anbieten, wird es leichter, in der Mittagspause ehrenamtlich zu helfen.",
+            "en": "If we have half-hour shifts, it'll be easier to volunteer during the lunch break."
+          }
+        },
+        {
+          "targetText": "Ottimo. Domani da mezzogiorno alle dodici e mezza può portare i vassoi ai tavoli?",
+          "baseText": {
+            "de": "Gut. Können Sie morgen von zwölf bis halb eins die Tabletts an die Tische bringen?",
+            "en": "Great. Could you carry trays to the tables tomorrow from twelve to half past?"
+          }
+        },
+        {
+          "targetText": "D'accordo, porterò i vassoi dalla cucina ai tavoli.",
+          "baseText": {
+            "de": "Einverstanden, ich bringe die Tabletts von der Küche an die Tische.",
+            "en": "Agreed, I'll carry the trays from the kitchen to the tables."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se… sarà più facile…",
+        "rule": {
+          "de": "Se mit Präsens nennt die Voraussetzung. Sarà più facile mit Infinitiv beschreibt, welche Handlung dadurch leichter wird.",
+          "en": "Se with the present sets the condition. Sarà più facile followed by an infinitive describes the action this will make easier."
+        },
+        "examples": [
+          {
+            "targetText": "Se facciamo turni di mezz'ora, sarà più facile fare volontariato durante la pausa pranzo.",
+            "baseText": {
+              "de": "Wenn wir Schichten von einer halben Stunde anbieten, wird es leichter, in der Mittagspause ehrenamtlich zu helfen.",
+              "en": "If we have half-hour shifts, it'll be easier to volunteer during the lunch break."
+            },
+            "highlight": "sarà più facile fare volontariato"
+          },
+          {
+            "targetText": "Se accendiamo la lampada, sarà più facile distinguere i due colori.",
+            "baseText": {
+              "de": "Wenn wir die Lampe einschalten, lassen sich die beiden Farben leichter unterscheiden.",
+              "en": "If we turn the lamp on, it'll be easier to tell the two colours apart."
+            },
+            "highlight": "sarà più facile distinguere"
+          }
+        ]
+      },
+      "cloze": [
+        "D'accordo, porterò ",
+        {
+          "kind": "choice",
+          "answer": "i",
+          "choices": [
+            "lo",
+            "i",
+            "gli",
+            "le"
+          ]
+        },
+        " vassoi dalla cucina ",
+        {
+          "kind": "choice",
+          "answer": "ai",
+          "choices": [
+            "ai",
+            "agli",
+            "alle",
+            "allo"
+          ]
+        },
+        " tavoli."
+      ],
+      "chunks": [
+        {
+          "targetText": "Se facciamo turni",
+          "baseText": {
+            "de": "Wenn wir Schichten einrichten",
+            "en": "If we arrange shifts"
+          }
+        },
+        {
+          "targetText": "di mezz'ora,",
+          "baseText": {
+            "de": "von einer halben Stunde,",
+            "en": "of half an hour,"
+          }
+        },
+        {
+          "targetText": "sarà più facile",
+          "baseText": {
+            "de": "wird es leichter sein",
+            "en": "it will be easier"
+          }
+        },
+        {
+          "targetText": "fare volontariato",
+          "baseText": {
+            "de": "ehrenamtlich tätig zu sein",
+            "en": "to volunteer"
+          }
+        },
+        {
+          "targetText": "durante la pausa pranzo.",
+          "baseText": {
+            "de": "während der Mittagspause.",
+            "en": "during the lunch break."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "volontariato",
+          "baseText": {
+            "de": "ehrenamtliche Tätigkeit",
+            "en": "volunteering"
+          }
+        },
+        {
+          "targetText": "turni",
+          "baseText": {
+            "de": "Schichten",
+            "en": "shifts"
+          }
+        },
+        {
+          "targetText": "mezz'ora",
+          "baseText": {
+            "de": "eine halbe Stunde",
+            "en": "half an hour"
+          }
+        },
+        {
+          "targetText": "pausa pranzo",
+          "baseText": {
+            "de": "Mittagspause",
+            "en": "lunch break"
+          }
+        },
+        {
+          "targetText": "vassoi",
+          "baseText": {
+            "de": "Tabletts",
+            "en": "trays"
+          }
+        },
+        {
+          "targetText": "dalla cucina",
+          "baseText": {
+            "de": "aus der Küche",
+            "en": "from the kitchen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Se facciamo turni di mezz'ora, sarà più ",
+        "answer": "facile",
+        "after": " fare volontariato durante la pausa pranzo.",
+        "fallbackChoices": [
+          "facile",
+          "facili",
+          "facilità",
+          "facilitare"
+        ]
+      },
+      "speakRequired": [
+        "turni",
+        "facile",
+        "volontariato"
+      ],
+      "sceneCaption": {
+        "de": "In einer sozialen Kantine sprechen Sie mit dem Koordinator der Mittagsschicht. „Molti vorrebbero aiutare, ma in pausa pranzo hanno pochissimo tempo.“",
+        "en": "At a community canteen, you speak to the coordinator of the lunch shift. “Molti vorrebbero aiutare, ma in pausa pranzo hanno pochissimo tempo.”"
+      },
+      "trophyWord": {
+        "word": "volontariato",
+        "meaning": {
+          "de": "ehrenamtliche Tätigkeit",
+          "en": "volunteering"
+        },
+        "example": "Se facciamo turni di mezz'ora, sarà più facile fare volontariato durante la pausa pranzo.",
+        "whyThisWord": {
+          "de": "Mit fare volontariato meinen Sie regelmäßige oder gelegentliche ehrenamtliche Hilfe. Der kurze turno macht daraus einen überschaubaren Einsatz.",
+          "en": "Fare volontariato means doing voluntary work, regularly or occasionally. A short turno makes it a manageable commitment."
+        }
+      },
+      "distractors": [
+        "di due ore,",
+        "durante le vacanze."
+      ],
+      "placeholderCaption": {
+        "de": "In einer sozialen Kantine sprechen Sie mit dem Koordinator der Mittagsschicht.",
+        "en": "At a community canteen, you speak to the coordinator of the lunch shift."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "At a community canteen, you speak to the coordinator of the lunch shift."
+    },
+    {
+      "slug": "turni-nell-orto",
+      "title": {
+        "de": "Am Gartentor",
+        "en": "At the garden gate"
+      },
+      "situation": {
+        "de": "Im Gemeinschaftsgarten besprechen Sie mit einem Nachbarn das kommende Wochenende.",
+        "en": "In the shared garden, you and a neighbour discuss the coming weekend."
+      },
+      "pedagogicalGoal": "Den Gießplan zusammenfassen und eine Vertretung für Fehlzeiten anbieten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ripassiamo i turni per dare acqua all'orto nel fine settimana?",
+          "baseText": {
+            "de": "Gehen wir die Gießdienste für den Garten am Wochenende noch einmal durch?",
+            "en": "Shall we go over the weekend watering shifts for the garden?"
+          }
+        },
+        {
+          "targetText": "Se per Lei va bene l'accordo, porterò l'acqua il sabato e Lei la domenica.",
+          "baseText": {
+            "de": "Wenn Sie mit der Vereinbarung einverstanden sind, bringe ich samstags das Wasser und Sie sonntags.",
+            "en": "If the arrangement works for you, I'll bring the water on Saturdays and you'll bring it on Sundays."
+          }
+        },
+        {
+          "targetText": "Va bene. La vicina si offre di sostituirci durante le ferie: chi la avverte?",
+          "baseText": {
+            "de": "In Ordnung. Die Nachbarin bietet an, uns im Urlaub zu vertreten. Wer gibt ihr Bescheid?",
+            "en": "That works. Our neighbour is offering to cover during the holidays. Who'll let her know?"
+          }
+        },
+        {
+          "targetText": "Se manca qualcuno, io avviserò la vicina del turno libero.",
+          "baseText": {
+            "de": "Wenn jemand fehlt, sage ich der Nachbarin wegen des freien Dienstes Bescheid.",
+            "en": "If someone is away, I'll tell our neighbour about the open shift."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se per Lei va bene…",
+        "rule": {
+          "de": "Se per Lei va bene prüft höflich das Einverständnis. Im Hauptsatz legt porterò fest, welche Aufgabe Sie übernehmen.",
+          "en": "Se per Lei va bene politely checks for agreement. The main clause with porterò specifies the task you will take on."
+        },
+        "examples": [
+          {
+            "targetText": "Se per Lei va bene l'accordo, porterò l'acqua il sabato e Lei la domenica.",
+            "baseText": {
+              "de": "Wenn Sie mit der Vereinbarung einverstanden sind, bringe ich samstags das Wasser und Sie sonntags.",
+              "en": "If the arrangement works for you, I'll bring the water on Saturdays and you'll bring it on Sundays."
+            },
+            "highlight": "Se per Lei va bene l'accordo, porterò"
+          },
+          {
+            "targetText": "Se per Lei va bene il menù, porterò il dolce per la cena.",
+            "baseText": {
+              "de": "Wenn das Menü für Sie passt, bringe ich den Nachtisch zum Abendessen mit.",
+              "en": "If the menu works for you, I'll bring dessert for dinner."
+            },
+            "highlight": "Se per Lei va bene il menù, porterò"
+          }
+        ]
+      },
+      "cloze": [
+        "Se manca qualcuno, io ",
+        {
+          "kind": "choice",
+          "answer": "avviserò",
+          "choices": [
+            "avviserò",
+            "avviserà",
+            "avviseranno",
+            "avviseremo"
+          ]
+        },
+        " la vicina del turno ",
+        {
+          "kind": "choice",
+          "answer": "libero",
+          "choices": [
+            "libera",
+            "libere",
+            "liberi",
+            "libero"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Se per Lei",
+          "baseText": {
+            "de": "Wenn für Sie",
+            "en": "If, for you,"
+          }
+        },
+        {
+          "targetText": "va bene l'accordo,",
+          "baseText": {
+            "de": "die Vereinbarung in Ordnung ist,",
+            "en": "the arrangement works,"
+          }
+        },
+        {
+          "targetText": "porterò l'acqua il sabato",
+          "baseText": {
+            "de": "bringe ich samstags das Wasser",
+            "en": "I'll bring the water on Saturdays"
+          }
+        },
+        {
+          "targetText": "e Lei la domenica.",
+          "baseText": {
+            "de": "und Sie sonntags.",
+            "en": "and you on Sundays."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "accordo",
+          "baseText": {
+            "de": "Vereinbarung",
+            "en": "agreement"
+          }
+        },
+        {
+          "targetText": "turno",
+          "baseText": {
+            "de": "Dienst",
+            "en": "shift"
+          }
+        },
+        {
+          "targetText": "orto",
+          "baseText": {
+            "de": "Gemüsegarten",
+            "en": "vegetable garden"
+          }
+        },
+        {
+          "targetText": "il sabato",
+          "baseText": {
+            "de": "samstags",
+            "en": "on Saturdays"
+          }
+        },
+        {
+          "targetText": "sostituirci",
+          "baseText": {
+            "de": "uns vertreten",
+            "en": "to cover for us"
+          }
+        },
+        {
+          "targetText": "ferie",
+          "baseText": {
+            "de": "Urlaub",
+            "en": "holidays"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Se per Lei va bene l'accordo, ",
+        "answer": "porterò",
+        "after": " l'acqua il sabato e Lei la domenica.",
+        "fallbackChoices": [
+          "portando",
+          "portato",
+          "portare",
+          "porterò"
+        ]
+      },
+      "speakRequired": [
+        "bene",
+        "porterò",
+        "sabato"
+      ],
+      "sceneCaption": {
+        "de": "Im Gemeinschaftsgarten besprechen Sie mit einem Nachbarn das kommende Wochenende. „Ripassiamo i turni per dare acqua all'orto nel fine settimana?“",
+        "en": "In the shared garden, you and a neighbour discuss the coming weekend. “Ripassiamo i turni per dare acqua all'orto nel fine settimana?”"
+      },
+      "trophyWord": {
+        "word": "accordo",
+        "meaning": {
+          "de": "Vereinbarung",
+          "en": "agreement"
+        },
+        "example": "Se per Lei va bene l'accordo, porterò l'acqua il sabato e Lei la domenica.",
+        "whyThisWord": {
+          "de": "Accordo ist hier die Vereinbarung, wer wann gießt. Sie können sie mit se per Lei va bene noch einmal bestätigen lassen.",
+          "en": "Accordo is the agreement about who waters when. Se per Lei va bene gives the other person a chance to confirm it."
+        }
+      },
+      "distractors": [
+        "porterò la terra",
+        "il martedì e Lei il giovedì."
+      ],
+      "placeholderCaption": {
+        "de": "Im Gemeinschaftsgarten besprechen Sie mit einem Nachbarn das kommende Wochenende.",
+        "en": "In the shared garden, you and a neighbour discuss the coming weekend."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "In the shared garden, you and a neighbour discuss the coming weekend."
+    }
+  ]
+}

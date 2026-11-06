@@ -1,0 +1,2151 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Ich hätte gern eine Auskunft",
+    "en": "I’d like some information"
+  },
+  "subtitle": {
+    "de": "Erkundigen Sie sich am Schalter nach Unterlagen, Fristen und Kosten und haken Sie bei Unklarheiten nach.",
+    "en": "Ask at a service desk about documents, deadlines and costs, and follow up when something is unclear."
+  },
+  "anchor": "Shape A. Embedded questions with sa dove/quando/come (L1–4), può dirmi + quale/quanto/che cosa (L5–7), and vorrei sapere se, non so se, mi può spiegare come (L8–10). Embedded verbs in the present indicative throughout. Singular formal Lei.",
+  "lessons": [
+    {
+      "slug": "modulo-per-la-tessera",
+      "title": {
+        "de": "Am Besucherservice des Museums",
+        "en": "At the museum visitor desk"
+      },
+      "situation": {
+        "de": "Am Besucherservice möchte eine Mitarbeiterin wissen, weshalb Sie mit Ihrer Museumskarte kommen.",
+        "en": "At the visitor desk, an assistant asks what brings you in with your museum pass."
+      },
+      "pedagogicalGoal": "Mit sa come si chiama fragen Sie höflich nach dem Namen einer Sache. Sa bezieht sich auf Ihr Gegenüber, si chiama auf den Gegenstand.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come posso aiutarla con la tessera del museo?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen mit Ihrer Museumskarte helfen?",
+            "en": "How can I help you with your museum pass?"
+          }
+        },
+        {
+          "targetText": "Sa come si chiama il modulo giusto per la tessera del museo?",
+          "baseText": {
+            "de": "Wissen Sie, wie das richtige Formular für die Museumskarte heißt?",
+            "en": "Do you know what the right form for the museum pass is called?"
+          }
+        },
+        {
+          "targetText": "Dipende: vuole rinnovare la tessera oppure le serve un duplicato?",
+          "baseText": {
+            "de": "Das kommt darauf an. Möchten Sie die Karte verlängern oder brauchen Sie eine Ersatzkarte?",
+            "en": "That depends. Do you want to renew your pass or do you need a replacement?"
+          }
+        },
+        {
+          "targetText": "La tessera scade fra un anno, ma la banda magnetica è rotta.",
+          "baseText": {
+            "de": "Die Karte läuft erst in einem Jahr ab, aber der Magnetstreifen ist kaputt.",
+            "en": "The pass expires in a year, but the magnetic strip is damaged."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sa come si chiama…?",
+        "rule": {
+          "de": "Mit sa come si chiama fragen Sie höflich nach dem Namen einer Sache. Sa bezieht sich auf Ihr Gegenüber, si chiama auf den Gegenstand.",
+          "en": "Use sa come si chiama to ask politely what something is called. Sa refers to the person you are asking and si chiama to the thing you are trying to name."
+        },
+        "examples": [
+          {
+            "targetText": "Sa come si chiama il modulo giusto per la tessera del museo?",
+            "baseText": {
+              "de": "Wissen Sie, wie das richtige Formular für die Museumskarte heißt?",
+              "en": "Do you know what the right form for the museum pass is called?"
+            },
+            "highlight": "Sa come si chiama il modulo giusto"
+          },
+          {
+            "targetText": "Sa come si chiama il sentiero che porta al rifugio?",
+            "baseText": {
+              "de": "Wissen Sie, wie der Weg heißt, der zur Berghütte führt?",
+              "en": "Do you know what the trail leading to the mountain hut is called?"
+            },
+            "highlight": "Sa come si chiama il sentiero"
+          }
+        ]
+      },
+      "cloze": [
+        "La tessera ",
+        {
+          "kind": "choice",
+          "answer": "scade",
+          "choices": [
+            "scadono",
+            "scade",
+            "scado",
+            "scadiamo"
+          ]
+        },
+        " fra un anno, ma la banda ",
+        {
+          "kind": "choice",
+          "answer": "magnetica",
+          "choices": [
+            "magnetici",
+            "magnetiche",
+            "magnetica",
+            "magnetico"
+          ]
+        },
+        " è rotta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa come si chiama",
+          "baseText": {
+            "de": "Wissen Sie, wie … heißt",
+            "en": "Do you know what … is called"
+          }
+        },
+        {
+          "targetText": "il modulo giusto",
+          "baseText": {
+            "de": "das richtige Formular",
+            "en": "the right form"
+          }
+        },
+        {
+          "targetText": "per la tessera",
+          "baseText": {
+            "de": "für die Karte",
+            "en": "for the pass"
+          }
+        },
+        {
+          "targetText": "del museo?",
+          "baseText": {
+            "de": "des Museums",
+            "en": "of the museum"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il modulo",
+          "baseText": {
+            "de": "das Formular",
+            "en": "the form"
+          }
+        },
+        {
+          "targetText": "la tessera del museo",
+          "baseText": {
+            "de": "die Museumskarte",
+            "en": "the museum pass"
+          }
+        },
+        {
+          "targetText": "rinnovare la tessera",
+          "baseText": {
+            "de": "die Karte verlängern",
+            "en": "to renew the pass"
+          }
+        },
+        {
+          "targetText": "il duplicato",
+          "baseText": {
+            "de": "die Ersatzkarte",
+            "en": "the replacement pass"
+          }
+        },
+        {
+          "targetText": "scadere",
+          "baseText": {
+            "de": "ablaufen",
+            "en": "to expire"
+          }
+        },
+        {
+          "targetText": "la banda magnetica",
+          "baseText": {
+            "de": "der Magnetstreifen",
+            "en": "the magnetic strip"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa come si chiama il modulo ",
+        "answer": "giusto",
+        "after": " per la tessera del museo?",
+        "fallbackChoices": [
+          "giusta",
+          "giuste",
+          "giusto",
+          "giusti"
+        ]
+      },
+      "speakRequired": [
+        "modulo",
+        "tessera",
+        "museo"
+      ],
+      "sceneCaption": {
+        "de": "Am Besucherservice möchte eine Mitarbeiterin wissen, weshalb Sie mit Ihrer Museumskarte kommen. „Come posso aiutarla con la tessera del museo?“",
+        "en": "At the visitor desk, an assistant asks what brings you in with your museum pass. “Come posso aiutarla con la tessera del museo?”"
+      },
+      "trophyWord": {
+        "word": "modulo",
+        "meaning": {
+          "de": "das Formular",
+          "en": "form"
+        },
+        "example": "Sul modulo scrivo il numero della mia tessera.",
+        "whyThisWord": {
+          "de": "Mit modulo können Sie am Schalter nach dem passenden Vordruck für Ihr Anliegen fragen.",
+          "en": "Use modulo to ask at a desk for the right form for your request."
+        }
+      },
+      "distractors": [
+        "le quote annuali",
+        "comprendono due ingressi."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Museumskarte liegt auf der Theke am Eingang einer Ausstellung.",
+        "en": "A museum pass lies on the counter at the entrance to an exhibition."
+      },
+      "songMood": "Bright acoustic pop with gentle hand percussion.",
+      "visualNotes": "A museum pass lies on the counter at the entrance to an exhibition."
+    },
+    {
+      "slug": "residenza-in-comune",
+      "title": {
+        "de": "Eine Frage im Rathaus",
+        "en": "An enquiry at town hall"
+      },
+      "situation": {
+        "de": "Im Rathaus fragt ein Mitarbeiter, zu welchem Thema Sie Auskunft brauchen.",
+        "en": "At town hall, a member of staff asks what you need information about."
+      },
+      "pedagogicalGoal": "Mit dove erfragen Sie eine Anlaufstelle, mit come den nächsten Schritt. Beide Fragen können mit dem höflichen sa beginnen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Per quale motivo cerca un ufficio in Comune?",
+          "baseText": {
+            "de": "In welcher Angelegenheit suchen Sie ein Amt im Rathaus?",
+            "en": "What do you need to speak to a town hall office about?"
+          }
+        },
+        {
+          "targetText": "Sa dove trovo le informazioni sul cambio di residenza?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich Informationen zur Ummeldung meines Wohnsitzes finde?",
+            "en": "Do you know where I can find information about registering a change of address?"
+          }
+        },
+        {
+          "targetText": "Qui ci occupiamo dei tributi. Per la residenza l'anagrafe riceve su appuntamento.",
+          "baseText": {
+            "de": "Hier sind wir für Abgaben zuständig. Für Wohnsitzfragen empfängt das Meldeamt nach Terminvereinbarung.",
+            "en": "We deal with local taxes here. The registry office sees people by appointment for residence enquiries."
+          }
+        },
+        {
+          "targetText": "Sa come posso fissare un appuntamento senza usare Internet?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich ohne Internet einen Termin vereinbaren kann?",
+            "en": "Do you know how I can make an appointment without using the internet?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sa dove…? Sa come…?",
+        "rule": {
+          "de": "Mit dove erfragen Sie eine Anlaufstelle, mit come den nächsten Schritt. Beide Fragen können mit dem höflichen sa beginnen.",
+          "en": "Use dove to ask where to go and come to ask how to proceed. Both questions can begin with the polite sa."
+        },
+        "examples": [
+          {
+            "targetText": "Sa dove trovo le informazioni sul cambio di residenza?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich Informationen zur Ummeldung meines Wohnsitzes finde?",
+              "en": "Do you know where I can find information about registering a change of address?"
+            },
+            "highlight": "Sa dove trovo le informazioni"
+          },
+          {
+            "targetText": "Sa dove trovo gli orari delle prove e come posso assistere?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich die Probenzeiten finde und wie ich bei einer Probe zuschauen kann?",
+              "en": "Do you know where I can find the rehearsal times and how I can attend?"
+            },
+            "highlight": "Sa dove trovo gli orari delle prove"
+          }
+        ]
+      },
+      "cloze": [
+        "Sa come posso ",
+        {
+          "kind": "choice",
+          "answer": "fissare",
+          "choices": [
+            "fissato",
+            "fisso",
+            "fissare",
+            "fissazione"
+          ]
+        },
+        " un appuntamento senza ",
+        {
+          "kind": "choice",
+          "answer": "usare",
+          "choices": [
+            "usavo",
+            "usato",
+            "usando",
+            "usare"
+          ]
+        },
+        " Internet?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa dove trovo",
+          "baseText": {
+            "de": "Wissen Sie, wo ich … finde",
+            "en": "Do you know where I can find"
+          }
+        },
+        {
+          "targetText": "le informazioni",
+          "baseText": {
+            "de": "die Informationen",
+            "en": "the information"
+          }
+        },
+        {
+          "targetText": "sul cambio",
+          "baseText": {
+            "de": "über den Wechsel",
+            "en": "about the change"
+          }
+        },
+        {
+          "targetText": "di residenza?",
+          "baseText": {
+            "de": "des Wohnsitzes",
+            "en": "of residence"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la residenza",
+          "baseText": {
+            "de": "der Wohnsitz",
+            "en": "the place of residence"
+          }
+        },
+        {
+          "targetText": "il cambio di residenza",
+          "baseText": {
+            "de": "die Ummeldung des Wohnsitzes",
+            "en": "registering a change of address"
+          }
+        },
+        {
+          "targetText": "l'anagrafe",
+          "baseText": {
+            "de": "das Meldeamt",
+            "en": "the registry office"
+          }
+        },
+        {
+          "targetText": "l'ufficio tributi",
+          "baseText": {
+            "de": "das kommunale Steueramt",
+            "en": "the local tax office"
+          }
+        },
+        {
+          "targetText": "ricevere su appuntamento",
+          "baseText": {
+            "de": "Sprechtermine nach Vereinbarung anbieten",
+            "en": "to see people by appointment"
+          }
+        },
+        {
+          "targetText": "fissare un appuntamento",
+          "baseText": {
+            "de": "einen Termin vereinbaren",
+            "en": "to make an appointment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa dove trovo le ",
+        "answer": "informazioni",
+        "after": " sul cambio di residenza?",
+        "fallbackChoices": [
+          "informazione",
+          "informativo",
+          "informare",
+          "informazioni"
+        ]
+      },
+      "speakRequired": [
+        "informazioni",
+        "cambio",
+        "residenza"
+      ],
+      "sceneCaption": {
+        "de": "Im Rathaus fragt ein Mitarbeiter, zu welchem Thema Sie Auskunft brauchen. „Per quale motivo cerca un ufficio in Comune?“",
+        "en": "At town hall, a member of staff asks what you need information about. “Per quale motivo cerca un ufficio in Comune?”"
+      },
+      "trophyWord": {
+        "word": "residenza",
+        "meaning": {
+          "de": "der Wohnsitz",
+          "en": "place of residence"
+        },
+        "example": "Cerco informazioni sulla residenza nel mio nuovo quartiere.",
+        "whyThisWord": {
+          "de": "Cambio di residenza ist eine gebräuchliche Wortgruppe für eine Frage zum Wechsel des gemeldeten Wohnsitzes.",
+          "en": "Cambio di residenza is a common phrase for asking about a change of registered address."
+        }
+      },
+      "distractors": [
+        "gli avvisi di pagamento",
+        "riguardano i tributi locali."
+      ],
+      "placeholderCaption": {
+        "de": "Im Rathaus steht ein Mitarbeiter an einem Auskunftstresen.",
+        "en": "A staff member stands at an information desk in the town hall."
+      },
+      "songMood": "Easy walking rhythm with piano and upright bass.",
+      "visualNotes": "A staff member stands at an information desk in the town hall."
+    },
+    {
+      "slug": "certificato-da-ritirare",
+      "title": {
+        "de": "Eine Bescheinigung abholen",
+        "en": "Collecting a certificate"
+      },
+      "situation": {
+        "de": "Am Schalter fragt die Mitarbeiterin, in welcher Angelegenheit Sie heute da sind.",
+        "en": "At the counter, the clerk asks what brings you in today."
+      },
+      "pedagogicalGoal": "Mit sa come posso und einem Infinitiv fragen Sie nach Ihrem eigenen Vorgehen. Posso bezeichnet die Person, die etwas tun möchte.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale pratica la porta qui oggi?",
+          "baseText": {
+            "de": "Wegen welchen Vorgangs sind Sie heute hier?",
+            "en": "Which request brings you in today?"
+          }
+        },
+        {
+          "targetText": "Sa come posso ritirare allo sportello il certificato che aspetto da lunedì?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich die Bescheinigung, auf die ich seit Montag warte, am Schalter abholen kann?",
+            "en": "Do you know how I can collect my certificate at the counter? It’s the one I’ve been waiting for since Monday."
+          }
+        },
+        {
+          "targetText": "Con il suo cognome non trovo la richiesta. Ha un altro riferimento?",
+          "baseText": {
+            "de": "Unter Ihrem Nachnamen finde ich den Antrag nicht. Haben Sie noch ein anderes Merkmal, nach dem ich suchen kann?",
+            "en": "I can’t find the request under your surname. Do you have another reference?"
+          }
+        },
+        {
+          "targetText": "La ricevuta riporta il numero della pratica: le serve quello?",
+          "baseText": {
+            "de": "Auf dem Beleg steht die Vorgangsnummer. Hilft Ihnen die weiter?",
+            "en": "The receipt shows the case number. Is that what you need?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sa come posso…?",
+        "rule": {
+          "de": "Mit sa come posso und einem Infinitiv fragen Sie nach Ihrem eigenen Vorgehen. Posso bezeichnet die Person, die etwas tun möchte.",
+          "en": "Ask how you can do something with sa come posso followed by an infinitive. Posso identifies you as the person who wants to act."
+        },
+        "examples": [
+          {
+            "targetText": "Sa come posso ritirare allo sportello il certificato che aspetto da lunedì?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich die Bescheinigung, auf die ich seit Montag warte, am Schalter abholen kann?",
+              "en": "Do you know how I can collect my certificate at the counter? It’s the one I’ve been waiting for since Monday."
+            },
+            "highlight": "Sa come posso ritirare allo sportello il certificato"
+          },
+          {
+            "targetText": "Sa come posso bloccare la bicicletta sul portabici del treno?",
+            "baseText": {
+              "de": "Wissen Sie, wie ich das Fahrrad auf dem Fahrradträger im Zug befestigen kann?",
+              "en": "Do you know how I can secure my bicycle on the train’s bike rack?"
+            },
+            "highlight": "Sa come posso bloccare la bicicletta"
+          }
+        ]
+      },
+      "cloze": [
+        "La ricevuta ",
+        {
+          "kind": "form",
+          "answer": "riporta",
+          "choices": [
+            "riportano",
+            "riporto",
+            "riportiamo",
+            "riporta"
+          ],
+          "cue": "riportare (la ricevuta)"
+        },
+        " il ",
+        {
+          "kind": "choice",
+          "answer": "numero",
+          "choices": [
+            "numero",
+            "numeri",
+            "cifre",
+            "numerazione"
+          ]
+        },
+        " della pratica: le serve quello?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa come posso",
+          "baseText": {
+            "de": "Wissen Sie, wie ich … kann",
+            "en": "Do you know how I can"
+          }
+        },
+        {
+          "targetText": "ritirare allo sportello",
+          "baseText": {
+            "de": "am Schalter abholen",
+            "en": "collect at the counter"
+          }
+        },
+        {
+          "targetText": "il certificato",
+          "baseText": {
+            "de": "die Bescheinigung",
+            "en": "the certificate"
+          }
+        },
+        {
+          "targetText": "che aspetto da lunedì?",
+          "baseText": {
+            "de": "auf die ich seit Montag warte",
+            "en": "that I’ve been waiting for since Monday"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il certificato",
+          "baseText": {
+            "de": "die Bescheinigung",
+            "en": "the certificate"
+          }
+        },
+        {
+          "targetText": "ritirare allo sportello",
+          "baseText": {
+            "de": "am Schalter abholen",
+            "en": "to collect at the counter"
+          }
+        },
+        {
+          "targetText": "il cognome",
+          "baseText": {
+            "de": "der Nachname",
+            "en": "the surname"
+          }
+        },
+        {
+          "targetText": "il riferimento",
+          "baseText": {
+            "de": "das Suchmerkmal",
+            "en": "the reference detail"
+          }
+        },
+        {
+          "targetText": "la ricevuta",
+          "baseText": {
+            "de": "der Beleg",
+            "en": "the receipt"
+          }
+        },
+        {
+          "targetText": "il numero della pratica",
+          "baseText": {
+            "de": "die Vorgangsnummer",
+            "en": "the case number"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa come ",
+        "answer": "posso",
+        "after": " ritirare allo sportello il certificato che aspetto da lunedì?",
+        "fallbackChoices": [
+          "posso",
+          "potendo",
+          "potere",
+          "potuto"
+        ]
+      },
+      "speakRequired": [
+        "ritirare",
+        "sportello",
+        "certificato"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fragt die Mitarbeiterin, in welcher Angelegenheit Sie heute da sind. „Quale pratica la porta qui oggi?“",
+        "en": "At the counter, the clerk asks what brings you in today. “Quale pratica la porta qui oggi?”"
+      },
+      "trophyWord": {
+        "word": "certificato",
+        "meaning": {
+          "de": "die Bescheinigung",
+          "en": "certificate"
+        },
+        "example": "Il certificato che cerco porta il nome del mio comune.",
+        "whyThisWord": {
+          "de": "Mit certificato benennen Sie das Dokument, das Sie abholen möchten. Eine Vorgangsnummer hilft bei der Zuordnung.",
+          "en": "Certificato names the document you want to collect. A case number helps identify the request."
+        }
+      },
+      "distractors": [
+        "le copie conformi",
+        "hanno un timbro blu."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mitarbeiterin sitzt am Schalter vor ihrem Bildschirm.",
+        "en": "A clerk sits in front of a monitor at the service counter."
+      },
+      "songMood": "Clear mellow guitar over a slow syncopated beat.",
+      "visualNotes": "A clerk sits in front of a monitor at the service counter."
+    },
+    {
+      "slug": "scadenza-del-laboratorio",
+      "title": {
+        "de": "Der Fotokurs auf dem Handzettel",
+        "en": "A photography workshop flyer"
+      },
+      "situation": {
+        "de": "Im Kulturzentrum sieht der Kursleiter, dass Sie den Handzettel für einen Workshop lesen.",
+        "en": "At a cultural centre, the instructor notices you reading a workshop flyer."
+      },
+      "pedagogicalGoal": "Mit sa quando fragen Sie nach einem Zeitpunkt. Chiudono steht im Plural, weil es sich auf le iscrizioni bezieht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Le interessa il laboratorio del sabato?",
+          "baseText": {
+            "de": "Interessieren Sie sich für den Workshop am Samstag?",
+            "en": "Are you interested in the Saturday workshop?"
+          }
+        },
+        {
+          "targetText": "Sul volantino manca la scadenza: sa quando chiudono le iscrizioni al laboratorio?",
+          "baseText": {
+            "de": "Auf dem Handzettel fehlt die Frist. Wissen Sie, wann die Anmeldung zum Workshop endet?",
+            "en": "There’s no deadline on the flyer. Do you know when registration for the workshop closes?"
+          }
+        },
+        {
+          "targetText": "Purtroppo per questa edizione le iscrizioni sono chiuse da ieri.",
+          "baseText": {
+            "de": "Leider ist die Anmeldung für diesen Durchgang seit gestern geschlossen.",
+            "en": "Unfortunately registration for this session closed yesterday."
+          }
+        },
+        {
+          "targetText": "Allora posso lasciare il mio nome per un eventuale posto libero?",
+          "baseText": {
+            "de": "Kann ich dann meinen Namen hinterlassen, falls ein Platz frei wird?",
+            "en": "Could I leave my name in case a place opens up?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sa quando chiudono…?",
+        "rule": {
+          "de": "Mit sa quando fragen Sie nach einem Zeitpunkt. Chiudono steht im Plural, weil es sich auf le iscrizioni bezieht.",
+          "en": "Use sa quando to ask about timing. Chiudono is plural because it refers to le iscrizioni."
+        },
+        "examples": [
+          {
+            "targetText": "Sul volantino manca la scadenza: sa quando chiudono le iscrizioni al laboratorio?",
+            "baseText": {
+              "de": "Auf dem Handzettel fehlt die Frist. Wissen Sie, wann die Anmeldung zum Workshop endet?",
+              "en": "There’s no deadline on the flyer. Do you know when registration for the workshop closes?"
+            },
+            "highlight": "sa quando chiudono le iscrizioni"
+          },
+          {
+            "targetText": "Sa quando partono gli ultimi traghetti per l'isola?",
+            "baseText": {
+              "de": "Wissen Sie, wann die letzten Fähren zur Insel abfahren?",
+              "en": "Do you know when the last ferries to the island leave?"
+            },
+            "highlight": "Sa quando partono gli ultimi traghetti"
+          }
+        ]
+      },
+      "cloze": [
+        "Allora posso ",
+        {
+          "kind": "choice",
+          "answer": "lasciare",
+          "choices": [
+            "lasciare",
+            "lascio",
+            "lasciando",
+            "lasciato"
+          ]
+        },
+        " il mio nome per un eventuale posto ",
+        {
+          "kind": "choice",
+          "answer": "libero",
+          "choices": [
+            "libera",
+            "libero",
+            "liberi",
+            "libere"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sul volantino",
+          "baseText": {
+            "de": "Auf dem Handzettel",
+            "en": "On the flyer"
+          }
+        },
+        {
+          "targetText": "manca la scadenza:",
+          "baseText": {
+            "de": "fehlt die Frist",
+            "en": "the deadline is missing"
+          }
+        },
+        {
+          "targetText": "sa quando chiudono",
+          "baseText": {
+            "de": "wissen Sie, wann … endet",
+            "en": "do you know when … closes"
+          }
+        },
+        {
+          "targetText": "le iscrizioni al laboratorio?",
+          "baseText": {
+            "de": "die Anmeldung zum Workshop",
+            "en": "registration for the workshop"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il volantino",
+          "baseText": {
+            "de": "der Handzettel",
+            "en": "the flyer"
+          }
+        },
+        {
+          "targetText": "la scadenza",
+          "baseText": {
+            "de": "die Frist",
+            "en": "the deadline"
+          }
+        },
+        {
+          "targetText": "le iscrizioni",
+          "baseText": {
+            "de": "die Anmeldungen",
+            "en": "registrations"
+          }
+        },
+        {
+          "targetText": "il laboratorio di fotografia",
+          "baseText": {
+            "de": "der Fotoworkshop",
+            "en": "the photography workshop"
+          }
+        },
+        {
+          "targetText": "questa edizione",
+          "baseText": {
+            "de": "dieser Durchgang",
+            "en": "this session"
+          }
+        },
+        {
+          "targetText": "lasciare il proprio nome",
+          "baseText": {
+            "de": "seinen Namen hinterlassen",
+            "en": "to leave one’s name"
+          }
+        },
+        {
+          "targetText": "un posto libero",
+          "baseText": {
+            "de": "ein freier Platz",
+            "en": "an available place"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sul volantino manca la scadenza: sa quando ",
+        "answer": "chiudono",
+        "after": " le iscrizioni al laboratorio?",
+        "fallbackChoices": [
+          "chiudiamo",
+          "chiudono",
+          "chiudo",
+          "chiudere"
+        ]
+      },
+      "speakRequired": [
+        "volantino",
+        "scadenza",
+        "iscrizioni"
+      ],
+      "sceneCaption": {
+        "de": "Im Kulturzentrum sieht der Kursleiter, dass Sie den Handzettel für einen Workshop lesen. „Le interessa il laboratorio del sabato?“",
+        "en": "At a cultural centre, the instructor notices you reading a workshop flyer. “Le interessa il laboratorio del sabato?”"
+      },
+      "trophyWord": {
+        "word": "scadenza",
+        "meaning": {
+          "de": "die Frist",
+          "en": "deadline"
+        },
+        "example": "La scadenza per il corso estivo è il primo giugno.",
+        "whyThisWord": {
+          "de": "Scadenza bezeichnet hier den letzten Zeitpunkt für die Anmeldung. Mit quando können Sie nach dem genauen Datum fragen.",
+          "en": "Here scadenza is the deadline for registering. Use quando to ask for the exact date."
+        }
+      },
+      "distractors": [
+        "le fotografie dei partecipanti",
+        "restano sulle pareti."
+      ],
+      "placeholderCaption": {
+        "de": "Am Eingang eines Kulturzentrums liegen Handzettel neben einer Kamera.",
+        "en": "Flyers sit beside a camera at the entrance to a cultural centre."
+      },
+      "songMood": "Light bossa guitar with a curious clarinet line.",
+      "visualNotes": "Flyers sit beside a camera at the entrance to a cultural centre."
+    },
+    {
+      "slug": "documento-per-il-servizio",
+      "title": {
+        "de": "Digital ausleihen",
+        "en": "Borrowing online"
+      },
+      "situation": {
+        "de": "An der Bibliothekstheke fragt ein Mitarbeiter, welchen Dienst Sie nutzen möchten.",
+        "en": "At the library desk, a member of staff asks which service you would like to use."
+      },
+      "pedagogicalGoal": "Mit può dirmi quale und einem Substantiv fragen Sie höflich nach genau einem passenden Gegenstand. Occorre bedeutet hier „ist nötig“. Nach demselben Muster fragen Sie mit può dirmi quanto costa nach einem Preis.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale servizio desidera attivare sulla tessera?",
+          "baseText": {
+            "de": "Welchen Dienst möchten Sie auf Ihrer Karte freischalten lassen?",
+            "en": "Which service would you like to activate on your card?"
+          }
+        },
+        {
+          "targetText": "Può dirmi quale documento occorre per attivare il prestito digitale?",
+          "baseText": {
+            "de": "Können Sie mir sagen, welchen Nachweis ich brauche, um die digitale Ausleihe freizuschalten?",
+            "en": "Can you tell me which document I need to activate digital borrowing?"
+          }
+        },
+        {
+          "targetText": "Qui chiediamo la tessera e una bolletta per verificare l'indirizzo.",
+          "baseText": {
+            "de": "Wir brauchen hier die Karte und eine Versorgerrechnung, um die Anschrift zu überprüfen.",
+            "en": "Here we ask for your card and a utility bill to verify your address."
+          }
+        },
+        {
+          "targetText": "La bolletta arriva online: per la verifica basta una copia stampata?",
+          "baseText": {
+            "de": "Ich bekomme die Rechnung online. Reicht für die Prüfung ein Ausdruck?",
+            "en": "I get the bill online. Is a printed copy enough for the check?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Può dirmi quale documento…?",
+        "rule": {
+          "de": "Mit può dirmi quale und einem Substantiv fragen Sie höflich nach genau einem passenden Gegenstand. Occorre bedeutet hier „ist nötig“. Nach demselben Muster fragen Sie mit può dirmi quanto costa nach einem Preis.",
+          "en": "Use può dirmi quale and a noun to ask politely which particular item you need. Here occorre means “is needed”. On the same pattern, può dirmi quanto costa asks for a price."
+        },
+        "examples": [
+          {
+            "targetText": "Può dirmi quale documento occorre per attivare il prestito digitale?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welchen Nachweis ich brauche, um die digitale Ausleihe freizuschalten?",
+              "en": "Can you tell me which document I need to activate digital borrowing?"
+            },
+            "highlight": "Può dirmi quale documento occorre"
+          },
+          {
+            "targetText": "Può dirmi quale biglietto occorre per portare la bici in treno?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welche Fahrkarte ich für die Fahrradmitnahme im Zug brauche?",
+              "en": "Can you tell me which ticket I need to take my bike on the train?"
+            },
+            "highlight": "Può dirmi quale biglietto occorre"
+          },
+          {
+            "targetText": "Può dirmi quanto costa l'abbonamento mensile per l'autobus?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wie viel die Monatskarte für den Bus kostet?",
+              "en": "Can you tell me how much the monthly bus pass costs?"
+            },
+            "highlight": "Può dirmi quanto costa l'abbonamento mensile"
+          }
+        ]
+      },
+      "cloze": [
+        "La bolletta ",
+        {
+          "kind": "form",
+          "answer": "arriva",
+          "choices": [
+            "arrivano",
+            "arriva",
+            "arriviamo",
+            "arrivo"
+          ],
+          "cue": "arrivare (la bolletta)"
+        },
+        " online: per la verifica basta una copia ",
+        {
+          "kind": "choice",
+          "answer": "stampata",
+          "choices": [
+            "stampate",
+            "stampato",
+            "stampata",
+            "stampati"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Può dirmi",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "quale documento occorre",
+          "baseText": {
+            "de": "welcher Nachweis nötig ist",
+            "en": "which document is needed"
+          }
+        },
+        {
+          "targetText": "per attivare",
+          "baseText": {
+            "de": "für die Freischaltung",
+            "en": "to activate"
+          }
+        },
+        {
+          "targetText": "il prestito digitale?",
+          "baseText": {
+            "de": "der digitalen Ausleihe",
+            "en": "digital borrowing"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il documento",
+          "baseText": {
+            "de": "das Dokument",
+            "en": "the document"
+          }
+        },
+        {
+          "targetText": "attivare un servizio",
+          "baseText": {
+            "de": "einen Dienst freischalten",
+            "en": "to activate a service"
+          }
+        },
+        {
+          "targetText": "il prestito digitale",
+          "baseText": {
+            "de": "die digitale Ausleihe",
+            "en": "digital borrowing"
+          }
+        },
+        {
+          "targetText": "la bolletta",
+          "baseText": {
+            "de": "die Versorgerrechnung",
+            "en": "the utility bill"
+          }
+        },
+        {
+          "targetText": "verificare l'indirizzo",
+          "baseText": {
+            "de": "die Anschrift überprüfen",
+            "en": "to verify the address"
+          }
+        },
+        {
+          "targetText": "la copia stampata",
+          "baseText": {
+            "de": "der Ausdruck",
+            "en": "the printed copy"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Può dirmi quale documento occorre per attivare il prestito ",
+        "answer": "digitale",
+        "after": "?",
+        "fallbackChoices": [
+          "digitali",
+          "digitalmente",
+          "digitale",
+          "digitalizzare"
+        ]
+      },
+      "speakRequired": [
+        "documento",
+        "attivare",
+        "prestito"
+      ],
+      "sceneCaption": {
+        "de": "An der Bibliothekstheke fragt ein Mitarbeiter, welchen Dienst Sie nutzen möchten. „Quale servizio desidera attivare sulla tessera?“",
+        "en": "At the library desk, a member of staff asks which service you would like to use. “Quale servizio desidera attivare sulla tessera?”"
+      },
+      "trophyWord": {
+        "word": "documento",
+        "meaning": {
+          "de": "das Dokument",
+          "en": "document"
+        },
+        "example": "Questo documento riporta il mio indirizzo attuale.",
+        "whyThisWord": {
+          "de": "Mit quale documento grenzen Sie an einem Schalter ein, welcher Nachweis für Ihren Fall gebraucht wird.",
+          "en": "Use quale documento at a desk to find out which document is required in your case."
+        }
+      },
+      "distractors": [
+        "i giornali in sala",
+        "escono ogni mattina."
+      ],
+      "placeholderCaption": {
+        "de": "An einer Bibliothekstheke liegt eine Karte neben einem Lesegerät.",
+        "en": "A library card lies beside a scanner on the desk."
+      },
+      "songMood": "Soft modern jazz with a warm electric piano.",
+      "visualNotes": "A library card lies beside a scanner on the desk."
+    },
+    {
+      "slug": "firma-sulla-domanda",
+      "title": {
+        "de": "Ein Antrag für den Abendkurs",
+        "en": "An evening class application"
+      },
+      "situation": {
+        "de": "Im Kursbüro gehen Sie mit einer Mitarbeiterin den Anmeldebogen durch.",
+        "en": "At the course office, you are going through the application with a clerk."
+      },
+      "pedagogicalGoal": "Nach quale spazio gibt devo usare an, was Sie selbst tun sollen. Mit dieser Frage können Sie sich zwischen Feldern auf einem Formular orientieren. Wenn Sie nicht zwischen Dingen wählen, sondern nach dem Inhalt fragen, steht che cosa statt quale: che cosa devo portare.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "È tutto chiaro sul modulo per il corso serale?",
+          "baseText": {
+            "de": "Ist auf dem Anmeldebogen für den Abendkurs alles klar?",
+            "en": "Is everything clear on the evening class application?"
+          }
+        },
+        {
+          "targetText": "Può dirmi quale spazio devo usare per la firma sulla domanda di iscrizione?",
+          "baseText": {
+            "de": "Können Sie mir sagen, in welches Feld auf dem Anmeldeantrag meine Unterschrift gehört?",
+            "en": "Can you tell me which space to use for my signature on the application form?"
+          }
+        },
+        {
+          "targetText": "La firma va nel riquadro in basso. Sul retro c'è una sezione per i dati della scuola.",
+          "baseText": {
+            "de": "Die Unterschrift gehört ins untere Feld. Auf der Rückseite gibt es einen Abschnitt für die Angaben der Schule.",
+            "en": "The signature goes in the box at the bottom. On the back there’s a section for the school’s details."
+          }
+        },
+        {
+          "targetText": "Quella parte spetta alla segreteria o devo compilarla io?",
+          "baseText": {
+            "de": "Ist das Sache des Sekretariats, oder muss ich den Teil selbst ausfüllen?",
+            "en": "Does the office take care of that part, or do I need to fill it in myself?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Può dirmi quale spazio devo usare?",
+        "rule": {
+          "de": "Nach quale spazio gibt devo usare an, was Sie selbst tun sollen. Mit dieser Frage können Sie sich zwischen Feldern auf einem Formular orientieren. Wenn Sie nicht zwischen Dingen wählen, sondern nach dem Inhalt fragen, steht che cosa statt quale: che cosa devo portare.",
+          "en": "After quale spazio, devo usare says what you as the speaker are supposed to use. This question helps you choose between fields on a form. When you ask about content rather than choosing between items, use che cosa instead of quale: che cosa devo portare."
+        },
+        "examples": [
+          {
+            "targetText": "Può dirmi quale spazio devo usare per la firma sulla domanda di iscrizione?",
+            "baseText": {
+              "de": "Können Sie mir sagen, in welches Feld auf dem Anmeldeantrag meine Unterschrift gehört?",
+              "en": "Can you tell me which space to use for my signature on the application form?"
+            },
+            "highlight": "quale spazio devo usare"
+          },
+          {
+            "targetText": "Può dirmi quale sentiero devo prendere per raggiungere la cascata?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welchen Weg ich nehmen muss, um zum Wasserfall zu kommen?",
+              "en": "Can you tell me which trail I should take to reach the waterfall?"
+            },
+            "highlight": "quale sentiero devo prendere"
+          },
+          {
+            "targetText": "Può dirmi che cosa devo portare per la gita in montagna?",
+            "baseText": {
+              "de": "Können Sie mir sagen, was ich für den Ausflug in die Berge mitnehmen muss?",
+              "en": "Can you tell me what I need to bring for the mountain trip?"
+            },
+            "highlight": "che cosa devo portare"
+          }
+        ]
+      },
+      "cloze": [
+        "Quella parte ",
+        {
+          "kind": "form",
+          "answer": "spetta",
+          "choices": [
+            "spettano",
+            "spetto",
+            "spetta",
+            "spettiamo"
+          ],
+          "cue": "spettare (quella parte)"
+        },
+        " alla segreteria o devo ",
+        {
+          "kind": "choice",
+          "answer": "compilarla",
+          "choices": [
+            "compilandola",
+            "compilata",
+            "compilo",
+            "compilarla"
+          ]
+        },
+        " io?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Può dirmi",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "quale spazio devo usare",
+          "baseText": {
+            "de": "welches Feld ich verwenden soll",
+            "en": "which space I should use"
+          }
+        },
+        {
+          "targetText": "per la firma",
+          "baseText": {
+            "de": "für die Unterschrift",
+            "en": "for the signature"
+          }
+        },
+        {
+          "targetText": "sulla domanda di iscrizione?",
+          "baseText": {
+            "de": "auf dem Anmeldeantrag",
+            "en": "on the application form"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la firma",
+          "baseText": {
+            "de": "die Unterschrift",
+            "en": "the signature"
+          }
+        },
+        {
+          "targetText": "la domanda di iscrizione",
+          "baseText": {
+            "de": "der Anmeldeantrag",
+            "en": "the application form"
+          }
+        },
+        {
+          "targetText": "il riquadro",
+          "baseText": {
+            "de": "das umrandete Feld",
+            "en": "the box"
+          }
+        },
+        {
+          "targetText": "sul retro",
+          "baseText": {
+            "de": "auf der Rückseite",
+            "en": "on the back"
+          }
+        },
+        {
+          "targetText": "la segreteria",
+          "baseText": {
+            "de": "das Sekretariat",
+            "en": "the office"
+          }
+        },
+        {
+          "targetText": "spettare a qualcuno",
+          "baseText": {
+            "de": "in jemandes Zuständigkeit fallen",
+            "en": "to be someone’s responsibility"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Può dirmi quale spazio devo ",
+        "answer": "usare",
+        "after": " per la firma sulla domanda di iscrizione?",
+        "fallbackChoices": [
+          "usando",
+          "usato",
+          "uso",
+          "usare"
+        ]
+      },
+      "speakRequired": [
+        "spazio",
+        "firma",
+        "domanda"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro gehen Sie mit einer Mitarbeiterin den Anmeldebogen durch. „È tutto chiaro sul modulo per il corso serale?“",
+        "en": "At the course office, you are going through the application with a clerk. “È tutto chiaro sul modulo per il corso serale?”"
+      },
+      "trophyWord": {
+        "word": "firma",
+        "meaning": {
+          "de": "die Unterschrift",
+          "en": "signature"
+        },
+        "example": "Manca soltanto la firma in fondo alla pagina.",
+        "whyThisWord": {
+          "de": "Mit firma können Sie nach der Stelle für Ihre Unterschrift fragen, auch wenn ein Formular mehrere Abschnitte hat.",
+          "en": "Use firma to ask where your signature goes on a form with several sections."
+        }
+      },
+      "distractors": [
+        "i recapiti del corso",
+        "occupano la prima pagina."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mitarbeiterin und ein Gast sehen sich einen Bogen am Schreibtisch an.",
+        "en": "A clerk and a visitor look over a sheet of paper at a desk."
+      },
+      "songMood": "Warm nylon guitar with a small rhythmic lift.",
+      "visualNotes": "A clerk and a visitor look over a sheet of paper at a desk."
+    },
+    {
+      "slug": "sportello-dei-rimborsi",
+      "title": {
+        "de": "Öffnungszeiten im Kundenzentrum",
+        "en": "Opening hours at the service centre"
+      },
+      "situation": {
+        "de": "Im Kundenzentrum sprechen Sie die Auskunft wegen eines Erstattungsantrags an.",
+        "en": "At a service centre, you approach the information desk about a refund request."
+      },
+      "pedagogicalGoal": "Nach può dirmi bezeichnet quale sportello den Schalter, dessen Verfügbarkeit Sie erfragen. Aperto stimmt mit dem männlichen Singular sportello überein.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Per quale servizio cerca uno sportello?",
+          "baseText": {
+            "de": "Für welches Anliegen suchen Sie einen Schalter?",
+            "en": "Which service do you need a counter for?"
+          }
+        },
+        {
+          "targetText": "Può dirmi quale sportello è aperto nel pomeriggio per le richieste di rimborso?",
+          "baseText": {
+            "de": "Können Sie mir sagen, welcher Schalter nachmittags für Erstattungsanträge geöffnet ist?",
+            "en": "Can you tell me which counter is open in the afternoon for refund requests?"
+          }
+        },
+        {
+          "targetText": "Di solito il numero tre, ma questa settimana resta chiuso per lavori.",
+          "baseText": {
+            "de": "Normalerweise die Nummer drei, aber diese Woche bleibt der Schalter wegen Bauarbeiten geschlossen.",
+            "en": "Usually number three, but this week it’s closed for building work."
+          }
+        },
+        {
+          "targetText": "Posso presentare la richiesta da casa durante i lavori?",
+          "baseText": {
+            "de": "Kann ich den Antrag während der Bauarbeiten von zu Hause aus einreichen?",
+            "en": "Can I submit the request from home while the work is going on?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quale sportello è aperto?",
+        "rule": {
+          "de": "Nach può dirmi bezeichnet quale sportello den Schalter, dessen Verfügbarkeit Sie erfragen. Aperto stimmt mit dem männlichen Singular sportello überein.",
+          "en": "After può dirmi, quale sportello identifies the counter whose availability you are asking about. Aperto agrees with the masculine singular sportello."
+        },
+        "examples": [
+          {
+            "targetText": "Può dirmi quale sportello è aperto nel pomeriggio per le richieste di rimborso?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welcher Schalter nachmittags für Erstattungsanträge geöffnet ist?",
+              "en": "Can you tell me which counter is open in the afternoon for refund requests?"
+            },
+            "highlight": "quale sportello è aperto"
+          },
+          {
+            "targetText": "Può dirmi quale farmacia è aperta la domenica mattina?",
+            "baseText": {
+              "de": "Können Sie mir sagen, welche Apotheke am Sonntagvormittag geöffnet ist?",
+              "en": "Can you tell me which pharmacy is open on Sunday mornings?"
+            },
+            "highlight": "quale farmacia è aperta"
+          }
+        ]
+      },
+      "cloze": [
+        "Posso ",
+        {
+          "kind": "choice",
+          "answer": "presentare",
+          "choices": [
+            "presentando",
+            "presento",
+            "presentato",
+            "presentare"
+          ]
+        },
+        " la richiesta da casa ",
+        {
+          "kind": "choice",
+          "answer": "durante",
+          "choices": [
+            "durante",
+            "mentre",
+            "quando",
+            "finché"
+          ]
+        },
+        " i lavori?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Può dirmi",
+          "baseText": {
+            "de": "Können Sie mir sagen",
+            "en": "Can you tell me"
+          }
+        },
+        {
+          "targetText": "quale sportello",
+          "baseText": {
+            "de": "welcher Schalter",
+            "en": "which counter"
+          }
+        },
+        {
+          "targetText": "è aperto nel pomeriggio",
+          "baseText": {
+            "de": "nachmittags geöffnet ist",
+            "en": "is open in the afternoon"
+          }
+        },
+        {
+          "targetText": "per le richieste di rimborso?",
+          "baseText": {
+            "de": "für Erstattungsanträge",
+            "en": "for refund requests"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lo sportello",
+          "baseText": {
+            "de": "der Schalter",
+            "en": "the counter"
+          }
+        },
+        {
+          "targetText": "la richiesta di rimborso",
+          "baseText": {
+            "de": "der Erstattungsantrag",
+            "en": "the refund request"
+          }
+        },
+        {
+          "targetText": "nel pomeriggio",
+          "baseText": {
+            "de": "am Nachmittag",
+            "en": "in the afternoon"
+          }
+        },
+        {
+          "targetText": "di solito",
+          "baseText": {
+            "de": "normalerweise",
+            "en": "usually"
+          }
+        },
+        {
+          "targetText": "chiuso per lavori",
+          "baseText": {
+            "de": "wegen Bauarbeiten geschlossen",
+            "en": "closed for building work"
+          }
+        },
+        {
+          "targetText": "presentare una richiesta",
+          "baseText": {
+            "de": "einen Antrag einreichen",
+            "en": "to submit a request"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Può dirmi quale sportello è ",
+        "answer": "aperto",
+        "after": " nel pomeriggio per le richieste di rimborso?",
+        "fallbackChoices": [
+          "aperto",
+          "aperta",
+          "aperte",
+          "aperti"
+        ]
+      },
+      "speakRequired": [
+        "sportello",
+        "pomeriggio",
+        "rimborso"
+      ],
+      "sceneCaption": {
+        "de": "Im Kundenzentrum sprechen Sie die Auskunft wegen eines Erstattungsantrags an. „Per quale servizio cerca uno sportello?“",
+        "en": "At a service centre, you approach the information desk about a refund request. “Per quale servizio cerca uno sportello?”"
+      },
+      "trophyWord": {
+        "word": "sportello",
+        "meaning": {
+          "de": "der Schalter",
+          "en": "service counter"
+        },
+        "example": "Lo sportello per i pagamenti si trova accanto all'ingresso.",
+        "whyThisWord": {
+          "de": "Sportello bezeichnet hier eine Stelle mit Publikumsverkehr, an der Sie einen bestimmten Antrag stellen können.",
+          "en": "Here sportello is a public-facing counter that handles a particular type of request."
+        }
+      },
+      "distractors": [
+        "le code del mattino",
+        "arrivano fino alle scale."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person steht vor der Auskunft in der Halle eines Kundenzentrums.",
+        "en": "A visitor stands at the information desk in a service centre hall."
+      },
+      "songMood": "Light syncopated strings over a steady bass pulse.",
+      "visualNotes": "A visitor stands at the information desk in a service centre hall."
+    },
+    {
+      "slug": "tessera-della-biblioteca",
+      "title": {
+        "de": "Die Bibliothekskarte läuft ab",
+        "en": "A library card is about to expire"
+      },
+      "situation": {
+        "de": "In der Bibliothek zeigt eine Mitarbeiterin auf das Ablaufdatum Ihrer Karte.",
+        "en": "At the library, an assistant points to the expiry date on your card."
+      },
+      "pedagogicalGoal": "Mit mi può spiegare come bitten Sie um eine Anleitung. Das folgende Verb nennt den Schritt, den Sie selbst ausführen, hier rinnovo.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Sa quando scade la sua tessera?",
+          "baseText": {
+            "de": "Wissen Sie, wann Ihre Karte abläuft?",
+            "en": "Do you know when your card expires?"
+          }
+        },
+        {
+          "targetText": "Mi può spiegare come rinnovo la tessera della biblioteca dal mio profilo?",
+          "baseText": {
+            "de": "Können Sie mir erklären, wie ich die Bibliothekskarte über mein Benutzerkonto verlängere?",
+            "en": "Can you explain how I renew my library card through my account?"
+          }
+        },
+        {
+          "targetText": "Trova il tasto di rinnovo sotto la foto. La conferma richiede un giorno.",
+          "baseText": {
+            "de": "Die Schaltfläche zum Verlängern finden Sie unter dem Foto. Die Bestätigung dauert einen Tag.",
+            "en": "The renewal button is under your photo. Confirmation takes a day."
+          }
+        },
+        {
+          "targetText": "Vorrei sapere se nel frattempo posso prendere un libro in prestito.",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob ich in der Zwischenzeit ein Buch ausleihen kann.",
+            "en": "I’d like to know whether I can borrow a book in the meantime."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mi può spiegare come…?",
+        "rule": {
+          "de": "Mit mi può spiegare come bitten Sie um eine Anleitung. Das folgende Verb nennt den Schritt, den Sie selbst ausführen, hier rinnovo.",
+          "en": "Use mi può spiegare come to ask for instructions. The next verb names the action you will take yourself, here rinnovo."
+        },
+        "examples": [
+          {
+            "targetText": "Mi può spiegare come rinnovo la tessera della biblioteca dal mio profilo?",
+            "baseText": {
+              "de": "Können Sie mir erklären, wie ich die Bibliothekskarte über mein Benutzerkonto verlängere?",
+              "en": "Can you explain how I renew my library card through my account?"
+            },
+            "highlight": "Mi può spiegare come rinnovo la tessera"
+          },
+          {
+            "targetText": "Mi può spiegare come regolo il sellino di questa bici?",
+            "baseText": {
+              "de": "Können Sie mir erklären, wie ich den Sattel dieses Fahrrads einstelle?",
+              "en": "Can you explain how I adjust the saddle on this bike?"
+            },
+            "highlight": "Mi può spiegare come regolo il sellino"
+          }
+        ]
+      },
+      "cloze": [
+        "Vorrei sapere ",
+        {
+          "kind": "choice",
+          "answer": "se",
+          "choices": [
+            "se",
+            "quali",
+            "mentre",
+            "affinché"
+          ]
+        },
+        " nel frattempo posso ",
+        {
+          "kind": "choice",
+          "answer": "prendere",
+          "choices": [
+            "prendo",
+            "prendere",
+            "prendendo",
+            "preso"
+          ]
+        },
+        " un libro in prestito."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi può spiegare",
+          "baseText": {
+            "de": "Können Sie mir erklären",
+            "en": "Can you explain to me"
+          }
+        },
+        {
+          "targetText": "come rinnovo la tessera",
+          "baseText": {
+            "de": "wie ich die Karte verlängere",
+            "en": "how I renew the card"
+          }
+        },
+        {
+          "targetText": "della biblioteca",
+          "baseText": {
+            "de": "der Bibliothek",
+            "en": "of the library"
+          }
+        },
+        {
+          "targetText": "dal mio profilo?",
+          "baseText": {
+            "de": "über mein Benutzerkonto",
+            "en": "through my account"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la tessera",
+          "baseText": {
+            "de": "die Mitgliedskarte",
+            "en": "the membership card"
+          }
+        },
+        {
+          "targetText": "rinnovare",
+          "baseText": {
+            "de": "verlängern",
+            "en": "to renew"
+          }
+        },
+        {
+          "targetText": "il profilo",
+          "baseText": {
+            "de": "das Benutzerkonto",
+            "en": "the user account"
+          }
+        },
+        {
+          "targetText": "il tasto di rinnovo",
+          "baseText": {
+            "de": "die Schaltfläche zum Verlängern",
+            "en": "the renewal button"
+          }
+        },
+        {
+          "targetText": "la conferma",
+          "baseText": {
+            "de": "die Bestätigung",
+            "en": "confirmation"
+          }
+        },
+        {
+          "targetText": "nel frattempo",
+          "baseText": {
+            "de": "in der Zwischenzeit",
+            "en": "in the meantime"
+          }
+        },
+        {
+          "targetText": "prendere in prestito",
+          "baseText": {
+            "de": "ausleihen",
+            "en": "to borrow"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi può ",
+        "answer": "spiegare",
+        "after": " come rinnovo la tessera della biblioteca dal mio profilo?",
+        "fallbackChoices": [
+          "spiegando",
+          "spiegare",
+          "spiegato",
+          "spiego"
+        ]
+      },
+      "speakRequired": [
+        "spiegare",
+        "rinnovo",
+        "tessera"
+      ],
+      "sceneCaption": {
+        "de": "In der Bibliothek zeigt eine Mitarbeiterin auf das Ablaufdatum Ihrer Karte. „Sa quando scade la sua tessera?“",
+        "en": "At the library, an assistant points to the expiry date on your card. “Sa quando scade la sua tessera?”"
+      },
+      "trophyWord": {
+        "word": "tessera",
+        "meaning": {
+          "de": "die Mitgliedskarte",
+          "en": "membership card"
+        },
+        "example": "La tessera della biblioteca dà accesso anche agli audiolibri.",
+        "whyThisWord": {
+          "de": "Mit tessera können Sie bei einer Bibliothek sowohl nach Ihrer Karte als auch nach deren Verlängerung fragen.",
+          "en": "Use tessera to ask a library about your membership card or about renewing it."
+        }
+      },
+      "distractors": [
+        "gli scaffali dei romanzi",
+        "occupano due sale."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bibliotheksmitarbeiterin zeigt auf eine Karte, die auf dem Tresen liegt.",
+        "en": "A library assistant points to a card on the desk."
+      },
+      "songMood": "Quiet acoustic pop with light piano chords.",
+      "visualNotes": "A library assistant points to a card on the desk."
+    },
+    {
+      "slug": "codice-della-richiesta",
+      "title": {
+        "de": "Ein Eintrag im Onlineformular",
+        "en": "An entry on an online form"
+      },
+      "situation": {
+        "de": "Ein Mitarbeiter hilft Ihnen am Selbstbedienungsterminal mit dem Formular.",
+        "en": "A member of staff helps you with a form at a self-service terminal."
+      },
+      "pedagogicalGoal": "Mit non so se nennen Sie eine konkrete Unsicherheit. Der anschließende Satz lässt sich mit Ja oder Nein beantworten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale passaggio le crea difficoltà?",
+          "baseText": {
+            "de": "Bei welchem Schritt kommen Sie nicht weiter?",
+            "en": "Which step is giving you trouble?"
+          }
+        },
+        {
+          "targetText": "Non so se il codice della richiesta va nel campo accanto alla data.",
+          "baseText": {
+            "de": "Ich weiß nicht, ob die Kennnummer des Antrags in das Feld neben dem Datum gehört.",
+            "en": "I’m not sure whether the request code goes in the field next to the date."
+          }
+        },
+        {
+          "targetText": "Qui bisogna distinguere il numero della prenotazione dal numero della pratica.",
+          "baseText": {
+            "de": "Hier müssen Sie die Buchungsnummer von der Vorgangsnummer unterscheiden.",
+            "en": "Here you need to distinguish the booking number from the case number."
+          }
+        },
+        {
+          "targetText": "Il numero sul biglietto indica la prenotazione, quello sulla ricevuta la pratica?",
+          "baseText": {
+            "de": "Die Nummer auf dem Ticket steht für die Buchung und die auf dem Beleg für den Vorgang?",
+            "en": "Does the number on the ticket identify the booking and the one on the receipt the case?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Non so se…",
+        "rule": {
+          "de": "Mit non so se nennen Sie eine konkrete Unsicherheit. Der anschließende Satz lässt sich mit Ja oder Nein beantworten.",
+          "en": "Use non so se to express a specific uncertainty. The clause that follows poses a question with a yes or no answer."
+        },
+        "examples": [
+          {
+            "targetText": "Non so se il codice della richiesta va nel campo accanto alla data.",
+            "baseText": {
+              "de": "Ich weiß nicht, ob die Kennnummer des Antrags in das Feld neben dem Datum gehört.",
+              "en": "I’m not sure whether the request code goes in the field next to the date."
+            },
+            "highlight": "Non so se il codice della richiesta va nel campo"
+          },
+          {
+            "targetText": "Non so se il treno delle otto ferma anche a Lucca.",
+            "baseText": {
+              "de": "Ich weiß nicht, ob der Acht-Uhr-Zug auch in Lucca hält.",
+              "en": "I’m not sure whether the eight o’clock train also stops in Lucca."
+            },
+            "highlight": "Non so se il treno delle otto ferma"
+          }
+        ]
+      },
+      "cloze": [
+        "Il numero sul biglietto ",
+        {
+          "kind": "form",
+          "answer": "indica",
+          "choices": [
+            "indico",
+            "indica",
+            "indicano",
+            "indichiamo"
+          ],
+          "cue": "indicare (il numero)"
+        },
+        " la prenotazione, ",
+        {
+          "kind": "choice",
+          "answer": "quello",
+          "choices": [
+            "quella",
+            "quelle",
+            "quello",
+            "quelli"
+          ]
+        },
+        " sulla ricevuta la pratica?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Non so se",
+          "baseText": {
+            "de": "Ich weiß nicht, ob",
+            "en": "I’m not sure whether"
+          }
+        },
+        {
+          "targetText": "il codice della richiesta",
+          "baseText": {
+            "de": "die Kennnummer des Antrags",
+            "en": "the request code"
+          }
+        },
+        {
+          "targetText": "va nel campo",
+          "baseText": {
+            "de": "in das Feld gehört",
+            "en": "goes in the field"
+          }
+        },
+        {
+          "targetText": "accanto alla data.",
+          "baseText": {
+            "de": "neben dem Datum",
+            "en": "next to the date"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il codice",
+          "baseText": {
+            "de": "die Kennnummer",
+            "en": "the code"
+          }
+        },
+        {
+          "targetText": "il campo",
+          "baseText": {
+            "de": "das Eingabefeld",
+            "en": "the field"
+          }
+        },
+        {
+          "targetText": "accanto alla data",
+          "baseText": {
+            "de": "neben dem Datum",
+            "en": "next to the date"
+          }
+        },
+        {
+          "targetText": "il numero della prenotazione",
+          "baseText": {
+            "de": "die Buchungsnummer",
+            "en": "the booking number"
+          }
+        },
+        {
+          "targetText": "il numero della pratica",
+          "baseText": {
+            "de": "die Vorgangsnummer",
+            "en": "the case number"
+          }
+        },
+        {
+          "targetText": "distinguere",
+          "baseText": {
+            "de": "unterscheiden",
+            "en": "to distinguish"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Non so se il codice della richiesta ",
+        "answer": "va",
+        "after": " nel campo accanto alla data.",
+        "fallbackChoices": [
+          "andare",
+          "vanno",
+          "va",
+          "andiamo"
+        ]
+      },
+      "speakRequired": [
+        "codice",
+        "richiesta",
+        "campo"
+      ],
+      "sceneCaption": {
+        "de": "Ein Mitarbeiter hilft Ihnen am Selbstbedienungsterminal mit dem Formular. „Quale passaggio le crea difficoltà?“",
+        "en": "A member of staff helps you with a form at a self-service terminal. “Quale passaggio le crea difficoltà?”"
+      },
+      "trophyWord": {
+        "word": "codice",
+        "meaning": {
+          "de": "die Kennnummer",
+          "en": "code"
+        },
+        "example": "Il codice della richiesta contiene anche due lettere.",
+        "whyThisWord": {
+          "de": "Mit codice benennen Sie die Zeichenfolge, die einen Antrag in einem Formular identifiziert.",
+          "en": "Use codice for the sequence of characters that identifies a request on a form."
+        }
+      },
+      "distractors": [
+        "le ricevute cartacee",
+        "restano in archivio."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mitarbeiter steht neben einem Selbstbedienungsterminal im Rathaus.",
+        "en": "A staff member stands beside a self-service terminal at town hall."
+      },
+      "songMood": "Muted percussion and a clear piano melody.",
+      "visualNotes": "A staff member stands beside a self-service terminal at town hall."
+    },
+    {
+      "slug": "tariffa-del-corso",
+      "title": {
+        "de": "Kosten im Keramikkurs",
+        "en": "The cost of a ceramics class"
+      },
+      "situation": {
+        "de": "In der Keramikwerkstatt fragt die Kursleiterin, was Sie über den Preis wissen möchten.",
+        "en": "At a pottery studio, the instructor asks what you would like to know about the price."
+      },
+      "pedagogicalGoal": "Mit vorrei sapere se fragen Sie höflich, ob eine Leistung inbegriffen ist. Im anschließenden Satz nennt il prezzo oder la tariffa den Preis, auf den sich comprende bezieht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha una domanda sul prezzo del corso?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zum Kurspreis?",
+            "en": "Do you have a question about the course price?"
+          }
+        },
+        {
+          "targetText": "Vorrei sapere se la tariffa del corso di ceramica comprende anche i materiali.",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob die Gebühr für den Keramikkurs auch die Materialien umfasst.",
+            "en": "I’d like to know whether the ceramics course fee includes materials too."
+          }
+        },
+        {
+          "targetText": "L'argilla è compresa. Per la cottura c'è un pacchetto a parte.",
+          "baseText": {
+            "de": "Der Ton ist inbegriffen. Für den Brennvorgang gibt es ein separates Paket.",
+            "en": "The clay is included. There’s a separate package for firing."
+          }
+        },
+        {
+          "targetText": "Allora senza la cottura la quota base copre tutte le spese?",
+          "baseText": {
+            "de": "Deckt die Grundgebühr also alle Kosten, wenn ich auf das Brennen verzichte?",
+            "en": "So if I skip the firing, does the basic fee cover all the costs?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vorrei sapere se comprende…",
+        "rule": {
+          "de": "Mit vorrei sapere se fragen Sie höflich, ob eine Leistung inbegriffen ist. Im anschließenden Satz nennt il prezzo oder la tariffa den Preis, auf den sich comprende bezieht.",
+          "en": "Use vorrei sapere se to ask politely whether something is included. In the following clause, il prezzo or la tariffa names the price that comprende refers to."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei sapere se la tariffa del corso di ceramica comprende anche i materiali.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob die Gebühr für den Keramikkurs auch die Materialien umfasst.",
+              "en": "I’d like to know whether the ceramics course fee includes materials too."
+            },
+            "highlight": "Vorrei sapere se la tariffa del corso di ceramica comprende"
+          },
+          {
+            "targetText": "Vorrei sapere se il prezzo della camera comprende la colazione.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob das Frühstück im Zimmerpreis inbegriffen ist.",
+              "en": "I’d like to know whether the room price includes breakfast."
+            },
+            "highlight": "Vorrei sapere se il prezzo della camera comprende"
+          }
+        ]
+      },
+      "cloze": [
+        "Allora senza la cottura la quota base ",
+        {
+          "kind": "choice",
+          "answer": "copre",
+          "choices": [
+            "coprono",
+            "copro",
+            "copre",
+            "copriamo"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "tutte",
+          "choices": [
+            "tutta",
+            "tutti",
+            "tutto",
+            "tutte"
+          ]
+        },
+        " le spese?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei sapere se",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob",
+            "en": "I’d like to know whether"
+          }
+        },
+        {
+          "targetText": "la tariffa",
+          "baseText": {
+            "de": "die Gebühr",
+            "en": "the fee"
+          }
+        },
+        {
+          "targetText": "del corso di ceramica",
+          "baseText": {
+            "de": "für den Keramikkurs",
+            "en": "for the ceramics course"
+          }
+        },
+        {
+          "targetText": "comprende anche i materiali.",
+          "baseText": {
+            "de": "auch die Materialien umfasst",
+            "en": "includes materials too"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la tariffa",
+          "baseText": {
+            "de": "die Gebühr",
+            "en": "the fee"
+          }
+        },
+        {
+          "targetText": "comprendere i materiali",
+          "baseText": {
+            "de": "die Materialien umfassen",
+            "en": "to include the materials"
+          }
+        },
+        {
+          "targetText": "l'argilla",
+          "baseText": {
+            "de": "der Ton",
+            "en": "the clay"
+          }
+        },
+        {
+          "targetText": "la cottura",
+          "baseText": {
+            "de": "das Brennen",
+            "en": "firing"
+          }
+        },
+        {
+          "targetText": "un pacchetto a parte",
+          "baseText": {
+            "de": "ein separates Paket",
+            "en": "a separate package"
+          }
+        },
+        {
+          "targetText": "la quota base",
+          "baseText": {
+            "de": "die Grundgebühr",
+            "en": "the basic fee"
+          }
+        },
+        {
+          "targetText": "coprire le spese",
+          "baseText": {
+            "de": "die Kosten decken",
+            "en": "to cover the costs"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei sapere se la tariffa del corso di ceramica ",
+        "answer": "comprende",
+        "after": " anche i materiali.",
+        "fallbackChoices": [
+          "comprendono",
+          "comprendere",
+          "comprendiamo",
+          "comprende"
+        ]
+      },
+      "speakRequired": [
+        "tariffa",
+        "ceramica",
+        "materiali"
+      ],
+      "sceneCaption": {
+        "de": "In der Keramikwerkstatt fragt die Kursleiterin, was Sie über den Preis wissen möchten. „Ha una domanda sul prezzo del corso?“",
+        "en": "At a pottery studio, the instructor asks what you would like to know about the price. “Ha una domanda sul prezzo del corso?”"
+      },
+      "trophyWord": {
+        "word": "tariffa",
+        "meaning": {
+          "de": "die Gebühr",
+          "en": "fee"
+        },
+        "example": "La tariffa del laboratorio comprende anche l'uso degli attrezzi.",
+        "whyThisWord": {
+          "de": "Tariffa ist der festgelegte Preis für eine Leistung. Sie können damit nachfragen, was der Preis abdeckt.",
+          "en": "Tariffa is the set charge for a service. Use it to ask what that charge covers."
+        }
+      },
+      "distractors": [
+        "le lezioni individuali",
+        "iniziano di mattina."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kursleiterin steht neben einer Töpferscheibe und einem Kursprospekt.",
+        "en": "An instructor stands beside a pottery wheel and a course brochure."
+      },
+      "songMood": "Earthy acoustic folk with soft mallet percussion.",
+      "visualNotes": "An instructor stands beside a pottery wheel and a course brochure."
+    }
+  ]
+}

@@ -1,0 +1,1113 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 10,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+  "editorial": {
+    "sourceSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Turn 1 (13 words) keeps 'obiettivo'; era + infinitive, senza + infinitive match the pattern. Confirmed fix: dialogue[2] de now reads 'Ich bin die Strecke auch immer gefahren', mirroring the habitual 'facevo'. Four chips, only the period chip is terminal, no second ordering; both cloze rows are cue-free choices with single valid answers (trovare, giusta); title and caption do not reveal the 'coincidenza' punchline."
+      },
+      {
+        "n": 2,
+        "observation": "Turn 1 (14 words) with 'risultato'; last turn 10 words. Chips 'Al terzo tentativo ho ottenuto' / 'un bel risultato:' / 'ho letto un racconto' / 'senza dizionario.' build uniquely (colon chip is non-terminal, legal). Cloze indovinato/tradurre unambiguous; recall 'ottenuto'; seven distinct terms; the librarian's 'Quando ha capito che poteva continuare?' is a genuine causal follow-up answered by the guessed ending."
+      },
+      {
+        "n": 3,
+        "observation": "Turn 1 (13 words) 'amicizia… è nata mentre sistemavamo'; last turn exactly 12 words. Form gap 'mette' carries cue 'mettere (Rosa)' with the subject literal visible before the blank; 'al' choice clean. Title 'Freundschaft zwischen den Regalen' hides the Sunday-lunch gesture. Foils 'La mia amicizia con Anna' / 'i tavoli della mensa.' are same-context and meaning-changing."
+      },
+      {
+        "n": 4,
+        "observation": "Turn 1 (15 words) with 'occasione'; 'ho colto l'occasione di esporre' pattern, transfer example 'di visitare il laboratorio' independent. Cloze riconoscere/proprio unique; 'Perché ha scelto proprio questa vetrina?' is answered with a motive ('Anche chi passava… poteva riconoscere il proprio quartiere'). Speak tokens libraio/colto/scatto are apostrophe-free words of turn 1."
+      },
+      {
+        "n": 5,
+        "observation": "Turn 1 (11 words) infinitive-subject + 'più soddisfazione del previsto'; last turn 11 words. Cloze 'sembravano' vs sembravamo/sembravi/sembrava all impossible with 'le date'; 'uguali' vs uguale/uguagliare/uguaglianza clean. Five chips, 'senza aiuto' is a manner complement not movable before the infinitive subject; prior dismissal stands. Speaker forms gender-neutral."
+      },
+      {
+        "n": 6,
+        "observation": "Turn 1 (13 words) chain of two passato prossimo events with 'Per curiosità' bound to 'ho chiesto' in chip 0, so no alternative ordering. Confirmed fix: chip 1 de now 'wer anfertigte', consistent with the dialogue gloss 'wer die Laternen macht'. Cloze mostrato/piegare unique; title 'Wer faltet die Laternen?' mirrors the learner's own question in turn 1 and does not expose Lina's demonstration."
+      },
+      {
+        "n": 7,
+        "observation": "Turn 1 (12 words) 'ha richiesto impegno'; last turn 11 words. Form gap 'aspettava' cued 'aspettare (Un collega)' with subject literal preceding; 'salita' choice unambiguous after 'la'. Chips 'Andare al lavoro' / 'in bici ogni mattina' / 'ha richiesto impegno,' / 'soprattutto d'inverno.' build uniquely; foils 'in auto ogni sera' / 'soprattutto ad agosto.' credible. 'Come faceva a mantenere il ritmo?' leads causally to the colleague at the bridge."
+      },
+      {
+        "n": 8,
+        "observation": "Turn 1 (13 words) 'Vorrei ringraziare la portinaia che mi ha dato una mano'; relative 'che' recycles P4. Cloze protetto/miei clean; recall 'dato'. Follow-up about the photo of boxes in the rain motivates the concrete tarpaulin gesture, no abstract formula. Foils 'il trasportatore' / 'negli ultimi anni.' substitute whole chips and change meaning."
+      },
+      {
+        "n": 9,
+        "observation": "Confirmed fix in saved bytes: chips are now 'Dopo il successo della passeggiata, spero che' / 'in futuro il gruppo' / 'possa ritrovarsi' / 'ogni mese.' and foil 0 is 'Prima di partire, spero che'. The circumstance phrase is fused with 'spero che', so the earlier alternative ordering is gone; 'possa' is whitelisted after 'spero che'. Last turn (10 words) 'preferirei provare… con una guida esperta' is prudent and gender-neutral for the speaker; 'esperta' choice is forced by feminine 'guida'. Turn 1 is 15 words, within range."
+      },
+      {
+        "n": 10,
+        "observation": "Turn 1 (15 words) with 'progetto' and object relative 'le mappe che i vicini disegnano'; last turn 10 words. Cloze 'ma' offered alone among senza/di/dal (no però/invece co-offered); 'disegnavano' vs disegnava/disegnavamo/disegnavi all impossible with 'i vicini'. 'Perché preferisce i disegni dei vicini?' is answered by the past-habit contrast (Sbagliavo… disegnavano). Seven terms distinct; title does not reveal the exits/underpasses answer."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The neighbour's shared journey prompts the learner to name the connection that took weeks to master. The German immer now conveys the repeated past journey in facevo quel tragitto."
+      },
+      {
+        "n": 2,
+        "observation": "The first chip now includes the time phrase and the verb; four chips preserve the reading achievement."
+      },
+      {
+        "n": 3,
+        "observation": "The neutral shelf title and artwork now leave the friendship’s Sunday lunch ritual for the learner to explain; both decoys substitute meaningful alternatives and the German Gedeck term matches the gesture."
+      },
+      {
+        "n": 4,
+        "observation": "Colto is now a standalone anchor in the spoken sequence libraio–colto–scatto and the two past events communicate the chance encounter."
+      },
+      {
+        "n": 5,
+        "observation": "The cue-free row now offers sembravano with three forms that cannot agree with le date. This keeps the earlier phone difficulty and yesterday’s successful call coherent."
+      },
+      {
+        "n": 6,
+        "observation": "The independent transfer now practices a P1 chain of completed events; the motive is bound to the opening verb, preventing the equivalent chip reordering. The revised anfertigte fits making the lanterns."
+      },
+      {
+        "n": 7,
+        "observation": "Un collega and the question Come faceva anchor the recurring help; the German now explicitly marks its habitual nature with immer."
+      },
+      {
+        "n": 8,
+        "observation": "The requested dedication is supported by a photo and the caretaker's act of protecting books during the move."
+      },
+      {
+        "n": 9,
+        "observation": "The German term now identifies la guida as the person leading the walk. Guide/guida esperta does not require the learner to mark their own gender. The revised chips bind the completed walk to spero che and in futuro to il gruppo. The direct meaning-matched ordering reconstructs the sentence; both replacement chips now change its meaning."
+      },
+      {
+        "n": 10,
+        "observation": "The second blank now offers only four imperfect-person alternatives; only disegnavano fits i vicini. This removes the defensible present response that free input had rejected."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "39be70e3dc7b1799d48e3e16e62436bd6d6472dc883f969f687063f05b2d735a",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The neighbour's shared journey prompts the learner to name the connection that took weeks to master."
+      },
+      {
+        "n": 2,
+        "observation": "The reader identifies a third attempt and the specific evening when guessing the ending replaced translating every word."
+      },
+      {
+        "n": 3,
+        "observation": "A friendship begins while shelving books and survives the closure through Rosa's Sunday lunch invitations."
+      },
+      {
+        "n": 4,
+        "observation": "An encounter with a bookseller leads to exhibiting local photographs where passers-by can recognise their neighbourhood."
+      },
+      {
+        "n": 5,
+        "observation": "The receptionist recalls earlier in-person visits and the learner explains the difficulty hearing dates over the phone."
+      },
+      {
+        "n": 6,
+        "observation": "The learner connects a question about lantern-making to Lina's practical lesson in folding paper."
+      },
+      {
+        "n": 7,
+        "observation": "A colleague waiting at the bridge provides a concrete reason for continuing to cycle during a rainy month."
+      },
+      {
+        "n": 8,
+        "observation": "The requested dedication is supported by a photo and the caretaker's act of protecting books during the move."
+      },
+      {
+        "n": 9,
+        "observation": "The future aspiration and cautious answer are distinct: the learner hopes the group can meet monthly and asks to try the short route with an experienced guide."
+      },
+      {
+        "n": 10,
+        "observation": "The project collects neighbours' maps for newcomers and the learner explains the personal history behind their usefulness."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "chunks[0:3]",
+        "issue": "Al terzo tentativo is a free-standing time phrase. «Ho ottenuto al terzo tentativo un bel risultato: ho letto un racconto senza dizionario» communicates precisely the base cue and the build rejects it. Capitalisation alone distinguishes the first tile.",
+        "recommendation": "Join «Al terzo tentativo ho ottenuto» as the first chip; the remaining three existing chips give four total."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "Neither “con la libraia” nor “della palestra.” can replace a meaningful chip in the sentence. One appends a second unrelated con phrase after Rosa and the other leaves sistemavamo without its object.",
+        "recommendation": "Offer e.g. «La mia amicizia con Anna» and «i tavoli della mensa.» as parallel but meaningfully wrong chips."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption/visualNotes; terms",
+        "issue": "The opening artwork description already calls the library closed. Its months-long closure is the later conversational turn. German “ein zusätzlicher Gedeckplatz” is also an awkward gloss for the place set at lunch.",
+        "recommendation": "Show the bench and book-drive boxes without describing or depicting the closure. Use «ein zusätzliches Gedeck» for un piatto in più."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "cloze[1]",
+        "issue": "The open form cue sembrare (le date) cannot exclude «sono sembrate tutte uguali quando parlavano in fretta», a natural summary of the earlier experience. The app accepts only sembravano.",
+        "recommendation": "Make this a cue-free four-choice person/number blank using the existing choices, retaining the past-habit setting."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "pattern.label/rule/examples; chunks[0:2]",
+        "issue": "The spotlight explicitly teaches past indirect questions, outside the designated P10 recycle families. The isolated «Per curiosità» also moves naturally after «ho chiesto» with no change in meaning.",
+        "recommendation": "Focus the rule on the P1 chain of two completed acts, for example curiosity prompting a question and then meeting people. Anchor the opening chip as «Per curiosità ho chiesto», then separate «chi preparava» / «le lanterne» / the closing clause."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "terms[6].baseText.de",
+        "issue": "In this neighbourhood walk, la guida is a tour guide. “die Führungsperson” means a person in a leadership position.",
+        "recommendation": "Use «der Guide / die Gästeführerin» or «die Person, die den Rundgang leitet»."
+      },
+      {
+        "n": 10,
+        "severity": "HIGH",
+        "field": "cloze[3]",
+        "issue": "The typed cue disegnare (i vicini) leaves present versus imperfect genuinely open. «Sbagliavo sempre uscita, ma i vicini disegnano scale e sottopassaggi» gives a natural current reason to prefer their hand-drawn maps. The editor asks in the present and the learner previously said disegnano. The app rejects this defensible response.",
+        "recommendation": "Use a cue-free choice blank with the existing imperfect person/number alternatives. To avoid the mechanically weak ma/di/dal/senza row, also leave ma printed and make the other choice eg «i vicini» versus article/noun agreement errors against the plural subject."
+      },
+      {
+        "n": 4,
+        "severity": "HIGH",
+        "field": "speakRequired",
+        "issue": "The required token occasione only occurs after an apostrophe. The live speech checker removes apostrophes without inserting spaces, so the spoken sentence contains loccasione, and the core-token route cannot match occasione.",
+        "recommendation": "Replace occasione with the standalone word colto in the speech anchors, retaining their spoken order."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "4e8c1716692ef3d9787a471bf0900a90c63a252454da4d6b666b1c0feb26b3fc",
+      "sourceSha256": "39be70e3dc7b1799d48e3e16e62436bd6d6472dc883f969f687063f05b2d735a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Bus-stop neighbour; era + infinitive goal (13 words), follow-up on metro vs connection, last turn 11 words; chunks anchored by 'ogni mattina.'; cloze/recall/speak consistent; DE/EN faithful."
+        },
+        {
+          "n": 2,
+          "observation": "Library return; al terzo tentativo + passato prossimo (14 words), last turn 10 words; 'Al terzo tentativo' is a free time phrase that also fits after 'ho ottenuto', so the five-chip build admits a second ordering."
+        },
+        {
+          "n": 3,
+          "observation": "Bench talk about Rosa; è nata mentre + imperfetto (13 words), form blank 'mette' with subject Rosa before it; distractors cannot replace any chip; placeholder art already shows the closed library that only the follow-up reveals; 'Gedeckplatz' is an awkward gloss."
+        },
+        {
+          "n": 4,
+          "observation": "Bookshop window; cogliere l'occasione di + infinitive (15 words), last turn 10 words with proprio agreement; speak token 'occasione' only exists as 'l'occasione' in turn 1, which breaks the no-apostrophe token rule."
+        },
+        {
+          "n": 5,
+          "observation": "Clinic reception; infinitive subject + più … del previsto (12 words); last turn imperfetto with 'quando parlavano' visible, so 'sembravano' is the only coherent finite form; chunks and foils sound."
+        },
+        {
+          "n": 6,
+          "observation": "Lantern festival; turn 1 (13 words) chains two completed acts; pattern spotlight currently teaches past indirect questions (P5-type family, not a P10 recycle target); 'Per curiosità' is a movable adverbial chip."
+        },
+        {
+          "n": 7,
+          "observation": "Bike rack; infinitive phrase as subject + singular ha richiesto (12 words); form blank 'aspettava' restrained by 'affrontavamo'; German Perfekt for the habitual last turn is acceptable spoken German."
+        },
+        {
+          "n": 8,
+          "observation": "Neighbourhood paper; vorrei ringraziare + relative che (13 words), concrete tarpaulin gesture in last turn (12 words); possessive agreement cloze fine."
+        },
+        {
+          "n": 9,
+          "observation": "After the walk; spero che … possa (whitelist) (15 words), cautious preferirei reply (10 words); 'die Führungsperson' mistranslates la guida in a tour context."
+        },
+        {
+          "n": 10,
+          "observation": "Annual meeting; vorrei realizzare + object relative che (15 words); typed form blank 'disegnavano' is genuinely open to present 'disegnano' given the present-tense question and the learner's own earlier 'disegnano'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "'Al terzo tentativo' is an independently movable time phrase; 'Ho ottenuto al terzo tentativo un bel risultato: …' is a correct alternative ordering that the exact build rejects. Merge it into the first chip.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/chunks",
+              "old": [
+                {
+                  "targetText": "Al terzo tentativo",
+                  "baseText": {
+                    "de": "beim dritten Versuch",
+                    "en": "on my third try"
+                  }
+                },
+                {
+                  "targetText": "ho ottenuto",
+                  "baseText": {
+                    "de": "habe ich erzielt",
+                    "en": "I achieved"
+                  }
+                },
+                {
+                  "targetText": "un bel risultato:",
+                  "baseText": {
+                    "de": "ein schönes Ergebnis",
+                    "en": "a good result"
+                  }
+                },
+                {
+                  "targetText": "ho letto un racconto",
+                  "baseText": {
+                    "de": "ich habe eine Geschichte gelesen",
+                    "en": "I read a story"
+                  }
+                },
+                {
+                  "targetText": "senza dizionario.",
+                  "baseText": {
+                    "de": "ohne Wörterbuch",
+                    "en": "without a dictionary"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Al terzo tentativo ho ottenuto",
+                  "baseText": {
+                    "de": "beim dritten Versuch habe ich erzielt",
+                    "en": "on my third try I achieved"
+                  }
+                },
+                {
+                  "targetText": "un bel risultato:",
+                  "baseText": {
+                    "de": "ein schönes Ergebnis",
+                    "en": "a good result"
+                  }
+                },
+                {
+                  "targetText": "ho letto un racconto",
+                  "baseText": {
+                    "de": "ich habe eine Geschichte gelesen",
+                    "en": "I read a story"
+                  }
+                },
+                {
+                  "targetText": "senza dizionario.",
+                  "baseText": {
+                    "de": "ohne Wörterbuch",
+                    "en": "without a dictionary"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Distractors 'con la libraia' and 'della palestra.' cannot substitute for any chip and produce no plausible sentence; the placeholder caption/visual notes reveal the library closure that only the follow-up introduces; 'ein zusätzlicher Gedeckplatz' is not idiomatic German for un piatto in più.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/distractors",
+              "old": [
+                "con la libraia",
+                "della palestra."
+              ],
+              "new": [
+                "La mia amicizia con Anna",
+                "i tavoli della mensa."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption",
+              "old": {
+                "de": "Vor der geschlossenen Stadtteilbibliothek stehen Kisten für eine Büchersammlung.",
+                "en": "Boxes for a book drive stand outside the closed neighbourhood library."
+              },
+              "new": {
+                "de": "Neben einer Bank vor der Stadtteilbibliothek stehen Kisten für eine Büchersammlung.",
+                "en": "Boxes for a book drive stand beside a bench outside the neighbourhood library."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/visualNotes",
+              "old": "Boxes for a book drive stand outside the closed neighbourhood library.",
+              "new": "Boxes for a book drive stand beside a bench outside the neighbourhood library."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/4/baseText/de",
+              "old": "ein zusätzlicher Gedeckplatz",
+              "new": "ein zusätzliches Gedeck"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Speech token 'occasione' appears in turn 1 only as the apostrophe form 'l'occasione'; speech tokens must be standalone words without apostrophe. Replace with 'colto', keeping spoken order.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/speakRequired",
+              "old": [
+                "libraio",
+                "occasione",
+                "scatto"
+              ],
+              "new": [
+                "libraio",
+                "colto",
+                "scatto"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "The pattern spotlight teaches reported questions with chi + imperfetto, a P5-type family outside the P10 recycle set (P1/P2/P4/P8 + licensed congiuntivo). Re-anchor the rule on the P1 chain of two passato prossimo acts joined by e, with per curiosità as motive, and replace the transfer example. The free-standing chip 'Per curiosità' also moves after 'ho chiesto' without change of meaning, so merge it; the foil that replaced it is adjusted to match.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern",
+              "old": {
+                "label": "Ho chiesto chi…",
+                "rule": {
+                  "de": "Ho chiesto nennt die einzelne Frage. Mit chi und dem imperfetto erkundigen Sie sich in der Erzählung nach der Person, die damals etwas tat.",
+                  "en": "Ho chiesto names the act of asking. Follow it with chi and the imperfetto to report a question about who was doing something at the time."
+                },
+                "examples": [
+                  {
+                    "targetText": "Per curiosità ho chiesto chi preparava le lanterne e ho conosciuto mezzo quartiere.",
+                    "baseText": {
+                      "de": "Aus Neugier habe ich gefragt, wer die Laternen macht, und so das halbe Viertel kennengelernt.",
+                      "en": "Out of curiosity I asked who made the lanterns and ended up meeting half the neighbourhood."
+                    },
+                    "highlight": "ho chiesto chi preparava"
+                  },
+                  {
+                    "targetText": "Durante le prove ho chiesto chi suonava la fisarmonica in fondo alla sala.",
+                    "baseText": {
+                      "de": "Bei der Probe habe ich gefragt, wer hinten im Saal Akkordeon spielte.",
+                      "en": "During rehearsal I asked who was playing the accordion at the back of the hall."
+                    },
+                    "highlight": "ho chiesto chi suonava"
+                  }
+                ]
+              },
+              "new": {
+                "label": "Ho chiesto… e ho conosciuto…",
+                "rule": {
+                  "de": "Zwei abgeschlossene Handlungen stehen nacheinander im passato prossimo und werden mit e verbunden. Per curiosità nennt vorab das Motiv für die erste Handlung.",
+                  "en": "Two completed actions follow each other in the passato prossimo, joined by e. Per curiosità states up front the motive for the first action."
+                },
+                "examples": [
+                  {
+                    "targetText": "Per curiosità ho chiesto chi preparava le lanterne e ho conosciuto mezzo quartiere.",
+                    "baseText": {
+                      "de": "Aus Neugier habe ich gefragt, wer die Laternen macht, und so das halbe Viertel kennengelernt.",
+                      "en": "Out of curiosity I asked who made the lanterns and ended up meeting half the neighbourhood."
+                    },
+                    "highlight": "ho chiesto chi preparava le lanterne e ho conosciuto"
+                  },
+                  {
+                    "targetText": "Alla festa ho chiesto una ricetta e ho conosciuto la cuoca del quartiere.",
+                    "baseText": {
+                      "de": "Beim Fest habe ich nach einem Rezept gefragt und so die Köchin des Viertels kennengelernt.",
+                      "en": "At the festival I asked for a recipe and got to know the neighbourhood's cook."
+                    },
+                    "highlight": "ho chiesto una ricetta e ho conosciuto"
+                  }
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks",
+              "old": [
+                {
+                  "targetText": "Per curiosità",
+                  "baseText": {
+                    "de": "aus Neugier",
+                    "en": "out of curiosity"
+                  }
+                },
+                {
+                  "targetText": "ho chiesto",
+                  "baseText": {
+                    "de": "habe ich gefragt",
+                    "en": "I asked"
+                  }
+                },
+                {
+                  "targetText": "chi preparava le lanterne",
+                  "baseText": {
+                    "de": "wer die Laternen machte",
+                    "en": "who made the lanterns"
+                  }
+                },
+                {
+                  "targetText": "e ho conosciuto mezzo quartiere.",
+                  "baseText": {
+                    "de": "und habe das halbe Viertel kennengelernt",
+                    "en": "and I met half the neighbourhood"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Per curiosità ho chiesto",
+                  "baseText": {
+                    "de": "aus Neugier habe ich gefragt",
+                    "en": "out of curiosity I asked"
+                  }
+                },
+                {
+                  "targetText": "chi preparava",
+                  "baseText": {
+                    "de": "wer vorbereitete",
+                    "en": "who was making"
+                  }
+                },
+                {
+                  "targetText": "le lanterne",
+                  "baseText": {
+                    "de": "die Laternen",
+                    "en": "the lanterns"
+                  }
+                },
+                {
+                  "targetText": "e ho conosciuto mezzo quartiere.",
+                  "baseText": {
+                    "de": "und habe das halbe Viertel kennengelernt",
+                    "en": "and I met half the neighbourhood"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/distractors",
+              "old": [
+                "Per abitudine",
+                "e ho salutato il custode."
+              ],
+              "new": [
+                "Per abitudine ho chiesto",
+                "e ho salutato il custode."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "'die Führungsperson' means someone in a leadership position; in this walking-tour context la guida is a tour guide.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/6/baseText/de",
+              "old": "die Führungsperson",
+              "new": "der Guide (Person, die den Rundgang leitet)"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Typed form blank 'disegnavano' with cue 'disegnare (i vicini)' is not uniquely determined: 'ma i vicini disegnano scale e sottopassaggi' is a defensible present-tense reason (the question is in the present and the learner just said 'disegnano'), yet exact grading rejects it. Convert to a cue-free choice among the existing imperfetto person/number forms.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "disegnavano",
+                "choices": [
+                  "disegnavano",
+                  "disegnava",
+                  "disegnavamo",
+                  "disegnavi"
+                ],
+                "cue": "disegnare (i vicini)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "disegnavano",
+                "choices": [
+                  "disegnavano",
+                  "disegnava",
+                  "disegnavamo",
+                  "disegnavi"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Report's concern that 'sono sembrate' could compete with 'sembravano' is dismissed: the visible habitual clause 'quando parlavano in fretta' and the receptionist's 'veniva sempre' frame a repeated past state, so the imperfetto 'sembravano' is the only coherent finite form; the form blank stays as is.",
+          "edits": []
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "German last turn uses Perfekt for a habitual imperfetto ('hat … gewartet'); spoken German accepts this, but 'wartete immer … und zusammen nahmen wir die Steigung in Angriff' would mirror the habit more closely.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/de",
+              "old": "Ein Kollege hat an der Brücke auf mich gewartet, und zusammen haben wir die Steigung in Angriff genommen.",
+              "new": "Ein Kollege wartete immer an der Brücke auf mich, und zusammen nahmen wir die Steigung in Angriff."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0ddab6cd476f5f236a2a1924b5d5317e6ab63146f75bb3947f6b328ac07451e6",
+      "sourceSha256": "3e1f3529ba60bcfe0c83ab894d2d7cd8efddb947e5e7ba249a99b34a8faf741c",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 13 words / turn 2 11 words; 'ogni mattina.' carries the final stop so no second ordering; both cloze blanks are choice rows with unique answers; trophy obiettivo, speech tokens standalone; 'era + infinito / senza + infinito' is P1-compatible recycling."
+        },
+        {
+          "n": 2,
+          "observation": "Opening chip now 'Al terzo tentativo ho ottenuto', killing the movable-time-phrase ordering; interim chip ends with colon only; choice blanks indovinato/tradurre unique; foils 'un risultato deludente:' and 'con gli appunti accanto.' are same-context and wrong; title does not reveal the finale-guessing line."
+        },
+        {
+          "n": 3,
+          "observation": "Form blank 'mette' has subject Rosa immediately before it and infinitive cue; 'al' row unique; distractors now substitutable; caption no longer shows the closure. But the title 'Ein Platz am Sonntagstisch / A place at Sunday lunch' states the content of the learner's last line (piatto in più al pranzo della domenica) before the challenge."
+        },
+        {
+          "n": 4,
+          "observation": "15-word turn 1 with trophy occasione inside l'occasione (trophy retained, speech token switched to colto); per caso fused into the first chip so no alternative order; choice blanks riconoscere/proprio unique; follow-up 'Perché ha scelto proprio questa vetrina?' is answered causally."
+        },
+        {
+          "n": 5,
+          "observation": "Infinitive-subject pattern with 'più … del previsto' matches the beat; five chips, no time phrase; speech tokens fine. The typed form blank 'sembravano' is cued only by lemma + subject while the scene explicitly introduces yesterday's single call, so 'sono sembrate … quando parlavano in fretta' is a reasonable bounded recollection that exact grading would reject."
+        },
+        {
+          "n": 6,
+          "observation": "Pattern now anchors the P1 chain 'ho chiesto … e ho conosciuto' with per curiosità fused into the first chip; distractor 'Per abitudine ho chiesto' parallels it; choice blanks mostrato/piegare unique; last line names the concrete encounter with Lina as the beat requires."
+        },
+        {
+          "n": 7,
+          "observation": "Infinitive-phrase subject with singular ha richiesto; 'in bici ogni mattina' fused, so no reordering; form blank aspettava has 'Un collega' before it and the visible 'e insieme affrontavamo' plus the imperfetto question constrain it. The German model line still renders the habit as a single Perfekt event ('hat … gewartet'), diverging from the Italian imperfetto and the English 'would wait'."
+        },
+        {
+          "n": 8,
+          "observation": "'Vorrei ringraziare la portinaia che …' is a P4 che relative with explicit antecedent; 'nei primi mesi.' holds the final stop; choice blanks protetto/miei unique; the tarpaulin line gives the concrete gesture without abstract formulas; mi ha dato una mano glossed correctly."
+        },
+        {
+          "n": 9,
+          "observation": "Licensed 'spero che … possa' (whitelist) with explicit noun subject; comma-ended interim chip is allowed; recall 'possa' is a single word; the guide term now reads 'der Guide (Person, die den Rundgang leitet)'; the prudent 'preferirei provare … con una guida esperta' answers the offer appropriately."
+        },
+        {
+          "n": 10,
+          "observation": "Object relative 'le mappe che i vicini disegnano'; L'anno prossimo fused with vorrei; the imperfetto blank is now a cue-free choice among person/number forms; 'ma' row has a single contrast connector; the final line links past difficulty and neighbours' help to the project."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "The lesson title reveals the learner's last line (the cloze/recall challenge): 'Ein Platz am Sonntagstisch / A place at Sunday lunch' is exactly the content of 'Rosa mette sempre un piatto in più al pranzo della domenica'. Titles must not disclose the later challenge; retitle on the turn-1 library scene.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/title",
+              "old": {
+                "de": "Ein Platz am Sonntagstisch",
+                "en": "A place at Sunday lunch"
+              },
+              "new": {
+                "de": "Freundschaft zwischen den Regalen",
+                "en": "Friendship among the shelves"
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Typed form blank 'sembravano' is cued only by 'sembrare (le date)'; the scene establishes a specific call yesterday as well as earlier habits, so 'Al telefono le date sono sembrate tutte uguali quando parlavano in fretta' is a defensible bounded recollection that exact grading rejects. Convert the blank to a cue-free choice using the existing four person/number alternatives; model line unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "sembravano",
+                "choices": [
+                  "sembravamo",
+                  "sembravi",
+                  "sembravano",
+                  "sembrava"
+                ],
+                "cue": "sembrare (le date)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "sembravano",
+                "choices": [
+                  "sembravamo",
+                  "sembravi",
+                  "sembravano",
+                  "sembrava"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "German base text of the cloze model line renders the habitual imperfetto 'mi aspettava … affrontavamo' as a one-off Perfekt event ('hat … gewartet … haben … genommen'), shifting the meaning and misaligning with the English 'would wait … we'd tackle'. The imperfetto reading is what the typed form blank relies on.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/de",
+              "old": "Ein Kollege hat an der Brücke auf mich gewartet, und zusammen haben wir die Steigung in Angriff genommen.",
+              "new": "Ein Kollege wartete immer an der Brücke auf mich, und zusammen nahmen wir die Steigung in Angriff."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "'Anch'io facevo quel tragitto' is a habit; 'Ich bin die Strecke auch gefahren' reads as a single trip. Adding 'immer' restores the habitual sense.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Ich bin die Strecke auch gefahren. Mit der U-Bahn war es am einfachsten, oder?",
+              "new": "Ich bin die Strecke auch immer gefahren. Mit der U-Bahn war es am einfachsten, oder?"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Chunk gloss 'wer vorbereitete' for 'chi preparava' (le lanterne) is a stiff literal rendering; 'wer anfertigte' matches the pattern example's 'wer die Laternen macht'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks/1/baseText/de",
+              "old": "wer vorbereitete",
+              "new": "wer anfertigte"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Dismissed as not analogous to L5: the form blank 'aspettava' is restrained by the visible coordinated imperfetto 'e insieme affrontavamo la salita' and the imperfetto question 'Come faceva a mantenere il ritmo?'; 'mi ha aspettato … e insieme affrontavamo' is aspectually incoherent, so no competing surface survives. With the corrected German cue ('wartete immer') the blank stays a form gap.",
+          "edits": []
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Dismissed: lowercase formal 'lei' ('mi parla spesso di lei', 'Eppure lei vede ancora Rosa', also L5/L9) is standard contemporary usage; context excludes a third-person reading and the DE/EN use Sie/you, so no change is needed.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "199154713810a094b129e54787affd89c39e51102f4a46522d559b5d305a9ca3",
+      "sourceSha256": "ce1b4698ce4f247ee16225167e217602e0609bdf985fc7991919ef842f8ae28f",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (13 words) 'Il mio primo obiettivo era arrivare…' and turn 3 (11) 'ci ho messo settimane a trovare la coincidenza giusta' match the beat; both cloze blanks are cue-free choices with unique answers (infinitive after 'a', feminine singular 'giusta'); 'ogni mattina.' carries the final stop so no second chip ordering survives; foils 'era cambiare casa'/'senza perdere tempo' are same-context; title does not disclose the connection story."
+        },
+        {
+          "n": 2,
+          "observation": "Previous fix applied: 'Al terzo tentativo ho ottenuto' is one chip, so the movable time phrase can no longer produce a second ordering; cloze 'indovinato'/'tradurre' are unique choice blanks; recall 'ottenuto' and speech tokens are plain words of turn 1; pattern example 2 'Al secondo colloquio ho trovato…' is an independent transfer."
+        },
+        {
+          "n": 3,
+          "observation": "Retitled 'Freundschaft zwischen den Regalen' no longer reveals the Sunday-lunch last line; form gap 'mette' has visible infinitive and subject 'Rosa' before the blank and the present is pinned by 'Eppure lei vede ancora Rosa'; 'al' choice unique; chunks 'mentre sistemavamo'/'gli scaffali della biblioteca.' cannot be permuted; 'ein zusätzliches Gedeck' fixed; caption no longer leaks the closure."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 (15) and turn 3 (10) in range; speech tokens now 'libraio/colto/scatto' (no apostrophe); trophy 'occasione' retained as the outline word; choice blanks 'riconoscere' (after 'poteva') and 'proprio' (quartiere m.sg) unique; 'per caso' is bound inside the first chip so 'ho incontrato il libraio per caso' is not a buildable reordering."
+        },
+        {
+          "n": 5,
+          "observation": "Both blanks are now cue-free choices ('sembravano' person/number set, 'uguali' plural adjective), so the 'sono sembrate' concern is moot; 'senza aiuto' is a manner complement of the infinitive subject, not an independently movable time phrase, so the five-chip build is sound; foils 'con un interprete'/'meno fastidio' are believable; recall 'previsto' plain word."
+        },
+        {
+          "n": 6,
+          "observation": "Pattern re-anchored on two passato prossimo acts joined by 'e' with transfer example 'Alla festa ho chiesto una ricetta e ho conosciuto la cuoca'; 'Per curiosità ho chiesto' merged into one chip with matching foil; cloze 'mostrato'/'piegare' unique choices; chip gloss 'wer vorbereitete' is literal but not wrong."
+        },
+        {
+          "n": 7,
+          "observation": "German last line now habitual ('wartete immer … nahmen wir … in Angriff') matching the imperfetto that the form gap 'aspettava' relies on; subject 'Un collega' precedes the blank and 'e insieme affrontavamo' plus 'Come faceva a mantenere il ritmo?' exclude a passato prossimo surface; 'salita' (la, f.sg) unique; 'in bici ogni mattina' cannot be fronted before the infinitive subject or placed after 'impegno,' without the stop-bearing chip."
+        },
+        {
+          "n": 8,
+          "observation": "'Vorrei ringraziare la portinaia che mi ha dato una mano nei primi mesi.' (13) with che relative (P4 recycle); cloze 'protetto'/'miei' unique choices; 'nei primi mesi.' holds the final stop; foils 'il trasportatore'/'negli ultimi anni.' are same-context; speech tokens ringraziare/portinaia/mesi are plain words of turn 1; title names only the turn-1 addressee, not the tarpaulin story."
+        },
+        {
+          "n": 9,
+          "observation": "Licensed 'spero che … possa' with whitelist congiuntivo and a clean transfer example; 'der Guide (Person, die den Rundgang leitet)' fixed; cloze 'provare'/'esperta' unique choices; BUT the chip 'Dopo il successo della passeggiata,' is an independently movable circumstantial phrase: 'spero che in futuro dopo il successo della passeggiata, il gruppo possa ritrovarsi ogni mese' is a grammatical alternative that the exact build rejects — the same class of defect the previous review repaired in L2 and L6."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 (15) with che object relative and the second blank converted to a cue-free choice among imperfetto forms, removing the 'disegnano' competition; connector blank offers only 'ma' among però/comunque/invece family; 'L'anno prossimo' is bound to 'vorrei' and the final chip carries the stop, so one ordering only; foils 'realizzare un sogno:'/'che i turisti comprano in stazione.' are believable."
+        }
+      ],
+      "findings": [
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Chip 'Dopo il successo della passeggiata,' is an independently movable time/circumstance phrase (comma, not a terminal stop, so it is a legal interim chip): the order 'spero che in futuro' + 'Dopo il successo della passeggiata,' + 'il gruppo possa ritrovarsi' + 'ogni mese.' yields the grammatical sentence 'Spero che in futuro, dopo il successo della passeggiata, il gruppo possa ritrovarsi ogni mese', which the exact build rejects. This repeats the defect fixed in L2/L6. Merge the phrase with 'spero che' and re-split the remainder into four chips with no second ordering; adjust the first foil so it still substitutes a whole chip.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks",
+              "old": [
+                {
+                  "targetText": "Dopo il successo della passeggiata,",
+                  "baseText": {
+                    "de": "nach dem Erfolg des Rundgangs",
+                    "en": "after the success of the walk"
+                  }
+                },
+                {
+                  "targetText": "spero che in futuro",
+                  "baseText": {
+                    "de": "hoffe ich, dass künftig",
+                    "en": "I hope that in the future"
+                  }
+                },
+                {
+                  "targetText": "il gruppo possa ritrovarsi",
+                  "baseText": {
+                    "de": "die Gruppe sich treffen kann",
+                    "en": "the group can get together"
+                  }
+                },
+                {
+                  "targetText": "ogni mese.",
+                  "baseText": {
+                    "de": "jeden Monat",
+                    "en": "every month"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Dopo il successo della passeggiata, spero che",
+                  "baseText": {
+                    "de": "nach dem Erfolg des Rundgangs hoffe ich, dass",
+                    "en": "after the success of the walk, I hope that"
+                  }
+                },
+                {
+                  "targetText": "in futuro il gruppo",
+                  "baseText": {
+                    "de": "künftig die Gruppe",
+                    "en": "in the future the group"
+                  }
+                },
+                {
+                  "targetText": "possa ritrovarsi",
+                  "baseText": {
+                    "de": "sich treffen kann",
+                    "en": "can get together"
+                  }
+                },
+                {
+                  "targetText": "ogni mese.",
+                  "baseText": {
+                    "de": "jeden Monat",
+                    "en": "every month"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors",
+              "old": [
+                "prima di partire",
+                "una volta soltanto."
+              ],
+              "new": [
+                "Prima di partire, spero che",
+                "una volta soltanto."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "'Anch'io facevo quel tragitto' is habitual; 'Ich bin die Strecke auch gefahren' can read as a single trip. Adding 'immer' mirrors the imperfetto; not a correctness error in spoken German.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Ich bin die Strecke auch gefahren. Mit der U-Bahn war es am einfachsten, oder?",
+              "new": "Ich bin die Strecke auch immer gefahren. Mit der U-Bahn war es am einfachsten, oder?"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Chip gloss 'wer vorbereitete' for 'chi preparava' (le lanterne) is a stiff literal rendering; 'wer anfertigte' matches the dialogue gloss 'wer die Laternen macht'. Meaning is recoverable, so this is a preference.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks/1/baseText/de",
+              "old": "wer vorbereitete",
+              "new": "wer anfertigte"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Dismissed: fronting 'senza aiuto' before the infinitive subject ('Senza aiuto prenotare la visita mi ha dato…') is not a natural alternative ordering; it is a manner complement, not a movable time phrase, and 'del previsto.' holds the terminal stop. Five-chip build stays.",
+          "edits": []
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Dismissed: typed form gap 'mette' is restrained by the affirmed present claim 'Eppure lei vede ancora Rosa' and the opening 'Sì'; 'metteva' or 'ha messo' would contradict the visible context, so no competing surface survives exact grading.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "23c8a6e6ca7096a2f13d66690e502e1255a22071bfb3f0cdc6ab80b436a8e3b5",
+      "sourceSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (13 words) keeps 'obiettivo'; era + infinitive, senza + infinitive match the pattern. Confirmed fix: dialogue[2] de now reads 'Ich bin die Strecke auch immer gefahren', mirroring the habitual 'facevo'. Four chips, only the period chip is terminal, no second ordering; both cloze rows are cue-free choices with single valid answers (trovare, giusta); title and caption do not reveal the 'coincidenza' punchline."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 (14 words) with 'risultato'; last turn 10 words. Chips 'Al terzo tentativo ho ottenuto' / 'un bel risultato:' / 'ho letto un racconto' / 'senza dizionario.' build uniquely (colon chip is non-terminal, legal). Cloze indovinato/tradurre unambiguous; recall 'ottenuto'; seven distinct terms; the librarian's 'Quando ha capito che poteva continuare?' is a genuine causal follow-up answered by the guessed ending."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 (13 words) 'amicizia… è nata mentre sistemavamo'; last turn exactly 12 words. Form gap 'mette' carries cue 'mettere (Rosa)' with the subject literal visible before the blank; 'al' choice clean. Title 'Freundschaft zwischen den Regalen' hides the Sunday-lunch gesture. Foils 'La mia amicizia con Anna' / 'i tavoli della mensa.' are same-context and meaning-changing."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 (15 words) with 'occasione'; 'ho colto l'occasione di esporre' pattern, transfer example 'di visitare il laboratorio' independent. Cloze riconoscere/proprio unique; 'Perché ha scelto proprio questa vetrina?' is answered with a motive ('Anche chi passava… poteva riconoscere il proprio quartiere'). Speak tokens libraio/colto/scatto are apostrophe-free words of turn 1."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 1 (11 words) infinitive-subject + 'più soddisfazione del previsto'; last turn 11 words. Cloze 'sembravano' vs sembravamo/sembravi/sembrava all impossible with 'le date'; 'uguali' vs uguale/uguagliare/uguaglianza clean. Five chips, 'senza aiuto' is a manner complement not movable before the infinitive subject; prior dismissal stands. Speaker forms gender-neutral."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 (13 words) chain of two passato prossimo events with 'Per curiosità' bound to 'ho chiesto' in chip 0, so no alternative ordering. Confirmed fix: chip 1 de now 'wer anfertigte', consistent with the dialogue gloss 'wer die Laternen macht'. Cloze mostrato/piegare unique; title 'Wer faltet die Laternen?' mirrors the learner's own question in turn 1 and does not expose Lina's demonstration."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 (12 words) 'ha richiesto impegno'; last turn 11 words. Form gap 'aspettava' cued 'aspettare (Un collega)' with subject literal preceding; 'salita' choice unambiguous after 'la'. Chips 'Andare al lavoro' / 'in bici ogni mattina' / 'ha richiesto impegno,' / 'soprattutto d'inverno.' build uniquely; foils 'in auto ogni sera' / 'soprattutto ad agosto.' credible. 'Come faceva a mantenere il ritmo?' leads causally to the colleague at the bridge."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 1 (13 words) 'Vorrei ringraziare la portinaia che mi ha dato una mano'; relative 'che' recycles P4. Cloze protetto/miei clean; recall 'dato'. Follow-up about the photo of boxes in the rain motivates the concrete tarpaulin gesture, no abstract formula. Foils 'il trasportatore' / 'negli ultimi anni.' substitute whole chips and change meaning."
+        },
+        {
+          "n": 9,
+          "observation": "Confirmed fix in saved bytes: chips are now 'Dopo il successo della passeggiata, spero che' / 'in futuro il gruppo' / 'possa ritrovarsi' / 'ogni mese.' and foil 0 is 'Prima di partire, spero che'. The circumstance phrase is fused with 'spero che', so the earlier alternative ordering is gone; 'possa' is whitelisted after 'spero che'. Last turn (10 words) 'preferirei provare… con una guida esperta' is prudent and gender-neutral for the speaker; 'esperta' choice is forced by feminine 'guida'. Turn 1 is 15 words, within range."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 (15 words) with 'progetto' and object relative 'le mappe che i vicini disegnano'; last turn 10 words. Cloze 'ma' offered alone among senza/di/dal (no però/invece co-offered); 'disegnavano' vs disegnava/disegnavamo/disegnavi all impossible with 'i vicini'. 'Perché preferisce i disegni dei vicini?' is answered by the past-habit contrast (Sbagliavo… disegnavano). Seven terms distinct; title does not reveal the exits/underpasses answer."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Pattern rule de 'È nata gehört zum Substantiv amicizia' is understandable but imprecise for agreement; 'richtet sich nach' states the agreement relation more clearly. Stylistic, not an error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/rule/de",
+              "old": "È nata gehört zum Substantiv amicizia. Mentre mit dem imperfetto zeichnet die gemeinsame Tätigkeit, während der die Freundschaft begann.",
+              "new": "È nata richtet sich nach dem Substantiv amicizia. Mentre mit dem imperfetto zeichnet die gemeinsame Tätigkeit, während der die Freundschaft begann."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Dismissed as continuity preference: L2 takes place inside the neighbourhood library while L3's neighbour says the library has been closed for building work for months. Episodes are separate conversations across the year and nothing in either dialogue dates them relative to each other, so no learner-facing error arises; no edit proposed.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "fromSha256": "ce1b4698ce4f247ee16225167e217602e0609bdf985fc7991919ef842f8ae28f",
+      "toSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+      "authoritySha256": "b5ed3020103d4165b6cda0a55e4c9f2e86b215d488e692bc080078d071127951",
+      "edits": [
+        {
+          "op": "set",
+          "path": "/lessons/8/chunks",
+          "old": [
+            {
+              "targetText": "Dopo il successo della passeggiata,",
+              "baseText": {
+                "de": "nach dem Erfolg des Rundgangs",
+                "en": "after the success of the walk"
+              }
+            },
+            {
+              "targetText": "spero che in futuro",
+              "baseText": {
+                "de": "hoffe ich, dass künftig",
+                "en": "I hope that in the future"
+              }
+            },
+            {
+              "targetText": "il gruppo possa ritrovarsi",
+              "baseText": {
+                "de": "die Gruppe sich treffen kann",
+                "en": "the group can get together"
+              }
+            },
+            {
+              "targetText": "ogni mese.",
+              "baseText": {
+                "de": "jeden Monat",
+                "en": "every month"
+              }
+            }
+          ],
+          "new": [
+            {
+              "targetText": "Dopo il successo della passeggiata, spero che",
+              "baseText": {
+                "de": "nach dem Erfolg des Rundgangs hoffe ich, dass",
+                "en": "after the success of the walk, I hope that"
+              }
+            },
+            {
+              "targetText": "in futuro il gruppo",
+              "baseText": {
+                "de": "künftig die Gruppe",
+                "en": "in the future the group"
+              }
+            },
+            {
+              "targetText": "possa ritrovarsi",
+              "baseText": {
+                "de": "sich treffen kann",
+                "en": "can get together"
+              }
+            },
+            {
+              "targetText": "ogni mese.",
+              "baseText": {
+                "de": "jeden Monat",
+                "en": "every month"
+              }
+            }
+          ]
+        },
+        {
+          "op": "set",
+          "path": "/lessons/8/distractors",
+          "old": [
+            "prima di partire",
+            "una volta soltanto."
+          ],
+          "new": [
+            "Prima di partire, spero che",
+            "una volta soltanto."
+          ]
+        },
+        {
+          "op": "set",
+          "path": "/lessons/0/dialogue/2/baseText/de",
+          "old": "Ich bin die Strecke auch gefahren. Mit der U-Bahn war es am einfachsten, oder?",
+          "new": "Ich bin die Strecke auch immer gefahren. Mit der U-Bahn war es am einfachsten, oder?"
+        },
+        {
+          "op": "set",
+          "path": "/lessons/5/chunks/1/baseText/de",
+          "old": "wer vorbereitete",
+          "new": "wer anfertigte"
+        }
+      ]
+    },
+    {
+      "receiptSha256": "5c3b03a223829fdd6ce2501d50937ad34481a23ca193a91cbf56e2b93692901d",
+      "edits": [
+        {
+          "p": 10,
+          "n": 4,
+          "spoken": "Sì, ho incontrato per caso il libraio e ho colto l'occasione di esporre qualche scatto.",
+          "old": [
+            "libraio",
+            "colto",
+            "scatto"
+          ],
+          "new": [
+            "libraio",
+            "colto",
+            "scatto"
+          ],
+          "reason": "Old and proposed are identical; none of the three words is elided (only 'occasione' is), all appear as stand-alone words in spoken order, so confirmed unchanged."
+        }
+      ]
+    }
+  ]
+}

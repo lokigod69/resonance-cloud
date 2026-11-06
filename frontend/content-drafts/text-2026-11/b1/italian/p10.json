@@ -1,0 +1,2140 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Ein Jahr hier",
+    "en": "A year here"
+  },
+  "subtitle": {
+    "de": "Erzählen Sie von Begegnungen, Gewohnheiten und Plänen nach einem Jahr im Viertel.",
+    "en": "Talk about the people you met, the habits you formed and your plans after a year in the neighbourhood."
+  },
+  "anchor": "Forma B, racconto personale collegato. Nessuna nuova grammatica. Riprendere eventi con avere passato prossimo, sfondi e abitudini all'imperfetto, opinioni, relative e progetti già autorizzati. Tutte le forme riferite al parlante restano neutre rispetto al genere.",
+  "lessons": [
+    {
+      "slug": "il-tragitto-del-primo-mese",
+      "title": {
+        "de": "Der erste Arbeitsweg",
+        "en": "The first journey to work"
+      },
+      "situation": {
+        "de": "Ein Nachbar wartet mit Ihnen an der Haltestelle. Sie kommen darauf zu sprechen, dass Sie inzwischen seit einem Jahr hier wohnen.",
+        "en": "A neighbour is waiting at the bus stop with you. You get talking about the fact that you've lived here for a year now."
+      },
+      "pedagogicalGoal": "Ein praktisches Ziel des ersten Monats beschreiben und den unerwartet langwierigen Teil der Aufgabe benennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Si ricorda cosa voleva imparare a fare nel primo mese qui?",
+          "baseText": {
+            "de": "Erinnern Sie sich, was Sie hier im ersten Monat lernen wollten?",
+            "en": "Do you remember what you wanted to learn to do in your first month here?"
+          }
+        },
+        {
+          "targetText": "Il mio primo obiettivo era arrivare al lavoro senza chiedere indicazioni ogni mattina.",
+          "baseText": {
+            "de": "Mein erstes Ziel war, zur Arbeit zu kommen, ohne jeden Morgen nach dem Weg fragen zu müssen.",
+            "en": "My first goal was to get to work without having to ask for directions every morning."
+          }
+        },
+        {
+          "targetText": "Anch'io facevo quel tragitto. La metro era la parte più facile, vero?",
+          "baseText": {
+            "de": "Ich bin die Strecke auch immer gefahren. Mit der U-Bahn war es am einfachsten, oder?",
+            "en": "I used to make that trip too. The metro was the easy part, wasn't it?"
+          }
+        },
+        {
+          "targetText": "Sì, ma ci ho messo settimane a trovare la coincidenza giusta.",
+          "baseText": {
+            "de": "Ja, aber ich habe Wochen gebraucht, um den richtigen Anschluss zu finden.",
+            "en": "Yes, but it took me weeks to find the right connection."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il mio obiettivo era…",
+        "rule": {
+          "de": "Mit era und einem Infinitiv blicken Sie auf ein damaliges Ziel zurück. Senza mit einem weiteren Infinitiv beschreibt, was Sie dabei vermeiden wollten.",
+          "en": "Use era and an infinitive to look back on a goal you had. Senza and another infinitive describe what you wanted to avoid doing."
+        },
+        "examples": [
+          {
+            "targetText": "Il mio primo obiettivo era arrivare al lavoro senza chiedere indicazioni ogni mattina.",
+            "baseText": {
+              "de": "Mein erstes Ziel war, zur Arbeit zu kommen, ohne jeden Morgen nach dem Weg fragen zu müssen.",
+              "en": "My first goal was to get to work without having to ask for directions every morning."
+            },
+            "highlight": "Il mio primo obiettivo era arrivare"
+          },
+          {
+            "targetText": "Il mio piano era accompagnare mia figlia a scuola prima del turno.",
+            "baseText": {
+              "de": "Mein Plan war, meine Tochter vor der Schicht zur Schule zu bringen.",
+              "en": "My plan was to take my daughter to school before my shift."
+            },
+            "highlight": "Il mio piano era accompagnare"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, ma ci ho messo settimane a ",
+        {
+          "kind": "choice",
+          "answer": "trovare",
+          "choices": [
+            "trovato",
+            "trovando",
+            "trovare",
+            "trovo"
+          ]
+        },
+        " la coincidenza ",
+        {
+          "kind": "choice",
+          "answer": "giusta",
+          "choices": [
+            "giuste",
+            "giusta",
+            "giusto",
+            "giusti"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il mio primo obiettivo",
+          "baseText": {
+            "de": "mein erstes Ziel",
+            "en": "my first goal"
+          }
+        },
+        {
+          "targetText": "era arrivare al lavoro",
+          "baseText": {
+            "de": "war, zur Arbeit zu kommen",
+            "en": "was to get to work"
+          }
+        },
+        {
+          "targetText": "senza chiedere indicazioni",
+          "baseText": {
+            "de": "ohne nach dem Weg zu fragen",
+            "en": "without asking for directions"
+          }
+        },
+        {
+          "targetText": "ogni mattina.",
+          "baseText": {
+            "de": "jeden Morgen",
+            "en": "every morning"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "obiettivo",
+          "baseText": {
+            "de": "das Ziel",
+            "en": "goal"
+          }
+        },
+        {
+          "targetText": "arrivare al lavoro",
+          "baseText": {
+            "de": "zur Arbeit gelangen",
+            "en": "get to work"
+          }
+        },
+        {
+          "targetText": "chiedere indicazioni",
+          "baseText": {
+            "de": "nach dem Weg fragen",
+            "en": "ask for directions"
+          }
+        },
+        {
+          "targetText": "il tragitto",
+          "baseText": {
+            "de": "die Strecke",
+            "en": "journey"
+          }
+        },
+        {
+          "targetText": "la coincidenza",
+          "baseText": {
+            "de": "der Anschluss",
+            "en": "connection"
+          }
+        },
+        {
+          "targetText": "metterci settimane",
+          "baseText": {
+            "de": "Wochen dafür brauchen",
+            "en": "take weeks"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il mio primo obiettivo era ",
+        "answer": "arrivare",
+        "after": " al lavoro senza chiedere indicazioni ogni mattina.",
+        "fallbackChoices": [
+          "arrivo",
+          "arrivando",
+          "arrivare",
+          "arrivato"
+        ]
+      },
+      "speakRequired": [
+        "obiettivo",
+        "lavoro",
+        "indicazioni"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar wartet mit Ihnen an der Haltestelle. Sie kommen darauf zu sprechen, dass Sie inzwischen seit einem Jahr hier wohnen. „Si ricorda cosa voleva imparare a fare nel primo mese qui?“",
+        "en": "A neighbour is waiting at the bus stop with you. You get talking about the fact that you've lived here for a year now. “Si ricorda cosa voleva imparare a fare nel primo mese qui?”"
+      },
+      "trophyWord": {
+        "word": "obiettivo",
+        "meaning": {
+          "de": "das Ziel",
+          "en": "goal"
+        },
+        "example": "Avevo un obiettivo semplice: conoscere almeno due strade per tornare a casa.",
+        "whyThisWord": {
+          "de": "Obiettivo benennt etwas, das Sie erreichen wollten. Mit era können Sie zu Ihrem ersten Monat zurückblenden.",
+          "en": "Obiettivo names something you wanted to achieve. With era you can take the listener back to your first month."
+        }
+      },
+      "distractors": [
+        "era cambiare casa",
+        "senza perdere tempo"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn stehen am Haltestellenschild und schauen auf den Linienplan.",
+        "en": "Two neighbours stand by the bus stop sign looking at the route map."
+      },
+      "songMood": "Measured Italian acoustic pop with muted guitar",
+      "visualNotes": "Two neighbours stand by the bus stop sign looking at the route map."
+    },
+    {
+      "slug": "il-racconto-senza-dizionario",
+      "title": {
+        "de": "Endlich eine Geschichte zu Ende lesen",
+        "en": "Finishing a story at last"
+      },
+      "situation": {
+        "de": "In der Stadtteilbibliothek geben Sie ein Buch zurück. Die Bibliothekarin erinnert sich an Ihre früheren Leseversuche.",
+        "en": "You return a book at the neighbourhood library. The librarian remembers your earlier attempts at reading."
+      },
+      "pedagogicalGoal": "Einen Erfolg nach mehreren Anläufen nennen und an einer einzelnen Lesesituation zeigen, was sich verändert hat.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Stavolta vedo che il segnalibro è in fondo. Com'è andata con il racconto?",
+          "baseText": {
+            "de": "Diesmal sehe ich das Lesezeichen ganz hinten. Wie ist es mit der Geschichte gelaufen?",
+            "en": "I see the bookmark is at the back this time. How did you get on with the story?"
+          }
+        },
+        {
+          "targetText": "Al terzo tentativo ho ottenuto un bel risultato: ho letto un racconto senza dizionario.",
+          "baseText": {
+            "de": "Beim dritten Versuch ist mir etwas Schönes gelungen. Ich habe eine Geschichte ohne Wörterbuch gelesen.",
+            "en": "On my third try I achieved something I was pleased with. I read a story without a dictionary."
+          }
+        },
+        {
+          "targetText": "Con il primo libro si fermava a ogni parola nuova. Quando ha capito che poteva continuare?",
+          "baseText": {
+            "de": "Beim ersten Buch haben Sie bei jedem neuen Wort angehalten. Wann haben Sie gemerkt, dass Sie weiterlesen konnten?",
+            "en": "With the first book you stopped at every unfamiliar word. When did you realise you could keep reading?"
+          }
+        },
+        {
+          "targetText": "Una sera ho indovinato il finale senza tradurre ogni parola.",
+          "baseText": {
+            "de": "Eines Abends habe ich den Schluss erraten, ohne jedes Wort zu übersetzen.",
+            "en": "One evening I guessed the ending without translating every word."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Al terzo tentativo ho…",
+        "rule": {
+          "de": "Mit al und einer Ordnungszahl ordnen Sie den Erfolg einem bestimmten Versuch zu. Das passato prossimo erzählt, was dabei gelungen ist.",
+          "en": "Use al and an ordinal number to identify the attempt that succeeded. The passato prossimo tells what you achieved on that occasion."
+        },
+        "examples": [
+          {
+            "targetText": "Al terzo tentativo ho ottenuto un bel risultato: ho letto un racconto senza dizionario.",
+            "baseText": {
+              "de": "Beim dritten Versuch ist mir etwas Schönes gelungen. Ich habe eine Geschichte ohne Wörterbuch gelesen.",
+              "en": "On my third try I achieved something I was pleased with. I read a story without a dictionary."
+            },
+            "highlight": "Al terzo tentativo ho ottenuto"
+          },
+          {
+            "targetText": "Al secondo colloquio ho trovato un posto con un orario migliore.",
+            "baseText": {
+              "de": "Beim zweiten Vorstellungsgespräch habe ich eine Stelle mit besseren Arbeitszeiten gefunden.",
+              "en": "At my second interview I found a job with better hours."
+            },
+            "highlight": "Al secondo colloquio ho trovato"
+          }
+        ]
+      },
+      "cloze": [
+        "Una sera ho ",
+        {
+          "kind": "choice",
+          "answer": "indovinato",
+          "choices": [
+            "indovina",
+            "indovinato",
+            "indovinare",
+            "indovinando"
+          ]
+        },
+        " il finale senza ",
+        {
+          "kind": "choice",
+          "answer": "tradurre",
+          "choices": [
+            "tradurre",
+            "tradotto",
+            "traduco",
+            "traducendo"
+          ]
+        },
+        " ogni parola."
+      ],
+      "chunks": [
+        {
+          "targetText": "Al terzo tentativo ho ottenuto",
+          "baseText": {
+            "de": "beim dritten Versuch habe ich erzielt",
+            "en": "on my third try I achieved"
+          }
+        },
+        {
+          "targetText": "un bel risultato:",
+          "baseText": {
+            "de": "ein schönes Ergebnis",
+            "en": "a good result"
+          }
+        },
+        {
+          "targetText": "ho letto un racconto",
+          "baseText": {
+            "de": "ich habe eine Geschichte gelesen",
+            "en": "I read a story"
+          }
+        },
+        {
+          "targetText": "senza dizionario.",
+          "baseText": {
+            "de": "ohne Wörterbuch",
+            "en": "without a dictionary"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "risultato",
+          "baseText": {
+            "de": "das Ergebnis",
+            "en": "result"
+          }
+        },
+        {
+          "targetText": "al terzo tentativo",
+          "baseText": {
+            "de": "beim dritten Versuch",
+            "en": "on the third try"
+          }
+        },
+        {
+          "targetText": "il segnalibro",
+          "baseText": {
+            "de": "das Lesezeichen",
+            "en": "bookmark"
+          }
+        },
+        {
+          "targetText": "il racconto",
+          "baseText": {
+            "de": "die Geschichte",
+            "en": "short story"
+          }
+        },
+        {
+          "targetText": "senza dizionario",
+          "baseText": {
+            "de": "ohne Wörterbuch",
+            "en": "without a dictionary"
+          }
+        },
+        {
+          "targetText": "indovinare il finale",
+          "baseText": {
+            "de": "den Schluss erraten",
+            "en": "guess the ending"
+          }
+        },
+        {
+          "targetText": "tradurre",
+          "baseText": {
+            "de": "übersetzen",
+            "en": "translate"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Al terzo tentativo ho ",
+        "answer": "ottenuto",
+        "after": " un bel risultato: ho letto un racconto senza dizionario.",
+        "fallbackChoices": [
+          "ottenendo",
+          "ottenuto",
+          "ottenere",
+          "ottengo"
+        ]
+      },
+      "speakRequired": [
+        "tentativo",
+        "risultato",
+        "racconto"
+      ],
+      "sceneCaption": {
+        "de": "In der Stadtteilbibliothek geben Sie ein Buch zurück. Die Bibliothekarin erinnert sich an Ihre früheren Leseversuche. „Stavolta vedo che il segnalibro è in fondo. Com'è andata con il racconto?“",
+        "en": "You return a book at the neighbourhood library. The librarian remembers your earlier attempts at reading. “Stavolta vedo che il segnalibro è in fondo. Com'è andata con il racconto?”"
+      },
+      "trophyWord": {
+        "word": "risultato",
+        "meaning": {
+          "de": "das Ergebnis",
+          "en": "result"
+        },
+        "example": "Per me questo risultato conta più del voto di un esame.",
+        "whyThisWord": {
+          "de": "Mit risultato können Sie erst die Leistung nennen und dann den Moment erzählen, in dem die neue Fähigkeit spürbar wurde.",
+          "en": "Risultato lets you name the achievement before describing the moment you noticed your new skill."
+        }
+      },
+      "distractors": [
+        "un risultato deludente:",
+        "con gli appunti accanto."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Lesezeichen ragt hinten aus dem Buch auf der Ausleihtheke.",
+        "en": "A bookmark sticks out near the back of a book on the library counter."
+      },
+      "songMood": "Gentle brushed percussion and upright bass",
+      "visualNotes": "A bookmark sticks out near the back of a book on the library counter."
+    },
+    {
+      "slug": "il-pranzo-della-domenica",
+      "title": {
+        "de": "Freundschaft zwischen den Regalen",
+        "en": "Friendship among the shelves"
+      },
+      "situation": {
+        "de": "Auf einer Bank vor der Bibliothek sprechen Sie mit einem Nachbarn über Rosa. Er kennt sie von der Bücheraktion des Viertels.",
+        "en": "On a bench outside the library, you talk to a neighbour about Rosa. He knows her from the neighbourhood book drive."
+      },
+      "pedagogicalGoal": "Den Beginn einer Freundschaft während einer gemeinsamen Tätigkeit erzählen und ihre Fortsetzung an einer Geste zeigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Rosa mi parla spesso di lei. Come ha conosciuto la mia vicina?",
+          "baseText": {
+            "de": "Rosa erzählt mir oft von Ihnen. Wie haben Sie meine Nachbarin kennengelernt?",
+            "en": "Rosa often tells me about you. How did you meet my neighbour?"
+          }
+        },
+        {
+          "targetText": "La mia amicizia con Rosa è nata mentre sistemavamo gli scaffali della biblioteca.",
+          "baseText": {
+            "de": "Meine Freundschaft mit Rosa hat angefangen, als wir die Regale in der Bibliothek einräumten.",
+            "en": "My friendship with Rosa began while we were organising the shelves at the library."
+          }
+        },
+        {
+          "targetText": "La biblioteca è chiusa per lavori da mesi. Eppure lei vede ancora Rosa, mi pare.",
+          "baseText": {
+            "de": "Die Bibliothek ist seit Monaten wegen Bauarbeiten geschlossen. Aber Sie sehen Rosa noch, glaube ich.",
+            "en": "The library has been closed for building work for months. Yet I think you still see Rosa."
+          }
+        },
+        {
+          "targetText": "Sì, Rosa mette sempre un piatto in più al pranzo della domenica.",
+          "baseText": {
+            "de": "Ja, Rosa deckt beim Sonntagsessen immer für mich mit.",
+            "en": "Yes, Rosa always sets an extra place at Sunday lunch."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "È nata mentre…",
+        "rule": {
+          "de": "È nata gehört zum Substantiv amicizia. Mentre mit dem imperfetto zeichnet die gemeinsame Tätigkeit, während der die Freundschaft begann.",
+          "en": "È nata agrees with the noun amicizia. Mentre with the imperfetto describes the shared activity that was under way when the friendship began."
+        },
+        "examples": [
+          {
+            "targetText": "La mia amicizia con Rosa è nata mentre sistemavamo gli scaffali della biblioteca.",
+            "baseText": {
+              "de": "Meine Freundschaft mit Rosa hat angefangen, als wir die Regale in der Bibliothek einräumten.",
+              "en": "My friendship with Rosa began while we were organising the shelves at the library."
+            },
+            "highlight": "è nata mentre sistemavamo"
+          },
+          {
+            "targetText": "L'idea di formare un coro è nata mentre aspettavamo l'autobus sotto la pioggia.",
+            "baseText": {
+              "de": "Die Idee, einen Chor zu gründen, ist entstanden, als wir im Regen auf den Bus warteten.",
+              "en": "The idea of forming a choir came about while we were waiting for the bus in the rain."
+            },
+            "highlight": "è nata mentre aspettavamo"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, Rosa ",
+        {
+          "kind": "form",
+          "answer": "mette",
+          "choices": [
+            "mette",
+            "metto",
+            "mettono",
+            "mettiamo"
+          ],
+          "cue": "mettere (Rosa)"
+        },
+        " sempre un piatto in più ",
+        {
+          "kind": "choice",
+          "answer": "al",
+          "choices": [
+            "alla",
+            "agli",
+            "alle",
+            "al"
+          ]
+        },
+        " pranzo della domenica."
+      ],
+      "chunks": [
+        {
+          "targetText": "La mia amicizia con Rosa",
+          "baseText": {
+            "de": "meine Freundschaft mit Rosa",
+            "en": "my friendship with Rosa"
+          }
+        },
+        {
+          "targetText": "è nata",
+          "baseText": {
+            "de": "hat angefangen",
+            "en": "began"
+          }
+        },
+        {
+          "targetText": "mentre sistemavamo",
+          "baseText": {
+            "de": "während wir einräumten",
+            "en": "while we were organising"
+          }
+        },
+        {
+          "targetText": "gli scaffali della biblioteca.",
+          "baseText": {
+            "de": "die Regale der Bibliothek",
+            "en": "the shelves at the library"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "amicizia",
+          "baseText": {
+            "de": "die Freundschaft",
+            "en": "friendship"
+          }
+        },
+        {
+          "targetText": "nascere",
+          "baseText": {
+            "de": "entstehen",
+            "en": "begin"
+          }
+        },
+        {
+          "targetText": "sistemare gli scaffali",
+          "baseText": {
+            "de": "die Regale einräumen",
+            "en": "organise the shelves"
+          }
+        },
+        {
+          "targetText": "per lavori",
+          "baseText": {
+            "de": "wegen Bauarbeiten",
+            "en": "for building work"
+          }
+        },
+        {
+          "targetText": "un piatto in più",
+          "baseText": {
+            "de": "ein zusätzliches Gedeck",
+            "en": "an extra place at the table"
+          }
+        },
+        {
+          "targetText": "il pranzo della domenica",
+          "baseText": {
+            "de": "das Sonntagsessen",
+            "en": "Sunday lunch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La mia amicizia con Rosa è nata mentre ",
+        "answer": "sistemavamo",
+        "after": " gli scaffali della biblioteca.",
+        "fallbackChoices": [
+          "sistemavamo",
+          "sistemare",
+          "sistemato",
+          "sistemando"
+        ]
+      },
+      "speakRequired": [
+        "amicizia",
+        "nata",
+        "scaffali"
+      ],
+      "sceneCaption": {
+        "de": "Auf einer Bank vor der Bibliothek sprechen Sie mit einem Nachbarn über Rosa. Er kennt sie von der Bücheraktion des Viertels. „Rosa mi parla spesso di lei. Come ha conosciuto la mia vicina?“",
+        "en": "On a bench outside the library, you talk to a neighbour about Rosa. He knows her from the neighbourhood book drive. “Rosa mi parla spesso di lei. Come ha conosciuto la mia vicina?”"
+      },
+      "trophyWord": {
+        "word": "amicizia",
+        "meaning": {
+          "de": "die Freundschaft",
+          "en": "friendship"
+        },
+        "example": "Questa amicizia è cominciata in mezzo agli scatoloni di libri.",
+        "whyThisWord": {
+          "de": "Amicizia benennt die Verbindung, die über die gemeinsame Arbeit in der Bibliothek hinaus besteht.",
+          "en": "Amicizia names the bond that has lasted beyond the work you did together at the library."
+        }
+      },
+      "distractors": [
+        "La mia amicizia con Anna",
+        "i tavoli della mensa."
+      ],
+      "placeholderCaption": {
+        "de": "Neben einer Bank vor der Stadtteilbibliothek stehen Kisten für eine Büchersammlung.",
+        "en": "Boxes for a book drive stand beside a bench outside the neighbourhood library."
+      },
+      "songMood": "Warm piano with a steady walking pulse",
+      "visualNotes": "Boxes for a book drive stand beside a bench outside the neighbourhood library."
+    },
+    {
+      "slug": "gli-scatti-in-libreria",
+      "title": {
+        "de": "Die Fotos im Schaufenster",
+        "en": "The photos in the bookshop window"
+      },
+      "situation": {
+        "de": "Eine Nachbarin bleibt mit Ihnen vor einer Buchhandlung stehen. Im Schaufenster hängen Fotografien aus dem Viertel.",
+        "en": "A neighbour stops with you outside a bookshop. Photographs of the neighbourhood hang in the window."
+      },
+      "pedagogicalGoal": "Eine zufällige Begegnung mit einer ergriffenen Gelegenheit verbinden und die Wahl des Ausstellungsorts begründen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Riconosco la nostra piazza. Sono sue le foto in vetrina?",
+          "baseText": {
+            "de": "Den Platz bei uns erkenne ich wieder. Sind das Ihre Fotos im Schaufenster?",
+            "en": "I recognise our square. Are those your photos in the window?"
+          }
+        },
+        {
+          "targetText": "Sì, ho incontrato per caso il libraio e ho colto l'occasione di esporre qualche scatto.",
+          "baseText": {
+            "de": "Ja, ich bin dem Buchhändler zufällig begegnet und habe die Gelegenheit genutzt, ein paar Fotos auszustellen.",
+            "en": "Yes, I met the bookseller by chance and took the opportunity to exhibit a few shots."
+          }
+        },
+        {
+          "targetText": "Di solito conserva le foto in un album. Perché ha scelto proprio questa vetrina?",
+          "baseText": {
+            "de": "Sonst bewahren Sie Ihre Fotos in einem Album auf. Warum haben Sie gerade dieses Schaufenster gewählt?",
+            "en": "You usually keep your photos in an album. Why did you choose this particular window?"
+          }
+        },
+        {
+          "targetText": "Anche chi passava per strada poteva riconoscere il proprio quartiere.",
+          "baseText": {
+            "de": "So konnten auch Leute, die vorbeikamen, ihr eigenes Viertel wiedererkennen.",
+            "en": "Even people walking past could recognise their own neighbourhood."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Cogliere l'occasione di…",
+        "rule": {
+          "de": "Nach ho colto l'occasione folgt di mit einem Infinitiv. So erzählen Sie, was Sie aus einer zufälligen Begegnung gemacht haben.",
+          "en": "After ho colto l'occasione, add di and an infinitive to say what you did with the opportunity that a chance encounter gave you."
+        },
+        "examples": [
+          {
+            "targetText": "Sì, ho incontrato per caso il libraio e ho colto l'occasione di esporre qualche scatto.",
+            "baseText": {
+              "de": "Ja, ich bin dem Buchhändler zufällig begegnet und habe die Gelegenheit genutzt, ein paar Fotos auszustellen.",
+              "en": "Yes, I met the bookseller by chance and took the opportunity to exhibit a few shots."
+            },
+            "highlight": "ho colto l'occasione di esporre"
+          },
+          {
+            "targetText": "Durante la pausa ho colto l'occasione di visitare il laboratorio dietro il teatro.",
+            "baseText": {
+              "de": "In der Pause habe ich die Gelegenheit genutzt, die Werkstatt hinter dem Theater zu besuchen.",
+              "en": "During the break I took the opportunity to visit the workshop behind the theatre."
+            },
+            "highlight": "ho colto l'occasione di visitare"
+          }
+        ]
+      },
+      "cloze": [
+        "Anche chi passava per strada poteva ",
+        {
+          "kind": "choice",
+          "answer": "riconoscere",
+          "choices": [
+            "riconosco",
+            "riconosciuto",
+            "riconoscendo",
+            "riconoscere"
+          ]
+        },
+        " il ",
+        {
+          "kind": "choice",
+          "answer": "proprio",
+          "choices": [
+            "proprie",
+            "propri",
+            "proprio",
+            "propria"
+          ]
+        },
+        " quartiere."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sì, ho incontrato per caso",
+          "baseText": {
+            "de": "ja, ich habe zufällig getroffen",
+            "en": "yes, I met by chance"
+          }
+        },
+        {
+          "targetText": "il libraio",
+          "baseText": {
+            "de": "den Buchhändler",
+            "en": "the bookseller"
+          }
+        },
+        {
+          "targetText": "e ho colto l'occasione",
+          "baseText": {
+            "de": "und habe die Gelegenheit genutzt",
+            "en": "and took the opportunity"
+          }
+        },
+        {
+          "targetText": "di esporre qualche scatto.",
+          "baseText": {
+            "de": "ein paar Aufnahmen auszustellen",
+            "en": "to exhibit a few shots"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "occasione",
+          "baseText": {
+            "de": "die Gelegenheit",
+            "en": "opportunity"
+          }
+        },
+        {
+          "targetText": "per caso",
+          "baseText": {
+            "de": "zufällig",
+            "en": "by chance"
+          }
+        },
+        {
+          "targetText": "il libraio",
+          "baseText": {
+            "de": "der Buchhändler",
+            "en": "bookseller"
+          }
+        },
+        {
+          "targetText": "in vetrina",
+          "baseText": {
+            "de": "im Schaufenster",
+            "en": "in the shop window"
+          }
+        },
+        {
+          "targetText": "esporre uno scatto",
+          "baseText": {
+            "de": "eine Aufnahme ausstellen",
+            "en": "exhibit a photograph"
+          }
+        },
+        {
+          "targetText": "riconoscere",
+          "baseText": {
+            "de": "wiedererkennen",
+            "en": "recognise"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sì, ho incontrato per caso il libraio e ho colto l'occasione di ",
+        "answer": "esporre",
+        "after": " qualche scatto.",
+        "fallbackChoices": [
+          "esposto",
+          "espongo",
+          "esponendo",
+          "esporre"
+        ]
+      },
+      "speakRequired": [
+        "libraio",
+        "colto",
+        "scatto"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin bleibt mit Ihnen vor einer Buchhandlung stehen. Im Schaufenster hängen Fotografien aus dem Viertel. „Riconosco la nostra piazza. Sono sue le foto in vetrina?“",
+        "en": "A neighbour stops with you outside a bookshop. Photographs of the neighbourhood hang in the window. “Riconosco la nostra piazza. Sono sue le foto in vetrina?”"
+      },
+      "trophyWord": {
+        "word": "occasione",
+        "meaning": {
+          "de": "die Gelegenheit",
+          "en": "opportunity"
+        },
+        "example": "La vetrina mi ha dato l'occasione di parlare con altri fotografi.",
+        "whyThisWord": {
+          "de": "In cogliere l'occasione wird aus einer Gelegenheit eine bewusste Entscheidung für die Ausstellung.",
+          "en": "Cogliere l'occasione presents the exhibition as an opportunity you chose to take."
+        }
+      },
+      "distractors": [
+        "e ho perso l'occasione",
+        "di comprare un album."
+      ],
+      "placeholderCaption": {
+        "de": "In einer Buchhandlung spiegeln sich im Schaufenster mit den Fotos die Häuser gegenüber.",
+        "en": "The houses across the street are reflected in a bookshop window filled with photographs."
+      },
+      "songMood": "Understated acoustic folk groove",
+      "visualNotes": "The houses across the street are reflected in a bookshop window filled with photographs."
+    },
+    {
+      "slug": "la-prenotazione-al-telefono",
+      "title": {
+        "de": "Der erste Termin per Telefon",
+        "en": "The first appointment booked by phone"
+      },
+      "situation": {
+        "de": "An der Anmeldung einer Praxis erkennt die Mitarbeiterin Ihre Stimme. Am Vortag haben Sie dort angerufen.",
+        "en": "At a clinic reception desk, the receptionist recognises your voice. You called the day before."
+      },
+      "pedagogicalGoal": "Eine selbstständig gelöste Alltagsaufgabe würdigen und sie mit der früheren Schwierigkeit am Telefon verbinden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Era lei al telefono ieri per l'appuntamento di oggi, vero?",
+          "baseText": {
+            "de": "Sie waren gestern wegen des heutigen Termins am Telefon, richtig?",
+            "en": "That was you on the phone yesterday about today's appointment, wasn't it?"
+          }
+        },
+        {
+          "targetText": "Prenotare la visita senza aiuto mi ha dato più soddisfazione del previsto.",
+          "baseText": {
+            "de": "Den Termin ohne Hilfe zu vereinbaren hat mich mehr gefreut, als ich erwartet hatte.",
+            "en": "Booking the appointment without help was more satisfying than I expected."
+          }
+        },
+        {
+          "targetText": "All'inizio veniva sempre di persona, anche solo per spostare un orario.",
+          "baseText": {
+            "de": "Anfangs kamen Sie immer persönlich vorbei, selbst wenn Sie nur einen Termin verschieben wollten.",
+            "en": "At first you always came in person, even just to change the time."
+          }
+        },
+        {
+          "targetText": "Al telefono le date sembravano tutte uguali quando parlavano in fretta.",
+          "baseText": {
+            "de": "Am Telefon klangen die Daten für mich alle gleich, wenn schnell gesprochen wurde.",
+            "en": "On the phone the dates all sounded the same when people spoke quickly."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Più… del previsto",
+        "rule": {
+          "de": "Mit più und del previsto vergleichen Sie das tatsächliche Erlebnis mit Ihrer Erwartung. Ein Infinitiv am Satzanfang kann die ganze Tätigkeit benennen.",
+          "en": "Use più and del previsto to compare what happened with what you expected. An infinitive at the start can name the entire activity."
+        },
+        "examples": [
+          {
+            "targetText": "Prenotare la visita senza aiuto mi ha dato più soddisfazione del previsto.",
+            "baseText": {
+              "de": "Den Termin ohne Hilfe zu vereinbaren hat mich mehr gefreut, als ich erwartet hatte.",
+              "en": "Booking the appointment without help was more satisfying than I expected."
+            },
+            "highlight": "più soddisfazione del previsto"
+          },
+          {
+            "targetText": "Capire il primo contratto di affitto mi ha preso più tempo del previsto.",
+            "baseText": {
+              "de": "Den ersten Mietvertrag zu verstehen hat mich mehr Zeit gekostet als erwartet.",
+              "en": "Understanding my first rental agreement took me longer than expected."
+            },
+            "highlight": "più tempo del previsto"
+          }
+        ]
+      },
+      "cloze": [
+        "Al telefono le date ",
+        {
+          "kind": "choice",
+          "answer": "sembravano",
+          "choices": [
+            "sembravamo",
+            "sembravi",
+            "sembravano",
+            "sembrava"
+          ]
+        },
+        " tutte ",
+        {
+          "kind": "choice",
+          "answer": "uguali",
+          "choices": [
+            "uguagliare",
+            "uguali",
+            "uguale",
+            "uguaglianza"
+          ]
+        },
+        " quando parlavano in fretta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prenotare la visita",
+          "baseText": {
+            "de": "den Termin zu vereinbaren",
+            "en": "booking the appointment"
+          }
+        },
+        {
+          "targetText": "senza aiuto",
+          "baseText": {
+            "de": "ohne Hilfe",
+            "en": "without help"
+          }
+        },
+        {
+          "targetText": "mi ha dato",
+          "baseText": {
+            "de": "hat mir bereitet",
+            "en": "gave me"
+          }
+        },
+        {
+          "targetText": "più soddisfazione",
+          "baseText": {
+            "de": "mehr Freude",
+            "en": "more satisfaction"
+          }
+        },
+        {
+          "targetText": "del previsto.",
+          "baseText": {
+            "de": "als erwartet",
+            "en": "than expected"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "soddisfazione",
+          "baseText": {
+            "de": "die Freude darüber, etwas geschafft zu haben",
+            "en": "satisfaction"
+          }
+        },
+        {
+          "targetText": "prenotare una visita",
+          "baseText": {
+            "de": "einen Untersuchungstermin vereinbaren",
+            "en": "book a medical appointment"
+          }
+        },
+        {
+          "targetText": "senza aiuto",
+          "baseText": {
+            "de": "ohne Hilfe",
+            "en": "without help"
+          }
+        },
+        {
+          "targetText": "del previsto",
+          "baseText": {
+            "de": "als erwartet",
+            "en": "than expected"
+          }
+        },
+        {
+          "targetText": "di persona",
+          "baseText": {
+            "de": "persönlich",
+            "en": "in person"
+          }
+        },
+        {
+          "targetText": "in fretta",
+          "baseText": {
+            "de": "schnell",
+            "en": "quickly"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prenotare la visita senza aiuto mi ha dato più soddisfazione del ",
+        "answer": "previsto",
+        "after": ".",
+        "fallbackChoices": [
+          "prevedo",
+          "prevedendo",
+          "previsto",
+          "prevedere"
+        ]
+      },
+      "speakRequired": [
+        "prenotare",
+        "aiuto",
+        "soddisfazione"
+      ],
+      "sceneCaption": {
+        "de": "An der Anmeldung einer Praxis erkennt die Mitarbeiterin Ihre Stimme. Am Vortag haben Sie dort angerufen. „Era lei al telefono ieri per l'appuntamento di oggi, vero?“",
+        "en": "At a clinic reception desk, the receptionist recognises your voice. You called the day before. “Era lei al telefono ieri per l'appuntamento di oggi, vero?”"
+      },
+      "trophyWord": {
+        "word": "soddisfazione",
+        "meaning": {
+          "de": "die Freude darüber, etwas geschafft zu haben",
+          "en": "satisfaction"
+        },
+        "example": "Che soddisfazione capire al primo colpo la data della visita!",
+        "whyThisWord": {
+          "de": "Mit soddisfazione können Sie sagen, wie viel es Ihnen bedeutet hat, einen Alltagsschritt allein zu schaffen.",
+          "en": "Soddisfazione expresses how much it meant to manage an everyday task on your own."
+        }
+      },
+      "distractors": [
+        "con un interprete",
+        "meno fastidio"
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Anmeldetresen stehen ein Telefon und ein Kalender mit eingetragenen Terminen.",
+        "en": "A phone and an appointment diary sit on the reception desk."
+      },
+      "songMood": "Light syncopated guitar duo",
+      "visualNotes": "A phone and an appointment diary sit on the reception desk."
+    },
+    {
+      "slug": "le-lanterne-di-carta",
+      "title": {
+        "de": "Wer faltet die Laternen?",
+        "en": "Who folds the lanterns?"
+      },
+      "situation": {
+        "de": "Beim Laternenfest schaut sich eine Mitarbeiterin des Stadtteilhauses mit Ihnen die handgemachten Laternen an.",
+        "en": "At the lantern festival, a community centre worker looks at the handmade lanterns with you."
+      },
+      "pedagogicalGoal": "Von einer neugierigen Frage zu einer konkreten Begegnung mit einer Person aus dem Viertel weitererzählen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "L'anno scorso guardava la festa dal balcone. Come ha conosciuto il gruppo delle lanterne?",
+          "baseText": {
+            "de": "Letztes Jahr haben Sie vom Balkon aus zugeschaut. Wie haben Sie die Leute kennengelernt, die die Laternen machen?",
+            "en": "Last year you watched the festival from the balcony. How did you get to know the lantern makers?"
+          }
+        },
+        {
+          "targetText": "Per curiosità ho chiesto chi preparava le lanterne e ho conosciuto mezzo quartiere.",
+          "baseText": {
+            "de": "Aus Neugier habe ich gefragt, wer die Laternen macht, und so das halbe Viertel kennengelernt.",
+            "en": "Out of curiosity I asked who made the lanterns and ended up meeting half the neighbourhood."
+          }
+        },
+        {
+          "targetText": "La sua lanterna ha una piega particolare. È un'idea sua?",
+          "baseText": {
+            "de": "Ihre Laterne hat eine besondere Falte. War das Ihre Idee?",
+            "en": "Your lantern has an unusual fold. Was that your idea?"
+          }
+        },
+        {
+          "targetText": "No, Lina mi ha mostrato come piegare la carta senza strapparla.",
+          "baseText": {
+            "de": "Nein, Lina hat mir gezeigt, wie man das Papier faltet, ohne es zu zerreißen.",
+            "en": "No, Lina showed me how to fold the paper without tearing it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ho chiesto… e ho conosciuto…",
+        "rule": {
+          "de": "Zwei abgeschlossene Handlungen stehen nacheinander im passato prossimo und werden mit e verbunden. Per curiosità nennt vorab das Motiv für die erste Handlung.",
+          "en": "Two completed actions follow each other in the passato prossimo, joined by e. Per curiosità states up front the motive for the first action."
+        },
+        "examples": [
+          {
+            "targetText": "Per curiosità ho chiesto chi preparava le lanterne e ho conosciuto mezzo quartiere.",
+            "baseText": {
+              "de": "Aus Neugier habe ich gefragt, wer die Laternen macht, und so das halbe Viertel kennengelernt.",
+              "en": "Out of curiosity I asked who made the lanterns and ended up meeting half the neighbourhood."
+            },
+            "highlight": "ho chiesto chi preparava le lanterne e ho conosciuto"
+          },
+          {
+            "targetText": "Alla festa ho chiesto una ricetta e ho conosciuto la cuoca del quartiere.",
+            "baseText": {
+              "de": "Beim Fest habe ich nach einem Rezept gefragt und so die Köchin des Viertels kennengelernt.",
+              "en": "At the festival I asked for a recipe and got to know the neighbourhood's cook."
+            },
+            "highlight": "ho chiesto una ricetta e ho conosciuto"
+          }
+        ]
+      },
+      "cloze": [
+        "No, Lina mi ha ",
+        {
+          "kind": "choice",
+          "answer": "mostrato",
+          "choices": [
+            "mostra",
+            "mostrato",
+            "mostrare",
+            "mostrando"
+          ]
+        },
+        " come ",
+        {
+          "kind": "choice",
+          "answer": "piegare",
+          "choices": [
+            "piegare",
+            "piegato",
+            "piego",
+            "piegando"
+          ]
+        },
+        " la carta senza strapparla."
+      ],
+      "chunks": [
+        {
+          "targetText": "Per curiosità ho chiesto",
+          "baseText": {
+            "de": "aus Neugier habe ich gefragt",
+            "en": "out of curiosity I asked"
+          }
+        },
+        {
+          "targetText": "chi preparava",
+          "baseText": {
+            "de": "wer anfertigte",
+            "en": "who was making"
+          }
+        },
+        {
+          "targetText": "le lanterne",
+          "baseText": {
+            "de": "die Laternen",
+            "en": "the lanterns"
+          }
+        },
+        {
+          "targetText": "e ho conosciuto mezzo quartiere.",
+          "baseText": {
+            "de": "und habe das halbe Viertel kennengelernt",
+            "en": "and I met half the neighbourhood"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "curiosità",
+          "baseText": {
+            "de": "die Neugier",
+            "en": "curiosity"
+          }
+        },
+        {
+          "targetText": "la lanterna",
+          "baseText": {
+            "de": "die Laterne",
+            "en": "lantern"
+          }
+        },
+        {
+          "targetText": "mezzo quartiere",
+          "baseText": {
+            "de": "das halbe Viertel",
+            "en": "half the neighbourhood"
+          }
+        },
+        {
+          "targetText": "una piega",
+          "baseText": {
+            "de": "eine Falte",
+            "en": "a fold"
+          }
+        },
+        {
+          "targetText": "piegare la carta",
+          "baseText": {
+            "de": "Papier falten",
+            "en": "fold paper"
+          }
+        },
+        {
+          "targetText": "strappare",
+          "baseText": {
+            "de": "zerreißen",
+            "en": "tear"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Per curiosità ho chiesto chi preparava le lanterne e ho ",
+        "answer": "conosciuto",
+        "after": " mezzo quartiere.",
+        "fallbackChoices": [
+          "conoscendo",
+          "conosciuto",
+          "conoscere",
+          "conosco"
+        ]
+      },
+      "speakRequired": [
+        "curiosità",
+        "lanterne",
+        "quartiere"
+      ],
+      "sceneCaption": {
+        "de": "Beim Laternenfest schaut sich eine Mitarbeiterin des Stadtteilhauses mit Ihnen die handgemachten Laternen an. „L'anno scorso guardava la festa dal balcone. Come ha conosciuto il gruppo delle lanterne?“",
+        "en": "At the lantern festival, a community centre worker looks at the handmade lanterns with you. “L'anno scorso guardava la festa dal balcone. Come ha conosciuto il gruppo delle lanterne?”"
+      },
+      "trophyWord": {
+        "word": "curiosità",
+        "meaning": {
+          "de": "die Neugier",
+          "en": "curiosity"
+        },
+        "example": "Per curiosità ho visitato il laboratorio delle lanterne.",
+        "whyThisWord": {
+          "de": "Mit per curiosità erklären Sie, was Sie bewogen hat, die erste Frage zu stellen.",
+          "en": "Per curiosità explains what made you ask the first question."
+        }
+      },
+      "distractors": [
+        "Per abitudine ho chiesto",
+        "e ho salutato il custode."
+      ],
+      "placeholderCaption": {
+        "de": "Unter den Bäumen vor dem Stadtteilhaus hängen handgefaltete Papierlaternen.",
+        "en": "Hand-folded paper lanterns hang under the trees outside the community centre."
+      },
+      "songMood": "Measured Italian acoustic pop with muted guitar",
+      "visualNotes": "Hand-folded paper lanterns hang under the trees outside the community centre."
+    },
+    {
+      "slug": "in-bici-anche-a-novembre",
+      "title": {
+        "de": "Auch im November mit dem Rad",
+        "en": "Cycling even in November"
+      },
+      "situation": {
+        "de": "Ein Nachbar schließt neben Ihnen sein Fahrrad an. Er erinnert sich an Ihre ersten Fahrten zur Arbeit.",
+        "en": "A neighbour locks up his bicycle next to yours. He remembers when you first started cycling to work."
+      },
+      "pedagogicalGoal": "Den Aufwand für eine neue Gewohnheit erklären und erzählen, was beim Durchhalten geholfen hat.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Un anno fa prendeva sempre l'autobus. È stato facile cambiare abitudine?",
+          "baseText": {
+            "de": "Vor einem Jahr haben Sie immer den Bus genommen. War es leicht, sich umzugewöhnen?",
+            "en": "A year ago you always took the bus. Was it easy to change that habit?"
+          }
+        },
+        {
+          "targetText": "Andare al lavoro in bici ogni mattina ha richiesto impegno, soprattutto d'inverno.",
+          "baseText": {
+            "de": "Jeden Morgen mit dem Rad zur Arbeit zu fahren hat Einsatz gekostet, besonders im Winter.",
+            "en": "Cycling to work every morning took commitment, especially in winter."
+          }
+        },
+        {
+          "targetText": "A novembre ha piovuto per tre settimane. Come faceva a mantenere il ritmo?",
+          "baseText": {
+            "de": "Im November hat es drei Wochen lang geregnet. Wie haben Sie es geschafft, dranzubleiben?",
+            "en": "It rained for three weeks in November. How did you manage to keep it up?"
+          }
+        },
+        {
+          "targetText": "Un collega mi aspettava al ponte e insieme affrontavamo la salita.",
+          "baseText": {
+            "de": "Ein Kollege wartete immer an der Brücke auf mich, und zusammen nahmen wir die Steigung in Angriff.",
+            "en": "A colleague would wait for me at the bridge and we'd tackle the hill together."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L'attività come soggetto",
+        "rule": {
+          "de": "Die ganze Tätigkeit steht als Infinitivgruppe am Anfang. Ha richiesto steht deshalb in der Einzahl und sagt, was die Tätigkeit Sie gekostet hat.",
+          "en": "The opening infinitive phrase names the whole activity. The singular ha richiesto says what that activity demanded of you."
+        },
+        "examples": [
+          {
+            "targetText": "Andare al lavoro in bici ogni mattina ha richiesto impegno, soprattutto d'inverno.",
+            "baseText": {
+              "de": "Jeden Morgen mit dem Rad zur Arbeit zu fahren hat Einsatz gekostet, besonders im Winter.",
+              "en": "Cycling to work every morning took commitment, especially in winter."
+            },
+            "highlight": "Andare al lavoro in bici ogni mattina ha richiesto"
+          },
+          {
+            "targetText": "Preparare il pranzo per tutta la settimana ha richiesto un po' di organizzazione.",
+            "baseText": {
+              "de": "Das Mittagessen für die ganze Woche vorzubereiten hat etwas Planung erfordert.",
+              "en": "Preparing lunch for the whole week took a bit of planning."
+            },
+            "highlight": "Preparare il pranzo per tutta la settimana ha richiesto"
+          }
+        ]
+      },
+      "cloze": [
+        "Un collega mi ",
+        {
+          "kind": "form",
+          "answer": "aspettava",
+          "choices": [
+            "aspettava",
+            "aspettavo",
+            "aspettavamo",
+            "aspettavano"
+          ],
+          "cue": "aspettare (Un collega)"
+        },
+        " al ponte e insieme affrontavamo la ",
+        {
+          "kind": "choice",
+          "answer": "salita",
+          "choices": [
+            "saliti",
+            "salito",
+            "salite",
+            "salita"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Andare al lavoro",
+          "baseText": {
+            "de": "zur Arbeit zu fahren",
+            "en": "going to work"
+          }
+        },
+        {
+          "targetText": "in bici ogni mattina",
+          "baseText": {
+            "de": "jeden Morgen mit dem Rad",
+            "en": "by bike every morning"
+          }
+        },
+        {
+          "targetText": "ha richiesto impegno,",
+          "baseText": {
+            "de": "hat Einsatz gekostet",
+            "en": "took commitment"
+          }
+        },
+        {
+          "targetText": "soprattutto d'inverno.",
+          "baseText": {
+            "de": "besonders im Winter",
+            "en": "especially in winter"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "impegno",
+          "baseText": {
+            "de": "der Einsatz",
+            "en": "commitment"
+          }
+        },
+        {
+          "targetText": "in bici",
+          "baseText": {
+            "de": "mit dem Rad",
+            "en": "by bike"
+          }
+        },
+        {
+          "targetText": "d'inverno",
+          "baseText": {
+            "de": "im Winter",
+            "en": "in winter"
+          }
+        },
+        {
+          "targetText": "mantenere il ritmo",
+          "baseText": {
+            "de": "dranbleiben",
+            "en": "keep up the pace"
+          }
+        },
+        {
+          "targetText": "il ponte",
+          "baseText": {
+            "de": "die Brücke",
+            "en": "bridge"
+          }
+        },
+        {
+          "targetText": "affrontare la salita",
+          "baseText": {
+            "de": "die Steigung in Angriff nehmen",
+            "en": "tackle the hill"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Andare al lavoro in bici ogni mattina ha ",
+        "answer": "richiesto",
+        "after": " impegno, soprattutto d'inverno.",
+        "fallbackChoices": [
+          "richiesto",
+          "richiedere",
+          "richiedo",
+          "richiedendo"
+        ]
+      },
+      "speakRequired": [
+        "lavoro",
+        "bici",
+        "impegno"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar schließt neben Ihnen sein Fahrrad an. Er erinnert sich an Ihre ersten Fahrten zur Arbeit. „Un anno fa prendeva sempre l'autobus. È stato facile cambiare abitudine?“",
+        "en": "A neighbour locks up his bicycle next to yours. He remembers when you first started cycling to work. “Un anno fa prendeva sempre l'autobus. È stato facile cambiare abitudine?”"
+      },
+      "trophyWord": {
+        "word": "impegno",
+        "meaning": {
+          "de": "der Einsatz",
+          "en": "commitment"
+        },
+        "example": "Per continuare a pedalare sotto la pioggia ci voleva impegno.",
+        "whyThisWord": {
+          "de": "Impegno beschreibt den regelmäßigen Einsatz hinter einer Gewohnheit, die anderen leicht vorkommen mag.",
+          "en": "Impegno describes the steady effort behind a habit that might look easy to someone else."
+        }
+      },
+      "distractors": [
+        "in auto ogni sera",
+        "soprattutto ad agosto."
+      ],
+      "placeholderCaption": {
+        "de": "Vor dem Haus stehen zwei Fahrräder am Bügel, eins mit noch nassen Schutzblechen.",
+        "en": "Two bicycles stand at the rack outside the building, one with wet mudguards."
+      },
+      "songMood": "Gentle brushed percussion and upright bass",
+      "visualNotes": "Two bicycles stand at the rack outside the building, one with wet mudguards."
+    },
+    {
+      "slug": "una-dedica-alla-portinaia",
+      "title": {
+        "de": "Ein Dankeschön an die Hausmeisterin",
+        "en": "A thank-you for the building's caretaker"
+      },
+      "situation": {
+        "de": "Für die Stadtteilzeitung sammelt ein Redakteur persönliche Dankesworte aus dem Viertel. Sie sprechen mit ihm über Ihre ersten Monate im Haus.",
+        "en": "An editor is collecting personal thank-yous for the neighbourhood paper. You talk to him about your first months in the building."
+      },
+      "pedagogicalGoal": "Eine Person nennen, der Sie danken möchten, und anhand eines Gegenstands erzählen, was sie getan hat.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nel prossimo numero c'è spazio per qualche dedica. A chi vorrebbe scrivere?",
+          "baseText": {
+            "de": "In der nächsten Ausgabe ist Platz für ein paar Widmungen. Wem möchten Sie schreiben?",
+            "en": "There's room for a few dedications in the next issue. Who would you like to write to?"
+          }
+        },
+        {
+          "targetText": "Vorrei ringraziare la portinaia che mi ha dato una mano nei primi mesi.",
+          "baseText": {
+            "de": "Ich möchte der Hausmeisterin danken, die mir in den ersten Monaten geholfen hat.",
+            "en": "I'd like to thank the caretaker who gave me a hand in the first few months."
+          }
+        },
+        {
+          "targetText": "Lei ha portato una foto di scatoloni sotto la pioggia. C'entra con la dedica?",
+          "baseText": {
+            "de": "Sie haben ein Foto von Umzugskartons im Regen mitgebracht. Hat es etwas mit der Widmung zu tun?",
+            "en": "You brought a photo of moving boxes in the rain. Is it connected to the dedication?"
+          }
+        },
+        {
+          "targetText": "Sì, durante il trasloco ha protetto i miei libri con un telo.",
+          "baseText": {
+            "de": "Ja, beim Umzug hat sie meine Bücher mit einer Plane geschützt.",
+            "en": "Yes, during the move she protected my books with a tarpaulin."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "La persona che mi ha aiutato",
+        "rule": {
+          "de": "Nennen Sie die Person und schließen Sie mit che ihre Handlung an. In mi ha dato una mano bezeichnet mi die Person, die Hilfe bekommen hat.",
+          "en": "Name the person, then use che to describe what they did. In mi ha dato una mano, mi identifies the person who received the help."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei ringraziare la portinaia che mi ha dato una mano nei primi mesi.",
+            "baseText": {
+              "de": "Ich möchte der Hausmeisterin danken, die mir in den ersten Monaten geholfen hat.",
+              "en": "I'd like to thank the caretaker who gave me a hand in the first few months."
+            },
+            "highlight": "la portinaia che mi ha dato una mano"
+          },
+          {
+            "targetText": "Ricordo ancora il volontario che mi ha prestato la sua bicicletta.",
+            "baseText": {
+              "de": "Ich erinnere mich noch an den Helfer, der mir sein Fahrrad geliehen hat.",
+              "en": "I still remember the volunteer who lent me his bicycle."
+            },
+            "highlight": "il volontario che mi ha prestato"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, durante il trasloco ha ",
+        {
+          "kind": "choice",
+          "answer": "protetto",
+          "choices": [
+            "proteggere",
+            "protegge",
+            "proteggendo",
+            "protetto"
+          ]
+        },
+        " i ",
+        {
+          "kind": "choice",
+          "answer": "miei",
+          "choices": [
+            "mia",
+            "mio",
+            "miei",
+            "mie"
+          ]
+        },
+        " libri con un telo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei ringraziare",
+          "baseText": {
+            "de": "ich möchte danken",
+            "en": "I'd like to thank"
+          }
+        },
+        {
+          "targetText": "la portinaia",
+          "baseText": {
+            "de": "der Hausmeisterin",
+            "en": "the caretaker"
+          }
+        },
+        {
+          "targetText": "che mi ha dato una mano",
+          "baseText": {
+            "de": "die mir geholfen hat",
+            "en": "who gave me a hand"
+          }
+        },
+        {
+          "targetText": "nei primi mesi.",
+          "baseText": {
+            "de": "in den ersten Monaten",
+            "en": "in the first few months"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ringraziare",
+          "baseText": {
+            "de": "danken",
+            "en": "thank"
+          }
+        },
+        {
+          "targetText": "la portinaia",
+          "baseText": {
+            "de": "die Hausmeisterin",
+            "en": "building caretaker"
+          }
+        },
+        {
+          "targetText": "dare una mano",
+          "baseText": {
+            "de": "helfen",
+            "en": "give someone a hand"
+          }
+        },
+        {
+          "targetText": "una dedica",
+          "baseText": {
+            "de": "eine Widmung",
+            "en": "a dedication"
+          }
+        },
+        {
+          "targetText": "il trasloco",
+          "baseText": {
+            "de": "der Umzug",
+            "en": "move to a new home"
+          }
+        },
+        {
+          "targetText": "un telo",
+          "baseText": {
+            "de": "eine Plane",
+            "en": "a tarpaulin"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei ringraziare la portinaia che mi ha ",
+        "answer": "dato",
+        "after": " una mano nei primi mesi.",
+        "fallbackChoices": [
+          "dare",
+          "dando",
+          "danno",
+          "dato"
+        ]
+      },
+      "speakRequired": [
+        "ringraziare",
+        "portinaia",
+        "mesi"
+      ],
+      "sceneCaption": {
+        "de": "Für die Stadtteilzeitung sammelt ein Redakteur persönliche Dankesworte aus dem Viertel. Sie sprechen mit ihm über Ihre ersten Monate im Haus. „Nel prossimo numero c'è spazio per qualche dedica. A chi vorrebbe scrivere?“",
+        "en": "An editor is collecting personal thank-yous for the neighbourhood paper. You talk to him about your first months in the building. “Nel prossimo numero c'è spazio per qualche dedica. A chi vorrebbe scrivere?”"
+      },
+      "trophyWord": {
+        "word": "ringraziare",
+        "meaning": {
+          "de": "danken",
+          "en": "thank"
+        },
+        "example": "Con questa foto vorrei ringraziare chi ha salvato i miei libri.",
+        "whyThisWord": {
+          "de": "Nach ringraziare können Sie die Person direkt nennen, der Ihr Dank gilt.",
+          "en": "After ringraziare you can directly name the person you want to thank."
+        }
+      },
+      "distractors": [
+        "il trasportatore",
+        "negli ultimi anni."
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Tisch der Stadtteilredaktion liegen ein Foto und das Layout der nächsten Ausgabe.",
+        "en": "A photograph and a layout for the next issue lie on a desk at the neighbourhood paper."
+      },
+      "songMood": "Warm piano with a steady walking pulse",
+      "visualNotes": "A photograph and a layout for the next issue lie on a desk at the neighbourhood paper."
+    },
+    {
+      "slug": "una-passeggiata-al-mese",
+      "title": {
+        "de": "Ein Spaziergang im Monat",
+        "en": "A walk every month"
+      },
+      "situation": {
+        "de": "Nach einem gemeinsamen Rundgang durch das Viertel spricht Sie die Leiterin der Gruppe an. Die Teilnehmenden verabschieden sich gerade.",
+        "en": "After a neighbourhood walk, the group leader comes over to you. The walkers are saying goodbye."
+      },
+      "pedagogicalGoal": "Aus einer gelungenen Erfahrung einen Zukunftswunsch ableiten und auf ein konkretes Angebot vorsichtig eingehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Oggi è rimasta gente a chiacchierare fino alla fine. Che cosa pensa della passeggiata?",
+          "baseText": {
+            "de": "Heute sind die Leute bis zum Schluss zum Plaudern geblieben. Wie hat Ihnen der Rundgang gefallen?",
+            "en": "People stayed to chat right to the end today. What did you think of the walk?"
+          }
+        },
+        {
+          "targetText": "Dopo il successo della passeggiata, spero che in futuro il gruppo possa ritrovarsi ogni mese.",
+          "baseText": {
+            "de": "Nach dem Erfolg des Rundgangs hoffe ich, dass sich die Gruppe künftig jeden Monat treffen kann.",
+            "en": "After the success of the walk, I hope the group can get together every month in the future."
+          }
+        },
+        {
+          "targetText": "A luglio parto e manca una guida. Vorrebbe condurre lei il prossimo giro?",
+          "baseText": {
+            "de": "Im Juli verreise ich, und uns fehlt eine Leitung für den Rundgang. Möchten Sie den nächsten übernehmen?",
+            "en": "I'll be away in July and we're short of a guide. Would you like to lead the next walk?"
+          }
+        },
+        {
+          "targetText": "Prima preferirei provare il percorso breve con una guida esperta.",
+          "baseText": {
+            "de": "Zuerst würde ich die kurze Strecke lieber mit einem erfahrenen Guide abgehen.",
+            "en": "First I'd prefer to try the short route with an experienced guide."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Spero che… possa…",
+        "rule": {
+          "de": "Mit spero che äußern Sie eine Hoffnung. Wenn jemand anderes etwas tun können soll, steht hier possa vor dem Infinitiv der Handlung.",
+          "en": "Use spero che to express a hope. When you hope someone else will be able to do something, use possa before the infinitive naming the action."
+        },
+        "examples": [
+          {
+            "targetText": "Dopo il successo della passeggiata, spero che in futuro il gruppo possa ritrovarsi ogni mese.",
+            "baseText": {
+              "de": "Nach dem Erfolg des Rundgangs hoffe ich, dass sich die Gruppe künftig jeden Monat treffen kann.",
+              "en": "After the success of the walk, I hope the group can get together every month in the future."
+            },
+            "highlight": "spero che in futuro il gruppo possa ritrovarsi"
+          },
+          {
+            "targetText": "Spero che la biblioteca possa riaprire presto anche la sala lettura.",
+            "baseText": {
+              "de": "Ich hoffe, dass die Bibliothek bald auch den Lesesaal wieder öffnen kann.",
+              "en": "I hope the library can reopen the reading room soon as well."
+            },
+            "highlight": "Spero che la biblioteca possa riaprire"
+          }
+        ]
+      },
+      "cloze": [
+        "Prima preferirei ",
+        {
+          "kind": "choice",
+          "answer": "provare",
+          "choices": [
+            "provo",
+            "provando",
+            "provare",
+            "provato"
+          ]
+        },
+        " il percorso breve con una guida ",
+        {
+          "kind": "choice",
+          "answer": "esperta",
+          "choices": [
+            "esperte",
+            "esperta",
+            "esperto",
+            "esperti"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Dopo il successo della passeggiata, spero che",
+          "baseText": {
+            "de": "nach dem Erfolg des Rundgangs hoffe ich, dass",
+            "en": "after the success of the walk, I hope that"
+          }
+        },
+        {
+          "targetText": "in futuro il gruppo",
+          "baseText": {
+            "de": "künftig die Gruppe",
+            "en": "in the future the group"
+          }
+        },
+        {
+          "targetText": "possa ritrovarsi",
+          "baseText": {
+            "de": "sich treffen kann",
+            "en": "can get together"
+          }
+        },
+        {
+          "targetText": "ogni mese.",
+          "baseText": {
+            "de": "jeden Monat",
+            "en": "every month"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "futuro",
+          "baseText": {
+            "de": "die Zukunft",
+            "en": "future"
+          }
+        },
+        {
+          "targetText": "il successo",
+          "baseText": {
+            "de": "der Erfolg",
+            "en": "success"
+          }
+        },
+        {
+          "targetText": "la passeggiata",
+          "baseText": {
+            "de": "der Spaziergang",
+            "en": "walk"
+          }
+        },
+        {
+          "targetText": "ritrovarsi",
+          "baseText": {
+            "de": "wieder zusammenkommen",
+            "en": "get together again"
+          }
+        },
+        {
+          "targetText": "condurre un giro",
+          "baseText": {
+            "de": "einen Rundgang leiten",
+            "en": "lead a walk"
+          }
+        },
+        {
+          "targetText": "il percorso breve",
+          "baseText": {
+            "de": "die kurze Strecke",
+            "en": "the short route"
+          }
+        },
+        {
+          "targetText": "la guida",
+          "baseText": {
+            "de": "der Guide (Person, die den Rundgang leitet)",
+            "en": "guide"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dopo il successo della passeggiata, spero che in futuro il gruppo ",
+        "answer": "possa",
+        "after": " ritrovarsi ogni mese.",
+        "fallbackChoices": [
+          "possiamo",
+          "potendo",
+          "possa",
+          "possano"
+        ]
+      },
+      "speakRequired": [
+        "successo",
+        "futuro",
+        "gruppo"
+      ],
+      "sceneCaption": {
+        "de": "Nach einem gemeinsamen Rundgang durch das Viertel spricht Sie die Leiterin der Gruppe an. Die Teilnehmenden verabschieden sich gerade. „Oggi è rimasta gente a chiacchierare fino alla fine. Che cosa pensa della passeggiata?“",
+        "en": "After a neighbourhood walk, the group leader comes over to you. The walkers are saying goodbye. “Oggi è rimasta gente a chiacchierare fino alla fine. Che cosa pensa della passeggiata?”"
+      },
+      "trophyWord": {
+        "word": "futuro",
+        "meaning": {
+          "de": "die Zukunft",
+          "en": "future"
+        },
+        "example": "Per il futuro vorrei tenere una domenica libera per queste passeggiate.",
+        "whyThisWord": {
+          "de": "In futuro verschiebt den Blick vom gelungenen Rundgang auf Ihren Wunsch für die kommenden Monate.",
+          "en": "In futuro moves the conversation from a successful walk to your hope for the coming months."
+        }
+      },
+      "distractors": [
+        "Prima di partire, spero che",
+        "una volta soltanto."
+      ],
+      "placeholderCaption": {
+        "de": "Am Ende eines Stadtspaziergangs steht eine kleine Gruppe an der Ecke eines Platzes.",
+        "en": "At the end of a neighbourhood walk, a small group stands at the corner of a square."
+      },
+      "songMood": "Understated acoustic folk groove",
+      "visualNotes": "At the end of a neighbourhood walk, a small group stands at the corner of a square."
+    },
+    {
+      "slug": "la-mappa-dei-vicini",
+      "title": {
+        "de": "Die Karten aus dem Viertel",
+        "en": "Maps drawn by the neighbours"
+      },
+      "situation": {
+        "de": "Beim Jahrestreffen des Stadtteilhauses sammeln die Anwesenden Ideen. Eine Mitarbeiterin fragt Sie, was Sie nach Ihrem ersten Jahr gern beitragen würden.",
+        "en": "Residents share ideas at the community centre's annual meeting. A staff member asks what you'd like to contribute after your first year here."
+      },
+      "pedagogicalGoal": "Ein kleines Vorhaben für das nächste Jahr vorstellen und die Wahl mit eigenen Schwierigkeiten und der Hilfe der Nachbarn begründen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Dopo un anno conosce bene il quartiere. Che cosa le piacerebbe preparare per chi arriva adesso?",
+          "baseText": {
+            "de": "Nach einem Jahr kennen Sie das Viertel gut. Was würden Sie gern für Menschen vorbereiten, die jetzt hierherziehen?",
+            "en": "After a year, you know the neighbourhood well. What would you like to prepare for people who are moving here now?"
+          }
+        },
+        {
+          "targetText": "L'anno prossimo vorrei realizzare un progetto: raccogliere le mappe che i vicini disegnano a mano.",
+          "baseText": {
+            "de": "Nächstes Jahr würde ich gern ein Projekt umsetzen und die Karten sammeln, die die Nachbarn von Hand zeichnen.",
+            "en": "Next year I'd like to carry out a project: collecting the maps the neighbours draw by hand."
+          }
+        },
+        {
+          "targetText": "La cartina del Comune è già disponibile all'ingresso. Perché preferisce i disegni dei vicini?",
+          "baseText": {
+            "de": "Der Stadtplan liegt schon am Eingang aus. Warum bevorzugen Sie die Zeichnungen der Nachbarn?",
+            "en": "The town map is already available at the entrance. Why do you prefer the neighbours' drawings?"
+          }
+        },
+        {
+          "targetText": "Sbagliavo sempre uscita, ma i vicini disegnavano scale e sottopassaggi.",
+          "baseText": {
+            "de": "Ich nahm immer den falschen Ausgang, aber die Nachbarn zeichneten sogar Treppen und Unterführungen ein.",
+            "en": "I kept taking the wrong exit, but the neighbours drew in stairs and underpasses."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Raccogliere le cose che…",
+        "rule": {
+          "de": "Che vertritt im Relativsatz das Objekt. In le mappe che i vicini disegnano sind die Karten das, was gezeichnet wird, und die Nachbarn führen die Handlung aus.",
+          "en": "Che stands for the object in the relative clause. In le mappe che i vicini disegnano, the maps are what gets drawn and the neighbours do the drawing."
+        },
+        "examples": [
+          {
+            "targetText": "L'anno prossimo vorrei realizzare un progetto: raccogliere le mappe che i vicini disegnano a mano.",
+            "baseText": {
+              "de": "Nächstes Jahr würde ich gern ein Projekt umsetzen und die Karten sammeln, die die Nachbarn von Hand zeichnen.",
+              "en": "Next year I'd like to carry out a project: collecting the maps the neighbours draw by hand."
+            },
+            "highlight": "le mappe che i vicini disegnano"
+          },
+          {
+            "targetText": "Mi piacerebbe registrare le storie che i negozianti raccontano ai clienti.",
+            "baseText": {
+              "de": "Ich würde gern die Geschichten aufnehmen, die die Ladenbesitzer ihrer Kundschaft erzählen.",
+              "en": "I'd like to record the stories that the shopkeepers tell their customers."
+            },
+            "highlight": "le storie che i negozianti raccontano"
+          }
+        ]
+      },
+      "cloze": [
+        "Sbagliavo sempre uscita, ",
+        {
+          "kind": "choice",
+          "answer": "ma",
+          "choices": [
+            "senza",
+            "ma",
+            "di",
+            "dal"
+          ]
+        },
+        " i vicini ",
+        {
+          "kind": "choice",
+          "answer": "disegnavano",
+          "choices": [
+            "disegnavano",
+            "disegnava",
+            "disegnavamo",
+            "disegnavi"
+          ]
+        },
+        " scale e sottopassaggi."
+      ],
+      "chunks": [
+        {
+          "targetText": "L'anno prossimo vorrei",
+          "baseText": {
+            "de": "nächstes Jahr möchte ich",
+            "en": "next year I'd like to"
+          }
+        },
+        {
+          "targetText": "realizzare un progetto:",
+          "baseText": {
+            "de": "ein Projekt umsetzen",
+            "en": "carry out a project"
+          }
+        },
+        {
+          "targetText": "raccogliere le mappe",
+          "baseText": {
+            "de": "die Karten sammeln",
+            "en": "collect the maps"
+          }
+        },
+        {
+          "targetText": "che i vicini disegnano a mano.",
+          "baseText": {
+            "de": "die die Nachbarn von Hand zeichnen",
+            "en": "that the neighbours draw by hand"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "progetto",
+          "baseText": {
+            "de": "das Projekt",
+            "en": "project"
+          }
+        },
+        {
+          "targetText": "raccogliere",
+          "baseText": {
+            "de": "sammeln",
+            "en": "collect"
+          }
+        },
+        {
+          "targetText": "a mano",
+          "baseText": {
+            "de": "von Hand",
+            "en": "by hand"
+          }
+        },
+        {
+          "targetText": "la cartina del Comune",
+          "baseText": {
+            "de": "der offizielle Stadtplan",
+            "en": "town map"
+          }
+        },
+        {
+          "targetText": "sbagliare uscita",
+          "baseText": {
+            "de": "den falschen Ausgang nehmen",
+            "en": "take the wrong exit"
+          }
+        },
+        {
+          "targetText": "le scale",
+          "baseText": {
+            "de": "die Treppen",
+            "en": "stairs"
+          }
+        },
+        {
+          "targetText": "il sottopassaggio",
+          "baseText": {
+            "de": "die Unterführung",
+            "en": "underpass"
+          }
+        }
+      ],
+      "recall": {
+        "before": "L'anno prossimo vorrei ",
+        "answer": "realizzare",
+        "after": " un progetto: raccogliere le mappe che i vicini disegnano a mano.",
+        "fallbackChoices": [
+          "realizzando",
+          "realizzare",
+          "realizzato",
+          "realizzo"
+        ]
+      },
+      "speakRequired": [
+        "progetto",
+        "mappe",
+        "vicini"
+      ],
+      "sceneCaption": {
+        "de": "Beim Jahrestreffen des Stadtteilhauses sammeln die Anwesenden Ideen. Eine Mitarbeiterin fragt Sie, was Sie nach Ihrem ersten Jahr gern beitragen würden. „Dopo un anno conosce bene il quartiere. Che cosa le piacerebbe preparare per chi arriva adesso?“",
+        "en": "Residents share ideas at the community centre's annual meeting. A staff member asks what you'd like to contribute after your first year here. “Dopo un anno conosce bene il quartiere. Che cosa le piacerebbe preparare per chi arriva adesso?”"
+      },
+      "trophyWord": {
+        "word": "progetto",
+        "meaning": {
+          "de": "das Projekt",
+          "en": "project"
+        },
+        "example": "Per questo progetto vorrei partire dai disegni che ho conservato.",
+        "whyThisWord": {
+          "de": "Progetto gibt Ihrer Idee für das zweite Jahr einen Namen, bevor Sie ihren Ursprung im ersten Jahr erklären.",
+          "en": "Progetto names your idea for the second year before you explain how it grew out of the first one."
+        }
+      },
+      "distractors": [
+        "realizzare un sogno:",
+        "che i turisti comprano in stazione."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch im Stadtteilhaus liegen Papier, Stifte und eine aufgeschlagene Ideenliste.",
+        "en": "Paper, pencils and an open list of ideas lie on a table at the community centre."
+      },
+      "songMood": "Light syncopated guitar duo",
+      "visualNotes": "Paper, pencils and an open list of ideas lie on a table at the community centre."
+    }
+  ]
+}

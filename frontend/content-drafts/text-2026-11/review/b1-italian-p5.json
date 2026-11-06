@@ -1,0 +1,845 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 5,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+  "editorial": {
+    "sourceSha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Sa come si chiama + indicativo (L1–4 core); turn 1 = 12 words, turn 3 = 12; chips rebuild turn 1 uniquely with no interim .?!; cloze now a cue-free choice row (scade / magnetica) with impossible foils; trophy modulo in turn 1; scene quotes the opening verbatim and nothing leaks the duplicate/magnetic-strip beat; DE/EN faithful."
+      },
+      {
+        "n": 2,
+        "observation": "Sa dove trovo … / Sa come posso … both in indicative; 9 / 9 words; DE 'empfängt das Meldeamt nach Terminvereinbarung' now matches 'riceve su appuntamento' and motivates the follow-up; cloze foils (fissato/fisso/fissazione, usavo/usato/usando) all impossible after posso/senza; recall 'informazioni' single word; trophy residenza present."
+      },
+      {
+        "n": 3,
+        "observation": "Sa come posso ritirare … che aspetto da lunedì (12 / 10 words); form gap 'riporta' has subject 'La ricevuta' before the blank and infinitive cue; no competing tense since the receipt states the number now; 'il' before numero rules out numeri/cifre/numerazione; title/situation now match the verbatim opening; beat (clerk cannot find the file → learner offers case number) delivered."
+      },
+      {
+        "n": 4,
+        "observation": "Sa quando chiudono le iscrizioni (12 / 11 words); interim chip 'manca la scadenza:' ends in a colon, which the guard permits, and the capitalised 'Sul volantino' cannot plausibly relocate; cloze choices lasciare/libero unambiguous; registration-closed challenge not revealed by title or caption; transfer example (traghetti) independent."
+      },
+      {
+        "n": 5,
+        "observation": "Può dirmi quale documento occorre (10 / 11 words); third pattern example now covers quanto costa with mirrored rule DE/EN and pedagogicalGoal; form gap 'arriva' has visible subject 'La bolletta' and a habitual reading with no future adverbial, so the exact surface is unique; chip glosses chain correctly in DE and EN."
+      },
+      {
+        "n": 6,
+        "observation": "Può dirmi quale spazio devo usare (13 / 9 words); che cosa example added with rule extension; form gap 'spetta' has subject 'Quella parte' before the blank; 'devo compilarla' foils (compilandola/compilata/compilo) impossible; beat (who fills the back section) delivered; terms 6, trophy firma present."
+      },
+      {
+        "n": 7,
+        "observation": "Può dirmi quale sportello è aperto nel pomeriggio (13 / 9 words); chips re-split so 'nel pomeriggio' is bound to 'è aperto' and no second ordering survives; 'durante' choice row offers only one connector family (mentre/quando/finché all need a finite verb before 'i lavori'); title names opening hours, not the closure for works; trophy sportello present."
+      },
+      {
+        "n": 8,
+        "observation": "Mi può spiegare come rinnovo … (12) and vorrei sapere se … (11) both L8–10 frames in present indicative; 'della biblioteca' gloss now 'of the library'; choice row se/quali/mentre/affinché has one grammatical answer; recall 'spiegare'; interlocutor's 'Sa quando scade la sua tessera?' is a believable opening that does not reveal the pending-confirmation beat."
+      },
+      {
+        "n": 9,
+        "observation": "Non so se il codice … va nel campo (13 / 12 words); form gap 'indica' has subject 'Il numero sul biglietto' before the blank; 'quello' agrees with numero; chips rebuild uniquely (period-final chip last); beat (booking number vs case number) delivered without the clerk's line being leaked; trophy codice present; DE 'Kennnummer' consistent across terms and dialogue."
+      },
+      {
+        "n": 10,
+        "observation": "Vorrei sapere se la tariffa … comprende (13 / 11 words); cloze 'copre' is now a cue-free choice so the conditional surface is not unfairly rejected; 'tutte' agrees with le spese; quota base vs optional firing package matches the outline beat; room-price transfer example independent; terms 7, trophy tariffa present; DE/EN faithful."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Sa come si chiama identifies the form; expiry versus damaged strip distinguishes the two procedures. Scade is now choice-based and alone agrees with the subject among the four displayed options."
+      },
+      {
+        "n": 2,
+        "observation": "The tax desk redirects the learner to the registry office. The corrected German states that it sees people by appointment; both follow-up choices require infinitives."
+      },
+      {
+        "n": 3,
+        "observation": "The revised scene and caption accurately introduce the clerk’s general question. The aligned titles provide the broad certificate-collection topic; neither the failed surname search nor the case number is revealed."
+      },
+      {
+        "n": 4,
+        "observation": "Sa quando leads from the missing deadline to asking if a place opens up. The ferry transfer applies the same timing frame to a different activity."
+      },
+      {
+        "n": 5,
+        "observation": "Quale documento leads to the bill and printed-copy question. The title identifies the service for the model turn, while the bill and copy complication stay hidden. The new monthly bus-pass example correctly models quanto costa, with accurate German and English and a literal highlight."
+      },
+      {
+        "n": 6,
+        "observation": "The signature box and extra school section motivate asking who completes the reverse side. Spetta and compilarla fit their displayed contexts; transfer changes the topic to choosing a trail. The new mountain-trip example accurately models che cosa devo portare, with direct German and English equivalents; it complements the earlier quale choice."
+      },
+      {
+        "n": 7,
+        "observation": "The known service is refunds. The afternoon request, temporary closure and remote-submission question progress naturally and are absent from the opening setup; durante alone fits i lavori among the choices. The four rebuilt chips keep the time expression inside è aperto nel pomeriggio and preserve correct German and English chunks."
+      },
+      {
+        "n": 8,
+        "observation": "Account renewal leads to asking whether borrowing is possible in the meantime. The bicycle-seat transfer is independent; visible se and prendere rows have one viable option each. The English chunk now renders della biblioteca as of the library."
+      },
+      {
+        "n": 9,
+        "observation": "Non so se identifies doubt about a single field, then the learner distinguishes the ticket/reference on the receipt. The term and trophy glosses align with the form context."
+      },
+      {
+        "n": 10,
+        "observation": "The clay versus firing distinction motivates asking about all costs. Copre is now a choice open from the outset and alone agrees with la quota base among the options."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "6dcf2430bb9495caa8a29e52e0733943faf7c4c48c0434beffa0f3105affbb84",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Sa come si chiama asks which form is needed. The intact expiry date versus broken magnetic strip distinguishes replacement from renewal; the future time marker makes the typed tense ambiguous."
+      },
+      {
+        "n": 2,
+        "observation": "Sa dove and sa come lead from the tax desk to an in-person appointment request. Choice rows select infinitives; the German rendering understates access by appointment."
+      },
+      {
+        "n": 3,
+        "observation": "Sa come posso and a reference number follow the plan; the speech tokens and certificate chunks reconstruct the request. The setup preannounces a detail that the clerk has not heard."
+      },
+      {
+        "n": 4,
+        "observation": "Sa quando leads from the missing deadline to a possible vacancy; registration is already closed, distinct from asking when the ferry departs in the example."
+      },
+      {
+        "n": 5,
+        "observation": "Quale documento leads to the utility bill and its printed copy. The institutional requirement is explicitly local. The title gives away the service in the clerk's question."
+      },
+      {
+        "n": 6,
+        "observation": "The school application's reverse side gives the learner a new question about responsibility. Spetta is anchored to quella parte, and compilarla works after devo."
+      },
+      {
+        "n": 7,
+        "observation": "The afternoon refund counter is shut for building work; asking about remote submission resolves the obstacle. Durante precedes a noun, excluding the three offered conjunctions."
+      },
+      {
+        "n": 8,
+        "observation": "Explaining renewal in the online account leads to asking about borrowing before confirmation; the bicycle-saddle transfer is distinct and all four choice alternatives were checked."
+      },
+      {
+        "n": 9,
+        "observation": "Non so se identifies uncertainty about one field; the learner distinguishes the two reference numbers by document. The section next to the date stays private in the scene."
+      },
+      {
+        "n": 10,
+        "observation": "Vorrei sapere se transfers to the price of a room and breakfast. Clay versus firing gives a meaningful follow-up but its hypothetical frame permits a conditional when typing."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "cloze (form: scade)",
+        "issue": "«La tessera scadrà fra un anno» is as idiomatic and precise as «scade fra un anno». The cue gives the infinitive and subject; nothing on the screen rules out the natural future. The form is graded as exactly scade.",
+        "recommendation": "Convert scade to choice with its existing four present-tense options and remove the form cue, or specify present indicative while retaining the required subject cue."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "cloze (form: copre)",
+        "issue": "In the proposed no-firing scenario, «Allora senza la cottura la quota base coprirebbe tutte le spese?» is a natural conditional question. The typed cue does not select between copre and coprirebbe.",
+        "recommendation": "Use the existing four forms in a visible choice row, or specify the required present with the infinitive and subject."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "title.de/en",
+        "issue": "«Digital ausleihen / Borrowing online» identifies the client's chosen service before the clerk asks which service the client wants. It is the distinguishing content of the first learner reply.",
+        "recommendation": "Use a neutral heading about the library desk or the services on a card, keeping the digital borrowing detail for the learner."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "title.en, situation.de/en, sceneCaption.de/en",
+        "issue": "The opening «Quale pratica la porta qui oggi?» asks generally about the case. The English heading already says certificate, and the bilingual setup says the clerk asks what the learner wants to collect, disclosing collection before the first reply and mistranslating the actual turn. The German and English titles also differ in specificity.",
+        "recommendation": "Use matching neutral titles and describe a clerk asking what brings the learner to the desk. Preserve the quoted opening."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "situation.de/en, sceneCaption.de/en",
+        "issue": "Before «Per quale servizio cerca uno sportello?» the setup identifies an Erstattungsantrag / refund request. That is the client's answer to which service they need and not information supplied by the clerk or the public setting.",
+        "recommendation": "Describe the visitor approaching the information desk without naming the refund until turn 2."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "P5 L5–7 pattern.examples, path anchor",
+        "issue": "The approved middle section and this path's own anchor name quale/quanto/che cosa. All six model and transfer questions across L5–7 use quale, and neither of the two other interrogatives is modelled in a learner question anywhere in P5.",
+        "recommendation": "Preserve the planned dialogue beats and distribute at least one natural quanto and one che cosa after può dirmi across transfer examples in L5–7. Broaden their rules/highlights as appropriate."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[2].baseText.de",
+        "issue": "«Das Meldeamt vergibt Termine» says the registry office issues appointments; «riceve su appuntamento» says it receives visitors by appointment. The latter explains why the learner asks how to book.",
+        "recommendation": "Use wording such as «Bei Wohnsitzfragen empfängt Sie das Meldeamt nach Terminvereinbarung.»"
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "faf9ad981e9e6dbfb4401c82d39dd3430d8ea692bea58eeff4132a2fca12f52b",
+      "sourceSha256": "6dcf2430bb9495caa8a29e52e0733943faf7c4c48c0434beffa0f3105affbb84",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Sa come si chiama (11-word turn 1) at a museum desk; the renew-or-duplicate follow-up is answered by the 12-word expiry/broken-strip line. Chunks, terms, recall 'giusto', trophy modulo all consistent. Typed form gap 'scade' admits the equally natural 'scadrà' with 'fra un anno' and nothing on screen restrains it."
+        },
+        {
+          "n": 2,
+          "observation": "Sa dove trovo → tax desk redirect → Sa come posso fissare un appuntamento; both learner turns in the L1–4 frame and within word limits. Both cloze blanks are choice rows with syntactically impossible foils. German for 'riceve su appuntamento' ('vergibt Termine') shifts the meaning from receiving visitors by appointment to issuing appointments."
+        },
+        {
+          "n": 3,
+          "observation": "Sa come posso ritirare… with relative che; the surname lookup fails and the receipt's case number resolves it. Form gap 'riporta' is anchored by the visible subject. The clerk's quoted opening asks which pratica brings the learner in, yet the situation/caption say she asks what you want to collect, and the DE title invents an appointment."
+        },
+        {
+          "n": 4,
+          "observation": "Sa quando chiudono le iscrizioni (12 words) → closed since yesterday → waiting-list request (11 words); plural chiudono explained in the rule. Capitalised 'Sul volantino' and the colon chunk prevent alternative orderings. Clean."
+        },
+        {
+          "n": 5,
+          "observation": "Può dirmi quale documento occorre; utility bill → printed copy question. Form 'arriva' has 'La bolletta' before the blank; 'stampata' agreement choice fine. Title 'Digital ausleihen' only reveals turn-1 content, which the early card already models; the later copy question stays hidden, so the evidence concern is dismissed."
+        },
+        {
+          "n": 6,
+          "observation": "Quale spazio devo usare → signature box plus a back-page section → 'spetta alla segreteria o devo compilarla io?'. 'spetta' is anchored by 'Quella parte'; 'compilarla' is the only form possible after devo. Trail transfer example is independent. Clean."
+        },
+        {
+          "n": 7,
+          "observation": "Quale sportello è aperto nel pomeriggio → counter three closed for works → remote submission. 'durante' is the only option before the noun 'i lavori'; the three conjunction foils are impossible. Naming the refund request in the situation only pre-empts turn 1, not the closure challenge; dismissed."
+        },
+        {
+          "n": 8,
+          "observation": "Mi può spiegare come rinnovo… → renewal button, one-day confirmation → vorrei sapere se nel frattempo posso prendere un libro in prestito. L8–10 frames correctly recycled, all tokens single words of turn 1. Chunk gloss 'from the library' for 'della biblioteca' is slightly loose."
+        },
+        {
+          "n": 9,
+          "observation": "Non so se il codice va nel campo accanto alla data; the clerk distinguishes booking vs case number and the learner checks the mapping. 'indica' has the explicit subject 'Il numero sul biglietto'; 'quello' agrees only with numero. Train transfer example independent. Clean."
+        },
+        {
+          "n": 10,
+          "observation": "Vorrei sapere se la tariffa comprende anche i materiali → clay included, firing extra → quota base question. Typed form 'copre' in a 'senza la cottura' hypothetical is equally natural as 'coprirebbe'; the infinitive+subject cue does not choose between them."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Form blank 'scade' is exact-graded but 'La tessera scadrà fra un anno' is another valid surface; the cue does not restrain tense. Convert to a cue-free choice row with the existing present-tense foils (all impossible with la tessera).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "scade",
+                "choices": [
+                  "scadono",
+                  "scade",
+                  "scado",
+                  "scadiamo"
+                ],
+                "cue": "scadere (la tessera)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "scade",
+                "choices": [
+                  "scadono",
+                  "scade",
+                  "scado",
+                  "scadiamo"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Form blank 'copre' sits inside a hypothetical ('senza la cottura'), where 'coprirebbe' is a natural, equally correct answer; typed first-attempt grading would reject it. Use a visible choice row with the existing foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "copre",
+                "choices": [
+                  "coprono",
+                  "copro",
+                  "copre",
+                  "copriamo"
+                ],
+                "cue": "coprire (la quota base)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "copre",
+                "choices": [
+                  "coprono",
+                  "copro",
+                  "copre",
+                  "copriamo"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "German for 'l'anagrafe riceve su appuntamento' says the registry office hands out appointments ('vergibt Termine') instead of receiving visitors by appointment, which is what motivates the learner's next question.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/1",
+              "old": "Für Wohnsitzfragen vergibt das Meldeamt Termine.",
+              "new": "Für Wohnsitzfragen empfängt das Meldeamt nach Terminvereinbarung."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Situation and scene caption claim the clerk asks what you want to collect, but the verbatim opening 'Quale pratica la porta qui oggi?' asks which matter brings you in; the DE title 'Ein Termin zur Abholung' invents an appointment that never occurs and diverges from the EN title.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/title/de",
+              "old": "Ein Termin zur Abholung",
+              "new": "Eine Bescheinigung abholen"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "Am Schalter fragt die Mitarbeiterin, was Sie abholen möchten.",
+              "new": "Am Schalter fragt die Mitarbeiterin, in welcher Angelegenheit Sie heute da sind."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "At the counter, the clerk asks what you would like to collect.",
+              "new": "At the counter, the clerk asks what brings you in today."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'della biblioteca' reads 'from the library'; 'of the library' mirrors the genitive in 'la tessera della biblioteca' more faithfully.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/2/baseText/en",
+              "old": "from the library",
+              "new": "of the library"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "L5–7 model and transfer examples all use 'quale' after può dirmi; the staging also lists quanto/che cosa. Not a correctness error since the approved beats are quale-based and rules/highlights are built around quale, but a later revision could switch one transfer example (e.g. L6 or L7) to quanto or che cosa together with its rule and highlight.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6a9a98b202c2151dcbf2f7b763f37d1daadc872f4f0c9bf03826dd10a7768f14",
+      "sourceSha256": "f27ff1ebf4b3f8ad7901c02464f75ede8d763b6258b41f8ec3a85b8637c2d985",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 12 words with trophy 'modulo', turn 2 12 words; both cloze gaps are cue-free choices (scade/magnetica) with impossible foils; chips reconstruct uniquely; the broken magnetic strip answers the clerk's two-procedure question. Title/situation only reveal the museum pass named in the opening."
+        },
+        {
+          "n": 2,
+          "observation": "Sa dove / sa come in both learner turns (9/9 words), trophy 'residenza' in turn 1; German follow-up now says 'empfängt … nach Terminvereinbarung', which motivates the booking question; infinitive choices after posso/senza are clean."
+        },
+        {
+          "n": 3,
+          "observation": "Form gap 'riporta' has visible noun subject and cue 'riportare (la ricevuta)'; no future/other surface is natural; chunks unique because 'che aspetto da lunedì?' must be last; title 'Eine Bescheinigung abholen' matches EN and only states turn-1 content, which the early card models."
+        },
+        {
+          "n": 4,
+          "observation": "Sa quando chiudono with plural agreement explained; 'Sul volantino' is capitalised and 'manca la scadenza:' ends in a colon, so no alternative ordering; turn 2 (11 words) credibly asks for a waiting-list place after the closure."
+        },
+        {
+          "n": 5,
+          "observation": "Può dirmi quale documento occorre (10 words, trophy 'documento'); 'arriva' form gap is habitual present with no competing surface; title 'Digital ausleihen' states the learner's own turn-1 service, not the later copy question. Both pattern examples use quale only — quanto example to add."
+        },
+        {
+          "n": 6,
+          "observation": "Può dirmi quale spazio devo usare (13 words, trophy 'firma'); 'spetta' gap has subject 'Quella parte'; 'compilarla' choice foils impossible after devo; examples use quale only — che cosa example to add."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 13 words, trophy 'sportello'; durante choice foils (mentre/quando/finché) are impossible before a noun phrase; chip 'nel pomeriggio' is an independently movable time phrase that also yields the grammatical 'Può dirmi nel pomeriggio quale sportello è aperto per le richieste di rimborso?'."
+        },
+        {
+          "n": 8,
+          "observation": "Mi può spiegare come rinnovo (12 words, trophy 'tessera') and vorrei sapere se in turn 2 (11 words) match L8–10 staging; 'se' choice foils are ungrammatical; EN chunk gloss 'from the library' misrenders the genitive 'della biblioteca'."
+        },
+        {
+          "n": 9,
+          "observation": "Non so se + va (13 words, trophy 'codice'); 'indica' gap has subject 'Il numero sul biglietto'; 'quello' agrees with il numero; distinction booking/case number is answered by a role-appropriate confirmation question."
+        },
+        {
+          "n": 10,
+          "observation": "Vorrei sapere se la tariffa … comprende (13 words, trophy 'tariffa'); copre is a cue-free choice so 'coprirebbe' no longer causes grading loss; tutte agrees with le spese; quota base vs firing package follows the beat."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "L5–7 staging and the path anchor promise può dirmi + quale/quanto/che cosa, but every model and transfer example uses quale. Add a third pattern example with 'Può dirmi quanto…?' in a different context and extend the rule (DE/EN) and the mirrored pedagogicalGoal.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Può dirmi quale documento occorre per attivare il prestito digitale?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welchen Nachweis ich brauche, um die digitale Ausleihe freizuschalten?",
+                    "en": "Can you tell me which document I need to activate digital borrowing?"
+                  },
+                  "highlight": "Può dirmi quale documento occorre"
+                },
+                {
+                  "targetText": "Può dirmi quale biglietto occorre per portare la bici in treno?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welche Fahrkarte ich für die Fahrradmitnahme im Zug brauche?",
+                    "en": "Can you tell me which ticket I need to take my bike on the train?"
+                  },
+                  "highlight": "Può dirmi quale biglietto occorre"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Può dirmi quale documento occorre per attivare il prestito digitale?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welchen Nachweis ich brauche, um die digitale Ausleihe freizuschalten?",
+                    "en": "Can you tell me which document I need to activate digital borrowing?"
+                  },
+                  "highlight": "Può dirmi quale documento occorre"
+                },
+                {
+                  "targetText": "Può dirmi quale biglietto occorre per portare la bici in treno?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welche Fahrkarte ich für die Fahrradmitnahme im Zug brauche?",
+                    "en": "Can you tell me which ticket I need to take my bike on the train?"
+                  },
+                  "highlight": "Può dirmi quale biglietto occorre"
+                },
+                {
+                  "targetText": "Può dirmi quanto costa l'abbonamento mensile per l'autobus?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, wie viel die Monatskarte für den Bus kostet?",
+                    "en": "Can you tell me how much the monthly bus pass costs?"
+                  },
+                  "highlight": "Può dirmi quanto costa l'abbonamento mensile"
+                }
+              ]
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Occorre bedeutet hier „ist nötig“.",
+              "new": "Occorre bedeutet hier „ist nötig“. Nach demselben Muster fragen Sie mit può dirmi quanto costa nach einem Preis."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/pattern/rule/en",
+              "old": "Use può dirmi quale and a noun to ask politely which particular item you need. Here occorre means “is needed”.",
+              "new": "Use può dirmi quale and a noun to ask politely which particular item you need. Here occorre means “is needed”. On the same pattern, può dirmi quanto costa asks for a price."
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "No learner-style example in L5–7 shows 'Può dirmi che cosa…?'. Add a third transfer example with che cosa and extend the rule (DE/EN) and the mirrored pedagogicalGoal.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Può dirmi quale spazio devo usare per la firma sulla domanda di iscrizione?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, in welches Feld auf dem Anmeldeantrag meine Unterschrift gehört?",
+                    "en": "Can you tell me which space to use for my signature on the application form?"
+                  },
+                  "highlight": "quale spazio devo usare"
+                },
+                {
+                  "targetText": "Può dirmi quale sentiero devo prendere per raggiungere la cascata?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welchen Weg ich nehmen muss, um zum Wasserfall zu kommen?",
+                    "en": "Can you tell me which trail I should take to reach the waterfall?"
+                  },
+                  "highlight": "quale sentiero devo prendere"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Può dirmi quale spazio devo usare per la firma sulla domanda di iscrizione?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, in welches Feld auf dem Anmeldeantrag meine Unterschrift gehört?",
+                    "en": "Can you tell me which space to use for my signature on the application form?"
+                  },
+                  "highlight": "quale spazio devo usare"
+                },
+                {
+                  "targetText": "Può dirmi quale sentiero devo prendere per raggiungere la cascata?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, welchen Weg ich nehmen muss, um zum Wasserfall zu kommen?",
+                    "en": "Can you tell me which trail I should take to reach the waterfall?"
+                  },
+                  "highlight": "quale sentiero devo prendere"
+                },
+                {
+                  "targetText": "Può dirmi che cosa devo portare per la gita in montagna?",
+                  "baseText": {
+                    "de": "Können Sie mir sagen, was ich für den Ausflug in die Berge mitnehmen muss?",
+                    "en": "Can you tell me what I need to bring for the mountain trip?"
+                  },
+                  "highlight": "che cosa devo portare"
+                }
+              ]
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Mit dieser Frage können Sie sich zwischen Feldern auf einem Formular orientieren.",
+              "new": "Mit dieser Frage können Sie sich zwischen Feldern auf einem Formular orientieren. Wenn Sie nicht zwischen Dingen wählen, sondern nach dem Inhalt fragen, steht che cosa statt quale: che cosa devo portare."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule/en",
+              "old": "After quale spazio, devo usare says what you as the speaker are supposed to use. This question helps you choose between fields on a form.",
+              "new": "After quale spazio, devo usare says what you as the speaker are supposed to use. This question helps you choose between fields on a form. When you ask about content rather than choosing between items, use che cosa instead of quale: che cosa devo portare."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Chip 'nel pomeriggio' is an independently movable time phrase: 'Può dirmi nel pomeriggio quale sportello è aperto per le richieste di rimborso?' is a second grammatical ordering that the exact chip check would reject. Merge the time phrase into the verb chip so turn 1 reconstructs uniquely.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Può dirmi",
+                  "baseText": {
+                    "de": "Können Sie mir sagen",
+                    "en": "Can you tell me"
+                  }
+                },
+                {
+                  "targetText": "quale sportello è aperto",
+                  "baseText": {
+                    "de": "welcher Schalter geöffnet ist",
+                    "en": "which counter is open"
+                  }
+                },
+                {
+                  "targetText": "nel pomeriggio",
+                  "baseText": {
+                    "de": "am Nachmittag",
+                    "en": "in the afternoon"
+                  }
+                },
+                {
+                  "targetText": "per le richieste di rimborso?",
+                  "baseText": {
+                    "de": "für Erstattungsanträge",
+                    "en": "for refund requests"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Può dirmi",
+                  "baseText": {
+                    "de": "Können Sie mir sagen",
+                    "en": "Can you tell me"
+                  }
+                },
+                {
+                  "targetText": "quale sportello",
+                  "baseText": {
+                    "de": "welcher Schalter",
+                    "en": "which counter"
+                  }
+                },
+                {
+                  "targetText": "è aperto nel pomeriggio",
+                  "baseText": {
+                    "de": "nachmittags geöffnet ist",
+                    "en": "is open in the afternoon"
+                  }
+                },
+                {
+                  "targetText": "per le richieste di rimborso?",
+                  "baseText": {
+                    "de": "für Erstattungsanträge",
+                    "en": "for refund requests"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "English chunk gloss 'from the library' misrenders the genitive 'della biblioteca' in 'la tessera della biblioteca' (DE correctly has 'der Bibliothek'); chained chips then read as borrowing from the library rather than naming the card.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/2/baseText/en",
+              "old": "from the library",
+              "new": "of the library"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Dismissed: the earlier concern that the title 'Digital ausleihen / Borrowing online' (and L3 'Eine Bescheinigung abholen', L7 situation naming the refund request) leaks content. These name only the learner's own turn-1 purpose, which the early card already models; the later challenges (printed copy, missing case reference, counter closed for works) stay hidden. Likewise the form gap 'arriva' in L5 is kept: 'La bolletta arriva online' is generic/habitual with no future adverbial, so no competing surface exists, and the mandated infinitive cue necessarily shares its stem with the 3sg answer.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9b93cf78cd1d93d247ad878e9c50a76b02a57c66ec1aa43f8b1d912768a8b3d7",
+      "sourceSha256": "f27ff1ebf4b3f8ad7901c02464f75ede8d763b6258b41f8ec3a85b8637c2d985",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Sa come si chiama (12-word turn 1, 11-word turn 3); two procedures offered, learner clarifies; both cloze rows now cue-free choices whose foils are person/agreement-impossible with la tessera / la banda; chips, recall 'giusto', speak tokens and trophy all drawn from turn 1; DE/EN faithful (DE 'erst' is a harmless addition)."
+        },
+        {
+          "n": 2,
+          "observation": "Sa dove trovo … / Sa come posso fissare …; corrected DE 'empfängt das Meldeamt nach Terminvereinbarung' is in place and motivates the appointment question; cloze foils after posso/senza are all non-infinitive and impossible; chunks force one order; six distinct terms."
+        },
+        {
+          "n": 3,
+          "observation": "Titles now 'Eine Bescheinigung abholen'/'Collecting a certificate' and situation matches the verbatim opening 'Quale pratica la porta qui oggi?'; form blank 'riporta' has subject La ricevuta before it and a unique present form; 'numero' foils are gender/number-impossible after il; recall 'posso' is in turn 1."
+        },
+        {
+          "n": 4,
+          "observation": "Sa quando chiudono le iscrizioni (12/11 words); closure since yesterday, learner asks to leave name; interim chip 'manca la scadenza:' ends with a colon, not .?!; capitalised 'Sul volantino' and '?'-final chip block reorderings; seven distinct terms; cloze foils impossible after posso and with posto."
+        },
+        {
+          "n": 5,
+          "observation": "Può dirmi quale documento occorre (10/11 words) opens the L5–7 third; form blank 'arriva' has La bolletta before it; 'stampata' agreement foils; chips fixed by '?'; recall 'digitale' and speak tokens in turn 1; DE 'welchen Nachweis ich brauche' is an acceptable paraphrase of 'quale documento occorre'."
+        },
+        {
+          "n": 6,
+          "observation": "Può dirmi quale spazio devo usare (13/9 words); clerk mentions a second section on the back, learner asks who fills it; form blank 'spetta' with subject Quella parte; 'compilarla' foils impossible after devo; chunk order forced by '?' on the last chip."
+        },
+        {
+          "n": 7,
+          "observation": "Può dirmi quale sportello è aperto nel pomeriggio … (13/9 words); temporary closure, learner asks about submitting from home; cloze 'durante' foils are conjunctions impossible before the noun i lavori. Chunk 'nel pomeriggio' is a free-standing time phrase: 'Può dirmi nel pomeriggio quale sportello è aperto per le richieste di rimborso?' is a second grammatical ordering, so the interim chips must be re-split."
+        },
+        {
+          "n": 8,
+          "observation": "Mi può spiegare come rinnovo … (11 words) then Vorrei sapere se nel frattempo posso … (11 words) correctly recycles both L8–10 frames; 'se' foils (quali/mentre/affinché) are ungrammatical with the object un libro; chunk gloss 'from the library' remains (optional, not wrong); seven distinct terms."
+        },
+        {
+          "n": 9,
+          "observation": "Non so se il codice della richiesta va nel campo … (13/12 words); booking number vs case number distinguished; form blank 'indica' has subject Il numero sul biglietto before it; 'quello' agreement foils; recall 'va' is accent-free and in turn 1; last chip ends '.', interim chips clean."
+        },
+        {
+          "n": 10,
+          "observation": "Vorrei sapere se la tariffa … comprende anche i materiali (13/11 words); clay included, firing separate, learner isolates the quota base; 'copre' is now a cue-free choice row avoiding the coprirebbe ambiguity; 'tutte' agreement foils; chunk glosses faithful; seven distinct terms."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Chip 'nel pomeriggio' is an independently movable time phrase: with 'Può dirmi' fixed first and the '?'-final chip last, 'Può dirmi nel pomeriggio quale sportello è aperto per le richieste di rimborso?' is a second grammatical ordering that an exact-match builder would reject. Re-split so the time phrase is bound to its verb.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Può dirmi",
+                  "baseText": {
+                    "de": "Können Sie mir sagen",
+                    "en": "Can you tell me"
+                  }
+                },
+                {
+                  "targetText": "quale sportello è aperto",
+                  "baseText": {
+                    "de": "welcher Schalter geöffnet ist",
+                    "en": "which counter is open"
+                  }
+                },
+                {
+                  "targetText": "nel pomeriggio",
+                  "baseText": {
+                    "de": "am Nachmittag",
+                    "en": "in the afternoon"
+                  }
+                },
+                {
+                  "targetText": "per le richieste di rimborso?",
+                  "baseText": {
+                    "de": "für Erstattungsanträge",
+                    "en": "for refund requests"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Può dirmi",
+                  "baseText": {
+                    "de": "Können Sie mir sagen",
+                    "en": "Can you tell me"
+                  }
+                },
+                {
+                  "targetText": "quale sportello",
+                  "baseText": {
+                    "de": "welcher Schalter",
+                    "en": "which counter"
+                  }
+                },
+                {
+                  "targetText": "è aperto nel pomeriggio",
+                  "baseText": {
+                    "de": "nachmittags geöffnet ist",
+                    "en": "is open in the afternoon"
+                  }
+                },
+                {
+                  "targetText": "per le richieste di rimborso?",
+                  "baseText": {
+                    "de": "für Erstattungsanträge",
+                    "en": "for refund requests"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'della biblioteca' still reads 'from the library'; 'of the library' mirrors the genitive in 'la tessera della biblioteca' more closely. Not a meaning error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/2/baseText/en",
+              "old": "from the library",
+              "new": "of the library"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Independent note that L5–7 examples all use quale after può dirmi. Dismissed as non-actionable here: the approved beats for L5–7 are quale-based (quale documento, quale spazio, quale sportello), the rules and highlights are built around quale, and the staging lists quanto/che cosa as permitted alternatives, not as required coverage. No edit.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3acb21eb0536b16eb9a74e73a4cfc87f6bb1a881c2a9e37f99afa02f80aaaeb3",
+      "sourceSha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Sa come si chiama + indicativo (L1–4 core); turn 1 = 12 words, turn 3 = 12; chips rebuild turn 1 uniquely with no interim .?!; cloze now a cue-free choice row (scade / magnetica) with impossible foils; trophy modulo in turn 1; scene quotes the opening verbatim and nothing leaks the duplicate/magnetic-strip beat; DE/EN faithful."
+        },
+        {
+          "n": 2,
+          "observation": "Sa dove trovo … / Sa come posso … both in indicative; 9 / 9 words; DE 'empfängt das Meldeamt nach Terminvereinbarung' now matches 'riceve su appuntamento' and motivates the follow-up; cloze foils (fissato/fisso/fissazione, usavo/usato/usando) all impossible after posso/senza; recall 'informazioni' single word; trophy residenza present."
+        },
+        {
+          "n": 3,
+          "observation": "Sa come posso ritirare … che aspetto da lunedì (12 / 10 words); form gap 'riporta' has subject 'La ricevuta' before the blank and infinitive cue; no competing tense since the receipt states the number now; 'il' before numero rules out numeri/cifre/numerazione; title/situation now match the verbatim opening; beat (clerk cannot find the file → learner offers case number) delivered."
+        },
+        {
+          "n": 4,
+          "observation": "Sa quando chiudono le iscrizioni (12 / 11 words); interim chip 'manca la scadenza:' ends in a colon, which the guard permits, and the capitalised 'Sul volantino' cannot plausibly relocate; cloze choices lasciare/libero unambiguous; registration-closed challenge not revealed by title or caption; transfer example (traghetti) independent."
+        },
+        {
+          "n": 5,
+          "observation": "Può dirmi quale documento occorre (10 / 11 words); third pattern example now covers quanto costa with mirrored rule DE/EN and pedagogicalGoal; form gap 'arriva' has visible subject 'La bolletta' and a habitual reading with no future adverbial, so the exact surface is unique; chip glosses chain correctly in DE and EN."
+        },
+        {
+          "n": 6,
+          "observation": "Può dirmi quale spazio devo usare (13 / 9 words); che cosa example added with rule extension; form gap 'spetta' has subject 'Quella parte' before the blank; 'devo compilarla' foils (compilandola/compilata/compilo) impossible; beat (who fills the back section) delivered; terms 6, trophy firma present."
+        },
+        {
+          "n": 7,
+          "observation": "Può dirmi quale sportello è aperto nel pomeriggio (13 / 9 words); chips re-split so 'nel pomeriggio' is bound to 'è aperto' and no second ordering survives; 'durante' choice row offers only one connector family (mentre/quando/finché all need a finite verb before 'i lavori'); title names opening hours, not the closure for works; trophy sportello present."
+        },
+        {
+          "n": 8,
+          "observation": "Mi può spiegare come rinnovo … (12) and vorrei sapere se … (11) both L8–10 frames in present indicative; 'della biblioteca' gloss now 'of the library'; choice row se/quali/mentre/affinché has one grammatical answer; recall 'spiegare'; interlocutor's 'Sa quando scade la sua tessera?' is a believable opening that does not reveal the pending-confirmation beat."
+        },
+        {
+          "n": 9,
+          "observation": "Non so se il codice … va nel campo (13 / 12 words); form gap 'indica' has subject 'Il numero sul biglietto' before the blank; 'quello' agrees with numero; chips rebuild uniquely (period-final chip last); beat (booking number vs case number) delivered without the clerk's line being leaked; trophy codice present; DE 'Kennnummer' consistent across terms and dialogue."
+        },
+        {
+          "n": 10,
+          "observation": "Vorrei sapere se la tariffa … comprende (13 / 11 words); cloze 'copre' is now a cue-free choice so the conditional surface is not unfairly rejected; 'tutte' agrees with le spese; quota base vs optional firing package matches the outline beat; room-price transfer example independent; terms 7, trophy tariffa present; DE/EN faithful."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Dismissed: the -are infinitive cues (riportare, arrivare, spettare, indicare in L3/L5/L6/L9) contain the 3sg answer as a substring. This is unavoidable for first-conjugation 3sg under the contract's mandated 'infinitive (subject)' cue, the subject noun is visible before each blank, every foil is a different person, and no competing tense is licensed by the context, so grading is fair. No edit.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": []
+}

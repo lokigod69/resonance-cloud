@@ -204,6 +204,97 @@
       "evidence": "review/b2-german-p4.json"
     },
     {
+      "language": "Italian",
+      "level": "B1",
+      "path": 4,
+      "kind": "new",
+      "file": "b1/italian/p4.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+      "reviewedSourceSha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+      "source": "../IT_B1_COMPLETION/it/p4.json",
+      "evidence": "review/b1-italian-p4.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 5,
+      "kind": "new",
+      "file": "b1/italian/p5.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+      "reviewedSourceSha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+      "source": "../IT_B1_COMPLETION/it/p5.json",
+      "evidence": "review/b1-italian-p5.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 6,
+      "kind": "new",
+      "file": "b1/italian/p6.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+      "reviewedSourceSha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+      "source": "../IT_B1_COMPLETION/it/p6.json",
+      "evidence": "review/b1-italian-p6.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 7,
+      "kind": "new",
+      "file": "b1/italian/p7.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+      "reviewedSourceSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+      "source": "../IT_B1_COMPLETION/it/p7.json",
+      "evidence": "review/b1-italian-p7.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 8,
+      "kind": "new",
+      "file": "b1/italian/p8.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+      "reviewedSourceSha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+      "source": "../IT_B1_COMPLETION/it/p8.json",
+      "evidence": "review/b1-italian-p8.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 9,
+      "kind": "new",
+      "file": "b1/italian/p9.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+      "reviewedSourceSha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+      "source": "../IT_B1_COMPLETION/it/p9.json",
+      "evidence": "review/b1-italian-p9.json"
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "path": 10,
+      "kind": "new",
+      "file": "b1/italian/p10.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+      "reviewedSourceSha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+      "source": "../IT_B1_COMPLETION/it/p10.json",
+      "evidence": "review/b1-italian-p10.json"
+    },
+    {
       "language": "Japanese",
       "level": "B2",
       "path": 1,
@@ -657,7 +748,8 @@
     "Polish": "B2 P1/P2 passed offline text review. Some distractors are easy. The separate Polish A1 P2 lexical hold still applies to October recording scope.",
     "Cebuano": "B2 P1/P2 passed offline text review with a revised native-language specification. The older audio alias holds are separate.",
     "French": "All ten B1 paths are written. P6–P10 passed offline review in French with German and English meanings. In P9 a customer follows a complaint through to a resolution. P10 closes with a personal account of a year in France.",
-    "Portuguese": "All ten Brazilian Portuguese B1 paths are written. P6–P10 passed offline review with German and English meanings. P9 practises describing service problems and negotiating a next step. P10 follows a first year in the neighbourhood."
+    "Portuguese": "All ten Brazilian Portuguese B1 paths are written. P6–P10 passed offline review with German and English meanings. P9 practises describing service problems and negotiating a next step. P10 follows a first year in the neighbourhood.",
+    "Italian": "All ten B1 paths are written. P4–P10 passed offline editorial and independent review with German and English meanings. They use formal Lei in conversations about identifying objects, requesting information, services, plans, earlier habits and the learner’s year."
   },
   "reviewNotes": {
     "Japanese": "20/20 passed offline text staging. Two rounds removed valid alternative answers and repaired stale exercises; 96/96 native checks passed. Kana and chip behavior still need client testing.",

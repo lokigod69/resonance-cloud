@@ -1,0 +1,1336 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 7,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+  "editorial": {
+    "sourceSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Opening quoted verbatim; turn 1 = 13 words with trophy 'organizzare', turn 2 = 9 words; per + infinito core (L1-4); both cloze gaps cue-free choices with impossible foils ('basto/bastano/bastiamo' vs 'un tavolino', 'per scambiamo/scambiato/scambiando'); 4 chips with no second grammatical ordering (chip 1 capitalised, chip 4 carries the full stop); interim chips end without .?!; recall 'trovare' and speak tokens are apostrophe-free turn-1 words; pattern example 2 is an independent transfer; builders/porter's office follow-up genuinely forces the smaller-space adaptation (beat kept)."
+      },
+      {
+        "n": 2,
+        "observation": "Turn 1 = 13 words (trophy 'dividere'), turn 2 = 10 words; per non + infinito staged correctly; form gap 'prepara' has cue 'preparare (Lei)' with the subject 'Lei' visible immediately before the blank and only one finite form fitting after the neighbour's present 'Io intanto preparo'; choice gap 'affettare' foils impossible after 'Posso'; 5 chips fixed order; foils 'Vorrei rimandare'/'sulle mie spalle.' same-context; the missing-person follow-up triggers the redistribution; DE/EN gloss of the 'sulle sue spalle' metaphor is faithful."
+      },
+      {
+        "n": 3,
+        "observation": "Turn 1 = 13 words (trophy 'preparativi'), turn 2 = 9 words; merged chip 'Nei preparativi darei la precedenza' removes the movable-adjunct second ordering; foil 'Nei preventivi darei la precedenza' now structurally parallel; DE turn 1 'mich zuerst um die Stühle kümmern' matches 'darei la precedenza' (manager decides the extent); article/ordinal choice gaps uniquely graded; recall 'libero' agrees with l'ingresso; 'per lasciare libero' rule explains agreement; example 2 ('il piano della cucina') is independent."
+      },
+      {
+        "n": 4,
+        "observation": "Turn 1 = 14 words (trophy 'materiale'), turn 2 = 9 words; in modo da + infinito core; DE/EN turn 1 keep the shared subject ('um es … zu finden'/'so as to find it'); chip 'il materiale su un tavolo' binds the location so only the canonical build is grammatical; foil 'il materiale su due ripiani' mirrors it; recall 'trovarlo' (lo = il materiale) with gender/number foils; cloze choices 'lascia'/'libero' uniquely graded with 'il tavolo'/'il passaggio'; the doorway-blocking follow-up drives the relocation under the window (beat)."
+      },
+      {
+        "n": 5,
+        "observation": "Turn 1 = 15 words (trophy 'elenco'), turn 2 = 8 words; così + presente with futuro 'porterò' (L5-7 extension); follow-up 'Invece di mandarlo a tutti per messaggio, lo scriviamo su un foglio unico…' reacts to the list and sets up the beat's 'foglio comune'; DE pronoun now 'die Liste … sie' (feminine); choice foils 'comunitari/comuni/comunità' impossible after 'sul foglio', 'scrivono/scriviamo/scrivo' impossible with 'ognuno'; interim chip 2 ends with a comma only; recall 'stesse'; example 2 (house keys/doorbell) independent."
+      },
+      {
+        "n": 6,
+        "observation": "Turn 1 = 15 words (trophy 'avvertire'), turn 2 = 10 words; così with subject switch explained in the rule; both gaps are cue-free choices with explicit 'io' governing the coordinated clause; 5 chips with comma-ended chip 3 preventing the 'del cambio di sala' swap; foils 'del cambio di orario,'/'la vecchia indicazione.' plausible same-context; the office-confirmation follow-up fixes the timing (beat 'quando farlo'); term 'avviserò' glossed as future; example 2 (price on the crate) independent."
+      },
+      {
+        "n": 7,
+        "observation": "Turn 1 = 13 words (trophy 'evitare'), turn 2 = 9 words; fronted per + infinito with futuro 'porterò'; cloze 'potrà'/'cominciare' cue-free choices, person foils impossible with 'il lavoro', non-finite foils impossible after 'potrà'; chip reorder with 'durante il riposo' after 'porterò il trapano' yields only a contradictory sentence, not a second correct build; follow-up (helpers working until six) motivates the 18:30 adaptation; DE 'Mittagsruhe' is a defensible narrowing of 'chi riposa' given the afternoon window."
+      },
+      {
+        "n": 8,
+        "observation": "Turn 1 = 12 words (trophy 'partecipare'), turn 2 = 10 words; se + presente with 'potrà' in the main clause (L8-10); rule now reads 'Hier steht nach se das Präsens', not as an exclusive rule; chip 'potrà partecipare anche chi arriva' blocks the alternative 'anche chi arriva potrà partecipare' ordering; foil 'Se chiudiamo' mirrors chip 1; cloze 'resta'/'libero' uniquely graded with 'il centro'; the 'tutti i tavoli' objection forces the wall arrangement (beat); example 2 (sunrise from the summit) independent."
+      },
+      {
+        "n": 9,
+        "observation": "Turn 1 = 14 words (trophy 'volontariato'), turn 2 = 8 words; se + presente, 'sarà più facile' + infinito; 5 chips, period only on the last; foils 'di due ore,'/'durante le vacanze.' same-context; article gaps 'i'/'ai' uniquely graded; coordinator's concrete tray task matches the beat; recall 'facile' with apostrophe-free token; speak tokens 'turni/facile/volontariato' all in turn 1; title 'Eine halbe Stunde Zeit' does not reveal the coordinator's later task."
+      },
+      {
+        "n": 10,
+        "observation": "Turn 1 = 14 words (trophy 'accordo', string-level in l'accordo), turn 2 = 10 words; 'Se per Lei va bene' + 'porterò' recycles se + presente/futuro; EN turn 1 now 'you'll bring it on Sundays'; DE example 2 uses 'Menü'; cloze 'avviserò' is a cue-free choice with 'io' directly before the blank, 'libero' agrees with 'turno'; 4 chips fixed order, interim chips end with comma only; the holiday-cover follow-up yields the beat's extra solution; speak tokens 'bene/porterò/sabato' are turn-1 words."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The courtyard and smaller room establish a credible book swap. The lavender transfer uses a distinct purpose. Basta is now a cue-free bank with only one possible person, eliminating the conditional alternative from grading."
+      },
+      {
+        "n": 2,
+        "observation": "The neighbour is addressed as formal Lei; the learner takes responsibility for the absent bread slicer. Travelling to catch a connection independently models per non. The metaphor for the workload remains understandable but slightly strained."
+      },
+      {
+        "n": 3,
+        "observation": "The German now proposes dealing with the chairs first without pre-empting the movement in the follow-up. The introductory phrase and verb are bound in the canonical chip and foil. Sedie is an actual whole-word speech target."
+      },
+      {
+        "n": 4,
+        "observation": "The German infinitive and English so as to preserve the organizer as the implied subject of trovarlo. The material and table are bound together in the build, and the location choice no longer requires guessing hypothetical versus present."
+      },
+      {
+        "n": 5,
+        "observation": "The list can be brought and the organizer proposes how it will be shared. Lo and die Liste/sie agree in their respective languages. The list of needed supplies is distinguished from the later sign-up sheet. Scrive is uniquely selectable."
+      },
+      {
+        "n": 6,
+        "observation": "Waiting for confirmation still causes the notification to be delayed. Present and future are now represented in separate closed banks, eliminating arbitrary exact-grading of the sequence. The crate example shows a distinct subject after così."
+      },
+      {
+        "n": 7,
+        "observation": "The proposed drill time is adapted to a late worker. Potrà is now a closed, subject-determined choice. The transfer combines sun protection with a future plan."
+      },
+      {
+        "n": 8,
+        "observation": "The singular chi correctly controls potrà; the table arrangement admits parents with pushchairs. The condition and future result are modelled again on the mountain. A cue-free choice now determines resta without rejecting an open conditional form. Both revised explanations explicitly restrict the stated use of the present to the illustrated example."
+      },
+      {
+        "n": 9,
+        "observation": "The half-hour volunteering plan gives the learner a concrete tray shift; the colour-perception example is independent. The follow-up is easy because its articles occur in the request."
+      },
+      {
+        "n": 10,
+        "observation": "The gardening exchange assigns watering and names who will notify the substitute. The repeated English verb clarifies the second person’s responsibility, German Menü describes a dinner menu, and the closed future bank eliminates the competing present."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[1]",
+        "issue": "The figurative «lasciare tutta la cena sulle sue spalle» is understandable but less idiomatic than referring to the work involved.",
+        "recommendation": "For future polish use «lasciare tutto il lavoro sulle sue spalle», syncing any examples and chips."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[2]/cloze",
+        "issue": "The request supplies the articles in i vassoi and ai tavoli, so the learner can copy both answers. The grammar and service action are correct, and the independent transfer is distinct.",
+        "recommendation": "For a harder response, rephrase the request or test different features."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "f4ff5d8dbfc546acd9c64deb46ac53dfdfa429c2e5690bb104600e5ad500b32d",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "One book each makes the portineria viable; the lavender sentence independently transfers per + infinitive. The unresolved proposal makes a conditional bastare natural."
+      },
+      {
+        "n": 2,
+        "observation": "Formal Lei contrasts naturally with io when reallocating bread and sauce. Per non perdere transfers to travel. The responsibility idiom and copied verb could read more naturally."
+      },
+      {
+        "n": 3,
+        "observation": "Chair placement and hanging mugs model the same purpose structure, with a genuinely smaller setup after the follow-up. The starting adjunct is movable in the build."
+      },
+      {
+        "n": 4,
+        "observation": "In modo da with the workshop material precedes the radio example; the blocked doorway motivates moving the table. The infinitive subject and the typed hypothetical deserve attention."
+      },
+      {
+        "n": 5,
+        "observation": "First future at L5 with così + present, independently applied to house keys. A message has not been proposed when the neighbour suggests a sheet instead."
+      },
+      {
+        "n": 6,
+        "observation": "The course room change gives the learner a real reason to wait for office confirmation; the crate example independently models a changed subject after così. Both typed tense slots remain open."
+      },
+      {
+        "n": 7,
+        "observation": "The noise concern and the neighbour working until six lead to a viable 6:30 start. The sunglasses sentence transfers the purpose/future pattern. The modal’s tense is unspecified."
+      },
+      {
+        "n": 8,
+        "observation": "The first se + present with a future result starts at L8; a sunrise is independent transfer. Moving all tables against the walls preserves space for pushchairs. The typed outcome can be present, conditional or future."
+      },
+      {
+        "n": 9,
+        "observation": "The shift length gives the learner a specific volunteering role. The independent lamp/colour example is apt; the learner can copy both tested articles from the clerk."
+      },
+      {
+        "n": 10,
+        "observation": "The gardening agreement and substitute fulfil the beat without a gendered learner. The menu models agreement in a different setting; natural English and the typed future need tightening."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "cloze (basta)",
+        "issue": "The neighbour has just proposed a room with space for one little table. «Un tavolino basterebbe per scambiare un libro a testa» naturally accepts the plan conditionally, as does the expected basta.",
+        "recommendation": "Set this to choice with the present-only bank or cue present indicative explicitly."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[1] and aligned fields",
+        "issue": "«Lasciare tutta la cena sulle sue spalle» puts the meal itself on someone’s shoulders. The English and German correctly mean the work of preparing it.",
+        "recommendation": "Use «per non lasciare tutto il lavoro sulle sue spalle», and sync chips, examples and base lines."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "chunks",
+        "issue": "«Darei la precedenza alle sedie nei preparativi per lasciare libero l’ingresso della sala» also translates the displayed cue when the first chip is moved. The German gloss adds actually moving the chairs where the Italian says give them priority.",
+        "recommendation": "Bind the introductory adjunct to darei, then split the rest. Render the opening as giving the chairs priority in German, leaving the exact movement for the manager."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "dialogue[1].baseText; cloze (lascia)",
+        "issue": "The infinitive in «Riunirei … in modo da trovarlo» naturally shares the first-person singular subject, while the translations explicitly give the finding to “we”/“wir”. In the proposed window position «il tavolo lascerebbe libero» is as natural as the required typed lascia.",
+        "recommendation": "Use singular finding in the base texts or make gathering explicitly plural; sync examples/chunks. Set lascia to choice or give a present-tense cue."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[1–2]; cloze (scrive)",
+        "issue": "The proposed porterò means bringing the list, but the follow-up purports to replace sending a message. On the proposed sheet, both ognuno scrive and ognuno scriverà fit the typed prompt.",
+        "recommendation": "Explicitly propose sending the list as a message in turn 2 (future + così preserved). Use a choice for scrive or specify present indicative."
+      },
+      {
+        "n": 6,
+        "severity": "HIGH",
+        "field": "cloze (aspetto, avviserò)",
+        "issue": "Neither typed cue marks a tense. «Aspetterò la conferma e poi avviso il gruppo» or two presents or two futures can express this agreement. The engine requires one particular mixture and rejects equally good Italian.",
+        "recommendation": "Explicitly differentiate the present and future cues without giving the conjugated forms, or use choice banks that exclude the other tenses."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "cloze (potrà)",
+        "issue": "«Il lavoro può/potrebbe cominciare alle sei e mezza» is an ordinary answer to the timing proposal. The cue specifies potere and il lavoro only.",
+        "recommendation": "Cue futuro semplice explicitly or use the existing future-person bank as choice."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "cloze (resta); pattern.rule",
+        "issue": "The tables have not moved yet. Resta, resterà and resterebbe are natural. The German rule also sounds like all realistic se conditions must use present, although Italian permits e.g. «se partirà …».",
+        "recommendation": "Specify presente or use choice. Phrase the rule as the construction used here, e.g. «Hier steht nach se das Präsens …»/«Here the present after se sets the condition …»."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[2] and cloze",
+        "issue": "The clerk’s «i vassoi ai tavoli» supplies both answers in precisely the same noun phrases. The reply contributes a source location, but it is supplied to the learner already.",
+        "recommendation": "Rephrase the request to describe serving lunch at the tables without printing both target phrases, or blank two features that the learner has to infer."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "cloze (avviserò); dialogue[1].baseText.en, pattern transfer.de",
+        "issue": "«Se manca qualcuno, io avviso la vicina» is equally good Italian to the required future; the cue does not distinguish them. “I’ll bring the water on Saturdays and you on Sundays” can read as transporting the listener. German Speisekarte in the dinner transfer is a restaurant’s menu card, not the agreed selection of dishes.",
+        "recommendation": "Cue futuro or use choice. Give the second English clause a verb (e.g. “and you’ll bring it on Sundays”). Use Menü or Menüvorschlag in German."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b7dae56d7021d184adfc27caf9145cf9196e938beffa762fda4f97fff01e46cb",
+      "sourceSha256": "f4ff5d8dbfc546acd9c64deb46ac53dfdfa429c2e5690bb104600e5ad500b32d",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (13 words) proposes the swap with per trovare; builders in the courtyard force the smaller portineria and the learner keeps the purpose with one book each (9 words). Lavender example transfers per + infinito. Typed 'basta' competes with equally natural 'basterebbe' before the table is agreed."
+        },
+        {
+          "n": 2,
+          "observation": "Vorrei dividere i compiti per non lasciare… (12 words); the absent bread-slicer makes the io/Lei reallocation (10 words) a genuine adaptation. 'mentre Lei prepara' is the only natural finite form with that subject; cloze and chips sound. 'tutta la cena sulle sue spalle' is an acceptable Italian metaphor, DE/EN render the sense."
+        },
+        {
+          "n": 3,
+          "observation": "Darei la precedenza alle sedie per lasciare libero l'ingresso (13 words); manager reduces it to the first row, learner agrees (9 words). Cups example independent. Chip 'Nei preparativi' is a movable adjunct that yields a second grammatical ordering; DE adds 'umstellen' where Italian only prioritises."
+        },
+        {
+          "n": 4,
+          "observation": "In modo da trovarlo (14 words) with lo = il materiale; blocked doorway motivates the window position (9 words). Radio example independent. DE/EN 'damit wir … finden'/'so we can find them' switch the shared io subject of in modo da; typed 'lascia' competes with 'lascerebbe' for a table not yet moved."
+        },
+        {
+          "n": 5,
+          "observation": "First whitelisted future porterò + così non compriamo (15 words), keys example independent. The neighbour answers 'invece di mandare un messaggio' although no message was proposed. Typed 'scrive' competes with 'scriverà'; foil 'comunemente' is syntactically possible as an adverb."
+        },
+        {
+          "n": 6,
+          "observation": "Posso avvertire io … così tutti ricevono (15 words) models a changed subject after così; office confirmation gives a real reason to wait (10 words). Both typed blanks are tense-open (aspetterò/avviso equally valid)."
+        },
+        {
+          "n": 7,
+          "observation": "Fronted per evitare + porterò (13 words); late workers justify the 6:30 start (9 words). Sunglasses example transfers. Typed 'potrà' competes with può/potrebbe."
+        },
+        {
+          "n": 8,
+          "observation": "First se + presente with potrà (12 words); keeping all tables but against the walls preserves the pushchair goal (10 words). Sunrise example independent. Typed 'resta' competes with resterà/resterebbe; DE/EN rule slightly overgeneralises present after se."
+        },
+        {
+          "n": 9,
+          "observation": "Se facciamo turni di mezz'ora, sarà più facile fare volontariato (14 words); coordinator assigns trays 12:00–12:30, learner accepts (8 words). Lamp example independent. Both choice blanks copy noun phrases printed in the coordinator's line—easy but not incorrect."
+        },
+        {
+          "n": 10,
+          "observation": "Se per Lei va bene l'accordo, porterò… (14 words) summarises the shifts; substitute neighbour covers absences (10 words). Typed 'avviserò' competes with 'avviso'; EN 'and you on Sundays' is ambiguous; DE 'Speisekarte' misrenders the agreed menù."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Form gap 'basta' has no cue restraining tense; 'basterebbe' is an equally correct answer to an undecided proposal. Convert to a cue-free choice; the three distractors are impossible with 'un tavolino'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "basta",
+                "choices": [
+                  "basto",
+                  "basta",
+                  "bastano",
+                  "bastiamo"
+                ],
+                "cue": "bastare (un tavolino)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "basta",
+                "choices": [
+                  "basto",
+                  "basta",
+                  "bastano",
+                  "bastiamo"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "'lasciare tutta la cena sulle sue spalle' is a current Italian metaphor (responsibility for the dinner); DE/EN correctly render the sense. No change needed.",
+          "edits": []
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Chip 'Nei preparativi' is an independently movable adjunct: 'Darei la precedenza alle sedie nei preparativi per lasciare libero l'ingresso della sala' is also correct, so the build has two valid orderings. Bind the adjunct to the verb phrase (4 chips remain).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/chunks",
+              "old": [
+                {
+                  "targetText": "Nei preparativi",
+                  "baseText": {
+                    "de": "Bei den Vorbereitungen",
+                    "en": "In the preparations"
+                  }
+                },
+                {
+                  "targetText": "darei la precedenza",
+                  "baseText": {
+                    "de": "würde ich Vorrang geben",
+                    "en": "I'd give priority"
+                  }
+                },
+                {
+                  "targetText": "alle sedie",
+                  "baseText": {
+                    "de": "den Stühlen",
+                    "en": "to the chairs"
+                  }
+                },
+                {
+                  "targetText": "per lasciare libero",
+                  "baseText": {
+                    "de": "um frei zu halten",
+                    "en": "to keep clear"
+                  }
+                },
+                {
+                  "targetText": "l'ingresso della sala.",
+                  "baseText": {
+                    "de": "den Eingang zum Saal.",
+                    "en": "the entrance to the hall."
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Nei preparativi darei la precedenza",
+                  "baseText": {
+                    "de": "Bei den Vorbereitungen würde ich Vorrang geben",
+                    "en": "In the preparations I'd give priority"
+                  }
+                },
+                {
+                  "targetText": "alle sedie",
+                  "baseText": {
+                    "de": "den Stühlen",
+                    "en": "to the chairs"
+                  }
+                },
+                {
+                  "targetText": "per lasciare libero",
+                  "baseText": {
+                    "de": "um frei zu halten",
+                    "en": "to keep clear"
+                  }
+                },
+                {
+                  "targetText": "l'ingresso della sala.",
+                  "baseText": {
+                    "de": "den Eingang zum Saal.",
+                    "en": "the entrance to the hall."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German turn 1 states 'die Stühle umstellen' while the Italian only gives the chairs priority (EN 'deal with the chairs first'); the manager then decides how much to move.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "würde ich zuerst die Stühle umstellen, um den Saaleingang freizuhalten.",
+              "new": "würde ich mich zuerst um die Stühle kümmern, um den Saaleingang freizuhalten."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "In modo da + infinito shares the subject of 'Riunirei' (io); DE 'damit wir … finden' and EN 'so we can find them' teach a subject switch the Italian does not make. Form gap 'lascia' is tense-open ('lascerebbe' equally natural for a not-yet-moved table); convert to cue-free choice.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/3",
+              "old": "damit wir es beim Workshop gleich finden",
+              "new": "um es beim Workshop gleich zu finden"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/3",
+              "old": "I'd put all the materials on one table so we can find them quickly during the workshop.",
+              "new": "I'd gather the material on one table so as to find it quickly during the workshop."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "lascia",
+                "choices": [
+                  "lasciamo",
+                  "lascio",
+                  "lascia",
+                  "lasciano"
+                ],
+                "cue": "lasciare (il tavolo)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "lascia",
+                "choices": [
+                  "lasciamo",
+                  "lascio",
+                  "lascia",
+                  "lasciano"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "The neighbour replies 'Invece di mandare un messaggio' although the learner only said 'porterò un elenco'; the follow-up must react to the proposal (beat: foglio comune invece di un messaggio). Form gap 'scrive' is tense-open ('ognuno scriverà' valid); convert to choice. Choice foil 'comunemente' is syntactically possible as an adverb; replace with an impossible form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2",
+              "old": {
+                "targetText": "Invece di mandare un messaggio, usiamo un foglio unico in portineria?",
+                "baseText": {
+                  "de": "Können wir statt einer Nachricht ein gemeinsames Blatt in der Pförtnerloge verwenden?",
+                  "en": "Instead of sending a message, shall we use one shared sheet in the porter's office?"
+                }
+              },
+              "new": {
+                "targetText": "Invece di mandarlo a tutti per messaggio, lo scriviamo su un foglio unico in portineria?",
+                "baseText": {
+                  "de": "Schreiben wir ihn, statt ihn allen per Nachricht zu schicken, auf ein gemeinsames Blatt in der Pförtnerloge?",
+                  "en": "Instead of sending it to everyone by message, shall we write it on one shared sheet in the porter's office?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/1",
+              "old": {
+                "kind": "choice",
+                "answer": "comune",
+                "choices": [
+                  "comunitari",
+                  "comune",
+                  "comuni",
+                  "comunemente"
+                ]
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "comune",
+                "choices": [
+                  "comunitari",
+                  "comune",
+                  "comuni",
+                  "comunità"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "scrive",
+                "choices": [
+                  "scrive",
+                  "scrivono",
+                  "scriviamo",
+                  "scrivo"
+                ],
+                "cue": "scrivere (ognuno)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "scrive",
+                "choices": [
+                  "scrive",
+                  "scrivono",
+                  "scriviamo",
+                  "scrivo"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Both typed gaps are tense-open: 'io aspetterò la conferma e poi avviso il gruppo', two presents or two futures are all correct Italian, yet only present+future is graded right. The contract allows no tense marker in a form cue, so both become cue-free choices whose banks exclude the other tenses; with explicit 'io' all distractors are impossible.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "aspetto",
+                "choices": [
+                  "aspetto",
+                  "aspetta",
+                  "aspettano",
+                  "aspettiamo"
+                ],
+                "cue": "aspettare (io)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "aspetto",
+                "choices": [
+                  "aspetto",
+                  "aspetta",
+                  "aspettano",
+                  "aspettiamo"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "avviserò",
+                "choices": [
+                  "avviserà",
+                  "avviseranno",
+                  "avviseremo",
+                  "avviserò"
+                ],
+                "cue": "avvisare (io)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "avviserò",
+                "choices": [
+                  "avviserà",
+                  "avviseranno",
+                  "avviseremo",
+                  "avviserò"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Form gap 'potrà' is tense-open ('il lavoro può/potrebbe cominciare' are ordinary answers). Convert to cue-free choice; the person distractors are impossible with 'il lavoro'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "potrà",
+                "choices": [
+                  "potremo",
+                  "potranno",
+                  "potrò",
+                  "potrà"
+                ],
+                "cue": "potere (il lavoro)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "potrà",
+                "choices": [
+                  "potremo",
+                  "potranno",
+                  "potrò",
+                  "potrà"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Form gap 'resta' is tense-open (resterà/resterebbe both natural for tables not yet moved). Convert to cue-free choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "resta",
+                "choices": [
+                  "restiamo",
+                  "resto",
+                  "resta",
+                  "restano"
+                ],
+                "cue": "restare (il centro)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "resta",
+                "choices": [
+                  "restiamo",
+                  "resto",
+                  "resta",
+                  "restano"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Rule reads as if every realistic se-condition must take the present; Italian also allows the future. Phrase it as the construction used here.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/rule",
+              "old": {
+                "de": "Nach se steht bei einer realistischen Bedingung das Präsens. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Use the present after se for a realistic condition. Potrà in the main clause tells you what will become possible."
+              },
+              "new": {
+                "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Both choice answers ('i vassoi', 'ai tavoli') are printed verbatim in the coordinator's line; grading stays correct, but the request could avoid handing over both phrases.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/2",
+              "old": {
+                "targetText": "Ottimo. Domani da mezzogiorno alle dodici e mezza può portare i vassoi ai tavoli?",
+                "baseText": {
+                  "de": "Gut. Können Sie morgen von zwölf bis halb eins die Tabletts an die Tische bringen?",
+                  "en": "Great. Could you carry trays to the tables tomorrow from twelve to half past?"
+                }
+              },
+              "new": {
+                "targetText": "Ottimo. Domani da mezzogiorno alle dodici e mezza può aiutare a servire il pranzo?",
+                "baseText": {
+                  "de": "Gut. Können Sie morgen von zwölf bis halb eins beim Servieren des Mittagessens helfen?",
+                  "en": "Great. Could you help serve lunch tomorrow from twelve to half past?"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Form gap 'avviserò' is tense-open ('io avviso la vicina' equally correct); convert to cue-free choice. EN 'I'll bring the water on Saturdays and you on Sundays' can read as bringing the listener; give the second clause a verb. DE 'Speisekarte' is a restaurant's card, not the agreed menù.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "avviserò",
+                "choices": [
+                  "avviserò",
+                  "avviserà",
+                  "avviseranno",
+                  "avviseremo"
+                ],
+                "cue": "avvisare (io)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "avviserò",
+                "choices": [
+                  "avviserò",
+                  "avviserà",
+                  "avviseranno",
+                  "avviseremo"
+                ]
+              }
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/9",
+              "old": "I'll bring the water on Saturdays and you on Sundays.",
+              "new": "I'll bring the water on Saturdays and you'll bring it on Sundays."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/1/baseText/de",
+              "old": "Wenn die Speisekarte für Sie passt, bringe ich den Nachtisch zum Abendessen mit.",
+              "new": "Wenn das Menü für Sie passt, bringe ich den Nachtisch zum Abendessen mit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "57cc234c7e769fde35612a5a91db1d02fe01987da861412ab0ff2e38a8535c3e",
+      "sourceSha256": "1121ed5b0a6a416444088412a57125584145d7963a6ad4d491e0c981b6a829b1",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Per + infinito core; turn 1 13 words, turn 2 9 words; both cloze gaps are cue-free choices with impossible foils (un tavolino → basta; per → scambiare); chip with full stop pins the only free PP; 'organizzare' in turn 1; DE turn 1 renders the purpose as 'damit diese Bücher neue Leser finden' (subject switch) while chip gloss says 'um neue Leser zu finden'."
+        },
+        {
+          "n": 2,
+          "observation": "Per non + infinito; form gap 'prepara' has visible subject Lei and cue 'preparare (Lei)', present forced by 'mentre'+'Posso'; 'tutta la cena sulle sue spalle' is idiomatic responsibility metaphor, DE/EN faithful; chips 5, no interim punctuation, foils believable."
+        },
+        {
+          "n": 3,
+          "observation": "Chips already merged to 'Nei preparativi darei la precedenza' (single ordering), but foil 'Nei preventivi' no longer mirrors the first chip; DE turn 1/example still says 'die Stühle umstellen' where the Italian gives the chairs priority and the manager decides the actual moving; cloze le/prima unique."
+        },
+        {
+          "n": 4,
+          "observation": "In modo da + trovarlo; DE/EN now keep the io subject; 'lascia' is a choice. Chips 'Riunirei il materiale' / 'su un tavolo' allow the grammatical reorder 'Riunirei il materiale in modo da trovarlo su un tavolo subito durante il laboratorio' – a second correct build."
+        },
+        {
+          "n": 5,
+          "observation": "Porterò … così non compriamo (futuro + così presente, L5 staging); follow-up now reacts to the list; cloze 'comune'/'scrive' choices with impossible foils; DE follow-up refers to 'eine Liste' with masculine 'ihn' twice."
+        },
+        {
+          "n": 6,
+          "observation": "Così with changed subject; cloze 'aspetto'/'avviserò' are choices with explicit io; chips 5 with comma chip fixing the clause order; chip gloss 'Ich kann Bescheid geben' drops the emphatic io but is not wrong."
+        },
+        {
+          "n": 7,
+          "observation": "Per evitare … porterò (per + futuro); cloze 'potrà'/'cominciare' choices; the only alternative chip order ('porterò il trapano durante il riposo, solo dopo le quattro') is self-contradictory, not a correct ordering; turn 2 9 words."
+        },
+        {
+          "n": 8,
+          "observation": "Se + presente, potrà (L8 staging); cloze choices fine. Chips 'potrà partecipare' / 'anche chi arriva' / 'con il passeggino.' permit the correct Italian order 'Se togliamo un tavolo, anche chi arriva potrà partecipare con il passeggino.' Rule still states present as the rule after any realistic se."
+        },
+        {
+          "n": 9,
+          "observation": "Se … sarà più facile + infinito; cloze article choices unique (i vassoi, ai tavoli); the coordinator's line prints both target phrases, grading unaffected; chips 5, comma chip 'di mezz'ora,' not movable."
+        },
+        {
+          "n": 10,
+          "observation": "Se per Lei va bene …, porterò; EN second clause now has a verb; DE transfer uses 'Menü'; cloze 'avviserò'/'libero' choices; trophy 'accordo' in turn 1; register Lei both ways."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Foil 'Nei preventivi' is no longer structurally comparable to the merged first chip; DE turn 1 and highlighted example add actually moving the chairs ('umstellen') where the Italian only gives them priority (the manager then decides to move one row). Distractors carry no DE/EN fields in this schema.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/distractors/0",
+              "old": "Nei preventivi",
+              "new": "Nei preventivi darei la precedenza"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "würde ich zuerst die Stühle umstellen, um den Saaleingang freizuhalten.",
+              "new": "würde ich mich zuerst um die Stühle kümmern, um den Saaleingang freizuhalten."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Chip 'su un tavolo' is independently movable: 'Riunirei il materiale in modo da trovarlo su un tavolo subito durante il laboratorio' is grammatical, correct Italian, so the build has two valid orderings. Bind the location to the object and keep 4 chips; mirror the foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks",
+              "old": [
+                {
+                  "targetText": "Riunirei il materiale",
+                  "baseText": {
+                    "de": "Ich würde das Material sammeln",
+                    "en": "I'd gather the materials"
+                  }
+                },
+                {
+                  "targetText": "su un tavolo",
+                  "baseText": {
+                    "de": "auf einem Tisch",
+                    "en": "on one table"
+                  }
+                },
+                {
+                  "targetText": "in modo da trovarlo",
+                  "baseText": {
+                    "de": "um es finden zu können",
+                    "en": "so as to find it"
+                  }
+                },
+                {
+                  "targetText": "subito durante il laboratorio.",
+                  "baseText": {
+                    "de": "beim Workshop gleich.",
+                    "en": "quickly during the workshop."
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Riunirei",
+                  "baseText": {
+                    "de": "Ich würde sammeln",
+                    "en": "I'd gather"
+                  }
+                },
+                {
+                  "targetText": "il materiale su un tavolo",
+                  "baseText": {
+                    "de": "das Material auf einem Tisch",
+                    "en": "the material on one table"
+                  }
+                },
+                {
+                  "targetText": "in modo da trovarlo",
+                  "baseText": {
+                    "de": "um es finden zu können",
+                    "en": "so as to find it"
+                  }
+                },
+                {
+                  "targetText": "subito durante il laboratorio.",
+                  "baseText": {
+                    "de": "beim Workshop gleich.",
+                    "en": "quickly during the workshop."
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/distractors/0",
+              "old": "su due ripiani",
+              "new": "il materiale su due ripiani"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "DE follow-up uses masculine 'ihn' twice for 'eine Liste' (feminine); grammatical error in the modelled turn.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/de",
+              "old": "Schreiben wir ihn, statt ihn allen per Nachricht zu schicken, auf ein gemeinsames Blatt in der Pförtnerloge?",
+              "new": "Schreiben wir die Liste, statt sie allen per Nachricht zu schicken, auf ein gemeinsames Blatt in der Pförtnerloge?"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Chips 'potrà partecipare' / 'anche chi arriva' / 'con il passeggino.' allow the correct ordering 'Se togliamo un tavolo, anche chi arriva potrà partecipare con il passeggino.' (and 'chi arriva potrà partecipare anche …' under other splits). Regroup so only the canonical order is grammatical; mirror the foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks",
+              "old": [
+                {
+                  "targetText": "Se togliamo un tavolo,",
+                  "baseText": {
+                    "de": "Wenn wir einen Tisch herausnehmen,",
+                    "en": "If we remove a table,"
+                  }
+                },
+                {
+                  "targetText": "potrà partecipare",
+                  "baseText": {
+                    "de": "kann teilnehmen",
+                    "en": "will be able to attend"
+                  }
+                },
+                {
+                  "targetText": "anche chi arriva",
+                  "baseText": {
+                    "de": "auch wer kommt",
+                    "en": "anyone who comes as well"
+                  }
+                },
+                {
+                  "targetText": "con il passeggino.",
+                  "baseText": {
+                    "de": "mit dem Kinderwagen.",
+                    "en": "with a pushchair."
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Se togliamo",
+                  "baseText": {
+                    "de": "Wenn wir herausnehmen",
+                    "en": "If we remove"
+                  }
+                },
+                {
+                  "targetText": "un tavolo,",
+                  "baseText": {
+                    "de": "einen Tisch,",
+                    "en": "a table,"
+                  }
+                },
+                {
+                  "targetText": "potrà partecipare anche chi arriva",
+                  "baseText": {
+                    "de": "kann auch teilnehmen, wer kommt",
+                    "en": "anyone who comes will also be able to attend"
+                  }
+                },
+                {
+                  "targetText": "con il passeggino.",
+                  "baseText": {
+                    "de": "mit dem Kinderwagen.",
+                    "en": "with a pushchair."
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/distractors/0",
+              "old": "Se chiudiamo una porta,",
+              "new": "Se chiudiamo"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Rule reads as if every realistic se-condition takes the present; Italian also allows se + futuro. Phrase it as the construction used here.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/rule",
+              "old": {
+                "de": "Nach se steht bei einer realistischen Bedingung das Präsens. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Use the present after se for a realistic condition. Potrà in the main clause tells you what will become possible."
+              },
+              "new": {
+                "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+              }
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "DE turn 1/example renders 'per trovare nuovi lettori per questi libri' with a subject switch ('damit diese Bücher neue Leser finden') while the pattern teaches per + infinitive and the chip gloss uses 'um … zu finden'. Meaning is preserved; aligning is a preference.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "Wir könnten im Hof einen Büchertausch organisieren, damit diese Bücher neue Leser finden.",
+              "new": "Wir könnten im Hof einen Büchertausch organisieren, um neue Leser für diese Bücher zu finden."
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Chip gloss 'Ich kann Bescheid geben' drops the emphatic io ('I can be the one to tell'); not an error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks/0/baseText/de",
+              "old": "Ich kann Bescheid geben",
+              "new": "Ich kann selbst Bescheid geben"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "The coordinator's line prints 'i vassoi ai tavoli', the two article answers of the cloze. Dismissed as a required fix: both gaps remain uniquely graded and the request is natural, role-appropriate Italian; no edit needed.",
+          "edits": []
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Reorder 'porterò il trapano durante il riposo, solo dopo le quattro' is grammatical only with a contradictory meaning; not a second correct build. No change.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "d221b6131fc223b4ead1975421bb83580ec555d65f1607efdafba6690a4dd9a9",
+      "sourceSha256": "92d969e086fb570ae4ec0abee905b3e965f5c028e309f174413348eefcf2742f",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (13 words) models per + infinito; turn 4 (9 words) accepts the tavolino while keeping the swap. Both cloze gaps are cue-free choices with impossible foils; 4 chips, only the canonical order builds; foils plausible; scene quotes opening verbatim."
+        },
+        {
+          "n": 2,
+          "observation": "Per non lasciare taught in turn 1 (13 words); follow-up removes the bread person, turn 4 (10 words) takes the bread. Form gap 'prepara' has visible subject Lei before the blank and 'mentre' + simultaneous present is the only natural form; 5 chips single ordering; terms 6 distinct."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 (13 words) gives priority to chairs; DE now says 'kümmern' matching Italian; first chip binds 'Nei preparativi' so no second ordering; foil mirrors merged chip; cloze article/ordinal choices unique; manager reduces to first row and learner agrees (9 words)."
+        },
+        {
+          "n": 4,
+          "observation": "In modo da + trovarlo with correct lo = il materiale in rule; DE/EN keep same subject; chips bind 'su un tavolo' to the object; cloze both choice; turn 4 (9 words) relocates table under window as beat requires."
+        },
+        {
+          "n": 5,
+          "observation": "Porterò + così non compriamo (L5 staging); follow-up now reacts to the list with 'lo scriviamo su un foglio unico'; DE uses feminine 'die Liste … sie'; 'comunità' foil impossible; turn 4 (8 words) accepts the shared sheet."
+        },
+        {
+          "n": 6,
+          "observation": "Così clause with subject switch explained; follow-up asks to wait for segreteria confirmation; turn 4 (10 words) sequences present + futuro (avviserò); both gaps choice with person-only foils; 5 chips, comma on 'sala,' blocks reordering."
+        },
+        {
+          "n": 7,
+          "observation": "Fronted per evitare + porterò (13 words); follow-up asks for later start, learner answers 'potrà cominciare alle sei e mezza' (9 words); choice gaps unique; chips single valid ordering."
+        },
+        {
+          "n": 8,
+          "observation": "Se + presente, potrà + infinito (L8 staging); chips regrouped so 'anche chi arriva' cannot float; foil 'Se chiudiamo' mirrors; turn 4 (10 words) accepts tables against the walls; cloze 'resta'/'libero' choice."
+        },
+        {
+          "n": 9,
+          "observation": "Se facciamo turni di mezz'ora, sarà più facile fare volontariato (14 words); coordinator assigns a concrete tray task; article gaps 'i'/'ai' have impossible foils; recall 'facile' and speech tokens are turn-1 words."
+        },
+        {
+          "n": 10,
+          "observation": "Se per Lei va bene l'accordo, porterò … e Lei la domenica (14 words); follow-up introduces the substitute neighbour; turn 4 (10 words) adds the cover solution with se + presente, futuro; EN second clause now has a verb; DE 'Menü' fixed; cloze choice gaps unique."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Rule wording ('Nach se steht … das Präsens' / 'Use the present after se') reads as exclusive, though Italian also allows se + futuro; examples and label are correct, so this is a phrasing preference.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/rule",
+              "old": {
+                "de": "Nach se steht bei einer realistischen Bedingung das Präsens. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Use the present after se for a realistic condition. Potrà in the main clause tells you what will become possible."
+              },
+              "new": {
+                "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+              }
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "DE turn 1/example renders the per-infinitive with a subject switch ('damit diese Bücher neue Leser finden') while the chip gloss uses 'um … zu finden'; meaning is preserved, alignment is a preference.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "Wir könnten im Hof einen Büchertausch organisieren, damit diese Bücher neue Leser finden.",
+              "new": "Wir könnten im Hof einen Büchertausch organisieren, um neue Leser für diese Bücher zu finden."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Coordinator's line prints 'i vassoi ai tavoli', the two article answers; grading remains unique and the request is natural Italian, so dismissed as not required.",
+          "edits": []
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "'lasciare tutta la cena sulle sue spalle' is current idiomatic Italian for shouldering the dinner; DE/EN convey the sense. Dismissed, no change.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "60c70ab321767c8af01875693a6440d91cbde9fe695724754b466868ccde727b",
+      "sourceSha256": "92d969e086fb570ae4ec0abee905b3e965f5c028e309f174413348eefcf2742f",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 13 words, turn 2 9 words; per + infinito core; cloze on turn 2 now two cue-free choices (basta/scambiare) with impossible foils; chips reconstruct exactly, only final chip carries punctuation; trophy organizzare retained; beat (smaller space, same purpose) met."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 13 / turn 2 10 words; per non + infinito; the only form gap in the path (prepara, cue 'preparare (Lei)') has visible subject Lei before the blank and person-impossible foils, tense effectively fixed by mentre + Lei's own 'preparo'; dividere retained; follow-up genuinely removes a person."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 13 / turn 2 9; merged chip 'Nei preparativi darei la precedenza' removes the movable adjunct, foil mirrors it; DE 'um die Stühle kümmern' aligns with Italian precedenza; cloze article/ordinal choices unique; preparativi retained."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 14 / turn 2 9; in modo da + trovarlo with correct lo = il materiale; DE/EN now keep the io subject ('um es … zu finden'/'so as to find it'); 'il materiale su un tavolo' chip binds location; cloze two choices; materiale retained."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 1 15 / turn 2 8; porterò + così + presente (L5 staging); follow-up reacts to the elenco (mandarlo/lo scriviamo, DE 'die Liste … sie'); cloze foils (comunitari/comuni/comunità) impossible after 'sul foglio'; elenco retained."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 15 / turn 2 10; così with subject switch (tutti ricevono) correctly explained; both cloze gaps cue-free choices anchored by explicit io; avvertire retained; beat (wait for segreteria confirmation) met."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 13 / turn 2 9; fronted per evitare + porterò; cloze potrà/cominciare choices unique with 'il lavoro'; the 'durante il riposo,' reorder is only grammatical with a contradictory meaning, not a second valid build; evitare retained."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 1 12 / turn 2 10; se + presente, potrà (whitelist) in main clause; regrouped chip 'potrà partecipare anche chi arriva' leaves one ordering; cloze resta/libero choices; partecipare retained."
+        },
+        {
+          "n": 9,
+          "observation": "Turn 1 14 / turn 2 8; se + presente, sarà più facile + infinito; chips 5 with only final punctuation; cloze article choices i/ai unique; role-appropriate coordinator request; volontariato retained."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 14 / turn 2 10; se per Lei va bene + porterò, then se manca qualcuno + avviserò (both whitelist futures); EN second clause now has its verb; DE 'Menü' fixed; 'chi la avverte' correct for la vicina; accordo retained."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Independent LOW on 'lasciare tutta la cena sulle sue spalle': dismissed. 'Lasciare tutto/qualcosa sulle spalle di qualcuno' is a current metaphor and 'la cena' stands metonymically for the work of the dinner; DE/EN render exactly that sense. No edit.",
+          "edits": []
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Rule wording 'Nach se steht bei einer realistischen Bedingung das Präsens' sounds exclusive (Italian also allows se + futuro); the examples and label are correct, so this is a preference, not an error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/rule",
+              "old": {
+                "de": "Nach se steht bei einer realistischen Bedingung das Präsens. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Use the present after se for a realistic condition. Potrà in the main clause tells you what will become possible."
+              },
+              "new": {
+                "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+                "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Independent LOW that 'i vassoi ai tavoli' appears in the coordinator's line: dismissed. Both article gaps remain uniquely graded, the request is natural Lei Italian and the beat requires a concrete task; copying from context is not a correctness or grading fault. No edit.",
+          "edits": []
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "DE opening adds 'bei der Mittagsruhe' where the Italian says only 'chi riposa'; the afternoon window ('dopo le quattro') makes the gloss plausible, so meaning is preserved and no change is required.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "55ebfea00d32ea84cf7c767118c2ae33120593ec9c9a6a7b001d958a43b4ec53",
+      "sourceSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Opening quoted verbatim; turn 1 = 13 words with trophy 'organizzare', turn 2 = 9 words; per + infinito core (L1-4); both cloze gaps cue-free choices with impossible foils ('basto/bastano/bastiamo' vs 'un tavolino', 'per scambiamo/scambiato/scambiando'); 4 chips with no second grammatical ordering (chip 1 capitalised, chip 4 carries the full stop); interim chips end without .?!; recall 'trovare' and speak tokens are apostrophe-free turn-1 words; pattern example 2 is an independent transfer; builders/porter's office follow-up genuinely forces the smaller-space adaptation (beat kept)."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 = 13 words (trophy 'dividere'), turn 2 = 10 words; per non + infinito staged correctly; form gap 'prepara' has cue 'preparare (Lei)' with the subject 'Lei' visible immediately before the blank and only one finite form fitting after the neighbour's present 'Io intanto preparo'; choice gap 'affettare' foils impossible after 'Posso'; 5 chips fixed order; foils 'Vorrei rimandare'/'sulle mie spalle.' same-context; the missing-person follow-up triggers the redistribution; DE/EN gloss of the 'sulle sue spalle' metaphor is faithful."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 = 13 words (trophy 'preparativi'), turn 2 = 9 words; merged chip 'Nei preparativi darei la precedenza' removes the movable-adjunct second ordering; foil 'Nei preventivi darei la precedenza' now structurally parallel; DE turn 1 'mich zuerst um die Stühle kümmern' matches 'darei la precedenza' (manager decides the extent); article/ordinal choice gaps uniquely graded; recall 'libero' agrees with l'ingresso; 'per lasciare libero' rule explains agreement; example 2 ('il piano della cucina') is independent."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 = 14 words (trophy 'materiale'), turn 2 = 9 words; in modo da + infinito core; DE/EN turn 1 keep the shared subject ('um es … zu finden'/'so as to find it'); chip 'il materiale su un tavolo' binds the location so only the canonical build is grammatical; foil 'il materiale su due ripiani' mirrors it; recall 'trovarlo' (lo = il materiale) with gender/number foils; cloze choices 'lascia'/'libero' uniquely graded with 'il tavolo'/'il passaggio'; the doorway-blocking follow-up drives the relocation under the window (beat)."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 1 = 15 words (trophy 'elenco'), turn 2 = 8 words; così + presente with futuro 'porterò' (L5-7 extension); follow-up 'Invece di mandarlo a tutti per messaggio, lo scriviamo su un foglio unico…' reacts to the list and sets up the beat's 'foglio comune'; DE pronoun now 'die Liste … sie' (feminine); choice foils 'comunitari/comuni/comunità' impossible after 'sul foglio', 'scrivono/scriviamo/scrivo' impossible with 'ognuno'; interim chip 2 ends with a comma only; recall 'stesse'; example 2 (house keys/doorbell) independent."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 = 15 words (trophy 'avvertire'), turn 2 = 10 words; così with subject switch explained in the rule; both gaps are cue-free choices with explicit 'io' governing the coordinated clause; 5 chips with comma-ended chip 3 preventing the 'del cambio di sala' swap; foils 'del cambio di orario,'/'la vecchia indicazione.' plausible same-context; the office-confirmation follow-up fixes the timing (beat 'quando farlo'); term 'avviserò' glossed as future; example 2 (price on the crate) independent."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 = 13 words (trophy 'evitare'), turn 2 = 9 words; fronted per + infinito with futuro 'porterò'; cloze 'potrà'/'cominciare' cue-free choices, person foils impossible with 'il lavoro', non-finite foils impossible after 'potrà'; chip reorder with 'durante il riposo' after 'porterò il trapano' yields only a contradictory sentence, not a second correct build; follow-up (helpers working until six) motivates the 18:30 adaptation; DE 'Mittagsruhe' is a defensible narrowing of 'chi riposa' given the afternoon window."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 1 = 12 words (trophy 'partecipare'), turn 2 = 10 words; se + presente with 'potrà' in the main clause (L8-10); rule now reads 'Hier steht nach se das Präsens', not as an exclusive rule; chip 'potrà partecipare anche chi arriva' blocks the alternative 'anche chi arriva potrà partecipare' ordering; foil 'Se chiudiamo' mirrors chip 1; cloze 'resta'/'libero' uniquely graded with 'il centro'; the 'tutti i tavoli' objection forces the wall arrangement (beat); example 2 (sunrise from the summit) independent."
+        },
+        {
+          "n": 9,
+          "observation": "Turn 1 = 14 words (trophy 'volontariato'), turn 2 = 8 words; se + presente, 'sarà più facile' + infinito; 5 chips, period only on the last; foils 'di due ore,'/'durante le vacanze.' same-context; article gaps 'i'/'ai' uniquely graded; coordinator's concrete tray task matches the beat; recall 'facile' with apostrophe-free token; speak tokens 'turni/facile/volontariato' all in turn 1; title 'Eine halbe Stunde Zeit' does not reveal the coordinator's later task."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 = 14 words (trophy 'accordo', string-level in l'accordo), turn 2 = 10 words; 'Se per Lei va bene' + 'porterò' recycles se + presente/futuro; EN turn 1 now 'you'll bring it on Sundays'; DE example 2 uses 'Menü'; cloze 'avviserò' is a cue-free choice with 'io' directly before the blank, 'libero' agrees with 'turno'; 4 chips fixed order, interim chips end with comma only; the holiday-cover follow-up yields the beat's extra solution; speak tokens 'bene/porterò/sabato' are turn-1 words."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Independent LOW on 'lasciare tutta la cena sulle sue spalle' dismissed: 'lasciare qualcosa sulle spalle di qualcuno' is current Italian and 'la cena' stands metonymically for its preparation; DE 'die Arbeit für das Essen … an Ihnen hängen bleibt' and EN 'do all the work for dinner' already render that sense. No edit.",
+          "edits": []
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Independent LOW that 'i vassoi ai tavoli' appears in the coordinator's line dismissed: both article gaps remain uniquely graded, the request is natural Lei Italian and the beat requires a concrete task; copying from context is not a correctness or grading fault.",
+          "edits": []
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Choice foil 'avviseremo' in 'Allora io aspetto la conferma e poi ___ il gruppo' is only conceivable with an unmarked subject switch after an emphatic 'io'; in this coordinated clause the subject carries over, so the foil is not a second correct reading and grading stays unique. No edit.",
+          "edits": []
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "DE turn 1/example renders 'per trovare nuovi lettori per questi libri' with a subject switch ('damit diese Bücher neue Leser finden') while the chip gloss uses 'um … zu finden'; meaning is preserved and the pattern rule names the purpose correctly, so alignment is a stylistic preference outside this bounded verification.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "fromSha256": "92d969e086fb570ae4ec0abee905b3e965f5c028e309f174413348eefcf2742f",
+      "toSha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+      "authoritySha256": "de2ea6cc396683938de0f2b77625bc97af255b4b8c0c78986f7158027e85b072",
+      "edits": [
+        {
+          "op": "set",
+          "path": "/lessons/7/pattern/rule",
+          "old": {
+            "de": "Nach se steht bei einer realistischen Bedingung das Präsens. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+            "en": "Use the present after se for a realistic condition. Potrà in the main clause tells you what will become possible."
+          },
+          "new": {
+            "de": "Hier steht nach se das Präsens für eine realistische Bedingung. Potrà im Hauptsatz nennt, was dann möglich sein wird.",
+            "en": "Here the present after se sets a realistic condition. Potrà in the main clause tells you what will become possible."
+          }
+        }
+      ]
+    },
+    {
+      "receiptSha256": "5c3b03a223829fdd6ce2501d50937ad34481a23ca193a91cbf56e2b93692901d",
+      "edits": [
+        {
+          "p": 7,
+          "n": 3,
+          "spoken": "Nei preparativi darei la precedenza alle sedie per lasciare libero l'ingresso della sala.",
+          "old": [
+            "preparativi",
+            "precedenza",
+            "ingresso"
+          ],
+          "new": [
+            "preparativi",
+            "precedenza",
+            "sedie"
+          ],
+          "reason": "'ingresso' is elided (l'ingresso -> lingresso); proposed trio is non-elided, in spoken order, and content-bearing."
+        }
+      ]
+    }
+  ]
+}

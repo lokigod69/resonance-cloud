@@ -1,0 +1,2128 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Früher und heute",
+    "en": "Then and now"
+  },
+  "subtitle": {
+    "de": "Beschreiben Sie frühere Gewohnheiten und vergleichen Sie sie mit Ihrem heutigen Alltag.",
+    "en": "Describe past habits and compare them with your routine today."
+  },
+  "anchor": "Forma B. Imperfetto per abitudini e situazioni del passato, quando avevo + età per evitare genere del parlante, contrasto con il presente e comparativi già autorizzati. Per durata ancora attuale, presente + da; non importare il present perfect inglese.",
+  "lessons": [
+    {
+      "slug": "ricordi-del-cortile",
+      "title": {
+        "de": "Ein Spiel von früher",
+        "en": "A game from long ago"
+      },
+      "situation": {
+        "de": "Bei einem Nachbarschaftstreffen kommen Sie mit einer Nachbarin über alte Spiele ins Gespräch.",
+        "en": "At a neighbourhood gathering, you get talking to a neighbour about games people used to play."
+      },
+      "pedagogicalGoal": "Von einer Kindheitsgewohnheit erzählen und ein konkretes Detail ergänzen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ricorda un gioco che faceva spesso a casa?",
+          "baseText": {
+            "de": "Erinnern Sie sich an ein Spiel, das Sie früher oft zu Hause gespielt haben?",
+            "en": "Do you remember a game you often played at home?"
+          }
+        },
+        {
+          "targetText": "Durante la mia infanzia costruivo capanne con i cuscini del divano di mia nonna.",
+          "baseText": {
+            "de": "In meiner Kindheit baute ich Hütten aus den Sofakissen meiner Großmutter.",
+            "en": "During my childhood I used to build dens with the cushions from my grandmother's sofa."
+          }
+        },
+        {
+          "targetText": "E come faceva a tener su il tetto della capanna?",
+          "baseText": {
+            "de": "Und wie haben Sie das Dach der Hütte oben gehalten?",
+            "en": "And how did you keep the roof of the den up?"
+          }
+        },
+        {
+          "targetText": "Due sedie reggevano il tetto fatto con una coperta.",
+          "baseText": {
+            "de": "Zwei Stühle stützten das Dach, das aus einer Decke bestand.",
+            "en": "Two chairs held up the roof, which was made from a blanket."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Durante… + imperfetto",
+        "rule": {
+          "de": "Durante grenzt den Zeitraum ein. Das Imperfetto, etwa costruivo oder bevevo, beschreibt etwas, das in dieser Zeit regelmäßig geschah.",
+          "en": "Durante sets the time period. The imperfect, such as costruivo or bevevo, describes something that happened regularly during that period."
+        },
+        "examples": [
+          {
+            "targetText": "Durante la mia infanzia costruivo capanne con i cuscini del divano di mia nonna.",
+            "baseText": {
+              "de": "In meiner Kindheit baute ich Hütten aus den Sofakissen meiner Großmutter.",
+              "en": "During my childhood I used to build dens with the cushions from my grandmother's sofa."
+            },
+            "highlight": "Durante la mia infanzia costruivo"
+          },
+          {
+            "targetText": "Durante i turni di notte bevevo il tè senza zucchero.",
+            "baseText": {
+              "de": "In den Nachtschichten trank ich meinen Tee ohne Zucker.",
+              "en": "During night shifts I used to drink my tea without sugar."
+            },
+            "highlight": "Durante i turni di notte bevevo"
+          }
+        ]
+      },
+      "cloze": [
+        "Due sedie ",
+        {
+          "kind": "form",
+          "answer": "reggevano",
+          "choices": [
+            "reggevano",
+            "reggeva",
+            "reggevo",
+            "reggevamo"
+          ],
+          "cue": "reggere (due sedie)"
+        },
+        " il tetto ",
+        {
+          "kind": "choice",
+          "answer": "fatto",
+          "choices": [
+            "fatta",
+            "fatti",
+            "fatte",
+            "fatto"
+          ]
+        },
+        " con una coperta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Durante la mia infanzia",
+          "baseText": {
+            "de": "In meiner Kindheit",
+            "en": "During my childhood"
+          }
+        },
+        {
+          "targetText": "costruivo capanne",
+          "baseText": {
+            "de": "baute ich Hütten",
+            "en": "I used to build dens"
+          }
+        },
+        {
+          "targetText": "con i cuscini",
+          "baseText": {
+            "de": "mit den Kissen",
+            "en": "with the cushions"
+          }
+        },
+        {
+          "targetText": "del divano di mia nonna.",
+          "baseText": {
+            "de": "vom Sofa meiner Großmutter.",
+            "en": "from my grandmother's sofa."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "infanzia",
+          "baseText": {
+            "de": "Kindheit",
+            "en": "childhood"
+          }
+        },
+        {
+          "targetText": "costruivo",
+          "baseText": {
+            "de": "ich baute",
+            "en": "I used to build"
+          }
+        },
+        {
+          "targetText": "capanne",
+          "baseText": {
+            "de": "Hütten",
+            "en": "dens"
+          }
+        },
+        {
+          "targetText": "cuscini",
+          "baseText": {
+            "de": "Kissen",
+            "en": "cushions"
+          }
+        },
+        {
+          "targetText": "tetto",
+          "baseText": {
+            "de": "Dach",
+            "en": "roof"
+          }
+        },
+        {
+          "targetText": "coperta",
+          "baseText": {
+            "de": "Decke",
+            "en": "blanket"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Durante la mia infanzia ",
+        "answer": "costruivo",
+        "after": " capanne con i cuscini del divano di mia nonna.",
+        "fallbackChoices": [
+          "costruendo",
+          "costruire",
+          "costruito",
+          "costruivo"
+        ]
+      },
+      "speakRequired": [
+        "infanzia",
+        "costruivo",
+        "capanne"
+      ],
+      "sceneCaption": {
+        "de": "Bei einem Nachbarschaftstreffen kommen Sie mit einer Nachbarin über alte Spiele ins Gespräch. „Ricorda un gioco che faceva spesso a casa?“",
+        "en": "At a neighbourhood gathering, you get talking to a neighbour about games people used to play. “Ricorda un gioco che faceva spesso a casa?”"
+      },
+      "trophyWord": {
+        "word": "infanzia",
+        "meaning": {
+          "de": "Kindheit",
+          "en": "childhood"
+        },
+        "example": "Durante la mia infanzia costruivo capanne con i cuscini del divano di mia nonna.",
+        "whyThisWord": {
+          "de": "Infanzia benennt die Kindheit als Lebensabschnitt. Durante la mia infanzia lässt sich unabhängig vom eigenen Geschlecht verwenden.",
+          "en": "Infanzia names childhood as a stage of life. Anyone can say durante la mia infanzia, regardless of gender."
+        }
+      },
+      "distractors": [
+        "costruivo modellini",
+        "del letto di mio fratello."
+      ],
+      "placeholderCaption": {
+        "de": "Bei einem Nachbarschaftstreffen kommen Sie mit einer Nachbarin über alte Spiele ins Gespräch.",
+        "en": "At a neighbourhood gathering, you get talking to a neighbour about games people used to play."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "At a neighbourhood gathering, you get talking to a neighbour about games people used to play."
+    },
+    {
+      "slug": "sabati-in-citta",
+      "title": {
+        "de": "Ein Samstag in der Stadt",
+        "en": "A Saturday in town"
+      },
+      "situation": {
+        "de": "Vor einer Bäckerei kommen Sie mit einem Nachbarn über das Wochenende ins Gespräch.",
+        "en": "Outside a bakery, you and a neighbour start talking about weekends."
+      },
+      "pedagogicalGoal": "Eine frühere Wochenendgewohnheit mit dem heutigen Stadtleben vergleichen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come passava il sabato prima di venire ad abitare qui?",
+          "baseText": {
+            "de": "Wie haben Sie früher den Samstag verbracht, bevor Sie hierhergezogen sind?",
+            "en": "How did you spend Saturdays before you came to live here?"
+          }
+        },
+        {
+          "targetText": "Prima di vivere in città avevo l'abitudine di fare il pane ogni sabato.",
+          "baseText": {
+            "de": "Bevor ich in der Stadt wohnte, hatte ich die Gewohnheit, jeden Samstag Brot zu backen.",
+            "en": "Before I lived in the city, I used to make bread every Saturday."
+          }
+        },
+        {
+          "targetText": "E adesso prepara ancora il pane a casa?",
+          "baseText": {
+            "de": "Und backen Sie heute noch zu Hause Brot?",
+            "en": "And do you still bake bread at home?"
+          }
+        },
+        {
+          "targetText": "Adesso compro la pagnotta del sabato al forno sotto casa.",
+          "baseText": {
+            "de": "Heute kaufe ich mein Samstagsbrot bei der Bäckerei gleich unten im Haus.",
+            "en": "Now I buy my Saturday loaf at the bakery downstairs."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Avevo l'abitudine di…",
+        "rule": {
+          "de": "Avevo l'abitudine di mit Infinitiv beschreibt etwas, das Sie früher regelmäßig taten. Ein Ausdruck wie ogni sabato gibt den Rhythmus an.",
+          "en": "Avevo l'abitudine di followed by an infinitive describes something you regularly used to do. An expression such as ogni sabato specifies how often."
+        },
+        "examples": [
+          {
+            "targetText": "Prima di vivere in città avevo l'abitudine di fare il pane ogni sabato.",
+            "baseText": {
+              "de": "Bevor ich in der Stadt wohnte, hatte ich die Gewohnheit, jeden Samstag Brot zu backen.",
+              "en": "Before I lived in the city, I used to make bread every Saturday."
+            },
+            "highlight": "avevo l'abitudine di fare il pane"
+          },
+          {
+            "targetText": "Sul lavoro avevo l'abitudine di annotare le chiamate in un quaderno.",
+            "baseText": {
+              "de": "Bei der Arbeit schrieb ich die Anrufe früher immer in ein Heft.",
+              "en": "At work I used to write down the calls in a notebook."
+            },
+            "highlight": "avevo l'abitudine di annotare"
+          }
+        ]
+      },
+      "cloze": [
+        "Adesso compro ",
+        {
+          "kind": "choice",
+          "answer": "la",
+          "choices": [
+            "lo",
+            "gli",
+            "il",
+            "la"
+          ]
+        },
+        " pagnotta del sabato ",
+        {
+          "kind": "choice",
+          "answer": "al",
+          "choices": [
+            "alla",
+            "ai",
+            "al",
+            "allo"
+          ]
+        },
+        " forno sotto casa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prima di vivere in città",
+          "baseText": {
+            "de": "Bevor ich in der Stadt wohnte",
+            "en": "Before living in the city"
+          }
+        },
+        {
+          "targetText": "avevo l'abitudine",
+          "baseText": {
+            "de": "hatte ich die Gewohnheit",
+            "en": "I was in the habit"
+          }
+        },
+        {
+          "targetText": "di fare il pane",
+          "baseText": {
+            "de": "Brot zu backen",
+            "en": "of making bread"
+          }
+        },
+        {
+          "targetText": "ogni sabato.",
+          "baseText": {
+            "de": "jeden Samstag.",
+            "en": "every Saturday."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "abitudine",
+          "baseText": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          }
+        },
+        {
+          "targetText": "prima di",
+          "baseText": {
+            "de": "bevor",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "fare il pane",
+          "baseText": {
+            "de": "Brot backen",
+            "en": "to make bread"
+          }
+        },
+        {
+          "targetText": "ogni sabato",
+          "baseText": {
+            "de": "jeden Samstag",
+            "en": "every Saturday"
+          }
+        },
+        {
+          "targetText": "pagnotta",
+          "baseText": {
+            "de": "Brotlaib",
+            "en": "loaf"
+          }
+        },
+        {
+          "targetText": "forno",
+          "baseText": {
+            "de": "Bäckerei",
+            "en": "bakery"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prima di vivere in città avevo l'abitudine di ",
+        "answer": "fare",
+        "after": " il pane ogni sabato.",
+        "fallbackChoices": [
+          "fatto",
+          "facendo",
+          "fare",
+          "facevo"
+        ]
+      },
+      "speakRequired": [
+        "vivere",
+        "pane",
+        "sabato"
+      ],
+      "sceneCaption": {
+        "de": "Vor einer Bäckerei kommen Sie mit einem Nachbarn über das Wochenende ins Gespräch. „Come passava il sabato prima di venire ad abitare qui?“",
+        "en": "Outside a bakery, you and a neighbour start talking about weekends. “Come passava il sabato prima di venire ad abitare qui?”"
+      },
+      "trophyWord": {
+        "word": "abitudine",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "Prima di vivere in città avevo l'abitudine di fare il pane ogni sabato.",
+        "whyThisWord": {
+          "de": "Abitudine bezeichnet eine Gewohnheit. Mit avevo l'abitudine di können Sie sie in einem Satz über früher beschreiben.",
+          "en": "Abitudine means a habit. Avevo l'abitudine di lets you describe one in a sentence about the past."
+        }
+      },
+      "distractors": [
+        "avevo intenzione",
+        "ogni inverno."
+      ],
+      "placeholderCaption": {
+        "de": "Vor einer Bäckerei kommen Sie mit einem Nachbarn über das Wochenende ins Gespräch.",
+        "en": "Outside a bakery, you and a neighbour start talking about weekends."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "Outside a bakery, you and a neighbour start talking about weekends."
+    },
+    {
+      "slug": "visite-ai-nonni",
+      "title": {
+        "de": "Bei den Großeltern",
+        "en": "At the grandparents' house"
+      },
+      "situation": {
+        "de": "Eine Nachbarin zeigt Ihnen ein altes Familienfoto und erzählt von Ferienbesuchen.",
+        "en": "A neighbour shows you an old family photo and talks about holiday visits."
+      },
+      "pedagogicalGoal": "Von Besuchen auf dem Land erzählen und benennen, was heute fehlt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa faceva quando andava a trovare i suoi nonni?",
+          "baseText": {
+            "de": "Was haben Sie gemacht, wenn Sie Ihre Großeltern besucht haben?",
+            "en": "What did you do when you went to visit your grandparents?"
+          }
+        },
+        {
+          "targetText": "Quando andavo in campagna dai nonni raccoglievo le uova prima di colazione.",
+          "baseText": {
+            "de": "Wenn ich meine Großeltern auf dem Land besuchte, sammelte ich vor dem Frühstück die Eier ein.",
+            "en": "When I visited my grandparents in the countryside, I used to collect the eggs before breakfast."
+          }
+        },
+        {
+          "targetText": "Che cosa le manca di più di quelle mattine?",
+          "baseText": {
+            "de": "Was fehlt Ihnen an diesen Vormittagen am meisten?",
+            "en": "What do you miss most about those mornings?"
+          }
+        },
+        {
+          "targetText": "Mi manca cercare le uova nella paglia ancora tiepida.",
+          "baseText": {
+            "de": "Mir fehlt es, die Eier im noch warmen Stroh zu suchen.",
+            "en": "I miss looking for the eggs in the straw while it was still warm."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quando… + imperfetto",
+        "rule": {
+          "de": "Mit quando und Imperfetto setzen Sie den Rahmen für eine wiederkehrende Situation. Das zweite Imperfetto sagt, was Sie dann regelmäßig taten.",
+          "en": "Quando and an imperfect verb set the scene for a recurring situation. The second imperfect describes what you regularly did then."
+        },
+        "examples": [
+          {
+            "targetText": "Quando andavo in campagna dai nonni raccoglievo le uova prima di colazione.",
+            "baseText": {
+              "de": "Wenn ich meine Großeltern auf dem Land besuchte, sammelte ich vor dem Frühstück die Eier ein.",
+              "en": "When I visited my grandparents in the countryside, I used to collect the eggs before breakfast."
+            },
+            "highlight": "Quando andavo in campagna"
+          },
+          {
+            "targetText": "Quando lavoravo al cinema controllavo i biglietti vicino alla scala.",
+            "baseText": {
+              "de": "Als ich im Kino arbeitete, kontrollierte ich die Karten bei der Treppe.",
+              "en": "When I worked at the cinema, I used to check tickets by the stairs."
+            },
+            "highlight": "Quando lavoravo al cinema"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi manca ",
+        {
+          "kind": "choice",
+          "answer": "cercare",
+          "choices": [
+            "cercavo",
+            "cercano",
+            "cercare",
+            "cercando"
+          ]
+        },
+        " le uova ",
+        {
+          "kind": "choice",
+          "answer": "nella",
+          "choices": [
+            "nel",
+            "nella",
+            "nei",
+            "nelle"
+          ]
+        },
+        " paglia ancora tiepida."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quando andavo in campagna dai nonni",
+          "baseText": {
+            "de": "Wenn ich aufs Land zu meinen Großeltern fuhr",
+            "en": "When I went to the countryside to my grandparents' place"
+          }
+        },
+        {
+          "targetText": "raccoglievo le uova",
+          "baseText": {
+            "de": "sammelte ich die Eier ein",
+            "en": "I used to collect the eggs"
+          }
+        },
+        {
+          "targetText": "prima di",
+          "baseText": {
+            "de": "vor",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "colazione.",
+          "baseText": {
+            "de": "dem Frühstück.",
+            "en": "breakfast."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "campagna",
+          "baseText": {
+            "de": "Land",
+            "en": "countryside"
+          }
+        },
+        {
+          "targetText": "dai nonni",
+          "baseText": {
+            "de": "bei den Großeltern",
+            "en": "at one's grandparents' place"
+          }
+        },
+        {
+          "targetText": "raccogliere le uova",
+          "baseText": {
+            "de": "Eier einsammeln",
+            "en": "to collect eggs"
+          }
+        },
+        {
+          "targetText": "colazione",
+          "baseText": {
+            "de": "Frühstück",
+            "en": "breakfast"
+          }
+        },
+        {
+          "targetText": "paglia",
+          "baseText": {
+            "de": "Stroh",
+            "en": "straw"
+          }
+        },
+        {
+          "targetText": "tiepida",
+          "baseText": {
+            "de": "lauwarm",
+            "en": "warm to the touch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quando andavo in campagna dai nonni ",
+        "answer": "raccoglievo",
+        "after": " le uova prima di colazione.",
+        "fallbackChoices": [
+          "raccolto",
+          "raccoglievo",
+          "raccogliendo",
+          "raccogliere"
+        ]
+      },
+      "speakRequired": [
+        "campagna",
+        "raccoglievo",
+        "uova"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin zeigt Ihnen ein altes Familienfoto und erzählt von Ferienbesuchen. „Che cosa faceva quando andava a trovare i suoi nonni?“",
+        "en": "A neighbour shows you an old family photo and talks about holiday visits. “Che cosa faceva quando andava a trovare i suoi nonni?”"
+      },
+      "trophyWord": {
+        "word": "campagna",
+        "meaning": {
+          "de": "Land",
+          "en": "countryside"
+        },
+        "example": "Quando andavo in campagna dai nonni raccoglievo le uova prima di colazione.",
+        "whyThisWord": {
+          "de": "In campagna beschreibt den ländlichen Ort der Besuche. Mit dai nonni ergänzen Sie, bei wem Sie waren.",
+          "en": "In campagna describes the rural setting of the visits. Dai nonni adds whose home you were visiting."
+        }
+      },
+      "distractors": [
+        "Quando andavo al mare dai nonni",
+        "cena."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachbarin zeigt Ihnen ein altes Familienfoto und erzählt von Ferienbesuchen.",
+        "en": "A neighbour shows you an old family photo and talks about holiday visits."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "A neighbour shows you an old family photo and talks about holiday visits."
+    },
+    {
+      "slug": "strada-del-mattino",
+      "title": {
+        "de": "Wege am Morgen",
+        "en": "Morning routes"
+      },
+      "situation": {
+        "de": "An einer Brücke sprechen Sie mit einem Nachbarn über die Wege Ihrer Kindheit.",
+        "en": "By a bridge, you talk to a neighbour about the routes you took as a child."
+      },
+      "pedagogicalGoal": "Den früheren Schulweg mit heutigen Fahrten vergleichen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che strada faceva la mattina a dieci anni?",
+          "baseText": {
+            "de": "Welchen Weg haben Sie mit zehn Jahren morgens genommen?",
+            "en": "Which way did you go in the mornings when you were ten?"
+          }
+        },
+        {
+          "targetText": "Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume.",
+          "baseText": {
+            "de": "Mit zehn Jahren ging ich auf dem Pfad am Fluss entlang zur Schule.",
+            "en": "When I was ten, I went to school along the path that ran beside the river."
+          }
+        },
+        {
+          "targetText": "Riesce ancora a spostarsi a piedi tutti i giorni?",
+          "baseText": {
+            "de": "Können Sie Ihre täglichen Wege immer noch zu Fuß zurücklegen?",
+            "en": "Can you still get around on foot every day?"
+          }
+        },
+        {
+          "targetText": "Oggi per andare al lavoro devo prendere due autobus.",
+          "baseText": {
+            "de": "Heute muss ich zwei Busse nehmen, um zur Arbeit zu kommen.",
+            "en": "These days I have to take two buses to get to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quando avevo… anni",
+        "rule": {
+          "de": "Das Alter wird auf Italienisch mit avere ausgedrückt. Quando avevo dieci anni gibt den Zeitpunkt an, andavo beschreibt den damaligen regelmäßigen Weg.",
+          "en": "Italian expresses age with avere. Quando avevo dieci anni sets the age, and andavo describes the route regularly taken at that time."
+        },
+        "examples": [
+          {
+            "targetText": "Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume.",
+            "baseText": {
+              "de": "Mit zehn Jahren ging ich auf dem Pfad am Fluss entlang zur Schule.",
+              "en": "When I was ten, I went to school along the path that ran beside the river."
+            },
+            "highlight": "Quando avevo dieci anni andavo"
+          },
+          {
+            "targetText": "Quando avevo vent'anni suonavo il basso in un gruppo jazz.",
+            "baseText": {
+              "de": "Mit zwanzig spielte ich in einer Jazzband Bass.",
+              "en": "When I was twenty, I played bass in a jazz band."
+            },
+            "highlight": "Quando avevo vent'anni suonavo"
+          }
+        ]
+      },
+      "cloze": [
+        "Oggi per andare ",
+        {
+          "kind": "choice",
+          "answer": "al",
+          "choices": [
+            "agli",
+            "al",
+            "allo",
+            "alla"
+          ]
+        },
+        " lavoro devo ",
+        {
+          "kind": "choice",
+          "answer": "prendere",
+          "choices": [
+            "prendere",
+            "prendo",
+            "prendendo",
+            "preso"
+          ]
+        },
+        " due autobus."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quando avevo dieci anni",
+          "baseText": {
+            "de": "Als ich zehn Jahre alt war",
+            "en": "When I was ten"
+          }
+        },
+        {
+          "targetText": "andavo a scuola",
+          "baseText": {
+            "de": "ging ich zur Schule",
+            "en": "I used to go to school"
+          }
+        },
+        {
+          "targetText": "per il sentiero",
+          "baseText": {
+            "de": "auf dem Pfad",
+            "en": "along the path"
+          }
+        },
+        {
+          "targetText": "che costeggiava il fiume.",
+          "baseText": {
+            "de": "der am Fluss entlangführte.",
+            "en": "that ran beside the river."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "scuola",
+          "baseText": {
+            "de": "Schule",
+            "en": "school"
+          }
+        },
+        {
+          "targetText": "avevo dieci anni",
+          "baseText": {
+            "de": "ich war zehn Jahre alt",
+            "en": "I was ten years old"
+          }
+        },
+        {
+          "targetText": "sentiero",
+          "baseText": {
+            "de": "Pfad",
+            "en": "path"
+          }
+        },
+        {
+          "targetText": "costeggiare",
+          "baseText": {
+            "de": "entlangführen an",
+            "en": "to run alongside"
+          }
+        },
+        {
+          "targetText": "fiume",
+          "baseText": {
+            "de": "Fluss",
+            "en": "river"
+          }
+        },
+        {
+          "targetText": "prendere due autobus",
+          "baseText": {
+            "de": "zwei Busse nehmen",
+            "en": "to take two buses"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quando avevo dieci anni andavo a scuola per il sentiero che ",
+        "answer": "costeggiava",
+        "after": " il fiume.",
+        "fallbackChoices": [
+          "costeggiava",
+          "costeggiavano",
+          "costeggiavamo",
+          "costeggiavo"
+        ]
+      },
+      "speakRequired": [
+        "dieci",
+        "scuola",
+        "sentiero"
+      ],
+      "sceneCaption": {
+        "de": "An einer Brücke sprechen Sie mit einem Nachbarn über die Wege Ihrer Kindheit. „Che strada faceva la mattina a dieci anni?“",
+        "en": "By a bridge, you talk to a neighbour about the routes you took as a child. “Che strada faceva la mattina a dieci anni?”"
+      },
+      "trophyWord": {
+        "word": "scuola",
+        "meaning": {
+          "de": "Schule",
+          "en": "school"
+        },
+        "example": "Quando avevo dieci anni andavo a scuola per il sentiero che costeggiava il fiume.",
+        "whyThisWord": {
+          "de": "Andare a scuola heißt zur Schule gehen. Erst das Imperfetto andavo a scuola beschreibt den damaligen regelmäßigen Schulweg.",
+          "en": "Andare a scuola means to go to school. It is the imperfect andavo a scuola that describes the regular school route back then."
+        }
+      },
+      "distractors": [
+        "andavo al mercato",
+        "che attraversava il bosco."
+      ],
+      "placeholderCaption": {
+        "de": "An einer Brücke sprechen Sie mit einem Nachbarn über die Wege Ihrer Kindheit.",
+        "en": "By a bridge, you talk to a neighbour about the routes you took as a child."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "By a bridge, you talk to a neighbour about the routes you took as a child."
+    },
+    {
+      "slug": "tempo-per-leggere",
+      "title": {
+        "de": "Zeit für ein Buch",
+        "en": "Time for a book"
+      },
+      "situation": {
+        "de": "In der Bibliothek erzählt Ihnen ein Nachbar, was er gerade liest.",
+        "en": "At the library, a neighbour tells you what he is reading."
+      },
+      "pedagogicalGoal": "Lesezeiten vergleichen und die Veränderung erklären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quanto tempo riesce a trovare per i libri in questi giorni?",
+          "baseText": {
+            "de": "Wie viel Zeit finden Sie im Moment für Bücher?",
+            "en": "How much time can you find for books these days?"
+          }
+        },
+        {
+          "targetText": "In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora.",
+          "baseText": {
+            "de": "Früher las ich ganze Abende lang, während ich heute kaum eine halbe Stunde habe.",
+            "en": "In the past I spent whole evenings reading, while these days I barely have half an hour."
+          }
+        },
+        {
+          "targetText": "Come mai la sera le rimane così poco tempo?",
+          "baseText": {
+            "de": "Woran liegt es, dass Ihnen abends so wenig Zeit bleibt?",
+            "en": "How come you have so little time left in the evening?"
+          }
+        },
+        {
+          "targetText": "Il mio turno finisce tardi e la sveglia suona presto.",
+          "baseText": {
+            "de": "Meine Schicht endet spät, und der Wecker klingelt früh.",
+            "en": "My shift finishes late and the alarm goes off early."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "In passato… mentre oggi…",
+        "rule": {
+          "de": "In passato mit Imperfetto beschreibt die frühere Gewohnheit. Mentre bedeutet hier während im Sinn eines Gegensatzes. Nach mentre oggi steht die heutige Situation im Präsens.",
+          "en": "Use in passato with the imperfect for a past habit. Mentre oggi sets up a contrast and introduces the current situation in the present tense."
+        },
+        "examples": [
+          {
+            "targetText": "In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora.",
+            "baseText": {
+              "de": "Früher las ich ganze Abende lang, während ich heute kaum eine halbe Stunde habe.",
+              "en": "In the past I spent whole evenings reading, while these days I barely have half an hour."
+            },
+            "highlight": "In passato passavo intere serate a leggere, mentre oggi"
+          },
+          {
+            "targetText": "In passato ordinavo tutto per telefono, mentre oggi uso il sito del negozio.",
+            "baseText": {
+              "de": "Früher bestellte ich alles telefonisch, während ich heute die Website des Geschäfts nutze.",
+              "en": "I used to order everything by phone, while now I use the shop's website."
+            },
+            "highlight": "In passato ordinavo tutto per telefono, mentre oggi"
+          }
+        ]
+      },
+      "cloze": [
+        "Il mio turno ",
+        {
+          "kind": "form",
+          "answer": "finisce",
+          "choices": [
+            "finisce",
+            "finiscono",
+            "finisco",
+            "finiamo"
+          ],
+          "cue": "finire (il mio turno)"
+        },
+        " tardi e la sveglia ",
+        {
+          "kind": "choice",
+          "answer": "suona",
+          "choices": [
+            "suonano",
+            "suono",
+            "suoniamo",
+            "suona"
+          ]
+        },
+        " presto."
+      ],
+      "chunks": [
+        {
+          "targetText": "In passato",
+          "baseText": {
+            "de": "Früher",
+            "en": "In the past"
+          }
+        },
+        {
+          "targetText": "passavo intere serate",
+          "baseText": {
+            "de": "verbrachte ich ganze Abende",
+            "en": "I spent whole evenings"
+          }
+        },
+        {
+          "targetText": "a leggere,",
+          "baseText": {
+            "de": "mit Lesen,",
+            "en": "reading,"
+          }
+        },
+        {
+          "targetText": "mentre oggi ho appena mezz'ora.",
+          "baseText": {
+            "de": "während ich heute kaum eine halbe Stunde habe.",
+            "en": "while now I barely have half an hour."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "passato",
+          "baseText": {
+            "de": "Vergangenheit",
+            "en": "past"
+          }
+        },
+        {
+          "targetText": "intere serate",
+          "baseText": {
+            "de": "ganze Abende",
+            "en": "whole evenings"
+          }
+        },
+        {
+          "targetText": "leggere",
+          "baseText": {
+            "de": "lesen",
+            "en": "to read"
+          }
+        },
+        {
+          "targetText": "appena mezz'ora",
+          "baseText": {
+            "de": "kaum eine halbe Stunde",
+            "en": "barely half an hour"
+          }
+        },
+        {
+          "targetText": "turno",
+          "baseText": {
+            "de": "Schicht",
+            "en": "shift"
+          }
+        },
+        {
+          "targetText": "sveglia",
+          "baseText": {
+            "de": "Wecker",
+            "en": "alarm clock"
+          }
+        }
+      ],
+      "recall": {
+        "before": "In passato passavo ",
+        "answer": "intere",
+        "after": " serate a leggere, mentre oggi ho appena mezz'ora.",
+        "fallbackChoices": [
+          "intero",
+          "intera",
+          "interi",
+          "intere"
+        ]
+      },
+      "speakRequired": [
+        "passato",
+        "serate",
+        "leggere"
+      ],
+      "sceneCaption": {
+        "de": "In der Bibliothek erzählt Ihnen ein Nachbar, was er gerade liest. „Quanto tempo riesce a trovare per i libri in questi giorni?“",
+        "en": "At the library, a neighbour tells you what he is reading. “Quanto tempo riesce a trovare per i libri in questi giorni?”"
+      },
+      "trophyWord": {
+        "word": "passato",
+        "meaning": {
+          "de": "Vergangenheit",
+          "en": "past"
+        },
+        "example": "In passato passavo intere serate a leggere, mentre oggi ho appena mezz'ora.",
+        "whyThisWord": {
+          "de": "In passato verankert eine Gewohnheit in der Vergangenheit, bevor Sie die heutige Situation dagegenstellen.",
+          "en": "In passato places a habit in the past before you contrast it with what happens now."
+        }
+      },
+      "distractors": [
+        "passavo pochi minuti",
+        "mentre oggi ho tutto il pomeriggio."
+      ],
+      "placeholderCaption": {
+        "de": "In der Bibliothek erzählt Ihnen ein Nachbar, was er gerade liest.",
+        "en": "At the library, a neighbour tells you what he is reading."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "At the library, a neighbour tells you what he is reading."
+    },
+    {
+      "slug": "spese-di-quartiere",
+      "title": {
+        "de": "Erledigungen nach der Arbeit",
+        "en": "Errands after work"
+      },
+      "situation": {
+        "de": "Sie treffen eine Nachbarin mit Einkaufstaschen auf dem Bürgersteig.",
+        "en": "You meet a neighbour carrying shopping bags on the pavement."
+      },
+      "pedagogicalGoal": "Die heutige Erledigung kleiner Einkäufe der früheren Routine gegenüberstellen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come fa a sbrigare le piccole commissioni dopo il lavoro?",
+          "baseText": {
+            "de": "Wie schaffen Sie Ihre kleinen Erledigungen nach der Arbeit?",
+            "en": "How do you manage your little errands after work?"
+          }
+        },
+        {
+          "targetText": "Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina.",
+          "baseText": {
+            "de": "Zurzeit erledige ich die kleinen Besorgungen zu Fuß. Früher nahm ich dafür immer das Auto.",
+            "en": "These days I run small errands on foot, whereas I always used to take the car."
+          }
+        },
+        {
+          "targetText": "Che cosa le permette di fare tutto a piedi anche la sera?",
+          "baseText": {
+            "de": "Was macht es Ihnen möglich, selbst am Abend alles zu Fuß zu erledigen?",
+            "en": "What makes it possible for you to do everything on foot even in the evening?"
+          }
+        },
+        {
+          "targetText": "I negozi qui vicino restano aperti fino alle otto.",
+          "baseText": {
+            "de": "Die Läden hier in der Nähe haben bis acht Uhr geöffnet.",
+            "en": "The shops nearby stay open until eight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Attualmente… mentre prima…",
+        "rule": {
+          "de": "Attualmente mit Präsens beschreibt die heutige Routine. Mentre prima mit Imperfetto fügt die frühere Gewohnheit als Kontrast hinzu.",
+          "en": "Use attualmente with the present for the current routine. Add mentre prima and the imperfect for a contrasting past habit."
+        },
+        "examples": [
+          {
+            "targetText": "Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina.",
+            "baseText": {
+              "de": "Zurzeit erledige ich die kleinen Besorgungen zu Fuß. Früher nahm ich dafür immer das Auto.",
+              "en": "These days I run small errands on foot, whereas I always used to take the car."
+            },
+            "highlight": "Attualmente faccio"
+          },
+          {
+            "targetText": "Attualmente condivido un ufficio, mentre prima lavoravo in una stanza tutta mia.",
+            "baseText": {
+              "de": "Zurzeit teile ich mir ein Büro. Früher arbeitete ich in einem eigenen Raum.",
+              "en": "I currently share an office, whereas I used to work in a room of my own."
+            },
+            "highlight": "Attualmente condivido"
+          }
+        ]
+      },
+      "cloze": [
+        "I negozi qui vicino ",
+        {
+          "kind": "form",
+          "answer": "restano",
+          "choices": [
+            "resta",
+            "restiamo",
+            "resto",
+            "restano"
+          ],
+          "cue": "restare (i negozi)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "aperti",
+          "choices": [
+            "aperta",
+            "aperte",
+            "aperti",
+            "aperto"
+          ]
+        },
+        " fino alle otto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Attualmente faccio",
+          "baseText": {
+            "de": "Zurzeit erledige ich",
+            "en": "These days I run"
+          }
+        },
+        {
+          "targetText": "le piccole commissioni",
+          "baseText": {
+            "de": "die kleinen Besorgungen",
+            "en": "the small errands"
+          }
+        },
+        {
+          "targetText": "a piedi,",
+          "baseText": {
+            "de": "zu Fuß,",
+            "en": "on foot,"
+          }
+        },
+        {
+          "targetText": "mentre prima prendevo",
+          "baseText": {
+            "de": "während ich früher nahm",
+            "en": "whereas I used to take"
+          }
+        },
+        {
+          "targetText": "sempre la macchina.",
+          "baseText": {
+            "de": "immer das Auto.",
+            "en": "the car every time."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "attualmente",
+          "baseText": {
+            "de": "zurzeit",
+            "en": "currently"
+          }
+        },
+        {
+          "targetText": "piccole commissioni",
+          "baseText": {
+            "de": "kleine Besorgungen",
+            "en": "small errands"
+          }
+        },
+        {
+          "targetText": "a piedi",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        },
+        {
+          "targetText": "prima",
+          "baseText": {
+            "de": "früher",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "la macchina",
+          "baseText": {
+            "de": "das Auto",
+            "en": "the car"
+          }
+        },
+        {
+          "targetText": "qui vicino",
+          "baseText": {
+            "de": "hier in der Nähe",
+            "en": "nearby"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Attualmente faccio le ",
+        "answer": "piccole",
+        "after": " commissioni a piedi, mentre prima prendevo sempre la macchina.",
+        "fallbackChoices": [
+          "piccola",
+          "piccoli",
+          "piccole",
+          "piccolo"
+        ]
+      },
+      "speakRequired": [
+        "Attualmente",
+        "commissioni",
+        "macchina"
+      ],
+      "sceneCaption": {
+        "de": "Sie treffen eine Nachbarin mit Einkaufstaschen auf dem Bürgersteig. „Come fa a sbrigare le piccole commissioni dopo il lavoro?“",
+        "en": "You meet a neighbour carrying shopping bags on the pavement. “Come fa a sbrigare le piccole commissioni dopo il lavoro?”"
+      },
+      "trophyWord": {
+        "word": "attualmente",
+        "meaning": {
+          "de": "zurzeit",
+          "en": "currently"
+        },
+        "example": "Attualmente faccio le piccole commissioni a piedi, mentre prima prendevo sempre la macchina.",
+        "whyThisWord": {
+          "de": "Attualmente stellt die heutige Gewohnheit an den Anfang. Das Wort bedeutet hier zurzeit.",
+          "en": "Attualmente introduces the present-day habit first. Here it means currently."
+        }
+      },
+      "distractors": [
+        "le lunghe visite",
+        "sempre la bicicletta."
+      ],
+      "placeholderCaption": {
+        "de": "Sie treffen eine Nachbarin mit Einkaufstaschen auf dem Bürgersteig.",
+        "en": "You meet a neighbour carrying shopping bags on the pavement."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "You meet a neighbour carrying shopping bags on the pavement."
+    },
+    {
+      "slug": "giornate-diverse",
+      "title": {
+        "de": "Ein anderer Tagesablauf",
+        "en": "A different daily routine"
+      },
+      "situation": {
+        "de": "Ein früherer Arbeitskollege spricht Sie auf Ihre neue Stelle an.",
+        "en": "A former colleague asks you about your new job."
+      },
+      "pedagogicalGoal": "Den früheren und heutigen Tagesablauf vergleichen und eine Verbesserung erklären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come si trova con gli orari del nuovo lavoro?",
+          "baseText": {
+            "de": "Wie kommen Sie mit den Arbeitszeiten der neuen Stelle zurecht?",
+            "en": "How are you finding the hours at your new job?"
+          }
+        },
+        {
+          "targetText": "Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni.",
+          "baseText": {
+            "de": "Mein Tagesablauf ist regelmäßiger als früher, als ich im Dreischichtbetrieb arbeitete.",
+            "en": "My days have a more regular rhythm than before, when I worked a three-shift rotation."
+          }
+        },
+        {
+          "targetText": "C'è qualcosa che adesso riesce a fare più spesso?",
+          "baseText": {
+            "de": "Gibt es etwas, das Sie heute öfter schaffen?",
+            "en": "Is there something you manage to do more often now?"
+          }
+        },
+        {
+          "targetText": "Adesso ceno con mia figlia quasi tutte le sere.",
+          "baseText": {
+            "de": "Jetzt esse ich fast jeden Abend mit meiner Tochter zu Abend.",
+            "en": "Now I have dinner with my daughter almost every evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Più… di prima",
+        "rule": {
+          "de": "Più mit Adjektiv und di prima vergleicht die Gegenwart mit einem früheren Zustand. Mit quando und Imperfetto können Sie diesen Zustand genauer beschreiben.",
+          "en": "Più with an adjective and di prima compares the present with how things used to be. Use quando and an imperfect verb to describe that earlier situation."
+        },
+        "examples": [
+          {
+            "targetText": "Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni.",
+            "baseText": {
+              "de": "Mein Tagesablauf ist regelmäßiger als früher, als ich im Dreischichtbetrieb arbeitete.",
+              "en": "My days have a more regular rhythm than before, when I worked a three-shift rotation."
+            },
+            "highlight": "è più regolare di prima"
+          },
+          {
+            "targetText": "La cucina è più luminosa di prima, quando c'era una sola finestra.",
+            "baseText": {
+              "de": "Die Küche ist heller als früher, als sie nur ein Fenster hatte.",
+              "en": "The kitchen is brighter than before, when it had only one window."
+            },
+            "highlight": "è più luminosa di prima"
+          }
+        ]
+      },
+      "cloze": [
+        "Adesso ceno con ",
+        {
+          "kind": "choice",
+          "answer": "mia",
+          "choices": [
+            "miei",
+            "mie",
+            "mia",
+            "mio"
+          ]
+        },
+        " figlia quasi ",
+        {
+          "kind": "choice",
+          "answer": "tutte",
+          "choices": [
+            "tutti",
+            "tutte",
+            "tutto",
+            "tutta"
+          ]
+        },
+        " le sere."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il ritmo delle mie giornate",
+          "baseText": {
+            "de": "Der Rhythmus meiner Tage",
+            "en": "The rhythm of my days"
+          }
+        },
+        {
+          "targetText": "è più regolare",
+          "baseText": {
+            "de": "ist regelmäßiger",
+            "en": "is more regular"
+          }
+        },
+        {
+          "targetText": "di prima,",
+          "baseText": {
+            "de": "als früher,",
+            "en": "than before,"
+          }
+        },
+        {
+          "targetText": "quando lavoravo su tre turni.",
+          "baseText": {
+            "de": "als ich in drei Schichten arbeitete.",
+            "en": "when I worked a three-shift rotation."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ritmo",
+          "baseText": {
+            "de": "Rhythmus",
+            "en": "rhythm"
+          }
+        },
+        {
+          "targetText": "giornate",
+          "baseText": {
+            "de": "Tage mit ihrem Ablauf",
+            "en": "days and how they unfold"
+          }
+        },
+        {
+          "targetText": "regolare",
+          "baseText": {
+            "de": "regelmäßig",
+            "en": "regular"
+          }
+        },
+        {
+          "targetText": "di prima",
+          "baseText": {
+            "de": "als früher",
+            "en": "than before"
+          }
+        },
+        {
+          "targetText": "lavorare su tre turni",
+          "baseText": {
+            "de": "im Dreischichtbetrieb arbeiten",
+            "en": "to work a three-shift rotation"
+          }
+        },
+        {
+          "targetText": "quasi tutte le sere",
+          "baseText": {
+            "de": "fast jeden Abend",
+            "en": "almost every evening"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il ritmo delle mie giornate è più ",
+        "answer": "regolare",
+        "after": " di prima, quando lavoravo su tre turni.",
+        "fallbackChoices": [
+          "regolarità",
+          "regolare",
+          "regolari",
+          "regolarmente"
+        ]
+      },
+      "speakRequired": [
+        "ritmo",
+        "regolare",
+        "turni"
+      ],
+      "sceneCaption": {
+        "de": "Ein früherer Arbeitskollege spricht Sie auf Ihre neue Stelle an. „Come si trova con gli orari del nuovo lavoro?“",
+        "en": "A former colleague asks you about your new job. “Come si trova con gli orari del nuovo lavoro?”"
+      },
+      "trophyWord": {
+        "word": "ritmo",
+        "meaning": {
+          "de": "Rhythmus",
+          "en": "rhythm"
+        },
+        "example": "Il ritmo delle mie giornate è più regolare di prima, quando lavoravo su tre turni.",
+        "whyThisWord": {
+          "de": "Ritmo beschreibt, wie ein Tag abläuft. Ein ritmo più regolare macht planbare gemeinsame Mahlzeiten möglich.",
+          "en": "Ritmo describes the pace and pattern of a day. A ritmo più regolare makes it easier to plan meals together."
+        }
+      },
+      "distractors": [
+        "è più intenso",
+        "quando studiavo di sera."
+      ],
+      "placeholderCaption": {
+        "de": "Ein früherer Arbeitskollege spricht Sie auf Ihre neue Stelle an.",
+        "en": "A former colleague asks you about your new job."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "A former colleague asks you about your new job."
+    },
+    {
+      "slug": "commissioni-in-centro",
+      "title": {
+        "de": "Mit der neuen Tramlinie",
+        "en": "With the new tram line"
+      },
+      "situation": {
+        "de": "An der neuen Haltestelle kommen Sie mit einem Nachbarn ins Gespräch.",
+        "en": "At the new stop, you get talking to a neighbour."
+      },
+      "pedagogicalGoal": "Anhand einer früher schwierigen Besorgung die heutige Selbstständigkeit beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "La nuova linea del tram le è utile per fare acquisti?",
+          "baseText": {
+            "de": "Hilft Ihnen die neue Straßenbahnlinie beim Einkaufen?",
+            "en": "Does the new tram line help you get your shopping done?"
+          }
+        },
+        {
+          "targetText": "Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio.",
+          "baseText": {
+            "de": "Heute bin ich bei Besorgungen selbstständiger. Früher bat ich immer darum, mitgenommen zu werden.",
+            "en": "I have more independence when running errands now, whereas I always used to ask for a lift."
+          }
+        },
+        {
+          "targetText": "Per quale acquisto doveva chiedere a qualcuno di accompagnarla?",
+          "baseText": {
+            "de": "Für welchen Einkauf mussten Sie jemanden bitten, Sie zu begleiten?",
+            "en": "Which purchase did you need someone to come along for?"
+          }
+        },
+        {
+          "targetText": "Mia sorella mi accompagnava a comprare i sacchi di terriccio.",
+          "baseText": {
+            "de": "Meine Schwester begleitete mich, wenn ich Säcke mit Blumenerde kaufte.",
+            "en": "My sister used to take me to buy bags of potting soil."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Adesso ho più…",
+        "rule": {
+          "de": "Mit adesso ho più und einem Substantiv benennen Sie, wovon Sie jetzt mehr haben. Mentre prima erklärt anschließend den Unterschied zu früher.",
+          "en": "Use adesso ho più and a noun to say what you have more of now. Follow with mentre prima to explain the contrast with the past."
+        },
+        "examples": [
+          {
+            "targetText": "Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio.",
+            "baseText": {
+              "de": "Heute bin ich bei Besorgungen selbstständiger. Früher bat ich immer darum, mitgenommen zu werden.",
+              "en": "I have more independence when running errands now, whereas I always used to ask for a lift."
+            },
+            "highlight": "Adesso ho più autonomia"
+          },
+          {
+            "targetText": "Adesso ho più spazio per dipingere, mentre prima usavo il tavolo della cucina.",
+            "baseText": {
+              "de": "Jetzt habe ich mehr Platz zum Malen. Früher benutzte ich den Küchentisch.",
+              "en": "Now I have more room to paint, whereas I used to use the kitchen table."
+            },
+            "highlight": "Adesso ho più spazio"
+          }
+        ]
+      },
+      "cloze": [
+        "Mia sorella mi ",
+        {
+          "kind": "form",
+          "answer": "accompagnava",
+          "choices": [
+            "accompagnavamo",
+            "accompagnava",
+            "accompagnavo",
+            "accompagnavano"
+          ],
+          "cue": "accompagnare (mia sorella)"
+        },
+        " a ",
+        {
+          "kind": "choice",
+          "answer": "comprare",
+          "choices": [
+            "comprare",
+            "compro",
+            "comprato",
+            "comprando"
+          ]
+        },
+        " i sacchi di terriccio."
+      ],
+      "chunks": [
+        {
+          "targetText": "Adesso ho",
+          "baseText": {
+            "de": "Heute habe ich",
+            "en": "Now I have"
+          }
+        },
+        {
+          "targetText": "più autonomia",
+          "baseText": {
+            "de": "mehr Selbstständigkeit",
+            "en": "more independence"
+          }
+        },
+        {
+          "targetText": "nelle commissioni,",
+          "baseText": {
+            "de": "bei Besorgungen,",
+            "en": "with errands,"
+          }
+        },
+        {
+          "targetText": "mentre prima chiedevo",
+          "baseText": {
+            "de": "während ich früher bat um",
+            "en": "whereas I used to ask for"
+          }
+        },
+        {
+          "targetText": "sempre un passaggio.",
+          "baseText": {
+            "de": "immer eine Mitfahrgelegenheit.",
+            "en": "a lift every time."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "autonomia",
+          "baseText": {
+            "de": "Selbstständigkeit",
+            "en": "independence"
+          }
+        },
+        {
+          "targetText": "commissioni",
+          "baseText": {
+            "de": "Besorgungen",
+            "en": "errands"
+          }
+        },
+        {
+          "targetText": "chiedere un passaggio",
+          "baseText": {
+            "de": "um eine Mitfahrgelegenheit bitten",
+            "en": "to ask for a lift"
+          }
+        },
+        {
+          "targetText": "accompagnare",
+          "baseText": {
+            "de": "begleiten",
+            "en": "to accompany"
+          }
+        },
+        {
+          "targetText": "sacchi",
+          "baseText": {
+            "de": "Säcke",
+            "en": "bags"
+          }
+        },
+        {
+          "targetText": "terriccio",
+          "baseText": {
+            "de": "Blumenerde",
+            "en": "potting soil"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Adesso ho più autonomia nelle commissioni, mentre prima ",
+        "answer": "chiedevo",
+        "after": " sempre un passaggio.",
+        "fallbackChoices": [
+          "chiedevo",
+          "chiedere",
+          "chiesto",
+          "chiedendo"
+        ]
+      },
+      "speakRequired": [
+        "autonomia",
+        "commissioni",
+        "passaggio"
+      ],
+      "sceneCaption": {
+        "de": "An der neuen Haltestelle kommen Sie mit einem Nachbarn ins Gespräch. „La nuova linea del tram le è utile per fare acquisti?“",
+        "en": "At the new stop, you get talking to a neighbour. “La nuova linea del tram le è utile per fare acquisti?”"
+      },
+      "trophyWord": {
+        "word": "autonomia",
+        "meaning": {
+          "de": "Selbstständigkeit",
+          "en": "independence"
+        },
+        "example": "Adesso ho più autonomia nelle commissioni, mentre prima chiedevo sempre un passaggio.",
+        "whyThisWord": {
+          "de": "Autonomia beschreibt hier die Fähigkeit, alltägliche Besorgungen selbst zu erledigen. Das konkrete Beispiel erklärt, wer früher geholfen hat.",
+          "en": "Autonomia here means the ability to run everyday errands independently. The example explains who used to help."
+        }
+      },
+      "distractors": [
+        "meno autonomia",
+        "sempre un permesso."
+      ],
+      "placeholderCaption": {
+        "de": "An der neuen Haltestelle kommen Sie mit einem Nachbarn ins Gespräch.",
+        "en": "At the new stop, you get talking to a neighbour."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "At the new stop, you get talking to a neighbour."
+    },
+    {
+      "slug": "scelta-del-negozio",
+      "title": {
+        "de": "Einkaufen im Viertel",
+        "en": "Shopping in the neighbourhood"
+      },
+      "situation": {
+        "de": "Beim Einkauf kommen Sie mit einer anderen Kundin über die Geschäfte im Viertel ins Gespräch.",
+        "en": "While shopping, you and another customer start talking about the places to shop in the neighbourhood."
+      },
+      "pedagogicalGoal": "Eine veränderte Gewohnheit erklären und angeben, wie lange sie schon besteht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Fa ancora tutta la spesa al supermercato come nei primi mesi?",
+          "baseText": {
+            "de": "Kaufen Sie immer noch alles im Supermarkt wie in den ersten Monaten?",
+            "en": "Do you still buy everything at the supermarket, as you did in the first few months?"
+          }
+        },
+        {
+          "targetText": "Con l'esperienza ho scoperto il mercato del quartiere e da allora compro lì la verdura.",
+          "baseText": {
+            "de": "Mit wachsender Erfahrung habe ich den Markt im Viertel entdeckt, und seitdem kaufe ich dort mein Gemüse.",
+            "en": "With growing experience I discovered the neighbourhood market and I've been buying my vegetables there ever since."
+          }
+        },
+        {
+          "targetText": "Da quanto tempo viene a fare la spesa a questi banchi?",
+          "baseText": {
+            "de": "Wie lange kaufen Sie schon an diesen Ständen ein?",
+            "en": "How long have you been shopping at these stalls?"
+          }
+        },
+        {
+          "targetText": "Compro qui le verdure di stagione da quasi due anni.",
+          "baseText": {
+            "de": "Ich kaufe hier seit fast zwei Jahren Gemüse der Saison.",
+            "en": "I've been buying seasonal vegetables here for almost two years."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Presente + da",
+        "rule": {
+          "de": "Ho scoperto bezeichnet die Entdeckung. Da allora mit compro und da sei mesi mit suono verbinden einen früheren Anfang mit einer Gewohnheit, die heute noch besteht.",
+          "en": "Ho scoperto describes the discovery. Da allora with compro and da sei mesi with suono link a starting point in the past to a habit that still continues."
+        },
+        "examples": [
+          {
+            "targetText": "Con l'esperienza ho scoperto il mercato del quartiere e da allora compro lì la verdura.",
+            "baseText": {
+              "de": "Mit wachsender Erfahrung habe ich den Markt im Viertel entdeckt, und seitdem kaufe ich dort mein Gemüse.",
+              "en": "With growing experience I discovered the neighbourhood market and I've been buying my vegetables there ever since."
+            },
+            "highlight": "da allora compro"
+          },
+          {
+            "targetText": "Suono il violino da sei mesi e ho già imparato tre canzoni.",
+            "baseText": {
+              "de": "Ich spiele seit sechs Monaten Geige und habe schon drei Lieder gelernt.",
+              "en": "I've been playing the violin for six months and I've already learnt three songs."
+            },
+            "highlight": "Suono il violino da sei mesi"
+          }
+        ]
+      },
+      "cloze": [
+        "Compro qui ",
+        {
+          "kind": "choice",
+          "answer": "le",
+          "choices": [
+            "le",
+            "gli",
+            "lo",
+            "il"
+          ]
+        },
+        " verdure di stagione ",
+        {
+          "kind": "choice",
+          "answer": "da",
+          "choices": [
+            "agli",
+            "nella",
+            "allo",
+            "da"
+          ]
+        },
+        " quasi due anni."
+      ],
+      "chunks": [
+        {
+          "targetText": "Con l'esperienza ho scoperto",
+          "baseText": {
+            "de": "Mit wachsender Erfahrung habe ich entdeckt",
+            "en": "With growing experience I discovered"
+          }
+        },
+        {
+          "targetText": "il mercato del quartiere",
+          "baseText": {
+            "de": "den Markt im Viertel",
+            "en": "the neighbourhood market"
+          }
+        },
+        {
+          "targetText": "e da allora compro",
+          "baseText": {
+            "de": "und seitdem kaufe ich",
+            "en": "and ever since I've been buying"
+          }
+        },
+        {
+          "targetText": "lì la verdura.",
+          "baseText": {
+            "de": "dort mein Gemüse.",
+            "en": "my vegetables there."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "esperienza",
+          "baseText": {
+            "de": "Erfahrung",
+            "en": "experience"
+          }
+        },
+        {
+          "targetText": "mercato del quartiere",
+          "baseText": {
+            "de": "Markt im Viertel",
+            "en": "neighbourhood market"
+          }
+        },
+        {
+          "targetText": "da allora",
+          "baseText": {
+            "de": "seitdem",
+            "en": "ever since"
+          }
+        },
+        {
+          "targetText": "banchi",
+          "baseText": {
+            "de": "Marktstände",
+            "en": "stalls"
+          }
+        },
+        {
+          "targetText": "di stagione",
+          "baseText": {
+            "de": "saisonal",
+            "en": "in season"
+          }
+        },
+        {
+          "targetText": "da quasi due anni",
+          "baseText": {
+            "de": "seit fast zwei Jahren",
+            "en": "for almost two years"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Con l'esperienza ho ",
+        "answer": "scoperto",
+        "after": " il mercato del quartiere e da allora compro lì la verdura.",
+        "fallbackChoices": [
+          "scopro",
+          "scoprire",
+          "scoprivo",
+          "scoperto"
+        ]
+      },
+      "speakRequired": [
+        "scoperto",
+        "mercato",
+        "verdura"
+      ],
+      "sceneCaption": {
+        "de": "Beim Einkauf kommen Sie mit einer anderen Kundin über die Geschäfte im Viertel ins Gespräch. „Fa ancora tutta la spesa al supermercato come nei primi mesi?“",
+        "en": "While shopping, you and another customer start talking about the places to shop in the neighbourhood. “Fa ancora tutta la spesa al supermercato come nei primi mesi?”"
+      },
+      "trophyWord": {
+        "word": "esperienza",
+        "meaning": {
+          "de": "Erfahrung",
+          "en": "experience"
+        },
+        "example": "Con l'esperienza ho scoperto il mercato del quartiere e da allora compro lì la verdura.",
+        "whyThisWord": {
+          "de": "Esperienza bezeichnet hier das Wissen, das mit der Zeit im Viertel wächst. Daraus erklärt sich Ihre neue Einkaufsgewohnheit.",
+          "en": "Esperienza here is the knowledge gained over time in the neighbourhood. It explains the change in your shopping habit."
+        }
+      },
+      "distractors": [
+        "il supermercato della stazione",
+        "lì la carne."
+      ],
+      "placeholderCaption": {
+        "de": "Beim Einkauf kommen Sie mit einer anderen Kundin über die Geschäfte im Viertel ins Gespräch.",
+        "en": "While shopping, you and another customer start talking about the places to shop in the neighbourhood."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "While shopping, you and another customer start talking about the places to shop in the neighbourhood."
+    },
+    {
+      "slug": "una-telefonata",
+      "title": {
+        "de": "Italienisch im Alltag",
+        "en": "Italian in daily life"
+      },
+      "situation": {
+        "de": "Nach einem Sprachcafé sprechen Sie mit dem Leiter über Ihren Alltag auf Italienisch.",
+        "en": "After a language café, you speak to the organiser about using Italian in your daily life."
+      },
+      "pedagogicalGoal": "Früheres und heutiges Selbstvertrauen an einer konkreten Situation vergleichen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha notato qualche cambiamento nel modo in cui usa l'italiano?",
+          "baseText": {
+            "de": "Haben Sie eine Veränderung darin bemerkt, wie Sie Italienisch verwenden?",
+            "en": "Have you noticed any change in the way you use Italian?"
+          }
+        },
+        {
+          "targetText": "Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate.",
+          "baseText": {
+            "de": "Heute traue ich mir im Italienischen mehr zu als damals, als ich Telefongespräche vermied.",
+            "en": "Today I feel more confident about my Italian than I did when I avoided phone calls."
+          }
+        },
+        {
+          "targetText": "Le viene in mente una telefonata in cui ha fatto tutto senza aiuto?",
+          "baseText": {
+            "de": "Fällt Ihnen ein Telefonat ein, bei dem Sie alles ohne Hilfe erledigt haben?",
+            "en": "Can you think of a phone call you handled entirely on your own?"
+          }
+        },
+        {
+          "targetText": "Ieri ho fissato una visita senza chiedere aiuto a nessuno.",
+          "baseText": {
+            "de": "Gestern habe ich einen Untersuchungstermin vereinbart, ohne jemanden um Hilfe zu bitten.",
+            "en": "Yesterday I booked a medical appointment without asking anyone for help."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Rispetto a quando…",
+        "rule": {
+          "de": "Mit rispetto a quando und Imperfetto vergleichen Sie etwas mit einer bestimmten früheren Situation. Più und meno geben die Richtung des Vergleichs an.",
+          "en": "Use rispetto a quando and the imperfect to compare something with a particular earlier situation. Più and meno show the direction of the comparison."
+        },
+        "examples": [
+          {
+            "targetText": "Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate.",
+            "baseText": {
+              "de": "Heute traue ich mir im Italienischen mehr zu als damals, als ich Telefongespräche vermied.",
+              "en": "Today I feel more confident about my Italian than I did when I avoided phone calls."
+            },
+            "highlight": "rispetto a quando evitavo"
+          },
+          {
+            "targetText": "Ora nuoto con meno fatica rispetto a quando usavo solo le braccia.",
+            "baseText": {
+              "de": "Jetzt strengt mich das Schwimmen weniger an als damals, als ich nur die Arme benutzte.",
+              "en": "Swimming takes less effort now than it did when I only used my arms."
+            },
+            "highlight": "rispetto a quando usavo"
+          }
+        ]
+      },
+      "cloze": [
+        "Ieri ho fissato ",
+        {
+          "kind": "choice",
+          "answer": "una",
+          "choices": [
+            "uno",
+            "un",
+            "gli",
+            "una"
+          ]
+        },
+        " visita senza ",
+        {
+          "kind": "choice",
+          "answer": "chiedere",
+          "choices": [
+            "chiesto",
+            "chiedendo",
+            "chiedere",
+            "chiedo"
+          ]
+        },
+        " aiuto a nessuno."
+      ],
+      "chunks": [
+        {
+          "targetText": "Oggi ho più fiducia",
+          "baseText": {
+            "de": "Heute habe ich mehr Vertrauen",
+            "en": "Today I have more confidence"
+          }
+        },
+        {
+          "targetText": "nel mio italiano",
+          "baseText": {
+            "de": "in mein Italienisch",
+            "en": "in my Italian"
+          }
+        },
+        {
+          "targetText": "rispetto a quando",
+          "baseText": {
+            "de": "im Vergleich zu der Zeit, als",
+            "en": "compared with when"
+          }
+        },
+        {
+          "targetText": "evitavo le telefonate.",
+          "baseText": {
+            "de": "ich Telefongespräche vermied.",
+            "en": "I used to avoid phone calls."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "fiducia",
+          "baseText": {
+            "de": "Vertrauen",
+            "en": "confidence"
+          }
+        },
+        {
+          "targetText": "nel mio italiano",
+          "baseText": {
+            "de": "in mein Italienisch",
+            "en": "in my Italian"
+          }
+        },
+        {
+          "targetText": "rispetto a quando",
+          "baseText": {
+            "de": "im Vergleich zu damals, als",
+            "en": "compared with when"
+          }
+        },
+        {
+          "targetText": "evitare",
+          "baseText": {
+            "de": "vermeiden",
+            "en": "to avoid"
+          }
+        },
+        {
+          "targetText": "fissare una visita",
+          "baseText": {
+            "de": "einen Untersuchungstermin vereinbaren",
+            "en": "to book a medical appointment"
+          }
+        },
+        {
+          "targetText": "senza aiuto",
+          "baseText": {
+            "de": "ohne Hilfe",
+            "en": "without help"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Oggi ho più fiducia nel mio italiano rispetto a quando ",
+        "answer": "evitavo",
+        "after": " le telefonate.",
+        "fallbackChoices": [
+          "evitando",
+          "evitato",
+          "evitavo",
+          "evitare"
+        ]
+      },
+      "speakRequired": [
+        "fiducia",
+        "evitavo",
+        "telefonate"
+      ],
+      "sceneCaption": {
+        "de": "Nach einem Sprachcafé sprechen Sie mit dem Leiter über Ihren Alltag auf Italienisch. „Ha notato qualche cambiamento nel modo in cui usa l'italiano?“",
+        "en": "After a language café, you speak to the organiser about using Italian in your daily life. “Ha notato qualche cambiamento nel modo in cui usa l'italiano?”"
+      },
+      "trophyWord": {
+        "word": "fiducia",
+        "meaning": {
+          "de": "Vertrauen",
+          "en": "confidence"
+        },
+        "example": "Oggi ho più fiducia nel mio italiano rispetto a quando evitavo le telefonate.",
+        "whyThisWord": {
+          "de": "Fiducia bezeichnet hier das Vertrauen in die eigenen Sprachkenntnisse. Das Telefonat liefert dafür ein konkretes Beispiel.",
+          "en": "Fiducia here means confidence in your own language skills. The phone call gives a concrete example."
+        }
+      },
+      "distractors": [
+        "nel mio inglese",
+        "rimandavo gli incontri."
+      ],
+      "placeholderCaption": {
+        "de": "Nach einem Sprachcafé sprechen Sie mit dem Leiter über Ihren Alltag auf Italienisch.",
+        "en": "After a language café, you speak to the organiser about using Italian in your daily life."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "After a language café, you speak to the organiser about using Italian in your daily life."
+    }
+  ]
+}

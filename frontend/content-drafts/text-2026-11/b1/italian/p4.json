@@ -1,0 +1,2141 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Genau das meine ich",
+    "en": "That’s the one I mean"
+  },
+  "subtitle": {
+    "de": "Beschreiben Sie, woran man einen Gegenstand oder einen Ort erkennt, und klären Sie Verwechslungen.",
+    "en": "Describe how to recognize an object or a place, and clear up misunderstandings."
+  },
+  "anchor": "Shape C. Identifying relatives with che (L1–4), dove with a place antecedent (L5–7), and preposition + cui (L8–10). Singular formal Lei, indicative relative clauses, at most two per turn.",
+  "lessons": [
+    {
+      "slug": "scaffale-per-la-nicchia",
+      "title": {
+        "de": "Ein Regal für den Flur",
+        "en": "A shelving unit for the hall"
+      },
+      "situation": {
+        "de": "Im Möbelgeschäft fragt ein Verkäufer, wie viel Platz Sie im Flur haben.",
+        "en": "At a furniture shop, a salesperson asks how much room you have in your hall."
+      },
+      "pedagogicalGoal": "Mit che knüpfen Sie an einen Gegenstand an und sagen, was Sie mit ihm gemacht haben. In che ho visto ist das Regal das, was Sie gesehen haben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quanto spazio ha vicino alla porta?",
+          "baseText": {
+            "de": "Wie viel Platz haben Sie neben der Tür?",
+            "en": "How much room do you have beside the door?"
+          }
+        },
+        {
+          "targetText": "Lo scaffale che ho visto in vetrina entra appena nella nicchia del mio ingresso.",
+          "baseText": {
+            "de": "Das Regal, das ich im Schaufenster gesehen habe, passt gerade so in die Nische in meinem Flur.",
+            "en": "The shelving unit I saw in the window only just fits in the recess in my hall."
+          }
+        },
+        {
+          "targetText": "Quello è già venduto. Le interessa il modello in faggio?",
+          "baseText": {
+            "de": "Das ist schon verkauft. Interessiert Sie das Modell aus Buchenholz?",
+            "en": "That one’s sold. Are you interested in the beechwood model?"
+          }
+        },
+        {
+          "targetText": "Il faggio va bene, ma la larghezza massima resta sessanta centimetri.",
+          "baseText": {
+            "de": "Buche ist in Ordnung, aber die maximale Breite bleibt bei sechzig Zentimetern.",
+            "en": "Beech is fine, but the maximum width is still sixty centimetres."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Lo scaffale che ho visto",
+        "rule": {
+          "de": "Mit che knüpfen Sie an einen Gegenstand an und sagen, was Sie mit ihm gemacht haben. In che ho visto ist das Regal das, was Sie gesehen haben.",
+          "en": "Use che after an object to say what you did with it. In che ho visto, the shelving unit is the thing you saw."
+        },
+        "examples": [
+          {
+            "targetText": "Lo scaffale che ho visto in vetrina entra appena nella nicchia del mio ingresso.",
+            "baseText": {
+              "de": "Das Regal, das ich im Schaufenster gesehen habe, passt gerade so in die Nische in meinem Flur.",
+              "en": "The shelving unit I saw in the window only just fits in the recess in my hall."
+            },
+            "highlight": "Lo scaffale che ho visto in vetrina"
+          },
+          {
+            "targetText": "Il libro che ho ordinato racconta la storia del quartiere.",
+            "baseText": {
+              "de": "Das Buch, das ich bestellt habe, erzählt die Geschichte des Viertels.",
+              "en": "The book I ordered tells the story of the neighbourhood."
+            },
+            "highlight": "Il libro che ho ordinato"
+          }
+        ]
+      },
+      "cloze": [
+        "Il faggio va bene, ma la larghezza ",
+        {
+          "kind": "choice",
+          "answer": "massima",
+          "choices": [
+            "massimi",
+            "massima",
+            "massime",
+            "massimo"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "resta",
+          "choices": [
+            "restano",
+            "restiamo",
+            "resta",
+            "resti"
+          ],
+          "cue": "restare (la larghezza)"
+        },
+        " sessanta centimetri."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lo scaffale",
+          "baseText": {
+            "de": "Das Regal",
+            "en": "The shelving unit"
+          }
+        },
+        {
+          "targetText": "che ho visto in vetrina",
+          "baseText": {
+            "de": "das ich im Schaufenster gesehen habe",
+            "en": "that I saw in the window"
+          }
+        },
+        {
+          "targetText": "entra appena",
+          "baseText": {
+            "de": "passt gerade so",
+            "en": "only just fits"
+          }
+        },
+        {
+          "targetText": "nella nicchia",
+          "baseText": {
+            "de": "in die Nische",
+            "en": "in the recess"
+          }
+        },
+        {
+          "targetText": "del mio ingresso.",
+          "baseText": {
+            "de": "in meinem Flur",
+            "en": "in my hall"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lo scaffale",
+          "baseText": {
+            "de": "das Regal",
+            "en": "the shelving unit"
+          }
+        },
+        {
+          "targetText": "la vetrina",
+          "baseText": {
+            "de": "das Schaufenster",
+            "en": "the shop window"
+          }
+        },
+        {
+          "targetText": "entrare appena",
+          "baseText": {
+            "de": "gerade so hineinpassen",
+            "en": "to only just fit"
+          }
+        },
+        {
+          "targetText": "la nicchia",
+          "baseText": {
+            "de": "die Nische",
+            "en": "the recess"
+          }
+        },
+        {
+          "targetText": "il faggio",
+          "baseText": {
+            "de": "das Buchenholz",
+            "en": "beechwood"
+          }
+        },
+        {
+          "targetText": "la larghezza massima",
+          "baseText": {
+            "de": "die maximale Breite",
+            "en": "the maximum width"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lo scaffale che ho visto in vetrina ",
+        "answer": "entra",
+        "after": " appena nella nicchia del mio ingresso.",
+        "fallbackChoices": [
+          "entriamo",
+          "entrano",
+          "entra",
+          "entrare"
+        ]
+      },
+      "speakRequired": [
+        "scaffale",
+        "vetrina",
+        "nicchia"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelgeschäft fragt ein Verkäufer, wie viel Platz Sie im Flur haben. „Quanto spazio ha vicino alla porta?“",
+        "en": "At a furniture shop, a salesperson asks how much room you have in your hall. “Quanto spazio ha vicino alla porta?”"
+      },
+      "trophyWord": {
+        "word": "scaffale",
+        "meaning": {
+          "de": "das Regal",
+          "en": "shelving unit"
+        },
+        "example": "Questo scaffale regge il peso di tutti i miei libri.",
+        "whyThisWord": {
+          "de": "Mit scaffale können Sie ein bestimmtes Regal beschreiben und nach seinen Maßen fragen.",
+          "en": "Use scaffale to describe a particular shelving unit and ask about its dimensions."
+        }
+      },
+      "distractors": [
+        "le mensole in saldo",
+        "hanno le staffe incluse."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Verkäufer und ein Kunde betrachten die Möbel im Schaufenster.",
+        "en": "A salesperson and a customer look at the furniture in the shop window."
+      },
+      "songMood": "Light acoustic swing with a measured walking bass.",
+      "visualNotes": "A salesperson and a customer look at the furniture in the shop window."
+    },
+    {
+      "slug": "balcone-sul-cortile",
+      "title": {
+        "de": "Eine Wohnungsbesichtigung",
+        "en": "Viewing a flat"
+      },
+      "situation": {
+        "de": "Eine Maklerin legt Ihnen die Grundrisse von zwei Wohnungen vor.",
+        "en": "An estate agent shows you the floor plans of two flats."
+      },
+      "pedagogicalGoal": "Mit che und einem Merkmal grenzen Sie die Auswahl ein. Hier ist die Wohnung das Subjekt von ha.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale dei due appartamenti desidera visitare?",
+          "baseText": {
+            "de": "Welche der beiden Wohnungen möchten Sie besichtigen?",
+            "en": "Which of the two flats would you like to view?"
+          }
+        },
+        {
+          "targetText": "Mi interessa l'appartamento che ha il balcone sul cortile interno.",
+          "baseText": {
+            "de": "Mich interessiert die Wohnung, die den Balkon zum Innenhof hat.",
+            "en": "I’m interested in the flat that has a balcony overlooking the inner courtyard."
+          }
+        },
+        {
+          "targetText": "Al secondo piano ne ho uno con un terrazzo sulla strada.",
+          "baseText": {
+            "de": "Im zweiten Stock habe ich eine Wohnung mit einer Terrasse zur Straße hin.",
+            "en": "I have one on the second floor with a terrace facing the street."
+          }
+        },
+        {
+          "targetText": "Anche un terrazzo va bene, ma deve affacciarsi sul cortile.",
+          "baseText": {
+            "de": "Auch eine Terrasse passt für mich, aber sie muss zum Hof hinausgehen.",
+            "en": "A terrace works too, but it has to overlook the courtyard."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L'appartamento che ha…",
+        "rule": {
+          "de": "Mit che und einem Merkmal grenzen Sie die Auswahl ein. Hier ist die Wohnung das Subjekt von ha.",
+          "en": "Use che and a distinguishing feature to narrow down the choice. Here the flat is the subject of ha."
+        },
+        "examples": [
+          {
+            "targetText": "Mi interessa l'appartamento che ha il balcone sul cortile interno.",
+            "baseText": {
+              "de": "Mich interessiert die Wohnung, die den Balkon zum Innenhof hat.",
+              "en": "I’m interested in the flat that has a balcony overlooking the inner courtyard."
+            },
+            "highlight": "l'appartamento che ha il balcone"
+          },
+          {
+            "targetText": "Vorrei il treno che ha un vagone per le biciclette.",
+            "baseText": {
+              "de": "Ich hätte gern den Zug, der einen Fahrradwagen hat.",
+              "en": "I’d like the train that has a bicycle carriage."
+            },
+            "highlight": "il treno che ha un vagone"
+          }
+        ]
+      },
+      "cloze": [
+        "Anche un terrazzo va ",
+        {
+          "kind": "choice",
+          "answer": "bene",
+          "choices": [
+            "buoni",
+            "buone",
+            "bene",
+            "bontà"
+          ]
+        },
+        ", ma ",
+        {
+          "kind": "choice",
+          "answer": "deve",
+          "choices": [
+            "devono",
+            "devo",
+            "dobbiamo",
+            "deve"
+          ]
+        },
+        " affacciarsi sul cortile."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi interessa",
+          "baseText": {
+            "de": "Mich interessiert",
+            "en": "I’m interested in"
+          }
+        },
+        {
+          "targetText": "l'appartamento che ha",
+          "baseText": {
+            "de": "die Wohnung, die … hat",
+            "en": "the flat that has"
+          }
+        },
+        {
+          "targetText": "il balcone",
+          "baseText": {
+            "de": "den Balkon",
+            "en": "the balcony"
+          }
+        },
+        {
+          "targetText": "sul cortile interno.",
+          "baseText": {
+            "de": "zum Innenhof hin",
+            "en": "overlooking the inner courtyard"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'appartamento",
+          "baseText": {
+            "de": "die Wohnung",
+            "en": "the flat"
+          }
+        },
+        {
+          "targetText": "il balcone",
+          "baseText": {
+            "de": "der Balkon",
+            "en": "the balcony"
+          }
+        },
+        {
+          "targetText": "il cortile interno",
+          "baseText": {
+            "de": "der Innenhof",
+            "en": "the inner courtyard"
+          }
+        },
+        {
+          "targetText": "il secondo piano",
+          "baseText": {
+            "de": "der zweite Stock",
+            "en": "the second floor"
+          }
+        },
+        {
+          "targetText": "il terrazzo",
+          "baseText": {
+            "de": "die Terrasse",
+            "en": "the terrace"
+          }
+        },
+        {
+          "targetText": "dare sulla strada",
+          "baseText": {
+            "de": "zur Straße hinausgehen",
+            "en": "to face the street"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi interessa l'appartamento che ha il balcone sul cortile ",
+        "answer": "interno",
+        "after": ".",
+        "fallbackChoices": [
+          "interni",
+          "interna",
+          "interne",
+          "interno"
+        ]
+      },
+      "speakRequired": [
+        "interessa",
+        "balcone",
+        "cortile"
+      ],
+      "sceneCaption": {
+        "de": "Eine Maklerin legt Ihnen die Grundrisse von zwei Wohnungen vor. „Quale dei due appartamenti desidera visitare?“",
+        "en": "An estate agent shows you the floor plans of two flats. “Quale dei due appartamenti desidera visitare?”"
+      },
+      "trophyWord": {
+        "word": "balcone",
+        "meaning": {
+          "de": "der Balkon",
+          "en": "balcony"
+        },
+        "example": "Dal balcone vedo gli alberi del giardino.",
+        "whyThisWord": {
+          "de": "Beim Vergleich von Wohnungen lässt sich mit balcone der Blick nach draußen genauer beschreiben.",
+          "en": "When comparing flats, use balcone to describe the outdoor space and its outlook."
+        }
+      },
+      "distractors": [
+        "le finestre che danno",
+        "sono al terzo piano."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Grundrisse liegen vor einer Maklerin auf dem Tisch.",
+        "en": "Two floor plans lie on the table in front of an estate agent."
+      },
+      "songMood": "Quiet chamber pop with soft plucked strings.",
+      "visualNotes": "Two floor plans lie on the table in front of an estate agent."
+    },
+    {
+      "slug": "portone-sulla-via",
+      "title": {
+        "de": "Ein Treffpunkt vor dem Haus",
+        "en": "Meeting outside a building"
+      },
+      "situation": {
+        "de": "Bei der telefonischen Absprache für eine Besichtigung fragt der Hausmeister nach dem Treffpunkt.",
+        "en": "While arranging a viewing over the phone, the caretaker asks where to meet."
+      },
+      "pedagogicalGoal": "Mit che dà su beschreiben Sie einen Eingang über die Straße oder den Platz, zu dem er hinausgeht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Davanti a quale ingresso mi aspetta?",
+          "baseText": {
+            "de": "Vor welchem Eingang warten Sie auf mich?",
+            "en": "Which entrance will you wait for me at?"
+          }
+        },
+        {
+          "targetText": "La aspetto davanti al portone che dà sulla strada principale.",
+          "baseText": {
+            "de": "Ich warte vor dem großen Eingangstor zur Hauptstraße auf Sie.",
+            "en": "I’ll wait for you at the main door that faces the main street."
+          }
+        },
+        {
+          "targetText": "Oggi l'ingresso laterale è chiuso, quindi davanti al portone c'è già tanta gente.",
+          "baseText": {
+            "de": "Heute ist der Seiteneingang geschlossen, deshalb stehen vor dem Eingangstor schon viele Leute.",
+            "en": "The side entrance is closed today, so there are already a lot of people outside the main door."
+          }
+        },
+        {
+          "targetText": "Allora ci vediamo sotto la tenda verde accanto al bar.",
+          "baseText": {
+            "de": "Dann treffen wir uns unter der grünen Markise neben dem Café.",
+            "en": "Then let’s meet under the green awning beside the café."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il portone che dà su…",
+        "rule": {
+          "de": "Mit che dà su beschreiben Sie einen Eingang über die Straße oder den Platz, zu dem er hinausgeht.",
+          "en": "Use che dà su to identify an entrance by the street or square it faces."
+        },
+        "examples": [
+          {
+            "targetText": "La aspetto davanti al portone che dà sulla strada principale.",
+            "baseText": {
+              "de": "Ich warte vor dem großen Eingangstor zur Hauptstraße auf Sie.",
+              "en": "I’ll wait for you at the main door that faces the main street."
+            },
+            "highlight": "al portone che dà sulla strada principale"
+          },
+          {
+            "targetText": "Mi piace la finestra che dà sul giardino delle rose.",
+            "baseText": {
+              "de": "Mir gefällt das Fenster mit Blick auf den Rosengarten.",
+              "en": "I like the window that looks out onto the rose garden."
+            },
+            "highlight": "la finestra che dà sul giardino"
+          }
+        ]
+      },
+      "cloze": [
+        "Allora ci vediamo sotto la ",
+        {
+          "kind": "choice",
+          "answer": "tenda",
+          "choices": [
+            "tendaggi",
+            "tendone",
+            "tende",
+            "tenda"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "verde",
+          "choices": [
+            "verde",
+            "verdi",
+            "verdure",
+            "verdognoli"
+          ]
+        },
+        " accanto al bar."
+      ],
+      "chunks": [
+        {
+          "targetText": "La aspetto",
+          "baseText": {
+            "de": "Ich warte auf Sie",
+            "en": "I’ll wait for you"
+          }
+        },
+        {
+          "targetText": "davanti al portone",
+          "baseText": {
+            "de": "vor dem Eingangstor",
+            "en": "outside the main door"
+          }
+        },
+        {
+          "targetText": "che dà",
+          "baseText": {
+            "de": "das hinausgeht",
+            "en": "that faces"
+          }
+        },
+        {
+          "targetText": "sulla strada principale.",
+          "baseText": {
+            "de": "auf die Hauptstraße",
+            "en": "the main street"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il portone",
+          "baseText": {
+            "de": "das große Eingangstor",
+            "en": "the main door"
+          }
+        },
+        {
+          "targetText": "dare su",
+          "baseText": {
+            "de": "hinausgehen auf",
+            "en": "to face onto"
+          }
+        },
+        {
+          "targetText": "la strada principale",
+          "baseText": {
+            "de": "die Hauptstraße",
+            "en": "the main street"
+          }
+        },
+        {
+          "targetText": "l'ingresso laterale",
+          "baseText": {
+            "de": "der Seiteneingang",
+            "en": "the side entrance"
+          }
+        },
+        {
+          "targetText": "la tenda",
+          "baseText": {
+            "de": "die Markise",
+            "en": "the awning"
+          }
+        },
+        {
+          "targetText": "accanto al bar",
+          "baseText": {
+            "de": "neben dem Café",
+            "en": "beside the café"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La aspetto davanti al portone che dà sulla strada ",
+        "answer": "principale",
+        "after": ".",
+        "fallbackChoices": [
+          "principale",
+          "principali",
+          "principalmente",
+          "principio"
+        ]
+      },
+      "speakRequired": [
+        "portone",
+        "strada",
+        "principale"
+      ],
+      "sceneCaption": {
+        "de": "Bei der telefonischen Absprache für eine Besichtigung fragt der Hausmeister nach dem Treffpunkt. „Davanti a quale ingresso mi aspetta?“",
+        "en": "While arranging a viewing over the phone, the caretaker asks where to meet. “Davanti a quale ingresso mi aspetta?”"
+      },
+      "trophyWord": {
+        "word": "portone",
+        "meaning": {
+          "de": "das Eingangstor",
+          "en": "main door of a building"
+        },
+        "example": "Il portone del palazzo è accanto a una farmacia.",
+        "whyThisWord": {
+          "de": "Portone bezeichnet den großen Eingang eines Hauses, an dem man sich verabreden kann.",
+          "en": "Portone is the main door of a building, a useful landmark for arranging a meeting."
+        }
+      },
+      "distractors": [
+        "i due cancelli pedonali",
+        "si aprono verso l'interno."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hausmeister telefoniert vor der Fassade eines Mehrfamilienhauses.",
+        "en": "A caretaker takes a call outside a block of flats."
+      },
+      "songMood": "Unhurried brushed drums with a street-corner accordion.",
+      "visualNotes": "A caretaker takes a call outside a block of flats."
+    },
+    {
+      "slug": "cortile-visto-dalla-finestra",
+      "title": {
+        "de": "Ein Hof zwischen den Häusern",
+        "en": "A courtyard between the buildings"
+      },
+      "situation": {
+        "de": "Der Hausverwalter zeigt Ihnen einen Plan mit den Höfen der Wohnanlage.",
+        "en": "The property manager shows you a plan of the courtyards in the apartment complex."
+      },
+      "pedagogicalGoal": "Nach che zeigt die Verbform vedo, wer etwas sieht. Der Hof ist das, was Sie sehen. Danach beschreiben Sie mit ha eine Eigenschaft des Hofs.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Su quale cortile si affaccia casa sua?",
+          "baseText": {
+            "de": "Auf welchen Hof geht Ihre Wohnung hinaus?",
+            "en": "Which courtyard does your flat overlook?"
+          }
+        },
+        {
+          "targetText": "Il cortile che vedo dalla mia finestra ha un fico in mezzo al prato.",
+          "baseText": {
+            "de": "In dem Hof, den ich von meinem Fenster aus sehe, steht mitten auf dem Rasen ein Feigenbaum.",
+            "en": "The courtyard I can see from my window has a fig tree in the middle of the lawn."
+          }
+        },
+        {
+          "targetText": "Allora entri pure dal cancello vicino ai garage.",
+          "baseText": {
+            "de": "Dann können Sie durch das Tor bei den Garagen hineingehen.",
+            "en": "Then you can go in through the gate near the garages."
+          }
+        },
+        {
+          "targetText": "Vicino ai garage vedo due cancelli: intende quello pedonale?",
+          "baseText": {
+            "de": "Bei den Garagen sehe ich zwei Tore. Meinen Sie das für Fußgänger?",
+            "en": "I see two gates near the garages. Do you mean the pedestrian gate?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il cortile che vedo",
+        "rule": {
+          "de": "Nach che zeigt die Verbform vedo, wer etwas sieht. Der Hof ist das, was Sie sehen. Danach beschreiben Sie mit ha eine Eigenschaft des Hofs.",
+          "en": "After che, the verb form vedo tells you who is looking. The courtyard is what you see. The main verb ha then introduces one of its features."
+        },
+        "examples": [
+          {
+            "targetText": "Il cortile che vedo dalla mia finestra ha un fico in mezzo al prato.",
+            "baseText": {
+              "de": "In dem Hof, den ich von meinem Fenster aus sehe, steht mitten auf dem Rasen ein Feigenbaum.",
+              "en": "The courtyard I can see from my window has a fig tree in the middle of the lawn."
+            },
+            "highlight": "Il cortile che vedo dalla mia finestra"
+          },
+          {
+            "targetText": "La collina che vedo dal treno ha una cappella in cima.",
+            "baseText": {
+              "de": "Auf dem Hügel, den ich vom Zug aus sehe, steht oben eine Kapelle.",
+              "en": "The hill I can see from the train has a chapel at the top."
+            },
+            "highlight": "La collina che vedo dal treno"
+          }
+        ]
+      },
+      "cloze": [
+        "Vicino ai garage vedo due ",
+        {
+          "kind": "choice",
+          "answer": "cancelli",
+          "choices": [
+            "cancelli",
+            "cancello",
+            "cancellata",
+            "portone"
+          ]
+        },
+        ": intende quello ",
+        {
+          "kind": "choice",
+          "answer": "pedonale",
+          "choices": [
+            "pedonali",
+            "pedonale",
+            "pedoni",
+            "camminare"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Il cortile che vedo dalla mia finestra",
+          "baseText": {
+            "de": "Der Hof, den ich von meinem Fenster aus sehe",
+            "en": "The courtyard I can see from my window"
+          }
+        },
+        {
+          "targetText": "ha",
+          "baseText": {
+            "de": "hat",
+            "en": "has"
+          }
+        },
+        {
+          "targetText": "un fico",
+          "baseText": {
+            "de": "einen Feigenbaum",
+            "en": "a fig tree"
+          }
+        },
+        {
+          "targetText": "in mezzo al prato.",
+          "baseText": {
+            "de": "mitten auf dem Rasen",
+            "en": "in the middle of the lawn"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il cortile",
+          "baseText": {
+            "de": "der Hof",
+            "en": "the courtyard"
+          }
+        },
+        {
+          "targetText": "affacciarsi su",
+          "baseText": {
+            "de": "hinausgehen auf",
+            "en": "to overlook"
+          }
+        },
+        {
+          "targetText": "il fico",
+          "baseText": {
+            "de": "der Feigenbaum",
+            "en": "the fig tree"
+          }
+        },
+        {
+          "targetText": "in mezzo al prato",
+          "baseText": {
+            "de": "mitten auf dem Rasen",
+            "en": "in the middle of the lawn"
+          }
+        },
+        {
+          "targetText": "il cancello",
+          "baseText": {
+            "de": "das Tor",
+            "en": "the gate"
+          }
+        },
+        {
+          "targetText": "il cancello pedonale",
+          "baseText": {
+            "de": "das Fußgängertor",
+            "en": "the pedestrian gate"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il cortile che vedo dalla mia finestra ",
+        "answer": "ha",
+        "after": " un fico in mezzo al prato.",
+        "fallbackChoices": [
+          "hanno",
+          "ha",
+          "avere",
+          "abbiamo"
+        ]
+      },
+      "speakRequired": [
+        "cortile",
+        "finestra",
+        "fico"
+      ],
+      "sceneCaption": {
+        "de": "Der Hausverwalter zeigt Ihnen einen Plan mit den Höfen der Wohnanlage. „Su quale cortile si affaccia casa sua?“",
+        "en": "The property manager shows you a plan of the courtyards in the apartment complex. “Su quale cortile si affaccia casa sua?”"
+      },
+      "trophyWord": {
+        "word": "cortile",
+        "meaning": {
+          "de": "der Hof",
+          "en": "courtyard"
+        },
+        "example": "Nel cortile della scuola c'è un vecchio pozzo.",
+        "whyThisWord": {
+          "de": "Mit cortile können Sie einen Innenbereich zwischen Gebäuden benennen und den Weg dorthin klären.",
+          "en": "Use cortile to name an open area between buildings and clarify how to reach it."
+        }
+      },
+      "distractors": [
+        "le aiuole accanto al muro",
+        "restano al sole."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hausverwalter breitet den Lageplan einer Wohnanlage aus.",
+        "en": "A property manager unfolds a plan of an apartment complex."
+      },
+      "songMood": "Conversational acoustic guitar with warm double bass.",
+      "visualNotes": "A property manager unfolds a plan of an apartment complex."
+    },
+    {
+      "slug": "interruttore-sul-pianerottolo",
+      "title": {
+        "de": "Das Licht im Treppenhaus",
+        "en": "The light on the stairs"
+      },
+      "situation": {
+        "de": "Ein Elektriker bittet Sie, ihm den Lichtschalter im Haus zu zeigen.",
+        "en": "An electrician asks you to point out the light switch in your building."
+      },
+      "pedagogicalGoal": "Mit dove verknüpfen Sie einen Ort mit dem, was genau dort passiert. Hier beginnt am beschriebenen Treppenabsatz der zweite Treppenlauf.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quale interruttore usa per accendere la luce delle scale?",
+          "baseText": {
+            "de": "Mit welchem Schalter machen Sie das Licht im Treppenhaus an?",
+            "en": "Which switch do you use to turn on the stair light?"
+          }
+        },
+        {
+          "targetText": "Uso l'interruttore sul pianerottolo dove comincia la seconda rampa.",
+          "baseText": {
+            "de": "Ich nehme den Schalter auf dem Absatz, an dem der zweite Treppenlauf beginnt.",
+            "en": "I use the switch on the landing where the second flight begins."
+          }
+        },
+        {
+          "targetText": "Per oggi posso lasciarle una lampada portatile sul primo gradino.",
+          "baseText": {
+            "de": "Für heute kann ich Ihnen eine tragbare Lampe auf die erste Stufe stellen.",
+            "en": "For today I can leave a portable lamp on the first step for you."
+          }
+        },
+        {
+          "targetText": "Va bene, la lampada illumina almeno i primi gradini.",
+          "baseText": {
+            "de": "Das ist gut, so beleuchtet die Lampe wenigstens die ersten Stufen.",
+            "en": "That works. At least the lamp will light up the first few steps."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il pianerottolo dove…",
+        "rule": {
+          "de": "Mit dove verknüpfen Sie einen Ort mit dem, was genau dort passiert. Hier beginnt am beschriebenen Treppenabsatz der zweite Treppenlauf.",
+          "en": "Use dove to link a place to what happens there. Here the second flight of stairs begins on the landing you are describing."
+        },
+        "examples": [
+          {
+            "targetText": "Uso l'interruttore sul pianerottolo dove comincia la seconda rampa.",
+            "baseText": {
+              "de": "Ich nehme den Schalter auf dem Absatz, an dem der zweite Treppenlauf beginnt.",
+              "en": "I use the switch on the landing where the second flight begins."
+            },
+            "highlight": "sul pianerottolo dove comincia la seconda rampa"
+          },
+          {
+            "targetText": "Aspetto alla fermata dove comincia il percorso della navetta.",
+            "baseText": {
+              "de": "Ich warte an der Haltestelle, an der die Fahrt des Pendelbusses beginnt.",
+              "en": "I’ll wait at the stop where the shuttle route begins."
+            },
+            "highlight": "alla fermata dove comincia il percorso della navetta"
+          }
+        ]
+      },
+      "cloze": [
+        "Va bene, la lampada ",
+        {
+          "kind": "choice",
+          "answer": "illumina",
+          "choices": [
+            "illuminano",
+            "illumina",
+            "illuminiamo",
+            "illumino"
+          ]
+        },
+        " almeno i ",
+        {
+          "kind": "choice",
+          "answer": "primi",
+          "choices": [
+            "prima",
+            "primo",
+            "primi",
+            "prime"
+          ]
+        },
+        " gradini."
+      ],
+      "chunks": [
+        {
+          "targetText": "Uso l'interruttore",
+          "baseText": {
+            "de": "Ich nehme den Schalter",
+            "en": "I use the switch"
+          }
+        },
+        {
+          "targetText": "sul pianerottolo",
+          "baseText": {
+            "de": "auf dem Absatz",
+            "en": "on the landing"
+          }
+        },
+        {
+          "targetText": "dove comincia",
+          "baseText": {
+            "de": "wo … beginnt",
+            "en": "where … begins"
+          }
+        },
+        {
+          "targetText": "la seconda rampa.",
+          "baseText": {
+            "de": "der zweite Treppenlauf",
+            "en": "the second flight of stairs"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'interruttore",
+          "baseText": {
+            "de": "der Lichtschalter",
+            "en": "the light switch"
+          }
+        },
+        {
+          "targetText": "il pianerottolo",
+          "baseText": {
+            "de": "der Treppenabsatz",
+            "en": "the landing"
+          }
+        },
+        {
+          "targetText": "la rampa di scale",
+          "baseText": {
+            "de": "der Treppenlauf",
+            "en": "the flight of stairs"
+          }
+        },
+        {
+          "targetText": "accendere la luce",
+          "baseText": {
+            "de": "das Licht einschalten",
+            "en": "to turn on the light"
+          }
+        },
+        {
+          "targetText": "la lampada portatile",
+          "baseText": {
+            "de": "die tragbare Lampe",
+            "en": "the portable lamp"
+          }
+        },
+        {
+          "targetText": "il gradino",
+          "baseText": {
+            "de": "die Stufe",
+            "en": "the step"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Uso l'interruttore sul pianerottolo dove ",
+        "answer": "comincia",
+        "after": " la seconda rampa.",
+        "fallbackChoices": [
+          "cominciano",
+          "cominciare",
+          "comincia",
+          "cominciamo"
+        ]
+      },
+      "speakRequired": [
+        "pianerottolo",
+        "seconda",
+        "rampa"
+      ],
+      "sceneCaption": {
+        "de": "Ein Elektriker bittet Sie, ihm den Lichtschalter im Haus zu zeigen. „Quale interruttore usa per accendere la luce delle scale?“",
+        "en": "An electrician asks you to point out the light switch in your building. “Quale interruttore usa per accendere la luce delle scale?”"
+      },
+      "trophyWord": {
+        "word": "interruttore",
+        "meaning": {
+          "de": "der Schalter",
+          "en": "switch"
+        },
+        "example": "L'interruttore in fondo al corridoio accende la luce sopra la porta.",
+        "whyThisWord": {
+          "de": "Interruttore ist das Wort für den Schalter, den Sie bei einer Störung genau bezeichnen möchten.",
+          "en": "Interruttore names the switch you need to identify when reporting a fault."
+        }
+      },
+      "distractors": [
+        "le lampadine di scorta",
+        "durano diversi anni."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Elektriker schaut vom Hausflur zur Treppe hinüber.",
+        "en": "An electrician looks across the entrance hall towards the stairs."
+      },
+      "songMood": "Gentle syncopated piano and muted bass.",
+      "visualNotes": "An electrician looks across the entrance hall towards the stairs."
+    },
+    {
+      "slug": "rubinetto-del-lavello",
+      "title": {
+        "de": "Ein tropfender Wasserhahn",
+        "en": "A dripping tap"
+      },
+      "situation": {
+        "de": "Ein Klempner fragt Sie nach dem Wasserhahn, der Probleme macht.",
+        "en": "A plumber asks about the tap that’s giving you trouble."
+      },
+      "pedagogicalGoal": "Mit dove und einer typischen Tätigkeit machen Sie klar, welchen Ort Sie meinen. Quando leitet anschließend die Zeitangabe ein.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Da quale rubinetto esce l'acqua?",
+          "baseText": {
+            "de": "Aus welchem Hahn tritt Wasser aus?",
+            "en": "Which tap is the water coming from?"
+          }
+        },
+        {
+          "targetText": "Perde il rubinetto del lavello dove sciacquo i piatti, ma solo quando apro l'acqua calda.",
+          "baseText": {
+            "de": "Es tropft der Hahn an der Spüle, in der ich das Geschirr abspüle, aber nur, wenn ich das warme Wasser aufdrehe.",
+            "en": "It’s the tap over the sink where I rinse the dishes, but it only leaks when I turn on the hot water."
+          }
+        },
+        {
+          "targetText": "Controllo anche il lavandino del bagno o il problema è solo qui?",
+          "baseText": {
+            "de": "Soll ich auch das Waschbecken im Bad prüfen, oder gibt es das Problem nur hier?",
+            "en": "Shall I check the bathroom basin too, or is the problem just here?"
+          }
+        },
+        {
+          "targetText": "In bagno è tutto asciutto, il problema riguarda la cucina.",
+          "baseText": {
+            "de": "Im Bad ist alles trocken. Das Problem betrifft die Küche.",
+            "en": "Everything’s dry in the bathroom. The problem is in the kitchen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il lavello dove…",
+        "rule": {
+          "de": "Mit dove und einer typischen Tätigkeit machen Sie klar, welchen Ort Sie meinen. Quando leitet anschließend die Zeitangabe ein.",
+          "en": "Use dove and a familiar activity to identify the place you mean. Quando then introduces the time when something happens."
+        },
+        "examples": [
+          {
+            "targetText": "Perde il rubinetto del lavello dove sciacquo i piatti, ma solo quando apro l'acqua calda.",
+            "baseText": {
+              "de": "Es tropft der Hahn an der Spüle, in der ich das Geschirr abspüle, aber nur, wenn ich das warme Wasser aufdrehe.",
+              "en": "It’s the tap over the sink where I rinse the dishes, but it only leaks when I turn on the hot water."
+            },
+            "highlight": "del lavello dove sciacquo i piatti"
+          },
+          {
+            "targetText": "È il laboratorio dove stampo le fotografie per la mostra.",
+            "baseText": {
+              "de": "Das ist die Werkstatt, in der ich die Fotos für die Ausstellung drucke.",
+              "en": "That’s the studio where I print the photographs for the exhibition."
+            },
+            "highlight": "il laboratorio dove stampo le fotografie"
+          }
+        ]
+      },
+      "cloze": [
+        "In bagno è tutto ",
+        {
+          "kind": "choice",
+          "answer": "asciutto",
+          "choices": [
+            "asciutte",
+            "asciutta",
+            "asciutto",
+            "asciutti"
+          ]
+        },
+        ", il problema ",
+        {
+          "kind": "form",
+          "answer": "riguarda",
+          "choices": [
+            "riguardano",
+            "riguardo",
+            "riguardiamo",
+            "riguarda"
+          ],
+          "cue": "riguardare (il problema)"
+        },
+        " la cucina."
+      ],
+      "chunks": [
+        {
+          "targetText": "Perde il rubinetto",
+          "baseText": {
+            "de": "Es tropft der Hahn",
+            "en": "It’s the tap that leaks"
+          }
+        },
+        {
+          "targetText": "del lavello",
+          "baseText": {
+            "de": "an der Spüle",
+            "en": "over the sink"
+          }
+        },
+        {
+          "targetText": "dove sciacquo i piatti,",
+          "baseText": {
+            "de": "in der ich das Geschirr abspüle",
+            "en": "where I rinse the dishes"
+          }
+        },
+        {
+          "targetText": "ma solo quando apro",
+          "baseText": {
+            "de": "aber nur, wenn ich … aufdrehe",
+            "en": "but only when I turn on"
+          }
+        },
+        {
+          "targetText": "l'acqua calda.",
+          "baseText": {
+            "de": "das warme Wasser",
+            "en": "the hot water"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il rubinetto",
+          "baseText": {
+            "de": "der Wasserhahn",
+            "en": "the tap"
+          }
+        },
+        {
+          "targetText": "il lavello",
+          "baseText": {
+            "de": "die Küchenspüle",
+            "en": "the kitchen sink"
+          }
+        },
+        {
+          "targetText": "sciacquare i piatti",
+          "baseText": {
+            "de": "das Geschirr abspülen",
+            "en": "to rinse the dishes"
+          }
+        },
+        {
+          "targetText": "l'acqua calda",
+          "baseText": {
+            "de": "das warme Wasser",
+            "en": "the hot water"
+          }
+        },
+        {
+          "targetText": "il lavandino del bagno",
+          "baseText": {
+            "de": "das Waschbecken im Bad",
+            "en": "the bathroom basin"
+          }
+        },
+        {
+          "targetText": "asciutto",
+          "baseText": {
+            "de": "trocken",
+            "en": "dry"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Perde il rubinetto del lavello dove sciacquo i piatti, ma solo quando apro l'acqua ",
+        "answer": "calda",
+        "after": ".",
+        "fallbackChoices": [
+          "caldo",
+          "calde",
+          "caldi",
+          "calda"
+        ]
+      },
+      "speakRequired": [
+        "rubinetto",
+        "lavello",
+        "piatti"
+      ],
+      "sceneCaption": {
+        "de": "Ein Klempner fragt Sie nach dem Wasserhahn, der Probleme macht. „Da quale rubinetto esce l'acqua?“",
+        "en": "A plumber asks about the tap that’s giving you trouble. “Da quale rubinetto esce l'acqua?”"
+      },
+      "trophyWord": {
+        "word": "rubinetto",
+        "meaning": {
+          "de": "der Wasserhahn",
+          "en": "tap"
+        },
+        "example": "Il rubinetto accanto alla lavatrice gocciola da stamattina.",
+        "whyThisWord": {
+          "de": "Mit rubinetto können Sie beim Klempner die Stelle eingrenzen, an der Wasser austritt.",
+          "en": "Use rubinetto when telling a plumber exactly where water is leaking."
+        }
+      },
+      "distractors": [
+        "le guarnizioni nuove",
+        "sono nella cassetta."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Klempner trägt seine Werkzeugtasche in die Wohnung.",
+        "en": "A plumber carries a tool bag into a flat."
+      },
+      "songMood": "Quiet acoustic pop with a ticking percussion pulse.",
+      "visualNotes": "A plumber carries a tool bag into a flat."
+    },
+    {
+      "slug": "giacca-al-guardaroba",
+      "title": {
+        "de": "An der Theatergarderobe",
+        "en": "At the theatre cloakroom"
+      },
+      "situation": {
+        "de": "An der Garderobe fragt eine Mitarbeiterin, was Ihnen nach der Vorstellung fehlt.",
+        "en": "At the cloakroom, an attendant asks what you’re missing after the performance."
+      },
+      "pedagogicalGoal": "Mit dove und einem Ereignis aus der Vergangenheit kennzeichnen Sie einen Ort. Ho ritirato sagt, was Sie dort abgeholt haben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Che cosa le manca?",
+          "baseText": {
+            "de": "Was fehlt Ihnen?",
+            "en": "What are you missing?"
+          }
+        },
+        {
+          "targetText": "Ho lasciato la giacca di velluto al banco dove poco fa ho ritirato l'ombrello.",
+          "baseText": {
+            "de": "Ich habe meine Samtjacke an der Theke gelassen, an der ich vorhin meinen Schirm abgeholt habe.",
+            "en": "I left my velvet jacket at the counter where I picked up my umbrella a little while ago."
+          }
+        },
+        {
+          "targetText": "Qui ne ho una di velluto con la cerniera. È questa?",
+          "baseText": {
+            "de": "Ich habe hier eine Samtjacke mit Reißverschluss. Ist es diese?",
+            "en": "I have a velvet one here with a zip. Is this it?"
+          }
+        },
+        {
+          "targetText": "No, la mia ha il collo basso e due bottoni dorati.",
+          "baseText": {
+            "de": "Nein, meine hat einen niedrigen Kragen und zwei goldfarbene Knöpfe.",
+            "en": "No, mine has a low collar and two gold-coloured buttons."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Al banco dove ho ritirato…",
+        "rule": {
+          "de": "Mit dove und einem Ereignis aus der Vergangenheit kennzeichnen Sie einen Ort. Ho ritirato sagt, was Sie dort abgeholt haben.",
+          "en": "Use dove and a past event to identify a place. Ho ritirato tells the listener what you picked up there."
+        },
+        "examples": [
+          {
+            "targetText": "Ho lasciato la giacca di velluto al banco dove poco fa ho ritirato l'ombrello.",
+            "baseText": {
+              "de": "Ich habe meine Samtjacke an der Theke gelassen, an der ich vorhin meinen Schirm abgeholt habe.",
+              "en": "I left my velvet jacket at the counter where I picked up my umbrella a little while ago."
+            },
+            "highlight": "al banco dove poco fa ho ritirato l'ombrello"
+          },
+          {
+            "targetText": "Cerco il negozio dove ieri ho comprato queste pile.",
+            "baseText": {
+              "de": "Ich suche das Geschäft, in dem ich gestern diese Batterien gekauft habe.",
+              "en": "I’m looking for the shop where I bought these batteries yesterday."
+            },
+            "highlight": "il negozio dove ieri ho comprato queste pile"
+          }
+        ]
+      },
+      "cloze": [
+        "No, la mia ha il collo ",
+        {
+          "kind": "choice",
+          "answer": "basso",
+          "choices": [
+            "bassa",
+            "bassi",
+            "basse",
+            "basso"
+          ]
+        },
+        " e due bottoni ",
+        {
+          "kind": "choice",
+          "answer": "dorati",
+          "choices": [
+            "dorati",
+            "dorato",
+            "dorate",
+            "dorata"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ho lasciato",
+          "baseText": {
+            "de": "Ich habe … gelassen",
+            "en": "I left"
+          }
+        },
+        {
+          "targetText": "la giacca di velluto",
+          "baseText": {
+            "de": "die Samtjacke",
+            "en": "the velvet jacket"
+          }
+        },
+        {
+          "targetText": "al banco",
+          "baseText": {
+            "de": "an der Theke",
+            "en": "at the counter"
+          }
+        },
+        {
+          "targetText": "dove poco fa ho ritirato l'ombrello.",
+          "baseText": {
+            "de": "an der ich vorhin meinen Schirm abgeholt habe",
+            "en": "where I picked up my umbrella a little while ago"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la giacca",
+          "baseText": {
+            "de": "die Jacke",
+            "en": "the jacket"
+          }
+        },
+        {
+          "targetText": "il velluto",
+          "baseText": {
+            "de": "der Samt",
+            "en": "velvet"
+          }
+        },
+        {
+          "targetText": "il guardaroba",
+          "baseText": {
+            "de": "die Garderobe",
+            "en": "the cloakroom"
+          }
+        },
+        {
+          "targetText": "ritirare un ombrello",
+          "baseText": {
+            "de": "einen Schirm abholen",
+            "en": "to pick up an umbrella"
+          }
+        },
+        {
+          "targetText": "la cerniera",
+          "baseText": {
+            "de": "der Reißverschluss",
+            "en": "the zip"
+          }
+        },
+        {
+          "targetText": "il collo basso",
+          "baseText": {
+            "de": "der niedrige Kragen",
+            "en": "the low collar"
+          }
+        },
+        {
+          "targetText": "i bottoni dorati",
+          "baseText": {
+            "de": "die goldfarbenen Knöpfe",
+            "en": "the gold-coloured buttons"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ho lasciato la giacca di velluto al banco dove poco fa ho ",
+        "answer": "ritirato",
+        "after": " l'ombrello.",
+        "fallbackChoices": [
+          "ritirato",
+          "ritirare",
+          "ritiro",
+          "ritirando"
+        ]
+      },
+      "speakRequired": [
+        "giacca",
+        "velluto",
+        "banco"
+      ],
+      "sceneCaption": {
+        "de": "An der Garderobe fragt eine Mitarbeiterin, was Ihnen nach der Vorstellung fehlt. „Che cosa le manca?“",
+        "en": "At the cloakroom, an attendant asks what you’re missing after the performance. “Che cosa le manca?”"
+      },
+      "trophyWord": {
+        "word": "giacca",
+        "meaning": {
+          "de": "die Jacke",
+          "en": "jacket"
+        },
+        "example": "La mia giacca ha una tasca nascosta nella fodera.",
+        "whyThisWord": {
+          "de": "Mit giacca nennen Sie zunächst das Kleidungsstück. Material und Verschluss helfen dann, es wiederzuerkennen.",
+          "en": "Giacca identifies the garment. Its fabric and fastening then help you pick it out."
+        }
+      },
+      "distractors": [
+        "i numeri del guardaroba",
+        "pendono dai ganci."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Garderobiere sieht über den Tresen im Theaterfoyer.",
+        "en": "A cloakroom attendant looks across a counter in the theatre foyer."
+      },
+      "songMood": "Soft theatrical waltz with clarinet and strings.",
+      "visualNotes": "A cloakroom attendant looks across a counter in the theatre foyer."
+    },
+    {
+      "slug": "valigia-con-la-fascia",
+      "title": {
+        "de": "Ein Gepäckstück am Schalter",
+        "en": "A piece of luggage at the desk"
+      },
+      "situation": {
+        "de": "Am Gepäckschalter bittet ein Mitarbeiter Sie um ein Erkennungsmerkmal.",
+        "en": "At the luggage desk, a member of staff asks you for a distinguishing feature."
+      },
+      "pedagogicalGoal": "Viaggiare con bedeutet „mit etwas reisen“. Wenn Sie diesen Gegenstand näher beschreiben, bleibt con vor cui stehen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Come posso riconoscere il suo bagaglio?",
+          "baseText": {
+            "de": "Woran kann ich Ihr Gepäck erkennen?",
+            "en": "How can I recognize your luggage?"
+          }
+        },
+        {
+          "targetText": "La valigia con cui viaggiavo ha una fascia di stoffa intorno al manico.",
+          "baseText": {
+            "de": "Der Koffer, mit dem ich unterwegs war, hat ein Stoffband um den Griff.",
+            "en": "The suitcase I was travelling with has a fabric band around the handle."
+          }
+        },
+        {
+          "targetText": "Vede quella verde con il nastro a righe?",
+          "baseText": {
+            "de": "Sehen Sie den grünen Koffer mit dem gestreiften Band?",
+            "en": "Do you see the green case with the striped ribbon?"
+          }
+        },
+        {
+          "targetText": "No, sul mio nastro compaiono le iniziali di mia madre.",
+          "baseText": {
+            "de": "Nein, auf meinem Band stehen die Initialen meiner Mutter.",
+            "en": "No, my ribbon has my mother’s initials on it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "La valigia con cui…",
+        "rule": {
+          "de": "Viaggiare con bedeutet „mit etwas reisen“. Wenn Sie diesen Gegenstand näher beschreiben, bleibt con vor cui stehen.",
+          "en": "Viaggiare con means to travel with something. Keep con before cui when identifying the thing you travelled with."
+        },
+        "examples": [
+          {
+            "targetText": "La valigia con cui viaggiavo ha una fascia di stoffa intorno al manico.",
+            "baseText": {
+              "de": "Der Koffer, mit dem ich unterwegs war, hat ein Stoffband um den Griff.",
+              "en": "The suitcase I was travelling with has a fabric band around the handle."
+            },
+            "highlight": "La valigia con cui viaggiavo"
+          },
+          {
+            "targetText": "La matita con cui disegno i ritratti ha la punta morbida.",
+            "baseText": {
+              "de": "Der Stift, mit dem ich die Porträts zeichne, hat eine weiche Spitze.",
+              "en": "The pencil I draw portraits with has a soft point."
+            },
+            "highlight": "La matita con cui disegno i ritratti"
+          }
+        ]
+      },
+      "cloze": [
+        "No, sul ",
+        {
+          "kind": "choice",
+          "answer": "mio",
+          "choices": [
+            "mio",
+            "mie",
+            "mia",
+            "miei"
+          ]
+        },
+        " nastro compaiono le ",
+        {
+          "kind": "choice",
+          "answer": "iniziali",
+          "choices": [
+            "iniziale",
+            "iniziali",
+            "sigla",
+            "monogramma"
+          ]
+        },
+        " di mia madre."
+      ],
+      "chunks": [
+        {
+          "targetText": "La valigia",
+          "baseText": {
+            "de": "Der Koffer",
+            "en": "The suitcase"
+          }
+        },
+        {
+          "targetText": "con cui viaggiavo",
+          "baseText": {
+            "de": "mit dem ich unterwegs war",
+            "en": "that I was travelling with"
+          }
+        },
+        {
+          "targetText": "ha una fascia di stoffa",
+          "baseText": {
+            "de": "hat ein Stoffband",
+            "en": "has a fabric band"
+          }
+        },
+        {
+          "targetText": "intorno al manico.",
+          "baseText": {
+            "de": "um den Griff",
+            "en": "around the handle"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la valigia",
+          "baseText": {
+            "de": "der Koffer",
+            "en": "the suitcase"
+          }
+        },
+        {
+          "targetText": "viaggiare con",
+          "baseText": {
+            "de": "unterwegs sein mit",
+            "en": "to travel with"
+          }
+        },
+        {
+          "targetText": "la fascia di stoffa",
+          "baseText": {
+            "de": "das Stoffband",
+            "en": "the fabric band"
+          }
+        },
+        {
+          "targetText": "il manico",
+          "baseText": {
+            "de": "der Tragegriff",
+            "en": "the handle"
+          }
+        },
+        {
+          "targetText": "il nastro a righe",
+          "baseText": {
+            "de": "das gestreifte Band",
+            "en": "the striped ribbon"
+          }
+        },
+        {
+          "targetText": "le iniziali",
+          "baseText": {
+            "de": "die Initialen",
+            "en": "the initials"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La valigia con cui viaggiavo ",
+        "answer": "ha",
+        "after": " una fascia di stoffa intorno al manico.",
+        "fallbackChoices": [
+          "avere",
+          "ha",
+          "abbiamo",
+          "hanno"
+        ]
+      },
+      "speakRequired": [
+        "valigia",
+        "fascia",
+        "manico"
+      ],
+      "sceneCaption": {
+        "de": "Am Gepäckschalter bittet ein Mitarbeiter Sie um ein Erkennungsmerkmal. „Come posso riconoscere il suo bagaglio?“",
+        "en": "At the luggage desk, a member of staff asks you for a distinguishing feature. “Come posso riconoscere il suo bagaglio?”"
+      },
+      "trophyWord": {
+        "word": "valigia",
+        "meaning": {
+          "de": "der Koffer",
+          "en": "suitcase"
+        },
+        "example": "Riconosco la mia valigia dal manico rivestito di stoffa.",
+        "whyThisWord": {
+          "de": "Valigia bezeichnet das einzelne Gepäckstück, dessen Merkmale Sie am Schalter beschreiben.",
+          "en": "Valigia names the particular piece of luggage whose features you describe at the desk."
+        }
+      },
+      "distractors": [
+        "gli zaini da trekking",
+        "pesano meno di due chili."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Personen stehen am Gepäckschalter neben einer Waage.",
+        "en": "Two people stand beside a scale at the luggage counter."
+      },
+      "songMood": "Restrained travel groove with soft vibraphone.",
+      "visualNotes": "Two people stand beside a scale at the luggage counter."
+    },
+    {
+      "slug": "reparto-piccoli-elettrodomestici",
+      "title": {
+        "de": "Ein Toaster im Fachgeschäft",
+        "en": "A toaster at the appliance shop"
+      },
+      "situation": {
+        "de": "Im Elektrogeschäft sieht eine Verkäuferin den Toaster, den Sie mitgebracht haben.",
+        "en": "In an electrical shop, an assistant notices the toaster you have brought in."
+      },
+      "pedagogicalGoal": "Affidare qualcosa a qualcuno nennt die Person oder Stelle, der Sie etwas anvertrauen. Im Relativsatz steht deshalb a cui.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Cerca qualcuno per quel tostapane?",
+          "baseText": {
+            "de": "Suchen Sie jemanden, der Ihnen mit dem Toaster helfen kann?",
+            "en": "Are you looking for someone to help with that toaster?"
+          }
+        },
+        {
+          "targetText": "Cerco il reparto a cui posso affidare i piccoli elettrodomestici da riparare.",
+          "baseText": {
+            "de": "Ich suche die Abteilung, bei der ich kleine Elektrogeräte zur Reparatur abgeben kann.",
+            "en": "I’m looking for the department I can leave small appliances with for repair."
+          }
+        },
+        {
+          "targetText": "Il laboratorio ha un ingresso a parte sul retro. Desidera un preventivo?",
+          "baseText": {
+            "de": "Die Werkstatt hat einen eigenen Eingang an der Rückseite. Möchten Sie einen Kostenvoranschlag?",
+            "en": "The workshop has a separate entrance at the back. Would you like an estimate?"
+          }
+        },
+        {
+          "targetText": "Passo dal retro, grazie: prima di decidere vorrei conoscere il costo.",
+          "baseText": {
+            "de": "Ich gehe hinten herum, danke. Bevor ich mich entscheide, würde ich gern die Kosten erfahren.",
+            "en": "I’ll go round the back, thank you. I’d like to know the cost before I decide."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il reparto a cui…",
+        "rule": {
+          "de": "Affidare qualcosa a qualcuno nennt die Person oder Stelle, der Sie etwas anvertrauen. Im Relativsatz steht deshalb a cui.",
+          "en": "Affidare qualcosa a qualcuno identifies whom you entrust with something. In a relative clause that relationship is expressed by a cui."
+        },
+        "examples": [
+          {
+            "targetText": "Cerco il reparto a cui posso affidare i piccoli elettrodomestici da riparare.",
+            "baseText": {
+              "de": "Ich suche die Abteilung, bei der ich kleine Elektrogeräte zur Reparatur abgeben kann.",
+              "en": "I’m looking for the department I can leave small appliances with for repair."
+            },
+            "highlight": "il reparto a cui posso affidare"
+          },
+          {
+            "targetText": "La guida a cui affido il gruppo conosce bene questi sentieri.",
+            "baseText": {
+              "de": "Der Wanderführer, dem ich die Gruppe anvertraue, kennt diese Wege gut.",
+              "en": "The guide I’m entrusting the group to knows these trails well."
+            },
+            "highlight": "La guida a cui affido il gruppo"
+          }
+        ]
+      },
+      "cloze": [
+        "Passo dal retro, grazie: prima di ",
+        {
+          "kind": "choice",
+          "answer": "decidere",
+          "choices": [
+            "decido",
+            "decidere",
+            "decisione",
+            "decidendo"
+          ]
+        },
+        " vorrei ",
+        {
+          "kind": "choice",
+          "answer": "conoscere",
+          "choices": [
+            "conosco",
+            "conoscendo",
+            "conoscere",
+            "conosciuto"
+          ]
+        },
+        " il costo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Cerco il reparto",
+          "baseText": {
+            "de": "Ich suche die Abteilung",
+            "en": "I’m looking for the department"
+          }
+        },
+        {
+          "targetText": "a cui posso affidare",
+          "baseText": {
+            "de": "der ich … anvertrauen kann",
+            "en": "that I can entrust with"
+          }
+        },
+        {
+          "targetText": "i piccoli elettrodomestici",
+          "baseText": {
+            "de": "die kleinen Elektrogeräte",
+            "en": "the small appliances"
+          }
+        },
+        {
+          "targetText": "da riparare.",
+          "baseText": {
+            "de": "zur Reparatur",
+            "en": "for repair"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "il reparto",
+          "baseText": {
+            "de": "die Abteilung",
+            "en": "the department"
+          }
+        },
+        {
+          "targetText": "affidare qualcosa a qualcuno",
+          "baseText": {
+            "de": "jemandem etwas anvertrauen",
+            "en": "to entrust something to someone"
+          }
+        },
+        {
+          "targetText": "i piccoli elettrodomestici",
+          "baseText": {
+            "de": "die kleinen Elektrogeräte",
+            "en": "small appliances"
+          }
+        },
+        {
+          "targetText": "il tostapane",
+          "baseText": {
+            "de": "der Toaster",
+            "en": "the toaster"
+          }
+        },
+        {
+          "targetText": "il preventivo",
+          "baseText": {
+            "de": "der Kostenvoranschlag",
+            "en": "the estimate"
+          }
+        },
+        {
+          "targetText": "sul retro",
+          "baseText": {
+            "de": "auf der Rückseite",
+            "en": "at the back"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Cerco il reparto a cui posso affidare i ",
+        "answer": "piccoli",
+        "after": " elettrodomestici da riparare.",
+        "fallbackChoices": [
+          "piccola",
+          "piccole",
+          "piccoli",
+          "piccolo"
+        ]
+      },
+      "speakRequired": [
+        "reparto",
+        "affidare",
+        "elettrodomestici"
+      ],
+      "sceneCaption": {
+        "de": "Im Elektrogeschäft sieht eine Verkäuferin den Toaster, den Sie mitgebracht haben. „Cerca qualcuno per quel tostapane?“",
+        "en": "In an electrical shop, an assistant notices the toaster you have brought in. “Cerca qualcuno per quel tostapane?”"
+      },
+      "trophyWord": {
+        "word": "reparto",
+        "meaning": {
+          "de": "die Abteilung",
+          "en": "department"
+        },
+        "example": "Il reparto che vende i ferri da stiro è al piano di sopra.",
+        "whyThisWord": {
+          "de": "Mit reparto können Sie in einem großen Geschäft nach der zuständigen Abteilung fragen.",
+          "en": "Use reparto to ask which department handles your request in a large shop."
+        }
+      },
+      "distractors": [
+        "gli imballaggi originali",
+        "restano in magazzino."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Verkäuferin begrüßt einen Kunden mit einem Toaster in der Hand.",
+        "en": "A shop assistant greets a customer who is holding a toaster."
+      },
+      "songMood": "Light bass and brushed snare in a steady shuffle.",
+      "visualNotes": "A shop assistant greets a customer who is holding a toaster."
+    },
+    {
+      "slug": "maniglia-della-porta",
+      "title": {
+        "de": "Eine Balkontür beim Ortstermin",
+        "en": "Looking at a balcony door"
+      },
+      "situation": {
+        "de": "Ein Techniker untersucht mit Ihnen die Balkontür und fragt, wo etwas wackelt.",
+        "en": "A technician examines the balcony door with you and asks where you can feel something moving."
+      },
+      "pedagogicalGoal": "Nel punto in cui benennt die genaue Stelle, an der zwei Teile zusammentreffen oder ein Fehler auftritt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "In quale punto sente il gioco?",
+          "baseText": {
+            "de": "An welcher Stelle spüren Sie, dass etwas Spiel hat?",
+            "en": "Where can you feel the looseness?"
+          }
+        },
+        {
+          "targetText": "La maniglia della porta del balcone balla nel punto in cui la piastra tocca il legno.",
+          "baseText": {
+            "de": "Der Griff der Balkontür wackelt dort, wo die Platte am Holz anliegt.",
+            "en": "The balcony door handle wobbles where the plate meets the wood."
+          }
+        },
+        {
+          "targetText": "Da cosa preferisce cominciare, dalle viti della piastra o dal meccanismo interno?",
+          "baseText": {
+            "de": "Womit möchten Sie anfangen, mit den Schrauben der Platte oder mit dem Mechanismus im Inneren?",
+            "en": "Which would you like to start with, the plate screws or the mechanism inside?"
+          }
+        },
+        {
+          "targetText": "Cominciamo dalle viti: una vite gira a vuoto quando abbasso la leva.",
+          "baseText": {
+            "de": "Fangen wir mit den Schrauben an. Eine Schraube dreht durch, wenn ich den Griff herunterdrücke.",
+            "en": "Let’s start with the screws. One screw spins freely when I push the handle down."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nel punto in cui…",
+        "rule": {
+          "de": "Nel punto in cui benennt die genaue Stelle, an der zwei Teile zusammentreffen oder ein Fehler auftritt.",
+          "en": "Use nel punto in cui to pinpoint exactly where two parts meet or a fault occurs."
+        },
+        "examples": [
+          {
+            "targetText": "La maniglia della porta del balcone balla nel punto in cui la piastra tocca il legno.",
+            "baseText": {
+              "de": "Der Griff der Balkontür wackelt dort, wo die Platte am Holz anliegt.",
+              "en": "The balcony door handle wobbles where the plate meets the wood."
+            },
+            "highlight": "nel punto in cui la piastra tocca il legno"
+          },
+          {
+            "targetText": "Il sentiero si divide nel punto in cui finisce il bosco.",
+            "baseText": {
+              "de": "Der Weg gabelt sich an der Stelle, an der der Wald endet.",
+              "en": "The path forks at the point where the woods end."
+            },
+            "highlight": "nel punto in cui finisce il bosco"
+          }
+        ]
+      },
+      "cloze": [
+        "Cominciamo dalle viti: una vite ",
+        {
+          "kind": "form",
+          "answer": "gira",
+          "choices": [
+            "giriamo",
+            "giro",
+            "gira",
+            "girano"
+          ],
+          "cue": "girare (una vite)"
+        },
+        " a ",
+        {
+          "kind": "choice",
+          "answer": "vuoto",
+          "choices": [
+            "vuote",
+            "vuoti",
+            "vuota",
+            "vuoto"
+          ]
+        },
+        " quando abbasso la leva."
+      ],
+      "chunks": [
+        {
+          "targetText": "La maniglia della porta del balcone",
+          "baseText": {
+            "de": "Der Griff der Balkontür",
+            "en": "The balcony door handle"
+          }
+        },
+        {
+          "targetText": "balla",
+          "baseText": {
+            "de": "wackelt",
+            "en": "wobbles"
+          }
+        },
+        {
+          "targetText": "nel punto",
+          "baseText": {
+            "de": "an der Stelle",
+            "en": "at the point"
+          }
+        },
+        {
+          "targetText": "in cui la piastra tocca il legno.",
+          "baseText": {
+            "de": "wo die Platte am Holz anliegt",
+            "en": "where the plate meets the wood"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la maniglia",
+          "baseText": {
+            "de": "der Türgriff",
+            "en": "the door handle"
+          }
+        },
+        {
+          "targetText": "avere gioco",
+          "baseText": {
+            "de": "Spiel haben",
+            "en": "to have some play"
+          }
+        },
+        {
+          "targetText": "ballare",
+          "baseText": {
+            "de": "wackeln",
+            "en": "to wobble"
+          }
+        },
+        {
+          "targetText": "la piastra",
+          "baseText": {
+            "de": "die Befestigungsplatte",
+            "en": "the mounting plate"
+          }
+        },
+        {
+          "targetText": "la vite",
+          "baseText": {
+            "de": "die Schraube",
+            "en": "the screw"
+          }
+        },
+        {
+          "targetText": "girare a vuoto",
+          "baseText": {
+            "de": "durchdrehen",
+            "en": "to spin without catching"
+          }
+        },
+        {
+          "targetText": "abbassare la leva",
+          "baseText": {
+            "de": "den Hebel herunterdrücken",
+            "en": "to push the lever down"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La maniglia della porta del balcone balla nel punto in cui la piastra ",
+        "answer": "tocca",
+        "after": " il legno.",
+        "fallbackChoices": [
+          "toccano",
+          "toccare",
+          "tocchiamo",
+          "tocca"
+        ]
+      },
+      "speakRequired": [
+        "maniglia",
+        "piastra",
+        "legno"
+      ],
+      "sceneCaption": {
+        "de": "Ein Techniker untersucht mit Ihnen die Balkontür und fragt, wo etwas wackelt. „In quale punto sente il gioco?“",
+        "en": "A technician examines the balcony door with you and asks where you can feel something moving. “In quale punto sente il gioco?”"
+      },
+      "trophyWord": {
+        "word": "maniglia",
+        "meaning": {
+          "de": "der Türgriff",
+          "en": "door handle"
+        },
+        "example": "Questa maniglia torna in posizione appena lascio la presa.",
+        "whyThisWord": {
+          "de": "Maniglia benennt das Teil, an dem Sie eine Tür öffnen und beim Prüfen Spiel bemerken können.",
+          "en": "Maniglia is the part you use to open the door and check for looseness."
+        }
+      },
+      "distractors": [
+        "le cerniere della finestra",
+        "sostengono il telaio."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Techniker steht mit Werkzeugtasche vor einer geschlossenen Balkontür.",
+        "en": "A technician stands with a tool bag in front of a closed balcony door."
+      },
+      "songMood": "Measured fingerpicked guitar and low woodwinds.",
+      "visualNotes": "A technician stands with a tool bag in front of a closed balcony door."
+    }
+  ]
+}

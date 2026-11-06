@@ -1,0 +1,2146 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Das bringen wir in Ordnung",
+    "en": "Let's sort this out"
+  },
+  "subtitle": {
+    "de": "Schildern Sie ein Problem und handeln Sie den nächsten Schritt aus.",
+    "en": "Explain a problem and negotiate the next step."
+  },
+  "anchor": "Forma A, percorso conclusivo di reclamo e soluzione. Nessuna nuova famiglia grammaticale: riciclare narrazione, richieste attenuate, domande indirette e stato delle pratiche. Il cliente chiede e negozia; non promette interventi o rimborsi per conto dell'addetto.",
+  "lessons": [
+    {
+      "slug": "due-appuntamenti-saltati",
+      "title": {
+        "de": "Zweimal vergeblich gewartet",
+        "en": "Two appointments missed"
+      },
+      "situation": {
+        "de": "Sie rufen beim Kundendienst an. Eine Mitarbeiterin öffnet Ihren Auftrag für die Reparatur der Heizung.",
+        "en": "You call customer service. An agent opens the work order for your heating repair."
+      },
+      "pedagogicalGoal": "Eine Beschwerde mit zwei versäumten Terminen begründen und eine vage Antwort in eine konkrete Terminfrage überführen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ho trovato la sua pratica. Che cosa è successo con il tecnico?",
+          "baseText": {
+            "de": "Ich habe Ihren Vorgang gefunden. Was ist mit dem Techniker passiert?",
+            "en": "I've found your case. What happened with the technician?"
+          }
+        },
+        {
+          "targetText": "Vorrei presentare un reclamo perché il tecnico ha saltato due appuntamenti.",
+          "baseText": {
+            "de": "Ich möchte mich beschweren, weil der Techniker zwei Termine versäumt hat.",
+            "en": "I'd like to make a complaint because the technician missed two appointments."
+          }
+        },
+        {
+          "targetText": "Capisco. Appena abbiamo un momento, vediamo cosa si può fare.",
+          "baseText": {
+            "de": "Ich verstehe. Sobald wir einen Moment Zeit haben, sehen wir, was sich machen lässt.",
+            "en": "I understand. As soon as we have a moment, we'll see what we can do."
+          }
+        },
+        {
+          "targetText": "Possiamo fissare adesso una data precisa per il prossimo intervento?",
+          "baseText": {
+            "de": "Können wir jetzt einen festen Termin für den nächsten Einsatz vereinbaren?",
+            "en": "Can we set a firm date now for the next service visit?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vorrei… perché…",
+        "rule": {
+          "de": "Mit vorrei und einem Infinitiv formulieren Sie Ihren Wunsch höflich. Perché leitet den konkreten Grund ein.",
+          "en": "Use vorrei and an infinitive to make a polite request. Introduce the specific reason with perché."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei presentare un reclamo perché il tecnico ha saltato due appuntamenti.",
+            "baseText": {
+              "de": "Ich möchte mich beschweren, weil der Techniker zwei Termine versäumt hat.",
+              "en": "I'd like to make a complaint because the technician missed two appointments."
+            },
+            "highlight": "Vorrei presentare un reclamo perché"
+          },
+          {
+            "targetText": "Vorrei cambiare posto perché dal mio sedile non vedo il palco.",
+            "baseText": {
+              "de": "Ich würde gern den Platz wechseln, weil ich von meinem Sitz aus die Bühne nicht sehe.",
+              "en": "I'd like to change seats because I can't see the stage from mine."
+            },
+            "highlight": "Vorrei cambiare posto perché"
+          }
+        ]
+      },
+      "cloze": [
+        "Possiamo ",
+        {
+          "kind": "choice",
+          "answer": "fissare",
+          "choices": [
+            "fissato",
+            "fissiamo",
+            "fissava",
+            "fissare"
+          ]
+        },
+        " adesso una data ",
+        {
+          "kind": "choice",
+          "answer": "precisa",
+          "choices": [
+            "precisi",
+            "precise",
+            "precisa",
+            "preciso"
+          ]
+        },
+        " per il prossimo intervento?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei presentare",
+          "baseText": {
+            "de": "ich möchte einreichen",
+            "en": "I'd like to file"
+          }
+        },
+        {
+          "targetText": "un reclamo",
+          "baseText": {
+            "de": "eine Beschwerde",
+            "en": "a complaint"
+          }
+        },
+        {
+          "targetText": "perché il tecnico",
+          "baseText": {
+            "de": "weil der Techniker",
+            "en": "because the technician"
+          }
+        },
+        {
+          "targetText": "ha saltato due appuntamenti.",
+          "baseText": {
+            "de": "zwei Termine versäumt hat",
+            "en": "missed two appointments"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "reclamo",
+          "baseText": {
+            "de": "die Beschwerde",
+            "en": "complaint"
+          }
+        },
+        {
+          "targetText": "presentare un reclamo",
+          "baseText": {
+            "de": "eine Beschwerde einreichen",
+            "en": "file a complaint"
+          }
+        },
+        {
+          "targetText": "saltare un appuntamento",
+          "baseText": {
+            "de": "einen Termin versäumen",
+            "en": "miss an appointment"
+          }
+        },
+        {
+          "targetText": "il tecnico",
+          "baseText": {
+            "de": "der Techniker",
+            "en": "technician"
+          }
+        },
+        {
+          "targetText": "fissare una data",
+          "baseText": {
+            "de": "einen Termin vereinbaren",
+            "en": "set a date"
+          }
+        },
+        {
+          "targetText": "il prossimo intervento",
+          "baseText": {
+            "de": "der nächste Einsatz",
+            "en": "the next service visit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei presentare un reclamo perché il tecnico ha ",
+        "answer": "saltato",
+        "after": " due appuntamenti.",
+        "fallbackChoices": [
+          "saltano",
+          "saltando",
+          "saltato",
+          "saltare"
+        ]
+      },
+      "speakRequired": [
+        "presentare",
+        "reclamo",
+        "appuntamenti"
+      ],
+      "sceneCaption": {
+        "de": "Sie rufen beim Kundendienst an. Eine Mitarbeiterin öffnet Ihren Auftrag für die Reparatur der Heizung. „Ho trovato la sua pratica. Che cosa è successo con il tecnico?“",
+        "en": "You call customer service. An agent opens the work order for your heating repair. “Ho trovato la sua pratica. Che cosa è successo con il tecnico?”"
+      },
+      "trophyWord": {
+        "word": "reclamo",
+        "meaning": {
+          "de": "die Beschwerde",
+          "en": "complaint"
+        },
+        "example": "Il mio reclamo riguarda entrambe le visite mancate.",
+        "whyThisWord": {
+          "de": "Reclamo gibt Ihrem Anliegen einen Namen, wenn zwei versäumte Termine mehr als eine kurze Nachfrage erfordern.",
+          "en": "Reclamo names the complaint you want the company to address after two missed visits."
+        }
+      },
+      "distractors": [
+        "un preventivo",
+        "ha annullato il sopralluogo."
+      ],
+      "placeholderCaption": {
+        "de": "Am Telefon liegt ein Kalender mit zwei markierten Terminen neben der Heizung.",
+        "en": "A calendar with two appointments marked lies beside the heater during the call."
+      },
+      "songMood": "Light syncopated guitar duo",
+      "visualNotes": "A calendar with two appointments marked lies beside the heater during the call."
+    },
+    {
+      "slug": "il-buono-del-museo",
+      "title": {
+        "de": "Eine abgesagte Führung",
+        "en": "A cancelled museum tour"
+      },
+      "situation": {
+        "de": "An der Museumskasse legen Sie die Buchung für eine Führung vor. Die Kassiererin sieht Ihre Buchungsnummer nach.",
+        "en": "At the museum ticket desk, you show your tour booking. The cashier looks up your booking number."
+      },
+      "pedagogicalGoal": "Nach einer Rückerstattung fragen und erklären, warum der angebotene Gutschein nicht passt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ecco la sua prenotazione per la visita di ieri. Come posso aiutarla?",
+          "baseText": {
+            "de": "Hier ist Ihre Buchung für die gestrige Führung. Wie kann ich Ihnen helfen?",
+            "en": "Here's your booking for yesterday's tour. How can I help you?"
+          }
+        },
+        {
+          "targetText": "Come posso ottenere il rimborso per la visita guidata che il museo ha annullato?",
+          "baseText": {
+            "de": "Wie kann ich das Geld für die Führung zurückbekommen, die das Museum abgesagt hat?",
+            "en": "How can I get a refund for the guided tour the museum cancelled?"
+          }
+        },
+        {
+          "targetText": "Di solito offriamo un buono. Potrebbe usarlo per una visita il mese prossimo.",
+          "baseText": {
+            "de": "Normalerweise bieten wir einen Gutschein an. Den könnten Sie nächsten Monat für eine Führung nutzen.",
+            "en": "We usually offer a voucher. You could use it for a tour next month."
+          }
+        },
+        {
+          "targetText": "Riparto domani: è possibile ricevere il rimborso sulla carta?",
+          "baseText": {
+            "de": "Ich reise morgen ab. Kann das Geld auf meine Karte zurückgebucht werden?",
+            "en": "I leave tomorrow. Could I get the refund on my card?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quale servizio?",
+        "rule": {
+          "de": "Mit che schließen Sie an den Namen der Leistung an, was damit passiert ist. Ha annullato nennt das abgeschlossene Ereignis.",
+          "en": "After naming the service, use che to say what happened to it. Ha annullato describes the completed event."
+        },
+        "examples": [
+          {
+            "targetText": "Come posso ottenere il rimborso per la visita guidata che il museo ha annullato?",
+            "baseText": {
+              "de": "Wie kann ich das Geld für die Führung zurückbekommen, die das Museum abgesagt hat?",
+              "en": "How can I get a refund for the guided tour the museum cancelled?"
+            },
+            "highlight": "la visita guidata che il museo ha annullato"
+          },
+          {
+            "targetText": "Dove posso cambiare il biglietto per il concerto che hanno spostato a lunedì?",
+            "baseText": {
+              "de": "Wo kann ich die Karte für das Konzert umtauschen, das auf Montag verlegt wurde?",
+              "en": "Where can I exchange the ticket for the concert they moved to Monday?"
+            },
+            "highlight": "il concerto che hanno spostato"
+          }
+        ]
+      },
+      "cloze": [
+        "Riparto domani: è possibile ",
+        {
+          "kind": "choice",
+          "answer": "ricevere",
+          "choices": [
+            "ricevo",
+            "riceve",
+            "ricevere",
+            "ricevuto"
+          ]
+        },
+        " il rimborso ",
+        {
+          "kind": "choice",
+          "answer": "sulla",
+          "choices": [
+            "sulle",
+            "sulla",
+            "sul",
+            "sui"
+          ]
+        },
+        " carta?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Come posso ottenere",
+          "baseText": {
+            "de": "wie kann ich bekommen",
+            "en": "how can I get"
+          }
+        },
+        {
+          "targetText": "il rimborso",
+          "baseText": {
+            "de": "die Rückerstattung",
+            "en": "the refund"
+          }
+        },
+        {
+          "targetText": "per la visita guidata",
+          "baseText": {
+            "de": "für die Führung",
+            "en": "for the guided tour"
+          }
+        },
+        {
+          "targetText": "che il museo ha annullato?",
+          "baseText": {
+            "de": "die das Museum abgesagt hat",
+            "en": "that the museum cancelled"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rimborso",
+          "baseText": {
+            "de": "die Rückerstattung",
+            "en": "refund"
+          }
+        },
+        {
+          "targetText": "la visita guidata",
+          "baseText": {
+            "de": "die Führung",
+            "en": "guided tour"
+          }
+        },
+        {
+          "targetText": "annullare",
+          "baseText": {
+            "de": "absagen",
+            "en": "cancel"
+          }
+        },
+        {
+          "targetText": "un buono",
+          "baseText": {
+            "de": "ein Gutschein",
+            "en": "a voucher"
+          }
+        },
+        {
+          "targetText": "ripartire",
+          "baseText": {
+            "de": "wieder abreisen",
+            "en": "leave again"
+          }
+        },
+        {
+          "targetText": "sulla carta",
+          "baseText": {
+            "de": "auf die Zahlungskarte",
+            "en": "onto the payment card"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Come posso ottenere il rimborso per la visita guidata che il museo ha ",
+        "answer": "annullato",
+        "after": "?",
+        "fallbackChoices": [
+          "annullano",
+          "annullato",
+          "annullare",
+          "annullando"
+        ]
+      },
+      "speakRequired": [
+        "ottenere",
+        "rimborso",
+        "museo"
+      ],
+      "sceneCaption": {
+        "de": "An der Museumskasse legen Sie die Buchung für eine Führung vor. Die Kassiererin sieht Ihre Buchungsnummer nach. „Ecco la sua prenotazione per la visita di ieri. Come posso aiutarla?“",
+        "en": "At the museum ticket desk, you show your tour booking. The cashier looks up your booking number. “Ecco la sua prenotazione per la visita di ieri. Come posso aiutarla?”"
+      },
+      "trophyWord": {
+        "word": "rimborso",
+        "meaning": {
+          "de": "die Rückerstattung",
+          "en": "refund"
+        },
+        "example": "Vorrei chiedere il rimborso delle spese di prenotazione.",
+        "whyThisWord": {
+          "de": "Mit rimborso können Sie nach der Rückzahlung des Geldes fragen, wenn Ihnen ein Gutschein wenig nützt.",
+          "en": "Rimborso lets you ask for your money back when a voucher would be hard to use."
+        }
+      },
+      "distractors": [
+        "il biglietto ridotto",
+        "che il museo ripropone?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kassiererin vergleicht die Buchungsnummer auf einem Handy mit der Liste des Museums.",
+        "en": "A cashier compares a booking number on a phone with the museum's list."
+      },
+      "songMood": "Measured Italian acoustic pop with muted guitar",
+      "visualNotes": "A cashier compares a booking number on a phone with the museum's list."
+    },
+    {
+      "slug": "il-frullatore-che-fischia",
+      "title": {
+        "de": "Der laute Mixer",
+        "en": "The noisy blender"
+      },
+      "situation": {
+        "de": "An der Servicetheke stellen Sie einen Mixer aus Ihrer Küche ab. Ein Mitarbeiter nimmt das Gerät entgegen.",
+        "en": "At the service counter, you set down the blender from your kitchen. An employee takes the appliance from you."
+      },
+      "pedagogicalGoal": "Den Umfang einer Garantie erfragen und den ersten Zeitpunkt eines Defekts präzisieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Mi fa sentire che rumore fa il frullatore?",
+          "baseText": {
+            "de": "Können Sie mir zeigen, wie der Mixer klingt?",
+            "en": "Could you let me hear the noise the blender makes?"
+          }
+        },
+        {
+          "targetText": "Vorrei sapere se la garanzia copre questo difetto del mio frullatore.",
+          "baseText": {
+            "de": "Ich würde gern wissen, ob die Garantie diesen Defekt an meinem Mixer abdeckt.",
+            "en": "I'd like to know whether the warranty covers this fault with my blender."
+          }
+        },
+        {
+          "targetText": "Dipende dalla causa. Si sentiva già la prima volta che ha usato il frullatore?",
+          "baseText": {
+            "de": "Das hängt von der Ursache ab. War es schon beim ersten Gebrauch des Mixers zu hören?",
+            "en": "That depends on the cause. Could you hear it the first time you used the blender?"
+          }
+        },
+        {
+          "targetText": "No, il motore ha cominciato a fischiare al secondo utilizzo.",
+          "baseText": {
+            "de": "Nein, der Motor hat beim zweiten Gebrauch angefangen zu pfeifen.",
+            "en": "No, the motor started whistling the second time I used it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vorrei sapere se…",
+        "rule": {
+          "de": "Mit vorrei sapere se erkundigen Sie sich höflich, ob eine Bedingung erfüllt ist. Nach se steht hier die gewöhnliche Aussageform copre.",
+          "en": "Use vorrei sapere se to ask politely whether a condition holds. After se, use the ordinary statement form copre here."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei sapere se la garanzia copre questo difetto del mio frullatore.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob die Garantie diesen Defekt an meinem Mixer abdeckt.",
+              "en": "I'd like to know whether the warranty covers this fault with my blender."
+            },
+            "highlight": "Vorrei sapere se la garanzia copre"
+          },
+          {
+            "targetText": "Vorrei sapere se il prezzo comprende anche il montaggio a domicilio.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob die Montage bei mir zu Hause im Preis inbegriffen ist.",
+              "en": "I'd like to know whether the price also includes assembly at home."
+            },
+            "highlight": "Vorrei sapere se il prezzo comprende"
+          }
+        ]
+      },
+      "cloze": [
+        "No, il motore ",
+        {
+          "kind": "form",
+          "answer": "ha",
+          "choices": [
+            "abbiamo",
+            "ha",
+            "ho",
+            "hanno"
+          ],
+          "cue": "avere (il motore)"
+        },
+        " cominciato a ",
+        {
+          "kind": "choice",
+          "answer": "fischiare",
+          "choices": [
+            "fischiare",
+            "fischiato",
+            "fischia",
+            "fischiando"
+          ]
+        },
+        " al secondo utilizzo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei sapere se",
+          "baseText": {
+            "de": "ich würde gern wissen, ob",
+            "en": "I'd like to know whether"
+          }
+        },
+        {
+          "targetText": "la garanzia copre",
+          "baseText": {
+            "de": "die Garantie abdeckt",
+            "en": "the warranty covers"
+          }
+        },
+        {
+          "targetText": "questo difetto",
+          "baseText": {
+            "de": "diesen Defekt",
+            "en": "this fault"
+          }
+        },
+        {
+          "targetText": "del mio frullatore.",
+          "baseText": {
+            "de": "an meinem Mixer",
+            "en": "with my blender"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "garanzia",
+          "baseText": {
+            "de": "die Garantie",
+            "en": "warranty"
+          }
+        },
+        {
+          "targetText": "il frullatore",
+          "baseText": {
+            "de": "der Mixer",
+            "en": "blender"
+          }
+        },
+        {
+          "targetText": "coprire un guasto",
+          "baseText": {
+            "de": "einen Defekt abdecken",
+            "en": "cover a fault"
+          }
+        },
+        {
+          "targetText": "la causa",
+          "baseText": {
+            "de": "die Ursache",
+            "en": "cause"
+          }
+        },
+        {
+          "targetText": "il motore",
+          "baseText": {
+            "de": "der Motor",
+            "en": "motor"
+          }
+        },
+        {
+          "targetText": "fischiare",
+          "baseText": {
+            "de": "pfeifen",
+            "en": "whistle"
+          }
+        },
+        {
+          "targetText": "al secondo utilizzo",
+          "baseText": {
+            "de": "beim zweiten Gebrauch",
+            "en": "on the second use"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei sapere se la garanzia ",
+        "answer": "copre",
+        "after": " questo difetto del mio frullatore.",
+        "fallbackChoices": [
+          "copre",
+          "coprire",
+          "coprono",
+          "coperto"
+        ]
+      },
+      "speakRequired": [
+        "sapere",
+        "garanzia",
+        "frullatore"
+      ],
+      "sceneCaption": {
+        "de": "An der Servicetheke stellen Sie einen Mixer aus Ihrer Küche ab. Ein Mitarbeiter nimmt das Gerät entgegen. „Mi fa sentire che rumore fa il frullatore?“",
+        "en": "At the service counter, you set down the blender from your kitchen. An employee takes the appliance from you. “Mi fa sentire che rumore fa il frullatore?”"
+      },
+      "trophyWord": {
+        "word": "garanzia",
+        "meaning": {
+          "de": "die Garantie",
+          "en": "warranty"
+        },
+        "example": "Quanto dura la garanzia sul motore?",
+        "whyThisWord": {
+          "de": "Garanzia benennt die Zusage, deren Umfang Sie beim Kundendienst klären wollen.",
+          "en": "Garanzia names the cover you want the service desk to explain."
+        }
+      },
+      "distractors": [
+        "il numero di serie",
+        "che manca dalla scatola."
+      ],
+      "placeholderCaption": {
+        "de": "Der Mixer steht auf der Servicetheke neben seinem abgenommenen Deckel.",
+        "en": "The blender sits on the service counter beside its lid."
+      },
+      "songMood": "Gentle brushed percussion and upright bass",
+      "visualNotes": "The blender sits on the service counter beside its lid."
+    },
+    {
+      "slug": "due-pagamenti-uguali",
+      "title": {
+        "de": "Zwei Abbuchungen für einen Einkauf",
+        "en": "Two charges for one purchase"
+      },
+      "situation": {
+        "de": "Sie zeigen dem Kassierer den Kassenbon vom Vortag. Auf Ihrem Handy ist der Kontoauszug geöffnet.",
+        "en": "You show the cashier yesterday's receipt. Your bank statement is open on your phone."
+      },
+      "pedagogicalGoal": "Eine doppelte Abbuchung melden und die beiden Kontobuchungen anhand von Betrag und Uhrzeit zeigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Sul suo scontrino vedo un solo acquisto. Che cosa ha notato?",
+          "baseText": {
+            "de": "Auf Ihrem Bon sehe ich nur einen Einkauf. Was ist Ihnen aufgefallen?",
+            "en": "I can see just one purchase on your receipt. What have you noticed?"
+          }
+        },
+        {
+          "targetText": "Ho trovato un doppio addebito per la spesa che ho fatto ieri.",
+          "baseText": {
+            "de": "Ich habe für meinen gestrigen Einkauf eine doppelte Abbuchung entdeckt.",
+            "en": "I've found a double charge for the shopping I did yesterday."
+          }
+        },
+        {
+          "targetText": "Sul terminale trovo solo i venti euro delle nove. A quale altra operazione si riferisce?",
+          "baseText": {
+            "de": "Am Terminal finde ich nur die zwanzig Euro von neun Uhr. Welche andere Buchung meinen Sie?",
+            "en": "On the terminal I can only find the twenty euros at nine. Which other transaction do you mean?"
+          }
+        },
+        {
+          "targetText": "Ecco i due pagamenti da venti euro, alle nove e alle dieci.",
+          "baseText": {
+            "de": "Hier sind die beiden Zahlungen über zwanzig Euro, um neun und um zehn.",
+            "en": "Here are the two payments of twenty euros, at nine and at ten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Precisare l'acquisto con che",
+        "rule": {
+          "de": "Mit che und einem abgeschlossenen Vorgang grenzen Sie ein, welchen Einkauf oder welche Artikel Sie meinen. Die Zeitangabe ieri ordnet den Einkauf zeitlich ein.",
+          "en": "Use che and a completed action to identify the purchase or items you mean. Ieri locates the purchase in time."
+        },
+        "examples": [
+          {
+            "targetText": "Ho trovato un doppio addebito per la spesa che ho fatto ieri.",
+            "baseText": {
+              "de": "Ich habe für meinen gestrigen Einkauf eine doppelte Abbuchung entdeckt.",
+              "en": "I've found a double charge for the shopping I did yesterday."
+            },
+            "highlight": "la spesa che ho fatto ieri"
+          },
+          {
+            "targetText": "Sul conto mancano le foto che ho stampato stamattina.",
+            "baseText": {
+              "de": "Auf der Rechnung fehlen die Fotos, die ich heute Morgen ausgedruckt habe.",
+              "en": "The photos I printed this morning are missing from the bill."
+            },
+            "highlight": "le foto che ho stampato"
+          }
+        ]
+      },
+      "cloze": [
+        "Ecco i due ",
+        {
+          "kind": "choice",
+          "answer": "pagamenti",
+          "choices": [
+            "pagamenti",
+            "pagamento",
+            "pagando",
+            "pagato"
+          ]
+        },
+        " da venti euro, alle nove e ",
+        {
+          "kind": "choice",
+          "answer": "alle dieci",
+          "choices": [
+            "alla dieci",
+            "al dieci",
+            "agli dieci",
+            "alle dieci"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ho trovato",
+          "baseText": {
+            "de": "ich habe entdeckt",
+            "en": "I've found"
+          }
+        },
+        {
+          "targetText": "un doppio addebito",
+          "baseText": {
+            "de": "eine doppelte Abbuchung",
+            "en": "a double charge"
+          }
+        },
+        {
+          "targetText": "per la spesa",
+          "baseText": {
+            "de": "für den Einkauf",
+            "en": "for the shopping"
+          }
+        },
+        {
+          "targetText": "che ho fatto ieri.",
+          "baseText": {
+            "de": "den ich gestern gemacht habe",
+            "en": "that I did yesterday"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "addebito",
+          "baseText": {
+            "de": "die Abbuchung",
+            "en": "charge"
+          }
+        },
+        {
+          "targetText": "un doppio addebito",
+          "baseText": {
+            "de": "eine doppelte Abbuchung",
+            "en": "a double charge"
+          }
+        },
+        {
+          "targetText": "lo scontrino",
+          "baseText": {
+            "de": "der Kassenbon",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "il terminale",
+          "baseText": {
+            "de": "das Kartenterminal",
+            "en": "card terminal"
+          }
+        },
+        {
+          "targetText": "un'operazione",
+          "baseText": {
+            "de": "eine Buchung",
+            "en": "a transaction"
+          }
+        },
+        {
+          "targetText": "il pagamento",
+          "baseText": {
+            "de": "die Zahlung",
+            "en": "payment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ho trovato un ",
+        "answer": "doppio",
+        "after": " addebito per la spesa che ho fatto ieri.",
+        "fallbackChoices": [
+          "doppia",
+          "doppi",
+          "doppie",
+          "doppio"
+        ]
+      },
+      "speakRequired": [
+        "trovato",
+        "addebito",
+        "spesa"
+      ],
+      "sceneCaption": {
+        "de": "Sie zeigen dem Kassierer den Kassenbon vom Vortag. Auf Ihrem Handy ist der Kontoauszug geöffnet. „Sul suo scontrino vedo un solo acquisto. Che cosa ha notato?“",
+        "en": "You show the cashier yesterday's receipt. Your bank statement is open on your phone. “Sul suo scontrino vedo un solo acquisto. Che cosa ha notato?”"
+      },
+      "trophyWord": {
+        "word": "addebito",
+        "meaning": {
+          "de": "die Abbuchung",
+          "en": "charge"
+        },
+        "example": "Questo addebito compare due volte sul mio conto.",
+        "whyThisWord": {
+          "de": "Mit addebito können Sie eine konkrete Belastung auf dem Konto benennen und mit dem Kassenbon vergleichen.",
+          "en": "Addebito lets you identify an individual charge on your account and compare it with the receipt."
+        }
+      },
+      "distractors": [
+        "una commissione",
+        "che ho prenotato ieri."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kassenbon liegt auf der Ladentheke neben dem Handy der Kundschaft.",
+        "en": "A receipt lies on the shop counter beside the customer's phone."
+      },
+      "songMood": "Warm piano with a steady walking pulse",
+      "visualNotes": "A receipt lies on the shop counter beside the customer's phone."
+    },
+    {
+      "slug": "via-del-porto",
+      "title": {
+        "de": "Ein Fehler in der Adresse",
+        "en": "An error in the address"
+      },
+      "situation": {
+        "de": "Sie rufen wegen einer Versandbestätigung beim Möbelhaus an. Die Mitarbeiterin öffnet die Bestellung.",
+        "en": "You call the furniture shop about a dispatch confirmation. The employee opens the order."
+      },
+      "pedagogicalGoal": "Eine fehlerhafte Adresse melden und ein Missverständnis über Straße und Hausnummer ausräumen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ho davanti la sua conferma di spedizione. Quale dato devo controllare?",
+          "baseText": {
+            "de": "Ich habe Ihre Versandbestätigung vor mir. Welche Angabe soll ich prüfen?",
+            "en": "I have your dispatch confirmation here. Which detail should I check?"
+          }
+        },
+        {
+          "targetText": "Ho notato un errore nell'indirizzo che compare sulla conferma di spedizione.",
+          "baseText": {
+            "de": "Mir ist in der Adresse auf der Versandbestätigung ein Fehler aufgefallen.",
+            "en": "I've noticed an error in the address that appears on the dispatch confirmation."
+          }
+        },
+        {
+          "targetText": "Qui leggo via del Pozzo dodici. È il numero civico che devo cambiare?",
+          "baseText": {
+            "de": "Hier steht Via del Pozzo zwölf. Soll ich die Hausnummer ändern?",
+            "en": "It says Via del Pozzo twelve here. Is it the house number I need to change?"
+          }
+        },
+        {
+          "targetText": "Il civico resta uguale, ma la via corretta è via del Porto.",
+          "baseText": {
+            "de": "Die Hausnummer bleibt gleich, aber die richtige Straße ist die Via del Porto.",
+            "en": "The house number stays the same, but the correct street is Via del Porto."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il dato che compare sul documento",
+        "rule": {
+          "de": "Hier ist l'indirizzo das Subjekt von compare. Der Relativsatz mit che zeigt, welche Adresse Sie prüfen möchten.",
+          "en": "Here l'indirizzo is the subject of compare. The relative clause with che identifies the address you want checked."
+        },
+        "examples": [
+          {
+            "targetText": "Ho notato un errore nell'indirizzo che compare sulla conferma di spedizione.",
+            "baseText": {
+              "de": "Mir ist in der Adresse auf der Versandbestätigung ein Fehler aufgefallen.",
+              "en": "I've noticed an error in the address that appears on the dispatch confirmation."
+            },
+            "highlight": "nell'indirizzo che compare"
+          },
+          {
+            "targetText": "Può aggiungere il cognome che manca sull'etichetta del pacco?",
+            "baseText": {
+              "de": "Können Sie den Nachnamen ergänzen, der auf dem Paketetikett fehlt?",
+              "en": "Could you add the surname that's missing from the parcel label?"
+            },
+            "highlight": "il cognome che manca"
+          }
+        ]
+      },
+      "cloze": [
+        "Il civico resta ",
+        {
+          "kind": "choice",
+          "answer": "uguale",
+          "choices": [
+            "uguali",
+            "uguaglianza",
+            "uguaglianze",
+            "uguale"
+          ]
+        },
+        ", ma la via ",
+        {
+          "kind": "choice",
+          "answer": "corretta",
+          "choices": [
+            "corretti",
+            "corrette",
+            "corretta",
+            "corretto"
+          ]
+        },
+        " è via del Porto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ho notato",
+          "baseText": {
+            "de": "mir ist aufgefallen",
+            "en": "I've noticed"
+          }
+        },
+        {
+          "targetText": "un errore nell'indirizzo",
+          "baseText": {
+            "de": "ein Fehler in der Adresse",
+            "en": "an error in the address"
+          }
+        },
+        {
+          "targetText": "che compare",
+          "baseText": {
+            "de": "die steht",
+            "en": "that appears"
+          }
+        },
+        {
+          "targetText": "sulla conferma di spedizione.",
+          "baseText": {
+            "de": "auf der Versandbestätigung",
+            "en": "on the dispatch confirmation"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "errore",
+          "baseText": {
+            "de": "der Fehler",
+            "en": "error"
+          }
+        },
+        {
+          "targetText": "la conferma di spedizione",
+          "baseText": {
+            "de": "die Versandbestätigung",
+            "en": "dispatch confirmation"
+          }
+        },
+        {
+          "targetText": "comparire",
+          "baseText": {
+            "de": "erscheinen",
+            "en": "appear"
+          }
+        },
+        {
+          "targetText": "l'indirizzo di consegna",
+          "baseText": {
+            "de": "die Lieferadresse",
+            "en": "delivery address"
+          }
+        },
+        {
+          "targetText": "il numero civico",
+          "baseText": {
+            "de": "die Hausnummer",
+            "en": "house number"
+          }
+        },
+        {
+          "targetText": "cambiare",
+          "baseText": {
+            "de": "ändern",
+            "en": "change"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ho notato un errore nell'indirizzo che ",
+        "answer": "compare",
+        "after": " sulla conferma di spedizione.",
+        "fallbackChoices": [
+          "comparire",
+          "comparso",
+          "compare",
+          "compaiono"
+        ]
+      },
+      "speakRequired": [
+        "notato",
+        "errore",
+        "spedizione"
+      ],
+      "sceneCaption": {
+        "de": "Sie rufen wegen einer Versandbestätigung beim Möbelhaus an. Die Mitarbeiterin öffnet die Bestellung. „Ho davanti la sua conferma di spedizione. Quale dato devo controllare?“",
+        "en": "You call the furniture shop about a dispatch confirmation. The employee opens the order. “Ho davanti la sua conferma di spedizione. Quale dato devo controllare?”"
+      },
+      "trophyWord": {
+        "word": "errore",
+        "meaning": {
+          "de": "der Fehler",
+          "en": "error"
+        },
+        "example": "C'è un errore anche nel codice postale.",
+        "whyThisWord": {
+          "de": "Mit errore weisen Sie auf eine falsche Angabe hin, bevor Sie den richtigen Straßennamen nennen.",
+          "en": "Errore flags an incorrect detail before you supply the right street name."
+        }
+      },
+      "distractors": [
+        "un errore nel prezzo",
+        "sull'etichetta del reso."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Versandbestätigung für ein Möbelstück liegt beim Telefon.",
+        "en": "A dispatch confirmation for a piece of furniture lies beside the phone."
+      },
+      "songMood": "Understated acoustic folk groove",
+      "visualNotes": "A dispatch confirmation for a piece of furniture lies beside the phone."
+    },
+    {
+      "slug": "un-richiamo-per-la-pratica",
+      "title": {
+        "de": "Der Antrag ist noch offen",
+        "en": "The case is still open"
+      },
+      "situation": {
+        "de": "Im Servicebüro der Verkehrsbetriebe fragen Sie nach Ihrem Antrag auf eine Ersatzkarte. Der Mitarbeiter ruft den Vorgang auf.",
+        "en": "At the transit office, you ask about your request for a replacement pass. The employee pulls up your file."
+      },
+      "pedagogicalGoal": "Wegen eines offenen Vorgangs nach der zuständigen Person fragen und eine passende Rückrufzeit nennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vedo che ha già chiamato per la tessera. Che cosa posso fare per lei oggi?",
+          "baseText": {
+            "de": "Ich sehe, dass Sie wegen der Karte schon angerufen haben. Was kann ich heute für Sie tun?",
+            "en": "I can see you've already called about the pass. What can I do for you today?"
+          }
+        },
+        {
+          "targetText": "Vorrei parlare con il responsabile perché la mia pratica risulta ancora aperta.",
+          "baseText": {
+            "de": "Ich möchte mit dem Verantwortlichen sprechen, weil mein Antrag noch als offen geführt wird.",
+            "en": "I'd like to speak to the person in charge because my case is still listed as open."
+          }
+        },
+        {
+          "targetText": "Il responsabile è in riunione fino alle tre. Posso lasciargli un messaggio.",
+          "baseText": {
+            "de": "Der Verantwortliche ist bis drei Uhr in einer Besprechung. Ich kann ihm eine Nachricht hinterlassen.",
+            "en": "The manager is in a meeting until three. I can leave him a message."
+          }
+        },
+        {
+          "targetText": "Dopo le tre posso rispondere al cellulare: può chiedergli di richiamarmi?",
+          "baseText": {
+            "de": "Nach drei bin ich auf dem Handy erreichbar. Können Sie ihn um einen Rückruf bitten?",
+            "en": "I can answer my mobile after three. Could you ask him to call me back?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Risultare + aggettivo",
+        "rule": {
+          "de": "Mit risulta und einem Adjektiv beschreiben Sie den angezeigten Status. Das Adjektiv richtet sich in Geschlecht und Zahl nach dem Subjekt: pratica aperta und abbonamento attivo.",
+          "en": "Use risulta and an adjective to report the status on record. The adjective agrees with the noun, as in pratica aperta and abbonamento attivo."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei parlare con il responsabile perché la mia pratica risulta ancora aperta.",
+            "baseText": {
+              "de": "Ich möchte mit dem Verantwortlichen sprechen, weil mein Antrag noch als offen geführt wird.",
+              "en": "I'd like to speak to the person in charge because my case is still listed as open."
+            },
+            "highlight": "la mia pratica risulta ancora aperta"
+          },
+          {
+            "targetText": "Sul sito il mio abbonamento risulta ancora attivo dopo la disdetta.",
+            "baseText": {
+              "de": "Auf der Website wird mein Abo nach der Kündigung noch als aktiv geführt.",
+              "en": "On the website my subscription is still listed as active after cancellation."
+            },
+            "highlight": "il mio abbonamento risulta ancora attivo"
+          }
+        ]
+      },
+      "cloze": [
+        "Dopo le tre posso ",
+        {
+          "kind": "choice",
+          "answer": "rispondere",
+          "choices": [
+            "risposto",
+            "risponde",
+            "rispondere",
+            "rispondo"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "al",
+          "choices": [
+            "agli",
+            "al",
+            "alla",
+            "alle"
+          ]
+        },
+        " cellulare: può chiedergli di richiamarmi?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei parlare",
+          "baseText": {
+            "de": "ich möchte sprechen",
+            "en": "I'd like to speak"
+          }
+        },
+        {
+          "targetText": "con il responsabile",
+          "baseText": {
+            "de": "mit dem Verantwortlichen",
+            "en": "to the person in charge"
+          }
+        },
+        {
+          "targetText": "perché la mia pratica",
+          "baseText": {
+            "de": "weil mein Antrag",
+            "en": "because my case"
+          }
+        },
+        {
+          "targetText": "risulta ancora aperta.",
+          "baseText": {
+            "de": "noch als offen geführt wird",
+            "en": "is still listed as open"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "responsabile",
+          "baseText": {
+            "de": "der Verantwortliche",
+            "en": "person in charge"
+          }
+        },
+        {
+          "targetText": "la pratica",
+          "baseText": {
+            "de": "der Vorgang",
+            "en": "case file"
+          }
+        },
+        {
+          "targetText": "risultare aperta",
+          "baseText": {
+            "de": "als offen geführt werden",
+            "en": "be listed as open"
+          }
+        },
+        {
+          "targetText": "in riunione",
+          "baseText": {
+            "de": "in einer Besprechung",
+            "en": "in a meeting"
+          }
+        },
+        {
+          "targetText": "lasciare un messaggio",
+          "baseText": {
+            "de": "eine Nachricht hinterlassen",
+            "en": "leave a message"
+          }
+        },
+        {
+          "targetText": "richiamare",
+          "baseText": {
+            "de": "zurückrufen",
+            "en": "call back"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei parlare con il responsabile perché la mia pratica risulta ancora ",
+        "answer": "aperta",
+        "after": ".",
+        "fallbackChoices": [
+          "aperti",
+          "aperta",
+          "aperto",
+          "aperte"
+        ]
+      },
+      "speakRequired": [
+        "parlare",
+        "responsabile",
+        "pratica"
+      ],
+      "sceneCaption": {
+        "de": "Im Servicebüro der Verkehrsbetriebe fragen Sie nach Ihrem Antrag auf eine Ersatzkarte. Der Mitarbeiter ruft den Vorgang auf. „Vedo che ha già chiamato per la tessera. Che cosa posso fare per lei oggi?“",
+        "en": "At the transit office, you ask about your request for a replacement pass. The employee pulls up your file. “Vedo che ha già chiamato per la tessera. Che cosa posso fare per lei oggi?”"
+      },
+      "trophyWord": {
+        "word": "responsabile",
+        "meaning": {
+          "de": "der Verantwortliche",
+          "en": "person in charge"
+        },
+        "example": "Posso fissare un appuntamento con il responsabile della pratica?",
+        "whyThisWord": {
+          "de": "Responsabile bezeichnet hier die Person, die sich um den offenen Vorgang kümmern kann.",
+          "en": "Responsabile identifies the person who can take up the unresolved case."
+        }
+      },
+      "distractors": [
+        "con il centralino",
+        "risulta già chiusa."
+      ],
+      "placeholderCaption": {
+        "de": "Am Schalter der Verkehrsbetriebe liegt die Quittung für die beantragte Ersatzkarte.",
+        "en": "A receipt for a replacement pass rests on the transit office counter."
+      },
+      "songMood": "Light syncopated guitar duo",
+      "visualNotes": "A receipt for a replacement pass rests on the transit office counter."
+    },
+    {
+      "slug": "la-lampada-scheggiata",
+      "title": {
+        "de": "Eine Lampe mit abgesplittertem Fuß",
+        "en": "A lamp with a chipped base"
+      },
+      "situation": {
+        "de": "Sie bringen eine Tischlampe ins Geschäft zurück. Die Verkäuferin schaut in die geöffnete Schachtel.",
+        "en": "You take a table lamp back to the shop. The sales assistant looks inside the open box."
+      },
+      "pedagogicalGoal": "Eine Ersatzlampe verlangen und klären, ob das angebotene Modell an den vorgesehenen Platz passt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Mi mostra cosa ha trovato quando ha aperto la scatola?",
+          "baseText": {
+            "de": "Zeigen Sie mir, was Sie beim Öffnen der Schachtel entdeckt haben?",
+            "en": "Could you show me what you found when you opened the box?"
+          }
+        },
+        {
+          "targetText": "Vorrei chiedere la sostituzione della lampada perché la base è scheggiata.",
+          "baseText": {
+            "de": "Ich würde die Lampe gern umtauschen, weil am Fuß ein Stück abgesplittert ist.",
+            "en": "I'd like to ask for a replacement lamp because the base is chipped."
+          }
+        },
+        {
+          "targetText": "Questo modello è esaurito. Ne ho uno allo stesso prezzo, ma con una base più larga.",
+          "baseText": {
+            "de": "Dieses Modell ist ausverkauft. Ich habe eins zum gleichen Preis, aber mit einem breiteren Fuß.",
+            "en": "This model is sold out. I have one at the same price, but with a wider base."
+          }
+        },
+        {
+          "targetText": "Potrebbe misurare la base per vedere se entra sul mio comodino?",
+          "baseText": {
+            "de": "Könnten Sie den Fuß ausmessen, um zu sehen, ob er auf meinen Nachttisch passt?",
+            "en": "Could you measure the base to see whether it fits on my bedside table?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Il danno visibile",
+        "rule": {
+          "de": "Nach perché können Sie mit essere und einem Adjektiv den sichtbaren Schaden als Grund nennen. Scheggiata bezieht sich auf die feminine Form la base.",
+          "en": "After perché, use essere and an adjective to give the visible damage as your reason. Scheggiata agrees with the feminine noun la base."
+        },
+        "examples": [
+          {
+            "targetText": "Vorrei chiedere la sostituzione della lampada perché la base è scheggiata.",
+            "baseText": {
+              "de": "Ich würde die Lampe gern umtauschen, weil am Fuß ein Stück abgesplittert ist.",
+              "en": "I'd like to ask for a replacement lamp because the base is chipped."
+            },
+            "highlight": "perché la base è scheggiata"
+          },
+          {
+            "targetText": "Preferirei cambiare la cornice perché il vetro è incrinato.",
+            "baseText": {
+              "de": "Ich würde den Rahmen gern umtauschen, weil das Glas einen Sprung hat.",
+              "en": "I'd prefer to exchange the frame because the glass is cracked."
+            },
+            "highlight": "perché il vetro è incrinato"
+          }
+        ]
+      },
+      "cloze": [
+        "Potrebbe ",
+        {
+          "kind": "choice",
+          "answer": "misurare",
+          "choices": [
+            "misurava",
+            "misurare",
+            "misurato",
+            "misuro"
+          ]
+        },
+        " la base per ",
+        {
+          "kind": "choice",
+          "answer": "vedere",
+          "choices": [
+            "vedere",
+            "visto",
+            "vedo",
+            "vedendo"
+          ]
+        },
+        " se entra sul mio comodino?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Vorrei chiedere",
+          "baseText": {
+            "de": "ich möchte bitten",
+            "en": "I'd like to ask for"
+          }
+        },
+        {
+          "targetText": "la sostituzione",
+          "baseText": {
+            "de": "um den Austausch",
+            "en": "the replacement"
+          }
+        },
+        {
+          "targetText": "della lampada",
+          "baseText": {
+            "de": "der Lampe",
+            "en": "of the lamp"
+          }
+        },
+        {
+          "targetText": "perché la base",
+          "baseText": {
+            "de": "weil der Fuß",
+            "en": "because the base"
+          }
+        },
+        {
+          "targetText": "è scheggiata.",
+          "baseText": {
+            "de": "eine abgesplitterte Stelle hat",
+            "en": "is chipped"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sostituzione",
+          "baseText": {
+            "de": "der Austausch",
+            "en": "replacement"
+          }
+        },
+        {
+          "targetText": "la lampada",
+          "baseText": {
+            "de": "die Lampe",
+            "en": "lamp"
+          }
+        },
+        {
+          "targetText": "la base",
+          "baseText": {
+            "de": "der Fuß",
+            "en": "base"
+          }
+        },
+        {
+          "targetText": "scheggiata",
+          "baseText": {
+            "de": "abgesplittert",
+            "en": "chipped"
+          }
+        },
+        {
+          "targetText": "esaurito",
+          "baseText": {
+            "de": "ausverkauft",
+            "en": "sold out"
+          }
+        },
+        {
+          "targetText": "misurare",
+          "baseText": {
+            "de": "ausmessen",
+            "en": "measure"
+          }
+        },
+        {
+          "targetText": "il comodino",
+          "baseText": {
+            "de": "der Nachttisch",
+            "en": "bedside table"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vorrei chiedere la sostituzione della lampada perché la base è ",
+        "answer": "scheggiata",
+        "after": ".",
+        "fallbackChoices": [
+          "scheggiata",
+          "scheggiato",
+          "scheggiati",
+          "scheggiate"
+        ]
+      },
+      "speakRequired": [
+        "chiedere",
+        "sostituzione",
+        "lampada"
+      ],
+      "sceneCaption": {
+        "de": "Sie bringen eine Tischlampe ins Geschäft zurück. Die Verkäuferin schaut in die geöffnete Schachtel. „Mi mostra cosa ha trovato quando ha aperto la scatola?“",
+        "en": "You take a table lamp back to the shop. The sales assistant looks inside the open box. “Mi mostra cosa ha trovato quando ha aperto la scatola?”"
+      },
+      "trophyWord": {
+        "word": "sostituzione",
+        "meaning": {
+          "de": "der Austausch",
+          "en": "replacement"
+        },
+        "example": "La sostituzione comprende anche il paralume?",
+        "whyThisWord": {
+          "de": "Sostituzione drückt aus, dass Sie für die beschädigte Ware ein anderes Exemplar wünschen.",
+          "en": "Sostituzione tells the shop you want another item to replace the damaged one."
+        }
+      },
+      "distractors": [
+        "la riparazione",
+        "perché il cavo"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Tischlampe steht zwischen den geöffneten Laschen eines Kartons auf der Ladentheke.",
+        "en": "A table lamp stands between the open flaps of a cardboard box on a shop counter."
+      },
+      "songMood": "Measured Italian acoustic pop with muted guitar",
+      "visualNotes": "A table lamp stands between the open flaps of a cardboard box on a shop counter."
+    },
+    {
+      "slug": "la-foto-del-pacco",
+      "title": {
+        "de": "Ein Foto vom Paket",
+        "en": "A photo of the parcel"
+      },
+      "situation": {
+        "de": "Sie melden beim Versanddienst einen Transportschaden. Ein Mitarbeiter nimmt Ihre Sendungsnummer auf.",
+        "en": "You report damage to the delivery company. An employee takes down your tracking number."
+      },
+      "pedagogicalGoal": "Eine Aufnahme als Beleg anbieten und nach der Forderung nach einem Detailbild den Übermittlungsweg klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "In che condizioni era il pacco quando il corriere ha suonato?",
+          "baseText": {
+            "de": "In welchem Zustand war das Paket, als der Zusteller klingelte?",
+            "en": "What condition was the parcel in when the courier rang the bell?"
+          }
+        },
+        {
+          "targetText": "Ho una foto che mostra la scatola bagnata e vorrei usarla come prova.",
+          "baseText": {
+            "de": "Ich habe ein Foto, auf dem man den nassen Karton sieht, und würde es gern als Nachweis verwenden.",
+            "en": "I have a photo showing the wet box and I'd like to use it as evidence."
+          }
+        },
+        {
+          "targetText": "Per distinguere il suo pacco dagli altri, ci occorre anche un primo piano dell'etichetta.",
+          "baseText": {
+            "de": "Um Ihr Paket von den anderen unterscheiden zu können, brauchen wir auch eine Nahaufnahme des Etiketts.",
+            "en": "To tell your parcel apart from the others, we also need a close-up of the label."
+          }
+        },
+        {
+          "targetText": "Ho anche quel dettaglio: come posso inviare entrambe le foto?",
+          "baseText": {
+            "de": "Ich habe auch diese Detailaufnahme. Wie kann ich Ihnen beide Fotos schicken?",
+            "en": "I have that close-up too. How can I send both photos?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una foto che mostra…",
+        "rule": {
+          "de": "Mit che erklären Sie, was auf einer Aufnahme zu erkennen ist. In usarla bezieht sich la auf das feminine Substantiv una foto.",
+          "en": "Use che to say what a picture shows. When you refer back to una foto with usare, attach the pronoun la to make usarla."
+        },
+        "examples": [
+          {
+            "targetText": "Ho una foto che mostra la scatola bagnata e vorrei usarla come prova.",
+            "baseText": {
+              "de": "Ich habe ein Foto, auf dem man den nassen Karton sieht, und würde es gern als Nachweis verwenden.",
+              "en": "I have a photo showing the wet box and I'd like to use it as evidence."
+            },
+            "highlight": "una foto che mostra la scatola bagnata"
+          },
+          {
+            "targetText": "Posso inviarle un video che mostra la ruota mentre gira?",
+            "baseText": {
+              "de": "Kann ich Ihnen ein Video schicken, auf dem man sieht, wie sich das Rad dreht?",
+              "en": "Can I send you a video that shows the wheel as it turns?"
+            },
+            "highlight": "un video che mostra la ruota"
+          }
+        ]
+      },
+      "cloze": [
+        "Ho anche quel dettaglio: come posso ",
+        {
+          "kind": "choice",
+          "answer": "inviare",
+          "choices": [
+            "inviare",
+            "invio",
+            "inviato",
+            "inviando"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "entrambe",
+          "choices": [
+            "entrambi",
+            "ciascuna",
+            "ogni",
+            "entrambe"
+          ]
+        },
+        " le foto?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Ho una foto",
+          "baseText": {
+            "de": "ich habe ein Foto",
+            "en": "I have a photo"
+          }
+        },
+        {
+          "targetText": "che mostra",
+          "baseText": {
+            "de": "das zeigt",
+            "en": "that shows"
+          }
+        },
+        {
+          "targetText": "la scatola bagnata",
+          "baseText": {
+            "de": "den nassen Karton",
+            "en": "the wet box"
+          }
+        },
+        {
+          "targetText": "e vorrei usarla",
+          "baseText": {
+            "de": "und ich würde es gern verwenden",
+            "en": "and I'd like to use it"
+          }
+        },
+        {
+          "targetText": "come prova.",
+          "baseText": {
+            "de": "als Nachweis",
+            "en": "as evidence"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prova",
+          "baseText": {
+            "de": "der Nachweis",
+            "en": "evidence"
+          }
+        },
+        {
+          "targetText": "una scatola bagnata",
+          "baseText": {
+            "de": "ein nasser Karton",
+            "en": "a wet box"
+          }
+        },
+        {
+          "targetText": "il corriere",
+          "baseText": {
+            "de": "der Zusteller",
+            "en": "courier"
+          }
+        },
+        {
+          "targetText": "un primo piano",
+          "baseText": {
+            "de": "eine Nahaufnahme",
+            "en": "a close-up"
+          }
+        },
+        {
+          "targetText": "l'etichetta",
+          "baseText": {
+            "de": "das Etikett",
+            "en": "label"
+          }
+        },
+        {
+          "targetText": "entrambe le foto",
+          "baseText": {
+            "de": "beide Fotos",
+            "en": "both photos"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ho una foto che mostra la scatola ",
+        "answer": "bagnata",
+        "after": " e vorrei usarla come prova.",
+        "fallbackChoices": [
+          "bagnato",
+          "bagnate",
+          "bagnati",
+          "bagnata"
+        ]
+      },
+      "speakRequired": [
+        "foto",
+        "bagnata",
+        "prova"
+      ],
+      "sceneCaption": {
+        "de": "Sie melden beim Versanddienst einen Transportschaden. Ein Mitarbeiter nimmt Ihre Sendungsnummer auf. „In che condizioni era il pacco quando il corriere ha suonato?“",
+        "en": "You report damage to the delivery company. An employee takes down your tracking number. “In che condizioni era il pacco quando il corriere ha suonato?”"
+      },
+      "trophyWord": {
+        "word": "prova",
+        "meaning": {
+          "de": "der Nachweis",
+          "en": "evidence"
+        },
+        "example": "Conservo la ricevuta come prova della consegna.",
+        "whyThisWord": {
+          "de": "Nach come macht prova aus der Beschreibung einer Aufnahme einen Vorschlag, wie sich der Schaden belegen lässt.",
+          "en": "In come prova, prova explains how a photo can help establish what happened to the delivery."
+        }
+      },
+      "distractors": [
+        "il cartone asciutto",
+        "come ricordo."
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Handydisplay ist ein feuchter Karton vor einer Wohnungstür zu sehen.",
+        "en": "A phone screen shows a damp cardboard box outside a flat door."
+      },
+      "songMood": "Gentle brushed percussion and upright bass",
+      "visualNotes": "A phone screen shows a damp cardboard box outside a flat door."
+    },
+    {
+      "slug": "il-difetto-ricompare",
+      "title": {
+        "de": "Beim Nähen tritt der Fehler wieder auf",
+        "en": "The fault comes back during sewing"
+      },
+      "situation": {
+        "de": "Sie gehen mit Ihrer Nähmaschine erneut in die Werkstatt. Der Techniker erkennt das Gerät wieder.",
+        "en": "You return to the repair shop with your sewing machine. The technician recognises it."
+      },
+      "pedagogicalGoal": "Einen wiederkehrenden Defekt beschreiben und nach einem unauffälligen Werkstatttest einen passenden zweiten Test erbitten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha già avuto modo di cucire con la macchina dopo la riparazione?",
+          "baseText": {
+            "de": "Hatten Sie nach der Reparatur schon Gelegenheit, mit der Maschine zu nähen?",
+            "en": "Have you had a chance to sew with the machine since the repair?"
+          }
+        },
+        {
+          "targetText": "Anche dopo la riparazione, il difetto si ripresenta quando cucio un orlo.",
+          "baseText": {
+            "de": "Auch nach der Reparatur tritt der Fehler wieder auf, wenn ich einen Saum nähe.",
+            "en": "Even after the repair, the fault comes back when I sew a hem."
+          }
+        },
+        {
+          "targetText": "Qui la macchina ha superato la prova su uno strato solo di cotone.",
+          "baseText": {
+            "de": "Hier hat die Maschine den Test mit einer einzigen Lage Baumwollstoff bestanden.",
+            "en": "The machine passed the test here on a single layer of cotton."
+          }
+        },
+        {
+          "targetText": "Potrebbe ripetere la prova con il tessuto piegato in due?",
+          "baseText": {
+            "de": "Könnten Sie den Test mit doppelt gelegtem Stoff wiederholen?",
+            "en": "Could you repeat the test with the fabric folded in half?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quando ricompare il problema?",
+        "rule": {
+          "de": "Wenn das Problem wiederholt auftritt, nennt quando mit dem Präsens die typische Situation. So lässt sich beim nächsten Versuch genau diese Bedingung nachstellen.",
+          "en": "When a problem keeps recurring, quando with the present tense gives the usual circumstances. This helps someone reproduce those conditions in a new test."
+        },
+        "examples": [
+          {
+            "targetText": "Anche dopo la riparazione, il difetto si ripresenta quando cucio un orlo.",
+            "baseText": {
+              "de": "Auch nach der Reparatur tritt der Fehler wieder auf, wenn ich einen Saum nähe.",
+              "en": "Even after the repair, the fault comes back when I sew a hem."
+            },
+            "highlight": "quando cucio un orlo"
+          },
+          {
+            "targetText": "La ruota fa ancora rumore quando giro a sinistra.",
+            "baseText": {
+              "de": "Das Rad macht immer noch Geräusche, wenn ich nach links abbiege.",
+              "en": "The wheel still makes a noise when I turn left."
+            },
+            "highlight": "quando giro a sinistra"
+          }
+        ]
+      },
+      "cloze": [
+        "Potrebbe ",
+        {
+          "kind": "choice",
+          "answer": "ripetere",
+          "choices": [
+            "ripetuto",
+            "ripete",
+            "ripetendo",
+            "ripetere"
+          ]
+        },
+        " la prova con il tessuto ",
+        {
+          "kind": "choice",
+          "answer": "piegato",
+          "choices": [
+            "piegati",
+            "piegate",
+            "piegato",
+            "piegata"
+          ]
+        },
+        " in due?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Anche dopo la riparazione,",
+          "baseText": {
+            "de": "auch nach der Reparatur",
+            "en": "even after the repair"
+          }
+        },
+        {
+          "targetText": "il difetto si ripresenta",
+          "baseText": {
+            "de": "tritt der Fehler wieder auf",
+            "en": "the fault comes back"
+          }
+        },
+        {
+          "targetText": "quando cucio",
+          "baseText": {
+            "de": "wenn ich nähe",
+            "en": "when I sew"
+          }
+        },
+        {
+          "targetText": "un orlo.",
+          "baseText": {
+            "de": "einen Saum",
+            "en": "a hem"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "difetto",
+          "baseText": {
+            "de": "der Fehler am Gerät",
+            "en": "fault"
+          }
+        },
+        {
+          "targetText": "la riparazione",
+          "baseText": {
+            "de": "die Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "ripresentarsi",
+          "baseText": {
+            "de": "wieder auftreten",
+            "en": "come back"
+          }
+        },
+        {
+          "targetText": "cucire un orlo",
+          "baseText": {
+            "de": "einen Saum nähen",
+            "en": "sew a hem"
+          }
+        },
+        {
+          "targetText": "uno strato",
+          "baseText": {
+            "de": "eine Lage",
+            "en": "one layer"
+          }
+        },
+        {
+          "targetText": "il tessuto",
+          "baseText": {
+            "de": "der Stoff",
+            "en": "fabric"
+          }
+        },
+        {
+          "targetText": "piegato in due",
+          "baseText": {
+            "de": "doppelt gelegt",
+            "en": "folded in half"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Anche dopo la riparazione, il difetto si ripresenta quando ",
+        "answer": "cucio",
+        "after": " un orlo.",
+        "fallbackChoices": [
+          "cucito",
+          "cucendo",
+          "cucio",
+          "cucire"
+        ]
+      },
+      "speakRequired": [
+        "difetto",
+        "ripresenta",
+        "orlo"
+      ],
+      "sceneCaption": {
+        "de": "Sie gehen mit Ihrer Nähmaschine erneut in die Werkstatt. Der Techniker erkennt das Gerät wieder. „Ha già avuto modo di cucire con la macchina dopo la riparazione?“",
+        "en": "You return to the repair shop with your sewing machine. The technician recognises it. “Ha già avuto modo di cucire con la macchina dopo la riparazione?”"
+      },
+      "trophyWord": {
+        "word": "difetto",
+        "meaning": {
+          "de": "der Fehler am Gerät",
+          "en": "fault"
+        },
+        "example": "Può controllare se il difetto compare anche a bassa velocità?",
+        "whyThisWord": {
+          "de": "Difetto gibt dem wiederkehrenden Problem am Gerät einen Namen, auch wenn die Ursache noch offen ist.",
+          "en": "Difetto names the recurring fault with the machine while its cause is still being investigated."
+        }
+      },
+      "distractors": [
+        "la cucitura",
+        "quando cambio il filo."
+      ],
+      "placeholderCaption": {
+        "de": "Neben der Nähmaschine liegt ein Stück Stoff mit einem halb fertigen Saum auf der Werkbank.",
+        "en": "A piece of fabric with a half-finished hem lies beside the sewing machine on the workbench."
+      },
+      "songMood": "Warm piano with a steady walking pulse",
+      "visualNotes": "A piece of fabric with a half-finished hem lies beside the sewing machine on the workbench."
+    },
+    {
+      "slug": "il-ritiro-del-tavolo",
+      "title": {
+        "de": "Den Tisch selbst abholen",
+        "en": "Picking up the table yourself"
+      },
+      "situation": {
+        "de": "Im Möbelgeschäft besprechen Sie die Lieferung Ihres Tisches. Die Verkäuferin öffnet den Lieferplan.",
+        "en": "At a furniture shop, you discuss delivery of your table. The sales assistant opens the schedule."
+      },
+      "pedagogicalGoal": "Nach einer verspäteten Lieferung selbst einen Ausweg vorschlagen und Ort und Zeitpunkt der vereinbarten Abholung bestätigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Mi dispiace, la consegna del tavolo slitta di una settimana. Ha una scadenza precisa?",
+          "baseText": {
+            "de": "Es tut mir leid, die Lieferung des Tisches verschiebt sich um eine Woche. Brauchen Sie ihn bis zu einem bestimmten Termin?",
+            "en": "I'm sorry, delivery of the table has been put back a week. Do you need it by a particular date?"
+          }
+        },
+        {
+          "targetText": "Per domenica mi serve il tavolo: una soluzione sarebbe ritirarlo direttamente in magazzino.",
+          "baseText": {
+            "de": "Für Sonntag brauche ich den Tisch. Eine Möglichkeit wäre, ihn direkt im Lager abzuholen.",
+            "en": "I need the table for Sunday. One solution would be to pick it up directly from the warehouse."
+          }
+        },
+        {
+          "targetText": "In magazzino non riceviamo clienti. Posso però farle trovare il tavolo qui in negozio venerdì dalle tre.",
+          "baseText": {
+            "de": "Im Lager empfangen wir keine Kunden. Ich kann den Tisch aber am Freitag ab drei hier im Laden für Sie bereitstellen.",
+            "en": "We don't receive customers at the warehouse, but I can have the table ready for you here in the shop from three on Friday."
+          }
+        },
+        {
+          "targetText": "Perfetto, allora passo venerdì alle tre a ritirare il tavolo qui.",
+          "baseText": {
+            "de": "Ausgezeichnet, dann komme ich am Freitag um drei hier vorbei und hole den Tisch ab.",
+            "en": "Perfect, then I'll come here at three on Friday to pick up the table."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una soluzione sarebbe…",
+        "rule": {
+          "de": "Mit una soluzione sarebbe und einem Infinitiv schlagen Sie einen gangbaren Weg vor. Die andere Person kann darauf mit einem konkreten Gegenangebot reagieren.",
+          "en": "Use una soluzione sarebbe and an infinitive to suggest a way forward. This leaves the other person room to offer a practical alternative."
+        },
+        "examples": [
+          {
+            "targetText": "Per domenica mi serve il tavolo: una soluzione sarebbe ritirarlo direttamente in magazzino.",
+            "baseText": {
+              "de": "Für Sonntag brauche ich den Tisch. Eine Möglichkeit wäre, ihn direkt im Lager abzuholen.",
+              "en": "I need the table for Sunday. One solution would be to pick it up directly from the warehouse."
+            },
+            "highlight": "una soluzione sarebbe ritirarlo"
+          },
+          {
+            "targetText": "Una possibilità sarebbe dividere la spedizione in due pacchi più piccoli.",
+            "baseText": {
+              "de": "Eine Möglichkeit wäre, die Sendung auf zwei kleinere Pakete aufzuteilen.",
+              "en": "One option would be to split the shipment into two smaller parcels."
+            },
+            "highlight": "Una possibilità sarebbe dividere"
+          }
+        ]
+      },
+      "cloze": [
+        "Perfetto, allora passo venerdì ",
+        {
+          "kind": "choice",
+          "answer": "alle",
+          "choices": [
+            "alla",
+            "agli",
+            "alle",
+            "al"
+          ]
+        },
+        " tre a ",
+        {
+          "kind": "choice",
+          "answer": "ritirare",
+          "choices": [
+            "ritirava",
+            "ritirare",
+            "ritirato",
+            "ritiro"
+          ]
+        },
+        " il tavolo qui."
+      ],
+      "chunks": [
+        {
+          "targetText": "Per domenica mi serve",
+          "baseText": {
+            "de": "für Sonntag brauche ich",
+            "en": "for Sunday I need"
+          }
+        },
+        {
+          "targetText": "il tavolo:",
+          "baseText": {
+            "de": "den Tisch",
+            "en": "the table"
+          }
+        },
+        {
+          "targetText": "una soluzione sarebbe",
+          "baseText": {
+            "de": "eine Möglichkeit wäre",
+            "en": "one solution would be"
+          }
+        },
+        {
+          "targetText": "ritirarlo direttamente in magazzino.",
+          "baseText": {
+            "de": "ihn direkt im Lager abzuholen",
+            "en": "to pick it up directly from the warehouse"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "soluzione",
+          "baseText": {
+            "de": "die Lösung",
+            "en": "solution"
+          }
+        },
+        {
+          "targetText": "una scadenza",
+          "baseText": {
+            "de": "eine Frist",
+            "en": "a deadline"
+          }
+        },
+        {
+          "targetText": "slittare",
+          "baseText": {
+            "de": "sich verschieben",
+            "en": "be put back"
+          }
+        },
+        {
+          "targetText": "ritirare un mobile",
+          "baseText": {
+            "de": "ein Möbelstück abholen",
+            "en": "pick up a piece of furniture"
+          }
+        },
+        {
+          "targetText": "in magazzino",
+          "baseText": {
+            "de": "im Lager",
+            "en": "at the warehouse"
+          }
+        },
+        {
+          "targetText": "in negozio",
+          "baseText": {
+            "de": "im Geschäft",
+            "en": "in the shop"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Per domenica mi serve il tavolo: una soluzione ",
+        "answer": "sarebbe",
+        "after": " ritirarlo direttamente in magazzino.",
+        "fallbackChoices": [
+          "saresti",
+          "sarebbe",
+          "sarebbero",
+          "saremmo"
+        ]
+      },
+      "speakRequired": [
+        "serve",
+        "soluzione",
+        "magazzino"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelgeschäft besprechen Sie die Lieferung Ihres Tisches. Die Verkäuferin öffnet den Lieferplan. „Mi dispiace, la consegna del tavolo slitta di una settimana. Ha una scadenza precisa?“",
+        "en": "At a furniture shop, you discuss delivery of your table. The sales assistant opens the schedule. “Mi dispiace, la consegna del tavolo slitta di una settimana. Ha una scadenza precisa?”"
+      },
+      "trophyWord": {
+        "word": "soluzione",
+        "meaning": {
+          "de": "die Lösung",
+          "en": "solution"
+        },
+        "example": "La soluzione che propone mi permette di avere il tavolo in tempo.",
+        "whyThisWord": {
+          "de": "Mit soluzione bringen Sie eine eigene Idee zur Sprache, über die Sie mit dem Geschäft verhandeln können.",
+          "en": "Soluzione introduces your own suggestion for discussion with the shop."
+        }
+      },
+      "distractors": [
+        "una consegna urgente",
+        "prenotarlo per sabato."
+      ],
+      "placeholderCaption": {
+        "de": "Die Verkäuferin und ihr Gegenüber sehen sich am Ladentisch einen Lieferplan an.",
+        "en": "A sales assistant and a customer look at a delivery schedule at the shop counter."
+      },
+      "songMood": "Understated acoustic folk groove",
+      "visualNotes": "A sales assistant and a customer look at a delivery schedule at the shop counter."
+    }
+  ]
+}

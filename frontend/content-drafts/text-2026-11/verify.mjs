@@ -10,6 +10,7 @@ const index = JSON.parse(readFileSync(resolve(here, 'index.json'), 'utf8'))
 const keys = new Set()
 const trophies = new Set()
 const totals = { new: 0, revision: 0 }
+const reviewedB1Starts = { French: 6, Italian: 4, Portuguese: 6 }
 const join = parts => parts.map(p => typeof p === 'string' ? p : p.answer).join('')
 const render = ({ segments, blanks }) => segments.map(s => s.kind === 'text' ? s.text : blanks[s.index].answer).join('')
 
@@ -38,14 +39,21 @@ for (const row of index.paths) {
   }
   const d = JSON.parse(raw)
   assert.deepEqual([d.status,d.targetLanguage,d.level,d.pathNumber,d.lessons.length], ['draft',row.language,row.level,row.path,10], key)
-  if (row.level === 'B1' && ['French','Portuguese'].includes(row.language) && row.path >= 6) {
+  if (row.level === 'B1' && row.path >= (reviewedB1Starts[row.language] ?? Infinity)) {
     const plan = JSON.parse(readFileSync(resolve(here, '../b1-2026-10', row.language.toLowerCase() + '-plan.json')))
     const outline = plan.paths.find(p => p.pathNumber === row.path)
     assert.deepEqual(d.lessons.map(l => l.trophyWord.word), outline.lessons.map(l => l.trophy), key)
     for (const lesson of d.lessons) {
+      for (const locale of ['de','en']) assert(lesson.sceneCaption[locale].includes(lesson.dialogue[0].targetText), lesson.slug + ': opening quote')
       assert.equal(lesson.pattern.examples[0].targetText, lesson.dialogue[1].targetText, lesson.slug)
       assert(!lesson.dialogue.some(t => t.targetText === lesson.pattern.examples[1].targetText), lesson.slug)
       const blanks = lesson.cloze.filter(part => typeof part !== 'string')
+      if (row.language === 'Italian') {
+        for (const choices of [lesson.recall.fallbackChoices, ...blanks.map(b => b.choices)]) {
+          const spellings = choices.map(s => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase())
+          assert.equal(new Set(spellings).size, 4, lesson.slug + ': options collide without accents')
+        }
+      }
       const visibleCues = blanks.map(b => b.cue?.toLowerCase().match(/[\p{L}\p{N}]+/gu)?.join(' ') ?? '')
       for (const {answer} of blanks) {
         const words = answer.toLowerCase().match(/[\p{L}\p{N}]+/gu).join(' ')

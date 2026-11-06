@@ -1,5 +1,11 @@
 # November independent text dispositions
 
+## Italian B1, 7 November
+
+P4–P10 add seventy four-turn episodes with German and English meanings. P4 practises identifying the right object with *che*, *dove* and preposition + *cui*. P5 moves from asking which document to bring to asking how much it costs and what to bring. P6 contrasts an ordinary service procedure with a completed action. P7 uses purpose and real conditions to plan an event. P8 compares past habits with life today. P9 follows customer complaints through to an agreed remedy. P10 draws on the earlier paths to tell the story of a year.
+
+The separate readers checked all seventy episodes against the Italian outlines. The reviews identified typed gaps with multiple defensible answers, sentence pieces that could move, an unclear reference to a closed entrance and a German reply that referred to a list with the wrong pronoun. Eight speaking exercises originally expected a word the app joins to an apostrophised article or preposition. Their revised anchors use words the learner actually says, in spoken order. The offline verifier exercises the app’s speech checker with text transcripts. No recording is needed for this check.
+
 ## French and Brazilian Portuguese B1, 7 November
 
 P6–P10 add fifty new episodes per language. Together with P1–P5, each language has 100 B1 lessons and 100 distinct B1 trophy words. The five paths practise service updates, explaining purpose, comparing past habits with the present, resolving a complaint and recounting a year. French P9 follows one washing-machine complaint through to its resolution. The Portuguese scenarios include negotiating a repair estimate and asking whether a collection can take place during an available window.

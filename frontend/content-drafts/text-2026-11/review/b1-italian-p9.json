@@ -1,0 +1,574 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 9,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+  "editorial": {
+    "sourceSha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Turn 1 (11 words) 'Vorrei presentare un reclamo perché…' recycles P1/P3; turn 2 (10 words) turns the vague 'appena abbiamo un momento' into a concrete date request; 4 chips with single ordering, interim chips unpunctuated; choice blanks fissare/precisa have four distinct impossible foils; recall 'saltato', trophy 'reclamo' in turn 1; title and caption do not reveal the vague-answer challenge."
+      },
+      {
+        "n": 2,
+        "observation": "Turn 1 (14 words) 'Come posso ottenere il rimborso…' and turn 2 (9 words) answer the voucher counter-offer by asking for a card refund; chips unique; cloze ricevere/sulla correct; DE/EN faithful; 'Riparto domani' translated as 'Ich reise morgen ab' is correct; title names the cancellation in turn 1, not the voucher twist."
+      },
+      {
+        "n": 3,
+        "observation": "Form blank 'ha' carries cue 'avere (il motore)' with the subject 'il motore' visible before the blank and 3sg-impossible foils; cue does not contain the answer; 'fischiare' choice fine; turn 1 11 words / turn 2 10 words; EN situation now matches DE ('takes the appliance from you'); 7 distinct terms."
+      },
+      {
+        "n": 4,
+        "observation": "Turn 1 (12 words) relative 'la spesa che ho fatto ieri' with 'ieri' locked in the last chip; turn 2 (12 words) identifies both twenty-euro payments after the cashier finds one; DE rule now 'Zeitangabe'; cloze pagamenti/alle dieci four distinct forms; 6 distinct terms."
+      },
+      {
+        "n": 5,
+        "observation": "Turn 1 (11 words) 'Ho notato un errore nell'indirizzo che compare…'; turn 2 (12 words) resolves the via del Pozzo/Porto mix-up; title 'Ein Fehler in der Adresse' no longer reveals the twist; recall 'compare' and speak tokens avoid the apostrophised word; cloze uguale/corretta agree with civico/via."
+      },
+      {
+        "n": 6,
+        "observation": "Turn 1 (12 words) 'risulta ancora aperta' with risultare+adjective rule correctly stating gender/number agreement; turn 2 (11 words) arranges the callback after three; opening uses 'per lei'; chips unique; cloze rispondere/al correct; title no longer reveals the callback."
+      },
+      {
+        "n": 7,
+        "observation": "Turn 1 (11 words) 'Vorrei chiedere la sostituzione della lampada perché la base è scheggiata'; 5 chips with 'um den Austausch' now faithful; turn 2 (11 words) checks whether the wider base fits the bedside table; cloze misurare/vedere fine; 7 distinct terms; 'entra sul mio comodino' is understandable though 'ci sta' is the idiomatic fit verb (optional)."
+      },
+      {
+        "n": 8,
+        "observation": "Turn 1 (13 words) 'una foto che mostra… vorrei usarla come prova' with pronoun-agreement rule for usarla; turn 2 (10 words) asks how to send both photos after the close-up request; cloze inviare/entrambe (entrambi/ciascuna/ogni syntactically impossible); recall 'bagnata'; trophy 'prova'."
+      },
+      {
+        "n": 9,
+        "observation": "Chunks merged to 'il difetto si ripresenta' so no alternative ordering; 'Anche dopo la riparazione,' capitalised with comma anchors sentence start; turn 1 12 words, turn 2 10 words; cloze ripetere/piegato agree with tessuto; 7 distinct terms; DE/EN faithful."
+      },
+      {
+        "n": 10,
+        "observation": "Turn 1 (13 words) 'una soluzione sarebbe ritirarlo…' recycles P3 conditional; clerk's revised 'farle trovare il tavolo qui in negozio venerdì dalle tre' now matches DE/EN and the from-time; turn 2 (11 words) confirms place and time; cloze alle/ritirare correct; recall 'sarebbe' with person foils; client never asserts the clerk's decision."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The two missed visits justify a complaint and the vague reply prompts a real request for a fixed date."
+      },
+      {
+        "n": 2,
+        "observation": "The first request, card-refund question and equivalent transfer are intact. The che spotlight revisits previously acquired grammar alongside the core P9 request."
+      },
+      {
+        "n": 3,
+        "observation": "The two location descriptions now match. The typed ha is forced by avere and il motore; the preceding formal ha is incidental and does not identify an answer on its own."
+      },
+      {
+        "n": 4,
+        "observation": "The corrected German rule identifies ieri as a time expression; the customer can still distinguish the two charges."
+      },
+      {
+        "n": 5,
+        "observation": "The neutral title leaves the confusion for the employee to raise. The new spoken anchors all occur in sequence as standalone tokens in the target line."
+      },
+      {
+        "n": 6,
+        "observation": "The title now leaves the callback undisclosed; the corrected German rule describes agreement with the subject."
+      },
+      {
+        "n": 7,
+        "observation": "The German glosses now supply bitten um, and the customer checks the proposed replacement by requesting a measurement."
+      },
+      {
+        "n": 8,
+        "observation": "Both photos are needed to document the wet parcel. The che spotlight revisits prior content, while the learner makes a polite proposal and asks how to send the evidence."
+      },
+      {
+        "n": 9,
+        "observation": "The combined subject–verb tile prevents the rejected but natural subject-inversion variant. Four tiles still reconstruct the turn."
+      },
+      {
+        "n": 10,
+        "observation": "The clerk now offers actual store availability from three. Both translations support the learner confirming collection at three."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "6f30595aa7a4944a12776a9f2161a9109073613540bac1cf33a403a4365ad4ea",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The two missed visits justify a complaint and the vague reply prompts a real request for a fixed date."
+      },
+      {
+        "n": 2,
+        "observation": "The learner explains why the voucher will not work and asks for a card refund. The shop keeps decision authority."
+      },
+      {
+        "n": 3,
+        "observation": "The technician asks when the noise began. The customer reports the second use without claiming a warranty outcome."
+      },
+      {
+        "n": 4,
+        "observation": "The receipt and terminal display play distinct roles. Two twenty-euro transactions are located at nine and ten."
+      },
+      {
+        "n": 5,
+        "observation": "Via del Pozzo and via del Porto give the customer a genuine misunderstanding to correct."
+      },
+      {
+        "n": 6,
+        "observation": "The unavailable case manager leads to an after-three callback request and the learner does not promise the callback."
+      },
+      {
+        "n": 7,
+        "observation": "The customer tests the suitability of the wider replacement by asking for a measurement."
+      },
+      {
+        "n": 8,
+        "observation": "The wet-box photo and the requested label close-up motivate a question about sending both images."
+      },
+      {
+        "n": 9,
+        "observation": "The technician tested one layer. The learner asks for a folded-fabric test that could reproduce the fault."
+      },
+      {
+        "n": 10,
+        "observation": "The customer proposes warehouse collection, then confirms shop collection at a specific time after the counteroffer."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "pattern.label/rule/examples",
+        "issue": "The entire spotlight and transfer train a che relative (P4). P9 specifically recycles complaint narration, requests, indirect questions and case status. The German rule is also cumbersome.",
+        "recommendation": "Keep the core line and highlight Come posso ottenere il rimborso. Give a second practical Come posso + infinitive request, with a short bilingual rule."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "dialogue[2], cloze[1]",
+        "issue": "The visible question prints the exact typed answer ha in che ha usato il frullatore just above il motore ___ cominciato.",
+        "recommendation": "Rephrase the question as «Dipende dalla causa. Si sentiva già al primo utilizzo?» and align its translations."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "pattern.rule/examples",
+        "issue": "A second spotlight teaches P4 relatives; its term for ieri, “Das Zeitwort”, means verb in German.",
+        "recommendation": "Point the spotlight at the P1 account «Ho trovato un doppio addebito» with a transfer describing another completed discovery. If describing ieri, call it a Zeitangabe."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "pattern.rule/examples",
+        "issue": "A third spotlight explicitly teaches a P4 che relative, again taking a complaint lesson away from the specified P9 families.",
+        "recommendation": "Focus on «Ho notato un errore» and transfer it to a different discrepancy, such as the price on a bill."
+      },
+      {
+        "n": 6,
+        "severity": "LOW",
+        "field": "pattern.rule.de",
+        "issue": "“Das Adjektiv richtet sich nach dem betreffenden Namen” says that agreement follows a name, although the examples agree with the subject noun.",
+        "recommendation": "Use «Das Adjektiv richtet sich in Geschlecht und Zahl nach dem Subjekt.»"
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "chunks[0:2].baseText.de",
+        "issue": "The independent chips “ich möchte bitten” / “den Austausch” omit the required um in German. A learner assembling their meanings gets “ich möchte bitten den Austausch”.",
+        "recommendation": "Use «ich möchte um … bitten» for Vorrei chiedere, with «den Austausch» for la sostituzione, or group chiedere la sostituzione as one naturally glossed chip."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "pattern.rule/examples",
+        "issue": "A fourth P9 spotlight targets the P4 relative; its example then highlights that relative again. There is already a strong P3 request in the canonical line.",
+        "recommendation": "Highlight «vorrei usarla come prova», use a different practical vorrei + infinitive transfer, and explain the polite proposal in both languages."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "chunks[1:3]",
+        "issue": "Swapping il difetto and si ripresenta produces «Anche dopo la riparazione, si ripresenta il difetto quando cucio un orlo.» This still matches the meaning, but BuildPhrase rejects it.",
+        "recommendation": "Keep «il difetto si ripresenta» together, and split «quando cucio» / «un orlo.» to keep four chips."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].targetText/baseText",
+        "issue": "«Posso però portare il tavolo qui in negozio venerdì dalle tre» and its German rendering describe bringing the table from a start time. The English and the next turn instead require the table to be ready at three.",
+        "recommendation": "Have the clerk say «Posso però farle trovare il tavolo qui in negozio venerdì dalle tre» (or «Qui in negozio, però, il tavolo sarà pronto venerdì dalle tre»), and translate the same availability in German and English."
+      },
+      {
+        "n": 5,
+        "severity": "HIGH",
+        "field": "speakRequired",
+        "issue": "The required token indirizzo only occurs after an apostrophe. The live speech checker removes apostrophes without inserting spaces, so the spoken sentence contains nellindirizzo, and the core-token route cannot match indirizzo.",
+        "recommendation": "Replace indirizzo with the standalone word spedizione in the speech anchors, retaining their spoken order."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8d45e9d6400f912da3edac8ae39979993f68e9652faf5fee82607c387c3f9abc",
+      "sourceSha256": "6f30595aa7a4944a12776a9f2161a9109073613540bac1cf33a403a4365ad4ea",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (11 words) uses the P9 frame vorrei presentare un reclamo perché + passato prossimo; the vague «vediamo cosa si può fare» motivates the 10-word request for a fixed date; chips, cloze, recall (saltato), speak tokens and both glosses are consistent; title does not reveal the later challenge."
+        },
+        {
+          "n": 2,
+          "observation": "Come posso ottenere il rimborso… (14 words) is a P5-style request; the voucher counteroffer makes the 9-word card-refund question causal; cloze choices are syntactically impossible foils; the spotlight highlights the che relative rather than the Come posso frame, which is a focus preference, not an error."
+        },
+        {
+          "n": 3,
+          "observation": "Vorrei sapere se + copre (P5 L8-10) is staged; the form gap ha has il motore before it and cue «avere (il motore)» with impossible distractors; the English situation/caption says the employee «takes a look at it» while the German says he takes the appliance."
+        },
+        {
+          "n": 4,
+          "observation": "Double-charge report (12 words) and the terminal showing only one transaction lead to the 12-word listing of both payments; cloze and recall are sound; the German rule calls ieri a «Zeitwort», which means verb."
+        },
+        {
+          "n": 5,
+          "observation": "Error report with che compare is correct; Pozzo/Porto creates a real misunderstanding; however the title «Zwei ähnliche Straßennamen / Two similar street names» reveals the later challenge before the learner has produced turn 1."
+        },
+        {
+          "n": 6,
+          "observation": "Vorrei parlare con il responsabile perché la mia pratica risulta ancora aperta recycles P1/P3/P6 status language; the callback request stays within the client's role; the title reveals the callback outcome and the German rule says agreement follows a «Namen»."
+        },
+        {
+          "n": 7,
+          "observation": "Replacement request with perché la base è scheggiata (11 words) and the measuring question are coherent; the German chip glosses «ich möchte bitten» / «den Austausch» lose the required um, so the assembled meaning is ungrammatical German."
+        },
+        {
+          "n": 8,
+          "observation": "Photo-as-evidence line (13 words), label close-up demand and the question about sending both photos form a real four-turn exchange; cloze foils entrambi/ciascuna/ogni are impossible; recall bagnata and speak tokens are turn-1 words."
+        },
+        {
+          "n": 9,
+          "observation": "Turn 1 (12 words) uses quando + presente for a recurring fault; the single-layer test motivates the folded-fabric request; chips «il difetto» and «si ripresenta» are separately movable and «si ripresenta il difetto» is also correct Italian, so BuildPhrase would reject a valid order."
+        },
+        {
+          "n": 10,
+          "observation": "Una soluzione sarebbe ritirarlo (13 words) and the precise Friday-at-three confirmation (11 words) match the beat; the clerk's «portare il tavolo qui in negozio venerdì dalle tre» pairs a punctual verb with a from-time and the English already renders availability rather than bringing."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "EN situation and caption («takes a look at it») do not match the DE («nimmt das Gerät entgegen»).",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "An employee takes a look at it.",
+              "new": "An employee takes the appliance from you."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Reviewer concern that dialogue[2] «che ha usato» leaks the typed answer ha is dismissed: earlier turns are context, not a cue; the cue «avere (il motore)» does not contain the answer, and the Lei-form ha is unavoidable in any formal exchange.",
+          "edits": []
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "German rule uses «Zeitwort» (= verb) for the time adverb ieri.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/rule/de",
+              "old": "Mit che und einem abgeschlossenen Vorgang grenzen Sie ein, welchen Einkauf oder welche Artikel Sie meinen. Das Zeitwort ieri ordnet den Einkauf ein.",
+              "new": "Mit che und einem abgeschlossenen Vorgang grenzen Sie ein, welchen Einkauf oder welche Artikel Sie meinen. Die Zeitangabe ieri ordnet den Einkauf zeitlich ein."
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Title reveals the later challenge (the mix-up between two similar street names) instead of the modelled turn 1.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/title",
+              "old": {
+                "de": "Zwei ähnliche Straßennamen",
+                "en": "Two similar street names"
+              },
+              "new": {
+                "de": "Ein Fehler in der Adresse",
+                "en": "An error in the address"
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "speakRequired token «indirizzo» is only part of the apostrophised word nell'indirizzo; «conferma» would be a cleaner standalone turn-1 word.",
+          "edits": []
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Title reveals the later callback resolution; German rule says the adjective agrees with a «Namen» (name) instead of the subject noun.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/title",
+              "old": {
+                "de": "Ein Rückruf zum offenen Antrag",
+                "en": "A callback about an open request"
+              },
+              "new": {
+                "de": "Der Antrag ist noch offen",
+                "en": "The case is still open"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule/de",
+              "old": "Mit risulta und einem Adjektiv beschreiben Sie den angezeigten Status. Das Adjektiv richtet sich nach dem betreffenden Namen: pratica aperta und abbonamento attivo.",
+              "new": "Mit risulta und einem Adjektiv beschreiben Sie den angezeigten Status. Das Adjektiv richtet sich in Geschlecht und Zahl nach dem Subjekt: pratica aperta und abbonamento attivo."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "German chip glosses omit the preposition um required by bitten, so «ich möchte bitten» + «den Austausch» is not faithful German.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks/1/baseText/de",
+              "old": "den Austausch",
+              "new": "um den Austausch"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Separate chips «il difetto» and «si ripresenta» allow the equally correct order «si ripresenta il difetto», which the exact-match builder rejects.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks",
+              "old": [
+                {
+                  "targetText": "Anche dopo la riparazione,",
+                  "baseText": {
+                    "de": "auch nach der Reparatur",
+                    "en": "even after the repair"
+                  }
+                },
+                {
+                  "targetText": "il difetto",
+                  "baseText": {
+                    "de": "der Fehler",
+                    "en": "the fault"
+                  }
+                },
+                {
+                  "targetText": "si ripresenta",
+                  "baseText": {
+                    "de": "tritt wieder auf",
+                    "en": "comes back"
+                  }
+                },
+                {
+                  "targetText": "quando cucio un orlo.",
+                  "baseText": {
+                    "de": "wenn ich einen Saum nähe",
+                    "en": "when I sew a hem"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Anche dopo la riparazione,",
+                  "baseText": {
+                    "de": "auch nach der Reparatur",
+                    "en": "even after the repair"
+                  }
+                },
+                {
+                  "targetText": "il difetto si ripresenta",
+                  "baseText": {
+                    "de": "tritt der Fehler wieder auf",
+                    "en": "the fault comes back"
+                  }
+                },
+                {
+                  "targetText": "quando cucio",
+                  "baseText": {
+                    "de": "wenn ich nähe",
+                    "en": "when I sew"
+                  }
+                },
+                {
+                  "targetText": "un orlo.",
+                  "baseText": {
+                    "de": "einen Saum",
+                    "en": "a hem"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Clerk's «Posso però portare il tavolo qui in negozio venerdì dalle tre» pairs a punctual action with a from-time; DE follows the bringing reading while EN and the learner's reply need the table to be available from three.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/2",
+              "old": {
+                "targetText": "In magazzino non riceviamo clienti. Posso però portare il tavolo qui in negozio venerdì dalle tre.",
+                "baseText": {
+                  "de": "Im Lager empfangen wir keine Kunden. Ich kann den Tisch aber für Freitag ab drei hier in den Laden bringen.",
+                  "en": "We don't receive customers at the warehouse, but I can have the table here in the shop from three on Friday."
+                }
+              },
+              "new": {
+                "targetText": "In magazzino non riceviamo clienti. Posso però farle trovare il tavolo qui in negozio venerdì dalle tre.",
+                "baseText": {
+                  "de": "Im Lager empfangen wir keine Kunden. Ich kann den Tisch aber am Freitag ab drei hier im Laden für Sie bereitstellen.",
+                  "en": "We don't receive customers at the warehouse, but I can have the table ready for you here in the shop from three on Friday."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Spotlights in L2, L4, L5 and L8 highlight the che relative (a P4 family already acquired) rather than the P9 frames Come posso / Ho trovato / Ho notato / vorrei usarla; no new family or false grammar is taught and the canonical lines carry the P9 frames, so retargeting the highlight is a preference. Term gloss «ripartire = wieder abreisen / leave again» could be simplified to «abreisen / leave».",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a4a20b4814dae1e741d95d0d1a2d7277ceb24006fbd077b67beed3d45a21e0ff",
+      "sourceSha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (11 words) 'Vorrei presentare un reclamo perché…' recycles P1/P3; turn 2 (10 words) turns the vague 'appena abbiamo un momento' into a concrete date request; 4 chips with single ordering, interim chips unpunctuated; choice blanks fissare/precisa have four distinct impossible foils; recall 'saltato', trophy 'reclamo' in turn 1; title and caption do not reveal the vague-answer challenge."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 (14 words) 'Come posso ottenere il rimborso…' and turn 2 (9 words) answer the voucher counter-offer by asking for a card refund; chips unique; cloze ricevere/sulla correct; DE/EN faithful; 'Riparto domani' translated as 'Ich reise morgen ab' is correct; title names the cancellation in turn 1, not the voucher twist."
+        },
+        {
+          "n": 3,
+          "observation": "Form blank 'ha' carries cue 'avere (il motore)' with the subject 'il motore' visible before the blank and 3sg-impossible foils; cue does not contain the answer; 'fischiare' choice fine; turn 1 11 words / turn 2 10 words; EN situation now matches DE ('takes the appliance from you'); 7 distinct terms."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 (12 words) relative 'la spesa che ho fatto ieri' with 'ieri' locked in the last chip; turn 2 (12 words) identifies both twenty-euro payments after the cashier finds one; DE rule now 'Zeitangabe'; cloze pagamenti/alle dieci four distinct forms; 6 distinct terms."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 1 (11 words) 'Ho notato un errore nell'indirizzo che compare…'; turn 2 (12 words) resolves the via del Pozzo/Porto mix-up; title 'Ein Fehler in der Adresse' no longer reveals the twist; recall 'compare' and speak tokens avoid the apostrophised word; cloze uguale/corretta agree with civico/via."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 (12 words) 'risulta ancora aperta' with risultare+adjective rule correctly stating gender/number agreement; turn 2 (11 words) arranges the callback after three; opening uses 'per lei'; chips unique; cloze rispondere/al correct; title no longer reveals the callback."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 (11 words) 'Vorrei chiedere la sostituzione della lampada perché la base è scheggiata'; 5 chips with 'um den Austausch' now faithful; turn 2 (11 words) checks whether the wider base fits the bedside table; cloze misurare/vedere fine; 7 distinct terms; 'entra sul mio comodino' is understandable though 'ci sta' is the idiomatic fit verb (optional)."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 1 (13 words) 'una foto che mostra… vorrei usarla come prova' with pronoun-agreement rule for usarla; turn 2 (10 words) asks how to send both photos after the close-up request; cloze inviare/entrambe (entrambi/ciascuna/ogni syntactically impossible); recall 'bagnata'; trophy 'prova'."
+        },
+        {
+          "n": 9,
+          "observation": "Chunks merged to 'il difetto si ripresenta' so no alternative ordering; 'Anche dopo la riparazione,' capitalised with comma anchors sentence start; turn 1 12 words, turn 2 10 words; cloze ripetere/piegato agree with tessuto; 7 distinct terms; DE/EN faithful."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 (13 words) 'una soluzione sarebbe ritirarlo…' recycles P3 conditional; clerk's revised 'farle trovare il tavolo qui in negozio venerdì dalle tre' now matches DE/EN and the from-time; turn 2 (11 words) confirms place and time; cloze alle/ritirare correct; recall 'sarebbe' with person foils; client never asserts the clerk's decision."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "'vedere se entra sul mio comodino' is comprehensible but 'entrare' idiomatically means fitting inside; 'ci sta sul' is the natural verb for fitting on a surface. Word count stays within 6–12 (12).",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/6",
+              "old": "se entra sul mio comodino?",
+              "new": "se ci sta sul mio comodino?"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Term gloss 'ripartire = wieder abreisen / leave again' is literal but the dialogue sense is simply 'abreisen / leave'; not an error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/terms/4/baseText",
+              "old": {
+                "de": "wieder abreisen",
+                "en": "leave again"
+              },
+              "new": {
+                "de": "abreisen",
+                "en": "leave"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "receiptSha256": "5c3b03a223829fdd6ce2501d50937ad34481a23ca193a91cbf56e2b93692901d",
+      "edits": [
+        {
+          "p": 9,
+          "n": 5,
+          "spoken": "Ho notato un errore nell'indirizzo che compare sulla conferma di spedizione.",
+          "old": [
+            "notato",
+            "errore",
+            "indirizzo"
+          ],
+          "new": [
+            "notato",
+            "errore",
+            "spedizione"
+          ],
+          "reason": "'indirizzo' is elided (nell'indirizzo -> nellindirizzo); proposed trio is non-elided, in spoken order, and meaningful."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,962 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 6,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+  "editorial": {
+    "sourceSha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Turn 1 (10 w) si organizza, turn 2 (9 w) suggests a call without asserting the shop's decision; follow-up now has explicit Lei so DE/EN 'Sie hatten mir gesagt' matches; both cloze gaps are cue-free choices with impossible foils; chips single-order; trophy consegna in turn 1; scene quotes opening verbatim."
+      },
+      {
+        "n": 2,
+        "observation": "Turn 1 (13 w) si può vedere, turn 2 (9 w) asks about recapito without presuming approval; cloze indicare/postale unique after basta; 'le abbiamo dato' is office-we, not voi; chip 'Con questo numero' is capitalised so only one ordering starts with a capital (not a time phrase)."
+      },
+      {
+        "n": 3,
+        "observation": "Turn 1 (12 w) si riceve, turn 2 (10 w); printer-down follow-up makes the digital copy causal; 'va' is a cue-free choice (vanno/andiamo/vado impossible), so andrebbe is no longer wrongly rejected; copying from the clerk line is a difficulty preference only."
+      },
+      {
+        "n": 4,
+        "observation": "L4 opens viene + participio with explicit subject l'appuntamento; turn 2 (9 w) asks whether the sister may be present rather than deciding it; può/restare both choices with impossible foils; transfer example il posto independent; title does not reveal the presence condition."
+      },
+      {
+        "n": 5,
+        "observation": "'il guasto alla luce dell'androne che ho segnalato' now attaches the site to guasto; form gap resta has cue 'restare (la luce)' with the subject literally before the blank and no competing present surface; accesa agrees with luce; a swapped 'alla luce dell'androne' placement would change meaning, so chips are safe."
+      },
+      {
+        "n": 6,
+        "observation": "Turn 1 (12 w) viene eseguito with subject before the verb; plural vengono eseguiti now modelled in the transfer example and rule; turn 2 (9 w) is the client's own consent, which the client may give; DE/EN of turn 1 are idiomatic (Pumpe überprüft) while chunks keep the literal gloss."
+      },
+      {
+        "n": 7,
+        "observation": "L7 enters è stato + participio with explicit l'avviso; staged tense overrides the outline's 'viene pubblicato'; turn 2 (8 w) accepts the photo on the mobile; mio/ricevere unique choices; chips single-order."
+      },
+      {
+        "n": 8,
+        "observation": "'sa dirmi' recycled from P5 without blanking or trophying dirmi; è stata inviata agrees with la conferma; form gap contiene has cue 'contenere (il mio indirizzo)' with the subject visible; un/uno distinguished by trattino; turn 2 (10 w) corrects the contact detail."
+      },
+      {
+        "n": 9,
+        "observation": "Turn 1 (15 w) reports what the slip/screen says rather than asserting the clerk's decision, then asks how assistenza works; 'non è previsto il ritiro' triggers the Saturday drop-off question (9 w); five chips, interim chip ends with a comma only; chunk EN gloss 'but how does it work,' carries a stray trailing comma."
+      },
+      {
+        "n": 10,
+        "observation": "Quale procedura si segue + è stato registrato male combines recycled si-frame with staged passive; clerk proposes the wrong trasloco route, learner (9 w) precisa il civico 16; form gap è has cue 'essere (il civico)' and no e/è pair in choices; corretto agrees with civico."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Explicit Lei mi ha detto now identifies the customer as the source of the locked-door warning, aligning both translations. The present-only choice bank no longer rejects an unprompted conditional. The repaired speech target scelto is a whole word of the canonical utterance."
+      },
+      {
+        "n": 2,
+        "observation": "The status lookup, missing contact and postal address remain aligned; the tower makes an independent si può example. Capitalization marks the canonical start of the build, though the adjunct can otherwise move."
+      },
+      {
+        "n": 3,
+        "observation": "The printed-receipt difficulty and the digital-copy offer still work. Va now uses a closed person bank rather than requiring the learner to reject andrebbe by guesswork. Both answers still echo the offer."
+      },
+      {
+        "n": 4,
+        "observation": "The subject of viene fissato is the appointment, the separate tournament is a transfer, and the sister’s availability is now a uniquely selectable potere item."
+      },
+      {
+        "n": 5,
+        "observation": "The reported fault and its location now stand together before the relative clause in the model, chips, recall and card. The numeral and held light still serve as an observable answer about the fault."
+      },
+      {
+        "n": 6,
+        "observation": "The pump check is singular, while I brani vengono eseguiti models plural auxiliary and participle in a new setting. Both language rules and translations follow the revision. The customer can consent to the extra tank check."
+      },
+      {
+        "n": 7,
+        "observation": "The film screening transfers the newly staged completed passive from the water notice. Sending a phone photo is first offered in the follow-up. The repaired speech target riguarda is a whole word of the canonical utterance."
+      },
+      {
+        "n": 8,
+        "observation": "The explicit feminine subjects conferma/musica license completed passive agreement. The clerk’s dot and customer’s hyphen distinguish the two contact details."
+      },
+      {
+        "n": 9,
+        "observation": "The customer quotes a logged request, then asks how to deliver the blender rather than authorizing the clerk’s choice. The context could identify what the customer is reading more explicitly. The repaired speech target frullatore is a whole word of the canonical utterance."
+      },
+      {
+        "n": 10,
+        "observation": "The mistaken relocation advice leads to a specific correction of the street number. Usual procedure and completed registration are contrasted; formal register and both translations are consistent."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "chunks",
+        "issue": "With normal sentence capitalization only the intended ordering starts with a capital. In spoken Italian the initial adjunct could also follow vedere.",
+        "recommendation": "For stricter word-order practice, bind «Con questo numero si può» in a future revision."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "dialogue[2]/cloze",
+        "issue": "Both choices can be copied from the clerk’s digital-copy question. The exact-grading ambiguity is resolved and the answer is revealed only when the clerk offers it.",
+        "recommendation": "If strengthening difficulty, offer to email the document without spelling out digitale and va."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "situation",
+        "issue": "The model plate is the only object explicitly pictured, so the item from which the customer reads the service status is implicit. The learner does not assert an unsupported decision.",
+        "recommendation": "If revising the artwork, include a service slip alongside the model photo."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "ab6e8c2f472965e7292e6a1d7d55d6f8b0676716a308d2d0e85e0b43953902cf",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The wardrobe and greenhouse examples introduce process si. The courier may ring from the locked entrance. The follow-up leaves the source of the warning ambiguous and the typed modal is open."
+      },
+      {
+        "n": 2,
+        "observation": "The reference number enables a status check. The missing contact and postal address fit; the tower ticket provides independent si può practice. Both choice rows work."
+      },
+      {
+        "n": 3,
+        "observation": "The printer failure motivates the switch to digital. The distinct cooking-course example stays within si riceve, but the clerk supplies both blanks and the typed tense is open."
+      },
+      {
+        "n": 4,
+        "observation": "The intercom repair and tournament examples introduce viene fissato/assegnato with explicit subjects. The sister is a plausible substitute and the typed modal allows two readings."
+      },
+      {
+        "n": 5,
+        "observation": "Guasto is the approved trophy. The electrician asks how long the light stays on, eliciting the three-second observation, but the report phrase attaches awkwardly."
+      },
+      {
+        "n": 6,
+        "observation": "The coffee-machine tank requires extra consent. The appliance owner grants permission within their role. The independent choir example repeats masculine singular, leaving plural agreement unmodelled."
+      },
+      {
+        "n": 7,
+        "observation": "È stato pubblicato introduces completed passive at L7, with an unrelated film example. The second turn prefers a photo over checking the lobby."
+      },
+      {
+        "n": 8,
+        "observation": "The feminine confirmation and music examples carry agreement correctly. The missing email motivates checking a dot versus a hyphen. The choice rows enforce the article and the address identifies a current fact."
+      },
+      {
+        "n": 9,
+        "observation": "The customer cites a logged request without taking over the clerk’s decision. Workshop drop-off is a practical alternative to collection. The scene could better support the quoted written status."
+      },
+      {
+        "n": 10,
+        "observation": "The resident distinguishes a wrong house number from moving. The program correction reuses completed passive, apart from the target service context, and the existing civic number licenses the present."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "dialogue[2], cloze (può)",
+        "issue": "In «Il corriere passa … ma mi ha detto» the nearest and continuing subject is il corriere, while both translations force formal you. Also «Il corriere potrebbe chiamarmi…» fits the typed potere cue just as naturally as può.",
+        "recommendation": "Use «mi diceva che il portone resta chiuso» with an unambiguous Lei, or make the door a known fact without attributing it. Set the modal to choice with the current bank, or specify presente indicativo."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "chunks",
+        "issue": "The same translation admits «Si può vedere con questo numero a che punto è la mia pratica?» by moving the first chip, disregarding capitalization.",
+        "recommendation": "Bind the movable adjunct, e.g. «Con questo numero si può / vedere / a che punto è / la mia pratica?»."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "dialogue[2] and cloze (digitale, va)",
+        "issue": "The clerk supplies both correct forms in «Va bene una copia digitale?», making this chiefly copying. «Una copia digitale andrebbe bene» is also a very natural response to the offer but is rejected by typed andare (una copia).",
+        "recommendation": "Let the clerk offer an email without spelling out the answer, e.g. «Posso mandarle il documento per posta elettronica?». Make va a choice with its current bank or explicitly cue the present."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "cloze (può)",
+        "issue": "«Mia sorella potrebbe restare in casa durante la prova?» asks exactly the same polite permission as the model; the displayed potere + subject does not choose between the conditional and present.",
+        "recommendation": "Use choice with the existing bank or explicitly specify present indicative."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], chunks, recall, pattern, trophy example",
+        "issue": "«il guasto che ho segnalato alla luce» invites reading the light as the addressee of segnalare. The intended attachment is guasto alla luce, with the report as a relative clause.",
+        "recommendation": "Move the light next to the fault, e.g. «Come viene verificato il guasto alla luce dell’androne che ho segnalato?» or use «… il guasto dell’impianto di illuminazione che ho segnalato?». Bind guasto + site in the chips."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "pattern.examples[1] and rule; P6 L4–6 progression",
+        "issue": "All six examples and three learner openings in the viene/vengono block use masculine singular. The staged plural vengono and plural participle agreement never receive a model, even in transfer.",
+        "recommendation": "Pluralize one transfer example (e.g. «Due brani vengono eseguiti dal coro alla fine del concerto»), update the label, grammar rule and DE/EN to explain the singular/plural alternation."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "situation/pedagogical grounding",
+        "issue": "The scene establishes only a photo of the mixer’s model label, yet «Qui leggo che la richiesta è stata registrata» appears to read the service status from it.",
+        "recommendation": "Place both a service slip and the model photo on the counter, without disclosing what the slip says."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "1b13bbccc3fbb6f12780db6884e40630415727c5c450e41077cbc73e62c186a6",
+      "sourceSha256": "ab6e8c2f472965e7292e6a1d7d55d6f8b0676716a308d2d0e85e0b43953902cf",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (10 words) uses si organizza with a tidy 4-chip set and credible foils; trophy consegna present. Follow-up «ma mi ha detto che il portone resta chiuso» reads as the courier speaking, contradicting DE/EN 'Sie/you'; typed potere gap also accepts potrebbe."
+        },
+        {
+          "n": 2,
+          "observation": "si può vedere + a che punto è (13 words) matches L1-3 staging; clerk says 'in esame' without presuming approval; both choice rows are syntactically forced. Chip «Con questo numero» is a movable adjunct, only capitalization blocks a second ordering."
+        },
+        {
+          "n": 3,
+          "observation": "Quando si riceve (12 words), printer-down reason, digital copy agreed; chips, recall presentato, terms sound. Typed andare (una copia) gap rejects the equally natural «andrebbe bene» after an offer; clerk line also hands over both blanks."
+        },
+        {
+          "n": 4,
+          "observation": "viene fissato l'appuntamento with explicit subject opens the L4-6 block; sister as substitute presence fits the beat and stays a request. Typed potere (mia sorella) gap does not exclude potrebbe."
+        },
+        {
+          "n": 5,
+          "observation": "Trophy guasto, electrician check, three-second observation all coherent, cloze resta/accesa fine. In «il guasto che ho segnalato alla luce dell'androne» the phrase alla luce attaches to segnalare (reported to the light); the site must sit next to guasto."
+        },
+        {
+          "n": 6,
+          "observation": "Owner grants consent for the tank within their role; cloze forces infinitive and article. Pattern and all P6 L4-6 models stay masculine singular, so staged vengono + plural participle is never shown."
+        },
+        {
+          "n": 7,
+          "observation": "è stato pubblicato l'avviso (10 words) opens L7-10 correctly; photo-on-phone alternative is natural; film example independent; cloze ricevere/mio forced by frame."
+        },
+        {
+          "n": 8,
+          "observation": "Feminine agreement è stata inviata la conferma modelled twice; dot vs hyphen correction is concrete; contiene is the only finite form the frame admits; dirmi never blanked."
+        },
+        {
+          "n": 9,
+          "observation": "Customer reports the logged status as read, not decided; drop-off at the workshop is a request. 5 chips with comma-ending interim chip allowed. Scene only shows a model-label photo, so «Qui leggo» lacks a visible slip (minor)."
+        },
+        {
+          "n": 10,
+          "observation": "si segue + se il civico è stato registrato male recycles both families; clerk proposes the wrong trasloco path and learner corrects it; «Abito sempre lì» idiomatic for 'still'; è gap unique, no e/è pair."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Follow-up subject ambiguity: after «Il corriere passa…, ma mi ha detto» the continuing subject is il corriere, but DE/EN render it as formal you (the customer told the clerk). Also the typed form gap for può admits potrebbe with the same meaning; frame is an open modal request.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/targetText",
+              "old": "Il corriere passa venerdì mattina, ma mi ha detto che il portone resta chiuso.",
+              "new": "Il corriere passa venerdì mattina, ma Lei mi ha detto che il portone resta chiuso."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "può",
+                "choices": [
+                  "possiamo",
+                  "puoi",
+                  "può",
+                  "possono"
+                ],
+                "cue": "potere (il corriere)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "può",
+                "choices": [
+                  "possiamo",
+                  "puoi",
+                  "può",
+                  "possono"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Chip «Con questo numero» is a freely movable adjunct; apart from capitalization, «si può vedere con questo numero a che punto è la mia pratica?» is also a correct ordering. Binding the adjunct to the verb removes the ambiguity.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/chunks",
+              "old": [
+                {
+                  "targetText": "Con questo numero",
+                  "baseText": {
+                    "de": "Mit dieser Nummer",
+                    "en": "With this number"
+                  }
+                },
+                {
+                  "targetText": "si può vedere",
+                  "baseText": {
+                    "de": "kann man nachsehen",
+                    "en": "can one check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Con questo numero si può",
+                  "baseText": {
+                    "de": "Mit dieser Nummer kann man",
+                    "en": "With this number one can"
+                  }
+                },
+                {
+                  "targetText": "vedere",
+                  "baseText": {
+                    "de": "nachsehen",
+                    "en": "check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Typed form gap andare (una copia): in reply to the clerk's offer, «una copia digitale andrebbe bene» is an equally valid surface and the visible cue does not restrain tense/mood. Use a cue-free choice with the existing four distinct forms.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "va",
+                "choices": [
+                  "vanno",
+                  "andiamo",
+                  "vado",
+                  "va"
+                ],
+                "cue": "andare (una copia)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "va",
+                "choices": [
+                  "vanno",
+                  "andiamo",
+                  "vado",
+                  "va"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Clerk line «Va bene una copia digitale?» spells out both target forms of the last line, reducing the cloze to copying. An email offer keeps the exchange causal without giving the wording away.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2",
+              "old": {
+                "targetText": "Di solito subito, ma la stampante è ferma. Va bene una copia digitale?",
+                "baseText": {
+                  "de": "Normalerweise sofort, aber der Drucker funktioniert gerade nicht. Wäre eine digitale Kopie in Ordnung?",
+                  "en": "Usually straight away, but the printer is down. Would a digital copy be all right?"
+                }
+              },
+              "new": {
+                "targetText": "Di solito subito, ma la stampante è ferma. Posso mandarle una copia per posta elettronica?",
+                "baseText": {
+                  "de": "Normalerweise sofort, aber der Drucker funktioniert gerade nicht. Kann ich Ihnen eine Kopie per E-Mail schicken?",
+                  "en": "Usually straight away, but the printer is down. Can I send you a copy by email?"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Typed form gap potere (mia sorella): «Mia sorella potrebbe restare…» is the same polite permission request and is wrongly rejected; the cue does not fix the tense. Convert to a cue-free choice with the existing distinct, syntactically impossible distractors.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "può",
+                "choices": [
+                  "possono",
+                  "possiamo",
+                  "posso",
+                  "può"
+                ],
+                "cue": "potere (mia sorella)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "può",
+                "choices": [
+                  "possono",
+                  "possiamo",
+                  "posso",
+                  "può"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "«il guasto che ho segnalato alla luce dell'androne» attaches alla luce to segnalare (reported to the light) instead of to guasto. Place the site next to the fault and bind it in the chips; propagate to pattern example, trophy example, recall and foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/1/targetText",
+              "old": "Come viene verificato il guasto che ho segnalato alla luce dell'androne?",
+              "new": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/pattern/examples/0/targetText",
+              "old": "Come viene verificato il guasto che ho segnalato alla luce dell'androne?",
+              "new": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/trophyWord/example",
+              "old": "Come viene verificato il guasto che ho segnalato alla luce dell'androne?",
+              "new": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/recall/after",
+              "old": " il guasto che ho segnalato alla luce dell'androne?",
+              "new": " il guasto alla luce dell'androne che ho segnalato?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/chunks/2",
+              "old": {
+                "targetText": "che ho segnalato",
+                "baseText": {
+                  "de": "die ich gemeldet habe",
+                  "en": "that I reported"
+                }
+              },
+              "new": {
+                "targetText": "alla luce dell'androne",
+                "baseText": {
+                  "de": "an der Beleuchtung im Eingangsbereich",
+                  "en": "with the entrance hall light"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/chunks/3",
+              "old": {
+                "targetText": "alla luce dell'androne?",
+                "baseText": {
+                  "de": "an der Beleuchtung im Eingangsbereich?",
+                  "en": "with the entrance hall light?"
+                }
+              },
+              "new": {
+                "targetText": "che ho segnalato?",
+                "baseText": {
+                  "de": "die ich gemeldet habe?",
+                  "en": "that I reported?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/distractors/1",
+              "old": "alla porta del garage?",
+              "new": "alla porta del garage"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "P6 L4-6 stages viene/vengono + participio, yet every model in L4-L6 is masculine singular; plural vengono + plural participle is never shown. Pluralize the independent transfer example and explain the alternation in label and rule.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/label",
+              "old": "Viene eseguito",
+              "new": "Viene eseguito / vengono eseguiti"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule",
+              "old": {
+                "de": "Mit viene eseguito beschreiben Sie, was durchgeführt oder aufgeführt wird. Eseguito richtet sich nach dem männlichen Subjekt controllo oder brano.",
+                "en": "Use viene eseguito to describe what is carried out or performed. Eseguito agrees with the masculine subject controllo or brano."
+              },
+              "new": {
+                "de": "Mit viene eseguito beschreiben Sie, was durchgeführt oder aufgeführt wird. Bei einem Subjekt im Plural stehen vengono und das Partizip im Plural: i brani vengono eseguiti.",
+                "en": "Use viene eseguito to describe what is carried out or performed. With a plural subject both parts go plural: i brani vengono eseguiti."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1",
+              "old": {
+                "targetText": "Il brano viene eseguito dal coro alla fine del concerto.",
+                "baseText": {
+                  "de": "Das Stück wird am Ende des Konzerts vom Chor vorgetragen.",
+                  "en": "The piece is performed by the choir at the end of the concert."
+                },
+                "highlight": "Il brano viene eseguito"
+              },
+              "new": {
+                "targetText": "I brani vengono eseguiti dal coro alla fine del concerto.",
+                "baseText": {
+                  "de": "Die Stücke werden am Ende des Konzerts vom Chor vorgetragen.",
+                  "en": "The pieces are performed by the choir at the end of the concert."
+                },
+                "highlight": "I brani vengono eseguiti"
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "«Qui leggo che la richiesta è stata registrata» needs something to read from, but the scene only shows a photo of the model label. Add the request slip without revealing its content (situation, captions, visual notes).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/situation",
+              "old": {
+                "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers.",
+                "en": "At the service desk, you show a photo of your blender's model label."
+              },
+              "new": {
+                "de": "Am Serviceschalter legen Sie Ihren Anfragebeleg und ein Foto vom Typenschild Ihres Mixers vor.",
+                "en": "At the service desk, you show your request slip and a photo of your blender's model label."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/sceneCaption",
+              "old": {
+                "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers. „Ha già aperto una richiesta per questo modello?“",
+                "en": "At the service desk, you show a photo of your blender's model label. “Ha già aperto una richiesta per questo modello?”"
+              },
+              "new": {
+                "de": "Am Serviceschalter legen Sie Ihren Anfragebeleg und ein Foto vom Typenschild Ihres Mixers vor. „Ha già aperto una richiesta per questo modello?“",
+                "en": "At the service desk, you show your request slip and a photo of your blender's model label. “Ha già aperto una richiesta per questo modello?”"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption",
+              "old": {
+                "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers.",
+                "en": "At the service desk, you show a photo of your blender's model label."
+              },
+              "new": {
+                "de": "Am Serviceschalter legen Sie Ihren Anfragebeleg und ein Foto vom Typenschild Ihres Mixers vor.",
+                "en": "At the service desk, you show your request slip and a photo of your blender's model label."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "At the service desk, you show a photo of your blender's model label.",
+              "new": "At the service desk, you show your request slip and a photo of your blender's model label."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "da301bf650c6b840eec83f8dcef7a864884d87aa3c79cb355787ef0fb4e59b8a",
+      "sourceSha256": "f56e2913320056169382453e8d65d70a83ac27b54332b23eaa0e6c0a81440b38",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (10 w) si organizza, turn 2 (9 w); prior fix applied: follow-up now reads «Lei mi ha detto», DE/EN match; può gap is a cue-free choice with impossible foils; chips reorder uniquely; trophy consegna in turn 1; turn 2 proposes a possibility (courier can call), not a decision reserved to the clerk."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 (13 w) si può vedere, turn 2 (9 w) indicare/postale choices with impossible foils; trophy pratica; follow-up leaves approval open («ancora in esame»). Chip «Con questo numero» is a movable instrument adjunct; capitalization keeps the build unambiguous, so only an optional binding is noted."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 (12 w) si riceve, turn 2 (10 w); va gap converted to choice as required earlier; clerk's «Va bene una copia digitale?» is the causal offer the learner accepts, echoing it is natural – no change needed; trophy ricevuta; terms/chunks/gloss faithful."
+        },
+        {
+          "n": 4,
+          "observation": "Turn 1 (11 w) viene fissato l'appuntamento (explicit noun subject, L4 staging); può gap now choice; transfer example viene assegnato il posto; turn 2 asks permission rather than asserting it; trophy intervento."
+        },
+        {
+          "n": 5,
+          "observation": "Reordered line «il guasto alla luce dell'androne che ho segnalato» propagated to pattern, trophy example, recall, chips, foil; form gap resta carries cue restare (la luce) with subject visible, present is the only sensible tense after «si spegne subito o dopo…»; accesa choice foils impossible; trophy guasto."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 (12 w) viene eseguito with noun subject; plural model «I brani vengono eseguiti» added to label/rule/example; turn 2 grants requested consent (role-appropriate); choice foils impossible; trophy controllo."
+        },
+        {
+          "n": 7,
+          "observation": "Turn 1 (10 w) è stato pubblicato l'avviso (L7 staging, masculine agreement explained); turn 2 (8 w) preferisco ricevere; chips/terms/gloss consistent; trophy avviso."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 1 (12 w) è stata inviata la conferma recycles P5 sa dirmi; form gap contiene has infinitive cue with subject «il mio indirizzo» before the blank, unique present form; un/uno foils impossible; trophy conferma."
+        },
+        {
+          "n": 9,
+          "observation": "Turn 1 (15 w) è stata registrata + ma come funziona; interim chip «è stata registrata,» ends with a comma (allowed); turn 2 (9 w) asks rather than decides; «Qui leggo che» plausibly refers to the customer's own record/phone, scene need not depict it – dismissed; trophy assistenza."
+        },
+        {
+          "n": 10,
+          "observation": "Turn 1 (11 w) si segue + è stato registrato male; turn 2 (9 w) corrects the clerk's wrong path; form gap è has cue essere (il civico) with subject before the blank, no e/è choice pair; corretto choice foils impossible; trophy procedura."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Chip «Con questo numero» is a freely movable adjunct; apart from capitalization, «si può vedere con questo numero a che punto è la mia pratica?» is also a correct ordering. Binding it to the verb removes the ambiguity (non-blocking).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/chunks",
+              "old": [
+                {
+                  "targetText": "Con questo numero",
+                  "baseText": {
+                    "de": "Mit dieser Nummer",
+                    "en": "With this number"
+                  }
+                },
+                {
+                  "targetText": "si può vedere",
+                  "baseText": {
+                    "de": "kann man nachsehen",
+                    "en": "can one check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Con questo numero si può",
+                  "baseText": {
+                    "de": "Mit dieser Nummer kann man",
+                    "en": "With this number one can"
+                  }
+                },
+                {
+                  "targetText": "vedere",
+                  "baseText": {
+                    "de": "nachsehen",
+                    "en": "check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "f347f1c6d24b7df87279d55765d9d74e586cd1a89634b9ddf64ab75252889c5d",
+      "sourceSha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (10 w) si organizza, turn 2 (9 w) suggests a call without asserting the shop's decision; follow-up now has explicit Lei so DE/EN 'Sie hatten mir gesagt' matches; both cloze gaps are cue-free choices with impossible foils; chips single-order; trophy consegna in turn 1; scene quotes opening verbatim."
+        },
+        {
+          "n": 2,
+          "observation": "Turn 1 (13 w) si può vedere, turn 2 (9 w) asks about recapito without presuming approval; cloze indicare/postale unique after basta; 'le abbiamo dato' is office-we, not voi; chip 'Con questo numero' is capitalised so only one ordering starts with a capital (not a time phrase)."
+        },
+        {
+          "n": 3,
+          "observation": "Turn 1 (12 w) si riceve, turn 2 (10 w); printer-down follow-up makes the digital copy causal; 'va' is a cue-free choice (vanno/andiamo/vado impossible), so andrebbe is no longer wrongly rejected; copying from the clerk line is a difficulty preference only."
+        },
+        {
+          "n": 4,
+          "observation": "L4 opens viene + participio with explicit subject l'appuntamento; turn 2 (9 w) asks whether the sister may be present rather than deciding it; può/restare both choices with impossible foils; transfer example il posto independent; title does not reveal the presence condition."
+        },
+        {
+          "n": 5,
+          "observation": "'il guasto alla luce dell'androne che ho segnalato' now attaches the site to guasto; form gap resta has cue 'restare (la luce)' with the subject literally before the blank and no competing present surface; accesa agrees with luce; a swapped 'alla luce dell'androne' placement would change meaning, so chips are safe."
+        },
+        {
+          "n": 6,
+          "observation": "Turn 1 (12 w) viene eseguito with subject before the verb; plural vengono eseguiti now modelled in the transfer example and rule; turn 2 (9 w) is the client's own consent, which the client may give; DE/EN of turn 1 are idiomatic (Pumpe überprüft) while chunks keep the literal gloss."
+        },
+        {
+          "n": 7,
+          "observation": "L7 enters è stato + participio with explicit l'avviso; staged tense overrides the outline's 'viene pubblicato'; turn 2 (8 w) accepts the photo on the mobile; mio/ricevere unique choices; chips single-order."
+        },
+        {
+          "n": 8,
+          "observation": "'sa dirmi' recycled from P5 without blanking or trophying dirmi; è stata inviata agrees with la conferma; form gap contiene has cue 'contenere (il mio indirizzo)' with the subject visible; un/uno distinguished by trattino; turn 2 (10 w) corrects the contact detail."
+        },
+        {
+          "n": 9,
+          "observation": "Turn 1 (15 w) reports what the slip/screen says rather than asserting the clerk's decision, then asks how assistenza works; 'non è previsto il ritiro' triggers the Saturday drop-off question (9 w); five chips, interim chip ends with a comma only; chunk EN gloss 'but how does it work,' carries a stray trailing comma."
+        },
+        {
+          "n": 10,
+          "observation": "Quale procedura si segue + è stato registrato male combines recycled si-frame with staged passive; clerk proposes the wrong trasloco route, learner (9 w) precisa il civico 16; form gap è has cue 'essere (il civico)' and no e/è pair in choices; corretto agrees with civico."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Chip «Con questo numero» is a movable instrumental adjunct; capitalisation already disambiguates, but binding it to the verb would make word-order practice stricter (non-blocking, carried from earlier reviews).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/chunks",
+              "old": [
+                {
+                  "targetText": "Con questo numero",
+                  "baseText": {
+                    "de": "Mit dieser Nummer",
+                    "en": "With this number"
+                  }
+                },
+                {
+                  "targetText": "si può vedere",
+                  "baseText": {
+                    "de": "kann man nachsehen",
+                    "en": "can one check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Con questo numero si può",
+                  "baseText": {
+                    "de": "Mit dieser Nummer kann man",
+                    "en": "With this number one can"
+                  }
+                },
+                {
+                  "targetText": "vedere",
+                  "baseText": {
+                    "de": "nachsehen",
+                    "en": "check"
+                  }
+                },
+                {
+                  "targetText": "a che punto è",
+                  "baseText": {
+                    "de": "wie weit ist",
+                    "en": "what stage it is at"
+                  }
+                },
+                {
+                  "targetText": "la mia pratica?",
+                  "baseText": {
+                    "de": "mein Vorgang?",
+                    "en": "my application?"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "EN gloss of chip «ma come funziona» ends with a stray comma not present in the Italian chip or the DE gloss.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks/3/baseText/en",
+              "old": "but how does it work,",
+              "new": "but how does it work"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Term gloss «Paketfahrer» narrows corriere to parcels in a furniture-delivery scene; the follow-up DE already says «Fahrer».",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/terms/3/baseText/de",
+              "old": "Paketfahrer",
+              "new": "Lieferfahrer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "receiptSha256": "5c3b03a223829fdd6ce2501d50937ad34481a23ca193a91cbf56e2b93692901d",
+      "edits": [
+        {
+          "p": 6,
+          "n": 1,
+          "spoken": "Come si organizza la consegna dell'armadio che ho scelto ieri?",
+          "old": [
+            "organizza",
+            "consegna",
+            "armadio"
+          ],
+          "new": [
+            "organizza",
+            "consegna",
+            "scelto"
+          ],
+          "reason": "'armadio' is elided (dell'armadio -> dellarmadio); proposed trio is non-elided, in spoken order, and meaningful."
+        },
+        {
+          "p": 6,
+          "n": 7,
+          "spoken": "Dove è stato pubblicato l'avviso che riguarda la sospensione dell'acqua?",
+          "old": [
+            "pubblicato",
+            "avviso",
+            "sospensione"
+          ],
+          "new": [
+            "pubblicato",
+            "riguarda",
+            "sospensione"
+          ],
+          "reason": "'avviso' is elided (l'avviso -> lavviso) and 'acqua' likewise (dell'acqua); proposed trio uses only non-elided words in spoken order."
+        },
+        {
+          "p": 6,
+          "n": 9,
+          "spoken": "Qui leggo che la richiesta è stata registrata, ma come funziona l'assistenza per questo frullatore?",
+          "old": [
+            "richiesta",
+            "registrata",
+            "assistenza"
+          ],
+          "new": [
+            "richiesta",
+            "registrata",
+            "frullatore"
+          ],
+          "reason": "'assistenza' is elided (l'assistenza -> lassistenza); proposed trio is non-elided, in spoken order, and meaningful."
+        }
+      ]
+    }
+  ]
+}

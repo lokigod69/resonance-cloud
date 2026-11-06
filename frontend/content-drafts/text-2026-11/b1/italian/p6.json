@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Italian",
+  "targetLanguageCode": "it-IT",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Wie ist der Stand?",
+    "en": "Where do things stand?"
+  },
+  "subtitle": {
+    "de": "Fragen Sie nach Abläufen und klären Sie den nächsten Schritt.",
+    "en": "Ask how a process works and agree on the next step."
+  },
+  "anchor": "Forma A. Descrivere procedimenti e stato delle richieste con si impersonale/passivante e cornici passive su oggetti a genere fisso, soltanto secondo le forme autorizzate da Fable. Non dichiarare dal ruolo del cliente un'azione che soltanto l'addetto può decidere.",
+  "lessons": [
+    {
+      "slug": "appuntamento-col-corriere",
+      "title": {
+        "de": "Noch einmal im Möbelhaus",
+        "en": "Back at the furniture shop"
+      },
+      "situation": {
+        "de": "Im Möbelhaus holen Sie den Bestellschein aus Ihrer Tasche.",
+        "en": "At the furniture shop, you take the order slip out of your bag."
+      },
+      "pedagogicalGoal": "Die Lieferung eines Möbelstücks klären und einen Weg durch die verschlossene Haustür finden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha altre domande sull'armadio?",
+          "baseText": {
+            "de": "Haben Sie noch Fragen zu dem Schrank?",
+            "en": "Do you have any other questions about the wardrobe?"
+          }
+        },
+        {
+          "targetText": "Come si organizza la consegna dell'armadio che ho scelto ieri?",
+          "baseText": {
+            "de": "Wie wird die Lieferung des Schranks organisiert, den ich gestern ausgesucht habe?",
+            "en": "How do you arrange delivery of the wardrobe I chose yesterday?"
+          }
+        },
+        {
+          "targetText": "Il corriere passa venerdì mattina, ma Lei mi ha detto che il portone resta chiuso.",
+          "baseText": {
+            "de": "Der Fahrer kommt am Freitagvormittag. Sie hatten mir aber gesagt, dass die Haustür verschlossen bleibt.",
+            "en": "The driver will come on Friday morning, but you told me the building's front door stays locked."
+          }
+        },
+        {
+          "targetText": "Il corriere può chiamarmi quando arriva davanti al portone.",
+          "baseText": {
+            "de": "Der Fahrer kann mich anrufen, wenn er vor der Haustür steht.",
+            "en": "The driver can call me when he gets to the front door."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Come si organizza…?",
+        "rule": {
+          "de": "Mit come si organizza fragen Sie nach dem Ablauf. Die Person, die etwas organisiert, bleibt offen.",
+          "en": "Use come si organizza to ask how something is arranged. You can leave the person arranging it unspecified."
+        },
+        "examples": [
+          {
+            "targetText": "Come si organizza la consegna dell'armadio che ho scelto ieri?",
+            "baseText": {
+              "de": "Wie wird die Lieferung des Schranks organisiert, den ich gestern ausgesucht habe?",
+              "en": "How do you arrange delivery of the wardrobe I chose yesterday?"
+            },
+            "highlight": "Come si organizza la consegna"
+          },
+          {
+            "targetText": "Come si organizza la visita alle serre del giardino botanico?",
+            "baseText": {
+              "de": "Wie wird der Besuch der Gewächshäuser im botanischen Garten organisiert?",
+              "en": "How are visits to the greenhouses at the botanical garden arranged?"
+            },
+            "highlight": "Come si organizza la visita"
+          }
+        ]
+      },
+      "cloze": [
+        "Il corriere ",
+        {
+          "kind": "choice",
+          "answer": "può",
+          "choices": [
+            "possiamo",
+            "puoi",
+            "può",
+            "possono"
+          ]
+        },
+        " chiamarmi quando arriva ",
+        {
+          "kind": "choice",
+          "answer": "davanti",
+          "choices": [
+            "senza",
+            "davanti",
+            "durante",
+            "lungo"
+          ]
+        },
+        " al portone."
+      ],
+      "chunks": [
+        {
+          "targetText": "Come si organizza",
+          "baseText": {
+            "de": "Wie wird organisiert",
+            "en": "How is it arranged"
+          }
+        },
+        {
+          "targetText": "la consegna",
+          "baseText": {
+            "de": "die Lieferung",
+            "en": "the delivery"
+          }
+        },
+        {
+          "targetText": "dell'armadio",
+          "baseText": {
+            "de": "des Schranks",
+            "en": "of the wardrobe"
+          }
+        },
+        {
+          "targetText": "che ho scelto ieri?",
+          "baseText": {
+            "de": "den ich gestern ausgesucht habe?",
+            "en": "that I chose yesterday?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "consegna",
+          "baseText": {
+            "de": "Lieferung",
+            "en": "delivery"
+          }
+        },
+        {
+          "targetText": "armadio",
+          "baseText": {
+            "de": "Kleiderschrank",
+            "en": "wardrobe"
+          }
+        },
+        {
+          "targetText": "ho scelto",
+          "baseText": {
+            "de": "ich habe ausgesucht",
+            "en": "I chose"
+          }
+        },
+        {
+          "targetText": "corriere",
+          "baseText": {
+            "de": "Paketfahrer",
+            "en": "delivery driver"
+          }
+        },
+        {
+          "targetText": "portone",
+          "baseText": {
+            "de": "Haustür des Gebäudes",
+            "en": "building's front door"
+          }
+        },
+        {
+          "targetText": "resta chiuso",
+          "baseText": {
+            "de": "bleibt verschlossen",
+            "en": "stays locked"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Come si organizza la consegna dell'armadio che ho ",
+        "answer": "scelto",
+        "after": " ieri?",
+        "fallbackChoices": [
+          "sceglievo",
+          "scelto",
+          "scelgo",
+          "scegliere"
+        ]
+      },
+      "speakRequired": [
+        "organizza",
+        "consegna",
+        "scelto"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelhaus holen Sie den Bestellschein aus Ihrer Tasche. „Ha altre domande sull'armadio?“",
+        "en": "At the furniture shop, you take the order slip out of your bag. “Ha altre domande sull'armadio?”"
+      },
+      "trophyWord": {
+        "word": "consegna",
+        "meaning": {
+          "de": "Lieferung",
+          "en": "delivery"
+        },
+        "example": "Come si organizza la consegna dell'armadio che ho scelto ieri?",
+        "whyThisWord": {
+          "de": "Consegna ist der Transport bis zum Ziel. So können Sie im Möbelhaus nach der Anlieferung fragen.",
+          "en": "Consegna names delivery to the destination. It lets you ask the furniture shop about getting a purchase home."
+        }
+      },
+      "distractors": [
+        "Come si annulla",
+        "della scrivania"
+      ],
+      "placeholderCaption": {
+        "de": "Im Möbelhaus holen Sie den Bestellschein aus Ihrer Tasche.",
+        "en": "At the furniture shop, you take the order slip out of your bag."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "At the furniture shop, you take the order slip out of your bag."
+    },
+    {
+      "slug": "numero-della-domanda",
+      "title": {
+        "de": "Am Gemeindeschalter",
+        "en": "At the municipal counter"
+      },
+      "situation": {
+        "de": "Am Schalter geben Sie der Mitarbeiterin einen Beleg von Ihrem letzten Besuch.",
+        "en": "At the counter, you hand the clerk a slip from your last visit."
+      },
+      "pedagogicalGoal": "Den Stand eines Antrags erfragen und den fehlenden Nachweis bestimmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha conservato il numero che le abbiamo dato?",
+          "baseText": {
+            "de": "Haben Sie die Nummer aufbewahrt, die wir Ihnen gegeben haben?",
+            "en": "Did you keep the number we gave you?"
+          }
+        },
+        {
+          "targetText": "Con questo numero si può vedere a che punto è la mia pratica?",
+          "baseText": {
+            "de": "Kann man mit dieser Nummer nachsehen, wie weit mein Vorgang ist?",
+            "en": "Can you use this number to see how far my application has got?"
+          }
+        },
+        {
+          "targetText": "La domanda è ancora in esame. Manca un recapito per la risposta.",
+          "baseText": {
+            "de": "Der Antrag wird noch geprüft. Für die Antwort fehlt eine Kontaktadresse.",
+            "en": "The application is still under review. We need contact details for the reply."
+          }
+        },
+        {
+          "targetText": "Per la risposta basta indicare il mio indirizzo postale?",
+          "baseText": {
+            "de": "Reicht es für die Antwort, meine Postanschrift anzugeben?",
+            "en": "Is giving my postal address enough for the reply?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si può + infinito",
+        "rule": {
+          "de": "Si può mit Infinitiv fragt, was grundsätzlich möglich ist. Nach può bleibt das nächste Verb im Infinitiv.",
+          "en": "Use si può with an infinitive to ask what is possible in general. The verb after può stays in the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Con questo numero si può vedere a che punto è la mia pratica?",
+            "baseText": {
+              "de": "Kann man mit dieser Nummer nachsehen, wie weit mein Vorgang ist?",
+              "en": "Can you use this number to see how far my application has got?"
+            },
+            "highlight": "si può vedere"
+          },
+          {
+            "targetText": "Con questo biglietto si può entrare anche nella torre?",
+            "baseText": {
+              "de": "Kann man mit dieser Eintrittskarte auch den Turm besichtigen?",
+              "en": "Can you enter the tower with this ticket too?"
+            },
+            "highlight": "si può entrare"
+          }
+        ]
+      },
+      "cloze": [
+        "Per la risposta basta ",
+        {
+          "kind": "choice",
+          "answer": "indicare",
+          "choices": [
+            "indicano",
+            "indicare",
+            "indicando",
+            "indicato"
+          ]
+        },
+        " il mio indirizzo ",
+        {
+          "kind": "choice",
+          "answer": "postale",
+          "choices": [
+            "postale",
+            "postali",
+            "postalmente",
+            "postini"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Con questo numero",
+          "baseText": {
+            "de": "Mit dieser Nummer",
+            "en": "With this number"
+          }
+        },
+        {
+          "targetText": "si può vedere",
+          "baseText": {
+            "de": "kann man nachsehen",
+            "en": "can one check"
+          }
+        },
+        {
+          "targetText": "a che punto è",
+          "baseText": {
+            "de": "wie weit ist",
+            "en": "what stage it is at"
+          }
+        },
+        {
+          "targetText": "la mia pratica?",
+          "baseText": {
+            "de": "mein Vorgang?",
+            "en": "my application?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pratica",
+          "baseText": {
+            "de": "Verwaltungsvorgang",
+            "en": "application file"
+          }
+        },
+        {
+          "targetText": "a che punto",
+          "baseText": {
+            "de": "wie weit",
+            "en": "at what stage"
+          }
+        },
+        {
+          "targetText": "in esame",
+          "baseText": {
+            "de": "in Prüfung",
+            "en": "under review"
+          }
+        },
+        {
+          "targetText": "recapito",
+          "baseText": {
+            "de": "Kontaktadresse",
+            "en": "contact details"
+          }
+        },
+        {
+          "targetText": "risposta",
+          "baseText": {
+            "de": "Antwort",
+            "en": "reply"
+          }
+        },
+        {
+          "targetText": "indirizzo postale",
+          "baseText": {
+            "de": "Postanschrift",
+            "en": "postal address"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Con questo numero si può ",
+        "answer": "vedere",
+        "after": " a che punto è la mia pratica?",
+        "fallbackChoices": [
+          "vedere",
+          "vedo",
+          "vedono",
+          "vediamo"
+        ]
+      },
+      "speakRequired": [
+        "numero",
+        "vedere",
+        "pratica"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter geben Sie der Mitarbeiterin einen Beleg von Ihrem letzten Besuch. „Ha conservato il numero che le abbiamo dato?“",
+        "en": "At the counter, you hand the clerk a slip from your last visit. “Ha conservato il numero che le abbiamo dato?”"
+      },
+      "trophyWord": {
+        "word": "pratica",
+        "meaning": {
+          "de": "Verwaltungsvorgang",
+          "en": "application file"
+        },
+        "example": "Con questo numero si può vedere a che punto è la mia pratica?",
+        "whyThisWord": {
+          "de": "Pratica bezeichnet den Vorgang, dessen Bearbeitungsstand Sie am Schalter erfragen.",
+          "en": "Pratica is the file whose progress you are asking the clerk about."
+        }
+      },
+      "distractors": [
+        "si deve cancellare",
+        "la nostra tessera?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Schalter geben Sie der Mitarbeiterin einen Beleg von Ihrem letzten Besuch.",
+        "en": "At the counter, you hand the clerk a slip from your last visit."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "At the counter, you hand the clerk a slip from your last visit."
+    },
+    {
+      "slug": "copia-per-posta",
+      "title": {
+        "de": "Vor dem Heimweg",
+        "en": "Before heading home"
+      },
+      "situation": {
+        "de": "Am Ende Ihres Termins legt der Mitarbeiter die Unterlagen zur Seite.",
+        "en": "At the end of your appointment, the clerk sets the papers aside."
+      },
+      "pedagogicalGoal": "Nach dem Zeitpunkt der Ausstellung fragen und eine Alternative zum Ausdruck vereinbaren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha ancora bisogno di qualcosa prima di andare?",
+          "baseText": {
+            "de": "Brauchen Sie noch etwas, bevor Sie gehen?",
+            "en": "Do you need anything else before you go?"
+          }
+        },
+        {
+          "targetText": "Quando si riceve la ricevuta per la domanda che ho presentato oggi?",
+          "baseText": {
+            "de": "Wann bekommt man den Beleg für den Antrag, den ich heute eingereicht habe?",
+            "en": "When do you get the receipt for the application I submitted today?"
+          }
+        },
+        {
+          "targetText": "Di solito subito, ma la stampante è ferma. Va bene una copia digitale?",
+          "baseText": {
+            "de": "Normalerweise sofort, aber der Drucker funktioniert gerade nicht. Wäre eine digitale Kopie in Ordnung?",
+            "en": "Usually straight away, but the printer is down. Would a digital copy be all right?"
+          }
+        },
+        {
+          "targetText": "Sì, una copia digitale va bene per il mio archivio.",
+          "baseText": {
+            "de": "Ja, eine digitale Kopie reicht für meine Unterlagen.",
+            "en": "Yes, a digital copy will do for my records."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quando si riceve…?",
+        "rule": {
+          "de": "Mit quando und si riceve fragen Sie, wann jemand etwas normalerweise bekommt. Was man erhält, folgt hier auf das Verb.",
+          "en": "Use quando and si riceve to ask when people normally receive something. Here the item received follows the verb."
+        },
+        "examples": [
+          {
+            "targetText": "Quando si riceve la ricevuta per la domanda che ho presentato oggi?",
+            "baseText": {
+              "de": "Wann bekommt man den Beleg für den Antrag, den ich heute eingereicht habe?",
+              "en": "When do you get the receipt for the application I submitted today?"
+            },
+            "highlight": "Quando si riceve la ricevuta"
+          },
+          {
+            "targetText": "Quando si riceve la divisa per il corso di cucina?",
+            "baseText": {
+              "de": "Wann bekommt man die Kochkleidung für den Kochkurs?",
+              "en": "When do you get the uniform for the cooking course?"
+            },
+            "highlight": "Quando si riceve la divisa"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, una copia ",
+        {
+          "kind": "choice",
+          "answer": "digitale",
+          "choices": [
+            "digitale",
+            "digitali",
+            "digitalmente",
+            "digitalizzare"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "va",
+          "choices": [
+            "vanno",
+            "andiamo",
+            "vado",
+            "va"
+          ]
+        },
+        " bene per il mio archivio."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quando si riceve",
+          "baseText": {
+            "de": "Wann bekommt man",
+            "en": "When does one receive"
+          }
+        },
+        {
+          "targetText": "la ricevuta",
+          "baseText": {
+            "de": "den Beleg",
+            "en": "the receipt"
+          }
+        },
+        {
+          "targetText": "per la domanda",
+          "baseText": {
+            "de": "für den Antrag",
+            "en": "for the application"
+          }
+        },
+        {
+          "targetText": "che ho presentato oggi?",
+          "baseText": {
+            "de": "den ich heute eingereicht habe?",
+            "en": "I submitted today?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ricevuta",
+          "baseText": {
+            "de": "Beleg",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "domanda",
+          "baseText": {
+            "de": "Antrag",
+            "en": "application"
+          }
+        },
+        {
+          "targetText": "presentare",
+          "baseText": {
+            "de": "einreichen",
+            "en": "to submit"
+          }
+        },
+        {
+          "targetText": "stampante",
+          "baseText": {
+            "de": "Drucker",
+            "en": "printer"
+          }
+        },
+        {
+          "targetText": "copia digitale",
+          "baseText": {
+            "de": "digitale Kopie",
+            "en": "digital copy"
+          }
+        },
+        {
+          "targetText": "archivio",
+          "baseText": {
+            "de": "Archiv",
+            "en": "archive"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quando si riceve la ricevuta per la domanda che ho ",
+        "answer": "presentato",
+        "after": " oggi?",
+        "fallbackChoices": [
+          "presento",
+          "presentare",
+          "presentavo",
+          "presentato"
+        ]
+      },
+      "speakRequired": [
+        "riceve",
+        "ricevuta",
+        "domanda"
+      ],
+      "sceneCaption": {
+        "de": "Am Ende Ihres Termins legt der Mitarbeiter die Unterlagen zur Seite. „Ha ancora bisogno di qualcosa prima di andare?“",
+        "en": "At the end of your appointment, the clerk sets the papers aside. “Ha ancora bisogno di qualcosa prima di andare?”"
+      },
+      "trophyWord": {
+        "word": "ricevuta",
+        "meaning": {
+          "de": "Beleg",
+          "en": "receipt"
+        },
+        "example": "Quando si riceve la ricevuta per la domanda che ho presentato oggi?",
+        "whyThisWord": {
+          "de": "Ricevuta benennt den Beleg, mit dem Sie die Abgabe Ihres Antrags nachweisen können.",
+          "en": "Ricevuta names the receipt you can use as proof that you submitted your application."
+        }
+      },
+      "distractors": [
+        "Quando si restituisce",
+        "per il corso"
+      ],
+      "placeholderCaption": {
+        "de": "Am Ende Ihres Termins legt der Mitarbeiter die Unterlagen zur Seite.",
+        "en": "At the end of your appointment, the clerk sets the papers aside."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "At the end of your appointment, the clerk sets the papers aside."
+    },
+    {
+      "slug": "visita-del-tecnico",
+      "title": {
+        "de": "Ein Anruf aus dem Treppenhaus",
+        "en": "A call from the stairwell"
+      },
+      "situation": {
+        "de": "Im Treppenhaus telefonieren Sie mit einer Technikerin.",
+        "en": "In the stairwell, you are on the phone with a technician."
+      },
+      "pedagogicalGoal": "Eine Reparatur der Gegensprechanlage anfragen und die nötige Anwesenheit klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Mi diceva che dal suo appartamento non si sente chi suona?",
+          "baseText": {
+            "de": "Sie sagten, dass Sie in Ihrer Wohnung nicht hören, wer klingelt?",
+            "en": "You said you can't hear who's ringing from inside your flat?"
+          }
+        },
+        {
+          "targetText": "Come viene fissato l'appuntamento per un intervento sul citofono di casa?",
+          "baseText": {
+            "de": "Wie wird der Termin für die Reparatur der Gegensprechanlage zu Hause vereinbart?",
+            "en": "How is an appointment arranged for work on my home intercom?"
+          }
+        },
+        {
+          "targetText": "Scelga pure un giorno. Per la prova ci occorre qualcuno dentro l'appartamento.",
+          "baseText": {
+            "de": "Wählen Sie gern einen Tag. Für den Test brauchen wir jemanden in der Wohnung.",
+            "en": "Please choose a day. For the test we need someone inside the flat."
+          }
+        },
+        {
+          "targetText": "Mia sorella può restare in casa durante la prova?",
+          "baseText": {
+            "de": "Kann meine Schwester während des Tests in der Wohnung bleiben?",
+            "en": "Can my sister stay in the flat during the test?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Viene + participio",
+        "rule": {
+          "de": "Viene mit Partizip beschreibt einen Arbeitsschritt. In der Frage folgen l'appuntamento und il posto als Subjekte erst nach dem Verb.",
+          "en": "Use viene with a past participle for a process. In these questions, the subjects l'appuntamento and il posto come after the verb."
+        },
+        "examples": [
+          {
+            "targetText": "Come viene fissato l'appuntamento per un intervento sul citofono di casa?",
+            "baseText": {
+              "de": "Wie wird der Termin für die Reparatur der Gegensprechanlage zu Hause vereinbart?",
+              "en": "How is an appointment arranged for work on my home intercom?"
+            },
+            "highlight": "viene fissato l'appuntamento"
+          },
+          {
+            "targetText": "Come viene assegnato il posto a chi partecipa al torneo?",
+            "baseText": {
+              "de": "Wie wird den Teilnehmenden am Turnier ihr Platz zugeteilt?",
+              "en": "How is a place assigned to someone taking part in the tournament?"
+            },
+            "highlight": "viene assegnato il posto"
+          }
+        ]
+      },
+      "cloze": [
+        "Mia sorella ",
+        {
+          "kind": "choice",
+          "answer": "può",
+          "choices": [
+            "possono",
+            "possiamo",
+            "posso",
+            "può"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "restare",
+          "choices": [
+            "restando",
+            "restava",
+            "restare",
+            "restano"
+          ]
+        },
+        " in casa durante la prova?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Come viene fissato",
+          "baseText": {
+            "de": "Wie wird vereinbart",
+            "en": "How is it arranged"
+          }
+        },
+        {
+          "targetText": "l'appuntamento",
+          "baseText": {
+            "de": "der Termin",
+            "en": "the appointment"
+          }
+        },
+        {
+          "targetText": "per un intervento",
+          "baseText": {
+            "de": "für einen Einsatz",
+            "en": "for a service call"
+          }
+        },
+        {
+          "targetText": "sul citofono di casa?",
+          "baseText": {
+            "de": "an der Gegensprechanlage zu Hause?",
+            "en": "for my home intercom?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "intervento",
+          "baseText": {
+            "de": "technischer Einsatz",
+            "en": "service call"
+          }
+        },
+        {
+          "targetText": "citofono",
+          "baseText": {
+            "de": "Gegensprechanlage",
+            "en": "intercom"
+          }
+        },
+        {
+          "targetText": "fissare un appuntamento",
+          "baseText": {
+            "de": "einen Termin vereinbaren",
+            "en": "to arrange an appointment"
+          }
+        },
+        {
+          "targetText": "suonare",
+          "baseText": {
+            "de": "klingeln",
+            "en": "to ring"
+          }
+        },
+        {
+          "targetText": "in casa",
+          "baseText": {
+            "de": "in der Wohnung",
+            "en": "at home"
+          }
+        },
+        {
+          "targetText": "la prova",
+          "baseText": {
+            "de": "der Test",
+            "en": "the test"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Come viene ",
+        "answer": "fissato",
+        "after": " l'appuntamento per un intervento sul citofono di casa?",
+        "fallbackChoices": [
+          "fissati",
+          "fissate",
+          "fissato",
+          "fissata"
+        ]
+      },
+      "speakRequired": [
+        "fissato",
+        "intervento",
+        "citofono"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus telefonieren Sie mit einer Technikerin. „Mi diceva che dal suo appartamento non si sente chi suona?“",
+        "en": "In the stairwell, you are on the phone with a technician. “Mi diceva che dal suo appartamento non si sente chi suona?”"
+      },
+      "trophyWord": {
+        "word": "intervento",
+        "meaning": {
+          "de": "technischer Einsatz",
+          "en": "service call"
+        },
+        "example": "Come viene fissato l'appuntamento per un intervento sul citofono di casa?",
+        "whyThisWord": {
+          "de": "Un intervento kann den Einsatz einer Fachkraft bezeichnen. Mit sul citofono grenzen Sie die Arbeit ein.",
+          "en": "Un intervento can mean a service call. Adding sul citofono specifies what needs attention."
+        }
+      },
+      "distractors": [
+        "Come viene annullato",
+        "sul cancello del cortile?"
+      ],
+      "placeholderCaption": {
+        "de": "Im Treppenhaus telefonieren Sie mit einer Technikerin.",
+        "en": "In the stairwell, you are on the phone with a technician."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "In the stairwell, you are on the phone with a technician."
+    },
+    {
+      "slug": "luce-nell-androne",
+      "title": {
+        "de": "Das Licht im Eingangsbereich",
+        "en": "The light in the entrance hall"
+      },
+      "situation": {
+        "de": "Sie treffen die Hausverwaltung vor dem Eingang Ihres Hauses.",
+        "en": "You meet the building manager outside the entrance to your building."
+      },
+      "pedagogicalGoal": "Nach der Prüfung einer Störung fragen und eine konkrete Beobachtung weitergeben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ho letto il suo messaggio sulla luce dell'androne.",
+          "baseText": {
+            "de": "Ich habe Ihre Nachricht zum Licht im Eingangsbereich gelesen.",
+            "en": "I read your message about the light in the entrance hall."
+          }
+        },
+        {
+          "targetText": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?",
+          "baseText": {
+            "de": "Wie wird die Störung geprüft, die ich an der Beleuchtung im Eingangsbereich gemeldet habe?",
+            "en": "How do you check the fault I reported with the entrance hall light?"
+          }
+        },
+        {
+          "targetText": "Prima mandiamo un elettricista. La luce si spegne subito o dopo qualche secondo?",
+          "baseText": {
+            "de": "Zuerst schicken wir einen Elektriker. Geht das Licht sofort aus oder erst nach ein paar Sekunden?",
+            "en": "First we send an electrician. Does the light go out immediately or after a few seconds?"
+          }
+        },
+        {
+          "targetText": "La luce resta accesa appena tre secondi dopo ogni pressione.",
+          "baseText": {
+            "de": "Das Licht bleibt nach jedem Drücken nur drei Sekunden an.",
+            "en": "The light stays on for just three seconds each time I press the switch."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Come viene verificato…?",
+        "rule": {
+          "de": "Mit come viene verificato fragen Sie, auf welche Weise etwas geprüft wird. Verificato passt zu den männlichen Subjekten guasto und numero.",
+          "en": "Ask come viene verificato to find out how a check is carried out. Verificato agrees with the masculine subjects guasto and numero."
+        },
+        "examples": [
+          {
+            "targetText": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?",
+            "baseText": {
+              "de": "Wie wird die Störung geprüft, die ich an der Beleuchtung im Eingangsbereich gemeldet habe?",
+              "en": "How do you check the fault I reported with the entrance hall light?"
+            },
+            "highlight": "viene verificato il guasto"
+          },
+          {
+            "targetText": "Come viene verificato il numero dei partecipanti alla gara?",
+            "baseText": {
+              "de": "Wie wird die Anzahl der Teilnehmenden am Wettkampf überprüft?",
+              "en": "How is the number of competitors in the race checked?"
+            },
+            "highlight": "viene verificato il numero"
+          }
+        ]
+      },
+      "cloze": [
+        "La luce ",
+        {
+          "kind": "form",
+          "answer": "resta",
+          "choices": [
+            "restiamo",
+            "resto",
+            "resta",
+            "restano"
+          ],
+          "cue": "restare (la luce)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "accesa",
+          "choices": [
+            "accese",
+            "accesa",
+            "acceso",
+            "accesi"
+          ]
+        },
+        " appena tre secondi dopo ogni pressione."
+      ],
+      "chunks": [
+        {
+          "targetText": "Come viene verificato",
+          "baseText": {
+            "de": "Wie wird geprüft",
+            "en": "How is it checked"
+          }
+        },
+        {
+          "targetText": "il guasto",
+          "baseText": {
+            "de": "die Störung",
+            "en": "the fault"
+          }
+        },
+        {
+          "targetText": "alla luce dell'androne",
+          "baseText": {
+            "de": "an der Beleuchtung im Eingangsbereich",
+            "en": "with the entrance hall light"
+          }
+        },
+        {
+          "targetText": "che ho segnalato?",
+          "baseText": {
+            "de": "die ich gemeldet habe?",
+            "en": "that I reported?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "guasto",
+          "baseText": {
+            "de": "Defekt",
+            "en": "fault"
+          }
+        },
+        {
+          "targetText": "segnalare",
+          "baseText": {
+            "de": "melden",
+            "en": "to report"
+          }
+        },
+        {
+          "targetText": "androne",
+          "baseText": {
+            "de": "Eingangsbereich",
+            "en": "entrance hall"
+          }
+        },
+        {
+          "targetText": "elettricista",
+          "baseText": {
+            "de": "Elektrofachkraft",
+            "en": "electrician"
+          }
+        },
+        {
+          "targetText": "spegnersi",
+          "baseText": {
+            "de": "ausgehen",
+            "en": "to go out"
+          }
+        },
+        {
+          "targetText": "restare accesa",
+          "baseText": {
+            "de": "anbleiben",
+            "en": "to stay lit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Come viene ",
+        "answer": "verificato",
+        "after": " il guasto alla luce dell'androne che ho segnalato?",
+        "fallbackChoices": [
+          "verificate",
+          "verificato",
+          "verificata",
+          "verificati"
+        ]
+      },
+      "speakRequired": [
+        "verificato",
+        "guasto",
+        "luce"
+      ],
+      "sceneCaption": {
+        "de": "Sie treffen die Hausverwaltung vor dem Eingang Ihres Hauses. „Ho letto il suo messaggio sulla luce dell'androne.“",
+        "en": "You meet the building manager outside the entrance to your building. “Ho letto il suo messaggio sulla luce dell'androne.”"
+      },
+      "trophyWord": {
+        "word": "guasto",
+        "meaning": {
+          "de": "Defekt",
+          "en": "fault"
+        },
+        "example": "Come viene verificato il guasto alla luce dell'androne che ho segnalato?",
+        "whyThisWord": {
+          "de": "Guasto bezeichnet einen technischen Defekt. Im Gespräch können Sie anschließend genauer beschreiben, was passiert.",
+          "en": "Guasto names a technical fault. You can then describe exactly what the equipment does."
+        }
+      },
+      "distractors": [
+        "Come viene registrato",
+        "alla porta del garage"
+      ],
+      "placeholderCaption": {
+        "de": "Sie treffen die Hausverwaltung vor dem Eingang Ihres Hauses.",
+        "en": "You meet the building manager outside the entrance to your building."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "You meet the building manager outside the entrance to your building."
+    },
+    {
+      "slug": "macchina-in-officina",
+      "title": {
+        "de": "An der Werkbank",
+        "en": "At the workbench"
+      },
+      "situation": {
+        "de": "In der Werkstatt liegt Ihre Kaffeemaschine auf der Werkbank.",
+        "en": "Your coffee machine is on the workbench at the repair shop."
+      },
+      "pedagogicalGoal": "Den vorgesehenen Gerätecheck klären und auf eine zusätzliche Prüfung reagieren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha portato anche il foglio della manutenzione?",
+          "baseText": {
+            "de": "Haben Sie auch den Wartungsbogen mitgebracht?",
+            "en": "Did you bring the maintenance sheet too?"
+          }
+        },
+        {
+          "targetText": "Il controllo della pompa viene eseguito durante la manutenzione ordinaria della macchina?",
+          "baseText": {
+            "de": "Wird die Pumpe bei der regulären Wartung der Maschine überprüft?",
+            "en": "Is the pump checked during routine maintenance of the machine?"
+          }
+        },
+        {
+          "targetText": "Sì, ma per la perdita devo verificare anche il serbatoio. Mi dà il suo consenso?",
+          "baseText": {
+            "de": "Ja, aber wegen des Lecks muss ich auch den Behälter prüfen. Sind Sie damit einverstanden?",
+            "en": "Yes, but because of the leak I need to check the tank too. Do I have your permission?"
+          }
+        },
+        {
+          "targetText": "Va bene, può controllare anche il serbatoio della macchina.",
+          "baseText": {
+            "de": "In Ordnung, Sie können auch den Behälter der Maschine prüfen.",
+            "en": "That's fine. You can check the machine's tank too."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Viene eseguito / vengono eseguiti",
+        "rule": {
+          "de": "Mit viene eseguito beschreiben Sie, was durchgeführt oder aufgeführt wird. Bei einem Subjekt im Plural stehen vengono und das Partizip im Plural: i brani vengono eseguiti.",
+          "en": "Use viene eseguito to describe what is carried out or performed. With a plural subject both parts go plural: i brani vengono eseguiti."
+        },
+        "examples": [
+          {
+            "targetText": "Il controllo della pompa viene eseguito durante la manutenzione ordinaria della macchina?",
+            "baseText": {
+              "de": "Wird die Pumpe bei der regulären Wartung der Maschine überprüft?",
+              "en": "Is the pump checked during routine maintenance of the machine?"
+            },
+            "highlight": "Il controllo della pompa viene eseguito"
+          },
+          {
+            "targetText": "I brani vengono eseguiti dal coro alla fine del concerto.",
+            "baseText": {
+              "de": "Die Stücke werden am Ende des Konzerts vom Chor vorgetragen.",
+              "en": "The pieces are performed by the choir at the end of the concert."
+            },
+            "highlight": "I brani vengono eseguiti"
+          }
+        ]
+      },
+      "cloze": [
+        "Va bene, può ",
+        {
+          "kind": "choice",
+          "answer": "controllare",
+          "choices": [
+            "controllato",
+            "controllare",
+            "controllano",
+            "controllando"
+          ]
+        },
+        " anche ",
+        {
+          "kind": "choice",
+          "answer": "il",
+          "choices": [
+            "il",
+            "lo",
+            "gli",
+            "le"
+          ]
+        },
+        " serbatoio della macchina."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il controllo",
+          "baseText": {
+            "de": "Die Überprüfung",
+            "en": "The check"
+          }
+        },
+        {
+          "targetText": "della pompa",
+          "baseText": {
+            "de": "der Pumpe",
+            "en": "of the pump"
+          }
+        },
+        {
+          "targetText": "viene eseguito",
+          "baseText": {
+            "de": "wird durchgeführt",
+            "en": "is carried out"
+          }
+        },
+        {
+          "targetText": "durante la manutenzione ordinaria della macchina?",
+          "baseText": {
+            "de": "bei der regulären Wartung der Maschine?",
+            "en": "during routine maintenance of the machine?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "controllo",
+          "baseText": {
+            "de": "Überprüfung",
+            "en": "check"
+          }
+        },
+        {
+          "targetText": "pompa",
+          "baseText": {
+            "de": "Pumpe",
+            "en": "pump"
+          }
+        },
+        {
+          "targetText": "manutenzione",
+          "baseText": {
+            "de": "Wartung",
+            "en": "maintenance"
+          }
+        },
+        {
+          "targetText": "perdita",
+          "baseText": {
+            "de": "Leck",
+            "en": "leak"
+          }
+        },
+        {
+          "targetText": "serbatoio",
+          "baseText": {
+            "de": "Behälter",
+            "en": "tank"
+          }
+        },
+        {
+          "targetText": "consenso",
+          "baseText": {
+            "de": "Einverständnis",
+            "en": "consent"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il controllo della pompa viene ",
+        "answer": "eseguito",
+        "after": " durante la manutenzione ordinaria della macchina?",
+        "fallbackChoices": [
+          "eseguito",
+          "eseguita",
+          "eseguiti",
+          "eseguite"
+        ]
+      },
+      "speakRequired": [
+        "controllo",
+        "pompa",
+        "manutenzione"
+      ],
+      "sceneCaption": {
+        "de": "In der Werkstatt liegt Ihre Kaffeemaschine auf der Werkbank. „Ha portato anche il foglio della manutenzione?“",
+        "en": "Your coffee machine is on the workbench at the repair shop. “Ha portato anche il foglio della manutenzione?”"
+      },
+      "trophyWord": {
+        "word": "controllo",
+        "meaning": {
+          "de": "Überprüfung",
+          "en": "check"
+        },
+        "example": "Il controllo della pompa viene eseguito durante la manutenzione ordinaria della macchina?",
+        "whyThisWord": {
+          "de": "Controllo benennt die Überprüfung eines bestimmten Geräteteils. Della pompa sagt, um welches Teil es geht.",
+          "en": "Controllo means a check of a particular part of a device. Della pompa tells you which part."
+        }
+      },
+      "distractors": [
+        "viene rimandato",
+        "durante il trasporto della macchina?"
+      ],
+      "placeholderCaption": {
+        "de": "In der Werkstatt liegt Ihre Kaffeemaschine auf der Werkbank.",
+        "en": "Your coffee machine is on the workbench at the repair shop."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "Your coffee machine is on the workbench at the repair shop."
+    },
+    {
+      "slug": "acqua-nel-palazzo",
+      "title": {
+        "de": "Wasser im Haus",
+        "en": "Water in the building"
+      },
+      "situation": {
+        "de": "Sie sprechen im Hausflur mit dem Hausverwalter über die Arbeiten an den Leitungen.",
+        "en": "You speak to the manager in the hallway about work on the building's pipes."
+      },
+      "pedagogicalGoal": "Nach dem Aushang zur Wassersperre fragen und einen zweiten Informationsweg vereinbaren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha sentito che domani mattina chiudono l'acqua?",
+          "baseText": {
+            "de": "Haben Sie gehört, dass morgen früh das Wasser abgestellt wird?",
+            "en": "Did you hear that the water will be turned off tomorrow morning?"
+          }
+        },
+        {
+          "targetText": "Dove è stato pubblicato l'avviso che riguarda la sospensione dell'acqua?",
+          "baseText": {
+            "de": "Wo wurde der Hinweis zur Unterbrechung der Wasserversorgung veröffentlicht?",
+            "en": "Where was the notice about the water shut-off posted?"
+          }
+        },
+        {
+          "targetText": "Nell'atrio del palazzo. Se preferisce, posso mandarle una foto sul telefono.",
+          "baseText": {
+            "de": "In der Eingangshalle. Wenn Sie möchten, kann ich Ihnen ein Foto aufs Handy schicken.",
+            "en": "In the lobby. If you prefer, I can send a photo to your phone."
+          }
+        },
+        {
+          "targetText": "Sì, preferisco ricevere la foto sul mio cellulare.",
+          "baseText": {
+            "de": "Ja, ich würde das Foto lieber auf meinem Handy erhalten.",
+            "en": "Yes, I'd prefer to receive the photo on my mobile."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "È stato + participio",
+        "rule": {
+          "de": "Mit è stato und dem Partizip fragen Sie nach einem abgeschlossenen Vorgang. Stato und pubblicato passen zum männlichen Singular avviso.",
+          "en": "Use è stato with a past participle to ask about a completed event. Stato and pubblicato agree with the masculine singular avviso."
+        },
+        "examples": [
+          {
+            "targetText": "Dove è stato pubblicato l'avviso che riguarda la sospensione dell'acqua?",
+            "baseText": {
+              "de": "Wo wurde der Hinweis zur Unterbrechung der Wasserversorgung veröffentlicht?",
+              "en": "Where was the notice about the water shut-off posted?"
+            },
+            "highlight": "è stato pubblicato l'avviso"
+          },
+          {
+            "targetText": "Dove è stato proiettato il film di apertura del festival?",
+            "baseText": {
+              "de": "Wo wurde der Eröffnungsfilm des Festivals gezeigt?",
+              "en": "Where was the festival's opening film screened?"
+            },
+            "highlight": "è stato proiettato il film"
+          }
+        ]
+      },
+      "cloze": [
+        "Sì, preferisco ",
+        {
+          "kind": "choice",
+          "answer": "ricevere",
+          "choices": [
+            "ricevere",
+            "ricevo",
+            "ricevono",
+            "ricevuto"
+          ]
+        },
+        " la foto sul ",
+        {
+          "kind": "choice",
+          "answer": "mio",
+          "choices": [
+            "mia",
+            "mie",
+            "miei",
+            "mio"
+          ]
+        },
+        " cellulare."
+      ],
+      "chunks": [
+        {
+          "targetText": "Dove è stato pubblicato",
+          "baseText": {
+            "de": "Wo wurde veröffentlicht",
+            "en": "Where was it posted"
+          }
+        },
+        {
+          "targetText": "l'avviso",
+          "baseText": {
+            "de": "der Hinweis",
+            "en": "the notice"
+          }
+        },
+        {
+          "targetText": "che riguarda",
+          "baseText": {
+            "de": "der sich bezieht auf",
+            "en": "that concerns"
+          }
+        },
+        {
+          "targetText": "la sospensione dell'acqua?",
+          "baseText": {
+            "de": "die Unterbrechung der Wasserversorgung?",
+            "en": "the water shut-off?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "avviso",
+          "baseText": {
+            "de": "Hinweis",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "pubblicare",
+          "baseText": {
+            "de": "veröffentlichen",
+            "en": "to publish"
+          }
+        },
+        {
+          "targetText": "sospensione",
+          "baseText": {
+            "de": "Unterbrechung",
+            "en": "interruption"
+          }
+        },
+        {
+          "targetText": "atrio",
+          "baseText": {
+            "de": "Eingangshalle",
+            "en": "lobby"
+          }
+        },
+        {
+          "targetText": "foto",
+          "baseText": {
+            "de": "Foto",
+            "en": "photo"
+          }
+        },
+        {
+          "targetText": "cellulare",
+          "baseText": {
+            "de": "Handy",
+            "en": "mobile phone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dove è stato ",
+        "answer": "pubblicato",
+        "after": " l'avviso che riguarda la sospensione dell'acqua?",
+        "fallbackChoices": [
+          "pubblicata",
+          "pubblicati",
+          "pubblicate",
+          "pubblicato"
+        ]
+      },
+      "speakRequired": [
+        "pubblicato",
+        "riguarda",
+        "sospensione"
+      ],
+      "sceneCaption": {
+        "de": "Sie sprechen im Hausflur mit dem Hausverwalter über die Arbeiten an den Leitungen. „Ha sentito che domani mattina chiudono l'acqua?“",
+        "en": "You speak to the manager in the hallway about work on the building's pipes. “Ha sentito che domani mattina chiudono l'acqua?”"
+      },
+      "trophyWord": {
+        "word": "avviso",
+        "meaning": {
+          "de": "Hinweis",
+          "en": "notice"
+        },
+        "example": "Dove è stato pubblicato l'avviso che riguarda la sospensione dell'acqua?",
+        "whyThisWord": {
+          "de": "Avviso ist der öffentlich mitgeteilte Hinweis. Sie können nach seinem Wortlaut, seinem Ort oder einer Kopie fragen.",
+          "en": "Avviso is a public notice. You can ask about its wording, its location or a copy."
+        }
+      },
+      "distractors": [
+        "Dove è stato stampato",
+        "la chiusura del ponte?"
+      ],
+      "placeholderCaption": {
+        "de": "Sie sprechen im Hausflur mit dem Hausverwalter über die Arbeiten an den Leitungen.",
+        "en": "You speak to the manager in the hallway about work on the building's pipes."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "You speak to the manager in the hallway about work on the building's pipes."
+    },
+    {
+      "slug": "messaggio-di-prenotazione",
+      "title": {
+        "de": "Am Empfang",
+        "en": "At reception"
+      },
+      "situation": {
+        "de": "Am Empfang sehen Sie gemeinsam mit der Mitarbeiterin auf Ihren Buchungsbeleg.",
+        "en": "At reception, you and the clerk look at your booking slip."
+      },
+      "pedagogicalGoal": "Nach der Buchungsbestätigung fragen und eine falsche Kontaktangabe berichtigen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha trovato qualche messaggio dopo la prenotazione?",
+          "baseText": {
+            "de": "Haben Sie nach der Buchung eine Nachricht gefunden?",
+            "en": "Did you find any messages after making the booking?"
+          }
+        },
+        {
+          "targetText": "No, sa dirmi come è stata inviata la conferma della mia prenotazione?",
+          "baseText": {
+            "de": "Nein, können Sie mir sagen, auf welchem Weg die Bestätigung meiner Buchung verschickt wurde?",
+            "en": "No. Could you tell me how my booking confirmation was sent?"
+          }
+        },
+        {
+          "targetText": "Per posta elettronica. Vedo un punto dopo il cognome: è corretto?",
+          "baseText": {
+            "de": "Per E-Mail. Nach dem Nachnamen steht ein Punkt. Stimmt das?",
+            "en": "By email. I see a full stop after your surname. Is that right?"
+          }
+        },
+        {
+          "targetText": "No, il mio indirizzo contiene un trattino dopo il cognome.",
+          "baseText": {
+            "de": "Nein, in meiner Adresse steht nach dem Nachnamen ein Bindestrich.",
+            "en": "No, my address has a hyphen after my surname."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "È stata + participio",
+        "rule": {
+          "de": "Bei einem abgeschlossenen Vorgang mit weiblichem Subjekt stehen stata und das zweite Partizip in der weiblichen Form: è stata inviata la conferma.",
+          "en": "For a completed action with a feminine subject, both stata and the next participle take the feminine form, as in è stata inviata la conferma."
+        },
+        "examples": [
+          {
+            "targetText": "No, sa dirmi come è stata inviata la conferma della mia prenotazione?",
+            "baseText": {
+              "de": "Nein, können Sie mir sagen, auf welchem Weg die Bestätigung meiner Buchung verschickt wurde?",
+              "en": "No. Could you tell me how my booking confirmation was sent?"
+            },
+            "highlight": "è stata inviata la conferma"
+          },
+          {
+            "targetText": "Sa dirmi come è stata scelta la musica per lo spettacolo?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wie die Musik für die Aufführung ausgewählt wurde?",
+              "en": "Could you tell me how the music for the show was chosen?"
+            },
+            "highlight": "è stata scelta la musica"
+          }
+        ]
+      },
+      "cloze": [
+        "No, il mio indirizzo ",
+        {
+          "kind": "form",
+          "answer": "contiene",
+          "choices": [
+            "contengono",
+            "conteniamo",
+            "contengo",
+            "contiene"
+          ],
+          "cue": "contenere (il mio indirizzo)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "un",
+          "choices": [
+            "una",
+            "gli",
+            "un",
+            "uno"
+          ]
+        },
+        " trattino dopo il cognome."
+      ],
+      "chunks": [
+        {
+          "targetText": "No, sa dirmi",
+          "baseText": {
+            "de": "Nein, können Sie mir sagen",
+            "en": "No, could you tell me"
+          }
+        },
+        {
+          "targetText": "come è stata inviata",
+          "baseText": {
+            "de": "wie sie verschickt wurde",
+            "en": "how it was sent"
+          }
+        },
+        {
+          "targetText": "la conferma",
+          "baseText": {
+            "de": "die Bestätigung",
+            "en": "the confirmation"
+          }
+        },
+        {
+          "targetText": "della mia prenotazione?",
+          "baseText": {
+            "de": "meiner Buchung?",
+            "en": "of my booking?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "conferma",
+          "baseText": {
+            "de": "Bestätigung",
+            "en": "confirmation"
+          }
+        },
+        {
+          "targetText": "prenotazione",
+          "baseText": {
+            "de": "Buchung",
+            "en": "booking"
+          }
+        },
+        {
+          "targetText": "inviare",
+          "baseText": {
+            "de": "versenden",
+            "en": "to send"
+          }
+        },
+        {
+          "targetText": "per posta elettronica",
+          "baseText": {
+            "de": "per E-Mail",
+            "en": "by email"
+          }
+        },
+        {
+          "targetText": "punto",
+          "baseText": {
+            "de": "Punkt",
+            "en": "full stop"
+          }
+        },
+        {
+          "targetText": "trattino",
+          "baseText": {
+            "de": "Bindestrich",
+            "en": "hyphen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "No, sa dirmi come è stata ",
+        "answer": "inviata",
+        "after": " la conferma della mia prenotazione?",
+        "fallbackChoices": [
+          "inviati",
+          "inviate",
+          "inviata",
+          "inviato"
+        ]
+      },
+      "speakRequired": [
+        "inviata",
+        "conferma",
+        "prenotazione"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang sehen Sie gemeinsam mit der Mitarbeiterin auf Ihren Buchungsbeleg. „Ha trovato qualche messaggio dopo la prenotazione?“",
+        "en": "At reception, you and the clerk look at your booking slip. “Ha trovato qualche messaggio dopo la prenotazione?”"
+      },
+      "trophyWord": {
+        "word": "conferma",
+        "meaning": {
+          "de": "Bestätigung",
+          "en": "confirmation"
+        },
+        "example": "No, sa dirmi come è stata inviata la conferma della mia prenotazione?",
+        "whyThisWord": {
+          "de": "Conferma bezeichnet die Nachricht, die eine Buchung bestätigt. In diesem Gespräch fehlt genau diese Nachricht.",
+          "en": "Conferma names the message confirming a booking. That's the message missing here."
+        }
+      },
+      "distractors": [
+        "come è stata cancellata",
+        "della sua iscrizione?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Empfang sehen Sie gemeinsam mit der Mitarbeiterin auf Ihren Buchungsbeleg.",
+        "en": "At reception, you and the clerk look at your booking slip."
+      },
+      "songMood": "Warm piano and brushed drums",
+      "visualNotes": "At reception, you and the clerk look at your booking slip."
+    },
+    {
+      "slug": "banco-riparazioni",
+      "title": {
+        "de": "Beim Kundendienst",
+        "en": "At the service desk"
+      },
+      "situation": {
+        "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers.",
+        "en": "At the service desk, you show a photo of your blender's model label."
+      },
+      "pedagogicalGoal": "Den Ablauf einer Reparatur erfragen und eine Alternative zur Abholung finden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ha già aperto una richiesta per questo modello?",
+          "baseText": {
+            "de": "Haben Sie für dieses Modell bereits eine Anfrage gestellt?",
+            "en": "Have you already opened a service request for this model?"
+          }
+        },
+        {
+          "targetText": "Qui leggo che la richiesta è stata registrata, ma come funziona l'assistenza per questo frullatore?",
+          "baseText": {
+            "de": "Hier steht, dass die Anfrage erfasst wurde. Aber wie läuft der Kundendienst für diesen Mixer ab?",
+            "en": "It says here that the request has been logged, but how does the service for this blender work?"
+          }
+        },
+        {
+          "targetText": "Per questo modello non è previsto il ritiro. Il laboratorio è vicino alla stazione.",
+          "baseText": {
+            "de": "Dieses Modell holen wir nicht ab. Die Werkstatt liegt in der Nähe des Bahnhofs.",
+            "en": "We don't offer collection for this model. The workshop is near the station."
+          }
+        },
+        {
+          "targetText": "Posso portare il frullatore direttamente al laboratorio sabato mattina?",
+          "baseText": {
+            "de": "Kann ich den Mixer am Samstagvormittag direkt zur Werkstatt bringen?",
+            "en": "Can I take the blender straight to the workshop on Saturday morning?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un passaggio concluso",
+        "rule": {
+          "de": "È stata registrata fasst einen abgeschlossenen Schritt zusammen. Mit ma können Sie danach fragen, was noch offen ist.",
+          "en": "È stata registrata reports a completed step. Follow it with ma to ask about the part still to be settled."
+        },
+        "examples": [
+          {
+            "targetText": "Qui leggo che la richiesta è stata registrata, ma come funziona l'assistenza per questo frullatore?",
+            "baseText": {
+              "de": "Hier steht, dass die Anfrage erfasst wurde. Aber wie läuft der Kundendienst für diesen Mixer ab?",
+              "en": "It says here that the request has been logged, but how does the service for this blender work?"
+            },
+            "highlight": "la richiesta è stata registrata"
+          },
+          {
+            "targetText": "La premiazione è stata spostata, ma a che ora comincia la gara?",
+            "baseText": {
+              "de": "Die Siegerehrung wurde verschoben, aber um wie viel Uhr beginnt der Wettkampf?",
+              "en": "The award ceremony has been moved, but what time does the race start?"
+            },
+            "highlight": "La premiazione è stata spostata"
+          }
+        ]
+      },
+      "cloze": [
+        "Posso ",
+        {
+          "kind": "choice",
+          "answer": "portare",
+          "choices": [
+            "porto",
+            "portano",
+            "portare",
+            "portato"
+          ]
+        },
+        " il frullatore direttamente ",
+        {
+          "kind": "choice",
+          "answer": "al",
+          "choices": [
+            "ai",
+            "al",
+            "allo",
+            "alla"
+          ]
+        },
+        " laboratorio sabato mattina?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Qui leggo che",
+          "baseText": {
+            "de": "Hier lese ich, dass",
+            "en": "It says here that"
+          }
+        },
+        {
+          "targetText": "la richiesta",
+          "baseText": {
+            "de": "die Anfrage",
+            "en": "the request"
+          }
+        },
+        {
+          "targetText": "è stata registrata,",
+          "baseText": {
+            "de": "wurde erfasst,",
+            "en": "has been logged,"
+          }
+        },
+        {
+          "targetText": "ma come funziona",
+          "baseText": {
+            "de": "aber wie funktioniert",
+            "en": "but how does it work,"
+          }
+        },
+        {
+          "targetText": "l'assistenza per questo frullatore?",
+          "baseText": {
+            "de": "der Kundendienst für diesen Mixer?",
+            "en": "the service for this blender?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "assistenza",
+          "baseText": {
+            "de": "Kundendienst",
+            "en": "customer support"
+          }
+        },
+        {
+          "targetText": "richiesta",
+          "baseText": {
+            "de": "Anfrage",
+            "en": "request"
+          }
+        },
+        {
+          "targetText": "registrata",
+          "baseText": {
+            "de": "erfasst",
+            "en": "logged"
+          }
+        },
+        {
+          "targetText": "frullatore",
+          "baseText": {
+            "de": "Standmixer",
+            "en": "blender"
+          }
+        },
+        {
+          "targetText": "ritiro",
+          "baseText": {
+            "de": "Abholung",
+            "en": "collection"
+          }
+        },
+        {
+          "targetText": "laboratorio",
+          "baseText": {
+            "de": "Werkstatt",
+            "en": "workshop"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Qui leggo che la richiesta è stata ",
+        "answer": "registrata",
+        "after": ", ma come funziona l'assistenza per questo frullatore?",
+        "fallbackChoices": [
+          "registrate",
+          "registrata",
+          "registrato",
+          "registrati"
+        ]
+      },
+      "speakRequired": [
+        "richiesta",
+        "registrata",
+        "frullatore"
+      ],
+      "sceneCaption": {
+        "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers. „Ha già aperto una richiesta per questo modello?“",
+        "en": "At the service desk, you show a photo of your blender's model label. “Ha già aperto una richiesta per questo modello?”"
+      },
+      "trophyWord": {
+        "word": "assistenza",
+        "meaning": {
+          "de": "Kundendienst",
+          "en": "customer support"
+        },
+        "example": "Qui leggo che la richiesta è stata registrata, ma come funziona l'assistenza per questo frullatore?",
+        "whyThisWord": {
+          "de": "Assistenza umfasst die Hilfe nach dem Kauf. Damit können Sie zunächst nach dem gesamten Ablauf fragen.",
+          "en": "Assistenza covers support after purchase. The word lets you ask how the whole service works."
+        }
+      },
+      "distractors": [
+        "è stata annullata,",
+        "il ritiro di questo divano?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Serviceschalter zeigen Sie ein Foto vom Typenschild Ihres Mixers.",
+        "en": "At the service desk, you show a photo of your blender's model label."
+      },
+      "songMood": "Soft acoustic folk",
+      "visualNotes": "At the service desk, you show a photo of your blender's model label."
+    },
+    {
+      "slug": "dato-da-correggere",
+      "title": {
+        "de": "Ein Eintrag am Schalter",
+        "en": "A detail on file"
+      },
+      "situation": {
+        "de": "Sie bringen einen Brief mit dem Logo der Gemeinde zum Schalter.",
+        "en": "You take a letter with the council's logo to the counter."
+      },
+      "pedagogicalGoal": "Nach dem Weg zur Berichtigung fragen und die Verwechslung am Schalter klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vuole segnalare un problema con i suoi dati?",
+          "baseText": {
+            "de": "Möchten Sie ein Problem mit Ihren Angaben melden?",
+            "en": "Would you like to report a problem with your details?"
+          }
+        },
+        {
+          "targetText": "Quale procedura si segue se il civico è stato registrato male?",
+          "baseText": {
+            "de": "Wie geht man vor, wenn die Hausnummer falsch erfasst wurde?",
+            "en": "What procedure do you follow if the house number was recorded incorrectly?"
+          }
+        },
+        {
+          "targetText": "Per un trasloco deve compilare il modulo di cambio di residenza.",
+          "baseText": {
+            "de": "Für einen Umzug müssen Sie das Formular zur Ummeldung ausfüllen.",
+            "en": "For a move, you need to fill in the change-of-address form."
+          }
+        },
+        {
+          "targetText": "Abito sempre lì, ma il civico corretto è sedici.",
+          "baseText": {
+            "de": "Ich wohne noch dort, aber die richtige Hausnummer ist sechzehn.",
+            "en": "I still live there, but the correct house number is sixteen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un errore già avvenuto",
+        "rule": {
+          "de": "Si segue fragt nach dem üblichen Ablauf. È stato mit Partizip bezeichnet den bereits abgeschlossenen Schritt, bei dem der Fehler passiert ist.",
+          "en": "Si segue asks about the normal procedure. È stato with a participle identifies the completed step where the error occurred."
+        },
+        "examples": [
+          {
+            "targetText": "Quale procedura si segue se il civico è stato registrato male?",
+            "baseText": {
+              "de": "Wie geht man vor, wenn die Hausnummer falsch erfasst wurde?",
+              "en": "What procedure do you follow if the house number was recorded incorrectly?"
+            },
+            "highlight": "il civico è stato registrato male"
+          },
+          {
+            "targetText": "Come si corregge il programma se il nome è stato scritto male?",
+            "baseText": {
+              "de": "Wie lässt sich das Programmheft korrigieren, wenn der Name falsch geschrieben wurde?",
+              "en": "How do you correct the programme if the name was spelled incorrectly?"
+            },
+            "highlight": "il nome è stato scritto male"
+          }
+        ]
+      },
+      "cloze": [
+        "Abito sempre lì, ma il civico ",
+        {
+          "kind": "choice",
+          "answer": "corretto",
+          "choices": [
+            "corrette",
+            "corretto",
+            "corretta",
+            "corretti"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "è",
+          "choices": [
+            "è",
+            "sono",
+            "siamo",
+            "erano"
+          ],
+          "cue": "essere (il civico)"
+        },
+        " sedici."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quale procedura",
+          "baseText": {
+            "de": "Welches Verfahren",
+            "en": "Which procedure"
+          }
+        },
+        {
+          "targetText": "si segue",
+          "baseText": {
+            "de": "wendet man an",
+            "en": "does one follow"
+          }
+        },
+        {
+          "targetText": "se il civico",
+          "baseText": {
+            "de": "wenn die Hausnummer",
+            "en": "if the house number"
+          }
+        },
+        {
+          "targetText": "è stato registrato male?",
+          "baseText": {
+            "de": "falsch erfasst wurde?",
+            "en": "was recorded incorrectly?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "procedura",
+          "baseText": {
+            "de": "Verfahren",
+            "en": "procedure"
+          }
+        },
+        {
+          "targetText": "civico",
+          "baseText": {
+            "de": "Hausnummer",
+            "en": "house number"
+          }
+        },
+        {
+          "targetText": "registrare",
+          "baseText": {
+            "de": "erfassen",
+            "en": "to record"
+          }
+        },
+        {
+          "targetText": "trasloco",
+          "baseText": {
+            "de": "Umzug",
+            "en": "move to a new home"
+          }
+        },
+        {
+          "targetText": "modulo",
+          "baseText": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "cambio di residenza",
+          "baseText": {
+            "de": "Ummeldung des Wohnsitzes",
+            "en": "change of residence"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quale procedura si segue se il civico è stato ",
+        "answer": "registrato",
+        "after": " male?",
+        "fallbackChoices": [
+          "registrato",
+          "registrata",
+          "registrati",
+          "registrate"
+        ]
+      },
+      "speakRequired": [
+        "procedura",
+        "civico",
+        "registrato"
+      ],
+      "sceneCaption": {
+        "de": "Sie bringen einen Brief mit dem Logo der Gemeinde zum Schalter. „Vuole segnalare un problema con i suoi dati?“",
+        "en": "You take a letter with the council's logo to the counter. “Vuole segnalare un problema con i suoi dati?”"
+      },
+      "trophyWord": {
+        "word": "procedura",
+        "meaning": {
+          "de": "Verfahren",
+          "en": "procedure"
+        },
+        "example": "Quale procedura si segue se il civico è stato registrato male?",
+        "whyThisWord": {
+          "de": "Procedura ist die amtliche Vorgehensweise. Damit fragen Sie nach den nötigen Schritten für eine Korrektur.",
+          "en": "Procedura is the official procedure. It lets you ask what steps a correction requires."
+        }
+      },
+      "distractors": [
+        "Quale numero",
+        "se il cognome"
+      ],
+      "placeholderCaption": {
+        "de": "Sie bringen einen Brief mit dem Logo der Gemeinde zum Schalter.",
+        "en": "You take a letter with the council's logo to the counter."
+      },
+      "songMood": "Gentle acoustic guitar",
+      "visualNotes": "You take a letter with the council's logo to the counter."
+    }
+  ]
+}

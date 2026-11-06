@@ -57,6 +57,41 @@
       "gate": "Unmodified app B1 draft validator"
     },
     {
+      "path": "b1/italian/p4.json",
+      "sha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p5.json",
+      "sha256": "4d15545ca9d8b0b6fd6ad3a869656a05bf242b6acba6ba1f96f4dc1f544a340e",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p6.json",
+      "sha256": "fe691b1e78848a7795f2e6bd3dd0e1fded2c55c31d8bbcca54418da4d26b4b03",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p7.json",
+      "sha256": "4a61b0d89c729fcb7ee29c98dc2decaa4f58b0aaff4f08fa5fc785559672578e",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p8.json",
+      "sha256": "e98db93fca50def2d590df37963cb79cf5793c2bc1070a6866b0200281412013",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p9.json",
+      "sha256": "b43244b893b33b721d08d8ca62af5a9f062f2027c938fde8cfe00d6dab67acde",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
+      "path": "b1/italian/p10.json",
+      "sha256": "9eeba3df0004d848992a1efe2430f523a9eedfac7c107e9c33939a2f1a90b17a",
+      "gate": "Unmodified app B1 draft validator"
+    },
+    {
       "path": "b1/korean/p3.json",
       "sha256": "f0e48563ba3b4504328fdaf4e6e28f086380c2c408a387ff32bfef68ceaa66e2",
       "gate": "Native validation, path-number bound alone adapted in memory. Release gate rejects post-pilot file."

@@ -1,0 +1,907 @@
+{
+  "language": "Italian",
+  "level": "B1",
+  "pathNumber": 4,
+  "scope": "Offline Italian lessons with German and English meanings.",
+  "lessonSha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+  "editorial": {
+    "sourceSha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Turn 1 (14 w) 'Lo scaffale che ho visto in vetrina…' models object-che per beat; turn 4 (11 w) keeps the 60 cm limit while accepting beech; form gap 'resta' has visible subject 'la larghezza' in cue and clause; chips bind the relative to the antecedent, only target order sensible; DE 'Kunde' fix verified."
+      },
+      {
+        "n": 2,
+        "observation": "Subject-che 'l'appartamento che ha il balcone sul cortile interno' (10 w); both cloze rows are cue-free choice rows (deve conversion present); DE gloss now 'die den Balkon … hat'; terrace counter-offer handled while keeping courtyard requirement."
+      },
+      {
+        "n": 3,
+        "observation": "'portone che dà sulla strada principale' (10 w); follow-up now names the main door explicitly and the awning reply (10 w) adapts the meeting point; cloze tenda/verde foils all impossible by gender/number; Lei both ways ('mi aspetta' / 'La aspetto')."
+      },
+      {
+        "n": 4,
+        "observation": "'Il cortile che vedo dalla mia finestra ha un fico…' (14 w); merged first chip removes the 'ha un fico che vedo' reordering; term 'il cancello pedonale' matches turn 4 'quello pedonale'; cloze 'due cancelli' rejects all three singular foils."
+      },
+      {
+        "n": 5,
+        "observation": "First dove episode: 'sul pianerottolo dove comincia la seconda rampa' (9 w); 'illumina' is now a choice row; provisional lamp solution accepted (9 w); terms, recall 'comincia' and speak tokens all from turn 1."
+      },
+      {
+        "n": 6,
+        "observation": "'del lavello dove sciacquo i piatti, ma solo quando apro l'acqua calda' (15 w) gives place and time per beat; form gap 'riguarda' carries subject 'il problema'; comma-final chip is allowed; kitchen vs bathroom distinction clear."
+      },
+      {
+        "n": 7,
+        "observation": "'al banco dove poco fa ho ritirato l'ombrello' (14 w); turn 4 rejects the zip jacket and adds collar + buttons (11 w); 7 distinct terms; cloze basso/dorati agreement foils fine; chip 'al banco' is separately movable (see optional)."
+      },
+      {
+        "n": 8,
+        "observation": "'La valigia con cui viaggiavo' (13 w) matches outline wording; correction uses initials, not colour (10 w); cloze mio/iniziali choice rows sound; con cui staged for L8."
+      },
+      {
+        "n": 9,
+        "observation": "'il reparto a cui posso affidare i piccoli elettrodomestici da riparare' (12 w); learner accepts the back-entrance workshop and asks about cost (11 w); 'prima di decidere / vorrei conoscere' choice rows unambiguous; DE 'Kunden' fix verified."
+      },
+      {
+        "n": 10,
+        "observation": "'nel punto in cui la piastra tocca il legno' (16 w, at limit); merged noun-phrase chip removes 'nel punto della porta' reorder; form gap 'gira' has subject 'una vite'; 'a vuoto' fixed expression; learner and technician agree to start with the screws (12 w)."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Object-relative che ho visto identifies the shelf; the beech substitute retains the sixty-centimetre constraint. No width clue in the scene. The German art caption now calls the shopper a customer."
+      },
+      {
+        "n": 2,
+        "observation": "Deve is now a visible four-way choice with exactly one grammatical completion; the proposed street-side terrace is distinguished by the courtyard requirement. The revised German dialogue and model show a subject-relative with die … hat; interessa, balcone and cortile occur as independent words in the Italian reply."
+      },
+      {
+        "n": 3,
+        "observation": "The revised Italian explicitly puts the crowd davanti al portone; English and German now likewise locate the crowd before the main door, motivating the nearby awning. La aspetto is formal and both choice rows remain unambiguous."
+      },
+      {
+        "n": 4,
+        "observation": "The rebuilt first chip binds the courtyard to che vedo dalla mia finestra. Four chips reconstruct the original turn and the pedestrian-gate clarification still works. The revised term il cancello pedonale, das Fußgängertor and the pedestrian gate now match the access being clarified."
+      },
+      {
+        "n": 5,
+        "observation": "Illumina is now a visible four-way agreement choice. The hypothetical reading of the proposed lamp can no longer cause a false typing failure. Pianerottolo, seconda and rampa are substantive cues for the switch location and all three are distinct whole words in the model."
+      },
+      {
+        "n": 6,
+        "observation": "The leaking kitchen tap, hot-water trigger and dry bathroom form a coherent problem. Dove and temporal quando have different functions."
+      },
+      {
+        "n": 7,
+        "observation": "The velvet jacket at the umbrella counter leads to a zip/low-collar distinction; the choices are fixed by masculine singular and plural agreement."
+      },
+      {
+        "n": 8,
+        "observation": "Con cui first appears at L8, with a portrait pencil as transfer. Mother’s initials distinguish the case without being shown by the scene."
+      },
+      {
+        "n": 9,
+        "observation": "A cui matches affidare a; the rear workshop and the estimate answer two different needs. Both choice blanks require infinitives. The revised German art caption correctly calls the visitor a customer."
+      },
+      {
+        "n": 10,
+        "observation": "In cui locates the plate against the wood; the spinning screw gives a reason to start there. The hiking-trail example supplies a new location. The revised chips bind the entire door-handle noun phrase and correctly gloss balla and nel punto."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "137b40c7aafcfe30531946298ef85b8894ff477abccc0f862eb9955b9230bc12",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Object-relative che ho visto identifies the shelf; the beech substitute retains the sixty-centimetre constraint. No width clue in the scene."
+      },
+      {
+        "n": 2,
+        "observation": "Subject-relative che ha distinguishes the courtyard flat; the terrace is a genuine alternative, but the typed modal is underdetermined."
+      },
+      {
+        "n": 3,
+        "observation": "Formal La aspetto and the che dà su example work. The awning is new and the two choice rows are unambiguous; the caretaker's deictic location can be clearer."
+      },
+      {
+        "n": 4,
+        "observation": "Object-relative che vedo, main-clause ha, and a second access gate implement the courtyard beat; there is another plausible chip order."
+      },
+      {
+        "n": 5,
+        "observation": "Dove introduces a landing as its antecedent and the shuttle-stop example transfers it. Illumination is a plausible conditional as well as a present in this reply."
+      },
+      {
+        "n": 6,
+        "observation": "The leaking kitchen tap, hot-water trigger and dry bathroom form a coherent problem. Dove and temporal quando have different functions."
+      },
+      {
+        "n": 7,
+        "observation": "The velvet jacket at the umbrella counter leads to a zip/low-collar distinction; the choices are fixed by masculine singular and plural agreement."
+      },
+      {
+        "n": 8,
+        "observation": "Con cui first appears at L8, with a portrait pencil as transfer. Mother’s initials distinguish the case without being shown by the scene."
+      },
+      {
+        "n": 9,
+        "observation": "A cui matches affidare a; the rear workshop and the estimate answer two different needs. Both choice blanks require infinitives."
+      },
+      {
+        "n": 10,
+        "observation": "In cui locates the plate against the wood; the spinning screw gives a reason to start there. The hiking-trail example supplies a new location."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "cloze (form: deve)",
+        "issue": "After the agent offers a street-facing terrace, both «ma deve affacciarsi sul cortile» and the natural, polite «ma dovrebbe affacciarsi sul cortile» fit. The typed cue specifies dovere and the subject, but gives no tense/mood; the conditional was taught in P3.",
+        "recommendation": "Use a choice row for deve, retain the four existing options, and remove the form cue, or write a cue that uniquely selects the present indicative."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "cloze (form: illumina)",
+        "issue": "The electrician has offered to leave a lamp and has not placed it yet. «Va bene, la lampada illuminerebbe almeno i primi gradini» is a natural response to that offer and fits the displayed infinitive/subject cue. Only illumina is credited.",
+        "recommendation": "Use choice for this blank with the current agreement options, or specify present indicative without exposing the conjugated form."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "dialogue[2].targetText/baseText",
+        "issue": "«L’ingresso laterale è chiuso, quindi tutti aspettano già lì davanti» leaves lì most immediately pointing at the side entrance just described as closed. The crowd is meant to be at the previously agreed main door, motivating another meeting point.",
+        "recommendation": "Name the main door explicitly, e.g. «Oggi l’ingresso laterale è chiuso e davanti al portone principale c’è già tanta gente.» Sync EN/DE."
+      },
+      {
+        "n": 4,
+        "severity": "LOW",
+        "field": "chunks",
+        "issue": "The existing four chips can also form «Il cortile ha un fico che vedo dalla mia finestra in mezzo al prato.» This gives the fig tree, which is visible from the window, as the relative antecedent and largely preserves the pictured situation.",
+        "recommendation": "To pin the intended courtyard antecedent, bind it to che vedo dalla mia finestra, then split the rest into ha / un fico / in mezzo al prato., with contextual glosses."
+      },
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "placeholderCaption.de",
+        "issue": "The illustration calls a furniture-shop customer «ein Gast» while the English and scene depict a retail customer. The same mismatch recurs in L9 (electronics shop).",
+        "recommendation": "Use Kunde/Kundin or a neutral retail description in both German placeholders."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ca7f75a14c9a8d59bfa69b870a30e9149becd788c9bd1a86d2f497498c278018",
+      "sourceSha256": "137b40c7aafcfe30531946298ef85b8894ff477abccc0f862eb9955b9230bc12",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Object relative che ho visto (14/11 words), beech substitute keeps the sixty-centimetre limit; massima/resta blanks unique; chips build uniquely; only the German placeholder calls the customer 'Gast'."
+        },
+        {
+          "n": 2,
+          "observation": "Subject relative che ha with the courtyard requirement retained against the street terrace (10/10 words); typed 'deve' is not pinned against 'dovrebbe'; DE gloss of turn 1 uses 'deren' instead of modelling 'die … hat'."
+        },
+        {
+          "n": 3,
+          "observation": "La aspetto davanti al portone che dà sulla strada principale (10/10 words) with che dà su transfer; two choice rows unambiguous; the caretaker's 'lì davanti' points at the closed side entrance rather than the crowded main door."
+        },
+        {
+          "n": 4,
+          "observation": "Che vedo + main-clause ha + pedestrian-gate clarification (14/9 words); current four chips also yield the grammatical 'Il cortile ha un fico che vedo dalla mia finestra in mezzo al prato.'; term 'passaggio pedonale' does not match 'cancello pedonale'."
+        },
+        {
+          "n": 5,
+          "observation": "Dove with pianerottolo antecedent and shuttle-stop transfer (9/9 words); the lamp is only offered, so typed 'illumina' competes with 'illuminerà' (EN gloss itself says 'will light up')."
+        },
+        {
+          "n": 6,
+          "observation": "Dove sciacquo i piatti plus temporal quando (15/10 words), kitchen vs bathroom coherent; asciutto/riguarda blanks unique; five chips with comma chip legal."
+        },
+        {
+          "n": 7,
+          "observation": "Dove + past event (14/11 words), zip vs low collar and gold buttons; both agreement rows unique; seven distinct terms; recall ritirato."
+        },
+        {
+          "n": 8,
+          "observation": "First con cui at L8 with imperfetto viaggiavo (13/10 words), pencil transfer; mio/iniziali rows unique; initials correct the striped-ribbon mix-up."
+        },
+        {
+          "n": 9,
+          "observation": "A cui matches affidare a (12/11 words); rear workshop and estimate form a real exchange; both infinitive rows unique; German placeholder again says 'Gast'."
+        },
+        {
+          "n": 10,
+          "observation": "In cui at the plate/wood contact (16/12 words, at limits), screw agreed first; gira/vuoto blanks unique; chips allow 'La maniglia balla nel punto della porta del balcone in cui…' as a second grammatical order."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Typed form gap 'deve' is underdetermined: 'ma dovrebbe affacciarsi sul cortile' is an equally valid surface and the cue 'dovere (un terrazzo)' does not restrain tense/mood. Convert to a cue-free choice row; the four options already make only 'deve' possible with subject 'un terrazzo'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "deve",
+                "choices": [
+                  "devono",
+                  "devo",
+                  "dobbiamo",
+                  "deve"
+                ],
+                "cue": "dovere (un terrazzo)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "deve",
+                "choices": [
+                  "devono",
+                  "devo",
+                  "dobbiamo",
+                  "deve"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Typed form gap 'illumina' is underdetermined: the lamp has only been offered, so 'la lampada illuminerà almeno i primi gradini' is natural (the EN gloss even says 'will light up') and the cue does not fix the tense. Convert to a cue-free choice row where only 'illumina' agrees with 'la lampada'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "illumina",
+                "choices": [
+                  "illuminano",
+                  "illumina",
+                  "illuminiamo",
+                  "illumino"
+                ],
+                "cue": "illuminare (la lampada)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "illumina",
+                "choices": [
+                  "illuminano",
+                  "illumina",
+                  "illuminiamo",
+                  "illumino"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Chips 'Il cortile' / 'che vedo dalla mia finestra' / 'ha un fico' / 'in mezzo al prato.' also build the grammatical, meaningful 'Il cortile ha un fico che vedo dalla mia finestra in mezzo al prato.', which the exact grader rejects. Bind the relative to its antecedent so only the target order is possible.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks",
+              "old": [
+                {
+                  "targetText": "Il cortile",
+                  "baseText": {
+                    "de": "Der Hof",
+                    "en": "The courtyard"
+                  }
+                },
+                {
+                  "targetText": "che vedo dalla mia finestra",
+                  "baseText": {
+                    "de": "den ich von meinem Fenster aus sehe",
+                    "en": "that I can see from my window"
+                  }
+                },
+                {
+                  "targetText": "ha un fico",
+                  "baseText": {
+                    "de": "hat einen Feigenbaum",
+                    "en": "has a fig tree"
+                  }
+                },
+                {
+                  "targetText": "in mezzo al prato.",
+                  "baseText": {
+                    "de": "mitten auf dem Rasen",
+                    "en": "in the middle of the lawn"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Il cortile che vedo dalla mia finestra",
+                  "baseText": {
+                    "de": "Der Hof, den ich von meinem Fenster aus sehe",
+                    "en": "The courtyard I can see from my window"
+                  }
+                },
+                {
+                  "targetText": "ha",
+                  "baseText": {
+                    "de": "hat",
+                    "en": "has"
+                  }
+                },
+                {
+                  "targetText": "un fico",
+                  "baseText": {
+                    "de": "einen Feigenbaum",
+                    "en": "a fig tree"
+                  }
+                },
+                {
+                  "targetText": "in mezzo al prato.",
+                  "baseText": {
+                    "de": "mitten auf dem Rasen",
+                    "en": "in the middle of the lawn"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Chips 'La maniglia' / 'della porta del balcone' / 'balla nel punto' / 'in cui la piastra tocca il legno.' also build the grammatical 'La maniglia balla nel punto della porta del balcone in cui la piastra tocca il legno.' (the complement attaches to 'punto'). Merge the noun phrase so the build is unique.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks",
+              "old": [
+                {
+                  "targetText": "La maniglia",
+                  "baseText": {
+                    "de": "Der Griff",
+                    "en": "The handle"
+                  }
+                },
+                {
+                  "targetText": "della porta del balcone",
+                  "baseText": {
+                    "de": "der Balkontür",
+                    "en": "of the balcony door"
+                  }
+                },
+                {
+                  "targetText": "balla nel punto",
+                  "baseText": {
+                    "de": "wackelt an der Stelle",
+                    "en": "wobbles at the point"
+                  }
+                },
+                {
+                  "targetText": "in cui la piastra tocca il legno.",
+                  "baseText": {
+                    "de": "wo die Platte am Holz anliegt",
+                    "en": "where the plate meets the wood"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "La maniglia della porta del balcone",
+                  "baseText": {
+                    "de": "Der Griff der Balkontür",
+                    "en": "The balcony door handle"
+                  }
+                },
+                {
+                  "targetText": "balla",
+                  "baseText": {
+                    "de": "wackelt",
+                    "en": "wobbles"
+                  }
+                },
+                {
+                  "targetText": "nel punto",
+                  "baseText": {
+                    "de": "an der Stelle",
+                    "en": "at the point"
+                  }
+                },
+                {
+                  "targetText": "in cui la piastra tocca il legno.",
+                  "baseText": {
+                    "de": "wo die Platte am Holz anliegt",
+                    "en": "where the plate meets the wood"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "German placeholder calls a furniture-shop customer 'ein Gast' (guest), mistranslating EN 'a customer'; same error in L9.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/placeholderCaption/de",
+              "old": "Ein Verkäufer und ein Gast betrachten die Möbel im Schaufenster.",
+              "new": "Ein Verkäufer und ein Kunde betrachten die Möbel im Schaufenster."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption/de",
+              "old": "Eine Verkäuferin begrüßt einen Gast mit einem Toaster in der Hand.",
+              "new": "Eine Verkäuferin begrüßt einen Kunden mit einem Toaster in der Hand."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "In 'Oggi l'ingresso laterale è chiuso, quindi tutti aspettano già lì davanti' the deictic 'lì' most naturally points at the side entrance just called closed; naming the main door makes the reason for moving the meeting point explicit. Cloze is on turn 4, so nothing else is coupled.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "Oggi l'ingresso laterale è chiuso, quindi tutti aspettano già lì davanti.",
+              "new": "Oggi l'ingresso laterale è chiuso, quindi davanti al portone c'è già tanta gente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Heute ist der Seiteneingang geschlossen, deshalb warten schon alle dort vorn.",
+              "new": "Heute ist der Seiteneingang geschlossen, deshalb stehen vor dem Eingangstor schon viele Leute."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "The side entrance is closed today, so everyone’s already waiting out front.",
+              "new": "The side entrance is closed today, so there are already a lot of people outside the main door."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Term 'il passaggio pedonale' (usually understood as a pedestrian crossing) does not occur in the episode, which uses 'cancello … pedonale'; a matching term is more useful.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/terms/5",
+              "old": {
+                "targetText": "il passaggio pedonale",
+                "baseText": {
+                  "de": "der Fußgängerdurchgang",
+                  "en": "the pedestrian passage"
+                }
+              },
+              "new": {
+                "targetText": "il cancello pedonale",
+                "baseText": {
+                  "de": "das Fußgängertor",
+                  "en": "the pedestrian gate"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "German gloss of the learner line uses 'deren Balkon … zeigt', which does not model the taught 'die Wohnung, die … hat' structure stated in the rule and chunk gloss; meaning is still correct.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/1",
+              "old": "Mich interessiert die Wohnung, deren Balkon zum Innenhof zeigt.",
+              "new": "Mich interessiert die Wohnung, die den Balkon zum Innenhof hat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b9542c643eb68ced80dd60e9f3239f44460a1b6c65065f364b35042aacfeb4fd",
+      "sourceSha256": "b45a6252553e48e61b885dd6581fadf3192c1c0eb236d3b7d601211d77351f32",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "che-object relative (che ho visto); turn 1 = 14 words, turn 2 = 11; five chips rebuild the line uniquely (only the final chip carries the full stop); choice 'massima' and form 'resta' with subject 'la larghezza' literally before the blank; placeholder DE now 'Kunde'; beat (accept beech model, keep 60 cm limit) met."
+        },
+        {
+          "n": 2,
+          "observation": "che-subject relative (che ha); turn 1 = 10, turn 2 = 10; both cloze rows are cue-free choices and only 'bene'/'deve' fit 'un terrazzo'; DE gloss now models 'die Wohnung, die den Balkon … hat'; beat met (terrace acceptable, must face courtyard)."
+        },
+        {
+          "n": 3,
+          "observation": "che dà su with place complement; 10/10 words; four chips unique; cloze 'tenda'/'verde' choices all syntactically impossible except the answer; scene quotes opening verbatim; 'lì davanti' in turn 3 readable as the main door just named, so the awning refinement stays coherent."
+        },
+        {
+          "n": 4,
+          "observation": "che-object relative with vedo, main verb ha; 14/9 words; merged first chip removes the alternative build; recall 'ha' has its subject in the before-text; cloze 'cancelli'/'pedonale' fine; term 'il passaggio pedonale' not in the dialogue but harmless."
+        },
+        {
+          "n": 5,
+          "observation": "first dove lesson (pianerottolo dove comincia); 9/9 words; 'illumina' now a cue-free choice row where only the 3sg agrees with 'la lampada'; electrician's provisional lamp and learner acceptance follow the beat."
+        },
+        {
+          "n": 6,
+          "observation": "dove + habitual activity plus quando time clause (one relative only); 15/10 words; five chips, interim chip ends with comma (allowed); form 'riguarda' with subject 'il problema' visible before the blank and no competing tense in context; bathroom/kitchen distinction matches the beat."
+        },
+        {
+          "n": 7,
+          "observation": "dove + passato prossimo event; 14/11 words; four chips rebuild uniquely (alternative order would attach 'dove' to the jacket, not meaningful); seven distinct terms; cloze agreement rows 'basso'/'dorati' clean; zip vs two gold buttons is a precise refusal plus detail."
+        },
+        {
+          "n": 8,
+          "observation": "con cui matching viaggiare con; 13/10 words; recall 'ha' with subject before it; cloze 'mio'/'iniziali' with same-context foils (sigla, monogramma) that fail the article; learner corrects via initials rather than colour, as the beat requires."
+        },
+        {
+          "n": 9,
+          "observation": "a cui matching affidare a; 12/11 words; chips unique; cloze blanks the two infinitives after 'prima di' and 'vorrei' with impossible finite/participle foils; placeholder DE now 'Kunden'; workshop redirection accepted while asking for the estimate."
+        },
+        {
+          "n": 10,
+          "observation": "in cui inside 'nel punto in cui'; turn 1 = 16 words (at limit), turn 2 = 12 (at limit); merged noun-phrase chip removes the ambiguous attachment; form 'gira' has subject 'una vite' before the blank, 'a vuoto' choice row fine; screw-first agreement matches the beat."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "'tutti aspettano già lì davanti' leaves the deictic 'lì' formally open between the closed side entrance and the main door; meaning is recoverable and the awning reply works under either reading, so this is a preference, not an error. Cloze is on turn 4, nothing else is coupled.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "Oggi l'ingresso laterale è chiuso, quindi tutti aspettano già lì davanti.",
+              "new": "Oggi l'ingresso laterale è chiuso, quindi davanti al portone c'è già tanta gente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Heute ist der Seiteneingang geschlossen, deshalb warten schon alle dort vorn.",
+              "new": "Heute ist der Seiteneingang geschlossen, deshalb stehen vor dem Eingangstor schon viele Leute."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "The side entrance is closed today, so everyone’s already waiting out front.",
+              "new": "The side entrance is closed today, so there are already a lot of people outside the main door."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Term 'il passaggio pedonale' is not used in the episode (which says 'cancello … pedonale') and is commonly read as a pedestrian crossing; swapping it for the phrase actually practised is more useful but not a correctness fault.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/terms/5",
+              "old": {
+                "targetText": "il passaggio pedonale",
+                "baseText": {
+                  "de": "der Fußgängerdurchgang",
+                  "en": "the pedestrian passage"
+                }
+              },
+              "new": {
+                "targetText": "il cancello pedonale",
+                "baseText": {
+                  "de": "das Fußgängertor",
+                  "en": "the pedestrian gate"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-check",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "624ea02340460b5e1799024264ec8ac113be8fffafc7bdb1ef7945373f53a74b",
+      "sourceSha256": "e43ebc07c6fcde83f6bac1a917ba8bd9985d5c977d3d6401cf11be0f93190230",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 1 (14 w) 'Lo scaffale che ho visto in vetrina…' models object-che per beat; turn 4 (11 w) keeps the 60 cm limit while accepting beech; form gap 'resta' has visible subject 'la larghezza' in cue and clause; chips bind the relative to the antecedent, only target order sensible; DE 'Kunde' fix verified."
+        },
+        {
+          "n": 2,
+          "observation": "Subject-che 'l'appartamento che ha il balcone sul cortile interno' (10 w); both cloze rows are cue-free choice rows (deve conversion present); DE gloss now 'die den Balkon … hat'; terrace counter-offer handled while keeping courtyard requirement."
+        },
+        {
+          "n": 3,
+          "observation": "'portone che dà sulla strada principale' (10 w); follow-up now names the main door explicitly and the awning reply (10 w) adapts the meeting point; cloze tenda/verde foils all impossible by gender/number; Lei both ways ('mi aspetta' / 'La aspetto')."
+        },
+        {
+          "n": 4,
+          "observation": "'Il cortile che vedo dalla mia finestra ha un fico…' (14 w); merged first chip removes the 'ha un fico che vedo' reordering; term 'il cancello pedonale' matches turn 4 'quello pedonale'; cloze 'due cancelli' rejects all three singular foils."
+        },
+        {
+          "n": 5,
+          "observation": "First dove episode: 'sul pianerottolo dove comincia la seconda rampa' (9 w); 'illumina' is now a choice row; provisional lamp solution accepted (9 w); terms, recall 'comincia' and speak tokens all from turn 1."
+        },
+        {
+          "n": 6,
+          "observation": "'del lavello dove sciacquo i piatti, ma solo quando apro l'acqua calda' (15 w) gives place and time per beat; form gap 'riguarda' carries subject 'il problema'; comma-final chip is allowed; kitchen vs bathroom distinction clear."
+        },
+        {
+          "n": 7,
+          "observation": "'al banco dove poco fa ho ritirato l'ombrello' (14 w); turn 4 rejects the zip jacket and adds collar + buttons (11 w); 7 distinct terms; cloze basso/dorati agreement foils fine; chip 'al banco' is separately movable (see optional)."
+        },
+        {
+          "n": 8,
+          "observation": "'La valigia con cui viaggiavo' (13 w) matches outline wording; correction uses initials, not colour (10 w); cloze mio/iniziali choice rows sound; con cui staged for L8."
+        },
+        {
+          "n": 9,
+          "observation": "'il reparto a cui posso affidare i piccoli elettrodomestici da riparare' (12 w); learner accepts the back-entrance workshop and asks about cost (11 w); 'prima di decidere / vorrei conoscere' choice rows unambiguous; DE 'Kunden' fix verified."
+        },
+        {
+          "n": 10,
+          "observation": "'nel punto in cui la piastra tocca il legno' (16 w, at limit); merged noun-phrase chip removes 'nel punto della porta' reorder; form gap 'gira' has subject 'una vite'; 'a vuoto' fixed expression; learner and technician agree to start with the screws (12 w)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Chips 'al banco' and 'dove poco fa ho ritirato l'ombrello.' let a learner build 'Ho lasciato al banco la giacca di velluto dove poco fa ho ritirato l'ombrello.', a grammatical though badly placed relative that the exact grader rejects. Binding dove to its antecedent keeps the build unique and the chip count at four.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Ho lasciato",
+                  "baseText": {
+                    "de": "Ich habe … gelassen",
+                    "en": "I left"
+                  }
+                },
+                {
+                  "targetText": "la giacca di velluto",
+                  "baseText": {
+                    "de": "die Samtjacke",
+                    "en": "the velvet jacket"
+                  }
+                },
+                {
+                  "targetText": "al banco",
+                  "baseText": {
+                    "de": "an der Theke",
+                    "en": "at the counter"
+                  }
+                },
+                {
+                  "targetText": "dove poco fa ho ritirato l'ombrello.",
+                  "baseText": {
+                    "de": "an der ich vorhin meinen Schirm abgeholt habe",
+                    "en": "where I picked up my umbrella a little while ago"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Ho lasciato",
+                  "baseText": {
+                    "de": "Ich habe … gelassen",
+                    "en": "I left"
+                  }
+                },
+                {
+                  "targetText": "la giacca di velluto",
+                  "baseText": {
+                    "de": "die Samtjacke",
+                    "en": "the velvet jacket"
+                  }
+                },
+                {
+                  "targetText": "al banco dove",
+                  "baseText": {
+                    "de": "an der Theke, an der",
+                    "en": "at the counter where"
+                  }
+                },
+                {
+                  "targetText": "poco fa ho ritirato l'ombrello.",
+                  "baseText": {
+                    "de": "ich vorhin meinen Schirm abgeholt habe",
+                    "en": "I picked up my umbrella a little while ago"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Typed form gap 'resta' is adequately anchored as a present-fact constraint ('ma la larghezza massima resta…'), but for consistency with the deve/illumina conversions a cue-free choice row removes any 'resterà' argument.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "resta",
+                "choices": [
+                  "restano",
+                  "restiamo",
+                  "resta",
+                  "resti"
+                ],
+                "cue": "restare (la larghezza)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "resta",
+                "choices": [
+                  "restano",
+                  "restiamo",
+                  "resta",
+                  "resti"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'abbasso la leva' is glossed as 'den Griff' / 'the handle' while the term list renders leva as Hebel/lever; aligning the dialogue gloss with the term is clearer, meaning is not wrong.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3/baseText/de",
+              "old": "Fangen wir mit den Schrauben an. Eine Schraube dreht durch, wenn ich den Griff herunterdrücke.",
+              "new": "Fangen wir mit den Schrauben an. Eine Schraube dreht durch, wenn ich den Hebel herunterdrücke."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3/baseText/en",
+              "old": "Let’s start with the screws. One screw spins freely when I push the handle down.",
+              "new": "Let’s start with the screws. One screw spins freely when I push the lever down."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "fromSha256": "b45a6252553e48e61b885dd6581fadf3192c1c0eb236d3b7d601211d77351f32",
+      "toSha256": "a76c29a1725927f3c4a764cc6cdeaf97b6ed215170634378754b91422504bb45",
+      "authoritySha256": "1adcb451ff8582367624ad728922eec143a042eed49e59d6c5e9dcacecbd5a1c",
+      "changes": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "In 'Oggi l'ingresso laterale è chiuso, quindi tutti aspettano già lì davanti' the deictic 'lì' most naturally points at the side entrance just called closed; naming the main door makes the reason for moving the meeting point explicit. Cloze is on turn 4, so nothing else is coupled.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "Oggi l'ingresso laterale è chiuso, quindi tutti aspettano già lì davanti.",
+              "new": "Oggi l'ingresso laterale è chiuso, quindi davanti al portone c'è già tanta gente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Heute ist der Seiteneingang geschlossen, deshalb warten schon alle dort vorn.",
+              "new": "Heute ist der Seiteneingang geschlossen, deshalb stehen vor dem Eingangstor schon viele Leute."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "The side entrance is closed today, so everyone’s already waiting out front.",
+              "new": "The side entrance is closed today, so there are already a lot of people outside the main door."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Term 'il passaggio pedonale' (usually understood as a pedestrian crossing) does not occur in the episode, which uses 'cancello … pedonale'; a matching term is more useful.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/terms/5",
+              "old": {
+                "targetText": "il passaggio pedonale",
+                "baseText": {
+                  "de": "der Fußgängerdurchgang",
+                  "en": "the pedestrian passage"
+                }
+              },
+              "new": {
+                "targetText": "il cancello pedonale",
+                "baseText": {
+                  "de": "das Fußgängertor",
+                  "en": "the pedestrian gate"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "German gloss of the learner line uses 'deren Balkon … zeigt', which does not model the taught 'die Wohnung, die … hat' structure stated in the rule and chunk gloss; meaning is still correct.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/1",
+              "old": "Mich interessiert die Wohnung, deren Balkon zum Innenhof zeigt.",
+              "new": "Mich interessiert die Wohnung, die den Balkon zum Innenhof hat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "receiptSha256": "5c3b03a223829fdd6ce2501d50937ad34481a23ca193a91cbf56e2b93692901d",
+      "edits": [
+        {
+          "p": 4,
+          "n": 2,
+          "spoken": "Mi interessa l'appartamento che ha il balcone sul cortile interno.",
+          "old": [
+            "appartamento",
+            "balcone",
+            "cortile"
+          ],
+          "new": [
+            "interessa",
+            "balcone",
+            "cortile"
+          ],
+          "reason": "'appartamento' is elided (l'appartamento -> lappartamento at runtime) so it cannot match as a whole word; proposed trio is non-elided, in spoken order, and meaningful."
+        },
+        {
+          "p": 4,
+          "n": 5,
+          "spoken": "Uso l'interruttore sul pianerottolo dove comincia la seconda rampa.",
+          "old": [
+            "interruttore",
+            "pianerottolo",
+            "rampa"
+          ],
+          "new": [
+            "pianerottolo",
+            "seconda",
+            "rampa"
+          ],
+          "reason": "'interruttore' is elided (l'interruttore -> linterruttore); proposed trio is non-elided, in spoken order, and content-bearing."
+        }
+      ]
+    }
+  ]
+}
