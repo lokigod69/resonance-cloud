@@ -25,7 +25,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.
 - Guided progress and drafts are device-local; kept phrases are account-backed.
 - The machine-authored guided explanation editions and the nine lazy UI packs are not native-proofread.
-- The internal TestFlight release is prepared. The Mac handoff is `frontend/ios/TESTFLIGHT.md`. The configured Apple team still needs to provision `ai.lingwave.app`, archive, upload and assign the build to the owner. Physical iPhone playback, keyboards and Reduce Motion await testing.
+- Lingwave 1.0 (2) is available in the Lingwave Owner internal TestFlight group. The landing header clears the iPhone 17 status bar in the simulator. Physical iPhone playback, keyboards and Reduce Motion await testing. The Mac release guide is `frontend/ios/TESTFLIGHT.md`.
 - Live token expiry is not a socket-cost ceiling; relay/revocation remains.
 - Gemini TTS and xAI Live providers need migration and paid samples; Gemini key is needed. The OpenRouter key returned 401 in September and has not been rechecked. Translation spending needs its own budget.
 - 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
@@ -34,7 +34,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 
 ## Next actions
 - Continue other languages from their first missing ten-lesson path. French and Portuguese B1 each need P6–P10. Use the verified source hashes and check alternative correct answers. Korean intermediate text is available for personal testing in the local reader. Recording and mini books stay paused.
-- Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
+- Owner: rotate the credentials pasted into April–May Codex prompts; the physical iPhone pass; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).
 
 ## Read next

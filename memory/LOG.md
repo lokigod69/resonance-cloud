@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Internal TestFlight builds 1 and 2
+
+Apple processed version 1.0 builds 1 (`0ce0861d`) and 2 (`fad19722`). At 04:05 Manila time the **Lingwave Owner** internal group showed build 2 as **Testing**, with one tester. The listing is **Lingwave: Language Practice** (Apple ID `6831753115`). The bundle ID is `ai.lingwave.app` on team `ZL69STWQHV`.
+
+Build 2 applies the existing top safe-area inset to the fixed header in `frontend/src/components/landing/LandingHero.tsx`. On the muted iPhone 17 simulator (iOS 26.5), the logo and Sign in cleared the status bar at launch and after scrolling. Tapping Sign in opened the login form. Web and iOS builds passed. Verification reported zero lint errors and two warnings. All 29 enabled offline suites passed and five known-stale suites were skipped. The signed archive matched all 4,226 packaged files. Physical iPhone checks remain with the owner.
+
 ## 2026-11-07 — Italian B1 writing complete
 
 Added seventy Italian lessons across P4–P10 to the November text archive and local guided reader. Italian now has 100 written B1 lessons with 100 distinct planned trophy words. The new episodes include German and English translations. Separate writers and reviewers worked from the approved outlines. Reviews addressed ambiguous exercises, sentence ordering, service encounters and agreement across translations. Eight speaking exercises now use anchors the app can recognise in Italian phrases containing elisions. The archive verifier exercises the actual speech grader with text in all seventy lessons.

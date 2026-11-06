@@ -2,6 +2,10 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-11-07 — Use Lingwave: Language Practice in App Store Connect
+
+Apple reported that Lingwave was already in use. The owner delegated the listing-name choice. Use **Lingwave: Language Practice** for the existing app record and **Lingwave** for the installed app. Add each internal-only release explicitly to **Lingwave Owner** so the owner receives the intended build.
+
 ## 2026-11-07 — Preserve the challenge in Korean B2 personal study
 
 The early pattern card precedes the build, challenge and final steer. Model the first learner response there and reserve later turns for their reveal. In the offline reader, identify the second participant in P6 relays and any change of speaker in P7 groups. Show the fresh situation and optional self-check after the conversation. Keep the lesson-level human and recording approvals separate from automated checks and independent editorial reads.
