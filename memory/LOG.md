@@ -2,6 +2,16 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Shared language selection, script practice and guided matching
+
+App commit `4685204f`. The Home picker and lesson card now occupy the same positions for fresh and populated languages. Media Cards and Music follow the active target, as Library already does. All twelve released A1/A2 targets are selectable. Today Options shows one level's paths at a time, remembers the learner's choice per language, and skips matching when there are fewer than two distinguishable pairs in the learner's explanation language, including old lesson drafts. Home and Today offer Hangul, hiragana or Cyrillic practice alongside the lesson.
+
+The alphabet trainers include 141 existing Korean recordings and 79 human-recorded Japanese/Russian symbols from Wikimedia Commons. Each imported recording has its source, author, license, conversion details and hashes beside the audio in `frontend/public/scripts`. The offline importer check decodes every clip and a manifest rebuild rejects incomplete imports. Build mode reuses the matching Korean syllable recording when available. Other combinations and Japanese/Russian example words can use an installed voice. Native-language listening and physical-phone checks remain open.
+
+Frontend/API checks and all twelve UI packs passed. The local suite passed all 28 enabled suites and skipped five known-stale ones. The final browser run passed all 53 Today scenarios together, including the Japanese keyboard checkpoint which had timed out in an earlier run. All 28 runnable Home scenarios passed. UTC rollover and two-tab focus still require manual checks. Additional Chrome passes used real components with test accounts and library data at desktop and phone widths, including a 320px German interface, language-scoped Media, the level picker, Hangul Build and Quiz, and recorded playback in each script. Independent UI and imported-audio reviews passed. The curriculum author confirmed that further intermediate courses are still in offline writing or review.
+
+Across 2,500 lesson definitions and 2,700 authored variants, 20 variants had a single possible pair. Eight localized exercises had duplicate choices across six variants. They now retain only unambiguous IDs. The German B1 opener has six pairs in Spanish and eight in English. A full decode and level check covered the alphabet assets. Twenty-one quieter imported recordings received a constant gain from their original sources.
+
 ## 2026-11-07 — Korean B2 P5–P10 completed as offline text
 
 Added sixty episodes and sixty German/English transfer tasks under `frontend/content-drafts/text-2026-11`. Korean now has 100 written lessons at each of A1, A2, B1 and B2. All twelve targets together have 630 B1 and 340 B2 lessons. The November dashboard and reader include 870 offline intermediate lessons. The reader names the participants in the formal-to-personal relays and group planning scenes.
