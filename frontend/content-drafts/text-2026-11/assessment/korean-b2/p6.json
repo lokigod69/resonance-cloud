@@ -1,0 +1,135 @@
+{
+  "pathNumber": 6,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "Ein Fitnessstudio sagt dir, dass bei Kündigung vor Vertragsende eine Gebühr anfällt, nennt aber keinen Betrag. Erkläre beim Abendessen, was feststeht.",
+        "en": "A gym tells you that cancelling before your contract ends incurs a fee, but gives no amount. Explain at dinner what you know."
+      },
+      "criteria": {
+        "de": "Gib die Auskunft mit ihrer Bedingung wieder und grenze sie von einer unbekannten Zahl ab.",
+        "en": "Report the condition attached to the information and distinguish it from a figure you do not have."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "만기 전에 해지하면 이자가 거의 없다고 하셨어요. 원금은 그대로 돌려받고요. 정확히 얼마인지는 말씀을 안 하셨어요."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Eine Fachperson hat dir zwei Termine mit unterschiedlichen Gebühren genannt und die Wahl dir überlassen. Zu Hause fragt jemand, was empfohlen wurde.",
+        "en": "A specialist gave you two appointments with different fees and left the choice to you. At home someone asks what was recommended."
+      },
+      "criteria": {
+        "de": "Trenne die genannten Möglichkeiten von einer Empfehlung und sage, wer entscheidet.",
+        "en": "Distinguish the offered options from a recommendation and say who makes the choice."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "추천은 없었어요. 둘 다 가능하다고 하셨고, 어느 쪽이 낫다고는 안 하셨어요. 제가 고르면 된다고 하셨어요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "Nach einer Probe sollst du nur deinen eigenen Vortrag kürzen. Eine andere Person fragt, ob ihr Vortrag auch kritisiert wurde. Gib die Rückmeldung weiter.",
+        "en": "After a rehearsal you were asked to shorten only your own talk. Someone else asks whether theirs was criticised too. Relay the feedback."
+      },
+      "criteria": {
+        "de": "Berichte die Anweisung zu deiner Arbeit und ziehe eine klare Grenze beim Bericht über Dritte.",
+        "en": "Report the instruction about your own work and set a clear boundary about third parties."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "제 얘기만 했어요. 발표 자료를 더 짧게 만들라고 하셨어요. 다른 사람 얘기는 없었고, 있었어도 옮기면 안 되죠."
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Bei der Kursanmeldung wurdest du gefragt, ob du deinen Ausweis dabeihast. Eine Kopie hat gereicht. Jemand, der bei einer anderen Stelle bucht, fragt nach den Unterlagen.",
+        "en": "The course registrar asked if you had your ID with you, and accepted a copy. Someone booking through a different office asks what documents to take."
+      },
+      "criteria": {
+        "de": "Gib die Frage und das Ergebnis für deinen Fall wieder. Lass offen, was die andere Stelle verlangt.",
+        "en": "Report the question and the outcome for your case. Leave the other office to specify its requirements."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "서류를 챙겼냐고 물으셨어요. 제 경우 계약서는 사본이면 되고 신분증은 원본이래요. 외국인은 다를 수 있으니까 직접 물어보세요."
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Der Fahrradverleih fragte, ob der Schlauch geplatzt sei. Er würde die Arbeit bezahlen, wenn ihr den Schlauch übernehmt. Eine Freundin hält das für deine Idee. Kläre das Missverständnis.",
+        "en": "The bike hire shop asked whether the inner tube had burst. It offered to cover the labour if you pay for the tube. A friend thinks the idea was yours. Clear up the misunderstanding."
+      },
+      "criteria": {
+        "de": "Kennzeichne Angebot, Urheber und einen möglichen nächsten Schritt getrennt.",
+        "en": "Identify the offer, its source and a possible next step separately."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "부품을 바꿔야 하냐고 물으셨어요. 수리비는 내주시고 출장비 삼만 원만 저희가 내래요. 그분 말씀이에요. 계약서부터 보고 답할까요?"
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Eine Lehrkraft fragte, ob eure Tochter zu Hause von der neuen Sitzordnung erzählt. Ihr habt vereinbart, ihre Beobachtungen bis zum nächsten Freitag zu sammeln und dann zu telefonieren. Berichte es zu Hause in zwei Sätzen.",
+        "en": "A teacher asked whether your daughter mentions the new seating plan at home. You agreed to collect her observations until next Friday and speak by phone that day. Summarise the conversation at home in two sentences."
+      },
+      "criteria": {
+        "de": "Nenne die Vereinbarung und den Zeitpunkt. Schreibe dem Kind keine zusätzliche Aufgabe zu.",
+        "en": "Give the agreed action and time. Keep responsibility for the observation with the adults."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "집에서도 말수가 줄었냐고 물으셨어요. 한마디로, 한 달은 지켜보고 다음 달에 만나자고 하셨어요. 아이 말만 적어 두면 돼요."
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "Das Fundbüro gibt dir für deinen verlorenen Ausweis eine Vorgangsnummer, mit der du später nachfragen kannst. Zu einem Fund oder Abholtermin gab es keine Auskunft. Jemand will den Ausweis morgen abholen. Was sagst du?",
+        "en": "The lost property office gives you a reference number to use when asking for updates about your missing ID. It gives no news of a recovery or collection date. Someone plans to collect your ID tomorrow. What do you tell them?"
+      },
+      "criteria": {
+        "de": "Erkläre den genannten Zweck der Nummer und lasse eine nicht zugesagte Folge offen.",
+        "en": "Explain the stated purpose of the number and leave an outcome open when it has not been promised."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "접수는 됐어요. 찾아 주겠다고 하신 게 아니라 접수 번호를 보험사에 내라고 하시던데요. 회수 여부는 말씀도 없었어요."
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Ein Studio nennt für ein Projekt einen Stundensatz zwischen zwanzig- und dreißigtausend Won. In den ersten zwei Wochen zahlt es neunzig Prozent des später vereinbarten Satzes. Eine Freundin fragt, was du genau verdienen wirst.",
+        "en": "A studio quotes an hourly rate between twenty and thirty thousand won for a project. During the first two weeks it pays ninety percent of the rate agreed later. A friend asks exactly how much you’ll earn."
+      },
+      "criteria": {
+        "de": "Unterscheide den Rahmen, die Bedingung und den Betrag, der noch aussteht.",
+        "en": "Distinguish the range, the condition and the figure that has yet to be specified."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "요약하면 첫째, 연봉은 범위만 말씀하셨어요. 둘째, 수습 석 달은 추후 정해질 기본급의 팔십 퍼센트래요. 확정일은 안 알려주셨어요."
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Bei einer Versammlung wird nur die Besichtigung eines Spielplatzes terminiert. Ein Nachbar spricht von einer bereits beschlossenen Schließung. Gib den Stand wieder.",
+        "en": "Only a playground inspection is scheduled at a meeting. A neighbour says the closure has already been decided. Report the confirmed position."
+      },
+      "criteria": {
+        "de": "Markiere, was bestätigt wurde, und unterscheide es von dem Gerücht.",
+        "en": "Mark what was confirmed and distinguish it from the rumour."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "확정된 건 조사 일정뿐이에요. 다음 달부터 두 달 조사한다는 뜻이었고, 철거 시기는 미정이래요. 봄이라는 건 소문이에요."
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Bei einer doppelten Ticketabbuchung hast du zunächst die Buchungsnummer genannt und die beiden Abbuchungen erklärt. Der Kundenservice bat dich dafür um einen Kontoauszug. Eine Kollegin hat das falsche Ticket bekommen. Was kann sie aus deinem Anruf übernehmen, und was muss sie selbst erfragen?",
+        "en": "When a ticket charge appeared twice, you gave the booking number and explained the two charges. The agent asked you for a bank statement for that issue. A colleague received the wrong ticket. What can she take from your call and what must she ask for herself?"
+      },
+      "criteria": {
+        "de": "Vermittle den Ablauf und trenne die Unterlagen für deinen Fall von der Frage, die im anderen Fall gestellt werden muss.",
+        "en": "Relay the steps and distinguish the evidence for your case from the question the other person needs to ask."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "먼저 본인 확인하고 요금제 오류를 말씀하세요. 은행 내역은 제 경우에 해당하니까 어떤 서류가 필요한지는 직접 물어보세요."
+    }
+  ]
+}

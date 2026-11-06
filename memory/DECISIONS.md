@@ -2,6 +2,10 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-11-07 — Preserve the challenge in Korean B2 personal study
+
+The early pattern card precedes the build, challenge and final steer. Model the first learner response there and reserve later turns for their reveal. In the offline reader, identify the second participant in P6 relays and any change of speaker in P7 groups. Show the fresh situation and optional self-check after the conversation. Keep the lesson-level human and recording approvals separate from automated checks and independent editorial reads.
+
 ## 2026-11-06 — Expose Korean for testing; resume guided text separately from audio
 
 The owner wants to test Korean directly. Include it in onboarding, Today, Library, generation and Speak pickers; preserve separate mode-specific input capabilities. Its 100 A1 and 100 A2 lessons and twelve explanation editions already exist. Resume B1/B2 text authoring and review only. Count a repaired path once. Keep intermediate drafts offline until their own acceptance and integration work is complete. The October stop remains in force for curriculum audio; no replacement TTS provider was selected.

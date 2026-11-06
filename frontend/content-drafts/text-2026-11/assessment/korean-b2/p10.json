@@ -1,0 +1,135 @@
+{
+  "pathNumber": 10,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "Eine Person erwägt, für ein Jahr in eine Wohngemeinschaft zu ziehen. Sie kann jederzeit ausziehen, andere sind auf das Zimmer angewiesen. Gib eine begründete Einschätzung, erkenne den Unterschied an und leite einen Rat ab.",
+        "en": "Someone is considering a year in a shared flat. They can move out any time, while others depend on having the room. Give a reasoned view, acknowledge that difference, and draw a piece of advice from it."
+      },
+      "criteria": {
+        "de": "Deine Schlussfolgerung greift sowohl den möglichen Gewinn als auch die ungleichen Wahlmöglichkeiten auf.",
+        "en": "Your conclusion reflects both the possible benefit and the unequal freedom to choose."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "결론은 떠날 자유가 있어도 머무는 동안은 동네 사람들과 인사하며 관계를 쌓아 보라는 거예요."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Ein Vereinsmitglied sagt, Ehrenamt lasse sich zeitlich nicht begrenzen. Du hast beim letzten Fest länger geholfen. Erkläre die Ausnahme und nenne eine konkrete Grenze für die nächsten Wochen.",
+        "en": "A club member says volunteering cannot be limited to fixed hours. You stayed late for the last event. Explain the exception and state a concrete boundary for the coming weeks."
+      },
+      "criteria": {
+        "de": "Du erkennst das Gegenbeispiel an und formulierst eine Regel, deren Einhaltung sich im Alltag erkennen lässt.",
+        "en": "You acknowledge the counterexample and state a rule whose observance can be seen in everyday life."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "한마디로 밤 아홉 시 이후에는 회사 전화를 안 받는 거예요. 그때부터는 제 시간이니까요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "Ein Lesekreis erwägt automatische Buchempfehlungen. Jemand möchte deshalb jedes Buch von einer App auswählen lassen. Erkläre den Nutzen, gehe auf die Alternative ein und ziehe eine begründete Grenze.",
+        "en": "A reading group is considering automated book suggestions. One member wants an app to choose every book. Explain the benefit, address the alternative, and draw a reasoned boundary."
+      },
+      "criteria": {
+        "de": "Du benennst eine nützliche Aufgabe für das Werkzeug und eine Entscheidung, die bei den Menschen bleiben soll.",
+        "en": "You identify one useful job for the tool and one decision people should retain."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "정리하면 없애자는 게 아니라 어디까지 들일지 먼저 정하자는 거예요. 저는 불까지는 좋고 냉장고가 말을 거는 건 사양이에요."
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Zwei Personen überlegen, in einem schnell arbeitenden Team anzufangen. Eine sucht kurze Entscheidungswege, die andere braucht ungestörte Zeit. Wäge den gleichen Faktor aus beiden Perspektiven ab und gib einen bedingten Rat.",
+        "en": "Two people are considering joining a fast-moving team. One wants quick decisions, the other needs uninterrupted time. Weigh the same factor from both perspectives and offer conditional advice."
+      },
+      "criteria": {
+        "de": "Du zeigst, wie dieselbe Eigenschaft helfen und belasten kann, und nennst die Bedingung für deine Empfehlung.",
+        "en": "You show how the same feature can help and hinder, and state the condition behind your recommendation."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "제 답은 조건부예요. 이동 시간을 줄이고 싶으면 권하지만 조용히 쉴 곳을 찾으시면 다른 동네부터 보세요."
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Jemand möchte nur Wörter für die Reise lernen. Erkläre anhand einer Bitte um Hilfe, was Höflichkeit zur bloßen Information hinzufügt. Leite daraus einen Vorschlag für das Üben ab.",
+        "en": "Someone wants to learn only individual words for a trip. Use a request for help to explain what politeness adds to the information itself, then suggest how to practise."
+      },
+      "criteria": {
+        "de": "Du verknüpfst ein konkretes Sprachbeispiel mit seiner Wirkung auf die andere Person und leitest daraus eine Lernentscheidung ab.",
+        "en": "You connect a specific language example with its effect on the listener and use it to justify a learning choice."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "한마디로 새 단어를 배울 때는 그 말이 들어간 문장을 끝까지 같이 들어 보세요."
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Eine Person sagt, ein kürzerer Arbeitsweg mache jeden glücklich. Benenne einen echten Vorteil, einen Fall, in dem er wenig ändert, und den Maßstab für deine eigene Schlussfolgerung.",
+        "en": "Someone claims a shorter commute makes everyone happy. Name a real benefit, a case in which it changes little, and the criterion for your own conclusion."
+      },
+      "criteria": {
+        "de": "Du unterscheidest Entlastung von einer allgemeinen Garantie und vermeidest eine willkürliche Schwelle für alle.",
+        "en": "You distinguish relief from a universal guarantee and avoid an arbitrary threshold for everyone."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그러니까 제 기준은 금액이 아니라 월세 걱정 없이 잠들 수 있는지예요. 사람마다 필요한 금액은 다르겠죠."
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "Eine Musikgruppe möchte ihr jährliches Nachbarschaftskonzert beibehalten. Bisher trägt eine Person die gesamte Vorbereitung. Verteidige den Sinn des Konzerts und schlage eine tragbare Veränderung der Durchführung vor.",
+        "en": "A music group wants to keep its annual neighbourhood concert. One person has done all the preparation until now. Defend the concert’s purpose and propose a sustainable change to how it is organised."
+      },
+      "criteria": {
+        "de": "Du trennst Zweck und Ablauf, nimmst die Mehrarbeit ernst und schlägst eine konkrete Verteilung vor.",
+        "en": "You separate purpose from procedure, take the workload seriously, and suggest a concrete way to share it."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "결국 함께 모이는 뜻은 지키고 음식은 줄이면 돼요. 올해는 장보기와 설거지도 나눠 맡으면 좋겠어요."
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Ein Schüler sucht seinen ersten Praktikumsplatz. Im Moment gibt es nur ein Angebot. Erkläre, welchen Einfluss Zufall und eigene Vorbereitung haben, und gib ihm ein anwendbares Prinzip.",
+        "en": "A pupil is looking for a first work placement. Only one offer is available at the moment. Explain how chance and preparation each matter, then offer a principle they can act on."
+      },
+      "criteria": {
+        "de": "Du erkennst die begrenzte Auswahl an und formulierst einen eigenen Handlungsspielraum innerhalb dieser Grenze.",
+        "en": "You acknowledge the limited choice and identify something the person can still do within that constraint."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "하나만 꼽으면 고를 수 있을 때는 배울 게 없는 자리에 안 남는다는 거예요. 못 고를 땐 버텼고요."
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Ein Sportverein spart beim Training Strom, fährt aber jedes Wochenende weit zu Spielen. Ordne die kleine Einsparung ein und schlage eine überprüfbare Änderung für die nächste Saison vor.",
+        "en": "A sports club saves electricity during practice but travels a long way to matches each weekend. Put the small saving in perspective and propose a change the club can check next season."
+      },
+      "criteria": {
+        "de": "Du hältst am kleinen Beitrag fest, gewichtest den größeren Einwand und nennst einen konkreten nächsten Schritt.",
+        "en": "You keep the smaller contribution in view, give due weight to the bigger issue, and name a specific next step."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "솔직히 말하면 비행기는 아직 못 줄였어요. 그래서 내년 휴가는 비행기 대신 기차로 가는 걸 먼저 알아보고 있고요."
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Sprich etwa zwei Minuten über deinen Jahresplan für ein Orchesterprobespiel. Erkläre, was du bei Erfolg und nach einem ersten Misserfolg tust. Jemand wendet ein, du könntest es doch jedes Jahr erneut versuchen. Antworte darauf und schließe mit deiner Entscheidungsregel.",
+        "en": "Speak for about two minutes about a year built around an orchestra audition. Explain what you would do if you succeeded and after a first unsuccessful attempt. Someone objects that you could keep auditioning every year. Respond and conclude with your decision rule."
+      },
+      "criteria": {
+        "de": "Dein Beitrag dauert ungefähr zwei Minuten. Mit einem vertrauten Ausdruck leitest du eine Annahme, einen Gegensatz oder deine Schlussfolgerung ein. Du erklärst beide Wege, beantwortest den Einwand und begründest, wann du aufhörst.",
+        "en": "Your response lasts about two minutes. You use a familiar expression to introduce an assumption, contrast, or conclusion. You explain both routes, answer the objection, and justify when you would stop."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "정리하면 두 번 중 한 번만 붙어도 바로 일하고, 삼월과 구월에 모두 떨어지면 다른 자리를 찾아요."
+    }
+  ]
+}

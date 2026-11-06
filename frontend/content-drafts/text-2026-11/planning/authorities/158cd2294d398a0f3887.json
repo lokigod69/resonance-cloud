@@ -1,0 +1,277 @@
+{
+  "pathNumber": 8,
+  "slug": "saying-exactly",
+  "shape": "precision",
+  "authorityNotes": [
+    "Draft scaffold only; bilingual content and graded components to be authored later.",
+    "All ten scenes keep 해요체 for every speaker; no 합쇼체 or recognition-only formal register introduced.",
+    "Every allocated surface appears verbatim as a whole eojeol in you1; no alternative noun surfaces were needed.",
+    "L5 learner describes location, onset and pattern only and names the second monitor as a neutral observation; no self-diagnosis or medical advice.",
+    "L7 rules are tied explicitly to the office sign (안내문대로면) and are not stated as general Korean waste policy.",
+    "L4 example (neighbourhood restaurant regulars on a fixed weekday) is presented as a community practice, not as learner biography.",
+    "L10 detour is the adjacent parallel street; the south entrance is stated as an all-day emergency lane; booth opening at ten is supplied by the official in them0 so the learner's plan stays within the eojeol budget.",
+    "Each THEM turn introduces new information (assumption, test result, written text, edge case) that the learner must react to; later constraints are not foreshadowed."
+  ],
+  "lessons": [
+    {
+      "n": 1,
+      "slug": "define-flexible-hours",
+      "sceneEn": "One-on-one with a manager who heard the learner wants flexible hours and needs a precise definition.",
+      "roleEn": "Team manager",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "clarify",
+        "conclude"
+      ],
+      "trophySurface": "근무제는",
+      "turns": [
+        "유연 근무제를 원하신다고 들었는데, 정확히 어떤 걸 말씀하시는 거예요?",
+        "제가 말하는 유연 근무제는 하루 여덟 시간은 그대로 일하되, 열한 시부터 세 시까지만 다 같이 있으면 되는 거예요.",
+        "저는 아무 때나 나와서 일도 덜 하는 걸로 알았어요. 시간은 안 줄어드는 거죠?",
+        "네, 줄이는 게 아니라 옮기는 거예요. 정확히 말하면 아침에 한 시간 늦게 오고 저녁에 그만큼 더 해요.",
+        "그럼 아홉 시에 고객 통화가 잡힌 날은 어떻게 하실 거예요?",
+        "그런 날은 당연히 아홉 시에 맞춰 나와요. 고객 일정이 먼저지, 제 출근 시간이 먼저는 아니에요."
+      ]
+    },
+    {
+      "n": 2,
+      "slug": "describe-technical-fault",
+      "sceneEn": "IT helpdesk follow-up on a ticket about a laptop that keeps dropping during calls.",
+      "roleEn": "IT helpdesk technician",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "clarify",
+        "compare",
+        "conclude"
+      ],
+      "trophySurface": "화상",
+      "turns": [
+        "노트북이 계속 끊긴다고 하셨는데, 언제 그러는지 조금 더 자세히 말씀해 주시겠어요?",
+        "계속 끊기는 게 아니라 화상 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요.",
+        "저희가 어제 네트워크를 점검했는데 사무실 인터넷은 전혀 문제가 없었어요.",
+        "그럼 인터넷 문제는 아닌 거네요. 그런데 카메라를 끄면 바로 괜찮아지니까, 영상을 보낼 때만 생기는 것 같아요.",
+        "혹시 휴대폰 핫스팟으로 연결했을 때도 똑같이 끊기나요?",
+        "핫스팟에서는 아직 안 해 봤어요. 오늘 오후 회의 때 한번 해 보고 결과를 알려 드릴게요."
+      ]
+    },
+    {
+      "n": 3,
+      "slug": "clear-up-deadline-mixup",
+      "sceneEn": "A colleague delivered by Friday at eleven at night, but the meeting was Friday morning; the learner pins down what was meant.",
+      "roleEn": "Colleague who sent the file late",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "clarify",
+        "explain",
+        "conclude"
+      ],
+      "trophySurface": "시각을",
+      "turns": [
+        "금요일까지라고 하셔서 금요일 밤 열한 시에 보냈는데, 늦었다는 말을 들어서 좀 당황했어요.",
+        "제가 말한 금요일까지는 금요일 밤이 아니라 아침 열 시 회의 전이었어요. 제가 시각을 따로 말했는지 저도 다시 확인해 볼게요.",
+        "메시지를 다시 봤는데 금요일까지라고만 적혀 있었어요. 회의 얘기는 없었고요.",
+        "그러면 그건 제 잘못이에요. 머릿속으로는 회의 전을 생각했는데 글로는 날짜만 쓴 거죠.",
+        "그럼 앞으로 마감을 어떻게 적으면 서로 헷갈리지 않을까요?",
+        "다음부터는 날짜랑 시간을 같이 쓸게요. 예를 들면 금요일 아침 열 시 회의 전까지, 이렇게요."
+      ]
+    },
+    {
+      "n": 4,
+      "slug": "explain-home-culture-gathering",
+      "sceneEn": "A friend asks what the weekly regulars' gathering from the learner's home culture actually is.",
+      "roleEn": "Korean friend",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "compare",
+        "summarize"
+      ],
+      "trophySurface": "단골",
+      "turns": [
+        "저번에 고향 얘기하면서 매주 모이는 모임이 있다고 했잖아요. 그게 정확히 어떤 거예요?",
+        "단골 모임이라고 하는데요, 가입하는 게 아니라 같은 가게에 자주 오는 사람들이 자연스럽게 모이는 거예요. 예를 들면 동네 식당 단골들이요.",
+        "그럼 동호회 같은 거네요? 회원 명단 있고 회비도 내는 그런 거요?",
+        "동호회라기보다는 약속 없이 만나는 이웃 모임에 가까워요. 명단도 없고 회비도 없고, 그냥 그 시간에 오면 되는 거죠.",
+        "그러면 누가 한 달 동안 안 나오면 어떻게 돼요? 뭐라고 안 해요?",
+        "아무도 안 물어봐요. 다시 오면 그냥 자리를 내주는 거고요, 그게 이 모임의 핵심이에요."
+      ]
+    },
+    {
+      "n": 5,
+      "slug": "describe-symptom-precisely",
+      "sceneEn": "GP visit for recurring headaches; the learner describes precisely and the doctor decides.",
+      "roleEn": "General practitioner",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "clarify",
+        "explain",
+        "summarize"
+      ],
+      "trophySurface": "부위는",
+      "turns": [
+        "두통 때문에 오셨다고요. 어떻게 아프신지 말씀해 주세요.",
+        "아픈 부위는 머리 전체가 아니라 오른쪽 눈 뒤쪽이에요. 세게 아픈 건 아닌데 일주일에 서너 번은 그래요.",
+        "세기보다는 시간이 중요해요. 보통 하루 중 언제 시작해서 얼마나 가나요?",
+        "아침에 일어나면 바로 시작해서 점심쯤 가라앉아요. 저녁에는 거의 안 아프고요.",
+        "최근 이 주 사이에 생활에서 달라진 게 있을까요?",
+        "이 주 전부터 사무실에서 모니터를 하나 더 쓰기 시작했어요. 그게 관계가 있는지는 모르겠고, 그냥 바뀐 건 그것뿐이에요."
+      ]
+    },
+    {
+      "n": 6,
+      "slug": "specify-bookshelf-requirements",
+      "sceneEn": "Ordering a made-to-measure bookshelf from a carpenter and specifying exact dimensions.",
+      "roleEn": "Carpenter (workshop owner)",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "rebut",
+        "conclude"
+      ],
+      "trophySurface": "깊이는",
+      "turns": [
+        "책장 맞추신다고 하셨죠. 어떤 크기로 생각하시는지부터 말씀해 주세요.",
+        "높이는 이 미터, 폭은 팔십이고요, 깊이는 사십 센티미터면 좋겠어요. 그리고 선반 높이를 나중에 옮길 수 있게 되나요?",
+        "선반은 구멍 뚫어서 옮기게 할 수 있어요. 그런데 깊이는 보통 삼십이 기본이에요. 사십은 왜 필요하세요?",
+        "서류 상자가 들어가야 하거든요. 상자가 삼십육이라서 삼십이면 앞으로 튀어나와요. 그러니까 기본이 아니라 사십이어야 해요.",
+        "그러면 뒷판을 더 두꺼운 걸로 써야 해서 값이 이십 퍼센트쯤 올라가요. 괜찮으세요?",
+        "네, 괜찮아요. 상자가 들어가는 게 더 중요하니까 그 값으로 사십에 뒷판 두꺼운 걸로 할게요."
+      ]
+    },
+    {
+      "n": 7,
+      "slug": "paraphrase-recycling-sign",
+      "sceneEn": "A new international colleague misreads the office recycling sign and the learner paraphrases it into plain action.",
+      "roleEn": "New international colleague",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "clarify",
+        "conclude"
+      ],
+      "trophySurface": "분리배출",
+      "turns": [
+        "여기 분리배출 안내문이 좀 어려운데요, 재활용 불가라는 말이 무슨 뜻이에요?",
+        "이 사무실 분리배출 안내문에서 재활용 불가는 재활용 통이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠.",
+        "아, 저는 아예 버리면 안 되고 따로 모아 둬야 하는 줄 알았어요.",
+        "그건 아니에요. 다시 말해서 버리지 말라는 게 아니라 재활용 통에만 넣지 말라는 거예요. 안내문에 그렇게 적혀 있어요.",
+        "그럼 기름 묻은 피자 상자는요? 종이니까 재활용 아니에요?",
+        "안내문대로면 그것도 일반 쓰레기예요. 여기 기름 묻은 종이는 흰 봉투라고 따로 적혀 있거든요."
+      ]
+    },
+    {
+      "n": 8,
+      "slug": "explain-retrospective-term",
+      "sceneEn": "A visiting expert from another field genuinely asks what this team means by a retrospective meeting.",
+      "roleEn": "Visiting expert from another field",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "rebut",
+        "summarize"
+      ],
+      "trophySurface": "회고는",
+      "turns": [
+        "저희 쪽에는 없는 말이라서요, 회고 회의라는 게 뭘 하는 자리예요?",
+        "저희 팀에서 회고는 지난 작업을 끝내고 나서 뭐가 잘됐고 뭐가 안됐는지 돌아보는 회의예요. 보통 한 시간쯤, 프로젝트 끝날 때마다 해요.",
+        "그러면 결국 누가 잘못했는지 따지는 자리 아니에요? 그런 회의는 다들 싫어할 것 같은데요.",
+        "아니에요, 누가 잘못했는지 찾는 게 아니라 다음에 뭘 바꿀지 정하는 자리예요. 사람 이름은 아예 안 나와요.",
+        "그럼 실제로 어떻게 진행되는지 예를 하나만 들어 주시겠어요?",
+        "예를 들면 마감이 늦었으면 왜 늦었는지 보고, 다음부터는 검토 기한을 이틀 앞당기기로 정하고 끝나요. 그게 전부예요."
+      ]
+    },
+    {
+      "n": 9,
+      "slug": "correct-misreported-view",
+      "sceneEn": "A colleague told the manager the learner opposes the project; the learner corrects the scope of the report.",
+      "roleEn": "Colleague who relayed the view",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "rebut",
+        "clarify",
+        "summarize"
+      ],
+      "trophySurface": "취지는",
+      "turns": [
+        "팀장님한테 그 프로젝트 반대하신다고 전했어요. 회의에서 그렇게 말씀하셨잖아요.",
+        "제가 말한 취지는 그게 아니에요. 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요. 한 달만 미루자는 거였어요.",
+        "그래도 저는 분명히 지금은 안 된다고 하시는 걸 들었어요. 그게 반대 아니에요?",
+        "지금은 안 된다는 말은 맞아요. 그런데 그건 시기 문제지 하지 말자는 뜻은 아니에요. 하되 늦게 하자는 거죠.",
+        "그럼 팀장님께 제가 다시 전할 수 있게 한 문장으로 말씀해 주시겠어요?",
+        "프로젝트는 찬성하고, 시작 시점만 다음 달로 미루자는 의견이에요. 이렇게 전해 주시면 돼요."
+      ]
+    },
+    {
+      "n": 10,
+      "slug": "describe-festival-traffic-plan",
+      "sceneEn": "A community-centre official needs the street-festival traffic plan in sequence, with the emergency exception and a three-line summary.",
+      "roleEn": "Community-centre official",
+      "secondRoleEn": null,
+      "partnerIds": [
+        "them0",
+        "them2",
+        "them4"
+      ],
+      "moves": [
+        "explain",
+        "clarify",
+        "summarize"
+      ],
+      "trophySurface": "우회로는",
+      "turns": [
+        "부스는 열 시에 연다고 들었는데, 차량 통행은 어떻게 되는지 순서대로 설명해 주시겠어요?",
+        "순서대로 말씀드리면 열 시부터 정오까지는 차가 평소대로 다녀요. 정오부터 다섯 시까지는 일반 차량을 막고, 우회로는 평행 도로예요. 다섯 시부터는 열려요.",
+        "그런데 한 시쯤에 구급차가 지나가야 하면 어떻게 돼요? 그때는 길이 막혀 있을 텐데요.",
+        "그건 괜찮아요. 남쪽 입구는 하루 종일 비상 차로로 비워 두거든요. 막는 건 일반 차량이지 구급차는 아니에요.",
+        "알겠어요. 그럼 게시판에 붙일 수 있게 세 줄로 정리해 주시겠어요?",
+        "첫째, 정오까지는 평소 통행이에요. 둘째, 정오부터 다섯 시까지는 옆길 우회예요. 셋째, 남쪽 입구는 종일 비상 차로예요."
+      ]
+    }
+  ]
+}

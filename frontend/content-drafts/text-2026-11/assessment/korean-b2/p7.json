@@ -1,0 +1,135 @@
+{
+  "pathNumber": 7,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "Für ein Stadtarchiv wollt ihr drei Erinnerungen aufnehmen. Das einzige Mikrofon ist dienstags frei. Yuna hat noch nicht gesagt, in welcher Sprache sie erzählen möchte. Schlag ein Vorgehen vor und lade sie ausdrücklich ein, selbst zu entscheiden.",
+        "en": "Your local archive wants to record three memories. Its only microphone is free on Tuesdays. Yuna has yet to say which language she would like to tell her story in. Suggest a way to organize the recordings and personally invite her to decide."
+      },
+      "criteria": {
+        "de": "Der Vorschlag passt zur Verfügbarkeit des Mikrofons. Yuna wird direkt und ergebnisoffen nach ihrer Sprachwahl gefragt.",
+        "en": "The proposal fits the microphone’s availability. Yuna receives a direct, open invitation to choose her language."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 점심으로 바꾸죠. 민지 씨, 편하신 날이나 원하시는 메뉴 있으세요? 답 주시면 삼십만 원 안에서 정하죠."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Ein Proberaum ist ab zehn frei, das Klavier kommt erst um elf. Verteile zwei vorbereitende Arbeiten und die Aufgabe nach der Lieferung.",
+        "en": "A rehearsal room opens at ten and the piano arrives at eleven. Divide up two jobs that can be done beforehand and the job to do after delivery."
+      },
+      "criteria": {
+        "de": "Die Aufgaben passen zur zeitlichen Reihenfolge und die Beteiligten können der vorgeschlagenen Verteilung zustimmen.",
+        "en": "The jobs fit the order of events and the people involved have a chance to agree to the proposed split."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 아홉 시부터 두 분은 가구를, 저는 박스를 내리고, 열 시에 트럭이 오면 셋이서 바로 싣기로 해요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "Für eine Ausstellung braucht ihr Texte und Fotos. Eine Person ist nächste Woche weg, und gerade wurde eine Führung ergänzt. Schlage eine Übergabe vor und übernimm etwas selbst.",
+        "en": "You need text and photos for an exhibition. One person is away next week, and a guided tour has just been added. Propose a handover and take on one job yourself."
+      },
+      "criteria": {
+        "de": "Die Antwort erklärt, was vor der Abwesenheit fertig sein kann und wer sich um die neue Aufgabe kümmert.",
+        "en": "The reply says what can be ready before the absence and who will take on the new task."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "시연은 제가 맡을게요. 대신 초안 검토는 현우 씨가 해 주시겠어요? 그렇게 정리해도 괜찮죠?"
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Eine Person übt Geige, die andere bereitet sich vormittags auf Prüfungen vor. Tausche eine konkrete Zusage gegen eine passende Bitte ein.",
+        "en": "One housemate plays the violin and the other revises for exams in the mornings. Offer a concrete commitment and ask for a workable arrangement in return."
+      },
+      "criteria": {
+        "de": "Die eigene Zusage und die an die andere Person gerichtete Bitte haben unterschiedliche handelnde Personen.",
+        "en": "The speaker commits to their own action and asks the other person to take a different action."
+      },
+      "witnessTurnIndex": 3,
+      "witnessKo": "오후 두 시까지는 제가 조용히 할 테니까 밤에 출근 준비하실 때는 소리를 조금만 줄여 주시겠어요?"
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Beim Reparaturtreff fällt möglicherweise der einzige Elektriker aus. Auch ohne ihn dürfen Fahrräder repariert werden, Elektrogeräte müssen warten. Zwei Helfer können pro Schicht je ein Rad betreuen. Vereinbare einen Ersatzplan für fünf Fahrräder.",
+        "en": "The repair café’s only electrician may be absent. Without him the volunteers can still work on bicycles, but electrical items must wait. Two helpers can handle one bike each per shift. Agree on a fallback that accommodates five bicycles."
+      },
+      "criteria": {
+        "de": "Die Antwort trennt zugelassene und aufgeschobene Arbeiten und verteilt alle fünf Fahrräder auf genügend Schichten.",
+        "en": "The reply distinguishes which jobs can go ahead and which must wait, and schedules enough shifts for all five bikes."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "비가 오면 일요일로 옮기고, 조별로 열 명씩 시간대를 나누죠. 기다리는 분들은 다음 조에 참여하시면 돼요."
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Eure Radiosendung muss fünf Minuten kürzer werden. Ihr könnt die Fragerunde streichen oder die Einleitung zu jedem der fünf Beiträge um eine Minute kürzen. Die Regie braucht morgen die Entscheidung. Wäge die Möglichkeiten ab.",
+        "en": "Your radio programme must run five minutes shorter. You can drop listener questions or shave a minute off the introduction to each of five segments. The producer needs your decision tomorrow. Weigh the options."
+      },
+      "criteria": {
+        "de": "Die Antwort bevorzugt eine konkrete Alternative, erklärt ihre Auswirkung auf die Beteiligung der Zuhörer und legt den nächsten Schritt bis morgen fest.",
+        "en": "The reply favours one option, explains its effect on listener participation and sets a decision step for tomorrow."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 내일까지 단체방에서 격주 대관과 온라인 연습안에 찬반을 받고, 모레 장소에 답을 주는 걸로 해요."
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "Bei einem Ausflug ist das Boot teurer als geplant. Nur eine Person kann es steuern. Formuliere eine Entscheidung mit überprüfbarer Bedingung und Plan B.",
+        "en": "Boat hire on a trip costs more than expected. Only one person can steer. Formulate a decision with a condition you can check and a fallback."
+      },
+      "criteria": {
+        "de": "Kosten und verfügbare Person werden berücksichtigt. Der Ausweichplan greift, falls die Bedingung nicht erfüllt ist.",
+        "en": "The plan takes account of both cost and the available person. It specifies what will happen if the condition fails."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "장거리는 기차로 가되 숙소에서 그만큼 못 아끼면 현지에서는 버스로 다니죠. 두 분은 숙소 가격을 알아봐 주세요."
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Eine Jugendversammlung dauert zwanzig Minuten. Die Kassenwartin kann nur zu Beginn bleiben. Priorisiere ihre Entscheidung und verschiebe einen anderen Punkt sinnvoll.",
+        "en": "A youth council has twenty minutes. The treasurer can stay only at the start. Put the decision involving her first and find another way to handle one item."
+      },
+      "criteria": {
+        "de": "Die vorgeschlagene Reihenfolge richtet sich nach der Anwesenheit. Ein anderer Kommunikationsweg entlastet die knappe Sitzung.",
+        "en": "The proposed order reflects who can attend. Another channel takes pressure off the short meeting."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "정리하면 이사님 안건은 첫 십 분에 올리고, 결정이 필요한 두 개는 그 뒤에, 나머지는 메일로 돌리는 거예요."
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Zwei Forscherteams brauchen am Mittwoch dieselbe Unterwasserkamera. Das andere Team fährt früh mit dem Boot hinaus. Du musst deine Proben ab vierzehn Uhr fotografieren. Biete der Gegenseite die erste Nutzung an und sichere die Rückgabe ab.",
+        "en": "Two research teams need the same underwater camera on Wednesday. The other team’s boat leaves early. You must photograph your samples from two in the afternoon. Offer them first use and secure its return."
+      },
+      "criteria": {
+        "de": "Das andere Team erhält die Kamera für die Ausfahrt. Die Gegenleistung legt eine konkrete Übergabe rechtzeitig vor den Probenfotos fest.",
+        "en": "The other team gets the camera for the boat trip. The return arrangement specifies a handover in time for the sample photographs."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 손님 오시는 쪽이 먼저 쓰세요. 대신 다음 주 같은 시간은 저희가 쓰는 걸로 해 주시겠어요?"
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Für den Büchertausch steht fest: Zwei Freiwillige betreuen den Stand, der Hausmeister verwahrt den Schlüssel, beim ersten Mal werden höchstens fünfzehn Bücher angenommen. Fasse die Vereinbarung in drei weitergebbare Punkte.",
+        "en": "For a book exchange, everyone has agreed that two volunteers will run the stand, the caretaker will keep the key and the first exchange will accept at most fifteen books. Give a three-point summary someone else can pass on."
+      },
+      "criteria": {
+        "de": "Die Zusammenfassung gibt die beiden Zuständigkeiten und die vereinbarte Begrenzung von fünfzehn Büchern korrekt wieder.",
+        "en": "The summary accurately reports both responsibilities and the agreed limit of fifteen books."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "정리하면 세 가지예요. 물은 참여 세대가 돌아가며 주고, 관리소는 열쇠와 안전을 맡고, 첫해는 열 세대로 시작해요."
+    }
+  ]
+}

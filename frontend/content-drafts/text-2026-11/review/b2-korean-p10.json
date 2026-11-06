@@ -1,0 +1,648 @@
+{
+  "pathNumber": 10,
+  "scope": "Korean B2 offline text and personal-study transfer tasks. Native-human, device and audio review remain separate.",
+  "lessonSha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+  "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+  "independentVerdict": "PASS",
+  "fableDisposition": "resolved",
+  "independent": {
+    "lessonSha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+    "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+    "verdict": "PASS",
+    "wholePathReview": {
+      "pathNumber": 10,
+      "verdict": "PASS",
+      "lessonSha256": "c7eebcb5f5d37c972982c492b659e9415eb418a78e2337d670a6607d24b5a1e6",
+      "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+      "reviewer": "Independent read-only Codex reviewer, P9/P10",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "initialFindings": [
+        "Early cards reproduced later replies. One transfer described the opposite action in its translations.",
+        "Movable chunks, unclear exam chronology, register shifts and a two-minute rubric that omitted the connector."
+      ],
+      "recheck": "Reread all ten six-turn exchanges, patterns, chip windows, blanks and probes. Early cards now model the opening stance. L1 and L5 constrain the interchangeable chips. L3 distinguishes saving work from feeling at ease. L10 makes the September decision prospective and the task checks sustained speech, a previous framing expression, an objection and a stopping rule.",
+      "remaining": [
+        "Optional copy polish: the Korean closing is one sentence. Its German and English translations use two sentences."
+      ]
+    },
+    "postReviewCopyCheck": {
+      "verdict": "PASS",
+      "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+      "reviewer": "Fresh read-only Codex reviewer for the final copy and answer presentation changes",
+      "scope": "Verified the five final source files against the complete reviewed versions. Reversing all eight field edits in memory reproduced all five whole-file review hashes. The four time choices have exactly one answer grounded in the 9–11 lift booking. The closing Korean, English and German summaries each express both outcomes in one sentence. All five final source and assessment hashes matched; no material findings."
+    }
+  },
+  "model": "claude-fable-5-1",
+  "editorialReads": [
+    {
+      "stage": "review-resumed-receipt.json",
+      "receiptSha256": "969f4c89d41c90aac8e859cdb323d55e2a008a21243c81d537a1d0eb7ddeff5a",
+      "sourceSha256": "fef1f6fe982cbe44cb910420a19d0d8a4c47838392bf27c6b9c8c24b0f981435",
+      "assessmentSha256": "f90e7867d0dd1ef7ae3bbbf0be8c7137409ba9f90cbcb7e50bb0aa0421409ce1",
+      "pathNumber": 10,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Korean dialogue natural; them2 (privilege to leave) and them4 (one-sentence rule) land as staged; 결론은 close used, but DE/EN of the conclude move render 결론은 as 'Rat/advice'; pattern example 2 Korean (-는 대신) does not match its DE/EN (-되)."
+        },
+        {
+          "n": 2,
+          "reason": "그렇다고 해서 concede correctly absorbs the 'stayed late twice' challenge; them4 asks for a number and you3 gives a time-based boundary; DE of 한마디로 rendered 'Konkret'."
+        },
+        {
+          "n": 3,
+          "reason": "Argument chain (손 vs 마음, 번 시간이 어디로 가느냐, 어디까지 들일지) is sound; but situation/caption/interlocutor describe a 'Gesprächsrunde' while them1/them2 ('이거 덕분에') clearly show a friend's own smart home as in the architecture."
+        },
+        {
+          "n": 4,
+          "reason": "-(이)라기보다는 …에 가까워요 refine carrier used; 제 말은 rebut grounded in 지하철 삼 분; conditional close works; DE base switches du (them) → Sie (you3) within one lesson."
+        },
+        {
+          "n": 5,
+          "reason": "Subject-honorific illustration (동생은 가요/할머니는 가세요) is linguistically correct and the pattern rule describes it truthfully; build chunks 누구 얘기를 / 누구한테 are freely permutable in natural Korean."
+        },
+        {
+          "n": 6,
+          "reason": "Threshold view argued without opposite slogan; 꼭 그렇지는 않아요 + 제 경우에는 handle them2; pattern highlights 제 경우에는 while carrierTags/moveBlank target 꼭 그렇지는 않아요; term 불안 DE glossed 'Unsicherheit'."
+        },
+        {
+          "n": 7,
+          "reason": "…다고 봐요 open, 그렇게만 보기는 어려워요 rebut with concrete counterexample, 결국 close naming keep/change; respectful 해요체 toward older relative maintained."
+        },
+        {
+          "n": 8,
+          "reason": "-다는 점은 인정해요 concede then 다만 own contribution; principle extracted on them4; interlocutor role 'Careers-event interviewer' contradicts 선배님/저는 계획이 자꾸 어긋나서요 (a junior asking a senior)."
+        },
+        {
+          "n": 9,
+          "reason": "Concede scale (숫자로만 보면), argue consistency, admit flying honestly and name a checkable next step; 꾸준함을 저한테 확인하는 거예요 slightly unidiomatic."
+        },
+        {
+          "n": 10,
+          "reason": "-다고 가정하면 … 반대로 … two-branch plan with -되 stopping rule, survives them2, compresses to one line; 해요체 throughout per 'else 해요체'; build has 6 chunks vs 5 in L1–9."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "field": "dialogue[5].base (de,en) and pattern.examples[0].base (de,en)",
+          "issue": "결론은 … 보라는 거예요 is translated as 'Mein Rat ist' / 'My advice is'; the speech move frame is 'conclusion', and the terms entry glosses 결론은 as 'mein Fazit ist / my conclusion is'. Also the concessive 있어도 is placed as an afterthought.",
+          "fix": "de: \"Mein Fazit ist: Auch wenn du jederzeit wegkannst, grüß die Leute im Viertel und bau Beziehungen auf, solange du da bist.\" en: \"My conclusion is: even if you're free to leave, say hello to the people in your neighbourhood and build relationships while you're there.\" Apply identically in both locations; witnessKo unchanged."
+        },
+        {
+          "n": 1,
+          "field": "pattern.examples[1].targetText",
+          "issue": "레시피를 따르는 대신 reads as 'instead of following the recipe', but DE/EN say 'follow the recipe, but decide the salt yourself' (-되 sense).",
+          "fix": "targetText: \"결론은 레시피를 따르되 소금만큼은 직접 맛보고 정하라는 거예요.\" (also exercises the architecture close frame 결론은 …-되 …는 거예요); keep base de/en; highlights unchanged."
+        },
+        {
+          "n": 2,
+          "field": "dialogue[5].base.de",
+          "issue": "한마디로 rendered as 'Konkret'; terms gloss is 'kurz gesagt'.",
+          "fix": "de: \"Kurz gesagt: Nach neun Uhr abends nehme ich keine Anrufe von der Arbeit mehr an. Ab da gehört die Zeit mir.\" Apply the same in pattern? (not used there) — only dialogue[5]."
+        },
+        {
+          "n": 3,
+          "field": "situation (de,en), sceneCaption (de,en) prefix sentence, interlocutors[0].role (de,en)",
+          "issue": "Setting says 'Gesprächsrunde/discussion group', but them1 '불도 커튼도 다 자동이에요' and them2 '이거 덕분에 … 벌어요' are a friend showing their own smart home (architecture L3). Learner is primed for the wrong scene.",
+          "fix": "situation.de: \"Ein Freund zeigt dir stolz sein neues Smart-Home und fragt, warum du so zurückhaltend bist.\" situation.en: \"A friend proudly shows you their new smart-home setup and asks why you're so lukewarm.\" sceneCaption: same sentence + existing Korean quote. interlocutors[0].role: de \"Freund\", en \"Friend\"."
+        },
+        {
+          "n": 4,
+          "field": "dialogue[0].base.de, dialogue[2].base.de, dialogue[4].base.de",
+          "issue": "DE them-turns use 'du' (Gefällt es dir, Würdest du) while you3 DE uses 'Sie/Suchen Sie'; Korean uses honorific -세요 both ways.",
+          "fix": "dialogue[0].de: \"Wie ist es, hier zu leben? Gefällt es Ihnen wirklich?\"; dialogue[4].de: \"Würden Sie jemandem wie mir empfehlen, hierher zu ziehen?\"; dialogue[2].de may stay ('Ehrlich gesagt klingt das einfach wie Gejammer.'). Keep you3 DE as is."
+        },
+        {
+          "n": 5,
+          "field": "build.chunks",
+          "issue": "Chunks '누구 얘기를' and '누구한테' are freely permutable ('누구한테 누구 얘기를 하느냐에 따라' is equally natural); exact-order grading would unfairly reject a correct sentence.",
+          "fix": "chunks: [\"같은 동사를\",\"써도\",\"누구 얘기를 누구한테\",\"하느냐에\",\"따라\"]; distractors unchanged. recall/cloze/speak untouched."
+        },
+        {
+          "n": 5,
+          "field": "terms[5].base",
+          "issue": "DE 'die Großmutter' vs EN 'as for my grandmother' not equivalent for 할머니는.",
+          "fix": "de: \"was meine Großmutter angeht\"."
+        },
+        {
+          "n": 6,
+          "field": "terms[4].base.de",
+          "issue": "불안은 glossed 'die Unsicherheit'; 불안 is Angst/Unruhe (EN 'anxiety' is right).",
+          "fix": "de: \"die Angst, Unruhe\"."
+        },
+        {
+          "n": 6,
+          "field": "pattern.examples[0].highlights and carrierTags",
+          "issue": "Pattern highlights only 제 경우에는, while cloze moveBlankIndex 0 and carrierTags target 꼭 그렇지는 않아요; the explain move is taught as two linked parts.",
+          "fix": "pattern.examples[0].highlights: [\"꼭 그렇지는 않아요\",\"제 경우에는\"]; carrierTags add {\"surface\":\"제 경우에는\",\"status\":\"productive\"}."
+        },
+        {
+          "n": 8,
+          "field": "interlocutors[0].role (de,en)",
+          "issue": "them1 calls the learner 선배님 and says 저는 계획이 자꾸 어긋나서요; the speaker is a junior seeking advice (architecture: mentoring, junior asks), not an interviewer.",
+          "fix": "de: \"Berufseinsteigerin\", en: \"Junior attendee\". situation/caption can stay (careers event) as the junior approaches you there."
+        },
+        {
+          "n": 9,
+          "field": "dialogue[3].targetText (optional)",
+          "issue": "'꾸준함을 저한테 확인하는 거예요' is slightly unidiomatic; natural is 스스로/저 자신한테.",
+          "fix": "OPTIONAL: \"… 그래도 기분 때문만은 아니고, 꾸준함을 스스로 확인하는 거예요.\" If applied, update cloze.segments[4].text to \" 기분 때문만은 아니고, 꾸준함을 스스로 확인하는 거예요.\" and pattern? (not quoted there); speak tokens unchanged (꾸준함을 remains)."
+        },
+        {
+          "n": 2,
+          "field": "build.distractors (optional)",
+          "issue": "'어디 있더라도' yields a grammatical sentence (경계선이 어디 있더라도 문제예요), only ruled out by context.",
+          "fix": "OPTIONAL: replace \"어디 있더라도\" with \"어디 있느냐로\"."
+        },
+        {
+          "n": 3,
+          "field": "build.distractors (optional)",
+          "issue": "'손을 더해' forms a grammatical, semi-plausible alternative (손을 더해 주는 건 분명한데).",
+          "fix": "OPTIONAL: replace \"손을 더해\" with \"손이 덜어\"."
+        },
+        {
+          "n": 6,
+          "field": "build.chunks (optional)",
+          "issue": "'분명히' can also precede 생계가 grammatically (scope shift); harmless adverb permutation but exact grading may reject it.",
+          "fix": "OPTIONAL: chunks [\"생계가\",\"흔들릴 때\",\"오는\",\"불안은\",\"분명히 줄여 줘요.\"]."
+        },
+        {
+          "n": 10,
+          "field": "terms[3].base.de (optional)",
+          "issue": "'Qualifikationsprüfung' vs dialogue 'Zertifikatsprüfung' for 자격시험.",
+          "fix": "OPTIONAL: align to \"bei der Zertifikatsprüfung\"."
+        }
+      ],
+      "remainingHolds": [
+        "L10 build has 6 chunks (L1–9 have 5): confirm it is within the schema's chunk bound; if the bound is 5, merge \"바로 일을\"+\"시작하고,\" into \"바로 일을 시작하고,\"."
+      ]
+    },
+    {
+      "stage": "review-final-receipt.json",
+      "receiptSha256": "2e4abe45acb5e2d902f341fa15fa7f9d430d1535462b795883e9dc48b656f056",
+      "sourceSha256": "3a75dd494f6abe71f977d4865d4983d7dad214b5f43faa4744a9a1115548bca6",
+      "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+      "pathNumber": 10,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "냐…냐로 나누기는 어려워요 reframes the dichotomy, you3 concedes the privilege, you5 is a genuine one-sentence rule; earlier 결론은='Fazit/conclusion' and 재택이냐 출근이냐 example repairs verified; build order unique (상실이냐로 carries 로), decoys 상실이었다면/나뉜대서 ungrammatical in slot; cloze/synthesis variants all fit; recall decoys contextually impossible; assessment prompt (shared flat) transfers without answering."
+        },
+        {
+          "n": 2,
+          "reason": "Redefinition ratio→boundary, concession keeps the line, you5 gives the requested number (nine o'clock); 한마디로='Kurz gesagt' fixed; 어디 있더라도 decoy replaced; 그렇다고/그렇다고 해도 both work in context; recall decoys 모서리/지평선/곡선 form-unique and absurd in context; haeyo throughout, DE 'du' consistent."
+        },
+        {
+          "n": 3,
+          "reason": "Scene now friend's own smart home, matching them1/them2; saved-hour vs feeling-relaxed contrast present; you5 'decide how far to let it in' avoids all-or-nothing; 손을 더해 decoy replaced; cloze 관건은/중요한 건 and 휴대폰이/핸드폰이 all fit; assessment (reading-group app) is a real transfer."
+        },
+        {
+          "n": 4,
+          "reason": "라기보다는…에 가까워요 compare, rebut with concrete subway example, conditional recommendation; DE them-turns now Sie-consistent with you5; synthesis frame 제 답은 조건부예요 and variants 경우에/상황에 따라 달라요 fit before the period; recall decoys 두께가/깊이가/길이가 unusable."
+        },
+        {
+          "n": 5,
+          "reason": "Build repaired by moving 누구 얘기를 into framePrefix, so order is unique; 할머니는 DE/EN now equivalent; the 가요/가세요 illustration is linguistically correct; but them2 '대부분 학생들은 … 하거든요' and them4 '초급자한테 조언' are a teacher's voice (architecture: Korean teacher), while role/situation prime 'Study partner / whether more vocabulary suffices'."
+        },
+        {
+          "n": 6,
+          "reason": "Replacement position pattern (지는 못해도 … 분명히 / 아야 … 자리도 생기고요) truthful and modelled on turn 1 (card in first room); 분명히 merged with 줄여 줘요 so no scope permutation; 불안=Angst/Unruhe fixed; threshold view argued without a fixed amount; however you5 DE/EN drop the contrast 금액이 아니라, which is the core of the conclude move against them4's demand for a figure."
+        },
+        {
+          "n": 7,
+          "reason": "쪽은 아니에요 + 은 지키면서 … 은 바꿀 수 있다고 봐요 separates purpose from form; rebut gives a counter-observation, conclusion names keep (gathering) and change (food, shopping, washing-up); respectful haeyo toward older relative; chunk 모이는 뜻은 지키면서 could in principle be inserted after 준비하는 방식은 with a pause, but that reading is marked and unlikely—not flagged."
+        },
+        {
+          "n": 8,
+          "reason": "Role corrected to junior; adaptation-not-plan, luck conceded with 점은 인정해요, principle extracted with honest 못 고를 땐 버텼고요; build order unique; recall decoy 직선을 (and weaker 곡선을) is contextually plausible with 미리 그린 게 아니라 … 옆으로 한 칸씩 옮긴 (metaphor of drawing a straight line), so a learner could reasonably pick it."
+        },
+        {
+          "n": 9,
+          "reason": "P9-specific checks (floor chunks L1–3, parked question L7) do not apply to this path; as P10 L9: scale conceded, identity/consistency argued, flying admitted with a next step; 스스로 확인하는 fixed; cloze/synthesis variants fit; build chunks 일회용품을 and 하루에 한 개 are freely permutable (하루에 한 개 일회용품을 덜 쓰는 is equally natural), so exact order grading rejects a correct sentence."
+        },
+        {
+          "n": 10,
+          "reason": "haeyo interviewer within architecture allowance; exam chronology March→September consistent across you1/you3/you5, stopping rule 'second attempt only', earned ending on either success in one sentence; cloze 두 번까지만/재시험까지만 fit; assessment is a true two-minute transfer with a real objection and no answer in prompt; but build chunk 여기 남아서 can precede 자격시험에 붙는다고 가정하면 giving a natural alternative sentence that exact grading would reject."
+        }
+      ],
+      "findings": [
+        {
+          "n": 6,
+          "field": "dialogue[5].base (de,en) and pattern none (turn 5 not in pattern)",
+          "issue": "Korean '제 기준은 금액이 아니라 월세 걱정 없이 잠들 수 있는지예요' contrasts 'not an amount but …'; both DE ('Für mich zählt also, ob …') and EN ('So my test is whether …') omit 금액이 아니라, losing the move's refusal of the figure them4 demanded.",
+          "fix": "dialogue[5].base.de = \"Mein Maßstab ist also nicht der Betrag, sondern ob ich ohne Sorgen um die Miete einschlafen kann. Wie viel man dafür braucht, ist von Mensch zu Mensch verschieden.\"; dialogue[5].base.en = \"So my criterion isn't an amount, it's whether I can fall asleep without worrying about the rent. The amount it takes will vary from person to person.\" (no other occurrence of this base text in the lesson)"
+        },
+        {
+          "n": 9,
+          "field": "build.framePrefix, build.chunks, build.frameSuffix",
+          "issue": "Chunks '일회용품을' and '하루에 한 개' are freely permutable; '하루에 한 개 일회용품을 덜 쓰는 선택이 쌓이면' is a fully natural correct sentence that exact-order grading rejects.",
+          "fix": "build.framePrefix = \"세상을 바꾸려는 건 아니에요. 일회용품을 \"; build.chunks = [\"하루에 한 개\",\"덜 쓰는\",\"선택이\",\"쌓이면\",\"제가 어떤 사람인지가\"]; build.frameSuffix = \" 정해지거든요.\"; keep distractors [\"쌓였도록\",\"선택이라고요\"] (both still ungrammatical in every slot). Recall/trophy 일회용품을 unaffected."
+        },
+        {
+          "n": 10,
+          "field": "build.chunks",
+          "issue": "'여기 남아서 자격시험에 붙는다고 가정하면 바로 일을 시작하고' (assuming I stay here and pass) is a grammatical, natural permutation; exact grading would reject it.",
+          "fix": "build.chunks = [\"자격시험에\",\"붙는다고\",\"가정하면 여기 남아서\",\"바로 일을\",\"시작하고,\"]; framePrefix/frameSuffix/distractors unchanged (붙었나요, 가정대로는 remain ungrammatical in context)."
+        },
+        {
+          "n": 8,
+          "field": "recall.fallbackChoices",
+          "issue": "Decoy '직선을' (and to a lesser degree '곡선을') is contextually plausible: '직선을 미리 그린 게 아니라 거절당할 때마다 옆으로 한 칸씩 옮긴 결과' reads as a coherent metaphor with 그리다, so it is not a safe wrong answer.",
+          "fix": "recall.fallbackChoices = [\"통로를\",\"진료를\",\"진로를\",\"진동을\"] (acceptedAnswers stay [\"진로를\"])."
+        },
+        {
+          "n": 5,
+          "field": "interlocutors[0].role (de,en); situation (de,en); sceneCaption (de,en) prefix sentence",
+          "issue": "them2 '대부분 학생들은 어휘가 제일 힘들다고 하거든요' and them4 asking for advice to beginners are a teacher's voice (architecture L5: Korean teacher), but the learner is primed with 'Lernpartner / Study partner' and a situation about whether more vocabulary suffices, which them1 does not ask.",
+          "fix": "interlocutors[0].role = {\"de\":\"Koreanischlehrerin\",\"en\":\"Korean teacher\"}; situation = {\"de\":\"Deine Koreanischlehrerin fragt, was dir beim Lernen der Sprache am schwersten gefallen ist.\",\"en\":\"Your Korean teacher asks what was hardest for you about learning the language.\"}; sceneCaption.de = \"Deine Koreanischlehrerin fragt, was dir beim Lernen der Sprache am schwersten gefallen ist. „한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.“\"; sceneCaption.en = \"Your Korean teacher asks what was hardest for you about learning the language. “한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.”\". Dialogue, Korean, build, cloze, recall unchanged."
+        },
+        {
+          "n": 7,
+          "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+          "issue": "Open closing frame: '한마디로 함께 모이는 뜻은 지키고 음식은 줄이면 돼요' is natural and 한마디로 is a path-recycled connector (L2, L5); typed recall currently rejects it.",
+          "fix": "acceptedAnswers = [\"결국\",\"정리하면\",\"그러니까\",\"한마디로\"]"
+        },
+        {
+          "n": 6,
+          "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+          "issue": "'정리하면 제 기준은 금액이 아니라 …' is a natural recycled closing connector that typed grading rejects.",
+          "fix": "acceptedAnswers = [\"그러니까\",\"그래서\",\"결국\",\"정리하면\"]"
+        },
+        {
+          "n": 4,
+          "field": "synthesis.blanks[0].acceptedAnswers and dialogue[5].base.de (optional)",
+          "issue": "Bare '조건부예요' is a natural shortened form of the modelled frame; DE 'Das kommt darauf an.' drops the explicit 'answer' frame that the synthesis blank targets (EN 'It depends.' likewise but consistent with each other).",
+          "fix": "acceptedAnswers = [\"제 답은 조건부예요\",\"조건부예요\",\"경우에 따라 달라요\",\"상황에 따라 달라요\"]; optionally dialogue[5].base.de = \"Meine Antwort ist an eine Bedingung geknüpft. …\" and base.en = \"My answer comes with a condition. …\" (rest of both sentences unchanged)."
+        },
+        {
+          "n": 1,
+          "field": "pattern.examples[1].base.de (optional)",
+          "issue": "'Homeoffice oder Büro lässt sich schwer trennen' reads as 'hard to keep home office and office apart', not '나누기는 어려워요' (hard to split into either/or); EN is correct.",
+          "fix": "base.de = \"Das lässt sich schwer in Homeoffice oder Büro einteilen. Für mich hängt das davon ab, was an dem Tag anliegt. Keins von beidem passt immer.\""
+        },
+        {
+          "n": 1,
+          "field": "dialogue[2].base (de,en) (optional)",
+          "issue": "'여기 사람들은 그게 안 되고요' is a flat 'can't'; DE/EN add softening 'nicht so einfach / isn't that easy'.",
+          "fix": "base.de second sentence = \"Die Menschen von hier können das nicht.\"; base.en second sentence = \"People from here can't.\""
+        },
+        {
+          "n": 10,
+          "field": "terms[3].base.en (optional)",
+          "issue": "'in the qualifying exam' vs dialogue EN 'certification exam' for 자격시험 (DE already aligned).",
+          "fix": "base.en = \"in the certification exam\""
+        },
+        {
+          "n": 5,
+          "field": "pattern.label.de (optional)",
+          "issue": "DE label 'Einen Vergleich mit einer Bedingung begründen' is not equivalent to EN 'Rank two things and explain the dependency'.",
+          "fix": "label.de = \"Zwei Dinge einstufen und die Abhängigkeit erklären\""
+        }
+      ],
+      "remainingHolds": []
+    }
+  ],
+  "earlyTeachingCards": {
+    "receiptSha256": "f9534bdaa8f845dc83a97b224eb290648c8d16278e4c4dfc5b3e94cb2c28436e",
+    "lessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "placement": "The pattern card appears before the challenge and final steer. The model comes from the first learner turn. The transfer example uses a separate situation."
+  },
+  "editorialClosure": {
+    "pathNumber": 10,
+    "verdict": "PASS",
+    "lessonSha256": "c7eebcb5f5d37c972982c492b659e9415eb418a78e2337d670a6607d24b5a1e6",
+    "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+    "sourceReviewReceiptSha256": "2e4abe45acb5e2d902f341fa15fa7f9d430d1535462b795883e9dc48b656f056",
+    "findings": [
+      {
+        "n": 6,
+        "field": "dialogue[5].base (de,en) and pattern none (turn 5 not in pattern)",
+        "disposition": "resolved",
+        "reason": "Edits at lessons/5/dialogue/5/base/de and /en applied exactly as proposed; both now render 금액이 아니라 ('nicht der Betrag, sondern ob …' / 'isn't an amount, it's whether …'), matching the Korean refusal of a figure. Turn 5 is not in the pattern, so no early give-away."
+      },
+      {
+        "n": 9,
+        "field": "build.framePrefix, build.chunks, build.frameSuffix",
+        "disposition": "resolved (equivalent design)",
+        "reason": "Applied as prefix '세상을 바꾸려는 건 아니에요. 일회용품을 ', chunks ['하루에 한 개','덜','쓰는','선택이','쌓이면'], suffix ' 제가 어떤 사람인지가 정해지거든요.'. Differs from the suggestion (덜/쓰는 split, 제가 어떤 사람인지가 kept in suffix) but is equivalent: 5 chips, exactly one natural order, 일회용품을 now fixed in the frame so the permutation is gone; distractors 쌓였도록/선택이라고요 remain ungrammatical in every slot; speak tokens 일회용품을/쓰는/선택이 and trophy unaffected."
+      },
+      {
+        "n": 10,
+        "field": "build.chunks",
+        "disposition": "resolved (equivalent design)",
+        "reason": "Instead of fusing 가정하면 여기 남아서, the build was re-cut: prefix now ends '…자격시험에 붙는다고 가정하면 여기 남아서 ', chunks ['바로','일을 시작하고,','반대로 떨어지면','반년 더','준비해요.'], suffix ''. The 여기 남아서 permutation is eliminated; the five chips have one natural order; distractors 붙었나요/가정대로는 stay ungrammatical/unnatural in every slot. The build still exercises a pattern-inventory frame of this turn (반대로 …-면 contrast branch). speak[0].requiredTokens were consistently updated to 시작하고/떨어지면/준비해요, all present in turn 1. Not a regression."
+      },
+      {
+        "n": 8,
+        "field": "recall.fallbackChoices",
+        "disposition": "resolved",
+        "reason": "fallbackChoices[1] 직선을→진료를 and [3] 곡선을→진동을 applied, yielding ['통로를','진료를','진로를','진동을'] as proposed; acceptedAnswers 진로를 unchanged; no decoy is now contextually plausible with 미리 그린 게 아니라."
+      },
+      {
+        "n": 5,
+        "field": "interlocutors[0].role (de,en); situation (de,en); sceneCaption (de,en) prefix sentence",
+        "disposition": "resolved",
+        "reason": "All six edits applied exactly (Koreanischlehrerin / Korean teacher; situation and sceneCaption prefix now 'Deine Koreanischlehrerin fragt, was dir beim Lernen der Sprache am schwersten gefallen ist.' / 'Your Korean teacher asks what was hardest for you about learning the language.'), consistent with them1 and them2 in the dialogue. Korean turns, build, cloze, synthesis, speak, trophy untouched."
+      },
+      {
+        "n": 7,
+        "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "lessons/6/synthesis/blanks/0/acceptedAnswers now ['결국','정리하면','그러니까','한마디로']; all four are natural closing connectors before 함께 모이는 뜻은 지키고 …; 결국 remains the canonical answer."
+      },
+      {
+        "n": 6,
+        "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "lessons/5/synthesis/blanks/0/acceptedAnswers now ['그러니까','그래서','결국','정리하면']; 정리하면 제 기준은 금액이 아니라 … is natural and the addition is closed-set, consistent with local policy."
+      },
+      {
+        "n": 4,
+        "field": "synthesis.blanks[0].acceptedAnswers and dialogue[5].base.de (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "acceptedAnswers now include bare 조건부예요; DE 'Meine Antwort ist an eine Bedingung geknüpft.' and EN 'My answer comes with a condition.' applied with remaining sentences unchanged, so DE/EN stay mutually consistent and now mirror the 제 답은 frame targeted by the synthesis blank."
+      },
+      {
+        "n": 1,
+        "field": "pattern.examples[1].base.de (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "base.de now 'Das lässt sich schwer in Homeoffice oder Büro einteilen. …', which renders 나누기는 어려워요 as a hard either/or split, matching EN."
+      },
+      {
+        "n": 1,
+        "field": "dialogue[2].base (de,en) (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "Second sentence now 'Die Menschen von hier können das nicht.' / 'People from here can't.', matching the flat 여기 사람들은 그게 안 되고요. Straight apostrophe in EN is consistent with existing usage elsewhere in the lesson and not a defect."
+      },
+      {
+        "n": 10,
+        "field": "terms[3].base.en (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "terms[3].base.en now 'in the certification exam', aligned with dialogue EN and the already-aligned DE."
+      },
+      {
+        "n": 5,
+        "field": "pattern.label.de (optional)",
+        "disposition": "resolved (optional, applied)",
+        "reason": "label.de now 'Zwei Dinge einstufen und die Abhängigkeit erklären', equivalent to EN 'Rank two things and explain the dependency'."
+      }
+    ],
+    "unresolved": [],
+    "closureReceiptSha256": "12bd0e1c4a8f0dbd668a1ec01be245a18459541b43189bbd2643fff6bc09070d",
+    "exactPostReviewEdits": [
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/2/base/de",
+        "old": "Aber wer aus dem Ausland kommt, kann jederzeit wieder gehen. Die Menschen von hier können das nicht so einfach.",
+        "new": "Aber wer aus dem Ausland kommt, kann jederzeit wieder gehen. Die Menschen von hier können das nicht."
+      },
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/2/base/en",
+        "old": "But if you’re from abroad, you can leave again at any time. It isn’t that easy for people from here.",
+        "new": "But if you’re from abroad, you can leave again at any time. People from here can't."
+      },
+      {
+        "pointer": "lessonFile/lessons/0/pattern/examples/1/base/de",
+        "old": "Homeoffice oder Büro lässt sich schwer trennen. Für mich hängt das davon ab, was an dem Tag anliegt. Keins von beidem passt immer.",
+        "new": "Das lässt sich schwer in Homeoffice oder Büro einteilen. Für mich hängt das davon ab, was an dem Tag anliegt. Keins von beidem passt immer."
+      },
+      {
+        "pointer": "lessonFile/lessons/3/dialogue/5/base/de",
+        "old": "Das kommt darauf an. Wenn Sie kürzere Wege wollen, kann ich es empfehlen. Suchen Sie einen ruhigen Ort zum Erholen, schauen Sie sich zuerst andere Viertel an.",
+        "new": "Meine Antwort ist an eine Bedingung geknüpft. Wenn Sie kürzere Wege wollen, kann ich es empfehlen. Suchen Sie einen ruhigen Ort zum Erholen, schauen Sie sich zuerst andere Viertel an."
+      },
+      {
+        "pointer": "lessonFile/lessons/3/dialogue/5/base/en",
+        "old": "It depends. I recommend it if you want shorter journeys. If you’re looking for somewhere quiet to rest, look at other neighbourhoods first.",
+        "new": "My answer comes with a condition. I recommend it if you want shorter journeys. If you’re looking for somewhere quiet to rest, look at other neighbourhoods first."
+      },
+      {
+        "pointer": "lessonFile/lessons/3/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "제 답은 조건부예요",
+          "경우에 따라 달라요",
+          "상황에 따라 달라요"
+        ],
+        "new": [
+          "제 답은 조건부예요",
+          "조건부예요",
+          "경우에 따라 달라요",
+          "상황에 따라 달라요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/4/situation/de",
+        "old": "Beim Lernen kommt die Frage auf, ob ein größerer Wortschatz für gute Gespräche genügt.",
+        "new": "Deine Koreanischlehrerin fragt, was dir beim Lernen der Sprache am schwersten gefallen ist."
+      },
+      {
+        "pointer": "lessonFile/lessons/4/situation/en",
+        "old": "A conversation about learning turns to whether knowing more words is enough to communicate well.",
+        "new": "Your Korean teacher asks what was hardest for you about learning the language."
+      },
+      {
+        "pointer": "lessonFile/lessons/4/interlocutors/0/role/de",
+        "old": "Lernpartner",
+        "new": "Koreanischlehrerin"
+      },
+      {
+        "pointer": "lessonFile/lessons/4/interlocutors/0/role/en",
+        "old": "Study partner",
+        "new": "Korean teacher"
+      },
+      {
+        "pointer": "lessonFile/lessons/4/sceneCaption/de",
+        "old": "Beim Lernen kommt die Frage auf, ob ein größerer Wortschatz für gute Gespräche genügt. „한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.“",
+        "new": "Deine Koreanischlehrerin fragt, was dir beim Lernen der Sprache am schwersten gefallen ist. „한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.“"
+      },
+      {
+        "pointer": "lessonFile/lessons/4/sceneCaption/en",
+        "old": "A conversation about learning turns to whether knowing more words is enough to communicate well. “한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.”",
+        "new": "Your Korean teacher asks what was hardest for you about learning the language. “한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.”"
+      },
+      {
+        "pointer": "lessonFile/lessons/4/pattern/label/de",
+        "old": "Einen Vergleich mit einer Bedingung begründen",
+        "new": "Zwei Dinge einstufen und die Abhängigkeit erklären"
+      },
+      {
+        "pointer": "lessonFile/lessons/5/dialogue/5/base/de",
+        "old": "Für mich zählt also, ob ich ohne Sorgen um die Miete einschlafen kann. Was man dafür braucht, ist von Mensch zu Mensch verschieden.",
+        "new": "Mein Maßstab ist also nicht der Betrag, sondern ob ich ohne Sorgen um die Miete einschlafen kann. Wie viel man dafür braucht, ist von Mensch zu Mensch verschieden."
+      },
+      {
+        "pointer": "lessonFile/lessons/5/dialogue/5/base/en",
+        "old": "So my test is whether I can fall asleep without worrying about the rent. The amount it takes will vary from person to person.",
+        "new": "So my criterion isn't an amount, it's whether I can fall asleep without worrying about the rent. The amount it takes will vary from person to person."
+      },
+      {
+        "pointer": "lessonFile/lessons/5/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "그러니까",
+          "그래서",
+          "결국"
+        ],
+        "new": [
+          "그러니까",
+          "그래서",
+          "결국",
+          "정리하면"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/6/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "결국",
+          "정리하면",
+          "그러니까"
+        ],
+        "new": [
+          "결국",
+          "정리하면",
+          "그러니까",
+          "한마디로"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/7/recall/fallbackChoices/1",
+        "old": "직선을",
+        "new": "진료를"
+      },
+      {
+        "pointer": "lessonFile/lessons/7/recall/fallbackChoices/3",
+        "old": "곡선을",
+        "new": "진동을"
+      },
+      {
+        "pointer": "lessonFile/lessons/8/build/framePrefix",
+        "old": "세상을 바꾸려는 건 아니에요. ",
+        "new": "세상을 바꾸려는 건 아니에요. 일회용품을 "
+      },
+      {
+        "pointer": "lessonFile/lessons/8/build/chunks/0",
+        "old": "일회용품을",
+        "new": "하루에 한 개"
+      },
+      {
+        "pointer": "lessonFile/lessons/8/build/chunks/1",
+        "old": "하루에 한 개",
+        "new": "덜"
+      },
+      {
+        "pointer": "lessonFile/lessons/8/build/chunks/2",
+        "old": "덜 쓰는",
+        "new": "쓰는"
+      },
+      {
+        "pointer": "lessonFile/lessons/9/build/framePrefix",
+        "old": "내년 삼월에 갈림길이 하나 있어요. ",
+        "new": "내년 삼월에 갈림길이 하나 있어요. 자격시험에 붙는다고 가정하면 여기 남아서 "
+      },
+      {
+        "pointer": "lessonFile/lessons/9/build/frameSuffix",
+        "old": " 반대로 떨어지면 반년 더 준비해요.",
+        "new": ""
+      },
+      {
+        "pointer": "lessonFile/lessons/9/build/chunks",
+        "old": [
+          "자격시험에",
+          "붙는다고",
+          "가정하면",
+          "여기 남아서",
+          "바로 일을",
+          "시작하고,"
+        ],
+        "new": [
+          "바로",
+          "일을 시작하고,",
+          "반대로 떨어지면",
+          "반년 더",
+          "준비해요."
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/9/terms/3/base/en",
+        "old": "in the qualifying exam",
+        "new": "in the certification exam"
+      },
+      {
+        "pointer": "lessonFile/lessons/9/speak/0/requiredTokens/0",
+        "old": "자격시험에",
+        "new": "시작하고"
+      },
+      {
+        "pointer": "lessonFile/lessons/9/speak/0/requiredTokens/1",
+        "old": "붙는다고",
+        "new": "떨어지면"
+      },
+      {
+        "pointer": "lessonFile/lessons/9/speak/0/requiredTokens/2",
+        "old": "가정하면",
+        "new": "준비해요"
+      }
+    ]
+  },
+  "finalCopyChanges": {
+    "languageVerdict": {
+      "pathNumber": 10,
+      "lessonSha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+      "verdict": "PASS",
+      "reason": "Both dialogue[5] closings are now a single sentence, as the interviewer requested (한 문장으로), and each carries both branches of 정리하면 두 번 중 한 번만 붙어도 바로 일하고, 삼월과 구월에 모두 떨어지면 다른 자리를 찾아요: pass on either attempt → start work immediately; fail in both March and September → look for another position. 'sobald ich bei einem der beiden Versuche bestehe' / 'as soon as I pass on either attempt' correctly renders 한 번만 붙어도, and the de/en versions are mutually consistent and match the synthesis segment."
+    },
+    "languageReceiptSha256": "f3b4c2e58d8bfc6ca9831531469d6fe15dcfb9617f76757460a215c825db5d08",
+    "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+    "pathNumber": 10,
+    "reviewedSourceSha256": "c7eebcb5f5d37c972982c492b659e9415eb418a78e2337d670a6607d24b5a1e6",
+    "lessonSha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+    "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f",
+    "fields": [
+      {
+        "lessonNumber": 10,
+        "field": [
+          "dialogue",
+          5,
+          "base",
+          "de"
+        ],
+        "before": "Zusammengefasst beginne ich sofort zu arbeiten, sobald ich bei einem der beiden Versuche bestehe. Falle ich sowohl im März als auch im September durch, suche ich eine andere Stelle.",
+        "after": "Zusammengefasst beginne ich sofort zu arbeiten, sobald ich bei einem der beiden Versuche bestehe, und suche mir eine andere Stelle, falls ich sowohl im März als auch im September durchfalle."
+      },
+      {
+        "lessonNumber": 10,
+        "field": [
+          "dialogue",
+          5,
+          "base",
+          "en"
+        ],
+        "before": "To sum up, I’ll start work as soon as I pass on either attempt. If I fail in both March and September, I’ll look for another role.",
+        "after": "In short, I’ll start work as soon as I pass on either attempt, and if I fail in both March and September, I’ll look for another role."
+      }
+    ]
+  }
+}

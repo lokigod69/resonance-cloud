@@ -1,0 +1,308 @@
+{
+  "pathNumber": 8,
+  "scope": "Korean B2 offline text and personal-study transfer tasks. Native-human, device and audio review remain separate.",
+  "lessonSha256": "368dc66e1b61434c3ecbb4e85225bf537b772becbec663e35e0cf8ce6874a078",
+  "assessmentSha256": "8ee01ba0f80f59be9435f70dad043af2acaf8df07a1bfeb9a0e9bf14562c14e8",
+  "independentVerdict": "PASS",
+  "fableDisposition": "resolved",
+  "independent": {
+    "pathNumber": 8,
+    "verdict": "PASS",
+    "lessonSha256": "368dc66e1b61434c3ecbb4e85225bf537b772becbec663e35e0cf8ce6874a078",
+    "assessmentSha256": "8ee01ba0f80f59be9435f70dad043af2acaf8df07a1bfeb9a0e9bf14562c14e8",
+    "reviewer": "Independent read-only Codex reviewer, P7/P8",
+    "lessonsRead": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "initialFindings": [
+      "Several early cards disclosed the challenge. The independent example and companion task sometimes taught and tested the same answer.",
+      "The introduction block needed a learner-produced definition; two fill-in tasks tested numeral transcription. Some German glosses reversed a comparison."
+    ],
+    "recheck": "All ten early cards, complete lessons and transfer assessments were rechecked. The definition is produced, the flagged numeral blanks are resolved, and the new prompts require applying the skill to new facts.",
+    "remaining": []
+  },
+  "model": "claude-fable-5-1",
+  "editorialReads": [
+    {
+      "stage": "review-root-initial-receipt.json",
+      "receiptSha256": "4df5b47a847571c13d6fa03b0d611d06713da0dc3fe64108261ef5b20359d770",
+      "sourceSha256": "8ba2677877dd84aa85890d1a0970cbfbaf894e625eb210295cb0bb66d62091f8",
+      "assessmentSha256": "91521c94a3fe60c4053d3ef2c7da4527c51a65b736e0611a658ec64bd2b0fde5",
+      "pathNumber": 8,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Causal chain sound (define → 'not cut, shifted' → nine o'clock exception handled without widening). Register haeyo throughout. DE turn 4 drops the 줄이는 게 아니라 contrast that cloze blank 0 asks for; EN turn 2 'to eleven until three' ungrammatical. Staged definition frame -(이)란 absent from the dialogue (only 근무제는). Pattern example 2 (예약제, seats unchanged, booked arrival time) is the assessment prompt verbatim."
+        },
+        {
+          "n": 2,
+          "reason": "Narrowing chain clean: not constant → video calls only → camera-on trigger → untested hotspot admitted. DE turn 2 omits 계속 끊기는 게 아니라 although it is the build sentence; EN keeps it. Decoys form-distinct; 전화 as recall decoy is only excluded by after-text (카메라/화면)."
+        },
+        {
+          "n": 3,
+          "reason": "Concession 그건 제 잘못이에요 and new convention match architecture. DE turn 2 omits 금요일 밤이 아니라 (build chunk). Recall accepts only 시각을; 시간을 is the dominant natural form and matches turn 6 and the base 'Uhrzeit/time'. Pattern example 2 (월요일, 창구 closing) is close to the Dienstag/Abholfenster assessment but prompt still demands an acknowledgement not modelled."
+        },
+        {
+          "n": 4,
+          "reason": "Compare move -라기보다는 …에 가까워요 natural; month-absence reveal answered. DE role 'Freundin' contradicts situation 'einem Freund'. DE turn 4 omits 동호회 contrast required by cloze blank 0. Pattern example 2 (강좌라기보다는 … 열린 작업실) is the exact answer to the bicycle-workshop assessment. Build chunks 매주 목요일 / 같은 식당에 are a harmless permutation."
+        },
+        {
+          "n": 5,
+          "reason": "Observation-only stance held (관계가 있는지는 모르겠고). 구체적으로는 staged correctly for L4-6. Blanks and variants (눈뜨면, 잦아들어요, 그게 전부예요) all work in context. Assessment (wrist, desk) is distinct from pattern example (ankle, stairs)."
+        },
+        {
+          "n": 6,
+          "reason": "Rebut with verifiable fact (상자 삼십육 → 사십이어야 해요) and knowing cost acceptance. cloze.moveBlankIndex points at connector 그러니까 while the tagged carrier 사십이어야 해요 is blank 1. Pattern example 2 uses 손잡이, the same object as the assessment bag-handle prompt."
+        },
+        {
+          "n": 7,
+          "reason": "Both delayed constraints resolved by citing the sign, not general rules; -(으)라는 뜻이에요 and 쉽게 말하면/다시 말해서 natural. Pattern example 2 (책을 가져가지 말고 이 방에서만 읽으라는 뜻) is the 'use on site only / take home' assessment answer. Term 재활용 통에만 glossed with wrong polarity for 넣지 말라는 context."
+        },
+        {
+          "n": 8,
+          "reason": "Define-by-negation then one concrete outcome (검토 기한 이틀 앞당기기) matches architecture. Cloze variants 따지는/가리는 게 아니라 work. Pattern example 2 (인수인계란 잘잘못을 따지는 게 아니라 …) is the handover-vs-assessment prompt answered in full."
+        },
+        {
+          "n": 9,
+          "reason": "Not a P9 floor-chunk path (that check is for pathNumber 9); verified instead against P8 L9 spec: scope correction 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요, counter-evidence (지금은 안 된다) conceded then re-scoped, one-sentence restatement. DE turn 4 drops 하지 말자는 뜻은 아니에요, the core of the clarify move. Pattern example 2 (회의 횟수 vs 의견 묻는 기회) is formally parallel but content-distinct from the survey prompt."
+        },
+        {
+          "n": 10,
+          "reason": "Not a P10 three-contribution stance path; verified against P8 L10 spec: 순서대로 말씀드리면 + three phases, emergency exception by scope (막는 건 일반 차량이지 구급차는 아니에요), 첫째/둘째/셋째 board summary; them stays haeyo as instructed. Pattern example 2 (visitors → equipment, 비상구 처음부터 끝까지) is the exhibition assessment answer. 정오를 기점으로 variant is awkward before 다섯 시까지는."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "field": "dialogue[1].base.en (also pattern.examples[0].base.en, trophy.example.base.en)",
+          "issue": "'setting the time everyone has to be there together to eleven until three' is ungrammatical.",
+          "fix": "By flexible hours I mean still working eight hours a day, but fixing the time everyone has to be in together as eleven to three."
+        },
+        {
+          "n": 1,
+          "field": "dialogue[3].base.de",
+          "issue": "'Genau, ich möchte die Zeit verschieben.' drops 줄이는 게 아니라; cloze blank 0 cannot be recovered from DE while EN has the contrast.",
+          "fix": "Genau, ich kürze die Zeit nicht, sondern verschiebe sie. Konkret komme ich morgens eine Stunde später und arbeite abends entsprechend länger."
+        },
+        {
+          "n": 1,
+          "field": "dialogue[1].targetText",
+          "issue": "Architecture L1-3 productive definition frame -(이)란 never occurs in any 'you' turn of the path (only 근무제는 / 회고는); it appears solely in pattern examples. Architecture's own L1 move uses 유연 근무란.",
+          "fix": "제가 말하는 유연 근무제란 하루 여덟 시간은 그대로 일하되 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요. Collateral: build.chunks[2]→\"근무제란\"; recall.answer/acceptedAnswers→\"근무제란\" (also accept \"근무제는\"), recall.fallbackChoices→[\"직책이란\",\"결근이란\",\"통장이란\",\"근무제란\"]; terms[0].targetText→\"근무제란\"; speak[0].requiredTokens[0]→\"근무제란\"; trophy.surface→\"근무제란\", trophy.remainder→[\"란\"], trophy.example.targetText and pattern.examples[0].targetText updated, pattern.examples[0].highlights[0]→\"제가 말하는\" plus add \"근무제란\"; carrierTags add {\"surface\":\"근무제란\",\"status\":\"productive\"}. Trophy lemma 근무제 unchanged."
+        },
+        {
+          "n": 1,
+          "field": "pattern.examples[1]",
+          "issue": "예약제 (seat count unchanged, arrival time booked) is the assessment L1 prompt; the pattern hands the learner the answer.",
+          "fix": "targetText: 제가 말하는 당번제란 일을 더 하는 게 아니라 주마다 담당만 바꾸는 방식이에요. base.de: Mit Dienstplan meine ich kein zusätzliches Arbeiten, sondern einen wöchentlichen Wechsel der Zuständigkeit. base.en: By a rota I mean changing who is responsible each week, not doing extra work. highlights: [\"당번제란\"]"
+        },
+        {
+          "n": 2,
+          "field": "dialogue[1].base.de (also pattern.examples[0].base.de, trophy.example.base.de)",
+          "issue": "DE omits 계속 끊기는 게 아니라, the build target; EN includes it.",
+          "fix": "Es bricht nicht ständig ab, sondern nur bei Videokonferenzen. Genauer gesagt friert das Bild etwa drei Minuten nach dem Einschalten der Kamera ein."
+        },
+        {
+          "n": 2,
+          "field": "recall.fallbackChoices (optional)",
+          "issue": "전화 회의 is a real collocation; only the after-text (카메라/화면) excludes it.",
+          "fix": "Replace \"전화\" with \"야간\"."
+        },
+        {
+          "n": 3,
+          "field": "dialogue[1].base.de (also pattern.examples[0].base.de, trophy.example.base.de)",
+          "issue": "DE omits 금요일 밤이 아니라, which is a build chunk; EN has 'rather than Friday night'.",
+          "fix": "Mit „bis Freitag“ meinte ich nicht Freitagnacht, sondern vor der Sitzung am Freitagmorgen um zehn. Ich schaue selbst noch einmal nach, ob ich die Uhrzeit ausdrücklich angegeben habe."
+        },
+        {
+          "n": 3,
+          "field": "recall.acceptedAnswers (optional)",
+          "issue": "Typed recall rejects 시간을, the more common form in 제가 시간을 따로 말했는지, which also matches turn 6 and base 'Uhrzeit/time'.",
+          "fix": "acceptedAnswers: [\"시각을\",\"시간을\"]; answer, trophy and fallbackChoices unchanged."
+        },
+        {
+          "n": 4,
+          "field": "interlocutors[0].role.de",
+          "issue": "'Freundin, die nach dem Treffen fragt' contradicts situation/sceneCaption 'einem Freund' and EN 'Friend'.",
+          "fix": "Freund, der nach dem Treffen fragt"
+        },
+        {
+          "n": 4,
+          "field": "dialogue[3].base.de (also pattern.examples[0].base.de)",
+          "issue": "DE 'Eher wie ein Nachbarschaftstreff…' omits the 동호회 contrast that cloze blank 0 (동호회라기보다는) requires; EN has it.",
+          "fix": "Eher ein Nachbarschaftstreff ohne Verabredung als ein Freizeitverein. Es gibt weder eine Liste noch Beiträge. Man kommt einfach um die übliche Zeit vorbei."
+        },
+        {
+          "n": 4,
+          "field": "pattern.examples[1]",
+          "issue": "강좌라기보다는 … 열린 작업실에 가까워요 is the full answer to the open-bicycle-workshop assessment prompt.",
+          "fix": "targetText: 정기 수업이라기보다는 시간 될 때 들러서 궁금한 걸 묻는 상담 시간에 가까워요. base.de: Das ist eher eine Sprechstunde, bei der man vorbeikommt, wenn es passt, und Fragen stellt, als ein regelmäßiger Kurs. base.en: It's closer to a drop-in session where you ask what you're wondering about when you have time than to a regular class. highlights: [\"수업이라기보다는\",\"가까워요\"]"
+        },
+        {
+          "n": 4,
+          "field": "terms 명단도 / 회비도 base (optional)",
+          "issue": "'auch eine Liste' / 'auch Beiträge' invert polarity for 명단도 없고 회비도 없고.",
+          "fix": "명단도: de \"auch keine Liste\", en \"no list either\"; 회비도: de \"auch keine Beiträge\", en \"no dues either\"."
+        },
+        {
+          "n": 4,
+          "field": "build.chunks (optional, grader-dependent)",
+          "issue": "매주 목요일 ⇄ 같은 식당에 is a harmless adverbial permutation.",
+          "fix": "If the build grader is exact-order, also accept 같은 식당에 매주 목요일 자주 오는 사람들이 따로."
+        },
+        {
+          "n": 6,
+          "field": "cloze.moveBlankIndex",
+          "issue": "Points at connector 그러니까 (blank 0); the rebut carrier tagged in carrierTags (사십이어야 해요) is blank 1.",
+          "fix": "moveBlankIndex: 1"
+        },
+        {
+          "n": 6,
+          "field": "pattern.examples[1] (optional)",
+          "issue": "손잡이 is the same object as the assessment bag-handle prompt, pre-shaping the answer.",
+          "fix": "targetText: 창문은 고정식이 아니라 열 수 있는 거여야 해요. base.de: Das Fenster darf keine feste Scheibe sein, sondern muss sich öffnen lassen. base.en: The window needs to be one that opens, rather than a fixed pane. highlights: [\"고정식이 아니라\",\"거여야 해요\"]"
+        },
+        {
+          "n": 7,
+          "field": "pattern.examples[1]",
+          "issue": "책을 가져가지 말고 이 방에서만 읽으라는 뜻이에요 is the 'use on site only / take home overnight' assessment answer in structure and content.",
+          "fix": "targetText: 이 표시는 문을 잠그라는 게 아니라 닫기만 하라는 뜻이에요. base.de: Dieses Zeichen bedeutet, dass man die Tür nur schließen, nicht abschließen soll. base.en: This sign means close the door, not lock it. highlights: [\"하라는 뜻이에요\"]"
+        },
+        {
+          "n": 7,
+          "field": "terms 재활용 통에만 base (optional)",
+          "issue": "'nur in die Recyclingtonne' / 'in the recycling bin in particular' misread 재활용 통에만 넣지 말라는 (only there it must not go).",
+          "fix": "de \"bloß nicht in die Recyclingtonne\", en \"just not in the recycling bin\"."
+        },
+        {
+          "n": 8,
+          "field": "pattern.examples[1]",
+          "issue": "인수인계란 잘잘못을 따지는 게 아니라 … is the handover-vs-assessment prompt answered verbatim.",
+          "fix": "targetText: 예행연습이란 실수를 세는 게 아니라 당일 순서를 미리 맞춰 보는 거예요. base.de: Eine Generalprobe dient nicht dazu, Fehler zu zählen, sondern den Ablauf des Tages vorher durchzugehen. base.en: A rehearsal means walking through the day's order in advance, rather than counting mistakes. highlights: [\"예행연습이란\",\"게 아니라\"]"
+        },
+        {
+          "n": 9,
+          "field": "dialogue[3].base.de",
+          "issue": "DE drops 하지 말자는 뜻은 아니에요, the scope contrast of the clarify move; EN 'not a call to drop it' has it.",
+          "fix": "Dass es jetzt nicht geht, habe ich gesagt. Aber das ist eine Frage des Zeitpunkts, kein Vorschlag, es sein zu lassen. Machen schon, nur später."
+        },
+        {
+          "n": 10,
+          "field": "pattern.examples[1]",
+          "issue": "Admit visitors → move equipment, 비상구 처음부터 끝까지 비워 둬요 is the exhibition assessment (admission, dismantling, emergency access clear throughout) pre-answered.",
+          "fix": "targetText: 순서대로 말씀드리면 먼저 전원을 끄고 그다음에 선을 빼요. 장갑은 처음부터 끝까지 끼고 있어요. base.de: Der Reihe nach: Zuerst den Strom abschalten, dann das Kabel abziehen. Die Handschuhe bleiben die ganze Zeit an. base.en: In order, switch off the power first, then unplug the cable. Keep the gloves on throughout. highlights: [\"순서대로 말씀드리면\",\"처음부터 끝까지\"]"
+        },
+        {
+          "n": 10,
+          "field": "synthesis.blanks[0] (optional)",
+          "issue": "Accepted variant 정오를 기점으로 is awkward before 다섯 시까지는; blank kind 'frame' is really lexical.",
+          "fix": "acceptedAnswers: [\"정오부터\",\"낮 열두 시부터\",\"열두 시부터\"]; kind: \"lexical\"."
+        }
+      ],
+      "remainingHolds": []
+    },
+    {
+      "stage": "review-final-receipt.json",
+      "receiptSha256": "3627d5ed44e5f59cfc59afd00f6576278684d72b2a131ad3e3faa8db8115f836",
+      "sourceSha256": "368dc66e1b61434c3ecbb4e85225bf537b772becbec663e35e0cf8ce6874a078",
+      "assessmentSha256": "8ee01ba0f80f59be9435f70dad043af2acaf8df07a1bfeb9a0e9bf14562c14e8",
+      "pathNumber": 8,
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Definition now produced in the early block with the staged -(이)란 … -는 것을 뜻해요 frame in turn 4 (carrierTags 근무란/것을 뜻해요); turn 2 fixes eight hours via -되 and names 11–3 core window; them4 nine o'clock edge handled without widening the ask (당연히 아홉 시에 맞춰 나와요). EN 'everyone would only need to be in together from eleven to three' now grammatical; DE turn 4 'nur der Arbeitsbeginn und das Arbeitsende verschieben' recovers cloze blank 0. Build decoys 쉬었더니/요금만 ungrammatical in frame; recall decoys 직책은/결근은/통장에는 impossible after 제가 말하는 유연. Pattern example 예약제 no longer matches the (now library-hold) assessment prompt."
+        },
+        {
+          "n": 2,
+          "reason": "Build target 계속 끊기는 게 아니라 now in DE 'nicht ständig ab, sondern nur bei Videokonferenzen'. Causal chain intact: broad report → trigger (camera +3 min) → them2 network fine → learner confines to sending video → them4 hotspot → admits untested, promises test. Recall decoy 전화 replaced by 대면; after-text 카메라를 켜고 … 화면이 멈춰요 excludes 대면/서면/접수증. Transfer prompt (printer only on colour photos, untested second computer) distinct from scene, pattern example 큰 파일 does not answer it."
+        },
+        {
+          "n": 3,
+          "reason": "DE turn 2 now 'nicht Freitagnacht, sondern vor der Sitzung …' matches build chunk 금요일 밤이 아니라; recall accepts 시간을 as well as 시각을. Chain: intended meaning → them2 only 'Friday' written → concession (그러면 그건 제 잘못이에요) → convention with date+time. Decoy 회의 후였어요 cannot complete the sentence while 전이었어요 remains mandatory. Assessment (Tuesday/15:00 pickup) uses different facts from the pattern's Monday/16:00 counter example."
+        },
+        {
+          "n": 4,
+          "reason": "Role DE now 'Freund'; DE turn 4 'Eher ein Nachbarschaftstreff … als ein Freizeitverein' recovers 동호회라기보다는; 명단도/회비도 term bases now negative; 매주 목요일/같은 식당에 permutation moved into build prefix. Pattern example 열린 작업실 no longer answers the (now language-exchange) prompt. Only residual: situation/sceneCaption DE 'die euch … begegnet ist' contradicts EN 'you' and them1 (learner told the friend)."
+        },
+        {
+          "n": 5,
+          "reason": "Location narrowed (머리 전체가 아니라 오른쪽 눈 뒤쪽), timing given on request, single change named with explicit non-diagnosis (관계가 있는지는 모르겠고). 구체적으로는 staged L4-6 and used in L5 build suffix. Cloze/synthesis variants (눈뜨면, 잦아들어요, 그게 전부예요) all work in context. Pattern 왼쪽 발목 example distinct from wrist/desk transfer prompt."
+        },
+        {
+          "n": 6,
+          "reason": "40 cm motivated by 36 cm file boxes; cost consequence accepted knowingly. cloze.moveBlankIndex now 1 (사십이어야 해요, MC with contextually wrong choices 삼십이면 돼요/깊이는 상관없어요/더 얕아야 해요) matching carrierTags. Recall decoys 무게는/속도는/온도는 excluded by 센티미터. Pattern 손잡이 example no longer shares an object with the (flute-case) prompt."
+        },
+        {
+          "n": 7,
+          "reason": "Paraphrase → plain action (흰 봉투) → corrects 'may not throw away' → greasy box applied per sign (안내문대로면). 쉽게 말하면/다시 말해서 both productive per L7-8 stage. Term base for 재활용 통에만 넣지 말라는 corrected. Pattern example 이 방에서만 읽으라는 뜻이에요 unrelated to the (now mug-washing) prompt. Recall decoys 주차/복무/경조사 excluded by 재활용 불가 in after-text."
+        },
+        {
+          "n": 8,
+          "reason": "Definition by scope (저희 팀에서 회고는), by what it is not (누가 잘못했는지 찾는 게 아니라), then one concrete example mirroring architecture. Pattern example 인수인계 now shift-handover with 교대할 때마다 십 분쯤, not the (museum trial-walk) prompt. Recall decoys 입찰은/정산은/채용은 excluded by 돌아보는 회의예요. Cloze variant 다음에는 works in context."
+        },
+        {
+          "n": 9,
+          "reason": "Scope correction 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요; them2 genuine counter ('지금은 안 된다'); clarify concedes the quote then limits scope (시기 문제지 하지 말자는 뜻은 아니에요) — DE now 'Ich habe nicht vorgeschlagen, es sein zu lassen'; summarize gives one forwardable sentence. Synthesis variant 좋겠어요 acceptable after 전해 주시면. Assessment (survey: cancel vs delete two duplicate questions) distinct from pattern example 회의 횟수."
+        },
+        {
+          "n": 10,
+          "reason": "Three phases with 순서대로 말씀드리면 and -부터 … -까지는; 5 p.m. reopening stated in turn 2 and in line 둘째; ambulance exception answered by 남쪽 입구 … 비상 차로 and 막는 건 일반 차량이지 구급차는 아니에요; board summary uses 첫째/둘째/셋째. them register haeyo (합쇼체 extension not adopted). synthesis.blanks[0] now lexical with 옆길로/옆길을 따라/옆길을 통해; 정오를 기점으로 removed. Pattern example (visitors 9–10, equipment move, reopen at noon) no longer pre-answers the (cycle-hire, west/east gate, reception always open) prompt."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "field": "situation.de and sceneCaption.de (first sentence)",
+          "issue": "OPTIONAL (recommended): 'eine wöchentliche Runde, die euch in einem Bericht über ein Stadtviertel begegnet ist' says both of you encountered it; EN says 'you' and them1 (지난번에 말씀하신 … 모임) shows the learner told the friend. Scene-level inconsistency only; no graded field affected.",
+          "fix": "In both situation.de and the first sentence of sceneCaption.de replace 'die euch in einem Bericht über ein Stadtviertel begegnet ist' with 'die dir in einem Bericht über ein Stadtviertel begegnet ist'. Keep the quoted Korean in sceneCaption unchanged."
+        },
+        {
+          "n": 3,
+          "field": "dialogue[5].targetText / synthesis.blanks[1] (예를 들면)",
+          "issue": "OPTIONAL: 예를 들면 is listed in the architecture as L4-6 productive but appears as a graded synthesis blank (moveBlankIndex 1) in L3. It is sub-B2 lexis, untagged as a carrier in L3, and L4 still introduces it as a highlighted pattern, so no learner is unfairly graded; noting only for staging bookkeeping.",
+          "fix": "No change required. If strict staging is wanted, set L3 synthesis.moveBlankIndex to 0 (날짜랑 시간을) so the move credit does not rest on the pre-staged item; leave text, DE/EN, terms and witnessKo unchanged."
+        },
+        {
+          "n": 1,
+          "field": "dialogue[5].base.de (also no linked occurrences)",
+          "issue": "OPTIONAL: 'Der Kundentermin hat Vorrang vor meiner gewünschten Anfangszeit.' collapses the X가 먼저지 Y가 먼저는 아니에요 contrast that synthesis blank 1 (먼저는 아니에요) targets; EN has the same collapse but the Korean contrast is recoverable from context.",
+          "fix": "Replace with 'Der Kundentermin geht vor, nicht meine Anfangszeit.' (EN may stay or become 'The client's schedule comes first, not my start time.')."
+        },
+        {
+          "n": 8,
+          "field": "dialogue[3].base.de",
+          "issue": "OPTIONAL: Korean opens with 아니에요; DE 'Wir suchen keinen Schuldigen.' drops the explicit 'no' that EN keeps ('No, …').",
+          "fix": "Replace with 'Nein, wir suchen keinen Schuldigen. Wir legen fest, was wir beim nächsten Mal ändern. Namen kommen gar nicht vor.' (also pattern.examples[0]? — not applicable; this turn is not duplicated elsewhere)."
+        }
+      ],
+      "remainingHolds": []
+    }
+  ],
+  "earlyTeachingCards": {
+    "receiptSha256": "e0f7da8098cdd0cff82c17a9d5ea3ef125e9090b2ba02eab68d4cd118a599d28",
+    "lessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "placement": "The pattern card appears before the challenge and final steer. The model comes from the first learner turn. The transfer example uses a separate situation."
+  }
+}

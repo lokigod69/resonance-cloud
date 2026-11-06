@@ -1,0 +1,664 @@
+{
+  "pathNumber": 6,
+  "scope": "Korean B2 offline text and personal-study transfer tasks. Native-human, device and audio review remain separate.",
+  "lessonSha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+  "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+  "independentVerdict": "PASS",
+  "fableDisposition": "resolved",
+  "independent": {
+    "lessonSha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+    "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+    "verdict": "PASS",
+    "wholePathReview": {
+      "pathNumber": 6,
+      "verdict": "PASS",
+      "lessonSha256": "977dcf0d8f7a933404fc8cd5d4ed29543f2b952bf3a90fcf792b9f3ddaf3a468",
+      "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+      "reviewer": "Independent read-only Codex reviewer, P5/P6",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "initialFindings": [
+        "All ten early cards showed the later room. The redevelopment relay changed the source and documentary advice was overgeneralized.",
+        "Genuine reported questions, solvable prompts and salary basis needed repair."
+      ],
+      "recheck": "All ten models open in the formal room and all ten relays have a traceable source. L4–6 report real questions, L8 clarifies the salary basis, L9 preserves the undecided demolition date and L10 limits advice to the actual case. All transfer prompts supply their facts.",
+      "remaining": [
+        "Generalize the L7 rule for 채로 to cover an ongoing state as well as the discovered state.",
+        "Use a more natural gender-neutral German question for the L2 partner."
+      ]
+    },
+    "postReviewCopyCheck": {
+      "verdict": "PASS",
+      "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+      "reviewer": "Fresh read-only Codex reviewer for the final copy and answer presentation changes",
+      "scope": "Verified the five final source files against the complete reviewed versions. Reversing all eight field edits in memory reproduced all five whole-file review hashes. The four time choices have exactly one answer grounded in the 9–11 lift booking. The closing Korean, English and German summaries each express both outcomes in one sentence. All five final source and assessment hashes matched; no material findings."
+    }
+  },
+  "model": "claude-fable-5-1",
+  "editorialReads": [
+    {
+      "stage": "review-root-initial-receipt.json",
+      "receiptSha256": "a63fd5b22267419e8bb71b9d6946ba0f9e5864a957ae6de315516114f86a4153",
+      "sourceSha256": "a90ef97786862ee12ff32f0681bff54b47a7c1cb056b6230ba57dfc62c40c9fb",
+      "assessmentSha256": "90c501001b490a1151b7353f51634653ad580ec3d9c0500ba4b6d701e07a537d",
+      "pathNumber": 6,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Causal chain holds: banker gives condition (삼 년 만기, 원금 그대로, 이자 거의 없음) without a figure, friend demands one number, learner relays 거의 없다고 하셨어요 and names the missing figure. All turns 해요체; 기다리라고 correctly recognition-only. Build/recall decoys non-insertable. Assessment prompt is nearly the practised bank scene (only coffee→dinner), weakest transfer in the set."
+        },
+        {
+          "n": 2,
+          "reason": "them2 leaves choice open, them4 presses for a recommendation, you5 uses -다고는 안 하셨어요 cleanly; synthesis variants work in context. DE base of the relay witness drops the reporting marker on 제가 고르면 된다고 하셨어요 (‘Ich kann selbst entscheiden’), collapsing the quotation/own-view boundary the path teaches."
+        },
+        {
+          "n": 3,
+          "reason": "-(으)라고 modelled in L1/L2 them turns, first productive here (줄이라는 뜻이죠, 만들라고 하셨어요); synthesis MC choices contrast 라고/다고/자고/냐고 well. Build distractor 이른바 is insertable (…신경 쓴 건 이른바 보고 속도였어요) and yields acceptable Korean."
+        },
+        {
+          "n": 4,
+          "reason": "Formal room (여쭤보고 싶고, 확인해 주시겠어요) vs warm relay (원본이래요, 직접 물어보세요) realised; 같이 가자고 in them4 models -자고 for L6. DE and EN base of you5 render 원본이래요 as plain fact, losing the relay marker. 수출 as recall decoy forms a real collocation 수출 신고 (contextually excluded only)."
+        },
+        {
+          "n": 5,
+          "reason": "Delayed split (수리비 vs 출장비 삼만 원) revealed in them2, flatmate asks for exact wording, you5 quotes with 내래요 and labels 제 의견이 아니라 그분 말이에요. Build chunks 수리비 분담을/어떻게 permute naturally (어떻게 수리비 분담을 하실 생각이신지); DE you1 ‘der Mieter’ genders a neutral speaker."
+        },
+        {
+          "n": 6,
+          "reason": "Three agreed items compressed with 한마디로 and -자고 하셨어요 x2; partner’s two-minute constraint genuine. Teacher’s 지켜보자고 하고 싶어요 is stilted. Cloze moveBlankIndex points at the connector 꺼내면 rather than the clarify frame."
+        },
+        {
+          "n": 7,
+          "reason": "Friend’s assumption (찾아 주겠죠) corrected with 하신 게 아니라 + 내라고 하시던데요 (L7 hedge target) and 회수 여부는 말씀도 없었어요. Learner explicitly returns to the friend’s question. DE renders the instruction as bare ‘Ich soll…’ without the saying verb (minor). Decoys fine."
+        },
+        {
+          "n": 8,
+          "reason": "Range vs. individual figure vs. date cleanly separated; 퍼센트래요 contracted relay. them2 나중에 합의한 기본급 has a tense clash (past attributive with 나중에); them4 DE base is syntactically broken. Architecture’s L7-8 요약하면 + 첫째/둘째 appears nowhere in the path. Assessment criteria cite a ‘condition’ the prompt never states."
+        },
+        {
+          "n": 9,
+          "reason": "Official confirms survey only; neighbour brings 시작한다면서요 rumour; you5 -다는 뜻이었고 + 확정된 건 …뿐이에요 + 소문 separation as staged. Both rooms 해요체, no 합쇼체 needed. Cloze/synthesis variants all fit in context. Assessment transfer (playground inspection vs closure rumour) is genuine."
+        },
+        {
+          "n": 10,
+          "reason": "Full formal call (담당자님, 연락드렸어요, 환불해 주시겠어요, 정리하면 summarize) then warm relay restricting bank-statement advice to own case and sending colleague to ask about documents, no omission claim. Build chunks 요금 청구가/두 번 permute (두 번 요금 청구가 된 것 같아서). P9/P10-style checks (floor chunks, three-contribution stance) are not part of this path’s architecture."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "field": "dialogue[5].base.de (linked: pattern.examples[0].base.de)",
+          "issue": "Relay witness DE drops the report marker on 제가 고르면 된다고 하셨어요 → ‘Ich kann selbst entscheiden’ (and ‘laut Praxis’ softens 둘 다 가능하다고 하셨고). The move is about marking what was said; EN keeps it, DE does not.",
+          "fix": "Replace with: „Eine Empfehlung gab es nicht. Sie haben gesagt, beide Behandlungen seien möglich, und nicht gesagt, dass eine besser wäre. Sie haben gesagt, ich könne selbst entscheiden.“ Apply identically in pattern.examples[0].base.de."
+        },
+        {
+          "n": 4,
+          "field": "dialogue[5].base.de and base.en (linked: pattern.examples[0].base.de/en)",
+          "issue": "원본이래요 (contracted hearsay, the lesson’s productive carrier) is translated as plain fact in both languages: „der Ausweis muss im Original vorliegen“ / “they need the original ID”.",
+          "fix": "DE: „Du fragst, ob es für ausländische Einwohner dasselbe ist? In meinem Fall hieß es: Vertragskopie reicht, Ausweis im Original. Für ausländische Einwohner können die Unterlagen anders sein, frag bitte selbst nach.“ EN: “You’re asking whether it’s the same for foreign residents? In my case they said a copy of the lease is enough and the ID has to be the original. The documents may differ for foreign residents, so ask for yourself.” Mirror in pattern.examples[0].base."
+        },
+        {
+          "n": 3,
+          "field": "build.distractors[1]",
+          "issue": "이른바 is insertable: 「…제가 가장 신경 쓴 건 이른바 보고 속도였어요」 is grammatical and natural, so the decoy is also correct in context.",
+          "fix": "Replace \"이른바\" with \"줄였더니\" (no slot in the frame). Keep \"성과였으면\"."
+        },
+        {
+          "n": 8,
+          "field": "dialogue[3].base.de",
+          "issue": "Garbled German: „Nicht die Spanne, die haben dir doch die genaue Zahl gesagt, oder?“",
+          "fix": "„Und wie viel zahlen sie? Nicht die Spanne – die genaue Zahl haben sie dir doch auch gesagt, oder?“"
+        },
+        {
+          "n": 8,
+          "field": "dialogue[2].targetText",
+          "issue": "나중에 합의한 기본급 pairs past attributive with 나중에; learner’s own you5 already uses the correct 정해질.",
+          "fix": "「연봉은 사천만 원에서 사천오백만 원 사이예요. 수습 석 달은 나중에 합의될 기본급의 팔십 퍼센트를 드려요.」 Bases unchanged. sceneCaption not affected."
+        },
+        {
+          "n": 8,
+          "field": "dialogue[5].targetText (linked: pattern.examples[0].targetText, synthesis.segments[0].text, assessment.lessons[7].witnessKo, base.de/en)",
+          "issue": "Architecture stages 요약하면 + 첫째/둘째 for L7-8; neither appears anywhere in the path (정리하면 in L10 is the P2 recycle, 요약하면 only as a cloze variant).",
+          "fix": "you5 → 「요약하면 첫째, 연봉은 범위만 말씀하셨어요. 둘째, 수습 석 달은 나중에 정해질 기본급의 팔십 퍼센트래요. 기본급이 언제 정해지는지는 말씀이 없으셨어요.」 synthesis.segments[0].text → \"요약하면 첫째, 연봉은 범위만 말씀하셨어요. 둘째, 수습 석 달은 나중에 정해질 기본급의 팔십 \". DE: „Zusammengefasst: Erstens haben sie nur eine Gehaltsspanne genannt. Zweitens bekomme ich in den drei Probemonaten laut Auskunft achtzig Prozent des später vereinbarten Grundgehalts. Wann das festgelegt wird, haben sie nicht gesagt.“ EN: “To sum up: first, they only gave a salary range. Second, during the three-month probation I’d receive eighty percent of the base salary to be agreed later. They didn’t say when that figure would be set.” Update witnessKo; speak[2].requiredTokens unchanged; add term {\"targetText\":\"요약하면\",\"kind\":\"adverb\",\"base\":{\"de\":\"zusammengefasst\",\"en\":\"to sum up\"}} replacing \"범위로\"."
+        },
+        {
+          "n": 8,
+          "field": "assessment.lessons[7].prompt / criteria",
+          "issue": "Criteria require distinguishing ‘die Bedingung / the condition’, but the prompt states none (only range + later individual rate).",
+          "fix": "Prompt DE: „Für ein Projekt wurde ein Stundensatz zwischen zwei Beträgen genannt; im ersten Monat gilt davon nur die Hälfte. Deine genaue Einstufung folgt später. Gib einer Freundin die Auskunft weiter.“ EN: “A project quoted an hourly rate between two amounts; only half of it applies in the first month. Your individual rate will be decided later. Report this to a friend.”"
+        },
+        {
+          "n": 1,
+          "field": "assessment.lessons[0].prompt",
+          "issue": "Transfer is the practised scene itself (bank savings plan, interest, no figure) with only coffee→dinner changed; no register/argument transfer.",
+          "fix": "DE: „Ein Fitnessstudio sagt dir, dass bei Kündigung vor Vertragsende eine Gebühr anfällt, nennt aber keinen Betrag. Erkläre beim Abendessen, was feststeht.“ EN: “A gym tells you that cancelling before the contract ends incurs a fee, but gives no amount. Explain at dinner what is certain.” Criteria unchanged."
+        },
+        {
+          "n": 5,
+          "field": "dialogue[1].base.de (also dialogue[3].base.de ‘Mitbewohnerin’)",
+          "issue": "speakerGender is neutral but DE fixes the learner as male (‘ich bin der Mieter’) and the flatmate as female, contradicting the neutral role ‘Mitbewohnerin oder Mitbewohner’.",
+          "fix": "you1 DE: „Ja, ich wohne hier zur Miete. Der Techniker hat gesagt, ein Teil müsse ersetzt werden, deshalb wollte ich fragen, wie Sie sich die Aufteilung der Reparaturkosten vorstellen.“ you3 DE: „…Ich bespreche es in der WG und melde mich wieder.“"
+        },
+        {
+          "n": 6,
+          "field": "dialogue[2].targetText",
+          "issue": "지켜보자고 하고 싶어요 is stilted for a teacher proposing to parents.",
+          "fix": "「큰 다툼은 없으니 한 달은 지켜보자고 말씀드리고 싶어요. 아이 말은 적어 두셨다가 다음 달에 봬요.」 Keeps -자고 modelling; sceneCaption/bases unchanged."
+        },
+        {
+          "n": 5,
+          "field": "build.chunks (optional, exact-grading fairness)",
+          "issue": "어떻게 수리비 분담을 하실 생각이신지 is an equally natural permutation and would be rejected.",
+          "fix": "Merge into chunks [\"수리비 분담을 어떻게\",\"하실 생각이신지\",\"여쭤보려고\",\"연락드렸어요\"]."
+        },
+        {
+          "n": 10,
+          "field": "build.chunks (optional, exact-grading fairness)",
+          "issue": "두 번 요금 청구가 된 것 같아서 is a natural permutation.",
+          "fix": "Merge into chunks [\"요금 청구가 두 번\",\"된 것\",\"같아서\",\"연락드렸어요\"]."
+        },
+        {
+          "n": 2,
+          "field": "cloze.blanks[0].acceptedAnswers (optional; same pattern in L3 cloze.blanks[0], L5 cloze.blanks[0], L10 cloze.blanks[1], L1 cloze.blanks[1], L4 synthesis.blanks[0])",
+          "issue": "Open ‘-다는 말씀이시죠/뜻이죠’ confirmation frames reject the most common colloquial variant -다는 거죠; L1 rejects 여쭤봐도 돼요; L4 rejects 원본이어야 된대요.",
+          "fix": "Add: L2 \"다르다는 거죠\"; L3 \"줄이라는 거죠\"; L5 \"된다는 거죠\"; L10 \"걸린다는 거죠\"; L1 \"여쭤봐도 돼요\"; L4 synthesis \"원본이어야 된대요\"."
+        },
+        {
+          "n": 1,
+          "field": "cloze.moveBlankIndex (optional; also L6, L7, L8 cloze)",
+          "issue": "Clarify move is carried by the -죠/-될까요 frame (blank 1), but moveBlankIndex points at the connector blank 0.",
+          "fix": "Set cloze.moveBlankIndex to 1 in L1, L6, L7, L8."
+        },
+        {
+          "n": 2,
+          "field": "dialogue[1].base.de (optional)",
+          "issue": "‘Herr Doktor’ genders the neutral ‘Zahnärztliche Fachperson’; EN is neutral (‘Doctor’).",
+          "fix": "„Ich muss mich nach der heutigen Untersuchung nicht sofort entscheiden, oder? Könnten Sie mir erklären, …“ (drop the address)."
+        },
+        {
+          "n": 7,
+          "field": "dialogue[5].base.de (optional)",
+          "issue": "‘Ich soll die Vorgangsnummer … einreichen’ omits the saying verb that 내라고 하시던데요 carries; EN has ‘They told me’.",
+          "fix": "„…Der Beamte hat gesagt, ich solle die Vorgangsnummer bei der Versicherung einreichen. …“ Mirror in pattern.examples[0].base.de."
+        }
+      ],
+      "remainingHolds": []
+    },
+    {
+      "stage": "review-final-receipt.json",
+      "receiptSha256": "85c867f49b8e5dcbf0e878dec017a2fdfe4eb452d2f53544047aa5941472e5ff",
+      "sourceSha256": "5283c578aac3f77838e63fb2f0828c8bfb8907d5d7150b410e50aae9a8062882",
+      "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+      "pathNumber": 6,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Delayed reveal (principal intact, no figure) lands in them2 and you5 marks 말씀을 안 하셨어요 correctly; 기다리라고 modelled as recognition; cloze moveBlankIndex now on the -될까요 frame and 여쭤봐도 돼요 accepted; you3 base shifts the scope of 이자만 ('nur vor der Fälligkeit' / 'only before maturity' instead of 'only the interest'); build decoy 상속받았어도 is grammatically insertable after 적금을."
+        },
+        {
+          "n": 2,
+          "reason": "them4 models 하라고 하셨어요 before L3 productive use; you5 DE now keeps the report marker (gesagt, ich könne selbst entscheiden); -다는 거죠 accepted; Herr Doktor removed; recall decoy 발급 is form-insertable (오늘 발급 받고) though contextually weak."
+        },
+        {
+          "n": 3,
+          "reason": "-(으)라고 하셨어요 first productive after L1–2 them-turn modelling; MC discrimination 만들라고/만든다고/만들자고/만드냐고 is sound; 이른바 decoy replaced; boundary about third parties clean; DE/EN both fix the manager as female although the role is neutral (consistent, optional)."
+        },
+        {
+          "n": 4,
+          "reason": "Genuine reported question 챙겼냐고 물으셨어요 (not echo), 원본이래요 now rendered as hearsay in DE/EN, 원본이어야 된대요 accepted; 가자고 했어요 modelled for L6; neighbour's foreign-resident case correctly left open; 'Mein Mitbewohner' genders a neutral referent (optional)."
+        },
+        {
+          "n": 5,
+          "reason": "Learner DE now neutral (zur Miete, in der WG); 분담을 moved into prefix so the natural permutation can no longer be rejected; quotation labelled (그분 말씀이에요) and next step proposed; typed synthesis blank rejects the architecture's own form 하냐고 하셨어요/하냬요."
+        },
+        {
+          "n": 6,
+          "reason": "them2 reworded naturally (지켜보면 어떨까요 / 다음 달에 봬요); -자고 하셨어요 first productive after L4–5 modelling; 한마디로 compresses to action plus date; same -냐고 하셨어요/-냬요 rejection in synthesis blank 0."
+        },
+        {
+          "n": 7,
+          "reason": "-(으)ㄴ 게 아니라 + -라고 하시던데요 corrects the friend's expectation; 회수 여부는 말씀도 없었어요 marks the unsaid; DE now carries the saying verb (Mir wurde gesagt); decoys non-insertable."
+        },
+        {
+          "n": 8,
+          "reason": "합의할 fixed in them2, 요약하면 첫째/둘째 now present in you5/synthesis/witness, them4 DE no longer garbled, assessment prompt now contains a condition (90 % for two weeks); synthesis blank 1 rejects standard-spacing 안 알려 주셨어요 and 말씀 안 하셨어요."
+        },
+        {
+          "n": 9,
+          "reason": "-다는 뜻이었고 and 확정된 건 …뿐이에요 productive as staged, 시작한다면서요 recognition in them4, confirmed vs rumour separated; both DE and EN base texts of you5 drop the interpretive carrier -다는 뜻이었고 and state the survey as plain fact. (P9-specific floor-chunk/parked-question checks are not applicable to this path.)"
+        },
+        {
+          "n": 10,
+          "reason": "Full formal→summarize→relay chain inside 해요체 with 담당자님/연락드렸어요/explicit request; relay limits the bank-statement step to the learner's case and sends the colleague to ask which documents are needed without claiming anything can be omitted; 두 번 moved into prefix. (P10-specific stance/counterargument checks are not applicable to this path.)"
+        }
+      ],
+      "findings": [
+        {
+          "n": 9,
+          "field": "dialogue[5].base.de",
+          "issue": "The staged L9 carrier -다는 뜻이었고 (interpreting the official) is dropped; the survey is relayed as plain fact ('Sie beginnt nächsten Monat und dauert zwei Monate.'), erasing the interpretation marker the move exists to practise.",
+          "fix": "Replace with: \"Fest steht nur der Zeitplan der Befragung. Gemeint war, dass ab nächstem Monat zwei Monate lang befragt wird; wann abgerissen wird, steht laut Verwaltung noch nicht fest. Der Termin im Frühjahr ist ein Gerücht.\""
+        },
+        {
+          "n": 9,
+          "field": "dialogue[5].base.en",
+          "issue": "Same omission of -다는 뜻이었고 ('The survey starts next month and runs for two months.').",
+          "fix": "Replace with: \"Only the survey schedule is confirmed. What that meant was a two-month survey starting next month, and the official said the timing of demolition was still undecided. Spring is just a rumour.\""
+        },
+        {
+          "n": 1,
+          "field": "dialogue[3].base.de",
+          "issue": "만기 전에 깨면 이자만 거의 못 받고 restricts the loss to the interest (이자만); DE moves the restriction to the time ('nur vor der Fälligkeit'), blurring the principal/interest distinction that them2 revealed and you3 is checking.",
+          "fix": "Replace with: \"Wenn ich vor der Fälligkeit kündige, fallen also nur die Zinsen fast weg, und nach vollen drei Jahren bekomme ich alles, richtig? Darf ich auch fragen, ob am Kapital nichts verloren geht?\""
+        },
+        {
+          "n": 1,
+          "field": "dialogue[3].base.en",
+          "issue": "Same scope shift ('only before maturity do I get almost no interest').",
+          "fix": "Replace with: \"So if I close it before maturity, it's only the interest I almost entirely lose, and if I complete three years I get all of it, right? May I also ask whether there's no loss on the principal?\""
+        },
+        {
+          "n": 8,
+          "field": "synthesis.blanks[1].acceptedAnswers",
+          "issue": "Exact typed grading rejects the standard-orthography spacing 안 알려 주셨어요 (보조용언 spacing is the default rule; 알려주셨어요 is only the permitted joined form) and the equally natural 말씀 안 하셨어요.",
+          "fix": "Set to: [\"안 알려주셨어요\",\"안 알려 주셨어요\",\"말씀하지 않으셨어요\",\"말씀 안 하셨어요\",\"알려주지 않으셨어요\",\"알려 주지 않으셨어요\"]"
+        },
+        {
+          "n": 5,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "Open question-report frame: the architecture's staged forms -냐고 하셨어요 / -냬요 are rejected because only 물으셨어요/물어보셨어요 are listed.",
+          "fix": "Set to: [\"하냐고 물으셨어요\",\"하냐고 물어보셨어요\",\"하는지 물으셨어요\",\"하냐고 하셨어요\",\"하냬요\"]"
+        },
+        {
+          "n": 6,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "Same rejection of the staged -냐고 하셨어요 / -냬요 forms in an open frame.",
+          "fix": "Set to: [\"줄었냐고 물으셨어요\",\"줄었는지 물으셨어요\",\"줄었냐고 물어보셨어요\",\"줄었냐고 하셨어요\",\"줄었냬요\"]"
+        },
+        {
+          "n": 1,
+          "field": "build.distractors[1] (optional)",
+          "issue": "상속받았어도 is grammatically insertable after 적금을 (적금을 상속받았어도 만기 전에 해지하면 … is a well-formed sentence with a different meaning); decoys should fail in form, not only in content.",
+          "fix": "Replace \"상속받았어도\" with \"해지됐더니\" (passive after 을 is ungrammatical in every slot)."
+        },
+        {
+          "n": 2,
+          "field": "recall.fallbackChoices (optional)",
+          "issue": "발급 is form-insertable (오늘 발급 받고 바로 정해야 하는 건 아니죠?); only context excludes it.",
+          "fix": "Replace \"발급\" with \"졸업\" → [\"졸업\",\"주문\",\"진료\",\"선적\"]"
+        },
+        {
+          "n": 4,
+          "field": "recall.fallbackChoices (optional)",
+          "issue": "수출 신고 is a real collocation, so the decoy is form-insertable; only context excludes it.",
+          "fix": "Replace \"수출\" with \"환승\" → [\"환승\",\"전입\",\"소방\",\"기상\"]"
+        },
+        {
+          "n": 7,
+          "field": "synthesis.blanks[1].acceptedAnswers (optional)",
+          "issue": "Room-two contracted relay 내래요, productive since L5, is a natural answer here but rejected.",
+          "fix": "Append \"내래요\" and \"내라고 하셨어요\" is already present → [\"내라고 하시던데요\",\"내라고 하셨어요\",\"제출하라고 하시던데요\",\"내래요\"]"
+        },
+        {
+          "n": 10,
+          "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+          "issue": "경우에만 해당하니까 ('applies only to my case') is the most natural way to express the limitation the learnerGoal demands, but is rejected.",
+          "fix": "Append \"경우에만 해당하니까\" and \"경우에만 해당해서\"."
+        },
+        {
+          "n": 9,
+          "field": "cloze.blanks[1].acceptedAnswers (optional)",
+          "issue": "Colloquial 안 정해졌다는 is rejected although it fits 철거 시기는 아직 ___ 말씀이죠 exactly.",
+          "fix": "Append \"안 정해졌다는\"."
+        },
+        {
+          "n": 3,
+          "field": "dialogue[4].base.de / base.en and dialogue[5].base.de / base.en (optional)",
+          "issue": "Korean never genders the manager, role is 'Führungskraft'; DE/EN fix her as female ('was sie gesagt hat' / 'what she said', 'Sie hat gesagt' / 'She told me').",
+          "fix": "dialogue[4].base.de: \"Seid ihr fertig? Kam ich dabei auch vor? Mich interessiert, was gesagt wurde.\"; base.en: \"Are you done? Did I come up, by any chance? I'm curious what was said.\"; dialogue[5].base.de: \"Es ging nur um mich. Mir wurde gesagt, ich solle die Präsentationsfolien kürzer machen. Über andere wurde nicht gesprochen, und selbst wenn, dürfte ich es nicht weitergeben.\"; base.en: \"It was only about me. I was told to make the slide decks shorter. Nobody else came up, and even if they had, I shouldn't pass it on.\""
+        },
+        {
+          "n": 4,
+          "field": "dialogue[4].base.de (optional)",
+          "issue": "'Mein Mitbewohner' genders 같이 사는 사람; EN 'housemate' is neutral.",
+          "fix": "Replace with: \"Die Person, mit der ich zusammenwohne, hat vorgeschlagen, diese Woche gemeinsam hinzugehen. Ich habe aber eine andere Staatsangehörigkeit. Brauche ich dieselben Unterlagen?\""
+        },
+        {
+          "n": 1,
+          "field": "dialogue[5].base.de / base.en (optional)",
+          "issue": "원금은 그대로 돌려받고요 continues the report (-고요 under 하셨어요); DE/EN state it as the learner's own fact.",
+          "fix": "DE: \"Sie haben gesagt, dass ich bei einer vorzeitigen Kündigung kaum Zinsen bekomme und mein eingezahltes Geld vollständig zurückerhalte. Einen genauen Betrag haben sie nicht genannt.\"; EN: \"They said I'd earn very little interest if I close it early, and that I'd get back everything I paid in. They didn't give an exact figure.\""
+        }
+      ],
+      "remainingHolds": []
+    }
+  ],
+  "earlyTeachingCards": {
+    "receiptSha256": "863f51da5bd9019751c3967cdc68d9ffec263efa6dc7629230888584afcf5c5f",
+    "lessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "placement": "The pattern card appears before the challenge and final steer. The model comes from the first learner turn. The transfer example uses a separate situation."
+  },
+  "editorialClosure": {
+    "pathNumber": 6,
+    "verdict": "PASS",
+    "lessonSha256": "977dcf0d8f7a933404fc8cd5d4ed29543f2b952bf3a90fcf792b9f3ddaf3a468",
+    "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+    "sourceReviewReceiptSha256": "85c867f49b8e5dcbf0e878dec017a2fdfe4eb452d2f53544047aa5941472e5ff",
+    "findings": [
+      {
+        "n": 9,
+        "field": "dialogue[5].base.de",
+        "disposition": "resolved (equivalent repair)",
+        "reason": "'Gemeint war, dass ab nächstem Monat zwei Monate lang befragt wird.' now renders -다는 뜻이었고 as an interpretation of the official's statement; keeping the demolition clause as a separate sentence is an equivalent, grammatical design that preserves 미정이래요 ('laut Verwaltung noch nicht fest')."
+      },
+      {
+        "n": 9,
+        "field": "dialogue[5].base.en",
+        "disposition": "resolved (equivalent repair)",
+        "reason": "'What that meant was a two-month survey starting next month.' restores the interpretation marker; the following reported clause ('The official said … still undecided') matches 미정이래요. No regression."
+      },
+      {
+        "n": 1,
+        "field": "dialogue[3].base.de",
+        "disposition": "resolved",
+        "reason": "Applied as proposed: the restriction now falls on the interest ('nur die Zinsen fast weg'), matching 이자만 and keeping the principal/interest distinction that you3 checks."
+      },
+      {
+        "n": 1,
+        "field": "dialogue[3].base.en",
+        "disposition": "resolved",
+        "reason": "Applied as proposed ('it's only the interest I almost entirely lose'); scope now matches 이자만 거의 못 받고."
+      },
+      {
+        "n": 8,
+        "field": "synthesis.blanks[1].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Set to the six-item list including standard-spacing 안 알려 주셨어요, 말씀 안 하셨어요 and 알려 주지 않으셨어요; all fit 확정일은 ___ ."
+      },
+      {
+        "n": 5,
+        "field": "synthesis.blanks[0].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "하냐고 하셨어요 and 하냬요 appended; both are well-formed in 부품을 바꿔야 ___ . and match the staged question-report forms."
+      },
+      {
+        "n": 6,
+        "field": "synthesis.blanks[0].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "줄었냐고 하셨어요 and 줄었냬요 appended; both fit 집에서도 말수가 ___ ."
+      },
+      {
+        "n": 1,
+        "field": "build.distractors[1] (optional)",
+        "disposition": "resolved",
+        "reason": "해지됐더니 replaces 상속받았어도; the passive cannot follow 적금을 in any slot and the chip count stays at 7 (5 chunks + 2 decoys)."
+      },
+      {
+        "n": 2,
+        "field": "recall.fallbackChoices (optional)",
+        "disposition": "resolved",
+        "reason": "졸업 replaces 발급; 오늘 졸업 받고 is not form-insertable in the recall frame."
+      },
+      {
+        "n": 4,
+        "field": "recall.fallbackChoices (optional)",
+        "disposition": "resolved",
+        "reason": "환승 replaces 수출; 환승 신고 is not a collocation, so the decoy now fails in form."
+      },
+      {
+        "n": 7,
+        "field": "synthesis.blanks[1].acceptedAnswers (optional)",
+        "disposition": "resolved",
+        "reason": "내래요 appended; 접수 번호를 보험사에 내래요. is natural and the speak requiredTokens for turn 5 are unaffected."
+      },
+      {
+        "n": 10,
+        "field": "synthesis.blanks[0].acceptedAnswers (optional)",
+        "disposition": "optional retained",
+        "reason": "No edit applied; the list remains ['경우에 해당하니까','경우에 해당해서','경우에 해당하는 얘기라'], which matches the witness turn exactly. Adding 경우에만 is an optional widening and is not required for correctness."
+      },
+      {
+        "n": 9,
+        "field": "cloze.blanks[1].acceptedAnswers (optional)",
+        "disposition": "resolved",
+        "reason": "안 정해졌다는 appended; fits 철거 시기는 아직 ___ 말씀이죠 exactly."
+      },
+      {
+        "n": 3,
+        "field": "dialogue[4].base.de / base.en and dialogue[5].base.de / base.en (optional)",
+        "disposition": "resolved",
+        "reason": "All four strings replaced with the ungendered forms ('was gesagt wurde' / 'what was said', 'Mir wurde gesagt' / 'I was told'); grammatical and faithful to 뭐라고 하셨는지 / 만들라고 하셨어요."
+      },
+      {
+        "n": 4,
+        "field": "dialogue[4].base.de (optional)",
+        "disposition": "resolved",
+        "reason": "'Die Person, mit der ich zusammenwohne' replaces 'Mein Mitbewohner', matching the neutral 같이 사는 사람; EN 'housemate' already neutral."
+      },
+      {
+        "n": 1,
+        "field": "dialogue[5].base.de / base.en (optional)",
+        "disposition": "resolved",
+        "reason": "DE and EN now keep the principal clause inside the reported speech ('…und mein eingezahltes Geld vollständig zurückerhalte' / 'and that I'd get back everything I paid in'), matching 돌려받고요 under 하셨어요."
+      }
+    ],
+    "unresolved": [],
+    "closureReceiptSha256": "d84c1b862b896f39f08c84b4d14fd0f28390ae6adc446d00f44c46b7dca1e965",
+    "exactPostReviewEdits": [
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/3/base/de",
+        "old": "Also nur vor der Fälligkeit fallen die Zinsen fast weg, und nach vollen drei Jahren bekomme ich alles, richtig? Darf ich auch fragen, ob am Kapital nichts verloren geht?",
+        "new": "Wenn ich vor der Fälligkeit kündige, fallen also nur die Zinsen fast weg, und nach vollen drei Jahren bekomme ich alles, richtig? Darf ich auch fragen, ob am Kapital nichts verloren geht?"
+      },
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/3/base/en",
+        "old": "So only before maturity do I get almost no interest, and if I complete three years I get all of it, right? May I also ask whether there's no loss on the principal?",
+        "new": "So if I close it before maturity, it’s only the interest I almost entirely lose, and if I complete three years I get all of it, right? May I also ask whether there’s no loss on the principal?"
+      },
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/5/base/de",
+        "old": "Sie haben gesagt, dass ich bei einer vorzeitigen Kündigung kaum Zinsen bekomme. Mein eingezahltes Geld bekomme ich vollständig zurück. Einen genauen Betrag haben sie nicht genannt.",
+        "new": "Sie haben gesagt, dass ich bei einer vorzeitigen Kündigung kaum Zinsen bekomme und mein eingezahltes Geld vollständig zurückerhalte. Einen genauen Betrag haben sie nicht genannt."
+      },
+      {
+        "pointer": "lessonFile/lessons/0/dialogue/5/base/en",
+        "old": "They said I’d earn very little interest if I close it early. I get back everything I paid in. They didn’t give an exact figure.",
+        "new": "They said I’d earn very little interest if I close it early, and that I’d get back everything I paid in. They didn’t give an exact figure."
+      },
+      {
+        "pointer": "lessonFile/lessons/0/build/distractors/1",
+        "old": "상속받았어도",
+        "new": "해지됐더니"
+      },
+      {
+        "pointer": "lessonFile/lessons/1/recall/fallbackChoices/0",
+        "old": "발급",
+        "new": "졸업"
+      },
+      {
+        "pointer": "lessonFile/lessons/2/dialogue/4/base/de",
+        "old": "Seid ihr fertig? Kam ich dabei auch vor? Mich interessiert, was sie gesagt hat.",
+        "new": "Seid ihr fertig? Kam ich dabei auch vor? Mich interessiert, was gesagt wurde."
+      },
+      {
+        "pointer": "lessonFile/lessons/2/dialogue/4/base/en",
+        "old": "Are you done? Did I come up, by any chance? I'm curious what she said.",
+        "new": "Are you done? Did I come up, by any chance? I’m curious what was said."
+      },
+      {
+        "pointer": "lessonFile/lessons/2/dialogue/5/base/de",
+        "old": "Es ging nur um mich. Sie hat gesagt, ich solle die Präsentationsfolien kürzer machen. Über andere wurde nicht gesprochen, und selbst wenn, dürfte ich es nicht weitergeben.",
+        "new": "Es ging nur um mich. Mir wurde gesagt, ich solle die Präsentationsfolien kürzer machen. Über andere wurde nicht gesprochen, und selbst wenn, dürfte ich es nicht weitergeben."
+      },
+      {
+        "pointer": "lessonFile/lessons/2/dialogue/5/base/en",
+        "old": "It was only about me. She told me to make the slide decks shorter. Nobody else came up, and even if they had, I shouldn't pass it on.",
+        "new": "It was only about me. I was told to make the slide decks shorter. Nobody else came up, and even if they had, I shouldn’t pass it on."
+      },
+      {
+        "pointer": "lessonFile/lessons/3/dialogue/4/base/de",
+        "old": "Mein Mitbewohner hat vorgeschlagen, diese Woche gemeinsam hinzugehen. Ich habe aber eine andere Staatsangehörigkeit. Brauche ich dieselben Unterlagen?",
+        "new": "Die Person, mit der ich zusammenwohne, hat vorgeschlagen, diese Woche gemeinsam hinzugehen. Ich habe aber eine andere Staatsangehörigkeit. Brauche ich dieselben Unterlagen?"
+      },
+      {
+        "pointer": "lessonFile/lessons/3/recall/fallbackChoices/0",
+        "old": "수출",
+        "new": "환승"
+      },
+      {
+        "pointer": "lessonFile/lessons/4/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "하냐고 물으셨어요",
+          "하냐고 물어보셨어요",
+          "하는지 물으셨어요"
+        ],
+        "new": [
+          "하냐고 물으셨어요",
+          "하냐고 물어보셨어요",
+          "하는지 물으셨어요",
+          "하냐고 하셨어요",
+          "하냬요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/5/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "줄었냐고 물으셨어요",
+          "줄었는지 물으셨어요",
+          "줄었냐고 물어보셨어요"
+        ],
+        "new": [
+          "줄었냐고 물으셨어요",
+          "줄었는지 물으셨어요",
+          "줄었냐고 물어보셨어요",
+          "줄었냐고 하셨어요",
+          "줄었냬요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/6/synthesis/blanks/1/acceptedAnswers",
+        "old": [
+          "내라고 하시던데요",
+          "내라고 하셨어요",
+          "제출하라고 하시던데요"
+        ],
+        "new": [
+          "내라고 하시던데요",
+          "내라고 하셨어요",
+          "제출하라고 하시던데요",
+          "내래요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/7/synthesis/blanks/1/acceptedAnswers",
+        "old": [
+          "안 알려주셨어요",
+          "말씀하지 않으셨어요",
+          "알려주지 않으셨어요"
+        ],
+        "new": [
+          "안 알려주셨어요",
+          "안 알려 주셨어요",
+          "말씀하지 않으셨어요",
+          "말씀 안 하셨어요",
+          "알려주지 않으셨어요",
+          "알려 주지 않으셨어요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/8/dialogue/5/base/de",
+        "old": "Fest steht nur der Zeitplan der Befragung. Sie beginnt nächsten Monat und dauert zwei Monate. Wann abgerissen wird, steht laut Verwaltung noch nicht fest. Der Termin im Frühjahr ist ein Gerücht.",
+        "new": "Fest steht nur der Zeitplan der Befragung. Gemeint war, dass ab nächstem Monat zwei Monate lang befragt wird. Wann abgerissen wird, steht laut Verwaltung noch nicht fest. Der Termin im Frühjahr ist ein Gerücht."
+      },
+      {
+        "pointer": "lessonFile/lessons/8/dialogue/5/base/en",
+        "old": "Only the survey schedule is confirmed. The survey starts next month and runs for two months. The official said the timing of demolition was still undecided. Spring is just a rumour.",
+        "new": "Only the survey schedule is confirmed. What that meant was a two-month survey starting next month. The official said the timing of demolition was still undecided. Spring is just a rumour."
+      },
+      {
+        "pointer": "lessonFile/lessons/8/cloze/blanks/1/acceptedAnswers",
+        "old": [
+          "정해지지 않았다는",
+          "결정되지 않았다는",
+          "확정되지 않았다는"
+        ],
+        "new": [
+          "정해지지 않았다는",
+          "결정되지 않았다는",
+          "확정되지 않았다는",
+          "안 정해졌다는"
+        ]
+      }
+    ]
+  },
+  "finalCopyChanges": {
+    "languageVerdict": {
+      "pathNumber": 6,
+      "lessonSha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+      "verdict": "PASS",
+      "reason": "L7 rule.de/en: A이/가 아니라 B correctly described as rejecting a wrong classification (분실이 아니라 도난); -(으)ㄴ 채로 now correctly described as a persisting state during another event, which fits both 자물쇠가 잘린 채로 자전거만 없어졌어요 and 창문을 열어 둔 채로 잤는데 (the old wording 'the state in which you found something' did not fit the second example). L2 dialogue[4].base.de renders 선생님이 어느 쪽으로 하라고 하셨어요? 추천은 있었을 거 아니에요? faithfully in idiomatic German; the agentless passive loses nothing in context and matches the partner's casual tone."
+    },
+    "languageReceiptSha256": "f3b4c2e58d8bfc6ca9831531469d6fe15dcfb9617f76757460a215c825db5d08",
+    "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+    "pathNumber": 6,
+    "reviewedSourceSha256": "977dcf0d8f7a933404fc8cd5d4ed29543f2b952bf3a90fcf792b9f3ddaf3a468",
+    "lessonSha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+    "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0",
+    "fields": [
+      {
+        "lessonNumber": 7,
+        "field": [
+          "pattern",
+          "rule",
+          "de"
+        ],
+        "before": "Mit A이/가 아니라 B weist du eine falsche Einordnung zurück und nennst die richtige. -(으)ㄴ 채로 beschreibt den Zustand, in dem du etwas vorgefunden hast.",
+        "after": "Mit A이/가 아니라 B weist du eine falsche Einordnung zurück und nennst die richtige. -(으)ㄴ 채로 beschreibt einen Zustand, der fortbesteht, während etwas anderes geschieht."
+      },
+      {
+        "lessonNumber": 7,
+        "field": [
+          "pattern",
+          "rule",
+          "en"
+        ],
+        "before": "Use A이/가 아니라 B to reject a wrong classification and give the right one. -(으)ㄴ 채로 describes the state in which you found something.",
+        "after": "Use A이/가 아니라 B to correct a mistaken classification. -(으)ㄴ 채로 describes a state that continues while something else happens."
+      },
+      {
+        "lessonNumber": 2,
+        "field": [
+          "dialogue",
+          4,
+          "base",
+          "de"
+        ],
+        "before": "Und welche Variante hat der Arzt dir gesagt, sollst du nehmen? Eine Empfehlung gab es doch sicher?",
+        "after": "Und zu welcher Behandlung wurde dir geraten? Eine Empfehlung gab es doch sicher?"
+      }
+    ]
+  }
+}

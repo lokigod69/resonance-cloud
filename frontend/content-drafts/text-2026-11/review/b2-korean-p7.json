@@ -1,0 +1,617 @@
+{
+  "pathNumber": 7,
+  "scope": "Korean B2 offline text and personal-study transfer tasks. Native-human, device and audio review remain separate.",
+  "lessonSha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+  "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+  "independentVerdict": "PASS",
+  "fableDisposition": "resolved",
+  "independent": {
+    "lessonSha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+    "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+    "verdict": "PASS",
+    "wholePathReview": {
+      "pathNumber": 7,
+      "verdict": "PASS",
+      "lessonSha256": "b9b835431b96e6e0cf20d6b7f3d069f525a8708cdeb9548d7cd8e21c7f47e50d",
+      "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+      "reviewer": "Independent read-only Codex reviewer, P7/P8",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "initialFindings": [
+        "Later dialogue answers and decisions in early teaching examples; several transfer prompts had essentially already been answered.",
+        "Club consultation and the garden agreement needed an actual decision. Some distractors fit the dialogue, and the trade construction needed learner production."
+      ],
+      "recheck": "All ten early models use the opening learner turn. L6 distinguishes a quick vote from a longer consultation. The second household accepts the size and watering rota in L10. The reviewer reconstructed the final field edits and verified new facts are needed for the transfer tasks.",
+      "remaining": [
+        "Before enabling typed grading, support 2시간이면 as an alternative to 두 시간이면 in L2, or render that slot as a closed choice. The offline reader does not grade typed answers."
+      ]
+    },
+    "postReviewCopyCheck": {
+      "verdict": "PASS",
+      "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+      "reviewer": "Fresh read-only Codex reviewer for the final copy and answer presentation changes",
+      "scope": "Verified the five final source files against the complete reviewed versions. Reversing all eight field edits in memory reproduced all five whole-file review hashes. The four time choices have exactly one answer grounded in the 9–11 lift booking. The closing Korean, English and German summaries each express both outcomes in one sentence. All five final source and assessment hashes matched; no material findings."
+    }
+  },
+  "model": "claude-fable-5-1",
+  "editorialReads": [
+    {
+      "stage": "review-first-receipt.json",
+      "receiptSha256": "abd7315e41bd7686048d4954e846d5e110526ecaef4747e188fab813c0cc4e28",
+      "sourceSha256": "f7d5c598acb85d8d14020a0314fb9e2d6cfd909dfe988bc0a7e444c89d47b62e",
+      "assessmentSha256": "9289e088dcc1417473bf4972f527fee077969a1f988a26f2ed24bee6ad44e68e",
+      "pathNumber": 7,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "propose→counteroffer→invite coherent; them4 reveals Friday block + silent Minji and learner answers both (점심으로 바꾸죠 + direct invite). 아직 말씀 안 하신 분은 어떻게 생각하세요? only modelled in pattern example 2, acceptable since Minji is named. Synthesis blank 답 주시면 rejects natural 답을 주시면."
+        },
+        {
+          "n": 2,
+          "reason": "Lift window and 10:00 truck chained correctly into summarize turn; 승강기 trophy fits booking context. Build distractor 몇 층까지 slots grammatically into the practised sentence (승강기를 몇 층까지 쓸 수 있는지). DE/EN of turn 3 drop 가구부터 'first' (optional)."
+        },
+        {
+          "n": 3,
+          "reason": "Absence and added demo both answered; learner takes demo and trades draft review. 대신 as bare connector in L3 synthesis is pre-B2 lexis, not new grammar. Decoy 최종본을 is pinned wrong by 우선 and later 초안 검토."
+        },
+        {
+          "n": 4,
+          "reason": "First learner-subject -(으)ㄹ 테니까 correctly staged here with a distinct-agent request. Architecture's verb-attached -는 대신(에) (trade) never appears in any learner turn across L4–6; only sentence-initial 대신 (L3, L9) occurs."
+        },
+        {
+          "n": 5,
+          "reason": "Weather trigger and equipment cap handled separately; staggered groups of ten match architecture. 관리소예요 as chat self-identification is abrupt (optional 관리소인데요). Cloze rejects natural 옮기는 걸로 하죠."
+        },
+        {
+          "n": 6,
+          "reason": "-(으)ㄹ 바에는 … 게 낫겠어요 natural; stance kept then conceded (간식비). DE pattern rule claims a follow-up question to the group that the EN rule and example do not contain. Cloze 그래도 rejects 하지만/그렇지만, both natural in context."
+        },
+        {
+          "n": 7,
+          "reason": "-되 …쪽으로 정리할게요 introduced (dialogue + example 2); overrun offset vs rental drop logic sound; driving assigned in turn 3. Synthesis 못 아끼면 rejects 아끼지 못하면. (P9/P10 checks in brief not applicable to this path; P7 floor chunks correctly sit in L8–9 them turns.)"
+        },
+        {
+          "n": 8,
+          "reason": "말씀 중에 죄송한데요 modelled in them turn with genuine new information (director 10 min); 한계예요/나머지는 staged. you1 DE 'lade sie hoch' / EN 'post them' mistranslate 정리해서 올릴게요 (submit to manager). Synthesis rejects 지금까지 정리하면."
+        },
+        {
+          "n": 9,
+          "reason": "끝까지 들어 주시겠어요? modelled and followed by the system-check reveal; -는 걸로 해 주시겠어요? staged with concrete trade. Build distractor 영구히 form-fits in place of 잠깐. DE 'Hören Sie mich bitte zu Ende an?' is not idiomatic as a question."
+        },
+        {
+          "n": 10,
+          "reason": "Three-point summary with owner-first clauses; them 해요체 only (no 합쇼체) consistent with non-extended variant. Synthesis blank 정리하면 rejects the architecture's own 지금까지 정리하면. 세대가 열 곳 is a slightly off counter (optional)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "field": "dialogue[5].targetText + base + synthesis.segments[0].text + carrierTags",
+          "issue": "Architecture lists verb-attached -는 대신(에) as productive in L4-6, but no learner turn uses it (only bare connector 대신 in L3/L9). Architecture L4 example itself uses 하는 대신.",
+          "fix": "targetText: '그럼 청소는 요일로 나누는 대신 주말에 같이 한 번 하기로 해요. 토요일 오후 세 시면 둘 다 깨어 있으니까 괜찮죠?'; base.de: 'Dann teilen wir das Putzen nicht nach Wochentagen auf, sondern putzen einmal am Wochenende zusammen. Samstag um drei nachmittags sind wir beide wach. Passt dir das?'; base.en: 'Then instead of splitting the cleaning by day, let's clean together once at the weekend. We'll both be awake at three on Saturday afternoon. Does that work?'; synthesis.segments[0].text: '그럼 청소는 요일로 나누는 대신 주말에 같이 한 번 '; add carrierTag {surface:'나누는 대신',status:'productive'}; add term {targetText:'나누는 대신',kind:'frame',base:{de:'statt aufzuteilen',en:'instead of dividing'}}. Speak turn 5 tokens (주말에/토요일/깨어) remain valid."
+        },
+        {
+          "n": 1,
+          "field": "synthesis.blanks[1].acceptedAnswers",
+          "issue": "Natural particle-inserted variant rejected in context.",
+          "fix": "Add '답을 주시면' and '답해 주시면'."
+        },
+        {
+          "n": 5,
+          "field": "cloze.blanks[1].acceptedAnswers",
+          "issue": "Natural equivalent 옮기는 걸로 하죠 (same frame family taught in L6/L9) rejected.",
+          "fix": "Add '옮기는 걸로 하죠'."
+        },
+        {
+          "n": 6,
+          "field": "cloze.blanks[0].acceptedAnswers",
+          "issue": "하지만/그렇지만 are equally natural concessive openers before 대관료가 오른 건 사실이니까.",
+          "fix": "Add '하지만','그렇지만'."
+        },
+        {
+          "n": 6,
+          "field": "pattern.rule.de",
+          "issue": "DE rule ('Auf -는 게 낫겠어요 folgt für die Gruppe die Frage, ob deine bevorzugte Lösung funktioniert') is not equivalent to EN and is not borne out by either example (reason follows, no question).",
+          "fix": "'Mit -(으)ㄹ 바에는 benennst du die weniger attraktive Möglichkeit. Mit -는 게 낫겠어요 stellst du die Alternative vor, die du für besser hältst.'"
+        },
+        {
+          "n": 7,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "Long-negation variant 아끼지 못하면 rejected though fully natural in context.",
+          "fix": "Add '아끼지 못하면'."
+        },
+        {
+          "n": 8,
+          "field": "dialogue[1].base.de / base.en",
+          "issue": "정리해서 올릴게요 (submit upward to the manager) mistranslated as 'lade sie hoch' / 'post them'.",
+          "fix": "de: 'Ja, ich ordne die Tagesordnungspunkte danach, wie dringend eine Entscheidung ist, und lege sie Ihnen vor. Können Sie mir sagen, wie viele unbedingt hineinmüssen?'; en: 'Yes, I'll order the items by how urgently they need a decision and send them up to you. Could you tell me how many items must go in?'. Apply identically to pattern.examples[0].base and trophy.example.base (same text)."
+        },
+        {
+          "n": 8,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "Architecture's own summary opener 지금까지 정리하면 rejected.",
+          "fix": "Add '지금까지 정리하면'."
+        },
+        {
+          "n": 10,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "Same as L8: 지금까지 정리하면 (architecture target form) rejected.",
+          "fix": "Add '지금까지 정리하면'."
+        },
+        {
+          "n": 2,
+          "field": "build.distractors[1]",
+          "issue": "몇 층까지 slots into the practised sentence in place of 몇 시부터 with a plausible reading (승강기를 몇 층까지 쓸 수 있는지).",
+          "fix": "Replace '몇 층까지' with '탔는데' (cannot precede 확인하고 in this sentence)."
+        },
+        {
+          "n": 9,
+          "field": "build.distractors[0]",
+          "issue": "영구히 form-fits in place of 잠깐 (양보는 영구히 미뤄 두고 …).",
+          "fix": "Replace '영구히' with '미뤘어요'."
+        },
+        {
+          "n": 9,
+          "field": "dialogue[2].base.de",
+          "issue": "'Hören Sie mich bitte zu Ende an?' is not idiomatic as a question.",
+          "fix": "'Einen Augenblick. Würden Sie mich bitte zu Ende anhören? Ich habe gerade nachgesehen. Im System sind beide Buchungen gültig.'"
+        },
+        {
+          "n": 2,
+          "field": "dialogue[3].base.de / base.en (optional)",
+          "issue": "가구부터 'furniture first' dropped.",
+          "fix": "de: 'Bringen wir um neun zuerst die Möbel runter …'; en: 'Let's bring the furniture down first at nine …'. Also pattern/trophy not affected (turn 3 not reused)."
+        },
+        {
+          "n": 5,
+          "field": "dialogue[4].targetText (optional)",
+          "issue": "관리소예요 as chat self-identification is abrupt.",
+          "fix": "'관리소인데요. 장비는 장갑 열 켤레하고 집게 열 개가 전부예요. 더 사기는 어려워요.' (base unchanged)."
+        },
+        {
+          "n": 10,
+          "field": "dialogue[1].targetText + build.chunks[3] + recall.after + pattern/trophy example (optional)",
+          "issue": "세대가 열 곳 uses place counter for households; 열 세대/열 가구 is the standard count.",
+          "fix": "Only if accepted: '첫해는 참여하는 세대가 열 가구 정도면 관리하기 좋을 것 같아요.' with build chunk '열 가구', recall.after '열 가구 정도면 …', and identical update in pattern.examples[0].targetText, trophy.example.targetText, sceneCaption not affected."
+        }
+      ],
+      "remainingHolds": []
+    },
+    {
+      "stage": "review-final-receipt.json",
+      "receiptSha256": "a6f9a464fce44a3d67f3a869efa613d811c351a564ad2b0b0c1f1f87d9b81f77",
+      "sourceSha256": "853247f9b037aa86eeb440dbaa6776dcae71d1ddaf110be6c06c0f16ef4cc83a",
+      "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+      "pathNumber": 7,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Propose→counteroffer→invite intact; them2 budget and them4 (two can't Friday + Minji silent) both delayed and both answered in turn 5 (점심으로 바꾸죠 / direct address to 민지 씨 / 삼십만 원 안에서). Prior finding 답을 주시면 now accepted. Remaining unfairness: cloze blank1 rejects 확인한 후에, the most standard equivalent of 확인한 다음에."
+        },
+        {
+          "n": 2,
+          "reason": "Lift window 9–11 and truck at 10 drive a coherent sequence; turn 5 summary assigns 가구/박스/싣기 to the three people. 가구부터 now rendered 'zuerst/first'. 몇 층까지 decoy replaced. Synthesis blank1 rejects 싣기로 하죠 although L5 accepts both 하죠/해요 for the same frame; cloze blank1 rejects 맡아 주실 수 있을까요 which L9 accepts for the parallel frame."
+        },
+        {
+          "n": 3,
+          "reason": "Absence in week 3 answered by 휴가 전에 끝낼 수 있는 부분부터; demo taken with a real trade (시연은 제가 맡을게요. 대신 초안 검토는 현우 씨가). Decoys 혼자서만/미뤘어요 contradict 두 분이 and verb slot. Synthesis blank0 rejects 제가 할게요, fully natural before 시연은."
+        },
+        {
+          "n": 4,
+          "reason": "-(으)ㄹ 테니까 first productive on learner subject (제가 조용히 할 테니까) and -는 대신 now present in turn 5 with carrierTag; prior missing-carrier finding resolved. Note the realised sense is 'instead of' (나누지 말고 accepted), while the architecture labels the carrier as trade; the trade itself is carried by 할 테니까 … 줄여 주시겠어요. Acceptable, flagged optional."
+        },
+        {
+          "n": 5,
+          "reason": "Weather fallback (비가 오면 일요일 아침으로 바로 옮기기로 하죠) and ten-tool cap (조별로 열 명씩 시간대를 나누죠, 다음 조에 참여) both respond to the delayed constraints without discouraging. 옮기는 걸로 하죠 and 관리소인데요 fixed. Cloze blank0 still rejects 어쩔 수 없으니."
+        },
+        {
+          "n": 6,
+          "reason": "-(으)ㄹ 바에는 … 게 낫겠어요 counteroffer, concession on 간식비 with 온라인 연습 to answer newcomers' weekly need, conclude with chat vote by tomorrow and venue answer 모레 fits 'this week'. DE rule now equivalent to EN; 하지만/그렇지만 accepted. Synthesis blank1 rejects 주는 걸로 하죠 / 주기로 하죠."
+        },
+        {
+          "n": 7,
+          "reason": "No-licence constraint answered by 운전은 제가 할 테니까; 20% overrun answered conditionally with -되 (기차로 가되 … 못 아끼면 버스로) and lodging delegated to 두 분. 아끼지 못하면 now accepted. Decoys 주차한/혼자만 non-fitting."
+        },
+        {
+          "n": 8,
+          "reason": "Invite (순서대로 정리해서 올릴게요 now 'lege sie Ihnen vor'/'send them through to you'), 한계예요 + 쪽으로 정리하면 어떨까요, then 말씀 중에 죄송한데요 modelled in them4 (assistant, well motivated) and front-loading of the director's item. 지금까지 정리하면 accepted."
+        },
+        {
+          "n": 9,
+          "reason": "Both floor chunks verified receptively: 끝까지 들어 주시겠어요? in them2 (DE now 'Würden Sie mich bitte zu Ende anhören?'). 영구히 decoy replaced by 취소했으니. Concede with 대신 … 쓰는 걸로 해 주시겠어요? gives the concrete next-week trade. Them2's floor-claim is only weakly motivated since the learner did not interrupt (optional)."
+        },
+        {
+          "n": 10,
+          "reason": "Three-point summary (정리하면 세 가지예요) only after household a agrees (열 세대도 좋아요 / 물 당번도 그렇게 하죠) and the one-page-by-Friday constraint; office refusal of watering answered by rotating 세대 duty. 열 곳 replaced by 열 가구; 지금까지 정리하면 accepted. All them turns haeyo as permitted."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "field": "cloze.blanks[1].acceptedAnswers",
+          "issue": "확인한 후에 (standard equivalent of 확인한 다음에, works in '인원 먼저 ___ 식당에 견적을 받아 보죠') is rejected while 뒤에 and -고 나서 are accepted.",
+          "fix": "[\"확인한 다음에\",\"확인한 뒤에\",\"확인하고 나서\",\"확인한 후에\",\"확인한 후\"]"
+        },
+        {
+          "n": 2,
+          "field": "cloze.blanks[1].acceptedAnswers",
+          "issue": "맡아 주실 수 있을까요 is a fully natural request form here and is accepted for the parallel frame in L9 synthesis, but rejected in L2.",
+          "fix": "[\"맡아 주시겠어요\",\"담당해 주시겠어요\",\"맡아 주실래요\",\"맡아 주실 수 있을까요\",\"맡아 주실 수 있으세요\"]"
+        },
+        {
+          "n": 2,
+          "field": "synthesis.blanks[1].acceptedAnswers",
+          "issue": "싣기로 하죠 (same -기로 하죠 frame the path itself teaches in L5 and accepts there alongside 해요) is rejected in '셋이서 바로 ___.'",
+          "fix": "[\"싣기로 해요\",\"싣는 걸로 해요\",\"싣도록 해요\",\"싣기로 하죠\",\"싣는 걸로 하죠\"]"
+        },
+        {
+          "n": 3,
+          "field": "synthesis.blanks[0].acceptedAnswers",
+          "issue": "제가 할게요 is the most natural plain variant in '시연은 ___.' and is rejected.",
+          "fix": "[\"제가 맡을게요\",\"제가 담당할게요\",\"제가 맡아 볼게요\",\"제가 할게요\"]"
+        },
+        {
+          "n": 5,
+          "field": "cloze.blanks[0].acceptedAnswers",
+          "issue": "어쩔 수 없으니 (short form, accepted as 할 테니 in L4/L7 for the same -니까/-니 alternation) rejected.",
+          "fix": "[\"어쩔 수 없으니까\",\"어쩔 수 없어서\",\"바꿀 수 없으니까\",\"어쩔 수 없으니\"]"
+        },
+        {
+          "n": 6,
+          "field": "synthesis.blanks[1].acceptedAnswers",
+          "issue": "주는 걸로 하죠 and 주기로 하죠 are rejected in '모레 장소에 답을 ___.' although 하죠 is the form practised in L5 and L10 for this frame.",
+          "fix": "[\"주는 걸로 해요\",\"주기로 해요\",\"주는 것으로 해요\",\"주는 걸로 하죠\",\"주기로 하죠\"]"
+        },
+        {
+          "n": 9,
+          "field": "synthesis.blanks[1].acceptedAnswers (optional)",
+          "issue": "해 주시면 안 될까요 is an equally polite closing request after 쓰는 걸로.",
+          "fix": "[\"해 주시겠어요\",\"해 주실래요\",\"해 주실 수 있을까요\",\"해 주시면 안 될까요\"]"
+        },
+        {
+          "n": 2,
+          "field": "dialogue[3].base.de + terms[경비실].base.de (optional)",
+          "issue": "'Wachraum' is a police/military guard room; for an apartment 경비실 the idiomatic term is 'Pförtnerloge'.",
+          "fix": "dialogue[3].base.de: \"Zwei Stunden sind knapp. Bringen wir um neun zuerst die Möbel runter und stellen wir sie neben die Pförtnerloge, weg vom Notausgang. Könnt ihr beide die Möbel übernehmen?\"; terms 경비실 base.de: \"Pförtnerloge\""
+        },
+        {
+          "n": 2,
+          "field": "build.distractors[0] (optional)",
+          "issue": "Attributive 수리했던 can be inserted grammatically before 승강기를 (먼저 수리했던 승강기를 …) without breaking the sentence; a finite form cannot.",
+          "fix": "\"수리했어요\""
+        },
+        {
+          "n": 10,
+          "field": "build.distractors[0] (optional)",
+          "issue": "Attributive 누락된 slots in place of 참여하는 (누락된 세대가 열 가구 정도면 …) with a grammatical reading; context rules it out but a finite form is cleaner.",
+          "fix": "\"누락됐어요\""
+        },
+        {
+          "n": 6,
+          "field": "trophy.remainder (optional/schema)",
+          "issue": "Only L6 trophy omits the remainder array (surface 격주 = lemma); other nine lessons carry it.",
+          "fix": "add \"remainder\":[] after whyThisWord"
+        },
+        {
+          "n": 6,
+          "field": "dialogue[4].base.de (optional)",
+          "issue": "확답 is a definite answer (yes or no), not a 'Zusage' (acceptance).",
+          "fix": "\"Der Vermieter braucht noch diese Woche eine verbindliche Antwort. Es bleibt keine Zeit, eine Mitgliederversammlung einzuberufen.\""
+        },
+        {
+          "n": 3,
+          "field": "dialogue[4].base.de (optional)",
+          "issue": "시연도 결과물에 추가하셨어요 = added a demo to the deliverables; 'als Ergebnis verlangt' shifts the meaning.",
+          "fix": "\"Heute Morgen hat unsere Abteilungsleitung noch eine Vorführung zu den geforderten Ergebnissen hinzugefügt. Wir müssen klären, wer sie übernimmt.\""
+        },
+        {
+          "n": 4,
+          "field": "dialogue[5].targetText / pattern note (optional)",
+          "issue": "-는 대신 is realised in the 'instead of' sense (synthesis accepts 나누지 말고), whereas the architecture labels the L4-6 carrier as trade; the trade is correctly carried by 할 테니까 … 줄여 주시겠어요 in turn 3. No change required; if a trade reading is wanted, keep current bytes and note it in review notes rather than altering synthesis."
+        },
+        {
+          "n": 9,
+          "field": "dialogue[2].targetText (optional)",
+          "issue": "끝까지 들어 주시겠어요? follows a completed learner turn, so the floor claim is weakly motivated.",
+          "fix": "\"잠깐만요, 제 말씀 끝까지 들어 주시겠어요? 사실 방금 확인했는데 시스템에는 두 예약이 다 유효하게 잡혀 있어요.\" (chunk preserved; DE/EN unchanged in meaning: \"Einen Augenblick, würden Sie mich bitte zu Ende anhören? Ich habe nämlich gerade nachgesehen. Im System sind beide Buchungen gültig.\" / \"Just a moment, could you hear me out? I've actually just checked and both bookings are valid in the system.\")"
+        }
+      ],
+      "remainingHolds": []
+    }
+  ],
+  "earlyTeachingCards": {
+    "receiptSha256": "21ea932033311835b892a46e16d1e8895da02f1eccf4f47f4b2f5bc2d8306f2a",
+    "lessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "placement": "The pattern card appears before the challenge and final steer. The model comes from the first learner turn. The transfer example uses a separate situation."
+  },
+  "editorialClosure": {
+    "pathNumber": 7,
+    "verdict": "PASS",
+    "lessonSha256": "b9b835431b96e6e0cf20d6b7f3d069f525a8708cdeb9548d7cd8e21c7f47e50d",
+    "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+    "sourceReviewReceiptSha256": "a6f9a464fce44a3d67f3a869efa613d811c351a564ad2b0b0c1f1f87d9b81f77",
+    "findings": [
+      {
+        "n": 1,
+        "field": "cloze.blanks[1].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/0/cloze/blanks/1/acceptedAnswers applied exactly as proposed; 확인한 후에 and 확인한 후 both read correctly in '인원 먼저 ___ 식당에 견적을 받아 보죠' and are standard equivalents of 확인한 다음에. Closed list remains, no free-synonym grading risk."
+      },
+      {
+        "n": 2,
+        "field": "cloze.blanks[1].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/1/cloze/blanks/1/acceptedAnswers applied; 맡아 주실 수 있을까요 / 맡아 주실 수 있으세요 are natural haeyo request forms before the '?' segment and now match the parallel L9 frame."
+      },
+      {
+        "n": 2,
+        "field": "synthesis.blanks[1].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/1/synthesis/blanks/1/acceptedAnswers applied; 싣기로 하죠 / 싣는 걸로 하죠 are the same -기로/-는 걸로 + 하죠 frame practised in L5 and fit '셋이서 바로 ___.' without altering the summarize move."
+      },
+      {
+        "n": 3,
+        "field": "synthesis.blanks[0].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/2/synthesis/blanks/0/acceptedAnswers applied; 제가 할게요 is grammatical and natural in '시연은 ___.' and does not disturb the connector blank 대신."
+      },
+      {
+        "n": 5,
+        "field": "cloze.blanks[0].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/4/cloze/blanks/0/acceptedAnswers applied; 어쩔 수 없으니 mirrors the -니까/-니 alternation already accepted in L4 (할 테니) and reads correctly before '비가 오면'."
+      },
+      {
+        "n": 6,
+        "field": "synthesis.blanks[1].acceptedAnswers",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/5/synthesis/blanks/1/acceptedAnswers applied; 주는 걸로 하죠 / 주기로 하죠 fit '모레 장소에 답을 ___.' and align with the 하죠 variants accepted in L5 and L10."
+      },
+      {
+        "n": 9,
+        "field": "synthesis.blanks[1].acceptedAnswers (optional)",
+        "disposition": "resolved",
+        "reason": "Optional edit at lessons/8/synthesis/blanks/1/acceptedAnswers applied; 해 주시면 안 될까요 is a correct polite closing request after '저희가 쓰는 걸로' and the list stays closed."
+      },
+      {
+        "n": 2,
+        "field": "dialogue[3].base.de + terms[경비실].base.de (optional)",
+        "disposition": "resolved",
+        "reason": "Both edits applied (lessons/1/dialogue/3/base/de and lessons/1/terms/6/base/de). 'neben die Pförtnerloge' is correct accusative after stellen; term gloss and dialogue now agree, EN 'security office' unchanged in meaning."
+      },
+      {
+        "n": 2,
+        "field": "build.distractors[0] (optional)",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/1/build/distractors/0 applied; finite 수리했어요 cannot slot into the 5-chunk sequence '먼저 승강기를 몇 시부터 쓸 수 있는지 확인하고,' so the distractor is now unambiguous. Chunk count unchanged (5)."
+      },
+      {
+        "n": 10,
+        "field": "build.distractors[0] (optional)",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/9/build/distractors/0 applied; finite 누락됐어요 has no grammatical slot among the 6 chunks, removing the attributive ambiguity. Chunk count and suffix unchanged."
+      },
+      {
+        "n": 6,
+        "field": "trophy.remainder (optional/schema)",
+        "disposition": "retained-optional",
+        "reason": "Not applied and correctly so: attested local policy is that whole nouns with a bare surface (격주 = lemma) omit the remainder array; the other nine trophies carry a particle remainder. The suggestion contradicts policy and is not required."
+      },
+      {
+        "n": 6,
+        "field": "dialogue[4].base.de (optional)",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/5/dialogue/4/base/de applied; 'verbindliche Antwort' correctly renders 확답 as a definite yes-or-no answer rather than an acceptance. Second sentence and EN unchanged."
+      },
+      {
+        "n": 3,
+        "field": "dialogue[4].base.de (optional)",
+        "disposition": "resolved",
+        "reason": "Edit at lessons/2/dialogue/4/base/de applied; 'eine Vorführung zu den geforderten Ergebnissen hinzugefügt' now matches 시연도 결과물에 추가하셨어요 and the EN 'added a demo to the deliverables'. Grammatical German."
+      },
+      {
+        "n": 4,
+        "field": "dialogue[5].targetText / pattern note (optional)",
+        "disposition": "no-change-confirmed",
+        "reason": "No edit required and none made. Context confirms the trade (제가 조용히 할 테니까 … 줄여 주시겠어요?) is carried by turn 3, which is also the transfer witness; synthesis blank 나누는 대신 with accepted 나누지 말고 correctly realises the 'instead of' reading. Bytes retained; note belongs in review notes only."
+      },
+      {
+        "n": 9,
+        "field": "dialogue[2].targetText (optional)",
+        "disposition": "retained-optional",
+        "reason": "Not applied; original '잠깐만요. 끝까지 들어 주시겠어요?' is grammatical, DE/EN match, no speak tokens or blanks depend on the wording. Motivation is a stylistic preference, not a correctness or mechanics issue; retention is valid."
+      }
+    ],
+    "unresolved": [],
+    "closureReceiptSha256": "e65d8a58bbf89042b9bcc44a4f1d575dd84e6b424852977f9d2fa452cf905e47",
+    "exactPostReviewEdits": [
+      {
+        "pointer": "lessonFile/lessons/0/cloze/blanks/1/acceptedAnswers",
+        "old": [
+          "확인한 다음에",
+          "확인한 뒤에",
+          "확인하고 나서"
+        ],
+        "new": [
+          "확인한 다음에",
+          "확인한 뒤에",
+          "확인하고 나서",
+          "확인한 후에",
+          "확인한 후"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/1/dialogue/3/base/de",
+        "old": "Zwei Stunden sind knapp. Bringen wir um neun zuerst die Möbel runter und stellen wir sie neben den Wachraum, weg vom Notausgang. Könnt ihr beide die Möbel übernehmen?",
+        "new": "Zwei Stunden sind knapp. Bringen wir um neun zuerst die Möbel runter und stellen wir sie neben die Pförtnerloge, weg vom Notausgang. Könnt ihr beide die Möbel übernehmen?"
+      },
+      {
+        "pointer": "lessonFile/lessons/1/build/distractors/0",
+        "old": "수리했던",
+        "new": "수리했어요"
+      },
+      {
+        "pointer": "lessonFile/lessons/1/cloze/blanks/1/acceptedAnswers",
+        "old": [
+          "맡아 주시겠어요",
+          "담당해 주시겠어요",
+          "맡아 주실래요"
+        ],
+        "new": [
+          "맡아 주시겠어요",
+          "담당해 주시겠어요",
+          "맡아 주실래요",
+          "맡아 주실 수 있을까요",
+          "맡아 주실 수 있으세요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/1/synthesis/blanks/1/acceptedAnswers",
+        "old": [
+          "싣기로 해요",
+          "싣는 걸로 해요",
+          "싣도록 해요"
+        ],
+        "new": [
+          "싣기로 해요",
+          "싣는 걸로 해요",
+          "싣도록 해요",
+          "싣기로 하죠",
+          "싣는 걸로 하죠"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/1/terms/6/base/de",
+        "old": "Wachraum",
+        "new": "Pförtnerloge"
+      },
+      {
+        "pointer": "lessonFile/lessons/2/dialogue/4/base/de",
+        "old": "Heute Morgen hat unsere Abteilungsleitung noch eine Vorführung als Ergebnis verlangt. Wir müssen klären, wer sie übernimmt.",
+        "new": "Heute Morgen hat unsere Abteilungsleitung noch eine Vorführung zu den geforderten Ergebnissen hinzugefügt. Wir müssen klären, wer sie übernimmt."
+      },
+      {
+        "pointer": "lessonFile/lessons/2/synthesis/blanks/0/acceptedAnswers",
+        "old": [
+          "제가 맡을게요",
+          "제가 담당할게요",
+          "제가 맡아 볼게요"
+        ],
+        "new": [
+          "제가 맡을게요",
+          "제가 담당할게요",
+          "제가 맡아 볼게요",
+          "제가 할게요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/4/cloze/blanks/0/acceptedAnswers",
+        "old": [
+          "어쩔 수 없으니까",
+          "어쩔 수 없어서",
+          "바꿀 수 없으니까"
+        ],
+        "new": [
+          "어쩔 수 없으니까",
+          "어쩔 수 없어서",
+          "바꿀 수 없으니까",
+          "어쩔 수 없으니"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/5/dialogue/4/base/de",
+        "old": "Der Vermieter braucht noch diese Woche eine feste Zusage. Es bleibt keine Zeit, eine Mitgliederversammlung einzuberufen.",
+        "new": "Der Vermieter braucht noch diese Woche eine verbindliche Antwort. Es bleibt keine Zeit, eine Mitgliederversammlung einzuberufen."
+      },
+      {
+        "pointer": "lessonFile/lessons/5/synthesis/blanks/1/acceptedAnswers",
+        "old": [
+          "주는 걸로 해요",
+          "주기로 해요",
+          "주는 것으로 해요"
+        ],
+        "new": [
+          "주는 걸로 해요",
+          "주기로 해요",
+          "주는 것으로 해요",
+          "주는 걸로 하죠",
+          "주기로 하죠"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/8/synthesis/blanks/1/acceptedAnswers",
+        "old": [
+          "해 주시겠어요",
+          "해 주실래요",
+          "해 주실 수 있을까요"
+        ],
+        "new": [
+          "해 주시겠어요",
+          "해 주실래요",
+          "해 주실 수 있을까요",
+          "해 주시면 안 될까요"
+        ]
+      },
+      {
+        "pointer": "lessonFile/lessons/9/build/distractors/0",
+        "old": "누락된",
+        "new": "누락됐어요"
+      }
+    ]
+  },
+  "finalCopyChanges": {
+    "languageVerdict": {
+      "pathNumber": 7,
+      "lessonSha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+      "verdict": "PASS",
+      "reason": "L2 cloze blank 0 choices contain exactly one contextually correct option. Given 승강기는 아홉 시부터 두 시간만 예약돼 있어요, only 두 시간이면 빠듯하니까 ('two hours is tight') is correct. 두 시까지 and 두 시부터 refer to two o'clock, which contradicts the 9–11 booking and does not work as the subject of 빠듯하다; 두 시간마다 ('every two hours') is semantically wrong. None of the distractors overlap acceptedAnswers."
+    },
+    "languageReceiptSha256": "f3b4c2e58d8bfc6ca9831531469d6fe15dcfb9617f76757460a215c825db5d08",
+    "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+    "pathNumber": 7,
+    "reviewedSourceSha256": "b9b835431b96e6e0cf20d6b7f3d069f525a8708cdeb9548d7cd8e21c7f47e50d",
+    "lessonSha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+    "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9",
+    "fields": [
+      {
+        "lessonNumber": 2,
+        "field": [
+          "cloze",
+          "blanks",
+          0,
+          "choices"
+        ],
+        "before": null,
+        "after": [
+          "두 시까지",
+          "두 시간이면",
+          "두 시간마다",
+          "두 시부터"
+        ]
+      }
+    ]
+  }
+}

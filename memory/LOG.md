@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Korean B2 P5–P10 completed as offline text
+
+Added sixty episodes and sixty German/English transfer tasks under `frontend/content-drafts/text-2026-11`. Korean now has 100 written lessons at each of A1, A2, B1 and B2. All twelve targets together have 630 B1 and 340 B2 lessons. The November dashboard and reader include 870 offline intermediate lessons. The reader names the participants in the formal-to-personal relays and group planning scenes.
+
+Three author teams used the reviewed outlines and the new word ledger. Three separate read-only reviewers checked the complete pairs and their corrections. The early card models the opening response and preserves the later challenge. Each new path has a hash-bound editorial record with subscription language reads and review dispositions. P7 L2 uses a choice for the two-hour booking so number spelling cannot invalidate the intended answer. The portable Korean check exercises the native predicates, the sixty new allocations against 340 earlier lessons, split-speaker routing, exercise reconstruction and transfer witnesses. The learner-facing change is confined to the local reader. TTS and intermediate activation stay deferred.
+
 ## 2026-11-06 — Korean selectable; Guided Path text resumed
 
 Korean is now the ninth selectable target in onboarding, Today, Library, generation and Speak. Vercel production `dpl_2ffNtuYHNJD58U8Y8Gfcfq5epDbW` served app change `59f63cfb` on lingwave.ai. The local phone-sized German fixture selected Korean without a deep link and opened A1 P1 with the correct Hangul and German explanation; the onboarding radio also worked. All 100 A1 and 100 A2 Korean bodies exist, and the twelve explanation editions validated. Frontend verify, build and 28/28 enabled offline suites passed. Existing general typed-study mode gates remain in place.

@@ -1,0 +1,126 @@
+{
+  "pathNumber": 9,
+  "sourceMapSha256": "46e02b3ec54065f960e9d7380df9965c0b4df7316d7ad57df60513f180788e4e",
+  "rows": [
+    {
+      "n": 1,
+      "lemma": "출장비",
+      "familyKey": "출장비",
+      "pos": "noun",
+      "surface": "출장비를",
+      "moves": [
+        "position",
+        "clarify",
+        "counteroffer"
+      ]
+    },
+    {
+      "n": 2,
+      "lemma": "경과",
+      "familyKey": "경과",
+      "pos": "noun",
+      "surface": "경과를",
+      "moves": [
+        "request",
+        "clarify",
+        "conclude"
+      ]
+    },
+    {
+      "n": 3,
+      "lemma": "곰팡이",
+      "familyKey": "곰팡이",
+      "pos": "noun",
+      "surface": "곰팡이가",
+      "moves": [
+        "position",
+        "rebut",
+        "counteroffer"
+      ]
+    },
+    {
+      "n": 4,
+      "lemma": "손실",
+      "familyKey": "손실",
+      "pos": "noun",
+      "surface": "손실이",
+      "moves": [
+        "reason",
+        "clarify",
+        "conclude"
+      ]
+    },
+    {
+      "n": 5,
+      "lemma": "해명",
+      "familyKey": "해명",
+      "pos": "noun",
+      "surface": "해명을",
+      "moves": [
+        "position",
+        "rebut",
+        "conclude"
+      ]
+    },
+    {
+      "n": 6,
+      "lemma": "폐장",
+      "familyKey": "폐장",
+      "pos": "noun",
+      "surface": "폐장은",
+      "moves": [
+        "position",
+        "concede",
+        "request"
+      ]
+    },
+    {
+      "n": 7,
+      "lemma": "분기",
+      "familyKey": "분기",
+      "pos": "noun",
+      "surface": "분기",
+      "moves": [
+        "reason",
+        "clarify",
+        "summarize"
+      ]
+    },
+    {
+      "n": 8,
+      "lemma": "납기",
+      "familyKey": "납기",
+      "pos": "noun",
+      "surface": "납기는",
+      "moves": [
+        "position",
+        "counteroffer",
+        "conclude"
+      ]
+    },
+    {
+      "n": 9,
+      "lemma": "운전자",
+      "familyKey": "운전자",
+      "pos": "noun",
+      "surface": "운전자를",
+      "moves": [
+        "position",
+        "concede",
+        "counteroffer"
+      ]
+    },
+    {
+      "n": 10,
+      "lemma": "말투",
+      "familyKey": "말투",
+      "pos": "noun",
+      "surface": "말투는",
+      "moves": [
+        "reason",
+        "clarify",
+        "conclude"
+      ]
+    }
+  ]
+}

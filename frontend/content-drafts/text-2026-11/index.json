@@ -302,6 +302,96 @@
       "evidence": "review/b2-korean-p4.json"
     },
     {
+      "language": "Korean",
+      "level": "B2",
+      "path": 5,
+      "kind": "new",
+      "file": "b2/korean/p5.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "6e42c3c8fb536c0851192954fb86cf2c545513bc701c01f359342e3174023ec8",
+      "reviewedSourceSha256": "6e42c3c8fb536c0851192954fb86cf2c545513bc701c01f359342e3174023ec8",
+      "source": "../KO_B2_COMPLETION/p5/p5.json",
+      "evidence": "review/b2-korean-p5.json",
+      "assessment": "assessment/korean-b2/p5.json",
+      "assessmentSha256": "390929956c5d26e50c1c951af2b23e0aac43e3aee1d38d982b242dd90352673d"
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "path": 6,
+      "kind": "new",
+      "file": "b2/korean/p6.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+      "reviewedSourceSha256": "280b64625bd8e40c0bff21fee56f2970f6784faf0315a35391f4d40879155115",
+      "source": "../KO_B2_COMPLETION/p6/p6.json",
+      "evidence": "review/b2-korean-p6.json",
+      "assessment": "assessment/korean-b2/p6.json",
+      "assessmentSha256": "bc433ecf7717d1749470c2688d7c346e62da8a7f00ecdcdf297795cf68858cb0"
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "path": 7,
+      "kind": "new",
+      "file": "b2/korean/p7.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+      "reviewedSourceSha256": "a9fee6b4f1cb142c8f0e30e66be691a6f47414c5eb65018ec341666107f5f637",
+      "source": "../KO_B2_COMPLETION/p7/p7.json",
+      "evidence": "review/b2-korean-p7.json",
+      "assessment": "assessment/korean-b2/p7.json",
+      "assessmentSha256": "cb0676854facf47d6857bf2652e27ca6a26693f07897e53441f2c354d9f826d9"
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "path": 8,
+      "kind": "new",
+      "file": "b2/korean/p8.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "368dc66e1b61434c3ecbb4e85225bf537b772becbec663e35e0cf8ce6874a078",
+      "reviewedSourceSha256": "368dc66e1b61434c3ecbb4e85225bf537b772becbec663e35e0cf8ce6874a078",
+      "source": "../KO_B2_COMPLETION/p8/p8.json",
+      "evidence": "review/b2-korean-p8.json",
+      "assessment": "assessment/korean-b2/p8.json",
+      "assessmentSha256": "8ee01ba0f80f59be9435f70dad043af2acaf8df07a1bfeb9a0e9bf14562c14e8"
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "path": 9,
+      "kind": "new",
+      "file": "b2/korean/p9.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+      "reviewedSourceSha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+      "source": "../KO_B2_COMPLETION/p9/p9.json",
+      "evidence": "review/b2-korean-p9.json",
+      "assessment": "assessment/korean-b2/p9.json",
+      "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3"
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "path": 10,
+      "kind": "new",
+      "file": "b2/korean/p10.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+      "reviewedSourceSha256": "0b0755d5471df96909b1e2a7f5c3b0c81fd715f17f9246afd4f18cbb42e7e587",
+      "source": "../KO_B2_COMPLETION/p10/p10.json",
+      "evidence": "review/b2-korean-p10.json",
+      "assessment": "assessment/korean-b2/p10.json",
+      "assessmentSha256": "c03fe7b09a98afaccae9276b38d8a411b4ace6f07927d20bebb1ba96f5eea78f"
+    },
+    {
       "language": "Polish",
       "level": "B2",
       "path": 1,
@@ -428,7 +518,7 @@
     }
   ],
   "languageNotes": {
-    "Korean": "All 100 A1 and 100 A2 lessons have runtime bodies. Every A1 path opens against all 12 explanation editions. Korean is now in the normal beta picker. All 100 B1 lessons are written and available to read in the local reader. Intermediate drafts are separate from the app.",
+    "Korean": "All four levels have 100 written lessons each. A1 and A2 are selectable in Today. The offline reader includes all ten B1 and all ten B2 paths. B2 P5–P10 include bilingual transfer tasks and P6 identifies both conversation partners.",
     "English": "All ten B1 paths have full episode drafts. See individual path review states; these new paths are not yet in Today.",
     "Spanish": "All ten B1 paths have complete episode drafts. The final path follows a year in Oviedo. See individual path statuses for editorial and exercise checks.",
     "German": "All 100 B1 lessons are already in the app. B2 now includes P3, defending an opinion under objection, and P4, exploring alternatives and consequences.",
@@ -442,5 +532,6 @@
     "Russian": "20/20 passed offline text staging. Repaired overlong chips, accepted-answer and gender checks. All twelve grouped tests passed. Device grading remains separate.",
     "Polish": "20/20 passed offline text staging. The café calculation, word order and deadline now agree. Some distractors are too easy; final device and native-human review remain.",
     "Cebuano": "20/20 passed offline text staging against the amended language spec, including invoice vs receipt. 33 mutation checks passed. Runtime grading and native-human review remain."
-  }
+  },
+  "updated": "2026-11-07"
 }

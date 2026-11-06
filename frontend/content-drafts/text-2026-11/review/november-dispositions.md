@@ -1,5 +1,13 @@
 # November independent text dispositions
 
+## Korean B2 completion, 7 November
+
+P5–P10 add sixty full lessons to the forty already written. Their early teaching cards now draw on the first learner response, leaving the later objection, new information and decision for the learner to encounter. P6 changes interlocutors after turn four, P7 attributes contributions to the actual group participants, and the two floor-management expressions heard in P7 become productive tasks in P9. P10 closes with a two-minute response to an objection and a stopping rule.
+
+Each of the sixty lessons has a fresh practice situation in German and English and separate self-check criteria. The stored Korean witness binds that task to the skill demonstrated in the dialogue. The offline reader keeps that witness out of the prompt. The index links a separate path-level editorial record with exact hashes, original findings, repairs and recheck dispositions. In P7 L2 the learner selects the duration of the lift reservation from four choices, avoiding an unintended number-spelling test.
+
+## Earlier November checkpoints
+
 Scope is unpublished lesson text. Fable denotes the actual subscription reviewer, not a human language teacher. Raw receipts and the exact original and repaired files are in the workspace evidence directory named in the index.
 
 - **Korean B2 P4: pass for offline text staging.** The independently reviewed counterfactual path received 105 exact whole-file changes and 27 countersigned follow-up operations. Earlier readings conflated days worked with days in the office, called a bus the only option before offering a drive, and under-accepted natural alternatives. The inspected final source begins `e919cbdf`; 1,212 author assertions, native per-lesson and register validation, and all negative controls passed. See the final path-specific review for the grading distinctions. The 60 P5–P10 planning rows remain outside all lesson counts.

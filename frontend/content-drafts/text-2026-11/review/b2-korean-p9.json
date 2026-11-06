@@ -1,0 +1,398 @@
+{
+  "pathNumber": 9,
+  "scope": "Korean B2 offline text and personal-study transfer tasks. Native-human, device and audio review remain separate.",
+  "lessonSha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+  "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+  "independentVerdict": "PASS",
+  "fableDisposition": "resolved",
+  "independent": {
+    "lessonSha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+    "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+    "verdict": "PASS",
+    "wholePathReview": {
+      "pathNumber": 9,
+      "verdict": "PASS",
+      "lessonSha256": "9093872283eb1cedf28dc2a9b8ab2552dda17564f904739de47848e8ecd530b8",
+      "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+      "reviewer": "Independent read-only Codex reviewer, P9/P10",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "initialFindings": [
+        "Future turns on the early pattern card and a title that revealed the offer.",
+        "Compulsory grading of illustrative expressions, a missing actual interruption, freely movable chips, German register and transfer-criteria mismatches."
+      ],
+      "recheck": "All ten early models use the opening learner turn. The title withholds the lift. The doctor and mechanic interrupt, L4 and L6 leave illustrative wording visible and L7 finishes its point before answering the parked question. Corrections to German address and L4/L10 transfer criteria were verified.",
+      "remaining": [
+        "Optional copy polish: the L2 German transfer example about comparing repair and replacement costs is understandable but stilted."
+      ]
+    },
+    "postReviewCopyCheck": {
+      "verdict": "PASS",
+      "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+      "reviewer": "Fresh read-only Codex reviewer for the final copy and answer presentation changes",
+      "scope": "Verified the five final source files against the complete reviewed versions. Reversing all eight field edits in memory reproduced all five whole-file review hashes. The four time choices have exactly one answer grounded in the 9–11 lift booking. The closing Korean, English and German summaries each express both outcomes in one sentence. All five final source and assessment hashes matched; no material findings."
+    }
+  },
+  "model": "claude-fable-5-1",
+  "editorialReads": [
+    {
+      "stage": "review-resumed-receipt.json",
+      "receiptSha256": "36194f0600544e78dc2022968a93382d2ba5f098aadc5b0fe4e9124473d65c57",
+      "sourceSha256": "dc00e01f3ba86b99878c6fb1e06e5b5a12ae7abc31919575d5f58bbd135824e2",
+      "assessmentSha256": "eec0baa62fc13fce9acd0b64f39fc3df2019616bb789c876e9db16a26f0ace55",
+      "pathNumber": 9,
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Both floor chunks modelled whole in you2/you4 (말씀 중에 죄송한데요 / 끝까지 들어 주시겠어요?); them4 one-breath demand answered by 정리하면 trade close; recall decoys 세탁비/병원비/연회비 excluded by 출장 스무 건 in the second sentence."
+        },
+        {
+          "n": 2,
+          "reason": "끝까지 들어 주시겠어요 appears in you4, but them2 is a complete, non-pressing statement, so the floor request is unmotivated; cloze variant 끝까지 들어 주실까요 is not a natural request form; decision kept with learner after both options (two-month delay vs surgery)."
+        },
+        {
+          "n": 3,
+          "reason": "Counter-evidence (rainy afternoon photo, downstairs neighbours) and conditional split are coherent; build chunk 건 벽 straddles two constituents; EN base of you2 ungrammatical and copied into pattern and trophy."
+        },
+        {
+          "n": 4,
+          "reason": "제 말 아직 안 끝났어요 reclaims floor after talk-over; deposit cost concrete; conclude move DE/EN drop the 융통성 문제가 아니라 contrast that is the whole point of refusing the label."
+        },
+        {
+          "n": 5,
+          "reason": "Fairness position, one-point concession (그건 그렇죠. 다만), bounded share (전부는 아니고요 … 그 부분은) all present; them5 reuses 본인 for the learner after them3 used it for 지은 씨, creating referent ambiguity."
+        },
+        {
+          "n": 6,
+          "reason": "Concede-then-rebut on timing (incidents after eleven vs ten o'clock closing) is a real argument; final request names next review plus concrete alternative; officer haeyo per plan."
+        },
+        {
+          "n": 7,
+          "reason": "Question parked with a return point in you4, but you6 neither names the parked question nor answers the 피하시는 거죠 accusation; the pattern rule promises an audible return that the dialogue does not model."
+        },
+        {
+          "n": 8,
+          "reason": "Realistic date held, Monday board purpose acknowledged, interim draft offered, relationship kept; decoys and variants work in context."
+        },
+        {
+          "n": 9,
+          "reason": "Firm refusal with one real reason (insurance), concession on the mother, petrol offer answered by relocating the problem, alternative help; build chunk 추가 안 splits a fixed phrase."
+        },
+        {
+          "n": 10,
+          "reason": "Tone apologised, position held via 그렇다고 해서, 'normal' redefined with a procedure; 분명히 as a free adverb chunk makes 그날 분명히 제 말투는 심했어요 an equally correct ordering."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "field": "dialogue[5].targetText + base.de/en; synthesis.segments; assessment.lessons[6].witnessKo",
+          "issue": "Learner does not return explicitly to the parked question (them2 asked about 내년 가정) and does not answer them4 '피하시는 거죠?'. Architecture learnerGoal 'return to it visibly' and pattern.rule 'Kehre anschließend hörbar zur vertagten Frage zurück' are not modelled. Current: 지금 다음 장으로 넘어갈게요. 내년 성장률을 높게 잡은 건 이미 계약한 신규 고객 두 곳까지 포함했기 때문이에요.",
+          "fix": "targetText: 피하는 게 아니라 지금 다음 장으로 넘어갈게요. 아까 질문하신 내년 가정은 이미 계약한 신규 고객 두 곳까지 포함해서 성장률을 높게 잡은 거예요. | de: Ich weiche nicht aus, ich gehe jetzt zur nächsten Folie. Zu Ihrer Frage nach den Annahmen für nächstes Jahr: Wir haben das Wachstum höher angesetzt, weil wir zwei neue Kunden mit bereits unterschriebenen Verträgen einbezogen haben. | en: I'm not dodging it, I'm moving to the next slide now. On your question about next year's assumptions: we set growth higher because we included two new clients who have already signed. | synthesis.segments: [{text:'피하는 게 아니라 지금 '},{blank 0},{text:'. 아까 질문하신 내년 가정은 이미 계약한 신규 고객 두 곳까지 포함해서 성장률을 높게 잡은 거예요.'}] (blank answer/variants unchanged; speak[2].requiredTokens 내년/성장률을/신규 still present) | assessment witnessKo: same new targetText."
+        },
+        {
+          "n": 2,
+          "field": "dialogue[2].targetText + base.de/en",
+          "issue": "them2 is a finished statement with no interruption or push; the compulsory floor chunk 끝까지 들어 주시겠어요? in you4 therefore has nothing to reclaim and reads as unmotivated. Current: 기다려도 결과가 크게 달라지지 않을 수 있어요. 지금 사진에서는 인대가 아직 잘 붙지 않았어요.",
+          "fix": "targetText: 기다려도 결과가 크게 달라지지 않을 수 있어요. 인대가 아직 잘 붙지 않았으니 바로 날짜부터 잡죠. | de: Abwarten ändert am Ergebnis womöglich wenig. Das Band ist noch nicht richtig verheilt, also legen wir gleich einen Termin fest. | en: Waiting might make little difference to the outcome. The ligament still hasn't healed properly, so let's just set a date now. (them4 and you4 unchanged; the doctor now presses toward scheduling, which the floor request answers.)"
+        },
+        {
+          "n": 2,
+          "field": "cloze.blanks[0].acceptedAnswers",
+          "issue": "끝까지 들어 주실까요 is not a natural request form to a doctor (reads as a speculative question, not 'would you hear me out').",
+          "fix": "Replace with 끝까지 들어 주실 수 있을까요 → acceptedAnswers: ['끝까지 들어 주시겠어요','끝까지 들어 주실래요','끝까지 들어 주실 수 있을까요']."
+        },
+        {
+          "n": 3,
+          "field": "build.chunks",
+          "issue": "Chunk '건 벽' straddles two constituents (건 closes 생기는, 벽 opens 벽 안쪽), so the learner must assemble a non-unit. Current: ['그 벽에만','생기는','건 벽','안쪽','문제라고 봐요.']",
+          "fix": "['그 벽에만','생기는','건','벽 안쪽','문제라고 봐요.'] (sentence, distractors, recall unchanged)."
+        },
+        {
+          "n": 3,
+          "field": "dialogue[1].base.en; pattern.examples[0].base.en; trophy.example.base.en",
+          "issue": "Ungrammatical English: 'That mould still appears only on that wall points to something inside the wall, I think.'",
+          "fix": "Replace in all three places with: 'You say it's a ventilation issue, but I opened the window every day. The fact that mould still appears only on that wall suggests a problem inside the wall, I think.'"
+        },
+        {
+          "n": 4,
+          "field": "dialogue[5].base.de / base.en",
+          "issue": "Conclude move mistranslated: 융통성 문제가 아니라 돈 문제예요 refuses the 'rigid' label by contrast; DE 'Es geht mir ums Geld.' and EN 'My objection is about the money.' drop the 아니라 contrast that is the learnerGoal ('refuse the label').",
+          "fix": "de: Das ist keine Frage der Flexibilität, sondern eine Geldfrage. Wenn wir ans Meer fahren wollen, lass uns zuerst klären, wie wir die Anzahlung aufteilen können. | en: It's not about flexibility, it's about the money. If we want to go to the beach, let's first find a way to split the deposit."
+        },
+        {
+          "n": 4,
+          "field": "terms[1].base.de / base.en (제 말 아직 안 끝났어요)",
+          "issue": "Tense mismatch with the present-state Korean: 'ich war noch nicht fertig' / 'I hadn't finished'.",
+          "fix": "de: ich bin noch nicht fertig | en: I haven't finished."
+        },
+        {
+          "n": 5,
+          "field": "dialogue[4].targetText",
+          "issue": "본인이 refers to 지은 씨 in them3 but to the learner in them5 (그 오류를 본인이 대신 책임지겠다는 거예요?), creating referent ambiguity in the delayed-constraint turn.",
+          "fix": "targetText: 그럼 뭐예요, 그 오류를 대신 책임지시겠다는 거예요? (base.de/en unchanged)."
+        },
+        {
+          "n": 9,
+          "field": "build.chunks",
+          "issue": "Chunk '추가 안' splits the fixed phrase 추가 안 해 놓아서 mid-unit. Current: ['보험에','운전자를','추가 안','해 놓아서','사고라도 나면']",
+          "fix": "['보험에','운전자를','추가','안 해 놓아서','사고라도 나면'] (distractors 추가됐어도/사고인지 remain form-distinct)."
+        },
+        {
+          "n": 10,
+          "field": "build.chunks",
+          "issue": "분명히 as a free chunk admits the equally correct order 그날 분명히 제 말투는 심했어요; exact-order grading would reject a natural variant. Current: ['제 말투는','분명히','심했어요.','생각이 달라도','그렇게 말할']",
+          "fix": "['제 말투는','분명히 심했어요.','생각이','달라도','그렇게 말할'] (recall answer 말투는 and distractors unchanged)."
+        },
+        {
+          "n": 8,
+          "field": "build.chunks (optional)",
+          "issue": "Same adverb permutation class: 제대로 테스트까지 끝내려면 is grammatical; lower risk than L10 since 테스트까지 제대로 is strongly preferred.",
+          "fix": "Optional: merge to '제대로 끝내려면' → ['테스트까지','제대로 끝내려면','다음 주','수요일이','현실적인 날짜예요.']."
+        },
+        {
+          "n": 7,
+          "field": "trophy (optional)",
+          "issue": "Only trophy without a remainder field (surface = lemma 분기); other nine carry remainder arrays.",
+          "fix": "Optional for schema consistency: add \"remainder\": []."
+        },
+        {
+          "n": 10,
+          "field": "assessment.lessons[9].criteria.en (optional)",
+          "issue": "EN 'agree on a way to talk in future' is stronger than DE 'bietest eine Form des weiteren Gesprächs an' and than the prompt ('schlage vor').",
+          "fix": "Optional: en: 'You specify what you regret, keep your position on the issue, and propose a way to talk in future.'"
+        },
+        {
+          "n": 1,
+          "field": "dialogue[1].base.de (optional)",
+          "issue": "올해의 절반으로 rendered 'auf die Hälfte von heute'; 'heute' is looser than 올해.",
+          "fix": "Optional: 'auf die Hälfte des diesjährigen Budgets zu kürzen' (pattern/trophy copies likewise)."
+        }
+      ],
+      "remainingHolds": []
+    },
+    {
+      "stage": "review-final-receipt.json",
+      "receiptSha256": "f64f6cccda4ca5f96c5ce95504c9c16be3f4e97a536132e4703c33c44030d1aa",
+      "sourceSha256": "362b783606ae091f9ad8edc19bceb812d23af2a079273c24cdf070a22c10179a",
+      "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+      "pathNumber": 9,
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "reason": "Both compulsory P7 floor chunks modelled whole in you3 (말씀 중에 죄송한데요, 끝까지 들어 주시겠어요?) and 말씀 중에 죄송한데요 graded as cloze blank 0; them2 interrupts, them4 demands whole proposal, you5 delivers trade close. DE 'des diesjährigen Betrags' now matches 올해의. Build order is forced; distractors 절반인지/줄였다는지 formally distinct; recall fallbacks all contextually wrong."
+        },
+        {
+          "n": 2,
+          "reason": "them2 now opens with 잠깐만요 and pushes (날짜부터 잡죠), so 끝까지 들어 주시겠어요 in you3 is motivated; 주실까요 removed from accepted. Doctor rules on medical side (them4), learner decides after both options (you5). Build chunks are clean constituents; 경과를 recall unambiguous."
+        },
+        {
+          "n": 3,
+          "reason": "Build now ['그 벽에만','생기는 건','벽 안쪽','문제라고','봐요.'] — no straddling chunk. EN you1 grammatical. 말씀 중에 죄송한데요 graded in cloze; them4 fifty-fifty answered with a verifiable condition in you5."
+        },
+        {
+          "n": 4,
+          "reason": "Illustrative 제 말 아직 안 끝났어요 stays in cloze text (unassessed) per architecture; terms base now present tense. you5 DE/EN carry the 아니라 contrast. 손실이 recall fallbacks 이익이/수익이/수입이 fail semantically."
+        },
+        {
+          "n": 5,
+          "reason": "them4 referent fixed (책임지시겠다는 거예요 clearly addresses learner). Fairness position, concede-rebut, partial responsibility, remainder deferred. Cloze/synthesis variants all work in context."
+        },
+        {
+          "n": 6,
+          "reason": "Officer in 해요체 (no 합쇼체 extension) consistent with registerPlan. 거기까지는 동의해요 stays unassessed; concede exposes the 11pm/10pm gap; you5 asks review date and files alternative. 그대로라니 variants fit."
+        },
+        {
+          "n": 7,
+          "reason": "Parked question (내년 가정) in you3 with explicit promise 다음 장에서 답할게요; you5 answers them4 (피하는 게 아니에요) and returns visibly (아까 물으신 내년 성장률에는 … 반영했어요). witnessKo updated accordingly. Transfer example (bridge tour) uses different facts."
+        },
+        {
+          "n": 8,
+          "reason": "Adverb bundled ('제대로 끝내려면') removing permutation risk. Realistic date held, partial early deliverable, relationship kept after them4 vendor hint. Cloze 그렇다면/테스트 전 variants fit."
+        },
+        {
+          "n": 9,
+          "reason": "Build now ['보험에 운전자를','추가','안 해 놓아서','사고라도','나면'] — no mid-phrase split of a bound unit. 지난번엔 … 이번에는 안 돼요 in prefix (unassessed). Petrol offer refused on the real reason (보험), alternative help offered with 모셔다 드릴 수 있는데."
+        },
+        {
+          "n": 10,
+          "reason": "Three connected contributions: tone apology (you1), position held against actual counterargument (you3 그렇다고 해서 … 바뀐 건 아니에요), nuanced redefinition of 'normal' plus process proposal (you5). 분명히 bundled into '분명히 심했어요.' removing permutation. Criteria EN now 'propose' matching DE."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "field": "dialogue[3].base.de",
+          "issue": "Optional. 'Hören Sie mich bitte zu Ende an?' is an imperative with a question mark; 끝까지 들어 주시겠어요? is a polite request question.",
+          "fix": "Replace 'Hören Sie mich bitte zu Ende an?' with 'Würden Sie mich bitte zu Ende anhören?' (only occurrence; pattern/trophy use turn 1)."
+        },
+        {
+          "n": 5,
+          "field": "pattern.examples[1].base.de / base.en",
+          "issue": "Optional. 'Frau Lehrerin' / 'Ms Teacher' are not natural address forms in DE/EN; 선생님 as vocative is best left implicit.",
+          "fix": "DE: 'Lassen Sie uns das besprechen, wenn das Kind da ist. Es wegen der Materialien zu rügen, bevor man es selbst gehört hat, ist nicht fair.' EN: 'Let's discuss that once the child is here. Scolding them over the materials before hearing their side isn't fair.'"
+        },
+        {
+          "n": 5,
+          "field": "build.chunks",
+          "issue": "Optional (consistency with L3 repair). Chunk '건 공정하지 않아요.' detaches the bound nominaliser 건 from 지목하는.",
+          "fix": "chunks: ['해명을','듣기 전에','없는 사람을','지목하는 건','공정하지 않아요.'] (distractors unchanged)."
+        },
+        {
+          "n": 10,
+          "field": "cloze.blanks[0] / cloze.segments",
+          "issue": "Optional (staging strictness). 그렇다고 해서 is listed as an illustrative, non-compulsory string for L9–10; it is currently a graded cloze blank. Acceptable because it is recycled productive P1/P3 material; change only if the spec reading 'illustrative floor phrases stay unassessed' is enforced.",
+          "fix": "segments: [{'kind':'blank','index':0},{'kind':'text','text':'. 그날 말한 방식은 미안하지만, 그렇다고 해서 제 생각이 '},{'kind':'blank','index':1},{'kind':'text','text':' 건 아니에요.'}]; blanks[0]: {'answer':'그건 좀 달라요','acceptedAnswers':['그건 좀 달라요','그건 다른 문제예요','그건 별개예요'],'kind':'frame'}; keep blanks[1] and carrierTags unchanged."
+        },
+        {
+          "n": 1,
+          "field": "dialogue[2].targetText",
+          "issue": "Optional naturalness. '우리가 직접 찾아오는 걸' takes the clients' viewpoint; from the speaker's side 찾아가는 is the default.",
+          "fix": "'아니 잠깐만요, 고객들은 우리가 직접 찾아가는 걸 기대해요. 그걸 모르세요?' (sceneCaption unaffected; base.de/en unchanged)."
+        },
+        {
+          "n": 4,
+          "field": "build.chunks",
+          "issue": "Optional. Free adverb chunk '그대로' admits the marked but grammatical order '지금 바꾸면 그대로 예약금 오만 원은 손실이 되는데'; low risk since topic 은 makes it unnatural.",
+          "fix": "If exact-order grading is strict: chunks ['바꾸면','예약금','오만 원은','그대로 손실이 되는데'] (distractors unchanged)."
+        },
+        {
+          "n": 7,
+          "field": "trophy.remainder",
+          "issue": "Optional schema consistency. Only trophy without a remainder array (surface = lemma 분기).",
+          "fix": "Add 'remainder':[]"
+        }
+      ],
+      "remainingHolds": []
+    }
+  ],
+  "earlyTeachingCards": {
+    "receiptSha256": "366f7ebd74a6ab85d3766052fc73739f849e82b9209939734e757c1397af2000",
+    "lessons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "placement": "The pattern card appears before the challenge and final steer. The model comes from the first learner turn. The transfer example uses a separate situation."
+  },
+  "editorialClosure": {
+    "verdict": "PASS",
+    "lessonSha256": "9093872283eb1cedf28dc2a9b8ab2552dda17564f904739de47848e8ecd530b8",
+    "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+    "sourceReviewReceiptSha256": "f64f6cccda4ca5f96c5ce95504c9c16be3f4e97a536132e4703c33c44030d1aa",
+    "reviewedBeforeSha256": "362b783606ae091f9ad8edc19bceb812d23af2a079273c24cdf070a22c10179a",
+    "exactPostReviewEdits": [
+      {
+        "lesson": 2,
+        "field": [
+          "dialogue",
+          3,
+          "base",
+          "de"
+        ],
+        "old": "Das habe ich verstanden. Hören Sie mich bitte zu Ende an? Ich möchte hören, wie viel größer das Risiko in meinem Fall wird, wenn ich zwei Monate warte, im Vergleich zur Operation.",
+        "new": "Das habe ich verstanden. Würden Sie mich bitte zu Ende anhören? Ich möchte hören, wie viel größer das Risiko in meinem Fall wird, wenn ich zwei Monate warte, im Vergleich zur Operation."
+      },
+      {
+        "lesson": 5,
+        "field": [
+          "pattern",
+          "examples",
+          1,
+          "base"
+        ],
+        "old": {
+          "de": "Frau Lehrerin, lassen Sie uns das besprechen, wenn das Kind da ist. Es wegen der Materialien zu rügen, bevor man es selbst gehört hat, ist nicht fair.",
+          "en": "Ms Teacher, let's discuss that once the child is here. Scolding them over the materials before hearing their side isn't fair."
+        },
+        "new": {
+          "de": "Lassen Sie uns das besprechen, wenn das Kind da ist. Es wegen der Materialien zu rügen, bevor man es selbst gehört hat, ist nicht fair.",
+          "en": "Let's discuss that once the child is here. Scolding them over the materials before hearing their side isn't fair."
+        }
+      },
+      {
+        "lesson": 5,
+        "field": [
+          "build",
+          "chunks"
+        ],
+        "old": [
+          "해명을",
+          "듣기 전에",
+          "없는 사람을",
+          "지목하는",
+          "건 공정하지 않아요."
+        ],
+        "new": [
+          "해명을",
+          "듣기 전에",
+          "없는 사람을",
+          "지목하는 건",
+          "공정하지 않아요."
+        ]
+      },
+      {
+        "lesson": 1,
+        "field": [
+          "dialogue",
+          2,
+          "targetText"
+        ],
+        "old": "아니 잠깐만요, 고객들은 우리가 직접 찾아오는 걸 기대해요. 그걸 모르세요?",
+        "new": "아니 잠깐만요, 고객들은 우리가 직접 찾아가는 걸 기대해요. 그걸 모르세요?"
+      }
+    ],
+    "retainedOptionalFindings": [
+      "L10 keeps 그렇다고 해서 as an attested rhetorical connector with accepted equivalents.",
+      "L4 remains within native five-to-eight-chunk bounds. The proposed four-chip version would fail the gate.",
+      "L7 bare nouns have no remainder property under the existing Korean convention."
+    ]
+  },
+  "finalCopyChanges": {
+    "languageVerdict": {
+      "pathNumber": 9,
+      "lessonSha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+      "verdict": "PASS",
+      "reason": "L2 pattern.examples[1].base.de is now grammatical, natural German and faithful to 사장님 말씀을 못 믿는 게 아니에요. 다만 수리해서 반년 더 타는 것과 지금 바꾸는 걸 비용으로 비교해 주시면 그때 정할게요: trust statement, cost comparison of repair-and-drive-six-more-months vs replace-now, decision afterwards. The earlier ungrammatical 'reparieren und ein halbes Jahr weiterfahren gegen jetzt tauschen kostenmäßig vergleichen' is gone; it also aligns with the en version and the highlight 못 믿는 게 아니에요."
+    },
+    "languageReceiptSha256": "f3b4c2e58d8bfc6ca9831531469d6fe15dcfb9617f76757460a215c825db5d08",
+    "deltaSha256": "2e38919232f8b25109c1cadef6a09a46f2710adca2a236ee1091790b60975674",
+    "pathNumber": 9,
+    "reviewedSourceSha256": "9093872283eb1cedf28dc2a9b8ab2552dda17564f904739de47848e8ecd530b8",
+    "lessonSha256": "02c3d23c2d9051ec03a105d60336954e210b42f18f3416b2a595c018437ff75b",
+    "assessmentSha256": "b1c7f00ba6973788b4a73c244613eebdb458acb227625965c42f376c5c5774d3",
+    "fields": [
+      {
+        "lessonNumber": 2,
+        "field": [
+          "pattern",
+          "examples",
+          1,
+          "base",
+          "de"
+        ],
+        "before": "Ich misstraue Ihnen nicht. Wenn Sie mir aber reparieren und ein halbes Jahr weiterfahren gegen jetzt tauschen kostenmäßig vergleichen, entscheide ich dann.",
+        "after": "Ich misstraue Ihnen nicht. Wenn Sie mir erklären, was eine Reparatur für ein weiteres halbes Jahr im Vergleich zu einem sofortigen Austausch kostet, entscheide ich mich danach."
+      }
+    ]
+  }
+}

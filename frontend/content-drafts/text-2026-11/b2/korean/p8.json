@@ -1,0 +1,4011 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 8,
+  "slug": "saying-exactly",
+  "pathTitle": {
+    "de": "Auf den Punkt gebracht",
+    "en": "Saying exactly"
+  },
+  "pathFunction": {
+    "de": "Erkläre genau, was du meinst, grenze ähnliche Begriffe voneinander ab und kläre Missverständnisse anhand eines konkreten Falls.",
+    "en": "Explain precisely what you mean, distinguish similar ideas and clear up misunderstandings through a concrete case."
+  },
+  "specRef": {
+    "pathSpec": "architecture.json",
+    "pathSpecSha256": "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8",
+    "ledger": "../allocation.json",
+    "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+  },
+  "authoring": {
+    "source": "Korean Fable architecture, Codex native copyedits, bilingual lesson and exercise authoring",
+    "runId": "ko-b2-20261106-p8",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "define-flexible-hours",
+      "title": {
+        "de": "Was flexible Arbeitszeit hier heißt",
+        "en": "What flexible hours would mean here"
+      },
+      "situation": {
+        "de": "Im Einzelgespräch bittet dich die Teamleitung, deinen Vorschlag zur Arbeitszeit zu erläutern.",
+        "en": "In a one-to-one meeting your manager asks you to explain your working-hours proposal."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Team manager"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Einzelgespräch bittet dich die Teamleitung, deinen Vorschlag zur Arbeitszeit zu erläutern. „유연 근무제를 원하신다고 들었는데, 정확히 어떤 걸 말씀하시는 거예요?“",
+        "en": "In a one-to-one meeting your manager asks you to explain your working-hours proposal. “유연 근무제를 원하신다고 들었는데, 정확히 어떤 걸 말씀하시는 거예요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "유연 근무제를 원하신다고 들었는데, 정확히 어떤 걸 말씀하시는 거예요?",
+          "base": {
+            "de": "Ich habe gehört, dass Sie sich eine flexible Arbeitszeitregelung wünschen. Was genau verstehen Sie darunter?",
+            "en": "I heard you'd like flexible working hours. What exactly do you have in mind?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제가 말하는 유연 근무제는 하루 여덟 시간은 그대로 일하되 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요.",
+          "base": {
+            "de": "Mit flexibler Arbeitszeit meine ich, dass ich weiter acht Stunden am Tag arbeite, aber alle nur von elf bis drei gleichzeitig da sein müssen.",
+            "en": "By flexible hours, I mean I’d still work eight hours a day, but everyone would only need to be in together from eleven to three."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저는 아무 때나 나와서 일도 덜 하는 걸로 알았어요. 시간은 안 줄어드는 거죠?",
+          "base": {
+            "de": "Ich dachte, Sie kommen dann irgendwann und arbeiten auch weniger. Die Stundenzahl sinkt also nicht?",
+            "en": "I took it to mean coming in whenever you like and working less as well. You're saying the hours wouldn't be reduced?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정확히 말하면 유연 근무란 출퇴근 시각만 옮기는 것을 뜻해요. 한 시간 늦게 오면 퇴근도 한 시간 늦어져요.",
+          "base": {
+            "de": "Genauer gesagt bedeutet flexible Arbeitszeit, dass sich nur der Arbeitsbeginn und das Arbeitsende verschieben. Wenn ich eine Stunde später anfange, gehe ich auch eine Stunde später.",
+            "en": "To be precise, flexible working means shifting only your start and finish times. If I start an hour later, I finish an hour later too."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 아홉 시에 고객 통화가 잡힌 날은 어떻게 하실 거예요?",
+          "base": {
+            "de": "Was würden Sie dann an einem Tag machen, an dem ein Kundengespräch um neun angesetzt ist?",
+            "en": "Then what would you do on a day when there's a client call at nine?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그런 날은 당연히 아홉 시에 맞춰 나와요. 고객 일정이 먼저지, 제 출근 시간이 먼저는 아니에요.",
+          "base": {
+            "de": "An solchen Tagen bin ich natürlich um neun da. Der Kundentermin hat Vorrang vor meiner gewünschten Anfangszeit.",
+            "en": "On those days I'd come in for nine, of course. The customer's schedule takes precedence over my preferred start time."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "제가 말하는",
+          "유연",
+          "근무제는",
+          "하루 여덟",
+          "시간은",
+          "그대로",
+          "일하되"
+        ],
+        "distractors": [
+          "쉬었더니",
+          "요금만"
+        ],
+        "frameSuffix": " 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 유연 근무란 출퇴근 시각만 옮기는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 한 시간 늦게 오면 퇴근도 한 시간 늦어져요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정확히 말하면",
+            "acceptedAnswers": [
+              "정확히 말하면",
+              "더 정확히 말하면",
+              "구체적으로 말하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "것을 뜻해요",
+            "acceptedAnswers": [
+              "것을 뜻해요",
+              "걸 뜻해요",
+              "것을 말해요",
+              "걸 말해요",
+              "것을 의미해요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 당연히 아홉 시에 맞춰 나와요. 고객 일정이 먼저지, 제 출근 시간이 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그런 날은",
+            "acceptedAnswers": [
+              "그런 날은",
+              "그런 날에는",
+              "그럴 때는"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "먼저는 아니에요",
+            "acceptedAnswers": [
+              "먼저는 아니에요",
+              "먼저가 아니에요",
+              "우선이 아니에요",
+              "우선은 아니에요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제가 말하는 유연 ",
+        "answer": "근무제는",
+        "after": " 하루 여덟 시간은 그대로 일하되 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요.",
+        "acceptedAnswers": [
+          "근무제는"
+        ],
+        "fallbackChoices": [
+          "직책은",
+          "결근은",
+          "통장에는",
+          "근무제는"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Regelung mit ihren festen und flexiblen Teilen erklären",
+          "en": "Define an arrangement by what stays fixed and what can change"
+        },
+        "rule": {
+          "de": "Beginne mit 제가 말하는 …, um den gemeinten Begriff einzugrenzen. Mit -되 hältst du fest, was gleich bleibt, und nennst dann konkret, was sich innerhalb der Regelung ändert.",
+          "en": "Start with 제가 말하는 … to identify the term as you use it. Use -되 to state what stays the same, then give a concrete detail showing what changes within the arrangement."
+        },
+        "examples": [
+          {
+            "targetText": "제가 말하는 유연 근무제는 하루 여덟 시간은 그대로 일하되 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요.",
+            "base": {
+              "de": "Mit flexibler Arbeitszeit meine ich, dass ich weiter acht Stunden am Tag arbeite, aber alle nur von elf bis drei gleichzeitig da sein müssen.",
+              "en": "By flexible hours, I mean I’d still work eight hours a day, but everyone would only need to be in together from eleven to three."
+            },
+            "highlights": [
+              "제가 말하는",
+              "일하되",
+              "정하는 방식이에요"
+            ]
+          },
+          {
+            "targetText": "제가 말하는 예약제란 자리 수는 그대로 두되 도착할 시간을 미리 정하는 방식이에요.",
+            "base": {
+              "de": "Mit Reservierungssystem meine ich ein Verfahren, bei dem die Zahl der Plätze gleich bleibt, die Ankunftszeit aber vorher festgelegt wird.",
+              "en": "By a booking system I mean keeping the same number of places but agreeing on arrival times in advance."
+            },
+            "highlights": [
+              "예약제란",
+              "두되",
+              "정하는 방식이에요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "근무제는",
+          "kind": "noun",
+          "lemma": "근무제",
+          "base": {
+            "de": "Arbeitszeitregelung",
+            "en": "working-hours arrangement"
+          }
+        },
+        {
+          "targetText": "제가 말하는",
+          "kind": "frame",
+          "base": {
+            "de": "was ich mit … meine",
+            "en": "what I mean by …"
+          }
+        },
+        {
+          "targetText": "정확히 말하면",
+          "kind": "frame",
+          "base": {
+            "de": "genau genommen",
+            "en": "to be precise"
+          }
+        },
+        {
+          "targetText": "그대로",
+          "kind": "adverb",
+          "base": {
+            "de": "wie bisher",
+            "en": "as before"
+          }
+        },
+        {
+          "targetText": "일하되",
+          "kind": "verb",
+          "base": {
+            "de": "arbeiten, allerdings …",
+            "en": "work, with the qualification that …"
+          }
+        },
+        {
+          "targetText": "고객 일정이",
+          "kind": "noun",
+          "base": {
+            "de": "der Kundentermin",
+            "en": "the customer's schedule"
+          }
+        },
+        {
+          "targetText": "출근 시간이",
+          "kind": "noun",
+          "base": {
+            "de": "die Zeit des Arbeitsbeginns",
+            "en": "the start time"
+          }
+        },
+        {
+          "targetText": "옮기는",
+          "kind": "verb",
+          "base": {
+            "de": "verschieben",
+            "en": "shifting"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "근무제는",
+            "여덟",
+            "일하되"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "근무란",
+            "출퇴근",
+            "시각만"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "고객",
+            "일정이",
+            "출근"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "근무제",
+        "familyKey": "근무제",
+        "pos": "noun",
+        "surface": "근무제는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "제가 말하는 유연 근무제는 하루 여덟 시간은 그대로 일하되 모두 모이는 시간을 열한 시부터 세 시까지로 정하는 방식이에요.",
+          "base": {
+            "de": "Mit flexibler Arbeitszeit meine ich, dass ich weiter acht Stunden am Tag arbeite, aber alle nur von elf bis drei gleichzeitig da sein müssen.",
+            "en": "By flexible hours, I mean I’d still work eight hours a day, but everyone would only need to be in together from eleven to three."
+          }
+        },
+        "base": {
+          "de": "Arbeitszeitregelung",
+          "en": "working-hours arrangement"
+        },
+        "whyThisWord": {
+          "de": "근무제 benennt die Regelung, über die ihr sprecht. Der Name allein verrät weder die Stundenzahl noch die Zeiten gemeinsamer Anwesenheit.",
+          "en": "근무제 names the arrangement under discussion. Its name alone specifies neither the hours worked nor the times when everyone must be present."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "정확히 말하면",
+          "status": "productive"
+        },
+        {
+          "surface": "근무란",
+          "status": "productive"
+        },
+        {
+          "surface": "것을 뜻해요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "describe-technical-fault",
+      "title": {
+        "de": "Den Auslöser einer Störung eingrenzen",
+        "en": "Pinpointing a technical fault"
+      },
+      "situation": {
+        "de": "Beim technischen Support erläutert ihr eine Störung, die bei der Arbeit am Laptop auftritt.",
+        "en": "At the help desk you discuss a fault that occurs while working on your laptop."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mitarbeiter des IT-Supports",
+            "en": "IT helpdesk technician"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim technischen Support erläutert ihr eine Störung, die bei der Arbeit am Laptop auftritt. „노트북이 계속 끊긴다고 하셨는데, 언제 그러는지 조금 더 자세히 말씀해 주시겠어요?“",
+        "en": "At the help desk you discuss a fault that occurs while working on your laptop. “노트북이 계속 끊긴다고 하셨는데, 언제 그러는지 조금 더 자세히 말씀해 주시겠어요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "노트북이 계속 끊긴다고 하셨는데, 언제 그러는지 조금 더 자세히 말씀해 주시겠어요?",
+          "base": {
+            "de": "Sie sagten, die Verbindung am Laptop breche ständig ab. Wann genau passiert das?",
+            "en": "You said your laptop keeps cutting out. Could you describe exactly when it happens?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "계속 끊기는 게 아니라 화상 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요.",
+          "base": {
+            "de": "Es bricht nicht ständig ab, sondern nur bei Videokonferenzen. Genauer gesagt friert das Bild etwa drei Minuten nach dem Einschalten der Kamera ein.",
+            "en": "It doesn't cut out all the time, just during video calls. To be precise, the picture freezes about three minutes after I switch the camera on."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저희가 어제 네트워크를 점검했는데 사무실 인터넷은 전혀 문제가 없었어요.",
+          "base": {
+            "de": "Wir haben das Netzwerk gestern geprüft. Mit dem Internet im Büro war alles in Ordnung.",
+            "en": "We checked the network yesterday, and there was nothing wrong with the office internet connection."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 사무실 회선은 괜찮았군요. 카메라를 끄면 바로 괜찮아지니까 영상을 보낼 때만 문제가 생기는 것 같아요.",
+          "base": {
+            "de": "Die Verbindung im Büro war also in Ordnung. Sobald ich die Kamera ausschalte, klappt es wieder. Das Problem scheint nur aufzutreten, wenn ich ein Bild sende.",
+            "en": "So the office connection was fine. It works again as soon as I turn the camera off, so the problem seems to occur only when I'm sending video."
+          },
+          "register": "haeyo",
+          "move": "compare"
+        },
+        {
+          "speaker": "them",
+          "targetText": "혹시 휴대폰 핫스팟으로 연결했을 때도 똑같이 끊기나요?",
+          "base": {
+            "de": "Bricht die Verbindung auch ab, wenn Sie den Laptop mit dem Hotspot Ihres Handys verbinden?",
+            "en": "Does it also cut out if you connect the laptop to your phone's hotspot?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "핫스팟에서는 아직 안 해 봤어요. 오늘 오후 회의 때 한번 해 보고 결과를 알려 드릴게요.",
+          "base": {
+            "de": "Mit dem Hotspot habe ich es noch nicht probiert. Ich teste das heute Nachmittag in der Besprechung und sage Ihnen, wie es gelaufen ist.",
+            "en": "I haven't tried the hotspot yet. I'll test it during this afternoon's meeting and let you know the result."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "계속",
+          "끊기는 게",
+          "아니라",
+          "화상 회의",
+          "중에만",
+          "끊겨요."
+        ],
+        "distractors": [
+          "통화 전부터",
+          "출력물만"
+        ],
+        "frameSuffix": " 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 사무실 회선은 괜찮았군요. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 바로 괜찮아지니까 영상을 보낼 때만 문제가 생기는 것 같아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그럼",
+            "acceptedAnswers": [
+              "그럼",
+              "그러면",
+              "그렇다면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "카메라를 끄면",
+            "acceptedAnswers": [
+              "카메라를 끄면",
+              "카메라를 끌 때",
+              "카메라를 껐을 때"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "핫스팟에서는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 봤어요. 오늘 오후 회의 때 한번 해 보고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 알려 드릴게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "아직 안 해",
+            "acceptedAnswers": [
+              "아직 안 해",
+              "아직 못 해",
+              "여태 안 해"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "결과를",
+            "acceptedAnswers": [
+              "결과를",
+              "시험 결과를",
+              "테스트 결과를"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "계속 끊기는 게 아니라 ",
+        "answer": "화상",
+        "after": " 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요.",
+        "acceptedAnswers": [
+          "화상"
+        ],
+        "fallbackChoices": [
+          "대면",
+          "서면",
+          "화상",
+          "접수증"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den genauen Auslöser einer Störung benennen",
+          "en": "Pinpoint the trigger of a fault"
+        },
+        "rule": {
+          "de": "Mit 정확히 말하면 ersetzt du eine pauschale Beschreibung durch die beobachtete Bedingung. -에만 oder -때만 begrenzt das Problem auf diesen Fall.",
+          "en": "Use 정확히 말하면 to replace a broad report with an observed condition. -에만 or -때만 narrows the problem to that particular case."
+        },
+        "examples": [
+          {
+            "targetText": "계속 끊기는 게 아니라 화상 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요.",
+            "base": {
+              "de": "Es bricht nicht ständig ab, sondern nur bei Videokonferenzen. Genauer gesagt friert das Bild etwa drei Minuten nach dem Einschalten der Kamera ein.",
+              "en": "It doesn't cut out all the time, just during video calls. To be precise, the picture freezes about three minutes after I switch the camera on."
+            },
+            "highlights": [
+              "회의 중에만",
+              "정확히 말하면"
+            ]
+          },
+          {
+            "targetText": "계속 꺼지는 게 아니라 큰 파일을 열 때만 꺼져요. 정확히 말하면 열고 일 분쯤 지나면 화면이 까매져요.",
+            "base": {
+              "de": "Es geht nicht ständig aus, sondern nur, wenn ich eine große Datei öffne. Genauer gesagt wird der Bildschirm etwa eine Minute nach dem Öffnen schwarz.",
+              "en": "It doesn't shut down all the time, just when I open a large file. To be precise, the screen goes black about a minute after I open it."
+            },
+            "highlights": [
+              "열 때만",
+              "정확히 말하면"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "화상",
+          "kind": "noun",
+          "lemma": "화상",
+          "base": {
+            "de": "Video als Übertragungsform",
+            "en": "video as a mode of communication"
+          }
+        },
+        {
+          "targetText": "정확히 말하면",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "to be precise"
+          }
+        },
+        {
+          "targetText": "생기는 것 같아요",
+          "kind": "frame",
+          "base": {
+            "de": "es scheint aufzutreten",
+            "en": "it seems to occur"
+          }
+        },
+        {
+          "targetText": "카메라를",
+          "kind": "noun",
+          "base": {
+            "de": "die Kamera",
+            "en": "the camera"
+          }
+        },
+        {
+          "targetText": "화면이",
+          "kind": "noun",
+          "base": {
+            "de": "das Bild",
+            "en": "the picture"
+          }
+        },
+        {
+          "targetText": "멈춰요",
+          "kind": "verb",
+          "base": {
+            "de": "es friert ein",
+            "en": "it freezes"
+          }
+        },
+        {
+          "targetText": "회선은",
+          "kind": "noun",
+          "base": {
+            "de": "was die Verbindung angeht",
+            "en": "as for the connection"
+          }
+        },
+        {
+          "targetText": "핫스팟에서는",
+          "kind": "noun",
+          "base": {
+            "de": "über den Hotspot",
+            "en": "using the hotspot"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "끊기는",
+            "화상",
+            "중에만"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "회선은",
+            "카메라를",
+            "영상을"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "핫스팟에서는",
+            "오후",
+            "결과를"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "화상",
+        "familyKey": "화상",
+        "pos": "noun",
+        "surface": "화상",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "계속 끊기는 게 아니라 화상 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면 화면이 멈춰요.",
+          "base": {
+            "de": "Es bricht nicht ständig ab, sondern nur bei Videokonferenzen. Genauer gesagt friert das Bild etwa drei Minuten nach dem Einschalten der Kamera ein.",
+            "en": "It doesn't cut out all the time, just during video calls. To be precise, the picture freezes about three minutes after I switch the camera on."
+          }
+        },
+        "base": {
+          "de": "Video als Übertragungsform",
+          "en": "video as a mode of communication"
+        },
+        "whyThisWord": {
+          "de": "화상 steht hier vor 회의. So lässt sich die Art des Gesprächs vom gesamten Internetanschluss unterscheiden.",
+          "en": "Here 화상 modifies 회의. It helps separate the kind of call involved from the internet connection as a whole."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "정확히 말하면",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "clear-up-deadline-mixup",
+      "title": {
+        "de": "Welcher Freitagstermin gemeint war",
+        "en": "When exactly on Friday?"
+      },
+      "situation": {
+        "de": "Nach einer verspäteten Übergabe klärst du mit einem Kollegen, wie ihr Fristen formuliert.",
+        "en": "After a handover arrives late, you and a colleague discuss how you word deadlines."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Kollege, der die Datei am Abend geschickt hat",
+            "en": "Colleague who sent the file in the evening"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Nach einer verspäteten Übergabe klärst du mit einem Kollegen, wie ihr Fristen formuliert. „금요일까지라고 하셔서 금요일 밤 열한 시에 보냈는데, 늦었다는 말을 들어서 좀 당황했어요.“",
+        "en": "After a handover arrives late, you and a colleague discuss how you word deadlines. “금요일까지라고 하셔서 금요일 밤 열한 시에 보냈는데, 늦었다는 말을 들어서 좀 당황했어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "금요일까지라고 하셔서 금요일 밤 열한 시에 보냈는데, 늦었다는 말을 들어서 좀 당황했어요.",
+          "base": {
+            "de": "Sie sagten „bis Freitag“, also habe ich die Datei am Freitagabend um elf geschickt. Ich war etwas überrascht, dass das zu spät gewesen sein soll.",
+            "en": "You said “by Friday”, so I sent it at eleven on Friday night. I was a bit surprised to hear it was late."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제가 말한 금요일까지는 금요일 밤이 아니라 아침 열 시 회의 전이었어요. 제가 시각을 따로 말했는지 저도 다시 확인해 볼게요.",
+          "base": {
+            "de": "Mit „bis Freitag“ meinte ich nicht Freitagnacht, sondern vor der Sitzung am Freitagmorgen um zehn. Ich schaue selbst noch einmal nach, ob ich die Uhrzeit ausdrücklich angegeben habe.",
+            "en": "By “Friday” I meant before the ten o'clock meeting on Friday morning, rather than Friday night. I'll check whether I actually specified the time."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "메시지를 다시 봤는데 금요일까지라고만 적혀 있었어요. 회의 얘기는 없었고요.",
+          "base": {
+            "de": "Ich habe die Nachricht noch einmal gelesen. Da stand nur „bis Freitag“. Von der Sitzung war keine Rede.",
+            "en": "I've checked the message again. It just said “by Friday”. There was no mention of the meeting."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 그건 제 잘못이에요. 머릿속으로는 회의 전을 생각했는데 글로는 날짜만 쓴 거죠.",
+          "base": {
+            "de": "Dann war das mein Fehler. Im Kopf hatte ich „vor der Sitzung“, aber geschrieben habe ich nur das Datum.",
+            "en": "Then that was my fault. I had “before the meeting” in mind, but I only wrote the date."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 앞으로 마감을 어떻게 적으면 서로 헷갈리지 않을까요?",
+          "base": {
+            "de": "Wie könnten wir die Frist künftig so angeben, dass es für uns beide eindeutig ist?",
+            "en": "How should we write deadlines from now on so neither of us is left guessing?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "다음부터는 날짜랑 시간을 같이 쓸게요. 예를 들면 금요일 아침 열 시 회의 전까지, 이렇게요.",
+          "base": {
+            "de": "Künftig schreibe ich Datum und Uhrzeit zusammen. Zum Beispiel „vor der Sitzung am Freitagmorgen um zehn“, so in der Art.",
+            "en": "From now on I'll put the date and time together. For example, “before the ten o'clock meeting on Friday morning”, like that."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "제가 말한 ",
+        "chunks": [
+          "금요일까지는",
+          "금요일 밤이",
+          "아니라",
+          "아침 열 시",
+          "회의",
+          "전이었어요."
+        ],
+        "distractors": [
+          "회의 후였어요",
+          "자정부터"
+        ],
+        "frameSuffix": " 제가 시각을 따로 말했는지 저도 다시 확인해 볼게요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그건 제 잘못이에요. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 회의 전을 생각했는데 글로는 날짜만 쓴 거죠."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "머릿속으로는",
+            "acceptedAnswers": [
+              "머릿속으로는",
+              "머리로는",
+              "속으로는"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "다음부터는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 같이 쓸게요. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 금요일 아침 열 시 회의 전까지, 이렇게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "날짜랑 시간을",
+            "acceptedAnswers": [
+              "날짜랑 시간을",
+              "날짜와 시간을",
+              "날짜하고 시간을"
+            ],
+            "kind": "lexical"
+          },
+          {
+            "answer": "예를 들면",
+            "acceptedAnswers": [
+              "예를 들면",
+              "예를 들어",
+              "가령"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "recall": {
+        "before": "제가 말한 금요일까지는 금요일 밤이 아니라 아침 열 시 회의 전이었어요. 제가 ",
+        "answer": "시각을",
+        "after": " 따로 말했는지 저도 다시 확인해 볼게요.",
+        "acceptedAnswers": [
+          "시각을",
+          "시간을"
+        ],
+        "fallbackChoices": [
+          "주소를",
+          "시각을",
+          "성함을",
+          "금액을"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Einen ungenauen Endpunkt konkretisieren",
+          "en": "Narrow down an ambiguous deadline"
+        },
+        "rule": {
+          "de": "Greife den strittigen Ausdruck mit -까지는 auf. Gib dann einen überprüfbaren Endpunkt an, etwa eine Uhrzeit oder den Beginn eines bestimmten Termins.",
+          "en": "Pick up the ambiguous expression with -까지는. Then give a verifiable endpoint, such as a time or the start of a particular appointment."
+        },
+        "examples": [
+          {
+            "targetText": "제가 말한 금요일까지는 금요일 밤이 아니라 아침 열 시 회의 전이었어요. 제가 시각을 따로 말했는지 저도 다시 확인해 볼게요.",
+            "base": {
+              "de": "Mit „bis Freitag“ meinte ich nicht Freitagnacht, sondern vor der Sitzung am Freitagmorgen um zehn. Ich schaue selbst noch einmal nach, ob ich die Uhrzeit ausdrücklich angegeben habe.",
+              "en": "By “Friday” I meant before the ten o'clock meeting on Friday morning, rather than Friday night. I'll check whether I actually specified the time."
+            },
+            "highlights": [
+              "금요일까지는",
+              "회의 전이었어요"
+            ]
+          },
+          {
+            "targetText": "제가 말한 월요일까지는 월요일 저녁이 아니라 접수 창구가 닫히는 오후 네 시 전까지였어요.",
+            "base": {
+              "de": "Mit „bis Montag“ meinte ich vor vier Uhr nachmittags, wenn der Schalter schließt, nicht Montagabend.",
+              "en": "By “Monday” I meant before four in the afternoon, when the desk closes, rather than Monday evening."
+            },
+            "highlights": [
+              "월요일까지는",
+              "전까지였어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "시각을",
+          "kind": "noun",
+          "lemma": "시각",
+          "base": {
+            "de": "Uhrzeit",
+            "en": "time of day"
+          }
+        },
+        {
+          "targetText": "제가 말한",
+          "kind": "frame",
+          "base": {
+            "de": "was ich mit … meinte",
+            "en": "what I meant by …"
+          }
+        },
+        {
+          "targetText": "예를 들면",
+          "kind": "frame",
+          "base": {
+            "de": "zum Beispiel",
+            "en": "for example"
+          }
+        },
+        {
+          "targetText": "마감을",
+          "kind": "noun",
+          "base": {
+            "de": "die Frist",
+            "en": "the deadline"
+          }
+        },
+        {
+          "targetText": "머릿속으로는",
+          "kind": "adverb",
+          "base": {
+            "de": "in Gedanken",
+            "en": "in my mind"
+          }
+        },
+        {
+          "targetText": "날짜만",
+          "kind": "noun",
+          "base": {
+            "de": "nur das Datum",
+            "en": "just the date"
+          }
+        },
+        {
+          "targetText": "헷갈리지",
+          "kind": "verb",
+          "base": {
+            "de": "durcheinanderkommen",
+            "en": "to get confused"
+          }
+        },
+        {
+          "targetText": "따로",
+          "kind": "adverb",
+          "base": {
+            "de": "ausdrücklich, gesondert",
+            "en": "separately, explicitly"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "금요일까지는",
+            "아침",
+            "회의"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "잘못이에요",
+            "회의",
+            "날짜만"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "날짜랑",
+            "시간을",
+            "회의"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "시각",
+        "familyKey": "시각",
+        "pos": "noun",
+        "surface": "시각을",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "제가 말한 금요일까지는 금요일 밤이 아니라 아침 열 시 회의 전이었어요. 제가 시각을 따로 말했는지 저도 다시 확인해 볼게요.",
+          "base": {
+            "de": "Mit „bis Freitag“ meinte ich nicht Freitagnacht, sondern vor der Sitzung am Freitagmorgen um zehn. Ich schaue selbst noch einmal nach, ob ich die Uhrzeit ausdrücklich angegeben habe.",
+            "en": "By “Friday” I meant before the ten o'clock meeting on Friday morning, rather than Friday night. I'll check whether I actually specified the time."
+          }
+        },
+        "base": {
+          "de": "Uhrzeit",
+          "en": "time of day"
+        },
+        "whyThisWord": {
+          "de": "시각 bezeichnet hier einen Zeitpunkt auf der Uhr. Ein Datum kann richtig angegeben sein und trotzdem die entscheidende Uhrzeit offenlassen.",
+          "en": "Here 시각 means the time on the clock. A date can be correct while still leaving that crucial time unspecified."
+        },
+        "remainder": [
+          "을"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "금요일까지는",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "explain-home-culture-gathering",
+      "title": {
+        "de": "Ein wöchentliches Treffen erklären",
+        "en": "Explaining a weekly gathering"
+      },
+      "situation": {
+        "de": "Du erklärst einem Freund eine wöchentliche Runde, die euch in einem Bericht über ein Stadtviertel begegnet ist.",
+        "en": "You explain to a friend a weekly gathering you came across in a report about a neighbourhood."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Freund, der nach dem Treffen fragt",
+            "en": "Friend asking about the gathering"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du erklärst einem Freund eine wöchentliche Runde, die euch in einem Bericht über ein Stadtviertel begegnet ist. „지난번에 말씀하신 동네 모임 있잖아요. 매주 만난다던데 정확히 어떤 모임이에요?“",
+        "en": "You explain to a friend a weekly gathering you came across in a report about a neighbourhood. “지난번에 말씀하신 동네 모임 있잖아요. 매주 만난다던데 정확히 어떤 모임이에요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "지난번에 말씀하신 동네 모임 있잖아요. 매주 만난다던데 정확히 어떤 모임이에요?",
+          "base": {
+            "de": "Neulich hast du von einem Treffen in der Nachbarschaft erzählt. Die Leute sehen sich wohl jede Woche. Was genau ist das für ein Treffen?",
+            "en": "You mentioned a neighbourhood gathering the other day. I heard they meet every week. What kind of gathering is it exactly?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "단골 모임이라고 해요. 예를 들면 매주 목요일 같은 식당에 자주 오는 사람들이 따로 약속하지 않아도 자연스레 모이는 거예요.",
+          "base": {
+            "de": "Man nennt das ein Treffen der Stammgäste. Zum Beispiel kommen Leute, die oft in demselben Restaurant essen, jeden Donnerstag von selbst zusammen, auch ohne sich eigens zu verabreden.",
+            "en": "People call it a regulars' gathering. For example, people who often eat at the same restaurant naturally meet there every Thursday without making a special arrangement."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 동호회 같은 거네요? 회원 명단 있고 회비도 내는 그런 거요?",
+          "base": {
+            "de": "Dann ist das wie ein Freizeitverein? Mit Mitgliederliste und Beitrag?",
+            "en": "So it's like a hobby club, with a membership list and dues?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "동호회라기보다는 약속 없이 만나는 이웃 모임에 가까워요. 명단도 없고 회비도 없고, 그냥 그 시간에 오면 되는 거죠.",
+          "base": {
+            "de": "Eher ein Nachbarschaftstreff ohne Verabredung als ein Freizeitverein. Es gibt weder eine Liste noch Beiträge. Man kommt einfach um die übliche Zeit vorbei.",
+            "en": "It's closer to neighbours meeting without an appointment than to a hobby club. There's no list and no fee. You just turn up at the usual time."
+          },
+          "register": "haeyo",
+          "move": "compare"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그러면 누가 한 달 동안 안 나오면 어떻게 돼요? 뭐라고 안 해요?",
+          "base": {
+            "de": "Und wenn jemand einen Monat lang nicht kommt? Sagt da niemand etwas?",
+            "en": "What happens if someone doesn't come for a month? Doesn't anyone say anything?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아무도 안 물어봐요. 다시 오면 그냥 자리를 내주는 거고요, 그게 이 모임의 핵심이에요.",
+          "base": {
+            "de": "Niemand fragt nach. Wenn die Person wiederkommt, macht man ihr einfach Platz. Genau das macht das Treffen aus.",
+            "en": "Nobody asks about it. When they come back, you just make room for them. That's the heart of the gathering."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "단골 모임이라고 해요. 예를 들면 매주 목요일 같은 식당에 자주 ",
+        "chunks": [
+          "오는 사람들이",
+          "따로 약속하지",
+          "않아도",
+          "자연스레 모이는",
+          "거예요."
+        ],
+        "distractors": [
+          "명단으로",
+          "가입비를"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 약속 없이 만나는 이웃 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 명단도 없고 회비도 없고, 그냥 그 시간에 오면 되는 거죠."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "동호회라기보다는",
+            "acceptedAnswers": [
+              "동호회라기보다는",
+              "동호회보다는",
+              "동호회라기보다"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "모임에 가까워요",
+            "acceptedAnswers": [
+              "모임에 가까워요",
+              "모임과 비슷해요",
+              "모임에 더 가까워요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "아무도 안 물어봐요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그냥 자리를 내주는 거고요, 그게 이 모임의 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다시 오면",
+            "acceptedAnswers": [
+              "다시 오면",
+              "다시 나오면",
+              "다시 오실 때는"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "핵심이에요",
+            "acceptedAnswers": [
+              "핵심이에요",
+              "핵심이죠",
+              "요점이에요"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "단골",
+        "after": " 모임이라고 해요. 예를 들면 매주 목요일 같은 식당에 자주 오는 사람들이 따로 약속하지 않아도 자연스레 모이는 거예요.",
+        "acceptedAnswers": [
+          "단골"
+        ],
+        "fallbackChoices": [
+          "입단",
+          "단골",
+          "심사",
+          "출장"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Begriff benennen und mit einem typischen Beispiel erklären",
+          "en": "Name a term and illustrate it with a typical example"
+        },
+        "rule": {
+          "de": "Mit -(이)라고 해요 nennst du die gängige Bezeichnung. 예를 들면 … -는 거예요 beschreibt dann einen typischen Fall statt einer förmlichen Definition.",
+          "en": "-(이)라고 해요 gives the name people use. 예를 들면 … -는 거예요 then describes a typical instance instead of a formal definition."
+        },
+        "examples": [
+          {
+            "targetText": "단골 모임이라고 해요. 예를 들면 매주 목요일 같은 식당에 자주 오는 사람들이 따로 약속하지 않아도 자연스레 모이는 거예요.",
+            "base": {
+              "de": "Man nennt das ein Treffen der Stammgäste. Zum Beispiel kommen Leute, die oft in demselben Restaurant essen, jeden Donnerstag von selbst zusammen, auch ohne sich eigens zu verabreden.",
+              "en": "People call it a regulars' gathering. For example, people who often eat at the same restaurant naturally meet there every Thursday without making a special arrangement."
+            },
+            "highlights": [
+              "모임이라고 해요",
+              "예를 들면",
+              "모이는 거예요"
+            ]
+          },
+          {
+            "targetText": "열린 작업실이라고 해요. 예를 들면 연습하고 싶은 사람이 편할 때 들러서 각자 작업하다 가는 거예요.",
+            "base": {
+              "de": "Man nennt das eine offene Werkstatt. Zum Beispiel kommen Leute, die üben möchten, vorbei, wann es ihnen passt, arbeiten für sich und gehen wieder.",
+              "en": "People call it an open studio. For example, anyone who wants to practise drops in whenever it suits them, works on their own thing and leaves."
+            },
+            "highlights": [
+              "작업실이라고 해요",
+              "예를 들면",
+              "가는 거예요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "단골",
+          "kind": "noun",
+          "lemma": "단골",
+          "base": {
+            "de": "Stammgast",
+            "en": "regular customer or visitor"
+          }
+        },
+        {
+          "targetText": "동호회라기보다는",
+          "kind": "frame",
+          "base": {
+            "de": "weniger ein Freizeitverein als …",
+            "en": "rather than a hobby club …"
+          }
+        },
+        {
+          "targetText": "모임에 가까워요",
+          "kind": "frame",
+          "base": {
+            "de": "es gleicht eher einem Treffen",
+            "en": "it's closer to a gathering"
+          }
+        },
+        {
+          "targetText": "명단도 없고",
+          "kind": "phrase",
+          "base": {
+            "de": "es gibt keine Mitgliederliste",
+            "en": "there's no membership list"
+          }
+        },
+        {
+          "targetText": "회비도 없고",
+          "kind": "phrase",
+          "base": {
+            "de": "es gibt auch keine Beiträge",
+            "en": "there are no dues either"
+          }
+        },
+        {
+          "targetText": "목요일",
+          "kind": "noun",
+          "base": {
+            "de": "Donnerstag",
+            "en": "Thursday"
+          }
+        },
+        {
+          "targetText": "자연스레",
+          "kind": "adverb",
+          "base": {
+            "de": "von selbst",
+            "en": "naturally"
+          }
+        },
+        {
+          "targetText": "자리를",
+          "kind": "noun",
+          "base": {
+            "de": "einen Platz",
+            "en": "a place"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "사람들이",
+            "약속하지",
+            "모이는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "명단도",
+            "회비도",
+            "시간에"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "자리를",
+            "모임의",
+            "핵심이에요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "단골",
+        "familyKey": "단골",
+        "pos": "noun",
+        "surface": "단골",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "단골 모임이라고 해요. 예를 들면 매주 목요일 같은 식당에 자주 오는 사람들이 따로 약속하지 않아도 자연스레 모이는 거예요.",
+          "base": {
+            "de": "Man nennt das ein Treffen der Stammgäste. Zum Beispiel kommen Leute, die oft in demselben Restaurant essen, jeden Donnerstag von selbst zusammen, auch ohne sich eigens zu verabreden.",
+            "en": "People call it a regulars' gathering. For example, people who often eat at the same restaurant naturally meet there every Thursday without making a special arrangement."
+          }
+        },
+        "base": {
+          "de": "Stammgast",
+          "en": "regular customer or visitor"
+        },
+        "whyThisWord": {
+          "de": "단골 kann jemanden bezeichnen, der häufig wiederkommt, auch ohne offizielle Mitgliedschaft. Das passt zur beschriebenen Runde.",
+          "en": "단골 can refer to someone who returns often without being an official member. That distinction fits the gathering in the story."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "동호회라기보다는",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "describe-symptom-precisely",
+      "title": {
+        "de": "Einen wiederkehrenden Kopfschmerz beschreiben",
+        "en": "Describing a recurring headache"
+      },
+      "situation": {
+        "de": "Beim ärztlichen Gespräch schilderst du, wie sich wiederkehrende Kopfschmerzen bemerkbar machen.",
+        "en": "At a medical appointment you describe how recurring headaches feel."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Hausärztin",
+            "en": "General practitioner"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim ärztlichen Gespräch schilderst du, wie sich wiederkehrende Kopfschmerzen bemerkbar machen. „두통 때문에 오셨다고요. 어떻게 아프신지 말씀해 주세요.“",
+        "en": "At a medical appointment you describe how recurring headaches feel. “두통 때문에 오셨다고요. 어떻게 아프신지 말씀해 주세요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "두통 때문에 오셨다고요. 어떻게 아프신지 말씀해 주세요.",
+          "base": {
+            "de": "Sie sind wegen Kopfschmerzen hier? Beschreiben Sie bitte, wie sich der Schmerz anfühlt.",
+            "en": "You're here because of headaches? Please describe how it hurts."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아픈 부위는 머리 전체가 아니라 오른쪽 눈 뒤쪽이에요. 구체적으로는 일주일에 서너 번씩 그쪽이 지끈거려요.",
+          "base": {
+            "de": "Die schmerzende Stelle liegt hinter dem rechten Auge. Es ist also nicht der ganze Kopf. Genauer gesagt pocht es dort drei- oder viermal in der Woche.",
+            "en": "The painful area is behind my right eye rather than my whole head. More specifically, it throbs there three or four times a week."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "세기보다는 시간이 중요해요. 보통 하루 중 언제 시작해서 얼마나 가나요?",
+          "base": {
+            "de": "Der Zeitpunkt ist wichtiger als die Stärke. Wann beginnt der Schmerz normalerweise und wie lange hält er an?",
+            "en": "The timing matters more than the intensity. When during the day does it normally start and how long does it last?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아침에 일어나면 바로 시작해서 점심쯤 가라앉아요. 저녁에는 거의 안 아프고요.",
+          "base": {
+            "de": "Es beginnt direkt nach dem Aufwachen und lässt gegen Mittag nach. Abends habe ich fast keine Schmerzen.",
+            "en": "It starts as soon as I wake up and settles down around lunchtime. In the evening it hardly hurts at all."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "최근 이 주 사이에 생활에서 달라진 게 있을까요?",
+          "base": {
+            "de": "Hat sich in den letzten zwei Wochen etwas in Ihrem Alltag verändert?",
+            "en": "Has anything changed in your routine over the last two weeks?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "이 주 전부터 사무실에서 모니터를 하나 더 쓰기 시작했어요. 그게 관계가 있는지는 모르겠고, 그냥 바뀐 건 그것뿐이에요.",
+          "base": {
+            "de": "Seit zwei Wochen benutze ich im Büro einen zweiten Bildschirm. Ob es einen Zusammenhang gibt, weiß ich nicht. Das ist einfach die einzige Veränderung.",
+            "en": "I started using a second monitor at the office two weeks ago. I don't know whether it's related. That's just the only thing that's changed."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "아픈",
+          "부위는",
+          "머리 전체가",
+          "아니라",
+          "오른쪽",
+          "눈 뒤쪽이에요."
+        ],
+        "distractors": [
+          "양쪽 팔에서",
+          "배 전체가"
+        ],
+        "frameSuffix": " 구체적으로는 일주일에 서너 번씩 그쪽이 지끈거려요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 바로 시작해서 점심쯤 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 저녁에는 거의 안 아프고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "아침에 일어나면",
+            "acceptedAnswers": [
+              "아침에 일어나면",
+              "아침에 눈뜨면",
+              "아침에 일어날 때"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "가라앉아요",
+            "acceptedAnswers": [
+              "가라앉아요",
+              "잦아들어요",
+              "수그러들어요"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "이 주 전부터 사무실에서 모니터를 하나 더 쓰기 시작했어요. 그게 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 모르겠고, 그냥 바뀐 건 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "관계가 있는지는",
+            "acceptedAnswers": [
+              "관계가 있는지는",
+              "관련이 있는지는",
+              "연관이 있는지는"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그것뿐이에요",
+            "acceptedAnswers": [
+              "그것뿐이에요",
+              "그것뿐이죠",
+              "그게 전부예요"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "아픈 ",
+        "answer": "부위는",
+        "after": " 머리 전체가 아니라 오른쪽 눈 뒤쪽이에요. 구체적으로는 일주일에 서너 번씩 그쪽이 지끈거려요.",
+        "acceptedAnswers": [
+          "부위는"
+        ],
+        "fallbackChoices": [
+          "부위는",
+          "계절은",
+          "향기는",
+          "속도는"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die Beobachtung möglichst eng beschreiben",
+          "en": "Narrow down what you actually feel"
+        },
+        "rule": {
+          "de": "Grenze die betroffene Stelle ein. Mit 구체적으로는 leitest du eine genauere Beobachtung zu Ort, Häufigkeit oder Auslöser ein, ohne eine Ursache zu behaupten.",
+          "en": "Identify the affected area. Use 구체적으로는 to specify its location, frequency or trigger while keeping the statement observational."
+        },
+        "examples": [
+          {
+            "targetText": "아픈 부위는 머리 전체가 아니라 오른쪽 눈 뒤쪽이에요. 구체적으로는 일주일에 서너 번씩 그쪽이 지끈거려요.",
+            "base": {
+              "de": "Die schmerzende Stelle liegt hinter dem rechten Auge. Es ist also nicht der ganze Kopf. Genauer gesagt pocht es dort drei- oder viermal in der Woche.",
+              "en": "The painful area is behind my right eye rather than my whole head. More specifically, it throbs there three or four times a week."
+            },
+            "highlights": [
+              "오른쪽 눈 뒤쪽이에요",
+              "구체적으로는"
+            ]
+          },
+          {
+            "targetText": "아픈 데는 발 전체가 아니라 왼쪽 발목이에요. 구체적으로는 계단을 내려갈 때만 거기가 시큰거려요.",
+            "base": {
+              "de": "Die schmerzende Stelle ist der linke Knöchel, nicht der ganze Fuß. Genauer gesagt sticht es dort nur beim Treppenabgehen.",
+              "en": "The painful spot is my left ankle rather than my whole foot. More specifically, it twinges there only when I go down stairs."
+            },
+            "highlights": [
+              "왼쪽 발목이에요",
+              "구체적으로는"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "부위는",
+          "kind": "noun",
+          "lemma": "부위",
+          "base": {
+            "de": "Körperstelle",
+            "en": "part of the body"
+          }
+        },
+        {
+          "targetText": "구체적으로는",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "more specifically"
+          }
+        },
+        {
+          "targetText": "관계가 있는지는",
+          "kind": "frame",
+          "base": {
+            "de": "ob es einen Zusammenhang gibt",
+            "en": "whether there's a connection"
+          }
+        },
+        {
+          "targetText": "두통",
+          "kind": "noun",
+          "base": {
+            "de": "Kopfschmerzen",
+            "en": "headache"
+          }
+        },
+        {
+          "targetText": "뒤쪽이에요",
+          "kind": "noun",
+          "base": {
+            "de": "es ist dahinter",
+            "en": "it's behind it"
+          }
+        },
+        {
+          "targetText": "서너 번씩",
+          "kind": "phrase",
+          "base": {
+            "de": "jeweils drei- oder viermal",
+            "en": "three or four times"
+          }
+        },
+        {
+          "targetText": "지끈거려요",
+          "kind": "verb",
+          "base": {
+            "de": "es pocht",
+            "en": "it throbs"
+          }
+        },
+        {
+          "targetText": "점심쯤",
+          "kind": "adverb",
+          "base": {
+            "de": "gegen Mittag",
+            "en": "around lunchtime"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "부위는",
+            "오른쪽",
+            "뒤쪽이에요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "시작해서",
+            "점심쯤",
+            "가라앉아요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "모니터를",
+            "관계가",
+            "그것뿐이에요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "부위",
+        "familyKey": "부위",
+        "pos": "noun",
+        "surface": "부위는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "아픈 부위는 머리 전체가 아니라 오른쪽 눈 뒤쪽이에요. 구체적으로는 일주일에 서너 번씩 그쪽이 지끈거려요.",
+          "base": {
+            "de": "Die schmerzende Stelle liegt hinter dem rechten Auge. Es ist also nicht der ganze Kopf. Genauer gesagt pocht es dort drei- oder viermal in der Woche.",
+            "en": "The painful area is behind my right eye rather than my whole head. More specifically, it throbs there three or four times a week."
+          }
+        },
+        "base": {
+          "de": "Körperstelle",
+          "en": "part of the body"
+        },
+        "whyThisWord": {
+          "de": "부위 lenkt die Beschreibung auf eine bestimmte Körperstelle. Damit kannst du Beobachtung und Vermutung sprachlich trennen.",
+          "en": "부위 directs attention to a specific area of the body, helping separate an observation from a guess."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "구체적으로는",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "specify-bookshelf-requirements",
+      "title": {
+        "de": "Ein Regal nach Maß",
+        "en": "Specifying a made-to-measure shelf"
+      },
+      "situation": {
+        "de": "In der Schreinerei besprichst du die Maße eines Regals, in dem bestimmte Gegenstände Platz haben sollen.",
+        "en": "In a carpentry shop you discuss the dimensions of a shelf that must accommodate particular items."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Inhaber der Schreinerei",
+            "en": "Carpenter who owns the workshop"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Schreinerei besprichst du die Maße eines Regals, in dem bestimmte Gegenstände Platz haben sollen. „책장 맞추신다고 하셨죠. 어떤 크기로 생각하시는지부터 말씀해 주세요.“",
+        "en": "In a carpentry shop you discuss the dimensions of a shelf that must accommodate particular items. “책장 맞추신다고 하셨죠. 어떤 크기로 생각하시는지부터 말씀해 주세요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "책장 맞추신다고 하셨죠. 어떤 크기로 생각하시는지부터 말씀해 주세요.",
+          "base": {
+            "de": "Sie möchten ein Regal nach Maß bestellen? Welche Abmessungen stellen Sie sich vor?",
+            "en": "You're looking to order a made-to-measure bookshelf, right? What size did you have in mind?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "높이는 이 미터, 폭은 팔십 센티미터고요, 깊이는 사십 센티미터면 좋겠어요. 선반 높이도 나중에 바꿀 수 있을까요?",
+          "base": {
+            "de": "Zwei Meter hoch und achtzig Zentimeter breit. Vierzig Zentimeter Tiefe wären gut. Könnte ich die Höhe der einzelnen Böden auch später noch verändern?",
+            "en": "Two metres high and eighty centimetres wide. I'd like it forty centimetres deep. Would I also be able to change the shelf heights later?"
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "선반은 구멍 뚫어서 옮기게 할 수 있어요. 그런데 깊이는 보통 삼십이 기본이에요. 사십은 왜 필요하세요?",
+          "base": {
+            "de": "Wir können Löcher für verstellbare Böden bohren. Bei der Tiefe sind allerdings dreißig Zentimeter üblich. Wofür brauchen Sie vierzig?",
+            "en": "We can drill holes so you can adjust the shelves. But the standard depth is thirty centimetres. Why do you need forty?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "서류 상자가 들어가야 하거든요. 상자가 삼십육이라서 삼십이면 앞으로 튀어나와요. 그러니까 기본이 아니라 사십이어야 해요.",
+          "base": {
+            "de": "Meine Aktenboxen müssen hineinpassen. Sie sind sechsunddreißig Zentimeter tief und würden bei dreißig vorne überstehen. Deshalb brauche ich vierzig, statt des Standardmaßes.",
+            "en": "My file boxes have to fit. They're thirty-six centimetres deep and would stick out at the front on a thirty-centimetre shelf. That's why it has to be forty, rather than the standard depth."
+          },
+          "register": "haeyo",
+          "move": "rebut"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그러면 뒷판을 더 두꺼운 걸로 써야 해서 값이 이십 퍼센트쯤 올라가요. 괜찮으세요?",
+          "base": {
+            "de": "Dann brauchen wir allerdings eine dickere Rückwand. Dadurch wird es ungefähr zwanzig Prozent teurer. Ist das in Ordnung?",
+            "en": "Then we'll need a thicker back panel, so the price will go up by about twenty percent. Is that okay?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 상자가 들어가는 게 더 중요하니까 추가 비용은 괜찮아요. 깊이 사십에 두꺼운 뒷판으로 해 주세요.",
+          "base": {
+            "de": "Ja, mir ist wichtiger, dass die Boxen hineinpassen. Den Aufpreis akzeptiere ich. Bitte vierzig Zentimeter tief mit der dickeren Rückwand.",
+            "en": "Yes, it's more important that my boxes fit, so the extra cost is fine. Please make it forty deep with the thicker back panel."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "높이는 이 미터, ",
+        "chunks": [
+          "폭은",
+          "팔십 센티미터고요,",
+          "깊이는",
+          "사십",
+          "센티미터면",
+          "좋겠어요."
+        ],
+        "distractors": [
+          "길어졌고요",
+          "높인 덕분에"
+        ],
+        "frameSuffix": " 선반 높이도 나중에 바꿀 수 있을까요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "서류 상자가 들어가야 하거든요. 상자가 삼십육이라서 삼십이면 앞으로 튀어나와요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 기본이 아니라 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러니까",
+            "acceptedAnswers": [
+              "그러니까",
+              "그래서",
+              "그렇기 때문에"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "사십이어야 해요",
+            "acceptedAnswers": [
+              "사십이어야 해요"
+            ],
+            "choices": [
+              "삼십이면 돼요",
+              "사십이어야 해요",
+              "깊이는 상관없어요",
+              "더 얕아야 해요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "네, 상자가 들어가는 게 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 괜찮아요. 깊이 사십에 두꺼운 뒷판으로 해 주세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "더 중요하니까",
+            "acceptedAnswers": [
+              "더 중요하니까",
+              "더 중요해서",
+              "더 중요하니"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "추가 비용은",
+            "acceptedAnswers": [
+              "추가 비용은",
+              "추가 금액은",
+              "추가 요금은"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "높이는 이 미터, 폭은 팔십 센티미터고요, ",
+        "answer": "깊이는",
+        "after": " 사십 센티미터면 좋겠어요. 선반 높이도 나중에 바꿀 수 있을까요?",
+        "acceptedAnswers": [
+          "깊이는"
+        ],
+        "fallbackChoices": [
+          "무게는",
+          "속도는",
+          "온도는",
+          "깊이는"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Maße nennen und eine Zusatzfrage anschließen",
+          "en": "State specifications and add a follow-up question"
+        },
+        "rule": {
+          "de": "Reihe die Angaben mit -는 … -고요 auf und markiere die Wunschangabe mit -(이)면 좋겠어요. Mit -도 … 수 있을까요? erfragst du höflich eine weitere Möglichkeit.",
+          "en": "List the specifications with -는 … -고요 and mark the one you'd like with -(이)면 좋겠어요. Use -도 … 수 있을까요? to ask politely about an additional option."
+        },
+        "examples": [
+          {
+            "targetText": "높이는 이 미터, 폭은 팔십 센티미터고요, 깊이는 사십 센티미터면 좋겠어요. 선반 높이도 나중에 바꿀 수 있을까요?",
+            "base": {
+              "de": "Zwei Meter hoch und achtzig Zentimeter breit. Vierzig Zentimeter Tiefe wären gut. Könnte ich die Höhe der einzelnen Böden auch später noch verändern?",
+              "en": "Two metres high and eighty centimetres wide. I'd like it forty centimetres deep. Would I also be able to change the shelf heights later?"
+            },
+            "highlights": [
+              "센티미터고요",
+              "면 좋겠어요",
+              "바꿀 수 있을까요"
+            ]
+          },
+          {
+            "targetText": "길이는 사십 센티미터, 폭은 삼십 센티미터고요, 손잡이는 한 손으로 잡을 수 있는 고리면 좋겠어요. 색도 나중에 고를 수 있을까요?",
+            "base": {
+              "de": "Vierzig Zentimeter lang und dreißig Zentimeter breit. Als Griff wäre mir eine Schlaufe recht, die sich mit einer Hand fassen lässt. Könnte ich die Farbe auch später noch auswählen?",
+              "en": "Forty centimetres long and thirty wide. For the handle I'd like a loop you can grasp with one hand. Would I also be able to choose the colour later?"
+            },
+            "highlights": [
+              "센티미터고요",
+              "고리면 좋겠어요",
+              "고를 수 있을까요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "깊이는",
+          "kind": "noun",
+          "lemma": "깊이",
+          "base": {
+            "de": "Tiefe",
+            "en": "depth"
+          }
+        },
+        {
+          "targetText": "그러니까",
+          "kind": "connector",
+          "base": {
+            "de": "deshalb",
+            "en": "that's why"
+          }
+        },
+        {
+          "targetText": "들어가야 하거든요",
+          "kind": "frame",
+          "base": {
+            "de": "sie müssen nämlich hineinpassen",
+            "en": "because they need to fit"
+          }
+        },
+        {
+          "targetText": "서류 상자가",
+          "kind": "noun",
+          "base": {
+            "de": "die Aktenbox",
+            "en": "the file box"
+          }
+        },
+        {
+          "targetText": "선반",
+          "kind": "noun",
+          "base": {
+            "de": "Regalboden",
+            "en": "shelf"
+          }
+        },
+        {
+          "targetText": "뒷판을",
+          "kind": "noun",
+          "base": {
+            "de": "die Rückwand",
+            "en": "the back panel"
+          }
+        },
+        {
+          "targetText": "튀어나와요",
+          "kind": "verb",
+          "base": {
+            "de": "es steht über",
+            "en": "it sticks out"
+          }
+        },
+        {
+          "targetText": "옮기게",
+          "kind": "verb",
+          "base": {
+            "de": "so dass es sich versetzen lässt",
+            "en": "so it can be moved"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "폭은",
+            "깊이는",
+            "사십"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "상자가",
+            "삼십이면",
+            "튀어나와요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "상자가",
+            "비용은",
+            "뒷판으로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "깊이",
+        "familyKey": "깊이",
+        "pos": "noun",
+        "surface": "깊이는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "높이는 이 미터, 폭은 팔십 센티미터고요, 깊이는 사십 센티미터면 좋겠어요. 선반 높이도 나중에 바꿀 수 있을까요?",
+          "base": {
+            "de": "Zwei Meter hoch und achtzig Zentimeter breit. Vierzig Zentimeter Tiefe wären gut. Könnte ich die Höhe der einzelnen Böden auch später noch verändern?",
+            "en": "Two metres high and eighty centimetres wide. I'd like it forty centimetres deep. Would I also be able to change the shelf heights later?"
+          }
+        },
+        "base": {
+          "de": "Tiefe",
+          "en": "depth"
+        },
+        "whyThisWord": {
+          "de": "깊이 bezeichnet bei einem Regal das Maß von vorn nach hinten. Damit unterscheidest du die benötigte Tiefe von Breite und Höhe.",
+          "en": "For a shelf, 깊이 is the measurement from front to back. It distinguishes the required depth from width and height."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "사십이어야 해요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "paraphrase-recycling-sign",
+      "title": {
+        "de": "Ein Schild in eine Handlung übersetzen",
+        "en": "Turning a sign into a practical instruction"
+      },
+      "situation": {
+        "de": "Ein neuer Kollege bittet dich um Hilfe mit dem Abfallhinweis in eurer Büroküche.",
+        "en": "A new colleague asks you about the waste sign in your office kitchen."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Neue Person im Büro",
+            "en": "New colleague in the office"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein neuer Kollege bittet dich um Hilfe mit dem Abfallhinweis in eurer Büroküche. „여기 분리배출 안내문이 좀 어려운데요, 재활용 불가라는 말이 무슨 뜻이에요?“",
+        "en": "A new colleague asks you about the waste sign in your office kitchen. “여기 분리배출 안내문이 좀 어려운데요, 재활용 불가라는 말이 무슨 뜻이에요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "여기 분리배출 안내문이 좀 어려운데요, 재활용 불가라는 말이 무슨 뜻이에요?",
+          "base": {
+            "de": "Der Hinweis zur Mülltrennung hier ist für mich etwas schwierig. Was heißt „nicht recycelbar“?",
+            "en": "I'm finding the waste-sorting sign here a bit difficult. What does “not recyclable” mean?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "이 사무실 분리배출 안내문에서 재활용 불가는 재활용 통이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠.",
+          "base": {
+            "de": "Auf dem Schild hier im Büro bedeutet „nicht recycelbar“, dass es in den Restmüll gehört und nicht in die Recyclingtonne. Einfach gesagt soll es dort in den weißen Sack.",
+            "en": "On this office's sorting sign, “not recyclable” means dispose of it with ordinary rubbish instead of in the recycling bin. In plain words, put it in that white bag."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "아, 저는 아예 버리면 안 되고 따로 모아 둬야 하는 줄 알았어요.",
+          "base": {
+            "de": "Ach, ich dachte, man dürfe es gar nicht wegwerfen und müsse es getrennt aufbewahren.",
+            "en": "Oh, I thought you weren't allowed to throw it out at all and had to keep it separate."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그건 아니에요. 다시 말해서 버리지 말라는 게 아니라 재활용 통에만 넣지 말라는 거예요. 안내문에 그렇게 적혀 있어요.",
+          "base": {
+            "de": "So ist es nicht gemeint. Anders gesagt, man soll es schon wegwerfen, man darf es nur nicht in die Recyclingtonne legen. So steht es auf dem Schild.",
+            "en": "That's not quite it. In other words, you can throw it away, but you must keep it out of the recycling bin. That's what the sign says."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 기름 묻은 피자 상자는요? 종이니까 재활용 아니에요?",
+          "base": {
+            "de": "Und was ist mit einem fettigen Pizzakarton? Der ist aus Pappe, also ist er doch recycelbar?",
+            "en": "What about a greasy pizza box? It's cardboard, so wouldn't it go in the recycling?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "안내문대로면 그것도 일반 쓰레기예요. 여기 기름 묻은 종이는 흰 봉투라고 따로 적혀 있거든요.",
+          "base": {
+            "de": "Nach diesem Schild gehört auch der in den Restmüll. Hier steht ausdrücklich, dass fettiges Papier in den weißen Sack kommt.",
+            "en": "According to this sign, that goes with the ordinary rubbish too. There's a separate line here saying greasy paper goes in the white bag."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "이 사무실",
+          "분리배출",
+          "안내문에서",
+          "재활용 불가는",
+          "재활용 통이",
+          "아니라"
+        ],
+        "distractors": [
+          "허용된",
+          "병뚜껑만"
+        ],
+        "frameSuffix": " 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그건 아니에요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 버리지 말라는 게 아니라 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 넣지 말라는 거예요. 안내문에 그렇게 적혀 있어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다시 말해서",
+            "acceptedAnswers": [
+              "다시 말해서",
+              "다시 말하면",
+              "바꿔 말하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "재활용 통에만",
+            "acceptedAnswers": [
+              "재활용 통에만",
+              "재활용 수거함에만",
+              "재활용 쓰레기통에만"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그것도 일반 쓰레기예요. 여기 기름 묻은 종이는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 따로 적혀 있거든요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "안내문대로면",
+            "acceptedAnswers": [
+              "안내문대로면",
+              "안내문에 따르면",
+              "이 안내문대로라면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "흰 봉투라고",
+            "acceptedAnswers": [
+              "흰 봉투라고",
+              "흰색 봉투라고",
+              "하얀 봉투라고"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "이 사무실 ",
+        "answer": "분리배출",
+        "after": " 안내문에서 재활용 불가는 재활용 통이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠.",
+        "acceptedAnswers": [
+          "분리배출"
+        ],
+        "fallbackChoices": [
+          "주차",
+          "복무",
+          "분리배출",
+          "경조사"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Hinweis in eine einfache Handlung übersetzen",
+          "en": "Turn a sign into a practical instruction"
+        },
+        "rule": {
+          "de": "Mit -(으)라는 뜻이에요 erklärst du, wozu ein Hinweis auffordert. Mit 쉽게 말하면 kannst du das direkt als Handlung vor Ort formulieren.",
+          "en": "Use -(으)라는 뜻이에요 to explain what a notice asks people to do. 쉽게 말하면 can introduce the practical action someone should take on the spot."
+        },
+        "examples": [
+          {
+            "targetText": "이 사무실 분리배출 안내문에서 재활용 불가는 재활용 통이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠.",
+            "base": {
+              "de": "Auf dem Schild hier im Büro bedeutet „nicht recycelbar“, dass es in den Restmüll gehört und nicht in die Recyclingtonne. Einfach gesagt soll es dort in den weißen Sack.",
+              "en": "On this office's sorting sign, “not recyclable” means dispose of it with ordinary rubbish instead of in the recycling bin. In plain words, put it in that white bag."
+            },
+            "highlights": [
+              "버리라는 뜻이에요",
+              "쉽게 말하면"
+            ]
+          },
+          {
+            "targetText": "이 표시는 책을 가져가지 말고 이 방에서만 읽으라는 뜻이에요.",
+            "base": {
+              "de": "Dieses Zeichen bedeutet, dass man das Buch im Raum lesen und nicht mitnehmen soll.",
+              "en": "This sign means you should read the book in this room and leave it here."
+            },
+            "highlights": [
+              "읽으라는 뜻이에요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "분리배출",
+          "kind": "noun",
+          "lemma": "분리배출",
+          "base": {
+            "de": "getrennte Abfallentsorgung",
+            "en": "separate waste disposal"
+          }
+        },
+        {
+          "targetText": "쉽게 말하면",
+          "kind": "frame",
+          "base": {
+            "de": "einfach gesagt",
+            "en": "in plain words"
+          }
+        },
+        {
+          "targetText": "다시 말해서",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          }
+        },
+        {
+          "targetText": "안내문에서",
+          "kind": "noun",
+          "base": {
+            "de": "auf dem Aushang",
+            "en": "on the notice"
+          }
+        },
+        {
+          "targetText": "흰 봉투에",
+          "kind": "noun",
+          "base": {
+            "de": "in den weißen Sack",
+            "en": "in the white bag"
+          }
+        },
+        {
+          "targetText": "재활용 통에만 넣지 말라는",
+          "kind": "phrase",
+          "base": {
+            "de": "man soll es bloß nicht in die Recyclingtonne legen",
+            "en": "the instruction is just to keep it out of the recycling bin"
+          }
+        },
+        {
+          "targetText": "기름 묻은",
+          "kind": "phrase",
+          "base": {
+            "de": "fettverschmiert",
+            "en": "greasy, marked with oil"
+          }
+        },
+        {
+          "targetText": "버리라는",
+          "kind": "verb",
+          "base": {
+            "de": "dass man es wegwerfen soll",
+            "en": "instructing someone to discard it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "분리배출",
+            "안내문에서",
+            "불가는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "말해서",
+            "재활용",
+            "적혀"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "안내문대로면",
+            "기름",
+            "봉투라고"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "분리배출",
+        "familyKey": "분리배출",
+        "pos": "noun",
+        "surface": "분리배출",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "이 사무실 분리배출 안내문에서 재활용 불가는 재활용 통이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 저기 흰 봉투에 넣으라는 거죠.",
+          "base": {
+            "de": "Auf dem Schild hier im Büro bedeutet „nicht recycelbar“, dass es in den Restmüll gehört und nicht in die Recyclingtonne. Einfach gesagt soll es dort in den weißen Sack.",
+            "en": "On this office's sorting sign, “not recyclable” means dispose of it with ordinary rubbish instead of in the recycling bin. In plain words, put it in that white bag."
+          }
+        },
+        "base": {
+          "de": "getrennte Abfallentsorgung",
+          "en": "separate waste disposal"
+        },
+        "whyThisWord": {
+          "de": "분리배출 beschreibt das getrennte Entsorgen. Die Zuordnung einzelner Dinge richtet sich im Dialog nach dem Schild in diesem Büro.",
+          "en": "분리배출 means disposing of items separately. In this conversation, the office sign determines where particular items go."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "쉽게 말하면",
+          "status": "productive"
+        },
+        {
+          "surface": "다시 말해서",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "explain-retrospective-term",
+      "title": {
+        "de": "Eine Retrospektive erklären",
+        "en": "Defining a retrospective"
+      },
+      "situation": {
+        "de": "Eine Fachperson aus einem anderen Arbeitsgebiet fragt nach einer Besprechungsform in eurem Team.",
+        "en": "A visiting expert from a different field asks about a type of meeting your team holds."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Fachperson aus einem anderen Bereich",
+            "en": "Visiting expert from another field"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Fachperson aus einem anderen Arbeitsgebiet fragt nach einer Besprechungsform in eurem Team. „저희 쪽에는 없는 말이라서요, 회고 회의라는 게 뭘 하는 자리예요?“",
+        "en": "A visiting expert from a different field asks about a type of meeting your team holds. “저희 쪽에는 없는 말이라서요, 회고 회의라는 게 뭘 하는 자리예요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "저희 쪽에는 없는 말이라서요, 회고 회의라는 게 뭘 하는 자리예요?",
+          "base": {
+            "de": "Den Begriff gibt es bei uns nicht. Was macht man bei einer Retrospektive?",
+            "en": "We don't use that term in my field. What do people do at a retrospective meeting?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "저희 팀에서 회고는 지난 작업에서 뭐가 잘됐고 뭐가 아쉬웠는지 돌아보는 회의예요. 프로젝트가 끝날 때마다 한 시간쯤 해요.",
+          "base": {
+            "de": "In unserem Team ist die Retrospektive ein Treffen, bei dem wir auf die letzte Arbeit zurückblicken. Was lief gut, was hätte besser laufen können? Wir nehmen uns nach jedem Projekt etwa eine Stunde dafür.",
+            "en": "In our team a retrospective is a meeting where we look back on what went well and what could have gone better. We spend about an hour on it at the end of each project."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그러면 결국 누가 잘못했는지 따지는 자리 아니에요? 그런 회의는 다들 싫어할 것 같은데요.",
+          "base": {
+            "de": "Geht es dann letztlich darum, wer etwas falsch gemacht hat? Solche Besprechungen mag doch sicher niemand.",
+            "en": "So isn't it ultimately about finding out who did something wrong? I can't imagine people liking meetings like that."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아니에요, 누가 잘못했는지 찾는 게 아니라 다음에 뭘 바꿀지 정하는 자리예요. 사람 이름은 아예 안 나와요.",
+          "base": {
+            "de": "Wir suchen keinen Schuldigen. Wir legen fest, was wir beim nächsten Mal ändern. Namen kommen gar nicht vor.",
+            "en": "No, it's a meeting to decide what to change next time, rather than find out who's at fault. People's names don't come up at all."
+          },
+          "register": "haeyo",
+          "move": "rebut"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 실제로 어떻게 진행되는지 예를 하나만 들어 주시겠어요?",
+          "base": {
+            "de": "Könnten Sie mir ein konkretes Beispiel dafür geben, wie so etwas abläuft?",
+            "en": "Could you give me one example of how it works in practice?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "예를 들면 마감이 늦었으면 왜 늦었는지 보고, 다음부터는 검토 기한을 이틀 앞당기기로 정하고 끝나요. 그게 전부예요.",
+          "base": {
+            "de": "Wenn wir zum Beispiel eine Frist verpasst haben, sehen wir uns den Grund an. Am Ende vereinbaren wir etwa, die nächste Prüffrist um zwei Tage vorzuziehen. Das ist schon alles.",
+            "en": "For example, if we missed a deadline, we look at why, then wrap up by agreeing to move the review deadline two days earlier next time. That's all there is to it."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "저희 팀에서",
+          "회고는",
+          "지난",
+          "작업에서",
+          "뭐가",
+          "잘됐고"
+        ],
+        "distractors": [
+          "벌점을",
+          "끝내든지"
+        ],
+        "frameSuffix": " 뭐가 아쉬웠는지 돌아보는 회의예요. 프로젝트가 끝날 때마다 한 시간쯤 해요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "아니에요, 누가 잘못했는지 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 뭘 바꿀지 정하는 자리예요. 사람 이름은 아예 안 나와요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "찾는 게 아니라",
+            "acceptedAnswers": [
+              "찾는 게 아니라",
+              "따지는 게 아니라",
+              "가리는 게 아니라"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다음에",
+            "acceptedAnswers": [
+              "다음에",
+              "다음번에",
+              "다음에는"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 마감이 늦었으면 왜 늦었는지 보고, 다음부터는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 이틀 앞당기기로 정하고 끝나요. 그게 전부예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "예를 들면",
+            "acceptedAnswers": [
+              "예를 들면",
+              "예를 들어",
+              "가령"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "검토 기한을",
+            "acceptedAnswers": [
+              "검토 기한을",
+              "검토 마감일을",
+              "검토 마감을"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "저희 팀에서 ",
+        "answer": "회고는",
+        "after": " 지난 작업에서 뭐가 잘됐고 뭐가 아쉬웠는지 돌아보는 회의예요. 프로젝트가 끝날 때마다 한 시간쯤 해요.",
+        "acceptedAnswers": [
+          "회고는"
+        ],
+        "fallbackChoices": [
+          "입찰은",
+          "정산은",
+          "회고는",
+          "채용은"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Einen Fachbegriff aus dem eigenen Umfeld definieren",
+          "en": "Define a term as your team uses it"
+        },
+        "rule": {
+          "de": "Mit 저희 팀에서 X는 grenzt du die Definition auf dein Umfeld ein. Beschreibe die Tätigkeit mit einer eingebetteten Frage vor -는 회의예요 und ergänze mit -ㄹ 때마다 … 쯤, wie oft und wie lange.",
+          "en": "Scope the definition with 저희 팀에서 X는. Describe the activity with an embedded question before -는 회의예요, then add how often and how long with -ㄹ 때마다 … 쯤."
+        },
+        "examples": [
+          {
+            "targetText": "저희 팀에서 회고는 지난 작업에서 뭐가 잘됐고 뭐가 아쉬웠는지 돌아보는 회의예요. 프로젝트가 끝날 때마다 한 시간쯤 해요.",
+            "base": {
+              "de": "In unserem Team ist die Retrospektive ein Treffen, bei dem wir auf die letzte Arbeit zurückblicken. Was lief gut, was hätte besser laufen können? Wir nehmen uns nach jedem Projekt etwa eine Stunde dafür.",
+              "en": "In our team a retrospective is a meeting where we look back on what went well and what could have gone better. We spend about an hour on it at the end of each project."
+            },
+            "highlights": [
+              "저희 팀에서 회고는",
+              "돌아보는 회의예요",
+              "끝날 때마다"
+            ]
+          },
+          {
+            "targetText": "저희 가게에서 인수인계는 다음 사람한테 그날 무슨 일이 있었는지 알려 주는 시간이에요. 교대할 때마다 십 분쯤 해요.",
+            "base": {
+              "de": "In unserem Laden ist die Übergabe die Zeit, in der man der nächsten Person erzählt, was an dem Tag passiert ist. Bei jedem Schichtwechsel nehmen wir uns dafür etwa zehn Minuten.",
+              "en": "In our shop a handover is the time when you tell the next person what happened that day. We spend about ten minutes on it at every shift change."
+            },
+            "highlights": [
+              "저희 가게에서 인수인계는",
+              "알려 주는 시간이에요",
+              "교대할 때마다"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "회고는",
+          "kind": "noun",
+          "lemma": "회고",
+          "base": {
+            "de": "Rückblick auf einen Arbeitsabschnitt",
+            "en": "retrospective"
+          }
+        },
+        {
+          "targetText": "찾는 게 아니라",
+          "kind": "frame",
+          "base": {
+            "de": "es geht nicht darum, jemanden zu finden",
+            "en": "rather than trying to find someone"
+          }
+        },
+        {
+          "targetText": "예를 들면",
+          "kind": "frame",
+          "base": {
+            "de": "beispielsweise",
+            "en": "for example"
+          }
+        },
+        {
+          "targetText": "프로젝트가",
+          "kind": "noun",
+          "base": {
+            "de": "das Projekt",
+            "en": "the project"
+          }
+        },
+        {
+          "targetText": "돌아보는",
+          "kind": "verb",
+          "base": {
+            "de": "rückblickend betrachten",
+            "en": "looking back on"
+          }
+        },
+        {
+          "targetText": "아쉬웠는지",
+          "kind": "adjective",
+          "base": {
+            "de": "was besser hätte sein können",
+            "en": "what could have been better"
+          }
+        },
+        {
+          "targetText": "검토 기한을",
+          "kind": "noun",
+          "base": {
+            "de": "die Prüffrist",
+            "en": "the review deadline"
+          }
+        },
+        {
+          "targetText": "앞당기기로",
+          "kind": "verb",
+          "base": {
+            "de": "mit dem Beschluss, es vorzuziehen",
+            "en": "agreeing to move it earlier"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "회고는",
+            "작업에서",
+            "잘됐고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "잘못했는지",
+            "바꿀지",
+            "자리예요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "마감이",
+            "검토",
+            "앞당기기로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "회고",
+        "familyKey": "회고",
+        "pos": "noun",
+        "surface": "회고는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "저희 팀에서 회고는 지난 작업에서 뭐가 잘됐고 뭐가 아쉬웠는지 돌아보는 회의예요. 프로젝트가 끝날 때마다 한 시간쯤 해요.",
+          "base": {
+            "de": "In unserem Team ist die Retrospektive ein Treffen, bei dem wir auf die letzte Arbeit zurückblicken. Was lief gut, was hätte besser laufen können? Wir nehmen uns nach jedem Projekt etwa eine Stunde dafür.",
+            "en": "In our team a retrospective is a meeting where we look back on what went well and what could have gone better. We spend about an hour on it at the end of each project."
+          }
+        },
+        "base": {
+          "de": "Rückblick auf einen Arbeitsabschnitt",
+          "en": "retrospective"
+        },
+        "whyThisWord": {
+          "de": "회고 kann den Rückblick selbst oder eine entsprechende Teambesprechung bezeichnen. Das Wort sagt allein noch nicht, was am Ende vereinbart wird.",
+          "en": "회고 can refer to looking back or to a team meeting for that purpose. By itself the word does not specify what the team decides."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "게 아니라",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "correct-misreported-view",
+      "title": {
+        "de": "Eine falsch weitergegebene Position berichtigen",
+        "en": "Correcting a misreported position"
+      },
+      "situation": {
+        "de": "Ein Kollege hat deine Äußerung über ein Projekt an die Teamleitung weitergegeben. Ihr besprecht, was du gemeint hast.",
+        "en": "A colleague passed your comment about a project to the manager. You discuss what you meant."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Kollege, der die Aussage weitergegeben hat",
+            "en": "Colleague who passed the view on"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein Kollege hat deine Äußerung über ein Projekt an die Teamleitung weitergegeben. Ihr besprecht, was du gemeint hast. „팀장님한테 그 프로젝트 반대하신다고 전했어요. 회의에서 그렇게 말씀하셨잖아요.“",
+        "en": "A colleague passed your comment about a project to the manager. You discuss what you meant. “팀장님한테 그 프로젝트 반대하신다고 전했어요. 회의에서 그렇게 말씀하셨잖아요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "팀장님한테 그 프로젝트 반대하신다고 전했어요. 회의에서 그렇게 말씀하셨잖아요.",
+          "base": {
+            "de": "Ich habe der Teamleitung gesagt, dass Sie gegen das Projekt sind. Das haben Sie doch in der Sitzung gesagt.",
+            "en": "I told the team lead that you oppose the project. That's what you said at the meeting, isn't it?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제가 말한 취지는 그게 아니에요. 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요. 한 달만 미루자는 거였어요.",
+          "base": {
+            "de": "Darauf wollte ich nicht hinaus. Ich habe den Zeitplan abgelehnt, nicht das Projekt an sich. Ich wollte es nur um einen Monat verschieben.",
+            "en": "That wasn't my point. I objected to the schedule, not the project itself. I was only suggesting pushing it back by a month."
+          },
+          "register": "haeyo",
+          "move": "rebut"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래도 저는 분명히 지금은 안 된다고 하시는 걸 들었어요. 그게 반대 아니에요?",
+          "base": {
+            "de": "Aber ich habe deutlich gehört, dass Sie gesagt haben, jetzt gehe es nicht. Ist das kein Widerspruch gegen das Projekt?",
+            "en": "But I distinctly heard you say it couldn't go ahead now. Doesn't that mean you oppose it?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "지금은 안 된다는 말은 맞아요. 그런데 그건 시기 문제지 하지 말자는 뜻은 아니에요. 하되 늦게 하자는 거죠.",
+          "base": {
+            "de": "Dass es jetzt nicht geht, habe ich gesagt. Aber das ist eine Frage des Zeitpunkts. Ich habe nicht vorgeschlagen, es sein zu lassen. Ich möchte es durchaus durchführen, nur später.",
+            "en": "I did say we couldn't do it now. But that's about the timing, not a call to drop it. I'm saying we should go ahead, just later."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 팀장님께 제가 다시 전할 수 있게 한 문장으로 말씀해 주시겠어요?",
+          "base": {
+            "de": "Könnten Sie mir Ihre Haltung in einem Satz sagen, damit ich sie der Teamleitung richtig weitergeben kann?",
+            "en": "Could you put your position in a single sentence so I can pass it back to the team lead?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "프로젝트는 찬성하고, 시작 시점만 다음 달로 미루자는 의견이에요. 이렇게 전해 주시면 돼요.",
+          "base": {
+            "de": "Ich bin für das Projekt und möchte lediglich den Beginn auf nächsten Monat verschieben. So können Sie es weitergeben.",
+            "en": "I support the project and think only its start should be postponed until next month. You can put it to them that way."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "제가 말한 취지는 그게 아니에요. ",
+        "chunks": [
+          "제가",
+          "반대한 건",
+          "일정이지",
+          "프로젝트",
+          "자체가",
+          "아니거든요."
+        ],
+        "distractors": [
+          "전체라서",
+          "이미 끝났어요"
+        ],
+        "frameSuffix": " 한 달만 미루자는 거였어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "지금은 안 된다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 그런데 그건 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 하지 말자는 뜻은 아니에요. 하되 늦게 하자는 거죠."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "말은 맞아요",
+            "acceptedAnswers": [
+              "말은 맞아요",
+              "말은 사실이에요",
+              "얘기는 맞아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "시기 문제지",
+            "acceptedAnswers": [
+              "시기 문제지",
+              "시점 문제지",
+              "때의 문제지"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "프로젝트는 찬성하고, 시작 시점만 다음 달로 미루자는 의견이에요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 주시면 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "이렇게 전해",
+            "acceptedAnswers": [
+              "이렇게 전해",
+              "그렇게 전해",
+              "이대로 전해"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "돼요",
+            "acceptedAnswers": [
+              "돼요",
+              "괜찮아요",
+              "좋겠어요"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제가 말한 ",
+        "answer": "취지는",
+        "after": " 그게 아니에요. 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요. 한 달만 미루자는 거였어요.",
+        "acceptedAnswers": [
+          "취지는"
+        ],
+        "fallbackChoices": [
+          "가격은",
+          "취지는",
+          "직책은",
+          "매출은"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Den Umfang des Widerspruchs begrenzen",
+          "en": "Set the scope of an objection"
+        },
+        "rule": {
+          "de": "Mit 제가 …한 건 X이지 Y가 아니에요 trennst du deinen engeren Einwand von der weitergehenden Deutung. Nenne danach kurz, was du stattdessen vorgeschlagen hattest.",
+          "en": "Use 제가 …한 건 X이지 Y가 아니에요 to separate your narrow objection from the broader one being attributed to you. Then briefly state what you actually proposed."
+        },
+        "examples": [
+          {
+            "targetText": "제가 말한 취지는 그게 아니에요. 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요. 한 달만 미루자는 거였어요.",
+            "base": {
+              "de": "Darauf wollte ich nicht hinaus. Ich habe den Zeitplan abgelehnt, nicht das Projekt an sich. Ich wollte es nur um einen Monat verschieben.",
+              "en": "That wasn't my point. I objected to the schedule, not the project itself. I was only suggesting pushing it back by a month."
+            },
+            "highlights": [
+              "제가 반대한 건",
+              "일정이지",
+              "자체가 아니거든요"
+            ]
+          },
+          {
+            "targetText": "제가 줄이자는 건 회의 횟수이지 의견을 묻는 기회가 아니에요.",
+            "base": {
+              "de": "Ich möchte die Zahl der Sitzungen verringern, nicht die Gelegenheiten zur Mitsprache.",
+              "en": "What I'm proposing to reduce is the number of meetings rather than the opportunities to contribute."
+            },
+            "highlights": [
+              "제가 줄이자는 건",
+              "횟수이지"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "취지는",
+          "kind": "noun",
+          "lemma": "취지",
+          "base": {
+            "de": "Absicht einer Äußerung",
+            "en": "intended point"
+          }
+        },
+        {
+          "targetText": "제가 반대한 건",
+          "kind": "frame",
+          "base": {
+            "de": "wogegen ich Einwände hatte",
+            "en": "what I objected to was"
+          }
+        },
+        {
+          "targetText": "하지 말자는",
+          "kind": "frame",
+          "base": {
+            "de": "der Vorschlag, es sein zu lassen",
+            "en": "a suggestion to call it off"
+          }
+        },
+        {
+          "targetText": "일정이지",
+          "kind": "noun",
+          "base": {
+            "de": "es geht um den Zeitplan",
+            "en": "it's the schedule"
+          }
+        },
+        {
+          "targetText": "자체가",
+          "kind": "noun",
+          "base": {
+            "de": "die Sache selbst",
+            "en": "the thing itself"
+          }
+        },
+        {
+          "targetText": "시작 시점만",
+          "kind": "noun",
+          "base": {
+            "de": "nur der Anfangszeitpunkt",
+            "en": "only the start date"
+          }
+        },
+        {
+          "targetText": "다시",
+          "kind": "adverb",
+          "base": {
+            "de": "erneut",
+            "en": "again"
+          }
+        },
+        {
+          "targetText": "찬성하고",
+          "kind": "verb",
+          "base": {
+            "de": "ich bin dafür und …",
+            "en": "I support it, and …"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "반대한",
+            "일정이지",
+            "프로젝트"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "시기",
+            "뜻은",
+            "늦게"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "찬성하고",
+            "시점만",
+            "미루자는"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "취지",
+        "familyKey": "취지",
+        "pos": "noun",
+        "surface": "취지는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "제가 말한 취지는 그게 아니에요. 제가 반대한 건 일정이지 프로젝트 자체가 아니거든요. 한 달만 미루자는 거였어요.",
+          "base": {
+            "de": "Darauf wollte ich nicht hinaus. Ich habe den Zeitplan abgelehnt, nicht das Projekt an sich. Ich wollte es nur um einen Monat verschieben.",
+            "en": "That wasn't my point. I objected to the schedule, not the project itself. I was only suggesting pushing it back by a month."
+          }
+        },
+        "base": {
+          "de": "Absicht einer Äußerung",
+          "en": "intended point"
+        },
+        "whyThisWord": {
+          "de": "취지 bezeichnet den Sinn hinter deinem Vorschlag. Damit kannst du den Einwand eingrenzen, ohne der anderen Person eine Absicht zu unterstellen.",
+          "en": "취지 refers to the point behind a proposal. It lets you narrow an objection without attributing motives to the listener."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "제가 반대한 건",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "describe-festival-traffic-plan",
+      "title": {
+        "de": "Der Verkehrsplan fürs Straßenfest",
+        "en": "The street festival traffic plan"
+      },
+      "situation": {
+        "de": "Ein Mitarbeiter des Gemeindezentrums möchte den Verkehrsplan für das Straßenfest in verständlicher Form hören.",
+        "en": "A community-centre employee wants a clear account of the street festival's traffic plan."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Zuständige Person im Gemeindezentrum",
+            "en": "Community-centre official"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein Mitarbeiter des Gemeindezentrums möchte den Verkehrsplan für das Straßenfest in verständlicher Form hören. „부스는 열 시에 연다고 들었는데, 차량 통행은 어떻게 되는지 순서대로 설명해 주시겠어요?“",
+        "en": "A community-centre employee wants a clear account of the street festival's traffic plan. “부스는 열 시에 연다고 들었는데, 차량 통행은 어떻게 되는지 순서대로 설명해 주시겠어요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "부스는 열 시에 연다고 들었는데, 차량 통행은 어떻게 되는지 순서대로 설명해 주시겠어요?",
+          "base": {
+            "de": "Ich habe gehört, dass die Stände um zehn öffnen. Könnten Sie mir Schritt für Schritt erklären, wie der Verkehr geregelt wird?",
+            "en": "I heard the booths open at ten. Could you walk me through what happens to traffic?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "순서대로 말씀드리면 열 시부터 정오까지는 평소대로 다녀요. 정오부터 다섯 시까지는 일반 차량을 막고, 우회로는 바로 옆길이에요. 다섯 시에 다시 열려요.",
+          "base": {
+            "de": "Der Reihe nach. Von zehn bis zwölf fließt der Verkehr wie gewohnt. Von zwölf bis fünf sperren wir die Straße für normale Fahrzeuge. Die Umleitung führt über die Straße gleich daneben. Um fünf öffnen wir wieder.",
+            "en": "In order, traffic runs as usual from ten until noon. From noon to five we close the road to ordinary vehicles and divert them to the street alongside it. The road reopens at five."
+          },
+          "register": "haeyo",
+          "move": "explain"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그런데 한 시쯤에 구급차가 지나가야 하면 어떻게 돼요? 그때는 길이 막혀 있을 텐데요.",
+          "base": {
+            "de": "Was passiert, wenn gegen eins ein Rettungswagen durchmuss? Dann ist die Straße doch gesperrt.",
+            "en": "But what if an ambulance needs to get through around one? The road will be closed then."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그건 괜찮아요. 남쪽 입구는 하루 종일 비상 차로로 비워 두거든요. 막는 건 일반 차량이지 구급차는 아니에요.",
+          "base": {
+            "de": "Das geht trotzdem. Die südliche Zufahrt halten wir den ganzen Tag als Rettungsgasse frei. Gesperrt ist die Straße für normale Fahrzeuge. Krankenwagen dürfen durch.",
+            "en": "That's fine. We keep the south entrance clear as an emergency lane all day. The restriction is on ordinary vehicles, so ambulances can still get through."
+          },
+          "register": "haeyo",
+          "move": "clarify"
+        },
+        {
+          "speaker": "them",
+          "targetText": "알겠어요. 그럼 게시판에 붙일 수 있게 세 줄로 정리해 주시겠어요?",
+          "base": {
+            "de": "Verstanden. Können Sie mir das in drei Zeilen für den Aushang zusammenfassen?",
+            "en": "Understood. Could you sum that up in three lines for the notice board?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "첫째, 정오부터 다섯 시까지는 옆길로 돌아가요. 둘째, 다섯 시에는 다시 열려요. 셋째, 남쪽 입구는 종일 비상 차로예요.",
+          "base": {
+            "de": "Erstens, von zwölf bis fünf gilt die Umleitung über die Nebenstraße. Zweitens, um fünf wird die Straße wieder geöffnet. Drittens, die südliche Zufahrt ist den ganzen Tag eine Rettungsgasse.",
+            "en": "First, use the side-street detour from noon to five. Second, the road reopens at five. Third, the south entrance is an emergency lane throughout the day."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "순서대로 말씀드리면 열 시부터 정오까지는 평소대로 다녀요. ",
+        "chunks": [
+          "정오부터",
+          "다섯 시까지는",
+          "일반",
+          "차량을",
+          "막고,",
+          "우회로는",
+          "바로",
+          "옆길이에요."
+        ],
+        "distractors": [
+          "폐점했고",
+          "북쪽 출입문만"
+        ],
+        "frameSuffix": " 다섯 시에 다시 열려요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그건 괜찮아요. 남쪽 입구는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 비상 차로로 비워 두거든요. 막는 건 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 구급차는 아니에요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "하루 종일",
+            "acceptedAnswers": [
+              "하루 종일",
+              "온종일",
+              "종일"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "일반 차량이지",
+            "acceptedAnswers": [
+              "일반 차량이지",
+              "일반 차들이지",
+              "보통 차량이지"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "첫째, 정오부터 다섯 시까지는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 돌아가요. 둘째, 다섯 시에는 다시 열려요. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", 남쪽 입구는 종일 비상 차로예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "옆길로",
+            "acceptedAnswers": [
+              "옆길로",
+              "옆길을 따라",
+              "옆길을 통해"
+            ],
+            "kind": "lexical"
+          },
+          {
+            "answer": "셋째",
+            "acceptedAnswers": [
+              "셋째",
+              "셋째로",
+              "마지막으로",
+              "끝으로"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "recall": {
+        "before": "순서대로 말씀드리면 열 시부터 정오까지는 평소대로 다녀요. 정오부터 다섯 시까지는 일반 차량을 막고, ",
+        "answer": "우회로는",
+        "after": " 바로 옆길이에요. 다섯 시에 다시 열려요.",
+        "acceptedAnswers": [
+          "우회로는"
+        ],
+        "fallbackChoices": [
+          "우회로는",
+          "매표소는",
+          "대기실은",
+          "분실물은"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Abfolge in Phasen erklären",
+          "en": "Explain a sequence phase by phase"
+        },
+        "rule": {
+          "de": "순서대로 말씀드리면 kündigt die Reihenfolge an. -부터 … -까지는 grenzt jede Phase ab; zum Schluss nennst du, wann der Normalzustand zurückkehrt.",
+          "en": "순서대로 말씀드리면 introduces the sequence. -부터 … -까지는 marks off each phase, and you close by saying when things return to normal."
+        },
+        "examples": [
+          {
+            "targetText": "순서대로 말씀드리면 열 시부터 정오까지는 평소대로 다녀요. 정오부터 다섯 시까지는 일반 차량을 막고, 우회로는 바로 옆길이에요. 다섯 시에 다시 열려요.",
+            "base": {
+              "de": "Der Reihe nach. Von zehn bis zwölf fließt der Verkehr wie gewohnt. Von zwölf bis fünf sperren wir die Straße für normale Fahrzeuge. Die Umleitung führt über die Straße gleich daneben. Um fünf öffnen wir wieder.",
+              "en": "In order, traffic runs as usual from ten until noon. From noon to five we close the road to ordinary vehicles and divert them to the street alongside it. The road reopens at five."
+            },
+            "highlights": [
+              "순서대로 말씀드리면",
+              "정오부터 다섯 시까지는"
+            ]
+          },
+          {
+            "targetText": "순서대로 말씀드리면 아홉 시부터 열 시까지는 방문객만 들여요. 열 시부터 정오까지는 장비를 옮기고, 정오에 다시 문을 열어요.",
+            "base": {
+              "de": "Der Reihe nach. Von neun bis zehn lassen wir nur Besucher hinein. Von zehn bis zwölf verlegen wir die Geräte, und um zwölf öffnen wir wieder.",
+              "en": "In order, from nine to ten we only admit visitors. From ten until noon we move the equipment, and at noon we open again."
+            },
+            "highlights": [
+              "순서대로 말씀드리면",
+              "열 시부터 정오까지는"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "우회로는",
+          "kind": "noun",
+          "lemma": "우회로",
+          "base": {
+            "de": "Umleitungsstrecke",
+            "en": "diversion route"
+          }
+        },
+        {
+          "targetText": "순서대로 말씀드리면",
+          "kind": "frame",
+          "base": {
+            "de": "der Reihe nach erklärt",
+            "en": "to take it in order"
+          }
+        },
+        {
+          "targetText": "하루 종일",
+          "kind": "frame",
+          "base": {
+            "de": "den ganzen Tag über",
+            "en": "throughout the day"
+          }
+        },
+        {
+          "targetText": "일반 차량을",
+          "kind": "noun",
+          "base": {
+            "de": "die normalen Fahrzeuge",
+            "en": "ordinary vehicles"
+          }
+        },
+        {
+          "targetText": "남쪽 입구는",
+          "kind": "noun",
+          "base": {
+            "de": "die südliche Zufahrt",
+            "en": "the south entrance"
+          }
+        },
+        {
+          "targetText": "구급차가",
+          "kind": "noun",
+          "base": {
+            "de": "ein Rettungswagen",
+            "en": "an ambulance"
+          }
+        },
+        {
+          "targetText": "다시 열려요",
+          "kind": "verb",
+          "base": {
+            "de": "sie wird wieder geöffnet",
+            "en": "it reopens"
+          }
+        },
+        {
+          "targetText": "옆길로",
+          "kind": "noun",
+          "base": {
+            "de": "über die Nebenstraße",
+            "en": "via the side street"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "정오부터",
+            "차량을",
+            "우회로는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "남쪽",
+            "비상",
+            "구급차는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "옆길로",
+            "열려요",
+            "차로예요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "우회로",
+        "familyKey": "우회로",
+        "pos": "noun",
+        "surface": "우회로는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "순서대로 말씀드리면 열 시부터 정오까지는 평소대로 다녀요. 정오부터 다섯 시까지는 일반 차량을 막고, 우회로는 바로 옆길이에요. 다섯 시에 다시 열려요.",
+          "base": {
+            "de": "Der Reihe nach. Von zehn bis zwölf fließt der Verkehr wie gewohnt. Von zwölf bis fünf sperren wir die Straße für normale Fahrzeuge. Die Umleitung führt über die Straße gleich daneben. Um fünf öffnen wir wieder.",
+            "en": "In order, traffic runs as usual from ten until noon. From noon to five we close the road to ordinary vehicles and divert them to the street alongside it. The road reopens at five."
+          }
+        },
+        "base": {
+          "de": "Umleitungsstrecke",
+          "en": "diversion route"
+        },
+        "whyThisWord": {
+          "de": "우회로 ist die Strecke, auf die man ausweicht. Damit lässt sich der Umweg für normale Fahrzeuge von der freizuhaltenden Rettungszufahrt unterscheiden.",
+          "en": "우회로 is the route used to bypass a closure. It distinguishes an ordinary-traffic diversion from a reserved emergency entrance."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "순서대로 말씀드리면",
+          "status": "productive"
+        }
+      ]
+    }
+  ]
+}

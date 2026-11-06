@@ -1,0 +1,677 @@
+{
+  "pathNumber": 5,
+  "shape": "dispute",
+  "stagingDisposition": "All ten episodes staged in 해요체 for every speaker including officials; the proposed call-centre/agent 합쇼체 recognition extension is NOT applied, so L5, L6 and L10 them turns stay 해요체 (-십시오 absent). Formality signalled through titles (소장님, 팀장님, 사장님, 집주인분) and humble verbs (연락드릴게요, 요청드려요, 여쭤 볼게요). Recognition-only items appear only in them turns (약관상 in L7 them2). Learner never asserts the outcome; the other side decides in every closing. German uses Sie throughout because no P5 room is a close-relation pairing. No real laws, insurance rights or guaranteed remedies are claimed; airline and insurer lines report records (기록돼 있어요, 나와요) rather than certainty.",
+  "lessons": [
+    {
+      "n": 1,
+      "trophyLemma": "파손",
+      "trophySurface": "파손이",
+      "moves": [
+        "request",
+        "rebut",
+        "concede"
+      ],
+      "turns": [
+        "안녕하세요, 어떤 일로 오셨어요? 송장 번호 있으시면 먼저 보여 주세요.",
+        "어제 받은 액자인데요, 상자는 멀쩡했는데 안에 유리가 깨져 있었어요. 배송 중 파손이 분명하니까 환불보다는 새 제품으로 다시 보내 주셨으면 해요.",
+        "확인해 보니 수령 확인에 직접 서명하셨네요. 서명이 되어 있으면 저희 쪽에서는 파손 처리가 안 돼요.",
+        "상자가 멀쩡했는데도 안이 깨졌으니까 서명은 증거가 안 되죠. 열어 보기 전에는 아무도 알 수 없었어요.",
+        "교환은 가능한데 재고가 사 주 뒤에나 들어와요. 환불은 오늘 바로 처리해 드릴 수 있어요.",
+        "그럼 사 주 기다릴게요. 대신 입고되면 먼저 연락 주시고 이번엔 유리 보호 포장으로 보내 주셨으면 해요."
+      ],
+      "translations": [
+        {
+          "de": "Guten Tag, womit kann ich Ihnen helfen? Wenn Sie eine Sendungsnummer haben, zeigen Sie sie mir bitte zuerst.",
+          "en": "Hello, what brings you in? If you have a tracking number, please show it to me first."
+        },
+        {
+          "de": "Es geht um einen Bilderrahmen, den ich gestern erhalten habe; der Karton war unversehrt, aber das Glas darin war zerbrochen. Da es eindeutig ein Transportschaden ist, hätte ich lieber eine neue Lieferung als eine Rückerstattung.",
+          "en": "It's a framed print I received yesterday; the box was fine, but the glass inside was broken. Since it's clearly damage in transit, I'd rather you send a new one than refund me."
+        },
+        {
+          "de": "Ich sehe, Sie haben die Empfangsbestätigung selbst unterschrieben. Wenn unterschrieben wurde, können wir auf unserer Seite keinen Schaden bearbeiten.",
+          "en": "I see you signed the delivery confirmation yourself. Once it's signed, we can't process damage on our side."
+        },
+        {
+          "de": "Da das Innere zerbrochen war, obwohl der Karton unversehrt war, beweist die Unterschrift nichts. Vor dem Öffnen konnte das niemand wissen.",
+          "en": "Since the inside was broken even though the box was intact, the signature proves nothing. Nobody could have known before opening it."
+        },
+        {
+          "de": "Ein Umtausch ist möglich, aber Nachschub kommt erst in vier Wochen. Eine Rückerstattung könnte ich heute sofort veranlassen.",
+          "en": "An exchange is possible, but stock only comes in four weeks from now. A refund I can process for you right today."
+        },
+        {
+          "de": "Dann warte ich die vier Wochen. Dafür hätte ich gern, dass Sie mich beim Wareneingang zuerst benachrichtigen und diesmal mit Glasschutzverpackung versenden.",
+          "en": "Then I'll wait the four weeks. In return, I'd like you to contact me first when it's in and send it with glass-protective packaging this time."
+        }
+      ],
+      "transfer": {
+        "ko": "수업 자료는 전날 미리 올려 주셨으면 해요.",
+        "de": "Ich hätte gern, dass Sie die Kursunterlagen schon am Vortag hochladen.",
+        "en": "I'd like you to upload the course materials the day before."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "멀쩡했는데도",
+          "alternatives": [
+            "깨끗했는데도",
+            "온전했는데도"
+          ],
+          "note": "-았/었는데도 concessive carrier; the rest of the sentence stays unchanged."
+        },
+        "you5": {
+          "span": "보내 주셨으면 해요",
+          "alternatives": [
+            "보내 주시면 좋겠어요",
+            "보내 주실 수 있을까요"
+          ],
+          "note": "Request carrier -아/어 주셨으면 해요 with softer exact alternatives."
+        }
+      }
+    },
+    {
+      "n": 2,
+      "trophyLemma": "공임",
+      "trophySurface": "공임을",
+      "moves": [
+        "rebut",
+        "counteroffer",
+        "conclude"
+      ],
+      "turns": [
+        "수리 끝났어요. 총 삼십오만 원 나왔는데 카드로 하시겠어요?",
+        "견적은 이십만 원이었잖아요. 추가 작업이 있었다면 부품값과 공임을 나눠서 먼저 설명해 주셨으면 해요. 그리고 추가 수리는 전화로 미리 물어보기로 했잖아요.",
+        "열어 보니 벨트가 곧 끊어질 것 같아서 같이 바꿨어요. 부품 십만에 공임 오만이 더해진 거예요.",
+        "연락 없이 바꾸신 거니까 견적대로 이십만 원은 지금 낼게요. 벨트는 원가로만 내고 그 공임은 빼 주셨으면 해요.",
+        "부품은 이미 장착돼서 다시 뺄 수는 없어요. 다만 공임 오만 원은 사장님께 여쭤 볼게요.",
+        "빼 달라는 게 아니라 값을 어떻게 나누느냐는 얘기예요. 원가와 견적 금액은 내고 공임은 결정 나면 알려 주세요."
+      ],
+      "translations": [
+        {
+          "de": "Die Reparatur ist fertig. Insgesamt sind es dreihundertfünfzigtausend Won, zahlen Sie mit Karte?",
+          "en": "The repair is done. It comes to three hundred fifty thousand won in total, will you pay by card?"
+        },
+        {
+          "de": "Der Kostenvoranschlag lag doch bei zweihunderttausend Won. Falls es Zusatzarbeiten gab, hätte ich gern zuerst eine Aufschlüsselung in Teilekosten und Arbeitslohn. Und wir hatten doch vereinbart, dass Zusatzreparaturen vorher telefonisch abgefragt werden.",
+          "en": "The quote was two hundred thousand won, remember? If there was extra work, I'd like you to first break it down into parts and labour. And we agreed extra repairs would be checked by phone beforehand."
+        },
+        {
+          "de": "Beim Öffnen sah es so aus, als würde der Riemen bald reißen, also haben wir ihn mit ausgetauscht. Es kamen hunderttausend fürs Teil und fünfzigtausend Arbeitslohn dazu.",
+          "en": "When we opened it up, the belt looked about to snap, so we replaced it as well. That's a hundred thousand for the part plus fifty thousand labour added on."
+        },
+        {
+          "de": "Da Sie ohne Rücksprache getauscht haben, zahle ich jetzt die zweihunderttausend Won laut Voranschlag. Den Riemen zahle ich nur zum Einkaufspreis, und den Arbeitslohn dafür hätte ich gern gestrichen.",
+          "en": "Since you replaced it without contacting me, I'll pay the two hundred thousand won per the quote now. For the belt I'll pay cost price only, and I'd like that labour charge taken off."
+        },
+        {
+          "de": "Das Teil ist schon eingebaut, ausbauen können wir es nicht mehr. Aber wegen der fünfzigtausend Won Arbeitslohn frage ich den Chef.",
+          "en": "The part is already fitted, so we can't take it out again. But I'll ask the owner about the fifty thousand won labour charge."
+        },
+        {
+          "de": "Ich verlange nicht den Ausbau, es geht darum, wie wir die Kosten aufteilen. Den Einkaufspreis und den Voranschlagsbetrag zahle ich, und beim Arbeitslohn sagen Sie mir bitte Bescheid, sobald es entschieden ist.",
+          "en": "I'm not asking you to remove it; it's about how the cost is split. I'll pay cost price plus the quoted amount, and let me know about the labour once it's decided."
+        }
+      ],
+      "transfer": {
+        "ko": "회의 전에 자료는 미리 공유하기로 했잖아요.",
+        "de": "Wir hatten doch vereinbart, die Unterlagen vor der Sitzung vorab zu teilen.",
+        "en": "We agreed to share the materials before the meeting, remember?"
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "빼 주셨으면 해요",
+          "alternatives": [
+            "빼 주시면 좋겠어요",
+            "빼 주실 수 있을까요"
+          ],
+          "note": "Request carrier on the labour charge; the counteroffer structure around it stays fixed."
+        },
+        "you5": {
+          "span": "결정 나면",
+          "alternatives": [
+            "정해지면",
+            "확인되면"
+          ],
+          "note": "Conditional hand-over to the shop's decision; learner does not assert the outcome."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "trophyLemma": "시간대",
+      "trophySurface": "시간대를",
+      "moves": [
+        "request",
+        "counteroffer",
+        "concede"
+      ],
+      "turns": [
+        "아, 윗집이시죠? 소음 때문에 오셨어요? 저희도 최대한 조심한다고는 하는데요.",
+        "소장님, 공사를 막으려는 건 아니고요, 드릴 작업 시간대를 조정해 주셨으면 해요. 오후에 재택 회의가 많아서 소리 때문에 진행이 안 돼요.",
+        "사정은 알겠는데 저희 팀이 엿새만 잡혀 있어요. 하루라도 밀리면 다음 현장이랑 겹쳐서 여유가 전혀 없어요.",
+        "날짜를 줄여 달라는 게 아니에요. 드릴 작업만 오전에 몰아 주시면 오후 회의는 지킬 수 있고 공사 기간은 그대로죠.",
+        "그건 해 볼게요. 다만 관리실 공지로는 아홉 시부터 작업이 되니까 저희가 규칙을 어긴 건 아니에요.",
+        "규칙 안에서 하시는 건 저도 인정해요. 오전에 몰아 주시는 걸로 정리되면 관리실에 민원은 넣지 않을게요."
+      ],
+      "translations": [
+        {
+          "de": "Ah, Sie sind von oben, nicht wahr? Kommen Sie wegen des Lärms? Wir geben uns ja schon möglichst Mühe, vorsichtig zu sein.",
+          "en": "Ah, you're from upstairs, right? Are you here about the noise? We do try to be as careful as we can."
+        },
+        {
+          "de": "Herr Bauleiter, ich will die Arbeiten nicht stoppen, aber ich hätte gern, dass Sie die Bohrzeiten verschieben. Ich habe nachmittags viele Besprechungen im Homeoffice, und wegen des Lärms geht da nichts.",
+          "en": "Foreman, I'm not trying to stop the work, but I'd like you to adjust the drilling time slots. I have many remote meetings in the afternoon, and the noise makes them impossible."
+        },
+        {
+          "de": "Ich verstehe das, aber unser Team ist nur für sechs Tage eingeplant. Rutscht es auch nur einen Tag, überschneidet es sich mit der nächsten Baustelle, da ist überhaupt kein Spielraum.",
+          "en": "I understand, but our crew is only booked for six days. If it slips even a day, it overlaps with the next site, so there's no slack at all."
+        },
+        {
+          "de": "Ich bitte nicht um weniger Tage. Wenn Sie nur das Bohren auf den Vormittag bündeln, kann ich meine Nachmittagsbesprechungen halten, und die Bauzeit bleibt gleich.",
+          "en": "I'm not asking you to cut the days. If you just cluster the drilling into the mornings, my afternoon meetings survive and the schedule stays the same."
+        },
+        {
+          "de": "Das versuche ich. Aber laut Aushang der Hausverwaltung dürfen wir ab neun arbeiten, wir haben also keine Regel verletzt.",
+          "en": "I'll try that. But by the building office notice, work is allowed from nine, so we haven't broken any rule."
+        },
+        {
+          "de": "Dass Sie sich an die Regeln halten, erkenne ich an. Wenn wir uns darauf einigen, dass Sie morgens bündeln, werde ich bei der Hausverwaltung keine Beschwerde einreichen.",
+          "en": "I acknowledge you're working within the rules. If we settle on clustering in the mornings, I won't file a complaint with the building office."
+        }
+      ],
+      "transfer": {
+        "ko": "회의만 오전에 몰아 주시면 오후에는 집중해서 일할 수 있어요.",
+        "de": "Wenn Sie die Besprechungen auf den Vormittag bündeln, kann ich nachmittags konzentriert arbeiten.",
+        "en": "If you cluster the meetings into the morning, I can work with focus in the afternoon."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "몰아 주시면",
+          "alternatives": [
+            "모아 주시면",
+            "배치해 주시면"
+          ],
+          "note": "-아/어 주시면 conditional offer; the gain clause after it stays unchanged."
+        },
+        "you5": {
+          "span": "넣지 않을게요",
+          "alternatives": [
+            "안 넣을게요",
+            "넣지 않겠어요"
+          ],
+          "note": "Learner's reciprocal commitment after the concession; same slot, same meaning."
+        }
+      }
+    },
+    {
+      "n": 4,
+      "trophyLemma": "도배",
+      "trophySurface": "도배를",
+      "moves": [
+        "rebut",
+        "concede",
+        "counteroffer"
+      ],
+      "turns": [
+        "집 보니까 벽지 상태가 안 좋네요. 전체 도배비 팔십만 원은 보증금에서 빼고 드릴게요.",
+        "이 년 살면 벽지는 바래기 마련이잖아요. 집 전체 도배를 제 보증금으로 하시는 건 받아들이기 어려워요. 어디가 문제인지 봐 주셨으면 해요.",
+        "여기 거실 벽 보세요. 못 자국이 여섯 개나 있잖아요. 이건 생활 흔적이 아니라 세입자 책임이죠.",
+        "그 벽 한 면은 제 책임이 맞아요. 다만 나머지 벽은 멀쩡하니까 한 면 도배비로 십오만 원이면 적당하다고 봐요.",
+        "다음 세입자가 토요일에 들어와서 오늘 정해야 해요. 십오만은 너무 적고 삼십만 원이면 제가 양보할게요.",
+        "삼십만 원까지는 받아들일게요. 대신 벽 한 면 공제라고 정산서에 적으시고 나머지 보증금은 오늘 보내 주셨으면 해요."
+      ],
+      "translations": [
+        {
+          "de": "Beim Blick in die Wohnung sieht die Tapete nicht gut aus. Die achthunderttausend Won fürs komplette Neutapezieren ziehe ich von der Kaution ab.",
+          "en": "Looking at the flat, the wallpaper is in poor shape. I'll deduct the eight hundred thousand won for full re-papering from the deposit."
+        },
+        {
+          "de": "Nach zwei Jahren Wohnen verblasst eine Tapete nun einmal. Dass Sie die ganze Wohnung mit meiner Kaution neu tapezieren, kann ich schwer akzeptieren. Ich hätte gern, dass Sie mir zeigen, wo genau das Problem liegt.",
+          "en": "After living here two years, wallpaper is bound to fade. Having the whole flat re-papered out of my deposit is hard to accept. I'd like you to show me where exactly the problem is."
+        },
+        {
+          "de": "Sehen Sie sich diese Wohnzimmerwand an. Da sind ganze sechs Nagellöcher. Das sind keine Gebrauchsspuren, das ist Mietersache.",
+          "en": "Look at this living-room wall. There are six nail holes, no less. That's not ordinary wear, that's the tenant's responsibility."
+        },
+        {
+          "de": "Für diese eine Wand bin ich tatsächlich verantwortlich. Da aber die übrigen Wände in Ordnung sind, halte ich hundertfünfzigtausend Won für das Tapezieren einer Wand für angemessen.",
+          "en": "That one wall is indeed my responsibility. But since the other walls are fine, I think a hundred fifty thousand won for papering one wall is reasonable."
+        },
+        {
+          "de": "Der nächste Mieter zieht Samstag ein, also müssen wir das heute klären. Hundertfünfzigtausend ist zu wenig, bei dreihunderttausend Won gebe ich nach.",
+          "en": "The next tenant moves in Saturday, so we need to settle this today. A hundred fifty thousand is too little; at three hundred thousand won I'll give way."
+        },
+        {
+          "de": "Bis dreihunderttausend Won akzeptiere ich. Dafür hätte ich gern, dass Sie in der Abrechnung Abzug für eine Wand vermerken und den Rest der Kaution heute überweisen.",
+          "en": "I'll accept up to three hundred thousand won. In return, I'd like you to note it as a one-wall deduction on the statement and send the rest of the deposit today."
+        }
+      ],
+      "transfer": {
+        "ko": "오래 신은 신발은 밑창이 닳기 마련이에요.",
+        "de": "Bei lange getragenen Schuhen nutzt sich die Sohle nun einmal ab.",
+        "en": "With shoes worn a long time, the sole is bound to wear down."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "적당하다고 봐요",
+          "alternatives": [
+            "맞다고 봐요",
+            "충분하다고 생각해요"
+          ],
+          "note": "Proposal-of-figure closer; the amount phrase before it is fixed."
+        },
+        "you5": {
+          "span": "받아들일게요",
+          "alternatives": [
+            "낼게요",
+            "인정할게요"
+          ],
+          "note": "Scoped concession up to the named price (삼십만 원까지는); amount only after the landlord names it."
+        }
+      }
+    },
+    {
+      "n": 5,
+      "trophyLemma": "지연",
+      "trophySurface": "지연이",
+      "moves": [
+        "request",
+        "reason",
+        "concede"
+      ],
+      "turns": [
+        "항공사 고객센터예요. 어떤 도움이 필요하세요? 예약 번호부터 말씀해 주시겠어요?",
+        "어제 저녁 비행기가 다섯 시간 지연이 됐는데 게이트에서 식사도 숙소 안내도 없었어요. 지연 사유가 뭐였는지 먼저 정확히 알려 주셨으면 해요.",
+        "확인해 보니 그날은 출발지 기상 악화로 기록돼 있어요. 기상 사유라서 현장에서 식사 제공은 없었다고 나와요.",
+        "그 기상 사유를 문서로 받을 수 있는지가 제일 궁금해요. 서면이 어렵다면 그날 식사비라도 돌려주셨으면 하는데, 가능한지 확인해 주시겠어요?",
+        "보상 심사는 최대 삼십 일 걸려요. 지연 확인서는 요청하시면 사유를 적어 메일로 드려요.",
+        "그럼 사유가 적힌 확인서를 먼저 받고 삼십 일은 기다릴게요. 식사비 보상은 심사 항목에 같이 넣어서 검토해 주시겠어요?"
+      ],
+      "translations": [
+        {
+          "de": "Kundenservice der Fluggesellschaft. Wie kann ich Ihnen helfen? Würden Sie mir zuerst Ihre Buchungsnummer nennen?",
+          "en": "Airline customer service. How can I help you? Could you give me your booking number first?"
+        },
+        {
+          "de": "Mein Flug gestern Abend hatte fünf Stunden Verspätung, und am Gate gab es weder Verpflegung noch Hinweise auf eine Unterkunft. Ich hätte gern zuerst genau gewusst, was der Grund für die Verspätung war.",
+          "en": "My flight last evening was delayed five hours, and at the gate there was no meal and no information about a hotel. I'd like to know exactly what the reason for the delay was, first of all."
+        },
+        {
+          "de": "Laut unseren Aufzeichnungen ist für den Tag schlechtes Wetter am Abflugort vermerkt. Da es ein Wettergrund war, wurde vor Ort laut System keine Verpflegung ausgegeben.",
+          "en": "Our records show that day is logged as bad weather at the departure airport. Because it was weather-related, the system says no meals were provided on site."
+        },
+        {
+          "de": "Mich interessiert vor allem, ob ich diesen Wettergrund schriftlich bekommen kann. Falls das schriftlich schwierig ist, hätte ich gern wenigstens die Verpflegungskosten des Tages zurück; könnten Sie prüfen, ob das möglich ist?",
+          "en": "What I most want to know is whether I can get that weather reason in writing. If written form is difficult, I'd like at least that day's meal costs back; could you check whether that's possible?"
+        },
+        {
+          "de": "Die Prüfung einer Entschädigung dauert bis zu dreißig Tage. Eine Verspätungsbescheinigung mit dem Grund schicken wir Ihnen auf Anfrage per E-Mail.",
+          "en": "A compensation review takes up to thirty days. On request, we send a delay confirmation with the reason stated by email."
+        },
+        {
+          "de": "Dann warte ich die dreißig Tage, sobald ich die Bescheinigung mit dem Grund habe. Würden Sie die Verpflegungskosten mit in die Prüfung aufnehmen?",
+          "en": "Then I'll wait the thirty days once I've received the confirmation with the reason. Could you include the meal cost in the review as well?"
+        }
+      ],
+      "transfer": {
+        "ko": "전액이 어렵다면 배송비라도 돌려주셨으면 해요.",
+        "de": "Wenn der volle Betrag schwierig ist, hätte ich gern wenigstens die Versandkosten zurück.",
+        "en": "If the full amount is difficult, I'd like at least the shipping cost back."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "돌려주셨으면 하는데",
+          "alternatives": [
+            "보상해 주셨으면 하는데",
+            "지급해 주셨으면 하는데"
+          ],
+          "note": "Minimal-claim request inside the explicit conditional 서면이 어렵다면 ... -(이)라도; the conditional frame stays."
+        },
+        "you5": {
+          "span": "기다릴게요",
+          "alternatives": [
+            "기다리겠어요",
+            "기다려 볼게요"
+          ],
+          "note": "Acceptance of the timeline tied to receiving the written reason first (먼저 받고)."
+        }
+      }
+    },
+    {
+      "n": 6,
+      "trophyLemma": "접수",
+      "trophySurface": "접수가",
+      "moves": [
+        "concede",
+        "reason",
+        "request"
+      ],
+      "turns": [
+        "청구 건 확인했는데요, 사고일로부터 삼십 일이 지나서 처리가 거절됐어요. 다른 문의 있으세요?",
+        "접수가 늦은 건 맞아요. 다만 그 기간에 해외에 있어서 신청 자체가 어려웠거든요. 사정을 감안해서 한 번만 다시 검토해 주셨으면 해요.",
+        "기록을 보니 기한이 끝난 날짜가 출국 중이던 기간이네요. 해외에서도 앱으로는 신청이 가능했어요.",
+        "앱이 되는 건 몰랐고 현지에서는 데이터도 거의 안 됐어요. 고의로 미룬 게 아니라는 점만이라도 재검토에 반영해 주셨으면 해요.",
+        "재검토 신청은 받아 드릴 수 있어요. 다만 출국일과 귀국일이 나오는 증빙이 있어야 심사팀에 넘어가요.",
+        "출입국 사실 증명서는 오늘 안에 메일로 보낼게요. 항공권도 같이 첨부하면 되는지 알려 주시겠어요?"
+      ],
+      "translations": [
+        {
+          "de": "Ich habe Ihren Anspruch geprüft; da seit dem Schadenstag mehr als dreißig Tage vergangen waren, wurde die Bearbeitung abgelehnt. Haben Sie weitere Fragen?",
+          "en": "I've checked your claim; it was rejected because more than thirty days had passed since the incident. Is there anything else?"
+        },
+        {
+          "de": "Dass die Meldung zu spät kam, stimmt. Allerdings war ich in der Zeit im Ausland, sodass eine Einreichung an sich schwierig war. Ich hätte gern, dass Sie es unter diesen Umständen noch einmal prüfen.",
+          "en": "It's true the filing was late. But I was abroad during that period, so filing at all was difficult. Given the circumstances, I'd like you to review it just once more."
+        },
+        {
+          "de": "Laut Akte fiel das Fristende in Ihre Auslandszeit. Aber auch aus dem Ausland war eine Einreichung über die App möglich.",
+          "en": "The records show the deadline fell while you were out of the country. Still, filing through the app was possible from abroad."
+        },
+        {
+          "de": "Dass es über die App geht, wusste ich nicht, und vor Ort hatte ich kaum Datenverbindung. Ich hätte gern, dass bei der erneuten Prüfung zumindest berücksichtigt wird, dass ich es nicht absichtlich aufgeschoben habe.",
+          "en": "I didn't know the app worked, and I barely had data there. I'd like the re-review to at least take into account that I didn't delay on purpose."
+        },
+        {
+          "de": "Einen Antrag auf erneute Prüfung kann ich aufnehmen. Allerdings geht er nur mit einem Nachweis von Ausreise- und Rückreisedatum an die Prüfabteilung.",
+          "en": "I can register a request for re-review. But it only goes to the review team with proof showing your departure and return dates."
+        },
+        {
+          "de": "Die Ein- und Ausreisebescheinigung schicke ich noch heute per E-Mail. Würden Sie mir sagen, ob ich die Flugtickets gleich mit anhängen soll?",
+          "en": "I'll email the entry-and-exit certificate today. Could you tell me whether I should attach the flight tickets as well?"
+        }
+      ],
+      "transfer": {
+        "ko": "성적 입력에 오류가 있는 것 같으니까 한 번만 다시 확인해 주셨으면 해요.",
+        "de": "Da bei der Noteneingabe offenbar ein Fehler vorliegt, hätte ich gern, dass Sie es noch einmal prüfen.",
+        "en": "Since there seems to be an error in the grade entry, I'd like you to check it just once more."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "반영해 주셨으면 해요",
+          "alternatives": [
+            "반영해 주시면 좋겠어요",
+            "반영해 주실 수 있을까요"
+          ],
+          "note": "Request carrier after the -(이)라도 minimal-claim object; the reason clause before it is fixed."
+        },
+        "you5": {
+          "span": "오늘 안에",
+          "alternatives": [
+            "오늘 중으로",
+            "내일까지"
+          ],
+          "note": "Concrete delivery commitment slot naming when proof will be sent."
+        }
+      }
+    },
+    {
+      "n": 7,
+      "trophyLemma": "양도",
+      "trophySurface": "양도가",
+      "moves": [
+        "rebut",
+        "counteroffer",
+        "conclude"
+      ],
+      "turns": [
+        "회원권 해지 상담이시죠? 등록하신 게 열두 달 약정이라서 조건부터 같이 확인해 볼게요.",
+        "다음 달에 다른 도시로 이사를 가게 됐는데 그쪽에는 지점이 없어요. 남은 기간 환불이나 타인에게 양도가 가능한지 설명해 주셨으면 해요.",
+        "남은 게 여섯 달이네요. 약관상 중도 해지는 환불이 안 되고 남은 금액은 그대로 내셔야 해요.",
+        "쓰지도 못할 여섯 달 치를 다 내라는 건 무리예요. 환불이 안 된다면 양도로 하고 싶은데 절차가 어떻게 되죠?",
+        "양도는 가능해요. 다만 받는 분이 이번 달 안에 와서 서명해야 하고 그 뒤로는 안 돼요.",
+        "그럼 양도로 할게요. 이번 달 안에 제가 사람을 구해 올게요. 서류는 미리 준비해 주시겠어요?"
+      ],
+      "translations": [
+        {
+          "de": "Es geht um eine Kündigung der Mitgliedschaft, richtig? Sie haben einen Zwölfmonatsvertrag, deshalb schauen wir uns zuerst gemeinsam die Bedingungen an.",
+          "en": "This is about cancelling your membership, right? You signed up for a twelve-month contract, so let's look at the terms together first."
+        },
+        {
+          "de": "Ich ziehe nächsten Monat in eine andere Stadt, und dort gibt es keine Filiale. Ich hätte gern eine Erklärung, ob für die Restlaufzeit eine Erstattung oder eine Übertragung auf eine andere Person möglich ist.",
+          "en": "I'm moving to another city next month, and there's no branch there. I'd like you to explain whether a refund for the remaining period or a transfer to someone else is possible."
+        },
+        {
+          "de": "Es bleiben noch sechs Monate. Laut Vertragsbedingungen gibt es bei vorzeitiger Kündigung keine Erstattung, und der Restbetrag ist weiterhin zu zahlen.",
+          "en": "You have six months left. Under the terms, early cancellation isn't refundable, and the remaining amount still has to be paid."
+        },
+        {
+          "de": "Sechs Monate voll zu bezahlen, die ich gar nicht nutzen kann, ist zu viel verlangt. Wenn keine Erstattung geht, möchte ich die Übertragung; wie läuft das Verfahren?",
+          "en": "Asking me to pay all six months I can't even use is too much. If a refund is out, I'd like to go with a transfer; how does the process work?"
+        },
+        {
+          "de": "Eine Übertragung ist möglich. Allerdings muss die übernehmende Person noch diesen Monat vorbeikommen und unterschreiben, danach geht es nicht mehr.",
+          "en": "A transfer is possible. But the person taking it over has to come in and sign within this month; after that it's not possible."
+        },
+        {
+          "de": "Dann nehme ich die Übertragung. Ich bringe noch diesen Monat jemanden. Würden Sie die Unterlagen schon vorbereiten?",
+          "en": "Then I'll go with the transfer. I'll find someone and bring them in within this month. Could you have the paperwork ready in advance?"
+        }
+      ],
+      "transfer": {
+        "ko": "하루 만에 발표 자료를 전부 다시 만들라는 건 무리예요.",
+        "de": "Zu verlangen, die gesamte Präsentation an einem Tag neu zu erstellen, ist zu viel verlangt.",
+        "en": "Asking me to remake the whole presentation in a single day is too much."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "무리예요",
+          "alternatives": [
+            "받아들이기 어려워요",
+            "부담이에요"
+          ],
+          "note": "-라는 건 + evaluative closer rejecting the demand without asserting a refund right."
+        },
+        "you5": {
+          "span": "구해 올게요",
+          "alternatives": [
+            "찾아 올게요",
+            "데려올게요"
+          ],
+          "note": "Learner's commitment inside the shop's window (이번 달 안에); shop still decides via signing."
+        }
+      }
+    },
+    {
+      "n": 8,
+      "trophyLemma": "객실",
+      "trophySurface": "객실은",
+      "moves": [
+        "request",
+        "counteroffer",
+        "rebut"
+      ],
+      "turns": [
+        "늦은 시간에 오시느라 고생하셨어요. 안쪽 마당 방으로 안내해 드릴게요, 열쇠 여기 있어요.",
+        "잠깐만요, 저희는 바다 전망 사 인실로 예약했어요. 그런데 이 객실은 마당 쪽이고 침대도 세 개뿐이에요. 예약 내역부터 확인해 주셨으면 해요.",
+        "죄송해요, 성수기라 근처에 빈방이 없어요. 대신 접이식 침대 하나는 오늘 밤 바로 넣어 드릴게요.",
+        "네 명이니까 침대는 지금 넣어 주셨으면 해요. 그건 그거고, 전망이 예약과 다른 만큼 하루 요금 절반은 돌려주셨으면 해요.",
+        "환불은 어렵고요, 대신 내일 아침 식사를 네 분 모두 무료로 드리면 어떨까요? 그 정도면 괜찮으시죠?",
+        "아침 식사는 감사히 받을게요. 다만 그건 전망 문제와 별개라서 절반 환불은 그대로 요청드려요. 사장님이 정해서 알려 주세요."
+      ],
+      "translations": [
+        {
+          "de": "Das war sicher anstrengend, so spät noch anzureisen. Ich bringe Sie zum Zimmer am Innenhof, hier ist der Schlüssel.",
+          "en": "It must have been a long trip, arriving this late. I'll show you to the courtyard room; here's the key."
+        },
+        {
+          "de": "Moment bitte, wir haben ein Vierbettzimmer mit Meerblick gebucht. Dieses Zimmer liegt aber zum Hof und hat nur drei Betten. Ich hätte gern, dass Sie zuerst die Buchungsdaten prüfen.",
+          "en": "Hold on, we booked a sea-view room for four. But this room faces the courtyard and only has three beds. I'd like you to check the booking details first."
+        },
+        {
+          "de": "Es tut mir leid, in der Hochsaison gibt es in der Umgebung kein freies Zimmer. Dafür stelle ich Ihnen heute Nacht sofort ein Klappbett dazu.",
+          "en": "I'm sorry, it's peak season and there are no vacant rooms nearby. Instead, I'll add a folding bed for you tonight right away."
+        },
+        {
+          "de": "Da wir vier sind, hätte ich gern, dass das Bett jetzt hereinkommt. Das ist das eine; und da der Ausblick nicht der Buchung entspricht, hätte ich gern die Hälfte eines Tagespreises zurück.",
+          "en": "Since there are four of us, I'd like the bed put in now. That's one thing; and since the view differs from the booking, I'd like half of one night's rate back."
+        },
+        {
+          "de": "Eine Erstattung ist schwierig; wie wäre es stattdessen mit kostenlosem Frühstück für alle vier morgen früh? Das wäre doch in Ordnung, oder?",
+          "en": "A refund is difficult; how about free breakfast for all four of you tomorrow instead? That'd be fine, wouldn't it?"
+        },
+        {
+          "de": "Das Frühstück nehme ich dankend an. Das ist aber eine andere Sache als der Ausblick, deshalb bleibe ich bei der Bitte um die halbe Erstattung. Entscheiden Sie bitte und sagen Sie mir Bescheid.",
+          "en": "I'll gladly take the breakfast. But that's separate from the view issue, so I'm still asking for the half refund. Please decide and let me know."
+        }
+      ],
+      "transfer": {
+        "ko": "배송이 늦어진 대신 배송비를 빼 주시면 받아들일게요.",
+        "de": "Wenn Sie als Ausgleich für die Verspätung die Versandkosten erlassen, akzeptiere ich das.",
+        "en": "If you waive the shipping fee to make up for the delay, I'll accept that."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "절반은",
+          "alternatives": [
+            "절반이라도",
+            "일부라도"
+          ],
+          "note": "Scoped amount tied to 다른 만큼; -(이)라도 downgrades to a minimal claim without changing the rest."
+        },
+        "you5": {
+          "span": "별개라서",
+          "alternatives": [
+            "다른 문제라서",
+            "별개니까"
+          ],
+          "note": "Separates the breakfast offer from the view mismatch so the refund request is not waived."
+        }
+      }
+    },
+    {
+      "n": 9,
+      "trophyLemma": "배정",
+      "trophySurface": "배정이",
+      "moves": [
+        "concede",
+        "counteroffer",
+        "request"
+      ],
+      "turns": [
+        "잠깐 얘기할 시간 있다고 했죠? 다음 달 근무표 때문이면 미리 말해 줘요. 어떤 부분이 문제예요?",
+        "팀장님, 주말 근무 배정이 석 달째 저한테만 오고 있어요. 넉 달 연속은 저도 한계라서 다음 달은 조정해 주셨으면 해요.",
+        "미안해요, 저도 알아요. 그런데 주말 가능한 사람이 민수 씨밖에 없는데 그쪽은 주말마다 아이를 봐야 해서요.",
+        "그분 사정은 이해해요. 그래도 다음 달은 주말 네 번 중 두 번만 맡고 그다음 달부터는 돌아가면서 했으면 해요.",
+        "다음 달 근무표는 이미 공지가 나갔어요. 지금 바꾸면 다른 팀원들한테도 다시 안내해야 해서 부담이 커요.",
+        "공지는 알아요. 그래도 두 번만 바꾸는 안은 검토해 주시고 지난 석 달은 대체 휴무로 가능한지 봐 주세요."
+      ],
+      "translations": [
+        {
+          "de": "Sie wollten kurz sprechen, richtig? Wenn es um den Dienstplan für nächsten Monat geht, sagen Sie es mir lieber früh. Wo liegt das Problem?",
+          "en": "You said you wanted a quick word, right? If it's about next month's rota, tell me early. What part is the issue?"
+        },
+        {
+          "de": "Chef, die Wochenenddienste gehen seit drei Monaten nur an mich. Vier Monate am Stück sind auch für mich zu viel, deshalb hätte ich gern, dass Sie den nächsten Monat anpassen.",
+          "en": "Boss, the weekend shift assignments have gone only to me for three months now. Four months in a row is my limit too, so I'd like you to adjust next month."
+        },
+        {
+          "de": "Tut mir leid, ich weiß das. Aber die einzige andere Person mit Wochenendverfügbarkeit ist Minsu, und der muss jedes Wochenende sein Kind betreuen.",
+          "en": "I'm sorry, I know. But the only other person available on weekends is Minsu, and he has to look after his child every weekend."
+        },
+        {
+          "de": "Seine Situation verstehe ich. Trotzdem hätte ich gern, dass ich nächsten Monat nur zwei der vier Wochenenden übernehme und wir ab dem Monat danach abwechseln.",
+          "en": "I understand his situation. Still, I'd like to take only two of the four weekends next month and rotate from the month after."
+        },
+        {
+          "de": "Der Dienstplan für nächsten Monat ist schon veröffentlicht. Wenn ich jetzt etwas ändere, muss ich auch die anderen neu informieren, das ist ein großer Aufwand.",
+          "en": "Next month's rota has already gone out. If I change it now, I'll have to re-notify the other team members too, which is a big burden."
+        },
+        {
+          "de": "Dass es veröffentlicht ist, weiß ich. Prüfen Sie trotzdem bitte den Vorschlag, nur zwei Wochenenden zu tauschen, und schauen Sie, ob für die letzten drei Monate Ausgleichstage möglich sind.",
+          "en": "I know it's been posted. Still, please consider the option of swapping just two weekends, and see whether compensatory days are possible for the past three months."
+        }
+      ],
+      "transfer": {
+        "ko": "야근은 한 사람에게 몰지 말고 돌아가면서 했으면 해요.",
+        "de": "Ich hätte gern, dass Überstunden nicht an einer Person hängen bleiben, sondern reihum gehen.",
+        "en": "I'd like overtime not to pile on one person but to go around in turn."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "돌아가면서",
+          "alternatives": [
+            "번갈아",
+            "교대로"
+          ],
+          "note": "Rotation proposal adverbial; the halved-month clause before it stays fixed."
+        },
+        "you5": {
+          "span": "봐 주세요",
+          "alternatives": [
+            "확인해 주세요",
+            "알아봐 주세요"
+          ],
+          "note": "Hands the compensatory-day decision to the manager; no outcome asserted."
+        }
+      }
+    },
+    {
+      "n": 10,
+      "trophyLemma": "인상",
+      "trophySurface": "인상은",
+      "moves": [
+        "rebut",
+        "counteroffer",
+        "conclude"
+      ],
+      "turns": [
+        "오시느라 고생하셨어요. 집주인분께서 재계약 조건으로 월세를 이십 퍼센트 올리고 싶다고 하세요.",
+        "이십 퍼센트 인상은 받아들이기 어려워요. 주변 시세를 봐도 그 정도 오른 데는 없거든요. 집주인분께 제 입장을 그대로 전해 주셨으면 해요.",
+        "저는 권한이 없어서 전달만 할 수 있어요. 다만 집주인분은 그동안 한 번도 안 올렸다고 하시긴 해요.",
+        "그동안 안 올리신 건 저도 인정해요. 대신 오 퍼센트 인상에 이 년 계약이면 받아들이겠다고 그대로 전해 주시겠어요?",
+        "알겠어요, 그렇게 전할게요. 그런데 집주인분이 내일 정오까지는 답을 달라고 하셔서 시간이 많지 않아요.",
+        "내일 정오 전에 답이 오는 대로 알려 주세요. 집주인분이 그 조건을 받으신다면 그날 바로 서명할 수 있어요."
+      ],
+      "translations": [
+        {
+          "de": "Danke, dass Sie gekommen sind. Der Vermieter möchte als Bedingung für die Verlängerung die Miete um zwanzig Prozent anheben.",
+          "en": "Thank you for coming in. The landlord says he'd like to raise the rent by twenty percent as a condition of renewal."
+        },
+        {
+          "de": "Eine Erhöhung um zwanzig Prozent kann ich schwer akzeptieren. Auch im Vergleich zu den Mieten in der Umgebung ist nirgends so stark erhöht worden. Ich hätte gern, dass Sie dem Vermieter meine Position genau so weitergeben.",
+          "en": "A twenty percent increase is hard to accept. Even looking at local rents, nowhere has gone up that much. I'd like you to pass my position on to the landlord exactly as it is."
+        },
+        {
+          "de": "Ich habe keine Entscheidungsbefugnis, ich kann nur weiterleiten. Der Vermieter sagt allerdings, er habe die Miete bisher kein einziges Mal erhöht.",
+          "en": "I have no authority, I can only relay. The landlord does say, though, that he's never raised it once so far."
+        },
+        {
+          "de": "Dass er bisher nicht erhöht hat, erkenne ich an. Würden Sie dafür wörtlich ausrichten, dass ich fünf Prozent Erhöhung bei einem Zweijahresvertrag akzeptieren würde?",
+          "en": "I acknowledge he hasn't raised it so far. Could you instead relay, word for word, that I'd accept a five percent increase with a two-year contract?"
+        },
+        {
+          "de": "In Ordnung, so gebe ich es weiter. Allerdings will der Vermieter bis morgen Mittag eine Antwort, viel Zeit bleibt also nicht.",
+          "en": "All right, I'll pass that on. But the landlord wants an answer by tomorrow noon, so there isn't much time."
+        },
+        {
+          "de": "Sagen Sie mir bitte sofort Bescheid, sobald vor morgen Mittag die Antwort kommt. Wenn der Vermieter diese Bedingung annimmt, kann ich noch am selben Tag unterschreiben.",
+          "en": "Please let me know as soon as the answer comes before tomorrow noon. If the landlord accepts that condition, I can sign that same day."
+        }
+      ],
+      "transfer": {
+        "ko": "회의가 삼십 분 늦어진다고 팀원들에게 전해 주시겠어요?",
+        "de": "Würden Sie den Teammitgliedern ausrichten, dass sich die Sitzung um dreißig Minuten verschiebt?",
+        "en": "Could you let the team know that the meeting will be thirty minutes late?"
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "받아들이겠다고",
+          "alternatives": [
+            "하겠다고",
+            "계약하겠다고"
+          ],
+          "note": "Quoted counteroffer inside -다고 전해 주시겠어요; the five-percent, two-year condition before it is fixed."
+        },
+        "you5": {
+          "span": "오는 대로",
+          "alternatives": [
+            "오면 바로",
+            "받는 대로"
+          ],
+          "note": "-는 대로 sequencing of the relay; learner commits only after the landlord's answer."
+        }
+      }
+    }
+  ]
+}

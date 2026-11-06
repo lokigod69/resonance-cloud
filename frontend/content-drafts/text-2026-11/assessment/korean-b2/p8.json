@@ -1,0 +1,135 @@
+{
+  "pathNumber": 8,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "In der Bibliothek bestimmt eine Vormerkung, wer das nächste zurückgegebene Exemplar bekommt. Die Leihfrist bleibt bei zwei Wochen. Bücher, die nur im Lesesaal stehen, sind ausgenommen. Erkläre die Regel und die Ausnahme.",
+        "en": "At the library, placing a hold determines who gets the next returned copy. The loan period stays at two weeks. Reading-room reference books are excluded. Explain the rule and its exception."
+      },
+      "criteria": {
+        "de": "Die Erklärung trennt die Reihenfolge der Ausleihe von ihrer Dauer und erfasst die Ausnahme für den Lesesaal.",
+        "en": "The explanation distinguishes borrowing order from loan duration and covers the reading-room exception."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그런 날은 당연히 아홉 시에 맞춰 나와요. 고객 일정이 먼저지, 제 출근 시간이 먼저는 아니에요."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Ein Drucker bricht nur bei Farbfotos ab. Kleine Textdateien funktionieren, einen anderen Rechner hast du noch nicht ausprobiert. Grenze den Fehler ein.",
+        "en": "A printer fails only on colour photos. Small text files print successfully, and you haven't tried another computer. Narrow down the fault."
+      },
+      "criteria": {
+        "de": "Die Antwort unterscheidet einen beobachteten Auslöser, einen funktionierenden Vergleichsfall und einen offenen Test.",
+        "en": "The reply distinguishes an observed trigger, a working comparison and a test still to be done."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "핫스팟에서는 아직 안 해 봤어요. 오늘 오후 회의 때 한번 해 보고 결과를 알려 드릴게요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "Eine Bestellung mit der Angabe „bis Dienstag“ kommt an, als die Abholstelle bereits geschlossen ist. Gemeint war vor der Abholung um fünfzehn Uhr. Kläre das Missverständnis, übernimm Verantwortung für die fehlende Uhrzeit und formuliere eine eindeutige Frist.",
+        "en": "An order marked “by Tuesday” arrives after the collection point has closed. You meant before the three o’clock pickup. Clarify the mix-up, take responsibility for the missing time and phrase the deadline precisely."
+      },
+      "criteria": {
+        "de": "Die neue Frist unterscheidet sich von „Dienstagabend“ und nennt Tag und Uhrzeit. Die fehlende Angabe wird anerkannt.",
+        "en": "The new deadline distinguishes the intended cutoff from Tuesday evening and gives the day and time. The missing detail is acknowledged."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "다음부터는 날짜랑 시간을 같이 쓸게요. 예를 들면 금요일 아침 열 시 회의 전까지, 이렇게요."
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Ein Bekannter hält euren Sprachaustausch für Einzelunterricht. Bei euch üben zwei Partner ohne Lehrkraft, wechseln alle zehn Minuten die Sprache und korrigieren nur auf Nachfrage. Erkläre den Unterschied an einem konkreten Ablauf.",
+        "en": "An acquaintance thinks your language exchange is private tuition. Two partners practise without a teacher, switch languages every ten minutes and correct each other only on request. Explain the difference through a concrete example."
+      },
+      "criteria": {
+        "de": "Der Vergleich beschreibt die Rollen beider Partner und macht mindestens eine Ablaufregel an einem Beispiel greifbar.",
+        "en": "The comparison explains both partners’ roles and illustrates at least one of the session rules with an example."
+      },
+      "witnessTurnIndex": 3,
+      "witnessKo": "동호회라기보다는 약속 없이 만나는 이웃 모임에 가까워요. 명단도 없고 회비도 없고, 그냥 그 시간에 오면 되는 거죠."
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Im Rollenspiel beschreibst du ein Ziehen im linken Handgelenk, das nachmittags beim Schreiben auftritt. Seit dieser Woche sitzt du an einem anderen Tisch. Gib der Ärztin die Beobachtungen weiter und lass die Ursache offen.",
+        "en": "In this role-play your left wrist aches when you write in the afternoon. This week you started using a different desk. Describe your observations to the clinician and leave the cause open."
+      },
+      "criteria": {
+        "de": "Die Antwort nennt Ort und Verlauf. Eine zeitliche Beobachtung bleibt von einer Diagnose unterscheidbar.",
+        "en": "The reply gives location and pattern. A timing observation remains distinguishable from a diagnosis."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "이 주 전부터 사무실에서 모니터를 하나 더 쓰기 시작했어요. 그게 관계가 있는지는 모르겠고, 그냥 바뀐 건 그것뿐이에요."
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Eine Werkstatt schlägt für deine Flöte einen Koffer mit sechzig Zentimetern Innenlänge vor. Die Flöte misst vierundsechzig Zentimeter. Für acht Euro mehr ist ein Koffer mit fünfundsechzig Zentimetern Innenlänge erhältlich. Kläre die Voraussetzung für deine Zusage.",
+        "en": "A workshop proposes a case with an internal length of sixty centimetres. Your flute is sixty-four centimetres long. For eight euros more they can supply a case with sixty-five centimetres of internal space. Explain the condition for accepting the offer."
+      },
+      "criteria": {
+        "de": "Die Antwort bezieht sich auf das Innenmaß, begründet die Mindestlänge mit der Flöte und reagiert auf den konkreten Aufpreis.",
+        "en": "The answer specifies the internal measurement, connects the minimum length to the flute and addresses the actual surcharge."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "네, 상자가 들어가는 게 더 중요하니까 추가 비용은 괜찮아요. 깊이 사십에 두꺼운 뒷판으로 해 주세요."
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "In der Teeküche steht „Nur blau markierte Becher in die Maschine. Andere von Hand spülen.“ Ein Gast denkt, es dürfe gar kein Becher in die Maschine. Erkläre die Anweisung und sage, was mit seinem unmarkierten Becher passiert.",
+        "en": "The kitchen sign says “Machine-wash blue-dot mugs only. Hand-wash the others.” A visitor thinks no mugs are allowed in the machine. Explain the instruction and apply it to the visitor’s unmarked mug."
+      },
+      "criteria": {
+        "de": "Die einfache Erklärung unterscheidet nach Markierung und nennt für den tatsächlich vorliegenden Becher den richtigen Schritt.",
+        "en": "The plain explanation distinguishes the markings and gives the correct action for the actual mug."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "안내문대로면 그것도 일반 쓰레기예요. 여기 기름 묻은 종이는 흰 봉투라고 따로 적혀 있거든요."
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Ein Kollege hält den Proberundgang im Museum für eine abschließende Sicherheitskontrolle. Gäste testen dabei, ob sie ohne Hilfe zum Ausgang finden. Bei einem falschen Abzweig kann ein Wegweiser versetzt werden. Erkläre ihm den Zweck anhand dieses Falls.",
+        "en": "A colleague thinks the museum’s trial walk is a final safety inspection. Visitors test whether they can find the exit unaided. If they take a wrong turn, a sign can be moved. Explain the purpose using this case."
+      },
+      "criteria": {
+        "de": "Der Kontrast benennt das Ziel des Proberundgangs. Das Beispiel verknüpft eine beobachtete Schwierigkeit mit einer möglichen Veränderung.",
+        "en": "The contrast identifies the trial walk’s purpose. The example links an observed difficulty to a change the museum could make."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "예를 들면 마감이 늦었으면 왜 늦었는지 보고, 다음부터는 검토 기한을 이틀 앞당기기로 정하고 끝나요. 그게 전부예요."
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Man sagt, du wolltest die Befragung absagen. Tatsächlich willst du nur zwei doppelte Fragen streichen. Berichtige die Wiedergabe und formuliere einen Satz für die Weiterleitung.",
+        "en": "Someone says you want to cancel the survey. You only want to remove two duplicate questions. Correct the account and give one sentence that can be passed on."
+      },
+      "criteria": {
+        "de": "Die Korrektur benennt den eng begrenzten Einwand und die weiter unterstützte Maßnahme.",
+        "en": "The correction identifies the narrow objection and the wider measure that still has support."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "프로젝트는 찬성하고, 시작 시점만 다음 달로 미루자는 의견이에요. 이렇게 전해 주시면 돼요."
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Beim Fahrradverleih ist die Rückgabe am Westtor von acht bis neun vorgesehen. Von neun bis zehn prüft das Team die Räder. Ab zehn werden sie am Osttor ausgegeben. Dringende Reparaturmeldungen nimmt der Empfang jederzeit entgegen. Fasse den Ablauf für das Personal zusammen.",
+        "en": "At a cycle hire service, returns go to the west gate from eight to nine. Staff inspect the bikes from nine to ten. Collection opens at the east gate at ten. Reception takes urgent repair reports at any time. Brief the team on the sequence."
+      },
+      "criteria": {
+        "de": "Die Zusammenfassung ordnet die drei Phasen den richtigen Zeiten und Orten zu. Das Personal erfährt, welche Anlaufstelle durchgehend erreichbar ist.",
+        "en": "The briefing assigns the three phases to the right times and locations and identifies which contact is available throughout."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "첫째, 정오부터 다섯 시까지는 옆길로 돌아가요. 둘째, 다섯 시에는 다시 열려요. 셋째, 남쪽 입구는 종일 비상 차로예요."
+    }
+  ]
+}

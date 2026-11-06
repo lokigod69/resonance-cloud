@@ -1,5 +1,5 @@
 # Current State
-Last updated: 2026-11-06
+Last updated: 2026-11-07
 
 Current truth and next actions only. Deployment ids, check tallies and release evidence live in LOG.md and the notes; the full 2026-09-07 snapshot is [[archive/state-2026-09-07]].
 
@@ -16,7 +16,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Tooling: AGENTS owns rules; frontend README maps checks. `verify` and `test:local` cover frontend/offline contracts. Full Python baseline had 16 known September failures.
 
 ## In progress
-- Guided text: English, German, Korean and Spanish each have 100 written B1 lessons; German B1 is in Today. No language has all 100 B2 lessons written. Korean and German have 40 B2 each; the other ten have 20 each. Across twelve targets **570 B1 and 920 B2 lessons still need writing**. All eighty October B2 reviews for Japanese, Russian, Polish and Cebuano passed offline. See `frontend/content-drafts/text-2026-11/index.json` for exact revisions and the desktop dashboard `investigations/lingwave-guided-text-2026-11-06.html` for the offline reader. TTS stays deferred.
+- Guided text: Korean has 100 written lessons at each level from A1 through B2. Its B1/B2 lessons are in the offline reader. P6 identifies both partners in the formal conversation and later relay. P5–P10 have 60 bilingual transfer tasks. English, German and Spanish also have 100 written B1 lessons. German B1 is in Today. German has 40 B2 lessons and the other ten targets have 20 each. Across the twelve targets **570 B1 and 860 B2 lessons still need writing**. The 80 October B2 reviews for Japanese, Russian, Polish and Cebuano passed offline. See `frontend/content-drafts/text-2026-11/index.json` for individual review states and `investigations/lingwave-guided-text-2026-11-06.html` for the dashboard and reader. TTS stays deferred.
 - Worlds: sixteen reviewed offline en-GB/es-ES mini books remain unpublished. Under its separate new free-account allowance, the mini-books chat saved one Spanish Emilio pilot; the English Nathaniel attempt was blocked by ElevenLabs' free-tier connection limit and settled without audio. Listening is pending; no full book is recorded. Last reported remaining balance is 9,961. Evidence is `tmp/STORYBOOKS_20261006/status.json`; no automatic retry, and the old heartbeat remains paused. Any future full website/mixed recording route needs its own review and cumulative accounting.
 - Audio: all released curriculum v4 batches finished, including twelve-target A1/A2 refresh scope, English Wistful/Sharp, existing German B1 and the reviewed new paths. Polish A1 P2 remains excluded for a lexical conflict; Cebuano retains 107 formatting aliases and Corazon's verified locale is null. Listening, runtime/catalog/twelve-base integration and named production approval remain. No curriculum dispatcher is active. Historical receipts/audio and the original capped ledger are preserved in ignored review-artifacts/guided-audio-20261003.
 - agent-hygiene: September implementation and October navigation/docs pass done. Owner calls remain on BOARD; deferred work is in `investigations/project-audit-2026-09-25/IMPLEMENTATION_PLAN.md`.
@@ -33,7 +33,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- Continue guided text by native language and ten-lesson path; prioritize Korean. Use the newest verified source hashes, check alternate correct answers and stage reviewed drafts separately from runtime. Defer TTS/model testing and mini books; do not reset the historical recording ledger or spend free credits.
+- Continue other languages from their first missing ten-lesson path. French and Portuguese B1 each need P6–P10. Use the verified source hashes and check alternative correct answers. Korean intermediate text is available for personal testing in the local reader. Recording and mini books stay paused.
 - Owner: rotate the credentials pasted into April–May Codex prompts; the iPhone pass and TestFlight steps on protocol/BOARD.md; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).
 

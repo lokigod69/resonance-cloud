@@ -1,0 +1,4085 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 6,
+  "slug": "two-rooms",
+  "pathTitle": {
+    "de": "Zwei Räume",
+    "en": "Two rooms"
+  },
+  "pathFunction": {
+    "de": "Kläre bei einer zuständigen Person, was gemeint ist. Erzähle einer vertrauten Person, was feststeht und was offenbleibt.",
+    "en": "Clarify what an official means, then tell someone close what is settled and what remains open."
+  },
+  "specRef": {
+    "pathSpec": "architect.json",
+    "pathSpecSha256": "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6",
+    "ledger": "../allocation.json#/rows",
+    "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+  },
+  "authoring": {
+    "source": "Fable subscription native architecture, Codex bilingual curriculum and exercise authoring",
+    "runId": "ko-b2-20261106-p6",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "savings-maturity",
+      "title": {
+        "de": "Eine Frage zum Sparplan",
+        "en": "A question about the savings plan"
+      },
+      "situation": {
+        "de": "Du sprichst am Bankschalter über deinen laufenden Sparvertrag. Später triffst du eine befreundete Person zum Kaffee.",
+        "en": "You discuss your savings plan at the bank. Later you meet a friend for coffee."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "bank",
+          "role": {
+            "de": "Bankberatung",
+            "en": "Bank adviser"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "friend",
+          "role": {
+            "de": "Befreundete Person beim Kaffee",
+            "en": "Friend over coffee"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du sprichst am Bankschalter über deinen laufenden Sparvertrag. Später triffst du eine befreundete Person zum Kaffee. „어서 오세요, 적금 때문에 오셨죠? 어떤 점이 궁금하세요?“",
+        "en": "You discuss your savings plan at the bank. Later you meet a friend for coffee. “어서 오세요, 적금 때문에 오셨죠? 어떤 점이 궁금하세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "어서 오세요, 적금 때문에 오셨죠? 어떤 점이 궁금하세요?",
+          "base": {
+            "de": "Willkommen, Sie kommen wegen des Sparplans, nicht wahr? Was möchten Sie wissen?",
+            "en": "Welcome, you're here about the savings plan, right? What would you like to know?"
+          },
+          "interlocutorId": "bank"
+        },
+        {
+          "speaker": "you",
+          "targetText": "안녕하세요, 적금을 만기 전에 해지하면 어떻게 되는지 여쭤보고 싶어요. 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요.",
+          "base": {
+            "de": "Guten Tag, ich möchte fragen, was passiert, wenn ich den Sparplan vor der Fälligkeit auflöse. Ich möchte genau wissen, ob die Zinsen geringer ausfallen oder ganz wegfallen.",
+            "en": "Hello, I'd like to ask what happens if I cancel the savings plan before maturity. I want to know exactly whether the interest is reduced or disappears entirely."
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "삼 년 중 이 년 넣으셨죠. 깨시면 원금은 그대로고 이자는 거의 없어요. 보통 기다리라고 안내해요.",
+          "base": {
+            "de": "Sie haben zwei der drei Jahre eingezahlt. Wenn Sie jetzt kündigen, bleibt das eingezahlte Kapital erhalten, aber Sie bekommen kaum Zinsen. Wir raten meistens, zu warten.",
+            "en": "You’ve paid in for two of the three years. If you close it now, you get your principal back in full but earn very little interest. We usually advise waiting."
+          },
+          "interlocutorId": "bank"
+        },
+        {
+          "speaker": "you",
+          "targetText": "만기 전에 깨면 이자만 거의 못 받고, 삼 년을 채우면 전부 받는 거죠? 원금은 손해가 없는지도 여쭤봐도 될까요?",
+          "base": {
+            "de": "Wenn ich vor der Fälligkeit kündige, fallen also nur die Zinsen fast weg, und nach vollen drei Jahren bekomme ich alles, richtig? Darf ich auch fragen, ob am Kapital nichts verloren geht?",
+            "en": "So if I close it before maturity, it’s only the interest I almost entirely lose, and if I complete three years I get all of it, right? May I also ask whether there’s no loss on the principal?"
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래서 결론이 뭐예요? 깨면 얼마 손해인지 딱 한 숫자로 말해 줘요.",
+          "base": {
+            "de": "Und was ist jetzt das Fazit? Sag mir in einer Zahl, wie viel du verlierst, wenn du kündigst.",
+            "en": "So what's the bottom line? Tell me in one number how much you lose if you cancel."
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "만기 전에 해지하면 이자가 거의 없다고 하셨어요. 원금은 그대로 돌려받고요. 정확히 얼마인지는 말씀을 안 하셨어요.",
+          "base": {
+            "de": "Sie haben gesagt, dass ich bei einer vorzeitigen Kündigung kaum Zinsen bekomme und mein eingezahltes Geld vollständig zurückerhalte. Einen genauen Betrag haben sie nicht genannt.",
+            "en": "They said I’d earn very little interest if I close it early, and that I’d get back everything I paid in. They didn’t give an exact figure."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "안녕하세요, ",
+        "chunks": [
+          "적금을 만기 전에",
+          "해지하면",
+          "어떻게 되는지",
+          "여쭤보고",
+          "싶어요"
+        ],
+        "distractors": [
+          "잔액표로",
+          "해지됐더니"
+        ],
+        "frameSuffix": ". 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "만기 전에 깨면 이자만 거의 못 받고, 삼 년을 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 전부 받는 거죠? 원금은 손해가 없는지도 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "채우면",
+            "acceptedAnswers": [
+              "채우면",
+              "채운다면",
+              "다 채우면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "여쭤봐도 될까요",
+            "acceptedAnswers": [
+              "여쭤봐도 될까요",
+              "여쭤봐도 괜찮을까요",
+              "확인해 주시겠어요",
+              "여쭤봐도 돼요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "만기 전에 해지하면 이자가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 하셨어요. 원금은 그대로 돌려받고요. 정확히 얼마인지는 말씀을 안 하셨어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "거의 없다고",
+            "acceptedAnswers": [
+              "거의 없다고",
+              "얼마 안 된다고",
+              "매우 적다고"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "안녕하세요, 적금을 ",
+        "after": " 전에 해지하면 어떻게 되는지 여쭤보고 싶어요. 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요.",
+        "answer": "만기",
+        "acceptedAnswers": [
+          "만기"
+        ],
+        "fallbackChoices": [
+          "수표",
+          "지점",
+          "재산",
+          "만기"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Eine Frage höflich einbetten",
+          "en": "Embed a question politely"
+        },
+        "rule": {
+          "de": "Mit -는지 bettest du eine Frage in 여쭤보고 싶어요 oder 알고 싶어요 ein. Zwei Alternativen trennst du mit 아니면, ohne selbst eine Antwort vorwegzunehmen.",
+          "en": "Use -는지 to embed a question inside 여쭤보고 싶어요 or 알고 싶어요. Separate two alternatives with 아니면 without presuming the answer."
+        },
+        "examples": [
+          {
+            "targetText": "안녕하세요, 적금을 만기 전에 해지하면 어떻게 되는지 여쭤보고 싶어요. 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요.",
+            "base": {
+              "de": "Guten Tag, ich möchte fragen, was passiert, wenn ich den Sparplan vor der Fälligkeit auflöse. Ich möchte genau wissen, ob die Zinsen geringer ausfallen oder ganz wegfallen.",
+              "en": "Hello, I'd like to ask what happens if I cancel the savings plan before maturity. I want to know exactly whether the interest is reduced or disappears entirely."
+            },
+            "highlights": [
+              "어떻게 되는지 여쭤보고 싶어요",
+              "줄어드는지, 아니면 아예 없어지는지"
+            ]
+          },
+          {
+            "targetText": "항공권을 출발 전에 취소하면 어떻게 되는지 여쭤보고 싶어요. 전액 돌려받는지, 아니면 수수료가 빠지는지 정확히 알고 싶어요.",
+            "base": {
+              "de": "Ich möchte fragen, was passiert, wenn ich das Flugticket vor dem Abflug storniere. Ich möchte genau wissen, ob ich alles zurückbekomme oder ob eine Gebühr abgezogen wird.",
+              "en": "I'd like to ask what happens if I cancel the flight ticket before departure. I want to know exactly whether I get everything back or whether a fee is deducted."
+            },
+            "highlights": [
+              "어떻게 되는지 여쭤보고 싶어요",
+              "돌려받는지, 아니면 수수료가 빠지는지"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "만기",
+          "kind": "noun",
+          "lemma": "만기",
+          "base": {
+            "de": "Fälligkeit eines Vertrags",
+            "en": "maturity of a contract"
+          }
+        },
+        {
+          "targetText": "여쭤보고 싶어요",
+          "kind": "frame",
+          "base": {
+            "de": "ich möchte gerne höflich fragen",
+            "en": "I would like to ask politely"
+          }
+        },
+        {
+          "targetText": "해지하면",
+          "kind": "connector",
+          "base": {
+            "de": "wenn man den Vertrag kündigt",
+            "en": "if one cancels the contract"
+          }
+        },
+        {
+          "targetText": "이자가",
+          "kind": "noun",
+          "base": {
+            "de": "die Zinsen",
+            "en": "the interest"
+          }
+        },
+        {
+          "targetText": "그대로",
+          "kind": "adverb",
+          "base": {
+            "de": "in unveränderter Höhe",
+            "en": "in full, unchanged"
+          }
+        },
+        {
+          "targetText": "원금은",
+          "kind": "noun",
+          "base": {
+            "de": "was das eingezahlte Kapital betrifft",
+            "en": "as for the principal"
+          }
+        },
+        {
+          "targetText": "원금은 손해가 없는지도",
+          "kind": "frame",
+          "base": {
+            "de": "ob auch beim Kapital kein Verlust entsteht",
+            "en": "whether the principal would also be protected from loss"
+          }
+        },
+        {
+          "targetText": "정확히",
+          "kind": "adverb",
+          "base": {
+            "de": "genau",
+            "en": "exactly"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "해지하면",
+            "여쭤보고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "채우면",
+            "원금은"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "거의",
+            "돌려받고요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "만기",
+        "familyKey": "만기",
+        "surface": "만기",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "안녕하세요, 적금을 만기 전에 해지하면 어떻게 되는지 여쭤보고 싶어요. 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요.",
+          "base": {
+            "de": "Guten Tag, ich möchte fragen, was passiert, wenn ich den Sparplan vor der Fälligkeit auflöse. Ich möchte genau wissen, ob die Zinsen geringer ausfallen oder ganz wegfallen.",
+            "en": "Hello, I'd like to ask what happens if I cancel the savings plan before maturity. I want to know exactly whether the interest is reduced or disappears entirely."
+          }
+        },
+        "base": {
+          "de": "Fälligkeit eines Vertrags",
+          "en": "maturity of a contract"
+        },
+        "whyThisWord": {
+          "de": "만기 bezeichnet den vereinbarten Zeitpunkt, an dem ein Sparvertrag ausläuft. Mit 만기 전 kannst du klären, ob eine Auskunft nur für die Zeit davor gilt.",
+          "en": "만기 is the agreed maturity date of a savings plan. 만기 전 helps you check whether a statement applies only before that date."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "없다고 하셨어요",
+          "status": "productive"
+        },
+        {
+          "surface": "기다리라고",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "dental-options",
+      "title": {
+        "de": "Zwei Möglichkeiten beim Zahnarzt",
+        "en": "Two choices at the dental clinic"
+      },
+      "situation": {
+        "de": "Bei einem Zahnarzttermin werden zwei Behandlungsmöglichkeiten besprochen. Zu Hause fragt die Person, mit der du zusammenlebst, nach dem Gespräch.",
+        "en": "You discuss two treatment options at a dental appointment. At home your partner asks about the conversation."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "dentist",
+          "role": {
+            "de": "Zahnärztliche Fachperson",
+            "en": "Dentist"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "partner",
+          "role": {
+            "de": "Partnerin oder Partner zu Hause",
+            "en": "Partner at home"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einem Zahnarzttermin werden zwei Behandlungsmöglichkeiten besprochen. Zu Hause fragt die Person, mit der du zusammenlebst, nach dem Gespräch. „사진 보시면 여기 어금니가 문제예요. 치료 방법은 두 가지가 있어요.“",
+        "en": "You discuss two treatment options at a dental appointment. At home your partner asks about the conversation. “사진 보시면 여기 어금니가 문제예요. 치료 방법은 두 가지가 있어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "사진 보시면 여기 어금니가 문제예요. 치료 방법은 두 가지가 있어요.",
+          "base": {
+            "de": "Wenn Sie das Bild ansehen: Dieser Backenzahn ist das Problem. Es gibt zwei Behandlungsmöglichkeiten.",
+            "en": "If you look at the image, this molar is the problem. There are two treatment options."
+          },
+          "interlocutorId": "dentist"
+        },
+        {
+          "speaker": "you",
+          "targetText": "선생님, 오늘 진료 받고 바로 정해야 하는 건 아니죠? 두 방법이 어떻게 다르고 비용은 얼마나 차이 나는지 설명해 주시겠어요?",
+          "base": {
+            "de": "Ich muss mich nach der heutigen Untersuchung nicht sofort entscheiden, oder? Könnten Sie mir erklären, wie sich die beiden Methoden unterscheiden und wie groß der Preisunterschied ist?",
+            "en": "Doctor, I don't have to decide right after today's consultation, do I? Could you explain how the two methods differ and how much the cost differs?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "천천히 정하세요. 씌우는 것보다 심는 게 두 배쯤 비싸요. 둘 다 가능하니까 선택은 환자분 몫이에요.",
+          "base": {
+            "de": "Entscheiden Sie in Ruhe. Ein Implantat kostet etwa doppelt so viel wie eine Krone. Beides ist möglich, die Wahl liegt bei Ihnen als Patient.",
+            "en": "Take your time deciding. An implant costs about twice as much as a crown. Both are possible, so the choice is yours as the patient."
+          },
+          "interlocutorId": "dentist"
+        },
+        {
+          "speaker": "you",
+          "targetText": "둘 다 가능하고 비용은 다르다는 말씀이시죠? 어느 쪽이 더 낫다고 권하시는 건 아니라고 이해하면 될까요?",
+          "base": {
+            "de": "Sie meinen, dass beide Behandlungen möglich sind und sich die Kosten unterscheiden? Verstehe ich Sie richtig, dass Sie keine davon als besser empfehlen?",
+            "en": "You mean both treatments are possible and the costs differ? Do I understand correctly that you aren’t recommending one as better than the other?"
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래서 선생님이 어느 쪽으로 하라고 하셨어요? 추천은 있었을 거 아니에요?",
+          "base": {
+            "de": "Und zu welcher Behandlung wurde dir geraten? Eine Empfehlung gab es doch sicher?",
+            "en": "So which option did the dentist tell you to go with? There must have been a recommendation, right?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "추천은 없었어요. 둘 다 가능하다고 하셨고, 어느 쪽이 낫다고는 안 하셨어요. 제가 고르면 된다고 하셨어요.",
+          "base": {
+            "de": "Eine Empfehlung gab es nicht. Es hieß, beide Behandlungen seien möglich. Die Praxis hat keine als besser bezeichnet und gesagt, ich könne selbst entscheiden.",
+            "en": "There wasn’t a recommendation. They said both were possible and didn’t say that one was better. They said I could choose."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "선생님, 오늘 진료 받고 바로 정해야 하는 건 아니죠? 두 ",
+        "chunks": [
+          "방법이 어떻게 다르고",
+          "비용은",
+          "얼마나 차이",
+          "나는지",
+          "설명해",
+          "주시겠어요"
+        ],
+        "distractors": [
+          "심는다고도",
+          "치료비였지만"
+        ],
+        "frameSuffix": "?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "둘 다 가능하고 비용은 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 어느 쪽이 더 낫다고 권하시는 건 아니라고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다르다는 말씀이시죠",
+            "acceptedAnswers": [
+              "다르다는 말씀이시죠",
+              "다르다는 뜻이죠",
+              "다르다는 말씀이죠",
+              "다르다는 거죠"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "이해하면 될까요",
+            "acceptedAnswers": [
+              "이해하면 될까요",
+              "봐도 될까요",
+              "이해해도 될까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "추천은 없었어요. 둘 다 가능하다고 하셨고, 어느 쪽이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 제가 고르면 된다고 하셨어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "낫다고는 안 하셨어요",
+            "acceptedAnswers": [
+              "낫다고는 안 하셨어요",
+              "낫다고는 말씀하지 않으셨어요",
+              "낫다고는 하지 않으셨어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "선생님, 오늘 ",
+        "after": " 받고 바로 정해야 하는 건 아니죠? 두 방법이 어떻게 다르고 비용은 얼마나 차이 나는지 설명해 주시겠어요?",
+        "answer": "진료",
+        "acceptedAnswers": [
+          "진료"
+        ],
+        "fallbackChoices": [
+          "졸업",
+          "주문",
+          "진료",
+          "선적"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Eine Annahme absichern und um Erklärung bitten",
+          "en": "Check an assumption and ask for an explanation"
+        },
+        "rule": {
+          "de": "Mit -는 건 아니죠? prüfst du vorsichtig, ob eine Pflicht besteht. Danach bittest du mit -는지 설명해 주시겠어요? um eine Erklärung, ohne schon eine Antwort zu unterstellen.",
+          "en": "Use -는 건 아니죠? to gently check whether something is required. Then ask for an explanation with -는지 설명해 주시겠어요? without presuming the answer."
+        },
+        "examples": [
+          {
+            "targetText": "선생님, 오늘 진료 받고 바로 정해야 하는 건 아니죠? 두 방법이 어떻게 다르고 비용은 얼마나 차이 나는지 설명해 주시겠어요?",
+            "base": {
+              "de": "Ich muss mich nach der heutigen Untersuchung nicht sofort entscheiden, oder? Könnten Sie mir erklären, wie sich die beiden Methoden unterscheiden und wie groß der Preisunterschied ist?",
+              "en": "Doctor, I don't have to decide right after today's consultation, do I? Could you explain how the two methods differ and how much the cost differs?"
+            },
+            "highlights": [
+              "정해야 하는 건 아니죠",
+              "설명해 주시겠어요"
+            ]
+          },
+          {
+            "targetText": "오늘 상담 받고 바로 등록해야 하는 건 아니죠? 회원권 종류가 어떻게 다르고 가격은 얼마나 차이 나는지 설명해 주시겠어요?",
+            "base": {
+              "de": "Ich muss mich nach der heutigen Beratung nicht sofort anmelden, oder? Könnten Sie mir erklären, wie sich die Mitgliedschaften unterscheiden und wie groß der Preisunterschied ist?",
+              "en": "I don't have to sign up right after today's consultation, do I? Could you explain how the membership types differ and how much the prices differ?"
+            },
+            "highlights": [
+              "등록해야 하는 건 아니죠",
+              "설명해 주시겠어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "진료",
+          "kind": "noun",
+          "lemma": "진료",
+          "base": {
+            "de": "ärztliche Untersuchung oder Behandlung",
+            "en": "medical consultation or care"
+          }
+        },
+        {
+          "targetText": "설명해 주시겠어요",
+          "kind": "frame",
+          "base": {
+            "de": "könnten Sie das erklären?",
+            "en": "could you explain?"
+          }
+        },
+        {
+          "targetText": "가능하다고 하셨고",
+          "kind": "frame",
+          "base": {
+            "de": "es wurde gesagt, dass es möglich sei",
+            "en": "they said it was possible"
+          }
+        },
+        {
+          "targetText": "낫다고는 안 하셨어요",
+          "kind": "frame",
+          "base": {
+            "de": "sie haben keine davon als besser bezeichnet",
+            "en": "they didn’t say it was better"
+          }
+        },
+        {
+          "targetText": "비용은",
+          "kind": "noun",
+          "base": {
+            "de": "was die Kosten betrifft",
+            "en": "as for the costs"
+          }
+        },
+        {
+          "targetText": "추천은",
+          "kind": "noun",
+          "base": {
+            "de": "was eine Empfehlung betrifft",
+            "en": "as for a recommendation"
+          }
+        },
+        {
+          "targetText": "어금니가",
+          "kind": "noun",
+          "base": {
+            "de": "der Backenzahn",
+            "en": "the molar"
+          }
+        },
+        {
+          "targetText": "바로",
+          "kind": "adverb",
+          "base": {
+            "de": "sofort",
+            "en": "straight away"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "다르고",
+            "나는지",
+            "주시겠어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "다르다는",
+            "권하시는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "가능하다고",
+            "고르면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "진료",
+        "familyKey": "진료",
+        "surface": "진료",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "선생님, 오늘 진료 받고 바로 정해야 하는 건 아니죠? 두 방법이 어떻게 다르고 비용은 얼마나 차이 나는지 설명해 주시겠어요?",
+          "base": {
+            "de": "Ich muss mich nach der heutigen Untersuchung nicht sofort entscheiden, oder? Könnten Sie mir erklären, wie sich die beiden Methoden unterscheiden und wie groß der Preisunterschied ist?",
+            "en": "Doctor, I don't have to decide right after today's consultation, do I? Could you explain how the two methods differ and how much the cost differs?"
+          }
+        },
+        "base": {
+          "de": "ärztliche Untersuchung oder Behandlung",
+          "en": "medical consultation or care"
+        },
+        "whyThisWord": {
+          "de": "진료 ordnet das Gespräch der Untersuchung und Behandlung zu. Es besagt für sich allein nicht, welche Möglichkeit die Fachperson empfiehlt.",
+          "en": "진료 places the conversation in the context of a consultation or treatment. By itself it says nothing about which option the clinician recommends."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "낫다고는 안 하셨어요",
+          "status": "productive"
+        },
+        {
+          "surface": "하라고 하셨어요",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "feedback-in-lift",
+      "title": {
+        "de": "Rückmeldung im Jahresgespräch",
+        "en": "Feedback at the annual review"
+      },
+      "situation": {
+        "de": "Du bittest bei deinem Jahresgespräch um konkrete Rückmeldung zu deiner Arbeit. Nach dem Gespräch steigt jemand aus deinem Team mit dir in den Aufzug.",
+        "en": "You ask for concrete feedback during your annual review. Afterwards a colleague gets into the lift with you."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "manager",
+          "role": {
+            "de": "Führungskraft im Jahresgespräch",
+            "en": "Manager conducting the review"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "colleague",
+          "role": {
+            "de": "Person aus dem Team im Aufzug",
+            "en": "Colleague in the lift"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du bittest bei deinem Jahresgespräch um konkrete Rückmeldung zu deiner Arbeit. Nach dem Gespräch steigt jemand aus deinem Team mit dir in den Aufzug. „올해 피드백 잠깐 나눌게요. 전체적으로 좋았고, 한 가지만 짚고 싶어요.“",
+        "en": "You ask for concrete feedback during your annual review. Afterwards a colleague gets into the lift with you. “올해 피드백 잠깐 나눌게요. 전체적으로 좋았고, 한 가지만 짚고 싶어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "올해 피드백 잠깐 나눌게요. 전체적으로 좋았고, 한 가지만 짚고 싶어요.",
+          "base": {
+            "de": "Lassen Sie uns kurz über das Feedback für dieses Jahr sprechen. Insgesamt war es gut, ich möchte nur einen Punkt ansprechen.",
+            "en": "Let's go over this year's feedback briefly. Overall it was good, and I just want to raise one point."
+          },
+          "interlocutorId": "manager"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 올해 평가에서 제가 가장 신경 쓴 건 보고 속도였어요. 다만 발표 쪽은 아직 제 방식이 맞는지 확신이 없어요.",
+          "base": {
+            "de": "Ja, bei der Bewertung dieses Jahr habe ich am meisten auf die Geschwindigkeit der Berichte geachtet. Nur bei den Präsentationen bin ich noch nicht sicher, ob meine Art passt.",
+            "en": "Yes, in this year's evaluation what I focused on most was reporting speed. Though with presentations I'm still not sure my approach is right."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "속도는 정말 좋아졌어요. 바꿨으면 하는 건 하나예요, 발표 자료를 지금보다 훨씬 짧게 만들어 줬으면 해요.",
+          "base": {
+            "de": "Die Geschwindigkeit ist wirklich besser geworden. Ändern sollte sich nur eines: Ich hätte gern, dass die Präsentationsfolien deutlich kürzer werden als jetzt.",
+            "en": "The speed has really improved. There's just one thing I'd like changed: I'd like the slide decks to be much shorter than they are now."
+          },
+          "interlocutorId": "manager"
+        },
+        {
+          "speaker": "you",
+          "targetText": "알겠어요. 내용을 빼라는 말씀보다는 장수를 줄이라는 뜻이죠? 다음 발표부터 바로 적용해 보고, 초안을 먼저 보여 드릴게요.",
+          "base": {
+            "de": "Verstanden. Sie meinen also weniger Seiten, nicht weniger Inhalt, richtig? Ab der nächsten Präsentation setze ich das um und zeige Ihnen zuerst einen Entwurf.",
+            "en": "Understood. You mean fewer pages rather than cutting content, right? I'll apply it from the next presentation and show you a draft first."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "얘기 끝났어요? 혹시 제 얘기도 나왔어요? 뭐라고 하셨는지 궁금해요.",
+          "base": {
+            "de": "Seid ihr fertig? Kam ich dabei auch vor? Mich interessiert, was gesagt wurde.",
+            "en": "Are you done? Did I come up, by any chance? I’m curious what was said."
+          },
+          "interlocutorId": "colleague"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제 얘기만 했어요. 발표 자료를 더 짧게 만들라고 하셨어요. 다른 사람 얘기는 없었고, 있었어도 옮기면 안 되죠.",
+          "base": {
+            "de": "Es ging nur um mich. Mir wurde gesagt, ich solle die Präsentationsfolien kürzer machen. Über andere wurde nicht gesprochen, und selbst wenn, dürfte ich es nicht weitergeben.",
+            "en": "It was only about me. I was told to make the slide decks shorter. Nobody else came up, and even if they had, I shouldn’t pass it on."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, 올해 평가에서 제가 ",
+        "chunks": [
+          "가장 신경",
+          "쓴 건",
+          "보고",
+          "속도였어요. 다만",
+          "발표 쪽은"
+        ],
+        "distractors": [
+          "성과였으면",
+          "줄였더니"
+        ],
+        "frameSuffix": " 아직 제 방식이 맞는지 확신이 없어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "알겠어요. 내용을 빼라는 말씀보다는 장수를 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 다음 발표부터 바로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", 초안을 먼저 보여 드릴게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "줄이라는 뜻이죠",
+            "acceptedAnswers": [
+              "줄이라는 뜻이죠",
+              "줄이라는 말씀이죠",
+              "줄이라는 뜻이시죠",
+              "줄이라는 거죠"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "적용해 보고",
+            "acceptedAnswers": [
+              "적용해 보고",
+              "적용해 본 뒤",
+              "적용해 본 다음"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "제 얘기만 했어요. 발표 자료를 더 짧게 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 다른 사람 얘기는 없었고, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 옮기면 안 되죠."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "만들라고 하셨어요",
+            "acceptedAnswers": [
+              "만들라고 하셨어요"
+            ],
+            "kind": "frame",
+            "choices": [
+              "만들라고 하셨어요",
+              "만든다고 하셨어요",
+              "만들자고 하셨어요",
+              "만드냐고 하셨어요"
+            ]
+          },
+          {
+            "answer": "있었어도",
+            "acceptedAnswers": [
+              "있었어도",
+              "있었다고 해도",
+              "있었더라도"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, 올해 ",
+        "after": " 제가 가장 신경 쓴 건 보고 속도였어요. 다만 발표 쪽은 아직 제 방식이 맞는지 확신이 없어요.",
+        "answer": "평가에서",
+        "acceptedAnswers": [
+          "평가에서"
+        ],
+        "fallbackChoices": [
+          "간식에서",
+          "옷장에서",
+          "평가에서",
+          "차비에서"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Den eigenen Schwerpunkt benennen und einschränken",
+          "en": "Name your focus, then qualify it"
+        },
+        "rule": {
+          "de": "Mit 제가 가장 신경 쓴 건 ...였어요 hebst du hervor, worauf du dich konzentriert hast. 다만 leitet danach einen Punkt ein, bei dem du dir noch nicht sicher bist.",
+          "en": "Use 제가 가장 신경 쓴 건 ...였어요 to spotlight what you focused on. 다만 then introduces a point you are still unsure about."
+        },
+        "examples": [
+          {
+            "targetText": "네, 올해 평가에서 제가 가장 신경 쓴 건 보고 속도였어요. 다만 발표 쪽은 아직 제 방식이 맞는지 확신이 없어요.",
+            "base": {
+              "de": "Ja, bei der Bewertung dieses Jahr habe ich am meisten auf die Geschwindigkeit der Berichte geachtet. Nur bei den Präsentationen bin ich noch nicht sicher, ob meine Art passt.",
+              "en": "Yes, in this year's evaluation what I focused on most was reporting speed. Though with presentations I'm still not sure my approach is right."
+            },
+            "highlights": [
+              "가장 신경 쓴 건",
+              "다만"
+            ]
+          },
+          {
+            "targetText": "이번 학기에 제가 가장 신경 쓴 건 발음이었어요. 다만 글쓰기는 아직 제 방식이 맞는지 확신이 없어요.",
+            "base": {
+              "de": "In diesem Semester habe ich am meisten auf die Aussprache geachtet. Nur beim Schreiben bin ich noch nicht sicher, ob meine Art passt.",
+              "en": "This semester what I focused on most was pronunciation. Though with writing I'm still not sure my approach is right."
+            },
+            "highlights": [
+              "가장 신경 쓴 건",
+              "다만"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "평가에서",
+          "kind": "noun",
+          "lemma": "평가",
+          "base": {
+            "de": "Beurteilung",
+            "en": "assessment"
+          }
+        },
+        {
+          "targetText": "확신이 없어요",
+          "kind": "frame",
+          "base": {
+            "de": "ich bin mir nicht sicher",
+            "en": "I’m not sure"
+          }
+        },
+        {
+          "targetText": "줄이라는 뜻이죠",
+          "kind": "frame",
+          "base": {
+            "de": "Sie meinen, ich soll es reduzieren?",
+            "en": "you mean I should reduce it?"
+          }
+        },
+        {
+          "targetText": "자료를",
+          "kind": "noun",
+          "base": {
+            "de": "die Unterlagen",
+            "en": "the materials"
+          }
+        },
+        {
+          "targetText": "장수를",
+          "kind": "noun",
+          "base": {
+            "de": "die Seitenzahl",
+            "en": "the page count"
+          }
+        },
+        {
+          "targetText": "초안을",
+          "kind": "noun",
+          "base": {
+            "de": "den Entwurf",
+            "en": "the draft"
+          }
+        },
+        {
+          "targetText": "방식이",
+          "kind": "noun",
+          "base": {
+            "de": "die Vorgehensweise",
+            "en": "the approach"
+          }
+        },
+        {
+          "targetText": "있었어도",
+          "kind": "connector",
+          "base": {
+            "de": "selbst wenn es welche gegeben hätte",
+            "en": "even if there had been any"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "신경",
+            "속도였어요",
+            "발표"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "줄이라는",
+            "적용해"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "만들라고",
+            "있었어도"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "평가",
+        "familyKey": "평가",
+        "surface": "평가에서",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "네, 올해 평가에서 제가 가장 신경 쓴 건 보고 속도였어요. 다만 발표 쪽은 아직 제 방식이 맞는지 확신이 없어요.",
+          "base": {
+            "de": "Ja, bei der Bewertung dieses Jahr habe ich am meisten auf die Geschwindigkeit der Berichte geachtet. Nur bei den Präsentationen bin ich noch nicht sicher, ob meine Art passt.",
+            "en": "Yes, in this year's evaluation what I focused on most was reporting speed. Though with presentations I'm still not sure my approach is right."
+          }
+        },
+        "base": {
+          "de": "Beurteilung",
+          "en": "assessment"
+        },
+        "whyThisWord": {
+          "de": "평가 benennt eine Beurteilung. Mit Angaben wie 제 발표에 대한 평가 kannst du deutlich machen, wessen Arbeit besprochen wurde.",
+          "en": "평가 names an assessment. Wording such as 제 발표에 대한 평가 makes clear whose work was discussed."
+        },
+        "remainder": [
+          "에서"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "만들라고 하셨어요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "registration-on-stairs",
+      "title": {
+        "de": "Unterlagen für die Ummeldung",
+        "en": "Documents for a change of address"
+      },
+      "situation": {
+        "de": "Im Bürgerzentrum lässt du dir die Unterlagen für deine Adressänderung erklären. Später begegnest du im Treppenhaus einer Person aus der Nachbarschaft.",
+        "en": "You ask about the documents for your change of address at a community centre. Later you meet a neighbour on the stairs."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "clerk",
+          "role": {
+            "de": "Person am Meldeschalter",
+            "en": "Registration clerk"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "neighbour",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "Neighbour"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Bürgerzentrum lässt du dir die Unterlagen für deine Adressänderung erklären. Später begegnest du im Treppenhaus einer Person aus der Nachbarschaft. „어서 오세요. 이사 오셔서 신고하러 오셨어요? 필요한 서류는 챙겨 오셨죠?“",
+        "en": "You ask about the documents for your change of address at a community centre. Later you meet a neighbour on the stairs. “어서 오세요. 이사 오셔서 신고하러 오셨어요? 필요한 서류는 챙겨 오셨죠?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "어서 오세요. 이사 오셔서 신고하러 오셨어요? 필요한 서류는 챙겨 오셨죠?",
+          "base": {
+            "de": "Willkommen. Sie sind umgezogen und möchten sich anmelden? Haben Sie die nötigen Unterlagen dabei?",
+            "en": "Welcome. You've moved and want to register? Did you bring the required documents?"
+          },
+          "interlocutorId": "clerk"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 전입 신고를 하려고 왔어요. 계약서는 사본으로도 접수가 되는지 여쭤보고 싶고, 신분증은 원본이어야 하는지도 확인해 주시겠어요?",
+          "base": {
+            "de": "Ja, ich möchte meine Ummeldung erledigen. Ich würde gern fragen, ob der Mietvertrag auch als Kopie angenommen wird, und könnten Sie mir bestätigen, ob der Ausweis im Original sein muss?",
+            "en": "Yes, I've come to file my change of residence. I'd like to ask whether the lease is accepted as a copy, and could you confirm whether the ID has to be the original?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "계약서는 사본이면 돼요. 그런데 신분증은 꼭 원본이어야 하고, 사진이나 복사본으로는 접수가 안 돼요.",
+          "base": {
+            "de": "Der Vertrag kann eine Kopie sein. Der Ausweis muss aber unbedingt das Original sein, ein Foto oder eine Kopie wird nicht angenommen.",
+            "en": "A copy of the lease is fine. But the ID absolutely must be the original; a photo or copy won't be accepted."
+          },
+          "interlocutorId": "clerk"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 계약서는 사본으로 내고 신분증은 원본을 보여 드리면 되는 거죠? 그렇게 준비해 왔으니 지금 바로 접수 부탁드려요.",
+          "base": {
+            "de": "Also reiche ich den Vertrag als Kopie ein und zeige den Ausweis im Original, richtig? So habe ich es vorbereitet, dann bitte ich Sie, es jetzt gleich aufzunehmen.",
+            "en": "So I submit a copy of the lease and show the original ID, right? That's how I prepared it, so I'd ask you to process it right now, please."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "같이 사는 사람이 이번 주에 같이 가자고 했어요. 저는 외국인인데 서류가 똑같아요?",
+          "base": {
+            "de": "Die Person, mit der ich zusammenwohne, hat vorgeschlagen, diese Woche gemeinsam hinzugehen. Ich habe aber eine andere Staatsangehörigkeit. Brauche ich dieselben Unterlagen?",
+            "en": "My housemate suggested going together this week. I’m a foreign resident, though. Do I need the same documents?"
+          },
+          "interlocutorId": "neighbour"
+        },
+        {
+          "speaker": "you",
+          "targetText": "서류를 챙겼냐고 물으셨어요. 제 경우 계약서는 사본이면 되고 신분증은 원본이래요. 외국인은 다를 수 있으니까 직접 물어보세요.",
+          "base": {
+            "de": "Die Person am Schalter hat gefragt, ob ich die Unterlagen dabeihatte. Für meinen Fall hieß es, eine Vertragskopie reiche aus, den Ausweis müsse ich im Original vorlegen. Für ausländische Einwohner kann es anders sein. Frag bitte selbst nach.",
+            "en": "The clerk asked whether I had brought my documents. For my case, they said a copy of the lease was enough and the ID had to be the original. The requirements may differ for foreign residents, so please check for yourself."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, 전입 신고를 하려고 왔어요. ",
+        "chunks": [
+          "계약서는",
+          "사본으로도",
+          "접수가 되는지",
+          "여쭤보고",
+          "싶고"
+        ],
+        "distractors": [
+          "사용료였다면",
+          "폐기해야만"
+        ],
+        "frameSuffix": ", 신분증은 원본이어야 하는지도 확인해 주시겠어요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 계약서는 사본으로 내고 신분증은 원본을 보여 드리면 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 그렇게 준비해 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 지금 바로 접수 부탁드려요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "되는 거죠",
+            "acceptedAnswers": [
+              "되는 거죠",
+              "되죠",
+              "되겠죠"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "왔으니",
+            "acceptedAnswers": [
+              "왔으니",
+              "왔으니까",
+              "왔기에"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "서류를 챙겼냐고 물으셨어요. 제 경우 계약서는 사본이면 되고 신분증은 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 외국인은 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 직접 물어보세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "원본이래요",
+            "acceptedAnswers": [
+              "원본이래요",
+              "원본이어야 한대요",
+              "원본이라고 해요",
+              "원본이어야 된대요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다를 수 있으니까",
+            "acceptedAnswers": [
+              "다를 수 있으니까",
+              "다를 수도 있으니",
+              "다를지 모르니까"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, ",
+        "after": " 신고를 하려고 왔어요. 계약서는 사본으로도 접수가 되는지 여쭤보고 싶고, 신분증은 원본이어야 하는지도 확인해 주시겠어요?",
+        "answer": "전입",
+        "acceptedAnswers": [
+          "전입"
+        ],
+        "fallbackChoices": [
+          "환승",
+          "전입",
+          "소방",
+          "기상"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Zwei Nachfragen verbinden",
+          "en": "Link two questions"
+        },
+        "rule": {
+          "de": "Mit -는지 여쭤보고 싶고 hängst du eine erste Frage an und führst mit -는지도 확인해 주시겠어요? eine zweite an. 도 markiert, dass es ein weiterer Punkt ist.",
+          "en": "Attach a first question with -는지 여쭤보고 싶고 and add a second with -는지도 확인해 주시겠어요? The 도 marks it as an additional point."
+        },
+        "examples": [
+          {
+            "targetText": "네, 전입 신고를 하려고 왔어요. 계약서는 사본으로도 접수가 되는지 여쭤보고 싶고, 신분증은 원본이어야 하는지도 확인해 주시겠어요?",
+            "base": {
+              "de": "Ja, ich möchte meine Ummeldung erledigen. Ich würde gern fragen, ob der Mietvertrag auch als Kopie angenommen wird, und könnten Sie mir bestätigen, ob der Ausweis im Original sein muss?",
+              "en": "Yes, I've come to file my change of residence. I'd like to ask whether the lease is accepted as a copy, and could you confirm whether the ID has to be the original?"
+            },
+            "highlights": [
+              "접수가 되는지 여쭤보고 싶고",
+              "원본이어야 하는지도 확인해 주시겠어요"
+            ]
+          },
+          {
+            "targetText": "회원 카드 없이도 대출이 되는지 여쭤보고 싶고, 반납은 다른 지점에 해도 되는지도 확인해 주시겠어요?",
+            "base": {
+              "de": "Ich würde gern fragen, ob man auch ohne Mitgliedskarte ausleihen kann, und könnten Sie mir bestätigen, ob die Rückgabe auch in einer anderen Filiale möglich ist?",
+              "en": "I'd like to ask whether I can borrow even without a membership card, and could you confirm whether returns are possible at another branch too?"
+            },
+            "highlights": [
+              "대출이 되는지 여쭤보고 싶고",
+              "해도 되는지도 확인해 주시겠어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "전입",
+          "kind": "noun",
+          "lemma": "전입",
+          "base": {
+            "de": "Zuzug an eine neue Adresse",
+            "en": "moving to a new address"
+          }
+        },
+        {
+          "targetText": "사본으로도",
+          "kind": "noun",
+          "base": {
+            "de": "auch mit einer Kopie",
+            "en": "even with a copy"
+          }
+        },
+        {
+          "targetText": "원본을",
+          "kind": "noun",
+          "base": {
+            "de": "das Original",
+            "en": "the original"
+          }
+        },
+        {
+          "targetText": "신분증은",
+          "kind": "noun",
+          "base": {
+            "de": "was den Ausweis betrifft",
+            "en": "as for the ID"
+          }
+        },
+        {
+          "targetText": "접수가 되는지",
+          "kind": "frame",
+          "base": {
+            "de": "ob es angenommen wird",
+            "en": "whether it is accepted"
+          }
+        },
+        {
+          "targetText": "보여 드리면 되는 거죠",
+          "kind": "frame",
+          "base": {
+            "de": "es reicht, wenn ich es Ihnen zeige?",
+            "en": "showing it to you is sufficient, right?"
+          }
+        },
+        {
+          "targetText": "다를 수 있으니까",
+          "kind": "connector",
+          "base": {
+            "de": "weil es anders sein kann",
+            "en": "because it could be different"
+          }
+        },
+        {
+          "targetText": "직접",
+          "kind": "adverb",
+          "base": {
+            "de": "selbst, direkt",
+            "en": "personally, directly"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "계약서는",
+            "사본으로도",
+            "여쭤보고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "드리면",
+            "접수"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "원본이래요",
+            "물어보세요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "전입",
+        "familyKey": "전입",
+        "surface": "전입",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "네, 전입 신고를 하려고 왔어요. 계약서는 사본으로도 접수가 되는지 여쭤보고 싶고, 신분증은 원본이어야 하는지도 확인해 주시겠어요?",
+          "base": {
+            "de": "Ja, ich möchte meine Ummeldung erledigen. Ich würde gern fragen, ob der Mietvertrag auch als Kopie angenommen wird, und könnten Sie mir bestätigen, ob der Ausweis im Original sein muss?",
+            "en": "Yes, I've come to file my change of residence. I'd like to ask whether the lease is accepted as a copy, and could you confirm whether the ID has to be the original?"
+          }
+        },
+        "base": {
+          "de": "Zuzug an eine neue Adresse",
+          "en": "moving to a new address"
+        },
+        "whyThisWord": {
+          "de": "전입 bezeichnet den Zuzug an eine Adresse. 전입 신고 ist die zugehörige Anmeldung, nach deren Unterlagen du dich erkundigen kannst.",
+          "en": "전입 means moving into a new address. 전입 신고 is the related registration, whose document requirements you can ask about."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "원본이래요",
+          "status": "productive"
+        },
+        {
+          "surface": "챙겼냐고 물으셨어요",
+          "status": "productive"
+        },
+        {
+          "surface": "같이 가자고 했어요",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "call-out-fee",
+      "title": {
+        "de": "Anruf wegen der Heizungsreparatur",
+        "en": "A call about the boiler repair"
+      },
+      "situation": {
+        "de": "Du telefonierst wegen der Reparatur des Heizkessels mit dem Vermieter. Danach sprecht ihr in der WG-Küche über das Telefonat.",
+        "en": "You call your landlord about the boiler repair. Afterwards you discuss the call in the shared kitchen."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "landlord",
+          "role": {
+            "de": "Vermieter am Telefon",
+            "en": "Landlord on the phone"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "flatmate",
+          "role": {
+            "de": "Mitbewohnerin oder Mitbewohner",
+            "en": "Flatmate"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du telefonierst wegen der Reparatur des Heizkessels mit dem Vermieter. Danach sprecht ihr in der WG-Küche über das Telefonat. „보일러 때문에 전화하셨죠? 어제 기사님이 보고 가셨는데 부품을 바꿔야 하나요?“",
+        "en": "You call your landlord about the boiler repair. Afterwards you discuss the call in the shared kitchen. “보일러 때문에 전화하셨죠? 어제 기사님이 보고 가셨는데 부품을 바꿔야 하나요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "보일러 때문에 전화하셨죠? 어제 기사님이 보고 가셨는데 부품을 바꿔야 하나요?",
+          "base": {
+            "de": "Sie rufen wegen des Heizkessels an? Gestern war ja jemand vom Reparaturdienst da. Muss ein Teil ausgetauscht werden?",
+            "en": "You’re calling about the boiler? The technician came to look at it yesterday. Does a part need replacing?"
+          },
+          "interlocutorId": "landlord"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 분담을 어떻게 하실 생각이신지 여쭤보려고 연락드렸어요.",
+          "base": {
+            "de": "Ja, ich wohne hier zur Miete. Der Techniker hat gesagt, ein Teil müsse ersetzt werden. Deshalb wollte ich fragen, wie Sie sich die Aufteilung der Reparaturkosten vorstellen.",
+            "en": "Yes, I'm the tenant. The technician said a part needs replacing, so I'm calling to ask how you're thinking of splitting the repair cost."
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "수리비는 제가 다 내 드릴게요. 대신 출장비 삼만 원은 세입자 두 분이 내 주세요.",
+          "base": {
+            "de": "Die Reparatur bezahle ich ganz. Die Anfahrt von dreißigtausend Won übernehmen aber bitte Sie beide als Mietparteien.",
+            "en": "I’ll cover the full repair cost. In return, please cover the thirty-thousand-won call-out fee between the two of you."
+          },
+          "interlocutorId": "landlord"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 부품값과 공임은 전부 부담해 주시고, 저희는 삼만 원만 내면 된다는 말씀이시죠? 룸메이트랑 얘기하고 다시 연락드릴게요.",
+          "base": {
+            "de": "Also übernehmen Sie Material und Arbeitslohn komplett, und wir zahlen nur die dreißigtausend Won, verstehe ich Sie richtig? Ich bespreche es in der WG und melde mich wieder.",
+            "en": "So you cover parts and labor entirely, and we only pay the thirty thousand won, is that what you're saying? I'll talk to my flatmate and get back to you."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저는 반반 내자고 했잖아요. 집주인분은 출장비를 우리가 내야 한다고 하셨어요? 정확히 뭐라고 하셨어요?",
+          "base": {
+            "de": "Ich hatte doch vorgeschlagen, die Kosten zu teilen. Hat der Vermieter gesagt, dass wir die Anfahrt zahlen sollen? Was genau hat er gesagt?",
+            "en": "I suggested splitting it equally, remember? Did the landlord say we had to cover the call-out fee? What exactly did they say?"
+          },
+          "interlocutorId": "flatmate"
+        },
+        {
+          "speaker": "you",
+          "targetText": "부품을 바꿔야 하냐고 물으셨어요. 수리비는 내주시고 출장비 삼만 원만 저희가 내래요. 그분 말씀이에요. 계약서부터 보고 답할까요?",
+          "base": {
+            "de": "Der Vermieter hat gefragt, ob ein Teil ausgetauscht werden muss. Er übernimmt die Reparatur. Nur die dreißigtausend Won Anfahrt sollen wir zahlen. So hat er es gesagt. Wollen wir erst in den Vertrag schauen und dann antworten?",
+            "en": "The landlord asked whether a part needed replacing. They’ll cover the repair and want us to pay only the thirty-thousand-won call-out fee. That’s what they said. Shall we check the lease before answering?"
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 분담을 ",
+        "chunks": [
+          "어떻게",
+          "하실",
+          "생각이신지",
+          "여쭤보려고",
+          "연락드렸어요"
+        ],
+        "distractors": [
+          "입금했대도",
+          "포장이었지만"
+        ],
+        "frameSuffix": "."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 부품값과 공임은 전부 부담해 주시고, 저희는 삼만 원만 내면 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 룸메이트랑 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 다시 연락드릴게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "된다는 말씀이시죠",
+            "acceptedAnswers": [
+              "된다는 말씀이시죠",
+              "된다는 뜻이죠",
+              "된다는 말씀이죠",
+              "된다는 거죠"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "얘기하고",
+            "acceptedAnswers": [
+              "얘기하고",
+              "얘기한 뒤",
+              "얘기한 다음"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "부품을 바꿔야 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 수리비는 내주시고 출장비 삼만 원만 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 그분 말씀이에요. 계약서부터 보고 답할까요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "하냐고 물으셨어요",
+            "acceptedAnswers": [
+              "하냐고 물으셨어요",
+              "하냐고 물어보셨어요",
+              "하는지 물으셨어요",
+              "하냐고 하셨어요",
+              "하냬요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "저희가 내래요",
+            "acceptedAnswers": [
+              "저희가 내래요",
+              "저희가 내라고 하셨어요",
+              "저희보고 내래요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 ",
+        "after": " 어떻게 하실 생각이신지 여쭤보려고 연락드렸어요.",
+        "answer": "분담을",
+        "acceptedAnswers": [
+          "분담을"
+        ],
+        "fallbackChoices": [
+          "분담을",
+          "기온을",
+          "왕복을",
+          "결석을"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Eine Auskunft als Anlass nennen und den Anruf begründen",
+          "en": "Cite what you were told and state why you're calling"
+        },
+        "rule": {
+          "de": "Mit -다고 하셔서 nennst du die Auskunft einer anderen Person als Anlass. 여쭤보려고 연락드렸어요 erklärt höflich, warum du dich meldest.",
+          "en": "Use -다고 하셔서 to cite what someone told you as the reason. 여쭤보려고 연락드렸어요 politely states why you are getting in touch."
+        },
+        "examples": [
+          {
+            "targetText": "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 분담을 어떻게 하실 생각이신지 여쭤보려고 연락드렸어요.",
+            "base": {
+              "de": "Ja, ich wohne hier zur Miete. Der Techniker hat gesagt, ein Teil müsse ersetzt werden. Deshalb wollte ich fragen, wie Sie sich die Aufteilung der Reparaturkosten vorstellen.",
+              "en": "Yes, I'm the tenant. The technician said a part needs replacing, so I'm calling to ask how you're thinking of splitting the repair cost."
+            },
+            "highlights": [
+              "필요하다고 하셔서",
+              "여쭤보려고 연락드렸어요"
+            ]
+          },
+          {
+            "targetText": "수의사 선생님이 추가 검사가 필요하다고 하셔서, 비용이 어느 정도 되는지 여쭤보려고 연락드렸어요.",
+            "base": {
+              "de": "Die Tierärztin hat gesagt, eine weitere Untersuchung sei nötig, deshalb melde ich mich, um zu fragen, wie hoch die Kosten ungefähr sind.",
+              "en": "The vet said a further examination is needed, so I'm calling to ask roughly how much it would cost."
+            },
+            "highlights": [
+              "필요하다고 하셔서",
+              "여쭤보려고 연락드렸어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "분담을",
+          "kind": "noun",
+          "lemma": "분담",
+          "base": {
+            "de": "Aufteilung einer Belastung",
+            "en": "sharing a cost or responsibility"
+          }
+        },
+        {
+          "targetText": "세입자예요",
+          "kind": "noun",
+          "base": {
+            "de": "ich wohne dort zur Miete",
+            "en": "I am the tenant"
+          }
+        },
+        {
+          "targetText": "수리비는",
+          "kind": "noun",
+          "base": {
+            "de": "was die Reparaturkosten betrifft",
+            "en": "as for the repair costs"
+          }
+        },
+        {
+          "targetText": "출장비",
+          "kind": "noun",
+          "base": {
+            "de": "die Anfahrtspauschale",
+            "en": "the call-out fee"
+          }
+        },
+        {
+          "targetText": "필요하다고 하셔서",
+          "kind": "connector",
+          "base": {
+            "de": "weil mir gesagt wurde, dass es nötig sei",
+            "en": "because they said it was needed"
+          }
+        },
+        {
+          "targetText": "여쭤보려고 연락드렸어요",
+          "kind": "frame",
+          "base": {
+            "de": "ich melde mich, weil ich nachfragen möchte",
+            "en": "I got in touch to ask"
+          }
+        },
+        {
+          "targetText": "된다는 말씀이시죠",
+          "kind": "frame",
+          "base": {
+            "de": "Sie meinen, dass das ausreicht?",
+            "en": "you’re saying that’s sufficient, right?"
+          }
+        },
+        {
+          "targetText": "보고 답할까요",
+          "kind": "frame",
+          "base": {
+            "de": "wollen wir erst nachsehen und dann antworten?",
+            "en": "shall we check before answering?"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "생각이신지",
+            "여쭤보려고",
+            "연락드렸어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "부담해",
+            "연락드릴게요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "내래요",
+            "계약서부터"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "분담",
+        "familyKey": "분담",
+        "surface": "분담을",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 분담을 어떻게 하실 생각이신지 여쭤보려고 연락드렸어요.",
+          "base": {
+            "de": "Ja, ich wohne hier zur Miete. Der Techniker hat gesagt, ein Teil müsse ersetzt werden. Deshalb wollte ich fragen, wie Sie sich die Aufteilung der Reparaturkosten vorstellen.",
+            "en": "Yes, I'm the tenant. The technician said a part needs replacing, so I'm calling to ask how you're thinking of splitting the repair cost."
+          }
+        },
+        "base": {
+          "de": "Aufteilung einer Belastung",
+          "en": "sharing a cost or responsibility"
+        },
+        "whyThisWord": {
+          "de": "분담 bezeichnet das Aufteilen einer Last. Es lässt offen, ob beide Seiten der Aufteilung schon zugestimmt haben.",
+          "en": "분담 describes sharing a burden. It leaves open whether both parties have agreed to the split."
+        },
+        "remainder": [
+          "을"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "내래요",
+          "status": "productive"
+        },
+        {
+          "surface": "하냐고 물으셨어요",
+          "status": "productive"
+        },
+        {
+          "surface": "반반 내자고 했잖아요",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "school-follow-up",
+      "title": {
+        "de": "Elterngespräch in der Schule",
+        "en": "A parent meeting at school"
+      },
+      "situation": {
+        "de": "Bei einem Elterngespräch geht es um Spannungen in der Klasse. Nach dem Termin rufst du zu Hause an, während dein Gegenüber nur kurz Zeit hat.",
+        "en": "At a parent meeting you discuss tensions in the class. Afterwards you call home when the other person has only a moment."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "teacher",
+          "role": {
+            "de": "Lehrkraft",
+            "en": "Teacher"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "partner",
+          "role": {
+            "de": "Partnerin oder Partner am Telefon",
+            "en": "Partner on the phone"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einem Elterngespräch geht es um Spannungen in der Klasse. Nach dem Termin rufst du zu Hause an, während dein Gegenüber nur kurz Zeit hat. „와 주셔서 고마워요. 요즘 친구들이랑 잘 안 어울려요. 집에서도 말수가 줄었나요?“",
+        "en": "At a parent meeting you discuss tensions in the class. Afterwards you call home when the other person has only a moment. “와 주셔서 고마워요. 요즘 친구들이랑 잘 안 어울려요. 집에서도 말수가 줄었나요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "와 주셔서 고마워요. 요즘 친구들이랑 잘 안 어울려요. 집에서도 말수가 줄었나요?",
+          "base": {
+            "de": "Danke, dass Sie gekommen sind. Ihr Kind sucht im Moment wenig Kontakt zu den anderen. Spricht es zu Hause auch weniger?",
+            "en": "Thank you for coming. Your child hasn’t been spending as much time with classmates lately. Have they been talking less at home too?"
+          },
+          "interlocutorId": "teacher"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 면담 요청 주셔서 저도 고마워요. 집에서도 요즘 말수가 줄어서 걱정하던 참이었는데, 학교에서는 어떤 모습인지 자세히 듣고 싶어요.",
+          "base": {
+            "de": "Ja, ich danke Ihnen auch für die Einladung zum Gespräch. Zu Hause redet das Kind zurzeit auch weniger, das hat uns schon beunruhigt; ich würde gern genau hören, wie es in der Schule ist.",
+            "en": "Yes, thank you too for requesting this meeting. At home the child has been talking less lately, which was already worrying us; I'd like to hear in detail how things are at school."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "큰 다툼은 없으니 한 달은 지켜보면 어떨까요? 아이 말은 적어 두셨다가 다음 달에 봬요.",
+          "base": {
+            "de": "Es gab keinen größeren Streit. Wie wäre es, wenn wir einen Monat beobachten, wie es läuft? Schreiben Sie bitte auf, was Ihr Kind dazu sagt. Dann treffen wir uns nächsten Monat wieder.",
+            "en": "There hasn’t been a major quarrel. How about watching things for a month? Please note down what your child says, and let’s meet again next month."
+          },
+          "interlocutorId": "teacher"
+        },
+        {
+          "speaker": "you",
+          "targetText": "한 달은 저희도 개입하지 않고, 아이가 그 얘기를 꺼내면 적어만 두는 거죠? 다음 달 만남은 제가 다시 연락드릴게요.",
+          "base": {
+            "de": "Also greifen auch wir einen Monat lang nicht ein und notieren nur, wenn das Kind das Thema anspricht, richtig? Wegen des Termins nächsten Monat melde ich mich noch einmal bei Ihnen.",
+            "en": "So for a month we don't intervene either, and we just note it down if the child brings it up, right? I'll contact you again about next month's meeting."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "지금 시간이 이 분밖에 없어요. 뭘 하기로 했는지만 짧게 말해 줄래요?",
+          "base": {
+            "de": "Ich habe gerade nur zwei Minuten. Kannst du mir kurz sagen, was ihr ausgemacht habt?",
+            "en": "I’ve only got two minutes right now. Could you briefly tell me what you agreed to do?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "집에서도 말수가 줄었냐고 물으셨어요. 한마디로, 한 달은 지켜보고 다음 달에 만나자고 하셨어요. 아이 말만 적어 두면 돼요.",
+          "base": {
+            "de": "Die Lehrkraft hat gefragt, ob unser Kind auch zu Hause weniger spricht. Kurz gesagt hat sie vorgeschlagen, einen Monat abzuwarten und sich nächsten Monat wieder zu treffen. Wir brauchen nur aufzuschreiben, was unser Kind sagt.",
+            "en": "The teacher asked whether our child was talking less at home too. In short, they suggested watching things for a month and meeting again next month. We just need to note down what our child says."
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, 면담 요청 주셔서 저도 고마워요. ",
+        "chunks": [
+          "집에서도 요즘",
+          "말수가",
+          "줄어서",
+          "걱정하던",
+          "참이었는데,"
+        ],
+        "distractors": [
+          "줄어들도록",
+          "낙찰가로"
+        ],
+        "frameSuffix": " 학교에서는 어떤 모습인지 자세히 듣고 싶어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "한 달은 저희도 개입하지 않고, 아이가 그 얘기를 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "? 다음 달 만남은 제가 다시 연락드릴게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "꺼내면",
+            "acceptedAnswers": [
+              "꺼내면",
+              "꺼낼 때",
+              "꺼낸다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "적어만 두는 거죠",
+            "acceptedAnswers": [
+              "적어만 두는 거죠",
+              "기록만 하는 거죠",
+              "적어만 두면 되죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "집에서도 말수가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 한마디로, 한 달은 지켜보고 다음 달에 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 아이 말만 적어 두면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "줄었냐고 물으셨어요",
+            "acceptedAnswers": [
+              "줄었냐고 물으셨어요",
+              "줄었는지 물으셨어요",
+              "줄었냐고 물어보셨어요",
+              "줄었냐고 하셨어요",
+              "줄었냬요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "만나자고 하셨어요",
+            "acceptedAnswers": [
+              "만나자고 하셨어요",
+              "만나재요",
+              "보자고 하셨어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, ",
+        "after": " 요청 주셔서 저도 고마워요. 집에서도 요즘 말수가 줄어서 걱정하던 참이었는데, 학교에서는 어떤 모습인지 자세히 듣고 싶어요.",
+        "answer": "면담",
+        "acceptedAnswers": [
+          "면담"
+        ],
+        "fallbackChoices": [
+          "면담",
+          "등유",
+          "집기",
+          "낙뢰"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Die eigene Lage schildern und um Einzelheiten bitten",
+          "en": "Share your own situation, then ask for details"
+        },
+        "rule": {
+          "de": "Mit -던 참이었는데 sagst du, dass dich etwas ohnehin schon beschäftigt hat. Danach bittest du mit 어떤 ...인지 자세히 듣고 싶어요 um die Sicht der anderen Seite.",
+          "en": "Use -던 참이었는데 to say something was already on your mind. Then ask for the other side's view with 어떤 ...인지 자세히 듣고 싶어요."
+        },
+        "examples": [
+          {
+            "targetText": "네, 면담 요청 주셔서 저도 고마워요. 집에서도 요즘 말수가 줄어서 걱정하던 참이었는데, 학교에서는 어떤 모습인지 자세히 듣고 싶어요.",
+            "base": {
+              "de": "Ja, ich danke Ihnen auch für die Einladung zum Gespräch. Zu Hause redet das Kind zurzeit auch weniger, das hat uns schon beunruhigt; ich würde gern genau hören, wie es in der Schule ist.",
+              "en": "Yes, thank you too for requesting this meeting. At home the child has been talking less lately, which was already worrying us; I'd like to hear in detail how things are at school."
+            },
+            "highlights": [
+              "걱정하던 참이었는데",
+              "자세히 듣고 싶어요"
+            ]
+          },
+          {
+            "targetText": "집에서도 요즘 밥을 잘 안 먹어서 걱정하던 참이었는데, 검사 결과가 어떤지 자세히 듣고 싶어요.",
+            "base": {
+              "de": "Zu Hause frisst er zurzeit auch schlecht, das hat mich schon beunruhigt; ich würde gern genau hören, wie das Untersuchungsergebnis aussieht.",
+              "en": "At home he hasn't been eating well lately either, which was already worrying me; I'd like to hear in detail what the test results show."
+            },
+            "highlights": [
+              "걱정하던 참이었는데",
+              "자세히 듣고 싶어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "면담",
+          "kind": "noun",
+          "lemma": "면담",
+          "base": {
+            "de": "persönliches Gespräch oder Einzelbesprechung",
+            "en": "one-to-one meeting"
+          }
+        },
+        {
+          "targetText": "말수가",
+          "kind": "noun",
+          "base": {
+            "de": "die Gesprächigkeit",
+            "en": "how much someone talks"
+          }
+        },
+        {
+          "targetText": "걱정하던 참이었는데",
+          "kind": "frame",
+          "base": {
+            "de": "ich machte mir ohnehin gerade Sorgen",
+            "en": "I had already been worrying"
+          }
+        },
+        {
+          "targetText": "개입하지 않고",
+          "kind": "connector",
+          "base": {
+            "de": "ohne einzugreifen",
+            "en": "without intervening"
+          }
+        },
+        {
+          "targetText": "다툼은",
+          "kind": "noun",
+          "base": {
+            "de": "was eine Auseinandersetzung betrifft",
+            "en": "as for a quarrel"
+          }
+        },
+        {
+          "targetText": "적어 두면 돼요",
+          "kind": "frame",
+          "base": {
+            "de": "es reicht, wenn wir es notieren",
+            "en": "writing it down will suffice"
+          }
+        },
+        {
+          "targetText": "집에서도",
+          "kind": "adverb",
+          "base": {
+            "de": "auch zu Hause",
+            "en": "at home too"
+          }
+        },
+        {
+          "targetText": "자세히",
+          "kind": "adverb",
+          "base": {
+            "de": "ausführlich",
+            "en": "in detail"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "말수가",
+            "줄어서",
+            "걱정하던"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "꺼내면",
+            "연락드릴게요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "줄었냐고",
+            "만나자고"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "면담",
+        "familyKey": "면담",
+        "surface": "면담",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "네, 면담 요청 주셔서 저도 고마워요. 집에서도 요즘 말수가 줄어서 걱정하던 참이었는데, 학교에서는 어떤 모습인지 자세히 듣고 싶어요.",
+          "base": {
+            "de": "Ja, ich danke Ihnen auch für die Einladung zum Gespräch. Zu Hause redet das Kind zurzeit auch weniger, das hat uns schon beunruhigt; ich würde gern genau hören, wie es in der Schule ist.",
+            "en": "Yes, thank you too for requesting this meeting. At home the child has been talking less lately, which was already worrying us; I'd like to hear in detail how things are at school."
+          }
+        },
+        "base": {
+          "de": "persönliches Gespräch oder Einzelbesprechung",
+          "en": "one-to-one meeting"
+        },
+        "whyThisWord": {
+          "de": "면담 ist ein persönliches Gespräch mit einem bestimmten Anliegen. Du kannst es von einem beiläufigen Austausch im Flur unterscheiden.",
+          "en": "면담 is a personal meeting about a specific matter. It distinguishes a scheduled discussion from a passing conversation."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "만나자고 하셨어요",
+          "status": "productive"
+        },
+        {
+          "surface": "줄었냐고 물으셨어요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "report-number",
+      "title": {
+        "de": "Ein Fahrrad als gestohlen melden",
+        "en": "Reporting a stolen bicycle"
+      },
+      "situation": {
+        "de": "Du meldest auf der Polizeiwache den Diebstahl deines Fahrrads. Auf dem Heimweg triffst du eine befreundete Person.",
+        "en": "You report your stolen bicycle at a local police box. On your way home you meet a friend."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "officer",
+          "role": {
+            "de": "Polizeikraft",
+            "en": "Police officer"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "friend",
+          "role": {
+            "de": "Befreundete Person auf dem Heimweg",
+            "en": "Friend on the way home"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du meldest auf der Polizeiwache den Diebstahl deines Fahrrads. Auf dem Heimweg triffst du eine befreundete Person. „네, 무슨 일로 오셨어요? 자전거 분실이면 여기서 접수해 드릴게요.“",
+        "en": "You report your stolen bicycle at a local police box. On your way home you meet a friend. “네, 무슨 일로 오셨어요? 자전거 분실이면 여기서 접수해 드릴게요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "네, 무슨 일로 오셨어요? 자전거 분실이면 여기서 접수해 드릴게요.",
+          "base": {
+            "de": "Ja, womit kann ich Ihnen helfen? Wenn es um ein verlorenes Fahrrad geht, nehme ich das hier auf.",
+            "en": "Yes, what brings you here? If it's a lost bicycle, I can file it here."
+          },
+          "interlocutorId": "officer"
+        },
+        {
+          "speaker": "you",
+          "targetText": "분실이 아니라 도난 신고를 하러 왔어요. 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요.",
+          "base": {
+            "de": "Es ist kein Verlust, ich möchte einen Diebstahl melden. Gestern Abend habe ich es vor dem Haus abgeschlossen, und heute Morgen war das Schloss durchtrennt und nur das Fahrrad weg.",
+            "en": "It's not lost; I've come to report a theft. Last night I locked it up in front of my house, and this morning the lock was cut and only the bike was gone."
+          },
+          "move": "explain",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "알겠어요, 도난으로 접수할게요. 접수 번호를 드릴 테니까 보험사에 내시면 돼요. 번호는 사진 찍어 두세요.",
+          "base": {
+            "de": "Verstanden, ich nehme es als Diebstahl auf. Sie bekommen eine Vorgangsnummer, die reichen Sie bei der Versicherung ein. Fotografieren Sie die Nummer sicherheitshalber.",
+            "en": "All right, I'll file it as theft. I'll give you a report number, which you submit to your insurer. Take a photo of the number to keep it."
+          },
+          "interlocutorId": "officer"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 그럼 이 번호를 보험사에 내면 되고, 여기서 따로 받을 서류는 없는 거죠? 자전거 사진은 지금 보여 드릴게요.",
+          "base": {
+            "de": "Ja, also reiche ich diese Nummer bei der Versicherung ein, und weitere Unterlagen bekomme ich hier nicht, richtig? Ein Foto des Fahrrads zeige ich Ihnen jetzt gleich.",
+            "en": "Yes, so I submit this number to the insurer, and there are no other documents to get here, right? I'll show you a photo of the bike right now."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래도 신고했으니까 경찰이 찾아 주겠죠? 며칠 기다리면 연락 오지 않을까요?",
+          "base": {
+            "de": "Aber du hast es ja gemeldet, also findet die Polizei es doch, oder? Wenn du ein paar Tage wartest, melden sie sich bestimmt.",
+            "en": "Still, now that you've reported it, the police will find it, right? If you wait a few days, they'll probably contact you."
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "접수는 됐어요. 찾아 주겠다고 하신 게 아니라 접수 번호를 보험사에 내라고 하시던데요. 회수 여부는 말씀도 없었어요.",
+          "base": {
+            "de": "Die Anzeige ist aufgenommen. Die Polizei hat nicht versprochen, das Rad zu finden. Mir wurde gesagt, ich solle die Vorgangsnummer bei der Versicherung einreichen. Ob das Rad wiedergefunden wird, hat dort niemand angesprochen.",
+            "en": "The report was filed. The officer didn’t promise to find the bike. They told me to give the report number to the insurer. They didn’t say whether the bike would be recovered."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "분실이",
+          "아니라",
+          "도난 신고를",
+          "하러",
+          "왔어요"
+        ],
+        "distractors": [
+          "상관없어도",
+          "처리됐다고"
+        ],
+        "frameSuffix": ". 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "네, 그럼 이 번호를 보험사에 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 여기서 따로 받을 서류는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "? 자전거 사진은 지금 보여 드릴게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "내면 되고",
+            "acceptedAnswers": [
+              "내면 되고",
+              "내면 되는 거고",
+              "제출하면 되고"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "없는 거죠",
+            "acceptedAnswers": [
+              "없는 거죠",
+              "없는 것이죠",
+              "없는 거 맞죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "접수는 됐어요. 찾아 주겠다고 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 접수 번호를 보험사에 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 회수 여부는 말씀도 없었어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "하신 게 아니라",
+            "acceptedAnswers": [
+              "하신 게 아니라",
+              "하신 게 아니고",
+              "하신 건 아니고"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "내라고 하시던데요",
+            "acceptedAnswers": [
+              "내라고 하시던데요",
+              "내라고 하셨어요",
+              "제출하라고 하시던데요",
+              "내래요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "분실이 아니라 ",
+        "after": " 신고를 하러 왔어요. 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요.",
+        "answer": "도난",
+        "acceptedAnswers": [
+          "도난"
+        ],
+        "fallbackChoices": [
+          "주소",
+          "입학",
+          "행사",
+          "도난"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Einordnung korrigieren",
+          "en": "Correct a classification"
+        },
+        "rule": {
+          "de": "Mit A이/가 아니라 B weist du eine falsche Einordnung zurück und nennst die richtige. -(으)ㄴ 채로 beschreibt einen Zustand, der fortbesteht, während etwas anderes geschieht.",
+          "en": "Use A이/가 아니라 B to correct a mistaken classification. -(으)ㄴ 채로 describes a state that continues while something else happens."
+        },
+        "examples": [
+          {
+            "targetText": "분실이 아니라 도난 신고를 하러 왔어요. 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요.",
+            "base": {
+              "de": "Es ist kein Verlust, ich möchte einen Diebstahl melden. Gestern Abend habe ich es vor dem Haus abgeschlossen, und heute Morgen war das Schloss durchtrennt und nur das Fahrrad weg.",
+              "en": "It's not lost; I've come to report a theft. Last night I locked it up in front of my house, and this morning the lock was cut and only the bike was gone."
+            },
+            "highlights": [
+              "분실이 아니라",
+              "잘린 채로"
+            ]
+          },
+          {
+            "targetText": "감기가 아니라 알레르기 때문에 왔어요. 창문을 열어 둔 채로 잤는데, 아침에 보니 눈이 많이 부어 있었어요.",
+            "base": {
+              "de": "Ich bin nicht wegen einer Erkältung hier, sondern wegen einer Allergie. Ich habe bei offenem Fenster geschlafen, und heute Morgen waren meine Augen stark geschwollen.",
+              "en": "It's not a cold; I've come because of an allergy. I slept with the window left open, and this morning my eyes were badly swollen."
+            },
+            "highlights": [
+              "감기가 아니라",
+              "열어 둔 채로"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "도난",
+          "kind": "noun",
+          "lemma": "도난",
+          "base": {
+            "de": "Diebstahl",
+            "en": "theft"
+          }
+        },
+        {
+          "targetText": "분실이",
+          "kind": "noun",
+          "base": {
+            "de": "ein Verlust",
+            "en": "a loss"
+          }
+        },
+        {
+          "targetText": "자물쇠가",
+          "kind": "noun",
+          "base": {
+            "de": "das Schloss",
+            "en": "the lock"
+          }
+        },
+        {
+          "targetText": "보험사에",
+          "kind": "noun",
+          "base": {
+            "de": "bei der Versicherung",
+            "en": "to the insurer"
+          }
+        },
+        {
+          "targetText": "잘린 채로",
+          "kind": "frame",
+          "base": {
+            "de": "in durchtrenntem Zustand",
+            "en": "with it cut through"
+          }
+        },
+        {
+          "targetText": "하신 게 아니라",
+          "kind": "connector",
+          "base": {
+            "de": "die Aussage war eine andere",
+            "en": "what they said was different"
+          }
+        },
+        {
+          "targetText": "접수 번호를",
+          "kind": "noun",
+          "base": {
+            "de": "die Vorgangsnummer",
+            "en": "the report number"
+          }
+        },
+        {
+          "targetText": "말씀도 없었어요",
+          "kind": "frame",
+          "base": {
+            "de": "dazu wurde überhaupt nichts gesagt",
+            "en": "they said nothing about it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "분실이",
+            "신고를",
+            "왔어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "보험사에",
+            "서류는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "접수",
+            "보험사에"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "도난",
+        "familyKey": "도난",
+        "surface": "도난",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "분실이 아니라 도난 신고를 하러 왔어요. 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요.",
+          "base": {
+            "de": "Es ist kein Verlust, ich möchte einen Diebstahl melden. Gestern Abend habe ich es vor dem Haus abgeschlossen, und heute Morgen war das Schloss durchtrennt und nur das Fahrrad weg.",
+            "en": "It's not lost; I've come to report a theft. Last night I locked it up in front of my house, and this morning the lock was cut and only the bike was gone."
+          }
+        },
+        "base": {
+          "de": "Diebstahl",
+          "en": "theft"
+        },
+        "whyThisWord": {
+          "de": "도난 beschreibt einen Diebstahl aus Sicht der betroffenen Sache oder Person. Mit 도난 신고 stellst du die Meldung in den Mittelpunkt.",
+          "en": "도난 refers to theft from the perspective of the item or the person affected. 도난 신고 focuses on reporting the loss."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "하신 게 아니라",
+          "status": "productive"
+        },
+        {
+          "surface": "내라고 하시던데요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "probation-range",
+      "title": {
+        "de": "Fragen zu den Konditionen",
+        "en": "Questions about the terms"
+      },
+      "situation": {
+        "de": "Im letzten Gespräch über eine Stelle erkundigst du dich nach den Konditionen. Später fragt eine befreundete Person, was vereinbart wurde.",
+        "en": "In the final interview for a job you ask about the terms. Later a friend asks what was agreed."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "interviewer",
+          "role": {
+            "de": "Person aus der Personalabteilung",
+            "en": "Interviewer"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "friend",
+          "role": {
+            "de": "Befreundete Person nach dem Gespräch",
+            "en": "Friend after the interview"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im letzten Gespräch über eine Stelle erkundigst du dich nach den Konditionen. Später fragt eine befreundete Person, was vereinbart wurde. „마지막으로 조건 얘기를 할게요. 궁금한 점 있으면 지금 편하게 물어보세요.“",
+        "en": "In the final interview for a job you ask about the terms. Later a friend asks what was agreed. “마지막으로 조건 얘기를 할게요. 궁금한 점 있으면 지금 편하게 물어보세요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "마지막으로 조건 얘기를 할게요. 궁금한 점 있으면 지금 편하게 물어보세요.",
+          "base": {
+            "de": "Zum Schluss sprechen wir über die Konditionen. Wenn Sie Fragen haben, stellen Sie sie jetzt ruhig.",
+            "en": "Finally, let's talk about conditions. If you have questions, feel free to ask now."
+          },
+          "interlocutorId": "interviewer"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 수습 기간에는 급여가 어떻게 되는지 말씀해 주시겠어요?",
+          "base": {
+            "de": "Ja, ich hätte nur zwei Fragen. Könnten Sie mir sagen, in welchem Rahmen Sie das Jahresgehalt sehen und wie die Bezahlung während der Probezeit geregelt ist?",
+            "en": "Yes, I'd like to ask just two things. Could you tell me what range you have in mind for the annual salary, and how pay works during the probation period?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "연봉은 사천만 원에서 사천오백만 원 사이예요. 수습 석 달은 추후 합의할 기본급의 팔십 퍼센트를 드려요.",
+          "base": {
+            "de": "Das Jahresgehalt liegt zwischen vierzig und fünfundvierzig Millionen Won. In den drei Probemonaten zahlen wir achtzig Prozent des noch zu vereinbarenden Grundgehalts.",
+            "en": "The annual salary range is forty to forty-five million won. For the three-month probation we pay eighty percent of the base salary we agree on later."
+          },
+          "interlocutorId": "interviewer"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 제 기본급은 아직 정해진 게 아니고, 정해지면 그 팔십 퍼센트를 석 달 동안 받는다고 보면 될까요?",
+          "base": {
+            "de": "Mein Grundgehalt steht also noch nicht fest, und sobald es feststeht, bekomme ich drei Monate lang achtzig Prozent davon, darf ich das so verstehen?",
+            "en": "So my base pay isn't set yet, and once it is, I'd receive eighty percent of it for three months, is that how I should understand it?"
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래서 얼마 준대요? 범위 말고 딱 얼마인지도 말해 줬죠?",
+          "base": {
+            "de": "Und wie viel zahlen sie genau? Sie haben dir doch außer der Spanne auch eine genaue Zahl genannt, oder?",
+            "en": "So how much are they paying? Forget the range, they told you the exact figure too, right?"
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "요약하면 첫째, 연봉은 범위만 말씀하셨어요. 둘째, 수습 석 달은 추후 정해질 기본급의 팔십 퍼센트래요. 확정일은 안 알려주셨어요.",
+          "base": {
+            "de": "Kurz gesagt haben sie erstens nur die Gehaltsspanne genannt. Zweitens bekomme ich laut Auskunft in den drei Probemonaten achtzig Prozent des später festgelegten Grundgehalts. Einen Termin für die Festlegung haben sie mir nicht genannt.",
+            "en": "To sum up, first they gave only the salary range. Second, they said I’d earn eighty percent of the eventual base salary during the three-month probation. They didn’t give me a date for setting that salary."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 수습 기간에는 ",
+        "chunks": [
+          "급여가",
+          "어떻게",
+          "되는지",
+          "말씀해",
+          "주시겠어요"
+        ],
+        "distractors": [
+          "승낙했는데도",
+          "교환권으로"
+        ],
+        "frameSuffix": "?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 제 기본급은 아직 정해진 게 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 정해지면 그 팔십 퍼센트를 석 달 동안 받는다고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "아니고",
+            "acceptedAnswers": [
+              "아니고",
+              "아니라",
+              "아닌데"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "보면 될까요",
+            "acceptedAnswers": [
+              "보면 될까요",
+              "이해하면 될까요",
+              "봐도 될까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "요약하면 첫째, 연봉은 범위만 말씀하셨어요. 둘째, 수습 석 달은 추후 정해질 기본급의 팔십 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 확정일은 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "퍼센트래요",
+            "acceptedAnswers": [
+              "퍼센트래요",
+              "퍼센트라고 하셨어요",
+              "퍼센트라고 해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "안 알려주셨어요",
+            "acceptedAnswers": [
+              "안 알려주셨어요",
+              "안 알려 주셨어요",
+              "말씀하지 않으셨어요",
+              "말씀 안 하셨어요",
+              "알려주지 않으셨어요",
+              "알려 주지 않으셨어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 ",
+        "after": " 기간에는 급여가 어떻게 되는지 말씀해 주시겠어요?",
+        "answer": "수습",
+        "acceptedAnswers": [
+          "수습"
+        ],
+        "fallbackChoices": [
+          "졸업",
+          "등산",
+          "수습",
+          "택배"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Fragen ankündigen und bündeln",
+          "en": "Announce and bundle your questions"
+        },
+        "rule": {
+          "de": "Mit 두 가지만 여쭤볼게요 kündigst du die Zahl deiner Fragen an. Danach reihst du die Fragen mit -는지, 그리고 -는지 말씀해 주시겠어요? aneinander.",
+          "en": "Use 두 가지만 여쭤볼게요 to announce how many questions you have. Then string them together with -는지, 그리고 -는지 말씀해 주시겠어요?"
+        },
+        "examples": [
+          {
+            "targetText": "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 수습 기간에는 급여가 어떻게 되는지 말씀해 주시겠어요?",
+            "base": {
+              "de": "Ja, ich hätte nur zwei Fragen. Könnten Sie mir sagen, in welchem Rahmen Sie das Jahresgehalt sehen und wie die Bezahlung während der Probezeit geregelt ist?",
+              "en": "Yes, I'd like to ask just two things. Could you tell me what range you have in mind for the annual salary, and how pay works during the probation period?"
+            },
+            "highlights": [
+              "두 가지만 여쭤볼게요",
+              "그리고"
+            ]
+          },
+          {
+            "targetText": "두 가지만 여쭤볼게요. 관리비는 한 달에 얼마나 나오는지, 그리고 계약 기간은 어떻게 되는지 말씀해 주시겠어요?",
+            "base": {
+              "de": "Ich hätte nur zwei Fragen. Könnten Sie mir sagen, wie hoch die Nebenkosten im Monat sind und wie lang die Vertragslaufzeit ist?",
+              "en": "I'd like to ask just two things. Could you tell me how much the maintenance fees are per month, and how the contract term works?"
+            },
+            "highlights": [
+              "두 가지만 여쭤볼게요",
+              "그리고"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "수습",
+          "kind": "noun",
+          "lemma": "수습",
+          "base": {
+            "de": "berufliche Probe- oder Einarbeitungsphase",
+            "en": "probationary period"
+          }
+        },
+        {
+          "targetText": "연봉은",
+          "kind": "noun",
+          "base": {
+            "de": "was das Jahresgehalt betrifft",
+            "en": "as for the annual salary"
+          }
+        },
+        {
+          "targetText": "급여가",
+          "kind": "noun",
+          "base": {
+            "de": "das Gehalt",
+            "en": "the pay"
+          }
+        },
+        {
+          "targetText": "기본급의",
+          "kind": "noun",
+          "base": {
+            "de": "des Grundgehalts",
+            "en": "of the base salary"
+          }
+        },
+        {
+          "targetText": "요약하면",
+          "kind": "frame",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "to sum up"
+          }
+        },
+        {
+          "targetText": "받는다고 보면 될까요",
+          "kind": "frame",
+          "base": {
+            "de": "kann ich davon ausgehen, dass ich es erhalte?",
+            "en": "can I take it that I would receive that?"
+          }
+        },
+        {
+          "targetText": "범위만 말씀하셨어요",
+          "kind": "frame",
+          "base": {
+            "de": "sie nannten nur die Spanne",
+            "en": "they gave only the range"
+          }
+        },
+        {
+          "targetText": "확정일은",
+          "kind": "noun",
+          "base": {
+            "de": "was den Zeitpunkt der endgültigen Festlegung betrifft",
+            "en": "as for the date when it will be set"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "급여가",
+            "되는지",
+            "주시겠어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "정해지면",
+            "받는다고"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "퍼센트래요",
+            "확정일은"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "수습",
+        "familyKey": "수습",
+        "surface": "수습",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 수습 기간에는 급여가 어떻게 되는지 말씀해 주시겠어요?",
+          "base": {
+            "de": "Ja, ich hätte nur zwei Fragen. Könnten Sie mir sagen, in welchem Rahmen Sie das Jahresgehalt sehen und wie die Bezahlung während der Probezeit geregelt ist?",
+            "en": "Yes, I'd like to ask just two things. Could you tell me what range you have in mind for the annual salary, and how pay works during the probation period?"
+          }
+        },
+        "base": {
+          "de": "berufliche Probe- oder Einarbeitungsphase",
+          "en": "probationary period"
+        },
+        "whyThisWord": {
+          "de": "수습 bezeichnet hier die Probephase dieser Stelle. Welcher Anteil in dieser Zeit gezahlt wird, entnimmst du dem Angebot im Gespräch.",
+          "en": "수습 refers to the probationary period for this post. The share paid during that period comes from the offer discussed in the scene."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "퍼센트래요",
+          "status": "productive"
+        },
+        {
+          "surface": "요약하면 첫째",
+          "status": "productive"
+        },
+        {
+          "surface": "둘째, 수습",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "confirmed-survey",
+      "title": {
+        "de": "Fragen bei der Informationsveranstaltung",
+        "en": "Questions at the district briefing"
+      },
+      "situation": {
+        "de": "Du gehst zu einer Informationsveranstaltung über den Umbau im Stadtviertel. Anschließend fragt dich jemand aus der Nachbarschaft, was angekündigt wurde.",
+        "en": "You attend a district hearing on local redevelopment. Afterwards a neighbour asks what was announced."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "official",
+          "role": {
+            "de": "Person aus der Bezirksverwaltung",
+            "en": "District official"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "neighbour",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "Neighbour who missed the hearing"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du gehst zu einer Informationsveranstaltung über den Umbau im Stadtviertel. Anschließend fragt dich jemand aus der Nachbarschaft, was angekündigt wurde. „설명회에 참석해 주셔서 고마워요. 오늘은 재개발 일정 중에 확정된 부분만 말씀드릴게요.“",
+        "en": "You attend a district hearing on local redevelopment. Afterwards a neighbour asks what was announced. “설명회에 참석해 주셔서 고마워요. 오늘은 재개발 일정 중에 확정된 부분만 말씀드릴게요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "설명회에 참석해 주셔서 고마워요. 오늘은 재개발 일정 중에 확정된 부분만 말씀드릴게요.",
+          "base": {
+            "de": "Danke, dass Sie zur Informationsveranstaltung gekommen sind. Heute spreche ich nur über die Teile des Sanierungszeitplans, die feststehen.",
+            "en": "Thank you for attending the briefing. Today I'll only cover the parts of the redevelopment schedule that are confirmed."
+          },
+          "interlocutorId": "official"
+        },
+        {
+          "speaker": "you",
+          "targetText": "질문이 하나 있어요. 지금 확정됐다는 게 주민 조사 일정만인지, 아니면 철거 시기까지 포함되는지 분명하게 짚어 주시겠어요?",
+          "base": {
+            "de": "Ich habe eine Frage. Könnten Sie klar benennen, ob mit „feststehend“ nur der Zeitplan der Bewohnerbefragung gemeint ist oder auch der Zeitpunkt des Abrisses?",
+            "en": "I have one question. Could you clearly state whether what's confirmed is only the residents' survey schedule, or whether it includes the demolition timing as well?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "지금 확정된 일정은 조사뿐이에요. 다음 달부터 두 달간 조사가 진행돼요. 철거 시기는 정해진 게 없어요.",
+          "base": {
+            "de": "Festgelegt ist derzeit nur die Befragung. Sie läuft ab nächstem Monat zwei Monate lang. Für den Abriss gibt es keinen festgelegten Zeitpunkt.",
+            "en": "The only schedule confirmed right now is the survey. It runs for two months starting next month. There's no set timing for demolition."
+          },
+          "interlocutorId": "official"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 공식적으로 나온 건 조사 일정뿐이고 철거 시기는 아직 정해지지 않았다는 말씀이죠? 이웃분들께 정확히 전하려고요.",
+          "base": {
+            "de": "Offiziell steht also nur der Zeitplan für die Befragung fest, während der Abrisszeitpunkt offen ist? Ich möchte es den Nachbarn richtig weitergeben.",
+            "en": "So only the survey schedule is official, and the timing of demolition has yet to be decided? I’d like to report this accurately to the neighbours."
+          },
+          "move": "clarify",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저는 못 갔는데, 내년 봄에 철거 시작한다면서요? 동네에서 다들 그렇게 말하던데요.",
+          "base": {
+            "de": "Ich konnte nicht hin, aber der Abriss soll doch nächsten Frühling beginnen, oder? Das sagen hier alle.",
+            "en": "I couldn't go, but they say demolition starts next spring, right? Everyone in the neighborhood is saying so."
+          },
+          "interlocutorId": "neighbour"
+        },
+        {
+          "speaker": "you",
+          "targetText": "확정된 건 조사 일정뿐이에요. 다음 달부터 두 달 조사한다는 뜻이었고, 철거 시기는 미정이래요. 봄이라는 건 소문이에요.",
+          "base": {
+            "de": "Fest steht nur der Zeitplan der Befragung. Gemeint war, dass ab nächstem Monat zwei Monate lang befragt wird. Wann abgerissen wird, steht laut Verwaltung noch nicht fest. Der Termin im Frühjahr ist ein Gerücht.",
+            "en": "Only the survey schedule is confirmed. What that meant was a two-month survey starting next month. The official said the timing of demolition was still undecided. Spring is just a rumour."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "질문이 하나 있어요. 지금 ",
+        "chunks": [
+          "확정됐다는 게",
+          "주민 조사",
+          "일정만인지,",
+          "아니면",
+          "철거 시기까지",
+          "포함되는지"
+        ],
+        "distractors": [
+          "예방접종이",
+          "모집했지만"
+        ],
+        "frameSuffix": " 분명하게 짚어 주시겠어요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 공식적으로 나온 건 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 철거 시기는 아직 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 말씀이죠? 이웃분들께 정확히 전하려고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "조사 일정뿐이고",
+            "acceptedAnswers": [
+              "조사 일정뿐이고",
+              "조사 일정뿐이며",
+              "조사 일정뿐인데"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "정해지지 않았다는",
+            "acceptedAnswers": [
+              "정해지지 않았다는",
+              "결정되지 않았다는",
+              "확정되지 않았다는",
+              "안 정해졌다는"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "확정된 건 조사 일정뿐이에요. 다음 달부터 두 달 조사한다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 철거 시기는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 봄이라는 건 소문이에요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "뜻이었고",
+            "acceptedAnswers": [
+              "뜻이었고",
+              "말씀이었고",
+              "얘기였고"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "미정이래요",
+            "acceptedAnswers": [
+              "미정이래요",
+              "아직 미정이래요",
+              "안 정해졌대요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "질문이 하나 있어요. 지금 확정됐다는 게 주민 ",
+        "after": " 일정만인지, 아니면 철거 시기까지 포함되는지 분명하게 짚어 주시겠어요?",
+        "answer": "조사",
+        "acceptedAnswers": [
+          "조사"
+        ],
+        "fallbackChoices": [
+          "색상",
+          "축구",
+          "조사",
+          "차림"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Den Geltungsbereich einer Aussage klären lassen",
+          "en": "Ask what a statement covers"
+        },
+        "rule": {
+          "de": "Mit 질문이 하나 있어요 kündigst du eine Nachfrage an. -다는 게 A만인지, 아니면 B까지 포함되는지 fragt, wie weit eine Aussage reicht, ohne selbst eine Auslegung vorzugeben.",
+          "en": "Open with 질문이 하나 있어요 to announce a question. -다는 게 A만인지, 아니면 B까지 포함되는지 asks how far a statement extends without supplying your own reading."
+        },
+        "examples": [
+          {
+            "targetText": "질문이 하나 있어요. 지금 확정됐다는 게 주민 조사 일정만인지, 아니면 철거 시기까지 포함되는지 분명하게 짚어 주시겠어요?",
+            "base": {
+              "de": "Ich habe eine Frage. Könnten Sie klar benennen, ob mit „feststehend“ nur der Zeitplan der Bewohnerbefragung gemeint ist oder auch der Zeitpunkt des Abrisses?",
+              "en": "I have one question. Could you clearly state whether what's confirmed is only the residents' survey schedule, or whether it includes the demolition timing as well?"
+            },
+            "highlights": [
+              "질문이 하나 있어요",
+              "일정만인지, 아니면"
+            ]
+          },
+          {
+            "targetText": "질문이 하나 있어요. 무료라는 게 입장료만인지, 아니면 주차까지 포함되는지 분명하게 짚어 주시겠어요?",
+            "base": {
+              "de": "Ich habe eine Frage. Könnten Sie klar benennen, ob mit kostenlos nur der Eintritt gemeint ist oder auch das Parken?",
+              "en": "I have one question. Could you clearly state whether free means only the admission, or whether it includes parking as well?"
+            },
+            "highlights": [
+              "질문이 하나 있어요",
+              "입장료만인지, 아니면"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "조사",
+          "kind": "noun",
+          "lemma": "조사",
+          "base": {
+            "de": "Untersuchung, Erhebung",
+            "en": "survey or investigation"
+          }
+        },
+        {
+          "targetText": "확정됐다는 게",
+          "kind": "frame",
+          "base": {
+            "de": "was hier als bestätigt gilt",
+            "en": "what is being described as confirmed"
+          }
+        },
+        {
+          "targetText": "일정은",
+          "kind": "noun",
+          "base": {
+            "de": "was den Zeitplan betrifft",
+            "en": "as for the schedule"
+          }
+        },
+        {
+          "targetText": "철거",
+          "kind": "noun",
+          "base": {
+            "de": "der Abriss",
+            "en": "demolition"
+          }
+        },
+        {
+          "targetText": "분명하게",
+          "kind": "adverb",
+          "base": {
+            "de": "eindeutig",
+            "en": "clearly"
+          }
+        },
+        {
+          "targetText": "일정뿐이고",
+          "kind": "frame",
+          "base": {
+            "de": "nur der Zeitplan steht fest und …",
+            "en": "only the schedule is confirmed and …"
+          }
+        },
+        {
+          "targetText": "조사한다는 뜻이었고",
+          "kind": "frame",
+          "base": {
+            "de": "gemeint war, dass eine Befragung läuft",
+            "en": "it meant a survey would take place"
+          }
+        },
+        {
+          "targetText": "소문이에요",
+          "kind": "noun",
+          "base": {
+            "de": "es ist ein Gerücht",
+            "en": "it’s a rumour"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "확정됐다는",
+            "포함되는지"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "일정뿐이고",
+            "전하려고요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "뜻이었고",
+            "소문이에요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "조사",
+        "familyKey": "조사",
+        "surface": "조사",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "질문이 하나 있어요. 지금 확정됐다는 게 주민 조사 일정만인지, 아니면 철거 시기까지 포함되는지 분명하게 짚어 주시겠어요?",
+          "base": {
+            "de": "Ich habe eine Frage. Könnten Sie klar benennen, ob mit „feststehend“ nur der Zeitplan der Bewohnerbefragung gemeint ist oder auch der Zeitpunkt des Abrisses?",
+            "en": "I have one question. Could you clearly state whether what's confirmed is only the residents' survey schedule, or whether it includes the demolition timing as well?"
+          }
+        },
+        "base": {
+          "de": "Untersuchung, Erhebung",
+          "en": "survey or investigation"
+        },
+        "whyThisWord": {
+          "de": "조사 ist das Erheben von Informationen. Ein Termin für eine 조사 sagt allein noch nichts über den Beginn von Bauarbeiten.",
+          "en": "조사 means gathering information. A survey date by itself does not specify when construction will begin."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "다는 뜻이었고",
+          "status": "productive"
+        },
+        {
+          "surface": "시작한다면서요",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "double-charge-call",
+      "title": {
+        "de": "Anruf beim Kundenservice wegen der Rechnung",
+        "en": "Calling customer service about a bill"
+      },
+      "situation": {
+        "de": "Du rufst wegen eines doppelten Postens auf deiner Telefonrechnung an. Nach dem Gespräch bittet dich jemand im Büro um Rat für die eigene Rechnung.",
+        "en": "You call about a duplicate charge on your phone bill. After the call a colleague asks about their own bill."
+      },
+      "episodeShape": "relay",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "agent",
+          "role": {
+            "de": "Kundenservice des Telefonanbieters",
+            "en": "Telecom customer-service representative"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "colleague",
+          "role": {
+            "de": "Person aus dem Kollegium",
+            "en": "Colleague"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du rufst wegen eines doppelten Postens auf deiner Telefonrechnung an. Nach dem Gespräch bittet dich jemand im Büro um Rat für die eigene Rechnung. „네, 고객센터예요. 어떤 일로 연락 주셨어요? 본인 확인 먼저 할게요.“",
+        "en": "You call about a duplicate charge on your phone bill. After the call a colleague asks about their own bill. “네, 고객센터예요. 어떤 일로 연락 주셨어요? 본인 확인 먼저 할게요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "네, 고객센터예요. 어떤 일로 연락 주셨어요? 본인 확인 먼저 할게요.",
+          "base": {
+            "de": "Ja, hier ist der Kundenservice. Worum geht es? Zuerst muss ich Ihre Identität prüfen.",
+            "en": "Yes, this is customer service. What are you calling about? Let me verify your identity first."
+          },
+          "interlocutorId": "agent"
+        },
+        {
+          "speaker": "you",
+          "targetText": "담당자님, 요금 청구가 두 번 된 것 같아서 연락드렸어요. 같은 금액이 두 줄 찍혀 있는데, 한 건은 환불해 주시겠어요?",
+          "base": {
+            "de": "Ich wende mich an Sie, weil die Gebühr offenbar zweimal in Rechnung gestellt wurde. Derselbe Betrag steht zweimal aufgeführt; könnten Sie einen davon erstatten?",
+            "en": "I'm contacting you because the charge seems to have been billed twice. The same amount appears on two lines; could you refund one of them?"
+          },
+          "move": "request",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "확인해 보니 이중 청구 맞아요. 환불은 두 청구 주기가 걸리는데, 은행 내역을 올리시면 더 빨라요.",
+          "base": {
+            "de": "Ich habe nachgesehen, es ist tatsächlich eine Doppelbelastung. Die Erstattung dauert zwei Abrechnungszyklen, geht aber schneller, wenn Sie Ihren Bankauszug hochladen.",
+            "en": "I've checked, and it is indeed a double charge. The refund takes two billing cycles, but it's faster if you upload your bank statement."
+          },
+          "interlocutorId": "agent"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 은행 내역을 올리면 더 빨리 되고, 안 올리면 두 청구 주기가 걸린다는 말씀이죠? 방법을 문자로 보내 주시겠어요?",
+          "base": {
+            "de": "Zusammengefasst: Wenn ich den Bankauszug hochlade, geht es schneller, sonst dauert es zwei Abrechnungszyklen, richtig? Könnten Sie mir die Anleitung per SMS schicken?",
+            "en": "To summarize: if I upload the bank statement it's faster, otherwise it takes two billing cycles, is that right? Could you send me the instructions by text message?"
+          },
+          "move": "summarize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저도 그 순서 쓰고 싶어요. 근데 제 건은 이중 청구가 아니라 요금제가 잘못 들어간 거예요.",
+          "base": {
+            "de": "Ich würde das Vorgehen auch gern so machen. Aber bei mir ist es keine Doppelbelastung, bei mir wurde der falsche Tarif eingetragen.",
+            "en": "I'd like to use that same procedure. But my case isn't a double charge; the wrong plan was entered."
+          },
+          "interlocutorId": "colleague"
+        },
+        {
+          "speaker": "you",
+          "targetText": "먼저 본인 확인하고 요금제 오류를 말씀하세요. 은행 내역은 제 경우에 해당하니까 어떤 서류가 필요한지는 직접 물어보세요.",
+          "base": {
+            "de": "Bestätige zuerst deine Identität und schildere den Fehler bei deinem Tarif. Die Bankunterlagen betrafen meinen Fall. Frag selbst nach, welche Nachweise du brauchst.",
+            "en": "First confirm your identity and explain the error with your plan. The bank statement applied to my case. Ask them which documents they need from you."
+          },
+          "move": "relay",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "담당자님, 요금 청구가 두 번 된 것 같아서 연락드렸어요. 같은 ",
+        "chunks": [
+          "금액이 두 줄",
+          "찍혀 있는데,",
+          "한 건은",
+          "환불해",
+          "주시겠어요"
+        ],
+        "distractors": [
+          "납부했다지만",
+          "가동시키면"
+        ],
+        "frameSuffix": "?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", 은행 내역을 올리면 더 빨리 되고, 안 올리면 두 청구 주기가 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "? 방법을 문자로 보내 주시겠어요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정리하면",
+            "acceptedAnswers": [
+              "정리하면",
+              "정리하자면",
+              "요약하면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "걸린다는 말씀이죠",
+            "acceptedAnswers": [
+              "걸린다는 말씀이죠",
+              "걸린다는 뜻이죠",
+              "걸린다는 말씀이시죠",
+              "걸린다는 거죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "먼저 본인 확인하고 요금제 오류를 말씀하세요. 은행 내역은 제 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 어떤 서류가 필요한지는 직접 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "경우에 해당하니까",
+            "acceptedAnswers": [
+              "경우에 해당하니까",
+              "경우에 해당해서",
+              "경우에 해당하는 얘기라"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "물어보세요",
+            "acceptedAnswers": [
+              "물어보세요",
+              "문의해 보세요",
+              "여쭤보세요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "담당자님, 요금 ",
+        "after": " 두 번 된 것 같아서 연락드렸어요. 같은 금액이 두 줄 찍혀 있는데, 한 건은 환불해 주시겠어요?",
+        "answer": "청구가",
+        "acceptedAnswers": [
+          "청구가"
+        ],
+        "fallbackChoices": [
+          "글씨가",
+          "청구가",
+          "봉투가",
+          "점수가"
+        ]
+      },
+      "pattern": {
+        "moveType": "request",
+        "label": {
+          "de": "Ein Problem vorsichtig melden und um Abhilfe bitten",
+          "en": "Report a problem tentatively and ask for a fix"
+        },
+        "rule": {
+          "de": "Mit -(으)ㄴ 것 같아서 연락드렸어요 meldest du ein Problem als Vermutung und nennst es als Anlass. Danach beschreibst du mit -는데 den Befund und bittest mit -아/어 주시겠어요? um einen Schritt.",
+          "en": "Use -(으)ㄴ 것 같아서 연락드렸어요 to flag a problem as a likely issue and the reason for contact. Then describe what you see with -는데 and request a step with -아/어 주시겠어요?"
+        },
+        "examples": [
+          {
+            "targetText": "담당자님, 요금 청구가 두 번 된 것 같아서 연락드렸어요. 같은 금액이 두 줄 찍혀 있는데, 한 건은 환불해 주시겠어요?",
+            "base": {
+              "de": "Ich wende mich an Sie, weil die Gebühr offenbar zweimal in Rechnung gestellt wurde. Derselbe Betrag steht zweimal aufgeführt; könnten Sie einen davon erstatten?",
+              "en": "I'm contacting you because the charge seems to have been billed twice. The same amount appears on two lines; could you refund one of them?"
+            },
+            "highlights": [
+              "된 것 같아서 연락드렸어요",
+              "환불해 주시겠어요"
+            ]
+          },
+          {
+            "targetText": "주문한 물건이 다른 주소로 배송된 것 같아서 연락드렸어요. 문 앞에 아무것도 없는데, 다시 보내 주시겠어요?",
+            "base": {
+              "de": "Ich wende mich an Sie, weil meine Bestellung offenbar an eine andere Adresse geliefert wurde. Vor der Tür liegt nichts; könnten Sie sie noch einmal schicken?",
+              "en": "I'm contacting you because my order seems to have been delivered to a different address. There's nothing at my door; could you send it again?"
+            },
+            "highlights": [
+              "배송된 것 같아서 연락드렸어요",
+              "보내 주시겠어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "청구가",
+          "kind": "noun",
+          "lemma": "청구",
+          "base": {
+            "de": "Abrechnung, Forderung eines Betrags",
+            "en": "billing or charging an amount"
+          }
+        },
+        {
+          "targetText": "요금제",
+          "kind": "noun",
+          "base": {
+            "de": "der Telefontarif",
+            "en": "the phone plan"
+          }
+        },
+        {
+          "targetText": "환불은",
+          "kind": "noun",
+          "base": {
+            "de": "was die Rückerstattung betrifft",
+            "en": "as for the refund"
+          }
+        },
+        {
+          "targetText": "내역을",
+          "kind": "noun",
+          "base": {
+            "de": "den Nachweis der Kontobewegungen",
+            "en": "the record of the bank transactions"
+          }
+        },
+        {
+          "targetText": "주기가",
+          "kind": "noun",
+          "base": {
+            "de": "der Abrechnungszeitraum",
+            "en": "the billing cycle"
+          }
+        },
+        {
+          "targetText": "된 것 같아서",
+          "kind": "connector",
+          "base": {
+            "de": "weil es anscheinend geschehen ist",
+            "en": "since it seems to have happened"
+          }
+        },
+        {
+          "targetText": "걸린다는 말씀이죠",
+          "kind": "frame",
+          "base": {
+            "de": "Sie meinen, dass es so lange dauert?",
+            "en": "you mean it takes that long?"
+          }
+        },
+        {
+          "targetText": "경우에 해당하니까",
+          "kind": "frame",
+          "base": {
+            "de": "weil es für diesen Fall gilt",
+            "en": "because it applies to this case"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "금액이",
+            "환불해",
+            "주시겠어요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "정리하면",
+            "걸린다는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "내역은",
+            "해당하니까"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "청구",
+        "familyKey": "청구",
+        "surface": "청구가",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "담당자님, 요금 청구가 두 번 된 것 같아서 연락드렸어요. 같은 금액이 두 줄 찍혀 있는데, 한 건은 환불해 주시겠어요?",
+          "base": {
+            "de": "Ich wende mich an Sie, weil die Gebühr offenbar zweimal in Rechnung gestellt wurde. Derselbe Betrag steht zweimal aufgeführt; könnten Sie einen davon erstatten?",
+            "en": "I'm contacting you because the charge seems to have been billed twice. The same amount appears on two lines; could you refund one of them?"
+          }
+        },
+        "base": {
+          "de": "Abrechnung, Forderung eines Betrags",
+          "en": "billing or charging an amount"
+        },
+        "whyThisWord": {
+          "de": "청구 bezeichnet die Forderung eines Betrags. 이중 청구 benennt die doppelte Berechnung, ohne bereits eine Rückzahlung zu versprechen.",
+          "en": "청구 means billing someone for an amount. 이중 청구 identifies a duplicate charge without promising a refund."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "경우에 해당하니까",
+          "status": "productive"
+        }
+      ]
+    }
+  ]
+}

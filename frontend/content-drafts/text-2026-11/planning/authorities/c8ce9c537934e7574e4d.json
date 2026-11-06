@@ -1,0 +1,677 @@
+{
+  "pathNumber": 6,
+  "shape": "relay",
+  "stagingDisposition": "Every lesson runs two rooms inside 해요체. Room one (them0, them2 official; you1, you3 learner) is formal through titles, humble lexis (여쭤보다, 말씀드리다, 연락드리다) and full explicit requests; the official never decides anything the source does not grant. Room two (them4 close person; you5) is a warm relay in shorter contracted forms, marking what was and was not said. Imperative report is modelled in them turns of L1/L2 before productive use; -자고 is modelled in them turns of L4/L5 before L6 productive use. No 합쇼체, no 반말.",
+  "lessons": [
+    {
+      "n": 1,
+      "trophyLemma": "만기",
+      "trophySurface": "만기",
+      "moves": [
+        "request",
+        "clarify",
+        "relay"
+      ],
+      "turns": [
+        "어서 오세요, 적금 때문에 오셨죠? 어떤 점이 궁금하세요?",
+        "안녕하세요, 적금을 만기 전에 해지하면 어떻게 되는지 여쭤보고 싶어요. 이자가 줄어드는지, 아니면 아예 없어지는지 정확히 알고 싶어요.",
+        "삼 년 만기에 이 년 넣으셨죠. 깨시면 원금만 받고 이자는 거의 없어요. 보통 기다리라고 안내해요.",
+        "만기 전에 깨면 이자만 거의 못 받고, 삼 년을 채우면 전부 받는 거죠? 원금은 손해가 없는지도 여쭤봐도 될까요?",
+        "그래서 결론이 뭐예요? 깨면 얼마 손해인지 딱 한 숫자로 말해 줘요.",
+        "숫자는 없어요. 만기 전에 해지하면 이자가 거의 없다고 하셨고, 원금은 그대로래요. 얼마인지는 말씀을 안 하셨어요."
+      ],
+      "translations": [
+        {
+          "de": "Willkommen, Sie kommen wegen des Sparplans, nicht wahr? Was möchten Sie wissen?",
+          "en": "Welcome, you're here about the savings plan, right? What would you like to know?"
+        },
+        {
+          "de": "Guten Tag, ich möchte fragen, was passiert, wenn ich den Sparplan vor der Fälligkeit auflöse. Ich möchte genau wissen, ob die Zinsen geringer ausfallen oder ganz wegfallen.",
+          "en": "Hello, I'd like to ask what happens if I cancel the savings plan before maturity. I want to know exactly whether the interest is reduced or disappears entirely."
+        },
+        {
+          "de": "Die Laufzeit ist drei Jahre, und Sie haben zwei Jahre eingezahlt. Wenn Sie auflösen, bekommen Sie nur das Kapital, Zinsen gibt es fast keine. Normalerweise raten wir, zu warten.",
+          "en": "The maturity is three years, and you've paid in two. If you break it, you get only the principal and almost no interest. We usually advise people to wait."
+        },
+        {
+          "de": "Also nur vor der Fälligkeit fallen die Zinsen fast weg, und nach vollen drei Jahren bekomme ich alles, richtig? Darf ich auch fragen, ob am Kapital nichts verloren geht?",
+          "en": "So only before maturity do I get almost no interest, and if I complete three years I get all of it, right? May I also ask whether there's no loss on the principal?"
+        },
+        {
+          "de": "Und was ist jetzt das Fazit? Sag mir in einer Zahl, wie viel du verlierst, wenn du kündigst.",
+          "en": "So what's the bottom line? Tell me in one number how much you lose if you cancel."
+        },
+        {
+          "de": "Eine Zahl gibt es nicht. Sie hat gesagt, bei Kündigung vor der Fälligkeit gebe es fast keine Zinsen, und das Kapital bleibe unangetastet. Wie viel es wäre, hat sie nicht gesagt.",
+          "en": "There's no number. She said that if I cancel before maturity there's almost no interest, and the principal stays as it is. She didn't say how much it would be."
+        }
+      ],
+      "transfer": {
+        "ko": "의사 선생님은 당분간 커피를 줄이는 게 좋다고 하셨어요.",
+        "de": "Der Arzt hat gesagt, es sei besser, vorerst weniger Kaffee zu trinken.",
+        "en": "The doctor said it would be better to cut down on coffee for now."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "여쭤봐도 될까요?",
+          "alternatives": [
+            "확인해 주시겠어요?",
+            "여쭤볼게요."
+          ],
+          "note": "Explicit humble question frame in room one; alternatives keep 원금은 손해가 없는지도 unchanged."
+        },
+        "you5": {
+          "span": "없다고 하셨고,",
+          "alternatives": [
+            "없다고 하셨는데,",
+            "없다고 하시고,"
+          ],
+          "note": "Declarative report carrier -다고 하셨-; keep 이자가 거의 … 원금은 그대로래요."
+        }
+      }
+    },
+    {
+      "n": 2,
+      "trophyLemma": "진료",
+      "trophySurface": "진료",
+      "moves": [
+        "request",
+        "clarify",
+        "relay"
+      ],
+      "turns": [
+        "사진 보시면 여기 어금니가 문제예요. 치료 방법은 두 가지가 있어요.",
+        "선생님, 오늘 진료 받고 바로 정해야 하는 건 아니죠? 두 방법이 어떻게 다르고 비용은 얼마나 차이 나는지 설명해 주시겠어요?",
+        "천천히 정하세요. 씌우는 것보다 심는 게 두 배쯤 비싸요. 둘 다 가능하니까 선택은 환자분 몫이에요.",
+        "두 가지 모두 가능하고 비용 차이만 있다는 말씀이시죠? 어느 쪽이 더 낫다고 권하시는 건 아니라고 이해하면 될까요?",
+        "그래서 선생님이 어느 쪽으로 하라고 하셨어요? 추천은 있었을 거 아니에요?",
+        "추천은 없었어요. 둘 다 가능하다고 하셨고, 어느 쪽이 낫다고는 안 하셨어요. 고르는 건 제 몫이래요."
+      ],
+      "translations": [
+        {
+          "de": "Wenn Sie das Bild ansehen: Dieser Backenzahn ist das Problem. Es gibt zwei Behandlungsmöglichkeiten.",
+          "en": "If you look at the image, this molar is the problem. There are two treatment options."
+        },
+        {
+          "de": "Herr Doktor, ich muss mich nach der heutigen Untersuchung nicht sofort entscheiden, oder? Könnten Sie mir erklären, wie sich die beiden Methoden unterscheiden und wie groß der Preisunterschied ist?",
+          "en": "Doctor, I don't have to decide right after today's consultation, do I? Could you explain how the two methods differ and how much the cost differs?"
+        },
+        {
+          "de": "Entscheiden Sie in Ruhe. Ein Implantat kostet etwa doppelt so viel wie eine Krone. Beides ist möglich, die Wahl liegt bei Ihnen als Patient.",
+          "en": "Take your time deciding. An implant costs about twice as much as a crown. Both are possible, so the choice is yours as the patient."
+        },
+        {
+          "de": "Beides ist also möglich und es gibt nur einen Kostenunterschied, verstehe ich Sie richtig? Darf ich es so verstehen, dass Sie nicht die eine Variante als besser empfehlen?",
+          "en": "So both are possible and there's only a cost difference, is that what you're saying? May I take it that you're not recommending one as better?"
+        },
+        {
+          "de": "Und welche Variante hat der Arzt dir gesagt, sollst du nehmen? Eine Empfehlung gab es doch sicher?",
+          "en": "So which option did the dentist tell you to go with? There must have been a recommendation, right?"
+        },
+        {
+          "de": "Es gab keine Empfehlung. Er hat gesagt, beides sei möglich, aber nicht, welche Variante besser sei. Die Wahl liege bei mir, sagt er.",
+          "en": "There was no recommendation. He said both are possible, but he didn't say which one is better. The choice is mine, he says."
+        }
+      ],
+      "transfer": {
+        "ko": "담당자는 서류가 접수됐다고 했지, 승인됐다고는 안 했어요.",
+        "de": "Der Sachbearbeiter hat gesagt, die Unterlagen seien eingegangen, nicht, dass sie genehmigt seien.",
+        "en": "The clerk said the documents were received, not that they were approved."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "이해하면 될까요?",
+          "alternatives": [
+            "봐도 될까요?",
+            "생각하면 될까요?"
+          ],
+          "note": "Formal confirmation frame; keep 권하시는 건 아니라고 unchanged."
+        },
+        "you5": {
+          "span": "안 하셨어요.",
+          "alternatives": [
+            "안 하시더라고요.",
+            "말씀 안 하셨어요."
+          ],
+          "note": "Negated report boundary after -다고는; keep 어느 쪽이 낫다고는 unchanged."
+        }
+      }
+    },
+    {
+      "n": 3,
+      "trophyLemma": "평가",
+      "trophySurface": "평가에서",
+      "moves": [
+        "explain",
+        "clarify",
+        "conclude"
+      ],
+      "turns": [
+        "올해 피드백 잠깐 나눌게요. 전체적으로 좋았고, 한 가지만 짚고 싶어요.",
+        "네, 올해 평가에서 제가 가장 신경 쓴 건 보고 속도였어요. 다만 발표 쪽은 아직 제 방식이 맞는지 확신이 없어요.",
+        "속도는 정말 좋아졌어요. 바꿨으면 하는 건 하나예요, 발표 자료를 지금보다 훨씬 짧게 만들어 줬으면 해요.",
+        "알겠어요. 내용을 빼라는 말씀보다는 장수를 줄이라는 뜻이죠? 다음 발표부터 바로 적용해 보고, 초안을 먼저 보여 드릴게요.",
+        "얘기 끝났어요? 혹시 제 얘기도 나왔어요? 뭐라고 하셨는지 궁금해요.",
+        "제 얘기만 했어요. 발표 자료를 더 짧게 만들라고 하셨어요. 다른 사람 얘기는 없었고, 있었어도 옮기면 안 되죠."
+      ],
+      "translations": [
+        {
+          "de": "Lassen Sie uns kurz über das Feedback für dieses Jahr sprechen. Insgesamt war es gut, ich möchte nur einen Punkt ansprechen.",
+          "en": "Let's go over this year's feedback briefly. Overall it was good, and I just want to raise one point."
+        },
+        {
+          "de": "Ja, bei der Bewertung dieses Jahr habe ich am meisten auf die Geschwindigkeit der Berichte geachtet. Nur bei den Präsentationen bin ich noch nicht sicher, ob meine Art passt.",
+          "en": "Yes, in this year's evaluation what I focused on most was reporting speed. Though with presentations I'm still not sure my approach is right."
+        },
+        {
+          "de": "Die Geschwindigkeit ist wirklich besser geworden. Ändern sollte sich nur eines: Ich hätte gern, dass die Präsentationsfolien deutlich kürzer werden als jetzt.",
+          "en": "The speed has really improved. There's just one thing I'd like changed: I'd like the slide decks to be much shorter than they are now."
+        },
+        {
+          "de": "Verstanden. Sie meinen also weniger Seiten, nicht weniger Inhalt, richtig? Ab der nächsten Präsentation setze ich das um und zeige Ihnen zuerst einen Entwurf.",
+          "en": "Understood. You mean fewer pages rather than cutting content, right? I'll apply it from the next presentation and show you a draft first."
+        },
+        {
+          "de": "Seid ihr fertig? Kam ich dabei auch vor? Mich interessiert, was sie gesagt hat.",
+          "en": "Are you done? Did I come up, by any chance? I'm curious what she said."
+        },
+        {
+          "de": "Es ging nur um mich. Sie hat gesagt, ich solle die Präsentationsfolien kürzer machen. Über andere wurde nicht gesprochen, und selbst wenn, dürfte ich es nicht weitergeben.",
+          "en": "It was only about me. She told me to make the slide decks shorter. Nobody else came up, and even if they had, I shouldn't pass it on."
+        }
+      ],
+      "transfer": {
+        "ko": "약사님이 이 약은 식후에 먹으라고 하셨어요.",
+        "de": "Der Apotheker hat gesagt, ich solle dieses Medikament nach dem Essen nehmen.",
+        "en": "The pharmacist said to take this medicine after meals."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "뜻이죠?",
+          "alternatives": [
+            "말씀이시죠?",
+            "거죠?"
+          ],
+          "note": "Interpretive confirmation after -(으)라는; keep 장수를 줄이라는 unchanged."
+        },
+        "you5": {
+          "span": "만들라고 하셨어요.",
+          "alternatives": [
+            "만들라고 하시더라고요.",
+            "만들라는 거였어요."
+          ],
+          "note": "Imperative report carrier -(으)라고 하셨어요; keep 발표 자료를 더 짧게 unchanged."
+        }
+      }
+    },
+    {
+      "n": 4,
+      "trophyLemma": "전입",
+      "trophySurface": "전입",
+      "moves": [
+        "request",
+        "clarify",
+        "relay"
+      ],
+      "turns": [
+        "어서 오세요. 이사 오셔서 신고하러 오셨어요? 필요한 서류는 챙겨 오셨죠?",
+        "네, 전입 신고를 하려고 왔어요. 계약서는 사본으로도 접수가 되는지 여쭤보고 싶고, 신분증은 원본이어야 하는지도 확인해 주시겠어요?",
+        "계약서는 사본이면 돼요. 그런데 신분증은 꼭 원본이어야 하고, 사진이나 복사본으로는 접수가 안 돼요.",
+        "그럼 계약서는 사본으로 내고 신분증은 원본을 보여 드리면 되는 거죠? 그렇게 준비해 왔으니 지금 바로 접수 부탁드려요.",
+        "저도 주소 바꿔야 해서 같이 가자고 하려고 했어요. 저는 외국인인데 서류가 똑같아요?",
+        "계약서는 사본이면 되고 신분증은 원본이래요. 근데 그건 제 경우고, 외국인 등록은 다를 수 있으니까 직접 물어보세요."
+      ],
+      "translations": [
+        {
+          "de": "Willkommen. Sie sind umgezogen und möchten sich anmelden? Haben Sie die nötigen Unterlagen dabei?",
+          "en": "Welcome. You've moved and want to register? Did you bring the required documents?"
+        },
+        {
+          "de": "Ja, ich möchte meine Ummeldung erledigen. Ich würde gern fragen, ob der Mietvertrag auch als Kopie angenommen wird, und könnten Sie mir bestätigen, ob der Ausweis im Original sein muss?",
+          "en": "Yes, I've come to file my change of residence. I'd like to ask whether the lease is accepted as a copy, and could you confirm whether the ID has to be the original?"
+        },
+        {
+          "de": "Der Vertrag kann eine Kopie sein. Der Ausweis muss aber unbedingt das Original sein, ein Foto oder eine Kopie wird nicht angenommen.",
+          "en": "A copy of the lease is fine. But the ID absolutely must be the original; a photo or copy won't be accepted."
+        },
+        {
+          "de": "Also reiche ich den Vertrag als Kopie ein und zeige den Ausweis im Original, richtig? So habe ich es vorbereitet, dann bitte ich Sie, es jetzt gleich aufzunehmen.",
+          "en": "So I submit a copy of the lease and show the original ID, right? That's how I prepared it, so I'd ask you to process it right now, please."
+        },
+        {
+          "de": "Ich muss auch meine Adresse ändern, ich wollte schon vorschlagen, dass wir zusammen hingehen. Ich bin Ausländerin, sind die Unterlagen dieselben?",
+          "en": "I need to change my address too; I was going to suggest we go together. I'm a foreign resident, are the documents the same?"
+        },
+        {
+          "de": "Der Vertrag geht als Kopie, der Ausweis muss das Original sein, sagen sie. Aber das war mein Fall; bei der Ausländerregistrierung kann es anders sein, also frag dort selbst nach.",
+          "en": "A copy of the lease is fine and the ID has to be the original, they say. But that was my case; it may be different for foreign resident registration, so ask them directly."
+        }
+      ],
+      "transfer": {
+        "ko": "기사님이 공사 때문에 길이 막혀서 조금 늦는대요.",
+        "de": "Der Fahrer sagt, wegen der Bauarbeiten sei die Straße verstopft und er komme etwas später.",
+        "en": "The driver says the road is blocked because of construction, so he'll be a bit late."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "되는 거죠?",
+          "alternatives": [
+            "되죠?",
+            "되는 거 맞죠?"
+          ],
+          "note": "Confirmation of procedure; keep 신분증은 원본을 보여 드리면 unchanged."
+        },
+        "you5": {
+          "span": "원본이래요.",
+          "alternatives": [
+            "원본이어야 한대요.",
+            "원본이라고 했어요."
+          ],
+          "note": "Contracted room-two report -래요/-대요; keep 신분증은 unchanged."
+        }
+      }
+    },
+    {
+      "n": 5,
+      "trophyLemma": "분담",
+      "trophySurface": "분담을",
+      "moves": [
+        "request",
+        "clarify",
+        "conclude"
+      ],
+      "turns": [
+        "네, 여보세요. 보일러 문제로 전화하신 분이죠? 어제 기사님이 보고 가셨다고 들었어요.",
+        "네, 세입자예요. 기사님이 부품 교체가 필요하다고 하셔서, 수리비 분담을 어떻게 하실 생각이신지 여쭤보려고 연락드렸어요.",
+        "수리비는 제가 다 내 드릴게요. 대신 출장비 삼만 원은 세입자분들이 내 주시면 좋겠어요.",
+        "그럼 부품값과 공임은 전부 부담해 주시고, 저희는 삼만 원만 내면 된다는 말씀이시죠? 룸메이트랑 얘기하고 다시 연락드릴게요.",
+        "출장비까지 우리가 내라고요? 저는 반반 내자고 하고 싶은데, 정확히 뭐라고 했는지 말해 줘요.",
+        "수리비는 내주시고 출장비 삼만 원은 저희가 내래요. 제 의견이 아니라 그분 말이에요. 계약서부터 보고 답하면 어때요?"
+      ],
+      "translations": [
+        {
+          "de": "Ja, hallo. Sie rufen wegen des Boilers an, richtig? Ich habe gehört, der Techniker war gestern da.",
+          "en": "Yes, hello. You're calling about the boiler, right? I heard the technician came by yesterday."
+        },
+        {
+          "de": "Ja, ich bin der Mieter. Der Techniker hat gesagt, ein Teil müsse ersetzt werden, deshalb wollte ich fragen, wie Sie sich die Aufteilung der Reparaturkosten vorstellen.",
+          "en": "Yes, I'm the tenant. The technician said a part needs replacing, so I'm calling to ask how you're thinking of splitting the repair cost."
+        },
+        {
+          "de": "Die Reparaturkosten übernehme ich komplett. Dafür hätte ich gern, dass Sie als Mieter die Anfahrtspauschale von dreißigtausend Won zahlen.",
+          "en": "I'll cover the repair cost in full. In return I'd like you tenants to pay the thirty-thousand-won call-out fee."
+        },
+        {
+          "de": "Also übernehmen Sie Material und Arbeitslohn komplett, und wir zahlen nur die dreißigtausend Won, verstehe ich Sie richtig? Ich bespreche es mit meiner Mitbewohnerin und melde mich wieder.",
+          "en": "So you cover parts and labor entirely, and we only pay the thirty thousand won, is that what you're saying? I'll talk to my flatmate and get back to you."
+        },
+        {
+          "de": "Sogar die Anfahrt sollen wir zahlen? Ich würde gern vorschlagen, dass wir halbe-halbe machen, aber sag mir genau, was er gesagt hat.",
+          "en": "We're supposed to pay the call-out fee too? I'd like to propose splitting it half and half, but tell me exactly what he said."
+        },
+        {
+          "de": "Die Reparatur zahlt er, aber die dreißigtausend Won Anfahrt sollen wir zahlen, sagt er. Das ist nicht meine Meinung, das sind seine Worte. Wie wär's, wenn wir erst in den Vertrag schauen und dann antworten?",
+          "en": "He'll pay the repair, but he says we're to pay the thirty-thousand-won call-out fee. That's not my opinion, it's what he said. How about we check the lease first and then reply?"
+        }
+      ],
+      "transfer": {
+        "ko": "관리실에서 분리수거는 화요일에만 내놓으래요.",
+        "de": "Die Hausverwaltung sagt, der Recyclingmüll solle nur dienstags rausgestellt werden.",
+        "en": "The building office says recycling is to be put out on Tuesdays only."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "말씀이시죠?",
+          "alternatives": [
+            "뜻이죠?",
+            "거죠?"
+          ],
+          "note": "Formal echo-confirmation; keep 저희는 삼만 원만 내면 된다는 unchanged."
+        },
+        "you5": {
+          "span": "저희가 내래요.",
+          "alternatives": [
+            "저희가 내라고 하셨어요.",
+            "저희 부담이래요."
+          ],
+          "note": "Contracted imperative report -래요; keep 출장비 삼만 원은 unchanged."
+        }
+      }
+    },
+    {
+      "n": 6,
+      "trophyLemma": "면담",
+      "trophySurface": "면담",
+      "moves": [
+        "explain",
+        "clarify",
+        "summarize"
+      ],
+      "turns": [
+        "와 주셔서 고마워요. 요즘 반에서 친구 관계가 조금 힘들어 보여서 말씀드리고 싶었어요.",
+        "네, 면담 요청 주셔서 저도 고마워요. 집에서도 요즘 말수가 줄어서 걱정하던 참이었는데, 학교에서는 어떤 모습인지 자세히 듣고 싶어요.",
+        "큰 다툼은 없으니 한 달은 지켜보자고 하고 싶어요. 아이 말은 적어 두셨다가 다음 달에 봬요.",
+        "한 달은 저희도 개입하지 않고, 아이가 그 얘기를 꺼내면 적어만 두는 거죠? 다음 달 만남은 제가 다시 연락드릴게요.",
+        "지금 이 분밖에 없어요. 설명은 빼고, 뭘 하기로 했는지만 알려 줘요.",
+        "한마디로, 한 달은 지켜보자고 하셨고 다음 달에 다시 만나자고 하셨어요. 우리는 아이 말만 적어 두면 돼요."
+      ],
+      "translations": [
+        {
+          "de": "Danke, dass Sie gekommen sind. In letzter Zeit scheint es in der Klasse mit den Freundschaften etwas schwierig zu sein, darüber wollte ich mit Ihnen sprechen.",
+          "en": "Thank you for coming. Lately the friendships in class seem a bit difficult, and I wanted to talk with you about it."
+        },
+        {
+          "de": "Ja, ich danke Ihnen auch für die Einladung zum Gespräch. Zu Hause redet das Kind zurzeit auch weniger, das hat uns schon beunruhigt; ich würde gern genau hören, wie es in der Schule ist.",
+          "en": "Yes, thank you too for requesting this meeting. At home the child has been talking less lately, which was already worrying us; I'd like to hear in detail how things are at school."
+        },
+        {
+          "de": "Es gab keinen großen Streit, deshalb würde ich vorschlagen, einen Monat lang zu beobachten. Notieren Sie bitte, was das Kind sagt, und wir sehen uns nächsten Monat wieder.",
+          "en": "There's been no big fight, so I'd like to suggest we watch for a month. Please note down what the child says, and let's meet again next month."
+        },
+        {
+          "de": "Also greifen auch wir einen Monat lang nicht ein und notieren nur, wenn das Kind das Thema anspricht, richtig? Wegen des Termins nächsten Monat melde ich mich noch einmal bei Ihnen.",
+          "en": "So for a month we don't intervene either, and we just note it down if the child brings it up, right? I'll contact you again about next month's meeting."
+        },
+        {
+          "de": "Ich habe nur zwei Minuten. Lass die Erklärungen weg, sag mir nur, was beschlossen wurde.",
+          "en": "I've only got two minutes. Skip the description, just tell me what was decided."
+        },
+        {
+          "de": "Kurz gesagt: Sie hat vorgeschlagen, einen Monat zu beobachten und uns nächsten Monat wieder zu treffen. Wir müssen nur notieren, was das Kind sagt.",
+          "en": "In short, she suggested we watch for a month and meet again next month. All we have to do is note down what the child says."
+        }
+      ],
+      "transfer": {
+        "ko": "팀장님이 회의는 다음 주로 미루자고 하셨어요.",
+        "de": "Der Teamleiter hat vorgeschlagen, die Besprechung auf nächste Woche zu verschieben.",
+        "en": "The team lead suggested pushing the meeting to next week."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "적어만 두는 거죠?",
+          "alternatives": [
+            "적어 두면 되죠?",
+            "적어 두는 거 맞죠?"
+          ],
+          "note": "Confirming the agreed parent action; keep 아이가 그 얘기를 꺼내면 unchanged."
+        },
+        "you5": {
+          "span": "만나자고 하셨어요.",
+          "alternatives": [
+            "만나재요.",
+            "보자고 하셨어요."
+          ],
+          "note": "Suggestion report carrier -자고 하셨어요; keep 다음 달에 다시 unchanged."
+        }
+      }
+    },
+    {
+      "n": 7,
+      "trophyLemma": "도난",
+      "trophySurface": "도난",
+      "moves": [
+        "explain",
+        "clarify",
+        "relay"
+      ],
+      "turns": [
+        "네, 무슨 일로 오셨어요? 자전거 분실이면 여기서 접수해 드릴게요.",
+        "분실이 아니라 도난 신고를 하러 왔어요. 어젯밤 집 앞에 자물쇠를 채워 뒀는데, 아침에 보니 자물쇠가 잘린 채로 자전거만 없어졌어요.",
+        "알겠어요, 도난으로 접수할게요. 접수 번호를 드릴 테니까 보험사에 내시면 돼요. 번호는 사진 찍어 두세요.",
+        "네, 그럼 이 번호를 보험사에 내면 되고, 여기서 따로 받을 서류는 없는 거죠? 자전거 사진은 지금 보여 드릴게요.",
+        "그래도 신고했으니까 경찰이 찾아 주겠죠? 며칠 기다리면 연락 오지 않을까요?",
+        "접수만 됐어요. 찾아 주겠다고 하신 게 아니라 번호를 보험사에 내라는 거였어요. 찾는 얘기는 한마디도 없으셨어요."
+      ],
+      "translations": [
+        {
+          "de": "Ja, womit kann ich Ihnen helfen? Wenn es um ein verlorenes Fahrrad geht, nehme ich das hier auf.",
+          "en": "Yes, what brings you here? If it's a lost bicycle, I can file it here."
+        },
+        {
+          "de": "Es ist kein Verlust, ich möchte einen Diebstahl melden. Gestern Abend habe ich es vor dem Haus abgeschlossen, und heute Morgen war das Schloss durchtrennt und nur das Fahrrad weg.",
+          "en": "It's not lost; I've come to report a theft. Last night I locked it up in front of my house, and this morning the lock was cut and only the bike was gone."
+        },
+        {
+          "de": "Verstanden, ich nehme es als Diebstahl auf. Sie bekommen eine Vorgangsnummer, die reichen Sie bei der Versicherung ein. Fotografieren Sie die Nummer sicherheitshalber.",
+          "en": "All right, I'll file it as theft. I'll give you a report number, which you submit to your insurer. Take a photo of the number to keep it."
+        },
+        {
+          "de": "Ja, also reiche ich diese Nummer bei der Versicherung ein, und weitere Unterlagen bekomme ich hier nicht, richtig? Ein Foto des Fahrrads zeige ich Ihnen jetzt gleich.",
+          "en": "Yes, so I submit this number to the insurer, and there are no other documents to get here, right? I'll show you a photo of the bike right now."
+        },
+        {
+          "de": "Aber du hast es ja gemeldet, also findet die Polizei es doch, oder? Wenn du ein paar Tage wartest, melden sie sich bestimmt.",
+          "en": "Still, now that you've reported it, the police will find it, right? If you wait a few days, they'll probably contact you."
+        },
+        {
+          "de": "Es wurde nur aufgenommen. Er hat nicht gesagt, dass sie es suchen, sondern dass ich die Nummer bei der Versicherung einreichen soll. Vom Finden war mit keinem Wort die Rede.",
+          "en": "It was only filed. He didn't say they'd find it; he said to submit the number to the insurer. There wasn't a single word about finding it."
+        }
+      ],
+      "transfer": {
+        "ko": "환불해 준다고 한 게 아니라 교환만 된다는 거였어요.",
+        "de": "Es hieß nicht, dass sie erstatten, sondern nur, dass ein Umtausch möglich sei.",
+        "en": "They didn't say they'd refund it, only that an exchange was possible."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "없는 거죠?",
+          "alternatives": [
+            "없죠?",
+            "없는 거 맞죠?"
+          ],
+          "note": "Checking the closed scope of the procedure; keep 여기서 따로 받을 서류는 unchanged."
+        },
+        "you5": {
+          "span": "내라는 거였어요.",
+          "alternatives": [
+            "내라고 하신 거였어요.",
+            "내라는 말씀이었어요."
+          ],
+          "note": "Correction frame -(으)ㄴ 게 아니라 …-(으)ㄴ 거였어요; keep 번호를 보험사에 unchanged."
+        }
+      }
+    },
+    {
+      "n": 8,
+      "trophyLemma": "수습",
+      "trophySurface": "수습",
+      "moves": [
+        "request",
+        "clarify",
+        "relay"
+      ],
+      "turns": [
+        "마지막으로 조건 얘기를 할게요. 궁금한 점 있으면 지금 편하게 물어보세요.",
+        "네, 두 가지만 여쭤볼게요. 연봉은 어느 정도 범위로 보시는지, 그리고 수습 기간에는 급여가 어떻게 되는지 말씀해 주시겠어요?",
+        "연봉은 사천에서 사천오백 사이로 보고 있어요. 수습 석 달은 각자 합의한 기본급의 팔십 퍼센트가 나가요.",
+        "그럼 제 기본급은 아직 정해진 게 아니고, 정해지면 그 팔십 퍼센트를 석 달 동안 받는다고 보면 될까요?",
+        "그래서 얼마 준대요? 범위 말고 딱 얼마인지도 말해 줬죠?",
+        "연봉은 범위만 말씀하셨고, 수습 석 달은 나중에 정해질 제 기본급의 팔십 퍼센트래요. 그게 언제 나오는지는 말씀이 없으셨어요."
+      ],
+      "translations": [
+        {
+          "de": "Zum Schluss sprechen wir über die Konditionen. Wenn Sie Fragen haben, stellen Sie sie jetzt ruhig.",
+          "en": "Finally, let's talk about conditions. If you have questions, feel free to ask now."
+        },
+        {
+          "de": "Ja, ich hätte nur zwei Fragen. Könnten Sie mir sagen, in welchem Rahmen Sie das Jahresgehalt sehen und wie die Bezahlung während der Probezeit geregelt ist?",
+          "en": "Yes, I'd like to ask just two things. Could you tell me what range you have in mind for the annual salary, and how pay works during the probation period?"
+        },
+        {
+          "de": "Beim Jahresgehalt denken wir an vierzig bis fünfundvierzig Millionen. Die Probezeit dauert drei Monate, und in der Zeit werden achtzig Prozent des individuell vereinbarten Grundgehalts gezahlt.",
+          "en": "For the annual salary we're looking at forty to forty-five million. Probation is three months, during which eighty percent of the individually agreed base pay is paid."
+        },
+        {
+          "de": "Mein Grundgehalt steht also noch nicht fest, und sobald es feststeht, bekomme ich drei Monate lang achtzig Prozent davon, darf ich das so verstehen?",
+          "en": "So my base pay isn't set yet, and once it is, I'd receive eighty percent of it for three months, is that how I should understand it?"
+        },
+        {
+          "de": "Und wie viel zahlen sie? Nicht die Spanne, die haben dir doch die genaue Zahl gesagt, oder?",
+          "en": "So how much are they paying? Forget the range, they told you the exact figure too, right?"
+        },
+        {
+          "de": "Beim Gehalt hat er nur eine Spanne genannt, und in den drei Monaten Probezeit gebe es achtzig Prozent meines später festzulegenden Grundgehalts. Wann das feststeht, hat er nicht gesagt.",
+          "en": "He only gave a range for the salary, and during the three-month probation it's eighty percent of my base pay, which is to be set later. He didn't say when that would come."
+        }
+      ],
+      "transfer": {
+        "ko": "주최 측에서는 날짜만 정해졌고 장소는 아직이래요.",
+        "de": "Vom Veranstalter heißt es, nur das Datum stehe fest, der Ort noch nicht.",
+        "en": "The organizers say only the date is set; the venue isn't yet."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "보면 될까요?",
+          "alternatives": [
+            "이해하면 될까요?",
+            "봐도 될까요?"
+          ],
+          "note": "Formal interpretive check after -다고; keep 석 달 동안 받는다고 unchanged."
+        },
+        "you5": {
+          "span": "팔십 퍼센트래요.",
+          "alternatives": [
+            "팔십 퍼센트라고 하셨어요.",
+            "팔십 퍼센트를 받는대요."
+          ],
+          "note": "Contracted declarative relay -래요/-대요; keep 제 기본급의 unchanged."
+        }
+      }
+    },
+    {
+      "n": 9,
+      "trophyLemma": "조사",
+      "trophySurface": "조사",
+      "moves": [
+        "request",
+        "clarify",
+        "conclude"
+      ],
+      "turns": [
+        "설명회에 참석해 주셔서 고마워요. 오늘은 재개발 일정 중에 확정된 부분만 말씀드릴게요.",
+        "질문이 하나 있어요. 지금 확정됐다는 게 주민 조사 일정만인지, 아니면 철거 시기까지 포함되는지 분명하게 짚어 주시겠어요?",
+        "지금 확정된 일정은 조사뿐이에요. 다음 달부터 두 달간 조사가 진행돼요. 철거 시기는 정해진 게 없어요.",
+        "그럼 지금 공식적으로 나온 날짜는 조사 시작일뿐이고, 철거는 시기도 순서도 아직 없다고 봐도 될까요? 정리해서 이웃분들께 전하려고요.",
+        "저는 못 갔는데, 내년 봄에 철거 시작한다면서요? 동네에서 다들 그렇게 말하던데요.",
+        "확정된 건 조사 일정뿐이에요. 다음 달부터 두 달 조사한다는 뜻이었고, 철거 시기는 말도 없었어요. 봄은 그냥 소문이에요."
+      ],
+      "translations": [
+        {
+          "de": "Danke, dass Sie zur Informationsveranstaltung gekommen sind. Heute spreche ich nur über die Teile des Sanierungszeitplans, die feststehen.",
+          "en": "Thank you for attending the briefing. Today I'll only cover the parts of the redevelopment schedule that are confirmed."
+        },
+        {
+          "de": "Ich habe eine Frage. Könnten Sie klar benennen, ob mit „feststehend“ nur der Zeitplan der Bewohnerbefragung gemeint ist oder auch der Zeitpunkt des Abrisses?",
+          "en": "I have one question. Could you clearly state whether what's confirmed is only the residents' survey schedule, or whether it includes the demolition timing as well?"
+        },
+        {
+          "de": "Festgelegt ist derzeit nur die Befragung. Sie läuft ab nächstem Monat zwei Monate lang. Für den Abriss gibt es keinen festgelegten Zeitpunkt.",
+          "en": "The only schedule confirmed right now is the survey. It runs for two months starting next month. There's no set timing for demolition."
+        },
+        {
+          "de": "Also ist das einzige offizielle Datum bislang der Beginn der Befragung, und beim Abriss gibt es weder Zeitpunkt noch Reihenfolge, darf ich das so sehen? Ich möchte es zusammengefasst an die Nachbarn weitergeben.",
+          "en": "So the only official date so far is the survey start, and for demolition there's neither a timing nor an order yet, is that fair to say? I'd like to summarize it for my neighbors."
+        },
+        {
+          "de": "Ich konnte nicht hin, aber der Abriss soll doch nächsten Frühling beginnen, oder? Das sagen hier alle.",
+          "en": "I couldn't go, but they say demolition starts next spring, right? Everyone in the neighborhood is saying so."
+        },
+        {
+          "de": "Fest steht nur der Zeitplan der Befragung. Das hieß: ab nächstem Monat zwei Monate Befragung, und zum Abrisszeitpunkt wurde gar nichts gesagt. Das mit dem Frühling ist bloß ein Gerücht.",
+          "en": "The only thing confirmed is the survey schedule. It meant two months of survey starting next month, and nothing at all was said about when demolition would be. The spring thing is just a rumor."
+        }
+      ],
+      "transfer": {
+        "ko": "검토 중이라는 건 아직 승인이 안 났다는 뜻이었어요.",
+        "de": "„In Prüfung“ bedeutete, dass die Genehmigung noch nicht erteilt war.",
+        "en": "'Under review' meant the approval hadn't been granted yet."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "없다고 봐도 될까요?",
+          "alternatives": [
+            "없는 거죠?",
+            "없다고 이해하면 될까요?"
+          ],
+          "note": "Formal interpretive confirmation; keep 철거는 시기도 순서도 아직 unchanged."
+        },
+        "you5": {
+          "span": "뜻이었고,",
+          "alternatives": [
+            "말씀이었고,",
+            "얘기였고,"
+          ],
+          "note": "Interpreting an official with -다는 뜻이었어요; keep 두 달 조사한다는 … 철거 시기는 unchanged."
+        }
+      }
+    },
+    {
+      "n": 10,
+      "trophyLemma": "청구",
+      "trophySurface": "청구가",
+      "moves": [
+        "request",
+        "summarize",
+        "relay"
+      ],
+      "turns": [
+        "네, 고객센터예요. 어떤 일로 연락 주셨어요? 본인 확인 먼저 할게요.",
+        "담당자님, 요금 청구가 두 번 된 것 같아서 연락드렸어요. 같은 금액이 두 줄 찍혀 있는데, 한 건은 환불해 주시겠어요?",
+        "확인해 보니 이중 청구 맞아요. 환불은 두 청구 주기가 걸리는데, 은행 내역을 올리시면 더 빨라요.",
+        "정리하면, 은행 내역을 올리면 더 빨리 되고, 안 올리면 두 청구 주기가 걸린다는 말씀이죠? 방법을 문자로 보내 주시겠어요?",
+        "저도 그 순서 쓰고 싶어요. 근데 제 건은 이중 청구가 아니라 요금제가 잘못 들어간 거예요.",
+        "순서는 그대로 써요. 은행 내역은 제 이중 청구에만 해 주신 얘기라서, 요금제 건은 필요한 서류를 직접 여쭤보세요."
+      ],
+      "translations": [
+        {
+          "de": "Ja, hier ist der Kundenservice. Worum geht es? Zuerst muss ich Ihre Identität prüfen.",
+          "en": "Yes, this is customer service. What are you calling about? Let me verify your identity first."
+        },
+        {
+          "de": "Ich wende mich an Sie, weil die Gebühr offenbar zweimal in Rechnung gestellt wurde. Derselbe Betrag steht zweimal aufgeführt; könnten Sie einen davon erstatten?",
+          "en": "I'm contacting you because the charge seems to have been billed twice. The same amount appears on two lines; could you refund one of them?"
+        },
+        {
+          "de": "Ich habe nachgesehen, es ist tatsächlich eine Doppelbelastung. Die Erstattung dauert zwei Abrechnungszyklen, geht aber schneller, wenn Sie Ihren Bankauszug hochladen.",
+          "en": "I've checked, and it is indeed a double charge. The refund takes two billing cycles, but it's faster if you upload your bank statement."
+        },
+        {
+          "de": "Zusammengefasst: Wenn ich den Bankauszug hochlade, geht es schneller, sonst dauert es zwei Abrechnungszyklen, richtig? Könnten Sie mir die Anleitung per SMS schicken?",
+          "en": "To summarize: if I upload the bank statement it's faster, otherwise it takes two billing cycles, is that right? Could you send me the instructions by text message?"
+        },
+        {
+          "de": "Ich würde das Vorgehen auch gern so machen. Aber bei mir ist es keine Doppelbelastung, bei mir wurde der falsche Tarif eingetragen.",
+          "en": "I'd like to use that same procedure. But my case isn't a double charge; the wrong plan was entered."
+        },
+        {
+          "de": "Das Vorgehen kannst du genauso übernehmen. Das mit dem Bankauszug wurde aber nur für meine Doppelbelastung angeboten, also frag bei deinem Tarifproblem direkt nach, welche Unterlagen nötig sind.",
+          "en": "You can follow the same steps. But the bank statement was offered for my double-charge case only, so for your plan issue, ask them directly which documents are needed."
+        }
+      ],
+      "transfer": {
+        "ko": "할인 얘기는 제 카드에만 해 주신 거라서 다른 카드는 따로 물어봐야 해요.",
+        "de": "Das mit dem Rabatt galt nur für meine Karte, bei anderen Karten muss man extra nachfragen.",
+        "en": "The discount was offered for my card only; for other cards you'd have to ask separately."
+      },
+      "exerciseHints": {
+        "you3": {
+          "span": "말씀이죠?",
+          "alternatives": [
+            "뜻이죠?",
+            "거죠?"
+          ],
+          "note": "Summarizing confirmation after 정리하면; keep 두 청구 주기가 걸린다는 unchanged."
+        },
+        "you5": {
+          "span": "해 주신 얘기라서,",
+          "alternatives": [
+            "하신 말이라서,",
+            "해당되는 얘기라서,"
+          ],
+          "note": "Scope-limiting relay of an official's remark; keep 제 이중 청구에만 … 요금제 건은 unchanged."
+        }
+      }
+    }
+  ]
+}

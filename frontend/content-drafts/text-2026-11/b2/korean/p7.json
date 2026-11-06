@@ -1,0 +1,4056 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 7,
+  "slug": "working-it-out",
+  "pathTitle": {
+    "de": "Gemeinsam ausarbeiten",
+    "en": "Working it out"
+  },
+  "pathFunction": {
+    "de": "Plant gemeinsam, holt andere Meinungen ein und haltet fest, worauf ihr euch trotz unterschiedlicher Wünsche einigt.",
+    "en": "Make a joint plan, invite others to weigh in and sum up what everyone agrees to under the constraints."
+  },
+  "specRef": {
+    "pathSpec": "architecture.json",
+    "pathSpecSha256": "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab",
+    "ledger": "../allocation.json",
+    "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+  },
+  "authoring": {
+    "source": "Korean Fable architecture, Codex native copyedits, bilingual lesson and exercise authoring",
+    "runId": "ko-b2-20261106-p7",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "farewell-event",
+      "title": {
+        "de": "Eine Abschiedsfeier planen",
+        "en": "Planning a farewell"
+      },
+      "situation": {
+        "de": "Im Teamchat besprecht ihr, wie ihr einen Kollegen vor seinem Wechsel verabschieden könnt.",
+        "en": "Your team chat is discussing how to say goodbye to a colleague who is changing jobs."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Kollegin, die die Feier koordiniert",
+            "en": "Colleague coordinating the farewell"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Teamchat besprecht ihr, wie ihr einen Kollegen vor seinem Wechsel verabschieden könnt. „지훈 씨 송별회 어떻게 할지 이번 주 안에 정해야 해요. 다들 의견 있으세요?“",
+        "en": "Your team chat is discussing how to say goodbye to a colleague who is changing jobs. “지훈 씨 송별회 어떻게 할지 이번 주 안에 정해야 해요. 다들 의견 있으세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "지훈 씨 송별회 어떻게 할지 이번 주 안에 정해야 해요. 다들 의견 있으세요?",
+          "base": {
+            "de": "Wir müssen noch diese Woche entscheiden, wie wir Jihun verabschieden. Hat jemand eine Idee?",
+            "en": "We need to decide this week what to do for Jihun's farewell. Does anyone have an idea?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "송별회는 금요일 저녁에 다 같이 식사하는 게 어때요? 장소는 제가 두세 군데 알아볼게요.",
+          "base": {
+            "de": "Wie wäre es, wenn wir zur Abschiedsfeier am Freitagabend alle zusammen essen gehen? Ich sehe mir zwei oder drei Lokale an.",
+            "en": "How about all going out for dinner on Friday for the farewell? I'll look into two or three places."
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "좋아요. 그런데 팀 예산이 삼십만 원까지예요. 그 안에서 되는 데로 찾아야 해요.",
+          "base": {
+            "de": "Gerne. Unser Teambudget liegt allerdings bei höchstens dreihunderttausend Won. Wir brauchen ein Lokal, das in diesem Rahmen liegt.",
+            "en": "Sounds good. Our team budget only goes up to three hundred thousand won, though. We'll have to find somewhere within that limit."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 코스 요리는 빼고 인원 먼저 확인한 다음에 식당에 견적을 받아 보죠. 삼십만 원 넘으면 다른 데로 바꾸고요.",
+          "base": {
+            "de": "Dann lassen wir das mehrgängige Menü weg. Fragen wir erst, wie viele mitkommen, und lassen wir uns dann vom Restaurant einen Preis nennen. Liegt er über dreihunderttausend Won, wechseln wir das Lokal.",
+            "en": "Let's skip the set menu, check the numbers first and get a quote from the restaurant. If it's over three hundred thousand won, we'll switch venues."
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "아, 그리고 영업팀 두 분은 금요일 저녁에 안 되세요. 민지 씨는 아직 아무 말씀도 없으시고요.",
+          "base": {
+            "de": "Ach, zwei Leute aus dem Vertrieb können freitagabends nicht. Minji hat sich noch gar nicht geäußert.",
+            "en": "Oh, and two of the sales team can't do Friday evenings. Minji hasn't weighed in yet."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 점심으로 바꾸죠. 민지 씨, 편하신 날이나 원하시는 메뉴 있으세요? 답 주시면 삼십만 원 안에서 정하죠.",
+          "base": {
+            "de": "Dann wechseln wir zum Mittagessen. Minji, welcher Tag passt Ihnen, und hätten Sie einen Wunsch fürs Essen? Wenn wir Ihre Antwort haben, entscheiden wir im Rahmen der dreihunderttausend Won.",
+            "en": "Let's switch to lunch. Minji, is there a day that suits you or something you'd like to eat? Once we hear from you, we'll settle on something within the three hundred thousand won."
+          },
+          "register": "haeyo",
+          "move": "invite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "송별회는",
+          "금요일",
+          "저녁에",
+          "다 같이",
+          "식사하는 게",
+          "어때요?"
+        ],
+        "distractors": [
+          "아침마다",
+          "취소했어요"
+        ],
+        "frameSuffix": " 장소는 제가 두세 군데 알아볼게요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 코스 요리는 빼고 인원 먼저 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 식당에 견적을 받아 보죠. 삼십만 원 넘으면 다른 데로 바꾸고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "확인한 다음에",
+            "acceptedAnswers": [
+              "확인한 다음에",
+              "확인한 뒤에",
+              "확인하고 나서",
+              "확인한 후에",
+              "확인한 후"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 점심으로 바꾸죠. 민지 씨, 편하신 날이나 원하시는 메뉴 있으세요? "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 삼십만 원 안에서 정하죠."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그럼",
+            "acceptedAnswers": [
+              "그럼",
+              "그러면",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "답 주시면",
+            "acceptedAnswers": [
+              "답 주시면",
+              "알려 주시면",
+              "말씀해 주시면",
+              "답을 주시면",
+              "답해 주시면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "송별회는",
+        "after": " 금요일 저녁에 다 같이 식사하는 게 어때요? 장소는 제가 두세 군데 알아볼게요.",
+        "acceptedAnswers": [
+          "송별회는"
+        ],
+        "fallbackChoices": [
+          "입학식은",
+          "휴강은",
+          "장례식은",
+          "송별회는"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Einen Vorschlag zur Diskussion stellen",
+          "en": "Put a suggestion to the group"
+        },
+        "rule": {
+          "de": "Mit -는 게 어때요? schlägst du eine konkrete Handlung vor und lässt Raum für eine Antwort. Du kannst danach eine Aufgabe übernehmen oder gezielt nach einer Meinung fragen.",
+          "en": "Use -는 게 어때요? to put a specific action forward for discussion. Follow up by volunteering for a task or asking what someone thinks."
+        },
+        "examples": [
+          {
+            "targetText": "송별회는 금요일 저녁에 다 같이 식사하는 게 어때요? 장소는 제가 두세 군데 알아볼게요.",
+            "base": {
+              "de": "Wie wäre es, wenn wir zur Abschiedsfeier am Freitagabend alle zusammen essen gehen? Ich sehe mir zwei oder drei Lokale an.",
+              "en": "How about all going out for dinner on Friday for the farewell? I'll look into two or three places."
+            },
+            "highlights": [
+              "식사하는 게 어때요?",
+              "제가 두세 군데 알아볼게요"
+            ]
+          },
+          {
+            "targetText": "스터디는 토요일 오전에 여는 게 어때요? 아직 말씀 안 하신 분은 어떻게 생각하세요?",
+            "base": {
+              "de": "Wie wäre es, die Lerngruppe am Samstagvormittag anzubieten? Was meinen diejenigen, die bisher nichts gesagt haben?",
+              "en": "How about holding the study group on Saturday morning? What do those who haven't spoken yet think?"
+            },
+            "highlights": [
+              "게 어때요?",
+              "어떻게 생각하세요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "송별회는",
+          "kind": "noun",
+          "lemma": "송별회",
+          "base": {
+            "de": "Abschiedsfeier",
+            "en": "farewell gathering"
+          }
+        },
+        {
+          "targetText": "게 어때요",
+          "kind": "frame",
+          "base": {
+            "de": "wie wäre es damit?",
+            "en": "how about it?"
+          }
+        },
+        {
+          "targetText": "확인한 다음에",
+          "kind": "frame",
+          "base": {
+            "de": "nachdem wir das geprüft haben",
+            "en": "after we've checked"
+          }
+        },
+        {
+          "targetText": "견적을",
+          "kind": "noun",
+          "base": {
+            "de": "ein Preisangebot",
+            "en": "a price quote"
+          }
+        },
+        {
+          "targetText": "인원",
+          "kind": "noun",
+          "base": {
+            "de": "Personenzahl",
+            "en": "number of people"
+          }
+        },
+        {
+          "targetText": "알아볼게요",
+          "kind": "verb",
+          "base": {
+            "de": "ich werde mich erkundigen",
+            "en": "I'll look into it"
+          }
+        },
+        {
+          "targetText": "영업팀",
+          "kind": "noun",
+          "base": {
+            "de": "Vertriebsteam",
+            "en": "sales team"
+          }
+        },
+        {
+          "targetText": "바꾸죠",
+          "kind": "verb",
+          "base": {
+            "de": "wechseln wir",
+            "en": "let's switch"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "송별회는",
+            "금요일",
+            "식사하는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "인원",
+            "견적을",
+            "넘으면"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "점심으로",
+            "메뉴",
+            "정하죠"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "송별회",
+        "familyKey": "송별회",
+        "pos": "noun",
+        "surface": "송별회는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "송별회는 금요일 저녁에 다 같이 식사하는 게 어때요? 장소는 제가 두세 군데 알아볼게요.",
+          "base": {
+            "de": "Wie wäre es, wenn wir zur Abschiedsfeier am Freitagabend alle zusammen essen gehen? Ich sehe mir zwei oder drei Lokale an.",
+            "en": "How about all going out for dinner on Friday for the farewell? I'll look into two or three places."
+          }
+        },
+        "base": {
+          "de": "Abschiedsfeier",
+          "en": "farewell gathering"
+        },
+        "whyThisWord": {
+          "de": "송별회 benennt den Anlass. So kannst du eine andere Form für dieselbe Feier vorschlagen.",
+          "en": "송별회 names the occasion. It lets you propose a different format for the same farewell."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "게 어때요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "moving-day",
+      "title": {
+        "de": "Einen Umzug zu dritt planen",
+        "en": "Planning a move with helpers"
+      },
+      "situation": {
+        "de": "Du sitzt mit zwei Helfern am Küchentisch. Gemeinsam besprecht ihr den Ablauf eines Umzugs in ein Mehrfamilienhaus.",
+        "en": "You and two helpers are at the kitchen table planning a move into an apartment building."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Freund beim Umzug",
+            "en": "Friend who is moving"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Zweite Umzugshilfe",
+            "en": "Second helper"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du sitzt mit zwei Helfern am Küchentisch. Gemeinsam besprecht ihr den Ablauf eines Umzugs in ein Mehrfamilienhaus. „토요일 이사 때 짐이 좀 많아요. 셋이서 어떻게 나눠서 옮기면 좋을까요?“",
+        "en": "You and two helpers are at the kitchen table planning a move into an apartment building. “토요일 이사 때 짐이 좀 많아요. 셋이서 어떻게 나눠서 옮기면 좋을까요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "토요일 이사 때 짐이 좀 많아요. 셋이서 어떻게 나눠서 옮기면 좋을까요?",
+          "base": {
+            "de": "Am Samstag ist beim Umzug einiges zu tragen. Wie teilen wir das zu dritt am besten auf?",
+            "en": "There's quite a lot to move on Saturday. How should the three of us divide it up?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "먼저 승강기를 몇 시부터 쓸 수 있는지 확인하고, 큰 가구부터 내리는 게 어때요? 박스는 제가 맡을게요.",
+          "base": {
+            "de": "Wie wäre es, zuerst zu klären, ab wann wir den Aufzug benutzen können, und mit den großen Möbeln anzufangen? Ich übernehme die Kartons.",
+            "en": "How about finding out when we can use the lift, then taking the large furniture down first? I'll handle the boxes."
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "승강기는 아홉 시부터 두 시간만 예약돼 있어요. 그 뒤에는 다른 집이 쓰거든요.",
+          "base": {
+            "de": "Der Aufzug ist ab neun nur zwei Stunden für uns reserviert. Danach benutzt ihn ein anderer Haushalt.",
+            "en": "The lift is booked for only two hours starting at nine. Another household has it after that."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "두 시간이면 빠듯하니까 아홉 시에 가구부터 내려서 비상구 말고 경비실 옆에 모아 두죠. 가구는 두 분이 맡아 주시겠어요?",
+          "base": {
+            "de": "Zwei Stunden sind knapp. Bringen wir um neun zuerst die Möbel runter und stellen wir sie neben die Pförtnerloge, weg vom Notausgang. Könnt ihr beide die Möbel übernehmen?",
+            "en": "Two hours is tight. Let's bring the furniture down first at nine and put it beside the security office, clear of the emergency exit. Could you two handle the furniture?"
+          },
+          "register": "haeyo",
+          "move": "invite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저도 하나 말씀드릴게요. 트럭은 열 시에나 도착한대요. 그 전까지는 실을 데가 없어요.",
+          "base": {
+            "de": "Ich hätte noch etwas. Der Lastwagen kommt erst um zehn. Vorher können wir nichts aufladen.",
+            "en": "There's one more thing. The truck won't arrive until ten. We can't load anything onto it before then."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 아홉 시부터 두 분은 가구를, 저는 박스를 내리고, 열 시에 트럭이 오면 셋이서 바로 싣기로 해요.",
+          "base": {
+            "de": "Ab neun bringt ihr beide also die Möbel runter und ich die Kartons. Wenn um zehn der Lastwagen kommt, laden wir ihn gleich zu dritt.",
+            "en": "So from nine, you two bring down the furniture and I'll bring down the boxes. When the truck arrives at ten, all three of us will load it straight away."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "먼저",
+          "승강기를",
+          "몇 시부터",
+          "쓸 수 있는지",
+          "확인하고,"
+        ],
+        "distractors": [
+          "수리했어요",
+          "탔는데"
+        ],
+        "frameSuffix": " 큰 가구부터 내리는 게 어때요? 박스는 제가 맡을게요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 빠듯하니까 아홉 시에 가구부터 내려서 비상구 말고 경비실 옆에 모아 두죠. 가구는 두 분이 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "두 시간이면",
+            "acceptedAnswers": [
+              "두 시간이면",
+              "두 시간으로는",
+              "두 시간은"
+            ],
+            "kind": "frame",
+            "choices": [
+              "두 시까지",
+              "두 시간이면",
+              "두 시간마다",
+              "두 시부터"
+            ]
+          },
+          {
+            "answer": "맡아 주시겠어요",
+            "acceptedAnswers": [
+              "맡아 주시겠어요",
+              "담당해 주시겠어요",
+              "맡아 주실래요",
+              "맡아 주실 수 있을까요",
+              "맡아 주실 수 있으세요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 아홉 시부터 두 분은 가구를, 저는 박스를 내리고, 열 시에 트럭이 오면 셋이서 바로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그럼",
+            "acceptedAnswers": [
+              "그럼",
+              "그러면",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "싣기로 해요",
+            "acceptedAnswers": [
+              "싣기로 해요",
+              "싣는 걸로 해요",
+              "싣도록 해요",
+              "싣기로 하죠",
+              "싣는 걸로 하죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "먼저 ",
+        "answer": "승강기를",
+        "after": " 몇 시부터 쓸 수 있는지 확인하고, 큰 가구부터 내리는 게 어때요? 박스는 제가 맡을게요.",
+        "acceptedAnswers": [
+          "승강기를"
+        ],
+        "fallbackChoices": [
+          "식탁을",
+          "서랍장을",
+          "승강기를",
+          "이삿짐을"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Die Aufgaben auf mehrere Personen verteilen",
+          "en": "Divide the jobs between people"
+        },
+        "rule": {
+          "de": "Mit 제가 맡을게요 sagst du, welchen Teil du übernimmst. Eine Frage lässt den anderen die Wahl, ob sie die restlichen Aufgaben übernehmen können.",
+          "en": "Say which part you will take on with 제가 맡을게요. Use a question to leave others a say in the remaining jobs."
+        },
+        "examples": [
+          {
+            "targetText": "먼저 승강기를 몇 시부터 쓸 수 있는지 확인하고, 큰 가구부터 내리는 게 어때요? 박스는 제가 맡을게요.",
+            "base": {
+              "de": "Wie wäre es, zuerst zu klären, ab wann wir den Aufzug benutzen können, und mit den großen Möbeln anzufangen? Ich übernehme die Kartons.",
+              "en": "How about finding out when we can use the lift, then taking the large furniture down first? I'll handle the boxes."
+            },
+            "highlights": [
+              "내리는 게 어때요?",
+              "제가 맡을게요"
+            ]
+          },
+          {
+            "targetText": "발표 자료는 제가 맡을게요. 두 분은 사진하고 소리를 나눠서 준비해 주시겠어요?",
+            "base": {
+              "de": "Ich übernehme die Präsentationsunterlagen. Könnten Sie beide sich die Vorbereitung von Bildern und Ton teilen?",
+              "en": "I'll take care of the presentation materials. Could the two of you divide up the pictures and the sound?"
+            },
+            "highlights": [
+              "제가 맡을게요",
+              "나눠서"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "승강기를",
+          "kind": "noun",
+          "lemma": "승강기",
+          "base": {
+            "de": "Aufzug",
+            "en": "lift"
+          }
+        },
+        {
+          "targetText": "쓸 수 있는지",
+          "kind": "frame",
+          "base": {
+            "de": "ob man ihn benutzen kann",
+            "en": "whether it can be used"
+          }
+        },
+        {
+          "targetText": "제가 맡을게요",
+          "kind": "frame",
+          "base": {
+            "de": "das übernehme ich",
+            "en": "I'll take care of it"
+          }
+        },
+        {
+          "targetText": "가구부터",
+          "kind": "noun",
+          "base": {
+            "de": "die Möbel zuerst",
+            "en": "the furniture first"
+          }
+        },
+        {
+          "targetText": "트럭은",
+          "kind": "noun",
+          "base": {
+            "de": "was den Lastwagen angeht",
+            "en": "as for the truck"
+          }
+        },
+        {
+          "targetText": "비상구",
+          "kind": "noun",
+          "base": {
+            "de": "Notausgang",
+            "en": "emergency exit"
+          }
+        },
+        {
+          "targetText": "경비실",
+          "kind": "noun",
+          "base": {
+            "de": "Pförtnerloge",
+            "en": "security office"
+          }
+        },
+        {
+          "targetText": "빠듯하니까",
+          "kind": "adjective",
+          "base": {
+            "de": "weil die Zeit knapp ist",
+            "en": "since time is tight"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "승강기를",
+            "시부터",
+            "확인하고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "빠듯하니까",
+            "비상구",
+            "가구는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "가구를",
+            "박스를",
+            "싣기로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "승강기",
+        "familyKey": "승강기",
+        "pos": "noun",
+        "surface": "승강기를",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "먼저 승강기를 몇 시부터 쓸 수 있는지 확인하고, 큰 가구부터 내리는 게 어때요? 박스는 제가 맡을게요.",
+          "base": {
+            "de": "Wie wäre es, zuerst zu klären, ab wann wir den Aufzug benutzen können, und mit den großen Möbeln anzufangen? Ich übernehme die Kartons.",
+            "en": "How about finding out when we can use the lift, then taking the large furniture down first? I'll handle the boxes."
+          }
+        },
+        "base": {
+          "de": "Aufzug",
+          "en": "lift"
+        },
+        "whyThisWord": {
+          "de": "승강기 ist eine Bezeichnung für den Aufzug, wie sie auch in einer Reservierung stehen kann. Damit lässt sich das Zeitfenster genau benennen.",
+          "en": "승강기 is a word for a lift that you might see on a booking. It helps you identify which time slot you mean."
+        },
+        "remainder": [
+          "를"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": []
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "project-tasks",
+      "title": {
+        "de": "Ein Projekt zu dritt aufteilen",
+        "en": "Splitting a project three ways"
+      },
+      "situation": {
+        "de": "Euer kleines Projektteam trifft sich zum ersten Mal, um den Arbeitsbeginn zu besprechen.",
+        "en": "Your small project team meets for the first time to plan how to get started."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Projektleiter Hyeonu",
+            "en": "Project lead Hyeonu"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Kollegin Sora",
+            "en": "Colleague Sora"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Euer kleines Projektteam trifft sich zum ersten Mal, um den Arbeitsbeginn zu besprechen. „이번 프로젝트는 셋이서 한 달 안에 끝내야 해요. 일부터 어떻게 나눌까요?“",
+        "en": "Your small project team meets for the first time to plan how to get started. “이번 프로젝트는 셋이서 한 달 안에 끝내야 해요. 일부터 어떻게 나눌까요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이번 프로젝트는 셋이서 한 달 안에 끝내야 해요. 일부터 어떻게 나눌까요?",
+          "base": {
+            "de": "Dieses Projekt müssen wir zu dritt innerhalb eines Monats abschließen. Wie teilen wir die Arbeit auf?",
+            "en": "The three of us need to finish this project in a month. How should we divide up the work?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "우선 보고서 초안을 제가 쓸게요. 자료 조사는 두 분이 나눠서 하시는 게 어때요? 매주 진행 상황을 맞춰 보죠.",
+          "base": {
+            "de": "Ich schreibe erst einmal den Berichtsentwurf. Wie wäre es, wenn Sie beide sich die Recherche teilen? Gleichen wir jede Woche unseren Arbeitsstand ab.",
+            "en": "I'll write the draft report first. How about the two of you sharing the research? Let's compare progress each week."
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저는 괜찮은데요, 셋째 주에는 제가 휴가라서 일주일 내내 자리에 없어요.",
+          "base": {
+            "de": "Für mich ist das in Ordnung, aber in der dritten Woche habe ich Urlaub und bin die ganze Woche weg.",
+            "en": "That's fine by me, but I'm on leave the whole of week three."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "소라 씨는 휴가 전에 끝낼 수 있는 부분부터 가져가시면 어떨까요? 어느 쪽이 편하신지 말씀해 주세요.",
+          "base": {
+            "de": "Sora, wie wäre es, wenn Sie zuerst einen Teil übernehmen, den Sie vor dem Urlaub schaffen? Sagen Sie uns bitte, was Ihnen besser liegt.",
+            "en": "Sora, how about taking a part you can finish before your leave first? Please tell us which part would suit you."
+          },
+          "register": "haeyo",
+          "move": "invite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "아, 그리고 오늘 아침에 부장님이 시연도 결과물에 추가하셨어요. 누가 맡을지도 정해야 해요.",
+          "base": {
+            "de": "Heute Morgen hat unsere Abteilungsleitung noch eine Vorführung zu den geforderten Ergebnissen hinzugefügt. Wir müssen klären, wer sie übernimmt.",
+            "en": "Oh, and our department head added a demo to the deliverables this morning. We need to decide who'll take that on."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "시연은 제가 맡을게요. 대신 초안 검토는 현우 씨가 해 주시겠어요? 그렇게 정리해도 괜찮죠?",
+          "base": {
+            "de": "Die Vorführung übernehme ich. Würden Sie dafür den Entwurf prüfen, Hyeonu? Ist diese Aufteilung für Sie in Ordnung?",
+            "en": "I'll take the demo. In return, could you review the draft, Hyeonu? Is everyone happy with that split?"
+          },
+          "register": "haeyo",
+          "move": "concede"
+        }
+      ],
+      "build": {
+        "framePrefix": "우선 보고서 초안을 제가 쓸게요. ",
+        "chunks": [
+          "자료 조사는",
+          "두 분이",
+          "나눠서",
+          "하시는 게",
+          "어때요?"
+        ],
+        "distractors": [
+          "혼자서만",
+          "미뤘어요"
+        ],
+        "frameSuffix": " 매주 진행 상황을 맞춰 보죠."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "소라 씨는 휴가 전에 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 부분부터 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "? 어느 쪽이 편하신지 말씀해 주세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "끝낼 수 있는",
+            "acceptedAnswers": [
+              "끝낼 수 있는",
+              "마칠 수 있는",
+              "끝마칠 수 있는"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "가져가시면 어떨까요",
+            "acceptedAnswers": [
+              "가져가시면 어떨까요",
+              "맡으시면 어떨까요",
+              "맡아 보시면 어떨까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "시연은 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 초안 검토는 현우 씨가 해 주시겠어요? 그렇게 정리해도 괜찮죠?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "제가 맡을게요",
+            "acceptedAnswers": [
+              "제가 맡을게요",
+              "제가 담당할게요",
+              "제가 맡아 볼게요",
+              "제가 할게요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "대신",
+            "acceptedAnswers": [
+              "대신",
+              "그 대신",
+              "그 대신에"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "우선 보고서 ",
+        "answer": "초안을",
+        "after": " 제가 쓸게요. 자료 조사는 두 분이 나눠서 하시는 게 어때요? 매주 진행 상황을 맞춰 보죠.",
+        "acceptedAnswers": [
+          "초안을"
+        ],
+        "fallbackChoices": [
+          "준비물을",
+          "초안을",
+          "영수증을",
+          "견적을"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Arbeit vorschlagen und einen eigenen Beitrag zusagen",
+          "en": "Suggest a division and commit to a part"
+        },
+        "rule": {
+          "de": "Mit -는 게 어때요? öffnest du einen Vorschlag für die Gruppe. Mit 제가 …을 맡을게요 oder 제가 쓸게요 bindest du dich selbst an eine Aufgabe.",
+          "en": "Use -는 게 어때요? to open a proposal to the group. 제가 …을 맡을게요 or 제가 쓸게요 commits you to your own part."
+        },
+        "examples": [
+          {
+            "targetText": "우선 보고서 초안을 제가 쓸게요. 자료 조사는 두 분이 나눠서 하시는 게 어때요? 매주 진행 상황을 맞춰 보죠.",
+            "base": {
+              "de": "Ich schreibe erst einmal den Berichtsentwurf. Wie wäre es, wenn Sie beide sich die Recherche teilen? Gleichen wir jede Woche unseren Arbeitsstand ab.",
+              "en": "I'll write the draft report first. How about the two of you sharing the research? Let's compare progress each week."
+            },
+            "highlights": [
+              "제가 쓸게요",
+              "하시는 게 어때요?"
+            ]
+          },
+          {
+            "targetText": "홍보 문구는 먼저 같이 쓰는 게 어때요? 인쇄소에 넘기는 일은 제가 맡을게요.",
+            "base": {
+              "de": "Wie wäre es, den Werbetext zuerst gemeinsam zu schreiben? Die Übergabe an die Druckerei übernehme ich.",
+              "en": "How about drafting the publicity text together first? I'll handle getting it to the printer."
+            },
+            "highlights": [
+              "쓰는 게 어때요",
+              "제가 맡을게요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "초안을",
+          "kind": "noun",
+          "lemma": "초안",
+          "base": {
+            "de": "erster Entwurf",
+            "en": "initial draft"
+          }
+        },
+        {
+          "targetText": "하시는 게 어때요",
+          "kind": "frame",
+          "base": {
+            "de": "wie wäre es, wenn Sie das machen?",
+            "en": "how about you doing it?"
+          }
+        },
+        {
+          "targetText": "대신",
+          "kind": "connector",
+          "base": {
+            "de": "im Gegenzug",
+            "en": "in return"
+          }
+        },
+        {
+          "targetText": "자료 조사는",
+          "kind": "noun",
+          "base": {
+            "de": "die Recherche",
+            "en": "the research"
+          }
+        },
+        {
+          "targetText": "시연은",
+          "kind": "noun",
+          "base": {
+            "de": "die Vorführung",
+            "en": "the demo"
+          }
+        },
+        {
+          "targetText": "검토는",
+          "kind": "noun",
+          "base": {
+            "de": "die Durchsicht",
+            "en": "the review"
+          }
+        },
+        {
+          "targetText": "매주",
+          "kind": "adverb",
+          "base": {
+            "de": "jede Woche",
+            "en": "each week"
+          }
+        },
+        {
+          "targetText": "맡을게요",
+          "kind": "verb",
+          "base": {
+            "de": "ich übernehme das",
+            "en": "I'll take it on"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "조사는",
+            "나눠서",
+            "하시는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "휴가",
+            "부분부터",
+            "편하신지"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "시연은",
+            "검토는",
+            "정리해도"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "초안",
+        "familyKey": "초안",
+        "pos": "noun",
+        "surface": "초안을",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "우선 보고서 초안을 제가 쓸게요. 자료 조사는 두 분이 나눠서 하시는 게 어때요? 매주 진행 상황을 맞춰 보죠.",
+          "base": {
+            "de": "Ich schreibe erst einmal den Berichtsentwurf. Wie wäre es, wenn Sie beide sich die Recherche teilen? Gleichen wir jede Woche unseren Arbeitsstand ab.",
+            "en": "I'll write the draft report first. How about the two of you sharing the research? Let's compare progress each week."
+          }
+        },
+        "base": {
+          "de": "erster Entwurf",
+          "en": "initial draft"
+        },
+        "whyThisWord": {
+          "de": "초안 bezeichnet eine erste Fassung, an der andere weiterarbeiten können. Ein Team kann so die Übergabe vor einer Abwesenheit planen.",
+          "en": "초안 is a first version others can develop. It gives a team something concrete to hand over before an absence."
+        },
+        "remainder": [
+          "을"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": []
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "house-rules",
+      "title": {
+        "de": "Regeln fürs Zusammenwohnen",
+        "en": "House rules for flatmates"
+      },
+      "situation": {
+        "de": "Beim Einzug besprecht ihr zu zweit, wie ihr Schlaf und Haushalt miteinander vereinbaren könnt.",
+        "en": "As you move in together, you discuss how to balance sleep and household jobs."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Neue Mitbewohnerin Daeun",
+            "en": "New flatmate Daeun"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Einzug besprecht ihr zu zweit, wie ihr Schlaf und Haushalt miteinander vereinbaren könnt. „같이 살게 됐으니까 규칙을 좀 정해요. 저는 야간 근무라서 생활 시간이 좀 달라요.“",
+        "en": "As you move in together, you discuss how to balance sleep and household jobs. “같이 살게 됐으니까 규칙을 좀 정해요. 저는 야간 근무라서 생활 시간이 좀 달라요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "같이 살게 됐으니까 규칙을 좀 정해요. 저는 야간 근무라서 생활 시간이 좀 달라요.",
+          "base": {
+            "de": "Da wir jetzt zusammenwohnen, sollten wir ein paar Regeln vereinbaren. Ich habe Nachtschicht und daher einen etwas anderen Tagesrhythmus.",
+            "en": "Now that we live together, let's agree on a few ground rules. I work nights, so my routine is a little different."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 집안일은 요일로 나누고, 소음은 시간대로 정하는 게 어때요? 다은 씨는 보통 몇 시에 주무세요?",
+          "base": {
+            "de": "Wie wäre es, die Hausarbeit nach Wochentagen aufzuteilen und für Lärm bestimmte Zeiten festzulegen? Wann schläfst du normalerweise, Daeun?",
+            "en": "How about dividing chores up by day and setting times for noisy activities? When do you normally sleep, Daeun?"
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "퇴근하고 아침에 자서 오후 두 시까지는 거의 못 일어나요. 그 시간에 조용하면 정말 좋겠어요.",
+          "base": {
+            "de": "Ich lege mich morgens nach der Schicht hin und wache kaum vor zwei Uhr nachmittags auf. Es wäre schön, wenn es bis dahin ruhig wäre.",
+            "en": "I sleep in the morning after work and hardly ever wake before two in the afternoon. I'd really appreciate some quiet until then."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "오후 두 시까지는 제가 조용히 할 테니까 밤에 출근 준비하실 때는 소리를 조금만 줄여 주시겠어요?",
+          "base": {
+            "de": "Ich verhalte mich bis zwei nachmittags leise. Kannst du dafür abends, wenn du dich auf die Arbeit vorbereitest, etwas weniger Lärm machen?",
+            "en": "I'll keep quiet until two in the afternoon. In return, could you keep the noise down a bit when you're getting ready for work at night?"
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "좋아요. 그런데 평일에는 근무 일정이 계속 바뀌어서 청소 요일을 정해도 못 지킬 것 같아요.",
+          "base": {
+            "de": "Gerne. Unter der Woche ändern sich meine Schichten allerdings ständig. Einen festen Putztag werde ich wohl nicht einhalten können.",
+            "en": "Sure. My shifts keep changing on weekdays, though, so I don't think I can stick to a set cleaning day."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 청소는 요일로 나누는 대신 주말에 같이 하죠. 토요일 오후 세 시면 둘 다 깨어 있으니까 괜찮죠?",
+          "base": {
+            "de": "Dann teilen wir das Putzen nicht nach Wochentagen auf, sondern putzen am Wochenende zusammen. Samstag um drei nachmittags sind wir beide wach. Passt dir das?",
+            "en": "Then instead of splitting the cleaning by day, let's do it together at the weekend. We'll both be awake at three on Saturday afternoon. Does that work?"
+          },
+          "register": "haeyo",
+          "move": "concede"
+        }
+      ],
+      "build": {
+        "framePrefix": "그럼 ",
+        "chunks": [
+          "집안일은",
+          "요일로",
+          "나누고,",
+          "소음은",
+          "시간대로",
+          "정하는 게",
+          "어때요?"
+        ],
+        "distractors": [
+          "새벽마다",
+          "돌렸어요"
+        ],
+        "frameSuffix": " 다은 씨는 보통 몇 시에 주무세요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "오후 두 시까지는 제가 조용히 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 밤에 출근 준비하실 때는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 조금만 줄여 주시겠어요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "할 테니까",
+            "acceptedAnswers": [
+              "할 테니까",
+              "할 거니까",
+              "할 테니"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "소리를",
+            "acceptedAnswers": [
+              "소리를",
+              "소음을",
+              "나는 소리를"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 청소는 요일로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 주말에 같이 하죠. 토요일 오후 세 시면 둘 다 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 괜찮죠?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "나누는 대신",
+            "acceptedAnswers": [
+              "나누는 대신",
+              "나누는 대신에",
+              "나누지 말고"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "깨어 있으니까",
+            "acceptedAnswers": [
+              "깨어 있으니까",
+              "깨어 있어서",
+              "깨어 있으니"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "그럼 ",
+        "answer": "집안일은",
+        "after": " 요일로 나누고, 소음은 시간대로 정하는 게 어때요? 다은 씨는 보통 몇 시에 주무세요?",
+        "acceptedAnswers": [
+          "집안일은"
+        ],
+        "fallbackChoices": [
+          "관광은",
+          "집안일은",
+          "외근은",
+          "장학금은"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Einen Rahmen vorschlagen und nach dem Alltag fragen",
+          "en": "Propose a framework, then ask about their routine"
+        },
+        "rule": {
+          "de": "Mit -는 게 어때요? schlägst du vor, wonach ihr die Dinge einteilt, etwa nach Wochentag oder Uhrzeit. Eine Frage zu den Gewohnheiten der anderen Person hält die Details offen.",
+          "en": "Use -는 게 어때요? to propose how things get divided up, such as by day or by time. A question about the other person's habits keeps the details open."
+        },
+        "examples": [
+          {
+            "targetText": "그럼 집안일은 요일로 나누고, 소음은 시간대로 정하는 게 어때요? 다은 씨는 보통 몇 시에 주무세요?",
+            "base": {
+              "de": "Wie wäre es, die Hausarbeit nach Wochentagen aufzuteilen und für Lärm bestimmte Zeiten festzulegen? Wann schläfst du normalerweise, Daeun?",
+              "en": "How about dividing chores up by day and setting times for noisy activities? When do you normally sleep, Daeun?"
+            },
+            "highlights": [
+              "정하는 게 어때요?",
+              "몇 시에 주무세요?"
+            ]
+          },
+          {
+            "targetText": "사무실 냉장고는 칸으로 나누고 설거지는 당번으로 정하는 게 어때요? 수진 씨는 보통 몇 시에 점심 드세요?",
+            "base": {
+              "de": "Wie wäre es, den Bürokühlschrank nach Fächern aufzuteilen und einen Abwaschdienst festzulegen? Sujin, wann essen Sie normalerweise zu Mittag?",
+              "en": "How about dividing the office fridge by shelf and setting a washing-up rota? Sujin, when do you usually have lunch?"
+            },
+            "highlights": [
+              "정하는 게 어때요?",
+              "몇 시에 점심 드세요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "집안일은",
+          "kind": "noun",
+          "lemma": "집안일",
+          "base": {
+            "de": "Hausarbeit",
+            "en": "housework"
+          }
+        },
+        {
+          "targetText": "할 테니까",
+          "kind": "frame",
+          "base": {
+            "de": "ich werde das tun, also …",
+            "en": "I'll do it, so …"
+          }
+        },
+        {
+          "targetText": "나누는 대신",
+          "kind": "frame",
+          "base": {
+            "de": "statt es aufzuteilen",
+            "en": "instead of dividing it up"
+          }
+        },
+        {
+          "targetText": "야간 근무라서",
+          "kind": "noun",
+          "base": {
+            "de": "weil ich Nachtschicht habe",
+            "en": "because I work nights"
+          }
+        },
+        {
+          "targetText": "소음은",
+          "kind": "noun",
+          "base": {
+            "de": "was den Lärm angeht",
+            "en": "as for the noise"
+          }
+        },
+        {
+          "targetText": "요일로",
+          "kind": "noun",
+          "base": {
+            "de": "nach Wochentag",
+            "en": "by day of the week"
+          }
+        },
+        {
+          "targetText": "평일에는",
+          "kind": "noun",
+          "base": {
+            "de": "unter der Woche",
+            "en": "on weekdays"
+          }
+        },
+        {
+          "targetText": "깨어 있으니까",
+          "kind": "frame",
+          "base": {
+            "de": "weil wir wach sind",
+            "en": "because we're awake"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "집안일은",
+            "소음은",
+            "시간대로"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "조용히",
+            "출근",
+            "소리를"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "주말에",
+            "토요일",
+            "깨어"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "집안일",
+        "familyKey": "집안일",
+        "pos": "noun",
+        "surface": "집안일은",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "그럼 집안일은 요일로 나누고, 소음은 시간대로 정하는 게 어때요? 다은 씨는 보통 몇 시에 주무세요?",
+          "base": {
+            "de": "Wie wäre es, die Hausarbeit nach Wochentagen aufzuteilen und für Lärm bestimmte Zeiten festzulegen? Wann schläfst du normalerweise, Daeun?",
+            "en": "How about dividing chores up by day and setting times for noisy activities? When do you normally sleep, Daeun?"
+          }
+        },
+        "base": {
+          "de": "Hausarbeit",
+          "en": "housework"
+        },
+        "whyThisWord": {
+          "de": "집안일 ist der Oberbegriff für Aufgaben im Haushalt. Damit kannst du über die Verteilung sprechen, bevor du einzelne Arbeiten nennst.",
+          "en": "집안일 covers household jobs as a group, allowing you to negotiate how to share them before naming a particular chore."
+        },
+        "remainder": [
+          "은"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "할 테니까",
+          "status": "productive"
+        },
+        {
+          "surface": "나누는 대신",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "neighbourhood-cleanup",
+      "title": {
+        "de": "Die Aufräumaktion im Viertel",
+        "en": "The neighbourhood clean-up"
+      },
+      "situation": {
+        "de": "In der Nachbarschaftsgruppe planst du mit der Koordination eine gemeinsame Aufräumaktion.",
+        "en": "In the neighbourhood group, you and the coordinator are planning a community clean-up."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Vertretung des Wohnblocks",
+            "en": "Residents' block representative"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Mitarbeitende der Hausverwaltung",
+            "en": "Member of the management office"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Nachbarschaftsgruppe planst du mit der Koordination eine gemeinsame Aufräumaktion. „이번 토요일 아침에 단지 청소를 하려고 해요. 어떻게 진행하면 좋을지 의견 주세요.“",
+        "en": "In the neighbourhood group, you and the coordinator are planning a community clean-up. “이번 토요일 아침에 단지 청소를 하려고 해요. 어떻게 진행하면 좋을지 의견 주세요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이번 토요일 아침에 단지 청소를 하려고 해요. 어떻게 진행하면 좋을지 의견 주세요.",
+          "base": {
+            "de": "Wir möchten am Samstagmorgen die Wohnanlage säubern. Wie könnten wir das organisieren? Ich freue mich über Vorschläge.",
+            "en": "We'd like to clean up the housing complex this Saturday morning. How should we go about it? I'd welcome suggestions."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "장갑하고 집게를 관리소에서 빌릴 수 있는지 먼저 확인하고, 구역을 나눠서 조별로 움직이는 게 어때요?",
+          "base": {
+            "de": "Wie wäre es, zuerst zu klären, ob wir uns Handschuhe und Greifzangen bei der Hausverwaltung leihen können, und dann die Bereiche nach Gruppen aufzuteilen?",
+            "en": "How about checking first whether the management office can lend us gloves and litter pickers, then dividing the areas between groups?"
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "좋은데, 토요일에 비 올 확률이 육십 퍼센트래요. 그냥 밀고 가야 할지 고민이에요.",
+          "base": {
+            "de": "Gute Idee. Für Samstag sind allerdings sechzig Prozent Regenwahrscheinlichkeit angesagt. Ich weiß nicht, ob wir einfach daran festhalten sollen.",
+            "en": "Good idea, but there's a sixty percent chance of rain on Saturday. I'm wondering whether we should just go ahead anyway."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "날씨는 어쩔 수 없으니까 비가 오면 일요일 아침으로 바로 옮기기로 하죠. 금요일 저녁에 단체방에 공지하면 돼요.",
+          "base": {
+            "de": "Das Wetter können wir nicht ändern. Vereinbaren wir, den Termin bei Regen gleich auf Sonntagmorgen zu verschieben. Wir können das am Freitagabend im Gruppenchat bekannt geben.",
+            "en": "We can't control the weather, so let's agree to switch straight to Sunday morning if it rains. We can announce the plan in the group chat on Friday evening."
+          },
+          "register": "haeyo",
+          "move": "concede"
+        },
+        {
+          "speaker": "them",
+          "targetText": "관리소인데요. 장비는 장갑 열 켤레하고 집게 열 개가 전부예요. 더 사기는 어려워요.",
+          "base": {
+            "de": "Hier ist die Hausverwaltung. Wir haben insgesamt zehn Paar Handschuhe und zehn Greifzangen. Mehr können wir kaum anschaffen.",
+            "en": "This is the management office. We have ten pairs of gloves and ten litter pickers in total. It would be difficult to buy more."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "비가 오면 일요일로 옮기고, 조별로 열 명씩 시간대를 나누죠. 기다리는 분들은 다음 조에 참여하시면 돼요.",
+          "base": {
+            "de": "Bei Regen wechseln wir auf Sonntag. Teilen wir die Zeit in Schichten mit jeweils zehn Personen ein. Wer noch wartet, kann in der nächsten Gruppe mitmachen.",
+            "en": "We'll move it to Sunday if it rains. Let's stagger the groups, ten people in each time slot. Anyone waiting can join the next group."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "장갑하고 ",
+        "chunks": [
+          "집게를",
+          "관리소에서",
+          "빌릴 수 있는지",
+          "먼저",
+          "확인하고,"
+        ],
+        "distractors": [
+          "반납한 뒤에",
+          "폐기한"
+        ],
+        "frameSuffix": " 구역을 나눠서 조별로 움직이는 게 어때요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "날씨는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 비가 오면 일요일 아침으로 바로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 금요일 저녁에 단체방에 공지하면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "어쩔 수 없으니까",
+            "acceptedAnswers": [
+              "어쩔 수 없으니까",
+              "어쩔 수 없어서",
+              "바꿀 수 없으니까",
+              "어쩔 수 없으니"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "옮기기로 하죠",
+            "acceptedAnswers": [
+              "옮기기로 하죠",
+              "미루기로 하죠",
+              "옮기기로 해요",
+              "옮기는 걸로 하죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 일요일로 옮기고, 조별로 열 명씩 시간대를 나누죠. 기다리는 분들은 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 참여하시면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "비가 오면",
+            "acceptedAnswers": [
+              "비가 오면",
+              "비가 내리면",
+              "비 오면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다음 조에",
+            "acceptedAnswers": [
+              "다음 조에",
+              "다음 그룹에",
+              "그다음 조에"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "장갑하고 ",
+        "answer": "집게를",
+        "after": " 관리소에서 빌릴 수 있는지 먼저 확인하고, 구역을 나눠서 조별로 움직이는 게 어때요?",
+        "acceptedAnswers": [
+          "집게를"
+        ],
+        "fallbackChoices": [
+          "집게를",
+          "빗을",
+          "솥을",
+          "주걱을"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Erst prüfen, dann aufteilen",
+          "en": "Check first, then divide up"
+        },
+        "rule": {
+          "de": "Mit -(으)ㄹ 수 있는지 먼저 확인하고 stellst du eine Klärung an den Anfang. Der eigentliche Vorschlag zur Organisation folgt danach mit -는 게 어때요?",
+          "en": "Use -(으)ㄹ 수 있는지 먼저 확인하고 to put a practical check first. The actual proposal for organising things then follows with -는 게 어때요?"
+        },
+        "examples": [
+          {
+            "targetText": "장갑하고 집게를 관리소에서 빌릴 수 있는지 먼저 확인하고, 구역을 나눠서 조별로 움직이는 게 어때요?",
+            "base": {
+              "de": "Wie wäre es, zuerst zu klären, ob wir uns Handschuhe und Greifzangen bei der Hausverwaltung leihen können, und dann die Bereiche nach Gruppen aufzuteilen?",
+              "en": "How about checking first whether the management office can lend us gloves and litter pickers, then dividing the areas between groups?"
+            },
+            "highlights": [
+              "빌릴 수 있는지 먼저 확인하고",
+              "움직이는 게 어때요?"
+            ]
+          },
+          {
+            "targetText": "강당을 그날 쓸 수 있는지 먼저 확인하고, 공연 순서는 반별로 정하는 게 어때요?",
+            "base": {
+              "de": "Wie wäre es, zuerst zu klären, ob wir die Aula an dem Tag nutzen können, und dann die Reihenfolge der Aufführungen nach Klassen festzulegen?",
+              "en": "How about checking first whether we can use the hall that day, then setting the performance order by class?"
+            },
+            "highlights": [
+              "쓸 수 있는지 먼저 확인하고",
+              "정하는 게 어때요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "집게를",
+          "kind": "noun",
+          "lemma": "집게",
+          "base": {
+            "de": "Greifzange",
+            "en": "litter picker"
+          }
+        },
+        {
+          "targetText": "비가 오면",
+          "kind": "frame",
+          "base": {
+            "de": "wenn es regnet",
+            "en": "if it rains"
+          }
+        },
+        {
+          "targetText": "옮기기로 하죠",
+          "kind": "frame",
+          "base": {
+            "de": "vereinbaren wir, es zu verschieben",
+            "en": "let's agree to move it"
+          }
+        },
+        {
+          "targetText": "장갑",
+          "kind": "noun",
+          "base": {
+            "de": "Handschuhe",
+            "en": "gloves"
+          }
+        },
+        {
+          "targetText": "구역을",
+          "kind": "noun",
+          "base": {
+            "de": "die Bereiche",
+            "en": "the areas"
+          }
+        },
+        {
+          "targetText": "조별로",
+          "kind": "adverb",
+          "base": {
+            "de": "gruppenweise",
+            "en": "by group"
+          }
+        },
+        {
+          "targetText": "단체방에",
+          "kind": "noun",
+          "base": {
+            "de": "im Gruppenchat",
+            "en": "in the group chat"
+          }
+        },
+        {
+          "targetText": "기다리는",
+          "kind": "verb",
+          "base": {
+            "de": "wartend",
+            "en": "waiting"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "집게를",
+            "관리소에서",
+            "빌릴"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "일요일",
+            "단체방에",
+            "공지하면"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "일요일로",
+            "시간대를",
+            "참여하시면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "집게",
+        "familyKey": "집게",
+        "pos": "noun",
+        "surface": "집게를",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "장갑하고 집게를 관리소에서 빌릴 수 있는지 먼저 확인하고, 구역을 나눠서 조별로 움직이는 게 어때요?",
+          "base": {
+            "de": "Wie wäre es, zuerst zu klären, ob wir uns Handschuhe und Greifzangen bei der Hausverwaltung leihen können, und dann die Bereiche nach Gruppen aufzuteilen?",
+            "en": "How about checking first whether the management office can lend us gloves and litter pickers, then dividing the areas between groups?"
+          }
+        },
+        "base": {
+          "de": "Greifzange",
+          "en": "litter picker"
+        },
+        "whyThisWord": {
+          "de": "집게 ist hier das Werkzeug zum Aufheben von Müll. Seine Anzahl begrenzt, wie viele Leute gleichzeitig sammeln können.",
+          "en": "Here 집게 is the tool for picking up litter. Its supply limits how many people can collect litter at once."
+        },
+        "remainder": [
+          "를"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "기로 하죠",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "shared-budget",
+      "title": {
+        "de": "Ein Verein rechnet neu",
+        "en": "A club revises its budget"
+      },
+      "situation": {
+        "de": "Im Vereinsvorstand besprecht ihr die gestiegenen Kosten für euren gemieteten Raum.",
+        "en": "On the club committee you discuss the higher cost of the room you hire."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Vereinsvorsitz",
+            "en": "Club chair"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Vereinsvorstand besprecht ihr die gestiegenen Kosten für euren gemieteten Raum. „대관료가 다음 달부터 이십 퍼센트 올라요. 회비를 올려야 할지 같이 생각해 봐요.“",
+        "en": "On the club committee you discuss the higher cost of the room you hire. “대관료가 다음 달부터 이십 퍼센트 올라요. 회비를 올려야 할지 같이 생각해 봐요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "대관료가 다음 달부터 이십 퍼센트 올라요. 회비를 올려야 할지 같이 생각해 봐요.",
+          "base": {
+            "de": "Die Raummiete steigt ab nächsten Monat um zwanzig Prozent. Überlegen wir zusammen, ob wir den Mitgliedsbeitrag erhöhen sollen.",
+            "en": "The venue fee is going up twenty percent next month. Let's think about whether we should raise the membership fee."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "회비를 올릴 바에는 매주 모임을 격주 모임으로 바꾸는 게 낫겠어요. 빌리는 횟수가 줄면 대관료도 줄잖아요.",
+          "base": {
+            "de": "Bevor wir die Beiträge erhöhen, würde ich unsere wöchentlichen Treffen lieber nur noch alle zwei Wochen abhalten. Wenn wir den Raum seltener buchen, zahlen wir auch weniger Miete.",
+            "en": "Rather than raise the fees, I'd prefer to go from weekly to fortnightly meetings. If we hire the room fewer times, our hire costs go down too."
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "지난주 설문에서 회원 대부분이 회비 인상에 반대했어요. 그런데 신입 회원들은 매주 연습해야 한대요.",
+          "base": {
+            "de": "Bei der Umfrage letzte Woche war die Mehrheit gegen eine Beitragserhöhung. Die neuen Mitglieder sagen allerdings, dass sie jede Woche üben müssen.",
+            "en": "Most members opposed a fee increase in last week's poll. But the new members say they need to practise every week."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그래도 대관료가 오른 건 사실이니까 간식비도 줄이죠. 대관을 쉬는 주에는 온라인으로 연습하면 어때요?",
+          "base": {
+            "de": "Trotzdem ist die Miete gestiegen. Sparen wir auch bei den Snacks. Wie wäre es, in den Wochen ohne Raumbuchung online zu üben?",
+            "en": "Still, the venue fee has gone up, so let's cut our snack budget too. How about practising online in the weeks when we don't hire the room?"
+          },
+          "register": "haeyo",
+          "move": "concede"
+        },
+        {
+          "speaker": "them",
+          "targetText": "장소 쪽에서 이번 주 안에 확답을 달래요. 정식 총회를 열 시간은 없어요.",
+          "base": {
+            "de": "Der Vermieter braucht noch diese Woche eine verbindliche Antwort. Es bleibt keine Zeit, eine Mitgliederversammlung einzuberufen.",
+            "en": "The venue wants a firm answer this week. There's no time to hold a formal members' meeting."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 내일까지 단체방에서 격주 대관과 온라인 연습안에 찬반을 받고, 모레 장소에 답을 주는 걸로 해요.",
+          "base": {
+            "de": "Dann stimmen wir bis morgen im Gruppenchat über die Vorschläge ab, den Raum alle zwei Wochen zu mieten und online zu üben. Übermorgen antworten wir dem Vermieter.",
+            "en": "Then let's take a vote in the group chat by tomorrow on the fortnightly venue hire and online practice proposals, and give the venue our answer the day after."
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "회비를",
+          "올릴 바에는",
+          "매주",
+          "모임을",
+          "격주 모임으로",
+          "바꾸는 게"
+        ],
+        "distractors": [
+          "바꿨는데",
+          "올린 덕분에"
+        ],
+        "frameSuffix": " 낫겠어요. 빌리는 횟수가 줄면 대관료도 줄잖아요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 대관료가 오른 건 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 간식비도 줄이죠. 대관을 쉬는 주에는 온라인으로 연습하면 어때요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그래도",
+            "acceptedAnswers": [
+              "그래도",
+              "그렇더라도",
+              "그렇긴 해도",
+              "하지만",
+              "그렇지만"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "사실이니까",
+            "acceptedAnswers": [
+              "사실이니까",
+              "사실이라서",
+              "사실이니"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 내일까지 단체방에서 격주 대관과 온라인 연습안에 찬반을 받고, 모레 장소에 답을 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그럼",
+            "acceptedAnswers": [
+              "그럼",
+              "그러면",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "주는 걸로 해요",
+            "acceptedAnswers": [
+              "주는 걸로 해요",
+              "주기로 해요",
+              "주는 것으로 해요",
+              "주는 걸로 하죠",
+              "주기로 하죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "회비를 올릴 바에는 매주 모임을 ",
+        "answer": "격주",
+        "after": " 모임으로 바꾸는 게 낫겠어요. 빌리는 횟수가 줄면 대관료도 줄잖아요.",
+        "acceptedAnswers": [
+          "격주"
+        ],
+        "fallbackChoices": [
+          "잔액",
+          "대관료",
+          "찬성표",
+          "격주"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Zwei Alternativen gegeneinander abwägen",
+          "en": "Weigh one alternative against another"
+        },
+        "rule": {
+          "de": "Mit -(으)ㄹ 바에는 beschreibst du die weniger attraktive Möglichkeit. Mit -는 게 낫겠어요 nennst du die Lösung, die du für besser hältst, und begründest sie kurz.",
+          "en": "Use -(으)ㄹ 바에는 for the less attractive option. With -는 게 낫겠어요, put forward the alternative you think is better, then briefly justify it."
+        },
+        "examples": [
+          {
+            "targetText": "회비를 올릴 바에는 매주 모임을 격주 모임으로 바꾸는 게 낫겠어요. 빌리는 횟수가 줄면 대관료도 줄잖아요.",
+            "base": {
+              "de": "Bevor wir die Beiträge erhöhen, würde ich unsere wöchentlichen Treffen lieber nur noch alle zwei Wochen abhalten. Wenn wir den Raum seltener buchen, zahlen wir auch weniger Miete.",
+              "en": "Rather than raise the fees, I'd prefer to go from weekly to fortnightly meetings. If we hire the room fewer times, our hire costs go down too."
+            },
+            "highlights": [
+              "올릴 바에는",
+              "바꾸는 게 낫겠어요"
+            ]
+          },
+          {
+            "targetText": "재료의 질을 낮출 바에는 주문을 줄이는 게 낫겠어요. 이번 주에는 두 종류만 만들죠.",
+            "base": {
+              "de": "Bevor wir die Qualität der Zutaten senken, würde ich lieber weniger bestellen. Diese Woche stellen wir nur zwei Sorten her.",
+              "en": "I'd rather cut the order than use poorer ingredients. Let's make just two varieties this week."
+            },
+            "highlights": [
+              "낮출 바에는",
+              "게 낫겠어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "격주",
+          "kind": "noun",
+          "lemma": "격주",
+          "base": {
+            "de": "im Zweiwochenrhythmus",
+            "en": "alternate weeks"
+          }
+        },
+        {
+          "targetText": "올릴 바에는",
+          "kind": "frame",
+          "base": {
+            "de": "bevor wir es erhöhen",
+            "en": "rather than raise it"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "even so"
+          }
+        },
+        {
+          "targetText": "대관료도",
+          "kind": "noun",
+          "base": {
+            "de": "auch die Raummiete",
+            "en": "the venue cost too"
+          }
+        },
+        {
+          "targetText": "간식비도",
+          "kind": "noun",
+          "base": {
+            "de": "auch das Geld für Snacks",
+            "en": "snack costs too"
+          }
+        },
+        {
+          "targetText": "찬반을",
+          "kind": "noun",
+          "base": {
+            "de": "Ja- und Nein-Stimmen",
+            "en": "votes for and against"
+          }
+        },
+        {
+          "targetText": "모레",
+          "kind": "adverb",
+          "base": {
+            "de": "übermorgen",
+            "en": "the day after tomorrow"
+          }
+        },
+        {
+          "targetText": "줄잖아요",
+          "kind": "verb",
+          "base": {
+            "de": "es sinkt ja",
+            "en": "it goes down, after all"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "회비를",
+            "올릴",
+            "격주"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "대관료가",
+            "간식비도",
+            "온라인으로"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "단체방에서",
+            "찬반을",
+            "모레"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "격주",
+        "familyKey": "격주",
+        "pos": "noun",
+        "surface": "격주",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "회비를 올릴 바에는 매주 모임을 격주 모임으로 바꾸는 게 낫겠어요. 빌리는 횟수가 줄면 대관료도 줄잖아요.",
+          "base": {
+            "de": "Bevor wir die Beiträge erhöhen, würde ich unsere wöchentlichen Treffen lieber nur noch alle zwei Wochen abhalten. Wenn wir den Raum seltener buchen, zahlen wir auch weniger Miete.",
+            "en": "Rather than raise the fees, I'd prefer to go from weekly to fortnightly meetings. If we hire the room fewer times, our hire costs go down too."
+          }
+        },
+        "base": {
+          "de": "im Zweiwochenrhythmus",
+          "en": "alternate weeks"
+        },
+        "whyThisWord": {
+          "de": "격주 bildet mit 모임 eine regelmäßige Veranstaltung im Zweiwochenrhythmus. So lässt sich die Häufigkeit als eigene Stellschraube verhandeln.",
+          "en": "In 격주 모임, 격주 specifies that the meetings take place every other week. It lets you negotiate frequency as a separate cost factor."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "올릴 바에는",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "trip-under-constraints",
+      "title": {
+        "de": "Unterwegs auf der Reise",
+        "en": "Getting around on the trip"
+      },
+      "situation": {
+        "de": "Für eine viertägige Reise überlegt ihr zu dritt, wie ihr zwischen den Orten hin und her kommt.",
+        "en": "Three of you are planning how to get between places on a four-day trip."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Freund Minsu, der das Budget prüft",
+            "en": "Friend Minsu, who is tracking the budget"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Freundin Hana, die mitreist",
+            "en": "Friend Hana, who is coming on the trip"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Für eine viertägige Reise überlegt ihr zu dritt, wie ihr zwischen den Orten hin und her kommt. „삼박 사일에 하루 예산은 십만 원으로 잡았어요. 이동은 어떻게 할까요?“",
+        "en": "Three of you are planning how to get between places on a four-day trip. “삼박 사일에 하루 예산은 십만 원으로 잡았어요. 이동은 어떻게 할까요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "삼박 사일에 하루 예산은 십만 원으로 잡았어요. 이동은 어떻게 할까요?",
+          "base": {
+            "de": "Für unsere vier Tage und drei Nächte habe ich hunderttausend Won pro Tag eingeplant. Wie wollen wir unterwegs von Ort zu Ort kommen?",
+            "en": "I've budgeted a hundred thousand won per day for our four days and three nights. How shall we get around?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "차를 빌려서 가는 게 제일 편할 것 같아요. 운전대는 셋이 돌아가면서 잡고, 기름값은 똑같이 나누는 게 어때요?",
+          "base": {
+            "de": "Am bequemsten wäre wahrscheinlich ein Mietwagen. Wie wäre es, wenn wir uns zu dritt am Steuer abwechseln und das Benzin gleichmäßig aufteilen?",
+            "en": "I think hiring a car would be easiest. How about taking turns at the wheel between the three of us and splitting the petrol equally?"
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저는 면허가 없어서 운전은 못 해요. 그러면 두 분이 계속 운전해야 하는데 괜찮으세요?",
+          "base": {
+            "de": "Ich habe keinen Führerschein und kann nicht fahren. Dann müsstet ihr beide die ganze Zeit fahren. Wäre das für euch in Ordnung?",
+            "en": "I don't have a licence, so I can't drive. That would leave the two of you doing all the driving. Are you okay with that?"
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 장거리는 기차로 가고, 현지에서만 렌트하는 건 어때요? 운전은 제가 할 테니까 민수 씨는 숙소 후보만 골라 주세요.",
+          "base": {
+            "de": "Wie wäre es dann mit der Bahn für die langen Strecken und einem Mietwagen nur vor Ort? Ich fahre. Minsu, such bitte mögliche Unterkünfte heraus.",
+            "en": "Then how about taking the train for the long stretches and hiring a car only once we're there? I'll do the driving, so Minsu, could you shortlist some accommodation?"
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "계산해 봤는데 기차에 하루 렌트까지 하면 하루 예산을 이십 퍼센트나 넘어요.",
+          "base": {
+            "de": "Ich habe es durchgerechnet. Mit der Bahn und einem Tag Mietwagen liegen wir ganze zwanzig Prozent über unserem Tagesbudget.",
+            "en": "I've run the numbers. The train plus one day's car hire puts us a full twenty percent over our daily budget."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "장거리는 기차로 가되 숙소에서 그만큼 못 아끼면 현지에서는 버스로 다니죠. 두 분은 숙소 가격을 알아봐 주세요.",
+          "base": {
+            "de": "Die langen Strecken fahren wir mit der Bahn. Falls wir den Aufpreis bei der Unterkunft nicht einsparen können, fahren wir vor Ort mit dem Bus. Schaut ihr beide bitte nach den Übernachtungspreisen?",
+            "en": "Let's take the train for the long stretches, but if we can't save that much on accommodation, we'll use buses locally. Could you two check accommodation prices?"
+          },
+          "register": "haeyo",
+          "move": "conclude"
+        }
+      ],
+      "build": {
+        "framePrefix": "차를 빌려서 가는 게 제일 편할 것 같아요. ",
+        "chunks": [
+          "운전대는",
+          "셋이",
+          "돌아가면서",
+          "잡고,",
+          "기름값은",
+          "똑같이",
+          "나누는 게",
+          "어때요?"
+        ],
+        "distractors": [
+          "주차한",
+          "혼자만"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 장거리는 기차로 가고, 현지에서만 렌트하는 건 어때요? 운전은 제가 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 민수 씨는 숙소 후보만 골라 주세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "할 테니까",
+            "acceptedAnswers": [
+              "할 테니까",
+              "할 거니까",
+              "할 테니"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "장거리는 기차로 가되 숙소에서 그만큼 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 현지에서는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 다니죠. 두 분은 숙소 가격을 알아봐 주세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "못 아끼면",
+            "acceptedAnswers": [
+              "못 아끼면",
+              "절약하지 못하면",
+              "못 줄이면",
+              "아끼지 못하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "버스로",
+            "acceptedAnswers": [
+              "버스로",
+              "버스를 타고",
+              "버스를 이용해"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "차를 빌려서 가는 게 제일 편할 것 같아요. ",
+        "answer": "운전대는",
+        "after": " 셋이 돌아가면서 잡고, 기름값은 똑같이 나누는 게 어때요?",
+        "acceptedAnswers": [
+          "운전대는"
+        ],
+        "fallbackChoices": [
+          "트렁크는",
+          "정류장은",
+          "운전대는",
+          "요금표는"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Eine Option empfehlen und die Lasten verteilen",
+          "en": "Recommend an option and share the load"
+        },
+        "rule": {
+          "de": "Mit -는 게 제일 편할 것 같아요 empfiehlst du vorsichtig eine Option. Mit 돌아가면서 und 똑같이 나누는 게 어때요? schlägst du vor, Aufwand und Kosten gerecht zu teilen.",
+          "en": "Use -는 게 제일 편할 것 같아요 to recommend an option tentatively. With 돌아가면서 and 똑같이 나누는 게 어때요?, propose sharing the effort and the costs fairly."
+        },
+        "examples": [
+          {
+            "targetText": "차를 빌려서 가는 게 제일 편할 것 같아요. 운전대는 셋이 돌아가면서 잡고, 기름값은 똑같이 나누는 게 어때요?",
+            "base": {
+              "de": "Am bequemsten wäre wahrscheinlich ein Mietwagen. Wie wäre es, wenn wir uns zu dritt am Steuer abwechseln und das Benzin gleichmäßig aufteilen?",
+              "en": "I think hiring a car would be easiest. How about taking turns at the wheel between the three of us and splitting the petrol equally?"
+            },
+            "highlights": [
+              "제일 편할 것 같아요",
+              "똑같이 나누는 게 어때요?"
+            ]
+          },
+          {
+            "targetText": "펜션을 통째로 빌리는 게 제일 편할 것 같아요. 요리는 넷이 돌아가면서 하고, 숙소 비용은 똑같이 나누는 게 어때요?",
+            "base": {
+              "de": "Am bequemsten wäre wahrscheinlich, ein ganzes Ferienhaus zu mieten. Wie wäre es, wenn wir uns zu viert beim Kochen abwechseln und die Übernachtungskosten gleichmäßig aufteilen?",
+              "en": "I think renting a whole holiday house would be easiest. How about the four of us taking turns cooking and splitting the accommodation cost equally?"
+            },
+            "highlights": [
+              "제일 편할 것 같아요",
+              "똑같이 나누는 게 어때요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "운전대는",
+          "kind": "noun",
+          "lemma": "운전대",
+          "base": {
+            "de": "Lenkrad",
+            "en": "steering wheel"
+          }
+        },
+        {
+          "targetText": "할 테니까",
+          "kind": "frame",
+          "base": {
+            "de": "ich übernehme es, also …",
+            "en": "I'll do it, so …"
+          }
+        },
+        {
+          "targetText": "못 아끼면",
+          "kind": "frame",
+          "base": {
+            "de": "wenn wir es nicht einsparen können",
+            "en": "if we can't save it"
+          }
+        },
+        {
+          "targetText": "기름값은",
+          "kind": "noun",
+          "base": {
+            "de": "die Benzinkosten",
+            "en": "the petrol cost"
+          }
+        },
+        {
+          "targetText": "현지에서만",
+          "kind": "adverb",
+          "base": {
+            "de": "nur vor Ort",
+            "en": "only at the destination"
+          }
+        },
+        {
+          "targetText": "숙소",
+          "kind": "noun",
+          "base": {
+            "de": "Unterkunft",
+            "en": "accommodation"
+          }
+        },
+        {
+          "targetText": "면허가",
+          "kind": "noun",
+          "base": {
+            "de": "der Führerschein",
+            "en": "a driving licence"
+          }
+        },
+        {
+          "targetText": "돌아가면서",
+          "kind": "adverb",
+          "base": {
+            "de": "abwechselnd",
+            "en": "taking turns"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "운전대는",
+            "기름값은",
+            "똑같이"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "장거리는",
+            "현지에서만",
+            "숙소"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "장거리는",
+            "버스로",
+            "숙소"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "운전대",
+        "familyKey": "운전대",
+        "pos": "noun",
+        "surface": "운전대는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "차를 빌려서 가는 게 제일 편할 것 같아요. 운전대는 셋이 돌아가면서 잡고, 기름값은 똑같이 나누는 게 어때요?",
+          "base": {
+            "de": "Am bequemsten wäre wahrscheinlich ein Mietwagen. Wie wäre es, wenn wir uns zu dritt am Steuer abwechseln und das Benzin gleichmäßig aufteilen?",
+            "en": "I think hiring a car would be easiest. How about taking turns at the wheel between the three of us and splitting the petrol equally?"
+          }
+        },
+        "base": {
+          "de": "Lenkrad",
+          "en": "steering wheel"
+        },
+        "whyThisWord": {
+          "de": "운전대를 잡다 bedeutet wörtlich, das Lenkrad zu greifen. Damit bietet jemand im Gespräch an, selbst zu fahren.",
+          "en": "운전대를 잡다 literally means to take the wheel. A speaker can use it to offer to do the driving."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "가되",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "meeting-agenda",
+      "title": {
+        "de": "Was auf die Tagesordnung kommt",
+        "en": "What goes on the agenda"
+      },
+      "situation": {
+        "de": "Deine Führungskraft bittet dich, die morgige Besprechung vorzubereiten. Ihr besprecht gemeinsam die Reihenfolge.",
+        "en": "Your manager asks you to prepare tomorrow's meeting. Together you work out its order."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Team manager"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Assistenz der Direktion",
+            "en": "Director's assistant"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Deine Führungskraft bittet dich, die morgige Besprechung vorzubereiten. Ihr besprecht gemeinsam die Reihenfolge. „내일 회의 안건 초안을 좀 잡아 주시겠어요? 오늘 퇴근 전에 보면 좋겠어요.“",
+        "en": "Your manager asks you to prepare tomorrow's meeting. Together you work out its order. “내일 회의 안건 초안을 좀 잡아 주시겠어요? 오늘 퇴근 전에 보면 좋겠어요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "내일 회의 안건 초안을 좀 잡아 주시겠어요? 오늘 퇴근 전에 보면 좋겠어요.",
+          "base": {
+            "de": "Könnten Sie einen Entwurf für die morgige Tagesordnung machen? Ich würde ihn gerne vor Feierabend sehen.",
+            "en": "Could you draft the agenda for tomorrow's meeting? I'd like to see it before the end of the day."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "네, 안건을 결정이 급한 순서대로 정리해서 올릴게요. 꼭 들어가야 하는 항목이 몇 개인지 알려 주시겠어요?",
+          "base": {
+            "de": "Ja, ich ordne die Tagesordnungspunkte danach, wie dringend eine Entscheidung ist, und lege sie Ihnen vor. Können Sie mir sagen, wie viele unbedingt hineinmüssen?",
+            "en": "Yes, I'll order the items by how urgently they need a decision and send them through to you. Could you tell me how many items must go in?"
+          },
+          "register": "haeyo",
+          "move": "invite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "각 팀에서 올라온 게 여섯 개예요. 그런데 회의 시간은 삼십 분밖에 없어요.",
+          "base": {
+            "de": "Die Teams haben sechs Punkte eingereicht. Für die Sitzung haben wir aber nur dreißig Minuten.",
+            "en": "The teams have submitted six items. But we've only got thirty minutes for the meeting."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "삼십 분이면 세 개가 한계예요. 결정이 필요한 세 개만 올리고, 나머지는 메일로 공유하는 쪽으로 정리하면 어떨까요?",
+          "base": {
+            "de": "In dreißig Minuten schaffen wir höchstens drei. Wie wäre es, nur die drei Punkte auf die Tagesordnung zu setzen, die eine Entscheidung brauchen, und den Rest per E-Mail zu teilen?",
+            "en": "Three is our limit in thirty minutes. How about putting only the three items that need a decision on the agenda and circulating the rest by email?"
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "말씀 중에 죄송한데요, 이사님은 내일 첫 십 분만 참석하실 수 있대요.",
+          "base": {
+            "de": "Entschuldigen Sie die Unterbrechung. Der Direktor kann morgen nur in den ersten zehn Minuten dabei sein.",
+            "en": "Sorry to interrupt. The director can only join for the first ten minutes tomorrow."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면 이사님 안건은 첫 십 분에 올리고, 결정이 필요한 두 개는 그 뒤에, 나머지는 메일로 돌리는 거예요.",
+          "base": {
+            "de": "Zusammengefasst setzen wir den Punkt des Direktors in die ersten zehn Minuten. Die zwei weiteren Entscheidungen kommen danach und der Rest geht per E-Mail herum.",
+            "en": "To sum up, we'll take the director's item in the first ten minutes, the other two decisions after that, and circulate the rest by email."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "네, ",
+        "chunks": [
+          "안건을",
+          "결정이",
+          "급한",
+          "순서대로",
+          "정리해서",
+          "올릴게요."
+        ],
+        "distractors": [
+          "결정한 덕분에",
+          "빠졌어요"
+        ],
+        "frameSuffix": " 꼭 들어가야 하는 항목이 몇 개인지 알려 주시겠어요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "삼십 분이면 세 개가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 결정이 필요한 세 개만 올리고, 나머지는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 공유하는 쪽으로 정리하면 어떨까요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "한계예요",
+            "acceptedAnswers": [
+              "한계예요",
+              "한계죠",
+              "최대예요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "메일로",
+            "acceptedAnswers": [
+              "메일로",
+              "이메일로",
+              "전자 우편으로"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 이사님 안건은 첫 십 분에 올리고, 결정이 필요한 두 개는 그 뒤에, 나머지는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 돌리는 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정리하면",
+            "acceptedAnswers": [
+              "정리하면",
+              "요약하면",
+              "정리해 보면",
+              "지금까지 정리하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "메일로",
+            "acceptedAnswers": [
+              "메일로",
+              "이메일로",
+              "전자 우편으로"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "네, ",
+        "answer": "안건을",
+        "after": " 결정이 급한 순서대로 정리해서 올릴게요. 꼭 들어가야 하는 항목이 몇 개인지 알려 주시겠어요?",
+        "acceptedAnswers": [
+          "안건을"
+        ],
+        "fallbackChoices": [
+          "안부를",
+          "간식을",
+          "안건을",
+          "명찰을"
+        ]
+      },
+      "pattern": {
+        "moveType": "invite",
+        "label": {
+          "de": "Zusagen, das Vorgehen nennen und Details erfragen",
+          "en": "Accept, state your approach, then ask for details"
+        },
+        "rule": {
+          "de": "Mit 네, …-(으)ㄹ게요 sagst du zu und nennst mit 순서대로 gleich dein Ordnungsprinzip. Mit -는지 알려 주시겠어요? erfragst du höflich, was du noch wissen musst.",
+          "en": "Use 네, …-(으)ㄹ게요 to accept and name your ordering principle with 순서대로. Then use -는지 알려 주시겠어요? to politely ask for what you still need to know."
+        },
+        "examples": [
+          {
+            "targetText": "네, 안건을 결정이 급한 순서대로 정리해서 올릴게요. 꼭 들어가야 하는 항목이 몇 개인지 알려 주시겠어요?",
+            "base": {
+              "de": "Ja, ich ordne die Tagesordnungspunkte danach, wie dringend eine Entscheidung ist, und lege sie Ihnen vor. Können Sie mir sagen, wie viele unbedingt hineinmüssen?",
+              "en": "Yes, I'll order the items by how urgently they need a decision and send them through to you. Could you tell me how many items must go in?"
+            },
+            "highlights": [
+              "순서대로 정리해서 올릴게요",
+              "몇 개인지 알려 주시겠어요?"
+            ]
+          },
+          {
+            "targetText": "네, 접수된 질문은 들어온 순서대로 정리해서 게시판에 올릴게요. 답변이 꼭 필요한 질문이 몇 개인지 알려 주시겠어요?",
+            "base": {
+              "de": "Ja, ich ordne die eingegangenen Fragen nach Eingang und hänge sie ans Schwarze Brett. Könnten Sie mir sagen, wie viele unbedingt eine Antwort brauchen?",
+              "en": "Yes, I'll arrange the submitted questions in the order they came in and post them on the noticeboard. Could you tell me how many definitely need an answer?"
+            },
+            "highlights": [
+              "순서대로 정리해서",
+              "몇 개인지 알려 주시겠어요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "안건을",
+          "kind": "noun",
+          "lemma": "안건",
+          "base": {
+            "de": "Tagesordnungspunkt",
+            "en": "agenda item"
+          }
+        },
+        {
+          "targetText": "한계예요",
+          "kind": "frame",
+          "base": {
+            "de": "das ist die Grenze",
+            "en": "that's the limit"
+          }
+        },
+        {
+          "targetText": "나머지는",
+          "kind": "frame",
+          "base": {
+            "de": "was den Rest betrifft",
+            "en": "as for the rest"
+          }
+        },
+        {
+          "targetText": "순서대로",
+          "kind": "adverb",
+          "base": {
+            "de": "der Reihe nach",
+            "en": "in order"
+          }
+        },
+        {
+          "targetText": "항목이",
+          "kind": "noun",
+          "base": {
+            "de": "die einzelnen Punkte",
+            "en": "the items"
+          }
+        },
+        {
+          "targetText": "이사님은",
+          "kind": "noun",
+          "base": {
+            "de": "der Direktor",
+            "en": "the director"
+          }
+        },
+        {
+          "targetText": "퇴근 전에",
+          "kind": "phrase",
+          "base": {
+            "de": "vor Feierabend",
+            "en": "before the end of the workday"
+          }
+        },
+        {
+          "targetText": "공유하는",
+          "kind": "verb",
+          "base": {
+            "de": "teilend, weitergebend",
+            "en": "sharing, circulating"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "안건을",
+            "급한",
+            "순서대로"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "결정이",
+            "나머지는",
+            "메일로"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "안건은",
+            "결정이",
+            "메일로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "안건",
+        "familyKey": "안건",
+        "pos": "noun",
+        "surface": "안건을",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "네, 안건을 결정이 급한 순서대로 정리해서 올릴게요. 꼭 들어가야 하는 항목이 몇 개인지 알려 주시겠어요?",
+          "base": {
+            "de": "Ja, ich ordne die Tagesordnungspunkte danach, wie dringend eine Entscheidung ist, und lege sie Ihnen vor. Können Sie mir sagen, wie viele unbedingt hineinmüssen?",
+            "en": "Yes, I'll order the items by how urgently they need a decision and send them through to you. Could you tell me how many items must go in?"
+          }
+        },
+        "base": {
+          "de": "Tagesordnungspunkt",
+          "en": "agenda item"
+        },
+        "whyThisWord": {
+          "de": "안건 bezeichnet einen Punkt, über den ein Gremium beraten oder entscheiden soll. Damit kannst du unterscheiden, was in die Sitzung gehört und was sich schriftlich klären lässt.",
+          "en": "안건 is a matter for discussion or decision. It helps distinguish what belongs in a meeting from what can be handled in writing."
+        },
+        "remainder": [
+          "을"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "말씀 중에 죄송한데요",
+          "status": "recognition"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "scheduling-clash",
+      "title": {
+        "de": "Zwei Teams, ein Besprechungsraum",
+        "en": "Two teams, one meeting room"
+      },
+      "situation": {
+        "de": "Vor einem Besprechungsraum stellst du fest, dass ein zweites Team ebenfalls hineinwill.",
+        "en": "Outside a meeting room you discover that another team intends to use it too."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mitglied des anderen Teams",
+            "en": "Member of the other team"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Zweite Person aus dem anderen Team",
+            "en": "Another colleague from the other team"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor einem Besprechungsraum stellst du fest, dass ein zweites Team ebenfalls hineinwill. „저희 팀이 이 회의실 지금 예약했는데요. 여기 계시면 어떻게 하죠?“",
+        "en": "Outside a meeting room you discover that another team intends to use it too. “저희 팀이 이 회의실 지금 예약했는데요. 여기 계시면 어떻게 하죠?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "저희 팀이 이 회의실 지금 예약했는데요. 여기 계시면 어떻게 하죠?",
+          "base": {
+            "de": "Unser Team hat diesen Raum jetzt reserviert. Was machen wir denn, wenn Sie hier sind?",
+            "en": "Our team booked this room for now. What shall we do if you're in here?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "저희도 같은 시간에 예약했거든요. 양보는 잠깐 미뤄 두고 시스템부터 같이 확인해 보는 게 어때요?",
+          "base": {
+            "de": "Wir haben ihn auch für dieselbe Zeit gebucht. Können wir die Frage, wer nachgibt, kurz zurückstellen und zuerst gemeinsam im System nachsehen?",
+            "en": "We booked the same time as well. How about holding off on who should give way and checking the system together first?"
+          },
+          "register": "haeyo",
+          "move": "invite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "잠깐만요. 끝까지 들어 주시겠어요? 방금 확인했는데 시스템에는 두 예약이 다 유효하게 잡혀 있어요.",
+          "base": {
+            "de": "Einen Augenblick. Würden Sie mich bitte zu Ende anhören? Ich habe gerade nachgesehen. Im System sind beide Buchungen gültig.",
+            "en": "Just a moment. Could you hear me out? I've just checked and both bookings are valid in the system."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "둘 다 유효하면 나눠 쓰기는 어렵고, 급한 쪽이 먼저 쓰는 게 맞죠. 그쪽 회의는 몇 시까지예요?",
+          "base": {
+            "de": "Wenn beide gültig sind, wird es schwierig, den Raum zu teilen. Dann sollte ihn wohl zuerst das Team nutzen, bei dem es eilt. Bis wann geht Ihre Sitzung?",
+            "en": "If both are valid, sharing the room will be difficult. The team with the more urgent need should probably go first. What time does your meeting end?"
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "저희 팀에 외부 손님이 오 분 뒤에 도착하세요. 그래서 지금 바로 준비해야 하거든요.",
+          "base": {
+            "de": "Ein externer Gast unseres Teams kommt in fünf Minuten. Wir müssen deshalb sofort alles vorbereiten.",
+            "en": "Our team's visitor from outside the company arrives in five minutes. We need to set up straight away."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 손님 오시는 쪽이 먼저 쓰세요. 대신 다음 주 같은 시간은 저희가 쓰는 걸로 해 주시겠어요?",
+          "base": {
+            "de": "Dann nehmen Sie den Raum mit Ihrem Gast jetzt zuerst. Könnten wir dafür vereinbaren, dass unser Team ihn nächste Woche zur selben Zeit bekommt?",
+            "en": "Then let the team expecting the guest use it first. In return, could we agree that our team gets this slot next week?"
+          },
+          "register": "haeyo",
+          "move": "concede"
+        }
+      ],
+      "build": {
+        "framePrefix": "저희도 같은 시간에 예약했거든요. ",
+        "chunks": [
+          "양보는",
+          "잠깐",
+          "미뤄 두고",
+          "시스템부터",
+          "같이",
+          "확인해 보는 게"
+        ],
+        "distractors": [
+          "미뤘어요",
+          "취소했으니"
+        ],
+        "frameSuffix": " 어때요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 나눠 쓰기는 어렵고, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 먼저 쓰는 게 맞죠. 그쪽 회의는 몇 시까지예요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "둘 다 유효하면",
+            "acceptedAnswers": [
+              "둘 다 유효하면",
+              "둘 다 유효하다면",
+              "둘 다 인정된다면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "급한 쪽이",
+            "acceptedAnswers": [
+              "급한 쪽이",
+              "급한 팀이",
+              "급한 곳이"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 손님 오시는 쪽이 먼저 쓰세요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 다음 주 같은 시간은 저희가 쓰는 걸로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "대신",
+            "acceptedAnswers": [
+              "대신",
+              "그 대신",
+              "그 대신에"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "해 주시겠어요",
+            "acceptedAnswers": [
+              "해 주시겠어요",
+              "해 주실래요",
+              "해 주실 수 있을까요",
+              "해 주시면 안 될까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "저희도 같은 시간에 예약했거든요. ",
+        "answer": "양보는",
+        "after": " 잠깐 미뤄 두고 시스템부터 같이 확인해 보는 게 어때요?",
+        "acceptedAnswers": [
+          "양보는"
+        ],
+        "fallbackChoices": [
+          "감기는",
+          "양보는",
+          "미납은",
+          "착공은"
+        ]
+      },
+      "pattern": {
+        "moveType": "invite",
+        "label": {
+          "de": "Die Streitfrage zurückstellen und erst die Fakten klären",
+          "en": "Park the dispute and check the facts first"
+        },
+        "rule": {
+          "de": "Mit -거든요 nennst du ruhig deine eigene Lage. 잠깐 미뤄 두고 stellt die Streitfrage zurück, und mit -부터 같이 확인해 보는 게 어때요? schlägst du einen gemeinsamen ersten Schritt vor.",
+          "en": "Use -거든요 to state your own position calmly. 잠깐 미뤄 두고 sets the dispute aside, and -부터 같이 확인해 보는 게 어때요? proposes a shared first step."
+        },
+        "examples": [
+          {
+            "targetText": "저희도 같은 시간에 예약했거든요. 양보는 잠깐 미뤄 두고 시스템부터 같이 확인해 보는 게 어때요?",
+            "base": {
+              "de": "Wir haben ihn auch für dieselbe Zeit gebucht. Können wir die Frage, wer nachgibt, kurz zurückstellen und zuerst gemeinsam im System nachsehen?",
+              "en": "We booked the same time as well. How about holding off on who should give way and checking the system together first?"
+            },
+            "highlights": [
+              "잠깐 미뤄 두고",
+              "부터 같이 확인해 보는 게 어때요?"
+            ]
+          },
+          {
+            "targetText": "저희도 이 연습실을 오늘로 신청했거든요. 누가 쓸지는 잠깐 미뤄 두고 신청 명단부터 같이 확인해 보는 게 어때요?",
+            "base": {
+              "de": "Wir haben diesen Proberaum auch für heute beantragt. Können wir die Frage, wer ihn nutzt, kurz zurückstellen und zuerst gemeinsam die Anmeldeliste ansehen?",
+              "en": "We applied for this rehearsal room for today as well. How about setting aside who gets it and checking the sign-up list together first?"
+            },
+            "highlights": [
+              "잠깐 미뤄 두고",
+              "부터 같이 확인해 보는 게 어때요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "양보는",
+          "kind": "noun",
+          "lemma": "양보",
+          "base": {
+            "de": "Entgegenkommen",
+            "en": "concession"
+          }
+        },
+        {
+          "targetText": "대신",
+          "kind": "connector",
+          "base": {
+            "de": "im Gegenzug",
+            "en": "in return"
+          }
+        },
+        {
+          "targetText": "쓰는 걸로",
+          "kind": "frame",
+          "base": {
+            "de": "mit der Vereinbarung, es zu nutzen",
+            "en": "on the understanding that we use it"
+          }
+        },
+        {
+          "targetText": "예약이",
+          "kind": "noun",
+          "base": {
+            "de": "die Buchungen",
+            "en": "the bookings"
+          }
+        },
+        {
+          "targetText": "시스템부터",
+          "kind": "noun",
+          "base": {
+            "de": "zuerst das System",
+            "en": "the system first"
+          }
+        },
+        {
+          "targetText": "외부 손님이",
+          "kind": "noun",
+          "base": {
+            "de": "ein externer Gast",
+            "en": "an outside guest"
+          }
+        },
+        {
+          "targetText": "유효하게",
+          "kind": "adverb",
+          "base": {
+            "de": "als gültig",
+            "en": "as valid"
+          }
+        },
+        {
+          "targetText": "준비해야",
+          "kind": "verb",
+          "base": {
+            "de": "vorbereiten müssen",
+            "en": "need to prepare"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "양보는",
+            "미뤄",
+            "시스템부터"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "유효하면",
+            "급한",
+            "회의는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "손님",
+            "대신",
+            "다음"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "양보",
+        "familyKey": "양보",
+        "pos": "noun",
+        "surface": "양보는",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "저희도 같은 시간에 예약했거든요. 양보는 잠깐 미뤄 두고 시스템부터 같이 확인해 보는 게 어때요?",
+          "base": {
+            "de": "Wir haben ihn auch für dieselbe Zeit gebucht. Können wir die Frage, wer nachgibt, kurz zurückstellen und zuerst gemeinsam im System nachsehen?",
+            "en": "We booked the same time as well. How about holding off on who should give way and checking the system together first?"
+          }
+        },
+        "base": {
+          "de": "Entgegenkommen",
+          "en": "concession"
+        },
+        "whyThisWord": {
+          "de": "양보 bezeichnet das Zurücktreten zugunsten einer anderen Person. Damit lässt sich ein einmaliges Entgegenkommen von einem dauerhaften Verzicht unterscheiden.",
+          "en": "양보 means yielding to someone else. It distinguishes a one-off concession from giving up a claim permanently."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "끝까지 들어 주시겠어요?",
+          "status": "recognition"
+        },
+        {
+          "surface": "쓰는 걸로 해 주시겠어요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "joint-proposal",
+      "title": {
+        "de": "Ein Antrag für den Dachgarten",
+        "en": "A proposal for a roof garden"
+      },
+      "situation": {
+        "de": "Zwei Haushalte und die Hausverwaltung arbeiten an einem ersten Vorschlag für einen gemeinschaftlichen Dachgarten.",
+        "en": "Two households and the management office are drafting a proposal for a shared roof garden."
+      },
+      "episodeShape": "copilot",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Nachbar aus dem zweiten Haushalt",
+            "en": "Neighbour from the other household"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        },
+        {
+          "id": "b",
+          "role": {
+            "de": "Mitarbeitende der Hausverwaltung",
+            "en": "Member of the management office"
+          },
+          "voiceRole": "B",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Zwei Haushalte und die Hausverwaltung arbeiten an einem ersten Vorschlag für einen gemeinschaftlichen Dachgarten. „옥상 텃밭 제안서를 입주자 회의에 내려고 해요. 관리소에서도 오셨으니까 역할을 같이 정해 봐요.“",
+        "en": "Two households and the management office are drafting a proposal for a shared roof garden. “옥상 텃밭 제안서를 입주자 회의에 내려고 해요. 관리소에서도 오셨으니까 역할을 같이 정해 봐요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "옥상 텃밭 제안서를 입주자 회의에 내려고 해요. 관리소에서도 오셨으니까 역할을 같이 정해 봐요.",
+          "base": {
+            "de": "Wir möchten der Hausversammlung einen Vorschlag für einen Dachgarten vorlegen. Die Verwaltung ist auch da. Legen wir die Rollen gemeinsam fest.",
+            "en": "We'd like to submit a rooftop garden proposal to the residents' meeting. The management office has joined us too, so let's work out the roles together."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "첫해는 참여하는 세대가 열 가구 정도면 관리하기 좋을 것 같아요. 물 주기와 열쇠 관리는 어떻게 나누면 좋을까요?",
+          "base": {
+            "de": "Im ersten Jahr wären ungefähr zehn teilnehmende Haushalte gut zu betreuen. Wie wollen wir das Gießen und die Schlüsselverwaltung aufteilen?",
+            "en": "I think about ten participating households would be manageable in the first year. How should we divide the watering and looking after the keys?"
+          },
+          "register": "haeyo",
+          "move": "propose"
+        },
+        {
+          "speaker": "them",
+          "targetText": "관리소에서 열쇠하고 안전 점검은 맡을 수 있어요. 그런데 물 주는 일까지는 저희가 하기 어려워요.",
+          "base": {
+            "de": "Wir von der Verwaltung können die Schlüssel und die Sicherheitskontrollen übernehmen. Auch noch zu gießen ist für uns aber kaum machbar.",
+            "en": "The management office can take care of the keys and safety checks. It would be difficult for us to take on the watering too."
+          },
+          "interlocutorId": "b"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그러면 물은 참여 세대가 주마다 돌아가면서 주고, 관리소는 열쇠와 안전만 봐 주시는 걸로 하죠. 당번표는 저희 집에서 만들게요.",
+          "base": {
+            "de": "Dann wechseln sich die teilnehmenden Haushalte wöchentlich beim Gießen ab und die Verwaltung übernimmt nur Schlüssel und Sicherheit. Unser Haushalt erstellt den Dienstplan.",
+            "en": "Then let's have the participating households take turns watering by the week, and the office handle just keys and safety. My household will draw up the rota."
+          },
+          "register": "haeyo",
+          "move": "counteroffer"
+        },
+        {
+          "speaker": "them",
+          "targetText": "열 세대도 좋아요. 물 당번도 그렇게 하죠. 대표님이 금요일까지 한 장으로 정리해 달라셨어요.",
+          "base": {
+            "de": "Zehn Haushalte sind gut. Machen wir das mit den Gießdiensten so. Die Bewohnervertretung hat uns gebeten, das Ganze bis Freitag auf einer Seite zusammenzufassen.",
+            "en": "Ten households sounds good. Let's go with that watering rota, too. The residents' representative asked us to sum it up on one page by Friday."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면 세 가지예요. 물은 참여 세대가 돌아가며 주고, 관리소는 열쇠와 안전을 맡고, 첫해는 열 세대로 시작해요.",
+          "base": {
+            "de": "Zusammengefasst sind es drei Punkte. Die teilnehmenden Haushalte wechseln sich beim Gießen ab, die Verwaltung übernimmt Schlüssel und Sicherheit und im ersten Jahr fangen wir mit zehn Haushalten an.",
+            "en": "There are three points in summary. Participating households take turns watering, the office handles keys and safety, and we start with ten households in the first year."
+          },
+          "register": "haeyo",
+          "move": "summarize"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "첫해는",
+          "참여하는",
+          "세대가",
+          "열 가구",
+          "정도면",
+          "관리하기"
+        ],
+        "distractors": [
+          "누락됐어요",
+          "끝났어요"
+        ],
+        "frameSuffix": " 좋을 것 같아요. 물 주기와 열쇠 관리는 어떻게 나누면 좋을까요?"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 물은 참여 세대가 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 돌아가면서 주고, 관리소는 열쇠와 안전만 봐 주시는 걸로 하죠. 당번표는 저희 집에서 만들게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그럼",
+              "그렇다면"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "주마다",
+            "acceptedAnswers": [
+              "주마다",
+              "매주",
+              "일주일마다"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 세 가지예요. 물은 참여 세대가 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 주고, 관리소는 열쇠와 안전을 맡고, 첫해는 열 세대로 시작해요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "정리하면",
+            "acceptedAnswers": [
+              "정리하면",
+              "요약하면",
+              "정리해 보면",
+              "지금까지 정리하면"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "돌아가며",
+            "acceptedAnswers": [
+              "돌아가며",
+              "돌아가면서",
+              "번갈아"
+            ],
+            "kind": "lexical"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "첫해는 참여하는 ",
+        "answer": "세대가",
+        "after": " 열 가구 정도면 관리하기 좋을 것 같아요. 물 주기와 열쇠 관리는 어떻게 나누면 좋을까요?",
+        "acceptedAnswers": [
+          "세대가"
+        ],
+        "fallbackChoices": [
+          "세대가",
+          "매장이",
+          "강의가",
+          "기관차가"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "de": "Einen Rahmen vorschlagen und die Rollen offen lassen",
+          "en": "Suggest a scale, leave the roles open"
+        },
+        "rule": {
+          "de": "Mit -(으)면 …기 좋을 것 같아요 schlägst du vorsichtig einen überschaubaren Rahmen vor. Mit 어떻게 나누면 좋을까요? fragst du die Gruppe nach der Aufteilung, statt sie selbst zu verteilen.",
+          "en": "Use -(으)면 …기 좋을 것 같아요 to suggest a manageable scale tentatively. With 어떻게 나누면 좋을까요?, ask the group how to divide things rather than assigning them yourself."
+        },
+        "examples": [
+          {
+            "targetText": "첫해는 참여하는 세대가 열 가구 정도면 관리하기 좋을 것 같아요. 물 주기와 열쇠 관리는 어떻게 나누면 좋을까요?",
+            "base": {
+              "de": "Im ersten Jahr wären ungefähr zehn teilnehmende Haushalte gut zu betreuen. Wie wollen wir das Gießen und die Schlüsselverwaltung aufteilen?",
+              "en": "I think about ten participating households would be manageable in the first year. How should we divide the watering and looking after the keys?"
+            },
+            "highlights": [
+              "열 가구 정도면 관리하기 좋을 것 같아요",
+              "어떻게 나누면 좋을까요?"
+            ]
+          },
+          {
+            "targetText": "첫 모임은 참가 인원이 스무 명 정도면 진행하기 좋을 것 같아요. 의자 준비와 신청 접수는 어떻게 나누면 좋을까요?",
+            "base": {
+              "de": "Beim ersten Treffen wären etwa zwanzig Teilnehmende gut zu handhaben. Wie wollen wir das Aufstellen der Stühle und die Anmeldungen aufteilen?",
+              "en": "For the first meeting, about twenty participants would be manageable. How should we divide setting out the chairs and taking registrations?"
+            },
+            "highlights": [
+              "스무 명 정도면 진행하기 좋을 것 같아요",
+              "어떻게 나누면 좋을까요?"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "세대가",
+          "kind": "noun",
+          "lemma": "세대",
+          "base": {
+            "de": "Haushalt im Wohnhaus",
+            "en": "household in a residential building"
+          }
+        },
+        {
+          "targetText": "정리하면",
+          "kind": "frame",
+          "base": {
+            "de": "zusammengefasst",
+            "en": "to sum up"
+          }
+        },
+        {
+          "targetText": "세 가지예요",
+          "kind": "frame",
+          "base": {
+            "de": "es sind drei Punkte",
+            "en": "there are three points"
+          }
+        },
+        {
+          "targetText": "관리소는",
+          "kind": "noun",
+          "base": {
+            "de": "die Hausverwaltung",
+            "en": "the management office"
+          }
+        },
+        {
+          "targetText": "당번표는",
+          "kind": "noun",
+          "base": {
+            "de": "der Dienstplan",
+            "en": "the duty rota"
+          }
+        },
+        {
+          "targetText": "첫해는",
+          "kind": "noun",
+          "base": {
+            "de": "im ersten Jahr",
+            "en": "in the first year"
+          }
+        },
+        {
+          "targetText": "안전 점검은",
+          "kind": "noun",
+          "base": {
+            "de": "die Sicherheitskontrollen",
+            "en": "the safety checks"
+          }
+        },
+        {
+          "targetText": "돌아가며",
+          "kind": "adverb",
+          "base": {
+            "de": "abwechselnd",
+            "en": "taking turns"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "첫해는",
+            "참여하는",
+            "세대가"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "주마다",
+            "열쇠와",
+            "당번표는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "세대가",
+            "관리소는",
+            "첫해는"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "세대",
+        "familyKey": "세대",
+        "pos": "noun",
+        "surface": "세대가",
+        "turnIndex": 1,
+        "example": {
+          "targetText": "첫해는 참여하는 세대가 열 가구 정도면 관리하기 좋을 것 같아요. 물 주기와 열쇠 관리는 어떻게 나누면 좋을까요?",
+          "base": {
+            "de": "Im ersten Jahr wären ungefähr zehn teilnehmende Haushalte gut zu betreuen. Wie wollen wir das Gießen und die Schlüsselverwaltung aufteilen?",
+            "en": "I think about ten participating households would be manageable in the first year. How should we divide the watering and looking after the keys?"
+          }
+        },
+        "base": {
+          "de": "Haushalt im Wohnhaus",
+          "en": "household in a residential building"
+        },
+        "whyThisWord": {
+          "de": "세대 bezeichnet in diesem Zusammenhang eine Wohneinheit mit ihren Bewohnern. Die Gartenpflichten lassen sich so pro Haushalt statt pro Person verteilen.",
+          "en": "In this context 세대 denotes a household in the building. Gardening duties can be assigned per household rather than per person."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "정리하면 세 가지예요",
+          "status": "productive"
+        }
+      ]
+    }
+  ]
+}

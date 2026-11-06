@@ -421,9 +421,7 @@
         1,
         2,
         3,
-        4
-      ],
-      "pathsToWrite": [
+        4,
         5,
         6,
         7,
@@ -431,9 +429,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 60,
-      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
-      "nextSharedObjective": "outline a case for compensation or correction and negotiate a solution to a dispute"
+      "pathsToWrite": [],
+      "remainingLessonCount": 0,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json"
     },
     {
       "language": "Russian",

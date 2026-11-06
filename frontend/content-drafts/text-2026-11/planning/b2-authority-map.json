@@ -60,6 +60,60 @@
       "artifactSha256": "a7ea85bd22c08beb305ff2d93e78e5ccb90bb4f8aee47ae08a5da45a654feb6d",
       "sourceSha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
       "kind": "curriculum result extracted from subscription receipt"
+    },
+    "11e973b11d5734ab8b8afdad9d6e5cf1e7d090f5999fd9b8878c1b7d7727d1a2": {
+      "artifact": "planning/authorities/11e973b11d5734ab8b8a.json",
+      "artifactSha256": "11e973b11d5734ab8b8afdad9d6e5cf1e7d090f5999fd9b8878c1b7d7727d1a2",
+      "sourceSha256": "11e973b11d5734ab8b8afdad9d6e5cf1e7d090f5999fd9b8878c1b7d7727d1a2",
+      "kind": "curriculum document"
+    },
+    "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553": {
+      "artifact": "planning/korean-b2-p5-p10-trophies.json",
+      "artifactSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553",
+      "sourceSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553",
+      "kind": "curriculum document"
+    },
+    "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6": {
+      "artifact": "planning/authorities/c8ce9c537934e7574e4d.json",
+      "artifactSha256": "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6",
+      "sourceSha256": "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6",
+      "kind": "curriculum document"
+    },
+    "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab": {
+      "artifact": "planning/authorities/57640c0575ef2d773b30.json",
+      "artifactSha256": "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab",
+      "sourceSha256": "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab",
+      "kind": "curriculum document"
+    },
+    "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8": {
+      "artifact": "planning/authorities/158cd2294d398a0f3887.json",
+      "artifactSha256": "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8",
+      "sourceSha256": "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8",
+      "kind": "curriculum document"
+    },
+    "c6f252c695d8e59e9553c35f987f964f1e622e7214b1d211f9d2a433fd3ee788": {
+      "artifact": "planning/authorities/c6f252c695d8e59e9553.json",
+      "artifactSha256": "d966383ed67e937c097283446f0351c41009bb8cc79c5a5958104d1c78e5e117",
+      "sourceSha256": "c6f252c695d8e59e9553c35f987f964f1e622e7214b1d211f9d2a433fd3ee788",
+      "kind": "curriculum result extracted from subscription receipt"
+    },
+    "d36e994cf43b119cd4819fdcb3dc21e7ce152bce2056592738086eb5d894d197": {
+      "artifact": "planning/authorities/d36e994cf43b119cd481.json",
+      "artifactSha256": "d36e994cf43b119cd4819fdcb3dc21e7ce152bce2056592738086eb5d894d197",
+      "sourceSha256": "d36e994cf43b119cd4819fdcb3dc21e7ce152bce2056592738086eb5d894d197",
+      "kind": "curriculum document"
+    },
+    "756560fa59bb4c6a14fa05eb00508f5837cb3c5eda3038b43ab2bb64e091a391": {
+      "artifact": "planning/authorities/756560fa59bb4c6a14fa.json",
+      "artifactSha256": "97c5aa5db0340db2c8a478956ed10097876294251c100081b95206852847a5c1",
+      "sourceSha256": "756560fa59bb4c6a14fa05eb00508f5837cb3c5eda3038b43ab2bb64e091a391",
+      "kind": "curriculum result extracted from subscription receipt"
+    },
+    "594dd7bdb88ca6348f1dfa5150a2bdeb34d463e42f31db668c58e0ad402e2997": {
+      "artifact": "planning/authorities/594dd7bdb88ca6348f1d.json",
+      "artifactSha256": "594dd7bdb88ca6348f1dfa5150a2bdeb34d463e42f31db668c58e0ad402e2997",
+      "sourceSha256": "594dd7bdb88ca6348f1dfa5150a2bdeb34d463e42f31db668c58e0ad402e2997",
+      "kind": "curriculum document"
     }
   },
   "paths": [
@@ -194,6 +248,72 @@
       },
       "authoritySha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
       "trophyLedgerAuthoritySha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+    },
+    {
+      "path": "b2/korean/p5.json",
+      "sourcePointers": {
+        "pathSpec": "architect.json",
+        "pathSpecSha256": "11e973b11d5734ab8b8afdad9d6e5cf1e7d090f5999fd9b8878c1b7d7727d1a2",
+        "ledger": "../allocation.json#/rows",
+        "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+      },
+      "authoritySha256": "11e973b11d5734ab8b8afdad9d6e5cf1e7d090f5999fd9b8878c1b7d7727d1a2",
+      "trophyLedgerAuthoritySha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+    },
+    {
+      "path": "b2/korean/p6.json",
+      "sourcePointers": {
+        "pathSpec": "architect.json",
+        "pathSpecSha256": "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6",
+        "ledger": "../allocation.json#/rows",
+        "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+      },
+      "authoritySha256": "c8ce9c537934e7574e4d9cd58a1455fbd5ca7e7d71015173691ae1c147201fb6",
+      "trophyLedgerAuthoritySha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+    },
+    {
+      "path": "b2/korean/p7.json",
+      "sourcePointers": {
+        "pathSpec": "architecture.json",
+        "pathSpecSha256": "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab",
+        "ledger": "../allocation.json",
+        "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+      },
+      "authoritySha256": "57640c0575ef2d773b30f9fd2d35420f1185ced463e626cc9f15d51b14fb64ab",
+      "trophyLedgerAuthoritySha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+    },
+    {
+      "path": "b2/korean/p8.json",
+      "sourcePointers": {
+        "pathSpec": "architecture.json",
+        "pathSpecSha256": "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8",
+        "ledger": "../allocation.json",
+        "ledgerSha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+      },
+      "authoritySha256": "158cd2294d398a0f388794754123a056c581ca44a459bcac17e5ca41fa10b9f8",
+      "trophyLedgerAuthoritySha256": "d73424cdcb2cb925c21799ced09a8fedcb49353b485cda9c97ce8f8ade3d1553"
+    },
+    {
+      "path": "b2/korean/p9.json",
+      "sourcePointers": {
+        "pathSpec": "architecture-response.json",
+        "pathSpecSha256": "c6f252c695d8e59e9553c35f987f964f1e622e7214b1d211f9d2a433fd3ee788",
+        "ledger": "ledger.json",
+        "ledgerSha256": "d36e994cf43b119cd4819fdcb3dc21e7ce152bce2056592738086eb5d894d197"
+      },
+      "authoritySha256": "c6f252c695d8e59e9553c35f987f964f1e622e7214b1d211f9d2a433fd3ee788",
+      "trophyLedgerAuthoritySha256": "d36e994cf43b119cd4819fdcb3dc21e7ce152bce2056592738086eb5d894d197"
+    },
+    {
+      "path": "b2/korean/p10.json",
+      "sourcePointers": {
+        "pathSpec": "architecture-response.json",
+        "pathSpecSha256": "756560fa59bb4c6a14fa05eb00508f5837cb3c5eda3038b43ab2bb64e091a391",
+        "ledger": "ledger.json",
+        "ledgerSha256": "594dd7bdb88ca6348f1dfa5150a2bdeb34d463e42f31db668c58e0ad402e2997"
+      },
+      "authoritySha256": "756560fa59bb4c6a14fa05eb00508f5837cb3c5eda3038b43ab2bb64e091a391",
+      "trophyLedgerAuthoritySha256": "594dd7bdb88ca6348f1dfa5150a2bdeb34d463e42f31db668c58e0ad402e2997"
     }
   ]
 }

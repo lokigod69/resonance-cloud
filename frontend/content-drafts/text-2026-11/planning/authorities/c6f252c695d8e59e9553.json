@@ -1,0 +1,405 @@
+{
+  "pathNumber": 9,
+  "lessons": [
+    {
+      "n": 1,
+      "dialogue": [
+        {
+          "ko": "출장 예산 얘기 꺼내셨다고 들었어요. 지금 그걸 줄이자는 거예요?",
+          "de": "Ich habe gehört, Sie haben das Reisebudget angesprochen. Sie wollen es jetzt kürzen?",
+          "en": "I hear you raised the travel budget. You want to cut it now?"
+        },
+        {
+          "ko": "네, 내년 출장비를 올해의 절반으로 줄이자고 제안드린 거예요. 지난해 출장 스무 건 중 절반은 화상으로도 충분했거든요.",
+          "de": "Ja, ich habe vorgeschlagen, die Reisekosten nächstes Jahr auf die Hälfte von heute zu kürzen. Von den zwanzig Reisen letztes Jahr hätte die Hälfte auch per Video gereicht.",
+          "en": "Yes, I proposed cutting next year's travel costs to half of this year's. Of last year's twenty trips, half would have worked fine by video."
+        },
+        {
+          "ko": "아니 잠깐만요, 고객들은 우리가 직접 찾아오는 걸 기대해요. 그걸 모르세요?",
+          "de": "Moment mal, die Kunden erwarten, dass wir persönlich vorbeikommen. Wissen Sie das nicht?",
+          "en": "Wait a second, clients expect us to show up in person. Don't you know that?"
+        },
+        {
+          "ko": "말씀 중에 죄송한데요, 끝까지 들어 주시겠어요? 큰 고객 다섯 곳은 그대로 방문하고 작은 곳만 화상으로 돌리자는 거예요.",
+          "de": "Entschuldigung, dass ich unterbreche, aber hören Sie mich bitte zu Ende an? Die fünf großen Kunden besuchen wir weiter, nur die kleinen stellen wir auf Video um.",
+          "en": "Sorry to cut in, but would you hear me out? We keep visiting the five big clients and switch only the small ones to video."
+        },
+        {
+          "ko": "그래요, 그럼 전체 제안을 한 번에 다 말해 봐요.",
+          "de": "Gut, dann sagen Sie mir den ganzen Vorschlag in einem Zug.",
+          "en": "Fine, then give me the whole proposal in one go."
+        },
+        {
+          "ko": "정리하면, 출장을 반으로 줄이는 대신 아낀 돈 일부로 화상 장비를 사고, 효과는 반년 뒤에 같이 보죠.",
+          "de": "Zusammengefasst: Wir halbieren die Reisen, kaufen von einem Teil des Gesparten Videotechnik, und nach einem halben Jahr schauen wir uns die Wirkung gemeinsam an.",
+          "en": "In short: we halve the trips, use part of the savings for video equipment, and we review the results together in six months."
+        }
+      ],
+      "transfer": {
+        "ko": "말씀 중에 죄송한데요, 끝까지 들어 주시겠어요? 주차 자리를 없애자는 게 아니라 요일별로 나눠 쓰자는 거예요.",
+        "de": "Entschuldigung, dass ich unterbreche, aber hören Sie mich bitte zu Ende an? Ich will die Parkplätze nicht abschaffen, sondern nach Wochentagen aufteilen.",
+        "en": "Sorry to cut in, but would you hear me out? I'm not saying remove the parking spaces, I'm saying share them by weekday."
+      }
+    },
+    {
+      "n": 2,
+      "dialogue": [
+        {
+          "ko": "사진을 보니 수술하는 게 맞아요. 다음 달에 날짜 잡을까요?",
+          "de": "Nach den Bildern ist eine Operation das Richtige. Sollen wir für nächsten Monat einen Termin machen?",
+          "en": "Looking at the scans, surgery is the right call. Shall we set a date for next month?"
+        },
+        {
+          "ko": "선생님 판단을 의심하는 건 아니에요. 다만 두 달 물리치료를 더 하면서 경과를 지켜보는 선택지도 있는지 여쭤보고 싶어요.",
+          "de": "Ich zweifle nicht an Ihrem Urteil. Ich möchte nur fragen, ob es auch die Option gibt, zwei Monate weiter Physiotherapie zu machen und den Verlauf zu beobachten.",
+          "en": "I'm not doubting your judgment. I'd just like to ask whether there's also the option of two more months of physio while we watch how it progresses."
+        },
+        {
+          "ko": "그게 아니라요, 기다린다고 결과가 달라지지 않을 수도 있어요. 인대는 저절로 안 붙어요.",
+          "de": "Darum geht es nicht, Warten ändert das Ergebnis möglicherweise nicht. Ein Band wächst nicht von allein zusammen.",
+          "en": "That's not the point, waiting may not change the outcome. A ligament doesn't heal on its own."
+        },
+        {
+          "ko": "그 점은 이해했어요. 끝까지 들어 주시겠어요? 제 경우에 두 달 기다리면 위험이 얼마나 커지는지 수술과 비교해서 듣고 싶어요.",
+          "de": "Das habe ich verstanden. Hören Sie mich bitte zu Ende an? Ich möchte hören, wie viel größer das Risiko in meinem Fall wird, wenn ich zwei Monate warte, im Vergleich zur Operation.",
+          "en": "I understand that point. Would you hear me out? I'd like to hear how much the risk grows in my case if I wait two months, compared with surgery."
+        },
+        {
+          "ko": "두 달은 크게 안 나빠지지만 통증은 계속돼요. 다음 달 둘째 주로 잡을 테니 오늘 정하세요.",
+          "de": "In zwei Monaten wird es nicht viel schlimmer, aber die Schmerzen bleiben. Ich reserviere die zweite Woche nächsten Monat, entscheiden Sie sich heute.",
+          "en": "Two months won't make it much worse, but the pain continues. I'll hold the second week of next month, so decide today."
+        },
+        {
+          "ko": "두 쪽 다 들었으니 이제 정할게요. 통증을 두 달 더 참을 이유는 없으니 둘째 주 수술로 해요.",
+          "de": "Jetzt habe ich beide Seiten gehört, also entscheide ich. Es gibt keinen Grund, die Schmerzen zwei Monate länger auszuhalten, also die Operation in der zweiten Woche.",
+          "en": "Now that I've heard both sides, I'll decide. There's no reason to put up with the pain two more months, so let's do the surgery in the second week."
+        }
+      ],
+      "transfer": {
+        "ko": "사장님 말씀을 못 믿는 게 아니에요. 다만 수리해서 반년 더 타는 것과 지금 바꾸는 걸 비용으로 비교해 주시면 그때 정할게요.",
+        "de": "Ich misstraue Ihnen nicht. Wenn Sie mir aber reparieren und ein halbes Jahr weiterfahren gegen jetzt tauschen kostenmäßig vergleichen, entscheide ich dann.",
+        "en": "It's not that I don't trust you. But if you compare for me, cost-wise, repairing and driving six more months versus replacing now, I'll decide then."
+      }
+    },
+    {
+      "n": 3,
+      "dialogue": [
+        {
+          "ko": "안방 벽 상태 봤어요. 환기를 제대로 안 하셔서 그런 거예요.",
+          "de": "Ich habe die Wand im Schlafzimmer gesehen. Das kommt, weil Sie nicht richtig gelüftet haben.",
+          "en": "I saw the state of the bedroom wall. That's because you haven't been ventilating properly."
+        },
+        {
+          "ko": "환기 문제라고 하시는데 저는 매일 창문을 열었어요. 그런데도 곰팡이가 그 벽에만 생기는 건 벽 안쪽 문제라고 봐요.",
+          "de": "Sie sagen Lüftungsproblem, aber ich habe jeden Tag das Fenster geöffnet. Dass trotzdem nur an dieser Wand Schimmel entsteht, liegt meiner Meinung nach am Inneren der Wand.",
+          "en": "You say it's a ventilation issue, but I opened the window every day. That mould still appears only on that wall points to something inside the wall, I think."
+        },
+        {
+          "ko": "아니 잠깐만요, 지난주에 제가 찍은 사진 보세요. 창문이 닫혀 있잖아요.",
+          "de": "Moment mal, schauen Sie das Foto an, das ich letzte Woche gemacht habe. Das Fenster ist doch zu.",
+          "en": "Hold on, look at the photo I took last week. The window's closed, isn't it."
+        },
+        {
+          "ko": "말씀 중에 죄송한데요, 그 사진은 비 오는 날 오후예요. 그 벽은 겨울마다 그랬다고 아랫집에서도 얘기했고요.",
+          "de": "Entschuldigung, dass ich unterbreche, aber das Foto ist von einem Regennachmittag. Und die Nachbarn unten haben auch gesagt, dass diese Wand jeden Winter so war.",
+          "en": "Sorry to cut in, but that photo is from a rainy afternoon. And the downstairs neighbours said that wall has been like this every winter."
+        },
+        {
+          "ko": "그럼 이렇게 해요. 수리비는 반반으로 나누고 끝내죠.",
+          "de": "Dann machen wir es so. Wir teilen die Reparaturkosten halbe-halbe und Schluss.",
+          "en": "Then let's do this. We split the repair cost fifty-fifty and call it done."
+        },
+        {
+          "ko": "반반은 원인을 먼저 확인한 뒤에 얘기하죠. 업체가 벽 안쪽을 보고 누수가 아니라고 하면 그때 제 몫을 낼게요.",
+          "de": "Über halbe-halbe reden wir, nachdem die Ursache geklärt ist. Wenn die Firma ins Wandinnere schaut und sagt, es ist kein Wasserschaden, zahle ich dann meinen Anteil.",
+          "en": "Let's talk fifty-fifty after the cause is checked. If the contractor looks inside the wall and says it isn't a leak, I'll pay my share then."
+        }
+      ],
+      "transfer": {
+        "ko": "제가 안 나왔다고 하시는데 사월에는 열 번 넘게 왔어요. 출입 기록을 먼저 확인하고 위약금 얘기를 하죠.",
+        "de": "Sie sagen, ich sei nicht gekommen, aber im April war ich über zehnmal da. Prüfen wir erst die Zutrittsliste und reden dann über die Gebühr.",
+        "en": "You say I didn't come, but in April I was here more than ten times. Let's check the entry log first and then talk about the penalty fee."
+      }
+    },
+    {
+      "n": 4,
+      "dialogue": [
+        {
+          "ko": "여보세요, 토요일 말이에요, 캠핑 대신 바다로 가는 게 어때요?",
+          "de": "Hallo, wegen Samstag, wie wäre es, statt Camping ans Meer zu fahren?",
+          "en": "Hey, about Saturday, how about the beach instead of camping?"
+        },
+        {
+          "ko": "이번 달에 세 번째 바꾸는 거예요. 지금 바꾸면 예약금 오만 원은 그대로 손실이 되는데 그건 제가 낸 돈이에요.",
+          "de": "Das ist die dritte Änderung diesen Monat. Wenn wir jetzt umplanen, sind die fünfzigtausend Won Anzahlung einfach verloren, und das ist mein Geld.",
+          "en": "That's the third change this month. If we switch now, the fifty thousand won deposit is simply lost, and that's money I paid."
+        },
+        {
+          "ko": "아 근데 들어 봐요, 바다 근처에 새로 생긴 펜션이 있는데 거기가 훨씬 좋아요.",
+          "de": "Ja, aber hör mal, am Meer gibt es eine neue Pension, die ist viel besser.",
+          "en": "Yeah but listen, there's a new guesthouse near the beach and it's way nicer."
+        },
+        {
+          "ko": "제 말 아직 안 끝났어요. 펜션이 좋든 아니든 예약금은 환불이 안 되고, 그 돈을 제가 떠안을 수는 없어요.",
+          "de": "Ich bin noch nicht fertig. Ob die Pension gut ist oder nicht, die Anzahlung wird nicht erstattet, und ich kann das nicht einfach schlucken.",
+          "en": "I'm not finished. Nice guesthouse or not, the deposit isn't refundable, and I can't just absorb that money."
+        },
+        {
+          "ko": "아유, 왜 이렇게 융통성이 없어요. 계획은 바뀔 수도 있는 거죠.",
+          "de": "Ach komm, warum bist du so unflexibel. Pläne können sich doch ändern.",
+          "en": "Come on, why are you so rigid. Plans can change, you know."
+        },
+        {
+          "ko": "융통성 문제가 아니라 돈 문제예요. 바다가 정 좋으면 예약금을 민수 씨가 대신 내요, 그럼 저도 갈게요.",
+          "de": "Es geht nicht um Flexibilität, es geht ums Geld. Wenn dir das Meer so wichtig ist, übernimm du die Anzahlung, Minsu, dann komme ich mit.",
+          "en": "It's not about flexibility, it's about money. If you really want the beach, Minsu, you cover the deposit, and then I'll come along."
+        }
+      ],
+      "transfer": {
+        "ko": "잠깐만요, 아직 제 설명이 안 끝났어요. 강연 날짜를 옮기면 강사 사례비는 그대로 나가요, 그건 고집이 아니라 계약 문제예요.",
+        "de": "Moment, meine Erklärung ist noch nicht fertig. Wenn wir den Vortrag verschieben, wird das Honorar trotzdem fällig, das ist keine Sturheit, sondern eine Vertragsfrage.",
+        "en": "Hang on, I haven't finished explaining. If we move the talk, the speaker's fee still goes out, that's not stubbornness, it's a contract issue."
+      }
+    },
+    {
+      "n": 5,
+      "dialogue": [
+        {
+          "ko": "이번 보고서 오류는 지은 씨가 숫자를 잘못 넣어서 생긴 거예요. 다들 알아 두세요.",
+          "de": "Der Fehler im Bericht kam daher, dass Jieun die Zahlen falsch eingetragen hat. Merkt euch das alle.",
+          "en": "The error in this report happened because Jieun entered the numbers wrong. Everyone take note."
+        },
+        {
+          "ko": "팀장님, 그 얘기는 지은 씨가 돌아온 뒤에 하죠. 본인 해명을 듣기 전에 없는 사람을 지목하는 건 공정하지 않아요.",
+          "de": "Chef, lassen Sie uns das besprechen, wenn Jieun zurück ist. Jemanden zu beschuldigen, der nicht da ist, bevor man seine Erklärung gehört hat, ist nicht fair.",
+          "en": "Boss, let's discuss that when Jieun is back. Pointing at someone who isn't here before hearing their explanation isn't fair."
+        },
+        {
+          "ko": "그게 아니라요, 할 말 있으면 내일 본인이 직접 와서 하면 되죠.",
+          "de": "So ist das nicht, wenn sie etwas zu sagen hat, kann sie morgen selbst kommen und es sagen.",
+          "en": "That's not it, if she has something to say she can come and say it herself tomorrow."
+        },
+        {
+          "ko": "그건 그렇죠. 다만 오늘 팀 앞에서 결론이 난 것처럼 들리면 내일 해명은 의미가 없어요.",
+          "de": "Das stimmt. Nur wenn es heute vor dem Team schon wie ein Urteil klingt, ist die Erklärung morgen bedeutungslos.",
+          "en": "That's true. But if today it sounds like the verdict is already in before the team, tomorrow's explanation means nothing."
+        },
+        {
+          "ko": "그럼 뭐예요, 그 오류를 본인이 대신 책임지겠다는 거예요?",
+          "de": "Was heißt das dann, Sie wollen den Fehler an ihrer Stelle auf sich nehmen?",
+          "en": "So what is this, you're taking the blame for the error instead?"
+        },
+        {
+          "ko": "전부는 아니고요. 그 오류는 제가 넘긴 자료에서 시작됐으니 그 부분은 제가 책임질게요. 나머지는 내일 정하죠.",
+          "de": "Nicht für alles. Der Fehler begann in den Daten, die ich weitergegeben habe, dafür übernehme ich die Verantwortung. Den Rest klären wir morgen.",
+          "en": "Not all of it. The error started in the data I handed over, so I'll take responsibility for that part. The rest we settle tomorrow."
+        }
+      ],
+      "transfer": {
+        "ko": "그 아이가 없는 자리에서 결론을 내리는 건 공정하지 않다고 봐요. 다만 준비물을 늦게 보낸 건 제 실수니까 그 부분은 제가 사과할게요.",
+        "de": "Ich finde es nicht fair, ohne das Kind ein Urteil zu fällen. Dass die Materialien zu spät kamen, war aber mein Fehler, dafür entschuldige ich mich.",
+        "en": "I don't think it's fair to reach a verdict without the child present. But sending the materials late was my mistake, so I'll apologise for that part."
+      }
+    },
+    {
+      "n": 6,
+      "dialogue": [
+        {
+          "ko": "공원을 밤 열 시에 닫는 건 주민 안전을 위한 결정이에요. 민원은 봤어요.",
+          "de": "Den Park um zehn Uhr abends zu schließen ist eine Entscheidung für die Sicherheit der Anwohner. Ihre Eingabe habe ich gesehen.",
+          "en": "Closing the park at ten at night is a decision for residents' safety. I've seen your complaint."
+        },
+        {
+          "ko": "안전 취지는 알겠어요. 열 시 폐장은 퇴근 뒤에 운동하는 주민한테 갈 곳을 없애는 거라서 다른 방법은 없는지 묻고 싶어요.",
+          "de": "Den Sicherheitsgedanken verstehe ich. Aber die Schließung um zehn nimmt Anwohnern, die nach der Arbeit Sport machen, jeden Ort, deshalb frage ich, ob es keinen anderen Weg gibt.",
+          "en": "I understand the safety aim. But closing at ten leaves residents who exercise after work nowhere to go, so I'd like to ask whether there's no other way."
+        },
+        {
+          "ko": "지난여름에만 밤 열한 시 이후 사고 신고가 여섯 건이었어요. 그래서 정한 거예요.",
+          "de": "Allein letzten Sommer gab es sechs Vorfallmeldungen nach elf Uhr nachts. Deshalb wurde das so festgelegt.",
+          "en": "Last summer alone there were six incident reports after eleven at night. That's why it was decided."
+        },
+        {
+          "ko": "사고가 그렇게 많았다면 거기까지는 동의해요. 그런데 사고는 열한 시 이후인데 왜 열 시에 닫는지는 설명이 안 돼요.",
+          "de": "Wenn es so viele Vorfälle gab, stimme ich bis dahin zu. Aber die Vorfälle waren nach elf, und warum um zehn geschlossen wird, erklärt das nicht.",
+          "en": "If there were that many incidents, I agree up to that point. But the incidents were after eleven, and that doesn't explain why it closes at ten."
+        },
+        {
+          "ko": "그 부분은 이미 검토했고요, 올해 결정은 바꿀 수 없어요. 확정이에요.",
+          "de": "Das wurde bereits geprüft, und die Entscheidung für dieses Jahr lässt sich nicht ändern. Sie ist endgültig.",
+          "en": "That's already been reviewed, and this year's decision can't be changed. It's final."
+        },
+        {
+          "ko": "올해 결정은 그대로라니, 다음 검토가 언제인지와 조명을 늘리고 열한 시에 닫는 안을 올려 주실 수 있는지 여쭤봐요.",
+          "de": "Da die Entscheidung dieses Jahr steht, frage ich, wann die nächste Überprüfung ist und ob Sie einen Vorschlag mit mehr Beleuchtung und Schließung um elf einbringen können.",
+          "en": "Since this year's decision stands, I'm asking when the next review is and whether you could submit a proposal for more lighting and closing at eleven."
+        }
+      ],
+      "transfer": {
+        "ko": "학생 안전이 이유라는 건 알겠어요. 그렇다면 다음 학기 검토 때 동아리 요일을 줄이는 안도 같이 봐 주실 수 있을까요?",
+        "de": "Dass es um die Sicherheit der Schüler geht, verstehe ich. Könnten Sie dann bei der Überprüfung nächstes Semester auch den Vorschlag prüfen, die AG-Tage zu reduzieren?",
+        "en": "I understand student safety is the reason. In that case, at next term's review, could you also look at a proposal to reduce the club days?"
+      }
+    },
+    {
+      "n": 7,
+      "dialogue": [
+        {
+          "ko": "잠깐요, 이 매출 숫자는 어느 기간 거예요?",
+          "de": "Moment, aus welchem Zeitraum sind diese Umsatzzahlen?",
+          "en": "Hang on, which period are these sales figures from?"
+        },
+        {
+          "ko": "삼 분기 숫자예요. 이 장에서는 삼 분기 매출이 전 분기보다 팔 퍼센트 오른 이유를 먼저 설명하고 넘어갈게요.",
+          "de": "Das sind die Zahlen vom dritten Quartal. Auf dieser Folie erkläre ich zuerst, warum der Umsatz im dritten Quartal acht Prozent über dem Vorquartal liegt, und gehe dann weiter.",
+          "en": "They're third-quarter figures. On this slide I'll first explain why third-quarter sales are up eight percent on the previous quarter, then move on."
+        },
+        {
+          "ko": "아 근데요, 내년 가정은 어떻게 잡은 거예요? 성장률이 너무 높아 보이는데요.",
+          "de": "Ja, aber wie sind die Annahmen für nächstes Jahr gesetzt? Die Wachstumsrate sieht zu hoch aus.",
+          "en": "Yeah but how were next year's assumptions set? The growth rate looks too high."
+        },
+        {
+          "ko": "그 질문은 중요하니까 세 번째 장에서 답할게요. 지금은 이 분기 숫자부터 끝낼게요, 그래야 가정이 왜 그런지 보여요.",
+          "de": "Die Frage ist wichtig, deshalb beantworte ich sie auf Folie drei. Jetzt schließe ich erst die Quartalszahlen ab, dann sieht man, warum die Annahmen so sind.",
+          "en": "That question matters, so I'll answer it on slide three. Let me finish this quarter's numbers first, then you'll see why the assumptions are what they are."
+        },
+        {
+          "ko": "그러니까 지금 그 질문을 피하시는 거죠?",
+          "de": "Also weichen Sie der Frage gerade aus?",
+          "en": "So you're avoiding the question right now?"
+        },
+        {
+          "ko": "피하는 게 아니라 순서예요. 바로 답하면, 내년 가정은 확정된 신규 계약 두 건을 넣어서 성장률이 높아진 거예요.",
+          "de": "Das ist kein Ausweichen, das ist die Reihenfolge. Um es direkt zu beantworten: Die Annahmen für nächstes Jahr enthalten zwei bereits unterzeichnete Neuverträge, deshalb ist die Wachstumsrate höher.",
+          "en": "It's not avoiding, it's sequence. To answer directly: next year's assumptions include two confirmed new contracts, which is why the growth rate is higher."
+        }
+      ],
+      "transfer": {
+        "ko": "그 질문은 성에 도착해서 답할게요. 지금은 이 다리 이야기부터 끝내고요, 피하는 게 아니라 거기서 보면 더 이해가 돼요.",
+        "de": "Diese Frage beantworte ich, wenn wir am Schloss sind. Jetzt erzähle ich erst die Geschichte dieser Brücke zu Ende, das ist kein Ausweichen, von dort versteht man es besser.",
+        "en": "I'll answer that question once we reach the castle. Let me finish the story of this bridge first, I'm not dodging it, it just makes more sense from there."
+      }
+    },
+    {
+      "n": 8,
+      "dialogue": [
+        {
+          "ko": "이번 주 금요일까지는 꼭 받아야 해요. 가능하죠?",
+          "de": "Wir müssen es unbedingt bis diesen Freitag haben. Das geht doch?",
+          "en": "We absolutely need it by this Friday. That's doable, right?"
+        },
+        {
+          "ko": "솔직히 말씀드리면 이번 주 금요일 납기는 어려워요. 테스트까지 제대로 끝내려면 다음 주 수요일이 현실적인 날짜예요.",
+          "de": "Ehrlich gesagt ist eine Lieferung diesen Freitag schwierig. Wenn auch die Tests sauber abgeschlossen sein sollen, ist nächster Mittwoch der realistische Termin.",
+          "en": "Honestly, delivery this Friday is difficult. If testing is to be finished properly, next Wednesday is the realistic date."
+        },
+        {
+          "ko": "아니 그게요, 저희 이사회가 다음 주 월요일이에요. 그때 뭐라도 보여 줘야 해요.",
+          "de": "Ja, aber unsere Vorstandssitzung ist nächsten Montag. Da müssen wir irgendetwas zeigen.",
+          "en": "The thing is, our board meets next Monday. We have to show something then."
+        },
+        {
+          "ko": "월요일 회의라면 얘기가 달라지죠. 그렇다면 테스트 전 초안을 이번 주 금요일에 먼저 드릴게요, 회의에는 그걸로 충분할 거예요.",
+          "de": "Wenn es um die Sitzung am Montag geht, sieht die Sache anders aus. Dann liefere ich Ihnen diesen Freitag vorab einen ungetesteten Entwurf, für die Sitzung sollte das reichen.",
+          "en": "If it's for Monday's meeting, that changes things. In that case I'll send you a pre-test draft this Friday first, that should be enough for the meeting."
+        },
+        {
+          "ko": "초안으로 안 되면 다른 업체도 알아봐야 할지 모르겠네요.",
+          "de": "Wenn ein Entwurf nicht reicht, müssen wir uns vielleicht auch andere Anbieter anschauen.",
+          "en": "If a draft doesn't cut it, we might have to look at other vendors."
+        },
+        {
+          "ko": "그렇게까지 가지 않으셨으면 해요. 초안은 금요일, 완성본은 다음 주 수요일에 드리고, 중간에 문제가 생기면 바로 연락드릴게요.",
+          "de": "Ich hoffe, so weit muss es nicht kommen. Entwurf am Freitag, Endversion nächsten Mittwoch, und wenn zwischendurch etwas schiefgeht, melde ich mich sofort.",
+          "en": "I'd rather it didn't come to that. Draft on Friday, final version next Wednesday, and if anything goes wrong in between I'll contact you right away."
+        }
+      ],
+      "transfer": {
+        "ko": "토요일 결혼식 전에 완성은 어렵고요, 목요일에 가봉만 먼저 해 드리면 금요일 밤에는 입어 보실 수 있어요.",
+        "de": "Vor der Hochzeit am Samstag fertig zu werden ist schwierig, aber wenn wir am Donnerstag erst die Anprobe machen, können Sie es Freitagabend anprobieren.",
+        "en": "Finishing before Saturday's wedding is difficult, but if we do just the fitting on Thursday first, you can try it on Friday night."
+      }
+    },
+    {
+      "n": 9,
+      "dialogue": [
+        {
+          "ko": "저기, 이번 주말에 차 한 번만 더 빌릴 수 있을까요?",
+          "de": "Du, könnte ich dieses Wochenende noch einmal das Auto leihen?",
+          "en": "Hey, could I borrow the car just once more this weekend?"
+        },
+        {
+          "ko": "지난번엔 괜찮았지만 이번에는 안 돼요. 보험에 운전자를 추가 안 해 놓아서 사고라도 나면 저도 곤란하거든요.",
+          "de": "Letztes Mal ging es, aber diesmal nicht. Ich habe keinen weiteren Fahrer in der Versicherung eingetragen, und wenn etwas passiert, stehe ich selbst schlecht da.",
+          "en": "Last time was fine, but this time no. I haven't added another driver to the insurance, so if anything happened I'd be in trouble too."
+        },
+        {
+          "ko": "그게 아니라요, 이번엔 어머니 병원 가는 날이라서요. 택시는 너무 힘들어하세요.",
+          "de": "Darum geht es nicht, diesmal ist der Krankenhaustermin meiner Mutter. Taxi fahren ist für sie sehr anstrengend.",
+          "en": "It's not that, this time it's my mother's hospital appointment. Taxis are really hard on her."
+        },
+        {
+          "ko": "어머니 일이라면 사정은 알겠어요. 그래도 차를 빌려 드리는 건 어렵고요, 대신 그날 아침에 제가 직접 태워다 드릴게요.",
+          "de": "Wenn es um Ihre Mutter geht, verstehe ich die Lage. Trotzdem kann ich das Auto nicht verleihen, aber stattdessen fahre ich Sie an dem Morgen selbst hin.",
+          "en": "If it's for your mother, I understand the situation. Still, lending the car is a no, but instead I'll drive you myself that morning."
+        },
+        {
+          "ko": "기름값은 제가 낼게요. 그러면 되지 않을까요?",
+          "de": "Das Benzin zahle ich. Dann geht es doch, oder?",
+          "en": "I'll pay for the petrol. Then it's fine, isn't it?"
+        },
+        {
+          "ko": "돈으로 될 일이 아니에요. 제가 모셔다 드리는 쪽이 괜찮으시면 시간만 알려 주시고요, 아니면 다른 방법을 찾으셔도 돼요.",
+          "de": "Das ist keine Geldfrage. Wenn es Ihnen passt, dass ich Sie fahre, sagen Sie mir nur die Uhrzeit, andernfalls können Sie auch eine andere Lösung suchen.",
+          "en": "It's not something money fixes. If you're okay with me driving you, just tell me the time, otherwise you're free to find another way."
+        }
+      ],
+      "transfer": {
+        "ko": "지난번엔 빌려 드렸지만 이번에는 안 돼요. 과제 파일이 다 들어 있어서요. 대신 도서관 노트북 빌리는 걸 같이 알아봐 드릴게요.",
+        "de": "Letztes Mal habe ich ihn verliehen, aber diesmal nicht. Da sind alle meine Hausarbeitsdateien drauf. Stattdessen helfe ich dir, einen Laptop in der Bibliothek auszuleihen.",
+        "en": "I lent it last time, but this time no. All my assignment files are on it. Instead I'll help you look into borrowing a library laptop."
+      }
+    },
+    {
+      "n": 10,
+      "dialogue": [
+        {
+          "ko": "지난주 일은 좀 그랬죠. 그래도 이렇게 보니까 좋네요.",
+          "de": "Letzte Woche war schon unschön. Trotzdem ist es gut, dich so zu sehen.",
+          "en": "Last week was a bit rough. Still, it's good to see you like this."
+        },
+        {
+          "ko": "저도요. 먼저 사과할게요, 그날 제 말투는 분명히 심했어요. 생각이 달라도 그렇게 말할 일은 아니었어요.",
+          "de": "Finde ich auch. Ich entschuldige mich zuerst, mein Ton an dem Tag war eindeutig zu hart. Auch bei anderer Meinung hätte ich so nicht reden sollen.",
+          "en": "Same here. Let me apologise first, my tone that day was definitely too harsh. Even if we disagree, I shouldn't have spoken like that."
+        },
+        {
+          "ko": "말투만요? 내용도 제가 맞았다고 인정하면 좋겠는데요.",
+          "de": "Nur der Ton? Ich fände es gut, wenn du auch zugibst, dass ich in der Sache recht hatte.",
+          "en": "Just the tone? I'd like you to admit I was right on the substance too."
+        },
+        {
+          "ko": "그건 좀 달라요. 그날 말한 방식은 미안하지만, 그렇다고 해서 제 생각이 바뀐 건 아니에요.",
+          "de": "Das ist etwas anderes. Die Art, wie ich an dem Tag geredet habe, tut mir leid, aber das heißt nicht, dass sich meine Meinung geändert hat.",
+          "en": "That's a different matter. I'm sorry for how I spoke that day, but that doesn't mean my view has changed."
+        },
+        {
+          "ko": "그럼 우리 이제 예전처럼 괜찮은 거예요?",
+          "de": "Sind wir dann jetzt wieder okay wie früher?",
+          "en": "So are we back to normal now, like before?"
+        },
+        {
+          "ko": "예전과 똑같지는 않아도 괜찮은 거예요. 생각은 달라도 사이는 그대로인 게 앞으로의 보통이면 좋겠어요.",
+          "de": "Nicht ganz wie früher, aber okay. Ich wünsche mir, dass künftig normal heißt: unterschiedliche Meinungen, aber die Beziehung bleibt.",
+          "en": "Not exactly like before, but okay. I'd like our new normal to be that we think differently and the friendship stays the same."
+        }
+      ],
+      "transfer": {
+        "ko": "그날 소리 지른 건 제가 잘못했어요. 그렇다고 해서 요양원 얘기를 접는 건 아니고요, 다음엔 차분하게 다시 얘기해요.",
+        "de": "Dass ich an dem Tag geschrien habe, war mein Fehler. Das heißt aber nicht, dass ich das Thema Pflegeheim fallen lasse, reden wir nächstes Mal in Ruhe weiter.",
+        "en": "Shouting that day was wrong of me. But that doesn't mean I'm dropping the care home question, let's talk about it calmly next time."
+      }
+    }
+  ]
+}

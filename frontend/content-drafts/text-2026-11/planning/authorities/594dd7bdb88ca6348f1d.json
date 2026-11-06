@@ -1,0 +1,126 @@
+{
+  "pathNumber": 10,
+  "sourceMapSha256": "46e02b3ec54065f960e9d7380df9965c0b4df7316d7ad57df60513f180788e4e",
+  "rows": [
+    {
+      "n": 1,
+      "lemma": "소속감",
+      "familyKey": "소속감",
+      "pos": "noun",
+      "surface": "소속감이",
+      "moves": [
+        "position",
+        "concede",
+        "conclude"
+      ]
+    },
+    {
+      "n": 2,
+      "lemma": "경계선",
+      "familyKey": "경계선",
+      "pos": "noun",
+      "surface": "경계선이",
+      "moves": [
+        "position",
+        "concede",
+        "summarize"
+      ]
+    },
+    {
+      "n": 3,
+      "lemma": "자동화",
+      "familyKey": "자동화",
+      "pos": "noun",
+      "surface": "자동화가",
+      "moves": [
+        "position",
+        "concede",
+        "conclude"
+      ]
+    },
+    {
+      "n": 4,
+      "lemma": "속도",
+      "familyKey": "속도",
+      "pos": "noun",
+      "surface": "속도가",
+      "moves": [
+        "compare",
+        "rebut",
+        "conclude"
+      ]
+    },
+    {
+      "n": 5,
+      "lemma": "어미",
+      "familyKey": "어미",
+      "pos": "noun",
+      "surface": "어미가",
+      "moves": [
+        "position",
+        "explain",
+        "summarize"
+      ]
+    },
+    {
+      "n": 6,
+      "lemma": "생계",
+      "familyKey": "생계",
+      "pos": "noun",
+      "surface": "생계가",
+      "moves": [
+        "position",
+        "explain",
+        "conclude"
+      ]
+    },
+    {
+      "n": 7,
+      "lemma": "풍습",
+      "familyKey": "풍습",
+      "pos": "noun",
+      "surface": "풍습을",
+      "moves": [
+        "position",
+        "rebut",
+        "conclude"
+      ]
+    },
+    {
+      "n": 8,
+      "lemma": "진로",
+      "familyKey": "진로",
+      "pos": "noun",
+      "surface": "진로를",
+      "moves": [
+        "reason",
+        "concede",
+        "summarize"
+      ]
+    },
+    {
+      "n": 9,
+      "lemma": "일회용품",
+      "familyKey": "일회용품",
+      "pos": "noun",
+      "surface": "일회용품을",
+      "moves": [
+        "position",
+        "concede",
+        "conclude"
+      ]
+    },
+    {
+      "n": 10,
+      "lemma": "갈림길",
+      "familyKey": "갈림길",
+      "pos": "noun",
+      "surface": "갈림길이",
+      "moves": [
+        "hypothesize",
+        "explain",
+        "summarize"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "pathNumber": 5,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "Ein gekaufter Bilderrahmen hat eine gesprungene Scheibe. Im Laden ist gerade nur eine andere Farbe vorrätig. Bitte um eine Lösung und nenne eine Wartebedingung.",
+        "en": "A picture frame you bought has cracked glass. The shop has only another colour in stock. Ask for a remedy and give one condition for waiting."
+      },
+      "criteria": {
+        "de": "Erkläre den Schaden und grenze eine akzeptable Alternative oder Wartezeit ein.",
+        "en": "Explain what is damaged and specify an acceptable alternative or waiting condition."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 사 주 기다릴게요. 대신 이번에는 유리가 움직이지 않도록 단단하게 포장해서 보내 주셨으면 해요."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Eine Fahrradwerkstatt hat neben dem vereinbarten Reifen einen Schlauch erneuert. Erläutere, welche Kosten du anerkennst und was vorher abgesprochen werden sollte.",
+        "en": "A bike shop replaced an inner tube as well as the tyre you agreed to. Explain which costs you accept and what should have been discussed first."
+      },
+      "criteria": {
+        "de": "Unterscheide den vereinbarten Preis, das zusätzliche Teil und den Arbeitsaufwand.",
+        "en": "Distinguish the agreed price, the extra part and the labour."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "벨트를 빼 달라는 게 아니라 부품값 얘기예요. 견적 금액과 벨트 원가는 내고 공임은 결정 나면 알려 주세요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "In einem Gemeinschaftsraum wird während deines Onlinekurses geprobt. Schlage ein Zeitfenster vor und erkenne das Recht der anderen Gruppe an, den Raum zu nutzen.",
+        "en": "A group rehearses in a shared room during your online class. Suggest a time slot and acknowledge the group's right to use the space."
+      },
+      "criteria": {
+        "de": "Bitte um eine begrenzte Änderung und sage, was damit möglich wird.",
+        "en": "Ask for a limited change and explain what it would make possible."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "규칙 안에서 하시는 건 저도 인정해요. 오전에 몰아 주시는 걸로 정리되면 관리실에 민원은 넣지 않을게요."
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Ein Leihgeschäft will dir ein ganzes Geschirrset berechnen, weil eine Tasse fehlt. Übernimm Verantwortung für die Tasse und mache einen konkreten Gegenvorschlag.",
+        "en": "A rental shop wants to charge for a whole set of dishes because one cup is missing. Accept responsibility for the cup and make a concrete counteroffer."
+      },
+      "criteria": {
+        "de": "Benenne deinen Anteil und grenze ihn von weitergehenden Kosten ab.",
+        "en": "Name your share of the cost and distinguish it from the larger charge."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "삼십만 원까지는 받아들일게요. 대신 벽 한 면 공제라고 정산서에 적으시고 나머지 보증금은 오늘 보내 주셨으면 해요."
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Ein Bus ist stark verspätet angekommen. Bitte um den auf dieser Fahrt protokollierten Grund und frage, wie du einen Beleg für eigene Ausgaben einreichen kannst.",
+        "en": "A coach arrived very late. Ask for the reason recorded for this journey and how you can submit a receipt for your expenses."
+      },
+      "criteria": {
+        "de": "Bitte um Auskunft und Belege, ohne einen Anspruch auf Erstattung vorauszusetzen.",
+        "en": "Request information and documentation without assuming reimbursement is owed."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 기상 사유가 적힌 확인서를 먼저 보내 주시면 심사 결과는 삼십 일까지 기다릴게요."
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Du konntest eine Kursbescheinigung wegen einer Reise erst spät einreichen. Erkenne die Frist an und bitte um erneute Prüfung anhand eines passenden Nachweises.",
+        "en": "You filed a course certificate late because you were away. Acknowledge the deadline and ask for another review using a relevant piece of evidence."
+      },
+      "criteria": {
+        "de": "Gib den Verspätungsgrund an und biete einen konkreten Beleg an.",
+        "en": "Give the reason for the delay and offer a specific supporting document."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "출입국 사실 증명서는 오늘 안에 메일로 보낼게요. 항공권도 같이 첨부하면 되는지 알려 주시겠어요?"
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "Du kannst einen bereits bezahlten Workshop nicht besuchen. Eine Freundin könnte teilnehmen. Erkundige dich nach der Übertragung und dem letzten Termin dafür.",
+        "en": "You cannot attend a workshop you have paid for, but a friend could. Ask about transferring the place and the latest date for doing so."
+      },
+      "criteria": {
+        "de": "Stelle die Übertragung als Möglichkeit dar und kläre, was du bis wann tun musst.",
+        "en": "Present transfer as an option and clarify what you must do by when."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 양도를 택할 수밖에 없겠네요. 이번 달 안에 제가 사람을 구해 올게요. 서류는 미리 준비해 주시겠어요?"
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Eine Ferienwohnung hat kein versprochenes Kinderbett. Bitte zuerst um eine sichere Schlafmöglichkeit und bespreche dann ein davon unabhängiges Entgegenkommen.",
+        "en": "A holiday flat lacks the cot that was promised. First ask for a suitable place to sleep and then discuss a separate concession."
+      },
+      "criteria": {
+        "de": "Halte eine notwendige Abhilfe und ein zusätzliches Entgegenkommen auseinander.",
+        "en": "Keep the necessary remedy separate from an additional concession."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "하루 요금의 절반을 돌려주시면 조식도 받아들일게요. 결정권이 있는 분께 두 가지가 모두 가능한지 확인해 주시겠어요?"
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Du hast die letzten drei Spätdienste übernommen. Wegen einer familiären Verpflichtung kann ein Kollege den nächsten nicht tauschen. Schlage eine zeitlich begrenzte Alternative vor.",
+        "en": "You covered the last three late shifts. A colleague cannot swap the next one because of a family commitment. Propose an alternative for a limited period."
+      },
+      "criteria": {
+        "de": "Erkenne die Einschränkung an, beziffere deinen Vorschlag und überlasse die Entscheidung der zuständigen Person.",
+        "en": "Acknowledge the constraint, quantify the proposal and leave the decision to the person responsible."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그럼 두 번만 바꿔 달라고 윗분께 전해 주시겠어요? 지난 석 달은 대체 휴무로 보상해 주실지도 여쭤봐 주세요."
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Eine Agentur vermittelt einen teureren Stellplatz. Gib einen niedrigeren Aufschlag und eine Laufzeit an, die sie der Eigentümerin genau übermitteln soll.",
+        "en": "An agency is relaying a higher price for a parking space. State a smaller increase and a contract length for it to put to the owner."
+      },
+      "criteria": {
+        "de": "Formuliere beide Bedingungen und bitte ausdrücklich darum, sie weiterzugeben.",
+        "en": "State both conditions and explicitly ask for them to be passed on."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그 조건이 제 답이에요. 오늘 전해 주시고 답이 오는 대로 알려 주세요. 집주인분이 받아 주시면 바로 서명할게요."
+    }
+  ]
+}

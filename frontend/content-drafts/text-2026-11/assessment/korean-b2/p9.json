@@ -1,0 +1,135 @@
+{
+  "pathNumber": 9,
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "prompt": {
+        "de": "In einem Verein wird dir bei deinem Vorschlag für weniger Druckkosten ins Wort gefallen. Hole dir das Wort zurück und nenne eine Ausnahme für Mitglieder ohne Internet.",
+        "en": "A club member interrupts your proposal to cut printing costs. Reclaim the floor and make an exception for members without internet access."
+      },
+      "criteria": {
+        "de": "Du bittest darum, ausreden zu dürfen, und bietest eine konkrete Ausnahme an, ohne die Einsparung aufzugeben.",
+        "en": "You ask to finish and offer a specific exception while keeping the proposed saving."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "정리하면, 출장을 반으로 줄이는 대신 아낀 돈 일부로 화상 장비를 사고, 효과는 반년 뒤에 같이 보죠."
+    },
+    {
+      "lessonNumber": 2,
+      "prompt": {
+        "de": "Ein Mechaniker will ein Fahrradteil heute austauschen und fällt dir mitten in deine Frage ins Wort. Bitte darum, deine Frage zu Ende stellen zu dürfen. Lass dir erklären, ob eine Reparatur in deinem Fall infrage kommt, bevor du dich entscheidest.",
+        "en": "A mechanic wants to replace a part on your bike today and cuts you off halfway through a question. Ask to finish your question. Have them explain whether repair is an option in your case before you decide."
+      },
+      "criteria": {
+        "de": "Du holst dir das Wort zurück, fragst die Fachperson nach der Alternative und behältst die Entscheidung bei dir.",
+        "en": "You reclaim the floor, ask the specialist about the alternative, and reserve the decision for yourself."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "두 쪽 다 들었으니 이제 정할게요. 통증을 두 달 더 참을 이유는 없으니 둘째 주 수술로 해요."
+    },
+    {
+      "lessonNumber": 3,
+      "prompt": {
+        "de": "Die Leitung eines Proberaums will, dass du die Hälfte einer kaputten Lautsprecherbox bezahlst. Ein Foto zeigt dich am Mischpult. Erkläre die Grenze dieses Belegs und knüpfe die Kostenfrage an eine Prüfung.",
+        "en": "A rehearsal-room manager wants you to pay half the cost of a broken speaker. A photo shows you at the mixing desk. Explain the limits of that evidence and make any discussion of costs conditional on a check."
+      },
+      "criteria": {
+        "de": "Du trennst Beobachtung und Ursache und nennst eine überprüfbare Bedingung für das nächste Gespräch.",
+        "en": "You distinguish what was observed from what caused the damage and give a verifiable condition for reopening the discussion."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "반반은 원인을 먼저 확인한 뒤에 얘기하죠. 점검 결과를 같이 보고 제 책임이 확인되면 그 몫은 낼게요."
+    },
+    {
+      "lessonNumber": 4,
+      "prompt": {
+        "de": "Dein Chorkollege möchte den Auftritt verschieben und nennt dich unflexibel. Du hast bereits eine Betreuung für das Kind bezahlt. Hole dir das Wort zurück und erkläre, unter welcher Bedingung ein Wechsel möglich wäre.",
+        "en": "A fellow singer wants to reschedule a performance and calls you inflexible. You have already paid for childcare. Reclaim the floor and explain what would make a change possible."
+      },
+      "criteria": {
+        "de": "Du holst dir das Wort zurück, benennst deine bereits bezahlte Betreuung und nennst eine Bedingung, unter der du den Termin wechseln könntest.",
+        "en": "You reclaim the floor, mention the childcare you have already paid for, and give a condition under which you could change the date."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "융통성 문제가 아니라 돈 문제예요. 바다로 가고 싶으면 예약금을 나눠 낼 방법부터 같이 찾아봐요."
+    },
+    {
+      "lessonNumber": 5,
+      "prompt": {
+        "de": "Im Sportverein wird die abwesende Trainerin für eine falsche Anstoßzeit verantwortlich gemacht. Du hast die erste Nachricht abgeschrieben. Trenne deinen Anteil von der noch offenen Frage.",
+        "en": "At a sports club an absent coach is blamed for an incorrect kick-off time. You copied out the first message. Distinguish your own part from what remains unresolved."
+      },
+      "criteria": {
+        "de": "Du begründest, warum die Trainerin gehört werden sollte, übernimmst einen bestimmten Anteil und lässt den Rest offen.",
+        "en": "You explain why the coach should be heard, take responsibility for one specific part, and leave the rest open."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "전부는 아니고요. 그 오류는 제가 넘긴 자료에서 시작됐으니 그 부분은 제가 책임질게요. 나머지는 내일 정하죠."
+    },
+    {
+      "lessonNumber": 6,
+      "prompt": {
+        "de": "Nach Lärmbeschwerden schließt ein Jugendzentrum abends früher. Die Regel steht für dieses Halbjahr fest. Erkenne den Lärmschutz an und frage, wann ein leiser Abendbetrieb geprüft werden kann.",
+        "en": "A youth centre now closes earlier after noise complaints. The rule is fixed for this term. Acknowledge the aim and ask when quieter evening use could be considered."
+      },
+      "criteria": {
+        "de": "Du erkennst das Anliegen an und erfragst einen konkreten nächsten Prüfungstermin oder ein Verfahren für deine Alternative.",
+        "en": "You acknowledge the concern and ask for a specific next review or a way to submit your alternative."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "올해 결정은 그대로라니 다음 검토는 언제예요? 그때 조명을 늘리고 열한 시에 닫는 안도 올려 주시겠어요?"
+    },
+    {
+      "lessonNumber": 7,
+      "prompt": {
+        "de": "Bei der Vorstellung der aktuellen Teilnehmerzahlen wirst du nach der nächsten Saison gefragt. Beende deinen aktuellen Punkt, kehre zur Frage zurück und nenne eine Annahme deiner Prognose.",
+        "en": "While presenting current attendance figures, someone asks about next season. Finish the present point, return to the question, and name an assumption behind your forecast."
+      },
+      "criteria": {
+        "de": "Du vertagst die Frage mit einem klaren Rückkehrpunkt und lieferst anschließend die angekündigte Antwort.",
+        "en": "You say when you will return to the question and then actually give the answer you promised."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "피하는 게 아니에요. 다음 장을 보세요. 아까 물으신 내년 성장률에는 이미 계약한 신규 고객 두 곳을 반영했어요."
+    },
+    {
+      "lessonNumber": 8,
+      "prompt": {
+        "de": "Eine Ausstellung möchte fertige Schilder vor der Beiratssitzung. Bis dahin sind nur die Texte fertig. Biete einen konkreten Zwischenstand an und nenne einen verlässlichen Termin für die geprüften Schilder.",
+        "en": "An exhibition wants finished signs before its board meeting. Only the copy will be ready by then. Offer an interim deliverable and a reliable date for the checked signs."
+      },
+      "criteria": {
+        "de": "Du gibst für die Sitzung etwas Nutzbares an die Hand und versprichst die fertige Lieferung erst für einen begründeten Termin.",
+        "en": "You offer something usable for the meeting and give a defensible date for the finished delivery."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "그렇게까지 가지 않으셨으면 해요. 초안은 금요일, 완성본은 다음 주 수요일에 드리고, 중간에 문제가 생기면 바로 연락드릴게요."
+    },
+    {
+      "lessonNumber": 9,
+      "prompt": {
+        "de": "Eine Bekannte braucht wegen eines Familienbesuchs deinen Wohnungsschlüssel und bietet eine Gegenleistung an. Erkläre deine Grenze und biete Unterstützung an, bei der du den Schlüssel behältst.",
+        "en": "An acquaintance needs your house key for a family visit and offers a favour in return. Explain your boundary and offer help that lets you keep the key."
+      },
+      "criteria": {
+        "de": "Du erkennst den Anlass an, begründest die Grenze und bietest eine praktisch andere Hilfe an.",
+        "en": "You acknowledge the need, give a reason for the boundary, and offer a different practical form of help."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "문제는 기름값이 아니라 보험이에요. 대신 그날 아침에 제가 모셔다 드릴 수 있는데 괜찮으세요?"
+    },
+    {
+      "lessonNumber": 10,
+      "prompt": {
+        "de": "Nach einer hitzigen Probe triffst du die Regisseurin. Deine Kritik am Schluss der Szene gilt weiterhin. Entschuldige dich für deine Wortwahl und schlage vor, wie ihr künftige Meinungsverschiedenheiten besprecht.",
+        "en": "After a heated rehearsal you meet the director. You still stand by your criticism of the ending. Apologise for your wording and propose how to discuss future disagreements."
+      },
+      "criteria": {
+        "de": "Du benennst den Grund der Entschuldigung, hältst eine sachliche Position aufrecht und bietest eine Form des weiteren Gesprächs an.",
+        "en": "You specify what you regret, keep your position on the issue, and propose a way to talk in future."
+      },
+      "witnessTurnIndex": 5,
+      "witnessKo": "생각은 달라도 다시 편하게 만났으면 좋겠어요. 다음부터는 화가 나면 잠깐 쉬었다가 얘기하는 건 어때요?"
+    }
+  ]
+}

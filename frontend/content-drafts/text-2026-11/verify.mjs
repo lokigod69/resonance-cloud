@@ -23,6 +23,19 @@ for (const row of index.paths) {
   const raw = readFileSync(file)
   assert.equal(createHash('sha256').update(raw).digest('hex'), row.sha256, key)
   if (row.evidence) assert(readFileSync(resolve(here, row.evidence)).length > 0, key)
+  if (row.language === 'Korean' && row.level === 'B2' && row.path >= 5) {
+    const taskBytes = readFileSync(resolve(here, row.assessment))
+    assert.equal(createHash('sha256').update(taskBytes).digest('hex'), row.assessmentSha256, key)
+    const review = JSON.parse(readFileSync(resolve(here, row.evidence)))
+    assert.equal(review.lessonSha256, row.sha256, key)
+    assert.equal(review.assessmentSha256, row.assessmentSha256, key)
+    assert.equal(review.pathNumber, row.path, key)
+    assert.equal(review.independent.lessonSha256, row.reviewedSourceSha256, key)
+    if (row.state === 'offline text reviewed') {
+      assert.equal(review.independentVerdict, 'PASS', key)
+      assert.equal(review.fableDisposition, 'resolved', key)
+    }
+  }
   const d = JSON.parse(raw)
   assert.deepEqual([d.status,d.targetLanguage,d.level,d.pathNumber,d.lessons.length], ['draft',row.language,row.level,row.path,10], key)
   assert.equal(new Set(d.lessons.map(l => l.slug)).size,10,key)

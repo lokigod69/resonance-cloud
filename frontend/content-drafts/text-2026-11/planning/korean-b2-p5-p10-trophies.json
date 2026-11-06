@@ -1,0 +1,428 @@
+{
+  "language": "Korean",
+  "level": "B2",
+  "scope": "Vocabulary allocation for the sixty P5–P10 lesson openings. The later native review governs the attested surface.",
+  "prerequisiteLessons": 340,
+  "rows": [
+    {
+      "pathNumber": 5,
+      "lessonNumber": 1,
+      "lemma": "파손",
+      "familyKey": "파손",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 2,
+      "lemma": "공임",
+      "familyKey": "공임",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 3,
+      "lemma": "시간대",
+      "familyKey": "시간대",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 4,
+      "lemma": "도배",
+      "familyKey": "도배",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 5,
+      "lemma": "지연",
+      "familyKey": "지연",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 6,
+      "lemma": "접수",
+      "familyKey": "접수",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 7,
+      "lemma": "양도",
+      "familyKey": "양도",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 8,
+      "lemma": "객실",
+      "familyKey": "객실",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 9,
+      "lemma": "배정",
+      "familyKey": "배정",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 5,
+      "lessonNumber": 10,
+      "lemma": "인상",
+      "familyKey": "인상",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 1,
+      "lemma": "만기",
+      "familyKey": "만기",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 2,
+      "lemma": "진료",
+      "familyKey": "진료",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 3,
+      "lemma": "평가",
+      "familyKey": "평가",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 4,
+      "lemma": "전입",
+      "familyKey": "전입",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 5,
+      "lemma": "분담",
+      "familyKey": "분담",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 6,
+      "lemma": "면담",
+      "familyKey": "면담",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 7,
+      "lemma": "도난",
+      "familyKey": "도난",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 8,
+      "lemma": "수습",
+      "familyKey": "수습",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 9,
+      "lemma": "조사",
+      "familyKey": "조사",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 6,
+      "lessonNumber": 10,
+      "lemma": "청구",
+      "familyKey": "청구",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 1,
+      "lemma": "송별회",
+      "familyKey": "송별회",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 2,
+      "lemma": "승강기",
+      "familyKey": "승강기",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 3,
+      "lemma": "초안",
+      "familyKey": "초안",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 4,
+      "lemma": "집안일",
+      "familyKey": "집안일",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 5,
+      "lemma": "집게",
+      "familyKey": "집게",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 6,
+      "lemma": "격주",
+      "familyKey": "격주",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 7,
+      "lemma": "운전대",
+      "familyKey": "운전대",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 8,
+      "lemma": "안건",
+      "familyKey": "안건",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 9,
+      "lemma": "양보",
+      "familyKey": "양보",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 7,
+      "lessonNumber": 10,
+      "lemma": "세대",
+      "familyKey": "세대",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 1,
+      "lemma": "근무제",
+      "familyKey": "근무제",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 2,
+      "lemma": "화상",
+      "familyKey": "화상",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 3,
+      "lemma": "시각",
+      "familyKey": "시각",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 4,
+      "lemma": "단골",
+      "familyKey": "단골",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 5,
+      "lemma": "부위",
+      "familyKey": "부위",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 6,
+      "lemma": "깊이",
+      "familyKey": "깊이",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 7,
+      "lemma": "분리배출",
+      "familyKey": "분리배출",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 8,
+      "lemma": "회고",
+      "familyKey": "회고",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 9,
+      "lemma": "취지",
+      "familyKey": "취지",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 8,
+      "lessonNumber": 10,
+      "lemma": "우회로",
+      "familyKey": "우회로",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 1,
+      "lemma": "출장비",
+      "familyKey": "출장비",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 2,
+      "lemma": "경과",
+      "familyKey": "경과",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 3,
+      "lemma": "곰팡이",
+      "familyKey": "곰팡이",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 4,
+      "lemma": "손실",
+      "familyKey": "손실",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 5,
+      "lemma": "해명",
+      "familyKey": "해명",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 6,
+      "lemma": "폐장",
+      "familyKey": "폐장",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 7,
+      "lemma": "분기",
+      "familyKey": "분기",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 8,
+      "lemma": "납기",
+      "familyKey": "납기",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 9,
+      "lemma": "운전자",
+      "familyKey": "운전자",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 9,
+      "lessonNumber": 10,
+      "lemma": "말투",
+      "familyKey": "말투",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 1,
+      "lemma": "소속감",
+      "familyKey": "소속감",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 2,
+      "lemma": "경계선",
+      "familyKey": "경계선",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 3,
+      "lemma": "자동화",
+      "familyKey": "자동화",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 4,
+      "lemma": "속도",
+      "familyKey": "속도",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 5,
+      "lemma": "어미",
+      "familyKey": "어미",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 6,
+      "lemma": "생계",
+      "familyKey": "생계",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 7,
+      "lemma": "풍습",
+      "familyKey": "풍습",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 8,
+      "lemma": "진로",
+      "familyKey": "진로",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 9,
+      "lemma": "일회용품",
+      "familyKey": "일회용품",
+      "pos": "noun"
+    },
+    {
+      "pathNumber": 10,
+      "lessonNumber": 10,
+      "lemma": "갈림길",
+      "familyKey": "갈림길",
+      "pos": "noun"
+    }
+  ]
+}

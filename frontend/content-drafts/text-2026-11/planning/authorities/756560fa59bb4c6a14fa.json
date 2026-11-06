@@ -1,0 +1,405 @@
+{
+  "pathNumber": 10,
+  "lessons": [
+    {
+      "n": 1,
+      "dialogue": [
+        {
+          "ko": "외국에 산다는 게 자유예요, 아니면 뭔가 잃는 거예요?",
+          "de": "Ist Leben im Ausland Freiheit, oder verliert man dabei etwas?",
+          "en": "Is living abroad freedom, or do you lose something?"
+        },
+        {
+          "ko": "자유냐 상실이냐로 나누기는 어려워요. 저한테는 소속감이 매일 조금씩 다시 만들어지는 과정이거든요. 어느 쪽도 저절로 오지는 않고요.",
+          "de": "Freiheit oder Verlust lässt sich schwer trennen. Für mich ist es eher ein Prozess, in dem das Zugehörigkeitsgefühl jeden Tag ein Stück neu entsteht. Keins von beidem kommt von allein.",
+          "en": "It's hard to split it into freedom or loss. For me it's a process where a sense of belonging gets rebuilt a little every day. Neither comes by itself."
+        },
+        {
+          "ko": "그래도 외국인은 언제든 떠날 수 있잖아요. 여기 사람들은 그게 안 되고요.",
+          "de": "Aber als Ausländer kannst du jederzeit gehen. Die Leute hier können das nicht.",
+          "en": "Still, a foreigner can leave any time. People here can't."
+        },
+        {
+          "ko": "떠날 수 있다는 건 분명 특권이죠. 여기 분들 사정은 다 다를 테고요. 그렇지만 떠날 수 있는데도 남는 선택이 무겁더라고요.",
+          "de": "Gehen zu können ist klar ein Privileg. Und die Umstände der Leute hier sind sicher alle verschieden. Trotzdem habe ich gemerkt: Zu bleiben, obwohl man gehen könnte, wiegt schwer.",
+          "en": "Being able to leave is clearly a privilege. And people's situations here surely all differ. But I've found that choosing to stay when you could leave is the heavy part."
+        },
+        {
+          "ko": "그럼 곧 이사 가는 사람한테 한 문장으로 뭐라고 하실 거예요?",
+          "de": "Und was würdest du jemandem, der bald umzieht, in einem Satz sagen?",
+          "en": "So what would you tell someone about to move, in one sentence?"
+        },
+        {
+          "ko": "결론은 자유를 누리는 대신 그 자유를 설명할 사람 한 명은 꼭 만들라는 거예요.",
+          "de": "Mein Fazit: Genieß die Freiheit, aber such dir unbedingt einen Menschen, dem du diese Freiheit erklären kannst.",
+          "en": "My conclusion is: enjoy the freedom, but make sure you find one person you can explain that freedom to."
+        }
+      ],
+      "transfer": {
+        "ko": "결론은 레시피를 따르는 대신 소금만큼은 직접 맛보고 정하라는 거예요.",
+        "de": "Mein Fazit: Folg dem Rezept, aber das Salz entscheidest du selbst nach dem Abschmecken.",
+        "en": "My conclusion is: follow the recipe, but decide the salt yourself by tasting."
+      }
+    },
+    {
+      "n": 2,
+      "dialogue": [
+        {
+          "ko": "워라밸이라는 말, 솔직히 여유 있는 사람들이나 쓰는 사치 아니에요?",
+          "de": "Dieses Wort Work-Life-Balance, ist das nicht ehrlich gesagt ein Luxus für Leute, die es sich leisten können?",
+          "en": "That word work-life balance, honestly, isn't it a luxury only well-off people use?"
+        },
+        {
+          "ko": "제가 보기에 균형은 비율이 아니라 경계선이 어디 있느냐의 문제예요. 퇴근 후에 메일만 안 열어도 선은 지킨 거죠.",
+          "de": "Aus meiner Sicht ist Balance kein Verhältnis, sondern eine Frage, wo die Grenzlinie liegt. Wenn ich nach Feierabend nur die Mails nicht öffne, habe ich die Linie schon gehalten.",
+          "en": "The way I see it, balance isn't a ratio, it's a question of where the boundary line is. If I just don't open email after work, I've kept the line."
+        },
+        {
+          "ko": "그런데 이번 주에 두 번이나 늦게까지 남으셨잖아요. 그 선은 어디 갔어요?",
+          "de": "Aber diese Woche bist du zweimal bis spät geblieben. Wo war da die Linie?",
+          "en": "But you stayed late twice this week. Where did that line go?"
+        },
+        {
+          "ko": "두 번 다 제가 못 끊은 날이었죠. 그렇다고 해서 선이 없는 건 아니에요. 넘은 걸 바로 알았으니까요.",
+          "de": "Beide Male waren Tage, an denen ich nicht abschalten konnte. Das heißt aber nicht, dass es keine Linie gibt. Ich habe sofort gemerkt, dass ich sie überschritten hatte.",
+          "en": "Both were days I couldn't cut it off. That doesn't mean there's no line, though. I knew right away I'd crossed it."
+        },
+        {
+          "ko": "그럼 구체적으로 균형이 뭐라는 거예요? 숫자로 말해 봐요.",
+          "de": "Was heißt Balance dann konkret? Sag's mal in Zahlen.",
+          "en": "So what does balance mean concretely? Give me a number."
+        },
+        {
+          "ko": "한마디로 밤 아홉 시 이후엔 회사 전화를 안 받는 거예요. 그 시간만큼은 제가 비어 있어야 하니까요.",
+          "de": "Kurz gesagt: Nach neun Uhr abends gehe ich nicht ans Firmentelefon. Diese Zeit muss ich für mich frei haben.",
+          "en": "In short, I don't take work calls after nine at night. That time has to stay mine."
+        }
+      ],
+      "transfer": {
+        "ko": "한마디로 무릎이 아프기 시작하면 그날 달리기는 거기서 끝이에요.",
+        "de": "Kurz gesagt: Sobald das Knie wehtut, ist das Laufen für den Tag vorbei.",
+        "en": "In short, the moment my knee starts hurting, that day's run ends right there."
+      }
+    },
+    {
+      "n": 3,
+      "dialogue": [
+        {
+          "ko": "불도 커튼도 다 자동이에요. 그런데 왜 그렇게 시큰둥하세요?",
+          "de": "Licht und Vorhänge, alles automatisch. Warum bist du so lauwarm?",
+          "en": "Lights, curtains, all automated. So why are you so lukewarm?"
+        },
+        {
+          "ko": "신기하긴 해요. 제 생각에는 자동화가 손을 덜어 주는 건 분명한데, 그게 마음까지 덜어 주는 건 아닌 것 같아요.",
+          "de": "Beeindruckend ist es schon. Ich denke, Automatisierung nimmt einem klar Handgriffe ab, aber den Kopf entlastet sie damit nicht unbedingt.",
+          "en": "It is impressive. My feeling is that automation clearly saves your hands, but I'm not sure it saves your head."
+        },
+        {
+          "ko": "그래도 이거 덕분에 하루에 한 시간은 벌어요. 그건 인정하셔야죠.",
+          "de": "Trotzdem spare ich damit eine Stunde am Tag. Das musst du zugeben.",
+          "en": "Still, this gains me an hour a day. You have to admit that."
+        },
+        {
+          "ko": "한 시간 번 건 맞아요. 문제는 번 시간이 어디로 가느냐예요. 저 같으면 한 시간을 또 화면이 가져갈 거라서요.",
+          "de": "Eine Stunde gewonnen, das stimmt. Die Frage ist, wohin die gewonnene Zeit geht. Bei mir würde sich die Stunde wieder der Bildschirm holen.",
+          "en": "Yes, you gained an hour. The question is where that hour goes. In my case the screen would just take it again."
+        },
+        {
+          "ko": "그럼 뭐예요, 휴대폰도 없던 시절로 돌아가고 싶다는 거예요?",
+          "de": "Was also, du willst zurück in die Zeit ohne Handy?",
+          "en": "So what, you want to go back to the days without a phone?"
+        },
+        {
+          "ko": "정리하면 없애자는 게 아니라 어디까지 들일지 먼저 정하자는 거예요. 저는 불까지는 좋고 냉장고가 말을 거는 건 사양이에요.",
+          "de": "Zusammengefasst: nicht abschaffen, sondern erst festlegen, wie weit man es reinlässt. Licht ist für mich okay, aber ein Kühlschrank, der mich anspricht, nein danke.",
+          "en": "To sum up, I'm not saying get rid of it, I'm saying decide first how far to let it in. Lights are fine by me, a fridge that talks to me, no thanks."
+        }
+      ],
+      "transfer": {
+        "ko": "차가 생겨서 빨라진 건 맞아요. 문제는 그 시간이 어디로 가느냐예요.",
+        "de": "Mit dem Auto bin ich schneller, das stimmt. Die Frage ist, wohin diese Zeit geht.",
+        "en": "Having a car made things faster, that's true. The question is where that time goes."
+      }
+    },
+    {
+      "n": 4,
+      "dialogue": [
+        {
+          "ko": "여기 사는 거 어때요? 정말 좋으세요?",
+          "de": "Wie ist es, hier zu leben? Gefällt es dir wirklich?",
+          "en": "How is living here? Do you really like it?"
+        },
+        {
+          "ko": "이 도시는 편한 곳이라기보다는 속도가 빠른 곳에 가까워요. 그 속도가 어떤 날은 힘이 되고 어떤 날은 짐이에요.",
+          "de": "Diese Stadt ist weniger ein bequemer Ort als ein schneller. Dieses Tempo gibt mir an manchen Tagen Kraft und ist an anderen eine Last.",
+          "en": "This city is less a comfortable place than a fast one. That speed gives me energy some days and weighs on me others."
+        },
+        {
+          "ko": "솔직히 그렇게 말하면 그냥 불평처럼 들리는데요.",
+          "de": "Ehrlich gesagt klingt das einfach wie Gejammer.",
+          "en": "Honestly, that just sounds like complaining."
+        },
+        {
+          "ko": "제 말은 불평이 아니라 설명이에요. 지하철이 삼 분마다 오면 고맙고, 그 삼 분 때문에 뛰게 되면 밉거든요.",
+          "de": "Ich meine das nicht als Klage, sondern als Erklärung. Wenn die U-Bahn alle drei Minuten kommt, bin ich dankbar, und wenn ich wegen dieser drei Minuten rennen muss, nervt es.",
+          "en": "I mean it as an explanation, not a complaint. When the subway comes every three minutes I'm grateful, and when those three minutes make me run, I hate it."
+        },
+        {
+          "ko": "그럼 저 같은 사람한테 여기로 이사 오라고 권하시겠어요?",
+          "de": "Würdest du jemandem wie mir empfehlen, hierher zu ziehen?",
+          "en": "So would you recommend someone like me move here?"
+        },
+        {
+          "ko": "제 답은 조건부예요. 일 때문에 오시면 권하고, 쉬려고 오시면 안 권해요. 쉬는 법은 안 가르쳐 주거든요.",
+          "de": "Meine Antwort ist bedingt. Wer wegen der Arbeit kommt, dem rate ich zu, wer zum Ausruhen kommt, dem rate ich ab. Ausruhen bringt einem die Stadt nicht bei.",
+          "en": "My answer is conditional. If you're coming for work, yes; if you're coming to rest, no. This city doesn't teach you how to rest."
+        }
+      ],
+      "transfer": {
+        "ko": "제 말은 싫다는 게 아니라 비싸다는 거예요. 맛은 좋은데 그 값이면 두 번 가기는 어렵거든요.",
+        "de": "Ich meine nicht, dass es schlecht ist, sondern dass es teuer ist. Es schmeckt gut, aber zu dem Preis geht man kaum zweimal hin.",
+        "en": "I'm not saying I dislike it, I'm saying it's expensive. The food is good, but at that price it's hard to go twice."
+      }
+    },
+    {
+      "n": 5,
+      "dialogue": [
+        {
+          "ko": "한국어 배우면서 뭐가 제일 어려우셨어요? 편하게 말씀해 보세요.",
+          "de": "Was war beim Koreanischlernen am schwersten? Sagen Sie es ruhig offen.",
+          "en": "What was hardest about learning Korean? Feel free to say."
+        },
+        {
+          "ko": "저는 단어보다 어미가 훨씬 어려웠어요. 단어는 외우면 끝인데 어미는 누구한테 말하느냐에 따라 매번 다시 골라야 하잖아요.",
+          "de": "Für mich waren die Endungen viel schwerer als die Wörter. Wörter lernt man auswendig und fertig, aber Endungen muss man je nach Gegenüber jedes Mal neu wählen.",
+          "en": "For me the endings were much harder than the vocabulary. You memorise a word and you're done, but endings you have to choose again every time depending on who you're talking to."
+        },
+        {
+          "ko": "흥미롭네요. 대부분 학생들은 어휘가 제일 힘들다고 하거든요.",
+          "de": "Interessant. Die meisten Lernenden sagen, der Wortschatz sei das Schwerste.",
+          "en": "Interesting. Most students say vocabulary is the hardest."
+        },
+        {
+          "ko": "예를 들면 제가 갈게요와 선생님께서 가세요는 같은 동사인데 주어 때문에 끝이 달라지잖아요. 그걸 입이 익히는 데 한참 걸렸어요.",
+          "de": "Zum Beispiel: Ich gehe und Sie als Lehrerin gehen, dasselbe Verb, aber wegen des Subjekts ändert sich die Endung. Bis mein Mund das verinnerlicht hatte, hat es ewig gedauert.",
+          "en": "For example, me going and you, the teacher, going are the same verb, but the ending changes because of the subject. It took my mouth ages to learn that."
+        },
+        {
+          "ko": "그럼 이제 막 시작하는 초급자한테는 뭐라고 조언하시겠어요?",
+          "de": "Was würden Sie dann einem Anfänger raten, der gerade erst beginnt?",
+          "en": "So what would you advise a beginner who is just starting?"
+        },
+        {
+          "ko": "한 줄로 줄이면 단어장보다 문장 끝부터 들으라는 거예요. 끝만 잘 들어도 누가 누구한테 말하는지 보이거든요.",
+          "de": "In einem Satz: Hör zuerst auf das Satzende, nicht auf die Vokabelliste. Schon am Ende erkennt man, wer mit wem spricht.",
+          "en": "In one line: listen to the ends of sentences before the vocabulary list. Just from the ending you can tell who's talking to whom."
+        }
+      ],
+      "transfer": {
+        "ko": "예를 들면 같은 김치찌개인데 어머니가 끓이신 건 맵고 제가 끓인 건 싱겁잖아요.",
+        "de": "Zum Beispiel: derselbe Kimchi-Eintopf, aber der von meiner Mutter gekochte ist scharf und meiner ist fad.",
+        "en": "For example, it's the same kimchi stew, but the one my mother cooks is spicy and mine is bland."
+      }
+    },
+    {
+      "n": 6,
+      "dialogue": [
+        {
+          "ko": "월급 올라서 좋겠지만, 돈으로 행복을 살 수는 없잖아요.",
+          "de": "Schön, dass dein Gehalt gestiegen ist, aber Geld kann kein Glück kaufen.",
+          "en": "Nice that your pay went up, but money can't buy happiness."
+        },
+        {
+          "ko": "돈이 행복을 사지는 못해도 생계가 흔들릴 때 오는 불안은 분명히 줄여 줘요. 불안이 줄어야 행복이 들어올 자리도 생기고요.",
+          "de": "Geld kauft kein Glück, aber es nimmt klar die Angst, die kommt, wenn der Lebensunterhalt wackelt. Erst wenn die Angst kleiner wird, ist Platz für Glück.",
+          "en": "Money can't buy happiness, but it clearly reduces the anxiety that comes when your livelihood is shaky. Only when that anxiety shrinks is there room for happiness."
+        },
+        {
+          "ko": "그럼 돈이 더 많으면 지금보다 더 행복해진다는 말이에요?",
+          "de": "Also wärst du mit mehr Geld glücklicher als jetzt?",
+          "en": "So you'd be happier than now with more money?"
+        },
+        {
+          "ko": "꼭 그렇지는 않아요. 월세 걱정이 없어지는 단계까지는 돈과 행복이 같이 올라가요. 그 다음부터는 시간이랑 사람이 더 중요해지더라고요.",
+          "de": "Nicht unbedingt. Bis zu dem Punkt, an dem die Mietsorgen verschwinden, steigen Geld und Glück zusammen. Danach werden Zeit und Menschen wichtiger.",
+          "en": "Not necessarily. Up to the point where you stop worrying about rent, money and happiness rise together. After that, time and people matter more."
+        },
+        {
+          "ko": "그 선이 정확히 어디인데요? 금액으로 말해 보세요.",
+          "de": "Wo genau liegt diese Linie? Nenn einen Betrag.",
+          "en": "Where exactly is that line? Give me an amount."
+        },
+        {
+          "ko": "그러니까 선은 금액이 아니라 상태예요. 월세 걱정 없이 잘 수 있으면 된 거고, 그 위는 다른 얘기죠.",
+          "de": "Also die Linie ist kein Betrag, sondern ein Zustand. Wenn man ohne Mietsorgen schlafen kann, reicht es, und darüber ist eine andere Geschichte.",
+          "en": "So the line isn't an amount, it's a state. If you can sleep without worrying about rent, that's enough, and above that it's a different story."
+        }
+      ],
+      "transfer": {
+        "ko": "잠이 모든 걸 해결하지는 못해도 짜증은 분명히 줄여 줘요. 그 다음부터는 다른 얘기고요.",
+        "de": "Schlaf löst nicht alles, aber er nimmt klar die Gereiztheit. Alles danach ist eine andere Geschichte.",
+        "en": "Sleep doesn't fix everything, but it clearly reduces irritability. Beyond that it's a different story."
+      }
+    },
+    {
+      "n": 7,
+      "dialogue": [
+        {
+          "ko": "요즘 젊은 분들은 명절을 어떻게 지내야 한다고 생각해요?",
+          "de": "Wie sollten die Feiertage Ihrer Meinung nach heute begangen werden, so unter den Jüngeren?",
+          "en": "How do you young folks think the holidays should be kept these days?"
+        },
+        {
+          "ko": "저는 풍습을 없애자는 쪽은 아니에요. 모이는 뜻은 지키면서 준비하는 방식은 바꿀 수 있다고 봐요.",
+          "de": "Ich bin nicht dafür, die Bräuche abzuschaffen. Ich finde, man kann den Sinn des Zusammenkommens bewahren und trotzdem die Art der Vorbereitung ändern.",
+          "en": "I'm not on the side of abolishing the customs. I think we can keep the meaning of gathering while changing how we prepare."
+        },
+        {
+          "ko": "그런데 젊은 사람들은 그냥 다 건너뛰고 싶어 하는 것 같던데요.",
+          "de": "Aber die jungen Leute wollen doch anscheinend einfach alles auslassen.",
+          "en": "But young people seem to just want to skip everything."
+        },
+        {
+          "ko": "그렇게만 보기는 어려워요. 제 주변엔 음식은 줄이고 얘기는 더 하자는 사람이 많거든요. 건너뛰자는 게 아니라 지치지 말자는 거죠.",
+          "de": "So einfach sehe ich das nicht. In meinem Umfeld wollen viele weniger Essen und mehr Gespräch. Es geht nicht ums Auslassen, sondern darum, nicht auszubrennen.",
+          "en": "I wouldn't see it only that way. Many people around me want less food and more talking. It's not about skipping, it's about not wearing yourselves out."
+        },
+        {
+          "ko": "그럼 정확히 뭘 지키고 뭘 바꾸겠다는 거예요?",
+          "de": "Was genau würden Sie dann behalten und was ändern?",
+          "en": "So exactly what would you keep and what would you change?"
+        },
+        {
+          "ko": "결국 날짜 맞춰 다 같이 모이는 건 지키고, 음식 가짓수와 누가 준비할지는 그 집 식구들이 정하면 돼요.",
+          "de": "Letztlich: Dass sich alle am festen Tag versammeln, bleibt, und wie viele Gerichte es gibt und wer sie vorbereitet, entscheidet jede Familie selbst.",
+          "en": "In the end, keep everyone gathering on the day, and let each family decide how many dishes and who prepares them."
+        }
+      ],
+      "transfer": {
+        "ko": "그렇게만 보기는 어려워요. 제 주변엔 종이책을 더 사는 이십 대도 많거든요.",
+        "de": "So einfach sehe ich das nicht. In meinem Umfeld gibt es viele Zwanzigjährige, die mehr gedruckte Bücher kaufen.",
+        "en": "I wouldn't see it only that way. Plenty of people in their twenties around me buy more paper books."
+      }
+    },
+    {
+      "n": 8,
+      "dialogue": [
+        {
+          "ko": "선배님은 처음부터 계획대로 오신 거예요? 저는 계획이 자꾸 어긋나서요.",
+          "de": "Sind Sie von Anfang an nach Plan gegangen? Bei mir geht der Plan ständig schief.",
+          "en": "Did you follow a plan from the start? Mine keeps going off track."
+        },
+        {
+          "ko": "솔직히 저도 계획대로 온 건 아니에요. 진로를 미리 그린 게 아니라 거절당할 때마다 옆으로 한 칸씩 옮긴 결과거든요.",
+          "de": "Ehrlich, ich bin auch nicht nach Plan hier gelandet. Ich habe den Werdegang nicht vorgezeichnet, sondern bin bei jeder Absage ein Feld zur Seite gerückt.",
+          "en": "Honestly, I didn't follow a plan either. I didn't map my career in advance; it's the result of moving one step sideways every time I was rejected."
+        },
+        {
+          "ko": "그건 전략이 아니라 운 아니에요? 옆 칸이 늘 있었다는 거잖아요.",
+          "de": "Ist das nicht Glück statt Strategie? Es gab ja immer ein Feld daneben.",
+          "en": "Isn't that luck, not strategy? There was always a square beside you."
+        },
+        {
+          "ko": "운이 컸다는 점은 인정해요. 옆 칸이 없던 때도 있었고요. 다만 운이 왔을 때 알아보는 건 연습이 되더라고요.",
+          "de": "Dass Glück eine große Rolle spielte, gebe ich zu. Es gab auch Zeiten ohne Feld daneben. Aber Glück zu erkennen, wenn es kommt, das lässt sich üben.",
+          "en": "I admit luck played a big part. There were times with no square beside me. But recognising luck when it comes turns out to be something you can practise."
+        },
+        {
+          "ko": "그럼 선배님이 실제로 지킨 원칙 하나만 말해 주세요.",
+          "de": "Dann nennen Sie mir bitte das eine Prinzip, das Sie wirklich eingehalten haben.",
+          "en": "Then tell me the one principle you actually stuck to."
+        },
+        {
+          "ko": "하나만 꼽으면 고를 수 있을 때는 배울 게 없는 자리에 안 남는다는 거예요. 못 고를 땐 버텼고요.",
+          "de": "Wenn ich eins nennen soll: Wenn ich die Wahl hatte, blieb ich nicht, wo es nichts zu lernen gab. Wenn ich keine Wahl hatte, habe ich durchgehalten.",
+          "en": "If I pick one: when I had a choice, I didn't stay where there was nothing to learn. When I had no choice, I held on."
+        }
+      ],
+      "transfer": {
+        "ko": "운이 따랐다는 점은 인정해요. 그래도 그 집을 보러 간 건 제 발이었고요.",
+        "de": "Dass ich Glück hatte, gebe ich zu. Aber hingegangen, um die Wohnung anzusehen, bin ich selbst.",
+        "en": "I admit I was lucky. Still, it was my own feet that went to see that flat."
+      }
+    },
+    {
+      "n": 9,
+      "dialogue": [
+        {
+          "ko": "텀블러 그거 매일 씻고 들고 다니고, 그게 무슨 의미가 있어요?",
+          "de": "Den Becher jeden Tag spülen und mitschleppen, was soll das bringen?",
+          "en": "Washing and carrying that cup every day, what's the point?"
+        },
+        {
+          "ko": "세상을 바꾸려는 건 아니에요. 일회용품을 하루에 한 개 덜 쓰는 선택이 쌓이면 제가 어떤 사람인지가 정해지거든요.",
+          "de": "Ich will nicht die Welt verändern. Aber wenn sich die Entscheidung, täglich ein Einwegteil weniger zu verbrauchen, ansammelt, bestimmt das, wer ich bin.",
+          "en": "I'm not trying to change the world. But when the choice to use one less disposable item a day adds up, it defines who I am."
+        },
+        {
+          "ko": "컵 하나로는 아무것도 안 바뀌어요. 결국 기분 좋으려고 하는 거잖아요.",
+          "de": "Ein Becher ändert gar nichts. Am Ende machst du das für dein gutes Gefühl.",
+          "en": "One cup changes nothing. In the end you do it to feel good."
+        },
+        {
+          "ko": "숫자로만 보면 그 말이 맞아요. 컵 하나는 통계에 안 잡히죠. 그래도 기분 때문만은 아니고, 꾸준함을 저한테 확인하는 거예요.",
+          "de": "Rein nach Zahlen hast du recht. Ein Becher taucht in keiner Statistik auf. Trotzdem geht es nicht nur ums Gefühl, ich prüfe damit meine eigene Beständigkeit.",
+          "en": "Purely by the numbers, you're right. One cup doesn't show up in any statistic. Still, it's not just about feeling good; I'm proving consistency to myself."
+        },
+        {
+          "ko": "그럼 비행기도 덜 타세요? 그게 진짜 큰 건데요.",
+          "de": "Fliegst du dann auch weniger? Das ist das eigentlich Große.",
+          "en": "So do you fly less too? That's the really big one."
+        },
+        {
+          "ko": "솔직히 말하면 비행기는 아직 못 줄였어요. 그래서 내년 휴가는 비행기 대신 기차로 가는 걸 먼저 알아보고 있고요.",
+          "de": "Ehrlich gesagt habe ich das Fliegen noch nicht reduziert. Deshalb prüfe ich für den Urlaub nächstes Jahr zuerst, ob es mit dem Zug statt dem Flieger geht.",
+          "en": "Honestly, I haven't managed to fly less yet. That's why for next year's holiday I'm first looking into going by train instead of plane."
+        }
+      ],
+      "transfer": {
+        "ko": "솔직히 말하면 아침 운동은 아직 못 지켰어요. 그래서 이번 주는 알람을 삼십 분만 당겨 보려고요.",
+        "de": "Ehrlich gesagt habe ich den Morgensport noch nicht durchgehalten. Deshalb stelle ich diese Woche den Wecker erst mal nur dreißig Minuten früher.",
+        "en": "Honestly, I haven't kept up morning exercise yet. So this week I'm just going to move the alarm thirty minutes earlier."
+      }
+    },
+    {
+      "n": 10,
+      "dialogue": [
+        {
+          "ko": "일 년 뒤에 어디에서 뭘 하고 계실 것 같아요? 솔직하게 말씀해 주세요.",
+          "de": "Wo und womit werden Sie in einem Jahr beschäftigt sein? Bitte antworten Sie offen.",
+          "en": "Where will you be and what will you be doing in a year? Please answer honestly."
+        },
+        {
+          "ko": "내년 삼월에 갈림길이 하나 있어요. 자격시험에 붙는다고 가정하면 여기 남아서 바로 일을 시작하고, 반대로 떨어지면 반년 더 준비해요.",
+          "de": "Im März nächsten Jahres kommt eine Weggabelung. Angenommen, ich bestehe die Zertifikatsprüfung, bleibe ich hier und fange sofort an zu arbeiten; falle ich dagegen durch, bereite ich mich ein halbes Jahr länger vor.",
+          "en": "There's a fork in the road next March. Assuming I pass the certification exam, I stay here and start work right away; if I fail, on the other hand, I prepare for another half year."
+        },
+        {
+          "ko": "그 시험에 떨어지면요? 그때도 같은 계획인가요?",
+          "de": "Und wenn Sie durchfallen? Bleibt es dann beim selben Plan?",
+          "en": "And if you fail that exam? Same plan then?"
+        },
+        {
+          "ko": "그 경우에는 구월에 한 번 더 보되, 두 번째까지만 해요. 그것도 안 되면 시험이 필요 없는 자리로 옮겨요.",
+          "de": "In dem Fall versuche ich es im September noch einmal, aber nur bis zum zweiten Versuch. Klappt auch das nicht, wechsle ich auf eine Stelle ohne Prüfung.",
+          "en": "In that case I take it once more in September, but only up to the second attempt. If that fails too, I move to a position that doesn't require the exam."
+        },
+        {
+          "ko": "위원회가 적어 둘 수 있게 그 계획을 한 문장으로 말씀해 주시겠어요?",
+          "de": "Könnten Sie den Plan in einem Satz sagen, damit das Komitee ihn notieren kann?",
+          "en": "Could you state that plan in one sentence so the committee can note it down?"
+        },
+        {
+          "ko": "한 문장으로요. 삼월에 붙으면 여기서 일을 시작하고, 떨어지면 구월에 한 번만 보고 그 뒤엔 다른 길로 가요.",
+          "de": "In einem Satz: Bestehe ich im März, fange ich hier an zu arbeiten; falle ich durch, versuche ich es im September genau einmal, danach gehe ich einen anderen Weg.",
+          "en": "In one sentence: if I pass in March I start work here; if I fail, I take it exactly once more in September, and after that I go a different route."
+        }
+      ],
+      "transfer": {
+        "ko": "비가 온다고 가정하면 실내 전시를 보고, 반대로 개면 한강으로 가요.",
+        "de": "Angenommen, es regnet, gehen wir in die Ausstellung; klart es dagegen auf, fahren wir an den Han-Fluss.",
+        "en": "Assuming it rains, we see the indoor exhibition; if it clears, on the other hand, we go to the Han River."
+      }
+    }
+  ]
+}
