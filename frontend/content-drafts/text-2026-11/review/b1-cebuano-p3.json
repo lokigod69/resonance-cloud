@@ -1,0 +1,1175 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 3,
+  "lessonSha256": "b82ac328b8787bc64eb5fd71b8a4f4739bb41b4464c660e0fe84893088030f93",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "b82ac328b8787bc64eb5fd71b8a4f4739bb41b4464c660e0fe84893088030f93",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Unta softens the sea-view request. The discounted garden room motivates both cloze blanks."
+      },
+      {
+        "n": 2,
+        "observation": "Kung makes rain a possible condition. The ten o’clock limit gives the pair a reason to start at eight."
+      },
+      {
+        "n": 3,
+        "observation": "Mahimo ba nga asks the shop to deliver. The limited delivery area motivates collecting the table."
+      },
+      {
+        "n": 4,
+        "observation": "The waiter offers a free kitchen table or a wait for the window. Both translations and the final exercise retain the learner’s preference."
+      },
+      {
+        "n": 5,
+        "observation": "The neighbour’s need for the ladder in the morning motivates the return after lunch. Pahulam and palihug preserve the roles."
+      },
+      {
+        "n": 6,
+        "observation": "The learner requests permission to try a dress, and the tight small one explains the choice of the larger size."
+      },
+      {
+        "n": 7,
+        "observation": "The bag-watching request, five-minute limit and promise to hurry work in both locales. The corrected rule in both languages describes the intended request without attributing grammatical person to pangayoon."
+      },
+      {
+        "n": 8,
+        "observation": "Gikan sa and ngadto sa distinguish the original and requested dates. Saturday morning accommodates the learner’s work."
+      },
+      {
+        "n": 9,
+        "observation": "The coconut replacement incurs a surcharge. Basta makes acceptance conditional on a small portion."
+      },
+      {
+        "n": 10,
+        "observation": "The change from email to a paper copy motivates giving a postal address. Mangayo and the recall item remain anchored."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "b82ac328b8787bc64eb5fd71b8a4f4739bb41b4464c660e0fe84893088030f93",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Sea-facing room → discounted garden room → conditional acceptance. Recall asks for previously learned dagat, singled out by the two translations; the different views are fair recall alternatives."
+      },
+      {
+        "n": 2,
+        "observation": "Kung plus the shared tour licenses ta; the guide's available window motivates starting at eight. Replacement verb choices no longer offer plausible ending/departure actions."
+      },
+      {
+        "n": 3,
+        "observation": "The homeowner asks the furniture staff about delivery; the geographic limit motivates personal pickup. Replacing mohatod in the second cloze removes a possible competing response."
+      },
+      {
+        "n": 4,
+        "observation": "The restaurant's two offers support waiting for the window table. Revised hangyo/nga/hilom speech words occur in order and include the linker."
+      },
+      {
+        "n": 5,
+        "observation": "Pahulam now has a verbal request gloss in DE and EN. The afternoon is established by the neighbor's own morning use; the loan transfer example preserves that polite condition and the terms reflect the dialogue."
+      },
+      {
+        "n": 6,
+        "observation": "Both examples now highlight sulayan nako, making the object focus and requesting agent visible. Larger size is inferable from the tighter small dress."
+      },
+      {
+        "n": 7,
+        "observation": "The five-minute limit motivates magdali and makabalik. Both corrected pattern rules explain that pangayoon refers to the favor being requested; the following question identifies the actual action. The examples, chunks and ordered speech anchors support that reading."
+      },
+      {
+        "n": 8,
+        "observation": "Saturday morning follows from the exclusion of Friday and the learner's afternoon work. Ibalhin is correctly highlighted in both examples, and gikan is lexical 'from'."
+      },
+      {
+        "n": 9,
+        "observation": "The surcharge counteroffer is accepted on condition of a small quantity. Competing bisan pa og is gone; the German sofern now carries the same condition as Cebuano basta and English provided."
+      },
+      {
+        "n": 10,
+        "observation": "The clerk offers a mailed paper copy, and the learner accepts and gives an address. New adres blank is uniquely established by the address value, and mangayo ko og is now highlighted."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "d5bb6126d0291a9bcd54fcaf09195f1639c3db98d0c93d41a8f80531ba8b70f6",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Garden-side counteroffer and discount come only in turn three. The sea view is clear in both bases, but all four recall nouns describe possible views before that reveal."
+      },
+      {
+        "n": 2,
+        "observation": "Tomorrow's rain prompts a request to change the joint trip; inclusive ta is justified. The guide sets a ten o'clock limit, but it does not by itself rule out finishing at eight."
+      },
+      {
+        "n": 3,
+        "observation": "The owner distinguishes the delivery area from the learner's home and the learner offers pickup. The plural mo is explainable by staff acting as a group; both learner turns fit."
+      },
+      {
+        "n": 4,
+        "observation": "The kitchen/window alternatives are distinct and the delay explains why the learner waits. The anchored noun hangyo works; instructions for lowering a radio use tingog for the radio's sound."
+      },
+      {
+        "n": 5,
+        "observation": "The request gives a reason for the ladder, the neighbor keeps it in the morning, and the learner returns after lunch. Pahulam in the actual request is a verb."
+      },
+      {
+        "n": 6,
+        "observation": "One-item limit motivates the learner's larger-dress choice; sulayan nako has appropriate object focus explicitly allowed for this scene. The examples foreground a recycled phrase rather than sulayan."
+      },
+      {
+        "n": 7,
+        "observation": "A five-minute limit motivates hurrying back. The actual favor is clear from bantayan; the opening formula should explicitly convey asking a favour."
+      },
+      {
+        "n": 8,
+        "observation": "Original and proposed dates are clear, and Saturday morning follows from work after lunch. Gikan is the lexical preposition ‘from’, not an early gi- patient-focus verb."
+      },
+      {
+        "n": 9,
+        "observation": "The learner accepts the fee conditionally. Paying despite a small portion is an equally coherent alternative reading of the offered connector; both fit the food-counter context."
+      },
+      {
+        "n": 10,
+        "observation": "The clerk's paper-only offer leads to a full street address. The opening keeps the outcome concealed. Mangayo and resibo are anchored and spoken in order."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "recall.fallbackChoices",
+        "issue": "Before the garden-side counteroffer, tanaman, dagat, dalan and bukid are all normal views a hotel guest can request. The learner has to recall an arbitrary detail if the target meanings are hidden.",
+        "recommendation": "Keep dagat and replace the competing views with distractors that cannot function as the object here (e.g. adjective, aspect verb and conjunction)."
+      },
+      {
+        "n": 2,
+        "severity": "HIGH",
+        "field": "cloze[3].choices",
+        "issue": "With a guide available until ten, mohunong/motapos/mopauli ta og alas otso are plausible plans as well as mosugod ta og alas otso. The guide gives no eight-o'clock departure premise.",
+        "recommendation": "Specify a two-hour tour ending at ten, or use genuine future-form distractors that cannot describe the eight-o'clock action; keep mosugod."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "terms[0].baseText, trophyWord.meaning",
+        "issue": "Pahulam in Pahulam ko sa imong hagdan is the request/imperative 'lend [me]/let [me] borrow'; the noun gloss 'Bitte um eine Leihgabe / request to borrow' can teach the wrong part of speech.",
+        "recommendation": "Use 'leih(en Sie) mir; lass(en Sie) mich ausleihen / lend me; let me borrow' in both glosses and explain the verb in the construction."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "terms[4]",
+        "issue": "Kanal sa atop (gutter) belongs to a different house-repair scenario, while this interaction involves a high branch.",
+        "recommendation": "Use attested source language from this episode, e.g. human sa paniudto / nach dem Mittagessen / after lunch."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "pattern.examples[*].highlight; same defect L8–10",
+        "issue": "Both examples highlight 'Mahimo ba nga' while the L6 explanation teaches 'sulayan nako'; the same copied highlight hides ibalhin L8, ilisan L9 and mangayo L10.",
+        "recommendation": "Highlight sulayan nako in both L6 examples; highlight ibalhin, ilisan and mangayo (or their actual phrases) in L8, L9 and L10 respectively."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], pattern.rule and trophyWord.example",
+        "issue": "Naa koy pabor by itself literally says 'I have a favour'; as a model for asking one, the missing request relation makes this a poor transferable frame. Gamay ra ang akong pabor has the same weakness.",
+        "recommendation": "Use the common request formula 'Naa unta koy pabor nga pangayoon' or 'Naa koy hangyoon nga pabor', and shorten the following question to stay within 16 words. Synchronize all derived fields."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "cloze: connector choices",
+        "issue": "Bisan pa og 'even though' fits precisely: the diner can agree to pay extra even though the portion is small. Busa can also express what the customer concludes the portion should be.",
+        "recommendation": "Retain basta, use distractors that cannot introduce a finite conditional there (e.g. ngadto sa, gikan sa, tungod sa), or refine the sentence so alternatives are ruled out."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6bc52340ac8ea5e10801f524caa7ac7cdc4a27edaa5c140cb2608de9357ef8e6",
+      "sourceSha256": "d5bb6126d0291a9bcd54fcaf09195f1639c3db98d0c93d41a8f80531ba8b70f6",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "unta anchored in youOne and example; chunks/recall/tokens consistent; them-line counter-offer (garden + discount) and youTwo acceptance match the beat. Second cloze blank offers 'aron' which a native could use ('sa tanaman lang aron naa ang diskuwento' = so that I get the discount) — open slot."
+        },
+        {
+          "n": 2,
+          "observation": "kung + moulan condition with mahimo ba nga staged correctly; inclusive ta is genuine (guide joins the trip). Cloze join equals youTwo; Kung is the only natural connector; recall and tokens valid. 'walay ulan sa banabana' is slightly terse but intelligible them-line variation."
+        },
+        {
+          "n": 3,
+          "observation": "mahimo ba nga mohatod mo with exclusive 'among balay' is correct. youTwo 'ako na lay mokuha' reads naturally. Second cloze foil 'mohatod' is grammatical and contextually plausible from the learner's side (I'll transport the table myself) — must be replaced by an impossible foil."
+        },
+        {
+          "n": 4,
+          "observation": "Trophy hangyo as bare noun predicate 'Ang akong hangyo kay'; staged 'hangyo ko nga + clause' delivered via distinct pattern example. Exclusive among/mi correct for the couple vs waiter. Cloze: kusina is excluded by the ten-minute wait clause; fine."
+        },
+        {
+          "n": 5,
+          "observation": "pahulam ko sa + object with palihug on the request line; kay-chunk cut at clause edge; them-line uses -on form recognition-only. Cloze Kung/hapon admit one answer; term 'kanal sa atop' is unused in dialogue (harmless)."
+        },
+        {
+          "n": 6,
+          "observation": "youOne equals the outlined beat sentence; sulayan nako productive per block 4-6; them-line puwede recognition-only. youTwo 'Ang mas dako lang unta, kay huot ang gamay' idiomatic; cloze foils impossible; recall valid."
+        },
+        {
+          "n": 7,
+          "observation": "Naa koy pabor + mahimo ba nimong bantayan is acceptable native variation; fused koy appears only in dialogue, not among tokens (pabor, bantayan, mopalit). youTwo aron-purpose clause licensed; cloze foils clearly impossible."
+        },
+        {
+          "n": 8,
+          "observation": "ibalhin + gikan sa/ngadto sa correct; youTwo 'Sige, sa Sabado, apan sa buntag' realises the staged accept-with-modification. Cloze apan/buntag each admit one answer (hapon contradicts 'human sa paniudto')."
+        },
+        {
+          "n": 9,
+          "observation": "ilisan ang sarsa with dili-habitual negation correct; youTwo basta-condition matches beat. Second cloze foil 'bisan pa og' yields a grammatical, plausible concessive ('I'll pay even though the portion is small') — open slot. First blank foil 'Mokatulog' is a non-form (optional)."
+        },
+        {
+          "n": 10,
+          "observation": "mangayo ko og kopya sa resibo pinaagi sa email equals the outlined sentence. youTwo 'Sige, papel lang unta' is unidiomatic: unta marks an unfulfilled wish, but the learner is accepting the only option offered; 'papel na lang' is the native acceptance. Address line 'Dose, Dalan Mabini' acceptable."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Cloze foil 'aron' is a natively possible answer in the modification slot ('sa tanaman lang aron naa ang diskuwento' = so that I get the discount). Replace with an ungrammatical foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3/choices",
+              "old": [
+                "basta",
+                "aron",
+                "bisan pa og",
+                "hinuon"
+              ],
+              "new": [
+                "basta",
+                "tungod",
+                "bisan pa og",
+                "hinuon"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Cloze foil 'mohatod' is grammatical and contextually plausible ('ako na lay mohatod sa lamesa ugma' = I'll bring the table myself); a learner choosing it would be unjustly rejected.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3/choices",
+              "old": [
+                "mobaligya",
+                "mokuha",
+                "mohatod",
+                "mohimo"
+              ],
+              "new": [
+                "mobaligya",
+                "mokuha",
+                "mokaon",
+                "mohimo"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Cloze foil 'bisan pa og' produces a grammatical, plausible sentence ('Mobayad ko sa dugang, bisan pa og gamay ra ang bahin sa sarsa' = I'll pay the extra even though the portion is small). Replace with 'tungod', which is ungrammatical without kay/sa.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/3/choices",
+              "old": [
+                "busa",
+                "aron",
+                "bisan pa og",
+                "basta"
+              ],
+              "new": [
+                "busa",
+                "aron",
+                "tungod",
+                "basta"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "First cloze foil 'Mokatulog' is not a Cebuano form (matulog/motulog); a real but impossible verb reads cleaner.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/1/choices",
+              "old": [
+                "Moluto",
+                "Mobayad",
+                "Mosulat",
+                "Mokatulog"
+              ],
+              "new": [
+                "Moluto",
+                "Mobayad",
+                "Mosulat",
+                "Mokanta"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "'Sige, papel lang unta' misuses unta: it signals an unfulfilled wish, but the clerk has just said paper is the only option and the learner is accepting it. Native acceptance is 'papel na lang'. Since 'na lang' is a clitic cluster and cannot be a blank, the second blank moves to 'adres'. Translations updated to drop the 'bitte/please' that rendered unta.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3/targetText",
+              "old": "Sige, papel lang unta; ang adres kay Dose, Dalan Mabini.",
+              "new": "Sige, papel na lang; ang adres kay Dose, Dalan Mabini."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3/baseText",
+              "old": {
+                "de": "Gut, dann auf Papier, bitte. Die Adresse ist Mabini-Straße zwölf.",
+                "en": "All right, paper please. The address is twelve Mabini Street."
+              },
+              "new": {
+                "de": "Gut, dann auf Papier. Die Adresse ist Mabini-Straße zwölf.",
+                "en": "All right, paper then. The address is twelve Mabini Street."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Sige, ",
+                {
+                  "kind": "choice",
+                  "answer": "papel",
+                  "choices": [
+                    "selpon",
+                    "kompyuter",
+                    "radyo",
+                    "papel"
+                  ]
+                },
+                " lang ",
+                {
+                  "kind": "choice",
+                  "answer": "unta",
+                  "choices": [
+                    "kung",
+                    "unta",
+                    "aron",
+                    "apan"
+                  ]
+                },
+                "; ang adres kay Dose, Dalan Mabini."
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "choice",
+                  "answer": "papel",
+                  "choices": [
+                    "selpon",
+                    "kompyuter",
+                    "radyo",
+                    "papel"
+                  ]
+                },
+                " na lang; ang ",
+                {
+                  "kind": "choice",
+                  "answer": "adres",
+                  "choices": [
+                    "ngalan",
+                    "presyo",
+                    "adres",
+                    "oras"
+                  ]
+                },
+                " kay Dose, Dalan Mabini."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "1005214e39a5ec89416452ef4e5f33bbb0a9d9f1ce4b29cff3e00c6bce0c87eb",
+      "sourceSha256": "be29c3408eb8f96eefeedc1031154ba1ce6671b44ec50280e9443076ceef89d5",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Gusto unta ko og kuwarto nga nag-atubang sa dagat (9 words) anchors unta; clitic order unta>ko native; og indefinite correct; chunks join exactly; cloze basta/tungod/bisan pa og/hinuon admits only basta with the garden counteroffer; DE/EN carry the tentative wish; caption does not spoil garden side. Recall foils are distinct nouns against a seen, translated line — independent L1 finding not adopted."
+        },
+        {
+          "n": 2,
+          "observation": "Kung moulan ugma, mahimo ba nga mag-usab ta sa oras sa lakaw? — inclusive ta justified by atong lakaw; og alas otso native time marking; speech token kung matches sentence-initial Kung under casefold. Cloze verb foils mohunong/motapos/mopauli are grammatical and contextually possible with a ten o'clock limit (independent HIGH confirmed); Apan/Bisan clause-initial foils are also not clearly impossible."
+        },
+        {
+          "n": 3,
+          "observation": "Mahimo ba nga mohatod mo sa lamesa sa among balay? — exclusive among correct, plural mo for shop staff; owner's next-town reply motivates self-pickup; ako na lay fused form allowed in dialogue text. Cloze foil Busa yields a coherent run-on reading (So it's far, I'll fetch it myself); replaced consistently with bare Tungod."
+        },
+        {
+          "n": 4,
+          "observation": "Ang akong hangyo kay usa ka lamesa nga mas hilom para sa among panag-istorya anchors bare-root hangyo as predicate; staged hangyo ko nga taught by distinct example 2; exclusive mi in mohulat mi correct; kusina foil contradicts the ten-minute wait; translations align."
+        },
+        {
+          "n": 5,
+          "observation": "Pahulam ko sa imong hagdan ugma, palihug, kay taas ang sanga — staged pahulam ko sa + palihug on the request line; Gamiton pa nako recognition-only in them-line. Cloze foil Aron (Aron mahuman ka, mobalik ko sa hapon = so that you can finish) is grammatical and plausible; term kanal sa atop absent from scene; glosses present pahulam as a noun though it is the request predicate; 'palihug inside conditions' had no model in block 4–6."
+        },
+        {
+          "n": 6,
+          "observation": "Mahimo ba nga sulayan nako una kini nga sinina sa dili pa ko mopalit? matches the outline verbatim; sulayan nako object focus is outline-licensed; mas dako forced by kay huot ang gamay. Both pattern highlights mark the already-taught Mahimo ba nga instead of sulayan nako, which the rule explains."
+        },
+        {
+          "n": 7,
+          "observation": "Naa koy pabor: mahimo ba nimong bantayan ang akong bag samtang mopalit ko og tiket? (15 words) is attested colloquial Cebuano for opening a favour request; independent rework proposal not adopted as required. Cloze foil molarga (I'll leave so I can come straight back) is a coherent alternative and must go."
+        },
+        {
+          "n": 8,
+          "observation": "Mahimo ba nga ibalhin ang akong reserbasyon gikan sa Huwebes ngadto sa Biyernes? — gikan/ngadto prepositions, not gi- focus; acceptance with modification Sige, sa Sabado, apan sa buntag matches staging; apan/bisan pa og pair admits one; highlights again hide ibalhin."
+        },
+        {
+          "n": 9,
+          "observation": "Mahimo ba nga ilisan ang sarsa niini nga isda kay dili ko mokaon og halang? — dili for habitual correct; basta condition on small portion; busa foil yields a nonsensical consequence, not an alternative acceptance — independent busa concern rejected; bisan pa og already removed. Highlights hide ilisan."
+        },
+        {
+          "n": 10,
+          "observation": "Mahimo ba nga mangayo ko og kopya sa resibo pinaagi sa email? matches outline; papel na lang is native acceptance; Dose, Dalan Mabini address uses Spanish-derived number; cloze adres/ngalan/presyo/oras clean. Highlights hide mangayo ko og."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Cloze foils are not contextually impossible: mohunong/motapos/mopauli ta og alas otso all form coherent plans under a ten o'clock limit, and clause-initial Apan/Bisan produce readable alternatives (Bisan alas diyes ang kinutoban = even if ten is the limit). Replace with ungrammatical or aspect-impossible foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/0/choices",
+              "old": [
+                "Aron",
+                "Apan",
+                "Kung",
+                "Bisan"
+              ],
+              "new": [
+                "Kung",
+                "Aron",
+                "Tungod",
+                "Nga"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/2/choices",
+              "old": [
+                "mosugod",
+                "mohunong",
+                "motapos",
+                "mopauli"
+              ],
+              "new": [
+                "mosugod",
+                "nisugod",
+                "matulog",
+                "mokanta"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Foil Busa yields a coherent run-on (Busa layo ra, ako na lay mokuha = So it's far, I'll fetch it myself); same clause-initial-conjunction weakness as lessons 2 and 5. Use bare Tungod, ungrammatical without kay/sa.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/0/choices",
+              "old": [
+                "Aron",
+                "Busa",
+                "Unya",
+                "Kung"
+              ],
+              "new": [
+                "Aron",
+                "Tungod",
+                "Unya",
+                "Kung"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "(a) Cloze foil Aron forms a grammatical purpose reading (Aron mahuman ka, mobalik ko sa hapon) and Bisan a grammatical concessive; the kung/aron pair must admit exactly one answer. (b) pahulam is the request predicate 'lend me / let me borrow', not a noun; term and trophy glosses teach the wrong part of speech. (c) Term kanal sa atop (gutter) is not in this scene. (d) Staging block 4–6 requires palihug recycled inside a condition; no model exists — second pattern example supplies a distinct kung-framed transfer.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/0/choices",
+              "old": [
+                "Apan",
+                "Kung",
+                "Aron",
+                "Bisan"
+              ],
+              "new": [
+                "Kung",
+                "Apan",
+                "Tungod",
+                "Nga"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/terms/0/baseText",
+              "old": {
+                "de": "Bitte um eine Leihgabe",
+                "en": "request to borrow"
+              },
+              "new": {
+                "de": "leihen Sie mir; lassen Sie mich ausleihen",
+                "en": "lend me; let me borrow"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/trophyWord/meaning",
+              "old": {
+                "de": "Bitte um eine Leihgabe",
+                "en": "request to borrow"
+              },
+              "new": {
+                "de": "leihen Sie mir; lassen Sie mich ausleihen",
+                "en": "lend me; let me borrow"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/terms/4",
+              "old": {
+                "targetText": "kanal sa atop",
+                "baseText": {
+                  "de": "Dachrinne",
+                  "en": "gutter"
+                }
+              },
+              "new": {
+                "targetText": "human sa paniudto",
+                "baseText": {
+                  "de": "nach dem Mittagessen",
+                  "en": "after lunch"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/pattern/examples/1",
+              "old": {
+                "targetText": "Pahulam ko sa imong metro, palihug.",
+                "baseText": {
+                  "de": "Leihen Sie mir bitte Ihr Maßband.",
+                  "en": "Please lend me your tape measure."
+                },
+                "highlight": "Pahulam ko"
+              },
+              "new": {
+                "targetText": "Kung bakante na, pahulam ko sa imong metro, palihug.",
+                "baseText": {
+                  "de": "Sobald es frei ist, leihen Sie mir bitte Ihr Maßband.",
+                  "en": "Once it's free, please lend me your tape measure."
+                },
+                "highlight": "pahulam ko"
+              }
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Both pattern highlights mark Mahimo ba nga (taught in lesson 3) while the rule explains sulayan nako; the trophy construction is never highlighted.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/0/highlight",
+              "old": "Mahimo ba nga",
+              "new": "sulayan nako"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1/highlight",
+              "old": "Mahimo ba nga",
+              "new": "sulayan nako"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Cloze foil molarga produces a coherent alternative (Sige, molarga ko aron makabalik dayon dinhi = I'll go so I can be straight back); a learner choosing it would be unjustly rejected.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/1/choices",
+              "old": [
+                "magdali",
+                "molarga",
+                "matulog",
+                "mopahuway"
+              ],
+              "new": [
+                "magdali",
+                "mokanta",
+                "matulog",
+                "mopahuway"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Pattern highlights mark Mahimo ba nga instead of the lesson's productive form ibalhin, which the rule explains.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/examples/0/highlight",
+              "old": "Mahimo ba nga",
+              "new": "ibalhin"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/examples/1/highlight",
+              "old": "Mahimo ba nga",
+              "new": "ibalhin"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Pattern highlights mark Mahimo ba nga instead of ilisan, the form the rule teaches.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/highlight",
+              "old": "Mahimo ba nga",
+              "new": "ilisan"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1/highlight",
+              "old": "Mahimo ba nga",
+              "new": "ilisan"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Pattern highlights mark Mahimo ba nga instead of the staged mangayo ko og that the rule explains.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/0/highlight",
+              "old": "Mahimo ba nga",
+              "new": "mangayo ko og"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/1/highlight",
+              "old": "Mahimo ba nga",
+              "new": "mangayo ko og"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "be9c203af8c607ae4c7437b0762c30adf5813da6c29c8bb04fb7a87e1b9f4e66",
+      "sourceSha256": "855e9d10e08facf5ea2b9b1cfbe67ec40ae246fe671105675974e06422a71048",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Gusto unta ko og kuwarto nga nag-atubang sa dagat (9 words) carries unta as modal token, kuwarto, dagat; nag-atubang correctly kept out of tokens/recall. Garden-side counter-offer and discount surface only in turn three; youTwo 'Sige, sa tanaman lang basta naa ang diskuwento' accepts with condition, basta/tungod/bisan pa og/hinuon admits one answer. Recall dagat vs tanaman/dalan/bukid tests a learned line with distinct meanings, not synonyms: fair. Transfer example (lingkoranan duol sa bintana) is distinct."
+        },
+        {
+          "n": 2,
+          "observation": "Kung moulan ugma, mahimo ba nga mag-usab ta sa oras sa lakaw? uses genuinely inclusive ta (atong lakaw, guide joins). Cloze Kung/Aron/Tungod/Nga and mosugod/nisugod/matulog/mokanta are each single-answer; nisugod is aspect-impossible after a future frame. Trophy example Motawag ko kung moulan distinct. No issue."
+        },
+        {
+          "n": 3,
+          "observation": "Mahimo ba nga mohatod mo sa lamesa sa among balay? — plural mo for shop staff, exclusive among correct. Them-line adds the delivery-area limit; youTwo Kung layo ra, ako na lay mokuha sa lamesa ugma (fused lay only in dialogue text). Cloze foils Aron/Tungod/Unya and mobaligya/mokaon/mohimo are impossible here; mohatod was rightly removed earlier."
+        },
+        {
+          "n": 4,
+          "observation": "Ang akong hangyo kay usa ka lamesa nga mas hilom … anchors hangyo as noun predicate; hangyo ko nga is taught by the transfer example. Cloze bintana/mohulat single-answer. Speech trio hangyo, lamesa, hilom still has no connector/aspect-bearing word; nga (linker, not a stoplisted clitic) is in spoken order between them — fixed below."
+        },
+        {
+          "n": 5,
+          "observation": "Pahulam ko sa imong hagdan ugma, palihug, kay taas ang sanga — pahulam now glossed as the request verb in term and trophy; palihug recycled inside a kung condition in the transfer example; human sa paniudto term matches the them-line. Cloze Kung/Apan/Tungod/Nga and hapon vs buntag/kadlawon/gabii single-answer in a ladder-at-night-implausible scene."
+        },
+        {
+          "n": 6,
+          "observation": "Beat phrase used verbatim; sulayan nako (object focus explicitly licensed by the outline) is highlighted in both examples; them-line uses puwede/dalhon recognition-only. Ang mas dako lang unta, kay huot ang gamay reconstructed by dako and unta blanks with impossible foils. Recall sinina vs sapatos/singsing/sombrero fair."
+        },
+        {
+          "n": 7,
+          "observation": "The actual request (mahimo ba nimong bantayan …) is clear, but the opener 'Naa koy pabor' and trophy example 'Gamay ra ang akong pabor' only state 'I have / my favour' and never encode that the speaker is asking; as the lesson's transferable frame this points the wrong direction. Cloze magdali/makabalik single-answer; five-minute limit motivates youTwo. Rewritten with pangayoon in all coupled fields below."
+        },
+        {
+          "n": 8,
+          "observation": "Mahimo ba nga ibalhin ang akong reserbasyon gikan sa Huwebes ngadto sa Biyernes? — ibalhin is staged productive here; gikan is the lexical preposition 'from', not a gi- patient-focus verb, so no staging issue. Friday-full → Saturday morning follows from the kay-clause; apan vs aron/tungod/bisan pa og and buntag vs hapon/gabii/kadlawon single-answer."
+        },
+        {
+          "n": 9,
+          "observation": "Mahimo ba nga ilisan ang sarsa niini nga isda kay dili ko mokaon og halang? — dili + mo- habitual correct. Cloze Mobayad/basta single-answer after bisan pa og was removed. The German of youTwo ('möchte aber nur…') renders basta as a plain 'but' while the Cebuano and English state a condition; the two bases diverge in meaning — corrected below."
+        },
+        {
+          "n": 10,
+          "observation": "Beat phrase verbatim; mangayo ko og highlighted in both examples; them-line ikahatag/ipadala recognition-only. Sige, papel na lang; ang adres kay Dose, Dalan Mabini — acceptance without unta is now native; papel and adres blanks have impossible foils. Address spelling (Dose, Dalan Mabini) keeps Spanish-derived number. No issue."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "speakRequired hangyo, lamesa, hilom contains two nouns and a stative but no connector or aspect-bearing word, violating the B1 speech-token composition. The relative linker nga sits between hangyo and hilom in spoken order and is not a stoplisted clitic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/speakRequired",
+              "old": [
+                "hangyo",
+                "lamesa",
+                "hilom"
+              ],
+              "new": [
+                "hangyo",
+                "nga",
+                "hilom"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "'Naa koy pabor' literally says 'I have a favour' and does not model asking one; the trophy example 'Gamay ra ang akong pabor' has the same gap. Native request framing is 'Naa koy pangayoon nga pabor' (I have a favour to ask). The request question is shortened to 'bantayan ba nimo' so the line stays at 16 words with pabor, bantayan, mopalit in order; the mahimo ba nimong softener is kept in the transfer example. All coupled fields updated.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/pedagogicalGoal",
+              "old": "Mit naa koy pabor um Hilfe bitten",
+              "new": "Mit naa koy pangayoon nga pabor um Hilfe bitten"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/1",
+              "old": {
+                "targetText": "Naa koy pabor: mahimo ba nimong bantayan ang akong bag samtang mopalit ko og tiket?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Könnten Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+                  "en": "Could I ask a favour: would you watch my bag while I buy a ticket?"
+                }
+              },
+              "new": {
+                "targetText": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og tiket?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Würden Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+                  "en": "I have a favour to ask: would you watch my bag while I buy a ticket?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/label",
+              "old": "Mit naa koy pabor um Hilfe bitten",
+              "new": "Mit naa koy pangayoon nga pabor um Hilfe bitten"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/rule",
+              "old": {
+                "de": "Naa koy pabor kündigt eine persönliche Bitte an. Erst der folgende Fragesatz sagt, was die andere Person tun soll.",
+                "en": "Naa koy pabor introduces a favour. The question that follows tells the other person what you are asking them to do."
+              },
+              "new": {
+                "de": "Naa koy pangayoon nga pabor kündigt eine persönliche Bitte an; pangayoon zeigt, dass du selbst um den Gefallen bittest. Erst der folgende Fragesatz sagt, was die andere Person tun soll.",
+                "en": "Naa koy pangayoon nga pabor introduces a favour you want to ask; pangayoon marks that you are the one asking. The question that follows tells the other person what you are asking them to do."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/examples/0",
+              "old": {
+                "targetText": "Naa koy pabor: mahimo ba nimong bantayan ang akong bag samtang mopalit ko og tiket?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Könnten Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+                  "en": "Could I ask a favour: would you watch my bag while I buy a ticket?"
+                },
+                "highlight": "pabor"
+              },
+              "new": {
+                "targetText": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og tiket?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Würden Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+                  "en": "I have a favour to ask: would you watch my bag while I buy a ticket?"
+                },
+                "highlight": "pangayoon nga pabor"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/examples/1",
+              "old": {
+                "targetText": "Naa koy pabor: mahimo ba nimong bantayan kining lingkoranan?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Können Sie mir diesen Platz frei halten?",
+                  "en": "I have a favour to ask: could you keep this seat for me?"
+                },
+                "highlight": "pabor"
+              },
+              "new": {
+                "targetText": "Naa koy pangayoon nga pabor: mahimo ba nimong bantayan kining lingkoranan?",
+                "baseText": {
+                  "de": "Ich hätte eine Bitte: Könnten Sie mir diesen Platz frei halten?",
+                  "en": "I have a favour to ask: could you keep this seat for me?"
+                },
+                "highlight": "pangayoon nga pabor"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Naa koy pabor:",
+                  "baseText": {
+                    "de": "ich hätte eine Bitte",
+                    "en": "could I ask a favour"
+                  }
+                },
+                {
+                  "targetText": "mahimo ba nimong bantayan",
+                  "baseText": {
+                    "de": "könnten Sie aufpassen",
+                    "en": "could you watch"
+                  }
+                },
+                {
+                  "targetText": "ang akong bag",
+                  "baseText": {
+                    "de": "auf meine Tasche",
+                    "en": "my bag"
+                  }
+                },
+                {
+                  "targetText": "samtang mopalit ko og tiket?",
+                  "baseText": {
+                    "de": "während ich eine Fahrkarte kaufe",
+                    "en": "while I buy a ticket"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Naa koy pangayoon nga pabor:",
+                  "baseText": {
+                    "de": "ich hätte eine Bitte",
+                    "en": "I have a favour to ask"
+                  }
+                },
+                {
+                  "targetText": "bantayan ba nimo",
+                  "baseText": {
+                    "de": "würden Sie aufpassen",
+                    "en": "would you watch"
+                  }
+                },
+                {
+                  "targetText": "ang akong bag",
+                  "baseText": {
+                    "de": "auf meine Tasche",
+                    "en": "my bag"
+                  }
+                },
+                {
+                  "targetText": "samtang mopalit ko og tiket?",
+                  "baseText": {
+                    "de": "während ich eine Fahrkarte kaufe",
+                    "en": "while I buy a ticket"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/terms",
+              "old": [
+                {
+                  "targetText": "pabor",
+                  "baseText": {
+                    "de": "Gefallen",
+                    "en": "favour"
+                  }
+                },
+                {
+                  "targetText": "bantayan",
+                  "baseText": {
+                    "de": "im Auge behalten",
+                    "en": "watch over"
+                  }
+                },
+                {
+                  "targetText": "bag",
+                  "baseText": {
+                    "de": "Tasche",
+                    "en": "bag"
+                  }
+                },
+                {
+                  "targetText": "samtang",
+                  "baseText": {
+                    "de": "während",
+                    "en": "while"
+                  }
+                },
+                {
+                  "targetText": "mopalit",
+                  "baseText": {
+                    "de": "kaufen",
+                    "en": "buy"
+                  }
+                },
+                {
+                  "targetText": "tiket",
+                  "baseText": {
+                    "de": "Fahrkarte",
+                    "en": "ticket"
+                  }
+                },
+                {
+                  "targetText": "magdali",
+                  "baseText": {
+                    "de": "sich beeilen",
+                    "en": "hurry"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "pabor",
+                  "baseText": {
+                    "de": "Gefallen",
+                    "en": "favour"
+                  }
+                },
+                {
+                  "targetText": "pangayoon nga pabor",
+                  "baseText": {
+                    "de": "ein Gefallen, um den man bitten möchte",
+                    "en": "a favour to ask"
+                  }
+                },
+                {
+                  "targetText": "bantayan",
+                  "baseText": {
+                    "de": "im Auge behalten",
+                    "en": "watch over"
+                  }
+                },
+                {
+                  "targetText": "bag",
+                  "baseText": {
+                    "de": "Tasche",
+                    "en": "bag"
+                  }
+                },
+                {
+                  "targetText": "samtang",
+                  "baseText": {
+                    "de": "während",
+                    "en": "while"
+                  }
+                },
+                {
+                  "targetText": "mopalit",
+                  "baseText": {
+                    "de": "kaufen",
+                    "en": "buy"
+                  }
+                },
+                {
+                  "targetText": "tiket",
+                  "baseText": {
+                    "de": "Fahrkarte",
+                    "en": "ticket"
+                  }
+                },
+                {
+                  "targetText": "magdali",
+                  "baseText": {
+                    "de": "sich beeilen",
+                    "en": "hurry"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/recall/before",
+              "old": "Naa koy pabor: mahimo ba nimong bantayan ang akong bag samtang mopalit ko og ",
+              "new": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og "
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/trophyWord/example",
+              "old": "Gamay ra ang akong pabor.",
+              "new": "Gamay ra ang pabor nga akong pangayoon."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/trophyWord/whyThisWord",
+              "old": {
+                "de": "Mit pabor kündigst du die Bitte an, bevor du die konkrete Hilfe nennst.",
+                "en": "Pabor signals a favour before you name the help you need."
+              },
+              "new": {
+                "de": "Mit pabor nga pangayoon kündigst du an, dass du um einen Gefallen bittest, bevor du die konkrete Hilfe nennst.",
+                "en": "Pabor nga pangayoon signals that you are asking a favour before you name the help you need."
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "dialogue[3] 'Mobayad ko sa dugang, basta gamay ra ang bahin sa sarsa' states a condition (basta = provided that), matched by the English 'provided I get only a small portion', but the German 'möchte aber nur eine kleine Portion Soße' turns it into a plain contrast and would cue apan rather than the clozed basta. Align the German with the L1 rendering of basta (sofern).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText",
+              "old": {
+                "de": "Ich zahle den Aufpreis, möchte aber nur eine kleine Portion Soße.",
+                "en": "I’ll pay the extra charge, provided I get only a small portion of sauce."
+              },
+              "new": {
+                "de": "Ich zahle den Aufpreis, sofern ich nur eine kleine Portion Soße bekomme.",
+                "en": "I’ll pay the extra charge, provided I get only a small portion of sauce."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "confirm",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a12bb472dce3c80671692d8f7eb317f1bfb38766d7af0285558eaaea8bd61c87",
+      "sourceSha256": "32cc73cbde6adc9fcd9bf055f7be9290eb117d1f0bec81c33dbe4aabbe68b11d",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Gusto unta ko og kuwarto nga nag-atubang sa dagat (9 words) anchors unta with og indefinite object and unta-before-ko clitic order; chunks join exactly; youTwo Sige, sa tanaman lang basta naa ang diskuwento (8 words) accepts the garden counter-offer with the staged basta condition, matched by DE sofern / EN as long as. Cloze foils baybayon/atop/dalan contradict the offered garden side and tungod (bare), bisan pa og, hinuon cannot form a coherent condition; recall fallbacks tanaman/dalan/bukid are different-meaning views and the displayed Meer/sea singles out dagat fairly. Tokens unta (irrealis particle), kuwarto, dagat are whole words in order."
+        },
+        {
+          "n": 2,
+          "observation": "Kung moulan ugma, mahimo ba nga mag-usab ta sa oras sa lakaw? (12 words) stages kung + condition and mahimo ba nga together; inclusive ta is licensed by the guide's atong lakaw. youTwo Kung alas diyes ang kinutoban, mosugod ta og alas otso (10 words) uses mo- future result and Spanish clock numbers; DE/EN carry the same conditional. Cloze foils Aron/Tungod/Nga and nisugod/matulog/mokanta are impossible in slot (completed nisugod cannot follow a future kung clause). Sentence-initial Kung is the architect-specified beat opening; trophy example Motawag ko kung moulan. supplies the lowercase anchor."
+        },
+        {
+          "n": 3,
+          "observation": "Mahimo ba nga mohatod mo sa lamesa sa among balay? (10 words) uses plural mo for the shop staff, sa for the definite object and exclusive among; the owner's town-only limit is new information and Kung layo ra, ako na lay mokuha sa lamesa ugma (10 words) offers pick-up without asserting a staff decision. Cloze foils Aron/Tungod/Unya and mobaligya/mokaon/mohimo are ungrammatical or contextually impossible after a purchase; transfer example moabli mo og sayo ugma is distinct. Tokens mahimo, mohatod, lamesa in order."
+        },
+        {
+          "n": 4,
+          "observation": "Ang akong hangyo kay usa ka lamesa nga mas hilom para sa among panag-istorya (14 words) anchors hangyo as bare noun predicate with ka numeral linker, nga relative linker and exclusive among; the staged hangyo ko nga + clause is taught by the distinct transfer example Hangyo ko nga mopaubos mo sa tingog sa radyo. youTwo Sa bintana lang unta; mohulat mi og napulo ka minuto (10 words) with exclusive mi matches DE/EN. Cloze foils kusina/gawas/koridor and moluto/moserbi/mogabas fail contextually; recall hilom vs saba/init/ngitngit is fair. Speech trio hangyo, nga, hilom now includes the linker in spoken order."
+        },
+        {
+          "n": 5,
+          "observation": "Pahulam ko sa imong hagdan ugma, palihug, kay taas ang sanga (11 words) places palihug on the request line in a neighbour scene read at the path default service register; pahulam and trophy glosses now teach the request predicate lend me / let me borrow, terms reflect the scene (human sa paniudto), and the second example Kung bakante na, pahulam ko sa imong metro, palihug supplies palihug inside a condition as staged. youTwo Kung mahuman ka, mobalik ko sa hapon (7 words) follows the neighbour's morning use; foils Apan/Tungod/Nga and buntag/kadlawon/gabii are impossible for ladder work. Trio pahulam (pa- request form), hagdan, sanga is in spoken order and free of clitics and hyphens."
+        },
+        {
+          "n": 6,
+          "observation": "Mahimo ba nga sulayan nako una kini nga sinina sa dili pa ko mopalit? (14 words) carries the outline's exact object-focus phrase, extended coherently; the vendor's one-item limit is new, and Ang mas dako lang unta, kay huot ang gamay (9 words) chooses the larger dress with unta softener and kay reason. Both pattern examples now highlight sulayan nako. Cloze foils hugaw/mahal/daan and kung/aron/apan cannot fill the slots; recall sapatos/singsing/sombrero vs sinina is fair. DE drops the explicit weil but keeps the same meaning."
+        },
+        {
+          "n": 7,
+          "observation": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og tiket? (16 words) now states a favour to ask with koy fused only in dialogue text; chunks, recall, examples and terms are synchronised and the trophy example Gamay ra ang pabor nga akong pangayoon is independent. Stranger agrees five minutes; youTwo Sige, magdali ko aron makabalik dayon dinhi (7 words) uses aron purpose with maka- form. Cloze foils mokanta/matulog/mopahuway and makalangoy/makaluto/makabasa are impossible. whyThisWord uses the reordered pabor nga pangayoon, which also occurs in the trophy example; both orders are grammatical, so no edit."
+        },
+        {
+          "n": 8,
+          "observation": "Mahimo ba nga ibalhin ang akong reserbasyon gikan sa Huwebes ngadto sa Biyernes? (13 words) stages ibalhin + day with lexical gikan sa / ngadto sa, highlighted in both examples; clerk's Saturday counter-offer with ug conjunction; youTwo Sige, sa Sabado, apan sa buntag kay motrabaho ko human sa paniudto (12 words) accepts with the staged sige, apan modification and DE/EN aber/but. Cloze foils aron/tungod/bisan pa og and gabii/kadlawon/hapon are excluded by grammar or the stated afternoon work. Tokens mahimo, ibalhin, reserbasyon (A2 spelling) in order."
+        },
+        {
+          "n": 9,
+          "observation": "Mahimo ba nga ilisan ang sarsa niini nga isda kay dili ko mokaon og halang? (15 words) uses dili with mo- habitual and og indefinite; cook's coconut-sauce surcharge is new; youTwo Mobayad ko sa dugang, basta gamay ra ang bahin sa sarsa (11 words) is a conditional acceptance and DE sofern now matches EN provided. Cloze foils Moluto/Mosulat/Mokanta and busa/aron/tungod yield no coherent surcharge sentence; bisan pa og competitor is gone. Transfer example Mahimo ba nga ilisan ang kan-on og utanon? keeps the hyphen in dialogue text only. Tokens mahimo, ilisan, mokaon in order."
+        },
+        {
+          "n": 10,
+          "observation": "Mahimo ba nga mangayo ko og kopya sa resibo pinaagi sa email? (12 words) is the outline phrase verbatim with mang- future and og indefinite; clerk's paper-only answer with ikahatag/ipadala kept recognition-only; youTwo Sige, papel na lang; ang adres kay Dose, Dalan Mabini (10 words) uses native acceptance na lang and topic kay, with no unta misuse. Cloze foils selpon/kompyuter/radyo and ngalan/presyo/oras are contextually impossible; recall fallbacks senyal/bintana/dapit are distinct meanings. Both examples highlight mangayo ko og; tokens mahimo, mangayo, resibo in order. All P3 blocks (unta/kung/mahimo; hangyo/pahulam/sulayan + palihug in condition; pabor/ibalhin/ilisan/mangayo + sige, apan) are taught in their lessons with distinct transfer models."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "historicalFocusedEdits": [],
+  "exactPointerCorrections": {
+    "pointer-d5bb6126d029": [
+      {
+        "reported": "/lessons/2/cloze/3/choices",
+        "exactSourcePath": "/lessons/2/cloze/2/choices"
+      },
+      {
+        "reported": "/lessons/8/cloze/3/choices",
+        "exactSourcePath": "/lessons/8/cloze/2/choices"
+      },
+      {
+        "reported": "/lessons/8/cloze/1/choices",
+        "exactSourcePath": "/lessons/8/cloze/0/choices"
+      }
+    ]
+  },
+  "codexEdits": {
+    "editor": "Codex",
+    "fromSha256": "32cc73cbde6adc9fcd9bf055f7be9290eb117d1f0bec81c33dbe4aabbe68b11d",
+    "toSha256": "b82ac328b8787bc64eb5fd71b8a4f4739bb41b4464c660e0fe84893088030f93",
+    "scope": "L7 explains the object of the contemplated request; the verb does not identify the requester."
+  }
+}

@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Cebuano B1 writing complete
+
+Added 80 episodes in P3–P10 to the November text archive. With the existing P1–P2, Cebuano has 100 written B1 lessons, 100 distinct planned trophies and German and English meanings. Revisions addressed misplaced service requests, ambiguous answer choices, aspect and registration-step chronology. The planning, past-habits and year-in-review paths now test three complementary language functions in each episode.
+
+Two separate Codex readers signed each final path. Earlier Claude/Fable review runs in this session ended when the owner requested the change. Historical records distinguish them from the current approvals. Guided Path audio remains on hold. The new paths can be read locally. Today activation is deferred.
+
 ## 2026-11-07 — Internal TestFlight builds 1 and 2
 
 Apple processed version 1.0 builds 1 (`0ce0861d`) and 2 (`fad19722`). At 04:05 Manila time the **Lingwave Owner** internal group showed build 2 as **Testing**, with one tester. The listing is **Lingwave: Language Practice** (Apple ID `6831753115`). The bundle ID is `ai.lingwave.app` on team `ZL69STWQHV`.

@@ -1,0 +1,2225 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Schritt für Schritt",
+    "en": "Step by step"
+  },
+  "subtitle": {
+    "de": "Eine Anleitung geben und ein Ergebnis erklären",
+    "en": "Give instructions and explain a result"
+  },
+  "anchor": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben.",
+  "lessons": [
+    {
+      "slug": "una-sour-soup",
+      "title": {
+        "de": "Sinigang am Herd",
+        "en": "Sinigang on the stove"
+      },
+      "situation": {
+        "de": "Deine Gastgeberin legt Gemüse und Fisch neben den Herd.",
+        "en": "Your host sets vegetables and fish beside the stove."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Una und dayon beim Kochen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsaon nimo pagluto ang sinigang nga isda?",
+          "baseText": {
+            "de": "Wie kochst du Sinigang mit Fisch?",
+            "en": "How do you cook fish sinigang?"
+          }
+        },
+        {
+          "targetText": "Una, pabukalon nako ang tubig sa kaldero, dayon ibutang nako ang isda ug utanon.",
+          "baseText": {
+            "de": "Zuerst bringe ich das Wasser im Topf zum Kochen, dann gebe ich den Fisch und das Gemüse hinein.",
+            "en": "First I bring the water in the pot to the boil, then I add the fish and vegetables."
+          }
+        },
+        {
+          "targetText": "Unsa man ang imong ipaaslom sa sabaw?",
+          "baseText": {
+            "de": "Womit machst du die Brühe sauer?",
+            "en": "What do you use to give the broth its sourness?"
+          }
+        },
+        {
+          "targetText": "Kung luto na ang isda, isagol nako ang duga sa sambag.",
+          "baseText": {
+            "de": "Wenn der Fisch gar ist, rühre ich den Tamarindensaft hinein.",
+            "en": "When the fish is cooked, I stir in the tamarind juice."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una und dayon beim Kochen",
+        "rule": {
+          "de": "Una kündigt den ersten Schritt an. Nach dayon folgt hier mit ibutang die nächste Handlung.",
+          "en": "Una introduces the first step. Here dayon leads into the next action, ibutang."
+        },
+        "examples": [
+          {
+            "targetText": "Una, pabukalon nako ang tubig sa kaldero, dayon ibutang nako ang isda ug utanon.",
+            "baseText": {
+              "de": "Zuerst bringe ich das Wasser im Topf zum Kochen, dann gebe ich den Fisch und das Gemüse hinein.",
+              "en": "First I bring the water in the pot to the boil, then I add the fish and vegetables."
+            },
+            "highlight": "dayon ibutang nako"
+          },
+          {
+            "targetText": "Una, hugasan ang baso, dayon ibubo ang gatas.",
+            "baseText": {
+              "de": "Zuerst das Glas spülen, dann die Milch eingießen.",
+              "en": "First rinse the glass, then pour in the milk."
+            },
+            "highlight": "dayon ibubo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kung",
+          "choices": [
+            "Tungod",
+            "Kung",
+            "Gikan",
+            "Sulod"
+          ]
+        },
+        " luto na ang isda, ",
+        {
+          "kind": "form",
+          "answer": "isagol",
+          "choices": [
+            "isagol",
+            "pagsagol",
+            "nagsagol",
+            "magsagol"
+          ],
+          "cue": "sagol, i- object focus"
+        },
+        " nako ang ",
+        {
+          "kind": "choice",
+          "answer": "duga",
+          "choices": [
+            "bukog",
+            "taklob",
+            "duga",
+            "kahayag"
+          ]
+        },
+        " sa sambag."
+      ],
+      "chunks": [
+        {
+          "targetText": "Una, pabukalon nako",
+          "baseText": {
+            "de": "Zuerst bringe ich … zum Kochen",
+            "en": "First I bring to the boil"
+          }
+        },
+        {
+          "targetText": "ang tubig sa kaldero,",
+          "baseText": {
+            "de": "das Wasser im Topf",
+            "en": "the water in the pot"
+          }
+        },
+        {
+          "targetText": "dayon ibutang nako",
+          "baseText": {
+            "de": "dann gebe ich … hinein",
+            "en": "then I put in"
+          }
+        },
+        {
+          "targetText": "ang isda ug utanon.",
+          "baseText": {
+            "de": "den Fisch und das Gemüse.",
+            "en": "the fish and vegetables."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "una",
+          "baseText": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "pabukalon",
+          "baseText": {
+            "de": "zum Kochen bringen",
+            "en": "bring to the boil"
+          }
+        },
+        {
+          "targetText": "kaldero",
+          "baseText": {
+            "de": "Kochtopf",
+            "en": "cooking pot"
+          }
+        },
+        {
+          "targetText": "isda",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "utanon",
+          "baseText": {
+            "de": "Gemüse",
+            "en": "vegetables"
+          }
+        },
+        {
+          "targetText": "sambag",
+          "baseText": {
+            "de": "Tamarinde",
+            "en": "tamarind"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Una, pabukalon nako ang tubig sa ",
+        "answer": "kaldero",
+        "after": ", dayon ibutang nako ang isda ug utanon.",
+        "fallbackChoices": [
+          "bangko",
+          "plato",
+          "kaldero",
+          "aparador"
+        ]
+      },
+      "speakRequired": [
+        "pabukalon",
+        "tubig",
+        "ibutang"
+      ],
+      "sceneCaption": {
+        "de": "Deine Gastgeberin legt Gemüse und Fisch neben den Herd. „Unsaon nimo pagluto ang sinigang nga isda?“",
+        "en": "Your host sets vegetables and fish beside the stove. “Unsaon nimo pagluto ang sinigang nga isda?”"
+      },
+      "trophyWord": {
+        "word": "una",
+        "meaning": {
+          "de": "zuerst",
+          "en": "first"
+        },
+        "example": "Una, ibutang ang tubig sa kaldero.",
+        "whyThisWord": {
+          "de": "Mit una kannst du den Einstieg in ein Rezept oder eine Anleitung markieren.",
+          "en": "Use una to mark where a recipe or a set of instructions starts."
+        }
+      },
+      "distractors": [
+        "ang isda ug asin.",
+        "ang tubig sa pitsel,"
+      ],
+      "placeholderCaption": {
+        "de": "Deine Gastgeberin legt Gemüse und Fisch neben den Herd.",
+        "en": "Your host sets vegetables and fish beside the stove."
+      },
+      "songMood": "Light plucked strings with a wooden kitchen pulse",
+      "visualNotes": "Your host sets vegetables and fish beside the stove."
+    },
+    {
+      "slug": "ikaduha-registration",
+      "title": {
+        "de": "Zur Anmeldung",
+        "en": "At registration"
+      },
+      "situation": {
+        "de": "Ein Freund hat sein Anmeldeformular und zwei Fotos dabei.",
+        "en": "A friend has brought a registration form and two photos."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Ikaduha in einer Anleitung.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsaon nako pagparehistro dinhi?",
+          "baseText": {
+            "de": "Wie melde ich mich hier an?",
+            "en": "How do I register here?"
+          }
+        },
+        {
+          "targetText": "Una, sulatan nimo ang porma, ikaduha, ihatag nimo ang duha ka litrato.",
+          "baseText": {
+            "de": "Zuerst füllst du das Formular aus, als Zweites gibst du die beiden Fotos ab.",
+            "en": "First you fill in the form, and second you hand over the two photos."
+          }
+        },
+        {
+          "targetText": "Asa man ko mobayad, ug pila man ang bayad?",
+          "baseText": {
+            "de": "Wo bezahle ich, und wie hoch ist die Gebühr?",
+            "en": "Where do I pay, and how much is the fee?"
+          }
+        },
+        {
+          "targetText": "Sa pagbayad, una, ihapa ang singkwenta pesos, ikaduha, ihatag kini sa kahera.",
+          "baseText": {
+            "de": "Beim Bezahlen zählst du zuerst die fünfzig Pesos ab, als Zweites gibst du sie der Kassiererin.",
+            "en": "When paying, first you count out the fifty pesos, and second you hand them to the cashier."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ikaduha in einer Anleitung",
+        "rule": {
+          "de": "Ikaduha zählt einen zweiten Schritt auf. Ihatag nennt die Sache, die jemand übergibt.",
+          "en": "Ikaduha numbers a second step. Ihatag introduces the thing someone hands over."
+        },
+        "examples": [
+          {
+            "targetText": "Una, sulatan nimo ang porma, ikaduha, ihatag nimo ang duha ka litrato.",
+            "baseText": {
+              "de": "Zuerst füllst du das Formular aus, als Zweites gibst du die beiden Fotos ab.",
+              "en": "First you fill in the form, and second you hand over the two photos."
+            },
+            "highlight": "ikaduha, ihatag nimo"
+          },
+          {
+            "targetText": "Una, basaha ang sulat, ikaduha, isulat ang imong tubag.",
+            "baseText": {
+              "de": "Lies zuerst den Brief und schreib als Zweites deine Antwort.",
+              "en": "First read the letter, and second, write your reply."
+            },
+            "highlight": "ikaduha, isulat"
+          }
+        ]
+      },
+      "cloze": [
+        "Sa pagbayad, ",
+        {
+          "kind": "connector",
+          "answer": "una",
+          "choices": [
+            "una",
+            "dayon",
+            "ikatulo",
+            "human"
+          ]
+        },
+        ", ihapa ang singkwenta pesos, ikaduha, ",
+        {
+          "kind": "form",
+          "answer": "ihatag",
+          "choices": [
+            "ihatag",
+            "gihatag",
+            "maghatag",
+            "paghatag"
+          ],
+          "cue": "hatag, i- object focus (instruction)"
+        },
+        " kini sa ",
+        {
+          "kind": "choice",
+          "answer": "kahera",
+          "choices": [
+            "atop",
+            "kahera",
+            "kutsara",
+            "kisame"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Una, sulatan nimo",
+          "baseText": {
+            "de": "Zuerst füllst du … aus",
+            "en": "First you fill in"
+          }
+        },
+        {
+          "targetText": "ang porma,",
+          "baseText": {
+            "de": "das Formular",
+            "en": "the form"
+          }
+        },
+        {
+          "targetText": "ikaduha, ihatag nimo",
+          "baseText": {
+            "de": "als Zweites gibst du … ab",
+            "en": "second, you hand over"
+          }
+        },
+        {
+          "targetText": "ang duha ka litrato.",
+          "baseText": {
+            "de": "die beiden Fotos.",
+            "en": "the two photos."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ikaduha",
+          "baseText": {
+            "de": "als Zweites",
+            "en": "second"
+          }
+        },
+        {
+          "targetText": "porma",
+          "baseText": {
+            "de": "Formular",
+            "en": "form"
+          }
+        },
+        {
+          "targetText": "ihatag",
+          "baseText": {
+            "de": "übergeben",
+            "en": "hand over"
+          }
+        },
+        {
+          "targetText": "duha ka litrato",
+          "baseText": {
+            "de": "zwei Fotos",
+            "en": "two photos"
+          }
+        },
+        {
+          "targetText": "pagparehistro",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "kahera",
+          "baseText": {
+            "de": "Kassiererin",
+            "en": "cashier"
+          }
+        },
+        {
+          "targetText": "ihapa",
+          "baseText": {
+            "de": "zähl ab",
+            "en": "count out"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Una, sulatan nimo ang porma, ikaduha, ihatag nimo ang duha ka ",
+        "answer": "litrato",
+        "after": ".",
+        "fallbackChoices": [
+          "kaldero",
+          "litrato",
+          "barko",
+          "tulay"
+        ]
+      },
+      "speakRequired": [
+        "sulatan",
+        "ikaduha",
+        "ihatag"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund hat sein Anmeldeformular und zwei Fotos dabei. „Unsaon nako pagparehistro dinhi?“",
+        "en": "A friend has brought a registration form and two photos. “Unsaon nako pagparehistro dinhi?”"
+      },
+      "trophyWord": {
+        "word": "ikaduha",
+        "meaning": {
+          "de": "als Zweites",
+          "en": "second"
+        },
+        "example": "Ang pagpasa sa litrato mao ang ikaduha nga lakang.",
+        "whyThisWord": {
+          "de": "Mit ikaduha kannst du einen Schritt nummerieren, auch wenn du einem Freund einen Ablauf erklärst.",
+          "en": "Ikaduha lets you number a step when explaining a procedure to a friend."
+        }
+      },
+      "distractors": [
+        "ang tulo ka litrato.",
+        "ang sobre,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund hat sein Anmeldeformular und zwei Fotos dabei.",
+        "en": "A friend has brought a registration form and two photos."
+      },
+      "songMood": "Easy conversational acoustic guitar",
+      "visualNotes": "A friend has brought a registration form and two photos."
+    },
+    {
+      "slug": "lakang-study",
+      "title": {
+        "de": "Am Lesetisch",
+        "en": "At the reading table"
+      },
+      "situation": {
+        "de": "Deine Lehrerin sieht dein Heft neben einem neuen Text.",
+        "en": "Your tutor sees your notebook beside a new text."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Lakang als Schritt in einem Ablauf.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsaon nimo pagtuon ang bag-ong teksto?",
+          "baseText": {
+            "de": "Wie lernst du einen neuen Text?",
+            "en": "How do you study a new text?"
+          }
+        },
+        {
+          "targetText": "Tulo ang akong lakang: basahon ang teksto, isulat ang mga pangutana, unya tubagon kini.",
+          "baseText": {
+            "de": "Ich gehe in drei Schritten vor: Ich lese den Text, schreibe Fragen auf und beantworte sie dann.",
+            "en": "I take three steps: I read the text, write down questions, then answer them."
+          }
+        },
+        {
+          "targetText": "Hain man niana ang labing makatabang nimo?",
+          "baseText": {
+            "de": "Welcher dieser Schritte hilft dir am meisten?",
+            "en": "Which of those helps you most?"
+          }
+        },
+        {
+          "targetText": "Ang pagtubag, tungod kay isulat nako ang tubag gikan sa akong nahinumdoman.",
+          "baseText": {
+            "de": "Das Beantworten, weil ich die Antwort aus dem Gedächtnis aufschreibe.",
+            "en": "Answering, because I write the answer from what I remember."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Lakang als Schritt in einem Ablauf",
+        "rule": {
+          "de": "Nach einer Zahl kann lakang einen einzelnen Teil eines Verfahrens bezeichnen. Die Verben nennen hier die Aufgaben in ihrer Reihenfolge.",
+          "en": "After a number, lakang can refer to a stage in a process. The verbs here list the tasks in sequence."
+        },
+        "examples": [
+          {
+            "targetText": "Tulo ang akong lakang: basahon ang teksto, isulat ang mga pangutana, unya tubagon kini.",
+            "baseText": {
+              "de": "Ich gehe in drei Schritten vor: Ich lese den Text, schreibe Fragen auf und beantworte sie dann.",
+              "en": "I take three steps: I read the text, write down questions, then answer them."
+            },
+            "highlight": "Tulo ang akong lakang"
+          },
+          {
+            "targetText": "Ang unang lakang mao ang pagpili og sayon nga teksto.",
+            "baseText": {
+              "de": "Der erste Schritt ist die Auswahl eines einfachen Textes.",
+              "en": "The first step is choosing an easy text."
+            },
+            "highlight": "unang lakang"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang pagtubag, ",
+        {
+          "kind": "choice",
+          "answer": "tungod kay",
+          "choices": [
+            "tungod kay",
+            "human sa",
+            "sama sa",
+            "bahin sa"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "isulat",
+          "choices": [
+            "isulat",
+            "pagsulat",
+            "nagsulat",
+            "magsulat"
+          ],
+          "cue": "sulat, i- object focus"
+        },
+        " nako ang tubag gikan sa akong nahinumdoman."
+      ],
+      "chunks": [
+        {
+          "targetText": "Tulo ang akong lakang:",
+          "baseText": {
+            "de": "Ich habe drei Schritte:",
+            "en": "I follow three steps:"
+          }
+        },
+        {
+          "targetText": "basahon ang teksto,",
+          "baseText": {
+            "de": "den Text lesen,",
+            "en": "read the text,"
+          }
+        },
+        {
+          "targetText": "isulat ang mga pangutana,",
+          "baseText": {
+            "de": "die Fragen aufschreiben",
+            "en": "write down the questions,"
+          }
+        },
+        {
+          "targetText": "unya tubagon kini.",
+          "baseText": {
+            "de": "und sie dann beantworten.",
+            "en": "then answer them."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lakang",
+          "baseText": {
+            "de": "Schritt",
+            "en": "step"
+          }
+        },
+        {
+          "targetText": "teksto",
+          "baseText": {
+            "de": "Text",
+            "en": "text"
+          }
+        },
+        {
+          "targetText": "isulat",
+          "baseText": {
+            "de": "aufschreiben",
+            "en": "write down"
+          }
+        },
+        {
+          "targetText": "pangutana",
+          "baseText": {
+            "de": "Frage",
+            "en": "question"
+          }
+        },
+        {
+          "targetText": "tubagon",
+          "baseText": {
+            "de": "beantworten",
+            "en": "answer"
+          }
+        },
+        {
+          "targetText": "nahinumdoman",
+          "baseText": {
+            "de": "das Erinnerte",
+            "en": "what one remembers"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Tulo ang akong ",
+        "answer": "lakang",
+        "after": ": basahon ang teksto, isulat ang mga pangutana, unya tubagon kini.",
+        "fallbackChoices": [
+          "lakang",
+          "kanding",
+          "gasto",
+          "kutsara"
+        ]
+      },
+      "speakRequired": [
+        "lakang",
+        "basahon",
+        "tubagon"
+      ],
+      "sceneCaption": {
+        "de": "Deine Lehrerin sieht dein Heft neben einem neuen Text. „Unsaon nimo pagtuon ang bag-ong teksto?“",
+        "en": "Your tutor sees your notebook beside a new text. “Unsaon nimo pagtuon ang bag-ong teksto?”"
+      },
+      "trophyWord": {
+        "word": "lakang",
+        "meaning": {
+          "de": "Schritt",
+          "en": "step"
+        },
+        "example": "Ang pagpaminaw mao ang sunod nga lakang.",
+        "whyThisWord": {
+          "de": "Lakang bezeichnet hier einen Arbeitsschritt und lässt sich auch beim Erklären eines Antrags verwenden.",
+          "en": "Here lakang means a stage in a process. You can use it for an application procedure too."
+        }
+      },
+      "distractors": [
+        "Duha ang akong lakang:",
+        "basahon ang sulat,"
+      ],
+      "placeholderCaption": {
+        "de": "Deine Lehrerin sieht dein Heft neben einem neuen Text.",
+        "en": "Your tutor sees your notebook beside a new text."
+      },
+      "songMood": "Quiet fingerpicked study rhythm",
+      "visualNotes": "Your tutor sees your notebook beside a new text."
+    },
+    {
+      "slug": "paagi-fares",
+      "title": {
+        "de": "Günstige Flüge finden",
+        "en": "Finding cheap flights"
+      },
+      "situation": {
+        "de": "Dein Cousin schaut mit dir nach Flügen.",
+        "en": "Your cousin is looking at flights with you."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Ang akong paagi beim Erklären einer Methode.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Giunsa nimo pagpangita og barato nga tiket sa eroplano?",
+          "baseText": {
+            "de": "Wie hast du ein günstiges Flugticket gefunden?",
+            "en": "How did you find a cheap plane ticket?"
+          }
+        },
+        {
+          "targetText": "Ang akong paagi mao ang paggamit og pahibalo sa selpon kung moubos ang presyo.",
+          "baseText": {
+            "de": "Meine Methode ist, eine Benachrichtigung auf dem Handy zu nutzen, wenn der Preis sinkt.",
+            "en": "My method is to use a phone alert that tells me when the price drops."
+          }
+        },
+        {
+          "targetText": "Kanus-a nimo gibutang ang pahibalo para sa imong biyahe?",
+          "baseText": {
+            "de": "Wann hast du die Benachrichtigung für deine Reise eingerichtet?",
+            "en": "When did you set up the alert for your trip?"
+          }
+        },
+        {
+          "targetText": "Gibutang nako ang pahibalo duha ka bulan sa wala pa ang biyahe.",
+          "baseText": {
+            "de": "Ich habe die Benachrichtigung zwei Monate vor der Reise eingerichtet.",
+            "en": "I set up the alert two months before the trip."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ang akong paagi beim Erklären einer Methode",
+        "rule": {
+          "de": "Ang akong paagi bezeichnet die eigene Vorgehensweise. Mit kung erklärst du hier, wann die Benachrichtigung erfolgt.",
+          "en": "Ang akong paagi introduces your way of doing something. Here kung gives the condition that triggers the alert."
+        },
+        "examples": [
+          {
+            "targetText": "Ang akong paagi mao ang paggamit og pahibalo sa selpon kung moubos ang presyo.",
+            "baseText": {
+              "de": "Meine Methode ist, eine Benachrichtigung auf dem Handy zu nutzen, wenn der Preis sinkt.",
+              "en": "My method is to use a phone alert that tells me when the price drops."
+            },
+            "highlight": "Ang akong paagi"
+          },
+          {
+            "targetText": "Ang akong paagi sa pagtipid mao ang paglista sa tanang gasto.",
+            "baseText": {
+              "de": "Meine Methode zum Sparen ist, alle Ausgaben aufzuschreiben.",
+              "en": "My way of saving money is to list all my expenses."
+            },
+            "highlight": "Ang akong paagi"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Gibutang",
+          "choices": [
+            "Gibutang",
+            "Ibutang",
+            "Magbutang",
+            "Pagbutang"
+          ],
+          "cue": "butang, completed object focus"
+        },
+        " nako ang pahibalo duha ka ",
+        {
+          "kind": "choice",
+          "answer": "bulan",
+          "choices": [
+            "piso",
+            "tiket",
+            "selpon",
+            "bulan"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "sa wala pa",
+          "choices": [
+            "aron",
+            "sa wala pa",
+            "human sa",
+            "sulod sa"
+          ]
+        },
+        " ang biyahe."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang akong paagi",
+          "baseText": {
+            "de": "Meine Methode",
+            "en": "My method"
+          }
+        },
+        {
+          "targetText": "mao ang paggamit",
+          "baseText": {
+            "de": "besteht darin, … zu nutzen",
+            "en": "is to use"
+          }
+        },
+        {
+          "targetText": "og pahibalo sa selpon",
+          "baseText": {
+            "de": "eine Benachrichtigung auf dem Handy",
+            "en": "an alert on my phone"
+          }
+        },
+        {
+          "targetText": "kung moubos ang presyo.",
+          "baseText": {
+            "de": "wenn der Preis sinkt.",
+            "en": "when the price drops."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "paagi",
+          "baseText": {
+            "de": "Methode",
+            "en": "method"
+          }
+        },
+        {
+          "targetText": "paggamit",
+          "baseText": {
+            "de": "Nutzung",
+            "en": "use"
+          }
+        },
+        {
+          "targetText": "pahibalo",
+          "baseText": {
+            "de": "Benachrichtigung",
+            "en": "alert"
+          }
+        },
+        {
+          "targetText": "selpon",
+          "baseText": {
+            "de": "Handy",
+            "en": "mobile phone"
+          }
+        },
+        {
+          "targetText": "moubos",
+          "baseText": {
+            "de": "sinken",
+            "en": "drop"
+          }
+        },
+        {
+          "targetText": "presyo",
+          "baseText": {
+            "de": "Preis",
+            "en": "price"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang akong paagi mao ang paggamit og ",
+        "answer": "pahibalo",
+        "after": " sa selpon kung moubos ang presyo.",
+        "fallbackChoices": [
+          "tinapay",
+          "unlan",
+          "ligid",
+          "pahibalo"
+        ]
+      },
+      "speakRequired": [
+        "paagi",
+        "pahibalo",
+        "moubos"
+      ],
+      "sceneCaption": {
+        "de": "Dein Cousin schaut mit dir nach Flügen. „Giunsa nimo pagpangita og barato nga tiket sa eroplano?“",
+        "en": "Your cousin is looking at flights with you. “Giunsa nimo pagpangita og barato nga tiket sa eroplano?”"
+      },
+      "trophyWord": {
+        "word": "paagi",
+        "meaning": {
+          "de": "Methode",
+          "en": "method"
+        },
+        "example": "Kini ang paagi sa pagpangita og barato nga tiket.",
+        "whyThisWord": {
+          "de": "Paagi erlaubt dir, nach einer Methode zu fragen oder deine eigene zu beschreiben.",
+          "en": "Paagi lets you ask someone about a method or describe your own."
+        }
+      },
+      "distractors": [
+        "Ang ilang paagi",
+        "kung mosaka ang presyo."
+      ],
+      "placeholderCaption": {
+        "de": "Dein Cousin schaut mit dir nach Flügen.",
+        "en": "Your cousin is looking at flights with you."
+      },
+      "songMood": "Soft acoustic travel groove",
+      "visualNotes": "Your cousin is looking at flights with you."
+    },
+    {
+      "slug": "andam-storm",
+      "title": {
+        "de": "Vor dem Sturm",
+        "en": "Before the storm"
+      },
+      "situation": {
+        "de": "Eine Nachbarin erinnert sich mit dir an den letzten Sturm.",
+        "en": "A neighbour is recalling the last storm with you."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Andam na und eine abgeschlossene Vorbereitung.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may inyong giandam sa wala pa ang bagyo?",
+          "baseText": {
+            "de": "Was habt ihr vor dem Sturm vorbereitet?",
+            "en": "What did you prepare before the storm?"
+          }
+        },
+        {
+          "targetText": "Andam na ang tubig sa among balay, ug gibutang nako ang mga kandila sa lamesa.",
+          "baseText": {
+            "de": "Bei uns zu Hause stand das Wasser schon bereit, und ich stellte die Kerzen auf den Tisch.",
+            "en": "The water was ready at our house, and I put the candles on the table."
+          }
+        },
+        {
+          "targetText": "Naa mo sa balay tibuok gabii. Unsa man ang inyong gikaon?",
+          "baseText": {
+            "de": "Ihr wart die ganze Nacht zu Hause. Was habt ihr gegessen?",
+            "en": "You were home all night. What did you eat?"
+          }
+        },
+        {
+          "targetText": "Giluto namo ang kamote sa wala pa moabot ang bagyo.",
+          "baseText": {
+            "de": "Wir haben die Süßkartoffeln gekocht, bevor der Sturm kam.",
+            "en": "We cooked sweet potatoes before the storm arrived."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Andam na und eine abgeschlossene Vorbereitung",
+        "rule": {
+          "de": "Andam na beschreibt den erreichten Zustand. Gibutang nako nennt, was ich mit der genannten Sache gemacht habe.",
+          "en": "Andam na describes a state of readiness. Gibutang nako says what I did with the object."
+        },
+        "examples": [
+          {
+            "targetText": "Andam na ang tubig sa among balay, ug gibutang nako ang mga kandila sa lamesa.",
+            "baseText": {
+              "de": "Bei uns zu Hause stand das Wasser schon bereit, und ich stellte die Kerzen auf den Tisch.",
+              "en": "The water was ready at our house, and I put the candles on the table."
+            },
+            "highlight": "Andam na ang tubig"
+          },
+          {
+            "targetText": "Andam na ang bugas, ug gipuno nako ang pitsel.",
+            "baseText": {
+              "de": "Der Reis steht bereit, und ich habe den Krug gefüllt.",
+              "en": "The rice is ready, and I have filled the jug."
+            },
+            "highlight": "Andam na ang bugas"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Giluto",
+          "choices": [
+            "Lutuon",
+            "Magluto",
+            "Pagluto",
+            "Giluto"
+          ],
+          "cue": "luto, completed object focus"
+        },
+        " namo ang kamote ",
+        {
+          "kind": "choice",
+          "answer": "sa wala pa",
+          "choices": [
+            "aron",
+            "sa wala pa",
+            "human sa",
+            "sulod sa"
+          ]
+        },
+        " moabot ang ",
+        {
+          "kind": "choice",
+          "answer": "bagyo",
+          "choices": [
+            "suga",
+            "lamesa",
+            "bagyo",
+            "kutsara"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Andam na ang tubig",
+          "baseText": {
+            "de": "Das Wasser stand schon bereit",
+            "en": "The water was ready"
+          }
+        },
+        {
+          "targetText": "sa among balay,",
+          "baseText": {
+            "de": "bei uns zu Hause,",
+            "en": "at our house,"
+          }
+        },
+        {
+          "targetText": "ug gibutang nako",
+          "baseText": {
+            "de": "und ich stellte … hin",
+            "en": "and I put"
+          }
+        },
+        {
+          "targetText": "ang mga kandila sa lamesa.",
+          "baseText": {
+            "de": "die Kerzen auf den Tisch.",
+            "en": "the candles on the table."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "andam",
+          "baseText": {
+            "de": "bereit",
+            "en": "ready"
+          }
+        },
+        {
+          "targetText": "tubig",
+          "baseText": {
+            "de": "Wasser",
+            "en": "water"
+          }
+        },
+        {
+          "targetText": "kandila",
+          "baseText": {
+            "de": "Kerze",
+            "en": "candle"
+          }
+        },
+        {
+          "targetText": "lamesa",
+          "baseText": {
+            "de": "Tisch",
+            "en": "table"
+          }
+        },
+        {
+          "targetText": "kamote",
+          "baseText": {
+            "de": "Süßkartoffel",
+            "en": "sweet potato"
+          }
+        },
+        {
+          "targetText": "bagyo",
+          "baseText": {
+            "de": "Sturm",
+            "en": "storm"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Andam na ang tubig sa among balay, ug gibutang nako ang mga ",
+        "answer": "kandila",
+        "after": " sa lamesa.",
+        "fallbackChoices": [
+          "pultahan",
+          "barko",
+          "kandila",
+          "iro"
+        ]
+      },
+      "speakRequired": [
+        "andam",
+        "tubig",
+        "gibutang"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin erinnert sich mit dir an den letzten Sturm. „Unsa may inyong giandam sa wala pa ang bagyo?“",
+        "en": "A neighbour is recalling the last storm with you. “Unsa may inyong giandam sa wala pa ang bagyo?”"
+      },
+      "trophyWord": {
+        "word": "andam",
+        "meaning": {
+          "de": "bereit",
+          "en": "ready"
+        },
+        "example": "Andam na ang kandila para karong gabii.",
+        "whyThisWord": {
+          "de": "Andam benennt den Zustand der Vorräte, auch wenn du offenlässt, wer sie vorbereitet hat.",
+          "en": "Andam describes supplies as ready even when you do not say who prepared them."
+        }
+      },
+      "distractors": [
+        "sa ilang balay,",
+        "ang mga kandila sa gawas."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachbarin erinnert sich mit dir an den letzten Sturm.",
+        "en": "A neighbour is recalling the last storm with you."
+      },
+      "songMood": "Warm low strings with rain on the roof",
+      "visualNotes": "A neighbour is recalling the last storm with you."
+    },
+    {
+      "slug": "gisagol-dip",
+      "title": {
+        "de": "Die Schale mit der Soße",
+        "en": "The bowl of dipping sauce"
+      },
+      "situation": {
+        "de": "Dein Gastgeber probiert die Soße, die du zum Fisch servierst.",
+        "en": "Your host tries the dipping sauce you have served with the fish."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Gisagol nako beim Berichten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Giunsa nimo paghimo kining sawsawan?",
+          "baseText": {
+            "de": "Wie hast du diesen Dip gemacht?",
+            "en": "How did you make this dipping sauce?"
+          }
+        },
+        {
+          "targetText": "Gisagol nako ang suka, ahos ug sili, dayon gibutangan og gamay nga asin.",
+          "baseText": {
+            "de": "Ich habe Essig, Knoblauch und Chili gemischt und dann etwas Salz dazugegeben.",
+            "en": "I mixed vinegar, garlic and chilli, then added a little salt."
+          }
+        },
+        {
+          "targetText": "Kung usa ka tasa ang suka, pila ka sili ang imong gamiton?",
+          "baseText": {
+            "de": "Wie viele Chilis nimmst du für eine Tasse Essig?",
+            "en": "How many chillies do you use for one cup of vinegar?"
+          }
+        },
+        {
+          "targetText": "Isagol nako ang usa ka sili sa matag tasa, dayon tilawan.",
+          "baseText": {
+            "de": "Pro Tasse mische ich eine Chili hinein, dann wird abgeschmeckt.",
+            "en": "I mix one chilli into each cup, then taste it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Gisagol nako beim Berichten",
+        "rule": {
+          "de": "Gi- zeigt hier, dass das Mischen bereits geschehen ist. Nako nennt die Person, die gemischt hat.",
+          "en": "Here gi- marks the mixing as completed. Nako identifies the person who did it."
+        },
+        "examples": [
+          {
+            "targetText": "Gisagol nako ang suka, ahos ug sili, dayon gibutangan og gamay nga asin.",
+            "baseText": {
+              "de": "Ich habe Essig, Knoblauch und Chili gemischt und dann etwas Salz dazugegeben.",
+              "en": "I mixed vinegar, garlic and chilli, then added a little salt."
+            },
+            "highlight": "Gisagol nako"
+          },
+          {
+            "targetText": "Gisagol nako ang kakaw ug gatas para sa mga bata.",
+            "baseText": {
+              "de": "Ich habe für die Kinder Kakao und Milch gemischt.",
+              "en": "I mixed cocoa and milk for the children."
+            },
+            "highlight": "Gisagol nako"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Isagol",
+          "choices": [
+            "Isagol",
+            "Pagsagol",
+            "Nagsagol",
+            "Magsagol"
+          ],
+          "cue": "sagol, i- object focus"
+        },
+        " nako ang usa ka sili sa ",
+        {
+          "kind": "choice",
+          "answer": "matag",
+          "choices": [
+            "kinsa",
+            "matag",
+            "unsa",
+            "ngano"
+          ]
+        },
+        " tasa, ",
+        {
+          "kind": "choice",
+          "answer": "dayon",
+          "choices": [
+            "tungod",
+            "sulod",
+            "gikan",
+            "dayon"
+          ]
+        },
+        " tilawan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gisagol nako ang suka,",
+          "baseText": {
+            "de": "Ich mischte den Essig,",
+            "en": "I mixed the vinegar,"
+          }
+        },
+        {
+          "targetText": "ahos ug sili,",
+          "baseText": {
+            "de": "den Knoblauch und die Chili",
+            "en": "garlic and chilli,"
+          }
+        },
+        {
+          "targetText": "dayon gibutangan",
+          "baseText": {
+            "de": "dann gab ich … dazu",
+            "en": "then added"
+          }
+        },
+        {
+          "targetText": "og gamay nga asin.",
+          "baseText": {
+            "de": "ein wenig Salz.",
+            "en": "a little salt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gisagol",
+          "baseText": {
+            "de": "gemischt",
+            "en": "mixed"
+          }
+        },
+        {
+          "targetText": "suka",
+          "baseText": {
+            "de": "Essig",
+            "en": "vinegar"
+          }
+        },
+        {
+          "targetText": "ahos",
+          "baseText": {
+            "de": "Knoblauch",
+            "en": "garlic"
+          }
+        },
+        {
+          "targetText": "sili",
+          "baseText": {
+            "de": "Chili",
+            "en": "chilli"
+          }
+        },
+        {
+          "targetText": "asin",
+          "baseText": {
+            "de": "Salz",
+            "en": "salt"
+          }
+        },
+        {
+          "targetText": "tasa",
+          "baseText": {
+            "de": "Tasse",
+            "en": "cup"
+          }
+        },
+        {
+          "targetText": "tilawan",
+          "baseText": {
+            "de": "abschmecken",
+            "en": "taste"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gisagol nako ang suka, ahos ug sili, dayon gibutangan og gamay nga ",
+        "answer": "asin",
+        "after": ".",
+        "fallbackChoices": [
+          "kawayan",
+          "asin",
+          "panapton",
+          "bato"
+        ]
+      },
+      "speakRequired": [
+        "gisagol",
+        "ahos",
+        "gibutangan"
+      ],
+      "sceneCaption": {
+        "de": "Dein Gastgeber probiert die Soße, die du zum Fisch servierst. „Giunsa nimo paghimo kining sawsawan?“",
+        "en": "Your host tries the dipping sauce you have served with the fish. “Giunsa nimo paghimo kining sawsawan?”"
+      },
+      "trophyWord": {
+        "word": "gisagol",
+        "meaning": {
+          "de": "gemischt",
+          "en": "mixed"
+        },
+        "example": "Gisagol ang asin ug tubig sa gamay nga panaksan.",
+        "whyThisWord": {
+          "de": "Mit gisagol berichtest du von einer fertigen Mischung. Das Wort passt auch zu Getränken.",
+          "en": "Use gisagol to talk about something already mixed, including drinks."
+        }
+      },
+      "distractors": [
+        "Gisagol nila ang suka,",
+        "og daghang asukar."
+      ],
+      "placeholderCaption": {
+        "de": "Dein Gastgeber probiert die Soße, die du zum Fisch servierst.",
+        "en": "Your host tries the dipping sauce you have served with the fish."
+      },
+      "songMood": "Bright strings and gentle hand percussion",
+      "visualNotes": "Your host tries the dipping sauce you have served with the fish."
+    },
+    {
+      "slug": "gihugas-mango",
+      "title": {
+        "de": "Eine reife Mango",
+        "en": "A ripe mango"
+      },
+      "situation": {
+        "de": "Ein Freund probiert beim Mittagessen deine Mango.",
+        "en": "A friend tries your mango at lunch."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Gihugas nako vor dem nächsten Arbeitsschritt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Ngano nga mas lami man ang imong mangga?",
+          "baseText": {
+            "de": "Warum schmeckt deine Mango besser?",
+            "en": "Why does your mango taste better?"
+          }
+        },
+        {
+          "targetText": "Gihugas nako og maayo ang mangga, dayon gipabugnaw sa ref una hiwaon.",
+          "baseText": {
+            "de": "Ich habe die Mango gründlich gewaschen und im Kühlschrank gekühlt, bevor ich sie aufgeschnitten habe.",
+            "en": "I washed the mango thoroughly and chilled it in the fridge before slicing it."
+          }
+        },
+        {
+          "targetText": "Unsa nga kutsilyo ang imong gigamit paghiwa?",
+          "baseText": {
+            "de": "Was für ein Messer hast du zum Schneiden benutzt?",
+            "en": "What kind of knife did you use to slice it?"
+          }
+        },
+        {
+          "targetText": "Hait pa ang gamay nga kutsilyo, mao nga gigamit nako kini.",
+          "baseText": {
+            "de": "Das kleine Messer ist noch scharf, deshalb habe ich es benutzt.",
+            "en": "The small knife is still sharp, so I used it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Gihugas nako vor dem nächsten Arbeitsschritt",
+        "rule": {
+          "de": "Gihugas rückt die gewaschene Sache in den Mittelpunkt. Nako nennt hier die handelnde Person.",
+          "en": "Gihugas puts the item that was washed in focus. Here nako identifies who did the washing."
+        },
+        "examples": [
+          {
+            "targetText": "Gihugas nako og maayo ang mangga, dayon gipabugnaw sa ref una hiwaon.",
+            "baseText": {
+              "de": "Ich habe die Mango gründlich gewaschen und im Kühlschrank gekühlt, bevor ich sie aufgeschnitten habe.",
+              "en": "I washed the mango thoroughly and chilled it in the fridge before slicing it."
+            },
+            "highlight": "Gihugas nako"
+          },
+          {
+            "targetText": "Gihugas nako ang mga dahon una iputos ang pagkaon.",
+            "baseText": {
+              "de": "Ich habe die Blätter gewaschen, bevor ich das Essen darin eingewickelt habe.",
+              "en": "I washed the leaves before wrapping the food in them."
+            },
+            "highlight": "Gihugas nako"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Hait",
+          "choices": [
+            "Hait",
+            "Uhaw",
+            "Gutom",
+            "Hilaw"
+          ]
+        },
+        " pa ang gamay nga kutsilyo, ",
+        {
+          "kind": "connector",
+          "answer": "mao",
+          "choices": [
+            "mao",
+            "busa",
+            "unya",
+            "aron"
+          ]
+        },
+        " nga ",
+        {
+          "kind": "form",
+          "answer": "gigamit",
+          "choices": [
+            "gigamit",
+            "paggamit",
+            "naggamit",
+            "mogamit"
+          ],
+          "cue": "gamit, completed object focus"
+        },
+        " nako kini."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gihugas nako og maayo",
+          "baseText": {
+            "de": "Ich habe … gründlich gewaschen",
+            "en": "I washed thoroughly"
+          }
+        },
+        {
+          "targetText": "ang mangga,",
+          "baseText": {
+            "de": "die Mango",
+            "en": "the mango,"
+          }
+        },
+        {
+          "targetText": "dayon gipabugnaw sa ref",
+          "baseText": {
+            "de": "dann im Kühlschrank gekühlt",
+            "en": "then chilled it in the fridge"
+          }
+        },
+        {
+          "targetText": "una hiwaon.",
+          "baseText": {
+            "de": "bevor ich sie aufschnitt.",
+            "en": "before slicing it."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gihugas",
+          "baseText": {
+            "de": "gewaschen",
+            "en": "washed"
+          }
+        },
+        {
+          "targetText": "mangga",
+          "baseText": {
+            "de": "Mango",
+            "en": "mango"
+          }
+        },
+        {
+          "targetText": "gipabugnaw",
+          "baseText": {
+            "de": "gekühlt",
+            "en": "chilled"
+          }
+        },
+        {
+          "targetText": "ref",
+          "baseText": {
+            "de": "Kühlschrank",
+            "en": "fridge"
+          }
+        },
+        {
+          "targetText": "kutsilyo",
+          "baseText": {
+            "de": "Messer",
+            "en": "knife"
+          }
+        },
+        {
+          "targetText": "hait",
+          "baseText": {
+            "de": "scharf",
+            "en": "sharp"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gihugas nako og maayo ang ",
+        "answer": "mangga",
+        "after": ", dayon gipabugnaw sa ref una hiwaon.",
+        "fallbackChoices": [
+          "mangga",
+          "pultahan",
+          "lingkuranan",
+          "papel"
+        ]
+      },
+      "speakRequired": [
+        "gihugas",
+        "mangga",
+        "gipabugnaw"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund probiert beim Mittagessen deine Mango. „Ngano nga mas lami man ang imong mangga?“",
+        "en": "A friend tries your mango at lunch. “Ngano nga mas lami man ang imong mangga?”"
+      },
+      "trophyWord": {
+        "word": "gihugas",
+        "meaning": {
+          "de": "gewaschen",
+          "en": "washed"
+        },
+        "example": "Gihugas ang mangga sa limpyo nga tubig.",
+        "whyThisWord": {
+          "de": "Gihugas passt zu Früchten, Geschirr oder Kleidung, wenn du vom abgeschlossenen Waschen sprichst.",
+          "en": "Gihugas works for fruit, dishes or clothes when you describe washing that has already happened."
+        }
+      },
+      "distractors": [
+        "ang mansanas,",
+        "dayon gipainit sa kaldero"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund probiert beim Mittagessen deine Mango.",
+        "en": "A friend tries your mango at lunch."
+      },
+      "songMood": "Playful plucked guitar at lunchtime",
+      "visualNotes": "A friend tries your mango at lunch."
+    },
+    {
+      "slug": "bukal-eggs",
+      "title": {
+        "de": "Eier im Topf",
+        "en": "Eggs in the pot"
+      },
+      "situation": {
+        "de": "Deine Tante stellt einen Topf für die Eier auf den Herd.",
+        "en": "Your aunt sets a pot on the stove for the eggs."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Kung bukal na als Ausgangspunkt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Pila ka minutos ang itlog sa kaldero?",
+          "baseText": {
+            "de": "Wie viele Minuten bleiben die Eier im Topf?",
+            "en": "How many minutes do the eggs stay in the pot?"
+          }
+        },
+        {
+          "targetText": "Kung bukal na ang tubig, pito ka minutos, dayon ibutang ang itlog sa bugnaw nga tubig.",
+          "baseText": {
+            "de": "Sobald das Wasser kocht, sieben Minuten. Dann kommen die Eier in kaltes Wasser.",
+            "en": "Once the water boils, seven minutes, then put the eggs in cold water."
+          }
+        },
+        {
+          "targetText": "Unsaon nimo pagtangtang sa panit nga dili maguba ang itlog?",
+          "baseText": {
+            "de": "Wie bekommst du die Schale ab, ohne das Ei zu beschädigen?",
+            "en": "How do you get the shell off without damaging the egg?"
+          }
+        },
+        {
+          "targetText": "Pabugnawon una ang itlog, dayon panitan og hinay.",
+          "baseText": {
+            "de": "Das Ei erst abkühlen lassen, dann vorsichtig schälen.",
+            "en": "Let the egg cool first, then peel it gently."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Kung bukal na als Ausgangspunkt",
+        "rule": {
+          "de": "Bukal na beschreibt hier den Zustand des Wassers. Ab diesem Moment wird die Kochzeit gezählt.",
+          "en": "Bukal na describes the state of the water. The cooking time starts at that point."
+        },
+        "examples": [
+          {
+            "targetText": "Kung bukal na ang tubig, pito ka minutos, dayon ibutang ang itlog sa bugnaw nga tubig.",
+            "baseText": {
+              "de": "Sobald das Wasser kocht, sieben Minuten. Dann kommen die Eier in kaltes Wasser.",
+              "en": "Once the water boils, seven minutes, then put the eggs in cold water."
+            },
+            "highlight": "Kung bukal na ang tubig"
+          },
+          {
+            "targetText": "Kung bukal na ang sabaw, isagol ang mga utanon.",
+            "baseText": {
+              "de": "Wenn die Brühe kocht, gib das Gemüse hinein.",
+              "en": "Once the broth is boiling, add the vegetables."
+            },
+            "highlight": "Kung bukal na"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Pabugnawon",
+          "choices": [
+            "Pabugnawon",
+            "Pasakyon",
+            "Pasayawon",
+            "Patuboon"
+          ]
+        },
+        " una ang itlog, ",
+        {
+          "kind": "choice",
+          "answer": "dayon",
+          "choices": [
+            "tungod",
+            "sulod",
+            "gikan",
+            "dayon"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "panitan",
+          "choices": [
+            "panitan",
+            "gipanitan",
+            "nagpanit",
+            "napanitan"
+          ],
+          "cue": "panit, instruction with -an"
+        },
+        " og hinay."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kung bukal na ang tubig,",
+          "baseText": {
+            "de": "Wenn das Wasser kocht,",
+            "en": "Once the water boils,"
+          }
+        },
+        {
+          "targetText": "pito ka minutos,",
+          "baseText": {
+            "de": "sieben Minuten,",
+            "en": "seven minutes,"
+          }
+        },
+        {
+          "targetText": "dayon ibutang ang itlog",
+          "baseText": {
+            "de": "dann kommen die Eier",
+            "en": "then put the eggs"
+          }
+        },
+        {
+          "targetText": "sa bugnaw nga tubig.",
+          "baseText": {
+            "de": "in kaltes Wasser.",
+            "en": "in cold water."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bukal",
+          "baseText": {
+            "de": "kochend",
+            "en": "boiling"
+          }
+        },
+        {
+          "targetText": "itlog",
+          "baseText": {
+            "de": "Ei",
+            "en": "egg"
+          }
+        },
+        {
+          "targetText": "pito ka minutos",
+          "baseText": {
+            "de": "sieben Minuten",
+            "en": "seven minutes"
+          }
+        },
+        {
+          "targetText": "bugnaw nga tubig",
+          "baseText": {
+            "de": "kaltes Wasser",
+            "en": "cold water"
+          }
+        },
+        {
+          "targetText": "panitan og hinay",
+          "baseText": {
+            "de": "vorsichtig schälen",
+            "en": "peel gently"
+          }
+        },
+        {
+          "targetText": "panit",
+          "baseText": {
+            "de": "Schale",
+            "en": "shell"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kung ",
+        "answer": "bukal",
+        "after": " na ang tubig, pito ka minutos, dayon ibutang ang itlog sa bugnaw nga tubig.",
+        "fallbackChoices": [
+          "uga",
+          "hilaw",
+          "gahi",
+          "bukal"
+        ]
+      },
+      "speakRequired": [
+        "bukal",
+        "minutos",
+        "ibutang"
+      ],
+      "sceneCaption": {
+        "de": "Deine Tante stellt einen Topf für die Eier auf den Herd. „Pila ka minutos ang itlog sa kaldero?“",
+        "en": "Your aunt sets a pot on the stove for the eggs. “Pila ka minutos ang itlog sa kaldero?”"
+      },
+      "trophyWord": {
+        "word": "bukal",
+        "meaning": {
+          "de": "kochend",
+          "en": "boiling"
+        },
+        "example": "Bukal na ang tubig sa dakong kaldero.",
+        "whyThisWord": {
+          "de": "Bukal hilft dir, den richtigen Zeitpunkt für den nächsten Schritt zu erkennen und zu benennen.",
+          "en": "Bukal lets you identify and name the point when the next step can begin."
+        }
+      },
+      "distractors": [
+        "napulo ka minutos,",
+        "sa init nga tubig."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Tante stellt einen Topf für die Eier auf den Herd.",
+        "en": "Your aunt sets a pot on the stove for the eggs."
+      },
+      "songMood": "Gentle kitchen waltz",
+      "visualNotes": "Your aunt sets a pot on the stove for the eggs."
+    },
+    {
+      "slug": "resulta-sleep",
+      "title": {
+        "de": "Beim Kontrolltermin",
+        "en": "At the follow-up appointment"
+      },
+      "situation": {
+        "de": "Eine Ärztin erkundigt sich bei der Kontrolle nach deinem Schlaf.",
+        "en": "At a follow-up appointment, the doctor asks about your sleep."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Resulta und die beobachtete Wirkung.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta ang imong pagkatulog sukad sa pag-inom nimo sa tambal?",
+          "baseText": {
+            "de": "Wie schläfst du, seit du das Medikament nimmst?",
+            "en": "How has your sleep been since you started taking the medicine?"
+          }
+        },
+        {
+          "targetText": "Ang resulta sa tambal mao nga mas lawom na ang akong tulog sa gabii.",
+          "baseText": {
+            "de": "Das Ergebnis des Medikaments ist, dass ich nachts jetzt tiefer schlafe.",
+            "en": "The result of the medicine is that I sleep more deeply at night now."
+          }
+        },
+        {
+          "targetText": "Naa ba kay laing namatikdan human nimo moinom niini?",
+          "baseText": {
+            "de": "Ist dir nach der Einnahme noch etwas aufgefallen?",
+            "en": "Have you noticed anything else after taking it?"
+          }
+        },
+        {
+          "targetText": "Nauga akong baba, mao nga gidala nako ang akong tubig karon.",
+          "baseText": {
+            "de": "Mein Mund wurde trocken, deshalb habe ich heute mein Wasser mitgebracht.",
+            "en": "My mouth went dry, so I brought my water today."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Resulta und die beobachtete Wirkung",
+        "rule": {
+          "de": "Ang resulta benennt das Ergebnis. Nach mao nga kannst du in einem ganzen Satz sagen, was sich verändert hat.",
+          "en": "Ang resulta names the outcome. After mao nga you can say in a full clause what changed."
+        },
+        "examples": [
+          {
+            "targetText": "Ang resulta sa tambal mao nga mas lawom na ang akong tulog sa gabii.",
+            "baseText": {
+              "de": "Das Ergebnis des Medikaments ist, dass ich nachts jetzt tiefer schlafe.",
+              "en": "The result of the medicine is that I sleep more deeply at night now."
+            },
+            "highlight": "Ang resulta sa tambal"
+          },
+          {
+            "targetText": "Ang resulta sa ensayo mao nga mas paspas na ko mobasa.",
+            "baseText": {
+              "de": "Das Ergebnis der Übungen ist, dass ich jetzt schneller lese.",
+              "en": "The result of the practice is that I now read faster."
+            },
+            "highlight": "Ang resulta sa ensayo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Nauga",
+          "choices": [
+            "Nibukal",
+            "Nitulog",
+            "Nisakay",
+            "Nauga"
+          ]
+        },
+        " akong baba, ",
+        {
+          "kind": "connector",
+          "answer": "mao",
+          "choices": [
+            "mao",
+            "busa",
+            "unya",
+            "aron"
+          ]
+        },
+        " nga ",
+        {
+          "kind": "form",
+          "answer": "gidala",
+          "choices": [
+            "gidala",
+            "magdala",
+            "nagdala",
+            "pagdala"
+          ],
+          "cue": "dala, completed object focus"
+        },
+        " nako ang akong tubig karon."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang resulta sa tambal",
+          "baseText": {
+            "de": "Das Ergebnis des Medikaments",
+            "en": "The result of taking the medicine"
+          }
+        },
+        {
+          "targetText": "mao nga mas lawom na",
+          "baseText": {
+            "de": "ist, dass … jetzt tiefer ist",
+            "en": "is that it is deeper now,"
+          }
+        },
+        {
+          "targetText": "ang akong tulog",
+          "baseText": {
+            "de": "mein Schlaf",
+            "en": "my sleep"
+          }
+        },
+        {
+          "targetText": "sa gabii.",
+          "baseText": {
+            "de": "in der Nacht.",
+            "en": "at night."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "resulta",
+          "baseText": {
+            "de": "Ergebnis",
+            "en": "result"
+          }
+        },
+        {
+          "targetText": "tambal",
+          "baseText": {
+            "de": "Medikament",
+            "en": "medicine"
+          }
+        },
+        {
+          "targetText": "lawom",
+          "baseText": {
+            "de": "tief",
+            "en": "deep"
+          }
+        },
+        {
+          "targetText": "tulog",
+          "baseText": {
+            "de": "Schlaf",
+            "en": "sleep"
+          }
+        },
+        {
+          "targetText": "nauga",
+          "baseText": {
+            "de": "trocken geworden",
+            "en": "became dry"
+          }
+        },
+        {
+          "targetText": "baba",
+          "baseText": {
+            "de": "Mund",
+            "en": "mouth"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang resulta sa tambal mao nga mas lawom na ang akong ",
+        "answer": "tulog",
+        "after": " sa gabii.",
+        "fallbackChoices": [
+          "bangko",
+          "pitaka",
+          "tulog",
+          "kaldero"
+        ]
+      },
+      "speakRequired": [
+        "resulta",
+        "mao",
+        "lawom"
+      ],
+      "sceneCaption": {
+        "de": "Eine Ärztin erkundigt sich bei der Kontrolle nach deinem Schlaf. „Kumusta ang imong pagkatulog sukad sa pag-inom nimo sa tambal?“",
+        "en": "At a follow-up appointment, the doctor asks about your sleep. “Kumusta ang imong pagkatulog sukad sa pag-inom nimo sa tambal?”"
+      },
+      "trophyWord": {
+        "word": "resulta",
+        "meaning": {
+          "de": "Ergebnis",
+          "en": "result"
+        },
+        "example": "Klaro na ang resulta sa pagsulay.",
+        "whyThisWord": {
+          "de": "Mit resulta kannst du bei einem Termin eine eigene Beobachtung schildern, ohne etwas zu versprechen.",
+          "en": "Use resulta at an appointment to report an outcome you have observed."
+        }
+      },
+      "distractors": [
+        "ang iyang tulog",
+        "Ang resulta sa ensayo"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Ärztin erkundigt sich bei der Kontrolle nach deinem Schlaf.",
+        "en": "At a follow-up appointment, the doctor asks about your sleep."
+      },
+      "songMood": "Quiet measured acoustic pulse",
+      "visualNotes": "At a follow-up appointment, the doctor asks about your sleep."
+    },
+    {
+      "slug": "nahimo-repair",
+      "title": {
+        "de": "Zurück aus der Werkstatt",
+        "en": "Back from the repair shop"
+      },
+      "situation": {
+        "de": "Eine Freundin sieht deinen Ventilator wieder auf dem Tisch.",
+        "en": "A friend sees your fan back on the table."
+      },
+      "pedagogicalGoal": "Eine Abfolge schildern und die betroffene Sache mit der passenden Verbform hervorheben. Nahimo na für ein fertiges Ergebnis.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta ang pag-ayo sa imong bentilador?",
+          "baseText": {
+            "de": "Wie ist die Reparatur deines Ventilators gelaufen?",
+            "en": "How did the repair of your fan go?"
+          }
+        },
+        {
+          "targetText": "Nahimo na ang pag-ayo sa bentilador, apan saba gihapon kini kung paandaron.",
+          "baseText": {
+            "de": "Der Ventilator ist repariert, aber er macht beim Einschalten immer noch Lärm.",
+            "en": "The fan repair is done, but it still makes a noise when you switch it on."
+          }
+        },
+        {
+          "targetText": "Unsa may giilisan sa tig-ayo?",
+          "baseText": {
+            "de": "Was hat die Fachkraft ausgetauscht?",
+            "en": "What did the repairer replace?"
+          }
+        },
+        {
+          "targetText": "Giilisan ang motor, apan ang daang elise nagpabilin.",
+          "baseText": {
+            "de": "Der Motor wurde ausgetauscht, aber der alte Propeller blieb drin.",
+            "en": "They replaced the motor but kept the old fan blade assembly."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nahimo na für ein fertiges Ergebnis",
+        "rule": {
+          "de": "Nahimo na bezeichnet hier eine erledigte Arbeit. Apan leitet die Einschränkung zum Ergebnis ein.",
+          "en": "Here nahimo na means the job is done. Apan introduces a qualification about the result."
+        },
+        "examples": [
+          {
+            "targetText": "Nahimo na ang pag-ayo sa bentilador, apan saba gihapon kini kung paandaron.",
+            "baseText": {
+              "de": "Der Ventilator ist repariert, aber er macht beim Einschalten immer noch Lärm.",
+              "en": "The fan repair is done, but it still makes a noise when you switch it on."
+            },
+            "highlight": "Nahimo na"
+          },
+          {
+            "targetText": "Nahimo na ang lamesa, apan wala pay pintura.",
+            "baseText": {
+              "de": "Der Tisch ist fertig, aber noch nicht gestrichen.",
+              "en": "The table is finished, but it still needs paint."
+            },
+            "highlight": "Nahimo na"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Giilisan",
+          "choices": [
+            "Ilisi",
+            "Moilis",
+            "Giilisan",
+            "Ilisan"
+          ],
+          "cue": "ilis, completed object focus with -an"
+        },
+        " ang motor, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "sa",
+            "apan",
+            "ka",
+            "kang"
+          ]
+        },
+        " ang daang elise ",
+        {
+          "kind": "choice",
+          "answer": "nagpabilin",
+          "choices": [
+            "nakigstorya",
+            "nagpabilin",
+            "nisakay",
+            "nanguli"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nahimo na",
+          "baseText": {
+            "de": "Fertig ist jetzt",
+            "en": "Done now is"
+          }
+        },
+        {
+          "targetText": "ang pag-ayo sa bentilador,",
+          "baseText": {
+            "de": "die Reparatur des Ventilators,",
+            "en": "the repair of the fan,"
+          }
+        },
+        {
+          "targetText": "apan saba gihapon kini",
+          "baseText": {
+            "de": "aber er ist immer noch laut",
+            "en": "but it is still noisy"
+          }
+        },
+        {
+          "targetText": "kung paandaron.",
+          "baseText": {
+            "de": "wenn man ihn einschaltet.",
+            "en": "when you switch it on."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nahimo",
+          "baseText": {
+            "de": "fertig geworden",
+            "en": "finished"
+          }
+        },
+        {
+          "targetText": "pag-ayo",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "bentilador",
+          "baseText": {
+            "de": "Ventilator",
+            "en": "fan"
+          }
+        },
+        {
+          "targetText": "saba",
+          "baseText": {
+            "de": "laut",
+            "en": "noisy"
+          }
+        },
+        {
+          "targetText": "motor",
+          "baseText": {
+            "de": "Motor",
+            "en": "motor"
+          }
+        },
+        {
+          "targetText": "elise",
+          "baseText": {
+            "de": "Propeller",
+            "en": "propeller"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nahimo na ang pag-ayo sa ",
+        "answer": "bentilador",
+        "after": ", apan saba gihapon kini kung paandaron.",
+        "fallbackChoices": [
+          "dalan",
+          "bentilador",
+          "barko",
+          "tulog"
+        ]
+      },
+      "speakRequired": [
+        "nahimo",
+        "bentilador",
+        "paandaron"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin sieht deinen Ventilator wieder auf dem Tisch. „Kumusta ang pag-ayo sa imong bentilador?“",
+        "en": "A friend sees your fan back on the table. “Kumusta ang pag-ayo sa imong bentilador?”"
+      },
+      "trophyWord": {
+        "word": "nahimo",
+        "meaning": {
+          "de": "fertig geworden",
+          "en": "finished"
+        },
+        "example": "Nahimo na ang pag-ayo sa among radyo.",
+        "whyThisWord": {
+          "de": "Mit nahimo na kannst du sagen, dass eine Arbeit abgeschlossen ist, auch wenn das Ergebnis noch Wünsche offenlässt.",
+          "en": "Use nahimo na to say a task is complete even if the result still needs attention."
+        }
+      },
+      "distractors": [
+        "ang pag-ayo sa radyo,",
+        "apan hilom na kini"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin sieht deinen Ventilator wieder auf dem Tisch.",
+        "en": "A friend sees your fan back on the table."
+      },
+      "songMood": "Steady workshop guitar with muted taps",
+      "visualNotes": "A friend sees your fan back on the table."
+    }
+  ]
+}

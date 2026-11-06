@@ -49,6 +49,7 @@ Set the working directory explicitly for each command. The workspace `.gitignore
 - If your sandbox cannot run tsx or Chrome, say so; typecheck alone does not verify runtime behaviour.
 - Report a failed or skipped check as failed or skipped. A self-review is not an independent review.
 - Independent review (a fresh agent that did not write the change) is required for auth, billing, data deletion, migrations, paid pipelines, provider/model changes and learner-facing content; it is optional for copy and CSS. Use the `independent-review` project skill for the brief and verdict format; re-review once after fixes, again only for a blocker.
+- Use Codex for reviews. The owner stopped Claude/Fable review calls on 2026-11-07, including editorial reads, review adjudication and final verification. This supersedes older review instructions in project skills and scratch scripts.
 
 ## Rules the code must keep
 

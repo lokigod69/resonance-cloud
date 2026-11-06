@@ -1,0 +1,1146 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 4,
+  "lessonSha256": "9b734f71697f4904e32ddd9b9911798aeb37ae4d7dbe2395c593d2194c2dd706",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "9b734f71697f4904e32ddd9b9911798aeb37ae4d7dbe2395c593d2194c2dd706",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The friend scene identifies the tall building by its blue roof, then answers the floor question with the third floor."
+      },
+      {
+        "n": 2,
+        "observation": "The short folding green umbrella narrows the search to two. The hook comparison distinguishes the curved handle for the cloze."
+      },
+      {
+        "n": 3,
+        "observation": "The wide mat is identified by the door. The seller’s red/green choice and comparison to leaves support the green answer."
+      },
+      {
+        "n": 4,
+        "observation": "Two old houses with mango trees make the rust on the iron gate a useful distinguishing feature in both locales."
+      },
+      {
+        "n": 5,
+        "observation": "The friend asks about appearance and then occupation. The baker relative clause and bread clue support the closing exercise."
+      },
+      {
+        "n": 6,
+        "observation": "The fabric sample anchors cream as the requested colour. Wrist length supplies the evidence for long sleeves."
+      },
+      {
+        "n": 7,
+        "observation": "The learner describes both shape and topping. The ten guests make the large cake the answer."
+      },
+      {
+        "n": 8,
+        "observation": "Humok and gahi distinguish the two pillows. One for the learner and one for Rosa gives a clear count of two."
+      },
+      {
+        "n": 9,
+        "observation": "The stiff pedal and slow stop are separate observations. Sukad gahapon and the contrast with earlier operation answer the timing question."
+      },
+      {
+        "n": 10,
+        "observation": "At two metres per skirt, the reply’s four metres for two skirts is recoverable. Nipis consistently describes fabric thickness."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "9b734f71697f4904e32ddd9b9911798aeb37ae4d7dbe2395c593d2194c2dd706",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The friend's crossing/building identification, new floor question and answer align. The revised taas/nga/bilding sequence directly tests the descriptive linker."
+      },
+      {
+        "n": 2,
+        "observation": "The lost-and-found clerk distinguishes two matching umbrellas by handle shape; kurbado precisely expresses 'curved', and the hook clue selects it."
+      },
+      {
+        "n": 3,
+        "observation": "The wide mat, its location and leaf-colored option form a continuous exchange. Revised lapad/nga/banig anchors the productive phrase."
+      },
+      {
+        "n": 4,
+        "observation": "The mango tree initially narrows down the house, the guard offers iron versus wood, and the unchanged visible rust clue now identifies iron before the adjectives are joined with nga. The former paired wooden-gate/branch completion is gone."
+      },
+      {
+        "n": 5,
+        "observation": "Mailhan nimo siya now explicitly makes the neighbor the person recognized; sa iyang hitsura introduces appearance. DE, EN and reconstruction agree, and the friend's job question adds new information."
+      },
+      {
+        "n": 6,
+        "observation": "The tailor moves from the cream swatch to sleeve length. The second example now compares two colors; krema is an appropriate post-exposure recall answer even though other swatch colors would be possible in isolation."
+      },
+      {
+        "n": 7,
+        "observation": "The customer describes a round, mango-topped cake then selects the ten-person size. The chocolate biscuit translation no longer adds a topping position and the speech anchors include ug."
+      },
+      {
+        "n": 8,
+        "observation": "The pillow contrast and quantity question align. No learner gi- remains; Duha nga is a suitable distractor for the numeral linker ka."
+      },
+      {
+        "n": 9,
+        "observation": "The revised second answer puts stiffness onset yesterday, contrasts the earlier pedal, and eliminates premature itunob. The secondary key/door example could describe what is physically stiff more precisely."
+      },
+      {
+        "n": 10,
+        "observation": "The seller asks for metres only after hearing the fabric preference; two skirts at two metres each justify four metres. Gipangita remains within the seller's opening, and nipis/nga/panapton are ordered."
+      }
+    ],
+    "findings": [
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "pattern.examples[1]",
+        "issue": "Gahi ang yawe can mean the key itself is hard/stiff, while a hard-to-operate key normally describes turning it or a stiff lock; the example provides weaker transfer than the pedal exchange.",
+        "recommendation": "Use a second physical object whose stiffness is the named property, e.g. a hard pillow and its practical consequence."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "8aad869b18dfdea9ffc22438b884ecba4cfb9fe7933bf475cf5ff8c8d1c591c3",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The friend's informal building question is answered with height, location and roof color; the antenna and floor question are new. The picture is identifiable without hearing that third turn."
+      },
+      {
+        "n": 2,
+        "observation": "The lost-property clerk's two lookalike folding umbrellas motivate a question about the handle. Hook-shaped resolves the alternatives; mapilo is an apt property descriptor."
+      },
+      {
+        "n": 3,
+        "observation": "The seller offers two colors after the learner identifies the wide mat near the door; the leaf clue selects green. Service register stays consistent."
+      },
+      {
+        "n": 4,
+        "observation": "The mango tree identifies a house until the guard introduces a second house; rust distinguishes iron from wood, though the target noun and both available clues are blanked simultaneously."
+      },
+      {
+        "n": 5,
+        "observation": "Friend register is maintained when occupation becomes the new question. Hitsura is treated as the direct object of recognizing 'appearance' in Cebuano but as recognizing a person in both translations."
+      },
+      {
+        "n": 6,
+        "observation": "The tailor moves from a fabric swatch to wrist-length sleeves. Four color recall options all describe the unshown swatch, and the extra German example compares the shade directly with trousers."
+      },
+      {
+        "n": 7,
+        "observation": "The bakery moves from shape and topping to a two-size choice for ten people. The second example specifies chocolate, without specifying that it is on top."
+      },
+      {
+        "n": 8,
+        "observation": "The number two follows from one for the customer and one for Rosa. Giduha is presented as a learner-selectable form before its permitted path."
+      },
+      {
+        "n": 9,
+        "observation": "The hard brake and slow stop prompt the mechanic to ask about onset; the comparative background uses an early i- form for pressing the pedal, with a questionable focus relation."
+      },
+      {
+        "n": 10,
+        "observation": "The fabric seller supplies a two-metres-per-skirt rate after hearing the fabric preference, so four metres for two skirts follows. Gipangita is appropriately confined to the vendor."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "speakRequired (also L3, L4, L6, L7, L8, L10)",
+        "issue": "The three anchors in these lessons are ordered but contain only lexical labels/predicates, with no specified connector or aspect-bearing word. For example, L1 has taas/bilding/atop and L10 nipis/gusto/init.",
+        "recommendation": "Keep word order while anchoring an actual connector: e.g. L1 taas/nga/bilding; L3 lapad/nga/banig; L4 daan/nga/balay; L6 kolor/nga/krema; L7 porma/ug/mangga; L8 humok/nga/unlan; L10 nipis/kay/init. Nga is the taught linker here."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "cloze (both choices)",
+        "issue": "The guard offers wooden and iron gates. Blank both the material and clue and kahoy + dahon/sanga becomes fully coherent (a wooden gate with a leaf/branch at its base).",
+        "recommendation": "Keep taya fixed as the clue for puthaw and blank the linker instead, or replace distractors so a second complete response cannot be assembled."
+      },
+      {
+        "n": 5,
+        "severity": "HIGH",
+        "field": "dialogue[1], chunks, recall, pattern and trophy support",
+        "issue": "Mailhan nimo ang iyang hitsura says 'you can recognise his appearance', not 'you recognise him by his ...'; DE/EN silently change the object to the person. It is a poor model of a description.",
+        "recommendation": "Use a direct description with hitsura, e.g. 'Sayon ra siyang mailhan sa iyang hitsura: taas ang bungot ug baga ang kilay.' Update both bases, chunks, pattern highlight, ordered speech and recall. Retain the friend's register."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "recall.fallbackChoices",
+        "issue": "Asul/pula/krema/itom all name ordinary swatch colors. Nothing visible in the sentence or prior turn identifies which color the fabric in front of the tailor is.",
+        "recommendation": "Retain krema and replace the competing color adjectives with noncolors, or blank barong/panapton in a construction with genuinely unique fallback choices."
+      },
+      {
+        "n": 6,
+        "severity": "LOW",
+        "field": "pattern.examples[1]",
+        "issue": "Ang kolor nga abohon ang parehas sa akong karsones compares a shade to the trousers themselves. German 'passt zur Farbe' suggests coordination, while Cebuano parehas indicates sameness.",
+        "recommendation": "Use 'Parehas ang kolor sa duha ka panapton' or explicitly match the swatch to 'kolor sa akong karsones' and translate as the same color."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "pattern.examples[1].baseText.en",
+        "issue": "Nga naay tsokolate specifies a biscuit with chocolate; 'chocolate-topped' adds an unexpressed location.",
+        "recommendation": "Use 'The biscuit with chocolate is heart-shaped' or add 'sa ibabaw' to the Cebuano."
+      },
+      {
+        "n": 8,
+        "severity": "HIGH",
+        "field": "cloze[0].choices",
+        "issue": "Giduha is a completed gi- form shown to the learner as an option; specification permits this focus only in interlocutor lines until P6L4.",
+        "recommendation": "Replace Giduha with a non-gi distractor that does not fit (such as 'Tinagsa')."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "dialogue[3], terms and cloze",
+        "issue": "Itunob ang pedal stages an i- object-focus form before P6L1 and puts the thing stepped on in the instrument role ('what to step with'). Pressing/stepping on a pedal normally calls for tunoban/tamakan or an actor-focus construction.",
+        "recommendation": "Keep the past contrast while removing the early focus form: e.g. 'Sukad gahapon pa ni. Sauna, humok pa ang pedal.' Rebuild the second cloze so only the intended contrast fits; replace itunob in terms. Check the second example: Gahi ang yawe only says the key is hard; explicitly state that it is hard to turn if keeping those translations."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3548f192b352f18a6e62c484117885df8c2861811f30cb77a3595685d9fe2192",
+      "sourceSha256": "8aad869b18dfdea9ffc22438b884ecba4cfb9fe7933bf475cf5ff8c8d1c591c3",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene kept informal; 'Kadtong taas nga bilding sa atbang ang amo, kanang asul ang atop' (12 words) anchors taas, chunks join exactly, exclusive amo answers inyo correctly; cloze foils (tulo/tuloan/katulo; bintana/atop/haligi) are ungrammatical or impossible for 'third floor'; transfer model 'Kadtong taas nga kahoy' is distinct; DE/EN match."
+        },
+        {
+          "n": 2,
+          "observation": "Lost-and-found service tone correct; youOne 'Ang akoa kadtong mubo nga payong nga berde ug mapilo' (10 words) anchors mubo, tokens clean, recall/chunks exact. youTwo opens with 'Kurba ang kuptanan': kurba is the noun 'curve'; the predicate adjective is kurbado, so dialogue, cloze answer and term need the adjectival form. Linker blank nga vs ka/og/kung is sound."
+        },
+        {
+          "n": 3,
+          "observation": "Seller scene; 'Gusto ko niadtong lapad nga banig diha sa salog duol sa pultahan' (11 words) anchors lapad, og/ug used correctly in both turns, chunks exact. Colour blank berde vs pula is disambiguated by the visible kay-clause 'kolor sa dahon'; linker blank clean; transfer 'lapad nga estante' distinct."
+        },
+        {
+          "n": 4,
+          "observation": "Guard scene; nga naay relative clause is productive in block 4-6 as staged; youOne 12 words, chunks and recall exact; honest daang/daan nga variation preserved in them-line. Cloze blank 2: foil 'dahon' yields 'kadtong naay dahon sa ubos', a grammatical and contextually possible reply (fallen mango leaves at the gate base), so it unjustly rejects a valid alternative; must be replaced by an impossible foil."
+        },
+        {
+          "n": 5,
+          "observation": "Friend scene informal; inclusive natong correct for a shared neighbour; youOne 13 words anchors hitsura, tokens mailhan/hitsura/bungot clean, chunks exact; youTwo relative nga clause after occupation matches staging; occupation foils impossible with 'magluto og pan'; DE 'Was arbeitet er noch mal?' renders gani well."
+        },
+        {
+          "n": 6,
+          "observation": "Tailor service scene; 'Ang kolor nga krema' uses the staged kolor nga + colour; youTwo carries palihug on the request line; taas vs mubo foil contradicts 'kutob sa pulso' so the slot is closed by visible context; -on derived adjective abohon appears only in a reading example, consistent with recognition-only."
+        },
+        {
+          "n": 7,
+          "observation": "Bakery; 'Lingin ang porma sa keyk nga akong gusto, ug naay mangga sa ibabaw' (13 words) anchors porma, ug joins the second feature as staged for block 7-10; youTwo 10 words with kay clause; dako vs gamay foil is contradicted by 'napulo ka tawo'; transfer 'Kasingkasing ang porma sa biskwit' distinct; DE/EN idiomatic."
+        },
+        {
+          "n": 8,
+          "observation": "Household shop; dili + adjective contrast ('dili kadtong gahi') productive as staged; youOne 14 words, chunks exact, clitic 'ang angay nako' natural; numeral linker 'Duha ka' answer is a whole two-unit phrase with ungrammatical foils. Pattern transfer uses future object-focus 'paliton', which is only productive from P6 L1; optional swap to a staged form."
+        },
+        {
+          "n": 9,
+          "observation": "Mechanic; youOne 'Gahi ang pedal sa akong preno, ug dugay mohunong ang sakyanan' anchors gahi, tokens and chunks clean. youTwo 'sayon ra itunob ang pedal' uses an i- instruction/instrument focus in a learner line before P6, and i- on tunob is the wrong focus for stepping ON a pedal (tumban would be needed); rewrite with the staged dili + adjective contrast, rebuild cloze, translations and the itunob term."
+        },
+        {
+          "n": 10,
+          "observation": "Fabric stall; gipangita stays in the them-line (recognition-only); youOne 13 words anchors nipis with exclusive 'among lugar'; youTwo 'Upat ka metro, palihug, kay magtahi ko og duha ka sayal' has palihug on the request and the number arithmetic is explicit in dialogue[2], so number foils are justified; 'mokonsumo og duha' for fabric is stilted but intelligible (optional)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "'Kurba' is the noun 'curve'; the predicate adjective is 'kurbado'. The learner line, the cloze answer/choices and the term list all need the adjectival form so source, exercise and DE 'gebogen' say the same thing.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3",
+              "old": {
+                "targetText": "Kurba ang kuptanan, sama sa kaw-it nga pangsab-it.",
+                "baseText": {
+                  "de": "Der Griff ist gebogen wie ein Haken zum Aufhängen.",
+                  "en": "The handle is curved like a hook for hanging things up."
+                }
+              },
+              "new": {
+                "targetText": "Kurbado ang kuptanan, sama sa kaw-it nga pangsab-it.",
+                "baseText": {
+                  "de": "Der Griff ist gebogen wie ein Haken zum Aufhängen.",
+                  "en": "The handle is curved like a hook for hanging things up."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/0",
+              "old": {
+                "kind": "choice",
+                "answer": "Kurba",
+                "choices": [
+                  "Tul-id",
+                  "Patag",
+                  "Kurba",
+                  "Pahigda"
+                ]
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "Kurbado",
+                "choices": [
+                  "Tul-id",
+                  "Patag",
+                  "Kurbado",
+                  "Pahigda"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/terms/5",
+              "old": {
+                "targetText": "kurba",
+                "baseText": {
+                  "de": "gebogen",
+                  "en": "curved"
+                }
+              },
+              "new": {
+                "targetText": "kurbado",
+                "baseText": {
+                  "de": "gebogen",
+                  "en": "curved"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Cloze blank 2 foil 'dahon' produces 'kadtong naay dahon sa ubos', a grammatical and contextually possible description of a gate under a mango tree; it would unjustly reject a valid reply. Replace with a contextually impossible foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3",
+              "old": {
+                "kind": "choice",
+                "answer": "taya",
+                "choices": [
+                  "lana",
+                  "dahon",
+                  "sanga",
+                  "taya"
+                ]
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "taya",
+                "choices": [
+                  "lana",
+                  "ulan",
+                  "sanga",
+                  "taya"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Learner line 'kaniadto sayon ra itunob ang pedal' uses an i- focus form in a learner turn before P6 (i-/-on productive only from P6 L1), and i- on tunob marks the instrument, not the pedal stepped on. Rewrite youTwo with the staged dili + adjective contrast (recycling gahi), rebuild the cloze, translations and the itunob term.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3",
+              "old": {
+                "targetText": "Sukad gahapon pa ni; kaniadto sayon ra itunob ang pedal.",
+                "baseText": {
+                  "de": "Seit gestern. Vorher ließ sich das Pedal leicht treten.",
+                  "en": "Since yesterday. Before that, the pedal was easy to press."
+                }
+              },
+              "new": {
+                "targetText": "Sukad gahapon pa ni; kaniadto dili gahi ang pedal.",
+                "baseText": {
+                  "de": "Seit gestern. Vorher war das Pedal nicht schwergängig.",
+                  "en": "Since yesterday. Before that, the pedal wasn't stiff."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                "Sukad ",
+                {
+                  "kind": "choice",
+                  "answer": "gahapon",
+                  "choices": [
+                    "ugma",
+                    "puhon",
+                    "gahapon",
+                    "sunod"
+                  ]
+                },
+                " pa ni; kaniadto ",
+                {
+                  "kind": "choice",
+                  "answer": "sayon",
+                  "choices": [
+                    "sayon",
+                    "dugay",
+                    "hinay",
+                    "lisod"
+                  ]
+                },
+                " ra itunob ang pedal."
+              ],
+              "new": [
+                "Sukad ",
+                {
+                  "kind": "choice",
+                  "answer": "gahapon",
+                  "choices": [
+                    "ugma",
+                    "puhon",
+                    "gahapon",
+                    "sunod"
+                  ]
+                },
+                " pa ni; kaniadto dili ",
+                {
+                  "kind": "choice",
+                  "answer": "gahi",
+                  "choices": [
+                    "humok",
+                    "hinay",
+                    "gahi",
+                    "lapad"
+                  ]
+                },
+                " ang pedal."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/6",
+              "old": {
+                "targetText": "itunob",
+                "baseText": {
+                  "de": "mit dem Fuß drücken",
+                  "en": "press with the foot"
+                }
+              },
+              "new": {
+                "targetText": "kaniadto",
+                "baseText": {
+                  "de": "früher",
+                  "en": "before; formerly"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Pattern transfer example uses 'paliton' (-on future object focus), which is productive only from P6 L1; a staged form keeps the example within P4.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/examples/1",
+              "old": {
+                "targetText": "Kining humok nga tualya ang akong paliton, dili ang gaspang.",
+                "baseText": {
+                  "de": "Ich kaufe dieses weiche Handtuch, nicht das raue.",
+                  "en": "I’ll buy this soft towel, not the rough one."
+                },
+                "highlight": "humok nga"
+              },
+              "new": {
+                "targetText": "Kining humok nga tualya ang akong gusto, dili ang gaspang.",
+                "baseText": {
+                  "de": "Ich möchte dieses weiche Handtuch, nicht das raue.",
+                  "en": "I’d like this soft towel, not the rough one."
+                },
+                "highlight": "humok nga"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'mokonsumo og duha' is an unusual verb for fabric yardage; 'mogamit og duha' is the everyday phrasing and keeps the same meaning and translations.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/9",
+              "old": "Ang usa ka sayal pareha sa imo mokonsumo og duha.",
+              "new": "Ang usa ka sayal pareha sa imo mogamit og duha."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "7a76c28360ddca7e292e8b21e9d436f6c21e55c9cca3faa444d48403d064d5e7",
+      "sourceSha256": "b7e6d7aa0e0e850229532478a850e18d186b68f67c5dfda3b3aa79fcd2484753",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene, informal; 'Kadtong taas nga bilding sa atbang ang amo' uses exclusive amo correctly (friend does not live there). Cloze ikatulo/andana foils are impossible (tulo nga andana swaps ka/nga, bintana cannot answer a floor question). Speech trio taas/bilding/atop has no connector or aspect word; nga is the taught linker and must be anchored."
+        },
+        {
+          "n": 2,
+          "observation": "Lost-and-found service tone; youOne 'mubo nga payong nga berde ug mapilo' stays in stage 1 (adjective + nga, no clause relative). Kurbado now matches DE 'gebogen'; cloze foils Tul-id/Patag/Pahigda contradict 'sama sa kaw-it'. Speech trio includes mapilo (ma- potential), satisfying the aspect-word requirement."
+        },
+        {
+          "n": 3,
+          "observation": "Seller offers red or green; 'kolor sa dahon' makes berde the only contextual answer and pula impossible. nga form blank foils ka/ug/apan are ungrammatical in slot. gusto ko og kolor uses indefinite og correctly. Speech trio gusto/lapad/pultahan lacks a connector."
+        },
+        {
+          "n": 4,
+          "observation": "'Kadtong daan nga balay nga naay mangga' correctly introduces the productive nga + clause relative at lesson 4; guard's duha ka daang balay motivates the gate question. Cloze: with the DE/EN prompt fixing iron and rust, kahoy and the ulan/lana/sanga foils are contextually excluded; counterpart's kahoy+dahon pairing no longer exists in these bytes. Speech trio lacks a connector."
+        },
+        {
+          "n": 5,
+          "observation": "Friend scene with inclusive natong silingan. Learner line 'Mailhan nimo ang iyang hitsura sa taas nga bungot' says 'you can recognise his appearance', while DE/EN say 'recognise him by'; source and translation diverge and the Cebuano is unidiomatic. Cloze panadero + nga foils are clean; speech trio mailhan/hitsura/bungot has an aspect word."
+        },
+        {
+          "n": 6,
+          "observation": "Tailor service scene; palihug sits on the request line only. 'Ang kolor nga krema' is the staged kolor nga + color form and the sleeve cloze (taas/nga) rejects only contradictory foils. Second pattern example uses abohon, an -on derived adjective that is recognition-only in lessons 4–6, and compares a shade to trousers rather than to their colour. Speech trio lacks a connector."
+        },
+        {
+          "n": 7,
+          "observation": "Bakery scene; porma plus ug-joined topping matches the 7–10 staging, size cloze dako/nga is clean. English of the biscuit example adds 'topped' that 'nga naay tsokolate' does not express. Speech trio porma/keyk/gusto lacks a connector; ug is available."
+        },
+        {
+          "n": 8,
+          "observation": "'Kining humok nga unlan..., dili kadtong gahi nga naa sa estante' practises dili + adjective contrast and a clause relative; them-line kuhaon is recognition-only, as allowed. Cloze foil Giduha exposes a gi- form to the learner before P6; replacing it with the nga/ka swap foil keeps the slot closed. Speech trio lacks a connector."
+        },
+        {
+          "n": 9,
+          "observation": "Mechanic scene; youTwo 'kaniadto dili gahi ang pedal' is now staged and the gahapon/gahi cloze rejects only contradictory foils. Second pattern example 'lisod ablihan' uses an -an object-focus verb before P6 lesson 1; a mo- intransitive keeps the same meaning. Speech trio has mohunong as aspect word."
+        },
+        {
+          "n": 10,
+          "observation": "Fabric stall; kay (because) is unambiguous in both learner lines, palihug on the request, upat ka metro follows from two skirts at two metres each so Duha/Tulo/Lima are contextually excluded; mogamit og duha is everyday phrasing. Speech trio nipis/gusto/init lacks a connector though kay is present."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "speakRequired must contain one connector or aspect-bearing word from youOne; taas/bilding/atop are all lexical. Anchor the taught linker nga in canonical order.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/speakRequired",
+              "old": [
+                "taas",
+                "bilding",
+                "atop"
+              ],
+              "new": [
+                "taas",
+                "nga",
+                "bilding"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "speakRequired gusto/lapad/pultahan has no connector or aspect-bearing word.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/speakRequired",
+              "old": [
+                "gusto",
+                "lapad",
+                "pultahan"
+              ],
+              "new": [
+                "lapad",
+                "nga",
+                "banig"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "speakRequired daan/balay/pangita has no connector or aspect-bearing word.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/speakRequired",
+              "old": [
+                "daan",
+                "balay",
+                "pangita"
+              ],
+              "new": [
+                "daan",
+                "nga",
+                "balay"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "'Mailhan nimo ang iyang hitsura sa taas nga bungot' makes hitsura the thing recognised; DE/EN say the person is recognised by his features. Rewrite youOne so Cebuano and both translations say the same thing, keeping hitsura, mailhan and the nga-linked features; update coupled example, chunks, recall and distractors.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/1",
+              "old": {
+                "targetText": "Mailhan nimo ang iyang hitsura sa taas nga bungot ug baga nga kilay.",
+                "baseText": {
+                  "de": "Du erkennst ihn an seinem langen Bart und seinen dichten Augenbrauen.",
+                  "en": "You’ll recognise him by his long beard and thick eyebrows."
+                }
+              },
+              "new": {
+                "targetText": "Mailhan nimo siya sa iyang hitsura: taas nga bungot ug baga nga kilay.",
+                "baseText": {
+                  "de": "Du erkennst ihn an seinem Aussehen: langer Bart und dichte Augenbrauen.",
+                  "en": "You’ll recognise him by his looks: a long beard and thick eyebrows."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/pattern/examples/0",
+              "old": {
+                "targetText": "Mailhan nimo ang iyang hitsura sa taas nga bungot ug baga nga kilay.",
+                "baseText": {
+                  "de": "Du erkennst ihn an seinem langen Bart und seinen dichten Augenbrauen.",
+                  "en": "You’ll recognise him by his long beard and thick eyebrows."
+                },
+                "highlight": "hitsura"
+              },
+              "new": {
+                "targetText": "Mailhan nimo siya sa iyang hitsura: taas nga bungot ug baga nga kilay.",
+                "baseText": {
+                  "de": "Du erkennst ihn an seinem Aussehen: langer Bart und dichte Augenbrauen.",
+                  "en": "You’ll recognise him by his looks: a long beard and thick eyebrows."
+                },
+                "highlight": "hitsura"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/chunks",
+              "old": [
+                {
+                  "targetText": "Mailhan nimo",
+                  "baseText": {
+                    "de": "du wirst erkennen",
+                    "en": "you’ll recognise"
+                  }
+                },
+                {
+                  "targetText": "ang iyang hitsura",
+                  "baseText": {
+                    "de": "sein Aussehen",
+                    "en": "his appearance"
+                  }
+                },
+                {
+                  "targetText": "sa taas nga bungot",
+                  "baseText": {
+                    "de": "am langen Bart",
+                    "en": "by the long beard"
+                  }
+                },
+                {
+                  "targetText": "ug baga nga kilay.",
+                  "baseText": {
+                    "de": "und den dichten Augenbrauen",
+                    "en": "and thick eyebrows"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Mailhan nimo siya",
+                  "baseText": {
+                    "de": "du erkennst ihn",
+                    "en": "you’ll recognise him"
+                  }
+                },
+                {
+                  "targetText": "sa iyang hitsura:",
+                  "baseText": {
+                    "de": "an seinem Aussehen:",
+                    "en": "by his looks:"
+                  }
+                },
+                {
+                  "targetText": "taas nga bungot",
+                  "baseText": {
+                    "de": "langer Bart",
+                    "en": "a long beard"
+                  }
+                },
+                {
+                  "targetText": "ug baga nga kilay.",
+                  "baseText": {
+                    "de": "und dichte Augenbrauen",
+                    "en": "and thick eyebrows"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/recall",
+              "old": {
+                "before": "Mailhan nimo ang iyang hitsura sa taas nga ",
+                "answer": "bungot",
+                "after": " ug baga nga kilay.",
+                "fallbackChoices": [
+                  "bukton",
+                  "bungot",
+                  "ilong",
+                  "ngabil"
+                ]
+              },
+              "new": {
+                "before": "Mailhan nimo siya sa iyang hitsura: taas nga ",
+                "answer": "bungot",
+                "after": " ug baga nga kilay.",
+                "fallbackChoices": [
+                  "bukton",
+                  "bungot",
+                  "ilong",
+                  "ngabil"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/distractors",
+              "old": [
+                "sa mubo nga bungot",
+                "ug nipis nga kilay."
+              ],
+              "new": [
+                "mubo nga bungot",
+                "ug nipis nga kilay."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Second pattern example uses abohon, an -on derived adjective that is recognition-only in lessons 4–6, and 'parehas sa akong karsones' compares the shade with the trousers while DE/EN speak of their colour. Replace with a staged colour and an explicit kolor comparison. speakRequired also lacks a connector.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1",
+              "old": {
+                "targetText": "Ang kolor nga abohon ang parehas sa akong karsones.",
+                "baseText": {
+                  "de": "Der graue Farbton passt zur Farbe meiner Hose.",
+                  "en": "The grey shade matches the colour of my trousers."
+                },
+                "highlight": "kolor"
+              },
+              "new": {
+                "targetText": "Ang kolor nga asul ang parehas sa kolor sa akong karsones.",
+                "baseText": {
+                  "de": "Der blaue Farbton ist derselbe wie die Farbe meiner Hose.",
+                  "en": "The blue shade is the same as the colour of my trousers."
+                },
+                "highlight": "kolor"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/speakRequired",
+              "old": [
+                "kolor",
+                "gusto",
+                "panapton"
+              ],
+              "new": [
+                "kolor",
+                "nga",
+                "panapton"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "English of the biscuit example adds 'topped', which 'nga naay tsokolate' does not express (DE is correct). speakRequired lacks a connector; ug joins the two features.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/examples/1/baseText/en",
+              "old": "The chocolate-topped biscuit is heart-shaped.",
+              "new": "The biscuit with chocolate is heart-shaped."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/speakRequired",
+              "old": [
+                "porma",
+                "keyk",
+                "gusto"
+              ],
+              "new": [
+                "porma",
+                "ug",
+                "mangga"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Cloze foil Giduha presents a gi- form to the learner before gi- is productive (P6 lesson 4) and is not a real word; the nga/ka numeral-linker swap is a clearly ungrammatical foil that stays in stage. speakRequired lacks a connector.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/0",
+              "old": {
+                "kind": "choice",
+                "answer": "Duha ka",
+                "choices": [
+                  "Duha ka",
+                  "Ikaduha",
+                  "Kaduha",
+                  "Giduha"
+                ]
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "Duha ka",
+                "choices": [
+                  "Duha ka",
+                  "Ikaduha",
+                  "Kaduha",
+                  "Duha nga"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/speakRequired",
+              "old": [
+                "humok",
+                "unlan",
+                "angay"
+              ],
+              "new": [
+                "humok",
+                "nga",
+                "unlan"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Pattern example 'lisod ablihan ang pultahan' uses an -an object-focus verb form before P6 lesson 1; the staged mo- intransitive carries the same meaning and mirrors youOne's gahi ... ug dugay mo- pattern.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1",
+              "old": {
+                "targetText": "Gahi ang yawe ug lisod ablihan ang pultahan.",
+                "baseText": {
+                  "de": "Der Schlüssel lässt sich schwer drehen und die Tür lässt sich schwer öffnen.",
+                  "en": "The key is stiff and the door is hard to open."
+                },
+                "highlight": "Gahi"
+              },
+              "new": {
+                "targetText": "Gahi ang yawe, ug lisod moabli ang pultahan.",
+                "baseText": {
+                  "de": "Der Schlüssel ist schwergängig, und die Tür geht nur schwer auf.",
+                  "en": "The key is stiff, and the door is hard to open."
+                },
+                "highlight": "Gahi"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "speakRequired nipis/gusto/init has no connector; kay (because) is the connector spoken in youOne.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/speakRequired",
+              "old": [
+                "nipis",
+                "gusto",
+                "init"
+              ],
+              "new": [
+                "nipis",
+                "kay",
+                "init"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b9ce8b1541b297c7578c6b178406d4b60944ae3892d1592470a36d1469f37eae",
+      "sourceSha256": "da44234d348d38422a6fb7e99c122a7e96847615434f29ef44f279e66355095b",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene stays informal (inyo/amo, no palihug). youOne 12 words with trophy taas, tokens taas/nga/bilding anchor the staged linker; chunks join exactly; both ikatulo/andana foils are contextually impossible as a floor answer; DE/EN carry 'ours is the tall building opposite, the one with the blue roof' faithfully."
+        },
+        {
+          "n": 2,
+          "observation": "Kurbado now correctly carries DE 'gebogen'; mapilo (ma- potential) serves as the aspect-bearing token; 'Tul-id ... sama sa kaw-it' is self-contradictory so the foil is impossible; nga/ka/og/kung linker blank admits only nga; hyphenated glottal words appear only in dialogue text."
+        },
+        {
+          "n": 3,
+          "observation": "Service tone consistent; 'kolor sa dahon' excludes pula even though the seller offered it, so the colour blank is uniquely resolved; linker blank clean; transfer example (lapad nga estante) is distinct; exclusive/inclusive pronouns not at issue."
+        },
+        {
+          "n": 4,
+          "observation": "Daan nga balay plus productive relative nga naay mangga match block 4-6. Cloze blanks both the material and the only clue: with the guard having offered kahoy, 'Ang kahoy nga ganghaan, kadtong naay sanga sa ubos' is a grammatical, contextually licensed completion that exact grading rejects."
+        },
+        {
+          "n": 5,
+          "observation": "Friend register kept; 'Mailhan nimo siya sa iyang hitsura: ...' now makes the neighbour the recognised object in Cebuano, DE and EN alike; relative clause nga magluto og pan stays within the productive stage; cloze cue does not contain nga."
+        },
+        {
+          "n": 6,
+          "observation": "Kolor nga krema + sama niining panapton staged correctly; palihug on the sleeve request; the asul example compares colour with colour; taas/mubo contrast is fixed by 'kutob sa pulso'; recall colour fallbacks test memory of the practised line, not open choice."
+        },
+        {
+          "n": 7,
+          "observation": "Porma with ug-joined second feature matches block 7-10; gamay is impossible for ten eaters; EN biscuit example no longer adds 'topped'; speech tokens include the connector ug; chunks join exactly."
+        },
+        {
+          "n": 8,
+          "observation": "Humok ... dili kadtong gahi gives the staged dili + adjective contrast; Duha nga is a proper nga/ka swap foil, no gi- form remains; kuhaon (-on) sits only in the clerk's line; terms include the phrase duha ka unlan."
+        },
+        {
+          "n": 9,
+          "observation": "Gahi ang pedal ... ug dugay mohunong carries the two-feature ug; youTwo recycles gahi with dili and no early focus form; 'Sukad gahapon pa ni' hosts the clitic cluster on the phrase sukad gahapon, an attested spoken order, so not altered; kagahapon/gahapon variation preserved."
+        },
+        {
+          "n": 10,
+          "observation": "Among lugar correctly excludes the vendor; kay starts its clause chunk; two skirts at two metres each uniquely yield upat; palihug on the order line; gipangita confined to the vendor; metro vs kilo/litro/oras foils impossible at a fabric stall."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Cloze blanks both the gate material and the rust clue. The guard explicitly offers kahoy, and a mango tree stands in front, so 'Ang kahoy nga ganghaan, kadtong naay sanga sa ubos' is grammatical and contextually possible; exact grading would unjustly reject it. Keep taya visible as the clue that fixes puthaw and blank the linker nga instead, which also follows the path cloze schema (descriptor choice + form linker). Both independent receipts flagged this; adopted.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                "Ang ",
+                {
+                  "kind": "choice",
+                  "answer": "puthaw",
+                  "choices": [
+                    "kahoy",
+                    "puthaw",
+                    "lubid",
+                    "papel"
+                  ]
+                },
+                " nga ganghaan, kadtong naay ",
+                {
+                  "kind": "choice",
+                  "answer": "taya",
+                  "choices": [
+                    "lana",
+                    "ulan",
+                    "sanga",
+                    "taya"
+                  ]
+                },
+                " sa ubos."
+              ],
+              "new": [
+                "Ang ",
+                {
+                  "kind": "choice",
+                  "answer": "puthaw",
+                  "choices": [
+                    "kahoy",
+                    "puthaw",
+                    "lubid",
+                    "papel"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "nga",
+                  "choices": [
+                    "nga",
+                    "ka",
+                    "og",
+                    "kung"
+                  ],
+                  "cue": "linker between the material and the noun"
+                },
+                " ganghaan, kadtong naay taya sa ubos."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "confirm",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "768990a346838e740b49a81075b386a61af8ea05e8fd8577b1e48201fa513d9c",
+      "sourceSha256": "9b734f71697f4904e32ddd9b9911798aeb37ae4d7dbe2395c593d2194c2dd706",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene stays informal (ang inyo / ang amo). Kadtong taas nga bilding … kanang asul ang atop is idiomatic, 12 words, chunks rejoin exactly, speakRequired taas/nga/bilding anchors the taught linker. youTwo 'Sa ikatulo nga andana, duol sa hagdanan' (6 words) answers the floor question; cloze foils tulo/tuloan/katulo and bintana/atop/haligi are ungrammatical or impossible after 'Sa … nga'. Caption quotes dialogue[0]; trophy example anchors taas."
+        },
+        {
+          "n": 2,
+          "observation": "Service tone, no request line so no palihug needed. 'mubo nga payong nga berde ug mapilo' models stacked nga descriptors; mapilo (ma- stative) counts as the aspect-bearing token. Clerk's two-umbrella complication is new information; kurbado is the correct predicate adjective and Tul-id is contextually excluded by 'sama sa kaw-it'. Form blank nga after kaw-it (consonant) admits only nga; cue does not reveal the answer. Hyphen words appear only in dialogue/terms, not in tokens, recall or trophy."
+        },
+        {
+          "n": 3,
+          "observation": "Seller offers pula and berde; youTwo's 'kay gusto ko og kolor sa dahon' makes berde the only coherent choice, so pula is a contextual foil, not a near-synonym. og indefinite object correct. Chunks rejoin, lapad/nga/banig anchors linker, recall anchored by the mat context. DE/EN carry the same meaning as the Cebuano."
+        },
+        {
+          "n": 4,
+          "observation": "Guard's second house with a mango tree forces the gate question; youTwo keeps taya visible so puthaw is fixed and the blanked linker nga follows the path cloze schema (kahoy nga ganghaan with rust is contextually excluded, lubid/papel impossible). 'daang balay' in the them-line is honest native variation beside 'daan nga balay' in the learner line. Recall, pattern transfer (balkonahe) and trophy example consistent."
+        },
+        {
+          "n": 5,
+          "observation": "Friend scene; 'Mailhan nimo siya sa iyang hitsura: taas nga bungot ug baga nga kilay' now says the same as DE/EN (person recognised by looks). murag stays in the them-line (recognition only). youTwo uses the lessons 4–6 productive nga + clause relative; 'magluto og pan' clue makes panadero the only coherent occupation; nga/ka/og/apan foils are ungrammatical. Fused 'siyag' and 'magsul-ob' occur only in a pattern example, never in tokens."
+        },
+        {
+          "n": 6,
+          "observation": "Tailor scene formal; palihug on the request line only. 'Ang kolor nga krema … sama niining panapton' identifies by sample; sleeve question is new. Cloze mubo is excluded by 'Kutob sa pulso'; putol/pinilo contextually impossible; nga typed with non-revealing cue. Second example now compares kolor with kolor (asul, A2 colour). Recall colour fallbacks are a post-exposure recall, not an exact-graded cloze, so krema is justly unique."
+        },
+        {
+          "n": 7,
+          "observation": "Round mango-topped cake then size choice for ten; 'Ang dako nga keyk, kay napulo ka tawo ang mokaon' uses ka numeral linker and kay subordinator unambiguously. gamay is excluded by the stated four-person size; nipis/tunga impossible. porma/ug/mangga anchors the ug-joined second feature. Biscuit example EN no longer adds a topping position; DE/EN match."
+        },
+        {
+          "n": 8,
+          "observation": "dili kadtong gahi models the lessons 7–10 dili + adjective contrast one path block early? No: lesson 8 is within 7–10, so productive. kuhaon stays in the clerk line (recognition). 'Duha ka unlan' answer is a 2-unit phrase; foils Ikaduha/Kaduha/Duha nga are the ungrammatical nga/ka swap and wrong derivations, no gi- form remains. humok/nga/unlan anchors linker; transfer example uses gusto, not -on."
+        },
+        {
+          "n": 9,
+          "observation": "Mechanic service scene. 'Gahi ang pedal … ug dugay mohunong ang sakyanan' then 'Sukad gahapon pa ni; kaniadto dili gahi ang pedal' recycles the trophy in a staged dili + adjective contrast with no early i-/-on form; kagahapon in the them-line is accepted native variation. Cloze foils ugma/puhon/sunod are temporally impossible after sukad; humok/hinay/lapad contradict the complaint. Counterpart LOW on 'Gahi ang yawe': native speakers do say gahi ang yawe for a key that resists turning; this is preference, not error, so not adopted."
+        },
+        {
+          "n": 10,
+          "observation": "gipangita confined to vendor line. youOne 13 words with kay clause chunked at its edge; nipis/nga/panapton anchors linker. Vendor's two-metres-per-skirt rate makes Upat ka the only arithmetically coherent answer to 'magtahi ko og duha ka sayal'; kilo/litro/oras impossible units. palihug on the request line; mag- future licenses DE/EN present-with-intent. Only a minor DE/EN gloss divergence in one chunk (optional below)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'ang akong gusto' reads 'ist mir recht' in German (is fine with me) but 'is what I'd like' in English; lesson 6 glosses the same chunk as 'hätte ich gern'. Aligning the German gloss keeps DE and EN saying the same thing without touching any graded text.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks/1",
+              "old": {
+                "targetText": "ang akong gusto",
+                "baseText": {
+                  "de": "ist mir recht",
+                  "en": "is what I’d like"
+                }
+              },
+              "new": {
+                "targetText": "ang akong gusto",
+                "baseText": {
+                  "de": "hätte ich gern",
+                  "en": "is what I’d like"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "historicalFocusedEdits": [
+    {
+      "stage": "token-patch",
+      "receiptSha256": "fb8a0648b5c599e92d619cf4001883cf2bcdf9e38a8fa51fa30d92fbbbe40095",
+      "sourceSha256": "19a71a1d9e9eaa508d381cdb444b8945051187faa5979eaa8a16937b28553452",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "speakRequired contains 'kay', which the native checker rejects under the clitic stoplist regardless of function. Replace with three distinct stand-alone words in spoken order from the learner line 'Kadtong nipis nga panapton ang akong gusto kay init kaayo sa among lugar.': the adjective nipis, the linker nga, and the noun panapton. Dialogue text is unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/speakRequired",
+              "old": [
+                "nipis",
+                "kay",
+                "init"
+              ],
+              "new": [
+                "nipis",
+                "nga",
+                "panapton"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exactPointerCorrections": {}
+}

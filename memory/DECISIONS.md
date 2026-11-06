@@ -2,6 +2,10 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-11-07 — Codex handles reviews
+
+The owner ended Claude/Fable reviews during Cebuano B1 authoring. Use separate Codex writers and reviewers for curriculum, including final checks on the corrected lesson files. Existing approved outlines and completed historical review records can still be used.
+
 ## 2026-11-07 — Use Lingwave: Language Practice in App Store Connect
 
 Apple reported that Lingwave was already in use. The owner delegated the listing-name choice. Use **Lingwave: Language Practice** for the existing app record and **Lingwave** for the installed app. Add each internal-only release explicitly to **Lingwave Owner** so the owner receives the intended build.

@@ -10,7 +10,7 @@ const index = JSON.parse(readFileSync(resolve(here, 'index.json'), 'utf8'))
 const keys = new Set()
 const trophies = new Set()
 const totals = { new: 0, revision: 0 }
-const reviewedB1Starts = { French: 6, Italian: 4, Portuguese: 6 }
+const reviewedB1Starts = { Cebuano: 3, French: 6, Italian: 4, Portuguese: 6 }
 const join = parts => parts.map(p => typeof p === 'string' ? p : p.answer).join('')
 const render = ({ segments, blanks }) => segments.map(s => s.kind === 'text' ? s.text : blanks[s.index].answer).join('')
 
@@ -40,7 +40,10 @@ for (const row of index.paths) {
   const d = JSON.parse(raw)
   assert.deepEqual([d.status,d.targetLanguage,d.level,d.pathNumber,d.lessons.length], ['draft',row.language,row.level,row.path,10], key)
   if (row.level === 'B1' && row.path >= (reviewedB1Starts[row.language] ?? Infinity)) {
-    const plan = JSON.parse(readFileSync(resolve(here, '../b1-2026-10', row.language.toLowerCase() + '-plan.json')))
+    const planFile = row.language === 'Cebuano'
+      ? resolve(here, '../b1-native-2026-10/cebuano/specification.json')
+      : resolve(here, '../b1-2026-10', row.language.toLowerCase() + '-plan.json')
+    const plan = JSON.parse(readFileSync(planFile))
     const outline = plan.paths.find(p => p.pathNumber === row.path)
     assert.deepEqual(d.lessons.map(l => l.trophyWord.word), outline.lessons.map(l => l.trophy), key)
     for (const lesson of d.lessons) {
@@ -48,6 +51,15 @@ for (const row of index.paths) {
       assert.equal(lesson.pattern.examples[0].targetText, lesson.dialogue[1].targetText, lesson.slug)
       assert(!lesson.dialogue.some(t => t.targetText === lesson.pattern.examples[1].targetText), lesson.slug)
       const blanks = lesson.cloze.filter(part => typeof part !== 'string')
+      if (row.language === 'Cebuano') {
+        if ([7, 8, 10].includes(row.path)) assert.equal(blanks.length, 3, lesson.slug + ': three planned exercise roles')
+        for (const blank of blanks) {
+          const choices = new Set(blank.choices.map(value => value.toLowerCase()))
+          for (const [canonical, alternative] of [['kung','kon'], ['og','ug'], ['apan','pero'], ['lang','ra']]) {
+            assert(!(choices.has(canonical) && choices.has(alternative)), lesson.slug + ': competing Cebuano variants')
+          }
+        }
+      }
       if (row.language === 'Italian') {
         for (const choices of [lesson.recall.fallbackChoices, ...blanks.map(b => b.choices)]) {
           const spellings = choices.map(s => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase())
@@ -61,6 +73,10 @@ for (const row of index.paths) {
       }
     }
     const review = JSON.parse(readFileSync(resolve(here, row.evidence)))
+    if (row.language === 'Cebuano') {
+      assert.equal(row.reviewedSourceSha256, row.sha256, key + ': reviewed and archived bytes')
+      assert.equal(review.specificationSha256, createHash('sha256').update(readFileSync(planFile)).digest('hex'), key)
+    }
     assert.equal(review.language, row.language, key)
     assert.equal(review.pathNumber, row.path, key)
     assert.equal(review.lessonSha256, row.sha256, key)

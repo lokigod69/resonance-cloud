@@ -1,0 +1,2169 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Kadtong taas nga… — Genau beschreiben",
+    "en": "Kadtong taas nga… — Describing precisely"
+  },
+  "subtitle": {
+    "de": "Menschen, Orte und Dinge anhand ihrer Merkmale erkennen",
+    "en": "Identify people, places and things by their features"
+  },
+  "anchor": "Mit nga Beschreibungen anschließen, später Merkmale verbinden oder einander gegenüberstellen.",
+  "lessons": [
+    {
+      "slug": "taas-the-building-across-the-street",
+      "title": {
+        "de": "Das Gebäude gegenüber",
+        "en": "The building across the street"
+      },
+      "situation": {
+        "de": "Ein Freund bleibt mit dir an einer Kreuzung stehen und sucht deine Wohnung.",
+        "en": "A friend stops with you at a junction and looks for your apartment."
+      },
+      "pedagogicalGoal": "Mit taas nga ein Gebäude identifizieren",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Asa niining mga bilding ang inyo?",
+          "baseText": {
+            "de": "In welchem dieser Gebäude wohnst du?",
+            "en": "Which of these buildings do you live in?"
+          }
+        },
+        {
+          "targetText": "Kadtong taas nga bilding sa atbang ang amo, kanang asul ang atop.",
+          "baseText": {
+            "de": "Wir wohnen in dem hohen Gebäude gegenüber, dem mit dem blauen Dach.",
+            "en": "Ours is the tall building opposite, the one with the blue roof."
+          }
+        },
+        {
+          "targetText": "Ah, ang naay antena! Sa unsa nga andana ka nagpuyo?",
+          "baseText": {
+            "de": "Ah, das mit der Antenne! In welchem Stock wohnst du?",
+            "en": "Ah, the one with the antenna! What floor do you live on?"
+          }
+        },
+        {
+          "targetText": "Sa ikatulo nga andana, duol sa hagdanan.",
+          "baseText": {
+            "de": "Im dritten Stock, gleich beim Treppenhaus.",
+            "en": "On the third floor, near the stairs."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit taas nga ein Gebäude identifizieren",
+        "rule": {
+          "de": "Auf das Adjektiv taas folgt nga, um es mit bilding zu verbinden. Kadtong weist auf das Gebäude in einiger Entfernung.",
+          "en": "Nga links the adjective taas to bilding. Kadtong points out the building at a distance."
+        },
+        "examples": [
+          {
+            "targetText": "Kadtong taas nga bilding sa atbang ang amo, kanang asul ang atop.",
+            "baseText": {
+              "de": "Wir wohnen in dem hohen Gebäude gegenüber, dem mit dem blauen Dach.",
+              "en": "Ours is the tall building opposite, the one with the blue roof."
+            },
+            "highlight": "taas nga"
+          },
+          {
+            "targetText": "Kadtong taas nga kahoy ang naa sa ilang nataran.",
+            "baseText": {
+              "de": "Der hohe Baum dort steht in ihrem Hof.",
+              "en": "That tall tree is the one in their yard."
+            },
+            "highlight": "taas nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Sa ",
+        {
+          "kind": "choice",
+          "answer": "ikatulo",
+          "choices": [
+            "tulo",
+            "tuloan",
+            "ikatulo",
+            "katulo"
+          ]
+        },
+        " nga ",
+        {
+          "kind": "choice",
+          "answer": "andana",
+          "choices": [
+            "andana",
+            "bintana",
+            "atop",
+            "haligi"
+          ]
+        },
+        ", duol sa hagdanan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kadtong taas nga bilding",
+          "baseText": {
+            "de": "jenes hohe Gebäude",
+            "en": "that tall building"
+          }
+        },
+        {
+          "targetText": "sa atbang",
+          "baseText": {
+            "de": "gegenüber",
+            "en": "opposite"
+          }
+        },
+        {
+          "targetText": "ang amo,",
+          "baseText": {
+            "de": "ist unseres",
+            "en": "is ours"
+          }
+        },
+        {
+          "targetText": "kanang asul ang atop.",
+          "baseText": {
+            "de": "das mit dem blauen Dach",
+            "en": "the one with the blue roof"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "taas",
+          "baseText": {
+            "de": "hoch",
+            "en": "tall"
+          }
+        },
+        {
+          "targetText": "bilding",
+          "baseText": {
+            "de": "Gebäude",
+            "en": "building"
+          }
+        },
+        {
+          "targetText": "atbang",
+          "baseText": {
+            "de": "gegenüber",
+            "en": "opposite"
+          }
+        },
+        {
+          "targetText": "asul",
+          "baseText": {
+            "de": "blau",
+            "en": "blue"
+          }
+        },
+        {
+          "targetText": "atop",
+          "baseText": {
+            "de": "Dach",
+            "en": "roof"
+          }
+        },
+        {
+          "targetText": "andana",
+          "baseText": {
+            "de": "Stockwerk",
+            "en": "floor"
+          }
+        },
+        {
+          "targetText": "hagdanan",
+          "baseText": {
+            "de": "Treppe",
+            "en": "stairs"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kadtong taas nga ",
+        "answer": "bilding",
+        "after": " sa atbang ang amo, kanang asul ang atop.",
+        "fallbackChoices": [
+          "sakayan",
+          "bilding",
+          "tindero",
+          "bulak"
+        ]
+      },
+      "speakRequired": [
+        "taas",
+        "nga",
+        "bilding"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund bleibt mit dir an einer Kreuzung stehen und sucht deine Wohnung. „Asa niining mga bilding ang inyo?“",
+        "en": "A friend stops with you at a junction and looks for your apartment. “Asa niining mga bilding ang inyo?”"
+      },
+      "trophyWord": {
+        "word": "taas",
+        "meaning": {
+          "de": "hoch",
+          "en": "tall"
+        },
+        "example": "Asa ang taas nga bilding?",
+        "whyThisWord": {
+          "de": "Taas bezeichnet hier die Höhe. Mit nga verbindest du das Merkmal mit dem passenden Gegenstand.",
+          "en": "Taas describes height here. Nga links the feature to the object you are identifying."
+        }
+      },
+      "distractors": [
+        "Kadtong mubo nga bilding",
+        "kanang pula ang atop."
+      ],
+      "placeholderCaption": {
+        "de": "Das Gebäude gegenüber",
+        "en": "The building across the street"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "A friend stops with you at a junction and looks for your apartment."
+    },
+    {
+      "slug": "mubo-an-umbrella-at-the-lost-and-found",
+      "title": {
+        "de": "Ein Regenschirm im Fundbüro",
+        "en": "An umbrella at the lost-and-found"
+      },
+      "situation": {
+        "de": "Die Mitarbeiterin im Fundbüro bittet dich um eine Beschreibung deines Schirms.",
+        "en": "The lost-and-found clerk asks you to describe your umbrella."
+      },
+      "pedagogicalGoal": "Eine kurze Beschreibung um weitere Merkmale ergänzen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsay ilhanan sa imong payong?",
+          "baseText": {
+            "de": "Woran erkennt man Ihren Schirm?",
+            "en": "How can I recognise your umbrella?"
+          }
+        },
+        {
+          "targetText": "Ang akoa kadtong mubo nga payong nga berde ug mapilo.",
+          "baseText": {
+            "de": "Meiner ist der kurze grüne Schirm, den man zusammenfalten kann.",
+            "en": "Mine is the short green umbrella that folds up."
+          }
+        },
+        {
+          "targetText": "Duha man ang ingon ana. Tul-id ba ang kuptanan o sama sa kaw-it?",
+          "baseText": {
+            "de": "Davon haben wir zwei. Ist der Griff gerade oder hakenförmig?",
+            "en": "We have two like that. Is the handle straight or hook-shaped?"
+          }
+        },
+        {
+          "targetText": "Kurbado ang kuptanan, sama sa kaw-it nga pangsab-it.",
+          "baseText": {
+            "de": "Der Griff ist gebogen wie ein Haken zum Aufhängen.",
+            "en": "The handle is curved like a hook for hanging things up."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine kurze Beschreibung um weitere Merkmale ergänzen",
+        "rule": {
+          "de": "Mubo nga payong nennt zuerst den kurzen Schirm. Berde und mapilo grenzen die Auswahl weiter ein.",
+          "en": "Mubo nga payong identifies a short umbrella. Berde and mapilo narrow the choice further."
+        },
+        "examples": [
+          {
+            "targetText": "Ang akoa kadtong mubo nga payong nga berde ug mapilo.",
+            "baseText": {
+              "de": "Meiner ist der kurze grüne Schirm, den man zusammenfalten kann.",
+              "en": "Mine is the short green umbrella that folds up."
+            },
+            "highlight": "mubo nga"
+          },
+          {
+            "targetText": "Ang akoa kadtong mubo nga lapis nga dalag.",
+            "baseText": {
+              "de": "Meiner ist der kurze gelbe Bleistift dort.",
+              "en": "Mine is that short yellow pencil."
+            },
+            "highlight": "mubo nga"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kurbado",
+          "choices": [
+            "Tul-id",
+            "Patag",
+            "Kurbado",
+            "Pahigda"
+          ]
+        },
+        " ang kuptanan, sama sa kaw-it ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "nga",
+            "ka",
+            "og",
+            "kung"
+          ],
+          "cue": "linker after a consonant"
+        },
+        " pangsab-it."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang akoa",
+          "baseText": {
+            "de": "meiner ist",
+            "en": "mine is"
+          }
+        },
+        {
+          "targetText": "kadtong mubo nga payong",
+          "baseText": {
+            "de": "jener kurze Schirm",
+            "en": "that short umbrella"
+          }
+        },
+        {
+          "targetText": "nga berde",
+          "baseText": {
+            "de": "der grün ist",
+            "en": "which is green"
+          }
+        },
+        {
+          "targetText": "ug mapilo.",
+          "baseText": {
+            "de": "und sich falten lässt",
+            "en": "and folds up"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mubo",
+          "baseText": {
+            "de": "kurz",
+            "en": "short"
+          }
+        },
+        {
+          "targetText": "payong",
+          "baseText": {
+            "de": "Schirm",
+            "en": "umbrella"
+          }
+        },
+        {
+          "targetText": "berde",
+          "baseText": {
+            "de": "grün",
+            "en": "green"
+          }
+        },
+        {
+          "targetText": "mapilo",
+          "baseText": {
+            "de": "zusammenfaltbar",
+            "en": "foldable"
+          }
+        },
+        {
+          "targetText": "kuptanan",
+          "baseText": {
+            "de": "Griff",
+            "en": "handle"
+          }
+        },
+        {
+          "targetText": "kurbado",
+          "baseText": {
+            "de": "gebogen",
+            "en": "curved"
+          }
+        },
+        {
+          "targetText": "kaw-it",
+          "baseText": {
+            "de": "Haken",
+            "en": "hook"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang akoa kadtong mubo nga ",
+        "answer": "payong",
+        "after": " nga berde ug mapilo.",
+        "fallbackChoices": [
+          "lapis",
+          "bakos",
+          "payong",
+          "sako"
+        ]
+      },
+      "speakRequired": [
+        "mubo",
+        "payong",
+        "mapilo"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin im Fundbüro bittet dich um eine Beschreibung deines Schirms. „Unsay ilhanan sa imong payong?“",
+        "en": "The lost-and-found clerk asks you to describe your umbrella. “Unsay ilhanan sa imong payong?”"
+      },
+      "trophyWord": {
+        "word": "mubo",
+        "meaning": {
+          "de": "kurz",
+          "en": "short"
+        },
+        "example": "Mubo ang akong payong.",
+        "whyThisWord": {
+          "de": "Mubo hilft beim Unterscheiden ähnlicher Gegenstände, etwa zweier Schirme unterschiedlicher Länge.",
+          "en": "Mubo helps distinguish similar objects, such as two umbrellas of different lengths."
+        }
+      },
+      "distractors": [
+        "kadtong taas nga payong",
+        "nga itom"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Regenschirm im Fundbüro",
+        "en": "An umbrella at the lost-and-found"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "The lost-and-found clerk asks you to describe your umbrella."
+    },
+    {
+      "slug": "lapad-the-mat-at-the-shop-entrance",
+      "title": {
+        "de": "Die Matte am Ladeneingang",
+        "en": "The mat at the shop entrance"
+      },
+      "situation": {
+        "de": "Eine Verkäuferin sieht, dass du mehrere Matten im Laden vergleichst.",
+        "en": "A seller sees you comparing several mats in her shop."
+      },
+      "pedagogicalGoal": "Breite und Standort zur Unterscheidung nennen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Asa man niini nga mga banig ang imong gusto?",
+          "baseText": {
+            "de": "Welche dieser Matten hätten Sie gern?",
+            "en": "Which of these mats would you like?"
+          }
+        },
+        {
+          "targetText": "Gusto ko niadtong lapad nga banig diha sa salog duol sa pultahan.",
+          "baseText": {
+            "de": "Ich möchte die breite Matte dort auf dem Boden nahe der Tür.",
+            "en": "I’d like that wide mat on the floor by the door."
+          }
+        },
+        {
+          "targetText": "Naa koy ingon ana sa pula ug sa berde. Unsang kolor?",
+          "baseText": {
+            "de": "So eine habe ich in Rot und in Grün. Welche Farbe?",
+            "en": "I have that kind in red and in green. Which colour?"
+          }
+        },
+        {
+          "targetText": "Ang berde nga banig, kay gusto ko og kolor sa dahon.",
+          "baseText": {
+            "de": "Die grüne Matte, denn ich möchte die Farbe von Blättern.",
+            "en": "The green mat, because I want the colour of leaves."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Breite und Standort zur Unterscheidung nennen",
+        "rule": {
+          "de": "Lapad nga banig unterscheidet die Matte nach ihrer Breite. Der Standort duol sa pultahan zeigt, welche breite Matte gemeint ist.",
+          "en": "Lapad nga banig distinguishes the mat by its width. Duol sa pultahan identifies it by its location near the door."
+        },
+        "examples": [
+          {
+            "targetText": "Gusto ko niadtong lapad nga banig diha sa salog duol sa pultahan.",
+            "baseText": {
+              "de": "Ich möchte die breite Matte dort auf dem Boden nahe der Tür.",
+              "en": "I’d like that wide mat on the floor by the door."
+            },
+            "highlight": "lapad nga"
+          },
+          {
+            "targetText": "Gusto ko niadtong lapad nga estante sa atbang.",
+            "baseText": {
+              "de": "Ich möchte jenes breite Regal gegenüber.",
+              "en": "I’d like that wide shelf opposite."
+            },
+            "highlight": "lapad nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang ",
+        {
+          "kind": "choice",
+          "answer": "berde",
+          "choices": [
+            "berde",
+            "pula",
+            "puti",
+            "itom"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "ka",
+            "ug",
+            "nga",
+            "apan"
+          ],
+          "cue": "linker between the colour and the noun"
+        },
+        " banig, kay gusto ko og kolor sa dahon."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gusto ko",
+          "baseText": {
+            "de": "ich möchte",
+            "en": "I’d like"
+          }
+        },
+        {
+          "targetText": "niadtong lapad nga banig",
+          "baseText": {
+            "de": "jene breite Matte",
+            "en": "that wide mat"
+          }
+        },
+        {
+          "targetText": "diha sa salog",
+          "baseText": {
+            "de": "dort auf dem Boden",
+            "en": "there on the floor"
+          }
+        },
+        {
+          "targetText": "duol sa pultahan.",
+          "baseText": {
+            "de": "bei der Tür",
+            "en": "near the door"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lapad",
+          "baseText": {
+            "de": "breit",
+            "en": "wide"
+          }
+        },
+        {
+          "targetText": "banig",
+          "baseText": {
+            "de": "geflochtene Matte",
+            "en": "woven mat"
+          }
+        },
+        {
+          "targetText": "salog",
+          "baseText": {
+            "de": "Boden",
+            "en": "floor"
+          }
+        },
+        {
+          "targetText": "pultahan",
+          "baseText": {
+            "de": "Tür",
+            "en": "door"
+          }
+        },
+        {
+          "targetText": "duol",
+          "baseText": {
+            "de": "nahe",
+            "en": "near"
+          }
+        },
+        {
+          "targetText": "dahon",
+          "baseText": {
+            "de": "Blatt",
+            "en": "leaf"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gusto ko niadtong lapad nga ",
+        "answer": "banig",
+        "after": " diha sa salog duol sa pultahan.",
+        "fallbackChoices": [
+          "kahoy",
+          "unlan",
+          "sako",
+          "banig"
+        ]
+      },
+      "speakRequired": [
+        "lapad",
+        "nga",
+        "banig"
+      ],
+      "sceneCaption": {
+        "de": "Eine Verkäuferin sieht, dass du mehrere Matten im Laden vergleichst. „Asa man niini nga mga banig ang imong gusto?“",
+        "en": "A seller sees you comparing several mats in her shop. “Asa man niini nga mga banig ang imong gusto?”"
+      },
+      "trophyWord": {
+        "word": "lapad",
+        "meaning": {
+          "de": "breit",
+          "en": "wide"
+        },
+        "example": "Lapad ang banig sa sala.",
+        "whyThisWord": {
+          "de": "Lapad gibt an, wie viel Platz etwas in der Breite einnimmt, etwa eine Matte oder ein Regal.",
+          "en": "Lapad describes the width of something such as a mat or a shelf."
+        }
+      },
+      "distractors": [
+        "niadtong pig-ot nga banig",
+        "duol sa bintana."
+      ],
+      "placeholderCaption": {
+        "de": "Die Matte am Ladeneingang",
+        "en": "The mat at the shop entrance"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "A seller sees you comparing several mats in her shop."
+    },
+    {
+      "slug": "daan-a-house-on-the-side-street",
+      "title": {
+        "de": "Ein Haus in der Seitenstraße",
+        "en": "A house on the side street"
+      },
+      "situation": {
+        "de": "Ein Wachmann hilft dir am Eingang einer Wohnsiedlung bei der Suche nach einem Haus.",
+        "en": "A guard at a housing estate entrance helps you look for a house."
+      },
+      "pedagogicalGoal": "Das ältere von mehreren Häusern beschreiben",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may ilhanan sa balay nga imong pangita?",
+          "baseText": {
+            "de": "Woran erkennt man das Haus, das Sie suchen?",
+            "en": "How can I recognise the house you are looking for?"
+          }
+        },
+        {
+          "targetText": "Kadtong daan nga balay nga naay mangga sa atubangan ang akong pangita.",
+          "baseText": {
+            "de": "Ich suche das alte Haus, vor dem ein Mangobaum steht.",
+            "en": "I’m looking for the old house with a mango tree out front."
+          }
+        },
+        {
+          "targetText": "Naa may duha ka daang balay nga naay mangga. Kahoy ba ang ganghaan o puthaw?",
+          "baseText": {
+            "de": "Es gibt zwei alte Häuser mit Mangobäumen. Ist das Tor aus Holz oder aus Eisen?",
+            "en": "Two old houses have mango trees. Is the gate wooden or iron?"
+          }
+        },
+        {
+          "targetText": "Ang puthaw nga ganghaan, kadtong naay taya sa ubos.",
+          "baseText": {
+            "de": "Das Eisentor, das unten Rost hat.",
+            "en": "The iron gate, the one with rust at the bottom."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Das ältere von mehreren Häusern beschreiben",
+        "rule": {
+          "de": "Daan nga balay nennt das alte Haus. Mit nga naay kannst du eine sichtbare Besonderheit hinzufügen, hier den Mangobaum.",
+          "en": "Daan nga balay identifies an old house. Nga naay adds a visible feature, here the mango tree."
+        },
+        "examples": [
+          {
+            "targetText": "Kadtong daan nga balay nga naay mangga sa atubangan ang akong pangita.",
+            "baseText": {
+              "de": "Ich suche das alte Haus, vor dem ein Mangobaum steht.",
+              "en": "I’m looking for the old house with a mango tree out front."
+            },
+            "highlight": "daan nga"
+          },
+          {
+            "targetText": "Kadtong daan nga balay nga naay balkonahe ang ilaha.",
+            "baseText": {
+              "de": "Das alte Haus mit dem Balkon gehört ihnen.",
+              "en": "That old house with the balcony is theirs."
+            },
+            "highlight": "daan nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang ",
+        {
+          "kind": "choice",
+          "answer": "puthaw",
+          "choices": [
+            "kahoy",
+            "puthaw",
+            "lubid",
+            "papel"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "nga",
+            "ka",
+            "og",
+            "kung"
+          ],
+          "cue": "linker between the material and the noun"
+        },
+        " ganghaan, kadtong naay taya sa ubos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kadtong daan nga balay",
+          "baseText": {
+            "de": "jenes alte Haus",
+            "en": "that old house"
+          }
+        },
+        {
+          "targetText": "nga naay mangga",
+          "baseText": {
+            "de": "das einen Mangobaum hat",
+            "en": "that has a mango tree"
+          }
+        },
+        {
+          "targetText": "sa atubangan",
+          "baseText": {
+            "de": "vorne",
+            "en": "out front"
+          }
+        },
+        {
+          "targetText": "ang akong pangita.",
+          "baseText": {
+            "de": "suche ich",
+            "en": "is the one I’m looking for"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "daan",
+          "baseText": {
+            "de": "alt",
+            "en": "old"
+          }
+        },
+        {
+          "targetText": "balay",
+          "baseText": {
+            "de": "Haus",
+            "en": "house"
+          }
+        },
+        {
+          "targetText": "mangga",
+          "baseText": {
+            "de": "Mango; Mangobaum",
+            "en": "mango; mango tree"
+          }
+        },
+        {
+          "targetText": "atubangan",
+          "baseText": {
+            "de": "Vorderseite",
+            "en": "front"
+          }
+        },
+        {
+          "targetText": "ganghaan",
+          "baseText": {
+            "de": "Tor",
+            "en": "gate"
+          }
+        },
+        {
+          "targetText": "puthaw",
+          "baseText": {
+            "de": "Eisen",
+            "en": "iron"
+          }
+        },
+        {
+          "targetText": "taya",
+          "baseText": {
+            "de": "Rost",
+            "en": "rust"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kadtong daan nga ",
+        "answer": "balay",
+        "after": " nga naay mangga sa atubangan ang akong pangita.",
+        "fallbackChoices": [
+          "balay",
+          "sakyanan",
+          "kahoy",
+          "lamisa"
+        ]
+      },
+      "speakRequired": [
+        "daan",
+        "nga",
+        "balay"
+      ],
+      "sceneCaption": {
+        "de": "Ein Wachmann hilft dir am Eingang einer Wohnsiedlung bei der Suche nach einem Haus. „Unsa may ilhanan sa balay nga imong pangita?“",
+        "en": "A guard at a housing estate entrance helps you look for a house. “Unsa may ilhanan sa balay nga imong pangita?”"
+      },
+      "trophyWord": {
+        "word": "daan",
+        "meaning": {
+          "de": "alt",
+          "en": "old"
+        },
+        "example": "Daan ang balay sa eskina.",
+        "whyThisWord": {
+          "de": "Daan bezeichnet das Alter eines Gegenstands oder Gebäudes und bildet einen Gegensatz zu bag-o.",
+          "en": "Daan describes an old object or building and contrasts with bag-o, meaning new."
+        }
+      },
+      "distractors": [
+        "Kadtong dako nga balay",
+        "sa luyo"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Haus in der Seitenstraße",
+        "en": "A house on the side street"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "A guard at a housing estate entrance helps you look for a house."
+    },
+    {
+      "slug": "hitsura-the-new-neighbour",
+      "title": {
+        "de": "Der neue Nachbar",
+        "en": "The new neighbour"
+      },
+      "situation": {
+        "de": "Eine Freundin will wissen, woran sie den neuen Nachbarn erkennen kann.",
+        "en": "A friend wants to know how she can recognise the new neighbour."
+      },
+      "pedagogicalGoal": "Von der Beschreibung zum Relativsatz wechseln",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may hitsura sa bag-o natong silingan?",
+          "baseText": {
+            "de": "Wie sieht unser neuer Nachbar aus?",
+            "en": "What does our new neighbour look like?"
+          }
+        },
+        {
+          "targetText": "Mailhan nimo siya sa iyang hitsura: taas nga bungot ug baga nga kilay.",
+          "baseText": {
+            "de": "Du erkennst ihn an seinem Aussehen: langer Bart und dichte Augenbrauen.",
+            "en": "You’ll recognise him by his looks: a long beard and thick eyebrows."
+          }
+        },
+        {
+          "targetText": "Murag kaila ko niya. Unsa gani ang iyang trabaho?",
+          "baseText": {
+            "de": "Ich glaube, ich kenne ihn. Was arbeitet er noch mal?",
+            "en": "I think I know him. What does he do again?"
+          }
+        },
+        {
+          "targetText": "Siya ang panadero nga magluto og pan sa eskina.",
+          "baseText": {
+            "de": "Er ist der Bäcker, der an der Ecke Brot backt.",
+            "en": "He’s the baker who bakes bread on the corner."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Von der Beschreibung zum Relativsatz wechseln",
+        "rule": {
+          "de": "Hitsura bezeichnet das Aussehen. Ein nga-Satz nach der Berufsbezeichnung kann dieselbe Person anhand ihrer Tätigkeit beschreiben.",
+          "en": "Hitsura means appearance. A nga clause after an occupation can identify the same person by what they do."
+        },
+        "examples": [
+          {
+            "targetText": "Mailhan nimo siya sa iyang hitsura: taas nga bungot ug baga nga kilay.",
+            "baseText": {
+              "de": "Du erkennst ihn an seinem Aussehen: langer Bart und dichte Augenbrauen.",
+              "en": "You’ll recognise him by his looks: a long beard and thick eyebrows."
+            },
+            "highlight": "hitsura"
+          },
+          {
+            "targetText": "Lahi ang iyang hitsura kung magsul-ob siyag antipara.",
+            "baseText": {
+              "de": "Mit Brille sieht er anders aus.",
+              "en": "He looks different when he wears glasses."
+            },
+            "highlight": "hitsura"
+          }
+        ]
+      },
+      "cloze": [
+        "Siya ang ",
+        {
+          "kind": "choice",
+          "answer": "panadero",
+          "choices": [
+            "drayber",
+            "mananahi",
+            "panadero",
+            "mangingisda"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "nga",
+            "ka",
+            "og",
+            "apan"
+          ],
+          "cue": "linker introducing what the person does"
+        },
+        " magluto og pan sa eskina."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mailhan nimo siya",
+          "baseText": {
+            "de": "du erkennst ihn",
+            "en": "you’ll recognise him"
+          }
+        },
+        {
+          "targetText": "sa iyang hitsura:",
+          "baseText": {
+            "de": "an seinem Aussehen:",
+            "en": "by his looks:"
+          }
+        },
+        {
+          "targetText": "taas nga bungot",
+          "baseText": {
+            "de": "langer Bart",
+            "en": "a long beard"
+          }
+        },
+        {
+          "targetText": "ug baga nga kilay.",
+          "baseText": {
+            "de": "und dichte Augenbrauen",
+            "en": "and thick eyebrows"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hitsura",
+          "baseText": {
+            "de": "Aussehen",
+            "en": "appearance"
+          }
+        },
+        {
+          "targetText": "mailhan",
+          "baseText": {
+            "de": "erkennen können",
+            "en": "recognise"
+          }
+        },
+        {
+          "targetText": "bungot",
+          "baseText": {
+            "de": "Bart",
+            "en": "beard"
+          }
+        },
+        {
+          "targetText": "kilay",
+          "baseText": {
+            "de": "Augenbrauen",
+            "en": "eyebrows"
+          }
+        },
+        {
+          "targetText": "baga",
+          "baseText": {
+            "de": "dicht; dick",
+            "en": "thick"
+          }
+        },
+        {
+          "targetText": "panadero",
+          "baseText": {
+            "de": "Bäcker",
+            "en": "baker"
+          }
+        },
+        {
+          "targetText": "eskina",
+          "baseText": {
+            "de": "Straßenecke",
+            "en": "street corner"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mailhan nimo siya sa iyang hitsura: taas nga ",
+        "answer": "bungot",
+        "after": " ug baga nga kilay.",
+        "fallbackChoices": [
+          "bukton",
+          "bungot",
+          "ilong",
+          "ngabil"
+        ]
+      },
+      "speakRequired": [
+        "mailhan",
+        "hitsura",
+        "bungot"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin will wissen, woran sie den neuen Nachbarn erkennen kann. „Unsa may hitsura sa bag-o natong silingan?“",
+        "en": "A friend wants to know how she can recognise the new neighbour. “Unsa may hitsura sa bag-o natong silingan?”"
+      },
+      "trophyWord": {
+        "word": "hitsura",
+        "meaning": {
+          "de": "Aussehen",
+          "en": "appearance"
+        },
+        "example": "Nahinumdom ko sa iyang hitsura.",
+        "whyThisWord": {
+          "de": "Mit hitsura fragst du nach dem Aussehen; der Beruf oder der Name sind etwas anderes.",
+          "en": "Hitsura is useful when asking about appearance rather than occupation or name."
+        }
+      },
+      "distractors": [
+        "mubo nga bungot",
+        "ug nipis nga kilay."
+      ],
+      "placeholderCaption": {
+        "de": "Der neue Nachbar",
+        "en": "The new neighbour"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "A friend wants to know how she can recognise the new neighbour."
+    },
+    {
+      "slug": "kolor-a-barong-at-the-tailor-s",
+      "title": {
+        "de": "Ein Barong beim Schneider",
+        "en": "A barong at the tailor’s"
+      },
+      "situation": {
+        "de": "Der Schneider legt dir Stoffproben für einen Barong auf den Tisch.",
+        "en": "The tailor sets fabric samples for a barong on the table."
+      },
+      "pedagogicalGoal": "Die gewünschte Farbe an einem Muster zeigen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsang kolor ang imong gusto para sa barong?",
+          "baseText": {
+            "de": "Welche Farbe hätten Sie gern für den Barong?",
+            "en": "What colour would you like for the barong?"
+          }
+        },
+        {
+          "targetText": "Ang kolor nga krema ang akong gusto, sama niining panapton sa imong atubangan.",
+          "baseText": {
+            "de": "Ich hätte gern Creme, so wie der Stoff vor Ihnen.",
+            "en": "I’d like cream, like this fabric in front of you."
+          }
+        },
+        {
+          "targetText": "Sige, krema. Asa kutob ang manggas, sa siko o sa pulso?",
+          "baseText": {
+            "de": "Gut, Creme. Sollen die Ärmel bis zum Ellbogen oder bis zum Handgelenk gehen?",
+            "en": "Cream it is. Should the sleeves end at the elbow or the wrist?"
+          }
+        },
+        {
+          "targetText": "Kutob sa pulso, palihug; taas nga manggas ang gusto nako.",
+          "baseText": {
+            "de": "Lange Ärmel, bitte genau bis zum Handgelenk.",
+            "en": "Long sleeves right down to the wrist, please."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Die gewünschte Farbe an einem Muster zeigen",
+        "rule": {
+          "de": "Ang kolor nga krema nennt den Farbton. Mit sama niining panapton kannst du ihn am Muster zeigen, statt eine zweite Farbbezeichnung zu suchen.",
+          "en": "Ang kolor nga krema names the shade. Sama niining panapton lets you indicate a sample instead of finding another colour name."
+        },
+        "examples": [
+          {
+            "targetText": "Ang kolor nga krema ang akong gusto, sama niining panapton sa imong atubangan.",
+            "baseText": {
+              "de": "Ich hätte gern Creme, so wie der Stoff vor Ihnen.",
+              "en": "I’d like cream, like this fabric in front of you."
+            },
+            "highlight": "kolor"
+          },
+          {
+            "targetText": "Ang kolor nga asul ang parehas sa kolor sa akong karsones.",
+            "baseText": {
+              "de": "Der blaue Farbton ist derselbe wie die Farbe meiner Hose.",
+              "en": "The blue shade is the same as the colour of my trousers."
+            },
+            "highlight": "kolor"
+          }
+        ]
+      },
+      "cloze": [
+        "Kutob sa pulso, palihug; ",
+        {
+          "kind": "choice",
+          "answer": "taas",
+          "choices": [
+            "mubo",
+            "putol",
+            "pinilo",
+            "taas"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "ka",
+            "nga",
+            "og",
+            "kung"
+          ],
+          "cue": "linker between adjective and noun"
+        },
+        " manggas ang gusto nako."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang kolor nga krema",
+          "baseText": {
+            "de": "die Farbe Creme",
+            "en": "the colour cream"
+          }
+        },
+        {
+          "targetText": "ang akong gusto,",
+          "baseText": {
+            "de": "hätte ich gern",
+            "en": "is what I’d like"
+          }
+        },
+        {
+          "targetText": "sama niining panapton",
+          "baseText": {
+            "de": "wie dieser Stoff",
+            "en": "like this fabric"
+          }
+        },
+        {
+          "targetText": "sa imong atubangan.",
+          "baseText": {
+            "de": "vor Ihnen",
+            "en": "in front of you"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kolor",
+          "baseText": {
+            "de": "Farbe",
+            "en": "colour"
+          }
+        },
+        {
+          "targetText": "krema",
+          "baseText": {
+            "de": "cremefarben",
+            "en": "cream-coloured"
+          }
+        },
+        {
+          "targetText": "panapton",
+          "baseText": {
+            "de": "Stoff",
+            "en": "fabric"
+          }
+        },
+        {
+          "targetText": "barong",
+          "baseText": {
+            "de": "philippinisches Festhemd",
+            "en": "Filipino formal shirt"
+          }
+        },
+        {
+          "targetText": "manggas",
+          "baseText": {
+            "de": "Ärmel",
+            "en": "sleeve"
+          }
+        },
+        {
+          "targetText": "siko",
+          "baseText": {
+            "de": "Ellbogen",
+            "en": "elbow"
+          }
+        },
+        {
+          "targetText": "pulso",
+          "baseText": {
+            "de": "Handgelenk",
+            "en": "wrist"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang kolor nga ",
+        "answer": "krema",
+        "after": " ang akong gusto, sama niining panapton sa imong atubangan.",
+        "fallbackChoices": [
+          "asul",
+          "pula",
+          "krema",
+          "itom"
+        ]
+      },
+      "speakRequired": [
+        "kolor",
+        "nga",
+        "panapton"
+      ],
+      "sceneCaption": {
+        "de": "Der Schneider legt dir Stoffproben für einen Barong auf den Tisch. „Unsang kolor ang imong gusto para sa barong?“",
+        "en": "The tailor sets fabric samples for a barong on the table. “Unsang kolor ang imong gusto para sa barong?”"
+      },
+      "trophyWord": {
+        "word": "kolor",
+        "meaning": {
+          "de": "Farbe",
+          "en": "colour"
+        },
+        "example": "Parehas ang kolor sa duha ka panapton.",
+        "whyThisWord": {
+          "de": "Kolor brauchst du, um über einen Farbton zu sprechen, ehe du auf ein Muster zeigst.",
+          "en": "Kolor lets you name colour as the feature to check before pointing at a sample."
+        }
+      },
+      "distractors": [
+        "Ang kolor nga puti",
+        "sa akong luyo."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Barong beim Schneider",
+        "en": "A barong at the tailor’s"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "The tailor sets fabric samples for a barong on the table."
+    },
+    {
+      "slug": "porma-a-birthday-cake",
+      "title": {
+        "de": "Ein Kuchen für den Geburtstag",
+        "en": "A birthday cake"
+      },
+      "situation": {
+        "de": "In der Bäckerei bestellst du einen Kuchen für eine Geburtstagsfeier.",
+        "en": "At the bakery you order a cake for a birthday party."
+      },
+      "pedagogicalGoal": "Form und Belag zusammen beschreiben",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may porma sa keyk nga imong gusto?",
+          "baseText": {
+            "de": "Welche Form soll Ihr Kuchen haben?",
+            "en": "What shape would you like your cake to be?"
+          }
+        },
+        {
+          "targetText": "Lingin ang porma sa keyk nga akong gusto, ug naay mangga sa ibabaw.",
+          "baseText": {
+            "de": "Ich hätte gern einen runden Kuchen mit Mango obendrauf.",
+            "en": "I’d like a round cake with mango on top."
+          }
+        },
+        {
+          "targetText": "Para sa pila ka tawo? Naay gamay para sa upat ug dako para sa napulo.",
+          "baseText": {
+            "de": "Für wie viele Personen? Es gibt einen kleinen für vier oder einen großen für zehn.",
+            "en": "How many people is it for? There’s a small one for four or a large one for ten."
+          }
+        },
+        {
+          "targetText": "Ang dako nga keyk, kay napulo ka tawo ang mokaon.",
+          "baseText": {
+            "de": "Den großen Kuchen, denn wir haben zehn Personen, die mitessen.",
+            "en": "The large cake, because ten people will be eating it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Form und Belag zusammen beschreiben",
+        "rule": {
+          "de": "Lingin bedeutet rund. Porma nennt ausdrücklich die Form und ug schließt den Belag als zweites Merkmal an.",
+          "en": "Lingin means round. Porma identifies shape as the feature, and ug adds the topping as a second feature."
+        },
+        "examples": [
+          {
+            "targetText": "Lingin ang porma sa keyk nga akong gusto, ug naay mangga sa ibabaw.",
+            "baseText": {
+              "de": "Ich hätte gern einen runden Kuchen mit Mango obendrauf.",
+              "en": "I’d like a round cake with mango on top."
+            },
+            "highlight": "porma"
+          },
+          {
+            "targetText": "Kasingkasing ang porma sa biskwit nga naay tsokolate.",
+            "baseText": {
+              "de": "Der Keks mit Schokolade ist herzförmig.",
+              "en": "The biscuit with chocolate is heart-shaped."
+            },
+            "highlight": "porma"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang ",
+        {
+          "kind": "choice",
+          "answer": "dako",
+          "choices": [
+            "dako",
+            "gamay",
+            "nipis",
+            "tunga"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nga",
+          "choices": [
+            "ka",
+            "og",
+            "nga",
+            "kung"
+          ],
+          "cue": "linker between size and noun"
+        },
+        " keyk, kay napulo ka tawo ang mokaon."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lingin ang porma",
+          "baseText": {
+            "de": "rund ist die Form",
+            "en": "round is the shape"
+          }
+        },
+        {
+          "targetText": "sa keyk nga akong gusto,",
+          "baseText": {
+            "de": "des Kuchens, den ich möchte",
+            "en": "of the cake I want"
+          }
+        },
+        {
+          "targetText": "ug naay mangga",
+          "baseText": {
+            "de": "und er hat Mango",
+            "en": "and it has mango"
+          }
+        },
+        {
+          "targetText": "sa ibabaw.",
+          "baseText": {
+            "de": "obendrauf",
+            "en": "on top"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "porma",
+          "baseText": {
+            "de": "Form",
+            "en": "shape"
+          }
+        },
+        {
+          "targetText": "lingin",
+          "baseText": {
+            "de": "rund",
+            "en": "round"
+          }
+        },
+        {
+          "targetText": "keyk",
+          "baseText": {
+            "de": "Kuchen",
+            "en": "cake"
+          }
+        },
+        {
+          "targetText": "mangga",
+          "baseText": {
+            "de": "Mango",
+            "en": "mango"
+          }
+        },
+        {
+          "targetText": "ibabaw",
+          "baseText": {
+            "de": "Oberseite",
+            "en": "top"
+          }
+        },
+        {
+          "targetText": "dako",
+          "baseText": {
+            "de": "groß",
+            "en": "large"
+          }
+        },
+        {
+          "targetText": "mokaon",
+          "baseText": {
+            "de": "essen",
+            "en": "eat"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lingin ang porma sa ",
+        "answer": "keyk",
+        "after": " nga akong gusto, ug naay mangga sa ibabaw.",
+        "fallbackChoices": [
+          "kaldero",
+          "lamisa",
+          "sakyanan",
+          "keyk"
+        ]
+      },
+      "speakRequired": [
+        "porma",
+        "ug",
+        "mangga"
+      ],
+      "sceneCaption": {
+        "de": "In der Bäckerei bestellst du einen Kuchen für eine Geburtstagsfeier. „Unsa may porma sa keyk nga imong gusto?“",
+        "en": "At the bakery you order a cake for a birthday party. “Unsa may porma sa keyk nga imong gusto?”"
+      },
+      "trophyWord": {
+        "word": "porma",
+        "meaning": {
+          "de": "Form",
+          "en": "shape"
+        },
+        "example": "Unsay porma sa keyk?",
+        "whyThisWord": {
+          "de": "Mit porma unterscheidest du die Form von Größe und Belag, auch wenn du alles zusammen bestellst.",
+          "en": "Porma distinguishes shape from size and topping even when you specify all three in one order."
+        }
+      },
+      "distractors": [
+        "ug naay saging",
+        "sa kilid."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kuchen für den Geburtstag",
+        "en": "A birthday cake"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "At the bakery you order a cake for a birthday party."
+    },
+    {
+      "slug": "humok-the-pillow-in-the-shop",
+      "title": {
+        "de": "Das Kissen im Geschäft",
+        "en": "The pillow in the shop"
+      },
+      "situation": {
+        "de": "Im Haushaltswarenladen zeigt dir ein Mitarbeiter zwei Kissen zum Ausprobieren.",
+        "en": "In the household shop a clerk shows you two pillows to try."
+      },
+      "pedagogicalGoal": "Eine weiche Variante ausdrücklich auswählen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Asa sa duha ka unlan ang angay nimo?",
+          "baseText": {
+            "de": "Welches der beiden Kissen passt für Sie?",
+            "en": "Which of the two pillows suits you?"
+          }
+        },
+        {
+          "targetText": "Kining humok nga unlan ang angay nako, dili kadtong gahi nga naa sa estante.",
+          "baseText": {
+            "de": "Dieses weiche Kissen passt für mich, nicht das harte dort im Regal.",
+            "en": "This soft pillow suits me, not the hard one on the shelf."
+          }
+        },
+        {
+          "targetText": "Pila man ang imong kuhaon?",
+          "baseText": {
+            "de": "Wie viele hätten Sie gern?",
+            "en": "How many would you like?"
+          }
+        },
+        {
+          "targetText": "Duha ka unlan, usa para nako ug usa para ni Rosa.",
+          "baseText": {
+            "de": "Zwei Kissen, eins für mich und eins für Rosa.",
+            "en": "Two pillows, one for me and one for Rosa."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine weiche Variante ausdrücklich auswählen",
+        "rule": {
+          "de": "Humok nga unlan beschreibt das weiche Kissen. Dili kadtong gahi grenzt das andere Kissen ausdrücklich aus.",
+          "en": "Humok nga unlan describes the soft pillow. Dili kadtong gahi explicitly excludes the hard one."
+        },
+        "examples": [
+          {
+            "targetText": "Kining humok nga unlan ang angay nako, dili kadtong gahi nga naa sa estante.",
+            "baseText": {
+              "de": "Dieses weiche Kissen passt für mich, nicht das harte dort im Regal.",
+              "en": "This soft pillow suits me, not the hard one on the shelf."
+            },
+            "highlight": "humok nga"
+          },
+          {
+            "targetText": "Kining humok nga tualya ang akong gusto, dili ang gaspang.",
+            "baseText": {
+              "de": "Ich möchte dieses weiche Handtuch, nicht das raue.",
+              "en": "I’d like this soft towel, not the rough one."
+            },
+            "highlight": "humok nga"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Duha ka",
+          "choices": [
+            "Duha ka",
+            "Ikaduha",
+            "Kaduha",
+            "Duha nga"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "unlan",
+          "choices": [
+            "estante",
+            "habol",
+            "unlan",
+            "higdaanan"
+          ]
+        },
+        ", usa para nako ug usa para ni Rosa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kining humok nga unlan",
+          "baseText": {
+            "de": "dieses weiche Kissen",
+            "en": "this soft pillow"
+          }
+        },
+        {
+          "targetText": "ang angay nako,",
+          "baseText": {
+            "de": "passt für mich",
+            "en": "suits me"
+          }
+        },
+        {
+          "targetText": "dili kadtong gahi",
+          "baseText": {
+            "de": "nicht das harte",
+            "en": "not the hard one"
+          }
+        },
+        {
+          "targetText": "nga naa sa estante.",
+          "baseText": {
+            "de": "das im Regal liegt",
+            "en": "that’s on the shelf"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "humok",
+          "baseText": {
+            "de": "weich",
+            "en": "soft"
+          }
+        },
+        {
+          "targetText": "unlan",
+          "baseText": {
+            "de": "Kissen",
+            "en": "pillow"
+          }
+        },
+        {
+          "targetText": "angay",
+          "baseText": {
+            "de": "passend",
+            "en": "suitable"
+          }
+        },
+        {
+          "targetText": "gahi",
+          "baseText": {
+            "de": "hart",
+            "en": "hard"
+          }
+        },
+        {
+          "targetText": "estante",
+          "baseText": {
+            "de": "Regal",
+            "en": "shelf"
+          }
+        },
+        {
+          "targetText": "duha ka unlan",
+          "baseText": {
+            "de": "zwei Kissen",
+            "en": "two pillows"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kining humok nga ",
+        "answer": "unlan",
+        "after": " ang angay nako, dili kadtong gahi nga naa sa estante.",
+        "fallbackChoices": [
+          "unlan",
+          "habol",
+          "banig",
+          "tualya"
+        ]
+      },
+      "speakRequired": [
+        "humok",
+        "nga",
+        "unlan"
+      ],
+      "sceneCaption": {
+        "de": "Im Haushaltswarenladen zeigt dir ein Mitarbeiter zwei Kissen zum Ausprobieren. „Asa sa duha ka unlan ang angay nimo?“",
+        "en": "In the household shop a clerk shows you two pillows to try. “Asa sa duha ka unlan ang angay nimo?”"
+      },
+      "trophyWord": {
+        "word": "humok",
+        "meaning": {
+          "de": "weich",
+          "en": "soft"
+        },
+        "example": "Humok ang unlan sa bisita.",
+        "whyThisWord": {
+          "de": "Humok benennt eine fühlbare Eigenschaft. Du kannst damit Kissen, Handtücher und andere Dinge vergleichen.",
+          "en": "Humok names a quality you can feel when comparing pillows, towels or other items."
+        }
+      },
+      "distractors": [
+        "Kining baga nga unlan",
+        "nga naa sa salog."
+      ],
+      "placeholderCaption": {
+        "de": "Das Kissen im Geschäft",
+        "en": "The pillow in the shop"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "In the household shop a clerk shows you two pillows to try."
+    },
+    {
+      "slug": "gahi-the-brake-at-the-workshop",
+      "title": {
+        "de": "Die Bremse in der Werkstatt",
+        "en": "The brake at the workshop"
+      },
+      "situation": {
+        "de": "In der Werkstatt bittet dich der Mechaniker, das Problem mit dem Wagen zu beschreiben.",
+        "en": "At the workshop the mechanic asks you to describe the problem with the car."
+      },
+      "pedagogicalGoal": "Eine Eigenschaft mit ihrer Folge verbinden",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsay imong nabantayan inig preno nimo?",
+          "baseText": {
+            "de": "Was fällt Ihnen beim Bremsen auf?",
+            "en": "What do you notice when you brake?"
+          }
+        },
+        {
+          "targetText": "Gahi ang pedal sa akong preno, ug dugay mohunong ang sakyanan.",
+          "baseText": {
+            "de": "Das Bremspedal ist schwergängig, und der Wagen braucht lange, bis er steht.",
+            "en": "My brake pedal is stiff, and the car takes a long time to stop."
+          }
+        },
+        {
+          "targetText": "Karon lang ni nahitabo o naa na ni kagahapon?",
+          "baseText": {
+            "de": "Ist das erst heute aufgetreten oder war das gestern auch schon so?",
+            "en": "Did this only start today or was it already happening yesterday?"
+          }
+        },
+        {
+          "targetText": "Sukad gahapon pa ni; kaniadto dili gahi ang pedal.",
+          "baseText": {
+            "de": "Seit gestern. Vorher war das Pedal nicht schwergängig.",
+            "en": "Since yesterday. Before that, the pedal wasn't stiff."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Eigenschaft mit ihrer Folge verbinden",
+        "rule": {
+          "de": "Gahi beschreibt, wie sich das Pedal anfühlt. Nach ug kommt die beobachtete Folge für das Fahrzeug.",
+          "en": "Gahi describes how the pedal feels. Ug introduces the effect you observe in the vehicle."
+        },
+        "examples": [
+          {
+            "targetText": "Gahi ang pedal sa akong preno, ug dugay mohunong ang sakyanan.",
+            "baseText": {
+              "de": "Das Bremspedal ist schwergängig, und der Wagen braucht lange, bis er steht.",
+              "en": "My brake pedal is stiff, and the car takes a long time to stop."
+            },
+            "highlight": "Gahi"
+          },
+          {
+            "targetText": "Gahi ang yawe, ug lisod moabli ang pultahan.",
+            "baseText": {
+              "de": "Der Schlüssel ist schwergängig, und die Tür geht nur schwer auf.",
+              "en": "The key is stiff, and the door is hard to open."
+            },
+            "highlight": "Gahi"
+          }
+        ]
+      },
+      "cloze": [
+        "Sukad ",
+        {
+          "kind": "choice",
+          "answer": "gahapon",
+          "choices": [
+            "ugma",
+            "puhon",
+            "gahapon",
+            "sunod"
+          ]
+        },
+        " pa ni; kaniadto dili ",
+        {
+          "kind": "choice",
+          "answer": "gahi",
+          "choices": [
+            "humok",
+            "hinay",
+            "gahi",
+            "lapad"
+          ]
+        },
+        " ang pedal."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gahi ang pedal",
+          "baseText": {
+            "de": "schwergängig ist das Pedal",
+            "en": "stiff is the pedal"
+          }
+        },
+        {
+          "targetText": "sa akong preno,",
+          "baseText": {
+            "de": "meiner Bremse",
+            "en": "of my brake"
+          }
+        },
+        {
+          "targetText": "ug dugay mohunong",
+          "baseText": {
+            "de": "und es dauert lange, bis es anhält",
+            "en": "and it takes a long time to stop"
+          }
+        },
+        {
+          "targetText": "ang sakyanan.",
+          "baseText": {
+            "de": "das Fahrzeug",
+            "en": "the car"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gahi",
+          "baseText": {
+            "de": "hart; schwergängig",
+            "en": "hard; stiff"
+          }
+        },
+        {
+          "targetText": "pedal",
+          "baseText": {
+            "de": "Pedal",
+            "en": "pedal"
+          }
+        },
+        {
+          "targetText": "preno",
+          "baseText": {
+            "de": "Bremse",
+            "en": "brake"
+          }
+        },
+        {
+          "targetText": "dugay",
+          "baseText": {
+            "de": "lange",
+            "en": "a long time"
+          }
+        },
+        {
+          "targetText": "mohunong",
+          "baseText": {
+            "de": "anhalten",
+            "en": "stop"
+          }
+        },
+        {
+          "targetText": "sakyanan",
+          "baseText": {
+            "de": "Fahrzeug",
+            "en": "vehicle"
+          }
+        },
+        {
+          "targetText": "kaniadto",
+          "baseText": {
+            "de": "früher",
+            "en": "before; formerly"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gahi ang ",
+        "answer": "pedal",
+        "after": " sa akong preno, ug dugay mohunong ang sakyanan.",
+        "fallbackChoices": [
+          "yawe",
+          "pedal",
+          "salamin",
+          "lingkoranan"
+        ]
+      },
+      "speakRequired": [
+        "gahi",
+        "pedal",
+        "mohunong"
+      ],
+      "sceneCaption": {
+        "de": "In der Werkstatt bittet dich der Mechaniker, das Problem mit dem Wagen zu beschreiben. „Unsay imong nabantayan inig preno nimo?“",
+        "en": "At the workshop the mechanic asks you to describe the problem with the car. “Unsay imong nabantayan inig preno nimo?”"
+      },
+      "trophyWord": {
+        "word": "gahi",
+        "meaning": {
+          "de": "hart; schwergängig",
+          "en": "hard; stiff"
+        },
+        "example": "Gahi ang pedal bisan gamay ra akong tunob.",
+        "whyThisWord": {
+          "de": "Gahi kann nicht nur ein hartes Material beschreiben, sondern auch ein Teil, das sich kaum bewegen lässt.",
+          "en": "Gahi can describe both a hard material and a part that resists movement."
+        }
+      },
+      "distractors": [
+        "sa akong bisikleta,",
+        "ug dali mohunong"
+      ],
+      "placeholderCaption": {
+        "de": "Die Bremse in der Werkstatt",
+        "en": "The brake at the workshop"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "At the workshop the mechanic asks you to describe the problem with the car."
+    },
+    {
+      "slug": "nipis-fabric-for-hot-weather",
+      "title": {
+        "de": "Stoff für die Hitze",
+        "en": "Fabric for hot weather"
+      },
+      "situation": {
+        "de": "Am Stoffstand fragt dich die Verkäuferin, welches Material du kaufen möchtest.",
+        "en": "At the fabric stall the vendor asks which material you want to buy."
+      },
+      "pedagogicalGoal": "Stoffstärke nennen und die benötigte Menge berechnen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa nga panapton ang imong gipangita?",
+          "baseText": {
+            "de": "Was für einen Stoff suchen Sie?",
+            "en": "What sort of fabric are you looking for?"
+          }
+        },
+        {
+          "targetText": "Kadtong nipis nga panapton ang akong gusto kay init kaayo sa among lugar.",
+          "baseText": {
+            "de": "Ich hätte gern den dünnen Stoff dort, weil es bei uns sehr heiß ist.",
+            "en": "I’d like that thin fabric because it’s very hot where we live."
+          }
+        },
+        {
+          "targetText": "Pila ka metro? Ang usa ka sayal pareha sa imo mogamit og duha.",
+          "baseText": {
+            "de": "Wie viele Meter? Ein Rock wie Ihrer braucht zwei.",
+            "en": "How many metres? A skirt like yours takes two."
+          }
+        },
+        {
+          "targetText": "Upat ka metro, palihug, kay magtahi ko og duha ka sayal.",
+          "baseText": {
+            "de": "Vier Meter bitte, ich nähe zwei Röcke.",
+            "en": "Four metres, please, because I’m making two skirts."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Stoffstärke nennen und die benötigte Menge berechnen",
+        "rule": {
+          "de": "Nipis nga panapton nennt die Stoffstärke. Bei der Bestellung folgt auf die Zahl vor dem Maßwort metro der Zähllinker ka.",
+          "en": "Nipis nga panapton specifies a thin fabric. When ordering, ka links the number to the unit metro."
+        },
+        "examples": [
+          {
+            "targetText": "Kadtong nipis nga panapton ang akong gusto kay init kaayo sa among lugar.",
+            "baseText": {
+              "de": "Ich hätte gern den dünnen Stoff dort, weil es bei uns sehr heiß ist.",
+              "en": "I’d like that thin fabric because it’s very hot where we live."
+            },
+            "highlight": "nipis nga"
+          },
+          {
+            "targetText": "Kadtong nipis nga habol igo ra para sa init nga gabii.",
+            "baseText": {
+              "de": "Die dünne Decke dort genügt für eine warme Nacht.",
+              "en": "That thin blanket is enough for a hot night."
+            },
+            "highlight": "nipis nga"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Upat ka",
+          "choices": [
+            "Duha ka",
+            "Tulo ka",
+            "Upat ka",
+            "Lima ka"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "metro",
+          "choices": [
+            "metro",
+            "kilo",
+            "litro",
+            "oras"
+          ]
+        },
+        ", palihug, kay magtahi ko og duha ka sayal."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kadtong nipis nga panapton",
+          "baseText": {
+            "de": "jener dünne Stoff",
+            "en": "that thin fabric"
+          }
+        },
+        {
+          "targetText": "ang akong gusto",
+          "baseText": {
+            "de": "ist mir recht",
+            "en": "is what I’d like"
+          }
+        },
+        {
+          "targetText": "kay init kaayo",
+          "baseText": {
+            "de": "weil es sehr heiß ist",
+            "en": "because it’s very hot"
+          }
+        },
+        {
+          "targetText": "sa among lugar.",
+          "baseText": {
+            "de": "bei uns",
+            "en": "where we live"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nipis",
+          "baseText": {
+            "de": "dünn",
+            "en": "thin"
+          }
+        },
+        {
+          "targetText": "panapton",
+          "baseText": {
+            "de": "Stoff",
+            "en": "fabric"
+          }
+        },
+        {
+          "targetText": "init",
+          "baseText": {
+            "de": "heiß",
+            "en": "hot"
+          }
+        },
+        {
+          "targetText": "lugar",
+          "baseText": {
+            "de": "Ort",
+            "en": "place"
+          }
+        },
+        {
+          "targetText": "metro",
+          "baseText": {
+            "de": "Meter",
+            "en": "metre"
+          }
+        },
+        {
+          "targetText": "sayal",
+          "baseText": {
+            "de": "Rock",
+            "en": "skirt"
+          }
+        },
+        {
+          "targetText": "magtahi",
+          "baseText": {
+            "de": "nähen",
+            "en": "sew"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kadtong nipis nga ",
+        "answer": "panapton",
+        "after": " ang akong gusto kay init kaayo sa among lugar.",
+        "fallbackChoices": [
+          "kahoy",
+          "puthaw",
+          "panapton",
+          "plastik"
+        ]
+      },
+      "speakRequired": [
+        "nipis",
+        "nga",
+        "panapton"
+      ],
+      "sceneCaption": {
+        "de": "Am Stoffstand fragt dich die Verkäuferin, welches Material du kaufen möchtest. „Unsa nga panapton ang imong gipangita?“",
+        "en": "At the fabric stall the vendor asks which material you want to buy. “Unsa nga panapton ang imong gipangita?”"
+      },
+      "trophyWord": {
+        "word": "nipis",
+        "meaning": {
+          "de": "dünn",
+          "en": "thin"
+        },
+        "example": "Nipis ang panapton para sa sayal.",
+        "whyThisWord": {
+          "de": "Nipis beschreibt die Dicke von Stoff, Papier oder einer Decke und ist der Gegensatz zu baga.",
+          "en": "Nipis describes the thickness of fabric, paper or a blanket and contrasts with baga, thick."
+        }
+      },
+      "distractors": [
+        "Kadtong baga nga panapton",
+        "sa among opisina."
+      ],
+      "placeholderCaption": {
+        "de": "Stoff für die Hitze",
+        "en": "Fabric for hot weather"
+      },
+      "songMood": "Light plucked strings",
+      "visualNotes": "At the fabric stall the vendor asks which material you want to buy."
+    }
+  ]
+}

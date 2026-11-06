@@ -1,0 +1,2138 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Wala ko kahibalo kung… — Am Schalter nachfragen",
+    "en": "Wala ko kahibalo kung… — Asking for information"
+  },
+  "subtitle": {
+    "de": "Indirekte Fragen stellen, Auskünfte wiedergeben und gezielt nachhaken",
+    "en": "Embed questions, report information and ask a precise follow-up"
+  },
+  "anchor": "Mit kung eine offene Frage einbetten und mit nga wiedergeben, was eine andere Person gesagt hat.",
+  "lessons": [
+    {
+      "slug": "pangutana-the-date-at-the-community-hall",
+      "title": {
+        "de": "Der Termin in der Gemeindehalle",
+        "en": "The date at the community hall"
+      },
+      "situation": {
+        "de": "Im Gemeindebüro fragt dich ein Mitarbeiter, welche Auskunft du brauchst.",
+        "en": "At the community office a clerk asks what information you need."
+      },
+      "pedagogicalGoal": "Eine Frage nach einem Auskunftgeber einbetten",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong gustong mahibaloan bahin sa miting?",
+          "baseText": {
+            "de": "Was möchten Sie über die Versammlung wissen?",
+            "en": "What would you like to know about the meeting?"
+          }
+        },
+        {
+          "targetText": "Ang akong pangutana kay kung naa bay kahibalo sa iskedyul sa miting dinhi.",
+          "baseText": {
+            "de": "Meine Frage ist, ob hier jemand den Terminplan für die Versammlung kennt.",
+            "en": "My question is whether anyone here knows the meeting schedule."
+          }
+        },
+        {
+          "targetText": "Wala pa koy iskedyul diri sa akong lamesa.",
+          "baseText": {
+            "de": "Ich habe hier an meinem Schreibtisch noch keinen Terminplan.",
+            "en": "I don’t have a schedule here at my desk yet."
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung kinsa ang naghupot sa iskedyul?",
+          "baseText": {
+            "de": "Wissen Sie, wer den Terminplan hat?",
+            "en": "Do you know who has the schedule?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Frage nach einem Auskunftgeber einbetten",
+        "rule": {
+          "de": "Ang akong pangutana kay kung führt den Inhalt einer Frage ein. Naa bay kahibalo fragt, ob es jemanden gibt, der Bescheid weiß.",
+          "en": "Ang akong pangutana kay kung introduces what you are asking. Naa bay kahibalo asks whether anyone knows."
+        },
+        "examples": [
+          {
+            "targetText": "Ang akong pangutana kay kung naa bay kahibalo sa iskedyul sa miting dinhi.",
+            "baseText": {
+              "de": "Meine Frage ist, ob hier jemand den Terminplan für die Versammlung kennt.",
+              "en": "My question is whether anyone here knows the meeting schedule."
+            },
+            "highlight": "pangutana"
+          },
+          {
+            "targetText": "Ang akong pangutana kay kung naa bay nakakita sa pahibalo.",
+            "baseText": {
+              "de": "Meine Frage ist, ob jemand den Aushang gesehen hat.",
+              "en": "My question is whether anyone saw the notice."
+            },
+            "highlight": "pangutana"
+          }
+        ]
+      },
+      "cloze": [
+        "Kahibalo ka ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "aron",
+            "busa",
+            "kung",
+            "human"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "kinsa",
+          "choices": [
+            "kinsa",
+            "ngano",
+            "unsaon",
+            "tagpila"
+          ]
+        },
+        " ang naghupot sa iskedyul?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang akong pangutana kay",
+          "baseText": {
+            "de": "meine Frage ist",
+            "en": "my question is"
+          }
+        },
+        {
+          "targetText": "kung naa bay kahibalo",
+          "baseText": {
+            "de": "ob jemand Bescheid weiß",
+            "en": "whether anyone knows"
+          }
+        },
+        {
+          "targetText": "sa iskedyul",
+          "baseText": {
+            "de": "über den Terminplan",
+            "en": "the schedule"
+          }
+        },
+        {
+          "targetText": "sa miting dinhi.",
+          "baseText": {
+            "de": "für die Versammlung hier",
+            "en": "for the meeting here"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pangutana",
+          "baseText": {
+            "de": "Frage",
+            "en": "question"
+          }
+        },
+        {
+          "targetText": "kahibalo",
+          "baseText": {
+            "de": "Bescheid wissen",
+            "en": "know"
+          }
+        },
+        {
+          "targetText": "iskedyul",
+          "baseText": {
+            "de": "Terminplan",
+            "en": "schedule"
+          }
+        },
+        {
+          "targetText": "miting",
+          "baseText": {
+            "de": "Versammlung",
+            "en": "meeting"
+          }
+        },
+        {
+          "targetText": "lamesa",
+          "baseText": {
+            "de": "Schreibtisch; Tisch",
+            "en": "desk; table"
+          }
+        },
+        {
+          "targetText": "naghupot",
+          "baseText": {
+            "de": "in Händen halten",
+            "en": "hold"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang akong pangutana kay kung naa bay kahibalo sa ",
+        "answer": "iskedyul",
+        "after": " sa miting dinhi.",
+        "fallbackChoices": [
+          "pultahan",
+          "iskedyul",
+          "sapatos",
+          "tubig"
+        ]
+      },
+      "speakRequired": [
+        "pangutana",
+        "kung",
+        "iskedyul"
+      ],
+      "sceneCaption": {
+        "de": "Im Gemeindebüro fragt dich ein Mitarbeiter, welche Auskunft du brauchst. „Unsa may imong gustong mahibaloan bahin sa miting?“",
+        "en": "At the community office a clerk asks what information you need. “Unsa may imong gustong mahibaloan bahin sa miting?”"
+      },
+      "trophyWord": {
+        "word": "pangutana",
+        "meaning": {
+          "de": "Frage",
+          "en": "question"
+        },
+        "example": "Ang akong pangutana kay bahin sa miting.",
+        "whyThisWord": {
+          "de": "Pangutana benennt die Frage selbst. Das hilft, am Schalter erst das Anliegen und dann die Einzelheiten zu erklären.",
+          "en": "Pangutana names the question itself, so you can introduce your enquiry before giving the details."
+        }
+      },
+      "distractors": [
+        "sa biyahe unya.",
+        "nakadawat sa resibo"
+      ],
+      "placeholderCaption": {
+        "de": "Der Termin in der Gemeindehalle",
+        "en": "The date at the community hall"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the community office a clerk asks what information you need."
+    },
+    {
+      "slug": "kahibalo-a-visit-to-the-bank",
+      "title": {
+        "de": "Ein Besuch bei der Bank",
+        "en": "A visit to the bank"
+      },
+      "situation": {
+        "de": "Am Eingang der Bank fragt der Wachmann nach deinem nächsten Besuch.",
+        "en": "At the bank entrance the guard asks about your next visit."
+      },
+      "pedagogicalGoal": "Mit wala ko kahibalo kung eine offene Frage formulieren",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Mobalik ka dinhi sa Sabado?",
+          "baseText": {
+            "de": "Kommen Sie am Samstag wieder?",
+            "en": "Are you coming back on Saturday?"
+          }
+        },
+        {
+          "targetText": "Wala ko kahibalo kung abli ba ang bangko sa Sabado.",
+          "baseText": {
+            "de": "Ich weiß nicht, ob die Bank am Samstag geöffnet ist.",
+            "en": "I don’t know whether the bank is open on Saturday."
+          }
+        },
+        {
+          "targetText": "Abli, pero tunga ra ka adlaw ang serbisyo.",
+          "baseText": {
+            "de": "Ja, allerdings gibt es nur einen halben Tag lang Schalterdienst.",
+            "en": "Yes, but counter service only runs for half a day."
+          }
+        },
+        {
+          "targetText": "Pwede ko mangutana kung alas pila moabli ang bangko?",
+          "baseText": {
+            "de": "Darf ich fragen, um wie viel Uhr die Bank öffnet?",
+            "en": "May I ask what time the bank opens?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit wala ko kahibalo kung eine offene Frage formulieren",
+        "rule": {
+          "de": "Wala ko kahibalo drückt fehlendes Wissen aus. Kung abli ba… formuliert die offene Frage, ob die Bank geöffnet ist.",
+          "en": "Wala ko kahibalo expresses a lack of knowledge. Kung abli ba… introduces the open question of whether the bank is open."
+        },
+        "examples": [
+          {
+            "targetText": "Wala ko kahibalo kung abli ba ang bangko sa Sabado.",
+            "baseText": {
+              "de": "Ich weiß nicht, ob die Bank am Samstag geöffnet ist.",
+              "en": "I don’t know whether the bank is open on Saturday."
+            },
+            "highlight": "Wala ko kahibalo"
+          },
+          {
+            "targetText": "Wala ko kahibalo kung naa bay bus sa Dominggo.",
+            "baseText": {
+              "de": "Ich weiß nicht, ob es am Sonntag einen Bus gibt.",
+              "en": "I don’t know whether there’s a bus on Sunday."
+            },
+            "highlight": "Wala ko kahibalo"
+          }
+        ]
+      },
+      "cloze": [
+        "Pwede ko mangutana ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "apan",
+            "busa",
+            "aron",
+            "kung"
+          ]
+        },
+        " alas ",
+        {
+          "kind": "choice",
+          "answer": "pila",
+          "choices": [
+            "kinsa",
+            "pila",
+            "asa",
+            "ngano"
+          ]
+        },
+        " moabli ang bangko?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Wala ko kahibalo",
+          "baseText": {
+            "de": "ich weiß nicht",
+            "en": "I don’t know"
+          }
+        },
+        {
+          "targetText": "kung abli ba",
+          "baseText": {
+            "de": "ob geöffnet ist",
+            "en": "whether it is open"
+          }
+        },
+        {
+          "targetText": "ang bangko",
+          "baseText": {
+            "de": "die Bank",
+            "en": "the bank"
+          }
+        },
+        {
+          "targetText": "sa Sabado.",
+          "baseText": {
+            "de": "am Samstag",
+            "en": "on Saturday"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kahibalo",
+          "baseText": {
+            "de": "wissen; Kenntnis",
+            "en": "know; knowledge"
+          }
+        },
+        {
+          "targetText": "abli",
+          "baseText": {
+            "de": "geöffnet",
+            "en": "open"
+          }
+        },
+        {
+          "targetText": "bangko",
+          "baseText": {
+            "de": "Bank",
+            "en": "bank"
+          }
+        },
+        {
+          "targetText": "Sabado",
+          "baseText": {
+            "de": "Samstag",
+            "en": "Saturday"
+          }
+        },
+        {
+          "targetText": "tunga ka adlaw",
+          "baseText": {
+            "de": "ein halber Tag",
+            "en": "half a day"
+          }
+        },
+        {
+          "targetText": "alas pila",
+          "baseText": {
+            "de": "um wie viel Uhr",
+            "en": "at what time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Wala ko kahibalo kung abli ba ang ",
+        "answer": "bangko",
+        "after": " sa Sabado.",
+        "fallbackChoices": [
+          "klinika",
+          "merkado",
+          "bangko",
+          "ulohan"
+        ]
+      },
+      "speakRequired": [
+        "kahibalo",
+        "kung",
+        "bangko"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang der Bank fragt der Wachmann nach deinem nächsten Besuch. „Mobalik ka dinhi sa Sabado?“",
+        "en": "At the bank entrance the guard asks about your next visit. “Mobalik ka dinhi sa Sabado?”"
+      },
+      "trophyWord": {
+        "word": "kahibalo",
+        "meaning": {
+          "de": "wissen; Kenntnis",
+          "en": "know; knowledge"
+        },
+        "example": "Dili tanan kahibalo sa oras sa bangko.",
+        "whyThisWord": {
+          "de": "Mit kahibalo kannst du nach dem Kenntnisstand fragen oder sagen, was du selbst noch nicht weißt.",
+          "en": "Kahibalo helps you ask what someone knows or explain which information you still lack."
+        }
+      },
+      "distractors": [
+        "sa Lunes.",
+        "ang tindahan"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Besuch bei der Bank",
+        "en": "A visit to the bank"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the bank entrance the guard asks about your next visit."
+    },
+    {
+      "slug": "nisulti-at-the-bus-stop",
+      "title": {
+        "de": "An der Bushaltestelle",
+        "en": "At the bus stop"
+      },
+      "situation": {
+        "de": "Ein Schaffner sieht dich an der Haltestelle nach einem Bus Ausschau halten.",
+        "en": "A conductor sees you looking out for a bus at the stop."
+      },
+      "pedagogicalGoal": "Eine bereits gestellte Zeitfrage weitergeben",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ang drayber niining pula nga bus ang imong gihulat?",
+          "baseText": {
+            "de": "Warten Sie auf den Fahrer dieses roten Busses?",
+            "en": "Are you waiting for the driver of this red bus?"
+          }
+        },
+        {
+          "targetText": "Nisulti ba ang drayber kung kanus-a siya mobalik niining hunonganan?",
+          "baseText": {
+            "de": "Hat der Fahrer gesagt, wann er zu dieser Haltestelle zurückkommt?",
+            "en": "Did the driver say when he would return to this stop?"
+          }
+        },
+        {
+          "targetText": "Wala ko makadungog sa iyang oras sa pagbalik.",
+          "baseText": {
+            "de": "Ich habe nicht gehört, wann er zurückkommt.",
+            "en": "I didn’t hear his return time."
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung hain sa ubang bus ang moagi sa pantalan?",
+          "baseText": {
+            "de": "Wissen Sie, welcher der anderen Busse am Hafen vorbeifährt?",
+            "en": "Do you know which of the other buses goes past the port?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine bereits gestellte Zeitfrage weitergeben",
+        "rule": {
+          "de": "Ba bezieht sich auf nisulti: Hat der Fahrer etwas gesagt? Kung kanus-a leitet die darin enthaltene Frage nach dem Zeitpunkt ein.",
+          "en": "Ba goes with nisulti: did the driver say anything? Kung kanus-a introduces the question about time inside that question."
+        },
+        "examples": [
+          {
+            "targetText": "Nisulti ba ang drayber kung kanus-a siya mobalik niining hunonganan?",
+            "baseText": {
+              "de": "Hat der Fahrer gesagt, wann er zu dieser Haltestelle zurückkommt?",
+              "en": "Did the driver say when he would return to this stop?"
+            },
+            "highlight": "Nisulti ba"
+          },
+          {
+            "targetText": "Nisulti ba si Mila kung asa ta maghulat?",
+            "baseText": {
+              "de": "Hat Mila gesagt, wo wir warten sollen?",
+              "en": "Did Mila say where we should wait?"
+            },
+            "highlight": "Nisulti ba"
+          }
+        ]
+      },
+      "cloze": [
+        "Kahibalo ka ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "aron",
+            "apan",
+            "busa"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "hain",
+          "choices": [
+            "ngano",
+            "kinsa",
+            "hain",
+            "unsaon"
+          ]
+        },
+        " sa ubang bus ang moagi sa pantalan?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Nisulti ba ang drayber",
+          "baseText": {
+            "de": "hat der Fahrer gesagt",
+            "en": "did the driver say"
+          }
+        },
+        {
+          "targetText": "kung kanus-a",
+          "baseText": {
+            "de": "wann",
+            "en": "when"
+          }
+        },
+        {
+          "targetText": "siya mobalik",
+          "baseText": {
+            "de": "er zurückkommt",
+            "en": "he would return"
+          }
+        },
+        {
+          "targetText": "niining hunonganan?",
+          "baseText": {
+            "de": "zu dieser Haltestelle",
+            "en": "to this stop"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nisulti",
+          "baseText": {
+            "de": "sagte; hat gesagt",
+            "en": "said"
+          }
+        },
+        {
+          "targetText": "drayber",
+          "baseText": {
+            "de": "Fahrer",
+            "en": "driver"
+          }
+        },
+        {
+          "targetText": "kanus-a",
+          "baseText": {
+            "de": "wann",
+            "en": "when"
+          }
+        },
+        {
+          "targetText": "mobalik",
+          "baseText": {
+            "de": "zurückkehren",
+            "en": "return"
+          }
+        },
+        {
+          "targetText": "hunonganan",
+          "baseText": {
+            "de": "Haltestelle",
+            "en": "stop"
+          }
+        },
+        {
+          "targetText": "moagi",
+          "baseText": {
+            "de": "vorbeifahren",
+            "en": "go past"
+          }
+        },
+        {
+          "targetText": "pantalan",
+          "baseText": {
+            "de": "Hafen",
+            "en": "port"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nisulti ba ang ",
+        "answer": "drayber",
+        "after": " kung kanus-a siya mobalik niining hunonganan?",
+        "fallbackChoices": [
+          "pasahero",
+          "konduktor",
+          "kapitan",
+          "drayber"
+        ]
+      },
+      "speakRequired": [
+        "nisulti",
+        "drayber",
+        "mobalik"
+      ],
+      "sceneCaption": {
+        "de": "Ein Schaffner sieht dich an der Haltestelle nach einem Bus Ausschau halten. „Ang drayber niining pula nga bus ang imong gihulat?“",
+        "en": "A conductor sees you looking out for a bus at the stop. “Ang drayber niining pula nga bus ang imong gihulat?”"
+      },
+      "trophyWord": {
+        "word": "nisulti",
+        "meaning": {
+          "de": "sagte; hat gesagt",
+          "en": "said"
+        },
+        "example": "Nisulti siya kung asa mohunong ang bus.",
+        "whyThisWord": {
+          "de": "Nisulti kennzeichnet eine abgeschlossene Äußerung. Damit kannst du prüfen, welche Auskunft jemand tatsächlich gegeben hat.",
+          "en": "Nisulti marks a completed act of speaking. Use it to check what information someone actually gave."
+        }
+      },
+      "distractors": [
+        "niining eskina?",
+        "siya mohunong"
+      ],
+      "placeholderCaption": {
+        "de": "An der Bushaltestelle",
+        "en": "At the bus stop"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "A conductor sees you looking out for a bus at the stop."
+    },
+    {
+      "slug": "pasabot-the-sign-by-the-road",
+      "title": {
+        "de": "Das Schild am Straßenrand",
+        "en": "The sign by the road"
+      },
+      "situation": {
+        "de": "Du liest ein Schild neben einer freien Parklücke und sprichst mit dem Parkwächter.",
+        "en": "You read a sign beside an empty parking spot and speak to the attendant."
+      },
+      "pedagogicalGoal": "Nach der Bedeutung eines Hinweises fragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nakita nimo ang karatula sa kilid?",
+          "baseText": {
+            "de": "Haben Sie das Schild am Rand gesehen?",
+            "en": "Did you see the sign at the side?"
+          }
+        },
+        {
+          "targetText": "Pasabot ba anang karatula nga bawal moparada bisan kadiyot lang?",
+          "baseText": {
+            "de": "Heißt das Schild dort, dass man nicht einmal kurz parken darf?",
+            "en": "Does that sign mean you can’t park here even briefly?"
+          }
+        },
+        {
+          "targetText": "Oo, kay guyoron ang sakyanan nga moparada dinhi.",
+          "baseText": {
+            "de": "Ja, hier geparkte Fahrzeuge werden abgeschleppt.",
+            "en": "Yes, vehicles parked here will be towed."
+          }
+        },
+        {
+          "targetText": "Nisulti ka nga bawal dinhi; asa ang labing duol nga paradahan?",
+          "baseText": {
+            "de": "Sie haben gesagt, dass es hier verboten ist. Wo ist der nächste Parkplatz?",
+            "en": "You said it’s forbidden here. Where is the nearest car park?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach der Bedeutung eines Hinweises fragen",
+        "rule": {
+          "de": "Pasabot ba fragt, ob du einen Hinweis richtig verstanden hast. Nach nga folgt der Inhalt, den du verstanden hast: bawal moparada…",
+          "en": "Pasabot ba asks whether you have understood a message correctly. After nga comes the content you understood: bawal moparada…"
+        },
+        "examples": [
+          {
+            "targetText": "Pasabot ba anang karatula nga bawal moparada bisan kadiyot lang?",
+            "baseText": {
+              "de": "Heißt das Schild dort, dass man nicht einmal kurz parken darf?",
+              "en": "Does that sign mean you can’t park here even briefly?"
+            },
+            "highlight": "Pasabot ba"
+          },
+          {
+            "targetText": "Pasabot ba nimo nga sirado na ang ganghaan?",
+            "baseText": {
+              "de": "Meinen Sie, dass das Tor schon geschlossen ist?",
+              "en": "Do you mean the gate is already closed?"
+            },
+            "highlight": "Pasabot ba"
+          }
+        ]
+      },
+      "cloze": [
+        "Nisulti ka ",
+        {
+          "kind": "choice",
+          "answer": "nga",
+          "choices": [
+            "nga",
+            "aron",
+            "busa",
+            "human"
+          ]
+        },
+        " bawal dinhi; ",
+        {
+          "kind": "choice",
+          "answer": "asa",
+          "choices": [
+            "kanus-a",
+            "kinsa",
+            "ngano",
+            "asa"
+          ]
+        },
+        " ang labing duol nga paradahan?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pasabot ba",
+          "baseText": {
+            "de": "bedeutet es",
+            "en": "does it mean"
+          }
+        },
+        {
+          "targetText": "anang karatula",
+          "baseText": {
+            "de": "auf dem Schild dort",
+            "en": "on that sign"
+          }
+        },
+        {
+          "targetText": "nga bawal moparada",
+          "baseText": {
+            "de": "dass Parken verboten ist",
+            "en": "that parking is forbidden"
+          }
+        },
+        {
+          "targetText": "bisan kadiyot lang?",
+          "baseText": {
+            "de": "selbst für kurze Zeit",
+            "en": "even for a moment"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pasabot",
+          "baseText": {
+            "de": "Bedeutung; gemeint sein",
+            "en": "meaning; mean"
+          }
+        },
+        {
+          "targetText": "karatula",
+          "baseText": {
+            "de": "Schild",
+            "en": "sign"
+          }
+        },
+        {
+          "targetText": "bawal",
+          "baseText": {
+            "de": "verboten",
+            "en": "prohibited"
+          }
+        },
+        {
+          "targetText": "moparada",
+          "baseText": {
+            "de": "parken",
+            "en": "park"
+          }
+        },
+        {
+          "targetText": "kadiyot",
+          "baseText": {
+            "de": "kurze Zeit",
+            "en": "a moment"
+          }
+        },
+        {
+          "targetText": "guyoron",
+          "baseText": {
+            "de": "abgeschleppt werden",
+            "en": "be towed"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pasabot ba anang ",
+        "answer": "karatula",
+        "after": " nga bawal moparada bisan kadiyot lang?",
+        "fallbackChoices": [
+          "karatula",
+          "kalendaryo",
+          "sobre",
+          "banderas"
+        ]
+      },
+      "speakRequired": [
+        "pasabot",
+        "karatula",
+        "moparada"
+      ],
+      "sceneCaption": {
+        "de": "Du liest ein Schild neben einer freien Parklücke und sprichst mit dem Parkwächter. „Nakita nimo ang karatula sa kilid?“",
+        "en": "You read a sign beside an empty parking spot and speak to the attendant. “Nakita nimo ang karatula sa kilid?”"
+      },
+      "trophyWord": {
+        "word": "pasabot",
+        "meaning": {
+          "de": "Bedeutung; gemeint sein",
+          "en": "meaning; mean"
+        },
+        "example": "Unsa ang pasabot anang pula nga karatula?",
+        "whyThisWord": {
+          "de": "Mit pasabot prüfst du zuerst, ob du die Aussage richtig verstanden hast, bevor du handelst.",
+          "en": "Pasabot lets you check you understood a message before you act on it."
+        }
+      },
+      "distractors": [
+        "nga bawal moliko",
+        "bisan sa gabii?"
+      ],
+      "placeholderCaption": {
+        "de": "Das Schild am Straßenrand",
+        "en": "The sign by the road"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "You read a sign beside an empty parking spot and speak to the attendant."
+    },
+    {
+      "slug": "klaro-the-counter-for-the-application",
+      "title": {
+        "de": "Der Schalter für den Antrag",
+        "en": "The counter for the application"
+      },
+      "situation": {
+        "de": "Im Amt bemerkst du mehrere Fenster. Eine Mitarbeiterin spricht dich an.",
+        "en": "You see several service windows at the office. A staff member approaches."
+      },
+      "pedagogicalGoal": "Mit dili klaro kung eine Unklarheit eingrenzen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Asa nga serbisyo ang imong gikinahanglan?",
+          "baseText": {
+            "de": "Welchen Service brauchen Sie?",
+            "en": "Which service do you need?"
+          }
+        },
+        {
+          "targetText": "Dili klaro dinhi kung hain nga bintana ang modawat sa akong aplikasyon.",
+          "baseText": {
+            "de": "Hier ist nicht klar, welcher Schalter meinen Antrag entgegennimmt.",
+            "en": "It’s unclear here which window takes my application."
+          }
+        },
+        {
+          "targetText": "Adto sa ikaduhang bintana, sa tuo sa pultahan.",
+          "baseText": {
+            "de": "Gehen Sie zum zweiten Schalter rechts von der Tür.",
+            "en": "Go to the second window, to the right of the door."
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung unsa nga mga dokumento ang kinahanglan didto?",
+          "baseText": {
+            "de": "Wissen Sie, welche Unterlagen ich dort brauche?",
+            "en": "Do you know what documents are needed there?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit dili klaro kung eine Unklarheit eingrenzen",
+        "rule": {
+          "de": "Dili klaro beschreibt die unklare Information. Nach kung benennt hain nga bintana genau das, was du noch herausfinden musst.",
+          "en": "Dili klaro describes the unclear information. After kung, hain nga bintana identifies exactly what you still need to find out."
+        },
+        "examples": [
+          {
+            "targetText": "Dili klaro dinhi kung hain nga bintana ang modawat sa akong aplikasyon.",
+            "baseText": {
+              "de": "Hier ist nicht klar, welcher Schalter meinen Antrag entgegennimmt.",
+              "en": "It’s unclear here which window takes my application."
+            },
+            "highlight": "Dili klaro"
+          },
+          {
+            "targetText": "Dili klaro kung kinsa ang modawat sa sulat.",
+            "baseText": {
+              "de": "Es ist nicht klar, wer den Brief entgegennimmt.",
+              "en": "It’s unclear who will receive the letter."
+            },
+            "highlight": "Dili klaro"
+          }
+        ]
+      },
+      "cloze": [
+        "Kahibalo ka ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "aron",
+            "busa",
+            "kung",
+            "apan"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "unsa",
+          "choices": [
+            "unsa",
+            "kinsa",
+            "ngano",
+            "unsaon"
+          ]
+        },
+        " nga mga dokumento ang kinahanglan didto?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Dili klaro dinhi",
+          "baseText": {
+            "de": "hier ist unklar",
+            "en": "it’s unclear here"
+          }
+        },
+        {
+          "targetText": "kung hain nga bintana",
+          "baseText": {
+            "de": "welcher Schalter",
+            "en": "which window"
+          }
+        },
+        {
+          "targetText": "ang modawat",
+          "baseText": {
+            "de": "entgegennimmt",
+            "en": "takes"
+          }
+        },
+        {
+          "targetText": "sa akong aplikasyon.",
+          "baseText": {
+            "de": "meinen Antrag",
+            "en": "my application"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "klaro",
+          "baseText": {
+            "de": "klar",
+            "en": "clear"
+          }
+        },
+        {
+          "targetText": "bintana",
+          "baseText": {
+            "de": "Schalterfenster",
+            "en": "service window"
+          }
+        },
+        {
+          "targetText": "modawat",
+          "baseText": {
+            "de": "entgegennehmen",
+            "en": "receive"
+          }
+        },
+        {
+          "targetText": "aplikasyon",
+          "baseText": {
+            "de": "Antrag",
+            "en": "application"
+          }
+        },
+        {
+          "targetText": "tuo",
+          "baseText": {
+            "de": "rechte Seite",
+            "en": "right side"
+          }
+        },
+        {
+          "targetText": "dokumento",
+          "baseText": {
+            "de": "Unterlage",
+            "en": "document"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dili klaro dinhi kung hain nga ",
+        "answer": "bintana",
+        "after": " ang modawat sa akong aplikasyon.",
+        "fallbackChoices": [
+          "kutsara",
+          "bintana",
+          "pultahan",
+          "kwarto"
+        ]
+      },
+      "speakRequired": [
+        "klaro",
+        "bintana",
+        "modawat"
+      ],
+      "sceneCaption": {
+        "de": "Im Amt bemerkst du mehrere Fenster. Eine Mitarbeiterin spricht dich an. „Asa nga serbisyo ang imong gikinahanglan?“",
+        "en": "You see several service windows at the office. A staff member approaches. “Asa nga serbisyo ang imong gikinahanglan?”"
+      },
+      "trophyWord": {
+        "word": "klaro",
+        "meaning": {
+          "de": "klar",
+          "en": "clear"
+        },
+        "example": "Klaro na kung asa ko moadto.",
+        "whyThisWord": {
+          "de": "Klaro beschreibt, wie verständlich eine Auskunft ist. Mit dili klaro kannst du höflich nachfragen, ohne jemandem einen Fehler zuzuschreiben.",
+          "en": "Klaro describes how clear information is. Use dili klaro to ask again without blaming anyone."
+        }
+      },
+      "distractors": [
+        "sa among bayad.",
+        "ang mohatod"
+      ],
+      "placeholderCaption": {
+        "de": "Der Schalter für den Antrag",
+        "en": "The counter for the application"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "You see several service windows at the office. A staff member approaches."
+    },
+    {
+      "slug": "sigurado-the-evening-ferry",
+      "title": {
+        "de": "Die Abendfähre",
+        "en": "The evening ferry"
+      },
+      "situation": {
+        "de": "Am Hafen fragt ein Mitarbeiter, für welche Überfahrt du eine Karte möchtest.",
+        "en": "At the port a clerk asks which crossing you want a ticket for."
+      },
+      "pedagogicalGoal": "Zwischen Mitteilung und Gewissheit unterscheiden",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Para sa biyahe karong gabii ang imong tiket?",
+          "baseText": {
+            "de": "Ist Ihre Fahrkarte für die Fahrt heute Abend?",
+            "en": "Is your ticket for tonight’s crossing?"
+          }
+        },
+        {
+          "targetText": "Nisulti sila nga naay biyahe; sigurado ba nga molarga ang barko karong gabii?",
+          "baseText": {
+            "de": "Man hat mir gesagt, es gebe eine Fahrt. Steht fest, dass das Schiff heute Abend ablegt?",
+            "en": "They said there’s a crossing. Is it certain the boat will leave tonight?"
+          }
+        },
+        {
+          "targetText": "Depende sa panahon. Dili molarga ang barko kung kusog ang hangin.",
+          "baseText": {
+            "de": "Das hängt vom Wetter ab. Bei starkem Wind legt das Schiff nicht ab.",
+            "en": "It depends on the weather. The boat won’t sail if the wind is strong."
+          }
+        },
+        {
+          "targetText": "Sigurado ba nga makabawi ko sa bayad kung walay biyahe?",
+          "baseText": {
+            "de": "Steht fest, dass ich mein Geld zurückbekomme, wenn es keine Fahrt gibt?",
+            "en": "Is it certain I’ll get my money back if the crossing doesn’t run?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zwischen Mitteilung und Gewissheit unterscheiden",
+        "rule": {
+          "de": "Nisulti sila nga gibt eine fremde Auskunft wieder. Mit sigurado ba nga fragst du danach, wie verlässlich sie ist.",
+          "en": "Nisulti sila nga reports what someone else said. Sigurado ba nga asks how certain that information is."
+        },
+        "examples": [
+          {
+            "targetText": "Nisulti sila nga naay biyahe; sigurado ba nga molarga ang barko karong gabii?",
+            "baseText": {
+              "de": "Man hat mir gesagt, es gebe eine Fahrt. Steht fest, dass das Schiff heute Abend ablegt?",
+              "en": "They said there’s a crossing. Is it certain the boat will leave tonight?"
+            },
+            "highlight": "sigurado ba"
+          },
+          {
+            "targetText": "Sigurado ba nga naay tiket para sa kataposang biyahe?",
+            "baseText": {
+              "de": "Steht fest, dass es Karten für die letzte Fahrt gibt?",
+              "en": "Is it certain there are tickets for the last trip?"
+            },
+            "highlight": "Sigurado ba"
+          }
+        ]
+      },
+      "cloze": [
+        "Sigurado ba ",
+        {
+          "kind": "choice",
+          "answer": "nga",
+          "choices": [
+            "nga",
+            "aron",
+            "busa",
+            "human"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "makabawi",
+          "choices": [
+            "makabawi",
+            "makakaon",
+            "makatulog",
+            "makasakay"
+          ]
+        },
+        " ko sa bayad kung walay biyahe?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Nisulti sila",
+          "baseText": {
+            "de": "sie haben gesagt",
+            "en": "they said"
+          }
+        },
+        {
+          "targetText": "nga naay biyahe;",
+          "baseText": {
+            "de": "dass es eine Fahrt gibt",
+            "en": "there’s a crossing"
+          }
+        },
+        {
+          "targetText": "sigurado ba",
+          "baseText": {
+            "de": "steht fest",
+            "en": "is it certain"
+          }
+        },
+        {
+          "targetText": "nga molarga ang barko karong gabii?",
+          "baseText": {
+            "de": "dass das Schiff heute Abend ablegt",
+            "en": "the boat will leave tonight"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sigurado",
+          "baseText": {
+            "de": "sicher; gewiss",
+            "en": "certain"
+          }
+        },
+        {
+          "targetText": "nisulti",
+          "baseText": {
+            "de": "sagte",
+            "en": "said"
+          }
+        },
+        {
+          "targetText": "biyahe",
+          "baseText": {
+            "de": "Fahrt",
+            "en": "trip"
+          }
+        },
+        {
+          "targetText": "molarga",
+          "baseText": {
+            "de": "abfahren; ablegen",
+            "en": "depart"
+          }
+        },
+        {
+          "targetText": "barko",
+          "baseText": {
+            "de": "Schiff",
+            "en": "boat"
+          }
+        },
+        {
+          "targetText": "panahon",
+          "baseText": {
+            "de": "Wetter",
+            "en": "weather"
+          }
+        },
+        {
+          "targetText": "hangin",
+          "baseText": {
+            "de": "Wind",
+            "en": "wind"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nisulti sila nga naay biyahe; sigurado ba nga molarga ang ",
+        "answer": "barko",
+        "after": " karong gabii?",
+        "fallbackChoices": [
+          "bus",
+          "tren",
+          "barko",
+          "taksi"
+        ]
+      },
+      "speakRequired": [
+        "nisulti",
+        "sigurado",
+        "molarga"
+      ],
+      "sceneCaption": {
+        "de": "Am Hafen fragt ein Mitarbeiter, für welche Überfahrt du eine Karte möchtest. „Para sa biyahe karong gabii ang imong tiket?“",
+        "en": "At the port a clerk asks which crossing you want a ticket for. “Para sa biyahe karong gabii ang imong tiket?”"
+      },
+      "trophyWord": {
+        "word": "sigurado",
+        "meaning": {
+          "de": "sicher; gewiss",
+          "en": "certain"
+        },
+        "example": "Sigurado ba nga abli ang opisina?",
+        "whyThisWord": {
+          "de": "Sigurado hilft dir, eine bloße Auskunft von einer bestätigten Zusage zu unterscheiden.",
+          "en": "Sigurado helps you distinguish a report from a confirmed arrangement."
+        }
+      },
+      "distractors": [
+        "nga walay biyahe;",
+        "nga moabot ang barko karong gabii?"
+      ],
+      "placeholderCaption": {
+        "de": "Die Abendfähre",
+        "en": "The evening ferry"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the port a clerk asks which crossing you want a ticket for."
+    },
+    {
+      "slug": "tubag-the-repair-in-the-rented-house",
+      "title": {
+        "de": "Die Reparatur im Mietshaus",
+        "en": "The repair in the rented house"
+      },
+      "situation": {
+        "de": "Am Eingang des Mietshauses sprichst du den Hausmeister wegen eines schadhaften Dachs an.",
+        "en": "At the entrance of your rented house you speak to the caretaker about a damaged roof."
+      },
+      "pedagogicalGoal": "Nach dem Stand einer Rückmeldung fragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Bahin sa nagatulo nga atop ang imong tuyo?",
+          "baseText": {
+            "de": "Sind Sie wegen des undichten Dachs hier?",
+            "en": "Are you here about the leaking roof?"
+          }
+        },
+        {
+          "targetText": "Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among atop?",
+          "baseText": {
+            "de": "Hat der Vermieter schon auf die Frage nach der Reparatur unseres Dachs geantwortet?",
+            "en": "Has the landlord answered yet about fixing our roof?"
+          }
+        },
+        {
+          "targetText": "Wala pa siya motubag sa akong mensahe.",
+          "baseText": {
+            "de": "Er hat auf meine Nachricht noch nicht geantwortet.",
+            "en": "He hasn’t replied to my message yet."
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung pila ka adlaw ang palugit sa pagtubag?",
+          "baseText": {
+            "de": "Wissen Sie, wie viele Tage er für die Antwort Zeit hat?",
+            "en": "Do you know how many days he has to reply?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach dem Stand einer Rückmeldung fragen",
+        "rule": {
+          "de": "Naa na bay tubag fragt nach einer schon vorliegenden Antwort. Wala pa motubag bedeutet, dass die angesprochene Person bisher nicht geantwortet hat.",
+          "en": "Naa na bay tubag asks whether an answer is already available. Wala pa motubag means the person has not replied yet."
+        },
+        "examples": [
+          {
+            "targetText": "Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among atop?",
+            "baseText": {
+              "de": "Hat der Vermieter schon auf die Frage nach der Reparatur unseres Dachs geantwortet?",
+              "en": "Has the landlord answered yet about fixing our roof?"
+            },
+            "highlight": "tubag"
+          },
+          {
+            "targetText": "Naa na bay tubag kung kinsa ang mobayad sa materyales?",
+            "baseText": {
+              "de": "Gibt es schon eine Antwort darauf, wer das Material bezahlt?",
+              "en": "Is there an answer yet about who will pay for the materials?"
+            },
+            "highlight": "tubag"
+          }
+        ]
+      },
+      "cloze": [
+        "Kahibalo ka ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "aron",
+            "apan",
+            "busa"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "pila",
+          "choices": [
+            "kinsa",
+            "asa",
+            "pila",
+            "unsaon"
+          ]
+        },
+        " ka adlaw ang palugit sa pagtubag?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa na bay tubag",
+          "baseText": {
+            "de": "gibt es schon eine Antwort",
+            "en": "is there already an answer"
+          }
+        },
+        {
+          "targetText": "ang tag-iya",
+          "baseText": {
+            "de": "vom Eigentümer",
+            "en": "from the owner"
+          }
+        },
+        {
+          "targetText": "bahin sa pagpaayo",
+          "baseText": {
+            "de": "zur Reparatur",
+            "en": "about repairing"
+          }
+        },
+        {
+          "targetText": "sa among atop?",
+          "baseText": {
+            "de": "unseres Dachs",
+            "en": "our roof"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tubag",
+          "baseText": {
+            "de": "Antwort",
+            "en": "answer"
+          }
+        },
+        {
+          "targetText": "tag-iya",
+          "baseText": {
+            "de": "Eigentümer",
+            "en": "owner"
+          }
+        },
+        {
+          "targetText": "pagpaayo",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "atop",
+          "baseText": {
+            "de": "Dach",
+            "en": "roof"
+          }
+        },
+        {
+          "targetText": "mensahe",
+          "baseText": {
+            "de": "Nachricht",
+            "en": "message"
+          }
+        },
+        {
+          "targetText": "palugit",
+          "baseText": {
+            "de": "Frist",
+            "en": "time allowed"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among ",
+        "answer": "atop",
+        "after": "?",
+        "fallbackChoices": [
+          "pultahan",
+          "bintana",
+          "salog",
+          "atop"
+        ]
+      },
+      "speakRequired": [
+        "tubag",
+        "bahin",
+        "atop"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang des Mietshauses sprichst du den Hausmeister wegen eines schadhaften Dachs an. „Bahin sa nagatulo nga atop ang imong tuyo?“",
+        "en": "At the entrance of your rented house you speak to the caretaker about a damaged roof. “Bahin sa nagatulo nga atop ang imong tuyo?”"
+      },
+      "trophyWord": {
+        "word": "tubag",
+        "meaning": {
+          "de": "Antwort",
+          "en": "answer"
+        },
+        "example": "Naa na bay tubag sa akong sulat?",
+        "whyThisWord": {
+          "de": "Tubag bezeichnet die Antwort, nach der du dich erkundigst, auch wenn noch niemand eine Entscheidung getroffen hat.",
+          "en": "Tubag names the answer you are checking for, even before a decision has been made."
+        }
+      },
+      "distractors": [
+        "bahin sa pag-ilis",
+        "sa among kandado?"
+      ],
+      "placeholderCaption": {
+        "de": "Die Reparatur im Mietshaus",
+        "en": "The repair in the rented house"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the entrance of your rented house you speak to the caretaker about a damaged roof."
+    },
+    {
+      "slug": "kinsa-the-lost-card",
+      "title": {
+        "de": "Die verlorene Karte",
+        "en": "The lost card"
+      },
+      "situation": {
+        "de": "Im Kartenbüro fragst du an der Kasse nach einer verlorenen Fahrkarte.",
+        "en": "At the ticket office you approach the cashier about a lost travel card."
+      },
+      "pedagogicalGoal": "Mit kung kinsa nach einer zuständigen Person fragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may akong ikatabang bahin sa imong kard?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen mit Ihrer Karte helfen?",
+            "en": "How can I help with your card?"
+          }
+        },
+        {
+          "targetText": "Wala ko kahibalo kung kinsa ang modawat og report sa nawala nga kard.",
+          "baseText": {
+            "de": "Ich weiß nicht, wer die Verlustmeldung für eine Karte entgegennimmt.",
+            "en": "I don’t know who takes reports of lost cards."
+          }
+        },
+        {
+          "targetText": "Ang opisina sa mga pasahero maoy modawat ana. Naa sila sa taas.",
+          "baseText": {
+            "de": "Das Fahrgastbüro nimmt solche Meldungen entgegen. Es ist oben.",
+            "en": "The passenger office takes those reports. They’re upstairs."
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung alas pila sila moabli ugma?",
+          "baseText": {
+            "de": "Wissen Sie, um wie viel Uhr das Büro morgen öffnet?",
+            "en": "Do you know what time they open tomorrow?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit kung kinsa nach einer zuständigen Person fragen",
+        "rule": {
+          "de": "Kung kinsa leitet eine indirekte Frage nach einer Person ein. Ein Amt kann als Antwort genannt werden, wenn dort die zuständigen Leute arbeiten.",
+          "en": "Kung kinsa introduces an embedded question about a person. The answer can name an office when that’s where the responsible staff work."
+        },
+        "examples": [
+          {
+            "targetText": "Wala ko kahibalo kung kinsa ang modawat og report sa nawala nga kard.",
+            "baseText": {
+              "de": "Ich weiß nicht, wer die Verlustmeldung für eine Karte entgegennimmt.",
+              "en": "I don’t know who takes reports of lost cards."
+            },
+            "highlight": "kung kinsa"
+          },
+          {
+            "targetText": "Mangutana ko kung kinsa ang mopirma sa akong porma.",
+            "baseText": {
+              "de": "Ich frage nach, wer mein Formular unterschreibt.",
+              "en": "I’ll ask who will sign my form."
+            },
+            "highlight": "kung kinsa"
+          }
+        ]
+      },
+      "cloze": [
+        "Kahibalo ka ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "apan",
+            "kung",
+            "busa",
+            "aron"
+          ]
+        },
+        " alas ",
+        {
+          "kind": "choice",
+          "answer": "pila",
+          "choices": [
+            "unsaon",
+            "kinsa",
+            "asa",
+            "pila"
+          ]
+        },
+        " sila moabli ugma?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Wala ko kahibalo",
+          "baseText": {
+            "de": "ich weiß nicht",
+            "en": "I don’t know"
+          }
+        },
+        {
+          "targetText": "kung kinsa",
+          "baseText": {
+            "de": "wer",
+            "en": "who"
+          }
+        },
+        {
+          "targetText": "ang modawat",
+          "baseText": {
+            "de": "entgegennimmt",
+            "en": "takes"
+          }
+        },
+        {
+          "targetText": "og report sa nawala nga kard.",
+          "baseText": {
+            "de": "die Meldung über eine verlorene Karte",
+            "en": "a report about a lost card"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kinsa",
+          "baseText": {
+            "de": "wer",
+            "en": "who"
+          }
+        },
+        {
+          "targetText": "modawat",
+          "baseText": {
+            "de": "annehmen",
+            "en": "receive"
+          }
+        },
+        {
+          "targetText": "report",
+          "baseText": {
+            "de": "Meldung",
+            "en": "report"
+          }
+        },
+        {
+          "targetText": "nawala",
+          "baseText": {
+            "de": "verloren gegangen",
+            "en": "lost"
+          }
+        },
+        {
+          "targetText": "kard",
+          "baseText": {
+            "de": "Karte",
+            "en": "card"
+          }
+        },
+        {
+          "targetText": "pasahero",
+          "baseText": {
+            "de": "Fahrgast",
+            "en": "passenger"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Wala ko kahibalo kung kinsa ang modawat og report sa nawala nga ",
+        "answer": "kard",
+        "after": ".",
+        "fallbackChoices": [
+          "kard",
+          "tiket",
+          "bag",
+          "yawi"
+        ]
+      },
+      "speakRequired": [
+        "kahibalo",
+        "kinsa",
+        "modawat"
+      ],
+      "sceneCaption": {
+        "de": "Im Kartenbüro fragst du an der Kasse nach einer verlorenen Fahrkarte. „Unsa may akong ikatabang bahin sa imong kard?“",
+        "en": "At the ticket office you approach the cashier about a lost travel card. “Unsa may akong ikatabang bahin sa imong kard?”"
+      },
+      "trophyWord": {
+        "word": "kinsa",
+        "meaning": {
+          "de": "wer",
+          "en": "who"
+        },
+        "example": "Wala ko kahibalo kung kinsa ang motabang.",
+        "whyThisWord": {
+          "de": "Mit kinsa suchst du die zuständige Person. Die gleiche Frage funktioniert in Behörden und in Geschäften.",
+          "en": "Use kinsa to find the person in charge, whether at an office or in a shop."
+        }
+      },
+      "distractors": [
+        "ang mobayad",
+        "og report sa guba nga makina."
+      ],
+      "placeholderCaption": {
+        "de": "Die verlorene Karte",
+        "en": "The lost card"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the ticket office you approach the cashier about a lost travel card."
+    },
+    {
+      "slug": "ngano-no-water-in-the-house",
+      "title": {
+        "de": "Kein Wasser im Haus",
+        "en": "No water in the house"
+      },
+      "situation": {
+        "de": "Du triffst einen Nachbarn am Gemeinschaftshahn, aus dem kein Wasser kommt.",
+        "en": "You meet a neighbour at the shared tap, where no water is coming out."
+      },
+      "pedagogicalGoal": "Den Grund und anschließend den Zeitpunkt erfragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Wala sab moy tubig sa inyo?",
+          "baseText": {
+            "de": "Haben Sie zu Hause auch kein Wasser?",
+            "en": "Is the water off at your place too?"
+          }
+        },
+        {
+          "targetText": "Kahibalo ka kung ngano walay tubig sa atong dalan karong buntag?",
+          "baseText": {
+            "de": "Wissen Sie, warum es in unserer Straße heute Morgen kein Wasser gibt?",
+            "en": "Do you know why there’s no water on our street this morning?"
+          }
+        },
+        {
+          "targetText": "Nabuak ang dakong tubo. Giayo pa kini sa mga trabahante.",
+          "baseText": {
+            "de": "Das große Rohr ist gebrochen. Die Arbeiter reparieren es noch.",
+            "en": "The main pipe broke. The workers are still fixing it."
+          }
+        },
+        {
+          "targetText": "Nisulti ba sila kung kanus-a mobalik ang tubig sa gripo?",
+          "baseText": {
+            "de": "Haben sie gesagt, wann wieder Wasser aus dem Hahn kommt?",
+            "en": "Did they say when the water would come back on at the tap?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Grund und anschließend den Zeitpunkt erfragen",
+        "rule": {
+          "de": "Kung ngano fragt nach einem Grund. Nach der Erklärung kannst du denselben Fragerahmen mit kanus-a für den Zeitpunkt benutzen.",
+          "en": "Kung ngano asks for a reason. Once you have the explanation, you can use the same question frame with kanus-a to ask about timing."
+        },
+        "examples": [
+          {
+            "targetText": "Kahibalo ka kung ngano walay tubig sa atong dalan karong buntag?",
+            "baseText": {
+              "de": "Wissen Sie, warum es in unserer Straße heute Morgen kein Wasser gibt?",
+              "en": "Do you know why there’s no water on our street this morning?"
+            },
+            "highlight": "kung ngano"
+          },
+          {
+            "targetText": "Kahibalo ka kung ngano sirado ang taytayan?",
+            "baseText": {
+              "de": "Wissen Sie, warum die Brücke gesperrt ist?",
+              "en": "Do you know why the bridge is closed?"
+            },
+            "highlight": "kung ngano"
+          }
+        ]
+      },
+      "cloze": [
+        "Nisulti ba sila ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "apan",
+            "aron",
+            "kung",
+            "busa"
+          ]
+        },
+        " kanus-a ",
+        {
+          "kind": "choice",
+          "answer": "mobalik",
+          "choices": [
+            "mobalik",
+            "mokalagiw",
+            "motubo",
+            "molarga"
+          ]
+        },
+        " ang tubig sa gripo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Kahibalo ka",
+          "baseText": {
+            "de": "wissen Sie",
+            "en": "do you know"
+          }
+        },
+        {
+          "targetText": "kung ngano",
+          "baseText": {
+            "de": "warum",
+            "en": "why"
+          }
+        },
+        {
+          "targetText": "walay tubig",
+          "baseText": {
+            "de": "es kein Wasser gibt",
+            "en": "there’s no water"
+          }
+        },
+        {
+          "targetText": "sa atong dalan karong buntag?",
+          "baseText": {
+            "de": "heute Morgen in unserer Straße",
+            "en": "on our street this morning"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ngano",
+          "baseText": {
+            "de": "warum",
+            "en": "why"
+          }
+        },
+        {
+          "targetText": "walay tubig",
+          "baseText": {
+            "de": "kein Wasser vorhanden",
+            "en": "there is no water"
+          }
+        },
+        {
+          "targetText": "dalan",
+          "baseText": {
+            "de": "Straße",
+            "en": "street"
+          }
+        },
+        {
+          "targetText": "buntag",
+          "baseText": {
+            "de": "Vormittag",
+            "en": "morning"
+          }
+        },
+        {
+          "targetText": "tubo",
+          "baseText": {
+            "de": "Rohr",
+            "en": "pipe"
+          }
+        },
+        {
+          "targetText": "trabahante",
+          "baseText": {
+            "de": "Arbeiter",
+            "en": "worker"
+          }
+        },
+        {
+          "targetText": "gripo",
+          "baseText": {
+            "de": "Wasserhahn",
+            "en": "tap"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kahibalo ka kung ngano walay ",
+        "answer": "tubig",
+        "after": " sa atong dalan karong buntag?",
+        "fallbackChoices": [
+          "suga",
+          "tubig",
+          "sabon",
+          "asin"
+        ]
+      },
+      "speakRequired": [
+        "kahibalo",
+        "kung",
+        "ngano"
+      ],
+      "sceneCaption": {
+        "de": "Du triffst einen Nachbarn am Gemeinschaftshahn, aus dem kein Wasser kommt. „Wala sab moy tubig sa inyo?“",
+        "en": "You meet a neighbour at the shared tap, where no water is coming out. “Wala sab moy tubig sa inyo?”"
+      },
+      "trophyWord": {
+        "word": "ngano",
+        "meaning": {
+          "de": "warum",
+          "en": "why"
+        },
+        "example": "Kahibalo ka kung ngano hinay ang tubig?",
+        "whyThisWord": {
+          "de": "Ngano fragt gezielt nach der Ursache. Für den Zeitpunkt der Wiederherstellung wechselst du zu kanus-a.",
+          "en": "Ngano asks specifically for the cause. Change to kanus-a to ask about the time service resumes."
+        }
+      },
+      "distractors": [
+        "naay kasaba",
+        "sa atong merkado karong hapon?"
+      ],
+      "placeholderCaption": {
+        "de": "Kein Wasser im Haus",
+        "en": "No water in the house"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "You meet a neighbour at the shared tap, where no water is coming out."
+    },
+    {
+      "slug": "unsaon-renewing-a-visa",
+      "title": {
+        "de": "Die Verlängerung des Visums",
+        "en": "Renewing a visa"
+      },
+      "situation": {
+        "de": "In der Auskunftsstelle fragt dich eine Beamtin, was du über dein Visum wissen möchtest.",
+        "en": "At the information desk an officer asks what you need to know about your visa."
+      },
+      "pedagogicalGoal": "Mit kung unsaon nach dem Vorgehen fragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong pangutana bahin sa imong visa?",
+          "baseText": {
+            "de": "Was möchten Sie über Ihr Visum wissen?",
+            "en": "What is your question about your visa?"
+          }
+        },
+        {
+          "targetText": "Mangutana unta ko kung unsaon pagpalugway sa akong visa pinaagi sa internet.",
+          "baseText": {
+            "de": "Ich würde gern fragen, wie ich mein Visum online verlängern kann.",
+            "en": "I’d like to ask how to renew my visa online."
+          }
+        },
+        {
+          "targetText": "Para sa imong klase sa visa, dinhi ra sa opisina ang pagpalugway.",
+          "baseText": {
+            "de": "Bei Ihrer Visumart ist die Verlängerung nur hier im Amt möglich.",
+            "en": "For your type of visa, renewal is only possible here at the office."
+          }
+        },
+        {
+          "targetText": "Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako.",
+          "baseText": {
+            "de": "Sagen Sie mir bitte, welche Unterlagen ich brauche.",
+            "en": "Please tell me what papers I need."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit kung unsaon nach dem Vorgehen fragen",
+        "rule": {
+          "de": "Kung unsaon leitet die Frage nach dem Vorgehen ein. Mit pinaagi sa lässt sich der gewünschte Weg eingrenzen, hier das Internet.",
+          "en": "Kung unsaon introduces a question about how to do something. Pinaagi sa can specify the intended channel, here the internet."
+        },
+        "examples": [
+          {
+            "targetText": "Mangutana unta ko kung unsaon pagpalugway sa akong visa pinaagi sa internet.",
+            "baseText": {
+              "de": "Ich würde gern fragen, wie ich mein Visum online verlängern kann.",
+              "en": "I’d like to ask how to renew my visa online."
+            },
+            "highlight": "kung unsaon"
+          },
+          {
+            "targetText": "Mangutana ko kung unsaon pagsubay sa akong aplikasyon.",
+            "baseText": {
+              "de": "Ich frage nach, wie ich meinen Antrag verfolgen kann.",
+              "en": "I’ll ask how to track my application."
+            },
+            "highlight": "kung unsaon"
+          }
+        ]
+      },
+      "cloze": [
+        "Palihug ko og sulti ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "apan",
+            "busa",
+            "aron",
+            "kung"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "unsa",
+          "choices": [
+            "kinsa",
+            "unsa",
+            "ngano",
+            "unsaon"
+          ]
+        },
+        " nga mga papeles ang kinahanglan nako."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mangutana unta ko",
+          "baseText": {
+            "de": "ich würde gern fragen",
+            "en": "I’d like to ask"
+          }
+        },
+        {
+          "targetText": "kung unsaon",
+          "baseText": {
+            "de": "wie",
+            "en": "how"
+          }
+        },
+        {
+          "targetText": "pagpalugway sa akong visa",
+          "baseText": {
+            "de": "ich mein Visum verlängern kann",
+            "en": "to renew my visa"
+          }
+        },
+        {
+          "targetText": "pinaagi sa internet.",
+          "baseText": {
+            "de": "über das Internet",
+            "en": "via the internet"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "unsaon",
+          "baseText": {
+            "de": "wie man etwas macht",
+            "en": "how to do something"
+          }
+        },
+        {
+          "targetText": "mangutana",
+          "baseText": {
+            "de": "fragen",
+            "en": "ask"
+          }
+        },
+        {
+          "targetText": "visa",
+          "baseText": {
+            "de": "Visum",
+            "en": "visa"
+          }
+        },
+        {
+          "targetText": "pinaagi sa",
+          "baseText": {
+            "de": "über; mittels",
+            "en": "via"
+          }
+        },
+        {
+          "targetText": "internet",
+          "baseText": {
+            "de": "Internet",
+            "en": "internet"
+          }
+        },
+        {
+          "targetText": "papeles",
+          "baseText": {
+            "de": "Unterlagen",
+            "en": "papers"
+          }
+        },
+        {
+          "targetText": "kinahanglan",
+          "baseText": {
+            "de": "brauchen; nötig",
+            "en": "need; necessary"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mangutana unta ko kung unsaon pagpalugway sa akong ",
+        "answer": "visa",
+        "after": " pinaagi sa internet.",
+        "fallbackChoices": [
+          "tiket",
+          "kontrata",
+          "visa",
+          "iskedyul"
+        ]
+      },
+      "speakRequired": [
+        "mangutana",
+        "unsaon",
+        "visa"
+      ],
+      "sceneCaption": {
+        "de": "In der Auskunftsstelle fragt dich eine Beamtin, was du über dein Visum wissen möchtest. „Unsa may imong pangutana bahin sa imong visa?“",
+        "en": "At the information desk an officer asks what you need to know about your visa. “Unsa may imong pangutana bahin sa imong visa?”"
+      },
+      "trophyWord": {
+        "word": "unsaon",
+        "meaning": {
+          "de": "wie man etwas macht",
+          "en": "how to do something"
+        },
+        "example": "Wala ko kahibalo kung unsaon pagbayad dinhi.",
+        "whyThisWord": {
+          "de": "Unsaon hilft dir, dich nach dem Verfahren zu erkundigen. Unsa nga mga papeles fragt anschließend nach den Unterlagen.",
+          "en": "Unsaon helps you ask about the procedure. Unsa nga mga papeles then asks about the paperwork."
+        }
+      },
+      "distractors": [
+        "pagsusi sa akong aplikasyon",
+        "pinaagi sa koreyo."
+      ],
+      "placeholderCaption": {
+        "de": "Die Verlängerung des Visums",
+        "en": "Renewing a visa"
+      },
+      "songMood": "Quiet acoustic pulse",
+      "visualNotes": "At the information desk an officer asks what you need to know about your visa."
+    }
+  ]
+}

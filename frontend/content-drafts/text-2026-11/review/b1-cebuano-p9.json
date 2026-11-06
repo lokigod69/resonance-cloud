@@ -1,0 +1,1963 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 9,
+  "lessonSha256": "7f6825aeec71749a6cf7ec46ba120662193242a3a9709be2682ba8d510978a36",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "7f6825aeec71749a6cf7ec46ba120662193242a3a9709be2682ba8d510978a36",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The noise complaint receives a room-change offer. The learner accepts conditionally on a discount; the offer and counterproposal remain in the appropriate roles."
+      },
+      {
+        "n": 2,
+        "observation": "The suddenly failed charger and week-long repair motivate a request for replacement. Dili marks inability to wait and the request names who can act."
+      },
+      {
+        "n": 3,
+        "observation": "Wala pay sulbad describes the unresolved leak. The full bucket supplies a reason to ask for an earlier visit. Both translations and the cloze answers preserve that causal sequence."
+      },
+      {
+        "n": 4,
+        "observation": "The learner identifies chicken as the order and accepts paying the balance. Wala marks the past event that did not occur. The cashier handles the bill adjustment."
+      },
+      {
+        "n": 5,
+        "observation": "Pasensya means patience here. The learner asks for the delivery date indirectly, then accepts Monday on condition of a call before arrival. The call and arrival choices fit their slots."
+      },
+      {
+        "n": 6,
+        "observation": "The sleeve covering the hand explains the fit problem. The learner asks for Monday because Tuesday is unavailable; the negative cue specifies a future appointment."
+      },
+      {
+        "n": 7,
+        "observation": "The pharmacist offers a cheaper box matching the prescription; the learner requests the price difference. The two required choices express the refund without claiming it has been issued."
+      },
+      {
+        "n": 8,
+        "observation": "The two charges for a single ticket explain the demand for proof. Aron is a visible choice alongside gikan, imbes and tali. A learner has no need to type a synonym such as para."
+      },
+      {
+        "n": 9,
+        "observation": "Wala ko makadawat describes the missing notice. The final question asks how many hours ahead it will arrive. The visible options distinguish the time unit, action and notice."
+      },
+      {
+        "n": 10,
+        "observation": "A store-credit offer leads to a conditional request for the same model instead. The polite full German exchange follows the service register; the short German vocabulary gloss for ilisi uses informal shorthand."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "7f6825aeec71749a6cf7ec46ba120662193242a3a9709be2682ba8d510978a36",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The guest conditions acceptance of a room move on a discount. The manager alone offers the room and the listener can match the condition."
+      },
+      {
+        "n": 2,
+        "observation": "Niundang describes a sudden breakdown. The attendant can arrange repair while the learner declines a week's wait and asks for exchange."
+      },
+      {
+        "n": 3,
+        "observation": "The full bucket motivates the request to come sooner, kay is uniquely coherent, sige anchors aspect in the speech set, and the Cebuano, German and English question endings match."
+      },
+      {
+        "n": 4,
+        "observation": "German chunks now join as ich habe noch nichts für den Fisch bezahlt. The unpaid fish and the chicken actually ordered stay distinct; the cashier removes the charge."
+      },
+      {
+        "n": 5,
+        "observation": "The German goal now promises to respond to the apology and ask for the new date, which precisely matches the first learner turn. The closing Sige accepts Monday with a call-before-arrival condition."
+      },
+      {
+        "n": 6,
+        "observation": "The third pattern example now demonstrates dili tarong nga with a clause about unequal sleeve lengths. The Monday request answers the Tuesday offer."
+      },
+      {
+        "n": 7,
+        "observation": "Kini identifies the pack to be exchanged and kana the cheaper correct replacement. The customer requests a price difference rather than granting a refund."
+      },
+      {
+        "n": 8,
+        "observation": "The learner asks the agent for a receipt as proof. The sole change from the reviewed version is the aron blank becoming a visible choice. Only aron expresses purpose among aron, gikan, imbes and tali. Runtime choice fields are read-only with chips shown from the start, so para cannot be incorrectly marked as a typed answer. The reconstructed response equals the model in full."
+      },
+      {
+        "n": 9,
+        "observation": "The utility promises advance notice and the learner politely asks how many hours beforehand it will arrive. The question marker, indirect kung and new cloze line agree, and the second reply fits the 12-word ceiling."
+      },
+      {
+        "n": 10,
+        "observation": "Both English pattern examples now retain the concession. The conditional exchange stays with the learner as a request and the revised model distractors do not compete with modelo."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "55c2fed90f15a05e3c6bc1e2f718a1f55ab73c08eaf256158076f873fd80997a",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Noise complaint refers to the guest's own hearing. The manager offers the room and the guest attaches the discount condition."
+      },
+      {
+        "n": 2,
+        "observation": "The charger stopped working. The seven-day repair proposal stays with staff and the learner requests replacement. Dili is licensed by the present-inability cue."
+      },
+      {
+        "n": 3,
+        "observation": "The tap still drips, the bucket motivates a sooner visit, and sulbad is a noun. The three speech tokens do not sample a connector or aspect."
+      },
+      {
+        "n": 4,
+        "observation": "Giorder correctly refers to the chicken, the cashier removes the fish, and the learner pays for what remains. The German chunk sequence needs a natural equivalent."
+      },
+      {
+        "n": 5,
+        "observation": "The call-before-arrival request follows the Monday offer. The first reply conveys patience but leaves the requested acceptance of the apology implicit."
+      },
+      {
+        "n": 6,
+        "observation": "The sleeve covers the hand and the customer asks for Monday. The claimed tarong + nga construction is absent."
+      },
+      {
+        "n": 7,
+        "observation": "The customer asks for the difference after the pharmacist offers a cheaper correct pack. Gihatag nimo kanako keeps staff and recipient distinct."
+      },
+      {
+        "n": 8,
+        "observation": "The repeated debit and receipt request are clearly distinguished. The ba/pronoun order in the canonical request diverges from the specification."
+      },
+      {
+        "n": 9,
+        "observation": "Receiving no advance warning motivates asking about lead time. The before-clauses teach completed-marked forms, and the German turn promises advance notice that the Cebuano leaves unspecified."
+      },
+      {
+        "n": 10,
+        "observation": "The customer requests an exchange conditionally. The English dialogue could preserve the explicit concession marked by bisan."
+      }
+    ],
+    "findings": [
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "speakRequired",
+        "issue": "sulbad, problema, gripo are all bare nouns. The segmentation specification requires a connector or aspect-bearing element as well.",
+        "recommendation": "Use the anchored aspectual sige in place of problema, or use relative nga as the connector."
+      },
+      {
+        "n": 4,
+        "severity": "LOW",
+        "field": "chunks[0..1].baseText.de",
+        "issue": "The sequence ich habe noch nicht geleistet / die Zahlung für den Fisch is awkward and detached from its German object.",
+        "recommendation": "Use German fragments that form a natural clause, for example Ich habe noch nichts / für den Fisch bezahlt."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[1]; pedagogicalGoal",
+        "issue": "May pasensya pa ko says I still have patience. It can sound like a warning rather than acceptance of the apology promised by the beat/goal.",
+        "recommendation": "Add a short explicit acknowledgment such as Sige or a brief acceptance, keep the noun pasensya and the timing inquiry, and synchronize dependent fields."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[1]; pattern",
+        "issue": "This is the named tarong lesson. Its target and both examples only teach dili tarong ang ... kay; the P9 L4–6 staged tarong + nga clause is absent throughout that stretch.",
+        "recommendation": "Introduce a natural nga description in a taught tarong example while retaining the fitting scene and soft request."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "dialogue[3]; cloze",
+        "issue": "Mahimo ko bang mangayo uses ko before the question marker while this course explicitly chooses Mahimo ba ko mangutana as the canonical ordering.",
+        "recommendation": "Use Mahimo ba kong mangayo ... or Mahimo ba ko mangayo ... and update the fixed cloze text."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "dialogue[1]; pattern.rule/examples; chunks; recall",
+        "issue": "Sa wala pa giputol and sa wala pa nibalhin use already-completed verbs inside a before/not-yet time frame. This makes the model sentence and second teaching example poor canonical models.",
+        "recommendation": "Use sa wala pa maputol ang kuryente and sa wala pa mobalhin ang opisina; propagate the edits through exercises, explanations, terms and speech."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].targetText/baseText.de",
+        "issue": "Sa sunod nga pagpalong says at/for the next shutoff; German expressly promises Vor der nächsten Abschaltung, which the Cebuano utility has yet to promise.",
+        "recommendation": "Explicitly promise notice before the next scheduled interruption in Cebuano and both translations so the follow-up asks how far ahead."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[1].baseText.en; pattern.examples[0].baseText.en",
+        "issue": "The English while it was still under warranty conveys timing but omits the explicit although concession being taught by bisan.",
+        "recommendation": "Use although it was still under warranty, in both English fields."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "4bb337002b4db15d3c5b69a93fab41b0894e5e012b43969235f4d4834e2a8a69",
+      "sourceSha256": "55c2fed90f15a05e3c6bc1e2f718a1f55ab73c08eaf256158076f873fd80997a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 0,
+          "observation": "Hotel noise complaint. youOne (10 words) anchors reklamo, tokens reklamo/kasaba/nadungog whole words; chunks rejoin exactly; recall foils nonsensical; staging 'naa koy reklamo bahin sa' taught with a distinct transfer example. Cloze connector foil 'human' yields a grammatical, contextually plausible alternative ('mobalhin ko human makahatag ka og diskuwento') — not a clean foil."
+        },
+        {
+          "n": 1,
+          "observation": "Charger shop. ni- narration (niundang og andar) productive, ipaayo correctly recognition-only in the them-line; youTwo 12 words with palihug on the request line; form blank Dili vs Wala disambiguated by context (a week's wait has just been offered) and cue; DE/EN both carry the completed aspect. Pass."
+        },
+        {
+          "n": 2,
+          "observation": "Dripping tap. 'Wala pay sulbad' matches the outline's noun anchoring; 'sige og tulo' idiomatic; tubero/Biyernes them-line, learner asks sooner with Mahimo ba + palihug; cloze foils (taas/lapad; kandado/plantsa) impossible in slot. Trophy example 'Kinahanglan tag sulbad' is honest Cebuano. Pass."
+        },
+        {
+          "n": 3,
+          "observation": "Restaurant bill. 'wala pa nimo bayri' recognition-correct; youOne 14 words anchors bare noun bayad and gi- object focus 'manok ang akong giorder'; youTwo 'Wala ko mokaon sa isda, apan mobayad ko sa nahibilin' is the staged dili/wala dispute with correct wala + mo- and cue. Foil 'moinom ko sa nahibilin' is grammatical and only contextually excluded (optional swap)."
+        },
+        {
+          "n": 4,
+          "observation": "Courier call. 'wala maabot' correct negated past; youOne 13 words with P5 indirect inquiry 'gusto kong mahibalo kung kanus-a'; youTwo 'palihug tawagi ko sa dili pa ka moabot' idiomatic; three choice blanks with impossible foils; pasensya as 'patience' is an honest reading and DE/EN agree. Pass."
+        },
+        {
+          "n": 5,
+          "observation": "Tailor fitting. -on future object focus (Sukdon nako) kept in the them-line; 'Dili ko kalugar sa Martes' is natural Cebu usage, Dili correct for a future date with cue. Staging names 'tarong + nga clause' as productive for lessons 4–6, but both pattern examples use only kay; a nga-clause transfer model is missing."
+        },
+        {
+          "n": 6,
+          "observation": "Pharmacy. gi- object focus 'gihatag nimo kanako' productive as staged; 'Sige, apan mahimo bang ibalik … palihug' is the acceptance-with-modification beat; cloze foils impossible. Them-line 'Akong ilisan og pakete' lacks the replaced object (kini); recall foil 'kolor' is a contextually plausible alternative to dosis (optional)."
+        },
+        {
+          "n": 7,
+          "observation": "Double charge. 'Kaduha gikuha ang kuwarta' is the staged kuwarta + gi- object focus; chunks/recall/examples consistent; DE/EN idiomatic. youTwo 'mahimo ko bang mangayo' places ko before ba, contrary to the spec's attested ordering (Mahimo ba ko mangutana) and to every other Mahimo ba line in the path; should be 'mahimo ba kong mangayo'."
+        },
+        {
+          "n": 8,
+          "observation": "Utility notice. 'Wala ko makadawat og pahibalo' is correct wala + maka-; exclusive mi in the them-line is right. 'sa wala pa giputol' and transfer example 'sa wala pa nibalhin' put completed gi-/ni- after wala pa (non-canonical; wala itself marks past, verb takes ma-/mo- base); youTwo's indirect inquiry omits the P5 kung marker that the recycling map requires."
+        },
+        {
+          "n": 9,
+          "observation": "Fan under warranty. 'bisan wala pa mahuman ang garantiya' recycles P2 bisan with correct wala + ma-; 'Kung naa pay samang modelo, palihug ilisi lang ang bentilador' delivers the staged garantiya + kung condition and -i request form; chunks cannot be rearranged grammatically (capital/period); foils impossible. Pass."
+        }
+      ],
+      "findings": [
+        {
+          "n": 0,
+          "severity": "required",
+          "issue": "Connector foil 'human' in the kung blank produces a grammatical and contextually plausible sentence ('Sige, mobalhin ko human makahatag ka og diskuwento sa kuwarto' = I'll move after you give a discount), so a learner choosing it is unjustly rejected. Replace with an ungrammatical foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3/choices",
+              "old": [
+                "gikan",
+                "human",
+                "kung",
+                "samtang"
+              ],
+              "new": [
+                "gikan",
+                "imbes",
+                "kung",
+                "samtang"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Staging block 4–6 lists 'tarong + nga clause' as productive, but the lesson teaches tarong only with kay. Add a distinct nga-clause transfer model and name it in the rule.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot.",
+                  "baseText": {
+                    "de": "Der Ärmel passt nicht richtig, weil er meine Hand verdeckt.",
+                    "en": "The sleeve doesn't fit properly because it covers my hand."
+                  },
+                  "highlight": "Dili tarong ang sukod"
+                },
+                {
+                  "targetText": "Dili tarong ang sukod sa kwelyo kay huot kaayo.",
+                  "baseText": {
+                    "de": "Der Kragen passt nicht richtig, weil er viel zu eng ist.",
+                    "en": "The collar doesn't fit properly because it's much too tight."
+                  },
+                  "highlight": "Dili tarong ang sukod"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot.",
+                  "baseText": {
+                    "de": "Der Ärmel passt nicht richtig, weil er meine Hand verdeckt.",
+                    "en": "The sleeve doesn't fit properly because it covers my hand."
+                  },
+                  "highlight": "Dili tarong ang sukod"
+                },
+                {
+                  "targetText": "Dili tarong ang sukod sa kwelyo kay huot kaayo.",
+                  "baseText": {
+                    "de": "Der Kragen passt nicht richtig, weil er viel zu eng ist.",
+                    "en": "The collar doesn't fit properly because it's much too tight."
+                  },
+                  "highlight": "Dili tarong ang sukod"
+                },
+                {
+                  "targetText": "Dili tarong nga mas taas ang usa ka manggas kaysa sa pikas.",
+                  "baseText": {
+                    "de": "Es ist nicht in Ordnung, dass ein Ärmel länger ist als der andere.",
+                    "en": "It's not right that one sleeve is longer than the other."
+                  },
+                  "highlight": "Dili tarong nga"
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule",
+              "old": {
+                "de": "Dili steht vor tarong, wenn eine Passform nicht stimmt. Mit kay kannst du das konkrete Problem anschließen.",
+                "en": "Put dili before tarong to say that something doesn't fit properly. Use kay to explain exactly what is wrong."
+              },
+              "new": {
+                "de": "Dili steht vor tarong, wenn eine Passform nicht stimmt. Mit kay kannst du das konkrete Problem anschließen; mit dili tarong nga sagst du, was nicht in Ordnung ist.",
+                "en": "Put dili before tarong to say that something doesn't fit properly. Use kay to explain exactly what is wrong; dili tarong nga introduces the thing that isn't right."
+              }
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Them-line 'Akong ilisan og pakete nga tugma sa reseta' lacks the object being replaced; 'kini' makes the object-focus clause complete. Recall foil 'kolor' is a contextually possible alternative (a wrong colour is a real pharmacy complaint); a clearly impossible foil is safer.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/2/targetText",
+              "old": "Akong ilisan og pakete nga tugma sa reseta. Mas barato usab kini.",
+              "new": "Akong ilisan kini og pakete nga tugma sa reseta. Mas barato usab kana."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/recall/fallbackChoices",
+              "old": [
+                "selyo",
+                "dosis",
+                "kolor",
+                "baho"
+              ],
+              "new": [
+                "selyo",
+                "dosis",
+                "hagdan",
+                "baho"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Cloze foil 'moinom ko sa nahibilin' is grammatical and only contextually excluded; a clearly impossible foil removes the ambiguity.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/5/choices",
+              "old": [
+                "motahi",
+                "mosulat",
+                "mobayad",
+                "moinom"
+              ],
+              "new": [
+                "motahi",
+                "mosulat",
+                "mobayad",
+                "mosayaw"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Clitic order 'mahimo ko bang mangayo' puts the pronoun before ba; the spec's attested canonical order is ba before the pronoun (Mahimo ba ko mangutana?), and all other request lines in this path use 'Mahimo ba(ng)'. Use 'mahimo ba kong mangayo' in dialogue and the cloze stem; word count stays 11.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/targetText",
+              "old": "Sige, apan mahimo ko bang mangayo og resibo sa refund, palihug?",
+              "new": "Sige, apan mahimo ba kong mangayo og resibo sa refund, palihug?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/0",
+              "old": "Sige, apan mahimo ko bang ",
+              "new": "Sige, apan mahimo ba kong "
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "'sa wala pa giputol ang kuryente' and the transfer example 'sa wala pa nibalhin ang opisina' place completed gi-/ni- after wala pa; canonical Cebuano takes the ma-/mo- base form after wala (wala itself marks past): 'sa wala pa maputol', 'sa wala pa mobalhin'. Propagate to chunk, term, recall, speech token and distractor. Also the youTwo indirect inquiry omits the P5 kung marker named in the staging/recycle map; insert kung (11 words, cloze stem adjusted).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/1/targetText",
+              "old": "Wala ko makadawat og pahibalo sa wala pa giputol ang kuryente.",
+              "new": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/targetText",
+              "old": "Mahimo bang mahibaloan pila ka oras daan ang pahibalo, palihug?",
+              "new": "Mahimo bang mahibaloan kung pila ka oras daan ang pahibalo, palihug?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/0",
+              "old": "Mahimo bang mahibaloan pila ka ",
+              "new": "Mahimo bang mahibaloan kung pila ka "
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/targetText",
+              "old": "Wala ko makadawat og pahibalo sa wala pa giputol ang kuryente.",
+              "new": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1/targetText",
+              "old": "Wala ko makadawat og mensahe sa wala pa nibalhin ang opisina.",
+              "new": "Wala ko makadawat og mensahe sa wala pa mobalhin ang opisina."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks/3/targetText",
+              "old": "giputol ang kuryente.",
+              "new": "maputol ang kuryente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/2",
+              "old": {
+                "targetText": "giputol",
+                "baseText": {
+                  "de": "abgestellt, getrennt",
+                  "en": "cut off"
+                }
+              },
+              "new": {
+                "targetText": "maputol",
+                "baseText": {
+                  "de": "abgestellt werden, unterbrochen werden",
+                  "en": "to get cut off"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/recall/after",
+              "old": " sa wala pa giputol ang kuryente.",
+              "new": " sa wala pa maputol ang kuryente."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "makadawat",
+                "pahibalo",
+                "giputol"
+              ],
+              "new": [
+                "makadawat",
+                "pahibalo",
+                "maputol"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors/1",
+              "old": "gibalik ang kuryente.",
+              "new": "mabalik ang kuryente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "d31d25a44a7161a9238b5dc5c434026000351d3ffc7d49ed3e955d8c2cf62052",
+      "sourceSha256": "5029a5eb45699e22f40b34d123aff73869329c49d937cba33feac8444c86ceda",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Hotel noise complaint: naa koy reklamo bahin sa + nadungog with tibuok gabii past frame licenses the Perfekt/past; manager offers the move, learner accepts with a discount condition (kung). Cloze foils (mosakay/mosukod/motimbang; gikan/imbes/samtang; hagdan/silong/hulmahan) are contextually impossible; the earlier 'human' foil is gone. Chunks join exactly, tokens reklamo/kasaba/nadungog valid, caption quotes dialogue[0]."
+        },
+        {
+          "n": 2,
+          "observation": "Charger stopped: niundang og andar narration, clerk keeps the repair decision, learner asks for replacement with palihug. Form blank Dili vs Wala is disambiguated by the present-inability cue (Wala ko makahulat would be past). ilisan foils impossible. Transfer example (bentilador after brownout) distinct. youTwo 12 words, within limit."
+        },
+        {
+          "n": 3,
+          "observation": "Tap still dripping: sulbad anchored as a noun in wala pay sulbad, landlord sends plumber Friday, learner asks sooner with the full bucket as reason. Defect: speech tokens sulbad/problema/gripo are three bare nouns; the segmentation rule requires a connector or aspect-bearing word, and 'sige' (habitual 'keeps') is available in youOne. Foil 'kalendaryo' yields a grammatical sentence (Puno na ang kalendaryo), weaker than the others."
+        },
+        {
+          "n": 4,
+          "observation": "Restaurant bill: Wala pa ko mohatag og bayad anchors the noun trophy and the wala + mo- negated past; kay manok ang akong giorder recycles P6 gi- focus; cashier removes the fish; youTwo Wala/Dili blank is disambiguated by the past-event cue and the German Perfekt. apan/mobayad foils impossible. German chunk glosses 'ich habe noch nicht geleistet / die Zahlung für den Fisch' read stiffly."
+        },
+        {
+          "n": 5,
+          "observation": "Courier delay: May pasensya pa ko is a calm concession ('I can still be patient'), followed by the P5 indirect inquiry gusto kong mahibalo kung kanus-a; accepting the apology is conveyed by the tone rather than a formula, which fits the beat (ask new date, accept with call). Counterpart's request for an explicit Sige is not required. youTwo request carries palihug; all three cloze foil sets are impossible; sa dili pa ka moabot is natural."
+        },
+        {
+          "n": 6,
+          "observation": "Tailor fitting: dili tarong ang sukod ... kay plus the added dili tarong nga transfer example now covers the staged tarong + nga clause; rule names both. Sukdon nako in the them-line is the recognition-only -on future focus. youTwo Lunes/Dili blanks are safe (Wala ko kalugar would be past, cue says future availability). Tokens tarong/sukod/matabonan valid."
+        },
+        {
+          "n": 7,
+          "observation": "Pharmacy: dili sakto ang dosis ... nga gihatag nimo kanako keeps staff and recipient distinct; them-line now has kini as the replaced object; learner asks for the price difference with mahimo bang + palihug. Cloze foils (lutoon/tahion/sudlayon; kahumot/gitas-on/katugnaw) are impossible in context; recall foil kolor replaced by hagdan. DE/EN match."
+        },
+        {
+          "n": 8,
+          "observation": "Double debit: Kaduha gikuha ang kuwarta is productive gi- object focus with the money as subject; agent promises refund in three days; learner asks for a receipt. The clitic order is now the canonical mahimo ba kong mangayo and the cloze stem matches. Foils mosaka/mohunong/molarga and taklob/manggas/tambal impossible. Exclusive mi not needed here; translations aligned."
+        },
+        {
+          "n": 9,
+          "observation": "Utility: wala ko makadawat og pahibalo sa wala pa maputol ang kuryente and the transfer example sa wala pa mobalhin now use the correct base form after wala pa; kung marks the P5 indirect inquiry in youTwo. Remaining mismatch: them-line Cebuano 'Sa sunod nga pagpalong, magpadala mi og mensahe' (at the next cut) versus German 'Vor der nächsten Abschaltung' (before), and the learner's 'how many hours in advance' presupposes advance notice. Exclusive mi for the utility is correct."
+        },
+        {
+          "n": 10,
+          "observation": "Fan under warranty: niundang og tuyok ... bisan wala pa mahuman ang garantiya; clerk offers store credit; learner counters with a kung condition and ilisi lang + palihug. Cloze foils (Imbes/Tali/Gikan; pamaligya/hugaw/reseta; tahii/lutoa/imna) impossible. The pattern rule teaches bisan as a concession, but the English of dialogue[1] and example[0] renders it as temporal 'while', dropping the contrast the German 'obwohl' keeps."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "speakRequired sulbad/problema/gripo are all bare nouns; the segmentation rule requires at least one connector or aspect-bearing word among the three tokens. 'sige' (habitual aspect in sige og tulo) is a whole word of youOne, not a clitic, hyphen-free.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/speakRequired",
+              "old": [
+                "sulbad",
+                "problema",
+                "gripo"
+              ],
+              "new": [
+                "sulbad",
+                "gripo",
+                "sige"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Cloze foil 'kalendaryo' forms the fully grammatical sentence 'Puno na ang kalendaryo' (the calendar is already full); a clearly impossible foil is safer for a cue-free choice blank.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3/choices",
+              "old": [
+                "balde",
+                "kandado",
+                "plantsa",
+                "kalendaryo"
+              ],
+              "new": [
+                "balde",
+                "kandado",
+                "plantsa",
+                "kutsilyo"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German build-chip glosses 'ich habe noch nicht geleistet' / 'die Zahlung für den Fisch' do not form a natural German clause when read in sequence; 'ich habe noch nichts / für den Fisch bezahlt' does and still maps to the Cebuano chunks.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks/0/baseText/de",
+              "old": "ich habe noch nicht geleistet",
+              "new": "ich habe noch nichts"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks/1/baseText/de",
+              "old": "die Zahlung für den Fisch",
+              "new": "für den Fisch bezahlt"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Them-line meaning diverges across locales: Cebuano 'Sa sunod nga pagpalong' and English 'For the next power cut' say the message comes at/for the cut, while German 'Vor der nächsten Abschaltung' promises it beforehand. The beat (clerk promises text alerts) and the learner's follow-up 'pila ka oras daan' presuppose advance notice, so the Cebuano and English must state 'before'; German already does.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/2",
+              "old": {
+                "targetText": "Sa sunod nga pagpalong, magpadala mi og mensahe sa imong selpon.",
+                "baseText": {
+                  "de": "Vor der nächsten Abschaltung schicken wir Ihnen eine Nachricht aufs Handy.",
+                  "en": "For the next power cut, we'll send a message to your phone."
+                }
+              },
+              "new": {
+                "targetText": "Sa dili pa ang sunod nga pagpalong, magpadala mi og mensahe sa imong selpon.",
+                "baseText": {
+                  "de": "Vor der nächsten Abschaltung schicken wir Ihnen eine Nachricht aufs Handy.",
+                  "en": "Before the next power cut, we'll send a message to your phone."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "The pattern explicitly teaches bisan as a concession ('Bisan contrasts the breakdown with the continuing warranty'), and the German uses 'obwohl', but the English of dialogue[1] and pattern example[0] says 'while it was still under warranty', which is merely temporal and does not carry the taught meaning. Align both English fields with 'even though'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/1/baseText/en",
+              "old": "The fan stopped turning while it was still under warranty.",
+              "new": "The fan stopped turning even though it was still under warranty."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/0/baseText/en",
+              "old": "The fan stopped turning while it was still under warranty.",
+              "new": "The fan stopped turning even though it was still under warranty."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "74af16862f9acd58d13658aee4b67ebd1b6595871496526628f237c0c42c25e5",
+      "sourceSha256": "5a5f36ecf4af17458505b68e97682408dd987f52f128c58f68031adb74e3b9b0",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Complaint opener naa koy reklamo bahin sa with na- heard-narration (nadungog); 11/10-word replies, chunks and recall rejoin exactly, speech trio carries the aspect-bearing nadungog, kung-condition acceptance stays within the beat; the earlier 'human' foil is now the ungrammatical 'imbes' and no remaining foil forms a plausible reply."
+        },
+        {
+          "n": 2,
+          "observation": "Niundang og andar narrates the sudden failure; ipaayo causative stays in the them-line as recognition-only; form blank Dili is disambiguated by its present-inability cue and ilisan is the planned request-verb choice; 12-word youTwo at the limit; recall foil nisugod is contextually impossible after 'problema'."
+        },
+        {
+          "n": 3,
+          "observation": "Sulbad is anchored as a noun in wala pay sulbad per the beat; speech trio now samples aspectual sige; cloze foils (taas/lapad, kandado/plantsa/kutsilyo) are impossible in slot; landlord offers Friday, learner asks sooner with the bucket reason — translations match."
+        },
+        {
+          "n": 4,
+          "observation": "Wala pa ko mohatag og bayad vs youTwo Wala ko mokaon correctly use wala + mo- base; cashier's tangtangon is recognition-only -on; the form blank's past cue excludes Dili; German chips now join as a natural clause; bayad anchored as noun in the trophy example."
+        },
+        {
+          "n": 5,
+          "observation": "May pasensya pa ko + apan + indirect kung kanus-a recycles P2/P5 as the staging requires; cloze foils all ungrammatical or impossible; translations agree. The German goal 'Eine Entschuldigung annehmen' overstates the reply, which conveys patience rather than an explicit acceptance; the beat only requires asking the new date, so the goal should be aligned (counterpart LOW finding upheld)."
+        },
+        {
+          "n": 6,
+          "observation": "Dili tarong ang sukod … kay plus the added third example Dili tarong nga … now covers the block 4–6 'tarong + nga clause'; Sukdon stays recognition-only in the tailor's line; Dili ko kalugar sa Martes is natural and the future-availability cue leaves exactly one native answer."
+        },
+        {
+          "n": 7,
+          "observation": "Dili sakto ang dosis … nga gihatag nimo kanako uses productive gi- correctly; them-line kini/kana edit present; learner requests (not grants) the refund of the difference; cloze foils kahumot/gitas-on/katugnaw are contextually impossible at a pharmacy price dispute."
+        },
+        {
+          "n": 8,
+          "observation": "Kaduha gikuha ang kuwarta is a clean object-focus narration without naming an agent; youTwo now reads mahimo ba kong mangayo matching the spec's ba-before-pronoun order, mirrored in the cloze stem; receipt request stays a request."
+        },
+        {
+          "n": 9,
+          "observation": "Both sa wala pa clauses now take ma-/mo- base (maputol, mobalhin) and the correction is propagated to chunks, term, recall, speech and distractor; them-line promises notice 'sa dili pa' in all three locales; youTwo carries the P5 kung indirect inquiry and kung is not clozed."
+        },
+        {
+          "n": 10,
+          "observation": "Bisan wala pa mahuman ang garantiya recycles P2 and wala pa + ma-; dialogue and example[0] English now say 'even though', but example[1] English still renders bisan as 'before even', which misleads the highlight mapping. Cloze foil 'pamaligya' (goods for sale) yields the grammatical, contextually possible 'Kung naa pay samang pamaligya, palihug ilisi lang ang bentilador' and would unjustly reject a learner."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Cue-free choice blank: foil 'pamaligya' (merchandise, goods for sale) forms a grammatical and contextually acceptable sentence in the exchange scene ('if there is still the same stock/goods, please just exchange the fan'), so it is a near-synonymous alternative rather than an impossible foil. Replace with a clearly impossible noun.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3/choices",
+              "old": [
+                "pamaligya",
+                "modelo",
+                "hugaw",
+                "reseta"
+              ],
+              "new": [
+                "plantsa",
+                "modelo",
+                "hugaw",
+                "reseta"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Pattern example[1] highlights 'bisan wala pa mahuman' as the taught concession (rule: bisan contrasts), German uses 'obwohl', but the English 'before even the first week was over' reads as purely temporal and maps bisan to 'before even'. Same error already resolved in dialogue[1] and example[0]; resolve it here too.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/1/baseText/en",
+              "old": "The radio broke before even the first week was over.",
+              "new": "The radio broke even though the first week wasn't over yet."
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Adjudicating the counterpart's LOW finding and the specific check: the learner's reply expresses continued patience and asks the new date; it does not verbally accept the apology, and the approved beat ('you ask new date') does not call for stronger wording. The German goal 'Eine Entschuldigung annehmen' therefore misdescribes the taught move; align it with the actual response. No Cebuano, translation or exercise field changes.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/pedagogicalGoal",
+              "old": "Eine Entschuldigung annehmen, nach einem neuen Termin fragen und um einen Anruf bitten.",
+              "new": "Auf eine Entschuldigung reagieren, nach einem neuen Termin fragen und um einen Anruf bitten."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3c910fa7259e295f54e9704c46f149c9679616061ae1469a71fb27054e286c24",
+      "sourceSha256": "3ab932eabcf61e92b88f71476ecf347e209333c25ecd2afe838594d080df8b89",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Noise complaint with nadungog (own perception), manager alone offers the move, learner conditions acceptance on a discount with kung. Tokens reklamo/kasaba/nadungog carry an aspect-bearing word; kung foils gikan/imbes/samtang are impossible after the earlier 'human' fix; kung stays a choice blank because the kon variant would make typing unfair."
+        },
+        {
+          "n": 2,
+          "observation": "Niundang og andar narrates the sudden failure; clerk's ipaayo stays recognition-only in the them-line; learner refuses the week with Dili (present inability, cued) and asks ilisan na lang kini, palihug. Cloze form Dili/Wala is disambiguated by cue and present-tense DE/EN; request-verb foils are impossible."
+        },
+        {
+          "n": 3,
+          "observation": "Wala pay sulbad anchors sulbad as a noun; sige is a valid aspect-bearing speech token. The current youTwo is two lexical choices only (sayo, balde): the bucket reason is stated without the kay connector the path's cloze family requires, although the goal says 'einen früheren Termin begründen'. Request beat (ask sooner) and plumber Friday preserved."
+        },
+        {
+          "n": 4,
+          "observation": "Wala pa ko mohatag og bayad … kay manok ang akong giorder: wala + mo- base form, gi- object focus on the chicken, kay chunk starts its clause. youTwo Wala ko mokaon … apan mobayad ko sa nahibilin gives the form/connector/request trio; Wala/Dili is fixed by cue and past DE/EN. German chips now read as one clause."
+        },
+        {
+          "n": 5,
+          "observation": "May pasensya pa ko, apan gusto kong mahibalo kung kanus-a moabot ang pakete recycles the P5 indirect inquiry; kanus-a correctly excluded from tokens. youTwo accepts Monday with Sige and a palihug tawagi call request; apan/tawagi/moabot foils impossible. pedagogicalGoal already reads 'Auf eine Entschuldigung reagieren', matching the counterpart's LOW note."
+        },
+        {
+          "n": 6,
+          "observation": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot; third pattern example now supplies the staged dili tarong nga clause and the rule names it. youTwo keeps the Monday request with palihug and the cued Dili (future availability). Them-line Sukdon nako is recognition-only -on. Recall foils bulsa/kupot/kwelyo impossible in context."
+        },
+        {
+          "n": 7,
+          "observation": "Dili sakto ang dosis sa tambal nga gihatag nimo kanako keeps staff and recipient distinct; them-line kini/kana now identifies the exchanged and replacement packs. Learner requests ibalik ang kalainan sa presyo, palihug without asserting the refund; foils lutoon/tahion/sudlayon and kahumot/gitas-on/katugnaw impossible."
+        },
+        {
+          "n": 8,
+          "observation": "Kaduha gikuha ang kuwarta … is productive gi- object focus without naming the agent; them-line Mabalik ang sobrang bayad is the staff decision. youTwo already uses the canonical mahimo ba kong order, but the receipt is requested without the aron purpose the path staging and cloze family call for; both blanks are lexical."
+        },
+        {
+          "n": 9,
+          "observation": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente and the transfer sa wala pa mobalhin use base forms after wala; them-line now promises notice Sa dili pa ang sunod nga pagpalong with exclusive mi. youTwo Mahimo bang mahibaloan kung pila ka oras daan ang pahibalo has no actor for mahibaloan and no verb in the kung clause, so the request reads as 'could it be known'; the DE 'Könnten Sie mir sagen' does not match that surface."
+        },
+        {
+          "n": 10,
+          "observation": "Niundang og tuyok ang bentilador bisan wala pa mahuman ang garantiya; bisan now rendered 'even though' in all EN fields matching DE 'obwohl'. youTwo Kung naa pay samang modelo, palihug ilisi lang ang bentilador requests exchange conditionally; Kung stays a choice (kon variant), modelo foils plantsa/hugaw/reseta and ilisi foils tahii/lutoa/imna impossible. Trophy example anchors garantiya."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Path cloze schema requires a typed connector blank (kay/apan/kung/aron); across all ten lessons no blank has kind 'connector' and kay is never tested, although L3's goal explicitly says the learner 'begründet' the earlier date. The full-bucket reason is the natural kay slot: a because-clause 'kay' after a comma has no topic-marker reading and no spelling variant, so typing is fair. Redesign youTwo to carry the reason with kay, keep the request, the palihug and the bucket; align DE/EN and terms.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Mahimo bang mas sayo, palihug? Puno na ang balde.",
+                "baseText": {
+                  "de": "Ginge es bitte früher? Der Eimer ist schon voll.",
+                  "en": "Could it be sooner, please? The bucket is already full."
+                }
+              },
+              "new": {
+                "targetText": "Mahimo bang mas sayo, palihug, kay puno na ang balde.",
+                "baseText": {
+                  "de": "Ginge es bitte früher, weil der Eimer schon voll ist?",
+                  "en": "Could it be sooner, please, because the bucket is already full?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Mahimo bang mas ",
+                {
+                  "kind": "choice",
+                  "answer": "sayo",
+                  "choices": [
+                    "humot",
+                    "sayo",
+                    "taas",
+                    "lapad"
+                  ]
+                },
+                ", palihug? Puno na ang ",
+                {
+                  "kind": "choice",
+                  "answer": "balde",
+                  "choices": [
+                    "balde",
+                    "kandado",
+                    "plantsa",
+                    "kutsilyo"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Mahimo bang mas ",
+                {
+                  "kind": "choice",
+                  "answer": "sayo",
+                  "choices": [
+                    "humot",
+                    "sayo",
+                    "taas",
+                    "lapad"
+                  ]
+                },
+                ", palihug, ",
+                {
+                  "kind": "connector",
+                  "answer": "kay",
+                  "choices": [
+                    "kay",
+                    "aron",
+                    "bisan",
+                    "gikan"
+                  ]
+                },
+                " puno na ang ",
+                {
+                  "kind": "choice",
+                  "answer": "balde",
+                  "choices": [
+                    "balde",
+                    "kandado",
+                    "plantsa",
+                    "kutsilyo"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/terms",
+              "old": [
+                {
+                  "targetText": "sulbad",
+                  "baseText": {
+                    "de": "Lösung",
+                    "en": "solution"
+                  }
+                },
+                {
+                  "targetText": "gripo",
+                  "baseText": {
+                    "de": "Wasserhahn",
+                    "en": "tap"
+                  }
+                },
+                {
+                  "targetText": "sige og tulo",
+                  "baseText": {
+                    "de": "ständig tropfen",
+                    "en": "to keep dripping"
+                  }
+                },
+                {
+                  "targetText": "tubero",
+                  "baseText": {
+                    "de": "Klempner",
+                    "en": "plumber"
+                  }
+                },
+                {
+                  "targetText": "mas sayo",
+                  "baseText": {
+                    "de": "früher",
+                    "en": "sooner"
+                  }
+                },
+                {
+                  "targetText": "balde",
+                  "baseText": {
+                    "de": "Eimer",
+                    "en": "bucket"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "sulbad",
+                  "baseText": {
+                    "de": "Lösung",
+                    "en": "solution"
+                  }
+                },
+                {
+                  "targetText": "gripo",
+                  "baseText": {
+                    "de": "Wasserhahn",
+                    "en": "tap"
+                  }
+                },
+                {
+                  "targetText": "sige og tulo",
+                  "baseText": {
+                    "de": "ständig tropfen",
+                    "en": "to keep dripping"
+                  }
+                },
+                {
+                  "targetText": "tubero",
+                  "baseText": {
+                    "de": "Klempner",
+                    "en": "plumber"
+                  }
+                },
+                {
+                  "targetText": "mas sayo",
+                  "baseText": {
+                    "de": "früher",
+                    "en": "sooner"
+                  }
+                },
+                {
+                  "targetText": "kay",
+                  "baseText": {
+                    "de": "weil",
+                    "en": "because"
+                  }
+                },
+                {
+                  "targetText": "balde",
+                  "baseText": {
+                    "de": "Eimer",
+                    "en": "bucket"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "aron (purpose) is staged for the path's connector blank but never appears as an answer; the receipt request is the natural purpose slot. Keep the verified 'mahimo ba kong' order and the receipt request, add the purpose clause 'aron masiguro ang refund' (12 words), type aron as the connector (no spelling variant; DE 'damit'/EN 'so that' exclude kay/kung), keep resibo and a request-verb choice with impossible foils; synchronize DE/EN and terms.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3",
+              "old": {
+                "targetText": "Sige, apan mahimo ba kong mangayo og resibo sa refund, palihug?",
+                "baseText": {
+                  "de": "In Ordnung, aber dürfte ich bitte einen Beleg für die Erstattung bekommen?",
+                  "en": "All right, but could I have a receipt for the refund, please?"
+                }
+              },
+              "new": {
+                "targetText": "Sige, apan mahimo ba kong hatagan og resibo aron masiguro ang refund?",
+                "baseText": {
+                  "de": "In Ordnung, aber könnte ich einen Beleg bekommen, damit die Erstattung sicher ist?",
+                  "en": "All right, but could I be given a receipt so that the refund is certain?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Sige, apan mahimo ba kong ",
+                {
+                  "kind": "choice",
+                  "answer": "mangayo",
+                  "choices": [
+                    "mangayo",
+                    "mosaka",
+                    "mohunong",
+                    "molarga"
+                  ]
+                },
+                " og ",
+                {
+                  "kind": "choice",
+                  "answer": "resibo",
+                  "choices": [
+                    "taklob",
+                    "manggas",
+                    "tambal",
+                    "resibo"
+                  ]
+                },
+                " sa refund, palihug?"
+              ],
+              "new": [
+                "Sige, apan mahimo ba kong ",
+                {
+                  "kind": "choice",
+                  "answer": "hatagan",
+                  "choices": [
+                    "hatagan",
+                    "lutoon",
+                    "sukdon",
+                    "timbangon"
+                  ]
+                },
+                " og ",
+                {
+                  "kind": "choice",
+                  "answer": "resibo",
+                  "choices": [
+                    "taklob",
+                    "manggas",
+                    "tambal",
+                    "resibo"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "connector",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "imbes",
+                    "tali"
+                  ]
+                },
+                " masiguro ang refund?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/terms",
+              "old": [
+                {
+                  "targetText": "kuwarta",
+                  "baseText": {
+                    "de": "Geld",
+                    "en": "money"
+                  }
+                },
+                {
+                  "targetText": "kaduha",
+                  "baseText": {
+                    "de": "zweimal",
+                    "en": "twice"
+                  }
+                },
+                {
+                  "targetText": "gikuha",
+                  "baseText": {
+                    "de": "genommen, abgebucht",
+                    "en": "taken out"
+                  }
+                },
+                {
+                  "targetText": "account",
+                  "baseText": {
+                    "de": "Konto",
+                    "en": "account"
+                  }
+                },
+                {
+                  "targetText": "sobrang bayad",
+                  "baseText": {
+                    "de": "zu viel gezahlter Betrag",
+                    "en": "excess payment"
+                  }
+                },
+                {
+                  "targetText": "mangayo og resibo",
+                  "baseText": {
+                    "de": "um einen Beleg bitten",
+                    "en": "to ask for a receipt"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "kuwarta",
+                  "baseText": {
+                    "de": "Geld",
+                    "en": "money"
+                  }
+                },
+                {
+                  "targetText": "kaduha",
+                  "baseText": {
+                    "de": "zweimal",
+                    "en": "twice"
+                  }
+                },
+                {
+                  "targetText": "gikuha",
+                  "baseText": {
+                    "de": "genommen, abgebucht",
+                    "en": "taken out"
+                  }
+                },
+                {
+                  "targetText": "account",
+                  "baseText": {
+                    "de": "Konto",
+                    "en": "account"
+                  }
+                },
+                {
+                  "targetText": "sobrang bayad",
+                  "baseText": {
+                    "de": "zu viel gezahlter Betrag",
+                    "en": "excess payment"
+                  }
+                },
+                {
+                  "targetText": "hatagan og resibo",
+                  "baseText": {
+                    "de": "einen Beleg bekommen",
+                    "en": "to be given a receipt"
+                  }
+                },
+                {
+                  "targetText": "aron",
+                  "baseText": {
+                    "de": "damit",
+                    "en": "so that"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "youTwo 'Mahimo bang mahibaloan kung pila ka oras daan ang pahibalo, palihug?' has no actor for mahibaloan and no verb in the indirect question, so the Cebuano reads 'could it be known how many hours ahead the notice' while DE/EN say 'Könnten Sie mir sagen / Could you tell me'. Strengthen the request with the native 'Mahimo ba nakong mahibaloan kung … moabot ang pahibalo' (12 words), keep the P5 kung indirect inquiry as fixed text (kon variant makes it unsafe to type), test the verb moabot alongside oras and pahibalo, and align DE/EN and terms.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3",
+              "old": {
+                "targetText": "Mahimo bang mahibaloan kung pila ka oras daan ang pahibalo, palihug?",
+                "baseText": {
+                  "de": "Könnten Sie mir bitte sagen, wie viele Stunden vorher die Benachrichtigung kommt?",
+                  "en": "Could you tell me how many hours in advance the notice comes, please?"
+                }
+              },
+              "new": {
+                "targetText": "Mahimo ba nakong mahibaloan kung pila ka oras daan moabot ang pahibalo?",
+                "baseText": {
+                  "de": "Könnte ich erfahren, wie viele Stunden vorher die Benachrichtigung kommt?",
+                  "en": "Could I find out how many hours in advance the notice will arrive?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                "Mahimo bang mahibaloan kung pila ka ",
+                {
+                  "kind": "choice",
+                  "answer": "oras",
+                  "choices": [
+                    "metro",
+                    "kilo",
+                    "litro",
+                    "oras"
+                  ]
+                },
+                " daan ang ",
+                {
+                  "kind": "choice",
+                  "answer": "pahibalo",
+                  "choices": [
+                    "sudlay",
+                    "lamesa",
+                    "pahibalo",
+                    "kandado"
+                  ]
+                },
+                ", palihug?"
+              ],
+              "new": [
+                "Mahimo ba nakong mahibaloan kung pila ka ",
+                {
+                  "kind": "choice",
+                  "answer": "oras",
+                  "choices": [
+                    "metro",
+                    "kilo",
+                    "litro",
+                    "oras"
+                  ]
+                },
+                " daan ",
+                {
+                  "kind": "choice",
+                  "answer": "moabot",
+                  "choices": [
+                    "mosayaw",
+                    "moabot",
+                    "manglangoy",
+                    "magtahi"
+                  ]
+                },
+                " ang ",
+                {
+                  "kind": "choice",
+                  "answer": "pahibalo",
+                  "choices": [
+                    "sudlay",
+                    "lamesa",
+                    "pahibalo",
+                    "kandado"
+                  ]
+                },
+                "?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/terms",
+              "old": [
+                {
+                  "targetText": "pahibalo",
+                  "baseText": {
+                    "de": "Benachrichtigung",
+                    "en": "notice"
+                  }
+                },
+                {
+                  "targetText": "makadawat",
+                  "baseText": {
+                    "de": "erhalten können",
+                    "en": "to be able to receive"
+                  }
+                },
+                {
+                  "targetText": "maputol",
+                  "baseText": {
+                    "de": "abgestellt werden, unterbrochen werden",
+                    "en": "to get cut off"
+                  }
+                },
+                {
+                  "targetText": "kuryente",
+                  "baseText": {
+                    "de": "Strom",
+                    "en": "electricity"
+                  }
+                },
+                {
+                  "targetText": "pagpalong",
+                  "baseText": {
+                    "de": "Abschaltung",
+                    "en": "shutoff"
+                  }
+                },
+                {
+                  "targetText": "pila ka oras daan",
+                  "baseText": {
+                    "de": "wie viele Stunden vorher",
+                    "en": "how many hours in advance"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "pahibalo",
+                  "baseText": {
+                    "de": "Benachrichtigung",
+                    "en": "notice"
+                  }
+                },
+                {
+                  "targetText": "makadawat",
+                  "baseText": {
+                    "de": "erhalten können",
+                    "en": "to be able to receive"
+                  }
+                },
+                {
+                  "targetText": "maputol",
+                  "baseText": {
+                    "de": "abgestellt werden, unterbrochen werden",
+                    "en": "to get cut off"
+                  }
+                },
+                {
+                  "targetText": "kuryente",
+                  "baseText": {
+                    "de": "Strom",
+                    "en": "electricity"
+                  }
+                },
+                {
+                  "targetText": "pagpalong",
+                  "baseText": {
+                    "de": "Abschaltung",
+                    "en": "shutoff"
+                  }
+                },
+                {
+                  "targetText": "pila ka oras daan",
+                  "baseText": {
+                    "de": "wie viele Stunden vorher",
+                    "en": "how many hours in advance"
+                  }
+                },
+                {
+                  "targetText": "mahibaloan",
+                  "baseText": {
+                    "de": "erfahren können",
+                    "en": "to be able to find out"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Adjudication of the counterpart's remaining LOW item (L5 pedagogicalGoal): the candidate already reads 'Auf eine Entschuldigung reagieren, nach einem neuen Termin fragen und um einen Anruf bitten.', so no further change is needed; all earlier read/settle/verify edits (L1 imbes foil, L3 sige token and kutsilyo foil, L4 German chips, L6 nga example, L7 kini/kana, L8 mahimo ba kong, L9 maputol/mobalhin/kung and the before-promise, L10 'even though' and plantsa foil) are present in these bytes and are preserved by the edits above.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "confirm",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ed27330dcf2c6e5f874ad1333ab37f6a38a65f2daa62cf7082db0fa6bbf3065d",
+      "sourceSha256": "ae3e04d4b38d5b1e46d0e416ed1b316021adab164c7202ff9e132c0bdb7eb47e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Noise complaint with nadungog (na- completed) licenses the DE Perfekt/EN past; chunks join youOne exactly; kung condition in youTwo is left as a choice blank because kon is a spelling variant, and all three kung foils (gikan/imbes/samtang) are ungrammatical before makahatag. Caption quotes the them-line; trophy reklamo anchored in both learner line and example."
+        },
+        {
+          "n": 2,
+          "observation": "niundang og andar is natural narration; ipaayo stays recognition-only in the them-line. The Dili form blank is correctly disambiguated by its present-inability cue (Wala ko makahulat would be a grammatical negated past), and ilisan/sukdon/timbangon/lutoon foils are contextually impossible for a charger. youTwo is 12 words with palihug."
+        },
+        {
+          "n": 3,
+          "observation": "Wala pay sulbad keeps sulbad as a noun per the beat; speech trio now carries the aspectual sige. The typed kay connector follows the lead's explicit native-validation ruling for a because-clause after a comma. The only defect is that the Mahimo ba question (and the cloze tail) ends in a period while DE/EN end in question marks and every other Mahimo ba line in the path takes ?."
+        },
+        {
+          "n": 4,
+          "observation": "Wala pa ko mohatag og bayad keeps bayad bare as the trophy noun; manok ang akong giorder uses gi- productively (P6 recycle). The Wala form blank is fixed by its past-event cue against the otherwise plausible Dili; apan/mobayad foils are impossible. German chips now read as one clause. kantidad in terms is unused but harmless."
+        },
+        {
+          "n": 5,
+          "observation": "May pasensya pa ko + gusto kong mahibalo kung kanus-a recycles the P5 indirect question; kanus-a stays out of the speech trio. youTwo is a real counter (call before arrival) with palihug; apan/tawagi/moabot foils are impossible. pedagogicalGoal already matches the actual pragmatic move."
+        },
+        {
+          "n": 6,
+          "observation": "Dili tarong ang sukod … kay plus the third example Dili tarong nga mas taas … satisfies the staged tarong + nga clause; Sukdon nako remains recognition-only in the them-line. Dili ko kalugar sa Martes is correctly cued as future unavailability against Wala."
+        },
+        {
+          "n": 7,
+          "observation": "Dili sakto ang dosis … nga gihatag nimo kanako keeps staff and recipient distinct; kini/kana now make the exchange line complete. ibalik ang kalainan sa presyo is a request, not a granted refund; foils are impossible in a pharmacy."
+        },
+        {
+          "n": 8,
+          "observation": "Kaduha gikuha ang kuwarta is a clean P6 object-focus recycle and ba precedes the pronoun (mahimo ba kong). Mahimo ba kong hatagan is itself the staged soft request, so missing palihug is not a register error. However aron in a purpose clause has the ubiquitous native alternative para (…resibo para masiguro ang refund), so typing it on first attempt would unjustly reject a grammatical answer; the slot must be a cue-free choice with the existing ungrammatical foils."
+        },
+        {
+          "n": 9,
+          "observation": "Wala ko makadawat … sa wala pa maputol and the transfer sa wala pa mobalhin use the correct base form after wala; among/mi exclusive are right for the utility. Them-line now promises notice before the next cut, matching DE. youTwo Mahimo ba nakong mahibaloan kung … moabot is natural, kung kept as fixed stem text, 12 words."
+        },
+        {
+          "n": 10,
+          "observation": "bisan wala pa mahuman is taught as concession and both DE obwohl and EN even though now carry it; Kung is correctly a choice blank, ilisi is a productive -i instruction on a familiar verb with palihug and lang. Recall foils hagdan/hangin/kahayag cannot be the subject of mahuman ang garantiya."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "dialogue[3] 'Mahimo bang mas sayo, palihug, kay puno na ang balde.' is a yes/no ba-question (DE/EN both end with ?) but ends with a period; the cloze join reproduces the same error. Every other Mahimo ba request in this path takes a question mark.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/targetText",
+              "old": "Mahimo bang mas sayo, palihug, kay puno na ang balde.",
+              "new": "Mahimo bang mas sayo, palihug, kay puno na ang balde?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/6",
+              "old": ".",
+              "new": "?"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Typed connector blank 'aron' before 'masiguro ang refund' is a grammatically open purpose slot: native Cebuano equally says 'hatagan og resibo para masiguro ang refund', and neither the DE 'damit' nor the EN 'so that' excludes para. A learner typing para would be unjustly rejected. Keep aron as the answer and the same ungrammatical foils, but present it as a cue-free choice so the learner selects among explicit options. The typed kay connector in L3 stays as adjudicated by the lead's native-validation ruling.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/5/kind",
+              "old": "connector",
+              "new": "choice"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Adjudication of the counterpart's MEDIUM palihug finding for L8/L9: 'Mahimo ba kong hatagan' and 'Mahimo ba nakong mahibaloan' are the staged P3 soft-request frames and the register policy says palihug is not required on every line; the proposed compressions would replace the taught recipient-focus hatagan and the purpose clause, so no change is adopted. The counterpart's proposal to retag kung (L1/L10) and apan (L4/L5) as typed connectors is likewise rejected because kon and pero are reviewed variants that would make typed slots unfair.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "226f6abef776eb3b83d90e9a64607bfb80da317afb9e2e322703b0866d97d29c",
+      "sourceSha256": "6a580917f48d9ba39895ab18134328fd1fac903113bd97c78e9b59794afd741e",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Naa koy reklamo bahin sa kasaba nga akong nadungog tibuok gabii (10 words) anchors reklamo and all three tokens in order; chunks join exactly. The conditional acceptance Sige, mobalhin ko kung makahatag ka og diskuwento sa kuwarto (10 words) reconstructs from three choice blanks whose foils (mosakay/mosukod/motimbang, gikan/imbes/samtang, hagdan/silong/hulmahan) are impossible in slot; kung here is unambiguously conditional, and keeping it typed as choice rather than connector correctly protects the kon spelling variant. DE/EN carry the same aspect; them-line ipa- absent, manager alone offers the room."
+        },
+        {
+          "n": 2,
+          "observation": "Niundang og andar narrates the completed failure with ni- (P1 recycle); the 12-word second reply Dili ko makahulat og semana. Mahimo bang ilisan na lang kini, palihug? is a soft request without asserting staff decisions. Form blank Dili carries a present-inability cue, so Wala (past abilitative) is excluded in context; ilisan foils (lutoon/sukdon/timbangon) are contextually impossible. Them-line ipaayo stays recognition-only as staged."
+        },
+        {
+          "n": 3,
+          "observation": "Wala pay sulbad sa problema sa gripo nga sige og tulo anchors sulbad as a bare noun per the outline; sige is the continuative aspect-bearing token. The typed connector kay in Mahimo bang mas sayo, palihug, kay puno na ang balde? is the only native fit (aron/bisan/gikan fail semantically or grammatically); sayo and balde choices are clean. Trophy example Kinahanglan tag sulbad uses the fused ta+og form only in dialogue-type text, which is permitted."
+        },
+        {
+          "n": 4,
+          "observation": "Wala pa ko mohatag og bayad para sa isda kay manok ang akong giorder (14 words) shows wala + mo- base form and gi- object focus; bayad surfaces as the bare noun. Second reply Wala ko mokaon sa isda, apan mobayad ko sa nahibilin (10 words): the form blank cue (past event) makes Dili (future refusal) contextually impossible; apan foils and mobayad foils are inert. German chunks join as ich habe noch nichts für den Fisch bezahlt; learner pays the rest without granting the removal."
+        },
+        {
+          "n": 5,
+          "observation": "May pasensya pa ko, apan gusto kong mahibalo kung kanus-a moabot ang pakete (13 words) recycles the P5 indirect kung; kanus-a is correctly kept out of the speech trio. Sige, apan palihug tawagi ko sa dili pa ka moabot (10 words) keeps pa ka order and palihug on the request line; apan is typed as choice (pero protected). The German goal now reads Auf eine Entschuldigung reagieren…, matching the actual pragmatic response as the specific check requested."
+        },
+        {
+          "n": 6,
+          "observation": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot (11 words) and the third pattern example Dili tarong nga mas taas ang usa ka manggas kaysa sa pikas deliver the staged tarong + nga clause. Mahimo ba sa Lunes, palihug? Dili ko kalugar sa Martes (10 words): form cue (future availability) rules out Wala; Lunes foils are non-days. Them-line sukdon remains recognition-only -on."
+        },
+        {
+          "n": 7,
+          "observation": "Dili sakto ang dosis sa tambal nga gihatag nimo kanako (10 words) anchors sakto with gi- object focus productive per stage. Sige, apan mahimo bang ibalik ang kalainan sa presyo, palihug? (10 words) joins exactly; ibalik and presyo foils are impossible in slot (gitas-on as a foil is allowed, only answers must be hyphen-free). Learner requests, pharmacist decides."
+        },
+        {
+          "n": 8,
+          "observation": "Kaduha gikuha ang kuwarta sa akong account para sa usa ka tiket (12 words) gives kuwarta + gi- object focus with native count number; speech trio kaduha/gikuha/kuwarta in canonical order. Sige, apan palihug hatagi ko og resibo aron may pamatuod ko (11 words) tests aron as typed connector with a unique purpose reading (kay/kung do not fit); resibo keeps its A2 spelling; eight terms including pamatuod align with DE/EN."
+        },
+        {
+          "n": 9,
+          "observation": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente (11 words) is regular wala + maka- negated past with sa wala pa temporal frame. The strengthened request Palihug, mahibaloan ba nako kung pila ka oras daan moabot ang pahibalo? (12 words) is an indirect inquiry with three clean choice blanks (oras vs metro/kilo/litro, moabot, pahibalo). Them-line uses exclusive mi for the utility and selpon in A2 spelling."
+        },
+        {
+          "n": 10,
+          "observation": "Niundang og tuyok ang bentilador bisan wala pa mahuman ang garantiya (11 words) recycles P2 bisan and ni- narration; the pattern's second example keeps the concession in EN and DE. Kung naa pay samang modelo, palihug ilisi lang ang bentilador (10 words) is a conditional exchange request, not an assertion; Kung foils (Imbes/Tali/Gikan) cannot fill the slot and the typed-choice format protects kon. Recall foils hagdan/hangin/kahayag are inert."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "historicalFocusedEdits": [
+    {
+      "stage": "focused-courtesy",
+      "receiptSha256": "ebba7ad6532c0109498694968266b28fe8fdf917a6db8a33f713dc22f343056b",
+      "sourceSha256": "ae3e04d4b38d5b1e46d0e416ed1b316021adab164c7202ff9e132c0bdb7eb47e",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Lesson 3: the learner's final request 'Mahimo bang mas sayo, palihug, kay puno na ang balde.' is a yes/no question (mahimo ba) but ends in a period in Cebuano while both DE and EN translations end in a question mark. Align Cebuano punctuation in the dialogue line and in the cloze tail; translations, cloze blanks (choice sayo / connector kay / choice balde) and all other content stay unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/targetText",
+              "old": "Mahimo bang mas sayo, palihug, kay puno na ang balde.",
+              "new": "Mahimo bang mas sayo, palihug, kay puno na ang balde?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Mahimo bang mas ",
+                {
+                  "kind": "choice",
+                  "answer": "sayo",
+                  "choices": [
+                    "humot",
+                    "sayo",
+                    "taas",
+                    "lapad"
+                  ]
+                },
+                ", palihug, ",
+                {
+                  "kind": "connector",
+                  "answer": "kay",
+                  "choices": [
+                    "kay",
+                    "aron",
+                    "bisan",
+                    "gikan"
+                  ]
+                },
+                " puno na ang ",
+                {
+                  "kind": "choice",
+                  "answer": "balde",
+                  "choices": [
+                    "balde",
+                    "kandado",
+                    "plantsa",
+                    "kutsilyo"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Mahimo bang mas ",
+                {
+                  "kind": "choice",
+                  "answer": "sayo",
+                  "choices": [
+                    "humot",
+                    "sayo",
+                    "taas",
+                    "lapad"
+                  ]
+                },
+                ", palihug, ",
+                {
+                  "kind": "connector",
+                  "answer": "kay",
+                  "choices": [
+                    "kay",
+                    "aron",
+                    "bisan",
+                    "gikan"
+                  ]
+                },
+                " puno na ang ",
+                {
+                  "kind": "choice",
+                  "answer": "balde",
+                  "choices": [
+                    "balde",
+                    "kandado",
+                    "plantsa",
+                    "kutsilyo"
+                  ]
+                },
+                "?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Lesson 8: the rewritten service request 'Sige, apan mahimo ba kong hatagan og resibo aron masiguro ang refund?' dropped the planned palihug courtesy marker and leans on the English loan 'refund'. Replace with the reviewer's natural 11-word line 'Sige, apan palihug hatagi ko og resibo aron may pamatuod ko.' (acceptance sige apan + modification, purpose connector aron kept as the connector blank). Realign DE/EN, the three-blank cloze (choice on request verb hatagi with four dialogue-form imperative distractors, choice resibo, connector aron) and the coupled terms (hatagi ko og resibo, pamatuod).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3",
+              "old": {
+                "targetText": "Sige, apan mahimo ba kong hatagan og resibo aron masiguro ang refund?",
+                "baseText": {
+                  "de": "In Ordnung, aber könnte ich einen Beleg bekommen, damit die Erstattung sicher ist?",
+                  "en": "All right, but could I be given a receipt so that the refund is certain?"
+                }
+              },
+              "new": {
+                "targetText": "Sige, apan palihug hatagi ko og resibo aron may pamatuod ko.",
+                "baseText": {
+                  "de": "In Ordnung, aber geben Sie mir bitte einen Beleg, damit ich einen Nachweis habe.",
+                  "en": "All right, but please give me a receipt so that I have proof."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Sige, apan mahimo ba kong ",
+                {
+                  "kind": "choice",
+                  "answer": "hatagan",
+                  "choices": [
+                    "hatagan",
+                    "lutoon",
+                    "sukdon",
+                    "timbangon"
+                  ]
+                },
+                " og ",
+                {
+                  "kind": "choice",
+                  "answer": "resibo",
+                  "choices": [
+                    "taklob",
+                    "manggas",
+                    "tambal",
+                    "resibo"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "connector",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "imbes",
+                    "tali"
+                  ]
+                },
+                " masiguro ang refund?"
+              ],
+              "new": [
+                "Sige, apan palihug ",
+                {
+                  "kind": "choice",
+                  "answer": "hatagi",
+                  "choices": [
+                    "hatagi",
+                    "lutoa",
+                    "sukda",
+                    "timbanga"
+                  ]
+                },
+                " ko og ",
+                {
+                  "kind": "choice",
+                  "answer": "resibo",
+                  "choices": [
+                    "taklob",
+                    "manggas",
+                    "tambal",
+                    "resibo"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "connector",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "imbes",
+                    "tali"
+                  ]
+                },
+                " may pamatuod ko."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/terms",
+              "old": [
+                {
+                  "targetText": "kuwarta",
+                  "baseText": {
+                    "de": "Geld",
+                    "en": "money"
+                  }
+                },
+                {
+                  "targetText": "kaduha",
+                  "baseText": {
+                    "de": "zweimal",
+                    "en": "twice"
+                  }
+                },
+                {
+                  "targetText": "gikuha",
+                  "baseText": {
+                    "de": "genommen, abgebucht",
+                    "en": "taken out"
+                  }
+                },
+                {
+                  "targetText": "account",
+                  "baseText": {
+                    "de": "Konto",
+                    "en": "account"
+                  }
+                },
+                {
+                  "targetText": "sobrang bayad",
+                  "baseText": {
+                    "de": "zu viel gezahlter Betrag",
+                    "en": "excess payment"
+                  }
+                },
+                {
+                  "targetText": "hatagan og resibo",
+                  "baseText": {
+                    "de": "einen Beleg bekommen",
+                    "en": "to be given a receipt"
+                  }
+                },
+                {
+                  "targetText": "aron",
+                  "baseText": {
+                    "de": "damit",
+                    "en": "so that"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "kuwarta",
+                  "baseText": {
+                    "de": "Geld",
+                    "en": "money"
+                  }
+                },
+                {
+                  "targetText": "kaduha",
+                  "baseText": {
+                    "de": "zweimal",
+                    "en": "twice"
+                  }
+                },
+                {
+                  "targetText": "gikuha",
+                  "baseText": {
+                    "de": "genommen, abgebucht",
+                    "en": "taken out"
+                  }
+                },
+                {
+                  "targetText": "account",
+                  "baseText": {
+                    "de": "Konto",
+                    "en": "account"
+                  }
+                },
+                {
+                  "targetText": "sobrang bayad",
+                  "baseText": {
+                    "de": "zu viel gezahlter Betrag",
+                    "en": "excess payment"
+                  }
+                },
+                {
+                  "targetText": "hatagi ko og resibo",
+                  "baseText": {
+                    "de": "geben Sie mir einen Beleg",
+                    "en": "give me a receipt"
+                  }
+                },
+                {
+                  "targetText": "aron",
+                  "baseText": {
+                    "de": "damit",
+                    "en": "so that"
+                  }
+                },
+                {
+                  "targetText": "pamatuod",
+                  "baseText": {
+                    "de": "Nachweis, Beleg",
+                    "en": "proof"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Lesson 9: the rewritten indirect inquiry 'Mahimo ba nakong mahibaloan kung pila ka oras daan moabot ang pahibalo?' lost the planned palihug. Replace with the reviewer's 12-word line 'Palihug, mahibaloan ba nako kung pila ka oras daan moabot ang pahibalo?' (P5 indirect inquiry with kung retained). Realign DE/EN and the three-blank cloze lead-in; blanks (oras, moabot, pahibalo) and their four-way banks stay unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3",
+              "old": {
+                "targetText": "Mahimo ba nakong mahibaloan kung pila ka oras daan moabot ang pahibalo?",
+                "baseText": {
+                  "de": "Könnte ich erfahren, wie viele Stunden vorher die Benachrichtigung kommt?",
+                  "en": "Could I find out how many hours in advance the notice will arrive?"
+                }
+              },
+              "new": {
+                "targetText": "Palihug, mahibaloan ba nako kung pila ka oras daan moabot ang pahibalo?",
+                "baseText": {
+                  "de": "Könnte ich bitte erfahren, wie viele Stunden vorher die Benachrichtigung kommt?",
+                  "en": "Could I please find out how many hours in advance the notice will arrive?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                "Mahimo ba nakong mahibaloan kung pila ka ",
+                {
+                  "kind": "choice",
+                  "answer": "oras",
+                  "choices": [
+                    "metro",
+                    "kilo",
+                    "litro",
+                    "oras"
+                  ]
+                },
+                " daan ",
+                {
+                  "kind": "choice",
+                  "answer": "moabot",
+                  "choices": [
+                    "mosayaw",
+                    "moabot",
+                    "manglangoy",
+                    "magtahi"
+                  ]
+                },
+                " ang ",
+                {
+                  "kind": "choice",
+                  "answer": "pahibalo",
+                  "choices": [
+                    "sudlay",
+                    "lamesa",
+                    "pahibalo",
+                    "kandado"
+                  ]
+                },
+                "?"
+              ],
+              "new": [
+                "Palihug, mahibaloan ba nako kung pila ka ",
+                {
+                  "kind": "choice",
+                  "answer": "oras",
+                  "choices": [
+                    "metro",
+                    "kilo",
+                    "litro",
+                    "oras"
+                  ]
+                },
+                " daan ",
+                {
+                  "kind": "choice",
+                  "answer": "moabot",
+                  "choices": [
+                    "mosayaw",
+                    "moabot",
+                    "manglangoy",
+                    "magtahi"
+                  ]
+                },
+                " ang ",
+                {
+                  "kind": "choice",
+                  "answer": "pahibalo",
+                  "choices": [
+                    "sudlay",
+                    "lamesa",
+                    "pahibalo",
+                    "kandado"
+                  ]
+                },
+                "?"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exactPointerCorrections": {
+    "pointer-55c2fed90f15": [
+      {
+        "reported": "/lessons/3/cloze/5/choices",
+        "exactSourcePath": "/lessons/3/cloze/4/choices"
+      }
+    ],
+    "pointer-5a5f36ecf4af": [
+      {
+        "reported": "/lessons/9/cloze/3/choices",
+        "exactSourcePath": "/lessons/9/cloze/2/choices"
+      }
+    ]
+  },
+  "codexEdits": {
+    "editor": "Codex",
+    "fromSha256": "6a580917f48d9ba39895ab18134328fd1fac903113bd97c78e9b59794afd741e",
+    "toSha256": "7f6825aeec71749a6cf7ec46ba120662193242a3a9709be2682ba8d510978a36",
+    "scope": "L8 asks for a receipt as proof. Present the purpose connector as a choice because para is also a valid written answer."
+  }
+}

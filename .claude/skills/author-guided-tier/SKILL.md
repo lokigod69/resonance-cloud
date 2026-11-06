@@ -7,10 +7,11 @@ description: Author a full guided-lesson tier (100 lessons, 10 paths) for a lang
 
 Proven on Spanish/French/Italian/Portuguese/German/English A2 and Korean A1 (700+
 lessons, 2026-07-13/14). Design doc: `orchestrator/docs/Product/FABLE_A2_LEARNING_PATH_DESIGN.md`
-(§5 authoring contract, §6 rollout). Roles are fixed: **Codex drafts and reviews,
-Fable specs, arbiters, fixes, and verifies. Fable reads every lesson personally**
-(owner rule: Codex never implements trust-critical fixes directly — Fable applies
-them via surgical prompts it fully controls, or by hand).
+(§5 authoring contract, §6 rollout). **Current review workflow (owner decision, 2026-11-07).**
+Use the reviewed language outline, assign Codex writers and have separate Codex
+readers check the actual lessons. Codex resolves review findings and verifies
+the final saved text. Historical descriptions below of Claude/Fable reading,
+adjudicating or verifying content are superseded for all review work.
 
 Working artifacts (specs, batch prompts, review prompts, findings) live in
 `D:\CODING\ResonanceTEST\tmp\` named `A2_{LANG}_...` — study the German/English set

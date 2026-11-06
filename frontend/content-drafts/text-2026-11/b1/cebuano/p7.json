@@ -1,0 +1,2224 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Was hast du vor?",
+    "en": "What are you planning?"
+  },
+  "subtitle": {
+    "de": "Ziele, Bedingungen und Kompromisse",
+    "en": "Goals, conditions and compromises"
+  },
+  "anchor": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen.",
+  "lessons": [
+    {
+      "slug": "aron-early-run",
+      "title": {
+        "de": "Früh auf den Beinen",
+        "en": "Up early"
+      },
+      "situation": {
+        "de": "Ein Freund trifft dich am Morgen in Laufschuhen.",
+        "en": "A friend sees you in running shoes early in the morning."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Aron nennt den Zweck.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Nganong sayo man ka mobangon?",
+          "baseText": {
+            "de": "Warum stehst du so früh auf?",
+            "en": "Why do you get up so early?"
+          }
+        },
+        {
+          "targetText": "Mobangon ko og sayo aron makadagan ko sa parke sa dili pa mosubang ang adlaw.",
+          "baseText": {
+            "de": "Ich stehe früh auf, damit ich vor Sonnenaufgang im Park laufen kann.",
+            "en": "I get up early so I can run in the park before sunrise."
+          }
+        },
+        {
+          "targetText": "Gabii lang ta modagan aron makauban ko.",
+          "baseText": {
+            "de": "Lass uns doch abends laufen, dann kann ich mitkommen.",
+            "en": "Let’s run in the evening so I can come too."
+          }
+        },
+        {
+          "targetText": "Modagan ko uban nimo ugma sa gabii kung hayag pa ang parke.",
+          "baseText": {
+            "de": "Ich laufe morgen Abend mit dir, wenn es im Park noch hell ist.",
+            "en": "I’ll run with you tomorrow evening if the park is still light."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Aron nennt den Zweck",
+        "rule": {
+          "de": "Aron leitet einen beabsichtigten Zweck ein. Makadagan ko bedeutet hier, dass du Gelegenheit zum Laufen hast.",
+          "en": "Aron introduces an intended purpose. Here makadagan ko means you get a chance to run."
+        },
+        "examples": [
+          {
+            "targetText": "Mobangon ko og sayo aron makadagan ko sa parke sa dili pa mosubang ang adlaw.",
+            "baseText": {
+              "de": "Ich stehe früh auf, damit ich vor Sonnenaufgang im Park laufen kann.",
+              "en": "I get up early so I can run in the park before sunrise."
+            },
+            "highlight": "aron makadagan ko"
+          },
+          {
+            "targetText": "Mobiya ko sa balay og sayo aron makaabot ko sa pantalan.",
+            "baseText": {
+              "de": "Ich gehe früh von zu Hause los, damit ich den Hafen rechtzeitig erreiche.",
+              "en": "I’ll leave the house early so I can get to the port in time."
+            },
+            "highlight": "aron makaabot ko"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Modagan",
+          "choices": [
+            "Nidagan",
+            "Gidagan",
+            "Pagdagan",
+            "Modagan"
+          ],
+          "cue": "dagan, proposed future action"
+        },
+        " ko uban nimo ",
+        {
+          "kind": "choice",
+          "answer": "ugma",
+          "choices": [
+            "ugma",
+            "sapatos",
+            "kaldero",
+            "tubig"
+          ]
+        },
+        " sa gabii ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "hangtod sa",
+            "tungod sa",
+            "kung",
+            "gikan"
+          ]
+        },
+        " hayag pa ang parke."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mobangon ko og sayo",
+          "baseText": {
+            "de": "Ich stehe früh auf,",
+            "en": "I get up early"
+          }
+        },
+        {
+          "targetText": "aron makadagan ko",
+          "baseText": {
+            "de": "damit ich laufen kann",
+            "en": "so I can go running"
+          }
+        },
+        {
+          "targetText": "sa parke",
+          "baseText": {
+            "de": "im Park",
+            "en": "in the park"
+          }
+        },
+        {
+          "targetText": "sa dili pa mosubang ang adlaw.",
+          "baseText": {
+            "de": "bevor die Sonne aufgeht.",
+            "en": "before the sun rises."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aron",
+          "baseText": {
+            "de": "damit",
+            "en": "so that"
+          }
+        },
+        {
+          "targetText": "mobangon",
+          "baseText": {
+            "de": "aufstehen",
+            "en": "get up"
+          }
+        },
+        {
+          "targetText": "makadagan",
+          "baseText": {
+            "de": "laufen können",
+            "en": "be able to run"
+          }
+        },
+        {
+          "targetText": "parke",
+          "baseText": {
+            "de": "Park",
+            "en": "park"
+          }
+        },
+        {
+          "targetText": "mosubang",
+          "baseText": {
+            "de": "aufgehen",
+            "en": "rise"
+          }
+        },
+        {
+          "targetText": "hayag",
+          "baseText": {
+            "de": "hell",
+            "en": "light"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mobangon ko og sayo aron makadagan ko sa ",
+        "answer": "parke",
+        "after": " sa dili pa mosubang ang adlaw.",
+        "fallbackChoices": [
+          "kaldero",
+          "sobre",
+          "parke",
+          "unlan"
+        ]
+      },
+      "speakRequired": [
+        "mobangon",
+        "aron",
+        "makadagan"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund trifft dich am Morgen in Laufschuhen. „Nganong sayo man ka mobangon?“",
+        "en": "A friend sees you in running shoes early in the morning. “Nganong sayo man ka mobangon?”"
+      },
+      "trophyWord": {
+        "word": "aron",
+        "meaning": {
+          "de": "damit",
+          "en": "so that"
+        },
+        "example": "Mosayo ko aron makaapas sa grupo.",
+        "whyThisWord": {
+          "de": "Mit aron kannst du erklären, was eine frühere Startzeit möglich macht.",
+          "en": "Use aron to explain what starting earlier makes possible."
+        }
+      },
+      "distractors": [
+        "Mobangon siya og sayo",
+        "sa dili pa moulan."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund trifft dich am Morgen in Laufschuhen.",
+        "en": "A friend sees you in running shoes early in the morning."
+      },
+      "songMood": "Bright acoustic jogging rhythm",
+      "visualNotes": "A friend sees you in running shoes early in the morning."
+    },
+    {
+      "slug": "plano-weekend",
+      "title": {
+        "de": "Pläne fürs Wochenende",
+        "en": "Weekend plans"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt dich in der Pause nach dem Samstag.",
+        "en": "A coworker asks about Saturday during your break."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Plano nga mit einer beabsichtigten Handlung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong buhaton karong Sabado?",
+          "baseText": {
+            "de": "Was machst du diesen Samstag?",
+            "en": "What are you doing this Saturday?"
+          }
+        },
+        {
+          "targetText": "Naa koy plano nga moadto sa baybayon kung mosidlak ang adlaw karong Sabado.",
+          "baseText": {
+            "de": "Ich habe vor, diesen Samstag an den Strand zu gehen, wenn die Sonne scheint.",
+            "en": "I’m planning to go to the beach this Saturday if it’s sunny."
+          }
+        },
+        {
+          "targetText": "Mouban ka nako sa merkado sa buntag? Duol ra ang baybayon.",
+          "baseText": {
+            "de": "Kommst du morgens mit auf den Markt? Der Strand ist ganz in der Nähe.",
+            "en": "Will you come to the market with me in the morning? The beach is close by."
+          }
+        },
+        {
+          "targetText": "Mouban ko nimo sa merkado kung moadto ta dayon sa dagat.",
+          "baseText": {
+            "de": "Ich komme mit dir auf den Markt, wenn wir danach gleich ans Meer gehen.",
+            "en": "I’ll come with you to the market if we go straight on to the sea afterwards."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Plano nga mit einer beabsichtigten Handlung",
+        "rule": {
+          "de": "Nach naa koy plano nga steht hier die Handlung, die du vorhast. Kung nennt die Bedingung für den Ausflug.",
+          "en": "Naa koy plano nga introduces the action you intend to take. Kung gives a condition for the outing."
+        },
+        "examples": [
+          {
+            "targetText": "Naa koy plano nga moadto sa baybayon kung mosidlak ang adlaw karong Sabado.",
+            "baseText": {
+              "de": "Ich habe vor, diesen Samstag an den Strand zu gehen, wenn die Sonne scheint.",
+              "en": "I’m planning to go to the beach this Saturday if it’s sunny."
+            },
+            "highlight": "plano nga moadto"
+          },
+          {
+            "targetText": "Naa koy plano nga magluto og isda karong gabii.",
+            "baseText": {
+              "de": "Ich habe vor, heute Abend Fisch zu kochen.",
+              "en": "I’m planning to cook fish tonight."
+            },
+            "highlight": "plano nga magluto"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Mouban",
+          "choices": [
+            "Niuban",
+            "Nakauban",
+            "Giubanan",
+            "Mouban"
+          ],
+          "cue": "uban, future action"
+        },
+        " ko nimo sa ",
+        {
+          "kind": "choice",
+          "answer": "merkado",
+          "choices": [
+            "merkado",
+            "kalaha",
+            "unlan",
+            "kutsara"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "gikan sa",
+            "tungod sa",
+            "sulod sa"
+          ]
+        },
+        " moadto ta dayon sa dagat."
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa koy plano nga",
+          "baseText": {
+            "de": "Ich habe vor,",
+            "en": "I’m planning to"
+          }
+        },
+        {
+          "targetText": "moadto sa baybayon",
+          "baseText": {
+            "de": "an den Strand zu gehen",
+            "en": "go to the beach"
+          }
+        },
+        {
+          "targetText": "kung mosidlak ang adlaw",
+          "baseText": {
+            "de": "wenn die Sonne scheint",
+            "en": "if the sun shines"
+          }
+        },
+        {
+          "targetText": "karong Sabado.",
+          "baseText": {
+            "de": "diesen Samstag.",
+            "en": "this Saturday."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "plano",
+          "baseText": {
+            "de": "Plan",
+            "en": "plan"
+          }
+        },
+        {
+          "targetText": "moadto",
+          "baseText": {
+            "de": "hingehen",
+            "en": "go"
+          }
+        },
+        {
+          "targetText": "baybayon",
+          "baseText": {
+            "de": "Strand",
+            "en": "beach"
+          }
+        },
+        {
+          "targetText": "mosidlak",
+          "baseText": {
+            "de": "scheinen",
+            "en": "shine"
+          }
+        },
+        {
+          "targetText": "merkado",
+          "baseText": {
+            "de": "Markt",
+            "en": "market"
+          }
+        },
+        {
+          "targetText": "mouban",
+          "baseText": {
+            "de": "mitkommen",
+            "en": "come along"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa koy plano nga moadto sa ",
+        "answer": "baybayon",
+        "after": " kung mosidlak ang adlaw karong Sabado.",
+        "fallbackChoices": [
+          "kusina",
+          "baybayon",
+          "kalaha",
+          "bangko"
+        ]
+      },
+      "speakRequired": [
+        "plano",
+        "moadto",
+        "baybayon"
+      ],
+      "sceneCaption": {
+        "de": "Eine Kollegin fragt dich in der Pause nach dem Samstag. „Unsa may imong buhaton karong Sabado?“",
+        "en": "A coworker asks about Saturday during your break. “Unsa may imong buhaton karong Sabado?”"
+      },
+      "trophyWord": {
+        "word": "plano",
+        "meaning": {
+          "de": "Plan",
+          "en": "plan"
+        },
+        "example": "Ang akong plano mao ang paglakaw sa baybayon.",
+        "whyThisWord": {
+          "de": "Plano hilft dir, einen Vorschlag als Absicht zu formulieren, ehe alles feststeht.",
+          "en": "Plano lets you present an idea as an intention while the details are still open."
+        }
+      },
+      "distractors": [
+        "moadto sa bukid",
+        "karong Domingo."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin fragt dich in der Pause nach dem Samstag.",
+        "en": "A coworker asks about Saturday during your break."
+      },
+      "songMood": "Warm coastal guitar and soft shaker",
+      "visualNotes": "A coworker asks about Saturday during your break."
+    },
+    {
+      "slug": "tumong-training",
+      "title": {
+        "de": "Ein Trainingsziel",
+        "en": "A training goal"
+      },
+      "situation": {
+        "de": "Dein Trainer schlägt seinen Kalender auf.",
+        "en": "Your coach opens his calendar."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Tumong für ein messbares Ziel.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may gusto nimong makab-ot inig Disyembre?",
+          "baseText": {
+            "de": "Was möchtest du bis Dezember schaffen?",
+            "en": "What do you want to achieve by December?"
+          }
+        },
+        {
+          "targetText": "Ang akong tumong mao ang pagdagan og lima ka kilometro inig Disyembre.",
+          "baseText": {
+            "de": "Mein Ziel ist es, bis Dezember fünf Kilometer zu laufen.",
+            "en": "My goal is to run five kilometres by December."
+          }
+        },
+        {
+          "targetText": "Unsa kaha kung tulo lang una? Susiha nato ang imong oras.",
+          "baseText": {
+            "de": "Wie wäre es zunächst mit drei? Schauen wir uns deine Zeit an.",
+            "en": "How about just three first? Let’s check your time."
+          }
+        },
+        {
+          "targetText": "Modagan ko og tulo karong Sabado aron masukod nato ang oras.",
+          "baseText": {
+            "de": "Ich laufe diesen Samstag drei Kilometer, damit wir meine Zeit messen können.",
+            "en": "I’ll run three this Saturday so we can time it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tumong für ein messbares Ziel",
+        "rule": {
+          "de": "Ang akong tumong stellt das Ziel vor. Die Distanz und der Monat machen es konkret.",
+          "en": "Ang akong tumong introduces a goal. The distance and the month make it specific."
+        },
+        "examples": [
+          {
+            "targetText": "Ang akong tumong mao ang pagdagan og lima ka kilometro inig Disyembre.",
+            "baseText": {
+              "de": "Mein Ziel ist es, bis Dezember fünf Kilometer zu laufen.",
+              "en": "My goal is to run five kilometres by December."
+            },
+            "highlight": "Ang akong tumong"
+          },
+          {
+            "targetText": "Ang among tumong mao ang paglangoy hangtod sa boya.",
+            "baseText": {
+              "de": "Unser Ziel ist es, bis zur Boje zu schwimmen.",
+              "en": "Our goal is to swim as far as the buoy."
+            },
+            "highlight": "Ang among tumong"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Modagan",
+          "choices": [
+            "Pagdagan",
+            "Modagan",
+            "Nidagan",
+            "Gidagan"
+          ],
+          "cue": "dagan, future action"
+        },
+        " ko og tulo karong ",
+        {
+          "kind": "choice",
+          "answer": "Sabado",
+          "choices": [
+            "Sabado",
+            "kutsara",
+            "lapis",
+            "sobre"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "aron",
+          "choices": [
+            "aron",
+            "gikan",
+            "tungod sa",
+            "sulod sa"
+          ]
+        },
+        " masukod nato ang oras."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang akong tumong",
+          "baseText": {
+            "de": "Mein Ziel",
+            "en": "My goal"
+          }
+        },
+        {
+          "targetText": "mao ang pagdagan",
+          "baseText": {
+            "de": "ist es, zu laufen:",
+            "en": "is to run"
+          }
+        },
+        {
+          "targetText": "og lima ka kilometro",
+          "baseText": {
+            "de": "fünf Kilometer",
+            "en": "five kilometres"
+          }
+        },
+        {
+          "targetText": "inig Disyembre.",
+          "baseText": {
+            "de": "bis Dezember.",
+            "en": "by December."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tumong",
+          "baseText": {
+            "de": "Ziel",
+            "en": "goal"
+          }
+        },
+        {
+          "targetText": "pagdagan",
+          "baseText": {
+            "de": "Laufen",
+            "en": "running"
+          }
+        },
+        {
+          "targetText": "lima ka kilometro",
+          "baseText": {
+            "de": "fünf Kilometer",
+            "en": "five kilometres"
+          }
+        },
+        {
+          "targetText": "Disyembre",
+          "baseText": {
+            "de": "Dezember",
+            "en": "December"
+          }
+        },
+        {
+          "targetText": "masukod",
+          "baseText": {
+            "de": "gemessen werden",
+            "en": "be measured"
+          }
+        },
+        {
+          "targetText": "oras",
+          "baseText": {
+            "de": "Zeit",
+            "en": "time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang akong tumong mao ang pagdagan og lima ka ",
+        "answer": "kilometro",
+        "after": " inig Disyembre.",
+        "fallbackChoices": [
+          "kilometro",
+          "litro",
+          "kilo",
+          "kutsara"
+        ]
+      },
+      "speakRequired": [
+        "tumong",
+        "pagdagan",
+        "inig"
+      ],
+      "sceneCaption": {
+        "de": "Dein Trainer schlägt seinen Kalender auf. „Unsa may gusto nimong makab-ot inig Disyembre?“",
+        "en": "Your coach opens his calendar. “Unsa may gusto nimong makab-ot inig Disyembre?”"
+      },
+      "trophyWord": {
+        "word": "tumong",
+        "meaning": {
+          "de": "Ziel",
+          "en": "goal"
+        },
+        "example": "Tin-aw ang akong tumong sa ensayo.",
+        "whyThisWord": {
+          "de": "Tumong bezeichnet das angestrebte Ergebnis. Das Wort passt zu Sport, Schule oder Arbeit.",
+          "en": "Tumong names the result you are aiming for in sport, school or work."
+        }
+      },
+      "distractors": [
+        "Ang iyang tumong",
+        "og duha ka kilometro"
+      ],
+      "placeholderCaption": {
+        "de": "Dein Trainer schlägt seinen Kalender auf.",
+        "en": "Your coach opens his calendar."
+      },
+      "songMood": "Measured training beat with nylon strings",
+      "visualNotes": "Your coach opens his calendar."
+    },
+    {
+      "slug": "umaabot-rent",
+      "title": {
+        "de": "Der nächste Mietmonat",
+        "en": "Next month’s rent"
+      },
+      "situation": {
+        "de": "Deine Vermieterin erkundigt sich nach deinen Plänen für die Wohnung.",
+        "en": "Your landlady asks about your plans for the flat."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Umaabot nga und eine Bedingung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Magpabilin ka dinhi sunod bulan?",
+          "baseText": {
+            "de": "Bleibst du nächsten Monat hier?",
+            "en": "Are you staying here next month?"
+          }
+        },
+        {
+          "targetText": "Magpabilin ko sa umaabot nga bulan kung dili mosaka ang abang sa kwarto.",
+          "baseText": {
+            "de": "Ich bleibe im kommenden Monat, wenn die Zimmermiete nicht steigt.",
+            "en": "I’ll stay for the coming month if the rent for the room doesn’t go up."
+          }
+        },
+        {
+          "targetText": "Pareho ra ang abang, pero naa nay bayad sa paglimpyo kada semana.",
+          "baseText": {
+            "de": "Die Miete bleibt gleich, aber die wöchentliche Reinigung kostet jetzt extra.",
+            "en": "The rent is the same, but there’s now a fee for weekly cleaning."
+          }
+        },
+        {
+          "targetText": "Magpabilin ko sunod bulan kung ako mismo ang molimpyo, walay dugang bayad.",
+          "baseText": {
+            "de": "Ich bleibe nächsten Monat, wenn ich selbst putze – ohne Zusatzgebühr.",
+            "en": "I’ll stay next month if I do the cleaning myself, with no extra fee."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Umaabot nga und eine Bedingung",
+        "rule": {
+          "de": "Umaabot nga bulan meint den kommenden Monat. Mit kung machst du deine Zusage von der Miete abhängig.",
+          "en": "Umaabot nga bulan means the coming month. With kung you make your decision conditional on the rent."
+        },
+        "examples": [
+          {
+            "targetText": "Magpabilin ko sa umaabot nga bulan kung dili mosaka ang abang sa kwarto.",
+            "baseText": {
+              "de": "Ich bleibe im kommenden Monat, wenn die Zimmermiete nicht steigt.",
+              "en": "I’ll stay for the coming month if the rent for the room doesn’t go up."
+            },
+            "highlight": "umaabot nga bulan"
+          },
+          {
+            "targetText": "Magpahuway ko sa umaabot nga semana kung mahuman ang trabaho.",
+            "baseText": {
+              "de": "Ich ruhe mich nächste Woche aus, wenn die Arbeit erledigt ist.",
+              "en": "I’ll take a break in the coming week if the work is finished."
+            },
+            "highlight": "umaabot nga semana"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Magpabilin",
+          "choices": [
+            "Nagpabilin",
+            "Napabilin",
+            "Pagpabilin",
+            "Magpabilin"
+          ],
+          "cue": "pabilin, future action"
+        },
+        " ko sunod ",
+        {
+          "kind": "choice",
+          "answer": "bulan",
+          "choices": [
+            "bulan",
+            "gunting",
+            "unlan",
+            "kalaha"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "gikan sa",
+            "sulod sa",
+            "tungod sa"
+          ]
+        },
+        " ako mismo ang molimpyo, walay dugang bayad."
+      ],
+      "chunks": [
+        {
+          "targetText": "Magpabilin ko",
+          "baseText": {
+            "de": "Ich bleibe",
+            "en": "I’ll stay"
+          }
+        },
+        {
+          "targetText": "sa umaabot nga bulan",
+          "baseText": {
+            "de": "im kommenden Monat,",
+            "en": "in the coming month"
+          }
+        },
+        {
+          "targetText": "kung dili mosaka",
+          "baseText": {
+            "de": "wenn … nicht steigt",
+            "en": "if it doesn’t go up,"
+          }
+        },
+        {
+          "targetText": "ang abang sa kwarto.",
+          "baseText": {
+            "de": "die Miete für das Zimmer.",
+            "en": "the rent for the room."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "umaabot",
+          "baseText": {
+            "de": "kommend",
+            "en": "coming"
+          }
+        },
+        {
+          "targetText": "magpabilin",
+          "baseText": {
+            "de": "bleiben",
+            "en": "stay"
+          }
+        },
+        {
+          "targetText": "mosaka",
+          "baseText": {
+            "de": "steigen",
+            "en": "go up"
+          }
+        },
+        {
+          "targetText": "abang",
+          "baseText": {
+            "de": "Miete",
+            "en": "rent"
+          }
+        },
+        {
+          "targetText": "paglimpyo",
+          "baseText": {
+            "de": "Reinigung",
+            "en": "cleaning"
+          }
+        },
+        {
+          "targetText": "dugang bayad",
+          "baseText": {
+            "de": "Zusatzgebühr",
+            "en": "extra fee"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Magpabilin ko sa umaabot nga bulan kung dili mosaka ang ",
+        "answer": "abang",
+        "after": " sa kwarto.",
+        "fallbackChoices": [
+          "unlan",
+          "hunas",
+          "lapis",
+          "abang"
+        ]
+      },
+      "speakRequired": [
+        "magpabilin",
+        "umaabot",
+        "mosaka"
+      ],
+      "sceneCaption": {
+        "de": "Deine Vermieterin erkundigt sich nach deinen Plänen für die Wohnung. „Magpabilin ka dinhi sunod bulan?“",
+        "en": "Your landlady asks about your plans for the flat. “Magpabilin ka dinhi sunod bulan?”"
+      },
+      "trophyWord": {
+        "word": "umaabot",
+        "meaning": {
+          "de": "kommend",
+          "en": "coming"
+        },
+        "example": "Umaabot na ang tingbayad sa abang.",
+        "whyThisWord": {
+          "de": "Umaabot hilft dir, über den nächsten Zeitraum zu sprechen, bevor die Einzelheiten feststehen.",
+          "en": "Use umaabot to refer to a coming period while the details are still being settled."
+        }
+      },
+      "distractors": [
+        "sa umaabot nga tuig",
+        "ang abang sa tindahan."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Vermieterin erkundigt sich nach deinen Plänen für die Wohnung.",
+        "en": "Your landlady asks about your plans for the flat."
+      },
+      "songMood": "Gentle two-person acoustic conversation",
+      "visualNotes": "Your landlady asks about your plans for the flat."
+    },
+    {
+      "slug": "balik-bicycle",
+      "title": {
+        "de": "Ein Fahrrad ausleihen",
+        "en": "Hiring a bicycle"
+      },
+      "situation": {
+        "de": "Die Mitarbeiterin am Fahrradverleih schaut in ihren Terminkalender.",
+        "en": "The clerk at the bike hire desk checks her booking calendar."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Balik als Rückkehr, mobalik als Handlung.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kanus-a nimo iuli ang bisikleta?",
+          "baseText": {
+            "de": "Wann bringen Sie das Fahrrad zurück?",
+            "en": "When will you bring the bike back?"
+          }
+        },
+        {
+          "targetText": "Ugma pa ang akong balik dinhi dala ang bisikleta kung uga na ang dalan.",
+          "baseText": {
+            "de": "Ich komme erst morgen mit dem Fahrrad zurück, wenn die Straße bis dahin trocken ist.",
+            "en": "I’ll come back here with the bike tomorrow if the road is dry by then."
+          }
+        },
+        {
+          "targetText": "Naa nay mogamit niini ugma sa sayo. Mahimo bang karon na?",
+          "baseText": {
+            "de": "Morgen früh braucht es schon jemand. Ginge es heute noch?",
+            "en": "Someone needs it early tomorrow. Could you return it today?"
+          }
+        },
+        {
+          "targetText": "Mobalik ko karong alas singko kung mohunong ang ulan.",
+          "baseText": {
+            "de": "Ich komme heute um fünf zurück, wenn es aufhört zu regnen.",
+            "en": "I’ll come back today at five if the rain stops."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Balik als Rückkehr, mobalik als Handlung",
+        "rule": {
+          "de": "Ang akong balik bezeichnet meine Rückkehr. Mit mobalik ko machst du daraus eine Ankündigung.",
+          "en": "Ang akong balik refers to my return. Mobalik ko expresses it as something I will do."
+        },
+        "examples": [
+          {
+            "targetText": "Ugma pa ang akong balik dinhi dala ang bisikleta kung uga na ang dalan.",
+            "baseText": {
+              "de": "Ich komme erst morgen mit dem Fahrrad zurück, wenn die Straße bis dahin trocken ist.",
+              "en": "I’ll come back here with the bike tomorrow if the road is dry by then."
+            },
+            "highlight": "ang akong balik"
+          },
+          {
+            "targetText": "Sa Lunes ang iyang balik dinhi dala ang mga yawe.",
+            "baseText": {
+              "de": "Am Montag kommt die Person mit den Schlüsseln hierher zurück.",
+              "en": "They’ll be back here on Monday with the keys."
+            },
+            "highlight": "ang iyang balik"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Mobalik",
+          "choices": [
+            "Nibalik",
+            "Gibalik",
+            "Pagbalik",
+            "Mobalik"
+          ],
+          "cue": "balik, future actor action"
+        },
+        " ko ",
+        {
+          "kind": "choice",
+          "answer": "karong",
+          "choices": [
+            "karong",
+            "bisikleta",
+            "dalan",
+            "ulan"
+          ]
+        },
+        " alas singko ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "gikan sa",
+            "tungod sa",
+            "kung",
+            "sa wala"
+          ]
+        },
+        " mohunong ang ulan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ugma pa ang akong balik",
+          "baseText": {
+            "de": "Ich komme erst morgen zurück,",
+            "en": "I’ll be back tomorrow"
+          }
+        },
+        {
+          "targetText": "dinhi dala ang bisikleta",
+          "baseText": {
+            "de": "hierher mit dem Fahrrad,",
+            "en": "here with the bike,"
+          }
+        },
+        {
+          "targetText": "kung uga na",
+          "baseText": {
+            "de": "wenn … schon trocken ist",
+            "en": "if it’s dry by then,"
+          }
+        },
+        {
+          "targetText": "ang dalan.",
+          "baseText": {
+            "de": "die Straße.",
+            "en": "the road."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "balik",
+          "baseText": {
+            "de": "Rückkehr",
+            "en": "return"
+          }
+        },
+        {
+          "targetText": "ugma",
+          "baseText": {
+            "de": "morgen",
+            "en": "tomorrow"
+          }
+        },
+        {
+          "targetText": "bisikleta",
+          "baseText": {
+            "de": "Fahrrad",
+            "en": "bicycle"
+          }
+        },
+        {
+          "targetText": "uga",
+          "baseText": {
+            "de": "trocken",
+            "en": "dry"
+          }
+        },
+        {
+          "targetText": "dalan",
+          "baseText": {
+            "de": "Straße",
+            "en": "road"
+          }
+        },
+        {
+          "targetText": "mohunong",
+          "baseText": {
+            "de": "aufhören",
+            "en": "stop"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ugma pa ang akong balik dinhi dala ang ",
+        "answer": "bisikleta",
+        "after": " kung uga na ang dalan.",
+        "fallbackChoices": [
+          "barko",
+          "eroplano",
+          "bisikleta",
+          "tren"
+        ]
+      },
+      "speakRequired": [
+        "balik",
+        "bisikleta",
+        "kung"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin am Fahrradverleih schaut in ihren Terminkalender. „Kanus-a nimo iuli ang bisikleta?“",
+        "en": "The clerk at the bike hire desk checks her booking calendar. “Kanus-a nimo iuli ang bisikleta?”"
+      },
+      "trophyWord": {
+        "word": "balik",
+        "meaning": {
+          "de": "Rückkehr",
+          "en": "return"
+        },
+        "example": "Ugma sa buntag ang akong balik dinhi.",
+        "whyThisWord": {
+          "de": "Balik kann als Nomen stehen, wenn du jemandem den Zeitpunkt deiner Rückkehr nennst.",
+          "en": "Balik can stand as a noun when you tell someone the time of your return."
+        }
+      },
+      "distractors": [
+        "dinhi dala ang motorsiklo",
+        "kung basa pa"
+      ],
+      "placeholderCaption": {
+        "de": "Die Mitarbeiterin am Fahrradverleih schaut in ihren Terminkalender.",
+        "en": "The clerk at the bike hire desk checks her booking calendar."
+      },
+      "songMood": "Light cycling rhythm on acoustic strings",
+      "visualNotes": "The clerk at the bike hire desk checks her booking calendar."
+    },
+    {
+      "slug": "padayon-tuition",
+      "title": {
+        "de": "Der nächste Unterrichtsmonat",
+        "en": "The next month of lessons"
+      },
+      "situation": {
+        "de": "Deine Lehrerin legt den neuen Stundenplan neben eure Bücher.",
+        "en": "Your tutor puts the new timetable beside your books."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Padayon und die Häufigkeit einer Verabredung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Mopadayon ka sa atong mga leksiyon?",
+          "baseText": {
+            "de": "Machst du mit unserem Unterricht weiter?",
+            "en": "Are you going to continue our lessons?"
+          }
+        },
+        {
+          "targetText": "Padayon ang akong pagtuon kung magkita ta kaduha sa usa ka semana sugod karong Lunes.",
+          "baseText": {
+            "de": "Ich mache mit dem Unterricht weiter, wenn wir uns ab Montag zweimal pro Woche treffen.",
+            "en": "I’ll keep studying if we meet twice a week starting this Monday."
+          }
+        },
+        {
+          "targetText": "Kausa ra ko makatudlo kada semana. Unsa may mahimo nimo sa laing adlaw?",
+          "baseText": {
+            "de": "Ich kann nur einmal pro Woche unterrichten. Was könntest du am anderen Tag machen?",
+            "en": "I can teach only once a week. What could you do on the other day?"
+          }
+        },
+        {
+          "targetText": "Magtuon ko sa balay kung wala tay klase sa Huwebes.",
+          "baseText": {
+            "de": "Ich lerne zu Hause, wenn wir donnerstags keinen Unterricht haben.",
+            "en": "I’ll study at home if we don’t have class on Thursdays."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Padayon und die Häufigkeit einer Verabredung",
+        "rule": {
+          "de": "Padayon ang akong pagtuon drückt aus, dass das Lernen weitergeht. Kaduha sa usa ka semana nennt den Rhythmus.",
+          "en": "Padayon ang akong pagtuon means that my studies continue. Kaduha sa usa ka semana gives the frequency."
+        },
+        "examples": [
+          {
+            "targetText": "Padayon ang akong pagtuon kung magkita ta kaduha sa usa ka semana sugod karong Lunes.",
+            "baseText": {
+              "de": "Ich mache mit dem Unterricht weiter, wenn wir uns ab Montag zweimal pro Woche treffen.",
+              "en": "I’ll keep studying if we meet twice a week starting this Monday."
+            },
+            "highlight": "Padayon ang akong pagtuon"
+          },
+          {
+            "targetText": "Padayon ang among ensayo kung libre ang hawanan.",
+            "baseText": {
+              "de": "Wir proben weiter, wenn der Saal frei ist.",
+              "en": "Our rehearsals will continue if the hall is free."
+            },
+            "highlight": "Padayon ang among ensayo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Magtuon",
+          "choices": [
+            "Gituon",
+            "Pagtuon",
+            "Magtuon",
+            "Nagtuon"
+          ],
+          "cue": "tuon, future actor action"
+        },
+        " ko sa balay ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "sa ubos sa",
+            "kung",
+            "gikan sa",
+            "tungod sa"
+          ]
+        },
+        " wala tay klase sa ",
+        {
+          "kind": "choice",
+          "answer": "Huwebes",
+          "choices": [
+            "Huwebes",
+            "kutsara",
+            "lapis",
+            "sobre"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Padayon ang akong pagtuon",
+          "baseText": {
+            "de": "Ich lerne weiter,",
+            "en": "My studies will continue"
+          }
+        },
+        {
+          "targetText": "kung magkita ta",
+          "baseText": {
+            "de": "wenn wir uns sehen",
+            "en": "if we meet"
+          }
+        },
+        {
+          "targetText": "kaduha sa usa ka semana",
+          "baseText": {
+            "de": "zweimal pro Woche",
+            "en": "twice a week"
+          }
+        },
+        {
+          "targetText": "sugod karong Lunes.",
+          "baseText": {
+            "de": "ab diesem Montag.",
+            "en": "starting this Monday."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "padayon",
+          "baseText": {
+            "de": "weiter",
+            "en": "continuing"
+          }
+        },
+        {
+          "targetText": "pagtuon",
+          "baseText": {
+            "de": "Lernen",
+            "en": "studying"
+          }
+        },
+        {
+          "targetText": "magkita ta",
+          "baseText": {
+            "de": "wir treffen uns",
+            "en": "we meet"
+          }
+        },
+        {
+          "targetText": "kaduha",
+          "baseText": {
+            "de": "zweimal",
+            "en": "twice"
+          }
+        },
+        {
+          "targetText": "kausa",
+          "baseText": {
+            "de": "einmal",
+            "en": "once"
+          }
+        },
+        {
+          "targetText": "Huwebes",
+          "baseText": {
+            "de": "Donnerstag",
+            "en": "Thursday"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Padayon ang akong pagtuon kung magkita ta ",
+        "answer": "kaduha",
+        "after": " sa usa ka semana sugod karong Lunes.",
+        "fallbackChoices": [
+          "ikatulo",
+          "kaduha",
+          "kilid",
+          "buntag"
+        ]
+      },
+      "speakRequired": [
+        "padayon",
+        "pagtuon",
+        "magkita"
+      ],
+      "sceneCaption": {
+        "de": "Deine Lehrerin legt den neuen Stundenplan neben eure Bücher. „Mopadayon ka sa atong mga leksiyon?“",
+        "en": "Your tutor puts the new timetable beside your books. “Mopadayon ka sa atong mga leksiyon?”"
+      },
+      "trophyWord": {
+        "word": "padayon",
+        "meaning": {
+          "de": "weiter",
+          "en": "continuing"
+        },
+        "example": "Padayon ang klase sunod semana.",
+        "whyThisWord": {
+          "de": "Mit padayon kannst du deutlich machen, dass eine Tätigkeit weitergeht, auch wenn sich der Zeitplan ändert.",
+          "en": "Use padayon to say an activity continues even when the schedule changes."
+        }
+      },
+      "distractors": [
+        "kausa sa usa ka bulan",
+        "sugod karong Biyernes."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Lehrerin legt den neuen Stundenplan neben eure Bücher.",
+        "en": "Your tutor puts the new timetable beside your books."
+      },
+      "songMood": "Patient acoustic classroom pulse",
+      "visualNotes": "Your tutor puts the new timetable beside your books."
+    },
+    {
+      "slug": "tigom-dinner",
+      "title": {
+        "de": "Auswärts essen",
+        "en": "Eating out"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, warum du abends nicht mehr mit der Gruppe essen gehst.",
+        "en": "A friend asks why you’ve stopped joining the group for dinner out."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Tigom für das Ersparte.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Nganong dili na ka mouban namo sa panihapon?",
+          "baseText": {
+            "de": "Warum kommst du nicht mehr mit uns zum Abendessen?",
+            "en": "Why don’t you join us for dinner anymore?"
+          }
+        },
+        {
+          "targetText": "Para sa biyahe ang akong tigom, mao nga mokaon lang ko sa balay karong gabii.",
+          "baseText": {
+            "de": "Ich spare für die Reise und esse deshalb heute Abend lieber zu Hause.",
+            "en": "My savings are for the trip, so I’ll just eat at home tonight."
+          }
+        },
+        {
+          "targetText": "Naa may barato nga kan-anan sa eskina. Tunga ta sa usa ka sud-an?",
+          "baseText": {
+            "de": "An der Ecke gibt es ein günstiges Lokal. Wollen wir uns ein Gericht teilen?",
+            "en": "There’s a cheap place on the corner. Shall we split a dish?"
+          }
+        },
+        {
+          "targetText": "Sige, mouban ko kung magbahin ta sa bayad.",
+          "baseText": {
+            "de": "Gut, ich komme mit, wenn wir die Rechnung teilen.",
+            "en": "All right, I’ll come if we split the bill."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tigom für das Ersparte",
+        "rule": {
+          "de": "Ang akong tigom meint hier das Geld, das ich zurücklege. Para sa biyahe nennt den Verwendungszweck.",
+          "en": "Ang akong tigom refers to the money I save. Para sa biyahe says what I’m saving it for."
+        },
+        "examples": [
+          {
+            "targetText": "Para sa biyahe ang akong tigom, mao nga mokaon lang ko sa balay karong gabii.",
+            "baseText": {
+              "de": "Ich spare für die Reise und esse deshalb heute Abend lieber zu Hause.",
+              "en": "My savings are for the trip, so I’ll just eat at home tonight."
+            },
+            "highlight": "ang akong tigom"
+          },
+          {
+            "targetText": "Para sa bag-ong atop ang among tigom niini nga tuig.",
+            "baseText": {
+              "de": "Dieses Jahr sparen wir für ein neues Dach.",
+              "en": "Our savings this year are for a new roof."
+            },
+            "highlight": "ang among tigom"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "form",
+          "answer": "mouban",
+          "choices": [
+            "nakauban",
+            "mouban",
+            "niuban",
+            "giubanan"
+          ],
+          "cue": "uban, future actor action"
+        },
+        " ko ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "gikan sa",
+            "tungod sa",
+            "duol sa"
+          ]
+        },
+        " magbahin ta sa ",
+        {
+          "kind": "choice",
+          "answer": "bayad",
+          "choices": [
+            "bayad",
+            "unlan",
+            "lapis",
+            "ulan"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para sa biyahe",
+          "baseText": {
+            "de": "Für die Reise",
+            "en": "For the trip"
+          }
+        },
+        {
+          "targetText": "ang akong tigom,",
+          "baseText": {
+            "de": "sind meine Ersparnisse gedacht,",
+            "en": "are my savings,"
+          }
+        },
+        {
+          "targetText": "mao nga mokaon lang ko",
+          "baseText": {
+            "de": "deshalb esse ich einfach",
+            "en": "so I’ll just eat"
+          }
+        },
+        {
+          "targetText": "sa balay karong gabii.",
+          "baseText": {
+            "de": "heute Abend zu Hause.",
+            "en": "at home tonight."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tigom",
+          "baseText": {
+            "de": "Ersparnisse",
+            "en": "savings"
+          }
+        },
+        {
+          "targetText": "biyahe",
+          "baseText": {
+            "de": "Reise",
+            "en": "trip"
+          }
+        },
+        {
+          "targetText": "mokaon",
+          "baseText": {
+            "de": "essen",
+            "en": "eat"
+          }
+        },
+        {
+          "targetText": "panihapon",
+          "baseText": {
+            "de": "Abendessen",
+            "en": "dinner"
+          }
+        },
+        {
+          "targetText": "eskina",
+          "baseText": {
+            "de": "Ecke",
+            "en": "corner"
+          }
+        },
+        {
+          "targetText": "magbahin",
+          "baseText": {
+            "de": "teilen",
+            "en": "share"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para sa biyahe ang akong ",
+        "answer": "tigom",
+        "after": ", mao nga mokaon lang ko sa balay karong gabii.",
+        "fallbackChoices": [
+          "tigom",
+          "tinidor",
+          "lami",
+          "dalan"
+        ]
+      },
+      "speakRequired": [
+        "biyahe",
+        "tigom",
+        "mokaon"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt, warum du abends nicht mehr mit der Gruppe essen gehst. „Nganong dili na ka mouban namo sa panihapon?“",
+        "en": "A friend asks why you’ve stopped joining the group for dinner out. “Nganong dili na ka mouban namo sa panihapon?”"
+      },
+      "trophyWord": {
+        "word": "tigom",
+        "meaning": {
+          "de": "Ersparnisse",
+          "en": "savings"
+        },
+        "example": "Ang akong tigom para sa tiket sa barko.",
+        "whyThisWord": {
+          "de": "Tigom nennt die Ersparnisse selbst. Mit para sa ergänzt du ihren Zweck.",
+          "en": "Tigom refers to the savings themselves. Add para sa to say what they are for."
+        }
+      },
+      "distractors": [
+        "Para sa bisikleta",
+        "sa balay ugma sa buntag."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund fragt, warum du abends nicht mehr mit der Gruppe essen gehst.",
+        "en": "A friend asks why you’ve stopped joining the group for dinner out."
+      },
+      "songMood": "Relaxed neighbourhood supper guitar",
+      "visualNotes": "A friend asks why you’ve stopped joining the group for dinner out."
+    },
+    {
+      "slug": "biyahe-dates",
+      "title": {
+        "de": "Am Fahrkartenschalter",
+        "en": "At the travel counter"
+      },
+      "situation": {
+        "de": "Eine Mitarbeiterin im Reisebüro fragt nach deinen Reisedaten.",
+        "en": "An agent at a travel office asks about your dates."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Biyahe mit Ziel und Monat.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kanus-a ang imong biyahe paingon sa Bohol?",
+          "baseText": {
+            "de": "Wann möchten Sie nach Bohol reisen?",
+            "en": "When are you travelling to Bohol?"
+          }
+        },
+        {
+          "targetText": "Sa Hunyo ang akong biyahe paingon sa Bohol kung moubos ang plete sa barko.",
+          "baseText": {
+            "de": "Ich fahre im Juni nach Bohol, wenn die Fährpreise sinken.",
+            "en": "I’ll travel to Bohol in June if the ferry fare goes down."
+          }
+        },
+        {
+          "targetText": "Mas barato ang tiket sa Mayo. Makabiya ka sa kataposang semana niana?",
+          "baseText": {
+            "de": "Im Mai ist das Ticket günstiger. Können Sie in der letzten Maiwoche losfahren?",
+            "en": "The ticket is cheaper in May. Can you leave in the last week of that month?"
+          }
+        },
+        {
+          "targetText": "Sige, mobiya ko sa kataposang semana sa Mayo aron makatipid ko.",
+          "baseText": {
+            "de": "Gut, ich fahre in der letzten Maiwoche los, damit ich sparen kann.",
+            "en": "All right, I’ll leave in the last week of May so I can save money."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Biyahe mit Ziel und Monat",
+        "rule": {
+          "de": "Ang akong biyahe bezeichnet hier eine geplante Reise. Sa Hunyo gibt den Monat an und paingon sa das Ziel.",
+          "en": "Ang akong biyahe is a planned trip here. Sa Hunyo gives the month and paingon sa the destination."
+        },
+        "examples": [
+          {
+            "targetText": "Sa Hunyo ang akong biyahe paingon sa Bohol kung moubos ang plete sa barko.",
+            "baseText": {
+              "de": "Ich fahre im Juni nach Bohol, wenn die Fährpreise sinken.",
+              "en": "I’ll travel to Bohol in June if the ferry fare goes down."
+            },
+            "highlight": "Sa Hunyo ang akong biyahe"
+          },
+          {
+            "targetText": "Sa Agosto ang among biyahe paingon sa Dumaguete.",
+            "baseText": {
+              "de": "Im August fahren wir nach Dumaguete.",
+              "en": "Our trip to Dumaguete is in August."
+            },
+            "highlight": "Sa Agosto ang among biyahe"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "form",
+          "answer": "mobiya",
+          "choices": [
+            "mobiya",
+            "nibiya",
+            "gibiyaan",
+            "pagbiya"
+          ],
+          "cue": "biya, future action"
+        },
+        " ko sa kataposang semana sa ",
+        {
+          "kind": "choice",
+          "answer": "Mayo",
+          "choices": [
+            "plete",
+            "adlaw",
+            "oras",
+            "Mayo"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "aron",
+          "choices": [
+            "aron",
+            "gikan",
+            "tungod sa",
+            "sulod sa"
+          ]
+        },
+        " makatipid ko."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa Hunyo ang akong biyahe",
+          "baseText": {
+            "de": "Meine Reise ist im Juni,",
+            "en": "My trip is in June"
+          }
+        },
+        {
+          "targetText": "paingon sa Bohol",
+          "baseText": {
+            "de": "nach Bohol,",
+            "en": "to Bohol,"
+          }
+        },
+        {
+          "targetText": "kung moubos ang plete",
+          "baseText": {
+            "de": "wenn der Fahrpreis sinkt",
+            "en": "if the fare goes down"
+          }
+        },
+        {
+          "targetText": "sa barko.",
+          "baseText": {
+            "de": "für das Schiff.",
+            "en": "for the ferry."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "biyahe",
+          "baseText": {
+            "de": "Reise",
+            "en": "trip"
+          }
+        },
+        {
+          "targetText": "Hunyo",
+          "baseText": {
+            "de": "Juni",
+            "en": "June"
+          }
+        },
+        {
+          "targetText": "plete",
+          "baseText": {
+            "de": "Fahrpreis",
+            "en": "fare"
+          }
+        },
+        {
+          "targetText": "barko",
+          "baseText": {
+            "de": "Schiff",
+            "en": "ship"
+          }
+        },
+        {
+          "targetText": "kataposang semana",
+          "baseText": {
+            "de": "letzte Woche",
+            "en": "last week"
+          }
+        },
+        {
+          "targetText": "tiket",
+          "baseText": {
+            "de": "Fahrkarte",
+            "en": "ticket"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa Hunyo ang akong biyahe paingon sa Bohol kung moubos ang ",
+        "answer": "plete",
+        "after": " sa barko.",
+        "fallbackChoices": [
+          "unlan",
+          "dagat",
+          "dalan",
+          "plete"
+        ]
+      },
+      "speakRequired": [
+        "biyahe",
+        "moubos",
+        "plete"
+      ],
+      "sceneCaption": {
+        "de": "Eine Mitarbeiterin im Reisebüro fragt nach deinen Reisedaten. „Kanus-a ang imong biyahe paingon sa Bohol?“",
+        "en": "An agent at a travel office asks about your dates. “Kanus-a ang imong biyahe paingon sa Bohol?”"
+      },
+      "trophyWord": {
+        "word": "biyahe",
+        "meaning": {
+          "de": "Reise",
+          "en": "trip"
+        },
+        "example": "Sa Biyernes ang akong biyahe ngadto sa pantalan.",
+        "whyThisWord": {
+          "de": "Mit biyahe kannst du nicht nur ein Ziel, sondern auch den konkreten Termin deiner Fahrt angeben.",
+          "en": "With biyahe you can state the destination and the date of a particular trip."
+        }
+      },
+      "distractors": [
+        "paingon sa Leyte",
+        "sa tren."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mitarbeiterin im Reisebüro fragt nach deinen Reisedaten.",
+        "en": "An agent at a travel office asks about your dates."
+      },
+      "songMood": "Soft ferry-terminal folk rhythm",
+      "visualNotes": "An agent at a travel office asks about your dates."
+    },
+    {
+      "slug": "hinungdan-leave",
+      "title": {
+        "de": "Ein paar freie Tage",
+        "en": "A few days off"
+      },
+      "situation": {
+        "de": "Deine Vorgesetzte hat deinen Urlaubsantrag vor sich.",
+        "en": "Your manager has your leave request in front of her."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Hinungdan sa für den Anlass einer Bitte.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may hinungdan sa imong paghangyo og bakasyon?",
+          "baseText": {
+            "de": "Warum möchten Sie Urlaub nehmen?",
+            "en": "What’s the reason for your leave request?"
+          }
+        },
+        {
+          "targetText": "Ang hinungdan sa akong hangyo mao ang kasal sa akong ig-agaw nga si Rosa sunod semana.",
+          "baseText": {
+            "de": "Der Grund für meinen Antrag ist die Hochzeit meiner Cousine Rosa nächste Woche.",
+            "en": "The reason for my request is my cousin Rosa’s wedding next week."
+          }
+        },
+        {
+          "targetText": "Daghan tag trabaho sa Lunes. Mahimo bang duha lang ka adlaw?",
+          "baseText": {
+            "de": "Am Montag haben wir viel zu tun. Würden zwei Tage reichen?",
+            "en": "We have a lot of work on Monday. Could you take just two days?"
+          }
+        },
+        {
+          "targetText": "Sige, apan mahimo bang Huwebes ug Biyernes lang aron makatambong ko, palihug?",
+          "baseText": {
+            "de": "Gut, aber ginge es bitte nur Donnerstag und Freitag, damit ich dabei sein kann?",
+            "en": "All right, but could it be just Thursday and Friday, please, so I can attend?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Hinungdan sa für den Anlass einer Bitte",
+        "rule": {
+          "de": "Hinungdan sa fragt nach dem Grund oder nennt ihn. Mao ang kasal verknüpft die Bitte mit ihrem konkreten Anlass.",
+          "en": "Hinungdan sa asks for a reason or states one. Mao ang kasal ties the request to a specific occasion."
+        },
+        "examples": [
+          {
+            "targetText": "Ang hinungdan sa akong hangyo mao ang kasal sa akong ig-agaw nga si Rosa sunod semana.",
+            "baseText": {
+              "de": "Der Grund für meinen Antrag ist die Hochzeit meiner Cousine Rosa nächste Woche.",
+              "en": "The reason for my request is my cousin Rosa’s wedding next week."
+            },
+            "highlight": "Ang hinungdan sa akong hangyo"
+          },
+          {
+            "targetText": "Ang hinungdan sa kausaban mao ang bag-ong iskedyul sa barko.",
+            "baseText": {
+              "de": "Grund für die Änderung ist der neue Fahrplan der Fähre.",
+              "en": "The reason for the change is the new ferry schedule."
+            },
+            "highlight": "Ang hinungdan sa kausaban"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "apan",
+            "aron",
+            "gikan sa",
+            "tungod sa"
+          ]
+        },
+        " mahimo bang ",
+        {
+          "kind": "choice",
+          "answer": "Huwebes",
+          "choices": [
+            "Hulyo",
+            "Hunyo",
+            "Marso",
+            "Huwebes"
+          ]
+        },
+        " ug Biyernes lang aron ",
+        {
+          "kind": "form",
+          "answer": "makatambong",
+          "choices": [
+            "makatambong",
+            "nakatambong",
+            "gitambongan",
+            "pagtambong"
+          ],
+          "cue": "tambong, future ability"
+        },
+        " ko, palihug?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang hinungdan sa akong hangyo",
+          "baseText": {
+            "de": "Der Grund für meinen Antrag",
+            "en": "The reason for my request"
+          }
+        },
+        {
+          "targetText": "mao ang kasal",
+          "baseText": {
+            "de": "ist die Hochzeit",
+            "en": "is the wedding"
+          }
+        },
+        {
+          "targetText": "sa akong ig-agaw nga si Rosa",
+          "baseText": {
+            "de": "meiner Cousine Rosa",
+            "en": "of my cousin Rosa"
+          }
+        },
+        {
+          "targetText": "sunod semana.",
+          "baseText": {
+            "de": "nächste Woche.",
+            "en": "next week."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hinungdan",
+          "baseText": {
+            "de": "Grund",
+            "en": "reason"
+          }
+        },
+        {
+          "targetText": "hangyo",
+          "baseText": {
+            "de": "Bitte",
+            "en": "request"
+          }
+        },
+        {
+          "targetText": "kasal",
+          "baseText": {
+            "de": "Hochzeit",
+            "en": "wedding"
+          }
+        },
+        {
+          "targetText": "ig-agaw",
+          "baseText": {
+            "de": "Cousin oder Cousine",
+            "en": "cousin"
+          }
+        },
+        {
+          "targetText": "sunod semana",
+          "baseText": {
+            "de": "nächste Woche",
+            "en": "next week"
+          }
+        },
+        {
+          "targetText": "bakasyon",
+          "baseText": {
+            "de": "Urlaub",
+            "en": "leave"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang hinungdan sa akong hangyo mao ang ",
+        "answer": "kasal",
+        "after": " sa akong ig-agaw nga si Rosa sunod semana.",
+        "fallbackChoices": [
+          "sugba",
+          "gunting",
+          "kasal",
+          "lapis"
+        ]
+      },
+      "speakRequired": [
+        "hinungdan",
+        "hangyo",
+        "nga"
+      ],
+      "sceneCaption": {
+        "de": "Deine Vorgesetzte hat deinen Urlaubsantrag vor sich. „Unsa may hinungdan sa imong paghangyo og bakasyon?“",
+        "en": "Your manager has your leave request in front of her. “Unsa may hinungdan sa imong paghangyo og bakasyon?”"
+      },
+      "trophyWord": {
+        "word": "hinungdan",
+        "meaning": {
+          "de": "Grund",
+          "en": "reason"
+        },
+        "example": "Ang hinungdan sa akong pagbiya mao ang kasal.",
+        "whyThisWord": {
+          "de": "Hinungdan hilft dir, eine Bitte am Arbeitsplatz mit ihrem tatsächlichen Anlass zu begründen.",
+          "en": "Hinungdan helps you explain the specific reason for a request at work."
+        }
+      },
+      "distractors": [
+        "mao ang bunyag",
+        "sa sunod bulan."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Vorgesetzte hat deinen Urlaubsantrag vor sich.",
+        "en": "Your manager has your leave request in front of her."
+      },
+      "songMood": "Measured office acoustic pop",
+      "visualNotes": "Your manager has your leave request in front of her."
+    },
+    {
+      "slug": "bakasyon-island",
+      "title": {
+        "de": "Urlaubspläne",
+        "en": "Holiday plans"
+      },
+      "situation": {
+        "de": "Dein Cousin breitet eine Landkarte auf dem Tisch aus.",
+        "en": "Your cousin spreads a map across the table."
+      },
+      "pedagogicalGoal": "Eine Absicht begründen und einen Plan an ein Gegenangebot anpassen. Einen Vorschlag mit kung absichern.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Asa man ta moadto sa atong bakasyon?",
+          "baseText": {
+            "de": "Wohin fahren wir in unserem Urlaub?",
+            "en": "Where shall we go on our holiday?"
+          }
+        },
+        {
+          "targetText": "Sa atong bakasyon, moadto ta sa isla kung mobiyahe ang barko sa Sabado.",
+          "baseText": {
+            "de": "Fahren wir im Urlaub auf die Insel, wenn am Samstag die Fähre fährt.",
+            "en": "Let’s go to the island for our holiday if the ferry runs on Saturday."
+          }
+        },
+        {
+          "targetText": "Nindot sab unta mosaka sa bukid. May gabii pa ta inig balik.",
+          "baseText": {
+            "de": "Eine Bergtour wäre auch schön. Nach der Rückkehr haben wir noch eine Nacht.",
+            "en": "A trip up the mountain would be lovely too. We still have a night after we return."
+          }
+        },
+        {
+          "targetText": "Sige, magpalabay tag gabii sa bukid inig balik gikan sa isla.",
+          "baseText": {
+            "de": "Gut, verbringen wir nach der Rückkehr von der Insel eine Nacht in den Bergen.",
+            "en": "All right, let’s spend a night in the mountains when we come back from the island."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Einen Vorschlag mit kung absichern",
+        "rule": {
+          "de": "Kung mobiyahe ang barko lässt den Ausflug vom Fährbetrieb abhängen. Atong schließt die angesprochene Person in den Urlaubsplan ein.",
+          "en": "Kung mobiyahe ang barko makes the outing depend on the ferry service. Atong includes the listener in the holiday plan."
+        },
+        "examples": [
+          {
+            "targetText": "Sa atong bakasyon, moadto ta sa isla kung mobiyahe ang barko sa Sabado.",
+            "baseText": {
+              "de": "Fahren wir im Urlaub auf die Insel, wenn am Samstag die Fähre fährt.",
+              "en": "Let’s go to the island for our holiday if the ferry runs on Saturday."
+            },
+            "highlight": "kung mobiyahe ang barko"
+          },
+          {
+            "targetText": "Maglakaw ta sa baybayon kung mohunong ang ulan.",
+            "baseText": {
+              "de": "Gehen wir am Strand spazieren, wenn der Regen aufhört.",
+              "en": "Let’s take a walk on the beach if the rain stops."
+            },
+            "highlight": "kung mohunong ang ulan"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "form",
+          "answer": "magpalabay",
+          "choices": [
+            "gipalabay",
+            "pagpalabay",
+            "magpalabay",
+            "nagpalabay"
+          ],
+          "cue": "palabay, proposed future actor action"
+        },
+        " tag gabii sa ",
+        {
+          "kind": "choice",
+          "answer": "bukid",
+          "choices": [
+            "panahon",
+            "bukid",
+            "gunting",
+            "resibo"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "inig",
+          "choices": [
+            "inig",
+            "aron",
+            "gikan sa",
+            "samtang"
+          ]
+        },
+        " balik gikan sa isla."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa atong bakasyon,",
+          "baseText": {
+            "de": "In unserem Urlaub",
+            "en": "On our holiday,"
+          }
+        },
+        {
+          "targetText": "moadto ta sa isla",
+          "baseText": {
+            "de": "fahren wir auf die Insel,",
+            "en": "let’s go to the island"
+          }
+        },
+        {
+          "targetText": "kung mobiyahe ang barko",
+          "baseText": {
+            "de": "wenn die Fähre fährt",
+            "en": "if the ferry runs"
+          }
+        },
+        {
+          "targetText": "sa Sabado.",
+          "baseText": {
+            "de": "am Samstag.",
+            "en": "on Saturday."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bakasyon",
+          "baseText": {
+            "de": "Urlaub",
+            "en": "holiday"
+          }
+        },
+        {
+          "targetText": "isla",
+          "baseText": {
+            "de": "Insel",
+            "en": "island"
+          }
+        },
+        {
+          "targetText": "mobiyahe",
+          "baseText": {
+            "de": "verkehren; reisen",
+            "en": "run a service; travel"
+          }
+        },
+        {
+          "targetText": "barko",
+          "baseText": {
+            "de": "Fähre",
+            "en": "ferry"
+          }
+        },
+        {
+          "targetText": "bukid",
+          "baseText": {
+            "de": "Berg",
+            "en": "mountain"
+          }
+        },
+        {
+          "targetText": "inig balik",
+          "baseText": {
+            "de": "bei der Rückkehr",
+            "en": "on returning"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa atong bakasyon, moadto ta sa ",
+        "answer": "isla",
+        "after": " kung mobiyahe ang barko sa Sabado.",
+        "fallbackChoices": [
+          "panihapon",
+          "isla",
+          "oras",
+          "gasto"
+        ]
+      },
+      "speakRequired": [
+        "bakasyon",
+        "moadto",
+        "mobiyahe"
+      ],
+      "sceneCaption": {
+        "de": "Dein Cousin breitet eine Landkarte auf dem Tisch aus. „Asa man ta moadto sa atong bakasyon?“",
+        "en": "Your cousin spreads a map across the table. “Asa man ta moadto sa atong bakasyon?”"
+      },
+      "trophyWord": {
+        "word": "bakasyon",
+        "meaning": {
+          "de": "Urlaub",
+          "en": "holiday"
+        },
+        "example": "Moadto mi sa isla sa among bakasyon.",
+        "whyThisWord": {
+          "de": "Bakasyon ist der passende Rahmen für mehrere zusammenhängende Reisepläne.",
+          "en": "Bakasyon sets the scene for a series of linked holiday plans."
+        }
+      },
+      "distractors": [
+        "moadto ta sa lungsod",
+        "sa Domingo."
+      ],
+      "placeholderCaption": {
+        "de": "Dein Cousin breitet eine Landkarte auf dem Tisch aus.",
+        "en": "Your cousin spreads a map across the table."
+      },
+      "songMood": "Relaxed island guitar with a climbing melody",
+      "visualNotes": "Your cousin spreads a map across the table."
+    }
+  ]
+}

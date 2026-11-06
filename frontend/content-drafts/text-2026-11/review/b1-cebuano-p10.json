@@ -1,0 +1,1123 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 10,
+  "lessonSha256": "ad56a3f75f6f437d5a996ad2aaf5815ece5194d580c63d89704887bbac3008c5",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "ad56a3f75f6f437d5a996ad2aaf5815ece5194d580c63d89704887bbac3008c5",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "June’s family gathering and the solo move in March answer different questions. Kay introduces each reason. The completed actor-focus cue fits nibalhin."
+      },
+      {
+        "n": 2,
+        "observation": "The slow beginning contrasts with later friendships. Joining a growers’ group identifies the turning point, then dayon and kanunay establish the meetings that followed."
+      },
+      {
+        "n": 3,
+        "observation": "The learner changes both job and home but still cycles to work. The fixed options in the final sentence preserve the distinction between a changed circumstance and a continuing routine."
+      },
+      {
+        "n": 4,
+        "observation": "The relative clause identifies the helpful neighbours. The truck ride and flooded road give a concrete example, with completed forms and a causal connector in the exercise."
+      },
+      {
+        "n": 5,
+        "observation": "The café dream has a financial condition and a location with a purpose. Aron is a visible choice, and the market vendors’ coffee after work fits the café context."
+      },
+      {
+        "n": 6,
+        "observation": "The learner hopes to talk with Grandma in Cebuano and then chooses a first topic. The extra example uses an opinion and concession. Both glosses distinguish the hope from an achieved conversation."
+      },
+      {
+        "n": 7,
+        "observation": "Passing the exam is the completed achievement; applying at the clinic is the intended next step. The ability to apply prior learning makes the visible purpose choice clear."
+      },
+      {
+        "n": 8,
+        "observation": "The power outage and dry tank motivate a future water reserve. The future actor form and completed event have distinct time frames in both translations."
+      },
+      {
+        "n": 9,
+        "observation": "Bisan qualifies the positive overall assessment. Paglaum answers the one-word question, followed by the reason. Nakabangon conveys recovery after each difficulty."
+      },
+      {
+        "n": 10,
+        "observation": "The sunset is identified by a relative clause about the cousins’ shared experience. The reply gives a June date and a conditional return plan. Kung is a visible choice."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "ad56a3f75f6f437d5a996ad2aaf5815ece5194d580c63d89704887bbac3008c5",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The reason clause links the family fiesta in June to the best month and the move in March to the hardest. The balhin cue now names completed actor focus without printing the answer prefix."
+      },
+      {
+        "n": 2,
+        "observation": "The revised three-blank response tests joining the group, sequencing the change with dayon and the resulting habitual frequency kanunay. The cue identifies completed actor focus without naming its prefix."
+      },
+      {
+        "n": 3,
+        "observation": "The commute reply now supplies a preceding noun phrase, a clearly causal kay and a verb slot. Neither ang bisikleta, og bisikleta nor pagbisikleta can express I still cycle in the resulting clause. Both previous competing answers are gone."
+      },
+      {
+        "n": 4,
+        "observation": "Gisakay mi nila keeps the neighbours as actors and the learner's group as passengers using previously learned gi-. German no longer supplies any truck owner."
+      },
+      {
+        "n": 5,
+        "observation": "The café location and purpose fit the market women. The gender-specific tindera term is grounded in the target."
+      },
+      {
+        "n": 6,
+        "observation": "The German rule addresses the learner and grandmother without assuming the learner's gender; the visual caption is neutral. The added opinion and concession example recycles P2."
+      },
+      {
+        "n": 7,
+        "observation": "Completed examination result, plan to apply, and purpose of using prior learning remain connected. The form cue no longer spells the prefix."
+      },
+      {
+        "n": 8,
+        "observation": "Human is included in the speech set. The three cloze decisions now separate an intended plan, causal kay and the completed past event anchored by niadtong semanaha, without exposing the needed prefix."
+      },
+      {
+        "n": 9,
+        "observation": "Bisan is now in the speech set and the distractor tiles no longer combine into a paraphrase. The one-word choice resolves into a past result."
+      },
+      {
+        "n": 10,
+        "observation": "The approved beat explicitly supplies plural cousins for the sunset trip. Namong mag-agaw identifies the learner with the group; the German mixed-gender wording is more specific than the target. The date and conditional return are coherent."
+      }
+    ],
+    "findings": [
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[1].baseText.de; pattern.examples[0]; chunks[2]",
+        "issue": "The outline explicitly calls for multiple cousins and supports the English plural in this scene. The German Doppelform can serve as an inclusive collective; the target phrase itself leaves the relative sexes and the exact number unstated.",
+        "recommendation": "When glossing the same term outside this specific scene, preserve its open group membership; a collective such as unsere Cousinrunde avoids implying any particular mix."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "cloze.kind; also L5/L7/L10",
+        "issue": "Dayon L2, aron L5/L7 and kung L10 are offered as unambiguous multiple-choice connectors under kind choice. Other lessons explicitly use kind connector, and the existing labels do not change which option fits.",
+        "recommendation": "Use kind connector for those four linking-word blanks when standardizing metadata."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "90d2144839c57a4100e32e06bc5ef93fe098db9ca46605df471dd7b75c1439fe",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "June's family fiesta is contrasted with moving alone in March. The form cue gives the written prefix of the only matching option here and in later lessons."
+      },
+      {
+        "n": 2,
+        "observation": "The past-to-present change and grower-group turning point make sense. Nakakita does not assert a search, and the relative ra and the past frame do the work of eventually here."
+      },
+      {
+        "n": 3,
+        "observation": "The unchanged cycling commute answers the follow-up. Sa bisikleta is also a valid way to fill this cloze and express the same answer."
+      },
+      {
+        "n": 4,
+        "observation": "The neighbours assisted the evacuation and the learner's group rode in a truck. German adds ownership of the truck and the scored construction introduces causative gi-pa-."
+      },
+      {
+        "n": 5,
+        "observation": "The café dream, savings condition and market location are coherent. Tindera is explicitly female and the two base translations correctly preserve that."
+      },
+      {
+        "n": 6,
+        "observation": "Lola establishes a grandmother. The text never establishes the learner as her grandson. The German pattern and artwork caption add male gender."
+      },
+      {
+        "n": 7,
+        "observation": "The achieved exam result motivates applying to the clinic and the purpose clause says who can use the learning."
+      },
+      {
+        "n": 8,
+        "observation": "The blackout week, empty water tank and future water storage make the causal sequence clear. The speech targets omit a connector or aspect-bearing item."
+      },
+      {
+        "n": 9,
+        "observation": "The year's mixed record resolves naturally into hope. Two supplied distractor tiles combine into a close paraphrase of the canonical claim, and the speech tokens miss the required grammatical anchor."
+      },
+      {
+        "n": 10,
+        "observation": "Namong mag-agaw includes the narrator in a group of cousins. It leaves group size and genders open, which the German specifies beyond the target. The date and conditional return connect."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "cloze form cues in L1, L2, L6, L7, L8 (twice), L9 and L10",
+        "issue": "Cues explicitly supply ni-, mo-, mang-, mag- or naka-. In each cited choice set just one option starts with the supplied prefix. A learner can answer by copying the prefix without using aspect, voice or the scenario.",
+        "recommendation": "Retain the root plus a semantic cue for aspect/voice/time, as specified; remove the answer prefix from each visible cue. Keep choices single-fit with the semantic cue."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "pattern.rule.de/en",
+        "issue": "Nakakita says the speaker found friends. It does not say they deliberately searched, as die Suche Erfolg hatte/the search succeeded implies.",
+        "recommendation": "Explain the successful finding without presupposing a search."
+      },
+      {
+        "n": 3,
+        "severity": "HIGH",
+        "field": "cloze[0].choices",
+        "issue": "Sa bisikleta gihapon ko padulong sa trabaho sama sa una is a natural alternate answer meaning I still go to work by bike, just as before. It can be rejected in favor of Nagbisikleta despite expressing the intended response.",
+        "recommendation": "Replace the Sa bisikleta option with something grammatically incompatible with the sentence, or use a semantic form cue and unambiguous alternatives."
+      },
+      {
+        "n": 4,
+        "severity": "HIGH",
+        "field": "dialogue[3]; cloze[0]",
+        "issue": "Gipasakay mi nila is a causative (gi-pa-sakay) and a scored learner blank. All four choices introduce that causative paradigm. P9 explicitly defers productive ipa- causatives to B2 and the P10 inventory does not introduce that family.",
+        "recommendation": "Keep the truck, flooding, and who helped whom, using a previously taught noncausative predicate or straightforward completed action. Keep the object-focus and causal recycling."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "dialogue[3].baseText.de",
+        "issue": "Sa trak means in/on the truck; it does not say the vehicle belonged to the neighbours. English correctly says the truck, while German says ihrem Lastwagen.",
+        "recommendation": "Use im Lastwagen or mit dem Lastwagen."
+      },
+      {
+        "n": 6,
+        "severity": "HIGH",
+        "field": "pattern.rule.de; placeholderCaption.de",
+        "issue": "Oma und Enkel singles out a male grandchild; ein Lernender assigns that same gender in the visual. The Cebuano speaker gender is open and the English rule avoids assigning one.",
+        "recommendation": "Say dass du und deine Oma miteinander ins Gespräch kommt, or equivalent gender-neutral wording; use eine Lehrerin und eine lernende Person or two people in the caption."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "speakRequired",
+        "issue": "Lisod, hagit and kuryente cover description and nouns but neither a connector nor aspect.",
+        "recommendation": "Use the existing human (after), or nga, with hagit and kuryente."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "speakRequired",
+        "issue": "Tuig, daghan and kalisdanan omit a connector or aspect-bearing word.",
+        "recommendation": "Use bisan as one of the three anchored targets."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "distractors[0..1]",
+        "issue": "Sa tibuok tuig, mas gamay + ang masulob-ong adlaw yields fewer sad days, a coherent close paraphrase of the intended more happy days. It weakens a chunk assembly intended to have a single answer.",
+        "recommendation": "Substitute distractors which do not combine into a second sensible paraphrase of the prompt."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "dialogue[1].baseText.de/en; pattern.examples[0]; chunks[2]; terms.mag-agaw",
+        "issue": "Namong mag-agaw says we, who are cousins. It neither guarantees several cousins in addition to the speaker nor both male and female cousins. English my cousins and I and German meinen Cousins und Cousinen add those details.",
+        "recommendation": "If the intended scene includes several cousins, make that explicit with akong mga ig-agaw in the target. Keep German neutral about the mix (for example in unserer Cousinrunde) or establish the precise relatives in the scene, and synchronize the chunk and gloss."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "d18b0176da338e8c189b595171fae6866d652d830514b5cfc26385c9faeba361",
+      "sourceSha256": "90d2144839c57a4100e32e06bc5ef93fe098db9ca46605df471dd7b75c1439fe",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend register, 13/9-word learner turns, trophy bulan anchored in youOne and example; nagkita is the native completed reciprocal (nikita is not used) and the pattern rule names the past June as frame; cloze (choice/connector/form) joins exactly and every foil is ungrammatical or contextually impossible; chunks, recall, caption quote all consistent."
+        },
+        {
+          "n": 2,
+          "observation": "Elder/neutral scene, sauna…apan contrast and nakakita abilitative past taught as staged; fused kog only in dialogue text, speech tokens clean; cloze and recall mechanically sound. Them-line dialogue[2] uses the Tagalog-type contraction ‘ka nang may kauban’, which is not Cebuano; native form is ‘kanunay na kay kauban’ (ka + y)."
+        },
+        {
+          "n": 3,
+          "observation": "kausaban mao nga taught with a distinct transfer example; ug/og used correctly (nibalhin og trabaho ug puy-anan). Cloze deviates from the path schema (no form blank) and its first ‘choice’ foil ‘Sa bisikleta’ yields a grammatical, natural sentence (‘Sa bisikleta gihapon ko padulong sa trabaho’), so the slot is unjustly closed; a form blank with nag- cue fixes both."
+        },
+        {
+          "n": 4,
+          "observation": "Host scene, neutral full sentences; pasalamat sa + nga nitabang clause, gi- object focus productive in youTwo (Gipasakay mi nila, gibahaan) as licensed for P10; German/English carry the same past aspect; cloze foils lexical and impossible; all joins exact."
+        },
+        {
+          "n": 5,
+          "observation": "Friend scene; damgo nga + mo- + kung condition and aron purpose; ‘aron’ correctly presented as a choice since typed ‘para’ would also fit; cloze and chunks join; recall uses kapehan rather than the trophy, which the schema permits. No defects."
+        },
+        {
+          "n": 6,
+          "observation": "Tutor scene; paglaum nga + mag- future with sunod tuig licence, exclusive ‘mi ni Lola’ idiomatic; cloze form cue does not contain the answer; joins exact. However the block 4–6 staged structure ‘opinion with hunahuna/bisan (P2)’ is taught nowhere in lessons 4–6 (bisan first appears in L9), so a distinct transfer model is needed here."
+        },
+        {
+          "n": 7,
+          "observation": "Cousin/friend scene; nipasar narration with mao kadto result, aron purpose with magamit; cue ‘aplay · mo-’ does not reveal the answer; foils impossible; chunks, recall, caption consistent."
+        },
+        {
+          "n": 8,
+          "observation": "Friend scene; usa ka semana nga walay kuryente, mag- intention + kay + nihubas (nahubas also native but the ni- cue justifies the grading); 16-word youOne at the limit; cloze joins. speakRequired [lisod, hagit, kuryente] contains no connector or aspect-bearing word as the spec requires."
+        },
+        {
+          "n": 9,
+          "observation": "Elder/neutral scene; sa tibuok tuig + bisan concession, naka- result in youTwo (recycles paglaum); cloze and recall exact. speakRequired [tuig, daghan, kalisdanan] has no connector/aspect word and omits the trophy tibuok, unlike every other lesson."
+        },
+        {
+          "n": 10,
+          "observation": "Friend scene; handumanan + nga relative clause, nakita namong mag-agaw idiomatic, Spanish-derived date baynte otso, kung plan; hyphenated mag-agaw/pag-usab only in dialogue text; cloze kung presented as choice (kon variant safe); all joins exact. No defects."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Them-line dialogue[2] ‘mas kanunay ka nang may kauban’ uses a Tagalog-style ‘nang’ contraction that is not Cebuano; native wording with the fused ka+y form keeps the same meaning and the German/English translations unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/2/targetText",
+              "old": "Kanus-a man nagsugod nga mas kanunay ka nang may kauban?",
+              "new": "Kanus-a man nagsugod nga mas kanunay na kay kauban?"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Cloze blank 1 is a cue-free choice whose foil ‘Sa bisikleta’ produces a grammatical, natural Cebuano sentence (‘Sa bisikleta gihapon ko padulong sa trabaho sama sa una’), so the slot is closed by an invisible assumption; the path cloze schema also expects a form blank on the aspect-marked verb. Replace with a form blank on the whole verb with a nag- cue and aspect-only foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/0",
+              "old": {
+                "kind": "choice",
+                "answer": "Nagbisikleta",
+                "choices": [
+                  "Og bisikleta",
+                  "Nagbisikleta",
+                  "Ang bisikleta",
+                  "Sa bisikleta"
+                ]
+              },
+              "new": {
+                "kind": "form",
+                "answer": "Nagbisikleta",
+                "choices": [
+                  "Nagbisikleta",
+                  "Nibisikleta",
+                  "Mobisikleta",
+                  "Gibisikleta"
+                ],
+                "cue": "bisikleta · nag- (gewohnheitsmäßig / habitual)"
+              }
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Staging for lessons 4–6 lists ‘opinion with hunahuna/bisan (P2)’ as productive, but none of lessons 4–6 models it (bisan first surfaces in L9, hunahuna never). Add a distinct transfer example to the L6 pattern that combines the trophy paglaum with sa akong hunahuna + bisan, and mention it in the rule.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Naa koy paglaum nga magkaistorya na mi ni Lola sa Binisaya sunod tuig.",
+                  "baseText": {
+                    "de": "Ich hoffe, dass meine Oma und ich uns nächstes Jahr auf Cebuano unterhalten können.",
+                    "en": "I hope my grandma and I can have a conversation in Cebuano next year."
+                  },
+                  "highlight": "Naa koy paglaum nga magkaistorya"
+                },
+                {
+                  "targetText": "Naa koy paglaum nga magkita ang among pamilya sa pista.",
+                  "baseText": {
+                    "de": "Ich hoffe, dass unsere Familie zum Fest zusammenkommt.",
+                    "en": "I hope our family gets together for the fiesta."
+                  },
+                  "highlight": "Naa koy paglaum nga"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Naa koy paglaum nga magkaistorya na mi ni Lola sa Binisaya sunod tuig.",
+                  "baseText": {
+                    "de": "Ich hoffe, dass meine Oma und ich uns nächstes Jahr auf Cebuano unterhalten können.",
+                    "en": "I hope my grandma and I can have a conversation in Cebuano next year."
+                  },
+                  "highlight": "Naa koy paglaum nga magkaistorya"
+                },
+                {
+                  "targetText": "Naa koy paglaum nga magkita ang among pamilya sa pista.",
+                  "baseText": {
+                    "de": "Ich hoffe, dass unsere Familie zum Fest zusammenkommt.",
+                    "en": "I hope our family gets together for the fiesta."
+                  },
+                  "highlight": "Naa koy paglaum nga"
+                },
+                {
+                  "targetText": "Sa akong hunahuna, matuman ang akong paglaum bisan lisod pa ang Binisaya.",
+                  "baseText": {
+                    "de": "Ich glaube, meine Hoffnung erfüllt sich, auch wenn Cebuano noch schwer ist.",
+                    "en": "I think my hope will come true, even though Cebuano is still hard."
+                  },
+                  "highlight": "Sa akong hunahuna, matuman ang akong paglaum bisan"
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule",
+              "old": {
+                "de": "Paglaum nennt die Hoffnung. Mit nga formulierst du, was du dir erhoffst. Magkaistorya meint hier, dass Oma und Enkel miteinander ins Gespräch kommen.",
+                "en": "Paglaum names a hope. Nga introduces what you hope for. Magkaistorya here describes the two of you talking with each other."
+              },
+              "new": {
+                "de": "Paglaum nennt die Hoffnung. Mit nga formulierst du, was du dir erhoffst. Magkaistorya meint hier, dass Oma und Enkel miteinander ins Gespräch kommen. Mit sa akong hunahuna und bisan verbindest du die Hoffnung mit deiner eigenen Einschätzung.",
+                "en": "Paglaum names a hope. Nga introduces what you hope for. Magkaistorya here describes the two of you talking with each other. With sa akong hunahuna and bisan you tie the hope to your own judgement."
+              }
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "speakRequired [lisod, hagit, kuryente] has no connector or aspect-bearing word; the spec requires one. ‘human’ (after) is the connector of the youOne line and is a whole, unhyphenated word.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/speakRequired",
+              "old": [
+                "lisod",
+                "hagit",
+                "kuryente"
+              ],
+              "new": [
+                "hagit",
+                "kuryente",
+                "human"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "speakRequired [tuig, daghan, kalisdanan] contains no connector or aspect-bearing word and, unlike all other lessons, omits the trophy; use the trophy tibuok and the concessive connector bisan.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "tuig",
+                "daghan",
+                "kalisdanan"
+              ],
+              "new": [
+                "tibuok",
+                "bisan",
+                "kalisdanan"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Recall fallback foil ‘handumanan’ yields a plausible sentence (‘Ang labing lisod nga handumanan mao ang usa ka semana nga walay kuryente…’) and is the P10 L10 trophy; a contextually impossible foil would grade more cleanly.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/recall/fallbackChoices",
+              "old": [
+                "hagit",
+                "handumanan",
+                "pangandoy",
+                "kalampusan"
+              ],
+              "new": [
+                "hagit",
+                "kutsara",
+                "pangandoy",
+                "kalampusan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "e3c20ccb6f4038ab89640ddec88ea2ca91392554e77306833fc5d95408f4324a",
+      "sourceSha256": "c9271a31e37dbad62b6915a78a55868dda5d031ffeb8c6c0a79ce6383137e67f",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "June fiesta vs. lonely March move is coherent; youOne 13 words, chunks join exactly, tokens bulan/hunyo/nagkita valid. Cloze is connector+form+evaluation as the schema asks, but the form cue prints 'ni-' and only one option carries it; with the prefix removed, 'completed' alone would still admit 'gibalhin' (object focus 'I was transferred'), so the cue must name actor focus."
+        },
+        {
+          "n": 2,
+          "observation": "Sauna/apan contrast and the growers'-group turning point work; the earlier Tagalog 'nang' repair is in place and 'mas kanunay na kay kauban' is native. Cloze form cue prints 'ni-'; once removed, 'Giapil ko sa pundok' (I was included) is a grammatical completed reading, so the cue needs 'actor focus'. Rule's 'die Suche Erfolg hatte' overreads nakakita (optional)."
+        },
+        {
+          "n": 3,
+          "observation": "The 'Sa bisikleta' open slot flagged by the independent reviewer is already resolved in these bytes (form blank with aspect-only foils). 'Nagbisikleta gihapon ko … sama sa una' is natural; cue still prints 'nag-' and must be reworded. Two blanks are within the 2–3 allowance."
+        },
+        {
+          "n": 4,
+          "observation": "Pasalamat sa + nga nitabang matches staging. youTwo 'Gipasakay mi nila sa trak' is a gi-pa- causative not in the P10 productive set and is scored with four causative choices; the native non-causative object-focus 'Gisakay mi nila sa trak' (they took us aboard the truck) keeps truck, flood and who-helped-whom. German 'in ihrem Lastwagen' asserts ownership absent from 'sa trak'. Foil 'gilikisan' is not a securely attested form (optional swap)."
+        },
+        {
+          "n": 5,
+          "observation": "Café dream with kung condition and aron purpose clause is well formed; tindera correctly rendered as female vendors in DE/EN. Connector tested as a cue-free choice with impossible foils (bisan/gikan/tali), which is acceptable. No edits."
+        },
+        {
+          "n": 6,
+          "observation": "Paglaum nga + mag- future and the added hunahuna/bisan transfer model now cover the 4–6 opinion staging. The German rule ('Oma und Enkel') and placeholder caption ('ein Lernender') assign the learner a male gender the Cebuano leaves open; form cue prints '(mang-)'."
+        },
+        {
+          "n": 7,
+          "observation": "Nipasar + mao kadto narration and the aron purpose plan are licensed and idiomatic; 'Moaplay ko sa klinika aron magamit nako ang akong nakat-onan' is natural. Cue prints 'mo-' and must be reworded; otherwise clean."
+        },
+        {
+          "n": 8,
+          "observation": "Blackout week, dry tank and water-storage resolution are coherent; speech anchors [hagit, kuryente, human] now carry the connector in canonical order and the recall foil fix is applied. Both form cues print prefixes; in addition the bare root 'hubas' is a native stative predicate ('kay hubas ang among tangke niadtong semanaha' = our tank was dry), so that foil leaves the typed slot open and must be replaced."
+        },
+        {
+          "n": 9,
+          "observation": "Sa tibuok tuig … bisan concession and one-word answer 'Paglaum' are idiomatic; speech anchors [tibuok, bisan, kalisdanan] include trophy and connector. Distractor chips 'Sa tibuok tuig, mas gamay' + 'ang masulob-ong adlaw' assemble into a grammatical paraphrase of the canonical claim and must be replaced; cue prints 'naka-'."
+        },
+        {
+          "n": 10,
+          "observation": "Handumanan + nga relative clause and the kung plan close the path; 'nakita namong mag-agaw' is native and plural-inclusive. German 'Cousins und Cousinen' is the standard inclusive German plural and does not assert a gender mix beyond the Cebuano, so the independent finding is not adopted. Form cue prints 'mo-'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Form cue reveals the written prefix 'ni-' of the sole matching option; a bare 'completed' cue would in turn admit object-focus 'gibalhin'. Cue must state root + actor focus + completed without the prefix.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/5/cue",
+              "old": "balhin · ni- (abgeschlossen / completed)",
+              "new": "balhin · Aktorfokus, abgeschlossen / actor focus, completed"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Form cue reveals 'ni-'; without the prefix, 'Giapil ko sa pundok' is also a grammatical completed reading, so the cue must specify actor focus.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/0/cue",
+              "old": "apil · ni- (abgeschlossen / completed)",
+              "new": "apil · Aktorfokus, abgeschlossen / actor focus, completed"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Pattern rule says nakakita shows 'the search succeeded'; nakakita only asserts that you ended up finding friends, not that you searched.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule",
+              "old": {
+                "de": "Sauna setzt den früheren Zustand in einen zeitlichen Rahmen. Apan leitet die Veränderung ein, und nakakita sagt, dass die Suche Erfolg hatte.",
+                "en": "Sauna frames an earlier state. Apan introduces the change, and nakakita says that the search succeeded."
+              },
+              "new": {
+                "de": "Sauna setzt den früheren Zustand in einen zeitlichen Rahmen. Apan leitet die Veränderung ein, und nakakita sagt, dass du schließlich Freunde gefunden hast.",
+                "en": "Sauna frames an earlier state. Apan introduces the change, and nakakita says that in the end you managed to find friends."
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Form cue reveals 'nag-'; reword to root + actor focus + habitual so the learner must choose aspect, not copy the prefix.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/0/cue",
+              "old": "bisikleta · nag- (gewohnheitsmäßig / habitual)",
+              "new": "bisikleta · Aktorfokus, gewohnheitsmäßig / actor focus, habitual"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "youTwo uses the causative gi-pa- ('Gipasakay') outside the P10 productive set and scores it with four causative choices; native object-focus 'Gisakay mi nila sa trak' keeps the same scene with a taught gi- form, and the verb becomes a form blank with a focus/aspect cue whose actor-focus foils clash with 'mi nila'. German 'in ihrem Lastwagen' adds ownership that 'sa trak' does not state.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/targetText",
+              "old": "Gipasakay mi nila sa trak kay gibahaan ang among dalan.",
+              "new": "Gisakay mi nila sa trak kay gibahaan ang among dalan."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText",
+              "old": {
+                "de": "Sie haben uns in ihrem Lastwagen mitgenommen, weil unsere Straße überschwemmt war.",
+                "en": "They gave us a ride in the truck because our road was flooded."
+              },
+              "new": {
+                "de": "Sie haben uns auf dem Lastwagen mitgenommen, weil unsere Straße überschwemmt war.",
+                "en": "They took us on the truck because our road was flooded."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/0",
+              "old": {
+                "kind": "choice",
+                "answer": "Gipasakay",
+                "choices": [
+                  "Gipasakay",
+                  "Gipaluto",
+                  "Gipatahi",
+                  "Gipasayaw"
+                ]
+              },
+              "new": {
+                "kind": "form",
+                "answer": "Gisakay",
+                "choices": [
+                  "Gisakay",
+                  "Nisakay",
+                  "Mosakay",
+                  "Nagsakay"
+                ],
+                "cue": "sakay · Objektfokus, abgeschlossen / object focus, completed"
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Foil 'gilikisan' is not a securely attested Cebuano form; a clearly impossible attested foil grades more cleanly.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/4/choices",
+              "old": [
+                "gitahi",
+                "gitimpla",
+                "gibahaan",
+                "gilikisan"
+              ],
+              "new": [
+                "gitahi",
+                "gitimpla",
+                "gibahaan",
+                "gibayran"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "German rule 'Oma und Enkel' and caption 'ein Lernender' assign the learner a male gender that the Cebuano and the English leave open; form cue also reveals '(mang-)'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule/de",
+              "old": "Paglaum nennt die Hoffnung. Mit nga formulierst du, was du dir erhoffst. Magkaistorya meint hier, dass Oma und Enkel miteinander ins Gespräch kommen. Mit sa akong hunahuna und bisan verbindest du die Hoffnung mit deiner eigenen Einschätzung.",
+              "new": "Paglaum nennt die Hoffnung. Mit nga formulierst du, was du dir erhoffst. Magkaistorya meint hier, dass du und deine Oma miteinander ins Gespräch kommt. Mit sa akong hunahuna und bisan verbindest du die Hoffnung mit deiner eigenen Einschätzung."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/placeholderCaption/de",
+              "old": "Eine Lehrerin und ein Lernender sprechen neben einem aufgeschlagenen Heft.",
+              "new": "Eine Lehrerin und eine lernende Person sprechen neben einem aufgeschlagenen Heft."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/0/cue",
+              "old": "pangutana · actor focus, Absicht / intention (mang-)",
+              "new": "pangutana · Aktorfokus, Absicht / actor focus, intention"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Form cue reveals 'mo-'; reword to root + actor focus + intention.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/0/cue",
+              "old": "aplay · mo- (Absicht / intention)",
+              "new": "aplay · Aktorfokus, Absicht / actor focus, intention"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Both form cues reveal their prefixes ('mag-', 'ni-'). In the second blank the foil 'hubas' is a native stative predicate ('kay hubas ang among tangke niadtong semanaha' = our tank was dry that week), so the typed slot is grammatically open; replace it with an impossible form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/0/cue",
+              "old": "tipig · mag- (Absicht / intention)",
+              "new": "tipig · Aktorfokus, Absicht / actor focus, intention"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/4",
+              "old": {
+                "kind": "form",
+                "answer": "nihubas",
+                "choices": [
+                  "hubas",
+                  "pahubas",
+                  "nihubas",
+                  "mohubas"
+                ],
+                "cue": "hubas · ni- (abgeschlossen / completed)"
+              },
+              "new": {
+                "kind": "form",
+                "answer": "nihubas",
+                "choices": [
+                  "hubasan",
+                  "pahubas",
+                  "nihubas",
+                  "mohubas"
+                ],
+                "cue": "hubas · abgeschlossen / completed"
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Distractor chips 'Sa tibuok tuig, mas gamay' + 'ang masulob-ong adlaw' assemble into a grammatical paraphrase of the canonical reply (fewer sad days), undermining the single-answer build; form cue also reveals 'naka-'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors",
+              "old": [
+                "Sa tibuok tuig, mas gamay",
+                "ang masulob-ong adlaw"
+              ],
+              "new": [
+                "Sa tibuok tuig, mas mahal",
+                "ang mga kutsara"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/3/cue",
+              "old": "bangon · naka- (gelungen / achieved)",
+              "new": "bangon · gelungen, abgeschlossen / achieved, completed"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Form cue reveals 'mo-'; reword to root + actor focus + intention. The independent reviewer's gender/number objection to 'Cousins und Cousinen' is not adopted: it is the standard inclusive German plural for cousins and 'namong mag-agaw' is plural-inclusive.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3/cue",
+              "old": "balik · mo- (Absicht / intention)",
+              "new": "balik · Aktorfokus, Absicht / actor focus, intention"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b619b4e395d304f439143f6e02a90e1ed9cae6c5ef7b9344c330ccca74dff207",
+      "sourceSha256": "9f0d16d33352084ec6a0d752107df4c3908b47bbbfe0d315acf0bb8126adb353",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "June fiesta vs. lonely March move stays on beat; nagkita is the native completed reciprocal and the German past is licensed by the fiesta frame. Cloze has all three roles (choice pinakalisod, typed kay with impossible foils, form nibalhin with an actor-focus cue that excludes gibalhin without printing a prefix). Chunks, recall, tokens (bulan/hunyo/nagkita) and trophy anchoring all verify."
+        },
+        {
+          "n": 2,
+          "observation": "sauna … apan contrast with nakakita ra kog mga higala is idiomatic; them-line 'mas kanunay na kay kauban' uses the native fused ka+y form; dayon is rightly a choice because a typed connector would unjustly reject unya/ug. Only two slots exist (form Niapil + choice dayon); the outline capstone schema's time/evaluation choice is missing even though 'kanunay' sits in the line and admits impossible past-time foils."
+        },
+        {
+          "n": 3,
+          "observation": "'Nagbisikleta gihapon ko padulong sa trabaho sama sa una' as an exact-typed form blank is demonstrably open: Cebuano mo- is also customary (Mobisikleta gihapon ko … = I still cycle), so the habitual cue licenses two answers and a correct learner is rejected on first attempt. Any activity verb like bisikleta alternates nag-/mo- (and ni-/nag- under a past frame), so the honest grading is a one-answer choice with structurally impossible foils; the reply is reframed to supply the missing connector so the lesson practices all three roles in 12 words."
+        },
+        {
+          "n": 4,
+          "observation": "Gisakay mi nila sa trak is native object focus within the gi- productive stage; gibahaan and the kay reason recycle P6/P1; German 'auf dem Lastwagen' no longer adds ownership. Form cue (object focus, completed) makes Nisakay/Mosakay/Nagsakay impossible with 'mi nila'; recall foils are contextually excluded by the gratitude frame of the them-line. Host register neutral, no palihug needed."
+        },
+        {
+          "n": 5,
+          "observation": "damgo nga + mo- future with a kung condition, café near the market aron makakape ang mga tindera: coherent and realistic. All three blanks are choices, which is correct here: aron has the native synonym para and the verb slot would be open to magkape, so a form kind would restrict open slots. Recall foils eskuylahan/botika are plausible nouns, but recall is a memory check of the shown line; left as is."
+        },
+        {
+          "n": 6,
+          "observation": "'magkaistorya na mi ni Lola' uses exclusive mi + ni correctly; youTwo Mangutana … kay daghan siyag sugilanon is idiomatic; the third example now models sa akong hunahuna + bisan so the 4–6 staging block is honored, and the German rule/caption no longer assign learner gender. Form cue names actor focus and intention without a prefix; sugilanon foils are contextually absurd."
+        },
+        {
+          "n": 7,
+          "observation": "Nipasar … ug mao kadto ang kinadak-an nakong kalampusan reports a result; Moaplay ko sa klinika aron magamit nako ang akong nakat-onan is a licensed intention. aron as choice is justified by para; magamit foils (malabay/maluto/masul-ob) are impossible with nakat-onan; recall foil kapakyasan is contradicted by nipasar. Cousin register informal."
+        },
+        {
+          "n": 8,
+          "observation": "Sixteen-word youOne is at the limit and native; youTwo 'Magtipig ko og tubig kay nihubas ang among tangke niadtong semanaha' licenses the German future and past. The hubas slot is still an exact-typed form with a bare 'completed' cue, yet 'nahubas ang among tangke' (na- resultative) is at least as native as nihubas for this change-of-state root, so a correct learner is rejected; converting that slot to a cue-free choice with the existing impossible foils fixes it while form practice stays on Magtipig. Tokens hagit/kuryente/human now include a connector."
+        },
+        {
+          "n": 9,
+          "observation": "Sa tibuok tuig … bisan daghan pud mig kalisdanan is a genuine concession with exclusive mi; one-word answer Paglaum, kay nakabangon mi human sa matag pagsulay is a native result statement; the achieved/completed cue isolates naka- without printing it. Tokens tibuok/bisan/kalisdanan and the non-paraphrasing distractor chips verify. Elder register neutral."
+        },
+        {
+          "n": 10,
+          "observation": "'nakita namong mag-agaw gikan sa lantsa' = seen by us cousins (exclusive, excludes the friend); the outline beat fixes a plural cousin group, and German 'Cousins und Cousinen' is the standard gender-inclusive plural that asserts nothing about the learner, so the independent reviewer's L10 objection is not adopted. Spanish-derived date 'Baynte otso' and kung-plan recycle P1/P7; kung as choice is justified by kon/basta alternatives. mo-/mag- intention pairs across the path (Moaplay, Magtipig, Mobalik) remain anchored by the reconstructed modelled line per the approved course design and are not reopened."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Capstone cloze schema calls for connector + aspect-marked verb + time/evaluation choice; L2 has only form Niapil and choice dayon. 'kanunay' is a time word in the same line and can be graded as a cue-free choice against past-anchored foils that are impossible before future magkita, giving all three roles without changing the reply.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Niapil",
+                  "choices": [
+                    "Giapil",
+                    "Apilon",
+                    "Niapil",
+                    "Moapil"
+                  ],
+                  "cue": "apil · Aktorfokus, abgeschlossen / actor focus, completed"
+                },
+                " ko sa pundok sa mga magtatanom, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "imbes",
+                    "dayon",
+                    "gikan",
+                    "tali"
+                  ]
+                },
+                " kanunay na ming magkita."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Niapil",
+                  "choices": [
+                    "Giapil",
+                    "Apilon",
+                    "Niapil",
+                    "Moapil"
+                  ],
+                  "cue": "apil · Aktorfokus, abgeschlossen / actor focus, completed"
+                },
+                " ko sa pundok sa mga magtatanom, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "imbes",
+                    "dayon",
+                    "gikan",
+                    "tali"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "kanunay",
+                  "choices": [
+                    "kanunay",
+                    "gahapon",
+                    "kagabii",
+                    "kaniadto"
+                  ]
+                },
+                " na ming magkita."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Exact-typed form blank 'Nagbisikleta' rejects the equally native 'Mobisikleta gihapon ko … sama sa una' (mo- customary) and, under a past frame, nibisikleta/nagbisikleta would alternate too; the root bisikleta cannot be made single-fit by any cue. Reframe the reply (12 words) so it answers 'Unsa may nagpabilin?' with a topic, a typed kay connector, the verb as a one-answer cue-free choice with structurally impossible foils, and the approved una time choice; couple translations and add the new term.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Nagbisikleta gihapon ko padulong sa trabaho sama sa una.",
+                "baseText": {
+                  "de": "Ich fahre immer noch mit dem Rad zur Arbeit, genau wie früher.",
+                  "en": "I still cycle to work, just as I used to."
+                }
+              },
+              "new": {
+                "targetText": "Ang akong biyahe, kay nagbisikleta gihapon ko sa trabaho sama sa una.",
+                "baseText": {
+                  "de": "Mein Arbeitsweg, denn ich fahre immer noch mit dem Rad zur Arbeit, genau wie früher.",
+                  "en": "My commute, because I still cycle to work, just as I used to."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Nagbisikleta",
+                  "choices": [
+                    "Nagbisikleta",
+                    "Nibisikleta",
+                    "Mobisikleta",
+                    "Gibisikleta"
+                  ],
+                  "cue": "bisikleta · Aktorfokus, gewohnheitsmäßig / actor focus, habitual"
+                },
+                " gihapon ko padulong sa trabaho sama sa ",
+                {
+                  "kind": "choice",
+                  "answer": "una",
+                  "choices": [
+                    "una",
+                    "ugma",
+                    "puhon",
+                    "sunod"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Ang akong biyahe, ",
+                {
+                  "kind": "connector",
+                  "answer": "kay",
+                  "choices": [
+                    "aron",
+                    "imbes",
+                    "kay",
+                    "tali"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "nagbisikleta",
+                  "choices": [
+                    "nagbisikleta",
+                    "ang bisikleta",
+                    "og bisikleta",
+                    "pagbisikleta"
+                  ]
+                },
+                " gihapon ko sa trabaho sama sa ",
+                {
+                  "kind": "choice",
+                  "answer": "una",
+                  "choices": [
+                    "una",
+                    "ugma",
+                    "puhon",
+                    "sunod"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/terms",
+              "old": [
+                {
+                  "targetText": "kausaban",
+                  "baseText": {
+                    "de": "Veränderung",
+                    "en": "change"
+                  }
+                },
+                {
+                  "targetText": "kinadak-an",
+                  "baseText": {
+                    "de": "am größten",
+                    "en": "biggest"
+                  }
+                },
+                {
+                  "targetText": "nibalhin",
+                  "baseText": {
+                    "de": "wechselte, zog um",
+                    "en": "changed, moved"
+                  }
+                },
+                {
+                  "targetText": "trabaho",
+                  "baseText": {
+                    "de": "Arbeit",
+                    "en": "work"
+                  }
+                },
+                {
+                  "targetText": "puy-anan",
+                  "baseText": {
+                    "de": "Wohnort",
+                    "en": "place to live"
+                  }
+                },
+                {
+                  "targetText": "nagpabilin",
+                  "baseText": {
+                    "de": "ist geblieben",
+                    "en": "stayed"
+                  }
+                },
+                {
+                  "targetText": "gihapon",
+                  "baseText": {
+                    "de": "immer noch",
+                    "en": "still"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "kausaban",
+                  "baseText": {
+                    "de": "Veränderung",
+                    "en": "change"
+                  }
+                },
+                {
+                  "targetText": "kinadak-an",
+                  "baseText": {
+                    "de": "am größten",
+                    "en": "biggest"
+                  }
+                },
+                {
+                  "targetText": "nibalhin",
+                  "baseText": {
+                    "de": "wechselte, zog um",
+                    "en": "changed, moved"
+                  }
+                },
+                {
+                  "targetText": "trabaho",
+                  "baseText": {
+                    "de": "Arbeit",
+                    "en": "work"
+                  }
+                },
+                {
+                  "targetText": "puy-anan",
+                  "baseText": {
+                    "de": "Wohnort",
+                    "en": "place to live"
+                  }
+                },
+                {
+                  "targetText": "nagpabilin",
+                  "baseText": {
+                    "de": "ist geblieben",
+                    "en": "stayed"
+                  }
+                },
+                {
+                  "targetText": "gihapon",
+                  "baseText": {
+                    "de": "immer noch",
+                    "en": "still"
+                  }
+                },
+                {
+                  "targetText": "biyahe",
+                  "baseText": {
+                    "de": "Fahrt, Arbeitsweg",
+                    "en": "trip, commute"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Second blank is an exact-typed form with the bare cue 'hubas · completed'; 'nahubas ang among tangke' (na- resultative, the default for this change-of-state root) satisfies that cue as fully as nihubas, so a native answer is rejected. Grade the slot as a cue-free choice: hubasan/pahubas are ungrammatical here and mohubas is impossible with past 'niadtong semanaha'. Form practice remains on Magtipig; this is the only such na-/ni- open slot in the path.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/4",
+              "old": {
+                "kind": "form",
+                "answer": "nihubas",
+                "choices": [
+                  "hubasan",
+                  "pahubas",
+                  "nihubas",
+                  "mohubas"
+                ],
+                "cue": "hubas · abgeschlossen / completed"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "nihubas",
+                "choices": [
+                  "hubasan",
+                  "pahubas",
+                  "nihubas",
+                  "mohubas"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "historicalFocusedEdits": [],
+  "exactPointerCorrections": {}
+}

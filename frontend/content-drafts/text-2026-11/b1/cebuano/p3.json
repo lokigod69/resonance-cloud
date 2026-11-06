@@ -1,0 +1,2134 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Mahimo ba unta — Wünsche und Bitten",
+    "en": "Mahimo ba unta — Wishes and requests"
+  },
+  "subtitle": {
+    "de": "Einen Wunsch äußern und über einen Gegenvorschlag verhandeln",
+    "en": "Make a request and negotiate a counteroffer"
+  },
+  "anchor": "Mit unta einen Wunsch abschwächen, eine Bedingung formulieren und auf ein begrenztes Angebot reagieren.",
+  "lessons": [
+    {
+      "slug": "unta-a-room-on-the-island",
+      "title": {
+        "de": "Ein Zimmer auf der Insel",
+        "en": "A room on the island"
+      },
+      "situation": {
+        "de": "Am Empfang eines kleinen Hotels fragt die Rezeptionistin nach deinen Wünschen.",
+        "en": "At a small hotel the receptionist asks about your preferences."
+      },
+      "pedagogicalGoal": "Einen Zimmerwunsch mit unta vorbringen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsay imong gusto nga kuwarto?",
+          "baseText": {
+            "de": "Was für ein Zimmer möchten Sie?",
+            "en": "What kind of room would you like?"
+          }
+        },
+        {
+          "targetText": "Gusto unta ko og kuwarto nga nag-atubang sa dagat.",
+          "baseText": {
+            "de": "Ich hätte gern ein Zimmer mit Blick aufs Meer.",
+            "en": "I was hoping for a room facing the sea."
+          }
+        },
+        {
+          "targetText": "Sa tanaman ra ang bakante, pero makahatag ko og diskuwento.",
+          "baseText": {
+            "de": "Nur zur Gartenseite ist noch etwas frei, aber ich kann Ihnen einen Rabatt geben.",
+            "en": "Only the garden side is available, but I can offer a discount."
+          }
+        },
+        {
+          "targetText": "Sige, sa tanaman lang basta naa ang diskuwento.",
+          "baseText": {
+            "de": "Gut, dann nehme ich die Gartenseite, sofern ich den Rabatt bekomme.",
+            "en": "All right, the garden side will do as long as I get the discount."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Einen Zimmerwunsch mit unta vorbringen",
+        "rule": {
+          "de": "In gusto unta ko lässt unta den Wunsch offen. Erst die Antwort zeigt, ob das Hotel ihn erfüllen kann.",
+          "en": "In gusto unta ko, unta makes the request tentative. The reply tells you whether the hotel can meet it."
+        },
+        "examples": [
+          {
+            "targetText": "Gusto unta ko og kuwarto nga nag-atubang sa dagat.",
+            "baseText": {
+              "de": "Ich hätte gern ein Zimmer mit Blick aufs Meer.",
+              "en": "I was hoping for a room facing the sea."
+            },
+            "highlight": "unta"
+          },
+          {
+            "targetText": "Gusto unta ko og lingkoranan duol sa bintana.",
+            "baseText": {
+              "de": "Ich hätte gern einen Platz am Fenster.",
+              "en": "I was hoping for a seat by the window."
+            },
+            "highlight": "unta"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, sa ",
+        {
+          "kind": "choice",
+          "answer": "tanaman",
+          "choices": [
+            "baybayon",
+            "atop",
+            "tanaman",
+            "dalan"
+          ]
+        },
+        " lang ",
+        {
+          "kind": "choice",
+          "answer": "basta",
+          "choices": [
+            "basta",
+            "tungod",
+            "bisan pa og",
+            "hinuon"
+          ]
+        },
+        " naa ang diskuwento."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gusto unta ko",
+          "baseText": {
+            "de": "ich hätte gern",
+            "en": "I was hoping for"
+          }
+        },
+        {
+          "targetText": "og kuwarto",
+          "baseText": {
+            "de": "ein Zimmer",
+            "en": "a room"
+          }
+        },
+        {
+          "targetText": "nga nag-atubang",
+          "baseText": {
+            "de": "das blickt",
+            "en": "that faces"
+          }
+        },
+        {
+          "targetText": "sa dagat.",
+          "baseText": {
+            "de": "aufs Meer",
+            "en": "the sea"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "unta",
+          "baseText": {
+            "de": "Wunschpartikel",
+            "en": "particle expressing a wish"
+          }
+        },
+        {
+          "targetText": "kuwarto",
+          "baseText": {
+            "de": "Zimmer",
+            "en": "room"
+          }
+        },
+        {
+          "targetText": "nag-atubang",
+          "baseText": {
+            "de": "zugewandt",
+            "en": "facing"
+          }
+        },
+        {
+          "targetText": "dagat",
+          "baseText": {
+            "de": "Meer",
+            "en": "sea"
+          }
+        },
+        {
+          "targetText": "tanaman",
+          "baseText": {
+            "de": "Garten",
+            "en": "garden"
+          }
+        },
+        {
+          "targetText": "diskuwento",
+          "baseText": {
+            "de": "Rabatt",
+            "en": "discount"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Gusto unta ko og kuwarto nga nag-atubang sa ",
+        "answer": "dagat",
+        "after": ".",
+        "fallbackChoices": [
+          "tanaman",
+          "dagat",
+          "dalan",
+          "bukid"
+        ]
+      },
+      "speakRequired": [
+        "unta",
+        "kuwarto",
+        "dagat"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang eines kleinen Hotels fragt die Rezeptionistin nach deinen Wünschen. „Unsay imong gusto nga kuwarto?“",
+        "en": "At a small hotel the receptionist asks about your preferences. “Unsay imong gusto nga kuwarto?”"
+      },
+      "trophyWord": {
+        "word": "unta",
+        "meaning": {
+          "de": "Wunschpartikel",
+          "en": "particle expressing a wish"
+        },
+        "example": "Gusto unta ko og kuwarto sa taas.",
+        "whyThisWord": {
+          "de": "Mit unta kannst du einen Wunsch äußern, auch wenn die Auswahl begrenzt ist.",
+          "en": "Use unta for a wish even when you do not know what is available."
+        }
+      },
+      "distractors": [
+        "og lamesa",
+        "sa dalan."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Zimmer auf der Insel",
+        "en": "A room on the island"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "At a small hotel the receptionist asks about your preferences."
+    },
+    {
+      "slug": "kung-tomorrow-s-tour",
+      "title": {
+        "de": "Der Ausflug am nächsten Tag",
+        "en": "Tomorrow’s tour"
+      },
+      "situation": {
+        "de": "Vor der Abfahrt besprichst du mit dem Reiseleiter den morgigen Ausflug.",
+        "en": "Before departure you talk to the guide about tomorrow’s tour."
+      },
+      "pedagogicalGoal": "Mit kung eine mögliche Änderung begründen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Naa kay pangutana bahin sa atong lakaw ugma?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zu unserem Ausflug morgen?",
+            "en": "Do you have a question about our trip tomorrow?"
+          }
+        },
+        {
+          "targetText": "Kung moulan ugma, mahimo ba nga mag-usab ta sa oras sa lakaw?",
+          "baseText": {
+            "de": "Können wir die Uhrzeit für den Ausflug ändern, falls es morgen regnet?",
+            "en": "If it rains tomorrow, could we change the time of the trip?"
+          }
+        },
+        {
+          "targetText": "Sa buntag walay ulan sa banabana. Makagiya ko hangtod alas diyes.",
+          "baseText": {
+            "de": "Für den Vormittag ist kein Regen gemeldet. Bis zehn kann ich Sie begleiten.",
+            "en": "No rain is forecast for the morning. I can guide you until ten."
+          }
+        },
+        {
+          "targetText": "Kung alas diyes ang kinutoban, mosugod ta og alas otso.",
+          "baseText": {
+            "de": "Wenn um zehn Schluss ist, fangen wir um acht an.",
+            "en": "If ten is the limit, let’s start at eight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit kung eine mögliche Änderung begründen",
+        "rule": {
+          "de": "Kung nennt hier eine mögliche Wetterlage. Mahimo ba nga leitet danach die Frage nach einer Änderung ein.",
+          "en": "Kung introduces a possible weather condition. Mahimo ba nga then asks whether a change would be possible."
+        },
+        "examples": [
+          {
+            "targetText": "Kung moulan ugma, mahimo ba nga mag-usab ta sa oras sa lakaw?",
+            "baseText": {
+              "de": "Können wir die Uhrzeit für den Ausflug ändern, falls es morgen regnet?",
+              "en": "If it rains tomorrow, could we change the time of the trip?"
+            },
+            "highlight": "Kung moulan"
+          },
+          {
+            "targetText": "Kung moulan karong gabii, maghulat ta sa sulod.",
+            "baseText": {
+              "de": "Wenn es heute Abend regnet, warten wir drinnen.",
+              "en": "If it rains tonight, we’ll wait inside."
+            },
+            "highlight": "Kung moulan"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kung",
+          "choices": [
+            "Kung",
+            "Aron",
+            "Tungod",
+            "Nga"
+          ]
+        },
+        " alas diyes ang kinutoban, ",
+        {
+          "kind": "choice",
+          "answer": "mosugod",
+          "choices": [
+            "mosugod",
+            "nisugod",
+            "matulog",
+            "mokanta"
+          ]
+        },
+        " ta og alas otso."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kung moulan ugma,",
+          "baseText": {
+            "de": "falls es morgen regnet",
+            "en": "if it rains tomorrow"
+          }
+        },
+        {
+          "targetText": "mahimo ba nga",
+          "baseText": {
+            "de": "wäre es möglich, dass",
+            "en": "would it be possible to"
+          }
+        },
+        {
+          "targetText": "mag-usab ta",
+          "baseText": {
+            "de": "wir etwas ändern",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "sa oras sa lakaw?",
+          "baseText": {
+            "de": "an der Uhrzeit des Ausflugs",
+            "en": "the time of the trip"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kung",
+          "baseText": {
+            "de": "falls",
+            "en": "if"
+          }
+        },
+        {
+          "targetText": "moulan",
+          "baseText": {
+            "de": "regnen",
+            "en": "rain"
+          }
+        },
+        {
+          "targetText": "ugma",
+          "baseText": {
+            "de": "morgen",
+            "en": "tomorrow"
+          }
+        },
+        {
+          "targetText": "oras sa lakaw",
+          "baseText": {
+            "de": "Zeit des Ausflugs",
+            "en": "time of the trip"
+          }
+        },
+        {
+          "targetText": "banabana",
+          "baseText": {
+            "de": "Vorhersage",
+            "en": "forecast"
+          }
+        },
+        {
+          "targetText": "kinutoban",
+          "baseText": {
+            "de": "Grenze",
+            "en": "limit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kung moulan ugma, mahimo ba nga mag-usab ta sa ",
+        "answer": "oras",
+        "after": " sa lakaw?",
+        "fallbackChoices": [
+          "presyo",
+          "daplin",
+          "oras",
+          "resibo"
+        ]
+      },
+      "speakRequired": [
+        "kung",
+        "moulan",
+        "lakaw"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Abfahrt besprichst du mit dem Reiseleiter den morgigen Ausflug. „Naa kay pangutana bahin sa atong lakaw ugma?“",
+        "en": "Before departure you talk to the guide about tomorrow’s tour. “Naa kay pangutana bahin sa atong lakaw ugma?”"
+      },
+      "trophyWord": {
+        "word": "kung",
+        "meaning": {
+          "de": "falls",
+          "en": "if"
+        },
+        "example": "Motawag ko kung moulan.",
+        "whyThisWord": {
+          "de": "Kung verknüpft eine mögliche Wetteränderung mit dem, was ihr dann tun könnt.",
+          "en": "Kung links a possible change in the weather to what you can do about it."
+        }
+      },
+      "distractors": [
+        "sa presyo sa lakaw?",
+        "maghulat ta"
+      ],
+      "placeholderCaption": {
+        "de": "Der Ausflug am nächsten Tag",
+        "en": "Tomorrow’s tour"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "Before departure you talk to the guide about tomorrow’s tour."
+    },
+    {
+      "slug": "mahimo-the-new-table",
+      "title": {
+        "de": "Der neue Tisch",
+        "en": "The new table"
+      },
+      "situation": {
+        "de": "Nach dem Kauf fragt der Inhaber eines Möbelgeschäfts, wie der Tisch zu dir kommt.",
+        "en": "After your purchase, the furniture shop owner asks how the table will get to your home."
+      },
+      "pedagogicalGoal": "Mit mahimo ba nga nach einer Möglichkeit fragen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Naa kay sakyanan para sa lamesa?",
+          "baseText": {
+            "de": "Haben Sie ein Fahrzeug für den Tisch?",
+            "en": "Do you have a vehicle for the table?"
+          }
+        },
+        {
+          "targetText": "Mahimo ba nga mohatod mo sa lamesa sa among balay?",
+          "baseText": {
+            "de": "Könnten Sie den Tisch zu uns nach Hause liefern?",
+            "en": "Could you deliver the table to our house?"
+          }
+        },
+        {
+          "targetText": "Dinhi ra sa lungsod among hatod. Sa pikas lungsod man inyong balay.",
+          "baseText": {
+            "de": "Wir liefern nur hier im Ort. Ihr Haus liegt ja im Nachbarort.",
+            "en": "We only deliver within town. Your house is in the next town."
+          }
+        },
+        {
+          "targetText": "Kung layo ra, ako na lay mokuha sa lamesa ugma.",
+          "baseText": {
+            "de": "Wenn es zu weit ist, hole ich den Tisch morgen selbst ab.",
+            "en": "If it’s too far, I’ll pick up the table myself tomorrow."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit mahimo ba nga nach einer Möglichkeit fragen",
+        "rule": {
+          "de": "Auf mahimo ba nga folgt die gewünschte Handlung. Mohatod mo benennt die Leute vom Geschäft als diejenigen, die liefern würden.",
+          "en": "Mahimo ba nga introduces the proposed action. Mohatod mo identifies the shop staff as the people who would deliver."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo ba nga mohatod mo sa lamesa sa among balay?",
+            "baseText": {
+              "de": "Könnten Sie den Tisch zu uns nach Hause liefern?",
+              "en": "Could you deliver the table to our house?"
+            },
+            "highlight": "Mahimo ba nga"
+          },
+          {
+            "targetText": "Mahimo ba nga moabli mo og sayo ugma?",
+            "baseText": {
+              "de": "Könnten Sie morgen früh öffnen?",
+              "en": "Could you open early tomorrow?"
+            },
+            "highlight": "Mahimo ba nga"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kung",
+          "choices": [
+            "Aron",
+            "Tungod",
+            "Unya",
+            "Kung"
+          ]
+        },
+        " layo ra, ako na lay ",
+        {
+          "kind": "choice",
+          "answer": "mokuha",
+          "choices": [
+            "mobaligya",
+            "mokuha",
+            "mokaon",
+            "mohimo"
+          ]
+        },
+        " sa lamesa ugma."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mahimo ba nga",
+          "baseText": {
+            "de": "wäre es möglich, dass",
+            "en": "could"
+          }
+        },
+        {
+          "targetText": "mohatod mo",
+          "baseText": {
+            "de": "Sie liefern",
+            "en": "you deliver"
+          }
+        },
+        {
+          "targetText": "sa lamesa",
+          "baseText": {
+            "de": "den Tisch",
+            "en": "the table"
+          }
+        },
+        {
+          "targetText": "sa among balay?",
+          "baseText": {
+            "de": "zu uns nach Hause",
+            "en": "to our house"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mahimo",
+          "baseText": {
+            "de": "möglich sein",
+            "en": "be possible"
+          }
+        },
+        {
+          "targetText": "mohatod",
+          "baseText": {
+            "de": "liefern",
+            "en": "deliver"
+          }
+        },
+        {
+          "targetText": "lamesa",
+          "baseText": {
+            "de": "Tisch",
+            "en": "table"
+          }
+        },
+        {
+          "targetText": "among balay",
+          "baseText": {
+            "de": "unser Haus",
+            "en": "our house"
+          }
+        },
+        {
+          "targetText": "lungsod",
+          "baseText": {
+            "de": "Stadt; Ort",
+            "en": "town"
+          }
+        },
+        {
+          "targetText": "mokuha",
+          "baseText": {
+            "de": "abholen",
+            "en": "pick up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mahimo ba nga mohatod mo sa ",
+        "answer": "lamesa",
+        "after": " sa among balay?",
+        "fallbackChoices": [
+          "silya",
+          "tiket",
+          "papel",
+          "lamesa"
+        ]
+      },
+      "speakRequired": [
+        "mahimo",
+        "mohatod",
+        "lamesa"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Kauf fragt der Inhaber eines Möbelgeschäfts, wie der Tisch zu dir kommt. „Naa kay sakyanan para sa lamesa?“",
+        "en": "After your purchase, the furniture shop owner asks how the table will get to your home. “Naa kay sakyanan para sa lamesa?”"
+      },
+      "trophyWord": {
+        "word": "mahimo",
+        "meaning": {
+          "de": "möglich sein",
+          "en": "be possible"
+        },
+        "example": "Mahimo ba nga mohatod mo karon?",
+        "whyThisWord": {
+          "de": "Mit mahimo eröffnest du eine Frage, die dem Gegenüber Raum für eine andere Lösung lässt.",
+          "en": "Mahimo helps you ask about a possibility while leaving room for another solution."
+        }
+      },
+      "distractors": [
+        "sa among tindahan?",
+        "mobaligya mo"
+      ],
+      "placeholderCaption": {
+        "de": "Der neue Tisch",
+        "en": "The new table"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "After your purchase, the furniture shop owner asks how the table will get to your home."
+    },
+    {
+      "slug": "hangyo-a-table-for-two",
+      "title": {
+        "de": "Ein Tisch für zwei",
+        "en": "A table for two"
+      },
+      "situation": {
+        "de": "Der Kellner bemerkt, dass du dich im vollen Gastraum umsiehst.",
+        "en": "The waiter notices you looking around the busy dining room."
+      },
+      "pedagogicalGoal": "Eine Bitte ausdrücklich benennen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Dili ka komportable dinhi sa tunga?",
+          "baseText": {
+            "de": "Sitzen Sie hier in der Mitte unbequem?",
+            "en": "Are you uncomfortable here in the middle?"
+          }
+        },
+        {
+          "targetText": "Ang akong hangyo kay usa ka lamesa nga mas hilom para sa among panag-istorya.",
+          "baseText": {
+            "de": "Ich hätte eine Bitte: einen ruhigeren Tisch für unser Gespräch.",
+            "en": "My request is for a quieter table for our conversation."
+          }
+        },
+        {
+          "targetText": "Bakante ang duol sa kusina. Sa bintana, kinahanglan pang maghulat og napulo ka minuto.",
+          "baseText": {
+            "de": "Bei der Küche ist ein Tisch frei. Am Fenster müssten Sie noch zehn Minuten warten.",
+            "en": "There’s a free table by the kitchen. For the window you’d have to wait another ten minutes."
+          }
+        },
+        {
+          "targetText": "Sa bintana lang unta; mohulat mi og napulo ka minuto.",
+          "baseText": {
+            "de": "Lieber am Fenster, bitte. Wir warten die zehn Minuten.",
+            "en": "We’d prefer the window, please. We’ll wait ten minutes."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Bitte ausdrücklich benennen",
+        "rule": {
+          "de": "Ang akong hangyo kay nennt den Inhalt einer Bitte. Mit hangyo ko nga kannst du stattdessen gleich die gewünschte Handlung anschließen.",
+          "en": "Ang akong hangyo kay names what you are asking for. With hangyo ko nga you can follow the request directly with an action."
+        },
+        "examples": [
+          {
+            "targetText": "Ang akong hangyo kay usa ka lamesa nga mas hilom para sa among panag-istorya.",
+            "baseText": {
+              "de": "Ich hätte eine Bitte: einen ruhigeren Tisch für unser Gespräch.",
+              "en": "My request is for a quieter table for our conversation."
+            },
+            "highlight": "hangyo"
+          },
+          {
+            "targetText": "Hangyo ko nga mopaubos mo sa tingog sa radyo.",
+            "baseText": {
+              "de": "Ich möchte Sie bitten, das Radio leiser zu stellen.",
+              "en": "My request is that you turn the radio down."
+            },
+            "highlight": "Hangyo"
+          }
+        ]
+      },
+      "cloze": [
+        "Sa ",
+        {
+          "kind": "choice",
+          "answer": "bintana",
+          "choices": [
+            "kusina",
+            "bintana",
+            "gawas",
+            "koridor"
+          ]
+        },
+        " lang unta; ",
+        {
+          "kind": "choice",
+          "answer": "mohulat",
+          "choices": [
+            "moluto",
+            "moserbi",
+            "mogabas",
+            "mohulat"
+          ]
+        },
+        " mi og napulo ka minuto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang akong hangyo",
+          "baseText": {
+            "de": "meine Bitte",
+            "en": "my request"
+          }
+        },
+        {
+          "targetText": "kay usa ka lamesa",
+          "baseText": {
+            "de": "ist ein Tisch",
+            "en": "is for a table"
+          }
+        },
+        {
+          "targetText": "nga mas hilom",
+          "baseText": {
+            "de": "der ruhiger ist",
+            "en": "that is quieter"
+          }
+        },
+        {
+          "targetText": "para sa among panag-istorya.",
+          "baseText": {
+            "de": "für unser Gespräch",
+            "en": "for our conversation"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hangyo",
+          "baseText": {
+            "de": "Bitte",
+            "en": "request"
+          }
+        },
+        {
+          "targetText": "mas hilom",
+          "baseText": {
+            "de": "ruhiger",
+            "en": "quieter"
+          }
+        },
+        {
+          "targetText": "lamesa",
+          "baseText": {
+            "de": "Tisch",
+            "en": "table"
+          }
+        },
+        {
+          "targetText": "panag-istorya",
+          "baseText": {
+            "de": "Gespräch",
+            "en": "conversation"
+          }
+        },
+        {
+          "targetText": "kusina",
+          "baseText": {
+            "de": "Küche",
+            "en": "kitchen"
+          }
+        },
+        {
+          "targetText": "bintana",
+          "baseText": {
+            "de": "Fenster",
+            "en": "window"
+          }
+        },
+        {
+          "targetText": "mohulat",
+          "baseText": {
+            "de": "warten",
+            "en": "wait"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang akong hangyo kay usa ka lamesa nga mas ",
+        "answer": "hilom",
+        "after": " para sa among panag-istorya.",
+        "fallbackChoices": [
+          "hilom",
+          "saba",
+          "init",
+          "ngitngit"
+        ]
+      },
+      "speakRequired": [
+        "hangyo",
+        "nga",
+        "hilom"
+      ],
+      "sceneCaption": {
+        "de": "Der Kellner bemerkt, dass du dich im vollen Gastraum umsiehst. „Dili ka komportable dinhi sa tunga?“",
+        "en": "The waiter notices you looking around the busy dining room. “Dili ka komportable dinhi sa tunga?”"
+      },
+      "trophyWord": {
+        "word": "hangyo",
+        "meaning": {
+          "de": "Bitte",
+          "en": "request"
+        },
+        "example": "Ang akong hangyo kay gamay nga pabor.",
+        "whyThisWord": {
+          "de": "Hangyo ist hier die Bitte selbst; du kannst das Wort auch für einen ganz anderen Anlass verwenden.",
+          "en": "Hangyo here means the request itself and works for requests far beyond the restaurant."
+        }
+      },
+      "distractors": [
+        "nga mas duol",
+        "para sa among pagkaon."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Tisch für zwei",
+        "en": "A table for two"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "The waiter notices you looking around the busy dining room."
+    },
+    {
+      "slug": "pahulam-the-ladder-for-tomorrow",
+      "title": {
+        "de": "Die Leiter für morgen",
+        "en": "The ladder for tomorrow"
+      },
+      "situation": {
+        "de": "Beim Gartenzaun fragt der Nachbar, was du für die Arbeiten am Haus brauchst.",
+        "en": "At the garden fence your neighbour asks what you need for the work on your house."
+      },
+      "pedagogicalGoal": "Eine Leihbitte mit pahulam ko formulieren",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Unsay imong kuwang para sa trabaho ugma?",
+          "baseText": {
+            "de": "Was fehlt Ihnen für die Arbeit morgen noch?",
+            "en": "What are you still missing for tomorrow’s work?"
+          }
+        },
+        {
+          "targetText": "Pahulam ko sa imong hagdan ugma, palihug, kay taas ang sanga.",
+          "baseText": {
+            "de": "Leihen Sie mir bitte morgen Ihre Leiter, der Ast ist so hoch.",
+            "en": "Please lend me your ladder tomorrow because the branch is high up."
+          }
+        },
+        {
+          "targetText": "Gamiton pa nako sa buntag. Human sa paniudto ra kini bakante.",
+          "baseText": {
+            "de": "Am Vormittag brauche ich sie selbst. Nur nach dem Mittagessen ist sie frei.",
+            "en": "I still need it in the morning. It’s only free after lunch."
+          }
+        },
+        {
+          "targetText": "Kung mahuman ka, mobalik ko sa hapon.",
+          "baseText": {
+            "de": "Wenn Sie fertig sind, komme ich am Nachmittag wieder.",
+            "en": "When you’re done, I’ll come back in the afternoon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Leihbitte mit pahulam ko formulieren",
+        "rule": {
+          "de": "Mit pahulam ko sa bittest du darum, einen Gegenstand vorübergehend zu benutzen. Palihug macht den Ton höflich.",
+          "en": "Pahulam ko sa asks to use an object temporarily. Palihug makes the request polite."
+        },
+        "examples": [
+          {
+            "targetText": "Pahulam ko sa imong hagdan ugma, palihug, kay taas ang sanga.",
+            "baseText": {
+              "de": "Leihen Sie mir bitte morgen Ihre Leiter, der Ast ist so hoch.",
+              "en": "Please lend me your ladder tomorrow because the branch is high up."
+            },
+            "highlight": "Pahulam ko"
+          },
+          {
+            "targetText": "Kung bakante na, pahulam ko sa imong metro, palihug.",
+            "baseText": {
+              "de": "Sobald es frei ist, leihen Sie mir bitte Ihr Maßband.",
+              "en": "Once it's free, please lend me your tape measure."
+            },
+            "highlight": "pahulam ko"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kung",
+          "choices": [
+            "Kung",
+            "Apan",
+            "Tungod",
+            "Nga"
+          ]
+        },
+        " mahuman ka, mobalik ko sa ",
+        {
+          "kind": "choice",
+          "answer": "hapon",
+          "choices": [
+            "buntag",
+            "kadlawon",
+            "gabii",
+            "hapon"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Pahulam ko",
+          "baseText": {
+            "de": "leihen Sie mir",
+            "en": "lend me"
+          }
+        },
+        {
+          "targetText": "sa imong hagdan",
+          "baseText": {
+            "de": "Ihre Leiter",
+            "en": "your ladder"
+          }
+        },
+        {
+          "targetText": "ugma, palihug,",
+          "baseText": {
+            "de": "morgen bitte",
+            "en": "tomorrow, please"
+          }
+        },
+        {
+          "targetText": "kay taas ang sanga.",
+          "baseText": {
+            "de": "weil der Ast hoch hängt",
+            "en": "because the branch is high up"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pahulam",
+          "baseText": {
+            "de": "leihen Sie mir; lassen Sie mich ausleihen",
+            "en": "lend me; let me borrow"
+          }
+        },
+        {
+          "targetText": "hagdan",
+          "baseText": {
+            "de": "Leiter",
+            "en": "ladder"
+          }
+        },
+        {
+          "targetText": "sanga",
+          "baseText": {
+            "de": "Ast",
+            "en": "branch"
+          }
+        },
+        {
+          "targetText": "taas",
+          "baseText": {
+            "de": "hoch",
+            "en": "high"
+          }
+        },
+        {
+          "targetText": "human sa paniudto",
+          "baseText": {
+            "de": "nach dem Mittagessen",
+            "en": "after lunch"
+          }
+        },
+        {
+          "targetText": "mobalik",
+          "baseText": {
+            "de": "wiederkommen",
+            "en": "come back"
+          }
+        },
+        {
+          "targetText": "hapon",
+          "baseText": {
+            "de": "Nachmittag",
+            "en": "afternoon"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pahulam ko sa imong ",
+        "answer": "hagdan",
+        "after": " ugma, palihug, kay taas ang sanga.",
+        "fallbackChoices": [
+          "metro",
+          "hagdan",
+          "sundang",
+          "sudlay"
+        ]
+      },
+      "speakRequired": [
+        "pahulam",
+        "hagdan",
+        "sanga"
+      ],
+      "sceneCaption": {
+        "de": "Beim Gartenzaun fragt der Nachbar, was du für die Arbeiten am Haus brauchst. „Unsay imong kuwang para sa trabaho ugma?“",
+        "en": "At the garden fence your neighbour asks what you need for the work on your house. “Unsay imong kuwang para sa trabaho ugma?”"
+      },
+      "trophyWord": {
+        "word": "pahulam",
+        "meaning": {
+          "de": "leihen Sie mir; lassen Sie mich ausleihen",
+          "en": "lend me; let me borrow"
+        },
+        "example": "Pahulam ko sa hagdan kadiyot, palihug.",
+        "whyThisWord": {
+          "de": "Pahulam passt, wenn das Werkzeug später zurück an seinen Besitzer geht.",
+          "en": "Pahulam is useful when you intend to return a borrowed tool."
+        }
+      },
+      "distractors": [
+        "sa imong martilyo",
+        "kay bug-at ang kahon."
+      ],
+      "placeholderCaption": {
+        "de": "Die Leiter für morgen",
+        "en": "The ladder for tomorrow"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "At the garden fence your neighbour asks what you need for the work on your house."
+    },
+    {
+      "slug": "sulayan-two-dresses-at-the-stall",
+      "title": {
+        "de": "Zwei Kleider am Stand",
+        "en": "Two dresses at the stall"
+      },
+      "situation": {
+        "de": "Die Verkäuferin legt dir zwei Kleider zur Auswahl hin.",
+        "en": "The vendor lays out two dresses for you to choose from."
+      },
+      "pedagogicalGoal": "Vor dem Kauf um eine Anprobe bitten",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Asa niining duha ka sinina ang imong paliton?",
+          "baseText": {
+            "de": "Welches dieser beiden Kleider möchten Sie kaufen?",
+            "en": "Which of these two dresses would you like to buy?"
+          }
+        },
+        {
+          "targetText": "Mahimo ba nga sulayan nako una kini nga sinina sa dili pa ko mopalit?",
+          "baseText": {
+            "de": "Könnte ich dieses Kleid erst anprobieren, bevor ich es kaufe?",
+            "en": "Could I try this dress on first before I buy it?"
+          }
+        },
+        {
+          "targetText": "Usa ra ang puwede nimong dalhon sa sulayanan. Asa man?",
+          "baseText": {
+            "de": "Sie dürfen nur eines in die Umkleide mitnehmen. Welches nehmen Sie?",
+            "en": "You can take only one into the fitting room. Which one?"
+          }
+        },
+        {
+          "targetText": "Ang mas dako lang unta, kay huot ang gamay.",
+          "baseText": {
+            "de": "Das größere bitte, das kleine ist zu eng.",
+            "en": "The larger one please, because the small one is tight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vor dem Kauf um eine Anprobe bitten",
+        "rule": {
+          "de": "In sulayan nako bezeichnet nako die Person, die das Kleid anprobieren möchte. Una legt die Anprobe zeitlich vor den Kauf.",
+          "en": "In sulayan nako, nako names the person who wants to try the dress on. Una places the fitting before the purchase."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo ba nga sulayan nako una kini nga sinina sa dili pa ko mopalit?",
+            "baseText": {
+              "de": "Könnte ich dieses Kleid erst anprobieren, bevor ich es kaufe?",
+              "en": "Could I try this dress on first before I buy it?"
+            },
+            "highlight": "sulayan nako"
+          },
+          {
+            "targetText": "Mahimo ba nga sulayan nako ang sapatos sa tuo?",
+            "baseText": {
+              "de": "Könnte ich den rechten Schuh anprobieren?",
+              "en": "Could I try on the right shoe?"
+            },
+            "highlight": "sulayan nako"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang mas ",
+        {
+          "kind": "choice",
+          "answer": "dako",
+          "choices": [
+            "hugaw",
+            "mahal",
+            "daan",
+            "dako"
+          ]
+        },
+        " lang ",
+        {
+          "kind": "choice",
+          "answer": "unta",
+          "choices": [
+            "kung",
+            "unta",
+            "aron",
+            "apan"
+          ]
+        },
+        ", kay huot ang gamay."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mahimo ba nga",
+          "baseText": {
+            "de": "könnte ich",
+            "en": "could I"
+          }
+        },
+        {
+          "targetText": "sulayan nako una",
+          "baseText": {
+            "de": "zuerst anprobieren",
+            "en": "try on first"
+          }
+        },
+        {
+          "targetText": "kini nga sinina",
+          "baseText": {
+            "de": "dieses Kleid",
+            "en": "this dress"
+          }
+        },
+        {
+          "targetText": "sa dili pa ko mopalit?",
+          "baseText": {
+            "de": "bevor ich es kaufe",
+            "en": "before I buy it"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sulayan",
+          "baseText": {
+            "de": "ausprobieren; anprobieren",
+            "en": "try; try on"
+          }
+        },
+        {
+          "targetText": "una",
+          "baseText": {
+            "de": "zuerst",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "sinina",
+          "baseText": {
+            "de": "Kleid; Kleidung",
+            "en": "dress; clothing"
+          }
+        },
+        {
+          "targetText": "mopalit",
+          "baseText": {
+            "de": "kaufen",
+            "en": "buy"
+          }
+        },
+        {
+          "targetText": "sulayanan",
+          "baseText": {
+            "de": "Umkleide",
+            "en": "fitting room"
+          }
+        },
+        {
+          "targetText": "huot",
+          "baseText": {
+            "de": "eng",
+            "en": "tight"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mahimo ba nga sulayan nako una kini nga ",
+        "answer": "sinina",
+        "after": " sa dili pa ko mopalit?",
+        "fallbackChoices": [
+          "sapatos",
+          "singsing",
+          "sinina",
+          "sombrero"
+        ]
+      },
+      "speakRequired": [
+        "mahimo",
+        "sulayan",
+        "mopalit"
+      ],
+      "sceneCaption": {
+        "de": "Die Verkäuferin legt dir zwei Kleider zur Auswahl hin. „Asa niining duha ka sinina ang imong paliton?“",
+        "en": "The vendor lays out two dresses for you to choose from. “Asa niining duha ka sinina ang imong paliton?”"
+      },
+      "trophyWord": {
+        "word": "sulayan",
+        "meaning": {
+          "de": "ausprobieren; anprobieren",
+          "en": "try; try on"
+        },
+        "example": "Sulayan nako ang mas dako nga sinina.",
+        "whyThisWord": {
+          "de": "Mit sulayan kannst du bei Schuhen, Kleidung oder einem Gerät nach dem Ausprobieren fragen.",
+          "en": "Sulayan lets you ask to try shoes, clothing or a device."
+        }
+      },
+      "distractors": [
+        "isul-ob nimo una",
+        "kini nga sapatos"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kleider am Stand",
+        "en": "Two dresses at the stall"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "The vendor lays out two dresses for you to choose from."
+    },
+    {
+      "slug": "pabor-at-the-ticket-counter",
+      "title": {
+        "de": "Am Ticketschalter",
+        "en": "At the ticket counter"
+      },
+      "situation": {
+        "de": "Eine Person neben der Schlange bemerkt dein schweres Gepäck.",
+        "en": "A person beside the queue notices your heavy bag."
+      },
+      "pedagogicalGoal": "Mit naa koy pangayoon nga pabor um Hilfe bitten",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Lisod magdala ana samtang naglinya ka, no?",
+          "baseText": {
+            "de": "Damit ist das Anstehen mühsam, oder?",
+            "en": "It’s hard to carry that while you queue, isn’t it?"
+          }
+        },
+        {
+          "targetText": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og tiket?",
+          "baseText": {
+            "de": "Ich hätte eine Bitte: Würden Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+            "en": "I have a favour to ask: would you watch my bag while I buy a ticket?"
+          }
+        },
+        {
+          "targetText": "Sige, pero lima ra ka minuto kay moabot na ang akong bus.",
+          "baseText": {
+            "de": "Ja, aber nur fünf Minuten, denn mein Bus kommt gleich.",
+            "en": "Sure, but only for five minutes because my bus is nearly here."
+          }
+        },
+        {
+          "targetText": "Sige, magdali ko aron makabalik dayon dinhi.",
+          "baseText": {
+            "de": "Gut, ich beeile mich, damit ich gleich wieder hier bin.",
+            "en": "All right, I’ll hurry so I can come straight back here."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit naa koy pangayoon nga pabor um Hilfe bitten",
+        "rule": {
+          "de": "Mit naa koy pangayoon nga pabor kündigst du eine Bitte an. Pangayoon bezieht sich auf den Gefallen, um den du bitten möchtest. Die anschließende Frage macht die Bitte konkret.",
+          "en": "Naa koy pangayoon nga pabor introduces a favour you want to ask. Pangayoon refers to the thing to be requested. The question that follows says what you want the other person to do."
+        },
+        "examples": [
+          {
+            "targetText": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og tiket?",
+            "baseText": {
+              "de": "Ich hätte eine Bitte: Würden Sie auf meine Tasche aufpassen, während ich eine Fahrkarte kaufe?",
+              "en": "I have a favour to ask: would you watch my bag while I buy a ticket?"
+            },
+            "highlight": "pangayoon nga pabor"
+          },
+          {
+            "targetText": "Naa koy pangayoon nga pabor: mahimo ba nimong bantayan kining lingkoranan?",
+            "baseText": {
+              "de": "Ich hätte eine Bitte: Könnten Sie mir diesen Platz frei halten?",
+              "en": "I have a favour to ask: could you keep this seat for me?"
+            },
+            "highlight": "pangayoon nga pabor"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "choice",
+          "answer": "magdali",
+          "choices": [
+            "magdali",
+            "mokanta",
+            "matulog",
+            "mopahuway"
+          ]
+        },
+        " ko aron ",
+        {
+          "kind": "choice",
+          "answer": "makabalik",
+          "choices": [
+            "makalangoy",
+            "makaluto",
+            "makabalik",
+            "makabasa"
+          ]
+        },
+        " dayon dinhi."
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa koy pangayoon nga pabor:",
+          "baseText": {
+            "de": "ich hätte eine Bitte",
+            "en": "I have a favour to ask"
+          }
+        },
+        {
+          "targetText": "bantayan ba nimo",
+          "baseText": {
+            "de": "würden Sie aufpassen",
+            "en": "would you watch"
+          }
+        },
+        {
+          "targetText": "ang akong bag",
+          "baseText": {
+            "de": "auf meine Tasche",
+            "en": "my bag"
+          }
+        },
+        {
+          "targetText": "samtang mopalit ko og tiket?",
+          "baseText": {
+            "de": "während ich eine Fahrkarte kaufe",
+            "en": "while I buy a ticket"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pabor",
+          "baseText": {
+            "de": "Gefallen",
+            "en": "favour"
+          }
+        },
+        {
+          "targetText": "pangayoon nga pabor",
+          "baseText": {
+            "de": "ein Gefallen, um den man bitten möchte",
+            "en": "a favour to ask"
+          }
+        },
+        {
+          "targetText": "bantayan",
+          "baseText": {
+            "de": "im Auge behalten",
+            "en": "watch over"
+          }
+        },
+        {
+          "targetText": "bag",
+          "baseText": {
+            "de": "Tasche",
+            "en": "bag"
+          }
+        },
+        {
+          "targetText": "samtang",
+          "baseText": {
+            "de": "während",
+            "en": "while"
+          }
+        },
+        {
+          "targetText": "mopalit",
+          "baseText": {
+            "de": "kaufen",
+            "en": "buy"
+          }
+        },
+        {
+          "targetText": "tiket",
+          "baseText": {
+            "de": "Fahrkarte",
+            "en": "ticket"
+          }
+        },
+        {
+          "targetText": "magdali",
+          "baseText": {
+            "de": "sich beeilen",
+            "en": "hurry"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa koy pangayoon nga pabor: bantayan ba nimo ang akong bag samtang mopalit ko og ",
+        "answer": "tiket",
+        "after": "?",
+        "fallbackChoices": [
+          "sobre",
+          "mani",
+          "sabon",
+          "tiket"
+        ]
+      },
+      "speakRequired": [
+        "pabor",
+        "bantayan",
+        "mopalit"
+      ],
+      "sceneCaption": {
+        "de": "Eine Person neben der Schlange bemerkt dein schweres Gepäck. „Lisod magdala ana samtang naglinya ka, no?“",
+        "en": "A person beside the queue notices your heavy bag. “Lisod magdala ana samtang naglinya ka, no?”"
+      },
+      "trophyWord": {
+        "word": "pabor",
+        "meaning": {
+          "de": "Gefallen",
+          "en": "favour"
+        },
+        "example": "Gamay ra ang pabor nga akong pangayoon.",
+        "whyThisWord": {
+          "de": "Mit pabor nga pangayoon kündigst du an, dass du um einen Gefallen bittest, bevor du die konkrete Hilfe nennst.",
+          "en": "Pabor nga pangayoon signals that you are asking a favour before you name the help you need."
+        }
+      },
+      "distractors": [
+        "ang akong payong",
+        "samtang mokuha ko og tubig?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Ticketschalter",
+        "en": "At the ticket counter"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "A person beside the queue notices your heavy bag."
+    },
+    {
+      "slug": "ibalhin-the-reservation-date",
+      "title": {
+        "de": "Der Tag der Reservierung",
+        "en": "The reservation date"
+      },
+      "situation": {
+        "de": "Am Schalter suchst du zusammen mit dem Mitarbeiter deine Reservierung heraus.",
+        "en": "At the desk you and the clerk look up your reservation."
+      },
+      "pedagogicalGoal": "Mit ibalhin einen neuen Termin vorschlagen",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nakita na nako imong ngalan. Unsay gusto nimong usbon?",
+          "baseText": {
+            "de": "Ich habe Ihren Namen gefunden. Was möchten Sie ändern?",
+            "en": "I found your name. What would you like to change?"
+          }
+        },
+        {
+          "targetText": "Mahimo ba nga ibalhin ang akong reserbasyon gikan sa Huwebes ngadto sa Biyernes?",
+          "baseText": {
+            "de": "Könnte meine Reservierung von Donnerstag auf Freitag verlegt werden?",
+            "en": "Could my reservation be moved from Thursday to Friday?"
+          }
+        },
+        {
+          "targetText": "Puno na ang Biyernes, pero bakante ang Sabado sa buntag ug sa hapon.",
+          "baseText": {
+            "de": "Freitag ist ausgebucht, aber am Samstag gibt es vormittags und nachmittags noch Plätze.",
+            "en": "Friday is full, but Saturday morning and afternoon are available."
+          }
+        },
+        {
+          "targetText": "Sige, sa Sabado, apan sa buntag kay motrabaho ko human sa paniudto.",
+          "baseText": {
+            "de": "Gut, dann Samstag, aber vormittags, weil ich nach dem Mittagessen arbeite.",
+            "en": "All right, Saturday, but in the morning because I work after lunch."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit ibalhin einen neuen Termin vorschlagen",
+        "rule": {
+          "de": "Ibalhin bezeichnet hier das Verlegen einer bestehenden Reservierung. Gikan sa nennt den bisherigen Tag und ngadto sa den gewünschten.",
+          "en": "Ibalhin means to move an existing reservation here. Gikan sa gives the original date and ngadto sa the new one."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo ba nga ibalhin ang akong reserbasyon gikan sa Huwebes ngadto sa Biyernes?",
+            "baseText": {
+              "de": "Könnte meine Reservierung von Donnerstag auf Freitag verlegt werden?",
+              "en": "Could my reservation be moved from Thursday to Friday?"
+            },
+            "highlight": "ibalhin"
+          },
+          {
+            "targetText": "Mahimo ba nga ibalhin ang miting ngadto sa Lunes?",
+            "baseText": {
+              "de": "Könnte die Besprechung auf Montag verlegt werden?",
+              "en": "Could the meeting be moved to Monday?"
+            },
+            "highlight": "ibalhin"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, sa Sabado, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "aron",
+            "apan",
+            "tungod",
+            "bisan pa og"
+          ]
+        },
+        " sa ",
+        {
+          "kind": "choice",
+          "answer": "buntag",
+          "choices": [
+            "gabii",
+            "kadlawon",
+            "hapon",
+            "buntag"
+          ]
+        },
+        " kay motrabaho ko human sa paniudto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mahimo ba nga",
+          "baseText": {
+            "de": "könnte",
+            "en": "could"
+          }
+        },
+        {
+          "targetText": "ibalhin ang akong reserbasyon",
+          "baseText": {
+            "de": "meine Reservierung verlegt werden",
+            "en": "my reservation be moved"
+          }
+        },
+        {
+          "targetText": "gikan sa Huwebes",
+          "baseText": {
+            "de": "von Donnerstag",
+            "en": "from Thursday"
+          }
+        },
+        {
+          "targetText": "ngadto sa Biyernes?",
+          "baseText": {
+            "de": "auf Freitag",
+            "en": "to Friday"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ibalhin",
+          "baseText": {
+            "de": "verlegen",
+            "en": "move to another date"
+          }
+        },
+        {
+          "targetText": "reserbasyon",
+          "baseText": {
+            "de": "Reservierung",
+            "en": "reservation"
+          }
+        },
+        {
+          "targetText": "gikan sa",
+          "baseText": {
+            "de": "von",
+            "en": "from"
+          }
+        },
+        {
+          "targetText": "ngadto sa",
+          "baseText": {
+            "de": "nach; auf",
+            "en": "to"
+          }
+        },
+        {
+          "targetText": "puno",
+          "baseText": {
+            "de": "ausgebucht",
+            "en": "full"
+          }
+        },
+        {
+          "targetText": "bakante",
+          "baseText": {
+            "de": "frei",
+            "en": "available"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mahimo ba nga ibalhin ang akong ",
+        "answer": "reserbasyon",
+        "after": " gikan sa Huwebes ngadto sa Biyernes?",
+        "fallbackChoices": [
+          "reserbasyon",
+          "sakyanan",
+          "bag",
+          "sulod"
+        ]
+      },
+      "speakRequired": [
+        "mahimo",
+        "ibalhin",
+        "reserbasyon"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter suchst du zusammen mit dem Mitarbeiter deine Reservierung heraus. „Nakita na nako imong ngalan. Unsay gusto nimong usbon?“",
+        "en": "At the desk you and the clerk look up your reservation. “Nakita na nako imong ngalan. Unsay gusto nimong usbon?”"
+      },
+      "trophyWord": {
+        "word": "ibalhin",
+        "meaning": {
+          "de": "verlegen",
+          "en": "move to another date"
+        },
+        "example": "Palihug ibalhin ang akong reserbasyon sa Sabado.",
+        "whyThisWord": {
+          "de": "Mit ibalhin bittest du um einen anderen Platz im Kalender für etwas bereits Vereinbartes.",
+          "en": "Use ibalhin to request a new slot for something already arranged."
+        }
+      },
+      "distractors": [
+        "gikan sa Lunes",
+        "ngadto sa Martes?"
+      ],
+      "placeholderCaption": {
+        "de": "Der Tag der Reservierung",
+        "en": "The reservation date"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "At the desk you and the clerk look up your reservation."
+    },
+    {
+      "slug": "ilisan-the-sauce-for-the-fish",
+      "title": {
+        "de": "Die Soße zum Fisch",
+        "en": "The sauce for the fish"
+      },
+      "situation": {
+        "de": "An der Essensausgabe erklärt der Koch, welche Soße zum Fisch gehört.",
+        "en": "At the food counter the cook explains which sauce goes with the fish."
+      },
+      "pedagogicalGoal": "Um einen Austausch mit ilisan bitten",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Kini nga halang nga sarsa ang kuyog sa isda. Maayo ra?",
+          "baseText": {
+            "de": "Zum Fisch gibt es diese scharfe Soße. Passt das?",
+            "en": "This spicy sauce comes with the fish. Is that all right?"
+          }
+        },
+        {
+          "targetText": "Mahimo ba nga ilisan ang sarsa niini nga isda kay dili ko mokaon og halang?",
+          "baseText": {
+            "de": "Könnte ich zu diesem Fisch eine andere Soße bekommen, weil ich nichts Scharfes esse?",
+            "en": "Could the sauce for this fish be changed because I don’t eat spicy food?"
+          }
+        },
+        {
+          "targetText": "Naa koy sarsa sa lubi, pero naa nay dugang bayad.",
+          "baseText": {
+            "de": "Ich habe Kokossoße, dafür kommt allerdings ein Aufpreis dazu.",
+            "en": "I have coconut sauce, but there’s an extra charge for it."
+          }
+        },
+        {
+          "targetText": "Mobayad ko sa dugang, basta gamay ra ang bahin sa sarsa.",
+          "baseText": {
+            "de": "Ich zahle den Aufpreis, sofern ich nur eine kleine Portion Soße bekomme.",
+            "en": "I’ll pay the extra charge, provided I get only a small portion of sauce."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Um einen Austausch mit ilisan bitten",
+        "rule": {
+          "de": "Auf ilisan folgt, was ausgetauscht werden soll. Der kay-Satz erklärt, warum die ursprüngliche Wahl nicht passt.",
+          "en": "Ilisan is followed by what you would like changed. The kay clause explains why the original choice doesn’t work."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo ba nga ilisan ang sarsa niini nga isda kay dili ko mokaon og halang?",
+            "baseText": {
+              "de": "Könnte ich zu diesem Fisch eine andere Soße bekommen, weil ich nichts Scharfes esse?",
+              "en": "Could the sauce for this fish be changed because I don’t eat spicy food?"
+            },
+            "highlight": "ilisan"
+          },
+          {
+            "targetText": "Mahimo ba nga ilisan ang kan-on og utanon?",
+            "baseText": {
+              "de": "Könnte ich anstelle von Reis Gemüse haben?",
+              "en": "Could I have vegetables instead of rice?"
+            },
+            "highlight": "ilisan"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Mobayad",
+          "choices": [
+            "Moluto",
+            "Mobayad",
+            "Mosulat",
+            "Mokanta"
+          ]
+        },
+        " ko sa dugang, ",
+        {
+          "kind": "choice",
+          "answer": "basta",
+          "choices": [
+            "busa",
+            "aron",
+            "tungod",
+            "basta"
+          ]
+        },
+        " gamay ra ang bahin sa sarsa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mahimo ba nga",
+          "baseText": {
+            "de": "könnte",
+            "en": "could"
+          }
+        },
+        {
+          "targetText": "ilisan ang sarsa",
+          "baseText": {
+            "de": "die Soße ausgetauscht werden",
+            "en": "the sauce be changed"
+          }
+        },
+        {
+          "targetText": "niini nga isda",
+          "baseText": {
+            "de": "zu diesem Fisch",
+            "en": "for this fish"
+          }
+        },
+        {
+          "targetText": "kay dili ko mokaon og halang?",
+          "baseText": {
+            "de": "weil ich nichts Scharfes esse",
+            "en": "because I don’t eat spicy food"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ilisan",
+          "baseText": {
+            "de": "austauschen",
+            "en": "replace"
+          }
+        },
+        {
+          "targetText": "sarsa",
+          "baseText": {
+            "de": "Soße",
+            "en": "sauce"
+          }
+        },
+        {
+          "targetText": "isda",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "halang",
+          "baseText": {
+            "de": "scharf",
+            "en": "spicy"
+          }
+        },
+        {
+          "targetText": "lubi",
+          "baseText": {
+            "de": "Kokosnuss",
+            "en": "coconut"
+          }
+        },
+        {
+          "targetText": "dugang bayad",
+          "baseText": {
+            "de": "Aufpreis",
+            "en": "extra charge"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mahimo ba nga ilisan ang ",
+        "answer": "sarsa",
+        "after": " niini nga isda kay dili ko mokaon og halang?",
+        "fallbackChoices": [
+          "presyo",
+          "sarsa",
+          "lingkoranan",
+          "basiyo"
+        ]
+      },
+      "speakRequired": [
+        "mahimo",
+        "ilisan",
+        "mokaon"
+      ],
+      "sceneCaption": {
+        "de": "An der Essensausgabe erklärt der Koch, welche Soße zum Fisch gehört. „Kini nga halang nga sarsa ang kuyog sa isda. Maayo ra?“",
+        "en": "At the food counter the cook explains which sauce goes with the fish. “Kini nga halang nga sarsa ang kuyog sa isda. Maayo ra?”"
+      },
+      "trophyWord": {
+        "word": "ilisan",
+        "meaning": {
+          "de": "austauschen",
+          "en": "replace"
+        },
+        "example": "Mahimo ba nga ilisan ang sarsa?",
+        "whyThisWord": {
+          "de": "Ilisan hilft dir, gezielt eine Beilage oder Zutat austauschen zu lassen.",
+          "en": "Ilisan helps you ask to swap a particular side dish or ingredient."
+        }
+      },
+      "distractors": [
+        "niini nga manok",
+        "kay dili ko moinom og kape?"
+      ],
+      "placeholderCaption": {
+        "de": "Die Soße zum Fisch",
+        "en": "The sauce for the fish"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "At the food counter the cook explains which sauce goes with the fish."
+    },
+    {
+      "slug": "mangayo-a-receipt-for-your-records",
+      "title": {
+        "de": "Ein Beleg für die Unterlagen",
+        "en": "A receipt for your records"
+      },
+      "situation": {
+        "de": "Am Schalter spricht dich die Mitarbeiterin nach der Zahlung an.",
+        "en": "At the counter the clerk speaks to you after you pay."
+      },
+      "pedagogicalGoal": "Mit mangayo og um ein Dokument bitten",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Aduna pa kay kinahanglan para sa imong mga papeles?",
+          "baseText": {
+            "de": "Brauchen Sie noch etwas für Ihre Unterlagen?",
+            "en": "Do you need anything else for your records?"
+          }
+        },
+        {
+          "targetText": "Mahimo ba nga mangayo ko og kopya sa resibo pinaagi sa email?",
+          "baseText": {
+            "de": "Könnte ich eine Kopie des Belegs per E-Mail bekommen?",
+            "en": "Could I ask for a copy of the receipt by email?"
+          }
+        },
+        {
+          "targetText": "Papel ra among ikahatag. Sa unsang adres namo ipadala?",
+          "baseText": {
+            "de": "Wir können nur eine Papierkopie ausstellen. An welche Adresse sollen wir sie schicken?",
+            "en": "We can only provide a paper copy. What address should we send it to?"
+          }
+        },
+        {
+          "targetText": "Sige, papel na lang; ang adres kay Dose, Dalan Mabini.",
+          "baseText": {
+            "de": "Gut, dann auf Papier. Die Adresse ist Mabini-Straße zwölf.",
+            "en": "All right, paper then. The address is twelve Mabini Street."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Mit mangayo og um ein Dokument bitten",
+        "rule": {
+          "de": "Mangayo ko og nennt die Person, die bittet, und danach den gewünschten Gegenstand. Pinaagi sa email ergänzt den Übermittlungsweg.",
+          "en": "Mangayo ko og names the person making the request and then the item requested. Pinaagi sa email adds the delivery method."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo ba nga mangayo ko og kopya sa resibo pinaagi sa email?",
+            "baseText": {
+              "de": "Könnte ich eine Kopie des Belegs per E-Mail bekommen?",
+              "en": "Could I ask for a copy of the receipt by email?"
+            },
+            "highlight": "mangayo ko og"
+          },
+          {
+            "targetText": "Mahimo ba nga mangayo ko og kopya sa kontrata?",
+            "baseText": {
+              "de": "Könnte ich eine Kopie des Vertrags bekommen?",
+              "en": "Could I ask for a copy of the contract?"
+            },
+            "highlight": "mangayo ko og"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "choice",
+          "answer": "papel",
+          "choices": [
+            "selpon",
+            "kompyuter",
+            "radyo",
+            "papel"
+          ]
+        },
+        " na lang; ang ",
+        {
+          "kind": "choice",
+          "answer": "adres",
+          "choices": [
+            "ngalan",
+            "presyo",
+            "adres",
+            "oras"
+          ]
+        },
+        " kay Dose, Dalan Mabini."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mahimo ba nga",
+          "baseText": {
+            "de": "könnte ich",
+            "en": "could I"
+          }
+        },
+        {
+          "targetText": "mangayo ko og kopya",
+          "baseText": {
+            "de": "um eine Kopie bitten",
+            "en": "ask for a copy"
+          }
+        },
+        {
+          "targetText": "sa resibo",
+          "baseText": {
+            "de": "des Belegs",
+            "en": "of the receipt"
+          }
+        },
+        {
+          "targetText": "pinaagi sa email?",
+          "baseText": {
+            "de": "per E-Mail",
+            "en": "by email"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mangayo",
+          "baseText": {
+            "de": "um etwas bitten",
+            "en": "ask for"
+          }
+        },
+        {
+          "targetText": "kopya",
+          "baseText": {
+            "de": "Kopie",
+            "en": "copy"
+          }
+        },
+        {
+          "targetText": "resibo",
+          "baseText": {
+            "de": "Beleg",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "pinaagi sa",
+          "baseText": {
+            "de": "mittels",
+            "en": "by means of"
+          }
+        },
+        {
+          "targetText": "papel",
+          "baseText": {
+            "de": "Papier",
+            "en": "paper"
+          }
+        },
+        {
+          "targetText": "adres",
+          "baseText": {
+            "de": "Anschrift",
+            "en": "address"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mahimo ba nga mangayo ko og kopya sa ",
+        "answer": "resibo",
+        "after": " pinaagi sa email?",
+        "fallbackChoices": [
+          "senyal",
+          "bintana",
+          "resibo",
+          "dapit"
+        ]
+      },
+      "speakRequired": [
+        "mahimo",
+        "mangayo",
+        "resibo"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter spricht dich die Mitarbeiterin nach der Zahlung an. „Aduna pa kay kinahanglan para sa imong mga papeles?“",
+        "en": "At the counter the clerk speaks to you after you pay. “Aduna pa kay kinahanglan para sa imong mga papeles?”"
+      },
+      "trophyWord": {
+        "word": "mangayo",
+        "meaning": {
+          "de": "um etwas bitten",
+          "en": "ask for"
+        },
+        "example": "Mahimo ba nga mangayo ko og resibo?",
+        "whyThisWord": {
+          "de": "Auf mangayo kann der konkrete Gegenstand folgen, den du am Schalter brauchst.",
+          "en": "Follow mangayo with the particular item you need at the counter."
+        }
+      },
+      "distractors": [
+        "sa kontrata",
+        "pinaagi sa koreyo?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Beleg für die Unterlagen",
+        "en": "A receipt for your records"
+      },
+      "songMood": "Gentle acoustic conversation",
+      "visualNotes": "At the counter the clerk speaks to you after you pay."
+    }
+  ]
+}

@@ -2,6 +2,46 @@
   "scope": "Complete offline B1 candidates only; proves parser and exercise checks, not production admission.",
   "paths": [
     {
+      "path": "b1/cebuano/p3.json",
+      "sha256": "b82ac328b8787bc64eb5fd71b8a4f4739bb41b4464c660e0fe84893088030f93",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p4.json",
+      "sha256": "9b734f71697f4904e32ddd9b9911798aeb37ae4d7dbe2395c593d2194c2dd706",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p5.json",
+      "sha256": "9777cf3dbb9d2c587f0c20342e5e032514035ca34e4977dcd177aa50cdd46c29",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p6.json",
+      "sha256": "e6456349147ce17381c55890758f6019b2ead714377b545f1d9b38100d4a5aee",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p7.json",
+      "sha256": "c4c1411b929868f09957377eec11be6e77ac6375f96bfb35e575fec556e9f773",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p8.json",
+      "sha256": "d241ac77a82d98444b7528c392d9975904702ae4a420c08f29dc6db20c1b9da9",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p9.json",
+      "sha256": "7f6825aeec71749a6cf7ec46ba120662193242a3a9709be2682ba8d510978a36",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
+      "path": "b1/cebuano/p10.json",
+      "sha256": "ad56a3f75f6f437d5a996ad2aaf5815ece5194d580c63d89704887bbac3008c5",
+      "gate": "Unmodified native B1 validator and reviewed Cebuano specification"
+    },
+    {
       "path": "b1/english/p6.json",
       "sha256": "e59f0659f393d86d9f1934f25178752699d4d46aa6dc3824e6a17978b6311be1",
       "gate": "Unmodified app B1 draft validator"

@@ -1,0 +1,2348 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 6,
+  "lessonSha256": "e6456349147ce17381c55890758f6019b2ead714377b545f1d9b38100d4a5aee",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "e6456349147ce17381c55890758f6019b2ead714377b545f1d9b38100d4a5aee",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Una and dayon order boiling the water and adding fish and vegetables. The follow-up gives tamarind juice as the souring ingredient."
+      },
+      {
+        "n": 2,
+        "observation": "The friend turns in two photos as step two. The follow-up names the fee and cashier, with ihatag as the instruction form."
+      },
+      {
+        "n": 3,
+        "observation": "Lakang introduces three study tasks. The learner names answering as the most helpful and explains the role of memory."
+      },
+      {
+        "n": 4,
+        "observation": "The learner describes a phone price alert, then says when it was set. The completed Gibutang and two months before the trip match both translations."
+      },
+      {
+        "n": 5,
+        "observation": "Andam na describes readiness while gibutang describes the completed action with the candles. The food question elicits a further past action."
+      },
+      {
+        "n": 6,
+        "observation": "Gisagol reports completed mixing. The host’s one-cup question gives a clear ratio of one chilli per cup in both locales."
+      },
+      {
+        "n": 7,
+        "observation": "The learner reports washing and chilling the mango before slicing it. Mao nga links the knife’s sharpness to the decision to use it."
+      },
+      {
+        "n": 8,
+        "observation": "Bukal na sets the start of the seven-minute period. Cooling the egg before peeling gently answers the question about protecting it."
+      },
+      {
+        "n": 9,
+        "observation": "Resulta introduces the learner’s observed change in sleep. The dry mouth and the water brought along motivate mao nga in the closing exercise."
+      },
+      {
+        "n": 10,
+        "observation": "The fan repair is done with noise still present. The learner distinguishes the replacement motor from the retained blade assembly."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "e6456349147ce17381c55890758f6019b2ead714377b545f1d9b38100d4a5aee",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The general recipe matches Unsaon, and the final cooking-time condition and cued isagol single out adding tamarind juice. Kung is a chip because alternative written links would fit."
+      },
+      {
+        "n": 2,
+        "observation": "The first/second photo-registration steps now stay distinct from the explicitly scoped Sa pagbayad sequence: count the fifty pesos, then hand them to the cashier. The ordinal cue, instruction form and recipient are each single-fit among their offered choices."
+      },
+      {
+        "n": 3,
+        "observation": "The tutor gets three steps plus an explanation for preferring answering; cued isulat and the causal choice now practice the procedure instead of just selecting words."
+      },
+      {
+        "n": 4,
+        "observation": "The cousin's fare alert is now tested as a past focus verb, a unit and a temporal relation. Fixed ang after the temporal choice rules out human sa / sulod sa in that slot."
+      },
+      {
+        "n": 5,
+        "observation": "The neighbour's food answer tests Giluto with a completed-focus cue and a contextually constrained before-the-storm link. No premature resultative is required."
+      },
+      {
+        "n": 6,
+        "observation": "The host gets a chilli-per-cup ratio and a taste step. Isagol is cued, and the ratio marker and sequence marker each have one viable offered option."
+      },
+      {
+        "n": 7,
+        "observation": "The mango answer leads to a sharp small knife, with literal nga constraining typed mao before completed gigamit."
+      },
+      {
+        "n": 8,
+        "observation": "The aunt hears an elliptical seven-minute answer to a duration question, then cooling and gentle peeling. Dayon and the cued instruction panitan are both exercised."
+      },
+      {
+        "n": 9,
+        "observation": "The clinician hears dry mouth and bringing water. Mao before nga and a cued gidala connect an effect to its completed response. The revised bases now explicitly attribute the sleep change to the medicine, as sa tambal does."
+      },
+      {
+        "n": 10,
+        "observation": "The fan's replaced motor contrasts with retained blades. Completed Giilisan and contrastive apan are now exercised; using chips for apan prevents rejecting equally natural pero. The -an cue selects giilisan precisely."
+      }
+    ],
+    "findings": [
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "chunks[0].baseText",
+        "issue": "Done now is / Fertig ist jetzt remains awkward as a standalone fragment. The complete dialogue and transfer mean the right thing.",
+        "recommendation": "Use a natural short meaning such as Finished now / Jetzt fertig on a future copy pass."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "66397de177dc717c238fee306c7a08564fd3beb0803944e857cdd8683b00e13a",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The host moves from cooking fish sinigang to souring it; pabukalon/ibutang and a glass-and-milk transfer example carry the sequence."
+      },
+      {
+        "n": 2,
+        "observation": "The friend brings a form and two photos. The second step and cost question work; the payment destination choices also admit payment at a door or clinic."
+      },
+      {
+        "n": 3,
+        "observation": "The tutor asks which of three named study steps helps. The answer selects answering questions; the transfer example introduces an easier text."
+      },
+      {
+        "n": 4,
+        "observation": "The cousin asks how and when the alert was set. Gibutang and a two-month lead time select the intended form and unit."
+      },
+      {
+        "n": 5,
+        "observation": "The storm dialogue mentions ready water, candles and food. The reply makes mapalong productive in the recognition-only resultative block."
+      },
+      {
+        "n": 6,
+        "observation": "The vinegar/garlic/chilli recipe and one-chilli-per-cup answer meet the host's ratio question; gisagol/gibutangan are anchored."
+      },
+      {
+        "n": 7,
+        "observation": "The washed and chilled mango precedes the discussion of a sharp knife; past object focus and both translations align."
+      },
+      {
+        "n": 8,
+        "observation": "The aunt receives a duration measured from boiling and asks about peeling. The second reply sequences cooling and peeling."
+      },
+      {
+        "n": 9,
+        "observation": "The clinician asks about sleep and subsequent effects; dry mouth is a coherent development. The speech words are two nouns and an adjective."
+      },
+      {
+        "n": 10,
+        "observation": "The fan is repaired but noisy; the friend asks about parts and the learner distinguishes the new motor from the retained blades. The opening names the fan, resolving the recall option barko."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "dialogue[0].targetText / bases / terms / cloze",
+        "issue": "Giunsa asks how something was done, while both bases and the learner's recipe describe general procedure. The target also teaches Filipino sampalok as the only Cebuano term for tamarind here.",
+        "recommendation": "Use Unsaon nimo pagluto ...? for the recipe and the ordinary Cebuano sambag (or explicitly contextualize a loan). Update the caption, bases, cloze and term."
+      },
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "cloze (path-wide)",
+        "issue": "The specified whole object-focus form with cue plus sequence/result connector is not implemented. L1–3, 6 and 8 use choice where form is needed; L9 has no object-focus form; most lessons have no connector blank. Unrelated verbs or nouns often solve the activity without the target contrast.",
+        "recommendation": "Across all ten lessons, rewrite only as much of turn four as needed for a natural object-focus form and sequence/result connector; give form blanks root + aspect/focus cues and mark connectors as connector. Keep the correct beat and an unambiguous answer."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "cloze[2]",
+        "issue": "The sentence asks where to pay. Sa pultahan (at the door) and sa klinika (at the clinic) are possible payment locations in a registration scene with no stated venue.",
+        "recommendation": "If retaining the slot, use an unambiguously human recipient and options that cannot be recipients or plausible payment venues."
+      },
+      {
+        "n": 5,
+        "severity": "HIGH",
+        "field": "dialogue[3], terms",
+        "issue": "The learner produces mapalong (to go out) in L5, where the specification reserves the ma- resultative for recognition only.",
+        "recommendation": "Keep the power-cut detail in a them-line, or express the learner's food-preparation sequence using the productive object-focus inventory."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "dialogue[3], terms",
+        "issue": "Hinayong panitan is an awkward canonical model for gently peeling; it risks reading like an inflected verb directly preceding another verb.",
+        "recommendation": "Use a clear adverbial construction such as panitan og hinay and re-anchor the affected fields."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "speakRequired",
+        "issue": "Resulta, tambal and lawom are all content words, but none is a connector or an aspect-bearing word as specified.",
+        "recommendation": "Anchor one of the tokens to the result link or explicitly include an aspect-bearing verb in the learner line."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "chunks[0].baseText",
+        "issue": "Now finished is / Fertig ist jetzt are awkward standalone learner glosses of Nahimo na.",
+        "recommendation": "Use a natural fragment such as Is finished now / Ist jetzt fertig or resegment to make a natural meaningful chunk."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0b2f104b4cd0c5592e846dadccf197494692e9334538c04739ad4cef16c6015d",
+      "sourceSha256": "66397de177dc717c238fee306c7a08564fd3beb0803944e857cdd8683b00e13a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Host scene, una/dayon with pabukalon/ibutang/isagol instruction forms, gi- only in the them-line; chunks, recall, speech tokens and both clozes join correctly. The souring agent is named with the Tagalog word sampalok (youTwo, cloze, term); the Cebuano word is sambag. Both cloze blanks are cue-free choice rather than the typed form blank the clozeSchema sketches, which is tolerable here since youTwo carries no connector."
+        },
+        {
+          "n": 2,
+          "observation": "Friend scene by beat; learner lines stay full-sentence neutral, ikaduha anchored in youOne and example, ihatag/sulatan as i-/-an instruction forms, bayad asked in them-line, singkwenta in A2 money form. Cloze and recall join. Foil klinika in the kahera row is only excluded by the German translation, not by grammar or context (registration could be at a clinic)."
+        },
+        {
+          "n": 3,
+          "observation": "Tutor scene; three -on/i- steps (basahon, isulat, tubagon), unya as sequencer in dialogue only (not a trophy), lakang anchored as noun, kay unambiguous as 'because' in youTwo, kinahanglan nakong hinumdoman correctly linked. Clozes, chunks, recall and tokens all consistent; translations match."
+        },
+        {
+          "n": 4,
+          "observation": "Cousin scene; paagi anchored, kung as condition, gi- productive in youTwo (Gibutang nako) with correct nako and a cue-bearing form blank whose foils are aspect- or focus-impossible. The German dialogue line and the second transfer example drop the taught 'Ang akong paagi' frame entirely ('Ich nutze …', 'Um zu sparen …') while the chunk glosses say 'Meine Methode / besteht darin … zu nutzen', so the complement cards disagree with the sentence card."
+        },
+        {
+          "n": 5,
+          "observation": "Neighbour scene; among/namo correctly exclusive, Andam na stative with past licence from the them-line frame and gibutang, Giluto form blank well cued. In the second cloze row the foil 'kandila sa aparador' makes a grammatical and contextually plausible sentence (a candle going out in a storm scene) and is also an odd three-unit chip among single words. 'una mapalong' uses ma- in a learner line; it is a subordinate future form after una, not the resultative the staging reserves, so tolerated."
+        },
+        {
+          "n": 6,
+          "observation": "Host scene; youOne equals the beat line verbatim, Gisagol anchored, og/ug used correctly (ahos ug sili; gibutangan og asin), ratio answer Isagol … sa matag tasa sa suka is idiomatic. Clozes join; foils are impossible in slot, though two foils (Isul-ob, kanus-a) carry glottal hyphens, which the spec keeps out of tokens/answers but does not literally ban in choices."
+        },
+        {
+          "n": 7,
+          "observation": "Friend scene; youOne extends the beat line with 'ang mangga' and stays at 12 words, Gihugas/gipabugnaw/una hiwaon match staging, Gigamit form blank correctly cued with aspect-impossible foils, kay hait pa kini well formed; chunks, recall and tokens consistent; them-line 'gigamit paghiwa' is colloquial but acceptable."
+        },
+        {
+          "n": 8,
+          "observation": "Aunt (host/elder) scene; youOne matches the beat with 'ang itlog' added, exactly 16 words, bukal anchored as stative, pito ka minutos in native count form, three cue-free choice blanks with impossible foils, dayon connector unambiguous. Chunk gloss 'dann die Eier legen' reads in German as 'then lay the eggs', a misleading lexicalised phrase next to the dialogue's 'Dann kommen die Eier in kaltes Wasser'."
+        },
+        {
+          "n": 9,
+          "observation": "Doctor scene reviewed as service; no request lines, no ta/kita, pagka- nominalisation kept to the them-line, resulta … mao nga and mao nga result link both productive in learner lines, nagdala licensed by Nauga in the same turn. As in lesson 4, the German dialogue line and the second example suppress the taught 'Ang resulta … mao nga' frame while English and the chunk glosses keep it."
+        },
+        {
+          "n": 10,
+          "observation": "Friend scene; Nahimo na anchored, apan qualification, pag-ayo hyphenated only in dialogue text (tokens are nahimo/bentilador/paandaron), Giilisan form blank cued with impossible foils, nagpabilin row clean, chunks and recall join; 'wala pay pintura' follows the no-apostrophe decision. Foil Pag-ilis carries a hyphen (choice slot, not banned literally)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Tagalog bleed: the souring agent is written sampalok in youTwo, the cloze tail and the term list; standard Cebuano is sambag.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3/targetText",
+              "old": "Isagol nako ang duga sa sampalok sa sabaw.",
+              "new": "Isagol nako ang duga sa sambag sa sabaw."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/4",
+              "old": " sa sampalok sa sabaw.",
+              "new": " sa sambag sa sabaw."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/terms/5/targetText",
+              "old": "sampalok",
+              "new": "sambag"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "German translations of the model sentence and the transfer example omit the taught frame Ang akong paagi (mao ang …), contradicting the chunk glosses 'Meine Methode / besteht darin, … zu nutzen' and the pattern label; English keeps the frame.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/1/baseText/de",
+              "old": "Ich nutze eine Benachrichtigung auf dem Handy, wenn der Preis sinkt.",
+              "new": "Meine Methode ist, eine Benachrichtigung auf dem Handy zu nutzen, wenn der Preis sinkt."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/0/baseText/de",
+              "old": "Ich nutze eine Benachrichtigung auf dem Handy, wenn der Preis sinkt.",
+              "new": "Meine Methode ist, eine Benachrichtigung auf dem Handy zu nutzen, wenn der Preis sinkt."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/1/baseText/de",
+              "old": "Um zu sparen, schreibe ich alle Ausgaben auf.",
+              "new": "Meine Methode zum Sparen ist, alle Ausgaben aufzuschreiben."
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Cloze foil 'kandila sa aparador' yields a grammatical, contextually plausible sentence (a candle going out during the storm) and is a three-unit chip among single-word choices; replace with a slot-impossible noun.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/3/choices",
+              "old": [
+                "kamote",
+                "kandila sa aparador",
+                "suga",
+                "kutsara"
+              ],
+              "new": [
+                "kamote",
+                "lamesa",
+                "suga",
+                "kutsara"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Chunk gloss 'dann die Eier legen' is the lexicalised German phrase for a hen laying eggs; align with the dialogue translation.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/2/baseText/de",
+              "old": "dann die Eier legen",
+              "new": "dann kommen die Eier"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Same error family as lesson 4: German dialogue line and second example suppress the taught 'Ang resulta … mao nga' result frame that the chunk glosses ('Das Ergebnis der Behandlung / ist, dass …'), whyThisWord and English all present.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/1/baseText/de",
+              "old": "Ich schlafe durch das Medikament nachts jetzt tiefer.",
+              "new": "Das Ergebnis ist, dass ich nachts jetzt tiefer schlafe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/baseText/de",
+              "old": "Ich schlafe durch das Medikament nachts jetzt tiefer.",
+              "new": "Das Ergebnis ist, dass ich nachts jetzt tiefer schlafe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1/baseText/de",
+              "old": "Dank der Übungen lese ich jetzt schneller.",
+              "new": "Das Ergebnis der Übungen ist, dass ich jetzt schneller lese."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Foil klinika in the kahera row is only ruled out by the translation; the registration location is unstated, so 'sa klinika' is a contextually possible reading. A slot-impossible noun makes the row cue-free.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3/choices",
+              "old": [
+                "atop",
+                "kahera",
+                "klinika",
+                "pultahan"
+              ],
+              "new": [
+                "atop",
+                "kahera",
+                "kutsara",
+                "pultahan"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Glottal-hyphen words appear as cloze choices (Isul-ob, kanus-a in lesson 6; Pag-ilis in lesson 10). The spec bans hyphens in answers, tokens, recall and trophies; hyphen-free foils remove any risk from a broader tooling check without changing the answers.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/0/choices",
+              "old": [
+                "Isul-ob",
+                "Isira",
+                "Isagol",
+                "Ibitay"
+              ],
+              "new": [
+                "Isulat",
+                "Isira",
+                "Isagol",
+                "Ibitay"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/2/choices",
+              "old": [
+                "kinsa",
+                "matag",
+                "kanus-a",
+                "ngano"
+              ],
+              "new": [
+                "kinsa",
+                "matag",
+                "unsa",
+                "ngano"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/0/choices",
+              "old": [
+                "Ilisi",
+                "Pag-ilis",
+                "Giilisan",
+                "Ilisan"
+              ],
+              "new": [
+                "Ilisi",
+                "Moilis",
+                "Giilisan",
+                "Ilisan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "55ee762116756f1fcdb0f508bc04c50f863d37a8a2ee6c966fe83445cce9b715",
+      "sourceSha256": "84306ff1fdab9da6198a30071cd26185058759352d8937e7f700bf8998a3e6c2",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Host asks about cooking sinigang; youOne gives una/pabukalon/dayon ibutang (14 words, trophy una, tokens anchored, chunks join exactly); youTwo isagol + sambag (Tagalog sampalok already removed). Remaining defect: the opening Giunsa nimo pagluto is completed-aspect ('how did you cook') while DE/EN and the whole learner recipe are general procedure; L3 and L4 use the right form for their aspect. Choice foils Gitago/Ibitay/Gipalong and bukog/taklob/kahayag are slot-impossible."
+        },
+        {
+          "n": 2,
+          "observation": "Friend asks registration steps; una sulatan / ikaduha ihatag is correct -an/i- instruction staging, 12 words, ikaduha anchored. youTwo answers 'where/how much'. Foil pultahan in the kahera row still yields 'Ihatag ang singkwenta pesos sa pultahan' (pay at the door), a contextually possible answer to Asa man ko mobayad; klinika was removed earlier but this one was left."
+        },
+        {
+          "n": 3,
+          "observation": "Tutor asks study method; Tulo ang akong lakang + basahon/isulat/tubagon stays inside the -on/i- block, unya recycles sequencing. Reply picks ang pagtubag with kay unambiguous as subordinator. Cloze foils (pagsayaw/pagdagan/pagkatulog; limpyohan/paliton/putlon) are impossible, recall foils fine, translations match."
+        },
+        {
+          "n": 4,
+          "observation": "Cousin asks how/when; Ang akong paagi mao ang paggamit … kung moubos frame is taught and now mirrored in DE after the earlier fix. First gi- productive learner form appears here (Gibutang nako) exactly at L4 as staged; form cue 'butang, completed object focus' excludes Ibutang; Magbutang/Pagbutang ungrammatical in slot."
+        },
+        {
+          "n": 5,
+          "observation": "Andam na ang tubig … ug gibutang nako is correct, 15 words, exclusive namo/among used properly with the neighbour. Defect: the learner line Giluto namo ang kamote una mapalong ang suga puts a ma- form in a learner turn inside the 4–6 block where ma- is recognition-only; independent reviewer's finding is confirmed."
+        },
+        {
+          "n": 6,
+          "observation": "Matches the planned beat line verbatim (Gisagol nako ang suka, ahos ug sili, dayon gibutangan og gamay nga asin); host asks the ratio and youTwo Isagol … sa matag tasa answers it. Hyphenated foils already replaced; Isulat/Isira/Ibitay and kinsa/unsa/ngano are impossible in slot."
+        },
+        {
+          "n": 7,
+          "observation": "Beat line Gihugas nako og maayo … dayon gipabugnaw sa ref una hiwaon used verbatim; friend asks the knife; Gigamit nako ang gamay nga kutsilyo kay hait pa kini is natural. Form cue excludes Gamiton; hilaw/uhaw/gutom impossible for a knife. Translations align."
+        },
+        {
+          "n": 8,
+          "observation": "Specific check: the aunt asks Pila ka minutos ang itlog sa kaldero, so the elliptical 'Kung bukal na ang tubig, pito ka minutos' supplies the duration counted from boiling without naming a verb for the egg; that is natural Cebuano and the DE mirrors it exactly, but EN 'give them seven minutes' adds a verb the Cebuano never supplies. youTwo 'hinayong panitan' is an awkward adjective+linker manner model; panitan og hinay is the clean canonical. dayon as a choice (not typed connector) is right because unya would be an equally valid typed answer."
+        },
+        {
+          "n": 9,
+          "observation": "Doctor scene: Ang resulta sa tambal mao nga … teaches resulta and the mao nga result link; Nauga akong baba, mao nga nagdala ko og tubig is a realistic side-effect reply with past licensed by na-. Defect: speakRequired resulta/tambal/lawom contains no connector or aspect-bearing word, unlike every other lesson; mao is available in the line."
+        },
+        {
+          "n": 10,
+          "observation": "Nahimo na ang pag-ayo … apan saba gihapon kini kung paandaron gives done-but-noisy; friend asks replacement, Giilisan ang motor, apan ang daang elise nagpabilin distinguishes new motor from kept blades. Form cue excludes Ilisan/Ilisi; nagpabilin foils impossible. Chunk gloss 'Now finished is / Fertig ist jetzt' is awkward but not wrong."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Giunsa nimo pagluto is completed object-focus ('how did you cook'), contradicting the DE/EN present-habitual question and the learner's general recipe; the host has only set the ingredients out. Unsaon nimo pagluto is the recipe question (as in L3). Caption quotes must follow.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/0/targetText",
+              "old": "Giunsa nimo pagluto ang sinigang nga isda?",
+              "new": "Unsaon nimo pagluto ang sinigang nga isda?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/sceneCaption/de",
+              "old": "Deine Gastgeberin legt Gemüse und Fisch neben den Herd. „Giunsa nimo pagluto ang sinigang nga isda?“",
+              "new": "Deine Gastgeberin legt Gemüse und Fisch neben den Herd. „Unsaon nimo pagluto ang sinigang nga isda?“"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/sceneCaption/en",
+              "old": "Your host sets vegetables and fish beside the stove. “Giunsa nimo pagluto ang sinigang nga isda?”",
+              "new": "Your host sets vegetables and fish beside the stove. “Unsaon nimo pagluto ang sinigang nga isda?”"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Foil pultahan makes 'Ihatag ang singkwenta pesos sa pultahan' (hand the fifty pesos over at the door) a grammatical and contextually possible answer to Asa man ko mobayad; a learner choosing it is unjustly rejected. Replace with a slot-impossible noun.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3/choices",
+              "old": [
+                "atop",
+                "kahera",
+                "kutsara",
+                "pultahan"
+              ],
+              "new": [
+                "atop",
+                "kahera",
+                "kutsara",
+                "kisame"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Learner line uses ma- (mapalong) in lesson 5, where the staging keeps ma- resultative recognition-only (productive only from lesson 7 block as nahimo/nauga). Recast the before-clause with wala pa + mo- base, keep the form blank on Giluto, and re-anchor cloze, translations and term.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/targetText",
+              "old": "Giluto namo ang kamote una mapalong ang suga.",
+              "new": "Giluto namo ang kamote sa wala pa moabot ang bagyo."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText/de",
+              "old": "Wir haben die Süßkartoffeln gekocht, bevor das Licht ausging.",
+              "new": "Wir haben die Süßkartoffeln gekocht, bevor der Sturm kam."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText/en",
+              "old": "We cooked sweet potatoes before the lights went out.",
+              "new": "We cooked sweet potatoes before the storm arrived."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Giluto",
+                  "choices": [
+                    "Lutuon",
+                    "Magluto",
+                    "Pagluto",
+                    "Giluto"
+                  ],
+                  "cue": "luto, completed object focus"
+                },
+                " namo ang kamote una mapalong ang ",
+                {
+                  "kind": "choice",
+                  "answer": "suga",
+                  "choices": [
+                    "kamote",
+                    "lamesa",
+                    "suga",
+                    "kutsara"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Giluto",
+                  "choices": [
+                    "Lutuon",
+                    "Magluto",
+                    "Pagluto",
+                    "Giluto"
+                  ],
+                  "cue": "luto, completed object focus"
+                },
+                " namo ang kamote sa wala pa moabot ang ",
+                {
+                  "kind": "choice",
+                  "answer": "bagyo",
+                  "choices": [
+                    "suga",
+                    "lamesa",
+                    "bagyo",
+                    "kutsara"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/terms/5",
+              "old": {
+                "targetText": "mapalong",
+                "baseText": {
+                  "de": "ausgehen",
+                  "en": "go out"
+                }
+              },
+              "new": {
+                "targetText": "bagyo",
+                "baseText": {
+                  "de": "Sturm",
+                  "en": "storm"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Two coupled issues. (a) EN 'give them seven minutes' supplies a verb the Cebuano and DE never do; the Cebuano is an elliptical duration answer to Pila ka minutos, and EN must mirror that. (b) 'hinayong panitan' is an awkward adjective-linker-verb manner model; the clean canonical is panitan og hinay. Reconstruct cloze and term accordingly (dayon stays a choice blank because typed unya would be equally valid).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/1/baseText/en",
+              "old": "Once the water boils, give them seven minutes, then put the eggs in cold water.",
+              "new": "Once the water boils, seven minutes, then put the eggs in cold water."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/examples/0/baseText/en",
+              "old": "Once the water boils, give them seven minutes, then put the eggs in cold water.",
+              "new": "Once the water boils, seven minutes, then put the eggs in cold water."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/targetText",
+              "old": "Pabugnawon una ang itlog, dayon hinayong panitan.",
+              "new": "Pabugnawon una ang itlog, dayon panitan og hinay."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Pabugnawon",
+                  "choices": [
+                    "Pabugnawon",
+                    "Pahubason",
+                    "Paalsahon",
+                    "Patuboon"
+                  ]
+                },
+                " una ang itlog, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "bisan",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " hinayong ",
+                {
+                  "kind": "choice",
+                  "answer": "panitan",
+                  "choices": [
+                    "bistihan",
+                    "habolon",
+                    "panitan",
+                    "imnon"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Pabugnawon",
+                  "choices": [
+                    "Pabugnawon",
+                    "Pahubason",
+                    "Paalsahon",
+                    "Patuboon"
+                  ]
+                },
+                " una ang itlog, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "bisan",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "panitan",
+                  "choices": [
+                    "bistihan",
+                    "habolon",
+                    "panitan",
+                    "imnon"
+                  ]
+                },
+                " og hinay."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/terms/4",
+              "old": {
+                "targetText": "hinayong panitan",
+                "baseText": {
+                  "de": "vorsichtig schälen",
+                  "en": "peel gently"
+                }
+              },
+              "new": {
+                "targetText": "panitan og hinay",
+                "baseText": {
+                  "de": "vorsichtig schälen",
+                  "en": "peel gently"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "speakRequired has three content words and no connector or aspect-bearing token, against the token rule every other lesson honours; mao (the taught result link) is a whole word of youOne and is not a stoplisted clitic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "resulta",
+                "tambal",
+                "lawom"
+              ],
+              "new": [
+                "resulta",
+                "mao",
+                "lawom"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "Chunk gloss 'Now finished is / Fertig ist jetzt' reads as word-order calque rather than a natural fragment.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks/0/baseText",
+              "old": {
+                "de": "Fertig ist jetzt",
+                "en": "Now finished is"
+              },
+              "new": {
+                "de": "Fertig ist jetzt",
+                "en": "Done now is"
+              }
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Adjudication of the independent 'path-wide cloze schema' finding: converting L1/L3/L6/L8 choice blanks into form blanks with aspect contrasts (Isagol/Sagolon/Gisagol) would admit equally grammatical native alternatives (sagolon nako is valid; unya is a valid typed connector) and unjustly reject learners; the current cue-free choice rows with impossible foils are the safer implementation and are retained. No edit.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "47b8c2cea148d4889d67012e673594e6c52d6924082a2789dca119cb25529ff8",
+      "sourceSha256": "79e95e9b1c97db06d5f8322967d398b362a31fc145610ab61dbea4106d6bcda0",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Host asks Unsaon pagluto; reply 14 words with trophy una, tokens pabukalon/tubig/ibutang, staged i-/-on instruction forms only, no gi- in learner turns. Them2 asks the souring agent, reply 11 words. Cloze: Kung is rightly a choice (tungod/gikan/sulod ungrammatical), form isagol typed with cue sagol, i- object focus (the i- note is justified because sagolon is an equally native typed alternative without it), duga choice clean. DE/EN match."
+        },
+        {
+          "n": 2,
+          "observation": "Friend-scene registration steps; una/ikaduha productive, ihatag with duha ka litrato correct numeral linker. Reply 2 (12 words) answers both where and how much; connector una is a real typed blank uniquely fixed by the following ikaduha, form ihatag cued as instruction so gihatag is excluded, kahera choice has impossible foils. The specificCheck's claim of zero connector blanks does not describe this hash: L2, L7 and L9 carry connector kind."
+        },
+        {
+          "n": 3,
+          "observation": "Tutor asks study method; three steps with lakang trophy and sequencing basahon/isulat/unya tubagon. Reply 2 (12 words) gives the preferred step with tungod kay choice (human sa/sama sa/bahin sa impossible before a clause) and cued isulat. Translations agree; chunk gloss 'Ich habe drei Schritte' is a fair chip-level rendering."
+        },
+        {
+          "n": 4,
+          "observation": "gi- becomes productive here on schedule: Gibutang nako cued completed object focus, Ibutang blocked by the past Kanus-a question plus cue; bulan and sa wala pa choices have contextually impossible or ungrammatical foils (human sa/sulod sa before ang). kung moubos is when-conditional; paagi + sa in the transfer example."
+        },
+        {
+          "n": 5,
+          "observation": "Neighbour storm recall; andam na stative plus gibutang nako, exclusive namo correctly excludes the neighbour. Giluto cued completed (Lutuon would be future, blocked by the gikaon question and cue), sa wala pa moabot ang bagyo unique. No ma- resultative demanded of the learner."
+        },
+        {
+          "n": 6,
+          "observation": "Learner line matches the outline beat verbatim; them2 asks ratio per cup; reply 11 words with habitual Isagol cued i-, matag choice, and dayon correctly handled as a visible choice with tungod/sulod/gikan foils so unya is never unjustly rejected."
+        },
+        {
+          "n": 7,
+          "observation": "Mango: gihugas/gipabugnaw/una hiwaon per beat; them2 asks the knife. Reply 2 uses mao nga result link (staged 7-10): typed mao is uniquely forced by the literal nga (busa/unya/aron fail), gigamit cued completed. Hait choice clean."
+        },
+        {
+          "n": 8,
+          "observation": "Specific check: 'Kung bukal na ang tubig, pito ka minutos, dayon ibutang ang itlog sa bugnaw nga tubig' is elliptical in Cebuano and equally elliptical in DE ('Sobald das Wasser kocht, sieben Minuten.') and EN; no verb is added for the seven minutes, and pito ka minutos answers the aunt's 'Pila ka minutos ... sa kaldero' directly. Reply 2 (8 words): Pabugnawon choice, dayon choice, panitan cued 'instruction with -an' so paniti/gipanitan are legitimately excluded."
+        },
+        {
+          "n": 9,
+          "observation": "Doctor scene, neutral full sentences. Resulta + mao nga productive; reply 2 with Nauga choice, typed mao before literal nga, gidala cued completed. Only gap: DE/EN of the learner line drop 'sa tambal' and the chip gloss says Behandlung while the term card gives tambal = Medikament; offered as an optional fidelity co-edit."
+        },
+        {
+          "n": 10,
+          "observation": "Nahimo na ... apan matches beat; reply 2 reports (does not decide) the replacement. Required: the typed form blank 'Giilisan' with cue 'ilis, completed object focus' would reject the equally native 'Giilis ang motor'; adding 'with -an' (same device as L8) fixes grading without touching the line. apan is a choice so pero is protected. Counterpart LOW on chunk gloss 'Fertig ist jetzt' adjudicated: it parses as inversion with the next chip and is not an error; no churn."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Exact-graded form blank: 'Giilis ang motor' is a grammatical completed object-focus alternative to 'Giilisan ang motor'; the cue must specify the -an suffix to justify rejecting it (parallel to L8 'panit, instruction with -an').",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/0/cue",
+              "old": "ilis, completed object focus",
+              "new": "ilis, completed object focus with -an"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Learner line 'Ang resulta sa tambal ...' is translated without 'sa tambal', and the chip gloss renders tambal as Behandlung although the term card teaches Medikament; aligning the coupled fields keeps source, chips and translation saying the same thing.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/1/baseText/de",
+              "old": "Das Ergebnis ist, dass ich nachts jetzt tiefer schlafe.",
+              "new": "Das Ergebnis des Medikaments ist, dass ich nachts jetzt tiefer schlafe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/1/baseText/en",
+              "old": "The result is that I sleep more deeply at night now.",
+              "new": "The result of the medicine is that I sleep more deeply at night now."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/baseText/de",
+              "old": "Das Ergebnis ist, dass ich nachts jetzt tiefer schlafe.",
+              "new": "Das Ergebnis des Medikaments ist, dass ich nachts jetzt tiefer schlafe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/baseText/en",
+              "old": "The result is that I sleep more deeply at night now.",
+              "new": "The result of the medicine is that I sleep more deeply at night now."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks/0/baseText/de",
+              "old": "Das Ergebnis der Behandlung",
+              "new": "Das Ergebnis des Medikaments"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3f02d56299d7f38a788837ef5a792052266d360c62ba9f37ee57e115903bada2",
+      "sourceSha256": "3587591ac37d9e4c617ace5a8189da662e7e2d4309aabac8063e4a60c3ff6e2c",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Host recipe with Unsaon/pabukalon/ibutang and the sambag souring agent is sound; youOne, chunks, recall and tokens are correctly anchored. youTwo 'Isagol nako ang duga sa sambag sa sabaw' is a bare two-noun vocabulary quiz: no form cue on the i- instruction verb and no sequence frame, against the path cloze schema."
+        },
+        {
+          "n": 2,
+          "observation": "Friend registration scene coherent (form, two photos, fee question). youTwo 'Ihatag ... human sa pagpasa' is graded only as two lexical choices; the una/ikaduha ordinal pairing taught in youOne is never tested, although a fixed 'ikaduha' makes a typed 'Una' uniquely constrained."
+        },
+        {
+          "n": 3,
+          "observation": "Tutor scene lists three steps and picks answering; translations align. youTwo blanks (pagtubag/hinumdoman) are lexical; the natural abilitative 'mahinumdoman' competes with 'hinumdoman' in the current frame, so a form blank there would be unjust—a different i- verb is needed."
+        },
+        {
+          "n": 4,
+          "observation": "Cousin/alert scene: Gibutang is cued and licensed; DE now carries the 'Meine Methode' frame. The temporal frame 'sa wala pa' is printed literal; it must be a choice exception because 'sa dili pa' is equally native."
+        },
+        {
+          "n": 5,
+          "observation": "Storm scene fixed (no productive ma- in L5). Giluto is cued; the before-clause connector is again untested and belongs in a choice slot for the same sa wala pa / sa dili pa reason."
+        },
+        {
+          "n": 6,
+          "observation": "Dip recipe matches the approved beat verbatim; ratio answer is coherent. youTwo has no form cue (isagol vs sagolon admits both without a focus cue) and no sequence slot."
+        },
+        {
+          "n": 7,
+          "observation": "Mango washed/chilled/sliced; knife answer coherent. 'kay' typed would be unjust ('tungod kay' is equally native), so the consequence link should be built with the staged mao + fixed nga blocking literal, which is unique."
+        },
+        {
+          "n": 8,
+          "observation": "Specific check: 'Kung bukal na ang tubig, pito ka minutos, dayon ibutang ang itlog sa bugnaw nga tubig' is an elliptical duration answer to 'Pila ka minutos ang itlog sa kaldero?'; DE 'Sobald das Wasser kocht, sieben Minuten. Dann kommen die Eier ...' and EN mirror the ellipsis and add no verb for the seven-minute span—coherent, no edit. youTwo lacks a form cue; 'dayon' stays a choice (unya is equally valid); foil 'bisan' is parsable before an -an verb and 'Pahubason' (drain first) is a plausible step—both replaced."
+        },
+        {
+          "n": 9,
+          "observation": "Sleep/dry-mouth beat coherent; 'mao' token acceptable as the result-link word. youTwo has no object-focus form and 'mao nga' as a chip competes with 'busa'; recast with gi- form and a typed 'mao' before fixed 'nga'."
+        },
+        {
+          "n": 10,
+          "observation": "Repair done but noisy; motor vs old elise coherent; Giilisan cued. 'apan' is printed literal; it must be a choice exception (pero). Chunk gloss 'Fertig ist jetzt / die Reparatur des Ventilators' reads as natural inverted German in sequence and the English is comprehensible; not a learner-facing error, no edit."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "youTwo tests neither the i- instruction form with a cue nor any sequence frame. Recast as a kung-frame recipe answer; kung stays a choice (kon variant, basta equally native); form blank on isagol with a focus cue (sagolon would otherwise be an unjustly rejected native alternative).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3/targetText",
+              "old": "Isagol nako ang duga sa sambag sa sabaw.",
+              "new": "Kung luto na ang isda, isagol nako ang duga sa sambag."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3/baseText",
+              "old": {
+                "de": "Ich rühre den Tamarindensaft in die Brühe.",
+                "en": "I stir the tamarind juice into the broth."
+              },
+              "new": {
+                "de": "Wenn der Fisch gar ist, rühre ich den Tamarindensaft hinein.",
+                "en": "When the fish is cooked, I stir in the tamarind juice."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Isagol",
+                  "choices": [
+                    "Gitago",
+                    "Ibitay",
+                    "Gipalong",
+                    "Isagol"
+                  ]
+                },
+                " nako ang ",
+                {
+                  "kind": "choice",
+                  "answer": "duga",
+                  "choices": [
+                    "bukog",
+                    "taklob",
+                    "duga",
+                    "kahayag"
+                  ]
+                },
+                " sa sambag sa sabaw."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Kung",
+                  "choices": [
+                    "Tungod",
+                    "Kung",
+                    "Gikan",
+                    "Sulod"
+                  ]
+                },
+                " luto na ang isda, ",
+                {
+                  "kind": "form",
+                  "answer": "isagol",
+                  "choices": [
+                    "isagol",
+                    "pagsagol",
+                    "nagsagol",
+                    "magsagol"
+                  ],
+                  "cue": "sagol, i- object focus"
+                },
+                " nako ang ",
+                {
+                  "kind": "choice",
+                  "answer": "duga",
+                  "choices": [
+                    "bukog",
+                    "taklob",
+                    "duga",
+                    "kahayag"
+                  ]
+                },
+                " sa sambag."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "No form cue and no ordinal/sequence task. New youTwo pairs a typed connector 'Una' (uniquely constrained by the fixed later 'ikaduha'; Dayon/Ikatulo/Human are impossible in that pairing) with a cued i- form 'ihatag' and the kahera choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/targetText",
+              "old": "Ihatag ang singkwenta pesos sa kahera human sa pagpasa.",
+              "new": "Una, ipasa ang mga litrato, ikaduha, ihatag ang singkwenta pesos sa kahera."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText",
+              "old": {
+                "de": "Die fünfzig Pesos zahlst du nach der Abgabe an der Kasse.",
+                "en": "You pay the fifty pesos at the cashier’s desk after submitting everything."
+              },
+              "new": {
+                "de": "Zuerst reichst du die Fotos ein, als Zweites gibst du der Kassiererin die fünfzig Pesos.",
+                "en": "First you submit the photos, and second you hand the fifty pesos to the cashier."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Ihatag",
+                  "choices": [
+                    "Isukod",
+                    "Gihugasan",
+                    "Ihatag",
+                    "Gihurot"
+                  ]
+                },
+                " ang singkwenta pesos sa ",
+                {
+                  "kind": "choice",
+                  "answer": "kahera",
+                  "choices": [
+                    "atop",
+                    "kahera",
+                    "kutsara",
+                    "kisame"
+                  ]
+                },
+                " human sa pagpasa."
+              ],
+              "new": [
+                {
+                  "kind": "connector",
+                  "answer": "Una",
+                  "choices": [
+                    "Una",
+                    "Dayon",
+                    "Ikatulo",
+                    "Human"
+                  ]
+                },
+                ", ipasa ang mga litrato, ikaduha, ",
+                {
+                  "kind": "form",
+                  "answer": "ihatag",
+                  "choices": [
+                    "ihatag",
+                    "gihatag",
+                    "maghatag",
+                    "paghatag"
+                  ],
+                  "cue": "hatag, i- object focus"
+                },
+                " ang singkwenta pesos sa ",
+                {
+                  "kind": "choice",
+                  "answer": "kahera",
+                  "choices": [
+                    "atop",
+                    "kahera",
+                    "kutsara",
+                    "kisame"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/terms",
+              "old": [
+                {
+                  "targetText": "ikaduha",
+                  "baseText": {
+                    "de": "als Zweites",
+                    "en": "second"
+                  }
+                },
+                {
+                  "targetText": "porma",
+                  "baseText": {
+                    "de": "Formular",
+                    "en": "form"
+                  }
+                },
+                {
+                  "targetText": "ihatag",
+                  "baseText": {
+                    "de": "übergeben",
+                    "en": "hand over"
+                  }
+                },
+                {
+                  "targetText": "duha ka litrato",
+                  "baseText": {
+                    "de": "zwei Fotos",
+                    "en": "two photos"
+                  }
+                },
+                {
+                  "targetText": "pagparehistro",
+                  "baseText": {
+                    "de": "Anmeldung",
+                    "en": "registration"
+                  }
+                },
+                {
+                  "targetText": "kahera",
+                  "baseText": {
+                    "de": "Kassiererin",
+                    "en": "cashier"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "ikaduha",
+                  "baseText": {
+                    "de": "als Zweites",
+                    "en": "second"
+                  }
+                },
+                {
+                  "targetText": "porma",
+                  "baseText": {
+                    "de": "Formular",
+                    "en": "form"
+                  }
+                },
+                {
+                  "targetText": "ihatag",
+                  "baseText": {
+                    "de": "übergeben",
+                    "en": "hand over"
+                  }
+                },
+                {
+                  "targetText": "duha ka litrato",
+                  "baseText": {
+                    "de": "zwei Fotos",
+                    "en": "two photos"
+                  }
+                },
+                {
+                  "targetText": "pagparehistro",
+                  "baseText": {
+                    "de": "Anmeldung",
+                    "en": "registration"
+                  }
+                },
+                {
+                  "targetText": "kahera",
+                  "baseText": {
+                    "de": "Kassiererin",
+                    "en": "cashier"
+                  }
+                },
+                {
+                  "targetText": "ipasa",
+                  "baseText": {
+                    "de": "einreichen",
+                    "en": "submit"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Current blanks are lexical; a form blank on 'hinumdoman' would unjustly reject native 'mahinumdoman'. New youTwo keeps the 'answering' choice with a cued i- form 'isulat' and a 'kay' choice slot (typed kay would compete with 'tungod kay'); comma keeps the because-reading. Term updated.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/targetText",
+              "old": "Ang pagtubag, kay kinahanglan nakong hinumdoman ang akong nabasa.",
+              "new": "Ang pagtubag, kay isulat nako ang tubag gikan sa akong nahinumdoman."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/baseText",
+              "old": {
+                "de": "Das Beantworten, weil ich mich dabei an das Gelesene erinnern muss.",
+                "en": "Answering, because I have to remember what I read."
+              },
+              "new": {
+                "de": "Das Beantworten, weil ich die Antwort aus dem Gedächtnis aufschreibe.",
+                "en": "Answering, because I write the answer from what I remember."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Ang ",
+                {
+                  "kind": "choice",
+                  "answer": "pagtubag",
+                  "choices": [
+                    "pagsayaw",
+                    "pagtubag",
+                    "pagdagan",
+                    "pagkatulog"
+                  ]
+                },
+                ", kay kinahanglan nakong ",
+                {
+                  "kind": "choice",
+                  "answer": "hinumdoman",
+                  "choices": [
+                    "hinumdoman",
+                    "limpyohan",
+                    "paliton",
+                    "putlon"
+                  ]
+                },
+                " ang akong nabasa."
+              ],
+              "new": [
+                "Ang pagtubag, ",
+                {
+                  "kind": "choice",
+                  "answer": "kay",
+                  "choices": [
+                    "sa",
+                    "kay",
+                    "nga",
+                    "ka"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "isulat",
+                  "choices": [
+                    "isulat",
+                    "pagsulat",
+                    "nagsulat",
+                    "magsulat"
+                  ],
+                  "cue": "sulat, i- object focus"
+                },
+                " nako ang tubag gikan sa akong nahinumdoman."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/5",
+              "old": {
+                "targetText": "hinumdoman",
+                "baseText": {
+                  "de": "sich erinnern an",
+                  "en": "remember"
+                }
+              },
+              "new": {
+                "targetText": "nahinumdoman",
+                "baseText": {
+                  "de": "das Erinnerte",
+                  "en": "what one remembers"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Temporal frame untested. 'sa wala pa' becomes a choice exception (sa dili pa is an equally native typed answer); foils are ungrammatical or contextually impossible before 'ang biyahe'. Form and duration blanks retained.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Gibutang",
+                  "choices": [
+                    "Gibutang",
+                    "Ibutang",
+                    "Magbutang",
+                    "Pagbutang"
+                  ],
+                  "cue": "butang, completed object focus"
+                },
+                " nako ang pahibalo duha ka ",
+                {
+                  "kind": "choice",
+                  "answer": "bulan",
+                  "choices": [
+                    "piso",
+                    "tiket",
+                    "selpon",
+                    "bulan"
+                  ]
+                },
+                " sa wala pa ang biyahe."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Gibutang",
+                  "choices": [
+                    "Gibutang",
+                    "Ibutang",
+                    "Magbutang",
+                    "Pagbutang"
+                  ],
+                  "cue": "butang, completed object focus"
+                },
+                " nako ang pahibalo duha ka ",
+                {
+                  "kind": "choice",
+                  "answer": "bulan",
+                  "choices": [
+                    "piso",
+                    "tiket",
+                    "selpon",
+                    "bulan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "sa wala pa",
+                  "choices": [
+                    "aron",
+                    "sa wala pa",
+                    "human sa",
+                    "sulod sa"
+                  ]
+                },
+                " ang biyahe."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Same family as L4: the before-clause connector is literal. Added as a choice exception (sa dili pa equally native); 'aron moabot ang bagyo' is contextually impossible, the other foils ungrammatical.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Giluto",
+                  "choices": [
+                    "Lutuon",
+                    "Magluto",
+                    "Pagluto",
+                    "Giluto"
+                  ],
+                  "cue": "luto, completed object focus"
+                },
+                " namo ang kamote sa wala pa moabot ang ",
+                {
+                  "kind": "choice",
+                  "answer": "bagyo",
+                  "choices": [
+                    "suga",
+                    "lamesa",
+                    "bagyo",
+                    "kutsara"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Giluto",
+                  "choices": [
+                    "Lutuon",
+                    "Magluto",
+                    "Pagluto",
+                    "Giluto"
+                  ],
+                  "cue": "luto, completed object focus"
+                },
+                " namo ang kamote ",
+                {
+                  "kind": "choice",
+                  "answer": "sa wala pa",
+                  "choices": [
+                    "aron",
+                    "sa wala pa",
+                    "human sa",
+                    "sulod sa"
+                  ]
+                },
+                " moabot ang ",
+                {
+                  "kind": "choice",
+                  "answer": "bagyo",
+                  "choices": [
+                    "suga",
+                    "lamesa",
+                    "bagyo",
+                    "kutsara"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "No form cue (sagolon is a native competitor without one) and no sequence slot. youTwo extended with 'dayon tilawan'; dayon is a choice exception (unya); 'bisan' avoided as foil because it is parsable before an -an verb; Gisagol removed as foil because a completed report is contextually possible.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/targetText",
+              "old": "Isagol nako ang usa ka sili sa matag tasa sa suka.",
+              "new": "Isagol nako ang usa ka sili sa matag tasa sa suka, dayon tilawan."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/baseText",
+              "old": {
+                "de": "Pro Tasse Essig mische ich eine Chili hinein.",
+                "en": "I mix one chilli into each cup of vinegar."
+              },
+              "new": {
+                "de": "Pro Tasse Essig mische ich eine Chili hinein, dann wird abgeschmeckt.",
+                "en": "I mix one chilli into each cup of vinegar, then taste it."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Isagol",
+                  "choices": [
+                    "Isulat",
+                    "Isira",
+                    "Isagol",
+                    "Ibitay"
+                  ]
+                },
+                " nako ang usa ka sili sa ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "kinsa",
+                    "matag",
+                    "unsa",
+                    "ngano"
+                  ]
+                },
+                " tasa sa suka."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Isagol",
+                  "choices": [
+                    "Isagol",
+                    "Pagsagol",
+                    "Nagsagol",
+                    "Magsagol"
+                  ],
+                  "cue": "sagol, i- object focus"
+                },
+                " nako ang usa ka sili sa ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "kinsa",
+                    "matag",
+                    "unsa",
+                    "ngano"
+                  ]
+                },
+                " tasa sa suka, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "sulod",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " tilawan."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/terms",
+              "old": [
+                {
+                  "targetText": "gisagol",
+                  "baseText": {
+                    "de": "gemischt",
+                    "en": "mixed"
+                  }
+                },
+                {
+                  "targetText": "suka",
+                  "baseText": {
+                    "de": "Essig",
+                    "en": "vinegar"
+                  }
+                },
+                {
+                  "targetText": "ahos",
+                  "baseText": {
+                    "de": "Knoblauch",
+                    "en": "garlic"
+                  }
+                },
+                {
+                  "targetText": "sili",
+                  "baseText": {
+                    "de": "Chili",
+                    "en": "chilli"
+                  }
+                },
+                {
+                  "targetText": "asin",
+                  "baseText": {
+                    "de": "Salz",
+                    "en": "salt"
+                  }
+                },
+                {
+                  "targetText": "tasa",
+                  "baseText": {
+                    "de": "Tasse",
+                    "en": "cup"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "gisagol",
+                  "baseText": {
+                    "de": "gemischt",
+                    "en": "mixed"
+                  }
+                },
+                {
+                  "targetText": "suka",
+                  "baseText": {
+                    "de": "Essig",
+                    "en": "vinegar"
+                  }
+                },
+                {
+                  "targetText": "ahos",
+                  "baseText": {
+                    "de": "Knoblauch",
+                    "en": "garlic"
+                  }
+                },
+                {
+                  "targetText": "sili",
+                  "baseText": {
+                    "de": "Chili",
+                    "en": "chilli"
+                  }
+                },
+                {
+                  "targetText": "asin",
+                  "baseText": {
+                    "de": "Salz",
+                    "en": "salt"
+                  }
+                },
+                {
+                  "targetText": "tasa",
+                  "baseText": {
+                    "de": "Tasse",
+                    "en": "cup"
+                  }
+                },
+                {
+                  "targetText": "tilawan",
+                  "baseText": {
+                    "de": "abschmecken",
+                    "en": "taste"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Connector literal and 'kay' cannot be typed fairly (tungod kay). Recast as the staged result link: typed connector 'mao' before fixed 'nga' (busa/unya/aron are impossible before nga), cued completed form 'gigamit' (gamiton removed as foil because a future reading is contextually possible), plus the hait choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/targetText",
+              "old": "Gigamit nako ang gamay nga kutsilyo kay hait pa kini.",
+              "new": "Hait pa ang gamay nga kutsilyo, mao nga gigamit nako kini."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText",
+              "old": {
+                "de": "Ich habe das kleine Messer benutzt, weil es noch scharf ist.",
+                "en": "I used the small knife because it is still sharp."
+              },
+              "new": {
+                "de": "Das kleine Messer ist noch scharf, deshalb habe ich es benutzt.",
+                "en": "The small knife is still sharp, so I used it."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Gigamit",
+                  "choices": [
+                    "Paggamit",
+                    "Gigamit",
+                    "Gamiton",
+                    "Mogamit"
+                  ],
+                  "cue": "gamit, completed object focus"
+                },
+                " nako ang gamay nga kutsilyo kay ",
+                {
+                  "kind": "choice",
+                  "answer": "hait",
+                  "choices": [
+                    "hait",
+                    "uhaw",
+                    "gutom",
+                    "hilaw"
+                  ]
+                },
+                " pa kini."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Hait",
+                  "choices": [
+                    "Hait",
+                    "Uhaw",
+                    "Gutom",
+                    "Hilaw"
+                  ]
+                },
+                " pa ang gamay nga kutsilyo, ",
+                {
+                  "kind": "connector",
+                  "answer": "mao",
+                  "choices": [
+                    "mao",
+                    "busa",
+                    "unya",
+                    "aron"
+                  ]
+                },
+                " nga ",
+                {
+                  "kind": "form",
+                  "answer": "gigamit",
+                  "choices": [
+                    "gigamit",
+                    "paggamit",
+                    "naggamit",
+                    "mogamit"
+                  ],
+                  "cue": "gamit, completed object focus"
+                },
+                " nako kini."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "No form cue; foil 'Pahubason' (drain first) is a contextually plausible step and 'bisan panitan' is parsable. panitan becomes a cued -an instruction form (foils aspect-impossible in an instruction); dayon remains a choice exception (unya); Pabugnawon stays a choice (imperative Pabugnawa competes) with impossible foils. L8 line/translation ellipsis confirmed coherent, no change.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Pabugnawon",
+                  "choices": [
+                    "Pabugnawon",
+                    "Pahubason",
+                    "Paalsahon",
+                    "Patuboon"
+                  ]
+                },
+                " una ang itlog, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "bisan",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "panitan",
+                  "choices": [
+                    "bistihan",
+                    "habolon",
+                    "panitan",
+                    "imnon"
+                  ]
+                },
+                " og hinay."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Pabugnawon",
+                  "choices": [
+                    "Pabugnawon",
+                    "Pasakyon",
+                    "Pasayawon",
+                    "Patuboon"
+                  ]
+                },
+                " una ang itlog, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "sulod",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "panitan",
+                  "choices": [
+                    "panitan",
+                    "gipanitan",
+                    "nagpanit",
+                    "napanitan"
+                  ],
+                  "cue": "panit, instruction with -an"
+                },
+                " og hinay."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "No object-focus form, and 'mao nga' as a chip competes with 'busa'. Recast with completed object focus 'gidala nako ang akong tubig' and typed 'mao' before the blocking literal 'nga'; Nauga choice retained.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/targetText",
+              "old": "Nauga akong baba, mao nga nagdala ko og tubig karon.",
+              "new": "Nauga akong baba, mao nga gidala nako ang akong tubig karon."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText",
+              "old": {
+                "de": "Mein Mund wurde trocken, deshalb habe ich heute Wasser mitgebracht.",
+                "en": "My mouth went dry, so I brought water today."
+              },
+              "new": {
+                "de": "Mein Mund wurde trocken, deshalb habe ich heute mein Wasser mitgebracht.",
+                "en": "My mouth went dry, so I brought my water today."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Nauga",
+                  "choices": [
+                    "Nibukal",
+                    "Nitulog",
+                    "Nisakay",
+                    "Nauga"
+                  ]
+                },
+                " akong baba, ",
+                {
+                  "kind": "choice",
+                  "answer": "mao nga",
+                  "choices": [
+                    "tungod sa",
+                    "sulod sa",
+                    "mao nga",
+                    "gikan sa"
+                  ]
+                },
+                " nagdala ko og ",
+                {
+                  "kind": "choice",
+                  "answer": "tubig",
+                  "choices": [
+                    "tabako",
+                    "tubig",
+                    "kutsilyo",
+                    "hamis"
+                  ]
+                },
+                " karon."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Nauga",
+                  "choices": [
+                    "Nibukal",
+                    "Nitulog",
+                    "Nisakay",
+                    "Nauga"
+                  ]
+                },
+                " akong baba, ",
+                {
+                  "kind": "connector",
+                  "answer": "mao",
+                  "choices": [
+                    "mao",
+                    "busa",
+                    "unya",
+                    "aron"
+                  ]
+                },
+                " nga ",
+                {
+                  "kind": "form",
+                  "answer": "gidala",
+                  "choices": [
+                    "gidala",
+                    "magdala",
+                    "nagdala",
+                    "pagdala"
+                  ],
+                  "cue": "dala, completed object focus"
+                },
+                " nako ang akong tubig karon."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Contrast link 'apan' untested; it is a choice exception (pero equally native). 'nga' deliberately excluded as foil because circumstantial nga would be parsable; remaining foils are ungrammatical before 'ang'. Chunk gloss finding adjudicated as not a learner-facing error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Giilisan",
+                  "choices": [
+                    "Ilisi",
+                    "Moilis",
+                    "Giilisan",
+                    "Ilisan"
+                  ],
+                  "cue": "ilis, completed object focus"
+                },
+                " ang motor, apan ang daang elise ",
+                {
+                  "kind": "choice",
+                  "answer": "nagpabilin",
+                  "choices": [
+                    "nakigstorya",
+                    "nagpabilin",
+                    "nisakay",
+                    "nanguli"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Giilisan",
+                  "choices": [
+                    "Ilisi",
+                    "Moilis",
+                    "Giilisan",
+                    "Ilisan"
+                  ],
+                  "cue": "ilis, completed object focus"
+                },
+                " ang motor, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "sa",
+                    "apan",
+                    "ka",
+                    "kang"
+                  ]
+                },
+                " ang daang elise ",
+                {
+                  "kind": "choice",
+                  "answer": "nagpabilin",
+                  "choices": [
+                    "nakigstorya",
+                    "nagpabilin",
+                    "nisakay",
+                    "nanguli"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "Adjudication summary: path now carries typed connector blanks in L2 (Una with fixed ikaduha), L7 and L9 (mao with fixed nga), cued form blanks in all ten lessons, and documented choice exceptions where Cebuano admits equal written alternatives (L1 kung/kon/basta, L3 kay/tungod kay, L4–5 sa wala pa/sa dili pa, L6 and L8 dayon/unya, L10 apan/pero). youOne, chunks, recall, speech tokens, trophies and captions are untouched; post-edit bytes were not hashed and no human or release approval is asserted.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "historicalFocusedEdits": [
+    {
+      "stage": "focused-payment",
+      "receiptSha256": "2bce77dc75a3b8bd661c14a3e50615ed6656466ca3a11f014f99ab532fe1cc2b",
+      "sourceSha256": "a08a90b8c9637c57aba1825de7894b9d68e00cbcebb8ba0c91b66f5a799948da",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Lesson 2: the final reply re-numbers the registration steps (photos = step one, fee = step two), contradicting the first reply where the form is step one and the photos are step two. Replace it with a two-step sequence scoped to the payment procedure, keeping the fifty-peso amount and the cashier, and keep the connector / whole object-focus form / choice cloze with coherent DE/EN. The now-unused term 'ipasa' is replaced by the new instruction form 'ihapa'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/targetText",
+              "old": "Una, ipasa ang mga litrato, ikaduha, ihatag ang singkwenta pesos sa kahera.",
+              "new": "Sa pagbayad, una, ihapa ang singkwenta pesos, ikaduha, ihatag kini sa kahera."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText",
+              "old": {
+                "de": "Zuerst reichst du die Fotos ein, als Zweites gibst du der Kassiererin die fünfzig Pesos.",
+                "en": "First you submit the photos, and second you hand the fifty pesos to the cashier."
+              },
+              "new": {
+                "de": "Beim Bezahlen zählst du zuerst die fünfzig Pesos ab, als Zweites gibst du sie der Kassiererin.",
+                "en": "When paying, first you count out the fifty pesos, and second you hand them to the cashier."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                {
+                  "kind": "connector",
+                  "answer": "Una",
+                  "choices": [
+                    "Una",
+                    "Dayon",
+                    "Ikatulo",
+                    "Human"
+                  ]
+                },
+                ", ipasa ang mga litrato, ikaduha, ",
+                {
+                  "kind": "form",
+                  "answer": "ihatag",
+                  "choices": [
+                    "ihatag",
+                    "gihatag",
+                    "maghatag",
+                    "paghatag"
+                  ],
+                  "cue": "hatag, i- object focus"
+                },
+                " ang singkwenta pesos sa ",
+                {
+                  "kind": "choice",
+                  "answer": "kahera",
+                  "choices": [
+                    "atop",
+                    "kahera",
+                    "kutsara",
+                    "kisame"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Sa pagbayad, ",
+                {
+                  "kind": "connector",
+                  "answer": "una",
+                  "choices": [
+                    "una",
+                    "dayon",
+                    "ikatulo",
+                    "human"
+                  ]
+                },
+                ", ihapa ang singkwenta pesos, ikaduha, ",
+                {
+                  "kind": "form",
+                  "answer": "ihatag",
+                  "choices": [
+                    "ihatag",
+                    "gihatag",
+                    "maghatag",
+                    "paghatag"
+                  ],
+                  "cue": "hatag, i- object focus (instruction)"
+                },
+                " kini sa ",
+                {
+                  "kind": "choice",
+                  "answer": "kahera",
+                  "choices": [
+                    "atop",
+                    "kahera",
+                    "kutsara",
+                    "kisame"
+                  ]
+                },
+                "."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/terms/6",
+              "old": {
+                "targetText": "ipasa",
+                "baseText": {
+                  "de": "einreichen",
+                  "en": "submit"
+                }
+              },
+              "new": {
+                "targetText": "ihapa",
+                "baseText": {
+                  "de": "zähl ab",
+                  "en": "count out"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "focused-shorten",
+      "receiptSha256": "88acb842275a5992c115b39c388ceca55cd3b95a190ae2c8ba99c4df9707d921",
+      "sourceSha256": "ea33d939a15884fcd8c1f08354170f0a4fb577e8904eb232230cd460bce5e1b2",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Lesson 3: the connector cloze uses bare 'kay' as a choice answer, which the native validator only permits as a kind connector. Replaced with the whole reason connector 'tungod kay' in a cue-free single-fit choice bank whose foils (human sa, sama sa, bahin sa) all require a noun and cannot precede the verb 'isulat'; the i- object-focus form blank is preserved. Reply stays 12 words; DE/EN meaning ('weil'/'because') is unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/targetText",
+              "old": "Ang pagtubag, kay isulat nako ang tubag gikan sa akong nahinumdoman.",
+              "new": "Ang pagtubag, tungod kay isulat nako ang tubag gikan sa akong nahinumdoman."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Ang pagtubag, ",
+                {
+                  "kind": "choice",
+                  "answer": "kay",
+                  "choices": [
+                    "sa",
+                    "kay",
+                    "nga",
+                    "ka"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "isulat",
+                  "choices": [
+                    "isulat",
+                    "pagsulat",
+                    "nagsulat",
+                    "magsulat"
+                  ],
+                  "cue": "sulat, i- object focus"
+                },
+                " nako ang tubag gikan sa akong nahinumdoman."
+              ],
+              "new": [
+                "Ang pagtubag, ",
+                {
+                  "kind": "choice",
+                  "answer": "tungod kay",
+                  "choices": [
+                    "tungod kay",
+                    "human sa",
+                    "sama sa",
+                    "bahin sa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "isulat",
+                  "choices": [
+                    "isulat",
+                    "pagsulat",
+                    "nagsulat",
+                    "magsulat"
+                  ],
+                  "cue": "sulat, i- object focus"
+                },
+                " nako ang tubag gikan sa akong nahinumdoman."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Lesson 6: the second learner reply has 13 whitespace-separated words (limit 6–12). Dropped the redundant 'sa suka', since the host's immediately preceding question already fixes the cup as a cup of vinegar ('usa ka tasa ang suka'); the one-chili-per-cup ratio remains explicit. Reply is now 11 words. Cloze retains all three roles (form Isagol, choice matag, choice dayon); DE/EN updated to match.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/targetText",
+              "old": "Isagol nako ang usa ka sili sa matag tasa sa suka, dayon tilawan.",
+              "new": "Isagol nako ang usa ka sili sa matag tasa, dayon tilawan."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/baseText/de",
+              "old": "Pro Tasse Essig mische ich eine Chili hinein, dann wird abgeschmeckt.",
+              "new": "Pro Tasse mische ich eine Chili hinein, dann wird abgeschmeckt."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/baseText/en",
+              "old": "I mix one chilli into each cup of vinegar, then taste it.",
+              "new": "I mix one chilli into each cup, then taste it."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Isagol",
+                  "choices": [
+                    "Isagol",
+                    "Pagsagol",
+                    "Nagsagol",
+                    "Magsagol"
+                  ],
+                  "cue": "sagol, i- object focus"
+                },
+                " nako ang usa ka sili sa ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "kinsa",
+                    "matag",
+                    "unsa",
+                    "ngano"
+                  ]
+                },
+                " tasa sa suka, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "sulod",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " tilawan."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Isagol",
+                  "choices": [
+                    "Isagol",
+                    "Pagsagol",
+                    "Nagsagol",
+                    "Magsagol"
+                  ],
+                  "cue": "sagol, i- object focus"
+                },
+                " nako ang usa ka sili sa ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "kinsa",
+                    "matag",
+                    "unsa",
+                    "ngano"
+                  ]
+                },
+                " tasa, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "tungod",
+                    "sulod",
+                    "gikan",
+                    "dayon"
+                  ]
+                },
+                " tilawan."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exactPointerCorrections": {
+    "pointer-66397de177dc": [
+      {
+        "reported": "/lessons/0/cloze/4",
+        "exactSourcePath": "/lessons/0/cloze/3"
+      },
+      {
+        "reported": "/lessons/4/cloze/3/choices",
+        "exactSourcePath": "/lessons/4/cloze/2/choices"
+      },
+      {
+        "reported": "/lessons/1/cloze/3/choices",
+        "exactSourcePath": "/lessons/1/cloze/2/choices"
+      }
+    ],
+    "pointer-84306ff1fdab": [
+      {
+        "reported": "/lessons/1/cloze/3/choices",
+        "exactSourcePath": "/lessons/1/cloze/2/choices"
+      }
+    ]
+  }
+}

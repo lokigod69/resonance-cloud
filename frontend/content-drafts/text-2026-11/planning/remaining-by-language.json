@@ -260,9 +260,7 @@
       "level": "B1",
       "writtenPaths": [
         1,
-        2
-      ],
-      "pathsToWrite": [
+        2,
         3,
         4,
         5,
@@ -272,11 +270,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80,
+      "pathsToWrite": [],
+      "remainingLessonCount": 0,
       "tenPathSpec": "b1-native-2026-10/cebuano/specification.json",
       "specRoot": "frontend/content-drafts",
-      "specSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
-      "nextPathObjective": "Mahimo ba unta — hypotheticals and soft requests"
+      "specSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383"
     },
     {
       "language": "Cebuano",

@@ -1,0 +1,1134 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 5,
+  "lessonSha256": "9777cf3dbb9d2c587f0c20342e5e032514035ca34e4977dcd177aa50cdd46c29",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "9777cf3dbb9d2c587f0c20342e5e032514035ca34e4977dcd177aa50cdd46c29",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The clerk lacks a schedule, so the learner changes from asking whether anyone knows to asking who has it. Kung kinsa fits the resulting slot."
+      },
+      {
+        "n": 2,
+        "observation": "Wala ko kahibalo kung abli ba leaves Saturday opening uncertain. Half-day service motivates the question about opening time."
+      },
+      {
+        "n": 3,
+        "observation": "The outer yes/no question concerns what the driver said. Kung kanus-a introduces the return time and the conductor’s uncertainty prompts the question about other buses."
+      },
+      {
+        "n": 4,
+        "observation": "The learner checks the sign’s meaning, paraphrases the restriction after the towing explanation and asks where to park."
+      },
+      {
+        "n": 5,
+        "observation": "Dili klaro introduces uncertainty over the correct window. Directions to the second window leave document requirements as the natural next question."
+      },
+      {
+        "n": 6,
+        "observation": "Reported speech is distinguished from certainty. A weather-dependent crossing makes the question about recovering the fare relevant."
+      },
+      {
+        "n": 7,
+        "observation": "The landlord has yet to answer about the roof. Pila ka adlaw asks how many days the landlord has to reply."
+      },
+      {
+        "n": 8,
+        "observation": "Kung kinsa asks who handles the report. The named passenger office supplies the referent for the follow-up about opening time."
+      },
+      {
+        "n": 9,
+        "observation": "Kung ngano asks for the cause of the outage. After the broken-pipe explanation, kung kanus-a asks when service will resume."
+      },
+      {
+        "n": 10,
+        "observation": "Kung unsaon introduces the procedure. The office-only response is limited to this visa type and motivates asking what papers are required."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "9777cf3dbb9d2c587f0c20342e5e032514035ca34e4977dcd177aa50cdd46c29",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The community clerk lacks the meeting schedule and the learner asks who holds it. Kahibalo replaces the restricted affirmative nahibalo in every modeled field, and the alternate count reading pila has been removed."
+      },
+      {
+        "n": 2,
+        "observation": "The bank guard's half-day restriction prompts a precise opening-time follow-up. The formally polite request is intelligible; its abbreviated Pwede differs from the reference spelling."
+      },
+      {
+        "n": 3,
+        "observation": "The absent bus driver's reported return time is the first issue. The conductor's lack of a time leads to asking about a different bus; gihulat is only heard. Nisulti siya kung asa mohunong ang bus transfers the staged embedded question to the bus's stopping place and keeps the exact trophy."
+      },
+      {
+        "n": 4,
+        "observation": "Pasabot ba…nga ties the parking sign to its possible meaning. Towing is revealed in turn three; new Nisulti ka nga correctly tests reporting rather than defaulting to kung and prompts the nearest legal location."
+      },
+      {
+        "n": 5,
+        "observation": "The question-word choices select unsa for the needed documents. The revised kutsara recall distractor removes the plausible desk alternative to bintana. The application's mention supplies a pragmatic answer to the opening, although asking about the correct window would flow better."
+      },
+      {
+        "n": 6,
+        "observation": "The evening service was reported, the clerk conditions it on weather, and the second question logically asks for certainty about recovering the fare. Correct nga is now tested, while productive unsaon is reserved for later."
+      },
+      {
+        "n": 7,
+        "observation": "The caretaker has no reply yet; wala pa…motubag obeys the negated-past form. The learner asks how long the landlord has, and tubag/bahin/atop appear in order."
+      },
+      {
+        "n": 8,
+        "observation": "The lost-card report goes to the passenger office upstairs, which motivates tomorrow's opening-time question. The role remains service throughout and the office identity is withheld until turn three."
+      },
+      {
+        "n": 9,
+        "observation": "The shared street licenses atong. The neighbor introduces the broken pipe; giayo stays receptive and the learner then asks about restoration. The ordered kahibalo/kung/ngano anchors include the knowledge predicate, embedding connector, and reason question word exactly as spoken. The water-pressure trophy example transfers the inquiry to a different situation."
+      },
+      {
+        "n": 10,
+        "observation": "The official says the visa renewal needs an office visit; the learner requests the paperwork list. The correction eliminates premature isulti and dad-on as productive items, retains palihug and removes competing asa in the question-word slot."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[3], cloze",
+        "issue": "The shortened spelling Pwede is common and intelligible, but the same course's reference form is puwede. A learner following canonical spellings may wonder whether these are different constructions.",
+        "recommendation": "Use Puwede in the canonical sentence and cloze and list the alternate only if the course intends to accept it."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "dialogue[0], sceneCaption",
+        "issue": "The reply identifies application processing implicitly through akong aplikasyon but does not explicitly name the requested service; the learner redirects the clerk to a question about the window.",
+        "recommendation": "If refining the scene, have the clerk ask about the application window or ask what the learner needs help finding."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "0ee88af63f4045525c1b076b21cf6ca13c3f4588996066fec2dc6ddb50529168",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The meeting question leads to the clerk's missing schedule and then a question about the holder. The first learner line explicitly produces recognition-only affirmative nahibalo; the final question permits a count as well as an identity."
+      },
+      {
+        "n": 2,
+        "observation": "The half-day Saturday answer prompts a precise opening-time inquiry. Wala ko kahibalo correctly describes lack of knowledge; its target and the three speech tokens appear in order."
+      },
+      {
+        "n": 3,
+        "observation": "The question about what the driver said fits his absence; the conductor's lack of a time leads to another bus to the port. Gihulat is only in the conductor's opening."
+      },
+      {
+        "n": 4,
+        "observation": "The towing rule is revealed only by the attendant and leads to asking for the nearest legal parking place. The grammatical goal of reporting content with nga could be tested here."
+      },
+      {
+        "n": 5,
+        "observation": "The clerk names another counter, and the learner asks about documents. Initial answer describes uncertainty about a counter rather than answering which service the person needs."
+      },
+      {
+        "n": 6,
+        "observation": "The weather condition is new, making a cancellation refund a natural question. Nisulti sila nga clearly reports the earlier information and sigurado separates it from certainty."
+      },
+      {
+        "n": 7,
+        "observation": "No answer to the caretaker's message motivates asking about the deadline. Wala pa siya motubag uses the correct unmarked future-shaped form after negative wala; the caretaker doesn't promise approval."
+      },
+      {
+        "n": 8,
+        "observation": "The cashier introduces the passenger office upstairs. Following up about when it opens fits the lost-card scene; the earlier opening and both bases disambiguate kard from other lost objects."
+      },
+      {
+        "n": 9,
+        "observation": "The neighbor's shared street licenses inclusive atong. The reason for the outage appears only in turn three; giayo stays in that neighbor's turn and the learner asks about restoration."
+      },
+      {
+        "n": 10,
+        "observation": "The visa officer's office-only rule changes what the learner needs to ask. The reply about paperwork makes sense, but its imperatives are premature and its second blank duplicates an alternative interpretation."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "dialogue[1], pattern.rule/examples, chunks, terms, recall",
+        "issue": "Affirmative nahibalo is explicitly recognition-only in them-lines at L1–3; this line makes it repeatable, reconstructed and taught. Also dinhi attaches more readily to miting than to the translated 'anyone here'.",
+        "recommendation": "Use an available form such as 'Ang akong pangutana kay kung naa bay kaila dinhi nga kahibalo sa iskedyul sa miting.' Or ask whether there is a schedule at the office, then follow up who has it. Rebuild derived fields; use kahibalo or another permitted model."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "cloze: kinsa alternatives",
+        "issue": "Pila ang naghupot sa iskedyul is grammatical and meaningful ('how many are holding/have the schedule?') even if kinsa is the intended translation.",
+        "recommendation": "Replace pila with a distractor that cannot stand in for an unknown person or count before ang naghupot, e.g. a temporal adverb."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[3] spelling (also L4)",
+        "issue": "Both model service requests use clipped Pwede whereas the approved example spells puwede and the course explicitly distinguishes reviewed spelling variations.",
+        "recommendation": "Use Puwede for canonical full spelling in these lines and their clozes; optionally retain the shorter spelling only if reviewed as an accepted variant."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[0], sceneCaption, cloze: unsa choices (also L10)",
+        "issue": "Asa nga serbisyo asks which service the customer needs but the reply only says the window is unclear; more importantly, the same course uses asa nga for 'which', so asa nga mga dokumento/papeles is a plausible competing answer to unsa in L5 and L10.",
+        "recommendation": "Make the clerk ask whether the learner has found their application window, or explicitly have the learner say which service. Swap asa out of the L5 and L10 alternatives for a non-interrogative that cannot modify the noun in this position."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[3], cloze",
+        "issue": "The learner is already producing kung unsaon as the centerpiece of the refund follow-up, while that embedded procedural frame is assigned to P5 L7–10. The first reply already supplies the staged grammar for L6.",
+        "recommendation": "Use an embedded yes/no refund question or quoted information with nga; reserve productive kung unsaon for the later block."
+      },
+      {
+        "n": 6,
+        "severity": "HIGH",
+        "field": "cloze (all ten lessons, representative L6)",
+        "issue": "All ten first blanks accept kung, and are predominately followed by an adjacent second blank or an obvious interrogative. None asks the learner to choose nga for reported information or ba for a direct certainty question. A learner can always answer kung without reading.",
+        "recommendation": "In at least several lessons reauthor the final reply/cloze to include a meaningful correct nga or ba, e.g. L6 'Mahimo ba kong mangayo og refund kung walay biyahe?' and L4 'Nisulti ka nga bawal dinhi; asa man ang paradahan?' Keep the weather/parking beats, 6–12 word budget, genuine single-fit alternatives, and vary blank order."
+      },
+      {
+        "n": 10,
+        "severity": "HIGH",
+        "field": "dialogue[3], cloze, terms",
+        "issue": "Palihug isulti ... dad-on requires two productive i-/-on patient-focus forms before P6L1, outside the specifically prescribed earlier forms. Neither is necessary to ask about document requirements.",
+        "recommendation": "Use a permitted actor-focus form such as 'Puwede ka mosulti kung unsang mga dokumento ang kinahanglan sa opisina?' or 'Mahimo ba kong mangutana kung unsang mga papeles ang kinahanglan?' Rebuild cloze and terms and keep one grammatical answer per blank."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "4cdceb5f196be4e120da3850b4aea6420cefeee7dd5919cfa7531f1dd71bba9b",
+      "sourceSha256": "0ee88af63f4045525c1b076b21cf6ca13c3f4588996066fec2dc6ddb50529168",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat, trophy anchoring (pangutana as bare noun in youOne and example), 13/8-word learner turns, chunks join, recall and speech tokens all verify. Register is service; no request line, so no palihug needed. Staging breach: block 1-3 marks nahibalo (affirmative) as recognition-only in them-lines, yet youOne, chunk, pattern rule, example and recall all put 'naa bay nahibalo' productively in the learner's mouth; the native equivalent 'naa bay kahibalo sa iskedyul' keeps word count and meaning. Cloze foils aron/busa/human and pila/unsaon/tagpila are ungrammatical or contextually excluded by the known meaning 'who'."
+        },
+        {
+          "n": 2,
+          "observation": "youOne equals the outlined sentence verbatim; 10/9 words; wala ko kahibalo kung + abli ba is correct negated-knowledge + embedded yes/no. 'Pwede ko mangutana kung alas pila moabli' stages 'mangutana ko kung' from block 1-3 and alas pila keeps the Spanish-derived clock form. Cloze foils apan/busa/aron and kinsa/asa/ngano are all impossible after 'alas'. Both kung blanks across the path use kind 'choice' rather than typed 'connector'; this is acceptable, as a typed slot would unjustly reject the reviewed 'kon' variant in block 7-10. DE/EN match aspect."
+        },
+        {
+          "n": 3,
+          "observation": "youOne matches the outline sentence plus 'niining hunonganan' (10 words); nisulti ba + kung kanus-a is exactly the block 1-3 target and the hyphenated kanus-a is kept out of speech tokens (nisulti, drayber, mobalik). Them-line 'Wala ko makadungog' is a correct wala + maka- negated past. youTwo 'kung hain sa ubang bus ang moagi sa pantalan' is native and answers the beat (alternatives). Cloze foils ngano/kinsa/unsaon fail before 'sa ubang bus'. Pattern example 2 uses inclusive 'ta' only inside a transfer model, not a learner line."
+        },
+        {
+          "n": 4,
+          "observation": "Trophy pasabot anchored; 11/10 words; them-line adds towing (new information) and youTwo asks where else as the beat requires. Staging breach: block 4-6 lists 'pasabot/klaro + nga clause' as the productive structure, but the lesson teaches and drills only the topic-marker frame 'Ang pasabot ba … kay bawal …' (dialogue, both examples, rule, chunk, recall), so the nga-clause after pasabot is never taught in the path. The native 'Pasabot ba anang karatula nga bawal moparada bisan kadiyot lang?' keeps the trophy, tokens and count. Cloze foils are sound. 'Pwede ka mosulti kung asa' is an honest polite request form; palihug not mandatory here."
+        },
+        {
+          "n": 5,
+          "observation": "'Dili klaro dinhi kung hain nga bintana ang modawat' is the staged dili klaro kung form; 12/10 words; them-line gives directions; youTwo confirms documents. Cloze problem: the second blank offers 'asa' beside the answer 'unsa', yet 'kung asa nga mga dokumento ang kinahanglan didto' is fully grammatical Cebuano for 'which documents' (the them-line itself uses 'Asa nga serbisyo'), so a correct learner would be rejected. Replace 'asa' with a foil that cannot precede 'nga mga dokumento'. Recall fallbacks (lamisa/pultahan/kwarto) are contextually excluded; lamisa vs L1 lamesa is honest variation."
+        },
+        {
+          "n": 6,
+          "observation": "youOne (13 words, two clauses) stages both nisulti sila nga and sigurado ba nga; semicolon sentence is permitted. Them-line adds the weather condition with conditional kung (P3 contrast) and youTwo asks refund. The youTwo frame 'kung unsaon pagbawi sa bayad' makes unsaon productive and clozed four lessons before block 7-10 and before it is introduced as the L10 trophy; an asa-based refund question would respect staging, but since unsaon appears as a foil from L1 on (A2 question-word recycling) this is offered as optional. Both kung readings coexist but only the indirect one is blanked, as the trap rule requires. Recall fallbacks are contextually excluded by the port scene."
+        },
+        {
+          "n": 7,
+          "observation": "Trophy tubag anchored as bare noun in 'Naa na bay tubag ang tag-iya' and in the example; 12/10 words; exclusive 'among atop' is correct because the caretaker is not a tenant. Them-line 'Wala pa siya motubag' is correct wala + mo- negated past, matched by DE/EN 'noch nicht'. youTwo asks the reply deadline (palugit) as the beat requires; cloze foils kinsa/asa/unsaon cannot precede 'ka adlaw'. Hyphenated tag-iya stays out of speech tokens and recall."
+        },
+        {
+          "n": 8,
+          "observation": "'Wala ko kahibalo kung kinsa ang modawat og report sa nawala nga kard' uses the indefinite object marker og correctly and anchors the trophy kinsa; 13/8 words. Them-line names the passenger office and location; youTwo asks opening time with alas pila + ugma (future licence). Cloze foils unsaon/kinsa/asa are impossible after 'alas'. Pattern example 2 ('Mangutana ko kung kinsa ang mopirma') is a distinct transfer model. Register and DE/EN idiom are fine."
+        },
+        {
+          "n": 9,
+          "observation": "Trophy ngano stands as the bare surface word in 'kung ngano walay tubig' and in the example; bare ngano before a clause is attested colloquial Cebuano beside nganong and is preserved as honest variation. Inclusive 'atong dalan' is correct with a neighbour. Them-line explains the broken pipe with recognition gi- ('Giayo pa kini'), and youTwo recycles L3's nisulti ba + kung kanus-a for the return time. Cloze keeps kanus-a visible (hyphen) and blanks the verb instead; mokalagiw/motubo/molarga are impossible with tubig. 'buntag' glossed Vormittag is acceptable for karong buntag."
+        },
+        {
+          "n": 10,
+          "observation": "youOne (12 words) stages kung unsaon with pinaagi sa and licenses 'I'd like to' through unta. Them-line counters with office-only renewal; youTwo asks requirements. Two issues in youTwo: (1) 'Palihug isulti … dad-on' makes the i-/-on instruction forms productive in a learner line, which the orthography decision reserves for P6 lesson 1 onward; the service request can be phrased natively with actor focus as 'Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako.' (12 words). (2) The cloze foil 'asa' is a valid answer ('kung asa nga mga papeles' = which papers) and would unjustly reject a correct learner. Terms must drop the dad-on entry once the line changes."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "nahibalo (affirmative) is recognition-only in them-lines during lessons 1-3, but the learner's first reply, chunk, pattern rule, example, term and recall all use 'naa bay nahibalo' productively. Replace with the native 'naa bay kahibalo' throughout the lesson.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "naa bay nahibalo",
+              "new": "naa bay kahibalo"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "Naa bay nahibalo",
+              "new": "Naa bay kahibalo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/terms/1",
+              "old": {
+                "targetText": "nahibalo",
+                "baseText": {
+                  "de": "Bescheid wissen",
+                  "en": "know"
+                }
+              },
+              "new": {
+                "targetText": "kahibalo",
+                "baseText": {
+                  "de": "Bescheid wissen",
+                  "en": "know"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Block 4-6 stages 'pasabot + nga clause', but the lesson teaches only 'Ang pasabot ba … kay bawal …' in dialogue, rule, both examples, chunks and recall, so the staged nga-clause is never taught. Rewrite to the native 'Pasabot ba anang karatula nga bawal moparada bisan kadiyot lang?' with coupled rule, examples, chunks, recall and distractor.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/3",
+              "old": "Ang pasabot ba anang karatula kay bawal moparada bisan kadiyot lang?",
+              "new": "Pasabot ba anang karatula nga bawal moparada bisan kadiyot lang?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/rule",
+              "old": {
+                "de": "Pasabot fragt hier nach dem Inhalt eines Schildes. In einer Antwort kann ang pasabot kay bawal… das Verbot wiedergeben.",
+                "en": "Pasabot asks about the meaning of a sign here. In an answer, ang pasabot kay bawal… can report the restriction."
+              },
+              "new": {
+                "de": "Pasabot ba fragt, ob du einen Hinweis richtig verstanden hast. Nach nga folgt der Inhalt, den du verstanden hast: bawal moparada…",
+                "en": "Pasabot ba asks whether you have understood a message correctly. After nga comes the content you understood: bawal moparada…"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/0/highlight",
+              "old": "pasabot ba",
+              "new": "Pasabot ba"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/1",
+              "old": {
+                "targetText": "Ang pasabot ba nimo kay sirado na ang ganghaan?",
+                "baseText": {
+                  "de": "Meinen Sie, dass das Tor schon geschlossen ist?",
+                  "en": "Do you mean the gate is already closed?"
+                },
+                "highlight": "pasabot ba"
+              },
+              "new": {
+                "targetText": "Pasabot ba nimo nga sirado na ang ganghaan?",
+                "baseText": {
+                  "de": "Meinen Sie, dass das Tor schon geschlossen ist?",
+                  "en": "Do you mean the gate is already closed?"
+                },
+                "highlight": "Pasabot ba"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks",
+              "old": [
+                {
+                  "targetText": "Ang pasabot ba",
+                  "baseText": {
+                    "de": "bedeutet es",
+                    "en": "does it mean"
+                  }
+                },
+                {
+                  "targetText": "anang karatula",
+                  "baseText": {
+                    "de": "auf dem Schild dort",
+                    "en": "on that sign"
+                  }
+                },
+                {
+                  "targetText": "kay bawal moparada",
+                  "baseText": {
+                    "de": "dass Parken verboten ist",
+                    "en": "that parking is forbidden"
+                  }
+                },
+                {
+                  "targetText": "bisan kadiyot lang?",
+                  "baseText": {
+                    "de": "selbst für kurze Zeit",
+                    "en": "even for a moment"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Pasabot ba",
+                  "baseText": {
+                    "de": "bedeutet es",
+                    "en": "does it mean"
+                  }
+                },
+                {
+                  "targetText": "anang karatula",
+                  "baseText": {
+                    "de": "auf dem Schild dort",
+                    "en": "on that sign"
+                  }
+                },
+                {
+                  "targetText": "nga bawal moparada",
+                  "baseText": {
+                    "de": "dass Parken verboten ist",
+                    "en": "that parking is forbidden"
+                  }
+                },
+                {
+                  "targetText": "bisan kadiyot lang?",
+                  "baseText": {
+                    "de": "selbst für kurze Zeit",
+                    "en": "even for a moment"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/recall",
+              "old": {
+                "before": "Ang pasabot ba anang ",
+                "answer": "karatula",
+                "after": " kay bawal moparada bisan kadiyot lang?",
+                "fallbackChoices": [
+                  "karatula",
+                  "kalendaryo",
+                  "sobre",
+                  "banderas"
+                ]
+              },
+              "new": {
+                "before": "Pasabot ba anang ",
+                "answer": "karatula",
+                "after": " nga bawal moparada bisan kadiyot lang?",
+                "fallbackChoices": [
+                  "karatula",
+                  "kalendaryo",
+                  "sobre",
+                  "banderas"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/distractors",
+              "old": [
+                "kay bawal moliko",
+                "bisan sa gabii?"
+              ],
+              "new": [
+                "nga bawal moliko",
+                "bisan sa gabii?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Cloze foil 'asa' is a grammatical alternative to the answer 'unsa' ('kung asa nga mga dokumento' = which documents, exactly the 'Asa nga serbisyo' pattern of the them-line) and would unjustly reject a correct learner. Replace it with a foil that cannot precede 'nga mga dokumento'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/3/choices",
+              "old": [
+                "unsa",
+                "kinsa",
+                "ngano",
+                "asa"
+              ],
+              "new": [
+                "unsa",
+                "kinsa",
+                "ngano",
+                "unsaon"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "youTwo makes 'kung unsaon' productive and clozes it against 'unsa' in lesson 6, before block 7-10 introduces unsaon and before it serves as the lesson-10 trophy. An asa-based refund question keeps the beat and staging.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3",
+              "old": {
+                "targetText": "Kahibalo ka kung unsaon pagbawi sa bayad kung walay biyahe?",
+                "baseText": {
+                  "de": "Wissen Sie, wie ich mein Geld zurückbekomme, wenn es keine Fahrt gibt?",
+                  "en": "Do you know how to get my money back if the crossing doesn’t run?"
+                }
+              },
+              "new": {
+                "targetText": "Kahibalo ka kung asa ko makabawi sa bayad kung walay biyahe?",
+                "baseText": {
+                  "de": "Wissen Sie, wo ich mein Geld zurückbekomme, wenn es keine Fahrt gibt?",
+                  "en": "Do you know where I can get my money back if the crossing doesn’t run?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                "Kahibalo ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "busa",
+                    "aron",
+                    "apan",
+                    "kung"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "unsaon",
+                  "choices": [
+                    "kinsa",
+                    "unsaon",
+                    "pila",
+                    "unsa"
+                  ]
+                },
+                " pagbawi sa bayad kung walay biyahe?"
+              ],
+              "new": [
+                "Kahibalo ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "busa",
+                    "aron",
+                    "apan",
+                    "kung"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "asa",
+                  "choices": [
+                    "kinsa",
+                    "asa",
+                    "ngano",
+                    "unsa"
+                  ]
+                },
+                " ko makabawi sa bayad kung walay biyahe?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "(1) 'Palihug isulti … kinahanglan nakong dad-on' puts the i-/-on instruction forms productively in a learner line in P5, while the orthography decision makes them productive only from P6 lesson 1; the request is native with actor focus ('Palihug ko og sulti kung …'). (2) Cloze foil 'asa' is a valid answer ('kung asa nga mga papeles' = which papers) and would unjustly reject a correct learner. Coupled edits: dialogue, cloze, dad-on term.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3",
+              "old": {
+                "targetText": "Palihug isulti kung unsa nga mga papeles ang kinahanglan nakong dad-on.",
+                "baseText": {
+                  "de": "Sagen Sie mir bitte, welche Unterlagen ich mitbringen muss.",
+                  "en": "Please tell me what papers I need to bring."
+                }
+              },
+              "new": {
+                "targetText": "Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako.",
+                "baseText": {
+                  "de": "Sagen Sie mir bitte, welche Unterlagen ich brauche.",
+                  "en": "Please tell me what papers I need."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Palihug isulti ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "apan",
+                    "busa",
+                    "aron",
+                    "kung"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "unsa",
+                  "choices": [
+                    "kinsa",
+                    "unsa",
+                    "ngano",
+                    "asa"
+                  ]
+                },
+                " nga mga papeles ang kinahanglan nakong dad-on."
+              ],
+              "new": [
+                "Palihug ko og sulti ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "apan",
+                    "busa",
+                    "aron",
+                    "kung"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "unsa",
+                  "choices": [
+                    "kinsa",
+                    "unsa",
+                    "ngano",
+                    "unsaon"
+                  ]
+                },
+                " nga mga papeles ang kinahanglan nako."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/terms/6",
+              "old": {
+                "targetText": "dad-on",
+                "baseText": {
+                  "de": "mitbringen",
+                  "en": "bring along"
+                }
+              },
+              "new": {
+                "targetText": "kinahanglan",
+                "baseText": {
+                  "de": "brauchen; nötig",
+                  "en": "need; necessary"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "022f2f0995b5eb7adb6bd1a84c7e5597dfa346a7b372e8ccd7dbb47c46e6206b",
+      "sourceSha256": "e3f156a6b8e73447d5c43169c166e10e28c5f921b54d21fa90e44b7a825020ee",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Prior nahibalo fix is in place: 'naa bay kahibalo' is native, stays within block 1-3 and anchors the trophy pangutana as a bare noun; tokens pangutana/kung/iskedyul are whole words in youOne. Caption, recall and pattern consistent. The youTwo cloze foil 'pila' still yields the grammatical 'kung pila ang naghupot sa iskedyul' (how many hold the schedule), so the second blank is not single-fit."
+        },
+        {
+          "n": 2,
+          "observation": "Wala ko kahibalo kung abli ba ang bangko sa Sabado matches the outline line exactly; them-line half-day answer is new information; youTwo 'alas pila' blank is single-fit (alas + pila only). 'Pwede' spelling cannot be adjudicated against the A2 glossary from the supplied material; it is a standard Visayan spelling and is left untouched rather than churned to puwede without evidence."
+        },
+        {
+          "n": 3,
+          "observation": "Nisulti ba ang drayber kung kanus-a siya mobalik is the outline model; gihulat stays recognition-only in the conductor line; wala + makadungog is a correct negated abilitative past. youTwo 'kung hain sa ubang bus' asks alternatives as the beat requires; foils kinsa/ngano/unsaon are impossible before 'sa ubang bus'."
+        },
+        {
+          "n": 4,
+          "observation": "Pasabot ba anang karatula nga bawal moparada now teaches the staged pasabot + nga; guyoron stays in the attendant line. youTwo is a tenth consecutive kung blank and its foil 'pila' is grammatical ('kung pila ang labing duol nga paradahan' = how much is the nearest car park). Rebuilt youTwo with reported nga + asa, keeping the where-else beat and avoiding any -on form in the learner line."
+        },
+        {
+          "n": 5,
+          "observation": "Dili klaro dinhi kung hain nga bintana is a responsive reply to 'Asa nga serbisyo' (it implies application intake), so the counterpart's MEDIUM item is not adopted. The asa foil was already replaced by unsaon; kinsa/ngano/unsaon cannot precede 'nga mga dokumento'. Caption does not foreshadow the second-window answer."
+        },
+        {
+          "n": 6,
+          "observation": "youOne reports (nisulti sila nga) and asks certainty (sigurado ba nga) as staged; chunks join exactly; caption hides the weather condition. youTwo was changed to 'kung asa' earlier, but the path still answers kung on every first blank; the lesson's own target 'sigurado ba nga' gives a natural single-fit nga blank with the refund beat preserved, so youTwo is rebuilt."
+        },
+        {
+          "n": 7,
+          "observation": "Naa na bay tubag ang tag-iya anchors tubag as a bare noun; 'among atop' is correctly exclusive of the caretaker; wala pa siya motubag is canonical negated past. 'pila ka adlaw' blank is single-fit. Speech tokens tubag/pagpaayo/atop contain no connector or aspect-bearing word as the spec requires; 'bahin' from the same reply fills that slot in canonical order."
+        },
+        {
+          "n": 8,
+          "observation": "Wala ko kahibalo kung kinsa ang modawat og report uses og correctly for the indefinite object; cashier names the passenger office (new information); youTwo 'alas pila sila moabli ugma' is single-fit and the German 'das Büro' correctly resolves 'sila'."
+        },
+        {
+          "n": 9,
+          "observation": "Inclusive 'atong dalan' is justified by the shared street; giayo stays recognition-only in the neighbour line. 'kung ngano walay tubig' without the linker is an attested spoken form and keeps the trophy ngano whole-word anchored; accepted as honest variation. youTwo correctly keeps hyphenated kanus-a visible and blanks mobalik instead; foils are impossible with 'ang tubig'."
+        },
+        {
+          "n": 10,
+          "observation": "Prior fix holds: 'Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako' is actor-focus, keeps palihug on the request line and no i-/-on form; dad-on term replaced by kinahanglan; asa foil removed. Mangutana unta ko licenses 'Ich würde gern fragen'; officer's office-only answer is new information."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Cloze blank 2 foil 'pila' produces the grammatical alternative 'Kahibalo ka kung pila ang naghupot sa iskedyul?' (how many hold the schedule), so a learner choosing it is rejected on an open slot. Replace with 'ngano', which cannot precede 'ang naghupot'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3/choices",
+              "old": [
+                "kinsa",
+                "pila",
+                "unsaon",
+                "tagpila"
+              ],
+              "new": [
+                "kinsa",
+                "ngano",
+                "unsaon",
+                "tagpila"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Path-wide, all ten first blanks answer kung, so the connector family (kung/nga/ba) is never practised against nga and the learner can answer without reading. This lesson's youTwo also carries foil 'pila', which yields the grammatical 'kung pila ang labing duol nga paradahan' (how much is the nearest car park). Rebuild youTwo as a reported-nga line (block 4-6 nisulti nga + content) that still asks where else, with a single-fit nga blank and an asa blank whose foils cannot stand before 'ang labing duol nga paradahan'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3",
+              "old": {
+                "targetText": "Pwede ka mosulti kung asa ang labing duol nga paradahan?",
+                "baseText": {
+                  "de": "Können Sie mir sagen, wo der nächste Parkplatz ist?",
+                  "en": "Could you tell me where the nearest car park is?"
+                }
+              },
+              "new": {
+                "targetText": "Nisulti ka nga bawal dinhi; asa ang labing duol nga paradahan?",
+                "baseText": {
+                  "de": "Sie haben gesagt, dass es hier verboten ist. Wo ist der nächste Parkplatz?",
+                  "en": "You said it’s forbidden here. Where is the nearest car park?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                "Pwede ka mosulti ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "busa",
+                    "kung",
+                    "aron",
+                    "apan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "asa",
+                  "choices": [
+                    "pila",
+                    "kinsa",
+                    "unsaon",
+                    "asa"
+                  ]
+                },
+                " ang labing duol nga paradahan?"
+              ],
+              "new": [
+                "Nisulti ka ",
+                {
+                  "kind": "choice",
+                  "answer": "nga",
+                  "choices": [
+                    "nga",
+                    "aron",
+                    "busa",
+                    "human"
+                  ]
+                },
+                " bawal dinhi; ",
+                {
+                  "kind": "choice",
+                  "answer": "asa",
+                  "choices": [
+                    "kanus-a",
+                    "kinsa",
+                    "ngano",
+                    "asa"
+                  ]
+                },
+                " ang labing duol nga paradahan?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Same path-wide problem: the first blank is kung again although the lesson's target is 'sigurado ba nga'. A refund follow-up built on that frame keeps the beat, stays actor-focus (makabawi ko sa bayad as already used) and gives a single-fit nga blank (kung excluded as a foil because 'sigurado ba kung' is heard) plus a lexical blank with impossible foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3",
+              "old": {
+                "targetText": "Kahibalo ka kung asa ko makabawi sa bayad kung walay biyahe?",
+                "baseText": {
+                  "de": "Wissen Sie, wo ich mein Geld zurückbekomme, wenn es keine Fahrt gibt?",
+                  "en": "Do you know where I can get my money back if the crossing doesn’t run?"
+                }
+              },
+              "new": {
+                "targetText": "Sigurado ba nga makabawi ko sa bayad kung walay biyahe?",
+                "baseText": {
+                  "de": "Steht fest, dass ich mein Geld zurückbekomme, wenn es keine Fahrt gibt?",
+                  "en": "Is it certain I’ll get my money back if the crossing doesn’t run?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                "Kahibalo ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "busa",
+                    "aron",
+                    "apan",
+                    "kung"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "asa",
+                  "choices": [
+                    "kinsa",
+                    "asa",
+                    "ngano",
+                    "unsa"
+                  ]
+                },
+                " ko makabawi sa bayad kung walay biyahe?"
+              ],
+              "new": [
+                "Sigurado ba ",
+                {
+                  "kind": "choice",
+                  "answer": "nga",
+                  "choices": [
+                    "nga",
+                    "aron",
+                    "busa",
+                    "human"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "makabawi",
+                  "choices": [
+                    "makabawi",
+                    "makakaon",
+                    "makatulog",
+                    "makasakay"
+                  ]
+                },
+                " ko sa bayad kung walay biyahe?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "speakRequired tubag/pagpaayo/atop has no connector or aspect-bearing word (pagpaayo is a pag- verbal noun, not an aspect form), contrary to the speech-token rule. 'bahin' (about) from the same reply is a whole-word connector; order remains canonical.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/speakRequired",
+              "old": [
+                "tubag",
+                "pagpaayo",
+                "atop"
+              ],
+              "new": [
+                "tubag",
+                "bahin",
+                "atop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c0a443ca980a347bd795101677c93dff61272deaa098aff09ef99972bec15c79",
+      "sourceSha256": "acbbbcbe83ee942224aa15e4ebf5ed2e577c1222258575f4dbd6c6e6540070c4",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Clerk asks what you need, learner embeds with 'Ang akong pangutana kay kung naa bay kahibalo…' (13 words, trophy pangutana, tokens pangutana/kung/iskedyul all whole words), clerk has no schedule, learner asks kung kinsa ang naghupot. Chunks join exactly; recall and trophy example anchor pangutana; cloze foils aron/busa/human and ngano/unsaon/tagpila are impossible before 'ang naghupot' (the earlier pila reading is gone). Restricted nahibalo no longer appears anywhere in the lesson. Minor: sentence gloss reads dinhi as 'hier jemand' while the chunk gloss reads it as 'Versammlung hier'; both readings are true in the scene, so not a learner-facing error."
+        },
+        {
+          "n": 2,
+          "observation": "'Wala ko kahibalo kung abli ba ang bangko sa Sabado' matches the beat verbatim; wala + kahibalo is the regular negated form, guard adds the half-day detail, learner asks 'kung alas pila moabli' with ugma-free but mo- future licence. Cloze blanks kung/pila single-fit ('alas kinsa/asa/ngano' impossible). Counterparts' LOW note on Pwede vs puwede: both spellings are attested Cebuano, the spec lists no canonical form and no A2 precedent was supplied, so this is preference, not a demonstrable error; no change."
+        },
+        {
+          "n": 3,
+          "observation": "Outline line 'Nisulti ba ang drayber kung kanus-a siya mobalik…' used exactly; ba clitic stays with nisulti in chunking, kanus-a hyphen only in dialogue text. Conductor's 'Wala ko makadungog' is correct wala + maka-; learner then asks 'kung hain sa ubang bus ang moagi sa pantalan' (11 words). Cloze foils kinsa/ngano/unsaon cannot precede 'sa ubang bus'. Tokens nisulti/drayber/mobalik include an aspect-bearing verb."
+        },
+        {
+          "n": 4,
+          "observation": "'Pasabot ba anang karatula nga bawal moparada…' teaches the staged pasabot + nga clause; towing (guyoron, -on in them-line only) is withheld until turn three and the caption does not foreshadow it. youTwo 'Nisulti ka nga bawal dinhi; asa ang labing duol nga paradahan?' (11 words) gives the path its reported-nga blank; nga is the only fit against aron/busa/human and asa against kanus-a/kinsa/ngano. Pattern examples, chunks, recall and distractors are all aligned on the nga form."
+        },
+        {
+          "n": 5,
+          "observation": "'Dili klaro dinhi kung hain nga bintana…' (12 words) answers the clerk's service question by naming the application; staff points to the second window; learner asks 'kung unsa nga mga dokumento' with asa correctly removed from the foils (unsaon/kinsa/ngano impossible). Recall fallback row writes 'lamisa' while lesson 1 teaches and uses 'lamesa'; the inconsistent spelling plus a contextually plausible 'which desk accepts my application' reading makes it a poor fallback foil — fixed below."
+        },
+        {
+          "n": 6,
+          "observation": "youOne reports (Nisulti sila nga naay biyahe) and then asks certainty (sigurado ba nga molarga…), exactly the block 4-6 contrast; clerk adds the weather condition with dili + mo-. youTwo 'Sigurado ba nga makabawi ko sa bayad kung walay biyahe?' keeps actor focus, requests rather than asserts a refund, and tests nga (kung rightly absent from foils) plus a lexical blank whose foils makakaon/makatulog/makasakay are impossible with 'sa bayad'. Productive unsaon is no longer used before block 7-10."
+        },
+        {
+          "n": 7,
+          "observation": "'Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among atop?' anchors bare-root tubag as a noun; na/ba/y cluster on naa is canonical. Caretaker's 'Wala pa siya motubag' is the correct wala + mo- negated past. youTwo 'kung pila ka adlaw ang palugit' uses the numeral linker ka correctly; foils kinsa/asa/unsaon cannot precede 'ka adlaw'. speakRequired tubag/bahin/atop now carries a connector; chunks and recall join exactly."
+        },
+        {
+          "n": 8,
+          "observation": "'Wala ko kahibalo kung kinsa ang modawat og report sa nawala nga kard' uses og for the indefinite object and nga linker correctly; the cashier names the upstairs passenger office only in turn three; youTwo 'kung alas pila sila moabli ugma' carries a future time word licensing DE/EN future. Cloze foils are impossible after 'alas'. German 'das Büro' for 'sila' is idiomatic, not a gloss mismatch."
+        },
+        {
+          "n": 9,
+          "observation": "'Kahibalo ka kung ngano walay tubig sa atong dalan karong buntag?' keeps bare ngano as the trophy (colloquial ngano without the -ng linker is honest Cebuano and required for anchoring); atong is genuinely inclusive on a shared street. Neighbor's giayo stays recognition-only. youTwo 'Nisulti ba sila kung kanus-a mobalik ang tubig sa gripo?' blanks kung and mobalik with impossible foils. The trophy example alone models affirmative 'Nahibalo ka', a form the outline keeps recognition-only and the rest of the path never teaches — fixed to the taught 'Kahibalo ka'."
+        },
+        {
+          "n": 10,
+          "observation": "'Mangutana unta ko kung unsaon pagpalugway sa akong visa pinaagi sa internet' licenses the Konjunktiv/'I'd like' via unta and uses unsaon + pag- natively; officer gives the office-only rule. youTwo 'Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako' is a native actor-focus request with palihug on the request line, no i-/-on or dad-on ahead of P6; cloze foils asa removed, kinsa/ngano/unsaon impossible before 'nga mga papeles'. Terms, recall and trophy example all anchor correctly."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Recall fallback foil 'lamisa' is spelled inconsistently with the path's own 'lamesa' (lesson 1 them-line and term) and yields a contextually plausible line ('which desk takes my application'), so it neither tests recall cleanly nor matches the course spelling. Replace with a foil that cannot receive an application.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/recall/fallbackChoices",
+              "old": [
+                "lamisa",
+                "bintana",
+                "pultahan",
+                "kwarto"
+              ],
+              "new": [
+                "kutsara",
+                "bintana",
+                "pultahan",
+                "kwarto"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "trophyWord.example models affirmative 'Nahibalo ka', which the outline marks recognition-only (them-lines) and which is never staged productive; every learner line and transfer example in the path uses 'Kahibalo ka'. Align the learner-facing example with the taught surface form; the trophy ngano remains anchored.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/trophyWord/example",
+              "old": "Nahibalo ka kung ngano hinay ang tubig?",
+              "new": "Kahibalo ka kung ngano hinay ang tubig?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "confirm",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "557a4f635217378eda780c2daed578d8d687c86f750e53018e7f4f8fc205c35f",
+      "sourceSha256": "c0f4b7cd25bd47313c2630c9d615b81240feec0072b6c0a998a4f8502dd332cc",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Clerk has no schedule, learner asks who holds it; youOne 13 words with trophy and tokens pangutana/kung/iskedyul in order; naa bay kahibalo is native and recognition-only nahibalo is gone everywhere. Chunks, recall and cloze join exactly; the kinsa foils (ngano/unsaon/tagpila) cannot stand before 'ang naghupot' in context after pila was removed. kung kinsa is beat-mandated and kinsa is an A2 P1 recycled word, so not treated as ahead of stage."
+        },
+        {
+          "n": 2,
+          "observation": "Wala ko kahibalo kung abli ba… models the staged frame; wala + stative kahibalo is correct, tunga ra ka adlaw uses the ka numeral linker properly, and 'alas pila' keeps the A2 clock numeral system. Counterparts' puwede/pwede note is not demonstrable from the supplied spec (no A2 precedent listed) and pwede is standard Cebuano; no change."
+        },
+        {
+          "n": 3,
+          "observation": "Nisulti ba ang drayber kung kanus-a siya mobalik is the exact beat line; wala ko makadungog is regular negated past; youTwo kung hain sa ubang bus is native and its foils exclude asa, the only real competitor. Trophy example 'Nisulti siya nga puno ang bus' previews the block 4-6 reported-nga frame one lesson early (optional alignment below)."
+        },
+        {
+          "n": 4,
+          "observation": "Pasabot ba anang karatula nga bawal moparada… is idiomatic; towing (guyoron, -on form) stays in the attendant line; youTwo Nisulti ka nga bawal dinhi gives a genuine nga blank with kung correctly excluded as a foil, and the asa foils (kanus-a/kinsa/ngano) are impossible before 'ang labing duol nga paradahan'."
+        },
+        {
+          "n": 5,
+          "observation": "Dili klaro dinhi kung hain nga bintana… teaches the staged dili klaro kung; the unsa blank now has only ungrammatical foils (kinsa/ngano/unsaon nga mga dokumento) and recall foil kutsara is clean. The counterparts' LOW note that the learner does not literally name the service is a scene preference, not an error: akong aplikasyon answers it."
+        },
+        {
+          "n": 6,
+          "observation": "Nisulti sila nga naay biyahe; sigurado ba nga molarga… contrasts report and certainty exactly as the block stages; dili molarga kung kusog ang hangin is correct dili-future. youTwo Sigurado ba nga makabawi ko sa bayad is actor-focus, the nga blank excludes kung (which is heard natively), and makakaon/makatulog/makasakay are impossible with 'sa bayad'."
+        },
+        {
+          "n": 7,
+          "observation": "Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among atop (12 words, exclusive among correct); wala pa siya motubag is regular negated past; tokens tubag/bahin/atop carry a connector. pila ka adlaw ang palugit keeps the ka numeral linker; foils cannot precede 'ka adlaw'."
+        },
+        {
+          "n": 8,
+          "observation": "Wala ko kahibalo kung kinsa ang modawat og report… uses og correctly for the indefinite object; office identity is withheld until the cashier line (maoy modawat ana); alas pila sila moabli ugma is a clean follow-up with a future time word. Transfer example mopirma sa akong porma is distinct."
+        },
+        {
+          "n": 9,
+          "observation": "Shared street licenses inclusive atong in a neighbour scene; giayo pa stays in the them-line; youTwo recycles nisulti ba + kung kanus-a with the hyphenated word kept visible and mobalik blanked against impossible verbs. Defect: speakRequired kahibalo/ngano/tubig has no connector or aspect-bearing word (kahibalo is a stative root, ngano an interrogative), unlike every other trio in the path."
+        },
+        {
+          "n": 10,
+          "observation": "Mangutana unta ko kung unsaon pagpalugway… has correct unta ko clitic order, unsaon + pag- gerund and irrealis DE/EN; the officer's office-only rule motivates the paperwork request. Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako is actor-focus, within stage, and the unsa foils are all ungrammatical before 'nga mga papeles'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "speakRequired ['kahibalo','ngano','tubig'] contains no connector or aspect-bearing word as the segmentation rule requires (kahibalo is a bare stative root, ngano an interrogative, tubig a noun); the same rule was enforced on lesson 7. 'kung' from the same reply is a whole-word connector; the trio stays distinct, non-clitic and in canonical order (kahibalo, kung, ngano) and keeps the trophy.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "kahibalo",
+                "ngano",
+                "tubig"
+              ],
+              "new": [
+                "kahibalo",
+                "kung",
+                "ngano"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "trophyWord.example 'Nisulti siya nga puno ang bus.' models nisulti + nga reported content, which is staged productive only in block 4-6, while lesson 3 teaches nisulti ba/nisulti + kung embedded question (kung asa/kanus-a). A kung-asa example keeps the trophy anchored and matches the block.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/trophyWord/example",
+              "old": "Nisulti siya nga puno ang bus.",
+              "new": "Nisulti siya kung asa mohunong ang bus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "f99da7eca173ca1c6e756b0faddca1c66fb1b66c897b23c521f30a84255f33c2",
+      "sourceSha256": "9777cf3dbb9d2c587f0c20342e5e032514035ca34e4977dcd177aa50cdd46c29",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Clerk has no schedule; learner asks who holds it. Cloze replays line 4 exactly (kung/kinsa single-fit against aron/busa/human and ngano/unsaon/tagpila); chunks reassemble line 2 byte-for-byte; speakRequired pangutana/kung/iskedyul all spoken."
+        },
+        {
+          "n": 2,
+          "observation": "Guard's half-day answer motivates the alas pila follow-up. Cloze replays Pwede ko mangutana kung alas pila moabli ang bangko exactly; pila is the only fit after alas; recall bangko and chunks match line 2. Pwede spelling is intelligible and consistent within the lesson; no graded error."
+        },
+        {
+          "n": 3,
+          "observation": "Conductor did not hear the return time; learner switches to which other bus passes the port. Cloze hain is the only fit for buses (kinsa is person-only); chunks rebuild Nisulti ba ang drayber kung kanus-a siya mobalik niining hunonganan exactly; trophy example keeps nisulti with kung asa."
+        },
+        {
+          "n": 4,
+          "observation": "Pasabot ba…nga tests comprehension of the sign; attendant reveals towing. Line 4 Nisulti ka nga bawal dinhi; asa ang labing duol nga paradahan replays exactly with nga/asa single-fit; chunks and recall karatula cohere with line 2."
+        },
+        {
+          "n": 5,
+          "observation": "Dili klaro kung hain nga bintana narrows the uncertainty; staff points to the second window. Cloze unsa nga mga dokumento is the only fit against kinsa/ngano/unsaon; recall bintana with kutsara/pultahan/kwarto; chunks match line 2 exactly."
+        },
+        {
+          "n": 6,
+          "observation": "Reported crossing versus weather-dependent certainty. Cloze replays Sigurado ba nga makabawi ko sa bayad kung walay biyahe with nga single-fit and makabawi the only verb collocating with sa bayad; chunks rebuild line 2 including the semicolon; speakRequired nisulti/sigurado/molarga spoken."
+        },
+        {
+          "n": 7,
+          "observation": "Caretaker: Wala pa siya motubag (correct negated form); learner asks pila ka adlaw ang palugit. Cloze replays exactly, pila sole fit before ka adlaw; chunks rebuild Naa na bay tubag ang tag-iya bahin sa pagpaayo sa among atop; bahin in speakRequired is spoken in lines 1 and 2."
+        },
+        {
+          "n": 8,
+          "observation": "Wala ko kahibalo kung kinsa is answered by naming the passenger office upstairs, consistent with the pattern rule; cloze Kahibalo ka kung alas pila sila moabli ugma replays exactly; recall kard and chunks cohere."
+        },
+        {
+          "n": 9,
+          "observation": "Neighbour explains the broken main pipe; learner shifts from ngano to kanus-a as the rule states. Cloze replays Nisulti ba sila kung kanus-a mobalik ang tubig sa gripo exactly with mobalik the only fit; chunks rebuild line 2; speakRequired kahibalo/kung/ngano spoken in order."
+        },
+        {
+          "n": 10,
+          "observation": "Officer says renewal is office-only; learner asks for the paper list. Cloze Palihug ko og sulti kung unsa nga mga papeles ang kinahanglan nako replays exactly, unsa sole fit before nga mga papeles; chunks rebuild Mangutana unta ko kung unsaon pagpalugway sa akong visa pinaagi sa internet; recall visa fine."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "historicalFocusedEdits": [],
+  "exactPointerCorrections": {}
+}

@@ -1,5 +1,13 @@
 # November independent text dispositions
 
+## Cebuano B1, 7 November
+
+P3–P10 add eighty four-turn episodes to the twenty already in P1–P2. The new paths follow the Cebuano outlines through polite requests, descriptions, indirect inquiries, processes and results, plans and conditions, past habits, complaints and a year in review. The vocabulary allocation was checked against all 200 Cebuano A1/A2 lessons and both written B2 paths. The dialogues, model examples and meanings are available in German and English alongside the original Cebuano.
+
+The native B1 validator checks the original vocabulary allocations, whole-word answers, Cebuano clitics, opening captions and reconstruction of both learner replies. The speech check uses written transcripts to verify that each set of three target words occurs in the order the learner says them. Editorial and independent review separately cover what those checks cannot decide, including aspect, register, the point of a follow-up question and whether another offered answer is also reasonable.
+
+Separate Codex readers signed the final eight files. Earlier editorial rounds are preserved as historical evidence. In the final text, a traveller asks someone beside a queue for a favour, the payment instructions distinguish registration from paying the cashier, and the cooking lesson uses *sambag* for tamarind. P7, P8 and P10 now each have three scored blanks in every episode. The complaint path presents the purpose connector *aron* as a visible choice where a learner could reasonably type *para*. The records retain small wording observations and decisions to use multiple choice for expressions with valid written alternatives.
+
 ## Italian B1, 7 November
 
 P4–P10 add seventy four-turn episodes with German and English meanings. P4 practises identifying the right object with *che*, *dove* and preposition + *cui*. P5 moves from asking which document to bring to asking how much it costs and what to bring. P6 contrasts an ordinary service procedure with a completed action. P7 uses purpose and real conditions to plan an event. P8 compares past habits with life today. P9 follows customer complaints through to an agreed remedy. P10 draws on the earlier paths to tell the story of a year.

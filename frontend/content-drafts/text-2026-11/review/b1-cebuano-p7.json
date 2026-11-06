@@ -1,0 +1,1711 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 7,
+  "lessonSha256": "c4c1411b929868f09957377eec11be6e77ac6375f96bfb35e575fec556e9f773",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "c4c1411b929868f09957377eec11be6e77ac6375f96bfb35e575fec556e9f773",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The opening establishes a morning habit. Aron supplies the purpose, and the return invitation uses kung to set the condition for an evening run. Both translations preserve the distinction. The single-string form cues in this path use English labels after the Cebuano root, as in the specification’s example."
+      },
+      {
+        "n": 2,
+        "observation": "The coworker combines the weekend market and beach plans. Plano nga states intent, and only kung introduces the proposed condition in the visible options."
+      },
+      {
+        "n": 3,
+        "observation": "The coach proposes a shorter distance and the reply agrees to time three kilometres. Inig Disyembre frames December as the goal date; “by December” is a contextual rendering."
+      },
+      {
+        "n": 4,
+        "observation": "The stated rent condition leads to an added cleaning fee and a counterproposal. The exercise reconstructs staying next month if the tenant cleans."
+      },
+      {
+        "n": 5,
+        "observation": "The clerk asks for the bicycle earlier. The speaker offers five today if the rain stops. The German captures the nuance of ugma pa more explicitly than the English."
+      },
+      {
+        "n": 6,
+        "observation": "The twice-weekly condition meets the tutor’s once-weekly limit; studying at home on Thursday is a workable response. The choices distinguish home study from class."
+      },
+      {
+        "n": 7,
+        "observation": "Para sa biyahe identifies what the savings are for. A cheaper dinner becomes acceptable if the two share the bill; the Cebuano and both translations align."
+      },
+      {
+        "n": 8,
+        "observation": "The travel agent’s lower May fare motivates the switch from June. The learner’s final sentence uses a visible purpose choice and the date remains unambiguous."
+      },
+      {
+        "n": 9,
+        "observation": "The wedding explains the leave request. In a polite question the learner names Thursday and Friday, as the boss requested two days. The weekday and attendance choices fit."
+      },
+      {
+        "n": 10,
+        "observation": "The cousins combine the island and mountain trips by spending the night in the mountains on returning. Inig balik connects the two parts in the reconstructed sentence."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "c4c1411b929868f09957377eec11be6e77ac6375f96bfb35e575fec556e9f773",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The evening-run compromise now tests Modagan, ugma and kung; every offered time and connector foil fails in this context."
+      },
+      {
+        "n": 2,
+        "observation": "The market-and-beach compromise tests a future verb, a real alternative destination and a condition. The term list now includes mouban, the verb the learner actually uses."
+      },
+      {
+        "n": 3,
+        "observation": "The coach gets a measurable December goal and three-kilometre trial. The exercise separates future Modagan, a weekday and purpose aron; inig is a valid temporal speech anchor."
+      },
+      {
+        "n": 4,
+        "observation": "The tenant's condition now explicitly specifies doing the cleaning with no extra fee, leaving the landlady able to agree or decline."
+      },
+      {
+        "n": 5,
+        "observation": "The rental clerk asks for today's return. Karong alas singko makes the compromise explicit and kung is now an apt speech anchor."
+      },
+      {
+        "n": 6,
+        "observation": "The tutor's one class leads to home study on Thursday. The future, condition and weekday are all assessed with a single offered answer."
+      },
+      {
+        "n": 7,
+        "observation": "The friend's inexpensive meal leads to a cost split; mouban / kung / bayad independently reconstruct the proposal."
+      },
+      {
+        "n": 8,
+        "observation": "The agent's cheaper May fare prompts a matching month, future departure and purpose of saving. The learner commits only to the travel plan."
+      },
+      {
+        "n": 9,
+        "observation": "The manager receives an appropriately polite Sige, apan counteroffer and the cloze includes cued makatambong. Nga, which links the cousin to the identifying phrase si Rosa, now supplies the required connective speech word on the unchanged first reply."
+      },
+      {
+        "n": 10,
+        "observation": "The cousin combines island and mountain plans. The form, mountain alternative and inig timing link have distinct offered answers. Both locales agree when the overnight stay occurs."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "d9c868b09b4f8e0dfe8ad09728e0586ad2c3d0b1d337d304c718970e98fe440e",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The runner gives a purpose and makes the friend's evening run conditional on a lit park. Both first-person and inclusive forms fit their turns."
+      },
+      {
+        "n": 2,
+        "observation": "The coworker suggests the nearby market; breakfast then a walk to the sea combines both plans. Weekend weather and the date agree across translations."
+      },
+      {
+        "n": 3,
+        "observation": "The coach, five-kilometre goal and shorter trial are convincing. Inig Disyembre is rendered both as 'in December' and 'by December' across the same episode."
+      },
+      {
+        "n": 4,
+        "observation": "The landlady adds a weekly cleaning charge and the learner proposes self-cleaning rather than claiming a fee waiver. The transfer example applies the condition to work."
+      },
+      {
+        "n": 5,
+        "observation": "The clerk asks about returning the bike. Bare balik is a noun with a time, and five o'clock is an appropriate conditional compromise. No learner request needs palihug here."
+      },
+      {
+        "n": 6,
+        "observation": "The tutor offers one teaching day and home study is a plausible response. The recurring classes and inclusive ta are anchored by the other participant."
+      },
+      {
+        "n": 7,
+        "observation": "The friend offers to share a dish and the learner conditionally accepts splitting the cost. Tigom as savings works in both the dialogue and transfer."
+      },
+      {
+        "n": 8,
+        "observation": "The agent offers May after the traveller specifies June. The Bohol ferry, changing fare, and final week of May are grounded without the learner asserting a ticketing decision."
+      },
+      {
+        "n": 9,
+        "observation": "The supervisor asks for two days and the learner politely proposes Thursday and Friday with palihug. The speech target and late-stage compromise construction need attention."
+      },
+      {
+        "n": 10,
+        "observation": "The cousin proposes the mountains; the learner folds them into the return from the island. Un­ta stays on the partner's side, but 'magpalabay tag gabii' is a circuitous model for staying overnight."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "cloze (path-wide)",
+        "issue": "P7 specifies a single-fit purpose/condition/reason connector, whole future form, and a choice on time/alternative. All ten final replies test only two slots. The connectors are coded choice; L2 tests dayon instead of the path connector, L8/L10 have no connector, and L9 has neither a future-form blank nor a connector.",
+        "recommendation": "Bring the set into the P7 design with genuine connector/form/time-or-alternative choices, adjusting replies where needed. Keep each response a natural compromise; check all alternatives in the resulting sentence."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "pattern.examples[1]",
+        "issue": "The early-stage transfer example includes para sa among panihapon, but para + noun purpose is reserved for recognition in them-lines in L1–3.",
+        "recommendation": "Use a simple time or meal detail without a purpose noun phrase in this early transfer example."
+      },
+      {
+        "n": 3,
+        "severity": "HIGH",
+        "field": "dialogue[0..1], chunks[3].baseText, speakRequired",
+        "issue": "The spec's 'by December' deadline is rendered in the main answer as merely running 'in December', while the identical target fragment gets 'by December' in the chip. The speech targets are tumong, pagdagan (a verbal noun), kilometro; none is a connector or aspect-bearing verb.",
+        "recommendation": "Give the December phrase one clearly supported deadline meaning across both bases and the chip. Anchor speech to a connector such as inig or to an inflected verb in a revised answer."
+      },
+      {
+        "n": 5,
+        "severity": "HIGH",
+        "field": "speakRequired",
+        "issue": "Ugma (tomorrow), balik (here a noun), and bisikleta (bicycle) do not cover the required connector/aspect-bearing word.",
+        "recommendation": "Use kung from the same line instead of ugma or bisikleta."
+      },
+      {
+        "n": 7,
+        "severity": "HIGH",
+        "field": "dialogue[3] (L7–10 staging)",
+        "issue": "All four compromise beats are present, but the late-stage productive Sige, apan + alternative never appears in any learner answer; all four accept without explicitly practising the required contrast.",
+        "recommendation": "Give at least one late-stage compromise a natural Sige, apan ... qualification, e.g. on sharing the dinner bill or proposing leave dates."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "speakRequired",
+        "issue": "Hinungdan, hangyo and kasal are all nouns in this sentence. The three anchors do not include the specified connector or aspect-bearing word.",
+        "recommendation": "Include a meaningful connector or aspect-bearing verb in the first learner reply and select it as an anchor."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "dialogue[2..3] / cloze / bases",
+        "issue": "May gabii pa ta is a strained way to count a spare night, and magpalabay tag gabii focuses on letting a night pass. The English final reply says 'on our way back' whereas inig balik and the German refer to return.",
+        "recommendation": "Use a natural count such as Naa pa tay usa ka gabii and an overnight verb such as magpalabay only if explicitly teaching 'let the night pass'; otherwise use matulog/magpalabay with a clear intended sense, or magpalabay → magpabilin/mag-overnight phrasing with a count. Align the timing in German and English."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "e57d5d7b754f99f9ead6bbada39ebf05b29c9aac6b1daf0c53e63dc0dbb704e1",
+      "sourceSha256": "d9c868b09b4f8e0dfe8ad09728e0586ad2c3d0b1d337d304c718970e98fe440e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene matches beat (early run → evening counter-offer → tomorrow-evening compromise). youOne 15 words with trophy aron, tokens mobangon/aron/makadagan, chunks join exactly; aron + makadagan clause is the first model, pattern transfer (aron makaabot ko sa pantalan) is distinct. Cloze foils (Nidagan/Gidagan/Pagdagan; hangtod sa/tungod sa/gikan) are impossible in slot; cue does not contain the answer. kung in youTwo is A2 P3 recycle, acceptable before block 4–6. DE/EN idiomatic and aspect-matched."
+        },
+        {
+          "n": 2,
+          "observation": "Coworker beat honored; youOne 12 words with plano nga + moadto + kung condition, youTwo combines market breakfast then walk to sea. Cloze Mopalit/dayon sound. One orthography slip in the them-line: 'Dool' where this path and A2 use 'duol' (lesson 7 foil 'duol sa'); fix for spelling consistency."
+        },
+        {
+          "n": 3,
+          "observation": "Coach beat honored; tumong anchored as noun in youOne and example. Three issues: them-line 'Kumusta kung tulo lang una?' is an English 'how about' calque, native is 'Unsa kaha kung'; full-line DE/EN say 'im Dezember / in December' while chunks say 'bis Dezember / by December' (beat says 'by December'); pattern example 2 uses unanchored English loan 'buoy' instead of Cebuano 'boya'. Cloze Modagan/aron foils fine."
+        },
+        {
+          "n": 4,
+          "observation": "Landlady scene stays informal per outline (not a listed service exception). umaabot nga bulan + kung dili mosaka correct (dili before future mosaka); youTwo negotiates without asserting staff decision ('mahimo bang walay dugang bayad?'). Choice blank Kung vs Gikan sa/Sulod sa/Tungod sa impossible in slot; form cue justifies molimpyo over nilimpyo. Clean."
+        },
+        {
+          "n": 5,
+          "observation": "Service scene (clerk) kept neutral; balik anchored as bare noun predicate 'ang akong balik' in youOne and example, mobalik productive in youTwo. 14/9 words, tokens hyphen-free, chunks join. Cloze Mobalik/kung foils ungrammatical in slot. 'Am Montag kommt die Person …' is stilted but gender-safe; not changing."
+        },
+        {
+          "n": 6,
+          "observation": "Tutor beat honored; 'Padayon ang akong pagtuon' bare stative predicate anchors trophy, kaduha sa usa ka semana frequency, youTwo 'wala tay klase' uses correct fused tay and wala + existential. Cloze Magtuon (Nagtuon foil = progressive, impossible after kung future) and kung foils fine. Recall fallbacks fine."
+        },
+        {
+          "n": 7,
+          "observation": "Friend scene; tigom para sa productive per block 7–10, 'mokaon lang ko' clitic order attested, youTwo 'Sige, mouban ko kung magbahin ta' is the staged sige compromise. Form-blank foil 'pag-uban' is the only hyphenated cloze choice in the path (all other lessons use hyphen-free foils); replace with 'nakauban' to keep hyphens out of exercise surfaces."
+        },
+        {
+          "n": 8,
+          "observation": "Service (agent) scene; biyahe + month + paingon sa, 'kung moubos ang plete' correct. youTwo accepts with 'Sige'. Choice blank 'kataposang semana sa ___': foil 'Bohol' is grammatical and contextually plausible ('my last week in Bohol'), violating the impossible-foil rule; replace with 'plete'. Recall and pattern fine."
+        },
+        {
+          "n": 9,
+          "observation": "Service (boss) scene; hinungdan sa + mao ang kasal, palihug on the request line, 'Mahimo bang … lang' avoids asserting approval. 16-word youOne at limit, ig-agaw hyphen only in dialogue. Full-line DE/EN recast the sentence as 'weil/because', hiding the taught 'Grund/reason' frame while the chunks gloss 'Der Grund für meinen Antrag'; align translations to the literal structure. Two-choice cloze lacks a form blank but is within 2–3 blanks."
+        },
+        {
+          "n": 10,
+          "observation": "Cousin friend scene recycles kung (P3/L4–6), inig balik (L5), sige compromise (L7–8) and inclusive ta/atong; unta appears only in the them-line. youTwo 11 words. Choice blank 'sa ___ inig balik gikan sa isla': foils 'Biyernes' and 'Hunyo' are grammatical and plausible time phrases, not impossible; replace with clearly impossible nouns. Form blank magpalabay fine."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Them-line spells 'Dool' while the path (lesson 7 foil 'duol sa') and standard Visayan orthography use 'duol'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/2/targetText",
+              "old": "Mouban ka nako sa merkado sa buntag? Dool ra ang baybayon.",
+              "new": "Mouban ka nako sa merkado sa buntag? Duol ra ang baybayon."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "(a) 'Kumusta kung' is an English calque; native counter-offer is 'Unsa kaha kung'. (b) Full-line translations say 'im Dezember / in December' but chunks and beat say 'bis Dezember / by December'. (c) 'buoy' is an unanchored English spelling; the Cebuano loanword is 'boya'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "Kumusta kung tulo lang una? Susiha nato ang imong oras.",
+              "new": "Unsa kaha kung tulo lang una? Susiha nato ang imong oras."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/1/baseText",
+              "old": {
+                "de": "Mein Ziel ist es, im Dezember fünf Kilometer zu laufen.",
+                "en": "My goal is to run five kilometres in December."
+              },
+              "new": {
+                "de": "Mein Ziel ist es, bis Dezember fünf Kilometer zu laufen.",
+                "en": "My goal is to run five kilometres by December."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/0/baseText",
+              "old": {
+                "de": "Mein Ziel ist es, im Dezember fünf Kilometer zu laufen.",
+                "en": "My goal is to run five kilometres in December."
+              },
+              "new": {
+                "de": "Mein Ziel ist es, bis Dezember fünf Kilometer zu laufen.",
+                "en": "My goal is to run five kilometres by December."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/1/targetText",
+              "old": "Ang among tumong mao ang paglangoy hangtod sa buoy.",
+              "new": "Ang among tumong mao ang paglangoy hangtod sa boya."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Form-blank foil 'pag-uban' carries a hyphen; every other cloze surface in the path is hyphen-free and the spec keeps glottal-hyphen forms out of exercise slots. 'nakauban' (completed abilitative) is impossible after the future 'kung magbahin ta' frame.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/1/choices",
+              "old": [
+                "pag-uban",
+                "mouban",
+                "niuban",
+                "giubanan"
+              ],
+              "new": [
+                "nakauban",
+                "mouban",
+                "niuban",
+                "giubanan"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Choice foil 'Bohol' yields a grammatical, contextually plausible line ('kataposang semana sa Bohol'); foils must be impossible in the slot.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/3/choices",
+              "old": [
+                "Bohol",
+                "adlaw",
+                "oras",
+                "Mayo"
+              ],
+              "new": [
+                "plete",
+                "adlaw",
+                "oras",
+                "Mayo"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Full-line DE/EN recast 'Ang hinungdan sa akong hangyo mao ang kasal …' as a 'weil/because' sentence, so the taught hinungdan = Grund/reason frame is invisible and the translation diverges from the chunk glosses ('Der Grund für meinen Antrag …').",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/1/baseText",
+              "old": {
+                "de": "Ich bitte um Urlaub, weil meine Cousine Rosa nächste Woche heiratet.",
+                "en": "I’m asking for leave because my cousin Rosa is getting married next week."
+              },
+              "new": {
+                "de": "Der Grund für meinen Antrag ist die Hochzeit meiner Cousine Rosa nächste Woche.",
+                "en": "The reason for my request is my cousin Rosa’s wedding next week."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/0/baseText",
+              "old": {
+                "de": "Ich bitte um Urlaub, weil meine Cousine Rosa nächste Woche heiratet.",
+                "en": "I’m asking for leave because my cousin Rosa is getting married next week."
+              },
+              "new": {
+                "de": "Der Grund für meinen Antrag ist die Hochzeit meiner Cousine Rosa nächste Woche.",
+                "en": "The reason for my request is my cousin Rosa’s wedding next week."
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Choice foils 'Biyernes' and 'Hunyo' produce grammatical, plausible lines ('magpalabay tag gabii sa Biyernes inig balik …'); a learner choosing them would be unjustly rejected. Replace with nouns impossible in the slot.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3/choices",
+              "old": [
+                "panahon",
+                "bukid",
+                "Biyernes",
+                "Hunyo"
+              ],
+              "new": [
+                "panahon",
+                "bukid",
+                "gunting",
+                "resibo"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "876177f59e1c41f3b96404fd3b2bf20df7e11b2c580c805738afac670d94616d",
+      "sourceSha256": "190877b9c4ecbaeda54e26d0f45a3e412cdbf8423980b67844125045dac2a328",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Friend scene holds: purpose with aron in the first reply, inclusive ta in the evening compromise, clitics in attested order (Gabii lang ta, Mobangon ko og sayo). Speech trio mobangon/aron/makadagan has noun-verb plus connector. Cloze foils (Nidagan/Gidagan/Pagdagan; hangtod sa/tungod sa/gikan) are all impossible in slot. The kung blank is correctly coded 'choice', not typed 'connector': basta and kon would fit a typed slot and be unjustly rejected, so the counterpart's path-wide HIGH on kind coding is not adopted."
+        },
+        {
+          "n": 2,
+          "observation": "Coworker beat, Duol spelling and the breakfast-then-beach combination read natively; dayon is rightly a choice blank (unya would fit a typed slot). One staging slip: the transfer example 'magluto og isda para sa among panihapon' models para + noun purpose productively, which lessons 1-3 reserve for recognition in them-lines."
+        },
+        {
+          "n": 3,
+          "observation": "Earlier fixes are present (Unsa kaha kung, boya, bis Dezember/by December consistent across line, chunk and example). Speech trio tumong/pagdagan/kilometro has no connector or aspect-bearing word; inig from the same line supplies it in canonical order."
+        },
+        {
+          "n": 4,
+          "observation": "Landlady exchange is a genuine negotiation: fee added, learner requests a waiver via mahimo bang rather than asserting it. Kung/molimpyo blanks are single-fit among their foils and the cue keeps nilimpyo out; umaabot nga bulan/semana transfer is distinct."
+        },
+        {
+          "n": 5,
+          "observation": "Service clerk scene keeps neutral full sentences and Sie in German; bare balik is anchored as a noun (ang akong balik) in line, example and trophy. Speech trio ugma/balik/bisikleta lacks the required connector/aspect word; kung from the line fixes it without touching the trophy."
+        },
+        {
+          "n": 6,
+          "observation": "Tutor dialogue is coherent (kausa vs kaduha, home study on Thursday); Padayon as bare predicate is natively anchored; wala tay klase is correct existential negation; Magtuon foils and the ubos/gikan/tungod connector foils are impossible."
+        },
+        {
+          "n": 7,
+          "observation": "Friend register with lang and inclusive ta is right; tigom para sa staged productively in 7-10; nakauban/niuban/giubanan and the connector foils are impossible, and the bill-splitting compromise matches the beat."
+        },
+        {
+          "n": 8,
+          "observation": "Agent scene: Sige acceptance of the last week of May, no staff decision asserted; plete foil replaces the plausible Bohol; form and month blanks are clean. Connector absence is justified by the acceptance beat."
+        },
+        {
+          "n": 9,
+          "observation": "Boss scene has palihug and Sie; hinungdan frame now translated as Grund/reason. Two gaps: the 7-10 staging item 'compromise with sige, apan + alternative' is never produced in any learner line, and this beat (you propose dates after she asks shorter) is its natural home; the speech trio hinungdan/hangyo/kasal is three nouns with no connector or aspect word."
+        },
+        {
+          "n": 10,
+          "observation": "Cousin scene recycles kung, inig balik and mo- future with the island/mountain combination; unta stays in the them-line; magpalabay og gabii is idiomatic for staying a night; May gabii pa ta is acceptable existential Cebuano. The English final reply ('on our way back') shifts the timing against inig balik and the German 'nach der Rückkehr'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Counterpart HIGH on cloze kind coding adjudicated: connector slots here (kung/aron/dayon) admit native alternatives when typed (basta, kon, kay in L6, para in L3, unya in L2), so 'choice' with impossible foils is the correct protection against unjust rejection; no edit.",
+          "edits": []
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Transfer example models para + noun purpose (para sa among panihapon) in the 1-3 block where it is recognition-only.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/examples/1/targetText",
+              "old": "Naa koy plano nga magluto og isda para sa among panihapon.",
+              "new": "Naa koy plano nga magluto og isda karong gabii."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/examples/1/baseText",
+              "old": {
+                "de": "Ich habe vor, für unser Abendessen Fisch zu kochen.",
+                "en": "I’m planning to cook fish for our dinner."
+              },
+              "new": {
+                "de": "Ich habe vor, heute Abend Fisch zu kochen.",
+                "en": "I’m planning to cook fish tonight."
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "speakRequired has no connector or aspect-bearing word (tumong, pagdagan, kilometro).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/speakRequired",
+              "old": [
+                "tumong",
+                "pagdagan",
+                "kilometro"
+              ],
+              "new": [
+                "tumong",
+                "pagdagan",
+                "inig"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "speakRequired ugma/balik/bisikleta contains no connector or aspect-bearing word; kung is in the same line.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/speakRequired",
+              "old": [
+                "ugma",
+                "balik",
+                "bisikleta"
+              ],
+              "new": [
+                "balik",
+                "bisikleta",
+                "kung"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Staged 'sige, apan + alternative' is never produced in lessons 7-10; this beat (propose dates after boss asks shorter) takes it naturally while keeping palihug and the mahimo bang request. Cloze rebuilt to the new line with apan as a choice blank (pero would fit a typed slot). Speech trio is all nouns; mao is the linking word of the frame.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/targetText",
+              "old": "Mahimo bang Huwebes ug Biyernes lang ang akong bakasyon, palihug?",
+              "new": "Sige, apan mahimo bang Huwebes ug Biyernes lang ang akong bakasyon, palihug?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText",
+              "old": {
+                "de": "Könnte ich dann bitte nur am Donnerstag und am Freitag freinehmen?",
+                "en": "Could I take just Thursday and Friday off, please?"
+              },
+              "new": {
+                "de": "Gut, aber könnte ich dann bitte nur am Donnerstag und am Freitag freinehmen?",
+                "en": "All right, but could I take just Thursday and Friday off, please?"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                "Mahimo bang ",
+                {
+                  "kind": "choice",
+                  "answer": "Huwebes",
+                  "choices": [
+                    "Hulyo",
+                    "Hunyo",
+                    "Marso",
+                    "Huwebes"
+                  ]
+                },
+                " ug Biyernes lang ang akong ",
+                {
+                  "kind": "choice",
+                  "answer": "bakasyon",
+                  "choices": [
+                    "gunting",
+                    "higdaanan",
+                    "bakasyon",
+                    "kusina"
+                  ]
+                },
+                ", palihug?"
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "apan",
+                    "aron",
+                    "gikan sa",
+                    "tungod sa"
+                  ]
+                },
+                " mahimo bang ",
+                {
+                  "kind": "choice",
+                  "answer": "Huwebes",
+                  "choices": [
+                    "Hulyo",
+                    "Hunyo",
+                    "Marso",
+                    "Huwebes"
+                  ]
+                },
+                " ug Biyernes lang ang akong ",
+                {
+                  "kind": "choice",
+                  "answer": "bakasyon",
+                  "choices": [
+                    "gunting",
+                    "higdaanan",
+                    "bakasyon",
+                    "kusina"
+                  ]
+                },
+                ", palihug?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "hinungdan",
+                "hangyo",
+                "kasal"
+              ],
+              "new": [
+                "hinungdan",
+                "hangyo",
+                "mao"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "English 'on our way back' places the mountain night during the return journey; inig balik gikan sa isla and the German 'nach der Rückkehr' mean upon/after returning.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3/baseText/en",
+              "old": "All right, let’s spend a night in the mountains on our way back from the island.",
+              "new": "All right, let’s spend a night in the mountains when we come back from the island."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "f6eb98bddcbec9bee3bb87648a7167d4916c31c9b89d7fddd7fae4a70d29dcb2",
+      "sourceSha256": "db6ce2714dc1bb374a2fd664461e749e3129ae1ba67a6f87babbf29b8a516df3",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "youOne (15 words) is a clean aron purpose line with sa dili pa; tokens mobangon/aron/makadagan valid; chunks join exactly; transfer model (makaabot sa pantalan) is distinct. Role check on youTwo: current cloze has form + connector only, and the form slot 'Modagan ta' is open (magdagan ta is equally native). Redesigned to a ko-subject reply so the typed form is single-fit, with ugma as the time choice and kung as the connector choice (kon/basta make typing unfair)."
+        },
+        {
+          "n": 2,
+          "observation": "youOne plano nga + kung is correct; the L1-3 block transfer (magluto og isda karong gabii) no longer carries para + noun. Role check: current youTwo tests mopalit (open: magpalit ta) and dayon, which is not a path connector. Redesigned reply keeps the combine beat (market first, then straight to the sea) with form mouban (single-fit with ko nimo), connector kung (choice), alternative-word choice merkado."
+        },
+        {
+          "n": 3,
+          "observation": "Tumong frame, lima ka kilometro and inig Disyembre are consistent across line, chunks and bases (bis/by December); speech trio tumong/pagdagan/inig now holds a connector. Role check: youTwo already has single-fit form Modagan (ko subject) and aron choice; only the time choice Sabado was missing and is added without touching the line."
+        },
+        {
+          "n": 4,
+          "observation": "Umaabot nga bulan + kung dili mosaka is well formed and the transfer (umaabot nga semana) is distinct. Role check: current youTwo form slot 'ako mismo ang molimpyo' is open (maglimpyo is at least as native in the ang-actor construction) and there is no time/alternative choice. Redesigned reply uses magpabilin (mag- only) as the form, kung as connector choice and bulan as time choice; the learner still conditions staying on cleaning the room herself, no fee waiver asserted."
+        },
+        {
+          "n": 5,
+          "observation": "Service scene: bare balik anchors natively as noun (ang akong balik), iuli in the them-line is recognition-only object focus, no request line so no palihug needed; speech trio now includes kung. Role check: form Mobalik is single-fit and kung is a choice; adding karong (today, the clerk's alternative) before alas singko supplies the time choice and makes the compromise explicit."
+        },
+        {
+          "n": 6,
+          "observation": "Padayon ang akong pagtuon with inclusive ta is anchored by the tutor; kaduha sa usa ka semana and the once-a-week counter are consistent in DE/EN. Role check: form Magtuon (mag- only) and connector kung are already present; Huwebes added as the time choice without changing the line."
+        },
+        {
+          "n": 7,
+          "observation": "Tigom para sa and mao nga are within the 7-10 productive set; friend register with lang/ta is right; nakauban foil now hyphen-free. Role check: Sige + form mouban + kung connector present; bayad added as the third (alternative-word) choice with impossible foils."
+        },
+        {
+          "n": 8,
+          "observation": "Service register, biyahe + month + paingon sa, plete sa barko all idiomatic; Bohol foil already replaced. Role check: current youTwo has no connector and the form mokuha is open (magkuha ko og tiket is native). Redesigned acceptance keeps the agent's May week with single-fit form mobiya (echoing makabiya), purpose connector aron (choice; para would be rejected if typed) and Mayo as the time choice."
+        },
+        {
+          "n": 9,
+          "observation": "Hinungdan sa akong hangyo mao ang kasal is the taught reason frame and DE/EN now mirror it; service tone kept. Role check: current youTwo has three lexical choices and no future-form blank. Redesigned reply keeps Sige, apan + alternative and palihug, and adds aron makatambong ko: form makatambong (abilitative future, single-fit for root tambong), apan as connector choice (pero would be rejected if typed), Huwebes as date choice."
+        },
+        {
+          "n": 10,
+          "observation": "Inclusive atong/ta with the cousin is correct, the EN timing now matches inig balik, and unta stays in the them-line. Magpalabay og gabii is an idiomatic overnight verb; the counterpart's suggested swap to magpabilin would change the lexical root, not a spelling prefix, so it is not adopted. Role check: form magpalabay and choice bukid are present; inig before bare balik is the one connector in the path that is truly single-fit when typed (kung/aron/sa/pag cannot precede a bare root), so it is added as a typed connector blank."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "youTwo cloze has only two roles and the typed form slot 'Modagan ta' is grammatically open (magdagan ta is equally native with inclusive ta); no time/alternative choice. Replace with a single-fit ko-subject reply carrying form + connector + time choice; translations coupled.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3/targetText",
+              "old": "Modagan ta ugma sa gabii kung hayag pa ang parke.",
+              "new": "Modagan ko uban nimo ugma sa gabii kung hayag pa ang parke."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3/baseText",
+              "old": {
+                "de": "Lass uns morgen Abend laufen, wenn es im Park noch hell ist.",
+                "en": "Let’s run tomorrow evening if the park is still light."
+              },
+              "new": {
+                "de": "Ich laufe morgen Abend mit dir, wenn es im Park noch hell ist.",
+                "en": "I’ll run with you tomorrow evening if the park is still light."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Modagan",
+                  "choices": [
+                    "Nidagan",
+                    "Gidagan",
+                    "Pagdagan",
+                    "Modagan"
+                  ],
+                  "cue": "dagan, proposed future action"
+                },
+                " ta ugma sa gabii ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "hangtod sa",
+                    "tungod sa",
+                    "kung",
+                    "gikan"
+                  ]
+                },
+                " hayag pa ang parke."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Modagan",
+                  "choices": [
+                    "Nidagan",
+                    "Gidagan",
+                    "Pagdagan",
+                    "Modagan"
+                  ],
+                  "cue": "dagan, proposed future action"
+                },
+                " ko uban nimo ",
+                {
+                  "kind": "choice",
+                  "answer": "ugma",
+                  "choices": [
+                    "ugma",
+                    "sapatos",
+                    "kaldero",
+                    "tubig"
+                  ]
+                },
+                " sa gabii ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "hangtod sa",
+                    "tungod sa",
+                    "kung",
+                    "gikan"
+                  ]
+                },
+                " hayag pa ang parke."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "youTwo tests mopalit (open: magpalit ta og pamahaw is native) and dayon, which is not a purpose/condition connector; no kung/aron role. Replace with a combine reply (market with her, then straight to the sea) carrying form mouban, connector kung and alternative-word choice merkado.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/targetText",
+              "old": "Mopalit ta og pamahaw una, dayon maglakaw ta padulong sa dagat.",
+              "new": "Mouban ko nimo sa merkado kung moadto ta dayon sa dagat."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText",
+              "old": {
+                "de": "Kaufen wir zuerst Frühstück und gehen dann zu Fuß ans Meer.",
+                "en": "Let’s buy breakfast first, then walk down to the sea."
+              },
+              "new": {
+                "de": "Ich komme mit dir auf den Markt, wenn wir danach gleich ans Meer gehen.",
+                "en": "I’ll come with you to the market if we go straight on to the sea afterwards."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Mopalit",
+                  "choices": [
+                    "Gipalit",
+                    "Pagpalit",
+                    "Mopalit",
+                    "Nipalit"
+                  ],
+                  "cue": "palit, proposed future action"
+                },
+                " ta og pamahaw una, ",
+                {
+                  "kind": "choice",
+                  "answer": "dayon",
+                  "choices": [
+                    "atubangan sa",
+                    "dayon",
+                    "gikan",
+                    "tungod sa"
+                  ]
+                },
+                " maglakaw ta padulong sa dagat."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Mouban",
+                  "choices": [
+                    "Niuban",
+                    "Nakauban",
+                    "Giubanan",
+                    "Mouban"
+                  ],
+                  "cue": "uban, future action"
+                },
+                " ko nimo sa ",
+                {
+                  "kind": "choice",
+                  "answer": "merkado",
+                  "choices": [
+                    "merkado",
+                    "kalaha",
+                    "unlan",
+                    "kutsara"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa"
+                  ]
+                },
+                " moadto ta dayon sa dagat."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "youTwo lacks the third (time) role prescribed by the path cloze schema; line unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Modagan",
+                  "choices": [
+                    "Pagdagan",
+                    "Modagan",
+                    "Nidagan",
+                    "Gidagan"
+                  ],
+                  "cue": "dagan, future action"
+                },
+                " ko og tulo karong Sabado ",
+                {
+                  "kind": "choice",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "tungod sa",
+                    "sulod sa"
+                  ]
+                },
+                " masukod nato ang oras."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Modagan",
+                  "choices": [
+                    "Pagdagan",
+                    "Modagan",
+                    "Nidagan",
+                    "Gidagan"
+                  ],
+                  "cue": "dagan, future action"
+                },
+                " ko og tulo karong ",
+                {
+                  "kind": "choice",
+                  "answer": "Sabado",
+                  "choices": [
+                    "Sabado",
+                    "kutsara",
+                    "lapis",
+                    "sobre"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "tungod sa",
+                    "sulod sa"
+                  ]
+                },
+                " masukod nato ang oras."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "youTwo form slot 'ako mismo ang molimpyo' is open (maglimpyo is native in the ang-actor frame) so a typed learner answer could be rejected unjustly, and no time/alternative choice exists. Replace with a single-fit magpabilin reply; the learner still conditions staying on self-cleaning and asserts no fee decision.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/targetText",
+              "old": "Kung ako mismo ang molimpyo, mahimo bang walay dugang bayad?",
+              "new": "Magpabilin ko sunod bulan kung ako mismo ang molimpyo sa kwarto."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText",
+              "old": {
+                "de": "Wenn ich selbst putze, könnte die zusätzliche Gebühr dann entfallen?",
+                "en": "If I do the cleaning myself, could we drop the extra fee?"
+              },
+              "new": {
+                "de": "Ich bleibe nächsten Monat, wenn ich das Zimmer selbst putze.",
+                "en": "I’ll stay next month if I clean the room myself."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Kung",
+                  "choices": [
+                    "Kung",
+                    "Gikan sa",
+                    "Sulod sa",
+                    "Tungod sa"
+                  ]
+                },
+                " ako mismo ang ",
+                {
+                  "kind": "form",
+                  "answer": "molimpyo",
+                  "choices": [
+                    "nilimpyo",
+                    "gilimpyohan",
+                    "paglimpyo",
+                    "molimpyo"
+                  ],
+                  "cue": "limpyo, proposed future actor action"
+                },
+                ", mahimo bang walay dugang bayad?"
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Magpabilin",
+                  "choices": [
+                    "Nagpabilin",
+                    "Napabilin",
+                    "Pagpabilin",
+                    "Magpabilin"
+                  ],
+                  "cue": "pabilin, future action"
+                },
+                " ko sunod ",
+                {
+                  "kind": "choice",
+                  "answer": "bulan",
+                  "choices": [
+                    "bulan",
+                    "gunting",
+                    "unlan",
+                    "kalaha"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "sulod sa",
+                    "tungod sa"
+                  ]
+                },
+                " ako mismo ang molimpyo sa kwarto."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "youTwo has form + connector but no time/alternative choice; adding karong (today, the clerk's requested day) supplies it and makes the compromise explicit.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/targetText",
+              "old": "Mobalik ko sa alas singko kung mohunong ang ulan.",
+              "new": "Mobalik ko karong alas singko kung mohunong ang ulan."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText",
+              "old": {
+                "de": "Ich komme um fünf zurück, wenn es aufhört zu regnen.",
+                "en": "I’ll come back at five if the rain stops."
+              },
+              "new": {
+                "de": "Ich komme heute um fünf zurück, wenn es aufhört zu regnen.",
+                "en": "I’ll come back today at five if the rain stops."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Mobalik",
+                  "choices": [
+                    "Nibalik",
+                    "Gibalik",
+                    "Pagbalik",
+                    "Mobalik"
+                  ],
+                  "cue": "balik, future actor action"
+                },
+                " ko sa alas singko ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "kung",
+                    "sa wala"
+                  ]
+                },
+                " mohunong ang ulan."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Mobalik",
+                  "choices": [
+                    "Nibalik",
+                    "Gibalik",
+                    "Pagbalik",
+                    "Mobalik"
+                  ],
+                  "cue": "balik, future actor action"
+                },
+                " ko ",
+                {
+                  "kind": "choice",
+                  "answer": "karong",
+                  "choices": [
+                    "karong",
+                    "bisikleta",
+                    "dalan",
+                    "ulan"
+                  ]
+                },
+                " alas singko ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "kung",
+                    "sa wala"
+                  ]
+                },
+                " mohunong ang ulan."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "youTwo lacks the time choice role; line unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Magtuon",
+                  "choices": [
+                    "Gituon",
+                    "Pagtuon",
+                    "Magtuon",
+                    "Nagtuon"
+                  ],
+                  "cue": "tuon, future actor action"
+                },
+                " ko sa balay ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "sa ubos sa",
+                    "kung",
+                    "gikan sa",
+                    "tungod sa"
+                  ]
+                },
+                " wala tay klase sa Huwebes."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Magtuon",
+                  "choices": [
+                    "Gituon",
+                    "Pagtuon",
+                    "Magtuon",
+                    "Nagtuon"
+                  ],
+                  "cue": "tuon, future actor action"
+                },
+                " ko sa balay ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "sa ubos sa",
+                    "kung",
+                    "gikan sa",
+                    "tungod sa"
+                  ]
+                },
+                " wala tay klase sa ",
+                {
+                  "kind": "choice",
+                  "answer": "Huwebes",
+                  "choices": [
+                    "Huwebes",
+                    "kutsara",
+                    "lapis",
+                    "sobre"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "youTwo lacks the third (alternative-word) choice role; line unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze",
+              "old": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "nakauban",
+                    "mouban",
+                    "niuban",
+                    "giubanan"
+                  ],
+                  "cue": "uban, future actor action"
+                },
+                " ko ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "tungod sa",
+                    "duol sa"
+                  ]
+                },
+                " magbahin ta sa bayad."
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "nakauban",
+                    "mouban",
+                    "niuban",
+                    "giubanan"
+                  ],
+                  "cue": "uban, future actor action"
+                },
+                " ko ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "tungod sa",
+                    "duol sa"
+                  ]
+                },
+                " magbahin ta sa ",
+                {
+                  "kind": "choice",
+                  "answer": "bayad",
+                  "choices": [
+                    "bayad",
+                    "unlan",
+                    "lapis",
+                    "ulan"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "youTwo has no connector role and its typed form mokuha is open (magkuha ko og tiket is native). Replace with an acceptance of the May week using single-fit mobiya, purpose aron (choice because typed para would be rejected) and Mayo as time choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/targetText",
+              "old": "Sige, mokuha ko og tiket para sa kataposang semana sa Mayo.",
+              "new": "Sige, mobiya ko sa kataposang semana sa Mayo aron makatipid ko."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText",
+              "old": {
+                "de": "Gut, ich nehme ein Ticket für die letzte Maiwoche.",
+                "en": "All right, I’ll take a ticket for the last week of May."
+              },
+              "new": {
+                "de": "Gut, ich fahre in der letzten Maiwoche los, damit ich sparen kann.",
+                "en": "All right, I’ll leave in the last week of May so I can save money."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "mokuha",
+                  "choices": [
+                    "mokuha",
+                    "nikuha",
+                    "gikuha",
+                    "pagkuha"
+                  ],
+                  "cue": "kuha, future actor action"
+                },
+                " ko og tiket para sa kataposang semana sa ",
+                {
+                  "kind": "choice",
+                  "answer": "Mayo",
+                  "choices": [
+                    "plete",
+                    "adlaw",
+                    "oras",
+                    "Mayo"
+                  ]
+                },
+                "."
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "mobiya",
+                  "choices": [
+                    "mobiya",
+                    "nibiya",
+                    "gibiyaan",
+                    "pagbiya"
+                  ],
+                  "cue": "biya, future action"
+                },
+                " ko sa kataposang semana sa ",
+                {
+                  "kind": "choice",
+                  "answer": "Mayo",
+                  "choices": [
+                    "plete",
+                    "adlaw",
+                    "oras",
+                    "Mayo"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "aron",
+                  "choices": [
+                    "aron",
+                    "gikan",
+                    "tungod sa",
+                    "sulod sa"
+                  ]
+                },
+                " makatipid ko."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "youTwo has three lexical choices and no future-form blank. Rebuilt within 12 words keeping Sige, apan + alternative and palihug, adding aron makatambong ko so a single-fit form (makatambong) is tested alongside apan (choice; pero fits if typed) and the date choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/targetText",
+              "old": "Sige, apan mahimo bang Huwebes ug Biyernes lang ang akong bakasyon, palihug?",
+              "new": "Sige, apan mahimo bang Huwebes ug Biyernes lang aron makatambong ko, palihug?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText",
+              "old": {
+                "de": "Gut, aber könnte ich dann bitte nur am Donnerstag und am Freitag freinehmen?",
+                "en": "All right, but could I take just Thursday and Friday off, please?"
+              },
+              "new": {
+                "de": "Gut, aber ginge es bitte nur Donnerstag und Freitag, damit ich dabei sein kann?",
+                "en": "All right, but could it be just Thursday and Friday, please, so I can attend?"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                "Sige, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "apan",
+                    "aron",
+                    "gikan sa",
+                    "tungod sa"
+                  ]
+                },
+                " mahimo bang ",
+                {
+                  "kind": "choice",
+                  "answer": "Huwebes",
+                  "choices": [
+                    "Hulyo",
+                    "Hunyo",
+                    "Marso",
+                    "Huwebes"
+                  ]
+                },
+                " ug Biyernes lang ang akong ",
+                {
+                  "kind": "choice",
+                  "answer": "bakasyon",
+                  "choices": [
+                    "gunting",
+                    "higdaanan",
+                    "bakasyon",
+                    "kusina"
+                  ]
+                },
+                ", palihug?"
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "apan",
+                    "aron",
+                    "gikan sa",
+                    "tungod sa"
+                  ]
+                },
+                " mahimo bang ",
+                {
+                  "kind": "choice",
+                  "answer": "Huwebes",
+                  "choices": [
+                    "Hulyo",
+                    "Hunyo",
+                    "Marso",
+                    "Huwebes"
+                  ]
+                },
+                " ug Biyernes lang aron ",
+                {
+                  "kind": "form",
+                  "answer": "makatambong",
+                  "choices": [
+                    "makatambong",
+                    "nakatambong",
+                    "gitambongan",
+                    "pagtambong"
+                  ],
+                  "cue": "tambong, future ability"
+                },
+                " ko, palihug?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "youTwo lacks the connector role; inig before the bare root balik is single-fit when typed (kung/aron/sa/pag cannot precede a bare root), so it is added as a typed connector blank; line unchanged. Foils are all ungrammatical before a bare root.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "magpalabay",
+                  "choices": [
+                    "gipalabay",
+                    "pagpalabay",
+                    "magpalabay",
+                    "nagpalabay"
+                  ],
+                  "cue": "palabay, proposed future actor action"
+                },
+                " tag gabii sa ",
+                {
+                  "kind": "choice",
+                  "answer": "bukid",
+                  "choices": [
+                    "panahon",
+                    "bukid",
+                    "gunting",
+                    "resibo"
+                  ]
+                },
+                " inig balik gikan sa isla."
+              ],
+              "new": [
+                "Sige, ",
+                {
+                  "kind": "form",
+                  "answer": "magpalabay",
+                  "choices": [
+                    "gipalabay",
+                    "pagpalabay",
+                    "magpalabay",
+                    "nagpalabay"
+                  ],
+                  "cue": "palabay, proposed future actor action"
+                },
+                " tag gabii sa ",
+                {
+                  "kind": "choice",
+                  "answer": "bukid",
+                  "choices": [
+                    "panahon",
+                    "bukid",
+                    "gunting",
+                    "resibo"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "connector",
+                  "answer": "inig",
+                  "choices": [
+                    "inig",
+                    "aron",
+                    "gikan sa",
+                    "samtang"
+                  ]
+                },
+                " balik gikan sa isla."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 11,
+          "severity": "optional",
+          "issue": "Adjudication of counterpart receipts: findings 2, 3, 5, 7, 9 and the EN timing in 10 are already resolved in these bytes. Connector slots kung/aron/apan remain 'choice' because typed alternatives (kon, basta, para, pero) are native and must not be rejected; the only truly single-fit typed connector in this path is inig before a bare root (lesson 10). The suggested magpalabay to magpabilin swap conflates an idiomatic overnight verb with a different lexical root and is not adopted; 'May gabii pa ta' is acceptable Cebuano and left unchanged.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "historicalFocusedEdits": [
+    {
+      "stage": "focused-anchors",
+      "receiptSha256": "7446a0f0c0a3c9dcb3c269d721b4eca4159de9b75e2112a6e4794faf7d7d89f3",
+      "sourceSha256": "46ecfd371892d9ce2d344dab9a1a13d987e7dd0c02fb8f5f5939e4321fb8013d",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Lesson 2: the term 'pamahaw' (breakfast) is stale; nothing in the approved dialogue refers to breakfast. Replace it with a word the learner actually produces in the lesson ('Mouban', the cloze form answer and the opener of the second learner reply) so the term list grounds the exercises.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/terms/5",
+              "old": {
+                "targetText": "pamahaw",
+                "baseText": {
+                  "de": "Frühstück",
+                  "en": "breakfast"
+                }
+              },
+              "new": {
+                "targetText": "mouban",
+                "baseText": {
+                  "de": "mitkommen",
+                  "en": "come along"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Lesson 4: the learner's compromise offers to clean the room herself but never links that offer to the newly announced cleaning fee, so the beat reads as a non sequitur and the term 'dugang bayad' (extra fee) is not grounded anywhere in the dialogue. A 12-word reply keeps the 6–12 limit, keeps all three cloze roles (form Magpabilin with cue, choice bulan, single-fit connector kung) and the unchanged line-1 recall/speaking set, and now makes the trade explicit: self-cleaning in exchange for no extra fee. Cloze array replaced in full against its exact old value; the only change is the trailing literal string.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/targetText",
+              "old": "Magpabilin ko sunod bulan kung ako mismo ang molimpyo sa kwarto.",
+              "new": "Magpabilin ko sunod bulan kung ako mismo ang molimpyo, walay dugang bayad."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText/de",
+              "old": "Ich bleibe nächsten Monat, wenn ich das Zimmer selbst putze.",
+              "new": "Ich bleibe nächsten Monat, wenn ich selbst putze – ohne Zusatzgebühr."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3/baseText/en",
+              "old": "I’ll stay next month if I clean the room myself.",
+              "new": "I’ll stay next month if I do the cleaning myself, with no extra fee."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Magpabilin",
+                  "choices": [
+                    "Nagpabilin",
+                    "Napabilin",
+                    "Pagpabilin",
+                    "Magpabilin"
+                  ],
+                  "cue": "pabilin, future action"
+                },
+                " ko sunod ",
+                {
+                  "kind": "choice",
+                  "answer": "bulan",
+                  "choices": [
+                    "bulan",
+                    "gunting",
+                    "unlan",
+                    "kalaha"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "sulod sa",
+                    "tungod sa"
+                  ]
+                },
+                " ako mismo ang molimpyo sa kwarto."
+              ],
+              "new": [
+                {
+                  "kind": "form",
+                  "answer": "Magpabilin",
+                  "choices": [
+                    "Nagpabilin",
+                    "Napabilin",
+                    "Pagpabilin",
+                    "Magpabilin"
+                  ],
+                  "cue": "pabilin, future action"
+                },
+                " ko sunod ",
+                {
+                  "kind": "choice",
+                  "answer": "bulan",
+                  "choices": [
+                    "bulan",
+                    "gunting",
+                    "unlan",
+                    "kalaha"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "kung",
+                  "choices": [
+                    "kung",
+                    "gikan sa",
+                    "sulod sa",
+                    "tungod sa"
+                  ]
+                },
+                " ako mismo ang molimpyo, walay dugang bayad."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Lesson 9: the third required speaking word 'mao' is an identificational marker in 'mao ang kasal', not a connector or aspect-marked verb, so the speaking set lacks its linking/aspect slot. The learner line already contains the linker 'nga' ('ig-agaw nga si Rosa'); using it is the minimal anchored correction and keeps the 16-word line, the frozen trophy, the wedding of cousin Rosa, and all coupled chunks, recall and pattern fields untouched. Order hinungdan → hangyo → nga matches the canonical order in the sentence; 'nga' is not on the stoplist.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/speakRequired",
+              "old": [
+                "hinungdan",
+                "hangyo",
+                "mao"
+              ],
+              "new": [
+                "hinungdan",
+                "hangyo",
+                "nga"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exactPointerCorrections": {}
+}

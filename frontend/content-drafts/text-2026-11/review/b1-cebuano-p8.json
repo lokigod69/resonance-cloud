@@ -1,0 +1,2511 @@
+{
+  "language": "Cebuano",
+  "level": "B1",
+  "pathNumber": 8,
+  "lessonSha256": "d241ac77a82d98444b7528c392d9975904702ae4a420c08f29dc6db20c1b9da9",
+  "specificationSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+  "scope": "Offline B1 text with German and English meanings. Final sign-off by separate Codex readers.",
+  "editorial": {
+    "sourceSha256": "d241ac77a82d98444b7528c392d9975904702ae4a420c08f29dc6db20c1b9da9",
+    "reviewer": "Codex editorial reader",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Sauna gives the porridge habit its past frame; the learner still likes porridge but usually hurries to work. The breakfast contrast and frequency are clear in both translations. The root cues use English grammar labels, as in the specification’s example."
+      },
+      {
+        "n": 2,
+        "observation": "The move gives the former and current cooking habits a time frame. The closure question motivates the egg example; the repeated activity makes magluto intelligible."
+      },
+      {
+        "n": 3,
+        "observation": "The distance answer names one kilometre. Karon and sagad carry different functions, and the whole habitual verb is recoverable with the supplied root."
+      },
+      {
+        "n": 4,
+        "observation": "The occasional beach visit contrasts with usually resting at home. The second reply answers who comes along. Both glosses convey being alone most of the time."
+      },
+      {
+        "n": 5,
+        "observation": "Night shift versus day shift explains changed sleep. The hours answer makes the frequency concrete and both translations support the whole habitual verb."
+      },
+      {
+        "n": 6,
+        "observation": "Midnight biscuits give way to hot tea. Batasan and gibiyaan express the former habit and its end. The additional example introduces becoming accustomed to the replacement."
+      },
+      {
+        "n": 7,
+        "observation": "The learner’s present ability to walk outside contrasts with staying indoors in the early months. The question anchors sauna; matag directly modifies hapon. The previous Apan option was removed; Tali sa cannot introduce magpabilin."
+      },
+      {
+        "n": 8,
+        "observation": "The old gym routine is replaced by yoga. The reply gives an early work schedule as the reason. Matag fits directly before buntag among the four visible choices."
+      },
+      {
+        "n": 9,
+        "observation": "The changed town has more vehicles; the former square is now a parking lot. Matag hapon times the recurring games, and apan contrasts the two uses of the square."
+      },
+      {
+        "n": 10,
+        "observation": "The festival retains its food despite changed music. The closing reply contrasts a former dancing habit with wala na mi magsayaw. Both translations preserve that cessation."
+      }
+    ],
+    "findings": []
+  },
+  "independent": {
+    "sourceSha256": "d241ac77a82d98444b7528c392d9975904702ae4a420c08f29dc6db20c1b9da9",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The grandmother receives a direct three-role answer without learner-side gihapon or kada. Both new bases now naturally explain hurrying to work."
+      },
+      {
+        "n": 2,
+        "observation": "The friend hears eggs then vegetables, with a past habit, sagad and the constrained transition to karon. The younger speaker's cooking and the transfer's drink example agree."
+      },
+      {
+        "n": 3,
+        "observation": "The coworker's distance is now practised as a habitual kilometre walk with Karon/sagad/maglakaw; the early learner no longer produces matag."
+      },
+      {
+        "n": 4,
+        "observation": "The neighbour learns a cousin sometimes joins and usually the learner goes alone. Usahay, mouban and the contrast serve three different roles."
+      },
+      {
+        "n": 5,
+        "observation": "The host's old shifts lead to an elliptical formerly-little vs now-eight-hours sleep contrast. Matulog is appropriately cued against completed forms; permi supplies frequency."
+      },
+      {
+        "n": 6,
+        "observation": "The friend's replacement tea habit is distinguished from the old snack by Karon and a clean bank, then permi and cued moinom. The naandan transfer provides the L7 foundation."
+      },
+      {
+        "n": 7,
+        "observation": "The tutor asks about the first months, which selects Sauna rather than Karon. Tali sa cannot introduce magpabilin ko and Ngano would ask an irrelevant question. The habituated response and its two remaining blanks align with the prior present-day contrast."
+      },
+      {
+        "n": 8,
+        "observation": "The cousin gets a clear early-work rationale for switching to yoga. The revised temporal bank, work form and every-morning frequency each have a single contextual answer."
+      },
+      {
+        "n": 9,
+        "observation": "The barber's lost quiet square is now a parking area, an appropriate new detail. Matag, the former play habit and the contrast are each tested."
+      },
+      {
+        "n": 10,
+        "observation": "The elder asks Mao ra ba gihapon ...?, keeping reinforcement on the recognition side. The learner contrasts Lahi na with mao ra, and the three final cloze roles and their alternatives are now aligned."
+      }
+    ],
+    "findings": []
+  },
+  "initialIndependent": {
+    "sourceSha256": "b196adead15d38a7ea4e60b3e6b1bbf7b843b9d52252cd362203c47c1b610256",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The grandmother hears rice porridge contrasted with bread and asks whether the learner still likes it. The learner explains the time pressure; kada is actively recalled too early."
+      },
+      {
+        "n": 2,
+        "observation": "The friend asks about cooking when the eatery closed; a preceding sauna licenses habitual magluto with past German/English. Both patterns contrast buying with cooking."
+      },
+      {
+        "n": 3,
+        "observation": "The coworker's jeepney and walking commute leads to a real question about distance. The final reply tests distance and late-stage matag but no habitual form."
+      },
+      {
+        "n": 4,
+        "observation": "The neighbour asks who comes to the beach, then hears 'my neighbour' without identifying a different neighbour. The choice of optional companion could be clearer."
+      },
+      {
+        "n": 5,
+        "observation": "The host asks about old shifts and current sleep. Night/day works, but the follow-up tests ability and early matag instead of the block's frequency and a habitual action."
+      },
+      {
+        "n": 6,
+        "observation": "The friend learns midnight biscuits were dropped in favour of tea. Wala na ko mag- appears here in advance of its productive block."
+      },
+      {
+        "n": 7,
+        "observation": "The tutor asks about heat and the first months after moving. Naandan, sauna and staying inside contrast clearly; the transfer applies acclimatization to traffic noise."
+      },
+      {
+        "n": 8,
+        "observation": "The cousin hears gym versus yoga and asks why yoga suits the learner. The last reply explains home practice but the cloze tests ability and size rather than habit and frequency."
+      },
+      {
+        "n": 9,
+        "observation": "The barber gets increased traffic and a quiet square as local contrasts. The third turn's expression for 'what do you miss?' requires a target for the thing missed."
+      },
+      {
+        "n": 10,
+        "observation": "The elder asks about fiesta music, food and dancing. The learner produces recognition-only gihapon and the speech task selects no connector/aspect anchor."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "cloze and productive staging (L1–6)",
+        "issue": "L1 teaches, requires and blanks kada + time, which the architect explicitly reserves for recognition in them-lines. The same answer also produces gihapon. Matag is a productive learner answer at L3/L5 and appears in the L1 transfer, ahead of its L7–10 block. L2's cloze tests L4–6 usahay; L6 teaches the L7–10 wala na ko mag- as its first learner line.",
+        "recommendation": "Use the block's productive items in the learner/cloze/transfer slots. Keep kada and recognition-only reinforcement on partner turns. Stage matag and discontinued wala na + base in L7–10."
+      },
+      {
+        "n": 2,
+        "severity": "HIGH",
+        "field": "cloze (path-wide)",
+        "issue": "The P8 design specifies frequency, a whole habitual/completed form with a same-root aspect contrast, and sauna/karon/apan. Nearly every lesson drops the connector or frequency role; L3/L5 have no form, L8 tests ability plus size and L9 an adjective. Several form banks lack the corresponding ni- form. Even L1 tags apan as a choice.",
+        "recommendation": "Build the three roles into each natural final reply with distinct valid choices and a meaningful habitual/completed contrast. Set frequency to choice, temporal/contrast slot to connector, and supply an aspect cue on the form."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "dialogue[3] / scene",
+        "issue": "The person asking is your neighbour, and you identify the companion only as 'my neighbour', leaving it unclear whether you mean your listener or somebody else.",
+        "recommendation": "Give the companion a distinct natural referent such as a cousin, sibling or named neighbour."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "staging, pattern",
+        "issue": "Naandan na nako is scheduled for L4–6 but is first practiced at L7. The L7 trophy is correct; the missing foundation is earlier.",
+        "recommendation": "Introduce it naturally in a preceding transfer or reply, for example about getting used to tea instead of snacks, without moving the L7 trophy."
+      },
+      {
+        "n": 9,
+        "severity": "HIGH",
+        "field": "dialogue[2].targetText",
+        "issue": "Unsa may imong gimingaw gikan sa una? uses the experiencer form gimingaw with imong instead of identifying what is missed, and gikan sa una reads literally as 'from the beginning'.",
+        "recommendation": "Use an idiomatic form such as Unsa may imong gimingawan sa lungsod sauna? Keep dialogue[3] as the experiencer's Gimingaw ko sa ... answer."
+      },
+      {
+        "n": 10,
+        "severity": "HIGH",
+        "field": "dialogue[1] / pattern / terms / speakRequired / recall",
+        "issue": "The learner is explicitly taught and asked to speak pareho gihapon, although gihapon reinforcement is recognition-only in L7–10; lahi/musika/pareho are two predicates and a noun, with no connector/aspect-bearing word. Recall also allows 'Lahi na ang porma sa pista karon' meaning the form of the fiesta changed, plausible after an open question about the fiesta.",
+        "recommendation": "Keep this beat by expressing food continuity without learner-side gihapon, move gihapon to the elder if desired, choose apan or another valid anchor, and replace porma with an unworkable alternative."
+      }
+    ]
+  },
+  "historicalEditorialRounds": [
+    {
+      "stage": "read",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "4b5c78594318dc2bd3da2d12579f1038bc3c0160e66469ff50ef0497805dfe14",
+      "sourceSha256": "b196adead15d38a7ea4e60b3e6b1bbf7b843b9d52252cd362203c47c1b610256",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Sauna + mokaon habitual with apan karon contrast is correct and matches the beat; youOne 14 words, tokens and chunks valid. youTwo uses 'kada buntag' productively and clozes it although 'kada + time unit' is recognition-only for lessons 1-3; replaced with 'inig buntag' (already used in L7 learner line) and the cloze reduced to the two staged blanks (apan connector, magdali form)."
+        },
+        {
+          "n": 2,
+          "observation": "Sauna mopalit / karon magluto contrast is idiomatic; recall, chunks, trophy example fine. youTwo opens with 'Usahay' and clozes it as the frequency choice, but usahay is staged productive only in lessons 4-6 and is L4's trophy; rewritten with the staged 'Sauna ... lang' frame (friend scene) keeping magluto as form blank and adding a lexical choice blank on dali."
+        },
+        {
+          "n": 3,
+          "observation": "youOne exactly 16 words, sagad placement and 'maglakaw na ko' cluster correct. Them-line 2 'Unsa na lang kalayo' reads as 'what fire' (kalayo = fire); the degree reading needs the linker 'ka layo'. 'matag buntag' in youTwo echoes the them-line; noted as slightly ahead of the 7-10 staging but acceptable as echo."
+        },
+        {
+          "n": 4,
+          "observation": "Usahay/kasagaran contrast, 'mopahulay lang ko' clitic order and inclusive/exclusive forms are correct; cloze foils are impossible in slot (Matag/Gikan/Ngano before a verb); recall and transfer example fine. No edits."
+        },
+        {
+          "n": 5,
+          "observation": "'Sauna permi ko magtrabaho sa gabii' models permi before the verb correctly; makatulog na ko og walo ka oras is natural. Trophy example 'permi ko gabii makauli' has an unnatural word order (time word wedged between clitic and verb); corrected to 'permi ko makauli og gabii'."
+        },
+        {
+          "n": 6,
+          "observation": "Batasan nako sauna nga + mokaon is the staged structure; 'wala na ko magmeryenda' is correct negated habit and is demanded by the beat (dropped habit) even though staging lists wala na for 7-10; accepted as beat-driven early appearance. youTwo 'Karon moinom lang ko' and cloze cue resolve the niinom foil. No edits."
+        },
+        {
+          "n": 7,
+          "observation": "Naandan na nako ang kainit with mao nga + makalakaw na ko is idiomatic; youTwo 'Sauna magpabilin ko sa sulod matag hapon' licenses the German Präteritum via sauna; form and choice blanks sound. No edits."
+        },
+        {
+          "n": 8,
+          "observation": "Matag buntag taught in the staged block; 'yoga na ang akong ehersisyo' nominal predicate with na is natural; Makahimo ko niini ... bisan gamay ra is correct; gym as speech token acceptable. No edits."
+        },
+        {
+          "n": 9,
+          "observation": "Daghan na ang nausab / mas daghan na ang sakyanan is natural and inclusive 'atong' fits the barber scene. Them-line 2 'imong gimingaw' is not the idiomatic object form for 'what do you miss'; corrected to 'imong gimingawan sa una'. Learner 'Gimingaw ko sa hilom nga plasa diin magdula mi sauna' is fine."
+        },
+        {
+          "n": 10,
+          "observation": "Lahi na / pareho gihapon contrast correct; youTwo 'Wala na mi magsayaw' is the staged wala na + mag- habit, but nothing in lessons 7-10 models wala na + mag- before this typed form blank. Added a distinct third pattern example carrying 'wala na mi maglangoy' so the cloze has an in-block transfer model."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "youTwo and its cloze make 'kada buntag' productive although 'kada + time unit' is recognition-only for lessons 1-3; also the third blank restricted a slot that other time phrases could fill.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/3",
+              "old": {
+                "targetText": "Ganahan gihapon ko, apan magdali ko sa trabaho kada buntag.",
+                "baseText": {
+                  "de": "Doch, immer noch, aber ich muss morgens schnell zur Arbeit.",
+                  "en": "I still like it, but every morning I’m in a hurry to get to work."
+                }
+              },
+              "new": {
+                "targetText": "Ganahan gihapon ko, apan magdali ko sa trabaho inig buntag.",
+                "baseText": {
+                  "de": "Doch, immer noch, aber morgens muss ich mich für die Arbeit beeilen.",
+                  "en": "I still like it, but in the morning I’m in a hurry to get to work."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze",
+              "old": [
+                "Ganahan gihapon ko, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa",
+                    "apan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magdali",
+                  "choices": [
+                    "gidalidali",
+                    "pagdali",
+                    "magdali",
+                    "nidali"
+                  ],
+                  "cue": "dali, recurring actor action"
+                },
+                " ko sa trabaho ",
+                {
+                  "kind": "choice",
+                  "answer": "kada",
+                  "choices": [
+                    "asa",
+                    "kada",
+                    "kinsa",
+                    "ngano"
+                  ]
+                },
+                " buntag."
+              ],
+              "new": [
+                "Ganahan gihapon ko, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa",
+                    "apan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magdali",
+                  "choices": [
+                    "gidalidali",
+                    "pagdali",
+                    "magdali",
+                    "nidali"
+                  ],
+                  "cue": "dali, recurring actor action"
+                },
+                " ko sa trabaho inig buntag."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "youTwo teaches and clozes 'Usahay' in lesson 2; usahay is staged productive only in lessons 4-6 and is lesson 4's trophy. Rewritten within the 1-3 staged set (sauna + mag- habitual), keeping the form blank and adding a cue-free lexical choice blank.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3",
+              "old": {
+                "targetText": "Usahay magluto ko og itlog kay dali ra kini maandam.",
+                "baseText": {
+                  "de": "Manchmal habe ich Eier gekocht, weil sie schnell fertig waren.",
+                  "en": "I sometimes cooked eggs because they were quick to prepare."
+                }
+              },
+              "new": {
+                "targetText": "Sauna magluto lang ko og itlog kay dali ra kini maandam.",
+                "baseText": {
+                  "de": "Früher habe ich einfach Eier gekocht, weil sie schnell fertig waren.",
+                  "en": "Back then I would just cook eggs because they were quick to prepare."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Usahay",
+                  "choices": [
+                    "Kataposan",
+                    "Hinungdan",
+                    "Usahay",
+                    "Gikan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magluto",
+                  "choices": [
+                    "pagluto",
+                    "magluto",
+                    "niluto",
+                    "giluto"
+                  ],
+                  "cue": "luto, recurring actor action"
+                },
+                " ko og itlog kay dali ra kini maandam."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Sauna",
+                  "choices": [
+                    "Sauna",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magluto",
+                  "choices": [
+                    "pagluto",
+                    "magluto",
+                    "niluto",
+                    "giluto"
+                  ],
+                  "cue": "luto, recurring actor action"
+                },
+                " lang ko og itlog kay ",
+                {
+                  "kind": "choice",
+                  "answer": "dali",
+                  "choices": [
+                    "parat",
+                    "hinog",
+                    "dali",
+                    "hait"
+                  ]
+                },
+                " ra kini maandam."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Them-line 2 'Unsa na lang kalayo' reads as 'what fire'; the degree question needs the linker 'ka layo'.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "Unsa na lang kalayo ang imong lakawon matag buntag?",
+              "new": "Unsa na lang ka layo ang imong lakawon matag buntag?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Trophy example 'permi ko gabii makauli' has an unnatural order (time word between clitic and verb); natural form puts the time phrase after the verb.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/trophyWord/example",
+              "old": "Sa daan nakong trabaho permi ko gabii makauli.",
+              "new": "Sa daan nakong trabaho permi ko makauli og gabii."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "'Unsa may imong gimingaw gikan sa una?' is not the idiomatic object form for 'what do you miss'; the thing missed takes gimingawan.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/8",
+              "old": "Unsa may imong gimingaw gikan sa una?",
+              "new": "Unsa may imong gimingawan sa una?"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "The staged 'wala na + mag- habit' is required as a typed form blank in youTwo, but no lesson in block 7-10 models it before the cloze; add a distinct transfer example carrying the structure.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Lahi na ang musika sa pista karon, apan pareho gihapon ang pagkaon sa lamesa.",
+                  "baseText": {
+                    "de": "Beim Fest läuft heute andere Musik, aber das Essen auf dem Tisch ist nach wie vor dasselbe.",
+                    "en": "The music at the fiesta is different now, but the food on the table is still the same."
+                  },
+                  "highlight": "Lahi na ang musika"
+                },
+                {
+                  "targetText": "Lahi na ang ruta sa parada, apan pareho gihapon ang banda.",
+                  "baseText": {
+                    "de": "Die Parade zieht jetzt anders, aber es spielt immer noch dieselbe Kapelle.",
+                    "en": "The parade route has changed, but the band is still the same."
+                  },
+                  "highlight": "Lahi na ang ruta"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Lahi na ang musika sa pista karon, apan pareho gihapon ang pagkaon sa lamesa.",
+                  "baseText": {
+                    "de": "Beim Fest läuft heute andere Musik, aber das Essen auf dem Tisch ist nach wie vor dasselbe.",
+                    "en": "The music at the fiesta is different now, but the food on the table is still the same."
+                  },
+                  "highlight": "Lahi na ang musika"
+                },
+                {
+                  "targetText": "Lahi na ang ruta sa parada, apan pareho gihapon ang banda.",
+                  "baseText": {
+                    "de": "Die Parade zieht jetzt anders, aber es spielt immer noch dieselbe Kapelle.",
+                    "en": "The parade route has changed, but the band is still the same."
+                  },
+                  "highlight": "Lahi na ang ruta"
+                },
+                {
+                  "targetText": "Lahi na ang among Sabado: wala na mi maglangoy sa sapa.",
+                  "baseText": {
+                    "de": "Unser Samstag ist anders geworden: Wir schwimmen nicht mehr im Fluss.",
+                    "en": "Our Saturdays are different now: we no longer swim in the river."
+                  },
+                  "highlight": "Lahi na ang among Sabado"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6bf2f4b9ab6b5e9de409e86cee9f9994087ce498549d755cd0858b56c09d1a7e",
+      "sourceSha256": "ae93286145b3911d81f2a567c16dab736c8b138690115e6aea0873705fdbd57e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Grandmother/porridge-vs-bread beat intact; youOne 14 words with sauna/mokaon/lugaw; youTwo now uses 'inig buntag' so the kada staging issue is resolved; apan kept as an explicit choice (apan/pero is an open typed slot, so choice is the correct kind). Only residue: transfer model 2 uses 'matag Domingo', a L7-10 productive item, ahead of stage."
+        },
+        {
+          "n": 2,
+          "observation": "Friend/kitchen beat correct; 'Sauna magluto lang ko og itlog' with completed-vs-habitual form blank disambiguated by the visible cue; foils for Sauna and dali are ungrammatical in slot. 'nausab' in the opening is recognition exposure of a later trophy but natural priming, not a spoiler card."
+        },
+        {
+          "n": 3,
+          "observation": "Commute beat and 'ka layo' fix are in place; youOne is exactly 16 words. youTwo still makes the learner produce and cloze 'matag buntag' in block 1-3 where kada/matag + time unit is not yet productive; rewritten within the block's set (karon + present)."
+        },
+        {
+          "n": 4,
+          "observation": "Weekend beat fine, usahay/kasagaran contrast is honest variation after sagad. The companion 'ang akong silingan' is said to the neighbour who is asking, which reads as possibly meaning the listener; concrete referent supplied."
+        },
+        {
+          "n": 5,
+          "observation": "Host/night-shift beat and permi placement before verb are correct in youOne; trophy example order fixed. youTwo again produces 'matag gabii' ahead of stage; rewritten to practise the block's own 'permi ... before verb' with the same ability verb and contextually impossible foils."
+        },
+        {
+          "n": 6,
+          "observation": "Dropped-habit beat matches; batasan nako nga is modelled. youOne has the learner produce 'wala na ko magmeryenda' (L7-10 productive 'wala na + habit') in block 4-6, and the block's 'naandan na nako' is never modelled before L7; both resolved by rewriting the second clause with the already productive gi- form and adding a naandan transfer model."
+        },
+        {
+          "n": 7,
+          "observation": "Tutor/heat beat correct; naandan na nako and mao nga are idiomatic; matag hapon in youTwo is in-block; cloze cue 'recurring actor action' excludes gipabilin; chunks, recall and caption verify."
+        },
+        {
+          "n": 8,
+          "observation": "Cousin/gym-vs-yoga beat correct; cloze on present ability + size is a natural reply to 'why yoga' (bisan slot is open against kung, so correctly not blanked). Speech token 'gym' is an English-spelled loanword without Cebuano orthography; replaced by ehersisyo from the same reply."
+        },
+        {
+          "n": 9,
+          "observation": "Barber beat correct; 'gimingawan' fix applied and 'Gimingaw ko sa' answer is idiomatic; inclusive 'atong lungsod' is right for a local barber. Cloze foils and recall fallbacks are impossible in slot."
+        },
+        {
+          "n": 10,
+          "observation": "Elder/fiesta beat correct; pareho gihapon in the learner line is recycled A2 gihapon required by the beat, so not a staging breach. Speech trio lahi/musika/pareho lacks a connector/aspect word; the typed form blank 'magsayaw' would unjustly reject native 'mosayaw' after wala na; recall foil 'porma' is a plausible answer. All three fixed."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Transfer model uses 'matag Domingo' (matag + time unit is productive only in lessons 7-10); replace with a block-neutral time phrase.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1",
+              "old": {
+                "targetText": "Sauna mosulat ko og sulat sa akong lola matag Domingo.",
+                "baseText": {
+                  "de": "Früher habe ich meiner Oma jeden Sonntag einen Brief geschrieben.",
+                  "en": "I used to write my grandmother a letter every Sunday."
+                },
+                "highlight": "Sauna mosulat ko"
+              },
+              "new": {
+                "targetText": "Sauna mosulat ko og sulat sa akong lola sa Domingo.",
+                "baseText": {
+                  "de": "Früher habe ich meiner Oma sonntags einen Brief geschrieben.",
+                  "en": "I used to write my grandmother a letter on Sundays."
+                },
+                "highlight": "Sauna mosulat ko"
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "youTwo makes the learner produce and cloze 'matag buntag' in block 1-3 (matag + time unit is staged productive for 7-10; kada + time unit is recognition-only here). Rewritten with the block's karon + present contrast.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Usa na lang ka kilometro ang akong lakawon matag buntag.",
+                "baseText": {
+                  "de": "Jetzt laufe ich jeden Morgen nur noch einen Kilometer.",
+                  "en": "Now I only walk one kilometre each morning."
+                }
+              },
+              "new": {
+                "targetText": "Karon usa na lang ka kilometro ang akong lakawon sa buntag.",
+                "baseText": {
+                  "de": "Jetzt laufe ich morgens nur noch einen Kilometer.",
+                  "en": "Now I only walk one kilometre in the morning."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Usa na lang ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kilometro",
+                  "choices": [
+                    "kilo",
+                    "kilometro",
+                    "litro",
+                    "kutsara"
+                  ]
+                },
+                " ang akong lakawon ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "kinsa",
+                    "asa",
+                    "pila"
+                  ]
+                },
+                " buntag."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " usa na lang ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kilometro",
+                  "choices": [
+                    "kilo",
+                    "kilometro",
+                    "litro",
+                    "kutsara"
+                  ]
+                },
+                " ang akong lakawon sa buntag."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Told to the neighbour who asked, 'mouban ang akong silingan' is ambiguous between the listener and someone else; give the companion a distinct referent and keep cloze/terms aligned.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3",
+              "old": {
+                "targetText": "Usahay mouban ang akong silingan kung wala siyay trabaho.",
+                "baseText": {
+                  "de": "Manchmal kommt mein Nachbar mit, wenn er frei hat.",
+                  "en": "Sometimes my neighbour comes along when he’s off work."
+                }
+              },
+              "new": {
+                "targetText": "Usahay mouban ang akong ig-agaw kung wala siyay trabaho.",
+                "baseText": {
+                  "de": "Manchmal kommt mein Cousin mit, wenn er frei hat.",
+                  "en": "Sometimes my cousin comes along when he’s off work."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Usahay",
+                  "choices": [
+                    "Usahay",
+                    "Gikan",
+                    "Ngano",
+                    "Matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "niuban",
+                    "giubanan",
+                    "pag-uban",
+                    "mouban"
+                  ],
+                  "cue": "uban, recurring actor action"
+                },
+                " ang akong silingan kung wala siyay trabaho."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Usahay",
+                  "choices": [
+                    "Usahay",
+                    "Gikan",
+                    "Ngano",
+                    "Matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "niuban",
+                    "giubanan",
+                    "pag-uban",
+                    "mouban"
+                  ],
+                  "cue": "uban, recurring actor action"
+                },
+                " ang akong ig-agaw kung wala siyay trabaho."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/terms/4",
+              "old": {
+                "targetText": "silingan",
+                "baseText": {
+                  "de": "Nachbar oder Nachbarin",
+                  "en": "neighbour"
+                }
+              },
+              "new": {
+                "targetText": "ig-agaw",
+                "baseText": {
+                  "de": "Cousin oder Cousine",
+                  "en": "cousin"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "youTwo makes the learner produce and cloze 'matag gabii' in block 4-6, ahead of its 7-10 stage; the block's own target 'permi placed before the verb' is unpractised. Rewritten with permi na ko makatulog, keeping the ability verb as a choice with impossible foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3",
+              "old": {
+                "targetText": "Oo, makatulog na ko og walo ka oras matag gabii.",
+                "baseText": {
+                  "de": "Ja, ich kann jetzt jede Nacht acht Stunden schlafen.",
+                  "en": "Yes, I can get eight hours of sleep each night now."
+                }
+              },
+              "new": {
+                "targetText": "Oo, permi na ko makatulog og walo ka oras sa gabii.",
+                "baseText": {
+                  "de": "Ja, jetzt kann ich nachts immer acht Stunden schlafen.",
+                  "en": "Yes, now I can always get eight hours of sleep at night."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                "Oo, ",
+                {
+                  "kind": "choice",
+                  "answer": "makatulog",
+                  "choices": [
+                    "makalihok",
+                    "makatindog",
+                    "makasulti",
+                    "makatulog"
+                  ]
+                },
+                " na ko og walo ka oras ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "alang",
+                    "gikan",
+                    "matag",
+                    "asa"
+                  ]
+                },
+                " gabii."
+              ],
+              "new": [
+                "Oo, ",
+                {
+                  "kind": "choice",
+                  "answer": "permi",
+                  "choices": [
+                    "permi",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " na ko ",
+                {
+                  "kind": "choice",
+                  "answer": "makatulog",
+                  "choices": [
+                    "makalihok",
+                    "makatindog",
+                    "makasulti",
+                    "makatulog"
+                  ]
+                },
+                " og walo ka oras sa gabii."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "youOne has the learner produce 'wala na ko magmeryenda' (the 7-10 productive 'wala na + habit') in block 4-6, and 'naandan na nako' (staged 4-6) is never modelled before lesson 7. Second clause rewritten with the already productive gi- form echoing the opening 'gibiyaan'; a naandan transfer model added; chunks, pattern, terms and recall kept coupled.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/1",
+              "old": {
+                "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan wala na ko magmeryenda.",
+                "baseText": {
+                  "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen. Jetzt lasse ich den nächtlichen Snack weg.",
+                  "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve stopped having that late snack."
+                }
+              },
+              "new": {
+                "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan gibiyaan na nako kana.",
+                "baseText": {
+                  "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen, aber das habe ich inzwischen aufgegeben.",
+                  "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve given that up now."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples",
+              "old": [
+                {
+                  "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan wala na ko magmeryenda.",
+                  "baseText": {
+                    "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen. Jetzt lasse ich den nächtlichen Snack weg.",
+                    "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve stopped having that late snack."
+                  },
+                  "highlight": "Batasan nako sauna"
+                },
+                {
+                  "targetText": "Batasan nako nga andamon ang akong bag sa gabii.",
+                  "baseText": {
+                    "de": "Ich mache meine Tasche gewöhnlich schon am Abend fertig.",
+                    "en": "I have a habit of packing my bag in the evening."
+                  },
+                  "highlight": "Batasan nako nga"
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan gibiyaan na nako kana.",
+                  "baseText": {
+                    "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen, aber das habe ich inzwischen aufgegeben.",
+                    "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve given that up now."
+                  },
+                  "highlight": "Batasan nako sauna"
+                },
+                {
+                  "targetText": "Batasan nako nga andamon ang akong bag sa gabii.",
+                  "baseText": {
+                    "de": "Ich mache meine Tasche gewöhnlich schon am Abend fertig.",
+                    "en": "I have a habit of packing my bag in the evening."
+                  },
+                  "highlight": "Batasan nako nga"
+                },
+                {
+                  "targetText": "Naandan na nako ang tsa inig gabii.",
+                  "baseText": {
+                    "de": "Ich habe mich inzwischen an Tee am Abend gewöhnt.",
+                    "en": "I’ve got used to tea in the evening now."
+                  },
+                  "highlight": "Naandan na nako"
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks/3",
+              "old": {
+                "targetText": "apan wala na ko magmeryenda.",
+                "baseText": {
+                  "de": "aber jetzt esse ich dann nichts mehr zwischendurch.",
+                  "en": "but I don’t snack then anymore."
+                }
+              },
+              "new": {
+                "targetText": "apan gibiyaan na nako kana.",
+                "baseText": {
+                  "de": "aber das habe ich inzwischen aufgegeben.",
+                  "en": "but I’ve given that up now."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/terms/3",
+              "old": {
+                "targetText": "magmeryenda",
+                "baseText": {
+                  "de": "eine Kleinigkeit essen",
+                  "en": "have a snack"
+                }
+              },
+              "new": {
+                "targetText": "gibiyaan",
+                "baseText": {
+                  "de": "aufgegeben",
+                  "en": "given up"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/recall/after",
+              "old": " sa tungang gabii, apan wala na ko magmeryenda.",
+              "new": " sa tungang gabii, apan gibiyaan na nako kana."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Speech token 'gym' is an English-spelled loanword with no Cebuano orthography precedent; use the Cebuano-spelled content noun from the same reply, keeping sentence order.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/speakRequired",
+              "old": [
+                "moadto",
+                "gym",
+                "matag"
+              ],
+              "new": [
+                "moadto",
+                "matag",
+                "ehersisyo"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "(a) Typed form blank 'magsayaw' would reject the equally native 'Wala na mi mosayaw' (wala + mo- is the regular negated form), so the slot is grammatically open; present it as a choice with foils impossible after 'wala na mi'. (b) Recall foil 'porma' yields the plausible 'Lahi na ang porma sa pista karon'. (c) Speech trio has no connector/aspect-bearing word; use apan.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Wala na mi ",
+                {
+                  "kind": "form",
+                  "answer": "magsayaw",
+                  "choices": [
+                    "nagsayaw",
+                    "gisayaw",
+                    "magsayaw",
+                    "nisayaw"
+                  ],
+                  "cue": "sayaw, discontinued habit after wala na mi"
+                },
+                " sa karaang mga sayaw ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "gikan",
+                    "matag",
+                    "kinsa",
+                    "asa"
+                  ]
+                },
+                " pista."
+              ],
+              "new": [
+                "Wala na mi ",
+                {
+                  "kind": "choice",
+                  "answer": "magsayaw",
+                  "choices": [
+                    "magsayaw",
+                    "gisayaw",
+                    "pagsayaw",
+                    "sayawa"
+                  ]
+                },
+                " sa karaang mga sayaw ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "gikan",
+                    "matag",
+                    "kinsa",
+                    "asa"
+                  ]
+                },
+                " pista."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/recall/fallbackChoices",
+              "old": [
+                "porma",
+                "musika",
+                "barko",
+                "kandila"
+              ],
+              "new": [
+                "tsinelas",
+                "musika",
+                "barko",
+                "kandila"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/speakRequired",
+              "old": [
+                "lahi",
+                "musika",
+                "pareho"
+              ],
+              "new": [
+                "lahi",
+                "musika",
+                "apan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "repair",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ec611f42722632ee6aaef821d343969609a500c1d54b37b546ceb9c2af8aee79",
+      "sourceSha256": "57e45ad13652881c794e0a9ac47bfce4a94e4e74c842af838811bfe4488f773c",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Grandmother/elder scene, full sentences, no slang. youOne (14 words) carries trophy sauna and tokens sauna/mokaon/lugaw; youTwo 'Ganahan gihapon ko, apan magdali ko sa trabaho inig buntag' (10 words) answers the complication. Cloze: apan as choice (gikan sa/tungod sa/sulod sa impossible before a verb) plus cued form magdali; apan is correctly a choice, not a typed connector, because typed 'pero' would be unjustly rejected (spec forbids apan/pero as competing options). gihapon is the recycled A2 item named in the outline's recycles, so learner-side 'Ganahan gihapon ko' is permitted; the independentFinal HIGH on it is not upheld. DE/EN match. No edit."
+        },
+        {
+          "n": 2,
+          "observation": "Friend scene (lang allowed). youOne contrasts mopalit/magluto with trophy karon; transfer 'Sauna moinom ko og kape, apan karon moinom ko og tsa' is distinct. youTwo 'Sauna magluto lang ko og itlog kay dali ra kini maandam' stays inside block 1-3 (sauna + mag- habitual); cloze = Sauna choice (Ngano/Kinsa/Asa impossible without nga/question frame), cued form magluto, cue-free lexical choice dali. Chunks join exactly; recall foils impossible. nausab in the them-line is recognition exposure only. No edit."
+        },
+        {
+          "n": 3,
+          "observation": "Coworker commute: youOne (16 words) with sagad/mosakay/maglakaw; them-line 2 asks distance; youTwo answers with 'usa na lang ka kilometro'. The cloze tests only Karon and kilometro: it is the one lesson whose exercise contains no verb at all, so the outline's mandated habitual/completed form role is absent (not pedagogically equivalent). The reply can carry it without new errors by using the lesson's own taught verb maglakaw; required rewrite below keeps meaning, 11 words, same DE/EN."
+        },
+        {
+          "n": 4,
+          "observation": "Neighbour scene; companion is now ig-agaw, so listener and companion are distinct. youTwo 'Usahay mouban ang akong ig-agaw kung wala siyay trabaho' (9 words); cloze = Usahay choice (Matag/Ngano/Gikan ungrammatical before a verb) + cued form mouban; frequency and form roles present, the kung clause is a fixed contextual frame. kasagaran vs sagad is honest variation. No edit."
+        },
+        {
+          "n": 5,
+          "observation": "Host scene, no slang. youOne 'Sauna permi ko magtrabaho sa gabii...' practises block 4-6 permi before the verb; youTwo 'Oo, permi na ko makatulog og walo ka oras sa gabii' (11 words). Cloze = permi choice (gikan/kinsa/matag impossible) + makatulog as choice: a typed form here would unjustly reject the colloquial abilitative 'katulog', so choice with contextually impossible foils (stand/speak/move for eight hours after a sleep question) is the correct kind. Frequency and verb roles both present. No edit."
+        },
+        {
+          "n": 6,
+          "observation": "Friend scene. youOne uses batasan nako sauna nga + productive gi- (gibiyaan), no premature 'wala na ko mag-'; third transfer 'Naandan na nako ang tsa inig gabii' supplies the block 4-6 naandan model before L7. youTwo 'Karon moinom lang ko og init nga tsa sa kusina' (10 words); cloze = Karon choice + cued form moinom. Terms, chunks, recall coupled. No edit."
+        },
+        {
+          "n": 7,
+          "observation": "Tutor scene. youOne with naandan/kainit/makalakaw; youTwo 'Sauna magpabilin ko sa sulod matag hapon kay init kaayo' (10 words) is inside block 7-10 (matag productive). Cloze = cued form magpabilin (pagpabilin/ipabilin/gipabilin impossible after Sauna ... ko) + matag choice; the printed 'Sauna ' is a legitimate visible piece of the frame since a typed sauna slot would reject the recycled synonym kaniadto. No edit."
+        },
+        {
+          "n": 8,
+          "observation": "Cousin scene. The them-line 'Unsa man ang imong rutina sa una nimong balay?' says 'at your first house' (una is the ordinal), while DE/EN say 'früheren Wohnung / old place'; source and translations diverge. Required fix to 'sa daan nimong balay' (parallel to L5 'daan nimong trabaho'), propagated through both captions by one replaceText. youTwo 'Makahimo ko niini sa balay bisan gamay ra ang akong oras' answers 'why yoga'; the cloze tests a cued ability form and 'gamay ra ang akong oras' (little time, not garment size) with impossible foils; this is a valid reason reply, not an error, and the counterpart's reading of gamay is rejected."
+        },
+        {
+          "n": 9,
+          "observation": "Barber scene; 'atong lungsod' is genuinely inclusive. youOne (15 words) with daghan/nausab/lungsod (nausab carries na- aspect); them-line now uses idiomatic gimingawan; youTwo 'Gimingaw ko sa hilom nga plasa diin magdula mi sauna' (10 words). Cloze = hilom choice (parat/hinog/uhaw impossible for a square) + cued form magdula; cue 'recurring actor action' excludes ni-/nag-. Recall foils ungrammatical. No edit."
+        },
+        {
+          "n": 10,
+          "observation": "Elder scene, no slang. youOne 'Lahi na ang musika..., apan pareho gihapon ang pagkaon' realises the beat 'different music, same food'; gihapon is the recycled A2 word, so the counterpart's demand to strip it from the learner line is not upheld. youTwo 'Wala na mi magsayaw sa karaang mga sayaw matag pista' practises block 7-10 wala na + mag- (modelled first in transfer 3) with matag; magsayaw stays a choice because typed 'mosayaw' is equally native after wala na mi. Recall foil 'kandila' yields the plausible, grammatical 'Lahi na ang kandila sa pista karon' (candles at a fiesta); required replacement with an ungrammatical foil."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Lesson 3 is the only lesson whose cloze contains no verb, so the outline's cloze family (form blank on the whole habitual/completed verb) has no exercise here; the reply can carry the lesson's own taught verb maglakaw with no change of meaning, word count 11, DE/EN unchanged. Form stays typed with cue (ni-/gi-/pag- foils excluded by cue and frame); Karon and kilometro stay cue-free choices with impossible foils.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Karon usa na lang ka kilometro ang akong lakawon sa buntag.",
+                "baseText": {
+                  "de": "Jetzt laufe ich morgens nur noch einen Kilometer.",
+                  "en": "Now I only walk one kilometre in the morning."
+                }
+              },
+              "new": {
+                "targetText": "Karon maglakaw na lang ko og usa ka kilometro sa buntag.",
+                "baseText": {
+                  "de": "Jetzt laufe ich morgens nur noch einen Kilometer.",
+                  "en": "Now I only walk one kilometre in the morning."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " usa na lang ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kilometro",
+                  "choices": [
+                    "kilo",
+                    "kilometro",
+                    "litro",
+                    "kutsara"
+                  ]
+                },
+                " ang akong lakawon sa buntag."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "maglakaw",
+                  "choices": [
+                    "paglakaw",
+                    "maglakaw",
+                    "nilakaw",
+                    "gilakaw"
+                  ],
+                  "cue": "lakaw, recurring actor action"
+                },
+                " na lang ko og usa ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kilometro",
+                  "choices": [
+                    "kilo",
+                    "kilometro",
+                    "litro",
+                    "kutsara"
+                  ]
+                },
+                " sa buntag."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Them-line 'sa una nimong balay' means 'at your first house' (una = first/ordinal), but the German 'in deiner früheren Wohnung' and English 'at your old place' say former/old; source and translations do not say the same thing. 'daan' is the natural adjective (cf. L5 'daan nimong trabaho'). One replaceText covers dialogue[0] and both sceneCaption quotes.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "Unsa man ang imong rutina sa una nimong balay?",
+              "new": "Unsa man ang imong rutina sa daan nimong balay?"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Recall fallback 'kandila' produces 'Lahi na ang kandila sa pista karon, apan pareho gihapon ang pagkaon sa lamesa', a grammatical and contextually plausible fiesta sentence (procession candles), so two options are valid; foils must be ungrammatical or contextually impossible.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/recall/fallbackChoices",
+              "old": [
+                "tsinelas",
+                "musika",
+                "barko",
+                "kandila"
+              ],
+              "new": [
+                "tsinelas",
+                "musika",
+                "barko",
+                "kaayo"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "historicalFocusedEdits": [
+    {
+      "stage": "focused-banks",
+      "receiptSha256": "7e919fc782896423952fb4b612f0ebd45a63c500f643a319664fdd938a0f9d02",
+      "sourceSha256": "ba4b79b74dacb2b591c746238602a54c2024b36d2bd87a21adb21d6c4acda066",
+      "verdict": "FIX",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Lesson 2 cloze[5] (connector, answer karon) lacks the mandatory four-string choices array; the app schema requires choices on every blank including typed connector blanks. Added four distinct authentic choices; the three distractors (ngadto 'to/toward', kinsa 'who', gikan 'from') cannot fill 'apan ___ utan na.' and none is a synonym or spelling variant of karon. 'kay' is not used as a choice.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/5",
+              "old": {
+                "kind": "connector",
+                "answer": "karon"
+              },
+              "new": {
+                "kind": "connector",
+                "answer": "karon",
+                "choices": [
+                  "karon",
+                  "ngadto",
+                  "kinsa",
+                  "gikan"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Lesson 5 cloze[1] (connector, answer karon) lacks the mandatory four-string choices array. Added four distinct authentic choices; the distractors (unsa 'what', ngadto 'to/toward', gikan 'from') cannot fill 'Sauna gamay ra, apan ___ permi ko matulog og walo ka oras.' in a declarative contrast clause, and none duplicates or rivals karon. 'kay' is not used as a choice. Rest of the blank sequence (choice permi, form matulog with cue) is unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/1",
+              "old": {
+                "kind": "connector",
+                "answer": "karon"
+              },
+              "new": {
+                "kind": "connector",
+                "answer": "karon",
+                "choices": [
+                  "karon",
+                  "unsa",
+                  "ngadto",
+                  "gikan"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "focused-redesign-1",
+      "receiptSha256": "66412c4d65effaaad992fbfa72cbd0e6ac560dd4e8381c63956c38c5357f03da",
+      "sourceSha256": "906517d5f16ac52488a97a1e6d7bad3ea8dd1e8b9a292b70c066f42e0ca5c01f",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Current cloze has only two blanks: apan (choice) and magdali (form); no frequency blank. Learner line contains gihapon (recognition-only at P8) and gihapon is listed as a term. Reply must gain sagad + connector + whole habitual verb."
+        },
+        {
+          "n": 2,
+          "observation": "Current cloze blanks are Sauna (choice), magluto (form) and dali (adjective choice); no frequency blank. Reply lacks the sauna … karon pairing, so no naturally constrained connector exists."
+        },
+        {
+          "n": 3,
+          "observation": "Current cloze blanks are Karon (choice), maglakaw (form) and kilometro (noun choice); no frequency blank. Learner reply has no frequency word at all despite sagad being the trophy."
+        },
+        {
+          "n": 4,
+          "observation": "Current cloze has only Usahay (choice) and mouban (form); no connector blank. Reply is a single clause with kung, so no sauna/karon/apan contrast is present."
+        },
+        {
+          "n": 5,
+          "observation": "Current cloze has permi (choice) and makatulog as a root-swapping choice, not a form blank; no connector blank. Reply lacks the sauna … karon contrast and the verb is not graded by aspect."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Last learner reply lacks the frequency blank, uses gihapon as a learner target, and the verb cue is vague; rewrite to a 10-word contrast reply with sagad + apan + magdali and drop the gihapon term.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3",
+              "old": {
+                "targetText": "Ganahan gihapon ko, apan magdali ko sa trabaho inig buntag.",
+                "baseText": {
+                  "de": "Doch, immer noch, aber morgens muss ich mich für die Arbeit beeilen.",
+                  "en": "I still like it, but in the morning I’m in a hurry to get to work."
+                }
+              },
+              "new": {
+                "targetText": "Ganahan pa ko, apan karon sagad ko magdali sa trabaho.",
+                "baseText": {
+                  "de": "Ich mag ihn noch, aber jetzt habe ich meistens Eile zur Arbeit.",
+                  "en": "I still like it, but now I’m usually in a hurry to get to work."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                "Ganahan gihapon ko, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa",
+                    "apan"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magdali",
+                  "choices": [
+                    "gidalidali",
+                    "pagdali",
+                    "magdali",
+                    "nidali"
+                  ],
+                  "cue": "dali, recurring actor action"
+                },
+                " ko sa trabaho inig buntag."
+              ],
+              "new": [
+                "Ganahan pa ko, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa",
+                    "apan"
+                  ]
+                },
+                " karon ",
+                {
+                  "kind": "choice",
+                  "answer": "sagad",
+                  "choices": [
+                    "sagad",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " ko ",
+                {
+                  "kind": "form",
+                  "answer": "magdali",
+                  "choices": [
+                    "gidali",
+                    "pagdali",
+                    "magdali",
+                    "nidali"
+                  ],
+                  "cue": "dali, habitual actor"
+                },
+                " sa trabaho."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/terms/4",
+              "old": {
+                "targetText": "gihapon",
+                "baseText": {
+                  "de": "weiterhin",
+                  "en": "still"
+                }
+              },
+              "new": {
+                "targetText": "ganahan",
+                "baseText": {
+                  "de": "mögen",
+                  "en": "like"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Last learner reply lacks a frequency blank and a connector blank; rewrite to an 11-word sauna … karon contrast with sagad, a single-fit karon connector, and magluto as the whole habitual form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Sauna magluto lang ko og itlog kay dali ra kini maandam.",
+                "baseText": {
+                  "de": "Früher habe ich einfach Eier gekocht, weil sie schnell fertig waren.",
+                  "en": "Back then I would just cook eggs because they were quick to prepare."
+                }
+              },
+              "new": {
+                "targetText": "Sauna sagad magluto lang ko og itlog, apan karon utan na.",
+                "baseText": {
+                  "de": "Früher habe ich meistens nur Eier gekocht, aber jetzt gibt es Gemüse.",
+                  "en": "Back then I usually just cooked eggs, but now it’s vegetables."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Sauna",
+                  "choices": [
+                    "Sauna",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magluto",
+                  "choices": [
+                    "pagluto",
+                    "magluto",
+                    "niluto",
+                    "giluto"
+                  ],
+                  "cue": "luto, recurring actor action"
+                },
+                " lang ko og itlog kay ",
+                {
+                  "kind": "choice",
+                  "answer": "dali",
+                  "choices": [
+                    "parat",
+                    "hinog",
+                    "dali",
+                    "hait"
+                  ]
+                },
+                " ra kini maandam."
+              ],
+              "new": [
+                "Sauna ",
+                {
+                  "kind": "choice",
+                  "answer": "sagad",
+                  "choices": [
+                    "sagad",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magluto",
+                  "choices": [
+                    "pagluto",
+                    "magluto",
+                    "niluto",
+                    "giluto"
+                  ],
+                  "cue": "luto, habitual actor"
+                },
+                " lang ko og itlog, apan ",
+                {
+                  "kind": "connector",
+                  "answer": "karon"
+                },
+                " utan na."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Last learner reply has no frequency word and the cloze grades a noun instead of a frequency expression; rewrite to a 10-word reply with sagad, Karon as the connector and maglakaw as the whole habitual form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/3",
+              "old": {
+                "targetText": "Karon maglakaw na lang ko og usa ka kilometro sa buntag.",
+                "baseText": {
+                  "de": "Jetzt laufe ich morgens nur noch einen Kilometer.",
+                  "en": "Now I only walk one kilometre in the morning."
+                }
+              },
+              "new": {
+                "targetText": "Karon sagad maglakaw ko og usa ka kilometro sa buntag.",
+                "baseText": {
+                  "de": "Jetzt gehe ich morgens meistens einen Kilometer zu Fuß.",
+                  "en": "Now I usually walk one kilometre in the morning."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "maglakaw",
+                  "choices": [
+                    "paglakaw",
+                    "maglakaw",
+                    "nilakaw",
+                    "gilakaw"
+                  ],
+                  "cue": "lakaw, recurring actor action"
+                },
+                " na lang ko og usa ka ",
+                {
+                  "kind": "choice",
+                  "answer": "kilometro",
+                  "choices": [
+                    "kilo",
+                    "kilometro",
+                    "litro",
+                    "kutsara"
+                  ]
+                },
+                " sa buntag."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Ngano",
+                    "Kinsa",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "sagad",
+                  "choices": [
+                    "sagad",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "maglakaw",
+                  "choices": [
+                    "paglakaw",
+                    "maglakaw",
+                    "nilakaw",
+                    "gilakaw"
+                  ],
+                  "cue": "lakaw, habitual actor"
+                },
+                " ko og usa ka kilometro sa buntag."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Last learner reply has no connector blank; rewrite to a 10-word two-clause contrast with usahay, apan and mouban as the whole habitual form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3",
+              "old": {
+                "targetText": "Usahay mouban ang akong ig-agaw kung wala siyay trabaho.",
+                "baseText": {
+                  "de": "Manchmal kommt mein Cousin mit, wenn er frei hat.",
+                  "en": "Sometimes my cousin comes along when he’s off work."
+                }
+              },
+              "new": {
+                "targetText": "Usahay mouban ang akong ig-agaw, apan sagad ako ra usa.",
+                "baseText": {
+                  "de": "Manchmal kommt mein Cousin mit, aber meistens bin ich allein.",
+                  "en": "Sometimes my cousin comes along, but usually it’s just me."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Usahay",
+                  "choices": [
+                    "Usahay",
+                    "Gikan",
+                    "Ngano",
+                    "Matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "niuban",
+                    "giubanan",
+                    "pag-uban",
+                    "mouban"
+                  ],
+                  "cue": "uban, recurring actor action"
+                },
+                " ang akong ig-agaw kung wala siyay trabaho."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Usahay",
+                  "choices": [
+                    "Usahay",
+                    "Gikan",
+                    "Ngano",
+                    "Matag"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "mouban",
+                  "choices": [
+                    "niuban",
+                    "giubanan",
+                    "pag-uban",
+                    "mouban"
+                  ],
+                  "cue": "uban, habitual actor"
+                },
+                " ang akong ig-agaw, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "gikan sa",
+                    "tungod sa",
+                    "sulod sa",
+                    "apan"
+                  ]
+                },
+                " sagad ako ra usa."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Last learner reply has no connector blank and the verb blank swaps roots instead of grading aspect; rewrite to a 12-word sauna … karon contrast with permi, a single-fit karon connector and matulog as the whole habitual form.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3",
+              "old": {
+                "targetText": "Oo, permi na ko makatulog og walo ka oras sa gabii.",
+                "baseText": {
+                  "de": "Ja, jetzt kann ich nachts immer acht Stunden schlafen.",
+                  "en": "Yes, now I can always get eight hours of sleep at night."
+                }
+              },
+              "new": {
+                "targetText": "Sauna gamay ra, apan karon permi ko matulog og walo ka oras.",
+                "baseText": {
+                  "de": "Früher nur wenig, aber jetzt schlafe ich immer acht Stunden.",
+                  "en": "Back then only a little, but now I always sleep eight hours."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze",
+              "old": [
+                "Oo, ",
+                {
+                  "kind": "choice",
+                  "answer": "permi",
+                  "choices": [
+                    "permi",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " na ko ",
+                {
+                  "kind": "choice",
+                  "answer": "makatulog",
+                  "choices": [
+                    "makalihok",
+                    "makatindog",
+                    "makasulti",
+                    "makatulog"
+                  ]
+                },
+                " og walo ka oras sa gabii."
+              ],
+              "new": [
+                "Sauna gamay ra, apan ",
+                {
+                  "kind": "connector",
+                  "answer": "karon"
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "permi",
+                  "choices": [
+                    "permi",
+                    "gikan",
+                    "kinsa",
+                    "matag"
+                  ]
+                },
+                " ko ",
+                {
+                  "kind": "form",
+                  "answer": "matulog",
+                  "choices": [
+                    "natulog",
+                    "nakatulog",
+                    "pagtulog",
+                    "matulog"
+                  ],
+                  "cue": "tulog, habitual actor"
+                },
+                " og walo ka oras."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "focused-redesign-6",
+      "receiptSha256": "f3f58e2ea1efd2c3ecfeef844e7fb5ea4ca1bee023fcbaef120120d800dfa83b",
+      "sourceSha256": "906517d5f16ac52488a97a1e6d7bad3ea8dd1e8b9a292b70c066f42e0ca5c01f",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 6,
+          "observation": "Frequency role: none present (Karon/Ngano/Matag/Asa is a connector slot dressed as a choice). Connector role: Karon exists but is not marked as the discourse-constrained connector. Form role: moinom present with a vague cue; sentence lacks a stage-appropriate pre-verbal permi/usahay. Rewritten reply adds permi before the verb, keeps Karon as the single-fit connector and moinom as the present-habitual form."
+        },
+        {
+          "n": 7,
+          "observation": "Frequency role: matag present (choice). Connector role: Sauna present in text but not blanked. Form role: magpabilin present. Reply kept verbatim (10 words, natural); cloze rebuilt so all three roles are blanked. Sauna is a choice kind because kaniadto would be an equally native written synonym; choices exclude it."
+        },
+        {
+          "n": 8,
+          "observation": "Frequency role: absent (gamay is an adjective). Connector role: absent. Form role: Makahimo is an ability form, not habitual/completed. Reply rewritten to explain the choice of yoga via a present routine: Karon (connector), magtrabaho (habitual form, ni-/gi-/pag- as distractors), matag buntag (frequency). Term oras no longer occurs and is swapped for sayo."
+        },
+        {
+          "n": 9,
+          "observation": "Frequency role: absent (hilom is an adjective). Connector role: sauna present but not blanked. Form role: magdula present. Reply rewritten as a sauna … apan … na contrast tied to the more-cars beat: matag hapon (frequency), apan (choice kind, pero would be an equally native synonym), magdula (past-habitual form); hilom and plasa retained for the existing terms."
+        },
+        {
+          "n": 10,
+          "observation": "Frequency role: matag present. Connector role: absent. Form role: magsayaw wrongly tagged as choice with no cue. Reply rewritten to recover the sauna … apan karon pairing with the productive wala na mi mag- model; karon is the single-fit connector. Learner line, pattern label/rule/examples, chunk, term and recall still teach pareho gihapon as a production target; replaced with pareho pa (pa vs na contrast), gihapon left only for interlocutor/recognition use."
+        }
+      ],
+      "findings": [
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Last learner reply has no frequency blank and no connector-kind blank; three-role P8 cloze missing.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3",
+              "old": {
+                "targetText": "Karon moinom lang ko og init nga tsa sa kusina.",
+                "baseText": {
+                  "de": "Jetzt trinke ich in der Küche einfach einen heißen Tee.",
+                  "en": "Now I just drink some hot tea in the kitchen."
+                }
+              },
+              "new": {
+                "targetText": "Karon permi na lang ko moinom og init nga tsa sa kusina.",
+                "baseText": {
+                  "de": "Jetzt trinke ich stattdessen immer nur einen heißen Tee in der Küche.",
+                  "en": "Now I always just drink some hot tea in the kitchen instead."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze",
+              "old": [
+                {
+                  "kind": "choice",
+                  "answer": "Karon",
+                  "choices": [
+                    "Ngano",
+                    "Matag",
+                    "Karon",
+                    "Asa"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "moinom",
+                  "choices": [
+                    "pag-inom",
+                    "moinom",
+                    "niinom",
+                    "giinom"
+                  ],
+                  "cue": "inom, recurring actor action"
+                },
+                " lang ko og init nga tsa sa kusina."
+              ],
+              "new": [
+                {
+                  "kind": "connector",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Sauna",
+                    "Apan",
+                    "Ngano"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "permi",
+                  "choices": [
+                    "permi",
+                    "matag",
+                    "ngano",
+                    "diin"
+                  ]
+                },
+                " na lang ko ",
+                {
+                  "kind": "form",
+                  "answer": "moinom",
+                  "choices": [
+                    "moinom",
+                    "niinom",
+                    "giinom",
+                    "pag-inom"
+                  ],
+                  "cue": "inom, habitual actor action (present routine)"
+                },
+                " og init nga tsa sa kusina."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Cloze blanks only two roles (form + frequency); the connector Sauna is left in plain text.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Sauna ",
+                {
+                  "kind": "form",
+                  "answer": "magpabilin",
+                  "choices": [
+                    "pagpabilin",
+                    "magpabilin",
+                    "ipabilin",
+                    "gipabilin"
+                  ],
+                  "cue": "pabilin, recurring actor action"
+                },
+                " ko sa sulod ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "gikan",
+                    "ngano",
+                    "asa"
+                  ]
+                },
+                " hapon kay init kaayo."
+              ],
+              "new": [
+                {
+                  "kind": "choice",
+                  "answer": "Sauna",
+                  "choices": [
+                    "Sauna",
+                    "Karon",
+                    "Apan",
+                    "Ngano"
+                  ]
+                },
+                " ",
+                {
+                  "kind": "form",
+                  "answer": "magpabilin",
+                  "choices": [
+                    "magpabilin",
+                    "pagpabilin",
+                    "ipabilin",
+                    "gipabilin"
+                  ],
+                  "cue": "pabilin, habitual actor action (past routine)"
+                },
+                " ko sa sulod ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "sagad",
+                    "usahay",
+                    "permi"
+                  ]
+                },
+                " hapon kay init kaayo."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Last learner reply has no frequency word, no connector and an ability form instead of a habitual/completed verb.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3",
+              "old": {
+                "targetText": "Makahimo ko niini sa balay bisan gamay ra ang akong oras.",
+                "baseText": {
+                  "de": "Das kann ich zu Hause machen, auch wenn ich nur wenig Zeit habe.",
+                  "en": "I can do it at home even when I’m short on time."
+                }
+              },
+              "new": {
+                "targetText": "Karon sayo ko magtrabaho matag buntag, mao nga yoga na lang.",
+                "baseText": {
+                  "de": "Jetzt arbeite ich jeden Morgen früh, deshalb eben nur noch Yoga.",
+                  "en": "Now I work early every morning, so it’s just yoga now."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze",
+              "old": [
+                {
+                  "kind": "form",
+                  "answer": "Makahimo",
+                  "choices": [
+                    "Makahimo",
+                    "Nahimo",
+                    "Gihimo",
+                    "Himoa"
+                  ],
+                  "cue": "himo, present ability of the actor"
+                },
+                " ko niini sa balay bisan ",
+                {
+                  "kind": "choice",
+                  "answer": "gamay",
+                  "choices": [
+                    "parat",
+                    "hilaw",
+                    "hait",
+                    "gamay"
+                  ]
+                },
+                " ra ang akong oras."
+              ],
+              "new": [
+                {
+                  "kind": "connector",
+                  "answer": "Karon",
+                  "choices": [
+                    "Karon",
+                    "Sauna",
+                    "Apan",
+                    "Kung"
+                  ]
+                },
+                " sayo ko ",
+                {
+                  "kind": "form",
+                  "answer": "magtrabaho",
+                  "choices": [
+                    "magtrabaho",
+                    "nitrabaho",
+                    "gitrabaho",
+                    "pagtrabaho"
+                  ],
+                  "cue": "trabaho, habitual actor action (present routine)"
+                },
+                " ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "sagad",
+                    "usahay",
+                    "permi"
+                  ]
+                },
+                " buntag, mao nga yoga na lang."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/5",
+              "old": {
+                "targetText": "oras",
+                "baseText": {
+                  "de": "Zeit",
+                  "en": "time"
+                }
+              },
+              "new": {
+                "targetText": "sayo",
+                "baseText": {
+                  "de": "früh",
+                  "en": "early"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Last learner reply has no frequency blank and no connector blank; hilom is an adjective, not a frequency word.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/3",
+              "old": {
+                "targetText": "Gimingaw ko sa hilom nga plasa diin magdula mi sauna.",
+                "baseText": {
+                  "de": "Ich vermisse den ruhigen Platz, auf dem wir früher gespielt haben.",
+                  "en": "I miss the quiet square where we used to play."
+                }
+              },
+              "new": {
+                "targetText": "Sauna magdula mi matag hapon sa hilom nga plasa, apan parkingan na.",
+                "baseText": {
+                  "de": "Früher haben wir jeden Nachmittag auf dem ruhigen Platz gespielt, aber jetzt ist er ein Parkplatz.",
+                  "en": "We used to play every afternoon in the quiet square, but now it’s a parking lot."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Gimingaw ko sa ",
+                {
+                  "kind": "choice",
+                  "answer": "hilom",
+                  "choices": [
+                    "parat",
+                    "hinog",
+                    "uhaw",
+                    "hilom"
+                  ]
+                },
+                " nga plasa diin ",
+                {
+                  "kind": "form",
+                  "answer": "magdula",
+                  "choices": [
+                    "pagdula",
+                    "duwaa",
+                    "magdula",
+                    "gidulaan"
+                  ],
+                  "cue": "dula, recurring actor action"
+                },
+                " mi sauna."
+              ],
+              "new": [
+                "Sauna ",
+                {
+                  "kind": "form",
+                  "answer": "magdula",
+                  "choices": [
+                    "magdula",
+                    "pagdula",
+                    "duwaa",
+                    "gidulaan"
+                  ],
+                  "cue": "dula, habitual actor action (past routine)"
+                },
+                " mi ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "sagad",
+                    "usahay",
+                    "permi"
+                  ]
+                },
+                " hapon sa hilom nga plasa, ",
+                {
+                  "kind": "choice",
+                  "answer": "apan",
+                  "choices": [
+                    "apan",
+                    "kay",
+                    "kung",
+                    "ngano"
+                  ]
+                },
+                " parkingan na."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Last learner reply lacks a connector blank and mis-tags the verb as choice; gihapon is taught as a production target in the learner line, pattern, chunk, term and recall although P8 stages it as recognition only.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/10/dialogue/1/targetText",
+              "old": "Lahi na ang musika sa pista karon, apan pareho gihapon ang pagkaon sa lamesa.",
+              "new": "Lahi na ang musika sa pista karon, apan pareho pa ang pagkaon sa lamesa."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/dialogue/3",
+              "old": {
+                "targetText": "Wala na mi magsayaw sa karaang mga sayaw matag pista.",
+                "baseText": {
+                  "de": "Wir tanzen die alten Tänze nicht mehr bei jedem Fest.",
+                  "en": "We no longer do the old dances at every fiesta."
+                }
+              },
+              "new": {
+                "targetText": "Sauna magsayaw mi niana matag pista, apan karon wala na mi magsayaw.",
+                "baseText": {
+                  "de": "Früher haben wir die bei jedem Fest getanzt, aber jetzt tanzen wir nicht mehr.",
+                  "en": "We used to dance those at every fiesta, but now we no longer dance."
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/cloze",
+              "old": [
+                "Wala na mi ",
+                {
+                  "kind": "choice",
+                  "answer": "magsayaw",
+                  "choices": [
+                    "magsayaw",
+                    "gisayaw",
+                    "pagsayaw",
+                    "sayawa"
+                  ]
+                },
+                " sa karaang mga sayaw ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "gikan",
+                    "matag",
+                    "kinsa",
+                    "asa"
+                  ]
+                },
+                " pista."
+              ],
+              "new": [
+                "Sauna ",
+                {
+                  "kind": "form",
+                  "answer": "magsayaw",
+                  "choices": [
+                    "magsayaw",
+                    "gisayaw",
+                    "pagsayaw",
+                    "sayawa"
+                  ],
+                  "cue": "sayaw, habitual actor action (past routine)"
+                },
+                " mi niana ",
+                {
+                  "kind": "choice",
+                  "answer": "matag",
+                  "choices": [
+                    "matag",
+                    "sagad",
+                    "usahay",
+                    "permi"
+                  ]
+                },
+                " pista, apan ",
+                {
+                  "kind": "connector",
+                  "answer": "karon",
+                  "choices": [
+                    "karon",
+                    "sauna",
+                    "usahay",
+                    "kay"
+                  ]
+                },
+                " wala na mi magsayaw."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/pedagogicalGoal",
+              "old": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Lahi na und pareho gihapon.",
+              "new": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Lahi na und pareho pa."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/pattern/label",
+              "old": "Lahi na und pareho gihapon",
+              "new": "Lahi na und pareho pa"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/pattern/rule",
+              "old": {
+                "de": "Lahi na markiert, was anders geworden ist. Pareho gihapon hält fest, was sich trotz der Veränderung erhalten hat.",
+                "en": "Lahi na points out what has become different. Pareho gihapon identifies what has stayed the same."
+              },
+              "new": {
+                "de": "Lahi na markiert, was anders geworden ist. Pareho pa hält fest, was sich trotz der Veränderung erhalten hat.",
+                "en": "Lahi na points out what has become different. Pareho pa identifies what has stayed the same."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/pattern/examples/0/targetText",
+              "old": "Lahi na ang musika sa pista karon, apan pareho gihapon ang pagkaon sa lamesa.",
+              "new": "Lahi na ang musika sa pista karon, apan pareho pa ang pagkaon sa lamesa."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/pattern/examples/1/targetText",
+              "old": "Lahi na ang ruta sa parada, apan pareho gihapon ang banda.",
+              "new": "Lahi na ang ruta sa parada, apan pareho pa ang banda."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/chunks/2/targetText",
+              "old": "apan pareho gihapon",
+              "new": "apan pareho pa"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/terms/3/targetText",
+              "old": "pareho gihapon",
+              "new": "pareho pa"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/10/recall/after",
+              "old": " sa pista karon, apan pareho gihapon ang pagkaon sa lamesa.",
+              "new": " sa pista karon, apan pareho pa ang pagkaon sa lamesa."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exactPointerCorrections": {
+    "pointer-redesign-906517d5f16a": [
+      {
+        "reported": "/lessons/1/dialogue/3",
+        "exactSourcePath": "/lessons/0/dialogue/3"
+      },
+      {
+        "reported": "/lessons/1/cloze",
+        "exactSourcePath": "/lessons/0/cloze"
+      },
+      {
+        "reported": "/lessons/1/terms/4",
+        "exactSourcePath": "/lessons/0/terms/4"
+      },
+      {
+        "reported": "/lessons/2/dialogue/3",
+        "exactSourcePath": "/lessons/1/dialogue/3"
+      },
+      {
+        "reported": "/lessons/2/cloze",
+        "exactSourcePath": "/lessons/1/cloze"
+      },
+      {
+        "reported": "/lessons/3/dialogue/3",
+        "exactSourcePath": "/lessons/2/dialogue/3"
+      },
+      {
+        "reported": "/lessons/3/cloze",
+        "exactSourcePath": "/lessons/2/cloze"
+      },
+      {
+        "reported": "/lessons/4/dialogue/3",
+        "exactSourcePath": "/lessons/3/dialogue/3"
+      },
+      {
+        "reported": "/lessons/4/cloze",
+        "exactSourcePath": "/lessons/3/cloze"
+      },
+      {
+        "reported": "/lessons/5/dialogue/3",
+        "exactSourcePath": "/lessons/4/dialogue/3"
+      },
+      {
+        "reported": "/lessons/5/cloze",
+        "exactSourcePath": "/lessons/4/cloze"
+      },
+      {
+        "reported": "/lessons/6/dialogue/3",
+        "exactSourcePath": "/lessons/5/dialogue/3"
+      },
+      {
+        "reported": "/lessons/6/cloze",
+        "exactSourcePath": "/lessons/5/cloze"
+      },
+      {
+        "reported": "/lessons/7/cloze",
+        "exactSourcePath": "/lessons/6/cloze"
+      },
+      {
+        "reported": "/lessons/8/dialogue/3",
+        "exactSourcePath": "/lessons/7/dialogue/3"
+      },
+      {
+        "reported": "/lessons/8/cloze",
+        "exactSourcePath": "/lessons/7/cloze"
+      },
+      {
+        "reported": "/lessons/8/terms/5",
+        "exactSourcePath": "/lessons/7/terms/5"
+      },
+      {
+        "reported": "/lessons/9/dialogue/3",
+        "exactSourcePath": "/lessons/8/dialogue/3"
+      },
+      {
+        "reported": "/lessons/9/cloze",
+        "exactSourcePath": "/lessons/8/cloze"
+      },
+      {
+        "reported": "/lessons/10/dialogue/1/targetText",
+        "exactSourcePath": "/lessons/9/dialogue/1/targetText"
+      },
+      {
+        "reported": "/lessons/10/dialogue/3",
+        "exactSourcePath": "/lessons/9/dialogue/3"
+      },
+      {
+        "reported": "/lessons/10/cloze",
+        "exactSourcePath": "/lessons/9/cloze"
+      },
+      {
+        "reported": "/lessons/10/pedagogicalGoal",
+        "exactSourcePath": "/lessons/9/pedagogicalGoal"
+      },
+      {
+        "reported": "/lessons/10/pattern/label",
+        "exactSourcePath": "/lessons/9/pattern/label"
+      },
+      {
+        "reported": "/lessons/10/pattern/rule",
+        "exactSourcePath": "/lessons/9/pattern/rule"
+      },
+      {
+        "reported": "/lessons/10/pattern/examples/0/targetText",
+        "exactSourcePath": "/lessons/9/pattern/examples/0/targetText"
+      },
+      {
+        "reported": "/lessons/10/pattern/examples/1/targetText",
+        "exactSourcePath": "/lessons/9/pattern/examples/1/targetText"
+      },
+      {
+        "reported": "/lessons/10/chunks/2/targetText",
+        "exactSourcePath": "/lessons/9/chunks/2/targetText"
+      },
+      {
+        "reported": "/lessons/10/terms/3/targetText",
+        "exactSourcePath": "/lessons/9/terms/3/targetText"
+      },
+      {
+        "reported": "/lessons/10/recall/after",
+        "exactSourcePath": "/lessons/9/recall/after"
+      }
+    ]
+  },
+  "codexEdits": {
+    "editor": "Codex",
+    "fromSha256": "d7860971e1eeb66fe0768f5490f6927a6ddcc46c8b30be2c1f15a7477324fec8",
+    "toSha256": "30fc26ea6e434241c16f7e06832dfc2d38cc7f62e67b3f1a20de84fad52cf818",
+    "scope": "L1 German idiom, L6/L8/L10 single-fit time choices, and L10 learner model and grammar explanation in the approved production stage.",
+    "subsequentEdits": [
+      {
+        "fromSha256": "30fc26ea6e434241c16f7e06832dfc2d38cc7f62e67b3f1a20de84fad52cf818",
+        "toSha256": "d241ac77a82d98444b7528c392d9975904702ae4a420c08f29dc6db20c1b9da9",
+        "scope": "L7: remove a second grammatical contrast from the time-choice bank."
+      }
+    ]
+  }
+}

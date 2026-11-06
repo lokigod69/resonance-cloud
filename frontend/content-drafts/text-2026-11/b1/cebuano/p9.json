@@ -1,0 +1,2244 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Naa koy reklamo — Ein Anliegen klären",
+    "en": "Naa koy reklamo — Sorting out a complaint"
+  },
+  "subtitle": {
+    "de": "Einen Vorfall schildern und eine passende Lösung aushandeln",
+    "en": "Explain what happened and negotiate a suitable remedy"
+  },
+  "anchor": "Ein Problem zeitlich einordnen, Belege nennen und einen Lösungsvorschlag annehmen oder höflich verändern.",
+  "lessons": [
+    {
+      "slug": "reklamo-kuwarto",
+      "title": {
+        "de": "Am Morgen an der Rezeption",
+        "en": "At reception in the morning"
+      },
+      "situation": {
+        "de": "Am Morgen fragt der Hotelleiter an der Rezeption nach deinem Anliegen.",
+        "en": "In the morning the hotel manager asks at reception what brings you there."
+      },
+      "pedagogicalGoal": "Eine nächtliche Störung beschreiben und einem Zimmerwechsel unter einer Bedingung zustimmen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may akong ikatabang nimo karong buntaga?",
+          "baseText": {
+            "de": "Was kann ich heute Morgen für Sie tun?",
+            "en": "What can I do for you this morning?"
+          }
+        },
+        {
+          "targetText": "Naa koy reklamo bahin sa kasaba nga akong nadungog tibuok gabii.",
+          "baseText": {
+            "de": "Ich möchte mich über den Lärm beschweren, den ich die ganze Nacht gehört habe.",
+            "en": "I have a complaint about the noise I heard all night."
+          }
+        },
+        {
+          "targetText": "May bakante nga kuwarto sa pikas bahin sa hotel. Gusto kang mobalhin?",
+          "baseText": {
+            "de": "Auf der anderen Seite des Hotels ist ein Zimmer frei. Möchten Sie umziehen?",
+            "en": "There's a room available on the other side of the hotel. Would you like to move?"
+          }
+        },
+        {
+          "targetText": "Sige, mobalhin ko kung makahatag ka og diskuwento sa kuwarto.",
+          "baseText": {
+            "de": "Ja, ich ziehe um, wenn Sie mir einen Preisnachlass auf das Zimmer geben können.",
+            "en": "Yes, I'll move if you can give me a discount on the room."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Naa koy reklamo bahin sa …",
+        "rule": {
+          "de": "Mit naa koy reklamo bahin sa nennst du den Gegenstand deiner Beschwerde. Nadungog beschreibt hier, was du selbst gehört hast.",
+          "en": "Use naa koy reklamo bahin sa to introduce the subject of a complaint. Here nadungog describes what you personally heard."
+        },
+        "examples": [
+          {
+            "targetText": "Naa koy reklamo bahin sa kasaba nga akong nadungog tibuok gabii.",
+            "baseText": {
+              "de": "Ich möchte mich über den Lärm beschweren, den ich die ganze Nacht gehört habe.",
+              "en": "I have a complaint about the noise I heard all night."
+            },
+            "highlight": "Naa koy reklamo bahin sa kasaba"
+          },
+          {
+            "targetText": "Naa koy reklamo bahin sa pultahan nga dili masirhan.",
+            "baseText": {
+              "de": "Ich möchte mich über die Tür beschweren, die sich nicht schließen lässt.",
+              "en": "I have a complaint about the door that won't close."
+            },
+            "highlight": "Naa koy reklamo bahin sa"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "choice",
+          "answer": "mobalhin",
+          "choices": [
+            "mosakay",
+            "mosukod",
+            "motimbang",
+            "mobalhin"
+          ]
+        },
+        " ko ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "gikan",
+            "imbes",
+            "kung",
+            "samtang"
+          ]
+        },
+        " makahatag ka og ",
+        {
+          "kind": "choice",
+          "answer": "diskuwento",
+          "choices": [
+            "hagdan",
+            "diskuwento",
+            "silong",
+            "hulmahan"
+          ]
+        },
+        " sa kuwarto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa koy reklamo",
+          "baseText": {
+            "de": "ich habe eine Beschwerde",
+            "en": "I have a complaint"
+          }
+        },
+        {
+          "targetText": "bahin sa kasaba",
+          "baseText": {
+            "de": "wegen des Lärms",
+            "en": "about the noise"
+          }
+        },
+        {
+          "targetText": "nga akong nadungog",
+          "baseText": {
+            "de": "den ich gehört habe",
+            "en": "that I heard"
+          }
+        },
+        {
+          "targetText": "tibuok gabii.",
+          "baseText": {
+            "de": "die ganze Nacht lang.",
+            "en": "all night."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "reklamo",
+          "baseText": {
+            "de": "Beschwerde",
+            "en": "complaint"
+          }
+        },
+        {
+          "targetText": "kasaba",
+          "baseText": {
+            "de": "Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "nadungog",
+          "baseText": {
+            "de": "gehört",
+            "en": "heard"
+          }
+        },
+        {
+          "targetText": "tibuok gabii",
+          "baseText": {
+            "de": "die ganze Nacht",
+            "en": "all night"
+          }
+        },
+        {
+          "targetText": "mobalhin",
+          "baseText": {
+            "de": "umziehen",
+            "en": "to move"
+          }
+        },
+        {
+          "targetText": "diskuwento",
+          "baseText": {
+            "de": "Preisnachlass",
+            "en": "discount"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa koy reklamo bahin sa ",
+        "answer": "kasaba",
+        "after": " nga akong nadungog tibuok gabii.",
+        "fallbackChoices": [
+          "kahilom",
+          "kahayag",
+          "presyo",
+          "kasaba"
+        ]
+      },
+      "speakRequired": [
+        "reklamo",
+        "kasaba",
+        "nadungog"
+      ],
+      "sceneCaption": {
+        "de": "Am Morgen fragt der Hotelleiter an der Rezeption nach deinem Anliegen. „Unsa may akong ikatabang nimo karong buntaga?“",
+        "en": "In the morning the hotel manager asks at reception what brings you there. “Unsa may akong ikatabang nimo karong buntaga?”"
+      },
+      "trophyWord": {
+        "word": "reklamo",
+        "meaning": {
+          "de": "Beschwerde",
+          "en": "complaint"
+        },
+        "example": "Naa koy reklamo bahin sa among kuwarto.",
+        "whyThisWord": {
+          "de": "Mit reklamo kannst du an der Rezeption ein Problem ausdrücklich zur Sprache bringen.",
+          "en": "Reklamo lets you explicitly raise a problem at reception."
+        }
+      },
+      "distractors": [
+        "Naa koy imbitasyon",
+        "bahin sa kahilom"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person mit Zimmerschlüssel an der Hotelrezeption.",
+        "en": "A guest holding a room key at a hotel reception desk."
+      },
+      "songMood": "Quiet brushed percussion",
+      "visualNotes": "A guest holding a room key at a hotel reception desk."
+    },
+    {
+      "slug": "problema-charger",
+      "title": {
+        "de": "Im Laden mit dem Ladegerät",
+        "en": "Back at the shop with a charger"
+      },
+      "situation": {
+        "de": "Du legst ein Ladegerät auf die Theke. Eine Verkäuferin fragt nach dem Fehler.",
+        "en": "You put a charger on the counter. A shop assistant asks what went wrong."
+      },
+      "pedagogicalGoal": "Einen plötzlichen Defekt schildern und höflich um Ersatz bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may nahitabo sa charger nga imong gidala?",
+          "baseText": {
+            "de": "Was ist mit dem Ladegerät passiert, das Sie mitgebracht haben?",
+            "en": "What happened to the charger you brought in?"
+          }
+        },
+        {
+          "targetText": "Naa koy problema sa charger nga kalit lang niundang og andar.",
+          "baseText": {
+            "de": "Ich habe ein Problem mit dem Ladegerät, das plötzlich nicht mehr funktioniert hat.",
+            "en": "I have a problem with the charger, which suddenly stopped working."
+          }
+        },
+        {
+          "targetText": "Mahimo namong ipaayo ang charger, apan usa ka semana ang hulat.",
+          "baseText": {
+            "de": "Wir können das Ladegerät reparieren lassen, aber das dauert eine Woche.",
+            "en": "We can send the charger for repair, but there's a week's wait."
+          }
+        },
+        {
+          "targetText": "Dili ko makahulat og semana. Mahimo bang ilisan na lang kini, palihug?",
+          "baseText": {
+            "de": "Ich kann keine Woche warten. Könnten Sie es bitte stattdessen austauschen?",
+            "en": "I can't wait a week. Could you replace it instead, please?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "niundang og …",
+        "rule": {
+          "de": "Nach niundang og steht hier die Tätigkeit, die aufgehört hat. Niundang bezeichnet den eingetretenen Ausfall.",
+          "en": "Use niundang og before the activity that stopped. Niundang presents the failure as an event that happened."
+        },
+        "examples": [
+          {
+            "targetText": "Naa koy problema sa charger nga kalit lang niundang og andar.",
+            "baseText": {
+              "de": "Ich habe ein Problem mit dem Ladegerät, das plötzlich nicht mehr funktioniert hat.",
+              "en": "I have a problem with the charger, which suddenly stopped working."
+            },
+            "highlight": "niundang og andar"
+          },
+          {
+            "targetText": "Ang bentilador niundang og andar human sa brownout.",
+            "baseText": {
+              "de": "Der Ventilator hat nach dem Stromausfall aufgehört zu laufen.",
+              "en": "The fan stopped working after the power cut."
+            },
+            "highlight": "niundang og andar"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Dili",
+          "choices": [
+            "Bisan",
+            "Aron",
+            "Dili",
+            "Wala"
+          ],
+          "cue": "Verneinung einer gegenwärtigen Unmöglichkeit · negative of present inability"
+        },
+        " ko makahulat og semana. Mahimo bang ",
+        {
+          "kind": "choice",
+          "answer": "ilisan",
+          "choices": [
+            "lutoon",
+            "ilisan",
+            "sukdon",
+            "timbangon"
+          ]
+        },
+        " na lang kini, palihug?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa koy problema",
+          "baseText": {
+            "de": "ich habe ein Problem",
+            "en": "I have a problem"
+          }
+        },
+        {
+          "targetText": "sa charger",
+          "baseText": {
+            "de": "mit dem Ladegerät",
+            "en": "with the charger"
+          }
+        },
+        {
+          "targetText": "nga kalit lang",
+          "baseText": {
+            "de": "das plötzlich",
+            "en": "that suddenly"
+          }
+        },
+        {
+          "targetText": "niundang og andar.",
+          "baseText": {
+            "de": "nicht mehr funktioniert hat.",
+            "en": "stopped working."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "problema",
+          "baseText": {
+            "de": "Problem",
+            "en": "problem"
+          }
+        },
+        {
+          "targetText": "charger",
+          "baseText": {
+            "de": "Ladegerät",
+            "en": "charger"
+          }
+        },
+        {
+          "targetText": "kalit lang",
+          "baseText": {
+            "de": "ganz plötzlich",
+            "en": "all of a sudden"
+          }
+        },
+        {
+          "targetText": "niundang",
+          "baseText": {
+            "de": "hörte auf",
+            "en": "stopped"
+          }
+        },
+        {
+          "targetText": "andar",
+          "baseText": {
+            "de": "laufen, funktionieren",
+            "en": "to run or work"
+          }
+        },
+        {
+          "targetText": "makahulat",
+          "baseText": {
+            "de": "warten können",
+            "en": "to be able to wait"
+          }
+        },
+        {
+          "targetText": "ilisan",
+          "baseText": {
+            "de": "austauschen",
+            "en": "to replace"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa koy problema sa charger nga kalit lang ",
+        "answer": "niundang",
+        "after": " og andar.",
+        "fallbackChoices": [
+          "nipalit",
+          "nilingkod",
+          "niundang",
+          "nisugod"
+        ]
+      },
+      "speakRequired": [
+        "problema",
+        "charger",
+        "niundang"
+      ],
+      "sceneCaption": {
+        "de": "Du legst ein Ladegerät auf die Theke. Eine Verkäuferin fragt nach dem Fehler. „Unsa may nahitabo sa charger nga imong gidala?“",
+        "en": "You put a charger on the counter. A shop assistant asks what went wrong. “Unsa may nahitabo sa charger nga imong gidala?”"
+      },
+      "trophyWord": {
+        "word": "problema",
+        "meaning": {
+          "de": "Problem",
+          "en": "problem"
+        },
+        "example": "Naa koy problema sa kable sa charger.",
+        "whyThisWord": {
+          "de": "Problema lässt sich mit sa und dem betroffenen Gerät verbinden, wenn du einen Fehler meldest.",
+          "en": "Problema can be followed by sa and the device when you report a fault."
+        }
+      },
+      "distractors": [
+        "Naa koy pangutana",
+        "nisugod og andar."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Ladegerät und sein Kabel liegen auf einer Ladentheke.",
+        "en": "A charger and cable lie on a shop counter."
+      },
+      "songMood": "Restrained acoustic shuffle",
+      "visualNotes": "A charger and cable lie on a shop counter."
+    },
+    {
+      "slug": "sulbad-gripo",
+      "title": {
+        "de": "Der tropfende Wasserhahn",
+        "en": "The dripping tap"
+      },
+      "situation": {
+        "de": "Der Vermieter kommt in die Küche und fragt nach dem Wasserhahn.",
+        "en": "The landlord comes into the kitchen and asks about the tap."
+      },
+      "pedagogicalGoal": "Eine weiterhin ausstehende Reparatur melden und einen früheren Termin begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Nagtulo pa ba ang gripo sa kusina?",
+          "baseText": {
+            "de": "Tropft der Wasserhahn in der Küche noch?",
+            "en": "Is the kitchen tap still dripping?"
+          }
+        },
+        {
+          "targetText": "Wala pay sulbad sa problema sa gripo nga sige og tulo.",
+          "baseText": {
+            "de": "Für den Wasserhahn, der ständig tropft, gibt es noch keine Lösung.",
+            "en": "There's still no solution to the problem with the tap that keeps dripping."
+          }
+        },
+        {
+          "targetText": "Makaari ang tubero sa Biyernes sa hapon.",
+          "baseText": {
+            "de": "Der Klempner kann am Freitagnachmittag kommen.",
+            "en": "The plumber can come on Friday afternoon."
+          }
+        },
+        {
+          "targetText": "Mahimo bang mas sayo, palihug, kay puno na ang balde?",
+          "baseText": {
+            "de": "Ginge es bitte früher, weil der Eimer schon voll ist?",
+            "en": "Could it be sooner, please, because the bucket is already full?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Wala pay sulbad",
+        "rule": {
+          "de": "Wala pay vor sulbad sagt, dass eine Lösung weiterhin fehlt. Sige og tulo beschreibt, was immer wieder passiert.",
+          "en": "Wala pay before sulbad says that a solution is still missing. Sige og tulo describes what keeps happening."
+        },
+        "examples": [
+          {
+            "targetText": "Wala pay sulbad sa problema sa gripo nga sige og tulo.",
+            "baseText": {
+              "de": "Für den Wasserhahn, der ständig tropft, gibt es noch keine Lösung.",
+              "en": "There's still no solution to the problem with the tap that keeps dripping."
+            },
+            "highlight": "Wala pay sulbad"
+          },
+          {
+            "targetText": "Wala pay sulbad sa problema sa suga sa hagdan.",
+            "baseText": {
+              "de": "Für das Problem mit dem Licht im Treppenhaus gibt es noch keine Lösung.",
+              "en": "There is still no solution to the problem with the light on the stairs."
+            },
+            "highlight": "Wala pay sulbad"
+          }
+        ]
+      },
+      "cloze": [
+        "Mahimo bang mas ",
+        {
+          "kind": "choice",
+          "answer": "sayo",
+          "choices": [
+            "humot",
+            "sayo",
+            "taas",
+            "lapad"
+          ]
+        },
+        ", palihug, ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "kay",
+            "aron",
+            "bisan",
+            "gikan"
+          ]
+        },
+        " puno na ang ",
+        {
+          "kind": "choice",
+          "answer": "balde",
+          "choices": [
+            "balde",
+            "kandado",
+            "plantsa",
+            "kutsilyo"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Wala pay sulbad",
+          "baseText": {
+            "de": "es gibt noch keine Lösung",
+            "en": "there is still no solution"
+          }
+        },
+        {
+          "targetText": "sa problema",
+          "baseText": {
+            "de": "für das Problem",
+            "en": "to the problem"
+          }
+        },
+        {
+          "targetText": "sa gripo",
+          "baseText": {
+            "de": "mit dem Wasserhahn",
+            "en": "with the tap"
+          }
+        },
+        {
+          "targetText": "nga sige og tulo.",
+          "baseText": {
+            "de": "der ständig tropft.",
+            "en": "that keeps dripping."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sulbad",
+          "baseText": {
+            "de": "Lösung",
+            "en": "solution"
+          }
+        },
+        {
+          "targetText": "gripo",
+          "baseText": {
+            "de": "Wasserhahn",
+            "en": "tap"
+          }
+        },
+        {
+          "targetText": "sige og tulo",
+          "baseText": {
+            "de": "ständig tropfen",
+            "en": "to keep dripping"
+          }
+        },
+        {
+          "targetText": "tubero",
+          "baseText": {
+            "de": "Klempner",
+            "en": "plumber"
+          }
+        },
+        {
+          "targetText": "mas sayo",
+          "baseText": {
+            "de": "früher",
+            "en": "sooner"
+          }
+        },
+        {
+          "targetText": "kay",
+          "baseText": {
+            "de": "weil",
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "balde",
+          "baseText": {
+            "de": "Eimer",
+            "en": "bucket"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Wala pay ",
+        "answer": "sulbad",
+        "after": " sa problema sa gripo nga sige og tulo.",
+        "fallbackChoices": [
+          "sapatos",
+          "sulbad",
+          "sabon",
+          "panyo"
+        ]
+      },
+      "speakRequired": [
+        "sulbad",
+        "gripo",
+        "sige"
+      ],
+      "sceneCaption": {
+        "de": "Der Vermieter kommt in die Küche und fragt nach dem Wasserhahn. „Nagtulo pa ba ang gripo sa kusina?“",
+        "en": "The landlord comes into the kitchen and asks about the tap. “Nagtulo pa ba ang gripo sa kusina?”"
+      },
+      "trophyWord": {
+        "word": "sulbad",
+        "meaning": {
+          "de": "Lösung",
+          "en": "solution"
+        },
+        "example": "Kinahanglan tag sulbad sa problema sa tubig.",
+        "whyThisWord": {
+          "de": "Sulbad benennt die Lösung selbst. In wala pay sulbad sagst du, dass sie noch aussteht.",
+          "en": "Sulbad names the solution itself. In wala pay sulbad you say that it is still outstanding."
+        }
+      },
+      "distractors": [
+        "Naa nay sulbad",
+        "nga hinay og tingog."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Wasserhahn tropft in einen Eimer unter der Spüle.",
+        "en": "A tap drips into a bucket beneath a sink."
+      },
+      "songMood": "Spare plucked guitar",
+      "visualNotes": "A tap drips into a bucket beneath a sink."
+    },
+    {
+      "slug": "bayad-pagkaon",
+      "title": {
+        "de": "Die Rechnung im Restaurant",
+        "en": "The restaurant bill"
+      },
+      "situation": {
+        "de": "An der Restaurantkasse fragt der Kassierer nach einem offenen Posten.",
+        "en": "At the restaurant till, the cashier asks about an unpaid item."
+      },
+      "pedagogicalGoal": "Eine fehlende Zahlung von einer Zahlungsverweigerung unterscheiden und die Bestellung richtigstellen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Nganong wala pa nimo bayri ang isda?",
+          "baseText": {
+            "de": "Warum haben Sie den Fisch noch nicht bezahlt?",
+            "en": "Why haven't you paid for the fish yet?"
+          }
+        },
+        {
+          "targetText": "Wala pa ko mohatag og bayad para sa isda kay manok ang akong giorder.",
+          "baseText": {
+            "de": "Ich habe den Fisch noch nicht bezahlt, weil ich Hähnchen bestellt hatte.",
+            "en": "I haven't paid for the fish because I ordered chicken."
+          }
+        },
+        {
+          "targetText": "Sakto ka. Akong tangtangon ang isda sa imong bayranan.",
+          "baseText": {
+            "de": "Sie haben recht. Ich streiche den Fisch von Ihrer Rechnung.",
+            "en": "You're right. I'll take the fish off your bill."
+          }
+        },
+        {
+          "targetText": "Wala ko mokaon sa isda, apan mobayad ko sa nahibilin.",
+          "baseText": {
+            "de": "Vom Fisch habe ich nichts gegessen, aber den Rest bezahle ich.",
+            "en": "I didn't eat the fish, but I'll pay the rest."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "ang akong giorder",
+        "rule": {
+          "de": "Giorder lenkt den Blick auf das Bestellte. Manok steht zur Verdeutlichung vor ang akong giorder, weil gerade das Gericht strittig ist.",
+          "en": "Giorder focuses on what was ordered. Putting manok before ang akong giorder singles out the dish in dispute."
+        },
+        "examples": [
+          {
+            "targetText": "Wala pa ko mohatag og bayad para sa isda kay manok ang akong giorder.",
+            "baseText": {
+              "de": "Ich habe den Fisch noch nicht bezahlt, weil ich Hähnchen bestellt hatte.",
+              "en": "I haven't paid for the fish because I ordered chicken."
+            },
+            "highlight": "manok ang akong giorder"
+          },
+          {
+            "targetText": "Tubig ang ilang gidala, apan kape ang akong giorder.",
+            "baseText": {
+              "de": "Sie haben Wasser gebracht, ich hatte aber Kaffee bestellt.",
+              "en": "They brought water, but coffee was what I ordered."
+            },
+            "highlight": "kape ang akong giorder"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Wala",
+          "choices": [
+            "Wala",
+            "Dili",
+            "Bisan",
+            "Aron"
+          ],
+          "cue": "Verneinung eines vergangenen Ereignisses · negating a past event"
+        },
+        " ko mokaon sa isda, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "hapit",
+            "uban",
+            "tali",
+            "apan"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "mobayad",
+          "choices": [
+            "motahi",
+            "mosulat",
+            "mobayad",
+            "mosayaw"
+          ]
+        },
+        " ko sa nahibilin."
+      ],
+      "chunks": [
+        {
+          "targetText": "Wala pa ko mohatag",
+          "baseText": {
+            "de": "ich habe noch nichts",
+            "en": "I haven't made"
+          }
+        },
+        {
+          "targetText": "og bayad para sa isda",
+          "baseText": {
+            "de": "für den Fisch bezahlt",
+            "en": "a payment for the fish yet"
+          }
+        },
+        {
+          "targetText": "kay manok",
+          "baseText": {
+            "de": "weil Hähnchen",
+            "en": "because chicken"
+          }
+        },
+        {
+          "targetText": "ang akong giorder.",
+          "baseText": {
+            "de": "meine Bestellung war.",
+            "en": "was what I ordered."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bayad",
+          "baseText": {
+            "de": "Zahlung",
+            "en": "payment"
+          }
+        },
+        {
+          "targetText": "isda",
+          "baseText": {
+            "de": "Fisch",
+            "en": "fish"
+          }
+        },
+        {
+          "targetText": "manok",
+          "baseText": {
+            "de": "Hähnchen",
+            "en": "chicken"
+          }
+        },
+        {
+          "targetText": "giorder",
+          "baseText": {
+            "de": "bestellt",
+            "en": "ordered"
+          }
+        },
+        {
+          "targetText": "tangtangon",
+          "baseText": {
+            "de": "entfernen",
+            "en": "to remove"
+          }
+        },
+        {
+          "targetText": "nahibilin",
+          "baseText": {
+            "de": "übrig geblieben",
+            "en": "remaining"
+          }
+        },
+        {
+          "targetText": "kantidad",
+          "baseText": {
+            "de": "Betrag",
+            "en": "amount"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Wala pa ko mohatag og bayad para sa isda kay ",
+        "answer": "manok",
+        "after": " ang akong giorder.",
+        "fallbackChoices": [
+          "manok",
+          "sabon",
+          "papel",
+          "lapis"
+        ]
+      },
+      "speakRequired": [
+        "bayad",
+        "manok",
+        "giorder"
+      ],
+      "sceneCaption": {
+        "de": "An der Restaurantkasse fragt der Kassierer nach einem offenen Posten. „Nganong wala pa nimo bayri ang isda?“",
+        "en": "At the restaurant till, the cashier asks about an unpaid item. “Nganong wala pa nimo bayri ang isda?”"
+      },
+      "trophyWord": {
+        "word": "bayad",
+        "meaning": {
+          "de": "Zahlung",
+          "en": "payment"
+        },
+        "example": "Para sa paniudto kining bayad.",
+        "whyThisWord": {
+          "de": "Bayad bezeichnet als eigenständiges Wort die Zahlung. Mit mobayad kündigst du dagegen an, dass du bezahlst.",
+          "en": "On its own, bayad names the payment. Use mobayad to say that you will pay."
+        }
+      },
+      "distractors": [
+        "Naa na koy bayad",
+        "ang iyang giorder."
+      ],
+      "placeholderCaption": {
+        "de": "Auf der Restauranttheke liegen ein Bestellzettel und eine Rechnung.",
+        "en": "An order slip and a bill sit on the restaurant counter."
+      },
+      "songMood": "Light counter rhythm",
+      "visualNotes": "An order slip and a bill sit on the restaurant counter."
+    },
+    {
+      "slug": "pasensya-padala",
+      "title": {
+        "de": "Warten auf ein Paket",
+        "en": "Waiting for a parcel"
+      },
+      "situation": {
+        "de": "Ein Paketbote meldet sich telefonisch wegen deiner Sendung.",
+        "en": "A courier calls you about your parcel."
+      },
+      "pedagogicalGoal": "Auf eine Entschuldigung reagieren, nach einem neuen Termin fragen und um einen Anruf bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Pasayloa ko, wala maabot ang imong pakete sa gisaad nga adlaw.",
+          "baseText": {
+            "de": "Entschuldigen Sie, Ihr Paket ist am zugesagten Tag nicht angekommen.",
+            "en": "I'm sorry your parcel didn't arrive on the promised day."
+          }
+        },
+        {
+          "targetText": "May pasensya pa ko, apan gusto kong mahibalo kung kanus-a moabot ang pakete.",
+          "baseText": {
+            "de": "Ich habe noch Geduld, möchte aber wissen, wann das Paket ankommt.",
+            "en": "I can be patient a little longer, but I'd like to know when the parcel will arrive."
+          }
+        },
+        {
+          "targetText": "Sa Lunes sa buntag ko makaabot sa inyong dalan.",
+          "baseText": {
+            "de": "Am Montagvormittag kann ich bei Ihnen in der Straße sein.",
+            "en": "I can reach your street on Monday morning."
+          }
+        },
+        {
+          "targetText": "Sige, apan palihug tawagi ko sa dili pa ka moabot.",
+          "baseText": {
+            "de": "In Ordnung, aber rufen Sie mich bitte an, bevor Sie kommen.",
+            "en": "All right, but please call me before you arrive."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "gusto kong mahibalo kung …",
+        "rule": {
+          "de": "Nach gusto kong mahibalo kann kung kanus-a eine indirekte Frage nach dem Zeitpunkt einleiten. Apan verbindet sie mit dem vorausgehenden Zugeständnis.",
+          "en": "After gusto kong mahibalo, kung kanus-a can introduce an indirect question about when. Apan links it to a preceding concession."
+        },
+        "examples": [
+          {
+            "targetText": "May pasensya pa ko, apan gusto kong mahibalo kung kanus-a moabot ang pakete.",
+            "baseText": {
+              "de": "Ich habe noch Geduld, möchte aber wissen, wann das Paket ankommt.",
+              "en": "I can be patient a little longer, but I'd like to know when the parcel will arrive."
+            },
+            "highlight": "gusto kong mahibalo kung kanus-a"
+          },
+          {
+            "targetText": "Makahulat ko, apan gusto kong mahibalo kung kanus-a moabli ang opisina.",
+            "baseText": {
+              "de": "Ich kann warten, möchte aber wissen, wann das Büro öffnet.",
+              "en": "I can wait, but I would like to know when the office opens."
+            },
+            "highlight": "gusto kong mahibalo kung kanus-a"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "hapit",
+            "gikan",
+            "tali",
+            "apan"
+          ]
+        },
+        " palihug ",
+        {
+          "kind": "choice",
+          "answer": "tawagi",
+          "choices": [
+            "lutoa",
+            "timbanga",
+            "tawagi",
+            "tahii"
+          ]
+        },
+        " ko sa dili pa ka ",
+        {
+          "kind": "choice",
+          "answer": "moabot",
+          "choices": [
+            "mosayaw",
+            "moabot",
+            "manglangoy",
+            "magtahi"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "May pasensya pa ko,",
+          "baseText": {
+            "de": "ich habe noch Geduld,",
+            "en": "I still have patience,"
+          }
+        },
+        {
+          "targetText": "apan gusto kong mahibalo",
+          "baseText": {
+            "de": "aber ich möchte wissen,",
+            "en": "but I want to know"
+          }
+        },
+        {
+          "targetText": "kung kanus-a",
+          "baseText": {
+            "de": "wann",
+            "en": "when"
+          }
+        },
+        {
+          "targetText": "moabot ang pakete.",
+          "baseText": {
+            "de": "das Paket ankommt.",
+            "en": "the parcel will arrive."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pasensya",
+          "baseText": {
+            "de": "Geduld",
+            "en": "patience"
+          }
+        },
+        {
+          "targetText": "pakete",
+          "baseText": {
+            "de": "Paket",
+            "en": "parcel"
+          }
+        },
+        {
+          "targetText": "gisaad",
+          "baseText": {
+            "de": "zugesagt",
+            "en": "promised"
+          }
+        },
+        {
+          "targetText": "mahibalo",
+          "baseText": {
+            "de": "erfahren",
+            "en": "to find out"
+          }
+        },
+        {
+          "targetText": "moabot",
+          "baseText": {
+            "de": "ankommen",
+            "en": "to arrive"
+          }
+        },
+        {
+          "targetText": "tawagi ko",
+          "baseText": {
+            "de": "rufen Sie mich an",
+            "en": "call me"
+          }
+        },
+        {
+          "targetText": "sa dili pa",
+          "baseText": {
+            "de": "bevor",
+            "en": "before"
+          }
+        }
+      ],
+      "recall": {
+        "before": "May ",
+        "answer": "pasensya",
+        "after": " pa ko, apan gusto kong mahibalo kung kanus-a moabot ang pakete.",
+        "fallbackChoices": [
+          "singsing",
+          "barya",
+          "hagdan",
+          "pasensya"
+        ]
+      },
+      "speakRequired": [
+        "pasensya",
+        "mahibalo",
+        "moabot"
+      ],
+      "sceneCaption": {
+        "de": "Ein Paketbote meldet sich telefonisch wegen deiner Sendung. „Pasayloa ko, wala maabot ang imong pakete sa gisaad nga adlaw.“",
+        "en": "A courier calls you about your parcel. “Pasayloa ko, wala maabot ang imong pakete sa gisaad nga adlaw.”"
+      },
+      "trophyWord": {
+        "word": "pasensya",
+        "meaning": {
+          "de": "Geduld",
+          "en": "patience"
+        },
+        "example": "Salamat sa imong pasensya samtang naghulat ka.",
+        "whyThisWord": {
+          "de": "Pasensya bezeichnet hier Geduld. Mit salamat sa imong pasensya kannst du dich bei jemandem fürs Warten bedanken.",
+          "en": "Here pasensya means patience. Salamat sa imong pasensya thanks someone for waiting."
+        }
+      },
+      "distractors": [
+        "Wala na koy pasensya,",
+        "mobalik ang drayber."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person telefoniert neben der Haustür und hält einen Paketschein.",
+        "en": "A person by the front door holds a parcel slip during a phone call."
+      },
+      "songMood": "Easy muted piano",
+      "visualNotes": "A person by the front door holds a parcel slip during a phone call."
+    },
+    {
+      "slug": "tarong-manggas",
+      "title": {
+        "de": "Anprobe in der Schneiderei",
+        "en": "A fitting at the tailor’s"
+      },
+      "situation": {
+        "de": "Bei der Anprobe fragt der Schneider, wie das neue Hemd sitzt.",
+        "en": "During a fitting, the tailor asks how your new shirt fits."
+      },
+      "pedagogicalGoal": "Einen Passformfehler begründen und um einen früheren Anprobetermin bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta man ang sukod sa imong kamiseta?",
+          "baseText": {
+            "de": "Wie passt Ihnen das Hemd?",
+            "en": "How does the shirt fit?"
+          }
+        },
+        {
+          "targetText": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot.",
+          "baseText": {
+            "de": "Der Ärmel passt nicht richtig, weil er meine Hand verdeckt.",
+            "en": "The sleeve doesn't fit properly because it covers my hand."
+          }
+        },
+        {
+          "targetText": "Sukdon nako pag-usab ang imong bukton sa Martes.",
+          "baseText": {
+            "de": "Am Dienstag messe ich Ihren Arm noch einmal aus.",
+            "en": "I'll measure your arm again on Tuesday."
+          }
+        },
+        {
+          "targetText": "Mahimo ba sa Lunes, palihug? Dili ko kalugar sa Martes.",
+          "baseText": {
+            "de": "Ginge es bitte am Montag? Am Dienstag habe ich keine Zeit.",
+            "en": "Could we do Monday, please? I'm not free on Tuesday."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "dili tarong ang sukod",
+        "rule": {
+          "de": "Dili steht vor tarong, wenn eine Passform nicht stimmt. Mit kay kannst du das konkrete Problem anschließen; mit dili tarong nga sagst du, was nicht in Ordnung ist.",
+          "en": "Put dili before tarong to say that something doesn't fit properly. Use kay to explain exactly what is wrong; dili tarong nga introduces the thing that isn't right."
+        },
+        "examples": [
+          {
+            "targetText": "Dili tarong ang sukod sa manggas kay matabonan ang akong kamot.",
+            "baseText": {
+              "de": "Der Ärmel passt nicht richtig, weil er meine Hand verdeckt.",
+              "en": "The sleeve doesn't fit properly because it covers my hand."
+            },
+            "highlight": "Dili tarong ang sukod"
+          },
+          {
+            "targetText": "Dili tarong ang sukod sa kwelyo kay huot kaayo.",
+            "baseText": {
+              "de": "Der Kragen passt nicht richtig, weil er viel zu eng ist.",
+              "en": "The collar doesn't fit properly because it's much too tight."
+            },
+            "highlight": "Dili tarong ang sukod"
+          },
+          {
+            "targetText": "Dili tarong nga mas taas ang usa ka manggas kaysa sa pikas.",
+            "baseText": {
+              "de": "Es ist nicht in Ordnung, dass ein Ärmel länger ist als der andere.",
+              "en": "It's not right that one sleeve is longer than the other."
+            },
+            "highlight": "Dili tarong nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Mahimo ba sa ",
+        {
+          "kind": "choice",
+          "answer": "Lunes",
+          "choices": [
+            "sinina",
+            "sukli",
+            "Lunes",
+            "lamesa"
+          ]
+        },
+        ", palihug? ",
+        {
+          "kind": "form",
+          "answer": "Dili",
+          "choices": [
+            "Aron",
+            "Dili",
+            "Wala",
+            "Bisan"
+          ],
+          "cue": "Verneinung der Verfügbarkeit für einen künftigen Termin · not being available for a future appointment"
+        },
+        " ko kalugar sa Martes."
+      ],
+      "chunks": [
+        {
+          "targetText": "Dili tarong",
+          "baseText": {
+            "de": "nicht richtig",
+            "en": "not right"
+          }
+        },
+        {
+          "targetText": "ang sukod sa manggas",
+          "baseText": {
+            "de": "das Maß des Ärmels",
+            "en": "the fit of the sleeve"
+          }
+        },
+        {
+          "targetText": "kay matabonan",
+          "baseText": {
+            "de": "weil bedeckt wird",
+            "en": "because it gets covered"
+          }
+        },
+        {
+          "targetText": "ang akong kamot.",
+          "baseText": {
+            "de": "meine Hand.",
+            "en": "my hand."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tarong",
+          "baseText": {
+            "de": "richtig, ordentlich",
+            "en": "right, proper"
+          }
+        },
+        {
+          "targetText": "sukod",
+          "baseText": {
+            "de": "Maß",
+            "en": "measurement"
+          }
+        },
+        {
+          "targetText": "manggas",
+          "baseText": {
+            "de": "Ärmel",
+            "en": "sleeve"
+          }
+        },
+        {
+          "targetText": "matabonan",
+          "baseText": {
+            "de": "verdeckt werden",
+            "en": "to get covered"
+          }
+        },
+        {
+          "targetText": "bukton",
+          "baseText": {
+            "de": "Arm",
+            "en": "arm"
+          }
+        },
+        {
+          "targetText": "kalugar",
+          "baseText": {
+            "de": "Zeit haben",
+            "en": "to be free"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dili tarong ang sukod sa ",
+        "answer": "manggas",
+        "after": " kay matabonan ang akong kamot.",
+        "fallbackChoices": [
+          "bulsa",
+          "kupot",
+          "manggas",
+          "kwelyo"
+        ]
+      },
+      "speakRequired": [
+        "tarong",
+        "sukod",
+        "matabonan"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Anprobe fragt der Schneider, wie das neue Hemd sitzt. „Kumusta man ang sukod sa imong kamiseta?“",
+        "en": "During a fitting, the tailor asks how your new shirt fits. “Kumusta man ang sukod sa imong kamiseta?”"
+      },
+      "trophyWord": {
+        "word": "tarong",
+        "meaning": {
+          "de": "richtig, ordentlich",
+          "en": "right, proper"
+        },
+        "example": "Dili tarong ang tahi sa akong bulsa.",
+        "whyThisWord": {
+          "de": "Tarong beschreibt, ob etwas ordentlich gemacht ist. Dili tarong passt bei einem schlecht sitzenden oder schlecht genähten Kleidungsstück.",
+          "en": "Tarong describes whether something has been done properly. Dili tarong is useful for clothing that fits or is stitched poorly."
+        }
+      },
+      "distractors": [
+        "Sakto kaayo",
+        "ang akong abaga."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hemdsärmel reicht bei der Anprobe über die Hand.",
+        "en": "A shirt sleeve reaches over a hand at a fitting."
+      },
+      "songMood": "Soft workshop strings",
+      "visualNotes": "A shirt sleeve reaches over a hand at a fitting."
+    },
+    {
+      "slug": "sakto-tambal",
+      "title": {
+        "de": "Mit dem Rezept in der Apotheke",
+        "en": "At the pharmacy with a prescription"
+      },
+      "situation": {
+        "de": "Du zeigst einer Apothekerin die Packung und dein Rezept. Sie fragt nach dem Problem.",
+        "en": "You show the pharmacist the box and your prescription. She asks what's wrong."
+      },
+      "pedagogicalGoal": "Einen Fehler anhand des Rezepts beanstanden und um Erstattung der Differenz bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may problema sa tambal nga imong nakuha?",
+          "baseText": {
+            "de": "Was stimmt mit dem Medikament nicht, das Sie bekommen haben?",
+            "en": "What's wrong with the medicine you received?"
+          }
+        },
+        {
+          "targetText": "Dili sakto ang dosis sa tambal nga gihatag nimo kanako.",
+          "baseText": {
+            "de": "Das Medikament, das Sie mir gegeben haben, hat die falsche Dosierung.",
+            "en": "The dose of the medicine you gave me is wrong."
+          }
+        },
+        {
+          "targetText": "Akong ilisan kini og pakete nga tugma sa reseta. Mas barato usab kana.",
+          "baseText": {
+            "de": "Ich tausche die Packung gegen eine aus, die dem Rezept entspricht. Sie ist auch günstiger.",
+            "en": "I'll exchange it for a box that matches the prescription. That one costs less, too."
+          }
+        },
+        {
+          "targetText": "Sige, apan mahimo bang ibalik ang kalainan sa presyo, palihug?",
+          "baseText": {
+            "de": "In Ordnung. Könnten Sie mir aber bitte den Preisunterschied erstatten?",
+            "en": "All right, but could you refund the price difference, please?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "dili sakto ang … nga gihatag",
+        "rule": {
+          "de": "Mit dili sakto benennst du die Abweichung. Die Beschreibung mit nga gihatag bezieht sich auf das bereits ausgehändigte Produkt.",
+          "en": "Use dili sakto to identify a mismatch. Nga gihatag describes the product that was already handed over."
+        },
+        "examples": [
+          {
+            "targetText": "Dili sakto ang dosis sa tambal nga gihatag nimo kanako.",
+            "baseText": {
+              "de": "Das Medikament, das Sie mir gegeben haben, hat die falsche Dosierung.",
+              "en": "The dose of the medicine you gave me is wrong."
+            },
+            "highlight": "Dili sakto ang dosis"
+          },
+          {
+            "targetText": "Dili sakto ang gidaghanon sa mga sobre nga gihatag kanako.",
+            "baseText": {
+              "de": "Die Anzahl der Umschläge, die ich bekommen habe, stimmt nicht.",
+              "en": "The number of envelopes I was given is wrong."
+            },
+            "highlight": "Dili sakto ang gidaghanon"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, apan mahimo bang ",
+        {
+          "kind": "choice",
+          "answer": "ibalik",
+          "choices": [
+            "lutoon",
+            "ibalik",
+            "tahion",
+            "sudlayon"
+          ]
+        },
+        " ang kalainan sa ",
+        {
+          "kind": "choice",
+          "answer": "presyo",
+          "choices": [
+            "presyo",
+            "kahumot",
+            "gitas-on",
+            "katugnaw"
+          ]
+        },
+        ", palihug?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Dili sakto",
+          "baseText": {
+            "de": "es stimmt nicht",
+            "en": "it isn't right"
+          }
+        },
+        {
+          "targetText": "ang dosis",
+          "baseText": {
+            "de": "die Dosis",
+            "en": "the dose"
+          }
+        },
+        {
+          "targetText": "sa tambal",
+          "baseText": {
+            "de": "des Medikaments",
+            "en": "of the medicine"
+          }
+        },
+        {
+          "targetText": "nga gihatag nimo kanako.",
+          "baseText": {
+            "de": "das Sie mir gegeben haben.",
+            "en": "that you gave me."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sakto",
+          "baseText": {
+            "de": "richtig, passend",
+            "en": "correct, right"
+          }
+        },
+        {
+          "targetText": "dosis",
+          "baseText": {
+            "de": "Dosis",
+            "en": "dose"
+          }
+        },
+        {
+          "targetText": "tambal",
+          "baseText": {
+            "de": "Medikament",
+            "en": "medicine"
+          }
+        },
+        {
+          "targetText": "gihatag",
+          "baseText": {
+            "de": "gegeben",
+            "en": "given"
+          }
+        },
+        {
+          "targetText": "reseta",
+          "baseText": {
+            "de": "Rezept",
+            "en": "prescription"
+          }
+        },
+        {
+          "targetText": "kalainan sa presyo",
+          "baseText": {
+            "de": "Preisunterschied",
+            "en": "difference in price"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dili sakto ang ",
+        "answer": "dosis",
+        "after": " sa tambal nga gihatag nimo kanako.",
+        "fallbackChoices": [
+          "selyo",
+          "dosis",
+          "hagdan",
+          "baho"
+        ]
+      },
+      "speakRequired": [
+        "sakto",
+        "dosis",
+        "gihatag"
+      ],
+      "sceneCaption": {
+        "de": "Du zeigst einer Apothekerin die Packung und dein Rezept. Sie fragt nach dem Problem. „Unsa may problema sa tambal nga imong nakuha?“",
+        "en": "You show the pharmacist the box and your prescription. She asks what's wrong. “Unsa may problema sa tambal nga imong nakuha?”"
+      },
+      "trophyWord": {
+        "word": "sakto",
+        "meaning": {
+          "de": "richtig, passend",
+          "en": "correct, right"
+        },
+        "example": "Dili sakto ang presyo sa kahon.",
+        "whyThisWord": {
+          "de": "Mit sakto kannst du prüfen, ob eine Angabe stimmt, etwa auf einem Rezept oder einem Preisschild.",
+          "en": "Use sakto to check whether an entry is correct, for instance on a prescription or price tag."
+        }
+      },
+      "distractors": [
+        "Sakto ra",
+        "nga gipalit sa akong silingan."
+      ],
+      "placeholderCaption": {
+        "de": "Eine verschlossene Packung und ein Rezept auf dem Apothekentresen.",
+        "en": "A sealed box and a prescription on a pharmacy counter."
+      },
+      "songMood": "Even plucked bass",
+      "visualNotes": "A sealed box and a prescription on a pharmacy counter."
+    },
+    {
+      "slug": "kuwarta-dobleng-kaltas",
+      "title": {
+        "de": "Zwei Buchungen auf dem Konto",
+        "en": "Two entries on the account"
+      },
+      "situation": {
+        "de": "Am Kundenschalter zeigst du einer Mitarbeiterin deinen Kontoauszug.",
+        "en": "At the customer service desk you show an agent your account statement."
+      },
+      "pedagogicalGoal": "Eine doppelte Abbuchung beschreiben und um einen schriftlichen Nachweis bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa man ang imong nabantayan sa imong account?",
+          "baseText": {
+            "de": "Was ist Ihnen bei Ihrem Konto aufgefallen?",
+            "en": "What did you notice about your account?"
+          }
+        },
+        {
+          "targetText": "Kaduha gikuha ang kuwarta sa akong account para sa usa ka tiket.",
+          "baseText": {
+            "de": "Für eine einzige Fahrkarte wurde das Geld zweimal von meinem Konto abgebucht.",
+            "en": "Money was taken from my account twice for a single ticket."
+          }
+        },
+        {
+          "targetText": "Mabalik ang sobrang bayad sulod sa tulo ka adlaw.",
+          "baseText": {
+            "de": "Der zu viel gezahlte Betrag wird innerhalb von drei Tagen erstattet.",
+            "en": "The extra payment will be refunded within three days."
+          }
+        },
+        {
+          "targetText": "Sige, apan palihug hatagi ko og resibo aron may pamatuod ko.",
+          "baseText": {
+            "de": "In Ordnung, aber geben Sie mir bitte einen Beleg, damit ich einen Nachweis habe.",
+            "en": "All right, but please give me a receipt so that I have proof."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "kaduha + gi-Form",
+        "rule": {
+          "de": "Kaduha zählt, wie oft etwas geschah. Gikuha stellt das Geld in den Mittelpunkt, ohne die Person zu benennen, die es abgebucht hat.",
+          "en": "Kaduha counts how many times something happened. Gikuha puts the money in focus without naming who took it."
+        },
+        "examples": [
+          {
+            "targetText": "Kaduha gikuha ang kuwarta sa akong account para sa usa ka tiket.",
+            "baseText": {
+              "de": "Für eine einzige Fahrkarte wurde das Geld zweimal von meinem Konto abgebucht.",
+              "en": "Money was taken from my account twice for a single ticket."
+            },
+            "highlight": "Kaduha gikuha ang kuwarta"
+          },
+          {
+            "targetText": "Kaduha gikuha ang bayad para sa usa ka gabii sa hotel.",
+            "baseText": {
+              "de": "Der Betrag für eine Hotelnacht wurde zweimal abgebucht.",
+              "en": "The charge for one night at the hotel was taken twice."
+            },
+            "highlight": "Kaduha gikuha"
+          }
+        ]
+      },
+      "cloze": [
+        "Sige, apan palihug ",
+        {
+          "kind": "choice",
+          "answer": "hatagi",
+          "choices": [
+            "hatagi",
+            "lutoa",
+            "sukda",
+            "timbanga"
+          ]
+        },
+        " ko og ",
+        {
+          "kind": "choice",
+          "answer": "resibo",
+          "choices": [
+            "taklob",
+            "manggas",
+            "tambal",
+            "resibo"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "aron",
+          "choices": [
+            "aron",
+            "gikan",
+            "imbes",
+            "tali"
+          ]
+        },
+        " may pamatuod ko."
+      ],
+      "chunks": [
+        {
+          "targetText": "Kaduha gikuha",
+          "baseText": {
+            "de": "zweimal wurde abgebucht",
+            "en": "taken out twice"
+          }
+        },
+        {
+          "targetText": "ang kuwarta",
+          "baseText": {
+            "de": "das Geld",
+            "en": "the money"
+          }
+        },
+        {
+          "targetText": "sa akong account",
+          "baseText": {
+            "de": "von meinem Konto",
+            "en": "from my account"
+          }
+        },
+        {
+          "targetText": "para sa usa ka tiket.",
+          "baseText": {
+            "de": "für eine einzige Fahrkarte.",
+            "en": "for a single ticket."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kuwarta",
+          "baseText": {
+            "de": "Geld",
+            "en": "money"
+          }
+        },
+        {
+          "targetText": "kaduha",
+          "baseText": {
+            "de": "zweimal",
+            "en": "twice"
+          }
+        },
+        {
+          "targetText": "gikuha",
+          "baseText": {
+            "de": "genommen, abgebucht",
+            "en": "taken out"
+          }
+        },
+        {
+          "targetText": "account",
+          "baseText": {
+            "de": "Konto",
+            "en": "account"
+          }
+        },
+        {
+          "targetText": "sobrang bayad",
+          "baseText": {
+            "de": "zu viel gezahlter Betrag",
+            "en": "excess payment"
+          }
+        },
+        {
+          "targetText": "hatagi ko og resibo",
+          "baseText": {
+            "de": "geben Sie mir einen Beleg",
+            "en": "give me a receipt"
+          }
+        },
+        {
+          "targetText": "aron",
+          "baseText": {
+            "de": "damit",
+            "en": "so that"
+          }
+        },
+        {
+          "targetText": "pamatuod",
+          "baseText": {
+            "de": "Nachweis, Beleg",
+            "en": "proof"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Kaduha gikuha ang ",
+        "answer": "kuwarta",
+        "after": " sa akong account para sa usa ka tiket.",
+        "fallbackChoices": [
+          "kuwarta",
+          "sobre",
+          "lapis",
+          "susi"
+        ]
+      },
+      "speakRequired": [
+        "kaduha",
+        "gikuha",
+        "kuwarta"
+      ],
+      "sceneCaption": {
+        "de": "Am Kundenschalter zeigst du einer Mitarbeiterin deinen Kontoauszug. „Unsa man ang imong nabantayan sa imong account?“",
+        "en": "At the customer service desk you show an agent your account statement. “Unsa man ang imong nabantayan sa imong account?”"
+      },
+      "trophyWord": {
+        "word": "kuwarta",
+        "meaning": {
+          "de": "Geld",
+          "en": "money"
+        },
+        "example": "Gikuha na ang kuwarta sa akong account.",
+        "whyThisWord": {
+          "de": "Kuwarta bezeichnet Geld. In gikuha ang kuwarta benennst du es als das, was abgebucht oder weggenommen wurde.",
+          "en": "Kuwarta means money. In gikuha ang kuwarta, it is the thing that was withdrawn or taken."
+        }
+      },
+      "distractors": [
+        "Kausa gikuha",
+        "para sa duha ka tiket."
+      ],
+      "placeholderCaption": {
+        "de": "Am Schalter zeigt eine Hand auf zwei gleich hohe Buchungen.",
+        "en": "At the desk a hand points to two transactions for the same amount."
+      },
+      "songMood": "Low steady acoustic beat",
+      "visualNotes": "At the desk a hand points to two transactions for the same amount."
+    },
+    {
+      "slug": "pahibalo-kuryente",
+      "title": {
+        "de": "Ein Besuch beim Stromversorger",
+        "en": "At the electric utility"
+      },
+      "situation": {
+        "de": "Am Kundenschalter des Stromversorgers fragt dich ein Mitarbeiter nach deinem Anliegen.",
+        "en": "At the electric utility's customer desk a clerk asks why you've come in."
+      },
+      "pedagogicalGoal": "Eine ausgebliebene Benachrichtigung melden und indirekt nach der Vorlaufzeit fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong reklamo bahin sa among serbisyo?",
+          "baseText": {
+            "de": "Was möchten Sie an unserem Service beanstanden?",
+            "en": "What is your complaint about our service?"
+          }
+        },
+        {
+          "targetText": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente.",
+          "baseText": {
+            "de": "Ich habe keine Benachrichtigung bekommen, bevor der Strom abgestellt wurde.",
+            "en": "I didn't receive a notice before the power was cut."
+          }
+        },
+        {
+          "targetText": "Sa dili pa ang sunod nga pagpalong, magpadala mi og mensahe sa imong selpon.",
+          "baseText": {
+            "de": "Vor der nächsten Abschaltung schicken wir Ihnen eine Nachricht aufs Handy.",
+            "en": "Before the next power cut, we'll send a message to your phone."
+          }
+        },
+        {
+          "targetText": "Palihug, mahibaloan ba nako kung pila ka oras daan moabot ang pahibalo?",
+          "baseText": {
+            "de": "Könnte ich bitte erfahren, wie viele Stunden vorher die Benachrichtigung kommt?",
+            "en": "Could I please find out how many hours in advance the notice will arrive?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "wala ko makadawat og …",
+        "rule": {
+          "de": "Wala ko makadawat beschreibt hier etwas, das in der Vergangenheit ausgeblieben ist. Sa wala pa verknüpft das mit dem späteren Ereignis.",
+          "en": "Wala ko makadawat reports something you did not receive. Sa wala pa connects it to the event that followed."
+        },
+        "examples": [
+          {
+            "targetText": "Wala ko makadawat og pahibalo sa wala pa maputol ang kuryente.",
+            "baseText": {
+              "de": "Ich habe keine Benachrichtigung bekommen, bevor der Strom abgestellt wurde.",
+              "en": "I didn't receive a notice before the power was cut."
+            },
+            "highlight": "Wala ko makadawat og pahibalo"
+          },
+          {
+            "targetText": "Wala ko makadawat og mensahe sa wala pa mobalhin ang opisina.",
+            "baseText": {
+              "de": "Ich habe keine Nachricht erhalten, bevor das Büro umgezogen ist.",
+              "en": "I didn't get a message before the office moved."
+            },
+            "highlight": "Wala ko makadawat og"
+          }
+        ]
+      },
+      "cloze": [
+        "Palihug, mahibaloan ba nako kung pila ka ",
+        {
+          "kind": "choice",
+          "answer": "oras",
+          "choices": [
+            "metro",
+            "kilo",
+            "litro",
+            "oras"
+          ]
+        },
+        " daan ",
+        {
+          "kind": "choice",
+          "answer": "moabot",
+          "choices": [
+            "mosayaw",
+            "moabot",
+            "manglangoy",
+            "magtahi"
+          ]
+        },
+        " ang ",
+        {
+          "kind": "choice",
+          "answer": "pahibalo",
+          "choices": [
+            "sudlay",
+            "lamesa",
+            "pahibalo",
+            "kandado"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Wala ko makadawat",
+          "baseText": {
+            "de": "ich habe nicht erhalten",
+            "en": "I didn't receive"
+          }
+        },
+        {
+          "targetText": "og pahibalo",
+          "baseText": {
+            "de": "eine Benachrichtigung",
+            "en": "a notice"
+          }
+        },
+        {
+          "targetText": "sa wala pa",
+          "baseText": {
+            "de": "bevor",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "maputol ang kuryente.",
+          "baseText": {
+            "de": "der Strom abgestellt wurde.",
+            "en": "the power was cut."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pahibalo",
+          "baseText": {
+            "de": "Benachrichtigung",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "makadawat",
+          "baseText": {
+            "de": "erhalten können",
+            "en": "to be able to receive"
+          }
+        },
+        {
+          "targetText": "maputol",
+          "baseText": {
+            "de": "abgestellt werden, unterbrochen werden",
+            "en": "to get cut off"
+          }
+        },
+        {
+          "targetText": "kuryente",
+          "baseText": {
+            "de": "Strom",
+            "en": "electricity"
+          }
+        },
+        {
+          "targetText": "pagpalong",
+          "baseText": {
+            "de": "Abschaltung",
+            "en": "shutoff"
+          }
+        },
+        {
+          "targetText": "pila ka oras daan",
+          "baseText": {
+            "de": "wie viele Stunden vorher",
+            "en": "how many hours in advance"
+          }
+        },
+        {
+          "targetText": "mahibaloan",
+          "baseText": {
+            "de": "erfahren können",
+            "en": "to be able to find out"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Wala ko makadawat og ",
+        "answer": "pahibalo",
+        "after": " sa wala pa maputol ang kuryente.",
+        "fallbackChoices": [
+          "sukli",
+          "panapton",
+          "tambal",
+          "pahibalo"
+        ]
+      },
+      "speakRequired": [
+        "makadawat",
+        "pahibalo",
+        "maputol"
+      ],
+      "sceneCaption": {
+        "de": "Am Kundenschalter des Stromversorgers fragt dich ein Mitarbeiter nach deinem Anliegen. „Unsa may imong reklamo bahin sa among serbisyo?“",
+        "en": "At the electric utility's customer desk a clerk asks why you've come in. “Unsa may imong reklamo bahin sa among serbisyo?”"
+      },
+      "trophyWord": {
+        "word": "pahibalo",
+        "meaning": {
+          "de": "Benachrichtigung",
+          "en": "notice"
+        },
+        "example": "May pahibalo bahin sa pagpalong sa kuryente ugma.",
+        "whyThisWord": {
+          "de": "Pahibalo bezeichnet die Mitteilung selbst. Mit dem Wort kannst du nach dem Inhalt oder dem Zeitpunkt einer Ankündigung fragen.",
+          "en": "Pahibalo names the notice itself. Use it when asking about what an announcement says or when it will arrive."
+        }
+      },
+      "distractors": [
+        "Nakadawat na ko",
+        "mabalik ang kuryente."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kundin hält am Schalter des Stromversorgers ihr Handy in der Hand.",
+        "en": "A customer holds a phone at the electric utility’s service desk."
+      },
+      "songMood": "Measured kalimba pulse",
+      "visualNotes": "A customer holds a phone at the electric utility’s service desk."
+    },
+    {
+      "slug": "garantiya-bentilador",
+      "title": {
+        "de": "Der Ventilator mit Kaufbeleg",
+        "en": "A fan and its receipt"
+      },
+      "situation": {
+        "de": "Im Geschäft fragt dich ein Verkäufer nach dem Ventilator, den du zurückbringst.",
+        "en": "At the shop an assistant asks about the fan you've brought back."
+      },
+      "pedagogicalGoal": "Den Ausfall zeitlich zur Garantie einordnen und eine Gutschrift mit einem bedingten Gegenvorschlag beantworten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsay nahitabo anang bentilador?",
+          "baseText": {
+            "de": "Was ist mit dem Ventilator passiert?",
+            "en": "What happened to that fan?"
+          }
+        },
+        {
+          "targetText": "Niundang og tuyok ang bentilador bisan wala pa mahuman ang garantiya.",
+          "baseText": {
+            "de": "Der Ventilator hat aufgehört, sich zu drehen, obwohl die Garantie noch läuft.",
+            "en": "The fan stopped turning even though it was still under warranty."
+          }
+        },
+        {
+          "targetText": "Mahimo kang mopalit og laing butang dinhi sa samang kantidad.",
+          "baseText": {
+            "de": "Sie können sich hier im Geschäft etwas anderes im gleichen Wert aussuchen.",
+            "en": "You can choose something else in the shop for the same amount."
+          }
+        },
+        {
+          "targetText": "Kung naa pay samang modelo, palihug ilisi lang ang bentilador.",
+          "baseText": {
+            "de": "Wenn das gleiche Modell noch da ist, tauschen Sie den Ventilator bitte einfach um.",
+            "en": "If the same model is still available, please just exchange the fan."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "bisan wala pa mahuman",
+        "rule": {
+          "de": "Bisan markiert den Gegensatz zwischen dem Ausfall und der noch laufenden Garantie. Wala pa mahuman bedeutet, dass deren Ende noch aussteht.",
+          "en": "Bisan contrasts the breakdown with the continuing warranty. Wala pa mahuman says that its term has not yet ended."
+        },
+        "examples": [
+          {
+            "targetText": "Niundang og tuyok ang bentilador bisan wala pa mahuman ang garantiya.",
+            "baseText": {
+              "de": "Der Ventilator hat aufgehört, sich zu drehen, obwohl die Garantie noch läuft.",
+              "en": "The fan stopped turning even though it was still under warranty."
+            },
+            "highlight": "bisan wala pa mahuman"
+          },
+          {
+            "targetText": "Naguba ang radyo bisan wala pa mahuman ang unang semana.",
+            "baseText": {
+              "de": "Das Radio ist kaputtgegangen, obwohl die erste Woche noch nicht vorbei war.",
+              "en": "The radio broke even though the first week wasn't over yet."
+            },
+            "highlight": "bisan wala pa mahuman"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Kung",
+          "choices": [
+            "Imbes",
+            "Tali",
+            "Kung",
+            "Gikan"
+          ]
+        },
+        " naa pay samang ",
+        {
+          "kind": "choice",
+          "answer": "modelo",
+          "choices": [
+            "plantsa",
+            "modelo",
+            "hugaw",
+            "reseta"
+          ]
+        },
+        ", palihug ",
+        {
+          "kind": "choice",
+          "answer": "ilisi",
+          "choices": [
+            "ilisi",
+            "tahii",
+            "lutoa",
+            "imna"
+          ]
+        },
+        " lang ang bentilador."
+      ],
+      "chunks": [
+        {
+          "targetText": "Niundang og tuyok",
+          "baseText": {
+            "de": "hat aufgehört, sich zu drehen",
+            "en": "stopped turning"
+          }
+        },
+        {
+          "targetText": "ang bentilador",
+          "baseText": {
+            "de": "der Ventilator",
+            "en": "the fan"
+          }
+        },
+        {
+          "targetText": "bisan wala pa mahuman",
+          "baseText": {
+            "de": "obwohl sie noch nicht abgelaufen ist",
+            "en": "although it hasn't ended yet"
+          }
+        },
+        {
+          "targetText": "ang garantiya.",
+          "baseText": {
+            "de": "die Garantie.",
+            "en": "the warranty."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "garantiya",
+          "baseText": {
+            "de": "Garantie",
+            "en": "warranty"
+          }
+        },
+        {
+          "targetText": "bentilador",
+          "baseText": {
+            "de": "Ventilator",
+            "en": "fan"
+          }
+        },
+        {
+          "targetText": "tuyok",
+          "baseText": {
+            "de": "sich drehen",
+            "en": "to turn"
+          }
+        },
+        {
+          "targetText": "wala pa mahuman",
+          "baseText": {
+            "de": "noch nicht zu Ende sein",
+            "en": "not over yet"
+          }
+        },
+        {
+          "targetText": "samang modelo",
+          "baseText": {
+            "de": "gleiches Modell",
+            "en": "same model"
+          }
+        },
+        {
+          "targetText": "ilisi",
+          "baseText": {
+            "de": "tausch es um",
+            "en": "exchange it"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Niundang og tuyok ang bentilador bisan wala pa mahuman ang ",
+        "answer": "garantiya",
+        "after": ".",
+        "fallbackChoices": [
+          "hagdan",
+          "hangin",
+          "garantiya",
+          "kahayag"
+        ]
+      },
+      "speakRequired": [
+        "niundang",
+        "bentilador",
+        "garantiya"
+      ],
+      "sceneCaption": {
+        "de": "Im Geschäft fragt dich ein Verkäufer nach dem Ventilator, den du zurückbringst. „Unsay nahitabo anang bentilador?“",
+        "en": "At the shop an assistant asks about the fan you've brought back. “Unsay nahitabo anang bentilador?”"
+      },
+      "trophyWord": {
+        "word": "garantiya",
+        "meaning": {
+          "de": "Garantie",
+          "en": "warranty"
+        },
+        "example": "Naa pa sa garantiya ang among radyo.",
+        "whyThisWord": {
+          "de": "Garantiya hilft dir zu erklären, warum du bei einem defekten Gerät nach einem Umtausch fragst.",
+          "en": "Garantiya helps explain why you are asking to exchange a faulty appliance."
+        }
+      },
+      "distractors": [
+        "Nisugod og tuyok",
+        "ang klase."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Tischventilator und ein Kaufbeleg auf der Ladentheke.",
+        "en": "A desk fan and a receipt on a shop counter."
+      },
+      "songMood": "Steady warm guitar",
+      "visualNotes": "A desk fan and a receipt on a shop counter."
+    }
+  ]
+}

@@ -1,0 +1,2241 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Früher und heute",
+    "en": "Then and now"
+  },
+  "subtitle": {
+    "de": "Von Gewohnheiten und Veränderungen erzählen",
+    "en": "Talk about habits and changes"
+  },
+  "anchor": "Frühere Gewohnheiten mit heutigen Routinen vergleichen.",
+  "lessons": [
+    {
+      "slug": "sauna-breakfast",
+      "title": {
+        "de": "Frühstück bei Oma",
+        "en": "Breakfast at Grandma’s"
+      },
+      "situation": {
+        "de": "Deine Großmutter fragt beim Frühstück nach deiner Kindheit.",
+        "en": "Your grandmother asks about your childhood over breakfast."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Sauna mit einer früheren Gewohnheit.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa man ang imong pamahaw sa bata pa ka?",
+          "baseText": {
+            "de": "Was hast du als Kind zum Frühstück gegessen?",
+            "en": "What did you have for breakfast as a child?"
+          }
+        },
+        {
+          "targetText": "Sauna mokaon ko og lugaw sa buntag, apan karon pan na ang akong pamahaw.",
+          "baseText": {
+            "de": "Früher habe ich morgens Reisbrei gegessen, aber jetzt frühstücke ich Brot.",
+            "en": "I used to eat rice porridge in the morning, but now I have bread for breakfast."
+          }
+        },
+        {
+          "targetText": "Dili na ka ganahan og lugaw?",
+          "baseText": {
+            "de": "Magst du denn keinen Reisbrei mehr?",
+            "en": "Don’t you like rice porridge anymore?"
+          }
+        },
+        {
+          "targetText": "Ganahan pa ko, apan karon sagad ko magdali sa trabaho.",
+          "baseText": {
+            "de": "Ich mag ihn noch, aber jetzt muss ich mich meistens beeilen, um zur Arbeit zu kommen.",
+            "en": "I still like it, but now I’m usually in a hurry to get to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sauna mit einer früheren Gewohnheit",
+        "rule": {
+          "de": "Sauna setzt den Zeitrahmen für mokaon ko. Die Verbform bezeichnet hier etwas, das früher immer wieder geschah.",
+          "en": "Sauna sets the time frame for mokaon ko. In this setting the verb describes something that used to happen repeatedly."
+        },
+        "examples": [
+          {
+            "targetText": "Sauna mokaon ko og lugaw sa buntag, apan karon pan na ang akong pamahaw.",
+            "baseText": {
+              "de": "Früher habe ich morgens Reisbrei gegessen, aber jetzt frühstücke ich Brot.",
+              "en": "I used to eat rice porridge in the morning, but now I have bread for breakfast."
+            },
+            "highlight": "Sauna mokaon ko"
+          },
+          {
+            "targetText": "Sauna mosulat ko og sulat sa akong lola sa Domingo.",
+            "baseText": {
+              "de": "Früher habe ich meiner Oma sonntags einen Brief geschrieben.",
+              "en": "I used to write my grandmother a letter on Sundays."
+            },
+            "highlight": "Sauna mosulat ko"
+          }
+        ]
+      },
+      "cloze": [
+        "Ganahan pa ko, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "gikan sa",
+            "tungod sa",
+            "sulod sa",
+            "apan"
+          ]
+        },
+        " karon ",
+        {
+          "kind": "choice",
+          "answer": "sagad",
+          "choices": [
+            "sagad",
+            "gikan",
+            "kinsa",
+            "matag"
+          ]
+        },
+        " ko ",
+        {
+          "kind": "form",
+          "answer": "magdali",
+          "choices": [
+            "gidali",
+            "pagdali",
+            "magdali",
+            "nidali"
+          ],
+          "cue": "dali, habitual actor"
+        },
+        " sa trabaho."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sauna mokaon ko",
+          "baseText": {
+            "de": "Früher aß ich",
+            "en": "I used to eat"
+          }
+        },
+        {
+          "targetText": "og lugaw sa buntag,",
+          "baseText": {
+            "de": "morgens Reisbrei,",
+            "en": "rice porridge in the morning,"
+          }
+        },
+        {
+          "targetText": "apan karon pan na",
+          "baseText": {
+            "de": "aber jetzt ist es Brot,",
+            "en": "but now it’s bread"
+          }
+        },
+        {
+          "targetText": "ang akong pamahaw.",
+          "baseText": {
+            "de": "das ich frühstücke.",
+            "en": "that I have for breakfast."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sauna",
+          "baseText": {
+            "de": "früher",
+            "en": "formerly"
+          }
+        },
+        {
+          "targetText": "lugaw",
+          "baseText": {
+            "de": "Reisbrei",
+            "en": "rice porridge"
+          }
+        },
+        {
+          "targetText": "pan",
+          "baseText": {
+            "de": "Brot",
+            "en": "bread"
+          }
+        },
+        {
+          "targetText": "pamahaw",
+          "baseText": {
+            "de": "Frühstück",
+            "en": "breakfast"
+          }
+        },
+        {
+          "targetText": "ganahan",
+          "baseText": {
+            "de": "mögen",
+            "en": "like"
+          }
+        },
+        {
+          "targetText": "magdali",
+          "baseText": {
+            "de": "sich beeilen",
+            "en": "hurry"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sauna mokaon ko og ",
+        "answer": "lugaw",
+        "after": " sa buntag, apan karon pan na ang akong pamahaw.",
+        "fallbackChoices": [
+          "papel",
+          "tsinelas",
+          "lugaw",
+          "taklob"
+        ]
+      },
+      "speakRequired": [
+        "sauna",
+        "mokaon",
+        "lugaw"
+      ],
+      "sceneCaption": {
+        "de": "Deine Großmutter fragt beim Frühstück nach deiner Kindheit. „Unsa man ang imong pamahaw sa bata pa ka?“",
+        "en": "Your grandmother asks about your childhood over breakfast. “Unsa man ang imong pamahaw sa bata pa ka?”"
+      },
+      "trophyWord": {
+        "word": "sauna",
+        "meaning": {
+          "de": "früher",
+          "en": "formerly"
+        },
+        "example": "Sauna magpamahaw mi uban sa among lola.",
+        "whyThisWord": {
+          "de": "Sauna legt eine Gewohnheit in einen früheren Lebensabschnitt, auch ohne genaue Jahreszahl.",
+          "en": "Sauna places a habit in an earlier part of your life without needing a particular year."
+        }
+      },
+      "distractors": [
+        "og lugaw sa gabii,",
+        "ang among paniudto."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Großmutter fragt beim Frühstück nach deiner Kindheit.",
+        "en": "Your grandmother asks about your childhood over breakfast."
+      },
+      "songMood": "Gentle breakfast guitar and low strings",
+      "visualNotes": "Your grandmother asks about your childhood over breakfast."
+    },
+    {
+      "slug": "karon-home-cooking",
+      "title": {
+        "de": "Eine Küche in Gebrauch",
+        "en": "A kitchen in use"
+      },
+      "situation": {
+        "de": "Ein Freund entdeckt in deiner Küche einen Topf auf dem Herd.",
+        "en": "A friend sees a pot on your stove."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Karon im Gegensatz zu sauna.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may nausab sa imong pagkaon sukad nibalhin ka?",
+          "baseText": {
+            "de": "Was hat sich an deinem Essen geändert, seit du umgezogen bist?",
+            "en": "What changed about your meals after you moved?"
+          }
+        },
+        {
+          "targetText": "Sauna mopalit ko og linuto nga sud-an, apan karon magluto ko sa among balay.",
+          "baseText": {
+            "de": "Früher habe ich fertige Gerichte gekauft, aber heute koche ich zu Hause.",
+            "en": "I used to buy ready-cooked dishes, but now I cook at home."
+          }
+        },
+        {
+          "targetText": "Unsa man ang imong lutuon sauna kung sirado ang kan-anan?",
+          "baseText": {
+            "de": "Und was hast du früher gekocht, wenn das Lokal geschlossen war?",
+            "en": "What did you use to cook when the eatery was closed?"
+          }
+        },
+        {
+          "targetText": "Sauna sagad magluto lang ko og itlog, apan karon utan na.",
+          "baseText": {
+            "de": "Früher habe ich meistens nur Eier gekocht, aber jetzt gibt es Gemüse.",
+            "en": "Back then I usually just cooked eggs, but now it’s vegetables."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Karon im Gegensatz zu sauna",
+        "rule": {
+          "de": "Sauna und karon setzen zwei verschiedene Zeitrahmen. Die Handelnden bleiben dieselben, aber ihre Gewohnheit ändert sich.",
+          "en": "Sauna and karon set two different time frames. The person stays the same, but the habit changes."
+        },
+        "examples": [
+          {
+            "targetText": "Sauna mopalit ko og linuto nga sud-an, apan karon magluto ko sa among balay.",
+            "baseText": {
+              "de": "Früher habe ich fertige Gerichte gekauft, aber heute koche ich zu Hause.",
+              "en": "I used to buy ready-cooked dishes, but now I cook at home."
+            },
+            "highlight": "karon magluto ko"
+          },
+          {
+            "targetText": "Sauna moinom ko og kape, apan karon moinom ko og tsa.",
+            "baseText": {
+              "de": "Früher habe ich Kaffee getrunken, heute trinke ich Tee.",
+              "en": "I used to drink coffee, but now I drink tea."
+            },
+            "highlight": "karon moinom ko"
+          }
+        ]
+      },
+      "cloze": [
+        "Sauna ",
+        {
+          "kind": "choice",
+          "answer": "sagad",
+          "choices": [
+            "sagad",
+            "gikan",
+            "kinsa",
+            "matag"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "magluto",
+          "choices": [
+            "pagluto",
+            "magluto",
+            "niluto",
+            "giluto"
+          ],
+          "cue": "luto, habitual actor"
+        },
+        " lang ko og itlog, apan ",
+        {
+          "kind": "connector",
+          "answer": "karon",
+          "choices": [
+            "karon",
+            "ngadto",
+            "kinsa",
+            "gikan"
+          ]
+        },
+        " utan na."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sauna mopalit ko",
+          "baseText": {
+            "de": "Früher kaufte ich",
+            "en": "I used to buy"
+          }
+        },
+        {
+          "targetText": "og linuto nga sud-an,",
+          "baseText": {
+            "de": "fertig gekochte Gerichte,",
+            "en": "ready-cooked dishes,"
+          }
+        },
+        {
+          "targetText": "apan karon magluto ko",
+          "baseText": {
+            "de": "aber heute koche ich",
+            "en": "but now I cook"
+          }
+        },
+        {
+          "targetText": "sa among balay.",
+          "baseText": {
+            "de": "bei uns zu Hause.",
+            "en": "at home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "karon",
+          "baseText": {
+            "de": "jetzt",
+            "en": "now"
+          }
+        },
+        {
+          "targetText": "mopalit",
+          "baseText": {
+            "de": "kaufen",
+            "en": "buy"
+          }
+        },
+        {
+          "targetText": "linuto nga sud-an",
+          "baseText": {
+            "de": "fertiges Gericht",
+            "en": "ready-cooked dish"
+          }
+        },
+        {
+          "targetText": "magluto",
+          "baseText": {
+            "de": "kochen",
+            "en": "cook"
+          }
+        },
+        {
+          "targetText": "kan-anan",
+          "baseText": {
+            "de": "Lokal",
+            "en": "eatery"
+          }
+        },
+        {
+          "targetText": "itlog",
+          "baseText": {
+            "de": "Ei",
+            "en": "egg"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sauna mopalit ko og linuto nga sud-an, apan karon magluto ko sa among ",
+        "answer": "balay",
+        "after": ".",
+        "fallbackChoices": [
+          "payong",
+          "balay",
+          "kutsara",
+          "kwintas"
+        ]
+      },
+      "speakRequired": [
+        "mopalit",
+        "karon",
+        "magluto"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund entdeckt in deiner Küche einen Topf auf dem Herd. „Unsa may nausab sa imong pagkaon sukad nibalhin ka?“",
+        "en": "A friend sees a pot on your stove. “Unsa may nausab sa imong pagkaon sukad nibalhin ka?”"
+      },
+      "trophyWord": {
+        "word": "karon",
+        "meaning": {
+          "de": "jetzt",
+          "en": "now"
+        },
+        "example": "Karon magluto mi og utan sa balay.",
+        "whyThisWord": {
+          "de": "Karon markiert im Vergleich mit sauna die neue Gewohnheit, auch wenn sie schon länger besteht.",
+          "en": "Paired with sauna, karon marks the newer habit even if it started some time ago."
+        }
+      },
+      "distractors": [
+        "og preskong isda,",
+        "sa ilang balay."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Freund entdeckt in deiner Küche einen Topf auf dem Herd.",
+        "en": "A friend sees a pot on your stove."
+      },
+      "songMood": "Breezy guitar over a light kitchen rhythm",
+      "visualNotes": "A friend sees a pot on your stove."
+    },
+    {
+      "slug": "sagad-commute",
+      "title": {
+        "de": "Der Arbeitsweg",
+        "en": "Getting to work"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt nach deinem früheren Arbeitsweg.",
+        "en": "A coworker asks how you used to travel to work."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Sagad vor der üblichen Handlung.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Giunsa nimo pag-adto sa trabaho sauna?",
+          "baseText": {
+            "de": "Wie bist du früher zur Arbeit gekommen?",
+            "en": "How did you use to get to work?"
+          }
+        },
+        {
+          "targetText": "Sauna sagad mosakay ko og dyip sa trabaho, apan karon maglakaw na ko gikan sa balay.",
+          "baseText": {
+            "de": "Früher bin ich meistens mit dem Jeepney zur Arbeit gefahren, aber jetzt gehe ich von zu Hause aus zu Fuß.",
+            "en": "I usually used to take a jeepney to work, but now I walk from home."
+          }
+        },
+        {
+          "targetText": "Unsa na lang ka layo ang imong lakawon matag buntag?",
+          "baseText": {
+            "de": "Wie weit läufst du jetzt jeden Morgen?",
+            "en": "How far do you walk each morning now?"
+          }
+        },
+        {
+          "targetText": "Karon sagad maglakaw ko og usa ka kilometro sa buntag.",
+          "baseText": {
+            "de": "Jetzt gehe ich morgens meistens einen Kilometer zu Fuß.",
+            "en": "Now I usually walk one kilometre in the morning."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Sagad vor der üblichen Handlung",
+        "rule": {
+          "de": "Sagad beschreibt, was meistens geschieht. Sauna macht den regelmäßigen Arbeitsweg zu einer früheren Gewohnheit.",
+          "en": "Sagad says what normally happens. Sauna places the regular commute in the past."
+        },
+        "examples": [
+          {
+            "targetText": "Sauna sagad mosakay ko og dyip sa trabaho, apan karon maglakaw na ko gikan sa balay.",
+            "baseText": {
+              "de": "Früher bin ich meistens mit dem Jeepney zur Arbeit gefahren, aber jetzt gehe ich von zu Hause aus zu Fuß.",
+              "en": "I usually used to take a jeepney to work, but now I walk from home."
+            },
+            "highlight": "sagad mosakay ko"
+          },
+          {
+            "targetText": "Sa ting-ulan sagad moagi ko sa dalan nga naay atop.",
+            "baseText": {
+              "de": "In der Regenzeit nehme ich meistens den überdachten Weg.",
+              "en": "In the rainy season I usually take the covered route."
+            },
+            "highlight": "sagad moagi ko"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Karon",
+          "choices": [
+            "Karon",
+            "Ngano",
+            "Kinsa",
+            "Asa"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "sagad",
+          "choices": [
+            "sagad",
+            "gikan",
+            "kinsa",
+            "matag"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "maglakaw",
+          "choices": [
+            "paglakaw",
+            "maglakaw",
+            "nilakaw",
+            "gilakaw"
+          ],
+          "cue": "lakaw, habitual actor"
+        },
+        " ko og usa ka kilometro sa buntag."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sauna sagad mosakay ko",
+          "baseText": {
+            "de": "Früher fuhr ich meistens",
+            "en": "I used to ride most days"
+          }
+        },
+        {
+          "targetText": "og dyip sa trabaho,",
+          "baseText": {
+            "de": "mit dem Jeepney zur Arbeit,",
+            "en": "in a jeepney to work,"
+          }
+        },
+        {
+          "targetText": "apan karon maglakaw na ko",
+          "baseText": {
+            "de": "aber jetzt gehe ich zu Fuß",
+            "en": "but now I walk"
+          }
+        },
+        {
+          "targetText": "gikan sa balay.",
+          "baseText": {
+            "de": "von zu Hause aus.",
+            "en": "from home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sagad",
+          "baseText": {
+            "de": "meistens",
+            "en": "usually"
+          }
+        },
+        {
+          "targetText": "mosakay",
+          "baseText": {
+            "de": "mitfahren",
+            "en": "ride"
+          }
+        },
+        {
+          "targetText": "dyip",
+          "baseText": {
+            "de": "Jeepney",
+            "en": "jeepney"
+          }
+        },
+        {
+          "targetText": "maglakaw",
+          "baseText": {
+            "de": "zu Fuß gehen",
+            "en": "walk"
+          }
+        },
+        {
+          "targetText": "trabaho",
+          "baseText": {
+            "de": "Arbeit",
+            "en": "work"
+          }
+        },
+        {
+          "targetText": "kilometro",
+          "baseText": {
+            "de": "Kilometer",
+            "en": "kilometre"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sauna sagad mosakay ko og ",
+        "answer": "dyip",
+        "after": " sa trabaho, apan karon maglakaw na ko gikan sa balay.",
+        "fallbackChoices": [
+          "dyip",
+          "tasa",
+          "habol",
+          "payong"
+        ]
+      },
+      "speakRequired": [
+        "sagad",
+        "mosakay",
+        "maglakaw"
+      ],
+      "sceneCaption": {
+        "de": "Eine Kollegin fragt nach deinem früheren Arbeitsweg. „Giunsa nimo pag-adto sa trabaho sauna?“",
+        "en": "A coworker asks how you used to travel to work. “Giunsa nimo pag-adto sa trabaho sauna?”"
+      },
+      "trophyWord": {
+        "word": "sagad",
+        "meaning": {
+          "de": "meistens",
+          "en": "usually"
+        },
+        "example": "Sagad mosakay mi og dyip kung layo ang adtoan.",
+        "whyThisWord": {
+          "de": "Mit sagad beschreibst du das Übliche, ohne zu behaupten, dass es ausnahmslos so war.",
+          "en": "Use sagad for what was usual without claiming it happened every single time."
+        }
+      },
+      "distractors": [
+        "og barko paingon sa trabaho,",
+        "gikan sa pantalan."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kollegin fragt nach deinem früheren Arbeitsweg.",
+        "en": "A coworker asks how you used to travel to work."
+      },
+      "songMood": "Light walking beat with warm strings",
+      "visualNotes": "A coworker asks how you used to travel to work."
+    },
+    {
+      "slug": "usahay-seaside",
+      "title": {
+        "de": "Am Wochenende",
+        "en": "On the weekend"
+      },
+      "situation": {
+        "de": "Dein Nachbar fragt im Treppenhaus nach deinen freien Tagen.",
+        "en": "Your neighbour asks about your days off as you meet on the stairs."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Usahay und kasagaran.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong buhaton kung walay trabaho sa kataposan sa semana?",
+          "baseText": {
+            "de": "Was machst du, wenn du am Wochenende frei hast?",
+            "en": "What do you do when you have the weekend off?"
+          }
+        },
+        {
+          "targetText": "Usahay moadto ko sa baybayon, apan kasagaran mopahulay lang ko sa among balay.",
+          "baseText": {
+            "de": "Manchmal gehe ich an den Strand, aber meistens ruhe ich mich zu Hause aus.",
+            "en": "I sometimes go to the beach, but most of the time I just rest at home."
+          }
+        },
+        {
+          "targetText": "Kinsay mouban nimo kung moadto ka sa dagat?",
+          "baseText": {
+            "de": "Wer kommt mit, wenn du ans Meer gehst?",
+            "en": "Who goes with you when you head to the sea?"
+          }
+        },
+        {
+          "targetText": "Usahay mouban ang akong ig-agaw, apan sagad ako ra usa.",
+          "baseText": {
+            "de": "Manchmal kommt mein Cousin mit, aber meistens bin ich allein.",
+            "en": "Sometimes my cousin comes along, but usually it’s just me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Usahay und kasagaran",
+        "rule": {
+          "de": "Usahay markiert eine gelegentliche Handlung. Kasagaran stellt ihr das gegenüber, was häufiger vorkommt.",
+          "en": "Usahay marks an occasional action. Kasagaran contrasts it with what happens more often."
+        },
+        "examples": [
+          {
+            "targetText": "Usahay moadto ko sa baybayon, apan kasagaran mopahulay lang ko sa among balay.",
+            "baseText": {
+              "de": "Manchmal gehe ich an den Strand, aber meistens ruhe ich mich zu Hause aus.",
+              "en": "I sometimes go to the beach, but most of the time I just rest at home."
+            },
+            "highlight": "Usahay moadto ko"
+          },
+          {
+            "targetText": "Usahay magbisikleta mi paingon sa merkado, apan kasagaran maglakaw mi.",
+            "baseText": {
+              "de": "Manchmal fahren wir mit dem Rad zum Markt, aber meistens gehen wir zu Fuß.",
+              "en": "Sometimes we cycle to the market, but we usually walk."
+            },
+            "highlight": "Usahay magbisikleta mi"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Usahay",
+          "choices": [
+            "Usahay",
+            "Gikan",
+            "Ngano",
+            "Matag"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "mouban",
+          "choices": [
+            "niuban",
+            "giubanan",
+            "pag-uban",
+            "mouban"
+          ],
+          "cue": "uban, habitual actor"
+        },
+        " ang akong ig-agaw, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "gikan sa",
+            "tungod sa",
+            "sulod sa",
+            "apan"
+          ]
+        },
+        " sagad ako ra usa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Usahay moadto ko",
+          "baseText": {
+            "de": "Manchmal gehe ich",
+            "en": "Sometimes I go"
+          }
+        },
+        {
+          "targetText": "sa baybayon,",
+          "baseText": {
+            "de": "an den Strand,",
+            "en": "to the beach,"
+          }
+        },
+        {
+          "targetText": "apan kasagaran mopahulay lang ko",
+          "baseText": {
+            "de": "aber meistens ruhe ich mich einfach aus",
+            "en": "but most of the time I just rest"
+          }
+        },
+        {
+          "targetText": "sa among balay.",
+          "baseText": {
+            "de": "bei uns zu Hause.",
+            "en": "at home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "usahay",
+          "baseText": {
+            "de": "manchmal",
+            "en": "sometimes"
+          }
+        },
+        {
+          "targetText": "baybayon",
+          "baseText": {
+            "de": "Strand",
+            "en": "beach"
+          }
+        },
+        {
+          "targetText": "kasagaran",
+          "baseText": {
+            "de": "meistens",
+            "en": "most of the time"
+          }
+        },
+        {
+          "targetText": "mopahulay",
+          "baseText": {
+            "de": "sich ausruhen",
+            "en": "rest"
+          }
+        },
+        {
+          "targetText": "ig-agaw",
+          "baseText": {
+            "de": "Cousin oder Cousine",
+            "en": "cousin"
+          }
+        },
+        {
+          "targetText": "mouban",
+          "baseText": {
+            "de": "mitkommen",
+            "en": "come along"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Usahay moadto ko sa ",
+        "answer": "baybayon",
+        "after": ", apan kasagaran mopahulay lang ko sa among balay.",
+        "fallbackChoices": [
+          "kamot",
+          "kandila",
+          "kutsilyo",
+          "baybayon"
+        ]
+      },
+      "speakRequired": [
+        "usahay",
+        "moadto",
+        "mopahulay"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar fragt im Treppenhaus nach deinen freien Tagen. „Unsa may imong buhaton kung walay trabaho sa kataposan sa semana?“",
+        "en": "Your neighbour asks about your days off as you meet on the stairs. “Unsa may imong buhaton kung walay trabaho sa kataposan sa semana?”"
+      },
+      "trophyWord": {
+        "word": "usahay",
+        "meaning": {
+          "de": "manchmal",
+          "en": "sometimes"
+        },
+        "example": "Usahay mouban nako ang akong ig-agaw sa paglangoy.",
+        "whyThisWord": {
+          "de": "Mit usahay kannst du eine Ausnahme von deiner üblichen Wochenendroutine schildern.",
+          "en": "Usahay lets you describe an occasional exception to your weekend routine."
+        }
+      },
+      "distractors": [
+        "sa lasang,",
+        "sa among opisina."
+      ],
+      "placeholderCaption": {
+        "de": "Dein Nachbar fragt im Treppenhaus nach deinen freien Tagen.",
+        "en": "Your neighbour asks about your days off as you meet on the stairs."
+      },
+      "songMood": "Unhurried weekend acoustic pop",
+      "visualNotes": "Your neighbour asks about your days off as you meet on the stairs."
+    },
+    {
+      "slug": "permi-shift",
+      "title": {
+        "de": "Der Dienstplan",
+        "en": "The shift schedule"
+      },
+      "situation": {
+        "de": "Deine Gastgeberin fragt beim Abendessen nach deiner früheren Arbeit.",
+        "en": "Over dinner, your host asks about your former job."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Permi ko magtrabaho als regelmäßiges Muster.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta man ang imong oras sa daan nimong trabaho?",
+          "baseText": {
+            "de": "Wie waren die Arbeitszeiten an deiner alten Stelle?",
+            "en": "What were the hours like at your old job?"
+          }
+        },
+        {
+          "targetText": "Sauna permi ko magtrabaho sa gabii, apan karon sa adlaw na ang akong turno.",
+          "baseText": {
+            "de": "Früher habe ich immer nachts gearbeitet, aber jetzt habe ich Tagschicht.",
+            "en": "I always used to work nights, but now I’m on the day shift."
+          }
+        },
+        {
+          "targetText": "Mas maayo na ba ang imong tulog sukad nausab ang turno?",
+          "baseText": {
+            "de": "Schläfst du besser, seit sich deine Schicht geändert hat?",
+            "en": "Have you been sleeping better since the shift changed?"
+          }
+        },
+        {
+          "targetText": "Sauna gamay ra, apan karon permi ko matulog og walo ka oras.",
+          "baseText": {
+            "de": "Früher nur wenig, aber jetzt schlafe ich immer acht Stunden.",
+            "en": "Back then only a little, but now I always sleep eight hours."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Permi ko magtrabaho als regelmäßiges Muster",
+        "rule": {
+          "de": "Permi drückt hier aus, dass der alte Dienstplan durchgehend Nachtschichten vorsah. Sa adlaw na bezeichnet die Veränderung.",
+          "en": "Here permi says the old schedule always had night shifts. Sa adlaw na marks the change."
+        },
+        "examples": [
+          {
+            "targetText": "Sauna permi ko magtrabaho sa gabii, apan karon sa adlaw na ang akong turno.",
+            "baseText": {
+              "de": "Früher habe ich immer nachts gearbeitet, aber jetzt habe ich Tagschicht.",
+              "en": "I always used to work nights, but now I’m on the day shift."
+            },
+            "highlight": "permi ko magtrabaho"
+          },
+          {
+            "targetText": "Sauna permi ko maglakaw sa trabaho kay duol ra ang opisina.",
+            "baseText": {
+              "de": "Früher bin ich immer zu Fuß zur Arbeit gegangen, weil das Büro ganz in der Nähe war.",
+              "en": "I always used to walk to work because the office was nearby."
+            },
+            "highlight": "permi ko maglakaw"
+          }
+        ]
+      },
+      "cloze": [
+        "Sauna gamay ra, apan ",
+        {
+          "kind": "connector",
+          "answer": "karon",
+          "choices": [
+            "karon",
+            "unsa",
+            "ngadto",
+            "gikan"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "permi",
+          "choices": [
+            "permi",
+            "gikan",
+            "kinsa",
+            "matag"
+          ]
+        },
+        " ko ",
+        {
+          "kind": "form",
+          "answer": "matulog",
+          "choices": [
+            "natulog",
+            "nakatulog",
+            "pagtulog",
+            "matulog"
+          ],
+          "cue": "tulog, habitual actor"
+        },
+        " og walo ka oras."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sauna permi ko magtrabaho",
+          "baseText": {
+            "de": "Früher arbeitete ich immer",
+            "en": "I always used to work"
+          }
+        },
+        {
+          "targetText": "sa gabii,",
+          "baseText": {
+            "de": "nachts,",
+            "en": "at night,"
+          }
+        },
+        {
+          "targetText": "apan karon sa adlaw na",
+          "baseText": {
+            "de": "aber jetzt ist es tagsüber,",
+            "en": "but now it’s during the day"
+          }
+        },
+        {
+          "targetText": "ang akong turno.",
+          "baseText": {
+            "de": "dass ich Schicht habe.",
+            "en": "that I’m on shift."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "permi",
+          "baseText": {
+            "de": "immer",
+            "en": "always"
+          }
+        },
+        {
+          "targetText": "magtrabaho",
+          "baseText": {
+            "de": "arbeiten",
+            "en": "work"
+          }
+        },
+        {
+          "targetText": "gabii",
+          "baseText": {
+            "de": "Nacht",
+            "en": "night"
+          }
+        },
+        {
+          "targetText": "adlaw",
+          "baseText": {
+            "de": "Tag",
+            "en": "day"
+          }
+        },
+        {
+          "targetText": "turno",
+          "baseText": {
+            "de": "Schicht",
+            "en": "shift"
+          }
+        },
+        {
+          "targetText": "tulog",
+          "baseText": {
+            "de": "Schlaf",
+            "en": "sleep"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sauna permi ko magtrabaho sa gabii, apan karon sa adlaw na ang akong ",
+        "answer": "turno",
+        "after": ".",
+        "fallbackChoices": [
+          "kutsara",
+          "tiket",
+          "turno",
+          "pitaka"
+        ]
+      },
+      "speakRequired": [
+        "permi",
+        "magtrabaho",
+        "turno"
+      ],
+      "sceneCaption": {
+        "de": "Deine Gastgeberin fragt beim Abendessen nach deiner früheren Arbeit. „Kumusta man ang imong oras sa daan nimong trabaho?“",
+        "en": "Over dinner, your host asks about your former job. “Kumusta man ang imong oras sa daan nimong trabaho?”"
+      },
+      "trophyWord": {
+        "word": "permi",
+        "meaning": {
+          "de": "immer",
+          "en": "always"
+        },
+        "example": "Sa daan nakong trabaho permi ko makauli og gabii.",
+        "whyThisWord": {
+          "de": "Permi passt zu einem festen Rhythmus und ist stärker als usahay.",
+          "en": "Permi works for a consistent pattern and expresses greater frequency than usahay."
+        }
+      },
+      "distractors": [
+        "sa buntag,",
+        "ang among miting."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Gastgeberin fragt beim Abendessen nach deiner früheren Arbeit.",
+        "en": "Over dinner, your host asks about your former job."
+      },
+      "songMood": "Soft low guitar with an even pulse",
+      "visualNotes": "Over dinner, your host asks about your former job."
+    },
+    {
+      "slug": "batasan-late-snacks",
+      "title": {
+        "de": "Spät am Abend",
+        "en": "Late in the evening"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt, wie sich deine Abende verändert haben.",
+        "en": "A friend asks how your evenings have changed."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Batasan nako nga für eine eigene Gewohnheit.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa man nga batasan ang imong gibiyaan?",
+          "baseText": {
+            "de": "Welche Gewohnheit hast du aufgegeben?",
+            "en": "What habit have you given up?"
+          }
+        },
+        {
+          "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan gibiyaan na nako kana.",
+          "baseText": {
+            "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen, aber das habe ich inzwischen aufgegeben.",
+            "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve given that up now."
+          }
+        },
+        {
+          "targetText": "Unsa na man ang imong buhaton kung gutomon ka sa gabii?",
+          "baseText": {
+            "de": "Und was machst du jetzt, wenn du abends Hunger bekommst?",
+            "en": "What do you do now if you get hungry in the evening?"
+          }
+        },
+        {
+          "targetText": "Karon permi na lang ko moinom og init nga tsa sa kusina.",
+          "baseText": {
+            "de": "Jetzt trinke ich stattdessen immer nur einen heißen Tee in der Küche.",
+            "en": "Now I always just drink some hot tea in the kitchen instead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Batasan nako nga für eine eigene Gewohnheit",
+        "rule": {
+          "de": "Batasan benennt eine Gewohnheit. Der anschließende nga-Satz erklärt, worin sie bestand.",
+          "en": "Batasan names a habit. The following nga clause describes what the habit consisted of."
+        },
+        "examples": [
+          {
+            "targetText": "Batasan nako sauna nga mokaon og biskwit sa tungang gabii, apan gibiyaan na nako kana.",
+            "baseText": {
+              "de": "Früher hatte ich die Angewohnheit, mitten in der Nacht Kekse zu essen, aber das habe ich inzwischen aufgegeben.",
+              "en": "I used to have a habit of eating biscuits in the middle of the night, but I’ve given that up now."
+            },
+            "highlight": "Batasan nako sauna"
+          },
+          {
+            "targetText": "Batasan nako nga andamon ang akong bag sa gabii.",
+            "baseText": {
+              "de": "Ich mache meine Tasche gewöhnlich schon am Abend fertig.",
+              "en": "I have a habit of packing my bag in the evening."
+            },
+            "highlight": "Batasan nako nga"
+          },
+          {
+            "targetText": "Naandan na nako ang tsa inig gabii.",
+            "baseText": {
+              "de": "Ich habe mich inzwischen an Tee am Abend gewöhnt.",
+              "en": "I’ve got used to tea in the evening now."
+            },
+            "highlight": "Naandan na nako"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Karon",
+          "choices": [
+            "Karon",
+            "Kinsay",
+            "Gikan sa",
+            "Matag"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "permi",
+          "choices": [
+            "permi",
+            "matag",
+            "ngano",
+            "diin"
+          ]
+        },
+        " na lang ko ",
+        {
+          "kind": "form",
+          "answer": "moinom",
+          "choices": [
+            "moinom",
+            "niinom",
+            "giinom",
+            "pag-inom"
+          ],
+          "cue": "inom, habitual actor action (present routine)"
+        },
+        " og init nga tsa sa kusina."
+      ],
+      "chunks": [
+        {
+          "targetText": "Batasan nako sauna",
+          "baseText": {
+            "de": "Ich hatte früher die Gewohnheit,",
+            "en": "It used to be my habit"
+          }
+        },
+        {
+          "targetText": "nga mokaon og biskwit",
+          "baseText": {
+            "de": "Kekse zu essen",
+            "en": "to eat biscuits"
+          }
+        },
+        {
+          "targetText": "sa tungang gabii,",
+          "baseText": {
+            "de": "mitten in der Nacht,",
+            "en": "in the middle of the night,"
+          }
+        },
+        {
+          "targetText": "apan gibiyaan na nako kana.",
+          "baseText": {
+            "de": "aber das habe ich inzwischen aufgegeben.",
+            "en": "but I’ve given that up now."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "batasan",
+          "baseText": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          }
+        },
+        {
+          "targetText": "biskwit",
+          "baseText": {
+            "de": "Keks",
+            "en": "biscuit"
+          }
+        },
+        {
+          "targetText": "tungang gabii",
+          "baseText": {
+            "de": "Mitternacht",
+            "en": "midnight"
+          }
+        },
+        {
+          "targetText": "gibiyaan",
+          "baseText": {
+            "de": "aufgegeben",
+            "en": "given up"
+          }
+        },
+        {
+          "targetText": "tsa",
+          "baseText": {
+            "de": "Tee",
+            "en": "tea"
+          }
+        },
+        {
+          "targetText": "kusina",
+          "baseText": {
+            "de": "Küche",
+            "en": "kitchen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Batasan nako sauna nga mokaon og ",
+        "answer": "biskwit",
+        "after": " sa tungang gabii, apan gibiyaan na nako kana.",
+        "fallbackChoices": [
+          "barko",
+          "biskwit",
+          "tsinelas",
+          "lapis"
+        ]
+      },
+      "speakRequired": [
+        "batasan",
+        "mokaon",
+        "biskwit"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt, wie sich deine Abende verändert haben. „Unsa man nga batasan ang imong gibiyaan?“",
+        "en": "A friend asks how your evenings have changed. “Unsa man nga batasan ang imong gibiyaan?”"
+      },
+      "trophyWord": {
+        "word": "batasan",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "Batasan sa akong lola ang paglakaw sa hapon.",
+        "whyThisWord": {
+          "de": "Mit batasan kannst du auch über eine Gewohnheit sprechen, die inzwischen aufgehört hat.",
+          "en": "Batasan also lets you talk about a habit that you have since dropped."
+        }
+      },
+      "distractors": [
+        "nga mokaon og mangga",
+        "sa sayong buntag,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin fragt, wie sich deine Abende verändert haben.",
+        "en": "A friend asks how your evenings have changed."
+      },
+      "songMood": "Quiet late-night guitar",
+      "visualNotes": "A friend asks how your evenings have changed."
+    },
+    {
+      "slug": "naandan-heat",
+      "title": {
+        "de": "Die Hitze hier",
+        "en": "The heat here"
+      },
+      "situation": {
+        "de": "Dein Lehrer öffnet am Ende der Stunde die Fenster.",
+        "en": "Your tutor opens the windows at the end of the lesson."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Naandan na nako und der frühere Zustand.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Nakaangay na ka sa kainit dinhi?",
+          "baseText": {
+            "de": "Hast du dich hier schon an die Hitze gewöhnt?",
+            "en": "Have you adjusted to the heat here yet?"
+          }
+        },
+        {
+          "targetText": "Naandan na nako ang kainit dinhi, mao nga makalakaw na ko sa gawas inig hapon.",
+          "baseText": {
+            "de": "Ich habe mich an die Hitze hier gewöhnt und kann deshalb jetzt am Nachmittag draußen spazieren gehen.",
+            "en": "I’ve grown used to the heat here, so now I can walk outside in the afternoon."
+          }
+        },
+        {
+          "targetText": "Kumusta man sa unang mga bulan pagkabalhin nimo?",
+          "baseText": {
+            "de": "Wie war es in den ersten Monaten nach deinem Umzug?",
+            "en": "What was it like in the first few months after you moved?"
+          }
+        },
+        {
+          "targetText": "Sauna magpabilin ko sa sulod matag hapon kay init kaayo.",
+          "baseText": {
+            "de": "Früher bin ich nachmittags immer drinnen geblieben, weil es so heiß war.",
+            "en": "I used to stay inside every afternoon because it was so hot."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Naandan na nako und der frühere Zustand",
+        "rule": {
+          "de": "Naandan na nako beschreibt, woran du dich inzwischen gewöhnt hast. Mit sauna kannst du den früheren Zustand gegenüberstellen.",
+          "en": "Naandan na nako describes what you have become accustomed to. Sauna can introduce the earlier situation for contrast."
+        },
+        "examples": [
+          {
+            "targetText": "Naandan na nako ang kainit dinhi, mao nga makalakaw na ko sa gawas inig hapon.",
+            "baseText": {
+              "de": "Ich habe mich an die Hitze hier gewöhnt und kann deshalb jetzt am Nachmittag draußen spazieren gehen.",
+              "en": "I’ve grown used to the heat here, so now I can walk outside in the afternoon."
+            },
+            "highlight": "Naandan na nako"
+          },
+          {
+            "targetText": "Naandan na nako ang kasaba sa dalan duol sa balay.",
+            "baseText": {
+              "de": "Ich habe mich inzwischen an den Straßenlärm in der Nähe unseres Hauses gewöhnt.",
+              "en": "I’ve got used to the noise from the road near our house."
+            },
+            "highlight": "Naandan na nako"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Sauna",
+          "choices": [
+            "Sauna",
+            "Karon",
+            "Tali sa",
+            "Ngano"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "magpabilin",
+          "choices": [
+            "magpabilin",
+            "pagpabilin",
+            "ipabilin",
+            "gipabilin"
+          ],
+          "cue": "pabilin, habitual actor action (past routine)"
+        },
+        " ko sa sulod ",
+        {
+          "kind": "choice",
+          "answer": "matag",
+          "choices": [
+            "matag",
+            "sagad",
+            "usahay",
+            "permi"
+          ]
+        },
+        " hapon kay init kaayo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Naandan na nako",
+          "baseText": {
+            "de": "Ich habe mich schon … gewöhnt",
+            "en": "I’ve got used to"
+          }
+        },
+        {
+          "targetText": "ang kainit dinhi,",
+          "baseText": {
+            "de": "an die Hitze hier,",
+            "en": "the heat here,"
+          }
+        },
+        {
+          "targetText": "mao nga makalakaw na ko",
+          "baseText": {
+            "de": "deshalb kann ich jetzt … gehen",
+            "en": "so now I can walk"
+          }
+        },
+        {
+          "targetText": "sa gawas inig hapon.",
+          "baseText": {
+            "de": "nachmittags draußen.",
+            "en": "outside in the afternoon."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "naandan",
+          "baseText": {
+            "de": "daran gewöhnt",
+            "en": "accustomed to"
+          }
+        },
+        {
+          "targetText": "kainit",
+          "baseText": {
+            "de": "Hitze",
+            "en": "heat"
+          }
+        },
+        {
+          "targetText": "makalakaw",
+          "baseText": {
+            "de": "gehen können",
+            "en": "be able to walk"
+          }
+        },
+        {
+          "targetText": "gawas",
+          "baseText": {
+            "de": "draußen",
+            "en": "outside"
+          }
+        },
+        {
+          "targetText": "sulod",
+          "baseText": {
+            "de": "drinnen",
+            "en": "inside"
+          }
+        },
+        {
+          "targetText": "hapon",
+          "baseText": {
+            "de": "Nachmittag",
+            "en": "afternoon"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naandan na nako ang ",
+        "answer": "kainit",
+        "after": " dinhi, mao nga makalakaw na ko sa gawas inig hapon.",
+        "fallbackChoices": [
+          "kainit",
+          "kusina",
+          "kahoy",
+          "kutsara"
+        ]
+      },
+      "speakRequired": [
+        "naandan",
+        "kainit",
+        "makalakaw"
+      ],
+      "sceneCaption": {
+        "de": "Dein Lehrer öffnet am Ende der Stunde die Fenster. „Nakaangay na ka sa kainit dinhi?“",
+        "en": "Your tutor opens the windows at the end of the lesson. “Nakaangay na ka sa kainit dinhi?”"
+      },
+      "trophyWord": {
+        "word": "naandan",
+        "meaning": {
+          "de": "daran gewöhnt",
+          "en": "accustomed to"
+        },
+        "example": "Naandan na nako ang kainit sa kusina.",
+        "whyThisWord": {
+          "de": "Naandan na nako markiert einen Übergang: Etwas früher Ungewohntes ist für dich inzwischen normal.",
+          "en": "Naandan na nako marks a change. Something that once felt unfamiliar now feels normal to you."
+        }
+      },
+      "distractors": [
+        "ang katugnaw dinhi,",
+        "sa gawas inig buntag."
+      ],
+      "placeholderCaption": {
+        "de": "Dein Lehrer öffnet am Ende der Stunde die Fenster.",
+        "en": "Your tutor opens the windows at the end of the lesson."
+      },
+      "songMood": "Airy afternoon guitar",
+      "visualNotes": "Your tutor opens the windows at the end of the lesson."
+    },
+    {
+      "slug": "matag-morning-exercise",
+      "title": {
+        "de": "Morgendlicher Sport",
+        "en": "Morning exercise"
+      },
+      "situation": {
+        "de": "Deine Cousine fragt beim Besuch nach deinem Morgenprogramm.",
+        "en": "Your cousin asks about your morning routine during a visit."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Matag vor einer Zeiteinheit.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Unsa man ang imong rutina sa daan nimong balay?",
+          "baseText": {
+            "de": "Wie sah dein Alltag in deiner früheren Wohnung aus?",
+            "en": "What was your routine at your old place?"
+          }
+        },
+        {
+          "targetText": "Sauna moadto ko sa gym matag buntag, apan karon yoga na ang akong ehersisyo.",
+          "baseText": {
+            "de": "Früher bin ich jeden Morgen ins Fitnessstudio gegangen, aber jetzt mache ich Yoga.",
+            "en": "I used to go to the gym every morning, but now I do yoga for exercise."
+          }
+        },
+        {
+          "targetText": "Nganong yoga man ang imong gipili?",
+          "baseText": {
+            "de": "Warum hast du dich für Yoga entschieden?",
+            "en": "Why did you choose yoga?"
+          }
+        },
+        {
+          "targetText": "Karon sayo ko magtrabaho matag buntag, mao nga yoga na lang.",
+          "baseText": {
+            "de": "Jetzt arbeite ich jeden Morgen früh, deshalb eben nur noch Yoga.",
+            "en": "Now I work early every morning, so it’s just yoga now."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Matag vor einer Zeiteinheit",
+        "rule": {
+          "de": "Matag buntag bedeutet jeden Morgen. Matag steht unmittelbar vor der Zeiteinheit und unterscheidet sich dadurch von permi.",
+          "en": "Matag buntag means every morning. Unlike permi, matag goes directly before the unit of time."
+        },
+        "examples": [
+          {
+            "targetText": "Sauna moadto ko sa gym matag buntag, apan karon yoga na ang akong ehersisyo.",
+            "baseText": {
+              "de": "Früher bin ich jeden Morgen ins Fitnessstudio gegangen, aber jetzt mache ich Yoga.",
+              "en": "I used to go to the gym every morning, but now I do yoga for exercise."
+            },
+            "highlight": "matag buntag"
+          },
+          {
+            "targetText": "Matag Domingo magbisikleta mi padulong sa baybayon.",
+            "baseText": {
+              "de": "Jeden Sonntag fahren wir mit dem Rad an den Strand.",
+              "en": "Every Sunday we cycle down to the beach."
+            },
+            "highlight": "Matag Domingo"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "choice",
+          "answer": "Karon",
+          "choices": [
+            "Karon",
+            "Gikan sa",
+            "Tali sa",
+            "Matag"
+          ]
+        },
+        " sayo ko ",
+        {
+          "kind": "form",
+          "answer": "magtrabaho",
+          "choices": [
+            "magtrabaho",
+            "nitrabaho",
+            "gitrabaho",
+            "pagtrabaho"
+          ],
+          "cue": "trabaho, habitual actor action (present routine)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "matag",
+          "choices": [
+            "matag",
+            "sagad",
+            "usahay",
+            "permi"
+          ]
+        },
+        " buntag, mao nga yoga na lang."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sauna moadto ko sa gym",
+          "baseText": {
+            "de": "Früher ging ich ins Fitnessstudio",
+            "en": "I used to go to the gym"
+          }
+        },
+        {
+          "targetText": "matag buntag,",
+          "baseText": {
+            "de": "jeden Morgen,",
+            "en": "every morning,"
+          }
+        },
+        {
+          "targetText": "apan karon yoga na",
+          "baseText": {
+            "de": "aber jetzt ist es Yoga,",
+            "en": "but now it’s yoga"
+          }
+        },
+        {
+          "targetText": "ang akong ehersisyo.",
+          "baseText": {
+            "de": "das ich als Sport mache.",
+            "en": "that I do for exercise."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "matag",
+          "baseText": {
+            "de": "jeden; jede",
+            "en": "each; every"
+          }
+        },
+        {
+          "targetText": "buntag",
+          "baseText": {
+            "de": "Morgen",
+            "en": "morning"
+          }
+        },
+        {
+          "targetText": "gym",
+          "baseText": {
+            "de": "Fitnessstudio",
+            "en": "gym"
+          }
+        },
+        {
+          "targetText": "yoga",
+          "baseText": {
+            "de": "Yoga",
+            "en": "yoga"
+          }
+        },
+        {
+          "targetText": "ehersisyo",
+          "baseText": {
+            "de": "Sport; Übung",
+            "en": "exercise"
+          }
+        },
+        {
+          "targetText": "sayo",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sauna moadto ko sa ",
+        "answer": "gym",
+        "after": " matag buntag, apan karon yoga na ang akong ehersisyo.",
+        "fallbackChoices": [
+          "bulsa",
+          "unlan",
+          "papel",
+          "gym"
+        ]
+      },
+      "speakRequired": [
+        "moadto",
+        "matag",
+        "ehersisyo"
+      ],
+      "sceneCaption": {
+        "de": "Deine Cousine fragt beim Besuch nach deinem Morgenprogramm. „Unsa man ang imong rutina sa daan nimong balay?“",
+        "en": "Your cousin asks about your morning routine during a visit. “Unsa man ang imong rutina sa daan nimong balay?”"
+      },
+      "trophyWord": {
+        "word": "matag",
+        "meaning": {
+          "de": "jeden; jede",
+          "en": "each; every"
+        },
+        "example": "Maglakaw ko matag buntag sa among dalan.",
+        "whyThisWord": {
+          "de": "Matag verbindet eine Handlung mit jedem einzelnen Tag, Morgen oder Monat einer Reihe.",
+          "en": "Matag links an action to every single day, morning or month in a sequence."
+        }
+      },
+      "distractors": [
+        "matag gabii,",
+        "ang among trabaho."
+      ],
+      "placeholderCaption": {
+        "de": "Deine Cousine fragt beim Besuch nach deinem Morgenprogramm.",
+        "en": "Your cousin asks about your morning routine during a visit."
+      },
+      "songMood": "Calm stretching rhythm with plucked strings",
+      "visualNotes": "Your cousin asks about your morning routine during a visit."
+    },
+    {
+      "slug": "nausab-town",
+      "title": {
+        "de": "Im alten Viertel",
+        "en": "In the old neighbourhood"
+      },
+      "situation": {
+        "de": "Beim Haareschneiden fragt der Friseur nach deinem Eindruck von der Stadt.",
+        "en": "While cutting your hair, the barber asks what you think of the town."
+      },
+      "pedagogicalGoal": "Frühere Gewohnheiten mit heutigen Routinen vergleichen. Nausab na beim Vergleichen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Naa bay nausab sa atong lungsod sukad sa imong kataposang anhi?",
+          "baseText": {
+            "de": "Hat sich in unserer Stadt seit deinem letzten Besuch etwas verändert?",
+            "en": "Has the town changed since your last visit?"
+          }
+        },
+        {
+          "targetText": "Daghan na ang nausab sa atong lungsod, ug mas daghan na ang sakyanan sa dalan.",
+          "baseText": {
+            "de": "In unserer Stadt hat sich viel verändert. Auf der Straße sind jetzt mehr Fahrzeuge unterwegs.",
+            "en": "A lot has changed in our town, and there are more vehicles on the road now."
+          }
+        },
+        {
+          "targetText": "Unsa may imong gimingawan sa una?",
+          "baseText": {
+            "de": "Was vermisst du von früher?",
+            "en": "What do you miss from the old days?"
+          }
+        },
+        {
+          "targetText": "Sauna magdula mi matag hapon sa hilom nga plasa, apan parkingan na.",
+          "baseText": {
+            "de": "Früher haben wir jeden Nachmittag auf dem ruhigen Platz gespielt, aber jetzt ist er ein Parkplatz.",
+            "en": "We used to play every afternoon in the quiet square, but now it’s a parking lot."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nausab na beim Vergleichen",
+        "rule": {
+          "de": "Nausab bezeichnet eine eingetretene Veränderung. Mas daghan na ergänzt, was es jetzt in größerer Zahl gibt.",
+          "en": "Nausab describes a change that has taken place. Mas daghan na adds what there is more of now."
+        },
+        "examples": [
+          {
+            "targetText": "Daghan na ang nausab sa atong lungsod, ug mas daghan na ang sakyanan sa dalan.",
+            "baseText": {
+              "de": "In unserer Stadt hat sich viel verändert. Auf der Straße sind jetzt mehr Fahrzeuge unterwegs.",
+              "en": "A lot has changed in our town, and there are more vehicles on the road now."
+            },
+            "highlight": "ang nausab"
+          },
+          {
+            "targetText": "Nausab na ang merkado: mas daghan na ang namaligya didto.",
+            "baseText": {
+              "de": "Der Markt hat sich verändert: Jetzt verkaufen dort mehr Leute ihre Waren.",
+              "en": "The market has changed: more people sell their goods there now."
+            },
+            "highlight": "Nausab na"
+          }
+        ]
+      },
+      "cloze": [
+        "Sauna ",
+        {
+          "kind": "form",
+          "answer": "magdula",
+          "choices": [
+            "magdula",
+            "pagdula",
+            "duwaa",
+            "gidulaan"
+          ],
+          "cue": "dula, habitual actor action (past routine)"
+        },
+        " mi ",
+        {
+          "kind": "choice",
+          "answer": "matag",
+          "choices": [
+            "matag",
+            "sagad",
+            "usahay",
+            "permi"
+          ]
+        },
+        " hapon sa hilom nga plasa, ",
+        {
+          "kind": "choice",
+          "answer": "apan",
+          "choices": [
+            "apan",
+            "kay",
+            "kung",
+            "ngano"
+          ]
+        },
+        " parkingan na."
+      ],
+      "chunks": [
+        {
+          "targetText": "Daghan na ang nausab",
+          "baseText": {
+            "de": "Viel hat sich verändert",
+            "en": "A lot has changed"
+          }
+        },
+        {
+          "targetText": "sa atong lungsod,",
+          "baseText": {
+            "de": "in unserer Stadt,",
+            "en": "in our town,"
+          }
+        },
+        {
+          "targetText": "ug mas daghan na",
+          "baseText": {
+            "de": "und es gibt jetzt mehr",
+            "en": "and now there are more"
+          }
+        },
+        {
+          "targetText": "ang sakyanan sa dalan.",
+          "baseText": {
+            "de": "Fahrzeuge auf der Straße.",
+            "en": "vehicles on the road."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nausab",
+          "baseText": {
+            "de": "hat sich verändert",
+            "en": "changed"
+          }
+        },
+        {
+          "targetText": "lungsod",
+          "baseText": {
+            "de": "Stadt",
+            "en": "town"
+          }
+        },
+        {
+          "targetText": "mas daghan",
+          "baseText": {
+            "de": "mehr",
+            "en": "more"
+          }
+        },
+        {
+          "targetText": "sakyanan",
+          "baseText": {
+            "de": "Fahrzeug",
+            "en": "vehicle"
+          }
+        },
+        {
+          "targetText": "plasa",
+          "baseText": {
+            "de": "öffentlicher Platz",
+            "en": "town square"
+          }
+        },
+        {
+          "targetText": "hilom",
+          "baseText": {
+            "de": "ruhig",
+            "en": "quiet"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Daghan na ang nausab sa atong lungsod, ug mas daghan na ang ",
+        "answer": "sakyanan",
+        "after": " sa dalan.",
+        "fallbackChoices": [
+          "kaylap",
+          "kaayo",
+          "sakyanan",
+          "panahon"
+        ]
+      },
+      "speakRequired": [
+        "daghan",
+        "nausab",
+        "lungsod"
+      ],
+      "sceneCaption": {
+        "de": "Beim Haareschneiden fragt der Friseur nach deinem Eindruck von der Stadt. „Naa bay nausab sa atong lungsod sukad sa imong kataposang anhi?“",
+        "en": "While cutting your hair, the barber asks what you think of the town. “Naa bay nausab sa atong lungsod sukad sa imong kataposang anhi?”"
+      },
+      "trophyWord": {
+        "word": "nausab",
+        "meaning": {
+          "de": "hat sich verändert",
+          "en": "changed"
+        },
+        "example": "Nausab na ang among dalan sukad sa miaging tuig.",
+        "whyThisWord": {
+          "de": "Mit nausab kannst du eine Veränderung benennen und erst danach sagen, was heute anders ist.",
+          "en": "Use nausab to introduce a change before specifying what is different today."
+        }
+      },
+      "distractors": [
+        "sa laing lungsod,",
+        "ang kahoy sa dalan."
+      ],
+      "placeholderCaption": {
+        "de": "Beim Haareschneiden fragt der Friseur nach deinem Eindruck von der Stadt.",
+        "en": "While cutting your hair, the barber asks what you think of the town."
+      },
+      "songMood": "Nostalgic neighbourhood folk guitar",
+      "visualNotes": "While cutting your hair, the barber asks what you think of the town."
+    },
+    {
+      "slug": "lahi-fiesta",
+      "title": {
+        "de": "Beim Dorffest",
+        "en": "At the town fiesta"
+      },
+      "situation": {
+        "de": "Eine ältere Nachbarin spricht mit dir über die Feste von früher.",
+        "en": "An older neighbour talks with you about fiestas in years gone by."
+      },
+      "pedagogicalGoal": "Erklären, was heute anders ist und was beim Dorffest gleich geblieben ist.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Mao ra ba gihapon ang pista sa atong baryo?",
+          "baseText": {
+            "de": "Ist unser Dorffest heute noch so wie früher?",
+            "en": "Is our village fiesta still the same as it used to be?"
+          }
+        },
+        {
+          "targetText": "Lahi na ang musika sa pista karon, apan mao ra ang pagkaon sa lamesa.",
+          "baseText": {
+            "de": "Beim Fest läuft heute andere Musik, aber das Essen auf dem Tisch ist nach wie vor dasselbe.",
+            "en": "The music at the fiesta is different now, but the food on the table is still the same."
+          }
+        },
+        {
+          "targetText": "Unsa man ang nahitabo sa mga sayaw nga atong nahibaloan sauna?",
+          "baseText": {
+            "de": "Und was ist aus den Tänzen geworden, die wir früher kannten?",
+            "en": "And what became of the dances we used to know?"
+          }
+        },
+        {
+          "targetText": "Sauna magsayaw mi niana matag pista, apan karon wala na mi magsayaw.",
+          "baseText": {
+            "de": "Früher haben wir die bei jedem Fest getanzt, aber jetzt tanzen wir nicht mehr.",
+            "en": "We used to dance those at every fiesta, but now we no longer dance."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Lahi na: Was hat sich verändert?",
+        "rule": {
+          "de": "Mit lahi na beschreibst du, was sich verändert hat. Mit apan kannst du hinzufügen, was gleich geblieben ist.",
+          "en": "Use lahi na to say what has changed. Use apan to add what has stayed the same."
+        },
+        "examples": [
+          {
+            "targetText": "Lahi na ang musika sa pista karon, apan mao ra ang pagkaon sa lamesa.",
+            "baseText": {
+              "de": "Beim Fest läuft heute andere Musik, aber das Essen auf dem Tisch ist nach wie vor dasselbe.",
+              "en": "The music at the fiesta is different now, but the food on the table is still the same."
+            },
+            "highlight": "Lahi na ang musika"
+          },
+          {
+            "targetText": "Lahi na ang ruta sa parada, apan mao ra ang banda.",
+            "baseText": {
+              "de": "Die Parade zieht jetzt anders, aber es spielt immer noch dieselbe Kapelle.",
+              "en": "The parade route has changed, but the band is still the same."
+            },
+            "highlight": "Lahi na ang ruta"
+          },
+          {
+            "targetText": "Lahi na ang among Sabado: wala na mi maglangoy sa sapa.",
+            "baseText": {
+              "de": "Unser Samstag ist anders geworden: Wir schwimmen nicht mehr im Fluss.",
+              "en": "Our Saturdays are different now: we no longer swim in the river."
+            },
+            "highlight": "Lahi na ang among Sabado"
+          }
+        ]
+      },
+      "cloze": [
+        "Sauna ",
+        {
+          "kind": "form",
+          "answer": "magsayaw",
+          "choices": [
+            "magsayaw",
+            "gisayaw",
+            "pagsayaw",
+            "sayawa"
+          ],
+          "cue": "sayaw, habitual actor action (past routine)"
+        },
+        " mi niana ",
+        {
+          "kind": "choice",
+          "answer": "matag",
+          "choices": [
+            "matag",
+            "sagad",
+            "usahay",
+            "permi"
+          ]
+        },
+        " pista, apan ",
+        {
+          "kind": "choice",
+          "answer": "karon",
+          "choices": [
+            "karon",
+            "matag",
+            "kinsay",
+            "tali sa"
+          ]
+        },
+        " wala na mi magsayaw."
+      ],
+      "chunks": [
+        {
+          "targetText": "Lahi na ang musika",
+          "baseText": {
+            "de": "Die Musik ist anders",
+            "en": "The music is different"
+          }
+        },
+        {
+          "targetText": "sa pista karon,",
+          "baseText": {
+            "de": "heute auf dem Fest,",
+            "en": "at the fiesta now,"
+          }
+        },
+        {
+          "targetText": "apan mao ra",
+          "baseText": {
+            "de": "aber gleich geblieben ist",
+            "en": "but still the same is"
+          }
+        },
+        {
+          "targetText": "ang pagkaon sa lamesa.",
+          "baseText": {
+            "de": "das Essen auf dem Tisch.",
+            "en": "the food on the table."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lahi",
+          "baseText": {
+            "de": "anders",
+            "en": "different"
+          }
+        },
+        {
+          "targetText": "musika",
+          "baseText": {
+            "de": "Musik",
+            "en": "music"
+          }
+        },
+        {
+          "targetText": "pista",
+          "baseText": {
+            "de": "Fest",
+            "en": "fiesta"
+          }
+        },
+        {
+          "targetText": "mao ra",
+          "baseText": {
+            "de": "immer noch gleich",
+            "en": "still the same"
+          }
+        },
+        {
+          "targetText": "pagkaon",
+          "baseText": {
+            "de": "Essen",
+            "en": "food"
+          }
+        },
+        {
+          "targetText": "sayaw",
+          "baseText": {
+            "de": "Tanz",
+            "en": "dance"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Lahi na ang ",
+        "answer": "musika",
+        "after": " sa pista karon, apan mao ra ang pagkaon sa lamesa.",
+        "fallbackChoices": [
+          "tsinelas",
+          "musika",
+          "barko",
+          "kaayo"
+        ]
+      },
+      "speakRequired": [
+        "lahi",
+        "musika",
+        "apan"
+      ],
+      "sceneCaption": {
+        "de": "Eine ältere Nachbarin spricht mit dir über die Feste von früher. „Mao ra ba gihapon ang pista sa atong baryo?“",
+        "en": "An older neighbour talks with you about fiestas in years gone by. “Mao ra ba gihapon ang pista sa atong baryo?”"
+      },
+      "trophyWord": {
+        "word": "lahi",
+        "meaning": {
+          "de": "anders",
+          "en": "different"
+        },
+        "example": "Lahi na ang musika sa among baryo.",
+        "whyThisWord": {
+          "de": "Mit lahi na sagst du, was sich bei einer vertrauten Veranstaltung verändert hat.",
+          "en": "Lahi na lets you say what has changed at a familiar event."
+        }
+      },
+      "distractors": [
+        "sa pista sauna,",
+        "ang mga suga sa dalan."
+      ],
+      "placeholderCaption": {
+        "de": "Eine ältere Nachbarin spricht mit dir über die Feste von früher.",
+        "en": "An older neighbour talks with you about fiestas in years gone by."
+      },
+      "songMood": "Festive rondalla with a gentle dance pulse",
+      "visualNotes": "An older neighbour talks with you about fiestas in years gone by."
+    }
+  ]
+}

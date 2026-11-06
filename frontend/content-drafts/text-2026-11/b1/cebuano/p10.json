@@ -1,0 +1,2301 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Ang akong tuig — Mein Jahr erzählen",
+    "en": "Ang akong tuig — The story of my year"
+  },
+  "subtitle": {
+    "de": "Erlebnisse verbinden und den Blick nach vorn richten",
+    "en": "Connect memories and look ahead"
+  },
+  "anchor": "Ein Jahr aus verschiedenen Blickwinkeln erzählen und erklären, wie aus einer Erfahrung ein Plan entsteht.",
+  "lessons": [
+    {
+      "slug": "bulan-pista-sa-hunyo",
+      "title": {
+        "de": "Der schönste Monat",
+        "en": "The best month"
+      },
+      "situation": {
+        "de": "Bei einem Blick auf den Kalender fragt eine Freundin nach dem schönsten Monat deines Jahres.",
+        "en": "Looking at the calendar, a friend asks which month you enjoyed most this year."
+      },
+      "pedagogicalGoal": "Einen besonders schönen Monat begründen und ihm eine schwierige Erfahrung gegenüberstellen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsang bulana ang pinakanindot para nimo karong tuiga?",
+          "baseText": {
+            "de": "Welcher Monat war für dich dieses Jahr am schönsten?",
+            "en": "Which month did you like best this year?"
+          }
+        },
+        {
+          "targetText": "Paborito nakong bulan ang Hunyo kay nagkita ang among tibuok pamilya sa pista.",
+          "baseText": {
+            "de": "Mein Lieblingsmonat war der Juni, weil unsere ganze Familie beim Fest zusammenkam.",
+            "en": "My favourite month was June because our whole family got together at the fiesta."
+          }
+        },
+        {
+          "targetText": "Nindot gyod ang pista. Unsang bulana man ang pinakalisod?",
+          "baseText": {
+            "de": "Das Fest war wirklich schön. Und welcher Monat war am schwersten?",
+            "en": "The fiesta really was lovely. Which month was the hardest?"
+          }
+        },
+        {
+          "targetText": "Ang Marso ang pinakalisod kay nibalhin ko nga nag-inusara.",
+          "baseText": {
+            "de": "Der März war am schwersten, weil ich allein umgezogen bin.",
+            "en": "March was the hardest because I moved on my own."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "einen Monat nennen und begründen",
+        "rule": {
+          "de": "Bulan benennt den Monat. Kay leitet ein Erlebnis als Grund für deine Wahl ein. Der vergangene Juni liefert hier den Zeitrahmen für nagkita.",
+          "en": "Bulan names the month. Kay gives an experience as the reason for your choice. Here the past June provides the time frame for nagkita."
+        },
+        "examples": [
+          {
+            "targetText": "Paborito nakong bulan ang Hunyo kay nagkita ang among tibuok pamilya sa pista.",
+            "baseText": {
+              "de": "Mein Lieblingsmonat war der Juni, weil unsere ganze Familie beim Fest zusammenkam.",
+              "en": "My favourite month was June because our whole family got together at the fiesta."
+            },
+            "highlight": "ang Hunyo kay nagkita"
+          },
+          {
+            "targetText": "Paborito nakong bulan ang Agosto kay nibisita ang akong iyaan.",
+            "baseText": {
+              "de": "Mein Lieblingsmonat war der August, weil meine Tante zu Besuch kam.",
+              "en": "My favourite month was August because my aunt visited."
+            },
+            "highlight": "ang Agosto kay"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang Marso ang ",
+        {
+          "kind": "choice",
+          "answer": "pinakalisod",
+          "choices": [
+            "diretso",
+            "dungan",
+            "hamubo",
+            "pinakalisod"
+          ]
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "basta",
+            "gikan",
+            "kay",
+            "aron"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nibalhin",
+          "choices": [
+            "balhinon",
+            "nibalhin",
+            "mobalhin",
+            "gibalhin"
+          ],
+          "cue": "balhin · Aktorfokus, abgeschlossen / actor focus, completed"
+        },
+        " ko nga nag-inusara."
+      ],
+      "chunks": [
+        {
+          "targetText": "Paborito nakong bulan",
+          "baseText": {
+            "de": "mein Lieblingsmonat",
+            "en": "my favourite month"
+          }
+        },
+        {
+          "targetText": "ang Hunyo",
+          "baseText": {
+            "de": "war der Juni",
+            "en": "was June"
+          }
+        },
+        {
+          "targetText": "kay nagkita ang among tibuok pamilya",
+          "baseText": {
+            "de": "weil unsere ganze Familie zusammenkam",
+            "en": "because our whole family got together"
+          }
+        },
+        {
+          "targetText": "sa pista.",
+          "baseText": {
+            "de": "beim Fest.",
+            "en": "at the fiesta."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bulan",
+          "baseText": {
+            "de": "Monat",
+            "en": "month"
+          }
+        },
+        {
+          "targetText": "Hunyo",
+          "baseText": {
+            "de": "Juni",
+            "en": "June"
+          }
+        },
+        {
+          "targetText": "nagkita mi",
+          "baseText": {
+            "de": "wir haben uns gesehen",
+            "en": "we met up"
+          }
+        },
+        {
+          "targetText": "pista",
+          "baseText": {
+            "de": "Fest",
+            "en": "fiesta"
+          }
+        },
+        {
+          "targetText": "Marso",
+          "baseText": {
+            "de": "März",
+            "en": "March"
+          }
+        },
+        {
+          "targetText": "nibalhin",
+          "baseText": {
+            "de": "zog um",
+            "en": "moved"
+          }
+        },
+        {
+          "targetText": "nag-inusara",
+          "baseText": {
+            "de": "allein",
+            "en": "on one's own"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Paborito nakong ",
+        "answer": "bulan",
+        "after": " ang Hunyo kay nagkita ang among tibuok pamilya sa pista.",
+        "fallbackChoices": [
+          "adlaw",
+          "semana",
+          "tuig",
+          "bulan"
+        ]
+      },
+      "speakRequired": [
+        "bulan",
+        "hunyo",
+        "nagkita"
+      ],
+      "sceneCaption": {
+        "de": "Bei einem Blick auf den Kalender fragt eine Freundin nach dem schönsten Monat deines Jahres. „Unsang bulana ang pinakanindot para nimo karong tuiga?“",
+        "en": "Looking at the calendar, a friend asks which month you enjoyed most this year. “Unsang bulana ang pinakanindot para nimo karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "bulan",
+        "meaning": {
+          "de": "Monat",
+          "en": "month"
+        },
+        "example": "Ang Hunyo mao ang bulan sa pista sa among baryo.",
+        "whyThisWord": {
+          "de": "Bulan gibt einer Erinnerung einen zeitlichen Rahmen. Verknüpfe den Monatsnamen mit dem Ereignis, das ihn besonders gemacht hat.",
+          "en": "Bulan sets a memory in time. Link the month's name to the event that made it stand out."
+        }
+      },
+      "distractors": [
+        "Paborito nako nga adlaw",
+        "ang Abril"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freundinnen oder Freunde blättern gemeinsam in einem Kalender.",
+        "en": "Two friends leaf through a calendar together."
+      },
+      "songMood": "Warm fiesta guitar",
+      "visualNotes": "Two friends leaf through a calendar together."
+    },
+    {
+      "slug": "kinabuhi-mga-higala",
+      "title": {
+        "de": "Die erste Zeit im Ort",
+        "en": "Settling into town"
+      },
+      "situation": {
+        "de": "Ein älterer Nachbar fragt dich auf der Veranda nach deinem Leben im Ort.",
+        "en": "An older neighbour asks on the veranda how life in town has been for you."
+      },
+      "pedagogicalGoal": "Einen früheren Zustand mit einer späteren Veränderung und einem konkreten Wendepunkt verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta man ang imong kinabuhi dinhi sukad sa imong pagbalhin?",
+          "baseText": {
+            "de": "Wie ist es dir hier seit deinem Umzug ergangen?",
+            "en": "How has life here been since you moved?"
+          }
+        },
+        {
+          "targetText": "Hinay ang dagan sa akong kinabuhi sauna, apan nakakita ra kog mga higala dinhi.",
+          "baseText": {
+            "de": "Anfangs ging alles in meinem Leben langsam voran, aber schließlich habe ich hier Freunde gefunden.",
+            "en": "Life moved slowly for me at first, but eventually I found friends here."
+          }
+        },
+        {
+          "targetText": "Kanus-a man nagsugod nga mas kanunay na kay kauban?",
+          "baseText": {
+            "de": "Wann fing es denn an, dass du öfter Gesellschaft hattest?",
+            "en": "When did you start having company more often?"
+          }
+        },
+        {
+          "targetText": "Niapil ko sa pundok sa mga magtatanom, dayon kanunay na ming magkita.",
+          "baseText": {
+            "de": "Ich habe mich der Gruppe der Gärtner angeschlossen, und seitdem sehen wir uns regelmäßig.",
+            "en": "I joined the growers' group, and since then we've been meeting regularly."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sauna … apan …",
+        "rule": {
+          "de": "Sauna setzt den früheren Zustand in einen zeitlichen Rahmen. Apan leitet die Veränderung ein, und nakakita sagt, dass du schließlich Freunde gefunden hast.",
+          "en": "Sauna frames an earlier state. Apan introduces the change, and nakakita says that in the end you managed to find friends."
+        },
+        "examples": [
+          {
+            "targetText": "Hinay ang dagan sa akong kinabuhi sauna, apan nakakita ra kog mga higala dinhi.",
+            "baseText": {
+              "de": "Anfangs ging alles in meinem Leben langsam voran, aber schließlich habe ich hier Freunde gefunden.",
+              "en": "Life moved slowly for me at first, but eventually I found friends here."
+            },
+            "highlight": "sauna, apan nakakita ra kog"
+          },
+          {
+            "targetText": "Hilom ang among balay sauna, apan karon daghan na mig bisita.",
+            "baseText": {
+              "de": "Früher war es bei uns zu Hause still, aber jetzt haben wir viel Besuch.",
+              "en": "Our house used to be quiet, but these days we have lots of visitors."
+            },
+            "highlight": "sauna, apan"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Niapil",
+          "choices": [
+            "Giapil",
+            "Apilon",
+            "Niapil",
+            "Moapil"
+          ],
+          "cue": "apil · Aktorfokus, abgeschlossen / actor focus, completed"
+        },
+        " ko sa pundok sa mga magtatanom, ",
+        {
+          "kind": "choice",
+          "answer": "dayon",
+          "choices": [
+            "imbes",
+            "dayon",
+            "gikan",
+            "tali"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "kanunay",
+          "choices": [
+            "kanunay",
+            "gahapon",
+            "kagabii",
+            "kaniadto"
+          ]
+        },
+        " na ming magkita."
+      ],
+      "chunks": [
+        {
+          "targetText": "Hinay ang dagan",
+          "baseText": {
+            "de": "langsam war der Lauf",
+            "en": "the pace was slow"
+          }
+        },
+        {
+          "targetText": "sa akong kinabuhi sauna,",
+          "baseText": {
+            "de": "meines Lebens früher,",
+            "en": "in my life at first,"
+          }
+        },
+        {
+          "targetText": "apan nakakita ra kog",
+          "baseText": {
+            "de": "aber schließlich habe ich gefunden",
+            "en": "but I eventually found"
+          }
+        },
+        {
+          "targetText": "mga higala dinhi.",
+          "baseText": {
+            "de": "hier Freunde.",
+            "en": "friends here."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kinabuhi",
+          "baseText": {
+            "de": "Leben",
+            "en": "life"
+          }
+        },
+        {
+          "targetText": "hinay ang dagan",
+          "baseText": {
+            "de": "langsam vorangehen",
+            "en": "to move slowly"
+          }
+        },
+        {
+          "targetText": "sauna",
+          "baseText": {
+            "de": "früher",
+            "en": "formerly"
+          }
+        },
+        {
+          "targetText": "higala",
+          "baseText": {
+            "de": "Freund oder Freundin",
+            "en": "friend"
+          }
+        },
+        {
+          "targetText": "niapil",
+          "baseText": {
+            "de": "schloss sich an",
+            "en": "joined"
+          }
+        },
+        {
+          "targetText": "magtatanom",
+          "baseText": {
+            "de": "Gärtner oder Landwirt",
+            "en": "grower"
+          }
+        },
+        {
+          "targetText": "kanunay",
+          "baseText": {
+            "de": "regelmäßig",
+            "en": "regularly"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Hinay ang dagan sa akong ",
+        "answer": "kinabuhi",
+        "after": " sauna, apan nakakita ra kog mga higala dinhi.",
+        "fallbackChoices": [
+          "sapatos",
+          "suba",
+          "kinabuhi",
+          "sakyanan"
+        ]
+      },
+      "speakRequired": [
+        "hinay",
+        "kinabuhi",
+        "nakakita"
+      ],
+      "sceneCaption": {
+        "de": "Ein älterer Nachbar fragt dich auf der Veranda nach deinem Leben im Ort. „Kumusta man ang imong kinabuhi dinhi sukad sa imong pagbalhin?“",
+        "en": "An older neighbour asks on the veranda how life in town has been for you. “Kumusta man ang imong kinabuhi dinhi sukad sa imong pagbalhin?”"
+      },
+      "trophyWord": {
+        "word": "kinabuhi",
+        "meaning": {
+          "de": "Leben",
+          "en": "life"
+        },
+        "example": "Malinawon ang kinabuhi sa among baryo.",
+        "whyThisWord": {
+          "de": "Wenn du nach der kinabuhi an einem Ort gefragt wirst, kannst du von deinem Alltag und den Menschen dort erzählen.",
+          "en": "When someone asks about kinabuhi in a place, you can tell them about everyday life and the people there."
+        }
+      },
+      "distractors": [
+        "Paspas ang dagan",
+        "mga paryente dinhi."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn sitzen im Schatten auf einer Veranda.",
+        "en": "Two neighbours sit in the shade of a veranda."
+      },
+      "songMood": "Unhurried acoustic sway",
+      "visualNotes": "Two neighbours sit in the shade of a veranda."
+    },
+    {
+      "slug": "kausaban-balhin",
+      "title": {
+        "de": "Was sich verändert hat",
+        "en": "What changed"
+      },
+      "situation": {
+        "de": "Eine Kollegin fragt in der Pause, was sich in deinem Jahr am stärksten verändert hat.",
+        "en": "During a break, a coworker asks what changed most over your year."
+      },
+      "pedagogicalGoal": "Eine Veränderung konkretisieren und eine unveränderte Gewohnheit als Kontrast nennen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa man ang kinadak-ang kausaban sa imong kinabuhi karong tuiga?",
+          "baseText": {
+            "de": "Was hat sich in deinem Leben dieses Jahr am meisten verändert?",
+            "en": "What was the biggest change in your life this year?"
+          }
+        },
+        {
+          "targetText": "Ang kinadak-ang kausaban mao nga nibalhin ko og trabaho ug puy-anan.",
+          "baseText": {
+            "de": "Die größte Veränderung war, dass ich sowohl die Arbeit als auch den Wohnort gewechselt habe.",
+            "en": "The biggest change was that I changed jobs and moved home."
+          }
+        },
+        {
+          "targetText": "Bag-o ang imong balay ug trabaho. Unsa may nagpabilin?",
+          "baseText": {
+            "de": "Dein Zuhause und deine Arbeit sind neu. Was ist geblieben?",
+            "en": "Your home and your job are new. What stayed the same?"
+          }
+        },
+        {
+          "targetText": "Ang akong biyahe, kay nagbisikleta gihapon ko sa trabaho sama sa una.",
+          "baseText": {
+            "de": "Mein Arbeitsweg, denn ich fahre immer noch mit dem Rad zur Arbeit, genau wie früher.",
+            "en": "My commute, because I still cycle to work, just as I used to."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "ang kausaban mao nga …",
+        "rule": {
+          "de": "Mit mao nga erklärst du, worin die genannte Veränderung besteht. Ug verbindet hier zwei Lebensbereiche, die sich beide verändert haben.",
+          "en": "Here mao nga introduces what the change consisted of. Ug links two parts of life that both changed."
+        },
+        "examples": [
+          {
+            "targetText": "Ang kinadak-ang kausaban mao nga nibalhin ko og trabaho ug puy-anan.",
+            "baseText": {
+              "de": "Die größte Veränderung war, dass ich sowohl die Arbeit als auch den Wohnort gewechselt habe.",
+              "en": "The biggest change was that I changed jobs and moved home."
+            },
+            "highlight": "kausaban mao nga"
+          },
+          {
+            "targetText": "Ang unang kausaban mao nga niuli ko matag gabii imbes matag semana.",
+            "baseText": {
+              "de": "Die erste Veränderung war, dass ich jeden Abend statt einmal pro Woche nach Hause kam.",
+              "en": "The first change was that I came home every evening instead of once a week."
+            },
+            "highlight": "kausaban mao nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Ang akong biyahe, ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "aron",
+            "imbes",
+            "kay",
+            "tali"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "nagbisikleta",
+          "choices": [
+            "nagbisikleta",
+            "ang bisikleta",
+            "og bisikleta",
+            "pagbisikleta"
+          ]
+        },
+        " gihapon ko sa trabaho sama sa ",
+        {
+          "kind": "choice",
+          "answer": "una",
+          "choices": [
+            "una",
+            "ugma",
+            "puhon",
+            "sunod"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang kinadak-ang kausaban",
+          "baseText": {
+            "de": "die größte Veränderung",
+            "en": "the biggest change"
+          }
+        },
+        {
+          "targetText": "mao nga nibalhin ko",
+          "baseText": {
+            "de": "war, dass ich gewechselt habe",
+            "en": "was that I changed"
+          }
+        },
+        {
+          "targetText": "og trabaho",
+          "baseText": {
+            "de": "die Arbeit",
+            "en": "jobs"
+          }
+        },
+        {
+          "targetText": "ug puy-anan.",
+          "baseText": {
+            "de": "und den Wohnort.",
+            "en": "and homes."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kausaban",
+          "baseText": {
+            "de": "Veränderung",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "kinadak-an",
+          "baseText": {
+            "de": "am größten",
+            "en": "biggest"
+          }
+        },
+        {
+          "targetText": "nibalhin",
+          "baseText": {
+            "de": "wechselte, zog um",
+            "en": "changed, moved"
+          }
+        },
+        {
+          "targetText": "trabaho",
+          "baseText": {
+            "de": "Arbeit",
+            "en": "work"
+          }
+        },
+        {
+          "targetText": "puy-anan",
+          "baseText": {
+            "de": "Wohnort",
+            "en": "place to live"
+          }
+        },
+        {
+          "targetText": "nagpabilin",
+          "baseText": {
+            "de": "ist geblieben",
+            "en": "stayed"
+          }
+        },
+        {
+          "targetText": "gihapon",
+          "baseText": {
+            "de": "immer noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "biyahe",
+          "baseText": {
+            "de": "Fahrt, Arbeitsweg",
+            "en": "trip, commute"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang kinadak-ang ",
+        "answer": "kausaban",
+        "after": " mao nga nibalhin ko og trabaho ug puy-anan.",
+        "fallbackChoices": [
+          "sukod",
+          "kausaban",
+          "bayad",
+          "pangutana"
+        ]
+      },
+      "speakRequired": [
+        "kausaban",
+        "nibalhin",
+        "trabaho"
+      ],
+      "sceneCaption": {
+        "de": "Eine Kollegin fragt in der Pause, was sich in deinem Jahr am stärksten verändert hat. „Unsa man ang kinadak-ang kausaban sa imong kinabuhi karong tuiga?“",
+        "en": "During a break, a coworker asks what changed most over your year. “Unsa man ang kinadak-ang kausaban sa imong kinabuhi karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "kausaban",
+        "meaning": {
+          "de": "Veränderung",
+          "en": "change"
+        },
+        "example": "Dako ang kausaban sukad sa akong pagbalhin.",
+        "whyThisWord": {
+          "de": "Kausaban bezeichnet eine Veränderung als Ganzes. Danach kannst du erklären, welche Dinge neu sind und was geblieben ist.",
+          "en": "Kausaban names a change as a whole. You can then explain what is new and what stayed the same."
+        }
+      },
+      "distractors": [
+        "Ang kinagamyan nga kausaban",
+        "ug eskuylahan."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kollegen stehen in der Pause am Fahrradständer.",
+        "en": "Two coworkers stand by the bicycle rack during a break."
+      },
+      "songMood": "Gentle pedal rhythm",
+      "visualNotes": "Two coworkers stand by the bicycle rack during a break."
+    },
+    {
+      "slug": "pasalamat-silingan",
+      "title": {
+        "de": "Wofür ich dankbar bin",
+        "en": "What I'm grateful for"
+      },
+      "situation": {
+        "de": "Beim Abendessen fragt deine Gastmutter, für wen du dieses Jahr besonders dankbar bist.",
+        "en": "At dinner your host mother asks who you feel especially grateful to this year."
+      },
+      "pedagogicalGoal": "Dank ausdrücken und ihn mit einer konkreten Handlung während der Evakuierung begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kinsa may gusto nimong pasalamatan karong tuiga?",
+          "baseText": {
+            "de": "Bei wem möchtest du dich dieses Jahr bedanken?",
+            "en": "Who would you like to thank this year?"
+          }
+        },
+        {
+          "targetText": "Dako ang akong pasalamat sa mga silingan nga nitabang nako sa pagbakwit.",
+          "baseText": {
+            "de": "Ich bin den Nachbarn sehr dankbar, die mir bei der Evakuierung geholfen haben.",
+            "en": "I'm very grateful to the neighbours who helped me evacuate."
+          }
+        },
+        {
+          "targetText": "Unsa may gibuhat nila sa dihang nisaka ang tubig?",
+          "baseText": {
+            "de": "Was haben sie gemacht, als das Wasser stieg?",
+            "en": "What did they do when the water rose?"
+          }
+        },
+        {
+          "targetText": "Gisakay mi nila sa trak kay gibahaan ang among dalan.",
+          "baseText": {
+            "de": "Sie haben uns auf dem Lastwagen mitgenommen, weil unsere Straße überschwemmt war.",
+            "en": "They took us on the truck because our road was flooded."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "dako ang akong pasalamat sa …",
+        "rule": {
+          "de": "Sa nennt nach pasalamat die Menschen, denen der Dank gilt. Mit nga nitabang sagst du genauer, warum du ihnen dankbar bist.",
+          "en": "After pasalamat, sa introduces the people you thank. Nga nitabang explains what you are grateful to them for."
+        },
+        "examples": [
+          {
+            "targetText": "Dako ang akong pasalamat sa mga silingan nga nitabang nako sa pagbakwit.",
+            "baseText": {
+              "de": "Ich bin den Nachbarn sehr dankbar, die mir bei der Evakuierung geholfen haben.",
+              "en": "I'm very grateful to the neighbours who helped me evacuate."
+            },
+            "highlight": "pasalamat sa mga silingan nga nitabang"
+          },
+          {
+            "targetText": "Dako ang akong pasalamat sa magtutudlo nga nitabang nako sa pagbasa.",
+            "baseText": {
+              "de": "Ich bin der Lehrkraft sehr dankbar, die mir beim Lesen geholfen hat.",
+              "en": "I'm very grateful to the teacher who helped me read."
+            },
+            "highlight": "pasalamat sa magtutudlo nga"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Gisakay",
+          "choices": [
+            "Gisakay",
+            "Nisakay",
+            "Mosakay",
+            "Nagsakay"
+          ],
+          "cue": "sakay · Objektfokus, abgeschlossen / object focus, completed"
+        },
+        " mi nila sa trak ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "aron",
+            "una",
+            "imbes",
+            "kay"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "gibahaan",
+          "choices": [
+            "gitahi",
+            "gitimpla",
+            "gibahaan",
+            "gibayran"
+          ]
+        },
+        " ang among dalan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Dako ang akong pasalamat",
+          "baseText": {
+            "de": "ich bin sehr dankbar",
+            "en": "I am deeply grateful"
+          }
+        },
+        {
+          "targetText": "sa mga silingan",
+          "baseText": {
+            "de": "den Nachbarn",
+            "en": "to the neighbours"
+          }
+        },
+        {
+          "targetText": "nga nitabang nako",
+          "baseText": {
+            "de": "die mir geholfen haben",
+            "en": "who helped me"
+          }
+        },
+        {
+          "targetText": "sa pagbakwit.",
+          "baseText": {
+            "de": "bei der Evakuierung.",
+            "en": "when we evacuated."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pasalamat",
+          "baseText": {
+            "de": "Dank, Dankbarkeit",
+            "en": "thanks, gratitude"
+          }
+        },
+        {
+          "targetText": "silingan",
+          "baseText": {
+            "de": "Nachbar oder Nachbarin",
+            "en": "neighbour"
+          }
+        },
+        {
+          "targetText": "nitabang",
+          "baseText": {
+            "de": "hat geholfen",
+            "en": "helped"
+          }
+        },
+        {
+          "targetText": "pagbakwit",
+          "baseText": {
+            "de": "Evakuierung",
+            "en": "evacuation"
+          }
+        },
+        {
+          "targetText": "trak",
+          "baseText": {
+            "de": "Lastwagen",
+            "en": "truck"
+          }
+        },
+        {
+          "targetText": "gibahaan",
+          "baseText": {
+            "de": "wurde überschwemmt",
+            "en": "was flooded"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dako ang akong ",
+        "answer": "pasalamat",
+        "after": " sa mga silingan nga nitabang nako sa pagbakwit.",
+        "fallbackChoices": [
+          "pasalamat",
+          "kalagot",
+          "kahadlok",
+          "kasaba"
+        ]
+      },
+      "speakRequired": [
+        "pasalamat",
+        "silingan",
+        "nitabang"
+      ],
+      "sceneCaption": {
+        "de": "Beim Abendessen fragt deine Gastmutter, für wen du dieses Jahr besonders dankbar bist. „Kinsa may gusto nimong pasalamatan karong tuiga?“",
+        "en": "At dinner your host mother asks who you feel especially grateful to this year. “Kinsa may gusto nimong pasalamatan karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "pasalamat",
+        "meaning": {
+          "de": "Dank, Dankbarkeit",
+          "en": "thanks, gratitude"
+        },
+        "example": "Nagdala kog mangga isip pasalamat sa ilang tabang.",
+        "whyThisWord": {
+          "de": "Pasalamat benennt deinen Dank. Mit sa kannst du anfügen, wem er gilt oder wofür du dich bedankst.",
+          "en": "Pasalamat names your gratitude. With sa you can add whom you thank or what you thank them for."
+        }
+      },
+      "distractors": [
+        "Gamay ang akong paglaum",
+        "sa mga drayber"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Abendessen sitzen zwei Personen vor einer Schale Reis.",
+        "en": "Two people sit at dinner with a bowl of rice between them."
+      },
+      "songMood": "Warm low strings",
+      "visualNotes": "Two people sit at dinner with a bowl of rice between them."
+    },
+    {
+      "slug": "damgo-kapehan",
+      "title": {
+        "de": "Ein Traum für das nächste Jahr",
+        "en": "A dream for next year"
+      },
+      "situation": {
+        "de": "Ein Freund fragt beim Kaffee nach deinem Wunsch für das kommende Jahr.",
+        "en": "Over coffee a friend asks about your dream for the coming year."
+      },
+      "pedagogicalGoal": "Einen Zukunftswunsch an eine Voraussetzung knüpfen und die Ortswahl mit einem Zweck erklären.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong damgo para sa sunod tuig?",
+          "baseText": {
+            "de": "Was ist dein Traum für nächstes Jahr?",
+            "en": "What's your dream for next year?"
+          }
+        },
+        {
+          "targetText": "Damgo nako nga moabli og gamay nga kapehan kung igo na ang akong tigom.",
+          "baseText": {
+            "de": "Mein Traum ist es, ein kleines Café zu eröffnen, wenn ich genug gespart habe.",
+            "en": "My dream is to open a little café when I've saved enough."
+          }
+        },
+        {
+          "targetText": "Kung matuman na, asa man nimo gusto ibutang ang kapehan?",
+          "baseText": {
+            "de": "Wenn das klappt, wo hättest du das Café denn gern?",
+            "en": "If it works out, where would you like the café to be?"
+          }
+        },
+        {
+          "targetText": "Duol sa merkado aron makakape ang mga tindera human sa trabaho.",
+          "baseText": {
+            "de": "In der Nähe des Markts, damit die Marktverkäuferinnen nach der Arbeit Kaffee trinken können.",
+            "en": "Near the market, so the women who sell there can have coffee after work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "damgo nako nga … kung …",
+        "rule": {
+          "de": "Nga leitet nach damgo den Inhalt deines Traums ein. Kung nennt die Voraussetzung, unter der du ihn verwirklichen möchtest.",
+          "en": "After damgo, nga introduces the content of your dream. Kung gives the condition you want to meet before acting on it."
+        },
+        "examples": [
+          {
+            "targetText": "Damgo nako nga moabli og gamay nga kapehan kung igo na ang akong tigom.",
+            "baseText": {
+              "de": "Mein Traum ist es, ein kleines Café zu eröffnen, wenn ich genug gespart habe.",
+              "en": "My dream is to open a little café when I've saved enough."
+            },
+            "highlight": "Damgo nako nga moabli"
+          },
+          {
+            "targetText": "Damgo nako nga motanom og mga kahoy kung naa na koy yuta.",
+            "baseText": {
+              "de": "Ich träume davon, Bäume zu pflanzen, wenn ich ein Stück Land habe.",
+              "en": "I dream of planting trees once I have some land."
+            },
+            "highlight": "Damgo nako nga"
+          }
+        ]
+      },
+      "cloze": [
+        "Duol sa ",
+        {
+          "kind": "choice",
+          "answer": "merkado",
+          "choices": [
+            "lamisa",
+            "kutsara",
+            "plato",
+            "merkado"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "aron",
+          "choices": [
+            "bisan",
+            "gikan",
+            "aron",
+            "tali"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "makakape",
+          "choices": [
+            "makasakay",
+            "makakape",
+            "makalangoy",
+            "makatahi"
+          ]
+        },
+        " ang mga tindera human sa trabaho."
+      ],
+      "chunks": [
+        {
+          "targetText": "Damgo nako",
+          "baseText": {
+            "de": "mein Traum ist",
+            "en": "my dream is"
+          }
+        },
+        {
+          "targetText": "nga moabli og gamay nga kapehan",
+          "baseText": {
+            "de": "ein kleines Café zu eröffnen",
+            "en": "to open a little café"
+          }
+        },
+        {
+          "targetText": "kung igo na",
+          "baseText": {
+            "de": "wenn es reicht",
+            "en": "when it's enough"
+          }
+        },
+        {
+          "targetText": "ang akong tigom.",
+          "baseText": {
+            "de": "mein Erspartes.",
+            "en": "my savings."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "damgo",
+          "baseText": {
+            "de": "Traum",
+            "en": "dream"
+          }
+        },
+        {
+          "targetText": "moabli",
+          "baseText": {
+            "de": "eröffnen",
+            "en": "to open"
+          }
+        },
+        {
+          "targetText": "kapehan",
+          "baseText": {
+            "de": "Café",
+            "en": "coffee shop"
+          }
+        },
+        {
+          "targetText": "igo",
+          "baseText": {
+            "de": "ausreichend",
+            "en": "enough"
+          }
+        },
+        {
+          "targetText": "tigom",
+          "baseText": {
+            "de": "Ersparnisse",
+            "en": "savings"
+          }
+        },
+        {
+          "targetText": "merkado",
+          "baseText": {
+            "de": "Markt",
+            "en": "market"
+          }
+        },
+        {
+          "targetText": "tindera",
+          "baseText": {
+            "de": "Verkäuferin",
+            "en": "woman vendor"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Damgo nako nga moabli og gamay nga ",
+        "answer": "kapehan",
+        "after": " kung igo na ang akong tigom.",
+        "fallbackChoices": [
+          "eskuylahan",
+          "botika",
+          "panahi",
+          "kapehan"
+        ]
+      },
+      "speakRequired": [
+        "damgo",
+        "moabli",
+        "tigom"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt beim Kaffee nach deinem Wunsch für das kommende Jahr. „Unsa may imong damgo para sa sunod tuig?“",
+        "en": "Over coffee a friend asks about your dream for the coming year. “Unsa may imong damgo para sa sunod tuig?”"
+      },
+      "trophyWord": {
+        "word": "damgo",
+        "meaning": {
+          "de": "Traum",
+          "en": "dream"
+        },
+        "example": "Ang pagpanag-iya og kapehan mao ang akong damgo.",
+        "whyThisWord": {
+          "de": "Damgo kann einen Lebenstraum bezeichnen. Mit nga und einem Verb kannst du daraus einen konkreten Plan machen.",
+          "en": "Damgo can name a life dream. Add nga and a verb to give the dream a concrete shape."
+        }
+      },
+      "distractors": [
+        "Hadlok ko",
+        "ang akong oras."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kaffeetassen stehen auf dem Tisch eines kleinen Cafés.",
+        "en": "Two cups of coffee sit on a small café table."
+      },
+      "songMood": "Light café guitar",
+      "visualNotes": "Two cups of coffee sit on a small café table."
+    },
+    {
+      "slug": "paglaum-istorya-ni-lola",
+      "title": {
+        "de": "Ein Wunsch für mein Cebuano",
+        "en": "My hope for my Cebuano"
+      },
+      "situation": {
+        "de": "Deine Sprachlehrerin möchte wissen, was du mit deinem Cebuano anfangen möchtest.",
+        "en": "Your tutor wants to know what you'd like to do with your Cebuano."
+      },
+      "pedagogicalGoal": "Eine Hoffnung für ein Familiengespräch formulieren und begründen, welches Thema du zuerst ansprechen möchtest.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsay imong gusto nga mahimo sa Binisaya sunod tuig?",
+          "baseText": {
+            "de": "Was möchtest du nächstes Jahr auf Cebuano tun können?",
+            "en": "What would you like to be able to do in Cebuano next year?"
+          }
+        },
+        {
+          "targetText": "Naa koy paglaum nga magkaistorya na mi ni Lola sa Binisaya sunod tuig.",
+          "baseText": {
+            "de": "Ich hoffe, dass meine Oma und ich uns nächstes Jahr auf Cebuano unterhalten können.",
+            "en": "I hope my grandma and I can have a conversation in Cebuano next year."
+          }
+        },
+        {
+          "targetText": "Kung magkaistorya na mo, unsay una nimong ipangutana niya?",
+          "baseText": {
+            "de": "Wenn ihr euch dann unterhaltet, was möchtest du sie zuerst fragen?",
+            "en": "When you have that conversation, what will you ask her first?"
+          }
+        },
+        {
+          "targetText": "Mangutana ko bahin sa iyang pagkabata kay daghan siyag sugilanon.",
+          "baseText": {
+            "de": "Ich frage sie nach ihrer Kindheit, denn sie hat viele Geschichten zu erzählen.",
+            "en": "I'll ask about her childhood because she has lots of stories."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "naa koy paglaum nga …",
+        "rule": {
+          "de": "Paglaum nennt die Hoffnung. Mit nga formulierst du, was du dir erhoffst. Magkaistorya meint hier, dass du und deine Oma miteinander ins Gespräch kommt. Mit sa akong hunahuna und bisan verbindest du die Hoffnung mit deiner eigenen Einschätzung.",
+          "en": "Paglaum names a hope. Nga introduces what you hope for. Magkaistorya here describes the two of you talking with each other. With sa akong hunahuna and bisan you tie the hope to your own judgement."
+        },
+        "examples": [
+          {
+            "targetText": "Naa koy paglaum nga magkaistorya na mi ni Lola sa Binisaya sunod tuig.",
+            "baseText": {
+              "de": "Ich hoffe, dass meine Oma und ich uns nächstes Jahr auf Cebuano unterhalten können.",
+              "en": "I hope my grandma and I can have a conversation in Cebuano next year."
+            },
+            "highlight": "Naa koy paglaum nga magkaistorya"
+          },
+          {
+            "targetText": "Naa koy paglaum nga magkita ang among pamilya sa pista.",
+            "baseText": {
+              "de": "Ich hoffe, dass unsere Familie zum Fest zusammenkommt.",
+              "en": "I hope our family gets together for the fiesta."
+            },
+            "highlight": "Naa koy paglaum nga"
+          },
+          {
+            "targetText": "Sa akong hunahuna, matuman ang akong paglaum bisan lisod pa ang Binisaya.",
+            "baseText": {
+              "de": "Ich glaube, meine Hoffnung erfüllt sich, auch wenn Cebuano noch schwer ist.",
+              "en": "I think my hope will come true, even though Cebuano is still hard."
+            },
+            "highlight": "Sa akong hunahuna, matuman ang akong paglaum bisan"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Mangutana",
+          "choices": [
+            "Gipangutana",
+            "Pangutanon",
+            "Mangutana",
+            "Nangutana"
+          ],
+          "cue": "pangutana · Aktorfokus, Absicht / actor focus, intention"
+        },
+        " ko bahin sa iyang pagkabata ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "tali",
+            "kay",
+            "aron",
+            "imbes"
+          ]
+        },
+        " daghan siyag ",
+        {
+          "kind": "choice",
+          "answer": "sugilanon",
+          "choices": [
+            "sugilanon",
+            "reseta",
+            "pamasahe",
+            "sukli"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Naa koy paglaum",
+          "baseText": {
+            "de": "ich habe die Hoffnung",
+            "en": "I have hope"
+          }
+        },
+        {
+          "targetText": "nga magkaistorya na mi",
+          "baseText": {
+            "de": "dass wir uns dann unterhalten können",
+            "en": "that we'll be able to have a conversation"
+          }
+        },
+        {
+          "targetText": "ni Lola",
+          "baseText": {
+            "de": "meine Oma und ich",
+            "en": "my grandma and I"
+          }
+        },
+        {
+          "targetText": "sa Binisaya sunod tuig.",
+          "baseText": {
+            "de": "nächstes Jahr auf Cebuano.",
+            "en": "in Cebuano next year."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "paglaum",
+          "baseText": {
+            "de": "Hoffnung",
+            "en": "hope"
+          }
+        },
+        {
+          "targetText": "magkaistorya",
+          "baseText": {
+            "de": "miteinander sprechen",
+            "en": "to have a conversation"
+          }
+        },
+        {
+          "targetText": "Lola",
+          "baseText": {
+            "de": "Oma",
+            "en": "Grandma"
+          }
+        },
+        {
+          "targetText": "Binisaya",
+          "baseText": {
+            "de": "Cebuano",
+            "en": "Cebuano"
+          }
+        },
+        {
+          "targetText": "sunod tuig",
+          "baseText": {
+            "de": "nächstes Jahr",
+            "en": "next year"
+          }
+        },
+        {
+          "targetText": "pagkabata",
+          "baseText": {
+            "de": "Kindheit",
+            "en": "childhood"
+          }
+        },
+        {
+          "targetText": "sugilanon",
+          "baseText": {
+            "de": "Geschichte, Erzählung",
+            "en": "story, tale"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Naa koy ",
+        "answer": "paglaum",
+        "after": " nga magkaistorya na mi ni Lola sa Binisaya sunod tuig.",
+        "fallbackChoices": [
+          "samad",
+          "sukli",
+          "paglaum",
+          "kasaba"
+        ]
+      },
+      "speakRequired": [
+        "paglaum",
+        "magkaistorya",
+        "binisaya"
+      ],
+      "sceneCaption": {
+        "de": "Deine Sprachlehrerin möchte wissen, was du mit deinem Cebuano anfangen möchtest. „Unsay imong gusto nga mahimo sa Binisaya sunod tuig?“",
+        "en": "Your tutor wants to know what you'd like to do with your Cebuano. “Unsay imong gusto nga mahimo sa Binisaya sunod tuig?”"
+      },
+      "trophyWord": {
+        "word": "paglaum",
+        "meaning": {
+          "de": "Hoffnung",
+          "en": "hope"
+        },
+        "example": "Naa koy paglaum nga magkasinabot mi ni Lola.",
+        "whyThisWord": {
+          "de": "Mit paglaum nga sprichst du über etwas Erhofftes, dessen Ausgang noch offen ist.",
+          "en": "Use paglaum nga to speak about something you hope for while the outcome is still open."
+        }
+      },
+      "distractors": [
+        "Naa koy kabalaka",
+        "sa Iningles sunod tuig."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Lehrerin und eine lernende Person sprechen neben einem aufgeschlagenen Heft.",
+        "en": "A tutor and learner talk beside an open notebook."
+      },
+      "songMood": "Intimate fingerpicked strings",
+      "visualNotes": "A tutor and learner talk beside an open notebook."
+    },
+    {
+      "slug": "kalampusan-eksamen",
+      "title": {
+        "de": "Ein Erfolg in diesem Jahr",
+        "en": "A success this year"
+      },
+      "situation": {
+        "de": "Deine Cousine fragt beim Familientreffen, auf welchen Erfolg du besonders stolz bist.",
+        "en": "At a family gathering your cousin asks what achievement you're proudest of."
+      },
+      "pedagogicalGoal": "Das Ergebnis einer Prüfung einordnen und den Zweck des nächsten Schrittes ausdrücken.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa may imong ikapasigarbo karong tuiga?",
+          "baseText": {
+            "de": "Worauf bist du dieses Jahr stolz?",
+            "en": "What are you proud of this year?"
+          }
+        },
+        {
+          "targetText": "Nipasar ko sa eksamen, ug mao kadto ang kinadak-an nakong kalampusan.",
+          "baseText": {
+            "de": "Ich habe die Prüfung bestanden, und das war mein größter Erfolg.",
+            "en": "I passed the exam, and that was my biggest achievement."
+          }
+        },
+        {
+          "targetText": "Pasar na ka. Unsay sunod nimong lakang?",
+          "baseText": {
+            "de": "Jetzt hast du bestanden. Was ist dein nächster Schritt?",
+            "en": "Now you've passed. What's your next step?"
+          }
+        },
+        {
+          "targetText": "Moaplay ko sa klinika aron magamit nako ang akong nakat-onan.",
+          "baseText": {
+            "de": "Ich bewerbe mich in der Klinik, damit ich das Gelernte anwenden kann.",
+            "en": "I'll apply at the clinic so I can use what I've learned."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "ug mao kadto ang …",
+        "rule": {
+          "de": "Nipasar berichtet das abgeschlossene Ereignis. Mit mao kadto verweist du anschließend darauf zurück und erklärst, was es dir bedeutet hat.",
+          "en": "Nipasar reports the completed event. Mao kadto then points back to it so you can explain what it meant to you."
+        },
+        "examples": [
+          {
+            "targetText": "Nipasar ko sa eksamen, ug mao kadto ang kinadak-an nakong kalampusan.",
+            "baseText": {
+              "de": "Ich habe die Prüfung bestanden, und das war mein größter Erfolg.",
+              "en": "I passed the exam, and that was my biggest achievement."
+            },
+            "highlight": "ug mao kadto ang kinadak-an nakong kalampusan"
+          },
+          {
+            "targetText": "Nakahuman ko sa kurso, ug mao kadto ang unang lakang.",
+            "baseText": {
+              "de": "Ich habe den Kurs abgeschlossen, und das war der erste Schritt.",
+              "en": "I finished the course, and that was the first step."
+            },
+            "highlight": "ug mao kadto ang"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Moaplay",
+          "choices": [
+            "Aplayan",
+            "Moaplay",
+            "Niaplay",
+            "Giaplayan"
+          ],
+          "cue": "aplay · Aktorfokus, Absicht / actor focus, intention"
+        },
+        " ko sa klinika ",
+        {
+          "kind": "choice",
+          "answer": "aron",
+          "choices": [
+            "aron",
+            "imbes",
+            "tali",
+            "gikan"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "magamit",
+          "choices": [
+            "malabay",
+            "maluto",
+            "masul-ob",
+            "magamit"
+          ]
+        },
+        " nako ang akong nakat-onan."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nipasar ko",
+          "baseText": {
+            "de": "ich habe bestanden",
+            "en": "I passed"
+          }
+        },
+        {
+          "targetText": "sa eksamen,",
+          "baseText": {
+            "de": "die Prüfung,",
+            "en": "the exam,"
+          }
+        },
+        {
+          "targetText": "ug mao kadto",
+          "baseText": {
+            "de": "und das war",
+            "en": "and that was"
+          }
+        },
+        {
+          "targetText": "ang kinadak-an nakong kalampusan.",
+          "baseText": {
+            "de": "mein größter Erfolg.",
+            "en": "my biggest achievement."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "kalampusan",
+          "baseText": {
+            "de": "Erfolg",
+            "en": "achievement"
+          }
+        },
+        {
+          "targetText": "nipasar",
+          "baseText": {
+            "de": "hat bestanden",
+            "en": "passed"
+          }
+        },
+        {
+          "targetText": "eksamen",
+          "baseText": {
+            "de": "Prüfung",
+            "en": "exam"
+          }
+        },
+        {
+          "targetText": "kinadak-an",
+          "baseText": {
+            "de": "am größten",
+            "en": "biggest"
+          }
+        },
+        {
+          "targetText": "lakang",
+          "baseText": {
+            "de": "Schritt",
+            "en": "step"
+          }
+        },
+        {
+          "targetText": "moaplay",
+          "baseText": {
+            "de": "sich bewerben",
+            "en": "to apply"
+          }
+        },
+        {
+          "targetText": "nakat-onan",
+          "baseText": {
+            "de": "das Gelernte",
+            "en": "what was learned"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nipasar ko sa eksamen, ug mao kadto ang kinadak-an nakong ",
+        "answer": "kalampusan",
+        "after": ".",
+        "fallbackChoices": [
+          "kabalaka",
+          "kalampusan",
+          "pangutana",
+          "kapakyasan"
+        ]
+      },
+      "speakRequired": [
+        "nipasar",
+        "eksamen",
+        "kalampusan"
+      ],
+      "sceneCaption": {
+        "de": "Deine Cousine fragt beim Familientreffen, auf welchen Erfolg du besonders stolz bist. „Unsa may imong ikapasigarbo karong tuiga?“",
+        "en": "At a family gathering your cousin asks what achievement you're proudest of. “Unsa may imong ikapasigarbo karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "kalampusan",
+        "meaning": {
+          "de": "Erfolg",
+          "en": "achievement"
+        },
+        "example": "Dako nga kalampusan para nako ang paghuman sa kurso.",
+        "whyThisWord": {
+          "de": "Mit kalampusan ordnest du ein erzähltes Ergebnis als persönlichen Erfolg ein.",
+          "en": "Kalampusan lets you describe an outcome you've just recounted as a personal achievement."
+        }
+      },
+      "distractors": [
+        "Nahadlok ko",
+        "ang kinagamyan nakong gasto."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Verwandte unterhalten sich bei einem Familienessen.",
+        "en": "Two relatives talk over a family meal."
+      },
+      "songMood": "Bright acoustic lift",
+      "visualNotes": "Two relatives talk over a family meal."
+    },
+    {
+      "slug": "hagit-semana-sa-bagyo",
+      "title": {
+        "de": "Die schwierigste Woche",
+        "en": "The hardest week"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach der größten Schwierigkeit, die du dieses Jahr erlebt hast.",
+        "en": "A friend asks what the toughest experience of your year was."
+      },
+      "pedagogicalGoal": "Eine schwierige Woche beschreiben und aus einer konkreten Folge einen Vorsatz ableiten.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsa man ang pinakalisod nimong nasinati karong tuiga?",
+          "baseText": {
+            "de": "Was war das Schwierigste, das du dieses Jahr erlebt hast?",
+            "en": "What was the hardest thing you went through this year?"
+          }
+        },
+        {
+          "targetText": "Ang labing lisod nga hagit mao ang usa ka semana nga walay kuryente human sa bagyo.",
+          "baseText": {
+            "de": "Die größte Herausforderung war die Woche ohne Strom nach dem Taifun.",
+            "en": "The toughest challenge was the week without power after the typhoon."
+          }
+        },
+        {
+          "targetText": "Unsa man ang imong buhaton sa laing paagi kung may bagyo na pud?",
+          "baseText": {
+            "de": "Was machst du anders, wenn wieder ein Taifun kommt?",
+            "en": "What will you do differently if another typhoon comes?"
+          }
+        },
+        {
+          "targetText": "Magtipig ko og tubig kay nihubas ang among tangke niadtong semanaha.",
+          "baseText": {
+            "de": "Ich lege einen Wasservorrat an, denn in jener Woche ist unser Tank leergelaufen.",
+            "en": "I'll store water because our tank ran dry that week."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "usa ka semana nga …",
+        "rule": {
+          "de": "Nga verbindet die Zeitspanne mit ihrer Beschreibung. Human sa nennt das Ereignis, nach dem du die schwierige Woche erlebt hast.",
+          "en": "Nga links the period of time to its description. Human sa names the event after which you experienced that difficult week."
+        },
+        "examples": [
+          {
+            "targetText": "Ang labing lisod nga hagit mao ang usa ka semana nga walay kuryente human sa bagyo.",
+            "baseText": {
+              "de": "Die größte Herausforderung war die Woche ohne Strom nach dem Taifun.",
+              "en": "The toughest challenge was the week without power after the typhoon."
+            },
+            "highlight": "usa ka semana nga walay kuryente"
+          },
+          {
+            "targetText": "Nahinumdom ko sa duha ka adlaw nga walay biyahe human sa bagyo.",
+            "baseText": {
+              "de": "Ich erinnere mich an die zwei Tage nach dem Taifun, an denen es keine Fahrten gab.",
+              "en": "I remember the two days without transport services after the typhoon."
+            },
+            "highlight": "duha ka adlaw nga walay"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "Magtipig",
+          "choices": [
+            "Magtipig",
+            "Nagtipig",
+            "Gitipigan",
+            "Tipigan"
+          ],
+          "cue": "tipig · Aktorfokus, Absicht / actor focus, intention"
+        },
+        " ko og tubig ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "aron",
+            "imbes",
+            "tali",
+            "kay"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "nihubas",
+          "choices": [
+            "hubasan",
+            "pahubas",
+            "nihubas",
+            "mohubas"
+          ]
+        },
+        " ang among tangke niadtong semanaha."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ang labing lisod nga hagit",
+          "baseText": {
+            "de": "die schwierigste Herausforderung",
+            "en": "the toughest challenge"
+          }
+        },
+        {
+          "targetText": "mao ang usa ka semana",
+          "baseText": {
+            "de": "war eine Woche",
+            "en": "was one week"
+          }
+        },
+        {
+          "targetText": "nga walay kuryente",
+          "baseText": {
+            "de": "ohne Strom",
+            "en": "without power"
+          }
+        },
+        {
+          "targetText": "human sa bagyo.",
+          "baseText": {
+            "de": "nach dem Taifun.",
+            "en": "after the typhoon."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hagit",
+          "baseText": {
+            "de": "Herausforderung",
+            "en": "challenge"
+          }
+        },
+        {
+          "targetText": "semana",
+          "baseText": {
+            "de": "Woche",
+            "en": "week"
+          }
+        },
+        {
+          "targetText": "walay kuryente",
+          "baseText": {
+            "de": "ohne Strom",
+            "en": "without electricity"
+          }
+        },
+        {
+          "targetText": "bagyo",
+          "baseText": {
+            "de": "Taifun, Sturm",
+            "en": "typhoon, storm"
+          }
+        },
+        {
+          "targetText": "magtipig",
+          "baseText": {
+            "de": "einen Vorrat anlegen",
+            "en": "to store up"
+          }
+        },
+        {
+          "targetText": "nihubas",
+          "baseText": {
+            "de": "ist ausgetrocknet",
+            "en": "ran dry"
+          }
+        },
+        {
+          "targetText": "tangke",
+          "baseText": {
+            "de": "Tank",
+            "en": "tank"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ang labing lisod nga ",
+        "answer": "hagit",
+        "after": " mao ang usa ka semana nga walay kuryente human sa bagyo.",
+        "fallbackChoices": [
+          "hagit",
+          "kutsara",
+          "pangandoy",
+          "kalampusan"
+        ]
+      },
+      "speakRequired": [
+        "hagit",
+        "kuryente",
+        "human"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt nach der größten Schwierigkeit, die du dieses Jahr erlebt hast. „Unsa man ang pinakalisod nimong nasinati karong tuiga?“",
+        "en": "A friend asks what the toughest experience of your year was. “Unsa man ang pinakalisod nimong nasinati karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "hagit",
+        "meaning": {
+          "de": "Herausforderung",
+          "en": "challenge"
+        },
+        "example": "Ang pagpangita og tubig mao ang among hagit.",
+        "whyThisWord": {
+          "de": "Hagit benennt eine Schwierigkeit, die bewältigt werden muss. Du kannst danach erzählen, was du aus ihr gelernt hast.",
+          "en": "Hagit names a challenge to be faced. You can then describe what you learned from it."
+        }
+      },
+      "distractors": [
+        "Ang kinagamyan nga gasto",
+        "sa wala pa ang bagyo."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde erinnern sich auf der Veranda an die Zeit nach einem Sturm.",
+        "en": "Two friends on a veranda look back on the days after a storm."
+      },
+      "songMood": "Reflective low guitar",
+      "visualNotes": "Two friends on a veranda look back on the days after a storm."
+    },
+    {
+      "slug": "tibuok-tuig",
+      "title": {
+        "de": "Das Jahr als Ganzes",
+        "en": "The year as a whole"
+      },
+      "situation": {
+        "de": "Eine ältere Nachbarin fragt dich am Jahresende nach deinem Gesamtbild.",
+        "en": "At the end of the year an older neighbour asks how you see the year as a whole."
+      },
+      "pedagogicalGoal": "Ein gemischtes Jahr bewerten und die Wortwahl mit einer überwundenen Schwierigkeit begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Kumusta man ang tuig kung tan-awon nimo sa kinatibuk-an?",
+          "baseText": {
+            "de": "Wie war das Jahr, wenn du es als Ganzes betrachtest?",
+            "en": "How was the year when you look at it as a whole?"
+          }
+        },
+        {
+          "targetText": "Sa tibuok tuig, mas daghan ang malipayong adlaw bisan daghan pud mig kalisdanan.",
+          "baseText": {
+            "de": "Über das ganze Jahr gesehen überwogen die schönen Tage, obwohl wir auch viele Schwierigkeiten hatten.",
+            "en": "Looking at the whole year, there were more happy days, although we had plenty of difficulties too."
+          }
+        },
+        {
+          "targetText": "Kung usa ra ka pulong ang imong pilion para niana, unsa man?",
+          "baseText": {
+            "de": "Wenn du dafür nur ein Wort wählen könntest, welches wäre es?",
+            "en": "If you could choose just one word for it, what would it be?"
+          }
+        },
+        {
+          "targetText": "Paglaum, kay nakabangon mi human sa matag pagsulay.",
+          "baseText": {
+            "de": "Hoffnung, denn nach jeder schweren Zeit sind wir wieder auf die Beine gekommen.",
+            "en": "Hope, because we got back on our feet after every trial."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "sa tibuok tuig … bisan …",
+        "rule": {
+          "de": "Sa tibuok tuig legt den Zeitraum der Einschätzung fest. Bisan räumt eine Erfahrung ein, die das insgesamt positive Urteil einschränkt.",
+          "en": "Sa tibuok tuig sets the period you're judging. Bisan acknowledges an experience that qualifies an overall positive judgement."
+        },
+        "examples": [
+          {
+            "targetText": "Sa tibuok tuig, mas daghan ang malipayong adlaw bisan daghan pud mig kalisdanan.",
+            "baseText": {
+              "de": "Über das ganze Jahr gesehen überwogen die schönen Tage, obwohl wir auch viele Schwierigkeiten hatten.",
+              "en": "Looking at the whole year, there were more happy days, although we had plenty of difficulties too."
+            },
+            "highlight": "Sa tibuok tuig"
+          },
+          {
+            "targetText": "Sa tibuok bulan, kanunay ming nagkita bisan layo ang among mga balay.",
+            "baseText": {
+              "de": "Den ganzen Monat über haben wir uns oft gesehen, obwohl unsere Häuser weit auseinanderliegen.",
+              "en": "Throughout the month we saw each other often even though our homes are far apart."
+            },
+            "highlight": "Sa tibuok bulan"
+          }
+        ]
+      },
+      "cloze": [
+        "Paglaum, ",
+        {
+          "kind": "connector",
+          "answer": "kay",
+          "choices": [
+            "aron",
+            "tali",
+            "imbes",
+            "kay"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "nakabangon",
+          "choices": [
+            "bangon",
+            "bangona",
+            "nakabangon",
+            "makabangon"
+          ],
+          "cue": "bangon · gelungen, abgeschlossen / achieved, completed"
+        },
+        " mi human sa matag ",
+        {
+          "kind": "choice",
+          "answer": "pagsulay",
+          "choices": [
+            "reseta",
+            "pagsulay",
+            "kandado",
+            "sukli"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sa tibuok tuig, mas daghan",
+          "baseText": {
+            "de": "über das ganze Jahr gesehen überwogen",
+            "en": "over the whole year, there were more"
+          }
+        },
+        {
+          "targetText": "ang malipayong adlaw",
+          "baseText": {
+            "de": "die schönen Tage",
+            "en": "happy days"
+          }
+        },
+        {
+          "targetText": "bisan daghan pud mig",
+          "baseText": {
+            "de": "obwohl wir auch viele hatten",
+            "en": "although we also had many"
+          }
+        },
+        {
+          "targetText": "kalisdanan.",
+          "baseText": {
+            "de": "Schwierigkeiten.",
+            "en": "difficulties."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tibuok",
+          "baseText": {
+            "de": "ganz, gesamt",
+            "en": "whole, entire"
+          }
+        },
+        {
+          "targetText": "malipayong adlaw",
+          "baseText": {
+            "de": "glückliche Tage",
+            "en": "happy days"
+          }
+        },
+        {
+          "targetText": "kalisdanan",
+          "baseText": {
+            "de": "Schwierigkeiten",
+            "en": "difficulties"
+          }
+        },
+        {
+          "targetText": "pulong",
+          "baseText": {
+            "de": "Wort",
+            "en": "word"
+          }
+        },
+        {
+          "targetText": "paglaum",
+          "baseText": {
+            "de": "Hoffnung",
+            "en": "hope"
+          }
+        },
+        {
+          "targetText": "nakabangon",
+          "baseText": {
+            "de": "kam wieder auf die Beine",
+            "en": "got back on one's feet"
+          }
+        },
+        {
+          "targetText": "pagsulay",
+          "baseText": {
+            "de": "Prüfung, schwere Zeit",
+            "en": "trial, ordeal"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sa ",
+        "answer": "tibuok",
+        "after": " tuig, mas daghan ang malipayong adlaw bisan daghan pud mig kalisdanan.",
+        "fallbackChoices": [
+          "gamay",
+          "taas",
+          "bagting",
+          "tibuok"
+        ]
+      },
+      "speakRequired": [
+        "tibuok",
+        "bisan",
+        "kalisdanan"
+      ],
+      "sceneCaption": {
+        "de": "Eine ältere Nachbarin fragt dich am Jahresende nach deinem Gesamtbild. „Kumusta man ang tuig kung tan-awon nimo sa kinatibuk-an?“",
+        "en": "At the end of the year an older neighbour asks how you see the year as a whole. “Kumusta man ang tuig kung tan-awon nimo sa kinatibuk-an?”"
+      },
+      "trophyWord": {
+        "word": "tibuok",
+        "meaning": {
+          "de": "ganz, gesamt",
+          "en": "whole, entire"
+        },
+        "example": "Sa tibuok tuig kanunay mi nga nagtinabangay.",
+        "whyThisWord": {
+          "de": "Tibuok vor einer Zeitangabe erweitert den Blick auf den gesamten Zeitraum. So kannst du auch gemischte Erfahrungen zusammenfassen.",
+          "en": "Tibuok before a period of time widens the view to that whole span, which helps you sum up mixed experiences."
+        }
+      },
+      "distractors": [
+        "Sa tibuok tuig, mas mahal",
+        "ang mga kutsara"
+      ],
+      "placeholderCaption": {
+        "de": "Eine ältere Nachbarin und ihr Gast sitzen mit Tee im Hof.",
+        "en": "An older neighbour and her visitor sit with tea in a courtyard."
+      },
+      "songMood": "Mellow evening strings",
+      "visualNotes": "An older neighbour and her visitor sit with tea in a courtyard."
+    },
+    {
+      "slug": "handumanan-sa-lantsa",
+      "title": {
+        "de": "Eine Erinnerung, die bleibt",
+        "en": "A memory that stays with me"
+      },
+      "situation": {
+        "de": "Eine Freundin fragt dich, welchen Augenblick des Jahres du am liebsten in Erinnerung behältst.",
+        "en": "A friend asks which moment of the year you most like to remember."
+      },
+      "pedagogicalGoal": "Eine gemeinsame Erinnerung ausführlich beschreiben, sie datieren und eine mögliche Wiederholung ins Auge fassen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Unsay paborito nimong handumanan karong tuiga?",
+          "baseText": {
+            "de": "Was ist deine liebste Erinnerung an dieses Jahr?",
+            "en": "What's your favourite memory of this year?"
+          }
+        },
+        {
+          "targetText": "Paborito nakong handumanan ang pagsalop sa adlaw nga nakita namong mag-agaw gikan sa lantsa.",
+          "baseText": {
+            "de": "Meine liebste Erinnerung ist der Sonnenuntergang, den ich mit meinen Cousins und Cousinen von der Fähre aus gesehen habe.",
+            "en": "My favourite memory is the sunset my cousins and I saw from the ferry."
+          }
+        },
+        {
+          "targetText": "Kahinumdom pa ka sa petsa sa inyong biyahe?",
+          "baseText": {
+            "de": "Weißt du noch das Datum eurer Fahrt?",
+            "en": "Do you still remember the date of your trip?"
+          }
+        },
+        {
+          "targetText": "Baynte otso kadto sa Hunyo. Mobalik mi kung magkatigom mi pag-usab.",
+          "baseText": {
+            "de": "Das war am achtundzwanzigsten Juni. Wir fahren wieder hin, wenn wir wieder zusammenkommen.",
+            "en": "It was the twenty-eighth of June. We'll go back if we all get together again."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "handumanan + Beschreibung mit nga",
+        "rule": {
+          "de": "Nga leitet die Beschreibung des Sonnenuntergangs ein. Nakita benennt die damalige Wahrnehmung, namong mag-agaw die gemeinsame Erfahrung der Verwandten.",
+          "en": "Nga introduces the description of the sunset. Nakita reports seeing it, and namong mag-agaw identifies the cousins who shared the experience."
+        },
+        "examples": [
+          {
+            "targetText": "Paborito nakong handumanan ang pagsalop sa adlaw nga nakita namong mag-agaw gikan sa lantsa.",
+            "baseText": {
+              "de": "Meine liebste Erinnerung ist der Sonnenuntergang, den ich mit meinen Cousins und Cousinen von der Fähre aus gesehen habe.",
+              "en": "My favourite memory is the sunset my cousins and I saw from the ferry."
+            },
+            "highlight": "nga nakita namong mag-agaw"
+          },
+          {
+            "targetText": "Akong handumanan ang mga suga nga nakita namo gikan sa pantalan.",
+            "baseText": {
+              "de": "Ich erinnere mich an die Lichter, die wir vom Hafen aus gesehen haben.",
+              "en": "I remember the lights we saw from the harbour."
+            },
+            "highlight": "nga nakita namo"
+          }
+        ]
+      },
+      "cloze": [
+        "Baynte otso kadto sa ",
+        {
+          "kind": "choice",
+          "answer": "Hunyo",
+          "choices": [
+            "adlaw",
+            "tuig",
+            "Hunyo",
+            "semana"
+          ]
+        },
+        ". ",
+        {
+          "kind": "form",
+          "answer": "Mobalik",
+          "choices": [
+            "Ibalik",
+            "Mobalik",
+            "Nibalik",
+            "Gibalik"
+          ],
+          "cue": "balik · Aktorfokus, Absicht / actor focus, intention"
+        },
+        " mi ",
+        {
+          "kind": "choice",
+          "answer": "kung",
+          "choices": [
+            "kung",
+            "imbes",
+            "tali",
+            "gikan"
+          ]
+        },
+        " magkatigom mi pag-usab."
+      ],
+      "chunks": [
+        {
+          "targetText": "Paborito nakong handumanan",
+          "baseText": {
+            "de": "meine liebste Erinnerung",
+            "en": "my favourite memory"
+          }
+        },
+        {
+          "targetText": "ang pagsalop sa adlaw",
+          "baseText": {
+            "de": "ist der Sonnenuntergang",
+            "en": "is the sunset"
+          }
+        },
+        {
+          "targetText": "nga nakita namong mag-agaw",
+          "baseText": {
+            "de": "den wir als Cousins und Cousinen gesehen haben",
+            "en": "that my cousins and I saw"
+          }
+        },
+        {
+          "targetText": "gikan sa lantsa.",
+          "baseText": {
+            "de": "von der Fähre aus.",
+            "en": "from the ferry."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "handumanan",
+          "baseText": {
+            "de": "Erinnerung",
+            "en": "memory"
+          }
+        },
+        {
+          "targetText": "pagsalop sa adlaw",
+          "baseText": {
+            "de": "Sonnenuntergang",
+            "en": "sunset"
+          }
+        },
+        {
+          "targetText": "nakita",
+          "baseText": {
+            "de": "gesehen",
+            "en": "saw"
+          }
+        },
+        {
+          "targetText": "mag-agaw",
+          "baseText": {
+            "de": "Cousins und Cousinen",
+            "en": "cousins"
+          }
+        },
+        {
+          "targetText": "lantsa",
+          "baseText": {
+            "de": "Fähre, Motorboot",
+            "en": "ferry, motor launch"
+          }
+        },
+        {
+          "targetText": "petsa",
+          "baseText": {
+            "de": "Datum",
+            "en": "date"
+          }
+        },
+        {
+          "targetText": "magkatigom",
+          "baseText": {
+            "de": "zusammenkommen",
+            "en": "to gather together"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Paborito nakong ",
+        "answer": "handumanan",
+        "after": " ang pagsalop sa adlaw nga nakita namong mag-agaw gikan sa lantsa.",
+        "fallbackChoices": [
+          "kabalaka",
+          "hangyo",
+          "handumanan",
+          "pangutana"
+        ]
+      },
+      "speakRequired": [
+        "handumanan",
+        "nakita",
+        "lantsa"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin fragt dich, welchen Augenblick des Jahres du am liebsten in Erinnerung behältst. „Unsay paborito nimong handumanan karong tuiga?“",
+        "en": "A friend asks which moment of the year you most like to remember. “Unsay paborito nimong handumanan karong tuiga?”"
+      },
+      "trophyWord": {
+        "word": "handumanan",
+        "meaning": {
+          "de": "Erinnerung",
+          "en": "memory"
+        },
+        "example": "Ang kanta sa lantsa nagpabalik sa akong handumanan sa pista.",
+        "whyThisWord": {
+          "de": "Handumanan kann einen einzelnen Moment bezeichnen. Eine Beschreibung mit nga macht deutlich, an welches Erlebnis du denkst.",
+          "en": "Handumanan can name one moment. A description with nga makes clear which experience you have in mind."
+        }
+      },
+      "distractors": [
+        "Paborito nakong damgo",
+        "gikan sa bukid."
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Deck einer Fähre schauen Verwandte gemeinsam aufs Abendlicht.",
+        "en": "Relatives on a ferry deck watch the evening light together."
+      },
+      "songMood": "Reflective sunset guitar",
+      "visualNotes": "Relatives on a ferry deck watch the evening light together."
+    }
+  ]
+}
