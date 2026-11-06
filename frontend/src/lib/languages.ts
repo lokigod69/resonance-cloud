@@ -1,3 +1,6 @@
+import { BETA_TARGET_LANGUAGES, isVisibleTargetValue } from '../data/betaTargetLanguages'
+export { BETA_TARGET_LANGUAGES }
+
 // Single source of truth for all supported languages.
 // Different UI surfaces use different subsets — see capability flags.
 //
@@ -88,27 +91,14 @@ export function isBaseLanguageValue(language: string | null | undefined): langua
     && (BASE_LANGUAGE_VALUES as readonly string[]).includes(language)
 }
 
-/**
- * The invite-only beta offers exactly these target languages (owner call,
- * 2026-07-27: 8 complete ones, no half-wired shells). Criteria: guided A1+A2,
- * a Library pack, Speak support in api LANGUAGE_CONFIG, and Latin script (the
- * typed-recall surfaces have no non-Latin input path yet). Wizard-space naming
- * ('Bisaya', not 'Cebuano'). Every user-facing language picker filters through
- * this list; registries and resolvers stay untrimmed so existing decks in
- * dropped languages keep working. Swap entries here, nowhere else.
- */
-export const BETA_TARGET_LANGUAGES = [
-  'English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian',
-] as const
-
 export function isBetaTargetLanguage(language: string | null | undefined): boolean {
   if (!language) return false
   const canonical = canonicalizeLanguageValue(language)
-  return (BETA_TARGET_LANGUAGES as readonly string[]).includes(canonical)
+  return isVisibleTargetValue(canonical)
 }
 
 export const BETA_WIZARD_LANGUAGES = WIZARD_LANGUAGES.filter((l) =>
-  (BETA_TARGET_LANGUAGES as readonly string[]).includes(l.value))
+  isVisibleTargetValue(l.value))
 
 /**
  * Languages whose script the typed-recall surfaces cannot honestly serve: the

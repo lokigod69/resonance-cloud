@@ -4,10 +4,11 @@
 // due/rest buoys render exactly as before).
 
 import { scenario, type StreamWordStub } from './scenario'
+import { isVisibleTargetValue } from '@/data/betaTargetLanguages'
 import { resolveStaticCategoryTargetLanguageCode, STATIC_CATEGORY_TRANSLATION_LANGUAGES } from '@/data/staticCategoryLanguages'
 export { resolveStaticCategoryTargetLanguageCode }
 export const STATIC_CATEGORY_TARGET_LANGUAGES = STATIC_CATEGORY_TRANSLATION_LANGUAGES.filter((entry) => entry.status !== 'hidden')
-export const STATIC_CATEGORY_BETA_TARGET_LANGUAGES = STATIC_CATEGORY_TARGET_LANGUAGES.filter((entry) => ['English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian'].includes(entry.value))
+export const STATIC_CATEGORY_BETA_TARGET_LANGUAGES = STATIC_CATEGORY_TARGET_LANGUAGES.filter((entry) => isVisibleTargetValue(entry.value))
 export const PINNED_BOTTOM_CATEGORIES = []
 
 const CATEGORY_META: Record<string, { labelKey: string; emoji: string }> = {

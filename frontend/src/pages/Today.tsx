@@ -58,7 +58,7 @@ export default function Today() {
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
   // Every language with authored paths (all 12) — the resolution set. A legacy
   // Korean/Russian learner keeps their course even though the SWITCHER below
-  // only offers the beta eight.
+  // only offers the selectable beta targets.
   const allGuidedLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
   const availableLanguages = useMemo(
     () => allGuidedLanguages.filter((language) => BETA_GUIDED_LANGUAGES.has(language)),

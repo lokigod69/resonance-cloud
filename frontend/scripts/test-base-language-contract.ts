@@ -69,9 +69,9 @@ assert('API accepts Bisaya code and alias', resolveApiBaseLanguage('ceb')?.value
 assert('unknown base languages remain unknown', canonicalizeBaseLanguageValue('Tagalog') === null && resolveApiBaseLanguage('Tagalog') === null)
 assert('Japanese code and date locale resolve', getBaseLanguageCode('Japanese') === 'ja' && getIntlLocale('ja') === 'ja-JP')
 assert(
-  'beta target rollout remains exactly eight languages',
+  'the target picker includes Korean alongside the original eight beta languages',
   JSON.stringify(BETA_TARGET_LANGUAGES) === JSON.stringify([
-    'English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian',
+    'English', 'German', 'Spanish', 'French', 'Italian', 'Portuguese', 'Bisaya', 'Indonesian', 'Korean',
   ]),
 )
 

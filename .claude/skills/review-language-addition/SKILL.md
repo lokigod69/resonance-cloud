@@ -36,13 +36,11 @@ and flag rule edits in the report so the owner sees the rulebook moved.
   `src/lib/targetLanguage.ts`; aliases handled inside the canonicalizers, such as
   `resolveApiBaseLanguage`, are fine). Any other second spelling/synonym is a defect
   (cf. the standing Bisaya/Cebuano precedent).
-- Beta visibility (owner decision 2026-07-27): pickers show only
-  `BETA_TARGET_LANGUAGES` (`src/lib/languages.ts`), mirrored as a literal
-  `BETA_TARGET_LANGUAGE_VALUES` in `src/data/categories.ts` and by `SPEAK_ORDER` in
-  `pages/Speak.tsx`. A non-beta language absent from pickers is intended, not a defect.
-  A language present in some of the three lists but not all is a blocker. Graduating a
-  language into the beta is the owner's call, and it also updates the "exactly eight"
-  pin in `scripts/test-base-language-contract.ts`.
+- Beta visibility: onboarding, Library, wizard and Today share
+  `BETA_TARGET_LANGUAGES` (`src/data/betaTargetLanguages.ts`). Check the supported
+  tutor order `SPEAK_ORDER` in `pages/Speak.tsx` for agreement. A non-beta language
+  absent from pickers is intended. Graduation is the owner's call; update the roster
+  pin in `scripts/test-base-language-contract.ts`. Korean joined on 2026-11-06.
 - Capability flags in `lib/languages.ts` match reality:
   - `isWizard` → wizard tile renders with distinct `wizardColor` and flag icon (for a
     beta language; `wizardData.ts` maps only `BETA_WIZARD_LANGUAGES`). Static

@@ -21,13 +21,13 @@ asset batches (TTS, voice cloning, translation) ALWAYS need explicit owner appro
 ## Beta visibility (owner decision 2026-07-27)
 
 Every user-facing picker (onboarding, wizard, Library, category picker, Today, Speak)
-shows only `BETA_TARGET_LANGUAGES` in `frontend/src/lib/languages.ts`; its comment lists
-the graduation criteria (guided A1+A2, a Library pack, Speak in `LANGUAGE_CONFIG`, Latin
-script). A new language therefore ships **dark** — registries and resolvers only — until
-the owner graduates it. Never edit the beta list on your own. Graduation, when the owner
-asks for it, edits `BETA_TARGET_LANGUAGES`, the literal `BETA_TARGET_LANGUAGE_VALUES` in
-`frontend/src/data/categories.ts`, `SPEAK_ORDER` in `frontend/src/pages/Speak.tsx`, and
-the "exactly eight" pin in `frontend/scripts/test-base-language-contract.ts`, together.
+uses the beta target roster. Onboarding, wizard, Library and Today share
+`BETA_TARGET_LANGUAGES` in `frontend/src/data/betaTargetLanguages.ts`; Speak uses
+`SPEAK_ORDER` in `frontend/src/pages/Speak.tsx`. New languages stay out of pickers
+until the owner graduates them. Update the shared roster, supported Speak order and
+the roster assertion in `frontend/scripts/test-base-language-contract.ts` together.
+Check guided A1/A2, the Library pack, Speak support and script-specific input. Korean
+was graduated on November 6; general typed study modes still have their own script gate.
 
 ## Launch tiers (cumulative)
 
