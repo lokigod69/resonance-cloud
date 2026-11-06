@@ -1,5 +1,13 @@
 # November independent text dispositions
 
+## French and Brazilian Portuguese B1, 7 November
+
+P6–P10 add fifty new episodes per language. Together with P1–P5, each language has 100 B1 lessons and 100 distinct B1 trophy words. The five paths practise service updates, explaining purpose, comparing past habits with the present, resolving a complaint and recounting a year. French P9 follows one washing-machine complaint through to its resolution. The Portuguese scenarios include negotiating a repair estimate and asking whether a collection can take place during an available window.
+
+Separate readers checked the actual ten-lesson files, both sets of meanings and the choices presented to learners. Fable read each path and adjudicated the findings. The corrections address cues that displayed an answer, two valid cloze choices, ambiguous or movable sentence fragments, prematurely revealed story details, customer-service roles and mismatches between the target and its translations. The index links one record per path, including remaining minor editorial observations. The reproducible B1 checks compare both complete tiers with their vocabulary plans, check the final exercises and require the editorial and independent verdicts to identify the same text. These are offline lessons for reading and curriculum review. Audio and integration into Today are deferred.
+
+In the French capstone, a learner could naturally type either *quand* or *lorsque* before the clause about walking along the quays. The app would accept only the stored word. The revised exercise presents the four possible connectors up front and asks the learner to supply the conjugated verb separately. The same adjustment protects French purpose expressions such as *pour* and *afin de*. Portuguese P8 groups *essa ponte todos os dias* on one build tile so another valid placement of the time expression cannot be marked wrong.
+
 ## Korean B2 completion, 7 November
 
 P5–P10 add sixty full lessons to the forty already written. Their early teaching cards now draw on the first learner response, leaving the later objection, new information and decision for the learner to encounter. P6 changes interlocutors after turn four, P7 attributes contributions to the actual group participants, and the two floor-management expressions heard in P7 become productive tasks in P9. P10 closes with a two-minute response to an objection and a stopping rule.

@@ -140,21 +140,19 @@
         2,
         3,
         4,
-        5
-      ],
-      "pathsToWrite": [
+        5,
         6,
         7,
         8,
         9,
         10
       ],
-      "remainingLessonCount": 50,
+      "pathsToWrite": [],
+      "remainingLessonCount": 0,
       "tenPathSpec": "b1-2026-10/french-plan.json",
       "specRoot": "frontend/content-drafts",
       "specSha256": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380",
-      "stagingOverride": "text-2026-11/planning/b1-en-es-fr-staging.md",
-      "nextPathObjective": "Où en est ma demande ?"
+      "stagingOverride": "text-2026-11/planning/b1-en-es-fr-staging.md"
     },
     {
       "language": "French",
@@ -185,21 +183,19 @@
         2,
         3,
         4,
-        5
-      ],
-      "pathsToWrite": [
+        5,
         6,
         7,
         8,
         9,
         10
       ],
-      "remainingLessonCount": 50,
+      "pathsToWrite": [],
+      "remainingLessonCount": 0,
       "tenPathSpec": "b1-2026-10/portuguese-plan.json",
       "specRoot": "frontend/content-drafts",
       "specSha256": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d",
-      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json",
-      "nextPathObjective": "Em andamento"
+      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json"
     },
     {
       "language": "Portuguese",

@@ -1,0 +1,2249 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Eine Lösung finden",
+    "en": "Finding a solution"
+  },
+  "subtitle": {
+    "de": "Schildere ein Problem und kläre mit dem Kundendienst, was als Nächstes möglich ist.",
+    "en": "Describe a problem and work out the next step with customer service."
+  },
+  "anchor": "Consolidação em situações de reparo: narrar o problema, esclarecer uma condição e pedir uma ação possível. Mistura de passado, descrição, pedidos e finalidade já ensinados; sem família gramatical nova. A reação final respeita o poder de decisão de quem atende.",
+  "lessons": [
+    {
+      "slug": "ventilador-com-defeito",
+      "title": {
+        "de": "Ein defekter Ventilator",
+        "en": "A faulty fan"
+      },
+      "situation": {
+        "de": "Du bringst einen gerade gekauften Ventilator zum Kundendienst des Geschäfts zurück, und der Techniker fragt nach dem Problem.",
+        "en": "You bring a just-bought fan back to the store's service desk, and the technician asks what the problem is."
+      },
+      "pedagogicalGoal": "Einen gerade gekauften Gegenstand mit que comprei identifizieren, den Defekt knapp beschreiben und auf eine Nachfrage mit einer zeitlichen Abfolge antworten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "O que aconteceu com o ventilador?",
+          "baseText": {
+            "de": "Was ist mit dem Ventilator passiert?",
+            "en": "What happened with the fan?"
+          }
+        },
+        {
+          "targetText": "O ventilador que comprei ontem veio com defeito: ele parou na primeira noite.",
+          "baseText": {
+            "de": "Der Ventilator, den ich gestern gekauft habe, kam mit einem Defekt: Er blieb in der ersten Nacht stehen.",
+            "en": "The fan I bought yesterday came faulty: it stopped on the first night."
+          }
+        },
+        {
+          "targetText": "Antes de parar, ele fez algum barulho ou a luz apagou de repente?",
+          "baseText": {
+            "de": "Hat er vor dem Stehenbleiben irgendein Geräusch gemacht, oder ist das Licht plötzlich ausgegangen?",
+            "en": "Before it stopped, did it make any noise, or did the light go out suddenly?"
+          }
+        },
+        {
+          "targetText": "Primeiro a luz piscou, depois o motor parou de vez.",
+          "baseText": {
+            "de": "Zuerst hat das Licht geflackert, dann blieb der Motor endgültig stehen.",
+            "en": "First the light flickered, then the motor stopped for good."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "… que comprei …",
+        "rule": {
+          "de": "Que leitet einen Relativsatz ein, der das Substantiv davor näher bestimmt; comprei steht ohne eu und ohne wiederholtes Objekt, danach geht der Hauptsatz normal weiter.",
+          "en": "Que introduces a relative clause that identifies the noun before it; comprei appears without eu and without repeating the object, and the main clause then continues normally."
+        },
+        "examples": [
+          {
+            "targetText": "O ventilador que comprei ontem veio com defeito: ele parou na primeira noite.",
+            "baseText": {
+              "de": "Der Ventilator, den ich gestern gekauft habe, kam mit einem Defekt: Er blieb in der ersten Nacht stehen.",
+              "en": "The fan I bought yesterday came faulty: it stopped on the first night."
+            },
+            "highlight": "que comprei ontem"
+          },
+          {
+            "targetText": "A mochila que comprei na feira ficou no banco do trem.",
+            "baseText": {
+              "de": "Der Rucksack, den ich auf dem Markt gekauft habe, ist auf dem Sitz im Zug liegen geblieben.",
+              "en": "The backpack I bought at the market was left on the train seat."
+            },
+            "highlight": "que comprei na feira"
+          }
+        ]
+      },
+      "cloze": [
+        "Primeiro a luz ",
+        {
+          "kind": "form",
+          "answer": "piscou",
+          "cue": "piscar (a luz)",
+          "choices": [
+            "pisquei",
+            "piscaram",
+            "piscou",
+            "piscamos"
+          ]
+        },
+        ", depois o motor ",
+        {
+          "kind": "form",
+          "answer": "parou",
+          "cue": "parar (o motor)",
+          "choices": [
+            "parei",
+            "paramos",
+            "pararam",
+            "parou"
+          ]
+        },
+        " de vez."
+      ],
+      "chunks": [
+        {
+          "targetText": "O ventilador que comprei ontem",
+          "baseText": {
+            "de": "Der Ventilator, den ich gestern gekauft habe,",
+            "en": "The fan I bought yesterday"
+          }
+        },
+        {
+          "targetText": "veio com defeito:",
+          "baseText": {
+            "de": "kam mit einem Defekt:",
+            "en": "came faulty:"
+          }
+        },
+        {
+          "targetText": "ele parou",
+          "baseText": {
+            "de": "er blieb stehen",
+            "en": "it stopped"
+          }
+        },
+        {
+          "targetText": "na primeira noite.",
+          "baseText": {
+            "de": "in der ersten Nacht.",
+            "en": "on the first night."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ventilador",
+          "baseText": {
+            "de": "Ventilator",
+            "en": "fan"
+          }
+        },
+        {
+          "targetText": "defeito",
+          "baseText": {
+            "de": "Defekt; Mangel",
+            "en": "defect; fault"
+          }
+        },
+        {
+          "targetText": "parou",
+          "baseText": {
+            "de": "blieb stehen; hörte auf",
+            "en": "stopped"
+          }
+        },
+        {
+          "targetText": "barulho",
+          "baseText": {
+            "de": "Geräusch; Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "apagou",
+          "baseText": {
+            "de": "ging aus (Licht)",
+            "en": "went out (light)"
+          }
+        },
+        {
+          "targetText": "piscou",
+          "baseText": {
+            "de": "flackerte; blinkte",
+            "en": "flickered"
+          }
+        },
+        {
+          "targetText": "motor",
+          "baseText": {
+            "de": "Motor",
+            "en": "motor"
+          }
+        },
+        {
+          "targetText": "de vez",
+          "baseText": {
+            "de": "endgültig; ganz",
+            "en": "for good"
+          }
+        }
+      ],
+      "recall": {
+        "before": "O ventilador que comprei ontem ",
+        "answer": "veio",
+        "after": " com defeito: ele parou na primeira noite.",
+        "fallbackChoices": [
+          "vim",
+          "vieram",
+          "veio",
+          "viemos"
+        ]
+      },
+      "speakRequired": [
+        "ventilador",
+        "defeito",
+        "parou"
+      ],
+      "sceneCaption": {
+        "de": "An der Servicetheke des Geschäfts fragt der Techniker: “O que aconteceu com o ventilador?”",
+        "en": "At the store's service desk, the technician asks: “O que aconteceu com o ventilador?”"
+      },
+      "trophyWord": {
+        "word": "defeito",
+        "meaning": {
+          "de": "Defekt; Mangel",
+          "en": "defect; fault"
+        },
+        "example": "O ventilador que comprei ontem veio com defeito: ele parou na primeira noite.",
+        "whyThisWord": {
+          "de": "Defeito ist das Wort, mit dem man beim Kundendienst einen Fehler am Gerät benennt; vir com defeito heißt, dass das Gerät schon beim Kauf nicht in Ordnung war.",
+          "en": "Defeito is the word you use at a service desk to name a fault in an appliance; vir com defeito means the item was already not working properly when bought."
+        }
+      },
+      "distractors": [
+        "vieram com defeito:",
+        "eles pararam"
+      ],
+      "placeholderCaption": {
+        "de": "Eine erste Frage an der Servicetheke des Geschäfts.",
+        "en": "A first question at the store's service desk."
+      },
+      "songMood": "patient troubleshooting",
+      "visualNotes": "Store service desk with a boxed fan on the counter; no light, motor or wiring details visible in the initial frame."
+    },
+    {
+      "slug": "garantia-da-batedeira",
+      "title": {
+        "de": "Die Garantie für das Rührgerät",
+        "en": "The mixer's warranty"
+      },
+      "situation": {
+        "de": "Du bringst ein Küchengerät zum Kundendienst, und der Techniker fragt, worum es geht.",
+        "en": "You bring a kitchen appliance to the service centre, and the technician asks what it is about."
+      },
+      "pedagogicalGoal": "Mit queria saber se eine höfliche indirekte Frage zur Garantie stellen und nach dem Hinweis auf ein fehlendes Dokument den nächsten Schritt erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Qual aparelho você trouxe para a assistência?",
+          "baseText": {
+            "de": "Welches Gerät haben Sie zum Kundendienst gebracht?",
+            "en": "Which appliance have you brought to the service centre?"
+          }
+        },
+        {
+          "targetText": "Trouxe a batedeira porque queria saber se a garantia cobre o motor.",
+          "baseText": {
+            "de": "Ich habe das Rührgerät mitgebracht, weil ich wissen wollte, ob die Garantie den Motor abdeckt.",
+            "en": "I brought the mixer because I wanted to know whether the warranty covers the motor."
+          }
+        },
+        {
+          "targetText": "Para consultar a cobertura, preciso da nota fiscal. Uma foto legível serve.",
+          "baseText": {
+            "de": "Um die Deckung zu prüfen, brauche ich den Kassenbon. Ein lesbares Foto reicht.",
+            "en": "To check the coverage, I need the receipt. A legible photo will do."
+          }
+        },
+        {
+          "targetText": "Eu tenho uma foto. Para onde eu mando o arquivo?",
+          "baseText": {
+            "de": "Ich habe ein Foto. Wohin schicke ich die Datei?",
+            "en": "I have a photo. Where do I send the file?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "queria saber se…",
+        "rule": {
+          "de": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb mit seinem eigenen Subjekt, hier im Präsens, weil es um die aktuelle Deckung geht, wie in a garantia cobre.",
+          "en": "Queria saber se introduces a polite indirect yes-no question; after se the verb has its own subject, here in the present because the question is about current coverage, as in a garantia cobre."
+        },
+        "examples": [
+          {
+            "targetText": "Trouxe a batedeira porque queria saber se a garantia cobre o motor.",
+            "baseText": {
+              "de": "Ich habe das Rührgerät mitgebracht, weil ich wissen wollte, ob die Garantie den Motor abdeckt.",
+              "en": "I brought the mixer because I wanted to know whether the warranty covers the motor."
+            },
+            "highlight": "queria saber se a garantia cobre"
+          },
+          {
+            "targetText": "Queria saber se a biblioteca renova o empréstimo mais uma vez.",
+            "baseText": {
+              "de": "Ich wollte wissen, ob die Bibliothek die Ausleihe noch einmal verlängert.",
+              "en": "I wanted to know whether the library extends the loan one more time."
+            },
+            "highlight": "Queria saber se a biblioteca renova"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "tenho",
+          "cue": "ter (eu)",
+          "choices": [
+            "tem",
+            "temos",
+            "tenho",
+            "têm"
+          ]
+        },
+        " uma foto. Para onde eu ",
+        {
+          "kind": "form",
+          "answer": "mando",
+          "cue": "mandar (eu)",
+          "choices": [
+            "manda",
+            "mandamos",
+            "mando",
+            "mandam"
+          ]
+        },
+        " o arquivo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Trouxe a batedeira",
+          "baseText": {
+            "de": "Ich habe das Rührgerät mitgebracht,",
+            "en": "I brought the mixer"
+          }
+        },
+        {
+          "targetText": "porque queria saber",
+          "baseText": {
+            "de": "weil ich wissen wollte,",
+            "en": "because I wanted to know"
+          }
+        },
+        {
+          "targetText": "se a garantia",
+          "baseText": {
+            "de": "ob die Garantie",
+            "en": "whether the warranty"
+          }
+        },
+        {
+          "targetText": "cobre o motor.",
+          "baseText": {
+            "de": "den Motor abdeckt.",
+            "en": "covers the motor."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "batedeira",
+          "baseText": {
+            "de": "Rührgerät; Handmixer",
+            "en": "mixer"
+          }
+        },
+        {
+          "targetText": "assistência",
+          "baseText": {
+            "de": "Kundendienst; Reparaturservice",
+            "en": "service centre"
+          }
+        },
+        {
+          "targetText": "garantia",
+          "baseText": {
+            "de": "Garantie",
+            "en": "warranty"
+          }
+        },
+        {
+          "targetText": "cobre",
+          "baseText": {
+            "de": "deckt ab (Garantie)",
+            "en": "covers (warranty)"
+          }
+        },
+        {
+          "targetText": "cobertura",
+          "baseText": {
+            "de": "Deckung; Garantieumfang",
+            "en": "coverage"
+          }
+        },
+        {
+          "targetText": "nota fiscal",
+          "baseText": {
+            "de": "Kassenbon; Rechnung",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "legível",
+          "baseText": {
+            "de": "lesbar",
+            "en": "legible"
+          }
+        },
+        {
+          "targetText": "arquivo",
+          "baseText": {
+            "de": "Datei",
+            "en": "file"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Trouxe a batedeira porque queria saber se a garantia ",
+        "answer": "cobre",
+        "after": " o motor.",
+        "fallbackChoices": [
+          "cubro",
+          "cobrem",
+          "cobre",
+          "cobrimos"
+        ]
+      },
+      "speakRequired": [
+        "batedeira",
+        "garantia",
+        "motor"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter des Kundendienstes fragt der Techniker: “Qual aparelho você trouxe para a assistência?”",
+        "en": "At the service centre counter, the technician asks: “Qual aparelho você trouxe para a assistência?”"
+      },
+      "trophyWord": {
+        "word": "garantia",
+        "meaning": {
+          "de": "Garantie",
+          "en": "warranty"
+        },
+        "example": "Trouxe a batedeira porque queria saber se a garantia cobre o motor.",
+        "whyThisWord": {
+          "de": "Garantia ist das Schlüsselwort, wenn ein Gerät nach dem Kauf kaputtgeht; mit a garantia cobre fragst du, ob die Reparatur kostenlos ist.",
+          "en": "Garantia is the key word when an appliance breaks after purchase; with a garantia cobre you ask whether the repair is free."
+        }
+      },
+      "distractors": [
+        "Trouxe as batedeira",
+        "cobrem o motor."
+      ],
+      "placeholderCaption": {
+        "de": "Eine erste Frage am Schalter des Kundendienstes.",
+        "en": "A first question at the service centre counter."
+      },
+      "songMood": "calm, hopeful inquiry",
+      "visualNotes": "Service centre counter with a stand mixer in a bag; no receipt, phone photo or paperwork visible in the initial frame."
+    },
+    {
+      "slug": "orcamento-antes-do-conserto",
+      "title": {
+        "de": "Ein Kostenvoranschlag vor der Reparatur",
+        "en": "A quote before the repair"
+      },
+      "situation": {
+        "de": "Du hast dein Fahrrad in einer Werkstatt abgegeben, und der Mechaniker will mit der Reparatur loslegen.",
+        "en": "You have dropped your bike off at a repair shop, and the mechanic wants to get started on the repair."
+      },
+      "pedagogicalGoal": "Mit antes de + Infinitiv eine Bedingung vor der Freigabe formulieren und bei einer zusätzlichen Gebühr nachfragen, was im Kostenvoranschlag enthalten ist.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Já podemos começar o conserto da bicicleta?",
+          "baseText": {
+            "de": "Können wir mit der Reparatur des Fahrrads schon anfangen?",
+            "en": "Can we go ahead and start the bike repair?"
+          }
+        },
+        {
+          "targetText": "Antes de autorizar o conserto, eu queria um orçamento por escrito.",
+          "baseText": {
+            "de": "Bevor ich die Reparatur freigebe, hätte ich gern einen schriftlichen Kostenvoranschlag.",
+            "en": "Before I authorize the repair, I'd like a written quote."
+          }
+        },
+        {
+          "targetText": "A avaliação tem uma taxa de trinta reais. A gente desconta esse valor do conserto.",
+          "baseText": {
+            "de": "Für die Begutachtung fällt eine Gebühr von dreißig Reais an. Den Betrag ziehen wir von der Reparatur ab.",
+            "en": "The assessment has a fee of thirty reais. We deduct that amount from the repair."
+          }
+        },
+        {
+          "targetText": "A taxa entra no orçamento e a oficina desconta esse valor depois?",
+          "baseText": {
+            "de": "Fließt die Gebühr in den Kostenvoranschlag ein, und zieht die Werkstatt den Betrag später wieder ab?",
+            "en": "Does the fee go into the quote, and does the shop deduct that amount later?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Antes de + infinitivo",
+        "rule": {
+          "de": "Antes de steht direkt vor dem Infinitiv und nennt den späteren Schritt; der Hauptsatz nach dem Komma sagt mit eigenem Subjekt, was vorher passieren soll, wie in eu queria.",
+          "en": "Antes de goes directly before the infinitive and names the later step; the main clause after the comma states, with its own subject, what should happen first, as in eu queria."
+        },
+        "examples": [
+          {
+            "targetText": "Antes de autorizar o conserto, eu queria um orçamento por escrito.",
+            "baseText": {
+              "de": "Bevor ich die Reparatur freigebe, hätte ich gern einen schriftlichen Kostenvoranschlag.",
+              "en": "Before I authorize the repair, I'd like a written quote."
+            },
+            "highlight": "Antes de autorizar o conserto"
+          },
+          {
+            "targetText": "Antes de fazer a matrícula, eu queria saber o preço e o horário do curso.",
+            "baseText": {
+              "de": "Bevor ich mich einschreibe, wüsste ich gern den Preis und die Uhrzeiten des Kurses.",
+              "en": "Before enrolling, I'd like to know the price and schedule of the course."
+            },
+            "highlight": "Antes de fazer a matrícula"
+          }
+        ]
+      },
+      "cloze": [
+        "A taxa ",
+        {
+          "kind": "form",
+          "answer": "entra",
+          "cue": "entrar (a taxa)",
+          "choices": [
+            "entro",
+            "entram",
+            "entra",
+            "entramos"
+          ]
+        },
+        " no orçamento e a oficina ",
+        {
+          "kind": "form",
+          "answer": "desconta",
+          "cue": "descontar (a oficina)",
+          "choices": [
+            "desconto",
+            "descontam",
+            "desconta",
+            "descontamos"
+          ]
+        },
+        " esse valor depois?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Antes de autorizar o conserto,",
+          "baseText": {
+            "de": "Bevor ich die Reparatur freigebe,",
+            "en": "Before authorizing the repair,"
+          }
+        },
+        {
+          "targetText": "eu queria",
+          "baseText": {
+            "de": "hätte ich gern",
+            "en": "I'd like"
+          }
+        },
+        {
+          "targetText": "um orçamento",
+          "baseText": {
+            "de": "einen Kostenvoranschlag",
+            "en": "a quote"
+          }
+        },
+        {
+          "targetText": "por escrito.",
+          "baseText": {
+            "de": "schriftlich.",
+            "en": "in writing."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "conserto",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "orçamento",
+          "baseText": {
+            "de": "Kostenvoranschlag",
+            "en": "quote; estimate"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        },
+        {
+          "targetText": "avaliação",
+          "baseText": {
+            "de": "Begutachtung; Prüfung des Schadens",
+            "en": "assessment; inspection"
+          }
+        },
+        {
+          "targetText": "taxa",
+          "baseText": {
+            "de": "Gebühr",
+            "en": "fee"
+          }
+        },
+        {
+          "targetText": "desconta",
+          "baseText": {
+            "de": "zieht ab (vom Preis)",
+            "en": "deducts (from the price)"
+          }
+        },
+        {
+          "targetText": "autorizar",
+          "baseText": {
+            "de": "freigeben; genehmigen",
+            "en": "to authorize; to approve"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Antes de autorizar o conserto, eu ",
+        "answer": "queria",
+        "after": " um orçamento por escrito.",
+        "fallbackChoices": [
+          "queriam",
+          "queria",
+          "queríamos",
+          "querem"
+        ]
+      },
+      "speakRequired": [
+        "autorizar",
+        "orçamento",
+        "escrito"
+      ],
+      "sceneCaption": {
+        "de": "In der Fahrradwerkstatt fragt der Mechaniker: “Já podemos começar o conserto da bicicleta?”",
+        "en": "At the bike shop, the mechanic asks: “Já podemos começar o conserto da bicicleta?”"
+      },
+      "trophyWord": {
+        "word": "orçamento",
+        "meaning": {
+          "de": "Kostenvoranschlag",
+          "en": "quote; estimate"
+        },
+        "example": "Antes de autorizar o conserto, eu queria um orçamento por escrito.",
+        "whyThisWord": {
+          "de": "Orçamento ist das Wort, das du bei jeder Werkstatt, jedem Handwerker und jeder Dienstleistung brauchst, bevor du Ja sagst; pedir um orçamento schützt dich vor Überraschungen auf der Rechnung.",
+          "en": "Orçamento is the word you need at any workshop, tradesperson or service before you say yes; pedir um orçamento protects you from surprises on the bill."
+        }
+      },
+      "distractors": [
+        "um pneu novo",
+        "Depois de devolver a bicicleta,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mechaniker will mit der Fahrradreparatur beginnen.",
+        "en": "A mechanic is ready to start the bike repair."
+      },
+      "songMood": "careful before committing",
+      "visualNotes": "Bike repair shop with a bicycle on a stand and a mechanic holding a wrench; no price list, fee sign or written quote visible in the first frame."
+    },
+    {
+      "slug": "visita-do-tecnico",
+      "title": {
+        "de": "Einen Techniker anfordern",
+        "en": "Requesting a technician visit"
+      },
+      "situation": {
+        "de": "Dein Internet macht seit Tagen Probleme, und du rufst beim Anbieter an.",
+        "en": "Your internet has been acting up for days, and you call your provider."
+      },
+      "pedagogicalGoal": "Eine abgeschwächte Bitte mit você poderia + Infinitiv formulieren und den Besuchstermin an das angebotene Zeitfenster anpassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Como está a conexão hoje?",
+          "baseText": {
+            "de": "Wie läuft die Verbindung heute?",
+            "en": "How's the connection today?"
+          }
+        },
+        {
+          "targetText": "A internet ainda cai toda tarde. Você poderia mandar um técnico aqui?",
+          "baseText": {
+            "de": "Das Internet bricht immer noch jeden Nachmittag zusammen. Könnten Sie einen Techniker hierher schicken?",
+            "en": "The internet still drops out every afternoon. Could you send a technician out here?"
+          }
+        },
+        {
+          "targetText": "Tenho uma visita disponível amanhã entre duas e cinco. Precisa ter alguém em casa nesse horário.",
+          "baseText": {
+            "de": "Ich habe morgen zwischen zwei und fünf einen Termin frei. In dieser Zeit muss jemand zu Hause sein.",
+            "en": "I have a visit available tomorrow between two and five. Someone needs to be at home during that time."
+          }
+        },
+        {
+          "targetText": "Às duas eu trabalho, mas minha irmã pode receber o técnico.",
+          "baseText": {
+            "de": "Um zwei bin ich bei der Arbeit, aber meine Schwester kann den Techniker empfangen.",
+            "en": "At two I'm at work, but my sister can let the technician in."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Você poderia + infinitivo",
+        "rule": {
+          "de": "Você poderia + Infinitiv bildet eine höfliche, abgemilderte Bitte; poderia bleibt in der dritten Person, und was du dir wünschst, steht im Infinitiv.",
+          "en": "Você poderia + infinitive makes a polite, softened request; poderia stays in the third person, and what you want goes in the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "A internet ainda cai toda tarde. Você poderia mandar um técnico aqui?",
+            "baseText": {
+              "de": "Das Internet bricht immer noch jeden Nachmittag zusammen. Könnten Sie einen Techniker hierher schicken?",
+              "en": "The internet still drops out every afternoon. Could you send a technician out here?"
+            },
+            "highlight": "Você poderia mandar"
+          },
+          {
+            "targetText": "Você poderia imprimir uma cópia do relatório para mim?",
+            "baseText": {
+              "de": "Könnten Sie mir eine Kopie des Berichts ausdrucken?",
+              "en": "Could you print a copy of the report for me?"
+            },
+            "highlight": "Você poderia imprimir"
+          }
+        ]
+      },
+      "cloze": [
+        "Às duas eu ",
+        {
+          "kind": "form",
+          "answer": "trabalho",
+          "cue": "trabalhar (eu)",
+          "choices": [
+            "trabalha",
+            "trabalho",
+            "trabalham",
+            "trabalhamos"
+          ]
+        },
+        ", mas minha irmã ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "cue": "poder (minha irmã)",
+          "choices": [
+            "podem",
+            "posso",
+            "pode",
+            "podemos"
+          ]
+        },
+        " receber o técnico."
+      ],
+      "chunks": [
+        {
+          "targetText": "A internet ainda cai",
+          "baseText": {
+            "de": "Das Internet bricht immer noch zusammen",
+            "en": "The internet still drops out"
+          }
+        },
+        {
+          "targetText": "toda tarde. Você poderia",
+          "baseText": {
+            "de": "jeden Nachmittag. Könnten Sie",
+            "en": "every afternoon. Could you"
+          }
+        },
+        {
+          "targetText": "mandar",
+          "baseText": {
+            "de": "schicken",
+            "en": "send"
+          }
+        },
+        {
+          "targetText": "um técnico aqui?",
+          "baseText": {
+            "de": "einen Techniker hierher?",
+            "en": "a technician out here?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "conexão",
+          "baseText": {
+            "de": "Verbindung (Internet)",
+            "en": "connection"
+          }
+        },
+        {
+          "targetText": "cai",
+          "baseText": {
+            "de": "bricht ab; fällt aus (Internet)",
+            "en": "drops out; goes down"
+          }
+        },
+        {
+          "targetText": "técnico",
+          "baseText": {
+            "de": "Techniker",
+            "en": "technician"
+          }
+        },
+        {
+          "targetText": "visita",
+          "baseText": {
+            "de": "Besuchstermin; Hausbesuch",
+            "en": "visit; service call"
+          }
+        },
+        {
+          "targetText": "disponível",
+          "baseText": {
+            "de": "frei; verfügbar",
+            "en": "available"
+          }
+        },
+        {
+          "targetText": "horário",
+          "baseText": {
+            "de": "Zeitfenster; Uhrzeit",
+            "en": "time slot"
+          }
+        },
+        {
+          "targetText": "receber",
+          "baseText": {
+            "de": "empfangen; hereinlassen",
+            "en": "to receive; to let in"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A internet ainda ",
+        "answer": "cai",
+        "after": " toda tarde. Você poderia mandar um técnico aqui?",
+        "fallbackChoices": [
+          "caio",
+          "caem",
+          "cai",
+          "caímos"
+        ]
+      },
+      "speakRequired": [
+        "internet",
+        "técnico",
+        "mandar"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt der Kundendienst des Internetanbieters: “Como está a conexão hoje?”",
+        "en": "On the phone, the internet provider's customer service asks: “Como está a conexão hoje?”"
+      },
+      "trophyWord": {
+        "word": "técnico",
+        "meaning": {
+          "de": "Techniker",
+          "en": "technician"
+        },
+        "example": "A internet ainda cai toda tarde. Você poderia mandar um técnico aqui?",
+        "whyThisWord": {
+          "de": "Técnico ist die Person, die zu dir nach Hause kommt, wenn Internet, Strom oder ein Gerät streiken; mandar um técnico ist die feste Formel beim Kundendienst.",
+          "en": "Técnico is the person who comes to your home when the internet, power or an appliance gives up; mandar um técnico is the set phrase with customer service."
+        }
+      },
+      "distractors": [
+        "mandam",
+        "toda noite. Você poderia"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Anruf beim Internetanbieter.",
+        "en": "A call to the internet provider."
+      },
+      "songMood": "patient but persistent",
+      "visualNotes": "Someone at home on the phone with a router blinking nearby; no calendar, clock showing a time window or second household member in the first frame."
+    },
+    {
+      "slug": "peca-que-faltava-na-oficina",
+      "title": {
+        "de": "Das fehlende Ersatzteil",
+        "en": "The missing spare part"
+      },
+      "situation": {
+        "de": "Deine Waschmaschine steht seit Tagen in der Werkstatt. Du rufst dort an, um nach einem Ersatzteil zu fragen.",
+        "en": "Your washing machine has been at the repair shop for days. You call to ask about a spare part."
+      },
+      "pedagogicalGoal": "Mit eu queria saber se eine indirekte Ja-Nein-Frage über einen Lieferstand stellen und anschließend nach dem nächsten konkreten Schritt fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você está ligando por causa da sua máquina de lavar?",
+          "baseText": {
+            "de": "Rufen Sie wegen Ihrer Waschmaschine an?",
+            "en": "Are you calling about your washing machine?"
+          }
+        },
+        {
+          "targetText": "Sim, eu queria saber se a peça que faltava já chegou à oficina.",
+          "baseText": {
+            "de": "Ja, ich wollte wissen, ob das fehlende Teil schon in der Werkstatt angekommen ist.",
+            "en": "Yes, I wanted to know whether the missing part has already arrived at the workshop."
+          }
+        },
+        {
+          "targetText": "Ainda não. O fornecedor atualiza a previsão na quinta depois do almoço.",
+          "baseText": {
+            "de": "Noch nicht. Der Lieferant aktualisiert den voraussichtlichen Liefertermin am Donnerstag nach dem Mittagessen.",
+            "en": "Not yet. The supplier updates the delivery estimate on Thursday after lunch."
+          }
+        },
+        {
+          "targetText": "Então eu ligo na quinta. A oficina recebe a previsão por escrito?",
+          "baseText": {
+            "de": "Dann rufe ich am Donnerstag an. Bekommt die Werkstatt den Liefertermin schriftlich?",
+            "en": "Then I'll call on Thursday. Does the workshop get the estimate in writing?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eu queria saber se…",
+        "rule": {
+          "de": "Nach eu queria saber leitet se eine indirekte Ja-Nein-Frage ein; das Verb bleibt in der Zeit des erfragten Vorgangs, hier já chegou für etwas bereits Geschehenes.",
+          "en": "After eu queria saber, se introduces an indirect yes/no question; the verb keeps the tense of the event asked about, here já chegou for something already completed."
+        },
+        "examples": [
+          {
+            "targetText": "Sim, eu queria saber se a peça que faltava já chegou à oficina.",
+            "baseText": {
+              "de": "Ja, ich wollte wissen, ob das fehlende Teil schon in der Werkstatt angekommen ist.",
+              "en": "Yes, I wanted to know whether the missing part has already arrived at the workshop."
+            },
+            "highlight": "se a peça que faltava já chegou"
+          },
+          {
+            "targetText": "Eu queria saber se alguém já entregou uma carteira preta nos achados e perdidos.",
+            "baseText": {
+              "de": "Ich wollte wissen, ob jemand schon eine schwarze Geldbörse im Fundbüro abgegeben hat.",
+              "en": "I wanted to know whether anyone has already handed in a black wallet at lost and found."
+            },
+            "highlight": "se alguém já entregou"
+          }
+        ]
+      },
+      "cloze": [
+        "Então eu ",
+        {
+          "kind": "form",
+          "answer": "ligo",
+          "cue": "ligar (eu)",
+          "choices": [
+            "liga",
+            "ligamos",
+            "ligo",
+            "ligam"
+          ]
+        },
+        " na quinta. A oficina ",
+        {
+          "kind": "form",
+          "answer": "recebe",
+          "cue": "receber (a oficina)",
+          "choices": [
+            "recebo",
+            "recebem",
+            "recebe",
+            "recebemos"
+          ]
+        },
+        " a previsão por escrito?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sim, eu queria saber",
+          "baseText": {
+            "de": "Ja, ich wollte wissen",
+            "en": "Yes, I wanted to know"
+          }
+        },
+        {
+          "targetText": "se a peça",
+          "baseText": {
+            "de": "ob das Teil",
+            "en": "whether the part"
+          }
+        },
+        {
+          "targetText": "que faltava",
+          "baseText": {
+            "de": "das gefehlt hat",
+            "en": "that was missing"
+          }
+        },
+        {
+          "targetText": "já chegou à oficina.",
+          "baseText": {
+            "de": "schon in der Werkstatt angekommen ist.",
+            "en": "has already arrived at the workshop."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "peça",
+          "baseText": {
+            "de": "Ersatzteil; Teil",
+            "en": "part; spare part"
+          }
+        },
+        {
+          "targetText": "faltava",
+          "baseText": {
+            "de": "fehlte",
+            "en": "was missing"
+          }
+        },
+        {
+          "targetText": "oficina",
+          "baseText": {
+            "de": "Werkstatt",
+            "en": "repair shop; workshop"
+          }
+        },
+        {
+          "targetText": "fornecedor",
+          "baseText": {
+            "de": "Lieferant",
+            "en": "supplier"
+          }
+        },
+        {
+          "targetText": "previsão",
+          "baseText": {
+            "de": "voraussichtlicher Liefertermin; Prognose",
+            "en": "delivery estimate; estimated date"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        },
+        {
+          "targetText": "máquina de lavar",
+          "baseText": {
+            "de": "Waschmaschine",
+            "en": "washing machine"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sim, eu queria saber se a peça que faltava já ",
+        "answer": "chegou",
+        "after": " à oficina.",
+        "fallbackChoices": [
+          "chegaram",
+          "chegou",
+          "chego",
+          "chegamos"
+        ]
+      },
+      "speakRequired": [
+        "peça",
+        "chegou",
+        "oficina"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt ein Mitarbeiter der Werkstatt: “Você está ligando por causa da sua máquina de lavar?”",
+        "en": "On the phone, a workshop employee asks: “Você está ligando por causa da sua máquina de lavar?”"
+      },
+      "trophyWord": {
+        "word": "peça",
+        "meaning": {
+          "de": "Ersatzteil; Teil",
+          "en": "part; spare part"
+        },
+        "example": "Sim, eu queria saber se a peça que faltava já chegou à oficina.",
+        "whyThisWord": {
+          "de": "Peça ist das Alltagswort für jedes Ersatzteil einer Maschine; wer in Brasilien eine Reparatur verfolgt, fragt ständig nach der peça.",
+          "en": "Peça is the everyday word for any machine part; anyone following a repair in Brazil keeps asking about the peça."
+        }
+      },
+      "distractors": [
+        "se a senha",
+        "já saiu da oficina."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Anruf bei der Werkstatt wegen der Waschmaschine.",
+        "en": "A call to the repair shop about the washing machine."
+      },
+      "songMood": "patient follow-up",
+      "visualNotes": "Person on a phone call at home with a laundry corner visible; no calendar with Thursday marked, no supplier documents or written forecast in the initial frame."
+    },
+    {
+      "slug": "barulho-do-aspirador-voltou",
+      "title": {
+        "de": "Das Geräusch ist wieder da",
+        "en": "The noise is back"
+      },
+      "situation": {
+        "de": "Dein Staubsauger wurde vor Kurzem repariert. Du bringst ihn zurück zur Werkstatt, weil etwas nicht stimmt.",
+        "en": "Your vacuum cleaner was repaired recently. You bring it back to the repair shop because something is wrong."
+      },
+      "pedagogicalGoal": "Ein vorübergehendes Ergebnis mit ajudou por … beschreiben, den Rückschlag mit mas anschließen und eine erneute Prüfung erbitten.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Como ficou o aspirador depois da troca do filtro?",
+          "baseText": {
+            "de": "Wie läuft der Staubsauger seit dem Filterwechsel?",
+            "en": "How has the vacuum cleaner been since the filter change?"
+          }
+        },
+        {
+          "targetText": "A primeira solução ajudou por um dia, mas o barulho voltou ontem.",
+          "baseText": {
+            "de": "Die erste Lösung hat einen Tag lang geholfen, aber gestern war das Geräusch wieder da.",
+            "en": "The first fix helped for a day, but the noise came back yesterday."
+          }
+        },
+        {
+          "targetText": "Esse barulho parece vir do motor ou só aparece quando você encaixa a mangueira?",
+          "baseText": {
+            "de": "Scheint das Geräusch vom Motor zu kommen, oder tritt es nur auf, wenn Sie den Schlauch aufstecken?",
+            "en": "Does that noise seem to come from the motor, or does it only show up when you attach the hose?"
+          }
+        },
+        {
+          "targetText": "O motor faz barulho mesmo sem mangueira. Vocês podem avaliar de novo?",
+          "baseText": {
+            "de": "Der Motor macht auch ohne Schlauch Geräusche. Können Sie ihn noch einmal prüfen?",
+            "en": "The motor makes noise even without the hose. Can you check it again?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "ajudou por…, mas…",
+        "rule": {
+          "de": "Ajudou por + Zeitspanne nennt eine begrenzte Wirkung; mas leitet den Rückschlag ein, beide Verben stehen im pretérito perfeito für abgeschlossene Ereignisse.",
+          "en": "Ajudou por + time span states a limited effect; mas introduces the setback, with both verbs in the pretérito perfeito for completed events."
+        },
+        "examples": [
+          {
+            "targetText": "A primeira solução ajudou por um dia, mas o barulho voltou ontem.",
+            "baseText": {
+              "de": "Die erste Lösung hat einen Tag lang geholfen, aber gestern war das Geräusch wieder da.",
+              "en": "The first fix helped for a day, but the noise came back yesterday."
+            },
+            "highlight": "ajudou por um dia, mas o barulho voltou"
+          },
+          {
+            "targetText": "Estudar de manhã ajudou por uma semana, mas o cansaço voltou nas provas.",
+            "baseText": {
+              "de": "Morgens zu lernen hat eine Woche lang geholfen, aber in den Prüfungen war die Müdigkeit wieder da.",
+              "en": "Studying in the morning helped for a week, but the tiredness came back during the exams."
+            },
+            "highlight": "ajudou por uma semana, mas o cansaço voltou"
+          }
+        ]
+      },
+      "cloze": [
+        "O motor ",
+        {
+          "kind": "form",
+          "answer": "faz",
+          "cue": "fazer (o motor)",
+          "choices": [
+            "faço",
+            "fazem",
+            "faz",
+            "fazemos"
+          ]
+        },
+        " barulho mesmo sem mangueira. Vocês ",
+        {
+          "kind": "form",
+          "answer": "podem",
+          "cue": "poder (vocês)",
+          "choices": [
+            "pode",
+            "podemos",
+            "podem",
+            "posso"
+          ]
+        },
+        " avaliar de novo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "A primeira solução",
+          "baseText": {
+            "de": "Die erste Lösung",
+            "en": "The first fix"
+          }
+        },
+        {
+          "targetText": "ajudou por um dia,",
+          "baseText": {
+            "de": "hat einen Tag lang geholfen,",
+            "en": "helped for a day,"
+          }
+        },
+        {
+          "targetText": "mas o barulho",
+          "baseText": {
+            "de": "aber das Geräusch",
+            "en": "but the noise"
+          }
+        },
+        {
+          "targetText": "voltou ontem.",
+          "baseText": {
+            "de": "kam gestern zurück.",
+            "en": "came back yesterday."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "solução",
+          "baseText": {
+            "de": "Lösung; Reparaturmaßnahme",
+            "en": "fix; solution"
+          }
+        },
+        {
+          "targetText": "ajudou",
+          "baseText": {
+            "de": "hat geholfen",
+            "en": "helped"
+          }
+        },
+        {
+          "targetText": "barulho",
+          "baseText": {
+            "de": "Geräusch; Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "voltou",
+          "baseText": {
+            "de": "kam zurück",
+            "en": "came back"
+          }
+        },
+        {
+          "targetText": "aspirador",
+          "baseText": {
+            "de": "Staubsauger",
+            "en": "vacuum cleaner"
+          }
+        },
+        {
+          "targetText": "troca do filtro",
+          "baseText": {
+            "de": "Filterwechsel",
+            "en": "filter change"
+          }
+        },
+        {
+          "targetText": "motor",
+          "baseText": {
+            "de": "Motor",
+            "en": "motor"
+          }
+        },
+        {
+          "targetText": "mangueira",
+          "baseText": {
+            "de": "Schlauch",
+            "en": "hose"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A primeira solução ",
+        "answer": "ajudou",
+        "after": " por um dia, mas o barulho voltou ontem.",
+        "fallbackChoices": [
+          "ajudaram",
+          "ajudou",
+          "ajudo",
+          "ajudamos"
+        ]
+      },
+      "speakRequired": [
+        "solução",
+        "barulho",
+        "voltou"
+      ],
+      "sceneCaption": {
+        "de": "Am Werkstatttresen fragt ein Techniker: “Como ficou o aspirador depois da troca do filtro?”",
+        "en": "At the repair-shop counter, a technician asks: “Como ficou o aspirador depois da troca do filtro?”"
+      },
+      "trophyWord": {
+        "word": "solução",
+        "meaning": {
+          "de": "Lösung; Reparaturmaßnahme",
+          "en": "fix; solution"
+        },
+        "example": "A primeira solução ajudou por um dia, mas o barulho voltou ontem.",
+        "whyThisWord": {
+          "de": "Solução steht in Werkstätten für die konkrete Maßnahme, die ein Problem beheben soll; a primeira solução macht klar, dass man eine zweite verlangt.",
+          "en": "Solução is the word repair shops use for the concrete measure meant to fix a problem; a primeira solução makes clear you are asking for a second one."
+        }
+      },
+      "distractors": [
+        "mas o filtro",
+        "voltou amanhã."
+      ],
+      "placeholderCaption": {
+        "de": "Zurück in der Werkstatt mit dem Staubsauger.",
+        "en": "Back at the repair shop with the vacuum cleaner."
+      },
+      "songMood": "persistent but polite",
+      "visualNotes": "Repair-shop counter with a vacuum cleaner on it; no detached hose, no opened motor or diagnostic tools in the initial frame."
+    },
+    {
+      "slug": "reembolso-da-aula-cancelada",
+      "title": {
+        "de": "Erstattung für eine abgesagte Stunde",
+        "en": "Refund for a cancelled class"
+      },
+      "situation": {
+        "de": "Die Sprachschule hat deine Stunde abgesagt. Im Sekretariat klärst du, was mit deiner Zahlung passiert.",
+        "en": "The language school cancelled your class. At the office you sort out what happens to your payment."
+      },
+      "pedagogicalGoal": "Mit prefiro + Infinitiv eine Alternative zum Angebot wählen und anschließend mit Como funciona und Quando Frist und Rückzahlungsweg erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você quer remarcar a aula que a escola cancelou?",
+          "baseText": {
+            "de": "Möchten Sie die Stunde, die die Schule abgesagt hat, neu ansetzen?",
+            "en": "Would you like to reschedule the class the school cancelled?"
+          }
+        },
+        {
+          "targetText": "Prefiro pedir o reembolso da aula cancelada. Como funciona a devolução do dinheiro?",
+          "baseText": {
+            "de": "Ich beantrage lieber die Erstattung für die abgesagte Stunde. Wie läuft die Rückzahlung ab?",
+            "en": "I'd rather request a refund for the cancelled class. How does the money get returned?"
+          }
+        },
+        {
+          "targetText": "O valor volta para o cartão em até cinco dias úteis, contando a partir da confirmação.",
+          "baseText": {
+            "de": "Der Betrag geht innerhalb von fünf Werktagen auf die Karte zurück, gerechnet ab der Bestätigung.",
+            "en": "The amount goes back to the card within five business days, counting from the confirmation."
+          }
+        },
+        {
+          "targetText": "Eu recebo essa confirmação hoje? Quando o prazo começa a contar?",
+          "baseText": {
+            "de": "Bekomme ich diese Bestätigung heute? Wann beginnt die Frist zu laufen?",
+            "en": "Do I get that confirmation today? When does the period start counting?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Prefiro + infinitivo",
+        "rule": {
+          "de": "Prefiro steht direkt vor dem Infinitiv (pedir, receber) und wählt zwischen zwei Möglichkeiten die eigene; ein Vergleich mit a oder em vez de ist nicht nötig.",
+          "en": "Prefiro goes straight before the infinitive (pedir, receber) and picks your option out of two; no comparison with a or em vez de is needed."
+        },
+        "examples": [
+          {
+            "targetText": "Prefiro pedir o reembolso da aula cancelada. Como funciona a devolução do dinheiro?",
+            "baseText": {
+              "de": "Ich beantrage lieber die Erstattung für die abgesagte Stunde. Wie läuft die Rückzahlung ab?",
+              "en": "I'd rather request a refund for the cancelled class. How does the money get returned?"
+            },
+            "highlight": "Prefiro pedir o reembolso"
+          },
+          {
+            "targetText": "Prefiro receber a resposta por e-mail, não por telefone.",
+            "baseText": {
+              "de": "Ich bekomme die Antwort lieber per E-Mail, nicht per Telefon.",
+              "en": "I'd rather receive the answer by email, not by phone."
+            },
+            "highlight": "Prefiro receber a resposta"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "recebo",
+          "cue": "receber (eu)",
+          "choices": [
+            "recebe",
+            "recebemos",
+            "recebo",
+            "recebem"
+          ]
+        },
+        " essa confirmação hoje? Quando o prazo ",
+        {
+          "kind": "form",
+          "answer": "começa",
+          "cue": "começar (o prazo)",
+          "choices": [
+            "começo",
+            "começa",
+            "começam",
+            "começamos"
+          ]
+        },
+        " a contar?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Prefiro pedir",
+          "baseText": {
+            "de": "Ich beantrage lieber",
+            "en": "I'd rather request"
+          }
+        },
+        {
+          "targetText": "o reembolso",
+          "baseText": {
+            "de": "die Erstattung",
+            "en": "the refund"
+          }
+        },
+        {
+          "targetText": "da aula cancelada. Como funciona",
+          "baseText": {
+            "de": "für die abgesagte Stunde. Wie läuft",
+            "en": "for the cancelled class. How does"
+          }
+        },
+        {
+          "targetText": "a devolução do dinheiro?",
+          "baseText": {
+            "de": "die Rückzahlung ab?",
+            "en": "the money refund work?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "reembolso",
+          "baseText": {
+            "de": "Erstattung; Rückerstattung einer Zahlung",
+            "en": "refund"
+          }
+        },
+        {
+          "targetText": "remarcar",
+          "baseText": {
+            "de": "neu ansetzen; umbuchen (Termin, Stunde)",
+            "en": "to reschedule"
+          }
+        },
+        {
+          "targetText": "aula cancelada",
+          "baseText": {
+            "de": "abgesagte Unterrichtsstunde",
+            "en": "cancelled class"
+          }
+        },
+        {
+          "targetText": "devolução do dinheiro",
+          "baseText": {
+            "de": "Rückzahlung des Geldes",
+            "en": "money refund"
+          }
+        },
+        {
+          "targetText": "dias úteis",
+          "baseText": {
+            "de": "Werktage",
+            "en": "business days"
+          }
+        },
+        {
+          "targetText": "confirmação",
+          "baseText": {
+            "de": "Bestätigung (der Erstattung)",
+            "en": "confirmation"
+          }
+        },
+        {
+          "targetText": "prazo",
+          "baseText": {
+            "de": "Frist",
+            "en": "deadline; time frame"
+          }
+        },
+        {
+          "targetText": "a partir de",
+          "baseText": {
+            "de": "ab; gerechnet ab",
+            "en": "starting from"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prefiro pedir o reembolso da aula ",
+        "answer": "cancelada",
+        "after": ". Como funciona a devolução do dinheiro?",
+        "fallbackChoices": [
+          "cancelado",
+          "canceladas",
+          "cancelada",
+          "cancelados"
+        ]
+      },
+      "speakRequired": [
+        "reembolso",
+        "cancelada",
+        "devolução"
+      ],
+      "sceneCaption": {
+        "de": "Im Sekretariat der Schule fragt eine Mitarbeiterin: “Você quer remarcar a aula que a escola cancelou?”",
+        "en": "At the school office, a staff member asks: “Você quer remarcar a aula que a escola cancelou?”"
+      },
+      "trophyWord": {
+        "word": "reembolso",
+        "meaning": {
+          "de": "Erstattung; Rückerstattung",
+          "en": "refund"
+        },
+        "example": "Prefiro pedir o reembolso da aula cancelada. Como funciona a devolução do dinheiro?",
+        "whyThisWord": {
+          "de": "Reembolso ist das Wort, mit dem du dein Geld für eine abgesagte Leistung zurückforderst; pedir o reembolso ist die feste Wendung dafür.",
+          "en": "Reembolso is the word you need to claim your money back for a cancelled service; pedir o reembolso is the set phrase for it."
+        }
+      },
+      "distractors": [
+        "da aula remarcada. Como funciona",
+        "Prefiro pedem"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch im Sekretariat der Sprachschule.",
+        "en": "A conversation at the language school office."
+      },
+      "songMood": "calm and persistent",
+      "visualNotes": "School office counter with a course schedule on the wall; no card reader, refund form or calendar with a deadline in the initial frame."
+    },
+    {
+      "slug": "devolucao-do-produto-errado",
+      "title": {
+        "de": "Ein falsch geliefertes Produkt zurückschicken",
+        "en": "Returning a wrongly delivered product"
+      },
+      "situation": {
+        "de": "Dein Paket ist angekommen, aber der Inhalt stimmt nicht. Du rufst den Kundenservice des Onlineshops an.",
+        "en": "Your parcel has arrived, but the contents are wrong. You call the online shop's customer service."
+      },
+      "pedagogicalGoal": "Mit veio X no lugar de Y eine Verwechslung melden, mit Como eu faço nach dem Ablauf fragen und eine Abholung trotz Zeitbeschränkung vereinbaren.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "O que veio na caixa que você recebeu?",
+          "baseText": {
+            "de": "Was war in dem Paket, das Sie erhalten haben?",
+            "en": "What came in the box you received?"
+          }
+        },
+        {
+          "targetText": "Veio uma luminária no lugar do espelho. Como eu faço a devolução?",
+          "baseText": {
+            "de": "Es kam eine Lampe statt des Spiegels. Wie mache ich die Rücksendung?",
+            "en": "A lamp came instead of the mirror. How do I make the return?"
+          }
+        },
+        {
+          "targetText": "A coleta é só de manhã. Você pode deixar a caixa na portaria, com a etiqueta que vamos enviar.",
+          "baseText": {
+            "de": "Die Abholung ist nur vormittags. Sie können das Paket beim Pförtner abgeben, mit dem Etikett, das wir Ihnen schicken.",
+            "en": "Pickup is only in the morning. You can leave the box at the front desk with the label we'll send."
+          }
+        },
+        {
+          "targetText": "Eu imprimo a etiqueta hoje. A coleta pode ser amanhã de manhã?",
+          "baseText": {
+            "de": "Ich drucke das Etikett heute aus. Kann die Abholung morgen Vormittag stattfinden?",
+            "en": "I'll print the label today. Can the pickup be tomorrow morning?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Veio X no lugar de Y",
+        "rule": {
+          "de": "Veio nennt zuerst das Erhaltene, no lugar de dann das Bestellte; vor dem Artikel verschmilzt de zu do/da (no lugar do espelho).",
+          "en": "Veio names what arrived first, then no lugar de names what was ordered; before the article, de merges into do/da (no lugar do espelho)."
+        },
+        "examples": [
+          {
+            "targetText": "Veio uma luminária no lugar do espelho. Como eu faço a devolução?",
+            "baseText": {
+              "de": "Es kam eine Lampe statt des Spiegels. Wie mache ich die Rücksendung?",
+              "en": "A lamp came instead of the mirror. How do I make the return?"
+            },
+            "highlight": "no lugar do espelho"
+          },
+          {
+            "targetText": "Veio um chá no lugar do café que eu pedi.",
+            "baseText": {
+              "de": "Es kam ein Tee statt des Kaffees, den ich bestellt hatte.",
+              "en": "A tea came instead of the coffee I ordered."
+            },
+            "highlight": "no lugar do café"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "imprimo",
+          "cue": "imprimir (eu)",
+          "choices": [
+            "imprime",
+            "imprimo",
+            "imprimimos",
+            "imprimem"
+          ]
+        },
+        " a etiqueta hoje. A coleta ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "cue": "poder (a coleta)",
+          "choices": [
+            "podem",
+            "posso",
+            "pode",
+            "podemos"
+          ]
+        },
+        " ser amanhã de manhã?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Veio uma luminária",
+          "baseText": {
+            "de": "Es kam eine Lampe",
+            "en": "A lamp came"
+          }
+        },
+        {
+          "targetText": "no lugar do espelho. Como",
+          "baseText": {
+            "de": "statt des Spiegels. Wie",
+            "en": "instead of the mirror. How"
+          }
+        },
+        {
+          "targetText": "eu faço",
+          "baseText": {
+            "de": "mache ich",
+            "en": "do I make"
+          }
+        },
+        {
+          "targetText": "a devolução?",
+          "baseText": {
+            "de": "die Rücksendung?",
+            "en": "the return?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "luminária",
+          "baseText": {
+            "de": "Lampe; Leuchte",
+            "en": "lamp"
+          }
+        },
+        {
+          "targetText": "espelho",
+          "baseText": {
+            "de": "Spiegel",
+            "en": "mirror"
+          }
+        },
+        {
+          "targetText": "no lugar de",
+          "baseText": {
+            "de": "anstelle von; statt",
+            "en": "instead of"
+          }
+        },
+        {
+          "targetText": "devolução",
+          "baseText": {
+            "de": "Rücksendung; Rückgabe einer Ware",
+            "en": "return (of goods)"
+          }
+        },
+        {
+          "targetText": "coleta",
+          "baseText": {
+            "de": "Abholung (durch den Kurier)",
+            "en": "pickup"
+          }
+        },
+        {
+          "targetText": "portaria",
+          "baseText": {
+            "de": "Pförtnerloge; Empfang eines Wohnhauses",
+            "en": "front desk; building reception"
+          }
+        },
+        {
+          "targetText": "etiqueta",
+          "baseText": {
+            "de": "Versandetikett",
+            "en": "shipping label"
+          }
+        },
+        {
+          "targetText": "de manhã",
+          "baseText": {
+            "de": "vormittags; am Vormittag",
+            "en": "in the morning"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Veio uma luminária no lugar do espelho. Como eu faço a ",
+        "answer": "devolução",
+        "after": "?",
+        "fallbackChoices": [
+          "devolução",
+          "entrega",
+          "compra",
+          "cobrança"
+        ]
+      },
+      "speakRequired": [
+        "luminária",
+        "espelho",
+        "devolução"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt der Kundenservice: “O que veio na caixa que você recebeu?”",
+        "en": "On the phone, customer service asks: “O que veio na caixa que você recebeu?”"
+      },
+      "trophyWord": {
+        "word": "devolução",
+        "meaning": {
+          "de": "Rücksendung; Rückgabe",
+          "en": "return (of goods)"
+        },
+        "example": "Veio uma luminária no lugar do espelho. Como eu faço a devolução?",
+        "whyThisWord": {
+          "de": "Devolução ist das Schlüsselwort beim Zurückschicken einer falschen Ware; fazer a devolução öffnet beim Kundenservice sofort den richtigen Vorgang.",
+          "en": "Devolução is the key word for sending a wrong item back; fazer a devolução immediately opens the right process with customer service."
+        }
+      },
+      "distractors": [
+        "Veio um espelho",
+        "eu fazo"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Anruf beim Kundenservice wegen eines Pakets.",
+        "en": "A call to customer service about a parcel."
+      },
+      "songMood": "patient problem-solving",
+      "visualNotes": "Open parcel on a table with a lamp inside and a phone in hand; no shipping label, doorman's desk or courier van in the initial frame."
+    },
+    {
+      "slug": "compensacao-pelo-atraso",
+      "title": {
+        "de": "Eine Entschädigung für die Verspätung",
+        "en": "Compensation for the delay"
+      },
+      "situation": {
+        "de": "Deine Bestellung ist endlich da, und der Kundendienst des Geschäfts fragt nach, ob alles in Ordnung ist.",
+        "en": "Your order has finally arrived, and the store's customer service checks whether everything is fine."
+      },
+      "pedagogicalGoal": "Eine Verspätung mit Zeitangabe + depois do prazo beschreiben und mit Existe alguma…? nach einer Entschädigung fragen, ohne eine Entscheidung vorwegzunehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Seu pedido acabou de chegar. Deu tudo certo?",
+          "baseText": {
+            "de": "Ihre Bestellung ist gerade angekommen. Ist alles in Ordnung?",
+            "en": "Your order has just arrived. Did everything go well?"
+          }
+        },
+        {
+          "targetText": "A encomenda chegou dez dias depois do prazo. Existe alguma compensação pelo atraso?",
+          "baseText": {
+            "de": "Das Paket kam zehn Tage nach dem Liefertermin an. Gibt es irgendeine Entschädigung für die Verspätung?",
+            "en": "The parcel arrived ten days after the deadline. Is there any compensation for the delay?"
+          }
+        },
+        {
+          "targetText": "Posso oferecer um cupom para outra compra, válido por um mês.",
+          "baseText": {
+            "de": "Ich kann Ihnen einen Gutschein für einen weiteren Einkauf anbieten, einen Monat gültig.",
+            "en": "I can offer you a coupon for another purchase, valid for one month."
+          }
+        },
+        {
+          "targetText": "Eu compro aqui raramente. Vocês oferecem outra opção além do cupom?",
+          "baseText": {
+            "de": "Ich kaufe hier selten ein. Bieten Sie außer dem Gutschein noch eine andere Option an?",
+            "en": "I rarely shop here. Do you offer any other option besides the coupon?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "… dez dias depois do prazo",
+        "rule": {
+          "de": "Eine Zeitmenge vor depois do prazo sagt, wie weit die Frist überschritten wurde; das Verb richtet sich nach dem Subjekt (a encomenda chegou). Existe alguma…? fragt dann, ob überhaupt etwas vorgesehen ist.",
+          "en": "A quantity of time before depois do prazo says how far past the deadline something was; the verb agrees with the subject (a encomenda chegou). Existe alguma…? then asks whether anything is provided at all."
+        },
+        "examples": [
+          {
+            "targetText": "A encomenda chegou dez dias depois do prazo. Existe alguma compensação pelo atraso?",
+            "baseText": {
+              "de": "Das Paket kam zehn Tage nach dem Liefertermin an. Gibt es irgendeine Entschädigung für die Verspätung?",
+              "en": "The parcel arrived ten days after the deadline. Is there any compensation for the delay?"
+            },
+            "highlight": "dez dias depois do prazo"
+          },
+          {
+            "targetText": "Eu entreguei a inscrição dois dias depois do prazo, mas queria saber se ainda existe alguma chance.",
+            "baseText": {
+              "de": "Ich habe die Bewerbung zwei Tage nach der Frist eingereicht, aber ich wollte wissen, ob es noch irgendeine Chance gibt.",
+              "en": "I submitted the application two days after the deadline, but I wanted to know if there is still any chance."
+            },
+            "highlight": "dois dias depois do prazo"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "compro",
+          "cue": "comprar (eu)",
+          "choices": [
+            "compra",
+            "compram",
+            "compro",
+            "compramos"
+          ]
+        },
+        " aqui raramente. Vocês ",
+        {
+          "kind": "form",
+          "answer": "oferecem",
+          "cue": "oferecer (vocês)",
+          "choices": [
+            "oferecem",
+            "ofereço",
+            "oferece",
+            "oferecemos"
+          ]
+        },
+        " outra opção além do cupom?"
+      ],
+      "chunks": [
+        {
+          "targetText": "A encomenda chegou",
+          "baseText": {
+            "de": "Das Paket kam an",
+            "en": "The parcel arrived"
+          }
+        },
+        {
+          "targetText": "dez dias depois do prazo. Existe",
+          "baseText": {
+            "de": "zehn Tage nach dem Liefertermin. Gibt es",
+            "en": "ten days after the deadline. Is there"
+          }
+        },
+        {
+          "targetText": "alguma compensação",
+          "baseText": {
+            "de": "irgendeine Entschädigung",
+            "en": "any compensation"
+          }
+        },
+        {
+          "targetText": "pelo atraso?",
+          "baseText": {
+            "de": "für die Verspätung?",
+            "en": "for the delay?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "encomenda",
+          "baseText": {
+            "de": "Paket; bestellte Sendung",
+            "en": "parcel; ordered package"
+          }
+        },
+        {
+          "targetText": "prazo",
+          "baseText": {
+            "de": "Frist; Liefertermin",
+            "en": "deadline; delivery date"
+          }
+        },
+        {
+          "targetText": "atraso",
+          "baseText": {
+            "de": "Verspätung",
+            "en": "delay"
+          }
+        },
+        {
+          "targetText": "compensação",
+          "baseText": {
+            "de": "Entschädigung; Ausgleich",
+            "en": "compensation"
+          }
+        },
+        {
+          "targetText": "cupom",
+          "baseText": {
+            "de": "Gutschein (für den nächsten Einkauf)",
+            "en": "coupon (for the next purchase)"
+          }
+        },
+        {
+          "targetText": "válido por um mês",
+          "baseText": {
+            "de": "einen Monat gültig",
+            "en": "valid for one month"
+          }
+        },
+        {
+          "targetText": "raramente",
+          "baseText": {
+            "de": "selten",
+            "en": "rarely"
+          }
+        },
+        {
+          "targetText": "além do",
+          "baseText": {
+            "de": "außer dem; zusätzlich zu dem",
+            "en": "besides the; in addition to the"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A encomenda ",
+        "answer": "chegou",
+        "after": " dez dias depois do prazo. Existe alguma compensação pelo atraso?",
+        "fallbackChoices": [
+          "chegaram",
+          "chegou",
+          "cheguei",
+          "chegamos"
+        ]
+      },
+      "speakRequired": [
+        "encomenda",
+        "prazo",
+        "compensação"
+      ],
+      "sceneCaption": {
+        "de": "Am Kundendienstschalter des Geschäfts fragt eine Mitarbeiterin: “Seu pedido acabou de chegar. Deu tudo certo?”",
+        "en": "At the store's customer service counter, a staff member asks: “Seu pedido acabou de chegar. Deu tudo certo?”"
+      },
+      "trophyWord": {
+        "word": "compensação",
+        "meaning": {
+          "de": "Entschädigung; Ausgleich",
+          "en": "compensation"
+        },
+        "example": "A encomenda chegou dez dias depois do prazo. Existe alguma compensação pelo atraso?",
+        "whyThisWord": {
+          "de": "Compensação ist das Wort, mit dem du nach einem Ausgleich für einen Schaden oder eine Verspätung fragst; mit Existe alguma compensação pelo…? bleibt die Frage höflich und offen.",
+          "en": "Compensação is the word you use to ask for something that makes up for a loss or delay; Existe alguma compensação pelo…? keeps the question polite and open."
+        }
+      },
+      "distractors": [
+        "A encomenda chegaram",
+        "dez dias antes do prazo. Existe"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachfrage nach einer verspäteten Lieferung.",
+        "en": "A follow-up question about a late delivery."
+      },
+      "songMood": "patient but firm",
+      "visualNotes": "Store customer service counter with a delivered box on it; no coupon, voucher or discount signage in the initial frame."
+    },
+    {
+      "slug": "compromisso-de-ligar",
+      "title": {
+        "de": "Ein nicht eingehaltenes Rückrufversprechen",
+        "en": "A callback promise that was not kept"
+      },
+      "situation": {
+        "de": "Deine Nachbarin arbeitet beim Kundendienst deines Anbieters und fragt dich über den Zaun nach der doppelten Abbuchung.",
+        "en": "Your neighbour works at your provider's customer service and asks you over the fence about the duplicate charge."
+      },
+      "pedagogicalGoal": "Eine Zusage mit assumir o compromisso de + Infinitiv wiedergeben, das Ausbleiben der Antwort berichten und nach dem nächsten Zugangsweg fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você já falou com alguém sobre a cobrança duplicada?",
+          "baseText": {
+            "de": "Hast du schon mit jemandem über die doppelte Abbuchung gesprochen?",
+            "en": "Have you already talked to someone about the duplicate charge?"
+          }
+        },
+        {
+          "targetText": "Sim, o atendente assumiu o compromisso de ligar ontem, mas ninguém entrou em contato.",
+          "baseText": {
+            "de": "Ja, der Mitarbeiter hat zugesagt, gestern anzurufen, aber niemand hat sich gemeldet.",
+            "en": "Yes, the agent committed to calling yesterday, but nobody got in touch."
+          }
+        },
+        {
+          "targetText": "Estamos com poucas linhas disponíveis. Pelo chat você consegue acompanhar o pedido por escrito.",
+          "baseText": {
+            "de": "Wir haben gerade nur wenige Leitungen frei. Über den Chat kannst du die Anfrage schriftlich verfolgen.",
+            "en": "We have few lines available right now. Through the chat you can follow up on the request in writing."
+          }
+        },
+        {
+          "targetText": "Como eu acesso o chat e onde eu encontro o protocolo?",
+          "baseText": {
+            "de": "Wie komme ich in den Chat, und wo finde ich die Vorgangsnummer?",
+            "en": "How do I access the chat and where do I find the ticket number?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "assumir o compromisso de + infinitivo",
+        "rule": {
+          "de": "Nach assumir o compromisso de folgt immer ein Infinitiv (ligar, regar); nur assumir wird konjugiert und richtet sich nach dem Subjekt (o atendente assumiu).",
+          "en": "After assumir o compromisso de always comes an infinitive (ligar, regar); only assumir is conjugated and agrees with the subject (o atendente assumiu)."
+        },
+        "examples": [
+          {
+            "targetText": "Sim, o atendente assumiu o compromisso de ligar ontem, mas ninguém entrou em contato.",
+            "baseText": {
+              "de": "Ja, der Mitarbeiter hat zugesagt, gestern anzurufen, aber niemand hat sich gemeldet.",
+              "en": "Yes, the agent committed to calling yesterday, but nobody got in touch."
+            },
+            "highlight": "assumiu o compromisso de ligar"
+          },
+          {
+            "targetText": "A gente assumiu o compromisso de regar a horta comunitária aos sábados.",
+            "baseText": {
+              "de": "Wir haben uns verpflichtet, den Gemeinschaftsgarten samstags zu gießen.",
+              "en": "We committed to watering the community garden on Saturdays."
+            },
+            "highlight": "assumiu o compromisso de regar"
+          }
+        ]
+      },
+      "cloze": [
+        "Como eu ",
+        {
+          "kind": "form",
+          "answer": "acesso",
+          "cue": "acessar (eu)",
+          "choices": [
+            "acessa",
+            "acesso",
+            "acessam",
+            "acessamos"
+          ]
+        },
+        " o chat e onde eu ",
+        {
+          "kind": "form",
+          "answer": "encontro",
+          "cue": "encontrar (eu)",
+          "choices": [
+            "encontramos",
+            "encontram",
+            "encontra",
+            "encontro"
+          ]
+        },
+        " o protocolo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sim, o atendente assumiu",
+          "baseText": {
+            "de": "Ja, der Mitarbeiter übernahm",
+            "en": "Yes, the agent took on"
+          }
+        },
+        {
+          "targetText": "o compromisso de ligar ontem,",
+          "baseText": {
+            "de": "die Verpflichtung, gestern anzurufen,",
+            "en": "the commitment to call yesterday,"
+          }
+        },
+        {
+          "targetText": "mas ninguém",
+          "baseText": {
+            "de": "aber niemand",
+            "en": "but nobody"
+          }
+        },
+        {
+          "targetText": "entrou em contato.",
+          "baseText": {
+            "de": "hat sich gemeldet.",
+            "en": "got in touch."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cobrança duplicada",
+          "baseText": {
+            "de": "doppelte Abbuchung",
+            "en": "duplicate charge"
+          }
+        },
+        {
+          "targetText": "atendente",
+          "baseText": {
+            "de": "Kundendienstmitarbeiter:in",
+            "en": "customer service agent"
+          }
+        },
+        {
+          "targetText": "compromisso",
+          "baseText": {
+            "de": "Zusage; Verpflichtung",
+            "en": "commitment; promise"
+          }
+        },
+        {
+          "targetText": "entrar em contato",
+          "baseText": {
+            "de": "sich melden; Kontakt aufnehmen",
+            "en": "to get in touch"
+          }
+        },
+        {
+          "targetText": "linhas disponíveis",
+          "baseText": {
+            "de": "freie Leitungen (im Callcenter)",
+            "en": "available phone lines (at the call centre)"
+          }
+        },
+        {
+          "targetText": "chat",
+          "baseText": {
+            "de": "Chat (des Kundendienstes)",
+            "en": "chat (customer service)"
+          }
+        },
+        {
+          "targetText": "acompanhar",
+          "baseText": {
+            "de": "verfolgen; den Stand nachhalten",
+            "en": "to follow up; to track"
+          }
+        },
+        {
+          "targetText": "protocolo",
+          "baseText": {
+            "de": "Vorgangsnummer (der Anfrage)",
+            "en": "ticket number (of the request)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sim, o atendente ",
+        "answer": "assumiu",
+        "after": " o compromisso de ligar ontem, mas ninguém entrou em contato.",
+        "fallbackChoices": [
+          "assumiram",
+          "assumi",
+          "assumiu",
+          "assumimos"
+        ]
+      },
+      "speakRequired": [
+        "atendente",
+        "compromisso",
+        "contato"
+      ],
+      "sceneCaption": {
+        "de": "Über den Gartenzaun fragt deine Nachbarin, die beim Kundendienst des Anbieters arbeitet: “Você já falou com alguém sobre a cobrança duplicada?”",
+        "en": "Over the garden fence, your neighbour, who works at the provider's customer service, asks: “Você já falou com alguém sobre a cobrança duplicada?”"
+      },
+      "trophyWord": {
+        "word": "compromisso",
+        "meaning": {
+          "de": "Zusage; Verpflichtung",
+          "en": "commitment; promise"
+        },
+        "example": "Sim, o atendente assumiu o compromisso de ligar ontem, mas ninguém entrou em contato.",
+        "whyThisWord": {
+          "de": "Compromisso ist eine Zusage, auf die man jemanden festnageln kann; mit assumir o compromisso de erinnerst du sachlich an ein gegebenes Versprechen.",
+          "en": "Compromisso is a promise someone can be held to; with assumir o compromisso de you calmly remind someone of a commitment that was made."
+        }
+      },
+      "distractors": [
+        "o atendente assumiram",
+        "o compromisso de ligar amanhã,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über eine ausgebliebene Rückmeldung.",
+        "en": "A conversation about a callback that never came."
+      },
+      "songMood": "calm persistence",
+      "visualNotes": "Two neighbours talking across a garden fence, one holding a printed bill; no phone, headset, chat screen or ticket number visible in the initial frame."
+    }
+  ]
+}

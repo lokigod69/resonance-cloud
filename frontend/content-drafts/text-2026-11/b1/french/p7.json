@@ -1,0 +1,2115 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Damit unser Plan klappt",
+    "en": "Making our plan work"
+  },
+  "subtitle": {
+    "de": "Handle mit einer vertrauten Person aus, wie ihr euer gemeinsames Ziel erreicht.",
+    "en": "Work out with someone you know how to reach a shared goal."
+  },
+  "anchor": "Shape C. Zweck mit pour und Infinitiv (L1–4), pour que und Subjonctif bei eigenem Subjekt (L5–8), Kombination (L9–10). Vertrautes tu.",
+  "lessons": [
+    {
+      "slug": "une-fete-pour-toute-la-rue",
+      "title": {
+        "de": "Ein Fest für die ganze Straße",
+        "en": "A party for the whole street"
+      },
+      "situation": {
+        "de": "Du planst mit einer Nachbarin das Straßenfest. Überlegt, wie auch neue Nachbarn mitmachen können.",
+        "en": "You're planning a street party with a neighbour. Work out how to include newcomers."
+      },
+      "pedagogicalGoal": "Wer die Spiele anbietet, möchte damit die Nachbarn zusammenbringen. Nach pour steht für dieses Ziel der Infinitiv réunir.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Qu'est-ce qui compte le plus pour toi dans cette fête ?",
+          "baseText": {
+            "de": "Was ist dir bei diesem Fest am wichtigsten?",
+            "en": "What matters most to you about this party?"
+          }
+        },
+        {
+          "targetText": "Mon objectif, c'est de proposer des jeux simples pour réunir les voisins.",
+          "baseText": {
+            "de": "Mein Ziel ist es, einfache Spiele anzubieten, um die Nachbarn zusammenzubringen.",
+            "en": "My aim is to offer simple games to bring the neighbours together."
+          }
+        },
+        {
+          "targetText": "Je dois raccourcir le programme. On garde les discours ou les jeux ?",
+          "baseText": {
+            "de": "Ich muss das Programm kürzen. Behalten wir die Reden oder die Spiele?",
+            "en": "I have to shorten the programme. Do we keep the speeches or the games?"
+          }
+        },
+        {
+          "targetText": "Gardons les jeux pour permettre aux nouveaux de participer.",
+          "baseText": {
+            "de": "Behalten wir die Spiele, damit die Neuen mitmachen können.",
+            "en": "Let's keep the games so the newcomers can join in."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Donner le but du jeu",
+        "rule": {
+          "de": "Wer die Spiele anbietet, möchte damit die Nachbarn zusammenbringen. Nach pour steht für dieses Ziel der Infinitiv réunir.",
+          "en": "The person offering the games wants to bring the neighbours together. Pour introduces this aim with the infinitive réunir."
+        },
+        "examples": [
+          {
+            "targetText": "Mon objectif, c'est de proposer des jeux simples pour réunir les voisins.",
+            "baseText": {
+              "de": "Mein Ziel ist es, einfache Spiele anzubieten, um die Nachbarn zusammenzubringen.",
+              "en": "My aim is to offer simple games to bring the neighbours together."
+            },
+            "highlight": "pour réunir les voisins"
+          },
+          {
+            "targetText": "Je ferme la fenêtre pour entendre la musique.",
+            "baseText": {
+              "de": "Ich schließe das Fenster, um die Musik zu hören.",
+              "en": "I shut the window so I can hear the music."
+            },
+            "highlight": "pour entendre la musique"
+          }
+        ]
+      },
+      "cloze": [
+        "Gardons les jeux ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "si",
+            "pour",
+            "dont",
+            "puisque"
+          ]
+        },
+        " permettre aux nouveaux de ",
+        {
+          "kind": "choice",
+          "answer": "participer",
+          "choices": [
+            "participons",
+            "participent",
+            "participer",
+            "participez"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mon objectif,",
+          "baseText": {
+            "de": "mein Ziel",
+            "en": "my aim"
+          }
+        },
+        {
+          "targetText": "c'est de proposer",
+          "baseText": {
+            "de": "ist es, anzubieten",
+            "en": "is to offer"
+          }
+        },
+        {
+          "targetText": "des jeux simples",
+          "baseText": {
+            "de": "einfache Spiele",
+            "en": "simple games"
+          }
+        },
+        {
+          "targetText": "pour réunir les voisins.",
+          "baseText": {
+            "de": "um die Nachbarn zusammenzubringen",
+            "en": "to bring the neighbours together"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mon objectif",
+          "baseText": {
+            "de": "mein Ziel",
+            "en": "my aim"
+          }
+        },
+        {
+          "targetText": "proposer",
+          "baseText": {
+            "de": "anbieten",
+            "en": "offer"
+          }
+        },
+        {
+          "targetText": "des jeux simples",
+          "baseText": {
+            "de": "einfache Spiele",
+            "en": "simple games"
+          }
+        },
+        {
+          "targetText": "réunir les voisins",
+          "baseText": {
+            "de": "die Nachbarn zusammenbringen",
+            "en": "bring the neighbours together"
+          }
+        },
+        {
+          "targetText": "raccourcir",
+          "baseText": {
+            "de": "kürzen",
+            "en": "shorten"
+          }
+        },
+        {
+          "targetText": "les discours",
+          "baseText": {
+            "de": "die Reden",
+            "en": "the speeches"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mon objectif, c'est de proposer des jeux simples pour ",
+        "answer": "réunir",
+        "after": " les voisins.",
+        "fallbackChoices": [
+          "réunis",
+          "réunissent",
+          "réunissons",
+          "réunir"
+        ]
+      },
+      "speakRequired": [
+        "objectif",
+        "jeux",
+        "réunir"
+      ],
+      "sceneCaption": {
+        "de": "Du planst mit einer Nachbarin das Straßenfest. Überlegt, wie auch neue Nachbarn mitmachen können. „Qu'est-ce qui compte le plus pour toi dans cette fête ?“",
+        "en": "You're planning a street party with a neighbour. Work out how to include newcomers. “Qu'est-ce qui compte le plus pour toi dans cette fête ?”"
+      },
+      "trophyWord": {
+        "word": "objectif",
+        "meaning": {
+          "de": "Ziel",
+          "en": "aim"
+        },
+        "example": "Mon objectif, c'est de proposer des jeux simples pour réunir les voisins.",
+        "whyThisWord": {
+          "de": "Mon objectif, c'est de … führt ein konkretes Vorhaben ein.",
+          "en": "Mon objectif, c'est de … introduces something specific you hope to achieve."
+        }
+      },
+      "distractors": [
+        "qui est tombée",
+        "du bout du quai"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn schauen auf ein Festprogramm und einen Stapel Spielkarten.",
+        "en": "Two neighbours look over a party programme and a pack of cards."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Two neighbours look over a party programme and a pack of cards."
+    },
+    {
+      "slug": "une-tente-pour-la-sono",
+      "title": {
+        "de": "Ein Dach für die Lautsprecher",
+        "en": "Shelter for the speakers"
+      },
+      "situation": {
+        "de": "Vor einem Konzert im Hof klärst du mit einem Freund, was ihr bei Regen macht.",
+        "en": "Before a courtyard concert, work out a rain plan with a friend."
+      },
+      "pedagogicalGoal": "Prévoir nennt die geplante Handlung. Pour protéger erklärt, wozu sie dient.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "La météo annonce des averses pendant le concert.",
+          "baseText": {
+            "de": "Der Wetterbericht sagt Schauer während des Konzerts voraus.",
+            "en": "The forecast says there will be showers during the concert."
+          }
+        },
+        {
+          "targetText": "Il faut prévoir une grande tente pour protéger le matériel de la pluie.",
+          "baseText": {
+            "de": "Wir müssen ein großes Zelt einplanen, um die Ausrüstung vor Regen zu schützen.",
+            "en": "We need to plan for a large tent to protect the equipment from the rain."
+          }
+        },
+        {
+          "targetText": "Elle ne tient pas entre le mur et les tables. J'en ai une petite.",
+          "baseText": {
+            "de": "Die passt nicht zwischen die Mauer und die Tische. Ich habe ein kleines Zelt.",
+            "en": "It won't fit between the wall and the tables. I have a small one."
+          }
+        },
+        {
+          "targetText": "Prenons ta petite tente et déplaçons les tables pour circuler.",
+          "baseText": {
+            "de": "Nehmen wir dein kleines Zelt und rücken die Tische weg, damit wir durchkommen.",
+            "en": "Let's take your small tent and move the tables so we can get through."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Protéger le matériel",
+        "rule": {
+          "de": "Prévoir nennt die geplante Handlung. Pour protéger erklärt, wozu sie dient.",
+          "en": "Prévoir names the planned action. Pour protéger explains what it is for."
+        },
+        "examples": [
+          {
+            "targetText": "Il faut prévoir une grande tente pour protéger le matériel de la pluie.",
+            "baseText": {
+              "de": "Wir müssen ein großes Zelt einplanen, um die Ausrüstung vor Regen zu schützen.",
+              "en": "We need to plan for a large tent to protect the equipment from the rain."
+            },
+            "highlight": "pour protéger le matériel"
+          },
+          {
+            "targetText": "Il faut garder ces bocaux pour ranger les épices.",
+            "baseText": {
+              "de": "Wir sollten diese Gläser aufheben, um die Gewürze darin aufzubewahren.",
+              "en": "We should keep these jars to store the spices."
+            },
+            "highlight": "pour ranger les épices"
+          }
+        ]
+      },
+      "cloze": [
+        "Prenons ta petite tente et déplaçons les tables ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "car",
+            "si",
+            "pour",
+            "dont"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "circuler",
+          "choices": [
+            "circulons",
+            "circulez",
+            "circulent",
+            "circuler"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il faut prévoir",
+          "baseText": {
+            "de": "wir müssen einplanen",
+            "en": "we need to plan for"
+          }
+        },
+        {
+          "targetText": "une grande tente",
+          "baseText": {
+            "de": "ein großes Zelt",
+            "en": "a large tent"
+          }
+        },
+        {
+          "targetText": "pour protéger",
+          "baseText": {
+            "de": "um zu schützen",
+            "en": "to protect"
+          }
+        },
+        {
+          "targetText": "le matériel de la pluie.",
+          "baseText": {
+            "de": "die Ausrüstung vor Regen",
+            "en": "the equipment from the rain"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "des averses",
+          "baseText": {
+            "de": "Regenschauer",
+            "en": "showers"
+          }
+        },
+        {
+          "targetText": "prévoir",
+          "baseText": {
+            "de": "einplanen",
+            "en": "plan for"
+          }
+        },
+        {
+          "targetText": "une grande tente",
+          "baseText": {
+            "de": "ein großes Zelt",
+            "en": "a large tent"
+          }
+        },
+        {
+          "targetText": "protéger",
+          "baseText": {
+            "de": "schützen",
+            "en": "protect"
+          }
+        },
+        {
+          "targetText": "le matériel",
+          "baseText": {
+            "de": "die Ausrüstung",
+            "en": "the equipment"
+          }
+        },
+        {
+          "targetText": "déplaçons les tables",
+          "baseText": {
+            "de": "rücken wir die Tische weg",
+            "en": "let's move the tables"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il faut prévoir une grande tente pour ",
+        "answer": "protéger",
+        "after": " le matériel de la pluie.",
+        "fallbackChoices": [
+          "protéger",
+          "protégez",
+          "protègent",
+          "protégeons"
+        ]
+      },
+      "speakRequired": [
+        "prévoir",
+        "tente",
+        "matériel"
+      ],
+      "sceneCaption": {
+        "de": "Vor einem Konzert im Hof klärst du mit einem Freund, was ihr bei Regen macht. „La météo annonce des averses pendant le concert.“",
+        "en": "Before a courtyard concert, work out a rain plan with a friend. “La météo annonce des averses pendant le concert.”"
+      },
+      "trophyWord": {
+        "word": "prévoir",
+        "meaning": {
+          "de": "einplanen",
+          "en": "plan for"
+        },
+        "example": "Il faut prévoir une grande tente pour protéger le matériel de la pluie.",
+        "whyThisWord": {
+          "de": "Prévoir une tente bedeutet hier, das Zelt schon bei der Planung zu berücksichtigen.",
+          "en": "Prévoir une tente means to make provision for a tent in advance."
+        }
+      },
+      "distractors": [
+        "des jours ouvrables",
+        "tombent de sommeil"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Plane und zwei Lautsprecher stehen zwischen einem Tisch und einer Hofmauer.",
+        "en": "A tarpaulin and two speakers stand between a table and a courtyard wall."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "A tarpaulin and two speakers stand between a table and a courtyard wall."
+    },
+    {
+      "slug": "qui-arrive-quand",
+      "title": {
+        "de": "Wer kommt wann?",
+        "en": "Who's arriving when?"
+      },
+      "situation": {
+        "de": "Du organisierst mit einer Freundin den Start eines Ausflugs. Nicht alle kommen gleichzeitig.",
+        "en": "You and a friend are organising the start of an outing. People will arrive at different times."
+      },
+      "pedagogicalGoal": "Mit pour organiser gibst du an, wofür du die Liste vorschlägst. Hinter pour folgt hier kein zweites Subjekt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Comment on fait avec les gens qui viennent par le train suivant ?",
+          "baseText": {
+            "de": "Wie machen wir das mit den Leuten, die mit dem nächsten Zug kommen?",
+            "en": "What do we do about the people coming on the next train?"
+          }
+        },
+        {
+          "targetText": "Je propose une liste des horaires pour organiser les arrivées à la gare.",
+          "baseText": {
+            "de": "Ich schlage eine Liste mit den Uhrzeiten vor, um die Ankünfte am Bahnhof zu organisieren.",
+            "en": "I suggest a list of times to organise the arrivals at the station."
+          }
+        },
+        {
+          "targetText": "Personne n'a d'imprimante. On pourrait utiliser notre groupe de discussion.",
+          "baseText": {
+            "de": "Niemand hat einen Drucker. Wir könnten unseren Gruppenchat nutzen.",
+            "en": "Nobody has a printer. We could use our group chat."
+          }
+        },
+        {
+          "targetText": "Alors écrivons dans le groupe pour indiquer chaque heure d'arrivée.",
+          "baseText": {
+            "de": "Dann schreiben wir in die Gruppe, um jede Ankunftszeit anzugeben.",
+            "en": "Then let's post in the group to give each arrival time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un outil pour organiser",
+        "rule": {
+          "de": "Mit pour organiser gibst du an, wofür du die Liste vorschlägst. Hinter pour folgt hier kein zweites Subjekt.",
+          "en": "Pour organiser explains what you want to use the list for. No second subject follows pour here."
+        },
+        "examples": [
+          {
+            "targetText": "Je propose une liste des horaires pour organiser les arrivées à la gare.",
+            "baseText": {
+              "de": "Ich schlage eine Liste mit den Uhrzeiten vor, um die Ankünfte am Bahnhof zu organisieren.",
+              "en": "I suggest a list of times to organise the arrivals at the station."
+            },
+            "highlight": "pour organiser les arrivées"
+          },
+          {
+            "targetText": "Je cherche une boîte pour ranger les clés du vélo.",
+            "baseText": {
+              "de": "Ich suche eine Schachtel, um die Fahrradschlüssel aufzubewahren.",
+              "en": "I'm looking for a box to keep the bicycle keys in."
+            },
+            "highlight": "pour ranger les clés"
+          }
+        ]
+      },
+      "cloze": [
+        "Alors écrivons dans le groupe ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "dont",
+            "quand",
+            "puisque",
+            "pour"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "indiquer",
+          "choices": [
+            "indiquer",
+            "indiquent",
+            "indiquons",
+            "indiquez"
+          ]
+        },
+        " chaque heure d'arrivée."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je propose",
+          "baseText": {
+            "de": "ich schlage vor",
+            "en": "I suggest"
+          }
+        },
+        {
+          "targetText": "une liste des horaires",
+          "baseText": {
+            "de": "eine Liste mit den Uhrzeiten",
+            "en": "a list of times"
+          }
+        },
+        {
+          "targetText": "pour organiser",
+          "baseText": {
+            "de": "um zu organisieren",
+            "en": "to organise"
+          }
+        },
+        {
+          "targetText": "les arrivées à la gare.",
+          "baseText": {
+            "de": "die Ankünfte am Bahnhof",
+            "en": "the arrivals at the station"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le train suivant",
+          "baseText": {
+            "de": "der nächste Zug",
+            "en": "the next train"
+          }
+        },
+        {
+          "targetText": "une liste",
+          "baseText": {
+            "de": "eine Liste",
+            "en": "a list"
+          }
+        },
+        {
+          "targetText": "les horaires",
+          "baseText": {
+            "de": "die Uhrzeiten",
+            "en": "the times"
+          }
+        },
+        {
+          "targetText": "organiser",
+          "baseText": {
+            "de": "organisieren",
+            "en": "organise"
+          }
+        },
+        {
+          "targetText": "les arrivées",
+          "baseText": {
+            "de": "die Ankünfte",
+            "en": "the arrivals"
+          }
+        },
+        {
+          "targetText": "notre groupe de discussion",
+          "baseText": {
+            "de": "unser Gruppenchat",
+            "en": "our group chat"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je propose une liste des horaires pour ",
+        "answer": "organiser",
+        "after": " les arrivées à la gare.",
+        "fallbackChoices": [
+          "organisez",
+          "organiser",
+          "organisent",
+          "organisons"
+        ]
+      },
+      "speakRequired": [
+        "liste",
+        "organiser",
+        "gare"
+      ],
+      "sceneCaption": {
+        "de": "Du organisierst mit einer Freundin den Start eines Ausflugs. Nicht alle kommen gleichzeitig. „Comment on fait avec les gens qui viennent par le train suivant ?“",
+        "en": "You and a friend are organising the start of an outing. People will arrive at different times. “Comment on fait avec les gens qui viennent par le train suivant ?”"
+      },
+      "trophyWord": {
+        "word": "organiser",
+        "meaning": {
+          "de": "organisieren",
+          "en": "organise"
+        },
+        "example": "Je propose une liste des horaires pour organiser les arrivées à la gare.",
+        "whyThisWord": {
+          "de": "Organiser les arrivées heißt hier, mehrere Ankunftszeiten aufeinander abzustimmen.",
+          "en": "Organiser les arrivées means coordinating the times when different people arrive."
+        }
+      },
+      "distractors": [
+        "sous les draps",
+        "a pris froid"
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock.",
+        "en": "Two friends on a platform compare the departures board with a notepad."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Two friends on a platform compare the departures board with a notepad."
+    },
+    {
+      "slug": "le-depart-du-vendredi",
+      "title": {
+        "de": "Die Abfahrt am Freitag",
+        "en": "The Friday departure"
+      },
+      "situation": {
+        "de": "Du fährst mit einem Freund übers Wochenende weg. Vereinbart eine Abfahrtszeit.",
+        "en": "You and a friend are going away for the weekend. Agree on a departure time."
+      },
+      "pedagogicalGoal": "Pour éviter nennt das Problem, das du mit deiner vorgeschlagenen Uhrzeit umgehen willst. Éviter bleibt im Infinitiv.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "On quitte la ville à quelle heure vendredi ?",
+          "baseText": {
+            "de": "Wann fahren wir am Freitag aus der Stadt?",
+            "en": "What time are we leaving town on Friday?"
+          }
+        },
+        {
+          "targetText": "Je partirais vers trois heures pour éviter les bouchons à la sortie de la ville.",
+          "baseText": {
+            "de": "Ich würde gegen drei losfahren, um den Stau am Stadtrand zu vermeiden.",
+            "en": "I'd leave around three to avoid the traffic jams on the way out of town."
+          }
+        },
+        {
+          "targetText": "Je travaille jusqu'à quatre heures, mais après cinq heures la route se remplit.",
+          "baseText": {
+            "de": "Ich arbeite bis vier. Nach fünf wird die Straße aber voll.",
+            "en": "I work until four, but the road gets busy after five."
+          }
+        },
+        {
+          "targetText": "Partons à quatre heures et quart pour devancer les bouchons.",
+          "baseText": {
+            "de": "Fahren wir um Viertel nach vier los, um dem Stau zuvorzukommen.",
+            "en": "Let's leave at quarter past four to get ahead of the traffic jams."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Éviter un problème",
+        "rule": {
+          "de": "Pour éviter nennt das Problem, das du mit deiner vorgeschlagenen Uhrzeit umgehen willst. Éviter bleibt im Infinitiv.",
+          "en": "Pour éviter introduces the problem your proposed time would help you avoid. Éviter stays in the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Je partirais vers trois heures pour éviter les bouchons à la sortie de la ville.",
+            "baseText": {
+              "de": "Ich würde gegen drei losfahren, um den Stau am Stadtrand zu vermeiden.",
+              "en": "I'd leave around three to avoid the traffic jams on the way out of town."
+            },
+            "highlight": "pour éviter les bouchons"
+          },
+          {
+            "targetText": "Je baisse la lumière pour éviter les reflets sur l'écran.",
+            "baseText": {
+              "de": "Ich dimme das Licht, um Spiegelungen auf dem Bildschirm zu vermeiden.",
+              "en": "I turn down the light to avoid reflections on the screen."
+            },
+            "highlight": "pour éviter les reflets"
+          }
+        ]
+      },
+      "cloze": [
+        "Partons à quatre heures et quart ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "pour",
+            "qui",
+            "car",
+            "dès que"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "devancer",
+          "choices": [
+            "devançons",
+            "devancer",
+            "devancez",
+            "devancent"
+          ]
+        },
+        " les bouchons."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je partirais",
+          "baseText": {
+            "de": "ich würde losfahren",
+            "en": "I'd leave"
+          }
+        },
+        {
+          "targetText": "vers trois heures",
+          "baseText": {
+            "de": "gegen drei Uhr",
+            "en": "around three"
+          }
+        },
+        {
+          "targetText": "pour éviter",
+          "baseText": {
+            "de": "um zu vermeiden",
+            "en": "to avoid"
+          }
+        },
+        {
+          "targetText": "les bouchons à la sortie de la ville.",
+          "baseText": {
+            "de": "den Stau am Stadtrand",
+            "en": "the traffic jams on the way out of town"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "quitter la ville",
+          "baseText": {
+            "de": "die Stadt verlassen",
+            "en": "leave town"
+          }
+        },
+        {
+          "targetText": "vers trois heures",
+          "baseText": {
+            "de": "gegen drei Uhr",
+            "en": "around three"
+          }
+        },
+        {
+          "targetText": "éviter",
+          "baseText": {
+            "de": "vermeiden",
+            "en": "avoid"
+          }
+        },
+        {
+          "targetText": "les bouchons",
+          "baseText": {
+            "de": "die Staus",
+            "en": "the traffic jams"
+          }
+        },
+        {
+          "targetText": "la route se remplit",
+          "baseText": {
+            "de": "die Straße wird voll",
+            "en": "the road gets busy"
+          }
+        },
+        {
+          "targetText": "et quart",
+          "baseText": {
+            "de": "Viertel nach",
+            "en": "quarter past"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je partirais vers trois heures pour ",
+        "answer": "éviter",
+        "after": " les bouchons à la sortie de la ville.",
+        "fallbackChoices": [
+          "évitons",
+          "évitez",
+          "éviter",
+          "évitent"
+        ]
+      },
+      "speakRequired": [
+        "partirais",
+        "éviter",
+        "bouchons"
+      ],
+      "sceneCaption": {
+        "de": "Du fährst mit einem Freund übers Wochenende weg. Vereinbart eine Abfahrtszeit. „On quitte la ville à quelle heure vendredi ?“",
+        "en": "You and a friend are going away for the weekend. Agree on a departure time. “On quitte la ville à quelle heure vendredi ?”"
+      },
+      "trophyWord": {
+        "word": "éviter",
+        "meaning": {
+          "de": "vermeiden",
+          "en": "avoid"
+        },
+        "example": "Je partirais vers trois heures pour éviter les bouchons à la sortie de la ville.",
+        "whyThisWord": {
+          "de": "Éviter les bouchons ist eine übliche Begründung für einen frühen oder späten Start.",
+          "en": "Éviter les bouchons is a common reason for setting off early or late."
+        }
+      },
+      "distractors": [
+        "derrière ces nuages",
+        "sont en carton"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Taschen stehen an der Wohnungstür neben einem Autoschlüssel.",
+        "en": "Two bags stand by the front door next to a car key."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Two bags stand by the front door next to a car key."
+    },
+    {
+      "slug": "un-trajet-a-deux",
+      "title": {
+        "de": "Eine Fahrt zu zweit",
+        "en": "Sharing the drive"
+      },
+      "situation": {
+        "de": "Du und ein Freund wollt zum selben Markt fahren. Überlegt, wie ihr die Fahrt günstiger macht.",
+        "en": "You and a friend are going to the same market. Work out how to make the trip cheaper."
+      },
+      "pedagogicalGoal": "Wir handeln gemeinsam, aber das Ziel gilt für jeden Einzelnen. Nach pour que chacun steht puisse, der Subjonctif von pouvoir.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "L'essence coûte cher pour deux voitures. Tu as une idée ?",
+          "baseText": {
+            "de": "Für zwei Autos ist das Benzin teuer. Hast du eine Idee?",
+            "en": "Petrol is expensive for two cars. Any ideas?"
+          }
+        },
+        {
+          "targetText": "Prenons une seule voiture pour que chacun puisse économiser sur le trajet.",
+          "baseText": {
+            "de": "Nehmen wir nur ein Auto, damit jeder bei der Fahrt sparen kann.",
+            "en": "Let's take just one car so each of us can save on the trip."
+          }
+        },
+        {
+          "targetText": "D'accord, mais je passe par le pont, loin de chez toi.",
+          "baseText": {
+            "de": "Einverstanden, aber ich fahre über die Brücke, weit weg von dir.",
+            "en": "All right, but I'm going over the bridge, a long way from your place."
+          }
+        },
+        {
+          "targetText": "Retrouvons-nous au pont pour que ton détour soit court.",
+          "baseText": {
+            "de": "Treffen wir uns an der Brücke, damit dein Umweg kurz bleibt.",
+            "en": "Let's meet at the bridge so your detour is short."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour que chacun puisse",
+        "rule": {
+          "de": "Wir handeln gemeinsam, aber das Ziel gilt für jeden Einzelnen. Nach pour que chacun steht puisse, der Subjonctif von pouvoir.",
+          "en": "We act together, but the aim concerns each individual. After pour que chacun, use puisse, the subjunctive of pouvoir."
+        },
+        "examples": [
+          {
+            "targetText": "Prenons une seule voiture pour que chacun puisse économiser sur le trajet.",
+            "baseText": {
+              "de": "Nehmen wir nur ein Auto, damit jeder bei der Fahrt sparen kann.",
+              "en": "Let's take just one car so each of us can save on the trip."
+            },
+            "highlight": "pour que chacun puisse économiser"
+          },
+          {
+            "targetText": "Je laisse un mot pour que Léa puisse trouver la clé.",
+            "baseText": {
+              "de": "Ich lasse eine Nachricht da, damit Léa den Schlüssel finden kann.",
+              "en": "I leave a note so Léa can find the key."
+            },
+            "highlight": "pour que Léa puisse trouver"
+          }
+        ]
+      },
+      "cloze": [
+        "Retrouvons-nous au pont ",
+        {
+          "kind": "choice",
+          "answer": "pour que",
+          "choices": [
+            "malgré",
+            "pour que",
+            "depuis",
+            "au lieu de"
+          ]
+        },
+        " ton détour ",
+        {
+          "kind": "form",
+          "answer": "soit",
+          "choices": [
+            "est",
+            "sont",
+            "soit",
+            "êtes"
+          ],
+          "cue": "être (ton détour)"
+        },
+        " court."
+      ],
+      "chunks": [
+        {
+          "targetText": "Prenons une seule voiture",
+          "baseText": {
+            "de": "nehmen wir nur ein Auto",
+            "en": "let's take just one car"
+          }
+        },
+        {
+          "targetText": "pour que chacun",
+          "baseText": {
+            "de": "damit jeder",
+            "en": "so that each of us"
+          }
+        },
+        {
+          "targetText": "puisse économiser",
+          "baseText": {
+            "de": "sparen kann",
+            "en": "can save"
+          }
+        },
+        {
+          "targetText": "sur le trajet.",
+          "baseText": {
+            "de": "bei der Fahrt",
+            "en": "on the trip"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'essence",
+          "baseText": {
+            "de": "das Benzin",
+            "en": "petrol"
+          }
+        },
+        {
+          "targetText": "une seule voiture",
+          "baseText": {
+            "de": "nur ein Auto",
+            "en": "just one car"
+          }
+        },
+        {
+          "targetText": "chacun",
+          "baseText": {
+            "de": "jeder Einzelne",
+            "en": "each person"
+          }
+        },
+        {
+          "targetText": "économiser",
+          "baseText": {
+            "de": "sparen",
+            "en": "save money"
+          }
+        },
+        {
+          "targetText": "le pont",
+          "baseText": {
+            "de": "die Brücke",
+            "en": "the bridge"
+          }
+        },
+        {
+          "targetText": "ton détour",
+          "baseText": {
+            "de": "dein Umweg",
+            "en": "your detour"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Prenons une seule voiture pour que chacun ",
+        "answer": "puisse",
+        "after": " économiser sur le trajet.",
+        "fallbackChoices": [
+          "peut",
+          "pouvez",
+          "pouvons",
+          "puisse"
+        ]
+      },
+      "speakRequired": [
+        "voiture",
+        "puisse",
+        "économiser"
+      ],
+      "sceneCaption": {
+        "de": "Du und ein Freund wollt zum selben Markt fahren. Überlegt, wie ihr die Fahrt günstiger macht. „L'essence coûte cher pour deux voitures. Tu as une idée ?“",
+        "en": "You and a friend are going to the same market. Work out how to make the trip cheaper. “L'essence coûte cher pour deux voitures. Tu as une idée ?”"
+      },
+      "trophyWord": {
+        "word": "économiser",
+        "meaning": {
+          "de": "Geld sparen",
+          "en": "save money"
+        },
+        "example": "Prenons une seule voiture pour que chacun puisse économiser sur le trajet.",
+        "whyThisWord": {
+          "de": "Économiser sur le trajet bedeutet, bei der Fahrt weniger Geld auszugeben.",
+          "en": "Économiser sur le trajet means to spend less money on the trip."
+        }
+      },
+      "distractors": [
+        "un pull rayé",
+        "se casse en miettes"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Autoschlüssel liegt neben zwei leeren Einkaufstaschen.",
+        "en": "A car key lies next to two empty shopping bags."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "A car key lies next to two empty shopping bags."
+    },
+    {
+      "slug": "le-micro-au-fond",
+      "title": {
+        "de": "Ein Mikrofon für die Lesung",
+        "en": "A microphone for the reading"
+      },
+      "situation": {
+        "de": "Du besprichst mit deiner Freundin eine Lesung im Hof. Auch hinten soll man die Stimme gut hören.",
+        "en": "You and a friend are planning a courtyard reading. People at the back should hear the reader clearly."
+      },
+      "pedagogicalGoal": "Nach pour que folgt mit sa voix ein eigenes Subjekt. Soit ist der Subjonctif von être und beschreibt das gewünschte Ergebnis.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Sans micro, au fond de la cour, on perd la moitié du texte.",
+          "baseText": {
+            "de": "Ohne Mikrofon versteht man hinten im Hof nur die Hälfte des Textes.",
+            "en": "Without a microphone, you miss half the reading at the back of the courtyard."
+          }
+        },
+        {
+          "targetText": "Le micro doit permettre à Zoé de parler doucement pour que sa voix soit claire partout.",
+          "baseText": {
+            "de": "Das Mikrofon soll Zoé ermöglichen, leise zu sprechen, damit ihre Stimme überall klar zu hören ist.",
+            "en": "The microphone should let Zoé speak softly so her voice is clear everywhere."
+          }
+        },
+        {
+          "targetText": "Oui, mais les voisins trouvent déjà nos essais trop bruyants.",
+          "baseText": {
+            "de": "Ja, aber die Nachbarn finden schon unsere Proben zu laut.",
+            "en": "Yes, but the neighbours already think our sound checks are too loud."
+          }
+        },
+        {
+          "targetText": "Baissons le volume pour que le son reste dans la cour.",
+          "baseText": {
+            "de": "Drehen wir leiser, damit der Ton im Hof bleibt.",
+            "en": "Let's turn the volume down so the sound stays in the courtyard."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour que sa voix soit claire",
+        "rule": {
+          "de": "Nach pour que folgt mit sa voix ein eigenes Subjekt. Soit ist der Subjonctif von être und beschreibt das gewünschte Ergebnis.",
+          "en": "After pour que, sa voix introduces a new subject. Soit is the subjunctive of être and describes the desired result."
+        },
+        "examples": [
+          {
+            "targetText": "Le micro doit permettre à Zoé de parler doucement pour que sa voix soit claire partout.",
+            "baseText": {
+              "de": "Das Mikrofon soll Zoé ermöglichen, leise zu sprechen, damit ihre Stimme überall klar zu hören ist.",
+              "en": "The microphone should let Zoé speak softly so her voice is clear everywhere."
+            },
+            "highlight": "pour que sa voix soit"
+          },
+          {
+            "targetText": "Je remue la peinture pour que la couleur soit uniforme.",
+            "baseText": {
+              "de": "Ich rühre die Farbe um, damit der Farbton gleichmäßig wird.",
+              "en": "I stir the paint so the colour is even."
+            },
+            "highlight": "pour que la couleur soit"
+          }
+        ]
+      },
+      "cloze": [
+        "Baissons le volume ",
+        {
+          "kind": "choice",
+          "answer": "pour que",
+          "choices": [
+            "pendant",
+            "au lieu de",
+            "pour que",
+            "faute de"
+          ]
+        },
+        " le son ",
+        {
+          "kind": "form",
+          "answer": "reste",
+          "choices": [
+            "restent",
+            "restez",
+            "restons",
+            "reste"
+          ],
+          "cue": "rester (le son)"
+        },
+        " dans la cour."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le micro doit permettre",
+          "baseText": {
+            "de": "das Mikrofon soll es ermöglichen",
+            "en": "the microphone should make it possible"
+          }
+        },
+        {
+          "targetText": "à Zoé de parler doucement",
+          "baseText": {
+            "de": "dass Zoé leise spricht",
+            "en": "for Zoé to speak softly"
+          }
+        },
+        {
+          "targetText": "pour que sa voix",
+          "baseText": {
+            "de": "damit ihre Stimme",
+            "en": "so her voice"
+          }
+        },
+        {
+          "targetText": "soit claire partout.",
+          "baseText": {
+            "de": "überall klar zu hören ist",
+            "en": "is clear everywhere"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "sans micro",
+          "baseText": {
+            "de": "ohne Mikrofon",
+            "en": "without a microphone"
+          }
+        },
+        {
+          "targetText": "au fond de la cour",
+          "baseText": {
+            "de": "hinten im Hof",
+            "en": "at the back of the courtyard"
+          }
+        },
+        {
+          "targetText": "permettre",
+          "baseText": {
+            "de": "ermöglichen",
+            "en": "allow"
+          }
+        },
+        {
+          "targetText": "parler doucement",
+          "baseText": {
+            "de": "leise sprechen",
+            "en": "speak softly"
+          }
+        },
+        {
+          "targetText": "trop bruyants",
+          "baseText": {
+            "de": "zu laut",
+            "en": "too noisy"
+          }
+        },
+        {
+          "targetText": "le volume",
+          "baseText": {
+            "de": "die Lautstärke",
+            "en": "the volume"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le micro doit permettre à Zoé de parler doucement pour que sa voix ",
+        "answer": "soit",
+        "after": " claire partout.",
+        "fallbackChoices": [
+          "soit",
+          "est",
+          "sont",
+          "êtes"
+        ]
+      },
+      "speakRequired": [
+        "permettre",
+        "voix",
+        "micro"
+      ],
+      "sceneCaption": {
+        "de": "Du besprichst mit deiner Freundin eine Lesung im Hof. Auch hinten soll man die Stimme gut hören. „Sans micro, au fond de la cour, on perd la moitié du texte.“",
+        "en": "You and a friend are planning a courtyard reading. People at the back should hear the reader clearly. “Sans micro, au fond de la cour, on perd la moitié du texte.”"
+      },
+      "trophyWord": {
+        "word": "permettre",
+        "meaning": {
+          "de": "ermöglichen",
+          "en": "allow"
+        },
+        "example": "Le micro doit permettre à Zoé de parler doucement pour que sa voix soit claire partout.",
+        "whyThisWord": {
+          "de": "Permettre à quelqu'un de faire quelque chose beschreibt, was eine Maßnahme für jemanden möglich macht.",
+          "en": "Permettre à quelqu'un de faire quelque chose describes what an arrangement enables someone to do."
+        }
+      },
+      "distractors": [
+        "des chaussures plates",
+        "ont pris la fuite"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mikrofonständer und ein Lesepult stehen im Hof vor mehreren Stuhlreihen.",
+        "en": "A microphone stand and a lectern face rows of chairs in a courtyard."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "A microphone stand and a lectern face rows of chairs in a courtyard."
+    },
+    {
+      "slug": "une-tache-pour-chacun",
+      "title": {
+        "de": "Eine Aufgabe für jede Person",
+        "en": "A job for everyone"
+      },
+      "situation": {
+        "de": "Du verteilst mit einem Freund die Aufgaben für einen Flohmarkt. Alle sollen sich beteiligen können.",
+        "en": "You and a friend are sharing out jobs for a flea market. Everyone should be able to help."
+      },
+      "pedagogicalGoal": "Nach pour que chacun steht ait. Das ist die Form von avoir, mit der du das gewünschte Ergebnis für eine andere Person beschreibst.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Trois personnes attendent encore sans savoir quoi faire.",
+          "baseText": {
+            "de": "Drei Leute warten noch und wissen nicht, was sie tun sollen.",
+            "en": "Three people are still waiting, unsure what to do."
+          }
+        },
+        {
+          "targetText": "On peut répartir les tâches pour que chacun ait un rôle précis.",
+          "baseText": {
+            "de": "Wir können die Aufgaben so verteilen, dass jeder eine klare Rolle hat.",
+            "en": "We can share out the tasks so everyone has a clear role."
+          }
+        },
+        {
+          "targetText": "Lina ne peut rester que dix minutes avant son train.",
+          "baseText": {
+            "de": "Lina kann nur zehn Minuten bleiben, bevor ihr Zug fährt.",
+            "en": "Lina can only stay ten minutes before her train."
+          }
+        },
+        {
+          "targetText": "Donnons-lui trois prix à écrire pour que sa tâche soit courte.",
+          "baseText": {
+            "de": "Lassen wir sie drei Preise aufschreiben, damit ihre Aufgabe wenig Zeit braucht.",
+            "en": "Let's give her three prices to write down so her job won't take long."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour que chacun ait sa place",
+        "rule": {
+          "de": "Nach pour que chacun steht ait. Das ist die Form von avoir, mit der du das gewünschte Ergebnis für eine andere Person beschreibst.",
+          "en": "After pour que chacun, use ait. This subjunctive form of avoir describes the result you want for someone else."
+        },
+        "examples": [
+          {
+            "targetText": "On peut répartir les tâches pour que chacun ait un rôle précis.",
+            "baseText": {
+              "de": "Wir können die Aufgaben so verteilen, dass jeder eine klare Rolle hat.",
+              "en": "We can share out the tasks so everyone has a clear role."
+            },
+            "highlight": "pour que chacun ait"
+          },
+          {
+            "targetText": "Je mets une carafe ici pour que chacun ait de l'eau.",
+            "baseText": {
+              "de": "Ich stelle hier eine Karaffe hin, damit jeder Wasser hat.",
+              "en": "I'll put a jug here so everyone has water."
+            },
+            "highlight": "pour que chacun ait"
+          }
+        ]
+      },
+      "cloze": [
+        "Donnons-lui trois prix à écrire ",
+        {
+          "kind": "choice",
+          "answer": "pour que",
+          "choices": [
+            "à cause de",
+            "malgré",
+            "depuis",
+            "pour que"
+          ]
+        },
+        " sa tâche ",
+        {
+          "kind": "form",
+          "answer": "soit",
+          "choices": [
+            "soit",
+            "est",
+            "sont",
+            "êtes"
+          ],
+          "cue": "être (sa tâche)"
+        },
+        " courte."
+      ],
+      "chunks": [
+        {
+          "targetText": "On peut répartir",
+          "baseText": {
+            "de": "wir können verteilen",
+            "en": "we can share out"
+          }
+        },
+        {
+          "targetText": "les tâches",
+          "baseText": {
+            "de": "die Aufgaben",
+            "en": "the tasks"
+          }
+        },
+        {
+          "targetText": "pour que chacun",
+          "baseText": {
+            "de": "damit jeder",
+            "en": "so that everyone"
+          }
+        },
+        {
+          "targetText": "ait un rôle précis.",
+          "baseText": {
+            "de": "eine klare Rolle hat",
+            "en": "has a clear role"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "répartir",
+          "baseText": {
+            "de": "verteilen",
+            "en": "share out"
+          }
+        },
+        {
+          "targetText": "les tâches",
+          "baseText": {
+            "de": "die Aufgaben",
+            "en": "the tasks"
+          }
+        },
+        {
+          "targetText": "un rôle précis",
+          "baseText": {
+            "de": "eine klare Rolle",
+            "en": "a clear role"
+          }
+        },
+        {
+          "targetText": "dix minutes",
+          "baseText": {
+            "de": "zehn Minuten",
+            "en": "ten minutes"
+          }
+        },
+        {
+          "targetText": "son train",
+          "baseText": {
+            "de": "ihr Zug",
+            "en": "her train"
+          }
+        },
+        {
+          "targetText": "trois prix",
+          "baseText": {
+            "de": "drei Preise",
+            "en": "three prices"
+          }
+        }
+      ],
+      "recall": {
+        "before": "On peut répartir les tâches pour que chacun ",
+        "answer": "ait",
+        "after": " un rôle précis.",
+        "fallbackChoices": [
+          "a",
+          "ait",
+          "ont",
+          "avez"
+        ]
+      },
+      "speakRequired": [
+        "répartir",
+        "tâches",
+        "rôle"
+      ],
+      "sceneCaption": {
+        "de": "Du verteilst mit einem Freund die Aufgaben für einen Flohmarkt. Alle sollen sich beteiligen können. „Trois personnes attendent encore sans savoir quoi faire.“",
+        "en": "You and a friend are sharing out jobs for a flea market. Everyone should be able to help. “Trois personnes attendent encore sans savoir quoi faire.”"
+      },
+      "trophyWord": {
+        "word": "répartir",
+        "meaning": {
+          "de": "verteilen",
+          "en": "share out"
+        },
+        "example": "On peut répartir les tâches pour que chacun ait un rôle précis.",
+        "whyThisWord": {
+          "de": "Répartir les tâches heißt, die Arbeit unter mehreren Personen aufzuteilen.",
+          "en": "Répartir les tâches means dividing up the work among several people."
+        }
+      },
+      "distractors": [
+        "gardait ses clés",
+        "ce gâteau rond"
+      ],
+      "placeholderCaption": {
+        "de": "Mehrere kleine Aufgabenzettel liegen auf einem Flohmarkttisch.",
+        "en": "Several job slips lie on a flea-market stall."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Several job slips lie on a flea-market stall."
+    },
+    {
+      "slug": "repeter-a-distance",
+      "title": {
+        "de": "Die letzte Probe",
+        "en": "The final rehearsal"
+      },
+      "situation": {
+        "de": "Vor eurem kleinen Auftritt planst du mit einer Freundin einen letzten Probetermin.",
+        "en": "Before your small performance, plan one last rehearsal with a friend."
+      },
+      "pedagogicalGoal": "Tout le monde bezeichnet viele Personen, verlangt grammatisch aber den Singular. Nach pour que steht deshalb puisse.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Le spectacle commence demain et on n'a jamais fait la fin ensemble.",
+          "baseText": {
+            "de": "Die Aufführung ist morgen, und wir haben den Schluss noch nie zusammen gespielt.",
+            "en": "The show is tomorrow and we've never done the ending together."
+          }
+        },
+        {
+          "targetText": "Il nous faut une répétition pour que tout le monde puisse essayer la dernière scène.",
+          "baseText": {
+            "de": "Wir brauchen eine Probe, damit alle die letzte Szene ausprobieren können.",
+            "en": "We need a rehearsal so everyone can try the last scene."
+          }
+        },
+        {
+          "targetText": "Ce soir, personne ne peut venir ici. On peut répéter en ligne.",
+          "baseText": {
+            "de": "Heute Abend kann niemand herkommen. Wir können online proben.",
+            "en": "Nobody can come here tonight. We can rehearse online."
+          }
+        },
+        {
+          "targetText": "Testons le son avant pour que la répétition en ligne marche.",
+          "baseText": {
+            "de": "Testen wir vorher den Ton, damit die Onlineprobe klappt.",
+            "en": "Let's test the sound beforehand so the online rehearsal works."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour que tout le monde puisse essayer",
+        "rule": {
+          "de": "Tout le monde bezeichnet viele Personen, verlangt grammatisch aber den Singular. Nach pour que steht deshalb puisse.",
+          "en": "Tout le monde refers to many people but takes a singular verb. After pour que it is followed by puisse."
+        },
+        "examples": [
+          {
+            "targetText": "Il nous faut une répétition pour que tout le monde puisse essayer la dernière scène.",
+            "baseText": {
+              "de": "Wir brauchen eine Probe, damit alle die letzte Szene ausprobieren können.",
+              "en": "We need a rehearsal so everyone can try the last scene."
+            },
+            "highlight": "pour que tout le monde puisse"
+          },
+          {
+            "targetText": "Je ralentis pour que tout le monde puisse suivre le chemin.",
+            "baseText": {
+              "de": "Ich werde langsamer, damit alle dem Weg folgen können.",
+              "en": "I slow down so everyone can follow the path."
+            },
+            "highlight": "pour que tout le monde puisse"
+          }
+        ]
+      },
+      "cloze": [
+        "Testons le son avant ",
+        {
+          "kind": "choice",
+          "answer": "pour que",
+          "choices": [
+            "pour que",
+            "avant de",
+            "malgré",
+            "pendant"
+          ]
+        },
+        " la répétition en ligne ",
+        {
+          "kind": "form",
+          "answer": "marche",
+          "choices": [
+            "marchent",
+            "marche",
+            "marchons",
+            "marchez"
+          ],
+          "cue": "marcher (la répétition)"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Il nous faut",
+          "baseText": {
+            "de": "wir brauchen",
+            "en": "we need"
+          }
+        },
+        {
+          "targetText": "une répétition",
+          "baseText": {
+            "de": "eine Probe",
+            "en": "a rehearsal"
+          }
+        },
+        {
+          "targetText": "pour que tout le monde",
+          "baseText": {
+            "de": "damit alle",
+            "en": "so that everyone"
+          }
+        },
+        {
+          "targetText": "puisse essayer la dernière scène.",
+          "baseText": {
+            "de": "die letzte Szene ausprobieren können",
+            "en": "can try the last scene"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le spectacle",
+          "baseText": {
+            "de": "die Aufführung",
+            "en": "the show"
+          }
+        },
+        {
+          "targetText": "la fin",
+          "baseText": {
+            "de": "der Schluss",
+            "en": "the ending"
+          }
+        },
+        {
+          "targetText": "une répétition",
+          "baseText": {
+            "de": "eine Probe",
+            "en": "a rehearsal"
+          }
+        },
+        {
+          "targetText": "essayer",
+          "baseText": {
+            "de": "ausprobieren",
+            "en": "try"
+          }
+        },
+        {
+          "targetText": "la dernière scène",
+          "baseText": {
+            "de": "die letzte Szene",
+            "en": "the last scene"
+          }
+        },
+        {
+          "targetText": "en ligne",
+          "baseText": {
+            "de": "online",
+            "en": "online"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Il nous faut une répétition pour que tout le monde ",
+        "answer": "puisse",
+        "after": " essayer la dernière scène.",
+        "fallbackChoices": [
+          "peut",
+          "peuvent",
+          "puisse",
+          "pouvez"
+        ]
+      },
+      "speakRequired": [
+        "répétition",
+        "essayer",
+        "scène"
+      ],
+      "sceneCaption": {
+        "de": "Vor eurem kleinen Auftritt planst du mit einer Freundin einen letzten Probetermin. „Le spectacle commence demain et on n'a jamais fait la fin ensemble.“",
+        "en": "Before your small performance, plan one last rehearsal with a friend. “Le spectacle commence demain et on n'a jamais fait la fin ensemble.”"
+      },
+      "trophyWord": {
+        "word": "répétition",
+        "meaning": {
+          "de": "Probe",
+          "en": "rehearsal"
+        },
+        "example": "Il nous faut une répétition pour que tout le monde puisse essayer la dernière scène.",
+        "whyThisWord": {
+          "de": "Une répétition bezeichnet hier das gemeinsame Üben vor einem Auftritt.",
+          "en": "Une répétition here is a practice session before a performance."
+        }
+      },
+      "distractors": [
+        "vers la mairie",
+        "se boit sans sucre"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Textheft liegt neben einer kleinen Bühnenleuchte auf einer Bühne.",
+        "en": "A script lies beside a small stage light on a stage."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "A script lies beside a small stage light on a stage."
+    },
+    {
+      "slug": "relire-les-invitations",
+      "title": {
+        "de": "Einladungen schreiben",
+        "en": "Writing the invitations"
+      },
+      "situation": {
+        "de": "Du möchtest mit einem Freund die Einladungen für ein Hoffest schreiben. Ihr habt wenig Zeit.",
+        "en": "You want to write invitations for a courtyard party with a friend. You're short on time."
+      },
+      "pedagogicalGoal": "Bei pour garder bleiben die Schreibenden auch diejenigen, die den Ton beibehalten. Mit einem eigenen Subjekt würde das Ziel mit pour que beginnen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Il nous reste une heure pour finir ces invitations.",
+          "baseText": {
+            "de": "Wir haben noch eine Stunde, um diese Einladungen fertigzustellen.",
+            "en": "We have an hour left to finish these invitations."
+          }
+        },
+        {
+          "targetText": "On pourrait écrire ensemble une première version des invitations pour garder le même ton.",
+          "baseText": {
+            "de": "Wir könnten gemeinsam eine erste Fassung der Einladungen schreiben, damit der Ton einheitlich bleibt.",
+            "en": "We could write a first draft of the invitations together to keep the tone consistent."
+          }
+        },
+        {
+          "targetText": "On ira plus vite en deux groupes, chacun avec la moitié des adresses.",
+          "baseText": {
+            "de": "In zwei Gruppen geht es schneller, wenn jede die Hälfte der Adressen übernimmt.",
+            "en": "We'll be quicker in two groups, each with half the addresses."
+          }
+        },
+        {
+          "targetText": "Alors on peut tout relire ensemble pour que le texte soit cohérent.",
+          "baseText": {
+            "de": "Dann können wir alles gemeinsam durchlesen, damit der Text einheitlich ist.",
+            "en": "Then we can read everything over together so the text is consistent."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un moyen et son but",
+        "rule": {
+          "de": "Bei pour garder bleiben die Schreibenden auch diejenigen, die den Ton beibehalten. Mit einem eigenen Subjekt würde das Ziel mit pour que beginnen.",
+          "en": "With pour garder, the writers are also the people keeping the tone consistent. A purpose clause with its own subject starts with pour que."
+        },
+        "examples": [
+          {
+            "targetText": "On pourrait écrire ensemble une première version des invitations pour garder le même ton.",
+            "baseText": {
+              "de": "Wir könnten gemeinsam eine erste Fassung der Einladungen schreiben, damit der Ton einheitlich bleibt.",
+              "en": "We could write a first draft of the invitations together to keep the tone consistent."
+            },
+            "highlight": "pour garder le même ton"
+          },
+          {
+            "targetText": "Nous tournons la page ensemble pour garder le même rythme.",
+            "baseText": {
+              "de": "Wir blättern gemeinsam um, um im selben Rhythmus zu bleiben.",
+              "en": "We turn the page together to keep the same rhythm."
+            },
+            "highlight": "pour garder le même rythme"
+          }
+        ]
+      },
+      "cloze": [
+        "Alors on peut tout relire ensemble ",
+        {
+          "kind": "choice",
+          "answer": "pour que",
+          "choices": [
+            "en attendant de",
+            "pour que",
+            "depuis",
+            "malgré"
+          ]
+        },
+        " le texte ",
+        {
+          "kind": "form",
+          "answer": "soit",
+          "choices": [
+            "est",
+            "sont",
+            "soit",
+            "êtes"
+          ],
+          "cue": "être (le texte)"
+        },
+        " cohérent."
+      ],
+      "chunks": [
+        {
+          "targetText": "On pourrait écrire",
+          "baseText": {
+            "de": "wir könnten schreiben",
+            "en": "we could write"
+          }
+        },
+        {
+          "targetText": "ensemble une première version",
+          "baseText": {
+            "de": "gemeinsam eine erste Fassung",
+            "en": "a first draft together"
+          }
+        },
+        {
+          "targetText": "des invitations",
+          "baseText": {
+            "de": "der Einladungen",
+            "en": "of the invitations"
+          }
+        },
+        {
+          "targetText": "pour garder le même ton.",
+          "baseText": {
+            "de": "damit der Ton einheitlich bleibt",
+            "en": "to keep the tone consistent"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une heure",
+          "baseText": {
+            "de": "eine Stunde",
+            "en": "an hour"
+          }
+        },
+        {
+          "targetText": "les invitations",
+          "baseText": {
+            "de": "die Einladungen",
+            "en": "the invitations"
+          }
+        },
+        {
+          "targetText": "ensemble",
+          "baseText": {
+            "de": "gemeinsam",
+            "en": "together"
+          }
+        },
+        {
+          "targetText": "le même ton",
+          "baseText": {
+            "de": "derselbe Ton",
+            "en": "the same tone"
+          }
+        },
+        {
+          "targetText": "la moitié",
+          "baseText": {
+            "de": "die Hälfte",
+            "en": "half"
+          }
+        },
+        {
+          "targetText": "des adresses",
+          "baseText": {
+            "de": "der Adressen",
+            "en": "of the addresses"
+          }
+        }
+      ],
+      "recall": {
+        "before": "On pourrait écrire ensemble une première version des invitations pour ",
+        "answer": "garder",
+        "after": " le même ton.",
+        "fallbackChoices": [
+          "gardons",
+          "gardez",
+          "gardent",
+          "garder"
+        ]
+      },
+      "speakRequired": [
+        "invitations",
+        "ensemble",
+        "garder"
+      ],
+      "sceneCaption": {
+        "de": "Du möchtest mit einem Freund die Einladungen für ein Hoffest schreiben. Ihr habt wenig Zeit. „Il nous reste une heure pour finir ces invitations.“",
+        "en": "You want to write invitations for a courtyard party with a friend. You're short on time. “Il nous reste une heure pour finir ces invitations.”"
+      },
+      "trophyWord": {
+        "word": "ensemble",
+        "meaning": {
+          "de": "gemeinsam",
+          "en": "together"
+        },
+        "example": "On pourrait écrire ensemble une première version des invitations pour garder le même ton.",
+        "whyThisWord": {
+          "de": "Ensemble beschreibt hier die Arbeitsweise beim Schreiben oder Gegenlesen.",
+          "en": "Ensemble describes how the writing or proofreading is done."
+        }
+      },
+      "distractors": [
+        "a fondu hier",
+        "la dernière marche"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Stapel Umschläge liegen neben einem handgeschriebenen Einladungsentwurf.",
+        "en": "Two stacks of envelopes lie beside a handwritten invitation draft."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Two stacks of envelopes lie beside a handwritten invitation draft."
+    },
+    {
+      "slug": "une-salle-accessible",
+      "title": {
+        "de": "Ein Raum, den alle erreichen",
+        "en": "A room everyone can reach"
+      },
+      "situation": {
+        "de": "Du wählst mit einer Freundin einen Raum für ein Treffen aus. Der Zugang ist euch wichtig.",
+        "en": "You and a friend are choosing a meeting room. Easy access matters to both of you."
+      },
+      "pedagogicalGoal": "Du suchst den Raum, aber alle sollen hineinkommen können. Der Subjektwechsel erklärt pour que tout le monde puisse. Bei demselben Handelnden genügt pour und ein Infinitiv.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "On peut avoir la grande salle, mais il y a quatre marches à l'entrée.",
+          "baseText": {
+            "de": "Wir könnten den großen Saal bekommen, aber am Eingang sind vier Stufen.",
+            "en": "We can have the large hall, but there are four steps at the entrance."
+          }
+        },
+        {
+          "targetText": "Ma priorité, c'est de trouver une salle accessible pour que tout le monde puisse entrer.",
+          "baseText": {
+            "de": "Am wichtigsten ist mir, einen zugänglichen Raum zu finden, damit alle hineinkommen können.",
+            "en": "My priority is finding an accessible room so everyone can get in."
+          }
+        },
+        {
+          "targetText": "La bibliothèque propose une petite salle de plain-pied. Ça te va ?",
+          "baseText": {
+            "de": "Die Bibliothek bietet einen kleinen ebenerdigen Raum an. Passt dir das?",
+            "en": "The library has a small room with level access. Would that work for you?"
+          }
+        },
+        {
+          "targetText": "Oui, prenons celle-ci pour garder un accès sans marches.",
+          "baseText": {
+            "de": "Ja, nehmen wir die, damit der Zugang stufenlos bleibt.",
+            "en": "Yes, let's take that one to keep access step-free."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qui fait quoi ?",
+        "rule": {
+          "de": "Du suchst den Raum, aber alle sollen hineinkommen können. Der Subjektwechsel erklärt pour que tout le monde puisse. Bei demselben Handelnden genügt pour und ein Infinitiv.",
+          "en": "You're looking for the room, but everyone should be able to enter. The change of subject calls for pour que tout le monde puisse. With a shared subject, use pour and an infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Ma priorité, c'est de trouver une salle accessible pour que tout le monde puisse entrer.",
+            "baseText": {
+              "de": "Am wichtigsten ist mir, einen zugänglichen Raum zu finden, damit alle hineinkommen können.",
+              "en": "My priority is finding an accessible room so everyone can get in."
+            },
+            "highlight": "pour que tout le monde puisse entrer"
+          },
+          {
+            "targetText": "Je passe au crayon noir pour que Sam puisse lire mon message.",
+            "baseText": {
+              "de": "Ich wechsle zu einem schwarzen Stift, damit Sam meine Nachricht lesen kann.",
+              "en": "I switch to a black pencil so Sam can read my message."
+            },
+            "highlight": "pour que Sam puisse lire"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, prenons celle-ci ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "car",
+            "dès que",
+            "pour",
+            "qui"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "garder",
+          "choices": [
+            "gardons",
+            "gardent",
+            "gardez",
+            "garder"
+          ]
+        },
+        " un accès sans marches."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ma priorité,",
+          "baseText": {
+            "de": "meine Priorität",
+            "en": "my priority"
+          }
+        },
+        {
+          "targetText": "c'est de trouver",
+          "baseText": {
+            "de": "ist es, zu finden",
+            "en": "is to find"
+          }
+        },
+        {
+          "targetText": "une salle accessible",
+          "baseText": {
+            "de": "einen zugänglichen Raum",
+            "en": "an accessible room"
+          }
+        },
+        {
+          "targetText": "pour que tout le monde puisse entrer.",
+          "baseText": {
+            "de": "damit alle hineinkommen können",
+            "en": "so everyone can get in"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la grande salle",
+          "baseText": {
+            "de": "der große Saal",
+            "en": "the large hall"
+          }
+        },
+        {
+          "targetText": "quatre marches",
+          "baseText": {
+            "de": "vier Stufen",
+            "en": "four steps"
+          }
+        },
+        {
+          "targetText": "ma priorité",
+          "baseText": {
+            "de": "meine Priorität",
+            "en": "my priority"
+          }
+        },
+        {
+          "targetText": "une salle accessible",
+          "baseText": {
+            "de": "ein zugänglicher Raum",
+            "en": "an accessible room"
+          }
+        },
+        {
+          "targetText": "de plain-pied",
+          "baseText": {
+            "de": "ebenerdig",
+            "en": "with level access"
+          }
+        },
+        {
+          "targetText": "sans marches",
+          "baseText": {
+            "de": "stufenlos",
+            "en": "step-free"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ma priorité, c'est de trouver une salle accessible pour que tout le monde ",
+        "answer": "puisse",
+        "after": " entrer.",
+        "fallbackChoices": [
+          "puisse",
+          "peut",
+          "pouvez",
+          "pouvons"
+        ]
+      },
+      "speakRequired": [
+        "priorité",
+        "accessible",
+        "entrer"
+      ],
+      "sceneCaption": {
+        "de": "Du wählst mit einer Freundin einen Raum für ein Treffen aus. Der Zugang ist euch wichtig. „On peut avoir la grande salle, mais il y a quatre marches à l'entrée.“",
+        "en": "You and a friend are choosing a meeting room. Easy access matters to both of you. “On peut avoir la grande salle, mais il y a quatre marches à l'entrée.”"
+      },
+      "trophyWord": {
+        "word": "priorité",
+        "meaning": {
+          "de": "Priorität",
+          "en": "priority"
+        },
+        "example": "Ma priorité, c'est de trouver une salle accessible pour que tout le monde puisse entrer.",
+        "whyThisWord": {
+          "de": "Ma priorité, c'est de … hebt das Kriterium hervor, das für deine Entscheidung am meisten zählt.",
+          "en": "Ma priorité, c'est de … introduces the criterion that matters most to your decision."
+        }
+      },
+      "distractors": [
+        "au rayon fromage",
+        "sont très mûres"
+      ],
+      "placeholderCaption": {
+        "de": "Vier Stufen führen zum Eingang eines großen Saals.",
+        "en": "Four steps lead up to the entrance of a large hall."
+      },
+      "songMood": "Lebendig und zugewandt.",
+      "visualNotes": "Four steps lead up to the entrance of a large hall."
+    }
+  ]
+}

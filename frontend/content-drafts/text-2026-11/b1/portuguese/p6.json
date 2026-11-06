@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Wie weit ist mein Auftrag?",
+    "en": "How is my request coming along?"
+  },
+  "subtitle": {
+    "de": "Erkundige dich nach dem Stand und kläre den nächsten Schritt.",
+    "en": "Ask how things stand and agree on the next step."
+  },
+  "anchor": "Estado de um processo com estar + particípio que concorda com um objeto explícito; descrição de procedimentos com se ou sujeito institucional, conforme Fable. O aluno consulta ou solicita a ação de quem atende, sem anunciar uma decisão que cabe à outra pessoa.",
+  "lessons": [
+    {
+      "slug": "where-is-the-parcel",
+      "title": {
+        "de": "Wo bleibt das Paket?",
+        "en": "Where is the parcel?"
+      },
+      "situation": {
+        "de": "Beim Paketdienst geht es um eine Sendung, die gestern kommen sollte.",
+        "en": "You contact the parcel service about a package that was due yesterday."
+      },
+      "pedagogicalGoal": "Mit estar und einem Partizip beschreibst du einen Zustand. Die Endung richtet sich nach dem Bezugswort, etwa atrasada bei entrega.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Em que posso ajudar com o seu pedido?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen bei Ihrer Bestellung helfen?",
+            "en": "How can I help with your order?"
+          }
+        },
+        {
+          "targetText": "A entrega está atrasada desde ontem. Onde está a encomenda agora?",
+          "baseText": {
+            "de": "Die Lieferung ist seit gestern überfällig. Wo ist das Paket jetzt?",
+            "en": "The delivery has been overdue since yesterday. Where is the parcel now?"
+          }
+        },
+        {
+          "targetText": "O entregador tentou deixar o pacote na rua das Flores, número vinte.",
+          "baseText": {
+            "de": "Der Zusteller hat versucht, das Paket in der Rua das Flores bei Hausnummer zwanzig abzugeben.",
+            "en": "The courier tried to leave the parcel at number twenty on Rua das Flores."
+          }
+        },
+        {
+          "targetText": "Moro no número doze. Você pode conferir o endereço?",
+          "baseText": {
+            "de": "Ich wohne in Nummer zwölf. Können Sie die Adresse überprüfen?",
+            "en": "I live at number twelve. Could you check the address?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Lieferstatus beschreiben",
+        "rule": {
+          "de": "Mit estar und einem Partizip beschreibst du einen Zustand. Die Endung richtet sich nach dem Bezugswort, etwa atrasada bei entrega.",
+          "en": "Use estar and a participle to describe a state. Match the ending to its noun, as in atrasada with entrega."
+        },
+        "examples": [
+          {
+            "targetText": "A entrega está atrasada desde ontem. Onde está a encomenda agora?",
+            "baseText": {
+              "de": "Die Lieferung ist seit gestern überfällig. Wo ist das Paket jetzt?",
+              "en": "The delivery has been overdue since yesterday. Where is the parcel now?"
+            },
+            "highlight": "está atrasada"
+          },
+          {
+            "targetText": "As caixas estão separadas por tamanho no depósito.",
+            "baseText": {
+              "de": "Im Lager sind die Kartons nach Größe sortiert.",
+              "en": "The boxes are sorted by size in the warehouse."
+            },
+            "highlight": "estão separadas"
+          }
+        ]
+      },
+      "cloze": [
+        "Moro no número doze. Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "choices": [
+            "podemos",
+            "posso",
+            "pode",
+            "podem"
+          ],
+          "cue": "poder (você)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "conferir",
+          "choices": [
+            "conferido",
+            "conferir",
+            "conferindo",
+            "conferiu"
+          ]
+        },
+        " o endereço?"
+      ],
+      "chunks": [
+        {
+          "targetText": "A entrega",
+          "baseText": {
+            "de": "die Lieferung",
+            "en": "the delivery"
+          }
+        },
+        {
+          "targetText": "está atrasada",
+          "baseText": {
+            "de": "ist verspätet",
+            "en": "is late"
+          }
+        },
+        {
+          "targetText": "desde ontem. Onde está",
+          "baseText": {
+            "de": "seit gestern. Wo ist",
+            "en": "since yesterday. Where is"
+          }
+        },
+        {
+          "targetText": "a encomenda agora?",
+          "baseText": {
+            "de": "das Paket jetzt?",
+            "en": "the parcel now?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "entrega",
+          "baseText": {
+            "de": "Lieferung",
+            "en": "delivery"
+          }
+        },
+        {
+          "targetText": "atrasada",
+          "baseText": {
+            "de": "verspätet",
+            "en": "late"
+          }
+        },
+        {
+          "targetText": "desde ontem",
+          "baseText": {
+            "de": "seit gestern",
+            "en": "since yesterday"
+          }
+        },
+        {
+          "targetText": "encomenda",
+          "baseText": {
+            "de": "Paket",
+            "en": "parcel"
+          }
+        },
+        {
+          "targetText": "pedido",
+          "baseText": {
+            "de": "Bestellung",
+            "en": "order"
+          }
+        },
+        {
+          "targetText": "depósito",
+          "baseText": {
+            "de": "Lager",
+            "en": "warehouse"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A entrega está ",
+        "answer": "atrasada",
+        "after": " desde ontem. Onde está a encomenda agora?",
+        "fallbackChoices": [
+          "atrasadas",
+          "atrasado",
+          "atrasados",
+          "atrasada"
+        ]
+      },
+      "speakRequired": [
+        "entrega",
+        "atrasada",
+        "encomenda"
+      ],
+      "sceneCaption": {
+        "de": "Beim Paketdienst geht es um eine Sendung, die gestern kommen sollte. „Em que posso ajudar com o seu pedido?“",
+        "en": "You contact the parcel service about a package that was due yesterday. “Em que posso ajudar com o seu pedido?”"
+      },
+      "trophyWord": {
+        "word": "entrega",
+        "meaning": {
+          "de": "Lieferung",
+          "en": "delivery"
+        },
+        "example": "A entrega está atrasada desde ontem. Onde está a encomenda agora?",
+        "whyThisWord": {
+          "de": "Mit entrega benennst du den Vorgang, dessen Stand du erfragen willst.",
+          "en": "Use entrega to name the delivery whose progress you want to check."
+        }
+      },
+      "distractors": [
+        "estão atrasados",
+        "as encomendas agora?"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Paketdienst geht es um eine Sendung, die gestern kommen sollte.",
+        "en": "You contact the parcel service about a package that was due yesterday."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "You contact the parcel service about a package that was due yesterday."
+    },
+    {
+      "slug": "the-bicycle-at-the-workshop",
+      "title": {
+        "de": "Das Fahrrad in der Werkstatt",
+        "en": "The bicycle at the workshop"
+      },
+      "situation": {
+        "de": "Du rufst die Werkstatt an, in der dein Fahrrad steht.",
+        "en": "You call the workshop where you left your bicycle."
+      },
+      "pedagogicalGoal": "Steht die Tätigkeit im Mittelpunkt, passt sich das Partizip dem Namen der Tätigkeit an. Bei a revisão heißt es concluída.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você ligou por causa da bicicleta azul que deixou aqui?",
+          "baseText": {
+            "de": "Rufen Sie wegen des blauen Fahrrads an, das Sie hier abgegeben haben?",
+            "en": "Are you calling about the blue bicycle you left here?"
+          }
+        },
+        {
+          "targetText": "Isso, queria saber se a revisão da minha bicicleta já está concluída.",
+          "baseText": {
+            "de": "Genau, ich wollte wissen, ob die Inspektion meines Fahrrads schon abgeschlossen ist.",
+            "en": "Yes, I wanted to know whether the inspection of my bicycle is finished yet."
+          }
+        },
+        {
+          "targetText": "Falta uma peça do freio, e o nosso fornecedor está sem estoque.",
+          "baseText": {
+            "de": "Ein Bremsteil fehlt, und unser Lieferant hat es gerade nicht auf Lager.",
+            "en": "A brake part is missing, and our supplier is out of stock."
+          }
+        },
+        {
+          "targetText": "Nesse caso, como a oficina costuma conseguir essa peça?",
+          "baseText": {
+            "de": "Wie besorgt die Werkstatt in so einem Fall normalerweise das Teil?",
+            "en": "In that case, how does the workshop usually get that part?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach dem Ergebnis fragen",
+        "rule": {
+          "de": "Steht die Tätigkeit im Mittelpunkt, passt sich das Partizip dem Namen der Tätigkeit an. Bei a revisão heißt es concluída.",
+          "en": "When the subject is a process, the participle agrees with its name. With a revisão, use concluída."
+        },
+        "examples": [
+          {
+            "targetText": "Isso, queria saber se a revisão da minha bicicleta já está concluída.",
+            "baseText": {
+              "de": "Genau, ich wollte wissen, ob die Inspektion meines Fahrrads schon abgeschlossen ist.",
+              "en": "Yes, I wanted to know whether the inspection of my bicycle is finished yet."
+            },
+            "highlight": "está concluída"
+          },
+          {
+            "targetText": "Os dois freios da bicicleta estão regulados agora.",
+            "baseText": {
+              "de": "Beide Fahrradbremsen sind jetzt eingestellt.",
+              "en": "Both brakes on the bicycle are adjusted now."
+            },
+            "highlight": "estão regulados"
+          }
+        ]
+      },
+      "cloze": [
+        "Nesse caso, como a oficina ",
+        {
+          "kind": "form",
+          "answer": "costuma",
+          "choices": [
+            "costumamos",
+            "costuma",
+            "costumam",
+            "costumo"
+          ],
+          "cue": "costumar (a oficina)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "conseguir",
+          "choices": [
+            "conseguir",
+            "conseguindo",
+            "conseguiu",
+            "conseguem"
+          ]
+        },
+        " essa peça?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Isso,",
+          "baseText": {
+            "de": "genau",
+            "en": "that's right"
+          }
+        },
+        {
+          "targetText": "queria saber",
+          "baseText": {
+            "de": "ich wollte wissen",
+            "en": "I wanted to know"
+          }
+        },
+        {
+          "targetText": "se a revisão",
+          "baseText": {
+            "de": "ob die Inspektion",
+            "en": "whether the inspection"
+          }
+        },
+        {
+          "targetText": "da minha bicicleta",
+          "baseText": {
+            "de": "meines Fahrrads",
+            "en": "of my bicycle"
+          }
+        },
+        {
+          "targetText": "já está concluída.",
+          "baseText": {
+            "de": "schon abgeschlossen ist",
+            "en": "is finished yet"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "revisão",
+          "baseText": {
+            "de": "Inspektion",
+            "en": "inspection"
+          }
+        },
+        {
+          "targetText": "bicicleta",
+          "baseText": {
+            "de": "Fahrrad",
+            "en": "bicycle"
+          }
+        },
+        {
+          "targetText": "concluída",
+          "baseText": {
+            "de": "abgeschlossen",
+            "en": "completed"
+          }
+        },
+        {
+          "targetText": "queria saber",
+          "baseText": {
+            "de": "ich wollte wissen",
+            "en": "I wanted to know"
+          }
+        },
+        {
+          "targetText": "freios",
+          "baseText": {
+            "de": "Bremsen",
+            "en": "brakes"
+          }
+        },
+        {
+          "targetText": "regulados",
+          "baseText": {
+            "de": "eingestellt",
+            "en": "adjusted"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Isso, queria saber se a revisão da minha bicicleta já está ",
+        "answer": "concluída",
+        "after": ".",
+        "fallbackChoices": [
+          "concluídos",
+          "concluídas",
+          "concluída",
+          "concluído"
+        ]
+      },
+      "speakRequired": [
+        "revisão",
+        "bicicleta",
+        "concluída"
+      ],
+      "sceneCaption": {
+        "de": "Du rufst die Werkstatt an, in der dein Fahrrad steht. „Você ligou por causa da bicicleta azul que deixou aqui?“",
+        "en": "You call the workshop where you left your bicycle. “Você ligou por causa da bicicleta azul que deixou aqui?”"
+      },
+      "trophyWord": {
+        "word": "revisão",
+        "meaning": {
+          "de": "Inspektion",
+          "en": "inspection"
+        },
+        "example": "Isso, queria saber se a revisão da minha bicicleta já está concluída.",
+        "whyThisWord": {
+          "de": "Revisão ist hier die Inspektion, für die das Fahrrad in der Werkstatt steht.",
+          "en": "Here revisão is the inspection the bike went into the workshop for."
+        }
+      },
+      "distractors": [
+        "já estão concluídos.",
+        "se as revisões"
+      ],
+      "placeholderCaption": {
+        "de": "Du rufst die Werkstatt an, in der dein Fahrrad steht.",
+        "en": "You call the workshop where you left your bicycle."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "You call the workshop where you left your bicycle."
+    },
+    {
+      "slug": "another-way-upstairs",
+      "title": {
+        "de": "Ein anderer Weg nach oben",
+        "en": "Another way upstairs"
+      },
+      "situation": {
+        "de": "Im Eingangsbereich eines Gebäudes fragst du nach dem Aufzug.",
+        "en": "You ask about the lift in a building lobby."
+      },
+      "pedagogicalGoal": "Mit ainda está desligado fragst du, ob ein Gerät weiterhin ausgeschaltet ist. Bei mehreren Türen wird daraus estão fechadas.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você vai subir para o salão do primeiro andar?",
+          "baseText": {
+            "de": "Möchten Sie in den Saal im ersten Stock?",
+            "en": "Are you going up to the hall on the first floor?"
+          }
+        },
+        {
+          "targetText": "Sim, o elevador ainda está desligado por causa da manutenção?",
+          "baseText": {
+            "de": "Ja. Ist der Aufzug wegen der Wartung noch ausgeschaltet?",
+            "en": "Yes. Is the lift still switched off for maintenance?"
+          }
+        },
+        {
+          "targetText": "Ainda está. A escada principal fica logo à esquerda.",
+          "baseText": {
+            "de": "Ja. Die Haupttreppe ist gleich links.",
+            "en": "It is. The main stairs are just on the left."
+          }
+        },
+        {
+          "targetText": "Preciso evitar escadas. Você sabe onde fica a rampa?",
+          "baseText": {
+            "de": "Ich muss Treppen meiden. Wissen Sie, wo die Rampe ist?",
+            "en": "I need to avoid stairs. Do you know where the ramp is?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Zustand eines Geräts erfragen",
+        "rule": {
+          "de": "Mit ainda está desligado fragst du, ob ein Gerät weiterhin ausgeschaltet ist. Bei mehreren Türen wird daraus estão fechadas.",
+          "en": "Use ainda está desligado to ask whether a device is still switched off. For several doors, use estão fechadas."
+        },
+        "examples": [
+          {
+            "targetText": "Sim, o elevador ainda está desligado por causa da manutenção?",
+            "baseText": {
+              "de": "Ja. Ist der Aufzug wegen der Wartung noch ausgeschaltet?",
+              "en": "Yes. Is the lift still switched off for maintenance?"
+            },
+            "highlight": "está desligado"
+          },
+          {
+            "targetText": "As portas laterais estão fechadas durante o evento.",
+            "baseText": {
+              "de": "Die Seitentüren sind während der Veranstaltung geschlossen.",
+              "en": "The side doors are closed during the event."
+            },
+            "highlight": "estão fechadas"
+          }
+        ]
+      },
+      "cloze": [
+        "Preciso evitar escadas. Você ",
+        {
+          "kind": "form",
+          "answer": "sabe",
+          "choices": [
+            "sabe",
+            "sabem",
+            "sabemos",
+            "sei"
+          ],
+          "cue": "saber (você)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "onde",
+          "choices": [
+            "quem",
+            "quantas",
+            "qual",
+            "onde"
+          ]
+        },
+        " fica a rampa?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sim,",
+          "baseText": {
+            "de": "ja",
+            "en": "yes"
+          }
+        },
+        {
+          "targetText": "o elevador",
+          "baseText": {
+            "de": "der Aufzug",
+            "en": "the lift"
+          }
+        },
+        {
+          "targetText": "ainda está desligado",
+          "baseText": {
+            "de": "ist noch ausgeschaltet",
+            "en": "is still switched off"
+          }
+        },
+        {
+          "targetText": "por causa da manutenção?",
+          "baseText": {
+            "de": "wegen der Wartung?",
+            "en": "for maintenance?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "manutenção",
+          "baseText": {
+            "de": "Wartung",
+            "en": "maintenance"
+          }
+        },
+        {
+          "targetText": "elevador",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "lift"
+          }
+        },
+        {
+          "targetText": "desligado",
+          "baseText": {
+            "de": "ausgeschaltet",
+            "en": "switched off"
+          }
+        },
+        {
+          "targetText": "ainda",
+          "baseText": {
+            "de": "noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "por causa de",
+          "baseText": {
+            "de": "wegen",
+            "en": "because of"
+          }
+        },
+        {
+          "targetText": "primeiro andar",
+          "baseText": {
+            "de": "erster Stock",
+            "en": "first floor"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sim, o elevador ainda está ",
+        "answer": "desligado",
+        "after": " por causa da manutenção?",
+        "fallbackChoices": [
+          "desligados",
+          "desligado",
+          "desligada",
+          "desligadas"
+        ]
+      },
+      "speakRequired": [
+        "elevador",
+        "desligado",
+        "manutenção"
+      ],
+      "sceneCaption": {
+        "de": "Im Eingangsbereich eines Gebäudes fragst du nach dem Aufzug. „Você vai subir para o salão do primeiro andar?“",
+        "en": "You ask about the lift in a building lobby. “Você vai subir para o salão do primeiro andar?”"
+      },
+      "trophyWord": {
+        "word": "manutenção",
+        "meaning": {
+          "de": "Wartung",
+          "en": "maintenance"
+        },
+        "example": "Sim, o elevador ainda está desligado por causa da manutenção?",
+        "whyThisWord": {
+          "de": "Mit manutenção gibst du den Anlass für die Unterbrechung an.",
+          "en": "Manutenção gives the reason the service was interrupted."
+        }
+      },
+      "distractors": [
+        "ainda estão desligados",
+        "a escada"
+      ],
+      "placeholderCaption": {
+        "de": "Im Eingangsbereich eines Gebäudes fragst du nach dem Aufzug.",
+        "en": "You ask about the lift in a building lobby."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "You ask about the lift in a building lobby."
+    },
+    {
+      "slug": "an-appointment-for-the-connection",
+      "title": {
+        "de": "Ein Termin für den Anschluss",
+        "en": "An appointment for the connection"
+      },
+      "situation": {
+        "de": "Am Telefon nennst du dem Internetanbieter deinen Auftrag.",
+        "en": "You call the internet provider about your order."
+      },
+      "pedagogicalGoal": "Mit foi oder foram und dem passenden Partizip geht es um eine bereits ausgeführte Handlung. Agendada steht hier im Femininum Singular zu instalação.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Já localizei a sua solicitação. O que você gostaria de consultar?",
+          "baseText": {
+            "de": "Ich habe Ihre Anfrage gefunden. Was möchten Sie wissen?",
+            "en": "I found your request. What would you like to check?"
+          }
+        },
+        {
+          "targetText": "A instalação da internet foi agendada para amanhã de manhã?",
+          "baseText": {
+            "de": "Wurde die Installation des Internetanschlusses für morgen früh angesetzt?",
+            "en": "Was the internet installation scheduled for tomorrow morning?"
+          }
+        },
+        {
+          "targetText": "Foi, mas precisamos entrar na sala técnica do prédio. Amanhã ela estará trancada.",
+          "baseText": {
+            "de": "Ja, aber wir müssen in den Technikraum des Gebäudes. Morgen ist er abgeschlossen.",
+            "en": "Yes, but we need to get into the building's equipment room. It will be locked tomorrow."
+          }
+        },
+        {
+          "targetText": "Na sexta o zelador abre a sala. Você tem horário?",
+          "baseText": {
+            "de": "Am Freitag schließt der Hausmeister den Raum auf. Haben Sie da einen Termin frei?",
+            "en": "The caretaker opens the room on Friday. Do you have a slot then?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach einem abgeschlossenen Schritt fragen",
+        "rule": {
+          "de": "Mit foi oder foram und dem passenden Partizip geht es um eine bereits ausgeführte Handlung. Agendada steht hier im Femininum Singular zu instalação.",
+          "en": "Use foi or foram with an agreeing participle for an action that has already taken place. Agendada agrees with the feminine singular instalação."
+        },
+        "examples": [
+          {
+            "targetText": "A instalação da internet foi agendada para amanhã de manhã?",
+            "baseText": {
+              "de": "Wurde die Installation des Internetanschlusses für morgen früh angesetzt?",
+              "en": "Was the internet installation scheduled for tomorrow morning?"
+            },
+            "highlight": "foi agendada"
+          },
+          {
+            "targetText": "Os dados do contrato foram enviados ontem à tarde.",
+            "baseText": {
+              "de": "Die Vertragsdaten wurden gestern Nachmittag verschickt.",
+              "en": "The contract details were sent yesterday afternoon."
+            },
+            "highlight": "foram enviados"
+          }
+        ]
+      },
+      "cloze": [
+        "Na sexta o zelador ",
+        {
+          "kind": "form",
+          "answer": "abre",
+          "choices": [
+            "abrem",
+            "abrimos",
+            "abrir",
+            "abre"
+          ],
+          "cue": "abrir (o zelador)"
+        },
+        " a sala. Você ",
+        {
+          "kind": "form",
+          "answer": "tem",
+          "choices": [
+            "temos",
+            "ter",
+            "tem",
+            "tenho"
+          ],
+          "cue": "ter (Você)"
+        },
+        " horário?"
+      ],
+      "chunks": [
+        {
+          "targetText": "A instalação",
+          "baseText": {
+            "de": "die Installation",
+            "en": "the installation"
+          }
+        },
+        {
+          "targetText": "da internet",
+          "baseText": {
+            "de": "des Internetanschlusses",
+            "en": "of the internet connection"
+          }
+        },
+        {
+          "targetText": "foi agendada",
+          "baseText": {
+            "de": "wurde angesetzt",
+            "en": "was scheduled"
+          }
+        },
+        {
+          "targetText": "para amanhã de manhã?",
+          "baseText": {
+            "de": "für morgen früh?",
+            "en": "for tomorrow morning?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "instalação",
+          "baseText": {
+            "de": "Installation",
+            "en": "installation"
+          }
+        },
+        {
+          "targetText": "internet",
+          "baseText": {
+            "de": "Internet",
+            "en": "internet"
+          }
+        },
+        {
+          "targetText": "agendada",
+          "baseText": {
+            "de": "terminiert",
+            "en": "scheduled"
+          }
+        },
+        {
+          "targetText": "amanhã de manhã",
+          "baseText": {
+            "de": "morgen früh",
+            "en": "tomorrow morning"
+          }
+        },
+        {
+          "targetText": "solicitação",
+          "baseText": {
+            "de": "Anfrage",
+            "en": "request"
+          }
+        },
+        {
+          "targetText": "consultar",
+          "baseText": {
+            "de": "nachfragen",
+            "en": "check"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A instalação da internet foi ",
+        "answer": "agendada",
+        "after": " para amanhã de manhã?",
+        "fallbackChoices": [
+          "agendada",
+          "agendados",
+          "agendado",
+          "agendadas"
+        ]
+      },
+      "speakRequired": [
+        "instalação",
+        "agendada",
+        "amanhã"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon nennst du dem Internetanbieter deinen Auftrag. „Já localizei a sua solicitação. O que você gostaria de consultar?“",
+        "en": "You call the internet provider about your order. “Já localizei a sua solicitação. O que você gostaria de consultar?”"
+      },
+      "trophyWord": {
+        "word": "instalação",
+        "meaning": {
+          "de": "Installation",
+          "en": "installation"
+        },
+        "example": "A instalação da internet foi agendada para amanhã de manhã?",
+        "whyThisWord": {
+          "de": "Instalação bezeichnet den Arbeitsschritt, für den ein Termin gebraucht wird.",
+          "en": "Instalação names the job that needs an appointment."
+        }
+      },
+      "distractors": [
+        "foram agendados",
+        "as instalações"
+      ],
+      "placeholderCaption": {
+        "de": "Am Telefon nennst du dem Internetanbieter deinen Auftrag.",
+        "en": "You call the internet provider about your order."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "You call the internet provider about your order."
+    },
+    {
+      "slug": "what-happened-to-the-washer",
+      "title": {
+        "de": "Was ist mit der Waschmaschine?",
+        "en": "What happened to the washer?"
+      },
+      "situation": {
+        "de": "Du fragst bei einer Werkstatt nach deiner Waschmaschine.",
+        "en": "You ask the repair shop about your washing machine."
+      },
+      "pedagogicalGoal": "Das Partizip richtet sich nach dem Subjekt o reparo. Das nähere Wort máquina ändert die Endung von concluído nicht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Você está ligando sobre a máquina de lavar que recebemos na segunda?",
+          "baseText": {
+            "de": "Rufen Sie wegen der Waschmaschine an, die wir am Montag bekommen haben?",
+            "en": "Are you calling about the washer we received on Monday?"
+          }
+        },
+        {
+          "targetText": "Isso mesmo. O reparo da máquina foi concluído ontem?",
+          "baseText": {
+            "de": "Genau. Wurde die Reparatur der Maschine gestern abgeschlossen?",
+            "en": "That's right. Was the repair of the machine completed yesterday?"
+          }
+        },
+        {
+          "targetText": "O motor voltou a funcionar, mas no teste apareceu um vazamento.",
+          "baseText": {
+            "de": "Der Motor läuft wieder, aber beim Test ist ein Leck aufgefallen.",
+            "en": "The motor works again, but a leak showed up during testing."
+          }
+        },
+        {
+          "targetText": "Você consegue verificar se o vazamento altera o prazo informado?",
+          "baseText": {
+            "de": "Können Sie nachsehen, ob das Leck den genannten Termin ändert?",
+            "en": "Could you check whether the leak changes the deadline I was given?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Abschluss einer Arbeit erfragen",
+        "rule": {
+          "de": "Das Partizip richtet sich nach dem Subjekt o reparo. Das nähere Wort máquina ändert die Endung von concluído nicht.",
+          "en": "The participle agrees with the subject o reparo. The nearby word máquina does not determine the ending of concluído."
+        },
+        "examples": [
+          {
+            "targetText": "Isso mesmo. O reparo da máquina foi concluído ontem?",
+            "baseText": {
+              "de": "Genau. Wurde die Reparatur der Maschine gestern abgeschlossen?",
+              "en": "That's right. Was the repair of the machine completed yesterday?"
+            },
+            "highlight": "foi concluído"
+          },
+          {
+            "targetText": "O botão quebrado foi substituído na terça de manhã.",
+            "baseText": {
+              "de": "Der kaputte Knopf wurde am Dienstagmorgen ausgetauscht.",
+              "en": "The broken button was replaced on Tuesday morning."
+            },
+            "highlight": "foi substituído"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "consegue",
+          "choices": [
+            "consigo",
+            "conseguimos",
+            "consegue",
+            "conseguem"
+          ],
+          "cue": "conseguir (você)"
+        },
+        " verificar se o vazamento ",
+        {
+          "kind": "form",
+          "answer": "altera",
+          "choices": [
+            "alterando",
+            "altera",
+            "alteram",
+            "altero"
+          ],
+          "cue": "alterar (o vazamento)"
+        },
+        " o prazo informado?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Isso mesmo. O reparo",
+          "baseText": {
+            "de": "Genau. Die Reparatur",
+            "en": "That's right. The repair"
+          }
+        },
+        {
+          "targetText": "da máquina",
+          "baseText": {
+            "de": "der Maschine",
+            "en": "of the machine"
+          }
+        },
+        {
+          "targetText": "foi concluído",
+          "baseText": {
+            "de": "wurde abgeschlossen",
+            "en": "was completed"
+          }
+        },
+        {
+          "targetText": "ontem?",
+          "baseText": {
+            "de": "gestern?",
+            "en": "yesterday?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "reparo",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "máquina de lavar",
+          "baseText": {
+            "de": "Waschmaschine",
+            "en": "washing machine"
+          }
+        },
+        {
+          "targetText": "concluído",
+          "baseText": {
+            "de": "abgeschlossen",
+            "en": "completed"
+          }
+        },
+        {
+          "targetText": "ontem",
+          "baseText": {
+            "de": "gestern",
+            "en": "yesterday"
+          }
+        },
+        {
+          "targetText": "botão",
+          "baseText": {
+            "de": "Knopf",
+            "en": "button"
+          }
+        },
+        {
+          "targetText": "quebrado",
+          "baseText": {
+            "de": "kaputt",
+            "en": "broken"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Isso mesmo. O reparo da máquina foi ",
+        "answer": "concluído",
+        "after": " ontem?",
+        "fallbackChoices": [
+          "concluída",
+          "concluídos",
+          "concluídas",
+          "concluído"
+        ]
+      },
+      "speakRequired": [
+        "reparo",
+        "máquina",
+        "concluído"
+      ],
+      "sceneCaption": {
+        "de": "Du fragst bei einer Werkstatt nach deiner Waschmaschine. „Você está ligando sobre a máquina de lavar que recebemos na segunda?“",
+        "en": "You ask the repair shop about your washing machine. “Você está ligando sobre a máquina de lavar que recebemos na segunda?”"
+      },
+      "trophyWord": {
+        "word": "reparo",
+        "meaning": {
+          "de": "Reparatur",
+          "en": "repair"
+        },
+        "example": "Isso mesmo. O reparo da máquina foi concluído ontem?",
+        "whyThisWord": {
+          "de": "Mit reparo fragst du nach der ausgeführten Arbeit an einem Gerät.",
+          "en": "Reparo lets you ask about the work carried out on an appliance."
+        }
+      },
+      "distractors": [
+        "foram concluídos",
+        "foi concluída"
+      ],
+      "placeholderCaption": {
+        "de": "Du fragst bei einer Werkstatt nach deiner Waschmaschine.",
+        "en": "You ask the repair shop about your washing machine."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "You ask the repair shop about your washing machine."
+    },
+    {
+      "slug": "the-details-on-the-account",
+      "title": {
+        "de": "Die Daten im Kundenkonto",
+        "en": "The details on the account"
+      },
+      "situation": {
+        "de": "Am Serviceschalter nennst du deine Kundennummer.",
+        "en": "You give your customer number at the service desk."
+      },
+      "pedagogicalGoal": "Mit a alteração foi registrada fragst du, ob jemand die Änderung erfasst hat. Wer sie eingetragen hat, kann dabei offenbleiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Achei sua ficha. Qual pedido você fez na semana passada?",
+          "baseText": {
+            "de": "Ich habe Ihren Eintrag gefunden. Was haben Sie letzte Woche beantragt?",
+            "en": "I found your record. What request did you make last week?"
+          }
+        },
+        {
+          "targetText": "Pedi a atualização do meu endereço. A alteração foi registrada?",
+          "baseText": {
+            "de": "Ich habe um die Aktualisierung meiner Adresse gebeten. Wurde die Änderung erfasst?",
+            "en": "I asked for my address to be updated. Was the change recorded?"
+          }
+        },
+        {
+          "targetText": "Na sua ficha ainda aparece a rua onde você morava antes.",
+          "baseText": {
+            "de": "In Ihrem Eintrag steht noch die Straße, in der Sie früher gewohnt haben.",
+            "en": "Your record still shows the street where you used to live."
+          }
+        },
+        {
+          "targetText": "Você pode conferir qual endereço consta no pedido original?",
+          "baseText": {
+            "de": "Können Sie nachsehen, welche Adresse im ursprünglichen Antrag steht?",
+            "en": "Could you check which address appears on the original request?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Änderung nachverfolgen",
+        "rule": {
+          "de": "Mit a alteração foi registrada fragst du, ob jemand die Änderung erfasst hat. Wer sie eingetragen hat, kann dabei offenbleiben.",
+          "en": "Use a alteração foi registrada to ask whether someone recorded the change. You can leave the person who entered it unspecified."
+        },
+        "examples": [
+          {
+            "targetText": "Pedi a atualização do meu endereço. A alteração foi registrada?",
+            "baseText": {
+              "de": "Ich habe um die Aktualisierung meiner Adresse gebeten. Wurde die Änderung erfasst?",
+              "en": "I asked for my address to be updated. Was the change recorded?"
+            },
+            "highlight": "foi registrada"
+          },
+          {
+            "targetText": "As datas da inscrição foram corrigidas no sistema.",
+            "baseText": {
+              "de": "Die Anmeldetermine wurden im System berichtigt.",
+              "en": "The registration dates were corrected in the system."
+            },
+            "highlight": "foram corrigidas"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "choices": [
+            "posso",
+            "pode",
+            "podem",
+            "podemos"
+          ],
+          "cue": "poder (você)"
+        },
+        " conferir qual endereço ",
+        {
+          "kind": "form",
+          "answer": "consta",
+          "choices": [
+            "consta",
+            "constam",
+            "constamos",
+            "constando"
+          ],
+          "cue": "constar (endereço)"
+        },
+        " no pedido original?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pedi a atualização",
+          "baseText": {
+            "de": "ich habe um die Aktualisierung gebeten",
+            "en": "I requested an update"
+          }
+        },
+        {
+          "targetText": "do meu endereço. A alteração",
+          "baseText": {
+            "de": "meiner Adresse. Die Änderung",
+            "en": "of my address. The change"
+          }
+        },
+        {
+          "targetText": "foi",
+          "baseText": {
+            "de": "wurde",
+            "en": "was"
+          }
+        },
+        {
+          "targetText": "registrada?",
+          "baseText": {
+            "de": "erfasst?",
+            "en": "recorded?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "atualização",
+          "baseText": {
+            "de": "Aktualisierung",
+            "en": "update"
+          }
+        },
+        {
+          "targetText": "endereço",
+          "baseText": {
+            "de": "Adresse",
+            "en": "address"
+          }
+        },
+        {
+          "targetText": "alteração",
+          "baseText": {
+            "de": "Änderung",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "registrada",
+          "baseText": {
+            "de": "erfasst",
+            "en": "recorded"
+          }
+        },
+        {
+          "targetText": "ficha",
+          "baseText": {
+            "de": "Kundeneintrag",
+            "en": "customer record"
+          }
+        },
+        {
+          "targetText": "na semana passada",
+          "baseText": {
+            "de": "letzte Woche",
+            "en": "last week"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pedi a atualização do meu endereço. A alteração foi ",
+        "answer": "registrada",
+        "after": "?",
+        "fallbackChoices": [
+          "registrados",
+          "registradas",
+          "registrada",
+          "registrado"
+        ]
+      },
+      "speakRequired": [
+        "atualização",
+        "endereço",
+        "registrada"
+      ],
+      "sceneCaption": {
+        "de": "Am Serviceschalter nennst du deine Kundennummer. „Achei sua ficha. Qual pedido você fez na semana passada?“",
+        "en": "You give your customer number at the service desk. “Achei sua ficha. Qual pedido você fez na semana passada?”"
+      },
+      "trophyWord": {
+        "word": "atualização",
+        "meaning": {
+          "de": "Aktualisierung",
+          "en": "update"
+        },
+        "example": "Pedi a atualização do meu endereço. A alteração foi registrada?",
+        "whyThisWord": {
+          "de": "Atualização bezeichnet das Ändern der bereits gespeicherten Daten.",
+          "en": "Atualização names a change to information already on file."
+        }
+      },
+      "distractors": [
+        "foram",
+        "registrado?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Serviceschalter nennst du deine Kundennummer.",
+        "en": "You give your customer number at the service desk."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "You give your customer number at the service desk."
+    },
+    {
+      "slug": "the-booking-message",
+      "title": {
+        "de": "Die Nachricht zur Reservierung",
+        "en": "The booking message"
+      },
+      "situation": {
+        "de": "Du erkundigst dich bei einer Pension nach deiner Reservierung.",
+        "en": "You ask a guesthouse about your reservation."
+      },
+      "pedagogicalGoal": "Mit como se envia fragst du nach dem üblichen Ablauf, ohne eine bestimmte Person als Absender zu nennen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Tenho aqui a reserva para duas noites. Qual é a sua dúvida?",
+          "baseText": {
+            "de": "Ich sehe hier die Buchung für zwei Nächte. Was möchten Sie wissen?",
+            "en": "I have the booking for two nights here. What would you like to know?"
+          }
+        },
+        {
+          "targetText": "Como se envia a confirmação da reserva? A minha já saiu?",
+          "baseText": {
+            "de": "Wie wird die Buchungsbestätigung verschickt? Ist meine schon rausgegangen?",
+            "en": "How is the booking confirmation sent? Has mine gone out yet?"
+          }
+        },
+        {
+          "targetText": "Foi por e-mail ontem. Aqui consta que a mensagem voltou.",
+          "baseText": {
+            "de": "Sie ging gestern per E-Mail raus. Hier steht, dass die Nachricht zurückkam.",
+            "en": "It went by email yesterday. The record says the message bounced."
+          }
+        },
+        {
+          "targetText": "Você consegue mandar uma cópia por mensagem de texto?",
+          "baseText": {
+            "de": "Können Sie eine Kopie per SMS schicken?",
+            "en": "Could you send a copy by text message?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nach dem üblichen Verfahren fragen",
+        "rule": {
+          "de": "Mit como se envia fragst du nach dem üblichen Ablauf, ohne eine bestimmte Person als Absender zu nennen.",
+          "en": "Use como se envia to ask about the usual process without naming a specific sender."
+        },
+        "examples": [
+          {
+            "targetText": "Como se envia a confirmação da reserva? A minha já saiu?",
+            "baseText": {
+              "de": "Wie wird die Buchungsbestätigung verschickt? Ist meine schon rausgegangen?",
+              "en": "How is the booking confirmation sent? Has mine gone out yet?"
+            },
+            "highlight": "Como se envia"
+          },
+          {
+            "targetText": "Como se cancela uma reserva pelo aplicativo?",
+            "baseText": {
+              "de": "Wie storniert man eine Buchung über die App?",
+              "en": "How do you cancel a booking through the app?"
+            },
+            "highlight": "Como se cancela"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "consegue",
+          "choices": [
+            "consegue",
+            "conseguem",
+            "consigo",
+            "conseguimos"
+          ],
+          "cue": "conseguir (você)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "mandar",
+          "choices": [
+            "mandando",
+            "mandado",
+            "mandam",
+            "mandar"
+          ]
+        },
+        " uma cópia por mensagem de texto?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Como se envia",
+          "baseText": {
+            "de": "wie verschickt man",
+            "en": "how do you send"
+          }
+        },
+        {
+          "targetText": "a confirmação",
+          "baseText": {
+            "de": "die Bestätigung",
+            "en": "the confirmation"
+          }
+        },
+        {
+          "targetText": "da reserva? A minha",
+          "baseText": {
+            "de": "der Buchung? Meine",
+            "en": "of the booking? Mine"
+          }
+        },
+        {
+          "targetText": "já saiu?",
+          "baseText": {
+            "de": "ist schon rausgegangen?",
+            "en": "has already gone out?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "confirmação",
+          "baseText": {
+            "de": "Bestätigung",
+            "en": "confirmation"
+          }
+        },
+        {
+          "targetText": "reserva",
+          "baseText": {
+            "de": "Reservierung",
+            "en": "booking"
+          }
+        },
+        {
+          "targetText": "duas noites",
+          "baseText": {
+            "de": "zwei Nächte",
+            "en": "two nights"
+          }
+        },
+        {
+          "targetText": "dúvida",
+          "baseText": {
+            "de": "Frage",
+            "en": "question"
+          }
+        },
+        {
+          "targetText": "já saiu",
+          "baseText": {
+            "de": "ist schon rausgegangen",
+            "en": "has already gone out"
+          }
+        },
+        {
+          "targetText": "aplicativo",
+          "baseText": {
+            "de": "App",
+            "en": "app"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Como se envia a ",
+        "answer": "confirmação",
+        "after": " da reserva? A minha já saiu?",
+        "fallbackChoices": [
+          "geladeira",
+          "confirmação",
+          "furadeira",
+          "peneira"
+        ]
+      },
+      "speakRequired": [
+        "envia",
+        "confirmação",
+        "reserva"
+      ],
+      "sceneCaption": {
+        "de": "Du erkundigst dich bei einer Pension nach deiner Reservierung. „Tenho aqui a reserva para duas noites. Qual é a sua dúvida?“",
+        "en": "You ask a guesthouse about your reservation. “Tenho aqui a reserva para duas noites. Qual é a sua dúvida?”"
+      },
+      "trophyWord": {
+        "word": "confirmação",
+        "meaning": {
+          "de": "Bestätigung",
+          "en": "confirmation"
+        },
+        "example": "Como se envia a confirmação da reserva? A minha já saiu?",
+        "whyThisWord": {
+          "de": "Confirmação benennt die Nachricht, die eine Reservierung bestätigt.",
+          "en": "Confirmação names the message confirming a booking."
+        }
+      },
+      "distractors": [
+        "Como se enviam",
+        "já saíram?"
+      ],
+      "placeholderCaption": {
+        "de": "Du erkundigst dich bei einer Pension nach deiner Reservierung.",
+        "en": "You ask a guesthouse about your reservation."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "You ask a guesthouse about your reservation."
+    },
+    {
+      "slug": "collecting-an-order",
+      "title": {
+        "de": "Jemand holt die Bestellung ab",
+        "en": "Collecting an order"
+      },
+      "situation": {
+        "de": "Im Laden liegt eine Bestellung auf deinen Namen vor.",
+        "en": "The shop has an order in your name."
+      },
+      "pedagogicalGoal": "Onde se faz a retirada fragt allgemein nach dem Abholort. Onde se paga funktioniert genauso bei einer Zahlung.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Já encontrei o número do seu pedido no sistema.",
+          "baseText": {
+            "de": "Ich habe Ihre Bestellnummer im System gefunden.",
+            "en": "I've found your order number in the system."
+          }
+        },
+        {
+          "targetText": "O pedido já está pronto? Onde se faz a retirada?",
+          "baseText": {
+            "de": "Ist die Bestellung schon fertig? Wo holt man sie ab?",
+            "en": "Is the order ready yet? Where do I collect it?"
+          }
+        },
+        {
+          "targetText": "Está no balcão dos fundos, que só abre de manhã, das oito às onze.",
+          "baseText": {
+            "de": "Sie liegt am hinteren Schalter. Der öffnet nur vormittags von acht bis elf.",
+            "en": "It's at the back counter, which is only open in the morning, from eight to eleven."
+          }
+        },
+        {
+          "targetText": "Como eu autorizo outra pessoa a buscar o pedido?",
+          "baseText": {
+            "de": "Wie bevollmächtige ich eine andere Person, die Bestellung abzuholen?",
+            "en": "How do I authorize someone else to collect the order?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Ort eines Vorgangs erfragen",
+        "rule": {
+          "de": "Onde se faz a retirada fragt allgemein nach dem Abholort. Onde se paga funktioniert genauso bei einer Zahlung.",
+          "en": "Use onde se faz a retirada to ask generally about the pickup location. Onde se paga works the same way for a payment."
+        },
+        "examples": [
+          {
+            "targetText": "O pedido já está pronto? Onde se faz a retirada?",
+            "baseText": {
+              "de": "Ist die Bestellung schon fertig? Wo holt man sie ab?",
+              "en": "Is the order ready yet? Where do I collect it?"
+            },
+            "highlight": "Onde se faz"
+          },
+          {
+            "targetText": "Onde se paga a taxa de montagem dos móveis?",
+            "baseText": {
+              "de": "Wo bezahlt man die Gebühr für den Möbelaufbau?",
+              "en": "Where do you pay the furniture assembly fee?"
+            },
+            "highlight": "Onde se paga"
+          }
+        ]
+      },
+      "cloze": [
+        "Como eu ",
+        {
+          "kind": "form",
+          "answer": "autorizo",
+          "choices": [
+            "autoriza",
+            "autorizam",
+            "autorizamos",
+            "autorizo"
+          ],
+          "cue": "autorizar (eu)"
+        },
+        " outra pessoa a ",
+        {
+          "kind": "choice",
+          "answer": "buscar",
+          "choices": [
+            "buscando",
+            "buscado",
+            "buscar",
+            "buscou"
+          ]
+        },
+        " o pedido?"
+      ],
+      "chunks": [
+        {
+          "targetText": "O pedido",
+          "baseText": {
+            "de": "die Bestellung",
+            "en": "the order"
+          }
+        },
+        {
+          "targetText": "já está",
+          "baseText": {
+            "de": "ist schon",
+            "en": "is already"
+          }
+        },
+        {
+          "targetText": "pronto? Onde se faz",
+          "baseText": {
+            "de": "fertig? Wo erfolgt",
+            "en": "ready? Where do you do"
+          }
+        },
+        {
+          "targetText": "a retirada?",
+          "baseText": {
+            "de": "die Abholung?",
+            "en": "the pickup?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "retirada",
+          "baseText": {
+            "de": "Abholung",
+            "en": "pickup"
+          }
+        },
+        {
+          "targetText": "pedido",
+          "baseText": {
+            "de": "Bestellung",
+            "en": "order"
+          }
+        },
+        {
+          "targetText": "pronto",
+          "baseText": {
+            "de": "abholbereit",
+            "en": "ready"
+          }
+        },
+        {
+          "targetText": "número",
+          "baseText": {
+            "de": "Nummer",
+            "en": "number"
+          }
+        },
+        {
+          "targetText": "sistema",
+          "baseText": {
+            "de": "System",
+            "en": "system"
+          }
+        },
+        {
+          "targetText": "taxa",
+          "baseText": {
+            "de": "Gebühr",
+            "en": "fee"
+          }
+        }
+      ],
+      "recall": {
+        "before": "O pedido já está pronto? Onde se faz a ",
+        "answer": "retirada",
+        "after": "?",
+        "fallbackChoices": [
+          "retirada",
+          "colheita",
+          "pescaria",
+          "poda"
+        ]
+      },
+      "speakRequired": [
+        "pedido",
+        "pronto",
+        "retirada"
+      ],
+      "sceneCaption": {
+        "de": "Im Laden liegt eine Bestellung auf deinen Namen vor. „Já encontrei o número do seu pedido no sistema.“",
+        "en": "The shop has an order in your name. “Já encontrei o número do seu pedido no sistema.”"
+      },
+      "trophyWord": {
+        "word": "retirada",
+        "meaning": {
+          "de": "Abholung",
+          "en": "pickup"
+        },
+        "example": "O pedido já está pronto? Onde se faz a retirada?",
+        "whyThisWord": {
+          "de": "Retirada ist der Vorgang, bei dem die Ware im Laden abgeholt wird.",
+          "en": "Retirada means collecting the goods at the shop."
+        }
+      },
+      "distractors": [
+        "já estão",
+        "prontos? Onde se faz"
+      ],
+      "placeholderCaption": {
+        "de": "Im Laden liegt eine Bestellung auf deinen Namen vor.",
+        "en": "The shop has an order in your name."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "The shop has an order in your name."
+    },
+    {
+      "slug": "what-is-holding-up-the-application",
+      "title": {
+        "de": "Was fehlt im Antrag?",
+        "en": "What is holding up the application?"
+      },
+      "situation": {
+        "de": "Im Kursbüro fragst du nach einer unvollständigen Anmeldung.",
+        "en": "You ask the course office about an incomplete registration."
+      },
+      "pedagogicalGoal": "Mit como se consulta fragst du, wie du eine Information abrufen kannst. Ein Relativsatz mit que bezeichnet genauer, worum es geht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "O sistema ainda não liberou sua inscrição na oficina de fotografia.",
+          "baseText": {
+            "de": "Das System hat Ihre Anmeldung zum Fotoworkshop noch nicht freigegeben.",
+            "en": "The system hasn't cleared your registration for the photography workshop yet."
+          }
+        },
+        {
+          "targetText": "Como se consulta a pendência que está bloqueando minha inscrição?",
+          "baseText": {
+            "de": "Wie kann man nachsehen, welcher offene Punkt meine Anmeldung blockiert?",
+            "en": "How can I look up the outstanding issue that's holding up my registration?"
+          }
+        },
+        {
+          "targetText": "Falta a cópia do documento que o setor de cadastro pediu.",
+          "baseText": {
+            "de": "Es fehlt die Kopie des Dokuments, das die Anmeldestelle angefordert hat.",
+            "en": "The copy of the document that the registration office requested is missing."
+          }
+        },
+        {
+          "targetText": "Já entreguei a cópia. Você pode pedir uma conferência ao setor?",
+          "baseText": {
+            "de": "Ich habe die Kopie schon abgegeben. Können Sie die Stelle bitten, das zu überprüfen?",
+            "en": "I've already handed in the copy. Could you ask the department to check?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Auskunft einholen",
+        "rule": {
+          "de": "Mit como se consulta fragst du, wie du eine Information abrufen kannst. Ein Relativsatz mit que bezeichnet genauer, worum es geht.",
+          "en": "Use como se consulta to ask how to look something up. A relative clause with que identifies the issue more precisely."
+        },
+        "examples": [
+          {
+            "targetText": "Como se consulta a pendência que está bloqueando minha inscrição?",
+            "baseText": {
+              "de": "Wie kann man nachsehen, welcher offene Punkt meine Anmeldung blockiert?",
+              "en": "How can I look up the outstanding issue that's holding up my registration?"
+            },
+            "highlight": "Como se consulta"
+          },
+          {
+            "targetText": "Como se acompanha uma solicitação pelo número do protocolo?",
+            "baseText": {
+              "de": "Wie verfolgt man eine Anfrage anhand der Vorgangsnummer?",
+              "en": "How can you track a request using the reference number?"
+            },
+            "highlight": "Como se acompanha"
+          }
+        ]
+      },
+      "cloze": [
+        "Já entreguei a cópia. Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "choices": [
+            "podemos",
+            "posso",
+            "pode",
+            "podem"
+          ],
+          "cue": "poder (você)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "pedir",
+          "choices": [
+            "pedido",
+            "pedir",
+            "pedindo",
+            "pediu"
+          ]
+        },
+        " uma conferência ao setor?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Como se consulta",
+          "baseText": {
+            "de": "wie sieht man nach",
+            "en": "how do you look up"
+          }
+        },
+        {
+          "targetText": "a pendência",
+          "baseText": {
+            "de": "den offenen Punkt",
+            "en": "the outstanding issue"
+          }
+        },
+        {
+          "targetText": "que está bloqueando",
+          "baseText": {
+            "de": "der gerade blockiert",
+            "en": "that is holding up"
+          }
+        },
+        {
+          "targetText": "minha inscrição?",
+          "baseText": {
+            "de": "meine Anmeldung?",
+            "en": "my registration?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pendência",
+          "baseText": {
+            "de": "offener Punkt",
+            "en": "outstanding issue"
+          }
+        },
+        {
+          "targetText": "consulta",
+          "baseText": {
+            "de": "ruft ab",
+            "en": "looks up"
+          }
+        },
+        {
+          "targetText": "bloqueando",
+          "baseText": {
+            "de": "blockierend",
+            "en": "holding up"
+          }
+        },
+        {
+          "targetText": "inscrição",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "oficina de fotografia",
+          "baseText": {
+            "de": "Fotoworkshop",
+            "en": "photography workshop"
+          }
+        },
+        {
+          "targetText": "solicitação",
+          "baseText": {
+            "de": "Anfrage",
+            "en": "request"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Como se consulta a ",
+        "answer": "pendência",
+        "after": " que está bloqueando minha inscrição?",
+        "fallbackChoices": [
+          "frigideira",
+          "melancia",
+          "andorinha",
+          "pendência"
+        ]
+      },
+      "speakRequired": [
+        "consulta",
+        "pendência",
+        "inscrição"
+      ],
+      "sceneCaption": {
+        "de": "Im Kursbüro fragst du nach einer unvollständigen Anmeldung. „O sistema ainda não liberou sua inscrição na oficina de fotografia.“",
+        "en": "You ask the course office about an incomplete registration. “O sistema ainda não liberou sua inscrição na oficina de fotografia.”"
+      },
+      "trophyWord": {
+        "word": "pendência",
+        "meaning": {
+          "de": "offener Punkt",
+          "en": "outstanding issue"
+        },
+        "example": "Como se consulta a pendência que está bloqueando minha inscrição?",
+        "whyThisWord": {
+          "de": "Eine pendência ist etwas Ungeklärtes, das einen Vorgang aufhalten kann.",
+          "en": "A pendência is an unresolved issue that can hold up a process."
+        }
+      },
+      "distractors": [
+        "Como se consultam",
+        "que estão bloqueando"
+      ],
+      "placeholderCaption": {
+        "de": "Im Kursbüro fragst du nach einer unvollständigen Anmeldung.",
+        "en": "You ask the course office about an incomplete registration."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "You ask the course office about an incomplete registration."
+    },
+    {
+      "slug": "when-will-the-job-be-finished",
+      "title": {
+        "de": "Wann ist die Arbeit fertig?",
+        "en": "When will the job be finished?"
+      },
+      "situation": {
+        "de": "Du erkundigst dich in der Druckerei nach einem Auftrag für Plakate.",
+        "en": "You ask the print shop about a poster order."
+      },
+      "pedagogicalGoal": "Mit se und einem Verb im Singular kannst du nach dem Verfahren für eine einzelne Sache fragen. Previsão bezeichnet eine Schätzung.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Os cartazes já estão na fila de impressão. O que você precisa saber?",
+          "baseText": {
+            "de": "Die Plakate sind schon in der Druckwarteschlange. Was möchten Sie wissen?",
+            "en": "The posters are already in the print queue. What do you need to know?"
+          }
+        },
+        {
+          "targetText": "Onde se consulta a previsão de conclusão do serviço de impressão?",
+          "baseText": {
+            "de": "Wo kann man nachsehen, wann der Druckauftrag voraussichtlich fertig ist?",
+            "en": "Where can I check the estimated completion time for the print job?"
+          }
+        },
+        {
+          "targetText": "A previsão aparece no site, mas o horário pode mudar. Também damos retorno por telefone.",
+          "baseText": {
+            "de": "Die voraussichtliche Uhrzeit steht auf der Website, kann sich aber ändern. Wir melden uns auch telefonisch.",
+            "en": "The estimate is on the website, but the time can change. We can also call you back."
+          }
+        },
+        {
+          "targetText": "Você pode me ligar depois da última etapa da impressão?",
+          "baseText": {
+            "de": "Können Sie mich nach dem letzten Druckschritt anrufen?",
+            "en": "Could you call me after the final stage of printing?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine voraussichtliche Fertigstellung erfragen",
+        "rule": {
+          "de": "Mit se und einem Verb im Singular kannst du nach dem Verfahren für eine einzelne Sache fragen. Previsão bezeichnet eine Schätzung.",
+          "en": "Use se with a singular verb to ask about the procedure for a single item. Previsão identifies the time as an estimate."
+        },
+        "examples": [
+          {
+            "targetText": "Onde se consulta a previsão de conclusão do serviço de impressão?",
+            "baseText": {
+              "de": "Wo kann man nachsehen, wann der Druckauftrag voraussichtlich fertig ist?",
+              "en": "Where can I check the estimated completion time for the print job?"
+            },
+            "highlight": "Onde se consulta"
+          },
+          {
+            "targetText": "Como se calcula o preço final de cada cartaz?",
+            "baseText": {
+              "de": "Wie berechnet man den Endpreis für jedes Plakat?",
+              "en": "How is the final price of each poster calculated?"
+            },
+            "highlight": "Como se calcula"
+          }
+        ]
+      },
+      "cloze": [
+        "Você ",
+        {
+          "kind": "form",
+          "answer": "pode",
+          "choices": [
+            "poder",
+            "pode",
+            "posso",
+            "podemos"
+          ],
+          "cue": "poder (Você)"
+        },
+        " me ",
+        {
+          "kind": "choice",
+          "answer": "ligar",
+          "choices": [
+            "ligar",
+            "ligou",
+            "ligando",
+            "ligado"
+          ]
+        },
+        " depois da última etapa da impressão?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Onde se consulta",
+          "baseText": {
+            "de": "wo kann man nachsehen",
+            "en": "where can you check"
+          }
+        },
+        {
+          "targetText": "a previsão",
+          "baseText": {
+            "de": "die Prognose",
+            "en": "the estimate"
+          }
+        },
+        {
+          "targetText": "de conclusão",
+          "baseText": {
+            "de": "für den Abschluss",
+            "en": "for completion"
+          }
+        },
+        {
+          "targetText": "do serviço de impressão?",
+          "baseText": {
+            "de": "des Druckauftrags?",
+            "en": "of the print job?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "conclusão",
+          "baseText": {
+            "de": "Abschluss",
+            "en": "completion"
+          }
+        },
+        {
+          "targetText": "previsão",
+          "baseText": {
+            "de": "Schätzung",
+            "en": "estimate"
+          }
+        },
+        {
+          "targetText": "serviço de impressão",
+          "baseText": {
+            "de": "Druckauftrag",
+            "en": "print job"
+          }
+        },
+        {
+          "targetText": "cartazes",
+          "baseText": {
+            "de": "Plakate",
+            "en": "posters"
+          }
+        },
+        {
+          "targetText": "fila",
+          "baseText": {
+            "de": "Warteschlange",
+            "en": "queue"
+          }
+        },
+        {
+          "targetText": "preço final",
+          "baseText": {
+            "de": "Endpreis",
+            "en": "final price"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Onde se consulta a previsão de ",
+        "answer": "conclusão",
+        "after": " do serviço de impressão?",
+        "fallbackChoices": [
+          "fritura",
+          "pescaria",
+          "conclusão",
+          "colheita"
+        ]
+      },
+      "speakRequired": [
+        "consulta",
+        "previsão",
+        "conclusão"
+      ],
+      "sceneCaption": {
+        "de": "Du erkundigst dich in der Druckerei nach einem Auftrag für Plakate. „Os cartazes já estão na fila de impressão. O que você precisa saber?“",
+        "en": "You ask the print shop about a poster order. “Os cartazes já estão na fila de impressão. O que você precisa saber?”"
+      },
+      "trophyWord": {
+        "word": "conclusão",
+        "meaning": {
+          "de": "Abschluss",
+          "en": "completion"
+        },
+        "example": "Onde se consulta a previsão de conclusão do serviço de impressão?",
+        "whyThisWord": {
+          "de": "Mit conclusão fragst du nach dem Abschluss aller Arbeitsschritte.",
+          "en": "Use conclusão to ask about the point when all stages of the job are complete."
+        }
+      },
+      "distractors": [
+        "Onde se consultam",
+        "da previsão"
+      ],
+      "placeholderCaption": {
+        "de": "Du erkundigst dich in der Druckerei nach einem Auftrag für Plakate.",
+        "en": "You ask the print shop about a poster order."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "You ask the print shop about a poster order."
+    }
+  ]
+}

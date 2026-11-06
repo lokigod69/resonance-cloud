@@ -1,0 +1,1027 @@
+{
+  "language": "Portuguese",
+  "level": "B1",
+  "pathNumber": 8,
+  "lessonSha256": "db4a3c0ab1be1d314665cbcd3ddd50efc3ad3feef8b813a3db8d1c2a91fffdac",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "db4a3c0ab1be1d314665cbcd3ddd50efc3ad3feef8b813a3db8d1c2a91fffdac",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Exact-order fix verified: the build now has four chips with 'essa ponte todos os dias' merged, capitalised 'Na minha infância' fixed first and the period chip last, so 'eu atravessava' must precede its object and only one order reconstructs; cloze cues 'esperar (Minha avó)'/'voltar (Minha avó)' tag subjects and DE/EN glosses stay idiomatic."
+      },
+      {
+        "n": 2,
+        "observation": "'no pátio da escola onde você estudou' matches the DE/EN geography; tinha sets the former state while trouxe/ganhou report the renovation as completed events with explicit subject cues; caption does not reveal the roof."
+      },
+      {
+        "n": 3,
+        "observation": "ficava + location and plural os bancos ficavam are correctly contrasted; comma-bearing 'da minha tia,' and period-bearing 'uma mangueira enorme.' lock the build order; cloze jogavam/contava distinguish plural vs singular subjects."
+      },
+      {
+        "n": 4,
+        "observation": "a gente jogava with 3sg verb honours the rule; 'até o sinal tocar' is lexical and the team-forming line (Dois colegas tiravam…formavam) is gender-free; DE 'Wenn viele mitmachen wollten' is a fair idiomatic paraphrase."
+      },
+      {
+        "n": 5,
+        "observation": "Habit (se reunia) versus turning point (vendeu, assumiu) is cleanly staged; cloze cues name 'Minha avó' and 'minha mãe'; recall on reunia with form distractors is fair."
+      },
+      {
+        "n": 6,
+        "observation": "'de quando ligava esse rádio' now reads unambiguously retrospective; tinha o hábito de + infinitivo stays within P8 licensing, and present-tense cloze leio/para (unaccented post-2009) matches the rule's switch to the present."
+      },
+      {
+        "n": 7,
+        "observation": "EN 'trying to hit a tin' now matches acertar; era + infinitive for the usual game, um dia + ensinou for the one occasion, valia with cue 'valer (cada acerto)' excludes valiam; recall on favorita tests agreement fairly."
+      },
+      {
+        "n": 8,
+        "observation": "Temporal logic holds (earlier arrival with two buses before; direct line then later departure); 'pegava' rendered as 'genommen habe' without added necessity; cues 'abrir (a linha direta)' and 'passar (eu)' make both blanks single-answer."
+      },
+      {
+        "n": 9,
+        "observation": "Second example 'Moro nesta rua há três anos, mas antes eu morava perto da praia' now shows the há + present duration the rule introduces; choice gaps dois/duas and aos/às/pelas/nas test real agreement and preposition points with one correct answer each."
+      },
+      {
+        "n": 10,
+        "observation": "faz dois anos + imperfeito me perdia + perfeito turning point (mostrou, comecei a caminhar) closes the path; chunk EN 'I've lived here' now models the correct English construction; caminhar is the only possible form after comecei a among the choices."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "db4a3c0ab1be1d314665cbcd3ddd50efc3ad3feef8b813a3db8d1c2a91fffdac",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Atravessava marks the daily crossing; both verbs in the next answer agree with minha avó. The revised four-chip build reconstructs the canonical sentence exactly. Essa ponte todos os dias is correctly glossed in both base languages; checking all 24 orders confirms the previous alternative adverb placement is unavailable. Restoring only the prior chunk array reproduces the previously signed c8cb00d9e3c8c2d00051b9862793ed4fb7bb4f9237d27cce0a9e43867b0a55b5 hash."
+      },
+      {
+        "n": 2,
+        "observation": "Pátio da escola onde você estudou explicitly locates studying in the school, matching both translations; both scene captions quote the revised opening. Trouxe and ganhou describe the later renovations."
+      },
+      {
+        "n": 3,
+        "observation": "The bench and mangueira provide a concrete backdrop. O banco ficava and os bancos ficavam demonstrate the number contrast; cousins and aunt provide named subjects for the cloze."
+      },
+      {
+        "n": 4,
+        "observation": "A gente jogava uses a singular verb for the group; choosing teams by drawing names answers the follow-up about larger crowds. No Portuguese learner turn assigns the speaker gender."
+      },
+      {
+        "n": 5,
+        "observation": "The revised question now asks when the lunches changed houses, allowing the grandmother’s sale and the mother’s taking over to answer without assuming the learner’s own address."
+      },
+      {
+        "n": 6,
+        "observation": "Quando ligava is retrospective in the revised opening and both quoted captions. The old radio routine contrasts clearly with reading headlines while travelling today."
+      },
+      {
+        "n": 7,
+        "observation": "The full English learner line and the matching pattern now state that hitting the tin is the aim. The two-points-per-hit follow-up, vocabulary and chunk glosses agree."
+      },
+      {
+        "n": 8,
+        "observation": "The German use of genommen habe removes the former implication of necessity. The previous two-bus habit is contrasted with the completed opening of the direct service and its effect on departure."
+      },
+      {
+        "n": 9,
+        "observation": "At the staged L9 introduction, the new transfer sentence explicitly models moro + há três anos in a new setting and contrasts it with the imperfect morava. Both translations and the highlight preserve that contrast."
+      },
+      {
+        "n": 10,
+        "observation": "I’ve lived here now combines correctly with for two years now in the English chunks, matching the whole sentence. Faz with a present verb is taught in both residence and work contexts; the shortcut is the completed turning point."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "distractors (path-wide)",
+        "issue": "The native editor retained obvious wrong-agreement build decoys as deliberate form contrasts. They are easy to eliminate and do not create a second correct interpretation.",
+        "recommendation": "Optional future difficulty improvement. Lesson-specific examples are in the initial independent report."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The bench and tree make quintal easily distinguishable from sapato, lençol and forno. The lexical answer is unambiguous.",
+        "recommendation": "No required edit. More discriminating options could exercise retrieval more strongly."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "pattern.examples[1]",
+        "issue": "The second pattern example demonstrates a different habitual activity; the later change is illustrated in the dialogue and cloze instead.",
+        "recommendation": "Optional future enrichment if both sides of the contrast should appear together in an example."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[1–2]",
+        "issue": "Primeira fase sounds somewhat formal, and esses passeios relies on the walking scene for its antecedent. Both are intelligible and were retained in arbitration.",
+        "recommendation": "Optional spoken-style polish for a future edition."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "b70ea4ff9c9c09c1a8ccc2fa9943068e00b21f0b71e43371335c530a83e01fc7",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The grandmother’s habitual wait answers the listener’s new question about company. The first-person imperfect and childhood setting avoid any learner-gender agreement. One build chip moves legitimately."
+      },
+      {
+        "n": 2,
+        "observation": "Tinha describes the old school, and trouxe/ganhou identify two renovation outcomes. The opening's Portuguese relative actually locates studying in the yard; both translations describe a yard at the school."
+      },
+      {
+        "n": 3,
+        "observation": "The bench and mango tree anchor the memory. The listener asks how the family used free afternoons; the plural and singular subjects control the two cloze verbs."
+      },
+      {
+        "n": 4,
+        "observation": "A gente jogava correctly introduces a group habit in the singular. An interested question about larger groups motivates the learner’s account of drawing team names."
+      },
+      {
+        "n": 5,
+        "observation": "Sunday lunches and the house sale illustrate imperfect habit vs completed events; the follow-up adds a previously unmentioned change of house. The optional transfer example currently illustrates only the habit."
+      },
+      {
+        "n": 6,
+        "observation": "The old radio habit contrasts with reading headlines on the bus today. Se lembrar de ligar is ambiguous between retrospective remembering and remembering to perform a task."
+      },
+      {
+        "n": 7,
+        "observation": "The cousin teaches a points rule after a question about variations. The original target is hitting the tin; the English full line only says throwing at it, despite its own chunk correctly saying hit."
+      },
+      {
+        "n": 8,
+        "observation": "The direct route removes the transfer and allows a later departure. A more idiomatic bus-service onset would improve the final Portuguese, and the German adds necessity to the old commute."
+      },
+      {
+        "n": 9,
+        "observation": "Weekly visits contrast with Sunday video calls after the move. The first ongoing-duration formula is correctly introduced here, with há dois anos. The transfer examples omit that newly taught construction."
+      },
+      {
+        "n": 10,
+        "observation": "Faz dois anos and the old tendency to get lost are distinct from the once-completed shortcut lesson; the job-duration example transfers the present-plus-faz pattern. The English chip tense models an error for this lesson."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "chunks",
+        "issue": "Na minha infância eu atravessava todos os dias essa ponte para voltar para casa is another grammatical ordering with the same meaning. The build checks literal equality against the canonical string.",
+        "recommendation": "Bind the time adverb to the preceding or following chip across the movable boundary while retaining 4–7 chunks; e.g. Na minha infância | eu atravessava essa ponte | todos os dias para voltar | para casa."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "dialogue[0]; sceneCaption; baseText",
+        "issue": "No pátio onde você estudou means 'in the yard where you studied', but both glosses ask about the yard at the school where you studied. That is the intended scene geography.",
+        "recommendation": "Use Essa foto foi tirada no pátio da escola onde você estudou? and update the opening quote."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[0]; sceneCaption; baseText",
+        "issue": "Você ainda se lembra de ligar esse rádio de manhã? can naturally ask 'Do you still remember to turn this radio on in the morning?', a different time and purpose from the retrospective gloss and following answer.",
+        "recommendation": "Use Você se lembra de quando ligava esse rádio de manhã? or Você costumava ligar esse rádio de manhã? and synchronize opening/gloss/caption."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "dialogue[1].baseText.en; pattern.examples[0].baseText.en",
+        "issue": "Acertar uma lata means to hit the tin; throwing pebbles at it is only the attempt. The distinction is the entire scoring rule, and the English chunks/terms already say hit.",
+        "recommendation": "Use our favourite game was trying to hit a tin with pebbles or ...was hitting a tin with pebbles."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "dialogue[3]; cloze; dialogue[1].baseText.de; pattern.examples[0].baseText.de",
+        "issue": "A linha direta abriu is awkward as a description of a bus service starting; German nehmen musste also adds necessity to the habitual pegava.",
+        "recommendation": "Use Quando a linha direta começou a funcionar, passei a sair mais tarde. Adapt both cloze subject cues/blanks; translate pegava as nahm or fuhr mit."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "pattern.examples[1]",
+        "issue": "The rule introduces há plus present for ongoing duration, but neither displayed example includes há: the canonical first reply and the extra example both teach only the imperfect half. This leaves the actual new L9 target without an example on the pattern screen.",
+        "recommendation": "Make the extra example transfer the duration construction to another context, e.g. Trabalho nesta loja há três anos, mas antes trabalhava no centro, with highlight and aligned glosses."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "chunks[0].baseText.en",
+        "issue": "I live here followed by for two years now models the wrong English construction for continuing residence, exactly the cross-language contrast the lesson teaches.",
+        "recommendation": "Use I’ve lived here / for two years now, matching the full line."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[1]; chunks; trophy",
+        "issue": "Na primeira fase sounds like a numbered formal project stage, and the story never identifies stages. The natural phase of settling in is the intended trophy sense.",
+        "recommendation": "Consider Moro aqui faz dois anos, mas na fase de adaptação eu me perdia no centro. Retain fase, gender safety and the word limits."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[2]",
+        "issue": "Esses passeios refers to walks which the learner’s first reply never explicitly mentioned, though the scene is an ongoing walk.",
+        "recommendation": "Anchor the question in getting lost or finding routes (e.g. E o que ajudou você a conhecer melhor o bairro?) so the shortcut answers it directly."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“eu atravessavam; esses ponte”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“a escola tinham; e uma pátio”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“Os banco ficavam; das minha tia”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“a gente jogavam; nas quadra”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“a família se reuniam; nos casa da”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“Eu tinham o hábito; nas rádio”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“nossa brincadeira favoritos”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“eu pegavam dois ônibus; para chegam ao trabalho”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“a distância eram pequenas; meu amigos”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoys include internally malformed phrases (“eu me perdiam; até nos centro”), which can be thrown out without considering the rest of the sentence.",
+        "recommendation": "Use internally grammatical phrases that cannot attach to the surrounding target chips or answer the base-language cue. Preserve one correct reconstruction."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "Sapato, lençol, forno make the outdoor-location answer obvious from category alone.",
+        "recommendation": "Consider assessing ficava with unambiguous number or tense cues, or use better constrained lexical alternatives."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "pattern.examples[1]",
+        "issue": "The optional transfer line repeats only the imperfect, although the lesson explanation names a completed change.",
+        "recommendation": "Extend the theatre example with a one-off event that changed the rehearsal habit and highlight the contrast."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "7b76dd9ad1645366d5051090c4c3af6bc6995014e54f215536343ec291f95115",
+      "sourceSha256": "b70ea4ff9c9c09c1a8ccc2fa9943068e00b21f0b71e43371335c530a83e01fc7",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Both form cues (esperar/voltar (Minha avó)) sit after a visible subject; 'ich überquerte immer wieder' chip gloss conveys habitual aspect; no chip boundary punctuation; the grandmother complication is withheld from situation and caption."
+        },
+        {
+          "n": 2,
+          "observation": "Imperfect tinha for state, then perfeito trouxe/ganhou for the renovation with unique forms per cue; pattern example 2 uses ficava rather than tinha but still models a prior-state description; 'Sim, naquela época' chip has no terminal punctuation."
+        },
+        {
+          "n": 3,
+          "observation": "Plural os bancos ficavam in example 2 is a real transfer from singular O banco ficava; chip 'da minha tia,' ends in a comma only (allowed); recall lexical distractors sapato/lençol/forno are clearly wrong."
+        },
+        {
+          "n": 4,
+          "observation": "Team-picking turn (Dois colegas tiravam… formavam) keeps learner gender-free; a gente + 3sg explained; coordinated second cue 'formar (Dois colegas)' correctly refers to the visible subject."
+        },
+        {
+          "n": 5,
+          "observation": "Habit (se reunia) vs perfeito events (vendeu, assumiu) with subject cues; turn 3 'passaram para a sua casa' only coheres if the learner lives with the mother who took over — readable but slightly presumptive."
+        },
+        {
+          "n": 6,
+          "observation": "tinha o hábito de + infinitivo contrasted with present leio/para; ônibus para (no accent) is correct post-reform; interlocutor 'se lembra de ligar' is colloquially fine in pt-BR though 'de quando ligava' would be unambiguously retrospective."
+        },
+        {
+          "n": 7,
+          "observation": "era acertar uma lata (habitual game) vs um dia meu primo ensinou (single event) with valia describing the new rule; favorita recall blank tests agreement with brincadeira uniquely; DE adds 'neue' to Regel harmlessly."
+        },
+        {
+          "n": 8,
+          "observation": "antes eu pegava vs quando a linha direta abriu, eu passei a sair; 'passar a + infinitivo' is lexical, not a new tense family; DE 'nehmen musste' is idiomatic; direct-line complication not pre-revealed."
+        },
+        {
+          "n": 9,
+          "observation": "Moro aqui há dois anos first at L9 as staged; choice blanks dois/aos avoid the há/faz trap; distância era pequena agrees with the noun, not the speaker."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos + imperfect me perdia, then perfeito mostrou/comecei a caminhar; two-year duration matches L9; chip 'faz dois anos,' ends in a comma only; example 2 (Trabalho aqui faz três meses) transfers the structure to a new verb."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Interlocutor presumes the lunches moved to the learner's own house ('a sua casa'), while the answer says the mother took over; neutral wording removes the presumption without touching the caption.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/targetText",
+              "old": "E quando foi que esses almoços passaram para a sua casa?",
+              "new": "E quando foi que esses almoços mudaram de casa?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/de",
+              "old": "Und wann habt ihr angefangen, euch bei dir zum Essen zu treffen?",
+              "new": "Und wann sind diese Mittagessen in ein anderes Haus umgezogen?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/en",
+              "old": "When did you start having those lunches at your place?",
+              "new": "And when did those lunches move to a different house?"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "'se lembra de ligar' can read as 'remember to turn on'; 'de quando ligava' makes the retrospective sense explicit and matches both existing translations (sceneCaption occurrences covered by replaceText).",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Você ainda se lembra de ligar esse rádio de manhã?",
+              "new": "Você ainda se lembra de quando ligava esse rádio de manhã?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b94c74d09ff53e84f99a8cd8472f386f85a7c1afdae7e6df0b0df4abccc558f0",
+      "sourceSha256": "b70ea4ff9c9c09c1a8ccc2fa9943068e00b21f0b71e43371335c530a83e01fc7",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imperfect habit atravessava + todos os dias, grandmother complication withheld from situation/caption; both cues name the visible subject Minha avó; DE/EN idiomatic. Independent L1 chunk finding dismissed: 'todos os dias essa ponte' is a harmless alternative order of the correct chips, not grounds to remodel. Agreement-error build decoys (eu atravessavam / esses ponte) are near-miss forms targeting the lesson's agreement point, not valid substitutes nor nonsense; dismissed across all ten lessons."
+        },
+        {
+          "n": 2,
+          "observation": "tinha (state) vs trouxe/ganhou (renovation events), unique cloze forms, ficava example transfers the prior-state description. 'no pátio onde você estudou' literally attaches studying to the yard while both glosses say 'yard at your old school'; natural enough in speech, so proposed only as optional tidy-up."
+        },
+        {
+          "n": 3,
+          "observation": "O banco ficava → os bancos ficavam is a genuine singular/plural transfer; cues jogar (Meus primos)/contar (minha tia) match visible subjects; recall tests the trophy quintal lexically (category-obvious decoys acceptable for a vocabulary recall)."
+        },
+        {
+          "n": 4,
+          "observation": "a gente jogava explained as 3sg; team-drawing answer (Dois colegas tiravam…formavam) keeps learner gender-free; DE 'Wenn viele mitmachen wollten' is a mild but acceptable paraphrase of 'Quando aparecia muita gente'."
+        },
+        {
+          "n": 5,
+          "observation": "se reunia habit vs vendeu/assumiu events with subject cues; interlocutor's 'para a sua casa' presumes the learner's own house whereas the answer only says the mother took over — coherent if the learner lives there, so optional neutralisation offered; habit-only transfer example mirrors the rehearsed line and is acceptable."
+        },
+        {
+          "n": 6,
+          "observation": "tinha o hábito de + infinitivo vs present leio/para; ônibus para correctly unaccented. 'se lembra de ligar' in pt-BR reads prospectively (remember to turn on), contradicting both retrospective glosses and the answer — required fix to 'de quando ligava', covering caption occurrences."
+        },
+        {
+          "n": 7,
+          "observation": "era acertar (habitual game) vs um dia meu primo ensinou (single occasion), valia for the rule; favorita recall tests agreement with brincadeira. EN full line 'throwing pebbles at a tin' loses acertar = hit, which the two-points-per-hit rule depends on and which the EN chunk already renders as hit — required EN alignment."
+        },
+        {
+          "n": 8,
+          "observation": "antes eu pegava vs quando a linha direta abriu, eu passei a sair; abrir for a new bus line is acceptable Brazilian usage and is the staged perfeito event (abriram), so the 'começou a funcionar' remodel is dismissed. DE 'nehmen musste' adds obligation absent in the source; optional neutral rendering offered."
+        },
+        {
+          "n": 9,
+          "observation": "First ongoing-duration há dois anos appears here as staged; choice blanks dois/aos avoid the há/faz trap; distância era pequena agrees with the noun. Pattern examples show only the era/visitava half; optional second example carrying há + present proposed."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos + me perdia, then mostrou/comecei a caminhar; two-year duration consistent with L9; recall/speech tokens are never clitics. EN chip 'I live here' is a literal gloss of the Portuguese present (DE 'ich wohne hier' is correct German); optional alignment with the full line offered. 'na primeira fase' and 'esses passeios' are mild stylistic points, not errors."
+        }
+      ],
+      "findings": [
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "'Você ainda se lembra de ligar esse rádio de manhã?' naturally means 'do you still remember to turn on this radio', a present task, while DE/EN glosses and the learner's answer are retrospective. 'de quando ligava' matches both existing translations; the same substring occurs in both sceneCaptions.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Você ainda se lembra de ligar esse rádio de manhã?",
+              "new": "Você ainda se lembra de quando ligava esse rádio de manhã?"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "EN translation of the learner line says 'throwing pebbles at a tin', but acertar means to hit; the scoring rule (each hit = two points) and the EN chunk 'was to hit a tin' depend on this. Same string is duplicated in pattern example 1.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/6",
+              "old": "our favourite game was throwing pebbles at a tin.",
+              "new": "our favourite game was trying to hit a tin with pebbles."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "'no pátio onde você estudou' literally locates studying in the yard; adding 'da escola' matches both glosses ('Hof deiner früheren Schule' / 'yard at your old school'). Substring occurs in dialogue/0 and both sceneCaptions.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/1",
+              "old": "no pátio onde você estudou?",
+              "new": "no pátio da escola onde você estudou?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Interlocutor presumes the lunches moved to the learner's own house ('a sua casa'); the answer only says the mother took over. Neutral wording keeps the causal question without the presumption.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/targetText",
+              "old": "E quando foi que esses almoços passaram para a sua casa?",
+              "new": "E quando foi que esses almoços mudaram de casa?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/de",
+              "old": "Und wann habt ihr angefangen, euch bei dir zum Essen zu treffen?",
+              "new": "Und wann sind diese Mittagessen in ein anderes Haus gewandert?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/en",
+              "old": "When did you start having those lunches at your place?",
+              "new": "And when did those lunches move to a different house?"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "DE 'nehmen musste' adds obligation that 'eu pegava' does not express; chunk gloss already says 'ich zwei Busse nahm'. Same string duplicated in pattern example 1.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "dass ich früher zwei Busse zur Arbeit nehmen musste.",
+              "new": "dass ich früher zwei Busse zur Arbeit genommen habe."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Rule names há + present for ongoing duration, but neither pattern example contains it; a second example carrying há to a new context would show the newly staged construction on the pattern screen.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1",
+              "old": {
+                "targetText": "Quando o caminho era curto, minha irmã vinha jantar toda sexta.",
+                "baseText": {
+                  "de": "Als der Weg noch kurz war, kam meine Schwester jeden Freitag zum Abendessen.",
+                  "en": "When it was a short trip, my sister used to come for dinner every Friday."
+                },
+                "highlight": "o caminho era curto"
+              },
+              "new": {
+                "targetText": "Moro nesta rua há três anos, mas antes eu morava perto da praia.",
+                "baseText": {
+                  "de": "Ich wohne seit drei Jahren in dieser Straße, aber vorher wohnte ich in Strandnähe.",
+                  "en": "I've lived on this street for three years, but before that I lived near the beach."
+                },
+                "highlight": "Moro nesta rua há três anos"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "EN chip gloss 'I live here' followed by 'for two years now' models the construction the lesson contrasts; aligning the chip with the full-line EN removes the mismatch (DE 'ich wohne hier' is already correct German).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks/0/baseText/en",
+              "old": "I live here",
+              "new": "I've lived here"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ed5afa9a0bf406ba704c5c1aa9479c581c26e03c1eea36e4b30a582a54ff0998",
+      "sourceSha256": "9c21d6ce09b7e978e6fed44635cce9847f5853627365154c5cc4b31e14aacddc",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "atravessava + todos os dias for the habitual route, grandmother complication withheld from situation/caption; both form cues name the visible subject Minha avó with unique forms; chunks reconstruct the canonical line, and 'todos os dias essa ponte' is only a harmless alternative order of correct chips, so no remodel; agreement-error build decoys are near-miss forms, not valid substitutes."
+        },
+        {
+          "n": 2,
+          "observation": "tinha (state) contrasts with trouxe/ganhou (renovation events) with subject-tagged cues; recall tinha uniquely graded; 'no pátio onde você estudou' reads naturally as the schoolyard in speech though 'da escola' would match the glosses exactly — kept optional; example 2 (a cozinha ficava) transfers the prior-state description to a new place."
+        },
+        {
+          "n": 3,
+          "observation": "O banco ficava → os bancos ficavam is a genuine singular/plural transfer; cloze cues jogar (Meus primos)/contar (minha tia) control number unambiguously; recall tests trophy quintal lexically with clearly wrong decoys; EN 'sat on the bench telling stories' adds 'sat' harmlessly."
+        },
+        {
+          "n": 4,
+          "observation": "a gente jogava explained as 3sg; Dois colegas tiravam…formavam keeps the learner gender-free; DE 'Wenn viele mitmachen wollten' is an acceptable paraphrase of 'Quando aparecia muita gente'; 'até o sinal tocar' is a fixed idiom, not a new grammar family."
+        },
+        {
+          "n": 5,
+          "observation": "se reunia habit vs vendeu/assumiu events with subject cues; interlocutor's 'para a sua casa' presumes the learner's own house while the answer says the mother took over — coherent if the learner lives there, so neutralisation stays optional; the theatre example transfers the habitual half, which mirrors the rehearsed line acceptably."
+        },
+        {
+          "n": 6,
+          "observation": "Earlier required fix verified applied: dialogue/0 and both sceneCaptions now read 'de quando ligava', unambiguously retrospective; tinha o hábito de + infinitivo contrasts with present leio/para (ônibus para correctly unaccented); cue ler (eu)/parar (o ônibus) grade uniquely."
+        },
+        {
+          "n": 7,
+          "observation": "Earlier required fix verified applied: EN now says 'trying to hit a tin with pebbles' in dialogue and example 1, matching acertar and the two-points-per-hit rule; era (usual game) vs um dia…ensinou (single occasion); favorita recall tests agreement with brincadeira; DE 'neue Regel' harmless."
+        },
+        {
+          "n": 8,
+          "observation": "antes eu pegava vs quando a linha direta abriu, eu passei a sair; abrir for a new line is acceptable pt-BR and the staged perfeito event, so 'começou a funcionar' remodel dismissed; DE 'nehmen musste' adds obligation absent from pegava (chunk already says 'nahm') — optional only; cues abrir (a linha direta)/passar (eu) unique."
+        },
+        {
+          "n": 9,
+          "observation": "First ongoing-duration 'Moro aqui há dois anos' appears here as staged; choice blanks dois/aos avoid the há/faz trap and grade uniquely; distância era pequena agrees with the noun, not the speaker; the move is already in the situation so turn 3 reveals nothing new; example 2 transfers era + imperfect, há-less but not an error."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos + imperfect me perdia, then mostrou/comecei a caminhar; two-year duration consistent with L9; chunks reconstruct the canonical line; speech/recall tokens are never clitics; EN chip 'I live here' is a literal gloss of the present (DE 'ich wohne hier' correct) — optional alignment only; 'na primeira fase'/'esses passeios' are stylistic, not errors."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Interlocutor presumes the lunches moved to the learner's own house ('a sua casa'); the answer only says the mother took over. Neutral wording keeps the causal question without the presumption.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/targetText",
+              "old": "E quando foi que esses almoços passaram para a sua casa?",
+              "new": "E quando foi que esses almoços mudaram de casa?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/de",
+              "old": "Und wann habt ihr angefangen, euch bei dir zum Essen zu treffen?",
+              "new": "Und wann sind diese Mittagessen in ein anderes Haus gewandert?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/en",
+              "old": "When did you start having those lunches at your place?",
+              "new": "And when did those lunches move to a different house?"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "DE 'nehmen musste' adds obligation that 'eu pegava' does not express; same string duplicated in pattern example 1.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "dass ich früher zwei Busse zur Arbeit nehmen musste.",
+              "new": "dass ich früher zwei Busse zur Arbeit genommen habe."
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "EN chip 'I live here' followed by 'for two years now' models the construction the lesson contrasts; aligning with the full-line EN removes the mismatch.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks/0/baseText/en",
+              "old": "I live here",
+              "new": "I've lived here"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9369900b0e9d4f323a3008de39801aec388e84677745c654c237c1e480e4ea26",
+      "sourceSha256": "c8cb00d9e3c8c2d00051b9862793ed4fb7bb4f9237d27cce0a9e43867b0a55b5",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Both form gaps carry the visible subject 'Minha avó' before the blank; esperava/voltava are the only singular imperfect choices, and DE 'Als Kind ging ich jeden Tag auf dem Heimweg über diese Brücke' keeps the habitual sense without gendered agreement."
+        },
+        {
+          "n": 2,
+          "observation": "'no pátio da escola onde você estudou' now matches both glosses in dialogue and captions; tinha recall has no havia competitor, and the renovation (trouxe/ganhou) is cued with explicit subjects as a completed event."
+        },
+        {
+          "n": 3,
+          "observation": "ficava + location is transferred to plural 'os bancos ficavam' in the second example; jogavam (Meus primos) vs contava (minha tia) contrast number cleanly and DE 'Meine Cousins und Cousinen' avoids speaker gender."
+        },
+        {
+          "n": 4,
+          "observation": "a gente jogava is explained with 3sg agreement; 'Dois colegas tiravam … formavam' answers the team-forming question without any gendered reference to the learner."
+        },
+        {
+          "n": 5,
+          "observation": "'esses almoços mudaram de casa?' no longer presumes the learner's house; vendeu/assumiu cloze gaps show the routine-ending perfeito events with explicit subjects."
+        },
+        {
+          "n": 6,
+          "observation": "'se lembra de quando ligava' is retrospective like DE/EN; present leio/para gaps carry the hoje contrast and 'o ônibus para' has only one valid choice."
+        },
+        {
+          "n": 7,
+          "observation": "EN now reads 'trying to hit a tin with pebbles', consistent with the scoring rule 'Cada acerto valia dois pontos'; recall favorita tests agreement with brincadeira with one valid form."
+        },
+        {
+          "n": 8,
+          "observation": "DE 'zwei Busse zur Arbeit genommen habe' drops the added obligation; abriu (a linha direta) and passei (eu) are cued with visible subjects and 'eu passei a sair mais tarde' is gender-neutral."
+        },
+        {
+          "n": 9,
+          "observation": "Second example 'Moro nesta rua há três anos, mas antes eu morava…' now shows the há + present construction named in the rule; choice gaps dois/aos have single valid answers against anos/domingos."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos duration plus imperfect me perdia, then perfeito mostrou/comecei a caminhar; EN chip 'I've lived here' aligns with the full line and 'comecei a' admits only the infinitive caminhar."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Second pattern example shows only the imperfect habit although the rule also names the perfeito event that ends the routine; no grading or meaning error, so no edit is required.",
+          "edits": []
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Recall fallbacks sapato/lençol/forno make quintal guessable by category alone; harmless and single-answer, so left as is.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "seal",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c72e1364dcea72cc9596d9a061cbdc5b69f0b8a0233c13a9eb425622890c6d22",
+      "sourceSha256": "c8cb00d9e3c8c2d00051b9862793ed4fb7bb4f9237d27cce0a9e43867b0a55b5",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Four causal turns match the infância beat (route, then who accompanied); DE/EN idiomatic; cloze/recall cues subject-tagged; only flaw is the 5-chip build, where the standalone chip todos os dias can also validly precede eu atravessava, so the canonical-order grader falsely rejects a correct sentence."
+        },
+        {
+          "n": 2,
+          "observation": "tinha describes the former state, trouxe/ganhou report the renovation as completed events; trouxemos is a genuine form so the distractor set is fair; captions do not reveal the roof."
+        },
+        {
+          "n": 3,
+          "observation": "ficava + location and plural os bancos ficavam are well staged; recall distractors are lexical (sapato/lençol/forno) and build chips are anchored by the comma and final period, so no alternative order grades falsely."
+        },
+        {
+          "n": 4,
+          "observation": "a gente jogava with 3sg and the gender-free team-forming line (Dois colegas tiravam…) honour the recreio beat; DE 'Wenn viele mitmachen wollten' is a slight paraphrase of aparecia muita gente but idiomatic and not misleading."
+        },
+        {
+          "n": 5,
+          "observation": "Habit (se reunia) versus turning point (vendeu, assumiu) is cleanly contrasted; 'in ein anderes Haus gewandert' reads naturally in German; cloze cues name each subject."
+        },
+        {
+          "n": 6,
+          "observation": "tinha o hábito de + infinitivo stays within P8 (no tinha + particípio); present-tense cloze leio/para for the current habit matches the rule text; o ônibus para is correctly unaccented."
+        },
+        {
+          "n": 7,
+          "observation": "era + infinitive for the usual game, um dia + ensinou for the single occasion, valia for the rule; recall on favorita with agreement distractors is fair; the pebbles caption does not reveal the cousin's rule."
+        },
+        {
+          "n": 8,
+          "observation": "Temporal logic holds (two buses and earlier arrival before; direct line, later departure after); passei a sair is lexical, not a new family; DE Direktverbindung/Umsteigen is idiomatic."
+        },
+        {
+          "n": 9,
+          "observation": "First use of há dois anos is at L9 as licensed; choice gaps dois vs duas and aos vs às/pelas/nas test real agreement/preposition points; 'der Weg kurz' is a fair idiomatic rendering of a distância era pequena, and chunks keep the literal gloss."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos plus imperfeito me perdia and the perfeito turning point (mostrou, comecei a caminhar) close the path; caminhar after comecei a is the only possible form among the choices; neighbour's shortcut is not revealed by the caption."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Build grading accepts only the canonical chip order, but with the current five chips the sentence 'Na minha infância todos os dias eu atravessava essa ponte para voltar para casa.' is a fully correct alternative, so a correct learner answer is rejected. Joining the adjacent chips 'essa ponte' + 'todos os dias' removes the ambiguity: capitalised 'Na minha infância' is fixed first, the period-bearing 'para voltar para casa.' is fixed last, and 'eu atravessava' must precede its object, leaving a single valid order. Spoken turn, model, recall, terms and trophy example are unchanged; four chips meet the 4–7 bound.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/chunks",
+              "old": [
+                {
+                  "targetText": "Na minha infância",
+                  "baseText": {
+                    "de": "in meiner Kindheit",
+                    "en": "in my childhood"
+                  }
+                },
+                {
+                  "targetText": "eu atravessava",
+                  "baseText": {
+                    "de": "ich überquerte immer wieder",
+                    "en": "I used to cross"
+                  }
+                },
+                {
+                  "targetText": "essa ponte",
+                  "baseText": {
+                    "de": "diese Brücke",
+                    "en": "that bridge"
+                  }
+                },
+                {
+                  "targetText": "todos os dias",
+                  "baseText": {
+                    "de": "jeden Tag",
+                    "en": "every day"
+                  }
+                },
+                {
+                  "targetText": "para voltar para casa.",
+                  "baseText": {
+                    "de": "auf dem Heimweg",
+                    "en": "to get home"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Na minha infância",
+                  "baseText": {
+                    "de": "in meiner Kindheit",
+                    "en": "in my childhood"
+                  }
+                },
+                {
+                  "targetText": "eu atravessava",
+                  "baseText": {
+                    "de": "ich überquerte immer wieder",
+                    "en": "I used to cross"
+                  }
+                },
+                {
+                  "targetText": "essa ponte todos os dias",
+                  "baseText": {
+                    "de": "diese Brücke jeden Tag",
+                    "en": "that bridge every day"
+                  }
+                },
+                {
+                  "targetText": "para voltar para casa.",
+                  "baseText": {
+                    "de": "auf dem Heimweg",
+                    "en": "to get home"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "189883ce01e8424f02a40516776577d8e50903471e1864cd9c5b424cf93c510a",
+      "sourceSha256": "db4a3c0ab1be1d314665cbcd3ddd50efc3ad3feef8b813a3db8d1c2a91fffdac",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Exact-order fix verified: the build now has four chips with 'essa ponte todos os dias' merged, capitalised 'Na minha infância' fixed first and the period chip last, so 'eu atravessava' must precede its object and only one order reconstructs; cloze cues 'esperar (Minha avó)'/'voltar (Minha avó)' tag subjects and DE/EN glosses stay idiomatic."
+        },
+        {
+          "n": 2,
+          "observation": "'no pátio da escola onde você estudou' matches the DE/EN geography; tinha sets the former state while trouxe/ganhou report the renovation as completed events with explicit subject cues; caption does not reveal the roof."
+        },
+        {
+          "n": 3,
+          "observation": "ficava + location and plural os bancos ficavam are correctly contrasted; comma-bearing 'da minha tia,' and period-bearing 'uma mangueira enorme.' lock the build order; cloze jogavam/contava distinguish plural vs singular subjects."
+        },
+        {
+          "n": 4,
+          "observation": "a gente jogava with 3sg verb honours the rule; 'até o sinal tocar' is lexical and the team-forming line (Dois colegas tiravam…formavam) is gender-free; DE 'Wenn viele mitmachen wollten' is a fair idiomatic paraphrase."
+        },
+        {
+          "n": 5,
+          "observation": "Habit (se reunia) versus turning point (vendeu, assumiu) is cleanly staged; cloze cues name 'Minha avó' and 'minha mãe'; recall on reunia with form distractors is fair."
+        },
+        {
+          "n": 6,
+          "observation": "'de quando ligava esse rádio' now reads unambiguously retrospective; tinha o hábito de + infinitivo stays within P8 licensing, and present-tense cloze leio/para (unaccented post-2009) matches the rule's switch to the present."
+        },
+        {
+          "n": 7,
+          "observation": "EN 'trying to hit a tin' now matches acertar; era + infinitive for the usual game, um dia + ensinou for the one occasion, valia with cue 'valer (cada acerto)' excludes valiam; recall on favorita tests agreement fairly."
+        },
+        {
+          "n": 8,
+          "observation": "Temporal logic holds (earlier arrival with two buses before; direct line then later departure); 'pegava' rendered as 'genommen habe' without added necessity; cues 'abrir (a linha direta)' and 'passar (eu)' make both blanks single-answer."
+        },
+        {
+          "n": 9,
+          "observation": "Second example 'Moro nesta rua há três anos, mas antes eu morava perto da praia' now shows the há + present duration the rule introduces; choice gaps dois/duas and aos/às/pelas/nas test real agreement and preposition points with one correct answer each."
+        },
+        {
+          "n": 10,
+          "observation": "faz dois anos + imperfeito me perdia + perfeito turning point (mostrou, comecei a caminhar) closes the path; chunk EN 'I've lived here' now models the correct English construction; caminhar is the only possible form after comecei a among the choices."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "additionalEdits": [
+    {
+      "from": "9c21d6ce09b7e978e6fed44635cce9847f5853627365154c5cc4b31e14aacddc",
+      "to": "c8cb00d9e3c8c2d00051b9862793ed4fb7bb4f9237d27cce0a9e43867b0a55b5",
+      "authorizedBy": "834e6632cc30e35968d9450f0c2fb77ec6ae4bcd709b79c7f11941b82d39dbb9",
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "'no pátio onde você estudou' literally locates studying in the yard; adding 'da escola' matches both glosses ('Hof deiner früheren Schule' / 'yard at your old school'). Substring occurs in dialogue/0 and both sceneCaptions.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/1",
+              "old": "no pátio onde você estudou?",
+              "new": "no pátio da escola onde você estudou?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Interlocutor presumes the lunches moved to the learner's own house ('a sua casa'); the answer only says the mother took over. Neutral wording keeps the causal question without the presumption.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/targetText",
+              "old": "E quando foi que esses almoços passaram para a sua casa?",
+              "new": "E quando foi que esses almoços mudaram de casa?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/de",
+              "old": "Und wann habt ihr angefangen, euch bei dir zum Essen zu treffen?",
+              "new": "Und wann sind diese Mittagessen in ein anderes Haus gewandert?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText/en",
+              "old": "When did you start having those lunches at your place?",
+              "new": "And when did those lunches move to a different house?"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "DE 'nehmen musste' adds obligation that 'eu pegava' does not express; chunk gloss already says 'ich zwei Busse nahm'. Same string duplicated in pattern example 1.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "dass ich früher zwei Busse zur Arbeit nehmen musste.",
+              "new": "dass ich früher zwei Busse zur Arbeit genommen habe."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Rule names há + present for ongoing duration, but neither pattern example contains it; a second example carrying há to a new context would show the newly staged construction on the pattern screen.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/pattern/examples/1",
+              "old": {
+                "targetText": "Quando o caminho era curto, minha irmã vinha jantar toda sexta.",
+                "baseText": {
+                  "de": "Als der Weg noch kurz war, kam meine Schwester jeden Freitag zum Abendessen.",
+                  "en": "When it was a short trip, my sister used to come for dinner every Friday."
+                },
+                "highlight": "o caminho era curto"
+              },
+              "new": {
+                "targetText": "Moro nesta rua há três anos, mas antes eu morava perto da praia.",
+                "baseText": {
+                  "de": "Ich wohne seit drei Jahren in dieser Straße, aber vorher wohnte ich in Strandnähe.",
+                  "en": "I've lived on this street for three years, but before that I lived near the beach."
+                },
+                "highlight": "Moro nesta rua há três anos"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "EN chip gloss 'I live here' followed by 'for two years now' models the construction the lesson contrasts; aligning the chip with the full-line EN removes the mismatch (DE 'ich wohne hier' is already correct German).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/chunks/0/baseText/en",
+              "old": "I live here",
+              "new": "I've lived here"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

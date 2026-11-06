@@ -38,6 +38,32 @@ for (const row of index.paths) {
   }
   const d = JSON.parse(raw)
   assert.deepEqual([d.status,d.targetLanguage,d.level,d.pathNumber,d.lessons.length], ['draft',row.language,row.level,row.path,10], key)
+  if (row.level === 'B1' && ['French','Portuguese'].includes(row.language) && row.path >= 6) {
+    const plan = JSON.parse(readFileSync(resolve(here, '../b1-2026-10', row.language.toLowerCase() + '-plan.json')))
+    const outline = plan.paths.find(p => p.pathNumber === row.path)
+    assert.deepEqual(d.lessons.map(l => l.trophyWord.word), outline.lessons.map(l => l.trophy), key)
+    for (const lesson of d.lessons) {
+      assert.equal(lesson.pattern.examples[0].targetText, lesson.dialogue[1].targetText, lesson.slug)
+      assert(!lesson.dialogue.some(t => t.targetText === lesson.pattern.examples[1].targetText), lesson.slug)
+      const blanks = lesson.cloze.filter(part => typeof part !== 'string')
+      const visibleCues = blanks.map(b => b.cue?.toLowerCase().match(/[\p{L}\p{N}]+/gu)?.join(' ') ?? '')
+      for (const {answer} of blanks) {
+        const words = answer.toLowerCase().match(/[\p{L}\p{N}]+/gu).join(' ')
+        assert(!visibleCues.some(cue => (' ' + cue + ' ').includes(' ' + words + ' ')), lesson.slug + ': visible cue reveals an answer')
+      }
+    }
+    const review = JSON.parse(readFileSync(resolve(here, row.evidence)))
+    assert.equal(review.language, row.language, key)
+    assert.equal(review.pathNumber, row.path, key)
+    assert.equal(review.lessonSha256, row.sha256, key)
+    if (row.state === 'offline text reviewed') {
+      for (const gate of [review.editorial, review.independent]) {
+        assert.equal(gate.verdict, 'PASS', key)
+        assert.equal(gate.sourceSha256, row.reviewedSourceSha256, key)
+        assert.deepEqual(gate.lessonsRead.map(l => l.n), d.lessons.map((_, i) => i + 1), key)
+      }
+    }
+  }
   assert.equal(new Set(d.lessons.map(l => l.slug)).size,10,key)
   for (const l of d.lessons) {
     const id = key + '/' + l.slug

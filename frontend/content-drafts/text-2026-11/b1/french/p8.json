@@ -1,0 +1,2127 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Damals und heute",
+    "en": "Then and now"
+  },
+  "subtitle": {
+    "de": "Erzähle von früheren Gewohnheiten und davon, was sich für dich verändert hat.",
+    "en": "Talk about past habits and what has changed for you."
+  },
+  "anchor": "Shape B. Imparfait für Gewohnheiten (L1–4), Vergleiche und ne … plus (L5–7), anhaltende Veränderung mit depuis und ça fait … que (L8–9), Kombination (L10). Vertrautes tu.",
+  "lessons": [
+    {
+      "slug": "les-courses-chez-gaston",
+      "title": {
+        "de": "Einkaufen bei Gaston",
+        "en": "Shopping at Gaston's"
+      },
+      "situation": {
+        "de": "Eine Freundin sieht ein altes Ladenfoto. Erzähl ihr, wie du früher eingekauft hast.",
+        "en": "A friend spots an old shop photo. Tell her how you used to shop."
+      },
+      "pedagogicalGoal": "Mit autrefois und dem Imparfait faisais beschreibst du einen Einkauf, der früher zu deinem Alltag gehörte.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "C'est toi devant cette petite épicerie sur la photo ?",
+          "baseText": {
+            "de": "Bist du das auf dem Foto vor dem kleinen Lebensmittelladen?",
+            "en": "Is that you in front of the little grocery shop in the photo?"
+          }
+        },
+        {
+          "targetText": "Oui, autrefois je faisais mes courses chez Gaston au coin de la rue.",
+          "baseText": {
+            "de": "Ja, früher kaufte ich bei Gaston an der Straßenecke ein.",
+            "en": "Yes, I used to do my shopping at Gaston's on the corner."
+          }
+        },
+        {
+          "targetText": "Et maintenant que le magasin a fermé, tu vois encore les commerçants ?",
+          "baseText": {
+            "de": "Und jetzt, wo der Laden geschlossen hat, siehst du die Händler noch?",
+            "en": "And now that the shop has closed, do you still see the shopkeepers?"
+          }
+        },
+        {
+          "targetText": "Je les croisais tous les jours, maintenant on se voit rarement.",
+          "baseText": {
+            "de": "Früher begegnete ich ihnen jeden Tag, heute sehen wir uns selten.",
+            "en": "I used to run into them every day, but now we rarely see each other."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Autrefois, je faisais…",
+        "rule": {
+          "de": "Mit autrefois und dem Imparfait faisais beschreibst du einen Einkauf, der früher zu deinem Alltag gehörte.",
+          "en": "Autrefois and the imperfect faisais describe something you used to do as part of everyday life."
+        },
+        "examples": [
+          {
+            "targetText": "Oui, autrefois je faisais mes courses chez Gaston au coin de la rue.",
+            "baseText": {
+              "de": "Ja, früher kaufte ich bei Gaston an der Straßenecke ein.",
+              "en": "Yes, I used to do my shopping at Gaston's on the corner."
+            },
+            "highlight": "autrefois je faisais"
+          },
+          {
+            "targetText": "Autrefois, je faisais le pain le dimanche.",
+            "baseText": {
+              "de": "Früher backte ich sonntags Brot.",
+              "en": "I used to make bread on Sundays."
+            },
+            "highlight": "Autrefois, je faisais"
+          }
+        ]
+      },
+      "cloze": [
+        "Je les ",
+        {
+          "kind": "form",
+          "answer": "croisais",
+          "choices": [
+            "croisait",
+            "croisais",
+            "croisions",
+            "croisaient"
+          ],
+          "cue": "croiser (je, frühere Gewohnheit)"
+        },
+        " tous les jours, maintenant on se ",
+        {
+          "kind": "form",
+          "answer": "voit",
+          "choices": [
+            "voyons",
+            "voyez",
+            "voit",
+            "voient"
+          ],
+          "cue": "se voir (on, maintenant)"
+        },
+        " rarement."
+      ],
+      "chunks": [
+        {
+          "targetText": "Oui, autrefois",
+          "baseText": {
+            "de": "ja, früher",
+            "en": "yes, back then"
+          }
+        },
+        {
+          "targetText": "je faisais mes courses",
+          "baseText": {
+            "de": "habe ich eingekauft",
+            "en": "I used to do my shopping"
+          }
+        },
+        {
+          "targetText": "chez Gaston",
+          "baseText": {
+            "de": "bei Gaston",
+            "en": "at Gaston's"
+          }
+        },
+        {
+          "targetText": "au coin de la rue.",
+          "baseText": {
+            "de": "an der Straßenecke",
+            "en": "on the street corner"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cette petite épicerie",
+          "baseText": {
+            "de": "dieser kleine Lebensmittelladen",
+            "en": "this small grocery shop"
+          }
+        },
+        {
+          "targetText": "autrefois",
+          "baseText": {
+            "de": "früher",
+            "en": "in the old days"
+          }
+        },
+        {
+          "targetText": "je faisais mes courses",
+          "baseText": {
+            "de": "ich kaufte ein",
+            "en": "I used to do my shopping"
+          }
+        },
+        {
+          "targetText": "au coin de la rue",
+          "baseText": {
+            "de": "an der Straßenecke",
+            "en": "on the street corner"
+          }
+        },
+        {
+          "targetText": "les commerçants",
+          "baseText": {
+            "de": "die Händler",
+            "en": "the shopkeepers"
+          }
+        },
+        {
+          "targetText": "rarement",
+          "baseText": {
+            "de": "selten",
+            "en": "rarely"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Oui, autrefois je ",
+        "answer": "faisais",
+        "after": " mes courses chez Gaston au coin de la rue.",
+        "fallbackChoices": [
+          "faisait",
+          "faisions",
+          "faisaient",
+          "faisais"
+        ]
+      },
+      "speakRequired": [
+        "autrefois",
+        "faisais",
+        "courses"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin sieht ein altes Ladenfoto. Erzähl ihr, wie du früher eingekauft hast. „C'est toi devant cette petite épicerie sur la photo ?“",
+        "en": "A friend spots an old shop photo. Tell her how you used to shop. “C'est toi devant cette petite épicerie sur la photo ?”"
+      },
+      "trophyWord": {
+        "word": "autrefois",
+        "meaning": {
+          "de": "früher",
+          "en": "in the old days"
+        },
+        "example": "Oui, autrefois je faisais mes courses chez Gaston au coin de la rue.",
+        "whyThisWord": {
+          "de": "Autrefois versetzt die ganze Erzählung in eine frühere Lebensphase.",
+          "en": "Autrefois places the story in an earlier period of your life."
+        }
+      },
+      "distractors": [
+        "dans leurs valises",
+        "servent à minuit"
+      ],
+      "placeholderCaption": {
+        "de": "Ein altes Foto zeigt die Markise eines kleinen Eckladens.",
+        "en": "An old photograph shows the awning of a small corner shop."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "An old photograph shows the awning of a small corner shop."
+    },
+    {
+      "slug": "le-chemin-des-saules",
+      "title": {
+        "de": "Der Weg am Fluss",
+        "en": "The path by the river"
+      },
+      "situation": {
+        "de": "Beim Spazierengehen fragt ein Freund nach deinem früheren Schulweg.",
+        "en": "While you're out walking, a friend asks about the route you used to take to school."
+      },
+      "pedagogicalGoal": "Je suivais steht im Imparfait, weil du einen wiederkehrenden Weg aus deiner Kindheit schilderst. Pendant mon enfance gibt den Zeitraum an.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu parlais d'un chemin le long de la rivière. Tu le prenais souvent ?",
+          "baseText": {
+            "de": "Du hast von einem Weg am Fluss erzählt. Bist du dort oft langgegangen?",
+            "en": "You mentioned a path by the river. Did you take it often?"
+          }
+        },
+        {
+          "targetText": "Pendant mon enfance, je suivais la rivière pour aller à l'école du village.",
+          "baseText": {
+            "de": "In meiner Kindheit ging ich am Fluss entlang zur Dorfschule.",
+            "en": "During my childhood I used to follow the river to the village school."
+          }
+        },
+        {
+          "targetText": "Si tu fermais les yeux maintenant, qu'est-ce que tu reverrais en premier ?",
+          "baseText": {
+            "de": "Wenn du jetzt die Augen schließen würdest, was würdest du zuerst vor dir sehen?",
+            "en": "If you closed your eyes now, what would you picture first?"
+          }
+        },
+        {
+          "targetText": "Je revois les saules dont les branches touchaient presque l'eau.",
+          "baseText": {
+            "de": "Ich sehe die Weiden vor mir, deren Zweige fast das Wasser berührten.",
+            "en": "I can picture the willows whose branches almost touched the water."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un trajet habituel",
+        "rule": {
+          "de": "Je suivais steht im Imparfait, weil du einen wiederkehrenden Weg aus deiner Kindheit schilderst. Pendant mon enfance gibt den Zeitraum an.",
+          "en": "Je suivais is in the imperfect because you're describing a regular childhood route. Pendant mon enfance gives the period."
+        },
+        "examples": [
+          {
+            "targetText": "Pendant mon enfance, je suivais la rivière pour aller à l'école du village.",
+            "baseText": {
+              "de": "In meiner Kindheit ging ich am Fluss entlang zur Dorfschule.",
+              "en": "During my childhood I used to follow the river to the village school."
+            },
+            "highlight": "je suivais la rivière"
+          },
+          {
+            "targetText": "Pendant les vacances, je suivais un cours de natation chaque jeudi.",
+            "baseText": {
+              "de": "In den Ferien ging ich jeden Donnerstag zum Schwimmkurs.",
+              "en": "During the holidays I used to go to a swimming class every Thursday."
+            },
+            "highlight": "je suivais un cours"
+          }
+        ]
+      },
+      "cloze": [
+        "Je revois les saules ",
+        {
+          "kind": "connector",
+          "answer": "dont",
+          "choices": [
+            "où",
+            "que",
+            "dont",
+            "quand"
+          ]
+        },
+        " les branches ",
+        {
+          "kind": "form",
+          "answer": "touchaient",
+          "choices": [
+            "touchait",
+            "touchions",
+            "touchais",
+            "touchaient"
+          ],
+          "cue": "toucher (les branches, frühere Beschreibung)"
+        },
+        " presque l'eau."
+      ],
+      "chunks": [
+        {
+          "targetText": "Pendant mon enfance,",
+          "baseText": {
+            "de": "während meiner Kindheit",
+            "en": "during my childhood"
+          }
+        },
+        {
+          "targetText": "je suivais la rivière",
+          "baseText": {
+            "de": "folgte ich dem Fluss",
+            "en": "I would follow the river"
+          }
+        },
+        {
+          "targetText": "pour aller",
+          "baseText": {
+            "de": "um zu gehen",
+            "en": "to get"
+          }
+        },
+        {
+          "targetText": "à l'école du village.",
+          "baseText": {
+            "de": "zur Dorfschule",
+            "en": "to the village school"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un chemin",
+          "baseText": {
+            "de": "ein Weg",
+            "en": "a path"
+          }
+        },
+        {
+          "targetText": "le long de la rivière",
+          "baseText": {
+            "de": "am Fluss entlang",
+            "en": "along the river"
+          }
+        },
+        {
+          "targetText": "mon enfance",
+          "baseText": {
+            "de": "meine Kindheit",
+            "en": "my childhood"
+          }
+        },
+        {
+          "targetText": "l'école du village",
+          "baseText": {
+            "de": "die Dorfschule",
+            "en": "the village school"
+          }
+        },
+        {
+          "targetText": "les saules",
+          "baseText": {
+            "de": "die Weiden",
+            "en": "the willows"
+          }
+        },
+        {
+          "targetText": "les branches",
+          "baseText": {
+            "de": "die Zweige",
+            "en": "the branches"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pendant mon enfance, je ",
+        "answer": "suivais",
+        "after": " la rivière pour aller à l'école du village.",
+        "fallbackChoices": [
+          "suivais",
+          "suivait",
+          "suivions",
+          "suivaient"
+        ]
+      },
+      "speakRequired": [
+        "enfance",
+        "suivais",
+        "rivière"
+      ],
+      "sceneCaption": {
+        "de": "Beim Spazierengehen fragt ein Freund nach deinem früheren Schulweg. „Tu parlais d'un chemin le long de la rivière. Tu le prenais souvent ?“",
+        "en": "While you're out walking, a friend asks about the route you used to take to school. “Tu parlais d'un chemin le long de la rivière. Tu le prenais souvent ?”"
+      },
+      "trophyWord": {
+        "word": "enfance",
+        "meaning": {
+          "de": "Kindheit",
+          "en": "childhood"
+        },
+        "example": "Pendant mon enfance, je suivais la rivière pour aller à l'école du village.",
+        "whyThisWord": {
+          "de": "Pendant mon enfance erlaubt dir, von deiner Kindheit zu erzählen, ohne dein Geschlecht anzugeben.",
+          "en": "Pendant mon enfance lets you talk about your childhood without marking your gender."
+        }
+      },
+      "distractors": [
+        "se cache la nuit",
+        "par les deux bouts"
+      ],
+      "placeholderCaption": {
+        "de": "Ein schmaler Weg führt am Ufer eines ruhigen Flusses entlang.",
+        "en": "A narrow path runs along the bank of a quiet river."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "A narrow path runs along the bank of a quiet river."
+    },
+    {
+      "slug": "les-crepes-du-dimanche",
+      "title": {
+        "de": "Sonntags gab es Crêpes",
+        "en": "Sunday crêpes"
+      },
+      "situation": {
+        "de": "Beim Frühstück mit einer Freundin erzählst du von einem Sonntagsritual deiner Familie.",
+        "en": "Over breakfast with a friend, tell her about a Sunday family ritual."
+      },
+      "pedagogicalGoal": "Avoir l'habitude de verlangt einen Infinitiv. On avait l'habitude de stellt die ganze Gewohnheit in die Vergangenheit.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Chez nous, le dimanche, chacun dormait tard. Et chez toi ?",
+          "baseText": {
+            "de": "Bei uns schliefen sonntags alle lange. Und bei dir?",
+            "en": "In our family, everyone slept late on Sundays. What about yours?"
+          }
+        },
+        {
+          "targetText": "On avait l'habitude de préparer des crêpes avec mon père le dimanche matin.",
+          "baseText": {
+            "de": "Wir machten sonntagmorgens immer mit meinem Vater Crêpes.",
+            "en": "We used to make crêpes with my dad on Sunday mornings."
+          }
+        },
+        {
+          "targetText": "Tu aimais surtout les crêpes ou le temps passé avec lui ?",
+          "baseText": {
+            "de": "Mochtest du vor allem die Crêpes oder die Zeit mit ihm?",
+            "en": "Was it mainly the crêpes you liked or the time you spent with him?"
+          }
+        },
+        {
+          "targetText": "Ce que j'aimais, c'était qu'on pouvait parler sans regarder l'heure.",
+          "baseText": {
+            "de": "Was mir gefiel, war, dass wir reden konnten, ohne auf die Uhr zu schauen.",
+            "en": "What I loved was that we could talk without watching the clock."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Avoir l'habitude de",
+        "rule": {
+          "de": "Avoir l'habitude de verlangt einen Infinitiv. On avait l'habitude de stellt die ganze Gewohnheit in die Vergangenheit.",
+          "en": "Avoir l'habitude de takes an infinitive. On avait l'habitude de places the whole routine in the past."
+        },
+        "examples": [
+          {
+            "targetText": "On avait l'habitude de préparer des crêpes avec mon père le dimanche matin.",
+            "baseText": {
+              "de": "Wir machten sonntagmorgens immer mit meinem Vater Crêpes.",
+              "en": "We used to make crêpes with my dad on Sunday mornings."
+            },
+            "highlight": "On avait l'habitude de préparer"
+          },
+          {
+            "targetText": "On avait l'habitude de lire le journal à deux.",
+            "baseText": {
+              "de": "Wir lasen die Zeitung immer zu zweit.",
+              "en": "We used to read the paper together."
+            },
+            "highlight": "On avait l'habitude de lire"
+          }
+        ]
+      },
+      "cloze": [
+        "Ce que j'",
+        {
+          "kind": "form",
+          "answer": "aimais",
+          "choices": [
+            "aimait",
+            "aimions",
+            "aimaient",
+            "aimais"
+          ],
+          "cue": "aimer (je, früheres Gefühl)"
+        },
+        ", c'était qu'on ",
+        {
+          "kind": "form",
+          "answer": "pouvait",
+          "choices": [
+            "pouvaient",
+            "pouvions",
+            "pouvais",
+            "pouvait"
+          ],
+          "cue": "pouvoir (on, frühere Möglichkeit)"
+        },
+        " parler sans regarder l'heure."
+      ],
+      "chunks": [
+        {
+          "targetText": "On avait l'habitude",
+          "baseText": {
+            "de": "wir hatten die Gewohnheit",
+            "en": "we were in the habit"
+          }
+        },
+        {
+          "targetText": "de préparer des crêpes",
+          "baseText": {
+            "de": "Crêpes zu machen",
+            "en": "of making crêpes"
+          }
+        },
+        {
+          "targetText": "avec mon père",
+          "baseText": {
+            "de": "mit meinem Vater",
+            "en": "with my dad"
+          }
+        },
+        {
+          "targetText": "le dimanche matin.",
+          "baseText": {
+            "de": "am Sonntagmorgen",
+            "en": "on Sunday mornings"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le dimanche",
+          "baseText": {
+            "de": "sonntags",
+            "en": "on Sundays"
+          }
+        },
+        {
+          "targetText": "on avait l'habitude de",
+          "baseText": {
+            "de": "wir hatten die Gewohnheit zu",
+            "en": "we used to"
+          }
+        },
+        {
+          "targetText": "préparer des crêpes",
+          "baseText": {
+            "de": "Crêpes machen",
+            "en": "make crêpes"
+          }
+        },
+        {
+          "targetText": "mon père",
+          "baseText": {
+            "de": "mein Vater",
+            "en": "my dad"
+          }
+        },
+        {
+          "targetText": "le temps passé avec lui",
+          "baseText": {
+            "de": "die Zeit mit ihm",
+            "en": "the time spent with him"
+          }
+        },
+        {
+          "targetText": "regarder l'heure",
+          "baseText": {
+            "de": "auf die Uhr schauen",
+            "en": "watch the clock"
+          }
+        }
+      ],
+      "recall": {
+        "before": "On ",
+        "answer": "avait",
+        "after": " l'habitude de préparer des crêpes avec mon père le dimanche matin.",
+        "fallbackChoices": [
+          "avaient",
+          "avait",
+          "avions",
+          "avais"
+        ]
+      },
+      "speakRequired": [
+        "habitude",
+        "préparer",
+        "crêpes"
+      ],
+      "sceneCaption": {
+        "de": "Beim Frühstück mit einer Freundin erzählst du von einem Sonntagsritual deiner Familie. „Chez nous, le dimanche, chacun dormait tard. Et chez toi ?“",
+        "en": "Over breakfast with a friend, tell her about a Sunday family ritual. “Chez nous, le dimanche, chacun dormait tard. Et chez toi ?”"
+      },
+      "trophyWord": {
+        "word": "habitude",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "On avait l'habitude de préparer des crêpes avec mon père le dimanche matin.",
+        "whyThisWord": {
+          "de": "Avoir l'habitude de faire quelque chose beschreibt, was jemand regelmäßig tut oder früher tat.",
+          "en": "Avoir l'habitude de faire quelque chose describes something a person regularly does or used to do."
+        }
+      },
+      "distractors": [
+        "qui sont tombées",
+        "des chaussures bleues"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Pfanne steht neben einer Schüssel Teig auf dem Frühstückstisch.",
+        "en": "A pan and a bowl of batter sit on a breakfast table."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "A pan and a bowl of batter sit on a breakfast table."
+    },
+    {
+      "slug": "apres-la-cloche",
+      "title": {
+        "de": "Nach dem Schulklingeln",
+        "en": "After the school bell"
+      },
+      "situation": {
+        "de": "Beim Anblick einer alten Sporttasche fragt ein Freund nach deinen Nachmittagen als Schulkind.",
+        "en": "An old sports bag prompts a friend to ask about your afternoons when you were at school."
+      },
+      "pedagogicalGoal": "Régulièrement zeigt die Wiederholung an. Das Imparfait prenais beschreibt den Unterricht als Teil des früheren Alltags.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Ta vieille raquette a beaucoup servi, on dirait !",
+          "baseText": {
+            "de": "Dein alter Schläger wurde offenbar oft benutzt!",
+            "en": "Looks like your old racket got plenty of use!"
+          }
+        },
+        {
+          "targetText": "Oui, je prenais régulièrement des cours de tennis après la sortie de l'école.",
+          "baseText": {
+            "de": "Ja, ich hatte nach der Schule regelmäßig Tennisunterricht.",
+            "en": "Yes, I used to take tennis lessons regularly after school."
+          }
+        },
+        {
+          "targetText": "Et qui venait avec toi les jours de cours ?",
+          "baseText": {
+            "de": "Und wer kam an den Trainingstagen mit dir?",
+            "en": "Who used to come with you on lesson days?"
+          }
+        },
+        {
+          "targetText": "Ma cousine venait aussi et nous rentrions toujours à pied.",
+          "baseText": {
+            "de": "Meine Cousine kam auch, und wir gingen immer zu Fuß nach Hause.",
+            "en": "My cousin used to come too, and we always walked home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une activité régulière",
+        "rule": {
+          "de": "Régulièrement zeigt die Wiederholung an. Das Imparfait prenais beschreibt den Unterricht als Teil des früheren Alltags.",
+          "en": "Régulièrement signals repetition. The imperfect prenais presents the lessons as part of a past routine."
+        },
+        "examples": [
+          {
+            "targetText": "Oui, je prenais régulièrement des cours de tennis après la sortie de l'école.",
+            "baseText": {
+              "de": "Ja, ich hatte nach der Schule regelmäßig Tennisunterricht.",
+              "en": "Yes, I used to take tennis lessons regularly after school."
+            },
+            "highlight": "je prenais régulièrement"
+          },
+          {
+            "targetText": "Ma sœur prenait régulièrement le premier bus du matin.",
+            "baseText": {
+              "de": "Meine Schwester nahm regelmäßig den ersten Bus am Morgen.",
+              "en": "My sister regularly caught the first bus of the morning."
+            },
+            "highlight": "prenait régulièrement"
+          }
+        ]
+      },
+      "cloze": [
+        "Ma cousine ",
+        {
+          "kind": "form",
+          "answer": "venait",
+          "choices": [
+            "venait",
+            "venaient",
+            "venais",
+            "venions"
+          ],
+          "cue": "venir (ma cousine, frühere Gewohnheit)"
+        },
+        " aussi et nous ",
+        {
+          "kind": "form",
+          "answer": "rentrions",
+          "choices": [
+            "rentrait",
+            "rentrions",
+            "rentraient",
+            "rentrais"
+          ],
+          "cue": "rentrer (nous, frühere Gewohnheit)"
+        },
+        " toujours à pied."
+      ],
+      "chunks": [
+        {
+          "targetText": "Oui, je prenais",
+          "baseText": {
+            "de": "ja, ich nahm",
+            "en": "yes, I used to take"
+          }
+        },
+        {
+          "targetText": "régulièrement des cours",
+          "baseText": {
+            "de": "regelmäßig Unterricht",
+            "en": "lessons regularly"
+          }
+        },
+        {
+          "targetText": "de tennis",
+          "baseText": {
+            "de": "im Tennis",
+            "en": "in tennis"
+          }
+        },
+        {
+          "targetText": "après la sortie de l'école.",
+          "baseText": {
+            "de": "nach Schulschluss",
+            "en": "after school"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ta vieille raquette",
+          "baseText": {
+            "de": "dein alter Schläger",
+            "en": "your old racket"
+          }
+        },
+        {
+          "targetText": "régulièrement",
+          "baseText": {
+            "de": "regelmäßig",
+            "en": "regularly"
+          }
+        },
+        {
+          "targetText": "des cours de tennis",
+          "baseText": {
+            "de": "Tennisunterricht",
+            "en": "tennis lessons"
+          }
+        },
+        {
+          "targetText": "la sortie de l'école",
+          "baseText": {
+            "de": "der Schulschluss",
+            "en": "the end of the school day"
+          }
+        },
+        {
+          "targetText": "ma cousine",
+          "baseText": {
+            "de": "meine Cousine",
+            "en": "my cousin"
+          }
+        },
+        {
+          "targetText": "à pied",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Oui, je ",
+        "answer": "prenais",
+        "after": " régulièrement des cours de tennis après la sortie de l'école.",
+        "fallbackChoices": [
+          "prenait",
+          "prenaient",
+          "prenais",
+          "prenions"
+        ]
+      },
+      "speakRequired": [
+        "prenais",
+        "régulièrement",
+        "tennis"
+      ],
+      "sceneCaption": {
+        "de": "Beim Anblick einer alten Sporttasche fragt ein Freund nach deinen Nachmittagen als Schulkind. „Ta vieille raquette a beaucoup servi, on dirait !“",
+        "en": "An old sports bag prompts a friend to ask about your afternoons when you were at school. “Ta vieille raquette a beaucoup servi, on dirait !”"
+      },
+      "trophyWord": {
+        "word": "régulièrement",
+        "meaning": {
+          "de": "regelmäßig",
+          "en": "regularly"
+        },
+        "example": "Oui, je prenais régulièrement des cours de tennis après la sortie de l'école.",
+        "whyThisWord": {
+          "de": "Régulièrement gibt die Häufigkeit an, ohne einen festen Wochentag zu nennen.",
+          "en": "Régulièrement conveys frequency without specifying a particular day of the week."
+        }
+      },
+      "distractors": [
+        "leurs tabourets",
+        "se vend par paire"
+      ],
+      "placeholderCaption": {
+        "de": "Ein alter Tennisschläger ragt aus einer ausgebleichten Sporttasche.",
+        "en": "An old tennis racket sticks out of a faded sports bag."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "An old tennis racket sticks out of a faded sports bag."
+    },
+    {
+      "slug": "les-parties-dans-la-cour",
+      "title": {
+        "de": "Spiele im Hof",
+        "en": "Games in the courtyard"
+      },
+      "situation": {
+        "de": "Mit einer früheren Nachbarin erinnerst du dich an die Spiele im Innenhof.",
+        "en": "You and a former neighbor are remembering games in the courtyard."
+      },
+      "pedagogicalGoal": "Jouais beschreibt die frühere Gewohnheit. Ne … plus umschließt das Verb im Präsens, um zu sagen, dass diese Gewohnheit aufgehört hat.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu joues toujours aux billes comme dans notre ancienne cour ?",
+          "baseText": {
+            "de": "Spielst du immer noch Murmeln wie früher in unserem Hof?",
+            "en": "Do you still play marbles like we used to in our old courtyard?"
+          }
+        },
+        {
+          "targetText": "Je ne joue plus aux billes, mais je jouais avec les voisins après l'école.",
+          "baseText": {
+            "de": "Ich spiele nicht mehr Murmeln, aber früher spielte ich nach der Schule mit den Nachbarn.",
+            "en": "I don't play marbles any more, but I used to play with the neighbors after school."
+          }
+        },
+        {
+          "targetText": "Et quand quelqu'un arrivait au milieu d'une partie, il fallait attendre ?",
+          "baseText": {
+            "de": "Und wenn jemand mitten im Spiel kam, musste man dann warten?",
+            "en": "And when someone arrived halfway through a game, did they have to wait?"
+          }
+        },
+        {
+          "targetText": "Non, on recommençait la partie pour que chacun puisse jouer.",
+          "baseText": {
+            "de": "Nein, wir fingen noch einmal an, damit jeder mitspielen konnte.",
+            "en": "No, we started the game over so everyone could play."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je jouais, je ne joue plus",
+        "rule": {
+          "de": "Jouais beschreibt die frühere Gewohnheit. Ne … plus umschließt das Verb im Präsens, um zu sagen, dass diese Gewohnheit aufgehört hat.",
+          "en": "Jouais describes the old habit. Ne … plus surrounds the present-tense verb to say that the habit has stopped."
+        },
+        "examples": [
+          {
+            "targetText": "Je ne joue plus aux billes, mais je jouais avec les voisins après l'école.",
+            "baseText": {
+              "de": "Ich spiele nicht mehr Murmeln, aber früher spielte ich nach der Schule mit den Nachbarn.",
+              "en": "I don't play marbles any more, but I used to play with the neighbors after school."
+            },
+            "highlight": "Je ne joue plus aux billes, mais je jouais"
+          },
+          {
+            "targetText": "Je ne danse plus le vendredi, mais je dansais chaque semaine avec Maya.",
+            "baseText": {
+              "de": "Ich tanze freitags nicht mehr, aber früher tanzte ich jede Woche mit Maya.",
+              "en": "I don't dance on Fridays any more, but I used to dance with Maya every week."
+            },
+            "highlight": "Je ne danse plus le vendredi, mais je dansais"
+          }
+        ]
+      },
+      "cloze": [
+        "Non, on ",
+        {
+          "kind": "form",
+          "answer": "recommençait",
+          "choices": [
+            "recommençaient",
+            "recommençait",
+            "recommencions",
+            "recommençais"
+          ],
+          "cue": "recommencer (on, frühere Gewohnheit)"
+        },
+        " la partie pour que chacun ",
+        {
+          "kind": "form",
+          "answer": "puisse",
+          "choices": [
+            "peut",
+            "pouvons",
+            "puisse",
+            "peuvent"
+          ],
+          "cue": "pouvoir (chacun, nach pour que)"
+        },
+        " jouer."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je ne joue plus",
+          "baseText": {
+            "de": "ich spiele nicht mehr",
+            "en": "I no longer play"
+          }
+        },
+        {
+          "targetText": "aux billes,",
+          "baseText": {
+            "de": "Murmeln",
+            "en": "marbles"
+          }
+        },
+        {
+          "targetText": "mais je jouais",
+          "baseText": {
+            "de": "aber ich spielte früher",
+            "en": "but I used to play"
+          }
+        },
+        {
+          "targetText": "avec les voisins après l'école.",
+          "baseText": {
+            "de": "nach der Schule mit den Nachbarn",
+            "en": "with the neighbors after school"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aux billes",
+          "baseText": {
+            "de": "Murmeln",
+            "en": "marbles"
+          }
+        },
+        {
+          "targetText": "notre ancienne cour",
+          "baseText": {
+            "de": "unser früherer Hof",
+            "en": "our old courtyard"
+          }
+        },
+        {
+          "targetText": "je jouais",
+          "baseText": {
+            "de": "ich spielte früher",
+            "en": "I used to play"
+          }
+        },
+        {
+          "targetText": "les voisins",
+          "baseText": {
+            "de": "die Nachbarn",
+            "en": "the neighbors"
+          }
+        },
+        {
+          "targetText": "au milieu d'une partie",
+          "baseText": {
+            "de": "mitten in einer Spielrunde",
+            "en": "halfway through a game"
+          }
+        },
+        {
+          "targetText": "attendre",
+          "baseText": {
+            "de": "warten",
+            "en": "wait"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je ne joue plus aux billes, mais je ",
+        "answer": "jouais",
+        "after": " avec les voisins après l'école.",
+        "fallbackChoices": [
+          "jouait",
+          "jouaient",
+          "jouions",
+          "jouais"
+        ]
+      },
+      "speakRequired": [
+        "joue",
+        "billes",
+        "jouais"
+      ],
+      "sceneCaption": {
+        "de": "Mit einer früheren Nachbarin erinnerst du dich an die Spiele im Innenhof. „Tu joues toujours aux billes comme dans notre ancienne cour ?“",
+        "en": "You and a former neighbor are remembering games in the courtyard. “Tu joues toujours aux billes comme dans notre ancienne cour ?”"
+      },
+      "trophyWord": {
+        "word": "jouais",
+        "meaning": {
+          "de": "ich spielte früher",
+          "en": "I used to play"
+        },
+        "example": "Je ne joue plus aux billes, mais je jouais avec les voisins après l'école.",
+        "whyThisWord": {
+          "de": "Je jouais verbindet eine frühere Beschäftigung mit einem Spiel, einem Ort oder den Mitspielenden.",
+          "en": "Je jouais lets you connect a past activity with a game, a place or the people you played with."
+        }
+      },
+      "distractors": [
+        "qui fait la sieste",
+        "le prix du pain"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kreis aus Kreide und ein paar Glasmurmeln liegen im Hof.",
+        "en": "A chalk circle and a handful of glass marbles sit in a courtyard."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "A chalk circle and a handful of glass marbles sit in a courtyard."
+    },
+    {
+      "slug": "les-concerts-du-jeudi",
+      "title": {
+        "de": "Die Donnerstagskonzerte",
+        "en": "Thursday-night concerts"
+      },
+      "situation": {
+        "de": "Eine Freundin entdeckt alte Konzertkarten. Erzähl, wie sich deine Konzertbesuche verändert haben.",
+        "en": "A friend discovers some old tickets. Tell her how your concert-going habits have changed."
+      },
+      "pedagogicalGoal": "Fréquenter nimmt den Ort direkt als Objekt. Je fréquentais beschreibt die früheren Besuche, je n'y vais plus den heutigen Gegensatz.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu as toute une boîte de billets pour la même salle !",
+          "baseText": {
+            "de": "Du hast ja eine ganze Schachtel mit Karten für denselben Saal!",
+            "en": "You've got a whole box of tickets for the same venue!"
+          }
+        },
+        {
+          "targetText": "Je fréquentais cette petite salle tous les jeudis, mais maintenant je n'y vais plus.",
+          "baseText": {
+            "de": "Ich ging früher jeden Donnerstag in diesen kleinen Saal, aber heute gehe ich nicht mehr hin.",
+            "en": "I used to go to that small venue every Thursday, but now I don't go there any more."
+          }
+        },
+        {
+          "targetText": "Qu'est-ce qui a changé après ton déménagement ?",
+          "baseText": {
+            "de": "Was hat sich nach deinem Umzug geändert?",
+            "en": "What changed after you moved?"
+          }
+        },
+        {
+          "targetText": "Maintenant le dernier bus part avant la fin des concerts.",
+          "baseText": {
+            "de": "Jetzt fährt der letzte Bus vor Konzertende ab.",
+            "en": "Now the last bus leaves before the concerts finish."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Fréquenter un lieu",
+        "rule": {
+          "de": "Fréquenter nimmt den Ort direkt als Objekt. Je fréquentais beschreibt die früheren Besuche, je n'y vais plus den heutigen Gegensatz.",
+          "en": "Fréquenter takes the place as its direct object. Je fréquentais describes the former visits, while je n'y vais plus gives the present contrast."
+        },
+        "examples": [
+          {
+            "targetText": "Je fréquentais cette petite salle tous les jeudis, mais maintenant je n'y vais plus.",
+            "baseText": {
+              "de": "Ich ging früher jeden Donnerstag in diesen kleinen Saal, aber heute gehe ich nicht mehr hin.",
+              "en": "I used to go to that small venue every Thursday, but now I don't go there any more."
+            },
+            "highlight": "Je fréquentais cette petite salle"
+          },
+          {
+            "targetText": "Je fréquentais la piscine du quartier, mais maintenant je n'y vais plus.",
+            "baseText": {
+              "de": "Ich ging früher ins Schwimmbad im Viertel, aber heute gehe ich nicht mehr hin.",
+              "en": "I used to go to the neighborhood pool, but now I don't go there any more."
+            },
+            "highlight": "Je fréquentais la piscine du quartier"
+          }
+        ]
+      },
+      "cloze": [
+        "Maintenant le dernier bus ",
+        {
+          "kind": "form",
+          "answer": "part",
+          "choices": [
+            "partent",
+            "partez",
+            "part",
+            "partons"
+          ],
+          "cue": "partir (le dernier bus, jetzt)"
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "avant",
+          "choices": [
+            "dont",
+            "quand",
+            "puisque",
+            "avant"
+          ]
+        },
+        " la fin des concerts."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je fréquentais cette petite salle",
+          "baseText": {
+            "de": "ich ging regelmäßig in diesen kleinen Saal",
+            "en": "I used to go to that small venue"
+          }
+        },
+        {
+          "targetText": "tous les jeudis,",
+          "baseText": {
+            "de": "jeden Donnerstag",
+            "en": "every Thursday"
+          }
+        },
+        {
+          "targetText": "mais maintenant",
+          "baseText": {
+            "de": "aber jetzt",
+            "en": "but now"
+          }
+        },
+        {
+          "targetText": "je n'y vais plus.",
+          "baseText": {
+            "de": "gehe ich nicht mehr hin",
+            "en": "I don't go there any more"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une boîte de billets",
+          "baseText": {
+            "de": "eine Schachtel mit Eintrittskarten",
+            "en": "a box of tickets"
+          }
+        },
+        {
+          "targetText": "je fréquentais",
+          "baseText": {
+            "de": "ich ging regelmäßig hin",
+            "en": "I used to frequent"
+          }
+        },
+        {
+          "targetText": "cette petite salle",
+          "baseText": {
+            "de": "dieser kleine Saal",
+            "en": "this small venue"
+          }
+        },
+        {
+          "targetText": "tous les jeudis",
+          "baseText": {
+            "de": "jeden Donnerstag",
+            "en": "every Thursday"
+          }
+        },
+        {
+          "targetText": "ton déménagement",
+          "baseText": {
+            "de": "dein Umzug",
+            "en": "your move"
+          }
+        },
+        {
+          "targetText": "le dernier bus",
+          "baseText": {
+            "de": "der letzte Bus",
+            "en": "the last bus"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je ",
+        "answer": "fréquentais",
+        "after": " cette petite salle tous les jeudis, mais maintenant je n'y vais plus.",
+        "fallbackChoices": [
+          "fréquentais",
+          "fréquentait",
+          "fréquentaient",
+          "fréquentions"
+        ]
+      },
+      "speakRequired": [
+        "fréquentais",
+        "salle",
+        "jeudis"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin entdeckt alte Konzertkarten. Erzähl, wie sich deine Konzertbesuche verändert haben. „Tu as toute une boîte de billets pour la même salle !“",
+        "en": "A friend discovers some old tickets. Tell her how your concert-going habits have changed. “Tu as toute une boîte de billets pour la même salle !”"
+      },
+      "trophyWord": {
+        "word": "fréquentais",
+        "meaning": {
+          "de": "ich besuchte regelmäßig",
+          "en": "I used to go to regularly"
+        },
+        "example": "Je fréquentais cette petite salle tous les jeudis, mais maintenant je n'y vais plus.",
+        "whyThisWord": {
+          "de": "Fréquenter une salle drückt regelmäßige Besuche aus. Der Ort folgt direkt auf das Verb.",
+          "en": "Fréquenter une salle means to go to a venue regularly. The place follows the verb directly."
+        }
+      },
+      "distractors": [
+        "quelqu'un sonnait",
+        "près du four"
+      ],
+      "placeholderCaption": {
+        "de": "Eintrittskarten mit verschiedenen Daten liegen in einer kleinen Blechdose.",
+        "en": "Tickets bearing different dates lie in a small tin."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "Tickets bearing different dates lie in a small tin."
+    },
+    {
+      "slug": "du-temps-dehors",
+      "title": {
+        "de": "Mehr Zeit draußen",
+        "en": "More time outdoors"
+      },
+      "situation": {
+        "de": "Ein Freund fragt, ob du noch so oft draußen bist wie früher. Vergleiche deinen Alltag damals und heute.",
+        "en": "A friend asks whether you still get outside as much as before. Compare your daily life then and now."
+      },
+      "pedagogicalGoal": "Davantage de steht vor dem Nomen temps. Mit que maintenant schließt du den Vergleich zwischen früher und heute ab.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Avec ton nouvel emploi, tu passes encore tes journées dehors ?",
+          "baseText": {
+            "de": "Verbringst du mit deiner neuen Stelle immer noch ganze Tage draußen?",
+            "en": "Do you still spend your days outside with your new job?"
+          }
+        },
+        {
+          "targetText": "Avant, je passais davantage de temps dehors que maintenant, surtout pendant la semaine.",
+          "baseText": {
+            "de": "Früher verbrachte ich mehr Zeit draußen als heute, besonders unter der Woche.",
+            "en": "I used to spend more time outdoors than I do now, especially during the week."
+          }
+        },
+        {
+          "targetText": "Pourtant je te vois marcher chaque soir depuis que la passerelle est ouverte.",
+          "baseText": {
+            "de": "Dabei sehe ich dich jeden Abend laufen, seit die Fußgängerbrücke offen ist.",
+            "en": "But I've seen you walking every evening since the footbridge opened."
+          }
+        },
+        {
+          "targetText": "Oui, depuis son ouverture je marche plus souvent pour rentrer.",
+          "baseText": {
+            "de": "Ja, seit sie offen ist, gehe ich öfter zu Fuß nach Hause.",
+            "en": "Yes, since it opened I've been walking home more often."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Davantage de temps que…",
+        "rule": {
+          "de": "Davantage de steht vor dem Nomen temps. Mit que maintenant schließt du den Vergleich zwischen früher und heute ab.",
+          "en": "Davantage de goes before the noun temps. Que maintenant completes the comparison between then and now."
+        },
+        "examples": [
+          {
+            "targetText": "Avant, je passais davantage de temps dehors que maintenant, surtout pendant la semaine.",
+            "baseText": {
+              "de": "Früher verbrachte ich mehr Zeit draußen als heute, besonders unter der Woche.",
+              "en": "I used to spend more time outdoors than I do now, especially during the week."
+            },
+            "highlight": "davantage de temps dehors que maintenant"
+          },
+          {
+            "targetText": "Autrefois, cette ferme produisait davantage de lait que maintenant.",
+            "baseText": {
+              "de": "Früher produzierte dieser Hof mehr Milch als heute.",
+              "en": "This farm used to produce more milk than it does now."
+            },
+            "highlight": "davantage de lait que maintenant"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, depuis son ouverture je ",
+        {
+          "kind": "form",
+          "answer": "marche",
+          "choices": [
+            "marchent",
+            "marchons",
+            "marchez",
+            "marche"
+          ],
+          "cue": "marcher (je, heutige Gewohnheit)"
+        },
+        " plus souvent ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "parce que",
+            "pour",
+            "puisque",
+            "quand"
+          ]
+        },
+        " rentrer."
+      ],
+      "chunks": [
+        {
+          "targetText": "Avant, je passais",
+          "baseText": {
+            "de": "früher verbrachte ich",
+            "en": "I used to spend"
+          }
+        },
+        {
+          "targetText": "davantage de temps dehors",
+          "baseText": {
+            "de": "mehr Zeit draußen",
+            "en": "more time outdoors"
+          }
+        },
+        {
+          "targetText": "que maintenant,",
+          "baseText": {
+            "de": "als heute",
+            "en": "than I do now"
+          }
+        },
+        {
+          "targetText": "surtout pendant la semaine.",
+          "baseText": {
+            "de": "besonders unter der Woche",
+            "en": "especially during the week"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ton nouvel emploi",
+          "baseText": {
+            "de": "deine neue Stelle",
+            "en": "your new job"
+          }
+        },
+        {
+          "targetText": "dehors",
+          "baseText": {
+            "de": "draußen",
+            "en": "outdoors"
+          }
+        },
+        {
+          "targetText": "davantage de temps",
+          "baseText": {
+            "de": "mehr Zeit",
+            "en": "more time"
+          }
+        },
+        {
+          "targetText": "pendant la semaine",
+          "baseText": {
+            "de": "unter der Woche",
+            "en": "during the week"
+          }
+        },
+        {
+          "targetText": "la passerelle",
+          "baseText": {
+            "de": "die Fußgängerbrücke",
+            "en": "the footbridge"
+          }
+        },
+        {
+          "targetText": "pour rentrer",
+          "baseText": {
+            "de": "um nach Hause zu kommen",
+            "en": "to get home"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Avant, je ",
+        "answer": "passais",
+        "after": " davantage de temps dehors que maintenant, surtout pendant la semaine.",
+        "fallbackChoices": [
+          "passait",
+          "passais",
+          "passaient",
+          "passions"
+        ]
+      },
+      "speakRequired": [
+        "passais",
+        "davantage",
+        "dehors"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt, ob du noch so oft draußen bist wie früher. Vergleiche deinen Alltag damals und heute. „Avec ton nouvel emploi, tu passes encore tes journées dehors ?“",
+        "en": "A friend asks whether you still get outside as much as before. Compare your daily life then and now. “Avec ton nouvel emploi, tu passes encore tes journées dehors ?”"
+      },
+      "trophyWord": {
+        "word": "davantage",
+        "meaning": {
+          "de": "mehr",
+          "en": "more"
+        },
+        "example": "Avant, je passais davantage de temps dehors que maintenant, surtout pendant la semaine.",
+        "whyThisWord": {
+          "de": "Davantage de temps vergleicht eine Zeitmenge. Ein zusätzliches plus ist nicht nötig.",
+          "en": "Davantage de temps compares amounts of time. It carries the meaning of more on its own."
+        }
+      },
+      "distractors": [
+        "mes clés de maison",
+        "sonne à la porte"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Straße zwischen Bürogebäuden und Wohnhäusern in der Abenddämmerung.",
+        "en": "A street between office buildings and houses at dusk."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "A street between office buildings and houses at dusk."
+    },
+    {
+      "slug": "les-courses-a-pied",
+      "title": {
+        "de": "Zu Fuß einkaufen",
+        "en": "Walking to the shops"
+      },
+      "situation": {
+        "de": "Du triffst eine Freundin auf dem Heimweg vom Einkaufen. Erzähl ihr von deiner neuen Gewohnheit.",
+        "en": "You run into a friend on the way home from the shops. Tell her about your new routine."
+      },
+      "pedagogicalGoal": "Ça fait … que leitet eine Dauer ein. Weil die Gewohnheit bis heute anhält, steht laisse im Präsens.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu as laissé ta voiture à la maison juste pour aujourd'hui ?",
+          "baseText": {
+            "de": "Hast du dein Auto nur heute zu Hause gelassen?",
+            "en": "Have you left your car at home just for today?"
+          }
+        },
+        {
+          "targetText": "Non, ça fait trois mois que je laisse la voiture au garage et désormais je marche.",
+          "baseText": {
+            "de": "Nein, seit drei Monaten lasse ich das Auto in der Garage. Jetzt gehe ich zu Fuß.",
+            "en": "No, I've been leaving the car in the garage for three months. I walk now."
+          }
+        },
+        {
+          "targetText": "Et ça change quelque chose au contenu de ton panier ?",
+          "baseText": {
+            "de": "Und hat sich dadurch etwas daran geändert, was in deinem Einkaufskorb landet?",
+            "en": "And has that changed what goes into your basket?"
+          }
+        },
+        {
+          "targetText": "Oui, je choisis moins de bouteilles parce que le verre pèse lourd.",
+          "baseText": {
+            "de": "Ja, ich nehme weniger Flaschen, weil Glas schwer ist.",
+            "en": "Yes, I pick fewer bottles because glass is heavy."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ça fait trois mois que…",
+        "rule": {
+          "de": "Ça fait … que leitet eine Dauer ein. Weil die Gewohnheit bis heute anhält, steht laisse im Präsens.",
+          "en": "Ça fait … que introduces a length of time. Laisse is in the present because the habit is still going on."
+        },
+        "examples": [
+          {
+            "targetText": "Non, ça fait trois mois que je laisse la voiture au garage et désormais je marche.",
+            "baseText": {
+              "de": "Nein, seit drei Monaten lasse ich das Auto in der Garage. Jetzt gehe ich zu Fuß.",
+              "en": "No, I've been leaving the car in the garage for three months. I walk now."
+            },
+            "highlight": "ça fait trois mois que je laisse"
+          },
+          {
+            "targetText": "Ça fait deux semaines que je déjeune à la cantine.",
+            "baseText": {
+              "de": "Seit zwei Wochen esse ich mittags in der Kantine.",
+              "en": "I've been having lunch in the canteen for two weeks."
+            },
+            "highlight": "Ça fait deux semaines que je déjeune"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, je ",
+        {
+          "kind": "form",
+          "answer": "choisis",
+          "choices": [
+            "choisis",
+            "choisit",
+            "choisissons",
+            "choisissent"
+          ],
+          "cue": "choisir (je, heutige Gewohnheit)"
+        },
+        " moins de bouteilles parce que le verre ",
+        {
+          "kind": "form",
+          "answer": "pèse",
+          "choices": [
+            "pèse",
+            "pesons",
+            "pesez",
+            "pèsent"
+          ],
+          "cue": "peser (le verre, jetzt)"
+        },
+        " lourd."
+      ],
+      "chunks": [
+        {
+          "targetText": "Non, ça fait trois mois",
+          "baseText": {
+            "de": "nein, seit drei Monaten",
+            "en": "no, it's been three months"
+          }
+        },
+        {
+          "targetText": "que je laisse",
+          "baseText": {
+            "de": "lasse ich",
+            "en": "that I've been leaving"
+          }
+        },
+        {
+          "targetText": "la voiture au garage",
+          "baseText": {
+            "de": "das Auto in der Garage",
+            "en": "the car in the garage"
+          }
+        },
+        {
+          "targetText": "et désormais je marche.",
+          "baseText": {
+            "de": "und jetzt gehe ich zu Fuß",
+            "en": "and these days I walk"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ta voiture",
+          "baseText": {
+            "de": "dein Auto",
+            "en": "your car"
+          }
+        },
+        {
+          "targetText": "trois mois",
+          "baseText": {
+            "de": "drei Monate",
+            "en": "three months"
+          }
+        },
+        {
+          "targetText": "au garage",
+          "baseText": {
+            "de": "in der Garage",
+            "en": "in the garage"
+          }
+        },
+        {
+          "targetText": "désormais",
+          "baseText": {
+            "de": "von jetzt an",
+            "en": "from now on"
+          }
+        },
+        {
+          "targetText": "ton panier",
+          "baseText": {
+            "de": "dein Einkaufskorb",
+            "en": "your basket"
+          }
+        },
+        {
+          "targetText": "le verre",
+          "baseText": {
+            "de": "das Glas",
+            "en": "glass"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Non, ça fait trois mois que je ",
+        "answer": "laisse",
+        "after": " la voiture au garage et désormais je marche.",
+        "fallbackChoices": [
+          "laissons",
+          "laissez",
+          "laisse",
+          "laissent"
+        ]
+      },
+      "speakRequired": [
+        "mois",
+        "garage",
+        "désormais"
+      ],
+      "sceneCaption": {
+        "de": "Du triffst eine Freundin auf dem Heimweg vom Einkaufen. Erzähl ihr von deiner neuen Gewohnheit. „Tu as laissé ta voiture à la maison juste pour aujourd'hui ?“",
+        "en": "You run into a friend on the way home from the shops. Tell her about your new routine. “Tu as laissé ta voiture à la maison juste pour aujourd'hui ?”"
+      },
+      "trophyWord": {
+        "word": "désormais",
+        "meaning": {
+          "de": "mittlerweile, von nun an",
+          "en": "now, from now on"
+        },
+        "example": "Non, ça fait trois mois que je laisse la voiture au garage et désormais je marche.",
+        "whyThisWord": {
+          "de": "Désormais markiert den Übergang zu einer neuen Gewohnheit, die weiter gelten soll.",
+          "en": "Désormais marks the switch to a new habit that is expected to continue."
+        }
+      },
+      "distractors": [
+        "que tu as cassées",
+        "parmi ces tartes"
+      ],
+      "placeholderCaption": {
+        "de": "Stofftaschen mit Lebensmitteln stehen auf einer Bank am Gehweg.",
+        "en": "Cloth shopping bags filled with groceries sit on a sidewalk bench."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "Cloth shopping bags filled with groceries sit on a sidewalk bench."
+    },
+    {
+      "slug": "la-vie-dans-limmeuble",
+      "title": {
+        "de": "Nachbarn, die sich kennen",
+        "en": "Neighbors who know each other"
+      },
+      "situation": {
+        "de": "Mit einem Nachbarn sprichst du darüber, wie sich das Miteinander im Haus verändert hat.",
+        "en": "You and a neighbor are talking about how relationships in the building have changed."
+      },
+      "pedagogicalGoal": "Depuis que verbindet die Veränderung mit dem Beginn einer andauernden Tätigkeit. Partagent steht im Präsens, weil die Nachbarn den Garten weiterhin gemeinsam nutzen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu te souviens du temps où personne ne se parlait dans l'escalier ?",
+          "baseText": {
+            "de": "Erinnerst du dich an die Zeit, als im Treppenhaus niemand miteinander sprach?",
+            "en": "Do you remember when no one spoke to anyone on the stairs?"
+          }
+        },
+        {
+          "targetText": "Oui, je vois une vraie évolution depuis que les voisins partagent le jardin.",
+          "baseText": {
+            "de": "Ja, ich sehe eine echte Veränderung, seit sich die Nachbarn den Garten teilen.",
+            "en": "Yes, I've seen a real change since the neighbors started sharing the garden."
+          }
+        },
+        {
+          "targetText": "Tu as un exemple qui montre que ça va au-delà du jardin ?",
+          "baseText": {
+            "de": "Hast du ein Beispiel dafür, dass das über den Garten hinausgeht?",
+            "en": "Can you think of an example that goes beyond the garden?"
+          }
+        },
+        {
+          "targetText": "Depuis cet été, ma voisine prend mes colis quand je travaille.",
+          "baseText": {
+            "de": "Seit diesem Sommer nimmt meine Nachbarin meine Pakete an, wenn ich arbeite.",
+            "en": "Since this summer my neighbor has been taking in my parcels when I'm working."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Depuis que les voisins partagent…",
+        "rule": {
+          "de": "Depuis que verbindet die Veränderung mit dem Beginn einer andauernden Tätigkeit. Partagent steht im Präsens, weil die Nachbarn den Garten weiterhin gemeinsam nutzen.",
+          "en": "Depuis que links the change to the start of an ongoing activity. Partagent is in the present because the neighbors still share the garden."
+        },
+        "examples": [
+          {
+            "targetText": "Oui, je vois une vraie évolution depuis que les voisins partagent le jardin.",
+            "baseText": {
+              "de": "Ja, ich sehe eine echte Veränderung, seit sich die Nachbarn den Garten teilen.",
+              "en": "Yes, I've seen a real change since the neighbors started sharing the garden."
+            },
+            "highlight": "depuis que les voisins partagent"
+          },
+          {
+            "targetText": "Je dors mieux depuis que mes fenêtres ferment bien.",
+            "baseText": {
+              "de": "Ich schlafe besser, seit meine Fenster richtig schließen.",
+              "en": "I've been sleeping better since my windows started closing properly."
+            },
+            "highlight": "depuis que mes fenêtres ferment"
+          }
+        ]
+      },
+      "cloze": [
+        "Depuis cet été, ma voisine ",
+        {
+          "kind": "form",
+          "answer": "prend",
+          "choices": [
+            "prennent",
+            "prend",
+            "prenez",
+            "prenons"
+          ],
+          "cue": "prendre (ma voisine, andauernde Gewohnheit)"
+        },
+        " mes colis quand je ",
+        {
+          "kind": "form",
+          "answer": "travaille",
+          "choices": [
+            "travaillent",
+            "travaillons",
+            "travaille",
+            "travaillez"
+          ],
+          "cue": "travailler (je)"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Oui, je vois",
+          "baseText": {
+            "de": "ja, ich sehe",
+            "en": "yes, I see"
+          }
+        },
+        {
+          "targetText": "une vraie évolution",
+          "baseText": {
+            "de": "eine echte Veränderung",
+            "en": "a real change"
+          }
+        },
+        {
+          "targetText": "depuis que les voisins",
+          "baseText": {
+            "de": "seit die Nachbarn",
+            "en": "since the neighbors"
+          }
+        },
+        {
+          "targetText": "partagent le jardin.",
+          "baseText": {
+            "de": "den Garten gemeinsam nutzen",
+            "en": "began sharing the garden"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "dans l'escalier",
+          "baseText": {
+            "de": "im Treppenhaus",
+            "en": "on the stairs"
+          }
+        },
+        {
+          "targetText": "une vraie évolution",
+          "baseText": {
+            "de": "eine echte Veränderung",
+            "en": "a real change"
+          }
+        },
+        {
+          "targetText": "les voisins",
+          "baseText": {
+            "de": "die Nachbarn",
+            "en": "the neighbors"
+          }
+        },
+        {
+          "targetText": "le jardin",
+          "baseText": {
+            "de": "der Garten",
+            "en": "the garden"
+          }
+        },
+        {
+          "targetText": "au-delà du jardin",
+          "baseText": {
+            "de": "über den Garten hinaus",
+            "en": "beyond the garden"
+          }
+        },
+        {
+          "targetText": "mes colis",
+          "baseText": {
+            "de": "meine Pakete",
+            "en": "my parcels"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Oui, je vois une vraie évolution depuis que les voisins ",
+        "answer": "partagent",
+        "after": " le jardin.",
+        "fallbackChoices": [
+          "partage",
+          "partageons",
+          "partagez",
+          "partagent"
+        ]
+      },
+      "speakRequired": [
+        "évolution",
+        "voisins",
+        "jardin"
+      ],
+      "sceneCaption": {
+        "de": "Mit einem Nachbarn sprichst du darüber, wie sich das Miteinander im Haus verändert hat. „Tu te souviens du temps où personne ne se parlait dans l'escalier ?“",
+        "en": "You and a neighbor are talking about how relationships in the building have changed. “Tu te souviens du temps où personne ne se parlait dans l'escalier ?”"
+      },
+      "trophyWord": {
+        "word": "évolution",
+        "meaning": {
+          "de": "Entwicklung, Veränderung",
+          "en": "development, change"
+        },
+        "example": "Oui, je vois une vraie évolution depuis que les voisins partagent le jardin.",
+        "whyThisWord": {
+          "de": "Une évolution ist eine Veränderung über einen Zeitraum. Hier betrifft sie das Zusammenleben.",
+          "en": "Une évolution is a change over time. Here it describes how people get along."
+        }
+      },
+      "distractors": [
+        "les roues avant",
+        "prend trop longtemps"
+      ],
+      "placeholderCaption": {
+        "de": "Neben einer Gemeinschaftsbeet-Tafel stehen Gießkannen mit verschiedenen Namen.",
+        "en": "Watering cans bearing different names stand beside a sign for a shared garden bed."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "Watering cans bearing different names stand beside a sign for a shared garden bed."
+    },
+    {
+      "slug": "le-premier-marche",
+      "title": {
+        "de": "Der erste Marktsamstag",
+        "en": "The first Saturday market"
+      },
+      "situation": {
+        "de": "Ein Freund fragt nach deiner ersten Woche im Viertel. Wähle einen Moment, den du noch gut vor Augen hast.",
+        "en": "A friend asks about your first week in the neighborhood. Recall one moment that is still vivid."
+      },
+      "pedagogicalGoal": "Je cherchais stellt die Szene im Imparfait vor Augen. Mit où verbindest du die damalige Handlung mit dem Ort aus deiner Erinnerung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "De ta première semaine ici, qu'est-ce qui te revient le plus clairement ?",
+          "baseText": {
+            "de": "Woran erinnerst du dich am deutlichsten, wenn du an deine erste Woche hier denkst?",
+            "en": "What do you remember most clearly about your first week here?"
+          }
+        },
+        {
+          "targetText": "Mon premier souvenir, c'est ce marché où je cherchais mon chemin entre les étals.",
+          "baseText": {
+            "de": "Meine erste Erinnerung ist dieser Markt, auf dem ich zwischen den Ständen nach dem Weg suchte.",
+            "en": "My first memory is of that market where I was trying to find my way between the stalls."
+          }
+        },
+        {
+          "targetText": "Et maintenant, après tous ces samedis, tu te perds encore ?",
+          "baseText": {
+            "de": "Und heute, nach all diesen Samstagen, verläufst du dich immer noch?",
+            "en": "And now, after all those Saturdays, do you still get lost?"
+          }
+        },
+        {
+          "targetText": "Non, ça fait un an que je connais chaque allée par cœur.",
+          "baseText": {
+            "de": "Nein, seit einem Jahr kenne ich jeden Gang auswendig.",
+            "en": "No, I've known every aisle by heart for a year now."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Le décor d'un souvenir",
+        "rule": {
+          "de": "Je cherchais stellt die Szene im Imparfait vor Augen. Mit où verbindest du die damalige Handlung mit dem Ort aus deiner Erinnerung.",
+          "en": "Je cherchais uses the imperfect to bring the scene to mind. Où connects the action with the place you remember."
+        },
+        "examples": [
+          {
+            "targetText": "Mon premier souvenir, c'est ce marché où je cherchais mon chemin entre les étals.",
+            "baseText": {
+              "de": "Meine erste Erinnerung ist dieser Markt, auf dem ich zwischen den Ständen nach dem Weg suchte.",
+              "en": "My first memory is of that market where I was trying to find my way between the stalls."
+            },
+            "highlight": "où je cherchais mon chemin"
+          },
+          {
+            "targetText": "Je revois la pièce où je préparais mon sac avant chaque sortie.",
+            "baseText": {
+              "de": "Ich sehe den Raum vor mir, in dem ich vor jedem Ausflug meine Tasche packte.",
+              "en": "I can picture the room where I used to pack my bag before every outing."
+            },
+            "highlight": "où je préparais mon sac"
+          }
+        ]
+      },
+      "cloze": [
+        "Non, ça ",
+        {
+          "kind": "form",
+          "answer": "fait",
+          "choices": [
+            "font",
+            "faites",
+            "fait",
+            "faisons"
+          ],
+          "cue": "faire (ça, Ausdruck der Dauer)"
+        },
+        " un an que je ",
+        {
+          "kind": "form",
+          "answer": "connais",
+          "choices": [
+            "connaît",
+            "connaissent",
+            "connaissons",
+            "connais"
+          ],
+          "cue": "connaître (je, andauernder Zustand)"
+        },
+        " chaque allée par cœur."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mon premier souvenir,",
+          "baseText": {
+            "de": "meine erste Erinnerung",
+            "en": "my first memory"
+          }
+        },
+        {
+          "targetText": "c'est ce marché",
+          "baseText": {
+            "de": "ist dieser Markt",
+            "en": "is that market"
+          }
+        },
+        {
+          "targetText": "où je cherchais",
+          "baseText": {
+            "de": "auf dem ich suchte",
+            "en": "where I was looking for"
+          }
+        },
+        {
+          "targetText": "mon chemin entre les étals.",
+          "baseText": {
+            "de": "meinen Weg zwischen den Ständen",
+            "en": "my way between the stalls"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ta première semaine",
+          "baseText": {
+            "de": "deine erste Woche",
+            "en": "your first week"
+          }
+        },
+        {
+          "targetText": "mon premier souvenir",
+          "baseText": {
+            "de": "meine erste Erinnerung",
+            "en": "my first memory"
+          }
+        },
+        {
+          "targetText": "ce marché",
+          "baseText": {
+            "de": "dieser Markt",
+            "en": "that market"
+          }
+        },
+        {
+          "targetText": "mon chemin",
+          "baseText": {
+            "de": "mein Weg",
+            "en": "my way"
+          }
+        },
+        {
+          "targetText": "les étals",
+          "baseText": {
+            "de": "die Marktstände",
+            "en": "the stalls"
+          }
+        },
+        {
+          "targetText": "par cœur",
+          "baseText": {
+            "de": "auswendig",
+            "en": "by heart"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mon premier souvenir, c'est ce marché où je ",
+        "answer": "cherchais",
+        "after": " mon chemin entre les étals.",
+        "fallbackChoices": [
+          "cherchais",
+          "cherchait",
+          "cherchaient",
+          "cherchions"
+        ]
+      },
+      "speakRequired": [
+        "souvenir",
+        "cherchais",
+        "étals"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund fragt nach deiner ersten Woche im Viertel. Wähle einen Moment, den du noch gut vor Augen hast. „De ta première semaine ici, qu'est-ce qui te revient le plus clairement ?“",
+        "en": "A friend asks about your first week in the neighborhood. Recall one moment that is still vivid. “De ta première semaine ici, qu'est-ce qui te revient le plus clairement ?”"
+      },
+      "trophyWord": {
+        "word": "souvenir",
+        "meaning": {
+          "de": "Erinnerung",
+          "en": "memory"
+        },
+        "example": "Mon premier souvenir, c'est ce marché où je cherchais mon chemin entre les étals.",
+        "whyThisWord": {
+          "de": "Mon premier souvenir, c'est … eröffnet eine Erzählung mit einem persönlichen Bild aus der Vergangenheit.",
+          "en": "Mon premier souvenir, c'est … opens a story with a personal image from the past."
+        }
+      },
+      "distractors": [
+        "ces boutons rouges",
+        "sont en rupture"
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem alten Marktfoto bilden Obst- und Gemüsestände mehrere schmale Gänge.",
+        "en": "Fruit and vegetable stalls form narrow aisles in an old market photograph."
+      },
+      "songMood": "Warm und nachdenklich.",
+      "visualNotes": "Fruit and vegetable stalls form narrow aisles in an old market photograph."
+    }
+  ]
+}

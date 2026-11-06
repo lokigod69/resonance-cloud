@@ -1,0 +1,1330 @@
+{
+  "language": "French",
+  "level": "B1",
+  "pathNumber": 8,
+  "lessonSha256": "3b6e708451d4d4a59afd02f99e70a440b21b658b0b3b4f87187f875dc01b1047",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "3b6e708451d4d4a59afd02f99e70a440b21b658b0b3b4f87187f875dc01b1047",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "autrefois + faisais in turn 2; turn 4 contrasts croisais with present on se voit after the shop closes, which the situation does not pre-empt; chunks, recall and cloze concatenate exactly to the learner lines."
+      },
+      {
+        "n": 2,
+        "observation": "Title and caption now show only a river path, so the willows in turn 4 stay hidden; cloze reconstructs 'Je revois les saules dont les branches touchaient presque l'eau' and the German 'deren Zweige' matches dont."
+      },
+      {
+        "n": 3,
+        "observation": "On avait l'habitude de + infinitive is the single pattern; terms gloss now reads 'wir hatten die Gewohnheit zu'; cloze keeps the apostrophe in the text segment and the two imparfait blanks carry informative cues."
+      },
+      {
+        "n": 4,
+        "observation": "prenais régulièrement with cousin + nous rentrions as the follow-up; venir/rentrer chips are each uniquely correct for their subject and the bus transfer example differs genuinely from the rehearsed line."
+      },
+      {
+        "n": 5,
+        "observation": "Situation now says 'früheren Nachbarin'; ne … plus vs jouais staged correctly, and pour que + puisse foils (peut, pouvons, peuvent) teach the right subjunctive distinction."
+      },
+      {
+        "n": 6,
+        "observation": "fréquentais + direct object and je n'y vais plus; the déménagement/last-bus complication is withheld, cloze 'part avant la fin des concerts' matches turn 4 and no other chip can precede the noun phrase."
+      },
+      {
+        "n": 7,
+        "observation": "Delta verified: 'pour' is now a choice blank; among parce que, pour, puisque, quand only pour can introduce the infinitive rentrer, so first-attempt grading is fair while marche stays a typed form; English turn 3 uses present perfect and the caption no longer shows the footbridge."
+      },
+      {
+        "n": 8,
+        "observation": "L8 repair verified: 'parce que' is literal in the cloze text and the second blank is pèse (le verre) with pèse/pesons/pesez/pèsent; concatenation equals turn 4 and chunks now render ça fait trois mois que as 'seit drei Monaten … lasse ich'."
+      },
+      {
+        "n": 9,
+        "observation": "depuis que + present partagent, concrete parcels example in turn 4 with prend/travaille correctly cued; male neighbor keeps tu and the situation does not reveal the parcel example."
+      },
+      {
+        "n": 10,
+        "observation": "Consolidation mixes où + cherchais with ça fait un an que je connais; fait/connais chips are uniquely correct and the first-week situation does not disclose that the learner no longer gets lost."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "3b6e708451d4d4a59afd02f99e70a440b21b658b0b3b4f87187f875dc01b1047",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The former shop routine still contrasts croisais with present voit after the shop’s closure."
+      },
+      {
+        "n": 2,
+        "observation": "The river path title preserves the willow detail. Dont renders the possessive connection; see the accepted locative nuance."
+      },
+      {
+        "n": 3,
+        "observation": "Aimais and pouvait reconstruct the earlier feeling and possibility; neither cue discloses the answer."
+      },
+      {
+        "n": 4,
+        "observation": "Venait and rentrions agree with their respective subjects in the recollection of a tennis lesson."
+      },
+      {
+        "n": 5,
+        "observation": "The late-arriving marble player is included through recommençait and puisse."
+      },
+      {
+        "n": 6,
+        "observation": "The last bus leaves avant la fin; the other offered connectors cannot directly take that noun phrase here."
+      },
+      {
+        "n": 7,
+        "observation": "Only pour out of parce que, pour, puisque, quand directly introduces rentrer to express walking home. The choice is now fixed at first attempt while marche stays typed."
+      },
+      {
+        "n": 8,
+        "observation": "Parce que remains fixed and the pèse answer is the one correct form for le verre among its four options."
+      },
+      {
+        "n": 9,
+        "observation": "The shared-garden habit leads to the neighbor accepting parcels while the speaker works, with both present forms correctly cued."
+      },
+      {
+        "n": 10,
+        "observation": "The market answer takes fait and connais for ongoing duration. The first learner turn keeps its imperfect scene-setting contrast."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "cloze connector choices",
+        "issue": "Accepted contextual limitation. Où can turn the trees into the location of the branches, but the intended possessive relative is more idiomatic and specifically means whose / deren.",
+        "recommendation": "Optional future replacement for où would remove this alternate locative interpretation."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "dialogue[3]",
+        "issue": "Accepted staging variation. Depuis son ouverture appears incidentally in a response one lesson before the explicit duration instruction; the modeled and assessed core stays comparative. The route change provides an implicit reason.",
+        "recommendation": "No edit needed for this path-level stage."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "pattern.examples[1].baseText.en",
+        "issue": "During the holidays can be interpreted as the festive season in American English rather than a vacation. The intended past routine is clear.",
+        "recommendation": "Optional gloss: during vacation."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "244a9da7480f33fba9fe8f6e7bc462789d8bdb6fbe26a20da5f43a81c82e0891",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Faisais marks the shopping routine and croisais contrasts clearly with present-day voit."
+      },
+      {
+        "n": 2,
+        "observation": "Pendant mon enfance avoids gender agreement, and suivais transfers to a swimming class. The early title and image reveal the willows."
+      },
+      {
+        "n": 3,
+        "observation": "The conversation explains the family ritual’s value, but one German term describes acquiring the habit rather than having it."
+      },
+      {
+        "n": 4,
+        "observation": "Venait and rentrions test different persons; the cousin supplies new information after the initial tennis recollection."
+      },
+      {
+        "n": 5,
+        "observation": "Ne … plus correctly contrasts present and past play; the later response explains how new players were included."
+      },
+      {
+        "n": 6,
+        "observation": "Fréquentais takes a direct object. The bus schedule explains the change after moving."
+      },
+      {
+        "n": 7,
+        "observation": "Davantage de + noun compares time outdoors, but the learner’s follow-up uses the next stage’s depuis and leaves the reason for walking implicit."
+      },
+      {
+        "n": 8,
+        "observation": "Ça fait trois mois que + present describes an ongoing habit. The German build chunk instead means three months ago."
+      },
+      {
+        "n": 9,
+        "observation": "Depuis que + present is correctly explained. Accepting deliveries gives the requested concrete example beyond the garden."
+      },
+      {
+        "n": 10,
+        "observation": "The market memory uses imparfait for the original scene and a duration with present for today’s familiarity."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "HIGH",
+        "field": "title, placeholderCaption, visualNotes",
+        "issue": "The title names the willows and the picture describes their low branches over the river before the friend asks what image the learner remembers. Together they supply the intended answer.",
+        "recommendation": "Use a neutral childhood school-route title and a river path without identifiable trees or branches."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "cloze[1].choices",
+        "issue": "Où can introduce a place relative with a tree as location: les saules où les branches touchaient presque l’eau. It is less precise than possessive dont but yields a defensible description of which trees are remembered.",
+        "recommendation": "Remove où as a fallback foil or reframe the relative with an unambiguously possessive antecedent."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "terms[1].baseText.de",
+        "issue": "wir machten es uns zur Gewohnheit zu means we made it a habit and is incomplete/unnatural as a standalone gloss. The French states an existing habit.",
+        "recommendation": "Use wir pflegten … zu or wir hatten die Angewohnheit, … zu."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "cloze.cue, also L7",
+        "issue": "The hints regarder (sans + Infinitiv) and rentrer (pour + Infinitiv) print the exact answers to their own typed blanks.",
+        "recommendation": "Prompt with the intended meaning or an inflected French form; do not display the missing infinitive."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].baseText.en, dialogue[3], placeholderCaption, visualNotes",
+        "issue": "I see you walking every evening since … needs the present perfect. The image gives away the footbridge. The answer repeats the time since opening, introducing depuis productively one lesson early, without saying how the route makes walking easier.",
+        "recommendation": "Use I’ve seen you walking … since … and remove the footbridge from the image. A follow-up like Oui, maintenant le chemin est plus court, alors je rentre plus souvent à pied gives the requested reason and preserves L7 comparative staging."
+      },
+      {
+        "n": 8,
+        "severity": "HIGH",
+        "field": "chunks[0–1].baseText.de",
+        "issue": "Es ist drei Monate her, dass ich … describes an elapsed interval since an event, the opposite of the continuing habit the exercise specifically teaches.",
+        "recommendation": "Use chunks that translate ça fait trois mois que as seit drei Monaten and then resegment je laisse la voiture … so the DE/EN glosses reconstruct the ongoing reading."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "cloze connector",
+        "issue": "The learner can write car le verre pèse lourd in the exact same slot as parce que, preserving register, grammar, causal meaning and both translations. No cue distinguishes them.",
+        "recommendation": "If exact single-answer is required, print the causal conjunction and blank pèse (peser, le verre) instead, or blank que as part of a differently constrained form."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "situation.de",
+        "issue": "Eine alte Nachbarin typically denotes an elderly neighbor, while former neighbour / ancienne cour establishes a former neighbor.",
+        "recommendation": "Use eine frühere Nachbarin."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8e40ce87c93c5122db91a590aeebc514a0f4b0b965ed26ab94bd333f3a6e7684",
+      "sourceSha256": "244a9da7480f33fba9fe8f6e7bc462789d8bdb6fbe26a20da5f43a81c82e0891",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat and trophy met: autrefois je faisais, then the shopkeeper complication (croisais tous les jours → on se voit rarement); cloze/recall/chunks reconstruct the lines exactly, cues visible, no chip punctuation issue."
+        },
+        {
+          "n": 2,
+          "observation": "Pendant mon enfance + je suivais, willows revealed only in turn 4; dont connector recycles P4; second pattern example shifts suivre to 'suivre un cours', a different sense from the 'trajet habituel' label."
+        },
+        {
+          "n": 3,
+          "observation": "On avait l'habitude de + infinitive carried through recall (avait) and cloze (pouvait / regarder after sans); ce que … c'était recycles P4 L9 properly."
+        },
+        {
+          "n": 4,
+          "observation": "Régulièrement with prenais; the 'with whom' relance lands in turn 4 with two imparfait blanks (venait, rentrions) and clear subject cues."
+        },
+        {
+          "n": 5,
+          "observation": "Je ne joue plus / je jouais contrast matches L5–7 staging; pour que chacun puisse recycles P7 subjunctive, cue names pour que; en strings use British 'neighbour(s)'."
+        },
+        {
+          "n": 6,
+          "observation": "Je fréquentais + je n'y vais plus with the bus complication after the move; distractor chip 'près du four ?' ends in a question mark; en example uses 'neighbourhood'."
+        },
+        {
+          "n": 7,
+          "observation": "Davantage de temps … que maintenant, then depuis son ouverture (beat requires depuis, a taken trophy) with present marche; comparison and causal turn coherent."
+        },
+        {
+          "n": 8,
+          "observation": "Ça fait trois mois que je laisse in present with désormais; unexpected effect (fewer glass bottles) only in turn 4; German chip 'es ist drei Monate her' suggests a completed event rather than ongoing duration."
+        },
+        {
+          "n": 9,
+          "observation": "Depuis que les voisins partagent (present) plus the concrete parcel example with depuis cet été; British 'neighbour(s)' throughout en strings."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone mixes imparfait souvenir (où je cherchais) with ça fait un an que je connais; en situation/caption use 'neighbourhood'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "British spelling 'neighbour(s)' in en-US base strings (situation, dialogue, pattern example, chunk, term, sceneCaption); staging bans British spellings.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "neighbour",
+              "new": "neighbor"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Distractor build chip 'près du four ?' ends in a question mark (archive rejects non-final chips ending in ?); also British 'neighbourhood' in the second pattern example.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/distractors/1",
+              "old": "près du four ?",
+              "new": "près du four"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "neighbourhood",
+              "new": "neighborhood"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "British spelling 'neighbour(s)' in en-US strings (situation, dialogue turns 2 and 4, pattern example, chunk, term, sceneCaption).",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/8",
+              "old": "neighbour",
+              "new": "neighbor"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "British spelling 'neighbourhood' in en situation and sceneCaption.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/9",
+              "old": "neighbourhood",
+              "new": "neighborhood"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "German chip glosses 'nein, es ist drei Monate her' + 'dass ich lasse' read as a completed event; ça fait trois mois que + present means ongoing duration (dialogue de already uses 'seit drei Monaten').",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/0/baseText/de",
+              "old": "nein, es ist drei Monate her",
+              "new": "nein, seit drei Monaten"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/1/baseText/de",
+              "old": "dass ich lasse",
+              "new": "lasse ich"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Term gloss 'wir machten es uns zur Gewohnheit zu' implies deliberately adopting a habit; 'on avait l'habitude de' is simply 'we used to'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/1/baseText/de",
+              "old": "wir machten es uns zur Gewohnheit zu",
+              "new": "wir hatten die Gewohnheit zu"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Second pattern example uses 'suivre un cours' (attend a class), a different sense from the label 'Un trajet habituel' and the rehearsed 'suivre la rivière'; consider a route-based example.",
+          "edits": []
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "en turn 3 'And now the shop has closed, do you…' reads better as 'And now that the shop has closed'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "And now the shop has closed, do you still see the shopkeepers?",
+              "new": "And now that the shop has closed, do you still see the shopkeepers?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a62e84598c944ce2a00ba6d36993111d4a68d6eda8902aa25abd0b77ecaf6068",
+      "sourceSha256": "244a9da7480f33fba9fe8f6e7bc462789d8bdb6fbe26a20da5f43a81c82e0891",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Autrefois je faisais plus the closed-shop complication (croisais → on se voit rarement); cloze, chunks and recall reconstruct the lines exactly, cues visible, title previews only the learner's own turn 2. Only an optional en 'now that' polish."
+        },
+        {
+          "n": 2,
+          "observation": "Pendant mon enfance + je suivais is gender-safe and dont recycles P4; but the title and placeholder image name the willows with low branches before the friend asks what you picture first, leaking turn 4. The où foil is dismissed: 'les saules où les branches touchaient' is not an acceptable possessive relative, dont is the only native answer. Second example 'suivais un cours' shifts sense; left optional."
+        },
+        {
+          "n": 3,
+          "observation": "On avait l'habitude de + infinitive carried through recall and cloze; ce que … c'était recycles P4. Term gloss 'wir machten es uns zur Gewohnheit zu' means adopting a habit, not having one. The cue 'regarder (sans + Infinitiv)' follows the corpus lemma-cue convention and the chips test form selection, so it is dismissed."
+        },
+        {
+          "n": 4,
+          "observation": "Régulièrement with prenais, the cousin arrives only in turn 4, two imparfait blanks test different persons with clear subject cues; all reconstruction fields exact."
+        },
+        {
+          "n": 5,
+          "observation": "Ne … plus vs jouais matches L5–7 staging and pour que chacun puisse recycles P7; British 'neighbour(s)' throughout en strings must become neighbor. 'alten Nachbarin' is ambiguous (elderly vs former), optional fix."
+        },
+        {
+          "n": 6,
+          "observation": "Je fréquentais + je n'y vais plus with the last-bus complication revealed only after the move question; distractor chip 'près du four ?' carries a trailing question mark and the example uses British 'neighbourhood'."
+        },
+        {
+          "n": 7,
+          "observation": "Davantage de temps … que maintenant plus comparative 'plus souvent' in turn 4; 'depuis son ouverture' is sanctioned by the outline beat itself and is not blanked, so the early-depuis objection is dismissed. en turn 3 'I see you walking … since the footbridge opened' needs present perfect, and the placeholder image shows the footbridge before the friend mentions it."
+        },
+        {
+          "n": 8,
+          "observation": "Ça fait trois mois que je laisse in present with désormais, unexpected effect only in turn 4. German chunks 'es ist drei Monate her' + 'dass ich lasse' teach the completed-event reading, opposite of the pattern; typed 'car' is dismissed because the de gloss 'weil' maps to parce que (car = denn) and chips show parce que."
+        },
+        {
+          "n": 9,
+          "observation": "Depuis que les voisins partagent (present) explained correctly; parcel example answers the relance. British 'neighbour(s)' in situation, turns, example, chunk, term and caption."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone mixes où je cherchais (imparfait scene) with ça fait un an que je connais; British 'neighbourhood' in en situation and sceneCaption."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Title and placeholder image reveal the willows with branches over the water, i.e. the turn-4 answer to the friend's turn-3 question.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/title/de",
+              "old": "Der Weg unter den Weiden",
+              "new": "Der Weg am Fluss"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/title/en",
+              "old": "The path beneath the willows",
+              "new": "The path by the river"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/placeholderCaption/de",
+              "old": "Die Zweige einer Weide hängen tief über einen schmalen Flussweg.",
+              "new": "Ein schmaler Weg führt am Ufer eines ruhigen Flusses entlang."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/placeholderCaption/en",
+              "old": "Willow branches hang low over a narrow riverside path.",
+              "new": "A narrow path runs along the bank of a quiet river."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/visualNotes",
+              "old": "Willow branches hang low over a narrow riverside path.",
+              "new": "A narrow path runs along the bank of a quiet river."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "German term gloss for 'on avait l'habitude de' means 'we made it a habit to' (adopting), not 'we used to'; the chunk already says 'wir hatten die Gewohnheit'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/1/baseText/de",
+              "old": "wir machten es uns zur Gewohnheit zu",
+              "new": "wir hatten die Gewohnheit zu"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "British spelling 'neighbour(s)' in en-US situation, dialogue turn 2, pattern example, chunk, term and sceneCaption; staging bans British spellings.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "neighbour",
+              "new": "neighbor"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Non-final build distractor chip ends with ' ?'; British 'neighbourhood' in the second pattern example.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/distractors/1",
+              "old": "près du four ?",
+              "new": "près du four"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "neighbourhood",
+              "new": "neighborhood"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "en turn 3 uses simple present with 'since the footbridge opened' (needs present perfect); placeholder image shows the footbridge, foreshadowing the friend's turn-3 complication.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/2/baseText/en",
+              "old": "But I see you walking every evening since the footbridge opened.",
+              "new": "But I've seen you walking every evening since the footbridge opened."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/placeholderCaption/de",
+              "old": "Eine Fußgängerbrücke verbindet ein Büroviertel mit einer Wohnstraße.",
+              "new": "Eine Straße zwischen Bürogebäuden und Wohnhäusern in der Abenddämmerung."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/placeholderCaption/en",
+              "old": "A footbridge connects an office district to a residential street.",
+              "new": "A street between office buildings and houses at dusk."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/visualNotes",
+              "old": "A footbridge connects an office district to a residential street.",
+              "new": "A street between office buildings and houses at dusk."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "German build chunks 'nein, es ist drei Monate her' + 'dass ich lasse' read as an elapsed interval after a completed event, the opposite of the ongoing ça fait … que + present the lesson teaches; dialogue de already uses 'seit drei Monaten'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/0/baseText/de",
+              "old": "nein, es ist drei Monate her",
+              "new": "nein, seit drei Monaten"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/1/baseText/de",
+              "old": "dass ich lasse",
+              "new": "lasse ich"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "British spelling 'neighbour(s)' in en-US situation, dialogue turns 2 and 4, pattern example, chunk, term and sceneCaption.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/8",
+              "old": "neighbour",
+              "new": "neighbor"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "British spelling 'neighbourhood' in en situation and sceneCaption.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/9",
+              "old": "neighbourhood",
+              "new": "neighborhood"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "en turn 3 'And now the shop has closed, do you…' reads better as 'now that'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "And now the shop has closed, do you still see the shopkeepers?",
+              "new": "And now that the shop has closed, do you still see the shopkeepers?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "'einer alten Nachbarin' can mean an elderly neighbor; en says former neighbor and the French says 'ancienne cour'.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Mit einer alten Nachbarin",
+              "new": "Mit einer früheren Nachbarin"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "'pavement bench' is British usage in en-US caption and visualNotes.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "pavement bench",
+              "new": "sidewalk bench"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Second pattern example uses 'suivre un cours' (attend a class), a different sense from the label 'Un trajet habituel'; en 'During the holidays' is British for 'vacation'. No edit imposed to avoid speculative rewrite.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "residual",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8f4b054228887bba96a15ec949fc564f537c04a69bef5d82875eaf397efb57e5",
+      "sourceSha256": "08ec1df7e209a48263fdbf41240e374635cca1c4c0113154cea2fb14cc8847fc",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Autrefois + je faisais with the closed-shop complication (croisais → on se voit rarement); cloze, chunks and recall reconstruct exactly, both cues name lemma and person without printing the answer; German/English idiomatic, tu register throughout."
+        },
+        {
+          "n": 2,
+          "observation": "Pendant mon enfance + je suivais is gender-safe; earlier title/caption leak fix is applied (river only), dont recycles P4 and où/que foils are not acceptable here; second example 'suivais un cours' shifts sense but stays optional."
+        },
+        {
+          "n": 3,
+          "observation": "On avait l'habitude de + infinitive carried through recall and chunks; term gloss already corrected. The second cloze blank targets the bare infinitive 'regarder' while its visible cue 'regarder (sans + Infinitiv)' literally prints the answer, confirmed by the mechanical check; must move the blank to an inflected target."
+        },
+        {
+          "n": 4,
+          "observation": "Régulièrement + prenais; cousin appears only in turn 4 after the question; two imparfait blanks test different persons (ma cousine / nous) with clear cues; second example uses a third-person subject and a bus context, genuinely transferable."
+        },
+        {
+          "n": 5,
+          "observation": "Ne … plus vs jouais matches L5–7 staging, pour que chacun puisse recycles P7 and the 'peut' chip teaches the real indicative/subjunctive split; US 'neighbor' now applied; 'alten Nachbarin' ambiguity remains optional."
+        },
+        {
+          "n": 6,
+          "observation": "Je fréquentais + je n'y vais plus; the move is introduced only by the friend's turn 3 and the last-bus effect only in turn 4; 'avant' connector chips are all ungrammatical in the slot; distractor '?' fix and 'neighborhood' applied."
+        },
+        {
+          "n": 7,
+          "observation": "Davantage de temps … que maintenant with 'plus souvent' in turn 4 and depuis sanctioned by the beat; en turn 3 and placeholder fixes applied. Second cloze blank 'rentrer' is again given away by its cue 'rentrer (pour + Infinitiv)'; replace with a connector blank on 'pour' whose chips are all ungrammatical before an infinitive."
+        },
+        {
+          "n": 8,
+          "observation": "Ça fait trois mois que je laisse in present with désormais, basket effect only in turn 4; German chunks now read 'seit drei Monaten' + 'lasse ich'; parce que chips (malgré, depuis, sans) are all ungrammatical before a clause; 'pavement bench' still British, optional."
+        },
+        {
+          "n": 9,
+          "observation": "Depuis que les voisins partagent explained correctly and parcel example answers the relance; the lowercase replaceText left the capitalized title 'Neighbours who know each other' in British spelling."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone mixes où je cherchais (imparfait scene) with ça fait un an que je connais; both cues name lemma and subject only; title previews only the learner's own turn-2 market; 'neighborhood' now US."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Visible cue 'regarder (sans + Infinitiv)' prints the cloze answer 'regarder'. Retarget the first blank to the inflected imparfait 'aimais' (apostrophe kept in the text segment) and leave 'sans regarder l'heure' in plain text; concat identity preserved.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Ce que j'aimais, c'était qu'on ",
+                {
+                  "kind": "form",
+                  "answer": "pouvait",
+                  "choices": [
+                    "pouvaient",
+                    "pouvions",
+                    "pouvais",
+                    "pouvait"
+                  ],
+                  "cue": "pouvoir (on, frühere Möglichkeit)"
+                },
+                " parler sans ",
+                {
+                  "kind": "form",
+                  "answer": "regarder",
+                  "choices": [
+                    "regarder",
+                    "regardait",
+                    "regardions",
+                    "regardaient"
+                  ],
+                  "cue": "regarder (sans + Infinitiv)"
+                },
+                " l'heure."
+              ],
+              "new": [
+                "Ce que j'",
+                {
+                  "kind": "form",
+                  "answer": "aimais",
+                  "choices": [
+                    "aimait",
+                    "aimions",
+                    "aimaient",
+                    "aimais"
+                  ],
+                  "cue": "aimer (je, früheres Gefühl)"
+                },
+                ", c'était qu'on ",
+                {
+                  "kind": "form",
+                  "answer": "pouvait",
+                  "choices": [
+                    "pouvaient",
+                    "pouvions",
+                    "pouvais",
+                    "pouvait"
+                  ],
+                  "cue": "pouvoir (on, frühere Möglichkeit)"
+                },
+                " parler sans regarder l'heure."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Visible cue 'rentrer (pour + Infinitiv)' prints the cloze answer 'rentrer'. Replace the second blank with a connector blank on 'pour' (pour + infinitif, P7 recycle) whose four chips are all ungrammatical before an infinitive; concat identity preserved.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze",
+              "old": [
+                "Oui, depuis son ouverture je ",
+                {
+                  "kind": "form",
+                  "answer": "marche",
+                  "choices": [
+                    "marchent",
+                    "marchons",
+                    "marchez",
+                    "marche"
+                  ],
+                  "cue": "marcher (je, heutige Gewohnheit)"
+                },
+                " plus souvent pour ",
+                {
+                  "kind": "form",
+                  "answer": "rentrer",
+                  "choices": [
+                    "rentrer",
+                    "rentre",
+                    "rentrons",
+                    "rentrez"
+                  ],
+                  "cue": "rentrer (pour + Infinitiv)"
+                },
+                "."
+              ],
+              "new": [
+                "Oui, depuis son ouverture je ",
+                {
+                  "kind": "form",
+                  "answer": "marche",
+                  "choices": [
+                    "marchent",
+                    "marchons",
+                    "marchez",
+                    "marche"
+                  ],
+                  "cue": "marcher (je, heutige Gewohnheit)"
+                },
+                " plus souvent ",
+                {
+                  "kind": "connector",
+                  "answer": "pour",
+                  "choices": [
+                    "parce que",
+                    "pour",
+                    "puisque",
+                    "quand"
+                  ]
+                },
+                " rentrer."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "British spelling 'Neighbours' survives in the capitalized en title (earlier lowercase replaceText did not match it); staging bans British spellings.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/title/en",
+              "old": "Neighbours who know each other",
+              "new": "Neighbors who know each other"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "en turn 3 'And now the shop has closed, do you…' reads more naturally as 'now that'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "And now the shop has closed, do you still see the shopkeepers?",
+              "new": "And now that the shop has closed, do you still see the shopkeepers?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "'einer alten Nachbarin' can read as elderly; en and French mean former neighbor.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Mit einer alten Nachbarin",
+              "new": "Mit einer früheren Nachbarin"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "'pavement bench' is British usage in the en-US caption and visualNotes.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "pavement bench",
+              "new": "sidewalk bench"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "48afa8aaa091b7772163a6b8ebfe4b3cca422466c56818d171d507694094292c",
+      "sourceSha256": "08ec1df7e209a48263fdbf41240e374635cca1c4c0113154cea2fb14cc8847fc",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Autrefois je faisais plus the closed-shop complication (croisais tous les jours → on se voit rarement); cloze, recall and chunks reconstruct the lines exactly, cues visible, chips never also correct; only the optional en 'now that' polish remains unapplied."
+        },
+        {
+          "n": 2,
+          "observation": "Earlier willow leak is resolved: title and image are now a neutral river path; dont/touchaient blank intact, où foil not a defensible possessive relative; second example 'suivais un cours' still shifts sense and en 'holidays' is British usage, both optional."
+        },
+        {
+          "n": 3,
+          "observation": "Term gloss now reads 'wir hatten die Gewohnheit zu', matching the chunk; on avait l'habitude de + infinitive carried through recall (avait) and cloze (pouvait, regarder after sans); lemma cues follow the corpus convention."
+        },
+        {
+          "n": 4,
+          "observation": "Régulièrement with prenais, cousin arrives only in turn 4, venait and rentrions test different persons with explicit subject cues; all reconstruction fields exact."
+        },
+        {
+          "n": 5,
+          "observation": "neighbour→neighbor replay verified in situation, turn 2, example, chunk, term and caption; ne … plus vs jouais and pour que chacun puisse correct; 'Mit einer alten Nachbarin' still ambiguous (elderly vs former), optional."
+        },
+        {
+          "n": 6,
+          "observation": "Distractor 'près du four' no longer ends in ' ?', example says 'neighborhood pool'; fréquentais + je n'y vais plus with the last-bus complication revealed only after the move question; part/avant blanks exact."
+        },
+        {
+          "n": 7,
+          "observation": "en turn 3 now present perfect and the footbridge is gone from the image; davantage de temps … que maintenant plus plus souvent; depuis son ouverture is the outline's own beat wording and is unblanked, so no early-depuis issue."
+        },
+        {
+          "n": 8,
+          "observation": "German chunks now 'nein, seit drei Monaten' + 'lasse ich', matching the ongoing ça fait … que + present; 'car' alternative dismissed since de 'weil' maps to parce que and it is not a chip; 'pavement bench' is British usage, optional."
+        },
+        {
+          "n": 9,
+          "observation": "Body strings were fixed, but the case-sensitive replay missed the capitalised en title 'Neighbours who know each other', which still carries the banned British spelling; depuis que les voisins partagent and the parcel example are correct."
+        },
+        {
+          "n": 10,
+          "observation": "'neighborhood' fixed in situation and caption; capstone mixes où je cherchais (imparfait scene) with ça fait un an que je connais; fait/connais chips exact, caption does not give away knowing the aisles by heart."
+        }
+      ],
+      "findings": [
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "en-US title still uses British spelling 'Neighbours' (capitalised, missed by the earlier lowercase replaceText); staging bans British spellings.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/title/en",
+              "old": "Neighbours who know each other",
+              "new": "Neighbors who know each other"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "en turn 3 'And now the shop has closed, do you…' reads better as 'now that'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "And now the shop has closed, do you still see the shopkeepers?",
+              "new": "And now that the shop has closed, do you still see the shopkeepers?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "'einer alten Nachbarin' usually means an elderly neighbor; en says former neighbor and the French says ancienne cour.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Mit einer alten Nachbarin",
+              "new": "Mit einer früheren Nachbarin"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "'pavement bench' is British usage in the en-US caption and visualNotes.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "pavement bench",
+              "new": "sidewalk bench"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "en second pattern example 'During the holidays' reads as the Christmas season in en-US; French les vacances means vacation.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/examples/1/baseText/en",
+              "old": "During the holidays I used to go to a swimming class every Thursday.",
+              "new": "During the vacation I used to go to a swimming class every Thursday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0f62f3d517d33f0a7134637a353709d5f6ca8267449c359f6a8d60fa93f3b490",
+      "sourceSha256": "b38300d404a6e5bccac84901d0c62b528d5fee4f4940846589e837b78e0e7546",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "autrefois + je faisais anchors L1; turn 3 'now that the shop has closed' repaired; cloze croisais/voit chips all wrong, concat matches turn 4; chip gloss 'habe ich eingekauft' still builds a readable German line."
+        },
+        {
+          "n": 2,
+          "observation": "Title and caption no longer show willows; dont-vs-où/que/quand blank tests P4 dont recycle (où after 'les saules' is not idiomatic for possession); 'Pendant mon enfance' keeps the speaker gender-free."
+        },
+        {
+          "n": 3,
+          "observation": "Cloze retargeted to 'j'|aimais' with apostrophe in the text segment; concat equals turn 4; term gloss now 'wir hatten die Gewohnheit zu' matching the chunk; avoir l'habitude de + infinitive staged correctly."
+        },
+        {
+          "n": 4,
+          "observation": "régulièrement + prenais; turn 3 asks who came, turn 4 answers with ma cousine + nous rentrions; both imparfait blanks have same-category wrong chips; second example (ma sœur, le premier bus) differs from the rehearsed line."
+        },
+        {
+          "n": 5,
+          "observation": "ne … plus enters at L5 per staging; British 'neighbour' and 'alten Nachbarin' repaired; subjunctive puisse after pour que is a P7 recycle in a learner turn, chips peut/pouvons/peuvent all ungrammatical there."
+        },
+        {
+          "n": 6,
+          "observation": "fréquentais with direct object; the move complication yields a concrete present-tense consequence (dernier bus part avant); connector chips dont/quand/puisque cannot precede 'la fin des concerts'; distractor chip no longer ends in ' ?'."
+        },
+        {
+          "n": 7,
+          "observation": "davantage de temps … que maintenant; en turn 3 now present perfect; footbridge removed from the image so the complication stays hidden; second blank is a connector 'pour' before an infinitive with four impossible chips."
+        },
+        {
+          "n": 8,
+          "observation": "ça fait trois mois que + present laisse, désormais trophy; German chunks now 'seit drei Monaten' + 'lasse ich' reconstruct the ongoing reading; 'sidewalk bench' en-US; effect on the basket (fewer glass bottles) is a real complication."
+        },
+        {
+          "n": 9,
+          "observation": "depuis que + present partagent, trophy évolution; capitalised 'Neighbors' title now en-US; turn 4 gives the concrete parcel example with Depuis cet été, both present-tense blanks have wrong-person chips."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation: imparfait souvenir scene with où, then ça fait un an que + connais; fait/connais chips all wrong; market in title/caption is the learner's own turn, not the friend's later question."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "en second pattern example 'During the holidays' reads as the festive season in en-US; French les vacances means vacation.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/examples/1/baseText/en",
+              "old": "During the holidays I used to go to a swimming class every Thursday.",
+              "new": "During the vacation I used to go to a swimming class every Thursday."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "A typed 'car' would also be grammatical in the parce que connector slot; the learner reconstructs the known turn-4 line and chips exclude car, so no false distinction is taught. No edit imposed.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "seal",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a71d8f7141296e70759f1ee19ddb673cea817712f4f1c236b2688fa81438af06",
+      "sourceSha256": "b38300d404a6e5bccac84901d0c62b528d5fee4f4940846589e837b78e0e7546",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "autrefois + faisais in turn 2, turn 4 contrasts croisais with on se voit rarement; chunks, recall and cloze reconstruct the lines exactly and the situation does not pre-empt the shop closing."
+        },
+        {
+          "n": 2,
+          "observation": "Pendant mon enfance, je suivais gives a gender-free childhood route; turn 4 recycles dont as a connector blank with only one grammatical option, while the second pattern example shifts suivre to 'suivre un cours' (acceptable, slightly off the 'trajet' label)."
+        },
+        {
+          "n": 3,
+          "observation": "On avait l'habitude de + infinitive is well staged; the cloze keeps the apostrophe in the text segment ('Ce que j'' + aimais) and both German/English turn-4 renderings are idiomatic."
+        },
+        {
+          "n": 4,
+          "observation": "régulièrement + prenais, with cousin and walking home as the causal fourth turn; all form chips are uniquely wrong and the transfer example (ma sœur prenait le premier bus) is genuinely different."
+        },
+        {
+          "n": 5,
+          "observation": "Introduces ne … plus against jouais per L5–7 staging; the pour que + puisse blank recycles P7 and its indicative foils teach the right distinction."
+        },
+        {
+          "n": 6,
+          "observation": "fréquentais with direct object + je n'y vais plus; the déménagement/dernier bus complication is hidden from the situation and the connector blank avant has no competing alternative."
+        },
+        {
+          "n": 7,
+          "observation": "davantage de temps … que maintenant plus the footbridge complication; depuis appears a lesson early but is in the outline beat and not a blank or trophy."
+        },
+        {
+          "n": 8,
+          "observation": "ça fait trois mois que je laisse + désormais correctly staged; the connector blank 'parce que' has the equally correct typed alternative 'car', so exact grading is unfair there."
+        },
+        {
+          "n": 9,
+          "observation": "depuis que + present partagent, concrete parcels example in turn 4; chip glosses and both translations are accurate and informal tu is kept with the male neighbor."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation mixes où + imparfait cherchais with ça fait un an que je connais; all reconstruction fields match and the first-week situation does not reveal the 'tu te perds encore' turn."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "The typed connector blank accepts only 'parce que', but 'car' is an equally correct B1 answer in the same slot, so exact grading would reject a correct sentence. Replace the connector blank with a second finite form blank (pèse) and leave 'parce que' literal in the text; the concatenation stays identical to dialogue turn 4, recall, trophy example and both translations are untouched.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Oui, je ",
+                {
+                  "kind": "form",
+                  "answer": "choisis",
+                  "choices": [
+                    "choisis",
+                    "choisit",
+                    "choisissons",
+                    "choisissent"
+                  ],
+                  "cue": "choisir (je, heutige Gewohnheit)"
+                },
+                " moins de bouteilles ",
+                {
+                  "kind": "connector",
+                  "answer": "parce que",
+                  "choices": [
+                    "malgré",
+                    "parce que",
+                    "depuis",
+                    "sans"
+                  ]
+                },
+                " le verre pèse lourd."
+              ],
+              "new": [
+                "Oui, je ",
+                {
+                  "kind": "form",
+                  "answer": "choisis",
+                  "choices": [
+                    "choisis",
+                    "choisit",
+                    "choisissons",
+                    "choisissent"
+                  ],
+                  "cue": "choisir (je, heutige Gewohnheit)"
+                },
+                " moins de bouteilles parce que le verre ",
+                {
+                  "kind": "form",
+                  "answer": "pèse",
+                  "choices": [
+                    "pèses",
+                    "pesons",
+                    "pesez",
+                    "pèsent"
+                  ],
+                  "cue": "peser (le verre, jetzt)"
+                },
+                " lourd."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "en-US target: 'any more' as an adverb is British-leaning; US style is 'anymore' (dialogue turn 2 and both pattern examples).",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "any more",
+              "new": "anymore"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "en-US target: 'any more' in dialogue turn 2, both pattern examples and the chunk gloss 'I don't go there any more' should be 'anymore'.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "any more",
+              "new": "anymore"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "99213687654067c39a09cd36f16c4c1504e6ab0b87daef1323d52961756888cc",
+      "sourceSha256": "3b6e708451d4d4a59afd02f99e70a440b21b658b0b3b4f87187f875dc01b1047",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "autrefois + faisais in turn 2; turn 4 contrasts croisais with present on se voit after the shop closes, which the situation does not pre-empt; chunks, recall and cloze concatenate exactly to the learner lines."
+        },
+        {
+          "n": 2,
+          "observation": "Title and caption now show only a river path, so the willows in turn 4 stay hidden; cloze reconstructs 'Je revois les saules dont les branches touchaient presque l'eau' and the German 'deren Zweige' matches dont."
+        },
+        {
+          "n": 3,
+          "observation": "On avait l'habitude de + infinitive is the single pattern; terms gloss now reads 'wir hatten die Gewohnheit zu'; cloze keeps the apostrophe in the text segment and the two imparfait blanks carry informative cues."
+        },
+        {
+          "n": 4,
+          "observation": "prenais régulièrement with cousin + nous rentrions as the follow-up; venir/rentrer chips are each uniquely correct for their subject and the bus transfer example differs genuinely from the rehearsed line."
+        },
+        {
+          "n": 5,
+          "observation": "Situation now says 'früheren Nachbarin'; ne … plus vs jouais staged correctly, and pour que + puisse foils (peut, pouvons, peuvent) teach the right subjunctive distinction."
+        },
+        {
+          "n": 6,
+          "observation": "fréquentais + direct object and je n'y vais plus; the déménagement/last-bus complication is withheld, cloze 'part avant la fin des concerts' matches turn 4 and no other chip can precede the noun phrase."
+        },
+        {
+          "n": 7,
+          "observation": "Delta verified: 'pour' is now a choice blank; among parce que, pour, puisque, quand only pour can introduce the infinitive rentrer, so first-attempt grading is fair while marche stays a typed form; English turn 3 uses present perfect and the caption no longer shows the footbridge."
+        },
+        {
+          "n": 8,
+          "observation": "L8 repair verified: 'parce que' is literal in the cloze text and the second blank is pèse (le verre) with pèse/pesons/pesez/pèsent; concatenation equals turn 4 and chunks now render ça fait trois mois que as 'seit drei Monaten … lasse ich'."
+        },
+        {
+          "n": 9,
+          "observation": "depuis que + present partagent, concrete parcels example in turn 4 with prend/travaille correctly cued; male neighbor keeps tu and the situation does not reveal the parcel example."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation mixes où + cherchais with ça fait un an que je connais; fait/connais chips are uniquely correct and the first-week situation does not disclose that the learner no longer gets lost."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Connector chip 'où' in the dont blank admits a marginal locative reading (les saules où les branches…); dont remains the only idiomatic answer, so this is not a false-distinction risk, but 'qui' would be an unambiguously wrong same-category foil.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/1/choices",
+              "old": [
+                "où",
+                "que",
+                "dont",
+                "quand"
+              ],
+              "new": [
+                "qui",
+                "que",
+                "dont",
+                "quand"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "from": "6603cc5adb6646a55766d83995000103fe442d90ecc5eab18b5eb5fd076415fe",
+      "to": "b38300d404a6e5bccac84901d0c62b528d5fee4f4940846589e837b78e0e7546",
+      "authorizedBy": "6b7db1221a0c68994f0ea247a56792f8ee7495ea12ed4e38224ad361ec67b37c",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "en turn 3 'And now the shop has closed, do you…' reads better as 'now that'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "And now the shop has closed, do you still see the shopkeepers?",
+              "new": "And now that the shop has closed, do you still see the shopkeepers?"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "'einer alten Nachbarin' can mean an elderly neighbor; en says former neighbor and the French says 'ancienne cour'.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Mit einer alten Nachbarin",
+              "new": "Mit einer früheren Nachbarin"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "'pavement bench' is British usage in en-US caption and visualNotes.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "pavement bench",
+              "new": "sidewalk bench"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "originalSourceSha256": "7c099aa6a1414d027cfb5ae500afa3574e5babed4a66ff0cd626f56c623c634a",
+      "field": "/lessons/7/cloze/3/choices/0",
+      "old": "pèses",
+      "new": "pèse",
+      "reason": "App requires the correct inflected answer in the four fallback choices."
+    }
+  ]
+}

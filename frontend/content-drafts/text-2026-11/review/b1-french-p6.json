@@ -1,0 +1,963 @@
+{
+  "language": "French",
+  "level": "B1",
+  "pathNumber": 6,
+  "lessonSha256": "dc9cafc0222b3f5e9e231fe9c2bc729c9fd6f74306b9a17137ed13704018bd37",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "dc9cafc0222b3f5e9e231fe9c2bc729c9fd6f74306b9a17137ed13704018bd37",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "sont commandées agrees with les deux pièces; learner₂ 'Si vous acceptez, je peux le laisser' proposes without presuming agreement, matching the beat; chunks and recall reconstruct learner₁ exactly."
+      },
+      {
+        "n": 2,
+        "observation": "Inverted sont-ils vérifiés is correct for les freins; cloze 'puis-je' keeps the hyphen outside the blank and no chip yields a second valid form (peux-je absent)."
+      },
+      {
+        "n": 3,
+        "observation": "est-elle préparée agrees with la livraison; the floor is given only after the carrier asks, as the beat requires; soupe example is a genuine transfer, not a copy."
+      },
+      {
+        "n": 4,
+        "observation": "est actualisé matches masculine le suivi; the two contradictory entries arrive only in them₂, not in situation/caption; cloze chips est/sont/êtes/sommes leave one answer."
+      },
+      {
+        "n": 5,
+        "observation": "First on-lesson per staging (L5–7); on s'en occupe explained with en referring to the requests; urgent-priority complication introduced only in them₂."
+      },
+      {
+        "n": 6,
+        "observation": "Trophy reçu carried in 'vous avez reçu' with on me prévient as the pattern; habitual passé composé + présent is idiomatic; no-trace complication and reference offer match the beat."
+      },
+      {
+        "n": 7,
+        "observation": "On me rappelle pattern with est remplacé state; them₂ adds a pending test plus a bad phone line, learner asks for a callback time; cloze convient/conviennent unambiguous after quelle heure."
+      },
+      {
+        "n": 8,
+        "observation": "First a été + participle lesson: a-t-il été transmis with -t- correctly explained; new reference appears only in them₂ and learner checks its use on the next call."
+      },
+      {
+        "n": 9,
+        "observation": "a-t-elle été prévue agrees with intervention; presence requirement is the complication and learner proposes a concrete slot; photo example transfers the structure."
+      },
+      {
+        "n": 10,
+        "observation": "Mix lesson est terminé / il reste un essai; second cloze blank is now kind choice without a cue, as the other review states, and prends/prenez/prenons cannot follow avant de; all reconstruction fields match learner lines."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "dc9cafc0222b3f5e9e231fe9c2bc729c9fd6f74306b9a17137ed13704018bd37",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Parts are now due Tuesday, so leaving the toaster with permission is a sensible response; pas avant mardi now appears in the vocabulary."
+      },
+      {
+        "n": 2,
+        "observation": "The formerly leaked suivre blank is now puis. The visible pouvoir cue does not disclose puis, and the other three chips cannot precede -je here."
+      },
+      {
+        "n": 3,
+        "observation": "Préparée still agrees with livraison and the second learner turn supplies the newly requested floor; trouve and donne are uniquely cued."
+      },
+      {
+        "n": 4,
+        "observation": "The revised DE/EN title refers only to checking the tracking page, without anticipating the contradictory entries."
+      },
+      {
+        "n": 5,
+        "observation": "The service-priority exception prompts a relevant delay question. With the established requests context, colloquial en is interpretable."
+      },
+      {
+        "n": 6,
+        "observation": "The notification question with on is an indirect way to check receipt; the lack of a record motivates offering the reference."
+      },
+      {
+        "n": 7,
+        "observation": "Callback timing and the unreliable telephone motivate the learner’s offer to call again. The cable-status question remains indirect."
+      },
+      {
+        "n": 8,
+        "observation": "The file is identified as ein Vorgang/er; a-t-il été transmis recurs accurately in the concert transfer and the new reference is solicited later."
+      },
+      {
+        "n": 9,
+        "observation": "Prévue agrees with intervention, and the later Friday-before-noon offer is specific. The cellar photograph is an accepted weak hint."
+      },
+      {
+        "n": 10,
+        "observation": "The prendre choice now carries no cue; its three finite foils cannot follow avant de. I checked the twenty blank answers, choices and cues again against their sentences."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "pattern.rule, L1–4",
+        "issue": "Accepted limitation. These early exercises teach present passive agreement, but the service verbs often denote a process, especially à chaque étape. The transfer items include genuine states, and the agreement target and DE/EN meanings are valid.",
+        "recommendation": "Preserve the process/state distinction if this path gets a later teaching-copy revision."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "dialogue[1], pattern.rule",
+        "issue": "Accepted spoken topic construction. En can resume the requests in context; its placement after traitement des demandes makes this a less transparent beginner model.",
+        "recommendation": "No change required for this archive verdict."
+      },
+      {
+        "n": 6,
+        "severity": "LOW",
+        "field": "dialogue[1], also L7",
+        "issue": "Accepted outline adaptation. L6 asks how notification follows receipt; L7 asks when the call follows replacement. They cover status indirectly while protecting the staged on construction and preserving each later complication.",
+        "recommendation": "If explicitly asking whether each event has already happened becomes mandatory, revisit both core turns."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "Accepted minor visual hint. The cellar is pictured; the access requirement, time and follow-up offer still need to be inferred from later dialogue.",
+        "recommendation": "A generic entrance remains an optional future replacement."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "distractors",
+        "issue": "Accepted optional polish from the initial review. Some build foils are off-topic, but they do not create a second correct answer or affect cloze uniqueness.",
+        "recommendation": "Optional future revisions could use closer foils."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "68cc67a7219c100711f6cdad1ee12089106f1c04a694ba5aab007c39b7bd6d7e",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The -ées recall correctly agrees with pièces. The storage complication currently makes the learner's offer counterproductive."
+      },
+      {
+        "n": 2,
+        "observation": "Vérifiés agrees with freins. The transfer to Tours prompts an appropriate tracking question."
+      },
+      {
+        "n": 3,
+        "observation": "Préparée agrees with livraison and the third-floor reply supplies the requested information."
+      },
+      {
+        "n": 4,
+        "observation": "Actualisé is the unique agreement choice. The visible lesson title discloses the second update."
+      },
+      {
+        "n": 5,
+        "observation": "The third-person choices for on only admit occupe. The phrasing gives en an unclear antecedent."
+      },
+      {
+        "n": 6,
+        "observation": "The receipt reference appropriately responds to the missing record, but the learner has yet to ask for delivery status."
+      },
+      {
+        "n": 7,
+        "observation": "The staged on construction works, but the learner asks about a callback rather than whether the cable has actually been replaced."
+      },
+      {
+        "n": 8,
+        "observation": "A-t-il été transmis matches the new agentless past passive. The recording example transfers it outside the service desk."
+      },
+      {
+        "n": 9,
+        "observation": "A-t-elle été prévue correctly agrees with intervention. The Friday-before-noon counteroffer solves the technician's constraint."
+      },
+      {
+        "n": 10,
+        "observation": "Terminé agrees with contrôle, and the confirmation request follows the outstanding safety test."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "dialogue[2–3]",
+        "issue": "The repairer lacks room until Tuesday. Offering to leave the toaster in that same space until Tuesday fails to help.",
+        "recommendation": "Have the repairer explain that the parts only arrive Tuesday and ask whether the customer needs the appliance urgently, or adapt the offer to the lack of space while retaining the allocated beat."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], pattern.rule, L1–4",
+        "issue": "These lead examples predominantly ask about ordering together, where brakes are checked, how delivery is prepared and updates at each stage. These are present passive processes. The rule calls commandées a current state despite the conditional act of ordering together.",
+        "recommendation": "Give early lessons unambiguous resulting states (e.g. Les deux pièces nécessaires à la réparation sont déjà commandées ?) and distinguish habitual process in rules wherever it remains. Preserve the planned service settings."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "title",
+        "issue": "Two updates on one parcel / Zwei Meldungen zu einem Paket gives away the staff member’s two conflicting entries.",
+        "recommendation": "Use a neutral title, e.g. “Checking parcel tracking” / “Die Sendungsverfolgung prüfen”."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], pattern.rule, chunks",
+        "issue": "Pour le traitement des demandes, on s’en occupe… is clumsy and the nearest topic is le traitement, whereas the rule treats en as a straightforward reference to the requests.",
+        "recommendation": "Give demandes an explicit referent: À propos de leur traitement, les demandes, on s’en occupe par ordre d’arrivée ? Or use two short sentences: Une question sur le traitement : les demandes, on s’en occupe par ordre d’arrivée ?"
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[1]",
+        "issue": "Quand vous avez reçu mon dossier, on me prévient par courrier ? mixes a past time with a general process and asks about notifications without asking whether the documents actually arrived, as required by the beat.",
+        "recommendation": "Start with Vous avez reçu mon dossier ? and then ask On me prévient par courrier dans ce cas ? Keep on as the staged anchor and sync both editions and exercises."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "dialogue[1]",
+        "issue": "The inquiry asks about a future callback. It never asks whether the faulty cable has yet been replaced, the status question assigned to this lesson.",
+        "recommendation": "Ask Le câble défectueux est remplacé ? followed by On me rappelle après le test ? or a callback question that keeps the test for turn three."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The early picture specifically depicts the cellar door, which is introduced only with the later access complication.",
+        "recommendation": "Use the general building entrance or a technician’s clipboard."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "distractors, recurring L1–10",
+        "issue": "Build distractors often come from unrelated settings (the bike lesson has ouvre à midi ?, but several others offer e.g. potato/pillow/coffee fragments). Frequently the learner can pick chunks by topic alone.",
+        "recommendation": "Use a few same-scene foils whose grammar or meaning fails the English/German build cue while preserving unique grading."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "83cdf6c59aed23112bf5dadaa8561b291153f8ed827fa64945b403f9a2e8ab3f",
+      "sourceSha256": "f24661d454fd8ca0c8ac23b633831057e59303d3eb7c63bc27c9a62127395bce",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Four causal turns: missing parts → space complication → conditional offer 'Si vous acceptez'; cloze acceptez/peux reconstructs turn 4 exactly; commandées agrees with pièces and is never a speaker participle."
+        },
+        {
+          "n": 2,
+          "observation": "sont-ils vérifiés question with transfer to Tours as complication; second example (robinets … fermés) is a genuinely different context; cue 'suivre (puis-je + Infinitiv)' makes the infinitive slot explicit."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée with feminine agreement; transporter's floor question drives turn 4; soup example transfers the frame; English strings use British lexis (flat, lift) in an en-US tier."
+        },
+        {
+          "n": 4,
+          "observation": "actualisé masculine singular; 'livré' vs 'en transit' contradiction is a real complication; contredisent chips exclude a plausible wrong match (contredit is singular)."
+        },
+        {
+          "n": 5,
+          "observation": "on s'en occupe staged as first on-structure; 'en' in the rehearsed sentence most naturally resumes du traitement rather than des demandes, but the rule's reading is defensible and the plantes example is distinct."
+        },
+        {
+          "n": 6,
+          "observation": "Beat asks 'si le dossier a été reçu'; candidate turns it into 'Quand vous avez reçu mon dossier, on me prévient' to fit the on-stage; complication (nothing under your name) and reference proposal are intact; reçu is the trophy."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle + est remplacé; unreliable phone justifies the learner calling back; 'Je viens de retrouver' loses 'gerade' in the German gloss (minor)."
+        },
+        {
+          "n": 8,
+          "observation": "a-t-il été transmis with inserted -t-il; German turn 2 renders mon dossier as plural 'meine Unterlagen' while turn 3 continues with singular 'Er', leaving the pronoun without a matching antecedent."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agreeing with intervention; cellar-key presence requirement leads to a concrete slot proposal; photo example is distinct."
+        },
+        {
+          "n": 10,
+          "observation": "est terminé ou il reste un essai mixes the state frame; learner's own 'ou il reste un essai' slightly pre-empts the safety-test complication but the scene/caption do not reveal it."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "German pronoun coherence: dialogue turn 2 translates mon dossier as plural 'meine Unterlagen', but turn 3 answers 'Er hat jetzt die Nummer zwölf B.', and chunks/terms use 'mein Vorgang'. Align turn 2 (and its duplicated pattern example) to the singular 'mein Vorgang' so 'Er' has its antecedent.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/7",
+              "old": "An welche Stelle wurden meine Unterlagen heute Morgen weitergeleitet?",
+              "new": "An welche Stelle wurde mein Vorgang heute Morgen weitergeleitet?"
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "Outline beat L6 is 'Demander si le dossier a été reçu'; the candidate asks about notification instead (to fit its L5–7 on-stage per the staging table). Trophy and complication are honoured; leaving as is avoids remodeling recall, pattern and chunks."
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "English base strings use British lexis (flat, lift; also 'by post' in L6, 'service' for a bike tune-up in L2) in a tier whose English locale is en-US. Spelling ban is not violated; consider US equivalents only if the English edition targets US readers."
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "German turn 3 'bis Dienstag habe ich kaum Platz, um Geräte aufzubewahren' shifts the scope of 'jusqu'à mardi' from the storing to the lack of space; a closer gloss would be 'Ja, aber mir fehlt der Platz, um die Geräte bis Dienstag aufzubewahren.'"
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "88f36aa0a04ea1eaf1459886d16033fe7a3fc2a4ba316d7abbd8575f2391434a",
+      "sourceSha256": "68cc67a7219c100711f6cdad1ee12089106f1c04a694ba5aab007c39b7bd6d7e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "commandées agrees with les deux pièces; cloze acceptez/peux and chunks reconstruct turns 4/2 exactly. Plan flaw confirmed: them₂ says the repairer has no room to keep appliances until Tuesday, so the learner's offer to leave the toaster there until then answers nothing; fixed by making the complication the parts' Tuesday arrival. The MEDIUM 'state vs process' objection is dismissed: the tested point is participle agreement after sont, which the rule states correctly."
+        },
+        {
+          "n": 2,
+          "observation": "sont-ils vérifiés with -és after les freins; Tours transfer drives the tracking question; chip 'suis' is excluded by the infinitive cue; robinets example is a real transfer."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée feminine; floor question from the transporter motivates turn 4; British lexis (flat, lift) is optional and left untouched."
+        },
+        {
+          "n": 4,
+          "observation": "actualisé unique by agreement; the title 'Zwei Meldungen zu einem Paket / Two updates on one parcel' discloses the two-entry complication before the scene, so it is neutralised."
+        },
+        {
+          "n": 5,
+          "observation": "on s'en occupe with third-person chips only admits occupe; 'Pour le traitement des demandes, on s'en occupe' is colloquially acceptable and en resuming the requests is defensible, so the MEDIUM rewrite is dismissed to protect recall/chunks."
+        },
+        {
+          "n": 6,
+          "observation": "Beat deviation (notification instead of 'a été reçu') is dismissed as optional: the staging table puts L5–7 on the on-frame, the trophy reçu and the reference-proposal complication are intact, and a rewrite would remodel recall, pattern and chunks."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle + est remplacé keeps the replaced-cable status and the 'when to call back' complication; faulty phone justifies the learner calling back. German turn 1 drops 'gerade' from je viens de (optional)."
+        },
+        {
+          "n": 8,
+          "observation": "a-t-il été transmis with inserted -t-il; the earlier required German pronoun fix is already applied (turn 2 'mein Vorgang' ↔ turn 3 'Er'); concert example transfers the frame."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agrees with intervention; cellar-access requirement leads to a concrete Friday-before-noon offer; the placeholder caption's cellar door is a weak hint only (optional)."
+        },
+        {
+          "n": 10,
+          "observation": "est terminé ou il reste un essai mixes the state frame as the L10 mix; the safety-test complication is not revealed by situation or caption; cloze/recall/chunks reconstruct exactly. After the listed edits every exact-reconstruction field remains consistent and the path can pass offline."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Complication/response mismatch: the repairer lacks storage space until Tuesday, yet the learner proposes to leave the toaster in that very shop until then. Replace them₂ with the parts' Tuesday arrival so the beat's 'propose leaving the appliance longer without presuming agreement' becomes a sensible reply; replace the term drawn from the old turn.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/targetText",
+              "old": "Oui, mais je manque de place pour garder les appareils jusqu'à mardi.",
+              "new": "Oui, mais les deux pièces n'arrivent pas avant mardi."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Ja, aber bis Dienstag habe ich kaum Platz, um Geräte aufzubewahren.",
+              "new": "Ja, aber die beiden Teile kommen nicht vor Dienstag an."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "Yes, but I have very little space to store appliances until Tuesday.",
+              "new": "Yes, but the two parts won't arrive before Tuesday."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/terms/4",
+              "old": {
+                "targetText": "garder les appareils",
+                "baseText": {
+                  "de": "die Geräte aufbewahren",
+                  "en": "store the appliances"
+                }
+              },
+              "new": {
+                "targetText": "pas avant mardi",
+                "baseText": {
+                  "de": "nicht vor Dienstag",
+                  "en": "not before Tuesday"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Visible lesson title reveals them₂ (the two conflicting tracking entries) before the dialogue.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/title",
+              "old": {
+                "de": "Zwei Meldungen zu einem Paket",
+                "en": "Two updates on one parcel"
+              },
+              "new": {
+                "de": "Die Sendungsverfolgung prüfen",
+                "en": "Checking the parcel tracking"
+              }
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "German turn 1 omits the 'just' of je viens de retrouver.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/0/baseText/de",
+              "old": "Ich habe Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?",
+              "new": "Ich habe gerade Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Placeholder caption shows the cellar door that only matters once the access complication appears; a neutral image avoids the hint.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption",
+              "old": {
+                "de": "Eine Kellertür und eine Arbeitsleuchte stehen unterhalb einer Treppe.",
+                "en": "A cellar door and a work light sit at the bottom of a staircase."
+              },
+              "new": {
+                "de": "Ein Klemmbrett mit Notizen liegt im Eingangsbereich eines Wohnhauses.",
+                "en": "A clipboard with notes lies in the entrance hall of an apartment building."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "A cellar door and a work light sit at the bottom of a staircase.",
+              "new": "A clipboard with notes lies in the entrance hall of an apartment building."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "residual",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a1e4046171e9b559b7d81b7f1ee5f527c4ca102a4e565a5be39272ebc00aff2f",
+      "sourceSha256": "1965b1734c3ea69242bd91262372f0342faa98a25e35315bfbcf8188431d573b",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "sont commandées agrees with les deux pièces; them₂ now gives the parts' Tuesday arrival, so the offer to leave the toaster jusque-là is a real reply; term 4 'pas avant mardi' matches; cloze acceptez/peux and chunks reconstruct turns 4/2 exactly."
+        },
+        {
+          "n": 2,
+          "observation": "sont-ils vérifiés correct after les freins; Tours transfer motivates the tracking question; but cue 'suivre (puis-je + Infinitiv)' prints the answer suivre while all cues are visible, so the first blank must become a finite form (puis in the inversion)."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée feminine; the transporter's floor question drives turn 4; soupe example transfers the frame; cloze trouve/donne with explicit subject cues grades uniquely. English uses British lexis (flat, lift) though locale is en-US; optional."
+        },
+        {
+          "n": 4,
+          "observation": "Neutral title 'Die Sendungsverfolgung prüfen' no longer discloses the two conflicting entries; est actualisé unique by masculine agreement; contredisent chips are all other persons."
+        },
+        {
+          "n": 5,
+          "observation": "on s'en occupe with third-person-only recall chips admits one answer; urgent-case priority leads to the delay question; plantes example is a real transfer of the on-frame."
+        },
+        {
+          "n": 6,
+          "observation": "L6 stays on the staging's L5–7 on-frame (on me prévient) while vous avez reçu carries the trophy and the 'no trace → offer reference' complication; status inquiry is satisfied indirectly and consistently with the official staging, so no rewrite."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle + est remplacé satisfies the replaced-cable status inquiry in the on-frame; the pending test and bad phone line justify asking when to call back; German turn 1 still drops 'gerade' (optional)."
+        },
+        {
+          "n": 8,
+          "observation": "a-t-il été transmis with inserted -t-il; German pronoun chain mein Vorgang → Er is consistent; turn 1 does not foreshadow the new reference; concert example transfers."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agrees with intervention; cellar-access requirement yields the concrete Friday-before-noon offer; caption's cellar door is a weak pre-hint only (optional)."
+        },
+        {
+          "n": 10,
+          "observation": "est terminé ou il reste un essai is a valid L10 mix of the state frame; the safety test is not revealed by situation/caption; but cue 'prendre (avant de + Infinitiv)' prints the answer, and turn 4 has only one finite verb, so the second blank must become a choice with unequivocal foils."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "All cues render simultaneously; the cue 'suivre (puis-je + Infinitiv)' literally reveals the answer. Replace the first blank with the finite inverted form puis (already seen in the dialogue), cue without the answer; concat identity preserved.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze",
+              "old": [
+                "Comment puis-je ",
+                {
+                  "kind": "form",
+                  "answer": "suivre",
+                  "choices": [
+                    "suis",
+                    "suivons",
+                    "suivre",
+                    "suivent"
+                  ],
+                  "cue": "suivre (puis-je + Infinitiv)"
+                },
+                " mon vélo quand il ",
+                {
+                  "kind": "form",
+                  "answer": "change",
+                  "choices": [
+                    "changeons",
+                    "changez",
+                    "changent",
+                    "change"
+                  ],
+                  "cue": "changer (il)"
+                },
+                " d'atelier ?"
+              ],
+              "new": [
+                "Comment ",
+                {
+                  "kind": "form",
+                  "answer": "puis",
+                  "choices": [
+                    "peut",
+                    "pouvez",
+                    "puis",
+                    "pouvons"
+                  ],
+                  "cue": "pouvoir (je, Frage mit Inversion)"
+                },
+                "-je suivre mon vélo quand il ",
+                {
+                  "kind": "form",
+                  "answer": "change",
+                  "choices": [
+                    "changeons",
+                    "changez",
+                    "changent",
+                    "change"
+                  ],
+                  "cue": "changer (il)"
+                },
+                " d'atelier ?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Cue 'prendre (avant de + Infinitiv)' reveals the answer; turn 4 contains no second finite verb, so the second blank becomes a choice blank whose foils are all finite forms impossible after avant de, with a cue that names the slot but not the word.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze",
+              "old": [
+                "Je ",
+                {
+                  "kind": "form",
+                  "answer": "dois",
+                  "choices": [
+                    "devons",
+                    "devez",
+                    "dois",
+                    "doivent"
+                  ],
+                  "cue": "devoir (je)"
+                },
+                " attendre votre confirmation avant de ",
+                {
+                  "kind": "form",
+                  "answer": "prendre",
+                  "choices": [
+                    "prends",
+                    "prend",
+                    "prenez",
+                    "prendre"
+                  ],
+                  "cue": "prendre (avant de + Infinitiv)"
+                },
+                " la route ?"
+              ],
+              "new": [
+                "Je ",
+                {
+                  "kind": "form",
+                  "answer": "dois",
+                  "choices": [
+                    "devons",
+                    "devez",
+                    "dois",
+                    "doivent"
+                  ],
+                  "cue": "devoir (je)"
+                },
+                " attendre votre confirmation avant de ",
+                {
+                  "kind": "choice",
+                  "answer": "prendre",
+                  "choices": [
+                    "prends",
+                    "prenez",
+                    "prenons",
+                    "prendre"
+                  ],
+                  "cue": "Infinitiv nach avant de"
+                },
+                " la route ?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "German turn 1 omits the 'just' of je viens de retrouver.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/0/baseText/de",
+              "old": "Ich habe Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?",
+              "new": "Ich habe gerade Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Placeholder caption shows the cellar door that only becomes relevant with them₂; a neutral image avoids the hint.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption",
+              "old": {
+                "de": "Eine Kellertür und eine Arbeitsleuchte stehen unterhalb einer Treppe.",
+                "en": "A cellar door and a work light sit at the bottom of a staircase."
+              },
+              "new": {
+                "de": "Ein Klemmbrett mit Notizen liegt im Eingangsbereich eines Wohnhauses.",
+                "en": "A clipboard with notes lies in the entrance hall of an apartment building."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "A cellar door and a work light sit at the bottom of a staircase.",
+              "new": "A clipboard with notes lies in the entrance hall of an apartment building."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "English strings use British lexis (flat, lift) in an en-US path; consider apartment/elevator consistently across title, situation, dialogue, chunks and terms if the en-US rail is enforced for lexis as well as spelling.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c1ae52fae262a18ce1ba8c3d2c4a94d137adfc00c98c48965cde4d2aa15cb73e",
+      "sourceSha256": "1965b1734c3ea69242bd91262372f0342faa98a25e35315bfbcf8188431d573b",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Earlier required repair verified: them₂ is now the parts' Tuesday arrival and term 4 is 'pas avant mardi', so 'Si vous acceptez, je peux le laisser ici jusque-là' is a sensible offer that leaves the decision to the repairer; cloze acceptez/peux and chunks rebuild turns 4/2 exactly; commandées fallbacks test only agreement with les deux pièces."
+        },
+        {
+          "n": 2,
+          "observation": "sont-ils vérifiés with -és after les freins; Tours transfer motivates the tracking question; chip 'suis' is excluded by the explicit infinitive cue 'suivre (puis-je + Infinitiv)'; robinets example is a genuine transfer."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée agrees with la livraison; the transporter's floor question drives turn 4; British lexis (flat, lift) remains optional since only British spellings are banned."
+        },
+        {
+          "n": 4,
+          "observation": "Title now neutral ('Die Sendungsverfolgung prüfen / Checking the parcel tracking'), so the two conflicting entries are no longer foreshadowed; actualisé is unique by agreement; contredit/contredisent chips are cleanly separated by number."
+        },
+        {
+          "n": 5,
+          "observation": "on s'en occupe with third-person chips admits only occupe; en resuming les demandes is defensible and the plantes example transfers the frame outside the service desk; prior MEDIUM rewrite correctly dismissed to protect recall and chunks."
+        },
+        {
+          "n": 6,
+          "observation": "Beat deviation (asks about notification after 'vous avez reçu' rather than 'a été reçu') stays accepted: staging puts L5–7 on the on-frame, trophy reçu and the no-trace/reference complication are intact; 'Quand vous avez reçu … on me prévient' is an acceptable habitual anteriority."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle + est remplacé keeps the replaced-cable status; unreliable phone justifies the learner asking when to call back; German turn 1 still lacks 'gerade' for je viens de (optional only)."
+        },
+        {
+          "n": 8,
+          "observation": "Earlier required German pronoun fix verified: turn 2 'mein Vorgang' now gives turn 3 'Er' its antecedent; a-t-il été transmis with inserted -t-il; concert example is distinct."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agrees with intervention; cellar-access requirement leads to a concrete Friday-before-noon slot; German chunk 'wurde er eingeplant' is consistent with masculine Einsatz; cellar-door placeholder is a weak hint only."
+        },
+        {
+          "n": 10,
+          "observation": "est terminé ou il reste un essai mixes the state frame as the L10 capstone; safety-test complication not revealed by situation or caption; cloze dois/prendre with 'avant de + Infinitiv' cue, recall and chunks reconstruct exactly. All reconstruction fields, captions and duplicated examples are consistent; path can pass offline as is."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "German turn 1 omits the 'just' of je viens de retrouver.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/0/baseText/de",
+              "old": "Ich habe Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?",
+              "new": "Ich habe gerade Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Placeholder caption/visualNotes show the cellar door that only becomes relevant with the access complication; a neutral image avoids the hint.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption",
+              "old": {
+                "de": "Eine Kellertür und eine Arbeitsleuchte stehen unterhalb einer Treppe.",
+                "en": "A cellar door and a work light sit at the bottom of a staircase."
+              },
+              "new": {
+                "de": "Ein Klemmbrett mit Notizen liegt im Eingangsbereich eines Wohnhauses.",
+                "en": "A clipboard with notes lies in the entrance hall of an apartment building."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "A cellar door and a work light sit at the bottom of a staircase.",
+              "new": "A clipboard with notes lies in the entrance hall of an apartment building."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "7a3488e423c984c3ba4381d6e201e1a0994c2094af958c4229246faadca52ece",
+      "sourceSha256": "5494a2524c75a6df1f784f53dc332927f450fdfdc45dd976d5d5cbfd6494e083",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Them₂ now gives the parts' Tuesday arrival, so offering to leave the toaster 'jusque-là' with 'si vous acceptez' is a coherent, non-presuming reply; commandées/-ées agreement, recall foils and both cloze cues are sound."
+        },
+        {
+          "n": 2,
+          "observation": "Inverted puis-je blank with cue 'pouvoir (je, Frage mit Inversion)' no longer leaks the answer; sont-ils vérifiés agrees with les freins, Tours transfer is a real complication and the tracking question follows from it."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée agrees with la livraison; floor answer follows the carrier's question; se trouve/donne cues name the subject. English lexis (lift/flat) is British but consistent."
+        },
+        {
+          "n": 4,
+          "observation": "Neutral title now hides the two conflicting entries; est actualisé matches le suivi, cloze 'est'/'contredisent' cues give subjects, foils all wrong in slot."
+        },
+        {
+          "n": 5,
+          "observation": "on s'en occupe staged correctly (L5–7); 'Pour le traitement des demandes, on s'en occupe…' is colloquial but grammatical, en resolving to des demandes; urgency complication leads to the delay question."
+        },
+        {
+          "n": 6,
+          "observation": "Trophy reçu present in vous avez reçu; no-trace complication leads to offering the ticket reference; 'figurer (qui = la référence)' cue keeps the subject visible; on me prévient second example is distinct (table se libère)."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle + est remplacé fits the stage and the callback request; remaining test plus bad phone line motivates 'Si je rappelle demain, quelle heure vous convient ?'; convient cue names quelle heure."
+        },
+        {
+          "n": 8,
+          "observation": "a-t-il été transmis is the first passé-composé passive as staged; new reference 12 B is them₂ and the learner checks its use on the next call; recall foils include infinitive and agreements."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agrees with intervention; cellar access requirement is a true complication answered by a time proposal; second example (photo prise) is a different verb and noun."
+        },
+        {
+          "n": 10,
+          "observation": "Mix lesson reuses est terminé state; choice blank for prendre after avant de uses only finite foils and a cue that does not name the word; safety test complication leads to the confirmation request."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "German turn 1 omits the 'just' of je viens de retrouver.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/0/baseText/de",
+              "old": "Ich habe Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?",
+              "new": "Ich habe gerade Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Placeholder caption/visualNotes depict the cellar door that only becomes relevant with them₂; a neutral image avoids the hint.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption",
+              "old": {
+                "de": "Eine Kellertür und eine Arbeitsleuchte stehen unterhalb einer Treppe.",
+                "en": "A cellar door and a work light sit at the bottom of a staircase."
+              },
+              "new": {
+                "de": "Ein Klemmbrett mit Notizen liegt im Eingangsbereich eines Wohnhauses.",
+                "en": "A clipboard with notes lies in the entrance hall of an apartment building."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "A cellar door and a work light sit at the bottom of a staircase.",
+              "new": "A clipboard with notes lies in the entrance hall of an apartment building."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "English strings use British lexis (lift, flat) in an en-US path; only spelling is banned by the rail, so no change required unless lexis is also enforced.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "seal",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3ec6866480db54883c9bdfbe535fa7ac8647ba5daaf39661c21fd55a9d9ce737",
+      "sourceSha256": "dc9cafc0222b3f5e9e231fe9c2bc729c9fd6f74306b9a17137ed13704018bd37",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "sont commandées agrees with les deux pièces; learner₂ 'Si vous acceptez, je peux le laisser' proposes without presuming agreement, matching the beat; chunks and recall reconstruct learner₁ exactly."
+        },
+        {
+          "n": 2,
+          "observation": "Inverted sont-ils vérifiés is correct for les freins; cloze 'puis-je' keeps the hyphen outside the blank and no chip yields a second valid form (peux-je absent)."
+        },
+        {
+          "n": 3,
+          "observation": "est-elle préparée agrees with la livraison; the floor is given only after the carrier asks, as the beat requires; soupe example is a genuine transfer, not a copy."
+        },
+        {
+          "n": 4,
+          "observation": "est actualisé matches masculine le suivi; the two contradictory entries arrive only in them₂, not in situation/caption; cloze chips est/sont/êtes/sommes leave one answer."
+        },
+        {
+          "n": 5,
+          "observation": "First on-lesson per staging (L5–7); on s'en occupe explained with en referring to the requests; urgent-priority complication introduced only in them₂."
+        },
+        {
+          "n": 6,
+          "observation": "Trophy reçu carried in 'vous avez reçu' with on me prévient as the pattern; habitual passé composé + présent is idiomatic; no-trace complication and reference offer match the beat."
+        },
+        {
+          "n": 7,
+          "observation": "On me rappelle pattern with est remplacé state; them₂ adds a pending test plus a bad phone line, learner asks for a callback time; cloze convient/conviennent unambiguous after quelle heure."
+        },
+        {
+          "n": 8,
+          "observation": "First a été + participle lesson: a-t-il été transmis with -t- correctly explained; new reference appears only in them₂ and learner checks its use on the next call."
+        },
+        {
+          "n": 9,
+          "observation": "a-t-elle été prévue agrees with intervention; presence requirement is the complication and learner proposes a concrete slot; photo example transfers the structure."
+        },
+        {
+          "n": 10,
+          "observation": "Mix lesson est terminé / il reste un essai; second cloze blank is now kind choice without a cue, as the other review states, and prends/prenez/prenons cannot follow avant de; all reconstruction fields match learner lines."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Them₂ 'chez vous' for the agent looking at the customer's tracking record is loose; 'sur votre suivi' is the natural referent and keeps the DE/EN translations aligned.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/2/targetText",
+              "old": "Oui, mais je vois deux mentions différentes chez vous : « livré » et « en transit ».",
+              "new": "Oui, mais je vois deux mentions différentes sur votre suivi : « livré » et « en transit »."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/2/baseText/de",
+              "old": "Ja, aber bei Ihnen sehe ich zwei verschiedene Angaben, „zugestellt“ und „unterwegs“.",
+              "new": "Ja, aber in Ihrer Sendungsverfolgung sehe ich zwei verschiedene Angaben, „zugestellt“ und „unterwegs“."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/2/baseText/en",
+              "old": "Yes, but I can see two different entries on yours, “delivered” and “in transit”.",
+              "new": "Yes, but I can see two different entries on your tracking, “delivered” and “in transit”."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "originalSourceSha256": "5494a2524c75a6df1f784f53dc332927f450fdfdc45dd976d5d5cbfd6494e083",
+      "removedChoiceCue": "Infinitiv nach avant de"
+    }
+  ]
+}

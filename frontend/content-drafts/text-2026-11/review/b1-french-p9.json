@@ -1,0 +1,758 @@
+{
+  "language": "French",
+  "level": "B1",
+  "pathNumber": 9,
+  "lessonSha256": "ff7776f61fb218e8ef5bc5e7b046452b7aabc6af263de183446a566002556756",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "ff7776f61fb218e8ef5bc5e7b046452b7aabc6af263de183446a566002556756",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Both imparfait form blanks carry visible subject cues (le voyant rouge / le voyant vert); chips are all imparfait persons, none alternatively correct; German 'mitten im Spülgang ausgefallen' and 'stehen blieb' are idiomatic."
+      },
+      {
+        "n": 2,
+        "observation": "Typed 'avant de' is unambiguous against the German 'bevor ich … gefüllt habe'; 'J'ai pesais/peser/pèsent' are all excluded; transfer example (pluie/enfants) differs from the washer core."
+      },
+      {
+        "n": 3,
+        "observation": "Relative 'qui' is the only subject-relative fit before 'indique'; the invoice offered in turn 4 responds to the agent's request for a justificatif in turn 3; 'auf der das genaue Datum steht' reads natively."
+      },
+      {
+        "n": 4,
+        "observation": "Delta verified: 'pour' now a choice blank; chips tandis que/puisque/lorsque cannot precede bare 'suivre', so one answer; this removes the unfair rejection of typed 'afin de', which the German 'um … zu' equally licenses. Choice 'garder' has no answer-printing cue."
+      },
+      {
+        "n": 5,
+        "observation": "Agentless 'a été préparé' recycles P6 L8–9; 'quoique' is absent from the connector chips; typed 'avant de' is forced by 'bevor ich grünes Licht gebe'; the missing part is the real complication."
+      },
+      {
+        "n": 6,
+        "observation": "Object-relative 'que' before 'j'ai gardé' excludes qui/dont/où; recall 'ajoutée' tests feminine agreement with preuve; neutral title no longer reveals the kept receipt before the file is found incomplete."
+      },
+      {
+        "n": 7,
+        "observation": "'Même si … je préférerais' recycles P2 and P3; 'lave' with cue 'laver (un programme court)' is singular-only; the unavailable model forces the feature answer in turn 4."
+      },
+      {
+        "n": 8,
+        "observation": "The deduction stays hidden until turn 3 (title and situation reveal only the learner's own size objection); 'déduire (vous)' cue yields one form; parce que + trop large is a P2 L1–3 reason, concession carried by context."
+      },
+      {
+        "n": 9,
+        "observation": "Two 'qui' subject cues give third-singular only; paid original transport vs. still-unorganised workshop-to-warehouse trip is coherent; German 'muss allerdings noch organisiert werden' is natural."
+      },
+      {
+        "n": 10,
+        "observation": "Choice 'confirmer' correctly guards the confirmer/confirmez homophone after 'Pouvez-vous'; 'vois' cue 'voir (je)'; recall 'résolu' with résolue/résolus tests agreement with masculine problème."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "ff7776f61fb218e8ef5bc5e7b046452b7aabc6af263de183446a566002556756",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The two imperfect forms distinguish the flashing red light from the unlit green indicator."
+      },
+      {
+        "n": 2,
+        "observation": "Pesé and avant de correctly reconstruct the precaution before loading the washer halfway."
+      },
+      {
+        "n": 3,
+        "observation": "The receipt response uses subject-relative qui to describe the invoice naming the date."
+      },
+      {
+        "n": 4,
+        "observation": "The only pair licensed by both slots is garder + pour: garder follows dois-je, while the other connector chips cannot introduce bare suivre."
+      },
+      {
+        "n": 5,
+        "observation": "The speaker requests an estimate before authorization; avant de is the only offered complement of donner."
+      },
+      {
+        "n": 6,
+        "observation": "Que is the direct object of j’ai gardé and the proof agrees with ajoutée in recall."
+      },
+      {
+        "n": 7,
+        "observation": "The short cold wash takes singular lave after qui; the request answers the missing-model objection."
+      },
+      {
+        "n": 8,
+        "observation": "The deduction remains new information and the learner requests its rationale with voudrais and déduisez."
+      },
+      {
+        "n": 9,
+        "observation": "The two singular questions assign responsibility for transport and notifying the workshop."
+      },
+      {
+        "n": 10,
+        "observation": "The €400 transfer is confirmed before written closure; the form/choice pair vois and confirmer completes the response."
+      }
+    ],
+    "findings": [
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "dialogue[1], pattern",
+        "issue": "Accepted curricular variation. L7 explicitly practices concession; L8 acknowledges the offered model through the dialogue context and recycles giving a reason with parce que. The individual refund-and-justification beat is covered.",
+        "recommendation": "If two consecutive productive concessions are subsequently required, revisit this core turn."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "placeholderCaption, visualNotes; also L10",
+        "issue": "The invoice in L3 and bank transaction in L10 hint at what the learner can use in response. The purchase-date check and transfer are already established; neither shows what the representative will ask. Accepted as contextual props.",
+        "recommendation": "Optional future neutral props include an April calendar and service file."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "trophyWord.whyThisWord.de",
+        "issue": "Accepted copy polish. Fragst du danach, dein Geld zurückzubekommen sounds stiff, though the refund meaning and use are clear.",
+        "recommendation": "A future German edit could use bittest du um die Rückzahlung."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "e4279e9627c40aa7828d0c463527f5af4c8a5d7a5379c46d93c0e7dde609674e",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The rinse-cycle breakdown establishes the same washer followed throughout; the two light states are expressed in the imperfect."
+      },
+      {
+        "n": 2,
+        "observation": "The first-load account combines est apparu and tournait. Weighing the laundry and filling the drum halfway addresses the overload hypothesis."
+      },
+      {
+        "n": 3,
+        "observation": "Je voudrais recycles a polite request and the date-bearing invoice answers the demand for proof."
+      },
+      {
+        "n": 4,
+        "observation": "The claim and tracking number follow the assigned incident, but the teaching card introduces a new causative anchor."
+      },
+      {
+        "n": 5,
+        "observation": "The repair estimate is requested without authorizing work. The past passive transfers to the notice posted outside a hall."
+      },
+      {
+        "n": 6,
+        "observation": "Ajoutée correctly agrees with preuve and gardé with reçu, while the early title and photograph supply the receipt response."
+      },
+      {
+        "n": 7,
+        "observation": "Même si + indicative and the conditional preference recycle earlier grammar. The missing model prompts a cold-cycle requirement."
+      },
+      {
+        "n": 8,
+        "observation": "The replacement keeps that cold cycle but will not fit the kitchen. The lesson title gives away the deduction, and the anchor drops the allocated concession."
+      },
+      {
+        "n": 9,
+        "observation": "The full €400 and workshop collection carry forward correctly; the two qui questions request the missing responsibilities."
+      },
+      {
+        "n": 10,
+        "observation": "The final caller verifies receipt of €400 and requests written closure. The first image prematurely shows the bank transaction."
+      }
+    ],
+    "findings": [
+      {
+        "n": 4,
+        "severity": "HIGH",
+        "field": "pattern, pedagogicalGoal, dialogue[1]",
+        "issue": "P9 is consolidation with no new grammar. Instead of revisiting the P3 polite request, this card explicitly teaches causative faire + infinitif (faire réexaminer, faire corriger), with prominence in core, transfer, build, recall and rule.",
+        "recommendation": "Model a P3 conditional request in the complaint, e.g. Pourriez-vous m’indiquer comment déposer une réclamation contre cette décision ? Use a genuine transfer of the same politeness construction."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], pattern",
+        "issue": "The exact plan assigns L7–8 concessions learned in P2. L8 teaches only preference plus cause although a replacement has in fact been offered.",
+        "recommendation": "Make the acknowledgement explicit (e.g. Même si ce modèle a le bon programme, je préfère un remboursement : il est trop large pour ma cuisine), with a genuinely different concession transfer."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "cloze[1].cue",
+        "issue": "The visible hint garder (infinitif après dois-je) prints the answer garder.",
+        "recommendation": "Use a meaning cue or differently inflected source, or blank dois with devoir (je) and keep garder fixed."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "cloze connector choices",
+        "issue": "Quoique is explicitly excluded from learner blanks by the French staging document. It appears in this chip row.",
+        "recommendation": "Substitute a familiar unambiguously wrong connector such as car."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The opening image puts the unfolded invoice in view before the agent asks for proof and the learner offers that exact invoice.",
+        "recommendation": "Use the machine manual or a calendar showing April without the invoice."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The two serial-number photos, one sharper, already picture the agent’s later instruction to attach a clearer photo.",
+        "recommendation": "Show only the original blurred serial number or the refusal letter."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "title, placeholderCaption, visualNotes",
+        "issue": "The specific handover receipt in the title and the caller’s possession of it in the image reveal the remedy before the file is found incomplete.",
+        "recommendation": "Use a general title about what is on file and show the open service record."
+      },
+      {
+        "n": 8,
+        "severity": "HIGH",
+        "field": "title",
+        "issue": "Why is there a deduction? / Warum wird etwas abgezogen? directly gives away the previously unknown staff objection in turn three.",
+        "recommendation": "Use a neutral title about the replacement offer."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "title, placeholderCaption, visualNotes",
+        "issue": "The collection slip and title already identify transport as the unresolved term.",
+        "recommendation": "Use a title about the refund agreement and show the revised amount without the collection slip."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The learner can see that the money has landed before the service representative asks them to check receipt.",
+        "recommendation": "Show the service file or caller, with no bank transaction visible."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9ed14548b44bfc8ec465c1767167309679d2f25dee8e722f3b4d75b3e03d6947",
+      "sourceSha256": "b2faff24c93fada65880726ecb223cf8d4e0e26239133b20201f6c77a7e8bd4e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Breakdown report plus imparfait contrast clignotait/était éteint; both form cues name visible subjects, chips reconstruct the learner line exactly, transfer example (micro au concert) is genuinely different."
+        },
+        {
+          "n": 2,
+          "observation": "Passé composé event against quand + imparfait background; choice blank pesé/peser/pesais correctly targets a homophone spelling trap and the load hypothesis is not foreshadowed in situation or caption."
+        },
+        {
+          "n": 3,
+          "observation": "Je voudrais savoir si recycles P5; qui/que/dont/où chips give one correct answer, invoice offer follows the proof-of-purchase request as the beat requires."
+        },
+        {
+          "n": 4,
+          "observation": "Beat and trophy fit, but the form cue 'garder (je)' contradicts the sentence: after dois-je the answer is the infinitive, so a learner following the cue would reach for 'garde'."
+        },
+        {
+          "n": 5,
+          "observation": "Agentless passive a été préparé recycles P6 L8–9; the learner withholds authorisation with avant de donner mon feu vert; connector chips (quoique, dès que, pendant que) cannot take a bare infinitive, so grading stays single-answer."
+        },
+        {
+          "n": 6,
+          "observation": "Participle agreement with une preuve → ajoutée is noun-driven, not speaker-driven, so the recall answer is safe; dépôt here means handover, which the terms gloss correctly."
+        },
+        {
+          "n": 7,
+          "observation": "Même si + je préférerais recycles P2/P3; them₂ (model no longer stocked) is not revealed by the situation, which only mentions the long part delay."
+        },
+        {
+          "n": 8,
+          "observation": "Je préfère … parce que … trop large; the situation hints at the dimensions (learner's own argument) but not at the deduction, and déduire (vous) form chips are all distinct persons."
+        },
+        {
+          "n": 9,
+          "observation": "Selon notre accord recap with amount and take-back; 'le dépôt' now means warehouse and is glossed as such, distinguishing it from L6; transport reservation is kept out of situation and caption."
+        },
+        {
+          "n": 10,
+          "observation": "Est résolu with maintenant/enfin closes the arc; the second pattern example uses the banned British spelling 'neighbours' in the English translation."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Cloze cue 'garder (je)' is misleading: the slot follows 'dois-je' and requires the infinitive, so the cue implies a conjugated je-form that is not the answer.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/1/cue",
+              "old": "garder (je)",
+              "new": "garder (infinitif après dois-je)"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "British spelling 'neighbours' in the English translation of the second pattern example; British spellings are banned.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/examples/1/baseText/en",
+              "old": "The two neighbours are talking again: the dispute is finally resolved.",
+              "new": "The two neighbors are talking again: the dispute is finally resolved."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "English 'to write to to have' is clumsy; and the pattern 'pour faire + infinitif' (faire causatif) is a construction not staged in P1–P8 although P9 promises no new grammar; it is used chunk-like and left in place.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/1/baseText/en",
+              "old": "Who should I write to to have my address corrected?",
+              "new": "Who should I write to in order to have my address corrected?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "1dcc124fbfa16fcaad1433c8c1ded53f1c4f5aa2a898a75808e5224278f849e8",
+      "sourceSha256": "e4279e9627c40aa7828d0c463527f5af4c8a5d7a5379c46d93c0e7dde609674e",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Panne beat met: est tombé en panne + au milieu du rinçage, then imparfait contrast clignotait/était éteint with visible-subject cues and chips that reconstruct the learner line exactly; micro/concert transfer is genuinely different; German/English idiomatic."
+        },
+        {
+          "n": 2,
+          "observation": "Défaut beat met: est apparu against quand … tournait encore; pesé/pesais/peser homophone choice and avant de (only chip taking an infinitive) grade single-answer; overload hypothesis not foreshadowed in situation or caption."
+        },
+        {
+          "n": 3,
+          "observation": "Garantie beat met with je voudrais savoir si (P5 recycle) and the invoice answering the proof request; qui/que/dont/où single-answer. Independent reviewer's invoice-in-image complaint dismissed as required: the situation itself states the learner already checked the purchase date, so the learner-side document is not the staff complication; offered as optional only."
+        },
+        {
+          "n": 4,
+          "observation": "Réclamation beat and trophy fit, and the earlier editorial fixes are already applied, but the current cue 'garder (infinitif après dois-je)' prints the answer, and the pattern card explicitly teaches causative pour faire + infinitif, which is not staged in P1–P8 although P9 bans new anchors; both corrected minimally (choice blank, pattern reframed to staged pour + infinitif with faire réexaminer kept as a glossed chunk). Caption pre-shows the sharper photo requested in them₂."
+        },
+        {
+          "n": 5,
+          "observation": "Devis beat met: a été préparé (P6 L8–9) and avant de donner mon feu vert; chip 'quoique' sits in a learner blank row although staging keeps quoique out of blanks; replaced by puisque, which is equally impossible before an infinitive."
+        },
+        {
+          "n": 6,
+          "observation": "Preuve beat met; ajoutée agrees with preuve, que/qui/dont/où single-answer. Title 'Der Beleg für die Abgabe / The handover receipt' and the receipt in the image reveal the remedy that only follows the incomplete-file complication; neutral title and image substituted."
+        },
+        {
+          "n": 7,
+          "observation": "Échange beat met: même si + indicative with je préférerais, cold short cycle answers the missing-model complication; situation reveals only them₁ (pump delay), not them₂; train/bus transfer differs from the rehearsed line."
+        },
+        {
+          "n": 8,
+          "observation": "Remboursement beat met in substance: je préfère … parce que … trop large explains why the refund stays preferable, and parce que is P2 L1–3, so no new grammar. Independent 'même si required' finding dismissed: the beat verb is 'expliquer pourquoi', même si was already L7's anchor, and rebuilding the core line would cascade through chunks, recall, examples and speak tokens. Title 'Why is there a deduction?' does reveal them₂ and is replaced."
+        },
+        {
+          "n": 9,
+          "observation": "Accord beat met: selon notre accord recap of 400 € and take-back, two qui-questions after the transport reservation; chips all distinct persons. Title and collection slip pre-announce the transport complication; neutral title and image substituted; 'le dépôt' correctly reglossed as warehouse versus L6 handover."
+        },
+        {
+          "n": 10,
+          "observation": "Résolu beat met: est maintenant résolu, written closure requested; confirmer vs confirmez homophone choice grades cleanly; 'neighbors' already US spelling. Independent bank-transaction caption finding dismissed: them₁ itself announces the transfer, and the image shows the learner-side payment, not the staff's confirmation request."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Cue 'garder (infinitif après dois-je)' prints the answer; the slot after dois-je is a homophone spelling test (garder/gardé/gardez), so it belongs to a cue-less choice blank like L10's 'Pouvez-vous confirmer'. Pattern card teaches unstaged causative faire + infinitif; reframe to staged pour + infinitif (P7) with faire réexaminer glossed as a chunk, and replace the causative transfer example (also fixing 'to write to to have'). Caption pre-shows the sharper photo requested in them₂.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/1",
+              "old": {
+                "kind": "form",
+                "answer": "garder",
+                "choices": [
+                  "gardais",
+                  "garder",
+                  "gardons",
+                  "gardez"
+                ],
+                "cue": "garder (infinitif après dois-je)"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "garder",
+                "choices": [
+                  "gardé",
+                  "garder",
+                  "gardais",
+                  "gardez"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pedagogicalGoal",
+              "old": "Mit pour faire und einem zweiten Infinitiv formulierst du dein Ziel: Eine andere Person soll etwas für dich erledigen.",
+              "new": "Mit pour und einem Infinitiv nennst du dein Ziel. Faire réexaminer ist hier ein fester Ausdruck: etwas noch einmal prüfen lassen."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/label",
+              "old": "Pour faire + infinitif",
+              "new": "Pour + infinitif"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/rule/de",
+              "old": "Mit pour faire und einem zweiten Infinitiv formulierst du dein Ziel: Eine andere Person soll etwas für dich erledigen.",
+              "new": "Mit pour und einem Infinitiv nennst du dein Ziel. Faire réexaminer ist hier ein fester Ausdruck: etwas noch einmal prüfen lassen."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/rule/en",
+              "old": "Use pour faire followed by another infinitive to give your purpose: you want someone else to do something for you.",
+              "new": "Use pour with an infinitive to give your purpose. Faire réexaminer is a fixed expression here: to have something reviewed again."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/pattern/examples/1",
+              "old": {
+                "targetText": "À qui écrire pour faire corriger mon adresse ?",
+                "baseText": {
+                  "de": "An wen kann ich schreiben, um meine Adresse berichtigen zu lassen?",
+                  "en": "Who should I write to to have my address corrected?"
+                },
+                "highlight": "pour faire corriger mon adresse"
+              },
+              "new": {
+                "targetText": "À qui dois-je écrire pour obtenir une réponse rapide ?",
+                "baseText": {
+                  "de": "An wen muss ich schreiben, um schnell eine Antwort zu bekommen?",
+                  "en": "Who should I write to in order to get a quick answer?"
+                },
+                "highlight": "pour obtenir une réponse rapide"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/placeholderCaption/de",
+              "old": "Auf dem Tresen liegen zwei Fotos desselben Typenschilds, eines davon unscharf.",
+              "new": "Auf dem Tresen liegt die Absage neben einem unscharfen Foto des Typenschilds."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/placeholderCaption/en",
+              "old": "Two photographs of the same label lie on the counter, one of them blurry.",
+              "new": "The refusal lies on the counter next to a blurry photo of the serial label."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/visualNotes",
+              "old": "Two photographs of the same label lie on the counter, one of them blurry.",
+              "new": "The refusal lies on the counter next to a blurry photo of the serial label."
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Connector chip 'quoique' appears in a learner blank row although the French staging keeps quoique out of blanks; puisque is an equally impossible distractor before an infinitive.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/3/choices",
+              "old": [
+                "avant de",
+                "quoique",
+                "dès que",
+                "pendant que"
+              ],
+              "new": [
+                "avant de",
+                "puisque",
+                "dès que",
+                "pendant que"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Title and placeholder image name and show the handover receipt, i.e. the learner's remedy that only arises after them₂ reports the incomplete file.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/title/de",
+              "old": "Der Beleg für die Abgabe",
+              "new": "Was steht im Vorgang?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/title/en",
+              "old": "The handover receipt",
+              "new": "What's on file?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/placeholderCaption/de",
+              "old": "Ein gefalteter Abgabebeleg liegt neben einem Telefon mit eingeschaltetem Lautsprecher.",
+              "new": "Ein Telefon mit eingeschaltetem Lautsprecher liegt neben einem Zettel mit der Vorgangsnummer."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/placeholderCaption/en",
+              "old": "A folded handover receipt lies beside a phone on speaker.",
+              "new": "A phone on speaker lies beside a note with the file number."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/visualNotes",
+              "old": "A folded handover receipt lies beside a phone on speaker.",
+              "new": "A phone on speaker lies beside a note with the file number."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Title 'Warum wird etwas abgezogen? / Why is there a deduction?' reveals the deduction announced only in them₂.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/title/de",
+              "old": "Warum wird etwas abgezogen?",
+              "new": "Das Ersatzmodell passt nicht"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/title/en",
+              "old": "Why is there a deduction?",
+              "new": "The replacement doesn't fit"
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Title 'Die Abholung klären / Arranging collection' and the collection slip in the image pre-announce the transport reservation that only appears in them₂.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/title/de",
+              "old": "Die Abholung klären",
+              "new": "Betrag und Rücknahme"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/title/en",
+              "old": "Arranging collection",
+              "new": "Amount and take-back"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption/de",
+              "old": "Ein Abholschein und das Angebot über vierhundert Euro liegen nebeneinander.",
+              "new": "Das überarbeitete Angebot über vierhundert Euro liegt auf dem Tresen."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/placeholderCaption/en",
+              "old": "A collection slip lies next to an offer for four hundred euros.",
+              "new": "The revised offer for four hundred euros lies on the counter."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/visualNotes",
+              "old": "A collection slip lies next to an offer for four hundred euros.",
+              "new": "The revised offer for four hundred euros lies on the counter."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Placeholder image shows the unfolded invoice before the agent asks for proof of purchase; a calendar showing April keeps the date motif without the document.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Eine aufgefaltete Rechnung und die Anleitung liegen auf derselben Arbeitsplatte.",
+              "new": "Die Anleitung und ein Kalender mit dem Monat April liegen auf derselben Arbeitsplatte."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/en",
+              "old": "An unfolded invoice and the instruction booklet lie on the same worktop.",
+              "new": "The instruction booklet and a calendar showing April lie on the same worktop."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/visualNotes",
+              "old": "An unfolded invoice and the instruction booklet lie on the same worktop.",
+              "new": "The instruction booklet and a calendar showing April lie on the same worktop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "f9f65b37be8c793dcf664c6f79fb8d1e4ce1bc27e1b47288810c2a9c4768d137",
+      "sourceSha256": "1d66ec1e14012794bbae63811cc74762e440a00a583622ed4e0a0c5ce20e58b3",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Panne beat met: est tombé en panne au milieu du rinçage, then imparfait contrast clignotait/était éteint with visible-subject cues; chips reconstruct the learner line exactly; micro/concert transfer differs; German and English strings idiomatic."
+        },
+        {
+          "n": 2,
+          "observation": "Défaut beat met: est apparu against quand … tournait encore; pesé is the only chip valid after J'ai and avant de the only connector taking an infinitive, so grading is single-answer; overload hypothesis not foreshadowed."
+        },
+        {
+          "n": 3,
+          "observation": "Garantie beat met with je voudrais savoir si (P5 recycle), invoice offered after the proof request; qui/que/dont/où single-answer; the invoice-in-image note remains only optional since the situation already states the learner checked the purchase date."
+        },
+        {
+          "n": 4,
+          "observation": "All previously required repairs verified in the current text: garder is now a cue-less choice blank (gardé/garder/gardais/gardez), pattern card is pour + infinitif with faire réexaminer glossed as a fixed chunk, transfer example reads naturally in both languages, caption shows only the blurred label; pour is the sole connector valid before suivre."
+        },
+        {
+          "n": 5,
+          "observation": "Devis beat met: a été préparé (P6 L8–9) and avant de donner mon feu vert; quoique is gone, puisque/dès que/pendant que cannot precede an infinitive, so one answer; affiché transfer differs from the rehearsed line."
+        },
+        {
+          "n": 6,
+          "observation": "Preuve beat met; neutral title 'Was steht im Vorgang? / What's on file?' and the file-number image are applied, so the receipt remedy is no longer revealed; ajoutée agrees with preuve, que is the only valid relative before j'ai gardé."
+        },
+        {
+          "n": 7,
+          "observation": "Échange beat met: même si + indicative with je préférerais; situation reveals only the pump delay (them₁), not the missing model; qui and lave both single-answer; train/bus transfer genuinely different."
+        },
+        {
+          "n": 8,
+          "observation": "Remboursement beat met via je préfère … parce que … trop large (P2 L1–3, no new grammar); neutral title applied; the earlier même-si rework stays dismissed because the beat verb is 'expliquer pourquoi' and même si was L7's anchor; déduire (vous) chips all distinct persons."
+        },
+        {
+          "n": 9,
+          "observation": "Accord beat met: selon notre accord recap of 400 € and take-back, transport reservation kept out of title, situation and the revised-offer image; organiser/prévenir (qui) cues visible; le dépôt correctly glossed as warehouse versus L6 handover."
+        },
+        {
+          "n": 10,
+          "observation": "Résolu beat met: est maintenant résolu, written closure requested; confirmer is the only chip valid after Pouvez-vous; 'neighbors' is US spelling; bank-transaction image stays dismissed since them₁ itself announces the transfer and the image shows the learner-side view."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "German whyThisWord 'fragst du danach, dein Geld zurückzubekommen' is unidiomatic (danach fragen + zu-infinitive).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/trophyWord/whyThisWord/de",
+              "old": "Mit remboursement fragst du danach, dein Geld zurückzubekommen.",
+              "new": "Mit remboursement bittest du darum, dein Geld zurückzubekommen."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Placeholder image shows the unfolded invoice before the agent asks for proof of purchase; a calendar showing April keeps the date motif without the document.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Eine aufgefaltete Rechnung und die Anleitung liegen auf derselben Arbeitsplatte.",
+              "new": "Die Anleitung und ein Kalender mit dem Monat April liegen auf derselben Arbeitsplatte."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/en",
+              "old": "An unfolded invoice and the instruction booklet lie on the same worktop.",
+              "new": "The instruction booklet and a calendar showing April lie on the same worktop."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/visualNotes",
+              "old": "An unfolded invoice and the instruction booklet lie on the same worktop.",
+              "new": "The instruction booklet and a calendar showing April lie on the same worktop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ded15a4a5e434b36f4070384df80d07f54420de7d59a7997f87f975c2a66a3ca",
+      "sourceSha256": "ff7776f61fb218e8ef5bc5e7b046452b7aabc6af263de183446a566002556756",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Both imparfait form blanks carry visible subject cues (le voyant rouge / le voyant vert); chips are all imparfait persons, none alternatively correct; German 'mitten im Spülgang ausgefallen' and 'stehen blieb' are idiomatic."
+        },
+        {
+          "n": 2,
+          "observation": "Typed 'avant de' is unambiguous against the German 'bevor ich … gefüllt habe'; 'J'ai pesais/peser/pèsent' are all excluded; transfer example (pluie/enfants) differs from the washer core."
+        },
+        {
+          "n": 3,
+          "observation": "Relative 'qui' is the only subject-relative fit before 'indique'; the invoice offered in turn 4 responds to the agent's request for a justificatif in turn 3; 'auf der das genaue Datum steht' reads natively."
+        },
+        {
+          "n": 4,
+          "observation": "Delta verified: 'pour' now a choice blank; chips tandis que/puisque/lorsque cannot precede bare 'suivre', so one answer; this removes the unfair rejection of typed 'afin de', which the German 'um … zu' equally licenses. Choice 'garder' has no answer-printing cue."
+        },
+        {
+          "n": 5,
+          "observation": "Agentless 'a été préparé' recycles P6 L8–9; 'quoique' is absent from the connector chips; typed 'avant de' is forced by 'bevor ich grünes Licht gebe'; the missing part is the real complication."
+        },
+        {
+          "n": 6,
+          "observation": "Object-relative 'que' before 'j'ai gardé' excludes qui/dont/où; recall 'ajoutée' tests feminine agreement with preuve; neutral title no longer reveals the kept receipt before the file is found incomplete."
+        },
+        {
+          "n": 7,
+          "observation": "'Même si … je préférerais' recycles P2 and P3; 'lave' with cue 'laver (un programme court)' is singular-only; the unavailable model forces the feature answer in turn 4."
+        },
+        {
+          "n": 8,
+          "observation": "The deduction stays hidden until turn 3 (title and situation reveal only the learner's own size objection); 'déduire (vous)' cue yields one form; parce que + trop large is a P2 L1–3 reason, concession carried by context."
+        },
+        {
+          "n": 9,
+          "observation": "Two 'qui' subject cues give third-singular only; paid original transport vs. still-unorganised workshop-to-warehouse trip is coherent; German 'muss allerdings noch organisiert werden' is natural."
+        },
+        {
+          "n": 10,
+          "observation": "Choice 'confirmer' correctly guards the confirmer/confirmez homophone after 'Pouvez-vous'; 'vois' cue 'voir (je)'; recall 'résolu' with résolue/résolus tests agreement with masculine problème."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "additionalEdits": []
+}

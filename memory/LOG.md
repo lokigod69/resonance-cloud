@@ -14,6 +14,12 @@ App commit `8804945f`. The local TTS Hub rendered 46 Japanese examples, 33 Russi
 
 Independent silent decoding found a distinct signal in every new file and zero clipped samples. The trim guard retained the quiet final consonant in 췹. At a 390-pixel width, English and German controls requested the expected audio with device speech disabled. The build, verification and 28 enabled offline suites passed. Physical-phone and native-speaker listening checks remain open.
 
+## 2026-11-07 — French and Brazilian Portuguese B1 writing completed
+
+P6–P10 add fifty four-turn lessons in each language, with German and English meanings, vocabulary, speaking targets and exercises. Both B1 tiers now have ten paths and 100 distinct trophy words. Three author agents shared the writing with the lead. Separate readers reviewed every new episode, and the language editor adjudicated their findings. The per-path reports under `frontend/content-drafts/text-2026-11/review` name the exact reviewed files. Repairs include French hints that disclosed the required word, Portuguese clozes with two valid answers, and a collection scene in which the customer now asks for an available time.
+
+The desktop dashboard and reader now cover 970 offline intermediate lessons. Across twelve targets 730 B1 and 340 B2 lessons are written. Italian B1 P4 is the next gap in the closest unfinished B1 tier. This work touched offline curriculum and its checks. TTS and intermediate course activation are deferred.
+
 ## 2026-11-07 — Shared language selection, script practice and guided matching
 
 App commit `4685204f`. The Home picker and lesson card now occupy the same positions for fresh and populated languages. Media Cards and Music follow the active target, as Library already does. All twelve released A1/A2 targets are selectable. Today Options shows one level's paths at a time, remembers the learner's choice per language, and skips matching when there are fewer than two distinguishable pairs in the learner's explanation language, including old lesson drafts. Home and Today offer Hangul, hiragana or Cyrillic practice alongside the lesson.

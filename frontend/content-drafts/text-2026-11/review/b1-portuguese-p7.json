@@ -1,0 +1,816 @@
+{
+  "language": "Portuguese",
+  "level": "B1",
+  "pathNumber": 7,
+  "lessonSha256": "3b54e6df79db3ea0e44cc08138a1fa98b5b83e16295dba2f52c33377f4952cf4",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "3b54e6df79db3ea0e44cc08138a1fa98b5b83e16295dba2f52c33377f4952cf4",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "para organizar same-agent; twenty new confirmations force two extra kitchen helpers; cue acrescentar (eu) after visible eu, dois/segunda/dobro all fail before pessoas; recall fallbacks all non-infinitive; situation withholds the complication."
+      },
+      {
+        "n": 2,
+        "observation": "podemos comprar em conjunto para economizar, then a gente compra (cue a gente, 3sg) after the cupboard limit; ocupar is the only infinitive among choices; second example para não perder is a distinct frame; DE/EN purpose clauses idiomatic."
+      },
+      {
+        "n": 3,
+        "observation": "quero sair cedo para aproveitar; brother's practice makes noon the earliest departure and the learner adapts with espero até o meio-dia para sair; 'Ich möchte früh los' / 'erst um zwölf' idiomatic; aisle-seat example transfers the pattern."
+      },
+      {
+        "n": 4,
+        "observation": "planilha para dividir em partes iguais; phone cannot open the file so the learner copies the amounts into a message; celular is BR; copio/mandar gaps uniquely graded; receipts example distinct."
+      },
+      {
+        "n": 5,
+        "observation": "No subjunctive in L5 (beat fix honoured); delivery-gate complication motivates the arrow; 'entrada da ___' admits only frente (fundos/trás/lados need dos/de/dos); DE 'den Teilnehmern die Anreise zu erleichtern' natural."
+      },
+      {
+        "n": 6,
+        "observation": "First para que o som funcione with explicit distinct subject; room opens at six thirty so the test is moved there; seis e meia vs meio/metade/meios uniquely graded; recall fallbacks funcionar/funcionem/funcionando all wrong after para que o som."
+      },
+      {
+        "n": 7,
+        "observation": "participem agrees with mais moradores; evening room conflict yields morning and afternoon sessions; cloze choices already replaced (cada cannot stand alone), outro fails against feminine conversa; board-game example is a different context."
+      },
+      {
+        "n": 8,
+        "observation": "Speakers are 'aqui', instructor finishes at four and goes later, so place/time stages are respected; two identical gates make the newsstand reference necessary; both form gaps have literal subjects eu / a banca with infinitive cues; chegue hard-g rule stated in DE/EN."
+      },
+      {
+        "n": 9,
+        "observation": "Recycle: para evitar (same agent) then para que os lojistas participem with visible subject cue; shopkeepers arriving at eight is a real complication answered by a repeat session; repetir is the only infinitive among choices."
+      },
+      {
+        "n": 10,
+        "observation": "objetivo trophy; para fazer sombra then para que cada pessoa saiba sua tarefa (whitelisted 3sg); earlier required edits (choices without formando; cada pessoa rule wording) are applied in DE and EN; recall fallbacks objetiva/objetivas/objetivos fail after Nosso."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "3b54e6df79db3ea0e44cc08138a1fa98b5b83e16295dba2f52c33377f4952cf4",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Same-agent para organizar motivates making the list, and twenty additional guests motivate adding two kitchen helpers. Neutral register and both grammatical answer sets hold."
+      },
+      {
+        "n": 2,
+        "observation": "The shared purchase and limited shelf space motivate a smaller quantity; a gente selects compra and the second example demonstrates para não perder."
+      },
+      {
+        "n": 3,
+        "observation": "Leaving early has the same agent as enjoying the visit. The companion’s practice commitment clearly changes the departure to noon; the learner's first-person verb is gender-free."
+      },
+      {
+        "n": 4,
+        "observation": "The phone cannot open the spreadsheet, which explains sending the copied numbers by message. The extra example transfers to calculating costs with receipts."
+      },
+      {
+        "n": 5,
+        "observation": "The delivery entrance causes a practical problem and explains adding the arrow. L5 preserves the intervention’s exact boundary by using only an infinitive purpose construction."
+      },
+      {
+        "n": 6,
+        "observation": "The first learner-facing para que has the licensed singular funcione and an explicit subject different from the testers. The half-hour opening constraint changes the test time. The revised path anchor matches the approved Portuguese P7 scope verbatim. Replacing only its bytes with the former anchor reproduced the exact prior signed SHA 393a0c18e0c2ecd418f9762c2618a550eeba34d9ba569c60b199d448fc3d8121, confirming that all ten lessons and all other bytes are unchanged."
+      },
+      {
+        "n": 7,
+        "observation": "Both the main and transfer examples require plural participem. The revised alternatives eliminate grammatical outras, while cada alone cannot substitute for outra in the second time slot."
+      },
+      {
+        "n": 8,
+        "observation": "Chegue preserves the hard g and the two similar gates justify supplying a landmark. Both form blanks have explicit subjects, and the instructor is distinct from the learner."
+      },
+      {
+        "n": 9,
+        "observation": "The learner genuinely adapts the discussion time around people leaving work. Participem requires the shopkeepers as plural subject and the second example applies the frame to a debate."
+      },
+      {
+        "n": 10,
+        "observation": "Replacing formando with forma removes the progressive reading of vamos; only formar now fits the offered choices. Both base-language rules correctly identify cada pessoa as the subordinate subject of saiba."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "dialogue[2].baseText.de/en",
+        "issue": "Native arbitration accepted as optional: serviert / whoever serves still simplify the previously planned staffing in quem ia servir. The added headcount and resulting need for help are clear.",
+        "recommendation": "A future localization pass can use wer das Essen servieren sollte / the people who were going to serve."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "chunks[3].baseText.de/en",
+        "issue": "The chunk gloss expresses the location reached rather than the direction, as noted in native arbitration. The full sentences convey reaching the correct entrance.",
+        "recommendation": "If refining this fragment, match it with the verb and adjacent chunk in both base languages."
+      },
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "distractors (path-wide)",
+        "issue": "The retained wrong-form build chips are easy to discard on internal grammar, e.g. as tarefa da. They cannot produce an additional valid answer, and the native editor explicitly accepts this design across the path.",
+        "recommendation": "Optional difficulty improvement only. Original report lists affected chips by lesson."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[1]",
+        "issue": "Prevenção para evitar repeats the idea, but the named topic and specific water-saving goal remain understandable and meet the beat.",
+        "recommendation": "No required edit. The wording may be tightened in a future prose pass."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[2–3]",
+        "issue": "The scenario assumes the seller can split a box of paper. The conversational choice fits the explicit storage constraint.",
+        "recommendation": "No required edit. A smaller sale unit would make the purchase more concrete."
+      },
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "pattern.examples[1].baseText.de/en",
+        "issue": "Kept both prices / Preise gemerkt are less precise than saving or recording the prices but do not affect the taught same-agent purpose.",
+        "recommendation": "Optional gloss refinement: saved both prices / beide Preise festgehalten."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "path coverage",
+        "issue": "The optional assim + indicative extension is not exemplified. The required progression from infinitive to subjunctive is correctly realized.",
+        "recommendation": "Optional enrichment in a future variation; keep the L6 introduction point."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "dialogue[3]",
+        "issue": "The agreed three pairs correspond naturally to three work types, but distributing their specific roles is implicit. The sentence is understandable and accurately glossed.",
+        "recommendation": "No required edit; the native editor retained the canonical turn."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "7f8610003b9c76218e9f6f298360fa14701814a974e13578c92a1d6deaba56ab",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The list organizes a building party; an extra twenty guests explain the staffing change. Both learner turns are gender-free. The first DE/EN rendering of the planned server loses the prior arrangement."
+      },
+      {
+        "n": 2,
+        "observation": "The space constraint prompts a smaller purchase. A gente correctly takes compra and the transfer example introduces para não plus infinitive."
+      },
+      {
+        "n": 3,
+        "observation": "The sibling's practice makes noon the earliest possible departure. The learner changes the plan and preserves same-agent purpose with para sair."
+      },
+      {
+        "n": 4,
+        "observation": "The spreadsheet is inaccessible on the friend's phone, and the learner proposes sending the amounts by message. The second example transfers to retaining receipts."
+      },
+      {
+        "n": 5,
+        "observation": "The delivery gate explains the arrow to the front entrance. No early para que or subjunctive appears in this lesson, including pattern examples."
+      },
+      {
+        "n": 6,
+        "observation": "First learner-facing para que and present subjunctive occur as licensed, at L6. The sound and battery-light examples have explicit distinct subjects; the opening time motivates the test schedule."
+      },
+      {
+        "n": 7,
+        "observation": "Participem agrees with mais moradores and is transferred to neighbours playing a board game. A plural cloze option also works when the number of later conversations is unrestricted by the sentence itself."
+      },
+      {
+        "n": 8,
+        "observation": "Chegue uses the specified subjunctive and correctly keeps hard g. The two gates make the newsstand landmark necessary; the instructor, not the learner, is gendered."
+      },
+      {
+        "n": 9,
+        "observation": "The closing time of local shops motivates repeating the discussion at eight. Both an infinitive and a plural purpose-clause subjunctive are recycled; the first turn is tautological."
+      },
+      {
+        "n": 10,
+        "observation": "The three types of work motivate dividing the group. The grammar explanation confuses people with grammatical subjects; ir + gerund creates a grammatical second answer."
+      }
+    ],
+    "findings": [
+      {
+        "n": 7,
+        "severity": "HIGH",
+        "field": "cloze[3].choices",
+        "issue": "A gente marca uma conversa de manhã e outras à tarde is grammatical. It means one discussion in the morning and others in the afternoon. An earlier plan for two slots does not make the answer syntactically impossible.",
+        "recommendation": "Retain outra and replace outras with a form that cannot head the coordinated noun phrase, or retarget the second blank."
+      },
+      {
+        "n": 10,
+        "severity": "HIGH",
+        "field": "cloze[1].choices",
+        "issue": "Vamos formando três duplas is a valid Brazilian ir + gerund construction ('let’s start/gradually go about forming three pairs'). Both formar and formando make grammatical, plausible replies.",
+        "recommendation": "Remove formando or make the response use a governing construction that only permits the infinitive."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "pedagogicalGoal; pattern.rule.de/en",
+        "issue": "Each person is a separate subject misdescribes cada pessoa: the whole noun phrase is one singular subordinate-clause subject. Para que can also take a plural subject.",
+        "recommendation": "Explain that the main clause has nós, while cada pessoa is the singular subject of saiba in the purpose clause; mirror that point in German and English."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "dialogue[3]; cloze",
+        "issue": "Forming three pairs alone leaves their jobs undecided, and saiba sua tarefa is less idiomatic than saiba o que fazer in this context.",
+        "recommendation": "Consider Vamos distribuir as tarefas para que cada dupla saiba o que fazer. This gives each pair an action, preserves the two-agent purpose and fits twelve words; synchronize glosses and exercises."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "dialogue[1]; pattern.examples[0]; chunks; related derived fields",
+        "issue": "Conversar sobre prevenção para evitar o desperdício is vague and circular in all three languages. The first blank concerns form but the model communication should say what to discuss prevention of.",
+        "recommendation": "For example, Podemos reunir o pessoal para discutir a prevenção do desperdício de água nas áreas comuns. Keep prevenção, align the explanation/highlight and update derived fields."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].baseText.de/en",
+        "issue": "Quem ia servir a comida identifies the person/people initially set to serve the food. Whoever serves and wer das Essen serviert erase the past plan.",
+        "recommendation": "Use the people who were going to serve the food and die Leute, die das Essen servieren sollten."
+      },
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "situation.de; sceneCaption.de; placeholderCaption.de",
+        "issue": "Zwei Nachbarn includes the learner in an explicitly masculine plural, although a generic reading is possible. The actual Portuguese dialogue does not assign learner gender.",
+        "recommendation": "Phrase as Du planst mit jemandem aus deinem Haus das Hausfest."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "anchor",
+        "issue": "Authoring note L5–L8 ... sujeitas à licença de Fable contradicts the approved L6 first appearance and leaves the earlier provisional decision in the path metadata.",
+        "recommendation": "Replace the provisional wording with the ratified staging: L1–5 para/para não + infinitivo, L6–8 para que with licensed present subjunctives, L9–10 recycle."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para organizando; as tarefa da”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“podem compraremos; nos material”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para aproveitando; nos relógios foi”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para dividindo; as despesa dos”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para facilitando; dos participante”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“durante os encontro”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“dois horário”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para que ela cheguem; dos auditório”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“para evitando; nas área comum”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "One or both decoys are internally malformed or dangling (“nas bancos da praça”). They are invalid before the learner even considers the rest of the sentence.",
+        "recommendation": "Use short, internally grammatical PT chunks that fail to attach to the surrounding required chips because of agreement or verb government. Check the resulting puzzle has one intended meaning."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[2–3]",
+        "issue": "Buying a literal half-box of paper assumes a seller will split it. The smaller quantity works if the purchase unit is specified.",
+        "recommendation": "Optionally offer a smaller box or several reams, which can actually be bought and stored."
+      },
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "pattern.examples[1].baseText.de/en",
+        "issue": "Guardei os dois preços can mean 'I saved both prices'. Kept both prices is unnatural in English; gemerkt narrows it to memorizing.",
+        "recommendation": "Use I saved both prices and Ich habe beide Preise festgehalten."
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "path coverage",
+        "issue": "The optional assim + indicative result frame never appears as an example. The first five lessons concentrate solely on para/para não.",
+        "recommendation": "Consider an ordinary assim + indicative sentence in a transfer example if the review goal includes the full licensed range, while preserving the L6 subjunctive boundary."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b25de92a2d3435c3cc5ee176d67ba5ce83e655a0dff745259ff9e7d0beb81456",
+      "sourceSha256": "7f8610003b9c76218e9f6f298360fa14701814a974e13578c92a1d6deaba56ab",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "para organizar with same-subject infinitive; complication (twenty more guests) forces the learner to add two helpers; cloze 'Então eu ___' with cue 'acrescentar (eu)' and duas/dois choice are unambiguous."
+        },
+        {
+          "n": 2,
+          "observation": "podemos ... para economizar, then a gente compra meia caixa after the storage limit; cue 'comprar (a gente)' keeps 3sg; second example uses para não perder, a distinct transferable pattern."
+        },
+        {
+          "n": 3,
+          "observation": "quero sair cedo para aproveitar; interlocutor's noon constraint yields 'eu espero até o meio-dia para sair com você'; German 'Ich möchte früh los' and 'erst um zwölf' are idiomatic."
+        },
+        {
+          "n": 4,
+          "observation": "planilha para dividir ... em partes iguais; phone cannot open file → copy values and send by message; 'celular' is Brazilian lexicon; 'Wie rechnen wir ab?' natural German."
+        },
+        {
+          "n": 5,
+          "observation": "explicar melhor o caminho para facilitar a chegada; no subjunctive appears (beat fix respected); 'entrada da frente' choice (frente/fundos/trás/lados) has one grammatical fit after 'da'."
+        },
+        {
+          "n": 6,
+          "observation": "First para que + funcione with explicit subject o som; room only opens at 6:30 so test moved there; recall fallbacks funcionar/funcionem/funcionando all wrong in context."
+        },
+        {
+          "n": 7,
+          "observation": "para que mais moradores participem with plural agreement; evening room conflict → morning and afternoon sessions; 'outra' choice forced by 'uma conversa'."
+        },
+        {
+          "n": 8,
+          "observation": "para que ela chegue; two identical gates complication → adds newsstand reference; both form gaps have literal explicit subjects (eu, a banca) before the gap with infinitive cues."
+        },
+        {
+          "n": 9,
+          "observation": "Recycle: para evitar (same subject) then para que os lojistas participem (whitelisted); shopkeepers arriving at eight is a real complication; cue 'participar (os lojistas)' visible."
+        },
+        {
+          "n": 10,
+          "observation": "objetivo noun trophy; para fazer sombra then para que cada pessoa saiba (whitelisted saiba, 3sg); 'Vamos formar três duplas' resolves the dig/water staffing complication."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'direto à entrada' renders static location ('direkt am Eingang' / 'right at the entrance') while chegar + à entrada expresses motion, as the full turn translation ('direkt zum Eingang', 'straight to the auditorium entrance') already shows.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/de",
+              "old": "direkt am Eingang",
+              "new": "direkt zum Eingang"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/en",
+              "old": "right at the entrance",
+              "new": "straight to the entrance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8c2dbe9cab81ae6517acdd55812d24d00c02ceab99b6b973284135690a751402",
+      "sourceSha256": "7f8610003b9c76218e9f6f298360fa14701814a974e13578c92a1d6deaba56ab",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "para organizar same-agent; twenty extra confirmations force two more kitchen helpers; cloze 'Então eu ___' with cue acrescentar (eu) and duas/dois/segunda/dobro have one fit. Build decoys 'para organizando'/'as tarefa da' are deliberate wrong-form chips that cannot build any alternative sentence, so the independent distractor finding is dismissed path-wide; 'Zwei Nachbarn' is a normal generic plural, dismissed. Interlocutor DE/EN for 'Quem ia servir' drops the past plan, kept optional."
+        },
+        {
+          "n": 2,
+          "observation": "podemos … para economizar, then 'a gente compra' with cue comprar (a gente) after the cupboard limit; half-box realism is a low non-blocking point; second example para não perder is a distinct transferable frame."
+        },
+        {
+          "n": 3,
+          "observation": "quero sair cedo para aproveitar; brother's practice makes noon the earliest departure; 'eu espero até o meio-dia para sair com você' keeps same-agent purpose; 'Ich möchte früh los' and 'erst um zwölf' idiomatic."
+        },
+        {
+          "n": 4,
+          "observation": "planilha para dividir … em partes iguais; phone cannot open the file, learner copies the amounts to send by message; celular is BR lexicon; chunk and term glosses consistent."
+        },
+        {
+          "n": 5,
+          "observation": "explicar para facilitar a chegada, no subjunctive anywhere in L5 (beat fix honoured); 'da' before the gap rules out fundos/trás/lados so frente is the only fit; delivery-gate complication motivates the arrow."
+        },
+        {
+          "n": 6,
+          "observation": "First para que o som funcione, explicit distinct subject; room opens at six thirty so the test moves there; recall fallbacks funcionar/funcionem/funcionando all wrong; anchor wording is the reviewed outline anchor and is non-learner metadata, left unchanged."
+        },
+        {
+          "n": 7,
+          "observation": "participem agrees with mais moradores; evening conflict yields morning and afternoon sessions; cloze choice 'outras' would make a grammatical 'uma conversa de manhã e outras à tarde', so it is replaced by a determiner that cannot stand alone."
+        },
+        {
+          "n": 8,
+          "observation": "para que ela chegue with hard g; two identical gates make the newsstand reference necessary; both form gaps have literal subjects eu / a banca before the gap with infinitive cues; gender is the instructor's, not the learner's; speakers are elsewhere and she goes to the centre later, times consistent."
+        },
+        {
+          "n": 9,
+          "observation": "Recycle: para evitar (same agent) then para que os lojistas participem (whitelisted, cue visible); shopkeepers at eight is a real complication; 'conversar sobre prevenção para evitar o desperdício' is slightly redundant but coherent and matches the beat, so the rewrite proposal is dismissed as speculative."
+        },
+        {
+          "n": 10,
+          "observation": "objetivo trophy; para fazer sombra then para que cada pessoa saiba (whitelisted 3sg); 'Vamos formando três duplas' is a valid BR ir+gerúndio reply, so that choice is replaced; DE/EN rule misdescribes cada pessoa ('jede Person bekommt ein eigenes Subjekt') and is tightened; turn rewrite to 'cada dupla saiba o que fazer' is unnecessary since 'saiba sua tarefa' already realizes the beat."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Cloze choice 'outras' yields a grammatical alternative ('uma conversa de manhã e outras à tarde'); exact grading would teach a false distinction.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/3/choices",
+              "old": [
+                "outros",
+                "outras",
+                "outra",
+                "outro"
+              ],
+              "new": [
+                "outros",
+                "cada",
+                "outra",
+                "outro"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Cloze choice 'formando' is a valid 'Vamos formando' (ir + gerúndio) reply; only the infinitive must fit.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1/choices",
+              "old": [
+                "formar",
+                "formando",
+                "formado",
+                "formam"
+              ],
+              "new": [
+                "formar",
+                "forma",
+                "formado",
+                "formam"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Grammar explanation says each person 'gets its own subject'; cada pessoa is itself the singular subject of saiba. Same DE string appears in pedagogicalGoal and pattern.rule.de.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/9",
+              "old": "Nach para que bekommt jede Person ein eigenes Subjekt und ihr Verb im Subjuntivo.",
+              "new": "Nach para que steht ein eigenes Subjekt wie cada pessoa, und sein Verb steht im Subjuntivo."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/rule/en",
+              "old": "You can explain the common purpose with para and an infinitive. After para que, each person can be introduced as a separate subject with a subjunctive verb.",
+              "new": "You can explain the common purpose with para and an infinitive. After para que, a new subject such as cada pessoa takes its own verb in the subjunctive."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Interlocutor turn 'Quem ia servir a comida' (past plan, ia + infinitivo) is rendered as a bare present in DE/EN.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen serviert, braucht Hilfe.",
+              "new": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen servieren sollte, braucht Hilfe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "Twenty more people have just confirmed. Whoever serves the food will need a hand.",
+              "new": "Twenty more people have just confirmed. The people who were going to serve the food will need a hand."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'direto à entrada' is static while chegar expresses motion; full-turn translations already use 'zum Eingang' / 'straight to'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/de",
+              "old": "direkt am Eingang",
+              "new": "direkt zum Eingang"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/en",
+              "old": "right at the entrance",
+              "new": "straight to the entrance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "residual",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "705fff60bb9f2ba49789a1a0dc4ebdd70502e853b30411e89951afabb8aefac1",
+      "sourceSha256": "3b54e6df79db3ea0e44cc08138a1fa98b5b83e16295dba2f52c33377f4952cf4",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "para organizar same-agent; twenty new confirmations force two extra kitchen helpers; cue acrescentar (eu) after visible eu, dois/segunda/dobro all fail before pessoas; recall fallbacks all non-infinitive; situation withholds the complication."
+        },
+        {
+          "n": 2,
+          "observation": "podemos comprar em conjunto para economizar, then a gente compra (cue a gente, 3sg) after the cupboard limit; ocupar is the only infinitive among choices; second example para não perder is a distinct frame; DE/EN purpose clauses idiomatic."
+        },
+        {
+          "n": 3,
+          "observation": "quero sair cedo para aproveitar; brother's practice makes noon the earliest departure and the learner adapts with espero até o meio-dia para sair; 'Ich möchte früh los' / 'erst um zwölf' idiomatic; aisle-seat example transfers the pattern."
+        },
+        {
+          "n": 4,
+          "observation": "planilha para dividir em partes iguais; phone cannot open the file so the learner copies the amounts into a message; celular is BR; copio/mandar gaps uniquely graded; receipts example distinct."
+        },
+        {
+          "n": 5,
+          "observation": "No subjunctive in L5 (beat fix honoured); delivery-gate complication motivates the arrow; 'entrada da ___' admits only frente (fundos/trás/lados need dos/de/dos); DE 'den Teilnehmern die Anreise zu erleichtern' natural."
+        },
+        {
+          "n": 6,
+          "observation": "First para que o som funcione with explicit distinct subject; room opens at six thirty so the test is moved there; seis e meia vs meio/metade/meios uniquely graded; recall fallbacks funcionar/funcionem/funcionando all wrong after para que o som."
+        },
+        {
+          "n": 7,
+          "observation": "participem agrees with mais moradores; evening room conflict yields morning and afternoon sessions; cloze choices already replaced (cada cannot stand alone), outro fails against feminine conversa; board-game example is a different context."
+        },
+        {
+          "n": 8,
+          "observation": "Speakers are 'aqui', instructor finishes at four and goes later, so place/time stages are respected; two identical gates make the newsstand reference necessary; both form gaps have literal subjects eu / a banca with infinitive cues; chegue hard-g rule stated in DE/EN."
+        },
+        {
+          "n": 9,
+          "observation": "Recycle: para evitar (same agent) then para que os lojistas participem with visible subject cue; shopkeepers arriving at eight is a real complication answered by a repeat session; repetir is the only infinitive among choices."
+        },
+        {
+          "n": 10,
+          "observation": "objetivo trophy; para fazer sombra then para que cada pessoa saiba sua tarefa (whitelisted 3sg); earlier required edits (choices without formando; cada pessoa rule wording) are applied in DE and EN; recall fallbacks objetiva/objetivas/objetivos fail after Nosso."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Interlocutor 'Quem ia servir a comida' (past plan with ia + infinitivo) is flattened to a plain present in DE/EN.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen serviert, braucht Hilfe.",
+              "new": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen servieren sollte, braucht Hilfe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "Twenty more people have just confirmed. Whoever serves the food will need a hand.",
+              "new": "Twenty more people have just confirmed. The people who were going to serve the food will need a hand."
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "DE second example doubles the location ('unterwegs auf dem Wanderweg'); the Portuguese has only na trilha.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1/baseText/de",
+              "old": "Ich wechsle die Batterie, damit die Lampe unterwegs auf dem Wanderweg funktioniert.",
+              "new": "Ich wechsle die Batterie, damit die Lampe auf dem Wanderweg funktioniert."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'direto à entrada' is static although chegue expresses motion; the full-turn translations already use 'zum Eingang' / 'straight to'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/de",
+              "old": "direkt am Eingang",
+              "new": "direkt zum Eingang"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/en",
+              "old": "right at the entrance",
+              "new": "straight to the entrance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "8019727531b82d0651b480df22e4107bc8f96bddb2b75a6a993412cef6976ed9",
+      "sourceSha256": "393a0c18e0c2ecd418f9762c2618a550eeba34d9ba569c60b199d448fc3d8121",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "para organizar is same-agent; twenty extra confirmations force two more kitchen helpers; cloze 'Então eu ___' with cue acrescentar (eu) and duas/dois/segunda/dobro have exactly one fit; recall fallbacks organizando/organizado/organizam all fail after 'para'. Build decoys 'para organizando'/'as tarefa da' are deliberate wrong-form chips that cannot assemble any alternative sentence, so the path-wide malformed-decoy finding stays dismissed; 'Zwei Nachbarn' is ordinary generic plural, dismissed."
+        },
+        {
+          "n": 2,
+          "observation": "podemos … para economizar, then 'a gente compra meia caixa' with cue comprar (a gente) after the cupboard limit; para não perder in the second example is a distinct transferable frame; half-box realism is non-blocking. Decoy 'podem compraremos' is glaringly nonsensical rather than a plausible error, so an optional wrong-form replacement is offered that cannot form a valid substitute (a bare 'podem comprar' would)."
+        },
+        {
+          "n": 3,
+          "observation": "quero sair cedo para aproveitar; the brother's practice makes noon the earliest departure and the learner keeps same-agent purpose with 'para sair com você'; 'Ich möchte früh los' and 'erst um zwölf' idiomatic. Decoy 'nos relógios foi' is nonsense; optional agreement-error chip offered."
+        },
+        {
+          "n": 4,
+          "observation": "planilha para dividir … em partes iguais; phone cannot open the file so the learner copies the amounts to send by message; celular is BR lexicon; 'Wie rechnen wir ab?' natural; copio/mandar gaps unambiguous."
+        },
+        {
+          "n": 5,
+          "observation": "explicar melhor o caminho para facilitar a chegada; no para que or subjunctive anywhere in L5 including examples (beat fix honoured); 'entrada da ___' with frente/fundos/trás/lados admits only frente ('de trás' would need another preposition); delivery-gate complication motivates the arrow."
+        },
+        {
+          "n": 6,
+          "observation": "First para que o som funcione with explicit distinct subject; room opens at six thirty so the test moves there; recall fallbacks funcionar/funcionem/funcionando all wrong after 'para que o som'; meia/meio/metade/meios one fit; anchor is the reviewed outline string and non-learner metadata, left as is."
+        },
+        {
+          "n": 7,
+          "observation": "participem agrees with mais moradores; evening conflict yields morning and afternoon sessions; cloze choices now outros/cada/outra/outro, so the earlier 'outras' alternative is resolved and only outra fits 'uma conversa … e ___ à tarde'; marcar (a gente) cue literal and visible."
+        },
+        {
+          "n": 8,
+          "observation": "para que ela chegue with hard g; two identical gates make the newsstand reference necessary; both form gaps have literal subjects eu / a banca before the gap with infinitive cues; gender belongs to the instructor, not the learner; caption reveals neither the two gates nor the landmark. Chunk gloss 'direkt am Eingang'/'right at the entrance' is acceptable with ankommen/arrives, kept optional."
+        },
+        {
+          "n": 9,
+          "observation": "Recycle: para evitar (same agent) then para que os lojistas participem (whitelisted) with cue 'participar (os lojistas)' after the literal subject; shopkeepers arriving at eight is a real complication; 'conversar sobre prevenção para evitar o desperdício' is slightly redundant but coherent and matches the beat, so the rewrite stays dismissed as speculative."
+        },
+        {
+          "n": 10,
+          "observation": "objetivo trophy; para fazer sombra then para que cada pessoa saiba (whitelisted 3sg, cue 'saber (cada pessoa)'); cloze choices now formar/forma/formado/formam, so the 'Vamos formando' alternative is resolved; DE/EN rule now correctly presents cada pessoa as the singular subject of saiba in both pedagogicalGoal and pattern.rule; 'saiba sua tarefa' already realizes the beat, so the 'cada dupla saiba o que fazer' rewrite remains unnecessary."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Interlocutor turn 'Quem ia servir a comida' (past plan, ia + infinitivo) is rendered as a bare present in DE/EN.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen serviert, braucht Hilfe.",
+              "new": "Gerade haben zwanzig weitere Leute zugesagt. Wer das Essen servieren sollte, braucht Hilfe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/en",
+              "old": "Twenty more people have just confirmed. Whoever serves the food will need a hand.",
+              "new": "Twenty more people have just confirmed. The people who were going to serve the food will need a hand."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Build decoy 'podem compraremos' is gibberish rather than a plausible learner error; a wrong-form chip that still cannot form a valid substitute is more instructive.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/distractors",
+              "old": [
+                "podem compraremos",
+                "nos material"
+              ],
+              "new": [
+                "podemos comprando",
+                "nos material"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Build decoy 'nos relógios foi' is nonsensical; a plain agreement-error chip is a better decoy.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/distractors",
+              "old": [
+                "para aproveitando",
+                "nos relógios foi"
+              ],
+              "new": [
+                "para aproveitando",
+                "no relógios"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Chunk gloss for 'direto à entrada' is static while chegar expresses motion; full-turn translations already use 'zum Eingang' / 'straight to'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/de",
+              "old": "direkt am Eingang",
+              "new": "direkt zum Eingang"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks/3/baseText/en",
+              "old": "right at the entrance",
+              "new": "straight to the entrance"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "sourceSha256": "393a0c18e0c2ecd418f9762c2618a550eeba34d9ba569c60b199d448fc3d8121",
+      "field": "/anchor",
+      "old": "Finalidade com para + infinitivo quando o agente é o mesmo; depois para que + presente do subjuntivo com agentes distintos. L5–L8 reservam funcione, participem e chegue, sujeitas à licença de Fable. Negociação de meios e objetivos com concordância e sujeitos claros.",
+      "new": "L1-5 para/para não + infinitivo, assim + indicativo; L6-8 para que + presente do subjuntivo whitelist (funcione, participem, chegue, saiba, possa, consiga, fique, encontre); L9-10 recycle; no a fim de que",
+      "authority": "b1-2026-10/authoring-spec-it-pt.json#Portuguese/nativeGrammarScopeByPath/P7"
+    }
+  ]
+}

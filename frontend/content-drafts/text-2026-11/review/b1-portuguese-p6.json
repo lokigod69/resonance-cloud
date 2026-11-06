@@ -1,0 +1,1296 @@
+{
+  "language": "Portuguese",
+  "level": "B1",
+  "pathNumber": 6,
+  "lessonSha256": "aa29ae41269d82f419f181f7b2822e6431015298175ee9f3c555563615fd9d32",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "aa29ae41269d82f419f181f7b2822e6431015298175ee9f3c555563615fd9d32",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "estar + atrasada agrees with a entrega; the courier's failed attempt (tentou / hat versucht) at number twenty is the complication, and the learner only asks for an address check. Cloze subject Você is visible before pode; conferir is the sole infinitive option."
+      },
+      {
+        "n": 2,
+        "observation": "está concluída agrees with a revisão, contrasted by plural estão regulados in the transfer example; the missing brake part motivates asking how the shop sources it. costumar (a oficina) cue matches the visible subject."
+      },
+      {
+        "n": 3,
+        "observation": "Blank 3 as choice shows quem/quantas/qual/onde; only onde fits 'Você sabe ___ fica a rampa?' and typed synonyms such as em que lugar are no longer unfairly rejected. Change from connector to choice is sound and approved; the stairs reply plus the learner's need to avoid them is a real complication."
+      },
+      {
+        "n": 4,
+        "observation": "foi agendada introduces ser + particípio at L4 with explicit instalação; the locked equipment room forces a Friday alternative. Both form gaps (abre, tem) have visible subjects and the infinitive decoys are impossible."
+      },
+      {
+        "n": 5,
+        "observation": "foi concluído correctly resists attraction to máquina, and the distractor foi concluída rehearses exactly that false agreement without producing a valid build; the leak found in testing motivates the deadline question."
+      },
+      {
+        "n": 6,
+        "observation": "a alteração foi registrada with agent left unspecified; the old street still on file is the complication and the learner asks the clerk to compare with the original request. consta has qual endereço visible before the gap."
+      },
+      {
+        "n": 7,
+        "observation": "Como se envia opens the impersonal-se stage; the bounced email justifies asking for SMS. The chip 'da reserva? A minha' keeps the question boundary bound; Como se enviam cannot agree with a confirmação."
+      },
+      {
+        "n": 8,
+        "observation": "Onde se faz a retirada plus Onde se paga transfer; limited counter hours (08–11) lead to delegating pickup, matching the beat. autorizar (eu) cue is visible and the a + infinitive slot admits only buscar."
+      },
+      {
+        "n": 9,
+        "observation": "Como se consulta with relative que; German/English keep documento unspecified. 'pedir uma conferência ao setor' is bureaucratic but idiomatic pt-BR for requesting a departmental check; learner does not announce the office's decision."
+      },
+      {
+        "n": 10,
+        "observation": "Onde se consulta a previsão; estimate may shift, so the learner asks for a call after the last stage without asserting completion. Onde se consultam and da previsão cannot build a valid alternative."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "aa29ae41269d82f419f181f7b2822e6431015298175ee9f3c555563615fd9d32",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "German hat versucht now preserves the courier’s failed attempt. The chip joins the sentence boundary and the learner corrects the address without taking over the decision."
+      },
+      {
+        "n": 2,
+        "observation": "The revision and the two brakes demonstrate singular/plural state agreement. Revised plural decoys cannot form an agreeing variant, and the missing component motivates the sourcing question."
+      },
+      {
+        "n": 3,
+        "observation": "The revised choice shows quem, quantas, qual, onde on the first attempt. Only onde fits Você sabe ___ fica a rampa? and both German wo and English where ask for its location. The learner no longer needs to guess an exact free-text rendering. Reverting only the blank kind to connector reproduced the previously signed bytes and hash 9abbd5d33d4898568be019d891095e34ae32ed1d0016d37d530a10516a8a9442; all nine other lesson reviews and the existing low-priority observations carry over."
+      },
+      {
+        "n": 4,
+        "observation": "The explicit installation subject licenses foi agendada at the correct stage, and the new plural decoys cannot agree together. Friday access to the equipment room explains the schedule check."
+      },
+      {
+        "n": 5,
+        "observation": "The first chip joins the sentence boundary; concluído has to agree with reparo, despite the intervening máquina. The new leak gives a concrete reason to ask about the deadline."
+      },
+      {
+        "n": 6,
+        "observation": "The joined two-sentence chip and the gender/number decoys constrain the build. Anmeldetermine now conveys the dates in the transfer example, and the learner asks the clerk to verify the original request."
+      },
+      {
+        "n": 7,
+        "observation": "The email bounce motivates requesting a second channel. The internal question boundary is fixed and the grammatical gloss no longer duplicates the subject. Como se envia introduces the procedure at L7."
+      },
+      {
+        "n": 8,
+        "observation": "The joined question chip holds the order fixed and the two plural alternatives cannot agree with singular pedido. The limited collection hours motivate delegation."
+      },
+      {
+        "n": 9,
+        "observation": "Both base languages now preserve an unspecified document. The learner requests a check of an already delivered copy. The new chips test number without malformed phrases."
+      },
+      {
+        "n": 10,
+        "observation": "The completion estimate can move, so asking for a call after the last stage makes sense. The new build decoys are grammatical in isolation and cannot substitute for the required singular construction."
+      }
+    ],
+    "findings": [
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[3]",
+        "issue": "Pedir uma conferência ao setor remains bureaucratic, but it can mean requesting verification from another department in this setting.",
+        "recommendation": "Optional later polish: pedir ao setor para conferir. The scene and glosses already make the intended action clear."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The decoys are semantically distant from the workplace noun. There is one valid answer, but broad category recognition makes fallback easy.",
+        "recommendation": "Optional future improvement: select more discriminating answers while preserving unique solvability."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The decoys are semantically distant from the workplace noun. There is one valid answer, but broad category recognition makes fallback easy.",
+        "recommendation": "Optional future improvement: select more discriminating answers while preserving unique solvability."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The decoys are semantically distant from the workplace noun. There is one valid answer, but broad category recognition makes fallback easy.",
+        "recommendation": "Optional future improvement: select more discriminating answers while preserving unique solvability."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The decoys are semantically distant from the workplace noun. There is one valid answer, but broad category recognition makes fallback easy.",
+        "recommendation": "Optional future improvement: select more discriminating answers while preserving unique solvability."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "b95522c94451d9cb1d399bd49fba5be825387d484d6e82f70aec6eaa05ef3a39",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Formal parcel enquiry applies estar atrasada to entrega. The failed attempt at number twenty explains the learner correcting it to twelve."
+      },
+      {
+        "n": 2,
+        "observation": "The workshop’s unavailable brake part prompts the next-step question. Concluída agrees with revisão, and the second example transfers to plural freios."
+      },
+      {
+        "n": 3,
+        "observation": "Working around the disabled lift motivates the ramp enquiry. The learner describes the lift without attributing its state to a person; one alternative changes the meaning of the cloze."
+      },
+      {
+        "n": 4,
+        "observation": "Foi agendada introduces completed passive scheduling on time. The equipment-room lock makes a Friday slot relevant. Gender marking is on instalação and sala."
+      },
+      {
+        "n": 5,
+        "observation": "Failed leak testing motivates checking the original timeline; concluído correctly follows reparo, despite nearer máquina. The build needs regrouping."
+      },
+      {
+        "n": 6,
+        "observation": "The learner asks for verification instead of deciding the registration outcome. The stale address explains the request for the original application."
+      },
+      {
+        "n": 7,
+        "observation": "The first impersonal-procedure question is staged at L7. A returned email motivates the SMS request. The alternative pattern illustrates booking cancellation."
+      },
+      {
+        "n": 8,
+        "observation": "Morning-only collection motivates authorizing someone else. The order's readiness is queried, not asserted; the fee-payment example transfers the se frame."
+      },
+      {
+        "n": 9,
+        "observation": "The missing copy prompts the learner to say they already delivered it and ask the office to check. Both base languages narrow a generic source word."
+      },
+      {
+        "n": 10,
+        "observation": "The shifting printing estimate and the offer of phone contact motivate the final call request. The learner leaves completion and the estimate to the print shop."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "HIGH",
+        "field": "chunks; dialogue[1] dependencies",
+        "issue": "A nonfinal chip ends in a full stop or question mark, so complete clauses can move independently and the build violates the split constraint.",
+        "recommendation": "Keep 4–7 chips and the natural questions. Group the internal punctuation with words on both sides or rewrite a single connected turn and synchronize all derived fields."
+      },
+      {
+        "n": 5,
+        "severity": "HIGH",
+        "field": "chunks; dialogue[1] dependencies",
+        "issue": "A nonfinal chip ends in a full stop or question mark, so complete clauses can move independently and the build violates the split constraint.",
+        "recommendation": "Keep 4–7 chips and the natural questions. Group the internal punctuation with words on both sides or rewrite a single connected turn and synchronize all derived fields."
+      },
+      {
+        "n": 6,
+        "severity": "HIGH",
+        "field": "chunks; dialogue[1] dependencies",
+        "issue": "A nonfinal chip ends in a full stop or question mark, so complete clauses can move independently and the build violates the split constraint.",
+        "recommendation": "Keep 4–7 chips and the natural questions. Group the internal punctuation with words on both sides or rewrite a single connected turn and synchronize all derived fields."
+      },
+      {
+        "n": 7,
+        "severity": "HIGH",
+        "field": "chunks; dialogue[1] dependencies",
+        "issue": "A nonfinal chip ends in a full stop or question mark, so complete clauses can move independently and the build violates the split constraint.",
+        "recommendation": "Keep 4–7 chips and the natural questions. Group the internal punctuation with words on both sides or rewrite a single connected turn and synchronize all derived fields."
+      },
+      {
+        "n": 8,
+        "severity": "HIGH",
+        "field": "chunks; dialogue[1] dependencies",
+        "issue": "A nonfinal chip ends in a full stop or question mark, so complete clauses can move independently and the build violates the split constraint.",
+        "recommendation": "Keep 4–7 chips and the natural questions. Group the internal punctuation with words on both sides or rewrite a single connected turn and synchronize all derived fields."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "cloze[3].choices",
+        "issue": "Quanto fica a rampa? is grammatical Brazilian Portuguese for asking what a ramp costs. The shopping reading is unlikely in this lobby, but the spec excludes syntactically valid alternatives.",
+        "recommendation": "Keep onde; replace quanto with a form that cannot introduce this embedded question, or blank fica with an explicit noun subject and unambiguous agreement choices."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].baseText.de",
+        "issue": "Wollte … abgeben conveys intention; tentou deixar says the courier attempted delivery. The attempted delivery is the event the next turn corrects.",
+        "recommendation": "Use hat versucht, das Paket … abzugeben."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "dialogue[2].baseText.de/en",
+        "issue": "Documento is not necessarily ID. Both Ausweiskopie and copy of your ID introduce that meaning without a source cue.",
+        "recommendation": "Use Dokumentenkopie / copy of the document, or name documento de identidade in Portuguese."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[3]; cloze",
+        "issue": "Pedir uma conferência ao setor is bureaucratic and can suggest requesting a conference, although the intended action is recoverable.",
+        "recommendation": "Prefer Você pode pedir ao setor para conferir? with the initial Já entreguei a cópia. Adjust the exercise to match."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “das minhas bicicletas ficaram” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “por causas das manutenções estavam” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “das internets foram” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “das máquinas estiveram” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “os alterações” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “as minha” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “as retiradas são” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “meu inscrição?” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "distractors",
+        "issue": "The decoy “das serviço de impressão?” contains an obvious internal mismatch, an unrelated dangling verb, or implausible wording rather than a usable B1 phrase.",
+        "recommendation": "Use an internally well-formed chip whose number, person, attachment or form makes it impossible in the canonical sentence and does not produce a second valid build."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "chunks[*].baseText.en",
+        "issue": "How is it sent plus the confirmation duplicates the subject in the chip gloss sequence; has it gone out yet? similarly follows mine.",
+        "recommendation": "When regrouping, gloss the reassembled English as one natural question per sentence."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "chunks[*].baseText.en",
+        "issue": "The order plus is it ready yet? repeats the subject, and where does it take place plus the pickup? repeats another.",
+        "recommendation": "Align shorter fragments with the syntax of the whole base-language question when regrouping."
+      },
+      {
+        "n": 6,
+        "severity": "LOW",
+        "field": "pattern.examples[1].baseText.de",
+        "issue": "Anmeldedaten usually suggests registration details/login data; as datas da inscrição is specifically dates.",
+        "recommendation": "Use die Termine für die Anmeldung or die Datumsangaben zur Anmeldung."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The three alternatives are unrelated everyday objects or activities, so the business word can be guessed by broad topic without recall.",
+        "recommendation": "Consider relevant, internally valid vocabulary that the given source meaning firmly excludes, or a uniquely constrained verb/agreement blank."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The three alternatives are unrelated everyday objects or activities, so the business word can be guessed by broad topic without recall.",
+        "recommendation": "Consider relevant, internally valid vocabulary that the given source meaning firmly excludes, or a uniquely constrained verb/agreement blank."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The three alternatives are unrelated everyday objects or activities, so the business word can be guessed by broad topic without recall.",
+        "recommendation": "Consider relevant, internally valid vocabulary that the given source meaning firmly excludes, or a uniquely constrained verb/agreement blank."
+      },
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The three alternatives are unrelated everyday objects or activities, so the business word can be guessed by broad topic without recall.",
+        "recommendation": "Consider relevant, internally valid vocabulary that the given source meaning firmly excludes, or a uniquely constrained verb/agreement blank."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9b634bc99578fc018aadffcf59886696f7b3dbdc0ce265fde071ad574fa1b467",
+      "sourceSha256": "229f55568d9a40dff0332b629c6ae6df64f7a3ebd928d6a9942edee9955ab915",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "estar + atrasada agrees with explicit a entrega; address complication (nº 20 vs 12) is real and the learner asks for a check rather than deciding; cloze pode/conferir has one answer."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se recycles P5 cleanly; a revisão … está concluída agrees; missing brake part triggers a procedure question (como a oficina costuma conseguir); second example estão regulados is distinct."
+        },
+        {
+          "n": 3,
+          "observation": "ainda está desligado with explicit o elevador; stairs offered → learner must avoid stairs → asks for ramp (genuine complication); connector blank onde is unambiguous among quem/quanto/qual."
+        },
+        {
+          "n": 4,
+          "observation": "First ser + particípio (foi agendada) with explicit A instalação; locked equipment room forces a new date; both cloze form blanks carry subject cues; cue 'ter (Você)' capitalised unlike other lessons."
+        },
+        {
+          "n": 5,
+          "observation": "Rule correctly makes concluído agree with o reparo not máquina; but learner turn 4 asks when the machine returns to testing instead of whether the leak alters o prazo informado, as the beat requires."
+        },
+        {
+          "n": 6,
+          "observation": "foi registrada with explicit A alteração; old street still on file → learner asks the clerk to check the original request (no decision announced); constar cue gives the subject."
+        },
+        {
+          "n": 7,
+          "observation": "Impersonal se enters on schedule (Como se envia); bounced e-mail leads to request for another channel; recall uses lexical fallbacks so no false agreement distinction."
+        },
+        {
+          "n": 8,
+          "observation": "já está pronto agrees with o pedido (not the speaker); counter hours 8–11 motivate authorising someone else; eu autorizo cue avoids 3sg confusion."
+        },
+        {
+          "n": 9,
+          "observation": "Como se consulta plus one que-relative stays within scope; learner asks the office to request a check from the sector, not asserting the outcome; German 'Ausweiskopie' is a defensible reading of documento."
+        },
+        {
+          "n": 10,
+          "observation": "Onde se consulta a previsão de conclusão and 'me ligar depois da última etapa' never claims the job is done; proclitic me visible, not blanked; Como se calcula example is distinct."
+        }
+      ],
+      "findings": [
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Beat fidelity: outline L5 requires asking whether the new problem (the leak) alters o prazo informado; current turn 4 asks only when the machine goes back for testing and never references the deadline. Rewrite keeps the same two-form-blank cloze shape with explicit subjects.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/targetText",
+              "old": "Você consegue verificar quando a máquina volta para o teste?",
+              "new": "Você consegue verificar se o vazamento altera o prazo informado?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText/de",
+              "old": "Können Sie nachsehen, wann die Maschine wieder getestet wird?",
+              "new": "Können Sie nachsehen, ob das Leck den genannten Termin ändert?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText/en",
+              "old": "Could you check when the machine goes back for testing?",
+              "new": "Could you check whether the leak changes the deadline I was given?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze",
+              "old": [
+                "Você ",
+                {
+                  "kind": "form",
+                  "answer": "consegue",
+                  "choices": [
+                    "consigo",
+                    "conseguimos",
+                    "consegue",
+                    "conseguem"
+                  ],
+                  "cue": "conseguir (você)"
+                },
+                " verificar quando a máquina ",
+                {
+                  "kind": "form",
+                  "answer": "volta",
+                  "choices": [
+                    "voltando",
+                    "volta",
+                    "voltam",
+                    "volto"
+                  ],
+                  "cue": "voltar (a máquina)"
+                },
+                " para o teste?"
+              ],
+              "new": [
+                "Você ",
+                {
+                  "kind": "form",
+                  "answer": "consegue",
+                  "choices": [
+                    "consigo",
+                    "conseguimos",
+                    "consegue",
+                    "conseguem"
+                  ],
+                  "cue": "conseguir (você)"
+                },
+                " verificar se o vazamento ",
+                {
+                  "kind": "form",
+                  "answer": "altera",
+                  "choices": [
+                    "alterando",
+                    "altera",
+                    "alteram",
+                    "altero"
+                  ],
+                  "cue": "alterar (o vazamento)"
+                },
+                " o prazo informado?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "German turn 3 renders tentou as 'wollte … abgeben' (intention) rather than an attempt; 'hat versucht … abzugeben' is closer and equally idiomatic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Der Zusteller wollte das Paket in der Rua das Flores bei Hausnummer zwanzig abgeben.",
+              "new": "Der Zusteller hat versucht, das Paket in der Rua das Flores bei Hausnummer zwanzig abzugeben."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Cue capitalisation inconsistent across path ('ter (Você)' here and 'poder (Você)' in L10 vs lowercase 'você' elsewhere); harmless but could be normalised.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3/cue",
+              "old": "ter (Você)",
+              "new": "ter (você)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1/cue",
+              "old": "poder (Você)",
+              "new": "poder (você)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9ec0072bb2afd55b48d86dda450ec5a0d77965f72df45f1633cccf143349a786",
+      "sourceSha256": "b95522c94451d9cb1d399bd49fba5be825387d484d6e82f70aec6eaa05ef3a39",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "está atrasada agrees with explicit a entrega; number-twenty attempt vs number twelve is a real complication and the learner only asks for a check. Build chips split at 'desde ontem.' (nonfinal terminal punctuation) must be regrouped; German turn 3 'wollte … abgeben' renders tentou as intention rather than attempt."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + está concluída (agreeing with a revisão) is clean; missing brake part motivates the procedure question; chips end only in commas so build is legal. Decoy 'das minhas bicicletas ficaram' is an unusable fragment; replaced with well-formed 'se as revisões', which breaks agreement with concluída/concluídos in every combination."
+        },
+        {
+          "n": 3,
+          "observation": "ainda está desligado with explicit o elevador; stairs offered → learner needs ramp. Connector choice 'quanto' yields grammatical 'Você sabe quanto fica a rampa?' (price reading), so it would teach a false distinction; swapped for quantas. Decoy 'por causas das manutenções estavam' replaced with 'a escada' (gender clash with desligado/desligados)."
+        },
+        {
+          "n": 4,
+          "observation": "First ser + particípio (foi agendada) with explicit A instalação; locked equipment room forces the Friday question without the learner deciding anything. Decoy 'das internets foram' replaced by 'as instalações' (number clash with foi/gender clash with agendados). Cue 'ter (Você)' capitalised only here and L10."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 4 now asks whether the leak alters o prazo informado (earlier beat finding already applied) and the cloze matches with subject cues. Chips split at 'Isso mesmo.' must be regrouped; decoy 'das máquinas estiveram' replaced by 'foi concluída', which directly tests the reparo-not-máquina agreement rule."
+        },
+        {
+          "n": 6,
+          "observation": "foi registrada with explicit A alteração; stale street → request to check the original request. Chips split at 'do meu endereço.' regrouped; 'os alterações' replaced by agreement decoys. 'Anmeldedaten' reads as registration data, not dates, so the second example gloss is corrected to Anmeldetermine."
+        },
+        {
+          "n": 7,
+          "observation": "Impersonal se enters on schedule (Como se envia); bounced e-mail motivates the SMS request. Chips split at 'da reserva?' regrouped and chip glosses re-aligned ('how do you send'); 'as minha' replaced by 'já saíram?'. Recall fallbacks (geladeira/furadeira/peneira) are off-topic but unambiguous; topical nouns like mensagem/cópia would produce valid alternative sentences, so the LOW finding is dismissed."
+        },
+        {
+          "n": 8,
+          "observation": "já está pronto agrees with o pedido, not the speaker; 8–11 counter hours motivate authorising someone else. Chips split at 'já está pronto?' regrouped into four chips with one-to-one glosses; 'as retiradas são' replaced by slot-aligned number decoys. Recall fallbacks unrelated but exact-gradable; dismissed."
+        },
+        {
+          "n": 9,
+          "observation": "Como se consulta plus a single que-relative stays in scope; learner asks for a check rather than asserting the outcome. 'Ausweiskopie'/'copy of your ID' narrows documento without a source cue; corrected to document. 'pedir uma conferência ao setor' is standard pt-BR for requesting a check (LOW dismissed). 'meu inscrição?' replaced by 'que estão bloqueando' (minhas inscrições would be a valid substitute)."
+        },
+        {
+          "n": 10,
+          "observation": "Onde se consulta a previsão de conclusão and the request to be called after the last stage never claim the job is done; proclitic me is visible and unblanked; Como se calcula example is distinct. 'das serviço de impressão?' replaced by well-formed 'da previsão', which cannot follow consulta/consultam; dos serviços would have been a valid substitute. Cue 'poder (Você)' normalised."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Nonfinal chip 'desde ontem.' ends in a full stop (archive split constraint); German turn 3 renders tentou as 'wollte' (intention).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/chunks",
+              "old": [
+                {
+                  "targetText": "A entrega",
+                  "baseText": {
+                    "de": "die Lieferung",
+                    "en": "the delivery"
+                  }
+                },
+                {
+                  "targetText": "está atrasada",
+                  "baseText": {
+                    "de": "ist verspätet",
+                    "en": "is late"
+                  }
+                },
+                {
+                  "targetText": "desde ontem.",
+                  "baseText": {
+                    "de": "seit gestern",
+                    "en": "since yesterday"
+                  }
+                },
+                {
+                  "targetText": "Onde está",
+                  "baseText": {
+                    "de": "wo ist",
+                    "en": "where is"
+                  }
+                },
+                {
+                  "targetText": "a encomenda agora?",
+                  "baseText": {
+                    "de": "das Paket jetzt?",
+                    "en": "the parcel now?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "A entrega",
+                  "baseText": {
+                    "de": "die Lieferung",
+                    "en": "the delivery"
+                  }
+                },
+                {
+                  "targetText": "está atrasada",
+                  "baseText": {
+                    "de": "ist verspätet",
+                    "en": "is late"
+                  }
+                },
+                {
+                  "targetText": "desde ontem. Onde está",
+                  "baseText": {
+                    "de": "seit gestern. Wo ist",
+                    "en": "since yesterday. Where is"
+                  }
+                },
+                {
+                  "targetText": "a encomenda agora?",
+                  "baseText": {
+                    "de": "das Paket jetzt?",
+                    "en": "the parcel now?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/dialogue/2/baseText/de",
+              "old": "Der Zusteller wollte das Paket in der Rua das Flores bei Hausnummer zwanzig abgeben.",
+              "new": "Der Zusteller hat versucht, das Paket in der Rua das Flores bei Hausnummer zwanzig abzugeben."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Build decoy 'das minhas bicicletas ficaram' is an unusable fragment rather than a well-formed impossible chip.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/distractors",
+              "old": [
+                "já estão concluídos.",
+                "das minhas bicicletas ficaram"
+              ],
+              "new": [
+                "já estão concluídos.",
+                "se as revisões"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Connector choice 'quanto' produces grammatical 'Você sabe quanto fica a rampa?' (price reading), so grading it wrong teaches a false distinction; decoy 'por causas das manutenções estavam' is malformed.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3/choices",
+              "old": [
+                "quem",
+                "quanto",
+                "qual",
+                "onde"
+              ],
+              "new": [
+                "quem",
+                "quantas",
+                "qual",
+                "onde"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/distractors",
+              "old": [
+                "ainda estão desligados",
+                "por causas das manutenções estavam"
+              ],
+              "new": [
+                "ainda estão desligados",
+                "a escada"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Build decoy 'das internets foram' is malformed.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/distractors",
+              "old": [
+                "foram agendados",
+                "das internets foram"
+              ],
+              "new": [
+                "foram agendados",
+                "as instalações"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Nonfinal chip 'Isso mesmo.' ends in a full stop; decoy 'das máquinas estiveram' is malformed. Regrouped to four chips and decoys aligned to the new slots.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/chunks",
+              "old": [
+                {
+                  "targetText": "Isso mesmo.",
+                  "baseText": {
+                    "de": "ganz genau",
+                    "en": "that's right"
+                  }
+                },
+                {
+                  "targetText": "O reparo",
+                  "baseText": {
+                    "de": "die Reparatur",
+                    "en": "the repair"
+                  }
+                },
+                {
+                  "targetText": "da máquina",
+                  "baseText": {
+                    "de": "der Maschine",
+                    "en": "of the machine"
+                  }
+                },
+                {
+                  "targetText": "foi concluído ontem?",
+                  "baseText": {
+                    "de": "wurde gestern abgeschlossen?",
+                    "en": "was completed yesterday?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Isso mesmo. O reparo",
+                  "baseText": {
+                    "de": "Genau. Die Reparatur",
+                    "en": "That's right. The repair"
+                  }
+                },
+                {
+                  "targetText": "da máquina",
+                  "baseText": {
+                    "de": "der Maschine",
+                    "en": "of the machine"
+                  }
+                },
+                {
+                  "targetText": "foi concluído",
+                  "baseText": {
+                    "de": "wurde abgeschlossen",
+                    "en": "was completed"
+                  }
+                },
+                {
+                  "targetText": "ontem?",
+                  "baseText": {
+                    "de": "gestern?",
+                    "en": "yesterday?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/distractors",
+              "old": [
+                "foram concluídas ontem?",
+                "das máquinas estiveram"
+              ],
+              "new": [
+                "foram concluídos",
+                "foi concluída"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Nonfinal chip 'do meu endereço.' ends in a full stop; decoy 'os alterações' is malformed; 'Anmeldedaten' mistranslates 'as datas da inscrição' (data vs dates).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks",
+              "old": [
+                {
+                  "targetText": "Pedi a atualização",
+                  "baseText": {
+                    "de": "ich habe um die Aktualisierung gebeten",
+                    "en": "I requested an update"
+                  }
+                },
+                {
+                  "targetText": "do meu endereço.",
+                  "baseText": {
+                    "de": "meiner Adresse",
+                    "en": "of my address"
+                  }
+                },
+                {
+                  "targetText": "A alteração",
+                  "baseText": {
+                    "de": "die Änderung",
+                    "en": "the change"
+                  }
+                },
+                {
+                  "targetText": "foi registrada?",
+                  "baseText": {
+                    "de": "wurde erfasst?",
+                    "en": "was recorded?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Pedi a atualização",
+                  "baseText": {
+                    "de": "ich habe um die Aktualisierung gebeten",
+                    "en": "I requested an update"
+                  }
+                },
+                {
+                  "targetText": "do meu endereço. A alteração",
+                  "baseText": {
+                    "de": "meiner Adresse. Die Änderung",
+                    "en": "of my address. The change"
+                  }
+                },
+                {
+                  "targetText": "foi",
+                  "baseText": {
+                    "de": "wurde",
+                    "en": "was"
+                  }
+                },
+                {
+                  "targetText": "registrada?",
+                  "baseText": {
+                    "de": "erfasst?",
+                    "en": "recorded?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/distractors",
+              "old": [
+                "foram registradas?",
+                "os alterações"
+              ],
+              "new": [
+                "foram",
+                "registrado?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1/baseText/de",
+              "old": "Die Anmeldedaten wurden im System berichtigt.",
+              "new": "Die Anmeldetermine wurden im System berichtigt."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Nonfinal chip 'da reserva?' ends in a question mark; decoy 'as minha' is malformed; chip glosses duplicated the subject across chips.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Como se envia",
+                  "baseText": {
+                    "de": "wie verschickt man",
+                    "en": "how is it sent"
+                  }
+                },
+                {
+                  "targetText": "a confirmação",
+                  "baseText": {
+                    "de": "die Bestätigung",
+                    "en": "the confirmation"
+                  }
+                },
+                {
+                  "targetText": "da reserva?",
+                  "baseText": {
+                    "de": "der Buchung?",
+                    "en": "of the booking?"
+                  }
+                },
+                {
+                  "targetText": "A minha",
+                  "baseText": {
+                    "de": "meine",
+                    "en": "mine"
+                  }
+                },
+                {
+                  "targetText": "já saiu?",
+                  "baseText": {
+                    "de": "ist schon rausgegangen?",
+                    "en": "has it gone out yet?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Como se envia",
+                  "baseText": {
+                    "de": "wie verschickt man",
+                    "en": "how do you send"
+                  }
+                },
+                {
+                  "targetText": "a confirmação",
+                  "baseText": {
+                    "de": "die Bestätigung",
+                    "en": "the confirmation"
+                  }
+                },
+                {
+                  "targetText": "da reserva? A minha",
+                  "baseText": {
+                    "de": "der Buchung? Meine",
+                    "en": "of the booking? Mine"
+                  }
+                },
+                {
+                  "targetText": "já saiu?",
+                  "baseText": {
+                    "de": "ist schon rausgegangen?",
+                    "en": "has already gone out?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors",
+              "old": [
+                "Como se enviam",
+                "as minha"
+              ],
+              "new": [
+                "Como se enviam",
+                "já saíram?"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Nonfinal chip 'já está pronto?' ends in a question mark; decoy 'as retiradas são' is malformed. Regrouped into four chips with one-to-one glosses and slot-aligned decoys.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks",
+              "old": [
+                {
+                  "targetText": "O pedido",
+                  "baseText": {
+                    "de": "die Bestellung",
+                    "en": "the order"
+                  }
+                },
+                {
+                  "targetText": "já está pronto?",
+                  "baseText": {
+                    "de": "ist schon fertig?",
+                    "en": "is it ready yet?"
+                  }
+                },
+                {
+                  "targetText": "Onde se faz",
+                  "baseText": {
+                    "de": "wo erfolgt",
+                    "en": "where does it take place"
+                  }
+                },
+                {
+                  "targetText": "a retirada?",
+                  "baseText": {
+                    "de": "die Abholung?",
+                    "en": "the pickup?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "O pedido",
+                  "baseText": {
+                    "de": "die Bestellung",
+                    "en": "the order"
+                  }
+                },
+                {
+                  "targetText": "já está",
+                  "baseText": {
+                    "de": "ist schon",
+                    "en": "is already"
+                  }
+                },
+                {
+                  "targetText": "pronto? Onde se faz",
+                  "baseText": {
+                    "de": "fertig? Wo erfolgt",
+                    "en": "ready? Where do you do"
+                  }
+                },
+                {
+                  "targetText": "a retirada?",
+                  "baseText": {
+                    "de": "die Abholung?",
+                    "en": "the pickup?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/distractors",
+              "old": [
+                "já estão prontos?",
+                "as retiradas são"
+              ],
+              "new": [
+                "já estão",
+                "prontos? Onde se faz"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Turn 3 narrows 'documento' to ID in both languages without a source cue; decoy 'meu inscrição?' is malformed (and 'minhas inscrições' would be a valid substitute, so a verb-number decoy is used instead).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/2/baseText/de",
+              "old": "Es fehlt die Ausweiskopie, die die Anmeldestelle angefordert hat.",
+              "new": "Es fehlt die Kopie des Dokuments, das die Anmeldestelle angefordert hat."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/2/baseText/en",
+              "old": "The copy of your ID that the registration office requested is missing.",
+              "new": "The copy of the document that the registration office requested is missing."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors",
+              "old": [
+                "Como se consultam",
+                "meu inscrição?"
+              ],
+              "new": [
+                "Como se consultam",
+                "que estão bloqueando"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Build decoy 'das serviço de impressão?' is malformed; a plural noun chip would be a valid substitute, so a contraction that cannot follow consulta is used.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/distractors",
+              "old": [
+                "Onde se consultam",
+                "das serviço de impressão?"
+              ],
+              "new": [
+                "Onde se consultam",
+                "da previsão"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Cue capitalisation 'ter (Você)' / 'poder (Você)' inconsistent with lowercase 'você' elsewhere; harmless.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3/cue",
+              "old": "ter (Você)",
+              "new": "ter (você)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1/cue",
+              "old": "poder (Você)",
+              "new": "poder (você)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b887edc969dd0a8d8a453aadf481921c8770047a155d3627e286a15c011e66cb",
+      "sourceSha256": "9abbd5d33d4898568be019d891095e34ae32ed1d0016d37d530a10516a8a9442",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "está atrasada agrees with explicit a entrega; the number-twenty attempt vs number twelve is a real complication and the learner only asks for a check. Earlier fixes verified in text: chip 'desde ontem. Onde está' bridges the boundary, German turn 3 now 'hat versucht … abzugeben'. Cloze pode/conferir has one answer; decoys 'estão atrasados' and 'as encomendas agora?' cannot form a second valid build."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + está concluída (agreeing with a revisão) recycles P5 and stays in L1-3 scope; the missing brake part motivates a procedure question without announcing the shop's decision. Chips end only in commas; decoy 'se as revisões' clashes with concluída/concluídos in every combination; second example estão regulados transfers to plural masculine."
+        },
+        {
+          "n": 3,
+          "observation": "ainda está desligado with explicit o elevador; stairs offered, learner must avoid stairs, asks for the ramp. Connector choices quem/quantas/qual/onde yield only one grammatical embedded question ('quanto' price reading already removed). Decoy 'a escada' creates a gender clash with desligado/desligados. German 'Ja.' for 'Ainda está.' is acceptable."
+        },
+        {
+          "n": 4,
+          "observation": "First ser + particípio (foi agendada) with explicit A instalação; locked equipment room forces the Friday availability question, learner decides nothing. Both form blanks carry subject cues; decoy 'as instalações' breaks number/gender. 'Morgen ist er abgeschlossen' is idiomatic for locked, though 'verschlossen' would avoid the completed/locked double reading (optional)."
+        },
+        {
+          "n": 5,
+          "observation": "Turn 4 now asks whether the leak alters o prazo informado, matching the beat; cloze altera with cue (o vazamento) matches. Chips regrouped ('Isso mesmo. O reparo'); decoy 'foi concluída' directly tests the reparo-not-máquina agreement rule and is impossible in the canonical sentence."
+        },
+        {
+          "n": 6,
+          "observation": "foi registrada with explicit A alteração; stale street leads to a request to check the original request. Chips regrouped at 'do meu endereço. A alteração'; decoys 'foram'/'registrado?' are slot-aligned agreement errors; 'Anmeldetermine' now correctly renders as datas da inscrição; constar cue gives the subject."
+        },
+        {
+          "n": 7,
+          "observation": "Impersonal se enters on schedule (Como se envia); bounced e-mail motivates the SMS request. Chips regrouped at 'da reserva? A minha' with one natural gloss per chip; decoys 'Como se enviam'/'já saíram?' cannot combine validly. Off-topic recall fallbacks remain exact-gradable; topical nouns would create valid alternatives, so the earlier LOW stays dismissed."
+        },
+        {
+          "n": 8,
+          "observation": "já está pronto agrees with o pedido, not the speaker; 8–11 counter hours motivate authorising someone else; eu autorizo cue avoids 3sg confusion. Chips 'já está'/'pronto? Onde se faz' split only at terminal chip; decoys 'já estão'/'prontos? Onde se faz' fail agreement in every build. German title 'Jemand holt die Bestellung ab' mildly hints the later authorisation twist (optional)."
+        },
+        {
+          "n": 9,
+          "observation": "Como se consulta plus one que-relative stays in scope; learner asks the office to request a check rather than asserting the outcome. Turn 3 now says Kopie des Dokuments / copy of the document, no ID narrowing. 'pedir uma conferência ao setor' is standard pt-BR for requesting a check; decoy 'que estão bloqueando' clashes with singular a pendência."
+        },
+        {
+          "n": 10,
+          "observation": "Onde se consulta a previsão de conclusão and the request to be called after the last stage never claim the job is done; proclitic me is visible and unblanked; Como se calcula example is distinct. Decoy 'da previsão' cannot follow consulta/consultam; cue 'poder (Você)' capitalised like L4 'ter (Você)', harmless."
+        }
+      ],
+      "findings": [
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "Cue capitalisation 'ter (Você)' / 'poder (Você)' inconsistent with lowercase 'você' in all other cues; 'abgeschlossen' for 'trancada' can also read as 'completed' in this completion-themed path.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3/cue",
+              "old": "ter (Você)",
+              "new": "ter (você)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/1/cue",
+              "old": "poder (Você)",
+              "new": "poder (você)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/dialogue/2/baseText/de",
+              "old": "Ja, aber wir müssen in den Technikraum des Gebäudes. Morgen ist er abgeschlossen.",
+              "new": "Ja, aber wir müssen in den Technikraum des Gebäudes. Morgen ist er verschlossen."
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "German lesson title 'Jemand holt die Bestellung ab' hints at the later authorisation complication before the dialogue reveals it; English 'Collecting an order' does not.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/title/de",
+              "old": "Jemand holt die Bestellung ab",
+              "new": "Die Bestellung abholen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6b2d534fdad04dfd744c9c2f2fa9adfb210db43bd0dfcb57b083f1e124b61a1b",
+      "sourceSha256": "aa29ae41269d82f419f181f7b2822e6431015298175ee9f3c555563615fd9d32",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "estar + atrasada agrees with a entrega; the courier's failed attempt (tentou / hat versucht) at number twenty is the complication, and the learner only asks for an address check. Cloze subject Você is visible before pode; conferir is the sole infinitive option."
+        },
+        {
+          "n": 2,
+          "observation": "está concluída agrees with a revisão, contrasted by plural estão regulados in the transfer example; the missing brake part motivates asking how the shop sources it. costumar (a oficina) cue matches the visible subject."
+        },
+        {
+          "n": 3,
+          "observation": "Blank 3 as choice shows quem/quantas/qual/onde; only onde fits 'Você sabe ___ fica a rampa?' and typed synonyms such as em que lugar are no longer unfairly rejected. Change from connector to choice is sound and approved; the stairs reply plus the learner's need to avoid them is a real complication."
+        },
+        {
+          "n": 4,
+          "observation": "foi agendada introduces ser + particípio at L4 with explicit instalação; the locked equipment room forces a Friday alternative. Both form gaps (abre, tem) have visible subjects and the infinitive decoys are impossible."
+        },
+        {
+          "n": 5,
+          "observation": "foi concluído correctly resists attraction to máquina, and the distractor foi concluída rehearses exactly that false agreement without producing a valid build; the leak found in testing motivates the deadline question."
+        },
+        {
+          "n": 6,
+          "observation": "a alteração foi registrada with agent left unspecified; the old street still on file is the complication and the learner asks the clerk to compare with the original request. consta has qual endereço visible before the gap."
+        },
+        {
+          "n": 7,
+          "observation": "Como se envia opens the impersonal-se stage; the bounced email justifies asking for SMS. The chip 'da reserva? A minha' keeps the question boundary bound; Como se enviam cannot agree with a confirmação."
+        },
+        {
+          "n": 8,
+          "observation": "Onde se faz a retirada plus Onde se paga transfer; limited counter hours (08–11) lead to delegating pickup, matching the beat. autorizar (eu) cue is visible and the a + infinitive slot admits only buscar."
+        },
+        {
+          "n": 9,
+          "observation": "Como se consulta with relative que; German/English keep documento unspecified. 'pedir uma conferência ao setor' is bureaucratic but idiomatic pt-BR for requesting a departmental check; learner does not announce the office's decision."
+        },
+        {
+          "n": 10,
+          "observation": "Onde se consulta a previsão; estimate may shift, so the learner asks for a call after the last stage without asserting completion. Onde se consultam and da previsão cannot build a valid alternative."
+        }
+      ],
+      "findings": [
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Recall fallbacks (geladeira, furadeira, peneira) and the same pattern in L8–L10 are topically distant, so category recognition eases the fallback; single valid answer preserved, no change required.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": []
+}

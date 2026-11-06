@@ -1,0 +1,957 @@
+{
+  "language": "Portuguese",
+  "level": "B1",
+  "pathNumber": 10,
+  "lessonSha256": "00da96fcd72172f4bb3e97f635cf40a3254dbd38d7731cf3ea45ccd0c987900d",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "00da96fcd72172f4bb3e97f635cf40a3254dbd38d7731cf3ea45ccd0c987900d",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Imperfect difficulty (confundia/pareciam) with porque, then perfeito resolution (desenhou/marquei); cloze subjects 'Uma vizinha'/'eu' visible before gaps, recall has one answer with eu given; caption and visual notes withhold map/bakery."
+      },
+      {
+        "n": 2,
+        "observation": "fazia um esforço para + infinitivo in imperfect, passei a + ler for the small change, hoje estudo for constancy; choir example is a distinct transfer; cloze passei/estudo unambiguous with eu as sentence subject."
+      },
+      {
+        "n": 3,
+        "observation": "Ganhei confiança quando + expliquei (perfeito) against procurava (imperfeito); complication 'sabia onde precisava trocar de linha' resolved by consultei/achamos; achamos cue (nós) is form-identical across tenses so no tense trap."
+      },
+      {
+        "n": 4,
+        "observation": "Nossa amizade começou num mutirão, quando nós pintamos; follow-up 'Agora nós cuidamos da horta e a Joana leva' matches the beat's added shared activity; cloze pairs nós/a Joana with visible subjects; 'banco' glossed as bench, distractor 'fila do banco' plays on the contrast harmlessly."
+      },
+      {
+        "n": 5,
+        "observation": "veio de um engano + pensando em names the dúzia/seis mix-up and hoje pergunto/confirmo gives the current handling; recall veio has the full noun subject visible; the eight-o'clock example is a genuine new transfer."
+      },
+      {
+        "n": 6,
+        "observation": "No começo … era sair correndo, mas agora tenho tempo contrasts habits; interlocutor's quando … mudar (regular future subjunctive) stays in the listener turn and is licensed; learner answer saio/mantenho in present, cloze choices distinct."
+      },
+      {
+        "n": 7,
+        "observation": "Meu conselho é + infinitivo with como example, justified by perfeito 'perguntei o trajeto e duas pessoas caminharam comigo'; recall 'pequena' tests agreement with visible 'atividade'; new-neighbour opener does not reveal the advice."
+      },
+      {
+        "n": 8,
+        "observation": "Quero começar um projeto para gravar + quem mora há muito tempo recycles P7 purpose and P8 duration; complication 'por que escolheu' answered with 'ouvi três versões'; recall mora with quem forces 3sg, fallback 'moram' is simply ungrammatical, not a false distinction."
+      },
+      {
+        "n": 9,
+        "observation": "Tenho muita gratidão pela vizinha que guardou expresses thanks without obrigado/a or gendered grato; repayment is concrete (levo meu carrinho e ajudo a transportar); 'sua casa' in the interlocutor turn is você-register consistent with du in German."
+      },
+      {
+        "n": 10,
+        "observation": "A experiência que marcou meu ano foi contar … na rádio do bairro links back to the feira of L1; 'na rádio' (station) vs 'no rádio' (broadcast) are both correct and consistently glossed; closing turn joins change (converso com mais gente) and continuation (quero gravar outras histórias)."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "00da96fcd72172f4bb3e97f635cf40a3254dbd38d7731cf3ea45ccd0c987900d",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The lost streets and the bakery landmark connect practical difficulty with a neighbour’s help. The revised pool model now says the speaker could not find the locker, and both translations reflect that distinction."
+      },
+      {
+        "n": 2,
+        "observation": "Reading on the bus solves the problem of finding a full hour. English now distinguishes the original effort from what the learner does now. Choir rehearsal is a different setting, and the cloze distinguishes I started and I study."
+      },
+      {
+        "n": 3,
+        "observation": "The listener now asks whether the person knew where to transfer, allowing the learner to explain checking the map together. The story no longer claims the listener knew an unmentioned earlier question. Meu caminho and both translations describe the narrator’s route consistently. The drive to the coast transfers the gain-plus-event construction, with Routine gewonnen in German."
+      },
+      {
+        "n": 4,
+        "observation": "Painting the same bench explains meeting Joana, and gardening explains the ongoing friendship. Playing at a bar transfers the shared-event frame. Cuidamos and leva have distinct visible subjects."
+      },
+      {
+        "n": 5,
+        "observation": "A dozen was mistakenly understood as six. The speaker now checks the number before paying. The eight-in-the-evening story transfers the misunderstanding to scheduling. The full translated lines and the distinct gloss for dúzia make the quantities clear."
+      },
+      {
+        "n": 6,
+        "observation": "Rushing out in January contrasts with coffee in the square now. Leaving earlier addresses the coming change to working hours. The library-loan model uses the same contrast in a different setting, and the future subjunctive in the interlocutor’s question remains unblanked."
+      },
+      {
+        "n": 7,
+        "observation": "The learner’s route question and the two companions make the advice actionable. The walking group’s singular caminhada now contrasts with the plausible agreement error saem, and the shared label reads infinitivo. The transfer is advice for a first day at work."
+      },
+      {
+        "n": 8,
+        "observation": "The learner heard three accounts of one event and wants to record residents’ stories. The swimming-class example gives a different goal and purpose. Quem licenses singular mora, and neither other listed person form fits that antecedent."
+      },
+      {
+        "n": 9,
+        "observation": "Storage of the boxes during the flood motivates helping with Saturday’s move. The cart and books show precisely how the learner will reciprocate. Gratidão avoids gendered self-reference and transfers naturally to thanking a teacher."
+      },
+      {
+        "n": 10,
+        "observation": "The radio interview connects an experience, greater social contact and future participation. The German scene now agrees correctly with du, and the cooking-class model is distinct. All ten trophies, caption openings, word limits, exact builds, clozes, recalls and nonfinal chip endings match the signed candidate."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "chunks[0..1].baseText.de",
+        "issue": "Am Anfang machte ich / eine riesige Anstrengung mirrors the Portuguese construction more literally than the idiomatic full-dialogue German. The single rehearsal also supports sustained effort even though the model would make recurring effort clearer in the plural.",
+        "recommendation": "Keep the exact signed source. Consider combining the phrase into one idiomatic gloss when revisiting chunk boundaries."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "dialogue[1]; pattern.examples[1].baseText.en",
+        "issue": "Meu caminho is defensible for explaining one’s own route, as reflected in all linked fields. The transfer gloss 'I gained practice' is intelligible but stiff.",
+        "recommendation": "Optional later English polish: 'I got some driving practice on the way to the coast.'"
+      },
+      {
+        "n": 5,
+        "severity": "LOW",
+        "field": "dialogue[1].baseText.de; distractors (also L6)",
+        "issue": "The German reports thinking about six eggs, with the intended misconception supplied by context. The six-hours and square-laundry distractors are easy semantic contrasts with the displayed base cue.",
+        "recommendation": "For future polish, German could explicitly say 'ich dachte, das wären sechs Eier'; a plausible wrong quantity would make a closer build decoy."
+      },
+      {
+        "n": 6,
+        "severity": "LOW",
+        "field": "dialogue[3].baseText.en/de",
+        "issue": "The full coffee routine makes the intention clear, although 'keep my coffee in the square' is literal.",
+        "recommendation": "Optional polish: 'I’ll leave earlier so I can still have coffee in the square' / 'Ich gehe früher los und trinke meinen Kaffee weiterhin auf dem Platz.'"
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "chunks (also L9, L10)",
+        "issue": "Some split base-language glosses leave a relative clause unfinished. They identify the individual Portuguese chips, and the full translated sentence provides the proper word order and tense.",
+        "recommendation": "At a future revision, group the relative clause with its object or duration phrase where the chip count permits."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "ee3bf089c815349bbca456fcef8ebd2e3bf11f9fef44aeaa19ca9ccb84105c8a",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Street confusion is an ongoing past problem. A neighbour drawing a map and marking the bakery answer the request for what helped. The pool-locker example is a real transfer, but its wording suggests losing the locker itself. Confundia is the only eu form on offer."
+      },
+      {
+        "n": 2,
+        "observation": "The question about lacking a full hour leads naturally to reading on the bus. The imperfect effort model transfers to choir rehearsal. Both finite cloze answers agree with the visible Eu and switch from the past change to the current habit."
+      },
+      {
+        "n": 3,
+        "observation": "Giving directions can explain the gain in confidence. The current wording calls them my route, and the listener knows the stranger asked about a line change before the learner mentions one. The road trip is a genuine new setting for ganhei … quando."
+      },
+      {
+        "n": 4,
+        "observation": "The square cleanup explains how the friendship began, and the garden and seeds show how it continues. The musician partnership transfers the shared-event model, with two clear agreement targets in the closing horticulture scene."
+      },
+      {
+        "n": 5,
+        "observation": "The speaker means six eggs but orders a dozen. Asking and confirming the quantity today answers the neighbour's follow-up. A time-of-day mix-up transfers the misconception to a different setting, with an opportunity to clarify the German of both examples."
+      },
+      {
+        "n": 6,
+        "observation": "A future change to working hours challenges the established coffee routine; leaving earlier makes the intended outcome feasible. The library loan transfers the past-versus-now habit frame. Future mudar appears in the listener's question and is not tested."
+      },
+      {
+        "n": 7,
+        "observation": "The newcomer asks how to approach an unfamiliar walking group, and the speaker describes asking about the route. The first-day-at-work model transfers giving advice. Pequena is uniquely feminine singular, while one build decoy reduces the exercise to spotting a fridge."
+      },
+      {
+        "n": 8,
+        "observation": "Three accounts of the same event give an actual reason for planning the oral-history project. A swimming class transfers the goal-plus-purpose frame. The free relative quem mora is singular and the two closing verbs share the learner's visible Eu."
+      },
+      {
+        "n": 9,
+        "observation": "The neighbour who stored boxes during the flood now needs moving help. Bringing a cart is a concrete, gender-neutral way of reciprocating. Appreciation for the teacher organizing a school event transfers the construction. Guardou agrees with vizinha."
+      },
+      {
+        "n": 10,
+        "observation": "Speaking about the market on community radio leads to talking to more people and wanting to record more stories. The cooking class transfers the experience-plus-infinitive frame. The narrative respects neutral du/você and all planned trophies occur in the relevant first turns."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "pattern.examples[1]",
+        "issue": "Perdia o armário / 'kept losing my locker' describes losing a locker instead of being unable to find one's own matching locker. The German word order 'ständig meinen Spind nicht wiedergefunden' is also awkward.",
+        "recommendation": "Use the taught frame directly, e.g. 'Na piscina eu confundia os armários porque todos tinham a mesma cor.' Translate it as 'Im Schwimmbad habe ich die Spinde verwechselt, weil sie alle dieselbe Farbe hatten' / 'At the pool I kept mixing up the lockers because they were all the same colour.'"
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "dialogue[3].baseText.en; pattern.examples[1]",
+        "issue": "'Today I study every day' obscures hoje meaning nowadays. The supposedly repeated rehearsal effort is localized to a single rehearsal in both base texts.",
+        "recommendation": "Use 'I started reading on the bus, and now I study every day.' Use 'Nos ensaios do coral…', 'Bei den Chorproben…', 'At choir rehearsals…' to anchor the repeated effort."
+      },
+      {
+        "n": 3,
+        "severity": "HIGH",
+        "field": "dialogue[1..3]; chunks; recall; pattern.examples",
+        "issue": "The stranger is looking for a station, but the learner says they explained their own route (meu caminho). The listener then knows exactly what this stranger asked next despite hearing nothing about a transfer, while the learner answers only that they found the right station. The English and German glosses repeat the unexplained 'my route'.",
+        "recommendation": "Use 'expliquei o caminho' for giving directions, ask an open follow-up that requests a new detail, e.g. 'E como você mostrou onde trocar de linha?', then have the answer identify the transfer station on the map; alternatively ask if they could find the station together. Align chunks, models, cloze, and translations. For the driving transfer use 'I got some practice' / 'Ich konnte Fahrpraxis sammeln' instead of 'gained practice' / 'Übung gewonnen'."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[1].baseText.de; pattern.examples[0..1].baseText.de; chunks",
+        "issue": "The German 'kam aus einem Irrtum' and 'kam aus einem Irrtum: Ich habe acht Uhr verstanden' are calques. 'an sechs Eier gedacht' describes thinking about eggs, not the learner's mistaken interpretation.",
+        "recommendation": "Use e.g. 'Am meisten habe ich aus einem Missverständnis gelernt: Ich bestellte ein Dutzend Eier und dachte, das wären sechs.' For the transfer use 'Ich kam wegen eines Missverständnisses zu spät: Mit acht Uhr war morgens gemeint, ich dachte aber an abends.' Keep the target's intended facts aligned if editing it too."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[3].baseText.de/en",
+        "issue": "'Keep my coffee in the square' sounds as if the drink is to remain there; 'behalte den Kaffee auf dem Platz bei' similarly obscures maintaining the habit.",
+        "recommendation": "Use 'I’ll head out earlier so I can still have my coffee in the square' and 'Ich gehe früher los und trinke meinen Kaffee weiterhin auf dem Platz.'"
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "distractors (also L6 and L5)",
+        "issue": "A walking group leaving a refrigerator, washing laundry in the square instead of morning coffee, and a half-dozen hours for the egg order are easily dismissed without understanding the intended Portuguese.",
+        "recommendation": "For L7 contrast 'que saem da praça' with singular caminhada. For L6 use a real purpose or an agreement contrast tied to a morning schedule, and for L5 use a plausible wrong quantity for eggs. The base cues identify the intended meaning; a different but meaningful stated quantity is fair."
+      },
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "pattern.label (also L8, L10)",
+        "issue": "The single shared pattern label ends in German 'Infinitiv', so English readers see a German grammar word.",
+        "recommendation": "Use Portuguese 'infinitivo' consistently in the three language-independent pattern labels."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "chunks; also L9 and L10",
+        "issue": "L8's English chips form 'of those who live here for a long time' for continuing duration; its German chunks leave 'von Leuten, die wohnen' dangling. L9's 'der Nachbarin, die aufbewahrt hat' cuts the relative away from its object. In L10 the chip 'meu ano foi contar' crosses both the relative-clause object and the predicate, resulting in 'mein Jahr, war das Erzählen'.",
+        "recommendation": "Use meaningful constituent boundaries in both base languages. For L8 combine 'de quem mora há muito tempo aqui.' into one chip and split the first clause to keep four chunks. For L9 group 'que guardou as minhas caixas'. For L10 use 'A experiência que marcou meu ano' / 'foi contar' / 'a história da feira' / 'na rádio do bairro.' Give each a natural standalone gloss."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "situation.de",
+        "issue": "The two coordinated verbs disagree: 'sitzt du … und blickt …'.",
+        "recommendation": "Use 'Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickst auf die letzten Monate zurück.'"
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c8aec180df26e5dc61af6ddc8921bf3d651b694e2a9f29d028f8198a0f3d4433",
+      "sourceSha256": "ee3bf089c815349bbca456fcef8ebd2e3bf11f9fef44aeaa19ca9ccb84105c8a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imperfeito difficulty (confundia… porque todas pareciam) answered by two perfeito helps (desenhou, marquei); cloze cues tag subjects so only one form fits each gap; no chip ends mid-build with a period."
+        },
+        {
+          "n": 2,
+          "observation": "fazia um esforço para + inf. then passei a ler as the small change; the choir example is genuinely transferable and the bus is withheld from situation/visualNotes."
+        },
+        {
+          "n": 3,
+          "observation": "Ganhei confiança quando expliquei with procurava background; the achar (nós) gap uses the tense-neutral achamos, so the perfeito=presente collision cannot produce two answers; German 'jemandem, der' vs later 'sie' is slightly inconsistent."
+        },
+        {
+          "n": 4,
+          "observation": "começou num mutirão, quando nós pintamos plus present horta/sementes follow-up; commas on non-final chips are permitted; Joana as named subject gives leva a single answer."
+        },
+        {
+          "n": 5,
+          "observation": "veio de um engano: pedi uma dúzia pensando em seis ovos, with hoje pergunto/confirmo as current handling; eight-o'clock example transfers the pattern to a new domain."
+        },
+        {
+          "n": 6,
+          "observation": "No começo … era sair correndo, mas agora … contrasts habits; interlocutor's quando … mudar is a regular futuro do subjuntivo and is not blanked; recall era has no estava competitor."
+        },
+        {
+          "n": 7,
+          "observation": "Meu conselho é + infinitive justified by perguntei/caminharam; recall blanks adjective agreement with atividade (not speaker), which is gender-safe; terms list has 7 entries, kept as is."
+        },
+        {
+          "n": 8,
+          "observation": "Quero começar um projeto para gravar with mora há muito tempo; the three-versions reason links year experiences to the goal; distractor 'de quem moram' is a plausible same-domain error."
+        },
+        {
+          "n": 9,
+          "observation": "Tenho muita gratidão pela vizinha que guardou avoids obrigado/a and speaker agreement; retribution is concrete (carrinho, ajudo a transportar); hand-cart is excluded from the initial frame."
+        },
+        {
+          "n": 10,
+          "observation": "A experiência que marcou … foi contar closes the arc back to the feira from L1/L5 and forward to gravar outras histórias; German situation has a verb agreement slip (du … blickt)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "German situation: 'du … sitzt … und blickt' — second verb must agree with du (blickst).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/situation/de",
+              "old": "Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickt auf die letzten Monate zurück.",
+              "new": "Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickst auf die letzten Monate zurück."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German renders 'uma pessoa' as masculine 'jemandem, der', while the next turn says 'als sie gefragt hat' (Portuguese ela/pessoa); 'einer Person, die' keeps the referent consistent. Also 'umsteigen muss' could be 'musste' to mirror precisava.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/1/baseText/de",
+              "old": "Ich habe Selbstvertrauen gewonnen, als ich jemandem, der die Station suchte, meinen Weg erklärt habe.",
+              "new": "Ich habe Selbstvertrauen gewonnen, als ich einer Person, die die Station suchte, meinen Weg erklärt habe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/0/baseText/de",
+              "old": "Ich habe Selbstvertrauen gewonnen, als ich jemandem, der die Station suchte, meinen Weg erklärt habe.",
+              "new": "Ich habe Selbstvertrauen gewonnen, als ich einer Person, die die Station suchte, meinen Weg erklärt habe."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/chunks/2/baseText/de",
+              "old": "jemandem",
+              "new": "einer Person"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/chunks/3/baseText/de",
+              "old": "der die Station suchte.",
+              "new": "die die Station suchte."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Und als sie gefragt hat, wo sie umsteigen muss?",
+              "new": "Und als sie gefragt hat, wo sie umsteigen musste?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "d359791d39258c6c8d1925b617a12e93ac7f433d8ebf1dc4063e903e7c076350",
+      "sourceSha256": "ee3bf089c815349bbca456fcef8ebd2e3bf11f9fef44aeaa19ca9ccb84105c8a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat met: confundia…porque imperfect difficulty, then two perfeito helps (desenhou, marquei) with subject-tagged cues; recall confundia has no second valid eu form; pool-locker transfer example reads oddly with perdia o armário (optional rewording)."
+        },
+        {
+          "n": 2,
+          "observation": "fazia um esforço para + inf. then passei a ler as the small constant change; both cloze gaps follow a visible Eu; bus withheld from situation/visualNotes; EN 'today I study every day' slightly obscures hoje = nowadays (optional)."
+        },
+        {
+          "n": 3,
+          "observation": "Ganhei confiança quando expliquei with procurava background is sound; 'meu caminho' is readable as the learner's own route to the station, so the earlier HIGH is not a grading or grammar fault, but the listener's turn asserts a line-change detail the learner never mentioned; a neutral question keeps the complication without that reveal (optional edit supplied). achamos after visible nós is the single fit."
+        },
+        {
+          "n": 4,
+          "observation": "Nossa amizade começou num mutirão… quando nós pintamos, then present cuidamos / a Joana leva as the continuing shared activity; named subject makes leva unique; pavement caption matches visualNotes."
+        },
+        {
+          "n": 5,
+          "observation": "veio de um engano: pedi uma dúzia pensando em seis ovos, answered by pergunto/confirmo today; recall veio has an explicit singular subject; German 'kam aus einem Irrtum' is acceptable if slightly literal, not a required fix."
+        },
+        {
+          "n": 6,
+          "observation": "No começo … era sair correndo, mas agora … contrast; interlocutor's regular futuro do subjuntivo mudar is not blanked; saio/mantenho unique after visible Eu; 'behalte den Kaffee … bei' is understandable with the stated habit."
+        },
+        {
+          "n": 7,
+          "observation": "Meu conselho é + infinitive justified by perguntei/caminharam; recall pequena agrees with atividade, gender-safe; build decoy 'que sai da geladeira' is dismissible without reading, optional swap to an agreement decoy."
+        },
+        {
+          "n": 8,
+          "observation": "Quero começar um projeto para gravar with quem mora há muito tempo (P8 L9-10 duration licensed); three versions of the festa supply the experience-based reason; recall mora is the only standard 3sg after quem."
+        },
+        {
+          "n": 9,
+          "observation": "Tenho muita gratidão pela vizinha que guardou expresses thanks without obrigado/a; retribution concrete (levo meu carrinho, ajudo a transportar); hand cart excluded from initial frame; guardou unique with vizinha visible."
+        },
+        {
+          "n": 10,
+          "observation": "A experiência que marcou … foi contar closes the arc (feira from L1/L5, gravar from L8); recall marcou has singular antecedent; German situation has a verb-agreement error (du … blickt) that must be corrected."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "German situation: coordinated verbs disagree ('sitzt du … und blickt'); second verb must be blickst.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/situation/de",
+              "old": "Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickt auf die letzten Monate zurück.",
+              "new": "Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickst auf die letzten Monate zurück."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Listener's third turn states that the stranger asked about changing lines before the learner has said so; a knowledge-neutral question keeps the complication and the answer unchanged.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "E quando ela perguntou onde precisava trocar de linha?",
+              "new": "E ela sabia onde precisava trocar de linha?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Und als sie gefragt hat, wo sie umsteigen muss?",
+              "new": "Und wusste sie, wo sie umsteigen musste?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "And when she asked where she needed to change lines?",
+              "new": "And did she know where she needed to change lines?"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Transfer example 'eu perdia o armário' reads as losing the locker; German word order awkward.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/targetText",
+              "old": "Nas primeiras idas à piscina eu perdia o armário porque todos tinham a mesma cor.",
+              "new": "Nas primeiras idas à piscina eu não achava meu armário porque todos tinham a mesma cor."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/highlight",
+              "old": "eu perdia o armário porque",
+              "new": "eu não achava meu armário porque"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/de",
+              "old": "Bei den ersten Besuchen im Schwimmbad habe ich ständig meinen Spind nicht wiedergefunden, weil alle dieselbe Farbe hatten.",
+              "new": "Bei den ersten Besuchen im Schwimmbad habe ich meinen Spind nie gefunden, weil alle dieselbe Farbe hatten."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/en",
+              "old": "On my first trips to the swimming pool I kept losing my locker because they all had the same colour.",
+              "new": "On my first trips to the swimming pool I could never find my locker because they all had the same colour."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "EN 'today I study every day' for hoje estudo; 'now' renders the nowadays sense.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText/en",
+              "old": "I started reading on the bus, and today I study every day.",
+              "new": "I started reading on the bus, and now I study every day."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Build decoy 'que sai da geladeira.' is dismissible by content alone; an agreement decoy tests the taught form. Pattern labels in L7/L8/L10 use German 'Infinitiv' in a shared label.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors/1",
+              "old": "que sai da geladeira.",
+              "new": "que saem da praça."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/label",
+              "old": "Meu conselho é + Infinitiv",
+              "new": "Meu conselho é + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/label",
+              "old": "Quero … para + Infinitiv",
+              "new": "Quero … para + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/label",
+              "old": "A experiência que marcou… foi + Infinitiv",
+              "new": "A experiência que marcou… foi + infinitivo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "36732966a61a52d3edf448aab33868556b363a59b0e10eae87c3ae4ba45d5b62",
+      "sourceSha256": "0a68ce2b0db19de5fd28e8f8126eb0ee3d951195b7a437e13663f40223ac8434",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat chegada met: confundia…porque imperfeito difficulty, then perfeito helps desenhou/marquei with subject-tagged cues giving one answer each; recall confundia has no competing eu form; chunks/recall/trophy reconstruct turn 2 exactly; the pool-locker transfer uses 'perdia o armário', which is understandable but less idiomatic than não achava (optional only, not a grading or staging fault)."
+        },
+        {
+          "n": 2,
+          "observation": "fazia um esforço para + infinitivo then passei a ler as the small constant change; bus withheld from situation/visualNotes; EN 'today I study every day' is comprehensible for hoje = nowadays; earlier LOW on single-rehearsal choir example dismissed: fazia already marks repetition and the beat is intact."
+        },
+        {
+          "n": 3,
+          "observation": "Ganhei confiança quando expliquei with procurava background matches staging; achamos after visible nós is the sole fit; earlier HIGH dismissed as grammar/grading: 'meu caminho' reads as the learner's own route to the station and the listener's line-change question is a plausible prompting follow-up, though a knowledge-neutral question is cleaner (optional); DE 'Übung gewonnen' is unidiomatic but transparent."
+        },
+        {
+          "n": 4,
+          "observation": "Nossa amizade começou num mutirão… quando nós pintamos, present cuidamos / a Joana leva as the continuing activity; named subject makes leva unique; pavement caption matches visualNotes; sarau transfer is a real new setting."
+        },
+        {
+          "n": 5,
+          "observation": "veio de um engano: pedi uma dúzia pensando em seis ovos, hoje pergunto/confirmo; recall veio has explicit singular subject; earlier MEDIUM on DE 'kam aus einem Irrtum … an sechs Eier gedacht' dismissed: the German conveys the mistaken assumption and parallels the eight-o'clock example; 'seis horas' decoy is dismissible by meaning, which is fair with the base cue."
+        },
+        {
+          "n": 6,
+          "observation": "No começo … era sair correndo, mas agora … contrast; interlocutor's regular futuro do subjuntivo mudar is not blanked; saio/mantenho unique after visible Eu; 'behalte den Kaffee … bei' / 'keep my coffee in the square' understood as maintaining the habit given the preceding turn (earlier MEDIUM dismissed)."
+        },
+        {
+          "n": 7,
+          "observation": "Meu conselho é + infinitivo justified by perguntei/caminharam; recall pequena agrees with atividade, gender-safe; seven terms accepted by mechanical pass; decoy 'que sai da geladeira.' is a harmless content decoy (optional swap to an agreement decoy); shared label uses German 'Infinitiv' (optional)."
+        },
+        {
+          "n": 8,
+          "observation": "Quero começar um projeto para gravar with quem mora há muito tempo (licensed duration, not blanked); three festa versions supply the experience-based reason; recall mora is the only standard form after quem; EN chip 'of those who live'+'here for a long time' is a chip-level artefact, not a grading issue."
+        },
+        {
+          "n": 9,
+          "observation": "Tenho muita gratidão pela vizinha que guardou avoids obrigado/a and speaker agreement; retribution concrete (levo meu carrinho, ajudo a transportar); hand cart excluded from initial frame; guardou unique with vizinha visible."
+        },
+        {
+          "n": 10,
+          "observation": "A experiência que marcou … foi contar closes the arc back to the feira and forward to gravar; previously required DE agreement fix is applied ('sitzt du … und blickst'); recall marcou has singular antecedent; caption and situation withhold the radio."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Listener's third turn presupposes the stranger asked about a line change before the learner said so; a knowledge-neutral question keeps the complication and answer; DE example 2 'Übung gewonnen' is unidiomatic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "E quando ela perguntou onde precisava trocar de linha?",
+              "new": "E ela sabia onde precisava trocar de linha?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Und als sie gefragt hat, wo sie umsteigen muss?",
+              "new": "Und wusste sie, wo sie umsteigen musste?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "And when she asked where she needed to change lines?",
+              "new": "And did she know where she needed to change lines?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/1/baseText/de",
+              "old": "Ich habe Übung gewonnen, als ich über die Landstraße bis zur Küste gefahren bin.",
+              "new": "Ich habe Routine gewonnen, als ich über die Landstraße bis zur Küste gefahren bin."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Transfer example 'eu perdia o armário' reads as misplacing the locker; DE 'ständig … nicht wiedergefunden' is clumsy.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/targetText",
+              "old": "Nas primeiras idas à piscina eu perdia o armário porque todos tinham a mesma cor.",
+              "new": "Nas primeiras idas à piscina eu não achava meu armário porque todos tinham a mesma cor."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/highlight",
+              "old": "eu perdia o armário porque",
+              "new": "eu não achava meu armário porque"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/de",
+              "old": "Bei den ersten Besuchen im Schwimmbad habe ich ständig meinen Spind nicht wiedergefunden, weil alle dieselbe Farbe hatten.",
+              "new": "Bei den ersten Besuchen im Schwimmbad habe ich meinen Spind nie gefunden, weil alle dieselbe Farbe hatten."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/en",
+              "old": "On my first trips to the swimming pool I kept losing my locker because they all had the same colour.",
+              "new": "On my first trips to the swimming pool I could never find my locker because they all had the same colour."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "EN 'today I study every day' for hoje estudo; 'now' renders the nowadays sense.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText/en",
+              "old": "I started reading on the bus, and today I study every day.",
+              "new": "I started reading on the bus, and now I study every day."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "Build decoy dismissible by content alone; shared pattern labels in L7/L8/L10 show German 'Infinitiv' to English readers.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors/1",
+              "old": "que sai da geladeira.",
+              "new": "que saem da praça."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/label",
+              "old": "Meu conselho é + Infinitiv",
+              "new": "Meu conselho é + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/label",
+              "old": "Quero … para + Infinitiv",
+              "new": "Quero … para + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/label",
+              "old": "A experiência que marcou… foi + Infinitiv",
+              "new": "A experiência que marcou… foi + infinitivo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9e3873e47c8774368502821cb83fd36d69aa84462288244d00b4c45b7aa9e796",
+      "sourceSha256": "567bdae9d6d2f2e0b7b0d80f1e99baabf14ba2d76dc3faf4e5e884973ec36082",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imperfeito confundia/pareciam + porque matches the chegada beat; transfer example now 'não achava meu armário' with natural DE/EN; cloze subjects (uma vizinha, eu) visible before each gap."
+        },
+        {
+          "n": 2,
+          "observation": "fazia um esforço para + infinitivo then passei a ler covers the esforço beat; EN 'now I study every day' renders hoje correctly; recall fazia has eu tagged."
+        },
+        {
+          "n": 3,
+          "observation": "Ganhei confiança quando expliquei plus procurava background is sound; consultei/achamos cloze cues carry subjects; listener's third turn slightly presupposes the line-change detail (kept optional, as in prior replays)."
+        },
+        {
+          "n": 4,
+          "observation": "começou num mutirão … quando nós pintamos is idiomatic; cuidamos (nós) and leva (a Joana) are uniquely graded; distractor 'numa fila do banco' exploits banco without a false distinction."
+        },
+        {
+          "n": 5,
+          "observation": "veio de um engano: pedi uma dúzia pensando em seis ovos is understandable BR; present-tense pergunto/confirmo answer the beat's 'como lida hoje'; recall veio has a 3sg noun subject."
+        },
+        {
+          "n": 6,
+          "observation": "No começo … era …, mas agora … contrast is correct; interlocutor's quando … mudar is the regular future subjunctive and never blanked; mantenho/saio cloze distinguishes manter forms cleanly."
+        },
+        {
+          "n": 7,
+          "observation": "Meu conselho é + infinitivo plus perguntei/caminharam (duas pessoas) justifies the advice; labels now use 'infinitivo'; decoy 'que saem da praça' tests number agreement; recall pequena tests adjective agreement with atividade."
+        },
+        {
+          "n": 8,
+          "observation": "Quero … para + infinitivo and mora há muito tempo stay within recycled P7/P8 scope; recall mora with quem is uniquely 3sg; the three versões da mesma festa gives a real justification."
+        },
+        {
+          "n": 9,
+          "observation": "Tenho muita gratidão pela vizinha que guardou expresses thanks without obrigado/a and without speaker agreement; carrinho/ajudo a transportar gives a concrete repayment; DE uses du throughout."
+        },
+        {
+          "n": 10,
+          "observation": "A experiência que marcou … foi + infinitivo consolidates earlier families; situation DE now 'sitzt du … und blickst'; recall marcou vs marquei is subject-tagged by 'a experiência que'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "Listener's third turn presupposes the stranger asked about changing lines before the learner mentioned it; a knowledge-neutral question keeps the complication and answer. DE 'Übung gewonnen' is unidiomatic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "E quando ela perguntou onde precisava trocar de linha?",
+              "new": "E ela sabia onde precisava trocar de linha?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Und als sie gefragt hat, wo sie umsteigen muss?",
+              "new": "Und wusste sie, wo sie umsteigen musste?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "And when she asked where she needed to change lines?",
+              "new": "And did she know where she needed to change lines?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/1/baseText/de",
+              "old": "Ich habe Übung gewonnen, als ich über die Landstraße bis zur Küste gefahren bin.",
+              "new": "Ich habe Routine gewonnen, als ich über die Landstraße bis zur Küste gefahren bin."
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "optional",
+          "issue": "'keep my coffee in the square' / 'behalte den Kaffee auf dem Platz bei' slightly obscure that the habit is being kept.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/baseText/de",
+              "old": "Ich gehe früher los und behalte den Kaffee auf dem Platz bei.",
+              "new": "Ich gehe früher los und trinke meinen Kaffee weiterhin auf dem Platz."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/dialogue/3/baseText/en",
+              "old": "I'll leave earlier and keep my coffee in the square.",
+              "new": "I'll leave earlier and still have my coffee in the square."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "signed",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a78d5f7e0a300957ed865a12602f9b5a3ee42b53f0cd63bff2a3526937799151",
+      "sourceSha256": "00da96fcd72172f4bb3e97f635cf40a3254dbd38d7731cf3ea45ccd0c987900d",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imperfect difficulty (confundia/pareciam) with porque, then perfeito resolution (desenhou/marquei); cloze subjects 'Uma vizinha'/'eu' visible before gaps, recall has one answer with eu given; caption and visual notes withhold map/bakery."
+        },
+        {
+          "n": 2,
+          "observation": "fazia um esforço para + infinitivo in imperfect, passei a + ler for the small change, hoje estudo for constancy; choir example is a distinct transfer; cloze passei/estudo unambiguous with eu as sentence subject."
+        },
+        {
+          "n": 3,
+          "observation": "Ganhei confiança quando + expliquei (perfeito) against procurava (imperfeito); complication 'sabia onde precisava trocar de linha' resolved by consultei/achamos; achamos cue (nós) is form-identical across tenses so no tense trap."
+        },
+        {
+          "n": 4,
+          "observation": "Nossa amizade começou num mutirão, quando nós pintamos; follow-up 'Agora nós cuidamos da horta e a Joana leva' matches the beat's added shared activity; cloze pairs nós/a Joana with visible subjects; 'banco' glossed as bench, distractor 'fila do banco' plays on the contrast harmlessly."
+        },
+        {
+          "n": 5,
+          "observation": "veio de um engano + pensando em names the dúzia/seis mix-up and hoje pergunto/confirmo gives the current handling; recall veio has the full noun subject visible; the eight-o'clock example is a genuine new transfer."
+        },
+        {
+          "n": 6,
+          "observation": "No começo … era sair correndo, mas agora tenho tempo contrasts habits; interlocutor's quando … mudar (regular future subjunctive) stays in the listener turn and is licensed; learner answer saio/mantenho in present, cloze choices distinct."
+        },
+        {
+          "n": 7,
+          "observation": "Meu conselho é + infinitivo with como example, justified by perfeito 'perguntei o trajeto e duas pessoas caminharam comigo'; recall 'pequena' tests agreement with visible 'atividade'; new-neighbour opener does not reveal the advice."
+        },
+        {
+          "n": 8,
+          "observation": "Quero começar um projeto para gravar + quem mora há muito tempo recycles P7 purpose and P8 duration; complication 'por que escolheu' answered with 'ouvi três versões'; recall mora with quem forces 3sg, fallback 'moram' is simply ungrammatical, not a false distinction."
+        },
+        {
+          "n": 9,
+          "observation": "Tenho muita gratidão pela vizinha que guardou expresses thanks without obrigado/a or gendered grato; repayment is concrete (levo meu carrinho e ajudo a transportar); 'sua casa' in the interlocutor turn is você-register consistent with du in German."
+        },
+        {
+          "n": 10,
+          "observation": "A experiência que marcou meu ano foi contar … na rádio do bairro links back to the feira of L1; 'na rádio' (station) vs 'no rádio' (broadcast) are both correct and consistently glossed; closing turn joins change (converso com mais gente) and continuation (quero gravar outras histórias)."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Chunk glosses 'Am Anfang machte ich' + 'eine riesige Anstrengung' are a literal split of fazer um esforço; the dialogue translation already gives the idiomatic 'habe ich mich enorm angestrengt', so the literal chunk pair is acceptable as structural scaffolding and no edit is required.",
+          "edits": []
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "'expliquei meu caminho a uma pessoa' is understandable (the learner's own route) but 'expliquei o caminho' would be the more neutral phrasing; since the German/English, chunks, recall and trophy example are all consistent with 'meu caminho', leave as is.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "from": "0a68ce2b0db19de5fd28e8f8126eb0ee3d951195b7a437e13663f40223ac8434",
+      "to": "567bdae9d6d2f2e0b7b0d80f1e99baabf14ba2d76dc3faf4e5e884973ec36082",
+      "authorizedBy": "53deec4b9d3c4cde51a3ec0662395821cee277829c4f745594d024cbbbf9918c",
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Transfer example 'eu perdia o armário' reads as losing the locker; German word order awkward.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/targetText",
+              "old": "Nas primeiras idas à piscina eu perdia o armário porque todos tinham a mesma cor.",
+              "new": "Nas primeiras idas à piscina eu não achava meu armário porque todos tinham a mesma cor."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/highlight",
+              "old": "eu perdia o armário porque",
+              "new": "eu não achava meu armário porque"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/de",
+              "old": "Bei den ersten Besuchen im Schwimmbad habe ich ständig meinen Spind nicht wiedergefunden, weil alle dieselbe Farbe hatten.",
+              "new": "Bei den ersten Besuchen im Schwimmbad habe ich meinen Spind nie gefunden, weil alle dieselbe Farbe hatten."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/en",
+              "old": "On my first trips to the swimming pool I kept losing my locker because they all had the same colour.",
+              "new": "On my first trips to the swimming pool I could never find my locker because they all had the same colour."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "EN 'today I study every day' for hoje estudo; 'now' renders the nowadays sense.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/dialogue/3/baseText/en",
+              "old": "I started reading on the bus, and today I study every day.",
+              "new": "I started reading on the bus, and now I study every day."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Build decoy 'que sai da geladeira.' is dismissible by content alone; an agreement decoy tests the taught form. Pattern labels in L7/L8/L10 use German 'Infinitiv' in a shared label.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors/1",
+              "old": "que sai da geladeira.",
+              "new": "que saem da praça."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/pattern/label",
+              "old": "Meu conselho é + Infinitiv",
+              "new": "Meu conselho é + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/label",
+              "old": "Quero … para + Infinitiv",
+              "new": "Quero … para + infinitivo"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/pattern/label",
+              "old": "A experiência que marcou… foi + Infinitiv",
+              "new": "A experiência que marcou… foi + infinitivo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "from": "567bdae9d6d2f2e0b7b0d80f1e99baabf14ba2d76dc3faf4e5e884973ec36082",
+      "to": "00da96fcd72172f4bb3e97f635cf40a3254dbd38d7731cf3ea45ccd0c987900d",
+      "authorizedBy": "510ffc81cd24bb9c2a08132e3a2d7cf1b5ab549ad6b5c16c671f02c42a9368ce",
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Listener's third turn presupposes the stranger asked about a line change before the learner said so; a knowledge-neutral question keeps the complication and answer; DE example 2 'Übung gewonnen' is unidiomatic.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "E quando ela perguntou onde precisava trocar de linha?",
+              "new": "E ela sabia onde precisava trocar de linha?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "Und als sie gefragt hat, wo sie umsteigen muss?",
+              "new": "Und wusste sie, wo sie umsteigen musste?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "And when she asked where she needed to change lines?",
+              "new": "And did she know where she needed to change lines?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/examples/1/baseText/de",
+              "old": "Ich habe Übung gewonnen, als ich über die Landstraße bis zur Küste gefahren bin.",
+              "new": "Ich habe Routine gewonnen, als ich über die Landstraße bis zur Küste gefahren bin."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

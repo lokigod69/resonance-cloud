@@ -1,0 +1,2129 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Wie steht es mit meinem Auftrag?",
+    "en": "How is my request coming along?"
+  },
+  "subtitle": {
+    "de": "Erkundige dich nach dem Stand einer Reparatur, Lieferung oder Anfrage und vereinbare den nächsten Schritt.",
+    "en": "Check on a repair, delivery or request and agree on what happens next."
+  },
+  "anchor": "Shape A. Zustandsbeschreibung mit être und Partizip (L1–4), on für zuständige Stellen (L5–7), Passiv im passé composé (L8–9), Verbindung in L10. Formelles vous.",
+  "lessons": [
+    {
+      "slug": "pieces-pour-le-grille-pain",
+      "title": {
+        "de": "Ein Ersatzteil für den Toaster",
+        "en": "A spare part for the toaster"
+      },
+      "situation": {
+        "de": "Du hast deinen Toaster zur Reparatur gebracht. Frag in der Werkstatt, wie es weitergeht.",
+        "en": "You took your toaster in for repair. Ask the repairer how things are going."
+      },
+      "pedagogicalGoal": "Nach sont beschreibt commandées den Zustand der bestellten Teile. Die Endung -ées richtet sich nach les deux pièces.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "J'ai ouvert votre grille-pain et il manque deux pièces.",
+          "baseText": {
+            "de": "Ich habe Ihren Toaster aufgemacht. Zwei Teile fehlen.",
+            "en": "I've opened up your toaster and two parts are missing."
+          }
+        },
+        {
+          "targetText": "La réparation est possible si les deux pièces sont commandées ensemble ?",
+          "baseText": {
+            "de": "Ist die Reparatur möglich, wenn beide Teile zusammen bestellt werden?",
+            "en": "Can it be repaired if both parts are ordered together?"
+          }
+        },
+        {
+          "targetText": "Oui, mais les deux pièces n'arrivent pas avant mardi.",
+          "baseText": {
+            "de": "Ja, aber die beiden Teile kommen nicht vor Dienstag an.",
+            "en": "Yes, but the two parts won't arrive before Tuesday."
+          }
+        },
+        {
+          "targetText": "Si vous acceptez, je peux le laisser ici jusque-là.",
+          "baseText": {
+            "de": "Wenn Sie einverstanden sind, kann ich ihn bis dahin hierlassen.",
+            "en": "If that's all right with you, I can leave it here until then."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L'état des pièces",
+        "rule": {
+          "de": "Nach sont beschreibt commandées den Zustand der bestellten Teile. Die Endung -ées richtet sich nach les deux pièces.",
+          "en": "After sont, commandées describes the status of the parts. Its -ées ending agrees with les deux pièces."
+        },
+        "examples": [
+          {
+            "targetText": "La réparation est possible si les deux pièces sont commandées ensemble ?",
+            "baseText": {
+              "de": "Ist die Reparatur möglich, wenn beide Teile zusammen bestellt werden?",
+              "en": "Can it be repaired if both parts are ordered together?"
+            },
+            "highlight": "les deux pièces sont commandées"
+          },
+          {
+            "targetText": "Les portes sont fermées pendant la visite.",
+            "baseText": {
+              "de": "Die Türen sind während der Besichtigung geschlossen.",
+              "en": "The doors are closed during the visit."
+            },
+            "highlight": "Les portes sont fermées"
+          }
+        ]
+      },
+      "cloze": [
+        "Si vous ",
+        {
+          "kind": "form",
+          "answer": "acceptez",
+          "choices": [
+            "acceptons",
+            "acceptez",
+            "acceptent",
+            "accepter"
+          ],
+          "cue": "accepter (vous)"
+        },
+        ", je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvons",
+            "pouvez",
+            "peux",
+            "peuvent"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " le laisser ici jusque-là."
+      ],
+      "chunks": [
+        {
+          "targetText": "La réparation",
+          "baseText": {
+            "de": "die Reparatur",
+            "en": "the repair"
+          }
+        },
+        {
+          "targetText": "est possible",
+          "baseText": {
+            "de": "ist möglich",
+            "en": "is possible"
+          }
+        },
+        {
+          "targetText": "si les deux pièces",
+          "baseText": {
+            "de": "wenn die beiden Teile",
+            "en": "if both parts"
+          }
+        },
+        {
+          "targetText": "sont commandées ensemble ?",
+          "baseText": {
+            "de": "zusammen bestellt werden?",
+            "en": "are ordered together?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le grille-pain",
+          "baseText": {
+            "de": "der Toaster",
+            "en": "the toaster"
+          }
+        },
+        {
+          "targetText": "deux pièces",
+          "baseText": {
+            "de": "zwei Teile",
+            "en": "two parts"
+          }
+        },
+        {
+          "targetText": "la réparation",
+          "baseText": {
+            "de": "die Reparatur",
+            "en": "the repair"
+          }
+        },
+        {
+          "targetText": "commandées ensemble",
+          "baseText": {
+            "de": "zusammen bestellt",
+            "en": "ordered together"
+          }
+        },
+        {
+          "targetText": "pas avant mardi",
+          "baseText": {
+            "de": "nicht vor Dienstag",
+            "en": "not before Tuesday"
+          }
+        },
+        {
+          "targetText": "jusque-là",
+          "baseText": {
+            "de": "bis dahin",
+            "en": "until then"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La réparation est possible si les deux pièces sont ",
+        "answer": "commandées",
+        "after": " ensemble ?",
+        "fallbackChoices": [
+          "commandé",
+          "commandée",
+          "commandés",
+          "commandées"
+        ]
+      },
+      "speakRequired": [
+        "réparation",
+        "pièces",
+        "commandées"
+      ],
+      "sceneCaption": {
+        "de": "Du hast deinen Toaster zur Reparatur gebracht. Frag in der Werkstatt, wie es weitergeht. „J'ai ouvert votre grille-pain et il manque deux pièces.“",
+        "en": "You took your toaster in for repair. Ask the repairer how things are going. “J'ai ouvert votre grille-pain et il manque deux pièces.”"
+      },
+      "trophyWord": {
+        "word": "réparation",
+        "meaning": {
+          "de": "Reparatur",
+          "en": "repair"
+        },
+        "example": "La réparation est possible si les deux pièces sont commandées ensemble ?",
+        "whyThisWord": {
+          "de": "Mit la réparation sprichst du über die Arbeit am Gerät als Ganzes.",
+          "en": "La réparation refers to the repair job as a whole."
+        }
+      },
+      "distractors": [
+        "contre la montre",
+        "a dormi dehors ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein offener Toaster liegt neben zwei kleinen Schrauben auf der Werkbank.",
+        "en": "An open toaster sits next to two small screws on a workbench."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "An open toaster sits next to two small screws on a workbench."
+    },
+    {
+      "slug": "le-carnet-du-velo",
+      "title": {
+        "de": "Wer prüft die Bremsen?",
+        "en": "Who checks the brakes?"
+      },
+      "situation": {
+        "de": "Du bringst dein Fahrrad zur Inspektion. Frag die Person am Tresen nach der Bremsprüfung.",
+        "en": "You're dropping off your bike for a service. Ask the person at the counter about the brake check."
+      },
+      "pedagogicalGoal": "Les freins ist männlich Plural. Deshalb endet vérifiés auf -és, auch wenn die Frage mit sont-ils gebildet wird.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Je note ici le numéro de votre vélo.",
+          "baseText": {
+            "de": "Ich trage hier die Nummer Ihres Fahrrads ein.",
+            "en": "I'm writing down your bike number here."
+          }
+        },
+        {
+          "targetText": "Dans quel atelier les freins de mon vélo sont-ils vérifiés ?",
+          "baseText": {
+            "de": "In welcher Werkstatt werden die Bremsen meines Fahrrads geprüft?",
+            "en": "Which workshop checks the brakes on my bike?"
+          }
+        },
+        {
+          "targetText": "Normalement ici, mais cette semaine les vélos partent à Tours.",
+          "baseText": {
+            "de": "Normalerweise hier, aber diese Woche gehen die Fahrräder nach Tours.",
+            "en": "Usually here, but this week the bikes are going to Tours."
+          }
+        },
+        {
+          "targetText": "Comment puis-je suivre mon vélo quand il change d'atelier ?",
+          "baseText": {
+            "de": "Wie kann ich den Weg meines Fahrrads verfolgen, wenn es die Werkstatt wechselt?",
+            "en": "How can I track my bike when it moves to another workshop?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un contrôle au pluriel",
+        "rule": {
+          "de": "Les freins ist männlich Plural. Deshalb endet vérifiés auf -és, auch wenn die Frage mit sont-ils gebildet wird.",
+          "en": "Les freins is masculine plural, so vérifiés ends in -és even in a question formed with sont-ils."
+        },
+        "examples": [
+          {
+            "targetText": "Dans quel atelier les freins de mon vélo sont-ils vérifiés ?",
+            "baseText": {
+              "de": "In welcher Werkstatt werden die Bremsen meines Fahrrads geprüft?",
+              "en": "Which workshop checks the brakes on my bike?"
+            },
+            "highlight": "les freins de mon vélo sont-ils vérifiés"
+          },
+          {
+            "targetText": "Les robinets du bâtiment sont-ils fermés ?",
+            "baseText": {
+              "de": "Sind die Wasserhähne im Gebäude zugedreht?",
+              "en": "Are the taps in the building turned off?"
+            },
+            "highlight": "Les robinets du bâtiment sont-ils fermés"
+          }
+        ]
+      },
+      "cloze": [
+        "Comment ",
+        {
+          "kind": "form",
+          "answer": "puis",
+          "choices": [
+            "peut",
+            "pouvez",
+            "puis",
+            "pouvons"
+          ],
+          "cue": "pouvoir (je, Frage mit Inversion)"
+        },
+        "-je suivre mon vélo quand il ",
+        {
+          "kind": "form",
+          "answer": "change",
+          "choices": [
+            "changeons",
+            "changez",
+            "changent",
+            "change"
+          ],
+          "cue": "changer (il)"
+        },
+        " d'atelier ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Dans quel atelier",
+          "baseText": {
+            "de": "in welcher Werkstatt",
+            "en": "in which workshop"
+          }
+        },
+        {
+          "targetText": "les freins",
+          "baseText": {
+            "de": "die Bremsen",
+            "en": "the brakes"
+          }
+        },
+        {
+          "targetText": "de mon vélo",
+          "baseText": {
+            "de": "meines Fahrrads",
+            "en": "on my bike"
+          }
+        },
+        {
+          "targetText": "sont-ils vérifiés ?",
+          "baseText": {
+            "de": "werden sie geprüft?",
+            "en": "are they checked?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la semaine",
+          "baseText": {
+            "de": "die Woche",
+            "en": "the week"
+          }
+        },
+        {
+          "targetText": "le numéro",
+          "baseText": {
+            "de": "die Nummer",
+            "en": "the number"
+          }
+        },
+        {
+          "targetText": "les freins",
+          "baseText": {
+            "de": "die Bremsen",
+            "en": "the brakes"
+          }
+        },
+        {
+          "targetText": "mon vélo",
+          "baseText": {
+            "de": "mein Fahrrad",
+            "en": "my bike"
+          }
+        },
+        {
+          "targetText": "vérifiés",
+          "baseText": {
+            "de": "geprüft",
+            "en": "checked"
+          }
+        },
+        {
+          "targetText": "suivre",
+          "baseText": {
+            "de": "verfolgen",
+            "en": "track"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Dans quel atelier les freins de mon vélo sont-ils ",
+        "answer": "vérifiés",
+        "after": " ?",
+        "fallbackChoices": [
+          "vérifiés",
+          "vérifié",
+          "vérifiée",
+          "vérifiées"
+        ]
+      },
+      "speakRequired": [
+        "atelier",
+        "freins",
+        "vérifiés"
+      ],
+      "sceneCaption": {
+        "de": "Du bringst dein Fahrrad zur Inspektion. Frag die Person am Tresen nach der Bremsprüfung. „Je note ici le numéro de votre vélo.“",
+        "en": "You're dropping off your bike for a service. Ask the person at the counter about the brake check. “Je note ici le numéro de votre vélo.”"
+      },
+      "trophyWord": {
+        "word": "atelier",
+        "meaning": {
+          "de": "Werkstatt",
+          "en": "workshop"
+        },
+        "example": "Dans quel atelier les freins de mon vélo sont-ils vérifiés ?",
+        "whyThisWord": {
+          "de": "Dans quel atelier fragt gezielt nach dem Ort der Arbeit.",
+          "en": "Dans quel atelier asks which workshop is doing the work."
+        }
+      },
+      "distractors": [
+        "des vélos rouges",
+        "ouvre à midi ?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Tresen hängt ein Anhänger mit der Fahrradnummer über einem Vorderrad.",
+        "en": "A bike number tag hangs above a front wheel at the counter."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A bike number tag hangs above a front wheel at the counter."
+    },
+    {
+      "slug": "livrer-sans-ascenseur",
+      "title": {
+        "de": "Eine Lieferung ohne Aufzug",
+        "en": "A delivery without a lift"
+      },
+      "situation": {
+        "de": "Vor der Möbellieferung erkundigst du dich im Geschäft, wie ein Haus ohne Aufzug berücksichtigt wird.",
+        "en": "Before your furniture arrives, ask the shop how it handles buildings without a lift."
+      },
+      "pedagogicalGoal": "La livraison ist weiblich Singular. Das Partizip préparée bekommt ein zusätzliches -e.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous appelez au sujet de votre table ?",
+          "baseText": {
+            "de": "Sie rufen wegen Ihres Tisches an?",
+            "en": "Are you calling about your table?"
+          }
+        },
+        {
+          "targetText": "Comment la livraison est-elle préparée quand l'immeuble est sans ascenseur ?",
+          "baseText": {
+            "de": "Wie wird die Lieferung vorbereitet, wenn das Haus keinen Aufzug hat?",
+            "en": "How is the delivery arranged when the building has no lift?"
+          }
+        },
+        {
+          "targetText": "Je réserve une équipe de deux personnes. À quel étage habitez-vous ?",
+          "baseText": {
+            "de": "Ich plane ein Zweierteam ein. In welchem Stock wohnen Sie?",
+            "en": "I'll book a two-person team. Which floor do you live on?"
+          }
+        },
+        {
+          "targetText": "Mon appartement se trouve au troisième et donne sur la cour.",
+          "baseText": {
+            "de": "Meine Wohnung liegt im dritten Stock und geht zum Hof hinaus.",
+            "en": "My flat is on the third floor and overlooks the courtyard."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une livraison préparée",
+        "rule": {
+          "de": "La livraison ist weiblich Singular. Das Partizip préparée bekommt ein zusätzliches -e.",
+          "en": "La livraison is feminine singular. The participle préparée takes an extra -e."
+        },
+        "examples": [
+          {
+            "targetText": "Comment la livraison est-elle préparée quand l'immeuble est sans ascenseur ?",
+            "baseText": {
+              "de": "Wie wird die Lieferung vorbereitet, wenn das Haus keinen Aufzug hat?",
+              "en": "How is the delivery arranged when the building has no lift?"
+            },
+            "highlight": "la livraison est-elle préparée"
+          },
+          {
+            "targetText": "Comment la soupe est-elle préparée dans cette cantine ?",
+            "baseText": {
+              "de": "Wie wird die Suppe in dieser Kantine zubereitet?",
+              "en": "How is the soup prepared in this canteen?"
+            },
+            "highlight": "la soupe est-elle préparée"
+          }
+        ]
+      },
+      "cloze": [
+        "Mon appartement se ",
+        {
+          "kind": "form",
+          "answer": "trouve",
+          "choices": [
+            "trouvent",
+            "trouvons",
+            "trouvez",
+            "trouve"
+          ],
+          "cue": "se trouver (mon appartement)"
+        },
+        " au troisième et ",
+        {
+          "kind": "form",
+          "answer": "donne",
+          "choices": [
+            "donne",
+            "donnons",
+            "donnent",
+            "donnez"
+          ],
+          "cue": "donner (mon appartement)"
+        },
+        " sur la cour."
+      ],
+      "chunks": [
+        {
+          "targetText": "Comment la livraison",
+          "baseText": {
+            "de": "wie wird die Lieferung",
+            "en": "how is the delivery"
+          }
+        },
+        {
+          "targetText": "est-elle préparée",
+          "baseText": {
+            "de": "vorbereitet",
+            "en": "arranged"
+          }
+        },
+        {
+          "targetText": "quand l'immeuble",
+          "baseText": {
+            "de": "wenn das Gebäude",
+            "en": "when the building"
+          }
+        },
+        {
+          "targetText": "est sans ascenseur ?",
+          "baseText": {
+            "de": "keinen Aufzug hat?",
+            "en": "has no lift?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "votre table",
+          "baseText": {
+            "de": "Ihr Tisch",
+            "en": "your table"
+          }
+        },
+        {
+          "targetText": "la livraison",
+          "baseText": {
+            "de": "die Lieferung",
+            "en": "the delivery"
+          }
+        },
+        {
+          "targetText": "sans ascenseur",
+          "baseText": {
+            "de": "ohne Aufzug",
+            "en": "without a lift"
+          }
+        },
+        {
+          "targetText": "une équipe",
+          "baseText": {
+            "de": "ein Team",
+            "en": "a team"
+          }
+        },
+        {
+          "targetText": "au troisième",
+          "baseText": {
+            "de": "im dritten Stock",
+            "en": "on the third floor"
+          }
+        },
+        {
+          "targetText": "la cour",
+          "baseText": {
+            "de": "der Innenhof",
+            "en": "the courtyard"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Comment la livraison est-elle ",
+        "answer": "préparée",
+        "after": " quand l'immeuble est sans ascenseur ?",
+        "fallbackChoices": [
+          "préparé",
+          "préparée",
+          "préparés",
+          "préparées"
+        ]
+      },
+      "speakRequired": [
+        "livraison",
+        "immeuble",
+        "ascenseur"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Möbellieferung erkundigst du dich im Geschäft, wie ein Haus ohne Aufzug berücksichtigt wird. „Vous appelez au sujet de votre table ?“",
+        "en": "Before your furniture arrives, ask the shop how it handles buildings without a lift. “Vous appelez au sujet de votre table ?”"
+      },
+      "trophyWord": {
+        "word": "livraison",
+        "meaning": {
+          "de": "Lieferung",
+          "en": "delivery"
+        },
+        "example": "Comment la livraison est-elle préparée quand l'immeuble est sans ascenseur ?",
+        "whyThisWord": {
+          "de": "La livraison bezeichnet hier das Bringen des gekauften Möbels bis zur Adresse.",
+          "en": "La livraison refers to bringing the purchased furniture to the address."
+        }
+      },
+      "distractors": [
+        "ma dernière lecture",
+        "est trop salée ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine verpackte Tischplatte steht vor einem Treppenhaus.",
+        "en": "A wrapped tabletop stands beside a stairwell."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A wrapped tabletop stands beside a stairwell."
+    },
+    {
+      "slug": "deux-messages-sur-le-colis",
+      "title": {
+        "de": "Die Sendungsverfolgung prüfen",
+        "en": "Checking the parcel tracking"
+      },
+      "situation": {
+        "de": "Du schaust auf die Sendungsverfolgung und sprichst mit dem Paketdienst.",
+        "en": "You're looking at the tracking page while speaking to the parcel service."
+      },
+      "pedagogicalGoal": "Le suivi ist männlich Singular. Daher steht nach est die Form actualisé.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez bien la page de votre colis sous les yeux ?",
+          "baseText": {
+            "de": "Haben Sie die Seite zu Ihrem Paket vor sich?",
+            "en": "Do you have the page for your parcel in front of you?"
+          }
+        },
+        {
+          "targetText": "Le suivi de mon colis est actualisé à chaque étape ?",
+          "baseText": {
+            "de": "Wird die Sendungsverfolgung meines Pakets bei jedem Schritt aktualisiert?",
+            "en": "Is the tracking for my parcel updated at every stage?"
+          }
+        },
+        {
+          "targetText": "Oui, mais je vois deux mentions différentes chez vous : « livré » et « en transit ».",
+          "baseText": {
+            "de": "Ja, aber bei Ihnen sehe ich zwei verschiedene Angaben, „zugestellt“ und „unterwegs“.",
+            "en": "Yes, but I can see two different entries on yours, “delivered” and “in transit”."
+          }
+        },
+        {
+          "targetText": "Quelle mention est correcte si les deux messages se contredisent ?",
+          "baseText": {
+            "de": "Welche Angabe stimmt, wenn sich die beiden Meldungen widersprechen?",
+            "en": "Which entry is correct if the two updates contradict each other?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un suivi actualisé",
+        "rule": {
+          "de": "Le suivi ist männlich Singular. Daher steht nach est die Form actualisé.",
+          "en": "Le suivi is masculine singular, so the form after est is actualisé."
+        },
+        "examples": [
+          {
+            "targetText": "Le suivi de mon colis est actualisé à chaque étape ?",
+            "baseText": {
+              "de": "Wird die Sendungsverfolgung meines Pakets bei jedem Schritt aktualisiert?",
+              "en": "Is the tracking for my parcel updated at every stage?"
+            },
+            "highlight": "Le suivi de mon colis est actualisé"
+          },
+          {
+            "targetText": "Le menu est affiché près de la porte.",
+            "baseText": {
+              "de": "Die Speisekarte hängt neben der Tür aus.",
+              "en": "The menu is displayed by the door."
+            },
+            "highlight": "Le menu est affiché"
+          }
+        ]
+      },
+      "cloze": [
+        "Quelle mention ",
+        {
+          "kind": "form",
+          "answer": "est",
+          "choices": [
+            "est",
+            "sont",
+            "êtes",
+            "sommes"
+          ],
+          "cue": "être (quelle mention)"
+        },
+        " correcte si les deux messages se ",
+        {
+          "kind": "form",
+          "answer": "contredisent",
+          "choices": [
+            "contredit",
+            "contredisent",
+            "contredisez",
+            "contredisons"
+          ],
+          "cue": "se contredire (les deux messages)"
+        },
+        " ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Le suivi",
+          "baseText": {
+            "de": "die Sendungsverfolgung",
+            "en": "the tracking information"
+          }
+        },
+        {
+          "targetText": "de mon colis",
+          "baseText": {
+            "de": "meines Pakets",
+            "en": "for my parcel"
+          }
+        },
+        {
+          "targetText": "est actualisé",
+          "baseText": {
+            "de": "wird aktualisiert",
+            "en": "is updated"
+          }
+        },
+        {
+          "targetText": "à chaque étape ?",
+          "baseText": {
+            "de": "bei jedem Schritt?",
+            "en": "at every stage?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le suivi",
+          "baseText": {
+            "de": "die Sendungsverfolgung",
+            "en": "the tracking information"
+          }
+        },
+        {
+          "targetText": "mon colis",
+          "baseText": {
+            "de": "mein Paket",
+            "en": "my parcel"
+          }
+        },
+        {
+          "targetText": "actualisé",
+          "baseText": {
+            "de": "aktualisiert",
+            "en": "updated"
+          }
+        },
+        {
+          "targetText": "à chaque étape",
+          "baseText": {
+            "de": "bei jedem Schritt",
+            "en": "at every stage"
+          }
+        },
+        {
+          "targetText": "en transit",
+          "baseText": {
+            "de": "unterwegs",
+            "en": "in transit"
+          }
+        },
+        {
+          "targetText": "les deux messages",
+          "baseText": {
+            "de": "die beiden Meldungen",
+            "en": "the two updates"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le suivi de mon colis est ",
+        "answer": "actualisé",
+        "after": " à chaque étape ?",
+        "fallbackChoices": [
+          "actualisée",
+          "actualisés",
+          "actualisé",
+          "actualisées"
+        ]
+      },
+      "speakRequired": [
+        "suivi",
+        "colis",
+        "étape"
+      ],
+      "sceneCaption": {
+        "de": "Du schaust auf die Sendungsverfolgung und sprichst mit dem Paketdienst. „Vous avez bien la page de votre colis sous les yeux ?“",
+        "en": "You're looking at the tracking page while speaking to the parcel service. “Vous avez bien la page de votre colis sous les yeux ?”"
+      },
+      "trophyWord": {
+        "word": "suivi",
+        "meaning": {
+          "de": "Sendungsverfolgung",
+          "en": "tracking"
+        },
+        "example": "Le suivi de mon colis est actualisé à chaque étape ?",
+        "whyThisWord": {
+          "de": "Le suivi ist hier die laufende Auskunft über den Weg des Pakets.",
+          "en": "Le suivi is the record of a parcel's progress on its journey."
+        }
+      },
+      "distractors": [
+        "la date des vacances",
+        "sous son oreiller ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Paketaufkleber liegt neben einem Telefon mit geöffneter Sendungsverfolgung.",
+        "en": "A parcel label lies beside a phone showing the tracking page."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A parcel label lies beside a phone showing the tracking page."
+    },
+    {
+      "slug": "ordre-des-demandes",
+      "title": {
+        "de": "Welche Anfrage kommt zuerst?",
+        "en": "Which request comes first?"
+      },
+      "situation": {
+        "de": "Am Serviceschalter möchtest du wissen, in welcher Reihenfolge Anfragen bearbeitet werden.",
+        "en": "At a service desk, find out in what order requests are dealt with."
+      },
+      "pedagogicalGoal": "On s'en occupe lässt offen, wer genau zuständig ist. En steht für die Anfragen, um die man sich kümmert.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Voici votre ticket pour le service des demandes.",
+          "baseText": {
+            "de": "Hier ist Ihre Nummer für die Antragsstelle.",
+            "en": "Here's your ticket for the requests desk."
+          }
+        },
+        {
+          "targetText": "Pour le traitement des demandes, on s'en occupe par ordre d'arrivée ?",
+          "baseText": {
+            "de": "Bearbeiten Sie die Anfragen in der Reihenfolge, in der sie eingehen?",
+            "en": "When processing requests, do you deal with them in the order they arrive?"
+          }
+        },
+        {
+          "targetText": "En général, oui, mais les dossiers urgents passent avant les autres.",
+          "baseText": {
+            "de": "In der Regel ja, aber dringende Fälle kommen zuerst dran.",
+            "en": "Generally, yes, but urgent cases go ahead of the others."
+          }
+        },
+        {
+          "targetText": "Mon dossier risque de prendre du retard si une urgence arrive ?",
+          "baseText": {
+            "de": "Kann sich mein Fall verzögern, wenn ein dringender Fall hereinkommt?",
+            "en": "Could my case be delayed if an urgent one comes in?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Qui s'en occupe ?",
+        "rule": {
+          "de": "On s'en occupe lässt offen, wer genau zuständig ist. En steht für die Anfragen, um die man sich kümmert.",
+          "en": "On s'en occupe leaves the individual responsible unnamed. En refers back to the requests being handled."
+        },
+        "examples": [
+          {
+            "targetText": "Pour le traitement des demandes, on s'en occupe par ordre d'arrivée ?",
+            "baseText": {
+              "de": "Bearbeiten Sie die Anfragen in der Reihenfolge, in der sie eingehen?",
+              "en": "When processing requests, do you deal with them in the order they arrive?"
+            },
+            "highlight": "on s'en occupe"
+          },
+          {
+            "targetText": "Pour les plantes du couloir, on s'en occupe à tour de rôle.",
+            "baseText": {
+              "de": "Um die Pflanzen im Flur kümmern wir uns abwechselnd.",
+              "en": "We take turns looking after the plants in the hall."
+            },
+            "highlight": "on s'en occupe"
+          }
+        ]
+      },
+      "cloze": [
+        "Mon dossier ",
+        {
+          "kind": "form",
+          "answer": "risque",
+          "choices": [
+            "risquent",
+            "risque",
+            "risquez",
+            "risquons"
+          ],
+          "cue": "risquer (mon dossier)"
+        },
+        " de prendre du retard si une urgence ",
+        {
+          "kind": "form",
+          "answer": "arrive",
+          "choices": [
+            "arrivent",
+            "arrivez",
+            "arrive",
+            "arrivons"
+          ],
+          "cue": "arriver (une urgence)"
+        },
+        " ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pour le traitement",
+          "baseText": {
+            "de": "für die Bearbeitung",
+            "en": "for the processing"
+          }
+        },
+        {
+          "targetText": "des demandes,",
+          "baseText": {
+            "de": "der Anfragen",
+            "en": "of requests"
+          }
+        },
+        {
+          "targetText": "on s'en occupe",
+          "baseText": {
+            "de": "kümmert man sich darum",
+            "en": "do staff deal with them"
+          }
+        },
+        {
+          "targetText": "par ordre d'arrivée ?",
+          "baseText": {
+            "de": "in der Reihenfolge des Eingangs?",
+            "en": "in order of arrival?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "votre ticket",
+          "baseText": {
+            "de": "Ihre Wartenummer",
+            "en": "your queue ticket"
+          }
+        },
+        {
+          "targetText": "le traitement",
+          "baseText": {
+            "de": "die Bearbeitung",
+            "en": "the processing"
+          }
+        },
+        {
+          "targetText": "des demandes",
+          "baseText": {
+            "de": "von Anfragen",
+            "en": "of requests"
+          }
+        },
+        {
+          "targetText": "par ordre d'arrivée",
+          "baseText": {
+            "de": "in der Reihenfolge des Eingangs",
+            "en": "in order of arrival"
+          }
+        },
+        {
+          "targetText": "les dossiers urgents",
+          "baseText": {
+            "de": "die dringenden Fälle",
+            "en": "the urgent cases"
+          }
+        },
+        {
+          "targetText": "prendre du retard",
+          "baseText": {
+            "de": "in Verzug geraten",
+            "en": "get delayed"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pour le traitement des demandes, on s'en ",
+        "answer": "occupe",
+        "after": " par ordre d'arrivée ?",
+        "fallbackChoices": [
+          "occupent",
+          "occupons",
+          "occupez",
+          "occupe"
+        ]
+      },
+      "speakRequired": [
+        "traitement",
+        "demandes",
+        "ordre"
+      ],
+      "sceneCaption": {
+        "de": "Am Serviceschalter möchtest du wissen, in welcher Reihenfolge Anfragen bearbeitet werden. „Voici votre ticket pour le service des demandes.“",
+        "en": "At a service desk, find out in what order requests are dealt with. “Voici votre ticket pour le service des demandes.”"
+      },
+      "trophyWord": {
+        "word": "traitement",
+        "meaning": {
+          "de": "Bearbeitung",
+          "en": "processing"
+        },
+        "example": "Pour le traitement des demandes, on s'en occupe par ordre d'arrivée ?",
+        "whyThisWord": {
+          "de": "Le traitement des demandes bezeichnet die Arbeit an bereits eingegangenen Anfragen.",
+          "en": "Le traitement des demandes refers to the work done on requests already submitted."
+        }
+      },
+      "distractors": [
+        "ma réservation tombe",
+        "sous le pommier ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Nummernspender steht vor dem Schalter für Anfragen.",
+        "en": "A ticket dispenser stands in front of the requests desk."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A ticket dispenser stands in front of the requests desk."
+    },
+    {
+      "slug": "la-reference-du-depot",
+      "title": {
+        "de": "Den Eingang nachweisen",
+        "en": "Tracing a submission"
+      },
+      "situation": {
+        "de": "Am Telefon willst du wissen, woran du erkennst, ob deine Unterlagen angekommen sind.",
+        "en": "On the phone, find out how to tell whether your paperwork has arrived."
+      },
+      "pedagogicalGoal": "On me prévient bedeutet, dass jemand aus der zuständigen Stelle Bescheid gibt. Das Verb steht in der dritten Person Singular.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Bonjour, je vous écoute au sujet de votre envoi.",
+          "baseText": {
+            "de": "Guten Tag, wie kann ich Ihnen wegen Ihrer Sendung helfen?",
+            "en": "Hello, how can I help with your submission?"
+          }
+        },
+        {
+          "targetText": "Quand vous avez reçu mon dossier, on me prévient par courrier ?",
+          "baseText": {
+            "de": "Bekomme ich per Post Bescheid, sobald meine Unterlagen bei Ihnen angekommen sind?",
+            "en": "Once you've received my file, do you let me know by post?"
+          }
+        },
+        {
+          "targetText": "Normalement oui, mais je ne trouve rien sous votre nom.",
+          "baseText": {
+            "de": "Normalerweise ja, aber unter Ihrem Namen finde ich nichts.",
+            "en": "Normally yes, but I can't find anything under your name."
+          }
+        },
+        {
+          "targetText": "Je peux vous donner la référence qui figure sur mon ticket.",
+          "baseText": {
+            "de": "Ich kann Ihnen die Nummer nennen, die auf meinem Beleg steht.",
+            "en": "I can give you the reference shown on my receipt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une personne du service",
+        "rule": {
+          "de": "On me prévient bedeutet, dass jemand aus der zuständigen Stelle Bescheid gibt. Das Verb steht in der dritten Person Singular.",
+          "en": "On me prévient means someone from the service lets me know. The verb takes the third-person singular."
+        },
+        "examples": [
+          {
+            "targetText": "Quand vous avez reçu mon dossier, on me prévient par courrier ?",
+            "baseText": {
+              "de": "Bekomme ich per Post Bescheid, sobald meine Unterlagen bei Ihnen angekommen sind?",
+              "en": "Once you've received my file, do you let me know by post?"
+            },
+            "highlight": "on me prévient"
+          },
+          {
+            "targetText": "Quand une table se libère, on me prévient par SMS.",
+            "baseText": {
+              "de": "Sobald ein Tisch frei wird, gibt man mir per SMS Bescheid.",
+              "en": "When a table becomes available, someone lets me know by text."
+            },
+            "highlight": "on me prévient"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvons",
+            "peuvent",
+            "peux",
+            "pouvez"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " vous donner la référence qui ",
+        {
+          "kind": "form",
+          "answer": "figure",
+          "choices": [
+            "figurent",
+            "figurez",
+            "figurons",
+            "figure"
+          ],
+          "cue": "figurer (qui = la référence)"
+        },
+        " sur mon ticket."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quand vous avez reçu",
+          "baseText": {
+            "de": "sobald Sie erhalten haben",
+            "en": "once you have received"
+          }
+        },
+        {
+          "targetText": "mon dossier,",
+          "baseText": {
+            "de": "meine Unterlagen",
+            "en": "my file"
+          }
+        },
+        {
+          "targetText": "on me prévient",
+          "baseText": {
+            "de": "gibt man mir Bescheid",
+            "en": "do you let me know"
+          }
+        },
+        {
+          "targetText": "par courrier ?",
+          "baseText": {
+            "de": "per Post?",
+            "en": "by post?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "votre envoi",
+          "baseText": {
+            "de": "Ihre Sendung",
+            "en": "your submission"
+          }
+        },
+        {
+          "targetText": "mon dossier",
+          "baseText": {
+            "de": "meine Unterlagen",
+            "en": "my file"
+          }
+        },
+        {
+          "targetText": "on me prévient",
+          "baseText": {
+            "de": "man gibt mir Bescheid",
+            "en": "they let me know"
+          }
+        },
+        {
+          "targetText": "par courrier",
+          "baseText": {
+            "de": "per Post",
+            "en": "by post"
+          }
+        },
+        {
+          "targetText": "sous votre nom",
+          "baseText": {
+            "de": "unter Ihrem Namen",
+            "en": "under your name"
+          }
+        },
+        {
+          "targetText": "la référence",
+          "baseText": {
+            "de": "die Referenznummer",
+            "en": "the reference number"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quand vous avez reçu mon dossier, on me ",
+        "answer": "prévient",
+        "after": " par courrier ?",
+        "fallbackChoices": [
+          "prévient",
+          "prévenez",
+          "préviennent",
+          "prévenons"
+        ]
+      },
+      "speakRequired": [
+        "reçu",
+        "dossier",
+        "courrier"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon willst du wissen, woran du erkennst, ob deine Unterlagen angekommen sind. „Bonjour, je vous écoute au sujet de votre envoi.“",
+        "en": "On the phone, find out how to tell whether your paperwork has arrived. “Bonjour, je vous écoute au sujet de votre envoi.”"
+      },
+      "trophyWord": {
+        "word": "reçu",
+        "meaning": {
+          "de": "erhalten",
+          "en": "received"
+        },
+        "example": "Quand vous avez reçu mon dossier, on me prévient par courrier ?",
+        "whyThisWord": {
+          "de": "In vous avez reçu ist reçu das Partizip von recevoir.",
+          "en": "In vous avez reçu, reçu is the past participle of recevoir."
+        }
+      },
+      "distractors": [
+        "au pied du lit",
+        "je prépare un café"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Einlieferungsbeleg liegt neben einem Briefumschlag.",
+        "en": "A posting receipt lies beside an envelope."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A posting receipt lies beside an envelope."
+    },
+    {
+      "slug": "un-cable-neuf",
+      "title": {
+        "de": "Ein neues Kabel",
+        "en": "A new cable"
+      },
+      "situation": {
+        "de": "Du rufst wegen eines defekten Kabels im Reparaturgeschäft an und möchtest den Stand erfahren.",
+        "en": "You call the repair shop to find out what's happening with a faulty cable."
+      },
+      "pedagogicalGoal": "Mit on me rappelle fragst du nach einem Rückruf, ohne eine bestimmte Person zu nennen. Me steht vor dem Verb.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Je viens de retrouver votre fiche. Il s'agit bien du câble ?",
+          "baseText": {
+            "de": "Ich habe Ihren Auftragszettel gefunden. Es geht um das Kabel, richtig?",
+            "en": "I've just found your job sheet. This is about the cable, right?"
+          }
+        },
+        {
+          "targetText": "On me rappelle dès que le câble défectueux est remplacé ?",
+          "baseText": {
+            "de": "Rufen Sie mich zurück, sobald das defekte Kabel ersetzt ist?",
+            "en": "Will someone call me back as soon as the faulty cable has been replaced?"
+          }
+        },
+        {
+          "targetText": "En principe, oui, mais il reste un test et le téléphone fonctionne mal ici.",
+          "baseText": {
+            "de": "Eigentlich ja, aber ein Test steht noch aus und das Telefon funktioniert hier schlecht.",
+            "en": "Normally yes, but we still have one test to run and our phone is unreliable."
+          }
+        },
+        {
+          "targetText": "Si je rappelle demain, quelle heure vous convient ?",
+          "baseText": {
+            "de": "Wenn ich morgen wieder anrufe, welche Uhrzeit passt Ihnen?",
+            "en": "If I call back tomorrow, what time suits you?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "On me rappelle",
+        "rule": {
+          "de": "Mit on me rappelle fragst du nach einem Rückruf, ohne eine bestimmte Person zu nennen. Me steht vor dem Verb.",
+          "en": "Use on me rappelle to ask about a callback without naming the caller. Me goes before the verb."
+        },
+        "examples": [
+          {
+            "targetText": "On me rappelle dès que le câble défectueux est remplacé ?",
+            "baseText": {
+              "de": "Rufen Sie mich zurück, sobald das defekte Kabel ersetzt ist?",
+              "en": "Will someone call me back as soon as the faulty cable has been replaced?"
+            },
+            "highlight": "On me rappelle"
+          },
+          {
+            "targetText": "On me rappelle quand une place se libère au cours de danse.",
+            "baseText": {
+              "de": "Man ruft mich zurück, wenn im Tanzkurs ein Platz frei wird.",
+              "en": "Someone calls me back when a place opens up in the dance class."
+            },
+            "highlight": "On me rappelle"
+          }
+        ]
+      },
+      "cloze": [
+        "Si je ",
+        {
+          "kind": "form",
+          "answer": "rappelle",
+          "choices": [
+            "rappelons",
+            "rappelez",
+            "rappellent",
+            "rappelle"
+          ],
+          "cue": "rappeler (je)"
+        },
+        " demain, quelle heure vous ",
+        {
+          "kind": "form",
+          "answer": "convient",
+          "choices": [
+            "convient",
+            "conviennent",
+            "convenez",
+            "convenons"
+          ],
+          "cue": "convenir (quelle heure)"
+        },
+        " ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "On me rappelle",
+          "baseText": {
+            "de": "man ruft mich zurück",
+            "en": "will someone call me back"
+          }
+        },
+        {
+          "targetText": "dès que",
+          "baseText": {
+            "de": "sobald",
+            "en": "as soon as"
+          }
+        },
+        {
+          "targetText": "le câble défectueux",
+          "baseText": {
+            "de": "das defekte Kabel",
+            "en": "the faulty cable"
+          }
+        },
+        {
+          "targetText": "est remplacé ?",
+          "baseText": {
+            "de": "ersetzt ist?",
+            "en": "has been replaced?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "votre fiche",
+          "baseText": {
+            "de": "Ihr Auftragszettel",
+            "en": "your job sheet"
+          }
+        },
+        {
+          "targetText": "le câble défectueux",
+          "baseText": {
+            "de": "das defekte Kabel",
+            "en": "the faulty cable"
+          }
+        },
+        {
+          "targetText": "dès que",
+          "baseText": {
+            "de": "sobald",
+            "en": "as soon as"
+          }
+        },
+        {
+          "targetText": "remplacé",
+          "baseText": {
+            "de": "ersetzt",
+            "en": "replaced"
+          }
+        },
+        {
+          "targetText": "un test",
+          "baseText": {
+            "de": "ein Test",
+            "en": "a test"
+          }
+        },
+        {
+          "targetText": "quelle heure",
+          "baseText": {
+            "de": "welche Uhrzeit",
+            "en": "what time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "On me ",
+        "answer": "rappelle",
+        "after": " dès que le câble défectueux est remplacé ?",
+        "fallbackChoices": [
+          "rappellent",
+          "rappelle",
+          "rappelons",
+          "rappelez"
+        ]
+      },
+      "speakRequired": [
+        "rappelle",
+        "câble",
+        "remplacé"
+      ],
+      "sceneCaption": {
+        "de": "Du rufst wegen eines defekten Kabels im Reparaturgeschäft an und möchtest den Stand erfahren. „Je viens de retrouver votre fiche. Il s'agit bien du câble ?“",
+        "en": "You call the repair shop to find out what's happening with a faulty cable. “Je viens de retrouver votre fiche. Il s'agit bien du câble ?”"
+      },
+      "trophyWord": {
+        "word": "remplacé",
+        "meaning": {
+          "de": "ersetzt",
+          "en": "replaced"
+        },
+        "example": "On me rappelle dès que le câble défectueux est remplacé ?",
+        "whyThisWord": {
+          "de": "Est remplacé beschreibt das Ergebnis des Austauschs am Kabel.",
+          "en": "Est remplacé describes the result of replacing the cable."
+        }
+      },
+      "distractors": [
+        "mange ici",
+        "au rayon des fruits ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein loses Kabel und ein Prüfgerät liegen auf einer Gummimatte.",
+        "en": "A loose cable and a tester lie on a rubber mat."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A loose cable and a tester lie on a rubber mat."
+    },
+    {
+      "slug": "le-bon-service",
+      "title": {
+        "de": "An welche Stelle?",
+        "en": "Which department?"
+      },
+      "situation": {
+        "de": "Du hast Unterlagen abgegeben. Ruf die Sachbearbeitung an und finde heraus, wo sie jetzt liegen.",
+        "en": "You handed in some paperwork. Call the caseworker and find out which department now has it."
+      },
+      "pedagogicalGoal": "Mit a été transmis beschreibst du eine abgeschlossene Weiterleitung. In der Frage steht das eingeschobene -t-il direkt hinter a.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Votre dossier n'est plus dans notre service depuis ce matin.",
+          "baseText": {
+            "de": "Seit heute Morgen ist Ihr Vorgang nicht mehr bei uns.",
+            "en": "Your file has been out of our department since this morning."
+          }
+        },
+        {
+          "targetText": "À quel service mon dossier a-t-il été transmis ce matin ?",
+          "baseText": {
+            "de": "An welche Stelle wurde mein Vorgang heute Morgen weitergeleitet?",
+            "en": "Which department was my file sent to this morning?"
+          }
+        },
+        {
+          "targetText": "Au service technique. Il porte maintenant la référence douze B.",
+          "baseText": {
+            "de": "An die technische Abteilung. Er hat jetzt die Nummer zwölf B.",
+            "en": "To the technical department. Its reference is now twelve B."
+          }
+        },
+        {
+          "targetText": "Je dois donner cette référence si je rappelle demain ?",
+          "baseText": {
+            "de": "Muss ich diese Nummer angeben, wenn ich morgen wieder anrufe?",
+            "en": "Should I give that reference if I call back tomorrow?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un transfert terminé",
+        "rule": {
+          "de": "Mit a été transmis beschreibst du eine abgeschlossene Weiterleitung. In der Frage steht das eingeschobene -t-il direkt hinter a.",
+          "en": "Use a été transmis for a completed transfer. In the inverted question, -t-il follows a."
+        },
+        "examples": [
+          {
+            "targetText": "À quel service mon dossier a-t-il été transmis ce matin ?",
+            "baseText": {
+              "de": "An welche Stelle wurde mein Vorgang heute Morgen weitergeleitet?",
+              "en": "Which department was my file sent to this morning?"
+            },
+            "highlight": "a-t-il été transmis"
+          },
+          {
+            "targetText": "À quelle heure le concert a-t-il été enregistré ?",
+            "baseText": {
+              "de": "Um wie viel Uhr wurde das Konzert aufgezeichnet?",
+              "en": "What time was the concert recorded?"
+            },
+            "highlight": "a-t-il été enregistré"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "dois",
+          "choices": [
+            "dois",
+            "doivent",
+            "devons",
+            "devez"
+          ],
+          "cue": "devoir (je)"
+        },
+        " donner cette référence si je ",
+        {
+          "kind": "form",
+          "answer": "rappelle",
+          "choices": [
+            "rappelons",
+            "rappelle",
+            "rappellent",
+            "rappelez"
+          ],
+          "cue": "rappeler (je)"
+        },
+        " demain ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "À quel service",
+          "baseText": {
+            "de": "an welche Stelle",
+            "en": "to which department"
+          }
+        },
+        {
+          "targetText": "mon dossier",
+          "baseText": {
+            "de": "mein Vorgang",
+            "en": "my file"
+          }
+        },
+        {
+          "targetText": "a-t-il été transmis",
+          "baseText": {
+            "de": "wurde er weitergeleitet",
+            "en": "was it forwarded"
+          }
+        },
+        {
+          "targetText": "ce matin ?",
+          "baseText": {
+            "de": "heute Morgen?",
+            "en": "this morning?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "notre service",
+          "baseText": {
+            "de": "unsere Abteilung",
+            "en": "our department"
+          }
+        },
+        {
+          "targetText": "mon dossier",
+          "baseText": {
+            "de": "mein Vorgang",
+            "en": "my file"
+          }
+        },
+        {
+          "targetText": "transmis",
+          "baseText": {
+            "de": "weitergeleitet",
+            "en": "forwarded"
+          }
+        },
+        {
+          "targetText": "ce matin",
+          "baseText": {
+            "de": "heute Morgen",
+            "en": "this morning"
+          }
+        },
+        {
+          "targetText": "au service technique",
+          "baseText": {
+            "de": "an die technische Abteilung",
+            "en": "to the technical department"
+          }
+        },
+        {
+          "targetText": "cette référence",
+          "baseText": {
+            "de": "diese Nummer",
+            "en": "this reference"
+          }
+        }
+      ],
+      "recall": {
+        "before": "À quel service mon dossier a-t-il été ",
+        "answer": "transmis",
+        "after": " ce matin ?",
+        "fallbackChoices": [
+          "transmise",
+          "transmises",
+          "transmis",
+          "transmettre"
+        ]
+      },
+      "speakRequired": [
+        "service",
+        "dossier",
+        "transmis"
+      ],
+      "sceneCaption": {
+        "de": "Du hast Unterlagen abgegeben. Ruf die Sachbearbeitung an und finde heraus, wo sie jetzt liegen. „Votre dossier n'est plus dans notre service depuis ce matin.“",
+        "en": "You handed in some paperwork. Call the caseworker and find out which department now has it. “Votre dossier n'est plus dans notre service depuis ce matin.”"
+      },
+      "trophyWord": {
+        "word": "transmis",
+        "meaning": {
+          "de": "weitergeleitet",
+          "en": "forwarded"
+        },
+        "example": "À quel service mon dossier a-t-il été transmis ce matin ?",
+        "whyThisWord": {
+          "de": "Transmettre un dossier heißt, einen Vorgang zur weiteren Bearbeitung weiterzugeben.",
+          "en": "Transmettre un dossier means to pass a file on for further handling."
+        }
+      },
+      "distractors": [
+        "va peindre",
+        "du pain frais ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Aktenmappe liegt neben einem internen Telefonverzeichnis.",
+        "en": "A file folder lies beside an internal phone directory."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A file folder lies beside an internal phone directory."
+    },
+    {
+      "slug": "la-visite-du-technicien",
+      "title": {
+        "de": "Zeit für den Technikbesuch",
+        "en": "A time for the technician"
+      },
+      "situation": {
+        "de": "Nach der ersten Besichtigung fragst du den Hausservice nach einem Termin.",
+        "en": "After an initial inspection, ask the maintenance service about an appointment."
+      },
+      "pedagogicalGoal": "Im Passiv der Vergangenheit bleibt été gleich. Prévue richtet sich nach dem weiblichen Wort intervention.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Le technicien a terminé la première visite dans votre immeuble.",
+          "baseText": {
+            "de": "Der Techniker hat die erste Besichtigung in Ihrem Gebäude abgeschlossen.",
+            "en": "The technician has finished the first inspection in your building."
+          }
+        },
+        {
+          "targetText": "Une intervention a-t-elle été prévue après cette première visite sur place ?",
+          "baseText": {
+            "de": "Wurde nach dieser ersten Besichtigung vor Ort ein Einsatz eingeplant?",
+            "en": "Was a service visit scheduled after that first on-site inspection?"
+          }
+        },
+        {
+          "targetText": "Oui, vendredi, mais quelqu'un doit être là pour ouvrir la cave.",
+          "baseText": {
+            "de": "Ja, am Freitag, aber jemand muss da sein, um den Keller zu öffnen.",
+            "en": "Yes, on Friday, but someone needs to be there to open the cellar."
+          }
+        },
+        {
+          "targetText": "Je peux ouvrir vendredi si votre équipe arrive avant midi.",
+          "baseText": {
+            "de": "Ich kann am Freitag aufschließen, wenn Ihr Team vor zwölf kommt.",
+            "en": "I can open up on Friday if your team arrives before noon."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une intervention a été prévue",
+        "rule": {
+          "de": "Im Passiv der Vergangenheit bleibt été gleich. Prévue richtet sich nach dem weiblichen Wort intervention.",
+          "en": "In the past passive, été stays the same. Prévue agrees with the feminine noun intervention."
+        },
+        "examples": [
+          {
+            "targetText": "Une intervention a-t-elle été prévue après cette première visite sur place ?",
+            "baseText": {
+              "de": "Wurde nach dieser ersten Besichtigung vor Ort ein Einsatz eingeplant?",
+              "en": "Was a service visit scheduled after that first on-site inspection?"
+            },
+            "highlight": "a-t-elle été prévue"
+          },
+          {
+            "targetText": "Une photo a-t-elle été prise pendant le spectacle ?",
+            "baseText": {
+              "de": "Wurde während der Vorstellung ein Foto gemacht?",
+              "en": "Was a photo taken during the performance?"
+            },
+            "highlight": "a-t-elle été prise"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvez",
+            "peux",
+            "pouvons",
+            "peuvent"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " ouvrir vendredi si votre équipe ",
+        {
+          "kind": "form",
+          "answer": "arrive",
+          "choices": [
+            "arrivent",
+            "arrivez",
+            "arrive",
+            "arrivons"
+          ],
+          "cue": "arriver (votre équipe)"
+        },
+        " avant midi."
+      ],
+      "chunks": [
+        {
+          "targetText": "Une intervention",
+          "baseText": {
+            "de": "ein Einsatz",
+            "en": "a service visit"
+          }
+        },
+        {
+          "targetText": "a-t-elle été prévue",
+          "baseText": {
+            "de": "wurde er eingeplant",
+            "en": "was it scheduled"
+          }
+        },
+        {
+          "targetText": "après cette première",
+          "baseText": {
+            "de": "nach dieser ersten",
+            "en": "after that first"
+          }
+        },
+        {
+          "targetText": "visite sur place ?",
+          "baseText": {
+            "de": "Besichtigung vor Ort?",
+            "en": "on-site inspection?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le technicien",
+          "baseText": {
+            "de": "der Techniker",
+            "en": "the technician"
+          }
+        },
+        {
+          "targetText": "une intervention",
+          "baseText": {
+            "de": "ein Einsatz",
+            "en": "a service visit"
+          }
+        },
+        {
+          "targetText": "prévue",
+          "baseText": {
+            "de": "vorgesehen",
+            "en": "scheduled"
+          }
+        },
+        {
+          "targetText": "sur place",
+          "baseText": {
+            "de": "vor Ort",
+            "en": "on site"
+          }
+        },
+        {
+          "targetText": "ouvrir la cave",
+          "baseText": {
+            "de": "den Keller aufschließen",
+            "en": "open the cellar"
+          }
+        },
+        {
+          "targetText": "avant midi",
+          "baseText": {
+            "de": "vor zwölf Uhr mittags",
+            "en": "before noon"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Une intervention a-t-elle été ",
+        "answer": "prévue",
+        "after": " après cette première visite sur place ?",
+        "fallbackChoices": [
+          "prévu",
+          "prévus",
+          "prévues",
+          "prévue"
+        ]
+      },
+      "speakRequired": [
+        "intervention",
+        "prévue",
+        "visite"
+      ],
+      "sceneCaption": {
+        "de": "Nach der ersten Besichtigung fragst du den Hausservice nach einem Termin. „Le technicien a terminé la première visite dans votre immeuble.“",
+        "en": "After an initial inspection, ask the maintenance service about an appointment. “Le technicien a terminé la première visite dans votre immeuble.”"
+      },
+      "trophyWord": {
+        "word": "intervention",
+        "meaning": {
+          "de": "Einsatz",
+          "en": "service visit"
+        },
+        "example": "Une intervention a-t-elle été prévue après cette première visite sur place ?",
+        "whyThisWord": {
+          "de": "Une intervention bezeichnet hier den geplanten Arbeitseinsatz im Gebäude.",
+          "en": "Here une intervention is the planned visit to carry out work in the building."
+        }
+      },
+      "distractors": [
+        "roulent trop vite",
+        "un kilo de riz ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kellertür und eine Arbeitsleuchte stehen unterhalb einer Treppe.",
+        "en": "A cellar door and a work light sit at the bottom of a staircase."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A cellar door and a work light sit at the bottom of a staircase."
+    },
+    {
+      "slug": "avant-de-se-deplacer",
+      "title": {
+        "de": "Vor dem Losfahren",
+        "en": "Before setting off"
+      },
+      "situation": {
+        "de": "Du würdest dein repariertes Gerät gern abholen. Kläre am Telefon, ob schon alles geprüft wurde.",
+        "en": "You'd like to collect your repaired appliance. Call and check whether all the tests are complete."
+      },
+      "pedagogicalGoal": "Est terminé fragt nach dem Ergebnis. Il reste un essai nennt die andere Möglichkeit, nämlich einen noch ausstehenden Test.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Votre appareil fonctionne à nouveau depuis ce matin.",
+          "baseText": {
+            "de": "Ihr Gerät funktioniert seit heute Morgen wieder.",
+            "en": "Your appliance has been working again since this morning."
+          }
+        },
+        {
+          "targetText": "Le contrôle après réparation est terminé ou il reste un essai ?",
+          "baseText": {
+            "de": "Ist die Prüfung nach der Reparatur abgeschlossen oder steht noch ein Test aus?",
+            "en": "Is the post-repair check complete, or is there still a test to run?"
+          }
+        },
+        {
+          "targetText": "Il reste le test de sécurité. Je le fais cet après-midi.",
+          "baseText": {
+            "de": "Der Sicherheitstest steht noch aus. Den mache ich heute Nachmittag.",
+            "en": "The safety test is still to come. I'm doing it this afternoon."
+          }
+        },
+        {
+          "targetText": "Je dois attendre votre confirmation avant de prendre la route ?",
+          "baseText": {
+            "de": "Soll ich auf Ihre Bestätigung warten, bevor ich losfahre?",
+            "en": "Should I wait for your confirmation before setting off?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vérifier le résultat",
+        "rule": {
+          "de": "Est terminé fragt nach dem Ergebnis. Il reste un essai nennt die andere Möglichkeit, nämlich einen noch ausstehenden Test.",
+          "en": "Est terminé asks about the result. Il reste un essai describes the other possibility, a test still to be done."
+        },
+        "examples": [
+          {
+            "targetText": "Le contrôle après réparation est terminé ou il reste un essai ?",
+            "baseText": {
+              "de": "Ist die Prüfung nach der Reparatur abgeschlossen oder steht noch ein Test aus?",
+              "en": "Is the post-repair check complete, or is there still a test to run?"
+            },
+            "highlight": "est terminé"
+          },
+          {
+            "targetText": "Le tri des cartons est terminé ou il reste une pile ?",
+            "baseText": {
+              "de": "Sind die Kartons fertig sortiert oder ist noch ein Stapel übrig?",
+              "en": "Have the boxes been sorted, or is there still a stack left?"
+            },
+            "highlight": "est terminé"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "dois",
+          "choices": [
+            "devons",
+            "devez",
+            "dois",
+            "doivent"
+          ],
+          "cue": "devoir (je)"
+        },
+        " attendre votre confirmation avant de ",
+        {
+          "kind": "choice",
+          "answer": "prendre",
+          "choices": [
+            "prends",
+            "prenez",
+            "prenons",
+            "prendre"
+          ]
+        },
+        " la route ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Le contrôle",
+          "baseText": {
+            "de": "die Prüfung",
+            "en": "the check"
+          }
+        },
+        {
+          "targetText": "après réparation",
+          "baseText": {
+            "de": "nach der Reparatur",
+            "en": "after the repair"
+          }
+        },
+        {
+          "targetText": "est terminé",
+          "baseText": {
+            "de": "ist abgeschlossen",
+            "en": "is complete"
+          }
+        },
+        {
+          "targetText": "ou il reste un essai ?",
+          "baseText": {
+            "de": "oder steht noch ein Test aus?",
+            "en": "or is there still a test to run?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "votre appareil",
+          "baseText": {
+            "de": "Ihr Gerät",
+            "en": "your appliance"
+          }
+        },
+        {
+          "targetText": "le contrôle",
+          "baseText": {
+            "de": "die Prüfung",
+            "en": "the check"
+          }
+        },
+        {
+          "targetText": "après réparation",
+          "baseText": {
+            "de": "nach der Reparatur",
+            "en": "after the repair"
+          }
+        },
+        {
+          "targetText": "terminé",
+          "baseText": {
+            "de": "abgeschlossen",
+            "en": "complete"
+          }
+        },
+        {
+          "targetText": "un essai",
+          "baseText": {
+            "de": "ein Test",
+            "en": "a test"
+          }
+        },
+        {
+          "targetText": "le test de sécurité",
+          "baseText": {
+            "de": "der Sicherheitstest",
+            "en": "the safety test"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le contrôle après réparation est ",
+        "answer": "terminé",
+        "after": " ou il reste un essai ?",
+        "fallbackChoices": [
+          "terminé",
+          "terminée",
+          "terminés",
+          "terminées"
+        ]
+      },
+      "speakRequired": [
+        "contrôle",
+        "terminé",
+        "essai"
+      ],
+      "sceneCaption": {
+        "de": "Du würdest dein repariertes Gerät gern abholen. Kläre am Telefon, ob schon alles geprüft wurde. „Votre appareil fonctionne à nouveau depuis ce matin.“",
+        "en": "You'd like to collect your repaired appliance. Call and check whether all the tests are complete. “Votre appareil fonctionne à nouveau depuis ce matin.”"
+      },
+      "trophyWord": {
+        "word": "terminé",
+        "meaning": {
+          "de": "abgeschlossen",
+          "en": "complete"
+        },
+        "example": "Le contrôle après réparation est terminé ou il reste un essai ?",
+        "whyThisWord": {
+          "de": "Est terminé sagt hier, ob der ganze Prüfvorgang abgeschlossen ist.",
+          "en": "Est terminé tells you whether the entire checking process is complete."
+        }
+      },
+      "distractors": [
+        "battent des ailes",
+        "des pommes de terre ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein kleiner Werkstattzettel hängt am Griff eines reparierten Geräts.",
+        "en": "A small job ticket hangs from the handle of a repaired appliance."
+      },
+      "songMood": "Ruhig und aufmerksam.",
+      "visualNotes": "A small job ticket hangs from the handle of a repaired appliance."
+    }
+  ]
+}

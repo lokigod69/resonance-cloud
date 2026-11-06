@@ -1,0 +1,2155 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Das war damals so",
+    "en": "Back then"
+  },
+  "subtitle": {
+    "de": "Erzähle von früher und davon, was sich geändert hat.",
+    "en": "Recall how things used to be and what changed."
+  },
+  "anchor": "Imperfeito para hábitos e contextos, com quando eu era, antes e naquela época; contraste com agora e com um acontecimento concluído. Ouvinte interessado: as duas falas do aluno formam uma lembrança conectada, sem qualificações que marquem seu gênero.",
+  "lessons": [
+    {
+      "slug": "the-old-way-home",
+      "title": {
+        "de": "Der Heimweg von früher",
+        "en": "The old way home"
+      },
+      "situation": {
+        "de": "Beim Blick auf einen alten Stadtplan kommt ihr auf eure Schulwege zu sprechen.",
+        "en": "Looking at an old street map, you start talking about your routes home from school."
+      },
+      "pedagogicalGoal": "Die Zeitangabe todos os dias zeigt die Wiederholung. Mit atravessava im Imperfekt beschreibst du den vertrauten Weg.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você reconhece essa ponte perto da escola?",
+          "baseText": {
+            "de": "Erkennst du die Brücke in der Nähe der Schule wieder?",
+            "en": "Do you recognize this bridge near the school?"
+          }
+        },
+        {
+          "targetText": "Na minha infância eu atravessava essa ponte todos os dias para voltar para casa.",
+          "baseText": {
+            "de": "Als Kind ging ich jeden Tag auf dem Heimweg über diese Brücke.",
+            "en": "In my childhood I crossed that bridge every day on my way home."
+          }
+        },
+        {
+          "targetText": "Você fazia esse caminho com alguém da família?",
+          "baseText": {
+            "de": "Bist du den Weg mit jemandem aus der Familie gegangen?",
+            "en": "Did anyone in your family walk that route with you?"
+          }
+        },
+        {
+          "targetText": "Minha avó me esperava no portão e voltava comigo.",
+          "baseText": {
+            "de": "Meine Oma wartete am Tor auf mich und ging mit mir zurück.",
+            "en": "My grandmother used to wait for me at the gate and walk back with me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Einen regelmäßigen Weg schildern",
+        "rule": {
+          "de": "Die Zeitangabe todos os dias zeigt die Wiederholung. Mit atravessava im Imperfekt beschreibst du den vertrauten Weg.",
+          "en": "Todos os dias signals repetition. Use the imperfect atravessava to describe a familiar route."
+        },
+        "examples": [
+          {
+            "targetText": "Na minha infância eu atravessava essa ponte todos os dias para voltar para casa.",
+            "baseText": {
+              "de": "Als Kind ging ich jeden Tag auf dem Heimweg über diese Brücke.",
+              "en": "In my childhood I crossed that bridge every day on my way home."
+            },
+            "highlight": "eu atravessava"
+          },
+          {
+            "targetText": "Quando morava perto da estação, eu passava pela feira toda sexta.",
+            "baseText": {
+              "de": "Als ich in Bahnhofsnähe wohnte, kam ich jeden Freitag am Markt vorbei.",
+              "en": "When I lived near the station, I used to pass the market every Friday."
+            },
+            "highlight": "eu passava"
+          }
+        ]
+      },
+      "cloze": [
+        "Minha avó me ",
+        {
+          "kind": "form",
+          "answer": "esperava",
+          "choices": [
+            "esperava",
+            "esperavam",
+            "esperávamos",
+            "esperando"
+          ],
+          "cue": "esperar (Minha avó)"
+        },
+        " no portão e ",
+        {
+          "kind": "form",
+          "answer": "voltava",
+          "choices": [
+            "voltavam",
+            "voltávamos",
+            "voltando",
+            "voltava"
+          ],
+          "cue": "voltar (Minha avó)"
+        },
+        " comigo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Na minha infância",
+          "baseText": {
+            "de": "in meiner Kindheit",
+            "en": "in my childhood"
+          }
+        },
+        {
+          "targetText": "eu atravessava",
+          "baseText": {
+            "de": "ich überquerte immer wieder",
+            "en": "I used to cross"
+          }
+        },
+        {
+          "targetText": "essa ponte todos os dias",
+          "baseText": {
+            "de": "diese Brücke jeden Tag",
+            "en": "that bridge every day"
+          }
+        },
+        {
+          "targetText": "para voltar para casa.",
+          "baseText": {
+            "de": "auf dem Heimweg",
+            "en": "to get home"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "infância",
+          "baseText": {
+            "de": "Kindheit",
+            "en": "childhood"
+          }
+        },
+        {
+          "targetText": "atravessava",
+          "baseText": {
+            "de": "überquerte regelmäßig",
+            "en": "used to cross"
+          }
+        },
+        {
+          "targetText": "ponte",
+          "baseText": {
+            "de": "Brücke",
+            "en": "bridge"
+          }
+        },
+        {
+          "targetText": "todos os dias",
+          "baseText": {
+            "de": "jeden Tag",
+            "en": "every day"
+          }
+        },
+        {
+          "targetText": "voltar para casa",
+          "baseText": {
+            "de": "nach Hause zurückkehren",
+            "en": "go back home"
+          }
+        },
+        {
+          "targetText": "caminho",
+          "baseText": {
+            "de": "Weg",
+            "en": "route"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Na minha infância eu ",
+        "answer": "atravessava",
+        "after": " essa ponte todos os dias para voltar para casa.",
+        "fallbackChoices": [
+          "atravessavam",
+          "atravessávamos",
+          "atravessando",
+          "atravessava"
+        ]
+      },
+      "speakRequired": [
+        "infância",
+        "atravessava",
+        "ponte"
+      ],
+      "sceneCaption": {
+        "de": "Beim Blick auf einen alten Stadtplan kommt ihr auf eure Schulwege zu sprechen. „Você reconhece essa ponte perto da escola?“",
+        "en": "Looking at an old street map, you start talking about your routes home from school. “Você reconhece essa ponte perto da escola?”"
+      },
+      "trophyWord": {
+        "word": "infância",
+        "meaning": {
+          "de": "Kindheit",
+          "en": "childhood"
+        },
+        "example": "Na minha infância eu atravessava essa ponte todos os dias para voltar para casa.",
+        "whyThisWord": {
+          "de": "Infância setzt den zeitlichen Rahmen für einen regelmäßig wiederkehrenden Weg.",
+          "en": "Infância locates a familiar, repeated journey in childhood."
+        }
+      },
+      "distractors": [
+        "eu atravessavam",
+        "esses ponte"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Blick auf einen alten Stadtplan kommt ihr auf eure Schulwege zu sprechen.",
+        "en": "Looking at an old street map, you start talking about your routes home from school."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "Looking at an old street map, you start talking about your routes home from school."
+    },
+    {
+      "slug": "the-school-before-the-renovation",
+      "title": {
+        "de": "Die Schule vor dem Umbau",
+        "en": "The school before the renovation"
+      },
+      "situation": {
+        "de": "Auf einem alten Klassenfoto ist im Hintergrund das Schulgebäude zu sehen.",
+        "en": "An old class photo shows the school building in the background."
+      },
+      "pedagogicalGoal": "Im Imperfekt beschreibt tinha, wie die Schule damals aussah. Eine spätere bauliche Veränderung erzählst du als abgeschlossenes Ereignis.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Essa foto foi tirada no pátio da escola onde você estudou?",
+          "baseText": {
+            "de": "Wurde dieses Foto auf dem Hof deiner früheren Schule aufgenommen?",
+            "en": "Was this photo taken in the yard at your old school?"
+          }
+        },
+        {
+          "targetText": "Sim, naquela época a escola tinha duas salas e um pátio sem cobertura.",
+          "baseText": {
+            "de": "Ja, damals hatte die Schule zwei Klassenzimmer und einen unüberdachten Hof.",
+            "en": "Yes, back then the school had two classrooms and an open-air yard."
+          }
+        },
+        {
+          "targetText": "E o que mudou na reforma que fizeram depois?",
+          "baseText": {
+            "de": "Und was hat sich bei dem späteren Umbau geändert?",
+            "en": "What changed in the renovation they did later?"
+          }
+        },
+        {
+          "targetText": "A reforma trouxe mais duas salas, e o pátio ganhou cobertura.",
+          "baseText": {
+            "de": "Durch den Umbau kamen zwei Klassenzimmer dazu und der Hof bekam ein Dach.",
+            "en": "The renovation added two more classrooms, and the yard got a roof."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den früheren Zustand beschreiben",
+        "rule": {
+          "de": "Im Imperfekt beschreibt tinha, wie die Schule damals aussah. Eine spätere bauliche Veränderung erzählst du als abgeschlossenes Ereignis.",
+          "en": "The imperfect tinha sets out what the school used to look like. Report a later change to the building as a completed event."
+        },
+        "examples": [
+          {
+            "targetText": "Sim, naquela época a escola tinha duas salas e um pátio sem cobertura.",
+            "baseText": {
+              "de": "Ja, damals hatte die Schule zwei Klassenzimmer und einen unüberdachten Hof.",
+              "en": "Yes, back then the school had two classrooms and an open-air yard."
+            },
+            "highlight": "a escola tinha"
+          },
+          {
+            "targetText": "Na casa antiga, a cozinha ficava no fim do corredor.",
+            "baseText": {
+              "de": "Im alten Haus lag die Küche am Ende des Flurs.",
+              "en": "In the old house, the kitchen was at the end of the hall."
+            },
+            "highlight": "a cozinha ficava"
+          }
+        ]
+      },
+      "cloze": [
+        "A reforma ",
+        {
+          "kind": "form",
+          "answer": "trouxe",
+          "choices": [
+            "trouxeram",
+            "trouxemos",
+            "trazendo",
+            "trouxe"
+          ],
+          "cue": "trazer (A reforma)"
+        },
+        " mais duas salas, e o pátio ",
+        {
+          "kind": "form",
+          "answer": "ganhou",
+          "choices": [
+            "ganhamos",
+            "ganhando",
+            "ganhou",
+            "ganharam"
+          ],
+          "cue": "ganhar (o pátio)"
+        },
+        " cobertura."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sim, naquela época",
+          "baseText": {
+            "de": "ja, damals",
+            "en": "yes, back then"
+          }
+        },
+        {
+          "targetText": "a escola tinha",
+          "baseText": {
+            "de": "die Schule hatte",
+            "en": "the school had"
+          }
+        },
+        {
+          "targetText": "duas salas",
+          "baseText": {
+            "de": "zwei Klassenzimmer",
+            "en": "two classrooms"
+          }
+        },
+        {
+          "targetText": "e um pátio",
+          "baseText": {
+            "de": "und einen Hof",
+            "en": "and a yard"
+          }
+        },
+        {
+          "targetText": "sem cobertura.",
+          "baseText": {
+            "de": "ohne Dach",
+            "en": "without a roof"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "escola",
+          "baseText": {
+            "de": "Schule",
+            "en": "school"
+          }
+        },
+        {
+          "targetText": "naquela época",
+          "baseText": {
+            "de": "damals",
+            "en": "back then"
+          }
+        },
+        {
+          "targetText": "duas salas",
+          "baseText": {
+            "de": "zwei Klassenzimmer",
+            "en": "two classrooms"
+          }
+        },
+        {
+          "targetText": "pátio",
+          "baseText": {
+            "de": "Hof",
+            "en": "yard"
+          }
+        },
+        {
+          "targetText": "sem cobertura",
+          "baseText": {
+            "de": "unüberdacht",
+            "en": "without a roof"
+          }
+        },
+        {
+          "targetText": "foto",
+          "baseText": {
+            "de": "Foto",
+            "en": "photo"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sim, naquela época a escola ",
+        "answer": "tinha",
+        "after": " duas salas e um pátio sem cobertura.",
+        "fallbackChoices": [
+          "tínhamos",
+          "tendo",
+          "tinha",
+          "tinham"
+        ]
+      },
+      "speakRequired": [
+        "escola",
+        "salas",
+        "pátio"
+      ],
+      "sceneCaption": {
+        "de": "Auf einem alten Klassenfoto ist im Hintergrund das Schulgebäude zu sehen. „Essa foto foi tirada no pátio da escola onde você estudou?“",
+        "en": "An old class photo shows the school building in the background. “Essa foto foi tirada no pátio da escola onde você estudou?”"
+      },
+      "trophyWord": {
+        "word": "escola",
+        "meaning": {
+          "de": "Schule",
+          "en": "school"
+        },
+        "example": "Sim, naquela época a escola tinha duas salas e um pátio sem cobertura.",
+        "whyThisWord": {
+          "de": "Mit escola benennst du den Ort, dessen früheres Aussehen du beschreibst.",
+          "en": "Escola names the place whose earlier appearance you are describing."
+        }
+      },
+      "distractors": [
+        "a escola tinham",
+        "e uma pátio"
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem alten Klassenfoto ist im Hintergrund das Schulgebäude zu sehen.",
+        "en": "An old class photo shows the school building in the background."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "An old class photo shows the school building in the background."
+    },
+    {
+      "slug": "under-the-mango-tree",
+      "title": {
+        "de": "Unter dem Mangobaum",
+        "en": "Under the mango tree"
+      },
+      "situation": {
+        "de": "Beim Betrachten einer alten Gartenbank erinnerst du dich an das Haus deiner Tante.",
+        "en": "An old garden bench reminds you of your aunt's house."
+      },
+      "pedagogicalGoal": "Mit ficava und einer Ortsangabe malst du den Hintergrund aus. Mehrere Dinge oder Menschen bekommen die Pluralendung wie in os bancos ficavam.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você se lembra de onde ficava esse banco de madeira?",
+          "baseText": {
+            "de": "Weißt du noch, wo diese Holzbank stand?",
+            "en": "Do you remember where this wooden bench used to stand?"
+          }
+        },
+        {
+          "targetText": "O banco ficava no quintal da minha tia, debaixo de uma mangueira enorme.",
+          "baseText": {
+            "de": "Die Bank stand im Garten meiner Tante unter einem riesigen Mangobaum.",
+            "en": "The bench stood in my aunt's backyard beneath a huge mango tree."
+          }
+        },
+        {
+          "targetText": "O que vocês faziam ali nas tardes em que ninguém tinha compromisso?",
+          "baseText": {
+            "de": "Was habt ihr dort an den Nachmittagen gemacht, an denen niemand etwas vorhatte?",
+            "en": "What did you all do there on afternoons when nobody had plans?"
+          }
+        },
+        {
+          "targetText": "Meus primos jogavam cartas, e minha tia contava histórias no banco.",
+          "baseText": {
+            "de": "Meine Cousins und Cousinen spielten Karten, und meine Tante erzählte auf der Bank Geschichten.",
+            "en": "My cousins played cards, and my aunt sat on the bench telling stories."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Den Hintergrund einer Erinnerung aufbauen",
+        "rule": {
+          "de": "Mit ficava und einer Ortsangabe malst du den Hintergrund aus. Mehrere Dinge oder Menschen bekommen die Pluralendung wie in os bancos ficavam.",
+          "en": "Use ficava plus a location to set the scene. For several things or people, use the plural ending, as in os bancos ficavam."
+        },
+        "examples": [
+          {
+            "targetText": "O banco ficava no quintal da minha tia, debaixo de uma mangueira enorme.",
+            "baseText": {
+              "de": "Die Bank stand im Garten meiner Tante unter einem riesigen Mangobaum.",
+              "en": "The bench stood in my aunt's backyard beneath a huge mango tree."
+            },
+            "highlight": "O banco ficava"
+          },
+          {
+            "targetText": "Na praça antiga, os bancos ficavam perto da fonte.",
+            "baseText": {
+              "de": "Auf dem alten Platz standen die Bänke am Brunnen.",
+              "en": "In the old square, the benches used to stand near the fountain."
+            },
+            "highlight": "os bancos ficavam"
+          }
+        ]
+      },
+      "cloze": [
+        "Meus primos ",
+        {
+          "kind": "form",
+          "answer": "jogavam",
+          "choices": [
+            "jogávamos",
+            "jogando",
+            "jogavam",
+            "jogava"
+          ],
+          "cue": "jogar (Meus primos)"
+        },
+        " cartas, e minha tia ",
+        {
+          "kind": "form",
+          "answer": "contava",
+          "choices": [
+            "contando",
+            "contava",
+            "contavam",
+            "contávamos"
+          ],
+          "cue": "contar (minha tia)"
+        },
+        " histórias no banco."
+      ],
+      "chunks": [
+        {
+          "targetText": "O banco ficava",
+          "baseText": {
+            "de": "die Bank stand",
+            "en": "the bench stood"
+          }
+        },
+        {
+          "targetText": "no quintal",
+          "baseText": {
+            "de": "im Garten hinter dem Haus",
+            "en": "in the backyard"
+          }
+        },
+        {
+          "targetText": "da minha tia,",
+          "baseText": {
+            "de": "meiner Tante",
+            "en": "of my aunt"
+          }
+        },
+        {
+          "targetText": "debaixo de",
+          "baseText": {
+            "de": "unter",
+            "en": "beneath"
+          }
+        },
+        {
+          "targetText": "uma mangueira enorme.",
+          "baseText": {
+            "de": "einem riesigen Mangobaum",
+            "en": "a huge mango tree"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "quintal",
+          "baseText": {
+            "de": "Garten hinter dem Haus",
+            "en": "backyard"
+          }
+        },
+        {
+          "targetText": "banco",
+          "baseText": {
+            "de": "Bank",
+            "en": "bench"
+          }
+        },
+        {
+          "targetText": "ficava",
+          "baseText": {
+            "de": "befand sich",
+            "en": "used to be located"
+          }
+        },
+        {
+          "targetText": "tia",
+          "baseText": {
+            "de": "Tante",
+            "en": "aunt"
+          }
+        },
+        {
+          "targetText": "debaixo de",
+          "baseText": {
+            "de": "unter",
+            "en": "beneath"
+          }
+        },
+        {
+          "targetText": "mangueira",
+          "baseText": {
+            "de": "Mangobaum",
+            "en": "mango tree"
+          }
+        }
+      ],
+      "recall": {
+        "before": "O banco ficava no ",
+        "answer": "quintal",
+        "after": " da minha tia, debaixo de uma mangueira enorme.",
+        "fallbackChoices": [
+          "sapato",
+          "quintal",
+          "lençol",
+          "forno"
+        ]
+      },
+      "speakRequired": [
+        "banco",
+        "quintal",
+        "mangueira"
+      ],
+      "sceneCaption": {
+        "de": "Beim Betrachten einer alten Gartenbank erinnerst du dich an das Haus deiner Tante. „Você se lembra de onde ficava esse banco de madeira?“",
+        "en": "An old garden bench reminds you of your aunt's house. “Você se lembra de onde ficava esse banco de madeira?”"
+      },
+      "trophyWord": {
+        "word": "quintal",
+        "meaning": {
+          "de": "Garten hinter dem Haus",
+          "en": "backyard"
+        },
+        "example": "O banco ficava no quintal da minha tia, debaixo de uma mangueira enorme.",
+        "whyThisWord": {
+          "de": "Quintal bezeichnet den Außenbereich des Hauses, in dem diese Erinnerung spielt.",
+          "en": "Quintal names the outdoor space at the house where this memory takes place."
+        }
+      },
+      "distractors": [
+        "Os banco ficavam",
+        "das minha tia,"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Betrachten einer alten Gartenbank erinnerst du dich an das Haus deiner Tante.",
+        "en": "An old garden bench reminds you of your aunt's house."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "An old garden bench reminds you of your aunt's house."
+    },
+    {
+      "slug": "teams-at-recess",
+      "title": {
+        "de": "Teams für die große Pause",
+        "en": "Teams at recess"
+      },
+      "situation": {
+        "de": "Alte Freunde sprechen über die Spiele auf ihrem früheren Schulhof.",
+        "en": "Old friends are talking about games in their old schoolyard."
+      },
+      "pedagogicalGoal": "A gente bedeutet hier wir, das Verb bleibt aber in der dritten Person Singular. Mit dem Imperfekt jogava beschreibst du die regelmäßigen Spiele.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "A quadra vivia cheia na hora do intervalo. Você também jogava lá?",
+          "baseText": {
+            "de": "Der Sportplatz war in der Pause immer voll. Hast du dort auch gespielt?",
+            "en": "The court was always full at break time. Did you play there too?"
+          }
+        },
+        {
+          "targetText": "No recreio a gente jogava queimada na quadra até o sinal tocar.",
+          "baseText": {
+            "de": "In der großen Pause spielten wir auf dem Platz Völkerball, bis es klingelte.",
+            "en": "At recess we played dodgeball on the court until the bell rang."
+          }
+        },
+        {
+          "targetText": "Quando aparecia muita gente, como vocês escolhiam os times?",
+          "baseText": {
+            "de": "Wenn viele mitmachen wollten, wie habt ihr die Mannschaften zusammengestellt?",
+            "en": "When lots of people showed up, how did you pick the teams?"
+          }
+        },
+        {
+          "targetText": "Dois colegas tiravam os nomes de um saco e formavam os times.",
+          "baseText": {
+            "de": "Zwei aus der Klasse zogen die Namen aus einem Beutel und stellten die Teams zusammen.",
+            "en": "Two classmates would draw names from a bag and put the teams together."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Als Gruppe von früher erzählen",
+        "rule": {
+          "de": "A gente bedeutet hier wir, das Verb bleibt aber in der dritten Person Singular. Mit dem Imperfekt jogava beschreibst du die regelmäßigen Spiele.",
+          "en": "A gente means we here, but it takes a third-person singular verb. The imperfect jogava describes the games you played regularly."
+        },
+        "examples": [
+          {
+            "targetText": "No recreio a gente jogava queimada na quadra até o sinal tocar.",
+            "baseText": {
+              "de": "In der großen Pause spielten wir auf dem Platz Völkerball, bis es klingelte.",
+              "en": "At recess we played dodgeball on the court until the bell rang."
+            },
+            "highlight": "a gente jogava"
+          },
+          {
+            "targetText": "Nos dias de sol a gente corria até o portão depois da aula.",
+            "baseText": {
+              "de": "An sonnigen Tagen rannten wir nach dem Unterricht bis zum Tor.",
+              "en": "On sunny days we used to run to the gate after class."
+            },
+            "highlight": "a gente corria"
+          }
+        ]
+      },
+      "cloze": [
+        "Dois colegas ",
+        {
+          "kind": "form",
+          "answer": "tiravam",
+          "choices": [
+            "tirando",
+            "tiravam",
+            "tirava",
+            "tirávamos"
+          ],
+          "cue": "tirar (Dois colegas)"
+        },
+        " os nomes de um saco e ",
+        {
+          "kind": "form",
+          "answer": "formavam",
+          "choices": [
+            "formavam",
+            "formava",
+            "formávamos",
+            "formando"
+          ],
+          "cue": "formar (Dois colegas)"
+        },
+        " os times."
+      ],
+      "chunks": [
+        {
+          "targetText": "No recreio",
+          "baseText": {
+            "de": "in der großen Pause",
+            "en": "at recess"
+          }
+        },
+        {
+          "targetText": "a gente jogava",
+          "baseText": {
+            "de": "wir spielten",
+            "en": "we used to play"
+          }
+        },
+        {
+          "targetText": "queimada na quadra",
+          "baseText": {
+            "de": "Völkerball auf dem Platz",
+            "en": "dodgeball on the court"
+          }
+        },
+        {
+          "targetText": "até o sinal tocar.",
+          "baseText": {
+            "de": "bis es klingelte",
+            "en": "until the bell rang"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "recreio",
+          "baseText": {
+            "de": "große Pause",
+            "en": "recess"
+          }
+        },
+        {
+          "targetText": "queimada",
+          "baseText": {
+            "de": "Völkerball",
+            "en": "dodgeball"
+          }
+        },
+        {
+          "targetText": "quadra",
+          "baseText": {
+            "de": "Sportplatz",
+            "en": "sports court"
+          }
+        },
+        {
+          "targetText": "sinal",
+          "baseText": {
+            "de": "Schulglocke",
+            "en": "bell"
+          }
+        },
+        {
+          "targetText": "intervalo",
+          "baseText": {
+            "de": "Pause",
+            "en": "break"
+          }
+        },
+        {
+          "targetText": "a gente",
+          "baseText": {
+            "de": "wir",
+            "en": "we"
+          }
+        }
+      ],
+      "recall": {
+        "before": "No recreio a gente ",
+        "answer": "jogava",
+        "after": " queimada na quadra até o sinal tocar.",
+        "fallbackChoices": [
+          "jogava",
+          "jogavam",
+          "jogávamos",
+          "jogando"
+        ]
+      },
+      "speakRequired": [
+        "recreio",
+        "jogava",
+        "queimada"
+      ],
+      "sceneCaption": {
+        "de": "Alte Freunde sprechen über die Spiele auf ihrem früheren Schulhof. „A quadra vivia cheia na hora do intervalo. Você também jogava lá?“",
+        "en": "Old friends are talking about games in their old schoolyard. “A quadra vivia cheia na hora do intervalo. Você também jogava lá?”"
+      },
+      "trophyWord": {
+        "word": "recreio",
+        "meaning": {
+          "de": "große Pause",
+          "en": "recess"
+        },
+        "example": "No recreio a gente jogava queimada na quadra até o sinal tocar.",
+        "whyThisWord": {
+          "de": "Recreio ist die Schulpause, in der für diese Spiele Zeit war.",
+          "en": "Recreio names the school break when there was time to play."
+        }
+      },
+      "distractors": [
+        "a gente jogavam",
+        "nas quadra"
+      ],
+      "placeholderCaption": {
+        "de": "Alte Freunde sprechen über die Spiele auf ihrem früheren Schulhof.",
+        "en": "Old friends are talking about games in their old schoolyard."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "Old friends are talking about games in their old schoolyard."
+    },
+    {
+      "slug": "sundays-at-grandma-s",
+      "title": {
+        "de": "Sonntags bei Oma",
+        "en": "Sundays at Grandma's"
+      },
+      "situation": {
+        "de": "Eine Freundin sieht auf einem Familienfoto einen langen gedeckten Tisch.",
+        "en": "A friend notices a long table set for a meal in a family photo."
+      },
+      "pedagogicalGoal": "Todos os domingos gibt die wiederholte Zeit an. Eine konkrete Veränderung in dieser Routine steht im abgeschlossenen Vergangenheitstempus, dem Pretérito Perfeito.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Era alguma comemoração ou vocês almoçavam assim com frequência?",
+          "baseText": {
+            "de": "War das ein besonderes Fest oder habt ihr öfter so zusammen gegessen?",
+            "en": "Was this a special occasion or did you often eat together like this?"
+          }
+        },
+        {
+          "targetText": "Todos os domingos a família se reunia na casa da minha avó para almoçar.",
+          "baseText": {
+            "de": "Jeden Sonntag traf sich die Familie zum Mittagessen bei meiner Oma.",
+            "en": "Every Sunday the family got together for lunch at my grandmother's house."
+          }
+        },
+        {
+          "targetText": "E quando foi que esses almoços mudaram de casa?",
+          "baseText": {
+            "de": "Und wann sind diese Mittagessen in ein anderes Haus gewandert?",
+            "en": "And when did those lunches move to a different house?"
+          }
+        },
+        {
+          "targetText": "Minha avó vendeu a casa, e minha mãe assumiu os almoços.",
+          "baseText": {
+            "de": "Meine Oma verkaufte das Haus, und meine Mutter übernahm die Sonntagsessen.",
+            "en": "My grandmother sold her house, and my mother took over the lunches."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Von der Gewohnheit zum Wendepunkt",
+        "rule": {
+          "de": "Todos os domingos gibt die wiederholte Zeit an. Eine konkrete Veränderung in dieser Routine steht im abgeschlossenen Vergangenheitstempus, dem Pretérito Perfeito.",
+          "en": "Todos os domingos establishes the recurring time. Use the simple perfect, the pretérito perfeito, for a specific event that changed this routine."
+        },
+        "examples": [
+          {
+            "targetText": "Todos os domingos a família se reunia na casa da minha avó para almoçar.",
+            "baseText": {
+              "de": "Jeden Sonntag traf sich die Familie zum Mittagessen bei meiner Oma.",
+              "en": "Every Sunday the family got together for lunch at my grandmother's house."
+            },
+            "highlight": "a família se reunia"
+          },
+          {
+            "targetText": "Toda quinta a turma ensaiava no teatro da escola.",
+            "baseText": {
+              "de": "Jeden Donnerstag probte die Gruppe im Schultheater.",
+              "en": "Every Thursday the group would rehearse in the school theatre."
+            },
+            "highlight": "a turma ensaiava"
+          }
+        ]
+      },
+      "cloze": [
+        "Minha avó ",
+        {
+          "kind": "form",
+          "answer": "vendeu",
+          "choices": [
+            "vendeu",
+            "venderam",
+            "vendemos",
+            "vendendo"
+          ],
+          "cue": "vender (Minha avó)"
+        },
+        " a casa, e minha mãe ",
+        {
+          "kind": "form",
+          "answer": "assumiu",
+          "choices": [
+            "assumiram",
+            "assumimos",
+            "assumindo",
+            "assumiu"
+          ],
+          "cue": "assumir (minha mãe)"
+        },
+        " os almoços."
+      ],
+      "chunks": [
+        {
+          "targetText": "Todos os domingos",
+          "baseText": {
+            "de": "jeden Sonntag",
+            "en": "every Sunday"
+          }
+        },
+        {
+          "targetText": "a família se reunia",
+          "baseText": {
+            "de": "traf sich die Familie",
+            "en": "the family got together"
+          }
+        },
+        {
+          "targetText": "na casa da minha avó",
+          "baseText": {
+            "de": "bei meiner Oma",
+            "en": "at my grandmother's house"
+          }
+        },
+        {
+          "targetText": "para almoçar.",
+          "baseText": {
+            "de": "zum Mittagessen",
+            "en": "for lunch"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "domingos",
+          "baseText": {
+            "de": "Sonntage",
+            "en": "Sundays"
+          }
+        },
+        {
+          "targetText": "todos os domingos",
+          "baseText": {
+            "de": "jeden Sonntag",
+            "en": "every Sunday"
+          }
+        },
+        {
+          "targetText": "família",
+          "baseText": {
+            "de": "Familie",
+            "en": "family"
+          }
+        },
+        {
+          "targetText": "se reunia",
+          "baseText": {
+            "de": "traf sich",
+            "en": "used to meet"
+          }
+        },
+        {
+          "targetText": "avó",
+          "baseText": {
+            "de": "Großmutter",
+            "en": "grandmother"
+          }
+        },
+        {
+          "targetText": "almoçar",
+          "baseText": {
+            "de": "zu Mittag essen",
+            "en": "have lunch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Todos os domingos a família se ",
+        "answer": "reunia",
+        "after": " na casa da minha avó para almoçar.",
+        "fallbackChoices": [
+          "reuniam",
+          "reuníamos",
+          "reunindo",
+          "reunia"
+        ]
+      },
+      "speakRequired": [
+        "domingos",
+        "família",
+        "almoçar"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin sieht auf einem Familienfoto einen langen gedeckten Tisch. „Era alguma comemoração ou vocês almoçavam assim com frequência?“",
+        "en": "A friend notices a long table set for a meal in a family photo. “Era alguma comemoração ou vocês almoçavam assim com frequência?”"
+      },
+      "trophyWord": {
+        "word": "domingos",
+        "meaning": {
+          "de": "Sonntage",
+          "en": "Sundays"
+        },
+        "example": "Todos os domingos a família se reunia na casa da minha avó para almoçar.",
+        "whyThisWord": {
+          "de": "Domingos bezeichnet die regelmäßig wiederkehrenden Familientage.",
+          "en": "Domingos identifies the recurring days when the family got together."
+        }
+      },
+      "distractors": [
+        "a família se reuniam",
+        "nos casa da"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Freundin sieht auf einem Familienfoto einen langen gedeckten Tisch.",
+        "en": "A friend notices a long table set for a meal in a family photo."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "A friend notices a long table set for a meal in a family photo."
+    },
+    {
+      "slug": "from-the-radio-to-the-phone",
+      "title": {
+        "de": "Vom Radio zum Handy",
+        "en": "From the radio to the phone"
+      },
+      "situation": {
+        "de": "Beim Packen für den Tag entdeckst du ein kleines altes Radio.",
+        "en": "While packing for the day, you notice a little old radio."
+      },
+      "pedagogicalGoal": "In tinha o hábito de folgt die frühere Tätigkeit als Infinitiv. Für das, was du heute machst, wechselst du ins Präsens.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você ainda se lembra de quando ligava esse rádio de manhã?",
+          "baseText": {
+            "de": "Weißt du noch, wie du morgens dieses Radio eingeschaltet hast?",
+            "en": "Do you still remember turning on this radio in the morning?"
+          }
+        },
+        {
+          "targetText": "Eu tinha o hábito de ouvir as notícias no rádio antes de sair.",
+          "baseText": {
+            "de": "Ich hatte die Gewohnheit, vor dem Losgehen im Radio die Nachrichten zu hören.",
+            "en": "I used to listen to the news on the radio before leaving home."
+          }
+        },
+        {
+          "targetText": "E hoje, como você acompanha as notícias no caminho?",
+          "baseText": {
+            "de": "Und wie verfolgst du die Nachrichten heute unterwegs?",
+            "en": "And how do you follow the news on the way these days?"
+          }
+        },
+        {
+          "targetText": "Hoje eu leio as manchetes quando o ônibus para no terminal.",
+          "baseText": {
+            "de": "Heute lese ich die Schlagzeilen, wenn der Bus am Busbahnhof hält.",
+            "en": "Now I read the headlines when the bus stops at the terminal."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Gewohnheit mit dem Heute vergleichen",
+        "rule": {
+          "de": "In tinha o hábito de folgt die frühere Tätigkeit als Infinitiv. Für das, was du heute machst, wechselst du ins Präsens.",
+          "en": "After tinha o hábito de, use an infinitive for the old habit. Switch to the present tense for what you do now."
+        },
+        "examples": [
+          {
+            "targetText": "Eu tinha o hábito de ouvir as notícias no rádio antes de sair.",
+            "baseText": {
+              "de": "Ich hatte die Gewohnheit, vor dem Losgehen im Radio die Nachrichten zu hören.",
+              "en": "I used to listen to the news on the radio before leaving home."
+            },
+            "highlight": "tinha o hábito de ouvir"
+          },
+          {
+            "targetText": "Meu pai tinha o hábito de separar o jornal depois do café.",
+            "baseText": {
+              "de": "Mein Vater legte nach dem Frühstück gewöhnlich die Zeitung beiseite.",
+              "en": "My father used to set the newspaper aside after breakfast."
+            },
+            "highlight": "tinha o hábito de separar"
+          }
+        ]
+      },
+      "cloze": [
+        "Hoje eu ",
+        {
+          "kind": "form",
+          "answer": "leio",
+          "choices": [
+            "lê",
+            "leem",
+            "lemos",
+            "leio"
+          ],
+          "cue": "ler (eu)"
+        },
+        " as manchetes quando o ônibus ",
+        {
+          "kind": "form",
+          "answer": "para",
+          "choices": [
+            "paramos",
+            "parando",
+            "para",
+            "param"
+          ],
+          "cue": "parar (o ônibus)"
+        },
+        " no terminal."
+      ],
+      "chunks": [
+        {
+          "targetText": "Eu tinha o hábito",
+          "baseText": {
+            "de": "ich hatte die Gewohnheit",
+            "en": "I had the habit"
+          }
+        },
+        {
+          "targetText": "de ouvir as notícias",
+          "baseText": {
+            "de": "die Nachrichten zu hören",
+            "en": "of listening to the news"
+          }
+        },
+        {
+          "targetText": "no rádio",
+          "baseText": {
+            "de": "im Radio",
+            "en": "on the radio"
+          }
+        },
+        {
+          "targetText": "antes de sair.",
+          "baseText": {
+            "de": "vor dem Losgehen",
+            "en": "before leaving"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hábito",
+          "baseText": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          }
+        },
+        {
+          "targetText": "ouvir",
+          "baseText": {
+            "de": "hören",
+            "en": "listen to"
+          }
+        },
+        {
+          "targetText": "notícias",
+          "baseText": {
+            "de": "Nachrichten",
+            "en": "news"
+          }
+        },
+        {
+          "targetText": "rádio",
+          "baseText": {
+            "de": "Radio",
+            "en": "radio"
+          }
+        },
+        {
+          "targetText": "antes de sair",
+          "baseText": {
+            "de": "vor dem Losgehen",
+            "en": "before leaving"
+          }
+        },
+        {
+          "targetText": "de manhã",
+          "baseText": {
+            "de": "morgens",
+            "en": "in the morning"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Eu ",
+        "answer": "tinha",
+        "after": " o hábito de ouvir as notícias no rádio antes de sair.",
+        "fallbackChoices": [
+          "tínhamos",
+          "tendo",
+          "tinha",
+          "tinham"
+        ]
+      },
+      "speakRequired": [
+        "hábito",
+        "notícias",
+        "rádio"
+      ],
+      "sceneCaption": {
+        "de": "Beim Packen für den Tag entdeckst du ein kleines altes Radio. „Você ainda se lembra de quando ligava esse rádio de manhã?“",
+        "en": "While packing for the day, you notice a little old radio. “Você ainda se lembra de quando ligava esse rádio de manhã?”"
+      },
+      "trophyWord": {
+        "word": "hábito",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "Eu tinha o hábito de ouvir as notícias no rádio antes de sair.",
+        "whyThisWord": {
+          "de": "Hábito bezeichnet eine Handlung, die immer wieder zum Alltag gehörte.",
+          "en": "Hábito names something you did regularly in everyday life."
+        }
+      },
+      "distractors": [
+        "Eu tinham o hábito",
+        "nas rádio"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Packen für den Tag entdeckst du ein kleines altes Radio.",
+        "en": "While packing for the day, you notice a little old radio."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "While packing for the day, you notice a little old radio."
+    },
+    {
+      "slug": "a-game-with-a-new-rule",
+      "title": {
+        "de": "Ein Spiel mit einer neuen Regel",
+        "en": "A game with a new rule"
+      },
+      "situation": {
+        "de": "Auf dem Tisch liegen Kieselsteine, wie man sie früher zum Spielen sammelte.",
+        "en": "On the table are pebbles like the ones children used to collect for games."
+      },
+      "pedagogicalGoal": "Era beschreibt, worin das übliche Spiel bestand. Mit um dia und dem Pretérito Perfeito erzählst du von einem einzelnen Anlass.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Vocês inventavam jogos quando passavam as férias no sítio?",
+          "baseText": {
+            "de": "Habt ihr in den Ferien auf dem Land Spiele erfunden?",
+            "en": "Did you invent games when you spent the holidays in the countryside?"
+          }
+        },
+        {
+          "targetText": "Nas férias nossa brincadeira favorita era acertar uma lata com pedrinhas.",
+          "baseText": {
+            "de": "In den Ferien war unser Lieblingsspiel, mit Kieselsteinen eine Dose zu treffen.",
+            "en": "In the holidays our favourite game was trying to hit a tin with pebbles."
+          }
+        },
+        {
+          "targetText": "As regras eram sempre as mesmas ou alguém inventou uma diferente?",
+          "baseText": {
+            "de": "Waren die Regeln immer gleich oder hat sich mal jemand eine neue ausgedacht?",
+            "en": "Did the rules always stay the same, or did someone invent a different one?"
+          }
+        },
+        {
+          "targetText": "Um dia meu primo ensinou uma regra. Cada acerto valia dois pontos.",
+          "baseText": {
+            "de": "Eines Tages erklärte mein Cousin eine neue Regel. Für jeden Treffer gab es zwei Punkte.",
+            "en": "One day my cousin taught us a rule. Each hit was worth two points."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ein Spiel und ein einzelnes Ereignis unterscheiden",
+        "rule": {
+          "de": "Era beschreibt, worin das übliche Spiel bestand. Mit um dia und dem Pretérito Perfeito erzählst du von einem einzelnen Anlass.",
+          "en": "Era describes what the usual game involved. Use um dia and the simple perfect to describe what happened on one occasion."
+        },
+        "examples": [
+          {
+            "targetText": "Nas férias nossa brincadeira favorita era acertar uma lata com pedrinhas.",
+            "baseText": {
+              "de": "In den Ferien war unser Lieblingsspiel, mit Kieselsteinen eine Dose zu treffen.",
+              "en": "In the holidays our favourite game was trying to hit a tin with pebbles."
+            },
+            "highlight": "nossa brincadeira favorita era"
+          },
+          {
+            "targetText": "Naquela época nossa tarefa era buscar lenha antes do jantar.",
+            "baseText": {
+              "de": "Damals bestand unsere Aufgabe darin, vor dem Abendessen Brennholz zu holen.",
+              "en": "Back then our job was to fetch firewood before dinner."
+            },
+            "highlight": "nossa tarefa era"
+          }
+        ]
+      },
+      "cloze": [
+        "Um dia meu primo ",
+        {
+          "kind": "form",
+          "answer": "ensinou",
+          "choices": [
+            "ensinamos",
+            "ensinando",
+            "ensinou",
+            "ensinaram"
+          ],
+          "cue": "ensinar (meu primo)"
+        },
+        " uma regra. Cada acerto ",
+        {
+          "kind": "form",
+          "answer": "valia",
+          "choices": [
+            "valendo",
+            "valia",
+            "valiam",
+            "valíamos"
+          ],
+          "cue": "valer (cada acerto)"
+        },
+        " dois pontos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nas férias",
+          "baseText": {
+            "de": "in den Ferien",
+            "en": "in the holidays"
+          }
+        },
+        {
+          "targetText": "nossa brincadeira favorita",
+          "baseText": {
+            "de": "unser Lieblingsspiel",
+            "en": "our favourite game"
+          }
+        },
+        {
+          "targetText": "era acertar uma lata",
+          "baseText": {
+            "de": "bestand darin, eine Dose zu treffen",
+            "en": "was to hit a tin"
+          }
+        },
+        {
+          "targetText": "com pedrinhas.",
+          "baseText": {
+            "de": "mit Kieselsteinen",
+            "en": "with pebbles"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "brincadeira",
+          "baseText": {
+            "de": "Spiel",
+            "en": "game"
+          }
+        },
+        {
+          "targetText": "férias",
+          "baseText": {
+            "de": "Ferien",
+            "en": "holidays"
+          }
+        },
+        {
+          "targetText": "favorita",
+          "baseText": {
+            "de": "liebste",
+            "en": "favourite"
+          }
+        },
+        {
+          "targetText": "acertar",
+          "baseText": {
+            "de": "treffen",
+            "en": "hit"
+          }
+        },
+        {
+          "targetText": "lata",
+          "baseText": {
+            "de": "Dose",
+            "en": "tin"
+          }
+        },
+        {
+          "targetText": "pedrinhas",
+          "baseText": {
+            "de": "Kieselsteine",
+            "en": "pebbles"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nas férias nossa brincadeira ",
+        "answer": "favorita",
+        "after": " era acertar uma lata com pedrinhas.",
+        "fallbackChoices": [
+          "favoritas",
+          "favorita",
+          "favorito",
+          "favoritos"
+        ]
+      },
+      "speakRequired": [
+        "brincadeira",
+        "lata",
+        "pedrinhas"
+      ],
+      "sceneCaption": {
+        "de": "Auf dem Tisch liegen Kieselsteine, wie man sie früher zum Spielen sammelte. „Vocês inventavam jogos quando passavam as férias no sítio?“",
+        "en": "On the table are pebbles like the ones children used to collect for games. “Vocês inventavam jogos quando passavam as férias no sítio?”"
+      },
+      "trophyWord": {
+        "word": "brincadeira",
+        "meaning": {
+          "de": "Spiel",
+          "en": "game"
+        },
+        "example": "Nas férias nossa brincadeira favorita era acertar uma lata com pedrinhas.",
+        "whyThisWord": {
+          "de": "Brincadeira benennt hier eine selbst organisierte Freizeitbeschäftigung mit Spielregeln.",
+          "en": "Brincadeira names an informal game played for fun."
+        }
+      },
+      "distractors": [
+        "nossa brincadeira favoritos",
+        "eram acertar uma lata"
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Tisch liegen Kieselsteine, wie man sie früher zum Spielen sammelte.",
+        "en": "On the table are pebbles like the ones children used to collect for games."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "On the table are pebbles like the ones children used to collect for games."
+    },
+    {
+      "slug": "the-new-commute",
+      "title": {
+        "de": "Der neue Arbeitsweg",
+        "en": "The new commute"
+      },
+      "situation": {
+        "de": "Mit einer Kollegin vergleichst du deinen heutigen Arbeitsweg mit dem von früher.",
+        "en": "You and a colleague compare your current commute with your old one."
+      },
+      "pedagogicalGoal": "A diferença é que leitet den Vergleich ein. Mit antes und dem Imperfekt pegava beschreibst du den alten Arbeitsweg.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você chegava bem mais cedo na época do antigo escritório, lembra?",
+          "baseText": {
+            "de": "Damals im alten Büro bist du doch viel früher angekommen, weißt du noch?",
+            "en": "You used to arrive much earlier at the old office, remember?"
+          }
+        },
+        {
+          "targetText": "A maior diferença é que antes eu pegava dois ônibus para chegar ao trabalho.",
+          "baseText": {
+            "de": "Der größte Unterschied ist, dass ich früher zwei Busse zur Arbeit genommen habe.",
+            "en": "The biggest difference is that I used to take two buses to get to work."
+          }
+        },
+        {
+          "targetText": "E como você conseguiu fazer o trajeto sem aquela troca de ônibus?",
+          "baseText": {
+            "de": "Und wie kam es, dass du die Strecke ohne Umsteigen fahren konntest?",
+            "en": "How did you manage to make the trip without changing buses?"
+          }
+        },
+        {
+          "targetText": "Quando a linha direta abriu, eu passei a sair mais tarde.",
+          "baseText": {
+            "de": "Als die Direktverbindung eröffnet wurde, fing ich an, später loszufahren.",
+            "en": "When the direct line opened, I started leaving home later."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Zwei Arbeitswege vergleichen",
+        "rule": {
+          "de": "A diferença é que leitet den Vergleich ein. Mit antes und dem Imperfekt pegava beschreibst du den alten Arbeitsweg.",
+          "en": "A diferença é que introduces the comparison. Use antes and the imperfect pegava for the old commute."
+        },
+        "examples": [
+          {
+            "targetText": "A maior diferença é que antes eu pegava dois ônibus para chegar ao trabalho.",
+            "baseText": {
+              "de": "Der größte Unterschied ist, dass ich früher zwei Busse zur Arbeit genommen habe.",
+              "en": "The biggest difference is that I used to take two buses to get to work."
+            },
+            "highlight": "antes eu pegava"
+          },
+          {
+            "targetText": "Antes eu atravessava o bairro a pé para visitar minha irmã.",
+            "baseText": {
+              "de": "Früher ging ich zu Fuß durchs Viertel, um meine Schwester zu besuchen.",
+              "en": "I used to walk across the neighbourhood to visit my sister."
+            },
+            "highlight": "Antes eu atravessava"
+          }
+        ]
+      },
+      "cloze": [
+        "Quando a linha direta ",
+        {
+          "kind": "form",
+          "answer": "abriu",
+          "choices": [
+            "abrindo",
+            "abriu",
+            "abriram",
+            "abrimos"
+          ],
+          "cue": "abrir (a linha direta)"
+        },
+        ", eu ",
+        {
+          "kind": "form",
+          "answer": "passei",
+          "choices": [
+            "passei",
+            "passou",
+            "passaram",
+            "passamos"
+          ],
+          "cue": "passar (eu)"
+        },
+        " a sair mais tarde."
+      ],
+      "chunks": [
+        {
+          "targetText": "A maior diferença",
+          "baseText": {
+            "de": "der größte Unterschied",
+            "en": "the biggest difference"
+          }
+        },
+        {
+          "targetText": "é que antes",
+          "baseText": {
+            "de": "ist, dass früher",
+            "en": "is that before"
+          }
+        },
+        {
+          "targetText": "eu pegava dois ônibus",
+          "baseText": {
+            "de": "ich zwei Busse nahm",
+            "en": "I took two buses"
+          }
+        },
+        {
+          "targetText": "para chegar ao trabalho.",
+          "baseText": {
+            "de": "um zur Arbeit zu kommen",
+            "en": "to get to work"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "diferença",
+          "baseText": {
+            "de": "Unterschied",
+            "en": "difference"
+          }
+        },
+        {
+          "targetText": "antes",
+          "baseText": {
+            "de": "früher",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "pegava dois ônibus",
+          "baseText": {
+            "de": "nahm zwei Busse",
+            "en": "used to take two buses"
+          }
+        },
+        {
+          "targetText": "chegar",
+          "baseText": {
+            "de": "ankommen",
+            "en": "arrive"
+          }
+        },
+        {
+          "targetText": "trabalho",
+          "baseText": {
+            "de": "Arbeit",
+            "en": "work"
+          }
+        },
+        {
+          "targetText": "escritório",
+          "baseText": {
+            "de": "Büro",
+            "en": "office"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A maior diferença é que antes eu ",
+        "answer": "pegava",
+        "after": " dois ônibus para chegar ao trabalho.",
+        "fallbackChoices": [
+          "pegava",
+          "pegavam",
+          "pegávamos",
+          "pegando"
+        ]
+      },
+      "speakRequired": [
+        "diferença",
+        "ônibus",
+        "trabalho"
+      ],
+      "sceneCaption": {
+        "de": "Mit einer Kollegin vergleichst du deinen heutigen Arbeitsweg mit dem von früher. „Você chegava bem mais cedo na época do antigo escritório, lembra?“",
+        "en": "You and a colleague compare your current commute with your old one. “Você chegava bem mais cedo na época do antigo escritório, lembra?”"
+      },
+      "trophyWord": {
+        "word": "diferença",
+        "meaning": {
+          "de": "Unterschied",
+          "en": "difference"
+        },
+        "example": "A maior diferença é que antes eu pegava dois ônibus para chegar ao trabalho.",
+        "whyThisWord": {
+          "de": "Diferença kündigt an, was sich bei einem Vergleich als anders herausstellt.",
+          "en": "Diferença introduces what sets two situations apart."
+        }
+      },
+      "distractors": [
+        "eu pegavam dois ônibus",
+        "para chegam ao trabalho."
+      ],
+      "placeholderCaption": {
+        "de": "Mit einer Kollegin vergleichst du deinen heutigen Arbeitsweg mit dem von früher.",
+        "en": "You and a colleague compare your current commute with your old one."
+      },
+      "songMood": "Quiet bossa nova",
+      "visualNotes": "You and a colleague compare your current commute with your old one."
+    },
+    {
+      "slug": "friends-in-another-city",
+      "title": {
+        "de": "Freunde in einer anderen Stadt",
+        "en": "Friends in another city"
+      },
+      "situation": {
+        "de": "Du blätterst mit einem Freund in einem Album aus der Zeit vor deinem Umzug.",
+        "en": "You and a friend are leafing through an album from before your move."
+      },
+      "pedagogicalGoal": "Era und visitava zeichnen die damalige Situation. Für einen bis heute andauernden Wohnort nimmst du das Präsens mit há und der Zeitspanne.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você já morava longe desse grupo quando tiraram essas fotos?",
+          "baseText": {
+            "de": "Hast du schon weit weg von der Gruppe gewohnt, als diese Fotos entstanden sind?",
+            "en": "Were you already living far from this group when the photos were taken?"
+          }
+        },
+        {
+          "targetText": "Não, naquela época a distância era pequena e eu visitava meus amigos toda semana.",
+          "baseText": {
+            "de": "Nein, damals war der Weg kurz und ich besuchte meine Freunde jede Woche.",
+            "en": "No, the distance was short then and I visited my friends every week."
+          }
+        },
+        {
+          "targetText": "E desde que você mudou de cidade, como vocês mantêm o contato?",
+          "baseText": {
+            "de": "Und wie haltet ihr Kontakt, seit du umgezogen bist?",
+            "en": "How have you stayed in touch since you moved to a different city?"
+          }
+        },
+        {
+          "targetText": "Moro aqui há dois anos e agora conversamos por vídeo aos domingos.",
+          "baseText": {
+            "de": "Ich wohne seit zwei Jahren hier und inzwischen telefonieren wir sonntags per Video.",
+            "en": "I've lived here for two years and now we video-call on Sundays."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Frühere Nähe und heutige Dauer ausdrücken",
+        "rule": {
+          "de": "Era und visitava zeichnen die damalige Situation. Für einen bis heute andauernden Wohnort nimmst du das Präsens mit há und der Zeitspanne.",
+          "en": "Era and visitava describe the earlier situation. For a place where you still live, use the present tense with há and the length of time."
+        },
+        "examples": [
+          {
+            "targetText": "Não, naquela época a distância era pequena e eu visitava meus amigos toda semana.",
+            "baseText": {
+              "de": "Nein, damals war der Weg kurz und ich besuchte meine Freunde jede Woche.",
+              "en": "No, the distance was short then and I visited my friends every week."
+            },
+            "highlight": "a distância era pequena"
+          },
+          {
+            "targetText": "Moro nesta rua há três anos, mas antes eu morava perto da praia.",
+            "baseText": {
+              "de": "Ich wohne seit drei Jahren in dieser Straße, aber vorher wohnte ich in Strandnähe.",
+              "en": "I've lived on this street for three years, but before that I lived near the beach."
+            },
+            "highlight": "Moro nesta rua há três anos"
+          }
+        ]
+      },
+      "cloze": [
+        "Moro aqui há ",
+        {
+          "kind": "choice",
+          "answer": "dois",
+          "choices": [
+            "dois",
+            "duas",
+            "dupla",
+            "segundos"
+          ]
+        },
+        " anos e agora conversamos por vídeo ",
+        {
+          "kind": "choice",
+          "answer": "aos",
+          "choices": [
+            "às",
+            "pelas",
+            "nas",
+            "aos"
+          ]
+        },
+        " domingos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Não, naquela época",
+          "baseText": {
+            "de": "nein, damals",
+            "en": "no, back then"
+          }
+        },
+        {
+          "targetText": "a distância era pequena",
+          "baseText": {
+            "de": "war die Entfernung gering",
+            "en": "the distance was short"
+          }
+        },
+        {
+          "targetText": "e eu visitava",
+          "baseText": {
+            "de": "und ich besuchte",
+            "en": "and I used to visit"
+          }
+        },
+        {
+          "targetText": "meus amigos",
+          "baseText": {
+            "de": "meine Freunde",
+            "en": "my friends"
+          }
+        },
+        {
+          "targetText": "toda semana.",
+          "baseText": {
+            "de": "jede Woche",
+            "en": "every week"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "distância",
+          "baseText": {
+            "de": "Entfernung",
+            "en": "distance"
+          }
+        },
+        {
+          "targetText": "pequena",
+          "baseText": {
+            "de": "gering",
+            "en": "small"
+          }
+        },
+        {
+          "targetText": "visitava",
+          "baseText": {
+            "de": "besuchte regelmäßig",
+            "en": "used to visit"
+          }
+        },
+        {
+          "targetText": "meus amigos",
+          "baseText": {
+            "de": "meine Freunde",
+            "en": "my friends"
+          }
+        },
+        {
+          "targetText": "toda semana",
+          "baseText": {
+            "de": "jede Woche",
+            "en": "every week"
+          }
+        },
+        {
+          "targetText": "morava",
+          "baseText": {
+            "de": "wohnte",
+            "en": "used to live"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Não, naquela época a distância era ",
+        "answer": "pequena",
+        "after": " e eu visitava meus amigos toda semana.",
+        "fallbackChoices": [
+          "pequeno",
+          "pequenos",
+          "pequenas",
+          "pequena"
+        ]
+      },
+      "speakRequired": [
+        "distância",
+        "visitava",
+        "amigos"
+      ],
+      "sceneCaption": {
+        "de": "Du blätterst mit einem Freund in einem Album aus der Zeit vor deinem Umzug. „Você já morava longe desse grupo quando tiraram essas fotos?“",
+        "en": "You and a friend are leafing through an album from before your move. “Você já morava longe desse grupo quando tiraram essas fotos?”"
+      },
+      "trophyWord": {
+        "word": "distância",
+        "meaning": {
+          "de": "Entfernung",
+          "en": "distance"
+        },
+        "example": "Não, naquela época a distância era pequena e eu visitava meus amigos toda semana.",
+        "whyThisWord": {
+          "de": "Mit distância erklärst du, welche Rolle die Entfernung für eine Freundschaft spielte.",
+          "en": "Use distância to explain how far apart friends lived and how that affected them."
+        }
+      },
+      "distractors": [
+        "a distância eram pequenas",
+        "meu amigos"
+      ],
+      "placeholderCaption": {
+        "de": "Du blätterst mit einem Freund in einem Album aus der Zeit vor deinem Umzug.",
+        "en": "You and a friend are leafing through an album from before your move."
+      },
+      "songMood": "Gentle acoustic pulse",
+      "visualNotes": "You and a friend are leafing through an album from before your move."
+    },
+    {
+      "slug": "when-the-city-became-familiar",
+      "title": {
+        "de": "Als die Stadt vertraut wurde",
+        "en": "When the city became familiar"
+      },
+      "situation": {
+        "de": "Bei einem Spaziergang zeigst du einer Freundin dein Viertel.",
+        "en": "On a walk, you show a friend around your neighbourhood."
+      },
+      "pedagogicalGoal": "Mit moro und faz dois anos gibst du eine Dauer bis heute an. Das Imperfekt me perdia blickt auf eine wiederholte Erfahrung am Anfang zurück.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Hoje você conhece cada esquina. Como era no começo?",
+          "baseText": {
+            "de": "Heute kennst du hier jede Ecke. Wie war das am Anfang?",
+            "en": "Today you know every corner here. What was it like at first?"
+          }
+        },
+        {
+          "targetText": "Moro aqui faz dois anos, mas na primeira fase eu me perdia até no centro.",
+          "baseText": {
+            "de": "Ich wohne seit zwei Jahren hier, aber anfangs verlief ich mich sogar im Zentrum.",
+            "en": "I've lived here for two years, but at first I used to get lost even downtown."
+          }
+        },
+        {
+          "targetText": "O que aconteceu para esses passeios virarem parte da sua rotina?",
+          "baseText": {
+            "de": "Wie kam es, dass diese Spaziergänge zu deinem Alltag wurden?",
+            "en": "What happened that made these walks part of your routine?"
+          }
+        },
+        {
+          "targetText": "Uma vizinha me mostrou um atalho, e comecei a caminhar diariamente.",
+          "baseText": {
+            "de": "Eine Nachbarin zeigte mir eine Abkürzung. Daraufhin ging ich jeden Tag zu Fuß.",
+            "en": "A neighbour showed me a shortcut, and I started walking every day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eine Phase und ihren Wendepunkt erzählen",
+        "rule": {
+          "de": "Mit moro und faz dois anos gibst du eine Dauer bis heute an. Das Imperfekt me perdia blickt auf eine wiederholte Erfahrung am Anfang zurück.",
+          "en": "Moro and faz dois anos give the duration up to now. The imperfect me perdia looks back on a repeated experience when you first arrived."
+        },
+        "examples": [
+          {
+            "targetText": "Moro aqui faz dois anos, mas na primeira fase eu me perdia até no centro.",
+            "baseText": {
+              "de": "Ich wohne seit zwei Jahren hier, aber anfangs verlief ich mich sogar im Zentrum.",
+              "en": "I've lived here for two years, but at first I used to get lost even downtown."
+            },
+            "highlight": "Moro aqui faz dois anos"
+          },
+          {
+            "targetText": "Trabalho aqui faz três meses, mas antes eu atendia em outra loja.",
+            "baseText": {
+              "de": "Ich arbeite seit drei Monaten hier, aber früher habe ich in einem anderen Laden Kunden bedient.",
+              "en": "I've worked here for three months, but I used to serve customers in another shop."
+            },
+            "highlight": "Trabalho aqui faz três meses"
+          }
+        ]
+      },
+      "cloze": [
+        "Uma vizinha me ",
+        {
+          "kind": "form",
+          "answer": "mostrou",
+          "choices": [
+            "mostraram",
+            "mostramos",
+            "mostrando",
+            "mostrou"
+          ],
+          "cue": "mostrar (Uma vizinha)"
+        },
+        " um atalho, e comecei a ",
+        {
+          "kind": "choice",
+          "answer": "caminhar",
+          "choices": [
+            "caminhou",
+            "caminham",
+            "caminhar",
+            "caminhando"
+          ]
+        },
+        " diariamente."
+      ],
+      "chunks": [
+        {
+          "targetText": "Moro aqui",
+          "baseText": {
+            "de": "ich wohne hier",
+            "en": "I've lived here"
+          }
+        },
+        {
+          "targetText": "faz dois anos,",
+          "baseText": {
+            "de": "seit zwei Jahren",
+            "en": "for two years now"
+          }
+        },
+        {
+          "targetText": "mas na primeira fase",
+          "baseText": {
+            "de": "aber in der Anfangszeit",
+            "en": "but in that first period"
+          }
+        },
+        {
+          "targetText": "eu me perdia",
+          "baseText": {
+            "de": "verlief ich mich oft",
+            "en": "I used to get lost"
+          }
+        },
+        {
+          "targetText": "até no centro.",
+          "baseText": {
+            "de": "sogar im Zentrum",
+            "en": "even downtown"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "fase",
+          "baseText": {
+            "de": "Phase",
+            "en": "period"
+          }
+        },
+        {
+          "targetText": "moro aqui",
+          "baseText": {
+            "de": "ich wohne hier",
+            "en": "I live here"
+          }
+        },
+        {
+          "targetText": "faz dois anos",
+          "baseText": {
+            "de": "seit zwei Jahren",
+            "en": "for two years"
+          }
+        },
+        {
+          "targetText": "me perdia",
+          "baseText": {
+            "de": "ich verlief mich",
+            "en": "I used to get lost"
+          }
+        },
+        {
+          "targetText": "centro",
+          "baseText": {
+            "de": "Stadtzentrum",
+            "en": "city centre"
+          }
+        },
+        {
+          "targetText": "esquina",
+          "baseText": {
+            "de": "Straßenecke",
+            "en": "street corner"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Moro aqui faz dois anos, mas na primeira fase eu me ",
+        "answer": "perdia",
+        "after": " até no centro.",
+        "fallbackChoices": [
+          "perdíamos",
+          "perdendo",
+          "perdia",
+          "perdiam"
+        ]
+      },
+      "speakRequired": [
+        "anos",
+        "fase",
+        "centro"
+      ],
+      "sceneCaption": {
+        "de": "Bei einem Spaziergang zeigst du einer Freundin dein Viertel. „Hoje você conhece cada esquina. Como era no começo?“",
+        "en": "On a walk, you show a friend around your neighbourhood. “Hoje você conhece cada esquina. Como era no começo?”"
+      },
+      "trophyWord": {
+        "word": "fase",
+        "meaning": {
+          "de": "Phase",
+          "en": "period"
+        },
+        "example": "Moro aqui faz dois anos, mas na primeira fase eu me perdia até no centro.",
+        "whyThisWord": {
+          "de": "Fase benennt hier die erste Zeit nach dem Umzug in eine neue Stadt.",
+          "en": "Fase identifies the initial period after moving to a new city."
+        }
+      },
+      "distractors": [
+        "eu me perdiam",
+        "até nos centro."
+      ],
+      "placeholderCaption": {
+        "de": "Bei einem Spaziergang zeigst du einer Freundin dein Viertel.",
+        "en": "On a walk, you show a friend around your neighbourhood."
+      },
+      "songMood": "Warm acoustic guitar",
+      "visualNotes": "On a walk, you show a friend around your neighbourhood."
+    }
+  ]
+}

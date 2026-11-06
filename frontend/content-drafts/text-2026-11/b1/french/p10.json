@@ -1,0 +1,2125 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Ein Jahr in Angers",
+    "en": "A year in Angers"
+  },
+  "subtitle": {
+    "de": "Erzähl beim Nachbarschaftsfest, was sich seit deinem Umzug verändert hat.",
+    "en": "Tell your neighbors at the street party what has changed since you moved."
+  },
+  "anchor": "Forme B. Bilan d'une année à Angers autour de la table d'une fête de quartier. Réemploi des parcours 1 à 8, une fonction à la fois. Tutoiement entre voisins.",
+  "lessons": [
+    {
+      "slug": "cle-du-premier-jour",
+      "title": {
+        "de": "Der Schlüssel vom ersten Tag",
+        "en": "The key on moving day"
+      },
+      "situation": {
+        "de": "Beim Nachbarschaftsfest in Angers sitzt du neben deiner Nachbarin Noor. Ihr denkt an den Tag zurück, als ihr euch im Treppenhaus kennengelernt habt.",
+        "en": "At a street party in Angers you sit beside your neighbor Noor. You remember the day you met her in the stairwell."
+      },
+      "pedagogicalGoal": "Das imparfait beschreibt das bestehende Problem. Mit dem passé composé erzählst du dann, was jemand getan hat, um zu helfen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu te rappelles notre première conversation sur le palier ?",
+          "baseText": {
+            "de": "Weißt du noch, wie wir uns zum ersten Mal auf dem Treppenabsatz unterhalten haben?",
+            "en": "Do you remember our first conversation on the landing?"
+          }
+        },
+        {
+          "targetText": "Le jour de mon installation, ma clé coinçait et tu m'as montré le bon geste.",
+          "baseText": {
+            "de": "An meinem Einzugstag klemmte mein Schlüssel, und du hast mir den richtigen Handgriff gezeigt.",
+            "en": "On the day I moved in, my key was sticking and you showed me the trick."
+          }
+        },
+        {
+          "targetText": "Ah oui, cette vieille serrure ! Et après, tu faisais comment pour rentrer ?",
+          "baseText": {
+            "de": "Ach ja, dieses alte Schloss! Und wie bist du danach reingekommen?",
+            "en": "Oh yes, that old lock! How did you get in after that?"
+          }
+        },
+        {
+          "targetText": "Je soulevais la poignée pendant que je tournais la clé.",
+          "baseText": {
+            "de": "Ich habe die Klinke immer angehoben, während ich den Schlüssel gedreht habe.",
+            "en": "I'd lift the handle while I turned the key."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un souci, puis un geste",
+        "rule": {
+          "de": "Das imparfait beschreibt das bestehende Problem. Mit dem passé composé erzählst du dann, was jemand getan hat, um zu helfen.",
+          "en": "Use the imparfait to describe the existing problem. Then use the passé composé to say what someone did to help."
+        },
+        "examples": [
+          {
+            "targetText": "Le jour de mon installation, ma clé coinçait et tu m'as montré le bon geste.",
+            "baseText": {
+              "de": "An meinem Einzugstag klemmte mein Schlüssel, und du hast mir den richtigen Handgriff gezeigt.",
+              "en": "On the day I moved in, my key was sticking and you showed me the trick."
+            },
+            "highlight": "ma clé coinçait et tu m'as montré"
+          },
+          {
+            "targetText": "Sur mon vélo, la chaîne sautait et Léa a réglé le dérailleur.",
+            "baseText": {
+              "de": "An meinem Fahrrad sprang die Kette, und Léa hat die Schaltung eingestellt.",
+              "en": "The chain on my bike kept slipping, and Léa adjusted the gears."
+            },
+            "highlight": "la chaîne sautait et Léa a réglé"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "soulevais",
+          "choices": [
+            "soulevais",
+            "soulevait",
+            "soulevions",
+            "soulevaient"
+          ],
+          "cue": "soulever (je)"
+        },
+        " la poignée ",
+        {
+          "kind": "choice",
+          "answer": "pendant que",
+          "choices": [
+            "pour que",
+            "depuis",
+            "pendant que",
+            "malgré"
+          ]
+        },
+        " je tournais la clé."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le jour de mon installation,",
+          "baseText": {
+            "de": "An meinem Einzugstag",
+            "en": "On the day I moved in,"
+          }
+        },
+        {
+          "targetText": "ma clé coinçait",
+          "baseText": {
+            "de": "klemmte mein Schlüssel",
+            "en": "my key was sticking"
+          }
+        },
+        {
+          "targetText": "et tu m'as montré",
+          "baseText": {
+            "de": "und du hast mir gezeigt",
+            "en": "and you showed me"
+          }
+        },
+        {
+          "targetText": "le bon geste.",
+          "baseText": {
+            "de": "den richtigen Handgriff.",
+            "en": "the trick."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mon installation",
+          "baseText": {
+            "de": "mein Einzug",
+            "en": "my move into my new home"
+          }
+        },
+        {
+          "targetText": "le palier",
+          "baseText": {
+            "de": "der Treppenabsatz",
+            "en": "the landing"
+          }
+        },
+        {
+          "targetText": "ma clé coinçait",
+          "baseText": {
+            "de": "mein Schlüssel klemmte",
+            "en": "my key was sticking"
+          }
+        },
+        {
+          "targetText": "le bon geste",
+          "baseText": {
+            "de": "der richtige Handgriff",
+            "en": "the right movement"
+          }
+        },
+        {
+          "targetText": "la serrure",
+          "baseText": {
+            "de": "das Schloss",
+            "en": "the lock"
+          }
+        },
+        {
+          "targetText": "soulever la poignée",
+          "baseText": {
+            "de": "die Klinke anheben",
+            "en": "to lift the handle"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le jour de mon installation, ma clé ",
+        "answer": "coinçait",
+        "after": " et tu m'as montré le bon geste.",
+        "fallbackChoices": [
+          "coincer",
+          "coinçaient",
+          "coinçais",
+          "coinçait"
+        ]
+      },
+      "speakRequired": [
+        "installation",
+        "clé",
+        "geste"
+      ],
+      "sceneCaption": {
+        "de": "Noor dreht sich auf der Bank zu dir. „Tu te rappelles notre première conversation sur le palier ?“",
+        "en": "Noor turns towards you on the bench. “Tu te rappelles notre première conversation sur le palier ?”"
+      },
+      "trophyWord": {
+        "word": "installation",
+        "meaning": {
+          "de": "Einzug",
+          "en": "move into a new home"
+        },
+        "example": "J'ai gardé la clé de mon premier appartement en souvenir de mon installation à Angers.",
+        "whyThisWord": {
+          "de": "Mon installation kann den Einzug und die erste Zeit an einem neuen Ort bezeichnen.",
+          "en": "Mon installation can refer to your move and the time you spend settling in."
+        }
+      },
+      "distractors": [
+        "mes clés tombaient",
+        "le mauvais étage."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einer Bank vor dem Haus sitzt Noor mit einem altmodischen Wohnungsschlüssel in der Hand.",
+        "en": "Noor sits on a bench outside the building with an old-fashioned door key in her hand."
+      },
+      "songMood": "Warm und erinnerungsvoll.",
+      "visualNotes": "Noor sits on a bench outside the building with an old-fashioned door key in her hand."
+    },
+    {
+      "slug": "noms-des-arrets",
+      "title": {
+        "de": "Haltestellen nach Gehör",
+        "en": "Recognizing the stops by ear"
+      },
+      "situation": {
+        "de": "Am Festtisch erzählt jemand vom Pendeln. Erinnere dich an das, was dir auf den ersten Fahrten mit der Straßenbahn in Angers schwerfiel.",
+        "en": "Someone at the party table mentions commuting. Think back to what you found difficult on your first tram rides in Angers."
+      },
+      "pedagogicalGoal": "Mit que schließt du an, was du mit einer Sache nicht tun konntest. Das genannte Nomen ist das Objekt des folgenden Verbs.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Et dans le tram, qu'est-ce qui te posait le plus de problèmes ?",
+          "baseText": {
+            "de": "Und was hat dir in der Straßenbahn am meisten Schwierigkeiten gemacht?",
+            "en": "And what gave you the most trouble on the tram?"
+          }
+        },
+        {
+          "targetText": "Mon premier obstacle, c'était le nom des arrêts que je ne reconnaissais pas à l'oral.",
+          "baseText": {
+            "de": "Meine erste Hürde waren die Namen der Haltestellen, die ich beim Hören nicht wiedererkannt habe.",
+            "en": "My first hurdle was the stop names, which I didn't recognize when I heard them."
+          }
+        },
+        {
+          "targetText": "Pourtant, tu descendais toujours au bon endroit. Tu avais une astuce ?",
+          "baseText": {
+            "de": "Trotzdem bist du immer richtig ausgestiegen. Hattest du einen Trick?",
+            "en": "Yet you always got off at the right place. Did you have a trick?"
+          }
+        },
+        {
+          "targetText": "Je suivais le plan du doigt et je comptais les arrêts.",
+          "baseText": {
+            "de": "Ich bin mit dem Finger den Linienplan entlanggefahren und habe die Haltestellen gezählt.",
+            "en": "I'd trace the route on the map with my finger and count the stops."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Que pour préciser une difficulté",
+        "rule": {
+          "de": "Mit que schließt du an, was du mit einer Sache nicht tun konntest. Das genannte Nomen ist das Objekt des folgenden Verbs.",
+          "en": "Use que to explain what you struggled to do with something. The noun you have just named is the object of the following verb."
+        },
+        "examples": [
+          {
+            "targetText": "Mon premier obstacle, c'était le nom des arrêts que je ne reconnaissais pas à l'oral.",
+            "baseText": {
+              "de": "Meine erste Hürde waren die Namen der Haltestellen, die ich beim Hören nicht wiedererkannt habe.",
+              "en": "My first hurdle was the stop names, which I didn't recognize when I heard them."
+            },
+            "highlight": "que je ne reconnaissais pas"
+          },
+          {
+            "targetText": "J'ai noté les expressions que je ne comprenais pas dans le film.",
+            "baseText": {
+              "de": "Ich habe mir die Ausdrücke notiert, die ich im Film nicht verstanden habe.",
+              "en": "I wrote down the expressions I didn't understand in the film."
+            },
+            "highlight": "que je ne comprenais pas"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "suivais",
+          "choices": [
+            "suivait",
+            "suivaient",
+            "suivais",
+            "suivions"
+          ],
+          "cue": "suivre (je)"
+        },
+        " le plan du doigt et je ",
+        {
+          "kind": "form",
+          "answer": "comptais",
+          "choices": [
+            "comptaient",
+            "comptiez",
+            "comptions",
+            "comptais"
+          ],
+          "cue": "compter (je)"
+        },
+        " les arrêts."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mon premier obstacle,",
+          "baseText": {
+            "de": "Meine erste Hürde",
+            "en": "My first hurdle"
+          }
+        },
+        {
+          "targetText": "c'était le nom des arrêts",
+          "baseText": {
+            "de": "waren die Namen der Haltestellen",
+            "en": "was the stop names"
+          }
+        },
+        {
+          "targetText": "que je ne reconnaissais pas",
+          "baseText": {
+            "de": "die ich nicht wiedererkannt habe",
+            "en": "which I didn't recognize"
+          }
+        },
+        {
+          "targetText": "à l'oral.",
+          "baseText": {
+            "de": "beim Hören.",
+            "en": "when I heard them."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un obstacle",
+          "baseText": {
+            "de": "eine Hürde",
+            "en": "a hurdle"
+          }
+        },
+        {
+          "targetText": "le nom des arrêts",
+          "baseText": {
+            "de": "die Namen der Haltestellen",
+            "en": "the stop names"
+          }
+        },
+        {
+          "targetText": "à l'oral",
+          "baseText": {
+            "de": "beim Hören oder Sprechen",
+            "en": "in speech"
+          }
+        },
+        {
+          "targetText": "descendre au bon endroit",
+          "baseText": {
+            "de": "an der richtigen Stelle aussteigen",
+            "en": "to get off at the right place"
+          }
+        },
+        {
+          "targetText": "suivre du doigt",
+          "baseText": {
+            "de": "mit dem Finger nachfahren",
+            "en": "to trace with a finger"
+          }
+        },
+        {
+          "targetText": "compter les arrêts",
+          "baseText": {
+            "de": "die Haltestellen zählen",
+            "en": "to count the stops"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mon premier obstacle, c'était le nom des arrêts que je ne ",
+        "answer": "reconnaissais",
+        "after": " pas à l'oral.",
+        "fallbackChoices": [
+          "reconnaissaient",
+          "reconnaissais",
+          "reconnaissions",
+          "reconnaissait"
+        ]
+      },
+      "speakRequired": [
+        "obstacle",
+        "nom",
+        "arrêts"
+      ],
+      "sceneCaption": {
+        "de": "Am Tisch fragt ein Nachbar nach den ersten Fahrten mit der Straßenbahn. „Et dans le tram, qu'est-ce qui te posait le plus de problèmes ?“",
+        "en": "A neighbor at the table asks about your first tram rides. “Et dans le tram, qu'est-ce qui te posait le plus de problèmes ?”"
+      },
+      "trophyWord": {
+        "word": "obstacle",
+        "meaning": {
+          "de": "Hürde",
+          "en": "hurdle"
+        },
+        "example": "Pour moi, le bruit était le principal obstacle à la compréhension des annonces.",
+        "whyThisWord": {
+          "de": "Obstacle bezeichnet hier eine konkrete Hürde, für die du einen eigenen Lösungsweg gefunden hast.",
+          "en": "Here obstacle names a specific difficulty you found a way around."
+        }
+      },
+      "distractors": [
+        "c'était le prix du gaz",
+        "sur la nappe."
+      ],
+      "placeholderCaption": {
+        "de": "Ein gefalteter Linienplan liegt unter einem Glas auf dem Festtisch.",
+        "en": "A folded tram map lies beneath a glass on the party table."
+      },
+      "songMood": "Neugierig und einfallsreich.",
+      "visualNotes": "A folded tram map lies beneath a glass on the party table."
+    },
+    {
+      "slug": "croquis-du-marche",
+      "title": {
+        "de": "Eine Skizze auf dem Markt",
+        "en": "A sketch at the market"
+      },
+      "situation": {
+        "de": "Du zeigst ein kleines Skizzenbuch herum. Auf der ersten Seite sieht man den Marktplatz und einen Mann mit einem Zeichenblock.",
+        "en": "You pass around a little sketchbook. On its first page are the market square and a man holding a sketchpad."
+      },
+      "pedagogicalGoal": "Mit m'a donné envie de und einem Infinitiv verbindest du ein Erlebnis mit einem neuen Wunsch.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Un dessin sur chaque page ! D'où te vient cette habitude ?",
+          "baseText": {
+            "de": "Auf jeder Seite eine Zeichnung! Woher kommt diese Gewohnheit?",
+            "en": "A drawing on every page! Where did that habit come from?"
+          }
+        },
+        {
+          "targetText": "Ma rencontre avec Luc au marché m'a donné envie de dessiner le quartier.",
+          "baseText": {
+            "de": "Meine Begegnung mit Luc auf dem Markt hat mir Lust gemacht, das Viertel zu zeichnen.",
+            "en": "Meeting Luc at the market made me want to sketch the neighborhood."
+          }
+        },
+        {
+          "targetText": "Une rencontre comme ça, c'est rare. Tu dessines encore avec lui ?",
+          "baseText": {
+            "de": "So eine Begegnung ist selten. Zeichnest du immer noch mit ihm?",
+            "en": "A meeting like that is rare. Do you still sketch with him?"
+          }
+        },
+        {
+          "targetText": "Oui, chaque samedi, on choisit un étal et on échange nos croquis.",
+          "baseText": {
+            "de": "Ja, jeden Samstag suchen wir einen Marktstand aus und tauschen unsere Skizzen.",
+            "en": "Yes, every Saturday we pick a stall and swap sketches."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ce qui donne envie",
+        "rule": {
+          "de": "Mit m'a donné envie de und einem Infinitiv verbindest du ein Erlebnis mit einem neuen Wunsch.",
+          "en": "Use m'a donné envie de and an infinitive to connect an experience to something it made you want to do."
+        },
+        "examples": [
+          {
+            "targetText": "Ma rencontre avec Luc au marché m'a donné envie de dessiner le quartier.",
+            "baseText": {
+              "de": "Meine Begegnung mit Luc auf dem Markt hat mir Lust gemacht, das Viertel zu zeichnen.",
+              "en": "Meeting Luc at the market made me want to sketch the neighborhood."
+            },
+            "highlight": "m'a donné envie de dessiner"
+          },
+          {
+            "targetText": "Ce concert m'a donné envie de reprendre le piano.",
+            "baseText": {
+              "de": "Das Konzert hat mir Lust gemacht, wieder Klavier zu spielen.",
+              "en": "That concert made me want to take up the piano again."
+            },
+            "highlight": "m'a donné envie de reprendre"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, chaque samedi, on ",
+        {
+          "kind": "form",
+          "answer": "choisit",
+          "choices": [
+            "choisissent",
+            "choisit",
+            "choisis",
+            "choisissons"
+          ],
+          "cue": "choisir (on)"
+        },
+        " un étal et on ",
+        {
+          "kind": "form",
+          "answer": "échange",
+          "choices": [
+            "échangeons",
+            "échangent",
+            "échangez",
+            "échange"
+          ],
+          "cue": "échanger (on)"
+        },
+        " nos croquis."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ma rencontre avec Luc",
+          "baseText": {
+            "de": "Meine Begegnung mit Luc",
+            "en": "Meeting Luc"
+          }
+        },
+        {
+          "targetText": "au marché m'a donné envie",
+          "baseText": {
+            "de": "auf dem Markt hat mir Lust gemacht",
+            "en": "at the market made me want"
+          }
+        },
+        {
+          "targetText": "de dessiner",
+          "baseText": {
+            "de": "zu zeichnen",
+            "en": "to sketch"
+          }
+        },
+        {
+          "targetText": "le quartier.",
+          "baseText": {
+            "de": "das Viertel.",
+            "en": "the neighborhood."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une rencontre",
+          "baseText": {
+            "de": "eine Begegnung",
+            "en": "an encounter"
+          }
+        },
+        {
+          "targetText": "au marché",
+          "baseText": {
+            "de": "auf dem Markt",
+            "en": "at the market"
+          }
+        },
+        {
+          "targetText": "donner envie de",
+          "baseText": {
+            "de": "Lust machen auf",
+            "en": "to make someone want to"
+          }
+        },
+        {
+          "targetText": "dessiner le quartier",
+          "baseText": {
+            "de": "das Viertel zeichnen",
+            "en": "to sketch the neighborhood"
+          }
+        },
+        {
+          "targetText": "un étal",
+          "baseText": {
+            "de": "ein Marktstand",
+            "en": "a market stall"
+          }
+        },
+        {
+          "targetText": "un croquis",
+          "baseText": {
+            "de": "eine Skizze",
+            "en": "a sketch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ma rencontre avec Luc au marché m'a donné envie de ",
+        "answer": "dessiner",
+        "after": " le quartier.",
+        "fallbackChoices": [
+          "dessinais",
+          "dessiné",
+          "dessinait",
+          "dessiner"
+        ]
+      },
+      "speakRequired": [
+        "rencontre",
+        "marché",
+        "dessiner"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin betrachtet die erste Seite des Skizzenbuchs. „Un dessin sur chaque page ! D'où te vient cette habitude ?“",
+        "en": "A neighbor studies the first page of the sketchbook. “Un dessin sur chaque page ! D'où te vient cette habitude ?”"
+      },
+      "trophyWord": {
+        "word": "rencontre",
+        "meaning": {
+          "de": "Begegnung",
+          "en": "encounter, meeting"
+        },
+        "example": "Une rencontre imprévue peut changer le cours d'une journée.",
+        "whyThisWord": {
+          "de": "Mit rencontre kannst du die erste Begegnung mit jemandem als Ausgangspunkt einer Geschichte benennen.",
+          "en": "Rencontre lets you name a first meeting as the starting point of a story."
+        }
+      },
+      "distractors": [
+        "au marché m'a empêché",
+        "le bulletin météo."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Skizze zeigt ein Marktdach und einen Mann auf einem Klappstuhl.",
+        "en": "A sketch shows a market awning and a man on a folding chair."
+      },
+      "songMood": "Neugierig und lebendig.",
+      "visualNotes": "A sketch shows a market awning and a man on a folding chair."
+    },
+    {
+      "slug": "messages-de-la-mairie",
+      "title": {
+        "de": "Ohne Hilfe aufs Amt",
+        "en": "Handling appointments on your own"
+      },
+      "situation": {
+        "de": "Ein Nachbar geht kurz nach Hause, um einen Brief vom Rathaus zu holen. Früher hast du für solche Schreiben regelmäßig Unterstützung gebraucht.",
+        "en": "A neighbor pops home to fetch a letter from the town hall. You used to need help with letters like that."
+      },
+      "pedagogicalGoal": "Nach quand j'ai appris à nennst du mit einem Infinitiv die erlernte Fähigkeit. So wird verständlich, was einen Fortschritt ermöglicht hat.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Avant, tu me montrais chaque courrier de la mairie. Ça va mieux maintenant ?",
+          "baseText": {
+            "de": "Früher hast du mir jedes Schreiben vom Rathaus gezeigt. Klappt es inzwischen besser?",
+            "en": "You used to show me every letter from the town hall. Is it easier now?"
+          }
+        },
+        {
+          "targetText": "J'ai gagné en autonomie quand j'ai appris à repérer les dates dans les courriers.",
+          "baseText": {
+            "de": "Ich bin selbstständiger geworden, als ich gelernt habe, die Termine in den Schreiben zu finden.",
+            "en": "I became more independent when I learned to pick out the dates in the letters."
+          }
+        },
+        {
+          "targetText": "Et si le rendez-vous tombe pendant tes heures de travail ?",
+          "baseText": {
+            "de": "Und wenn der Termin in deine Arbeitszeit fällt?",
+            "en": "And if the appointment falls during your working hours?"
+          }
+        },
+        {
+          "targetText": "Je sais maintenant comment demander un autre créneau en ligne.",
+          "baseText": {
+            "de": "Ich weiß jetzt, wie ich online einen anderen Termin anfragen kann.",
+            "en": "I now know how to request another time slot online."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nommer le déclic",
+        "rule": {
+          "de": "Nach quand j'ai appris à nennst du mit einem Infinitiv die erlernte Fähigkeit. So wird verständlich, was einen Fortschritt ermöglicht hat.",
+          "en": "After quand j'ai appris à, use an infinitive to name the skill you learned. This explains what made your progress possible."
+        },
+        "examples": [
+          {
+            "targetText": "J'ai gagné en autonomie quand j'ai appris à repérer les dates dans les courriers.",
+            "baseText": {
+              "de": "Ich bin selbstständiger geworden, als ich gelernt habe, die Termine in den Schreiben zu finden.",
+              "en": "I became more independent when I learned to pick out the dates in the letters."
+            },
+            "highlight": "quand j'ai appris à repérer"
+          },
+          {
+            "targetText": "J'ai compris la recette quand j'ai appris à lire les abréviations.",
+            "baseText": {
+              "de": "Ich habe das Rezept verstanden, als ich gelernt habe, die Abkürzungen zu lesen.",
+              "en": "I understood the recipe when I learned to read the abbreviations."
+            },
+            "highlight": "quand j'ai appris à lire"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "sais",
+          "choices": [
+            "savent",
+            "sait",
+            "sais",
+            "savons"
+          ],
+          "cue": "savoir (je)"
+        },
+        " maintenant comment ",
+        {
+          "kind": "choice",
+          "answer": "demander",
+          "choices": [
+            "demandé",
+            "demander",
+            "demandaient",
+            "demandez"
+          ]
+        },
+        " un autre créneau en ligne."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'ai gagné en autonomie",
+          "baseText": {
+            "de": "Ich bin selbstständiger geworden",
+            "en": "I became more independent"
+          }
+        },
+        {
+          "targetText": "quand j'ai appris",
+          "baseText": {
+            "de": "als ich gelernt habe",
+            "en": "when I learned"
+          }
+        },
+        {
+          "targetText": "à repérer les dates",
+          "baseText": {
+            "de": "die Termine zu finden",
+            "en": "to pick out the dates"
+          }
+        },
+        {
+          "targetText": "dans les courriers.",
+          "baseText": {
+            "de": "in den Schreiben.",
+            "en": "in the letters."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gagner en autonomie",
+          "baseText": {
+            "de": "selbstständiger werden",
+            "en": "to become more independent"
+          }
+        },
+        {
+          "targetText": "repérer les dates",
+          "baseText": {
+            "de": "die Termine ausfindig machen",
+            "en": "to pick out the dates"
+          }
+        },
+        {
+          "targetText": "un courrier",
+          "baseText": {
+            "de": "ein Schreiben",
+            "en": "a letter"
+          }
+        },
+        {
+          "targetText": "les heures de travail",
+          "baseText": {
+            "de": "die Arbeitszeit",
+            "en": "working hours"
+          }
+        },
+        {
+          "targetText": "un autre créneau",
+          "baseText": {
+            "de": "ein anderer Termin",
+            "en": "another time slot"
+          }
+        },
+        {
+          "targetText": "en ligne",
+          "baseText": {
+            "de": "online",
+            "en": "online"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'ai gagné en autonomie quand j'ai appris à ",
+        "answer": "repérer",
+        "after": " les dates dans les courriers.",
+        "fallbackChoices": [
+          "repérez",
+          "repérait",
+          "repérer",
+          "repéré"
+        ]
+      },
+      "speakRequired": [
+        "autonomie",
+        "repérer",
+        "courriers"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar erinnert sich an die Briefe, mit denen du zu ihm kamst. „Avant, tu me montrais chaque courrier de la mairie. Ça va mieux maintenant ?“",
+        "en": "Your neighbor remembers the letters you brought to him. “Avant, tu me montrais chaque courrier de la mairie. Ça va mieux maintenant ?”"
+      },
+      "trophyWord": {
+        "word": "autonomie",
+        "meaning": {
+          "de": "Selbstständigkeit",
+          "en": "independence"
+        },
+        "example": "Pour moi, l'autonomie commence quand je peux prendre rendez-vous sans aide.",
+        "whyThisWord": {
+          "de": "En autonomie beschreibt, dass du eine Aufgabe selbstständig erledigst.",
+          "en": "En autonomie means doing a task independently."
+        }
+      },
+      "distractors": [
+        "quand j'ai renoncé",
+        "dans les assiettes."
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Tisch liegt ein Brief, in dem zwei Datumsangaben mit Bleistift eingekreist sind.",
+        "en": "Two dates are circled in pencil on a letter on the table."
+      },
+      "songMood": "Aufmerksam und zuversichtlich.",
+      "visualNotes": "Two dates are circled in pencil on a letter on the table."
+    },
+    {
+      "slug": "un-banc-pour-luc",
+      "title": {
+        "de": "Ein Platz für Luc",
+        "en": "A place for Luc"
+      },
+      "situation": {
+        "de": "Luc setzt sich zu dir und stellt seinen Klappstuhl ab. Ihr denkt daran zurück, wie aus euren Treffen auf dem Markt eine Freundschaft wurde.",
+        "en": "Luc sits down beside you and sets down his folding chair. You look back on how those meetings at the market turned into a friendship."
+      },
+      "pedagogicalGoal": "Mit qui dure depuis beschreibst du, wie lange etwas schon besteht. Das Verb steht im Präsens, weil es heute noch so ist.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Je t'ai gardé une place, comme au marché. J'y tiens, à nos samedis !",
+          "baseText": {
+            "de": "Ich habe dir einen Platz freigehalten, wie auf dem Markt. Unsere Samstage bedeuten mir viel!",
+            "en": "I've saved you a seat, like at the market. Those Saturdays mean a lot to me!"
+          }
+        },
+        {
+          "targetText": "Nos dessins du samedi ont créé un lien qui dure depuis des mois.",
+          "baseText": {
+            "de": "Unsere Zeichnungen am Samstag haben eine Verbindung geschaffen, die seit Monaten besteht.",
+            "en": "Our Saturday sketches have created a bond that has lasted for months."
+          }
+        },
+        {
+          "targetText": "Tu te souviens du samedi où je ne pouvais pas quitter la maison ?",
+          "baseText": {
+            "de": "Weißt du noch, wie ich an dem einen Samstag das Haus nicht verlassen konnte?",
+            "en": "Do you remember the Saturday when I couldn't leave the house?"
+          }
+        },
+        {
+          "targetText": "Oui, je t'ai apporté le croquis que tu voulais terminer.",
+          "baseText": {
+            "de": "Ja, ich habe dir die Skizze gebracht, die du fertigstellen wolltest.",
+            "en": "Yes, I brought you the sketch you wanted to finish."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ce qui dure encore",
+        "rule": {
+          "de": "Mit qui dure depuis beschreibst du, wie lange etwas schon besteht. Das Verb steht im Präsens, weil es heute noch so ist.",
+          "en": "Use qui dure depuis to say how long something has lasted. The French verb is present because it still holds true today."
+        },
+        "examples": [
+          {
+            "targetText": "Nos dessins du samedi ont créé un lien qui dure depuis des mois.",
+            "baseText": {
+              "de": "Unsere Zeichnungen am Samstag haben eine Verbindung geschaffen, die seit Monaten besteht.",
+              "en": "Our Saturday sketches have created a bond that has lasted for months."
+            },
+            "highlight": "qui dure depuis des mois"
+          },
+          {
+            "targetText": "Le club a lancé une tradition qui dure depuis dix ans.",
+            "baseText": {
+              "de": "Der Verein hat eine Tradition ins Leben gerufen, die seit zehn Jahren besteht.",
+              "en": "The club started a tradition that has lasted for ten years."
+            },
+            "highlight": "qui dure depuis dix ans"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, je t'ai apporté le croquis ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "dont",
+            "qui",
+            "que",
+            "où"
+          ]
+        },
+        " tu ",
+        {
+          "kind": "form",
+          "answer": "voulais",
+          "choices": [
+            "voulait",
+            "voulais",
+            "voulions",
+            "voulaient"
+          ],
+          "cue": "vouloir (tu)"
+        },
+        " terminer."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nos dessins du samedi",
+          "baseText": {
+            "de": "Unsere Zeichnungen am Samstag",
+            "en": "Our Saturday sketches"
+          }
+        },
+        {
+          "targetText": "ont créé un lien",
+          "baseText": {
+            "de": "haben eine Verbindung geschaffen",
+            "en": "have created a bond"
+          }
+        },
+        {
+          "targetText": "qui dure",
+          "baseText": {
+            "de": "die besteht",
+            "en": "that has lasted"
+          }
+        },
+        {
+          "targetText": "depuis des mois.",
+          "baseText": {
+            "de": "seit Monaten.",
+            "en": "for months."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "les dessins du samedi",
+          "baseText": {
+            "de": "die Zeichnungen am Samstag",
+            "en": "the Saturday sketches"
+          }
+        },
+        {
+          "targetText": "depuis des mois",
+          "baseText": {
+            "de": "seit Monaten",
+            "en": "for months"
+          }
+        },
+        {
+          "targetText": "créer un lien",
+          "baseText": {
+            "de": "eine Verbindung schaffen",
+            "en": "to build a bond"
+          }
+        },
+        {
+          "targetText": "garder une place",
+          "baseText": {
+            "de": "einen Platz freihalten",
+            "en": "to save a seat"
+          }
+        },
+        {
+          "targetText": "quitter la maison",
+          "baseText": {
+            "de": "das Haus verlassen",
+            "en": "to leave the house"
+          }
+        },
+        {
+          "targetText": "terminer un croquis",
+          "baseText": {
+            "de": "eine Skizze fertigstellen",
+            "en": "to finish a sketch"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nos dessins du samedi ont ",
+        "answer": "créé",
+        "after": " un lien qui dure depuis des mois.",
+        "fallbackChoices": [
+          "créer",
+          "créais",
+          "créez",
+          "créé"
+        ]
+      },
+      "speakRequired": [
+        "dessins",
+        "créé",
+        "lien"
+      ],
+      "sceneCaption": {
+        "de": "Luc rückt auf der Bank zur Seite und macht dir Platz. „Je t'ai gardé une place, comme au marché. J'y tiens, à nos samedis !“",
+        "en": "Luc makes room for you on the bench. “Je t'ai gardé une place, comme au marché. J'y tiens, à nos samedis !”"
+      },
+      "trophyWord": {
+        "word": "lien",
+        "meaning": {
+          "de": "Verbundenheit, Bindung",
+          "en": "bond"
+        },
+        "example": "Ce lien a grandi au fil de nos samedis au marché.",
+        "whyThisWord": {
+          "de": "Un lien kann eine persönliche Verbundenheit bezeichnen, die sich mit der Zeit entwickelt.",
+          "en": "Un lien can mean a personal bond that develops over time."
+        }
+      },
+      "distractors": [
+        "ont perdu leur couleur",
+        "depuis demain."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Zeichenblöcke und ein Klappstuhl stehen neben derselben Bank.",
+        "en": "Two sketchpads and a folding chair are beside the same bench."
+      },
+      "songMood": "Zugewandt und vertraut.",
+      "visualNotes": "Two sketchpads and a folding chair are beside the same bench."
+    },
+    {
+      "slug": "retour-par-les-quais",
+      "title": {
+        "de": "Ein anderer Heimweg",
+        "en": "A different way home"
+      },
+      "situation": {
+        "de": "Die Sonne geht unter. Am Ufer der Maine siehst du den Weg, den du inzwischen fast jeden Abend nach Hause gehst.",
+        "en": "The sun is setting. By the river Maine you can see the route you now take home most evenings."
+      },
+      "pedagogicalGoal": "Mit avant und dem imparfait beschreibst du eine frühere Gewohnheit. Nach maintenant folgt das Präsens für den Alltag heute.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tiens, ça fait un moment que je ne te vois plus dans le tram du soir.",
+          "baseText": {
+            "de": "Sag mal, ich sehe dich schon länger nicht mehr abends in der Straßenbahn.",
+            "en": "Come to think of it, I haven't seen you on the evening tram for a while."
+          }
+        },
+        {
+          "targetText": "Ma routine a changé : avant, je prenais le tram, maintenant je rentre à pied.",
+          "baseText": {
+            "de": "Mein Alltag hat sich verändert. Früher fuhr ich mit der Straßenbahn, jetzt gehe ich zu Fuß nach Hause.",
+            "en": "My routine has changed: I used to take the tram, and now I walk home."
+          }
+        },
+        {
+          "targetText": "Même après une grosse journée ? Moi, j'aurais plutôt envie de m'asseoir.",
+          "baseText": {
+            "de": "Sogar nach einem anstrengenden Tag? Ich würde mich dann eher hinsetzen wollen.",
+            "en": "Even after a long day? I'd be more inclined to sit down."
+          }
+        },
+        {
+          "targetText": "Oui, je dors mieux quand je marche le long des quais.",
+          "baseText": {
+            "de": "Ja, ich schlafe besser, wenn ich am Ufer entlanggehe.",
+            "en": "Yes, I sleep better when I walk along the riverfront."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Avant…, maintenant…",
+        "rule": {
+          "de": "Mit avant und dem imparfait beschreibst du eine frühere Gewohnheit. Nach maintenant folgt das Präsens für den Alltag heute.",
+          "en": "Use avant with the imparfait for a former habit. Follow maintenant with the present to describe your routine today."
+        },
+        "examples": [
+          {
+            "targetText": "Ma routine a changé : avant, je prenais le tram, maintenant je rentre à pied.",
+            "baseText": {
+              "de": "Mein Alltag hat sich verändert. Früher fuhr ich mit der Straßenbahn, jetzt gehe ich zu Fuß nach Hause.",
+              "en": "My routine has changed: I used to take the tram, and now I walk home."
+            },
+            "highlight": "avant, je prenais le tram, maintenant je rentre"
+          },
+          {
+            "targetText": "Avant, je mangeais sur le pouce, maintenant je cuisine tous les soirs.",
+            "baseText": {
+              "de": "Früher aß ich schnell etwas zwischendurch, jetzt koche ich jeden Abend.",
+              "en": "I used to eat on the go, and now I cook every evening."
+            },
+            "highlight": "Avant, je mangeais sur le pouce, maintenant je cuisine"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui, je ",
+        {
+          "kind": "form",
+          "answer": "dors",
+          "choices": [
+            "dormons",
+            "dors",
+            "dort",
+            "dormez"
+          ],
+          "cue": "dormir (je)"
+        },
+        " mieux ",
+        {
+          "kind": "choice",
+          "answer": "quand",
+          "choices": [
+            "malgré",
+            "au lieu de",
+            "quand",
+            "à force de"
+          ]
+        },
+        " je marche le long des quais."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ma routine a changé :",
+          "baseText": {
+            "de": "Mein Alltag hat sich verändert.",
+            "en": "My routine has changed:"
+          }
+        },
+        {
+          "targetText": "avant, je prenais",
+          "baseText": {
+            "de": "früher nahm ich",
+            "en": "I used to take"
+          }
+        },
+        {
+          "targetText": "le tram, maintenant",
+          "baseText": {
+            "de": "die Straßenbahn, jetzt",
+            "en": "the tram, and now"
+          }
+        },
+        {
+          "targetText": "je rentre à pied.",
+          "baseText": {
+            "de": "gehe ich zu Fuß nach Hause.",
+            "en": "I walk home."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "ma routine",
+          "baseText": {
+            "de": "mein Alltag",
+            "en": "my routine"
+          }
+        },
+        {
+          "targetText": "je prenais le tram",
+          "baseText": {
+            "de": "ich fuhr mit der Straßenbahn",
+            "en": "I used to take the tram"
+          }
+        },
+        {
+          "targetText": "rentrer à pied",
+          "baseText": {
+            "de": "zu Fuß nach Hause gehen",
+            "en": "to walk home"
+          }
+        },
+        {
+          "targetText": "une grosse journée",
+          "baseText": {
+            "de": "ein anstrengender Tag",
+            "en": "a long day"
+          }
+        },
+        {
+          "targetText": "dormir mieux",
+          "baseText": {
+            "de": "besser schlafen",
+            "en": "to sleep better"
+          }
+        },
+        {
+          "targetText": "le long des quais",
+          "baseText": {
+            "de": "am Ufer entlang",
+            "en": "along the riverfront"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ma routine a changé : avant, je ",
+        "answer": "prenais",
+        "after": " le tram, maintenant je rentre à pied.",
+        "fallbackChoices": [
+          "prenait",
+          "prenions",
+          "prenaient",
+          "prenais"
+        ]
+      },
+      "speakRequired": [
+        "routine",
+        "tram",
+        "pied"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar erinnert sich an frühere gemeinsame Fahrten. „Tiens, ça fait un moment que je ne te vois plus dans le tram du soir.“",
+        "en": "A neighbor remembers when you used to ride together. “Tiens, ça fait un moment que je ne te vois plus dans le tram du soir.”"
+      },
+      "trophyWord": {
+        "word": "routine",
+        "meaning": {
+          "de": "Alltag, gewohnter Ablauf",
+          "en": "routine"
+        },
+        "example": "Ce détour fait partie de ma routine du soir.",
+        "whyThisWord": {
+          "de": "Mit routine beschreibst du einen wiederkehrenden Teil deines Alltags, etwa den Heimweg.",
+          "en": "Routine describes a regular part of your everyday life, such as the way home."
+        }
+      },
+      "distractors": [
+        "avant, elles prenaient",
+        "je pars en bateau."
+      ],
+      "placeholderCaption": {
+        "de": "Hinter dem Tisch verläuft ein Uferweg im Licht der untergehenden Sonne.",
+        "en": "Behind the table, a path follows the river in the light of the setting sun."
+      },
+      "songMood": "Entspannt und nachdenklich.",
+      "visualNotes": "Behind the table, a path follows the river in the light of the setting sun."
+    },
+    {
+      "slug": "les-mots-du-marche",
+      "title": {
+        "de": "Mut zum Weiterreden",
+        "en": "The confidence to keep talking"
+      },
+      "situation": {
+        "de": "Ein junger Nachbar traut sich noch kaum, auf Französisch einzukaufen. Er möchte wissen, wie du früher mit fehlenden Wörtern umgegangen bist.",
+        "en": "A young neighbor still feels nervous about shopping in French. He wants to know how you used to handle missing words."
+      },
+      "pedagogicalGoal": "Mit j'ai pris confiance quand verbindest du neues Selbstvertrauen mit einer konkreten Erfahrung in der Vergangenheit.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Au marché, quand tu ne connaissais pas un mot, tu faisais quoi ?",
+          "baseText": {
+            "de": "Was hast du auf dem Markt gemacht, wenn dir ein Wort gefehlt hat?",
+            "en": "What did you do at the market when you didn't know a word?"
+          }
+        },
+        {
+          "targetText": "J'ai pris confiance quand Luc m'a laissé décrire les choses avec mes propres mots.",
+          "baseText": {
+            "de": "Ich habe Selbstvertrauen gewonnen, als Luc mich die Dinge mit meinen eigenen Worten beschreiben ließ.",
+            "en": "I gained confidence when Luc let me describe things in my own words."
+          }
+        },
+        {
+          "targetText": "Par exemple, si je ne retrouve pas le nom d'un légume ?",
+          "baseText": {
+            "de": "Und wenn mir zum Beispiel der Name eines Gemüses nicht einfällt?",
+            "en": "For instance, what if I can't remember the name of a vegetable?"
+          }
+        },
+        {
+          "targetText": "Tu peux dire quelle couleur il a et comment tu le cuisines.",
+          "baseText": {
+            "de": "Du kannst sagen, welche Farbe es hat und wie du es zubereitest.",
+            "en": "You can say what color it is and how you cook it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dire ce qui a aidé",
+        "rule": {
+          "de": "Mit j'ai pris confiance quand verbindest du neues Selbstvertrauen mit einer konkreten Erfahrung in der Vergangenheit.",
+          "en": "Use j'ai pris confiance quand to connect new confidence to a particular experience in the past."
+        },
+        "examples": [
+          {
+            "targetText": "J'ai pris confiance quand Luc m'a laissé décrire les choses avec mes propres mots.",
+            "baseText": {
+              "de": "Ich habe Selbstvertrauen gewonnen, als Luc mich die Dinge mit meinen eigenen Worten beschreiben ließ.",
+              "en": "I gained confidence when Luc let me describe things in my own words."
+            },
+            "highlight": "J'ai pris confiance quand"
+          },
+          {
+            "targetText": "J'ai pris confiance quand mon frère a goûté mon premier plat.",
+            "baseText": {
+              "de": "Ich habe Selbstvertrauen gewonnen, als mein Bruder mein erstes Gericht probiert hat.",
+              "en": "I gained confidence when my brother tasted the first dish I made."
+            },
+            "highlight": "J'ai pris confiance quand"
+          }
+        ]
+      },
+      "cloze": [
+        "Tu ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvez",
+            "peut",
+            "peux",
+            "peuvent"
+          ],
+          "cue": "pouvoir (tu)"
+        },
+        " dire quelle couleur il a et comment tu le ",
+        {
+          "kind": "form",
+          "answer": "cuisines",
+          "choices": [
+            "cuisinent",
+            "cuisines",
+            "cuisinons",
+            "cuisine"
+          ],
+          "cue": "cuisiner (tu)"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "J'ai pris confiance",
+          "baseText": {
+            "de": "Ich habe Selbstvertrauen gewonnen",
+            "en": "I gained confidence"
+          }
+        },
+        {
+          "targetText": "quand Luc m'a laissé",
+          "baseText": {
+            "de": "als Luc mich ließ",
+            "en": "when Luc let me"
+          }
+        },
+        {
+          "targetText": "décrire les choses",
+          "baseText": {
+            "de": "die Dinge beschreiben",
+            "en": "describe things"
+          }
+        },
+        {
+          "targetText": "avec mes propres mots.",
+          "baseText": {
+            "de": "mit meinen eigenen Worten.",
+            "en": "in my own words."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "prendre confiance",
+          "baseText": {
+            "de": "Selbstvertrauen gewinnen",
+            "en": "to gain confidence"
+          }
+        },
+        {
+          "targetText": "décrire les choses",
+          "baseText": {
+            "de": "die Dinge beschreiben",
+            "en": "to describe things"
+          }
+        },
+        {
+          "targetText": "avec mes propres mots",
+          "baseText": {
+            "de": "mit meinen eigenen Worten",
+            "en": "in my own words"
+          }
+        },
+        {
+          "targetText": "retrouver le nom",
+          "baseText": {
+            "de": "sich wieder an den Namen erinnern",
+            "en": "to recall the name"
+          }
+        },
+        {
+          "targetText": "un légume",
+          "baseText": {
+            "de": "ein Gemüse",
+            "en": "a vegetable"
+          }
+        },
+        {
+          "targetText": "la couleur",
+          "baseText": {
+            "de": "die Farbe",
+            "en": "the color"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'ai pris confiance quand Luc m'a laissé ",
+        "answer": "décrire",
+        "after": " les choses avec mes propres mots.",
+        "fallbackChoices": [
+          "décrivais",
+          "décrit",
+          "décrivaient",
+          "décrire"
+        ]
+      },
+      "speakRequired": [
+        "confiance",
+        "décrire",
+        "mots"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar stellt sein Glas ab und fragt dich um Rat. „Au marché, quand tu ne connaissais pas un mot, tu faisais quoi ?“",
+        "en": "Your neighbor sets down his glass and asks for advice. “Au marché, quand tu ne connaissais pas un mot, tu faisais quoi ?”"
+      },
+      "trophyWord": {
+        "word": "confiance",
+        "meaning": {
+          "de": "Selbstvertrauen, Vertrauen",
+          "en": "confidence, trust"
+        },
+        "example": "J'ai assez confiance pour essayer une phrase même si je cherche mes mots.",
+        "whyThisWord": {
+          "de": "Prendre confiance bedeutet, dass du dir etwas allmählich zutraust.",
+          "en": "Prendre confiance means gradually feeling able to do something."
+        }
+      },
+      "distractors": [
+        "quand Luc m'a interdit de",
+        "avec tes propres mains."
+      ],
+      "placeholderCaption": {
+        "de": "Am Tisch hat der junge Nachbar einen leeren Einkaufsbeutel neben sein Glas gelegt.",
+        "en": "At the table, the young neighbor has set an empty shopping bag beside his glass."
+      },
+      "songMood": "Aufmunternd und freundlich.",
+      "visualNotes": "At the table, the young neighbor has set an empty shopping bag beside his glass."
+    },
+    {
+      "slug": "plan-pour-les-nouveaux",
+      "title": {
+        "de": "Ein Plan fürs Ankommen",
+        "en": "A map for newcomers"
+      },
+      "situation": {
+        "de": "Deine Skizzen wandern noch einmal um den Tisch. Diesmal erzählst du, wofür du die Zeichnungen in den nächsten Monaten verwenden möchtest.",
+        "en": "Your sketches make another trip around the table. This time you explain how you want to use them in the coming months."
+      },
+      "pedagogicalGoal": "Mit pour que und puisse erklärst du, was dein Vorhaben einer anderen Person ermöglichen soll. Nach puisse folgt der Infinitiv.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu vas garder tous ces dessins dans un carnet ?",
+          "baseText": {
+            "de": "Willst du all diese Zeichnungen in einem Skizzenbuch lassen?",
+            "en": "Are you going to keep all those drawings in a sketchbook?"
+          }
+        },
+        {
+          "targetText": "Mon projet, c'est un plan illustré pour que chaque nouvel habitant puisse se repérer.",
+          "baseText": {
+            "de": "Mein Vorhaben ist ein bebilderter Stadtplan, damit sich alle neu Zugezogenen zurechtfinden können.",
+            "en": "My project is an illustrated map so that each new resident can find their way around."
+          }
+        },
+        {
+          "targetText": "Dessiner toutes ces rues, ça prend du temps. Et si tes soirées sont déjà prises ?",
+          "baseText": {
+            "de": "All diese Straßen zu zeichnen kostet Zeit. Und wenn deine Abende schon verplant sind?",
+            "en": "Drawing all those streets takes time. What if your evenings are already booked?"
+          }
+        },
+        {
+          "targetText": "Si le temps manque, je ferai un plan du marché seulement.",
+          "baseText": {
+            "de": "Wenn die Zeit knapp wird, mache ich nur einen Plan vom Markt.",
+            "en": "If time is short, I'll make a map of just the market."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour que quelqu'un puisse…",
+        "rule": {
+          "de": "Mit pour que und puisse erklärst du, was dein Vorhaben einer anderen Person ermöglichen soll. Nach puisse folgt der Infinitiv.",
+          "en": "Use pour que and puisse to explain what your project will enable another person to do. Follow puisse with the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Mon projet, c'est un plan illustré pour que chaque nouvel habitant puisse se repérer.",
+            "baseText": {
+              "de": "Mein Vorhaben ist ein bebilderter Stadtplan, damit sich alle neu Zugezogenen zurechtfinden können.",
+              "en": "My project is an illustrated map so that each new resident can find their way around."
+            },
+            "highlight": "pour que chaque nouvel habitant puisse se repérer"
+          },
+          {
+            "targetText": "Je vais agrandir les lettres pour que ma voisine puisse lire le menu.",
+            "baseText": {
+              "de": "Ich werde die Buchstaben vergrößern, damit meine Nachbarin die Speisekarte lesen kann.",
+              "en": "I'm going to make the letters bigger so my neighbor can read the menu."
+            },
+            "highlight": "pour que ma voisine puisse lire"
+          }
+        ]
+      },
+      "cloze": [
+        "Si le temps ",
+        {
+          "kind": "form",
+          "answer": "manque",
+          "choices": [
+            "manquez",
+            "manquent",
+            "manque",
+            "manquons"
+          ],
+          "cue": "manquer (le temps)"
+        },
+        ", je ",
+        {
+          "kind": "form",
+          "answer": "ferai",
+          "choices": [
+            "ferons",
+            "fera",
+            "feront",
+            "ferai"
+          ],
+          "cue": "faire (je)"
+        },
+        " un plan du marché seulement."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mon projet, c'est",
+          "baseText": {
+            "de": "Mein Vorhaben ist",
+            "en": "My project is"
+          }
+        },
+        {
+          "targetText": "un plan illustré",
+          "baseText": {
+            "de": "ein bebilderter Stadtplan",
+            "en": "an illustrated map"
+          }
+        },
+        {
+          "targetText": "pour que chaque nouvel habitant",
+          "baseText": {
+            "de": "damit jeder neue Einwohner",
+            "en": "so that each new resident"
+          }
+        },
+        {
+          "targetText": "puisse se repérer.",
+          "baseText": {
+            "de": "sich zurechtfinden kann.",
+            "en": "can find their way around."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mon projet",
+          "baseText": {
+            "de": "mein Vorhaben",
+            "en": "my project"
+          }
+        },
+        {
+          "targetText": "un plan illustré",
+          "baseText": {
+            "de": "ein bebilderter Stadtplan",
+            "en": "an illustrated map"
+          }
+        },
+        {
+          "targetText": "un nouvel habitant",
+          "baseText": {
+            "de": "ein neuer Einwohner",
+            "en": "a new resident"
+          }
+        },
+        {
+          "targetText": "se repérer",
+          "baseText": {
+            "de": "sich zurechtfinden",
+            "en": "to find one's way around"
+          }
+        },
+        {
+          "targetText": "une soirée prise",
+          "baseText": {
+            "de": "ein verplanter Abend",
+            "en": "an evening already spoken for"
+          }
+        },
+        {
+          "targetText": "un plan du marché",
+          "baseText": {
+            "de": "ein Plan vom Markt",
+            "en": "a map of the market"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mon projet, c'est un plan illustré pour que chaque nouvel habitant ",
+        "answer": "puisse",
+        "after": " se repérer.",
+        "fallbackChoices": [
+          "peuvent",
+          "puisse",
+          "puissions",
+          "pouviez"
+        ]
+      },
+      "speakRequired": [
+        "projet",
+        "illustré",
+        "habitant"
+      ],
+      "sceneCaption": {
+        "de": "Noor gibt dir das Skizzenbuch zurück. „Tu vas garder tous ces dessins dans un carnet ?“",
+        "en": "Noor hands you back the sketchbook. “Tu vas garder tous ces dessins dans un carnet ?”"
+      },
+      "trophyWord": {
+        "word": "projet",
+        "meaning": {
+          "de": "Vorhaben, Projekt",
+          "en": "project, plan"
+        },
+        "example": "J'aimerais montrer mon projet à la maison de quartier.",
+        "whyThisWord": {
+          "de": "Projet bezeichnet hier etwas, das du planst und Schritt für Schritt umsetzen möchtest.",
+          "en": "Here projet refers to something you intend to carry out step by step."
+        }
+      },
+      "distractors": [
+        "un ticket composté",
+        "restent fermés."
+      ],
+      "placeholderCaption": {
+        "de": "Auf kariertem Papier verbinden Bleistiftlinien drei gezeichnete Straßenansichten.",
+        "en": "Pencil lines on graph paper connect three sketches of local streets."
+      },
+      "songMood": "Ideenreich und zuversichtlich.",
+      "visualNotes": "Pencil lines on graph paper connect three sketches of local streets."
+    },
+    {
+      "slug": "premier-repas-ensemble",
+      "title": {
+        "de": "Der Platz am Tisch",
+        "en": "A seat at the table"
+      },
+      "situation": {
+        "de": "Neben Noor ist ein Platz frei. Du erinnerst dich daran, wie es sich angefühlt hat, zum ersten Mal mit den Nachbarn zu essen.",
+        "en": "There's an empty seat beside Noor. You remember what it felt like to eat with the neighbors for the first time."
+      },
+      "pedagogicalGoal": "Mit où kannst du an einen Zeitpunkt anknüpfen. Nach ce premier soir où nennst du die Handlung, für die du dich bedankst.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Tu vois cette table ? L'an dernier, on tenait à six autour !",
+          "baseText": {
+            "de": "Siehst du diesen Tisch? Letztes Jahr haben wir noch zu sechst daran gepasst!",
+            "en": "See this table? Last year all six of us fit around it!"
+          }
+        },
+        {
+          "targetText": "Merci pour ton accueil, surtout ce premier soir où tu as ajouté une assiette.",
+          "baseText": {
+            "de": "Danke dafür, wie du mich aufgenommen hast, besonders an jenem ersten Abend, als du noch einen Teller dazugestellt hast.",
+            "en": "Thank you for the welcome, especially that first evening when you set out an extra plate."
+          }
+        },
+        {
+          "targetText": "Justement, Sam vient d'emménager en face. Tu vois la personne près de la grille ?",
+          "baseText": {
+            "de": "Apropos, Sam ist gerade gegenüber eingezogen. Siehst du die Person am Gartentor?",
+            "en": "Speaking of which, Sam just moved in across the street. See the person by the gate?"
+          }
+        },
+        {
+          "targetText": "Je vais chercher Sam pour lui proposer la place à côté.",
+          "baseText": {
+            "de": "Ich hole Sam und biete den Platz neben dir an.",
+            "en": "I'll go get Sam and offer the seat next to you."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un moment où…",
+        "rule": {
+          "de": "Mit où kannst du an einen Zeitpunkt anknüpfen. Nach ce premier soir où nennst du die Handlung, für die du dich bedankst.",
+          "en": "Use où to refer back to a time. After ce premier soir où, name the action you are thanking the other person for."
+        },
+        "examples": [
+          {
+            "targetText": "Merci pour ton accueil, surtout ce premier soir où tu as ajouté une assiette.",
+            "baseText": {
+              "de": "Danke dafür, wie du mich aufgenommen hast, besonders an jenem ersten Abend, als du noch einen Teller dazugestellt hast.",
+              "en": "Thank you for the welcome, especially that first evening when you set out an extra plate."
+            },
+            "highlight": "ce premier soir où"
+          },
+          {
+            "targetText": "Je me rappelle le dimanche où tu as sorti ta guitare dans le jardin.",
+            "baseText": {
+              "de": "Ich erinnere mich an den Sonntag, an dem du im Garten deine Gitarre herausgeholt hast.",
+              "en": "I remember the Sunday when you brought out your guitar in the garden."
+            },
+            "highlight": "le dimanche où"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "vais",
+          "choices": [
+            "vont",
+            "vas",
+            "vais",
+            "allons"
+          ],
+          "cue": "aller (je)"
+        },
+        " chercher Sam ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "quand",
+            "pour",
+            "parce que",
+            "puisque"
+          ]
+        },
+        " lui proposer la place à côté."
+      ],
+      "chunks": [
+        {
+          "targetText": "Merci pour ton accueil,",
+          "baseText": {
+            "de": "Danke dafür, wie du mich aufgenommen hast,",
+            "en": "Thank you for the welcome,"
+          }
+        },
+        {
+          "targetText": "surtout ce premier soir",
+          "baseText": {
+            "de": "besonders an jenem ersten Abend",
+            "en": "especially that first evening"
+          }
+        },
+        {
+          "targetText": "où tu as ajouté",
+          "baseText": {
+            "de": "als du dazugestellt hast",
+            "en": "when you set out"
+          }
+        },
+        {
+          "targetText": "une assiette.",
+          "baseText": {
+            "de": "einen Teller.",
+            "en": "an extra plate."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "l'accueil",
+          "baseText": {
+            "de": "der Empfang",
+            "en": "the welcome"
+          }
+        },
+        {
+          "targetText": "ce premier soir",
+          "baseText": {
+            "de": "an jenem ersten Abend",
+            "en": "that first evening"
+          }
+        },
+        {
+          "targetText": "ajouter une assiette",
+          "baseText": {
+            "de": "einen Teller dazustellen",
+            "en": "to set out an extra plate"
+          }
+        },
+        {
+          "targetText": "emménager en face",
+          "baseText": {
+            "de": "gegenüber einziehen",
+            "en": "to move in across the street"
+          }
+        },
+        {
+          "targetText": "la grille",
+          "baseText": {
+            "de": "das Gartentor",
+            "en": "the gate"
+          }
+        },
+        {
+          "targetText": "la place à côté",
+          "baseText": {
+            "de": "der Platz neben dir",
+            "en": "the seat next to you"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Merci pour ton accueil, surtout ce premier soir où tu as ",
+        "answer": "ajouté",
+        "after": " une assiette.",
+        "fallbackChoices": [
+          "ajoutez",
+          "ajoutait",
+          "ajouter",
+          "ajouté"
+        ]
+      },
+      "speakRequired": [
+        "accueil",
+        "soir",
+        "assiette"
+      ],
+      "sceneCaption": {
+        "de": "Noor klopft lächelnd auf den Tisch. „Tu vois cette table ? L'an dernier, on tenait à six autour !“",
+        "en": "Noor smiles and taps the table. “Tu vois cette table ? L'an dernier, on tenait à six autour !”"
+      },
+      "trophyWord": {
+        "word": "accueil",
+        "meaning": {
+          "de": "Empfang, Aufnahme",
+          "en": "welcome"
+        },
+        "example": "Je garde un bon souvenir de ton accueil dans le quartier.",
+        "whyThisWord": {
+          "de": "Mit merci pour ton accueil bedankst du dich dafür, wie jemand dich aufgenommen hat.",
+          "en": "Use merci pour ton accueil to thank someone for the way they welcomed you."
+        }
+      },
+      "distractors": [
+        "surtout ce premier mois",
+        "deux valises."
+      ],
+      "placeholderCaption": {
+        "de": "Ein zusätzlicher Teller und ein Stuhl stehen an einem langen Tisch im Freien.",
+        "en": "An extra plate and chair are at a long table outdoors."
+      },
+      "songMood": "Dankbar und einladend.",
+      "visualNotes": "An extra plate and chair are at a long table outdoors."
+    },
+    {
+      "slug": "du-tram-au-carnet",
+      "title": {
+        "de": "Von der Haltestelle zum Skizzenbuch",
+        "en": "From the tram stop to the sketchbook"
+      },
+      "situation": {
+        "de": "Beim Abräumen fragt Luc, was du von deinem ersten Jahr in Angers mitnimmst. Dein alter Linienplan steckt immer noch im Skizzenbuch.",
+        "en": "As you clear the table, Luc asks what you'll take away from your first year in Angers. Your old tram map is still tucked inside your sketchbook."
+      },
+      "pedagogicalGoal": "Stell dein früheres und dein heutiges Handeln gegenüber. Im zweiten Satzteil nimmt le oder les den Gegenstand aus dem ersten wieder auf.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Si tu gardais une seule image de ton année ici, ce serait laquelle ?",
+          "baseText": {
+            "de": "Wenn du nur ein Bild aus deinem Jahr hier behalten könntest, welches wäre das?",
+            "en": "If you could keep just one image from your year here, which would it be?"
+          }
+        },
+        {
+          "targetText": "Voilà mon bilan : je cherchais mon chemin, et depuis notre rencontre je le dessine.",
+          "baseText": {
+            "de": "Das ist meine Bilanz: Früher suchte ich meinen Weg, und seit unserer Begegnung zeichne ich ihn.",
+            "en": "That sums up my year: I used to struggle to find my way, and since we met I've been drawing it."
+          }
+        },
+        {
+          "targetText": "Et dire qu'on s'est rencontrés par hasard au marché ! À qui vas-tu montrer ces pages ?",
+          "baseText": {
+            "de": "Und dabei sind wir uns nur zufällig auf dem Markt begegnet! Wem willst du diese Seiten zeigen?",
+            "en": "To think we met by chance at the market! Who are you going to show these pages to?"
+          }
+        },
+        {
+          "targetText": "Demain, je ferai une copie pour que Sam puisse explorer le quartier.",
+          "baseText": {
+            "de": "Morgen mache ich eine Kopie, damit Sam das Viertel erkunden kann.",
+            "en": "Tomorrow I'll make a copy so Sam can explore the neighborhood."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une image pour faire le bilan",
+        "rule": {
+          "de": "Stell dein früheres und dein heutiges Handeln gegenüber. Im zweiten Satzteil nimmt le oder les den Gegenstand aus dem ersten wieder auf.",
+          "en": "Contrast what you used to do with what you do now. In the second part, le or les refers back to the object in the first part."
+        },
+        "examples": [
+          {
+            "targetText": "Voilà mon bilan : je cherchais mon chemin, et depuis notre rencontre je le dessine.",
+            "baseText": {
+              "de": "Das ist meine Bilanz: Früher suchte ich meinen Weg, und seit unserer Begegnung zeichne ich ihn.",
+              "en": "That sums up my year: I used to struggle to find my way, and since we met I've been drawing it."
+            },
+            "highlight": "je cherchais mon chemin, et depuis notre rencontre je le dessine"
+          },
+          {
+            "targetText": "En cuisine, autrefois je suivais les recettes, maintenant je les invente.",
+            "baseText": {
+              "de": "Früher habe ich mich beim Kochen an Rezepte gehalten, heute erfinde ich sie selbst.",
+              "en": "In the kitchen, I used to follow recipes, and now I invent them."
+            },
+            "highlight": "autrefois je suivais les recettes, maintenant je les invente"
+          }
+        ]
+      },
+      "cloze": [
+        "Demain, je ",
+        {
+          "kind": "form",
+          "answer": "ferai",
+          "choices": [
+            "feront",
+            "ferai",
+            "fera",
+            "ferons"
+          ],
+          "cue": "faire (je)"
+        },
+        " une copie pour que Sam ",
+        {
+          "kind": "form",
+          "answer": "puisse",
+          "choices": [
+            "puisses",
+            "puissions",
+            "puisse",
+            "puissent"
+          ],
+          "cue": "pouvoir (Sam)"
+        },
+        " explorer le quartier."
+      ],
+      "chunks": [
+        {
+          "targetText": "Voilà mon bilan :",
+          "baseText": {
+            "de": "Das ist meine Bilanz:",
+            "en": "That sums up my year:"
+          }
+        },
+        {
+          "targetText": "je cherchais mon chemin,",
+          "baseText": {
+            "de": "früher suchte ich meinen Weg,",
+            "en": "I used to struggle to find my way,"
+          }
+        },
+        {
+          "targetText": "et depuis notre rencontre",
+          "baseText": {
+            "de": "und seit unserer Begegnung",
+            "en": "and since we met"
+          }
+        },
+        {
+          "targetText": "je le dessine.",
+          "baseText": {
+            "de": "zeichne ich ihn.",
+            "en": "I've been drawing it."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mon bilan",
+          "baseText": {
+            "de": "mein Rückblick",
+            "en": "my assessment of the year"
+          }
+        },
+        {
+          "targetText": "depuis notre rencontre",
+          "baseText": {
+            "de": "seit unserer Begegnung",
+            "en": "since we met"
+          }
+        },
+        {
+          "targetText": "chercher son chemin",
+          "baseText": {
+            "de": "seinen Weg suchen",
+            "en": "to try to find one's way"
+          }
+        },
+        {
+          "targetText": "par hasard",
+          "baseText": {
+            "de": "zufällig",
+            "en": "by chance"
+          }
+        },
+        {
+          "targetText": "faire une copie",
+          "baseText": {
+            "de": "eine Kopie machen",
+            "en": "to make a copy"
+          }
+        },
+        {
+          "targetText": "explorer le quartier",
+          "baseText": {
+            "de": "das Viertel erkunden",
+            "en": "to explore the neighborhood"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Voilà mon bilan : je ",
+        "answer": "cherchais",
+        "after": " mon chemin, et depuis notre rencontre je le dessine.",
+        "fallbackChoices": [
+          "cherchait",
+          "cherchions",
+          "cherchaient",
+          "cherchais"
+        ]
+      },
+      "speakRequired": [
+        "bilan",
+        "chemin",
+        "dessine"
+      ],
+      "sceneCaption": {
+        "de": "Luc bleibt beim Abräumen mit deinem Skizzenbuch in der Hand stehen. „Si tu gardais une seule image de ton année ici, ce serait laquelle ?“",
+        "en": "Luc pauses while clearing the table, your sketchbook in hand. “Si tu gardais une seule image de ton année ici, ce serait laquelle ?”"
+      },
+      "trophyWord": {
+        "word": "bilan",
+        "meaning": {
+          "de": "Rückblick, Bilanz",
+          "en": "review, assessment"
+        },
+        "example": "Faire le bilan de mon année m'aide à choisir la prochaine étape.",
+        "whyThisWord": {
+          "de": "Faire le bilan heißt, zurückzublicken und einzuschätzen, was sich verändert hat.",
+          "en": "Faire le bilan means looking back and considering what has changed."
+        }
+      },
+      "distractors": [
+        "je perdais mes gants,",
+        "je les mesure."
+      ],
+      "placeholderCaption": {
+        "de": "Ein alter Linienplan liegt auf einem offenen Skizzenbuch neben einem Stapel Teller.",
+        "en": "An old tram map rests on an open sketchbook beside a stack of plates."
+      },
+      "songMood": "Erfüllt und vorausschauend.",
+      "visualNotes": "An old tram map rests on an open sketchbook beside a stack of plates."
+    }
+  ]
+}

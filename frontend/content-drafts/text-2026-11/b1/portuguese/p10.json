@@ -1,0 +1,2263 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Portuguese",
+  "targetLanguageCode": "pt-BR",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Dein erstes Jahr im Viertel",
+    "en": "Your first year in the neighbourhood"
+  },
+  "subtitle": {
+    "de": "Erzähle, wie du im Viertel deinen Alltag aufgebaut hast und was du als Nächstes vorhast.",
+    "en": "Tell a neighbour how you found your feet and what you hope to do next."
+  },
+  "anchor": "Relato pessoal e reflexão com as famílias já ensinadas: chegada, hábitos, acontecimentos, opinião e planos. Ouvinte interessado; as duas falas do aluno desenvolvem um mesmo ponto. Sem nova gramática nem gênero atribuído à pessoa que aprende.",
+  "lessons": [
+    {
+      "slug": "primeira-semana-no-bairro",
+      "title": {
+        "de": "Die erste Woche im Viertel",
+        "en": "The first week in the neighbourhood"
+      },
+      "situation": {
+        "de": "Beim Plausch am Gartenzaun fragt dich eine Nachbarin, wie du die ersten Tage in der Stadt erlebt hast.",
+        "en": "Chatting at the garden fence, a neighbour asks how you experienced your first days in the city."
+      },
+      "pedagogicalGoal": "Eine vergangene Schwierigkeit im Imperfekt schildern und sie mit porque begründen; anschließend erzählen, was konkret beim Zurechtfinden geholfen hat.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Do que você mais se lembra da sua primeira semana aqui?",
+          "baseText": {
+            "de": "Woran erinnerst du dich am meisten aus deiner ersten Woche hier?",
+            "en": "What do you remember most about your first week here?"
+          }
+        },
+        {
+          "targetText": "Na minha chegada eu confundia as ruas porque todas pareciam terminar na feira.",
+          "baseText": {
+            "de": "Bei meiner Ankunft habe ich die Straßen ständig verwechselt, weil alle auf dem Wochenmarkt zu enden schienen.",
+            "en": "When I arrived, I kept mixing up the streets because they all seemed to end at the street market."
+          }
+        },
+        {
+          "targetText": "E como você aprendeu a achar o caminho de volta?",
+          "baseText": {
+            "de": "Und wie hast du gelernt, den Rückweg zu finden?",
+            "en": "And how did you learn to find your way back?"
+          }
+        },
+        {
+          "targetText": "Uma vizinha desenhou um mapa e eu marquei a padaria.",
+          "baseText": {
+            "de": "Eine Nachbarin hat mir eine Karte gezeichnet, und ich habe die Bäckerei markiert.",
+            "en": "A neighbour drew me a map and I marked the bakery."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Eu confundia… porque…",
+        "rule": {
+          "de": "Das Imperfekt (confundia, pareciam) beschreibt eine wiederholte oder andauernde Schwierigkeit in der Vergangenheit; porque hängt die Begründung an, meist ebenfalls im Imperfekt.",
+          "en": "The imperfect (confundia, pareciam) describes a repeated or ongoing difficulty in the past; porque attaches the reason, usually also in the imperfect."
+        },
+        "examples": [
+          {
+            "targetText": "Na minha chegada eu confundia as ruas porque todas pareciam terminar na feira.",
+            "baseText": {
+              "de": "Bei meiner Ankunft habe ich die Straßen ständig verwechselt, weil alle auf dem Wochenmarkt zu enden schienen.",
+              "en": "When I arrived, I kept mixing up the streets because they all seemed to end at the street market."
+            },
+            "highlight": "eu confundia as ruas porque"
+          },
+          {
+            "targetText": "Nas primeiras idas à piscina eu não achava meu armário porque todos tinham a mesma cor.",
+            "baseText": {
+              "de": "Bei den ersten Besuchen im Schwimmbad habe ich meinen Spind nie gefunden, weil alle dieselbe Farbe hatten.",
+              "en": "On my first trips to the swimming pool I could never find my locker because they all had the same colour."
+            },
+            "highlight": "eu não achava meu armário porque"
+          }
+        ]
+      },
+      "cloze": [
+        "Uma vizinha ",
+        {
+          "kind": "form",
+          "answer": "desenhou",
+          "cue": "desenhar (uma vizinha)",
+          "choices": [
+            "desenhei",
+            "desenhou",
+            "desenharam",
+            "desenhamos"
+          ]
+        },
+        " um mapa e eu ",
+        {
+          "kind": "form",
+          "answer": "marquei",
+          "cue": "marcar (eu)",
+          "choices": [
+            "marcou",
+            "marquei",
+            "marcaram",
+            "marcamos"
+          ]
+        },
+        " a padaria."
+      ],
+      "chunks": [
+        {
+          "targetText": "Na minha chegada",
+          "baseText": {
+            "de": "Bei meiner Ankunft",
+            "en": "When I arrived"
+          }
+        },
+        {
+          "targetText": "eu confundia as ruas",
+          "baseText": {
+            "de": "verwechselte ich die Straßen",
+            "en": "I kept mixing up the streets"
+          }
+        },
+        {
+          "targetText": "porque todas pareciam",
+          "baseText": {
+            "de": "weil alle schienen",
+            "en": "because they all seemed"
+          }
+        },
+        {
+          "targetText": "terminar na feira.",
+          "baseText": {
+            "de": "auf dem Wochenmarkt zu enden.",
+            "en": "to end at the street market."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "chegada",
+          "baseText": {
+            "de": "Ankunft",
+            "en": "arrival"
+          }
+        },
+        {
+          "targetText": "confundia",
+          "baseText": {
+            "de": "ich verwechselte (immer wieder)",
+            "en": "I kept mixing up"
+          }
+        },
+        {
+          "targetText": "pareciam terminar",
+          "baseText": {
+            "de": "sie schienen zu enden",
+            "en": "they seemed to end"
+          }
+        },
+        {
+          "targetText": "feira",
+          "baseText": {
+            "de": "Wochenmarkt; Straßenmarkt",
+            "en": "street market"
+          }
+        },
+        {
+          "targetText": "caminho de volta",
+          "baseText": {
+            "de": "Rückweg",
+            "en": "way back"
+          }
+        },
+        {
+          "targetText": "desenhou um mapa",
+          "baseText": {
+            "de": "sie zeichnete eine Karte",
+            "en": "she drew a map"
+          }
+        },
+        {
+          "targetText": "marquei",
+          "baseText": {
+            "de": "ich markierte",
+            "en": "I marked"
+          }
+        },
+        {
+          "targetText": "padaria",
+          "baseText": {
+            "de": "Bäckerei",
+            "en": "bakery"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Na minha chegada eu ",
+        "answer": "confundia",
+        "after": " as ruas porque todas pareciam terminar na feira.",
+        "fallbackChoices": [
+          "confundiam",
+          "confundíamos",
+          "confundia",
+          "confunde"
+        ]
+      },
+      "speakRequired": [
+        "chegada",
+        "confundia",
+        "feira"
+      ],
+      "sceneCaption": {
+        "de": "Am Gartenzaun fragt eine Nachbarin: “Do que você mais se lembra da sua primeira semana aqui?”",
+        "en": "At the garden fence, a neighbour asks: “Do que você mais se lembra da sua primeira semana aqui?”"
+      },
+      "trophyWord": {
+        "word": "chegada",
+        "meaning": {
+          "de": "Ankunft",
+          "en": "arrival"
+        },
+        "example": "Na minha chegada eu confundia as ruas porque todas pareciam terminar na feira.",
+        "whyThisWord": {
+          "de": "Chegada ist das Substantiv zu chegar; na minha chegada verankert eine Erzählung im Moment des Ankommens, ohne ein Datum zu nennen.",
+          "en": "Chegada is the noun from chegar; na minha chegada anchors a story at the moment of arriving without naming a date."
+        }
+      },
+      "distractors": [
+        "Na minha partida",
+        "terminar no rio."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über die ersten Tage in der Stadt.",
+        "en": "A conversation about the first days in the city."
+      },
+      "songMood": "wistful homecoming",
+      "visualNotes": "Two neighbours chatting at a garden fence on a residential street; no map, bakery or market stalls visible in the initial frame."
+    },
+    {
+      "slug": "portugues-no-dia-a-dia",
+      "title": {
+        "de": "Portugiesisch im Alltag",
+        "en": "Portuguese in everyday life"
+      },
+      "situation": {
+        "de": "Beim Kaffee auf der Veranda will dein Nachbar wissen, wie du es schaffst, dein Portugiesisch zu pflegen.",
+        "en": "Over coffee on the porch, your neighbour wants to know how you manage to keep up your Portuguese."
+      },
+      "pedagogicalGoal": "Mit fazer um esforço para + Infinitiv eine wiederholte Anstrengung im Imperfekt beschreiben und dann mit passei a eine neue, beständige Gewohnheit einführen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Como você encaixou o português no dia a dia?",
+          "baseText": {
+            "de": "Wie hast du Portugiesisch in deinen Alltag eingebaut?",
+            "en": "How did you fit Portuguese into your daily routine?"
+          }
+        },
+        {
+          "targetText": "No começo eu fazia um esforço enorme para estudar uma hora de uma vez.",
+          "baseText": {
+            "de": "Am Anfang habe ich mich enorm angestrengt, um eine Stunde am Stück zu lernen.",
+            "en": "At first I made a huge effort to study for an hour at a time."
+          }
+        },
+        {
+          "targetText": "E nos dias em que você não tinha essa hora inteira?",
+          "baseText": {
+            "de": "Und an den Tagen, an denen du diese ganze Stunde nicht hattest?",
+            "en": "And on the days when you didn't have that whole hour?"
+          }
+        },
+        {
+          "targetText": "Eu passei a ler no ônibus e hoje estudo todo dia.",
+          "baseText": {
+            "de": "Ich habe angefangen, im Bus zu lesen, und heute lerne ich jeden Tag.",
+            "en": "I started reading on the bus, and now I study every day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "fazer um esforço para + infinitivo",
+        "rule": {
+          "de": "Fazer um esforço para + Infinitiv drückt aus, dass man sich bemüht, etwas zu erreichen; im Imperfekt (fazia) beschreibt es eine Anstrengung, die sich in der Vergangenheit wiederholte.",
+          "en": "Fazer um esforço para + infinitive expresses striving to achieve something; in the imperfect (fazia) it describes an effort that was repeated in the past."
+        },
+        "examples": [
+          {
+            "targetText": "No começo eu fazia um esforço enorme para estudar uma hora de uma vez.",
+            "baseText": {
+              "de": "Am Anfang habe ich mich enorm angestrengt, um eine Stunde am Stück zu lernen.",
+              "en": "At first I made a huge effort to study for an hour at a time."
+            },
+            "highlight": "fazia um esforço enorme para estudar"
+          },
+          {
+            "targetText": "No ensaio do coral amador eu fazia um esforço tremendo para acompanhar o ritmo dos tenores.",
+            "baseText": {
+              "de": "Bei der Probe des Laienchors habe ich mich unheimlich angestrengt, um mit dem Tempo der Tenöre mitzuhalten.",
+              "en": "At the amateur choir rehearsal I made a tremendous effort to keep up with the tenors' tempo."
+            },
+            "highlight": "fazia um esforço tremendo para acompanhar"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "passei",
+          "cue": "passar (eu)",
+          "choices": [
+            "passou",
+            "passei",
+            "passamos",
+            "passaram"
+          ]
+        },
+        " a ler no ônibus e hoje ",
+        {
+          "kind": "form",
+          "answer": "estudo",
+          "cue": "estudar (eu)",
+          "choices": [
+            "estuda",
+            "estudo",
+            "estudamos",
+            "estudam"
+          ]
+        },
+        " todo dia."
+      ],
+      "chunks": [
+        {
+          "targetText": "No começo eu fazia",
+          "baseText": {
+            "de": "Am Anfang machte ich",
+            "en": "At first I made"
+          }
+        },
+        {
+          "targetText": "um esforço enorme",
+          "baseText": {
+            "de": "eine riesige Anstrengung",
+            "en": "a huge effort"
+          }
+        },
+        {
+          "targetText": "para estudar uma hora",
+          "baseText": {
+            "de": "um eine Stunde zu lernen",
+            "en": "to study for an hour"
+          }
+        },
+        {
+          "targetText": "de uma vez.",
+          "baseText": {
+            "de": "am Stück.",
+            "en": "at a time."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "encaixou",
+          "baseText": {
+            "de": "du hast eingebaut; untergebracht",
+            "en": "you fitted in"
+          }
+        },
+        {
+          "targetText": "dia a dia",
+          "baseText": {
+            "de": "Alltag",
+            "en": "daily routine"
+          }
+        },
+        {
+          "targetText": "esforço",
+          "baseText": {
+            "de": "Anstrengung; Mühe",
+            "en": "effort"
+          }
+        },
+        {
+          "targetText": "de uma vez",
+          "baseText": {
+            "de": "am Stück; auf einmal",
+            "en": "at a time; in one go"
+          }
+        },
+        {
+          "targetText": "hora inteira",
+          "baseText": {
+            "de": "ganze Stunde",
+            "en": "whole hour"
+          }
+        },
+        {
+          "targetText": "passei a ler",
+          "baseText": {
+            "de": "ich fing an zu lesen",
+            "en": "I started reading"
+          }
+        },
+        {
+          "targetText": "ônibus",
+          "baseText": {
+            "de": "Bus",
+            "en": "bus"
+          }
+        },
+        {
+          "targetText": "todo dia",
+          "baseText": {
+            "de": "jeden Tag",
+            "en": "every day"
+          }
+        }
+      ],
+      "recall": {
+        "before": "No começo eu ",
+        "answer": "fazia",
+        "after": " um esforço enorme para estudar uma hora de uma vez.",
+        "fallbackChoices": [
+          "faziam",
+          "fazíamos",
+          "fazia",
+          "faz"
+        ]
+      },
+      "speakRequired": [
+        "começo",
+        "esforço",
+        "estudar"
+      ],
+      "sceneCaption": {
+        "de": "Beim Kaffee auf der Veranda fragt ein Nachbar: “Como você encaixou o português no dia a dia?”",
+        "en": "Over coffee on the porch, a neighbour asks: “Como você encaixou o português no dia a dia?”"
+      },
+      "trophyWord": {
+        "word": "esforço",
+        "meaning": {
+          "de": "Anstrengung; Mühe",
+          "en": "effort"
+        },
+        "example": "No começo eu fazia um esforço enorme para estudar uma hora de uma vez.",
+        "whyThisWord": {
+          "de": "Esforço ist das Kernwort der Wendung fazer um esforço para; mit ihm erzählst du von Mühe und Durchhalten beim Lernen und in vielen anderen Alltagslagen.",
+          "en": "Esforço is the core of the expression fazer um esforço para; with it you talk about striving and persevering while learning and in many other everyday situations."
+        }
+      },
+      "distractors": [
+        "um esforço mínimo",
+        "para dormir uma hora"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch über das Lernen zwischen Alltag und Routine.",
+        "en": "A conversation about studying amid daily routine."
+      },
+      "songMood": "steady determination",
+      "visualNotes": "Two neighbours with coffee mugs on a porch in the morning; a notebook on the table, no bus or bus stop visible in the initial frame."
+    },
+    {
+      "slug": "conversa-que-deu-confianca",
+      "title": {
+        "de": "Das Gespräch, das Selbstvertrauen gab",
+        "en": "The conversation that built confidence"
+      },
+      "situation": {
+        "de": "Beim Kaffee im Treppenhaus will deine Nachbarin wissen, ob es ein Gespräch gab, das für dich etwas verändert hat.",
+        "en": "Over coffee in the stairwell, your neighbour wants to know whether there was a conversation that changed something for you."
+      },
+      "pedagogicalGoal": "Mit ganhei … quando einen persönlichen Fortschritt an ein abgeschlossenes Ereignis im Pretérito Perfeito knüpfen und in der Rückfrage zwei vergangene Handlungen mit eu und nós koordinieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você se lembra de alguma conversa que mudou as coisas?",
+          "baseText": {
+            "de": "Erinnerst du dich an ein Gespräch, das etwas verändert hat?",
+            "en": "Do you remember a conversation that changed things?"
+          }
+        },
+        {
+          "targetText": "Ganhei confiança quando expliquei meu caminho a uma pessoa que procurava a estação.",
+          "baseText": {
+            "de": "Ich habe Selbstvertrauen gewonnen, als ich jemandem, der die Station suchte, meinen Weg erklärt habe.",
+            "en": "I gained confidence when I explained my route to someone who was looking for the station."
+          }
+        },
+        {
+          "targetText": "E ela sabia onde precisava trocar de linha?",
+          "baseText": {
+            "de": "Und wusste sie, wo sie umsteigen musste?",
+            "en": "And did she know where she needed to change lines?"
+          }
+        },
+        {
+          "targetText": "Eu consultei o mapa e nós achamos a estação certa.",
+          "baseText": {
+            "de": "Ich habe auf den Plan geschaut, und wir haben die richtige Station gefunden.",
+            "en": "I checked the map and we found the right station."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ganhei … quando …",
+        "rule": {
+          "de": "Ganhei + Substantiv benennt den Gewinn; quando + Pretérito Perfeito (expliquei) verankert ihn in einem abgeschlossenen Moment, während das Imperfekt (procurava) die laufende Hintergrundhandlung beschreibt.",
+          "en": "Ganhei + noun names what you gained; quando + pretérito perfeito (expliquei) anchors it in one completed moment, while the imperfect (procurava) describes the ongoing background action."
+        },
+        "examples": [
+          {
+            "targetText": "Ganhei confiança quando expliquei meu caminho a uma pessoa que procurava a estação.",
+            "baseText": {
+              "de": "Ich habe Selbstvertrauen gewonnen, als ich jemandem, der die Station suchte, meinen Weg erklärt habe.",
+              "en": "I gained confidence when I explained my route to someone who was looking for the station."
+            },
+            "highlight": "Ganhei confiança quando expliquei"
+          },
+          {
+            "targetText": "Ganhei prática quando dirigi na estrada até o litoral.",
+            "baseText": {
+              "de": "Ich habe Routine gewonnen, als ich über die Landstraße bis zur Küste gefahren bin.",
+              "en": "I gained practice when I drove on the highway all the way to the coast."
+            },
+            "highlight": "Ganhei prática quando dirigi"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "consultei",
+          "cue": "consultar (eu)",
+          "choices": [
+            "consultamos",
+            "consultou",
+            "consultei",
+            "consultaram"
+          ]
+        },
+        " o mapa e nós ",
+        {
+          "kind": "form",
+          "answer": "achamos",
+          "cue": "achar (nós)",
+          "choices": [
+            "achei",
+            "achou",
+            "achamos",
+            "acharam"
+          ]
+        },
+        " a estação certa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Ganhei confiança",
+          "baseText": {
+            "de": "Ich habe Selbstvertrauen gewonnen",
+            "en": "I gained confidence"
+          }
+        },
+        {
+          "targetText": "quando expliquei meu caminho",
+          "baseText": {
+            "de": "als ich meinen Weg erklärt habe",
+            "en": "when I explained my route"
+          }
+        },
+        {
+          "targetText": "a uma pessoa",
+          "baseText": {
+            "de": "jemandem",
+            "en": "to someone"
+          }
+        },
+        {
+          "targetText": "que procurava a estação.",
+          "baseText": {
+            "de": "der die Station suchte.",
+            "en": "who was looking for the station."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "confiança",
+          "baseText": {
+            "de": "Selbstvertrauen; Sicherheit",
+            "en": "confidence"
+          }
+        },
+        {
+          "targetText": "expliquei",
+          "baseText": {
+            "de": "ich habe erklärt",
+            "en": "I explained"
+          }
+        },
+        {
+          "targetText": "caminho",
+          "baseText": {
+            "de": "Weg; Route",
+            "en": "route; way"
+          }
+        },
+        {
+          "targetText": "procurava",
+          "baseText": {
+            "de": "suchte (gerade)",
+            "en": "was looking for"
+          }
+        },
+        {
+          "targetText": "estação",
+          "baseText": {
+            "de": "Station; Bahnhof",
+            "en": "station"
+          }
+        },
+        {
+          "targetText": "trocar de linha",
+          "baseText": {
+            "de": "umsteigen; die Linie wechseln",
+            "en": "to change lines"
+          }
+        },
+        {
+          "targetText": "consultei",
+          "baseText": {
+            "de": "ich habe nachgeschaut",
+            "en": "I checked"
+          }
+        },
+        {
+          "targetText": "mapa",
+          "baseText": {
+            "de": "Plan; Karte",
+            "en": "map"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Ganhei confiança quando ",
+        "answer": "expliquei",
+        "after": " meu caminho a uma pessoa que procurava a estação.",
+        "fallbackChoices": [
+          "explicou",
+          "explicamos",
+          "expliquei",
+          "explicaram"
+        ]
+      },
+      "speakRequired": [
+        "confiança",
+        "expliquei",
+        "estação"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus fragt deine Nachbarin: “Você se lembra de alguma conversa que mudou as coisas?”",
+        "en": "In the stairwell, your neighbour asks: “Você se lembra de alguma conversa que mudou as coisas?”"
+      },
+      "trophyWord": {
+        "word": "confiança",
+        "meaning": {
+          "de": "Selbstvertrauen; Sicherheit",
+          "en": "confidence"
+        },
+        "example": "Ganhei confiança quando expliquei meu caminho a uma pessoa que procurava a estação.",
+        "whyThisWord": {
+          "de": "Confiança ist das Gefühl, einer Situation gewachsen zu sein; ganhar confiança ist die alltägliche Wendung dafür, dass dieses Gefühl durch ein Erlebnis wächst.",
+          "en": "Confiança is the feeling of being equal to a situation; ganhar confiança is the everyday way to say that this feeling grew through an experience."
+        }
+      },
+      "distractors": [
+        "Perdi a paciência",
+        "que vendia bilhetes."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Nachbarschaftsgespräch über einen Wendepunkt.",
+        "en": "A neighbourly chat about a turning point."
+      },
+      "songMood": "quiet pride in small victories",
+      "visualNotes": "Two neighbours with coffee cups in an apartment stairwell; no metro map, station signage or route sketches in the initial frame."
+    },
+    {
+      "slug": "amizade-no-mutirao",
+      "title": {
+        "de": "Eine Freundschaft vom Platz",
+        "en": "A friendship from the square"
+      },
+      "situation": {
+        "de": "Eine Nachbarin sieht dich Joana zuwinken und möchte wissen, woher ihr euch kennt.",
+        "en": "A neighbour sees you wave to Joana and wants to know where you two know each other from."
+      },
+      "pedagogicalGoal": "Mit começou + Ort + quando den Ursprung einer Beziehung erzählen und anschließend mit agora zwei gegenwärtige Tätigkeiten mit nós und einem Namen als Subjekt verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "De onde você conhece a Joana?",
+          "baseText": {
+            "de": "Woher kennst du Joana?",
+            "en": "Where do you know Joana from?"
+          }
+        },
+        {
+          "targetText": "Nossa amizade começou num mutirão da praça, quando nós pintamos o mesmo banco.",
+          "baseText": {
+            "de": "Unsere Freundschaft hat bei einer Gemeinschaftsaktion auf dem Platz begonnen, als wir dieselbe Bank gestrichen haben.",
+            "en": "Our friendship started at a community work day in the square, when we painted the same bench."
+          }
+        },
+        {
+          "targetText": "Vocês ainda se encontram depois que acabaram os trabalhos na praça?",
+          "baseText": {
+            "de": "Trefft ihr euch immer noch, seit die Arbeiten auf dem Platz abgeschlossen sind?",
+            "en": "Do you two still meet up now that the work in the square is finished?"
+          }
+        },
+        {
+          "targetText": "Agora nós cuidamos da horta e a Joana leva as sementes.",
+          "baseText": {
+            "de": "Jetzt kümmern wir uns um den Gemüsegarten, und Joana bringt die Samen mit.",
+            "en": "Now we look after the vegetable garden and Joana brings the seeds."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "… começou num …, quando nós …",
+        "rule": {
+          "de": "Das Subjekt (nossa amizade) steht vor começou in der 3. Person Singular; num + Ort nennt den Anlass, und quando nós + Pretérito Perfeito (pintamos) liefert die gemeinsame Handlung, die alles auslöste.",
+          "en": "The subject (nossa amizade) comes before começou in the third person singular; num + place names the occasion, and quando nós + pretérito perfeito (pintamos) supplies the shared action that set everything off."
+        },
+        "examples": [
+          {
+            "targetText": "Nossa amizade começou num mutirão da praça, quando nós pintamos o mesmo banco.",
+            "baseText": {
+              "de": "Unsere Freundschaft hat bei einer Gemeinschaftsaktion auf dem Platz begonnen, als wir dieselbe Bank gestrichen haben.",
+              "en": "Our friendship started at a community work day in the square, when we painted the same bench."
+            },
+            "highlight": "começou num mutirão da praça, quando nós pintamos"
+          },
+          {
+            "targetText": "Nossa parceria começou num sarau do bar, quando nós tocamos a mesma música.",
+            "baseText": {
+              "de": "Unsere musikalische Zusammenarbeit hat bei einem Liederabend in der Bar begonnen, als wir dasselbe Stück gespielt haben.",
+              "en": "Our musical partnership started at an open-mic night in the bar, when we played the same song."
+            },
+            "highlight": "começou num sarau do bar, quando nós tocamos"
+          }
+        ]
+      },
+      "cloze": [
+        "Agora nós ",
+        {
+          "kind": "form",
+          "answer": "cuidamos",
+          "cue": "cuidar (nós)",
+          "choices": [
+            "cuido",
+            "cuida",
+            "cuidamos",
+            "cuidam"
+          ]
+        },
+        " da horta e a Joana ",
+        {
+          "kind": "form",
+          "answer": "leva",
+          "cue": "levar (a Joana)",
+          "choices": [
+            "levo",
+            "leva",
+            "levamos",
+            "levam"
+          ]
+        },
+        " as sementes."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nossa amizade começou",
+          "baseText": {
+            "de": "Unsere Freundschaft hat begonnen",
+            "en": "Our friendship started"
+          }
+        },
+        {
+          "targetText": "num mutirão da praça,",
+          "baseText": {
+            "de": "bei einer Gemeinschaftsaktion auf dem Platz,",
+            "en": "at a community work day in the square,"
+          }
+        },
+        {
+          "targetText": "quando nós pintamos",
+          "baseText": {
+            "de": "als wir gestrichen haben",
+            "en": "when we painted"
+          }
+        },
+        {
+          "targetText": "o mesmo banco.",
+          "baseText": {
+            "de": "dieselbe Bank.",
+            "en": "the same bench."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "amizade",
+          "baseText": {
+            "de": "Freundschaft",
+            "en": "friendship"
+          }
+        },
+        {
+          "targetText": "mutirão",
+          "baseText": {
+            "de": "Gemeinschaftsaktion; freiwilliger Arbeitseinsatz",
+            "en": "community work day"
+          }
+        },
+        {
+          "targetText": "praça",
+          "baseText": {
+            "de": "Platz (im Viertel)",
+            "en": "square"
+          }
+        },
+        {
+          "targetText": "pintamos",
+          "baseText": {
+            "de": "wir haben gestrichen",
+            "en": "we painted"
+          }
+        },
+        {
+          "targetText": "banco",
+          "baseText": {
+            "de": "Bank (zum Sitzen)",
+            "en": "bench"
+          }
+        },
+        {
+          "targetText": "cuidamos",
+          "baseText": {
+            "de": "wir kümmern uns",
+            "en": "we look after"
+          }
+        },
+        {
+          "targetText": "horta",
+          "baseText": {
+            "de": "Gemüsegarten",
+            "en": "vegetable garden"
+          }
+        },
+        {
+          "targetText": "sementes",
+          "baseText": {
+            "de": "Samen; Saatgut",
+            "en": "seeds"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nossa amizade começou num mutirão da praça, quando nós ",
+        "answer": "pintamos",
+        "after": " o mesmo banco.",
+        "fallbackChoices": [
+          "pintei",
+          "pintou",
+          "pintamos",
+          "pintaram"
+        ]
+      },
+      "speakRequired": [
+        "amizade",
+        "mutirão",
+        "banco"
+      ],
+      "sceneCaption": {
+        "de": "Auf dem Gehweg fragt deine Nachbarin: “De onde você conhece a Joana?”",
+        "en": "On the pavement, your neighbour asks: “De onde você conhece a Joana?”"
+      },
+      "trophyWord": {
+        "word": "amizade",
+        "meaning": {
+          "de": "Freundschaft",
+          "en": "friendship"
+        },
+        "example": "Nossa amizade começou num mutirão da praça, quando nós pintamos o mesmo banco.",
+        "whyThisWord": {
+          "de": "Amizade benennt die Beziehung selbst, nicht nur die Person; mit nossa amizade começou erzählst du auf natürliche Weise, wie ein Kontakt zur Freundschaft wurde.",
+          "en": "Amizade names the relationship itself, not just the person; nossa amizade começou is the natural way to tell how an acquaintance turned into a friendship."
+        }
+      },
+      "distractors": [
+        "numa fila do banco,",
+        "o mesmo ônibus."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Nachbarin fragt nach einer Freundschaft.",
+        "en": "A neighbour asks about a friendship."
+      },
+      "songMood": "warm neighbourhood bonds",
+      "visualNotes": "Pavement outside apartment buildings with a tree-lined square in the distance; no painted bench, paint cans, vegetable beds or seed packets in the initial frame."
+    },
+    {
+      "slug": "aprendizado-na-feira",
+      "title": {
+        "de": "Eine Lektion vom Markt",
+        "en": "A lesson from the market"
+      },
+      "situation": {
+        "de": "Auf dem Wochenmarkt kommst du mit einer Nachbarin ins Gespräch, die wissen will, ob es dort schon einmal Missverständnisse gab.",
+        "en": "At the street market you get talking with a neighbour who wants to know whether there have ever been any misunderstandings there."
+      },
+      "pedagogicalGoal": "Eine Lektion mit veio de um engano auf einen konkreten Irrtum zurückführen, das Missverständnis mit pensando em benennen und danach das heutige Vorgehen in der ersten Person schildern.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Já aconteceu algum mal-entendido na feira?",
+          "baseText": {
+            "de": "Ist auf dem Markt schon mal ein Missverständnis passiert?",
+            "en": "Has there ever been a misunderstanding at the market?"
+          }
+        },
+        {
+          "targetText": "Meu maior aprendizado veio de um engano: eu pedi uma dúzia pensando em seis ovos.",
+          "baseText": {
+            "de": "Meine größte Lektion kam aus einem Irrtum: Ich habe ein Dutzend bestellt und dabei an sechs Eier gedacht.",
+            "en": "My biggest lesson came from a mix-up: I ordered a dozen, thinking that meant six eggs."
+          }
+        },
+        {
+          "targetText": "E como você faz hoje quando tem dúvida sobre a quantidade?",
+          "baseText": {
+            "de": "Und wie machst du es heute, wenn du dir bei der Menge nicht sicher bist?",
+            "en": "And what do you do nowadays when you're unsure about the quantity?"
+          }
+        },
+        {
+          "targetText": "Hoje eu pergunto quantos são e confirmo o número antes de pagar.",
+          "baseText": {
+            "de": "Heute frage ich, wie viele es sind, und bestätige die Zahl, bevor ich bezahle.",
+            "en": "Nowadays I ask how many there are and confirm the number before paying."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "… veio de um engano: … pensando em …",
+        "rule": {
+          "de": "Veio de um engano nennt den Ursprung einer Lektion; nach dem Doppelpunkt erzählt ein Verb in der Vergangenheit, was man tat, und pensando em ergänzt im Gerundium, was man dabei irrtümlich annahm.",
+          "en": "Veio de um engano names where a lesson came from; after the colon, a past-tense verb tells what you did, and the gerund pensando em adds what you mistakenly had in mind."
+        },
+        "examples": [
+          {
+            "targetText": "Meu maior aprendizado veio de um engano: eu pedi uma dúzia pensando em seis ovos.",
+            "baseText": {
+              "de": "Meine größte Lektion kam aus einem Irrtum: Ich habe ein Dutzend bestellt und dabei an sechs Eier gedacht.",
+              "en": "My biggest lesson came from a mix-up: I ordered a dozen, thinking that meant six eggs."
+            },
+            "highlight": "pensando em seis ovos"
+          },
+          {
+            "targetText": "Meu atraso veio de um engano: eu entendi oito horas pensando em oito da noite.",
+            "baseText": {
+              "de": "Meine Verspätung kam aus einem Irrtum: Ich habe acht Uhr verstanden und dabei an acht Uhr abends gedacht.",
+              "en": "My lateness came from a mix-up: I heard eight o'clock, thinking it meant eight at night."
+            },
+            "highlight": "pensando em oito da noite"
+          }
+        ]
+      },
+      "cloze": [
+        "Hoje eu ",
+        {
+          "kind": "form",
+          "answer": "pergunto",
+          "cue": "perguntar (eu)",
+          "choices": [
+            "pergunta",
+            "perguntamos",
+            "pergunto",
+            "perguntam"
+          ]
+        },
+        " quantos são e ",
+        {
+          "kind": "form",
+          "answer": "confirmo",
+          "cue": "confirmar (eu)",
+          "choices": [
+            "confirma",
+            "confirmo",
+            "confirmamos",
+            "confirmam"
+          ]
+        },
+        " o número antes de pagar."
+      ],
+      "chunks": [
+        {
+          "targetText": "Meu maior aprendizado",
+          "baseText": {
+            "de": "Meine größte Lektion",
+            "en": "My biggest lesson"
+          }
+        },
+        {
+          "targetText": "veio de um engano:",
+          "baseText": {
+            "de": "kam aus einem Irrtum:",
+            "en": "came from a mix-up:"
+          }
+        },
+        {
+          "targetText": "eu pedi uma dúzia",
+          "baseText": {
+            "de": "ich habe ein Dutzend bestellt",
+            "en": "I ordered a dozen"
+          }
+        },
+        {
+          "targetText": "pensando em seis ovos.",
+          "baseText": {
+            "de": "und dachte dabei an sechs Eier.",
+            "en": "thinking of six eggs."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mal-entendido",
+          "baseText": {
+            "de": "Missverständnis (beim Einkaufen)",
+            "en": "misunderstanding (while shopping)"
+          }
+        },
+        {
+          "targetText": "feira",
+          "baseText": {
+            "de": "Wochenmarkt; Straßenmarkt",
+            "en": "street market"
+          }
+        },
+        {
+          "targetText": "aprendizado",
+          "baseText": {
+            "de": "Lektion; Erkenntnis aus einer Erfahrung",
+            "en": "lesson learned from experience"
+          }
+        },
+        {
+          "targetText": "engano",
+          "baseText": {
+            "de": "Irrtum; Versehen",
+            "en": "mix-up; mistake"
+          }
+        },
+        {
+          "targetText": "dúzia",
+          "baseText": {
+            "de": "Dutzend (zwölf Stück)",
+            "en": "dozen (twelve items)"
+          }
+        },
+        {
+          "targetText": "quantidade",
+          "baseText": {
+            "de": "Menge; Stückzahl",
+            "en": "quantity; amount"
+          }
+        },
+        {
+          "targetText": "confirmo",
+          "baseText": {
+            "de": "ich bestätige",
+            "en": "I confirm"
+          }
+        },
+        {
+          "targetText": "antes de pagar",
+          "baseText": {
+            "de": "vor dem Bezahlen",
+            "en": "before paying"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Meu maior aprendizado ",
+        "answer": "veio",
+        "after": " de um engano: eu pedi uma dúzia pensando em seis ovos.",
+        "fallbackChoices": [
+          "vim",
+          "vieram",
+          "veio",
+          "viemos"
+        ]
+      },
+      "speakRequired": [
+        "aprendizado",
+        "engano",
+        "dúzia"
+      ],
+      "sceneCaption": {
+        "de": "Zwischen den Marktständen fragt eine Nachbarin: “Já aconteceu algum mal-entendido na feira?”",
+        "en": "Between the market stalls, a neighbour asks: “Já aconteceu algum mal-entendido na feira?”"
+      },
+      "trophyWord": {
+        "word": "aprendizado",
+        "meaning": {
+          "de": "Lektion; Erkenntnis aus einer Erfahrung",
+          "en": "lesson learned from experience"
+        },
+        "example": "Meu maior aprendizado veio de um engano: eu pedi uma dúzia pensando em seis ovos.",
+        "whyThisWord": {
+          "de": "Aprendizado ist das, was man aus einer Erfahrung mitnimmt; meu maior aprendizado leitet im Alltag eine kleine Geschichte mit Moral ein.",
+          "en": "Aprendizado is what you take away from an experience; meu maior aprendizado is an everyday way to open a short story with a lesson."
+        }
+      },
+      "distractors": [
+        "eu paguei uma conta",
+        "pensando em seis horas."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch zwischen Obstkisten auf dem Wochenmarkt.",
+        "en": "A chat between fruit crates at the street market."
+      },
+      "songMood": "lighthearted lesson learned",
+      "visualNotes": "Busy street market with fruit and vegetable stalls; no egg cartons, numbers or counting gestures in the initial frame."
+    },
+    {
+      "slug": "rotina-das-manhas",
+      "title": {
+        "de": "Neue Morgenroutine",
+        "en": "A new morning routine"
+      },
+      "situation": {
+        "de": "Ein Nachbar trifft dich vor dem Haus und möchte wissen, was sich seit Januar an deinen Morgen verändert hat.",
+        "en": "A neighbour runs into you outside the building and wants to know what has changed about your mornings since January."
+      },
+      "pedagogicalGoal": "Eine frühere Gewohnheit mit no começo … era und die heutige mit mas agora gegenüberstellen; nach einer Frage im Futur des Konjunktivs eine Änderung nennen, die man beibehalten will.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "O que mudou nas suas manhãs desde janeiro?",
+          "baseText": {
+            "de": "Was hat sich seit Januar an deinen Morgen geändert?",
+            "en": "What has changed about your mornings since January?"
+          }
+        },
+        {
+          "targetText": "No começo minha rotina era sair correndo, mas agora tenho tempo para tomar café na praça.",
+          "baseText": {
+            "de": "Am Anfang bestand meine Routine darin, hastig loszurennen, aber jetzt habe ich Zeit, auf dem Platz einen Kaffee zu trinken.",
+            "en": "At first my routine was rushing out the door, but now I have time to have coffee in the square."
+          }
+        },
+        {
+          "targetText": "E quando seu horário de trabalho mudar no mês que vem?",
+          "baseText": {
+            "de": "Und wenn sich nächsten Monat deine Arbeitszeiten ändern?",
+            "en": "And when your work hours change next month?"
+          }
+        },
+        {
+          "targetText": "Eu saio mais cedo e mantenho o café na praça.",
+          "baseText": {
+            "de": "Ich gehe früher los und behalte den Kaffee auf dem Platz bei.",
+            "en": "I'll leave earlier and keep my coffee in the square."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "No começo … era …, mas agora …",
+        "rule": {
+          "de": "No começo leitet die frühere Gewohnheit ein, die mit era und einem Infinitiv beschrieben wird; mas agora stellt die heutige Gewohnheit im Präsens dagegen.",
+          "en": "No começo introduces the earlier habit, described with era plus an infinitive; mas agora contrasts it with the current habit in the present tense."
+        },
+        "examples": [
+          {
+            "targetText": "No começo minha rotina era sair correndo, mas agora tenho tempo para tomar café na praça.",
+            "baseText": {
+              "de": "Am Anfang bestand meine Routine darin, hastig loszurennen, aber jetzt habe ich Zeit, auf dem Platz einen Kaffee zu trinken.",
+              "en": "At first my routine was rushing out the door, but now I have time to have coffee in the square."
+            },
+            "highlight": "era sair correndo, mas agora tenho tempo"
+          },
+          {
+            "targetText": "No começo meu hábito era comprar os livros, mas agora pego emprestado na biblioteca.",
+            "baseText": {
+              "de": "Am Anfang war es meine Gewohnheit, die Bücher zu kaufen, aber jetzt leihe ich sie in der Bibliothek aus.",
+              "en": "At first my habit was buying the books, but now I borrow them from the library."
+            },
+            "highlight": "era comprar os livros, mas agora pego emprestado"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "saio",
+          "cue": "sair (eu)",
+          "choices": [
+            "sai",
+            "saímos",
+            "saio",
+            "saem"
+          ]
+        },
+        " mais cedo e ",
+        {
+          "kind": "form",
+          "answer": "mantenho",
+          "cue": "manter (eu)",
+          "choices": [
+            "mantém",
+            "mantenho",
+            "mantemos",
+            "mantêm"
+          ]
+        },
+        " o café na praça."
+      ],
+      "chunks": [
+        {
+          "targetText": "No começo minha rotina",
+          "baseText": {
+            "de": "Am Anfang war meine Routine",
+            "en": "At first my routine"
+          }
+        },
+        {
+          "targetText": "era sair correndo,",
+          "baseText": {
+            "de": "hastig loszurennen,",
+            "en": "was rushing out,"
+          }
+        },
+        {
+          "targetText": "mas agora tenho tempo",
+          "baseText": {
+            "de": "aber jetzt habe ich Zeit,",
+            "en": "but now I have time"
+          }
+        },
+        {
+          "targetText": "para tomar café na praça.",
+          "baseText": {
+            "de": "auf dem Platz Kaffee zu trinken.",
+            "en": "to have coffee in the square."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rotina",
+          "baseText": {
+            "de": "Routine; täglicher Ablauf",
+            "en": "routine; daily pattern"
+          }
+        },
+        {
+          "targetText": "sair correndo",
+          "baseText": {
+            "de": "hastig loslaufen; aus dem Haus stürmen",
+            "en": "to rush out the door"
+          }
+        },
+        {
+          "targetText": "tomar café",
+          "baseText": {
+            "de": "Kaffee trinken; frühstücken",
+            "en": "to have coffee; to have breakfast"
+          }
+        },
+        {
+          "targetText": "praça",
+          "baseText": {
+            "de": "Platz (im Viertel)",
+            "en": "square (in the neighbourhood)"
+          }
+        },
+        {
+          "targetText": "horário de trabalho",
+          "baseText": {
+            "de": "Arbeitszeiten",
+            "en": "work hours"
+          }
+        },
+        {
+          "targetText": "mês que vem",
+          "baseText": {
+            "de": "nächsten Monat",
+            "en": "next month"
+          }
+        },
+        {
+          "targetText": "mais cedo",
+          "baseText": {
+            "de": "früher (am Morgen)",
+            "en": "earlier (in the morning)"
+          }
+        },
+        {
+          "targetText": "mantenho",
+          "baseText": {
+            "de": "ich behalte bei",
+            "en": "I keep up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "No começo minha rotina ",
+        "answer": "era",
+        "after": " sair correndo, mas agora tenho tempo para tomar café na praça.",
+        "fallbackChoices": [
+          "eram",
+          "éramos",
+          "era",
+          "fomos"
+        ]
+      },
+      "speakRequired": [
+        "rotina",
+        "correndo",
+        "praça"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Haustür fragt ein Nachbar: “O que mudou nas suas manhãs desde janeiro?”",
+        "en": "Outside the front door, a neighbour asks: “O que mudou nas suas manhãs desde janeiro?”"
+      },
+      "trophyWord": {
+        "word": "rotina",
+        "meaning": {
+          "de": "Routine; täglicher Ablauf",
+          "en": "routine; daily pattern"
+        },
+        "example": "No começo minha rotina era sair correndo, mas agora tenho tempo para tomar café na praça.",
+        "whyThisWord": {
+          "de": "Rotina bezeichnet den festen Tagesablauf; minha rotina era … ist der natürliche Einstieg, um eine frühere Gewohnheit zu beschreiben.",
+          "en": "Rotina means your fixed daily pattern; minha rotina era … is the natural way to start describing a former habit."
+        }
+      },
+      "distractors": [
+        "mas agora tenho pressa",
+        "para lavar roupa na praça."
+      ],
+      "placeholderCaption": {
+        "de": "Ein kurzer Plausch am Morgen vor dem Wohnhaus.",
+        "en": "A quick morning chat outside the apartment building."
+      },
+      "songMood": "calm fresh start",
+      "visualNotes": "Residential street at morning with a neighbour by the entrance; no coffee cups, square benches or work calendars in the initial frame."
+    },
+    {
+      "slug": "dica-para-quem-acabou-de-chegar",
+      "title": {
+        "de": "Ein Tipp für jemanden, der gerade angekommen ist",
+        "en": "A tip for someone who has just arrived"
+      },
+      "situation": {
+        "de": "Ein neuer Nachbar ist gerade erst eingezogen und spricht dich im Hof an, weil er noch niemanden in der Gegend kennt.",
+        "en": "A new neighbour has just moved in and stops you in the courtyard because they don't know anyone in the area yet."
+      },
+      "pedagogicalGoal": "Einen Rat mit meu conselho é + Infinitiv formulieren und ihn mit einer konkret erlebten Erfahrung im Perfekt begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Acabei de chegar e ainda não conheço ninguém. Você tem alguma dica?",
+          "baseText": {
+            "de": "Ich bin gerade erst hergezogen und kenne noch niemanden. Hast du einen Tipp?",
+            "en": "I've just moved here and don't know anyone yet. Do you have any tips?"
+          }
+        },
+        {
+          "targetText": "Meu conselho é começar por uma atividade pequena, como a caminhada que sai da praça.",
+          "baseText": {
+            "de": "Mein Rat ist, mit einer kleinen Aktivität anzufangen, wie dem Spaziergang, der vom Platz aus startet.",
+            "en": "My advice is to start with a small activity, like the walk that leaves from the square."
+          }
+        },
+        {
+          "targetText": "Mas como eu chego perto do grupo sem conhecer ninguém?",
+          "baseText": {
+            "de": "Aber wie komme ich an die Gruppe heran, ohne jemanden zu kennen?",
+            "en": "But how do I get close to the group without knowing anyone?"
+          }
+        },
+        {
+          "targetText": "Eu perguntei o trajeto e duas pessoas caminharam comigo.",
+          "baseText": {
+            "de": "Ich habe nach der Strecke gefragt, und zwei Leute sind mit mir mitgelaufen.",
+            "en": "I asked about the route, and two people walked with me."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Meu conselho é + infinitivo",
+        "rule": {
+          "de": "Nach meu conselho é folgt direkt der Infinitiv, der die empfohlene Handlung benennt; ein konkretes Beispiel hängt man mit como an.",
+          "en": "After meu conselho é, the infinitive names the recommended action; a concrete example is attached with como."
+        },
+        "examples": [
+          {
+            "targetText": "Meu conselho é começar por uma atividade pequena, como a caminhada que sai da praça.",
+            "baseText": {
+              "de": "Mein Rat ist, mit einer kleinen Aktivität anzufangen, wie dem Spaziergang, der vom Platz aus startet.",
+              "en": "My advice is to start with a small activity, like the walk that leaves from the square."
+            },
+            "highlight": "Meu conselho é começar"
+          },
+          {
+            "targetText": "Meu conselho é chegar cedo no primeiro dia e cumprimentar cada colega da equipe.",
+            "baseText": {
+              "de": "Mein Rat ist, am ersten Tag früh zu kommen und jede Kollegin und jeden Kollegen im Team zu begrüßen.",
+              "en": "My advice is to arrive early on the first day and greet every colleague on the team."
+            },
+            "highlight": "Meu conselho é chegar"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "perguntei",
+          "cue": "perguntar (eu)",
+          "choices": [
+            "perguntou",
+            "perguntei",
+            "perguntamos",
+            "perguntaram"
+          ]
+        },
+        " o trajeto e duas pessoas ",
+        {
+          "kind": "form",
+          "answer": "caminharam",
+          "cue": "caminhar (duas pessoas)",
+          "choices": [
+            "caminhou",
+            "caminharam",
+            "caminhei",
+            "caminhamos"
+          ]
+        },
+        " comigo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Meu conselho é",
+          "baseText": {
+            "de": "Mein Rat ist,",
+            "en": "My advice is"
+          }
+        },
+        {
+          "targetText": "começar por uma atividade pequena,",
+          "baseText": {
+            "de": "mit einer kleinen Aktivität anzufangen,",
+            "en": "to start with a small activity,"
+          }
+        },
+        {
+          "targetText": "como a caminhada",
+          "baseText": {
+            "de": "wie dem Spaziergang,",
+            "en": "like the walk"
+          }
+        },
+        {
+          "targetText": "que sai da praça.",
+          "baseText": {
+            "de": "der vom Platz aus startet.",
+            "en": "that leaves from the square."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "dica",
+          "baseText": {
+            "de": "Tipp; Hinweis",
+            "en": "tip"
+          }
+        },
+        {
+          "targetText": "conselho",
+          "baseText": {
+            "de": "Rat; Ratschlag",
+            "en": "advice"
+          }
+        },
+        {
+          "targetText": "atividade",
+          "baseText": {
+            "de": "Aktivität; Unternehmung",
+            "en": "activity"
+          }
+        },
+        {
+          "targetText": "caminhada",
+          "baseText": {
+            "de": "Spaziergang; Wanderung in der Gruppe",
+            "en": "walk"
+          }
+        },
+        {
+          "targetText": "praça",
+          "baseText": {
+            "de": "Platz (im Viertel)",
+            "en": "square"
+          }
+        },
+        {
+          "targetText": "chego perto",
+          "baseText": {
+            "de": "ich komme heran",
+            "en": "I get close"
+          }
+        },
+        {
+          "targetText": "trajeto",
+          "baseText": {
+            "de": "Strecke; Route",
+            "en": "route"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Meu conselho é começar por uma atividade ",
+        "answer": "pequena",
+        "after": ", como a caminhada que sai da praça.",
+        "fallbackChoices": [
+          "pequeno",
+          "pequena",
+          "pequenos",
+          "pequenas"
+        ]
+      },
+      "speakRequired": [
+        "conselho",
+        "começar",
+        "caminhada"
+      ],
+      "sceneCaption": {
+        "de": "Im Hof spricht dich ein neuer Nachbar an: “Acabei de chegar e ainda não conheço ninguém. Você tem alguma dica?”",
+        "en": "In the courtyard, a new neighbour approaches you: “Acabei de chegar e ainda não conheço ninguém. Você tem alguma dica?”"
+      },
+      "trophyWord": {
+        "word": "conselho",
+        "meaning": {
+          "de": "Rat; Ratschlag",
+          "en": "advice"
+        },
+        "example": "Meu conselho é começar por uma atividade pequena, como a caminhada que sai da praça.",
+        "whyThisWord": {
+          "de": "Conselho ist der Rat, den du jemandem gibst; mit meu conselho é leitest du auf natürliche Weise eine Empfehlung ein.",
+          "en": "Conselho is the advice you give someone; meu conselho é is the natural way to introduce a recommendation."
+        }
+      },
+      "distractors": [
+        "Meu conselho são",
+        "que saem da praça."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Begegnung im Hof mit einem neuen Nachbarn.",
+        "en": "An encounter in the courtyard with a new neighbour."
+      },
+      "songMood": "friendly encouragement",
+      "visualNotes": "Residential courtyard with moving boxes and a new neighbour holding keys; no walking group, square or route signs in the initial frame."
+    },
+    {
+      "slug": "projeto-para-os-proximos-meses",
+      "title": {
+        "de": "Ein Projekt für die nächsten Monate",
+        "en": "A project for the coming months"
+      },
+      "situation": {
+        "de": "Beim Plausch im Treppenhaus fragt dich eine Nachbarin, was du in den nächsten Monaten vorhast.",
+        "en": "While chatting in the stairwell, a neighbour asks what you're planning for the coming months."
+      },
+      "pedagogicalGoal": "Ein Vorhaben mit quero + Infinitiv ankündigen, den Zweck mit para + Infinitiv anschließen und die Wahl mit einer erlebten Episode begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Você tem planos para os próximos meses?",
+          "baseText": {
+            "de": "Hast du Pläne für die nächsten Monate?",
+            "en": "Do you have plans for the next few months?"
+          }
+        },
+        {
+          "targetText": "Quero começar um projeto para gravar histórias de quem mora há muito tempo aqui.",
+          "baseText": {
+            "de": "Ich will ein Projekt starten, um die Geschichten von Leuten aufzunehmen, die schon lange hier wohnen.",
+            "en": "I want to start a project to record the stories of people who have lived here a long time."
+          }
+        },
+        {
+          "targetText": "Por que você escolheu histórias de moradores?",
+          "baseText": {
+            "de": "Warum hast du dich für Geschichten von Anwohnern entschieden?",
+            "en": "Why did you choose residents' stories?"
+          }
+        },
+        {
+          "targetText": "Eu ouvi três versões da mesma festa e quero guardar todas.",
+          "baseText": {
+            "de": "Ich habe drei Versionen desselben Fests gehört und will alle festhalten.",
+            "en": "I heard three versions of the same festival and want to keep them all."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quero … para + infinitivo",
+        "rule": {
+          "de": "Nach quero steht der Infinitiv des Vorhabens; para + Infinitiv nennt den Zweck, ohne dass das Subjekt wiederholt wird.",
+          "en": "After quero comes the infinitive of the plan; para + infinitive states the purpose without repeating the subject."
+        },
+        "examples": [
+          {
+            "targetText": "Quero começar um projeto para gravar histórias de quem mora há muito tempo aqui.",
+            "baseText": {
+              "de": "Ich will ein Projekt starten, um die Geschichten von Leuten aufzunehmen, die schon lange hier wohnen.",
+              "en": "I want to start a project to record the stories of people who have lived here a long time."
+            },
+            "highlight": "Quero começar um projeto para gravar"
+          },
+          {
+            "targetText": "Quero entrar numa turma de natação para fortalecer as costas.",
+            "baseText": {
+              "de": "Ich will in einen Schwimmkurs gehen, um den Rücken zu stärken.",
+              "en": "I want to join a swimming class to strengthen my back."
+            },
+            "highlight": "Quero entrar numa turma de natação para fortalecer"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "ouvi",
+          "cue": "ouvir (eu)",
+          "choices": [
+            "ouviu",
+            "ouvi",
+            "ouvimos",
+            "ouviram"
+          ]
+        },
+        " três versões da mesma festa e ",
+        {
+          "kind": "form",
+          "answer": "quero",
+          "cue": "querer (eu)",
+          "choices": [
+            "quer",
+            "quero",
+            "queremos",
+            "querem"
+          ]
+        },
+        " guardar todas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quero começar um projeto",
+          "baseText": {
+            "de": "Ich will ein Projekt starten,",
+            "en": "I want to start a project"
+          }
+        },
+        {
+          "targetText": "para gravar histórias",
+          "baseText": {
+            "de": "um Geschichten aufzunehmen",
+            "en": "to record stories"
+          }
+        },
+        {
+          "targetText": "de quem mora",
+          "baseText": {
+            "de": "von Leuten, die wohnen",
+            "en": "of those who live"
+          }
+        },
+        {
+          "targetText": "há muito tempo aqui.",
+          "baseText": {
+            "de": "schon seit Langem hier.",
+            "en": "here for a long time."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "planos",
+          "baseText": {
+            "de": "Pläne; Vorhaben",
+            "en": "plans"
+          }
+        },
+        {
+          "targetText": "projeto",
+          "baseText": {
+            "de": "Projekt; Vorhaben",
+            "en": "project"
+          }
+        },
+        {
+          "targetText": "gravar",
+          "baseText": {
+            "de": "aufnehmen (Ton, Video)",
+            "en": "to record"
+          }
+        },
+        {
+          "targetText": "há muito tempo",
+          "baseText": {
+            "de": "seit Langem; schon lange",
+            "en": "for a long time"
+          }
+        },
+        {
+          "targetText": "moradores",
+          "baseText": {
+            "de": "Anwohner; Bewohner",
+            "en": "residents"
+          }
+        },
+        {
+          "targetText": "versões",
+          "baseText": {
+            "de": "Versionen; Fassungen einer Geschichte",
+            "en": "versions"
+          }
+        },
+        {
+          "targetText": "festa",
+          "baseText": {
+            "de": "Fest; Feier",
+            "en": "festival; party"
+          }
+        },
+        {
+          "targetText": "guardar",
+          "baseText": {
+            "de": "aufbewahren; festhalten",
+            "en": "to keep"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quero começar um projeto para gravar histórias de quem ",
+        "answer": "mora",
+        "after": " há muito tempo aqui.",
+        "fallbackChoices": [
+          "moro",
+          "mora",
+          "moramos",
+          "moram"
+        ]
+      },
+      "speakRequired": [
+        "projeto",
+        "gravar",
+        "histórias"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus fragt dich eine Nachbarin: “Você tem planos para os próximos meses?”",
+        "en": "In the stairwell, a neighbour asks you: “Você tem planos para os próximos meses?”"
+      },
+      "trophyWord": {
+        "word": "projeto",
+        "meaning": {
+          "de": "Projekt; Vorhaben",
+          "en": "project"
+        },
+        "example": "Quero começar um projeto para gravar histórias de quem mora há muito tempo aqui.",
+        "whyThisWord": {
+          "de": "Projeto bezeichnet ein geplantes Vorhaben mit Ziel; começar um projeto ist die gängige Wendung, um einen neuen Plan anzukündigen.",
+          "en": "Projeto refers to a planned undertaking with a goal; começar um projeto is the common expression for announcing a new plan."
+        }
+      },
+      "distractors": [
+        "Quero começar uma projeto",
+        "de quem moram"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch im Treppenhaus über die nächsten Monate.",
+        "en": "A stairwell chat about the coming months."
+      },
+      "songMood": "curious anticipation",
+      "visualNotes": "Apartment-building stairwell with mailboxes and two neighbours chatting; no recorder, microphone or festival imagery in the initial frame."
+    },
+    {
+      "slug": "gratidao-pela-vizinha",
+      "title": {
+        "de": "Dankbar nach dem Hochwasser",
+        "en": "Grateful after the flood"
+      },
+      "situation": {
+        "de": "Nach dem Regensturm, der dein Haus überflutet hat, unterhältst du dich im Hof mit einem Nachbarn darüber, wer dir geholfen hat.",
+        "en": "After the rainstorm that flooded your house, you chat in the courtyard with a neighbour about who helped you."
+      },
+      "pedagogicalGoal": "Dankbarkeit mit tenho muita gratidão por und einem Relativsatz im Perfekt ausdrücken und anschließend konkret anbieten, wie man sich revanchiert.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Quem ajudou você quando a chuva alagou sua casa?",
+          "baseText": {
+            "de": "Wer hat dir geholfen, als der Regen dein Haus überflutet hat?",
+            "en": "Who helped you when the rain flooded your house?"
+          }
+        },
+        {
+          "targetText": "Tenho muita gratidão pela vizinha que guardou as minhas caixas durante a enchente.",
+          "baseText": {
+            "de": "Ich bin der Nachbarin sehr dankbar, die während des Hochwassers meine Kisten aufbewahrt hat.",
+            "en": "I'm very grateful to the neighbour who kept my boxes safe during the flood."
+          }
+        },
+        {
+          "targetText": "Ela vai mudar de casa no sábado. Você consegue passar lá?",
+          "baseText": {
+            "de": "Sie zieht am Samstag um. Schaffst du es, dort vorbeizukommen?",
+            "en": "She's moving house on Saturday. Can you make it over there?"
+          }
+        },
+        {
+          "targetText": "Eu levo meu carrinho e ajudo a transportar os livros.",
+          "baseText": {
+            "de": "Ich bringe meine Sackkarre mit und helfe, die Bücher zu transportieren.",
+            "en": "I'll bring my hand cart and help carry the books."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tenho muita gratidão por… que…",
+        "rule": {
+          "de": "Tenho muita gratidão por nennt die Person, der man dankbar ist; ein Relativsatz mit que und Perfekt sagt, was sie getan hat.",
+          "en": "Tenho muita gratidão por names the person you are grateful to; a relative clause with que and the preterite tells what they did."
+        },
+        "examples": [
+          {
+            "targetText": "Tenho muita gratidão pela vizinha que guardou as minhas caixas durante a enchente.",
+            "baseText": {
+              "de": "Ich bin der Nachbarin sehr dankbar, die während des Hochwassers meine Kisten aufbewahrt hat.",
+              "en": "I'm very grateful to the neighbour who kept my boxes safe during the flood."
+            },
+            "highlight": "gratidão pela vizinha que guardou"
+          },
+          {
+            "targetText": "Tenho muita gratidão pelo professor que organizou a festa junina da escola.",
+            "baseText": {
+              "de": "Ich bin dem Lehrer sehr dankbar, der das Junifest der Schule organisiert hat.",
+              "en": "I'm very grateful to the teacher who organised the school's June festival."
+            },
+            "highlight": "gratidão pelo professor que organizou"
+          }
+        ]
+      },
+      "cloze": [
+        "Eu ",
+        {
+          "kind": "form",
+          "answer": "levo",
+          "cue": "levar (eu)",
+          "choices": [
+            "leva",
+            "levamos",
+            "levo",
+            "levam"
+          ]
+        },
+        " meu carrinho e ",
+        {
+          "kind": "form",
+          "answer": "ajudo",
+          "cue": "ajudar (eu)",
+          "choices": [
+            "ajudam",
+            "ajudo",
+            "ajuda",
+            "ajudamos"
+          ]
+        },
+        " a transportar os livros."
+      ],
+      "chunks": [
+        {
+          "targetText": "Tenho muita gratidão",
+          "baseText": {
+            "de": "Ich bin sehr dankbar",
+            "en": "I'm very grateful"
+          }
+        },
+        {
+          "targetText": "pela vizinha que guardou",
+          "baseText": {
+            "de": "der Nachbarin, die aufbewahrt hat",
+            "en": "to the neighbour who kept"
+          }
+        },
+        {
+          "targetText": "as minhas caixas",
+          "baseText": {
+            "de": "meine Kisten",
+            "en": "my boxes"
+          }
+        },
+        {
+          "targetText": "durante a enchente.",
+          "baseText": {
+            "de": "während des Hochwassers.",
+            "en": "during the flood."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "gratidão",
+          "baseText": {
+            "de": "Dankbarkeit",
+            "en": "gratitude"
+          }
+        },
+        {
+          "targetText": "vizinha",
+          "baseText": {
+            "de": "Nachbarin",
+            "en": "neighbour (female)"
+          }
+        },
+        {
+          "targetText": "guardou",
+          "baseText": {
+            "de": "sie hat aufbewahrt",
+            "en": "she kept; she stored"
+          }
+        },
+        {
+          "targetText": "caixas",
+          "baseText": {
+            "de": "Kisten; Kartons",
+            "en": "boxes"
+          }
+        },
+        {
+          "targetText": "enchente",
+          "baseText": {
+            "de": "Hochwasser; Überschwemmung",
+            "en": "flood"
+          }
+        },
+        {
+          "targetText": "alagou",
+          "baseText": {
+            "de": "hat überflutet",
+            "en": "flooded"
+          }
+        },
+        {
+          "targetText": "mudar de casa",
+          "baseText": {
+            "de": "umziehen",
+            "en": "to move house"
+          }
+        },
+        {
+          "targetText": "carrinho",
+          "baseText": {
+            "de": "Sackkarre; Transportwagen",
+            "en": "hand cart"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Tenho muita gratidão pela vizinha que ",
+        "answer": "guardou",
+        "after": " as minhas caixas durante a enchente.",
+        "fallbackChoices": [
+          "guardei",
+          "guardamos",
+          "guardou",
+          "guardaram"
+        ]
+      },
+      "speakRequired": [
+        "gratidão",
+        "vizinha",
+        "enchente"
+      ],
+      "sceneCaption": {
+        "de": "Im Hof nach dem Regensturm fragt ein Nachbar: “Quem ajudou você quando a chuva alagou sua casa?”",
+        "en": "In the courtyard after the rainstorm, a neighbour asks: “Quem ajudou você quando a chuva alagou sua casa?”"
+      },
+      "trophyWord": {
+        "word": "gratidão",
+        "meaning": {
+          "de": "Dankbarkeit",
+          "en": "gratitude"
+        },
+        "example": "Tenho muita gratidão pela vizinha que guardou as minhas caixas durante a enchente.",
+        "whyThisWord": {
+          "de": "Gratidão benennt das Gefühl selbst; mit tenho muita gratidão por drückst du tiefe Dankbarkeit aus, ohne obrigado zu sagen.",
+          "en": "Gratidão names the feeling itself; with tenho muita gratidão por you express deep thanks without saying obrigado."
+        }
+      },
+      "distractors": [
+        "pelo vizinho que guardaram",
+        "as minha caixas"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Gespräch im Hof nach dem Hochwasser.",
+        "en": "A chat in the courtyard after the flood."
+      },
+      "songMood": "warm gratitude after hardship",
+      "visualNotes": "Courtyard with puddles and wet walls after a storm, two neighbours talking; no moving boxes, hand cart or packing scene in the initial frame."
+    },
+    {
+      "slug": "experiencia-na-radio-do-bairro",
+      "title": {
+        "de": "Die Erfahrung des Jahres",
+        "en": "The experience of the year"
+      },
+      "situation": {
+        "de": "Am Jahresende sitzt du mit einer Freundin aus dem Viertel auf der Veranda und blickst auf die letzten Monate zurück.",
+        "en": "At the end of the year, you sit on the porch with a friend from the neighbourhood and look back on the past months."
+      },
+      "pedagogicalGoal": "Eine prägende Erfahrung mit a experiência que marcou … foi + Infinitiv zusammenfassen und danach beschreiben, was sich verändert hat und was man weiter tun will.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "Qual lembrança deste ano você quer guardar?",
+          "baseText": {
+            "de": "Welche Erinnerung aus diesem Jahr willst du bewahren?",
+            "en": "Which memory from this year do you want to keep?"
+          }
+        },
+        {
+          "targetText": "A experiência que marcou meu ano foi contar a história da feira na rádio do bairro.",
+          "baseText": {
+            "de": "Die Erfahrung, die mein Jahr geprägt hat, war, die Geschichte des Markts im Stadtteilradio zu erzählen.",
+            "en": "The experience that shaped my year was telling the story of the street market on the neighbourhood radio."
+          }
+        },
+        {
+          "targetText": "E depois de ouvir sua própria voz no rádio, o que mudou?",
+          "baseText": {
+            "de": "Und nachdem du deine eigene Stimme im Radio gehört hast, was hat sich verändert?",
+            "en": "And after hearing your own voice on the radio, what changed?"
+          }
+        },
+        {
+          "targetText": "Hoje eu converso com mais gente e quero gravar outras histórias.",
+          "baseText": {
+            "de": "Heute rede ich mit mehr Leuten und will weitere Geschichten aufnehmen.",
+            "en": "Today I talk to more people and want to record other stories."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A experiência que marcou… foi + infinitivo",
+        "rule": {
+          "de": "Das Subjekt a experiência que marcou … steht vorne; nach foi folgt ein Infinitiv, der die Erfahrung benennt.",
+          "en": "The subject a experiência que marcou … comes first; after foi, an infinitive names what the experience was."
+        },
+        "examples": [
+          {
+            "targetText": "A experiência que marcou meu ano foi contar a história da feira na rádio do bairro.",
+            "baseText": {
+              "de": "Die Erfahrung, die mein Jahr geprägt hat, war, die Geschichte des Markts im Stadtteilradio zu erzählen.",
+              "en": "The experience that shaped my year was telling the story of the street market on the neighbourhood radio."
+            },
+            "highlight": "A experiência que marcou meu ano foi contar"
+          },
+          {
+            "targetText": "A experiência que marcou meu mês foi aprender a fazer pão no curso de culinária.",
+            "baseText": {
+              "de": "Die Erfahrung, die meinen Monat geprägt hat, war, im Kochkurs Brot backen zu lernen.",
+              "en": "The experience that shaped my month was learning to bake bread in the cooking course."
+            },
+            "highlight": "A experiência que marcou meu mês foi aprender"
+          }
+        ]
+      },
+      "cloze": [
+        "Hoje eu ",
+        {
+          "kind": "form",
+          "answer": "converso",
+          "cue": "conversar (eu)",
+          "choices": [
+            "conversa",
+            "converso",
+            "conversam",
+            "conversamos"
+          ]
+        },
+        " com mais gente e ",
+        {
+          "kind": "form",
+          "answer": "quero",
+          "cue": "querer (eu)",
+          "choices": [
+            "queremos",
+            "quer",
+            "quero",
+            "querem"
+          ]
+        },
+        " gravar outras histórias."
+      ],
+      "chunks": [
+        {
+          "targetText": "A experiência que marcou",
+          "baseText": {
+            "de": "Die Erfahrung, die geprägt hat",
+            "en": "The experience that shaped"
+          }
+        },
+        {
+          "targetText": "meu ano foi contar",
+          "baseText": {
+            "de": "mein Jahr, war das Erzählen",
+            "en": "my year was telling"
+          }
+        },
+        {
+          "targetText": "a história da feira",
+          "baseText": {
+            "de": "der Geschichte des Markts",
+            "en": "the story of the street market"
+          }
+        },
+        {
+          "targetText": "na rádio do bairro.",
+          "baseText": {
+            "de": "im Stadtteilradio.",
+            "en": "on the neighbourhood radio."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "experiência",
+          "baseText": {
+            "de": "Erfahrung; Erlebnis",
+            "en": "experience"
+          }
+        },
+        {
+          "targetText": "marcou",
+          "baseText": {
+            "de": "hat geprägt",
+            "en": "shaped; left its mark on"
+          }
+        },
+        {
+          "targetText": "lembrança",
+          "baseText": {
+            "de": "Erinnerung",
+            "en": "memory"
+          }
+        },
+        {
+          "targetText": "feira",
+          "baseText": {
+            "de": "Straßenmarkt; Wochenmarkt",
+            "en": "street market"
+          }
+        },
+        {
+          "targetText": "rádio do bairro",
+          "baseText": {
+            "de": "Stadtteilradio",
+            "en": "neighbourhood radio station"
+          }
+        },
+        {
+          "targetText": "própria voz",
+          "baseText": {
+            "de": "eigene Stimme",
+            "en": "own voice"
+          }
+        },
+        {
+          "targetText": "converso",
+          "baseText": {
+            "de": "ich rede; ich unterhalte mich",
+            "en": "I talk; I chat"
+          }
+        },
+        {
+          "targetText": "gravar",
+          "baseText": {
+            "de": "aufnehmen",
+            "en": "to record"
+          }
+        }
+      ],
+      "recall": {
+        "before": "A experiência que ",
+        "answer": "marcou",
+        "after": " meu ano foi contar a história da feira na rádio do bairro.",
+        "fallbackChoices": [
+          "marquei",
+          "marcou",
+          "marcamos",
+          "marcaram"
+        ]
+      },
+      "speakRequired": [
+        "experiência",
+        "história",
+        "feira"
+      ],
+      "sceneCaption": {
+        "de": "Auf der Veranda am Jahresende fragt eine Freundin: “Qual lembrança deste ano você quer guardar?”",
+        "en": "On the porch at the end of the year, a friend asks: “Qual lembrança deste ano você quer guardar?”"
+      },
+      "trophyWord": {
+        "word": "experiência",
+        "meaning": {
+          "de": "Erfahrung; Erlebnis",
+          "en": "experience"
+        },
+        "example": "A experiência que marcou meu ano foi contar a história da feira na rádio do bairro.",
+        "whyThisWord": {
+          "de": "Experiência fasst ein Erlebnis und das, was man daraus gelernt hat, zusammen; mit a experiência que marcou leitest du einen Rückblick ein.",
+          "en": "Experiência covers both an event and what you took from it; with a experiência que marcou you open a reflection on the past."
+        }
+      },
+      "distractors": [
+        "meu ano foi contaram",
+        "na rádio da bairro."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Rückblick auf das Jahr auf der Veranda.",
+        "en": "A look back at the year on the porch."
+      },
+      "songMood": "reflective end-of-year warmth",
+      "visualNotes": "Porch at dusk with two friends and a calendar on the wall; no radio station, microphone or street market in the initial frame."
+    }
+  ]
+}

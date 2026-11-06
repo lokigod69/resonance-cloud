@@ -15,6 +15,33 @@ const spec = read(path.join(frontend, 'content-drafts/b1-native-2026-10/korean/s
 const evidence = read(path.join(__dirname, 'review/final-b1-gates.json')).paths
 const candidates = read(path.join(__dirname, 'index.json')).paths.filter(row => row.level === 'B1')
 assert.equal(evidence.length, candidates.length)
+const queue = read(path.join(__dirname, 'planning/remaining-by-language.json')).queue
+for (const language of ['French', 'Portuguese']) {
+  const name = language.toLowerCase()
+  const october = path.resolve(__dirname, '../b1-2026-10')
+  const plan = read(path.join(october, name + '-plan.json')).paths
+  const allPaths = plan.map(p => p.pathNumber)
+  const newlyWritten = candidates.filter(r => r.language === language && r.path >= 6)
+  assert.deepEqual(newlyWritten.map(r => r.path), [6, 7, 8, 9, 10], language)
+  const entry = queue.find(r => r.language === language && r.level === 'B1')
+  assert.deepEqual(entry.writtenPaths, allPaths, language)
+  assert.deepEqual(entry.pathsToWrite, [], language)
+  const trophies = new Set(), slugs = new Set()
+  for (const outline of plan) {
+    const n = outline.pathNumber
+    const current = candidates.find(r => r.language === language && r.path === n)
+    const source = current ? path.join(__dirname, current.file)
+      : n === 1 ? path.join(october, name + '.json') : path.join(october, 'paths', name + '-p' + n + '.json')
+    const {lessons} = read(source)
+    assert.deepEqual(lessons.map(l => l.trophyWord.word), outline.lessons.map(l => l.trophy), source)
+    for (const lesson of lessons) {
+      trophies.add(lesson.trophyWord.word.normalize('NFC').toLowerCase())
+      slugs.add(lesson.slug)
+    }
+  }
+  assert.equal(trophies.size, 100, language + ' distinct B1 trophies')
+  assert.equal(slugs.size, 100, language + ' distinct B1 episodes')
+}
 for (const row of candidates) {
   const bytes = fs.readFileSync(path.join(__dirname, row.file)), draft = JSON.parse(bytes)
   const receipt = evidence.find(item => item.path === row.file)

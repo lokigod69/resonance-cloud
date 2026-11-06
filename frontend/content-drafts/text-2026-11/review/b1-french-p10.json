@@ -1,0 +1,748 @@
+{
+  "language": "French",
+  "level": "B1",
+  "pathNumber": 10,
+  "lessonSha256": "3f9ecb6c0d0ca1451b72b2b48c735f86ecb04277ddc01b996267e1b52868db81",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "3f9ecb6c0d0ca1451b72b2b48c735f86ecb04277ddc01b996267e1b52868db81",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Mode change sound: among pour que / depuis / malgré / pendant que only pendant que can govern the finite clause je tournais la clé (pour que would demand a subjunctive), so the choice blank has one answer; the typed form blank soulevais keeps meaningful imparfait practice, and chunks concatenate exactly to the learner line."
+      },
+      {
+        "n": 2,
+        "observation": "Que-relative line is reconstructed exactly by the four chunks; suivais/comptais cues name je, and the recall fallbacks for reconnaissais are all distinct persons, so grading is unambiguous."
+      },
+      {
+        "n": 3,
+        "observation": "Prior plural-vous concern is resolved: Tu dessines encore avec lui ? is singular tu; on-form cloze chips (choisit, échange) exclude the je/tu forms, and the concert example differs from the rehearsed market encounter."
+      },
+      {
+        "n": 4,
+        "observation": "sais + comment demander grades uniquely (demandé/demandaient/demandez are impossible after comment); situation names the letter without revealing the date-spotting skill or the online rescheduling."
+      },
+      {
+        "n": 5,
+        "observation": "Choice que is the only chip that works before tu voulais terminer (dont/qui/où all fail), and recall créé versus créer/créais/créez cannot be confused after ont."
+      },
+      {
+        "n": 6,
+        "observation": "Mode change sound: quand is the sole chip that can precede je marche (malgré, au lieu de, à force de take nouns/infinitives); dors stays typed with a je cue; avant/maintenant line concatenates exactly from the chunks."
+      },
+      {
+        "n": 7,
+        "observation": "Caption now shows an empty shopping bag, so the vegetable is introduced only by the questioner's third turn; peux/cuisines with tu cues grade one answer each."
+      },
+      {
+        "n": 8,
+        "observation": "Learner's fallback plan uses a real condition (si le temps manque, cue manquer (le temps)) with futur ferai, permitted for P10 L8–10; recall puisse foils are all non-matching persons or indicative."
+      },
+      {
+        "n": 9,
+        "observation": "Mode change sound: pour is the only chip that can introduce lui proposer (quand/parce que/puisque need a finite clause), quoique is gone; the seat is consistently neben dir / next to you in dialogue and term; Sam stays ungendered."
+      },
+      {
+        "n": 10,
+        "observation": "Et dire qu'on s'est rencontrés par hasard is now rendered as surprise (Und dabei sind wir uns nur zufällig … begegnet!) without the spurious causal link; je le dessine correctly resumes mon chemin and the recipe example supplies a distinct les."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "3f9ecb6c0d0ca1451b72b2b48c735f86ecb04277ddc01b996267e1b52868db81",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Pendant que is the sole chip that links the simultaneous actions with je tournais. Pour que would need a subjunctive; depuis and malgré lack the required clause structure. Soulevais remains typed."
+      },
+      {
+        "n": 2,
+        "observation": "Suivais and comptais correctly describe following the tram map and counting stops."
+      },
+      {
+        "n": 3,
+        "observation": "Tu dessines encore avec lui addresses the learner alone. The two on forms describe how the drawing meetings continued."
+      },
+      {
+        "n": 4,
+        "observation": "The independent rescheduling answer correctly combines sais with the infinitive demander."
+      },
+      {
+        "n": 5,
+        "observation": "Que resumes the sketch that Luc wanted to finish. The Saturday relationship continues across the episodes."
+      },
+      {
+        "n": 6,
+        "observation": "Quand is the unique supplied connector before je marche; malgré, au lieu de and à force de cannot take the finite clause. Dors remains typed."
+      },
+      {
+        "n": 7,
+        "observation": "A vegetable is first introduced by the questioner, and the two tu forms guide a practical response."
+      },
+      {
+        "n": 8,
+        "observation": "The limited-time alternative uses a real condition, manque, with future ferai."
+      },
+      {
+        "n": 9,
+        "observation": "Only pour can introduce lui proposer among the choices; the seat is consistently beside Noor in the German and English dialogue glosses."
+      },
+      {
+        "n": 10,
+        "observation": "Und dabei sind wir uns nur zufällig … begegnet! conveys surprise about the chance meeting. Ferai and puisse complete the promised copy for Sam."
+      }
+    ],
+    "findings": [
+      {
+        "n": 10,
+        "severity": "LOW",
+        "field": "path-level consolidation",
+        "issue": "Accepted variation. The L8 learner does produce a real contingency with si and the L6 learner gives a reasoned personal view. The path covers these functions even with no separate explicit P2 opinion starter or counterfactual P3 in learner speech.",
+        "recommendation": "If a later edition mandates specific named grammar in learner turns, reassess the distribution then."
+      },
+      {
+        "n": 4,
+        "severity": "LOW",
+        "field": "title.de",
+        "issue": "The German title suggests an in-person office visit while the final solution is online; the main administrative independence beat remains clear.",
+        "recommendation": "Optional alternative: Behördentermine selbst regeln."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "Accepted visual hint: the map is typical tram context and does not disclose tracing the route by finger and counting stops.",
+        "recommendation": "A tram ticket would be a more neutral prop if artwork changes later."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "d4fb8c89abbcf2731589a83397efdd1c767bd874cd2353f426d2a5bc32fde75b",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The sticking key and Noor's intervention clearly contrast imparfait and passé composé. An exact-match connector is avoidably open."
+      },
+      {
+        "n": 2,
+        "observation": "The stop names and the map-and-count tactic follow the obstacle beat; the map on the table suggests the solution early."
+      },
+      {
+        "n": 3,
+        "observation": "The drawings establish Luc for later episodes. The friend’s question uses plural vous in an otherwise singular-tutoiement path."
+      },
+      {
+        "n": 4,
+        "observation": "Picking out the dates and independently rescheduling are credible administrative progress. The learner’s title differs between German and English."
+      },
+      {
+        "n": 5,
+        "observation": "The sketch brought to Luc during his absence supplies a concrete gesture strengthening the bond."
+      },
+      {
+        "n": 6,
+        "observation": "The old tram routine contrasts with walking; better sleep explains the current preference."
+      },
+      {
+        "n": 7,
+        "observation": "Luc's assistance and the vegetable description give a usable tip. The root vegetable pictured early reveals the partner’s later example."
+      },
+      {
+        "n": 8,
+        "observation": "Puisse correctly marks a changed subject; the market-only fallback makes ferai productive at an allowed stage."
+      },
+      {
+        "n": 9,
+        "observation": "The extra plate motivates welcoming Sam in turn. The adjacent seat's identity differs between French, English and the opening scene."
+      },
+      {
+        "n": 10,
+        "observation": "The tram and sketchbook return in a connected closing image; the planned copy for Sam gives a specific intention with ferai and puisse."
+      }
+    ],
+    "findings": [
+      {
+        "n": 3,
+        "severity": "MEDIUM",
+        "field": "dialogue[2]",
+        "issue": "Vous dessinez encore ensemble ? is plural vous (learner and Luc), expressly outside the staging document’s singular-only design. In this informal episode it can be mistaken for a sudden switch to politeness.",
+        "recommendation": "Use Tu dessines encore avec lui ? or Tu le retrouves encore pour dessiner ? and adapt DE/EN."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The picture shows the novice holding a root vegetable before the novice introduces the difficulty describing a vegetable.",
+        "recommendation": "Show a shopping basket or the neighbour at the table without identifying the object."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "dialogue[3], terms[5], situation",
+        "issue": "The free seat is beside Noor. French à côté omits its reference, main translations say next to me / neben mir, while the term says next to you / nebenan. These are distinct, and the learner learns an unreliable gloss.",
+        "recommendation": "Pick one location throughout. For example, if it is the seat beside Noor, address Noor with la place à côté de toi, neben dir / next to you, including the standalone term."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "cloze connector choices",
+        "issue": "Quoique is explicitly outside French learner blanks in the staging spec.",
+        "recommendation": "Remove quoique from the foils. If retaining the open purpose connector, constrain it to the target or reblank (afin de supplies exactly the same purpose)."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "path-level consolidation across learner turns",
+        "issue": "The outline calls for recycling opinion and hypotheses alongside narration, relatives and purpose. Most core lines narrate the past; the only si + imparfait/conditional hypothesis is supplied by the partner in L10, and the learner never articulates a clear opinion with a P2 frame.",
+        "recommendation": "Add a learner opinion in a scene where a personal view is natural (e.g. the evening walk) and an actual P3 hypothetical in an existing assigned beat (e.g. if time were short, I would start with the market); keep at least the final ferai for future consolidation."
+      },
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "cloze connector, also L6",
+        "issue": "Pendant que and tandis que give equally correct answers to L1’s simultaneous key movements; in L6 quand and lorsque give the same habitual reading. These are typed fields that currently give no restricting cue.",
+        "recommendation": "Keep the connector as fixed text and blank two unambiguous verb forms, or add a cue distinguishing the exact expression if edits to accepted alternatives are unavailable."
+      },
+      {
+        "n": 4,
+        "severity": "LOW",
+        "field": "title",
+        "issue": "Ohne Hilfe aufs Amt suggests going in person to the office, but the skill concerns letters and rearranging an appointment online; the English title specifically mentions appointments.",
+        "recommendation": "For example, Behördentermine selbst regeln gives both titles the same scope."
+      },
+      {
+        "n": 2,
+        "severity": "LOW",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "A tram map already on the table hints at the tool the learner later says they used to trace and count stops.",
+        "recommendation": "Show a tram ticket or the stop-name display instead."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9085cc0b1b077e87ac7de92d76ae0d53bb5e054aee88cd1d40c9484d8c9ac93b",
+      "sourceSha256": "d4fb8c89abbcf2731589a83397efdd1c767bd874cd2353f426d2a5bc32fde75b",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imparfait problem (coinçait) against passé composé help (m'as montré) matches the installation beat; turn 3 adds the real follow-up (how you got in afterwards), cloze pendant que has no grammatical rival among pour que/depuis/malgré."
+        },
+        {
+          "n": 2,
+          "observation": "Obstacle beat via object relative que je ne reconnaissais pas; turn 3 'Pourtant… Tu avais une astuce ?' forces the workaround; both form blanks carry je cues and distractors are other persons only."
+        },
+        {
+          "n": 3,
+          "observation": "m'a donné envie de + infinitive is a lexical chunk, no new grammar; second example (concert → reprendre le piano) is genuinely different from the rehearsed one; on + 3sg cloze chips correct."
+        },
+        {
+          "n": 4,
+          "observation": "quand j'ai appris à repérer gives the trigger of autonomy; turn 3 (appointment during work hours) is a real complication answered by the concrete online re-booking skill; choice blank demander has no plausible rival."
+        },
+        {
+          "n": 5,
+          "observation": "qui dure depuis + present is correctly explained in both rules; que/qui/où/dont choice blank is unambiguous after le croquis; concrete attention (bringing the sketch) fulfils the lien beat."
+        },
+        {
+          "n": 6,
+          "observation": "avant + imparfait / maintenant + présent; situation reveals the walk home (turn 2) but not the sleep benefit of turn 4; chip ending in ' :' is not a sentence-final mark, so archive rule holds."
+        },
+        {
+          "n": 7,
+          "observation": "Confidence beat with transferable tip in turn 4; m'a laissé décrire is gender-safe (invariable participle); recall fallbacks are all non-infinitive forms, no second correct answer."
+        },
+        {
+          "n": 8,
+          "observation": "pour que … puisse + infinitive plus futur simple in turn 4, both allowed in P10 L8–10; cue 'manquer (le temps)' makes the 3sg blank visible; alternative plan answers the time complication."
+        },
+        {
+          "n": 9,
+          "observation": "ce premier soir où ties thanks to a precise gesture; Sam and 'la personne' stay gender-neutral; connector pour vs quand/parce que/quoique has one grammatical fit before lui proposer."
+        },
+        {
+          "n": 10,
+          "observation": "Bilan links difficulty, encounter and change in one learner line with le resuming mon chemin; closing intention uses futur + pour que Sam puisse, consistent with L9 and the P9/P10 arc."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "German second pattern example: 'sprang die Kette' without 'ab' is unidiomatic for a slipping chain.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/de",
+              "old": "An meinem Fahrrad sprang die Kette, und Léa hat die Schaltung eingestellt.",
+              "new": "An meinem Fahrrad sprang immer die Kette ab, und Léa hat die Schaltung eingestellt."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "optional",
+          "issue": "Term gloss 'la place à côté' conflicts with the actual turn 4 translation (next to me); DE 'nebenan' reads as 'next door'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/5/baseText",
+              "old": {
+                "de": "der Platz nebenan",
+                "en": "the seat next to you"
+              },
+              "new": {
+                "de": "der Platz daneben",
+                "en": "the seat next to me"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'Et dire que…' rendered as a causal 'das alles, weil' adds a link not in the French; a closer idiomatic German is available.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/2/baseText/de",
+              "old": "Und das alles, weil wir uns zufällig auf dem Markt begegnet sind! Wem willst du diese Seiten zeigen?",
+              "new": "Wenn man bedenkt, dass wir uns nur zufällig auf dem Markt begegnet sind! Wem willst du diese Seiten zeigen?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "601c2dffc88cc0adc059ed37edb23673b54f7c7c68afa0dce6b645cfcf658310",
+      "sourceSha256": "d4fb8c89abbcf2731589a83397efdd1c767bd874cd2353f426d2a5bc32fde75b",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imparfait problem (coinçait) vs passé composé help (m'as montré) fits the installation beat; turn 3 adds the real follow-up. Earlier 'tandis que' concern dismissed: the cloze reconstructs the heard line, tandis que is primarily contrastive and none of the chips rivals pendant que; an optional reblank is offered anyway."
+        },
+        {
+          "n": 2,
+          "observation": "Object-relative 'que je ne reconnaissais pas' and the map-and-count tactic serve the obstacle beat; both je form blanks have only other-person foils. Caption's folded tram map hints at the learner's own turn-4 tool (not them₂), so only an optional swap is proposed."
+        },
+        {
+          "n": 3,
+          "observation": "'m'a donné envie de' + infinitive is a lexical chunk with a genuinely different second example (concert → reprendre le piano). Turn 3 'Vous dessinez encore ensemble ?' is plural vous in a tu-only informal path and risks the register check; recast to 'Tu dessines encore avec lui ?' (Luc is established as a man)."
+        },
+        {
+          "n": 4,
+          "observation": "'quand j'ai appris à repérer' names the trigger, turn 3's work-hours clash is a real complication answered by online rebooking; choice blank demander/demandé is a legitimate homophone-spelling choice. DE/EN titles differ in scope (optional alignment)."
+        },
+        {
+          "n": 5,
+          "observation": "'qui dure depuis' + present correctly explained; que/qui/où/dont choice is unambiguous after 'le croquis'; the sketch delivered during Luc's absence is the concrete attention required by the lien beat."
+        },
+        {
+          "n": 6,
+          "observation": "avant + imparfait / maintenant + présent; better sleep in turn 4 is not revealed by situation or caption. 'lorsque' concern dismissed: written-register alternative outside informal B1 production and not among chips; 'quand' is the heard form."
+        },
+        {
+          "n": 7,
+          "observation": "'J'ai pris confiance quand' plus a transferable tip in turn 4; 'm'a laissé décrire' is gender-safe. Placeholder/visual showing the neighbor holding a root vegetable foreshadows them₂'s vegetable question, so the image is changed to a neutral object."
+        },
+        {
+          "n": 8,
+          "observation": "pour que … puisse + infinitive and si + présent / ferai are within the P10 L8–10 allowance; cue 'manquer (le temps)' makes the 3sg subject visible; the market-only fallback answers the time complication."
+        },
+        {
+          "n": 9,
+          "observation": "'ce premier soir où' ties thanks to a precise gesture and Sam stays gender-neutral. Turn 4 and the term gloss disagree (neben mir/next to me vs nebenan/next to you) while the situation places the free seat beside Noor; translations are aligned to 'next to you'. 'quoique' is a banned form and is replaced as a chip; typed 'afin de' is a formal alternative outside the informal heard line and is not changed."
+        },
+        {
+          "n": 10,
+          "observation": "Bilan line links difficulty, encounter and change with 'le' resuming 'mon chemin'; closing intention uses ferai + pour que Sam puisse. Path-level 'missing opinion/hypothesis' claim dismissed: the outline assigns one dominant function per lesson, the learner produces a si-hypothesis in L8, relatives in L2/L5/L9, purpose in L8/L10 and a reasoned view in L6; adding opinion lines would be a speculative rewrite."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Them-turn uses plural 'vous' in a singular tutoiement path (staging: plural vous never arises; informal register check).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/targetText",
+              "old": "Une rencontre comme ça, c'est rare. Vous dessinez encore ensemble ?",
+              "new": "Une rencontre comme ça, c'est rare. Tu dessines encore avec lui ?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/de",
+              "old": "So eine Begegnung ist selten. Zeichnet ihr immer noch zusammen?",
+              "new": "So eine Begegnung ist selten. Zeichnest du immer noch mit ihm?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/2/baseText/en",
+              "old": "A meeting like that is rare. Do you still sketch together?",
+              "new": "A meeting like that is rare. Do you still sketch with him?"
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Placeholder caption and visual notes show the neighbor holding a root vegetable before turn 3 introduces the vegetable example (them₂ foreshadowed).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/placeholderCaption/de",
+              "old": "Am Tisch hält der junge Nachbar ein knorriges Wurzelgemüse in der Hand.",
+              "new": "Am Tisch hat der junge Nachbar einen leeren Einkaufsbeutel neben sein Glas gelegt."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/placeholderCaption/en",
+              "old": "At the table, the young neighbor is holding a knobby root vegetable.",
+              "new": "At the table, the young neighbor has set an empty shopping bag beside his glass."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/visualNotes",
+              "old": "At the table, the young neighbor is holding a knobby root vegetable.",
+              "new": "At the table, the young neighbor has set an empty shopping bag beside his glass."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Turn 4 translations (neben mir / next to me) contradict the situation (seat beside Noor) and the term gloss (nebenan / next to you); align to the seat next to Noor.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText/de",
+              "old": "Ich hole Sam und biete den Platz neben mir an.",
+              "new": "Ich hole Sam und biete den Platz neben dir an."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/dialogue/3/baseText/en",
+              "old": "I'll go get Sam and offer the seat next to me.",
+              "new": "I'll go get Sam and offer the seat next to you."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/terms/5/baseText",
+              "old": {
+                "de": "der Platz nebenan",
+                "en": "the seat next to you"
+              },
+              "new": {
+                "de": "der Platz neben dir",
+                "en": "the seat next to you"
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Chip 'quoique' is listed as out of learner blanks in the French staging; replace with a same-category conjunction that is not correct in the slot.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/3/choices",
+              "old": [
+                "quand",
+                "pour",
+                "parce que",
+                "quoique"
+              ],
+              "new": [
+                "quand",
+                "pour",
+                "parce que",
+                "puisque"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Typed connector blank admits 'tandis que'; reblanking the second verb removes the open typed alternative while keeping the heard line intact.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze",
+              "old": [
+                "Je ",
+                {
+                  "kind": "form",
+                  "answer": "soulevais",
+                  "choices": [
+                    "soulevais",
+                    "soulevait",
+                    "soulevions",
+                    "soulevaient"
+                  ],
+                  "cue": "soulever (je)"
+                },
+                " la poignée ",
+                {
+                  "kind": "connector",
+                  "answer": "pendant que",
+                  "choices": [
+                    "pour que",
+                    "depuis",
+                    "pendant que",
+                    "malgré"
+                  ]
+                },
+                " je tournais la clé."
+              ],
+              "new": [
+                "Je ",
+                {
+                  "kind": "form",
+                  "answer": "soulevais",
+                  "choices": [
+                    "soulevais",
+                    "soulevait",
+                    "soulevions",
+                    "soulevaient"
+                  ],
+                  "cue": "soulever (je)"
+                },
+                " la poignée pendant que je ",
+                {
+                  "kind": "form",
+                  "answer": "tournais",
+                  "choices": [
+                    "tournait",
+                    "tournais",
+                    "tournions",
+                    "tournaient"
+                  ],
+                  "cue": "tourner (je)"
+                },
+                " la clé."
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "German second example 'sprang die Kette' is unidiomatic for a slipping chain.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/pattern/examples/1/baseText/de",
+              "old": "An meinem Fahrrad sprang die Kette, und Léa hat die Schaltung eingestellt.",
+              "new": "An meinem Fahrrad sprang immer die Kette ab, und Léa hat die Schaltung eingestellt."
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Caption's tram map hints at the learner's own turn-4 tactic before it is said.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/placeholderCaption/de",
+              "old": "Ein gefalteter Linienplan liegt unter einem Glas auf dem Festtisch.",
+              "new": "Ein entwertetes Straßenbahnticket liegt unter einem Glas auf dem Festtisch."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/placeholderCaption/en",
+              "old": "A folded tram map lies beneath a glass on the party table.",
+              "new": "A used tram ticket lies beneath a glass on the party table."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/visualNotes",
+              "old": "A folded tram map lies beneath a glass on the party table.",
+              "new": "A used tram ticket lies beneath a glass on the party table."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "German title 'Ohne Hilfe aufs Amt' implies visiting the office; English title and content concern letters and appointments.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/title/de",
+              "old": "Ohne Hilfe aufs Amt",
+              "new": "Termine ohne Hilfe regeln"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'Et dire que…' rendered causally ('das alles, weil') adds a link absent in the French.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/2/baseText/de",
+              "old": "Und das alles, weil wir uns zufällig auf dem Markt begegnet sind! Wem willst du diese Seiten zeigen?",
+              "new": "Und dabei sind wir uns nur zufällig auf dem Markt begegnet! Wem willst du diese Seiten zeigen?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6ca1267e9f0e7991075f5588b930c356517a58f9a6a16384816d25cfa2de6248",
+      "sourceSha256": "ef9ef0aba360445325c1acbead410f5145ecadf17afe5a1e8610a9989f0ed585",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Imparfait problem (ma clé coinçait) against passé composé help (tu m'as montré) fits the installation beat; turn 4 explains what made getting in simpler. Cloze chips pour que/depuis/malgré have no fit before 'je tournais'; typed 'tandis que' is primarily contrastive and the line was just heard, so the earlier reblank stays optional. Chunk concat, recall, caption and speak tokens are consistent; 'sprang die Kette' is accepted cyclist German."
+        },
+        {
+          "n": 2,
+          "observation": "Object relative 'que je ne reconnaissais pas' plus the map-and-count tactic serve the obstacle beat; both je form blanks carry visible cues and only other-person foils; build distractors 'le prix du gaz' / 'sur la nappe' are nonsensical in slot. Caption's folded map hints only at the learner's own turn-4 tool, not them₂, so still optional."
+        },
+        {
+          "n": 3,
+          "observation": "Earlier required fix verified: turn 3 now reads 'Tu dessines encore avec lui ?' with DE 'Zeichnest du immer noch mit ihm?' and EN 'Do you still sketch with him?', so no plural vous remains. 'm'a donné envie de' + infinitive is a lexical chunk; second example (concert → reprendre le piano) is genuinely different; on + 3sg chips correct."
+        },
+        {
+          "n": 4,
+          "observation": "'quand j'ai appris à repérer' names the trigger; the work-hours clash is a real complication answered by online rebooking. Choice blank demander/demandé is a homophone-spelling choice with no second fit. DE title 'Ohne Hilfe aufs Amt' is narrower than the EN title and the content (letters, online slot); optional alignment only."
+        },
+        {
+          "n": 5,
+          "observation": "'qui dure depuis' + present is correctly explained in both rules; que/qui/où/dont after 'le croquis' is unambiguous; the sketch delivered when Luc was housebound is the concrete attention the lien beat requires. 'Je t'ai gardé' is gender-safe (indirect t')."
+        },
+        {
+          "n": 6,
+          "observation": "avant + imparfait / maintenant + présent; situation shows the walk home but not the sleep benefit of turn 4. Connector chips malgré / au lieu de / à force de cannot precede 'je marche'; 'lorsque' is a written-register rival outside informal B1 production and not a chip."
+        },
+        {
+          "n": 7,
+          "observation": "Earlier required fix verified: placeholder/visual now show an empty shopping bag, so the vegetable example is not foreshadowed. 'J'ai pris confiance quand' plus the color-and-cooking tip in turn 4 fulfils the confiance beat; 'm'a laissé décrire' is invariable before an infinitive; tu cues on both form blanks."
+        },
+        {
+          "n": 8,
+          "observation": "pour que … puisse se repérer and si + présent / ferai are inside the P10 L8–10 allowance; cue 'manquer (le temps)' makes the 3sg subject visible; the market-only fallback answers the time complication; recall foils peuvent/puissions/pouviez give no second answer."
+        },
+        {
+          "n": 9,
+          "observation": "Earlier required fixes verified: turn 4 DE/EN now 'neben dir' / 'next to you', term gloss 'der Platz neben dir' / 'the seat next to you', and the connector chips are quand/pour/parce que/puisque (no quoique). Sam and 'la personne' stay gender-neutral; 'ce premier soir où' ties thanks to a precise gesture."
+        },
+        {
+          "n": 10,
+          "observation": "Bilan line links difficulty, encounter and change with 'le' resuming 'mon chemin'; them-turn supplies the P3 si + imparfait/conditionnel recycle; closing intention uses ferai + pour que Sam puisse, cue 'pouvoir (Sam)' visible. Path-level 'missing opinion' claim remains dismissed: the outline prescribes one dominant function per lesson. DE 'Und das alles, weil' adds a causal link absent in 'Et dire que'; optional."
+        }
+      ],
+      "findings": [
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'Et dire que…' rendered causally ('das alles, weil') adds a link absent in the French.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/dialogue/2/baseText/de",
+              "old": "Und das alles, weil wir uns zufällig auf dem Markt begegnet sind! Wem willst du diese Seiten zeigen?",
+              "new": "Und dabei sind wir uns nur zufällig auf dem Markt begegnet! Wem willst du diese Seiten zeigen?"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "German title implies going to the office in person; English title and content concern letters and rescheduling online.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/title/de",
+              "old": "Ohne Hilfe aufs Amt",
+              "new": "Termine ohne Hilfe regeln"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Term gloss 'the right movement' is less idiomatic than the dialogue/chunk rendering of 'le bon geste'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/terms/3/baseText/en",
+              "old": "the right movement",
+              "new": "the right move"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b6d219717905ce1b6277baaee5ae93e54132a38073464cc8ebba51d723554e7f",
+      "sourceSha256": "3f9ecb6c0d0ca1451b72b2b48c735f86ecb04277ddc01b996267e1b52868db81",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Mode change sound: among pour que / depuis / malgré / pendant que only pendant que can govern the finite clause je tournais la clé (pour que would demand a subjunctive), so the choice blank has one answer; the typed form blank soulevais keeps meaningful imparfait practice, and chunks concatenate exactly to the learner line."
+        },
+        {
+          "n": 2,
+          "observation": "Que-relative line is reconstructed exactly by the four chunks; suivais/comptais cues name je, and the recall fallbacks for reconnaissais are all distinct persons, so grading is unambiguous."
+        },
+        {
+          "n": 3,
+          "observation": "Prior plural-vous concern is resolved: Tu dessines encore avec lui ? is singular tu; on-form cloze chips (choisit, échange) exclude the je/tu forms, and the concert example differs from the rehearsed market encounter."
+        },
+        {
+          "n": 4,
+          "observation": "sais + comment demander grades uniquely (demandé/demandaient/demandez are impossible after comment); situation names the letter without revealing the date-spotting skill or the online rescheduling."
+        },
+        {
+          "n": 5,
+          "observation": "Choice que is the only chip that works before tu voulais terminer (dont/qui/où all fail), and recall créé versus créer/créais/créez cannot be confused after ont."
+        },
+        {
+          "n": 6,
+          "observation": "Mode change sound: quand is the sole chip that can precede je marche (malgré, au lieu de, à force de take nouns/infinitives); dors stays typed with a je cue; avant/maintenant line concatenates exactly from the chunks."
+        },
+        {
+          "n": 7,
+          "observation": "Caption now shows an empty shopping bag, so the vegetable is introduced only by the questioner's third turn; peux/cuisines with tu cues grade one answer each."
+        },
+        {
+          "n": 8,
+          "observation": "Learner's fallback plan uses a real condition (si le temps manque, cue manquer (le temps)) with futur ferai, permitted for P10 L8–10; recall puisse foils are all non-matching persons or indicative."
+        },
+        {
+          "n": 9,
+          "observation": "Mode change sound: pour is the only chip that can introduce lui proposer (quand/parce que/puisque need a finite clause), quoique is gone; the seat is consistently neben dir / next to you in dialogue and term; Sam stays ungendered."
+        },
+        {
+          "n": 10,
+          "observation": "Et dire qu'on s'est rencontrés par hasard is now rendered as surprise (Und dabei sind wir uns nur zufällig … begegnet!) without the spurious causal link; je le dessine correctly resumes mon chemin and the recipe example supplies a distinct les."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "additionalEdits": []
+}

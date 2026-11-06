@@ -1,0 +1,2128 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Eine Lösung für die Waschmaschine",
+    "en": "Sorting out the washing machine"
+  },
+  "subtitle": {
+    "de": "Verfolge einen Defekt von der ersten Meldung bis zur schriftlichen Bestätigung.",
+    "en": "Follow a fault from the first call to written confirmation."
+  },
+  "anchor": "Forme A. Un même lave-linge, du premier appel à la clôture du dossier. Reprise des parcours 1, 3, 6 et 2, puis résolution. Vous dans tous les échanges.",
+  "lessons": [
+    {
+      "slug": "arret-au-rincage",
+      "title": {
+        "de": "Mitten im Spülgang",
+        "en": "In the middle of the rinse"
+      },
+      "situation": {
+        "de": "Deine neue Waschmaschine steht voller Wasser. Du rufst beim Kundendienst des Geschäfts an und beschreibst den Ausfall.",
+        "en": "Your new washing machine is full of water. You call the shop's service desk to report what happened."
+      },
+      "pedagogicalGoal": "Mit est tombé en panne meldest du den Moment, in dem ein Gerät ausfiel. Mit au milieu de sagst du, was gerade lief.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Service après-vente, bonjour. Que s'est-il passé avec votre lave-linge ?",
+          "baseText": {
+            "de": "Kundendienst, guten Tag. Was ist mit Ihrer Waschmaschine passiert?",
+            "en": "Hello, after-sales service. What happened to your washing machine?"
+          }
+        },
+        {
+          "targetText": "Le lave-linge est tombé en panne au milieu du rinçage.",
+          "baseText": {
+            "de": "Die Waschmaschine ist mitten im Spülgang ausgefallen.",
+            "en": "The washing machine broke down halfway through the rinse cycle."
+          }
+        },
+        {
+          "targetText": "Quel voyant était allumé quand la machine s'est arrêtée ?",
+          "baseText": {
+            "de": "Welche Kontrollleuchte hat geleuchtet, als die Maschine stehen blieb?",
+            "en": "Which indicator light was on when the machine stopped?"
+          }
+        },
+        {
+          "targetText": "Le voyant rouge clignotait alors que le voyant vert était éteint.",
+          "baseText": {
+            "de": "Die rote Leuchte blinkte, während die grüne aus war.",
+            "en": "The red light was flashing while the green one was off."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Tomber en panne",
+        "rule": {
+          "de": "Mit est tombé en panne meldest du den Moment, in dem ein Gerät ausfiel. Mit au milieu de sagst du, was gerade lief.",
+          "en": "Use est tombé en panne to report when a device broke down. Add au milieu de to say what was in progress."
+        },
+        "examples": [
+          {
+            "targetText": "Le lave-linge est tombé en panne au milieu du rinçage.",
+            "baseText": {
+              "de": "Die Waschmaschine ist mitten im Spülgang ausgefallen.",
+              "en": "The washing machine broke down halfway through the rinse cycle."
+            },
+            "highlight": "est tombé en panne"
+          },
+          {
+            "targetText": "Le micro est tombé en panne au milieu du concert.",
+            "baseText": {
+              "de": "Das Mikrofon ist mitten im Konzert ausgefallen.",
+              "en": "The microphone broke down in the middle of the concert."
+            },
+            "highlight": "est tombé en panne"
+          }
+        ]
+      },
+      "cloze": [
+        "Le voyant rouge ",
+        {
+          "kind": "form",
+          "answer": "clignotait",
+          "choices": [
+            "clignotaient",
+            "clignotais",
+            "clignotions",
+            "clignotait"
+          ],
+          "cue": "clignoter (le voyant rouge)"
+        },
+        " alors que le voyant vert ",
+        {
+          "kind": "form",
+          "answer": "était",
+          "choices": [
+            "étions",
+            "était",
+            "étaient",
+            "étiez"
+          ],
+          "cue": "être (le voyant vert)"
+        },
+        " éteint."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le lave-linge",
+          "baseText": {
+            "de": "Die Waschmaschine",
+            "en": "The washing machine"
+          }
+        },
+        {
+          "targetText": "est tombé en panne",
+          "baseText": {
+            "de": "ist ausgefallen",
+            "en": "broke down"
+          }
+        },
+        {
+          "targetText": "au milieu",
+          "baseText": {
+            "de": "mitten",
+            "en": "in the middle"
+          }
+        },
+        {
+          "targetText": "du rinçage.",
+          "baseText": {
+            "de": "im Spülgang.",
+            "en": "of the rinse cycle."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le lave-linge",
+          "baseText": {
+            "de": "die Waschmaschine",
+            "en": "the washing machine"
+          }
+        },
+        {
+          "targetText": "tomber en panne",
+          "baseText": {
+            "de": "kaputtgehen",
+            "en": "to break down"
+          }
+        },
+        {
+          "targetText": "au milieu de",
+          "baseText": {
+            "de": "mitten in",
+            "en": "in the middle of"
+          }
+        },
+        {
+          "targetText": "le rinçage",
+          "baseText": {
+            "de": "der Spülgang",
+            "en": "the rinse cycle"
+          }
+        },
+        {
+          "targetText": "le voyant",
+          "baseText": {
+            "de": "die Kontrollleuchte",
+            "en": "the indicator light"
+          }
+        },
+        {
+          "targetText": "clignoter",
+          "baseText": {
+            "de": "blinken",
+            "en": "to flash"
+          }
+        },
+        {
+          "targetText": "éteint",
+          "baseText": {
+            "de": "ausgeschaltet",
+            "en": "off"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le lave-linge est tombé en panne au milieu du ",
+        "answer": "rinçage",
+        "after": ".",
+        "fallbackChoices": [
+          "garagiste",
+          "rinçage",
+          "détour",
+          "courrier"
+        ]
+      },
+      "speakRequired": [
+        "tombé",
+        "panne",
+        "rinçage"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon meldet sich der Kundendienst. „Service après-vente, bonjour. Que s'est-il passé avec votre lave-linge ?“",
+        "en": "Someone at the service desk picks up. “Service après-vente, bonjour. Que s'est-il passé avec votre lave-linge ?”"
+      },
+      "trophyWord": {
+        "word": "panne",
+        "meaning": {
+          "de": "Panne, Ausfall",
+          "en": "breakdown"
+        },
+        "example": "Cette panne a interrompu le programme.",
+        "whyThisWord": {
+          "de": "Mit panne benennst du den Ausfall, auch wenn du die Ursache noch suchst.",
+          "en": "Use panne to report a breakdown while the cause is still unknown."
+        }
+      },
+      "distractors": [
+        "a été installé",
+        "de la livraison."
+      ],
+      "placeholderCaption": {
+        "de": "Wäsche liegt hinter dem runden Fenster im Wasser. Ein Handy liegt auf der Maschine.",
+        "en": "Laundry sits in water behind the round door. A phone rests on the machine."
+      },
+      "songMood": "Drängend, aber ruhig.",
+      "visualNotes": "Laundry sits in water behind the round door. A phone rests on the machine."
+    },
+    {
+      "slug": "premiere-lessive",
+      "title": {
+        "de": "Schon beim ersten Waschgang",
+        "en": "On the very first wash"
+      },
+      "situation": {
+        "de": "Der Kundendienst will wissen, seit wann der Fehler auftritt. Schildere, was beim ersten Waschen zu sehen war.",
+        "en": "The service desk asks when the fault started. Describe what you saw on the first wash."
+      },
+      "pedagogicalGoal": "Mit dem passé composé erzählst du, was geschah. Nach quand beschreibt das imparfait eine Handlung, die zu diesem Zeitpunkt noch lief.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Depuis combien de temps avez-vous ce problème ?",
+          "baseText": {
+            "de": "Seit wann haben Sie dieses Problem?",
+            "en": "How long have you had this problem?"
+          }
+        },
+        {
+          "targetText": "Le défaut est apparu dès la première lessive, quand le tambour tournait encore.",
+          "baseText": {
+            "de": "Der Fehler trat gleich beim ersten Waschgang auf, als sich die Trommel noch drehte.",
+            "en": "The fault appeared on the very first wash, while the drum was still turning."
+          }
+        },
+        {
+          "targetText": "C'était peut-être une charge trop lourde. Combien de linge avez-vous mis ?",
+          "baseText": {
+            "de": "Vielleicht war die Ladung zu schwer. Wie viel Wäsche haben Sie eingefüllt?",
+            "en": "Perhaps the load was too heavy. How much laundry did you put in?"
+          }
+        },
+        {
+          "targetText": "J'ai pesé le linge avant de remplir le tambour à moitié.",
+          "baseText": {
+            "de": "Ich habe die Wäsche gewogen, bevor ich die Trommel zur Hälfte gefüllt habe.",
+            "en": "I weighed the laundry before filling the drum halfway."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "L'événement et son décor",
+        "rule": {
+          "de": "Mit dem passé composé erzählst du, was geschah. Nach quand beschreibt das imparfait eine Handlung, die zu diesem Zeitpunkt noch lief.",
+          "en": "Use the passé composé for what happened. After quand, the imparfait describes something that was still going on at that moment."
+        },
+        "examples": [
+          {
+            "targetText": "Le défaut est apparu dès la première lessive, quand le tambour tournait encore.",
+            "baseText": {
+              "de": "Der Fehler trat gleich beim ersten Waschgang auf, als sich die Trommel noch drehte.",
+              "en": "The fault appeared on the very first wash, while the drum was still turning."
+            },
+            "highlight": "quand le tambour tournait encore"
+          },
+          {
+            "targetText": "La pluie a commencé quand les enfants jouaient encore dehors.",
+            "baseText": {
+              "de": "Es fing an zu regnen, als die Kinder noch draußen spielten.",
+              "en": "It started raining while the children were still playing outside."
+            },
+            "highlight": "quand les enfants jouaient encore"
+          }
+        ]
+      },
+      "cloze": [
+        "J'ai ",
+        {
+          "kind": "choice",
+          "answer": "pesé",
+          "choices": [
+            "pesais",
+            "peser",
+            "pesé",
+            "pèsent"
+          ]
+        },
+        " le linge ",
+        {
+          "kind": "connector",
+          "answer": "avant de",
+          "choices": [
+            "quand",
+            "avant de",
+            "pendant que",
+            "puisque"
+          ]
+        },
+        " remplir le tambour à moitié."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le défaut est apparu",
+          "baseText": {
+            "de": "Der Fehler trat auf",
+            "en": "The fault appeared"
+          }
+        },
+        {
+          "targetText": "dès la première lessive,",
+          "baseText": {
+            "de": "gleich beim ersten Waschgang,",
+            "en": "on the very first wash,"
+          }
+        },
+        {
+          "targetText": "quand le tambour",
+          "baseText": {
+            "de": "als sich die Trommel",
+            "en": "while the drum"
+          }
+        },
+        {
+          "targetText": "tournait encore.",
+          "baseText": {
+            "de": "noch drehte.",
+            "en": "was still turning."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le défaut",
+          "baseText": {
+            "de": "der Fehler",
+            "en": "the fault"
+          }
+        },
+        {
+          "targetText": "dès la première lessive",
+          "baseText": {
+            "de": "gleich beim ersten Waschgang",
+            "en": "on the very first wash"
+          }
+        },
+        {
+          "targetText": "le tambour",
+          "baseText": {
+            "de": "die Trommel",
+            "en": "the drum"
+          }
+        },
+        {
+          "targetText": "une charge trop lourde",
+          "baseText": {
+            "de": "eine zu schwere Ladung",
+            "en": "a load that is too heavy"
+          }
+        },
+        {
+          "targetText": "peser le linge",
+          "baseText": {
+            "de": "die Wäsche wiegen",
+            "en": "to weigh the laundry"
+          }
+        },
+        {
+          "targetText": "à moitié",
+          "baseText": {
+            "de": "zur Hälfte",
+            "en": "halfway"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le défaut est ",
+        "answer": "apparu",
+        "after": " dès la première lessive, quand le tambour tournait encore.",
+        "fallbackChoices": [
+          "apparu",
+          "apparaître",
+          "apparaissaient",
+          "apparais"
+        ]
+      },
+      "speakRequired": [
+        "défaut",
+        "lessive",
+        "tambour"
+      ],
+      "sceneCaption": {
+        "de": "Die Person am Telefon öffnet eine neue Notiz. „Depuis combien de temps avez-vous ce problème ?“",
+        "en": "The person on the phone opens a new note. “Depuis combien de temps avez-vous ce problème ?”"
+      },
+      "trophyWord": {
+        "word": "défaut",
+        "meaning": {
+          "de": "Fehler, Mangel",
+          "en": "fault"
+        },
+        "example": "Le défaut se voit surtout au démarrage.",
+        "whyThisWord": {
+          "de": "Défaut bezeichnet eine bestimmte Schwäche oder Störung am Gerät.",
+          "en": "Défaut names a particular flaw or fault in the appliance."
+        }
+      },
+      "distractors": [
+        "après la dernière réparation,",
+        "quand le four"
+      ],
+      "placeholderCaption": {
+        "de": "Neben dem Wäschekorb liegt ein Zettel mit dem Datum des ersten Waschgangs.",
+        "en": "A slip of paper beside the laundry basket shows the date of the first wash."
+      },
+      "songMood": "Sachlich und genau.",
+      "visualNotes": "A slip of paper beside the laundry basket shows the date of the first wash."
+    },
+    {
+      "slug": "couverture-de-la-garantie",
+      "title": {
+        "de": "Was deckt die Garantie ab?",
+        "en": "What does the warranty cover?"
+      },
+      "situation": {
+        "de": "Du hast das Kaufdatum nachgeschaut. Bevor du die Maschine zur Prüfung gibst, möchtest du die Garantiebedingungen verstehen.",
+        "en": "You have checked the purchase date. Before handing in the machine for inspection, you want to understand the warranty coverage."
+      },
+      "pedagogicalGoal": "Nach je voudrais savoir si stellst du eine höfliche Ja-nein-Frage. Im eingebetteten Satz steht das Subjekt vor dem Verb.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez acheté cette machine chez nous en avril, c'est bien ça ?",
+          "baseText": {
+            "de": "Sie haben die Maschine im April bei uns gekauft, stimmt das?",
+            "en": "You bought this machine from us in April, is that right?"
+          }
+        },
+        {
+          "targetText": "Oui, je voudrais savoir si la garantie couvre ce problème de rinçage.",
+          "baseText": {
+            "de": "Ja, ich möchte wissen, ob die Garantie dieses Problem beim Spülen abdeckt.",
+            "en": "Yes, I'd like to know whether the warranty covers this rinsing problem."
+          }
+        },
+        {
+          "targetText": "Il me faut la date exacte pour vérifier. Avez-vous un justificatif d'achat ?",
+          "baseText": {
+            "de": "Zum Nachsehen brauche ich das genaue Datum. Haben Sie einen Kaufbeleg?",
+            "en": "I need the exact date to check. Do you have proof of purchase?"
+          }
+        },
+        {
+          "targetText": "Je peux vous envoyer la facture qui indique la date exacte.",
+          "baseText": {
+            "de": "Ich kann Ihnen die Rechnung schicken, auf der das genaue Datum steht.",
+            "en": "I can send you the invoice that shows the exact date."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Je voudrais savoir si…",
+        "rule": {
+          "de": "Nach je voudrais savoir si stellst du eine höfliche Ja-nein-Frage. Im eingebetteten Satz steht das Subjekt vor dem Verb.",
+          "en": "Je voudrais savoir si introduces a polite yes-or-no question. Keep the subject before the verb in the embedded question."
+        },
+        "examples": [
+          {
+            "targetText": "Oui, je voudrais savoir si la garantie couvre ce problème de rinçage.",
+            "baseText": {
+              "de": "Ja, ich möchte wissen, ob die Garantie dieses Problem beim Spülen abdeckt.",
+              "en": "Yes, I'd like to know whether the warranty covers this rinsing problem."
+            },
+            "highlight": "je voudrais savoir si la garantie couvre"
+          },
+          {
+            "targetText": "Je voudrais savoir si le billet comprend le trajet de retour.",
+            "baseText": {
+              "de": "Ich möchte wissen, ob die Fahrkarte die Rückfahrt einschließt.",
+              "en": "I'd like to know whether the ticket includes the return trip."
+            },
+            "highlight": "Je voudrais savoir si le billet comprend"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "peut",
+            "pouvez",
+            "peux",
+            "peuvent"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " vous envoyer la facture ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "dont",
+            "où",
+            "que",
+            "qui"
+          ]
+        },
+        " indique la date exacte."
+      ],
+      "chunks": [
+        {
+          "targetText": "Oui, je voudrais savoir",
+          "baseText": {
+            "de": "Ja, ich möchte wissen,",
+            "en": "Yes, I'd like to know"
+          }
+        },
+        {
+          "targetText": "si la garantie",
+          "baseText": {
+            "de": "ob die Garantie",
+            "en": "whether the warranty"
+          }
+        },
+        {
+          "targetText": "couvre ce problème",
+          "baseText": {
+            "de": "dieses Problem abdeckt",
+            "en": "covers this problem"
+          }
+        },
+        {
+          "targetText": "de rinçage.",
+          "baseText": {
+            "de": "beim Spülen.",
+            "en": "with rinsing."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la garantie",
+          "baseText": {
+            "de": "die Garantie",
+            "en": "the warranty"
+          }
+        },
+        {
+          "targetText": "couvrir un problème",
+          "baseText": {
+            "de": "ein Problem abdecken",
+            "en": "to cover a problem"
+          }
+        },
+        {
+          "targetText": "le rinçage",
+          "baseText": {
+            "de": "der Spülgang",
+            "en": "the rinse cycle"
+          }
+        },
+        {
+          "targetText": "la date exacte",
+          "baseText": {
+            "de": "das genaue Datum",
+            "en": "the exact date"
+          }
+        },
+        {
+          "targetText": "un justificatif d'achat",
+          "baseText": {
+            "de": "ein Kaufbeleg",
+            "en": "proof of purchase"
+          }
+        },
+        {
+          "targetText": "la facture",
+          "baseText": {
+            "de": "die Rechnung",
+            "en": "the invoice"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Oui, je voudrais savoir si la garantie ",
+        "answer": "couvre",
+        "after": " ce problème de rinçage.",
+        "fallbackChoices": [
+          "couvrez",
+          "couvrir",
+          "couvre",
+          "couvrent"
+        ]
+      },
+      "speakRequired": [
+        "savoir",
+        "garantie",
+        "rinçage"
+      ],
+      "sceneCaption": {
+        "de": "Der Kundendienst gleicht die Kaufdaten mit dir ab. „Vous avez acheté cette machine chez nous en avril, c'est bien ça ?“",
+        "en": "The service agent checks the purchase details with you. “Vous avez acheté cette machine chez nous en avril, c'est bien ça ?”"
+      },
+      "trophyWord": {
+        "word": "garantie",
+        "meaning": {
+          "de": "Garantie",
+          "en": "warranty"
+        },
+        "example": "Est-ce que la pompe est encore sous garantie ?",
+        "whyThisWord": {
+          "de": "Sous garantie beschreibt ein Gerät oder Teil, für das noch eine Garantie gilt.",
+          "en": "Sous garantie describes an appliance or part that is still under warranty."
+        }
+      },
+      "distractors": [
+        "si le tambour",
+        "d'emballage."
+      ],
+      "placeholderCaption": {
+        "de": "Eine aufgefaltete Rechnung und die Anleitung liegen auf derselben Arbeitsplatte.",
+        "en": "An unfolded invoice and the instruction booklet lie on the same worktop."
+      },
+      "songMood": "Höflich und erwartungsvoll.",
+      "visualNotes": "An unfolded invoice and the instruction booklet lie on the same worktop."
+    },
+    {
+      "slug": "refus-au-comptoir",
+      "title": {
+        "de": "Nach der ersten Absage",
+        "en": "After the first refusal"
+      },
+      "situation": {
+        "de": "Am Serviceschalter liest du die erste Absage. Du möchtest diese Entscheidung zur defekten Waschmaschine überprüfen lassen.",
+        "en": "At the service counter you read the initial refusal. You want the decision about your faulty washer reviewed."
+      },
+      "pedagogicalGoal": "Mit pour und einem Infinitiv nennst du dein Ziel. Faire réexaminer ist hier ein fester Ausdruck: etwas noch einmal prüfen lassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Votre première demande a été refusée. Le numéro de série était illisible.",
+          "baseText": {
+            "de": "Ihre erste Anfrage wurde abgelehnt. Die Seriennummer war unleserlich.",
+            "en": "Your first request was turned down. The serial number was illegible."
+          }
+        },
+        {
+          "targetText": "Comment puis-je déposer une réclamation pour faire réexaminer cette décision ?",
+          "baseText": {
+            "de": "Wie kann ich eine Beschwerde einreichen, um diese Entscheidung noch einmal prüfen zu lassen?",
+            "en": "How can I file a complaint to have this decision reviewed?"
+          }
+        },
+        {
+          "targetText": "Remplissez cette fiche et joignez une photo plus nette du numéro.",
+          "baseText": {
+            "de": "Füllen Sie dieses Blatt aus und fügen Sie ein schärferes Foto der Nummer bei.",
+            "en": "Fill in this form and attach a clearer photo of the number."
+          }
+        },
+        {
+          "targetText": "Quelle référence dois-je garder pour suivre ma demande ?",
+          "baseText": {
+            "de": "Welche Vorgangsnummer soll ich aufbewahren, um meine Anfrage zu verfolgen?",
+            "en": "Which reference number should I keep to track my request?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pour + infinitif",
+        "rule": {
+          "de": "Mit pour und einem Infinitiv nennst du dein Ziel. Faire réexaminer ist hier ein fester Ausdruck: etwas noch einmal prüfen lassen.",
+          "en": "Use pour with an infinitive to give your purpose. Faire réexaminer is a fixed expression here: to have something reviewed again."
+        },
+        "examples": [
+          {
+            "targetText": "Comment puis-je déposer une réclamation pour faire réexaminer cette décision ?",
+            "baseText": {
+              "de": "Wie kann ich eine Beschwerde einreichen, um diese Entscheidung noch einmal prüfen zu lassen?",
+              "en": "How can I file a complaint to have this decision reviewed?"
+            },
+            "highlight": "pour faire réexaminer cette décision"
+          },
+          {
+            "targetText": "À qui dois-je écrire pour obtenir une réponse rapide ?",
+            "baseText": {
+              "de": "An wen muss ich schreiben, um schnell eine Antwort zu bekommen?",
+              "en": "Who should I write to in order to get a quick answer?"
+            },
+            "highlight": "pour obtenir une réponse rapide"
+          }
+        ]
+      },
+      "cloze": [
+        "Quelle référence dois-je ",
+        {
+          "kind": "choice",
+          "answer": "garder",
+          "choices": [
+            "gardé",
+            "garder",
+            "gardais",
+            "gardez"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "pour",
+          "choices": [
+            "tandis que",
+            "puisque",
+            "lorsque",
+            "pour"
+          ]
+        },
+        " suivre ma demande ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Comment puis-je",
+          "baseText": {
+            "de": "Wie kann ich",
+            "en": "How can I"
+          }
+        },
+        {
+          "targetText": "déposer une réclamation",
+          "baseText": {
+            "de": "eine Beschwerde einreichen",
+            "en": "file a complaint"
+          }
+        },
+        {
+          "targetText": "pour faire réexaminer",
+          "baseText": {
+            "de": "um erneut prüfen zu lassen",
+            "en": "to have reviewed"
+          }
+        },
+        {
+          "targetText": "cette décision ?",
+          "baseText": {
+            "de": "diese Entscheidung?",
+            "en": "this decision?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "déposer une réclamation",
+          "baseText": {
+            "de": "eine Beschwerde einreichen",
+            "en": "to file a complaint"
+          }
+        },
+        {
+          "targetText": "faire réexaminer",
+          "baseText": {
+            "de": "erneut prüfen lassen",
+            "en": "to have something reviewed"
+          }
+        },
+        {
+          "targetText": "la décision",
+          "baseText": {
+            "de": "die Entscheidung",
+            "en": "the decision"
+          }
+        },
+        {
+          "targetText": "illisible",
+          "baseText": {
+            "de": "unleserlich",
+            "en": "illegible"
+          }
+        },
+        {
+          "targetText": "une photo plus nette",
+          "baseText": {
+            "de": "ein schärferes Foto",
+            "en": "a clearer photo"
+          }
+        },
+        {
+          "targetText": "suivre ma demande",
+          "baseText": {
+            "de": "meine Anfrage verfolgen",
+            "en": "to track my request"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Comment puis-je déposer une réclamation pour faire ",
+        "answer": "réexaminer",
+        "after": " cette décision ?",
+        "fallbackChoices": [
+          "réexaminait",
+          "réexaminer",
+          "réexaminent",
+          "réexaminé"
+        ]
+      },
+      "speakRequired": [
+        "déposer",
+        "réclamation",
+        "décision"
+      ],
+      "sceneCaption": {
+        "de": "Am Kundendienstschalter liest dir eine Mitarbeiterin die Antwort vor. „Votre première demande a été refusée. Le numéro de série était illisible.“",
+        "en": "At the service counter an employee reads the reply to you. “Votre première demande a été refusée. Le numéro de série était illisible.”"
+      },
+      "trophyWord": {
+        "word": "réclamation",
+        "meaning": {
+          "de": "Beschwerde, Reklamation",
+          "en": "complaint"
+        },
+        "example": "La réclamation porte sur le refus du magasin.",
+        "whyThisWord": {
+          "de": "Une réclamation ist eine formelle Beschwerde, deren Bearbeitung du verfolgen kannst.",
+          "en": "Une réclamation is a formal complaint you can follow up on."
+        }
+      },
+      "distractors": [
+        "effacer mon message",
+        "mon ancien abonnement ?"
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Tresen liegt die Absage neben einem unscharfen Foto des Typenschilds.",
+        "en": "The refusal lies on the counter next to a blurry photo of the serial label."
+      },
+      "songMood": "Bestimmt und höflich.",
+      "visualNotes": "The refusal lies on the counter next to a blurry photo of the serial label."
+    },
+    {
+      "slug": "pompe-en-attente",
+      "title": {
+        "de": "Ein Preis vor der Reparatur",
+        "en": "A price before the repair"
+      },
+      "situation": {
+        "de": "Die Werkstatt hat deine Maschine inzwischen untersucht. Du erkundigst dich nach den möglichen Kosten.",
+        "en": "The workshop has now inspected your machine. You ask about the likely cost."
+      },
+      "pedagogicalGoal": "Mit a été préparé fragst du nach einem erledigten Arbeitsschritt. Du kannst die Person, die ihn ausgeführt hat, weglassen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nous avons contrôlé la machine ce matin. C'est la pompe qui bloque.",
+          "baseText": {
+            "de": "Wir haben die Maschine heute Morgen untersucht. Die Pumpe klemmt.",
+            "en": "We checked the machine this morning. It's the pump that's jammed."
+          }
+        },
+        {
+          "targetText": "Est-ce que le devis a été préparé après le contrôle de la pompe ?",
+          "baseText": {
+            "de": "Wurde nach der Überprüfung der Pumpe ein Kostenvoranschlag erstellt?",
+            "en": "Was an estimate prepared after the pump was checked?"
+          }
+        },
+        {
+          "targetText": "Pas encore. La pièce manque et son prix exact dépend du fournisseur.",
+          "baseText": {
+            "de": "Noch nicht. Das Ersatzteil fehlt, und der genaue Preis hängt vom Lieferanten ab.",
+            "en": "Not yet. We don't have the part and its exact price depends on the supplier."
+          }
+        },
+        {
+          "targetText": "Je voudrais une estimation avant de donner mon feu vert.",
+          "baseText": {
+            "de": "Ich hätte gern eine Kostenschätzung, bevor ich grünes Licht gebe.",
+            "en": "I'd like an estimate before giving the go-ahead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A été + participe passé",
+        "rule": {
+          "de": "Mit a été préparé fragst du nach einem erledigten Arbeitsschritt. Du kannst die Person, die ihn ausgeführt hat, weglassen.",
+          "en": "Use a été préparé to ask whether a step was completed. You can leave out the person who did the work."
+        },
+        "examples": [
+          {
+            "targetText": "Est-ce que le devis a été préparé après le contrôle de la pompe ?",
+            "baseText": {
+              "de": "Wurde nach der Überprüfung der Pumpe ein Kostenvoranschlag erstellt?",
+              "en": "Was an estimate prepared after the pump was checked?"
+            },
+            "highlight": "a été préparé"
+          },
+          {
+            "targetText": "Est-ce que le résultat a été affiché devant la salle ?",
+            "baseText": {
+              "de": "Wurde das Ergebnis vor dem Saal ausgehängt?",
+              "en": "Was the result posted outside the hall?"
+            },
+            "highlight": "a été affiché"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "voudrais",
+          "choices": [
+            "voudraient",
+            "voudriez",
+            "voudrais",
+            "voudrions"
+          ],
+          "cue": "vouloir (je)"
+        },
+        " une estimation ",
+        {
+          "kind": "connector",
+          "answer": "avant de",
+          "choices": [
+            "avant de",
+            "puisque",
+            "dès que",
+            "pendant que"
+          ]
+        },
+        " donner mon feu vert."
+      ],
+      "chunks": [
+        {
+          "targetText": "Est-ce que le devis",
+          "baseText": {
+            "de": "Wurde der Kostenvoranschlag",
+            "en": "Was the estimate"
+          }
+        },
+        {
+          "targetText": "a été préparé",
+          "baseText": {
+            "de": "erstellt",
+            "en": "prepared"
+          }
+        },
+        {
+          "targetText": "après le contrôle",
+          "baseText": {
+            "de": "nach der Überprüfung",
+            "en": "after the inspection"
+          }
+        },
+        {
+          "targetText": "de la pompe ?",
+          "baseText": {
+            "de": "der Pumpe?",
+            "en": "of the pump?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le devis",
+          "baseText": {
+            "de": "der Kostenvoranschlag",
+            "en": "the estimate"
+          }
+        },
+        {
+          "targetText": "a été préparé",
+          "baseText": {
+            "de": "wurde erstellt",
+            "en": "was prepared"
+          }
+        },
+        {
+          "targetText": "la pompe",
+          "baseText": {
+            "de": "die Pumpe",
+            "en": "the pump"
+          }
+        },
+        {
+          "targetText": "le fournisseur",
+          "baseText": {
+            "de": "der Lieferant",
+            "en": "the supplier"
+          }
+        },
+        {
+          "targetText": "une estimation",
+          "baseText": {
+            "de": "eine Schätzung",
+            "en": "an estimate"
+          }
+        },
+        {
+          "targetText": "donner mon feu vert",
+          "baseText": {
+            "de": "grünes Licht geben",
+            "en": "to give my go-ahead"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Est-ce que le devis a été ",
+        "answer": "préparé",
+        "after": " après le contrôle de la pompe ?",
+        "fallbackChoices": [
+          "préparez",
+          "préparé",
+          "préparer",
+          "préparent"
+        ]
+      },
+      "speakRequired": [
+        "devis",
+        "contrôle",
+        "pompe"
+      ],
+      "sceneCaption": {
+        "de": "In der Werkstatt erklärt dir der Techniker das Ergebnis der Prüfung. „Nous avons contrôlé la machine ce matin. C'est la pompe qui bloque.“",
+        "en": "At the workshop the technician explains what he found. “Nous avons contrôlé la machine ce matin. C'est la pompe qui bloque.”"
+      },
+      "trophyWord": {
+        "word": "devis",
+        "meaning": {
+          "de": "Kostenvoranschlag",
+          "en": "estimate, quotation"
+        },
+        "example": "Le devis détaille le prix de la pièce et celui de la réparation.",
+        "whyThisWord": {
+          "de": "Mit devis fragst du vor der Zusage nach den voraussichtlichen Kosten.",
+          "en": "Ask for a devis to see the expected costs before agreeing to work."
+        }
+      },
+      "distractors": [
+        "a été lavé",
+        "de la poignée ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine ausgebaute Pumpe liegt neben der geöffneten Waschmaschine auf einer Werkbank.",
+        "en": "A pump sits on a workbench next to the open washing machine."
+      },
+      "songMood": "Überlegt und vorsichtig.",
+      "visualNotes": "A pump sits on a workbench next to the open washing machine."
+    },
+    {
+      "slug": "recu-du-depot",
+      "title": {
+        "de": "Was steht im Vorgang?",
+        "en": "What's on file?"
+      },
+      "situation": {
+        "de": "Die Waschmaschine steht noch in der Werkstatt. Du rufst im Geschäft an und lässt im Vorgang nachsehen, wie die Abgabe dokumentiert wurde.",
+        "en": "Your washer is still at the workshop. You call the shop to check how the handover was recorded in your file."
+      },
+      "pedagogicalGoal": "Im Passiv richtet sich das Partizip nach dem Gegenstand. Bei une preuve heißt es ajoutée, bei une photo choisie.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "J'ai votre dossier à l'écran. Que voulez-vous vérifier ?",
+          "baseText": {
+            "de": "Ich habe Ihren Vorgang auf dem Bildschirm. Was möchten Sie überprüfen?",
+            "en": "I have your file on screen. What would you like to check?"
+          }
+        },
+        {
+          "targetText": "Quelle preuve du dépôt de ma machine a été ajoutée au dossier ?",
+          "baseText": {
+            "de": "Welcher Nachweis für die Abgabe meiner Maschine wurde zu den Unterlagen genommen?",
+            "en": "What proof that I handed in my machine was added to the file?"
+          }
+        },
+        {
+          "targetText": "Je vois le rapport du technicien, mais il manque le document du dépôt.",
+          "baseText": {
+            "de": "Ich sehe den Bericht des Technikers, aber der Abgabebeleg fehlt.",
+            "en": "I can see the technician's report, but the handover document is missing."
+          }
+        },
+        {
+          "targetText": "Je peux vous envoyer le reçu que j'ai gardé.",
+          "baseText": {
+            "de": "Ich kann Ihnen den Beleg schicken, den ich aufbewahrt habe.",
+            "en": "I can send you the receipt I kept."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quelle trace reste-t-il ?",
+        "rule": {
+          "de": "Im Passiv richtet sich das Partizip nach dem Gegenstand. Bei une preuve heißt es ajoutée, bei une photo choisie.",
+          "en": "In the passive, the participle agrees with the item concerned. With une preuve use ajoutée, and with une photo use choisie."
+        },
+        "examples": [
+          {
+            "targetText": "Quelle preuve du dépôt de ma machine a été ajoutée au dossier ?",
+            "baseText": {
+              "de": "Welcher Nachweis für die Abgabe meiner Maschine wurde zu den Unterlagen genommen?",
+              "en": "What proof that I handed in my machine was added to the file?"
+            },
+            "highlight": "Quelle preuve du dépôt de ma machine a été ajoutée"
+          },
+          {
+            "targetText": "Quelle photo a été choisie pour l'affiche du festival ?",
+            "baseText": {
+              "de": "Welches Foto wurde für das Festivalplakat ausgewählt?",
+              "en": "Which photo was chosen for the festival poster?"
+            },
+            "highlight": "Quelle photo a été choisie"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvez",
+            "pouvons",
+            "peuvent",
+            "peux"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " vous envoyer le reçu ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "où",
+            "que",
+            "dont",
+            "qui"
+          ]
+        },
+        " j'ai gardé."
+      ],
+      "chunks": [
+        {
+          "targetText": "Quelle preuve",
+          "baseText": {
+            "de": "Welcher Nachweis",
+            "en": "What proof"
+          }
+        },
+        {
+          "targetText": "du dépôt de ma machine",
+          "baseText": {
+            "de": "für die Abgabe meiner Maschine",
+            "en": "of my machine's handover"
+          }
+        },
+        {
+          "targetText": "a été ajoutée",
+          "baseText": {
+            "de": "wurde hinzugefügt",
+            "en": "was added"
+          }
+        },
+        {
+          "targetText": "au dossier ?",
+          "baseText": {
+            "de": "zum Vorgang?",
+            "en": "to the file?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la preuve",
+          "baseText": {
+            "de": "der Nachweis",
+            "en": "the proof"
+          }
+        },
+        {
+          "targetText": "le dépôt de ma machine",
+          "baseText": {
+            "de": "die Abgabe meiner Maschine",
+            "en": "the handover of my machine"
+          }
+        },
+        {
+          "targetText": "ajouter au dossier",
+          "baseText": {
+            "de": "zu den Unterlagen hinzufügen",
+            "en": "to add to the file"
+          }
+        },
+        {
+          "targetText": "le rapport",
+          "baseText": {
+            "de": "der Bericht",
+            "en": "the report"
+          }
+        },
+        {
+          "targetText": "il manque",
+          "baseText": {
+            "de": "es fehlt",
+            "en": "is missing"
+          }
+        },
+        {
+          "targetText": "le reçu",
+          "baseText": {
+            "de": "der Beleg",
+            "en": "the receipt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quelle preuve du dépôt de ma machine a été ",
+        "answer": "ajoutée",
+        "after": " au dossier ?",
+        "fallbackChoices": [
+          "ajouter",
+          "ajoutées",
+          "ajoutée",
+          "ajouté"
+        ]
+      },
+      "speakRequired": [
+        "preuve",
+        "dépôt",
+        "dossier"
+      ],
+      "sceneCaption": {
+        "de": "Ein Mitarbeiter öffnet deinen Vorgang im Geschäft. „J'ai votre dossier à l'écran. Que voulez-vous vérifier ?“",
+        "en": "A shop employee opens your file. “J'ai votre dossier à l'écran. Que voulez-vous vérifier ?”"
+      },
+      "trophyWord": {
+        "word": "preuve",
+        "meaning": {
+          "de": "Nachweis, Beweis",
+          "en": "proof, evidence"
+        },
+        "example": "Ce reçu est la preuve du dépôt à l'atelier.",
+        "whyThisWord": {
+          "de": "Mit preuve fragst du nach etwas, das die Abgabe belegt und später vorgelegt werden kann.",
+          "en": "A preuve is evidence you can produce later to show you handed the item in."
+        }
+      },
+      "distractors": [
+        "de mon déménagement",
+        "au vestiaire ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Telefon mit eingeschaltetem Lautsprecher liegt neben einem Zettel mit der Vorgangsnummer.",
+        "en": "A phone on speaker lies beside a note with the file number."
+      },
+      "songMood": "Aufmerksam und sachlich.",
+      "visualNotes": "A phone on speaker lies beside a note with the file number."
+    },
+    {
+      "slug": "modele-de-remplacement",
+      "title": {
+        "de": "Ein Ersatz für die Maschine",
+        "en": "A replacement for the washer"
+      },
+      "situation": {
+        "de": "Die Werkstatt nennt nun eine lange Lieferzeit für die neue Pumpe. Besprich mit dem Geschäft eine andere Lösung.",
+        "en": "The workshop now says there will be a long wait for the new pump. Discuss another solution with the shop."
+      },
+      "pedagogicalGoal": "Mit même si erkennst du ein Argument an. Mit je préférerais sagst du anschließend, welche Lösung dir lieber wäre.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nous pouvons réparer votre machine, mais la pompe arrive dans six semaines.",
+          "baseText": {
+            "de": "Wir können Ihre Maschine reparieren, aber die Pumpe kommt erst in sechs Wochen.",
+            "en": "We can repair your machine, but the pump won't arrive for six weeks."
+          }
+        },
+        {
+          "targetText": "Même si la réparation est possible, je préférerais un échange pour gagner du temps.",
+          "baseText": {
+            "de": "Auch wenn die Reparatur möglich ist, wäre mir ein Umtausch lieber, um Zeit zu sparen.",
+            "en": "Even though a repair is possible, I'd prefer an exchange to save time."
+          }
+        },
+        {
+          "targetText": "Nous n'avons plus ce modèle. Quelles fonctions faut-il absolument garder ?",
+          "baseText": {
+            "de": "Dieses Modell haben wir nicht mehr. Welche Funktionen brauchen Sie unbedingt wieder?",
+            "en": "We no longer have this model. Which features do you absolutely need to keep?"
+          }
+        },
+        {
+          "targetText": "Il me faut un programme court qui lave à froid.",
+          "baseText": {
+            "de": "Ich brauche ein Kurzprogramm, das kalt wäscht.",
+            "en": "I need a short cycle that washes in cold water."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Même si…, je préférerais…",
+        "rule": {
+          "de": "Mit même si erkennst du ein Argument an. Mit je préférerais sagst du anschließend, welche Lösung dir lieber wäre.",
+          "en": "Acknowledge a point with même si. Then use je préférerais to give the solution you would prefer."
+        },
+        "examples": [
+          {
+            "targetText": "Même si la réparation est possible, je préférerais un échange pour gagner du temps.",
+            "baseText": {
+              "de": "Auch wenn die Reparatur möglich ist, wäre mir ein Umtausch lieber, um Zeit zu sparen.",
+              "en": "Even though a repair is possible, I'd prefer an exchange to save time."
+            },
+            "highlight": "Même si la réparation est possible"
+          },
+          {
+            "targetText": "Même si le train est direct, je préférerais partir en bus.",
+            "baseText": {
+              "de": "Auch wenn der Zug direkt fährt, würde ich lieber mit dem Bus fahren.",
+              "en": "Even though the train is direct, I'd prefer to go by bus."
+            },
+            "highlight": "Même si le train est direct"
+          }
+        ]
+      },
+      "cloze": [
+        "Il me faut un programme court ",
+        {
+          "kind": "choice",
+          "answer": "qui",
+          "choices": [
+            "qui",
+            "dont",
+            "que",
+            "où"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "lave",
+          "choices": [
+            "lavez",
+            "lavent",
+            "lave",
+            "lavons"
+          ],
+          "cue": "laver (un programme court)"
+        },
+        " à froid."
+      ],
+      "chunks": [
+        {
+          "targetText": "Même si la réparation",
+          "baseText": {
+            "de": "Auch wenn die Reparatur",
+            "en": "Even though the repair"
+          }
+        },
+        {
+          "targetText": "est possible,",
+          "baseText": {
+            "de": "möglich ist,",
+            "en": "is possible,"
+          }
+        },
+        {
+          "targetText": "je préférerais un échange",
+          "baseText": {
+            "de": "wäre mir ein Umtausch lieber",
+            "en": "I'd prefer an exchange"
+          }
+        },
+        {
+          "targetText": "pour gagner du temps.",
+          "baseText": {
+            "de": "um Zeit zu sparen.",
+            "en": "to save time."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la réparation",
+          "baseText": {
+            "de": "die Reparatur",
+            "en": "the repair"
+          }
+        },
+        {
+          "targetText": "un échange",
+          "baseText": {
+            "de": "ein Umtausch",
+            "en": "an exchange"
+          }
+        },
+        {
+          "targetText": "gagner du temps",
+          "baseText": {
+            "de": "Zeit sparen",
+            "en": "to save time"
+          }
+        },
+        {
+          "targetText": "ce modèle",
+          "baseText": {
+            "de": "dieses Modell",
+            "en": "this model"
+          }
+        },
+        {
+          "targetText": "un programme court",
+          "baseText": {
+            "de": "ein Kurzprogramm",
+            "en": "a short cycle"
+          }
+        },
+        {
+          "targetText": "laver à froid",
+          "baseText": {
+            "de": "kalt waschen",
+            "en": "to wash in cold water"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Même si la réparation est possible, je ",
+        "answer": "préférerais",
+        "after": " un échange pour gagner du temps.",
+        "fallbackChoices": [
+          "préférerions",
+          "préférerais",
+          "préféreraient",
+          "préféreriez"
+        ]
+      },
+      "speakRequired": [
+        "réparation",
+        "échange",
+        "gagner"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin liest dir die Lieferzeit für das Ersatzteil vor. „Nous pouvons réparer votre machine, mais la pompe arrive dans six semaines.“",
+        "en": "The shop assistant reads out the expected delivery time for the part. “Nous pouvons réparer votre machine, mais la pompe arrive dans six semaines.”"
+      },
+      "trophyWord": {
+        "word": "échange",
+        "meaning": {
+          "de": "Umtausch",
+          "en": "exchange"
+        },
+        "example": "Serait-il possible de faire un échange en magasin ?",
+        "whyThisWord": {
+          "de": "Un échange bezeichnet hier den Tausch des defekten Geräts gegen ein anderes.",
+          "en": "Here un échange means swapping the faulty appliance for another one."
+        }
+      },
+      "distractors": [
+        "est obligatoire,",
+        "pour perdre du temps."
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Bildschirm stehen eine Ersatzteilnummer und ein Liefertermin mehrere Wochen später.",
+        "en": "A screen shows a spare-part number and a delivery date several weeks away."
+      },
+      "songMood": "Geduldig und bestimmt.",
+      "visualNotes": "A screen shows a spare-part number and a delivery date several weeks away."
+    },
+    {
+      "slug": "prix-du-remplacement",
+      "title": {
+        "de": "Das Ersatzmodell passt nicht",
+        "en": "The replacement doesn't fit"
+      },
+      "situation": {
+        "de": "Das Geschäft hat ein Ersatzmodell gefunden und zeigt dir sein Datenblatt. Die ersten Maße fallen dir gleich auf.",
+        "en": "The shop has found a replacement model and shows you its specifications. The dimensions catch your eye immediately."
+      },
+      "pedagogicalGoal": "Mit je préfère triffst du eine Wahl. Begründe sie mit parce que und einer konkreten Einschränkung wie trop large.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ce modèle a bien le programme court à froid. Qu'en pensez-vous ?",
+          "baseText": {
+            "de": "Dieses Modell hat tatsächlich das kurze Kaltwaschprogramm. Was halten Sie davon?",
+            "en": "This model does have the short cold wash. What do you think of it?"
+          }
+        },
+        {
+          "targetText": "Je préfère un remboursement parce que ce modèle est trop large pour ma cuisine.",
+          "baseText": {
+            "de": "Ich hätte lieber eine Erstattung, weil dieses Modell für meine Küche zu breit ist.",
+            "en": "I'd prefer a refund because this model is too wide for my kitchen."
+          }
+        },
+        {
+          "targetText": "C'est possible, mais notre proposition prévoit une retenue de trente euros.",
+          "baseText": {
+            "de": "Das ist möglich, aber unser Vorschlag sieht einen Abzug von dreißig Euro vor.",
+            "en": "That's possible, but our proposal includes a deduction of thirty euros."
+          }
+        },
+        {
+          "targetText": "Je voudrais comprendre pourquoi vous déduisez ces trente euros.",
+          "baseText": {
+            "de": "Ich möchte verstehen, warum Sie diese dreißig Euro abziehen.",
+            "en": "I'd like to understand why you're deducting these thirty euros."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Préférence et raison",
+        "rule": {
+          "de": "Mit je préfère triffst du eine Wahl. Begründe sie mit parce que und einer konkreten Einschränkung wie trop large.",
+          "en": "Make a choice with je préfère. Give a reason with parce que and a specific constraint such as trop large."
+        },
+        "examples": [
+          {
+            "targetText": "Je préfère un remboursement parce que ce modèle est trop large pour ma cuisine.",
+            "baseText": {
+              "de": "Ich hätte lieber eine Erstattung, weil dieses Modell für meine Küche zu breit ist.",
+              "en": "I'd prefer a refund because this model is too wide for my kitchen."
+            },
+            "highlight": "parce que ce modèle est trop large"
+          },
+          {
+            "targetText": "Je préfère le jardin parce que la salle est trop petite pour notre groupe.",
+            "baseText": {
+              "de": "Mir ist der Garten lieber, weil der Raum für unsere Gruppe zu klein ist.",
+              "en": "I'd prefer the garden because the room is too small for our group."
+            },
+            "highlight": "parce que la salle est trop petite"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "voudrais",
+          "choices": [
+            "voudriez",
+            "voudrions",
+            "voudrais",
+            "voudraient"
+          ],
+          "cue": "vouloir (je)"
+        },
+        " comprendre pourquoi vous ",
+        {
+          "kind": "form",
+          "answer": "déduisez",
+          "choices": [
+            "déduis",
+            "déduisez",
+            "déduisent",
+            "déduisons"
+          ],
+          "cue": "déduire (vous)"
+        },
+        " ces trente euros."
+      ],
+      "chunks": [
+        {
+          "targetText": "Je préfère un remboursement",
+          "baseText": {
+            "de": "Ich hätte lieber eine Erstattung",
+            "en": "I'd prefer a refund"
+          }
+        },
+        {
+          "targetText": "parce que ce modèle",
+          "baseText": {
+            "de": "weil dieses Modell",
+            "en": "because this model"
+          }
+        },
+        {
+          "targetText": "est trop large",
+          "baseText": {
+            "de": "zu breit ist",
+            "en": "is too wide"
+          }
+        },
+        {
+          "targetText": "pour ma cuisine.",
+          "baseText": {
+            "de": "für meine Küche.",
+            "en": "for my kitchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un remboursement",
+          "baseText": {
+            "de": "eine Rückerstattung",
+            "en": "a refund"
+          }
+        },
+        {
+          "targetText": "trop large",
+          "baseText": {
+            "de": "zu breit",
+            "en": "too wide"
+          }
+        },
+        {
+          "targetText": "une retenue",
+          "baseText": {
+            "de": "ein Abzug",
+            "en": "a deduction"
+          }
+        },
+        {
+          "targetText": "la proposition",
+          "baseText": {
+            "de": "der Vorschlag",
+            "en": "the proposal"
+          }
+        },
+        {
+          "targetText": "déduire",
+          "baseText": {
+            "de": "abziehen",
+            "en": "to deduct"
+          }
+        },
+        {
+          "targetText": "trente euros",
+          "baseText": {
+            "de": "dreißig Euro",
+            "en": "thirty euros"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je préfère un remboursement parce que ce modèle est trop ",
+        "answer": "large",
+        "after": " pour ma cuisine.",
+        "fallbackChoices": [
+          "largement",
+          "large",
+          "largeur",
+          "larges"
+        ]
+      },
+      "speakRequired": [
+        "remboursement",
+        "modèle",
+        "cuisine"
+      ],
+      "sceneCaption": {
+        "de": "Beim Gespräch über einen Ersatz zeigt dir der Verkäufer das Datenblatt. „Ce modèle a bien le programme court à froid. Qu'en pensez-vous ?“",
+        "en": "During your discussion of a replacement the salesperson shows you the specifications. “Ce modèle a bien le programme court à froid. Qu'en pensez-vous ?”"
+      },
+      "trophyWord": {
+        "word": "remboursement",
+        "meaning": {
+          "de": "Rückerstattung",
+          "en": "refund"
+        },
+        "example": "Le remboursement peut se faire par virement.",
+        "whyThisWord": {
+          "de": "Mit remboursement fragst du danach, dein Geld zurückzubekommen.",
+          "en": "Use remboursement to ask for your money back."
+        }
+      },
+      "distractors": [
+        "parce que ma facture",
+        "pour mon vélo."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Maßband liegt neben einem Datenblatt mit einer Skizze der Waschmaschine.",
+        "en": "A tape measure lies beside a specification sheet with a drawing of a washer."
+      },
+      "songMood": "Ruhig und kritisch.",
+      "visualNotes": "A tape measure lies beside a specification sheet with a drawing of a washer."
+    },
+    {
+      "slug": "reprise-par-le-magasin",
+      "title": {
+        "de": "Betrag und Rücknahme",
+        "en": "Amount and take-back"
+      },
+      "situation": {
+        "de": "Das Geschäft hat die Unterlagen geprüft und den Abzug gestrichen. Du lässt dir die vereinbarte Summe und die Rücknahme bestätigen.",
+        "en": "The shop has checked the paperwork and dropped the deduction. You confirm the agreed amount and what happens to the machine."
+      },
+      "pedagogicalGoal": "Mit selon notre accord leitest du eine Zusammenfassung ein. Nenne danach konkret, wer welche Leistung übernimmt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Le transport était déjà payé. On vous propose donc la somme entière.",
+          "baseText": {
+            "de": "Der Transport war schon bezahlt. Wir bieten Ihnen also den vollen Betrag an.",
+            "en": "Transport had already been paid for, so we're offering you the full amount."
+          }
+        },
+        {
+          "targetText": "Selon notre accord, vous me remboursez quatre cents euros et vous reprenez la machine.",
+          "baseText": {
+            "de": "Nach unserer Vereinbarung erstatten Sie mir vierhundert Euro und nehmen die Maschine zurück.",
+            "en": "Under our agreement, you'll refund me four hundred euros and take back the machine."
+          }
+        },
+        {
+          "targetText": "C'est bien ça. Mais le trajet entre l'atelier et notre dépôt reste à organiser.",
+          "baseText": {
+            "de": "Genau. Die Fahrt von der Werkstatt zu unserem Lager muss allerdings noch organisiert werden.",
+            "en": "That's right. But transport from the workshop to our warehouse still needs arranging."
+          }
+        },
+        {
+          "targetText": "Qui organise le transport et qui prévient la personne à l'atelier ?",
+          "baseText": {
+            "de": "Wer organisiert den Transport und wer benachrichtigt die Person in der Werkstatt?",
+            "en": "Who arranges transport and who notifies the person at the workshop?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Rappeler les termes d'un accord",
+        "rule": {
+          "de": "Mit selon notre accord leitest du eine Zusammenfassung ein. Nenne danach konkret, wer welche Leistung übernimmt.",
+          "en": "Use selon notre accord to introduce a recap. Then say exactly who will do what."
+        },
+        "examples": [
+          {
+            "targetText": "Selon notre accord, vous me remboursez quatre cents euros et vous reprenez la machine.",
+            "baseText": {
+              "de": "Nach unserer Vereinbarung erstatten Sie mir vierhundert Euro und nehmen die Maschine zurück.",
+              "en": "Under our agreement, you'll refund me four hundred euros and take back the machine."
+            },
+            "highlight": "Selon notre accord"
+          },
+          {
+            "targetText": "Selon notre accord, je fournis la peinture et vous prêtez les pinceaux.",
+            "baseText": {
+              "de": "Nach unserer Vereinbarung stelle ich die Farbe und Sie leihen die Pinsel aus.",
+              "en": "Under our agreement, I'll supply the paint and you'll lend the brushes."
+            },
+            "highlight": "Selon notre accord"
+          }
+        ]
+      },
+      "cloze": [
+        "Qui ",
+        {
+          "kind": "form",
+          "answer": "organise",
+          "choices": [
+            "organisent",
+            "organisez",
+            "organise",
+            "organisons"
+          ],
+          "cue": "organiser (qui)"
+        },
+        " le transport et qui ",
+        {
+          "kind": "form",
+          "answer": "prévient",
+          "choices": [
+            "prévient",
+            "prévenez",
+            "préviennent",
+            "prévenons"
+          ],
+          "cue": "prévenir (qui)"
+        },
+        " la personne à l'atelier ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Selon notre accord,",
+          "baseText": {
+            "de": "Nach unserer Vereinbarung",
+            "en": "Under our agreement,"
+          }
+        },
+        {
+          "targetText": "vous me remboursez",
+          "baseText": {
+            "de": "erstatten Sie mir",
+            "en": "you'll refund me"
+          }
+        },
+        {
+          "targetText": "quatre cents euros",
+          "baseText": {
+            "de": "vierhundert Euro",
+            "en": "four hundred euros"
+          }
+        },
+        {
+          "targetText": "et vous reprenez la machine.",
+          "baseText": {
+            "de": "und nehmen die Maschine zurück.",
+            "en": "and take back the machine."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "selon notre accord",
+          "baseText": {
+            "de": "nach unserer Vereinbarung",
+            "en": "under our agreement"
+          }
+        },
+        {
+          "targetText": "rembourser",
+          "baseText": {
+            "de": "erstatten",
+            "en": "to refund"
+          }
+        },
+        {
+          "targetText": "quatre cents euros",
+          "baseText": {
+            "de": "vierhundert Euro",
+            "en": "four hundred euros"
+          }
+        },
+        {
+          "targetText": "reprendre la machine",
+          "baseText": {
+            "de": "die Maschine zurücknehmen",
+            "en": "to take back the machine"
+          }
+        },
+        {
+          "targetText": "le dépôt",
+          "baseText": {
+            "de": "das Lager",
+            "en": "the warehouse"
+          }
+        },
+        {
+          "targetText": "prévenir",
+          "baseText": {
+            "de": "benachrichtigen",
+            "en": "to notify"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Selon notre accord, vous me ",
+        "answer": "remboursez",
+        "after": " quatre cents euros et vous reprenez la machine.",
+        "fallbackChoices": [
+          "remboursons",
+          "remboursent",
+          "remboursez",
+          "rembourses"
+        ]
+      },
+      "speakRequired": [
+        "accord",
+        "remboursez",
+        "reprenez"
+      ],
+      "sceneCaption": {
+        "de": "Der Kundenberater meldet sich mit einem überarbeiteten Angebot. „Le transport était déjà payé. On vous propose donc la somme entière.“",
+        "en": "The service agent comes back with a revised offer. “Le transport était déjà payé. On vous propose donc la somme entière.”"
+      },
+      "trophyWord": {
+        "word": "accord",
+        "meaning": {
+          "de": "Vereinbarung",
+          "en": "agreement"
+        },
+        "example": "Je voudrais garder une copie de notre accord.",
+        "whyThisWord": {
+          "de": "Accord fasst die Punkte zusammen, auf die sich beide Seiten geeinigt haben.",
+          "en": "Accord refers to the terms both sides have agreed to."
+        }
+      },
+      "distractors": [
+        "quatre mètres de tissu",
+        "et vous gardez la monnaie."
+      ],
+      "placeholderCaption": {
+        "de": "Das überarbeitete Angebot über vierhundert Euro liegt auf dem Tresen.",
+        "en": "The revised offer for four hundred euros lies on the counter."
+      },
+      "songMood": "Klar und lösungsorientiert.",
+      "visualNotes": "The revised offer for four hundred euros lies on the counter."
+    },
+    {
+      "slug": "cloture-apres-virement",
+      "title": {
+        "de": "Eine Bestätigung zum Schluss",
+        "en": "One last confirmation"
+      },
+      "situation": {
+        "de": "Das Geschäft hat die Maschine aus der Werkstatt abgeholt. Am Telefon geht es noch einmal um die Erstattung.",
+        "en": "The shop has collected the machine from the workshop. You make one more call about the refund."
+      },
+      "pedagogicalGoal": "Mit est résolu sprichst du über das Ergebnis. Maintenant oder enfin grenzt diesen Zustand von der Zeit davor ab.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Nous avons repris le lave-linge et fait le virement ce matin.",
+          "baseText": {
+            "de": "Wir haben die Waschmaschine zurückgenommen und heute Morgen das Geld überwiesen.",
+            "en": "We've taken back the washer and made the bank transfer this morning."
+          }
+        },
+        {
+          "targetText": "Est-ce que le problème est maintenant résolu grâce à ce virement ?",
+          "baseText": {
+            "de": "Ist das Problem durch diese Überweisung jetzt gelöst?",
+            "en": "Does this transfer mean the problem is now resolved?"
+          }
+        },
+        {
+          "targetText": "Oui, dès que vous confirmez la réception des quatre cents euros.",
+          "baseText": {
+            "de": "Ja, sobald Sie bestätigen, dass die vierhundert Euro eingegangen sind.",
+            "en": "Yes, once you confirm you've received the four hundred euros."
+          }
+        },
+        {
+          "targetText": "Je vois le versement. Pouvez-vous confirmer la clôture par écrit ?",
+          "baseText": {
+            "de": "Ich sehe den Geldeingang. Können Sie mir den Abschluss schriftlich bestätigen?",
+            "en": "I can see the payment. Can you confirm in writing that the case is closed?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vérifier le résultat",
+        "rule": {
+          "de": "Mit est résolu sprichst du über das Ergebnis. Maintenant oder enfin grenzt diesen Zustand von der Zeit davor ab.",
+          "en": "Use est résolu to describe the outcome. Maintenant or enfin contrasts the current situation with what came before."
+        },
+        "examples": [
+          {
+            "targetText": "Est-ce que le problème est maintenant résolu grâce à ce virement ?",
+            "baseText": {
+              "de": "Ist das Problem durch diese Überweisung jetzt gelöst?",
+              "en": "Does this transfer mean the problem is now resolved?"
+            },
+            "highlight": "le problème est maintenant résolu"
+          },
+          {
+            "targetText": "Les deux voisins se reparlent : le conflit est enfin résolu.",
+            "baseText": {
+              "de": "Die beiden Nachbarn reden wieder miteinander. Der Streit ist endlich beigelegt.",
+              "en": "The two neighbors are talking again: the dispute is finally resolved."
+            },
+            "highlight": "le conflit est enfin résolu"
+          }
+        ]
+      },
+      "cloze": [
+        "Je ",
+        {
+          "kind": "form",
+          "answer": "vois",
+          "choices": [
+            "voyons",
+            "voient",
+            "voyez",
+            "vois"
+          ],
+          "cue": "voir (je)"
+        },
+        " le versement. Pouvez-vous ",
+        {
+          "kind": "choice",
+          "answer": "confirmer",
+          "choices": [
+            "confirmez",
+            "confirmer",
+            "confirmait",
+            "confirment"
+          ]
+        },
+        " la clôture par écrit ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Est-ce que le problème",
+          "baseText": {
+            "de": "Ist das Problem",
+            "en": "Is the problem"
+          }
+        },
+        {
+          "targetText": "est maintenant résolu",
+          "baseText": {
+            "de": "jetzt gelöst",
+            "en": "now resolved"
+          }
+        },
+        {
+          "targetText": "grâce à",
+          "baseText": {
+            "de": "durch",
+            "en": "thanks to"
+          }
+        },
+        {
+          "targetText": "ce virement ?",
+          "baseText": {
+            "de": "diese Überweisung?",
+            "en": "this transfer?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le virement",
+          "baseText": {
+            "de": "die Überweisung",
+            "en": "the bank transfer"
+          }
+        },
+        {
+          "targetText": "le problème est résolu",
+          "baseText": {
+            "de": "das Problem ist gelöst",
+            "en": "the problem is resolved"
+          }
+        },
+        {
+          "targetText": "la réception",
+          "baseText": {
+            "de": "der Empfang",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "le versement",
+          "baseText": {
+            "de": "die Zahlung",
+            "en": "the payment"
+          }
+        },
+        {
+          "targetText": "la clôture",
+          "baseText": {
+            "de": "der Abschluss",
+            "en": "the closure"
+          }
+        },
+        {
+          "targetText": "par écrit",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Est-ce que le problème est maintenant ",
+        "answer": "résolu",
+        "after": " grâce à ce virement ?",
+        "fallbackChoices": [
+          "résolue",
+          "résoudre",
+          "résolu",
+          "résolus"
+        ]
+      },
+      "speakRequired": [
+        "virement",
+        "problème",
+        "résolu"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin fasst die letzten Schritte zusammen. „Nous avons repris le lave-linge et fait le virement ce matin.“",
+        "en": "The employee reports the final steps. “Nous avons repris le lave-linge et fait le virement ce matin.”"
+      },
+      "trophyWord": {
+        "word": "résolu",
+        "meaning": {
+          "de": "gelöst",
+          "en": "resolved"
+        },
+        "example": "Le problème de paiement est résolu.",
+        "whyThisWord": {
+          "de": "Résolu beschreibt beim männlichen Wort problème den erreichten Zustand.",
+          "en": "Résolu agrees with the masculine noun problème and describes the outcome."
+        }
+      },
+      "distractors": [
+        "Est-ce que les comptes",
+        "ce retard ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bankbuchung steht auf dem Display neben dem Vorgang des Kundendiensts.",
+        "en": "A bank transaction appears on the screen beside the service file."
+      },
+      "songMood": "Erleichtert und zuversichtlich.",
+      "visualNotes": "A bank transaction appears on the screen beside the service file."
+    }
+  ]
+}

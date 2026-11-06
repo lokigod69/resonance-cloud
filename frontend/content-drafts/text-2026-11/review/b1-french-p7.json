@@ -1,0 +1,1370 @@
+{
+  "language": "French",
+  "level": "B1",
+  "pathNumber": 7,
+  "lessonSha256": "9ecaf78e0bb89136b909c7255b90fe83c91c112f0e12bea4945295108f4fb609",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "9ecaf78e0bb89136b909c7255b90fe83c91c112f0e12bea4945295108f4fb609",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Shorter programme keeps the games for newcomers per beat; cloze concat reproduces turn 4 exactly, pour is the only connector chip that licenses permettre, and de forces participer over the three finite chips."
+      },
+      {
+        "n": 2,
+        "observation": "Small tent plus moved tables matches the outline; car/si/dont cannot precede a bare infinitive, circuler is the only subjectless form after pour; German 'damit wir durchkommen' and English 'so we can get through' both idiomatic."
+      },
+      {
+        "n": 3,
+        "observation": "Group chat replaces the list while keeping every arrival time; German caption now 'zwei Freunde'; chips dont/quand/puisque all require a finite clause, so pour indiquer is the single answer."
+      },
+      {
+        "n": 4,
+        "observation": "4h15 is a real intermediate departure between 3h and the post-5h congestion; devancer les bouchons idiomatic; dès que/car/qui cannot introduce an infinitive."
+      },
+      {
+        "n": 5,
+        "observation": "First pour que + puisse with chacun, cloze form soit cued 'être (ton détour)' without naming the connector; placeholder shows only car key and shopping bags, bridge not revealed."
+      },
+      {
+        "n": 6,
+        "observation": "Rehearsed turn is 16 words after the 'partout' shortening and all duplicates (example, chunk, recall, trophy example, de/en) match; audibility everywhere is now the pour que goal, volume cut answers the neighbours."
+      },
+      {
+        "n": 7,
+        "observation": "ait after pour que chacun in both examples; Lina's ten-minute limit answered with a three-price task; à cause de/malgré/depuis take noun phrases, so pour que sa tâche soit is unique."
+      },
+      {
+        "n": 8,
+        "observation": "Title 'Die letzte Probe' and script-only caption no longer foreshadow the online option; label carries the licensor 'Pour que tout le monde puisse essayer'; marche cued 'marcher (la répétition)'."
+      },
+      {
+        "n": 9,
+        "observation": "Contrast lesson: pour garder (same subject) in the rehearsed line, pour que le texte soit (new subject) in the cloze; title 'Einladungen schreiben' neutral; en attendant de/depuis/malgré cannot license the subjunctive clause."
+      },
+      {
+        "n": 10,
+        "observation": "Consolidation pairs pour que tout le monde puisse entrer with pour garder un accès sans marches; placeholder shows only the hall's four steps, library alternative withheld until turn 3."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "9ecaf78e0bb89136b909c7255b90fe83c91c112f0e12bea4945295108f4fb609",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "Only pour introduces permettre here, and de requires participer rather than the finite forms. Both selections are visible from first attempt."
+      },
+      {
+        "n": 2,
+        "observation": "Si/car/dont cannot introduce the proposed purpose with any of the four subjectless verb forms. Pour circuler uniquely responds to the aisle constraint."
+      },
+      {
+        "n": 3,
+        "observation": "Pour indiquer is the unique combination for posting the times. The alternative conjunction chips require different syntax."
+      },
+      {
+        "n": 4,
+        "observation": "Pour devancer is the unique meaningful way to give the planned departure’s purpose from the listed options."
+      },
+      {
+        "n": 5,
+        "observation": "Only pour que can introduce ton détour soit court among the chips; the form cue no longer names the connector."
+      },
+      {
+        "n": 6,
+        "observation": "Pour que le son reste is the one complete clause compatible with lowering the volume in the courtyard."
+      },
+      {
+        "n": 7,
+        "observation": "Pour que sa tâche soit courte conveys Lina’s time limit; the other connector chips take a noun phrase instead."
+      },
+      {
+        "n": 8,
+        "observation": "Pour que la répétition en ligne marche supplies the purpose of the sound test. The three other connectors cannot introduce this clause."
+      },
+      {
+        "n": 9,
+        "observation": "Pour que le texte soit cohérent gives the reason for joint proofreading. The alternatives do not license that subjunctive clause."
+      },
+      {
+        "n": 10,
+        "observation": "The original hall’s steps still lead to the library alternative. Pour garder is the unique chip combination for keeping the access step-free."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "LOW",
+        "field": "English base texts",
+        "issue": "Accepted regional base-language variation: neighbours, programme, organising and colour use British English in explanations for target French. Their meaning matches French and German.",
+        "recommendation": "If English explanation copy receives a single dialect requirement, normalize it at corpus level."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "a87305fa0eb53d5ce2fbc9e0437c351543d1e5901f08772b0cd1788967b1bd97",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The shorter programme leads to a choice between games and speeches. Réunir transfers to hearing music through the pour + infinitive construction."
+      },
+      {
+        "n": 2,
+        "observation": "The smaller tent fits, and moving tables creates an aisle. The adjacent cue discloses both typed answers."
+      },
+      {
+        "n": 3,
+        "observation": "The group chat preserves arrival information. The fallback tests organiser cleanly."
+      },
+      {
+        "n": 4,
+        "observation": "The 4:15 compromise satisfies the friend's 4:00 finish and the 5:00 traffic rise."
+      },
+      {
+        "n": 5,
+        "observation": "Chacun puisse correctly marks a new subject, but the picture reveals the bridge meeting point."
+      },
+      {
+        "n": 6,
+        "observation": "The courtyard noise objection prompts an adjustment, but the core suggestion changes the planned goal from audibility to naturalness."
+      },
+      {
+        "n": 7,
+        "observation": "Ait agrees with chacun. A limited labelling task lets Lina help during her ten-minute window."
+      },
+      {
+        "n": 8,
+        "observation": "Puisse agrees with tout le monde. The title gives away the online alternative and the grammar label lacks its licensor."
+      },
+      {
+        "n": 9,
+        "observation": "The two learner turns contrast pour garder and pour que le texte soit. The title pre-empts their final joint proofreading solution."
+      },
+      {
+        "n": 10,
+        "observation": "Choosing the accessible room preserves the common objective. The opening visual actually shows the alternative library room."
+      }
+    ],
+    "findings": [
+      {
+        "n": 2,
+        "severity": "HIGH",
+        "field": "cloze.cue, L1–10",
+        "issue": "The form cue shows the exact missing infinitive (L1–4,10). In L2–4,10 it ALSO spells out the other blank pour, and in L5–9 the second cue literally says nach pour que, disclosing the first blank. Both cues render at once in ComplicationStep.tsx:213,303.",
+        "recommendation": "Remove references to a neighbouring hidden connector and avoid printing the answer verbatim. Use a translated semantic prompt or a related finite form as appropriate. Check all ten exercises as displayed."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "Before the friend proposes a route by the bridge, the picture already depicts two routes meeting at a bridge, the learner’s eventual proposal.",
+        "recommendation": "Keep the route map generic or show the car and market bags."
+      },
+      {
+        "n": 6,
+        "severity": "MEDIUM",
+        "field": "dialogue[1], pattern",
+        "issue": "The friend raises audibility at the back and the allocated beat asks for a microphone adjustment so everyone can hear. The learner instead discusses the natural sound of Zoé’s voice, never proposing how the people at the back can hear her.",
+        "recommendation": "Use permettre in a learner suggestion for a setting or placement and give audibility as the pour que goal. Keep the neighbours’ noise objection for turn 3."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "title, placeholderCaption, visualNotes",
+        "issue": "Rehearsing remotely announces the friend’s online proposal in turn three; the laptop reinforces it.",
+        "recommendation": "Title the lesson “The final rehearsal” / “Die letzte Probe”, and show the script or rehearsal room without a laptop."
+      },
+      {
+        "n": 8,
+        "severity": "MEDIUM",
+        "field": "pattern.label",
+        "issue": "Tout le monde puisse essayer is an unlicensed standalone subjunctive fragment when shown as the card heading.",
+        "recommendation": "Include the licensor: Pour que tout le monde puisse essayer."
+      },
+      {
+        "n": 9,
+        "severity": "MEDIUM",
+        "field": "title",
+        "issue": "One last look at the invitations names joint proofreading, the learner’s last-turn compromise, before the interlocutor suggests splitting up.",
+        "recommendation": "Use a neutral title such as “Writing the invitations” / “Einladungen schreiben”."
+      },
+      {
+        "n": 10,
+        "severity": "MEDIUM",
+        "field": "placeholderCaption, visualNotes",
+        "issue": "The library with a level entrance is the precise alternative the friend is supposed to introduce later.",
+        "recommendation": "Show only the original hall and its entrance steps."
+      },
+      {
+        "n": 3,
+        "severity": "LOW",
+        "field": "placeholderCaption.de",
+        "issue": "Ein Paar Freunde suggests a pair/couple and is stiff where the English simply says two friends.",
+        "recommendation": "Use Zwei Freunde or Zwei Personen."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "396bcdef8125de1a52f45ca26a524ee43109b508c3550d83150590185d5faac1",
+      "sourceSha256": "30b3b7e18e56f6b72dcff578b1894e35e05c0b3c529380b356fe158b8515e566",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat met (shorter programme, keep games for newcomers); cloze/chunk/recall concatenations identical to turns; form gap tests 'permettre de + infinitif' rather than pour itself, acceptable at L1."
+        },
+        {
+          "n": 2,
+          "observation": "Space complication real (wall/tables), smaller tent plus moved tables; connector and form gaps both on pour + gagner; second example (bocaux/épices) distinct from rehearsed."
+        },
+        {
+          "n": 3,
+          "observation": "Printer complication and group-chat substitute keep the same information; 'ein Paar Freunde' in the German placeholder caption is stilted."
+        },
+        {
+          "n": 4,
+          "observation": "Intermediate 4:15 departure follows from 'until four / after five'; 'passer avant la foule' is slightly off for road traffic but understandable."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que lesson; puisse recall and soit cloze with explicit subject cues; bridge detour is a genuine route complication."
+        },
+        {
+          "n": 6,
+          "observation": "Learner turn 2 and the pattern/recall are built on 'il faut que … soit', a subjunctive trigger outside the L5–8 pour que staging, and the beat's 'pour que chacun entende' never appears in the learner's request."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun; Lina's ten-minute limit yields a limited task; German rule omits the word Subjonctif but is correct."
+        },
+        {
+          "n": 8,
+          "observation": "Tout le monde singular agreement explained; online rehearsal with sound test matches the beat; marche cloze is on the staging whitelist."
+        },
+        {
+          "n": 9,
+          "observation": "Mixed lesson contrasting pour garder (same subject) and pour que le texte soit; learner futur simple 'relira' is permitted at L9."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone contrasts pour que tout le monde puisse (recall) with pour garder (cloze); celle-ci correctly agrees with 'une petite salle'."
+        }
+      ],
+      "findings": [
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Lesson 6 teaches and drills 'il faut que le micro soit' (pattern highlight, rule, recall) instead of the staged pour que + subjonctif; the beat's 'demander un réglage pour que chacun entende' is absent from the learner turn. Recast turn 2 so permettre stays the trophy and the pour que form (entende) carries the pattern, with all coupled fields updated.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Pour permettre à Zoé de lire sans crier, il faut que le micro soit près d'elle.",
+              "new": "Un micro va permettre à Zoé de lire sans crier. Réglons-le pour que chacun entende bien."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Damit Zoé vorlesen kann, ohne zu schreien, muss das Mikrofon nah bei ihr sein.",
+              "new": "Ein Mikrofon wird es Zoé ermöglichen, vorzulesen, ohne zu schreien. Stellen wir es so ein, dass alle gut hören."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "To let Zoé read without shouting, the microphone needs to be close to her.",
+              "new": "A microphone will let Zoé read without shouting. Let's set it up so everyone can hear properly."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/0/highlight",
+              "old": "il faut que le micro soit",
+              "new": "pour que chacun entende"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "Pour permettre à Zoé de lire nennt den Zweck der Anordnung. Il faut que le micro soit … beschreibt mit dem Subjonctif die dafür nötige Bedingung.",
+              "new": "Permettre à Zoé de lire nennt, was das Mikrofon möglich macht. Nach pour que chacun steht entende, der Subjonctif von entendre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/rule/en",
+              "old": "Pour permettre à Zoé de lire gives the aim of the setup. Il faut que le micro soit … uses the subjunctive to state what is needed.",
+              "new": "Permettre à Zoé de lire names what the microphone makes possible. After pour que chacun, use entende, the subjunctive of entendre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/examples/1",
+              "old": {
+                "targetText": "Pour permettre au chat de sortir, il faut que la trappe soit ouverte.",
+                "baseText": {
+                  "de": "Damit die Katze hinausgehen kann, muss die Klappe offen sein.",
+                  "en": "To let the cat get out, the flap needs to be open."
+                },
+                "highlight": "il faut que la trappe soit"
+              },
+              "new": {
+                "targetText": "Je parle plus fort pour que chacun entende la consigne.",
+                "baseText": {
+                  "de": "Ich spreche lauter, damit alle die Anweisung hören.",
+                  "en": "I speak louder so everyone hears the instructions."
+                },
+                "highlight": "pour que chacun entende"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks",
+              "old": [
+                {
+                  "targetText": "Pour permettre",
+                  "baseText": {
+                    "de": "um es zu ermöglichen",
+                    "en": "to make it possible"
+                  }
+                },
+                {
+                  "targetText": "à Zoé de lire",
+                  "baseText": {
+                    "de": "dass Zoé vorliest",
+                    "en": "for Zoé to read"
+                  }
+                },
+                {
+                  "targetText": "sans crier,",
+                  "baseText": {
+                    "de": "ohne zu schreien",
+                    "en": "without shouting"
+                  }
+                },
+                {
+                  "targetText": "il faut que le micro soit près d'elle.",
+                  "baseText": {
+                    "de": "muss das Mikrofon nah bei ihr sein",
+                    "en": "the microphone needs to be close to her"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Un micro va permettre",
+                  "baseText": {
+                    "de": "ein Mikrofon wird ermöglichen",
+                    "en": "a microphone will allow"
+                  }
+                },
+                {
+                  "targetText": "à Zoé de lire sans crier.",
+                  "baseText": {
+                    "de": "dass Zoé vorliest, ohne zu schreien",
+                    "en": "Zoé to read without shouting"
+                  }
+                },
+                {
+                  "targetText": "Réglons-le pour que chacun",
+                  "baseText": {
+                    "de": "stellen wir es so ein, dass alle",
+                    "en": "let's set it so everyone"
+                  }
+                },
+                {
+                  "targetText": "entende bien.",
+                  "baseText": {
+                    "de": "gut hören",
+                    "en": "can hear properly"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/recall",
+              "old": {
+                "before": "Pour permettre à Zoé de lire sans crier, il faut que le micro ",
+                "answer": "soit",
+                "after": " près d'elle.",
+                "fallbackChoices": [
+                  "soit",
+                  "est",
+                  "sont",
+                  "êtes"
+                ]
+              },
+              "new": {
+                "before": "Un micro va permettre à Zoé de lire sans crier. Réglons-le pour que chacun ",
+                "answer": "entende",
+                "after": " bien.",
+                "fallbackChoices": [
+                  "entend",
+                  "entendent",
+                  "entendez",
+                  "entende"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German placeholder caption 'ein Paar Freunde vergleicht' is stilted; 'zwei Freunde vergleichen' matches the English.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Auf einem Bahnsteig vergleicht ein Paar Freunde die Abfahrtstafel mit einem Notizblock.",
+              "new": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Base-English strings across the path use British spellings and vocabulary (neighbour, programme, organise/organising, petrol); the staging bans British spellings for the English tier, and the convention for base English here should be confirmed against the German B1 corpus rather than changed speculatively. Also the native outline proposed vous while the staging table assigns P7 mostly tu; the candidate follows the staging (informal), which should be confirmed in arbitration.",
+          "edits": []
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "'passer avant la foule' is a mild collocation stretch for road traffic; 'avant l'affluence' would be more natural but would require editing the cloze tail segment and translations.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "553c1b3afbcff1ded91bbf2d8ba5f19c1833ceea4d5e0dc11279f8c4ec0b9029",
+      "sourceSha256": "a87305fa0eb53d5ce2fbc9e0437c351543d1e5901f08772b0cd1788967b1bd97",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat and trophy objectif met; shorter programme forces games-vs-speeches choice, learner keeps games for newcomers. Cloze/chunk/recall concatenations reproduce turns 2 and 4 exactly; L1 cue names only permettre à quelqu'un de, not the hidden pour, so it is left as is. Base English keeps British forms (neighbour, programme, organise, petrol) throughout the path; this follows the base-locale corpus convention, not the English-tier ban, so no edit."
+        },
+        {
+          "n": 2,
+          "observation": "Wall/tables space problem leads to the small tent plus moved tables; both pour + infinitif gaps correct and concat-identical. Form cue 'circuler (pour + Infinitiv)' prints the answer of the neighbouring connector blank; same pattern in L3, L4, L10 and, as 'nach pour que', in L5–9 (cue finding below)."
+        },
+        {
+          "n": 3,
+          "observation": "Printer complication and group-chat substitute preserve the same arrival information; organiser recall clean. German placeholder 'ein Paar Freunde vergleicht' is stilted (optional edit)."
+        },
+        {
+          "n": 4,
+          "observation": "4:15 departure follows from 'jusqu'à quatre heures / après cinq heures'; the earlier 'passer avant la foule' concern is already resolved, 'devancer les bouchons' is idiomatic and concat-identical."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que lesson with puisse recall and soit cloze under explicit subject ton détour. Situation 'Überlegt, wo ihr in ein Auto steigen könnt' is unidiomatic German and, like the English 'where to meet', pre-announces the meeting-point compromise; placeholder map 'zwei Strecken zu einer Brücke' depicts the friend's later bridge route."
+        },
+        {
+          "n": 6,
+          "observation": "Earlier 'il faut que le micro soit' finding is already superseded: current turn 2 uses pour que sa voix soit. But the goal 'plus naturelle' answers neither the friend's audibility complaint nor the beat's 'pour que chacun entende'; keeping soit (staged whitelist) and permettre, 'claire jusqu'au fond' restores audibility with minimal change. 4 causal turns and the neighbourhood-volume compromise otherwise sound."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun; Lina's ten-minute window yields a limited three-price task; soit cloze and ait recall correct, second example (carafe) distinct from the rehearsed one."
+        },
+        {
+          "n": 8,
+          "observation": "Tout le monde singular agreement correctly explained; marche is whitelisted. Title 'Rehearsing remotely' and the laptop caption reveal the friend's online proposal before turn 3; pattern label shows a bare subjunctive without its pour que licensor."
+        },
+        {
+          "n": 9,
+          "observation": "Mixed lesson correctly contrasts pour garder (shared subject, recall) with pour que le texte soit (cloze); them-turn futur 'ira' allowed. Title 'One last look at the invitations' pre-empts the joint final rereading that resolves the two-groups complication."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone contrasts pour que tout le monde puisse (recall) with pour garder (cloze); celle-ci acceptable for the just-mentioned room. Placeholder shows the library's level-access room, i.e. the alternative the friend only introduces in turn 3."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Form-gap cues in L2–10 disclose the adjacent connector blank: '(pour + Infinitiv)' in L2, L3, L4, L10 and 'nach pour que' in L5–9 render beside the connector gap and hand over its answer. Strip the connector reference; subject-only cues keep the subjunctive test, 'ohne Subjekt' signals the infinitive without naming pour.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3/cue",
+              "old": "circuler (pour + Infinitiv)",
+              "new": "circuler (ohne Subjekt)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3/cue",
+              "old": "indiquer (pour + Infinitiv)",
+              "new": "indiquer (ohne Subjekt)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3/cue",
+              "old": "devancer (pour + Infinitiv)",
+              "new": "devancer (ohne Subjekt)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/cloze/3/cue",
+              "old": "être (ton détour, nach pour que)",
+              "new": "être (ton détour)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/cloze/3/cue",
+              "old": "rester (le son, nach pour que)",
+              "new": "rester (le son)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/cloze/3/cue",
+              "old": "être (sa tâche, nach pour que)",
+              "new": "être (sa tâche)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/3/cue",
+              "old": "marcher (la répétition, nach pour que)",
+              "new": "marcher (la répétition)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/cloze/3/cue",
+              "old": "être (le texte, nach pour que)",
+              "new": "être (le texte)"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3/cue",
+              "old": "garder (pour + Infinitiv)",
+              "new": "garder (ohne Subjekt)"
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "Situation (duplicated in sceneCaption) is unidiomatic German and reveals the meeting-point resolution; placeholder caption/visualNotes depict the bridge route the friend introduces only in turn 3.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Überlegt, wo ihr in ein Auto steigen könnt.",
+              "new": "Überlegt, wie ihr die Fahrt günstiger macht."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/4",
+              "old": "Work out where to meet to share a car.",
+              "new": "Work out how to make the trip cheaper."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/placeholderCaption",
+              "old": {
+                "de": "Auf einer Straßenkarte führen zwei Strecken zu einer Brücke.",
+                "en": "Two routes on a road map meet at a bridge."
+              },
+              "new": {
+                "de": "Ein Autoschlüssel liegt neben zwei leeren Einkaufstaschen.",
+                "en": "A car key lies next to two empty shopping bags."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/visualNotes",
+              "old": "Two routes on a road map meet at a bridge.",
+              "new": "A car key lies next to two empty shopping bags."
+            }
+          ]
+        },
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "Learner turn 2 gives 'plus naturelle' as the pour que goal, ignoring the friend's 'on perd la moitié du texte' and the beat's audibility goal (pour que chacun entende). Minimal recast keeps permettre, the staged soit and the subject sa voix while restoring audibility; all duplicated example, trophy example, chunk and recall fields updated so concatenations stay identical.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "pour que sa voix soit plus naturelle.",
+              "new": "pour que sa voix soit claire jusqu'au fond."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "damit ihre Stimme natürlicher klingt.",
+              "new": "damit ihre Stimme bis ganz hinten klar zu hören ist."
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "so her voice sounds more natural.",
+              "new": "so her voice is clear right to the back."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/chunks/3",
+              "old": {
+                "targetText": "soit plus naturelle.",
+                "baseText": {
+                  "de": "natürlicher klingt",
+                  "en": "sounds more natural"
+                }
+              },
+              "new": {
+                "targetText": "soit claire jusqu'au fond.",
+                "baseText": {
+                  "de": "bis ganz hinten klar zu hören ist",
+                  "en": "is clear right to the back"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/recall/after",
+              "old": " plus naturelle.",
+              "new": " claire jusqu'au fond."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/5/pattern/label",
+              "old": "Pour que sa voix soit naturelle",
+              "new": "Pour que sa voix soit claire"
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Title and placeholder caption/visualNotes reveal the online rehearsal (them₂); pattern label shows an unlicensed bare subjunctive fragment.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/title",
+              "old": {
+                "de": "Eine Probe auf Distanz",
+                "en": "Rehearsing remotely"
+              },
+              "new": {
+                "de": "Die letzte Probe",
+                "en": "The final rehearsal"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/pattern/label",
+              "old": "Tout le monde puisse essayer",
+              "new": "Pour que tout le monde puisse essayer"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/placeholderCaption",
+              "old": {
+                "de": "Ein Laptop steht zwischen einem Textheft und einer kleinen Bühnenleuchte.",
+                "en": "A laptop stands between a script and a small stage light."
+              },
+              "new": {
+                "de": "Ein Textheft liegt neben einer kleinen Bühnenleuchte auf einer Bühne.",
+                "en": "A script lies beside a small stage light on a stage."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/visualNotes",
+              "old": "A laptop stands between a script and a small stage light.",
+              "new": "A script lies beside a small stage light on a stage."
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Title names the final joint rereading before the friend proposes splitting into two groups.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/title",
+              "old": {
+                "de": "Ein letzter Blick auf die Einladungen",
+                "en": "One last look at the invitations"
+              },
+              "new": {
+                "de": "Einladungen schreiben",
+                "en": "Writing the invitations"
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Placeholder caption/visualNotes show the library's level-access room, the alternative the friend only offers in turn 3; show the original hall and its steps instead.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/placeholderCaption",
+              "old": {
+                "de": "Eine Person hält die Tür zu einem ebenerdigen Raum in einer Bibliothek auf.",
+                "en": "Someone holds open the door to a room with level access in a library."
+              },
+              "new": {
+                "de": "Vier Stufen führen zum Eingang eines großen Saals.",
+                "en": "Four steps lead up to the entrance of a large hall."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/9/visualNotes",
+              "old": "Someone holds open the door to a room with level access in a library.",
+              "new": "Four steps lead up to the entrance of a large hall."
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German placeholder 'ein Paar Freunde vergleicht' is stilted; 'zwei Freunde vergleichen' matches the English.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Auf einem Bahnsteig vergleicht ein Paar Freunde die Abfahrtstafel mit einem Notizblock.",
+              "new": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "2dd87364bff95e807bb973f4b44fdac76729d1ffe269980f7c7913494b023fec",
+      "sourceSha256": "48d5a4bafb66d28ab56f33889c3762f4bf5a01649b9e7daca3a506f74ae8fd01",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat and trophy objectif met; pour réunir / pour permettre de participer stay in the infinitive, German um…zu and English to-infinitive idiomatic; only the form cue still prints participer verbatim."
+        },
+        {
+          "n": 2,
+          "observation": "Prévoir + pour protéger matches the beat, space complication in turn 3 leads to the smaller tent; chunks concatenate to the rehearsed line; cue prints circuler."
+        },
+        {
+          "n": 3,
+          "observation": "List → group chat with the same arrival times fits the beat; connector chips dont/quand/puisque are all implausible before an infinitive; cue prints indiquer; German caption 'ein Paar Freunde' remains stilted."
+        },
+        {
+          "n": 4,
+          "observation": "Je partirais is licensed P3 conditionnel; the 4:15 compromise is a true intermediate departure; cue prints devancer."
+        },
+        {
+          "n": 5,
+          "observation": "First subjunctive stage with pour que chacun puisse, soit as the form blank; prior situation/caption leaks are resolved and the bridge meeting point now appears only in turn 4."
+        },
+        {
+          "n": 6,
+          "observation": "Audibility goal restored (sa voix soit claire jusqu'au fond), neighbour-noise complication intact; form blank reste is outside the staged soit/ait/puisse/fasse/vienne/marche list but is unambiguous since indicative and subjunctive coincide."
+        },
+        {
+          "n": 7,
+          "observation": "pour que chacun ait and pour que sa tâche soit courte follow the staging; Lina's ten minutes is a real complication; transferable example (carafe) differs from the rehearsed line."
+        },
+        {
+          "n": 8,
+          "observation": "Tout le monde + puisse singular rule clear; marche is a whitelisted form; neutral title and caption no longer foreshadow the online rehearsal."
+        },
+        {
+          "n": 9,
+          "observation": "Contrast pour garder (same subject) vs pour que le texte soit (new subject) delivers the L9 mix; on ira in the them-turn is permitted futur; German renders pour garder with damit…bleibt, idiomatic though it blurs the um…zu contrast."
+        },
+        {
+          "n": 10,
+          "observation": "Capstone mixes pour que tout le monde puisse entrer with pour garder; caption now shows only the stepped hall; cue prints garder verbatim."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Form cue prints the answer 'participer' and the permettre…de structure while chips are visible; replace with a German semantic gloss matching the base translation so neither blank is disclosed.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3/cue",
+              "old": "participer (permettre à quelqu'un de + Infinitiv)",
+              "new": "mitmachen"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Form cue prints the answer 'circuler' verbatim; use the German gloss from the base text.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3/cue",
+              "old": "circuler (ohne Subjekt)",
+              "new": "durchkommen"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Form cue prints the answer 'indiquer' verbatim; use the German gloss from the base text.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3/cue",
+              "old": "indiquer (ohne Subjekt)",
+              "new": "angeben"
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Form cue prints the answer 'devancer' verbatim; use the German gloss from the base text.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3/cue",
+              "old": "devancer (ohne Subjekt)",
+              "new": "zuvorkommen"
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Form cue prints the answer 'garder' verbatim; use a German gloss (behalten) that does not point to rester.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3/cue",
+              "old": "garder (ohne Subjekt)",
+              "new": "behalten"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German placeholder 'ein Paar Freunde vergleicht' is stilted; the prior optional edit was not applied.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Auf einem Bahnsteig vergleicht ein Paar Freunde die Abfahrtstafel mit einem Notizblock.",
+              "new": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "English base strings use British spellings (neighbour, programme in L1; organising/organise in L3; colour in L6) although the staging spec restates that British spellings stay banned; owner to decide whether the ban covers base-language English.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "neighbour",
+              "new": "neighbor"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/0",
+              "old": "programme",
+              "new": "program"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "organising",
+              "new": "organizing"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/2",
+              "old": "to organise",
+              "new": "to organize"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/3/baseText/en",
+              "old": "organise",
+              "new": "organize"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/trophyWord/meaning/en",
+              "old": "organise",
+              "new": "organize"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "the colour is even",
+              "new": "the color is even"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "confirm",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "acb8026cde0f22bbc9157c3e1efd9d6bc0a58e1f451297c69a811c20d7ccf9a4",
+      "sourceSha256": "849359762e69dcbbe77dc98ccef9888664a1b585a9840b2ecfb22cbaf518f4b3",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat met: shorter programme accepted, games kept with pour permettre aux nouveaux de participer; cue 'mitmachen' no longer prints the answer and connector chips si/dont/puisque are all ungrammatical before an infinitive."
+        },
+        {
+          "n": 2,
+          "observation": "Small tent plus moved tables matches the beat; cloze chips car/si/dont cannot precede the bare infinitive circuler, and the transferable example (bocaux/épices) is independent of the rehearsed line."
+        },
+        {
+          "n": 3,
+          "observation": "Group chat replaces the printed list while the same arrival times are kept; German 'um jede Ankunftszeit anzugeben' and English 'to give each arrival time' are faithful."
+        },
+        {
+          "n": 4,
+          "observation": "Intermediate 4:15 departure follows from the friend working until four; 'pour devancer les bouchons' is a genuine second pour-infinitive use, not a copy of éviter."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que lesson: puisse in recall, soit in cloze with 'être (ton détour)' cue; situation and caption no longer disclose the bridge meeting point."
+        },
+        {
+          "n": 6,
+          "observation": "Repaired turn 2 now ties the mic to audibility at the back (soit claire jusqu'au fond) with chunks, recall, trophy example and label all consistent; volume compromise for the neighbours remains in turn 4."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun, and Lina's ten minutes yields a limited task with soit; fallback chips a/ont/avez cannot follow sa tâche/chacun correctly."
+        },
+        {
+          "n": 8,
+          "observation": "Title and caption no longer foreshadow the online rehearsal; marche after pour que is correct in either mood so no false distinction is taught, and tout le monde + singular is explained."
+        },
+        {
+          "n": 9,
+          "observation": "Mix lesson: pour garder (same subject) in turn 2 against pour que le texte soit cohérent in turn 4; friend's futur simple 'On ira plus vite' is a them-turn, permitted at L9."
+        },
+        {
+          "n": 10,
+          "observation": "Priority kept while the room changes; caption now shows the stepped hall only, and cloze tests pour + garder with gardons/gardent/gardez as same-category distractors."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "optional",
+          "issue": "German placeholder caption 'ein Paar Freunde vergleicht' is stilted and suggests a couple; English says two friends.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Auf einem Bahnsteig vergleicht ein Paar Freunde die Abfahrtstafel mit einem Notizblock.",
+              "new": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock."
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Base-language English keeps British spellings (neighbour, programme in L1; organising/organise in L3; colour in L6; petrol in L5). The staging ban is written for target English; owner decides whether it extends to base strings. No required change.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "seal",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "066c544b909f8b89b30b024377d555a4f4736dfaee5a0e5943c33ef4905bbcf4",
+      "sourceSha256": "849359762e69dcbbe77dc98ccef9888664a1b585a9840b2ecfb22cbaf518f4b3",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat and pour + réunir/participer staging met; the form chip cue 'mitmachen' is a German-only gloss while the French corpus carries an en base locale too."
+        },
+        {
+          "n": 2,
+          "observation": "Rain plan with smaller tent and moved tables matches the beat; second example 'pour ranger les épices' transfers the pattern cleanly; cue 'durchkommen' German-only."
+        },
+        {
+          "n": 3,
+          "observation": "List vs. group chat complication keeps the same information as required; German caption 'ein Paar Freunde' is wrong (capital Paar = a couple, mismatches 'Two friends')."
+        },
+        {
+          "n": 4,
+          "observation": "4:15 compromise is a genuine intermediate departure; 'devancer les bouchons' idiomatic; form chips all inflections of one verb so only the infinitive fits."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que + puisse with chacun, cue 'être (ton détour)' follows the infinitive (subject) convention and est/sont/êtes chips are all ungrammatical here."
+        },
+        {
+          "n": 6,
+          "observation": "First learner turn is 17 whitespace words (limit 16); otherwise soit staging, volume compromise and non-revealing situation are correct."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun introduced in both examples; 'Donnons-lui trois prix à écrire' is natural, cloze soit chips exclusive."
+        },
+        {
+          "n": 8,
+          "observation": "tout le monde + puisse plus marche in cloze with cue 'marcher (la répétition)'; online rehearsal with prior sound test matches the beat."
+        },
+        {
+          "n": 9,
+          "observation": "Mixed reuse: pour garder in the rehearsed line, pour que le texte soit in the cloze; rule correctly contrasts same vs. new subject."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation uses pour que tout le monde puisse then pour garder; library room is not revealed in the situation; cue 'behalten' German-only."
+        }
+      ],
+      "findings": [
+        {
+          "n": 6,
+          "severity": "required",
+          "issue": "First learner turn has 17 words; validator range is 8–16. Minimal shortening keeps permettre, Zoé, soit and all speak tokens; every duplicate (example, chunk, recall, trophy example, both translations) is covered.",
+          "edits": [
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "claire jusqu'au fond",
+              "new": "claire partout"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "bis ganz hinten klar zu hören ist",
+              "new": "überall klar zu hören ist"
+            },
+            {
+              "op": "replaceText",
+              "path": "/lessons/5",
+              "old": "clear right to the back",
+              "new": "clear everywhere"
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "required",
+          "issue": "Form blank cue is a German-only lexical gloss, unusable for the en base locale and inconsistent with the 'infinitive (subject)' cues of L5–9; a typed infinitive cannot be cued without giving the answer. Convert to a choice blank with the existing four inflections.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/0/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "participer",
+                "choices": [
+                  "participons",
+                  "participent",
+                  "participer",
+                  "participez"
+                ],
+                "cue": "mitmachen"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "participer",
+                "choices": [
+                  "participons",
+                  "participent",
+                  "participer",
+                  "participez"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Same German-only cue problem as L1.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "circuler",
+                "choices": [
+                  "circulons",
+                  "circulez",
+                  "circulent",
+                  "circuler"
+                ],
+                "cue": "durchkommen"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "circuler",
+                "choices": [
+                  "circulons",
+                  "circulez",
+                  "circulent",
+                  "circuler"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Same German-only cue problem as L1; additionally the German placeholder caption 'ein Paar Freunde' is incorrect and does not match 'Two friends'.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "indiquer",
+                "choices": [
+                  "indiquer",
+                  "indiquent",
+                  "indiquons",
+                  "indiquez"
+                ],
+                "cue": "angeben"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "indiquer",
+                "choices": [
+                  "indiquer",
+                  "indiquent",
+                  "indiquons",
+                  "indiquez"
+                ]
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/placeholderCaption/de",
+              "old": "Auf einem Bahnsteig vergleicht ein Paar Freunde die Abfahrtstafel mit einem Notizblock.",
+              "new": "Auf einem Bahnsteig vergleichen zwei Freunde die Abfahrtstafel mit einem Notizblock."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Same German-only cue problem as L1.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "devancer",
+                "choices": [
+                  "devançons",
+                  "devancer",
+                  "devancez",
+                  "devancent"
+                ],
+                "cue": "zuvorkommen"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "devancer",
+                "choices": [
+                  "devançons",
+                  "devancer",
+                  "devancez",
+                  "devancent"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 10,
+          "severity": "required",
+          "issue": "Same German-only cue problem as L1.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/9/cloze/3",
+              "old": {
+                "kind": "form",
+                "answer": "garder",
+                "choices": [
+                  "gardons",
+                  "gardent",
+                  "gardez",
+                  "garder"
+                ],
+                "cue": "behalten"
+              },
+              "new": {
+                "kind": "choice",
+                "answer": "garder",
+                "choices": [
+                  "gardons",
+                  "gardent",
+                  "gardez",
+                  "garder"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "English base strings use British spellings/vocabulary across the path (neighbour/neighbours L1, L6; programme L1; organise/organising L3; petrol L5; colour L6). The staging doc bans British spellings; if that rule governs base-locale text, normalise to US forms (neighbor, program, organize, gas, color) in every duplicate (situation, dialogue, examples, chunks, terms, captions, visualNotes, trophy meaning).",
+          "edits": []
+        },
+        {
+          "n": 4,
+          "severity": "optional",
+          "issue": "German 'den Stau am Stadtrand' renders 'les bouchons à la sortie de la ville' loosely; 'an der Stadtausfahrt' would be closer, but current wording is acceptable.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "signed",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "3e1a3aa8f41a005ccc0b7f92fddc5a0bd579b2b1dc6ac7edbccd83130899e850",
+      "sourceSha256": "0734ba86b59676e8f9a876dbd579815a92178e0afc78eec9c30d0e2cc289defb",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Beat met (shorter programme, games kept for newcomers); pour + réunir/participer staged; choice blank now cue-free, chips participons/participent/participez all ungrammatical after 'de'; chunk concat and recall reconstruct turn 2 exactly."
+        },
+        {
+          "n": 2,
+          "observation": "Small tent plus moved tables matches the beat; connector chips car/si/dont cannot precede the infinitive; second example 'pour ranger les épices' transfers to a new verb and noun; German 'damit wir durchkommen' renders 'pour circuler' naturally."
+        },
+        {
+          "n": 3,
+          "observation": "Group chat keeps the same arrival-time information as the beat requires; German caption now 'vergleichen zwei Freunde'; situation does not reveal the printer problem."
+        },
+        {
+          "n": 4,
+          "observation": "4:15 is a real intermediate departure after 'je travaille jusqu'à quatre heures'; partirais is already-staged conditionnel; chips devançons/devancez/devancent exclude the infinitive slot cleanly."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que + puisse with chacun; cloze form 'soit' cued 'être (ton détour)' and est/sont/êtes are all wrong after pour que; bridge meeting point is the simple rendezvous of the beat."
+        },
+        {
+          "n": 6,
+          "observation": "Learner turn now 16 words ('claire partout') and identical in example, chunk, recall and trophy example; volume compromise driven by neighbours' complaint, not foreshadowed in the situation."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun in both examples; Lina's ten-minute limit yields a limited task (trois prix à écrire); cue 'être (sa tâche)' shows subject not form."
+        },
+        {
+          "n": 8,
+          "observation": "tout le monde + puisse; 'Ce soir personne ne peut venir ici' then sound test before the online rehearsal respects time order; marche cue 'marcher (la répétition)' consistent."
+        },
+        {
+          "n": 9,
+          "observation": "Mixed reuse: rehearsed 'pour garder' (shared subject) vs cloze 'pour que le texte soit'; rule contrasts the two correctly; 'On ira' futur simple in them-turn within L6–10 allowance."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation pairs pour que tout le monde puisse with pour garder; library room revealed only in turn 3; chips gardons/gardent/gardez exclusive."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "English base strings keep British forms across the path (neighbour/neighbours L1 and L6, programme L1, organise/organising L3, petrol L5, colour L6). If the 'British spellings banned' rule also governs base-locale English, normalise every duplicate (situation, dialogue, examples, chunks, terms, captions, visualNotes, trophy meaning); otherwise acceptable as is.",
+          "edits": []
+        },
+        {
+          "n": 10,
+          "severity": "optional",
+          "issue": "'prenons celle-ci' for the room just mentioned by the friend is acceptable spoken French; 'celle-là' would be marginally more idiomatic but no change required.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "final-language",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0aaa3c9c9bd656831e41c6a373f480fe7b86ebc9476f92fa793e84d6f591b6da",
+      "sourceSha256": "9ecaf78e0bb89136b909c7255b90fe83c91c112f0e12bea4945295108f4fb609",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Shorter programme keeps the games for newcomers per beat; cloze concat reproduces turn 4 exactly, pour is the only connector chip that licenses permettre, and de forces participer over the three finite chips."
+        },
+        {
+          "n": 2,
+          "observation": "Small tent plus moved tables matches the outline; car/si/dont cannot precede a bare infinitive, circuler is the only subjectless form after pour; German 'damit wir durchkommen' and English 'so we can get through' both idiomatic."
+        },
+        {
+          "n": 3,
+          "observation": "Group chat replaces the list while keeping every arrival time; German caption now 'zwei Freunde'; chips dont/quand/puisque all require a finite clause, so pour indiquer is the single answer."
+        },
+        {
+          "n": 4,
+          "observation": "4h15 is a real intermediate departure between 3h and the post-5h congestion; devancer les bouchons idiomatic; dès que/car/qui cannot introduce an infinitive."
+        },
+        {
+          "n": 5,
+          "observation": "First pour que + puisse with chacun, cloze form soit cued 'être (ton détour)' without naming the connector; placeholder shows only car key and shopping bags, bridge not revealed."
+        },
+        {
+          "n": 6,
+          "observation": "Rehearsed turn is 16 words after the 'partout' shortening and all duplicates (example, chunk, recall, trophy example, de/en) match; audibility everywhere is now the pour que goal, volume cut answers the neighbours."
+        },
+        {
+          "n": 7,
+          "observation": "ait after pour que chacun in both examples; Lina's ten-minute limit answered with a three-price task; à cause de/malgré/depuis take noun phrases, so pour que sa tâche soit is unique."
+        },
+        {
+          "n": 8,
+          "observation": "Title 'Die letzte Probe' and script-only caption no longer foreshadow the online option; label carries the licensor 'Pour que tout le monde puisse essayer'; marche cued 'marcher (la répétition)'."
+        },
+        {
+          "n": 9,
+          "observation": "Contrast lesson: pour garder (same subject) in the rehearsed line, pour que le texte soit (new subject) in the cloze; title 'Einladungen schreiben' neutral; en attendant de/depuis/malgré cannot license the subjunctive clause."
+        },
+        {
+          "n": 10,
+          "observation": "Consolidation pairs pour que tout le monde puisse entrer with pour garder un accès sans marches; placeholder shows only the hall's four steps, library alternative withheld until turn 3."
+        }
+      ],
+      "findings": [
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Exercise-mode delta adjudicated: converting the ten first-slot connector blanks to choice is sound, since typed exact grading would reject the equally correct afin de / afin que while the four visible chips contain exactly one licit option in every lesson; form practice is retained in L5–9 (soit, reste, soit, marche, soit). No edits needed. Remaining optional corpus-level notes only: English base strings use British spellings (neighbours, programme, organise, colour, petrol), and L6 German 'unsere Proben' renders 'nos essais' slightly loosely ('unsere Tests' would be closer); neither affects grading, staging or beat fidelity.",
+          "edits": []
+        }
+      ]
+    }
+  ],
+  "additionalEdits": []
+}

@@ -1,0 +1,1796 @@
+{
+  "language": "Portuguese",
+  "level": "B1",
+  "pathNumber": 9,
+  "lessonSha256": "9afe34b57720cf326ce825603e21541ab9cebd2143c0ec022289705c781ae121",
+  "scope": "Offline lesson text and bilingual exercises.",
+  "editorial": {
+    "sourceSha256": "9afe34b57720cf326ce825603e21541ab9cebd2143c0ec022289705c781ae121",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "que comprei relative plus perfeito sequence (piscou, parou) answers the technician's causal question; cloze cues carry visible subjects a luz / o motor; DE 'den ich gestern gekauft habe' and EN 'came faulty' idiomatic; caption and visualNotes hide light/motor details."
+      },
+      {
+        "n": 2,
+        "observation": "queria saber se + present cobre matches the repaired rule tying the present to current coverage; nota fiscal complication answered by Para onde eu mando (10 words); Sie throughout, no te; recall cobre has no competing valid form."
+      },
+      {
+        "n": 3,
+        "observation": "Repaired follow-up now 12 words with A taxa / a oficina visible before entra / desconta; cloze opening 'A taxa ' matches; DE 'Fließt die Gebühr … ein, und zieht die Werkstatt …' and EN question form both natural; learner clarifies inclusion without authorising."
+      },
+      {
+        "n": 4,
+        "observation": "Você poderia mandar is a softened request; two-to-five window handled with Às duas eu trabalho, mas minha irmã pode (explicit subjects before gaps); second example imprimir uma cópia is a distinct context; DE Sie register consistent."
+      },
+      {
+        "n": 5,
+        "observation": "se … já chegou keeps perfeito, crase à oficina correct; learner only asks whether the previsão comes por escrito, never asserts earlier delivery; label duplication with L2 is licensed P5 recycling."
+      },
+      {
+        "n": 6,
+        "observation": "ajudou por um dia, mas o barulho voltou uses two perfeito events with named subjects; second example o cansaço voltou avoids speaker adjective; follow-up reports post-repair evidence (mesmo sem mangueira) before requesting avaliar de novo."
+      },
+      {
+        "n": 7,
+        "observation": "Prefiro pedir + infinitivo; recall cancelada agrees with named aula; follow-up (11 words) clarifies confirmation and start of prazo; EN repair 'When does the period start counting?' verified present; DE 'Wann beginnt die Frist zu laufen?' idiomatic."
+      },
+      {
+        "n": 8,
+        "observation": "Repaired follow-up is 12 words, Eu / A coleta visible before imprimo / pode, cloze middle string matches; morning-only limitation respected (amanhã de manhã); no lugar do contraction explained; recall fallbacks are lexical nouns with devolução uniquely fitting the wrong-item context."
+      },
+      {
+        "n": 9,
+        "observation": "chegou dez dias depois do prazo + Existe alguma…?; learner weighs the cupom with Vocês oferecem outra opção and announces no company decision; cue 'oferecer (vocês)' has visible subject; DE Ihnen/Sie consistent with formal."
+      },
+      {
+        "n": 10,
+        "observation": "Neutral register with du; assumiu o compromisso de ligar + ninguém entrou em contato; a gente + 3sg in second example; follow-up asks for chat access and protocolo without presuming an outcome; no clitic recall/speech tokens."
+      }
+    ]
+  },
+  "independent": {
+    "sourceSha256": "9afe34b57720cf326ce825603e21541ab9cebd2143c0ec022289705c781ae121",
+    "verdict": "PASS",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The flickering light precedes the stopped motor and answers how the fault developed. The backpack purchase transfers the relative clause. The German and English faulty-on-arrival phrasing is literal but gives the correct meaning."
+      },
+      {
+        "n": 2,
+        "observation": "A readable photo answers the missing receipt complication. The revised rule now limits the present to currently valid coverage, consistent with L5’s past question. The library loan is a distinct application."
+      },
+      {
+        "n": 3,
+        "observation": "The 12-word closing question confirms the fee and subsequent credit. Its finite answers entra and desconta have explicit subjects. The rule orders the written quote before authorization, and the glossary now uses the encountered autorizar."
+      },
+      {
+        "n": 4,
+        "observation": "The sister can receive the technician in the offered window. The chips bridge the sentence boundary and the replacement distractors test the requested infinitive and the afternoon timing. Printing a report transfers the request."
+      },
+      {
+        "n": 5,
+        "observation": "The promised Thursday afternoon update is translated as a delivery estimate. Asking whether the workshop gets it in writing is an acceptable practical follow-up to calling back; the learner claims no control over delivery. The wallet example transfers the past indirect question."
+      },
+      {
+        "n": 6,
+        "observation": "The repair helped for one day and the noise persists even without the hose. This answers the technician’s diagnostic distinction and motivates the reassessment. The timed study change transfers the contrast."
+      },
+      {
+        "n": 7,
+        "observation": "The learner chooses a refund over rebooking. The card and five-day limit are supplied by the school; the learner asks whether confirmation is today, which would establish a date. The updated English calls prazo a period. The bridged chunks and feminine-singular recall answer reconstruct the exact lines."
+      },
+      {
+        "n": 8,
+        "observation": "The learner will print today and asks whether collection may be tomorrow morning. This 12-word line respects the offered morning window and leaves scheduling to the shop. Imprimo and pode have visible subjects. The tea-for-coffee transfer and the return vocabulary are aligned."
+      },
+      {
+        "n": 9,
+        "observation": "The store offers its coupon and the learner asks what else it can offer. The ten-day delay and distinct late-application example support the time expression. The revised build bridge preserves both sentences."
+      },
+      {
+        "n": 10,
+        "observation": "A neighbour working for the provider advises following up by chat. The learner asks for access and the case number, not a decision. Neutral du and the community-garden transfer fit. All ten trophies, caption openings, word limits, build/cloze/recall reconstructions and nonfinal chip endings were checked on the signed bytes."
+      }
+    ],
+    "findings": [
+      {
+        "n": 7,
+        "severity": "LOW",
+        "field": "dialogue[3].baseText.en; terms",
+        "issue": "The timing question is understandable in context. 'When does the period start counting?' and the vocabulary gloss 'money refund' are literal.",
+        "recommendation": "Optional polishing at the next translation pass: 'When do the five days start?' and 'refund'."
+      },
+      {
+        "n": 8,
+        "severity": "LOW",
+        "field": "recall.fallbackChoices",
+        "issue": "The canonical answer is listed first in the source. It remains the only word for returning the incorrect lamp, and source position does not create a second valid answer.",
+        "recommendation": "Optional native-review note: vary the source option order if desired."
+      }
+    ]
+  },
+  "initialIndependent": {
+    "sourceSha256": "481a78b7ed15f574ea1c55f70a540084cddb194a55a891f4eb66138e15d58356",
+    "verdict": "REWORK",
+    "lessonsRead": [
+      {
+        "n": 1,
+        "observation": "The fan stops on its first night. Flickering before the motor stops supplies the requested sequence. Defeito is in the first learner turn and the backpack-on-the-train example transfers que comprei to a different scene. The singular fan licenses veio."
+      },
+      {
+        "n": 2,
+        "observation": "The technician needs proof of purchase and volunteers that a legible photo works. The learner has a photo and asks where to send it. The library loan is an independent setting for queria saber se. Cobre has one subject-compatible answer."
+      },
+      {
+        "n": 3,
+        "observation": "The cyclist asks for a written estimate before giving permission. The course-enrolment example reuses the timing frame. The mechanic's fee and credit need to be distinguished in the final question. One blank violates the explicit regular future-subjunctive restriction."
+      },
+      {
+        "n": 4,
+        "observation": "The provider proposes a window and the learner nominates someone available at home. A printed report is a different real use of the request frame. The conjugation questions are fair, but a cake and sleeping give away both build decoys."
+      },
+      {
+        "n": 5,
+        "observation": "The supplier plans to update the ETA on Thursday afternoon, and the learner does not promise delivery. The lost-wallet example transfers the indirect question. Follow-up language should ask for the estimate itself; both base locales currently use weather-like wording."
+      },
+      {
+        "n": 6,
+        "observation": "Replacing the filter helped for one day. Hearing the motor with the hose detached answers the diagnostic choice, then the learner requests another assessment. The study/exams model transfers the temporary improvement and setback. No authority is claimed."
+      },
+      {
+        "n": 7,
+        "observation": "The school offers rebooking, the learner prefers a refund, and the office explains the card and five-business-day period. The final question asks again when the already-explained clock starts. Preferring written correspondence is a different use of prefiro."
+      },
+      {
+        "n": 8,
+        "observation": "The wrong delivery is a lamp rather than a mirror. The café order transfers the substitution pattern. The shop authorizes morning collection from reception but has not confirmed tomorrow. The speaker currently schedules the carrier unilaterally."
+      },
+      {
+        "n": 9,
+        "observation": "The shop offers a one-month coupon for the ten-day delivery delay. The learner gives a reason and asks about alternatives, leaving authority with the store. Late application submission genuinely transfers the time expression. Chegou has one compatible subject."
+      },
+      {
+        "n": 10,
+        "observation": "The neighbour's dual role explains colloquial você/German du and her knowledge of the provider. She proposes the chat after the missed callback. The learner asks where to find the case number. The community-garden commitment transfers the pattern to another scene."
+      }
+    ],
+    "findings": [
+      {
+        "n": 1,
+        "severity": "MEDIUM",
+        "field": "dialogue[1].baseText; chunks; pattern.examples[0]",
+        "issue": "Came faulty and kam mit einem Defekt are calques in the principal model.",
+        "recommendation": "Use e.g. 'The fan I bought yesterday was faulty: it stopped working on the very first night' and 'Der Ventilator, den ich gestern gekauft habe, war schon beim Kauf defekt: Schon in der ersten Nacht fiel er aus.' Carry these idioms through related learner-facing glosses."
+      },
+      {
+        "n": 2,
+        "severity": "MEDIUM",
+        "field": "pattern.rule.de/en",
+        "issue": "The general statement that the verb after se stays in the present conflicts with the same pack's perfectly legitimate indirect past question in L5.",
+        "recommendation": "Say the subordinate verb here is present because the customer asks what the warranty currently covers. It agrees with a garantia."
+      },
+      {
+        "n": 3,
+        "severity": "HIGH",
+        "field": "cloze[3]; dialogue[3]; pattern.rule",
+        "issue": "Aprovar is a regular future subjunctive, which the official spec explicitly says never to blank. The exchange also obscures whether the evaluation fee appears as a separate line or is credited against the repair. The DE and EN rules reverse the sequence: the infinitive names the later authorization, while the main clause gives the earlier request.",
+        "recommendation": "Use a clear follow-up with two independent visible-subject finite forms, e.g. 'A taxa aparece separada no orçamento ou já faz parte do total?' (a taxa for both). Translate a credit as 'wird auf die Reparaturkosten angerechnet' / 'counts toward the repair cost'. Rewrite the rule so asking for the quote comes before authorizing."
+      },
+      {
+        "n": 4,
+        "severity": "HIGH",
+        "field": "chunks (also L7, L8, L9)",
+        "issue": "Four nonfinal build chips end a full sentence: L4 toda tarde., L7 da aula cancelada., L8 no lugar do espelho., L9 dez dias depois do prazo. These do not meet the archive chunk boundary.",
+        "recommendation": "Preserve each full utterance; move the boundary inside the next chip, with informative combined DE/EN glosses. For L4, e.g., A internet / ainda cai / toda tarde. Você poderia / mandar um técnico aqui? Verify 4–7 chips and exact reconstruction for all four."
+      },
+      {
+        "n": 4,
+        "severity": "MEDIUM",
+        "field": "distractors (also L5, L7, L8)",
+        "issue": "Cake/sleep in the internet-service scene, senha for the washing-machine part, the delayed bus at the language school, and soup for the parcel contents can be discarded from topic alone.",
+        "recommendation": "Use comparable, scene-specific contrasts that contradict the established facts, or one believable conjugation/agreement error. E.g. for L4 test singular internet and an intentionally mismatched finite verb after poderia. Avoid equally viable repair requests or alternate pickups."
+      },
+      {
+        "n": 5,
+        "severity": "MEDIUM",
+        "field": "dialogue[2..3]; terms.previsão",
+        "issue": "The planned task is to request an ETA. The learner asks whether the workshop receives the estimate in writing, which never requests it. 'Forecast' and 'Prognose' are out of place for a delivery update.",
+        "recommendation": "Ask for the date after the supplier's update, e.g. 'Então eu ligo depois do almoço. A oficina pode confirmar a previsão?' Use Liefertermin / voraussichtlicher Liefertermin and estimated delivery date throughout. Keep both new form subjects visible."
+      },
+      {
+        "n": 7,
+        "severity": "MEDIUM",
+        "field": "dialogue[3]; cloze; terms.devolução do dinheiro",
+        "issue": "The clerk just said the period starts at confirmation, so asking 'Quando o prazo começa a contar?' repeats a settled fact. 'When does the deadline start counting?' and 'money refund' are unidiomatic.",
+        "recommendation": "Ask a new question about the confirmation, e.g. 'Eu recebo essa confirmação hoje ou a escola avisa por e-mail?' or two linked questions about timing and receipt. Use 'refund' / 'getting your money back' and 'five-business-day period' where relevant."
+      },
+      {
+        "n": 8,
+        "severity": "HIGH",
+        "field": "dialogue[3]; cloze",
+        "issue": "A coleta é só de manhã specifies time of day and the clerk allows reception pickup. Neither turn books tomorrow. The learner states the carrier and reception will meet tomorrow.",
+        "recommendation": "Request the day while accepting the offered handoff, e.g. 'Então eu deixo a caixa na portaria. A coleta pode ser amanhã?' Update the two localized lines and cloze for deixo (eu), pode (a coleta)."
+      },
+      {
+        "n": 9,
+        "severity": "LOW",
+        "field": "dialogue[3]; cloze",
+        "issue": "Eu compro aqui raramente puts raramente in a marked position in a plain explanation.",
+        "recommendation": "Use 'Eu raramente compro aqui.' Keep the explicit subject before the blank."
+      }
+    ]
+  },
+  "editorialRounds": [
+    {
+      "stage": "whole",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "6ebd84270550f3f400271d6c9d3871ba14f999824100e06a5f8dbf31d94aa511",
+      "sourceSha256": "481a78b7ed15f574ea1c55f70a540084cddb194a55a891f4eb66138e15d58356",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "que comprei relative (P4 recycle) with perfeito chain primeiro…depois; cloze cues piscar (a luz)/parar (o motor) tag subjects; no gender-agreeing learner form; chips end only in colon or final period."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + presente (a garantia cobre) matches P5; missing nota fiscal is a real complication and learner asks next step without deciding coverage; chips clean."
+        },
+        {
+          "n": 3,
+          "observation": "antes de + infinitivo is fine, but cloze blanks se eu aprovar (regular futuro do subjuntivo = infinitive, a listed never-blank trap) and both cloze and recall offer tu forms (aprovares, querias), banned for all scopes."
+        },
+        {
+          "n": 4,
+          "observation": "você poderia mandar (P3) and sister-at-home adjustment fit the beat; non-final chip 'toda tarde.' ends in a period and must be bridged."
+        },
+        {
+          "n": 5,
+          "observation": "eu queria saber se + já chegou with explicit subject a peça; learner only promises to call Thursday, never asserts early delivery; Sie register consistent."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas … voltou recycles P1/P2 contrast; o cansaço voltou avoids speaker adjective; interlocutor's motor-vs-hose question gives a genuine causal complication."
+        },
+        {
+          "n": 7,
+          "observation": "prefiro + infinitivo and prazo/meio clarified via cartão em até cinco dias úteis; non-final chip 'da aula cancelada.' ends in a period and must be bridged while keeping four chips."
+        },
+        {
+          "n": 8,
+          "observation": "veio X no lugar de Y with do/da contraction explained; morning-only pickup is the limitation and learner arranges portaria without announcing company decisions; non-final chip 'no lugar do espelho.' needs bridging."
+        },
+        {
+          "n": 9,
+          "observation": "dez dias depois do prazo + Existe alguma…? keeps the request open; learner asks for other options rather than promising a decision; non-final chip 'dez dias depois do prazo.' needs bridging."
+        },
+        {
+          "n": 10,
+          "observation": "neutral register with du matches neighbour scene; assumiu o compromisso de ligar recycles perfeito + infinitive, a gente example takes 3sg; chips and distractors clean."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Cloze blanks the regular futuro do subjuntivo aprovar (identical to the infinitive, listed as never-blank) and offers the tu form aprovares; recall fallback includes the tu form querias. Swap exercises: cloze on the pattern line (antes de + infinitivo, eu queria), recall on entra.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Então a taxa ",
+                {
+                  "kind": "form",
+                  "answer": "entra",
+                  "cue": "entrar (a taxa)",
+                  "choices": [
+                    "entro",
+                    "entram",
+                    "entra",
+                    "entramos"
+                  ]
+                },
+                " no orçamento se eu ",
+                {
+                  "kind": "form",
+                  "answer": "aprovar",
+                  "cue": "aprovar (eu)",
+                  "choices": [
+                    "aprovarmos",
+                    "aprovar",
+                    "aprovarem",
+                    "aprovares"
+                  ]
+                },
+                " o conserto?"
+              ],
+              "new": [
+                "Antes de ",
+                {
+                  "kind": "form",
+                  "answer": "autorizar",
+                  "cue": "autorizar (infinitivo)",
+                  "choices": [
+                    "autorizo",
+                    "autorizar",
+                    "autorizei",
+                    "autorizamos"
+                  ]
+                },
+                " o conserto, eu ",
+                {
+                  "kind": "form",
+                  "answer": "queria",
+                  "cue": "querer (eu)",
+                  "choices": [
+                    "quer",
+                    "queria",
+                    "queríamos",
+                    "queriam"
+                  ]
+                },
+                " um orçamento por escrito."
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/recall",
+              "old": {
+                "before": "Antes de autorizar o conserto, eu ",
+                "answer": "queria",
+                "after": " um orçamento por escrito.",
+                "fallbackChoices": [
+                  "queriam",
+                  "queria",
+                  "queríamos",
+                  "querias"
+                ]
+              },
+              "new": {
+                "before": "Então a taxa ",
+                "answer": "entra",
+                "after": " no orçamento se eu aprovar o conserto?",
+                "fallbackChoices": [
+                  "entram",
+                  "entra",
+                  "entro",
+                  "entramos"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Non-final build chip 'toda tarde.' ends in a period; bridge the sentence boundary, keep four chips, realign distractors to the new chip shapes.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks",
+              "old": [
+                {
+                  "targetText": "A internet ainda cai",
+                  "baseText": {
+                    "de": "Das Internet bricht immer noch zusammen",
+                    "en": "The internet still drops out"
+                  }
+                },
+                {
+                  "targetText": "toda tarde.",
+                  "baseText": {
+                    "de": "jeden Nachmittag.",
+                    "en": "every afternoon."
+                  }
+                },
+                {
+                  "targetText": "Você poderia mandar",
+                  "baseText": {
+                    "de": "Könnten Sie schicken",
+                    "en": "Could you send"
+                  }
+                },
+                {
+                  "targetText": "um técnico aqui?",
+                  "baseText": {
+                    "de": "einen Techniker hierher?",
+                    "en": "a technician here?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "A internet ainda cai",
+                  "baseText": {
+                    "de": "Das Internet bricht immer noch zusammen",
+                    "en": "The internet still drops out"
+                  }
+                },
+                {
+                  "targetText": "toda tarde. Você poderia",
+                  "baseText": {
+                    "de": "jeden Nachmittag. Könnten Sie",
+                    "en": "every afternoon. Could you"
+                  }
+                },
+                {
+                  "targetText": "mandar um técnico",
+                  "baseText": {
+                    "de": "einen Techniker schicken",
+                    "en": "send a technician"
+                  }
+                },
+                {
+                  "targetText": "aqui?",
+                  "baseText": {
+                    "de": "hierher?",
+                    "en": "out here?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/distractors",
+              "old": [
+                "um bolo aqui?",
+                "Você poderia dormir"
+              ],
+              "new": [
+                "mandar um bolo",
+                "toda noite. Você poderia"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Non-final build chip 'da aula cancelada.' ends in a period; bridge the boundary and split the first chip to keep four chips; realign distractor.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Prefiro pedir o reembolso",
+                  "baseText": {
+                    "de": "Ich beantrage lieber die Erstattung",
+                    "en": "I'd rather request the refund"
+                  }
+                },
+                {
+                  "targetText": "da aula cancelada.",
+                  "baseText": {
+                    "de": "für die abgesagte Stunde.",
+                    "en": "for the cancelled class."
+                  }
+                },
+                {
+                  "targetText": "Como funciona",
+                  "baseText": {
+                    "de": "Wie läuft",
+                    "en": "How does"
+                  }
+                },
+                {
+                  "targetText": "a devolução do dinheiro?",
+                  "baseText": {
+                    "de": "die Rückzahlung ab?",
+                    "en": "the money refund work?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Prefiro pedir",
+                  "baseText": {
+                    "de": "Ich beantrage lieber",
+                    "en": "I'd rather request"
+                  }
+                },
+                {
+                  "targetText": "o reembolso",
+                  "baseText": {
+                    "de": "die Erstattung",
+                    "en": "the refund"
+                  }
+                },
+                {
+                  "targetText": "da aula cancelada. Como funciona",
+                  "baseText": {
+                    "de": "für die abgesagte Stunde. Wie läuft",
+                    "en": "for the cancelled class. How does"
+                  }
+                },
+                {
+                  "targetText": "a devolução do dinheiro?",
+                  "baseText": {
+                    "de": "die Rückzahlung ab?",
+                    "en": "the money refund work?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors",
+              "old": [
+                "do ônibus atrasado.",
+                "Onde fica"
+              ],
+              "new": [
+                "do ônibus atrasado. Como funciona",
+                "Onde fica"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Non-final build chip 'no lugar do espelho.' ends in a period; bridge the boundary keeping four chips and realign distractor.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks",
+              "old": [
+                {
+                  "targetText": "Veio uma luminária",
+                  "baseText": {
+                    "de": "Es kam eine Lampe",
+                    "en": "A lamp came"
+                  }
+                },
+                {
+                  "targetText": "no lugar do espelho.",
+                  "baseText": {
+                    "de": "statt des Spiegels.",
+                    "en": "instead of the mirror."
+                  }
+                },
+                {
+                  "targetText": "Como eu faço",
+                  "baseText": {
+                    "de": "Wie mache ich",
+                    "en": "How do I make"
+                  }
+                },
+                {
+                  "targetText": "a devolução?",
+                  "baseText": {
+                    "de": "die Rücksendung?",
+                    "en": "the return?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Veio uma luminária",
+                  "baseText": {
+                    "de": "Es kam eine Lampe",
+                    "en": "A lamp came"
+                  }
+                },
+                {
+                  "targetText": "no lugar",
+                  "baseText": {
+                    "de": "statt",
+                    "en": "instead"
+                  }
+                },
+                {
+                  "targetText": "do espelho. Como eu faço",
+                  "baseText": {
+                    "de": "des Spiegels. Wie mache ich",
+                    "en": "of the mirror. How do I make"
+                  }
+                },
+                {
+                  "targetText": "a devolução?",
+                  "baseText": {
+                    "de": "die Rücksendung?",
+                    "en": "the return?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/distractors",
+              "old": [
+                "no lugar da sopa.",
+                "Quando eu cancelo"
+              ],
+              "new": [
+                "da sopa. Como eu faço",
+                "Quando eu cancelo"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Non-final build chip 'dez dias depois do prazo.' ends in a period; bridge the boundary keeping four chips and realign distractor.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks",
+              "old": [
+                {
+                  "targetText": "A encomenda chegou",
+                  "baseText": {
+                    "de": "Das Paket kam an",
+                    "en": "The parcel arrived"
+                  }
+                },
+                {
+                  "targetText": "dez dias depois do prazo.",
+                  "baseText": {
+                    "de": "zehn Tage nach dem Liefertermin.",
+                    "en": "ten days after the deadline."
+                  }
+                },
+                {
+                  "targetText": "Existe alguma compensação",
+                  "baseText": {
+                    "de": "Gibt es irgendeine Entschädigung",
+                    "en": "Is there any compensation"
+                  }
+                },
+                {
+                  "targetText": "pelo atraso?",
+                  "baseText": {
+                    "de": "für die Verspätung?",
+                    "en": "for the delay?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "A encomenda chegou",
+                  "baseText": {
+                    "de": "Das Paket kam an",
+                    "en": "The parcel arrived"
+                  }
+                },
+                {
+                  "targetText": "dez dias depois do prazo. Existe",
+                  "baseText": {
+                    "de": "zehn Tage nach dem Liefertermin. Gibt es",
+                    "en": "ten days after the deadline. Is there"
+                  }
+                },
+                {
+                  "targetText": "alguma compensação",
+                  "baseText": {
+                    "de": "irgendeine Entschädigung",
+                    "en": "any compensation"
+                  }
+                },
+                {
+                  "targetText": "pelo atraso?",
+                  "baseText": {
+                    "de": "für die Verspätung?",
+                    "en": "for the delay?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors",
+              "old": [
+                "A encomenda chegaram",
+                "dez dias antes do prazo."
+              ],
+              "new": [
+                "A encomenda chegaram",
+                "dez dias antes do prazo. Existe"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 1,
+          "severity": "optional",
+          "issue": "Pattern '… que comprei …' is a P4 relative rather than one of the P9 recycle families listed (P1/P3/P5/P6/P7); it is previously taught and not a new family, so acceptable, but note the arc opens on a P4 pattern.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "settle",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "811a5c1a55663d54a5692da53a8761b3013f786aeddf9e275c192df4093e3d0b",
+      "sourceSha256": "481a78b7ed15f574ea1c55f70a540084cddb194a55a891f4eb66138e15d58356",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "que comprei relative with perfeito chain piscou/parou; cloze cues tag a luz/o motor, recall veio has one subject-compatible answer; chip 'veio com defeito:' ends in a colon, not a period. Dismissed MEDIUM on 'came faulty'/'kam mit einem Defekt': 'came faulty' is standard consumer English and 'kam mit einem Defekt' is attested, comprehensible German that keeps dialogue, example and chip glosses aligned; no calque error requiring a coupled rewrite."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + a garantia cobre (P5); missing nota fiscal is a real complication and learner asks where to send the photo without deciding coverage; rule's blanket 'verb stays in the present' slightly overgeneralises against L5's já chegou, offered as optional precision."
+        },
+        {
+          "n": 3,
+          "observation": "antes de + infinitivo fine, but cloze blanks regular futuro do subjuntivo aprovar (never-blank trap) with tu form aprovares, recall fallback carries tu form querias, and the rule inverts the sequence (claims the infinitive names what is settled first). Turn 4 rebuilt with two visible 3sg subjects (a taxa entra, a oficina desconta) so the fee/credit confirmation stays and both blanks are legal."
+        },
+        {
+          "n": 4,
+          "observation": "você poderia mandar (P3) and the sister-at-home adjustment fit the window complication; non-final chip 'toda tarde.' ends in a period and is bridged; build decoys bolo/dormir replaced by an infinitive-after-poderia error and a fact contradiction."
+        },
+        {
+          "n": 5,
+          "observation": "eu queria saber se + já chegou with explicit subject a peça; learner only commits to calling Thursday and never asserts early delivery. 'Prognose'/'forecast' is off-register for a delivery ETA in both locales; fixed in the two turns and the term. Portuguese turn 4 kept: asking whether the workshop gets the previsão in writing is a legitimate way to request it. Distractor 'se a senha' kept as a lexical trap, not a valid substitute."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas voltou (perfeito contrast); motor-vs-hose question is a genuine causal complication answered before the new assessment request; o cansaço voltou keeps the transfer example gender-safe; chips end in comma/final period only."
+        },
+        {
+          "n": 7,
+          "observation": "prefiro + infinitivo with card/five-business-day meio and prazo clarified; non-final chip 'da aula cancelada.' bridged. Dismissed MEDIUM on redundancy: 'Eu recebo essa confirmação hoje?' is the new question and 'Quando o prazo começa a contar?' asks when the clock actually starts, not what triggers it; only the EN 'deadline' wording offered as optional."
+        },
+        {
+          "n": 8,
+          "observation": "veio X no lugar de Y with do/da contraction; morning-only pickup is the limitation, but turn 4 announced that the portaria receives the courier tomorrow without the shop having set a day. Rebuilt to accept the portaria handoff and ask 'A coleta pode ser amanhã de manhã?', respecting de manhã; chip 'no lugar do espelho.' bridged; orphaned term transportadora swapped for de manhã."
+        },
+        {
+          "n": 9,
+          "observation": "dez dias depois do prazo + Existe alguma…? keeps the compensation request open and the learner asks for alternatives rather than promising a decision; non-final chip 'dez dias depois do prazo.' bridged. Dismissed LOW on 'Eu compro aqui raramente': acceptable spoken pt-BR with the explicit subject directly before the blank."
+        },
+        {
+          "n": 10,
+          "observation": "neutral register with du matches the neighbour scene and bans Ihnen; assumiu o compromisso de ligar recycles perfeito + infinitive, a gente example takes 3sg; chips and distractors clean, protocolo/chat glosses informative."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Cloze blanks regular futuro do subjuntivo aprovar (identical to the infinitive, listed never-blank) and offers tu form aprovares; recall fallback contains tu form querias; pattern rule claims the infinitive names what is settled first (inverted). Rebuild turn 4 with two visible finite subjects, fix fallbacks and rule.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3",
+              "old": {
+                "targetText": "Então a taxa entra no orçamento se eu aprovar o conserto?",
+                "baseText": {
+                  "de": "Dann fließt die Gebühr in den Kostenvoranschlag ein, wenn ich die Reparatur freigebe?",
+                  "en": "So the fee goes into the quote if I approve the repair?"
+                }
+              },
+              "new": {
+                "targetText": "Então a taxa entra no orçamento e a oficina desconta esse valor depois?",
+                "baseText": {
+                  "de": "Dann fließt die Gebühr in den Kostenvoranschlag ein, und die Werkstatt zieht den Betrag später wieder ab?",
+                  "en": "So the fee goes into the quote and the shop deducts that amount later?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze",
+              "old": [
+                "Então a taxa ",
+                {
+                  "kind": "form",
+                  "answer": "entra",
+                  "cue": "entrar (a taxa)",
+                  "choices": [
+                    "entro",
+                    "entram",
+                    "entra",
+                    "entramos"
+                  ]
+                },
+                " no orçamento se eu ",
+                {
+                  "kind": "form",
+                  "answer": "aprovar",
+                  "cue": "aprovar (eu)",
+                  "choices": [
+                    "aprovarmos",
+                    "aprovar",
+                    "aprovarem",
+                    "aprovares"
+                  ]
+                },
+                " o conserto?"
+              ],
+              "new": [
+                "Então a taxa ",
+                {
+                  "kind": "form",
+                  "answer": "entra",
+                  "cue": "entrar (a taxa)",
+                  "choices": [
+                    "entro",
+                    "entram",
+                    "entra",
+                    "entramos"
+                  ]
+                },
+                " no orçamento e a oficina ",
+                {
+                  "kind": "form",
+                  "answer": "desconta",
+                  "cue": "descontar (a oficina)",
+                  "choices": [
+                    "desconto",
+                    "descontam",
+                    "desconta",
+                    "descontamos"
+                  ]
+                },
+                " esse valor depois?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/recall/fallbackChoices",
+              "old": [
+                "queriam",
+                "queria",
+                "queríamos",
+                "querias"
+              ],
+              "new": [
+                "queriam",
+                "queria",
+                "queríamos",
+                "querem"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/rule/de",
+              "old": "Antes de steht direkt vor dem Infinitiv und nennt, was zuerst geklärt sein muss; der Hauptsatz folgt nach dem Komma mit eigenem Subjekt wie in eu queria.",
+              "new": "Antes de steht direkt vor dem Infinitiv und nennt den späteren Schritt; der Hauptsatz nach dem Komma sagt mit eigenem Subjekt, was vorher passieren soll, wie in eu queria."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/pattern/rule/en",
+              "old": "Antes de goes directly before the infinitive and names what must be settled first; the main clause follows after the comma with its own subject, as in eu queria.",
+              "new": "Antes de goes directly before the infinitive and names the later step; the main clause after the comma states, with its own subject, what should happen first, as in eu queria."
+            }
+          ]
+        },
+        {
+          "n": 4,
+          "severity": "required",
+          "issue": "Non-final build chip 'toda tarde.' ends in a period; bridge the boundary keeping four chips, and replace the nonsensical bolo/dormir decoys with a poderia + finite-verb error and a fact contradiction.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/3/chunks",
+              "old": [
+                {
+                  "targetText": "A internet ainda cai",
+                  "baseText": {
+                    "de": "Das Internet bricht immer noch zusammen",
+                    "en": "The internet still drops out"
+                  }
+                },
+                {
+                  "targetText": "toda tarde.",
+                  "baseText": {
+                    "de": "jeden Nachmittag.",
+                    "en": "every afternoon."
+                  }
+                },
+                {
+                  "targetText": "Você poderia mandar",
+                  "baseText": {
+                    "de": "Könnten Sie schicken",
+                    "en": "Could you send"
+                  }
+                },
+                {
+                  "targetText": "um técnico aqui?",
+                  "baseText": {
+                    "de": "einen Techniker hierher?",
+                    "en": "a technician here?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "A internet ainda cai",
+                  "baseText": {
+                    "de": "Das Internet bricht immer noch zusammen",
+                    "en": "The internet still drops out"
+                  }
+                },
+                {
+                  "targetText": "toda tarde. Você poderia",
+                  "baseText": {
+                    "de": "jeden Nachmittag. Könnten Sie",
+                    "en": "every afternoon. Could you"
+                  }
+                },
+                {
+                  "targetText": "mandar",
+                  "baseText": {
+                    "de": "schicken",
+                    "en": "send"
+                  }
+                },
+                {
+                  "targetText": "um técnico aqui?",
+                  "baseText": {
+                    "de": "einen Techniker hierher?",
+                    "en": "a technician out here?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/3/distractors",
+              "old": [
+                "um bolo aqui?",
+                "Você poderia dormir"
+              ],
+              "new": [
+                "mandam",
+                "toda noite. Você poderia"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "required",
+          "issue": "'Prognose'/'forecast' is weather wording for a delivery ETA; use voraussichtlicher Liefertermin / delivery estimate in both turns and the term gloss (Portuguese unchanged).",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/2/baseText",
+              "old": {
+                "de": "Noch nicht. Der Lieferant aktualisiert die Prognose am Donnerstag nach dem Mittagessen.",
+                "en": "Not yet. The supplier updates the forecast on Thursday after lunch."
+              },
+              "new": {
+                "de": "Noch nicht. Der Lieferant aktualisiert den voraussichtlichen Liefertermin am Donnerstag nach dem Mittagessen.",
+                "en": "Not yet. The supplier updates the delivery estimate on Thursday after lunch."
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/dialogue/3/baseText",
+              "old": {
+                "de": "Dann rufe ich am Donnerstag an. Bekommt die Werkstatt die Prognose schriftlich?",
+                "en": "Then I'll call on Thursday. Does the workshop get the forecast in writing?"
+              },
+              "new": {
+                "de": "Dann rufe ich am Donnerstag an. Bekommt die Werkstatt den Liefertermin schriftlich?",
+                "en": "Then I'll call on Thursday. Does the workshop get the estimate in writing?"
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/4/terms/4/baseText",
+              "old": {
+                "de": "Prognose; voraussichtlicher Termin",
+                "en": "forecast; estimated date"
+              },
+              "new": {
+                "de": "voraussichtlicher Liefertermin; Prognose",
+                "en": "delivery estimate; estimated date"
+              }
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "Non-final build chip 'da aula cancelada.' ends in a period; bridge the boundary keeping four chips and realign distractors to a fact contradiction and an infinitive-after-prefiro error.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/chunks",
+              "old": [
+                {
+                  "targetText": "Prefiro pedir o reembolso",
+                  "baseText": {
+                    "de": "Ich beantrage lieber die Erstattung",
+                    "en": "I'd rather request the refund"
+                  }
+                },
+                {
+                  "targetText": "da aula cancelada.",
+                  "baseText": {
+                    "de": "für die abgesagte Stunde.",
+                    "en": "for the cancelled class."
+                  }
+                },
+                {
+                  "targetText": "Como funciona",
+                  "baseText": {
+                    "de": "Wie läuft",
+                    "en": "How does"
+                  }
+                },
+                {
+                  "targetText": "a devolução do dinheiro?",
+                  "baseText": {
+                    "de": "die Rückzahlung ab?",
+                    "en": "the money refund work?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Prefiro pedir",
+                  "baseText": {
+                    "de": "Ich beantrage lieber",
+                    "en": "I'd rather request"
+                  }
+                },
+                {
+                  "targetText": "o reembolso",
+                  "baseText": {
+                    "de": "die Erstattung",
+                    "en": "the refund"
+                  }
+                },
+                {
+                  "targetText": "da aula cancelada. Como funciona",
+                  "baseText": {
+                    "de": "für die abgesagte Stunde. Wie läuft",
+                    "en": "for the cancelled class. How does"
+                  }
+                },
+                {
+                  "targetText": "a devolução do dinheiro?",
+                  "baseText": {
+                    "de": "die Rückzahlung ab?",
+                    "en": "the money refund work?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/6/distractors",
+              "old": [
+                "do ônibus atrasado.",
+                "Onde fica"
+              ],
+              "new": [
+                "da aula remarcada. Como funciona",
+                "Prefiro pedem"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Turn 4 announces that the front desk receives the courier tomorrow although the shop only fixed 'de manhã' and offered the portaria; learner must accept the handoff and ask for the day. Non-final chip 'no lugar do espelho.' ends in a period; soup decoy replaced by a fact contradiction and a fazer-form error; orphaned term transportadora swapped.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3",
+              "old": {
+                "targetText": "Eu imprimo a etiqueta hoje e a portaria recebe a transportadora amanhã.",
+                "baseText": {
+                  "de": "Ich drucke das Etikett heute aus, und der Pförtner nimmt den Kurier morgen in Empfang.",
+                  "en": "I'll print the label today and the front desk will receive the courier tomorrow."
+                }
+              },
+              "new": {
+                "targetText": "Eu imprimo a etiqueta hoje e deixo a caixa na portaria. A coleta pode ser amanhã de manhã?",
+                "baseText": {
+                  "de": "Ich drucke das Etikett heute aus und gebe das Paket beim Pförtner ab. Kann die Abholung morgen Vormittag stattfinden?",
+                  "en": "I'll print the label today and leave the box at the front desk. Can the pickup be tomorrow morning?"
+                }
+              }
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze",
+              "old": [
+                "Eu ",
+                {
+                  "kind": "form",
+                  "answer": "imprimo",
+                  "cue": "imprimir (eu)",
+                  "choices": [
+                    "imprime",
+                    "imprimo",
+                    "imprimimos",
+                    "imprimem"
+                  ]
+                },
+                " a etiqueta hoje e a portaria ",
+                {
+                  "kind": "form",
+                  "answer": "recebe",
+                  "cue": "receber (a portaria)",
+                  "choices": [
+                    "recebo",
+                    "recebem",
+                    "recebe",
+                    "recebemos"
+                  ]
+                },
+                " a transportadora amanhã."
+              ],
+              "new": [
+                "Eu ",
+                {
+                  "kind": "form",
+                  "answer": "imprimo",
+                  "cue": "imprimir (eu)",
+                  "choices": [
+                    "imprime",
+                    "imprimo",
+                    "imprimimos",
+                    "imprimem"
+                  ]
+                },
+                " a etiqueta hoje e deixo a caixa na portaria. A coleta ",
+                {
+                  "kind": "form",
+                  "answer": "pode",
+                  "cue": "poder (a coleta)",
+                  "choices": [
+                    "podem",
+                    "posso",
+                    "pode",
+                    "podemos"
+                  ]
+                },
+                " ser amanhã de manhã?"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/chunks",
+              "old": [
+                {
+                  "targetText": "Veio uma luminária",
+                  "baseText": {
+                    "de": "Es kam eine Lampe",
+                    "en": "A lamp came"
+                  }
+                },
+                {
+                  "targetText": "no lugar do espelho.",
+                  "baseText": {
+                    "de": "statt des Spiegels.",
+                    "en": "instead of the mirror."
+                  }
+                },
+                {
+                  "targetText": "Como eu faço",
+                  "baseText": {
+                    "de": "Wie mache ich",
+                    "en": "How do I make"
+                  }
+                },
+                {
+                  "targetText": "a devolução?",
+                  "baseText": {
+                    "de": "die Rücksendung?",
+                    "en": "the return?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "Veio uma luminária",
+                  "baseText": {
+                    "de": "Es kam eine Lampe",
+                    "en": "A lamp came"
+                  }
+                },
+                {
+                  "targetText": "no lugar do espelho. Como",
+                  "baseText": {
+                    "de": "statt des Spiegels. Wie",
+                    "en": "instead of the mirror. How"
+                  }
+                },
+                {
+                  "targetText": "eu faço",
+                  "baseText": {
+                    "de": "mache ich",
+                    "en": "do I make"
+                  }
+                },
+                {
+                  "targetText": "a devolução?",
+                  "baseText": {
+                    "de": "die Rücksendung?",
+                    "en": "the return?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/distractors",
+              "old": [
+                "no lugar da sopa.",
+                "Quando eu cancelo"
+              ],
+              "new": [
+                "Veio um espelho",
+                "eu fazo"
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/terms/7",
+              "old": {
+                "targetText": "transportadora",
+                "baseText": {
+                  "de": "Spedition; Kurierdienst",
+                  "en": "courier company"
+                }
+              },
+              "new": {
+                "targetText": "de manhã",
+                "baseText": {
+                  "de": "vormittags; am Vormittag",
+                  "en": "in the morning"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 9,
+          "severity": "required",
+          "issue": "Non-final build chip 'dez dias depois do prazo.' ends in a period; bridge the boundary keeping four chips and realign the second distractor.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/8/chunks",
+              "old": [
+                {
+                  "targetText": "A encomenda chegou",
+                  "baseText": {
+                    "de": "Das Paket kam an",
+                    "en": "The parcel arrived"
+                  }
+                },
+                {
+                  "targetText": "dez dias depois do prazo.",
+                  "baseText": {
+                    "de": "zehn Tage nach dem Liefertermin.",
+                    "en": "ten days after the deadline."
+                  }
+                },
+                {
+                  "targetText": "Existe alguma compensação",
+                  "baseText": {
+                    "de": "Gibt es irgendeine Entschädigung",
+                    "en": "Is there any compensation"
+                  }
+                },
+                {
+                  "targetText": "pelo atraso?",
+                  "baseText": {
+                    "de": "für die Verspätung?",
+                    "en": "for the delay?"
+                  }
+                }
+              ],
+              "new": [
+                {
+                  "targetText": "A encomenda chegou",
+                  "baseText": {
+                    "de": "Das Paket kam an",
+                    "en": "The parcel arrived"
+                  }
+                },
+                {
+                  "targetText": "dez dias depois do prazo. Existe",
+                  "baseText": {
+                    "de": "zehn Tage nach dem Liefertermin. Gibt es",
+                    "en": "ten days after the deadline. Is there"
+                  }
+                },
+                {
+                  "targetText": "alguma compensação",
+                  "baseText": {
+                    "de": "irgendeine Entschädigung",
+                    "en": "any compensation"
+                  }
+                },
+                {
+                  "targetText": "pelo atraso?",
+                  "baseText": {
+                    "de": "für die Verspätung?",
+                    "en": "for the delay?"
+                  }
+                }
+              ]
+            },
+            {
+              "op": "set",
+              "path": "/lessons/8/distractors",
+              "old": [
+                "A encomenda chegaram",
+                "dez dias antes do prazo."
+              ],
+              "new": [
+                "A encomenda chegaram",
+                "dez dias antes do prazo. Existe"
+              ]
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Rule overgeneralises 'the verb stays in the present' although L5 legitimately uses já chegou after se; tie the present to the current coverage.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/de",
+              "old": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb im Präsens mit seinem eigenen Subjekt, wie in a garantia cobre.",
+              "new": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb mit seinem eigenen Subjekt, hier im Präsens, weil es um die aktuelle Deckung geht, wie in a garantia cobre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/en",
+              "old": "Queria saber se introduces a polite indirect yes-no question; after se the verb stays in the present with its own subject, as in a garantia cobre.",
+              "new": "Queria saber se introduces a polite indirect yes-no question; after se the verb has its own subject, here in the present because the question is about current coverage, as in a garantia cobre."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "EN 'When does the deadline start counting?' misreads prazo (a period here); minor idiom polish.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/en",
+              "old": "Do I get that confirmation today? When does the deadline start counting?",
+              "new": "Do I get that confirmation today? When does the period start counting?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "verify",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "09d730817f005250a3f78c3f7911f702fbdc8408f3fb2f7b8dc60fb2bbb20940",
+      "sourceSha256": "a0194654a6d2fef6f97a0f4620d755ed3cd99af0febd235198677734734a1b8a",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "que comprei relative with perfeito chain primeiro piscou/depois parou; cues tag a luz/o motor; recall veio fixed by singular subject; chips rebuild the turn exactly and 'veio com defeito:' ends in a colon. Earlier MEDIUM on 'came faulty'/'kam mit einem Defekt' remains dismissed: both are natural consumer-language renderings aligned across dialogue, example and chunk glosses."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + a garantia cobre (P5); missing nota fiscal is the complication and the learner only asks where to send the photo; cloze tenho/mando with eu visible; rule's blanket 'im Präsens' still overgeneralises against L5's já chegou (optional precision re-offered)."
+        },
+        {
+          "n": 3,
+          "observation": "Prior required repairs verified: turn 4 now 'a taxa entra … e a oficina desconta', cloze blanks entra/desconta with visible 3sg subjects, recall fallbacks carry no tu form, rule states quote-before-authorization. Leftover: terms[6] 'aprovar' no longer occurs anywhere in the lesson (dialogue uses autorizar, which is also a speak token); orphaned gloss should become autorizar."
+        },
+        {
+          "n": 4,
+          "observation": "Chips bridged ('toda tarde. Você poderia' / 'mandar' / 'um técnico aqui?') and reconstruct the turn; decoys mandam (finite after poderia) and toda noite (fact contradiction) are no longer topic-discardable; sister-at-home adjustment respects the 2–5 window; Sie throughout."
+        },
+        {
+          "n": 5,
+          "observation": "'voraussichtlicher Liefertermin'/'delivery estimate' now in both turns and the previsão term; eu queria saber se + já chegou keeps a peça visible; learner commits only to calling Thursday; 'se a senha' remains a lexical trap, not a valid substitute."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas voltou (perfeito contrast); motor-vs-hose question is answered ('mesmo sem mangueira') before the new assessment request; cloze podem cued for vocês; o cansaço voltou keeps the transfer example gender-safe."
+        },
+        {
+          "n": 7,
+          "observation": "Chips bridged ('da aula cancelada. Como funciona') with four chips reconstructing the turn; decoys 'da aula remarcada…' and 'Prefiro pedem' are a fact contradiction and a prefiro+finite error; card/five business days give prazo and meio. EN 'deadline start counting' still open as optional polish only."
+        },
+        {
+          "n": 8,
+          "observation": "Turn 4 now accepts the portaria handoff and asks 'A coleta pode ser amanhã de manhã?', respecting the morning-only limit without booking unilaterally; cloze imprimo/pode (a coleta) visible subjects; chips bridged ('no lugar do espelho. Como'); orphaned transportadora replaced by de manhã; decoys 'Veio um espelho'/'eu fazo' are valid traps."
+        },
+        {
+          "n": 9,
+          "observation": "Chips bridged ('dez dias depois do prazo. Existe'); dez dias depois do prazo + Existe alguma…? keeps the request open and the learner asks for alternatives rather than deciding; 'Eu compro aqui raramente' stays acceptable spoken pt-BR with eu directly before the blank."
+        },
+        {
+          "n": 10,
+          "observation": "Neutral register with du, no Ihnen; assumiu o compromisso de ligar recycles perfeito + infinitive, a gente example takes 3sg; chat/protocolo path is the complication; cloze acesso/encontro cued for eu; chips and decoys clean."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "After the turn-4 rebuild, the term 'aprovar' no longer appears in the lesson; the dialogue, chunks and speakRequired use 'autorizar'. Replace the orphaned gloss with the word the learner actually meets.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/terms/6",
+              "old": {
+                "targetText": "aprovar",
+                "baseText": {
+                  "de": "freigeben; genehmigen",
+                  "en": "to approve"
+                }
+              },
+              "new": {
+                "targetText": "autorizar",
+                "baseText": {
+                  "de": "freigeben; genehmigen",
+                  "en": "to authorize; to approve"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Rule says the verb after se 'stays in the present', which conflicts with L5's legitimate 'se … já chegou'; tie the present to current coverage.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/de",
+              "old": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb im Präsens mit seinem eigenen Subjekt, wie in a garantia cobre.",
+              "new": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb mit seinem eigenen Subjekt, hier im Präsens, weil es um die aktuelle Deckung geht, wie in a garantia cobre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/en",
+              "old": "Queria saber se introduces a polite indirect yes-no question; after se the verb stays in the present with its own subject, as in a garantia cobre.",
+              "new": "Queria saber se introduces a polite indirect yes-no question; after se the verb has its own subject, here in the present because the question is about current coverage, as in a garantia cobre."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "EN 'When does the deadline start counting?' misreads prazo (a period here); minor idiom polish.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/en",
+              "old": "Do I get that confirmation today? When does the deadline start counting?",
+              "new": "Do I get that confirmation today? When does the period start counting?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "close",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ce54439972750cfdddc3cd25a3e7eb36c5bdb98183436d1da4941fc1eb751ee5",
+      "sourceSha256": "adafb50a4bd572aa7e2e96a6308af9c3551ea862641a09c7354782479f389740",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "Turn 4 answers the technician's either/or with a clean perfeito sequence (piscou → parou de vez); cloze cues tag the object subjects, recall veio with vir forms is unambiguous; 'kam mit einem Defekt'/'came faulty' are literal but intelligible mirrors of the chunk veio com defeito."
+        },
+        {
+          "n": 2,
+          "observation": "Missing receipt is a genuine complication; the learner accepts it (photo) and asks the next step; cloze tenho/mando with eu cues and recall cobre with cobrir forms grade fairly; the second example (biblioteca renova) is distinct from the rehearsed one."
+        },
+        {
+          "n": 3,
+          "observation": "Rebuilt turn 4 has two visible finite subjects (a taxa entra, a oficina desconta), no futuro do subjuntivo blank, fallback querias removed, rule now orders request before authorization and the orphaned aprovar term replaced by autorizar."
+        },
+        {
+          "n": 4,
+          "observation": "Chip boundary now bridged ('toda tarde. Você poderia'); decoys 'mandam' and 'toda noite' test a real form error and a fact contradiction; the time-window complication is answered by handing off to the sister without claiming any slot the provider did not offer."
+        },
+        {
+          "n": 5,
+          "observation": "'se … já chegou' keeps the past tense of the inquired event; Prognose/forecast replaced by Liefertermin/delivery estimate; learner commits only to calling Thursday and asks about the written previsão without asserting an earlier delivery."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas … voltou models the temporary effect; the motor-vs-hose diagnostic question is a real complication answered with 'mesmo sem mangueira'; cloze faz (o motor)/podem (vocês) and recall ajudou grade with one answer."
+        },
+        {
+          "n": 7,
+          "observation": "Prefiro + infinitivo picks the refund over rescheduling; bridged chip 'da aula cancelada. Como funciona' reconstructs exactly; recall cancelada agreeing with a aula is a fair agreement test; 'deadline start counting' remains a minor EN idiom slip."
+        },
+        {
+          "n": 8,
+          "observation": "Learner now accepts the portaria handoff and asks whether pickup can be tomorrow morning instead of announcing the courier; cloze pode (a coleta) is visible-subject present; term de manhã replaces the orphaned transportadora."
+        },
+        {
+          "n": 9,
+          "observation": "Existe alguma compensação…? stays open; the coupon counter-offer is evaluated ('compro aqui raramente') and a further option requested without promising any company decision; bridged chip 'depois do prazo. Existe' and realigned distractor are consistent."
+        },
+        {
+          "n": 10,
+          "observation": "Neutral register with du in German matches the neighbour; assumir o compromisso de + infinitivo recycles past narration; the few-lines complication redirects to chat and the learner asks for access and protocolo; second example uses a gente + 3sg correctly."
+        }
+      ],
+      "findings": [
+        {
+          "n": 2,
+          "severity": "optional",
+          "issue": "Pattern rule still generalises 'nach se steht das Verb im Präsens', which L5's legitimate 'se … já chegou' contradicts; tie the present to current coverage.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/de",
+              "old": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb im Präsens mit seinem eigenen Subjekt, wie in a garantia cobre.",
+              "new": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb mit seinem eigenen Subjekt, hier im Präsens, weil es um die aktuelle Deckung geht, wie in a garantia cobre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/en",
+              "old": "Queria saber se introduces a polite indirect yes-no question; after se the verb stays in the present with its own subject, as in a garantia cobre.",
+              "new": "Queria saber se introduces a polite indirect yes-no question; after se the verb has its own subject, here in the present because the question is about current coverage, as in a garantia cobre."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "optional",
+          "issue": "EN 'When does the deadline start counting?' misreads prazo (a period here); minor idiom polish only.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/en",
+              "old": "Do I get that confirmation today? When does the deadline start counting?",
+              "new": "Do I get that confirmation today? When does the period start counting?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "seal",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "eb3902958ebb85f9f3e4f335fdf093046f37370c552168ae01fbde4dd819f94e",
+      "sourceSha256": "adafb50a4bd572aa7e2e96a6308af9c3551ea862641a09c7354782479f389740",
+      "verdict": "FIX",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "que comprei relative with pretérito sequence (piscou, parou) answers the cause question; cloze cues carry visible subjects a luz / o motor; follow-up is 10 words."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + present cobre; nota fiscal complication answered with Para onde eu mando; no te, Sie in DE; 10-word follow-up."
+        },
+        {
+          "n": 3,
+          "observation": "Antes de + infinitivo correct; follow-up 'Então a taxa … depois?' is 13 words and must drop Então; cloze subjects a taxa / a oficina stay visible."
+        },
+        {
+          "n": 4,
+          "observation": "Você poderia mandar is a true softened request; two-to-five window complication handled with minha irmã pode; 11-word follow-up."
+        },
+        {
+          "n": 5,
+          "observation": "se + já chegou keeps perfeito; crase in à oficina correct; learner asks for written previsão without promising earlier delivery; 12 words."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas … voltou uses two perfeito events; second example avoids speaker adjective (o cansaço voltou); 12-word follow-up."
+        },
+        {
+          "n": 7,
+          "observation": "Prefiro + infinitivo; recall blank cancelada agrees with named aula; follow-up clarifies confirmation and start of prazo; 11 words."
+        },
+        {
+          "n": 8,
+          "observation": "Veio X no lugar do Y with correct contraction; follow-up is 18 words and must be shortened while keeping the morning-only pickup limitation."
+        },
+        {
+          "n": 9,
+          "observation": "chegou dez dias depois do prazo + Existe alguma…?; learner weighs the cupom without announcing the company's decision; 11 words."
+        },
+        {
+          "n": 10,
+          "observation": "Neutral register with du; assumiu o compromisso de ligar + ninguém entrou em contato; a gente + 3sg in second example; 11-word follow-up."
+        }
+      ],
+      "findings": [
+        {
+          "n": 3,
+          "severity": "required",
+          "issue": "Follow-up turn exceeds the 12-word validator limit (13 words). Delete initial Então, capitalize A, adjust DE/EN and the cloze opening string.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/targetText",
+              "old": "Então a taxa entra no orçamento e a oficina desconta esse valor depois?",
+              "new": "A taxa entra no orçamento e a oficina desconta esse valor depois?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/baseText/de",
+              "old": "Dann fließt die Gebühr in den Kostenvoranschlag ein, und die Werkstatt zieht den Betrag später wieder ab?",
+              "new": "Fließt die Gebühr in den Kostenvoranschlag ein, und zieht die Werkstatt den Betrag später wieder ab?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/dialogue/3/baseText/en",
+              "old": "So the fee goes into the quote and the shop deducts that amount later?",
+              "new": "Does the fee go into the quote, and does the shop deduct that amount later?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/2/cloze/0",
+              "old": "Então a taxa ",
+              "new": "A taxa "
+            }
+          ]
+        },
+        {
+          "n": 8,
+          "severity": "required",
+          "issue": "Follow-up turn exceeds the 12-word validator limit (18 words). Shorten to 12 words, keeping the explicit subjects Eu / A coleta before the cloze gaps and the morning-only pickup limitation; adjust DE/EN and the cloze middle string.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/targetText",
+              "old": "Eu imprimo a etiqueta hoje e deixo a caixa na portaria. A coleta pode ser amanhã de manhã?",
+              "new": "Eu imprimo a etiqueta hoje. A coleta pode ser amanhã de manhã?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText/de",
+              "old": "Ich drucke das Etikett heute aus und gebe das Paket beim Pförtner ab. Kann die Abholung morgen Vormittag stattfinden?",
+              "new": "Ich drucke das Etikett heute aus. Kann die Abholung morgen Vormittag stattfinden?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/dialogue/3/baseText/en",
+              "old": "I'll print the label today and leave the box at the front desk. Can the pickup be tomorrow morning?",
+              "new": "I'll print the label today. Can the pickup be tomorrow morning?"
+            },
+            {
+              "op": "set",
+              "path": "/lessons/7/cloze/2",
+              "old": " a etiqueta hoje e deixo a caixa na portaria. A coleta ",
+              "new": " a etiqueta hoje. A coleta "
+            }
+          ]
+        },
+        {
+          "n": 5,
+          "severity": "optional",
+          "issue": "Pattern label 'Eu queria saber se…' duplicates L2's 'queria saber se…'; acceptable as licensed P5 recycling (L5 adds que faltava + já chegou), no change required.",
+          "edits": []
+        }
+      ]
+    },
+    {
+      "stage": "signed",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "1210a3c3414f9341935d8ce06adf7ee1db87eacd8c51a0efa7157c09ec8c2a9c",
+      "sourceSha256": "9afe34b57720cf326ce825603e21541ab9cebd2143c0ec022289705c781ae121",
+      "verdict": "PASS",
+      "lessonsRead": [
+        {
+          "n": 1,
+          "observation": "que comprei relative plus perfeito sequence (piscou, parou) answers the technician's causal question; cloze cues carry visible subjects a luz / o motor; DE 'den ich gestern gekauft habe' and EN 'came faulty' idiomatic; caption and visualNotes hide light/motor details."
+        },
+        {
+          "n": 2,
+          "observation": "queria saber se + present cobre matches the repaired rule tying the present to current coverage; nota fiscal complication answered by Para onde eu mando (10 words); Sie throughout, no te; recall cobre has no competing valid form."
+        },
+        {
+          "n": 3,
+          "observation": "Repaired follow-up now 12 words with A taxa / a oficina visible before entra / desconta; cloze opening 'A taxa ' matches; DE 'Fließt die Gebühr … ein, und zieht die Werkstatt …' and EN question form both natural; learner clarifies inclusion without authorising."
+        },
+        {
+          "n": 4,
+          "observation": "Você poderia mandar is a softened request; two-to-five window handled with Às duas eu trabalho, mas minha irmã pode (explicit subjects before gaps); second example imprimir uma cópia is a distinct context; DE Sie register consistent."
+        },
+        {
+          "n": 5,
+          "observation": "se … já chegou keeps perfeito, crase à oficina correct; learner only asks whether the previsão comes por escrito, never asserts earlier delivery; label duplication with L2 is licensed P5 recycling."
+        },
+        {
+          "n": 6,
+          "observation": "ajudou por um dia, mas o barulho voltou uses two perfeito events with named subjects; second example o cansaço voltou avoids speaker adjective; follow-up reports post-repair evidence (mesmo sem mangueira) before requesting avaliar de novo."
+        },
+        {
+          "n": 7,
+          "observation": "Prefiro pedir + infinitivo; recall cancelada agrees with named aula; follow-up (11 words) clarifies confirmation and start of prazo; EN repair 'When does the period start counting?' verified present; DE 'Wann beginnt die Frist zu laufen?' idiomatic."
+        },
+        {
+          "n": 8,
+          "observation": "Repaired follow-up is 12 words, Eu / A coleta visible before imprimo / pode, cloze middle string matches; morning-only limitation respected (amanhã de manhã); no lugar do contraction explained; recall fallbacks are lexical nouns with devolução uniquely fitting the wrong-item context."
+        },
+        {
+          "n": 9,
+          "observation": "chegou dez dias depois do prazo + Existe alguma…?; learner weighs the cupom with Vocês oferecem outra opção and announces no company decision; cue 'oferecer (vocês)' has visible subject; DE Ihnen/Sie consistent with formal."
+        },
+        {
+          "n": 10,
+          "observation": "Neutral register with du; assumiu o compromisso de ligar + ninguém entrou em contato; a gente + 3sg in second example; follow-up asks for chat access and protocolo without presuming an outcome; no clitic recall/speech tokens."
+        }
+      ],
+      "findings": [
+        {
+          "n": 8,
+          "severity": "optional",
+          "issue": "Recall fallbackChoices list the correct answer first (devolução); every other lesson places the answer at a later index. Harmless if the app shuffles, but reordering keeps the set uniform.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/7/recall/fallbackChoices",
+              "old": [
+                "devolução",
+                "entrega",
+                "compra",
+                "cobrança"
+              ],
+              "new": [
+                "entrega",
+                "compra",
+                "devolução",
+                "cobrança"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "additionalEdits": [
+    {
+      "from": "1dd9f78a69fc8b4ed208e0e1028d56e652e61e15e5cba69d339166f22e22e57d",
+      "to": "9afe34b57720cf326ce825603e21541ab9cebd2143c0ec022289705c781ae121",
+      "authorizedBy": "605d8eddfa663ee18aab455c831b73a547762f408f19fa39e4690ea84c318500",
+      "findings": [
+        {
+          "n": 2,
+          "severity": "required",
+          "issue": "Pattern rule still generalises 'nach se steht das Verb im Präsens', which L5's legitimate 'se … já chegou' contradicts; tie the present to current coverage.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/de",
+              "old": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb im Präsens mit seinem eigenen Subjekt, wie in a garantia cobre.",
+              "new": "Queria saber se leitet eine höfliche indirekte Ja-Nein-Frage ein; nach se steht das Verb mit seinem eigenen Subjekt, hier im Präsens, weil es um die aktuelle Deckung geht, wie in a garantia cobre."
+            },
+            {
+              "op": "set",
+              "path": "/lessons/1/pattern/rule/en",
+              "old": "Queria saber se introduces a polite indirect yes-no question; after se the verb stays in the present with its own subject, as in a garantia cobre.",
+              "new": "Queria saber se introduces a polite indirect yes-no question; after se the verb has its own subject, here in the present because the question is about current coverage, as in a garantia cobre."
+            }
+          ]
+        },
+        {
+          "n": 7,
+          "severity": "required",
+          "issue": "EN 'When does the deadline start counting?' misreads prazo (a period here); minor idiom polish only.",
+          "edits": [
+            {
+              "op": "set",
+              "path": "/lessons/6/dialogue/3/baseText/en",
+              "old": "Do I get that confirmation today? When does the deadline start counting?",
+              "new": "Do I get that confirmation today? When does the period start counting?"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
