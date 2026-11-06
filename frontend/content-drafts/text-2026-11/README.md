@@ -9,8 +9,11 @@ These are **offline lesson sources**, not a release manifest. The app imports no
 - [Offline dialogue reader](../../../../investigations/lingwave-guided-reader-2026-11-06.html): open locally to read any archived intermediate draft, reveal each turn and switch between available meanings. Changing lessons here does not affect app progress. The source links in the dashboard open the full exercises.
 - [October revisions compared](review/october-revisions.json): the 80 old lesson identities, which components were edited, and which canonical dialogue turns changed.
 - [B2 source specifications and trophy ledgers](planning/b2-authority-map.json): portable curriculum documents with original-source and saved-file hashes. This makes the original relative scratch references in the immutable lesson files inspectable from a fresh checkout.
+- [Korean B2 P5–P10 planning map](planning/korean-b2-p5-p10-planning-only.json): 60 independently read scene outlines, with exact subscription corrections. These are still unwritten lessons. Retain 해요체; P6's interlocutor switch needs support. Thirty-six sample moves exceed 20 eojeol (space-separated Korean units) and must be split or shortened before use as final turns. The outlines do not reserve trophy words.
 
 From the frontend folder run `node content-drafts/text-2026-11/verify.mjs` to verify file hashes, unique path and lesson identities, the four-/six-turn shape and exercise reconstruction. This is a deterministic archive check, not a substitute for a language reviewer or a rendered exercise.
+
+Run `npx --no-install tsx content-drafts/text-2026-11/verify-b1.cjs` to reproduce the B1 language-specific exercise and locale checks on the final saved bytes. It uses the unmodified mainstream validator. For Korean it first confirms rejection by the released P1/P2 pilot gate, then adapts only the path-number bound in memory and checks the new path against its original vocabulary and native constraints. Neither command sends a provider request.
 
 ## Continue
 

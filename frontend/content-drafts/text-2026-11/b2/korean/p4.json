@@ -1,0 +1,3959 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 4,
+  "slug": "what-if",
+  "pathTitle": {
+    "de": "Was wäre, wenn?",
+    "en": "What if?"
+  },
+  "pathFunction": {
+    "de": "Spiele eine Entscheidung unter anderen Voraussetzungen durch und sage, welche Lösung du unter welchen Bedingungen wählen würdest.",
+    "en": "Explore how a decision changes under different assumptions, then explain which option you would choose and under what conditions."
+  },
+  "specRef": {
+    "pathSpec": "../../architecture-amendment-response.json",
+    "pathSpecSha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
+    "ledger": "../../../ko-b2-spine-alignment/response.json#/result/paths/1/lessons",
+    "ledgerSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+  },
+  "authoring": {
+    "source": "Fable Korean P4 architecture amendment and Codex bilingual text and exercise authoring",
+    "runId": "ko-b2-20261106-p4",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "missed-fare",
+      "title": {
+        "de": "Der frühere Flugpreis",
+        "en": "The fare you missed"
+      },
+      "situation": {
+        "de": "Am Schalter eines koreanischen Reisebüros in Seoul lässt du dir den heutigen Preis für einen Flug nennen, nach dem du schon einmal gefragt hast.",
+        "en": "At a travel agency in Seoul you check today's price for a flight you asked about once before."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person am Reisebüroschalter",
+            "en": "Travel agent"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Schalter eines koreanischen Reisebüros in Seoul lässt du dir den heutigen Preis für einen Flug nennen, nach dem du schon einmal gefragt hast. „두 달 전에 예약하셨더라면 이십만 원이었을 텐데요. 지금은 두 배예요.“",
+        "en": "At a travel agency in Seoul you check today's price for a flight you asked about once before. “두 달 전에 예약하셨더라면 이십만 원이었을 텐데요. 지금은 두 배예요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "두 달 전에 예약하셨더라면 이십만 원이었을 텐데요. 지금은 두 배예요.",
+          "base": {
+            "de": "Hätten Sie vor zwei Monaten gebucht, hätten Sie zweihunderttausend Won gezahlt. Jetzt ist es das Doppelte.",
+            "en": "Had you booked two months ago, it would have been two hundred thousand won. Now it's twice that."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그때 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 안 정해져서 샀어도 바꿔야 했을 거예요.",
+          "base": {
+            "de": "Wenn ich damals gebucht hätte, hätte der Unterschied etwa zweihunderttausend Won betragen. Mein Urlaub stand aber noch nicht fest. Selbst wenn ich die Karte gekauft hätte, hätte ich umbuchen müssen.",
+            "en": "Had I bought it then, the difference would have been about two hundred thousand won. But my leave dates weren't set then, so even if I'd bought it, I'd have had to change it."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그 가격은 일찍 예약하셔야 나와요. 지금은 같은 편을 싸게 드리기 어려워요.",
+          "base": {
+            "de": "Den Preis bekommen Sie nur, wenn Sie früh buchen. Für denselben Flug kann ich Ihnen jetzt kaum einen günstigeren Tarif anbieten.",
+            "en": "You have to book early to get that fare. I can't really offer you a lower price for the same flight now."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "맞아요. 다만 날짜 변경 수수료까지 생각하면 결과는 비슷했을 수도 있어요.",
+          "base": {
+            "de": "Das stimmt. Wenn man die Umbuchungsgebühr mitrechnet, wäre es am Ende allerdings vielleicht auf ungefähr dasselbe hinausgelaufen.",
+            "en": "True. Though once you factor in the fee for changing the date, it might have worked out about the same."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 이제 어떻게 하실지 정해 주세요. 새벽 편도 있긴 해요.",
+          "base": {
+            "de": "Dann sagen Sie mir bitte, was Sie jetzt machen möchten. Es gibt auch einen Flug in aller Frühe.",
+            "en": "Then please let me know what you'd like to do now. There is also an early-morning flight."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "출발을 하루 미루고 새벽 편으로 하면 얼마나 차이가 나는지 봐 주시겠어요? 십만 원 이상 싸면 그걸로 할게요.",
+          "base": {
+            "de": "Könnten Sie nachsehen, wie viel es ausmacht, wenn ich einen Tag später mit dem Frühflug fliege? Wenn er mindestens hunderttausend Won günstiger ist, nehme ich ihn.",
+            "en": "Could you check the difference if I leave a day later and take the early flight? If it's at least a hundred thousand won cheaper, I'll take it."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "그때 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 ",
+        "chunks": [
+          "휴가",
+          "날짜가 안",
+          "정해져서 샀어도",
+          "바꿔야",
+          "했을 거예요."
+        ],
+        "distractors": [
+          "날짜에 안",
+          "바꾸도록"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "맞아요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 날짜 변경 수수료까지 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 결과는 비슷했을 수도 있어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "하지만",
+              "그런데"
+            ],
+            "kind": "connector",
+            "choices": [
+              "다만",
+              "그래서",
+              "즉",
+              "또는"
+            ]
+          },
+          {
+            "answer": "생각하면",
+            "acceptedAnswers": [
+              "생각하면",
+              "고려하면",
+              "감안하면",
+              "따져 보면",
+              "계산하면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "출발을 하루 미루고 새벽 편으로 하면 얼마나 차이가 나는지 봐 주시겠어요? 십만 원 이상 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그걸로 할게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "싸면",
+            "acceptedAnswers": [
+              "싸면",
+              "저렴하면",
+              "싸다면",
+              "저렴하다면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "그때 샀더라면 ",
+        "answer": "차이가",
+        "acceptedAnswers": [
+          "차이가"
+        ],
+        "after": " 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 안 정해져서 샀어도 바꿔야 했을 거예요.",
+        "fallbackChoices": [
+          "지연이",
+          "경유지가",
+          "예약자가",
+          "차이가"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Einen verpassten Vorteil relativieren",
+          "en": "Put a missed saving in perspective"
+        },
+        "rule": {
+          "de": "샀더라면 eröffnet einen Rückblick auf einen Kauf, den du nicht getätigt hast. 샀어도 greift denselben gedachten Kauf auf und erklärt, warum der Vorteil unsicher bleibt.",
+          "en": "샀더라면 looks back at a purchase you didn't make. 샀어도 picks up that same imagined purchase to explain why the apparent saving wasn't certain."
+        },
+        "examples": [
+          {
+            "targetText": "그때 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 안 정해져서 샀어도 바꿔야 했을 거예요.",
+            "base": {
+              "de": "Wenn ich damals gebucht hätte, hätte der Unterschied etwa zweihunderttausend Won betragen. Mein Urlaub stand aber noch nicht fest. Selbst wenn ich die Karte gekauft hätte, hätte ich umbuchen müssen.",
+              "en": "Had I bought it then, the difference would have been about two hundred thousand won. But my leave dates weren't set then, so even if I'd bought it, I'd have had to change it."
+            },
+            "highlights": [
+              "샀더라면",
+              "샀어도"
+            ]
+          },
+          {
+            "targetText": "어제 표를 샀더라면 앞자리를 잡았을 거예요. 하지만 샀어도 야근 때문에 못 갔을 거예요.",
+            "base": {
+              "de": "Hätte ich gestern eine Karte gekauft, hätte ich einen Platz ganz vorne bekommen. Aber selbst mit Karte hätte ich wegen der Überstunden nicht hingehen können.",
+              "en": "Had I bought a ticket yesterday, I'd have got a seat at the front. But even with a ticket, working late would have kept me from going."
+            },
+            "highlights": [
+              "샀더라면",
+              "샀어도"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "차이가",
+          "kind": "noun",
+          "base": {
+            "de": "der Unterschied",
+            "en": "the difference"
+          }
+        },
+        {
+          "targetText": "그때",
+          "kind": "adverb",
+          "base": {
+            "de": "damals",
+            "en": "back then"
+          }
+        },
+        {
+          "targetText": "샀더라면",
+          "kind": "frame",
+          "base": {
+            "de": "hätte ich es gekauft",
+            "en": "had I bought it"
+          }
+        },
+        {
+          "targetText": "샀어도",
+          "kind": "frame",
+          "base": {
+            "de": "selbst wenn ich es gekauft hätte",
+            "en": "even if I'd bought it"
+          }
+        },
+        {
+          "targetText": "휴가",
+          "kind": "noun",
+          "base": {
+            "de": "Urlaub",
+            "en": "leave from work"
+          }
+        },
+        {
+          "targetText": "수수료까지",
+          "kind": "noun",
+          "base": {
+            "de": "sogar die Gebühr",
+            "en": "even the fee"
+          }
+        },
+        {
+          "targetText": "새벽",
+          "kind": "noun",
+          "base": {
+            "de": "früher Morgen",
+            "en": "early morning"
+          }
+        },
+        {
+          "targetText": "미루고",
+          "kind": "verb",
+          "base": {
+            "de": "verschieben und",
+            "en": "put off and"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "날짜가",
+            "정해져서",
+            "샀어도",
+            "바꿔야"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "수수료까지",
+            "결과는",
+            "비슷했을"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "출발을",
+            "미루고",
+            "싸면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "차이",
+        "familyKey": "차이",
+        "surface": "차이가",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "그때 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 안 정해져서 샀어도 바꿔야 했을 거예요.",
+          "base": {
+            "de": "Wenn ich damals gebucht hätte, hätte der Unterschied etwa zweihunderttausend Won betragen. Mein Urlaub stand aber noch nicht fest. Selbst wenn ich die Karte gekauft hätte, hätte ich umbuchen müssen.",
+            "en": "Had I bought it then, the difference would have been about two hundred thousand won. But my leave dates weren't set then, so even if I'd bought it, I'd have had to change it."
+          }
+        },
+        "base": {
+          "de": "Unterschied, Differenz",
+          "en": "difference, gap"
+        },
+        "whyThisWord": {
+          "de": "Mit 차이 kannst du beziffern, was sich bei einer anderen Entscheidung geändert hätte. Bei zwei Preisen nennst du damit den Abstand zwischen beiden.",
+          "en": "Use 차이 to quantify what a different decision would have changed. With two prices, it names the gap between them."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "샀더라면",
+          "status": "productive"
+        },
+        {
+          "surface": "샀어도",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "remote-work-survey",
+      "title": {
+        "de": "Eine Umfrage zur Heimarbeit",
+        "en": "A survey about remote work"
+      },
+      "situation": {
+        "de": "In einer Mittagspause hörst du in deinem Seouler Büro von einer Umfrage zum künftigen Arbeitsort.",
+        "en": "Over lunch in your Seoul office you hear about a survey on where people will work."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Kollegin oder Kollege",
+            "en": "Colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In einer Mittagspause hörst du in deinem Seouler Büro von einer Umfrage zum künftigen Arbeitsort. „회사가 전면 재택으로 간다는 소문 들었어요? 설문에 뭐라고 쓸 거예요?“",
+        "en": "Over lunch in your Seoul office you hear about a survey on where people will work. “회사가 전면 재택으로 간다는 소문 들었어요? 설문에 뭐라고 쓸 거예요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "회사가 전면 재택으로 간다는 소문 들었어요? 설문에 뭐라고 쓸 거예요?",
+          "base": {
+            "de": "Hast du das Gerücht gehört, dass die Firma ganz auf Heimarbeit umstellt? Was schreibst du in die Umfrage?",
+            "en": "Have you heard the rumor that the company is going fully remote? What will you put in the survey?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "전면 재택이 되면 변수가 두 가지 생겨요. 신입은 옆에서 배울 기회가 줄고 고객을 만나려면 누군가는 나와야 할 거예요.",
+          "base": {
+            "de": "Wenn alle von zu Hause arbeiten, kommen zwei Faktoren ins Spiel. Neue Mitarbeitende haben weniger Gelegenheit, direkt von Kolleginnen und Kollegen zu lernen, und für persönliche Kundentermine muss doch jemand vor Ort sein.",
+            "en": "If we go fully remote, two factors come into play. New hires get fewer chances to learn alongside someone, and someone still has to turn up to meet clients."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "재택이면 다 좋지 않아요? 출근 시간도 없고요. 왜 걱정이에요?",
+          "base": {
+            "de": "Ist Heimarbeit denn nicht für alle gut? Man spart sich doch den Arbeitsweg. Was macht dir Sorgen?",
+            "en": "Isn't remote work good for everyone? You don't have to commute. What worries you?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "출근 시간이 없어지는 건 좋죠. 그래도 그게 모두에게 좋은 건 아니에요. 집이 좁거나 아이가 있는 분은 사무실이 편하거든요.",
+          "base": {
+            "de": "Kein Arbeitsweg ist natürlich gut. Das heißt aber nicht, dass Heimarbeit für alle passt. Wer zu Hause wenig Platz oder Kinder hat, arbeitet vielleicht lieber im Büro.",
+            "en": "Losing the commute is good. Still, it doesn't suit everyone. Someone with little space or children at home may be more comfortable at the office."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 출근 일수를 묻는 설문에는 뭐라고 답할 거예요?",
+          "base": {
+            "de": "Was antwortest du dann auf die Frage nach der Zahl der Bürotage?",
+            "en": "So what will you say when the survey asks about the number of office days?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "일주일에 두 번은 출근하고 요일은 팀마다 정하는 게 낫다고 쓸게요.",
+          "base": {
+            "de": "Ich schreibe, dass zwei Bürotage pro Woche gut wären und die Teams die Wochentage selbst bestimmen sollten.",
+            "en": "I'll write that two days a week in the office would be better, with each team choosing which days."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "전면",
+          "재택이 되면",
+          "변수가 두",
+          "가지",
+          "생겨요."
+        ],
+        "distractors": [
+          "재택을 하던",
+          "생겼던"
+        ],
+        "frameSuffix": " 신입은 옆에서 배울 기회가 줄고 고객을 만나려면 누군가는 나와야 할 거예요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "출근 시간이 없어지는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 그게 모두에게 좋은 건 아니에요. 집이 좁거나 아이가 있는 분은 사무실이 편하거든요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 좋죠",
+            "acceptedAnswers": [
+              "건 좋죠",
+              "것은 좋죠",
+              "건 좋아요",
+              "건 좋지요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그래도",
+            "acceptedAnswers": [
+              "그래도",
+              "그렇지만",
+              "하지만"
+            ],
+            "kind": "connector",
+            "choices": [
+              "그래도",
+              "그래서",
+              "그러니까",
+              "그러면"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "일주일에 두 번은 출근하고 요일은 팀마다 정하는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 쓸게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "게 낫다고",
+            "acceptedAnswers": [
+              "게 낫다고",
+              "것이 낫다고",
+              "게 좋다고",
+              "것이 좋다고",
+              "쪽이 낫다고"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "전면 재택이 되면 ",
+        "answer": "변수가",
+        "acceptedAnswers": [
+          "변수가"
+        ],
+        "after": " 두 가지 생겨요. 신입은 옆에서 배울 기회가 줄고 고객을 만나려면 누군가는 나와야 할 거예요.",
+        "fallbackChoices": [
+          "통근자가",
+          "회의실이",
+          "변수가",
+          "교통비가"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Künftige Folgen aus einer Bedingung ableiten",
+          "en": "Draw a future consequence from a condition"
+        },
+        "rule": {
+          "de": "되면 setzt die Umstellung als Möglichkeit voraus. Mit 나와야 할 거예요 benennst du eine voraussichtliche Folge, die selbst bei Heimarbeit bleibt.",
+          "en": "되면 sets up the change as a possibility. 나와야 할 거예요 predicts a remaining need even under the new arrangement."
+        },
+        "examples": [
+          {
+            "targetText": "전면 재택이 되면 변수가 두 가지 생겨요. 신입은 옆에서 배울 기회가 줄고 고객을 만나려면 누군가는 나와야 할 거예요.",
+            "base": {
+              "de": "Wenn alle von zu Hause arbeiten, kommen zwei Faktoren ins Spiel. Neue Mitarbeitende haben weniger Gelegenheit, direkt von Kolleginnen und Kollegen zu lernen, und für persönliche Kundentermine muss doch jemand vor Ort sein.",
+              "en": "If we go fully remote, two factors come into play. New hires get fewer chances to learn alongside someone, and someone still has to turn up to meet clients."
+            },
+            "highlights": [
+              "되면",
+              "나와야 할 거예요"
+            ]
+          },
+          {
+            "targetText": "마지막 버스가 일찍 끊기면 야간 근무자는 택시를 불러야 할 거예요.",
+            "base": {
+              "de": "Wenn der Busverkehr abends früh endet, werden die Leute aus der Nachtschicht ein Taxi rufen müssen.",
+              "en": "If the last bus stops running early, night-shift workers will probably have to call a taxi."
+            },
+            "highlights": [
+              "끊기면",
+              "불러야 할 거예요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "변수가",
+          "kind": "noun",
+          "base": {
+            "de": "ein Faktor, der den Ausgang beeinflusst",
+            "en": "a factor affecting the outcome"
+          }
+        },
+        {
+          "targetText": "전면",
+          "kind": "noun",
+          "base": {
+            "de": "vollständige Umstellung, hier komplett",
+            "en": "full scale, here completely"
+          }
+        },
+        {
+          "targetText": "재택이 되면",
+          "kind": "frame",
+          "base": {
+            "de": "wenn alle von zu Hause arbeiten",
+            "en": "if work goes remote"
+          }
+        },
+        {
+          "targetText": "신입은",
+          "kind": "noun",
+          "base": {
+            "de": "was neue Mitarbeitende betrifft",
+            "en": "as for new hires"
+          }
+        },
+        {
+          "targetText": "기회가",
+          "kind": "noun",
+          "base": {
+            "de": "die Gelegenheit",
+            "en": "the opportunity"
+          }
+        },
+        {
+          "targetText": "나와야 할 거예요",
+          "kind": "frame",
+          "base": {
+            "de": "wird jemand vor Ort sein müssen",
+            "en": "someone will probably have to come in"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "팀마다",
+          "kind": "noun",
+          "base": {
+            "de": "je Team (Nomen mit 마다)",
+            "en": "each team (noun with 마다)"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "재택이",
+            "변수가",
+            "생겨요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "출근",
+            "모두에게",
+            "좁거나"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "출근하고",
+            "팀마다",
+            "쓸게요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "변수",
+        "familyKey": "변수",
+        "surface": "변수가",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "전면 재택이 되면 변수가 두 가지 생겨요. 신입은 옆에서 배울 기회가 줄고 고객을 만나려면 누군가는 나와야 할 거예요.",
+          "base": {
+            "de": "Wenn alle von zu Hause arbeiten, kommen zwei Faktoren ins Spiel. Neue Mitarbeitende haben weniger Gelegenheit, direkt von Kolleginnen und Kollegen zu lernen, und für persönliche Kundentermine muss doch jemand vor Ort sein.",
+            "en": "If we go fully remote, two factors come into play. New hires get fewer chances to learn alongside someone, and someone still has to turn up to meet clients."
+          }
+        },
+        "base": {
+          "de": "Einflussgröße, offener Faktor",
+          "en": "variable, factor that could change the outcome"
+        },
+        "whyThisWord": {
+          "de": "변수 bezeichnet einen Faktor, von dem der Ausgang abhängt. Das Wort passt, wenn eine Regel auf verschiedene Arbeitsplätze unterschiedlich wirken könnte.",
+          "en": "변수 identifies a factor that can affect an outcome. It helps explain why the same policy might work differently for different jobs."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "되면",
+          "status": "productive"
+        },
+        {
+          "surface": "나와야 할 거예요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "rent-over-two-years",
+      "title": {
+        "de": "Zwei Jahre Miete",
+        "en": "Two years of rent"
+      },
+      "situation": {
+        "de": "In eurer Küche besprichst du mit der Person, mit der du die Wohnung teilst, einen Vorschlag zur Monatsmiete.",
+        "en": "In your kitchen you and your flatmate discuss a proposed change to the rent."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Mitbewohnerin oder Mitbewohner",
+            "en": "Flatmate"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In eurer Küche besprichst du mit der Person, mit der du die Wohnung teilst, einen Vorschlag zur Monatsmiete. „집주인분이 월세 백만 원을 십오 퍼센트 올리고 싶다고 하셨어요. 어떻게 하죠?“",
+        "en": "In your kitchen you and your flatmate discuss a proposed change to the rent. “집주인분이 월세 백만 원을 십오 퍼센트 올리고 싶다고 하셨어요. 어떻게 하죠?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "집주인분이 월세 백만 원을 십오 퍼센트 올리고 싶다고 하셨어요. 어떻게 하죠?",
+          "base": {
+            "de": "Unsere Vermieterin oder unser Vermieter möchte die Monatsmiete von einer Million Won um fünfzehn Prozent erhöhen. Was machen wir?",
+            "en": "The landlord said they'd like to raise our monthly rent of one million won by fifteen percent. What do we do?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 대안이 두 가지예요. 협상하거나 작은 집으로 옮기는 거예요.",
+          "base": {
+            "de": "Bei fünfzehn Prozent müssten wir beide jeweils fünfundsiebzigtausend Won mehr zahlen. Dann hätten wir zwei Alternativen. Wir könnten verhandeln oder in eine kleinere Wohnung ziehen.",
+            "en": "At fifteen percent we'd each have to pay an extra seventy-five thousand won. That gives us two alternatives. We could negotiate or move somewhere smaller."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "한 번 이사하는 데 이백만 원 든다던데 그냥 내는 게 낫지 않아요?",
+          "base": {
+            "de": "Ein Umzug soll zwei Millionen Won kosten. Wäre es nicht besser, die Erhöhung einfach zu zahlen?",
+            "en": "I hear it costs two million won to move. Wouldn't it be better just to pay the higher rent?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "이사가 비싼 건 맞아요. 그래도 이 년이면 인상분이 삼백육십만 원이라 이사 비용을 넘어요. 늘 싼 건 아니에요.",
+          "base": {
+            "de": "Ein Umzug ist teuer, das stimmt. In zwei Jahren summiert sich die Erhöhung aber auf drei Millionen sechshunderttausend Won und übersteigt die Umzugskosten. Einfach zu zahlen ist nicht immer günstiger.",
+            "en": "Moving is expensive, that's true. But over two years the increase comes to three million six hundred thousand won, more than the cost of moving. Paying up isn't always cheaper."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 집주인분께 뭐라고 답할지 정해요. 이번 주에 답해야 돼요.",
+          "base": {
+            "de": "Dann lass uns entscheiden, was wir auf das Angebot antworten. Wir müssen diese Woche antworten.",
+            "en": "Then let's decide what to tell the landlord. We have to reply this week."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "먼저 오 퍼센트 인상에 이 년 계약으로 제안해 봐요. 거절하시면 그때 집을 보기 시작하면 어떨까요?",
+          "base": {
+            "de": "Schlagen wir erst mal fünf Prozent mehr und einen Zweijahresvertrag vor. Bei einer Absage könnten wir dann anfangen, nach Wohnungen zu schauen.",
+            "en": "Let's first offer a five percent increase and a two-year lease. If that's turned down, how about starting to look for a place then?"
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 ",
+        "chunks": [
+          "대안이 두",
+          "가지예요. 협상하거나",
+          "작은",
+          "집으로",
+          "옮기는 거예요."
+        ],
+        "distractors": [
+          "집들의",
+          "옮겼는데"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "이사가 비싼 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": " 인상분이 삼백육십만 원이라 이사 비용을 넘어요. 늘 싼 건 아니에요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요",
+              "건 사실이에요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그래도",
+            "acceptedAnswers": [
+              "그래도",
+              "그렇지만",
+              "하지만"
+            ],
+            "kind": "connector",
+            "choices": [
+              "그래도",
+              "그래서",
+              "그러니까",
+              "또는"
+            ]
+          },
+          {
+            "answer": "이 년이면",
+            "acceptedAnswers": [
+              "이 년이면",
+              "이 년 뒤면",
+              "이 년 후면",
+              "이 년이 지나면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "먼저 오 퍼센트 인상에 이 년 계약으로 제안해 봐요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그때 집을 보기 시작하면 어떨까요?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "거절하시면",
+            "acceptedAnswers": [
+              "거절하시면",
+              "안 받아들이시면",
+              "거절하신다면",
+              "안 받아들이신다면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 ",
+        "answer": "대안이",
+        "acceptedAnswers": [
+          "대안이"
+        ],
+        "after": " 두 가지예요. 협상하거나 작은 집으로 옮기는 거예요.",
+        "fallbackChoices": [
+          "계약자가",
+          "대안이",
+          "만료일이",
+          "우편함이"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Zwischen zwei Handlungsmöglichkeiten wählen",
+          "en": "Lay out two possible actions"
+        },
+        "rule": {
+          "de": "협상하거나 nennt den ersten Weg, 옮기는 거예요 schließt die zweite Möglichkeit ab. Davor machst du mit 대안이 두 가지예요 klar, dass es um zwei echte Alternativen geht.",
+          "en": "협상하거나 gives the first course of action. 옮기는 거예요 completes the second. 대안이 두 가지예요 signals that both are real options."
+        },
+        "examples": [
+          {
+            "targetText": "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 대안이 두 가지예요. 협상하거나 작은 집으로 옮기는 거예요.",
+            "base": {
+              "de": "Bei fünfzehn Prozent müssten wir beide jeweils fünfundsiebzigtausend Won mehr zahlen. Dann hätten wir zwei Alternativen. Wir könnten verhandeln oder in eine kleinere Wohnung ziehen.",
+              "en": "At fifteen percent we'd each have to pay an extra seventy-five thousand won. That gives us two alternatives. We could negotiate or move somewhere smaller."
+            },
+            "highlights": [
+              "협상하거나",
+              "옮기는 거예요"
+            ]
+          },
+          {
+            "targetText": "기차가 끊기면 길이 두 가지예요. 여기서 자거나 택시를 나눠 타는 거예요.",
+            "base": {
+              "de": "Wenn kein Zug mehr fährt, haben wir zwei Möglichkeiten. Wir können hier übernachten oder uns ein Taxi teilen.",
+              "en": "If the trains stop running, we have two options. We can sleep here or share a taxi."
+            },
+            "highlights": [
+              "자거나",
+              "타는 거예요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "대안이",
+          "kind": "noun",
+          "base": {
+            "de": "eine Alternative",
+            "en": "an alternative"
+          }
+        },
+        {
+          "targetText": "월세",
+          "kind": "noun",
+          "base": {
+            "de": "Monatsmiete",
+            "en": "monthly rent"
+          }
+        },
+        {
+          "targetText": "원씩",
+          "kind": "noun",
+          "base": {
+            "de": "jeweils so viele Won",
+            "en": "that many won each"
+          }
+        },
+        {
+          "targetText": "협상하거나",
+          "kind": "frame",
+          "base": {
+            "de": "entweder verhandeln oder",
+            "en": "negotiate or"
+          }
+        },
+        {
+          "targetText": "옮기는 거예요",
+          "kind": "frame",
+          "base": {
+            "de": "die Möglichkeit ist, umzuziehen",
+            "en": "moving is the option"
+          }
+        },
+        {
+          "targetText": "인상분이",
+          "kind": "noun",
+          "base": {
+            "de": "der Erhöhungsbetrag",
+            "en": "the amount of the increase"
+          }
+        },
+        {
+          "targetText": "이사 비용을",
+          "kind": "noun",
+          "base": {
+            "de": "die Umzugskosten",
+            "en": "the moving costs"
+          }
+        },
+        {
+          "targetText": "거절하시면",
+          "kind": "verb",
+          "base": {
+            "de": "falls das abgelehnt wird",
+            "en": "if the landlord declines"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "대안이",
+            "협상하거나",
+            "집으로"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "비싼",
+            "인상분이",
+            "넘어요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "계약으로",
+            "거절하시면",
+            "보기"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "대안",
+        "familyKey": "대안",
+        "surface": "대안이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 대안이 두 가지예요. 협상하거나 작은 집으로 옮기는 거예요.",
+          "base": {
+            "de": "Bei fünfzehn Prozent müssten wir beide jeweils fünfundsiebzigtausend Won mehr zahlen. Dann hätten wir zwei Alternativen. Wir könnten verhandeln oder in eine kleinere Wohnung ziehen.",
+            "en": "At fifteen percent we'd each have to pay an extra seventy-five thousand won. That gives us two alternatives. We could negotiate or move somewhere smaller."
+          }
+        },
+        "base": {
+          "de": "Alternative, anderer Lösungsweg",
+          "en": "alternative, other course of action"
+        },
+        "whyThisWord": {
+          "de": "Mit 대안 führst du einen anderen praktikablen Weg ein. Das kann schon ein geändertes Vertragsangebot sein, bevor du über einen Umzug entscheidest.",
+          "en": "Use 대안 to introduce another feasible option. It might be a different contract offer before you decide whether to move."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "협상하거나",
+          "status": "productive"
+        },
+        {
+          "surface": "옮기는 거예요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "other-job-offer",
+      "title": {
+        "de": "Das andere Jobangebot",
+        "en": "The other job offer"
+      },
+      "situation": {
+        "de": "In einem Café kommt ihr auf das Stellenangebot zu sprechen, das du letztes Jahr ausgeschlagen hast.",
+        "en": "Over coffee, you and a friend talk about the job offer you turned down last year."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Freund oder Freundin",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In einem Café kommt ihr auf das Stellenangebot zu sprechen, das du letztes Jahr ausgeschlagen hast. „작년에 거절한 그 회사 생각나요? 지금 생각하면 후회 안 해요?“",
+        "en": "Over coffee, you and a friend talk about the job offer you turned down last year. “작년에 거절한 그 회사 생각나요? 지금 생각하면 후회 안 해요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "작년에 거절한 그 회사 생각나요? 지금 생각하면 후회 안 해요?",
+          "base": {
+            "de": "Erinnerst du dich an die Firma, der du letztes Jahr abgesagt hast? Bereust du das im Nachhinein nicht?",
+            "en": "Remember the company you turned down last year? Looking back, don't you regret it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그 제안을 받아들였다면 연봉은 높았을 텐데요. 출장이 잦아서 공부할 시간도 줄었을 테니 후회는 좀 복잡한 문제예요.",
+          "base": {
+            "de": "Hätte ich zugesagt, hätte ich wohl mehr verdient. Bei den vielen Dienstreisen hätte ich aber auch weniger Zeit zum Lernen gehabt. Ob ich es bereue, ist also keine einfache Frage.",
+            "en": "Had I accepted the offer, the salary would probably have been higher. But with all the business travel I'd have had less time to study, so the question of regret is complicated."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "거기는 올해 성과급도 줬대요. 그 돈까지 생각하면 아깝지 않아요?",
+          "base": {
+            "de": "Dort wurde dieses Jahr sogar ein Bonus ausgezahlt. Wenn du das Geld mitrechnest, findest du es dann nicht schade?",
+            "en": "They even paid a performance bonus there this year. Doesn't it feel like a missed opportunity when you count that money too?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "돈 생각하면 마음이 흔들리는 건 맞아요. 다만 여기서 얻은 게 있어요. 자격 시험을 올해 끝냈거든요.",
+          "base": {
+            "de": "Wenn ich an das Geld denke, komme ich schon ins Grübeln. Andererseits habe ich hier auch etwas gewonnen. Ich habe dieses Jahr meine berufliche Prüfung hinter mich gebracht.",
+            "en": "I do have second thoughts when I think of the money. But I've gained something here too. I finished my professional qualification exam this year."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "다시 비슷한 제안을 받으면 어떤 기준으로 고를 거예요?",
+          "base": {
+            "de": "Wenn du noch einmal so ein Angebot bekämst, wonach würdest du entscheiden?",
+            "en": "If you got another offer like that, what would you base your choice on?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그때 선택은 후회 안 해요. 다음에도 연봉보다 저녁에 쓸 수 있는 시간을 먼저 따져 볼게요.",
+          "base": {
+            "de": "Meine damalige Entscheidung bereue ich nicht. Auch beim nächsten Mal würde ich mir vor dem Gehalt ansehen, wie viel Zeit mir abends bleibt.",
+            "en": "I don't regret the choice I made then. Next time, too, I'll weigh how much time I'd have in the evenings before looking at the salary."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "그 제안을 받아들였다면 ",
+        "chunks": [
+          "연봉은 높았을",
+          "텐데요. 출장이",
+          "잦아서",
+          "공부할 시간도",
+          "줄었을 테니"
+        ],
+        "distractors": [
+          "높아지는지",
+          "잦도록"
+        ],
+        "frameSuffix": " 후회는 좀 복잡한 문제예요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "돈 생각하면 마음이 흔들리는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 여기서 얻은 게 있어요. 자격 시험을 올해 끝냈거든요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요",
+              "건 사실이에요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "하지만",
+              "그렇지만"
+            ],
+            "kind": "connector",
+            "choices": [
+              "다만",
+              "그래서",
+              "그러니까",
+              "그러면"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그때 선택은 후회 안 해요. 다음에도 연봉보다 저녁에 쓸 수 있는 시간을 먼저 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "따져 볼게요",
+            "acceptedAnswers": [
+              "따져 볼게요",
+              "따져 볼 거예요",
+              "따져 보겠어요",
+              "따져 볼래요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "그 제안을 받아들였다면 연봉은 높았을 텐데요. 출장이 잦아서 공부할 시간도 줄었을 테니 ",
+        "answer": "후회는",
+        "acceptedAnswers": [
+          "후회는"
+        ],
+        "after": " 좀 복잡한 문제예요.",
+        "fallbackChoices": [
+          "명함은",
+          "후회는",
+          "사원증은",
+          "복사기는"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Einen nicht gewählten Weg gedanklich verfolgen",
+          "en": "Imagine the path you didn't take"
+        },
+        "rule": {
+          "de": "받아들였다면 setzt das abgelehnte Angebot gedanklich als angenommen voraus. 높았을 텐데요 benennt den vermuteten Vorteil, bevor die Dienstreisen den Vergleich verändern.",
+          "en": "받아들였다면 asks the listener to imagine you took the offer you actually declined. 높았을 텐데요 presents its likely upside before the travel requirement complicates the comparison."
+        },
+        "examples": [
+          {
+            "targetText": "그 제안을 받아들였다면 연봉은 높았을 텐데요. 출장이 잦아서 공부할 시간도 줄었을 테니 후회는 좀 복잡한 문제예요.",
+            "base": {
+              "de": "Hätte ich zugesagt, hätte ich wohl mehr verdient. Bei den vielen Dienstreisen hätte ich aber auch weniger Zeit zum Lernen gehabt. Ob ich es bereue, ist also keine einfache Frage.",
+              "en": "Had I accepted the offer, the salary would probably have been higher. But with all the business travel I'd have had less time to study, so the question of regret is complicated."
+            },
+            "highlights": [
+              "받아들였다면",
+              "높았을 텐데요"
+            ]
+          },
+          {
+            "targetText": "그 집을 골랐다면 역까지는 가까웠을 텐데요. 대신 방은 지금보다 작았을 거예요.",
+            "base": {
+              "de": "Hätten wir die andere Wohnung genommen, wäre der Bahnhof wohl in der Nähe gewesen. Dafür wäre das Zimmer kleiner als jetzt.",
+              "en": "Had we chosen that place, we'd probably have been close to the station. The room would have been smaller, though."
+            },
+            "highlights": [
+              "골랐다면",
+              "가까웠을 텐데요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "후회는",
+          "kind": "noun",
+          "base": {
+            "de": "was das Bedauern betrifft",
+            "en": "as for regret"
+          }
+        },
+        {
+          "targetText": "제안을",
+          "kind": "noun",
+          "base": {
+            "de": "das Angebot",
+            "en": "the offer"
+          }
+        },
+        {
+          "targetText": "받아들였다면",
+          "kind": "frame",
+          "base": {
+            "de": "hätte ich es angenommen",
+            "en": "had I accepted it"
+          }
+        },
+        {
+          "targetText": "높았을 텐데요",
+          "kind": "frame",
+          "base": {
+            "de": "wäre wohl höher gewesen",
+            "en": "would probably have been higher"
+          }
+        },
+        {
+          "targetText": "연봉은",
+          "kind": "noun",
+          "base": {
+            "de": "was das Jahresgehalt betrifft",
+            "en": "as for the annual salary"
+          }
+        },
+        {
+          "targetText": "출장이",
+          "kind": "noun",
+          "base": {
+            "de": "die Dienstreisen",
+            "en": "the business trips"
+          }
+        },
+        {
+          "targetText": "성과급도",
+          "kind": "noun",
+          "base": {
+            "de": "auch eine Leistungsprämie",
+            "en": "a performance bonus too"
+          }
+        },
+        {
+          "targetText": "따져 볼게요",
+          "kind": "verb",
+          "base": {
+            "de": "ich werde es abwägen",
+            "en": "I'll weigh it up"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "받아들였다면",
+            "연봉은",
+            "줄었을"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "흔들리는",
+            "자격",
+            "끝냈거든요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "선택은",
+            "저녁에",
+            "따져"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "후회",
+        "familyKey": "후회",
+        "surface": "후회는",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "그 제안을 받아들였다면 연봉은 높았을 텐데요. 출장이 잦아서 공부할 시간도 줄었을 테니 후회는 좀 복잡한 문제예요.",
+          "base": {
+            "de": "Hätte ich zugesagt, hätte ich wohl mehr verdient. Bei den vielen Dienstreisen hätte ich aber auch weniger Zeit zum Lernen gehabt. Ob ich es bereue, ist also keine einfache Frage.",
+            "en": "Had I accepted the offer, the salary would probably have been higher. But with all the business travel I'd have had less time to study, so the question of regret is complicated."
+          }
+        },
+        "base": {
+          "de": "Bedauern, Reue",
+          "en": "regret"
+        },
+        "whyThisWord": {
+          "de": "후회는 rückt die persönliche Bewertung einer früheren Wahl in den Vordergrund. Du kannst dabei einen verpassten Vorteil anerkennen und trotzdem zu deiner Wahl stehen.",
+          "en": "후회는 makes the question of regret explicit. You can acknowledge a missed benefit while standing by the choice you made."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "받아들였다면",
+          "status": "productive"
+        },
+        {
+          "surface": "높았을 텐데요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "september-festival",
+      "title": {
+        "de": "Ein Platz für das Septemberfest",
+        "en": "A venue for the September festival"
+      },
+      "situation": {
+        "de": "Bei der Vorbereitung eines Stadtteilfests besprecht ihr die Wahl des Veranstaltungsorts.",
+        "en": "You're on the organizing team for a neighborhood festival and are discussing the venue."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person aus dem Organisationsteam",
+            "en": "Festival organizer"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Vorbereitung eines Stadtteilfests besprecht ihr die Wahl des Veranstaltungsorts. „구월 축제 장소를 야외 공원으로 확정하려고 해요. 괜찮죠?“",
+        "en": "You're on the organizing team for a neighborhood festival and are discussing the venue. “구월 축제 장소를 야외 공원으로 확정하려고 해요. 괜찮죠?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "구월 축제 장소를 야외 공원으로 확정하려고 해요. 괜찮죠?",
+          "base": {
+            "de": "Ich möchte den Park im Freien als Ort für unser Septemberfest festlegen. Einverstanden?",
+            "en": "I'd like to confirm the outdoor park for our September festival. Does that work?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "비가 쏟아진다면 음향 장비가 젖을 위험이 있어요. 도시락까지 버리면 실내 대관료보다 손해가 클 수도 있어요.",
+          "base": {
+            "de": "Bei einem Wolkenbruch könnte die Tonanlage nass werden. Wenn wir dann auch die Lunchboxen wegwerfen müssen, könnte der Schaden höher sein als die Miete für eine Halle.",
+            "en": "If it poured, the sound equipment could get wet. If we also had to throw away the packed lunches, the loss might exceed the indoor venue fee."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "구월은 비가 잘 안 와요. 실내는 두 배라서 예산이 안 돼요.",
+          "base": {
+            "de": "Im September regnet es doch selten. Die Halle kostet das Doppelte, das gibt unser Budget nicht her.",
+            "en": "It hardly rains in September. The indoor venue costs twice as much, and our budget won't stretch to that."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "구월에 비가 적은 건 맞아요. 그렇다고 해서 비가 안 올 거라고 보기는 어려워요. 작년 구월에도 두 번 왔잖아요.",
+          "base": {
+            "de": "Stimmt, im September regnet es wenig. Daraus können wir aber kaum schließen, dass es trocken bleibt. Letzten September hat es immerhin zweimal geregnet.",
+            "en": "True, there isn't much rain in September. Still, we can hardly conclude that it won't rain. It rained twice last September."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "학교에서 옆 체육관을 무료로 빌려준대요. 오늘 어떻게 답할까요?",
+          "base": {
+            "de": "Die Schule hat uns die Sporthalle nebenan kostenlos angeboten. Was sollen wir ihr heute antworten?",
+            "en": "The school has offered us the gym next door for free. What shall we tell them today?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "야외로 하되 그 체육관을 예비로 부탁해요. 전날 비 예보가 있으면 그쪽으로 옮기는 거예요.",
+          "base": {
+            "de": "Bleiben wir beim Park und bitten wir die Schule, uns die Halle für den Notfall freizuhalten. Wenn die Vorhersage am Vortag Regen für den Festtag meldet, ziehen wir dorthin um.",
+            "en": "Let's stick with the outdoor venue and ask to keep the gym as a backup. If the day-before forecast calls for rain on the festival day, we'll move there."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "비가 쏟아진다면 ",
+        "chunks": [
+          "음향",
+          "장비가",
+          "젖을",
+          "위험이",
+          "있어요."
+        ],
+        "distractors": [
+          "장비를",
+          "젖는지"
+        ],
+        "frameSuffix": " 도시락까지 버리면 실내 대관료보다 손해가 클 수도 있어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "구월에 비가 적은 건 맞아요. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 비가 안 올 거라고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 작년 구월에도 두 번 왔잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "그렇다고 해서",
+            "acceptedAnswers": [
+              "그렇다고 해서",
+              "그렇다고",
+              "그렇다고 해도"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "보기는 어려워요",
+            "acceptedAnswers": [
+              "보기는 어려워요",
+              "보긴 어려워요",
+              "보기 어려워요",
+              "보기는 어렵죠",
+              "보긴 어렵죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "야외로 하되 그 체육관을 예비로 부탁해요. 전날 비 예보가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 그쪽으로 옮기는 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "있으면",
+            "acceptedAnswers": [
+              "있으면",
+              "있다면",
+              "나오면",
+              "나온다면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "비가 쏟아진다면 음향 장비가 젖을 ",
+        "answer": "위험이",
+        "acceptedAnswers": [
+          "위험이"
+        ],
+        "after": " 있어요. 도시락까지 버리면 실내 대관료보다 손해가 클 수도 있어요.",
+        "fallbackChoices": [
+          "위험이",
+          "대관료가",
+          "예약금이",
+          "참석자가"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Den möglichen Schaden gegen die Kosten abwägen",
+          "en": "Weigh a possible loss against the cost"
+        },
+        "rule": {
+          "de": "쏟아진다면 eröffnet das Regenszenario. 클 수도 있어요 macht aus dem Vergleich mit der Hallenmiete eine Möglichkeit, deren Kosten ihr abwägen könnt.",
+          "en": "쏟아진다면 introduces a scenario of heavy rain. 클 수도 있어요 makes the comparison with the indoor fee a possibility whose cost you can weigh."
+        },
+        "examples": [
+          {
+            "targetText": "비가 쏟아진다면 음향 장비가 젖을 위험이 있어요. 도시락까지 버리면 실내 대관료보다 손해가 클 수도 있어요.",
+            "base": {
+              "de": "Bei einem Wolkenbruch könnte die Tonanlage nass werden. Wenn wir dann auch die Lunchboxen wegwerfen müssen, könnte der Schaden höher sein als die Miete für eine Halle.",
+              "en": "If it poured, the sound equipment could get wet. If we also had to throw away the packed lunches, the loss might exceed the indoor venue fee."
+            },
+            "highlights": [
+              "쏟아진다면",
+              "클 수도 있어요"
+            ]
+          },
+          {
+            "targetText": "냉장고가 멈춘다면 하루치 식재료를 잃을 수도 있어요. 임시 냉장고 대여료와 비교해 봐요.",
+            "base": {
+              "de": "Wenn der Kühlschrank ausfiele, könnten wir die Zutaten für einen ganzen Tag verlieren. Vergleichen wir das mit der Miete für ein Ersatzgerät.",
+              "en": "If the refrigerator failed, we might lose a day's ingredients. Let's compare that with the cost of renting a temporary fridge."
+            },
+            "highlights": [
+              "멈춘다면",
+              "잃을 수도 있어요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "위험이",
+          "kind": "noun",
+          "base": {
+            "de": "die Gefahr",
+            "en": "the risk"
+          }
+        },
+        {
+          "targetText": "쏟아진다면",
+          "kind": "frame",
+          "base": {
+            "de": "falls es in Strömen regnet",
+            "en": "if it pours"
+          }
+        },
+        {
+          "targetText": "음향 장비가",
+          "kind": "noun",
+          "base": {
+            "de": "die Tontechnik",
+            "en": "the sound equipment"
+          }
+        },
+        {
+          "targetText": "도시락까지",
+          "kind": "noun",
+          "base": {
+            "de": "auch noch die Lunchboxen",
+            "en": "the packed lunches as well"
+          }
+        },
+        {
+          "targetText": "대관료보다",
+          "kind": "noun",
+          "base": {
+            "de": "als die Raummiete",
+            "en": "than the venue fee"
+          }
+        },
+        {
+          "targetText": "클 수도 있어요",
+          "kind": "frame",
+          "base": {
+            "de": "könnte höher sein",
+            "en": "could be greater"
+          }
+        },
+        {
+          "targetText": "학교에서",
+          "kind": "noun",
+          "base": {
+            "de": "vonseiten der Schule",
+            "en": "from the school"
+          }
+        },
+        {
+          "targetText": "전날",
+          "kind": "adverb",
+          "base": {
+            "de": "am Vortag",
+            "en": "the day before"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "음향",
+            "장비가",
+            "위험이"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "구월에",
+            "적은",
+            "작년"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "야외로",
+            "체육관을",
+            "예보가"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "위험",
+        "familyKey": "위험",
+        "surface": "위험이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "비가 쏟아진다면 음향 장비가 젖을 위험이 있어요. 도시락까지 버리면 실내 대관료보다 손해가 클 수도 있어요.",
+          "base": {
+            "de": "Bei einem Wolkenbruch könnte die Tonanlage nass werden. Wenn wir dann auch die Lunchboxen wegwerfen müssen, könnte der Schaden höher sein als die Miete für eine Halle.",
+            "en": "If it poured, the sound equipment could get wet. If we also had to throw away the packed lunches, the loss might exceed the indoor venue fee."
+          }
+        },
+        "base": {
+          "de": "Gefahr, Risiko",
+          "en": "risk, danger"
+        },
+        "whyThisWord": {
+          "de": "Mit 위험 benennst du, was bei ungünstigem Verlauf auf dem Spiel steht. Die anschließende Bedingung erklärt, wann du den Ausweichplan brauchst.",
+          "en": "Use 위험 to name what's at stake if things go badly. A condition can then explain when you'd need a backup plan."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "쏟아진다면",
+          "status": "productive"
+        },
+        {
+          "surface": "클 수도 있어요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "appeal-and-school-letter",
+      "title": {
+        "de": "Während die Antwort aussteht",
+        "en": "While the answer is pending"
+      },
+      "situation": {
+        "de": "In einer Beratungsstelle besprichst du einen eigenen Brief zur Überprüfung deines abgelehnten Aufenthaltsantrags.",
+        "en": "At an advice center, you discuss your own letter asking for a rejected residence application to be reconsidered."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person in der Beratungsstelle",
+            "en": "Adviser"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In einer Beratungsstelle besprichst du einen eigenen Brief zur Überprüfung deines abgelehnten Aufenthaltsantrags. „이의 신청서를 봤는데요. 만약 이게 안 받아들여지면 어떻게 하실 생각이에요?“",
+        "en": "At an advice center, you discuss your own letter asking for a rejected residence application to be reconsidered. “이의 신청서를 봤는데요. 만약 이게 안 받아들여지면 어떻게 하실 생각이에요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이의 신청서를 봤는데요. 만약 이게 안 받아들여지면 어떻게 하실 생각이에요?",
+          "base": {
+            "de": "Ich habe Ihren Antrag auf Überprüfung gelesen. Was würden Sie tun, wenn er abgelehnt wird?",
+            "en": "I've read your request for a review. What do you think you'll do if it isn't accepted?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "거절될 경우에 대비하면 나중에 시간을 아낄 수 있을 텐데요. 보완할 서류와 학교 확인서를 미리 준비하려고 해요.",
+          "base": {
+            "de": "Wenn ich mich auf eine Ablehnung vorbereite, könnte ich später Zeit sparen. Ich will die nachzureichenden Unterlagen und eine Bestätigung der Schule schon einmal vorbereiten.",
+            "en": "Preparing for a rejection could save me time later. I'm planning to get the supporting paperwork and a letter from the school ready in advance."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "확인서는 학교에서 일주일 뒤에나 준대요. 그걸 기다리면 늦지 않을까요?",
+          "base": {
+            "de": "Die Schule sagt, sie kann die Bestätigung erst in einer Woche ausstellen. Wäre es dann nicht zu spät, wenn Sie darauf warten?",
+            "en": "The school says the letter won't be ready for a week. Might it be too late if you wait for it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "기다리면 늦겠죠. 다만 제 안내문에는 서류가 빠진 이유를 먼저 설명할 수 있다고 적혀 있어요.",
+          "base": {
+            "de": "Wenn ich einfach warte, könnte es spät werden. In meinem Schreiben steht aber, dass ich zunächst erklären kann, weshalb die Unterlagen fehlen.",
+            "en": "If I just waited, I'd be submitting late. But my notice says I can first explain why the documents are missing."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 이번 주에 먼저 할 일을 어떻게 나눌까요?",
+          "base": {
+            "de": "Wie wollen wir dann aufteilen, was Sie diese Woche zuerst angehen?",
+            "en": "How should we organize the first steps you'll take this week?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "오늘 학교에 확인서를 요청하되 답을 기다리지 말고 이번 주에 누락 사유부터 설명하면 어떨까요?",
+          "base": {
+            "de": "Wie wäre es, wenn ich die Bestätigung heute bei der Schule anfordere und diese Woche schon erkläre, weshalb die Unterlagen fehlen, ohne erst die Antwort abzuwarten?",
+            "en": "How about asking the school for the letter today and explaining the missing paperwork this week without waiting for their reply?"
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "거절될",
+          "경우에",
+          "대비하면 나중에",
+          "시간을",
+          "아낄 수",
+          "있을 텐데요."
+        ],
+        "distractors": [
+          "거절되는지",
+          "시간이"
+        ],
+        "frameSuffix": " 보완할 서류와 학교 확인서를 미리 준비하려고 해요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "기다리면 늦겠죠. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 제 안내문에는 서류가 빠진 이유를 먼저 설명할 수 있다고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "하지만",
+              "그런데",
+              "그래도"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "적혀 있어요",
+            "acceptedAnswers": [
+              "적혀 있어요",
+              "쓰여 있어요",
+              "적혀 있거든요",
+              "쓰여 있거든요",
+              "나와 있어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "오늘 학교에 확인서를 요청하되 답을 기다리지 말고 이번 주에 누락 사유부터 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "설명하면 어떨까요",
+            "acceptedAnswers": [
+              "설명하면 어떨까요",
+              "설명하면 어때요",
+              "설명하는 게 어떨까요",
+              "설명해 보면 어떨까요",
+              "설명하는 건 어떨까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "거절될 경우에 ",
+        "answer": "대비하면",
+        "acceptedAnswers": [
+          "대비하면"
+        ],
+        "after": " 나중에 시간을 아낄 수 있을 텐데요. 보완할 서류와 학교 확인서를 미리 준비하려고 해요.",
+        "fallbackChoices": [
+          "도착하면",
+          "결제하면",
+          "출발하면",
+          "대비하면"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Für den ungünstigen Ausgang vorsorgen",
+          "en": "Prepare for the unfavorable outcome"
+        },
+        "rule": {
+          "de": "거절될 경우에 benennt den Fall, für den du vorsorgst. 아낄 수 있을 텐데요 beschreibt den erhofften Zeitgewinn bei dieser Vorbereitung.",
+          "en": "거절될 경우에 identifies the event you're preparing for. 아낄 수 있을 텐데요 presents saving time as a likely benefit of that preparation."
+        },
+        "examples": [
+          {
+            "targetText": "거절될 경우에 대비하면 나중에 시간을 아낄 수 있을 텐데요. 보완할 서류와 학교 확인서를 미리 준비하려고 해요.",
+            "base": {
+              "de": "Wenn ich mich auf eine Ablehnung vorbereite, könnte ich später Zeit sparen. Ich will die nachzureichenden Unterlagen und eine Bestätigung der Schule schon einmal vorbereiten.",
+              "en": "Preparing for a rejection could save me time later. I'm planning to get the supporting paperwork and a letter from the school ready in advance."
+            },
+            "highlights": [
+              "거절될 경우에 대비하면",
+              "아낄 수 있을 텐데요"
+            ]
+          },
+          {
+            "targetText": "열차가 끊길 경우에 대비하면 귀갓길이 덜 막막할 텐데요. 마지막 버스 시간부터 알아봐요.",
+            "base": {
+              "de": "Wenn wir uns darauf einstellen, dass keine Züge mehr fahren, ist der Heimweg leichter zu planen. Schauen wir erst nach dem letzten Bus.",
+              "en": "If we plan for the trains stopping, getting home should feel less daunting. Let's check the last bus time first."
+            },
+            "highlights": [
+              "끊길 경우에 대비하면",
+              "덜 막막할 텐데요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "대비하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn ich dafür vorsorge",
+            "en": "if I prepare for it"
+          }
+        },
+        {
+          "targetText": "거절될 경우에",
+          "kind": "frame",
+          "base": {
+            "de": "für den Fall einer Ablehnung",
+            "en": "in the event of rejection"
+          }
+        },
+        {
+          "targetText": "아낄 수 있을",
+          "kind": "frame",
+          "base": {
+            "de": "einsparen könnte",
+            "en": "could save"
+          }
+        },
+        {
+          "targetText": "서류와",
+          "kind": "noun",
+          "base": {
+            "de": "die Unterlagen und",
+            "en": "the documents and"
+          }
+        },
+        {
+          "targetText": "확인서를",
+          "kind": "noun",
+          "base": {
+            "de": "die Bestätigung",
+            "en": "the confirmation letter"
+          }
+        },
+        {
+          "targetText": "안내문에는",
+          "kind": "noun",
+          "base": {
+            "de": "in meinem Schreiben",
+            "en": "in my notice"
+          }
+        },
+        {
+          "targetText": "누락",
+          "kind": "noun",
+          "base": {
+            "de": "Auslassung, Fehlen",
+            "en": "omission"
+          }
+        },
+        {
+          "targetText": "요청하되",
+          "kind": "frame",
+          "base": {
+            "de": "anfordern, wobei",
+            "en": "request it, with the proviso that"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "거절될",
+            "대비하면",
+            "시간을",
+            "아낄"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "안내문에는",
+            "이유를",
+            "설명할"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "학교에",
+            "요청하되",
+            "누락"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "대비하다",
+        "familyKey": "대비",
+        "surface": "대비하면",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "거절될 경우에 대비하면 나중에 시간을 아낄 수 있을 텐데요. 보완할 서류와 학교 확인서를 미리 준비하려고 해요.",
+          "base": {
+            "de": "Wenn ich mich auf eine Ablehnung vorbereite, könnte ich später Zeit sparen. Ich will die nachzureichenden Unterlagen und eine Bestätigung der Schule schon einmal vorbereiten.",
+            "en": "Preparing for a rejection could save me time later. I'm planning to get the supporting paperwork and a letter from the school ready in advance."
+          }
+        },
+        "base": {
+          "de": "sich auf etwas vorbereiten, vorsorgen",
+          "en": "prepare for, guard against"
+        },
+        "whyThisWord": {
+          "de": "Mit 대비하면 kannst du durchspielen, was vorsorgliches Handeln ermöglichen würde. Davor steht oft der Fall, für den du dich vorbereitest.",
+          "en": "Use 대비하면 to explore what preparing in advance would make possible. Name the event you're preparing for before the verb."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "거절될 경우에 대비하면",
+          "status": "productive"
+        },
+        {
+          "surface": "있을 텐데요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "scooter-ban",
+      "title": {
+        "de": "Der Weg zum Bahnhof",
+        "en": "Getting to the station"
+      },
+      "situation": {
+        "de": "Vor den Briefkästen im Wohnhaus triffst du jemanden aus der Nachbarschaft. Ihr habt beide das Formular zur geplanten Verkehrsregelung bekommen.",
+        "en": "You meet a neighbor by the mailboxes. You've both received a comment form about a proposed traffic measure."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "Neighbor"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor den Briefkästen im Wohnhaus triffst du jemanden aus der Nachbarschaft. Ihr habt beide das Formular zur geplanten Verkehrsregelung bekommen. „구에서 공유 킥보드를 금지한다던데요. 주민 의견서에 뭐라고 쓸 거예요?“",
+        "en": "You meet a neighbor by the mailboxes. You've both received a comment form about a proposed traffic measure. “구에서 공유 킥보드를 금지한다던데요. 주민 의견서에 뭐라고 쓸 거예요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "구에서 공유 킥보드를 금지한다던데요. 주민 의견서에 뭐라고 쓸 거예요?",
+          "base": {
+            "de": "Ich habe gehört, der Bezirk will Leihroller verbieten. Was schreibst du in deine Stellungnahme?",
+            "en": "I hear the district is planning to ban shared scooters. What will you put in your comments?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "금지되면 역까지 갈 대체 수단 중 대중교통은 삼십 분마다 오는 버스뿐이에요. 차를 몰고 역에 가는 사람이 늘게 될 거예요.",
+          "base": {
+            "de": "Bei einem Verbot wäre unter den Alternativen für den Weg zum Bahnhof der Bus, der alle dreißig Minuten fährt, das einzige öffentliche Verkehrsmittel. Dann würden wohl mehr Leute mit dem Auto zum Bahnhof fahren.",
+            "en": "If they're banned, among the alternatives for getting to the station the only public transport would be a bus that comes every thirty minutes. More people would end up driving to the station."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "금지되면 다 좋잖아요. 인도에서 사고가 없어지잖아요.",
+          "base": {
+            "de": "Ein Verbot wäre doch für alle gut. Dann gäbe es keine Unfälle auf den Gehwegen mehr.",
+            "en": "A ban would be good for everyone, wouldn't it? There wouldn't be accidents on the sidewalk anymore."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "인도 사고가 줄 거라는 점은 맞아요. 그래도 사고가 아예 없어지는 건 아니에요. 전동 자전거는 그대로니까요.",
+          "base": {
+            "de": "Dass es auf den Gehwegen weniger Unfälle gäbe, stimmt. Aber ganz verschwinden würden sie wohl kaum. Die E-Bikes wären ja noch da.",
+            "en": "It's true there'd be fewer accidents on the sidewalks. Still, they wouldn't disappear altogether. The electric bikes would still be there."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 의견서에 뭐라고 쓸지 한 줄로 말해 봐요.",
+          "base": {
+            "de": "Wie würdest du deinen Vorschlag für das Formular in einer Zeile zusammenfassen?",
+            "en": "How would you put your suggestion for the comment form in one line?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "전면 금지보다 인도 주행만 막고 주차 구역을 정하는 쪽을 제안하면 어떨까요? 그렇게 쓰면 좋겠어요.",
+          "base": {
+            "de": "Wie wäre es, statt eines generellen Verbots nur das Fahren auf Gehwegen zu untersagen und Abstellflächen festzulegen? Das würde ich gern schreiben.",
+            "en": "How about proposing that only sidewalk riding be banned and parking areas be designated, instead of a blanket ban? That's what I'd like to write."
+          },
+          "move": "propose",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "금지되면 역까지 갈 대체 수단 중 ",
+        "chunks": [
+          "대중교통은 삼십",
+          "분마다",
+          "오는",
+          "버스뿐이에요. 차를",
+          "몰고 역에"
+        ],
+        "distractors": [
+          "대중교통에 삼십",
+          "오도록"
+        ],
+        "frameSuffix": " 가는 사람이 늘게 될 거예요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "인도 사고가 줄 거라는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 사고가 아예 없어지는 건 아니에요. 전동 자전거는 그대로니까요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "점은 맞아요",
+            "acceptedAnswers": [
+              "점은 맞아요",
+              "점은 맞죠",
+              "건 맞아요",
+              "점은 인정해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그래도",
+            "acceptedAnswers": [
+              "그래도",
+              "그렇지만",
+              "하지만",
+              "다만",
+              "그런데"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "전면 금지보다 인도 주행만 막고 주차 구역을 정하는 쪽을 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 그렇게 쓰면 좋겠어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "제안하면 어떨까요",
+            "acceptedAnswers": [
+              "제안하면 어떨까요",
+              "제안해 보면 어떨까요",
+              "제안할까요",
+              "제안하는 게 어떨까요",
+              "제안하면 어때요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "금지되면 역까지 갈 ",
+        "answer": "대체",
+        "acceptedAnswers": [
+          "대체"
+        ],
+        "after": " 수단 중 대중교통은 삼십 분마다 오는 버스뿐이에요. 차를 몰고 역에 가는 사람이 늘게 될 거예요.",
+        "fallbackChoices": [
+          "승차권",
+          "안전띠",
+          "대체",
+          "연료비"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Eine Verhaltensänderung vorhersagen",
+          "en": "Predict a change in behavior"
+        },
+        "rule": {
+          "de": "금지되면 setzt das Verbot voraus. Mit 늘게 될 거예요 beschreibst du eine erwartete Folgewirkung, hier den Umstieg aufs Auto wegen des dünnen Busangebots.",
+          "en": "금지되면 supposes the ban goes ahead. 늘게 될 거예요 forecasts an indirect effect, here a move toward driving because the bus is infrequent."
+        },
+        "examples": [
+          {
+            "targetText": "금지되면 역까지 갈 대체 수단 중 대중교통은 삼십 분마다 오는 버스뿐이에요. 차를 몰고 역에 가는 사람이 늘게 될 거예요.",
+            "base": {
+              "de": "Bei einem Verbot wäre unter den Alternativen für den Weg zum Bahnhof der Bus, der alle dreißig Minuten fährt, das einzige öffentliche Verkehrsmittel. Dann würden wohl mehr Leute mit dem Auto zum Bahnhof fahren.",
+              "en": "If they're banned, among the alternatives for getting to the station the only public transport would be a bus that comes every thirty minutes. More people would end up driving to the station."
+            },
+            "highlights": [
+              "금지되면",
+              "늘게 될 거예요"
+            ]
+          },
+          {
+            "targetText": "도서관이 저녁에 문을 닫으면 집에서 공부하는 사람이 늘게 될 거예요.",
+            "base": {
+              "de": "Wenn die Bibliothek abends schließt, werden wohl mehr Leute zu Hause lernen.",
+              "en": "If the library closes in the evenings, more people will end up studying at home."
+            },
+            "highlights": [
+              "문을 닫으면",
+              "늘게 될 거예요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "대체",
+          "kind": "noun",
+          "base": {
+            "de": "Ersatz, Alternative",
+            "en": "substitute, alternative"
+          }
+        },
+        {
+          "targetText": "금지되면",
+          "kind": "frame",
+          "base": {
+            "de": "falls es verboten wird",
+            "en": "if it is banned"
+          }
+        },
+        {
+          "targetText": "대중교통은",
+          "kind": "noun",
+          "base": {
+            "de": "was den öffentlichen Nahverkehr betrifft",
+            "en": "as for public transport"
+          }
+        },
+        {
+          "targetText": "분마다",
+          "kind": "adverb",
+          "base": {
+            "de": "im Abstand von … Minuten",
+            "en": "every … minutes"
+          }
+        },
+        {
+          "targetText": "버스뿐이에요",
+          "kind": "frame",
+          "base": {
+            "de": "es gibt nur den Bus",
+            "en": "there is only the bus"
+          }
+        },
+        {
+          "targetText": "역에",
+          "kind": "noun",
+          "base": {
+            "de": "zum Bahnhof",
+            "en": "to the station"
+          }
+        },
+        {
+          "targetText": "인도",
+          "kind": "noun",
+          "base": {
+            "de": "Gehweg",
+            "en": "sidewalk"
+          }
+        },
+        {
+          "targetText": "주차 구역을",
+          "kind": "noun",
+          "base": {
+            "de": "die Abstellflächen",
+            "en": "the parking areas"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "대체",
+            "대중교통은",
+            "분마다",
+            "버스뿐이에요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "인도",
+            "사고가",
+            "자전거는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "주행만",
+            "주차",
+            "정하는"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "대체",
+        "familyKey": "대체",
+        "surface": "대체",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "금지되면 역까지 갈 대체 수단 중 대중교통은 삼십 분마다 오는 버스뿐이에요. 차를 몰고 역에 가는 사람이 늘게 될 거예요.",
+          "base": {
+            "de": "Bei einem Verbot wäre unter den Alternativen für den Weg zum Bahnhof der Bus, der alle dreißig Minuten fährt, das einzige öffentliche Verkehrsmittel. Dann würden wohl mehr Leute mit dem Auto zum Bahnhof fahren.",
+            "en": "If they're banned, among the alternatives for getting to the station the only public transport would be a bus that comes every thirty minutes. More people would end up driving to the station."
+          }
+        },
+        "base": {
+          "de": "Ersatz, Alternative",
+          "en": "substitute, alternative"
+        },
+        "whyThisWord": {
+          "de": "대체 steht häufig vor einem Wort wie 수단 oder 노선. So lässt sich konkret sagen, was die Funktion eines weggefallenen Angebots übernehmen könnte.",
+          "en": "대체 often comes before a word such as 수단 or 노선. It lets you specify what could take the place of a service that disappears."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "금지되면",
+          "status": "productive"
+        },
+        {
+          "surface": "늘게 될 거예요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "university-abroad",
+      "title": {
+        "de": "Das Auslandsjahr, das du ausgelassen hast",
+        "en": "The year abroad you passed up"
+      },
+      "situation": {
+        "de": "Bei einem Besuch schaut ihr Fotos von jemandem aus eurer früheren Klasse an. Die Person hat eine Zeit lang im Ausland studiert.",
+        "en": "While visiting a friend, you look at photos of a former classmate who spent some time studying abroad."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Freund oder Freundin",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einem Besuch schaut ihr Fotos von jemandem aus eurer früheren Klasse an. Die Person hat eine Zeit lang im Ausland studiert. „이 친구 유학 갔다 온 거 봐요. 그때 같이 갔더라면 지금 달랐을걸요.“",
+        "en": "While visiting a friend, you look at photos of a former classmate who spent some time studying abroad. “이 친구 유학 갔다 온 거 봐요. 그때 같이 갔더라면 지금 달랐을걸요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이 친구 유학 갔다 온 거 봐요. 그때 같이 갔더라면 지금 달랐을걸요.",
+          "base": {
+            "de": "Schau mal, diese Person aus unserer Klasse war im Ausland studieren und ist wieder da. Wärst du damals mitgegangen, sähe dein Leben heute wahrscheinlich anders aus.",
+            "en": "Look, our classmate went abroad to study and came back. If you'd gone along back then, things would probably be different for you now."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "갔더라면 영어는 지금보다 나았을 거예요. 그런데 학비로 빚이 남았을 거고 어차피 돌아와서 같은 일을 했을 수도 있어요.",
+          "base": {
+            "de": "Hätte ich dort studiert, wäre mein Englisch heute wohl besser. Ich hätte aber auch Schulden wegen der Studiengebühren. Und vielleicht wäre ich so oder so zurückgekehrt und hätte denselben Job gemacht.",
+            "en": "Had I gone, my English would probably be better now. But the tuition would have left me in debt, and I might have come back and ended up doing the same work anyway."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "갔더라면 영어도 늘고 외국 회사에 갔을 거잖아요.",
+          "base": {
+            "de": "Wenn du gegangen wärst, hättest du doch besser Englisch gelernt und bei einer ausländischen Firma angefangen.",
+            "en": "Had you gone, your English would have improved and you'd have joined a foreign company, wouldn't you?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "외국 회사에 지원할 기회는 늘었겠죠. 다만 유학이 외국 회사 취업을 보장하는 건 아니에요. 국내 회사에 들어간 친구도 있잖아요.",
+          "base": {
+            "de": "Ich hätte sicher mehr Gelegenheiten gehabt, mich bei einer ausländischen Firma zu bewerben. Ein Auslandsstudium garantiert aber keine Stelle bei einer ausländischen Firma. Aus unserer Klasse sind ja auch Leute danach bei einer Firma hier eingestiegen.",
+            "en": "I'd probably have had more chances to apply to foreign companies. But studying abroad doesn't guarantee a job at a foreign company. Some of our classmates ended up at domestic companies, you know."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래서 지금이라도 갈 거예요 안 갈 거예요?",
+          "base": {
+            "de": "Und würdest du jetzt doch noch zum Studieren ins Ausland gehen?",
+            "en": "So would you go abroad to study now after all, or wouldn't you?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은 지금 하는 일이 좋으니까 유학 대신 일 년에 두 번 짧은 해외 연수를 가는 쪽으로 할게요.",
+          "base": {
+            "de": "Da mir meine jetzige Arbeit gefällt, entscheide ich mich statt eines Auslandsstudiums für zwei kurze Fortbildungen im Ausland pro Jahr.",
+            "en": "I like the work I do now, so instead of going abroad to study, I'll go on two short overseas training courses a year."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "갔더라면 영어는 지금보다 나았을 거예요. 그런데 ",
+        "chunks": [
+          "학비로",
+          "빚이 남았을",
+          "거고 어차피",
+          "돌아와서 같은",
+          "일을"
+        ],
+        "distractors": [
+          "빚을 갚았는지",
+          "돌아왔는지"
+        ],
+        "frameSuffix": " 했을 수도 있어요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "외국 회사에 지원할 기회는 늘었겠죠. "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 유학이 외국 회사 취업을 보장하는 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ". 국내 회사에 들어간 친구도 있잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "그렇지만",
+              "하지만",
+              "그래도"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "건 아니에요",
+            "acceptedAnswers": [
+              "건 아니에요",
+              "것은 아니에요",
+              "건 아니죠",
+              "건 아니잖아요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은 지금 하는 일이 좋으니까 유학 대신 일 년에 두 번 짧은 해외 연수를 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 할게요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "가는 쪽으로",
+            "acceptedAnswers": [
+              "가는 쪽으로",
+              "가는 방향으로",
+              "가는 걸로",
+              "가는 것으로"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "갔더라면 영어는 지금보다 나았을 거예요. 그런데 학비로 빚이 남았을 거고 ",
+        "answer": "어차피",
+        "acceptedAnswers": [
+          "어차피"
+        ],
+        "after": " 돌아와서 같은 일을 했을 수도 있어요.",
+        "fallbackChoices": [
+          "도저히",
+          "결코",
+          "어차피",
+          "전혀"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Eine Chance von einer Garantie unterscheiden",
+          "en": "Distinguish an opportunity from a guarantee"
+        },
+        "rule": {
+          "de": "늘었겠죠 räumt eine wahrscheinliche Verbesserung ein. 보장하는 건 아니에요 zieht eine Grenze zwischen besseren Chancen und einem sicheren Ergebnis.",
+          "en": "늘었겠죠 concedes a likely improvement. 보장하는 건 아니에요 separates better odds from a guaranteed outcome."
+        },
+        "examples": [
+          {
+            "targetText": "외국 회사에 지원할 기회는 늘었겠죠. 다만 유학이 외국 회사 취업을 보장하는 건 아니에요. 국내 회사에 들어간 친구도 있잖아요.",
+            "base": {
+              "de": "Ich hätte sicher mehr Gelegenheiten gehabt, mich bei einer ausländischen Firma zu bewerben. Ein Auslandsstudium garantiert aber keine Stelle bei einer ausländischen Firma. Aus unserer Klasse sind ja auch Leute danach bei einer Firma hier eingestiegen.",
+              "en": "I'd probably have had more chances to apply to foreign companies. But studying abroad doesn't guarantee a job at a foreign company. Some of our classmates ended up at domestic companies, you know."
+            },
+            "highlights": [
+              "늘었겠죠",
+              "보장하는 건 아니에요"
+            ]
+          },
+          {
+            "targetText": "연습했다면 실력은 늘었겠죠. 연습이 대회 우승을 보장하는 건 아니에요.",
+            "base": {
+              "de": "Mit Übung wären die Fähigkeiten wohl besser geworden. Den Turniersieg garantiert Übung aber nicht.",
+              "en": "Practice would probably have improved my skills. It doesn't guarantee winning the competition, though."
+            },
+            "highlights": [
+              "늘었겠죠",
+              "보장하는 건 아니에요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "어차피",
+          "kind": "adverb",
+          "base": {
+            "de": "ohnehin",
+            "en": "anyway"
+          }
+        },
+        {
+          "targetText": "갔더라면",
+          "kind": "frame",
+          "base": {
+            "de": "wäre ich hingegangen",
+            "en": "had I gone"
+          }
+        },
+        {
+          "targetText": "학비로",
+          "kind": "noun",
+          "base": {
+            "de": "wegen der Studiengebühren",
+            "en": "because of tuition fees"
+          }
+        },
+        {
+          "targetText": "빚이",
+          "kind": "noun",
+          "base": {
+            "de": "die Schulden",
+            "en": "the debt"
+          }
+        },
+        {
+          "targetText": "남았을 거고",
+          "kind": "frame",
+          "base": {
+            "de": "wären geblieben und",
+            "en": "would have remained, and"
+          }
+        },
+        {
+          "targetText": "취업을",
+          "kind": "noun",
+          "base": {
+            "de": "eine Anstellung",
+            "en": "employment"
+          }
+        },
+        {
+          "targetText": "보장하는",
+          "kind": "verb",
+          "base": {
+            "de": "garantiert",
+            "en": "guaranteeing"
+          }
+        },
+        {
+          "targetText": "해외 연수를",
+          "kind": "noun",
+          "base": {
+            "de": "eine Fortbildung im Ausland",
+            "en": "overseas training"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "학비로",
+            "빚이",
+            "어차피"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "지원할",
+            "취업을",
+            "보장하는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "유학",
+            "짧은",
+            "연수를"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "어차피",
+        "familyKey": "어차피",
+        "surface": "어차피",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "갔더라면 영어는 지금보다 나았을 거예요. 그런데 학비로 빚이 남았을 거고 어차피 돌아와서 같은 일을 했을 수도 있어요.",
+          "base": {
+            "de": "Hätte ich dort studiert, wäre mein Englisch heute wohl besser. Ich hätte aber auch Schulden wegen der Studiengebühren. Und vielleicht wäre ich so oder so zurückgekehrt und hätte denselben Job gemacht.",
+            "en": "Had I gone, my English would probably be better now. But the tuition would have left me in debt, and I might have come back and ended up doing the same work anyway."
+          }
+        },
+        "base": {
+          "de": "ohnehin, so oder so",
+          "en": "anyway, in any case"
+        },
+        "whyThisWord": {
+          "de": "Mit 어차피 markierst du einen Umstand, der bei beiden denkbaren Verläufen gelten könnte. Anschließend kannst du getrennt sagen, was sich tatsächlich geändert hätte.",
+          "en": "어차피 picks out something that could hold either way. You can then distinguish what the other choice might actually have changed."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "했을 수도 있어요",
+          "status": "productive"
+        },
+        {
+          "surface": "보장하는 건 아니에요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "emergency-fund-loan",
+      "title": {
+        "de": "Wie viel könntest du entbehren?",
+        "en": "How much could you spare?"
+      },
+      "situation": {
+        "de": "Beim Spaziergang erzählst du, dass euch eine befreundete Person um ein Darlehen gebeten hat.",
+        "en": "On a walk you talk about a mutual friend's request to borrow some money."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Freund oder Freundin",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Spaziergang erzählst du, dass euch eine befreundete Person um ein Darlehen gebeten hat. „어제 그 친구가 삼백만 원 빌려 달라고 했다면서요? 빌려줄 거예요?“",
+        "en": "On a walk you talk about a mutual friend's request to borrow some money. “어제 그 친구가 삼백만 원 빌려 달라고 했다면서요? 빌려줄 거예요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "어제 그 친구가 삼백만 원 빌려 달라고 했다면서요? 빌려줄 거예요?",
+          "base": {
+            "de": "Ich habe gehört, du bist gestern um drei Millionen Won gebeten worden. Leihst du das Geld?",
+            "en": "I heard our friend asked you yesterday to lend them three million won. Will you lend it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "못 돌려받는다고 가정하면 제 비상금 오백만 원에서 삼백만 원이 빠지는 거예요. 돈도 돈이지만 그 친구와 사이가 어색해질 거예요.",
+          "base": {
+            "de": "Wenn ich annehme, dass ich das Geld nicht zurückbekomme, fehlen von meinen fünf Millionen Won Reserve drei Millionen. Abgesehen vom Geld würde es auch zwischen uns unangenehm.",
+            "en": "Suppose I don't get it back. Three million won would be gone from my five-million-won emergency fund. And apart from the money, things would become awkward between us."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "친구 사이에 그런 걸 따져요? 못 받으면 그냥 주는 셈 치면 되죠.",
+          "base": {
+            "de": "Rechnest du das unter Freunden wirklich so genau nach? Wenn du es nicht wiederbekommst, kannst du es doch als Geschenk sehen.",
+            "en": "Do you really weigh those things up between friends? If you don't get it back, you could just treat it as a gift."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "친구 사이에 따지는 게 불편한 건 맞아요. 다만 조건 없이 빌려줬다가 못 돌려받으면 더 서운할 거예요.",
+          "base": {
+            "de": "Es ist unangenehm, das unter Freunden so genau zu besprechen, das stimmt. Nur wäre die Enttäuschung noch größer, wenn ich das Geld ohne jede Absprache verleihe und es dann nicht zurückbekomme.",
+            "en": "It's true that working through that between friends is uncomfortable. Only, if I lent it with no conditions and then didn't get it back, I'd feel even more let down."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그럼 빌려줘요 말아요? 한 문장으로요.",
+          "base": {
+            "de": "Leihst du nun etwas oder nicht? Sag's in einem Satz.",
+            "en": "So will you lend anything or not? Give me the short version."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "백만 원까지만 빌려주고 갚을 날을 문자로 남길게요. 그 이상은 못 돌려받으면 생활이 어려워져요.",
+          "base": {
+            "de": "Ich leihe höchstens eine Million Won und halte den Rückzahlungstag in einer Nachricht fest. Wenn ich mehr verleihe und es nicht wiederbekomme, wird es für mich im Alltag eng.",
+            "en": "I'll lend up to one million won and put the repayment date in a text. If I lent more and didn't get it back, I'd struggle to cover my living expenses."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "못 돌려받는다고 가정하면 ",
+        "chunks": [
+          "제 비상금 오백만",
+          "원에서 삼백만",
+          "원이",
+          "빠지는",
+          "거예요."
+        ],
+        "distractors": [
+          "원을 빼는지",
+          "원에 달하는"
+        ],
+        "frameSuffix": " 돈도 돈이지만 그 친구와 사이가 어색해질 거예요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "친구 사이에 따지는 게 불편한 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 조건 없이 "
+          },
+          {
+            "kind": "blank",
+            "index": 2
+          },
+          {
+            "kind": "text",
+            "text": " 못 돌려받으면 더 서운할 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요",
+              "건 사실이에요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "하지만",
+              "그렇지만"
+            ],
+            "kind": "connector"
+          },
+          {
+            "answer": "빌려줬다가",
+            "acceptedAnswers": [
+              "빌려줬다가",
+              "빌려주었다가",
+              "빌려준 다음에"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "백만 원까지만 빌려주고 갚을 날을 문자로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 그 이상은 못 돌려받으면 생활이 어려워져요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "남길게요",
+            "acceptedAnswers": [
+              "남길게요",
+              "남겨 둘게요",
+              "남겨 놓을게요",
+              "적어 둘게요",
+              "보낼게요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "못 돌려받는다고 ",
+        "answer": "가정하면",
+        "acceptedAnswers": [
+          "가정하면"
+        ],
+        "after": " 제 비상금 오백만 원에서 삼백만 원이 빠지는 거예요. 돈도 돈이지만 그 친구와 사이가 어색해질 거예요.",
+        "fallbackChoices": [
+          "송금하면",
+          "가정하면",
+          "신청하면",
+          "서명하면"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Die Folgen einer Annahme für sich durchrechnen",
+          "en": "Work out the personal consequences of an assumption"
+        },
+        "rule": {
+          "de": "못 돌려받는다고 가정하면 setzt die ausbleibende Rückzahlung als Gedankenexperiment. 원에서 … 원이 빠지는 거예요 macht die Auswirkung auf die eigene Reserve konkret.",
+          "en": "못 돌려받는다고 가정하면 treats non-repayment as a hypothetical. 원에서 … 원이 빠지는 거예요 spells out the effect on the speaker's own savings."
+        },
+        "examples": [
+          {
+            "targetText": "못 돌려받는다고 가정하면 제 비상금 오백만 원에서 삼백만 원이 빠지는 거예요. 돈도 돈이지만 그 친구와 사이가 어색해질 거예요.",
+            "base": {
+              "de": "Wenn ich annehme, dass ich das Geld nicht zurückbekomme, fehlen von meinen fünf Millionen Won Reserve drei Millionen. Abgesehen vom Geld würde es auch zwischen uns unangenehm.",
+              "en": "Suppose I don't get it back. Three million won would be gone from my five-million-won emergency fund. And apart from the money, things would become awkward between us."
+            },
+            "highlights": [
+              "못 돌려받는다고 가정하면",
+              "빠지는 거예요"
+            ]
+          },
+          {
+            "targetText": "세 명이 빠진다고 가정하면 오늘은 다섯 명만 남는 거예요.",
+            "base": {
+              "de": "Angenommen, drei Leute fallen aus, dann bleiben heute nur fünf übrig.",
+              "en": "Suppose three people can't make it. That would leave just five of us today."
+            },
+            "highlights": [
+              "빠진다고 가정하면",
+              "남는 거예요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "가정하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man annimmt",
+            "en": "supposing"
+          }
+        },
+        {
+          "targetText": "못 돌려받는다고",
+          "kind": "frame",
+          "base": {
+            "de": "dass ich es nicht zurückbekomme",
+            "en": "that I won't get it back"
+          }
+        },
+        {
+          "targetText": "비상금",
+          "kind": "noun",
+          "base": {
+            "de": "Geldreserve für Notfälle",
+            "en": "emergency fund"
+          }
+        },
+        {
+          "targetText": "빠지는 거예요",
+          "kind": "frame",
+          "base": {
+            "de": "das würde fehlen",
+            "en": "that would be gone"
+          }
+        },
+        {
+          "targetText": "어색해질",
+          "kind": "verb",
+          "base": {
+            "de": "unangenehm werden würde",
+            "en": "would become awkward"
+          }
+        },
+        {
+          "targetText": "갚을 날을",
+          "kind": "noun",
+          "base": {
+            "de": "den Rückzahlungstag",
+            "en": "the repayment date"
+          }
+        },
+        {
+          "targetText": "문자로",
+          "kind": "noun",
+          "base": {
+            "de": "per Textnachricht",
+            "en": "in a text message"
+          }
+        },
+        {
+          "targetText": "생활이",
+          "kind": "noun",
+          "base": {
+            "de": "der Lebensunterhalt, der Alltag",
+            "en": "living conditions, daily life"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "비상금",
+            "원에서",
+            "빠지는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "따지는",
+            "불편한",
+            "빌려줬다가"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "빌려주고",
+            "날을",
+            "문자로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "가정하다",
+        "familyKey": "가정",
+        "surface": "가정하면",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "못 돌려받는다고 가정하면 제 비상금 오백만 원에서 삼백만 원이 빠지는 거예요. 돈도 돈이지만 그 친구와 사이가 어색해질 거예요.",
+          "base": {
+            "de": "Wenn ich annehme, dass ich das Geld nicht zurückbekomme, fehlen von meinen fünf Millionen Won Reserve drei Millionen. Abgesehen vom Geld würde es auch zwischen uns unangenehm.",
+            "en": "Suppose I don't get it back. Three million won would be gone from my five-million-won emergency fund. And apart from the money, things would become awkward between us."
+          }
+        },
+        "base": {
+          "de": "annehmen, voraussetzen",
+          "en": "assume, suppose"
+        },
+        "whyThisWord": {
+          "de": "가정하면 führt eine Annahme für ein Gedankenexperiment ein. Die Folgerung gilt unter dieser Annahme, auch wenn du ihren Eintritt für unsicher hältst.",
+          "en": "가정하면 sets up an assumption for a thought experiment. The conclusion holds under that assumption even if you're unsure it will happen."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "돌려받는다고 가정하면",
+          "status": "productive"
+        },
+        {
+          "surface": "빠지는 거예요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "launch-window",
+      "title": {
+        "de": "Das Zeitfenster für den Start",
+        "en": "The launch window"
+      },
+      "situation": {
+        "de": "Vor einer Vorstandssitzung spielst du mit deiner Teamleitung mögliche Termine für eine Produkteinführung durch.",
+        "en": "Before an executive meeting, you and your manager work through possible launch dates for a product."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Manager"
+          },
+          "voiceRole": "A",
+          "register": "hapsyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor einer Vorstandssitzung spielst du mit deiner Teamleitung mögliche Termine für eine Produkteinführung durch. „출시를 삼월에서 오월로 옮기면 어떤 영향이 있을지 예측해 주시겠습니까?“",
+        "en": "Before an executive meeting, you and your manager work through possible launch dates for a product. “출시를 삼월에서 오월로 옮기면 어떤 영향이 있을지 예측해 주시겠습니까?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "출시를 삼월에서 오월로 옮기면 어떤 영향이 있을지 예측해 주시겠습니까?",
+          "base": {
+            "de": "Könnten Sie einschätzen, wie es sich auswirken würde, den Marktstart von März auf Mai zu verschieben?",
+            "en": "Could you forecast what effect moving the launch from March to May would have?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "오월로 미룬다고 가정하면 최악은 경쟁사에 밀려 첫 분기 매출이 반으로 줄어드는 거예요. 반대로 삼월에 서두르면 오류가 늘겠죠.",
+          "base": {
+            "de": "Angenommen, wir verschieben auf Mai. Im schlimmsten Fall zieht die Konkurrenz an uns vorbei und unser Umsatz im ersten Quartal nach dem Start halbiert sich. Wenn wir umgekehrt den Märztermin erzwingen, wären mehr Fehler zu erwarten.",
+            "en": "Suppose we delay until May. The worst case is losing ground to a competitor and seeing sales in the first quarter after launch cut in half. Conversely, rushing to launch in March would probably mean more errors."
+          },
+          "move": "hypothesize",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그렇게 비관적으로만 보시면 결정을 못 합니다. 좋은 쪽은 없습니까?",
+          "base": {
+            "de": "Wenn Sie das nur so pessimistisch sehen, kommen wir zu keiner Entscheidung. Gibt es auch eine positive Seite?",
+            "en": "If you only look at it that pessimistically, we won't be able to decide. Is there an upside?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "우려부터 말씀드렸지만 두 달이면 인증을 마칠 여유가 생겨요. 그러면 해외 판매도 함께 시작할 수 있어요.",
+          "base": {
+            "de": "Ich habe mit den Bedenken angefangen. Die zwei Monate würden uns aber Zeit geben, die Zertifizierung abzuschließen. Dann könnten wir gleichzeitig auch den Verkauf im Ausland aufnehmen.",
+            "en": "I started with the concerns. Two months would give us time to complete certification. Then we could begin overseas sales at the same time."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "알겠습니다. 그럼 임원 회의 자료에 넣을 결론을 한 문장으로 정리해 주시겠습니까?",
+          "base": {
+            "de": "Verstanden. Könnten Sie Ihre Schlussfolgerung dann in einem Satz für die Vorstandsunterlagen zusammenfassen?",
+            "en": "Understood. Could you sum up your conclusion in one sentence for the executive briefing?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "오월 출시를 기본으로 하되 삼월 초에 경쟁사의 사월 출시가 확인되는 경우에는 국내판만 삼월에 내자는 거예요.",
+          "base": {
+            "de": "Wir sollten zunächst mit dem Start im Mai planen. Bestätigt sich Anfang März, dass die Konkurrenz im April startet, schlage ich vor, im März nur die Inlandsversion herauszubringen.",
+            "en": "Let's plan on a May launch, but if the competitor's April launch is confirmed in early March, I propose releasing only the domestic version in March."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "오월로 미룬다고 가정하면 최악은 경쟁사에 밀려 ",
+        "chunks": [
+          "첫 분기",
+          "매출이 반으로",
+          "줄어드는",
+          "거예요. 반대로",
+          "삼월에"
+        ],
+        "distractors": [
+          "매출을 반으로",
+          "줄어들었는지"
+        ],
+        "frameSuffix": " 서두르면 오류가 늘겠죠."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "우려부터 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 두 달이면 인증을 마칠 여유가 생겨요. "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 해외 판매도 함께 시작할 수 있어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "말씀드렸지만",
+            "acceptedAnswers": [
+              "말씀드렸지만",
+              "말씀드리긴 했지만",
+              "말씀드렸는데"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그러면",
+            "acceptedAnswers": [
+              "그러면",
+              "그렇게 되면",
+              "그럼"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "오월 출시를 기본으로 하되 삼월 초에 경쟁사의 사월 출시가 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 국내판만 삼월에 내자는 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "확인되는 경우에는",
+            "acceptedAnswers": [
+              "확인되는 경우에는",
+              "확인될 경우에는",
+              "확인되면",
+              "확인된다면",
+              "확인될 때에는"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "오월로 미룬다고 가정하면 ",
+        "answer": "최악은",
+        "acceptedAnswers": [
+          "최악은"
+        ],
+        "after": " 경쟁사에 밀려 첫 분기 매출이 반으로 줄어드는 거예요. 반대로 삼월에 서두르면 오류가 늘겠죠.",
+        "fallbackChoices": [
+          "최악은",
+          "재고는",
+          "반품은",
+          "환불은"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "de": "Die Nachteile zweier möglicher Termine gegenüberstellen",
+          "en": "Contrast the downsides of two possible dates"
+        },
+        "rule": {
+          "de": "가정하면 setzt einen möglichen Starttermin voraus. 최악은 grenzt das ungünstigste Ergebnis ein. 반대로 wechselt zum Risiko des anderen Termins.",
+          "en": "가정하면 sets a possible date as the assumption. 최악은 identifies the worst outcome. 반대로 shifts to the risk of the other date."
+        },
+        "examples": [
+          {
+            "targetText": "오월로 미룬다고 가정하면 최악은 경쟁사에 밀려 첫 분기 매출이 반으로 줄어드는 거예요. 반대로 삼월에 서두르면 오류가 늘겠죠.",
+            "base": {
+              "de": "Angenommen, wir verschieben auf Mai. Im schlimmsten Fall zieht die Konkurrenz an uns vorbei und unser Umsatz im ersten Quartal nach dem Start halbiert sich. Wenn wir umgekehrt den Märztermin erzwingen, wären mehr Fehler zu erwarten.",
+              "en": "Suppose we delay until May. The worst case is losing ground to a competitor and seeing sales in the first quarter after launch cut in half. Conversely, rushing to launch in March would probably mean more errors."
+            },
+            "highlights": [
+              "가정하면",
+              "최악은",
+              "반대로"
+            ]
+          },
+          {
+            "targetText": "새벽에 떠난다고 가정하면 최악은 운전하는 사람이 졸게 되는 거예요. 반대로 늦게 떠나면 막힐 수 있어요.",
+            "base": {
+              "de": "Angenommen, wir fahren in aller Frühe los. Im schlimmsten Fall wird die Person am Steuer schläfrig. Fahren wir später, droht dagegen Stau.",
+              "en": "Suppose we leave before dawn. The worst case is the person driving getting drowsy. Conversely, a later start could mean getting stuck in traffic."
+            },
+            "highlights": [
+              "가정하면",
+              "최악은",
+              "반대로"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "최악은",
+          "kind": "noun",
+          "base": {
+            "de": "im schlimmsten Fall",
+            "en": "the worst case"
+          }
+        },
+        {
+          "targetText": "미룬다고 가정하면",
+          "kind": "frame",
+          "base": {
+            "de": "angenommen, wir verschieben",
+            "en": "supposing we delay"
+          }
+        },
+        {
+          "targetText": "첫 분기",
+          "kind": "noun",
+          "base": {
+            "de": "erstes Quartal nach dem Start",
+            "en": "first quarter after launch"
+          }
+        },
+        {
+          "targetText": "매출이",
+          "kind": "noun",
+          "base": {
+            "de": "der Umsatz",
+            "en": "sales"
+          }
+        },
+        {
+          "targetText": "반대로",
+          "kind": "connector",
+          "base": {
+            "de": "umgekehrt",
+            "en": "conversely"
+          }
+        },
+        {
+          "targetText": "인증을",
+          "kind": "noun",
+          "base": {
+            "de": "die Zertifizierung",
+            "en": "certification"
+          }
+        },
+        {
+          "targetText": "확인되는 경우에는",
+          "kind": "frame",
+          "base": {
+            "de": "falls sich das bestätigt",
+            "en": "in the event it is confirmed"
+          }
+        },
+        {
+          "targetText": "국내판만",
+          "kind": "noun",
+          "base": {
+            "de": "nur die Inlandsversion",
+            "en": "only the domestic version"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "분기",
+            "매출이",
+            "줄어드는",
+            "삼월에"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "우려부터",
+            "인증을",
+            "해외"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "기본으로",
+            "사월",
+            "국내판만"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "최악",
+        "familyKey": "최악",
+        "surface": "최악은",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "오월로 미룬다고 가정하면 최악은 경쟁사에 밀려 첫 분기 매출이 반으로 줄어드는 거예요. 반대로 삼월에 서두르면 오류가 늘겠죠.",
+          "base": {
+            "de": "Angenommen, wir verschieben auf Mai. Im schlimmsten Fall zieht die Konkurrenz an uns vorbei und unser Umsatz im ersten Quartal nach dem Start halbiert sich. Wenn wir umgekehrt den Märztermin erzwingen, wären mehr Fehler zu erwarten.",
+            "en": "Suppose we delay until May. The worst case is losing ground to a competitor and seeing sales in the first quarter after launch cut in half. Conversely, rushing to launch in March would probably mean more errors."
+          }
+        },
+        "base": {
+          "de": "der schlimmste Fall",
+          "en": "the worst case"
+        },
+        "whyThisWord": {
+          "de": "최악은 führt das ungünstigste denkbare Ergebnis ein. So lässt es sich getrennt vom wahrscheinlichsten Verlauf und vom möglichen Vorteil besprechen.",
+          "en": "최악은 introduces the worst outcome you can imagine. You can discuss it separately from the most likely outcome and the potential upside."
+        },
+        "remainder": [
+          "은"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "가정하면",
+          "status": "productive"
+        },
+        {
+          "surface": "최악은",
+          "status": "productive"
+        },
+        {
+          "surface": "확인되는 경우에는",
+          "status": "productive"
+        }
+      ]
+    }
+  ]
+}

@@ -54,6 +54,12 @@
       "artifactSha256": "bde576303773557f899ebec7d4afad1408004c3d8f7979924b1c33da94e72bf5",
       "sourceSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525",
       "kind": "curriculum result extracted from subscription receipt"
+    },
+    "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc": {
+      "artifact": "planning/authorities/76b084a218f0eaf34366.json",
+      "artifactSha256": "a7ea85bd22c08beb305ff2d93e78e5ccb90bb4f8aee47ae08a5da45a654feb6d",
+      "sourceSha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
+      "kind": "curriculum result extracted from subscription receipt"
     }
   },
   "paths": [
@@ -176,6 +182,17 @@
         "ledgerSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
       },
       "authoritySha256": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+      "trophyLedgerAuthoritySha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+    },
+    {
+      "path": "b2/korean/p4.json",
+      "sourcePointers": {
+        "pathSpec": "../../architecture-amendment-response.json",
+        "pathSpecSha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
+        "ledger": "../../../ko-b2-spine-alignment/response.json#/result/paths/1/lessons",
+        "ledgerSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+      },
+      "authoritySha256": "76b084a218f0eaf3436634047dfb9d88845f3438eb00d868988db4780fc550cc",
       "trophyLedgerAuthoritySha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
     }
   ]

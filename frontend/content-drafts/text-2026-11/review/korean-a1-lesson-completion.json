@@ -1,0 +1,124 @@
+{
+  "status": "pass",
+  "runAt": "2026-11-06T12:32:09.423Z",
+  "appHead": "a91538b6e067aa5f4efadac3bd110926002c3b01",
+  "environment": "390x844 local Chrome, current Today component and dynamic Korean runtime, German explanations, English profile choice at /today before choosing Korean. Fresh browser profile, stub auth/audio/speech and Keep, no production account or backend.",
+  "coverage": {
+    "lesson": "korean-a1-practical-1-lesson-1-annyeong-first-contact",
+    "lessonsCompleted": 1,
+    "nextLessonOpened": "Bitte langsam",
+    "sessionStepsReached": 5,
+    "gradedNonSpeechExercisesPassed": 3,
+    "correctPairs": 3,
+    "hangulBuildChipsUsed": 3,
+    "distractorChipsAvailable": 2,
+    "typedAnswer": "영어를",
+    "inputTest": "A simulated composition event kept Enter from grading a partial syllable. The final decomposed (NFD) Hangul was accepted and normalized to the exact Korean target.",
+    "speechRecognitionRuns": 0,
+    "microphoneFreeAlternativeTaken": 1,
+    "assertionsPassed": 15,
+    "assertionsFailed": 0,
+    "pageErrors": 0
+  },
+  "skipped": [
+    "Actual microphone capture and speech recognition",
+    "Actual audio playback or audio services",
+    "Physical phone or operating-system keyboard IME",
+    "Production sign-in, backend persistence and phrase Keep"
+  ],
+  "evidence": {
+    "id": "korean-practice",
+    "name": "Korean A1 P1 first lesson from the normal picker to the second lesson",
+    "status": "pass",
+    "checks": [
+      {
+        "name": "first Korean phrase and German meaning on scene",
+        "ok": true,
+        "detail": "Lektion 1Erster KontaktZurück zum Pfad1 von 5KernsatzAnhören안녕하세요. 혹시 영어를 할 수 있어요?Guten Tag. Sprechen Sie vielleicht Englisch?LektionsszeneMorgendliches Cafélicht und eine höfliche Frage an der Theke.SituationAn einem Café-Tresen in Seoul begrüßt du die Bedienung und fragst höflich, ob sie Englisch spricht.WeiterZurück"
+      },
+      {
+        "name": "Hangul/German pair 안녕하세요.",
+        "ok": true,
+        "detail": "Guten Tag."
+      },
+      {
+        "name": "Hangul/German pair 혹시 영어를",
+        "ok": true,
+        "detail": "vielleicht Englisch"
+      },
+      {
+        "name": "Hangul/German pair 할 수 있어요?",
+        "ok": true,
+        "detail": "können Sie sprechen?"
+      },
+      {
+        "name": "German meaning presented as the build cue",
+        "ok": true,
+        "detail": "Lektion 1Erster KontaktZurück zum Pfad3 von 5Baue den SatzDeine ZeileGuten Tag. Sprechen Sie vielleicht Englisch?Dein SatzWähle die Chips der Reihe nach aus.할 수 있어요?안녕하세요.어디예요?감사합니다.혹시 영어를LeerenWeiterZurück"
+      },
+      {
+        "name": "all three target tiles plus two distractors",
+        "ok": true,
+        "detail": "할 수 있어요? | 안녕하세요. | 어디예요? | 감사합니다. | 혹시 영어를"
+      },
+      {
+        "name": "correct Hangul construction unlocks Continue",
+        "ok": true,
+        "detail": "Dein Satz안녕하세요.혹시 영어를할 수 있어요?"
+      },
+      {
+        "name": "native input exposes mobile keyboard metadata",
+        "ok": true,
+        "detail": "<input data-slot=\"input\" class=\"min-w-0 rounded-md border border-input bg-transparent px-3 py-1 shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30 focus-visible:border-ring focus-visible:ring-["
+      },
+      {
+        "name": "Enter during simulated Hangul IME composition does not grade",
+        "ok": true,
+        "detail": "idle"
+      },
+      {
+        "name": "typed answer matches exactly after Korean NFC normalization",
+        "ok": true,
+        "detail": "영어를"
+      },
+      {
+        "name": "speech unavailable does not auto-award success",
+        "ok": true,
+        "detail": "Sprich den Satz laut.HinweisGuten Tag. Sprechen Sie vielleicht Englisch?Satz anzeigenSpracherkennung ist in diesem Browser nicht verfügbar.Ohne Mikrofon üben"
+      },
+      {
+        "name": "completion shows the first Hangul sentence and its German meaning",
+        "ok": true,
+        "detail": "Lektion 1Erster KontaktZurück zum Pfad5 von 5Lektion abgeschlossenDu hast diese Lektion geübt. Behalte den Satz, um ihn später zu wiederholen.Kernsatz안녕하세요. 혹시 영어를 할 수 있어요?Guten Tag. Sprechen Sie vielleicht Englisch?Satz zum Wiederholen behaltenFügt diesen Satz deinem Übungsdeck hinzu. Keine Credits nötig.TrophäenwortTrophäenwort영어Englisch영어를 할 수 있어요?Nächste LektionZurück zum Pfad"
+      },
+      {
+        "name": "expanded Korean trophy word and its German meaning",
+        "ok": true,
+        "detail": "TrophäenwortTrophäenwort영어Englisch영어를 할 수 있어요?"
+      },
+      {
+        "name": "normal Next lesson control opens Korean lesson two",
+        "ok": true,
+        "detail": "Lektion 2Bitte langsamZurück zum Pfad1 von 5KernsatzAnhören죄송합니다. 천천히 말해 주세요. 감사합니다.Entschuldigung. Bitte sprechen Sie langsam. Vielen Dank.LektionsszeneRuhige Kassenszene mit einer freundlichen Wiederholungsbitte.SituationDie Person an der Kasse hat zu schnell gesprochen; du entschuldigst dich, bittest um langsameres Sprechen und bedankst dich.WeiterZurück"
+      },
+      {
+        "name": "no uncaught page errors",
+        "ok": true,
+        "detail": ""
+      }
+    ],
+    "notes": [
+      "Microphone-free control actually selected: Ohne Mikrofon üben",
+      "Scene, match, build, type, and the explicit microphone-free speech alternative were exercised through completion. No physical typing hardware, real voice recognition, recording, playback, Keep save, backend or production account was used."
+    ],
+    "error": "",
+    "failed": [],
+    "screenshots": [
+      "out/korean-practice-built-hangul.png",
+      "out/korean-practice-typed-hangul.png",
+      "out/korean-practice-reward.png",
+      "out/korean-practice-final.png"
+    ],
+    "ms": 3641
+  }
+}

@@ -1,0 +1,523 @@
+{
+  "language": "Korean",
+  "level": "B2",
+  "kind": "planning-only",
+  "paths": [
+    {
+      "pathNumber": 5,
+      "title": {
+        "ko": "제 입장 밝히기",
+        "de": "Den eigenen Fall vertreten",
+        "en": "Making your case"
+      },
+      "objective": "State a claim with its basis, meet a partial offer with a counteroffer, concede what is true, close with a concrete remedy; learner never asserts the outcome, the other side decides.",
+      "buildsOn": "P1 qualified recommendation, P2 cause chains (-기 때문에, 결과적으로), P3 scoped concession (일부는 맞아요, 인정해요), P4 contingent proposal (-되, 경우에 대비하다); B1 환불/연장/조건/요금 recycled as free vocabulary.",
+      "productive": "L1-3: -아/어 주셨으면 해요 (request carrier), -기로 했잖아요/-기로 되어 있었잖아요 (prior agreement), -았/었는데도. L4-6: -기 마련이에요, 받아들이기 어려워요, 절반이라도/-(이)라도 (minimal claim), -(으)니까 한 번만 재검토 frame. L7-8: -는 한/-(으)ㄴ 이상, -(으)ㄹ 수밖에 없어요, 대신 …-(으)면 받아들일게요 (counteroffer). L9-10: -다고 전해 주시겠어요 bridge to P6, full request→reason→rebut→counteroffer→concede→conclude chain.",
+      "recognitionOnly": "규정상/약관상 (them), -(으)ㄹ 테니 (them); 합쇼체 in call-centre them turns L5-6 and agent L10 only if the proposed path-specific official-role recognition extension is approved, otherwise 해요체 (-십시오 still banned; P1/P2 gates untouched).",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "Courier customer-service desk: a framed print arrived with the glass shattered inside an undamaged-looking box.",
+          "delayedConstraint": "them2: the learner signed the delivery confirmation, so damage is not registered; them4: replacement stock only in four weeks, refund today.",
+          "learnerGoal": "Request a replacement rather than a refund, explain why signing proves nothing, accept the wait with one condition.",
+          "exampleKoreanMove": "받을 때 상자가 멀쩡해 보여서 서명했는데, 안에 유리가 깨져 있었어요. 환불보다는 새 제품으로 다시 보내 주셨으면 해요."
+        },
+        {
+          "n": 2,
+          "setting": "Car workshop counter: the quoted twenty-만원 repair is billed at thirty-five.",
+          "delayedConstraint": "them2: an extra part was replaced because it would have failed soon; them4: the part is already fitted and cannot be removed.",
+          "learnerGoal": "Pay the agreed amount, name the missing prior phone call, offer to pay the part at cost.",
+          "exampleKoreanMove": "견적대로 이십만 원은 낼게요. 추가 수리는 전화로 먼저 물어보기로 했잖아요. 연락 없이 바꾼 부품은 원가로만 내고, 그 부품 공임은 빼 주셨으면 해요."
+        },
+        {
+          "n": 3,
+          "setting": "Stairwell with the downstairs renovation foreman (소장님) about drilling hours.",
+          "delayedConstraint": "them2: the crew is only booked for six days, no slack; them4: the building notice allows work from nine, so they are within the rules.",
+          "learnerGoal": "Get drilling clustered into mornings so afternoon remote meetings survive; concede the rule, offer to drop the complaint.",
+          "exampleKoreanMove": "규칙 안에서 하시는 건 알아요. 그래도 드릴 작업만 오전에 몰아 주시면 오후 회의는 지킬 수 있고, 그 정도면 저도 민원은 넣지 않을게요."
+        },
+        {
+          "n": 4,
+          "setting": "Move-out inspection with the landlord: full wallpapering cost deducted from the deposit.",
+          "delayedConstraint": "them2: nail holes on one wall are shown; them4: the next tenant arrives Saturday, decision needed now.",
+          "learnerGoal": "Accept the one damaged wall, reject whole-flat redecoration after two years, propose a figure.",
+          "exampleKoreanMove": "이 년 살면 벽지는 원래 바래기 마련이에요. 못 자국 난 벽 한 면 값은 제가 내겠지만, 집 전체 도배비를 보증금에서 빼시는 건 받아들이기 어려워요."
+        },
+        {
+          "n": 5,
+          "setting": "Airline phone line after a five-hour delay; no meal or hotel offered at the gate.",
+          "delayedConstraint": "them2: the agent cites weather as the reason; them4: compensation claims take up to thirty days, and a written delay confirmation can be issued on request.",
+          "learnerGoal": "Ask for the stated reason in writing; make the meal cost a request conditional on what the agent says about written confirmation; accept the thirty-day timeline if the written reason comes first.",
+          "exampleKoreanMove": "기상 사유를 문서로 주실 수 있다면 그걸 먼저 받고 삼십 일은 기다릴게요. 서면이 어렵다면 그날 식사비라도 돌려주셨으면 하는데, 가능한지 확인해 주시겠어요?"
+        },
+        {
+          "n": 6,
+          "setting": "Phone-insurance claims line: screen repair claim rejected as filed late.",
+          "delayedConstraint": "them2: the filing window closed while the learner was abroad; them4: a second review needs proof of travel dates.",
+          "learnerGoal": "Concede the late filing, supply the reason, request one re-review and name what proof will be sent.",
+          "exampleKoreanMove": "기한이 지난 건 맞아요. 다만 그 기간에 출국 중이었다는 기록이 있으니까 한 번만 다시 검토해 주셨으면 해요. 출입국 기록은 오늘 보낼게요."
+        },
+        {
+          "n": 7,
+          "setting": "Gym front desk: cancelling a twelve-month contract because of a move.",
+          "delayedConstraint": "them2: six months remain and the contract says no refund; them4: transfer to another person is possible but only this month.",
+          "learnerGoal": "Reject paying six unused months, pick transfer, commit to finding the taker within the window.",
+          "exampleKoreanMove": "이사 가는 동네에 지점이 없는데 남은 여섯 달을 다 내라는 건 무리예요. 양도가 된다면 이번 달 안에 제가 사람을 구해 올게요."
+        },
+        {
+          "n": 8,
+          "setting": "Late evening at a coastal guesthouse: the booked sea-view room for four is a courtyard room for three.",
+          "delayedConstraint": "them2: peak season, no other room anywhere nearby, but one folding bed can be added to the room tonight; them4: the host offers breakfast free instead of money.",
+          "learnerGoal": "Secure the fourth bed for tonight first, then insist on a partial refund tied to the mismatch, accept breakfast only on top.",
+          "exampleKoreanMove": "네 명인데 침대가 세 개뿐이니까 간이침대 하나는 오늘 밤 꼭 넣어 주셨으면 해요. 그리고 사진과 다른 만큼 하루 요금의 절반은 돌려주셨으면 하고, 아침 식사는 그것과 별개고요."
+        },
+        {
+          "n": 9,
+          "setting": "Manager's desk: the learner has had weekend shifts three months running.",
+          "delayedConstraint": "them2: the only other person has childcare on weekends; them4: next month's rota is already published.",
+          "learnerGoal": "Acknowledge the colleague's situation, refuse a full fourth month, propose a halved month then rotation plus a compensatory day; the manager decides.",
+          "exampleKoreanMove": "그분 사정은 이해해요. 그래도 넉 달 연속은 저도 한계예요. 다음 달은 주말 네 번 중 두 번만 맡고 그다음부터는 돌아가면서 하면 좋겠어요. 지난 석 달 분은 대체 휴무로 주실 수 있는지도 봐 주세요."
+        },
+        {
+          "n": 10,
+          "setting": "Estate agent's office: the landlord, never met, demands twenty percent more rent via the agent (them turns 합쇼체 only under the proposed recognition extension, else 해요체).",
+          "delayedConstraint": "them2: the agent has no authority, can only relay; them4: an answer must reach the landlord by tomorrow noon.",
+          "learnerGoal": "Make a counteroffer the agent can carry word for word, concede a smaller rise, tie it to a two-year term.",
+          "exampleKoreanMove": "이십 퍼센트는 받아들이기 어렵고요, 오 퍼센트 인상에 이 년 계약이면 받아들이겠다고 그대로 전해 주시겠어요? 집주인분이 그렇게 하신다면 내일 정오 전에 답 듣는 대로 서명할게요."
+        }
+      ]
+    },
+    {
+      "pathNumber": 6,
+      "title": {
+        "ko": "두 방을 오가며",
+        "de": "Zwei Räume",
+        "en": "Two rooms"
+      },
+      "objective": "Handle a formal exchange (turns 0-3), then relay it to someone close (turns 4-5): report exactly what was said, mark what was not said, separate quotation from own view, shift room register deliberately inside 해요체 (honorific recipient and title, humble lexis, explicit request vs shorter warm relay); no productive 합쇼체, no 반말.",
+      "buildsOn": "P5 request carriers and 전해 주시겠어요 bridge; P2 sequencing and 정리하면; P3/P4 hedges (-다고 보기는 어려워요); fixed 합쇼체 chunks from A1 onward.",
+      "productive": "L1-2: -다고 하셨어요 declarative report, first productive use (recognition-only -다고 하다 in B1 P9/P10 L7-8); -는지 물어봤는데 recycled (B1 P5 L9-10); -(으)ㄴ 게 아니라 …-(으)ㄴ 거였어요. L3: -(으)라고 하셨어요 imperative report, first productive after them-turn modelling in L1-2 (no B1 credit). L4-6: -냐고 하셨어요/-냬요 question report (B1 P5 L9-10 -냐고 recognition), contracted -대요/-래요 in room two, 한마디로; L6 only: -자고 하셨어요 suggestion report, first productive after them-turn modelling in L4-5; room-one formal 해요체 (여쭤보다/말씀드리다/연락드리다, 담당자님/선생님 titles, full explicit request -아/어 주시겠어요?) vs room-two warm relay (shorter sentences, contracted forms). L7-8: -다고 하던데요/-다면서요 (hedged relay), 제 의견이 아니라 그분 말씀이에요, 요약하면 + 첫째/둘째. L9-10: -다는 뜻이었어요 (interpreting an official), 확정된 건 …뿐이에요, full formal→relay→summarize chain with the room shift inside 해요체 in one lesson.",
+      "recognitionOnly": "합쇼체 in room-one them turns only under the proposed path-specific official-role recognition extension (else 해요체); -(으)ㄹ 것으로 보입니다 (official hedge); no 반말 in any turn.",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "Bank desk about breaking a savings plan early; then a friend over coffee.",
+          "delayedConstraint": "them2 (banker): the plan has a three-year maturity and two years are paid in; closing before the maturity date returns the principal with almost no interest, no exact figure is quoted; them4 (friend): wants one number, how much is lost.",
+          "learnerGoal": "Ask the bank a precise question, then relay the condition as one clear consequence and name what the banker did not say.",
+          "exampleKoreanMove": "은행에서는 삼 년 만기 전에 깨면 이자가 거의 없다고 하셨어요. 이 년 넣은 원금은 그대로 돌려받고 이자만 거의 못 받는 거예요. 얼마인지는 말씀 안 하셔서 저도 몰라요."
+        },
+        {
+          "n": 2,
+          "setting": "Dental consultation presenting two options and prices; then a partner at home.",
+          "delayedConstraint": "them2 (dentist): both options are possible, the choice is the patient's; them4 (partner): which one did the dentist recommend?",
+          "learnerGoal": "Relay what was said without inventing a recommendation; mark the boundary of the report.",
+          "exampleKoreanMove": "선생님은 두 가지 다 가능하다고 하셨고, 어느 쪽이 낫다고는 안 하셨어요. 비용 차이만 말씀하셨고, 고르는 건 제가 정할 일이라고 하셨어요."
+        },
+        {
+          "n": 3,
+          "setting": "Annual feedback talk with a manager; then a colleague in the lift.",
+          "delayedConstraint": "them2 (manager): one concrete change requested, shorter slide decks; them4 (colleague): asks what was said about them.",
+          "learnerGoal": "Report own feedback accurately and decline to relay anything about a third person.",
+          "exampleKoreanMove": "저한테는 발표 자료를 더 짧게 하라고 하셨어요. 다른 분 얘기는 안 나왔고, 나왔어도 제가 옮기면 안 되죠."
+        },
+        {
+          "n": 4,
+          "setting": "Community-centre desk for a change-of-address registration (learner formal 해요체 with 여쭤보다 and an explicit request); then a neighbour on the stairs.",
+          "delayedConstraint": "them2 (clerk): a copy of the lease is accepted but the ID must be original; them4 (neighbour): is a foreign resident and asks whether the same applies.",
+          "learnerGoal": "Ask the clerk with humble lexis and an explicit request, then relay in short warm 해요체 and flag that the neighbour, a foreign resident, must check their own case rather than take the advice over.",
+          "exampleKoreanMove": "계약서는 사본으로도 접수가 되는지 여쭤보고 싶어요. 신분증은 원본이어야 하는지도 확인해 주시겠어요?"
+        },
+        {
+          "n": 5,
+          "setting": "Phone call with the landlord about a boiler repair; then the flatmate in the kitchen.",
+          "delayedConstraint": "them2 (landlord): repair cost covered, call-out fee of three 만원 on the tenants; them4 (flatmate): wants the exact wording to push back.",
+          "learnerGoal": "Relay the split as a close report, label it as quotation not endorsement, propose how to answer.",
+          "exampleKoreanMove": "집주인분이 수리비는 내주시는데 출장비 삼만 원은 저희가 내래요. 그분 말씀을 옮기는 거지 제 의견은 아니에요. 계약서에 출장비 조항이 있는지 보고 답하면 어때요?"
+        },
+        {
+          "n": 6,
+          "setting": "Parent-teacher meeting about a child's friendship trouble; then the partner on a two-minute phone break.",
+          "delayedConstraint": "them2 (teacher): proposes watching for one month with no intervention, asks the parents to note anything the child says at home, and sets a follow-up meeting in a month; them4 (partner): no time for description, needs decisions only.",
+          "learnerGoal": "Compress a twenty-minute talk into the agreed actions and one date.",
+          "exampleKoreanMove": "한마디로, 선생님은 한 달은 지켜보자고 하셨고 한 달 뒤에 다시 만나자고 하셨어요. 우리가 할 일은 하나, 아이가 집에서 그 얘기를 하면 적어 뒀다가 그때 가져가는 거예요."
+        },
+        {
+          "n": 7,
+          "setting": "Local police box reporting a stolen bicycle; then a friend on the way home.",
+          "delayedConstraint": "them2 (officer): the report is filed, the number is for insurance; them4 (friend): assumes the police will search and find it.",
+          "learnerGoal": "Correct the friend's expectation with what the officer actually said.",
+          "exampleKoreanMove": "접수는 됐는데 찾아 주겠다고 하신 게 아니라 접수 번호를 보험사에 내라는 거였어요. 찾을지 어떨지는 아무 말씀도 없으셨어요."
+        },
+        {
+          "n": 8,
+          "setting": "Job interview closing round on conditions (learner formal 해요체 with 여쭤보다/말씀드리다); then a friend who asks about salary.",
+          "delayedConstraint": "them2 (interviewer): only a salary range is named, plus a three-month probation paid at eighty percent of whatever regular base pay is individually agreed for this position; the learner's own figure is not stated and no date for it is given; them4 (friend): presses for the exact number.",
+          "learnerGoal": "Ask the interviewer a clean clarifying question, then relay scope honestly.",
+          "exampleKoreanMove": "연봉은 정확한 숫자가 아니라 범위만 말씀하셨어요. 수습 석 달 동안은 나중에 정해질 제 기본급의 팔십 퍼센트를 받는대요. 제 숫자가 언제 나오는지는 말씀이 없으셨어요."
+        },
+        {
+          "n": 9,
+          "setting": "District hearing on a redevelopment timetable; then a neighbour who missed it and has heard rumours (both rooms 해요체).",
+          "delayedConstraint": "them2 (official): only the survey schedule is confirmed; them4 (neighbour): repeats a rumour that demolition starts next spring.",
+          "learnerGoal": "Separate the confirmed from the rumoured in two sentences.",
+          "exampleKoreanMove": "확정된 건 조사 일정뿐이에요. 철거 시기는 아무도 말 안 했고, 봄이라는 건 소문이에요."
+        },
+        {
+          "n": 10,
+          "setting": "Formal complaint call to a telecom provider about a doubled charge (learner formal 해요체: 담당자님, 연락드리다, explicit request); then a colleague who wants to copy the script.",
+          "delayedConstraint": "them2 (agent): refund takes two billing cycles unless a bank statement is uploaded; them4 (colleague): their case is a wrong plan, not a double charge.",
+          "learnerGoal": "Run the formal call end to end, then relay the steps warmly to the colleague, say that the bank-statement upload was offered for the learner's own double-charge case only, and tell the colleague to ask the provider which documents their wrong-plan case needs; no claim about whether anything can be omitted.",
+          "exampleKoreanMove": "순서는 그대로 쓰시면 돼요. 다만 은행 내역을 올리라는 건 제 이중 청구 건에 해 주신 얘기라서, 요금제가 잘못된 경우에는 어떤 서류가 필요한지 담당자님께 직접 여쭤보세요."
+        }
+      ]
+    },
+    {
+      "pathNumber": 7,
+      "title": {
+        "ko": "같이 풀어 가기",
+        "de": "Gemeinsam ausarbeiten",
+        "en": "Working it out"
+      },
+      "objective": "Co-plan under a named constraint: put a proposal on the table, draw in the quiet participant, trade concessions, and close by stating what was agreed in a form everyone can repeat.",
+      "buildsOn": "P1 -(으)면 어떨까요, P2 첫째/둘째/셋째 and 정리하면, P5 counteroffer frames, P6 summarize for an absent third party.",
+      "productive": "L1-3: -는 게 어때요?, 어떻게 생각하세요? / 아직 말씀 안 하신 분은요? (invite), 제가 …은 맡을게요, 나눠서. L4-6: -는 대신(에) (trade), -(으)ㄹ 테니까 first productive use on a learner subject (제가 할 테니까; recognition in B1 P3/P10 and causal -을 테니 in B2 P4L4 do not count as prior productive use), -기로 해요/-기로 하죠 (recycled, productive since B1 P7 L9-10), -(으)ㄹ 바에는 …는 게 낫다. L7-8: -되 …쪽으로 정리할게요, -부터 올리고 나머지는, 한계예요. L9-10: 지금까지 정리하면 세 가지예요, -는 걸로 해 주시겠어요?, full propose→invite→counteroffer→concede→summarize→conclude.",
+      "recognitionOnly": "-든지 -든지 (them), -(으)ㄹ 겸 (them); fixed floor chunks 말씀 중에 죄송한데요 / 끝까지 들어 주시겠어요? modelled in L8-9 them turns for P9 recall; 합쇼체 in L10 management-office them turns only under the proposed recognition extension.",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "Team chat about a farewell event for a departing colleague.",
+          "delayedConstraint": "them2: budget capped at thirty 만원; them4: two people can never do Friday evenings and one has not spoken.",
+          "learnerGoal": "Propose a lunch format, invite the silent member explicitly, adjust to the budget.",
+          "exampleKoreanMove": "점심 회식으로 하는 건 어때요? 저녁에 못 오시는 분들도 있으니까요. 아직 말씀 안 하신 분은 어떻게 생각하세요?"
+        },
+        {
+          "n": 2,
+          "setting": "Friend's moving day planning at the kitchen table with two helpers.",
+          "delayedConstraint": "them2: the lift is booked for only two hours; them4: the truck arrives at ten, one hour after the lift slot starts.",
+          "learnerGoal": "Sequence the load by size and time, allocate roles by strength and availability.",
+          "exampleKoreanMove": "그럼 아홉 시에 엘리베이터가 열리면 큰 짐부터 일 층에 내려놓고, 열 시에 트럭이 오면 바로 싣는 쪽으로 해요. 박스는 제가 맡을게요, 가구는 두 분이 맡아 주시겠어요?"
+        },
+        {
+          "n": 3,
+          "setting": "Three-person project kickoff in a meeting room.",
+          "delayedConstraint": "them2: one colleague is away all of week three; them4: the manager added a demo to the deliverables this morning.",
+          "learnerGoal": "Split tasks so the absence does not block others, take the demo yourself with a trade.",
+          "exampleKoreanMove": "오늘 추가된 시연은 제가 맡을게요. 그러면 자료 조사는 두 분이 나눠서 하시는 게 어때요? 휴가 전에 끝낼 수 있는 부분부터 가져가 주시고요."
+        },
+        {
+          "n": 4,
+          "setting": "First evening with a new flatmate who works night shifts.",
+          "delayedConstraint": "them2: they sleep until two in the afternoon; them4: they cannot do any weekday cleaning slot.",
+          "learnerGoal": "Trade a noise curfew for a cleaning schedule shaped around shifts.",
+          "exampleKoreanMove": "청소는 요일로 나누지 말고 주말에 같이 한 번 하는 대신, 소음은 시간대로 정하죠. 낮에 주무시니까 오후 두 시까지는 세탁기를 안 돌리는 걸로요."
+        },
+        {
+          "n": 5,
+          "setting": "Residents' chat with the block representative about a Saturday clean-up.",
+          "delayedConstraint": "them2: rain forecast at sixty percent; them4: only ten pairs of gloves and tongs exist.",
+          "learnerGoal": "Build in a weather fallback and cap participation without discouraging people.",
+          "exampleKoreanMove": "토요일에 비가 오면 일요일 아침으로 바로 옮기기로 하고, 장비가 열 개뿐이니까 첫 조는 열 명까지만 받으면 어떨까요?"
+        },
+        {
+          "n": 6,
+          "setting": "Hobby club treasurer meeting after the venue raised its rent.",
+          "delayedConstraint": "them2: most members opposed any fee rise in the poll; them4: the venue needs an answer this week.",
+          "learnerGoal": "Counter a fee rise with frequency and expense cuts, concede the cost reality.",
+          "exampleKoreanMove": "회비를 올릴 바에는 모임을 격주로 줄이는 게 낫다고 봐요. 그래도 대관료가 오른 건 사실이니까 간식비는 없애죠."
+        },
+        {
+          "n": 7,
+          "setting": "Three friends planning a four-day trip on a daily budget.",
+          "delayedConstraint": "them2: one cannot drive; them4: train plus local rental breaks the daily budget by a fifth.",
+          "learnerGoal": "Settle transport only once the overrun is offset or the rental dropped, assign the driving, delegate lodging.",
+          "exampleKoreanMove": "기차에 하루 렌트까지 하면 예산을 이십 퍼센트나 넘어요. 숙소에서 그만큼 줄일 수 있으면 그걸로 가고, 안 되면 버스로 하는 쪽으로 정리할게요, 어때요? 운전은 제가 할 테니까 숙소 후보는 두 분이 골라 주세요."
+        },
+        {
+          "n": 8,
+          "setting": "Manager asks the learner to draft tomorrow's agenda.",
+          "delayedConstraint": "them2: six items, thirty minutes; them4: the director joins only for the first ten minutes.",
+          "learnerGoal": "Rank by decision need, move the rest to email, front-load the director's item.",
+          "exampleKoreanMove": "삼십 분이면 안건 세 개가 한계예요. 이사님 안건은 첫 십 분에 올리고, 그다음은 결정이 필요한 것부터, 나머지는 메일로 돌리면 어떨까요?"
+        },
+        {
+          "n": 9,
+          "setting": "Two teams double-booked the same meeting room.",
+          "delayedConstraint": "them2: both bookings are valid in the system; them4: the other team has an external guest arriving in five minutes.",
+          "learnerGoal": "Yield now and secure a concrete trade for next week.",
+          "exampleKoreanMove": "손님 오시는 쪽이 먼저 쓰시고 저희는 삼십 분 늦게 시작할게요. 대신 다음 주 같은 시간은 저희가 쓰는 걸로 해 주시겠어요?"
+        },
+        {
+          "n": 10,
+          "setting": "Two households and the management office (them 합쇼체 only under the proposed recognition extension, else 해요체) outlining a rooftop garden proposal for the residents' meeting.",
+          "delayedConstraint": "them2: the office will not take on watering duty; them4: the proposal must fit on one page by Friday.",
+          "learnerGoal": "Summarize the agreed division of labour and scope in three repeatable points.",
+          "exampleKoreanMove": "지금까지 정리하면 세 가지예요. 물은 참여 세대가 돌아가면서 주고, 관리소는 열쇠와 안전만 봐 주시고, 첫해는 열 세대로 시작하는 거예요."
+        }
+      ]
+    },
+    {
+      "pathNumber": 8,
+      "title": {
+        "ko": "정확히 말하기",
+        "de": "Auf den Punkt gebracht",
+        "en": "Saying exactly"
+      },
+      "objective": "Define a term, narrow a vague statement to the exact pattern, correct a misreport, and describe a multi-step plan so a listener could repeat it.",
+      "buildsOn": "P2 -(으)ㄴ 게 아니라 …-(으)ㄴ 거예요 and process sequencing, P6 -다는 뜻이었어요, P3 scope rebut (-(이)지 …의 문제는 아니에요).",
+      "productive": "L1-3: -(이)란 …을 말해요 / -는 것을 뜻해요 (definition frame), 정확히 말하면, -(으)ㄹ 때만/-는 동안에만, …까지는 …이 아니라 (deadline precision). L4-6: -(이)라기보다는 …에 가까워요, 예를 들면, 구체적으로는, …가 아니라 …이어야 해요 (specification). L7-8: 쉽게 말하면, 다시 말해서, -(으)라는 뜻이에요, -(이)지 …는 아니에요. L9-10: 제가 …한 건 …이지 …가 아니에요 (correcting a report of one's view), 순서대로 말씀드리면 + 첫째/둘째/셋째, full explain→clarify→compare→rebut→summarize chain.",
+      "recognitionOnly": "-에 해당합니다 (them official), 엄밀히 말하면 (them expert), 합쇼체 in L10 them turns only under the proposed recognition extension.",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "One-on-one with a manager who heard the learner wants 'flexible hours'.",
+          "delayedConstraint": "them2: the manager assumes it means coming in whenever and working fewer hours; them4: asks what happens with a nine o'clock client call.",
+          "learnerGoal": "Define the term as a core-time window, handle the edge case without widening the ask.",
+          "exampleKoreanMove": "제가 말하는 유연 근무란 아무 때나 오는 게 아니라, 하루 여덟 시간은 그대로 하되 열한 시부터 세 시까지만 다 같이 있으면 되는 거예요. 아홉 시 고객 통화가 있는 날은 그 시간에 맞춰 나와요."
+        },
+        {
+          "n": 2,
+          "setting": "IT helpdesk ticket follow-up about a laptop that 'keeps dropping'.",
+          "delayedConstraint": "them2: tests show the network is fine; them4: asks whether it happens on the phone hotspot too.",
+          "learnerGoal": "Narrow the fault to the exact trigger and timing; admit what has not been tested.",
+          "exampleKoreanMove": "계속 안 되는 게 아니라 화상 회의 중에만 끊겨요. 정확히 말하면 카메라를 켜고 삼 분쯤 지나면요. 핫스팟에서는 아직 안 해 봤어요."
+        },
+        {
+          "n": 3,
+          "setting": "Colleague delivered 'by Friday' at eleven at night; the meeting was Friday morning.",
+          "delayedConstraint": "them2: the colleague points out 'Friday' was all that was written; them4: asks how to phrase deadlines from now on.",
+          "learnerGoal": "Pin the intended meaning, concede the ambiguity, set a precise convention.",
+          "exampleKoreanMove": "제가 말한 금요일까지는 금요일 열 시 회의 전까지였어요. 금요일 밤까지가 아니라요. 다음부터는 시간까지 쓸게요, 그건 제 잘못이에요."
+        },
+        {
+          "n": 4,
+          "setting": "Friend asks about a weekly regulars' gathering from the learner's home culture.",
+          "delayedConstraint": "them2: the friend equates it with a 동호회 with membership; them4: asks what happens if someone does not come for a month.",
+          "learnerGoal": "Define by contrast and example without claiming facts about the learner's biography.",
+          "exampleKoreanMove": "동호회라기보다는 약속 없이도 매주 같은 요일 같은 자리에서 만나는 모임에 가까워요. 한 달 안 와도 아무도 안 물어봐요, 그게 핵심이에요."
+        },
+        {
+          "n": 5,
+          "setting": "GP visit for recurring headaches; the learner describes, the doctor decides.",
+          "delayedConstraint": "them2: the doctor asks for location and time of day rather than intensity; them4: asks what changed in the last two weeks.",
+          "learnerGoal": "Describe location, onset and pattern precisely; name the one recent change; no self-diagnosis.",
+          "exampleKoreanMove": "머리 전체가 아니라 오른쪽 눈 뒤가 아파요. 아침에 일어나면 시작해서 점심쯤 가라앉고요. 이 주 전부터 모니터를 하나 더 쓰기 시작했어요."
+        },
+        {
+          "n": 6,
+          "setting": "Ordering a made-to-measure bookshelf from a carpenter (사장님).",
+          "delayedConstraint": "them2: standard depth is thirty centimetres; them4: deeper shelves need a thicker back panel and cost more.",
+          "learnerGoal": "Specify depth, adjustable shelves and reason; accept the cost consequence knowingly.",
+          "exampleKoreanMove": "깊이는 삼십 센티미터가 아니라 사십이어야 해요. 서류 상자가 들어가야 하거든요. 선반은 높이를 옮길 수 있게 해 주세요."
+        },
+        {
+          "n": 7,
+          "setting": "New international colleague misreads the office recycling sign.",
+          "delayedConstraint": "them2: they think 재활용 불가 means the item may not be thrown away at all, though the office sign says such items go in the white general-waste bag; them4: asks about a greasy pizza box, which the same sign lists under general waste.",
+          "learnerGoal": "Paraphrase the rule into plain action, then apply it to the edge case.",
+          "exampleKoreanMove": "이 안내문의 재활용 불가는 버리면 안 된다는 뜻이 아니라 일반 쓰레기로 버리라는 뜻이에요. 쉽게 말하면 여기 적힌 흰 봉투요. 기름 묻은 상자도 안내문대로면 그쪽이에요."
+        },
+        {
+          "n": 8,
+          "setting": "A visiting expert from a different field asks what this team means by a 'retrospective meeting'.",
+          "delayedConstraint": "them2: they assume it is where blame is assigned; them4: asks for one concrete example.",
+          "learnerGoal": "Define a field term by what it is not, then by one example.",
+          "exampleKoreanMove": "회고란 누가 잘못했는지 찾는 자리가 아니라 다음에 뭘 바꿀지 정하는 회의예요. 예를 들면 마감이 늦었으면 왜 늦었는지 보고, 다음부터는 검토 기한을 이틀 앞당기기로 정하고 끝나요."
+        },
+        {
+          "n": 9,
+          "setting": "Colleague told the manager the learner 'opposes the project'.",
+          "delayedConstraint": "them2: the colleague insists that is what they heard; them4: asks the learner to state the position in one sentence for the manager.",
+          "learnerGoal": "Correct the misreport by scope, restate the actual position compactly.",
+          "exampleKoreanMove": "제가 반대한 건 일정이지 계획 자체가 아니에요. 다시 말해서 한 달만 미루자는 거였어요."
+        },
+        {
+          "n": 10,
+          "setting": "Community-centre official (them 합쇼체 only under the proposed recognition extension) needs the street-festival traffic plan in sequence: booths open at ten, ordinary cars are blocked from noon to five with a detour via the parallel street, and the south entrance stays clear as an emergency lane all day.",
+          "delayedConstraint": "them2: asks what happens if an ambulance must pass at one o'clock; them4: wants the plan in three lines for the notice board.",
+          "learnerGoal": "Describe a three-step plan, add the emergency exception, summarize for the board.",
+          "exampleKoreanMove": "순서대로 말씀드리면 세 단계예요. 첫째, 부스는 열 시에 열고, 차는 정오까지 평소대로 다녀요. 둘째, 정오부터 다섯 시까지는 일반 차량이 못 들어오고 옆길로 돌아가요. 셋째, 다섯 시부터 다시 평소대로 다녀요. 구급차는 이 계획대로면 하루 종일 남쪽 입구 비워 둔 길로 지나갈 수 있어요."
+        }
+      ]
+    },
+    {
+      "pathNumber": 9,
+      "title": {
+        "ko": "밀려도 버티기",
+        "de": "Unter Druck",
+        "en": "Under pressure"
+      },
+      "objective": "Sustain polite disagreement when interrupted, pressed or guilt-tripped: keep the floor, concede exactly one point, hold the core, close without rupture. No new carriers; recombines P1-P8.",
+      "buildsOn": "P3 concede/rebut pair, P5 counteroffer, P8 scope correction, P7 trade closes.",
+      "productive": "No new carriers. Compulsory recalled targets are exactly the two fixed floor-management chunks modelled as whole phrases in P7 L8-9 them turns: 말씀 중에 죄송한데요 and 끝까지 들어 주시겠어요? (L1-3; B1 P3 -아/어 주시겠어요). All other discourse strings are illustrations built from previously productive Korean, with no novel carrier and no compulsory recall: L1-3 제 말 아직 안 끝났어요; L4-6 거기까지는 동의해요, 그 얘기는 잠시 뒤에 하고요, 요점은 …예요; L7-8 그 질문은 …에서 답할게요, 지금은 …부터 끝낼게요 (free paraphrase on recycled -(으)ㄹ게요); L9-10 지난번엔 괜찮았지만 이번에는 안 돼요, 그렇다고 해서 …가 바뀐 건 아니지만 (recycled P1/P3).",
+      "recognitionOnly": "Interruption cues in them turns (아니 잠깐만요, 그게 아니라요), 합쇼체 in L6 official turns only under the proposed recognition extension.",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "Manager's office; the learner proposed cutting the travel budget and the manager cuts in after every sentence.",
+          "delayedConstraint": "them2: interrupts with 'clients expect visits'; them4: asks for the whole proposal in one breath.",
+          "learnerGoal": "Hold the floor politely, deliver the reason, offer the trade.",
+          "exampleKoreanMove": "말씀 중에 죄송한데요, 끝까지 들어 주시면 이유가 나와요. 출장을 반으로 줄이는 대신 화상 장비를 사자는 거예요."
+        },
+        {
+          "n": 2,
+          "setting": "Orthopaedic follow-up; surgery is proposed, the learner wants to ask about more conservative time first.",
+          "delayedConstraint": "them2: the doctor says waiting may not change the outcome; them4: offers a date, asks for a decision today.",
+          "learnerGoal": "Question respectfully without contesting expertise, ask whether a bounded delay is safe in this case, decide only after hearing both options; the doctor rules on the medical side.",
+          "exampleKoreanMove": "선생님 판단을 의심하는 건 아니에요. 다만 제 경우에는 두 달쯤 더 치료하면서 기다리는 게 위험한지 여쭤보고 싶어요. 두 쪽 다 듣고 나서 오늘 정해도 될까요?"
+        },
+        {
+          "n": 3,
+          "setting": "Landlord blames mould on the learner's ventilation.",
+          "delayedConstraint": "them2: a photo of a closed window is produced; them4: landlord proposes splitting the cost fifty-fifty.",
+          "learnerGoal": "Push back with specific counter-evidence, concede nothing unearned, respond to the split with a condition.",
+          "exampleKoreanMove": "환기 문제라고 하시는데 저는 매일 창문을 열었어요. 그 벽은 겨울마다 그랬다고 아랫집도 말했고요. 반반은 원인을 먼저 보고 얘기해요."
+        },
+        {
+          "n": 4,
+          "setting": "Friend changes the weekend plan for the third time over messages, then calls.",
+          "delayedConstraint": "them2: talks over the learner with a new idea; them4: says the learner is 'too rigid'.",
+          "learnerGoal": "Reclaim the floor, name the concrete cost, refuse the label without escalating.",
+          "exampleKoreanMove": "제 말 아직 안 끝났어요. 계획을 또 바꾸면 예약금 오만 원이 날아가요. 그건 제가 낸 돈이고요. 융통성 문제가 아니라 돈 문제예요."
+        },
+        {
+          "n": 5,
+          "setting": "Manager blames an absent colleague for a reporting error in front of the team.",
+          "delayedConstraint": "them2: the manager says the colleague should defend themselves tomorrow; them4: asks whether the learner is taking the blame then.",
+          "learnerGoal": "Defend the absent person on fairness, take the share that is yours, decline the rest.",
+          "exampleKoreanMove": "그분이 없을 때 이렇게 얘기하는 건 공정하지 않다고 봐요. 그 오류는 제가 넘긴 자료에서 시작됐으니까 그 부분은 제가 책임질게요."
+        },
+        {
+          "n": 6,
+          "setting": "District officer (them 합쇼체 only under the proposed recognition extension, else 해요체) defends closing the park at ten in the evening.",
+          "delayedConstraint": "them2: safety incidents are cited; them4: officer says the decision is final for this year.",
+          "learnerGoal": "Accept the safety aim, challenge the means with an alternative, ask what review exists.",
+          "exampleKoreanMove": "안전 때문이라는 건 알겠어요. 올해 결정은 그대로라고 하시니, 내년 검토 때 조명을 늘리고 폐장을 열한 시로 하는 안을 올려 주실 수 있는지 여쭤보고 싶어요. 퇴근 뒤에 운동하는 주민은 지금 갈 곳이 없거든요."
+        },
+        {
+          "n": 7,
+          "setting": "Learner presenting quarterly numbers; a colleague keeps interjecting questions.",
+          "delayedConstraint": "them2: a question about next year's assumptions mid-slide two; them4: 'so you're avoiding the question?'",
+          "learnerGoal": "Park the question with a promise, finish the current point, return to it visibly.",
+          "exampleKoreanMove": "그 질문은 중요하니까 세 번째 장에서 답할게요. 지금은 숫자부터 끝낼게요. 피하는 게 아니라 순서예요."
+        },
+        {
+          "n": 8,
+          "setting": "Client call pressing for Friday delivery.",
+          "delayedConstraint": "them2: their own board meets Monday; them4: hints at taking the work elsewhere.",
+          "learnerGoal": "Hold the realistic date, offer a partial early deliverable, keep the relationship.",
+          "exampleKoreanMove": "이번 주 금요일은 어렵고요, 다음 주 수요일이면 테스트까지 끝낼 수 있어요. 다음 주 월요일 회의에 필요하시면 초안만 이번 주 금요일에 먼저 드릴게요."
+        },
+        {
+          "n": 9,
+          "setting": "Neighbour asks to borrow the car for the third time this month.",
+          "delayedConstraint": "them2: it is for a hospital visit with an elderly parent; them4: offers to pay for petrol.",
+          "learnerGoal": "Refuse firmly and kindly, give one real reason, offer a different help.",
+          "exampleKoreanMove": "지난번엔 괜찮았지만 이번에는 안 돼요. 보험 문제도 있고, 솔직히 그때도 좀 불편했어요. 대신 그날 아침에 제가 태워다 드릴 수는 있어요."
+        },
+        {
+          "n": 10,
+          "setting": "First coffee with a friend after a heated argument last week.",
+          "delayedConstraint": "them2: the friend wants the learner to admit they were wrong on the substance; them4: asks whether things are 'back to normal'.",
+          "learnerGoal": "Apologise for tone, keep the position, define what normal means now.",
+          "exampleKoreanMove": "그날은 제가 말이 심했어요. 그렇다고 해서 제 생각이 바뀐 건 아니지만, 그렇게 말할 일은 아니었어요. 생각은 달라도 사이는 그대로였으면 해요."
+        }
+      ]
+    },
+    {
+      "pathNumber": 10,
+      "title": {
+        "ko": "제 입장은요",
+        "de": "Wo ich stehe",
+        "en": "Where I stand"
+      },
+      "objective": "Build a personal position over three turns on an everyday theme, absorb one real challenge, and close with a conclusion that keeps the nuance. Consolidation of B2; no new carriers; themes framed so no private facts are required.",
+      "buildsOn": "All P1-P9 carriers; especially P1 compare-concede-conclude, P3 position frames, P4 -다고 가정하면, P8 -(이)라기보다는, P9 holding the point.",
+      "productive": "No new carriers. Structuring connectors recycled as the assessed recall span: 제 생각에는 / 저는 …다고 봐요 (open), 그렇다고 해서 …는 아니에요 / -다는 점은 인정해요 (absorb), -(이)라기보다는 …에 가까워요 (refine), -다고 가정하면 … 반대로 … (hypothesize), 결론은 …-되 …는 거예요 (close).",
+      "recognitionOnly": "합쇼체 interviewer turns in L10 only under the proposed recognition extension; -(으)ㄹ 법하다 (them); no 반말 anywhere.",
+      "lessons": [
+        {
+          "n": 1,
+          "setting": "Language-exchange partner asks whether living abroad is freedom or loss.",
+          "delayedConstraint": "them2: 'but you can leave any time, locals can't'; them4: asks for a one-sentence answer for someone about to move.",
+          "learnerGoal": "Reframe the dichotomy, concede the privilege, close with a usable rule.",
+          "exampleKoreanMove": "외국에 산다는 건 자유롭다기보다는 매일 제 선택을 설명해야 하는 일에 가까워요. 그래도 그 설명을 하면서 제가 뭘 원하는지 알게 됐어요."
+        },
+        {
+          "n": 2,
+          "setting": "Lunch with a colleague who says work-life balance is a luxury word.",
+          "delayedConstraint": "them2: 'you stayed late twice this week'; them4: asks what balance means then, concretely.",
+          "learnerGoal": "Define balance as a boundary rather than a ratio; let the challenge sharpen rather than defeat it.",
+          "exampleKoreanMove": "저한테 균형은 반반이 아니라 끊을 수 있는 거예요. 야근을 해도 집에 가면 메일을 안 보면 그게 균형이에요. 이번 주 두 번은 제가 끊지 못한 날이고요."
+        },
+        {
+          "n": 3,
+          "setting": "Friend proudly shows a new smart-home setup and asks why the learner is lukewarm.",
+          "delayedConstraint": "them2: 'it saves me an hour a day'; them4: asks whether the learner would then go back to no phone.",
+          "learnerGoal": "Concede convenience, distinguish time saved from time gained, avoid the all-or-nothing trap.",
+          "exampleKoreanMove": "편해진 건 맞아요. 그렇다고 해서 제가 더 여유로워졌다고 보기는 어려워요. 남은 시간을 또 화면이 가져가거든요. 없애자는 게 아니라 어디까지 들일지 정하자는 거예요."
+        },
+        {
+          "n": 4,
+          "setting": "Visitor from another city asks whether the learner likes living here.",
+          "delayedConstraint": "them2: 'that sounds like complaining'; them4: asks whether the learner would recommend moving here.",
+          "learnerGoal": "Hold an ambivalent view with specifics, close with a conditional recommendation.",
+          "exampleKoreanMove": "이 도시는 편하다기보다는 빠른 곳에 가까워요. 그 속도가 어떤 날은 힘이 되고 어떤 날은 짐이에요. 일 때문에 오시면 권하고, 쉬려고 오시면 안 권해요."
+        },
+        {
+          "n": 5,
+          "setting": "Korean teacher asks what was hardest about learning the language.",
+          "delayedConstraint": "them2: 'most students say vocabulary'; them4: asks what advice the learner would give a beginner.",
+          "learnerGoal": "Take a non-obvious position with a concrete illustration, convert it into advice.",
+          "exampleKoreanMove": "저는 단어보다 어미가 어려웠어요. 예를 들면 제가 먼저 가요와 선생님이 먼저 가세요처럼 주어가 누구냐에 따라 끝이 바뀌잖아요. 그래서 초급자한테는 단어보다 끝맺음부터 보라고 하고 싶어요."
+        },
+        {
+          "n": 6,
+          "setting": "Friend quotes 'money can't buy happiness' after a pay-rise conversation.",
+          "delayedConstraint": "them2: 'so you'd be happier with more?'; them4: asks where the line is.",
+          "learnerGoal": "Refuse the slogan without the opposite slogan; argue a threshold view.",
+          "exampleKoreanMove": "돈이 행복을 사지는 못해도 걱정은 줄여 줘요. 걱정이 줄면 행복할 자리가 생기니까 어느 정도까지는 분명히 관계가 있어요. 그 선을 넘으면 그때부터는 다른 얘기고요."
+        },
+        {
+          "n": 7,
+          "setting": "Older relative-in-law of a friend asks the learner's view on how holidays should be kept.",
+          "delayedConstraint": "them2: 'young people just want to skip everything'; them4: asks what exactly the learner would keep.",
+          "learnerGoal": "Separate the custom from its form, name what to keep and what to change, stay respectful.",
+          "exampleKoreanMove": "명절을 없애자는 게 아니라 하는 방식을 바꾸자는 거예요. 모이는 건 지키되 음식은 나눠서 준비하면 돼요. 지키는 사람이 지쳐야 전통인 건 아니니까요."
+        },
+        {
+          "n": 8,
+          "setting": "Mentoring coffee; a junior asks whether careers should follow a plan (learner's own path kept generic).",
+          "delayedConstraint": "them2: 'that sounds like luck, not strategy'; them4: asks for the one principle the learner actually followed.",
+          "learnerGoal": "Describe a path as adaptation rather than a plan, concede the role of luck, extract a principle.",
+          "exampleKoreanMove": "제 길은 계획대로 온 게 아니라 거절당할 때마다 옆으로 한 칸씩 움직인 결과예요. 운도 있었죠. 그래도 배울 게 없는 자리에는 남지 않는다는 원칙 하나는 지켰어요."
+        },
+        {
+          "n": 9,
+          "setting": "Colleague mocks the learner's reusable cup as pointless.",
+          "delayedConstraint": "them2: 'one cup changes nothing, it's about feeling good'; them4: asks whether the learner then flies less too.",
+          "learnerGoal": "Concede scale, argue identity and consistency, admit the inconsistency honestly.",
+          "exampleKoreanMove": "텀블러 하나로 세상이 바뀌지는 않아요. 다만 매일 하는 선택은 제가 어떤 사람인지 정하니까 계속할 거예요. 비행기는 솔직히 아직 못 줄였고, 그게 다음 숙제예요."
+        },
+        {
+          "n": 10,
+          "setting": "Scholarship or programme interview (them 합쇼체 only under the proposed recognition extension, else 해요체): where will you be in a year?",
+          "delayedConstraint": "them2: 'and if the exam fails?'; them4: asks for the plan in one sentence a committee can note down.",
+          "learnerGoal": "State a two-branch plan with a stopping rule, survive the failure challenge, compress to one line.",
+          "exampleKoreanMove": "일 년 뒤 계획은 두 갈래예요. 시험에 붙는다고 가정하면 여기 남아서 일을 시작하고, 떨어지면 반년 더 준비하되 두 번째까지만 해요. 그 뒤에는 다른 길로 가요."
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "Official-role 합쇼체 recognition in them turns (P5 L5-6/L10, P6 room one, P7 L10, P8 L10, P9 L6, P10 L10) is a proposed path-specific extension pending the owner gate; for these new paths the default in every setting and them turn is 해요체 as in P1/P2 until it is approved. No productive 합쇼체 anywhere in B2 P5-P10; learner stays 해요체 in both P6 rooms.",
+    "P6 needs two interlocutorIds per lesson (turns 0-3 vs 4-5); the P1/P2 rule 'interlocutor consistency across six turns' and sceneCaption quoting dialogue[0] must be adapted for the relay shape (design/gate decision).",
+    "P6 quotation staging is now explicit (declarative L1-2 from B1 P9/P10 recognition, imperative L3 after L1-2 modelling, question L4-6 from B1 P5 recognition, suggestion L6 after L4-5 modelling); authors must place the modelling them turns before each first learner use.",
+    "P9 compulsory floor-management recall covers exactly the two whole chunks named and modelled in P7 L8-9 them turns (말씀 중에 죄송한데요, 끝까지 들어 주시겠어요?); the other P9 discourse strings are illustrations with no compulsory recall; decide whether the two chunks get carrierTags or a separate fixedChunks field.",
+    "First productive use claims to confirm against P3/P4 full drafts: -(으)ㄹ 테니까 on a learner subject (P7 L4-6), -(으)ㄹ 바에는 (P7), -(이)란 …을 말해요 and -(이)라기보다는 (P8).",
+    "No trophies allocated; suggested lexical fields only (P5 claims/remedies, P6 reporting and officialdom, P7 allocation and trade-offs, P8 definition and specification, P9 fairness and limits, P10 stance adverbs); the local ledger must reserve per authoring batch and run the forbidden-list check.",
+    "Example moves are planning illustrations and are not eojeol-counted here; nothing in this map is evidence of you1/you3 compliance, which the later individual per-lesson you1/you3 checks decide, splitting or trimming as needed.",
+    "P5 L5/L6, P6 L1/L2, P8 L5 and P9 L2 touch airline, insurance, bank, dental and medical contexts; all terms and figures stay fictional and attributed to the interlocutor or scene notices, never asserted by the learner as general fact.",
+    "P10 themes run via a visible interlocutor prompt so no private learner facts are required; learner lines stay generic (no named employer, country or family status).",
+    "Assessment-transfer spans per spine (request carrier P5, reporting carrier P6, proposal carrier P7, definition frame P8, floor frame P9, structuring connector P10) are not encoded in any schema field yet."
+  ]
+}

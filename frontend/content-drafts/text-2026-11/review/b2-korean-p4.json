@@ -1,0 +1,36 @@
+{
+  "verdict": "PASS: independent offline educational text, all 10 Korean B2 P4 lessons",
+  "sourceSha256": "09a7d11d2d83f554b25bf4e477263dbce151b5c134fe81cfe00ff9342c87e448",
+  "sha256": "e919cbdfe987efbf0c91f8296590232ae92964c30790ddc63926c43a0e758cf5",
+  "authorAssertions": 1212,
+  "exactEdits": [
+    105,
+    27
+  ],
+  "nativeReceipts": [
+    "a4bd03720664b2803018abae67cacc89b33e8540544b1e2074676af3a2d81cab",
+    "40fea64574bac01ed14c0d98ff14ce29c43ccb73c7cc99357901919d84f0086c",
+    "996ef5ea3d98a5f69be5e8dfe2033f11b32b71696f573ee175751b0ec0951d6d"
+  ],
+  "exactResidualVector": "3888b7104a544d2908a513ec8834fba7b7e0a7de46ee255b5fe543dc6f775b7c",
+  "remainingTextHolds": [],
+  "upstreamFullPathBoundary": "P1/P2 only",
+  "remainingGates": [
+    "native human",
+    "device delivery",
+    "audio",
+    "release"
+  ],
+  "lessonHashes": [
+    "71440c80dc92ed15660e973f0bd26be57e4061229fdfa86cd23693fe602c59ec",
+    "ee963fdbcdbbded9c9227664742e2e75304490617e7b5167115ff06d993b22d9",
+    "dff1eba27e07c10939eca57bff91f891ff3a19f57fa926f03cb1a3d0ca7a7114",
+    "fdbe8780ba32e16926b157115e0a545a0cf12c71709bf5db91ae6632392e2724",
+    "ded96e9157203e14418eae46d982acb4dea39aedf4e03fd955ad1c1933114cb7",
+    "1fd5c9825dbcd1c58801cb15dd14c012da194163ccf6760d6a2944e9dbd5a9e0",
+    "37d97a38170be00c9cf516232d30e94a68a8e369a744887bc60a80c883c114a5",
+    "e4d2374b413fa6e2b63ad468eebea35bf5f929405c337217bd66f1ac5bb507f8",
+    "0557b9498312580daff37acbb45f8d35cb0e9cd92dda7fb237ffee9d35c06fb8",
+    "eaad4f59363f4c2a92b62bd8e0f6e0cf9b49eeeb76b5ac2caef47278ed0d7570"
+  ]
+}

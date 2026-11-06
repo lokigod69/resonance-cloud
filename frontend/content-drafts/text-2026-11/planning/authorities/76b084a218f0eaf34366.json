@@ -1,0 +1,141 @@
+{
+  "pathNumber": 4,
+  "amendmentReasons": [
+    "L4 surface only: 후회만 → 후회는. The gate allows the literal trophy lemma plus one suffix from the listed set; 만 is not in it, so the surface moves to the topic marker 는 and is relocated into you1 with a natural first learner line (후회는 아니고 아쉬움 정도예요). Lemma 후회 and family 후회 are unchanged; the learner still hypothesizes in you1 and concludes in you5.",
+    "L10 surface only: 최악의 → 최악은. The genitive 의 is not in the allowed suffix set; the topic marker 은 is, and 최악은 … 거예요 is idiomatic for stating an outcome bound. Lemma 최악 and family 최악 are unchanged; the -(ㄴ)다고 가정하면 / outcome-bounds staging of L9–10 and the 합쇼체 manager turns are kept.",
+    "L6 placement only: 대비하면 is kept exactly but moved from you5 into you1 (떨어질 경우에 대비하면 …), as the gate requires the trophy in the first learner turn. The scene now discusses only this person's own appeal letter and the two options the adviser already named; the invented pass-rate figure, generic remedies and any deadline or legal advice are removed.",
+    "L1 staging permission (unchanged from the approved architecture): -았/었더라면 is forced into Lesson 1 by episode order, so them0 models it first (예약하셨더라면 … 텐데요) before the learner reuses it in you1; the learner's first turn still hypothesizes and carries the literal trophy 차이가. All other eight trophy surfaces (차이가 변수가 대안이 위험이 대비하면 대체 어차피 가정하면), the ten scenes, the three move labels per lesson, lemmas and families are kept exactly."
+  ],
+  "lessons": [
+    {
+      "n": 1,
+      "sceneEn": "Travel agency counter: the agent shows the fare has doubled since you first asked.",
+      "trophySurface": "차이가",
+      "turns": [
+        "두 달 전에 예약하셨더라면 반값이었을 텐데요. 지금은 두 배예요.",
+        "그때 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 안 정해져서 샀어도 바꿔야 했을 거예요.",
+        "그래도 일찍 결정하셨어야죠. 지금은 저도 방법이 없어요.",
+        "맞아요. 다만 날짜 변경 수수료까지 생각하면 결과는 비슷했을 수도 있어요.",
+        "그럼 이제 어떻게 하실지 정해 주세요. 새벽 편도 있긴 해요.",
+        "출발을 하루 미루고 새벽 편으로 하면 얼마나 차이가 나는지 봐 주시겠어요? 십만 원 이상 싸면 그걸로 할게요."
+      ]
+    },
+    {
+      "n": 2,
+      "sceneEn": "Lunch: a colleague passes on a rumour that the company will go fully remote and asks about your survey answer.",
+      "trophySurface": "변수가",
+      "turns": [
+        "회사가 전면 재택으로 간다는 소문 들었어요? 설문에 뭐라고 쓸 거예요?",
+        "전면 재택이 되면 변수가 두 개 생길 거예요. 신입이 배울 사람이 없어지고 고객 미팅은 누군가는 나와야 할 수도 있어요.",
+        "재택이면 다 좋지 않아요? 출근 시간도 없고요. 왜 걱정이에요?",
+        "출근 시간이 없어지는 건 좋죠. 그래도 그게 모두에게 좋은 건 아니에요. 집이 좁거나 아이가 있는 분은 사무실이 편하거든요.",
+        "그래서 설문에는 뭐라고 쓸지 한 문장으로요.",
+        "결론은 주 이 회 출근을 기본으로 하고 팀마다 요일을 정하는 쪽이 낫다고 쓸게요."
+      ]
+    },
+    {
+      "n": 3,
+      "sceneEn": "Kitchen: your flatmate reports the landlord hinted at a fifteen percent rent rise.",
+      "trophySurface": "대안이",
+      "turns": [
+        "집주인분이 월세 백만 원을 십오 퍼센트 올리고 싶다고 하셨어요. 어떻게 하죠?",
+        "십오 퍼센트면 둘이 칠만 오천 원씩 더 내야 돼요. 그러면 대안이 두 가지예요. 협상하거나 작은 집으로 옮기는 거예요.",
+        "이사는 더 비싸요. 그냥 내는 게 낫지 않아요?",
+        "이사가 비싼 건 맞아요. 그래도 이 년이면 인상분이 삼백육십만 원이라 이사 비용을 넘어요. 늘 싼 건 아니에요.",
+        "그럼 집주인분께 뭐라고 답할지 정해요. 이번 주에 답해야 돼요.",
+        "먼저 오 퍼센트 인상에 이 년 계약으로 제안해 봐요. 거절하시면 그때 집을 보기 시작하면 어떨까요?"
+      ]
+    },
+    {
+      "n": 4,
+      "sceneEn": "Cafe: a friend asks whether you regret turning down last year's other job offer.",
+      "trophySurface": "후회는",
+      "turns": [
+        "작년에 거절한 그 회사 생각나요? 지금 생각하면 후회 안 해요?",
+        "거기 갔더라면 연봉은 높았을 거예요. 그런데 출장이 매달 있어서 저녁에 공부할 시간은 없었을 거예요. 그래서 후회는 아니고 아쉬움 정도예요.",
+        "거기 갔더라면 지금 연봉이 훨씬 높았을 거잖아요. 솔직히 아깝죠?",
+        "돈 생각하면 마음이 흔들리는 건 맞아요. 다만 여기서 얻은 게 있어요. 자격 시험을 올해 끝냈거든요.",
+        "그래서 결론은요. 후회해요 안 해요? 한 마디로요.",
+        "결론은 후회 안 해요. 다만 다음에 비슷한 선택이 오면 연봉보다 시간을 먼저 볼 거예요."
+      ]
+    },
+    {
+      "n": 5,
+      "sceneEn": "Event planning meeting: the organizer wants to confirm an open-air venue for the September festival.",
+      "trophySurface": "위험이",
+      "turns": [
+        "구월 축제 장소를 야외 공원으로 확정하려고 해요. 괜찮죠?",
+        "당일에 비가 오면 위험이 두 가지예요. 음향 장비가 젖고 음식을 다 버려야 돼요. 돈으로 치면 실내 차이보다 커요.",
+        "구월은 비가 잘 안 와요. 실내는 두 배라서 예산이 안 돼요.",
+        "구월에 비가 적은 건 맞아요. 그렇다고 해서 비가 안 올 거라고 보기는 어려워요. 작년 구월에도 두 번 왔잖아요.",
+        "그럼 어느 쪽으로 할지 결정해 주세요. 돈은 더 못 써요.",
+        "야외로 하되 체육관을 예약금 십만 원만 내고 당일 취소 가능 조건으로 잡으면 어떨까요? 전날 예보 보고 정하면 돼요."
+      ]
+    },
+    {
+      "n": 6,
+      "sceneEn": "Counselling room: an adviser who has read your appeal letter asks what you will do if it is not accepted.",
+      "trophySurface": "대비하면",
+      "turns": [
+        "이의 신청서를 봤는데요. 만약 이게 안 받아들여지면 어떻게 하실 생각이에요?",
+        "떨어질 경우에 대비하면 지난번에 말씀하신 두 가지가 있잖아요. 누락된 서류를 보완해서 다시 내거나 학교 확인서를 먼저 받아 두는 거예요.",
+        "편지만 믿고 기다리면 시간이 그냥 갈 수도 있어요. 지금부터 둘 다 준비하셔야 해요.",
+        "기다리기만 하면 안 된다는 말씀은 맞아요. 그래도 제 편지는 누락 서류 설명이 핵심이라 그 부분을 먼저 고치고 싶어요.",
+        "그럼 어떤 순서로 하실지 한 문장으로 말해 주세요.",
+        "편지 설명을 이번 주에 고쳐서 내되 동시에 학교 확인서를 받아 두면 어떨까요?"
+      ]
+    },
+    {
+      "n": 7,
+      "sceneEn": "At the mailboxes: a neighbour says the district will ban shared scooters and asks about your comment form.",
+      "trophySurface": "대체",
+      "turns": [
+        "구에서 공유 킥보드를 금지한다던데요. 주민 의견서에 뭐라고 쓸 거예요?",
+        "금지되면 역에서 집까지 대체 수단이 없어요. 버스는 삼십 분에 한 대라서 그러면 다들 자동차를 더 타게 될 거예요.",
+        "금지되면 다 좋잖아요. 인도에서 사고가 없어지잖아요.",
+        "인도 사고가 줄 거라는 점은 맞아요. 그래도 사고가 아예 없어지는 건 아니에요. 전동 자전거는 그대로니까요.",
+        "그럼 의견서에 뭐라고 쓸지 한 줄로 말해 봐요.",
+        "전면 금지보다 인도 주행만 막고 주차 구역을 정하는 쪽을 제안하면 어떨까요? 그렇게 쓰면 좋겠어요."
+      ]
+    },
+    {
+      "n": 8,
+      "sceneEn": "Friend's flat: a friend shows photos of a classmate who studied abroad and says you would be different had you gone too.",
+      "trophySurface": "어차피",
+      "turns": [
+        "이 친구 유학 갔다 온 거 봐요. 그때 같이 갔더라면 지금 달랐을걸요.",
+        "갔더라면 영어는 지금보다 나았을 거예요. 그런데 학비로 빚이 남았을 거고 어차피 돌아와서 같은 일을 했을 수도 있어요.",
+        "갔더라면 영어도 늘고 외국 회사에 갔을 거잖아요.",
+        "외국 회사 기회가 많았을 거라는 건 맞아요. 다만 그 친구도 삼 년 만에 돌아왔잖아요. 유학이 길을 보장하는 건 아니에요.",
+        "그래서 지금이라도 갈 거예요 안 갈 거예요?",
+        "결론은 지금 하는 일이 좋으니까 유학 대신 일 년에 두 번 짧은 해외 연수를 가는 쪽으로 할게요."
+      ]
+    },
+    {
+      "n": 9,
+      "sceneEn": "On a walk: a friend asks whether you should lend three million won to another friend who asked yesterday.",
+      "trophySurface": "가정하면",
+      "turns": [
+        "어제 그 친구가 삼백만 원 빌려 달라고 했다면서요? 빌려줄 거예요?",
+        "못 돌려받는다고 가정하면 제 비상금 오백만 원에서 삼백만 원이 빠지는 거예요. 돈도 돈이지만 그 친구와 사이가 어색해질 거예요.",
+        "친구 사이에 그런 걸 따져요? 못 받으면 그냥 주는 셈 치면 되죠.",
+        "친구 사이에 따지는 게 불편한 건 맞아요. 그렇다고 해서 아무 말 없이 주는 게 우정은 아니라고 봐요.",
+        "그럼 빌려줘요 말아요? 한 문장으로요.",
+        "결론은 백만 원까지만 빌려주고 갚는 날짜를 문자로 남기는 거예요. 그 이상은 제 형편에 못 돌려받아도 괜찮은 금액이 아니에요."
+      ]
+    },
+    {
+      "n": 10,
+      "sceneEn": "Preparing for an executive meeting: the manager asks you to forecast the effects of moving the launch from March to May.",
+      "trophySurface": "최악은",
+      "turns": [
+        "출시를 삼월에서 오월로 옮기면 어떤 영향이 있을지 예측해 주시겠습니까?",
+        "오월로 미루면 최악은 경쟁사가 먼저 나와서 첫 분기 매출이 반으로 주는 거예요. 반대로 삼월에 서두르면 오류 때문에 불만 전화가 늘 수도 있어요.",
+        "그렇게 비관적으로만 보시면 결정을 못 합니다. 좋은 쪽은 없습니까?",
+        "나쁜 쪽만 말씀드린 건 맞아요. 그래도 좋은 쪽도 있어요. 두 달이면 인증을 끝내서 해외 판매를 같이 시작할 수 있어요.",
+        "알겠습니다. 그럼 임원 회의 자료에 넣을 결론을 한 문장으로 정리해 주시겠습니까?",
+        "결론은 오월 출시를 기본으로 하되 삼월 초까지 경쟁사 출시 일정이 확인되는 경우에는 국내판만 먼저 내자는 거예요."
+      ]
+    }
+  ]
+}

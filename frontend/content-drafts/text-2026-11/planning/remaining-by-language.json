@@ -1,5 +1,5 @@
 {
-  "scope": "Full 12-language target: 100 lessons per level. Completely written draft bodies count toward writing only.",
+  "scope": "Full 12-language target: 100 lessons per level. Completely written draft bodies count toward writing only. The linked plans are authoring inputs, not lessons.",
   "queue": [
     {
       "language": "English",
@@ -17,7 +17,11 @@
         10
       ],
       "pathsToWrite": [],
-      "remainingLessonCount": 0
+      "remainingLessonCount": 0,
+      "tenPathSpec": "b1-2026-10/english-plan.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "b4910cc2b4b6ca7d11fa74ba8a7a03c929a6b26be57dbc196e0ab9be733bb3f8",
+      "stagingOverride": "text-2026-11/planning/b1-en-es-fr-staging.md"
     },
     {
       "language": "English",
@@ -36,7 +40,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Spanish",
@@ -54,7 +60,11 @@
         10
       ],
       "pathsToWrite": [],
-      "remainingLessonCount": 0
+      "remainingLessonCount": 0,
+      "tenPathSpec": "b1-2026-10/spanish-plan.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "f41a5887d0fde378ecf2f8a589ad720be67e1e31ae24f15d74985354ed2973a9",
+      "stagingOverride": "text-2026-11/planning/b1-en-es-fr-staging.md"
     },
     {
       "language": "Spanish",
@@ -73,7 +83,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Italian",
@@ -92,7 +104,12 @@
         9,
         10
       ],
-      "remainingLessonCount": 70
+      "remainingLessonCount": 70,
+      "tenPathSpec": "b1-2026-10/italian-plan.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "647cb01e9961d219a8cd2ad829bd737a61c94c2dfba861dc3cf5bc3361073079",
+      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json",
+      "nextPathObjective": "Proprio quello"
     },
     {
       "language": "Italian",
@@ -111,7 +128,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "French",
@@ -130,7 +149,12 @@
         9,
         10
       ],
-      "remainingLessonCount": 50
+      "remainingLessonCount": 50,
+      "tenPathSpec": "b1-2026-10/french-plan.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "07f7ee247ffe0babec3ae5d01a5115cba60b48c7ace0175e04048d8b85843380",
+      "stagingOverride": "text-2026-11/planning/b1-en-es-fr-staging.md",
+      "nextPathObjective": "Où en est ma demande ?"
     },
     {
       "language": "French",
@@ -149,7 +173,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Portuguese",
@@ -168,7 +194,12 @@
         9,
         10
       ],
-      "remainingLessonCount": 50
+      "remainingLessonCount": 50,
+      "tenPathSpec": "b1-2026-10/portuguese-plan.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "6a1cb711f1e561c88ed65a6407d51678c89754eda9e2c523638c7886aa007f1d",
+      "stagingOverride": "b1-2026-10/authoring-spec-it-pt.json",
+      "nextPathObjective": "Em andamento"
     },
     {
       "language": "Portuguese",
@@ -187,7 +218,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "German",
@@ -224,7 +257,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 60
+      "remainingLessonCount": 60,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "outline a case for compensation or correction and negotiate a solution to a dispute"
     },
     {
       "language": "Cebuano",
@@ -243,7 +278,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "tenPathSpec": "b1-native-2026-10/cebuano/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "9674cda422353e7ffb9d4b32fa78185e914f838f4dc3ba7227332713569c9383",
+      "nextPathObjective": "Mahimo ba unta — hypotheticals and soft requests"
     },
     {
       "language": "Cebuano",
@@ -262,7 +301,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Indonesian",
@@ -281,7 +322,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "tenPathSpec": "b1-native-2026-10/indonesian/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "fc4ac8d55ec3530344e6a397c4f00ec1290bcb0bbc89243e20962b556241d9ef",
+      "nextPathObjective": "Kalau Boleh"
     },
     {
       "language": "Indonesian",
@@ -300,7 +345,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Polish",
@@ -319,7 +366,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "tenPathSpec": "b1-native-2026-10/polish/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "b84386cf9e2abb2af43b646233e8af7e145565e21c86e06ed4932c953bc68be9",
+      "nextPathObjective": "Czy byłoby możliwe..."
     },
     {
       "language": "Polish",
@@ -338,7 +389,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Korean",
@@ -356,7 +409,10 @@
         10
       ],
       "pathsToWrite": [],
-      "remainingLessonCount": 0
+      "remainingLessonCount": 0,
+      "tenPathSpec": "b1-native-2026-10/korean/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "aa777ec8c0de4342a5a99827fb963ae616c6ab917f7195221a01e50c61048ddd"
     },
     {
       "language": "Korean",
@@ -364,10 +420,10 @@
       "writtenPaths": [
         1,
         2,
-        3
+        3,
+        4
       ],
       "pathsToWrite": [
-        4,
         5,
         6,
         7,
@@ -375,7 +431,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 70
+      "remainingLessonCount": 60,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "outline a case for compensation or correction and negotiate a solution to a dispute"
     },
     {
       "language": "Russian",
@@ -394,7 +452,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "tenPathSpec": "b1-native-2026-10/russian/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "3a8c316ba1740077df8ca9a1f62c630cd2aece89e8eba075b18e7d2e41023139",
+      "nextPathObjective": "Если бы можно было"
     },
     {
       "language": "Russian",
@@ -413,7 +475,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     },
     {
       "language": "Japanese",
@@ -432,7 +496,11 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "tenPathSpec": "b1-native-2026-10/japanese/specification.json",
+      "specRoot": "frontend/content-drafts",
+      "specSha256": "a7c2090f6b393ea02cbfd6b82200ca76cb47c2fb98610ed41752c5d4e1c49f4e",
+      "nextPathObjective": "Wäre es möglich / Could we possibly"
     },
     {
       "language": "Japanese",
@@ -451,7 +519,9 @@
         9,
         10
       ],
-      "remainingLessonCount": 80
+      "remainingLessonCount": 80,
+      "sharedObjectives": "text-2026-11/planning/b2-objectives.json",
+      "nextSharedObjective": "state an opinion with two reasons, concede a point and rebut an objection"
     }
   ]
 }

@@ -289,6 +289,19 @@
       "evidence": "review/b2-korean-p3.json"
     },
     {
+      "language": "Korean",
+      "level": "B2",
+      "path": 4,
+      "kind": "new",
+      "file": "b2/korean/p4.json",
+      "lessons": 10,
+      "state": "offline text reviewed",
+      "sha256": "e919cbdfe987efbf0c91f8296590232ae92964c30790ddc63926c43a0e758cf5",
+      "reviewedSourceSha256": "e919cbdfe987efbf0c91f8296590232ae92964c30790ddc63926c43a0e758cf5",
+      "source": "korean-b2-p4/reviewed/residual/p4.json",
+      "evidence": "review/b2-korean-p4.json"
+    },
+    {
       "language": "Polish",
       "level": "B2",
       "path": 1,
