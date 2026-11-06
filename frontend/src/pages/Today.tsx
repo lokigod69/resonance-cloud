@@ -10,6 +10,7 @@ import {
 } from '@/data/guidedLessons'
 import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
+import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { TodayPathOverview } from '@/components/today/TodayPathOverview'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
@@ -28,6 +29,8 @@ import {
 } from '@/lib/todayVibe'
 import {
   getSelectedGuidedTargetLanguage,
+  readPreferredGuidedPath,
+  rememberGuidedPath,
   setSelectedGuidedTargetLanguage,
 } from '@/lib/todayLanguage'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -55,10 +58,8 @@ export default function Today() {
   const { t } = useTranslation()
   const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
   const [searchParams, setSearchParams] = useSearchParams()
+  const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
-  // Every language with authored paths (all 12) — the resolution set. A legacy
-  // Korean/Russian learner keeps their course even though the SWITCHER below
-  // only offers the selectable beta targets.
   const allGuidedLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
   const availableLanguages = useMemo(
     () => allGuidedLanguages.filter((language) => BETA_GUIDED_LANGUAGES.has(language)),
@@ -99,8 +100,8 @@ export default function Today() {
   const [languageLoadAttempt, setLanguageLoadAttempt] = useState(0)
   const [loadedBaseLanguage, setLoadedBaseLanguage] = useState<string | null>(null)
   const defaultPathId = useMemo(
-    () => pickDefaultPathForLanguage(pathOptions, selectedLanguage),
-    [pathOptions, selectedLanguage],
+    () => pickDefaultPathForLanguage(pathOptions, selectedLanguage, user?.id),
+    [pathOptions, selectedLanguage, user?.id],
   )
   const queryVibeId = resolveTodayVibeId(searchParams.get('vibe'))
   const initialPathId = queryPathId ?? defaultPathId
@@ -163,13 +164,11 @@ export default function Today() {
   }, [queryPathId])
 
   useEffect(() => {
-    if (queryPathLanguage && queryPathLanguage !== selectedLanguage) {
-      setSelectedLanguageState(queryPathLanguage)
-      setSelectedGuidedTargetLanguage(queryPathLanguage)
-      // One language everywhere: following a path link is a language switch too.
-      setActiveLanguage(toWizardLanguageName(queryPathLanguage))
-    }
-  }, [queryPathLanguage, selectedLanguage, setActiveLanguage])
+    if (!queryPathLanguage || !languageReady) return
+    const target = toWizardLanguageName(queryPathLanguage)
+    if (queryPathLanguage !== selectedLanguage) setSelectedLanguageState(queryPathLanguage)
+    if (activeLanguage !== target) setActiveLanguage(target)
+  }, [queryPathLanguage, languageReady, activeLanguage, selectedLanguage, setActiveLanguage])
 
   // The provider resolves activeLanguage asynchronously: a cold /today load can
   // run the one-shot initializer first and freeze a stale guided-key mirror
@@ -182,13 +181,13 @@ export default function Today() {
     canonicalAdoptedRef.current = true
     if (sessionActive) return
     const canonical = toGuidedLanguageName(activeLanguage)
-    if (!canonical || canonical === selectedLanguage) return
+    if (!canonical) return
     if (!allGuidedLanguages.includes(canonical as GuidedTargetLanguage)) return
 
     setSelectedLanguageState(canonical as GuidedTargetLanguage)
     setSelectedGuidedTargetLanguage(canonical as GuidedTargetLanguage)
-    setSelectedPathId(pickDefaultPathForLanguage(pathOptions, canonical as GuidedTargetLanguage))
-  }, [languageReady, queryPathId, sessionActive, activeLanguage, selectedLanguage, allGuidedLanguages, pathOptions])
+    setSelectedPathId(pickDefaultPathForLanguage(pathOptions, canonical as GuidedTargetLanguage, user?.id))
+  }, [languageReady, queryPathId, sessionActive, activeLanguage, selectedLanguage, allGuidedLanguages, pathOptions, user?.id])
 
   // The dashboard's mission card deep-links with `start=1` to drop straight into the
   // recommended lesson. Consume the flag (so refresh/back land on the overview) and open
@@ -224,10 +223,12 @@ export default function Today() {
   }
 
   const handleSelectPath = (pathId: string) => {
-    if (pathId === selectedPathId) return
     const pathLanguage = pathOptions.find((path) => path.id === pathId)?.targetLanguage
+    if (!pathLanguage) return
+    rememberGuidedPath(user?.id, pathLanguage, pathId)
+    if (pathId === selectedPathId) return
     const nextVibeId = getSelectedGuidedVibe(pathId)
-    if (pathLanguage && pathLanguage !== selectedLanguage) {
+    if (pathLanguage !== selectedLanguage) {
       setSelectedLanguageState(pathLanguage)
       setSelectedGuidedTargetLanguage(pathLanguage)
       setActiveLanguage(toWizardLanguageName(pathLanguage))
@@ -243,7 +244,7 @@ export default function Today() {
 
   const handleSelectLanguage = (language: GuidedTargetLanguage) => {
     if (language === selectedLanguage) return
-    const nextPathId = pickDefaultPathForLanguage(pathOptions, language)
+    const nextPathId = pickDefaultPathForLanguage(pathOptions, language, user?.id)
     const nextVibeId = selectedVibeId
     setSelectedLanguageState(language)
     setSelectedGuidedTargetLanguage(language)
@@ -272,6 +273,7 @@ export default function Today() {
   }
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
+    rememberGuidedPath(user?.id, selectedLanguage, selectedPathId)
     setSelectedGuidedVibe(selectedPathId, vibeId)
     setSelectedVibeId(vibeId)
     syncTodaySearchParams({ vibeId })
@@ -326,6 +328,22 @@ export default function Today() {
         aria-hidden="true"
       />
 
+      {directoryOpen && (
+        <GuidedPathDirectory
+          open
+          pathOptions={pathOptions}
+          selectedPathId={selectedPathId}
+          progress={progress}
+          selectedLanguage={selectedLanguage}
+          availableLanguages={availableLanguages}
+          selectedVibeId={selectedVibeId}
+          onSelectPath={handleSelectPath}
+          onSelectLanguage={handleSelectLanguage}
+          onSelectVibe={handleSelectVibe}
+          onClose={() => setDirectoryOpen(false)}
+        />
+      )}
+
       <div className="grid gap-6">
         {failedLanguage === selectedLanguage ? (
           <div className="grid min-h-[45vh] place-items-center gap-4 text-center" role="alert">
@@ -341,20 +359,16 @@ export default function Today() {
         ) : !sessionActive ? (
           <TodayPathOverview
             overview={overview}
-            pathOptions={pathOptions}
             selectedPathId={selectedPathId}
             progress={progress}
             selectedVibeId={selectedVibeId}
             selectedLanguage={selectedLanguage}
-            availableLanguages={availableLanguages}
             checkpointCard={checkpointPlan ? {
               href: `/today/checkpoint?path=${selectedPathId}&vibe=${selectedVibeId}`,
               completedPathCount: checkpointPlan.completedPathCount,
             } : undefined}
             pathCheckHref={`/today/checkpoint?mode=path-check&path=${selectedPathId}&vibe=${selectedVibeId}`}
-            onSelectPath={handleSelectPath}
-            onSelectVibe={handleSelectVibe}
-            onSelectLanguage={handleSelectLanguage}
+            onOpenDirectory={() => setDirectoryOpen(true)}
             onSelectLesson={handleSelectLesson}
             onStartLesson={handleStartSelectedLesson}
           />
@@ -399,9 +413,13 @@ function collectAvailableLanguages(pathOptions: GuidedPathMetadata[]): GuidedTar
 function pickDefaultPathForLanguage(
   pathOptions: GuidedPathMetadata[],
   language: GuidedTargetLanguage,
+  userId: string | undefined,
 ): string {
+  const preferred = readPreferredGuidedPath(userId, language)
+  const candidates = pathOptions.filter((path) => path.targetLanguage === language)
   return (
-    pathOptions.find((path) => path.targetLanguage === language)?.id
+    candidates.find((path) => path.id === preferred)?.id
+    ?? candidates[0]?.id
     ?? pathOptions[0]?.id
     ?? 'english-a1-practical-1'
   )

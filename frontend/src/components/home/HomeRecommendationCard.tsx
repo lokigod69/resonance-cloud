@@ -1,3 +1,4 @@
+import { ScriptPracticeLink } from '@/components/scriptlab/ScriptPracticeLink'
 import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -9,15 +10,16 @@ import type { HomeHero } from '@/hooks/useHomeRecommendation'
 // exact same space — the hero never shifts layout when it commits.
 
 type HomeRecommendationCardProps = {
-  hero: HomeHero
+  activeLanguage: string | null
   /** BCP-47 primary subtag for the display line when it is target-language. */
   phraseLang: string | undefined
-  onStartRecall: () => void
-  onRetry: () => void
   /** The Word Stream is live on the water: the `discover` hero points at it
    * (nearest word) instead of at the Library. */
   onCatchNearest?: () => void
-}
+} & (
+  | { hero: HomeHero; onStartRecall: () => void; onRetry: () => void }
+  | { hero: Extract<HomeHero, { kind: 'lesson' | 'discover' }> | { kind: 'start' }; onStartRecall?: never; onRetry?: never }
+)
 
 // 120–150pt cap (§0): 9.375rem = 150pt — the cap's top; two-line displays
 // need the room, and §2's own SE budget allows the card up to 150 there too.
@@ -25,7 +27,7 @@ type HomeRecommendationCardProps = {
 // by clipping descenders.
 const CARD_HEIGHT = 'h-[9.375rem]'
 
-export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall, onRetry, onCatchNearest }: HomeRecommendationCardProps) {
+export default function HomeRecommendationCard({ hero, activeLanguage, phraseLang, onStartRecall, onRetry, onCatchNearest }: HomeRecommendationCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -47,19 +49,27 @@ export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall
   let displayLang: string | undefined
   let sub: string | null
   let ctaLabel: string
-  let onCta: () => void
+  let onCta: (() => void) | undefined
 
   switch (hero.kind) {
     case 'lesson': {
       const m = hero.mission
-      eyebrow = t('home.fl.hero.continue', { path: m.pathShortTitle })
+      eyebrow = (m.hasDraft || m.completedCount > 0) ? t('home.fl.hero.continue', { path: m.pathShortTitle }) : m.pathShortTitle
       display = m.phrase
       displayLang = phraseLang
       sub = t('home.fl.hero.lessonSub', { lesson: m.lessonNumber, total: m.totalLessons, minutes: m.estimatedMinutes })
-      ctaLabel = t('home.fl.hero.cta.start')
+      ctaLabel = m.hasDraft ? t('today.practice.resume')
+        : m.completedCount > 0 ? t('home.fl.hero.cta.start') : t('today.startLesson')
       onCta = () => navigate(m.startHref)
       break
     }
+    case 'start':
+      eyebrow = t('today.path.yourPath')
+      display = t('dashboard.firstRun.title')
+      sub = null
+      ctaLabel = t('dashboard.firstRun.startLesson')
+      onCta = () => navigate('/today')
+      break
     case 'recall':
       eyebrow = t('home.fl.hero.recallTitle')
       display = t('home.fl.hero.recallSub', { count: hero.count })
@@ -127,13 +137,16 @@ export default function HomeRecommendationCard({ hero, phraseLang, onStartRecall
       {sub !== null && (
         <p className="shrink-0 text-sm text-[var(--text-secondary)] [@media(max-height:720px)]:text-[13px]">{sub}</p>
       )}
-      <button
-        type="button"
-        onClick={onCta}
-        className="lw-swell-cta mt-auto inline-flex h-11 shrink-0 items-center justify-center rounded-xl px-5 font-display text-sm font-semibold active:scale-[0.98]"
-      >
-        {ctaLabel}
-      </button>
+      <div className="mt-auto flex w-full items-center gap-2 sm:gap-3">
+        <button
+          type="button"
+          onClick={onCta}
+          className="lw-swell-cta inline-flex min-h-11 min-w-0 items-center justify-center rounded-xl px-3 font-display text-sm font-semibold leading-tight sm:px-5 active:scale-[0.98]"
+        >
+          {ctaLabel}
+        </button>
+        <ScriptPracticeLink language={activeLanguage} />
+      </div>
     </div>
   )
 }

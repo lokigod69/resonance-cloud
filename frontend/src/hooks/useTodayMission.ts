@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { GuidedPathLessonCardStatus } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
-import { readTodayProgressState, type TodayProgressState } from '@/lib/todayProgress'
-import { getSelectedGuidedTargetLanguage } from '@/lib/todayLanguage'
+import { readTodayLessonDraft, readTodayProgressState, type TodayProgressState } from '@/lib/todayProgress'
+import { getSelectedGuidedTargetLanguage, readPreferredGuidedPath } from '@/lib/todayLanguage'
 import { getSelectedGuidedVibe } from '@/lib/todayVibe'
 import { toGuidedLanguageName } from '@/lib/targetLanguage'
 import { isConstrainedConnection } from '@/lib/network'
@@ -23,6 +23,7 @@ export type TodayMission = {
   lessonNumber: number
   totalLessons: number
   completedCount: number
+  hasDraft?: boolean
   lessonStatuses: GuidedPathLessonCardStatus[]
   lessonTitle: string
   phrase: string
@@ -47,7 +48,7 @@ type UseTodayMissionArgs = {
   /** profiles.base_language — picks the localized lesson title. */
   baseLanguage: string | null | undefined
   userId: string | undefined
-  /** Gate so first-run/empty homes never pay the guided-data chunk download. */
+  /** Only resolve a mission when its surface has a learning language. */
   enabled: boolean
   /** Opt-in: when the active language has no guided path, fall back to the
    * learner's last-used guided language. Strict active-language matching is
@@ -129,7 +130,10 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
 
     let cancelled = false
     const progress = readTodayProgressState(userId)
+    const preferredPath = readPreferredGuidedPath(userId, toGuidedLanguageName(activeLanguage))
     const cacheKey = [
+      preferredPath ?? '',
+      preferredPath ? getSelectedGuidedVibe(preferredPath) : '',
       activeLanguage ?? '',
       baseLanguage ?? '',
       userId ?? '',
@@ -137,9 +141,19 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
       progressSignature(progress),
     ].join('#')
 
+    const showMission = (mission: TodayMission | null) => {
+      if (mission) {
+        const { pathId, lessonId: id, vibeId } = mission
+        const hasDraft = Boolean(readTodayLessonDraft(userId, { pathId, id, vibeId }))
+        setState({ loading: false, mission: { ...mission, hasDraft } })
+      } else {
+        setState({ loading: false, mission: null })
+      }
+    }
+
     const cached = readMissionCache(cacheKey)
     if (cached !== undefined) {
-      setState({ loading: false, mission: cached })
+      showMission(cached)
       return
     }
 
@@ -170,7 +184,7 @@ export function useTodayMission({ activeLanguage, baseLanguage, userId, enabled,
           if (cancelled) return
           const mission = buildTodayMission({ lessonsModule, checkpointModule, progress, activeLanguage, baseLanguage, userId, allowGuidedLanguageFallback })
           writeMissionCache(cacheKey, mission)
-          setState({ loading: false, mission })
+          showMission(mission)
         } catch {
           if (!cancelled) setState({ loading: false, mission: null })
         }
@@ -200,7 +214,7 @@ function buildTodayMission(input: {
   const guidedLanguage = resolveMissionLanguage(lessonsModule, progress, activeLanguage, allowGuidedLanguageFallback)
   if (!guidedLanguage) return null
 
-  const path = pickMissionPath(lessonsModule, progress, guidedLanguage)
+  const path = pickMissionPath(lessonsModule, progress, guidedLanguage, input.userId)
   if (!path) return null
 
   const vibeId = getSelectedGuidedVibe(path.id)
@@ -249,7 +263,7 @@ function resolveMissionLanguage(
   const mapped = activeLanguage ? toGuidedLanguageName(activeLanguage) : null
   if (mapped && guidedLanguages.has(mapped)) return mapped
 
-  // The active deck language has no guided path (e.g. Korean). Strict matching
+  // The active deck language has no guided path. Strict matching
   // stops here by default — a home hero must never cross languages. The
   // fallback to the learner's last-used guided language survives only behind
   // the named opt-in, and even then only when they have actually engaged with
@@ -268,6 +282,7 @@ function pickMissionPath(
   lessonsModule: GuidedLessonsModule,
   progress: TodayProgressState,
   guidedLanguage: string,
+  userId: string | undefined,
 ) {
   const candidates = lessonsModule
     .getGuidedTodayPathOptions()
@@ -302,6 +317,8 @@ function pickMissionPath(
     .filter((entry) => !entry.isComplete && entry.lastActivityAt)
     .sort((a, b) => (a.lastActivityAt! < b.lastActivityAt! ? 1 : -1))
 
-  const picked = activeIncomplete[0] ?? scored.find((entry) => !entry.isComplete) ?? scored[scored.length - 1]
+  const preferred = readPreferredGuidedPath(userId, guidedLanguage)
+  const preferredIncomplete = scored.find((entry) => entry.metadata.id === preferred && !entry.isComplete)
+  const picked = preferredIncomplete ?? activeIncomplete[0] ?? scored.find((entry) => !entry.isComplete) ?? scored[scored.length - 1]
   return picked.metadata
 }

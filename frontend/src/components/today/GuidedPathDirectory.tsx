@@ -28,9 +28,6 @@ type GuidedPathDirectoryProps = {
   onClose: () => void
 }
 
-const DIRECTORY_GROUP_ID = 'practical'
-const DIRECTORY_GROUP_CATEGORY_LABEL = 'Praktisch'
-
 export function GuidedPathDirectory({
   open,
   pathOptions,
@@ -47,21 +44,18 @@ export function GuidedPathDirectory({
   const { t } = useTranslation()
   const triggerRef = useRef<HTMLElement | null>(null)
   const [languageExpanded, setLanguageExpanded] = useState(false)
+  const [browsedLevel, setBrowsedLevel] = useState<GuidedPathMetadata['level']>()
   const languages = availableLanguages.length > 0 ? availableLanguages : collectLanguages(pathOptions)
   const pathsForSelectedLanguage = pathOptions.filter((path) => path.targetLanguage === selectedLanguage)
-  const groupedPathOptions = pathsForSelectedLanguage.length > 0
-    ? [
-        {
-          id: DIRECTORY_GROUP_ID,
-          categoryLabel: DIRECTORY_GROUP_CATEGORY_LABEL,
-          paths: pathsForSelectedLanguage,
-        },
-      ]
-    : []
+  const levels = [...new Set(pathsForSelectedLanguage.map((path) => path.level))]
+  const activeLevel = pathsForSelectedLanguage.find((path) => path.id === selectedPathId)?.level
+  const level = browsedLevel && levels.includes(browsedLevel) ? browsedLevel : activeLevel ?? levels[0]
+  const visiblePaths = pathsForSelectedLanguage.filter((path) => path.level === level)
 
   if (!open) return null
 
   const handleSelectLanguage = (language: GuidedTargetLanguage) => {
+    setBrowsedLevel(undefined)
     onSelectLanguage?.(language)
     setLanguageExpanded(false)
   }
@@ -75,7 +69,7 @@ export function GuidedPathDirectory({
         aria-describedby={undefined}
         className="today-path-directoryPanel theme-panel fixed left-1/2 top-1/2 z-50 grid max-h-[min(88dvh,44rem)] w-[calc(100%-1.5rem)] max-w-3xl -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-lg border border-[var(--border-subtle)] p-4 shadow-2xl sm:p-6"
         onOpenAutoFocus={() => { triggerRef.current = document.activeElement as HTMLElement | null }}
-        onCloseAutoFocus={(event) => { event.preventDefault(); triggerRef.current?.focus() }}
+        onCloseAutoFocus={(event) => { event.preventDefault(); (triggerRef.current?.isConnected ? triggerRef.current : document.querySelector<HTMLElement>('.today-journey-options'))?.focus() }}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -151,13 +145,31 @@ export function GuidedPathDirectory({
           />
         </div>
 
-        {groupedPathOptions.map((group) => (
-          <div key={group.id} className="today-path-directoryGroup grid gap-2" data-directory-group={group.id}>
-            <p className="text-xs font-semibold uppercase text-[var(--text-muted)]">
-              {t('today.path.directoryGroupPractical') || group.categoryLabel}
-            </p>
+        <div className="grid gap-4 sm:grid-cols-[6rem_minmax(0,1fr)]">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase text-[var(--text-muted)]">{t('dashboard.level')}</p>
+            <div className="flex gap-2 sm:flex-col" role="group" aria-label={t('dashboard.level')}>
+              {levels.map((option) => (
+                <button
+                  type="button"
+                  key={option}
+                  aria-pressed={level === option}
+                  onClick={() => setBrowsedLevel(option)}
+                  className={cn(
+                    'inline-flex min-w-14 items-center justify-center gap-1 rounded-lg border px-2 font-semibold focus-visible:ring-2',
+                    option === level ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]' : 'border-[var(--border-subtle)]',
+                  )}
+                >
+                  {option}
+                  {level === option && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase text-[var(--text-muted)]">{t('today.path.directoryGroupPractical')}</p>
             <div className="today-path-directoryPathGrid grid gap-2">
-              {group.paths.map((path) => {
+              {visiblePaths.map((path) => {
                 const isSelected = path.id === selectedPathId
                 const pathProgress = getPathProgress(progress, path.id)
 
@@ -193,7 +205,7 @@ export function GuidedPathDirectory({
               })}
             </div>
           </div>
-        ))}
+        </div>
       </Dialog.Content>
       </div>
       </Dialog.Portal>

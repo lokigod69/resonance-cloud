@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { canonicalizeLanguageValue } from '@/lib/languages'
 import { syncTargetLanguageStores } from '@/lib/targetLanguage'
 import { LanguageContext } from './LanguageContext'
 
@@ -13,7 +14,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const userId = user?.id ?? null
   // The durable cross-device choice from onboarding. undefined while the profile
   // loads or before migration 20260727090000 exists; both read as "not there".
-  const profileTargetLanguage = profile?.target_language?.trim() || null
+  const profileTargetLanguage = canonicalizeLanguageValue(profile?.target_language) || null
   const [activeLanguage, setActiveLanguageState] = useState<string | null>(null)
   const [languageReady, setLanguageReady] = useState(false)
 
@@ -38,10 +39,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const key = storageKeyFor(userId)!
     let stored: string | null = null
     try {
-      stored = localStorage.getItem(key)
+      stored = canonicalizeLanguageValue(localStorage.getItem(key)) || null
     } catch { /* treated as no stored value */ }
     if (stored) {
       setActiveLanguageState(stored)
+      syncTargetLanguageStores(userId, stored)
       setLanguageReady(true)
       return
     }
@@ -68,7 +70,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       .limit(1)
       .then(({ data }) => {
         if (cancelled) return
-        const lang = data?.[0]?.target_language ?? null
+        const lang = canonicalizeLanguageValue(data?.[0]?.target_language) || null
         if (lang) {
           try {
             localStorage.setItem(key, lang)
@@ -85,7 +87,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [userId, profileTargetLanguage])
 
-  const setActiveLanguage = useCallback((lang: string | null) => {
+  const setActiveLanguage = useCallback((language: string | null) => {
+    const lang = canonicalizeLanguageValue(language) || null
     setActiveLanguageState(lang)
     const key = storageKeyFor(userId)
     if (!key) return

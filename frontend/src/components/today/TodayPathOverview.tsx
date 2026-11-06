@@ -1,11 +1,9 @@
 import { Check, ChevronRight, ClipboardCheck, Play, Settings } from 'lucide-react'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   resolveGuidedBaseContent,
   type GuidedLesson,
   type GuidedPathLessonCardStatus,
-  type GuidedPathMetadata,
   type GuidedPathOverview,
   type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
@@ -18,7 +16,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
-import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
+import { ScriptPracticeLink } from '@/components/scriptlab/ScriptPracticeLink'
 import './TodayJourney.css'
 
 const GUIDED_SEGMENT_REVIEWS = [
@@ -34,17 +32,13 @@ const JOURNEY_GEMS = [
 
 type TodayPathOverviewProps = {
   overview: GuidedPathOverview
-  pathOptions: GuidedPathMetadata[]
   selectedPathId: string
   progress: TodayProgressState
   selectedVibeId: ActiveGuidedVibeId
   selectedLanguage: GuidedTargetLanguage
-  availableLanguages: GuidedTargetLanguage[]
   checkpointCard?: { href: string; completedPathCount: number }
   pathCheckHref: string
-  onSelectPath: (pathId: string) => void
-  onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
-  onSelectLanguage: (language: GuidedTargetLanguage) => void
+  onOpenDirectory: () => void
   onSelectLesson: (lessonId: string) => void
   onStartLesson: (lessonId?: string) => void
 }
@@ -57,14 +51,12 @@ type SegmentRenderState = (typeof GUIDED_SEGMENT_REVIEWS)[number] & {
 }
 
 export function TodayPathOverview({
-  overview, pathOptions, selectedPathId, progress, selectedVibeId, selectedLanguage,
-  availableLanguages, checkpointCard, pathCheckHref, onSelectPath, onSelectVibe,
-  onSelectLanguage, onSelectLesson, onStartLesson,
+  overview, selectedPathId, progress, selectedVibeId, selectedLanguage,
+  checkpointCard, pathCheckHref, onOpenDirectory, onSelectLesson, onStartLesson,
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
   const { profile, user } = useAuth()
   const preferredBaseLanguage = profile?.base_language
-  const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const isSelectedRecommendation = Boolean(pathLesson && overview.recommendedLesson && pathLesson.id === overview.recommendedLesson.id)
   const hasExplicitLessonSelection = Boolean(pathLesson && overview.recommendedLesson && pathLesson.id !== overview.recommendedLesson.id)
@@ -108,7 +100,7 @@ export function TodayPathOverview({
             className="today-journey-options"
             aria-label={t('today.path.changePath')}
             title={t('today.path.changePath')}
-            onClick={() => setDirectoryOpen(true)}
+            onClick={onOpenDirectory}
           >
             <Settings className="h-4 w-4" aria-hidden="true" />
             <span>{t('today.path.options')}</span>
@@ -132,20 +124,6 @@ export function TodayPathOverview({
         </div>
       </header>
 
-      <GuidedPathDirectory
-        open={directoryOpen}
-        pathOptions={pathOptions}
-        selectedPathId={selectedPathId}
-        progress={progress}
-        selectedLanguage={selectedLanguage}
-        availableLanguages={availableLanguages}
-        selectedVibeId={selectedVibeId}
-        onSelectPath={onSelectPath}
-        onSelectLanguage={onSelectLanguage}
-        onSelectVibe={onSelectVibe}
-        onClose={() => setDirectoryOpen(false)}
-      />
-
       {pathLesson && (
         <RecommendedLessonPanel
           lesson={pathLesson}
@@ -154,6 +132,10 @@ export function TodayPathOverview({
           onStartLesson={onStartLesson}
         />
       )}
+
+      <div className="empty:hidden">
+        <ScriptPracticeLink language={selectedLanguage} />
+      </div>
 
       <section className="today-journey-route" aria-labelledby="today-journey-route-title">
         <div className="today-journey-routeHeading">

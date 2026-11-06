@@ -36,12 +36,18 @@ function pickVoice(code: string): SpeechSynthesisVoice | null {
   const voices = globalThis.speechSynthesis.getVoices()
   if (voices.length === 0) return null
   const wanted = code.toLowerCase()
+  const base = wanted.split('-')[0]
   return (
     voices.find((voice) => voice.lang.toLowerCase() === wanted)
     ?? voices.find((voice) => voice.lang.toLowerCase().startsWith(`${wanted}-`))
-    ?? voices.find((voice) => voice.lang.toLowerCase().split('-')[0] === wanted)
+    ?? voices.find((voice) => voice.lang.toLowerCase().split('-')[0] === base)
     ?? null
   )
+}
+
+export function stopPronunciation() {
+  stopActiveAudio()
+  if ('speechSynthesis' in globalThis) globalThis.speechSynthesis.cancel()
 }
 
 function speakWithBrowser({ text, lang }: PronunciationInput) {
@@ -81,16 +87,16 @@ export async function playPronunciation(input: PronunciationInput): Promise<'aud
   const text = input.text.trim()
   if (!text) return 'none'
 
-  stopActiveAudio()
-  if ('speechSynthesis' in globalThis) globalThis.speechSynthesis.cancel()
+  stopPronunciation()
 
   if (input.audioUrl && 'Audio' in globalThis) {
+    const audio = new Audio(input.audioUrl)
+    activeAudio = audio
     try {
-      const audio = new Audio(input.audioUrl)
-      activeAudio = audio
       await audio.play()
       return 'audio'
     } catch {
+      if (activeAudio !== audio) return 'none'
       stopActiveAudio()
     }
     // The file exists but this attempt did not start (autoplay policy, a

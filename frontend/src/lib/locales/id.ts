@@ -4,6 +4,10 @@
 import type { TranslationMessages } from '../translations'
 
 const messages = {
+  "scriptlab.practice.korean-hangul": "Latihan Hangul",
+  "scriptlab.practice.japanese-hiragana": "Latihan hiragana",
+  "scriptlab.practice.russian-cyrillic": "Latihan aksara Kiril",
+  "scriptlab.audioCredits": "Kredit audio",
   "today.practice.answerShown": "Jawaban ditampilkan. Kamu bisa lanjut dengan bantuan.",
   "today.practice.deckName": "Frasa terpandu — {language}",
   "today.practice.keepPhrase": "Simpan frasa untuk ditinjau",

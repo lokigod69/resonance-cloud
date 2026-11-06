@@ -36,7 +36,8 @@ import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { MediaSegments } from '@/components/media/MediaSegments'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 import { getCardPreviewUrl } from '@/lib/imageUrls'
-import { getIntlLocale } from '@/lib/languages'
+import { getIntlLocale, languagesMatch } from '@/lib/languages'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 type Deck = {
   id: string
@@ -118,6 +119,13 @@ function useMediaQuery(query: string) {
 }
 
 export default function DecksPG() {
+  const { user } = useAuth()
+  const { activeLanguage, languageReady } = useLanguage()
+  if (!languageReady && user) return <LingwaveLoader size={80} className="py-8" />
+  return <LanguageDecks key={`${user?.id}|${activeLanguage}`} language={activeLanguage} />
+}
+
+function LanguageDecks({ language }: { language: string | null }) {
   const { user, authError } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
@@ -157,9 +165,10 @@ export default function DecksPG() {
       }
 
       if (decksData) {
-        setDecks(decksData)
+        const visible = decksData.filter((deck) => !language || languagesMatch(deck.target_language, language))
+        setDecks(visible)
 
-        const deckIds = decksData.map((d) => d.id)
+        const deckIds = visible.map((d) => d.id)
         if (deckIds.length > 0) {
           const { data: words, error: wordsError } = await supabase
             .from('words')
@@ -206,7 +215,7 @@ export default function DecksPG() {
     } finally {
       setLoading(false)
     }
-  }, [t])
+  }, [t, language])
 
   useEffect(() => {
     if (!userId) {
@@ -274,24 +283,27 @@ export default function DecksPG() {
 
   if (decks.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--accent-soft)] flex items-center justify-center border border-[color-mix(in_srgb,var(--accent)_34%,transparent)]">
-          <Sparkles className="h-10 w-10 text-[var(--accent)]" />
+      <>
+        <MediaSegments className="pb-3" />
+        <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6">
+          <div className="w-20 h-20 rounded-full bg-[var(--accent-soft)] flex items-center justify-center border border-[color-mix(in_srgb,var(--accent)_34%,transparent)]">
+            <Sparkles className="h-10 w-10 text-[var(--accent)]" />
+          </div>
+          <div className="text-center">
+            <h2 className="text-2xl font-bold font-display mb-2">{t('dashboard.createFirst')}</h2>
+            <p className="text-[var(--pg-text-dim)] max-w-sm">
+              {t('dashboard.createFirstBody')}
+            </p>
+          </div>
+          <button
+            onClick={() => navigate('/generate')}
+            className="px-6 py-3 rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_48%,transparent)] text-[var(--accent)] font-display font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_var(--accent-glow)]"
+          >
+            <Sparkles className="h-4 w-4 inline mr-2" />
+            {t('dashboard.generate')}
+          </button>
         </div>
-        <div className="text-center">
-          <h2 className="text-2xl font-bold font-display mb-2">{t('dashboard.createFirst')}</h2>
-          <p className="text-[var(--pg-text-dim)] max-w-sm">
-            {t('dashboard.createFirstBody')}
-          </p>
-        </div>
-        <button
-          onClick={() => navigate('/generate')}
-          className="px-6 py-3 rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_48%,transparent)] text-[var(--accent)] font-display font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_var(--accent-glow)]"
-        >
-          <Sparkles className="h-4 w-4 inline mr-2" />
-          {t('dashboard.generate')}
-        </button>
-      </div>
+      </>
     )
   }
 

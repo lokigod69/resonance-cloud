@@ -36,13 +36,8 @@ export default function FirstLightTopRow({ languages, activeLanguage, onSelectLa
     .slice(0, 2)
   const credits = typeof profile?.credits === 'number' ? totalCredits(profile) : profileLoading ? '...' : 0
 
-  // `.language-picker` carries the classic dashboard's stack spacing (a
-  // dvh-scaled margin-bottom). Inside a centered flex row that margin lifts
-  // the pill clear of the brand and the avatar — up to ~21px on a tall phone.
-  // First Light lays the row out itself, so the inherited spacing is reset
-  // here rather than in the shared component.
   const cluster = (
-    <div className="flex min-w-0 items-center [&>.lang-cluster]:!m-0">
+    <div className="flex min-w-0 items-center">
       <LanguageCluster
         languages={languages}
         activeLanguage={activeLanguage}
@@ -57,7 +52,7 @@ export default function FirstLightTopRow({ languages, activeLanguage, onSelectLa
       {/* Mobile: the row from the lock — brand left, pill + coin + avatar right. */}
       <div className="flex w-full items-center justify-between gap-2 md:hidden" aria-label="Account controls">
         <Link to="/dashboard" className="shrink-0" aria-label="Lingwave home">
-          <LingwaveBrand markClassName="h-6" wordmarkClassName="h-5" />
+          <LingwaveBrand markClassName="h-6" wordmarkClassName="hidden min-[360px]:block h-3.5 min-[430px]:h-5" />
         </Link>
         <div className="flex min-w-0 items-center gap-1.5">
           {cluster}

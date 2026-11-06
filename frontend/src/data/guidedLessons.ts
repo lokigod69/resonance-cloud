@@ -615,8 +615,22 @@ export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
   }))
 }
 
-export function getDeterministicMatchColumns(lesson: GuidedLesson) {
+/** ID-graded choices must be distinguishable in both rendered columns. Some
+ * explanation languages use the same translation for different chunks. */
+export function getPlayableGuidedMatchPairs(lesson: GuidedLesson, preferredBaseLanguage?: string | null): GuidedMatchPair[] {
   const pairs = getGuidedMatchPairs(lesson)
+  const normalizeLabel = (text: string) => text.normalize('NFC').trim().replace(/\s+/g, ' ')
+  const labels = pairs.map((pair) => ({
+    target: normalizeLabel(pair.targetText),
+    base: normalizeLabel(resolveGuidedBaseContent(pair.baseText, { preferredBaseLanguage, authoredBaseLanguage: lesson.baseLanguage }).text),
+  }))
+  return pairs.filter((_, index) => {
+    const { target, base } = labels[index]
+    return target && base && !labels.some((other, i) => i !== index && (other.target === target || other.base === base))
+  })
+}
+
+export function getDeterministicMatchColumns(lesson: GuidedLesson, pairs = getGuidedMatchPairs(lesson)) {
   const english = stableShufflePairs(pairs, `${lesson.id}:${lesson.vibeId}:match:english`)
   const germanCandidates = stableShufflePairs(pairs, `${lesson.id}:${lesson.vibeId}:match:german`)
   let german = createDerangedMatchColumn(english, germanCandidates)

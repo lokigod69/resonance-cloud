@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AlertCircle, LogIn, RefreshCw } from 'lucide-react'
-import { HomeAccountStrip } from '@/components/dashboard/HomeAccountStrip'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
-import { HomeWelcomeCard } from '@/components/dashboard/HomeWelcomeCard'
-import { LanguageCluster } from '@/components/dashboard/LanguageCluster'
+import { HomeSky } from '@/components/home/HomeSky'
+import HomeRecommendationCard from '@/components/home/HomeRecommendationCard'
+import { useTodayMission } from '@/hooks/useTodayMission'
+import { staticLibraryRouteSuffix } from '@/lib/staticLibraryLanguage'
 import FirstLightHome from '@/components/home/FirstLightHome'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useStudyStreak } from '@/hooks/useStudyStreak'
 import { supabase } from '@/lib/supabase'
-import { canonicalizeLanguageValue } from '@/lib/languages'
+import { canonicalizeLanguageValue, isBetaTargetLanguage } from '@/lib/languages'
 
 type DeckSummary = {
   id: string
@@ -24,7 +24,7 @@ export default function DashboardPG() {
   const { user, profile } = useAuth()
   const { t } = useTranslation()
   const { activeLanguage, setActiveLanguage, languageReady } = useLanguage()
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const queryLang = searchParams.get('lang')
 
   const [decks, setDecks] = useState<DeckSummary[]>([])
@@ -45,22 +45,22 @@ export default function DashboardPG() {
     try {
       const raw = localStorage.getItem(addedStorageKey)
       const parsed = raw ? (JSON.parse(raw) as unknown) : []
-      setAddedLanguages(Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === 'string') : [])
+      setAddedLanguages(Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === 'string').map(canonicalizeLanguageValue) : [])
     } catch {
       setAddedLanguages([])
     }
   }, [addedStorageKey])
 
-  const handleAddLanguage = useCallback((lang: string) => {
-    const canonical = canonicalizeLanguageValue(lang)
-    if (!canonical) return
-    setAddedLanguages((prev) => {
-      const next = prev.includes(canonical) ? prev : [...prev, canonical]
-      if (addedStorageKey) localStorage.setItem(addedStorageKey, JSON.stringify(next))
-      return next
-    })
-    setActiveLanguage(canonical)
-  }, [addedStorageKey, setActiveLanguage])
+  const selectLanguage = (language: string) => {
+    // An explicit choice replaces the entry deep link.
+    if (queryLang) {
+      const params = new URLSearchParams(searchParams)
+      params.delete('lang')
+      setSearchParams(params, { replace: true })
+    }
+    setAddedLanguages((previous) => previous.includes(language) ? previous : [...previous, language])
+    setActiveLanguage(language)
+  }
 
   const loadDashboardData = useCallback(async () => {
     if (!user) {
@@ -97,21 +97,22 @@ export default function DashboardPG() {
     () => Array.from(new Set([
       ...decks.map((deck) => canonicalizeLanguageValue(deck.target_language)),
       ...addedLanguages,
+      activeLanguage ?? '',
     ].filter(Boolean))),
-    [decks, addedLanguages],
+    [decks, addedLanguages, activeLanguage],
   )
 
   useEffect(() => {
-    if (dashboardLoading || availableLanguages.length === 0) return
+    if (!languageReady || dashboardLoading || availableLanguages.length === 0) return
     const canonicalQueryLang = canonicalizeLanguageValue(queryLang)
-    if (canonicalQueryLang && availableLanguages.includes(canonicalQueryLang)) {
+    if (canonicalQueryLang && activeLanguage !== canonicalQueryLang && availableLanguages.includes(canonicalQueryLang)) {
       setActiveLanguage(canonicalQueryLang)
       return
     }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
       setActiveLanguage(availableLanguages[0])
     }
-  }, [activeLanguage, availableLanguages, dashboardLoading, queryLang, setActiveLanguage])
+  }, [activeLanguage, availableLanguages, dashboardLoading, languageReady, queryLang, setActiveLanguage])
 
   // Empty-home shows when the ACTIVE language has no decks — a brand-new account
   // (no decks, no active language) or a language the learner hasn't started yet.
@@ -131,9 +132,6 @@ export default function DashboardPG() {
   // instant the decision resolves.
   const decisionResolved = !dashboardLoading && languageReady && hasResolvedActiveLanguage
   const isFirstRun = decisionResolved && decksInActiveLanguage.length === 0
-  // First Light carries its own progress line. Avoid downloading up to 5,000
-  // recall-attempt timestamps for a streak that only the empty home renders.
-  const studyStreak = useStudyStreak({ enabled: isFirstRun })
 
   if (!user) {
     return (
@@ -168,7 +166,6 @@ export default function DashboardPG() {
     )
   }
 
-  const greeting = t('dashboard.welcomeUser', { name: profile?.display_name || 'Learner' })
   const isPopulated = decisionResolved && !isFirstRun
 
   return (
@@ -178,45 +175,43 @@ export default function DashboardPG() {
            buoys. It renders its own wave background because it drives the
            sea live (dawn/ripples/clock). */
         <FirstLightHome
+          key={activeLanguage}
           userId={user.id}
           activeLanguage={activeLanguage}
           availableLanguages={availableLanguages}
-          onSelectLanguage={setActiveLanguage}
-          onAddLanguage={handleAddLanguage}
+          onSelectLanguage={selectLanguage}
+          onAddLanguage={selectLanguage}
           deckHref={decksInActiveLanguage[0] ? `/deck/${decksInActiveLanguage[0].id}` : '/decks'}
         />
       ) : (
         <>
           <HomeWaveBackground />
-          <div
-            className={`dashboard-home-stack relative mx-auto flex w-full max-w-3xl flex-1 flex-col items-center text-center${
-              isFirstRun ? ' dashboard-home-stack--welcome' : ''
-            }`}
-          >
-            <HomeAccountStrip streak={studyStreak.streak} />
-
-            {!decisionResolved ? null : (
-              <div className="dashboard-welcome-center">
-                <div className="dashboard-welcome-hero-zone">
-                  <h1 className="welcome-hero font-display text-[1.75rem] font-bold sm:text-5xl md:text-6xl">
-                    {greeting}
-                  </h1>
+          {decisionResolved && (
+            <>
+              <HomeSky languages={availableLanguages} activeLanguage={activeLanguage} onSelectLanguage={selectLanguage} onAddLanguage={selectLanguage}>
+                <div className="mt-auto w-full max-w-md self-start pb-3 lg:max-w-xl lg:self-center">
+                  <StarterLessonCard key={activeLanguage} language={activeLanguage} userId={user.id} baseLanguage={profile?.base_language} />
                 </div>
-                {/* Keep the language picker available on the empty state too — after
-                    adding a language the learner lands here and must be able to hop
-                    back to a language they already study. */}
-                <LanguageCluster
-                  languages={availableLanguages}
-                  activeLanguage={activeLanguage}
-                  onSelect={setActiveLanguage}
-                  onAddLanguage={handleAddLanguage}
-                />
-                <HomeWelcomeCard />
+              </HomeSky>
+              <div className="relative z-10 mx-auto flex flex-wrap justify-center gap-x-6 gap-y-1 pt-2 text-sm font-semibold text-[var(--text-secondary)]">
+                <Link className="inline-flex min-h-11 items-center hover:underline" to={`/categories${activeLanguage ? staticLibraryRouteSuffix(activeLanguage) : ''}`}>{t('dashboard.firstRun.browseLibrary')}</Link>
+                <Link className="inline-flex min-h-11 items-center hover:underline" to="/generate">{t('dashboard.firstRun.makeDeck')}</Link>
               </div>
-            )}
-          </div>
+            </>
+          )}
         </>
       )}
     </div>
   )
+}
+
+function StarterLessonCard({ language, userId, baseLanguage }: {
+  language: string | null
+  userId: string
+  baseLanguage?: string | null
+}) {
+  const { mission } = useTodayMission({ activeLanguage: language, userId, baseLanguage, enabled: Boolean(language) })
+  const hero = mission && !mission.isPathComplete ? { kind: 'lesson' as const, mission }
+    : !language || isBetaTargetLanguage(language) ? { kind: 'start' as const } : { kind: 'discover' as const }
+  return <HomeRecommendationCard hero={hero} activeLanguage={language} phraseLang={mission?.phraseLang} />
 }

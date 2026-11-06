@@ -29,6 +29,9 @@ export function getGuidedTodayPathOptions(): any[] {
   }))
 }
 
+// Bodies are already in the scenario. The real hook still awaits the loader.
+export async function loadGuidedLessonsForLanguage(): Promise<void> {}
+
 export function getGuidedPathLessons(pathId: string): GuidedLessonStub[] {
   return pathById(pathId)?.lessons ?? []
 }

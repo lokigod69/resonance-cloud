@@ -23,7 +23,7 @@ import StreamWordSheet from '@/components/home/StreamWordSheet'
 import StreamCatchMarker from '@/components/home/StreamCatchMarker'
 import { HomeWaveBackground } from '@/components/dashboard/HomeWaveBackground'
 import type { WaveRipple } from '@/components/branding/LingwaveWaves'
-import FirstLightTopRow from '@/components/home/FirstLightTopRow'
+import { HomeSky } from '@/components/home/HomeSky'
 import HomeRecommendationCard from '@/components/home/HomeRecommendationCard'
 import CurrentStrip from '@/components/home/CurrentStrip'
 import TidelineBuoys from '@/components/home/TidelineBuoys'
@@ -511,7 +511,6 @@ export default function FirstLightHome({
   // card genuinely spills PAST the waterline into the strip's band does the
   // strip hide and fold its tokens into the state line — measured on the card
   // itself, not the sky container (whose bottom IS the waterline by design). ─
-  const skyRef = useRef<HTMLDivElement | null>(null)
   const cardRef = useRef<HTMLDivElement | null>(null)
   const [stripFolded, setStripFolded] = useState(false)
   useLayoutEffect(() => {
@@ -575,17 +574,12 @@ export default function FirstLightHome({
           container's bottom edge is the waterline (40% of the visual
           viewport), and the card rides its bottom minus 12pt. On viewports
           shorter than ~660pt the sky compresses before anything scrolls. */}
-      <div
-        ref={skyRef}
-        className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-stretch gap-3 pt-2 [@media(max-height:720px)]:gap-2"
-        style={{ height: `calc(${WAVE_HORIZON_FRACTION * 100}dvh - var(--glassy-content-top-offset, 0px))`, minHeight: 0 }}
+      <HomeSky
+        languages={availableLanguages}
+        activeLanguage={activeLanguage}
+        onSelectLanguage={onSelectLanguage}
+        onAddLanguage={onAddLanguage}
       >
-        <FirstLightTopRow
-          languages={availableLanguages}
-          activeLanguage={activeLanguage}
-          onSelectLanguage={onSelectLanguage}
-          onAddLanguage={onAddLanguage}
-        />
         {/* Desktop reads this line in the nav's THIS VISIT slot instead —
             rendering both would double it (§7). */}
         <p className="min-h-5 line-clamp-1 text-left font-display text-sm text-[var(--text-secondary)] md:hidden [@media(max-height:720px)]:text-[13px]" aria-hidden="true">
@@ -595,13 +589,14 @@ export default function FirstLightHome({
         <div ref={cardRef} className="mt-auto w-full max-w-md self-start pb-3 lg:max-w-xl lg:self-center">
           <HomeRecommendationCard
             hero={hero}
+            activeLanguage={activeLanguage}
             phraseLang={mission.mission?.phraseLang}
             onStartRecall={startRecallRun}
             onRetry={wordStates.refetch}
             onCatchNearest={streamLive ? openNearestStreamWord : undefined}
           />
         </div>
-      </div>
+      </HomeSky>
 
       {/* Waterline + sea — a viewport-anchored fixed sibling of the wave
           background, NOT inside the home stack: the canvas's 40% is the

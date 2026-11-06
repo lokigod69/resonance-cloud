@@ -45,6 +45,25 @@ export function setSelectedGuidedTargetLanguage(language: GuidedTargetLanguage) 
   }
 }
 
+/** The last path the learner chose in each language, on this device. */
+export function readPreferredGuidedPath(userId: string | undefined, language: string): string | null {
+  if (!userId) return null
+  try {
+    return window.localStorage.getItem(`guided_path:${userId}:${language}`)
+  } catch {
+    return null
+  }
+}
+
+export function rememberGuidedPath(userId: string | undefined, language: string, pathId: string): void {
+  if (!userId) return
+  try {
+    window.localStorage.setItem(`guided_path:${userId}:${language}`, pathId)
+  } catch {
+    // The current selection still works through the URL.
+  }
+}
+
 function canUseLocalStorage() {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
 }

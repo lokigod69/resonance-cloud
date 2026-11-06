@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getGuidedMatchPairs, resolveGuidedBaseContent, type GuidedDialogueTurn, type GuidedLesson } from '@/data/guidedLessons'
+import { getPlayableGuidedMatchPairs, resolveGuidedBaseContent, type GuidedDialogueTurn, type GuidedLesson } from '@/data/guidedLessons'
 import { clearTodayLessonDraft, readTodayLessonDraft, writeTodayLessonDraft, type TodayLessonResult } from '@/lib/todayProgress'
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
 import { keepGuidedPhrase } from '@/lib/guidedPhraseKeep'
@@ -22,7 +22,7 @@ import { PatternStep } from '@/components/today/PatternStep'
 import { ComplicationStep, type ComplicationCheckState } from '@/components/today/ComplicationStep'
 import { RolePlayStep, type RolePlayCheckState } from '@/components/today/RolePlayStep'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
-import { getSessionSteps, type TodaySessionStep } from '@/components/today/sessionSteps'
+import { getResumeStepIndex, getSessionSteps, type TodaySessionStep } from '@/components/today/sessionSteps'
 import { trackLearningAction } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 import { GuidedBrand } from './GuidedBrand'
@@ -51,10 +51,10 @@ export function TodaySession({
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
   }).text
-  const matchPairs = getGuidedMatchPairs(lesson)
-  const sessionSteps = getSessionSteps(lesson)
+  const matchPairs = getPlayableGuidedMatchPairs(lesson, preferredBaseLanguage)
+  const sessionSteps = getSessionSteps(lesson, matchPairs.length)
   const [draft] = useState(() => readTodayLessonDraft(user?.id, lesson))
-  const [stepIndex, setStepIndex] = useState(() => draft ? Math.max(0, sessionSteps.indexOf(draft.step)) : 0)
+  const [stepIndex, setStepIndex] = useState(() => getResumeStepIndex(sessionSteps, draft?.step))
   const taskHeadingRef = useRef<HTMLHeadingElement>(null)
   const committedRef = useRef(false)
   const [saveFailed, setSaveFailed] = useState(false)
@@ -289,6 +289,7 @@ export function TodaySession({
         {step === 'matchPairs' && (
           <MatchPairsStep
             lesson={lesson}
+            pairs={matchPairs}
             matchedPairIds={matchedPairIds}
             onMatchedPairIdsChange={setMatchedPairIds}
           />

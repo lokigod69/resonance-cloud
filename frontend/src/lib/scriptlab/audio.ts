@@ -46,9 +46,6 @@ export function canPlayScriptAudio(
   if (SCRIPT_AUDIO_MANIFEST[script.id]?.[spec.itemId]) return true
   if (!('speechSynthesis' in globalThis)) return false
   const voices = globalThis.speechSynthesis.getVoices()
-  // Some engines report an empty list until voices load asynchronously; treat
-  // "unknown yet" as playable and let the utterance fall back silently.
-  if (voices.length === 0) return true
   const wanted = script.speechLang.toLowerCase().split('-')[0]
-  return voices.some((voice) => voice.lang.toLowerCase().startsWith(wanted))
+  return voices.some((voice) => voice.lang.toLowerCase().split('-')[0] === wanted)
 }

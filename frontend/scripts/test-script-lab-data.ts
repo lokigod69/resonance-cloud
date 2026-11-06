@@ -76,6 +76,9 @@ function validateHangul(script: ScriptDefinition) {
     return
   }
 
+  const starter = composition.compose('g', 'a')
+  assert('Build uses the recorded 가 syllable', starter?.audio.itemId === 'syllable-g' && starter.audio.text === '가', starter)
+
   for (const symbol of script.symbols) {
     const ctx = `${script.id}/${symbol.id}`
     if (symbol.type === 'consonant' || symbol.type === 'double-consonant') {

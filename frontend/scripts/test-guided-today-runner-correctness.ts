@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
+import { getGuidedPathLessons, getPlayableGuidedMatchPairs, loadGuidedLessonsForLanguage, resolveGuidedLessonVariant } from '../src/data/guidedLessons.ts'
+import { getResumeStepIndex, getSessionSteps } from '../src/components/today/sessionSteps.ts'
+
 let failures = 0
 let passes = 0
 
@@ -15,6 +18,28 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   process.stderr.write(`  FAIL ${name}\n`)
   if (detail !== undefined) process.stderr.write(`        ${formatDetail(detail)}\n`)
 }
+
+for (const level of ['A1', 'A2', 'B1'] as const) {
+  for (const count of [0, 1, 2]) {
+    const steps = getSessionSteps({ level }, count)
+    assert(`${level} offers matching only for multiple pairs (${count})`, steps.includes('matchPairs') === (count >= 2))
+    const resumed = steps[getResumeStepIndex(steps, 'matchPairs')]
+    const expected = count >= 2 ? 'matchPairs' : level === 'B1' ? 'pattern' : 'build'
+    assert(`${level} resumes a matching draft at ${expected}`, resumed === expected)
+  }
+}
+
+await loadGuidedLessonsForLanguage('German')
+const german = resolveGuidedLessonVariant(getGuidedPathLessons('german-b1-practical-1')[0], 'bright')
+assert('German B1 keeps all eight distinct English choices', getPlayableGuidedMatchPairs(german, 'English').length === 8)
+const labels = ['Café', 'Cafe\u0301', 'morgen', 'Morgen', 'de  rien', 'de rien']
+const sample = { ...german, lessonItems: german.lessonItems.slice(0, labels.length).map((item, index) => ({
+  ...item, baseText: { en: labels[index] },
+})) }
+assert('identical rendered alternatives are omitted while distinct cases survive',
+  getPlayableGuidedMatchPairs(sample, 'English').map((pair) => pair.baseText.en).join('|') === 'morgen|Morgen')
+const repeatedTarget = { ...sample, lessonItems: sample.lessonItems.map((item) => ({ ...item, targetText: 'gleich' })) }
+assert('repeated targets cannot form a matching exercise', getPlayableGuidedMatchPairs(repeatedTarget, 'English').length === 0)
 
 const todaySource = readSource('../src/pages/Today.tsx')
 const sessionSource = readSource('../src/components/today/TodaySession.tsx')

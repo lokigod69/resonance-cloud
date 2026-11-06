@@ -1329,9 +1329,6 @@ body::before {
     margin-bottom: clamp(1.45rem, 4dvh, 2.35rem);
   }
 
-  .language-picker {
-    margin-bottom: clamp(1.55rem, 4.4dvh, 2.65rem);
-  }
 
   .dashboard-mastered-pill {
     margin-top: clamp(0.75rem, 2dvh, 1.15rem);
@@ -1351,10 +1348,6 @@ body::before {
     padding-block: 0.35rem;
   }
 
-  .language-picker {
-    margin-bottom: clamp(0.5rem, 1.6dvh, 0.9rem);
-    margin-top: 0;
-  }
 
   .dashboard-mastered-pill {
     margin-bottom: 0;
@@ -1379,9 +1372,6 @@ body::before {
     margin-bottom: clamp(1rem, 2.4dvh, 1.8rem);
   }
 
-  .language-picker {
-    margin-bottom: clamp(1rem, 2dvh, 1.5rem);
-  }
 
   .dashboard-action-grid {
     margin-top: clamp(0.25rem, calc(40dvh - 19rem), 0.75rem);
@@ -2704,8 +2694,7 @@ button.lens-recap-discard:hover {
 
   .dashboard-mastered-pill-button,
   .dashboard-mastered-empty,
-  .home-account-strip,
-  .language-picker-strip {
+  .home-account-strip {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 42%),
       color-mix(in srgb, var(--app-bg) 88%, var(--text-primary) 12%);
@@ -2788,20 +2777,6 @@ button.lens-recap-discard:hover {
   }
 }
 
-/* Language pill cluster — full-width row so the entire horizontal band
-   is a hover target. Inactive pills are absolute-positioned around the
-   centred active pill; they fan out on parent hover via Framer Motion.
-   Full-width hover area prevents the cluster from collapsing when the
-   cursor moves toward an inactive pill (the bug Sir Robert flagged). */
-.lang-cluster {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 2.75rem;
-}
-
 .lang-pill {
   background: var(--dashboard-glass-bg);
   -webkit-backdrop-filter: var(--dashboard-glass-frost, blur(24px) saturate(1.12));
@@ -2812,309 +2787,11 @@ button.lens-recap-discard:hover {
   transition: border-color 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
-.language-picker {
-  z-index: 20;
-}
-
-.language-picker::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  z-index: 59;
-  width: min(20rem, calc(100vw - 2rem));
-  height: 0.8rem;
-  pointer-events: auto;
-  transform: translateX(-50%);
-}
-
-.language-picker-trigger {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.6rem;
-  max-width: min(100%, 18rem);
-  gap: 0.55rem;
-  border-radius: 999px;
-  padding: 0.48rem 1rem;
-  font-size: 1rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-}
-
-.language-picker-trigger:disabled {
-  cursor: default;
-}
-
 .lang-pill-active {
   border-color: color-mix(in srgb, var(--accent) 56%, var(--border-subtle));
 }
 
-.language-picker-strip {
-  position: absolute;
-  top: calc(100% + 0.28rem);
-  left: 50%;
-  z-index: 60;
-  display: grid;
-  width: min(20rem, calc(100vw - 2rem));
-  max-height: min(55dvh, 22rem);
-  gap: 0.35rem;
-  overflow: auto;
-  border-radius: 1rem;
-  border: 1px solid var(--dashboard-glass-border-strong);
-  /* Near-opaque scrim: the panel drops over busy surfaces (mission card,
-     Generate CTA), so it must read as its own layer, not blend into them. */
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09), transparent 42%),
-    color-mix(in srgb, var(--app-bg) 90%, var(--text-primary) 10%);
-  box-shadow: var(--dashboard-glass-shadow);
-  opacity: 0;
-  padding: 0.5rem;
-  pointer-events: none;
-  transform: translate(-50%, -0.35rem) scale(0.98);
-  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
-  visibility: hidden;
-  -webkit-backdrop-filter: var(--dashboard-glass-frost);
-  backdrop-filter: var(--dashboard-glass-frost);
-}
-
-.language-picker.is-open .language-picker-strip {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, 0) scale(1);
-  visibility: visible;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .language-picker:hover .language-picker-strip,
-  .language-picker:focus-within .language-picker-strip {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, 0) scale(1);
-    visibility: visible;
-  }
-}
-
-.language-picker-choice {
-  display: flex;
-  width: 100%;
-  min-height: 2.7rem;
-  align-items: center;
-  gap: 0.62rem;
-  border-radius: 0.7rem;
-  padding: 0.45rem 0.6rem;
-  text-align: left;
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
-}
-
-/* Desktop: the picker expands sideways from the pill as one horizontal strip
-   of language pills overlaying the trigger row — it never drops down over the
-   mission card. Hover persistence comes free: the strip is a DOM child of the
-   picker root, so pointerleave only fires when the cursor exits the whole
-   selector. Mobile keeps the compact vertical panel below the pill. */
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .language-picker {
-    min-height: 3.2rem;
-  }
-
-  .language-picker::after {
-    top: 50%;
-    width: min(48rem, calc(100vw - 2rem));
-    height: 3.45rem;
-    transform: translate(-50%, -50%);
-  }
-
-  .language-picker-trigger {
-    position: relative;
-    z-index: 62;
-  }
-
-  .language-picker-strip,
-  .language-picker:hover .language-picker-strip,
-  .language-picker:focus-within .language-picker-strip,
-  .language-picker.is-open .language-picker-strip {
-    top: 50%;
-    width: 0;
-    max-width: none;
-    max-height: none;
-    overflow: visible;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
-    transform: translate(-50%, -50%);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  .language-picker-strip {
-    display: block;
-  }
-
-  .language-picker-choice {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max-content;
-    min-width: 0;
-    min-height: 2.45rem;
-    max-width: 13rem;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    gap: 0.45rem;
-    border-radius: 999px;
-    padding: 0.3rem 0.75rem;
-    white-space: nowrap;
-  }
-
-  .language-picker-choice[data-side="left"] {
-    transform: translate(calc(-50% - var(--language-choice-offset)), -50%) scale(0.94);
-  }
-
-  .language-picker-choice[data-side="right"] {
-    transform: translate(calc(-50% + var(--language-choice-offset)), -50%) scale(0.94);
-  }
-
-  .language-picker:hover .language-picker-choice,
-  .language-picker:focus-within .language-picker-choice,
-  .language-picker.is-open .language-picker-choice {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .language-picker:hover .language-picker-choice[data-side="left"],
-  .language-picker:focus-within .language-picker-choice[data-side="left"],
-  .language-picker.is-open .language-picker-choice[data-side="left"] {
-    transform: translate(calc(-50% - var(--language-choice-offset)), -50%) scale(1);
-  }
-
-  .language-picker:hover .language-picker-choice[data-side="right"],
-  .language-picker:focus-within .language-picker-choice[data-side="right"],
-  .language-picker.is-open .language-picker-choice[data-side="right"] {
-    transform: translate(calc(-50% + var(--language-choice-offset)), -50%) scale(1);
-  }
-}
-
-.language-picker-choice:hover,
-.language-picker-choice:focus-visible {
-  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
-  background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
-}
-
-.language-picker-choice:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-/* "+ Add language" affordance appended to the picker panel. On the vertical
-   (tap) panel it stacks below the language choices, separated by a divider.
-   On the desktop fan-out it becomes its own dropdown panel below the trigger. */
-.language-picker-add {
-  display: grid;
-  gap: 0.35rem;
-  grid-column: 1 / -1;
-  margin-top: 0.35rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--dashboard-glass-border);
-}
-
-.language-picker-add-trigger {
-  display: flex;
-  width: 100%;
-  min-height: 2.7rem;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 0.7rem;
-  padding: 0.45rem 0.6rem;
-  font-weight: 600;
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 42%, var(--dashboard-glass-border));
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
-}
-
-.language-picker-add-trigger:hover,
-.language-picker-add-trigger:focus-visible {
-  border-color: color-mix(in srgb, var(--accent) 62%, transparent);
-  background: color-mix(in srgb, var(--accent-soft) 55%, transparent);
-}
-
-.language-picker-add-option {
-  display: flex;
-  width: 100%;
-  min-height: 2.7rem;
-  align-items: center;
-  gap: 0.62rem;
-  border-radius: 0.7rem;
-  padding: 0.45rem 0.6rem;
-  text-align: left;
-  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
-}
-
-.language-picker-add-trigger:focus-visible,
-.language-picker-add-option:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-.language-picker-add-option:hover,
-.language-picker-add-option:focus-visible {
-  border-color: color-mix(in srgb, var(--accent) 36%, transparent);
-  background: color-mix(in srgb, var(--accent-soft) 48%, transparent);
-}
-
-/* Desktop fan-out: the strip collapses to width:0 and its language pills are
-   absolutely positioned, so the add block needs to be lifted out into its own
-   vertical dropdown anchored below the trigger. */
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  .language-picker-add {
-    position: absolute;
-    top: calc(50% + 2.4rem);
-    left: 50%;
-    z-index: 61;
-    width: min(16rem, calc(100vw - 2rem));
-    margin-top: 0;
-    padding: 0.5rem;
-    border: 1px solid var(--dashboard-glass-border-strong);
-    border-radius: 1rem;
-    /* Same near-opaque scrim as the strip — the dropdown lands on top of the
-       mission card and must not blend into it. */
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.09), transparent 42%),
-      color-mix(in srgb, var(--app-bg) 90%, var(--text-primary) 10%);
-    box-shadow: var(--dashboard-glass-shadow);
-    -webkit-backdrop-filter: var(--dashboard-glass-frost);
-    backdrop-filter: var(--dashboard-glass-frost);
-    max-height: min(55dvh, 22rem);
-    overflow: auto;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, -0.35rem) scale(0.98);
-    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
-    visibility: hidden;
-  }
-
-  .language-picker.is-open .language-picker-add,
-  .language-picker:hover .language-picker-add,
-  .language-picker:focus-within .language-picker-add {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, 0) scale(1);
-    visibility: visible;
-  }
-}
-
 @media (max-width: 767px) and (max-height: 720px) {
-  .language-picker {
-    min-height: 2.45rem;
-  }
-
-  .language-picker-trigger {
-    min-height: 2.25rem;
-    padding-block: 0.35rem;
-  }
-
   .dashboard-action-tile {
     min-height: 4rem;
   }

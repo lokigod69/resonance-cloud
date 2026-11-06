@@ -642,6 +642,81 @@ const trophyImeFixture: Fixture = {
 }
 
 export const FIXTURES: Fixture[] = [
+  {
+    id: 'today-directory-levels-1440',
+    name: 'Level browsing scopes the paths and follows the selected language',
+    viewport: DESKTOP,
+    scenario: { route: '/today?path=german-b1-practical-2', baseLanguage: 'English', activeLanguage: 'German' },
+    async run(ctx) {
+      await waitForOverview()
+      q<HTMLButtonElement>('.today-journey-options')!.click()
+      await waitFor('directory open', () => q('[role="dialog"]'))
+      const paths = () => qa<HTMLButtonElement>('.today-path-directoryOption')
+      ctx.check('opens on the current B1 level', paths().length === 10 && paths().every((button) => textOf(button).includes('B1')))
+      byText('button', 'A2')!.click()
+      await waitFor('A2 paths only', () => paths().length === 10 && paths().every((button) => textOf(button).includes('A2')))
+      ctx.check('browsing alone preserves current path', window.__location.includes('german-b1-practical-2'))
+      await shot('level-chooser')
+      q<HTMLButtonElement>('.today-path-directoryLanguage button')!.click()
+      const korean = await waitFor('Korean language choice', () => byText('.today-path-directoryLanguageOption', 'Korean'))
+      korean.click()
+      await waitFor('Korean paths', () => window.__location.includes('korean-a1') && paths().some((button) => textOf(button).includes('A1')))
+      ctx.check('only available Korean levels shown', !byText('button', 'B1'))
+      byText('button', 'A2')!.click()
+      await waitFor('second Korean A2 path', () => paths()[1] && textOf(paths()[1]).includes('A2 P2'))
+      paths()[1].click()
+      await waitFor('new path overview', () => textOf(q('.today-journey-title')).includes('A2 P2'))
+      ctx.check('chosen path opens and is remembered', window.__location.includes('korean-a2-practical-2') &&
+        localStorage.getItem('guided_path:today-fixture-user:Korean') === 'korean-a2-practical-2')
+      ctx.check('optional Hangul entry points directly to practice', Boolean(q('a[href="/alphabet/korean-hangul"]')))
+      await shot('korean-overview')
+    },
+  },
+  {
+    id: 'today-translated-matches-390',
+    name: 'German B1 keeps the six distinguishable pairs in the Spanish explanation edition',
+    viewport: MOBILE,
+    scenario: { route: '/today?path=german-b1-practical-1&vibe=bright', baseLanguage: 'Spanish', activeLanguage: 'German' },
+    async run(ctx) {
+      await startFirstLesson()
+      await advance()
+      await waitFor('localized match choices', () => q('.today-match-grid'))
+      const labels = qa('[data-match-side="base"]').map(textOf)
+      ctx.check('six unique translations remain', labels.length === 6 && new Set(labels).size === 6 && !labels.includes('perdí'))
+      const targets = qa('[data-match-side="target"]').map(textOf)
+      ctx.check('both ambiguous IDs are absent', !targets.includes('verloren') && !targets.includes('verpasst'))
+      await solveMatchPairs()
+      await advance()
+      await waitFor('pattern after a solvable matching step', () => q('[data-session-step="pattern"]'))
+    },
+  },
+  {
+    id: 'today-single-match-390',
+    name: 'A legacy draft with one possible match resumes at the next exercise',
+    viewport: MOBILE,
+    scenario: { route: '/today?path=english-a1-practical-2&vibe=sharp', baseLanguage: 'German', activeLanguage: 'English' },
+    async run(ctx) {
+      await waitForOverview()
+      const pathId = 'english-a1-practical-2'
+      const definition = getGuidedPathLessons(pathId).find((item) => resolveGuidedLessonVariant(item, 'sharp').phraseChunks.length === 1)!
+      const lesson = resolveGuidedLessonVariant(definition, 'sharp')
+      const key = `resonance_today_lesson_draft_v1_today-fixture-user_${pathId}_${lesson.id}_sharp`
+      localStorage.setItem(key, JSON.stringify({
+        schemaVersion: 1, pathId, lessonId: lesson.id, vibeId: 'sharp', step: 'matchPairs',
+        result: { buildAttempts: 2 }, updatedAt: new Date().toISOString(),
+      }))
+      visibleLessonCards()[lesson.lessonNumber - 1].click()
+      await waitFor('draft resumes at build', () => q('[data-session-step="build"]'))
+      ctx.check('four exercises in shortened lesson', qa('.today-session-progressNode').length === 4)
+      ctx.check('previous effort survives', JSON.parse(localStorage.getItem(key)!).result.buildAttempts === 2)
+      q<HTMLButtonElement>('.today-session-previous')!.click()
+      await waitFor('back to scene', () => q('[data-session-step="scene"]'))
+      await advance()
+      await waitFor('scene goes directly to build', () => q('[data-session-step="build"]'))
+      ctx.check('no forced match on back or forward', !q('.today-match-grid'))
+      await shot('single-pair-skipped')
+    },
+  },
   ...Object.keys(STRESS_PATHS).flatMap((language) => [SE, MOBILE, DESKTOP].map((viewport) => (
     guidedStressFixture(language as keyof typeof STRESS_PATHS, viewport)
   ))),

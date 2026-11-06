@@ -5,6 +5,8 @@ import type { ScriptDefinition, ScriptSymbol } from '@/lib/scriptlab/types'
 import { getScriptSymbol, localizeScriptText } from '@/lib/scriptlab/types'
 import { SCRIPTS, getScriptEntry, getScriptsForLanguage } from '@/lib/scriptlab/registry'
 import { loadScriptProgress } from '@/lib/scriptlab/progress'
+import { stopPronunciation } from '@/hooks/usePronunciation'
+import { GENERATED_SCRIPT_AUDIO } from '@/lib/scriptlab/audioManifest.generated'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
@@ -69,10 +71,9 @@ export default function ScriptLab() {
   // Prime the async speech-voice list early so canPlayScriptAudio sees real
   // data by quiz time, and stop any in-flight utterance when leaving the page.
   useEffect(() => {
-    if (!('speechSynthesis' in globalThis)) return
-    globalThis.speechSynthesis.getVoices()
-    return () => globalThis.speechSynthesis.cancel()
-  }, [])
+    globalThis.speechSynthesis?.getVoices()
+    return stopPronunciation
+  }, [entry])
 
   // Derived (not stored) so switching scripts shows the loader without a
   // synchronous setState-in-effect: the loaded script must match the current entry.
@@ -273,6 +274,19 @@ export default function ScriptLab() {
       {tab === 'build' && script.composition && <BuildMode key={script.id} script={script} />}
 
       {tab === 'quiz' && <QuizMode key={script.id} script={script} />}
+
+      {GENERATED_SCRIPT_AUDIO[script.id] && (script.id === 'japanese-hiragana' || script.id === 'russian-cyrillic') && (
+        <footer className="mt-8 text-center">
+          <a
+            href={`/scripts/${script.id}/credits.html`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center rounded-full px-3 text-sm text-[var(--text-secondary)] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          >
+            {t('scriptlab.audioCredits')}
+          </a>
+        </footer>
+      )}
 
       <SymbolDetailPanel
         script={script}

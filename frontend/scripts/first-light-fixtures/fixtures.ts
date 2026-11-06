@@ -386,10 +386,10 @@ export const FIXTURES: Fixture[] = [
     async run(ctx) {
       const card = await awaitHero(ctx)
       const text = textOf(card)
-      ctx.check('eyebrow is "Continue · {path}"', text.includes('Continue · At the market'), text)
+      ctx.check('first lesson names its path', text.includes('At the market') && !text.includes('Continue ·'), text)
       ctx.check('display line is the lesson phrase', text.includes('Ich hätte gern einen Kaffee'), text)
       ctx.check('sub-line names lesson/total/minutes', text.includes('Lesson 1 of 3 · 6 min'), text)
-      ctx.check('CTA is "Start next step"', text.includes('Start next step'), text)
+      ctx.check('first lesson offers Start lesson', text.includes('Start lesson'), text)
       ctx.check('phrase carries lang="de"', card.querySelector('[lang="de"]') !== null, card.innerHTML.slice(0, 200))
     },
   },
@@ -844,7 +844,7 @@ export const FIXTURES: Fixture[] = [
       ctx.note(`hero card: ${textOf(card)}`)
       ctx.check(
         'a lesson already completed today does not win the hero (§5/§8.1)',
-        !textOf(card).includes('Continue · At the market'),
+        !textOf(card).includes('At the market'),
         textOf(card),
       )
       await waitFor('buoys', () => dueBuoys().length > 0, 8000)

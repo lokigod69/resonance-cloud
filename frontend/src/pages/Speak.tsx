@@ -41,8 +41,8 @@ import { formatSpeakApiError, type SpeakApiErrorPayload } from '@/lib/translatio
 import { CORRECTIONS_TIMEOUT_MS, prepareCorrectionsTranscript } from '@/lib/speakCorrections'
 import { assertClientActive, withClientDeadline } from '@/lib/clientDeadline'
 
-// Display order for beta tutors supported by api LANGUAGE_CONFIG.
-const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'ceb', 'id', 'ko']
+// Display order of released targets with a supported tutor.
+const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'ceb', 'id', 'ko', 'ru']
 const VOXTRAL_LANGUAGE_CODES = new Set(['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar'])
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 const DEFAULT_GROK_VOICE: GrokVoice = 'eve'

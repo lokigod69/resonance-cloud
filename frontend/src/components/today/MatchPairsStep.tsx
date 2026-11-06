@@ -10,19 +10,21 @@ import { GuidedFeedback } from './GuidedBrand'
 
 type MatchPairsStepProps = {
   lesson: GuidedLesson
+  pairs: GuidedMatchPair[]
   matchedPairIds: Set<string>
   onMatchedPairIdsChange: (matchedPairIds: Set<string>) => void
 }
 
 export function MatchPairsStep({
   lesson,
+  pairs,
   matchedPairIds,
   onMatchedPairIdsChange,
 }: MatchPairsStepProps) {
   const { t } = useTranslation()
   const { profile } = useAuth()
   const preferredBaseLanguage = profile?.base_language
-  const columns = getDeterministicMatchColumns(lesson)
+  const columns = getDeterministicMatchColumns(lesson, pairs)
   const targetColumnLabel = t(`today.language.${lesson.targetLanguage}`) || t('today.matchPairs.targetColumn')
   const effectiveBaseLanguage = resolveGuidedBaseContent(lesson.corePhrase.baseText, {
     preferredBaseLanguage,
