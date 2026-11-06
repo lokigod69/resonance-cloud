@@ -440,3 +440,8 @@ Keep working rules in AGENTS and the feature/skill/check map in frontend/README.
 - Expose all twelve released A1/A2 targets through the same Home, Library and Today choices. Show Media for the current target, including an empty collection when a learner switches to a new language. The enrolled languages and available choices share a click-operated menu.
 - Offer script practice beside the next lesson. Learners can start with Hangul, hiragana or Cyrillic and return to their course whenever they choose. Bundle recorded symbols so these introductory exercises work on devices without a suitable speech voice.
 - Only grade a match when both columns offer distinguishable choices in the learner's base language. Omit ambiguous pairs and move to the next exercise when fewer than two remain. Selectable path levels follow the runtime curriculum registry.
+
+## 2026-11-07 — Recorded audio for alphabet examples and Hangul Build
+
+- Ship local TTS Hub recordings for the Japanese and Russian example words and the Hangul blocks that need them. Reuse matching Korean recordings and keep human recordings for kana and Cyrillic letters. A learner can tap to hear the same clip on phones with different installed voices. Label the new voice as synthetic beside its playback control.
+- Generate the exact set of recordings the interface can request and verify the decoded MP3s before release. Preserve the start and end of the signal so quiet final consonants survive trimming.

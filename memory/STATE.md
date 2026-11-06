@@ -5,7 +5,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 
 ## Live on lingwave.ai
 - September releases are live: hardening, Home, Speak/Lens, Today/guided, twelve bases, café visuals, native input and critic fixes. Release commits are in LOG and the linked notes. Waves are unchanged.
-- All twelve learning targets have 100 A1 and 100 A2 lessons in Today. Home, Library and Media follow the selected target. Home and Today link to optional Hangul, hiragana and Cyrillic practice with recorded symbols. The UI and guided explanations support twelve bases.
+- All twelve learning targets have 100 A1 and 100 A2 lessons in Today. Home, Library and Media follow the selected target. Home and Today link to optional Hangul, hiragana and Cyrillic practice. Every symbol, Japanese and Russian example word, and all 3,192 Hangul builder choices have recordings. The UI and guided explanations support twelve bases.
 - Today remembers the selected path per learner and language. Matching requires two distinguishable pairs in the learner’s base. Drafts resume at the next exercise if matching is skipped. Guided lesson bodies load per language.
 - Speak: `4c4804a9` replaced Groq’s discontinued Llama with openai/gpt-oss-120b. Real provider calls passed; signed-in owner verification remains.
 - Lens has stable language decks, exact save receipts and bounded scans. Live voice reserves ten minutes and refunds once on definitive failure. Request deadlines apply; spending calls never auto-retry.

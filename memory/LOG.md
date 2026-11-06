@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Local pronunciation recordings for Script Lab
+
+App commit `8804945f`. The local TTS Hub rendered 46 Japanese examples, 33 Russian examples and 3,134 Hangul syllables using Supertonic 3 F1. The Hangul builder reuses 58 original recordings for the remaining choices. Script Lab downloads the matching MP3 on tap. The synthesis settings, per-file hashes and credits ship with the pack under `frontend/public/scripts`.
+
+Independent silent decoding found a distinct signal in every new file and zero clipped samples. The trim guard retained the quiet final consonant in 췹. At a 390-pixel width, English and German controls requested the expected audio with device speech disabled. The build, verification and 28 enabled offline suites passed. Physical-phone and native-speaker listening checks remain open.
+
 ## 2026-11-07 — Shared language selection, script practice and guided matching
 
 App commit `4685204f`. The Home picker and lesson card now occupy the same positions for fresh and populated languages. Media Cards and Music follow the active target, as Library already does. All twelve released A1/A2 targets are selectable. Today Options shows one level's paths at a time, remembers the learner's choice per language, and skips matching when there are fewer than two distinguishable pairs in the learner's explanation language, including old lesson drafts. Home and Today offer Hangul, hiragana or Cyrillic practice alongside the lesson.
