@@ -5,6 +5,7 @@ import type { ScriptDefinition, ScriptSymbol } from '@/lib/scriptlab/types'
 import { getScriptSymbol, localizeScriptText } from '@/lib/scriptlab/types'
 import { SCRIPTS, getScriptEntry, getScriptsForLanguage } from '@/lib/scriptlab/registry'
 import { loadScriptProgress } from '@/lib/scriptlab/progress'
+import { publicAssetUrl } from '@/lib/publicOrigins'
 import { stopPronunciation } from '@/hooks/usePronunciation'
 import { GENERATED_SCRIPT_AUDIO } from '@/lib/scriptlab/audioManifest.generated'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -278,7 +279,7 @@ export default function ScriptLab() {
       {GENERATED_SCRIPT_AUDIO[script.id] && (
         <footer className="mt-8 text-center">
           <a
-            href={`/scripts/pronunciation-credits.html#${script.id}`}
+            href={publicAssetUrl(`/scripts/pronunciation-credits.html#${script.id}`)}
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-11 items-center rounded-full px-3 text-sm text-[var(--text-secondary)] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"

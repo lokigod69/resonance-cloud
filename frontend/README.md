@@ -7,6 +7,8 @@ levels up. See [command roots](../AGENTS.md#command-and-search-roots) when switc
 
 ## Find the relevant code
 
+For an iPhone release, follow the [internal TestFlight handoff](ios/TESTFLIGHT.md). `npm run build:ios:web` verifies the portable iOS payload on Windows or macOS. `npm run build:ios` also syncs and checks the Xcode app on the Mac.
+
 Use this table to choose an entry point, then follow imports or search the relevant
 directory. It is a navigation map, not an exhaustive dependency inventory.
 

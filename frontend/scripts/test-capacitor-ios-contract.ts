@@ -58,8 +58,9 @@ for (const dep of ['@capacitor/cli', '@capacitor/ios']) {
   assert(dep in devDeps, `package.json devDependencies must include ${dep}`)
 }
 
-assert(scripts['build:ios']?.includes('vite build'), 'package.json must define build:ios')
-assert(scripts['build:ios']?.includes('strip-ios-bundle'), 'build:ios must strip web-served asset trees before cap sync')
+assertIncludes(scripts['build:ios:web'] ?? '', 'vite build --mode ios', 'build:ios:web')
+assertIncludes(scripts['build:ios:web'] ?? '', 'strip-ios-bundle', 'build:ios:web')
+assertIncludes(scripts['build:ios'] ?? '', 'npm run build:ios:web && npm run cap:sync:ios', 'build:ios')
 assert(scripts['build:ios']?.includes('guard-cap-sync-platform'), 'build:ios must refuse to cap sync off macOS (Windows writes backslash paths into Package.swift)')
 assert(scripts['cap:sync:ios']?.includes('cap sync ios'), 'package.json must define cap:sync:ios')
 
@@ -110,7 +111,7 @@ for (const target of ["'curriculum'", "'guided/trophy-songs'", "'guided/vibes'"]
 }
 
 // Stripped trees must be fetched from the web origin on device.
-for (const relPath of ['src/data/guidedVibes.ts', 'src/data/guidedTrophySongs.ts']) {
+for (const relPath of ['src/data/guidedVibes.ts', 'src/data/guidedTrophySongs.ts', 'src/components/landing/landingData.ts']) {
   assertIncludes(read(relPath), 'publicAssetUrl(', relPath)
 }
 
