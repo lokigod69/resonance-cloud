@@ -445,3 +445,7 @@ Keep working rules in AGENTS and the feature/skill/check map in frontend/README.
 
 - Ship local TTS Hub recordings for the Japanese and Russian example words and the Hangul blocks that need them. Reuse matching Korean recordings and keep human recordings for kana and Cyrillic letters. A learner can tap to hear the same clip on phones with different installed voices. Label the new voice as synthetic beside its playback control.
 - Generate the exact set of recordings the interface can request and verify the decoded MP3s before release. Preserve the start and end of the signal so quiet final consonants survive trimming.
+
+## 2026-11-07 — First internal iPhone release
+
+- Package the released React app with all Script Lab recordings. Verify production auth access before building and compare the native copy and signed archive with the fresh iOS payload. The Mac owns signing and upload. Internal release completion requires Apple processing and access for the owner's tester group.

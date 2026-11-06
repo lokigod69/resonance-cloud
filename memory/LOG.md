@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — First internal TestFlight handoff
+
+App commit `15f5dd2a`. A read-only Apple API check on the configured team found no matching iOS app record or registered bundle ID. `frontend/ios/TESTFLIGHT.md` takes the Mac from provisioning through signed archive verification, internal upload, processing and assignment to the owner's group. The Apple upload and physical iPhone pass remain open.
+
+The 132 MiB iOS web build includes all 3,433 Script Lab MP3s and eight metadata/credit files. Packaging now checks the production client key against public auth settings and compares the built app with the synced or archived payload. An altered Japanese or Korean recording failed the check in scratch. Fixed the signed-out landing artwork and Script Lab credits link on native and verified the emitted Speak audio dependencies across chunks. The web and iOS web builds passed, as did 29 enabled offline suites and the independent release review. The landing decoded all 27 artwork images in web and emulated iOS at 390 pixels.
+
 ## 2026-11-07 — Local pronunciation recordings for Script Lab
 
 App commit `8804945f`. The local TTS Hub rendered 46 Japanese examples, 33 Russian examples and 3,134 Hangul syllables using Supertonic 3 F1. The Hangul builder reuses 58 original recordings for the remaining choices. Script Lab downloads the matching MP3 on tap. The synthesis settings, per-file hashes and credits ship with the pack under `frontend/public/scripts`.

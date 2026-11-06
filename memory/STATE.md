@@ -25,7 +25,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.
 - Guided progress and drafts are device-local; kept phrases are account-backed.
 - The machine-authored guided explanation editions and the nine lazy UI packs are not native-proofread.
-- Nothing has been tested on a physical iPhone since the September releases; real OS keyboards, TestFlight and Reduce Motion are unverified.
+- The internal TestFlight release is prepared. The Mac handoff is `frontend/ios/TESTFLIGHT.md`. The configured Apple team still needs to provision `ai.lingwave.app`, archive, upload and assign the build to the owner. Physical iPhone playback, keyboards and Reduce Motion await testing.
 - Live token expiry is not a socket-cost ceiling; relay/revocation remains.
 - Gemini TTS and xAI Live providers need migration and paid samples; Gemini key is needed. The OpenRouter key returned 401 in September and has not been rechecked. Translation spending needs its own budget.
 - 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
