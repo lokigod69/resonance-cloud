@@ -1,0 +1,318 @@
+{
+  "pathNumber": 4,
+  "slug": "what-if",
+  "title": "What if",
+  "staging": "hypothesize: hätte ich … gebucht, hätte/wäre (L1) · wenn … wegfiele, würden (L2) · falls … könnte/müsste (L3) · hätte … können (L4) · sollte … , dann (L5) · für den Fall, dass (L6) · angenommen, … dann (L7) · wenn ich … wäre, hätte … gedauert (L8) · wenn … scheitert, verlierst du (L9, open condition) · dürfte (L10, epistemic future); concede: rückblickend stimmt das (L1) · allerdings nur, weil (L2) · zugegeben, aber auch bei (L3) · das sehe ich ein (L6) · da hast du nicht ganz unrecht, nur (L8) · zugestanden (L9); rebut: hätte ich können, … trotzdem nicht (L4) · wer … , bekommt (L7) · kein …, sondern (L10) · zu viel; wer sich … absichert (L5); propose: ich schlage vor, … statt (L2) · erst …, denn … wäre voreilig (L3) · ich empfehle … , denn (L5) · damit wäre … geholfen (L7) · davon würde ich abraten, es sei denn (L9); conclude: wahrscheinlicher als (L1) · dennoch (L4) · sofern (L6) · ohne … zu (L8) · ob … liegt bei Ihnen (L10). Syntax: Konjunktiv II past with inversion (L1) → KII present with würde and strong forms (L2–3) → KII + modal (L4) → sollte-inversion (L5) → nominal conditionals für den Fall, dass / angenommen (L6–7) → es sei denn (L9) → epistemic dürfte (L10). Sie except friend/flatmate lessons (L3, L4, L8, L9) in du; all speakerGender neutral; shape challenge throughout; registerPlan constant.",
+  "lessons": [
+    {
+      "number": 1,
+      "slug": "frueher-gebucht",
+      "title": "Had you booked earlier",
+      "setting": {
+        "de": "Im Reisebüro ist der Flug zur Prüfung doppelt so teuer wie vor einem Monat. Die Beraterin erinnert Sie daran.",
+        "en": "At the travel agency the flight to your exam costs twice what it did a month ago. The agent reminds you of that."
+      },
+      "turns": [
+        "Der Flug kostet jetzt das Doppelte; vor einem Monat hätten Sie die Hälfte gezahlt.",
+        "Hätte ich früher gebucht, hätte ich zwar gespart, aber dann wäre ich jetzt an Termine gebunden, die sich inzwischen verschoben haben.",
+        "Dafür gibt es flexible Tarife; selbst die hätten damals weniger gekostet als der heutige Preis, das Argument zieht also nicht.",
+        "Rückblickend stimmt das, der flexible Tarif wäre günstiger gewesen; nur stand damals nicht einmal fest, ob die Prüfung überhaupt stattfindet.",
+        "Und jetzt: Buchen Sie zum aktuellen Preis oder warten Sie auf ein Last-Minute-Angebot?",
+        "Ich buche heute, denn ein weiterer Anstieg ist wahrscheinlicher als ein Rabatt, und noch einmal warten würde ich nicht riskieren."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "conclude"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "rückblickend",
+        "surface": "Rückblickend",
+        "familyKey": "rückblickend",
+        "pos": "adverb"
+      },
+      "clozeTarget": "frame Rückblickend stimmt das; form stand",
+      "synthesisTarget": "frame wahrscheinlicher als"
+    },
+    {
+      "number": 2,
+      "slug": "firma-geht-remote",
+      "title": "If the company goes remote",
+      "setting": {
+        "de": "Die Geschäftsführung erwägt, das Büro aufzugeben. Ein Kollege bittet Sie, die Folgen für das Team durchzuspielen.",
+        "en": "Management is considering giving up the office. A colleague asks you to think through the consequences for the team."
+      },
+      "turns": [
+        "Die Geschäftsführung denkt darüber nach, das Büro aufzugeben und komplett remote zu arbeiten.",
+        "Wenn das Büro wegfiele, würden wir zwar Fahrzeit sparen, aber der Zusammenhalt im Team könnte mit der Zeit bröckeln.",
+        "Bröckeln? Unser Team funktioniert seit zwei Jahren von zu Hause bestens, das weiß die Geschäftsführung.",
+        "Für uns stimmt das, allerdings nur, weil wir uns persönlich kennen; neue Kolleginnen und Kollegen hätten diesen Vorteil nicht.",
+        "Die Geschäftsführung fragt nach einem Vorschlag aus dem Team. Was tragen wir vor?",
+        "Ich schlage vor, das Büro zu verkleinern, statt es aufzugeben, und zwei feste Präsenztage im Monat einzuführen."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "propose"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "Zusammenhalt",
+        "surface": "Zusammenhalt",
+        "familyKey": "Zusammenhalt",
+        "pos": "noun"
+      },
+      "clozeTarget": "frame allerdings nur, weil; form hätten",
+      "synthesisTarget": "frame Ich schlage vor"
+    },
+    {
+      "number": 3,
+      "slug": "miete-steigt",
+      "title": "If the rent rises",
+      "setting": {
+        "de": "Ihr Mitbewohner berichtet, der Vermieter habe eine Mieterhöhung angedeutet. Ihr überlegt gemeinsam, was zu tun ist.",
+        "en": "Your flatmate reports that the landlord has hinted at a rent increase. Together you work out what to do."
+      },
+      "turns": [
+        "Der Vermieter deutet an, dass die Miete nächstes Jahr um zweihundert Euro steigt.",
+        "Falls er das wirklich durchzieht, könnte ich meinen Anteil nicht mehr verkraften, und dann müssten wir uns etwas Günstigeres suchen.",
+        "Warte, so weit ist es nicht; vielleicht ist die Erhöhung gar nicht zulässig, hast du daran gedacht?",
+        "Daran habe ich nicht gedacht, zugegeben; aber auch bei einer zulässigen Erhöhung bliebe das Problem bestehen.",
+        "Also, was machen wir zuerst: Mieterverein oder gleich eine neue Wohnung suchen?",
+        "Erst der Mieterverein, denn ohne Prüfung zu kündigen wäre voreilig; nebenbei schaue ich mir trotzdem Angebote an."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "propose"
+      ],
+      "register": "du",
+      "trophy": {
+        "lemma": "verkraften",
+        "surface": "verkraften",
+        "familyKey": "verkraften",
+        "pos": "verb"
+      },
+      "clozeTarget": "turn 3: frame 'zugegeben' (moveBlank) + form 'bliebe' (cue: bleiben, Konjunktiv II, 3rd sg) + connector 'auch bei' (4 choices)",
+      "synthesisTarget": "turn 5: 'Erst … , denn' + form 'wäre voreilig' — ordered plan with a Konjunktiv II judgement"
+    },
+    {
+      "number": 4,
+      "slug": "anderer-job-damals",
+      "title": "Had you taken the other job",
+      "setting": {
+        "de": "Ein Freund erinnert dich an das Angebot aus München, das du vor Jahren abgelehnt hast, und fragt, ob du es bereust.",
+        "en": "A friend reminds you of the Munich job you turned down years ago and asks whether you regret it."
+      },
+      "turns": [
+        "Stell dir vor, du hättest damals das Angebot aus München angenommen; du hättest jetzt doppelt so viel Gehalt.",
+        "Hätte ich zugesagt, hätte ich mehr verdienen können, aber ich hätte meine Eltern nur noch an Feiertagen gesehen.",
+        "Das klingt nach einer Ausrede; du hättest doch jedes Wochenende pendeln können.",
+        "Pendeln hätte ich können, bereuen würde ich die Absage trotzdem nicht; mein Vater war damals krank, und Zeit war wichtiger als Geld.",
+        "Und wenn morgen dasselbe Angebot noch einmal käme?",
+        "Heute würde ich zusagen, weil die Umstände andere sind; die Entscheidung von damals bleibt dennoch richtig."
+      ],
+      "moves": [
+        "hypothesize",
+        "rebut",
+        "conclude"
+      ],
+      "register": "du",
+      "trophy": {
+        "lemma": "bereuen",
+        "surface": "bereuen",
+        "familyKey": "bereuen",
+        "pos": "verb"
+      },
+      "clozeTarget": "turn 3: form 'hätte … können' (cue: können, Konjunktiv II Perfekt, moveBlank frame) + adverb 'trotzdem' (recycled B1, 4 choices) + lexical 'wichtiger'",
+      "synthesisTarget": "turn 5: 'würde … zusagen' + 'dennoch' — distinguishing today's choice from yesterday's"
+    },
+    {
+      "number": 5,
+      "slug": "sommerfest-wetterrisiko",
+      "title": "Outdoor event weather risk",
+      "setting": {
+        "de": "Im Vereinsvorstand streiten Sie mit der Organisatorin über ein teures Zelt für das Sommerfest; der Vorstand entscheidet abends.",
+        "en": "On the club committee you argue with the organizer about an expensive marquee for the summer party; the board decides tonight."
+      },
+      "turns": [
+        "Das Sommerfest findet draußen statt; der Wetterbericht ist unsicher, aber ein Zelt kostet dreitausend Euro.",
+        "Sollte es regnen, dann bleiben wohl viele Gäste weg, und auch die Technik wäre in Gefahr; das Zelt wäre eine Schutzmaßnahme, kein Luxus.",
+        "Eine Schutzmaßnahme, die wir mit neunzig Prozent Wahrscheinlichkeit gar nicht brauchen; das Geld fehlt dann beim Catering.",
+        "Zehn Prozent Risiko sind mir zu viel; wer sich gegen den schlimmsten Fall absichert, zahlt zwar dreitausend, kann aber bei Regen feiern.",
+        "Der Vorstand entscheidet heute Abend. Welche Variante empfehlen Sie, Zelt oder Ausfallversicherung?",
+        "Ich empfehle das Zelt, denn eine Versicherung ersetzt allenfalls Kosten, aber nicht das Fest, für das die Gäste gekommen sind."
+      ],
+      "moves": [
+        "hypothesize",
+        "rebut",
+        "propose"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "absichern",
+        "surface": "absichert",
+        "familyKey": "absichern",
+        "pos": "verb"
+      },
+      "clozeTarget": "frame zu viel; form absichert",
+      "synthesisTarget": "frame Ich empfehle"
+    },
+    {
+      "number": 6,
+      "slug": "einspruch-scheitert",
+      "title": "If the appeal fails",
+      "setting": {
+        "de": "Bei der Sozialberatung besprechen Sie Ihren laufenden Einspruch gegen die Ablehnung Ihres Förderantrags und was laut Bescheid danach käme.",
+        "en": "At the advice centre you discuss your pending appeal against the rejection of your funding application and what the decision letter says would come next."
+      },
+      "turns": [
+        "Ihr Einspruch gegen die Ablehnung des Förderprogramms liegt beim Amt; laut Schreiben rechnen wir in sechs Wochen mit einer Antwort.",
+        "Für den Fall, dass der Einspruch scheitert, bliebe mir laut dem Schreiben nur die Klage, und die könnte ich mir finanziell kaum leisten.",
+        "Eine Klage kann sich lange hinziehen; ehrlich gesagt wäre das in Ihrer Lage ein großes Risiko.",
+        "Das sehe ich ein, deshalb wäre ein Ausweg, parallel einen neuen Antrag mit besseren Unterlagen zu stellen, oder spricht etwas dagegen?",
+        "Ein neuer Antrag ist möglich; laut dem Schreiben müssten Sie den Einspruch dafür allerdings zurückziehen. Wie entscheiden Sie?",
+        "Zurückziehen würde ich den Einspruch nur, sofern vorher feststeht, dass der neue Antrag bessere Chancen hat; bis dahin bleibt er offen."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "conclude"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "Ausweg",
+        "surface": "Ausweg",
+        "familyKey": "Ausweg",
+        "pos": "noun"
+      },
+      "clozeTarget": "frame Das sehe ich ein; form wäre",
+      "synthesisTarget": "frame sofern"
+    },
+    {
+      "number": 7,
+      "slug": "scooter-verbot",
+      "title": "If scooters are banned",
+      "setting": {
+        "de": "Ein Nachbar freut sich über ein geplantes E-Scooter-Verbot im Viertel. Sie sollen später in der Bezirksversammlung sprechen.",
+        "en": "A neighbour is delighted about a planned e-scooter ban in the district. You are due to speak at the district assembly later."
+      },
+      "turns": [
+        "Die Stadt will E-Scooter im ganzen Viertel verbieten; endlich liegen die Dinger nicht mehr auf dem Gehweg.",
+        "Angenommen, das Verbot kommt, dann verschwinden die Scooter vermutlich nicht, sondern landen zwei Straßen weiter; wir hätten nur eine Verlagerung des Problems.",
+        "Mir ist egal, wo sie liegen, solange nicht vor meiner Tür; das ist doch legitim, oder?",
+        "Legitim ja, gelöst nein; wer das Problem nur verschiebt, bekommt es beim nächsten Verbot im Nachbarviertel zurück.",
+        "Dann sagen Sie mir, was Sie der Bezirksversammlung statt eines Verbots vorschlagen würden.",
+        "Abstellzonen an jeder zweiten Kreuzung und eine Gebühr fürs Falschparken; damit wäre allen geholfen, und Ihre Haustür bliebe frei."
+      ],
+      "moves": [
+        "hypothesize",
+        "rebut",
+        "propose"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "Verlagerung",
+        "surface": "Verlagerung",
+        "familyKey": "Verlagerung",
+        "pos": "noun"
+      },
+      "clozeTarget": "frame Legitim ja, gelöst nein; form bekommt",
+      "synthesisTarget": "frame damit wäre"
+    },
+    {
+      "number": 8,
+      "slug": "auslandsjahr-verpasst",
+      "title": "Had you studied abroad",
+      "setting": {
+        "de": "Eine Freundin erinnert dich an das Auslandsjahr in Lissabon, das du nie gemacht hast, und fragt, ob du es heute nachholen würdest.",
+        "en": "A friend reminds you of the year in Lisbon you never took and asks whether you would make up for it now."
+      },
+      "turns": [
+        "Du wolltest doch immer ein Jahr nach Lissabon; wärst du gegangen, würdest du heute wahrscheinlich fließend Portugiesisch sprechen.",
+        "Wenn ich gegangen wäre, hätte ich die Sprache gelernt, aber mein Studium hätte ein Jahr länger gedauert, und das Stipendium wäre wohl weggefallen.",
+        "Du rechnest alles in Semestern; manche Umwege lohnen sich eben erst später.",
+        "Da hast du nicht ganz unrecht, ein Umweg hätte mir Perspektive gegeben; nur hätte ich damals das Geld dafür gar nicht gehabt.",
+        "Und jetzt, mit festem Job: Würdest du den Umweg heute nachholen?",
+        "Nicht als Jahr, aber als dreimonatige unbezahlte Auszeit; das wäre vielleicht machbar, ohne alles aufs Spiel zu setzen, falls die Firma mitspielt."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "conclude"
+      ],
+      "register": "du",
+      "trophy": {
+        "lemma": "Umweg",
+        "surface": "Umweg",
+        "familyKey": "Umweg",
+        "pos": "noun"
+      },
+      "clozeTarget": "frame Da hast du; form gehabt",
+      "synthesisTarget": "frame falls"
+    },
+    {
+      "number": 9,
+      "slug": "geld-leihen",
+      "title": "Lending money to a friend",
+      "setting": {
+        "de": "Ein Freund überlegt, seinem Bruder eine große Summe fürs Café zu leihen, und will deine ehrliche Einschätzung.",
+        "en": "A friend is considering lending his brother a large sum for a café and wants your honest assessment."
+      },
+      "turns": [
+        "Mein Bruder braucht fünftausend Euro für sein Café; ich überlege, ihm das Geld zu leihen.",
+        "Wenn das Café scheitert, verlierst du nicht nur Geld, sondern vielleicht auch das Vertrauen zwischen euch; das Risiko trägt eure Beziehung, nicht nur dein Konto.",
+        "Also soll ich ihn hängen lassen? Er hat mir damals auch geholfen.",
+        "Zugestanden, das will ich dir nicht zumuten; aber helfen kannst du auch mit einem Betrag, den du verschmerzen könntest, oder mit Zeit und Kontakten.",
+        "Wenn ich leihe, dann ohne Vertrag, unter Brüdern. Was hältst du davon?",
+        "Davon würde ich abraten, es sei denn, ihr schreibt wenigstens Betrag und Rückzahlung auf; das Risiko bleibt, aber entscheiden musst du."
+      ],
+      "moves": [
+        "hypothesize",
+        "concede",
+        "propose"
+      ],
+      "register": "du",
+      "trophy": {
+        "lemma": "zumuten",
+        "surface": "zumuten",
+        "familyKey": "zumuten",
+        "pos": "verb"
+      },
+      "clozeTarget": "frame Zugestanden; form könntest",
+      "synthesisTarget": "frame es sei denn"
+    },
+    {
+      "number": 10,
+      "slug": "folgen-abschaetzen",
+      "title": "Forecast a decision's effects",
+      "setting": {
+        "de": "Die Abteilungsleitung bittet dich um eine Einschätzung zur geplanten Umstellung des Buchungssystems.",
+        "en": "The head of your department asks for your assessment of the planned switch to a new booking system."
+      },
+      "turns": [
+        "Ab Januar läuft das neue Buchungssystem parallel zum alten; schätzen Sie mir die Folgen für das erste Quartal ab.",
+        "Im ersten Quartal dürfte die Fehlerquote zunächst steigen, weil zwei Systeme parallel laufen; danach dürften wir pro Buchung ein Drittel der Zeit sparen.",
+        "Ein Drittel klingt nach Wunschdenken; worauf stützen Sie das?",
+        "Das ist kein Wunschdenken, sondern der Wert aus dem Pilotteam; absehbar ist allerdings auch, dass drei Kolleginnen und Kollegen eine Schulung brauchen.",
+        "Und wenn die Fehlerquote im Februar immer noch über fünf Prozent liegt?",
+        "Dann würde ich empfehlen, den Parallelbetrieb um einen Monat zu verlängern; ob wir die endgültige Umstellung verschieben, liegt bei Ihnen."
+      ],
+      "moves": [
+        "hypothesize",
+        "rebut",
+        "conclude"
+      ],
+      "register": "Sie",
+      "trophy": {
+        "lemma": "absehbar",
+        "surface": "absehbar",
+        "familyKey": "absehbar",
+        "pos": "adjective"
+      },
+      "clozeTarget": "frame kein Wunschdenken; form brauchen",
+      "synthesisTarget": "turn 5: 'Dann würde ich empfehlen, … zu' + 'ob … liegt bei Ihnen' — recommendation with explicit deference"
+    }
+  ]
+}

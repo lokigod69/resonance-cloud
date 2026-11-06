@@ -1,0 +1,3879 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 3,
+  "slug": "holding-a-view",
+  "pathTitle": {
+    "de": "Eine Meinung vertreten",
+    "en": "Holding a view"
+  },
+  "pathFunction": {
+    "de": "Begründe eine Position mit zwei Argumenten, räume einen berechtigten Einwand ein und ziehe daraus einen konkreten Schluss.",
+    "en": "Support a position with two reasons, acknowledge a fair objection and draw a concrete conclusion."
+  },
+  "specRef": {
+    "pathSpec": "../../architecture-amendment-response.json",
+    "pathSpecSha256": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+    "ledger": "../../../ko-b2-spine-alignment/response.json#/result/paths/0/lessons",
+    "ledgerSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+  },
+  "authoring": {
+    "source": "Fable Korean dialogue amendment and Codex bilingual text/exercise authoring",
+    "runId": "ko-b2-20261106-p3",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "shift-petition",
+      "title": {
+        "de": "Eine Unterschrift für den Schichtplan",
+        "en": "Signing the shift petition"
+      },
+      "situation": {
+        "de": "Im Pausenraum eines Frankfurter Logistikbetriebs sammelt jemand aus deinem koreanischsprachigen Team Unterschriften für den neuen Schichtplan.",
+        "en": "In the break room of a Frankfurt logistics depot, a Korean-speaking colleague is collecting signatures for a new shift schedule."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Jemand aus dem Team",
+            "en": "Colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Pausenraum eines Frankfurter Logistikbetriebs sammelt jemand aus deinem koreanischsprachigen Team Unterschriften für den neuen Schichtplan. Du hörst: „새 근무표 서명 받고 있어요. 다들 괜찮다고 하셨는데 서명해 주시겠어요?“",
+        "en": "In the break room of a Frankfurt logistics depot, a Korean-speaking colleague is collecting signatures for a new shift schedule. You hear: “새 근무표 서명 받고 있어요. 다들 괜찮다고 하셨는데 서명해 주시겠어요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "새 근무표 서명 받고 있어요. 다들 괜찮다고 하셨는데 서명해 주시겠어요?",
+          "base": {
+            "de": "Ich sammle Unterschriften für den neuen Schichtplan. Die anderen fanden ihn in Ordnung. Unterschreiben Sie auch?",
+            "en": "I'm collecting signatures for the new shift schedule. Everyone said it looked fine. Would you sign?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "바꾸자는 이유 중 일부는 저도 이해해요. 그래도 새 근무표에는 반대예요. 밤 근무가 몰리고 주말 교대도 매주 바뀌니까요.",
+          "base": {
+            "de": "Einige Gründe für die Änderung verstehe ich auch. Trotzdem bin ich gegen den neuen Dienstplan. Die Nachtschichten häufen sich, und die Schichten am Wochenende wechseln jede Woche.",
+            "en": "I understand some of the reasons for the change, too. Even so, I oppose the new schedule. The night shifts bunch up, and the weekend rotation changes every week."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "팀장님도 찬성하셨고 창고 팀도 다 바꿨는데 그래도 반대예요?",
+          "base": {
+            "de": "Die Teamleitung hat zugestimmt, und das Lagerteam hat schon komplett umgestellt. Sind Sie trotzdem dagegen?",
+            "en": "The team leader agreed, and the whole warehouse team has switched. Are you still against it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "팀장님이 찬성하셨다는 건 맞아요. 그렇다고 해서 모든 팀에 맞는 건 아니에요. 저희 팀은 교대가 가장 많거든요.",
+          "base": {
+            "de": "Es stimmt, dass die Teamleitung dafür war. Das heißt aber noch lange nicht, dass der Plan zu jedem Team passt. Unser Team hat die meisten Schichtwechsel.",
+            "en": "It's true the team leader agreed. That doesn't mean it suits every team. Ours has the most shift changes."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "내일이 서명 마감이라 지금 정해야 해요. 그럼 어떻게 하자는 건지 한 줄로요.",
+          "base": {
+            "de": "Morgen endet die Unterschriftenfrist. Wir müssen uns jetzt festlegen. Was schlagen Sie in einem Satz vor?",
+            "en": "Signatures are due tomorrow, so we have to decide now. What do you propose, in one line?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은, 밤 근무를 두 주에 나누고 주말 교대를 고정하면 찬성할게요. 그 조건이 아니면 지금 표가 나아요.",
+          "base": {
+            "de": "Ich stimme zu, wenn wir die Nachtschichten auf zwei Wochen verteilen und die Wochenendschichten fest planen. Sonst finde ich den jetzigen Plan besser.",
+            "en": "In short, I'll agree if we spread the nights over two weeks and fix the weekend rotation. Otherwise, the current schedule is better."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "바꾸자는 이유 중 일부는 저도 이해해요. 그래도 새 근무표에는 ",
+        "chunks": [
+          "반대예요.",
+          "밤 근무가",
+          "몰리고",
+          "주말 교대도",
+          "매주 바뀌니까요."
+        ],
+        "distractors": [
+          "밤 근무를",
+          "바뀌었지만요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "팀장님이 찬성하셨다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 모든 팀에 맞는 건 아니에요. 저희 팀은 교대가 가장 많거든요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그렇다고 해서",
+            "acceptedAnswers": [
+              "그렇다고 해서",
+              "그렇다고"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은, 밤 근무를 두 주에 나누고 주말 교대를 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 찬성할게요. 그 조건이 아니면 지금 표가 나아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "고정하면",
+            "acceptedAnswers": [
+              "고정하면",
+              "고정한다면",
+              "고정시키면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "바꾸자는 이유 중 ",
+        "answer": "일부는",
+        "acceptedAnswers": [
+          "일부는"
+        ],
+        "after": " 저도 이해해요. 그래도 새 근무표에는 반대예요. 밤 근무가 몰리고 주말 교대도 매주 바뀌니까요.",
+        "fallbackChoices": [
+          "일부는",
+          "날짜는",
+          "순서는",
+          "기간은"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine Tatsache einräumen und die Folgerung prüfen",
+          "en": "Grant a fact and challenge the inference"
+        },
+        "rule": {
+          "de": "Mit 건 맞아요 räumst du den genannten Punkt ein. 그렇다고 해서 leitet eine Folgerung ein, die du mit 건 아니에요 zurückweist.",
+          "en": "Use 건 맞아요 to grant the point. 그렇다고 해서 introduces an inference you reject with 건 아니에요."
+        },
+        "examples": [
+          {
+            "targetText": "팀장님이 찬성하셨다는 건 맞아요. 그렇다고 해서 모든 팀에 맞는 건 아니에요. 저희 팀은 교대가 가장 많거든요.",
+            "base": {
+              "de": "Es stimmt, dass die Teamleitung dafür war. Das heißt aber noch lange nicht, dass der Plan zu jedem Team passt. Unser Team hat die meisten Schichtwechsel.",
+              "en": "It's true the team leader agreed. That doesn't mean it suits every team. Ours has the most shift changes."
+            },
+            "highlights": [
+              "건 맞아요",
+              "그렇다고 해서",
+              "건 아니에요"
+            ]
+          },
+          {
+            "targetText": "표가 싼 건 맞아요. 그렇다고 해서 환승이 편한 건 아니에요.",
+            "base": {
+              "de": "Es stimmt, dass die Karte günstig ist. Einfach umsteigen kann man deshalb noch lange nicht.",
+              "en": "It's true the ticket is cheap. That doesn't mean changing trains is easy."
+            },
+            "highlights": [
+              "건 맞아요",
+              "그렇다고 해서",
+              "건 아니에요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "일부는",
+          "kind": "noun",
+          "base": {
+            "de": "einen Teil davon",
+            "en": "some of them"
+          }
+        },
+        {
+          "targetText": "근무표에는",
+          "kind": "noun",
+          "base": {
+            "de": "was den Schichtplan betrifft",
+            "en": "as for the shift schedule"
+          }
+        },
+        {
+          "targetText": "교대도",
+          "kind": "noun",
+          "base": {
+            "de": "auch die Schichtwechsel",
+            "en": "the shift changes too"
+          }
+        },
+        {
+          "targetText": "바뀌니까요",
+          "kind": "frame",
+          "base": {
+            "de": "weil sie wechseln",
+            "en": "because they change"
+          }
+        },
+        {
+          "targetText": "건 맞아요",
+          "kind": "frame",
+          "base": {
+            "de": "das stimmt",
+            "en": "it is true that"
+          }
+        },
+        {
+          "targetText": "그렇다고 해서",
+          "kind": "connector",
+          "base": {
+            "de": "daraus folgt aber noch lange nicht",
+            "en": "even so, it doesn't follow that"
+          }
+        },
+        {
+          "targetText": "마감이라",
+          "kind": "frame",
+          "base": {
+            "de": "weil die Frist endet",
+            "en": "because that is the deadline"
+          }
+        },
+        {
+          "targetText": "고정하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn wir sie festlegen",
+            "en": "if we fix them"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "근무가",
+            "몰리고",
+            "교대도",
+            "바뀌니까요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "찬성하셨다는",
+            "팀에",
+            "많거든요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "나누고",
+            "고정하면",
+            "찬성할게요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "일부",
+        "familyKey": "일부",
+        "surface": "일부는",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "바꾸자는 이유 중 일부는 저도 이해해요. 그래도 새 근무표에는 반대예요. 밤 근무가 몰리고 주말 교대도 매주 바뀌니까요.",
+          "base": {
+            "de": "Einige Gründe für die Änderung verstehe ich auch. Trotzdem bin ich gegen den neuen Dienstplan. Die Nachtschichten häufen sich, und die Schichten am Wochenende wechseln jede Woche.",
+            "en": "I understand some of the reasons for the change, too. Even so, I oppose the new schedule. The night shifts bunch up, and the weekend rotation changes every week."
+          }
+        },
+        "base": {
+          "de": "ein Teil",
+          "en": "part, a portion"
+        },
+        "whyThisWord": {
+          "de": "일부 grenzt eine Aussage ein. Mit 일부는 kannst du einem Teil zustimmen und den Rest zur Diskussion stellen.",
+          "en": "일부 limits the scope of a statement. Use 일부는 to accept one part and leave the rest open for discussion."
+        },
+        "remainder": [
+          "는"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "건 맞아요",
+          "status": "productive"
+        },
+        {
+          "surface": "그렇다고 해서",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "quiet-hours",
+      "title": {
+        "de": "Wann beginnt die Ruhezeit?",
+        "en": "When do quiet hours start?"
+      },
+      "situation": {
+        "de": "Im Foyer eines Wohnhauses in Vancouver sprichst du bei der Hausversammlung mit einer koreanischsprachigen Person aus der Nachbarschaft.",
+        "en": "At a residents' meeting in a Vancouver apartment lobby, you talk with a Korean-speaking neighbour about evening noise."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "Neighbour"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Foyer eines Wohnhauses in Vancouver sprichst du bei der Hausversammlung mit einer koreanischsprachigen Person aus der Nachbarschaft. Du hörst: „아홉 시 이후에는 세탁기, 악기, 손님 모두 금지하는 규칙을 올리려고 해요. 어떻게 보세요?“",
+        "en": "At a residents' meeting in a Vancouver apartment lobby, you talk with a Korean-speaking neighbour about evening noise. You hear: “아홉 시 이후에는 세탁기, 악기, 손님 모두 금지하는 규칙을 올리려고 해요. 어떻게 보세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "아홉 시 이후에는 세탁기, 악기, 손님 모두 금지하는 규칙을 올리려고 해요. 어떻게 보세요?",
+          "base": {
+            "de": "Ich will eine Regel beantragen, nach der ab neun Waschmaschinenlaufen, Musizieren und Besuch verboten sind. Was meinen Sie?",
+            "en": "I want to propose a rule banning running washing machines, playing instruments and having guests after nine. What do you think?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "규칙이 필요하다는 데는 저도 찬성이에요. 다만 아홉 시는 너무 이르다고 봐요. 퇴근이 여덟 시인 집이 많고, 공용 세탁실이 밤에만 비거든요.",
+          "base": {
+            "de": "Ich bin auch dafür, dass es Regeln gibt. Neun finde ich allerdings zu früh. In vielen Haushalten ist erst um acht Feierabend, und die Gemeinschaftswaschküche ist nur nachts frei.",
+            "en": "I agree that we need a rule. I think nine is too early, though. Many residents finish work at eight, and the shared laundry room is only free at night."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "아홉 시도 늦어요. 저희 아이는 여덟 시에 자고, 다른 집도 다 찬성이에요.",
+          "base": {
+            "de": "Sogar neun ist spät. Mein Kind geht um acht ins Bett, und die anderen Haushalte sind alle dafür.",
+            "en": "Even nine is late. My child goes to bed at eight, and all the other households support it."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아이가 일찍 자는 집이 있다는 건 알아요. 그래도 소리 종류마다 다르게 정하는 게 맞지 않을까요? 악기와 세탁기는 다르잖아요.",
+          "base": {
+            "de": "Mir ist klar, dass in manchen Haushalten Kinder früh schlafen. Sollten wir die Zeiten trotzdem nicht nach Art des Geräuschs festlegen? Ein Instrument und eine Waschmaschine sind doch verschieden.",
+            "en": "I know there are homes where children go to bed early. Still, shouldn't the rule depend on the kind of noise? An instrument and a washing machine are different."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "총회가 다음 주라 오늘 시간을 정해야 해요. 그래서 몇 시로 하자는 거예요?",
+          "base": {
+            "de": "Nächste Woche ist die Vollversammlung. Heute müssen wir die Zeiten festlegen. Welche schlagen Sie vor?",
+            "en": "The general meeting is next week, so we need to set the times today. What times do you suggest?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "악기는 여덟 시, 세탁기는 열 시까지로 하고 손님은 조용히 맞으면 어떨까요? 그렇게 안건에 올려 주세요.",
+          "base": {
+            "de": "Wie wäre es mit Instrumenten bis acht und Waschmaschinen bis zehn? Besuch könnte man leise empfangen. Setzen Sie das bitte so auf die Tagesordnung.",
+            "en": "How about instruments until eight, washing machines until ten, and guests as long as we keep quiet? Please put that on the agenda."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "규칙이 필요하다는 데는 저도 찬성이에요. 다만 아홉 시는 너무 이르다고 봐요. ",
+        "chunks": [
+          "퇴근이",
+          "여덟 시인",
+          "집이 많고,",
+          "공용 세탁실이",
+          "밤에만 비거든요."
+        ],
+        "distractors": [
+          "퇴근을",
+          "낮에만 비거든요."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "아이가 일찍 자는 집이 있다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 소리 종류마다 다르게 정하는 게 맞지 않을까요? 악기와 세탁기는 다르잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 알아요",
+            "acceptedAnswers": [
+              "건 알아요",
+              "것은 알아요",
+              "건 저도 알아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그래도",
+            "acceptedAnswers": [
+              "그래도",
+              "그렇지만"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "악기는 여덟 시, 세탁기는 열 시까지로 하고 손님은 조용히 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "? 그렇게 안건에 올려 주세요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "맞으면 어떨까요",
+            "acceptedAnswers": [
+              "맞으면 어떨까요",
+              "맞으면 어때요",
+              "맞이하면 어떨까요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "규칙이",
+        "acceptedAnswers": [
+          "규칙이"
+        ],
+        "after": " 필요하다는 데는 저도 찬성이에요. 다만 아홉 시는 너무 이르다고 봐요. 퇴근이 여덟 시인 집이 많고, 공용 세탁실이 밤에만 비거든요.",
+        "fallbackChoices": [
+          "규칙이",
+          "할인이",
+          "고장이",
+          "소음이"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Ein Zugeständnis vor dem Gegenvorschlag",
+          "en": "Acknowledge a concern before a counterproposal"
+        },
+        "rule": {
+          "de": "건 알아요 erkennt eine Tatsache an. Mit 그래도 und einer Frage auf -지 않을까요? schlägst du vor, den Einwand bei der Entscheidung anders zu gewichten.",
+          "en": "건 알아요 acknowledges a fact. Follow it with 그래도 and a question in -지 않을까요? to suggest weighing that concern differently."
+        },
+        "examples": [
+          {
+            "targetText": "아이가 일찍 자는 집이 있다는 건 알아요. 그래도 소리 종류마다 다르게 정하는 게 맞지 않을까요? 악기와 세탁기는 다르잖아요.",
+            "base": {
+              "de": "Mir ist klar, dass in manchen Haushalten Kinder früh schlafen. Sollten wir die Zeiten trotzdem nicht nach Art des Geräuschs festlegen? Ein Instrument und eine Waschmaschine sind doch verschieden.",
+              "en": "I know there are homes where children go to bed early. Still, shouldn't the rule depend on the kind of noise? An instrument and a washing machine are different."
+            },
+            "highlights": [
+              "건 알아요",
+              "그래도",
+              "맞지 않을까요"
+            ]
+          },
+          {
+            "targetText": "공간이 좁은 건 알아요. 그래도 의자 두 개는 놓을 수 있지 않을까요?",
+            "base": {
+              "de": "Ich weiß, dass der Platz knapp ist. Könnten wir trotzdem zwei Stühle aufstellen?",
+              "en": "I know space is tight. Still, couldn't we fit two chairs?"
+            },
+            "highlights": [
+              "건 알아요",
+              "그래도",
+              "있지 않을까요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "규칙이",
+          "kind": "noun",
+          "base": {
+            "de": "eine Regel",
+            "en": "a rule"
+          }
+        },
+        {
+          "targetText": "퇴근이",
+          "kind": "noun",
+          "base": {
+            "de": "der Feierabend",
+            "en": "the time people get off work"
+          }
+        },
+        {
+          "targetText": "공용 세탁실이",
+          "kind": "noun",
+          "base": {
+            "de": "die Gemeinschaftswaschküche",
+            "en": "the shared laundry room"
+          }
+        },
+        {
+          "targetText": "건 알아요",
+          "kind": "frame",
+          "base": {
+            "de": "mir ist klar, dass",
+            "en": "I realize that"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "종류마다",
+          "kind": "noun",
+          "base": {
+            "de": "je nach Art",
+            "en": "for each kind"
+          }
+        },
+        {
+          "targetText": "맞지 않을까요",
+          "kind": "frame",
+          "base": {
+            "de": "wäre das nicht angemessen?",
+            "en": "wouldn't that be appropriate?"
+          }
+        },
+        {
+          "targetText": "안건에",
+          "kind": "noun",
+          "base": {
+            "de": "auf die Tagesordnung",
+            "en": "on the agenda"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "퇴근이",
+            "공용",
+            "세탁실이",
+            "비거든요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "종류마다",
+            "다르게",
+            "다르잖아요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "악기는",
+            "세탁기는",
+            "조용히"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "규칙",
+        "familyKey": "규칙",
+        "surface": "규칙이",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "규칙이 필요하다는 데는 저도 찬성이에요. 다만 아홉 시는 너무 이르다고 봐요. 퇴근이 여덟 시인 집이 많고, 공용 세탁실이 밤에만 비거든요.",
+          "base": {
+            "de": "Ich bin auch dafür, dass es Regeln gibt. Neun finde ich allerdings zu früh. In vielen Haushalten ist erst um acht Feierabend, und die Gemeinschaftswaschküche ist nur nachts frei.",
+            "en": "I agree that we need a rule. I think nine is too early, though. Many residents finish work at eight, and the shared laundry room is only free at night."
+          }
+        },
+        "base": {
+          "de": "Regel",
+          "en": "rule"
+        },
+        "whyThisWord": {
+          "de": "Mit 규칙 kannst du das Prinzip einer gemeinsamen Regel befürworten. Danach lässt sich aushandeln, für wen und wann sie gilt.",
+          "en": "규칙 lets you support the idea of a shared rule before negotiating whom it applies to and when."
+        },
+        "remainder": [
+          "이"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "건 알아요",
+          "status": "productive"
+        },
+        {
+          "surface": "맞지 않을까요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "cafe-tip-screen",
+      "title": {
+        "de": "Trinkgeld am Bezahlterminal",
+        "en": "The tip screen"
+      },
+      "situation": {
+        "de": "In einem Café mit Selbstbedienung in Toronto sprichst du mit einer koreanischsprachigen Begleitperson über die Trinkgeldabfrage am Terminal.",
+        "en": "At a counter-service café in Toronto, you and a Korean-speaking friend discuss the tip prompt on the payment terminal."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In einem Café mit Selbstbedienung in Toronto sprichst du mit einer koreanischsprachigen Begleitperson über die Trinkgeldabfrage am Terminal. Du hörst: „이 카페 단말기에 팁 선택 화면 뜬 거 봤죠? 저는 여기선 당연히 눌러야 한다고 봐요.“",
+        "en": "At a counter-service café in Toronto, you and a Korean-speaking friend discuss the tip prompt on the payment terminal. You hear: “이 카페 단말기에 팁 선택 화면 뜬 거 봤죠? 저는 여기선 당연히 눌러야 한다고 봐요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이 카페 단말기에 팁 선택 화면 뜬 거 봤죠? 저는 여기선 당연히 눌러야 한다고 봐요.",
+          "base": {
+            "de": "Haben Sie gesehen, dass auf dem Terminal hier die Trinkgeldauswahl erschienen ist? Hier sollte man sie meiner Meinung nach selbstverständlich antippen.",
+            "en": "Did you see the tip screen pop up on the terminal here? I think you should go ahead and select a tip at this café."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "이 카페에서는 굳이 화면에서 팁을 골라야 한다고 생각하지 않아요. 주문과 수령을 직접 하고, 올봄에 음료 값도 올랐거든요.",
+          "base": {
+            "de": "Ich finde, dass ich in diesem Café nicht unbedingt am Bildschirm ein Trinkgeld auswählen muss. Ich bestelle selbst und hole mein Getränk selbst ab, und die Getränkepreise sind diesen Frühling auch gestiegen.",
+            "en": "At this café I don't think I particularly need to pick a tip on the screen. I order and collect the drink myself, and the drink prices went up this spring, too."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "그래도 지난주에 바리스타가 제 라테를 두 번 다시 만들어 줬잖아요. 그건 팁 받을 만하죠.",
+          "base": {
+            "de": "Aber letzte Woche hat man an der Bar meinen Latte zweimal neu gemacht. Das verdient ein Trinkgeld.",
+            "en": "Still, the barista remade my latte twice last week. That deserves a tip."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그날 친절했던 건 맞아요. 그렇다고 해서 매번 기본값으로 뜨는 화면까지 당연한 건 아니에요. 고마운 날에는 통에 넣으면 되잖아요.",
+          "base": {
+            "de": "An dem Tag war der Service wirklich freundlich. Das macht eine standardmäßige Abfrage bei jedem Besuch aber noch lange nicht selbstverständlich. Wenn man sich bedanken möchte, kann man etwas ins Glas werfen.",
+            "en": "It's true they were kind that day. That doesn't make a default prompt necessary on every visit. When you're grateful you can put something in the tip jar."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "지금 결제하면 바로 선택해야 해요. 그래서 결론이 뭐예요, 누를 거예요 말 거예요?",
+          "base": {
+            "de": "Wenn wir jetzt bezahlen, müssen wir gleich wählen. Was also tun Sie? Tippen Sie auf den Bildschirm, um Trinkgeld zu geben?",
+            "en": "If we pay now we have to choose right away. So what will you do? Will you tap to leave a tip?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "저는 화면에서는 팁 없음을 고를게요. 지난번에 고마웠던 마음은 팁 통에 따로 넣어서 전하고 싶어요.",
+          "base": {
+            "de": "Am Terminal wähle ich „Kein Trinkgeld“. Für letztes Mal möchte ich mich mit etwas Geld im Trinkgeldglas gesondert bedanken.",
+            "en": "I'll select “no tip” on the screen. I'd like to show my thanks for last time by putting something in the tip jar separately."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "이 카페에서는 굳이 화면에서 ",
+        "chunks": [
+          "팁을",
+          "골라야 한다고",
+          "생각하지 않아요.",
+          "주문과 수령을",
+          "직접 하고,"
+        ],
+        "distractors": [
+          "골랐다고",
+          "대신 하고,"
+        ],
+        "frameSuffix": " 올봄에 음료 값도 올랐거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그날 친절했던 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 매번 기본값으로 뜨는 화면까지 당연한 건 아니에요. 고마운 날에는 통에 넣으면 되잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그렇다고 해서",
+            "acceptedAnswers": [
+              "그렇다고 해서",
+              "그렇다고"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "저는 화면에서는 팁 없음을 고를게요. 지난번에 고마웠던 마음은 팁 통에 따로 넣어서 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "전하고 싶어요",
+            "acceptedAnswers": [
+              "전하고 싶어요",
+              "전달하고 싶어요",
+              "표현하고 싶어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "이 카페에서는 ",
+        "answer": "굳이",
+        "acceptedAnswers": [
+          "굳이"
+        ],
+        "after": " 화면에서 팁을 골라야 한다고 생각하지 않아요. 주문과 수령을 직접 하고, 올봄에 음료 값도 올랐거든요.",
+        "fallbackChoices": [
+          "굳이",
+          "이미",
+          "몰래",
+          "함께"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine vermeintliche Pflicht hinterfragen",
+          "en": "Question an assumed obligation"
+        },
+        "rule": {
+          "de": "굳이 verstärkt den Zweifel daran, dass ein bestimmter Schritt erforderlich ist. 골라야 한다고 생각하지 않아요 verneint hier die Pflicht zur Auswahl am Bildschirm.",
+          "en": "굳이 questions the need to take a particular step. 골라야 한다고 생각하지 않아요 challenges the obligation to make a selection on the screen."
+        },
+        "examples": [
+          {
+            "targetText": "이 카페에서는 굳이 화면에서 팁을 골라야 한다고 생각하지 않아요. 주문과 수령을 직접 하고, 올봄에 음료 값도 올랐거든요.",
+            "base": {
+              "de": "Ich finde, dass ich in diesem Café nicht unbedingt am Bildschirm ein Trinkgeld auswählen muss. Ich bestelle selbst und hole mein Getränk selbst ab, und die Getränkepreise sind diesen Frühling auch gestiegen.",
+              "en": "At this café I don't think I particularly need to pick a tip on the screen. I order and collect the drink myself, and the drink prices went up this spring, too."
+            },
+            "highlights": [
+              "굳이",
+              "골라야 한다고 생각하지 않아요"
+            ]
+          },
+          {
+            "targetText": "저는 굳이 첫날에 회원권을 사야 한다고 생각하지 않아요.",
+            "base": {
+              "de": "Ich glaube nicht, dass man unbedingt am ersten Tag eine Mitgliedschaft kaufen muss.",
+              "en": "I don't think you particularly need to buy a membership on the first day."
+            },
+            "highlights": [
+              "굳이",
+              "사야 한다고 생각하지 않아요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "굳이",
+          "kind": "adverb",
+          "base": {
+            "de": "unbedingt, eigens",
+            "en": "particularly, go out of one's way to"
+          }
+        },
+        {
+          "targetText": "화면에서",
+          "kind": "noun",
+          "base": {
+            "de": "am Bildschirm",
+            "en": "on the screen"
+          }
+        },
+        {
+          "targetText": "수령을",
+          "kind": "noun",
+          "base": {
+            "de": "das Abholen",
+            "en": "collection"
+          }
+        },
+        {
+          "targetText": "올랐거든요",
+          "kind": "frame",
+          "base": {
+            "de": "sie sind nämlich gestiegen",
+            "en": "because they went up"
+          }
+        },
+        {
+          "targetText": "건 맞아요",
+          "kind": "frame",
+          "base": {
+            "de": "das stimmt",
+            "en": "that much is true"
+          }
+        },
+        {
+          "targetText": "기본값으로",
+          "kind": "noun",
+          "base": {
+            "de": "als Voreinstellung",
+            "en": "by default"
+          }
+        },
+        {
+          "targetText": "그렇다고 해서",
+          "kind": "connector",
+          "base": {
+            "de": "daraus folgt aber noch lange nicht",
+            "en": "even so, it doesn't follow that"
+          }
+        },
+        {
+          "targetText": "따로",
+          "kind": "adverb",
+          "base": {
+            "de": "gesondert",
+            "en": "separately"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "굳이",
+            "화면에서",
+            "팁을",
+            "골라야"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "친절했던",
+            "기본값으로",
+            "통에"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "없음을",
+            "통에",
+            "따로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "굳이",
+        "familyKey": "굳이",
+        "surface": "굳이",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "이 카페에서는 굳이 화면에서 팁을 골라야 한다고 생각하지 않아요. 주문과 수령을 직접 하고, 올봄에 음료 값도 올랐거든요.",
+          "base": {
+            "de": "Ich finde, dass ich in diesem Café nicht unbedingt am Bildschirm ein Trinkgeld auswählen muss. Ich bestelle selbst und hole mein Getränk selbst ab, und die Getränkepreise sind diesen Frühling auch gestiegen.",
+            "en": "At this café I don't think I particularly need to pick a tip on the screen. I order and collect the drink myself, and the drink prices went up this spring, too."
+          }
+        },
+        "base": {
+          "de": "eigens, unbedingt",
+          "en": "particularly, go out of one's way to"
+        },
+        "whyThisWord": {
+          "de": "Mit 굳이 vor einer verneinten Notwendigkeit fragst du, ob sich der zusätzliche Aufwand überhaupt lohnt.",
+          "en": "Use 굳이 with a denial of necessity to question whether an extra step is worth taking."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "한다고 생각하지 않아요",
+          "status": "productive"
+        },
+        {
+          "surface": "그렇다고 해서",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "homework-at-saturday-school",
+      "title": {
+        "de": "Ein zweites Arbeitsblatt?",
+        "en": "A second worksheet?"
+      },
+      "situation": {
+        "de": "Beim Abholen an einer koreanischen Samstagsschule in Sydney spricht dich ein anderes Elternteil auf die Hausaufgaben an.",
+        "en": "At pick-up time at a Saturday Korean school in Sydney, another parent approaches you about homework."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Elternteil",
+            "en": "Fellow parent"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Abholen an einer koreanischen Samstagsschule in Sydney spricht dich ein anderes Elternteil auf die Hausaufgaben an. Du hörst: „옆 반은 매일 두 장인데 우리 반만 한 장이에요. 선생님께 늘려 달라고 같이 말씀드리지 않을래요?“",
+        "en": "At pick-up time at a Saturday Korean school in Sydney, another parent approaches you about homework. You hear: “옆 반은 매일 두 장인데 우리 반만 한 장이에요. 선생님께 늘려 달라고 같이 말씀드리지 않을래요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "옆 반은 매일 두 장인데 우리 반만 한 장이에요. 선생님께 늘려 달라고 같이 말씀드리지 않을래요?",
+          "base": {
+            "de": "Die Parallelklasse macht täglich zwei Blätter, nur unsere Klasse hat eins. Wollen wir die Lehrkraft gemeinsam um mehr bitten?",
+            "en": "The other class gets two sheets a day, but ours gets only one. Shall we ask the teacher together to assign more?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "제 생각에는 지나치게 늘려서 좋을 거라고 보기는 어려워요. 아이들이 저녁에 쉴 시간이 필요하고, 지금 한 장도 못 끝내는 날이 있거든요.",
+          "base": {
+            "de": "Ich glaube kaum, dass es hilft, die Menge übermäßig zu steigern. Die Kinder brauchen abends Zeit zum Ausruhen. Selbst das eine Blatt schaffen sie an manchen Tagen nicht.",
+            "en": "I find it hard to see how increasing the load excessively would help. The children need time to rest in the evening, and some days they can't even finish the one sheet."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "시험이 다음 달인데 옆 반보다 뒤처지면 어떡해요? 저희 아이는 벌써 점수가 떨어졌어요.",
+          "base": {
+            "de": "Nächsten Monat ist die Prüfung. Was, wenn wir hinter die Parallelklasse zurückfallen? Die Punktezahl meines Kindes ist schon gesunken.",
+            "en": "The test is next month. What if our class falls behind the other one? My child's score has already dropped."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "뒤처질까 걱정되시는 건 저도 알아요. 그래도 양만 늘리면 틀린 걸 고칠 시간이 더 줄어들 수도 있어요.",
+          "base": {
+            "de": "Ich verstehe Ihre Sorge, dass die Kinder zurückfallen. Wenn wir nur die Menge erhöhen, bleibt vielleicht noch weniger Zeit, Fehler zu verbessern.",
+            "en": "I understand you're worried they'll fall behind. Still, just increasing the amount might leave even less time to correct mistakes."
+          },
+          "move": "concede",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "상담 시간이 십 분밖에 없어요. 선생님께 뭐라고 말할지 한 줄로 정하죠.",
+          "base": {
+            "de": "Wir haben beim Gespräch nur zehn Minuten. Bringen wir in einem Satz auf den Punkt, was wir der Lehrkraft sagen wollen.",
+            "en": "We only have ten minutes with the teacher. Let's agree in one line on what we'll say."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 양을 늘리는 대신 틀린 문제를 수업에서 다시 풀 시간을 요청해요. 시험 걱정도 그때 말씀드려 봐요.",
+          "base": {
+            "de": "Bitten wir also um Zeit im Unterricht, um falsche Aufgaben noch einmal zu lösen, statt die Menge zu erhöhen. Dann sprechen wir auch die Sorgen wegen der Prüfung an.",
+            "en": "In short, instead of increasing the amount, let's ask for time in class to redo the problems they got wrong. We can raise the test concern then, too."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "제 생각에는 ",
+        "chunks": [
+          "지나치게 늘려서",
+          "좋을 거라고",
+          "보기는",
+          "어려워요.",
+          "아이들이 저녁에"
+        ],
+        "distractors": [
+          "지나치게 늘리는",
+          "쉬워요."
+        ],
+        "frameSuffix": " 쉴 시간이 필요하고, 지금 한 장도 못 끝내는 날이 있거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "뒤처질까 걱정되시는 건 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 그래도 양만 늘리면 틀린 걸 고칠 시간이 더 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "저도 알아요",
+            "acceptedAnswers": [
+              "저도 알아요",
+              "저도 이해해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "줄어들 수도 있어요",
+            "acceptedAnswers": [
+              "줄어들 수도 있어요",
+              "줄 수도 있어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "정리하면, 양을 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 틀린 문제를 수업에서 다시 풀 시간을 요청해요. 시험 걱정도 그때 말씀드려 봐요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "늘리는 대신",
+            "acceptedAnswers": [
+              "늘리는 대신",
+              "늘리는 대신에"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "제 생각에는 ",
+        "answer": "지나치게",
+        "acceptedAnswers": [
+          "지나치게"
+        ],
+        "after": " 늘려서 좋을 거라고 보기는 어려워요. 아이들이 저녁에 쉴 시간이 필요하고, 지금 한 장도 못 끝내는 날이 있거든요.",
+        "fallbackChoices": [
+          "지나치게",
+          "우연히",
+          "골고루",
+          "잠시"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Wirkung vorsichtig anzweifeln",
+          "en": "Question a predicted benefit"
+        },
+        "rule": {
+          "de": "Mit -을 거라고 보기는 어려워요 äußerst du begründete Zweifel an einer Erwartung. Hier ist fraglich, ob mehr Hausaufgaben tatsächlich helfen würden.",
+          "en": "Use -을 거라고 보기는 어려워요 to question a prediction. Here the speaker doubts that more homework would actually help."
+        },
+        "examples": [
+          {
+            "targetText": "제 생각에는 지나치게 늘려서 좋을 거라고 보기는 어려워요. 아이들이 저녁에 쉴 시간이 필요하고, 지금 한 장도 못 끝내는 날이 있거든요.",
+            "base": {
+              "de": "Ich glaube kaum, dass es hilft, die Menge übermäßig zu steigern. Die Kinder brauchen abends Zeit zum Ausruhen. Selbst das eine Blatt schaffen sie an manchen Tagen nicht.",
+              "en": "I find it hard to see how increasing the load excessively would help. The children need time to rest in the evening, and some days they can't even finish the one sheet."
+            },
+            "highlights": [
+              "좋을 거라고 보기는 어려워요"
+            ]
+          },
+          {
+            "targetText": "인원을 늘리면 꼭 빨라질 거라고 보기는 어려워요.",
+            "base": {
+              "de": "Ich bezweifle, dass es zwangsläufig schneller geht, wenn wir mehr Leute einsetzen.",
+              "en": "I find it hard to say that adding more people will necessarily speed things up."
+            },
+            "highlights": [
+              "빨라질 거라고 보기는 어려워요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "지나치게",
+          "kind": "adverb",
+          "base": {
+            "de": "übermäßig",
+            "en": "excessively"
+          }
+        },
+        {
+          "targetText": "늘려서",
+          "kind": "verb",
+          "base": {
+            "de": "dadurch, dass man erhöht",
+            "en": "by increasing it"
+          }
+        },
+        {
+          "targetText": "보기는 어려워요",
+          "kind": "frame",
+          "base": {
+            "de": "es fällt schwer, das so einzuschätzen",
+            "en": "it is hard to see it that way"
+          }
+        },
+        {
+          "targetText": "쉴 시간이",
+          "kind": "noun",
+          "base": {
+            "de": "Zeit zum Ausruhen",
+            "en": "time to rest"
+          }
+        },
+        {
+          "targetText": "점수가",
+          "kind": "noun",
+          "base": {
+            "de": "die Punktezahl",
+            "en": "the score"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "줄어들 수도 있어요",
+          "kind": "frame",
+          "base": {
+            "de": "sie könnte geringer werden",
+            "en": "it might decrease"
+          }
+        },
+        {
+          "targetText": "수업에서",
+          "kind": "noun",
+          "base": {
+            "de": "im Unterricht",
+            "en": "in class"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "지나치게",
+            "늘려서",
+            "좋을",
+            "어려워요"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "뒤처질까",
+            "틀린",
+            "줄어들"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "늘리는",
+            "수업에서",
+            "요청해요"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "지나치다",
+        "familyKey": "지나치",
+        "surface": "지나치게",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "제 생각에는 지나치게 늘려서 좋을 거라고 보기는 어려워요. 아이들이 저녁에 쉴 시간이 필요하고, 지금 한 장도 못 끝내는 날이 있거든요.",
+          "base": {
+            "de": "Ich glaube kaum, dass es hilft, die Menge übermäßig zu steigern. Die Kinder brauchen abends Zeit zum Ausruhen. Selbst das eine Blatt schaffen sie an manchen Tagen nicht.",
+            "en": "I find it hard to see how increasing the load excessively would help. The children need time to rest in the evening, and some days they can't even finish the one sheet."
+          }
+        },
+        "base": {
+          "de": "übermäßig sein, zu weit gehen",
+          "en": "be excessive"
+        },
+        "whyThisWord": {
+          "de": "지나치게 markiert den Punkt, an dem dir eine Veränderung zu weit geht. Damit kannst du eine Grenze setzen, ohne die Maßnahme insgesamt abzulehnen.",
+          "en": "지나치게 marks the point at which a change goes too far for you. It lets you set a limit while allowing room for the measure itself."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "좋을 거라고 보기는 어려워요",
+          "status": "productive"
+        },
+        {
+          "surface": "수도 있어요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "video-paperwork",
+      "title": {
+        "de": "Ein Videotermin für die Unterlagen",
+        "en": "A video appointment for paperwork"
+      },
+      "situation": {
+        "de": "Bei einer Diskussionsrunde in einem Gemeindezentrum in Los Angeles fragt dich die Verwaltung einer örtlichen Klinik nach Videoterminen.",
+        "en": "At a community-centre panel in Los Angeles, a local clinic administrator asks your view on video appointments."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Person aus der Klinikverwaltung",
+            "en": "Clinic administrator"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einer Diskussionsrunde in einem Gemeindezentrum in Los Angeles fragt dich die Verwaltung einer örtlichen Klinik nach Videoterminen. Du hörst: „이 지역 클리닉 화상 예약을 더 늘리자는 의견이 많던데, 토론자분은 어떻게 보세요?“",
+        "en": "At a community-centre panel in Los Angeles, a local clinic administrator asks your view on video appointments. You hear: “이 지역 클리닉 화상 예약을 더 늘리자는 의견이 많던데, 토론자분은 어떻게 보세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "이 지역 클리닉 화상 예약을 더 늘리자는 의견이 많던데, 토론자분은 어떻게 보세요?",
+          "base": {
+            "de": "Viele wünschen sich mehr Videotermine bei der Klinik hier. Wie sehen Sie das als Teilnehmende der Runde?",
+            "en": "Many people have called for more video appointments at this clinic. As a fellow panellist, what do you think?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "화상 예약을 늘릴 근거가 두 가지 있어요. 차 없는 분들은 버스를 갈아타야 하고, 서류 갱신에 하루 휴가를 내거든요.",
+          "base": {
+            "de": "Zwei Gründe sprechen für mehr Videotermine. Wer kein Auto hat, muss mit dem Bus umsteigen, und für die Verlängerung von Unterlagen nimmt man einen ganzen Tag frei.",
+            "en": "There are two grounds for offering more video appointments. People without a car have to change buses, and renewing paperwork means taking a whole day off."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "작년에 서명이 빠진 화상 상담 서류를 보험사가 돌려보냈어요. 다시 제출하는 일은 누가 맡죠?",
+          "base": {
+            "de": "Letztes Jahr schickte der Versicherer die Unterlagen aus einem Videotermin zurück, weil die Unterschrift fehlte. Wer kümmert sich dann um die erneute Einreichung?",
+            "en": "Last year the insurer sent back paperwork from a video appointment because the signature was missing. Who handles the resubmission?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "반려 사례가 있었다는 점은 인정해요. 다만 서명 누락을 화상 상담 자체의 문제라고 보기는 어려워요.",
+          "base": {
+            "de": "Ich räume ein, dass Unterlagen zurückgingen. Aber eine fehlende Unterschrift lässt sich schwerlich dem Videoformat selbst zuschreiben.",
+            "en": "I acknowledge that some paperwork was sent back. Still, it is hard to see a missing signature as a problem with video appointments themselves."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "질의 시간이 일 분 남았어요. 어디까지 허용하자는 건지 한 문장으로 말씀해 주시겠어요?",
+          "base": {
+            "de": "Für Fragen bleibt noch eine Minute. Würden Sie in einem Satz sagen, wie weit Ihr Vorschlag gehen soll?",
+            "en": "We have one minute left for questions. Could you tell us in one sentence what exactly you would allow?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은, 서류 갱신 상담만 화상으로 열고 서명 확인과 보험사 재제출은 클리닉이 맡자는 거예요.",
+          "base": {
+            "de": "Mein Vorschlag ist, nur die Beratung zur Verlängerung von Unterlagen per Video anzubieten. Die Klinik soll die Unterschrift prüfen und alles erneut beim Versicherer einreichen.",
+            "en": "In short, I'd offer video appointments only for advice on renewing paperwork. The clinic would check signatures and handle resubmissions to the insurer."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "화상",
+          "예약을",
+          "늘릴",
+          "근거가 두 가지",
+          "있어요."
+        ],
+        "distractors": [
+          "줄일",
+          "근거가 세 가지"
+        ],
+        "frameSuffix": " 차 없는 분들은 버스를 갈아타야 하고, 서류 갱신에 하루 휴가를 내거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "반려 사례가 있었다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 다만 서명 누락을 화상 상담 자체의 문제라고 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "점은 인정해요",
+            "acceptedAnswers": [
+              "점은 인정해요",
+              "점은 저도 인정해요",
+              "건 인정해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "보기는 어려워요",
+            "acceptedAnswers": [
+              "보기는 어려워요",
+              "보긴 어려워요",
+              "보기 어려워요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은, 서류 갱신 상담만 화상으로 열고 서명 확인과 보험사 재제출은 클리닉이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "맡자는 거예요",
+            "acceptedAnswers": [
+              "맡자는 거예요",
+              "맡자는 거죠",
+              "맡자는 것이에요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "화상 예약을 늘릴 ",
+        "answer": "근거가",
+        "acceptedAnswers": [
+          "근거가"
+        ],
+        "after": " 두 가지 있어요. 차 없는 분들은 버스를 갈아타야 하고, 서류 갱신에 하루 휴가를 내거든요.",
+        "fallbackChoices": [
+          "근거가",
+          "날짜가",
+          "취소가",
+          "서류가"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Einen Vorfall anerkennen und die Ursache eingrenzen",
+          "en": "Acknowledge an incident and narrow down its cause"
+        },
+        "rule": {
+          "de": "Mit -다는 점은 인정해요 akzeptierst du eine konkrete Tatsache. 다만 setzt der daraus gezogenen Schlussfolgerung eine Grenze.",
+          "en": "Use -다는 점은 인정해요 to accept a specific fact. 다만 limits the inference you are willing to draw from it."
+        },
+        "examples": [
+          {
+            "targetText": "반려 사례가 있었다는 점은 인정해요. 다만 서명 누락을 화상 상담 자체의 문제라고 보기는 어려워요.",
+            "base": {
+              "de": "Ich räume ein, dass Unterlagen zurückgingen. Aber eine fehlende Unterschrift lässt sich schwerlich dem Videoformat selbst zuschreiben.",
+              "en": "I acknowledge that some paperwork was sent back. Still, it is hard to see a missing signature as a problem with video appointments themselves."
+            },
+            "highlights": [
+              "사례가 있었다는 점은 인정해요",
+              "다만"
+            ]
+          },
+          {
+            "targetText": "지난번에 늦었다는 점은 인정해요. 다만 출발 시간을 앞당기는 것만으로는 해결하기 어려워요.",
+            "base": {
+              "de": "Ich räume ein, dass wir letztes Mal spät waren. Allein durch eine frühere Abfahrt lässt sich das aber schwer lösen.",
+              "en": "I acknowledge that we were late last time. Still, simply leaving earlier is unlikely to solve the problem."
+            },
+            "highlights": [
+              "늦었다는 점은 인정해요",
+              "다만"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "근거가",
+          "kind": "noun",
+          "base": {
+            "de": "Gründe, eine Grundlage",
+            "en": "grounds, a basis"
+          }
+        },
+        {
+          "targetText": "갈아타야",
+          "kind": "verb",
+          "base": {
+            "de": "umsteigen müssen",
+            "en": "have to change vehicles"
+          }
+        },
+        {
+          "targetText": "갱신에",
+          "kind": "noun",
+          "base": {
+            "de": "für die Verlängerung",
+            "en": "for renewal"
+          }
+        },
+        {
+          "targetText": "반려 사례가",
+          "kind": "noun",
+          "base": {
+            "de": "ein Fall zurückgewiesener Unterlagen",
+            "en": "a case of paperwork being returned"
+          }
+        },
+        {
+          "targetText": "점은 인정해요",
+          "kind": "frame",
+          "base": {
+            "de": "diesen Punkt räume ich ein",
+            "en": "I acknowledge that point"
+          }
+        },
+        {
+          "targetText": "다만",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "재제출은",
+          "kind": "noun",
+          "base": {
+            "de": "was die erneute Einreichung betrifft",
+            "en": "as for resubmission"
+          }
+        },
+        {
+          "targetText": "맡자는 거예요",
+          "kind": "frame",
+          "base": {
+            "de": "ich schlage vor, dass jemand es übernimmt",
+            "en": "my proposal is for someone to take it on"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "화상",
+            "예약을",
+            "늘릴",
+            "근거가"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "반려",
+            "서명",
+            "누락을",
+            "어려워요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "갱신",
+            "확인과",
+            "재제출은"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "근거",
+        "familyKey": "근거",
+        "surface": "근거가",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "화상 예약을 늘릴 근거가 두 가지 있어요. 차 없는 분들은 버스를 갈아타야 하고, 서류 갱신에 하루 휴가를 내거든요.",
+          "base": {
+            "de": "Zwei Gründe sprechen für mehr Videotermine. Wer kein Auto hat, muss mit dem Bus umsteigen, und für die Verlängerung von Unterlagen nimmt man einen ganzen Tag frei.",
+            "en": "There are two grounds for offering more video appointments. People without a car have to change buses, and renewing paperwork means taking a whole day off."
+          }
+        },
+        "base": {
+          "de": "Anhaltspunkt, Grundlage für eine Aussage",
+          "en": "grounds, evidence for a claim"
+        },
+        "whyThisWord": {
+          "de": "Mit 근거 kannst du nach der Grundlage eines Arguments fragen oder sagen, worauf du deinen eigenen Vorschlag stützt.",
+          "en": "Use 근거 to ask what supports an argument or to identify the basis for your own proposal."
+        },
+        "remainder": [
+          "가"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "점은 인정해요",
+          "status": "productive"
+        },
+        {
+          "surface": "보기는 어려워요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "pedestrian-street-access",
+      "title": {
+        "de": "Wer darf durch die Sperre?",
+        "en": "Who can pass the barrier?"
+      },
+      "situation": {
+        "de": "Bei einer Infoveranstaltung für koreanischsprachige Geschäftsleute in Düsseldorf stellt eine städtische Ansprechperson den Plan für eine autofreie Innenstadt vor.",
+        "en": "During a briefing for Korean-speaking shopkeepers in Düsseldorf, a city liaison presents a proposal for a car-free centre."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Ansprechperson der Stadt",
+            "en": "City liaison"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einer Infoveranstaltung für koreanischsprachige Geschäftsleute in Düsseldorf stellt eine städtische Ansprechperson den Plan für eine autofreie Innenstadt vor. Du hörst: „주말마다 중심가 차량을 전면 통제하는 안이에요. 상인분들 의견을 듣고 싶은데 어떻게 보세요?“",
+        "en": "During a briefing for Korean-speaking shopkeepers in Düsseldorf, a city liaison presents a proposal for a car-free centre. You hear: “주말마다 중심가 차량을 전면 통제하는 안이에요. 상인분들 의견을 듣고 싶은데 어떻게 보세요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "주말마다 중심가 차량을 전면 통제하는 안이에요. 상인분들 의견을 듣고 싶은데 어떻게 보세요?",
+          "base": {
+            "de": "Der Plan sieht vor, die Innenstadt jedes Wochenende vollständig für Fahrzeuge zu sperren. Uns interessiert die Meinung der Geschäftsleute. Was halten Sie davon?",
+            "en": "The proposal is to close the centre to all vehicles every weekend. We'd like to hear from shopkeepers. What do you think?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "취지에는 찬성하지만 전면 통제는 현실적으로 어렵다고 봐요. 식자재 배달 차가 못 들어오고, 거동이 불편한 손님들은 정류장까지 걷기 힘들거든요.",
+          "base": {
+            "de": "Das Ziel unterstütze ich, aber eine vollständige Sperrung finde ich in der Praxis schwierig. Lieferwagen mit Lebensmitteln kommen nicht durch, und für Gäste mit eingeschränkter Mobilität ist der Weg zur Haltestelle beschwerlich.",
+            "en": "I support the aim, but a blanket closure looks difficult in practice. Food delivery vans can't get in, and customers with limited mobility struggle to walk to the stop."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "옆 도시에서는 같은 제도 뒤에 매출이 올랐어요. 반대하시는 분은 소수예요.",
+          "base": {
+            "de": "In der Nachbarstadt stieg der Umsatz nach Einführung derselben Regelung. Die Gegner sind in der Minderheit.",
+            "en": "Sales rose in the neighbouring city after the same scheme started. Only a minority are against it."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그 도시에서 매출이 오른 건 맞아요. 그렇다고 해서 여기도 그럴 거라고 보기는 어려워요. 거기는 전철역이 거리 아래에 있잖아요.",
+          "base": {
+            "de": "Dort ist der Umsatz tatsächlich gestiegen. Daraus lässt sich aber schwer ableiten, dass es hier auch so käme. Dort liegt der Bahnhof direkt unter der Straße.",
+            "en": "Sales did rise in that city. Even so, it's hard to say the same would happen here. They have a metro station right underneath the street."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "다음 달 의회에 올려야 해서 오늘 수정안을 받아요. 어떤 안이면 찬성하실지 한 줄로요.",
+          "base": {
+            "de": "Nächsten Monat muss der Vorschlag in den Stadtrat. Änderungen nehmen wir heute entgegen. Welcher Fassung würden Sie zustimmen, in einem Satz?",
+            "en": "The proposal goes before the council next month, so we're taking amendments today. Which version would you support, in one line?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "정리하면, 토요일 오후만 통제하되 배달 차량과 거동이 불편한 손님의 차량은 그 시간에도 허용하면 좋겠어요.",
+          "base": {
+            "de": "Ich würde die Straße nur samstagnachmittags sperren. In dieser Zeit sollten Lieferfahrzeuge und Fahrzeuge von Gästen mit eingeschränkter Mobilität passieren dürfen.",
+            "en": "In short, I'd close it only on Saturday afternoons and still allow delivery vehicles and vehicles for customers with limited mobility through during that time."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "취지에는 찬성하지만 ",
+        "chunks": [
+          "전면 통제는",
+          "현실적으로 어렵다고",
+          "봐요.",
+          "식자재",
+          "배달 차가"
+        ],
+        "distractors": [
+          "현실적으로 쉽다고",
+          "배달 차를"
+        ],
+        "frameSuffix": " 못 들어오고, 거동이 불편한 손님들은 정류장까지 걷기 힘들거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그 도시에서 매출이 오른 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 여기도 그럴 거라고 보기는 어려워요. 거기는 전철역이 거리 아래에 있잖아요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "그렇다고 해서",
+            "acceptedAnswers": [
+              "그렇다고 해서",
+              "그렇다고"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "정리하면, 토요일 오후만 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 배달 차량과 거동이 불편한 손님의 차량은 그 시간에도 허용하면 좋겠어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "통제하되",
+            "acceptedAnswers": [
+              "통제하되",
+              "통제하고"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "취지에는 찬성하지만 전면 통제는 ",
+        "answer": "현실적으로",
+        "acceptedAnswers": [
+          "현실적으로"
+        ],
+        "after": " 어렵다고 봐요. 식자재 배달 차가 못 들어오고, 거동이 불편한 손님들은 정류장까지 걷기 힘들거든요.",
+        "fallbackChoices": [
+          "현실적으로",
+          "고의로",
+          "공식적으로",
+          "임의로"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Das Ziel unterstützen, die Umsetzung prüfen",
+          "en": "Support the goal, question the implementation"
+        },
+        "rule": {
+          "de": "Mit 취지에는 찬성하지만 stimmst du dem Ziel zu und lässt deine Haltung zur Umsetzung offen. 현실적으로 leitet die praktische Einschränkung ein.",
+          "en": "취지에는 찬성하지만 grants support for the aim while leaving the implementation open. 현실적으로 introduces the practical limitation."
+        },
+        "examples": [
+          {
+            "targetText": "취지에는 찬성하지만 전면 통제는 현실적으로 어렵다고 봐요. 식자재 배달 차가 못 들어오고, 거동이 불편한 손님들은 정류장까지 걷기 힘들거든요.",
+            "base": {
+              "de": "Das Ziel unterstütze ich, aber eine vollständige Sperrung finde ich in der Praxis schwierig. Lieferwagen mit Lebensmitteln kommen nicht durch, und für Gäste mit eingeschränkter Mobilität ist der Weg zur Haltestelle beschwerlich.",
+              "en": "I support the aim, but a blanket closure looks difficult in practice. Food delivery vans can't get in, and customers with limited mobility struggle to walk to the stop."
+            },
+            "highlights": [
+              "취지에는 찬성하지만",
+              "현실적으로"
+            ]
+          },
+          {
+            "targetText": "취지에는 찬성하지만 이 예산으로 두 곳을 운영하기는 현실적으로 어려워요.",
+            "base": {
+              "de": "Das Ziel unterstütze ich, aber mit diesem Budget lassen sich in der Praxis kaum zwei Standorte betreiben.",
+              "en": "I support the aim, but in practice it would be hard to run two sites on this budget."
+            },
+            "highlights": [
+              "취지에는 찬성하지만",
+              "현실적으로"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "현실적으로",
+          "kind": "adverb",
+          "base": {
+            "de": "in der Praxis",
+            "en": "in practice"
+          }
+        },
+        {
+          "targetText": "취지에는 찬성하지만",
+          "kind": "frame",
+          "base": {
+            "de": "das Ziel befürworte ich, aber",
+            "en": "I support the aim, but"
+          }
+        },
+        {
+          "targetText": "전면 통제는",
+          "kind": "noun",
+          "base": {
+            "de": "eine vollständige Sperrung",
+            "en": "a blanket closure"
+          }
+        },
+        {
+          "targetText": "식자재",
+          "kind": "noun",
+          "base": {
+            "de": "Lebensmittel für die Küche",
+            "en": "food supplies"
+          }
+        },
+        {
+          "targetText": "거동이 불편한",
+          "kind": "frame",
+          "base": {
+            "de": "in der Beweglichkeit eingeschränkt",
+            "en": "who have limited mobility"
+          }
+        },
+        {
+          "targetText": "매출이",
+          "kind": "noun",
+          "base": {
+            "de": "der Umsatz",
+            "en": "sales"
+          }
+        },
+        {
+          "targetText": "그렇다고 해서",
+          "kind": "connector",
+          "base": {
+            "de": "das allein heißt aber nicht",
+            "en": "even so, it doesn't follow that"
+          }
+        },
+        {
+          "targetText": "허용하면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man es zulässt",
+            "en": "if we allow it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "취지에는",
+            "찬성하지만",
+            "통제는",
+            "현실적으로"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "매출이",
+            "전철역이",
+            "아래에"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "통제하되",
+            "차량은",
+            "허용하면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "현실적",
+        "familyKey": "현실",
+        "surface": "현실적으로",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "취지에는 찬성하지만 전면 통제는 현실적으로 어렵다고 봐요. 식자재 배달 차가 못 들어오고, 거동이 불편한 손님들은 정류장까지 걷기 힘들거든요.",
+          "base": {
+            "de": "Das Ziel unterstütze ich, aber eine vollständige Sperrung finde ich in der Praxis schwierig. Lieferwagen mit Lebensmitteln kommen nicht durch, und für Gäste mit eingeschränkter Mobilität ist der Weg zur Haltestelle beschwerlich.",
+            "en": "I support the aim, but a blanket closure looks difficult in practice. Food delivery vans can't get in, and customers with limited mobility struggle to walk to the stop."
+          }
+        },
+        "base": {
+          "de": "realistisch, auf die Praxis bezogen",
+          "en": "realistic, practical"
+        },
+        "whyThisWord": {
+          "de": "현실적으로 führt die praktischen Folgen eines Plans ein. Damit kannst du erklären, warum du ein Ziel unterstützt, bei der Umsetzung aber Bedingungen stellst.",
+          "en": "현실적으로 introduces the practical consequences of a plan. It helps explain why you can support a goal and still put conditions on how it is carried out."
+        },
+        "remainder": [
+          "으로"
+        ]
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "취지에는 찬성하지만",
+          "status": "productive"
+        },
+        {
+          "surface": "보기는 어려워요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "report-or-standup",
+      "title": {
+        "de": "Muss der Bericht weg?",
+        "en": "Does the report have to go?"
+      },
+      "situation": {
+        "de": "Im Büro einer koreanischen Firma in Singapur schlägt jemand aus dem Team vor, den Wochenbericht durch ein tägliches Treffen zu ersetzen.",
+        "en": "In a Korean company's Singapore office, a colleague suggests replacing the weekly report with a daily meeting."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Jemand aus dem Team",
+            "en": "Colleague"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Büro einer koreanischen Firma in Singapur schlägt jemand aus dem Team vor, den Wochenbericht durch ein tägliches Treffen zu ersetzen. Du hörst: „주간 보고서 대신 매일 오 분 서서 하는 회의로 바꾸면 어떨까요? 다들 보고서 쓰느라 힘들어해요.“",
+        "en": "In a Korean company's Singapore office, a colleague suggests replacing the weekly report with a daily meeting. You hear: “주간 보고서 대신 매일 오 분 서서 하는 회의로 바꾸면 어떨까요? 다들 보고서 쓰느라 힘들어해요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "주간 보고서 대신 매일 오 분 서서 하는 회의로 바꾸면 어떨까요? 다들 보고서 쓰느라 힘들어해요.",
+          "base": {
+            "de": "Was halten Sie davon, den Wochenbericht durch ein tägliches fünfminütiges Treffen im Stehen zu ersetzen? Das Schreiben belastet alle.",
+            "en": "How about replacing the weekly report with a daily five-minute stand-up? Everyone is struggling with writing the report."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "보고서를 반드시 없애야 하는 건 아니라고 봐요. 기록이 있어야 나중에 찾아볼 수 있고, 퇴근 무렵이면 서울 쪽은 이미 퇴근한 뒤거든요.",
+          "base": {
+            "de": "Wir müssen den Bericht nicht unbedingt abschaffen, finde ich. Nur mit einer Aufzeichnung können wir später etwas nachschlagen. Gegen Feierabend ist man in Seoul schon weg.",
+            "en": "I don't think we necessarily have to scrap the report. We need a record to look things up later, and around the time we finish work, the Seoul side has already left for the day."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "보고서에 매주 두 시간씩 쓰잖아요. 영업 팀은 벌써 바꿨고 불만도 없어요.",
+          "base": {
+            "de": "Wir schreiben jede Woche zwei Stunden daran. Das Vertriebsteam hat schon umgestellt, und dort beschwert sich niemand.",
+            "en": "We spend two hours on it every week. The sales team has already switched and no one there has complained."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "두 시간이 긴 건 알아요. 양식의 문제지 보고서 자체의 문제는 아니지 않을까요? 한 장으로 줄이면 삼십 분쯤이면 돼요.",
+          "base": {
+            "de": "Mir ist klar, dass zwei Stunden lang sind. Liegt das nicht am Formular und weniger am Bericht an sich? Kürzen wir ihn auf eine Seite, reichen etwa dreißig Minuten.",
+            "en": "I know two hours is a long time. Couldn't that be a problem with the form rather than the report itself? If we cut it to one page, about half an hour should do."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "팀장님이 내일 아침까지 안을 달라고 하셨어요. 올릴 안을 한 줄로 정하죠.",
+          "base": {
+            "de": "Die Teamleitung möchte bis morgen früh einen Vorschlag. Einigen wir uns auf einen Satz für die Vorlage.",
+            "en": "The team leader wants a proposal by tomorrow morning. Let's put the proposal we'll submit in one line."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은, 보고서는 한 장으로 줄이고 모임은 서울 시간에 맞춰 일주일에 두 번만 하는 안으로 올리면 좋겠어요.",
+          "base": {
+            "de": "Schlagen wir vor, den Bericht auf eine Seite zu kürzen und uns nur zweimal pro Woche zu einer Zeit zu treffen, die in Seoul passt.",
+            "en": "In short, let's propose cutting the report to one page and meeting just twice a week at a time that works for Seoul."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "보고서를 반드시",
+          "없애야 하는",
+          "건 아니라고",
+          "봐요.",
+          "기록이 있어야"
+        ],
+        "distractors": [
+          "없어져야 하는",
+          "기록이 없어야"
+        ],
+        "frameSuffix": " 나중에 찾아볼 수 있고, 퇴근 무렵이면 서울 쪽은 이미 퇴근한 뒤거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "두 시간이 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 보고서 자체의 문제는 아니지 않을까요? 한 장으로 줄이면 삼십 분쯤이면 돼요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "긴 건 알아요",
+            "acceptedAnswers": [
+              "긴 건 알아요",
+              "긴 건 저도 알아요",
+              "길다는 건 알아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "양식의 문제지",
+            "acceptedAnswers": [
+              "양식의 문제지",
+              "양식 문제지"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은, 보고서는 한 장으로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 모임은 서울 시간에 맞춰 일주일에 두 번만 하는 안으로 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "줄이고",
+            "acceptedAnswers": [
+              "줄이고",
+              "하고"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "올리면 좋겠어요",
+            "acceptedAnswers": [
+              "올리면 좋겠어요",
+              "올렸으면 좋겠어요"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "보고서를 ",
+        "answer": "반드시",
+        "acceptedAnswers": [
+          "반드시"
+        ],
+        "after": " 없애야 하는 건 아니라고 봐요. 기록이 있어야 나중에 찾아볼 수 있고, 퇴근 무렵이면 서울 쪽은 이미 퇴근한 뒤거든요.",
+        "fallbackChoices": [
+          "반드시",
+          "벌써",
+          "몰래",
+          "우연히"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Die Ursache genauer verorten",
+          "en": "Pinpoint what the problem is"
+        },
+        "rule": {
+          "de": "X의 문제지 Y의 문제는 아니지 않을까요? stellt eine andere Diagnose zur Diskussion. Die höfliche Frage lässt Raum für Widerspruch.",
+          "en": "X의 문제지 Y의 문제는 아니지 않을까요? offers a different diagnosis. The polite question leaves room for disagreement."
+        },
+        "examples": [
+          {
+            "targetText": "두 시간이 긴 건 알아요. 양식의 문제지 보고서 자체의 문제는 아니지 않을까요? 한 장으로 줄이면 삼십 분쯤이면 돼요.",
+            "base": {
+              "de": "Mir ist klar, dass zwei Stunden lang sind. Liegt das nicht am Formular und weniger am Bericht an sich? Kürzen wir ihn auf eine Seite, reichen etwa dreißig Minuten.",
+              "en": "I know two hours is a long time. Couldn't that be a problem with the form rather than the report itself? If we cut it to one page, about half an hour should do."
+            },
+            "highlights": [
+              "양식의 문제지",
+              "자체의 문제는 아니지 않을까요"
+            ]
+          },
+          {
+            "targetText": "안내판 위치의 문제지 글씨 크기의 문제는 아니지 않을까요?",
+            "base": {
+              "de": "Könnte das Problem an der Position des Schilds und weniger an der Schriftgröße liegen?",
+              "en": "Could the problem be the position of the sign rather than the size of the lettering?"
+            },
+            "highlights": [
+              "위치의 문제지",
+              "크기의 문제는 아니지 않을까요"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "반드시",
+          "kind": "adverb",
+          "base": {
+            "de": "unbedingt, zwingend",
+            "en": "necessarily, without fail"
+          }
+        },
+        {
+          "targetText": "없애야 하는",
+          "kind": "frame",
+          "base": {
+            "de": "abschaffen müssen",
+            "en": "have to get rid of"
+          }
+        },
+        {
+          "targetText": "기록이",
+          "kind": "noun",
+          "base": {
+            "de": "eine Aufzeichnung",
+            "en": "a record"
+          }
+        },
+        {
+          "targetText": "퇴근 무렵이면",
+          "kind": "frame",
+          "base": {
+            "de": "gegen Feierabend",
+            "en": "around the time work ends"
+          }
+        },
+        {
+          "targetText": "양식의",
+          "kind": "noun",
+          "base": {
+            "de": "des Formulars",
+            "en": "of the form"
+          }
+        },
+        {
+          "targetText": "자체의",
+          "kind": "noun",
+          "base": {
+            "de": "der Sache selbst",
+            "en": "of the thing itself"
+          }
+        },
+        {
+          "targetText": "줄이면",
+          "kind": "verb",
+          "base": {
+            "de": "wenn man es kürzt",
+            "en": "if we shorten it"
+          }
+        },
+        {
+          "targetText": "올리면 좋겠어요",
+          "kind": "frame",
+          "base": {
+            "de": "wir sollten es einreichen",
+            "en": "I'd like us to submit it"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "보고서를",
+            "반드시",
+            "없애야",
+            "아니라고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "시간이",
+            "양식의",
+            "자체의",
+            "줄이면"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "보고서는",
+            "모임은",
+            "두",
+            "올리면"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "반드시",
+        "familyKey": "반드시",
+        "surface": "반드시",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "보고서를 반드시 없애야 하는 건 아니라고 봐요. 기록이 있어야 나중에 찾아볼 수 있고, 퇴근 무렵이면 서울 쪽은 이미 퇴근한 뒤거든요.",
+          "base": {
+            "de": "Wir müssen den Bericht nicht unbedingt abschaffen, finde ich. Nur mit einer Aufzeichnung können wir später etwas nachschlagen. Gegen Feierabend ist man in Seoul schon weg.",
+            "en": "I don't think we necessarily have to scrap the report. We need a record to look things up later, and around the time we finish work, the Seoul side has already left for the day."
+          }
+        },
+        "base": {
+          "de": "unbedingt, zwingend",
+          "en": "necessarily, without fail"
+        },
+        "whyThisWord": {
+          "de": "반드시 mit einer Verneinung lässt eine andere Möglichkeit offen. Damit kannst du die Behauptung prüfen, es gebe nur eine Lösung.",
+          "en": "With a negative, 반드시 leaves room for another possibility. Use it to challenge the claim that there is only one solution."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "반드시 없애야 하는 건 아니라고",
+          "status": "productive"
+        },
+        {
+          "surface": "양식의 문제지",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "phones-in-lockers",
+      "title": {
+        "de": "Handys im Schließfach?",
+        "en": "Phones in lockers?"
+      },
+      "situation": {
+        "de": "Bei der Besprechung in der Niederlassung einer koreanischen Firma in Ho-Chi-Minh-Stadt erklärt die Teamleitung eine neue Handyregel.",
+        "en": "At a team meeting in a Korean firm's Ho Chi Minh City branch, your manager announces a new phone rule."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Teamleitung",
+            "en": "Team manager"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Besprechung in der Niederlassung einer koreanischen Firma in Ho-Chi-Minh-Stadt erklärt die Teamleitung eine neue Handyregel. Du hörst: „다음 주부터 근무 시간에는 휴대폰을 사물함에 두는 걸로 정했어요. 의견 있으면 지금 말해 주세요.“",
+        "en": "At a team meeting in a Korean firm's Ho Chi Minh City branch, your manager announces a new phone rule. You hear: “다음 주부터 근무 시간에는 휴대폰을 사물함에 두는 걸로 정했어요. 의견 있으면 지금 말해 주세요.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "다음 주부터 근무 시간에는 휴대폰을 사물함에 두는 걸로 정했어요. 의견 있으면 지금 말해 주세요.",
+          "base": {
+            "de": "Ab nächster Woche bleiben die Handys während der Arbeitszeit im Schließfach. Wenn Sie dazu etwas sagen möchten, bitte jetzt.",
+            "en": "We've decided that from next week phones are to stay in lockers during work hours. If you have any comments, please speak up now."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "집중이 필요하다는 점은 인정해요. 그래도 저는 전면 금지에는 반대해요. 고객 인증 문자가 휴대폰으로 오고, 아이 학교 연락도 받아야 하거든요.",
+          "base": {
+            "de": "Ich räume ein, dass wir uns konzentrieren müssen. Gegen ein pauschales Verbot bin ich trotzdem. Die Codes für die Kundenverifizierung kommen aufs Handy, und die Schule meines Kindes muss mich erreichen können.",
+            "en": "I acknowledge the need to concentrate. Even so, I oppose a blanket ban. Customer verification codes come to my phone, and I also need to be reachable by my child's school."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "본사 지시예요. 지난달 포장 라인 사고도 휴대폰 보다가 난 거잖아요.",
+          "base": {
+            "de": "Die Anweisung kommt von der Zentrale. Auch der Unfall an der Verpackungslinie letzten Monat geschah, weil jemand aufs Handy schaute.",
+            "en": "Head office instructed us. Last month's accident on the packing line happened because someone was looking at a phone, too."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "지난달 사고가 휴대폰 때문이었다는 건 맞아요. 다만 본사 지시일지라도 한 사람의 잘못을 전원이 책임지는 건 맞지 않다고 봐요.",
+          "base": {
+            "de": "Es stimmt, dass das Handy bei dem Unfall letzten Monat die Ursache war. Selbst bei einer Anweisung der Zentrale finde ich es aber falsch, dass alle für den Fehler einer Person einstehen müssen.",
+            "en": "It's true a phone caused last month's accident. But even with an instruction from head office, I don't think everyone should have to answer for one person's mistake."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "본사에는 금요일까지 회신해야 해요. 그럼 어떻게 하자는 건지 정리해 주시겠어요?",
+          "base": {
+            "de": "Bis Freitag muss ich der Zentrale antworten. Können Sie Ihren Vorschlag bitte zusammenfassen?",
+            "en": "I need to reply to head office by Friday. Could you sum up what you propose?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "라인에서 일하거나 회의할 때는 사물함에 두고 책상에서는 무음으로 두는 규칙이면 저도 따를게요. 사고 예방에도 도움이 될 거예요.",
+          "base": {
+            "de": "Bei der Arbeit an der Linie und in Besprechungen bleibt das Handy im Schließfach, am Schreibtisch ist es stumm. Diese Regel würde ich mittragen. Das dürfte auch Unfällen vorbeugen.",
+            "en": "I'd follow a rule requiring phones to stay in lockers while working on the line or attending meetings and to be on silent at our desks. That should also help prevent accidents."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "집중이",
+          "필요하다는",
+          "점은 인정해요.",
+          "그래도 저는",
+          "전면 금지에는 반대해요."
+        ],
+        "distractors": [
+          "집중을",
+          "전면 금지에 찬성해요."
+        ],
+        "frameSuffix": " 고객 인증 문자가 휴대폰으로 오고, 아이 학교 연락도 받아야 하거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "지난달 사고가 휴대폰 때문이었다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 다만 본사 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 한 사람의 잘못을 전원이 책임지는 건 맞지 않다고 봐요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "건 맞아요",
+            "acceptedAnswers": [
+              "건 맞아요",
+              "것은 맞아요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "지시일지라도",
+            "acceptedAnswers": [
+              "지시일지라도"
+            ],
+            "kind": "frame",
+            "choices": [
+              "지시일지라도",
+              "지시이니까",
+              "지시라서",
+              "지시이면"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "라인에서 일하거나 회의할 때는 사물함에 두고 책상에서는 무음으로 두는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 저도 따를게요. 사고 예방에도 도움이 될 거예요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "규칙이면",
+            "acceptedAnswers": [
+              "규칙이면",
+              "규칙이라면"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "집중이 필요하다는 점은 ",
+        "answer": "인정해요",
+        "acceptedAnswers": [
+          "인정해요"
+        ],
+        "after": ". 그래도 저는 전면 금지에는 반대해요. 고객 인증 문자가 휴대폰으로 오고, 아이 학교 연락도 받아야 하거든요.",
+        "fallbackChoices": [
+          "인정해요",
+          "거절해요",
+          "의심해요",
+          "부인해요"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Auch unter dieser Voraussetzung widersprechen",
+          "en": "Object even when a condition holds"
+        },
+        "rule": {
+          "de": "Mit N일지라도 räumst du eine Voraussetzung ausdrücklich ein. Danach erläuterst du, warum sie deine Beurteilung nicht ändert.",
+          "en": "N일지라도 explicitly grants a condition. The next clause explains why your judgment still stands."
+        },
+        "examples": [
+          {
+            "targetText": "지난달 사고가 휴대폰 때문이었다는 건 맞아요. 다만 본사 지시일지라도 한 사람의 잘못을 전원이 책임지는 건 맞지 않다고 봐요.",
+            "base": {
+              "de": "Es stimmt, dass das Handy bei dem Unfall letzten Monat die Ursache war. Selbst bei einer Anweisung der Zentrale finde ich es aber falsch, dass alle für den Fehler einer Person einstehen müssen.",
+              "en": "It's true a phone caused last month's accident. But even with an instruction from head office, I don't think everyone should have to answer for one person's mistake."
+            },
+            "highlights": [
+              "본사 지시일지라도",
+              "맞지 않다고 봐요"
+            ]
+          },
+          {
+            "targetText": "정식 계약일지라도 금액이 빠져 있으면 다시 확인해야 해요.",
+            "base": {
+              "de": "Selbst bei einem förmlichen Vertrag müssen wir nachfragen, wenn der Betrag fehlt.",
+              "en": "Even with a formal contract, we need to check again if the amount is missing."
+            },
+            "highlights": [
+              "정식 계약일지라도"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "인정해요",
+          "kind": "verb",
+          "base": {
+            "de": "ich räume ein",
+            "en": "I acknowledge"
+          }
+        },
+        {
+          "targetText": "집중이",
+          "kind": "noun",
+          "base": {
+            "de": "Konzentration",
+            "en": "concentration"
+          }
+        },
+        {
+          "targetText": "전면 금지에는",
+          "kind": "noun",
+          "base": {
+            "de": "was ein pauschales Verbot betrifft",
+            "en": "as for a blanket ban"
+          }
+        },
+        {
+          "targetText": "인증 문자가",
+          "kind": "noun",
+          "base": {
+            "de": "die SMS zur Verifizierung",
+            "en": "the verification text"
+          }
+        },
+        {
+          "targetText": "그래도",
+          "kind": "connector",
+          "base": {
+            "de": "trotzdem",
+            "en": "even so"
+          }
+        },
+        {
+          "targetText": "지시일지라도",
+          "kind": "frame",
+          "base": {
+            "de": "selbst wenn es eine Anweisung ist",
+            "en": "even if it is an instruction"
+          }
+        },
+        {
+          "targetText": "전원이",
+          "kind": "noun",
+          "base": {
+            "de": "alle Beteiligten",
+            "en": "everyone involved"
+          }
+        },
+        {
+          "targetText": "무음으로",
+          "kind": "noun",
+          "base": {
+            "de": "auf lautlos",
+            "en": "on silent"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "집중이",
+            "필요하다는",
+            "인정해요",
+            "금지에는"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "사고가",
+            "지시일지라도",
+            "전원이",
+            "책임지는"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "라인에서",
+            "사물함에",
+            "무음으로"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "인정하다",
+        "familyKey": "인정",
+        "surface": "인정해요",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "집중이 필요하다는 점은 인정해요. 그래도 저는 전면 금지에는 반대해요. 고객 인증 문자가 휴대폰으로 오고, 아이 학교 연락도 받아야 하거든요.",
+          "base": {
+            "de": "Ich räume ein, dass wir uns konzentrieren müssen. Gegen ein pauschales Verbot bin ich trotzdem. Die Codes für die Kundenverifizierung kommen aufs Handy, und die Schule meines Kindes muss mich erreichen können.",
+            "en": "I acknowledge the need to concentrate. Even so, I oppose a blanket ban. Customer verification codes come to my phone, and I also need to be reachable by my child's school."
+          }
+        },
+        "base": {
+          "de": "anerkennen, einräumen",
+          "en": "acknowledge, concede"
+        },
+        "whyThisWord": {
+          "de": "Mit 인정해요 räumst du einen konkreten Punkt ein. Danach kannst du getrennt beurteilen, welche Folge daraus gezogen werden sollte.",
+          "en": "Use 인정해요 to concede a specific point. You can then address separately what action should follow from it."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "점은 인정해요",
+          "status": "productive"
+        },
+        {
+          "surface": "지시일지라도",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "two-crates-of-strawberries",
+      "title": {
+        "de": "Zwei Schalen Erdbeeren",
+        "en": "Two boxes of strawberries"
+      },
+      "situation": {
+        "de": "Auf einem Markt in Berlin-Kreuzberg vergleichst du mit einer koreanischsprachigen Begleitperson eine importierte und eine regionale Schale Erdbeeren.",
+        "en": "At a market in Berlin's Kreuzberg district, you and a Korean-speaking friend compare a box of imported strawberries with a locally grown one."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Befreundete Person",
+            "en": "Friend"
+          },
+          "voiceRole": "A",
+          "register": "haeyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Auf einem Markt in Berlin-Kreuzberg vergleichst du mit einer koreanischsprachigen Begleitperson eine importierte und eine regionale Schale Erdbeeren. Du hörst: „저쪽 수입 딸기는 여섯 유로고 이쪽 근교 딸기는 여덟 유로예요. 싼 걸 사면 어때요?“",
+        "en": "At a market in Berlin's Kreuzberg district, you and a Korean-speaking friend compare a box of imported strawberries with a locally grown one. You hear: “저쪽 수입 딸기는 여섯 유로고 이쪽 근교 딸기는 여덟 유로예요. 싼 걸 사면 어때요?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "저쪽 수입 딸기는 여섯 유로고 이쪽 근교 딸기는 여덟 유로예요. 싼 걸 사면 어때요?",
+          "base": {
+            "de": "Die importierten Erdbeeren dort kosten sechs Euro, die aus der Gegend hier acht. Wie wäre es mit den günstigeren?",
+            "en": "The imported strawberries over there are six euros and these locally grown ones are eight. How about buying the cheaper ones?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "아무래도 저는 이쪽 상자가 낫다고 봐요. 아까 맛보니까 이쪽이 더 달고, 저쪽 상자는 아래쪽에 짓무른 게 두 개 보였거든요.",
+          "base": {
+            "de": "Alles in allem finde ich diese Schale besser. Bei der Kostprobe vorhin waren diese Erdbeeren süßer. Unten in der anderen Schale habe ich zwei matschige gesehen.",
+            "en": "On balance I think this box is better. When I tasted them earlier, these were sweeter, and I saw two mushy ones at the bottom of the other box."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "짓무른 건 두 개뿐이고 양은 저쪽이 더 많아요. 두 개 버려도 저쪽이 남죠.",
+          "base": {
+            "de": "Es sind nur zwei matschige, und in der Schale dort sind mehr. Selbst wenn wir zwei wegwerfen, haben wir mehr davon.",
+            "en": "Only two are mushy, and there's more in the other box. Even if we throw two away, it still gives us more."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "양이 더 많다는 점에서는 동의해요. 다만 내일까지 두면 옆의 딸기도 상할 수 있어요. 오늘 다 먹을 양은 아니고요.",
+          "base": {
+            "de": "Dass mehr drin ist, da stimme ich zu. Wenn wir sie aber bis morgen stehen lassen, könnten die Erdbeeren daneben auch schlecht werden. Alles auf einmal essen wir heute nicht.",
+            "en": "I agree that there's more. But if we leave them until tomorrow, the berries next to them might spoil too. It's more than we'll eat today."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "오늘은 잼 만들 시간도 없고 십 유로만 남았어요. 그래서 어느 상자를 살 거예요?",
+          "base": {
+            "de": "Heute haben wir keine Zeit zum Marmeladekochen, und uns bleiben nur zehn Euro. Welche Schale wollen Sie also kaufen?",
+            "en": "We don't have time to make jam today, and we have just ten euros left. So which box will you buy?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "그럼 오늘은 여덟 유로짜리 근교 딸기를 사요. 싼 상자도 잼을 바로 만들 날에는 괜찮겠어요.",
+          "base": {
+            "de": "Dann kaufen wir heute die Erdbeeren aus der Gegend für acht Euro. Die günstigere Schale wäre an einem Tag in Ordnung, an dem wir gleich Marmelade machen.",
+            "en": "Then let's buy the local strawberries for eight euros today. The cheaper box would be fine on a day when we can make jam right away."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "아무래도 저는 ",
+        "chunks": [
+          "이쪽",
+          "상자가",
+          "낫다고",
+          "봐요.",
+          "아까 맛보니까 이쪽이"
+        ],
+        "distractors": [
+          "싸다고",
+          "상자를"
+        ],
+        "frameSuffix": " 더 달고, 저쪽 상자는 아래쪽에 짓무른 게 두 개 보였거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "양이 더 많다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 내일까지 두면 옆의 딸기도 상할 수 있어요. 오늘 다 먹을 양은 아니고요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "점에서는 동의해요",
+            "acceptedAnswers": [
+              "점에서는 동의해요",
+              "점은 동의해요",
+              "점에서는 저도 동의해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "다만",
+            "acceptedAnswers": [
+              "다만",
+              "그렇지만",
+              "그래도"
+            ],
+            "kind": "connector"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "그럼 오늘은 여덟 유로짜리 근교 딸기를 사요. 싼 상자도 잼을 바로 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " 괜찮겠어요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "만들 날에는",
+            "acceptedAnswers": [
+              "만들 날에는",
+              "만드는 날에는"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "아무래도",
+        "acceptedAnswers": [
+          "아무래도"
+        ],
+        "after": " 저는 이쪽 상자가 낫다고 봐요. 아까 맛보니까 이쪽이 더 달고, 저쪽 상자는 아래쪽에 짓무른 게 두 개 보였거든요.",
+        "fallbackChoices": [
+          "아무래도",
+          "억지로",
+          "차례로",
+          "몰래"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Den genauen Punkt der Zustimmung benennen",
+          "en": "Specify where you agree"
+        },
+        "rule": {
+          "de": "-다는 점에서는 동의해요 benennt den Punkt, in dem ihr euch einig seid. 다만 leitet den Gesichtspunkt ein, der für deine Entscheidung zusätzlich zählt.",
+          "en": "-다는 점에서는 동의해요 specifies exactly where you agree. 다만 introduces another consideration that matters to your decision."
+        },
+        "examples": [
+          {
+            "targetText": "양이 더 많다는 점에서는 동의해요. 다만 내일까지 두면 옆의 딸기도 상할 수 있어요. 오늘 다 먹을 양은 아니고요.",
+            "base": {
+              "de": "Dass mehr drin ist, da stimme ich zu. Wenn wir sie aber bis morgen stehen lassen, könnten die Erdbeeren daneben auch schlecht werden. Alles auf einmal essen wir heute nicht.",
+              "en": "I agree that there's more. But if we leave them until tomorrow, the berries next to them might spoil too. It's more than we'll eat today."
+            },
+            "highlights": [
+              "많다는 점에서는 동의해요",
+              "다만"
+            ]
+          },
+          {
+            "targetText": "방이 넓다는 점에서는 동의해요. 다만 우리 둘이 청소하기에는 너무 커요.",
+            "base": {
+              "de": "Ich stimme zu, dass das Zimmer geräumig ist. Für uns beide ist es allerdings zu groß, um es zu putzen.",
+              "en": "I agree that the room is spacious. Still, it's too large for just the two of us to clean."
+            },
+            "highlights": [
+              "넓다는 점에서는 동의해요",
+              "다만"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "아무래도",
+          "kind": "adverb",
+          "base": {
+            "de": "alles in allem",
+            "en": "on balance"
+          }
+        },
+        {
+          "targetText": "상자가",
+          "kind": "noun",
+          "base": {
+            "de": "die Schale, die Kiste",
+            "en": "the box"
+          }
+        },
+        {
+          "targetText": "맛보니까",
+          "kind": "verb",
+          "base": {
+            "de": "als ich probiert habe",
+            "en": "when I tasted them"
+          }
+        },
+        {
+          "targetText": "짓무른",
+          "kind": "verb",
+          "base": {
+            "de": "matschig gewordene",
+            "en": "that have gone mushy"
+          }
+        },
+        {
+          "targetText": "점에서는 동의해요",
+          "kind": "frame",
+          "base": {
+            "de": "in diesem Punkt stimme ich zu",
+            "en": "I agree on that point"
+          }
+        },
+        {
+          "targetText": "다만",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "상할 수 있어요",
+          "kind": "frame",
+          "base": {
+            "de": "sie könnten schlecht werden",
+            "en": "they might spoil"
+          }
+        },
+        {
+          "targetText": "근교",
+          "kind": "noun",
+          "base": {
+            "de": "das Umland",
+            "en": "the surrounding area"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "아무래도",
+            "이쪽",
+            "상자가",
+            "낫다고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "양이",
+            "동의해요",
+            "상할"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "유로짜리",
+            "근교",
+            "잼을"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "아무래도",
+        "familyKey": "아무래도",
+        "surface": "아무래도",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "아무래도 저는 이쪽 상자가 낫다고 봐요. 아까 맛보니까 이쪽이 더 달고, 저쪽 상자는 아래쪽에 짓무른 게 두 개 보였거든요.",
+          "base": {
+            "de": "Alles in allem finde ich diese Schale besser. Bei der Kostprobe vorhin waren diese Erdbeeren süßer. Unten in der anderen Schale habe ich zwei matschige gesehen.",
+            "en": "On balance I think this box is better. When I tasted them earlier, these were sweeter, and I saw two mushy ones at the bottom of the other box."
+          }
+        },
+        "base": {
+          "de": "wenn ich alles bedenke, wohl",
+          "en": "on balance, all things considered"
+        },
+        "whyThisWord": {
+          "de": "아무래도 signalisiert eine abgewogene persönliche Einschätzung. Das passt zu einer Entscheidung, bei der mehrere Beobachtungen zählen.",
+          "en": "아무래도 marks a considered personal judgment. It suits a decision that depends on several observations."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "아무래도",
+          "status": "productive"
+        },
+        {
+          "surface": "점에서는 동의해요",
+          "status": "productive"
+        }
+      ]
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "weekend-language-club",
+      "title": {
+        "de": "Mehr Pflichtstunden im Sprachclub?",
+        "en": "More compulsory hours at language club?"
+      },
+      "situation": {
+        "de": "Im koreanischsprachigen Lokalradio in Auckland wirst du als Elternteil zum Wochenendclub für Kinder interviewt. Der Club möchte die Pflichtstunden verdoppeln.",
+        "en": "A Korean-language community radio host in Auckland interviews you as a parent about a children's weekend language club. The club wants to double its compulsory hours."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "haeyo",
+          "haeyo",
+          "haeyo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Radiomoderation",
+            "en": "Radio host"
+          },
+          "voiceRole": "A",
+          "register": "hapsyo"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im koreanischsprachigen Lokalradio in Auckland wirst du als Elternteil zum Wochenendclub für Kinder interviewt. Der Club möchte die Pflichtstunden verdoppeln. Du hörst: „주말 한글 모임이 필수 수업을 두 시간에서 네 시간으로 늘리자고 제안했습니다. 학부모로서 어떻게 보십니까?“",
+        "en": "A Korean-language community radio host in Auckland interviews you as a parent about a children's weekend language club. The club wants to double its compulsory hours. You hear: “주말 한글 모임이 필수 수업을 두 시간에서 네 시간으로 늘리자고 제안했습니다. 학부모로서 어떻게 보십니까?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "주말 한글 모임이 필수 수업을 두 시간에서 네 시간으로 늘리자고 제안했습니다. 학부모로서 어떻게 보십니까?",
+          "base": {
+            "de": "Der Wochenendclub für Koreanisch schlägt vor, den Pflichtunterricht von zwei auf vier Stunden zu verlängern. Was halten Sie als Elternteil davon?",
+            "en": "The weekend Korean club has proposed increasing compulsory classes from two hours to four. What is your view as a parent?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "시간이 부족하다는 점에서는 동의해요. 다만 아무래도 네 시간은 무리라고 봐요. 운동부와 겹치는 아이가 많고, 작년에는 세 시간째부터 출석이 절반이었거든요.",
+          "base": {
+            "de": "Dass Zeit fehlt, sehe ich auch so. Vier Stunden sind meiner Ansicht nach aber zu viel. Bei vielen Kindern überschneidet sich das mit dem Sport. Letztes Jahr war ab der dritten Stunde nur noch die Hälfte dabei.",
+            "en": "I agree that time is short. On balance, though, I think four hours is too much. Many children have a clash with sports, and last year only half were attending from the third hour on."
+          },
+          "move": "position",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "모임 운영진은 두 시간으로는 교재 진도를 못 맞춘다고 합니다. 그래도 반대하십니까?",
+          "base": {
+            "de": "Die Clubleitung sagt, mit zwei Stunden komme sie im Lehrbuch nicht wie vorgesehen voran. Sind Sie trotzdem dagegen?",
+            "en": "The organisers say they can't keep up with the textbook schedule in two hours. Do you still oppose the change?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "진도가 밀린다는 점에서는 동의해요. 다만 작년처럼 중간에 아이들이 빠지면 진도를 나가도 놓치는 아이가 많아져요.",
+          "base": {
+            "de": "Ich stimme zu, dass der Kurs im Stoff zurückliegt. Steigen die Kinder aber wie letztes Jahr mittendrin aus, verpassen mehr von ihnen den Stoff, selbst wenn der Kurs weiterkommt.",
+            "en": "I agree that the class is behind schedule. But if children leave midway as they did last year, more of them miss the material even if the class moves ahead."
+          },
+          "move": "rebut",
+          "register": "haeyo"
+        },
+        {
+          "speaker": "them",
+          "targetText": "방송 시간이 삼십 초 남았습니다. 청취자분들께 입장을 한 문장으로 정리해 주시겠습니까?",
+          "base": {
+            "de": "Wir haben noch dreißig Sekunden Sendezeit. Würden Sie Ihre Haltung für unsere Hörerinnen und Hörer in einem Satz zusammenfassen?",
+            "en": "We have thirty seconds of airtime left. Would you sum up your position for our listeners in one sentence?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "결론은, 필수는 두 시간으로 두고 세 시간째는 선택 복습으로 열어서 한 학기 출석을 보고 다시 정하자는 거예요.",
+          "base": {
+            "de": "Ich schlage vor, zwei Stunden verpflichtend zu lassen, in der dritten eine freiwillige Wiederholung anzubieten und nach einem Halbjahr anhand der Anwesenheit neu zu entscheiden.",
+            "en": "In short, I'd keep two hours compulsory, offer optional revision in the third hour, and reconsider after seeing a semester's attendance."
+          },
+          "move": "conclude",
+          "register": "haeyo"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "시간이",
+          "부족하다는",
+          "점에서는",
+          "동의해요. 다만",
+          "아무래도 네 시간은"
+        ],
+        "distractors": [
+          "부족하다고",
+          "시간을"
+        ],
+        "frameSuffix": " 무리라고 봐요. 운동부와 겹치는 아이가 많고, 작년에는 세 시간째부터 출석이 절반이었거든요."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "진도가 밀린다는 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ". 다만 작년처럼 중간에 아이들이 빠지면 진도를 "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " 놓치는 아이가 많아져요."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "점에서는 동의해요",
+            "acceptedAnswers": [
+              "점에서는 동의해요",
+              "점은 동의해요"
+            ],
+            "kind": "frame"
+          },
+          {
+            "answer": "나가도",
+            "acceptedAnswers": [
+              "나가도",
+              "나가더라도",
+              "나간다고 해도"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "결론은, 필수는 두 시간으로 두고 세 시간째는 선택 복습으로 열어서 한 학기 출석을 보고 "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "다시 정하자는 거예요",
+            "acceptedAnswers": [
+              "다시 정하자는 거예요",
+              "다시 결정하자는 거예요",
+              "다시 정하자는 거죠"
+            ],
+            "kind": "frame"
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "시간이 부족하다는 점에서는 ",
+        "answer": "동의해요",
+        "acceptedAnswers": [
+          "동의해요"
+        ],
+        "after": ". 다만 아무래도 네 시간은 무리라고 봐요. 운동부와 겹치는 아이가 많고, 작년에는 세 시간째부터 출석이 절반이었거든요.",
+        "fallbackChoices": [
+          "동의해요",
+          "반대해요",
+          "거절해요",
+          "부인해요"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Den Einwand annehmen und bei der eigenen Position bleiben",
+          "en": "Grant an objection and sustain your position"
+        },
+        "rule": {
+          "de": "-다는 점에서는 동의해요 begrenzt deine Zustimmung auf den angesprochenen Punkt. Mit -아도 oder -어도 erklärst du dann, was trotz dieses Vorteils passieren kann.",
+          "en": "-다는 점에서는 동의해요 limits agreement to the point raised. Use -아도 or -어도 to explain what could still happen despite that benefit."
+        },
+        "examples": [
+          {
+            "targetText": "진도가 밀린다는 점에서는 동의해요. 다만 작년처럼 중간에 아이들이 빠지면 진도를 나가도 놓치는 아이가 많아져요.",
+            "base": {
+              "de": "Ich stimme zu, dass der Kurs im Stoff zurückliegt. Steigen die Kinder aber wie letztes Jahr mittendrin aus, verpassen mehr von ihnen den Stoff, selbst wenn der Kurs weiterkommt.",
+              "en": "I agree that the class is behind schedule. But if children leave midway as they did last year, more of them miss the material even if the class moves ahead."
+            },
+            "highlights": [
+              "밀린다는 점에서는 동의해요",
+              "나가도"
+            ]
+          },
+          {
+            "targetText": "표가 싸다는 점에서는 동의해요. 다만 표를 싸게 사도 숙박비가 많이 들어요.",
+            "base": {
+              "de": "Ich stimme zu, dass die Fahrkarte günstig ist. Selbst mit einer günstigen Fahrkarte sind aber die Übernachtungskosten hoch.",
+              "en": "I agree the ticket is cheap. But even if we get it cheaply, accommodation still costs a lot."
+            },
+            "highlights": [
+              "싸다는 점에서는 동의해요",
+              "사도"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "동의해요",
+          "kind": "verb",
+          "base": {
+            "de": "ich stimme zu",
+            "en": "I agree"
+          }
+        },
+        {
+          "targetText": "필수 수업을",
+          "kind": "noun",
+          "base": {
+            "de": "den Pflichtunterricht",
+            "en": "the compulsory classes"
+          }
+        },
+        {
+          "targetText": "부족하다는 점에서는",
+          "kind": "frame",
+          "base": {
+            "de": "was den Zeitmangel betrifft",
+            "en": "on the point that there is too little"
+          }
+        },
+        {
+          "targetText": "아무래도",
+          "kind": "adverb",
+          "base": {
+            "de": "alles in allem",
+            "en": "on balance"
+          }
+        },
+        {
+          "targetText": "다만",
+          "kind": "connector",
+          "base": {
+            "de": "allerdings",
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "출석이",
+          "kind": "noun",
+          "base": {
+            "de": "die Anwesenheit",
+            "en": "attendance"
+          }
+        },
+        {
+          "targetText": "진도가",
+          "kind": "noun",
+          "base": {
+            "de": "der Fortschritt im Stoff",
+            "en": "progress through the material"
+          }
+        },
+        {
+          "targetText": "다시 정하자는 거예요",
+          "kind": "frame",
+          "base": {
+            "de": "ich schlage vor, später neu zu entscheiden",
+            "en": "my proposal is to decide again later"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "시간이",
+            "부족하다는",
+            "동의해요",
+            "무리라고"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "진도가",
+            "중간에",
+            "놓치는",
+            "많아져요"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "필수는",
+            "선택",
+            "출석을"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "동의하다",
+        "familyKey": "동의",
+        "surface": "동의해요",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "시간이 부족하다는 점에서는 동의해요. 다만 아무래도 네 시간은 무리라고 봐요. 운동부와 겹치는 아이가 많고, 작년에는 세 시간째부터 출석이 절반이었거든요.",
+          "base": {
+            "de": "Dass Zeit fehlt, sehe ich auch so. Vier Stunden sind meiner Ansicht nach aber zu viel. Bei vielen Kindern überschneidet sich das mit dem Sport. Letztes Jahr war ab der dritten Stunde nur noch die Hälfte dabei.",
+            "en": "I agree that time is short. On balance, though, I think four hours is too much. Many children have a clash with sports, and last year only half were attending from the third hour on."
+          }
+        },
+        "base": {
+          "de": "zustimmen",
+          "en": "agree"
+        },
+        "whyThisWord": {
+          "de": "Mit 동의해요 kannst du ausdrücklich zustimmen. Benennst du davor den genauen Punkt, bleibt hörbar, wie weit deine Zustimmung reicht.",
+          "en": "동의해요 makes your agreement explicit. Naming the specific point first makes the scope of that agreement clear."
+        },
+        "surfaceMode": "attested"
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      },
+      "carrierTags": [
+        {
+          "surface": "점에서는 동의해요",
+          "status": "productive"
+        },
+        {
+          "surface": "아무래도",
+          "status": "productive"
+        },
+        {
+          "surface": "반대하십니까",
+          "status": "recognition"
+        }
+      ]
+    }
+  ]
+}

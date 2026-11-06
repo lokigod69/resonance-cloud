@@ -1,0 +1,49 @@
+{
+  "file": "spanish-p7.json",
+  "source": "9bc64af1731f0aab91833ba1253e3af8ca09662273f88ad5296cb0a1d6cf987e",
+  "result": "d3f0530bea45520e9f9ec23c5b8a78229ead82503f5b321862675a11adaf20b8",
+  "edits": 37,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "spanish-p7.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Staging matches the P7 anchor: L1-4 para+inf, L5-8 para que with whitelisted stems (funcione, llegue, puedan, tenga, haya), L9-10 mixed at path level. All ten frozen trophies present and recycled in learner turns; recall, speakRequired, chunk concat and cloze concat identities hold in every lesson. Spanish is Spain usage (coger el tren, vale, gasolina, móvil-era register), gender-free throughout (perderse is infinitive; L8 'la niña' is a third party, not the speaker). Fixed: L1 them-turn overstated the physical constraint; L2 'petrol' is British in en-US base; L3 'aprovechar la espera' too formal for friends; L4 'para dejarte tiempo con las invitaciones' stilted; L5-9 connector chips 'aunque' / 'mientras que' pair with the indicative form chips into grammatical sentences (aunque funciona, mientras que llega, mientras que haya sitio reads as a condition), breaking single-correct; L9 'entrar al centro' is LatAm-leaning, Spain says 'entrar en'; L8 term gloss 'Platz ist' is not German; register value 'informal' does not match the architecture's Spanish register pair usted/tú. Form cues never print the answer and identify the third-person subject (el micrófono, Marta, todos, nadie). Pattern examples teach the target form but do not reveal hidden-turn content. L10 timing is coherent as staged: agreement closes at eight, workshop ends at eight, fifteen-minute extension only if the group tidies, so they clean and close at eight-fifteen."
+    },
+    {
+      "file": "spanish-plan.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "P7 trophies and beats match the draft one to one; no edit. Note 2 ('esta propuesta no introduce tú') predates the architecture decision to introduce tú at B1; the draft follows the architecture (mostly tú for P7). No change to the plan file; owner decision recorded as open issue."
+    }
+  ],
+  "openIssues": [
+    "Register value: edits set 'tú' per the architecture's Spanish usted/tú pair; if the generalized validator config still keys the Spanish pair on formal/informal, revert these ten edits rather than the content. Owner decision on introducing tú at B1 is still pending and spanish-plan.json note 2 says the opposite.",
+    "L2 cloze starts with an empty '' text segment before the capitalized form blank 'Salimos'; confirm the cloze renderer and the lowercase matcher accept a leading empty segment and a capitalized answer.",
+    "L8 pattern example 'la niña ... junto a su padre' is third-person, not speaker, so it passes the gender rule; swap for 'el grupo' if the policy is tightened to all referents.",
+    "L9 and L10 pattern rules explain both para+inf and para que in one card by design of the mix lessons; grammar is shown, hidden-turn content is not, but a stricter spoiler reading would trim the L9 label to 'Para facilitar / para que + subjuntivo'.",
+    "L2 T4 German 'damit wir nur ein Auto brauchen' is a free rendering of 'para ir en un solo coche'; accepted for idiom, flag if literal fidelity is required.",
+    "No approval implied for validator run, edition regeneration, catalog SQL or TTS; Codex holds the in-flight claim on this scope."
+  ]
+}

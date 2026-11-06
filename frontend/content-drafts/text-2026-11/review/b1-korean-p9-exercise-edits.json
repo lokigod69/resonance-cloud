@@ -1,0 +1,29 @@
+{
+  "originalSource": "korean-capstone-final/p9.json",
+  "originalSha256": "3eefece6e21da92e5657ff43b3a0aec31d9f0053d12f7e779745fb3ef27d222b",
+  "resultSha256": "93930d6be3b533f120af4279a64d77a45bc439e41286706aaee4ca9b02d7cf12",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 6,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 1 ended at the sentence boundary; 같아요. now sits inside a chip. 방금 산 kept with it and 빵값이 두 번 fused so 두 번 cannot be slid before 산 (which would still read grammatically). All eojeol preserved, 4 chips, no overlap with distractors."
+    },
+    {
+      "lesson": 9,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 2 ended at 돼요.; boundary now inside 안 돼요. 교체. 안 돼요 kept together; every remaining order is forced by sentence-final chips. 4 chips, ≤3 eojeol each, distinct from distractors."
+    },
+    {
+      "lesson": 10,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 2 ended at 멈췄어요.; boundary now inside 또 멈췄어요. 어떤. 승강기가 fused with the concessive clause so 또 cannot be moved before 고쳤는데도 (which would read 'repaired again'). 4 chips, single valid order."
+    }
+  ]
+}

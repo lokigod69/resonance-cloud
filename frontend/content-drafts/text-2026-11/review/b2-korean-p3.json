@@ -1,0 +1,51 @@
+{
+  "candidate": "c91c378e76b3010d70f0f2d4f390c127ad5d83eb44f2e684c25c07d29934da63",
+  "authorSource": "c4dba1244d610cf9512c82d900ccbc3bd337fd8ec005a2b7098654166c0a7997",
+  "architecture": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+  "allocation": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525",
+  "originalAuthorCanonicalCopyEdits": 18,
+  "arbitratedCanonicalCopyEdits": 6,
+  "sourceAuthorChecker": "c7c2b5f89404605c68940eb27333ec39466f23571ffb8dc4eb796481006e0d3f",
+  "authorAssertions": 1207,
+  "gate": {
+    "sourceSha256": "c91c378e76b3010d70f0f2d4f390c127ad5d83eb44f2e684c25c07d29934da63",
+    "nativeGateSourceSha256": "e5b9359bd93b8cf02d566f74d0fd416c813c2a260ddb63c8d3ab449b34a5b4c4",
+    "lessons": 10,
+    "fullP3Boundary": "P1/P2 full-path schema rejects P3 as designed",
+    "unmodifiedPerLessonZod": true,
+    "checkedBlankSets": 20,
+    "checkedRecallChoices": 10,
+    "checkedRegisters": 60,
+    "checkedCopiedBilingualPatternAndTrophyPairs": 20,
+    "negativeControls": [
+      "reject extra cloze text",
+      "reject duplicate recall option",
+      "reject formal learner answer"
+    ]
+  },
+  "nativeReceipts": [
+    "ed8bd681dcb1085818e970832800f29e3df2ed81837865086e145880b4c7cacb",
+    "67c5d6a624402ebf174882e88e5de5fd215543aeea36cfe35aaf4202ed671e0a",
+    "f33eb5fc01df8607d763099b561bd26e50aa789a50aefbb2e32233d28e127a6c",
+    "34655427141ea13052c68ec61d8e9bdf47718b63c34069a9fcb890488c4290b4"
+  ],
+  "remainingHolds": [],
+  "lessonHashes": [
+    "ecc37274fac447bac913e9eeaf1a29efe2509baa94cafe1c6873215a4fc5ea3e",
+    "767e3a90276a8a8f8ac8d9d5858645802b938c977c0a6f7d45c9b26626c0e1d0",
+    "24fc302898559525f9844131b0b125b6d77963ede7f6955d56a4bbfa55206cfa",
+    "8cad90458c0e96aade6fdef293a6158d49ad48e1af9d94b0ef3bbc806fb71650",
+    "5cd8c21735dc751d5b661f4eff6bf90a158cc9e42e956818e2a1f4b2fef54e46",
+    "967449c40610e25d6c7e3442821813097f8e4a6335c98934773fca32d0c4c7a6",
+    "c65eb4b193dd1d5ab9cbaa34eff08de1b27cceb24373eadc6e8d93074ad16379",
+    "d870b62b67f09014b1b1b57a51d60191bbde4ecf799bf1af367547fd0a529fdb",
+    "16d42c382f61c9641ae6251abcce667d184ecb40730fc225f9d6d3e5120ef4ee",
+    "d265b7bd8906af8f932a2c30ebf4edf08e2e0b6e98c6f2752f9e91018023eac6"
+  ],
+  "scope": "Offline reviewed Korean B2 P3 unpublished candidate. P1/P2-only full-path validator and human/device delivery remain separate.",
+  "verdict": "PASS: complete offline unpublished text candidate for the ten named Korean B2 P3 episodes",
+  "remainingChecks": [
+    "Native human review is pending",
+    "Device answer delivery and release approval remain separate"
+  ]
+}

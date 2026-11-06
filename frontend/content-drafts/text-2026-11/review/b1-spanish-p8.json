@@ -1,0 +1,49 @@
+{
+  "file": "spanish-p8.json",
+  "source": "44a6eeb6be99be3a070c6d330bfcf3d6d3e06647996f95e70e167f639eba8e53",
+  "result": "06093d41959ae92252fcfdb9f9505280dfb86daf1102223531c61e23b8109c1b",
+  "edits": 28,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "spanish-p8.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Concat identity holds for all ten cloze and recall reconstructions; all first learner turns are 10–15 words and all last turns 8–12; all ten frozen trophies sit in the first learner turn and in the terms; register informal throughout with one singular friend/neighbour per scene; no gendered speaker adjectives or participles (distinto agrees with horario, juntas with vecinas, solo is adverbial). Real defects: comitative or coordinated-subject plurals make a second legitimate recall answer in L1 (escuchábamos … con mi abuelo), L2 (íbamos … con dos primas), L3 (volvía … y desayunábamos), L5 (jugábamos … guardamos), L6 (veníamos … ahora vengo), L7 (solíamos … ya no voy) and L10 (compartía la cena). L4 them₂ invents an unestablished variety and asks mirar when the answer is touch. L5 el turno siguiente is ambiguous between a move and a round. L7 title names Tuesdays that never appear in the scene. L8 term de mesa glossed für den Spieltisch. L9 term la parada is not in the scene, desde hace en gloss is unidiomatic, and Fahrplan misreads a work schedule as a bus timetable. Cloze answer positions cluster (slot 1 index 2 for L5–L9, slot 2 index 3 for L6–L9)."
+    },
+    {
+      "file": "spanish-plan.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "P8 trophy list infancia, colegio, pueblo, huerto, recreo, domingos, solía, juegos, distinto, etapa matches the path exactly and is preserved. Plan note 2 still says B1 introduces no tú; the later architecture authorizes tú for P8, so the plan note is stale, not the path. Plan P8 anchor omits llevo + gerundio and desde hace, which the architecture stages at L8–L9; the path follows the architecture. No edits to this proposal file."
+    }
+  ],
+  "openIssues": [
+    "L1 recall escuchaba covers both yo and él readings, so the él/yo ambiguity never marks a learner wrong; no edit needed.",
+    "L2 cloze cruzábamos/inventábamos is disambiguated only by the (nosotros) cue; cruzaba/inventaba would be coherent without it. Accepted as cue-governed under the German B1 cloze contract; confirm the runtime always shows the cue.",
+    "Base en across the path uses neighbour, neighbourhood, football, holidays. The British-spelling ban in the spec targets the en-US tier; left untouched pending confirmation of the Spanish corpus convention for base en.",
+    "L7 slug el-taller-de-los-martes still names Tuesdays; left unchanged to avoid an id change before suite pins exist. Rename to el-taller-de-la-tarde only if the owner wants the slug fixed before the held commit.",
+    "Path uses tú throughout; spanish-plan.json note 2 still states B1 introduces no tú and awaits the owner's batch decision on introducing tú at B1.",
+    "No runtime, publishing, TTS, edition regeneration or catalog work implied; Codex holds the in-flight claim on this scope."
+  ]
+}

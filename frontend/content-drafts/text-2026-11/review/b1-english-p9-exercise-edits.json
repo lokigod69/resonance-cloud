@@ -1,0 +1,36 @@
+{
+  "originalSource": "en-p9-review/english-p9.json",
+  "originalSha256": "0264cbe0a9bc082ec9abdc4d6657356a3a2df31cb52ea63012f1b0c454e87a77",
+  "resultSha256": "fe69ac729b427700d978435bd4c3c34b588ae75b2591037a19d2d84cf35f5bfe",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 3,
+      "field": "chunks",
+      "authority": "chip-minimum",
+      "receiptSha256": "069a6e0da8ca22c591f1daf27a2f6a00220f33388a28d9f33aa11bdf16ab361c",
+      "reason": "Four chips; period inside chip 3 so the sentences cannot exchange places. Subject/verb split yields only one grammatical order. No clash with 'at no charge.' or 'the recipe called for'."
+    },
+    {
+      "lesson": 4,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period inside chip 2; chips distinct from distractors 'Both addresses' / 'and nobody paid.'; single valid order."
+    },
+    {
+      "lesson": 6,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period inside chip 2; 'in May.' cannot precede a lowercase 'bought'; no second order."
+    },
+    {
+      "lesson": 10,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period inside chip 2; 'One solution is to be home after lunch.' would leave 'a Friday delivery. I'm supposed' dangling, so only one order; chip 2 is not the distractor."
+    }
+  ]
+}

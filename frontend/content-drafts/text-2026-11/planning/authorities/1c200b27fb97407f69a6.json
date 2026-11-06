@@ -1,0 +1,841 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Polish",
+  "code": "pl-PL",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": "Two rail registers, Pan and ty, fixed per lesson in registerPlan.mode constant (no relay shape in P1/P2, so no shift). Pan lessons: pan/pani + 3sg verb, no ty/ci/twój, no 2sg -sz forms, no imperatives to the interlocutor; learner may write Pan/Pani capitalized in direct address. ty lessons: no Pan/Pani, imperatives and ty-forms allowed, colloquial markers (no, dobra, okej) allowed in them turns and sparingly in you turns. The whitelist governs you1 only; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}, you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; the three you moves are pairwise distinct per lesson. Interlocutor gender is fixed per lesson by the them role text and may surface in them turns (słyszałam, dostałem); learner lines never genderize the learner.",
+  "genderSafety": "All 20 lessons are authored speakerGender neutral by construction: learner turns use present tense (wybieram, wątpię, skłaniam się, radzę, proponuję), perfective future, 1pl present (dzielimy, wracamy), impersonals (-no/-to, można, trzeba było) and 3rd-person past/conditional agreeing with a visible subject noun (prędkość została, zakup byłby tańszy, kalendarz doprowadził, gdyby wspólnota potrzebowała). No 1sg/2sg past or conditional and no speaker predicate adjective appears in any canonical you line. If a later full draft needs one, the lesson flips to speakerGender marked with alternates.f and alternates.m for every affected you turn (text, chunks, blankAnswers all rewritten, canonical equal to canonicalGender), never suffix replacement. 1pl past (-liśmy/-łyśmy) is avoided entirely in P1/P2 rather than defaulted.",
+  "orthography": "NFC; full diacritics mandatory in canonical text; diacritic-stripped variants are listed explicitly in acceptedAnswers, never derived at runtime. No digit in any targetText: numbers, dates, percentages and prices are words in dialogue (osiemset złotych, dwunastego, czterdzieści procent); digits only in base captions and situation. Polish quotes „…” when captions quote dialogue[0]. Pan/Pani capitalized when the learner addresses the interlocutor; lowercase pan/pani in narration. Proper names allowed in dialogue (Gdańsk, Marek), never as trophy, term or blank answer. Semicolons and colons stay attached to the preceding chunk.",
+  "segmentation": "Shared rail: token = maximal run of letters/digits with internal apostrophe/hyphen; joiner single space; build.framePrefix + chunks.join(' ') + frameSuffix === dialogue[1].targetText NFC exactly. Native chunk policy: się, by, nie and the clitic pronoun stay inside the verb chunk (skłaniam się, nie muszę, da się); preposition + noun phrase is one chunk (w porównaniu z Krakowem may split only after Krakowem); two-part frames split at the halves (z jednej strony | …, z drugiej strony | …); comparative frames keep o + numeral + comparative together (o osiemset złotych wyższy). No worked chunk example is given in this spec: the full author declares framePrefix, chunks and frameSuffix per lesson so that the focus span (the sum of per-chunk token sizes) is 7–12 tokens in 5–8 chunks of 1–4 tokens each, and must verify both that sum and the exact reconstruction of dialogue[1].targetText by explicit count before submitting the draft; the full you1 (L1 is 20 tokens) is never the focus. A numeric partition that meets the limits is not evidence of natural grouping or of a unique meaningful order; the author establishes and the reviewer confirms both in displayed context, and no sample PASS is implied by this field. Lengths in tokens: them 6–20, you1 14–26, focus span 7–12, you2 12–24, you3 10–22; every line below was counted against these.",
+  "acceptedInput": "Exact-match after rail normalization (NFC, trim, collapse spaces, locale lowercase, strip terminal punctuation). Every blank, recall and term carries an explicit acceptedAnswers list containing the canonical answer and its diacritic-stripped spelling; no other invisible correction. Choices: exactly 4, distinct after normalization, exactly one accepted, at most one choice-bearing blank per cloze; distractors are real Polish words excluded grammatically or by the visible scene, and synonym-pair members (bo/ponieważ/dlatego że, jeśli/jeżeli, chociaż/choć/mimo że, zatem/więc) never share a choice set. Speech: existing pl-PL fuzzy scorer, 2–4 requiredTokens per turn, tokens ≥4 letters or a staged connector, never się/by/nie alone, never two tokens differing only in a final nasal vowel.",
+  "carriersStaged": {
+    "P1": "1–3 productive: z jednej strony … z drugiej strony; o + numeral/wiele + comparative + niż; natomiast (recycled B1); concession frame przyznaję, że … ale / to prawda, ale; clarify frame mówiąc dokładniej; closing frames podsumowując … / dlatego proponuję …; moim zdaniem (recycled). 1–3 recognition: podczas gdy, pod warunkiem że, gdyby + 3sg. 4–6 productive: podczas gdy; pod warunkiem że; superlatives (największe, najtańszy); 3rd-person conditional byłby/byłaby + comparative; z punktu widzenia + gen; jeśli zestawić X z Y; zgadzam się, że … ale. 4–6 recognition: gdyby, w przeciwnym razie. 7–10 productive: wątpię, żeby + 3rd past; skłaniam się ku + dat; gdyby + 3rd conditional; w przeciwnym razie; w porównaniu z + instr; po rozważeniu + gen; ostatecznie (recycled B1).",
+    "P2": "1–3 productive: ponieważ; dlatego że; powodem jest/była + nom; polega na tym, że; impersonal -no/-to past (doliczono, położono, zebrano); clarify frame mówiąc dokładniej/precyzyjnie; summary frame krótko mówiąc / w skrócie. 1–3 recognition: wynika z, mianowicie, który in oblique case. 4–6 productive: z regulaminu wynika, że; na etapie + gen; mianowicie; oblique relative (do którego, w którym); więc as consequence; process sequencing w trzech krokach / najpierw … dopiero potem. 4–6 recognition: skutkiem tego, doprowadzić do, w związku z czym. 7–10 productive: skutkiem tego; doprowadzić do + gen (3rd past agreeing with subject); konsekwencje dla + gen; procedura była następująca; w związku z czym; w takim razie / w przeciwnym razie; podsumowując (recycled P1)."
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Ważę za i przeciw",
+      "function": "compare two or three options with advantages and disadvantages and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "constant per lesson: Pan in L1 (agentka nieruchomości), L3 (kierowniczka), L4 (wypożyczalnia), L6 (właścicielka sklepu), L8 (mentor), L9 (sąsiadka), L10 (przewodniczący wspólnoty); ty in L2 (kolega), L5 (przyjaciółka), L7 (znajomy)",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "z jednej strony/z drugiej strony; o + numeral/wiele + comparative + niż; natomiast; przyznaję, że … ale; to prawda, ale; mówiąc dokładniej; podsumowując; dlatego proponuję",
+          "recognitionOnly": "podczas gdy; pod warunkiem że; gdyby + 3sg"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "podczas gdy; pod warunkiem że; superlatives; byłby/byłaby + comparative (3rd person); z punktu widzenia + gen; jeśli zestawić X z Y; zgadzam się, że … ale",
+          "recognitionOnly": "gdyby; w przeciwnym razie"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "wątpię, żeby + 3rd past; skłaniam się ku + dat; gdyby + 3rd conditional; w przeciwnym razie; w porównaniu z + instr; po rozważeniu + gen; ostatecznie",
+          "recognitionOnly": "co prawda … ale; mimo wszystko"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "rent-vs-commute",
+          "scene": "Letting agency; agent (f) lays two flats on the table",
+          "interlocutor": "agentka nieruchomości",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Mamy dwie oferty: mieszkanie w centrum za trzy tysiące i na obrzeżach za dwa tysiące dwieście.",
+            "you": "Z jednej strony czynsz w centrum jest o osiemset złotych wyższy, z drugiej strony dojazd do pracy zajmuje tylko kwadrans.",
+            "move": "compare"
+          },
+          "challenge": "Osiemset złotych miesięcznie to prawie dziesięć tysięcy rocznie. Czy to naprawdę się opłaca?",
+          "answerMove": {
+            "you": "Przyznaję, że różnica jest duża, ale bilet miesięczny i dwie godziny dziennie w autobusie też kosztują.",
+            "move": "concede"
+          },
+          "steer": "Rozumiem. Właściciel chce decyzji do piątku. Które mieszkanie mam zarezerwować?",
+          "closingMove": {
+            "you": "Podsumowując, wybieram mieszkanie w centrum, bo wyższy czynsz rekompensuje mi krótszy dojazd i więcej wolnego czasu.",
+            "move": "conclude"
+          },
+          "trophyLemma": "czynsz",
+          "trophySurface": "czynsz",
+          "trophyFamilyKey": "czynsz",
+          "pos": "noun",
+          "requiredCarrier": "z jednej strony … z drugiej strony",
+          "recycles": "B1 bo; A2 prices as words"
+        },
+        {
+          "number": 2,
+          "slug": "car-vs-tram",
+          "scene": "Office kitchen; colleague (m) weighs how to commute",
+          "interlocutor": "kolega z pracy",
+          "register": "ty",
+          "openingMove": {
+            "them": "Słuchaj, dojeżdżasz samochodem czy tramwajem? Zastanawiam się, co wybrać.",
+            "you": "Samochodem jest wygodniej, ale jego największą wadą są korki i koszty parkowania, tramwaj natomiast jeździ regularnie i tanio.",
+            "move": "compare"
+          },
+          "challenge": "Tanio? Mój tramwaj spóźnia się prawie codziennie, a rano jest tak pełny, że nie da się wejść.",
+          "answerMove": {
+            "you": "To prawda, ale w samochodzie stoisz w tych samych korkach, tylko płacisz za to o wiele więcej.",
+            "move": "rebut"
+          },
+          "steer": "Dobra, a gdybym musiał wozić dzieci do szkoły po drodze? Co wtedy?",
+          "closingMove": {
+            "you": "Wtedy proponuję rozwiązanie mieszane: samochodem tylko w dni szkolne, a resztę tygodnia tramwajem.",
+            "move": "propose"
+          },
+          "trophyLemma": "wada",
+          "trophySurface": "wadą",
+          "trophyFamilyKey": "wada",
+          "pos": "noun",
+          "requiredCarrier": "największą wadą + nom; natomiast",
+          "recycles": "B1 natomiast; B1 P10 największa (recycled superlative); A2 instrumental transport"
+        },
+        {
+          "number": 3,
+          "slug": "remote-vs-office",
+          "scene": "One-to-one with manager (f) about the new work model",
+          "interlocutor": "kierowniczka zespołu",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Od stycznia zespół może pracować zdalnie albo w biurze. Jaki model byłby najlepszy dla zespołu?",
+            "you": "Moim zdaniem największa zaleta pracy zdalnej to spokój i brak dojazdów, natomiast w biurze szybciej rozwiązujemy problemy.",
+            "move": "position"
+          },
+          "challenge": "Dane pokazują jednak, że w ostatnim kwartale zdalni pracownicy oddawali projekty z opóźnieniem.",
+          "answerMove": {
+            "you": "Mówiąc dokładniej, opóźnienia dotyczyły tylko nowych osób, które potrzebowały wprowadzenia na miejscu.",
+            "move": "clarify"
+          },
+          "steer": "Dobrze. Zarząd prosi o jedną konkretną rekomendację do końca tygodnia.",
+          "closingMove": {
+            "you": "Dlatego proponuję model hybrydowy: nowi pracownicy trzy dni w biurze, pozostali dwa, z jednym wspólnym dniem dla wszystkich.",
+            "move": "conclude"
+          },
+          "trophyLemma": "zaleta",
+          "trophySurface": "zaleta",
+          "trophyFamilyKey": "zaleta",
+          "pos": "noun",
+          "requiredCarrier": "największa zaleta X to Y; mówiąc dokładniej",
+          "recycles": "B1 moim zdaniem; B1 P10 największa (recycled superlative); które nominative relative"
+        },
+        {
+          "number": 4,
+          "slug": "buy-vs-rent-gear",
+          "scene": "Ski rental counter; clerk (m) offers buying or renting",
+          "interlocutor": "pracownik wypożyczalni",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Sprzęt można kupić za dwa tysiące albo wypożyczać za czterysta złotych za weekend. Co wybieramy?",
+            "you": "Przy dwóch wyjazdach rocznie koszty wypożyczenia są niższe i zalety wynajmu wyraźnie przeważają, bo nie muszę niczego przechowywać ani serwisować.",
+            "move": "compare"
+          },
+          "challenge": "A jeśli w tym sezonie wyjazdów będzie sześć lub siedem? Wtedy zakup wychodzi taniej.",
+          "answerMove": {
+            "you": "Przyznaję, że przy sześciu wyjazdach zakup byłby tańszy, ale takiej częstotliwości na razie nie planuję.",
+            "move": "concede"
+          },
+          "steer": "W porządku. Mamy też opcję pośrednią: wynajem sezonowy za sześćset złotych. Co ostatecznie wybieramy?",
+          "closingMove": {
+            "you": "Wezmę wynajem sezonowy, pod warunkiem że mogę w połowie sezonu wymienić narty na inny model.",
+            "move": "counteroffer"
+          },
+          "trophyLemma": "przeważać",
+          "trophySurface": "przeważają",
+          "trophyFamilyKey": "przeważać",
+          "pos": "verb",
+          "requiredCarrier": "zalety przeważają; byłby tańszy; pod warunkiem że",
+          "recycles": "P1 L3 zalety; B1 wezmę, na razie"
+        },
+        {
+          "number": 5,
+          "slug": "two-holiday-plans",
+          "scene": "Friend (f) chooses between sea and mountains",
+          "interlocutor": "przyjaciółka",
+          "register": "ty",
+          "openingMove": {
+            "them": "Mam dwa pomysły na urlop: tydzień nad morzem albo cztery dni w górach i resztę w domu. Co myślisz?",
+            "you": "Oferta nad morzem jest korzystniejsza cenowo, bo hotel jest w pakiecie, podczas gdy w górach płacimy osobno za każdy nocleg.",
+            "move": "compare"
+          },
+          "challenge": "Ale nad morzem w sierpniu jest tłum i deszcz co drugi dzień. W górach przynajmniej jest spokój.",
+          "answerMove": {
+            "you": "Deszcz pada też w górach, a tłumu unikniemy, jeśli wybierzemy mniejszą miejscowość zamiast kurortu.",
+            "move": "rebut"
+          },
+          "steer": "Okej, ale decyduj szybko: promocja na hotel kończy się dziś o północy. Rezerwujemy?",
+          "closingMove": {
+            "you": "Tak, rezerwujemy morze, ale w mniejszej miejscowości, a górom damy szansę jesienią.",
+            "move": "conclude"
+          },
+          "trophyLemma": "korzystny",
+          "trophySurface": "korzystniejsza",
+          "trophyFamilyKey": "korzystny",
+          "pos": "adjective",
+          "requiredCarrier": "korzystniejsza cenowo; podczas gdy",
+          "recycles": "B1 jeśli + perfective future; zamiast + gen"
+        },
+        {
+          "number": 6,
+          "slug": "cash-vs-app",
+          "scene": "Small shop; owner (f) asks a regular customer about payment options",
+          "interlocutor": "właścicielka sklepu",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Zastanawiam się, czy wprowadzić płatności aplikacją, czy zostać przy gotówce i kartach. Jak to wygląda z punktu widzenia klienta?",
+            "you": "Z punktu widzenia klienta aplikacja jest wygodniejsza, ale dla sklepu największe ryzyko to awaria systemu w godzinach szczytu.",
+            "move": "position"
+          },
+          "challenge": "Awarie są rzadkie. Mnie bardziej martwi prowizja: dwa procent od każdej transakcji. Czy to się opłaca?",
+          "answerMove": {
+            "you": "Jeśli zestawić prowizję z kosztem liczenia i wożenia gotówki do banku, różnica jest mniejsza, niż się wydaje.",
+            "move": "compare"
+          },
+          "steer": "Dobrze. Na razie wprowadzamy jedną opcję na próbę przez miesiąc. Którą?",
+          "closingMove": {
+            "you": "Proponuję aplikację jako dodatek, a nie zamiennik gotówki, z osobą na kasie, która pomoże pierwszym klientom.",
+            "move": "propose"
+          },
+          "trophyLemma": "ryzyko",
+          "trophySurface": "ryzyko",
+          "trophyFamilyKey": "ryzyko",
+          "pos": "noun",
+          "requiredCarrier": "z punktu widzenia + gen; największe ryzyko to",
+          "recycles": "B1 która relative; A2 kasa"
+        },
+        {
+          "number": 7,
+          "slug": "class-vs-app",
+          "scene": "Friend (m) wants to learn Spanish cheaply",
+          "interlocutor": "znajomy",
+          "register": "ty",
+          "openingMove": {
+            "them": "Chcę się uczyć hiszpańskiego. Kurs w szkole kosztuje tysiąc dwieście, a aplikacja sto rocznie. Aplikacja chyba wystarczy, nie?",
+            "you": "Aplikacja dobrze uczy słówek, ale wątpię, żeby sama nauczyła cię mówić, bo nikt nie poprawia twojej wymowy ani gramatyki.",
+            "move": "position"
+          },
+          "challenge": "Mój kuzyn nauczył się tylko z aplikacji i mówi całkiem nieźle. To chyba kwestia samodyscypliny.",
+          "answerMove": {
+            "you": "Zgadzam się, że przy dużej samodyscyplinie da się dużo osiągnąć, ale twój kuzyn ćwiczył też z ludźmi w pracy.",
+            "move": "concede"
+          },
+          "steer": "No dobra. Mam tylko tysiąc złotych i trzy miesiące do wyjazdu. Jak to rozegrać?",
+          "closingMove": {
+            "you": "W tej sytuacji aplikacja na słówka plus dwie godziny tygodniowo z korepetytorem online po trzydzieści złotych; to zmieści się w budżecie.",
+            "move": "propose"
+          },
+          "trophyLemma": "wątpić",
+          "trophySurface": "wątpię",
+          "trophyFamilyKey": "wątpić",
+          "pos": "verb",
+          "requiredCarrier": "wątpię, żeby + 3rd past",
+          "recycles": "B1 żeby; A2 kurs vocabulary"
+        },
+        {
+          "number": 8,
+          "slug": "two-job-offers",
+          "scene": "Coffee with a mentor (m) about two offers",
+          "interlocutor": "mentor",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Dwie oferty na stole: korporacja z wyższą pensją i startup z udziałami. Co przemawia za którą?",
+            "you": "Skłaniam się ku startupowi, bo nauczę się tam o wiele więcej, chociaż pensja w korporacji jest o trzydzieści procent wyższa.",
+            "move": "position"
+          },
+          "challenge": "Udziały w startupie często nie są nic warte. Z pięciu startupów, które znam, trzy upadły w ciągu dwóch lat.",
+          "answerMove": {
+            "you": "To prawda, ryzyko jest realne, ale w moim wieku mogę sobie pozwolić na jedną nieudaną próbę.",
+            "move": "concede"
+          },
+          "steer": "Korporacja właśnie dorzuciła możliwość pracy nad własnym projektem jeden dzień w tygodniu. Czy to coś zmienia?",
+          "closingMove": {
+            "you": "Zmienia sporo, ale ostatecznie wybieram startup, bo jeden dzień tygodniowo to za mało, żeby naprawdę się rozwijać.",
+            "move": "conclude"
+          },
+          "trophyLemma": "skłaniać",
+          "trophySurface": "Skłaniam",
+          "trophyFamilyKey": "skłaniać",
+          "pos": "verb",
+          "requiredCarrier": "skłaniam się ku + dat",
+          "recycles": "P1 L6 ryzyko; B1 chociaż, ostatecznie"
+        },
+        {
+          "number": 9,
+          "slug": "move-or-stay",
+          "scene": "Stairwell chat; older neighbour (f) heard about the Gdańsk offer",
+          "interlocutor": "sąsiadka",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Słyszałam o propozycji pracy w Gdańsku. To trudna decyzja: zostać czy wyjechać?",
+            "you": "W porównaniu z Krakowem Gdańsk oferuje wyższe zarobki i mieszkanie bliżej morza, ale tutaj mam rodzinę i znajomych.",
+            "move": "compare"
+          },
+          "challenge": "Rodzina to podstawa. Ja wyjechałam kiedyś za pracą i żałowałam. A gdyby praca w Gdańsku okazała się rozczarowaniem?",
+          "answerMove": {
+            "you": "Gdyby tak było, mogę wrócić; umowa jest na rok, a mieszkanie tutaj zostawiam bratu, nie sprzedaję.",
+            "move": "rebut"
+          },
+          "steer": "W takim razie jaka jest ostateczna decyzja, jeśli można zapytać?",
+          "closingMove": {
+            "you": "Ostatecznie jadę na ten rok, w przeciwnym razie zawsze będę się zastanawiać, co by było.",
+            "move": "conclude"
+          },
+          "trophyLemma": "porównanie",
+          "trophySurface": "porównaniu",
+          "trophyFamilyKey": "porównanie",
+          "pos": "noun",
+          "requiredCarrier": "w porównaniu z + instr; gdyby + 3sg",
+          "recycles": "B1 gdyby; B1 będę + infinitive"
+        },
+        {
+          "number": 10,
+          "slug": "courtyard-options",
+          "scene": "Housing community meeting; chair (m) asks for a recommendation",
+          "interlocutor": "przewodniczący wspólnoty",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Mamy trzy warianty zagospodarowania podwórka: parking, plac zabaw albo ogród sąsiedzki. Prosimy o rekomendację.",
+            "you": "Po rozważeniu wszystkich trzech wariantów radzę wybrać ogród, bo jest najtańszy z całej trójki, podczas gdy parking byłby najdroższy, a plac zabaw służy tylko dzieciom.",
+            "move": "position"
+          },
+          "challenge": "Ale dwadzieścia rodzin ma samochody i nie ma gdzie parkować. Ogród nie rozwiąże tego problemu.",
+          "answerMove": {
+            "you": "Można połączyć warianty: ogród na dwóch trzecich podwórka i osiem miejsc parkingowych przy bramie.",
+            "move": "counteroffer"
+          },
+          "steer": "Budżet pozwala jednak tylko na jeden wariant w tym roku. Który ma być pierwszy?",
+          "closingMove": {
+            "you": "Podsumowując: w tym roku ogród, bo jest najtańszy, a parking w przyszłym, gdyby wspólnota nadal go potrzebowała.",
+            "move": "summarize"
+          },
+          "trophyLemma": "radzić",
+          "trophySurface": "radzę",
+          "trophyFamilyKey": "radzić",
+          "pos": "verb",
+          "requiredCarrier": "po rozważeniu + gen; radzę + infinitive",
+          "recycles": "P1 L5 podczas gdy; P1 L4 byłby; P1 L9 gdyby; podsumowując"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Jak i dlaczego: wyjaśniam",
+      "function": "explain causes, consequences and processes in detail and sustain the explanation under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "constant per lesson: Pan in L1 (księgowa), L3 (kierownik), L5 (sąsiadka), L8 (konsultantka IT), L10 (administrator budynku); ty in L2 (nowy sąsiad), L4 (przyjaciółka), L6 (kolega), L7 (znajoma), L9 (sceptyczny znajomy)",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "ponieważ; dlatego że; powodem jest + nom; polega na tym, że; impersonal -no/-to past; mówiąc dokładniej; krótko mówiąc; w skrócie",
+          "recognitionOnly": "wynika z; mianowicie; oblique który"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "z regulaminu wynika, że; na etapie + gen; mianowicie; oblique relative (do którego); więc; w trzech krokach; najpierw … dopiero potem",
+          "recognitionOnly": "skutkiem tego; doprowadzić do; w związku z czym"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "skutkiem tego; doprowadzić do + gen (3rd past); konsekwencje dla + gen; procedura była następująca; w związku z czym; w takim razie; w przeciwnym razie; podsumowując",
+          "recognitionOnly": "wskutek + gen; w rezultacie"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "invoice-difference",
+          "scene": "Client's accountant (f) queries a higher September invoice",
+          "interlocutor": "księgowa klienta",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Faktura za wrzesień jest o czterysta złotych wyższa niż za sierpień. Skąd ta różnica?",
+            "you": "Różnica powstała, ponieważ we wrześniu doliczono dwie dodatkowe godziny konsultacji oraz koszt dojazdu do klienta.",
+            "move": "explain"
+          },
+          "challenge": "Dodatkowe godziny rozumiem. Ale proszę doprecyzować: ile dokładnie kosztował dojazd i na jakiej podstawie?",
+          "answerMove": {
+            "you": "Mówiąc dokładniej, dojazd to sto dwadzieścia złotych, czyli sześćdziesiąt kilometrów po dwa złote, zgodnie z umową.",
+            "move": "clarify"
+          },
+          "steer": "Dobrze. Do raportu dla zarządu potrzebuję jednego zdania z całym wyjaśnieniem.",
+          "closingMove": {
+            "you": "Krótko mówiąc: faktura wzrosła o czterysta złotych przez dwie dodatkowe godziny i jeden dojazd rozliczony według umowy.",
+            "move": "summarize"
+          },
+          "trophyLemma": "ponieważ",
+          "trophySurface": "ponieważ",
+          "trophyFamilyKey": "ponieważ",
+          "pos": "connector",
+          "requiredCarrier": "ponieważ + clause; -no impersonal (doliczono)",
+          "recycles": "B1 czyli; A2 prices as words"
+        },
+        {
+          "number": 2,
+          "slug": "five-bins",
+          "scene": "New neighbour (m) is lost in front of five bins",
+          "interlocutor": "nowy sąsiad",
+          "register": "ty",
+          "openingMove": {
+            "them": "Przeprowadziłem się w zeszłym tygodniu i nie rozumiem tych pięciu koszy. Jak to działa?",
+            "you": "Odpady dzielimy na pięć frakcji, a powodem jest to, że osiedle płaci niższą opłatę za dobrze posortowane śmieci.",
+            "move": "explain"
+          },
+          "challenge": "Okej, ale konkretnie: karton po pizzy z resztkami tłuszczu to papier czy bio?",
+          "answerMove": {
+            "you": "Taki karton to odpady zmieszane, bo tłuszcz uniemożliwia recykling papieru, a resztki jedzenia osobno do bio.",
+            "move": "clarify"
+          },
+          "steer": "Jasne. A kiedy wywożą poszczególne kosze? Nie chcę trzymać bio w domu przez tydzień.",
+          "closingMove": {
+            "you": "W skrócie: bio i zmieszane w poniedziałki i czwartki, papier i plastik co drugą środę, a szkło raz w miesiącu.",
+            "move": "summarize"
+          },
+          "trophyLemma": "powód",
+          "trophySurface": "powodem",
+          "trophyFamilyKey": "powód",
+          "pos": "noun",
+          "requiredCarrier": "powodem jest to, że",
+          "recycles": "B1 bo; A2 days of week"
+        },
+        {
+          "number": 3,
+          "slug": "project-slipped",
+          "scene": "Manager (m) asks why the project missed Friday",
+          "interlocutor": "kierownik projektu",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Projekt miał być gotowy w piątek, a jest środa następnego tygodnia. Co się stało?",
+            "you": "Problem polega na tym, że dostawca zmienił specyfikację w połowie prac, dlatego że jego poprzedni komponent przestał być produkowany.",
+            "move": "explain"
+          },
+          "challenge": "Kiedy dokładnie zespół dowiedział się o zmianie i dlaczego nie było wtedy informacji dla mnie?",
+          "answerMove": {
+            "you": "Informacja dotarła dwunastego, w czwartek, a zespół najpierw sprawdzał, czy stary komponent da się jeszcze zdobyć.",
+            "move": "clarify"
+          },
+          "steer": "Rozumiem. Teraz najważniejsze: jaki jest nowy termin i co zrobimy, żeby to się nie powtórzyło?",
+          "closingMove": {
+            "you": "Nowy termin to przyszła środa, a na przyszłość proponuję, żeby każda zmiana od dostawcy trafiała do Pana tego samego dnia.",
+            "move": "propose"
+          },
+          "trophyLemma": "polegać",
+          "trophySurface": "polega",
+          "trophyFamilyKey": "polegać",
+          "pos": "verb",
+          "requiredCarrier": "polega na tym, że; dlatego że",
+          "recycles": "B1 najpierw, żeby + 3rd past, termin"
+        },
+        {
+          "number": 4,
+          "slug": "loyalty-points",
+          "scene": "Friend (f) doubts the café loyalty card",
+          "interlocutor": "przyjaciółka",
+          "register": "ty",
+          "openingMove": {
+            "them": "Ta karta lojalnościowa w kawiarni naprawdę coś daje? Nie rozumiem tych punktów.",
+            "you": "Z regulaminu wynika, że za każde dziesięć złotych dostajesz punkt, a sto punktów zamienia się na darmowy napój.",
+            "move": "explain"
+          },
+          "challenge": "Czyli muszę wydać tysiąc złotych na jeden darmowy napój? Policz mi to dokładnie.",
+          "answerMove": {
+            "you": "Nie całkiem: kawa kosztuje dziesięć złotych, a w poniedziałki punkty liczą się podwójnie, więc przy dwóch kawach w poniedziałek napój wychodzi co pół roku.",
+            "move": "clarify"
+          },
+          "steer": "Pół roku na jedną kawę. Powiedz mi wprost: warto się rejestrować czy nie?",
+          "closingMove": {
+            "you": "Wprost: jeśli i tak kupujesz tam kawę, rejestruj się, bo nic nie tracisz; specjalnie dla punktów nie chodź.",
+            "move": "conclude"
+          },
+          "trophyLemma": "wynikać",
+          "trophySurface": "wynika",
+          "trophyFamilyKey": "wynikać",
+          "pos": "verb",
+          "requiredCarrier": "z regulaminu wynika, że",
+          "recycles": "B1 jeśli; A2 numbers as words"
+        },
+        {
+          "number": 5,
+          "slug": "provider-switch",
+          "scene": "Neighbour (f) saw a technician from another network",
+          "interlocutor": "sąsiadka",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Widziałam technika z innej sieci na klatce. Zmieniliście dostawcę internetu? Dlaczego?",
+            "you": "Tak, bo na etapie przedłużania umowy stary dostawca podniósł cenę o czterdzieści procent, a prędkość została ta sama.",
+            "move": "explain"
+          },
+          "challenge": "Czterdzieści procent to dużo. Ale czy nowa sieć ma w ogóle zasięg w naszym budynku? U mnie często nie działa.",
+          "answerMove": {
+            "you": "Mówiąc precyzyjnie: światłowód położono w maju do każdego mieszkania w budynku, więc zasięg wi-fi zależy już tylko od routera.",
+            "move": "clarify"
+          },
+          "steer": "A gdybym ja chciała zmienić? Od czego zacząć, żeby nie zostać bez internetu?",
+          "closingMove": {
+            "you": "W trzech krokach: najpierw umowa z nową siecią, w dniu instalacji oba łącza działają równolegle, starą umowę wypowiada się dopiero potem.",
+            "move": "summarize"
+          },
+          "trophyLemma": "etap",
+          "trophySurface": "etapie",
+          "trophyFamilyKey": "etap",
+          "pos": "noun",
+          "requiredCarrier": "na etapie + gen; -no impersonal (położono)",
+          "recycles": "B1 najpierw/potem, zależy od, dopiero"
+        },
+        {
+          "number": 6,
+          "slug": "garage-fine-appeal",
+          "scene": "Colleague (m) got a payment demand from the office garage operator",
+          "interlocutor": "kolega z pracy",
+          "register": "ty",
+          "openingMove": {
+            "them": "Dostałem wezwanie do zapłaty z garażu pod biurem, dwieście złotych. Da się to jakoś odwołać?",
+            "you": "Da się, mianowicie przez formularz na stronie operatora garażu, do którego dołączasz zdjęcie biletu i krótkie uzasadnienie.",
+            "move": "explain"
+          },
+          "challenge": "A jeśli nie mam już biletu? Wyrzuciłem go. Co wtedy wpisać w uzasadnienie?",
+          "answerMove": {
+            "you": "Wtedy zamiast biletu podajesz godzinę wjazdu i wyjazdu, bo operator ma nagrania z kamer i sam to sprawdzi.",
+            "move": "clarify"
+          },
+          "steer": "Mam na to tylko siedem dni, a dziś piąty. Zrobimy to teraz razem?",
+          "closingMove": {
+            "you": "Tak, proponuję zrobić to zaraz: ty wypełniasz formularz, a ja szukam w kalendarzu godziny twojego spotkania z tego dnia.",
+            "move": "propose"
+          },
+          "trophyLemma": "mianowicie",
+          "trophySurface": "mianowicie",
+          "trophyFamilyKey": "mianowicie",
+          "pos": "connector",
+          "requiredCarrier": "mianowicie; do którego oblique relative",
+          "recycles": "B1 formularz, zamiast + gen"
+        },
+        {
+          "number": 7,
+          "slug": "car-share-failed",
+          "scene": "Friend (f) asks what happened to the shared-car plan",
+          "interlocutor": "znajoma",
+          "register": "ty",
+          "openingMove": {
+            "them": "Co się stało z twoim planem wspólnego zakupu samochodu z sąsiadami? Cisza od miesiąca.",
+            "you": "Plan upadł, bo ubezpieczenie trzeba było zapłacić z góry, a skutkiem tego dwie rodziny się wycofały.",
+            "move": "explain"
+          },
+          "challenge": "Z góry za cały rok? Ile to dokładnie wychodziło na rodzinę i kto to policzył?",
+          "answerMove": {
+            "you": "Dokładnie dziewięćset złotych na rodzinę, policzył to Marek, bo tylko on rozmawiał z ubezpieczycielem.",
+            "move": "clarify"
+          },
+          "steer": "No to zawaliło się na pieniądzach. Co zrobisz z autem, które już oglądaliście?",
+          "closingMove": {
+            "you": "Z tego auta rezygnuję; wniosek na przyszłość jest prosty: najpierw pełne koszty na papierze, dopiero potem umowa.",
+            "move": "conclude"
+          },
+          "trophyLemma": "skutek",
+          "trophySurface": "skutkiem",
+          "trophyFamilyKey": "skutek",
+          "pos": "noun",
+          "requiredCarrier": "skutkiem tego + clause",
+          "recycles": "B1 trzeba było; P2 L5 najpierw … dopiero potem"
+        },
+        {
+          "number": 8,
+          "slug": "booking-system",
+          "scene": "Dental practice front desk explains its booking process to an IT consultant (f)",
+          "interlocutor": "konsultantka IT",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Zanim zaproponuję zmiany, proszę opisać, jak dziś wygląda u państwa rezerwacja wizyt.",
+            "you": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie dzień wcześniej; wprowadzono go, bo stary kalendarz papierowy doprowadził do podwójnych rezerwacji.",
+            "move": "explain"
+          },
+          "challenge": "Jak często zdarzały się te podwójne rezerwacje i co dokładnie dzieje się, gdy pacjent nie przyjdzie?",
+          "answerMove": {
+            "you": "Mniej więcej dwa razy w tygodniu; teraz po nieobecności system blokuje pacjentowi rezerwację online na trzydzieści dni.",
+            "move": "clarify"
+          },
+          "steer": "Dziękuję. Proszę jeszcze o jedno zdanie podsumowujące dla raportu: co działa, co nie.",
+          "closingMove": {
+            "you": "Podsumowując: rezerwacje i przypomnienia działają bez zarzutu, natomiast blokada po nieobecności zniechęca starszych pacjentów, którzy dzwonią zamiast rezerwować.",
+            "move": "summarize"
+          },
+          "trophyLemma": "doprowadzić",
+          "trophySurface": "doprowadził",
+          "trophyFamilyKey": "doprowadzać",
+          "pos": "verb",
+          "requiredCarrier": "doprowadził do + gen (agrees with kalendarz); -no impersonal (wprowadzono)",
+          "recycles": "B1 potwierdzenie, natomiast, którzy; P1 podsumowując"
+        },
+        {
+          "number": 9,
+          "slug": "bike-scheme",
+          "scene": "Sceptical friend (m) mocks the city bike scheme",
+          "interlocutor": "sceptyczny znajomy",
+          "register": "ty",
+          "openingMove": {
+            "them": "Miasto wydaje miliony na rowery miejskie, a jeżdżą nimi głównie turyści. Po co to komu?",
+            "you": "Chodzi o konsekwencje dla całego ruchu: każda osoba na rowerze to o jeden samochód mniej w korku i jedno wolne miejsce parkingowe.",
+            "move": "explain"
+          },
+          "challenge": "To brzmi ładnie, ale skąd wiesz, że ci ludzie wcześniej jeździli samochodem, a nie autobusem?",
+          "answerMove": {
+            "you": "Przyznaję, że nie wszyscy; z ankiety na naszym osiedlu wynikało jednak, że około jednej trzeciej przesiadła się z auta.",
+            "move": "concede"
+          },
+          "steer": "Dobra, jedna trzecia. A gdyby te pieniądze poszły na autobusy nocne? Co by było lepsze?",
+          "closingMove": {
+            "you": "Proponuję nie wybierać: połowa na rowery, połowa na nocne autobusy, bo jedno rozwiązuje dzień, a drugie noc.",
+            "move": "propose"
+          },
+          "trophyLemma": "konsekwencja",
+          "trophySurface": "konsekwencje",
+          "trophyFamilyKey": "konsekwencja",
+          "pos": "noun",
+          "requiredCarrier": "chodzi o konsekwencje dla + gen",
+          "recycles": "P2 L4 wynikać (wynikało); P1 przyznaję, że"
+        },
+        {
+          "number": 10,
+          "slug": "roof-repair-chain",
+          "scene": "Community board member explains to the building administrator (m) why the roof repair slipped",
+          "interlocutor": "administrator budynku",
+          "register": "Pan",
+          "openingMove": {
+            "them": "Mieszkańcy pytają, dlaczego remont dachu przesunięto na wiosnę. Proszę o pełne wyjaśnienie dla zarządu.",
+            "you": "Procedura była następująca: najpierw zebrano trzy oferty, w związku z czym wybór trwał do października, a wtedy wykonawca zażądał zaliczki.",
+            "move": "explain"
+          },
+          "challenge": "Zaliczki w jakiej wysokości i kto konkretnie podjął decyzję, żeby jej nie zapłacić?",
+          "answerMove": {
+            "you": "Wysokość to trzydzieści procent, a decyzję podjął zarząd na zebraniu, ponieważ fundusz remontowy był w tym momencie zbyt niski.",
+            "move": "clarify"
+          },
+          "steer": "Zrozumiałem. A gdyby wykonawca zrezygnował do wiosny? Jaki jest plan awaryjny?",
+          "closingMove": {
+            "you": "W takim razie wracamy do drugiej oferty, ważnej do marca; jeśli i ten wykonawca odmówi, ogłaszamy nowe zapytanie w lutym.",
+            "move": "propose"
+          },
+          "trophyLemma": "procedura",
+          "trophySurface": "Procedura",
+          "trophyFamilyKey": "procedura",
+          "pos": "noun",
+          "requiredCarrier": "procedura była następująca; w związku z czym; -no impersonal (zebrano)",
+          "recycles": "P2 L1 ponieważ; B1 wtedy; B1 jeśli + perfective future"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "czynsz",
+        "familyKey": "czynsz",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "wada",
+        "familyKey": "wada",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "zaleta",
+        "familyKey": "zaleta",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "przeważać",
+        "familyKey": "przeważać",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "korzystny",
+        "familyKey": "korzystny",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "ryzyko",
+        "familyKey": "ryzyko",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "wątpić",
+        "familyKey": "wątpić",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "skłaniać",
+        "familyKey": "skłaniać",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "porównanie",
+        "familyKey": "porównanie",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "radzić",
+        "familyKey": "radzić",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "ponieważ",
+        "familyKey": "ponieważ",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "powód",
+        "familyKey": "powód",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "polegać",
+        "familyKey": "polegać",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "wynikać",
+        "familyKey": "wynikać",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "etap",
+        "familyKey": "etap",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "mianowicie",
+        "familyKey": "mianowicie",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "skutek",
+        "familyKey": "skutek",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "doprowadzić",
+        "familyKey": "doprowadzać",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "konsekwencja",
+        "familyKey": "konsekwencja",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "procedura",
+        "familyKey": "procedura",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "All 20 lemmas and 20 familyKeys checked under NFC+casefold against the supplied forbidden list (A1/A2 + all 100 reserved B1 allocations): zero hits, zero inflectional variants of a listed item, zero shared lemma with a listed item. The 100 B1 rows stay allocated untouched; B2 rows are appended after them in the ledger. Surface anchors are whole-token matches on dialogue[1] after punctuation strip and casefold (Skłaniam→skłaniam, Procedura→procedura, wątpię, keeps comma-stripped); inflected surfaces (wadą, korzystniejsza, przeważają, porównaniu, powodem, polega, wynika, etapie, skutkiem, doprowadził, konsekwencje) are declared per lesson; no substring or stem rule.",
+    "nearFamilyDecisions": [
+      "dojazd is used as plain vocabulary and deliberately NOT a trophy because odjazd is forbidden and shares the root; same for następująca (następny forbidden) and opłata/opłaca się (opłata forbidden).",
+      "przeważać (ważyć root) is a distinct lemma from forbidden ważne (ważny); accepted as its own family.",
+      "doprowadzić keys to imperfective doprowadzać per rail; the base verb prowadzić is not on the list and is not used as a trophy.",
+      "skutek is the family; wskutek is excluded from trophies and from P2 productive carriers to keep one family per lemma.",
+      "radzić is the family; doradzać/rada are excluded as near derivations; poleca (forbidden) is never used as a learner recommendation verb in P1.",
+      "porównanie (noun) is the trophy; the verb porównać is kept out of learner lines before L9 (L6 uses zestawić) so the lemma is new at L9.",
+      "ponieważ was recognition-only in B1 and never a B1 trophy; it is absent from the forbidden list and becomes a productive B2 trophy at P2 L1.",
+      "dlatego is a carrier (dlatego że, dlatego proponuję) in both paths from lesson 1 and is therefore NOT a trophy; konsekwencja takes P2 L9 instead.",
+      "wada and zaleta are two families; neither has a listed relative."
+    ]
+  },
+  "mechanicalValidationRules": [
+    "Exactly 2 paths numbered 1,2 with exactly 10 lessons each numbered 1..10; 20 trophy rows unique under NFC+casefold against each other, the forbidden list and the frozen corpus; trophy.surface is a whole unit of dialogue[trophy.turnIndex] (turnIndex 1 in all 20 lessons).",
+    "dialogue has exactly 6 turns alternating them/you; token lengths them 6–20, you1 14–26, you2 12–24, you3 10–22; dialogue[2] contains a challenge cue or ends with ?; dialogue[4] is non-empty and differs from dialogue[0] and dialogue[2].",
+    "you1.move ∈ path moveWhitelist; you2.move ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3.move ∈ {conclude,propose,summarize,counteroffer,relay,request}; the three moves pairwise distinct.",
+    "Register lint: Pan lessons contain no ty, ci, cię, twój, twoja, 2sg -sz verb forms or 2sg imperatives in you turns; ty lessons contain no Pan/Pani/pana/pani address in you turns; registerPlan.mode is constant in every P1/P2 lesson.",
+    "Gender lint: regex on you turns for 1sg/2sg past/conditional endings (łam|łem|łaś|łeś|łabym|łbym|łabyś|łbyś) plus a reviewed list of speaker predicate adjectives is a surface WARNING only, because the suffixes also occur in nouns (stołem, tytułem, udziałem, Krakowem); a warning becomes an ERROR only when the reviewer confirms the hit is a 1sg/2sg verb or conditional form on a neutral lesson (resolution: mark the lesson with f and m alternates) or when a marked lesson lacks alternates. No speaker gender is inferred from suffix alone.",
+    "Digit ban: no [0-9] in any targetText, chunk, blank answer, term or pattern example; captions may carry digits.",
+    "Reconstruction: framePrefix + chunks.join(' ') + frameSuffix === dialogue[1].targetText; 5–8 chunks of 1–4 tokens, no edge whitespace, się/by/nie never a chunk alone; cloze segments and synthesis segments rebuild dialogue[3] and dialogue[5] exactly; recall before+answer+after rebuilds dialogue[1].",
+    "Blanks: 2–4 per cloze, 1–2 per synthesis; acceptedAnswers includes answer and its diacritic-stripped form; at most one blank carries choices; choices exactly 4 distinct after normalization with exactly one accepted; synonym-pair members never co-occur in one choice set (bo/ponieważ/dlatego że, jeśli/jeżeli, chociaż/choć/mimo że, zatem/więc, potem/później/następnie).",
+    "Staging lint: each you turn is scanned against the path staging table; a productive carrier from a later lesson range or a trophy lemma from a later lesson of either path appearing in a you turn is an error; recognition-only carriers may appear in them turns only. Inheritance precedence: a form already productive in the frozen Polish A1/A2 corpus or in the audited B1 outlines (e.g. B1 P10 największa superlative, paired viewpoint frames, 3rd-person byłby/byłaby) is exempt from the later-range and recognition-only bans when the lesson's recycles field cites that earlier source; B2 staging re-lists such forms for emphasis, not as first exposure. No other waiver exists.",
+    "speak: three speakTargets with turnIndex 1,3,5; requiredTokens 2–4 distinct whole units of that turn, each ≥4 letters or a staged connector, none się/by/nie, none a proper name, no two differing only in a final nasal vowel.",
+    "terms 8–10 per lesson, each targetText verbatim (folded) in dialogue or a pattern example; inflected terms carry lemma; trophy appears exactly once among terms.",
+    "Draft file strict: no additional keys; no pathId/lessonId while status is draft or reviewed; review.verdict pending implies nativeStatus unreviewed."
+  ],
+  "semanticReviewRules": [
+    "P1 lessons: you1 weighs two or three options with at least one advantage and one disadvantage; an option already named in the visible dialogue[0] opener may remain implicit in you1 (L4, L6, L7), and no filler is added to name it again; the recommendation is qualified (condition, cost, timing) rather than absolute; the them challenge introduces a new fact or number, not a paraphrase; the steer changes the constraint (deadline, budget, new option, edge case).",
+    "P2 lessons: you1 gives a cause or process with at least one explicit causal or sequential carrier; the them challenge is a precision request (ile dokładnie, kiedy dokładnie, konkretnie); you2 supplies specific values or steps; the steer demands a bottom line, summary or contingency.",
+    "Native B2 check: the difficulty lies in argument structure and elaboration (frames, agreement, oblique relatives, conditionals), not in rarer nouns; any line a native would find stiff, calqued or padded is flagged b2NotInflatedB1=false.",
+    "Fictional policies (osiedle payment scheme, café points, clinic thirty-day block, garage operator form, community roof procedure) are scene-local; reviewers reject any line that states a universal legal, medical, municipal or financial rule.",
+    "Distractors must be excluded by grammar or by the visible scene; a second plausible fit (e.g. więc where bo is the answer, byłaby where byłby is the answer with a visible masculine subject) is a fix.",
+    "Pattern truthfulness: rule text matches the highlighted construction and does not generalize beyond it (e.g. gdyby + 3rd conditional stated as hypothetical only, not as polite request).",
+    "German base primary and natural, English aligned; both carry the same information as the Polish line, including numbers written as digits in captions only.",
+    "TTS readability: proper names, online, bio and abbreviations are read naturally by the pl-PL voice; reviewers listen to each you turn once before passing ttsReadable.",
+    "Native status: unreviewed until a native-model reviewer row exists; model-reviewed until a native-human row exists; no readiness claim in docs."
+  ],
+  "requiredSchemaExtensions": [
+    "None. The current field reference already carries everything this spec uses: per-lesson registerPlan (constant), speakerGender/canonicalGender with alternates, trophy.familyKey, blank.acceptedAnswers, term.lemma, review.flags. trophy.whyThisWord is a B1-only field and is NOT part of B2 drafts; authors must not add it or any other undeclared key.",
+    "Clarification only (no shape change): blank.acceptedAnswers and recall.acceptedAnswers MUST list the diacritic-stripped spelling explicitly; the validator does not generate it. The rail sentence 'shared plus diacritic-stripped forms' is read as an authoring obligation, not a runtime rule.",
+    "Clarification only: trophy.surface may be an inflected or capitalized whole token; matching is NFC+casefold+punctuation-strip whole-token, documented in the ledger row via lemma plus the per-lesson surface."
+  ],
+  "unresolvedDecisions": [
+    "Whether 1pl past (-liśmy/-łyśmy) counts as speaker-gendered for mixed households; this spec sidesteps it by never using it, but the gender detector list needs a decision before other paths.",
+    "Pan capitalization in learner lines (do Pana) versus lowercase in them turns: adopted here; confirm against the existing B1 Polish corpus style before freeze.",
+    "Voice roster for B2 Polish paths (odd female / even male continuation) remains an audio-ops decision; interlocutor voices for them turns with fixed gender (księgowa, mentor) need a second voice per lesson in the manifest.",
+    "Whether oblique relatives (do którego) staged productive in P2 L6 should also be allowed in P1 before L7; currently P1 uses only nominative relatives.",
+    "Measured pilot evidence for the b2-long speak profile on 20–26-token you1 turns before any threshold or recording-window change."
+  ]
+}

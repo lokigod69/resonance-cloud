@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Damit unser Plan gelingt",
+    "en": "Making a plan work"
+  },
+  "subtitle": {
+    "de": "Verabrede mit anderen, wozu ihr etwas macht und was jede Person dafür braucht.",
+    "en": "Agree on the purpose of your plan and what each person needs."
+  },
+  "anchor": "Shape C, informal singular. L1–4 para + infinitivo; L5–8 para que + presente de subjuntivo; L9–10 mezcla. Propósito y alternativa negociada.",
+  "lessons": [
+    {
+      "slug": "comida-del-barrio",
+      "title": {
+        "de": "Ein Essen für die Nachbarschaft",
+        "en": "A neighborhood meal"
+      },
+      "situation": {
+        "de": "Du sprichst mit einer Nachbarin über ein gemeinsames Essen für das Haus.",
+        "en": "You and a neighbor are talking about a meal for everyone in your building."
+      },
+      "pedagogicalGoal": "Nach para steht der Infinitiv, wenn dieselben Personen sich treffen und das Essen organisieren. Die Wendung beantwortet die Frage ¿para qué?",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Cuándo hablamos de la comida del barrio?",
+          "baseText": {
+            "de": "Wann besprechen wir das Essen für die Nachbarschaft?",
+            "en": "When shall we talk about the neighborhood meal?"
+          }
+        },
+        {
+          "targetText": "Podemos reunirnos el sábado para organizar la comida de los vecinos.",
+          "baseText": {
+            "de": "Wir können uns am Samstag treffen, um das Essen für die Nachbarschaft zu organisieren.",
+            "en": "We can meet on Saturday to organize the neighbors' meal."
+          }
+        },
+        {
+          "targetText": "En mi cocina no hay sitio para extender los dos planos de las mesas.",
+          "baseText": {
+            "de": "In meiner Küche ist kein Platz, um die beiden Pläne für die Tischaufstellung auszubreiten.",
+            "en": "There's no room in my kitchen to spread out the two table plans."
+          }
+        },
+        {
+          "targetText": "Entonces quedamos en el patio para comparar los planos, ¿vale?",
+          "baseText": {
+            "de": "Dann treffen wir uns im Hof, um die Pläne zu vergleichen, okay?",
+            "en": "Then let's meet in the courtyard to compare the plans, okay?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para + infinitivo",
+        "rule": {
+          "de": "Nach para steht der Infinitiv, wenn dieselben Personen sich treffen und das Essen organisieren. Die Wendung beantwortet die Frage ¿para qué?",
+          "en": "Use para with the infinitive when the same people meet and organize the meal. The phrase answers ¿para qué?, the question about purpose."
+        },
+        "examples": [
+          {
+            "targetText": "Podemos reunirnos el sábado para organizar la comida de los vecinos.",
+            "baseText": {
+              "de": "Wir können uns am Samstag treffen, um das Essen für die Nachbarschaft zu organisieren.",
+              "en": "We can meet on Saturday to organize the neighbors' meal."
+            },
+            "highlight": "para organizar"
+          },
+          {
+            "targetText": "Nos reunimos antes de cenar para ordenar las sillas.",
+            "baseText": {
+              "de": "Wir treffen uns vor dem Essen, um die Stühle zurechtzustellen.",
+              "en": "We meet before dinner to put the chairs in order."
+            },
+            "highlight": "para ordenar"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces ",
+        {
+          "kind": "form",
+          "answer": "quedamos",
+          "choices": [
+            "quedo",
+            "quedan",
+            "quedamos",
+            "quedáis"
+          ],
+          "cue": "quedar (nosotros)"
+        },
+        " en el patio ",
+        {
+          "kind": "connector",
+          "answer": "para",
+          "choices": [
+            "aunque",
+            "desde",
+            "para",
+            "mientras"
+          ]
+        },
+        " comparar los planos, ¿vale?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Podemos reunirnos",
+          "baseText": {
+            "de": "Wir können uns treffen",
+            "en": "We can meet"
+          }
+        },
+        {
+          "targetText": "el sábado",
+          "baseText": {
+            "de": "am Samstag",
+            "en": "on Saturday"
+          }
+        },
+        {
+          "targetText": "para organizar",
+          "baseText": {
+            "de": "um zu organisieren",
+            "en": "to organize"
+          }
+        },
+        {
+          "targetText": "la comida de los vecinos.",
+          "baseText": {
+            "de": "das Essen für die Nachbarschaft.",
+            "en": "the neighbors' meal."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "reunirnos",
+          "baseText": {
+            "de": "uns treffen",
+            "en": "meet"
+          }
+        },
+        {
+          "targetText": "el sábado",
+          "baseText": {
+            "de": "am Samstag",
+            "en": "on Saturday"
+          }
+        },
+        {
+          "targetText": "organizar",
+          "baseText": {
+            "de": "organisieren",
+            "en": "organize"
+          }
+        },
+        {
+          "targetText": "la comida",
+          "baseText": {
+            "de": "das Essen",
+            "en": "the meal"
+          }
+        },
+        {
+          "targetText": "el patio",
+          "baseText": {
+            "de": "der Innenhof",
+            "en": "the courtyard"
+          }
+        },
+        {
+          "targetText": "los planos",
+          "baseText": {
+            "de": "die Pläne",
+            "en": "the plans"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Podemos reunirnos el sábado para ",
+        "answer": "organizar",
+        "after": " la comida de los vecinos.",
+        "fallbackChoices": [
+          "organiza",
+          "organizar",
+          "organizamos",
+          "organizando"
+        ]
+      },
+      "speakRequired": [
+        "reunirnos",
+        "organizar",
+        "vecinos"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin spricht dich im Treppenhaus an: „¿Cuándo hablamos de la comida del barrio?“",
+        "en": "A neighbor stops you on the stairs: “¿Cuándo hablamos de la comida del barrio?”"
+      },
+      "trophyWord": {
+        "word": "organizar",
+        "meaning": {
+          "de": "organisieren",
+          "en": "organize"
+        },
+        "example": "Podemos organizar la comida con una lista de tareas.",
+        "whyThisWord": {
+          "de": "Organizar passt, wenn ihr einzelne Aufgaben für ein gemeinsames Vorhaben ordnet.",
+          "en": "Organizar describes arranging the tasks that make a shared plan work."
+        }
+      },
+      "distractors": [
+        "el invierno pasado",
+        "para cancelar"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn schauen auf einen Kalender im Treppenhaus.",
+        "en": "Two neighbors look at a calendar in the stairwell."
+      },
+      "songMood": "Ungezwungen und einladend.",
+      "visualNotes": "Two neighbors look at a calendar in the stairwell."
+    },
+    {
+      "slug": "un-solo-coche",
+      "title": {
+        "de": "Gemeinsam an den See",
+        "en": "A shared ride to the lake"
+      },
+      "situation": {
+        "de": "Du besprichst mit einem Freund die Fahrt an den See.",
+        "en": "You and a friend are working out how to get to the lake."
+      },
+      "pedagogicalGoal": "Para ahorrar nennt das Ziel der gemeinsamen Fahrt. Der Ausdruck enthält keinen zweiten Handelnden und braucht daher kein que.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿De verdad necesitamos llevar dos coches al lago?",
+          "baseText": {
+            "de": "Müssen wir wirklich mit zwei Autos an den See fahren?",
+            "en": "Do we really need to take two cars to the lake?"
+          }
+        },
+        {
+          "targetText": "¿Compartimos coche para ahorrar gasolina en el viaje al lago?",
+          "baseText": {
+            "de": "Wollen wir zusammen fahren, um auf der Fahrt an den See Benzin zu sparen?",
+            "en": "Shall we share a car to save gas on the trip to the lake?"
+          }
+        },
+        {
+          "targetText": "Me gusta la idea, pero mi turno termina a las seis.",
+          "baseText": {
+            "de": "Die Idee gefällt mir, aber meine Schicht endet um sechs.",
+            "en": "I like the idea, but my shift ends at six."
+          }
+        },
+        {
+          "targetText": "Salimos después de tu turno para ir en un solo coche.",
+          "baseText": {
+            "de": "Wir fahren nach deiner Schicht los, damit wir nur ein Auto brauchen.",
+            "en": "We'll leave after your shift to go in just one car."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El propósito de compartir",
+        "rule": {
+          "de": "Para ahorrar nennt das Ziel der gemeinsamen Fahrt. Der Ausdruck enthält keinen zweiten Handelnden und braucht daher kein que.",
+          "en": "Para ahorrar states the purpose of sharing the ride. There is no second subject, so que is unnecessary."
+        },
+        "examples": [
+          {
+            "targetText": "¿Compartimos coche para ahorrar gasolina en el viaje al lago?",
+            "baseText": {
+              "de": "Wollen wir zusammen fahren, um auf der Fahrt an den See Benzin zu sparen?",
+              "en": "Shall we share a car to save gas on the trip to the lake?"
+            },
+            "highlight": "para ahorrar gasolina"
+          },
+          {
+            "targetText": "Compramos las entradas por internet para ahorrar tiempo.",
+            "baseText": {
+              "de": "Wir kaufen die Eintrittskarten online, um Zeit zu sparen.",
+              "en": "We buy the tickets online to save time."
+            },
+            "highlight": "para ahorrar tiempo"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Salimos",
+          "choices": [
+            "Sale",
+            "Salimos",
+            "Salen",
+            "Salgo"
+          ],
+          "cue": "salir (nosotros)"
+        },
+        " después de tu turno ",
+        {
+          "kind": "connector",
+          "answer": "para",
+          "choices": [
+            "desde",
+            "mientras",
+            "aunque",
+            "para"
+          ]
+        },
+        " ir en un solo coche."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Compartimos coche",
+          "baseText": {
+            "de": "Wollen wir gemeinsam fahren",
+            "en": "Shall we share a car"
+          }
+        },
+        {
+          "targetText": "para ahorrar gasolina",
+          "baseText": {
+            "de": "um Benzin zu sparen",
+            "en": "to save gas"
+          }
+        },
+        {
+          "targetText": "en el viaje",
+          "baseText": {
+            "de": "auf der Fahrt",
+            "en": "on the trip"
+          }
+        },
+        {
+          "targetText": "al lago?",
+          "baseText": {
+            "de": "an den See?",
+            "en": "to the lake?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "compartimos coche",
+          "baseText": {
+            "de": "wir fahren zusammen",
+            "en": "we share a car"
+          }
+        },
+        {
+          "targetText": "ahorrar",
+          "baseText": {
+            "de": "sparen",
+            "en": "save"
+          }
+        },
+        {
+          "targetText": "gasolina",
+          "baseText": {
+            "de": "Benzin",
+            "en": "gas"
+          }
+        },
+        {
+          "targetText": "el viaje",
+          "baseText": {
+            "de": "die Fahrt",
+            "en": "the trip"
+          }
+        },
+        {
+          "targetText": "mi turno",
+          "baseText": {
+            "de": "meine Schicht",
+            "en": "my shift"
+          }
+        },
+        {
+          "targetText": "un solo coche",
+          "baseText": {
+            "de": "nur ein Auto",
+            "en": "just one car"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Compartimos coche para ",
+        "answer": "ahorrar",
+        "after": " gasolina en el viaje al lago?",
+        "fallbackChoices": [
+          "ahorramos",
+          "ahorrando",
+          "ahorrar",
+          "ahorran"
+        ]
+      },
+      "speakRequired": [
+        "compartimos",
+        "ahorrar",
+        "gasolina"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund schaut auf die Autos vor der Tür und fragt: „¿De verdad necesitamos llevar dos coches al lago?“",
+        "en": "Your friend looks at the cars outside and asks: “¿De verdad necesitamos llevar dos coches al lago?”"
+      },
+      "trophyWord": {
+        "word": "ahorrar",
+        "meaning": {
+          "de": "sparen",
+          "en": "save"
+        },
+        "example": "Llevo agua de casa para ahorrar dinero.",
+        "whyThisWord": {
+          "de": "Ahorrar lässt sich mit dinero, tiempo oder gasolina verbinden und benennt den beabsichtigten Nutzen.",
+          "en": "Ahorrar combines with dinero, tiempo, or gasolina to describe what you hope to save."
+        }
+      },
+      "distractors": [
+        "por el recibo",
+        "sin pagar gasolina"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Autoschlüssel liegt neben einer Karte des Sees.",
+        "en": "A car key lies beside a map of the lake."
+      },
+      "songMood": "Leicht und praktisch.",
+      "visualNotes": "A car key lies beside a map of the lake."
+    },
+    {
+      "slug": "una-manana-en-el-museo",
+      "title": {
+        "de": "Ein Morgen im Museum",
+        "en": "A morning at the museum"
+      },
+      "situation": {
+        "de": "Du und eine Freundin planen einen Museumsbesuch am Wochenende.",
+        "en": "You and a friend are planning a weekend museum visit."
+      },
+      "pedagogicalGoal": "Mit para aprovechar benennst du etwas, das du bewusst nutzen möchtest. Im Beispiel ist das die verfügbare Zeit, im zweiten Beispiel das Tageslicht.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿A qué hora salimos para visitar el museo?",
+          "baseText": {
+            "de": "Wann gehen wir los, um das Museum zu besuchen?",
+            "en": "What time shall we set off to visit the museum?"
+          }
+        },
+        {
+          "targetText": "Propongo salir temprano para aprovechar la mañana en el museo.",
+          "baseText": {
+            "de": "Ich schlage vor, früh loszugehen, um den Vormittag im Museum zu nutzen.",
+            "en": "I suggest setting off early to make the most of the morning at the museum."
+          }
+        },
+        {
+          "targetText": "Los domingos no abre hasta las doce, pero el mercado está cerca.",
+          "baseText": {
+            "de": "Sonntags öffnet es erst um zwölf, aber der Markt ist in der Nähe.",
+            "en": "On Sundays it doesn't open until twelve, but the market is nearby."
+          }
+        },
+        {
+          "targetText": "Entonces damos una vuelta por el mercado para hacer tiempo.",
+          "baseText": {
+            "de": "Dann drehen wir eine Runde über den Markt, um die Zeit zu überbrücken.",
+            "en": "Then let's take a walk around the market to kill time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para aprovechar + sustantivo",
+        "rule": {
+          "de": "Mit para aprovechar benennst du etwas, das du bewusst nutzen möchtest. Im Beispiel ist das die verfügbare Zeit, im zweiten Beispiel das Tageslicht.",
+          "en": "Para aprovechar names something you want to use well. In the dialogue it is available time; in the other example it is daylight."
+        },
+        "examples": [
+          {
+            "targetText": "Propongo salir temprano para aprovechar la mañana en el museo.",
+            "baseText": {
+              "de": "Ich schlage vor, früh loszugehen, um den Vormittag im Museum zu nutzen.",
+              "en": "I suggest setting off early to make the most of the morning at the museum."
+            },
+            "highlight": "para aprovechar la mañana"
+          },
+          {
+            "targetText": "Abrimos las cortinas para aprovechar la luz de la tarde.",
+            "baseText": {
+              "de": "Wir ziehen die Vorhänge auf, um das Nachmittagslicht zu nutzen.",
+              "en": "We open the curtains to make the most of the afternoon light."
+            },
+            "highlight": "para aprovechar la luz"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces ",
+        {
+          "kind": "form",
+          "answer": "damos",
+          "choices": [
+            "doy",
+            "da",
+            "damos",
+            "dan"
+          ],
+          "cue": "dar (nosotros)"
+        },
+        " una vuelta por el mercado ",
+        {
+          "kind": "connector",
+          "answer": "para",
+          "choices": [
+            "aunque",
+            "para",
+            "mientras",
+            "desde"
+          ]
+        },
+        " hacer tiempo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Propongo salir",
+          "baseText": {
+            "de": "Ich schlage vor, loszugehen",
+            "en": "I suggest setting off"
+          }
+        },
+        {
+          "targetText": "temprano",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "para aprovechar la mañana",
+          "baseText": {
+            "de": "um den Vormittag zu nutzen",
+            "en": "to make the most of the morning"
+          }
+        },
+        {
+          "targetText": "en el museo.",
+          "baseText": {
+            "de": "im Museum.",
+            "en": "at the museum."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "salir temprano",
+          "baseText": {
+            "de": "früh losgehen",
+            "en": "set off early"
+          }
+        },
+        {
+          "targetText": "aprovechar",
+          "baseText": {
+            "de": "nutzen",
+            "en": "make the most of"
+          }
+        },
+        {
+          "targetText": "la mañana",
+          "baseText": {
+            "de": "der Vormittag",
+            "en": "the morning"
+          }
+        },
+        {
+          "targetText": "los domingos",
+          "baseText": {
+            "de": "sonntags",
+            "en": "on Sundays"
+          }
+        },
+        {
+          "targetText": "hasta las doce",
+          "baseText": {
+            "de": "bis zwölf",
+            "en": "until twelve"
+          }
+        },
+        {
+          "targetText": "el mercado",
+          "baseText": {
+            "de": "der Markt",
+            "en": "the market"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Propongo salir temprano para ",
+        "answer": "aprovechar",
+        "after": " la mañana en el museo.",
+        "fallbackChoices": [
+          "aprovechan",
+          "aprovechando",
+          "aprovechar",
+          "aprovechamos"
+        ]
+      },
+      "speakRequired": [
+        "propongo",
+        "aprovechar",
+        "museo"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin breitet einen Stadtplan aus und fragt: „¿A qué hora salimos para visitar el museo?“",
+        "en": "Your friend unfolds a city map and asks: “¿A qué hora salimos para visitar el museo?”"
+      },
+      "trophyWord": {
+        "word": "aprovechar",
+        "meaning": {
+          "de": "nutzen; ausnutzen",
+          "en": "make the most of"
+        },
+        "example": "Podemos aprovechar la mañana para conocer el barrio.",
+        "whyThisWord": {
+          "de": "Aprovechar passt, wenn man Zeit oder eine Gelegenheit sinnvoll nutzt.",
+          "en": "Aprovechar is used when time or an opportunity is put to good use."
+        }
+      },
+      "distractors": [
+        "la noche anterior",
+        "sin visitar la ciudad"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Museumsprospekt liegt neben einem Stadtplan.",
+        "en": "A museum leaflet lies beside a city map."
+      },
+      "songMood": "Neugierig und lebhaft.",
+      "visualNotes": "A museum leaflet lies beside a city map."
+    },
+    {
+      "slug": "las-invitaciones-del-taller",
+      "title": {
+        "de": "Die Aufgaben vor dem Workshop",
+        "en": "Tasks before the workshop"
+      },
+      "situation": {
+        "de": "Du bereitest mit einem Freund einen kleinen Workshop vor.",
+        "en": "You and a friend are preparing a small workshop."
+      },
+      "pedagogicalGoal": "Para repartir gibt den Zweck der Liste an. Bei repartir las tareas geht es um die Verteilung von Arbeit auf mehrere Personen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Cómo evitamos hacer los dos la misma tarea?",
+          "baseText": {
+            "de": "Wie vermeiden wir, dass wir beide dieselbe Aufgabe erledigen?",
+            "en": "How do we avoid both doing the same task?"
+          }
+        },
+        {
+          "targetText": "Vamos a preparar una lista para repartir las tareas del taller.",
+          "baseText": {
+            "de": "Machen wir eine Liste, um die Aufgaben für den Workshop aufzuteilen.",
+            "en": "Let's make a list to divide up the workshop tasks."
+          }
+        },
+        {
+          "targetText": "Puedo escribir las invitaciones, pero no tengo tijeras para cortar la cartulina.",
+          "baseText": {
+            "de": "Ich kann die Einladungen schreiben, habe aber keine Schere für den Bastelkarton.",
+            "en": "I can write the invitations, but I don't have scissors to cut the card."
+          }
+        },
+        {
+          "targetText": "Vale, yo corto la cartulina con mis tijeras para ganar tiempo.",
+          "baseText": {
+            "de": "Gut, ich schneide den Karton mit meiner Schere, um Zeit zu sparen.",
+            "en": "Okay, I'll cut the card with my scissors to save time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Repartir las tareas",
+        "rule": {
+          "de": "Para repartir gibt den Zweck der Liste an. Bei repartir las tareas geht es um die Verteilung von Arbeit auf mehrere Personen.",
+          "en": "Para repartir states why the list is needed. Repartir las tareas means dividing work among several people."
+        },
+        "examples": [
+          {
+            "targetText": "Vamos a preparar una lista para repartir las tareas del taller.",
+            "baseText": {
+              "de": "Machen wir eine Liste, um die Aufgaben für den Workshop aufzuteilen.",
+              "en": "Let's make a list to divide up the workshop tasks."
+            },
+            "highlight": "para repartir"
+          },
+          {
+            "targetText": "Utilizamos tarjetas de colores para repartir los turnos.",
+            "baseText": {
+              "de": "Wir verwenden farbige Karten, um die Schichten zu verteilen.",
+              "en": "We use colored cards to allocate the shifts."
+            },
+            "highlight": "para repartir"
+          }
+        ]
+      },
+      "cloze": [
+        "Vale, yo ",
+        {
+          "kind": "form",
+          "answer": "corto",
+          "choices": [
+            "cortas",
+            "cortan",
+            "corto",
+            "cortamos"
+          ],
+          "cue": "cortar (yo)"
+        },
+        " la cartulina con mis tijeras ",
+        {
+          "kind": "connector",
+          "answer": "para",
+          "choices": [
+            "mientras",
+            "desde",
+            "aunque",
+            "para"
+          ]
+        },
+        " ganar tiempo."
+      ],
+      "chunks": [
+        {
+          "targetText": "Vamos a preparar",
+          "baseText": {
+            "de": "Machen wir",
+            "en": "Let's prepare"
+          }
+        },
+        {
+          "targetText": "una lista",
+          "baseText": {
+            "de": "eine Liste",
+            "en": "a list"
+          }
+        },
+        {
+          "targetText": "para repartir",
+          "baseText": {
+            "de": "um aufzuteilen",
+            "en": "to divide up"
+          }
+        },
+        {
+          "targetText": "las tareas del taller.",
+          "baseText": {
+            "de": "die Aufgaben für den Workshop.",
+            "en": "the workshop tasks."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "una lista",
+          "baseText": {
+            "de": "eine Liste",
+            "en": "a list"
+          }
+        },
+        {
+          "targetText": "repartir",
+          "baseText": {
+            "de": "aufteilen",
+            "en": "divide up"
+          }
+        },
+        {
+          "targetText": "las tareas",
+          "baseText": {
+            "de": "die Aufgaben",
+            "en": "the tasks"
+          }
+        },
+        {
+          "targetText": "el taller",
+          "baseText": {
+            "de": "der Workshop",
+            "en": "the workshop"
+          }
+        },
+        {
+          "targetText": "las invitaciones",
+          "baseText": {
+            "de": "die Einladungen",
+            "en": "the invitations"
+          }
+        },
+        {
+          "targetText": "la cartulina",
+          "baseText": {
+            "de": "der Bastelkarton",
+            "en": "the card"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Vamos a preparar una lista para ",
+        "answer": "repartir",
+        "after": " las tareas del taller.",
+        "fallbackChoices": [
+          "repartimos",
+          "repartiendo",
+          "reparte",
+          "repartir"
+        ]
+      },
+      "speakRequired": [
+        "lista",
+        "repartir",
+        "tareas"
+      ],
+      "sceneCaption": {
+        "de": "Mitten in der Vorbereitung fragt dein Freund: „¿Cómo evitamos hacer los dos la misma tarea?“",
+        "en": "In the middle of preparations, your friend asks: “¿Cómo evitamos hacer los dos la misma tarea?”"
+      },
+      "trophyWord": {
+        "word": "repartir",
+        "meaning": {
+          "de": "aufteilen; verteilen",
+          "en": "divide up; distribute"
+        },
+        "example": "Hacemos dos grupos para repartir el trabajo.",
+        "whyThisWord": {
+          "de": "Repartir lässt dich festlegen, wer welchen Teil einer gemeinsamen Aufgabe übernimmt.",
+          "en": "Repartir lets you say how different people take on parts of a shared task."
+        }
+      },
+      "distractors": [
+        "para borrar",
+        "la señal de salida."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch liegen farbiger Karton und ein Notizblock.",
+        "en": "Sheets of card and a notepad lie on a table."
+      },
+      "songMood": "Eifrig und kollegial.",
+      "visualNotes": "Sheets of card and a notepad lie on a table."
+    },
+    {
+      "slug": "prueba-de-sonido",
+      "title": {
+        "de": "Vor der Generalprobe",
+        "en": "Before the rehearsal"
+      },
+      "situation": {
+        "de": "Du und eine Freundin bereiten die Technik für ein kleines Konzert vor.",
+        "en": "You and a friend are setting up the equipment for a small concert."
+      },
+      "pedagogicalGoal": "Wir führen den Test durch; funktionieren soll die Anlage. Für diesen Wechsel des Handelnden steht para que mit funcione im Subjuntivo.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Probamos el sonido hoy o justo antes del concierto?",
+          "baseText": {
+            "de": "Testen wir den Ton heute oder erst direkt vor dem Konzert?",
+            "en": "Shall we do the sound check today or just before the concert?"
+          }
+        },
+        {
+          "targetText": "Probamos los altavoces hoy para que todo funcione bien durante el concierto.",
+          "baseText": {
+            "de": "Wir testen die Lautsprecher heute, damit beim Konzert alles gut funktioniert.",
+            "en": "Let's test the speakers today so that everything works properly during the concert."
+          }
+        },
+        {
+          "targetText": "Nos falta el cable del micrófono. Los altavoces ya están conectados.",
+          "baseText": {
+            "de": "Das Mikrofonkabel fehlt uns. Die Lautsprecher sind schon angeschlossen.",
+            "en": "We're missing the microphone cable. The speakers are already connected."
+          }
+        },
+        {
+          "targetText": "Entonces traigo el cable para que funcione también el micrófono.",
+          "baseText": {
+            "de": "Dann bringe ich das Kabel, damit auch das Mikrofon funktioniert.",
+            "en": "Then I'll bring the cable so the microphone works too."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para que + presente de subjuntivo",
+        "rule": {
+          "de": "Wir führen den Test durch; funktionieren soll die Anlage. Für diesen Wechsel des Handelnden steht para que mit funcione im Subjuntivo.",
+          "en": "We do the testing; the equipment is what needs to work. This change of subject takes para que with the subjunctive funcione."
+        },
+        "examples": [
+          {
+            "targetText": "Probamos los altavoces hoy para que todo funcione bien durante el concierto.",
+            "baseText": {
+              "de": "Wir testen die Lautsprecher heute, damit beim Konzert alles gut funktioniert.",
+              "en": "Let's test the speakers today so that everything works properly during the concert."
+            },
+            "highlight": "para que todo funcione"
+          },
+          {
+            "targetText": "Cambio la pila para que la luz funcione toda la noche.",
+            "baseText": {
+              "de": "Ich wechsle die Batterie, damit das Licht die ganze Nacht funktioniert.",
+              "en": "I change the battery so the light works all night."
+            },
+            "highlight": "para que la luz funcione"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces traigo el cable ",
+        {
+          "kind": "connector",
+          "answer": "para que",
+          "choices": [
+            "para",
+            "para que",
+            "antes de",
+            "desde"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "funcione",
+          "choices": [
+            "funciona",
+            "funcionen",
+            "funcione",
+            "funcionamos"
+          ],
+          "cue": "funcionar (el micrófono, finalidad)"
+        },
+        " también el micrófono."
+      ],
+      "chunks": [
+        {
+          "targetText": "Probamos los altavoces hoy",
+          "baseText": {
+            "de": "Wir testen die Lautsprecher heute",
+            "en": "Let's test the speakers today"
+          }
+        },
+        {
+          "targetText": "para que todo",
+          "baseText": {
+            "de": "damit alles",
+            "en": "so that everything"
+          }
+        },
+        {
+          "targetText": "funcione bien",
+          "baseText": {
+            "de": "gut funktioniert",
+            "en": "works properly"
+          }
+        },
+        {
+          "targetText": "durante el concierto.",
+          "baseText": {
+            "de": "während des Konzerts.",
+            "en": "during the concert."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "probamos",
+          "baseText": {
+            "de": "wir testen",
+            "en": "we test"
+          }
+        },
+        {
+          "targetText": "los altavoces",
+          "baseText": {
+            "de": "die Lautsprecher",
+            "en": "the speakers"
+          }
+        },
+        {
+          "targetText": "funcione bien",
+          "baseText": {
+            "de": "gut funktioniert",
+            "en": "works properly"
+          }
+        },
+        {
+          "targetText": "el concierto",
+          "baseText": {
+            "de": "das Konzert",
+            "en": "the concert"
+          }
+        },
+        {
+          "targetText": "el cable",
+          "baseText": {
+            "de": "das Kabel",
+            "en": "the cable"
+          }
+        },
+        {
+          "targetText": "el micrófono",
+          "baseText": {
+            "de": "das Mikrofon",
+            "en": "the microphone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Probamos los altavoces hoy para que todo ",
+        "answer": "funcione",
+        "after": " bien durante el concierto.",
+        "fallbackChoices": [
+          "funciona",
+          "funcionen",
+          "funcionamos",
+          "funcione"
+        ]
+      },
+      "speakRequired": [
+        "altavoces",
+        "funcione",
+        "concierto"
+      ],
+      "sceneCaption": {
+        "de": "Neben den Lautsprechern fragt deine Freundin: „¿Probamos el sonido hoy o justo antes del concierto?“",
+        "en": "Beside the speakers, your friend asks: “¿Probamos el sonido hoy o justo antes del concierto?”"
+      },
+      "trophyWord": {
+        "word": "funcione",
+        "meaning": {
+          "de": "funktioniert; funktionieren soll",
+          "en": "works; should work"
+        },
+        "example": "Revisamos el enchufe para que funcione la lámpara.",
+        "whyThisWord": {
+          "de": "Funcione ist die Form von funcionar nach para que mit einem Subjekt im Singular.",
+          "en": "Funcione is the form of funcionar used after para que with a singular subject."
+        }
+      },
+      "distractors": [
+        "desde que todo",
+        "durante la comida."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Lautsprecher stehen vor einer kleinen Bühne.",
+        "en": "Two speakers stand in front of a small stage."
+      },
+      "songMood": "Tatkräftig und lebendig.",
+      "visualNotes": "Two speakers stand in front of a small stage."
+    },
+    {
+      "slug": "el-plano-para-marta",
+      "title": {
+        "de": "Der Treffpunkt für Marta",
+        "en": "Marta's meeting point"
+      },
+      "situation": {
+        "de": "Du überlegst mit einem Freund, wie eine neue Teilnehmerin euren Treffpunkt findet.",
+        "en": "You and a friend are working out how a new participant can find your meeting point."
+      },
+      "pedagogicalGoal": "Bei llegar erhält das g vor e ein u, damit der Laut erhalten bleibt: llegue. Die Person, die den Plan bekommt, soll am Treffpunkt ankommen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Marta conoce el camino hasta nuestro local?",
+          "baseText": {
+            "de": "Kennt Marta den Weg zu unserem Gruppenraum?",
+            "en": "Does Marta know the way to our meeting room?"
+          }
+        },
+        {
+          "targetText": "Le mando un plano a Marta para que llegue al local sin perderse.",
+          "baseText": {
+            "de": "Ich schicke Marta einen Plan, damit sie sich auf dem Weg zum Gruppenraum nicht verläuft.",
+            "en": "I'll send Marta a map so she can get to the room without getting lost."
+          }
+        },
+        {
+          "targetText": "Viene en autobús, no andando desde la estación como nosotros.",
+          "baseText": {
+            "de": "Sie kommt mit dem Bus und geht nicht wie wir vom Bahnhof zu Fuß.",
+            "en": "She's coming by bus, not walking from the station like us."
+          }
+        },
+        {
+          "targetText": "Entonces marco la parada para que llegue por la entrada norte.",
+          "baseText": {
+            "de": "Dann markiere ich die Haltestelle, damit sie über den Nordeingang kommt.",
+            "en": "Then I'll mark the stop so she can arrive via the north entrance."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Llegar: llegue",
+        "rule": {
+          "de": "Bei llegar erhält das g vor e ein u, damit der Laut erhalten bleibt: llegue. Die Person, die den Plan bekommt, soll am Treffpunkt ankommen.",
+          "en": "In llegar, g takes a u before e to preserve its sound: llegue. The person receiving the map is the one meant to arrive."
+        },
+        "examples": [
+          {
+            "targetText": "Le mando un plano a Marta para que llegue al local sin perderse.",
+            "baseText": {
+              "de": "Ich schicke Marta einen Plan, damit sie sich auf dem Weg zum Gruppenraum nicht verläuft.",
+              "en": "I'll send Marta a map so she can get to the room without getting lost."
+            },
+            "highlight": "para que llegue"
+          },
+          {
+            "targetText": "Salgo antes para que llegue el paquete a tiempo.",
+            "baseText": {
+              "de": "Ich gehe früher los, damit das Paket rechtzeitig ankommt.",
+              "en": "I set off earlier so the parcel arrives on time."
+            },
+            "highlight": "para que llegue"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces marco la parada ",
+        {
+          "kind": "connector",
+          "answer": "para que",
+          "choices": [
+            "antes de",
+            "desde",
+            "para",
+            "para que"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "llegue",
+          "choices": [
+            "lleguen",
+            "llegamos",
+            "llega",
+            "llegue"
+          ],
+          "cue": "llegar (Marta, finalidad)"
+        },
+        " por la entrada norte."
+      ],
+      "chunks": [
+        {
+          "targetText": "Le mando un plano",
+          "baseText": {
+            "de": "Ich schicke einen Plan",
+            "en": "I'll send a map"
+          }
+        },
+        {
+          "targetText": "a Marta",
+          "baseText": {
+            "de": "an Marta",
+            "en": "to Marta"
+          }
+        },
+        {
+          "targetText": "para que llegue al local",
+          "baseText": {
+            "de": "damit sie zum Gruppenraum findet",
+            "en": "so she reaches the room"
+          }
+        },
+        {
+          "targetText": "sin perderse.",
+          "baseText": {
+            "de": "ohne sich zu verlaufen.",
+            "en": "without getting lost."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "un plano",
+          "baseText": {
+            "de": "ein Plan",
+            "en": "a map"
+          }
+        },
+        {
+          "targetText": "llegue",
+          "baseText": {
+            "de": "ankommt",
+            "en": "arrives"
+          }
+        },
+        {
+          "targetText": "el local",
+          "baseText": {
+            "de": "der Gruppenraum",
+            "en": "the meeting room"
+          }
+        },
+        {
+          "targetText": "sin perderse",
+          "baseText": {
+            "de": "ohne sich zu verlaufen",
+            "en": "without getting lost"
+          }
+        },
+        {
+          "targetText": "la parada",
+          "baseText": {
+            "de": "die Haltestelle",
+            "en": "the stop"
+          }
+        },
+        {
+          "targetText": "la entrada norte",
+          "baseText": {
+            "de": "der Nordeingang",
+            "en": "the north entrance"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Le mando un plano a Marta para que ",
+        "answer": "llegue",
+        "after": " al local sin perderse.",
+        "fallbackChoices": [
+          "llega",
+          "lleguen",
+          "llegamos",
+          "llegue"
+        ]
+      },
+      "speakRequired": [
+        "mando",
+        "plano",
+        "llegue"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund schaut auf die Einladung und fragt: „¿Marta conoce el camino hasta nuestro local?“",
+        "en": "Your friend checks the invitation and asks: “¿Marta conoce el camino hasta nuestro local?”"
+      },
+      "trophyWord": {
+        "word": "llegue",
+        "meaning": {
+          "de": "ankommt; ankommen soll",
+          "en": "arrives; should arrive"
+        },
+        "example": "Te mando la dirección para que llegue bien el envío.",
+        "whyThisWord": {
+          "de": "Llegue zeigt nach para que das gewünschte Ankommen und behält die Schreibweise gu.",
+          "en": "After para que, llegue expresses the desired arrival and retains the spelling gu."
+        }
+      },
+      "distractors": [
+        "antes de que salió",
+        "por el altavoz."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Stadtplan und eine Einladung liegen auf einem Tisch.",
+        "en": "A city map and an invitation lie on a table."
+      },
+      "songMood": "Freundlich und praktisch.",
+      "visualNotes": "A city map and an invitation lie on a table."
+    },
+    {
+      "slug": "juegos-y-cena",
+      "title": {
+        "de": "Wann passt der Spieleabend?",
+        "en": "Finding a time for game night"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Freundin den Beginn eures Spieleabends.",
+        "en": "You and a friend discuss when to start your game night."
+      },
+      "pedagogicalGoal": "Quienes salen tarde bezeichnet mehrere Personen. Nach para que steht daher puedan und die folgende Tätigkeit bleibt im Infinitiv.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿A qué hora citamos al grupo para cenar y jugar?",
+          "baseText": {
+            "de": "Für wie viel Uhr laden wir die Gruppe zum Essen und Spielen ein?",
+            "en": "What time shall we ask the group to come for dinner and games?"
+          }
+        },
+        {
+          "targetText": "Propongo empezar a las siete para que puedan venir quienes salen tarde.",
+          "baseText": {
+            "de": "Ich schlage sieben Uhr als Beginn vor, damit auch die kommen können, die spät Feierabend haben.",
+            "en": "I suggest starting at seven so those who finish late can come."
+          }
+        },
+        {
+          "targetText": "Luis tiene que coger el último tren antes de las nueve.",
+          "baseText": {
+            "de": "Luis muss noch vor neun den letzten Zug nehmen.",
+            "en": "Luis has to catch the last train before nine."
+          }
+        },
+        {
+          "targetText": "Cenamos primero para que todos puedan participar antes del último tren.",
+          "baseText": {
+            "de": "Dann essen wir zuerst, damit vor dem letzten Zug alle dabei sein können.",
+            "en": "Let's eat first so everyone can join in before the last train."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Poder en plural: puedan",
+        "rule": {
+          "de": "Quienes salen tarde bezeichnet mehrere Personen. Nach para que steht daher puedan und die folgende Tätigkeit bleibt im Infinitiv.",
+          "en": "Quienes salen tarde refers to several people. After para que, use the plural puedan followed by the activity in the infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Propongo empezar a las siete para que puedan venir quienes salen tarde.",
+            "baseText": {
+              "de": "Ich schlage sieben Uhr als Beginn vor, damit auch die kommen können, die spät Feierabend haben.",
+              "en": "I suggest starting at seven so those who finish late can come."
+            },
+            "highlight": "para que puedan venir"
+          },
+          {
+            "targetText": "Enciendo las luces para que puedan leer los del fondo.",
+            "baseText": {
+              "de": "Ich schalte das Licht an, damit die Leute hinten lesen können.",
+              "en": "I turn on the lights so the people at the back can read."
+            },
+            "highlight": "para que puedan leer"
+          }
+        ]
+      },
+      "cloze": [
+        "Cenamos primero ",
+        {
+          "kind": "connector",
+          "answer": "para que",
+          "choices": [
+            "antes de",
+            "desde",
+            "para que",
+            "para"
+          ]
+        },
+        " todos ",
+        {
+          "kind": "form",
+          "answer": "puedan",
+          "choices": [
+            "puede",
+            "pueda",
+            "pueden",
+            "puedan"
+          ],
+          "cue": "poder (todos, finalidad)"
+        },
+        " participar antes del último tren."
+      ],
+      "chunks": [
+        {
+          "targetText": "Propongo empezar",
+          "baseText": {
+            "de": "Ich schlage vor anzufangen",
+            "en": "I suggest starting"
+          }
+        },
+        {
+          "targetText": "a las siete",
+          "baseText": {
+            "de": "um sieben",
+            "en": "at seven"
+          }
+        },
+        {
+          "targetText": "para que puedan venir",
+          "baseText": {
+            "de": "damit kommen können",
+            "en": "so that they can come"
+          }
+        },
+        {
+          "targetText": "quienes salen tarde.",
+          "baseText": {
+            "de": "diejenigen, die spät Feierabend haben.",
+            "en": "those who finish late."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "empezar",
+          "baseText": {
+            "de": "anfangen",
+            "en": "start"
+          }
+        },
+        {
+          "targetText": "a las siete",
+          "baseText": {
+            "de": "um sieben",
+            "en": "at seven"
+          }
+        },
+        {
+          "targetText": "puedan venir",
+          "baseText": {
+            "de": "kommen können",
+            "en": "can come"
+          }
+        },
+        {
+          "targetText": "salen tarde",
+          "baseText": {
+            "de": "haben spät Feierabend",
+            "en": "finish late"
+          }
+        },
+        {
+          "targetText": "el último tren",
+          "baseText": {
+            "de": "der letzte Zug",
+            "en": "the last train"
+          }
+        },
+        {
+          "targetText": "cenamos primero",
+          "baseText": {
+            "de": "wir essen zuerst",
+            "en": "we eat first"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Propongo empezar a las siete para que ",
+        "answer": "puedan",
+        "after": " venir quienes salen tarde.",
+        "fallbackChoices": [
+          "pueda",
+          "pueden",
+          "puede",
+          "puedan"
+        ]
+      },
+      "speakRequired": [
+        "empezar",
+        "puedan",
+        "tarde"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin zeigt auf den Kalender und fragt: „¿A qué hora citamos al grupo para cenar y jugar?“",
+        "en": "Your friend points at the calendar and asks: “¿A qué hora citamos al grupo para cenar y jugar?”"
+      },
+      "trophyWord": {
+        "word": "puedan",
+        "meaning": {
+          "de": "können; können sollen",
+          "en": "can; are able to"
+        },
+        "example": "Cambiamos la hora para que puedan venir mis vecinos.",
+        "whyThisWord": {
+          "de": "Puedan ist die Mehrzahl. Sie hält die Form von poder von der Grundform venir getrennt.",
+          "en": "Puedan is plural; the following action venir stays in the infinitive."
+        }
+      },
+      "distractors": [
+        "para poder viene",
+        "por la ventana."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch liegen ein Brettspiel und ein Wochenkalender.",
+        "en": "A board game and a calendar lie on a table."
+      },
+      "songMood": "Gesellig und lebhaft.",
+      "visualNotes": "A board game and a calendar lie on a table."
+    },
+    {
+      "slug": "mesa-del-fondo",
+      "title": {
+        "de": "Ein Tisch für die Gruppe",
+        "en": "A table for the group"
+      },
+      "situation": {
+        "de": "Du suchst mit einem Freund vor einem gemeinsamen Mittagessen einen geeigneten Tisch aus.",
+        "en": "You and a friend choose a table before a group lunch."
+      },
+      "pedagogicalGoal": "Tenga hat ein Subjekt: die Gruppe soll mehr Platz haben. Haya sagt dagegen, dass Platz vorhanden sein soll.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué mesa pedimos para la comida del domingo?",
+          "baseText": {
+            "de": "Welchen Tisch reservieren wir für das Essen am Sonntag?",
+            "en": "Which table shall we request for Sunday lunch?"
+          }
+        },
+        {
+          "targetText": "Reservo la mesa del fondo para que el grupo tenga más espacio.",
+          "baseText": {
+            "de": "Ich reserviere den hinteren Tisch, damit die Gruppe mehr Platz hat.",
+            "en": "I'll book the table at the back so the group has more room."
+          }
+        },
+        {
+          "targetText": "Se apuntan dos personas más. Al final somos diez.",
+          "baseText": {
+            "de": "Zwei weitere Leute wollen mitkommen. Jetzt sind wir zu zehnt.",
+            "en": "Two more people are joining. There will be ten of us."
+          }
+        },
+        {
+          "targetText": "Juntamos dos mesas para que haya sitio para los diez.",
+          "baseText": {
+            "de": "Wir stellen zwei Tische zusammen, damit alle zehn Platz haben.",
+            "en": "Let's put two tables together so there's room for all ten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para que tenga / para que haya",
+        "rule": {
+          "de": "Tenga hat ein Subjekt: die Gruppe soll mehr Platz haben. Haya sagt dagegen, dass Platz vorhanden sein soll.",
+          "en": "Tenga has a subject: the group is meant to have more space. Haya instead says that space should be available."
+        },
+        "examples": [
+          {
+            "targetText": "Reservo la mesa del fondo para que el grupo tenga más espacio.",
+            "baseText": {
+              "de": "Ich reserviere den hinteren Tisch, damit die Gruppe mehr Platz hat.",
+              "en": "I'll book the table at the back so the group has more room."
+            },
+            "highlight": "para que el grupo tenga"
+          },
+          {
+            "targetText": "Acercamos la silla para que la niña tenga sitio junto a su padre.",
+            "baseText": {
+              "de": "Wir rücken den Stuhl heran, damit das Mädchen neben seinem Vater Platz hat.",
+              "en": "We move the chair closer so the girl has room beside her father."
+            },
+            "highlight": "para que la niña tenga"
+          }
+        ]
+      },
+      "cloze": [
+        "Juntamos dos mesas ",
+        {
+          "kind": "connector",
+          "answer": "para que",
+          "choices": [
+            "para",
+            "desde",
+            "antes de",
+            "para que"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "haya",
+          "choices": [
+            "hay",
+            "haya",
+            "hayan",
+            "habemos"
+          ],
+          "cue": "haber (existencia, finalidad)"
+        },
+        " sitio para los diez."
+      ],
+      "chunks": [
+        {
+          "targetText": "Reservo la mesa",
+          "baseText": {
+            "de": "Ich reserviere den Tisch",
+            "en": "I'll book the table"
+          }
+        },
+        {
+          "targetText": "del fondo",
+          "baseText": {
+            "de": "ganz hinten",
+            "en": "at the back"
+          }
+        },
+        {
+          "targetText": "para que el grupo",
+          "baseText": {
+            "de": "damit die Gruppe",
+            "en": "so the group"
+          }
+        },
+        {
+          "targetText": "tenga más espacio.",
+          "baseText": {
+            "de": "mehr Platz hat.",
+            "en": "has more space."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la mesa del fondo",
+          "baseText": {
+            "de": "der Tisch ganz hinten",
+            "en": "the table at the back"
+          }
+        },
+        {
+          "targetText": "el grupo",
+          "baseText": {
+            "de": "die Gruppe",
+            "en": "the group"
+          }
+        },
+        {
+          "targetText": "tenga más espacio",
+          "baseText": {
+            "de": "mehr Platz hat",
+            "en": "has more room"
+          }
+        },
+        {
+          "targetText": "dos personas más",
+          "baseText": {
+            "de": "zwei weitere Personen",
+            "en": "two more people"
+          }
+        },
+        {
+          "targetText": "somos diez",
+          "baseText": {
+            "de": "wir sind zu zehnt",
+            "en": "there are ten of us"
+          }
+        },
+        {
+          "targetText": "haya sitio",
+          "baseText": {
+            "de": "es gibt Platz",
+            "en": "there is room"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Reservo la mesa del fondo para que el grupo ",
+        "answer": "tenga",
+        "after": " más espacio.",
+        "fallbackChoices": [
+          "tienen",
+          "tenga",
+          "tiene",
+          "tengan"
+        ]
+      },
+      "speakRequired": [
+        "reservo",
+        "grupo",
+        "tenga"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund fragt beim Blick auf die freien Tische: „¿Qué mesa pedimos para la comida del domingo?“",
+        "en": "Looking at the available tables, your friend asks: “¿Qué mesa pedimos para la comida del domingo?”"
+      },
+      "trophyWord": {
+        "word": "tenga",
+        "meaning": {
+          "de": "hat; haben soll",
+          "en": "has; should have"
+        },
+        "example": "Dejamos una silla libre para que mi hermana tenga sitio.",
+        "whyThisWord": {
+          "de": "Tenga verbindet den Zweck mit der einzelnen Person oder Gruppe, die etwas haben soll.",
+          "en": "Tenga links the purpose to the particular person or group meant to have something."
+        }
+      },
+      "distractors": [
+        "de la factura",
+        "tienen menos espacio."
+      ],
+      "placeholderCaption": {
+        "de": "In einem Gastraum stehen mehrere unterschiedlich große Tische.",
+        "en": "Tables of different sizes stand in a dining room."
+      },
+      "songMood": "Gesellig und entspannt.",
+      "visualNotes": "Tables of different sizes stand in a dining room."
+    },
+    {
+      "slug": "acceso-al-centro",
+      "title": {
+        "de": "Ein Treffpunkt am Eingang",
+        "en": "Meeting at the entrance"
+      },
+      "situation": {
+        "de": "Du legst mit einer Freundin einen Treffpunkt für den Besuch eines Kulturzentrums fest.",
+        "en": "You and a friend are choosing a meeting point for a visit to a cultural center."
+      },
+      "pedagogicalGoal": "Para mit Infinitiv nennt das allgemeine Ziel. Für das gewünschte Ergebnis steht nach para que ein eigenes Subjekt (nadie) mit dem Subjuntivo tenga.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Dónde esperamos al grupo antes de entrar en el centro?",
+          "baseText": {
+            "de": "Wo warten wir auf die Gruppe, bevor wir hineingehen?",
+            "en": "Where shall we wait for the group before going into the center?"
+          }
+        },
+        {
+          "targetText": "Para facilitar la llegada, quedamos en la puerta diez minutos antes.",
+          "baseText": {
+            "de": "Damit die Ankunft leichter ist, treffen wir uns zehn Minuten vorher an der Tür.",
+            "en": "To make arrival easier, let's meet at the door ten minutes early."
+          }
+        },
+        {
+          "targetText": "En la entrada principal hay escalones. Ana usa un andador; detrás hay una rampa.",
+          "baseText": {
+            "de": "Am Haupteingang gibt es Stufen. Ana benutzt einen Rollator. Hinten gibt es eine Rampe.",
+            "en": "The main entrance has steps. Ana uses a walking frame; there's a ramp at the back."
+          }
+        },
+        {
+          "targetText": "Vale, quedamos detrás para que nadie tenga que subir escalones.",
+          "baseText": {
+            "de": "Gut, dann treffen wir uns hinten, damit niemand Stufen steigen muss.",
+            "en": "Okay, let's meet at the back so nobody has to climb steps."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para facilitar / para que nadie tenga que",
+        "rule": {
+          "de": "Para mit Infinitiv nennt das allgemeine Ziel. Für das gewünschte Ergebnis steht nach para que ein eigenes Subjekt (nadie) mit dem Subjuntivo tenga.",
+          "en": "Para with an infinitive names the general aim. To express the intended result for another subject, use para que with that subject (nadie) and tenga."
+        },
+        "examples": [
+          {
+            "targetText": "Para facilitar la llegada, quedamos en la puerta diez minutos antes.",
+            "baseText": {
+              "de": "Damit die Ankunft leichter ist, treffen wir uns zehn Minuten vorher an der Tür.",
+              "en": "To make arrival easier, let's meet at the door ten minutes early."
+            },
+            "highlight": "Para facilitar"
+          },
+          {
+            "targetText": "Abrimos la otra puerta para que nadie tenga que esperar fuera.",
+            "baseText": {
+              "de": "Wir öffnen die andere Tür, damit niemand draußen warten muss.",
+              "en": "We open the other door so nobody has to wait outside."
+            },
+            "highlight": "para que nadie tenga que"
+          }
+        ]
+      },
+      "cloze": [
+        "Vale, quedamos detrás ",
+        {
+          "kind": "connector",
+          "answer": "para que",
+          "choices": [
+            "desde",
+            "para que",
+            "para",
+            "antes de"
+          ]
+        },
+        " nadie ",
+        {
+          "kind": "form",
+          "answer": "tenga",
+          "choices": [
+            "tienen",
+            "tenga",
+            "tengan",
+            "tiene"
+          ],
+          "cue": "tener (nadie, finalidad)"
+        },
+        " que subir escalones."
+      ],
+      "chunks": [
+        {
+          "targetText": "Para facilitar",
+          "baseText": {
+            "de": "Um zu erleichtern",
+            "en": "To make easier"
+          }
+        },
+        {
+          "targetText": "la llegada,",
+          "baseText": {
+            "de": "die Ankunft,",
+            "en": "the arrival,"
+          }
+        },
+        {
+          "targetText": "quedamos en la puerta",
+          "baseText": {
+            "de": "treffen wir uns an der Tür",
+            "en": "let's meet at the door"
+          }
+        },
+        {
+          "targetText": "diez minutos antes.",
+          "baseText": {
+            "de": "zehn Minuten vorher.",
+            "en": "ten minutes early."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "facilitar",
+          "baseText": {
+            "de": "erleichtern",
+            "en": "make easier"
+          }
+        },
+        {
+          "targetText": "la llegada",
+          "baseText": {
+            "de": "die Ankunft",
+            "en": "the arrival"
+          }
+        },
+        {
+          "targetText": "diez minutos antes",
+          "baseText": {
+            "de": "zehn Minuten vorher",
+            "en": "ten minutes early"
+          }
+        },
+        {
+          "targetText": "la entrada principal",
+          "baseText": {
+            "de": "der Haupteingang",
+            "en": "the main entrance"
+          }
+        },
+        {
+          "targetText": "escalones",
+          "baseText": {
+            "de": "Stufen",
+            "en": "steps"
+          }
+        },
+        {
+          "targetText": "un andador",
+          "baseText": {
+            "de": "ein Rollator",
+            "en": "a walking frame"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Para ",
+        "answer": "facilitar",
+        "after": " la llegada, quedamos en la puerta diez minutos antes.",
+        "fallbackChoices": [
+          "facilitamos",
+          "facilita",
+          "facilitando",
+          "facilitar"
+        ]
+      },
+      "speakRequired": [
+        "facilitar",
+        "llegada",
+        "puerta"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Kulturzentrum fragt deine Freundin: „¿Dónde esperamos al grupo antes de entrar en el centro?“",
+        "en": "Outside the cultural center, your friend asks: “¿Dónde esperamos al grupo antes de entrar en el centro?”"
+      },
+      "trophyWord": {
+        "word": "facilitar",
+        "meaning": {
+          "de": "erleichtern",
+          "en": "make easier"
+        },
+        "example": "Dejamos un mapa en recepción para facilitar la llegada del grupo.",
+        "whyThisWord": {
+          "de": "Facilitar benennt, was ihr mit einem konkreten Schritt einfacher machen wollt.",
+          "en": "Facilitar names what you are trying to make easier with a particular action."
+        }
+      },
+      "distractors": [
+        "el alquiler,",
+        "tres años después."
+      ],
+      "placeholderCaption": {
+        "de": "Das Eingangsschild eines Kulturzentrums ist von der Straße aus sichtbar.",
+        "en": "The sign at a cultural center is visible from the street."
+      },
+      "songMood": "Rücksichtsvoll und klar.",
+      "visualNotes": "The sign at a cultural center is visible from the street."
+    },
+    {
+      "slug": "uso-de-la-sala",
+      "title": {
+        "de": "Unsere Vereinbarung für den Raum",
+        "en": "Our agreement about the room"
+      },
+      "situation": {
+        "de": "Du und ein Nachbar besprecht die Nutzung eines Gemeinschaftsraums.",
+        "en": "You and a neighbor are discussing the use of a shared room."
+      },
+      "pedagogicalGoal": "Para que haya tiempo beschreibt die beabsichtigte Folge. Para limpiar nennt die Handlung, für die dieselben Personen Zeit einplanen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué hemos decidido sobre la hora de cerrar la sala?",
+          "baseText": {
+            "de": "Was haben wir zur Schließzeit für den Raum vereinbart?",
+            "en": "What have we decided about closing time for the room?"
+          }
+        },
+        {
+          "targetText": "Nuestro acuerdo es cerrar a las ocho para que haya tiempo de limpiar.",
+          "baseText": {
+            "de": "Wir haben vereinbart, um acht zu schließen, damit Zeit zum Putzen bleibt.",
+            "en": "Our agreement is to close at eight so there's time to clean."
+          }
+        },
+        {
+          "targetText": "El taller termina justo a las ocho. Nos dan quince minutos más si recogemos nosotros.",
+          "baseText": {
+            "de": "Der Workshop endet genau um acht. Wir bekommen fünfzehn Minuten mehr, wenn wir selbst aufräumen.",
+            "en": "The workshop ends right at eight. We get an extra fifteen minutes if we clear up ourselves."
+          }
+        },
+        {
+          "targetText": "Vale, limpiamos después del taller para cerrar a las ocho y cuarto.",
+          "baseText": {
+            "de": "Gut, wir putzen nach dem Workshop, damit wir um Viertel nach acht schließen können.",
+            "en": "Okay, let's clean after the workshop so we can close at a quarter past eight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El acuerdo y su finalidad",
+        "rule": {
+          "de": "Para que haya tiempo beschreibt die beabsichtigte Folge. Para limpiar nennt die Handlung, für die dieselben Personen Zeit einplanen.",
+          "en": "Para que haya tiempo describes the intended result. Para limpiar names the action for which the same people are setting time aside."
+        },
+        "examples": [
+          {
+            "targetText": "Nuestro acuerdo es cerrar a las ocho para que haya tiempo de limpiar.",
+            "baseText": {
+              "de": "Wir haben vereinbart, um acht zu schließen, damit Zeit zum Putzen bleibt.",
+              "en": "Our agreement is to close at eight so there's time to clean."
+            },
+            "highlight": "para que haya tiempo"
+          },
+          {
+            "targetText": "Nos quedamos diez minutos para limpiar las mesas del aula.",
+            "baseText": {
+              "de": "Wir bleiben zehn Minuten länger, um die Tische im Kursraum zu putzen.",
+              "en": "We stay for ten minutes to clean the classroom tables."
+            },
+            "highlight": "para limpiar"
+          }
+        ]
+      },
+      "cloze": [
+        "Vale, ",
+        {
+          "kind": "form",
+          "answer": "limpiamos",
+          "choices": [
+            "limpio",
+            "limpian",
+            "limpiamos",
+            "limpia"
+          ],
+          "cue": "limpiar (nosotros)"
+        },
+        " después del taller ",
+        {
+          "kind": "connector",
+          "answer": "para",
+          "choices": [
+            "aunque",
+            "desde",
+            "para",
+            "mientras"
+          ]
+        },
+        " cerrar a las ocho y cuarto."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nuestro acuerdo es",
+          "baseText": {
+            "de": "Unsere Vereinbarung ist",
+            "en": "Our agreement is"
+          }
+        },
+        {
+          "targetText": "cerrar a las ocho",
+          "baseText": {
+            "de": "um acht zu schließen",
+            "en": "to close at eight"
+          }
+        },
+        {
+          "targetText": "para que haya tiempo",
+          "baseText": {
+            "de": "damit Zeit bleibt",
+            "en": "so there is time"
+          }
+        },
+        {
+          "targetText": "de limpiar.",
+          "baseText": {
+            "de": "zum Putzen.",
+            "en": "to clean."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "nuestro acuerdo",
+          "baseText": {
+            "de": "unsere Vereinbarung",
+            "en": "our agreement"
+          }
+        },
+        {
+          "targetText": "cerrar",
+          "baseText": {
+            "de": "schließen",
+            "en": "close"
+          }
+        },
+        {
+          "targetText": "tiempo de limpiar",
+          "baseText": {
+            "de": "Zeit zum Putzen",
+            "en": "time to clean"
+          }
+        },
+        {
+          "targetText": "el taller termina",
+          "baseText": {
+            "de": "der Workshop endet",
+            "en": "the workshop ends"
+          }
+        },
+        {
+          "targetText": "quince minutos más",
+          "baseText": {
+            "de": "fünfzehn Minuten mehr",
+            "en": "fifteen more minutes"
+          }
+        },
+        {
+          "targetText": "recogemos nosotros",
+          "baseText": {
+            "de": "wir räumen selbst auf",
+            "en": "we clear up ourselves"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nuestro acuerdo es cerrar a las ocho para que ",
+        "answer": "haya",
+        "after": " tiempo de limpiar.",
+        "fallbackChoices": [
+          "hay",
+          "hayan",
+          "haya",
+          "habemos"
+        ]
+      },
+      "speakRequired": [
+        "acuerdo",
+        "cerrar",
+        "limpiar"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar schließt den Kalender und fragt: „¿Qué hemos decidido sobre la hora de cerrar la sala?“",
+        "en": "Your neighbor closes the calendar and asks: “¿Qué hemos decidido sobre la hora de cerrar la sala?”"
+      },
+      "trophyWord": {
+        "word": "acuerdo",
+        "meaning": {
+          "de": "Vereinbarung",
+          "en": "agreement"
+        },
+        "example": "El acuerdo incluye una hora para cerrar y otra para entregar la llave.",
+        "whyThisWord": {
+          "de": "Acuerdo benennt eine bereits gemeinsam getroffene Regelung, die ihr noch präzisieren könnt.",
+          "en": "Acuerdo names an arrangement you have reached together and can still refine."
+        }
+      },
+      "distractors": [
+        "cerraron ayer",
+        "para que había ruido"
+      ],
+      "placeholderCaption": {
+        "de": "Auf dem Tisch eines Gemeinschaftsraums liegen ein Schlüssel und ein Putzplan.",
+        "en": "A key and a cleaning schedule lie on the table in a shared room."
+      },
+      "songMood": "Zufrieden und verbindlich.",
+      "visualNotes": "A key and a cleaning schedule lie on the table in a shared room."
+    }
+  ]
+}

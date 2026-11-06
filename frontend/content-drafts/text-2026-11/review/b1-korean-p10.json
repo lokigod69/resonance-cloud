@@ -1,0 +1,55 @@
+{
+  "file": "p10.json",
+  "source": "963f6461e9dce2cb84a5abafdfe61edbfcd75c61c92dffeae39a1f68d14d416c",
+  "result": "9b068dbf8555c481f1760afb9c707941f0011d7673c4c6ac221ffcc998339740",
+  "edits": 19,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "B1_NATIVE_KOREAN_SPEC.json",
+      "lessonsRead": [
+        "P10 staging/clozeSchema/trophies",
+        "registerPolicy",
+        "segmentation",
+        "mechanicalValidationRules",
+        "semanticReviewRules"
+      ],
+      "concerns": [
+        "P10 trophies 올해/작년/가을/겨울/경험/변화/도전/보람/다음/새해 all present in p10.json in order; retained."
+      ]
+    },
+    {
+      "file": "p10.json",
+      "lessonsRead": [
+        "olhae-spring-train",
+        "jangnyeon-first-assignment",
+        "gaeul-mountain-photos",
+        "gyeoul-korean-course",
+        "gyeongheom-public-speaking",
+        "byeonhwa-home-cooking",
+        "dojeon-korean-exam",
+        "boram-library-volunteering",
+        "daeum-moving-month",
+        "saehae-walking-first"
+      ],
+      "concerns": [
+        "Eojeol counts verified for all 40 turns: openings 5-7, first replies 7-11, follow-ups 7-9, final replies 7-9; every final learner turn is one sentence ending in 요-form.",
+        "All chunk joins, recall before+answer+after, cloze concatenations, speakRequired whole-eojeol matches, trophy surfaces (bare canonical in reply and example) and pattern example 0 = dialogue[1] verified by hand.",
+        "L3 turn4 German rendered -ㄹ게요 as 'kann' (ability) and split one relative-clause sentence into two; fixed to volitional single sentence.",
+        "L4 first reply/example/chunk bases erased the -게 됐어요 'it worked out that' sense the lesson teaches; restored in de/en.",
+        "L5 term 첫마디 never occurs in the lesson (dialogue uses 첫 문장); replaced.",
+        "L6 follow-up asked for the most confident dish while the reply reports frequency + improved skill; follow-up retargeted so the reply answers it directly; connector distractor 뜻밖에도 was contextually survivable, replaced.",
+        "L7 final reply assigned the learner authority over the exam time; recast as choosing an offered sitting (오후 두 시 시험을), cloze realigned, cue updated.",
+        "Orthography: 지난여름/지난달 are single words; two distractor strings fixed.",
+        "Connector/choice/form correct-index triples vary across the path (2-0-3,1-3-2,0-2-1,0-2-1,3-1-0,2-0-3,2-0-3,1-3-2,0-2-1,0-2-1); acceptable, not edited.",
+        "Season/month choice blanks echo the follow-up on purpose: the blank checks consistency with the exchange and all distractors are contextually wrong; no arbitrary-month guessing exists.",
+        "Recognition-only forms appear only in interlocutor lines (-다고 했지요 L1, 없던 L2, -는 줄 알았는데 L7); learner turns use only P1-P8 families."
+      ]
+    }
+  ],
+  "openIssues": [
+    "L3 turn 3 비가 많았잖아요 is attested but 비가 많이 왔잖아요 is the more common spoken form; left unchanged (9 eojeol if swapped).",
+    "L3 chunk glosses distribute 좋아해요 across chunks 1-2; readable in sequence, weaker in isolation; not changed.",
+    "L4 situation pairs a workplace colleague with 겨울 방학; coherent only for a working student, which visualNotes support; consider adding 'als Werkstudent/in' to the situation if testers stumble."
+  ]
+}

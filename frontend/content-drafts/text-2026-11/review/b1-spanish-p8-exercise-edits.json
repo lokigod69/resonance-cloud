@@ -1,0 +1,43 @@
+{
+  "originalSource": "es-p8-review/spanish-p8.json",
+  "originalSha256": "06093d41959ae92252fcfdb9f9505280dfb86daf1102223531c61e23b8109c1b",
+  "resultSha256": "415811f162ba76ebb93b2f29f9d2705ce3ac3a1b5922e4b3775c49d04f7026e0",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 2,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Credible rival 'cuando cruzábamos' is not offered; Durante/Desde/Tras cannot precede a finite clause ('Durante cruzábamos' invalid). Form blank bounded by visible 'cruzar (nosotros)'; 'cruzaba' as pro-drop yo is excluded by cue. Canonical slot 0 (varies)."
+    },
+    {
+      "lesson": 5,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Keeps corrected 'la ronda'. Rival 'en cuanto/al' not in set; desde/durante/tras + finite 'terminaba' all ungrammatical. 'entrábamos/entraban' excluded by singular 'quien' cue."
+    },
+    {
+      "lesson": 8,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Comparative 'tanto … como' is the only valid link; 'tanto que antes' (consecutive) yields no sense with 'antes', 'de/para' invalid. 'disfruto' bounded by yo cue."
+    },
+    {
+      "lesson": 9,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Rival 'ya que' is absent so closed set is safe; desde/durante/hacia cannot introduce 'el autobús pasa'. 'sale/salen' blocked by yo cue."
+    },
+    {
+      "lesson": 10,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Only 'desde hace un mes' is grammatical; 'durante/entre/hacia hace un mes' impossible. Removes weak 'hacer (tiempo transcurrido)' blank; 'invito' bounded by yo cue."
+    }
+  ]
+}

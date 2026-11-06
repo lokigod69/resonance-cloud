@@ -1,0 +1,37 @@
+{
+  "file": "p8.json",
+  "source": "097c069b0aeceddf61d2d7122e0e8c34d3797f1a1f5bf71c9a8750abcbcc34ee",
+  "result": "f5181ec159e98b2e3399631e0f9deee7119512a8c8bdbccdeb7481d1af8224e8",
+  "edits": 1,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "p8.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": [
+        "Reported/presupposed-info forms occur only in interlocutor turn three: L2 산다면서요, L3 간다면서요, L10 없다면서요 (-다면서요), L7 보신다고 했는데 (-다고 했는데). No learner turn, cloze, chunk, recall, pattern example or speakRequired token carries either form.",
+        "Spec staging never lists -다면서요; -다고 하다 is scheduled recognition-only at P9 L7-8 and P10 L7-8. Prior quotative exposure before P8 is only -냐고 (P5 L9-10 staff report) and -더라고요 (P1 L7-8), so P8 is first contact with the declarative quotative base.",
+        "In every case the clause carrying the form is presuppositional (confirms offstage shared info) and is followed by a plain 해요체 question that alone licenses turn four: L2 요즘도 자주 드세요?, L3 그 밖에는 안 내려가요?, L7 무슨 방송을 보세요?, L10 할머니랑은 어떻게 연락하세요?. Turn four is reconstructable from scene plus that plain question; no learner production of the form is required.",
+        "Base texts already function as the bilingual recognition note (en 'You said …' in L3/L7/L10, en 'right?' / de 'doch' in L2, de 'ja' in L10); no exercise field needs a note added.",
+        "L7 presupposes a learner statement not in the dialogue; the opening 이사 오기 전에도 and the situation (comparing evenings before/after the move) license it as offstage earlier information. Acceptable.",
+        "L2 real listening hazard: 산다면서요 is homographic for 사다 (buy) and 살다 (live, ㄹ-drop → 산다), and L1 just made 지금은 도시에 살아요 productive. A learner without the quotative yet may hear 장에서 산다 as 'lives at the market'. -잖아요 (already in this path's interlocutor lines L1/L8/L9) removes the ambiguity, keeps the shared-knowledge meaning the de/en bases already render, and keeps 10 eojeol."
+      ]
+    }
+  ],
+  "openIssues": [
+    "Amend B1_NATIVE_KOREAN_SPEC P8 staging recognitionOnly: lessons 1-3 add '-다면서요 in listener line (L3)', lessons 7-8 add '-다고 했는데 in listener line (L7)', lessons 9-10 add '-다면서요 in listener line (L10)', so the grammar-range gate does not flag out-of-stage recognition forms; also note P8 as pre-exposure to the -다고 family before P9/P10 L7-8.",
+    "L10 base texts render -다면서요 as de 'ja' vs en 'You said'; both faithful, no edit, flag only if base-locale parallelism is enforced later.",
+    "No instructional field exists for interlocutor-form notes; if the product later wants an explicit receptive gloss, add a schema field rather than reusing pattern.rule."
+  ]
+}

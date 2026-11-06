@@ -1,0 +1,22 @@
+{
+  "originalSource": "en-p8-review/english-p8.json",
+  "originalSha256": "2419c6e93093f9db12a0a4309f81a7596565d18e717991596edccb47514e0209",
+  "resultSha256": "2cc4886cbac2d7e16a488f2b57810eecefef410cbaa84db550413a35f13bbabc",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 4,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period inside chip 2 with subject pronoun; apostrophe preserved; no alternative grammatical order."
+    },
+    {
+      "lesson": 7,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period inside chip 2; German participle split mirrors the English split honestly; only one grammatical order."
+    }
+  ]
+}

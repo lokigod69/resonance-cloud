@@ -1,0 +1,1906 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Früher und heute"
+  },
+  "subtitle": {
+    "de": "Vergleiche frühere Gewohnheiten mit deinem Alltag heute und sage, seit wann sich etwas verändert hat."
+  },
+  "anchor": "Shape B: Eine vertraute Person fragt aus Interesse weiter. L1–4 used to und didn't use to; L5–7 heutiger Gegensatz, anymore, Vergleiche und as … as; L8–9 present perfect mit for/since; L10 Mischung. Frühere Trophäenzuordnungen, neuere Oktober-Stufung. Amerikanisches Englisch.",
+  "lessons": [
+    {
+      "slug": "before-the-first-bus",
+      "title": {
+        "de": "Vor dem ersten Bus"
+      },
+      "situation": {
+        "de": "Beim Frühstück fragt ein Freund, wie dein Morgen vor dem Umzug aussah.",
+        "en": "Over breakfast, a friend asks what your mornings were like before you moved."
+      },
+      "pedagogicalGoal": "Mit used to und der Grundform beschreibst du, was früher regelmäßig geschah. Nach didn't steht use ohne d.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What were mornings like in your old apartment?",
+          "baseText": {
+            "de": "Wie war es morgens in deiner alten Wohnung?"
+          }
+        },
+        {
+          "targetText": "My morning routine used to start with a sprint to the bus stop.",
+          "baseText": {
+            "de": "Früher begann mein Morgen immer mit einem Sprint zur Bushaltestelle."
+          }
+        },
+        {
+          "targetText": "Did you ever have time to eat before you left?",
+          "baseText": {
+            "de": "Hattest du vor dem Aufbruch überhaupt Zeit zum Essen?"
+          }
+        },
+        {
+          "targetText": "I didn't use to eat breakfast until I got to work.",
+          "baseText": {
+            "de": "Früher habe ich erst gefrühstückt, wenn ich bei der Arbeit war."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past habits with used to",
+        "rule": {
+          "de": "Mit used to und der Grundform beschreibst du, was früher regelmäßig geschah. Nach didn't steht use ohne d."
+        },
+        "examples": [
+          {
+            "targetText": "My morning routine used to start with a sprint to the bus stop.",
+            "baseText": {
+              "de": "Früher begann mein Morgen immer mit einem Sprint zur Bushaltestelle."
+            },
+            "highlight": "used to start"
+          },
+          {
+            "targetText": "We didn't use to lock the garden gate at night.",
+            "baseText": {
+              "de": "Früher haben wir das Gartentor nachts nicht abgeschlossen."
+            },
+            "highlight": "didn't use to"
+          }
+        ]
+      },
+      "cloze": [
+        "I didn't ",
+        {
+          "kind": "form",
+          "answer": "use",
+          "choices": [
+            "used",
+            "using",
+            "use",
+            "uses"
+          ],
+          "cue": "Grundform nach didn't"
+        },
+        " to eat breakfast until I ",
+        {
+          "kind": "form",
+          "answer": "got",
+          "choices": [
+            "getting",
+            "gets",
+            "got",
+            "get"
+          ],
+          "cue": "get in der einfachen Vergangenheit"
+        },
+        " to work."
+      ],
+      "chunks": [
+        {
+          "targetText": "My morning routine",
+          "baseText": {
+            "de": "Mein morgendlicher Ablauf"
+          }
+        },
+        {
+          "targetText": "used to start",
+          "baseText": {
+            "de": "begann früher"
+          }
+        },
+        {
+          "targetText": "with a sprint",
+          "baseText": {
+            "de": "mit einem Sprint"
+          }
+        },
+        {
+          "targetText": "to the bus stop.",
+          "baseText": {
+            "de": "zur Bushaltestelle."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "morning routine",
+          "baseText": {
+            "de": "morgendlicher Ablauf"
+          }
+        },
+        {
+          "targetText": "used to start",
+          "baseText": {
+            "de": "begann früher"
+          }
+        },
+        {
+          "targetText": "a sprint",
+          "baseText": {
+            "de": "ein Sprint"
+          }
+        },
+        {
+          "targetText": "bus stop",
+          "baseText": {
+            "de": "Bushaltestelle"
+          }
+        },
+        {
+          "targetText": "eat breakfast",
+          "baseText": {
+            "de": "frühstücken"
+          }
+        },
+        {
+          "targetText": "got to work",
+          "baseText": {
+            "de": "bei der Arbeit ankam"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My morning routine used to ",
+        "answer": "start",
+        "after": " with a sprint to the bus stop.",
+        "fallbackChoices": [
+          "started",
+          "starting",
+          "start",
+          "starts"
+        ]
+      },
+      "speakRequired": [
+        "morning",
+        "routine",
+        "sprint"
+      ],
+      "sceneCaption": {
+        "de": "Beim Frühstück fragt dein Freund: „What were mornings like in your old apartment?“"
+      },
+      "trophyWord": {
+        "word": "routine",
+        "meaning": {
+          "de": "gewohnter Ablauf"
+        },
+        "example": "My evening routine used to begin with a short walk.",
+        "whyThisWord": {
+          "de": "Mit routine kannst du mehrere wiederkehrende Handlungen als einen Ablauf beschreiben."
+        }
+      },
+      "distractors": [
+        "has started",
+        "with a ticket"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kaffeetassen stehen am Frühstückstisch neben einem Busfahrplan."
+      },
+      "songMood": "Wach und freundlich.",
+      "visualNotes": "Zwei Kaffeetassen stehen am Frühstückstisch neben einem Busfahrplan."
+    },
+    {
+      "slug": "under-the-stairs",
+      "title": {
+        "de": "Der Platz unter der Treppe"
+      },
+      "situation": {
+        "de": "Eine Freundin sieht den Einband deines alten Skizzenbuchs und fragt, wo du früher gezeichnet hast.",
+        "en": "A friend spots the cover of your old sketchbook and asks where you used to draw."
+      },
+      "pedagogicalGoal": "Used to mit der Grundform beschreibt eine frühere Gewohnheit. Nobody macht die Aussage bereits negativ; ein zusätzliches didn't ist überflüssig.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Where did you draw all those pictures as a kid?",
+          "baseText": {
+            "de": "Wo hast du als Kind all die Bilder gezeichnet?"
+          }
+        },
+        {
+          "targetText": "During my childhood, I used to draw under the stairs after school.",
+          "baseText": {
+            "de": "In meiner Kindheit habe ich nach der Schule oft unter der Treppe gezeichnet."
+          }
+        },
+        {
+          "targetText": "What made that spot so special?",
+          "baseText": {
+            "de": "Was war an dem Platz so besonders?"
+          }
+        },
+        {
+          "targetText": "Nobody used to look there, so my drawings stayed a surprise.",
+          "baseText": {
+            "de": "Dort sah früher niemand nach. So blieben meine Bilder eine Überraschung."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Repeated childhood activities",
+        "rule": {
+          "de": "Used to mit der Grundform beschreibt eine frühere Gewohnheit. Nobody macht die Aussage bereits negativ; ein zusätzliches didn't ist überflüssig."
+        },
+        "examples": [
+          {
+            "targetText": "During my childhood, I used to draw under the stairs after school.",
+            "baseText": {
+              "de": "In meiner Kindheit habe ich nach der Schule oft unter der Treppe gezeichnet."
+            },
+            "highlight": "used to draw"
+          },
+          {
+            "targetText": "My cousin used to hide birthday cards in an old suitcase.",
+            "baseText": {
+              "de": "Früher versteckte meine Cousine Geburtstagskarten in einem alten Koffer."
+            },
+            "highlight": "used to hide"
+          }
+        ]
+      },
+      "cloze": [
+        "Nobody used to ",
+        {
+          "kind": "form",
+          "answer": "look",
+          "choices": [
+            "looks",
+            "look",
+            "looked",
+            "looking"
+          ],
+          "cue": "Grundform nach used to"
+        },
+        " there, so my drawings ",
+        {
+          "kind": "form",
+          "answer": "stayed",
+          "choices": [
+            "staying",
+            "stays",
+            "stayed",
+            "stay"
+          ],
+          "cue": "stay in der einfachen Vergangenheit"
+        },
+        " a surprise."
+      ],
+      "chunks": [
+        {
+          "targetText": "During my childhood,",
+          "baseText": {
+            "de": "In meiner Kindheit"
+          }
+        },
+        {
+          "targetText": "I used to draw",
+          "baseText": {
+            "de": "habe ich oft gezeichnet"
+          }
+        },
+        {
+          "targetText": "under the stairs",
+          "baseText": {
+            "de": "unter der Treppe"
+          }
+        },
+        {
+          "targetText": "after school.",
+          "baseText": {
+            "de": "nach der Schule."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "childhood",
+          "baseText": {
+            "de": "Kindheit"
+          }
+        },
+        {
+          "targetText": "draw",
+          "baseText": {
+            "de": "zeichnen"
+          }
+        },
+        {
+          "targetText": "under the stairs",
+          "baseText": {
+            "de": "unter der Treppe"
+          }
+        },
+        {
+          "targetText": "after school",
+          "baseText": {
+            "de": "nach der Schule"
+          }
+        },
+        {
+          "targetText": "my drawings",
+          "baseText": {
+            "de": "meine Zeichnungen"
+          }
+        },
+        {
+          "targetText": "a surprise",
+          "baseText": {
+            "de": "eine Überraschung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "During my childhood, I used to ",
+        "answer": "draw",
+        "after": " under the stairs after school.",
+        "fallbackChoices": [
+          "drew",
+          "draws",
+          "draw",
+          "drawing"
+        ]
+      },
+      "speakRequired": [
+        "childhood",
+        "draw",
+        "stairs"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin betrachtet das Skizzenbuch und fragt: „Where did you draw all those pictures as a kid?“"
+      },
+      "trophyWord": {
+        "word": "childhood",
+        "meaning": {
+          "de": "Kindheit"
+        },
+        "example": "I spent most of my childhood in a small town.",
+        "whyThisWord": {
+          "de": "Childhood benennt den Lebensabschnitt, in dem eine Erinnerung spielt."
+        }
+      },
+      "distractors": [
+        "before the concert.",
+        "over the bridge"
+      ],
+      "placeholderCaption": {
+        "de": "Ein aufgeschlagenes Skizzenbuch liegt neben einer Treppe."
+      },
+      "songMood": "Ruhig und neugierig.",
+      "visualNotes": "Ein aufgeschlagenes Skizzenbuch liegt neben einer Treppe."
+    },
+    {
+      "slug": "saturday-everywhere",
+      "title": {
+        "de": "Samstags unterwegs"
+      },
+      "situation": {
+        "de": "Ein Nachbar entdeckt eine Fahrkarte aus deiner Zeit in Mexiko in deinem Fotoalbum.",
+        "en": "A neighbor spots a ticket from your time in Mexico in your photo album."
+      },
+      "pedagogicalGoal": "Used to beschreibt die damalige Gewohnheit. Mit still und dem simple present benennst du den Teil, der heute weiterbesteht.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What did you do on weekends when you lived in Mexico?",
+          "baseText": {
+            "de": "Was hast du am Wochenende gemacht, als du in Mexiko gelebt hast?"
+          }
+        },
+        {
+          "targetText": "When I lived abroad, I used to explore a different neighborhood every Saturday.",
+          "baseText": {
+            "de": "Als ich im Ausland lebte, erkundete ich jeden Samstag ein anderes Viertel."
+          }
+        },
+        {
+          "targetText": "Is there anything from those Saturdays you still do here?",
+          "baseText": {
+            "de": "Machst du heute hier noch etwas so wie an diesen Samstagen?"
+          }
+        },
+        {
+          "targetText": "I still walk everywhere, but I don't get lost as often.",
+          "baseText": {
+            "de": "Ich gehe immer noch überallhin zu Fuß, verlaufe mich aber seltener."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past habits and habits that remain",
+        "rule": {
+          "de": "Used to beschreibt die damalige Gewohnheit. Mit still und dem simple present benennst du den Teil, der heute weiterbesteht."
+        },
+        "examples": [
+          {
+            "targetText": "When I lived abroad, I used to explore a different neighborhood every Saturday.",
+            "baseText": {
+              "de": "Als ich im Ausland lebte, erkundete ich jeden Samstag ein anderes Viertel."
+            },
+            "highlight": "used to explore"
+          },
+          {
+            "targetText": "I used to collect postcards, and I still keep my favorites.",
+            "baseText": {
+              "de": "Früher sammelte ich Postkarten, und meine liebsten bewahre ich noch heute auf."
+            },
+            "highlight": "used to collect"
+          }
+        ]
+      },
+      "cloze": [
+        "I still ",
+        {
+          "kind": "form",
+          "answer": "walk",
+          "choices": [
+            "walks",
+            "walking",
+            "walk",
+            "walked"
+          ],
+          "cue": "simple present mit I"
+        },
+        " everywhere, but I don't ",
+        {
+          "kind": "form",
+          "answer": "get",
+          "choices": [
+            "got",
+            "gets",
+            "getting",
+            "get"
+          ],
+          "cue": "Grundform nach don't"
+        },
+        " lost as often."
+      ],
+      "chunks": [
+        {
+          "targetText": "When I lived abroad,",
+          "baseText": {
+            "de": "Als ich im Ausland lebte,"
+          }
+        },
+        {
+          "targetText": "I used to explore",
+          "baseText": {
+            "de": "erkundete ich regelmäßig"
+          }
+        },
+        {
+          "targetText": "a different neighborhood",
+          "baseText": {
+            "de": "ein anderes Viertel"
+          }
+        },
+        {
+          "targetText": "every Saturday.",
+          "baseText": {
+            "de": "jeden Samstag."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lived abroad",
+          "baseText": {
+            "de": "lebte im Ausland"
+          }
+        },
+        {
+          "targetText": "explore",
+          "baseText": {
+            "de": "erkunden"
+          }
+        },
+        {
+          "targetText": "a different neighborhood",
+          "baseText": {
+            "de": "ein anderes Viertel"
+          }
+        },
+        {
+          "targetText": "every Saturday",
+          "baseText": {
+            "de": "jeden Samstag"
+          }
+        },
+        {
+          "targetText": "walk everywhere",
+          "baseText": {
+            "de": "überallhin zu Fuß gehen"
+          }
+        },
+        {
+          "targetText": "get lost",
+          "baseText": {
+            "de": "sich verirren"
+          }
+        }
+      ],
+      "recall": {
+        "before": "When I lived abroad, I used to ",
+        "answer": "explore",
+        "after": " a different neighborhood every Saturday.",
+        "fallbackChoices": [
+          "explored",
+          "exploring",
+          "explores",
+          "explore"
+        ]
+      },
+      "speakRequired": [
+        "lived",
+        "abroad",
+        "explore"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar schaut ins Fotoalbum und fragt: „What did you do on weekends when you lived in Mexico?“"
+      },
+      "trophyWord": {
+        "word": "abroad",
+        "meaning": {
+          "de": "im Ausland"
+        },
+        "example": "When I worked abroad, letters from home meant a lot.",
+        "whyThisWord": {
+          "de": "Abroad bezeichnet den Aufenthalt in einem anderen Land; davor steht hier keine Präposition."
+        }
+      },
+      "distractors": [
+        "a different receipt",
+        "in the drawer."
+      ],
+      "placeholderCaption": {
+        "de": "Zwischen zwei Straßenfotos steckt eine alte Fahrkarte."
+      },
+      "songMood": "Entdeckerisch und warm.",
+      "visualNotes": "Zwischen zwei Straßenfotos steckt eine alte Fahrkarte."
+    },
+    {
+      "slug": "the-small-basket",
+      "title": {
+        "de": "Der kleine Einkaufskorb"
+      },
+      "situation": {
+        "de": "Am Eingang eines Supermarkts spricht dich eine Freundin auf deinen Einkaufskorb an.",
+        "en": "At the supermarket entrance, a friend notices the basket you picked up."
+      },
+      "pedagogicalGoal": "Nach didn't steht use to. Die bejahte Form lautet used to. Beim Hören klingen beide gleich; der Unterschied zeigt sich nur in der Schrift.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Didn't you always grab the biggest cart?",
+          "baseText": {
+            "de": "Hast du nicht früher immer den größten Einkaufswagen genommen?"
+          }
+        },
+        {
+          "targetText": "Carrying a basket is a new habit. I didn't use to shop on foot.",
+          "baseText": {
+            "de": "Den Korb mitzunehmen ist eine neue Gewohnheit. Früher ging ich nicht zu Fuß einkaufen."
+          }
+        },
+        {
+          "targetText": "What made you switch from a cart?",
+          "baseText": {
+            "de": "Warum hast du den Einkaufswagen aufgegeben?"
+          }
+        },
+        {
+          "targetText": "I used to buy more than I could carry home.",
+          "baseText": {
+            "de": "Früher kaufte ich mehr, als ich nach Hause tragen konnte."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Negative past habits",
+        "rule": {
+          "de": "Nach didn't steht use to. Die bejahte Form lautet used to. Beim Hören klingen beide gleich; der Unterschied zeigt sich nur in der Schrift."
+        },
+        "examples": [
+          {
+            "targetText": "Carrying a basket is a new habit. I didn't use to shop on foot.",
+            "baseText": {
+              "de": "Den Korb mitzunehmen ist eine neue Gewohnheit. Früher ging ich nicht zu Fuß einkaufen."
+            },
+            "highlight": "didn't use to"
+          },
+          {
+            "targetText": "We didn't use to plan our meals before shopping.",
+            "baseText": {
+              "de": "Früher haben wir vor dem Einkaufen unsere Mahlzeiten nicht geplant."
+            },
+            "highlight": "didn't use to"
+          }
+        ]
+      },
+      "cloze": [
+        "I used to ",
+        {
+          "kind": "form",
+          "answer": "buy",
+          "choices": [
+            "bought",
+            "buy",
+            "buys",
+            "buying"
+          ],
+          "cue": "Grundform nach used to"
+        },
+        " more than I could ",
+        {
+          "kind": "form",
+          "answer": "carry",
+          "choices": [
+            "carries",
+            "carried",
+            "carry",
+            "carrying"
+          ],
+          "cue": "Grundform nach could"
+        },
+        " home."
+      ],
+      "chunks": [
+        {
+          "targetText": "Carrying a basket",
+          "baseText": {
+            "de": "Einen Korb mitzunehmen"
+          }
+        },
+        {
+          "targetText": "is a new habit. I",
+          "baseText": {
+            "de": "ist eine neue Gewohnheit. Ich"
+          }
+        },
+        {
+          "targetText": "didn't use to",
+          "baseText": {
+            "de": "habe früher nicht"
+          }
+        },
+        {
+          "targetText": "shop on foot.",
+          "baseText": {
+            "de": "zu Fuß eingekauft."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "grab",
+          "baseText": {
+            "de": "sich schnappen"
+          }
+        },
+        {
+          "targetText": "the biggest cart",
+          "baseText": {
+            "de": "der größte Einkaufswagen"
+          }
+        },
+        {
+          "targetText": "carrying a basket",
+          "baseText": {
+            "de": "einen Korb tragen"
+          }
+        },
+        {
+          "targetText": "a new habit",
+          "baseText": {
+            "de": "eine neue Gewohnheit"
+          }
+        },
+        {
+          "targetText": "switch from a cart",
+          "baseText": {
+            "de": "vom Einkaufswagen umsteigen"
+          }
+        },
+        {
+          "targetText": "carry home",
+          "baseText": {
+            "de": "nach Hause tragen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Carrying a basket is a new habit. I didn't use to ",
+        "answer": "shop",
+        "after": " on foot.",
+        "fallbackChoices": [
+          "shops",
+          "shopped",
+          "shopping",
+          "shop"
+        ]
+      },
+      "speakRequired": [
+        "basket",
+        "habit",
+        "foot"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang des Supermarkts fragt deine Freundin: „Didn't you always grab the biggest cart?“"
+      },
+      "trophyWord": {
+        "word": "habit",
+        "meaning": {
+          "de": "Gewohnheit"
+        },
+        "example": "Bringing my own bag is a habit now.",
+        "whyThisWord": {
+          "de": "Habit bezeichnet eine einzelne Handlung, die du dir angewöhnt hast."
+        }
+      },
+      "distractors": [
+        "lose a ticket.",
+        "It's an empty"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Einkaufskorb steht neben einer Reihe von Wagen."
+      },
+      "songMood": "Lebendig und leicht.",
+      "visualNotes": "Ein Einkaufskorb steht neben einer Reihe von Wagen."
+    },
+    {
+      "slug": "through-the-park",
+      "title": {
+        "de": "Durch den Park"
+      },
+      "situation": {
+        "de": "Ein Kollege fragt dich vor dem Büro, wie du jetzt zur Arbeit kommst.",
+        "en": "A coworker asks outside the office how you get to work now."
+      },
+      "pedagogicalGoal": "Nowadays beschreibt, was heute üblich ist. Steht anymore am Ende einer Verneinung, gilt etwas von früher heute nicht mehr.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you still drive to work every day?",
+          "baseText": {
+            "de": "Fährst du immer noch jeden Tag mit dem Auto zur Arbeit?"
+          }
+        },
+        {
+          "targetText": "I bike through the park nowadays, so I don't need a parking pass anymore.",
+          "baseText": {
+            "de": "Heutzutage fahre ich mit dem Rad durch den Park und brauche keinen Parkausweis mehr."
+          }
+        },
+        {
+          "targetText": "Does that actually save much time?",
+          "baseText": {
+            "de": "Sparst du damit wirklich viel Zeit?"
+          }
+        },
+        {
+          "targetText": "The ride takes less time than finding a spot downtown.",
+          "baseText": {
+            "de": "Die Fahrt dauert nicht so lange wie die Parkplatzsuche in der Innenstadt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nowadays and anymore",
+        "rule": {
+          "de": "Nowadays beschreibt, was heute üblich ist. Steht anymore am Ende einer Verneinung, gilt etwas von früher heute nicht mehr."
+        },
+        "examples": [
+          {
+            "targetText": "I bike through the park nowadays, so I don't need a parking pass anymore.",
+            "baseText": {
+              "de": "Heutzutage fahre ich mit dem Rad durch den Park und brauche keinen Parkausweis mehr."
+            },
+            "highlight": "don't need a parking pass anymore"
+          },
+          {
+            "targetText": "I still have my old lunch box, but I don't use it anymore.",
+            "baseText": {
+              "de": "Meine alte Brotdose habe ich noch, aber ich benutze sie nicht mehr."
+            },
+            "highlight": "don't use it anymore"
+          }
+        ]
+      },
+      "cloze": [
+        "The ride ",
+        {
+          "kind": "form",
+          "answer": "takes",
+          "choices": [
+            "take",
+            "takes",
+            "taking",
+            "took"
+          ],
+          "cue": "take im simple present mit the ride"
+        },
+        " less time ",
+        {
+          "kind": "connector",
+          "answer": "than",
+          "choices": [
+            "than",
+            "because",
+            "while",
+            "until"
+          ]
+        },
+        " finding a spot downtown."
+      ],
+      "chunks": [
+        {
+          "targetText": "I bike",
+          "baseText": {
+            "de": "Ich fahre mit dem Rad"
+          }
+        },
+        {
+          "targetText": "through the park nowadays,",
+          "baseText": {
+            "de": "inzwischen durch den Park,"
+          }
+        },
+        {
+          "targetText": "so I don't need",
+          "baseText": {
+            "de": "deshalb brauche ich"
+          }
+        },
+        {
+          "targetText": "a parking pass anymore.",
+          "baseText": {
+            "de": "keinen Parkausweis mehr."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "through the park",
+          "baseText": {
+            "de": "durch den Park"
+          }
+        },
+        {
+          "targetText": "nowadays",
+          "baseText": {
+            "de": "heutzutage"
+          }
+        },
+        {
+          "targetText": "parking pass",
+          "baseText": {
+            "de": "Parkausweis"
+          }
+        },
+        {
+          "targetText": "save time",
+          "baseText": {
+            "de": "Zeit sparen"
+          }
+        },
+        {
+          "targetText": "a spot",
+          "baseText": {
+            "de": "ein Parkplatz"
+          }
+        },
+        {
+          "targetText": "downtown",
+          "baseText": {
+            "de": "in der Innenstadt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I ",
+        "answer": "bike",
+        "after": " through the park nowadays, so I don't need a parking pass anymore.",
+        "fallbackChoices": [
+          "bikes",
+          "bike",
+          "biking",
+          "biked"
+        ]
+      },
+      "speakRequired": [
+        "bike",
+        "park",
+        "nowadays"
+      ],
+      "sceneCaption": {
+        "de": "Dein Kollege wartet vor dem Büro und fragt: „Do you still drive to work every day?“"
+      },
+      "trophyWord": {
+        "word": "nowadays",
+        "meaning": {
+          "de": "heutzutage"
+        },
+        "example": "Nowadays I know all the streets between home and work.",
+        "whyThisWord": {
+          "de": "Nowadays stellt den heutigen Alltag einer früheren Gewohnheit gegenüber."
+        }
+      },
+      "distractors": [
+        "from the suitcase",
+        "a paper map instead."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Fahrrad steht vor einem Bürogebäude am Rand eines Parks."
+      },
+      "songMood": "Fließend und munter.",
+      "visualNotes": "Ein Fahrrad steht vor einem Bürogebäude am Rand eines Parks."
+    },
+    {
+      "slug": "from-the-front-door",
+      "title": {
+        "de": "Gleich vor der Haustür"
+      },
+      "situation": {
+        "de": "Ein Nachbar fragt dich nach deinem neuen Wohnviertel und deinem Alltag dort.",
+        "en": "A neighbor asks about your new neighborhood and your daily life there."
+      },
+      "pedagogicalGoal": "Longer vergleicht die Dauer. Bei as … as steht die Grundform des Adjektivs. Since nennt im ersten Satz einen Grund wie weil, keinen Zeitpunkt wie in since March.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you get outside much in this neighborhood?",
+          "baseText": {
+            "de": "Kommst du in dieser Gegend oft nach draußen?"
+          }
+        },
+        {
+          "targetText": "I go for longer walks these days since the park is right outside.",
+          "baseText": {
+            "de": "Inzwischen mache ich längere Spaziergänge, weil der Park direkt vor der Tür liegt."
+          }
+        },
+        {
+          "targetText": "Is the trail as noisy as the main road?",
+          "baseText": {
+            "de": "Ist der Weg so laut wie die Hauptstraße?"
+          }
+        },
+        {
+          "targetText": "No, it isn't as loud as the road I remember.",
+          "baseText": {
+            "de": "Nein, er ist nicht so laut wie die Straße, an die ich mich erinnere."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Comparing then and now",
+        "rule": {
+          "de": "Longer vergleicht die Dauer. Bei as … as steht die Grundform des Adjektivs. Since nennt im ersten Satz einen Grund wie weil, keinen Zeitpunkt wie in since March."
+        },
+        "examples": [
+          {
+            "targetText": "I go for longer walks these days since the park is right outside.",
+            "baseText": {
+              "de": "Inzwischen mache ich längere Spaziergänge, weil der Park direkt vor der Tür liegt."
+            },
+            "highlight": "longer walks"
+          },
+          {
+            "targetText": "The morning bus isn't as busy as the evening bus.",
+            "baseText": {
+              "de": "Im Bus ist morgens weniger los als abends."
+            },
+            "highlight": "as busy as"
+          }
+        ]
+      },
+      "cloze": [
+        "No, it isn't as ",
+        {
+          "kind": "form",
+          "answer": "loud",
+          "choices": [
+            "louder",
+            "loudest",
+            "loud",
+            "loudly"
+          ],
+          "cue": "Grundform des Adjektivs im Gleichheitsvergleich"
+        },
+        " as the road I ",
+        {
+          "kind": "form",
+          "answer": "remember",
+          "choices": [
+            "remembers",
+            "remembering",
+            "to remember",
+            "remember"
+          ],
+          "cue": "simple present mit I"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "I go for longer walks",
+          "baseText": {
+            "de": "Ich mache längere Spaziergänge"
+          }
+        },
+        {
+          "targetText": "these days",
+          "baseText": {
+            "de": "inzwischen"
+          }
+        },
+        {
+          "targetText": "since the park",
+          "baseText": {
+            "de": "weil der Park"
+          }
+        },
+        {
+          "targetText": "is right outside.",
+          "baseText": {
+            "de": "direkt vor der Tür liegt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "longer walks",
+          "baseText": {
+            "de": "längere Spaziergänge"
+          }
+        },
+        {
+          "targetText": "these days",
+          "baseText": {
+            "de": "inzwischen"
+          }
+        },
+        {
+          "targetText": "since",
+          "baseText": {
+            "de": "weil"
+          }
+        },
+        {
+          "targetText": "right outside",
+          "baseText": {
+            "de": "direkt vor der Tür"
+          }
+        },
+        {
+          "targetText": "the trail",
+          "baseText": {
+            "de": "der Weg"
+          }
+        },
+        {
+          "targetText": "the road",
+          "baseText": {
+            "de": "die Straße"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I go for ",
+        "answer": "longer",
+        "after": " walks these days since the park is right outside.",
+        "fallbackChoices": [
+          "longest",
+          "long",
+          "more long",
+          "longer"
+        ]
+      },
+      "speakRequired": [
+        "longer",
+        "walks",
+        "park"
+      ],
+      "sceneCaption": {
+        "de": "Dein Nachbar fragt am Hauseingang: „Do you get outside much in this neighborhood?“"
+      },
+      "trophyWord": {
+        "word": "since",
+        "meaning": {
+          "de": "weil; da"
+        },
+        "example": "I walk to the store since it's only a block away.",
+        "whyThisWord": {
+          "de": "Since kann einen Grund einleiten. Bei einer Zeitangabe bedeutet es dagegen seit."
+        }
+      },
+      "distractors": [
+        "on the counter",
+        "was never built."
+      ],
+      "placeholderCaption": {
+        "de": "Vom Hauseingang aus sieht man den Anfang eines Parkwegs."
+      },
+      "songMood": "Gelassen und offen.",
+      "visualNotes": "Vom Hauseingang aus sieht man den Anfang eines Parkwegs."
+    },
+    {
+      "slug": "phone-on-the-shelf",
+      "title": {
+        "de": "Das Handy auf dem Regal"
+      },
+      "situation": {
+        "de": "Eine Freundin sieht einen neuen Wecker auf deinem Küchentisch und fragt nach.",
+        "en": "A friend spots a new alarm clock on your kitchen table and asks about it."
+      },
+      "pedagogicalGoal": "Recently nennt hier eine einzelne Veränderung, these days den neuen Alltag. Der Komparativ mit than vergleicht ihn mit früher.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Why is there a new alarm clock on your kitchen table?",
+          "baseText": {
+            "de": "Warum steht ein neuer Wecker auf deinem Küchentisch?"
+          }
+        },
+        {
+          "targetText": "I recently bought it. These days my phone stays outside the bedroom.",
+          "baseText": {
+            "de": "Ich habe ihn vor Kurzem gekauft. Inzwischen bleibt mein Handy außerhalb des Schlafzimmers."
+          }
+        },
+        {
+          "targetText": "Do you sleep better without the phone?",
+          "baseText": {
+            "de": "Schläfst du ohne das Handy besser?"
+          }
+        },
+        {
+          "targetText": "Yes, I fall asleep faster than I used to.",
+          "baseText": {
+            "de": "Ja, ich schlafe schneller ein als früher."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Recent changes and comparatives",
+        "rule": {
+          "de": "Recently nennt hier eine einzelne Veränderung, these days den neuen Alltag. Der Komparativ mit than vergleicht ihn mit früher."
+        },
+        "examples": [
+          {
+            "targetText": "I recently bought it. These days my phone stays outside the bedroom.",
+            "baseText": {
+              "de": "Ich habe ihn vor Kurzem gekauft. Inzwischen bleibt mein Handy außerhalb des Schlafzimmers."
+            },
+            "highlight": "These days"
+          },
+          {
+            "targetText": "I study harder than I used to, especially before a test.",
+            "baseText": {
+              "de": "Ich lerne intensiver als früher, besonders vor einer Prüfung."
+            },
+            "highlight": "harder than"
+          }
+        ]
+      },
+      "cloze": [
+        "Yes, I ",
+        {
+          "kind": "form",
+          "answer": "fall",
+          "choices": [
+            "falls",
+            "falling",
+            "fell",
+            "fall"
+          ],
+          "cue": "simple present mit I"
+        },
+        " asleep faster ",
+        {
+          "kind": "connector",
+          "answer": "than",
+          "choices": [
+            "because",
+            "than",
+            "until",
+            "while"
+          ]
+        },
+        " I used to."
+      ],
+      "chunks": [
+        {
+          "targetText": "I recently",
+          "baseText": {
+            "de": "Ich habe ihn vor Kurzem"
+          }
+        },
+        {
+          "targetText": "bought it. These days",
+          "baseText": {
+            "de": "gekauft. Inzwischen"
+          }
+        },
+        {
+          "targetText": "my phone stays",
+          "baseText": {
+            "de": "bleibt mein Handy"
+          }
+        },
+        {
+          "targetText": "outside the bedroom.",
+          "baseText": {
+            "de": "außerhalb des Schlafzimmers."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "recently",
+          "baseText": {
+            "de": "vor Kurzem"
+          }
+        },
+        {
+          "targetText": "alarm clock",
+          "baseText": {
+            "de": "Wecker"
+          }
+        },
+        {
+          "targetText": "kitchen table",
+          "baseText": {
+            "de": "Küchentisch"
+          }
+        },
+        {
+          "targetText": "these days",
+          "baseText": {
+            "de": "inzwischen"
+          }
+        },
+        {
+          "targetText": "outside the bedroom",
+          "baseText": {
+            "de": "außerhalb des Schlafzimmers"
+          }
+        },
+        {
+          "targetText": "fall asleep",
+          "baseText": {
+            "de": "einschlafen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I recently ",
+        "answer": "bought",
+        "after": " it. These days my phone stays outside the bedroom.",
+        "fallbackChoices": [
+          "buy",
+          "bought",
+          "buys",
+          "buying"
+        ]
+      },
+      "speakRequired": [
+        "recently",
+        "bought",
+        "phone"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin schaut auf den Küchentisch und fragt: „Why is there a new alarm clock on your kitchen table?“"
+      },
+      "trophyWord": {
+        "word": "recently",
+        "meaning": {
+          "de": "vor Kurzem"
+        },
+        "example": "I recently changed the time on my alarm clock.",
+        "whyThisWord": {
+          "de": "Recently verortet eine Veränderung in der nahen Vergangenheit, ohne ein Datum nennen zu müssen."
+        }
+      },
+      "distractors": [
+        "outside the kitchen.",
+        "will borrow one."
+      ],
+      "placeholderCaption": {
+        "de": "Ein neuer Wecker steht auf einem Küchentisch."
+      },
+      "songMood": "Sanft und nachdenklich.",
+      "visualNotes": "Ein neuer Wecker steht auf einem Küchentisch."
+    },
+    {
+      "slug": "speaking-up-in-class",
+      "title": {
+        "de": "Das Wort ergreifen"
+      },
+      "situation": {
+        "de": "Nach dem Abendkurs spricht dich eine Freundin auf deine Beteiligung im Unterricht an.",
+        "en": "After an evening class, a friend asks about your participation."
+      },
+      "pedagogicalGoal": "Das present perfect beschreibt eine Veränderung, deren Ergebnis bis heute gilt. Since nennt ihren Anfang; das Ereignis nach since steht hier im simple past.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How do you feel about speaking in class now?",
+          "baseText": {
+            "de": "Wie fühlst du dich inzwischen, wenn du im Kurs etwas sagst?"
+          }
+        },
+        {
+          "targetText": "My confidence has grown since I joined our evening class in March.",
+          "baseText": {
+            "de": "Seit ich im März mit unserem Abendkurs angefangen habe, ist mein Selbstvertrauen gewachsen."
+          }
+        },
+        {
+          "targetText": "Was there something you couldn't bring yourself to do at first?",
+          "baseText": {
+            "de": "Gab es anfangs etwas, wozu du dich nicht überwinden konntest?"
+          }
+        },
+        {
+          "targetText": "I used to keep quiet, but now I ask questions aloud.",
+          "baseText": {
+            "de": "Früher war ich still; inzwischen stelle ich meine Fragen laut."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Since with a starting point",
+        "rule": {
+          "de": "Das present perfect beschreibt eine Veränderung, deren Ergebnis bis heute gilt. Since nennt ihren Anfang; das Ereignis nach since steht hier im simple past."
+        },
+        "examples": [
+          {
+            "targetText": "My confidence has grown since I joined our evening class in March.",
+            "baseText": {
+              "de": "Seit ich im März mit unserem Abendkurs angefangen habe, ist mein Selbstvertrauen gewachsen."
+            },
+            "highlight": "since I joined"
+          },
+          {
+            "targetText": "I've cooked for myself since I moved into my first apartment.",
+            "baseText": {
+              "de": "Seit meinem Einzug in die erste eigene Wohnung koche ich selbst."
+            },
+            "highlight": "since I moved"
+          }
+        ]
+      },
+      "cloze": [
+        "I used to ",
+        {
+          "kind": "form",
+          "answer": "keep",
+          "choices": [
+            "keeping",
+            "kept",
+            "keeps",
+            "keep"
+          ],
+          "cue": "Grundform nach used to"
+        },
+        " quiet, but now I ",
+        {
+          "kind": "form",
+          "answer": "ask",
+          "choices": [
+            "asking",
+            "ask",
+            "asks",
+            "asked"
+          ],
+          "cue": "simple present mit I"
+        },
+        " questions aloud."
+      ],
+      "chunks": [
+        {
+          "targetText": "My confidence",
+          "baseText": {
+            "de": "Mein Selbstvertrauen"
+          }
+        },
+        {
+          "targetText": "has grown",
+          "baseText": {
+            "de": "ist gewachsen"
+          }
+        },
+        {
+          "targetText": "since I joined our evening class",
+          "baseText": {
+            "de": "seit ich mit unserem Abendkurs angefangen habe"
+          }
+        },
+        {
+          "targetText": "in March.",
+          "baseText": {
+            "de": "im März."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "confidence",
+          "baseText": {
+            "de": "Selbstvertrauen"
+          }
+        },
+        {
+          "targetText": "evening class",
+          "baseText": {
+            "de": "Abendkurs"
+          }
+        },
+        {
+          "targetText": "in March",
+          "baseText": {
+            "de": "im März"
+          }
+        },
+        {
+          "targetText": "at first",
+          "baseText": {
+            "de": "anfangs"
+          }
+        },
+        {
+          "targetText": "keep quiet",
+          "baseText": {
+            "de": "still bleiben"
+          }
+        },
+        {
+          "targetText": "ask questions aloud",
+          "baseText": {
+            "de": "Fragen laut stellen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My confidence has ",
+        "answer": "grown",
+        "after": " since I joined our evening class in March.",
+        "fallbackChoices": [
+          "growing",
+          "grows",
+          "grow",
+          "grown"
+        ]
+      },
+      "speakRequired": [
+        "confidence",
+        "joined",
+        "class"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin bleibt nach dem Kurs kurz stehen und fragt: „How do you feel about speaking in class now?“"
+      },
+      "trophyWord": {
+        "word": "confidence",
+        "meaning": {
+          "de": "Selbstvertrauen"
+        },
+        "example": "My confidence has grown since I started practicing with a friend.",
+        "whyThisWord": {
+          "de": "Confidence benennt das Vertrauen in die eigenen Fähigkeiten."
+        }
+      },
+      "distractors": [
+        "next Thursday.",
+        "the wrong change"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Stühle und ein geöffnetes Heft stehen in einem Kursraum."
+      },
+      "songMood": "Ermutigend und ruhig.",
+      "visualNotes": "Zwei Stühle und ein geöffnetes Heft stehen in einem Kursraum."
+    },
+    {
+      "slug": "across-town",
+      "title": {
+        "de": "Allein durch die Stadt"
+      },
+      "situation": {
+        "de": "Ein Freund schaut mit dir auf den Stadtplan und fragt, wie du im Alltag zurechtkommst.",
+        "en": "A friend looks at the city map with you and asks how you're getting around."
+      },
+      "pedagogicalGoal": "For nennt einen Zeitraum, since dessen Anfang. Im Englischen steht für einen bis heute anhaltenden Zustand das present perfect.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How long have you felt comfortable going places on your own?",
+          "baseText": {
+            "de": "Seit wann fühlst du dich wohl dabei, allein unterwegs zu sein?"
+          }
+        },
+        {
+          "targetText": "I've felt independent for several months now, even on unfamiliar bus routes.",
+          "baseText": {
+            "de": "Seit einigen Monaten fühle ich mich selbstständig, sogar auf unbekannten Buslinien."
+          }
+        },
+        {
+          "targetText": "What did you need help with in the beginning?",
+          "baseText": {
+            "de": "Wobei hast du anfangs Hilfe gebraucht?"
+          }
+        },
+        {
+          "targetText": "I didn't use to know where to change buses downtown.",
+          "baseText": {
+            "de": "Früher wusste ich nicht, wo ich in der Innenstadt umsteigen musste."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "For with a length of time",
+        "rule": {
+          "de": "For nennt einen Zeitraum, since dessen Anfang. Im Englischen steht für einen bis heute anhaltenden Zustand das present perfect."
+        },
+        "examples": [
+          {
+            "targetText": "I've felt independent for several months now, even on unfamiliar bus routes.",
+            "baseText": {
+              "de": "Seit einigen Monaten fühle ich mich selbstständig, sogar auf unbekannten Buslinien."
+            },
+            "highlight": "for several months"
+          },
+          {
+            "targetText": "I've lived on this street for two years, and I still love it.",
+            "baseText": {
+              "de": "Ich wohne seit zwei Jahren in dieser Straße und mag es hier immer noch."
+            },
+            "highlight": "for two years"
+          }
+        ]
+      },
+      "cloze": [
+        "I didn't ",
+        {
+          "kind": "form",
+          "answer": "use",
+          "choices": [
+            "using",
+            "uses",
+            "use",
+            "used"
+          ],
+          "cue": "Grundform nach didn't"
+        },
+        " to know where to ",
+        {
+          "kind": "form",
+          "answer": "change",
+          "choices": [
+            "changes",
+            "changing",
+            "changed",
+            "change"
+          ],
+          "cue": "Grundform nach to"
+        },
+        " buses downtown."
+      ],
+      "chunks": [
+        {
+          "targetText": "I've felt independent",
+          "baseText": {
+            "de": "Ich fühle mich selbstständig"
+          }
+        },
+        {
+          "targetText": "for several months now,",
+          "baseText": {
+            "de": "seit einigen Monaten,"
+          }
+        },
+        {
+          "targetText": "even on unfamiliar",
+          "baseText": {
+            "de": "sogar auf unbekannten"
+          }
+        },
+        {
+          "targetText": "bus routes.",
+          "baseText": {
+            "de": "Buslinien."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "independent",
+          "baseText": {
+            "de": "selbstständig"
+          }
+        },
+        {
+          "targetText": "for several months",
+          "baseText": {
+            "de": "seit einigen Monaten"
+          }
+        },
+        {
+          "targetText": "unfamiliar",
+          "baseText": {
+            "de": "unbekannt"
+          }
+        },
+        {
+          "targetText": "bus routes",
+          "baseText": {
+            "de": "Buslinien"
+          }
+        },
+        {
+          "targetText": "in the beginning",
+          "baseText": {
+            "de": "am Anfang"
+          }
+        },
+        {
+          "targetText": "change buses",
+          "baseText": {
+            "de": "umsteigen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I've ",
+        "answer": "felt",
+        "after": " independent for several months now, even on unfamiliar bus routes.",
+        "fallbackChoices": [
+          "feels",
+          "feeling",
+          "felt",
+          "feel"
+        ]
+      },
+      "speakRequired": [
+        "felt",
+        "independent",
+        "months"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund zeigt auf den Stadtplan und fragt: „How long have you felt comfortable going places on your own?“"
+      },
+      "trophyWord": {
+        "word": "independent",
+        "meaning": {
+          "de": "selbstständig"
+        },
+        "example": "I've been independent for a year, and now I help other newcomers.",
+        "whyThisWord": {
+          "de": "Independent beschreibt, dass du etwas ohne Hilfe bewältigst."
+        }
+      },
+      "distractors": [
+        "train routes.",
+        "before several minutes,"
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch liegt ein Stadtplan mit mehreren Buslinien."
+      },
+      "songMood": "Zuversichtlich und unaufgeregt.",
+      "visualNotes": "Auf einem Tisch liegt ein Stadtplan mit mehreren Buslinien."
+    },
+    {
+      "slug": "messages-without-a-script",
+      "title": {
+        "de": "Ohne Spickzettel"
+      },
+      "situation": {
+        "de": "Deine Freundin hat noch den Zettel, mit dem ihr früher Telefongespräche geübt habt.",
+        "en": "Your friend still has the sheet you once used to practice phone calls."
+      },
+      "pedagogicalGoal": "Used to blickt auf eine frühere Gewohnheit zurück. Das present perfect mit since zeigt, was sich seit einem bestimmten Zeitpunkt bis heute verändert hat.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do you still write down every word before you call someone?",
+          "baseText": {
+            "de": "Schreibst du vor einem Anruf immer noch jedes Wort auf?"
+          }
+        },
+        {
+          "targetText": "I used to need a script, but I've made real progress since January.",
+          "baseText": {
+            "de": "Früher brauchte ich ein Manuskript, aber seit Januar habe ich echte Fortschritte gemacht."
+          }
+        },
+        {
+          "targetText": "What can you do now when nobody picks up?",
+          "baseText": {
+            "de": "Was kannst du jetzt machen, wenn niemand abnimmt?"
+          }
+        },
+        {
+          "targetText": "I can leave a message without reading it from a page.",
+          "baseText": {
+            "de": "Ich kann eine Nachricht hinterlassen, ohne sie von einem Blatt abzulesen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past habit and present result",
+        "rule": {
+          "de": "Used to blickt auf eine frühere Gewohnheit zurück. Das present perfect mit since zeigt, was sich seit einem bestimmten Zeitpunkt bis heute verändert hat."
+        },
+        "examples": [
+          {
+            "targetText": "I used to need a script, but I've made real progress since January.",
+            "baseText": {
+              "de": "Früher brauchte ich ein Manuskript, aber seit Januar habe ich echte Fortschritte gemacht."
+            },
+            "highlight": "I've made real progress since January"
+          },
+          {
+            "targetText": "My weekends have changed since I started working on Saturdays.",
+            "baseText": {
+              "de": "Seit ich samstags arbeite, sehen meine Wochenenden anders aus."
+            },
+            "highlight": "have changed since"
+          }
+        ]
+      },
+      "cloze": [
+        "I can ",
+        {
+          "kind": "form",
+          "answer": "leave",
+          "choices": [
+            "left",
+            "leaves",
+            "leave",
+            "leaving"
+          ],
+          "cue": "Grundform nach can"
+        },
+        " a message without ",
+        {
+          "kind": "form",
+          "answer": "reading",
+          "choices": [
+            "reads",
+            "read",
+            "to read",
+            "reading"
+          ],
+          "cue": "read nach without"
+        },
+        " it from a page."
+      ],
+      "chunks": [
+        {
+          "targetText": "I used to need",
+          "baseText": {
+            "de": "Früher brauchte ich"
+          }
+        },
+        {
+          "targetText": "a script,",
+          "baseText": {
+            "de": "ein Manuskript,"
+          }
+        },
+        {
+          "targetText": "but I've made real progress",
+          "baseText": {
+            "de": "aber ich habe echte Fortschritte gemacht"
+          }
+        },
+        {
+          "targetText": "since January.",
+          "baseText": {
+            "de": "seit Januar."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "a script",
+          "baseText": {
+            "de": "ein Manuskript"
+          }
+        },
+        {
+          "targetText": "real progress",
+          "baseText": {
+            "de": "echte Fortschritte"
+          }
+        },
+        {
+          "targetText": "since January",
+          "baseText": {
+            "de": "seit Januar"
+          }
+        },
+        {
+          "targetText": "picks up",
+          "baseText": {
+            "de": "nimmt ab"
+          }
+        },
+        {
+          "targetText": "leave a message",
+          "baseText": {
+            "de": "eine Nachricht hinterlassen"
+          }
+        },
+        {
+          "targetText": "from a page",
+          "baseText": {
+            "de": "von einem Blatt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I used to need a script, but I've ",
+        "answer": "made",
+        "after": " real progress since January.",
+        "fallbackChoices": [
+          "making",
+          "makes",
+          "made",
+          "make"
+        ]
+      },
+      "speakRequired": [
+        "script",
+        "real",
+        "progress"
+      ],
+      "sceneCaption": {
+        "de": "Deine Freundin zeigt auf euren alten Zettel und fragt: „Do you still write down every word before you call someone?“"
+      },
+      "trophyWord": {
+        "word": "progress",
+        "meaning": {
+          "de": "Fortschritt"
+        },
+        "example": "I've made steady progress since my first phone call in English.",
+        "whyThisWord": {
+          "de": "Im Englischen ist progress hier nicht zählbar. Es heißt make progress, ohne a davor."
+        }
+      },
+      "distractors": [
+        "by next January.",
+        "a printed menu,"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Telefon liegt auf einem Tisch neben einem beschriebenen Blatt."
+      },
+      "songMood": "Rückblickend und gelöst.",
+      "visualNotes": "Ein Telefon liegt auf einem Tisch neben einem beschriebenen Blatt."
+    }
+  ]
+}

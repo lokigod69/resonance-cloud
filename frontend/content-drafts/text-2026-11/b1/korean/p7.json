@@ -1,0 +1,2234 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Pläne, Zwecke, Bedingungen",
+    "en": "Purpose, plans, conditions"
+  },
+  "subtitle": {
+    "de": "Ziele erklären und einen passenden Termin aushandeln",
+    "en": "Explain a goal and agree on a plan"
+  },
+  "anchor": "running coach, colleague planning, mentor, rental agent, course office",
+  "lessons": [
+    {
+      "slug": "mokpyo-weekend-runs",
+      "title": {
+        "de": "Fünf Kilometer am Stück",
+        "en": "Five kilometers without stopping"
+      },
+      "situation": {
+        "de": "Beim ersten Lauftraining besprichst du mit dem Trainer, wann du laufen kannst.",
+        "en": "At your first training session you discuss when you can run with your coach."
+      },
+      "pedagogicalGoal": "Ein eigenes Trainingsziel formulieren und einen Zeitvorschlag an die Arbeitswoche anpassen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "첫 달에는 얼마나 뛰고 싶으세요?",
+          "baseText": {
+            "de": "Wie weit möchten Sie im ersten Monat laufen können?",
+            "en": "How far would you like to run in your first month?"
+          }
+        },
+        {
+          "targetText": "이번 달 목표 거리인 오 킬로미터를 쉬지 않고 뛰려고 해요.",
+          "baseText": {
+            "de": "Diesen Monat möchte ich meine Zielstrecke von fünf Kilometern ohne Pause laufen.",
+            "en": "This month I'm aiming to run my target distance of five kilometers without stopping."
+          }
+        },
+        {
+          "targetText": "아침에 뛰어 보세요. 평일 아침은 전부 근무라고 하셨지요?",
+          "baseText": {
+            "de": "Probieren Sie es morgens. Unter der Woche arbeiten Sie ja jeden Morgen, richtig?",
+            "en": "Try running in the mornings. You said you work every weekday morning, right?"
+          }
+        },
+        {
+          "targetText": "그러면 출근하지 않는 주말 아침에만 뛰려고 해요.",
+          "baseText": {
+            "de": "Dann nehme ich mir nur die Wochenendmorgen fürs Laufen vor, an denen ich nicht zur Arbeit muss.",
+            "en": "Then I'll aim to run only on weekend mornings, when I don't have to go to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)려고 해요",
+        "rule": {
+          "de": "뛰려고 해요 nennt deinen Vorsatz. Die Strecke davor gibt an, welches Ziel du damit verfolgst.",
+          "en": "뛰려고 해요 states what you intend to do. The distance before it makes the goal concrete."
+        },
+        "examples": [
+          {
+            "targetText": "이번 달 목표 거리인 오 킬로미터를 쉬지 않고 뛰려고 해요.",
+            "baseText": {
+              "de": "Diesen Monat möchte ich meine Zielstrecke von fünf Kilometern ohne Pause laufen.",
+              "en": "This month I'm aiming to run my target distance of five kilometers without stopping."
+            },
+            "highlight": "뛰려고 해요"
+          },
+          {
+            "targetText": "점심을 먹고 공원까지 걸으려고 해요.",
+            "baseText": {
+              "de": "Nach dem Mittagessen habe ich vor, zu Fuß bis zum Park zu gehen.",
+              "en": "I'm planning to walk to the park after lunch."
+            },
+            "highlight": "걸으려고 해요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "거꾸로",
+            "예컨대",
+            "예전에는",
+            "그러면"
+          ]
+        },
+        " 출근하지 않는 ",
+        {
+          "kind": "choice",
+          "answer": "주말 아침에만",
+          "choices": [
+            "평일 아침마다",
+            "주말 아침에만",
+            "평일 밤마다",
+            "주말 저녁에만"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "뛰려고 해요",
+          "choices": [
+            "뛰려고 해요",
+            "뛴 적이 없어요",
+            "뛰곤 했어요",
+            "뛰지 않았어요"
+          ],
+          "cue": "Eigener Vorsatz für die Zukunft / The speaker's intention for the future"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "이번 달",
+          "baseText": {
+            "de": "diesen Monat",
+            "en": "this month"
+          }
+        },
+        {
+          "targetText": "목표 거리인",
+          "baseText": {
+            "de": "meine Zielstrecke von",
+            "en": "my target distance of"
+          }
+        },
+        {
+          "targetText": "오 킬로미터를",
+          "baseText": {
+            "de": "fünf Kilometer",
+            "en": "five kilometers"
+          }
+        },
+        {
+          "targetText": "쉬지 않고",
+          "baseText": {
+            "de": "ohne Pause",
+            "en": "without stopping"
+          }
+        },
+        {
+          "targetText": "뛰려고 해요.",
+          "baseText": {
+            "de": "möchte ich laufen",
+            "en": "I'm aiming to run"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "목표",
+          "baseText": {
+            "de": "Ziel",
+            "en": "goal"
+          }
+        },
+        {
+          "targetText": "거리",
+          "baseText": {
+            "de": "Strecke",
+            "en": "distance"
+          }
+        },
+        {
+          "targetText": "쉬지 않고",
+          "baseText": {
+            "de": "ohne Pause",
+            "en": "without stopping"
+          }
+        },
+        {
+          "targetText": "뛰다",
+          "baseText": {
+            "de": "laufen, rennen",
+            "en": "run"
+          }
+        },
+        {
+          "targetText": "평일",
+          "baseText": {
+            "de": "Werktag",
+            "en": "weekday"
+          }
+        },
+        {
+          "targetText": "근무",
+          "baseText": {
+            "de": "Dienst, Arbeit",
+            "en": "work shift"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이번 달 목표 거리인 오 킬로미터를 ",
+        "answer": "쉬지",
+        "after": " 않고 뛰려고 해요.",
+        "fallbackChoices": [
+          "타지",
+          "사귀지",
+          "열지",
+          "쉬지"
+        ]
+      },
+      "speakRequired": [
+        "목표",
+        "킬로미터를",
+        "뛰려고"
+      ],
+      "sceneCaption": {
+        "de": "Beim ersten Lauftraining besprichst du mit dem Trainer, wann du laufen kannst. „첫 달에는 얼마나 뛰고 싶으세요?“",
+        "en": "At your first training session you discuss when you can run with your coach. “첫 달에는 얼마나 뛰고 싶으세요?”"
+      },
+      "trophyWord": {
+        "word": "목표",
+        "meaning": {
+          "de": "Ziel",
+          "en": "goal, target"
+        },
+        "example": "목표 거리를 조금씩 늘려 볼게요.",
+        "whyThisWord": {
+          "de": "Mit 목표 거리 kannst du beim Training eine konkrete Distanz als Ziel nennen.",
+          "en": "Use 목표 거리 to name a particular distance as your training target."
+        }
+      },
+      "distractors": [
+        "버스를 타고",
+        "매일 저녁에"
+      ],
+      "placeholderCaption": {
+        "de": "Fünf Kilometer am Stück",
+        "en": "Five kilometers without stopping"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A coach and a runner look at a five-kilometer training route."
+    },
+    {
+      "slug": "geongang-early-dinner",
+      "title": {
+        "de": "Ein frühes Abendessen",
+        "en": "An early dinner"
+      },
+      "situation": {
+        "de": "Nach der Arbeit schlägt ein Kollege vor, spät miteinander zu essen.",
+        "en": "A colleague suggests getting a late dinner after work."
+      },
+      "pedagogicalGoal": "Den gesundheitlichen Grund und die eigene Absicht erklären und eine frühere gemeinsame Zeit wählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘 야근 끝나고 아홉 시에 같이 드실래요?",
+          "baseText": {
+            "de": "Wollen wir heute nach den Überstunden um neun zusammen essen?",
+            "en": "Would you like to eat together at nine after we finish working late?"
+          }
+        },
+        {
+          "targetText": "건강 때문에 요즘은 저녁을 일곱 시 전에 먹으려고 해요.",
+          "baseText": {
+            "de": "Aus gesundheitlichen Gründen versuche ich zurzeit, vor sieben zu Abend zu essen.",
+            "en": "For my health I'm trying to eat dinner before seven these days."
+          }
+        },
+        {
+          "targetText": "토요일에는 일찍 끝나요. 여섯 시에 같이 먹을까요?",
+          "baseText": {
+            "de": "Am Samstag bin ich früh fertig. Wollen wir um sechs zusammen essen?",
+            "en": "I finish early on Saturday. Shall we eat together at six?"
+          }
+        },
+        {
+          "targetText": "그러면 토요일 여섯 시에 만나서 가볍게 먹으려고 해요.",
+          "baseText": {
+            "de": "Dann treffen wir uns am Samstag um sechs. Ich würde gern etwas Leichtes essen.",
+            "en": "Then let's meet at six on Saturday. I'm planning to have something light."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "때문에 … -(으)려고 해요",
+        "rule": {
+          "de": "건강 때문에 gibt den Grund an. 먹으려고 해요 zeigt, wie du deshalb deinen Alltag gestalten möchtest.",
+          "en": "건강 때문에 gives the reason. 먹으려고 해요 shows what you intend to do about it."
+        },
+        "examples": [
+          {
+            "targetText": "건강 때문에 요즘은 저녁을 일곱 시 전에 먹으려고 해요.",
+            "baseText": {
+              "de": "Aus gesundheitlichen Gründen versuche ich zurzeit, vor sieben zu Abend zu essen.",
+              "en": "For my health I'm trying to eat dinner before seven these days."
+            },
+            "highlight": "먹으려고 해요"
+          },
+          {
+            "targetText": "잠 때문에 오후에는 커피를 줄이려고 해요.",
+            "baseText": {
+              "de": "Meinem Schlaf zuliebe will ich nachmittags weniger Kaffee trinken.",
+              "en": "For the sake of my sleep, I'm trying to cut down on coffee in the afternoon."
+            },
+            "highlight": "줄이려고 해요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "거꾸로",
+            "셋째",
+            "그러면",
+            "예전에는"
+          ]
+        },
+        " 토요일 ",
+        {
+          "kind": "choice",
+          "answer": "여섯 시에",
+          "choices": [
+            "여섯 시에",
+            "아홉 시에",
+            "열 시에",
+            "자정에"
+          ]
+        },
+        " 만나서 가볍게 ",
+        {
+          "kind": "form",
+          "answer": "먹으려고 해요",
+          "choices": [
+            "먹은 적이 있어요",
+            "먹곤 했어요",
+            "먹지 않았어요",
+            "먹으려고 해요"
+          ],
+          "cue": "Eine Absicht für das vereinbarte Essen / An intention for the agreed meal"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "건강 때문에",
+          "baseText": {
+            "de": "aus gesundheitlichen Gründen",
+            "en": "for my health"
+          }
+        },
+        {
+          "targetText": "요즘은 저녁을",
+          "baseText": {
+            "de": "zurzeit mein Abendessen",
+            "en": "dinner these days"
+          }
+        },
+        {
+          "targetText": "일곱 시 전에",
+          "baseText": {
+            "de": "vor sieben Uhr",
+            "en": "before seven"
+          }
+        },
+        {
+          "targetText": "먹으려고 해요.",
+          "baseText": {
+            "de": "versuche ich zu essen",
+            "en": "I try to eat"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "건강",
+          "baseText": {
+            "de": "Gesundheit",
+            "en": "health"
+          }
+        },
+        {
+          "targetText": "야근",
+          "baseText": {
+            "de": "Überstunden am Abend",
+            "en": "working late"
+          }
+        },
+        {
+          "targetText": "저녁을 먹다",
+          "baseText": {
+            "de": "zu Abend essen",
+            "en": "eat dinner"
+          }
+        },
+        {
+          "targetText": "일찍 끝나다",
+          "baseText": {
+            "de": "früh fertig werden",
+            "en": "finish early"
+          }
+        },
+        {
+          "targetText": "가볍게 먹다",
+          "baseText": {
+            "de": "etwas Leichtes essen",
+            "en": "have a light meal"
+          }
+        },
+        {
+          "targetText": "일곱 시 전",
+          "baseText": {
+            "de": "vor sieben Uhr",
+            "en": "before seven"
+          }
+        }
+      ],
+      "recall": {
+        "before": "건강 때문에 요즘은 ",
+        "answer": "저녁을",
+        "after": " 일곱 시 전에 먹으려고 해요.",
+        "fallbackChoices": [
+          "저녁을",
+          "아침을",
+          "약을",
+          "간식을"
+        ]
+      },
+      "speakRequired": [
+        "건강",
+        "일곱",
+        "먹으려고"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Arbeit schlägt ein Kollege vor, spät miteinander zu essen. „오늘 야근 끝나고 아홉 시에 같이 드실래요?“",
+        "en": "A colleague suggests getting a late dinner after work. “오늘 야근 끝나고 아홉 시에 같이 드실래요?”"
+      },
+      "trophyWord": {
+        "word": "건강",
+        "meaning": {
+          "de": "Gesundheit",
+          "en": "health"
+        },
+        "example": "건강 때문에 요즘은 걸어서 출근해요.",
+        "whyThisWord": {
+          "de": "Mit 건강 때문에 kannst du eine Entscheidung begründen, ohne über persönliche Beschwerden zu sprechen.",
+          "en": "건강 때문에 lets you explain a decision without going into personal health details."
+        }
+      },
+      "distractors": [
+        "늦은 밤에",
+        "자정이 지나서"
+      ],
+      "placeholderCaption": {
+        "de": "Ein frühes Abendessen",
+        "en": "An early dinner"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two coworkers compare their evening schedules by an office clock."
+    },
+    {
+      "slug": "jagyeokjeung-after-the-exam",
+      "title": {
+        "de": "Erst die Prüfung, dann die Reise",
+        "en": "The exam comes before the trip"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte im Mai mit dir verreisen.",
+        "en": "A friend would like to take a trip with you in May."
+      },
+      "pedagogicalGoal": "Eine Prüfung als Grund für den eigenen Reiseplan nennen und im Gegenvorschlag die Dauer festlegen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오월 연휴에 같이 바다 보러 갈까요?",
+          "baseText": {
+            "de": "Wollen wir über die Feiertage im Mai zusammen ans Meer fahren?",
+            "en": "Shall we go to the seaside together over the May holiday?"
+          }
+        },
+        {
+          "targetText": "오월에는 자격증 시험이 있어서 먼저 시험부터 보려고 해요.",
+          "baseText": {
+            "de": "Im Mai habe ich eine Zertifikatsprüfung. Die will ich erst hinter mich bringen.",
+            "en": "I have a certification exam in May. I want to get that done first."
+          }
+        },
+        {
+          "targetText": "시험 끝난 유월 둘째 주는 어때요? 저는 그때 비어요.",
+          "baseText": {
+            "de": "Wie wäre die zweite Juniwoche, nach der Prüfung? Da habe ich frei.",
+            "en": "How about the second week of June, after your exam? I'm free then."
+          }
+        },
+        {
+          "targetText": "그러면 유월 둘째 주에 이틀만 다녀오려고 해요.",
+          "baseText": {
+            "de": "Dann würde ich in der zweiten Juniwoche fahren, aber nur für zwei Tage.",
+            "en": "Then I'd like to go in the second week of June, just for two days."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)려고 해요",
+        "rule": {
+          "de": "시험을 보다 heißt eine Prüfung ablegen. 보려고 해요 macht daraus deine Absicht, die Prüfung zunächst anzugehen.",
+          "en": "시험을 보다 means to take an exam. 보려고 해요 turns it into your intention to tackle the exam first."
+        },
+        "examples": [
+          {
+            "targetText": "오월에는 자격증 시험이 있어서 먼저 시험부터 보려고 해요.",
+            "baseText": {
+              "de": "Im Mai habe ich eine Zertifikatsprüfung. Die will ich erst hinter mich bringen.",
+              "en": "I have a certification exam in May. I want to get that done first."
+            },
+            "highlight": "보려고 해요"
+          },
+          {
+            "targetText": "출발 전에 여권부터 다시 받으려고 해요.",
+            "baseText": {
+              "de": "Vor der Abreise möchte ich mir erst einen neuen Pass ausstellen lassen.",
+              "en": "I want to get my passport reissued before I leave."
+            },
+            "highlight": "받으려고 해요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "그러면",
+            "첫째",
+            "예전에는"
+          ]
+        },
+        " 유월 ",
+        {
+          "kind": "choice",
+          "answer": "둘째 주에",
+          "choices": [
+            "첫째 주에",
+            "셋째 주에",
+            "마지막 주에",
+            "둘째 주에"
+          ]
+        },
+        " 이틀만 ",
+        {
+          "kind": "form",
+          "answer": "다녀오려고 해요",
+          "choices": [
+            "다녀온 적이 있어요",
+            "다녀오곤 했어요",
+            "다녀오려고 해요",
+            "다녀오지 않았어요"
+          ],
+          "cue": "Ein konkreter eigener Reisevorsatz / The speaker's plan for a particular trip"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "오월에는",
+          "baseText": {
+            "de": "im Mai",
+            "en": "in May"
+          }
+        },
+        {
+          "targetText": "자격증 시험이 있어서",
+          "baseText": {
+            "de": "weil ich eine Zertifikatsprüfung habe",
+            "en": "because I have a certification exam"
+          }
+        },
+        {
+          "targetText": "먼저 시험부터",
+          "baseText": {
+            "de": "erst einmal die Prüfung",
+            "en": "the exam first"
+          }
+        },
+        {
+          "targetText": "보려고 해요.",
+          "baseText": {
+            "de": "will ich ablegen",
+            "en": "I intend to take"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "자격증",
+          "baseText": {
+            "de": "Befähigungsnachweis, Zertifikat",
+            "en": "qualification, certificate"
+          }
+        },
+        {
+          "targetText": "시험을 보다",
+          "baseText": {
+            "de": "eine Prüfung ablegen",
+            "en": "take an exam"
+          }
+        },
+        {
+          "targetText": "연휴",
+          "baseText": {
+            "de": "mehrere Feiertage am Stück",
+            "en": "holiday break"
+          }
+        },
+        {
+          "targetText": "둘째 주",
+          "baseText": {
+            "de": "zweite Woche",
+            "en": "second week"
+          }
+        },
+        {
+          "targetText": "비다",
+          "baseText": {
+            "de": "frei sein",
+            "en": "be free"
+          }
+        },
+        {
+          "targetText": "이틀",
+          "baseText": {
+            "de": "zwei Tage",
+            "en": "two days"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "오월에는",
+        "after": " 자격증 시험이 있어서 먼저 시험부터 보려고 해요.",
+        "fallbackChoices": [
+          "유월에는",
+          "칠월에는",
+          "오월에는",
+          "팔월에는"
+        ]
+      },
+      "speakRequired": [
+        "자격증",
+        "시험부터",
+        "보려고"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin möchte im Mai mit dir verreisen. „오월 연휴에 같이 바다 보러 갈까요?“",
+        "en": "A friend would like to take a trip with you in May. “오월 연휴에 같이 바다 보러 갈까요?”"
+      },
+      "trophyWord": {
+        "word": "자격증",
+        "meaning": {
+          "de": "Zertifikat, Befähigungsnachweis",
+          "en": "certificate, qualification"
+        },
+        "example": "자격증 시험 접수는 이번 주까지예요.",
+        "whyThisWord": {
+          "de": "자격증 bezeichnet den Nachweis einer Qualifikation. 자격증 시험 ist die Prüfung dafür.",
+          "en": "자격증 is the document that certifies a qualification. 자격증 시험 is the exam you take for it."
+        }
+      },
+      "distractors": [
+        "일단 여행부터",
+        "다음 겨울에는"
+      ],
+      "placeholderCaption": {
+        "de": "Erst die Prüfung, dann die Reise",
+        "en": "The exam comes before the trip"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A calendar shows a May exam and a later seaside trip."
+    },
+    {
+      "slug": "myeonjeop-practice-days",
+      "title": {
+        "de": "Antworten laut üben",
+        "en": "Practicing answers out loud"
+      },
+      "situation": {
+        "de": "Eine Mentorin bietet dir Hilfe bei der Vorbereitung auf ein Vorstellungsgespräch an.",
+        "en": "A mentor offers to help you prepare for a job interview."
+      },
+      "pedagogicalGoal": "Eine Voraussetzung für das Gespräch erklären und einen Rhythmus aushandeln, in dem persönliche Rückmeldung möglich ist.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "다음 달 채용 준비는 어떻게 도와드릴까요?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen bei der Bewerbung im nächsten Monat helfen?",
+            "en": "How can I help you prepare for next month's hiring process?"
+          }
+        },
+        {
+          "targetText": "면접 때 잘 답하려면 소리 내서 연습해야 돼요.",
+          "baseText": {
+            "de": "Damit ich im Vorstellungsgespräch gut antworte, muss ich laut üben.",
+            "en": "To answer well in the interview, I need to practice out loud."
+          }
+        },
+        {
+          "targetText": "매일 연습을 권해요. 직접 봐 드릴 날은 월수금뿐이에요.",
+          "baseText": {
+            "de": "Ich empfehle tägliches Üben. Persönlich kann ich Ihnen nur montags, mittwochs und freitags Rückmeldung geben.",
+            "en": "I recommend daily practice. I can coach you in person only on Mondays, Wednesdays and Fridays."
+          }
+        },
+        {
+          "targetText": "대신 직접 배우려면 일주일에 세 번 만나야겠어요.",
+          "baseText": {
+            "de": "Für die persönliche Anleitung sollten wir uns dann stattdessen dreimal die Woche treffen.",
+            "en": "To get your coaching in person, I think we should meet three times a week instead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)려면 … -아/어야 돼요",
+        "rule": {
+          "de": "답하려면 nennt das gewünschte Ergebnis. 연습해야 돼요 sagt, was du dafür tun musst.",
+          "en": "답하려면 introduces the desired result. 연습해야 돼요 tells you what you need to do to get there."
+        },
+        "examples": [
+          {
+            "targetText": "면접 때 잘 답하려면 소리 내서 연습해야 돼요.",
+            "baseText": {
+              "de": "Damit ich im Vorstellungsgespräch gut antworte, muss ich laut üben.",
+              "en": "To answer well in the interview, I need to practice out loud."
+            },
+            "highlight": "잘 답하려면"
+          },
+          {
+            "targetText": "이름을 오래 기억하려면 직접 불러 봐야 돼요.",
+            "baseText": {
+              "de": "Um sich einen Namen lange zu merken, muss man ihn selbst einmal aussprechen.",
+              "en": "To remember someone's name for a long time, you need to try saying it yourself."
+            },
+            "highlight": "기억하려면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "예전에는",
+            "대신",
+            "가령",
+            "첫째"
+          ]
+        },
+        " 직접 ",
+        {
+          "kind": "form",
+          "answer": "배우려면",
+          "choices": [
+            "배운 적이 있어서",
+            "배운 다음에는",
+            "배우는 대신",
+            "배우려면"
+          ],
+          "cue": "Voraussetzung für ein gewünschtes Ziel / A condition for reaching a goal"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "일주일에 세 번",
+          "choices": [
+            "일주일에 네 번",
+            "매일 두 번",
+            "일주일에 세 번",
+            "일주일에 여섯 번"
+          ]
+        },
+        " 만나야겠어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "면접 때",
+          "baseText": {
+            "de": "im Vorstellungsgespräch",
+            "en": "during the interview"
+          }
+        },
+        {
+          "targetText": "잘 답하려면",
+          "baseText": {
+            "de": "um gut antworten zu können",
+            "en": "to answer well"
+          }
+        },
+        {
+          "targetText": "소리 내서",
+          "baseText": {
+            "de": "laut",
+            "en": "out loud"
+          }
+        },
+        {
+          "targetText": "연습해야 돼요.",
+          "baseText": {
+            "de": "muss ich üben",
+            "en": "I need to practice"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "면접",
+          "baseText": {
+            "de": "Vorstellungsgespräch",
+            "en": "job interview"
+          }
+        },
+        {
+          "targetText": "채용",
+          "baseText": {
+            "de": "Einstellung von Personal",
+            "en": "recruitment"
+          }
+        },
+        {
+          "targetText": "답하다",
+          "baseText": {
+            "de": "antworten",
+            "en": "answer"
+          }
+        },
+        {
+          "targetText": "소리 내서",
+          "baseText": {
+            "de": "laut, mit Stimme",
+            "en": "out loud"
+          }
+        },
+        {
+          "targetText": "연습하다",
+          "baseText": {
+            "de": "üben",
+            "en": "practice"
+          }
+        },
+        {
+          "targetText": "직접",
+          "baseText": {
+            "de": "persönlich",
+            "en": "in person"
+          }
+        },
+        {
+          "targetText": "월수금",
+          "baseText": {
+            "de": "Montag, Mittwoch und Freitag",
+            "en": "Monday, Wednesday and Friday"
+          }
+        }
+      ],
+      "recall": {
+        "before": "면접 때 잘 ",
+        "answer": "답하려면",
+        "after": " 소리 내서 연습해야 돼요.",
+        "fallbackChoices": [
+          "환불하려면",
+          "촬영하려면",
+          "포장하려면",
+          "답하려면"
+        ]
+      },
+      "speakRequired": [
+        "면접",
+        "답하려면",
+        "연습해야"
+      ],
+      "sceneCaption": {
+        "de": "Eine Mentorin bietet dir Hilfe bei der Vorbereitung auf ein Vorstellungsgespräch an. „다음 달 채용 준비는 어떻게 도와드릴까요?“",
+        "en": "A mentor offers to help you prepare for a job interview. “다음 달 채용 준비는 어떻게 도와드릴까요?”"
+      },
+      "trophyWord": {
+        "word": "면접",
+        "meaning": {
+          "de": "Vorstellungsgespräch",
+          "en": "interview"
+        },
+        "example": "면접 연습을 녹음해 봐도 될까요?",
+        "whyThisWord": {
+          "de": "면접 때 beschreibt die Situation im Gespräch, 면접 연습 das Üben davor.",
+          "en": "면접 때 puts you in the interview itself. 면접 연습 refers to the practice beforehand."
+        }
+      },
+      "distractors": [
+        "눈으로만",
+        "혼자 읽으면 돼요."
+      ],
+      "placeholderCaption": {
+        "de": "Antworten laut üben",
+        "en": "Practicing answers out loud"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A mentor listens to a practice answer and takes notes."
+    },
+    {
+      "slug": "jeochuk-day-trip",
+      "title": {
+        "de": "Ein Ausflug ohne Übernachtung",
+        "en": "A trip without a hotel bill"
+      },
+      "situation": {
+        "de": "Ein Freund schlägt ein Wochenende mit einer teuren Hotelübernachtung vor.",
+        "en": "A friend suggests a weekend away with an expensive hotel stay."
+      },
+      "pedagogicalGoal": "Die finanziellen Voraussetzungen einer Reise erklären und bei einer günstigen Alternative die Dauer begrenzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 주말에 호텔 잡고 온천에 갈까요?",
+          "baseText": {
+            "de": "Wollen wir dieses Wochenende in ein Thermalbad fahren und ein Hotel buchen?",
+            "en": "Shall we book a hotel and visit the hot springs this weekend?"
+          }
+        },
+        {
+          "targetText": "여행 경비를 마련하려면 우선 저축 계획부터 다시 세워야 돼요.",
+          "baseText": {
+            "de": "Damit ich die Reisekosten zusammenbekomme, muss ich erst meinen Sparplan überarbeiten.",
+            "en": "To come up with the travel money, I first need to rethink my savings plan."
+          }
+        },
+        {
+          "targetText": "숙박비를 빼면 어때요? 토요일 당일치기로 가까운 데 가요.",
+          "baseText": {
+            "de": "Wie wäre es ohne Übernachtungskosten? Machen wir am Samstag einen Tagesausflug in die Nähe.",
+            "en": "What if we cut out the hotel cost? Let's go somewhere nearby for the day on Saturday."
+          }
+        },
+        {
+          "targetText": "그러면 숙박비를 아끼려면 토요일 하루만 버스로 다녀와요.",
+          "baseText": {
+            "de": "Dann fahren wir eben nur am Samstag mit dem Bus, um uns die Übernachtung zu sparen.",
+            "en": "Then to save on the hotel, let's go just for the day on Saturday and take the bus."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)려면",
+        "rule": {
+          "de": "마련하려면 fragt danach, was nötig ist, damit das Geld zusammenkommt. Der zweite Satzteil nennt den ersten Schritt.",
+          "en": "마련하려면 sets up the goal of coming up with the money. The next clause gives the first thing to do."
+        },
+        "examples": [
+          {
+            "targetText": "여행 경비를 마련하려면 우선 저축 계획부터 다시 세워야 돼요.",
+            "baseText": {
+              "de": "Damit ich die Reisekosten zusammenbekomme, muss ich erst meinen Sparplan überarbeiten.",
+              "en": "To come up with the travel money, I first need to rethink my savings plan."
+            },
+            "highlight": "마련하려면"
+          },
+          {
+            "targetText": "식비를 줄이려면 장보기 전에 목록부터 써야 돼요.",
+            "baseText": {
+              "de": "Um beim Essen zu sparen, muss ich vor dem Einkauf erst eine Liste schreiben.",
+              "en": "To bring down food costs, I need to make a list before I shop."
+            },
+            "highlight": "줄이려면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "그러면",
+            "거꾸로",
+            "예컨대",
+            "첫째"
+          ]
+        },
+        " 숙박비를 ",
+        {
+          "kind": "form",
+          "answer": "아끼려면",
+          "choices": [
+            "아낀 탓에",
+            "아끼는 대신",
+            "아끼려면",
+            "아끼지 못해서"
+          ],
+          "cue": "Ein gewünschtes Sparziel als Bedingung / A savings goal as a condition"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "토요일 하루만",
+          "choices": [
+            "사흘 내내",
+            "토요일 하루만",
+            "이틀 밤씩",
+            "주말 이틀간"
+          ]
+        },
+        " 버스로 다녀와요."
+      ],
+      "chunks": [
+        {
+          "targetText": "여행 경비를 마련하려면",
+          "baseText": {
+            "de": "um das Geld für die Reise zusammenzubekommen",
+            "en": "to come up with the money for the trip"
+          }
+        },
+        {
+          "targetText": "우선",
+          "baseText": {
+            "de": "erst einmal",
+            "en": "first"
+          }
+        },
+        {
+          "targetText": "저축 계획부터",
+          "baseText": {
+            "de": "meinen Sparplan",
+            "en": "my savings plan"
+          }
+        },
+        {
+          "targetText": "다시 세워야 돼요.",
+          "baseText": {
+            "de": "muss ich neu aufstellen",
+            "en": "I need to rethink"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "저축",
+          "baseText": {
+            "de": "Sparen",
+            "en": "saving money"
+          }
+        },
+        {
+          "targetText": "여행 경비",
+          "baseText": {
+            "de": "Reisekosten",
+            "en": "travel expenses"
+          }
+        },
+        {
+          "targetText": "마련하다",
+          "baseText": {
+            "de": "beschaffen, aufbringen",
+            "en": "come up with"
+          }
+        },
+        {
+          "targetText": "계획을 세우다",
+          "baseText": {
+            "de": "einen Plan aufstellen",
+            "en": "draw up a plan"
+          }
+        },
+        {
+          "targetText": "숙박비",
+          "baseText": {
+            "de": "Übernachtungskosten",
+            "en": "lodging cost"
+          }
+        },
+        {
+          "targetText": "당일치기",
+          "baseText": {
+            "de": "Tagesausflug mit Rückkehr am selben Tag",
+            "en": "day trip"
+          }
+        }
+      ],
+      "recall": {
+        "before": "여행 ",
+        "answer": "경비를",
+        "after": " 마련하려면 우선 저축 계획부터 다시 세워야 돼요.",
+        "fallbackChoices": [
+          "후기를",
+          "경비를",
+          "기념품을",
+          "사진을"
+        ]
+      },
+      "speakRequired": [
+        "경비를",
+        "저축",
+        "세워야"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund schlägt ein Wochenende mit einer teuren Hotelübernachtung vor. „이번 주말에 호텔 잡고 온천에 갈까요?“",
+        "en": "A friend suggests a weekend away with an expensive hotel stay. “이번 주말에 호텔 잡고 온천에 갈까요?”"
+      },
+      "trophyWord": {
+        "word": "저축",
+        "meaning": {
+          "de": "Sparen",
+          "en": "saving money"
+        },
+        "example": "저축 계획은 매달 조금씩 바꿔요.",
+        "whyThisWord": {
+          "de": "저축 계획 ist ein Plan dafür, wie du über längere Zeit Geld zurücklegst.",
+          "en": "저축 계획 is a plan for putting money aside over time."
+        }
+      },
+      "distractors": [
+        "일단 빌리려면",
+        "벌써 냈어요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Ausflug ohne Übernachtung",
+        "en": "A trip without a hotel bill"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two friends compare a hotel rate with a local bus timetable."
+    },
+    {
+      "slug": "hyuga-report-deadline",
+      "title": {
+        "de": "Der Bericht vor dem freien Tag",
+        "en": "A report before the day off"
+      },
+      "situation": {
+        "de": "Du besprichst mit deiner Vorgesetzten einen Urlaubstag für diese Woche.",
+        "en": "You're discussing a day off this week with your manager."
+      },
+      "pedagogicalGoal": "Eine Frist als Voraussetzung für Urlaub erklären und selbst eine frühere Abgabe anbieten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 주에는 언제 쉬고 싶으세요?",
+          "baseText": {
+            "de": "Wann würden Sie diese Woche gern freinehmen?",
+            "en": "When would you like to take time off this week?"
+          }
+        },
+        {
+          "targetText": "금요일에 휴가 하루를 쓰려면 이번 달 보고서를 먼저 내야 돼요.",
+          "baseText": {
+            "de": "Um am Freitag einen Tag Urlaub zu nehmen, muss ich zuerst den Monatsbericht abgeben.",
+            "en": "To take Friday off I need to turn in this month's report first."
+          }
+        },
+        {
+          "targetText": "비는 날은 목요일뿐이에요. 보고서를 수요일 오후까지 낼 수 있어요?",
+          "baseText": {
+            "de": "Nur der Donnerstag ist noch frei. Können Sie den Bericht bis Mittwochnachmittag abgeben?",
+            "en": "Thursday is the only day available. Can you submit the report by Wednesday afternoon?"
+          }
+        },
+        {
+          "targetText": "그러면 목요일에 쉬려면 수요일 점심까지는 내야겠네요.",
+          "baseText": {
+            "de": "Wenn ich also am Donnerstag freinehmen will, gebe ich ihn am besten schon bis Mittwochmittag ab.",
+            "en": "Then if I'm taking Thursday off, I'd better get it in by lunchtime on Wednesday."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)려면 … -아/어야 돼요",
+        "rule": {
+          "de": "쓰려면 knüpft die Abgabe an einen bestimmten Wunsch. 내야 돼요 heißt hier, dass der Bericht vorher fällig ist.",
+          "en": "쓰려면 links the submission to a particular wish. 내야 돼요 means the report has to go in first."
+        },
+        "examples": [
+          {
+            "targetText": "금요일에 휴가 하루를 쓰려면 이번 달 보고서를 먼저 내야 돼요.",
+            "baseText": {
+              "de": "Um am Freitag einen Tag Urlaub zu nehmen, muss ich zuerst den Monatsbericht abgeben.",
+              "en": "To take Friday off I need to turn in this month's report first."
+            },
+            "highlight": "먼저 내야 돼요"
+          },
+          {
+            "targetText": "자료를 오늘 받으려면 오전에 신청해야 돼요.",
+            "baseText": {
+              "de": "Wenn man die Unterlagen heute haben möchte, muss man sie am Vormittag anfordern.",
+              "en": "To get the materials today, you need to request them in the morning."
+            },
+            "highlight": "받으려면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "예를 들면",
+            "예전에는",
+            "그러면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "목요일에",
+          "choices": [
+            "금요일에",
+            "목요일에",
+            "월요일에",
+            "일요일에"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "쉬려면",
+          "choices": [
+            "쉬려면",
+            "쉴 때마다",
+            "쉰 덕분에",
+            "쉰 적이 있어서"
+          ],
+          "cue": "Voraussetzung für den verfügbaren Urlaubstag / A condition for taking the available day off"
+        },
+        " 수요일 점심까지는 내야겠네요."
+      ],
+      "chunks": [
+        {
+          "targetText": "금요일에 휴가 하루를",
+          "baseText": {
+            "de": "einen Tag Urlaub am Freitag",
+            "en": "Friday as a day off"
+          }
+        },
+        {
+          "targetText": "쓰려면",
+          "baseText": {
+            "de": "um ihn zu nehmen",
+            "en": "to take it"
+          }
+        },
+        {
+          "targetText": "이번 달 보고서를",
+          "baseText": {
+            "de": "den Bericht für diesen Monat",
+            "en": "this month's report"
+          }
+        },
+        {
+          "targetText": "먼저 내야 돼요.",
+          "baseText": {
+            "de": "muss ich vorher abgeben",
+            "en": "I have to submit first"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "휴가",
+          "baseText": {
+            "de": "Urlaub",
+            "en": "leave"
+          }
+        },
+        {
+          "targetText": "하루",
+          "baseText": {
+            "de": "ein Tag",
+            "en": "one day"
+          }
+        },
+        {
+          "targetText": "보고서",
+          "baseText": {
+            "de": "Bericht",
+            "en": "report"
+          }
+        },
+        {
+          "targetText": "내다",
+          "baseText": {
+            "de": "abgeben",
+            "en": "submit"
+          }
+        },
+        {
+          "targetText": "비는 날",
+          "baseText": {
+            "de": "freier Tag",
+            "en": "available day"
+          }
+        },
+        {
+          "targetText": "점심까지",
+          "baseText": {
+            "de": "bis Mittag",
+            "en": "by lunchtime"
+          }
+        }
+      ],
+      "recall": {
+        "before": "금요일에 휴가 하루를 쓰려면 이번 달 ",
+        "answer": "보고서를",
+        "after": " 먼저 내야 돼요.",
+        "fallbackChoices": [
+          "식단을",
+          "요금표를",
+          "보고서를",
+          "초대장을"
+        ]
+      },
+      "speakRequired": [
+        "금요일에",
+        "휴가",
+        "보고서를"
+      ],
+      "sceneCaption": {
+        "de": "Du besprichst mit deiner Vorgesetzten einen Urlaubstag für diese Woche. „이번 주에는 언제 쉬고 싶으세요?“",
+        "en": "You're discussing a day off this week with your manager. “이번 주에는 언제 쉬고 싶으세요?”"
+      },
+      "trophyWord": {
+        "word": "휴가",
+        "meaning": {
+          "de": "Urlaub",
+          "en": "leave, vacation"
+        },
+        "example": "휴가 날짜를 달력에 표시했어요.",
+        "whyThisWord": {
+          "de": "Mit 휴가 하루를 쓰다 kannst du am Arbeitsplatz einen einzelnen Urlaubstag benennen.",
+          "en": "Use 휴가 하루를 쓰다 at work when you mean taking a single day of leave."
+        }
+      },
+      "distractors": [
+        "다다음 주에",
+        "마지막에 봐요."
+      ],
+      "placeholderCaption": {
+        "de": "Der Bericht vor dem freien Tag",
+        "en": "A report before the day off"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A manager and an employee compare a report deadline with available leave."
+    },
+    {
+      "slug": "isa-first-day",
+      "title": {
+        "de": "Einzug am Monatsersten",
+        "en": "Moving in on the first"
+      },
+      "situation": {
+        "de": "Bei der Wohnungssuche erklärst du, weshalb dir die Lage wichtig ist.",
+        "en": "You're discussing why location matters to you while looking for an apartment."
+      },
+      "pedagogicalGoal": "Den Umzugszweck nennen und beim Einzug einen Tag mehr zum Packen aushandeln.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어느 쪽으로 집을 알아보고 계세요?",
+          "baseText": {
+            "de": "In welcher Gegend suchen Sie eine Wohnung?",
+            "en": "Which area are you looking to move to?"
+          }
+        },
+        {
+          "targetText": "출퇴근 시간을 줄이기 위해서 회사 근처로 이사 갈 계획이에요.",
+          "baseText": {
+            "de": "Ich plane, näher an die Firma zu ziehen, um meinen Arbeitsweg zu verkürzen.",
+            "en": "I'm planning to move closer to work to cut my commuting time."
+          }
+        },
+        {
+          "targetText": "이달 말은 어떠세요? 다음 달 첫날 입주도 가능해요.",
+          "baseText": {
+            "de": "Wie wäre es mit Ende dieses Monats? Sie könnten auch am Ersten des nächsten Monats einziehen.",
+            "en": "How about the end of this month? You could also move in on the first of next month."
+          }
+        },
+        {
+          "targetText": "대신 짐을 천천히 싸기 위해서 다음 달 첫날에 입주할게요.",
+          "baseText": {
+            "de": "Damit ich in Ruhe packen kann, ziehe ich stattdessen am Ersten des nächsten Monats ein.",
+            "en": "So I can pack without rushing, I'll move in on the first of next month instead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기 위해서 … -(으)ㄹ 계획이에요",
+        "rule": {
+          "de": "줄이기 위해서 nennt den Zweck des Umzugs. 갈 계획이에요 macht deutlich, dass der Umzug geplant ist.",
+          "en": "줄이기 위해서 gives the reason for moving. 갈 계획이에요 presents the move as a plan."
+        },
+        "examples": [
+          {
+            "targetText": "출퇴근 시간을 줄이기 위해서 회사 근처로 이사 갈 계획이에요.",
+            "baseText": {
+              "de": "Ich plane, näher an die Firma zu ziehen, um meinen Arbeitsweg zu verkürzen.",
+              "en": "I'm planning to move closer to work to cut my commuting time."
+            },
+            "highlight": "줄이기 위해서"
+          },
+          {
+            "targetText": "조용한 집을 찾기 위해서 주말에도 동네를 걸어 볼 계획이에요.",
+            "baseText": {
+              "de": "Um eine ruhige Wohnung zu finden, will ich mir das Viertel auch am Wochenende zu Fuß ansehen.",
+              "en": "To find a quiet place, I'm planning to walk around the neighborhood on the weekend too."
+            },
+            "highlight": "찾기 위해서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "첫째",
+            "거꾸로",
+            "예전에는",
+            "대신"
+          ]
+        },
+        " 짐을 천천히 ",
+        {
+          "kind": "form",
+          "answer": "싸기 위해서",
+          "choices": [
+            "싼 탓에",
+            "싸기 위해서",
+            "쌀 때마다",
+            "싸는 대신"
+          ],
+          "cue": "Zweck einer bewussten Terminwahl / Purpose of a deliberate scheduling choice"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "다음 달 첫날에",
+          "choices": [
+            "다음 달 첫날에",
+            "지난달 첫날에",
+            "이달 중순에",
+            "이번 달 초에"
+          ]
+        },
+        " 입주할게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "출퇴근 시간을",
+          "baseText": {
+            "de": "die Zeit für den Arbeitsweg",
+            "en": "my commuting time"
+          }
+        },
+        {
+          "targetText": "줄이기 위해서",
+          "baseText": {
+            "de": "um sie zu verkürzen",
+            "en": "to cut it down"
+          }
+        },
+        {
+          "targetText": "회사 근처로",
+          "baseText": {
+            "de": "in die Nähe der Firma",
+            "en": "closer to work"
+          }
+        },
+        {
+          "targetText": "이사 갈 계획이에요.",
+          "baseText": {
+            "de": "plane ich zu ziehen",
+            "en": "I'm planning to move"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "이사",
+          "baseText": {
+            "de": "Umzug",
+            "en": "move"
+          }
+        },
+        {
+          "targetText": "출퇴근 시간",
+          "baseText": {
+            "de": "Zeit für den Arbeitsweg",
+            "en": "commuting time"
+          }
+        },
+        {
+          "targetText": "회사 근처",
+          "baseText": {
+            "de": "Nähe des Arbeitsplatzes",
+            "en": "near work"
+          }
+        },
+        {
+          "targetText": "계획",
+          "baseText": {
+            "de": "Plan",
+            "en": "plan"
+          }
+        },
+        {
+          "targetText": "짐을 싸다",
+          "baseText": {
+            "de": "packen",
+            "en": "pack"
+          }
+        },
+        {
+          "targetText": "입주하다",
+          "baseText": {
+            "de": "einziehen",
+            "en": "move in"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "출퇴근",
+        "after": " 시간을 줄이기 위해서 회사 근처로 이사 갈 계획이에요.",
+        "fallbackChoices": [
+          "출퇴근",
+          "수면",
+          "점심",
+          "휴게"
+        ]
+      },
+      "speakRequired": [
+        "출퇴근",
+        "근처로",
+        "이사"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Wohnungssuche erklärst du, weshalb dir die Lage wichtig ist. „어느 쪽으로 집을 알아보고 계세요?“",
+        "en": "You're discussing why location matters to you while looking for an apartment. “어느 쪽으로 집을 알아보고 계세요?”"
+      },
+      "trophyWord": {
+        "word": "이사",
+        "meaning": {
+          "de": "Umzug",
+          "en": "move, relocation"
+        },
+        "example": "이사 날짜가 정해지면 말씀드릴게요.",
+        "whyThisWord": {
+          "de": "이사 갈 계획이에요 beschreibt deinen Umzugsplan. Mit 이사 날짜 kannst du anschließend konkret über den Tag sprechen.",
+          "en": "이사 갈 계획이에요 describes a plan to move. 이사 날짜 lets you go on to discuss the actual day."
+        }
+      },
+      "distractors": [
+        "고향 근처로",
+        "줄어든 탓에"
+      ],
+      "placeholderCaption": {
+        "de": "Einzug am Monatsersten",
+        "en": "Moving in on the first"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A rental agent points out an apartment close to the learner's workplace."
+    },
+    {
+      "slug": "deungnok-evening-prep",
+      "title": {
+        "de": "Ein Vorbereitungskurs nach Feierabend",
+        "en": "An exam class after work"
+      },
+      "situation": {
+        "de": "Du fragst im Kursbüro nach einer Vorbereitungsmöglichkeit für eine Prüfung.",
+        "en": "You're at the course office looking for a way to prepare for an exam."
+      },
+      "pedagogicalGoal": "Den Zweck der Kurssuche ausdrücken und einen Intensivkurs mit passender Unterrichtszeit auswählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "새 학기에 어떤 수업을 찾고 계세요?",
+          "baseText": {
+            "de": "Was für einen Kurs suchen Sie für das neue Semester?",
+            "en": "What kind of class are you looking for this term?"
+          }
+        },
+        {
+          "targetText": "시험을 준비하기 위해서 이번 학기 등록 가능한 강좌를 알아보고 있어요.",
+          "baseText": {
+            "de": "Ich suche einen Kurs, für den ich mich dieses Semester zur Prüfungsvorbereitung anmelden kann.",
+            "en": "I'm looking into courses I can enroll in this term to prepare for my exam."
+          }
+        },
+        {
+          "targetText": "듣기 집중반은 어때요? 직장인을 위해 저녁반도 있어요.",
+          "baseText": {
+            "de": "Wie wäre ein Intensivkurs zum Hörverstehen? Für Berufstätige gibt es auch einen Abendkurs.",
+            "en": "How about an intensive listening course? There's also an evening section for people who work."
+          }
+        },
+        {
+          "targetText": "그러면 퇴근하고 다니기 위해서 저녁 시간으로 등록할게요.",
+          "baseText": {
+            "de": "Dann melde ich mich für den Abendtermin an, damit ich nach der Arbeit hingehen kann.",
+            "en": "Then I'll register for the evening section so I can attend after work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기 위해서",
+        "rule": {
+          "de": "준비하기 위해서 bezieht die Suche auf das konkrete Ziel, bei der Prüfung gut vorbereitet zu sein.",
+          "en": "준비하기 위해서 connects the course search to the concrete aim of being prepared for the exam."
+        },
+        "examples": [
+          {
+            "targetText": "시험을 준비하기 위해서 이번 학기 등록 가능한 강좌를 알아보고 있어요.",
+            "baseText": {
+              "de": "Ich suche einen Kurs, für den ich mich dieses Semester zur Prüfungsvorbereitung anmelden kann.",
+              "en": "I'm looking into courses I can enroll in this term to prepare for my exam."
+            },
+            "highlight": "준비하기 위해서"
+          },
+          {
+            "targetText": "발표를 연습하기 위해서 빈 교실을 빌렸어요.",
+            "baseText": {
+              "de": "Um meinen Vortrag zu üben, habe ich einen freien Unterrichtsraum gebucht.",
+              "en": "I booked an empty classroom to practice my presentation."
+            },
+            "highlight": "연습하기 위해서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "거꾸로",
+            "예전에는",
+            "그러면",
+            "첫째"
+          ]
+        },
+        " 퇴근하고 ",
+        {
+          "kind": "form",
+          "answer": "다니기 위해서",
+          "choices": [
+            "다니기 위해서",
+            "다녔기 때문에",
+            "다닐 때마다",
+            "다니는 대신"
+          ],
+          "cue": "Zweck der Wahl einer bestimmten Kurszeit / Purpose of choosing a particular class time"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "저녁 시간으로",
+          "choices": [
+            "출근 전으로",
+            "오전 시간으로",
+            "점심 시간으로",
+            "저녁 시간으로"
+          ]
+        },
+        " 등록할게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "시험을 준비하기 위해서",
+          "baseText": {
+            "de": "um mich auf die Prüfung vorzubereiten",
+            "en": "to prepare for my exam"
+          }
+        },
+        {
+          "targetText": "이번 학기",
+          "baseText": {
+            "de": "in diesem Semester",
+            "en": "this term"
+          }
+        },
+        {
+          "targetText": "등록 가능한 강좌를",
+          "baseText": {
+            "de": "Kurse mit offener Anmeldung",
+            "en": "courses open for enrollment"
+          }
+        },
+        {
+          "targetText": "알아보고 있어요.",
+          "baseText": {
+            "de": "sehe ich mich um",
+            "en": "I'm looking into"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "등록",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "enrollment"
+          }
+        },
+        {
+          "targetText": "학기",
+          "baseText": {
+            "de": "Semester",
+            "en": "term"
+          }
+        },
+        {
+          "targetText": "강좌",
+          "baseText": {
+            "de": "Lehrveranstaltung",
+            "en": "course"
+          }
+        },
+        {
+          "targetText": "알아보다",
+          "baseText": {
+            "de": "sich erkundigen",
+            "en": "look into"
+          }
+        },
+        {
+          "targetText": "듣기 집중반",
+          "baseText": {
+            "de": "Intensivkurs zum Hörverstehen",
+            "en": "intensive listening class"
+          }
+        },
+        {
+          "targetText": "저녁반",
+          "baseText": {
+            "de": "Abendkurs",
+            "en": "evening class"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "시험을",
+        "after": " 준비하기 위해서 이번 학기 등록 가능한 강좌를 알아보고 있어요.",
+        "fallbackChoices": [
+          "계약을",
+          "시험을",
+          "이사를",
+          "공연을"
+        ]
+      },
+      "speakRequired": [
+        "시험을",
+        "등록",
+        "강좌를"
+      ],
+      "sceneCaption": {
+        "de": "Du fragst im Kursbüro nach einer Vorbereitungsmöglichkeit für eine Prüfung. „새 학기에 어떤 수업을 찾고 계세요?“",
+        "en": "You're at the course office looking for a way to prepare for an exam. “새 학기에 어떤 수업을 찾고 계세요?”"
+      },
+      "trophyWord": {
+        "word": "등록",
+        "meaning": {
+          "de": "Anmeldung",
+          "en": "enrollment, registration"
+        },
+        "example": "등록 기간이 이번 주에 끝나요.",
+        "whyThisWord": {
+          "de": "등록 가능 bedeutet, dass man sich anmelden kann. Mit 등록 기간 fragst du nach dem dafür vorgesehenen Zeitraum.",
+          "en": "등록 가능 means that enrollment is open. 등록 기간 refers to the period when you can enroll."
+        }
+      },
+      "distractors": [
+        "계약을 연장하려고",
+        "지난 학기"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Vorbereitungskurs nach Feierabend",
+        "en": "An exam class after work"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A course advisor shows the learner the evening section on a timetable."
+    },
+    {
+      "slug": "yeolsimhi-study-group",
+      "title": {
+        "de": "Zwei feste Lerntage",
+        "en": "Two regular study days"
+      },
+      "situation": {
+        "de": "Ein Teammitglied lädt dich zu einer gemeinsamen Lerngruppe ein.",
+        "en": "A teammate invites you to join a study group."
+      },
+      "pedagogicalGoal": "Einen bereits gefassten Entschluss erklären und gemeinsam einen realistischen Lernrhythmus festlegen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 시험은 저희랑 같이 준비하실래요?",
+          "baseText": {
+            "de": "Möchten Sie sich mit uns auf die nächste Prüfung vorbereiten?",
+            "en": "Would you like to prepare for the upcoming exam with us?"
+          }
+        },
+        {
+          "targetText": "이번에는 열심히 공부하려고 혼자 하는 대신 모임에 나가기로 했어요.",
+          "baseText": {
+            "de": "Ich will dieses Mal gründlich lernen und habe beschlossen, dafür in die Gruppe zu gehen, statt allein zu lernen.",
+            "en": "I want to study hard this time, so I've decided to join the group instead of studying alone."
+          }
+        },
+        {
+          "targetText": "매일 모이면 좋겠어요. 화요일하고 목요일만 시간이 된다고 하셨지요?",
+          "baseText": {
+            "de": "Tägliche Treffen wären schön. Sie haben nur dienstags und donnerstags Zeit, richtig?",
+            "en": "It would be great to meet daily. You said you're only free on Tuesdays and Thursdays, right?"
+          }
+        },
+        {
+          "targetText": "대신 빠지지 않으려면 일주일에 두 번 모이기로 해요.",
+          "baseText": {
+            "de": "Damit ich kein Treffen verpasse, einigen wir uns doch stattdessen auf zwei Treffen pro Woche.",
+            "en": "So I can make every session, let's agree to meet twice a week instead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기로 했어요 / -기로 해요",
+        "rule": {
+          "de": "나가기로 했어요 berichtet von deinem Entschluss. Mit 모이기로 해요 kannst du vorschlagen, gemeinsam etwas zu vereinbaren.",
+          "en": "나가기로 했어요 reports your own decision. 모이기로 해요 proposes making an agreement together."
+        },
+        "examples": [
+          {
+            "targetText": "이번에는 열심히 공부하려고 혼자 하는 대신 모임에 나가기로 했어요.",
+            "baseText": {
+              "de": "Ich will dieses Mal gründlich lernen und habe beschlossen, dafür in die Gruppe zu gehen, statt allein zu lernen.",
+              "en": "I want to study hard this time, so I've decided to join the group instead of studying alone."
+            },
+            "highlight": "나가기로 했어요"
+          },
+          {
+            "targetText": "수업 전에 각자 지문을 하나씩 읽기로 했어요.",
+            "baseText": {
+              "de": "Wir haben vereinbart, dass jeder vor dem Kurs einen kurzen Text liest.",
+              "en": "We agreed to read one passage each before class."
+            },
+            "highlight": "읽기로 했어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "예를 들면",
+            "대신",
+            "옛날에는",
+            "첫째"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "빠지지 않으려면",
+          "choices": [
+            "빠지지 않은 뒤에",
+            "빠지지 않는 대신",
+            "빠지지 않을 때마다",
+            "빠지지 않으려면"
+          ],
+          "cue": "Bedingung für regelmäßige Teilnahme / A condition for consistent attendance"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "일주일에 두 번",
+          "choices": [
+            "일주일에 네 번",
+            "사흘 연속으로",
+            "일주일에 두 번",
+            "매일 밤마다"
+          ]
+        },
+        " 모이기로 해요."
+      ],
+      "chunks": [
+        {
+          "targetText": "이번에는 열심히 공부하려고",
+          "baseText": {
+            "de": "um diesmal gründlich zu lernen",
+            "en": "to study hard this time"
+          }
+        },
+        {
+          "targetText": "혼자 하는 대신",
+          "baseText": {
+            "de": "statt allein zu lernen",
+            "en": "instead of studying alone"
+          }
+        },
+        {
+          "targetText": "모임에",
+          "baseText": {
+            "de": "zur Lerngruppe",
+            "en": "to the group"
+          }
+        },
+        {
+          "targetText": "나가기로 했어요.",
+          "baseText": {
+            "de": "habe ich mich fürs Hingehen entschieden",
+            "en": "I've decided to go"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "열심히",
+          "baseText": {
+            "de": "eifrig, mit Einsatz",
+            "en": "hard, diligently"
+          }
+        },
+        {
+          "targetText": "모임",
+          "baseText": {
+            "de": "Gruppe, Treffen",
+            "en": "group, gathering"
+          }
+        },
+        {
+          "targetText": "혼자 하다",
+          "baseText": {
+            "de": "etwas allein machen",
+            "en": "do something alone"
+          }
+        },
+        {
+          "targetText": "나가다",
+          "baseText": {
+            "de": "zu einem Treffen gehen",
+            "en": "go along to a meeting"
+          }
+        },
+        {
+          "targetText": "빠지다",
+          "baseText": {
+            "de": "bei einem Treffen fehlen",
+            "en": "miss a session"
+          }
+        },
+        {
+          "targetText": "모이다",
+          "baseText": {
+            "de": "zusammenkommen",
+            "en": "meet up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이번에는 열심히 공부하려고 혼자 하는 대신 ",
+        "answer": "모임에",
+        "after": " 나가기로 했어요.",
+        "fallbackChoices": [
+          "은행에",
+          "약국에",
+          "공항에",
+          "모임에"
+        ]
+      },
+      "speakRequired": [
+        "열심히",
+        "대신",
+        "나가기로"
+      ],
+      "sceneCaption": {
+        "de": "Ein Teammitglied lädt dich zu einer gemeinsamen Lerngruppe ein. „이번 시험은 저희랑 같이 준비하실래요?“",
+        "en": "A teammate invites you to join a study group. “이번 시험은 저희랑 같이 준비하실래요?”"
+      },
+      "trophyWord": {
+        "word": "열심히",
+        "meaning": {
+          "de": "mit Einsatz, fleißig",
+          "en": "hard, diligently"
+        },
+        "example": "이번에는 듣기도 열심히 연습할게요.",
+        "whyThisWord": {
+          "de": "열심히 beschreibt den Einsatz beim Lernen oder Üben. Mit einer Zeitangabe erklärst du zusätzlich, wie oft du übst.",
+          "en": "열심히 describes the effort you put into learning or practicing. A separate time expression says how often you do it."
+        }
+      },
+      "distractors": [
+        "지난번과 똑같이",
+        "그만두기로 했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei feste Lerntage",
+        "en": "Two regular study days"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two study partners mark Tuesday and Thursday in an open planner."
+    },
+    {
+      "slug": "iljjik-avoid-traffic",
+      "title": {
+        "de": "Vor dem Verkehr losfahren",
+        "en": "Leaving before the traffic builds"
+      },
+      "situation": {
+        "de": "Du planst mit deiner Reisebegleitung die Abfahrt für den nächsten Morgen.",
+        "en": "You and your travel partner are choosing a departure time for tomorrow morning."
+      },
+      "pedagogicalGoal": "Eine geplante Abfahrt begründen und einen Kompromiss durch eine konkrete Vorbereitung möglich machen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "내일은 느긋하게 열 시쯤 떠나면 어때요?",
+          "baseText": {
+            "de": "Wollen wir es morgen ruhig angehen und gegen zehn losfahren?",
+            "en": "Shall we take it easy tomorrow and leave around ten?"
+          }
+        },
+        {
+          "targetText": "차가 막히기 전에 도착하려고 아침 일찍 출발할 예정이에요.",
+          "baseText": {
+            "de": "Ich habe vor, früh am Morgen loszufahren, damit wir ankommen, bevor der Verkehr stockt.",
+            "en": "I'm planning to leave early in the morning so we can get there before traffic builds up."
+          }
+        },
+        {
+          "targetText": "그럼 아홉 시에 터미널에서 바로 떠나는 건 어때요?",
+          "baseText": {
+            "de": "Dann könnten wir doch um neun direkt vom Busbahnhof losfahren?",
+            "en": "Then how about leaving straight from the bus terminal at nine?"
+          }
+        },
+        {
+          "targetText": "그러면 아홉 시에 바로 떠나려고 표는 미리 살게요.",
+          "baseText": {
+            "de": "Dann kaufe ich die Fahrkarten im Voraus, damit wir um neun direkt loskönnen.",
+            "en": "Then I'll buy the tickets in advance so we can leave right at nine."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 예정이에요",
+        "rule": {
+          "de": "출발할 예정이에요 beschreibt den vorgesehenen Ablauf. 도착하려고 erklärt, warum du ihn so geplant hast.",
+          "en": "출발할 예정이에요 describes the intended schedule. 도착하려고 explains why you planned it that way."
+        },
+        "examples": [
+          {
+            "targetText": "차가 막히기 전에 도착하려고 아침 일찍 출발할 예정이에요.",
+            "baseText": {
+              "de": "Ich habe vor, früh am Morgen loszufahren, damit wir ankommen, bevor der Verkehr stockt.",
+              "en": "I'm planning to leave early in the morning so we can get there before traffic builds up."
+            },
+            "highlight": "출발할 예정이에요"
+          },
+          {
+            "targetText": "숙소에는 저녁 식사 전에 도착할 예정이에요.",
+            "baseText": {
+              "de": "Wir planen, vor dem Abendessen in der Unterkunft anzukommen.",
+              "en": "We're scheduled to arrive at the lodging before dinner."
+            },
+            "highlight": "도착할 예정이에요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "그러면",
+            "예컨대",
+            "예전에는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "아홉 시에",
+          "choices": [
+            "열 시에",
+            "열한 시에",
+            "정오쯤에",
+            "아홉 시에"
+          ]
+        },
+        " 바로 ",
+        {
+          "kind": "form",
+          "answer": "떠나려고",
+          "choices": [
+            "떠난 뒤에",
+            "떠날 때마다",
+            "떠나려고",
+            "떠나는 대신"
+          ],
+          "cue": "Zweck einer Handlung zur Vorbereitung / Purpose of a preparatory action"
+        },
+        " 표는 미리 살게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "차가 막히기 전에",
+          "baseText": {
+            "de": "bevor der Verkehr stockt",
+            "en": "before traffic builds up"
+          }
+        },
+        {
+          "targetText": "도착하려고",
+          "baseText": {
+            "de": "um anzukommen",
+            "en": "to arrive"
+          }
+        },
+        {
+          "targetText": "아침 일찍",
+          "baseText": {
+            "de": "früh am Morgen",
+            "en": "early in the morning"
+          }
+        },
+        {
+          "targetText": "출발할 예정이에요.",
+          "baseText": {
+            "de": "habe ich vor loszufahren",
+            "en": "I'm planning to leave"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "일찍",
+          "baseText": {
+            "de": "früh",
+            "en": "early"
+          }
+        },
+        {
+          "targetText": "차가 막히다",
+          "baseText": {
+            "de": "im Verkehr stecken, es staut sich",
+            "en": "traffic builds up"
+          }
+        },
+        {
+          "targetText": "도착하다",
+          "baseText": {
+            "de": "ankommen",
+            "en": "arrive"
+          }
+        },
+        {
+          "targetText": "출발하다",
+          "baseText": {
+            "de": "losfahren",
+            "en": "depart"
+          }
+        },
+        {
+          "targetText": "터미널",
+          "baseText": {
+            "de": "Busbahnhof",
+            "en": "bus terminal"
+          }
+        },
+        {
+          "targetText": "미리",
+          "baseText": {
+            "de": "im Voraus",
+            "en": "in advance"
+          }
+        }
+      ],
+      "recall": {
+        "before": "차가 막히기 전에 도착하려고 아침 ",
+        "answer": "일찍",
+        "after": " 출발할 예정이에요.",
+        "fallbackChoices": [
+          "일찍",
+          "늦게",
+          "느긋하게",
+          "천천히"
+        ]
+      },
+      "speakRequired": [
+        "막히기",
+        "일찍",
+        "출발할"
+      ],
+      "sceneCaption": {
+        "de": "Du planst mit deiner Reisebegleitung die Abfahrt für den nächsten Morgen. „내일은 느긋하게 열 시쯤 떠나면 어때요?“",
+        "en": "You and your travel partner are choosing a departure time for tomorrow morning. “내일은 느긋하게 열 시쯤 떠나면 어때요?”"
+      },
+      "trophyWord": {
+        "word": "일찍",
+        "meaning": {
+          "de": "früh, frühzeitig",
+          "en": "early"
+        },
+        "example": "아침 일찍 나가면 길이 한산해요.",
+        "whyThisWord": {
+          "de": "일찍 bezieht sich auf den Zeitpunkt. Es sagt, dass du früh losfährst, unabhängig davon, wie schnell du unterwegs bist.",
+          "en": "일찍 refers to timing. It says you're leaving early, whatever your speed along the way."
+        }
+      },
+      "distractors": [
+        "길이 막힌 뒤에",
+        "아직 못 정했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Vor dem Verkehr losfahren",
+        "en": "Leaving before the traffic builds"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two travel partners look at morning departure times at a bus station."
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "kind": "planning-only",
+  "receiptSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525",
+  "caution": "A reviewed complete episode supersedes its outline. No lesson count, native-human approval or recording authority is conferred by this plan. Read row evidence for later amendments.",
+  "plan": {
+    "targetLanguage": "Korean",
+    "level": "B2",
+    "paths": [
+      {
+        "pathNumber": 3,
+        "slug": "holding-a-view",
+        "shape": "challenge",
+        "staging": [
+          {
+            "lessons": "1-3",
+            "productive": "제 생각에는 / 저는 …다고 봐요 (position), 첫째…둘째 or -고 …-거든요 (two reasons), 말씀하신 건 일부는 맞아요 / …는 맞아요 (concede), 그렇다고 해서 …는 아니에요 (rebut, P1 recycled), -지 않을까요?, 다만, 결론은/정리하면 (recycled)",
+            "recognitionOnly": "-(으)ㄹ지라도, -다고 보기는 어려워요"
+          },
+          {
+            "lessons": "4-6",
+            "productive": "-다고/-라고 보기는 어려워요 (hedged denial), -다는 점은 인정해요 / 저도 알아요, -(으)ㄹ 수도 있어요 (hedged rebut), 취지에는 찬성하지만 (scope-limited stance), 근거가 있어요",
+            "recognitionOnly": "-(으)ㄹ지라도, -다는 점에서는"
+          },
+          {
+            "lessons": "7-8",
+            "productive": "반드시 …-(으)ㄴ 건 아니에요, -(이)지 …의 문제는 아니에요 (scope rebut), -(으)ㄹ지라도 (first productive, L8 you2 only)",
+            "recognitionOnly": "-다는 점에서는 동의해요"
+          },
+          {
+            "lessons": "9-10",
+            "productive": "아무래도 …다고 봐요, -다는 점에서는 동의해요 + 다만, full position→reason→concede→rebut→conclude chain",
+            "recognitionOnly": "합쇼체 interviewer turns (L10 them only; -십시오 ban kept)"
+          }
+        ],
+        "lessons": [
+          {
+            "n": 1,
+            "scene": "휴게실. A colleague (동료분) collects signatures for a new rotating shift schedule and says everyone is fine with it.",
+            "twist": "them2: 팀장님도 찬성하셨고 다른 팀도 다 바꿨는데 그래도 반대예요? them4: 그럼 어떻게 하자는 건지 한 줄로요.",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "제 생각에는 새 근무표가 지금보다 낫다고 보기 어려워요. 밤 근무가 한 주에 몰리고, 주말 교대가 매주 바뀌어서 쉬는 날을 못 정하거든요.",
+              "팀장님이 찬성하셨다는 건 일부는 맞아요. 그렇다고 해서 모든 팀에 맞는 건 아니에요. 저희 팀은 교대가 가장 많거든요.",
+              "결론은, 밤 근무를 두 주에 나누고 주말 교대를 고정하면 찬성할게요. 그 조건이 아니면 지금 표가 나아요."
+            ],
+            "trophyLemma": "일부",
+            "trophyFamily": "일부",
+            "trophySurface": "일부는"
+          },
+          {
+            "n": 2,
+            "scene": "아파트 로비 반상회. A neighbor (이웃분) proposes a total quiet rule after nine: no washing machines, instruments or guests.",
+            "twist": "them2: 아홉 시도 늦어요, 저희 아이는 여덟 시에 자요. 다른 집도 다 찬성이에요. them4: 그래서 몇 시로 하자는 거예요?",
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "규칙이 필요하다는 데는 저도 찬성이에요. 다만 아홉 시는 너무 이르다고 봐요. 퇴근이 여덟 시인 집이 많고, 세탁은 밤에만 할 수 있거든요.",
+              "아이가 일찍 자는 집이 있다는 점은 알아요. 그래도 소리 종류마다 다르게 정하는 게 맞지 않을까요? 악기와 세탁기는 같은 소음이 아니잖아요.",
+              "정리하면, 악기와 공사는 아홉 시, 세탁기와 청소기는 열 시로 나누면 좋겠어요. 그렇게 안건에 올려 주시겠어요?"
+            ],
+            "trophyLemma": "규칙",
+            "trophyFamily": "규칙",
+            "trophySurface": "규칙이"
+          },
+          {
+            "n": 3,
+            "scene": "식당에서 계산 뒤. A friend (친구) argues Korea should adopt tipping.",
+            "twist": "them2: 미국 가 봤잖아요, 서비스가 훨씬 좋던데요. them4: 그래서 결론이 뭐예요, 찬성이에요 반대예요?",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "저는 굳이 팁 문화를 들여올 필요는 없다고 봐요. 첫째, 가격에 서비스가 이미 들어 있고, 둘째, 손님이 매번 얼마를 낼지 고민해야 돼서 번거로워요.",
+              "미국 서비스가 친절했던 건 맞아요. 그렇다고 해서 그게 팁 때문이라고 보기는 어려워요. 팁이 없는 일본도 서비스가 좋잖아요.",
+              "결론은 반대예요. 서비스가 좋으면 가격을 올리는 게 낫고, 팁은 직원 월급을 손님한테 넘기는 거라고 생각해요."
+            ],
+            "trophyLemma": "굳이",
+            "trophyFamily": "굳이",
+            "trophySurface": "굳이"
+          },
+          {
+            "n": 4,
+            "scene": "하교 시간 운동장. Another parent (다른 학부모님) wants to ask the teacher for more homework.",
+            "twist": "them2: 옆 반은 매일 두 장인데 우리 반만 적어요. 시험 때 뒤처지면 어떡해요? them4: 선생님께 뭐라고 말할지 한 줄로 정해요.",
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "제 생각에는 지금 양이 적당해요. 하나는 아이들이 저녁에 쉴 시간이 필요하고, 또 하나는 숙제가 많다고 성적이 오르는 건 아니라서요.",
+              "시험 때 뒤처질까 걱정되시는 건 저도 알아요. 그래도 양을 지나치게 늘리면 아이가 공부 자체를 싫어하게 될 수도 있어요.",
+              "정리하면, 양을 늘리는 대신 틀린 문제를 다시 푸는 시간을 요청하면 좋겠어요. 그렇게 말씀드려 봐요."
+            ],
+            "trophyLemma": "지나치다",
+            "trophyFamily": "지나치",
+            "trophySurface": "지나치게"
+          },
+          {
+            "n": 5,
+            "scene": "공개 토론회 질의응답. A medical expert (전문가분) on the panel; the learner argues remote consultations should expand.",
+            "twist": "them2: 화면으로는 진찰이 안 되고 오진 사례도 있었어요. 그 책임은 누가 지죠? them4: 어디까지 허용하자는 건지 한 문장으로요.",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "저는 비대면 진료를 넓혀야 한다고 봐요. 지방에는 병원이 멀어서 진료를 포기하는 분이 많고, 감기 같은 가벼운 병은 화면으로도 충분하거든요.",
+              "오진 위험이 있다는 말씀은 근거가 있어요. 다만 그건 비대면 자체의 문제가 아니라 범위 문제라고 봐요. 첫 진료는 대면으로 하면 되잖아요.",
+              "결론은, 재진과 같은 약 처방만 비대면으로 허용하고 첫 진료는 대면으로 두자는 거예요."
+            ],
+            "trophyLemma": "근거",
+            "trophyFamily": "근거",
+            "trophySurface": "근거가"
+          },
+          {
+            "n": 6,
+            "scene": "구청 주민 설명회. An official (담당 공무원분) presents a weekend car-free plan for the centre.",
+            "twist": "them2: 다른 도시에서는 매출이 올랐어요. 반대하시는 분은 소수예요. them4: 어떤 안이면 찬성하실지 한 줄로요.",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "취지에는 찬성하지만 전면 통제는 현실적으로 어렵다고 봐요. 배달 차가 못 들어오고, 노인분들은 버스 정류장까지 걷기가 힘들어요.",
+              "다른 도시에서 매출이 오른 건 맞아요. 그렇다고 해서 여기도 그럴 거라고 보기는 어려워요. 그 도시는 지하철이 바로 아래에 있잖아요.",
+              "정리하면, 토요일 오후만 통제하고 배달 차는 열한 시까지 허용하는 안이면 찬성할게요."
+            ],
+            "trophyLemma": "현실적",
+            "trophyFamily": "현실",
+            "trophySurface": "현실적으로"
+          },
+          {
+            "n": 7,
+            "scene": "회의실. A colleague (동료분) proposes replacing the weekly report with a daily five-minute stand-up.",
+            "twist": "them2: 보고서에 두 시간씩 쓰잖아요. 다른 팀은 벌써 바꿨어요. them4: 팀장님께 올릴 안을 한 줄로 정해요.",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "보고서를 반드시 없애야 하는 건 아니라고 봐요. 기록이 남아야 뒤에 찾아볼 수 있고, 매일 모이면 재택 하는 분들이 빠지거든요.",
+              "두 시간이 긴 건 저도 알아요. 그래도 그건 양식의 문제지 보고서 자체의 문제는 아니지 않을까요? 양식을 한 장으로 하면 삼십 분이면 돼요.",
+              "결론은, 보고서는 한 장으로 하고 모임은 주 이 회만 하는 안으로 올리면 좋겠어요."
+            ],
+            "trophyLemma": "반드시",
+            "trophyFamily": "반드시",
+            "trophySurface": "반드시"
+          },
+          {
+            "n": 8,
+            "scene": "팀 회의. The manager (팀장님) announces phones will be collected during work hours.",
+            "twist": "them2: 윗분 지시예요. 지난달 사고도 휴대폰 때문이었잖아요. them4: 그럼 어떻게 하자는 건지 정리해 줘요.",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "저는 전면 수거에는 반대해요. 고객 인증 문자가 휴대폰으로 오고, 아이 학교 연락도 받아야 하거든요.",
+              "지난달 사고가 휴대폰 때문이었다는 건 인정해요. 다만 윗분 지시일지라도 한 사람의 잘못을 전원이 책임지는 건 맞지 않다고 봐요.",
+              "정리하면, 회의 중에는 내놓고 자리에서는 무음으로 두는 규칙이면 저도 따를게요."
+            ],
+            "trophyLemma": "인정하다",
+            "trophyFamily": "인정",
+            "trophySurface": "인정해요"
+          },
+          {
+            "n": 9,
+            "scene": "마트 과일 코너. A friend (친구) says imported fruit is cheaper and better, so insisting on domestic is pointless.",
+            "twist": "them2: 국산이 더 좋다는 건 광고예요. 농약은 똑같이 쓰잖아요. them4: 그래서 결론이 뭐예요, 뭘 살 거예요?",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "아무래도 저는 국산 쪽이 낫다고 봐요. 수확한 지 며칠 안 돼서 신선하고, 운송이 짧아서 환경에도 덜 해롭거든요.",
+              "농약을 쓰는 건 둘 다 맞아요. 그렇다고 해서 신선도까지 같은 건 아니에요. 배로 삼 주 온 과일과 어제 딴 과일은 맛이 다르잖아요.",
+              "결론은, 제철이 있는 건 국산을 사고 여기서 안 나는 바나나 같은 건 수입을 사는 거예요."
+            ],
+            "trophyLemma": "아무래도",
+            "trophyFamily": "아무래도",
+            "trophySurface": "아무래도"
+          },
+          {
+            "n": 10,
+            "scene": "라디오 인터뷰. The host (진행자, them turns 합쇼체, recognition only) asks whether children should start foreign languages very early.",
+            "twist": "them2: 연구에 따르면 어릴수록 발음이 좋다고 합니다. 그래도 반대하십니까? them4: 청취자분들께 입장을 한 문장으로 정리해 주시겠습니까?",
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "조기 교육이 꼭 좋다고 보기는 어려워요. 첫째, 모국어가 자리 잡기 전에 두 언어를 섞으면 둘 다 느려질 수 있고, 둘째, 아이가 공부로 느끼면 오래 못 가거든요.",
+              "발음이 좋아진다는 점에서는 동의해요. 다만 발음은 언어의 한 부분일 뿐이고, 어른이 되어 배워도 충분히 통하잖아요.",
+              "결론은, 어릴 때는 노래와 놀이로 소리에만 익숙해지게 하고 본격적인 학습은 초등학교 뒤에 시작하라는 거예요."
+            ],
+            "trophyLemma": "동의하다",
+            "trophyFamily": "동의",
+            "trophySurface": "동의해요"
+          }
+        ]
+      },
+      {
+        "pathNumber": 4,
+        "slug": "what-if",
+        "shape": "challenge",
+        "staging": [
+          {
+            "lessons": "1-3",
+            "productive": "만약(에) …-(으)면 …-(으)ㄹ 거예요 / -(으)ㄹ 수도 있어요, -았/었더라면 …-았/었을 거예요 (L1, forced by episode order; them0/them2 model it first), -거나 …-는 거예요 (option listing), 그래도 …는 아니에요",
+            "recognitionOnly": "-(으)ㄹ 텐데요, -다면"
+          },
+          {
+            "lessons": "4-6",
+            "productive": "-다면 …-(으)ㄹ 텐데요 (sentence-final 요), -았/었더라면 …-았/었을 수도 있어요 (hedged counterfactual), -(으)ㄹ 경우에 대비하다, 그렇다고 해서 …라고 보기는 어려워요 (P3 recycled), -되 (contingent proposal)",
+            "recognitionOnly": "-다고 가정하면, -(으)ㄹ 뻔했어요"
+          },
+          {
+            "lessons": "7-8",
+            "productive": "-게 될 거예요 (consequence chain), 어차피 …-았/었을 수도 있어요, …가 …를 보장하는 건 아니에요",
+            "recognitionOnly": "-다고 가정하면"
+          },
+          {
+            "lessons": "9-10",
+            "productive": "-(으)ㄴ다고 가정하면, 최악의 경우에는 … 반대로 …, -는 경우에는 (contingency), 결론은 …-되 …-자는 거예요",
+            "recognitionOnly": "합쇼체 manager turns (L10 them only; -십시오 ban kept)"
+          }
+        ],
+        "lessons": [
+          {
+            "n": 1,
+            "scene": "여행사 창구. The agent (직원분) shows the price has doubled since you first asked.",
+            "twist": "them2: 두 달 전에 하셨더라면 반값이었을 텐데요. 지금은 방법이 없어요. them4: 그럼 어떻게 하실 건지 결정해 주세요.",
+            "moves": [
+              "hypothesize",
+              "concede",
+              "propose"
+            ],
+            "threeKoreanLearnerTurns": [
+              "두 달 전에 샀더라면 차이가 이십만 원쯤 났을 거예요. 그런데 그때는 휴가 날짜가 정해지지 않아서 샀어도 바꿔야 했을 거예요.",
+              "일찍 결정했어야 한다는 말씀은 맞아요. 다만 날짜 변경 수수료까지 생각하면 결과는 비슷했을 수도 있어요.",
+              "출발을 하루 미루고 새벽 편으로 하면 얼마나 차이가 나는지 봐 주시겠어요? 십만 원 이상 싸면 그걸로 할게요."
+            ],
+            "trophyLemma": "차이",
+            "trophyFamily": "차이",
+            "trophySurface": "차이가"
+          },
+          {
+            "n": 2,
+            "scene": "점심. A colleague (동료분) passes on a rumour that the company will go fully remote and asks what you will write in the survey.",
+            "twist": "them2: 재택이면 다 좋지 않아요? 출근 시간도 없고요. 왜 걱정이에요? them4: 설문에 뭐라고 쓸지 한 문장으로요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "전면 재택이 되면 변수가 두 개 생겨요. 신입이 배울 사람이 없어지고, 고객 미팅은 누군가는 나와야 할 거예요.",
+              "출근 시간이 없어지는 건 분명히 좋죠. 그래도 그게 모두에게 좋은 건 아니에요. 집이 좁거나 아이가 있는 분은 사무실이 더 편하거든요.",
+              "결론은, 주 이 회 출근을 기본으로 하고 팀마다 요일을 정하는 쪽이 낫다고 쓸게요."
+            ],
+            "trophyLemma": "변수",
+            "trophyFamily": "변수",
+            "trophySurface": "변수가"
+          },
+          {
+            "n": 3,
+            "scene": "부엌. Your flatmate (룸메이트) reports the landlord hinted at a fifteen percent rise.",
+            "twist": "them2: 이사는 더 비싸요. 그냥 내는 게 낫지 않아요? them4: 집주인분께 뭐라고 답할지 정해요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "threeKoreanLearnerTurns": [
+              "만약 십오 퍼센트 오르면 둘이 한 달에 칠만 원씩 더 내야 돼요. 그러면 대안이 두 가지예요. 협상하거나, 방이 하나 적은 집으로 옮기는 거예요.",
+              "이사가 비싼 건 맞아요. 그래도 이 년이면 인상분이 이사 비용을 넘어요. 그냥 내는 게 늘 싼 건 아니에요.",
+              "먼저 오 퍼센트 인상에 이 년 계약으로 제안해 봐요. 거절하시면 그때 집을 보기 시작하면 어떨까요?"
+            ],
+            "trophyLemma": "대안",
+            "trophyFamily": "대안",
+            "trophySurface": "대안이"
+          },
+          {
+            "n": 4,
+            "scene": "카페. A friend (친구) asks whether you regret turning down the other job offer last year.",
+            "twist": "them2: 거기 갔더라면 지금 연봉이 훨씬 높았을 거잖아요. 솔직히 아깝죠? them4: 그래서 결론은요, 후회해요 안 해요?",
+            "moves": [
+              "hypothesize",
+              "concede",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "거기 갔더라면 연봉은 높았을 거예요. 그런데 출장이 매달 있어서 지금처럼 저녁에 공부할 시간은 없었을 거예요.",
+              "돈 생각하면 마음이 흔들리는 건 맞아요. 다만 후회만 하기에는 여기서 얻은 게 있어요. 자격 시험을 올해 끝냈거든요.",
+              "결론은, 후회는 안 해요. 다만 다음에 비슷한 선택이 오면 연봉보다 시간을 먼저 볼 거예요."
+            ],
+            "trophyLemma": "후회",
+            "trophyFamily": "후회",
+            "trophySurface": "후회만"
+          },
+          {
+            "n": 5,
+            "scene": "행사 준비 회의. The organizer (행사 담당자분) wants to confirm an open-air venue for the September festival.",
+            "twist": "them2: 구월은 비가 잘 안 와요. 실내는 두 배라서 예산이 안 돼요. them4: 어느 쪽으로 할지 결정해 주세요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "threeKoreanLearnerTurns": [
+              "당일에 비가 오면 위험이 두 가지예요. 음향 장비가 젖고, 미리 산 음식을 다 버려야 돼요. 둘 다 돈으로 치면 실내 차이보다 커요.",
+              "구월에 비가 적은 건 맞아요. 그렇다고 해서 비가 안 올 거라고 보기는 어려워요. 작년 구월에도 두 번 왔잖아요.",
+              "야외로 하되 옆 체육관을 당일 취소 가능 조건으로 같이 잡으면 어떨까요? 전날 예보를 보고 결정하면 돼요."
+            ],
+            "trophyLemma": "위험",
+            "trophyFamily": "위험",
+            "trophySurface": "위험이"
+          },
+          {
+            "n": 6,
+            "scene": "상담실. An adviser (상담사분) asks what you will do if your appeal against a rejected residence application fails.",
+            "twist": "them2: 이의 신청 통과율이 삼십 퍼센트밖에 안 돼요. 지금부터 다른 길을 보셔야 해요. them4: 어떤 순서로 할지 한 문장으로요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "threeKoreanLearnerTurns": [
+              "이의 신청이 안 되면 길이 두 가지예요. 다른 종류의 체류 자격으로 바꾸거나, 일단 출국해서 다시 신청하는 거예요.",
+              "통과율이 낮다는 점은 맞아요. 그래도 제 경우는 서류 누락이 이유라서 평균과는 다르다고 봐요.",
+              "이의 신청을 내면서 동시에 자격 변경 서류를 준비해서 떨어질 경우에 대비하면 어떨까요?"
+            ],
+            "trophyLemma": "대비하다",
+            "trophyFamily": "대비",
+            "trophySurface": "대비하면"
+          },
+          {
+            "n": 7,
+            "scene": "우편함 앞. A neighbor (이웃분) says the district will ban shared scooters and asks what you will put in the residents' comment form.",
+            "twist": "them2: 금지되면 다 좋잖아요. 사고가 없어지잖아요. them4: 의견서에 뭐라고 쓸지 한 줄로요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "threeKoreanLearnerTurns": [
+              "금지되면 역에서 집까지 대체 수단이 없어요. 버스는 삼십 분에 한 대라서, 그러면 자동차를 더 타게 될 거예요.",
+              "인도 사고가 줄 거라는 점은 맞아요. 그래도 사고가 아예 없어지는 건 아니에요. 전동 자전거는 그대로니까요.",
+              "전면 금지보다 인도 주행만 막고 주차 구역을 정하는 쪽을 제안하면 어떨까요? 그렇게 쓰면 좋겠어요."
+            ],
+            "trophyLemma": "대체",
+            "trophyFamily": "대체",
+            "trophySurface": "대체"
+          },
+          {
+            "n": 8,
+            "scene": "친구 집. A friend (친구) shows photos of a classmate who studied abroad and says you would be different now had you gone too.",
+            "twist": "them2: 갔더라면 영어도 늘고 외국 회사에 갔을 거잖아요. them4: 그래서 지금이라도 갈 거예요, 안 갈 거예요?",
+            "moves": [
+              "hypothesize",
+              "concede",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "갔더라면 영어는 지금보다 나았을 거예요. 그런데 학비로 빚이 남았을 거고, 어차피 돌아와서 같은 일을 했을 수도 있어요.",
+              "외국 회사 기회가 많았을 거라는 건 맞아요. 다만 그 친구도 삼 년 만에 돌아왔잖아요. 유학이 길을 보장하는 건 아니에요.",
+              "결론은, 어차피 지금 하는 일이 좋으니까 유학 대신 일 년에 두 번 짧은 해외 연수를 가는 쪽으로 할게요."
+            ],
+            "trophyLemma": "어차피",
+            "trophyFamily": "어차피",
+            "trophySurface": "어차피"
+          },
+          {
+            "n": 9,
+            "scene": "산책 중. A friend (친구) asks whether you should lend 삼백만 원 to another friend who asked yesterday.",
+            "twist": "them2: 친구 사이에 그런 걸 따져요? 못 받으면 그냥 주는 셈 치면 되죠. them4: 그럼 빌려줘요, 말아요? 한 문장으로요.",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "못 돌려받는다고 가정하면 삼백만 원은 괜찬아도 그 친구와 사이가 어색해질 거예요. 돈보다 그게 더 큰 손해예요.",
+              "친구 사이에 따지는 게 불편한 건 맞아요. 그렇다고 해서 아무 말 없이 주는 게 우정은 아니라고 봐요. 그렇게 갈라진 사람들을 많이 봤어요.",
+              "결론은, 백만 원까지만 빌려주고 갚는 날짜를 문자로 남기는 거예요. 그 이상은 못 돌려받아도 괜찬은 금액이 아니에요."
+            ],
+            "trophyLemma": "가정하다",
+            "trophyFamily": "가정",
+            "trophySurface": "가정하면"
+          },
+          {
+            "n": 10,
+            "scene": "임원 회의 준비. The manager (팀장님, them turns 합쇼체, recognition only) asks you to forecast the effects of moving the launch from March to May.",
+            "twist": "them2: 그렇게 비관적으로만 보시면 결정을 못 합니다. 좋은 쪽은 없습니까? them4: 임원 회의 자료에 넣을 결론을 한 문장으로 정리해 주시겠습니까?",
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "conclude"
+            ],
+            "threeKoreanLearnerTurns": [
+              "오월로 미루면 최악의 경우에는 경쟁사가 먼저 나와서 첫 분기 매출이 반으로 줄 거예요. 반대로 삼월에 서두르면 오류 때문에 불만 전화가 늘 수도 있어요.",
+              "지금까지 나쁜 쪽만 말씀드린 건 맞아요. 그래도 좋은 쪽도 있어요. 두 달이면 인증을 끝내서 해외 판매를 같이 시작할 수 있어요.",
+              "결론은, 오월 출시를 기본으로 하되 경쟁사가 사월 전에 나오는 경우에는 국내판만 삼월에 먼저 내자는 거예요."
+            ],
+            "trophyLemma": "최악",
+            "trophyFamily": "최악",
+            "trophySurface": "최악의"
+          }
+        ]
+      }
+    ],
+    "openIssues": [
+      "Skill separation enforced: P3 you turns carry no counterfactual or -(으)ㄹ 텐데요 carrier; P4 you1 never opens with the two-reason stance frame; concede/rebut appear in both whitelists and are recycled from P3 into P4 but P4 rebuts a risk assessment, not a value position.",
+      "Prior P3 draft (slug holding-your-ground, shape dispute, moves clarify/propose/request/summarize) discarded; all P3 moves now within position/reason/concede/rebut/conclude, with reason folded into position turns and the compromise carried by conclude.",
+      "Prior P4 moves compare/clarify/request/summarize discarded; L10 compare reworked as hypothesize/rebut/conclude.",
+      "-았/었더라면 …-았/었을 거예요 is productive at P4 L1 because the spine places the booking counterfactual first; agent them0/them2 model it before you1; rail-row owner must confirm early placement.",
+      "Trophies replaced: 오해, 무리, 그럼에도 (near 그럼/그래도), 경우 (prior free use), 미루다 dropped; added 규칙, 굳이, 지나치다, 차이, 대체. Zero exact lemma or family collisions against supplied frozen, B1 reserved and B2 reserved lists; arbitrate near-families 차이 vs frozen 차, 대비 vs B1 준비, 대체 vs B1 대신.",
+      "Reserved or frozen lemmas appear as free vocabulary in some you turns (멀다, 서류, 준비, 연수, 사람); declared rule allows free use; flag for teaching-value review.",
+      "P4 L9 you1/you3 contain the misspelling 괜찬 (correct 괜찮아도 / 괜찮은); fix at drafting.",
+      "Eojeol counts hand-estimated; P3 L1 you1, P3 L10 you1, P4 L1 you1, P4 L5 you1, P4 L10 you1 sit at or above the 20 bound and need mechanical recount or trimming.",
+      "합쇼체 remains recognition-only in L10 them turns of both paths; learner-productive 합쇼체 still unstaged (proposed P5).",
+      "Assessment transfer mapping proposed: P3 recall span = concession frame (일부는 맞아요 / 점은 인정해요 / 점에서는 동의해요); P4 recall span = conditional or counterfactual carrier (-(으)면, -다면, -았/었더라면, -다고 가정하면); not encoded in this schema."
+    ]
+  }
+}

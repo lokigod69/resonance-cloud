@@ -1,0 +1,335 @@
+{
+  "scope": "Shared instructional objectives. Plans, not completed episodes.",
+  "paths": [
+    {
+      "pathNumber": 1,
+      "slug": "weighing-options",
+      "function": "compare advantages and disadvantages of two or three options and recommend one",
+      "cefr": "explain a viewpoint giving the advantages and disadvantages of various options",
+      "shapes": [
+        "challenge"
+      ],
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "weigh rent against commute (letting agent)",
+        "car versus transit for a commute (colleague)",
+        "remote versus on-site work (manager)",
+        "buy versus rent equipment (service)",
+        "two holiday plans (friend)",
+        "cash versus app payments (shop owner)",
+        "class versus app for learning (friend)",
+        "two job offers (mentor)",
+        "move city or stay (neighbor)",
+        "recommend one policy option (committee)"
+      ],
+      "assessmentTransfer": "checkpoint recall of the comparison frame; segment review of connector terms; later Speak-tutor probe (free production, outside this spec): compare two options and recommend one"
+    },
+    {
+      "pathNumber": 2,
+      "slug": "explaining-how-and-why",
+      "function": "give a detailed explanation of causes, consequences or a process and sustain it under requests for precision",
+      "cefr": "give detailed explanations; information exchange",
+      "shapes": [
+        "precision"
+      ],
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "why an invoice differs (accountant)",
+        "how local recycling works (newcomer)",
+        "why a project slipped (manager)",
+        "how a loyalty scheme works (friend)",
+        "why you switched providers (neighbor)",
+        "how to appeal a fine (colleague)",
+        "why a plan failed (friend)",
+        "how an appointment process works (expert)",
+        "why a bike scheme matters (skeptic)",
+        "trace a decision chain (official)"
+      ],
+      "assessmentTransfer": "recall of a causal carrier; probe: explain a process step by step with reasons"
+    },
+    {
+      "pathNumber": 3,
+      "slug": "holding-a-view",
+      "function": "state an opinion with two reasons, concede a point and rebut an objection",
+      "cefr": "account for and sustain opinions by providing relevant explanations, arguments and comments",
+      "shapes": [
+        "challenge"
+      ],
+      "moveWhitelist": [
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "new shift schedule (colleague)",
+        "building noise rules (neighbor)",
+        "tipping culture (friend)",
+        "homework load (another parent)",
+        "remote healthcare (expert)",
+        "car-free centre (official)",
+        "a colleague's proposal (colleague)",
+        "phones at work (manager)",
+        "local versus imported food (friend)",
+        "learning languages young (interviewer)"
+      ],
+      "assessmentTransfer": "recall of the concession frame; probe: defend an opinion against one objection"
+    },
+    {
+      "pathNumber": 4,
+      "slug": "what-if",
+      "function": "speculate about consequences and hypothetical or counterfactual situations and assess risk",
+      "cefr": "speculate about causes, consequences, hypothetical situations",
+      "shapes": [
+        "challenge"
+      ],
+      "moveWhitelist": [
+        "hypothesize",
+        "reason",
+        "concede",
+        "rebut",
+        "propose",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "had you booked earlier (agent)",
+        "if the company goes remote (colleague)",
+        "if rent rises (flatmate)",
+        "had you taken the other job (friend)",
+        "outdoor event weather risk (organizer)",
+        "if the appeal fails (adviser)",
+        "if scooters are banned (neighbor)",
+        "had you studied abroad (friend)",
+        "lending money to a friend (friend)",
+        "forecast a decision's effects (manager)"
+      ],
+      "assessmentTransfer": "recall of the conditional carrier; probe: speculate about the consequences of a change"
+    },
+    {
+      "pathNumber": 5,
+      "slug": "making-your-case",
+      "function": "outline a case for compensation or correction and negotiate a solution to a dispute",
+      "cefr": "cope linguistically to negotiate a solution to a dispute; outline a case for compensation using persuasive language",
+      "shapes": [
+        "dispute"
+      ],
+      "moveWhitelist": [
+        "request",
+        "reason",
+        "rebut",
+        "counteroffer",
+        "concede",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "damaged delivery (customer service)",
+        "overcharged repair (workshop)",
+        "renovation noise schedule (contractor)",
+        "withheld deposit (landlord)",
+        "delayed flight claim (airline)",
+        "rejected insurance claim (insurer)",
+        "gym contract cancellation (service)",
+        "misdescribed rental (host)",
+        "unfair rota (manager)",
+        "meeting with the landlord's agent (agent)"
+      ],
+      "assessmentTransfer": "recall of the request carrier; probe: make a claim and respond to a partial offer"
+    },
+    {
+      "pathNumber": 6,
+      "slug": "two-rooms",
+      "function": "handle a formal exchange, then relay or adapt it informally; adjust register and report speech",
+      "cefr": "express themselves clearly and politely in a formal or informal register appropriate to the situation and person; relay specific information",
+      "shapes": [
+        "relay"
+      ],
+      "moveWhitelist": [
+        "request",
+        "explain",
+        "clarify",
+        "relay",
+        "summarize",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "bank meeting, then a friend",
+        "consultation, then partner",
+        "feedback talk, then colleague",
+        "registry desk, then neighbor",
+        "landlord call, then flatmate",
+        "school meeting, then partner",
+        "police report, then friend",
+        "job interview, then friend",
+        "council hearing, then neighbor",
+        "formal complaint call, then colleague"
+      ],
+      "assessmentTransfer": "recall of the reporting carrier; probe: tell a friend what an official said"
+    },
+    {
+      "pathNumber": 7,
+      "slug": "working-it-out",
+      "function": "co-plan under constraints, invite input, counter-propose, summarize what was agreed",
+      "cefr": "help along the progress of the work by inviting others to join in and say what they think; goal-oriented cooperation",
+      "shapes": [
+        "copilot"
+      ],
+      "moveWhitelist": [
+        "propose",
+        "invite",
+        "counteroffer",
+        "concede",
+        "summarize",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "plan a team event",
+        "organize moving day",
+        "divide project tasks",
+        "agree house rules",
+        "plan a neighbourhood clean-up",
+        "agree a shared budget",
+        "plan a trip under constraints",
+        "set a meeting agenda",
+        "resolve a scheduling clash",
+        "outline a joint proposal"
+      ],
+      "assessmentTransfer": "recall of the proposal carrier; probe: plan something together and sum up the decision"
+    },
+    {
+      "pathNumber": 8,
+      "slug": "saying-exactly",
+      "function": "define, paraphrase and specify precisely; repair a misunderstanding",
+      "cefr": "clarify by paraphrase; give clear detailed descriptions",
+      "shapes": [
+        "precision"
+      ],
+      "moveWhitelist": [
+        "explain",
+        "clarify",
+        "compare",
+        "rebut",
+        "summarize",
+        "conclude"
+      ],
+      "episodeFunctions": [
+        "define flexible hours (manager)",
+        "describe a technical fault (IT)",
+        "clear up a deadline mix-up (colleague)",
+        "explain a home-culture concept (friend)",
+        "describe a symptom precisely (doctor)",
+        "specify requirements (contractor)",
+        "paraphrase a rule (newcomer)",
+        "explain a term from your field (expert)",
+        "correct a misreport of your view (colleague)",
+        "describe a complex plan (official)"
+      ],
+      "assessmentTransfer": "recall of the definition frame; probe: explain a term and handle one follow-up"
+    },
+    {
+      "pathNumber": 9,
+      "slug": "under-pressure",
+      "function": "sustain disagreement politely: hold the floor, concede partially, close without losing the point; no new carriers",
+      "cefr": "present and respond to complex lines of argument convincingly; intervene appropriately in discussion",
+      "shapes": [
+        "dispute",
+        "challenge"
+      ],
+      "moveWhitelist": [
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "clarify",
+        "request",
+        "counteroffer",
+        "conclude",
+        "summarize"
+      ],
+      "episodeFunctions": [
+        "defend a budget cut (manager)",
+        "question a treatment plan (doctor)",
+        "push back on a landlord claim (landlord)",
+        "argue over plans (friend)",
+        "defend a colleague (manager)",
+        "challenge a council decision (official)",
+        "handle an interruption (colleague)",
+        "negotiate a deadline (client)",
+        "refuse a request firmly (neighbor)",
+        "reconcile after a dispute (friend)"
+      ],
+      "assessmentTransfer": "recall of a floor-management frame; probe: disagree with someone who interrupts"
+    },
+    {
+      "pathNumber": 10,
+      "slug": "where-i-stand",
+      "function": "develop a personal position across three turns, absorb a challenge, end with a nuanced conclusion; consolidation, no new carriers",
+      "cefr": "develop an argument systematically with appropriate highlighting of significant points and relevant supporting detail",
+      "shapes": [
+        "challenge",
+        "precision"
+      ],
+      "moveWhitelist": [
+        "position",
+        "reason",
+        "compare",
+        "concede",
+        "rebut",
+        "explain",
+        "hypothesize",
+        "conclude",
+        "summarize"
+      ],
+      "episodeFunctions": [
+        "living abroad",
+        "work-life balance",
+        "technology in daily life",
+        "the city you live in",
+        "learning this language",
+        "money and happiness",
+        "traditions versus change",
+        "your career path",
+        "everyday environmental choices",
+        "your plan one year from now"
+      ],
+      "assessmentTransfer": "recall of a structuring connector; probe: a two-minute stance that survives one challenge"
+    }
+  ],
+  "draftingOrder": {
+    "stage0": "no content: write 12 path spec files and 12 trophy ledgers (ledger check script against the active corpus), the offline validator, and two handwritten exemplar episodes per script family (Latin/German, Japanese, Korean, Cebuano/Indonesian, Slavic) used only as schema fixtures; needs Node and the registry, no runtime, server, UI or paid API",
+    "stage1": "German B2 P1–P2 (B1 live, owner verifies natively) → review → freeze → the exemplars and P1 feed the later device calibration of speak profiles",
+    "stage2": "languages with staged B1 P1: finish B1 P2–P10 first; B2 P1–P5 may start once B1 P1–P5 are reviewed (recycling targets exist), B2 P6–P10 after B1 P10",
+    "stage3": "languages without B1: B1 P1–P10 under the B1 contract with rails in this format, then B2",
+    "languagePriority": [
+      "German",
+      "Spanish",
+      "English",
+      "French",
+      "Italian",
+      "Portuguese",
+      "Indonesian",
+      "Polish",
+      "Russian",
+      "Korean",
+      "Japanese",
+      "Cebuano"
+    ],
+    "priorityRationale": "validator maturity on space-joined scripts first, market weight second, segmentation complexity (eojeol, bunsetsu, clitics) and reviewer availability last; owner may reorder",
+    "batchDiscipline": "Codex runs cap at 2–3 paths; no helper factoring in content files; validator plus full read before accepting; adversarial review per batch; activation per language only after that language's B1 is active and the 12 base editions exist",
+    "activationGate": "a path is activatable only when frozen, reviewed, compiled byte-identically twice, and listed in the trophy-fallback matrix test"
+  }
+}

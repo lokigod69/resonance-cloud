@@ -1,0 +1,2221 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Beschwerde und Lösung",
+    "en": "Complaint and resolution capstone"
+  },
+  "subtitle": {
+    "de": "Ein Problem schildern und eine passende Lösung vereinbaren",
+    "en": "Explain a problem and work out a solution"
+  },
+  "anchor": "building management office, customer service, rental agent, courier, shop",
+  "lessons": [
+    {
+      "slug": "soeum-construction-hours",
+      "title": {
+        "de": "Lärm am Vormittag",
+        "en": "Noise all morning"
+      },
+      "situation": {
+        "de": "Du rufst während der Arbeit von zu Hause bei der Hausverwaltung an.",
+        "en": "You're working from home and call the building management office."
+      },
+      "pedagogicalGoal": "Eine anhaltende Störung beschreiben und um eine konkrete Angabe im Aushang bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "관리사무소예요. 어떤 일로 전화 주셨어요?",
+          "baseText": {
+            "de": "Hier ist die Hausverwaltung. Weswegen rufen Sie an?",
+            "en": "Building management. What can I help you with?"
+          }
+        },
+        {
+          "targetText": "아침부터 공사 소음 때문에 일을 못 하고 있는데요.",
+          "baseText": {
+            "de": "Wegen des Baulärms komme ich seit heute Morgen mit der Arbeit nicht weiter.",
+            "en": "I haven't been able to get any work done since this morning because of the construction noise."
+          }
+        },
+        {
+          "targetText": "안내문을 붙일게요. 어떤 내용을 넣으면 도움이 될까요?",
+          "baseText": {
+            "de": "Wir hängen einen Zettel aus. Welche Angabe würde Ihnen helfen?",
+            "en": "We'll put up a notice. What would be helpful to include?"
+          }
+        },
+        {
+          "targetText": "그러면 안내문에 공사 시간도 적어 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie dann auch die Zeiten der Bauarbeiten auf den Aushang schreiben?",
+            "en": "In that case, could you include the construction hours on the notice?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-고 있는데요",
+        "rule": {
+          "de": "Mit -고 있는데요 schilderst du, was gerade vor sich geht. So kann die andere Person auf dein Problem eingehen.",
+          "en": "Use -고 있는데요 to describe what's happening at the moment. It gives the other person room to respond."
+        },
+        "examples": [
+          {
+            "targetText": "아침부터 공사 소음 때문에 일을 못 하고 있는데요.",
+            "baseText": {
+              "de": "Wegen des Baulärms komme ich seit heute Morgen mit der Arbeit nicht weiter.",
+              "en": "I haven't been able to get any work done since this morning because of the construction noise."
+            },
+            "highlight": "하고 있는데요"
+          },
+          {
+            "targetText": "문 앞에서 계속 기다리고 있는데요.",
+            "baseText": {
+              "de": "Ich warte die ganze Zeit vor der Tür.",
+              "en": "I've been waiting by the door all this time."
+            },
+            "highlight": "기다리고 있는데요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "그러면",
+            "예전에는",
+            "거꾸로"
+          ]
+        },
+        " 안내문에 ",
+        {
+          "kind": "choice",
+          "answer": "공사 시간도",
+          "choices": [
+            "청소 시간도",
+            "주차 요금도",
+            "수도 요금도",
+            "공사 시간도"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "적어 주시겠어요",
+          "choices": [
+            "적혀 있었어요",
+            "적어 주셨어요",
+            "적어 주시겠어요",
+            "적지 않았어요"
+          ],
+          "cue": "Höfliche Bitte um eine Handlung / Polite request for the other person to act"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "아침부터",
+          "baseText": {
+            "de": "seit heute Morgen",
+            "en": "since this morning"
+          }
+        },
+        {
+          "targetText": "공사 소음 때문에",
+          "baseText": {
+            "de": "wegen des Baulärms",
+            "en": "because of the construction noise"
+          }
+        },
+        {
+          "targetText": "일을",
+          "baseText": {
+            "de": "meine Arbeit",
+            "en": "my work"
+          }
+        },
+        {
+          "targetText": "못 하고 있는데요.",
+          "baseText": {
+            "de": "kann ich gerade nicht erledigen",
+            "en": "I haven't been able to do"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "소음",
+          "baseText": {
+            "de": "Lärm",
+            "en": "noise"
+          }
+        },
+        {
+          "targetText": "공사",
+          "baseText": {
+            "de": "Bauarbeiten",
+            "en": "construction work"
+          }
+        },
+        {
+          "targetText": "아침부터",
+          "baseText": {
+            "de": "seit dem Morgen",
+            "en": "since the morning"
+          }
+        },
+        {
+          "targetText": "안내문",
+          "baseText": {
+            "de": "Aushang",
+            "en": "notice"
+          }
+        },
+        {
+          "targetText": "붙이다",
+          "baseText": {
+            "de": "aufhängen, ankleben",
+            "en": "put up, stick on"
+          }
+        },
+        {
+          "targetText": "적다",
+          "baseText": {
+            "de": "aufschreiben",
+            "en": "write down"
+          }
+        }
+      ],
+      "recall": {
+        "before": "아침부터 공사 ",
+        "answer": "소음",
+        "after": " 때문에 일을 못 하고 있는데요.",
+        "fallbackChoices": [
+          "휴가",
+          "소음",
+          "연장",
+          "교환"
+        ]
+      },
+      "speakRequired": [
+        "아침부터",
+        "소음",
+        "때문에"
+      ],
+      "sceneCaption": {
+        "de": "Du rufst während der Arbeit von zu Hause bei der Hausverwaltung an. „관리사무소예요. 어떤 일로 전화 주셨어요?“",
+        "en": "You're working from home and call the building management office. “관리사무소예요. 어떤 일로 전화 주셨어요?”"
+      },
+      "trophyWord": {
+        "word": "소음",
+        "meaning": {
+          "de": "Lärm",
+          "en": "noise"
+        },
+        "example": "밤에는 소음 문제가 더 심해요.",
+        "whyThisWord": {
+          "de": "Mit 소음 kannst du benennen, was dich stört. 공사 소음 bezeichnet ausdrücklich den Lärm von Bauarbeiten.",
+          "en": "Use 소음 to name noise that's causing a problem. 공사 소음 identifies construction work as the source."
+        }
+      },
+      "distractors": [
+        "어제 저녁부터",
+        "일을 마쳤어요."
+      ],
+      "placeholderCaption": {
+        "de": "Lärm am Vormittag",
+        "en": "Noise all morning"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A laptop by a window opposite a building site."
+    },
+    {
+      "slug": "gojang-heater-visit",
+      "title": {
+        "de": "Die kalte Wohnung",
+        "en": "The cold apartment"
+      },
+      "situation": {
+        "de": "Du meldest dich bei der Vermietung, weil deine Wohnung kalt bleibt.",
+        "en": "You contact the rental office because your apartment won't warm up."
+      },
+      "pedagogicalGoal": "Einen Defekt als Vermutung schildern und einen früheren Besuch aus den angebotenen Terminen auswählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "집 안에서 어떤 문제가 생겼어요?",
+          "baseText": {
+            "de": "Was funktioniert in Ihrer Wohnung nicht?",
+            "en": "What's gone wrong in your apartment?"
+          }
+        },
+        {
+          "targetText": "방이 계속 추운데 보일러가 고장 난 것 같은데요.",
+          "baseText": {
+            "de": "Das Zimmer bleibt kalt. Ich glaube, die Heizung ist kaputt.",
+            "en": "The room stays cold. I think the boiler may have broken down."
+          }
+        },
+        {
+          "targetText": "금요일에 갈 수 있어요. 급하시면 목요일 저녁도 돼요.",
+          "baseText": {
+            "de": "Wir können am Freitag kommen. Wenn es eilig ist, geht auch Donnerstagabend.",
+            "en": "We can come on Friday. If it's urgent, Thursday evening works too."
+          }
+        },
+        {
+          "targetText": "그러면 금요일까지는 기다리기 힘든데 목요일 저녁에 와 주시겠어요?",
+          "baseText": {
+            "de": "Bis Freitag kann ich schlecht warten. Könnten Sie dann am Donnerstagabend kommen?",
+            "en": "It would be hard for me to wait until Friday. Could you come on Thursday evening, then?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 것 같은데요",
+        "rule": {
+          "de": "고장 난 것 같은데요 signalisiert einen Verdacht. Du beschreibst, was du beobachtest, und überlässt die Diagnose der Fachperson.",
+          "en": "고장 난 것 같은데요 signals a suspicion. You describe what you've noticed and leave the diagnosis to the technician."
+        },
+        "examples": [
+          {
+            "targetText": "방이 계속 추운데 보일러가 고장 난 것 같은데요.",
+            "baseText": {
+              "de": "Das Zimmer bleibt kalt. Ich glaube, die Heizung ist kaputt.",
+              "en": "The room stays cold. I think the boiler may have broken down."
+            },
+            "highlight": "고장 난 것 같은데요"
+          },
+          {
+            "targetText": "복도 불이 꺼진 것 같은데요.",
+            "baseText": {
+              "de": "Es sieht so aus, als wäre das Licht im Flur aus.",
+              "en": "It looks like the hallway light has gone out."
+            },
+            "highlight": "꺼진 것 같은데요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "그러면",
+            "그와 반대로",
+            "이미",
+            "거꾸로"
+          ]
+        },
+        " 금요일까지는 ",
+        {
+          "kind": "form",
+          "answer": "기다리기 힘든데",
+          "choices": [
+            "기다릴 필요가 없었는데",
+            "기다리지는 않았는데",
+            "기다리기 힘든데",
+            "기다린 적이 없는데"
+          ],
+          "cue": "Aktuelle Schwierigkeit als Hintergrund für eine Bitte / Present difficulty as background for a request"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "목요일 저녁에",
+          "choices": [
+            "금요일 아침에",
+            "목요일 저녁에",
+            "토요일 저녁에",
+            "다음 주에"
+          ]
+        },
+        " 와 주시겠어요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "방이 계속 추운데",
+          "baseText": {
+            "de": "das Zimmer bleibt kalt",
+            "en": "the room stays cold"
+          }
+        },
+        {
+          "targetText": "보일러가",
+          "baseText": {
+            "de": "die Heizung",
+            "en": "the boiler"
+          }
+        },
+        {
+          "targetText": "고장 난",
+          "baseText": {
+            "de": "kaputtgegangen",
+            "en": "has broken down"
+          }
+        },
+        {
+          "targetText": "것 같은데요.",
+          "baseText": {
+            "de": "scheint mir",
+            "en": "it seems"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "고장",
+          "baseText": {
+            "de": "Defekt",
+            "en": "breakdown"
+          }
+        },
+        {
+          "targetText": "보일러",
+          "baseText": {
+            "de": "Heizkessel, Therme",
+            "en": "boiler"
+          }
+        },
+        {
+          "targetText": "춥다",
+          "baseText": {
+            "de": "kalt sein",
+            "en": "be cold"
+          }
+        },
+        {
+          "targetText": "급하다",
+          "baseText": {
+            "de": "eilig sein",
+            "en": "be urgent"
+          }
+        },
+        {
+          "targetText": "목요일 저녁",
+          "baseText": {
+            "de": "Donnerstagabend",
+            "en": "Thursday evening"
+          }
+        },
+        {
+          "targetText": "기다리다",
+          "baseText": {
+            "de": "warten",
+            "en": "wait"
+          }
+        }
+      ],
+      "recall": {
+        "before": "방이 계속 추운데 보일러가 ",
+        "answer": "고장",
+        "after": " 난 것 같은데요.",
+        "fallbackChoices": [
+          "이사",
+          "환불",
+          "고장",
+          "배달"
+        ]
+      },
+      "speakRequired": [
+        "방이",
+        "추운데",
+        "보일러가"
+      ],
+      "sceneCaption": {
+        "de": "Du meldest dich bei der Vermietung, weil deine Wohnung kalt bleibt. „집 안에서 어떤 문제가 생겼어요?“",
+        "en": "You contact the rental office because your apartment won't warm up. “집 안에서 어떤 문제가 생겼어요?”"
+      },
+      "trophyWord": {
+        "word": "고장",
+        "meaning": {
+          "de": "Defekt, Panne",
+          "en": "breakdown, malfunction"
+        },
+        "example": "고장 난 난방기는 어디에 맡기면 돼요?",
+        "whyThisWord": {
+          "de": "고장 난 vor einem Gerätenamen sagt, dass das Gerät kaputt ist. So kannst du auch am Telefon erklären, worum es geht.",
+          "en": "Put 고장 난 before the name of an appliance to say it has broken down. It's a useful way to identify it over the phone."
+        }
+      },
+      "distractors": [
+        "방이 너무 더운데",
+        "정상인 것 같아요."
+      ],
+      "placeholderCaption": {
+        "de": "Die kalte Wohnung",
+        "en": "The cold apartment"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A resident wearing a cardigan beside an unlit boiler control panel."
+    },
+    {
+      "slug": "gongsa-hallway-clearance",
+      "title": {
+        "de": "Die versperrte Haustür",
+        "en": "A blocked doorway"
+      },
+      "situation": {
+        "de": "Vor deiner Wohnung liegen Bretter. Du sprichst mit der Hausverwaltung.",
+        "en": "Boards have been left outside your apartment. You speak to building management."
+      },
+      "pedagogicalGoal": "Bei einem blockierten Zugang um Abhilfe bitten und erklären, wie viel Platz frei bleiben muss.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "복도에서 어떤 점이 불편하세요?",
+          "baseText": {
+            "de": "Was bereitet Ihnen im Flur Schwierigkeiten?",
+            "en": "What's causing you trouble in the hallway?"
+          }
+        },
+        {
+          "targetText": "복도 공사 자재가 현관을 막고 있는데 옮겨 주시겠어요?",
+          "baseText": {
+            "de": "Das Baumaterial im Flur versperrt meine Wohnungstür. Könnten Sie es wegräumen?",
+            "en": "The building materials in the hall are blocking my front door. Could you move them?"
+          }
+        },
+        {
+          "targetText": "왼쪽은 계단인데 오른쪽 벽 쪽으로 옮길까요?",
+          "baseText": {
+            "de": "Links ist die Treppe. Sollen wir das Material an die rechte Wand stellen?",
+            "en": "The stairs are on the left. Shall we move the materials over to the wall on the right?"
+          }
+        },
+        {
+          "targetText": "그러면 오른쪽이 좋겠는데 유모차 지나갈 자리는 남겨 주세요.",
+          "baseText": {
+            "de": "Dann wäre rechts gut. Lassen Sie bitte genug Platz für den Kinderwagen.",
+            "en": "The right side would work, then. Please leave room for the stroller to get through."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-고 있는데 … 주시겠어요?",
+        "rule": {
+          "de": "-고 있는데 benennt das Hindernis, bevor du mit 주시겠어요 höflich um Hilfe bittest.",
+          "en": "Use -고 있는데 to describe the obstruction before asking for help with 주시겠어요."
+        },
+        "examples": [
+          {
+            "targetText": "복도 공사 자재가 현관을 막고 있는데 옮겨 주시겠어요?",
+            "baseText": {
+              "de": "Das Baumaterial im Flur versperrt meine Wohnungstür. Könnten Sie es wegräumen?",
+              "en": "The building materials in the hall are blocking my front door. Could you move them?"
+            },
+            "highlight": "막고 있는데"
+          },
+          {
+            "targetText": "상자가 자리를 차지하고 있는데 치워 주시겠어요?",
+            "baseText": {
+              "de": "Die Kiste nimmt den Platz ein. Könnten Sie sie wegräumen?",
+              "en": "The box is taking up the space. Could you move it out of the way?"
+            },
+            "highlight": "차지하고 있는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "예를 들면",
+            "거꾸로",
+            "그러면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "오른쪽이",
+          "choices": [
+            "계단 쪽이",
+            "오른쪽이",
+            "문 앞이",
+            "왼쪽이"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "좋겠는데",
+          "choices": [
+            "좋겠는데",
+            "좋았었는데",
+            "좋을 뻔했는데",
+            "좋지 않았는데"
+          ],
+          "cue": "Vorsichtiger Vorschlag vor einer Bitte / Tentative suggestion before a request"
+        },
+        " 유모차 지나갈 자리는 남겨 주세요."
+      ],
+      "chunks": [
+        {
+          "targetText": "복도 공사 자재가",
+          "baseText": {
+            "de": "das Baumaterial im Flur",
+            "en": "the building materials in the hall"
+          }
+        },
+        {
+          "targetText": "현관을",
+          "baseText": {
+            "de": "meine Wohnungstür",
+            "en": "my front door"
+          }
+        },
+        {
+          "targetText": "막고 있는데",
+          "baseText": {
+            "de": "versperrt gerade",
+            "en": "are blocking"
+          }
+        },
+        {
+          "targetText": "옮겨 주시겠어요?",
+          "baseText": {
+            "de": "könnten Sie es wegräumen?",
+            "en": "could you move them?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "공사",
+          "baseText": {
+            "de": "Bauarbeiten",
+            "en": "construction work"
+          }
+        },
+        {
+          "targetText": "자재",
+          "baseText": {
+            "de": "Materialien",
+            "en": "materials"
+          }
+        },
+        {
+          "targetText": "현관",
+          "baseText": {
+            "de": "Wohnungseingang",
+            "en": "entrance to an apartment"
+          }
+        },
+        {
+          "targetText": "막다",
+          "baseText": {
+            "de": "versperren",
+            "en": "block"
+          }
+        },
+        {
+          "targetText": "옮기다",
+          "baseText": {
+            "de": "wegstellen, umräumen",
+            "en": "move something"
+          }
+        },
+        {
+          "targetText": "유모차",
+          "baseText": {
+            "de": "Kinderwagen",
+            "en": "stroller"
+          }
+        }
+      ],
+      "recall": {
+        "before": "복도 공사 자재가 현관을 ",
+        "answer": "막고",
+        "after": " 있는데 옮겨 주시겠어요?",
+        "fallbackChoices": [
+          "막고",
+          "내리고",
+          "환불하고",
+          "인쇄하고"
+        ]
+      },
+      "speakRequired": [
+        "공사",
+        "현관을",
+        "옮겨"
+      ],
+      "sceneCaption": {
+        "de": "Vor deiner Wohnung liegen Bretter. Du sprichst mit der Hausverwaltung. „복도에서 어떤 점이 불편하세요?“",
+        "en": "Boards have been left outside your apartment. You speak to building management. “복도에서 어떤 점이 불편하세요?”"
+      },
+      "trophyWord": {
+        "word": "공사",
+        "meaning": {
+          "de": "Bauarbeiten",
+          "en": "construction work"
+        },
+        "example": "공사 자재는 어디에 두면 돼요?",
+        "whyThisWord": {
+          "de": "공사 verbindet sich mit 자재 zu Baumaterial. Mit 공사 기간 fragst du nach der Dauer der Arbeiten.",
+          "en": "공사 combines with 자재 to mean construction materials. Use 공사 기간 to ask how long the work will last."
+        }
+      },
+      "distractors": [
+        "계단을 내려가는데",
+        "문을 열어 두세요."
+      ],
+      "placeholderCaption": {
+        "de": "Die versperrte Haustür",
+        "en": "A blocked doorway"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Stacked boards occupy a narrow apartment landing."
+    },
+    {
+      "slug": "naemsae-hallway-visit",
+      "title": {
+        "de": "Geruch auf dem Flur",
+        "en": "A smell in the hallway"
+      },
+      "situation": {
+        "de": "Im Treppenhaus riecht es nach Essensresten. Du rufst die Hausverwaltung an.",
+        "en": "The stairwell smells of food scraps. You call building management."
+      },
+      "pedagogicalGoal": "Die Dauer einer Störung angeben und den angebotenen Kontrollgang genauer vereinbaren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "복도에서 언제부터 냄새가 났어요?",
+          "baseText": {
+            "de": "Seit wann riecht es im Flur so?",
+            "en": "How long has there been a smell in the hallway?"
+          }
+        },
+        {
+          "targetText": "복도에서 음식물 냄새 난 지 벌써 사흘 됐어요.",
+          "baseText": {
+            "de": "Auf dem Flur riecht es schon seit drei Tagen nach Essensresten.",
+            "en": "The hallway has smelled of food scraps for three days now."
+          }
+        },
+        {
+          "targetText": "내일 층마다 살펴볼게요. 2층에서 신고가 제일 많이 왔어요.",
+          "baseText": {
+            "de": "Morgen kontrolliere ich alle Etagen. Aus dem zweiten Stock kamen die meisten Meldungen.",
+            "en": "I'll check every floor tomorrow. Most of the reports came from the second floor."
+          }
+        },
+        {
+          "targetText": "그러면 내일 오실 때 2층부터 봐 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie dann morgen bei Ihrem Rundgang im zweiten Stock anfangen?",
+            "en": "In that case, when you come tomorrow, could you start with the second floor?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 지 … 됐어요",
+        "rule": {
+          "de": "난 지 사흘 됐어요 misst die Zeit seit dem ersten Auftreten des Geruchs. 벌써 unterstreicht, wie lange das für dich ist.",
+          "en": "난 지 사흘 됐어요 measures the time since the smell began. 벌써 emphasizes that three days already feels like a long time."
+        },
+        "examples": [
+          {
+            "targetText": "복도에서 음식물 냄새 난 지 벌써 사흘 됐어요.",
+            "baseText": {
+              "de": "Auf dem Flur riecht es schon seit drei Tagen nach Essensresten.",
+              "en": "The hallway has smelled of food scraps for three days now."
+            },
+            "highlight": "난 지 벌써 사흘 됐어요"
+          },
+          {
+            "targetText": "이 집에 이사 온 지 벌써 두 달 됐어요.",
+            "baseText": {
+              "de": "Ich wohne schon seit zwei Monaten hier.",
+              "en": "It's already been two months since I moved into this place."
+            },
+            "highlight": "온 지 벌써 두 달 됐어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "거꾸로",
+            "예전에는",
+            "반면에",
+            "그러면"
+          ]
+        },
+        " 내일 오실 때 ",
+        {
+          "kind": "choice",
+          "answer": "2층부터",
+          "choices": [
+            "지하부터",
+            "2층부터",
+            "옥상부터",
+            "1층부터"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "봐 주시겠어요",
+          "choices": [
+            "봐 주시겠어요",
+            "보고 계셨어요",
+            "보러 왔었어요",
+            "보지 않았어요"
+          ],
+          "cue": "Höfliche Bitte um einen künftigen Kontrollgang / Polite request for a future check"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "복도에서",
+          "baseText": {
+            "de": "auf dem Flur",
+            "en": "in the hallway"
+          }
+        },
+        {
+          "targetText": "음식물 냄새",
+          "baseText": {
+            "de": "der Geruch von Essensresten",
+            "en": "a smell of food scraps"
+          }
+        },
+        {
+          "targetText": "난 지",
+          "baseText": {
+            "de": "seit er aufgetreten ist",
+            "en": "since it started"
+          }
+        },
+        {
+          "targetText": "벌써 사흘 됐어요.",
+          "baseText": {
+            "de": "sind schon drei Tage vergangen",
+            "en": "it's been three days already"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "냄새",
+          "baseText": {
+            "de": "Geruch",
+            "en": "smell"
+          }
+        },
+        {
+          "targetText": "음식물",
+          "baseText": {
+            "de": "Lebensmittel, Essensreste",
+            "en": "food, food scraps"
+          }
+        },
+        {
+          "targetText": "사흘",
+          "baseText": {
+            "de": "drei Tage",
+            "en": "three days"
+          }
+        },
+        {
+          "targetText": "층마다",
+          "baseText": {
+            "de": "auf jeder Etage",
+            "en": "on every floor"
+          }
+        },
+        {
+          "targetText": "신고",
+          "baseText": {
+            "de": "Meldung",
+            "en": "report"
+          }
+        },
+        {
+          "targetText": "살펴보다",
+          "baseText": {
+            "de": "sich genauer ansehen",
+            "en": "look into, inspect"
+          }
+        }
+      ],
+      "recall": {
+        "before": "복도에서 음식물 냄새 난 지 벌써 ",
+        "answer": "사흘",
+        "after": " 됐어요.",
+        "fallbackChoices": [
+          "세탁",
+          "사흘",
+          "현관",
+          "바닥"
+        ]
+      },
+      "speakRequired": [
+        "복도에서",
+        "음식물",
+        "사흘"
+      ],
+      "sceneCaption": {
+        "de": "Im Treppenhaus riecht es nach Essensresten. Du rufst die Hausverwaltung an. „복도에서 언제부터 냄새가 났어요?“",
+        "en": "The stairwell smells of food scraps. You call building management. “복도에서 언제부터 냄새가 났어요?”"
+      },
+      "trophyWord": {
+        "word": "냄새",
+        "meaning": {
+          "de": "Geruch",
+          "en": "smell"
+        },
+        "example": "이 방은 아직 페인트 냄새 나요.",
+        "whyThisWord": {
+          "de": "Mit 냄새 und einer Quelle wie 음식물 oder 페인트 kannst du einen Geruch so beschreiben, dass andere ihn einordnen können.",
+          "en": "Pair 냄새 with a source like 음식물 or 페인트 to help someone identify a smell."
+        }
+      },
+      "distractors": [
+        "옥상에서",
+        "오늘 처음 났어요."
+      ],
+      "placeholderCaption": {
+        "de": "Geruch auf dem Flur",
+        "en": "A smell in the hallway"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A landing with closed apartment doors and a stairwell window."
+    },
+    {
+      "slug": "bulpyeon-feedback-menu",
+      "title": {
+        "de": "Ein Menü ist verschwunden",
+        "en": "A missing menu"
+      },
+      "situation": {
+        "de": "Beim Kundendienst einer App beschreibst du, was du auf dem Bildschirm siehst.",
+        "en": "You describe what you can see on your screen to the app's support team."
+      },
+      "pedagogicalGoal": "Die Zeit seit einem Update angeben und für die angebotene Anleitung einen Empfangskanal wählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "앱에서 어떤 메뉴를 찾고 계세요?",
+          "baseText": {
+            "de": "Welches Menü suchen Sie in der App?",
+            "en": "Which menu are you looking for in the app?"
+          }
+        },
+        {
+          "targetText": "앱을 업데이트한 지 일주일 됐는데 불편 신고 메뉴가 안 보여요.",
+          "baseText": {
+            "de": "Ich habe die App vor einer Woche aktualisiert und finde das Menü zum Melden von Problemen nicht.",
+            "en": "I updated the app a week ago, and I can't see the menu for reporting problems."
+          }
+        },
+        {
+          "targetText": "그림 안내를 보내 드릴게요. 가입하실 때 적으신 이메일 지금도 쓰세요?",
+          "baseText": {
+            "de": "Ich schicke Ihnen eine bebilderte Anleitung. Nutzen Sie die E-Mail-Adresse aus Ihrer Anmeldung noch?",
+            "en": "I'll send you an illustrated guide. Do you still use the email address you gave when you signed up?"
+          }
+        },
+        {
+          "targetText": "네, 그러면 가입할 때 적어 둔 이메일로 받고 싶은데요.",
+          "baseText": {
+            "de": "Ja, dann würde ich die Anleitung gern an die E-Mail-Adresse aus meiner Anmeldung bekommen.",
+            "en": "Yes, in that case I'd like it sent to the email address I gave when I signed up."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 지 … 됐는데",
+        "rule": {
+          "de": "Mit 업데이트한 지 일주일 됐는데 datierst du das Update. Danach sagst du, welche Schwierigkeit du jetzt hast.",
+          "en": "업데이트한 지 일주일 됐는데 dates the update. Follow it with the difficulty you're experiencing now."
+        },
+        "examples": [
+          {
+            "targetText": "앱을 업데이트한 지 일주일 됐는데 불편 신고 메뉴가 안 보여요.",
+            "baseText": {
+              "de": "Ich habe die App vor einer Woche aktualisiert und finde das Menü zum Melden von Problemen nicht.",
+              "en": "I updated the app a week ago, and I can't see the menu for reporting problems."
+            },
+            "highlight": "업데이트한 지 일주일 됐는데"
+          },
+          {
+            "targetText": "신청한 지 이틀 됐는데 아직 답이 없어요.",
+            "baseText": {
+              "de": "Ich habe den Antrag vor zwei Tagen gestellt und noch keine Antwort bekommen.",
+              "en": "I applied two days ago and still haven't had a reply."
+            },
+            "highlight": "신청한 지 이틀 됐는데"
+          }
+        ]
+      },
+      "cloze": [
+        "네, ",
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "예전에는",
+            "거꾸로",
+            "그러면",
+            "그 반대로"
+          ]
+        },
+        " 가입할 때 적어 둔 ",
+        {
+          "kind": "choice",
+          "answer": "이메일로",
+          "choices": [
+            "이메일로",
+            "집 주소로",
+            "팩스로",
+            "우편으로"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "받고 싶은데요",
+          "choices": [
+            "받곤 했어요",
+            "받은 적이 없어요",
+            "받지 않았어요",
+            "받고 싶은데요"
+          ],
+          "cue": "Vorsichtig geäußerter Wunsch zum angebotenen Versand / Softened preference about the offered delivery"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "앱을 업데이트한 지",
+          "baseText": {
+            "de": "seit dem App-Update",
+            "en": "since I updated the app"
+          }
+        },
+        {
+          "targetText": "일주일 됐는데",
+          "baseText": {
+            "de": "ist eine Woche vergangen",
+            "en": "it's been a week"
+          }
+        },
+        {
+          "targetText": "불편 신고 메뉴가",
+          "baseText": {
+            "de": "das Menü zum Melden von Problemen",
+            "en": "the menu for reporting problems"
+          }
+        },
+        {
+          "targetText": "안 보여요.",
+          "baseText": {
+            "de": "sehe ich nicht",
+            "en": "I can't see"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "불편",
+          "baseText": {
+            "de": "Unannehmlichkeit, Problem",
+            "en": "inconvenience, difficulty"
+          }
+        },
+        {
+          "targetText": "불편 신고",
+          "baseText": {
+            "de": "Problemmeldung",
+            "en": "reporting a problem"
+          }
+        },
+        {
+          "targetText": "업데이트하다",
+          "baseText": {
+            "de": "aktualisieren",
+            "en": "update"
+          }
+        },
+        {
+          "targetText": "메뉴",
+          "baseText": {
+            "de": "Menü",
+            "en": "menu"
+          }
+        },
+        {
+          "targetText": "그림 안내",
+          "baseText": {
+            "de": "bebilderte Anleitung",
+            "en": "illustrated guide"
+          }
+        },
+        {
+          "targetText": "가입하다",
+          "baseText": {
+            "de": "sich anmelden",
+            "en": "sign up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "앱을 ",
+        "answer": "업데이트한",
+        "after": " 지 일주일 됐는데 불편 신고 메뉴가 안 보여요.",
+        "fallbackChoices": [
+          "산책한",
+          "요리한",
+          "이사한",
+          "업데이트한"
+        ]
+      },
+      "speakRequired": [
+        "업데이트한",
+        "일주일",
+        "메뉴가"
+      ],
+      "sceneCaption": {
+        "de": "Beim Kundendienst einer App beschreibst du, was du auf dem Bildschirm siehst. „앱에서 어떤 메뉴를 찾고 계세요?“",
+        "en": "You describe what you can see on your screen to the app's support team. “앱에서 어떤 메뉴를 찾고 계세요?”"
+      },
+      "trophyWord": {
+        "word": "불편",
+        "meaning": {
+          "de": "Unannehmlichkeit, Problem",
+          "en": "inconvenience, difficulty"
+        },
+        "example": "사용 중에 문제가 생기면 불편 신고 메뉴를 눌러 주세요.",
+        "whyThisWord": {
+          "de": "불편 신고 steht oft dort, wo du eine Schwierigkeit bei der Nutzung melden kannst. Hier ergibt sich die Bedeutung aus dem Namen des Menüs.",
+          "en": "불편 신고 names a way to report a difficulty using a service. Here the words are part of the menu's name."
+        }
+      },
+      "distractors": [
+        "앱을 삭제하고",
+        "잘 보여요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Menü ist verschwunden",
+        "en": "A missing menu"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A user looks for a menu in an app while calling support."
+    },
+    {
+      "slug": "silsu-double-charge",
+      "title": {
+        "de": "Zweimal berechnet",
+        "en": "Charged twice"
+      },
+      "situation": {
+        "de": "Du prüfst an der Kasse einer Bäckerei den Beleg deines Einkaufs.",
+        "en": "You check your receipt at a bakery counter."
+      },
+      "pedagogicalGoal": "Auf einen möglichen Kassenfehler hinweisen und die Rückerstattung auf den zu viel gezahlten Betrag beschränken.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "영수증에 어떤 문제가 있어요?",
+          "baseText": {
+            "de": "Was stimmt auf dem Beleg nicht?",
+            "en": "What's wrong with the receipt?"
+          }
+        },
+        {
+          "targetText": "계산 실수 같아요. 방금 산 빵값이 두 번 찍혀 있어요.",
+          "baseText": {
+            "de": "Ich glaube, beim Kassieren ist ein Fehler passiert. Das Brot, das ich eben gekauft habe, steht zweimal auf dem Beleg.",
+            "en": "I think there's been a mistake at the till. The bread I just bought is listed twice."
+          }
+        },
+        {
+          "targetText": "빵 하나가 두 번 찍혔네요. 카드로 환불해 드릴까요?",
+          "baseText": {
+            "de": "Das Brot wurde tatsächlich zweimal erfasst. Soll ich Ihnen das Geld auf die Karte zurückbuchen?",
+            "en": "That loaf was scanned twice. Shall I put the refund back on your card?"
+          }
+        },
+        {
+          "targetText": "그러면 중복된 금액만 카드로 돌려받을 수 있을까요?",
+          "baseText": {
+            "de": "Kann ich dann nur den doppelt berechneten Betrag auf meine Karte zurückbekommen?",
+            "en": "In that case, could I get just the duplicate charge refunded to my card?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 있어요",
+        "rule": {
+          "de": "찍혀 있어요 bezeichnet das sichtbare Ergebnis. Auf dem Beleg stehen jetzt zwei Einträge für einen Kauf.",
+          "en": "찍혀 있어요 describes the visible result. The receipt now shows two entries for one purchase."
+        },
+        "examples": [
+          {
+            "targetText": "계산 실수 같아요. 방금 산 빵값이 두 번 찍혀 있어요.",
+            "baseText": {
+              "de": "Ich glaube, beim Kassieren ist ein Fehler passiert. Das Brot, das ich eben gekauft habe, steht zweimal auf dem Beleg.",
+              "en": "I think there's been a mistake at the till. The bread I just bought is listed twice."
+            },
+            "highlight": "찍혀 있어요"
+          },
+          {
+            "targetText": "영수증 아래에 결제 시간이 적혀 있어요.",
+            "baseText": {
+              "de": "Unten auf dem Beleg steht die Uhrzeit der Zahlung.",
+              "en": "The payment time is printed at the bottom of the receipt."
+            },
+            "highlight": "적혀 있어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "예전에는",
+            "그러면",
+            "거꾸로",
+            "반대로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "중복된 금액만",
+          "choices": [
+            "전체 금액을",
+            "포장비만",
+            "배달비만",
+            "중복된 금액만"
+          ]
+        },
+        " 카드로 ",
+        {
+          "kind": "form",
+          "answer": "돌려받을 수 있을까요",
+          "choices": [
+            "돌려받은 적이 있어요",
+            "돌려받고 있었어요",
+            "돌려받을 수 있을까요",
+            "돌려받곤 했어요"
+          ],
+          "cue": "Höfliche Frage nach einer möglichen Erstattung / Polite question about whether a refund is possible"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "계산 실수",
+          "baseText": {
+            "de": "ein Fehler beim Kassieren",
+            "en": "a mistake at the till"
+          }
+        },
+        {
+          "targetText": "같아요. 방금 산",
+          "baseText": {
+            "de": "glaube ich. Das eben gekaufte",
+            "en": "I think. The one I just bought"
+          }
+        },
+        {
+          "targetText": "빵값이 두 번",
+          "baseText": {
+            "de": "der Brotpreis zweimal",
+            "en": "the bread price twice"
+          }
+        },
+        {
+          "targetText": "찍혀 있어요.",
+          "baseText": {
+            "de": "steht auf dem Beleg",
+            "en": "is printed on the receipt"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "실수",
+          "baseText": {
+            "de": "Versehen, Fehler",
+            "en": "mistake"
+          }
+        },
+        {
+          "targetText": "계산",
+          "baseText": {
+            "de": "Abrechnung, Kassieren",
+            "en": "calculation, checkout"
+          }
+        },
+        {
+          "targetText": "빵값",
+          "baseText": {
+            "de": "Preis des Brots",
+            "en": "price of the bread"
+          }
+        },
+        {
+          "targetText": "영수증",
+          "baseText": {
+            "de": "Beleg",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "두 번",
+          "baseText": {
+            "de": "zweimal",
+            "en": "twice"
+          }
+        },
+        {
+          "targetText": "중복된 금액",
+          "baseText": {
+            "de": "doppelt berechneter Betrag",
+            "en": "duplicate charge"
+          }
+        }
+      ],
+      "recall": {
+        "before": "계산 실수 같아요. 방금 산 ",
+        "answer": "빵값이",
+        "after": " 두 번 찍혀 있어요.",
+        "fallbackChoices": [
+          "빵값이",
+          "배송지가",
+          "좌석이",
+          "예약자가"
+        ]
+      },
+      "speakRequired": [
+        "실수",
+        "빵값이",
+        "찍혀"
+      ],
+      "sceneCaption": {
+        "de": "Du prüfst an der Kasse einer Bäckerei den Beleg deines Einkaufs. „영수증에 어떤 문제가 있어요?“",
+        "en": "You check your receipt at a bakery counter. “영수증에 어떤 문제가 있어요?”"
+      },
+      "trophyWord": {
+        "word": "실수",
+        "meaning": {
+          "de": "Versehen, Fehler",
+          "en": "mistake, error"
+        },
+        "example": "영수증을 보니 계산 실수 같아요.",
+        "whyThisWord": {
+          "de": "Mit 계산 실수 같아요 weist du auf eine mögliche falsche Abrechnung hin und lässt der anderen Person Raum, den Beleg zu prüfen.",
+          "en": "계산 실수 같아요 flags a possible checkout error and leaves the other person room to check the receipt."
+        }
+      },
+      "distractors": [
+        "한 번만",
+        "목록에서 빠졌어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zweimal berechnet",
+        "en": "Charged twice"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A bakery receipt beside a paper bag and a payment terminal."
+    },
+    {
+      "slug": "haegyeol-same-day-parcel",
+      "title": {
+        "de": "Das vermisste Paket",
+        "en": "The missing parcel"
+      },
+      "situation": {
+        "de": "Bei der Paketstelle fragst du nach einer Sendung, auf die du wartest.",
+        "en": "You contact the parcel service about a delivery you've been waiting for."
+      },
+      "pedagogicalGoal": "Für eine ausgebliebene Lieferung nach einer Lösung fragen und für den Ersatz eine schnellere Zustellung aushandeln.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "배송 때문에 어떤 문의를 주셨어요?",
+          "baseText": {
+            "de": "Welche Frage haben Sie zu Ihrer Lieferung?",
+            "en": "What would you like to ask about your delivery?"
+          }
+        },
+        {
+          "targetText": "택배가 이틀째 안 오는데 오늘 안에 해결 방법이 있을까요?",
+          "baseText": {
+            "de": "Ich warte seit zwei Tagen auf das Paket. Gibt es eine Möglichkeit, das noch heute zu klären?",
+            "en": "I've been waiting two days for the parcel. Is there a way to sort it out today?"
+          }
+        },
+        {
+          "targetText": "내일 다시 보낼까요? 급하시면 오늘 오토바이 배송도 돼요.",
+          "baseText": {
+            "de": "Soll ich es morgen noch einmal schicken? Wenn es eilt, geht es heute auch per Motorradkurier.",
+            "en": "Shall I send it again tomorrow? If it's urgent, we can also use a motorcycle courier today."
+          }
+        },
+        {
+          "targetText": "대신 오늘 오토바이로 다시 보내 주시면 안 될까요?",
+          "baseText": {
+            "de": "Könnten Sie es stattdessen heute noch einmal per Motorradkurier schicken?",
+            "en": "Could you send it again by motorcycle courier today instead?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는데 … 있을까요?",
+        "rule": {
+          "de": "안 오는데 nennt das offene Problem. Mit 해결 방법이 있을까요 fragst du nach einer Möglichkeit, ohne eine bestimmte Leistung vorauszusetzen.",
+          "en": "안 오는데 introduces the outstanding problem. 해결 방법이 있을까요 asks what can be done without assuming the company can offer a particular service."
+        },
+        "examples": [
+          {
+            "targetText": "택배가 이틀째 안 오는데 오늘 안에 해결 방법이 있을까요?",
+            "baseText": {
+              "de": "Ich warte seit zwei Tagen auf das Paket. Gibt es eine Möglichkeit, das noch heute zu klären?",
+              "en": "I've been waiting two days for the parcel. Is there a way to sort it out today?"
+            },
+            "highlight": "안 오는데"
+          },
+          {
+            "targetText": "보관함이 안 열리는데 다른 방법이 있을까요?",
+            "baseText": {
+              "de": "Das Schließfach geht nicht auf. Gibt es noch eine andere Möglichkeit?",
+              "en": "The locker won't open. Is there another way to get into it?"
+            },
+            "highlight": "안 열리는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "반면에",
+            "대신",
+            "예전에",
+            "거꾸로"
+          ]
+        },
+        " 오늘 ",
+        {
+          "kind": "choice",
+          "answer": "오토바이로",
+          "choices": [
+            "일반 우편으로",
+            "선편으로",
+            "국제 우편으로",
+            "오토바이로"
+          ]
+        },
+        " 다시 보내 ",
+        {
+          "kind": "form",
+          "answer": "주시면 안 될까요",
+          "choices": [
+            "주신 적이 있어요",
+            "주시곤 했어요",
+            "주시면 안 될까요",
+            "주고 계셨어요"
+          ],
+          "cue": "Vorsichtige Gegenbitte an den Zustelldienst / Soft counterproposal asking the courier to act"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "택배가 이틀째",
+          "baseText": {
+            "de": "das Paket seit zwei Tagen",
+            "en": "the parcel for two days"
+          }
+        },
+        {
+          "targetText": "안 오는데",
+          "baseText": {
+            "de": "ist nicht angekommen",
+            "en": "hasn't turned up"
+          }
+        },
+        {
+          "targetText": "오늘 안에",
+          "baseText": {
+            "de": "noch heute",
+            "en": "by the end of today"
+          }
+        },
+        {
+          "targetText": "해결 방법이 있을까요?",
+          "baseText": {
+            "de": "gibt es eine Lösung?",
+            "en": "is there a way to sort it out?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "해결",
+          "baseText": {
+            "de": "Lösung, Behebung",
+            "en": "resolution"
+          }
+        },
+        {
+          "targetText": "해결 방법",
+          "baseText": {
+            "de": "Lösungsweg",
+            "en": "way to resolve something"
+          }
+        },
+        {
+          "targetText": "택배",
+          "baseText": {
+            "de": "Paket, Paketzustellung",
+            "en": "parcel, parcel delivery"
+          }
+        },
+        {
+          "targetText": "이틀째",
+          "baseText": {
+            "de": "seit zwei Tagen",
+            "en": "for two days now"
+          }
+        },
+        {
+          "targetText": "급하다",
+          "baseText": {
+            "de": "eilen",
+            "en": "be urgent"
+          }
+        },
+        {
+          "targetText": "배송",
+          "baseText": {
+            "de": "Zustellung",
+            "en": "delivery"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "택배가",
+        "after": " 이틀째 안 오는데 오늘 안에 해결 방법이 있을까요?",
+        "fallbackChoices": [
+          "난방이",
+          "물가가",
+          "택배가",
+          "통화가"
+        ]
+      },
+      "speakRequired": [
+        "택배가",
+        "이틀째",
+        "해결"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Paketstelle fragst du nach einer Sendung, auf die du wartest. „배송 때문에 어떤 문의를 주셨어요?“",
+        "en": "You contact the parcel service about a delivery you've been waiting for. “배송 때문에 어떤 문의를 주셨어요?”"
+      },
+      "trophyWord": {
+        "word": "해결",
+        "meaning": {
+          "de": "Lösung, Behebung",
+          "en": "resolution, solution"
+        },
+        "example": "지금 여기서 해결 방법을 찾아볼까요?",
+        "whyThisWord": {
+          "de": "해결 방법 ist eine offene Frage nach einem Lösungsweg. Du kannst sie stellen, bevor du selbst einen Vorschlag machst.",
+          "en": "해결 방법 asks about a way to resolve something. You can use it before suggesting a solution of your own."
+        }
+      },
+      "distractors": [
+        "어제 받았는데",
+        "내년 안에"
+      ],
+      "placeholderCaption": {
+        "de": "Das vermisste Paket",
+        "en": "The missing parcel"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A customer tracks a parcel on a phone beside the front door."
+    },
+    {
+      "slug": "jeomgeom-water-pressure",
+      "title": {
+        "de": "Kaum Wasser aus dem Hahn",
+        "en": "A trickle from the tap"
+      },
+      "situation": {
+        "de": "Beim Hausmeisterdienst beschreibst du, wie das Wasser aus deinem Hahn kommt.",
+        "en": "You describe the flow from your faucet to the building maintenance service."
+      },
+      "pedagogicalGoal": "Eine Überprüfung erbitten und einen angebotenen Besuch auf einen früheren Termin legen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "수도에서 물이 어떻게 나와요?",
+          "baseText": {
+            "de": "Wie läuft das Wasser aus dem Hahn?",
+            "en": "How's the water coming out of the faucet?"
+          }
+        },
+        {
+          "targetText": "물을 틀어도 너무 약하게 나오는데 수압 점검 받을 수 있을까요?",
+          "baseText": {
+            "de": "Selbst wenn ich den Hahn aufdrehe, kommt nur ein schwacher Strahl. Könnten Sie den Wasserdruck überprüfen?",
+            "en": "Even when I turn the tap on, the flow is very weak. Could I have the water pressure checked?"
+          }
+        },
+        {
+          "targetText": "다음 주 월요일에 갈게요. 급하시면 이번 금요일 오후도 비어요.",
+          "baseText": {
+            "de": "Ich kann nächsten Montag kommen. Wenn es eilt, habe ich auch diesen Freitagnachmittag frei.",
+            "en": "I can come next Monday. If it's urgent, I'm also free this Friday afternoon."
+          }
+        },
+        {
+          "targetText": "그러면 이번 금요일 오후로 조금 앞당기면 안 될까요?",
+          "baseText": {
+            "de": "Könnten wir den Termin dann ein wenig vorziehen, auf diesen Freitagnachmittag?",
+            "en": "Could we move it up a little to this Friday afternoon, then?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어도 … -(으)ㄹ 수 있을까요?",
+        "rule": {
+          "de": "틀어도 nennt, was du schon ausprobiert hast. Mit 받을 수 있을까요 bittest du dann um einen Prüftermin.",
+          "en": "틀어도 tells the other person what you've already tried. 받을 수 있을까요 then asks whether a check can be arranged."
+        },
+        "examples": [
+          {
+            "targetText": "물을 틀어도 너무 약하게 나오는데 수압 점검 받을 수 있을까요?",
+            "baseText": {
+              "de": "Selbst wenn ich den Hahn aufdrehe, kommt nur ein schwacher Strahl. Könnten Sie den Wasserdruck überprüfen?",
+              "en": "Even when I turn the tap on, the flow is very weak. Could I have the water pressure checked?"
+            },
+            "highlight": "받을 수 있을까요"
+          },
+          {
+            "targetText": "다시 켜도 소리가 안 나는데 수리를 받을 수 있을까요?",
+            "baseText": {
+              "de": "Auch nach dem Wiedereinschalten kommt kein Ton. Könnte ich das Gerät reparieren lassen?",
+              "en": "There's still no sound when I switch it back on. Could I get it repaired?"
+            },
+            "highlight": "받을 수 있을까요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "그러면",
+            "반대로",
+            "예전처럼",
+            "거꾸로"
+          ]
+        },
+        " 이번 ",
+        {
+          "kind": "choice",
+          "answer": "금요일 오후로",
+          "choices": [
+            "월요일 아침으로",
+            "일요일 저녁으로",
+            "금요일 오후로",
+            "금요일 새벽으로"
+          ]
+        },
+        " 조금 ",
+        {
+          "kind": "form",
+          "answer": "앞당기면 안 될까요",
+          "choices": [
+            "미룬 적이 있어요",
+            "앞당기면 안 될까요",
+            "앞당기곤 했어요",
+            "미룰 때가 있었어요"
+          ],
+          "cue": "Vorsichtiger Vorschlag für eine Terminänderung / Tentative request to change the appointment"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "물을 틀어도",
+          "baseText": {
+            "de": "selbst wenn ich den Hahn aufdrehe",
+            "en": "even when I turn the tap on"
+          }
+        },
+        {
+          "targetText": "너무 약하게 나오는데",
+          "baseText": {
+            "de": "kommt nur ein schwacher Strahl",
+            "en": "the flow is very weak"
+          }
+        },
+        {
+          "targetText": "수압 점검",
+          "baseText": {
+            "de": "eine Kontrolle des Wasserdrucks",
+            "en": "a water pressure check"
+          }
+        },
+        {
+          "targetText": "받을 수 있을까요?",
+          "baseText": {
+            "de": "wäre das möglich?",
+            "en": "could I have one?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "점검",
+          "baseText": {
+            "de": "Überprüfung, Kontrolle",
+            "en": "inspection, check"
+          }
+        },
+        {
+          "targetText": "수압",
+          "baseText": {
+            "de": "Wasserdruck",
+            "en": "water pressure"
+          }
+        },
+        {
+          "targetText": "틀다",
+          "baseText": {
+            "de": "aufdrehen",
+            "en": "turn on a tap"
+          }
+        },
+        {
+          "targetText": "약하게",
+          "baseText": {
+            "de": "schwach",
+            "en": "weakly"
+          }
+        },
+        {
+          "targetText": "비다",
+          "baseText": {
+            "de": "frei sein, frei werden",
+            "en": "be free, become available"
+          }
+        },
+        {
+          "targetText": "앞당기다",
+          "baseText": {
+            "de": "vorziehen",
+            "en": "move earlier"
+          }
+        }
+      ],
+      "recall": {
+        "before": "물을 틀어도 너무 약하게 나오는데 ",
+        "answer": "수압",
+        "after": " 점검 받을 수 있을까요?",
+        "fallbackChoices": [
+          "혈압",
+          "기압",
+          "공기압",
+          "수압"
+        ]
+      },
+      "speakRequired": [
+        "물을",
+        "약하게",
+        "점검"
+      ],
+      "sceneCaption": {
+        "de": "Beim Hausmeisterdienst beschreibst du, wie das Wasser aus deinem Hahn kommt. „수도에서 물이 어떻게 나와요?“",
+        "en": "You describe the flow from your faucet to the building maintenance service. “수도에서 물이 어떻게 나와요?”"
+      },
+      "trophyWord": {
+        "word": "점검",
+        "meaning": {
+          "de": "Überprüfung, Kontrolle",
+          "en": "inspection, check"
+        },
+        "example": "수압 점검 결과를 나중에 알려 주시겠어요?",
+        "whyThisWord": {
+          "de": "점검 kannst du mit dem Gegenstand der Prüfung verbinden. 수압 점검 sagt genauer, was der Hausmeisterdienst untersuchen soll.",
+          "en": "Combine 점검 with the thing that needs checking. 수압 점검 tells maintenance exactly what you want inspected."
+        }
+      },
+      "distractors": [
+        "물을 끄고",
+        "너무 세게 나오는데"
+      ],
+      "placeholderCaption": {
+        "de": "Kaum Wasser aus dem Hahn",
+        "en": "A trickle from the tap"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A thin stream runs from an apartment kitchen faucet."
+    },
+    {
+      "slug": "gyoche-replacement-charger",
+      "title": {
+        "de": "Das Ladegerät lädt nicht",
+        "en": "The charger isn't charging"
+      },
+      "situation": {
+        "de": "Du bringst ein Ladegerät an den Serviceschalter eines Elektronikgeschäfts.",
+        "en": "You take a charger to the service counter at an electronics store."
+      },
+      "pedagogicalGoal": "Ein unerwartetes Ergebnis benennen, nach den Austauschbedingungen fragen und ein Ersatzmodell auswählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "충전기를 써 보니까 어떤 문제가 있었어요?",
+          "baseText": {
+            "de": "Welches Problem hatten Sie beim Benutzen des Ladegeräts?",
+            "en": "What happened when you tried using the charger?"
+          }
+        },
+        {
+          "targetText": "꽂았는데도 충전이 안 돼요. 교체 기준에 맞는지 봐 주시겠어요?",
+          "baseText": {
+            "de": "Es lädt nicht, obwohl ich es eingesteckt habe. Könnten Sie prüfen, ob ein Austausch infrage kommt?",
+            "en": "It isn't charging even though I've plugged it in. Could you check whether it qualifies for replacement?"
+          }
+        },
+        {
+          "targetText": "교체는 돼요. 수리는 일주일 걸리는데 같은 모델이면 지금 바꿔 드릴게요.",
+          "baseText": {
+            "de": "Ein Austausch geht. Die Reparatur dauert eine Woche, aber gegen das gleiche Modell können wir es sofort umtauschen.",
+            "en": "A replacement is possible. A repair takes a week, but if it's the same model, I can swap it right now."
+          }
+        },
+        {
+          "targetText": "대신 지금 같은 모델로 교환해 주시면 좋겠어요.",
+          "baseText": {
+            "de": "Dann wäre es mir lieber, wenn Sie es stattdessen sofort gegen das gleiche Modell umtauschen könnten.",
+            "en": "I'd prefer to have it exchanged for the same model now instead."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는데도 … -는지",
+        "rule": {
+          "de": "꽂았는데도 stellt das erwartete Laden dem tatsächlichen Ergebnis gegenüber. Mit 맞는지 bittest du um die Prüfung, ob ein Kriterium erfüllt ist.",
+          "en": "꽂았는데도 contrasts the charging you expected with what happened. 맞는지 asks for a check of whether a criterion is met."
+        },
+        "examples": [
+          {
+            "targetText": "꽂았는데도 충전이 안 돼요. 교체 기준에 맞는지 봐 주시겠어요?",
+            "baseText": {
+              "de": "Es lädt nicht, obwohl ich es eingesteckt habe. Könnten Sie prüfen, ob ein Austausch infrage kommt?",
+              "en": "It isn't charging even though I've plugged it in. Could you check whether it qualifies for replacement?"
+            },
+            "highlight": "맞는지"
+          },
+          {
+            "targetText": "카드를 댔는데도 문이 안 열려요. 이 카드로 되는지 봐 주시겠어요?",
+            "baseText": {
+              "de": "Die Tür geht nicht auf, obwohl ich die Karte drangehalten habe. Könnten Sie prüfen, ob es mit dieser Karte geht?",
+              "en": "The door won't open even though I tapped my card. Could you check whether this card works here?"
+            },
+            "highlight": "되는지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "예전에는",
+            "반대로",
+            "이를테면",
+            "대신"
+          ]
+        },
+        " 지금 ",
+        {
+          "kind": "choice",
+          "answer": "같은 모델로",
+          "choices": [
+            "다른 색으로",
+            "같은 모델로",
+            "상위 모델로",
+            "더 큰 모델로"
+          ]
+        },
+        " 교환해 ",
+        {
+          "kind": "form",
+          "answer": "주시면 좋겠어요",
+          "choices": [
+            "주시면 좋겠어요",
+            "주신 적이 있어요",
+            "주시곤 했어요",
+            "주시지 않았어요"
+          ],
+          "cue": "Vorsichtiger Wunsch an die Person, die den Umtausch vornimmt / Softened preference about the other person's action"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "꽂았는데도 충전이",
+          "baseText": {
+            "de": "obwohl ich es eingesteckt habe, das Laden",
+            "en": "even though I plugged it in, the charging"
+          }
+        },
+        {
+          "targetText": "안 돼요. 교체",
+          "baseText": {
+            "de": "funktioniert nicht. Austausch",
+            "en": "doesn't work. Replacement"
+          }
+        },
+        {
+          "targetText": "기준에 맞는지",
+          "baseText": {
+            "de": "ob es die Kriterien erfüllt",
+            "en": "whether it meets the criteria"
+          }
+        },
+        {
+          "targetText": "봐 주시겠어요?",
+          "baseText": {
+            "de": "könnten Sie das prüfen?",
+            "en": "could you check?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "교체",
+          "baseText": {
+            "de": "Austausch, Ersatz",
+            "en": "replacement"
+          }
+        },
+        {
+          "targetText": "충전기",
+          "baseText": {
+            "de": "Ladegerät",
+            "en": "charger"
+          }
+        },
+        {
+          "targetText": "꽂다",
+          "baseText": {
+            "de": "einstecken",
+            "en": "plug in"
+          }
+        },
+        {
+          "targetText": "기준",
+          "baseText": {
+            "de": "Kriterium",
+            "en": "criterion"
+          }
+        },
+        {
+          "targetText": "수리",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "같은 모델",
+          "baseText": {
+            "de": "das gleiche Modell",
+            "en": "the same model"
+          }
+        }
+      ],
+      "recall": {
+        "before": "꽂았는데도 ",
+        "answer": "충전이",
+        "after": " 안 돼요. 교체 기준에 맞는지 봐 주시겠어요?",
+        "fallbackChoices": [
+          "난방이",
+          "충전이",
+          "배송이",
+          "배식이"
+        ]
+      },
+      "speakRequired": [
+        "꽂았는데도",
+        "충전이",
+        "기준에"
+      ],
+      "sceneCaption": {
+        "de": "Du bringst ein Ladegerät an den Serviceschalter eines Elektronikgeschäfts. „충전기를 써 보니까 어떤 문제가 있었어요?“",
+        "en": "You take a charger to the service counter at an electronics store. “충전기를 써 보니까 어떤 문제가 있었어요?”"
+      },
+      "trophyWord": {
+        "word": "교체",
+        "meaning": {
+          "de": "Austausch, Ersatz",
+          "en": "replacement"
+        },
+        "example": "배터리 교체 비용은 얼마예요?",
+        "whyThisWord": {
+          "de": "Mit 교체 기준 fragst du, unter welchen Bedingungen etwas ersetzt wird. 교체 비용 ist der Preis für den Austausch.",
+          "en": "교체 기준 refers to the conditions for replacement. 교체 비용 is the cost of replacing something."
+        }
+      },
+      "distractors": [
+        "충전이 잘 돼요.",
+        "수리한 적이 있어요."
+      ],
+      "placeholderCaption": {
+        "de": "Das Ladegerät lädt nicht",
+        "en": "The charger isn't charging"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A customer places a cable and charger beside a store service counter."
+    },
+    {
+      "slug": "jochi-lift-meeting",
+      "title": {
+        "de": "Der Aufzug steht wieder",
+        "en": "The elevator has stopped again"
+      },
+      "situation": {
+        "de": "Als berufstätiger Hausbewohner sprichst du in der Verwaltung den Aufzug an.",
+        "en": "As a resident who works during the day, you raise a problem with the elevator at the management office."
+      },
+      "pedagogicalGoal": "Nach weiteren Maßnahmen bei einem wiederkehrenden Defekt fragen und die Teilnahme an einem passenden Gesprächstermin klären.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "승강기를 쓰실 때 무슨 일이 있었어요?",
+          "baseText": {
+            "de": "Was ist passiert, als Sie den Aufzug benutzt haben?",
+            "en": "What happened when you used the elevator?"
+          }
+        },
+        {
+          "targetText": "어제 고쳤는데도 승강기가 또 멈췄어요. 어떤 조치 계획이 있는지 궁금해요.",
+          "baseText": {
+            "de": "Obwohl er gestern repariert wurde, blieb der Aufzug wieder stehen. Welche Maßnahmen sind jetzt geplant?",
+            "en": "Even though it was repaired yesterday, the elevator stopped again. I'd like to know what action is planned."
+          }
+        },
+        {
+          "targetText": "주민 회의에서 설명드릴게요. 월요일에는 저녁이고 화요일에는 낮이에요.",
+          "baseText": {
+            "de": "Das erklären wir bei der Hausversammlung. Am Montag ist sie abends, am Dienstag tagsüber.",
+            "en": "We'll explain at the residents' meeting. Monday's session is in the evening and Tuesday's is during the day."
+          }
+        },
+        {
+          "targetText": "그러면 퇴근하고 월요일 저녁에 참석하고 싶은데 어디로 가면 될까요?",
+          "baseText": {
+            "de": "Dann würde ich gern nach der Arbeit am Montagabend teilnehmen. Wohin soll ich kommen?",
+            "en": "In that case, I'd like to attend after work on Monday evening. Where should I go?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는데도 … -는지 궁금해요",
+        "rule": {
+          "de": "고쳤는데도 zeigt, warum der erneute Ausfall überrascht. Mit 있는지 궁금해요 fragst du offen, welche Maßnahmen vorgesehen sind.",
+          "en": "고쳤는데도 signals why another failure is surprising. 있는지 궁금해요 asks an open question about the measures being considered."
+        },
+        "examples": [
+          {
+            "targetText": "어제 고쳤는데도 승강기가 또 멈췄어요. 어떤 조치 계획이 있는지 궁금해요.",
+            "baseText": {
+              "de": "Obwohl er gestern repariert wurde, blieb der Aufzug wieder stehen. Welche Maßnahmen sind jetzt geplant?",
+              "en": "Even though it was repaired yesterday, the elevator stopped again. I'd like to know what action is planned."
+            },
+            "highlight": "있는지 궁금해요"
+          },
+          {
+            "targetText": "청소했는데도 물이 잘 안 내려가요. 다른 방법이 있는지 궁금해요.",
+            "baseText": {
+              "de": "Obwohl der Abfluss gereinigt wurde, läuft das Wasser schlecht ab. Gibt es noch eine andere Möglichkeit?",
+              "en": "The drain has been cleaned, but the water still drains slowly. I wonder if there's another way to fix it."
+            },
+            "highlight": "있는지 궁금해요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "옛날에는",
+            "거꾸로",
+            "그러면"
+          ]
+        },
+        " 퇴근하고 ",
+        {
+          "kind": "choice",
+          "answer": "월요일 저녁에",
+          "choices": [
+            "화요일 낮에",
+            "월요일 저녁에",
+            "월요일 아침에",
+            "화요일 아침에"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "참석하고 싶은데",
+          "choices": [
+            "참석하고 싶은데",
+            "참석한 적이 없었는데",
+            "참석하곤 했는데",
+            "참석하고 있었는데"
+          ],
+          "cue": "Höflich geäußerter Wunsch als Einleitung einer Rückfrage / Softened preference leading into a question"
+        },
+        " 어디로 가면 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "어제 고쳤는데도 승강기가",
+          "baseText": {
+            "de": "obwohl er gestern repariert wurde, ist der Aufzug",
+            "en": "even though it was repaired yesterday, the elevator"
+          }
+        },
+        {
+          "targetText": "또 멈췄어요. 어떤",
+          "baseText": {
+            "de": "wieder stehen geblieben. Welche",
+            "en": "stopped again. What"
+          }
+        },
+        {
+          "targetText": "조치 계획이",
+          "baseText": {
+            "de": "Maßnahmen geplant",
+            "en": "action plan"
+          }
+        },
+        {
+          "targetText": "있는지 궁금해요.",
+          "baseText": {
+            "de": "ob es gibt, möchte ich wissen",
+            "en": "there is, I'd like to know"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "조치",
+          "baseText": {
+            "de": "Maßnahme, Abhilfe",
+            "en": "measure, action"
+          }
+        },
+        {
+          "targetText": "승강기",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "elevator"
+          }
+        },
+        {
+          "targetText": "멈추다",
+          "baseText": {
+            "de": "stehen bleiben",
+            "en": "stop"
+          }
+        },
+        {
+          "targetText": "고치다",
+          "baseText": {
+            "de": "reparieren",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "주민 회의",
+          "baseText": {
+            "de": "Hausversammlung",
+            "en": "residents' meeting"
+          }
+        },
+        {
+          "targetText": "참석하다",
+          "baseText": {
+            "de": "teilnehmen",
+            "en": "attend"
+          }
+        }
+      ],
+      "recall": {
+        "before": "어제 고쳤는데도 ",
+        "answer": "승강기가",
+        "after": " 또 멈췄어요. 어떤 조치 계획이 있는지 궁금해요.",
+        "fallbackChoices": [
+          "식사가",
+          "영수증이",
+          "승강기가",
+          "예약금이"
+        ]
+      },
+      "speakRequired": [
+        "고쳤는데도",
+        "승강기가",
+        "조치"
+      ],
+      "sceneCaption": {
+        "de": "Als berufstätiger Hausbewohner sprichst du in der Verwaltung den Aufzug an. „승강기를 쓰실 때 무슨 일이 있었어요?“",
+        "en": "As a resident who works during the day, you raise a problem with the elevator at the management office. “승강기를 쓰실 때 무슨 일이 있었어요?”"
+      },
+      "trophyWord": {
+        "word": "조치",
+        "meaning": {
+          "de": "Maßnahme, Abhilfe",
+          "en": "measure, action"
+        },
+        "example": "조치 결과는 언제 알 수 있어요?",
+        "whyThisWord": {
+          "de": "조치 계획 fragt nach den konkreten Maßnahmen, die jemand treffen will. Das passt besonders gut, wenn eine erste Reparatur nicht geholfen hat.",
+          "en": "조치 계획 asks what concrete action someone plans to take. It's useful when an initial repair hasn't solved the problem."
+        }
+      },
+      "distractors": [
+        "처음 멈췄어요.",
+        "수리하기 전에"
+      ],
+      "placeholderCaption": {
+        "de": "Der Aufzug steht wieder",
+        "en": "The elevator has stopped again"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A resident and a building manager stand beside a closed elevator."
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "language": "German",
+  "tier": "B2",
+  "path": 4,
+  "file": "reviewed-2/german-b2-p4.json",
+  "sourceSha256": "873300abb5961b830c670801a93bf6bb9aa3dbbaa5a4d2dc8536c235985c5290",
+  "sourceBytes": 105500,
+  "sources": {
+    "author": "fab0980c561719070ed473dceced37eaa90b1c72ede3104d6ed7316f754be45d",
+    "architectureReceipt": "c4bf4e5c072c03b55139245b2250655eed4637b3449f9da3d4480a58894aae7b",
+    "preflightReceipt": "2a3483a336438473d9606d8ceece7948b88386828ebf7e5a9209ac03566e1a24",
+    "independentRead": "d869b53d2198576aaa992650c26828e67d2e41e869f017fa2aa2c95869721156",
+    "ledger": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94",
+    "nativeFinalAuthority": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e"
+  },
+  "nativeReviewRounds": [
+    {
+      "before": "fab0980c561719070ed473dceced37eaa90b1c72ede3104d6ed7316f754be45d",
+      "proposal": "48a392350bbfeef5a69e78774ee78777a0c3078f36959044b987d5e2aaa91483",
+      "after": "8df4a2cf8b2960315c7404083736f682a944b1f3b00b96798cce5a589d2393d0",
+      "edits": 63,
+      "mechanicalPointerCorrections": [
+        {
+          "asProposed": "/lessons/6/cloze/segments/2/text",
+          "exactValueAt": "/lessons/6/cloze/segments/3/text",
+          "cause": "Pointer numbered the adjacent blank; exact oldValue unique in the same segments array. Native old/new values applied verbatim."
+        }
+      ],
+      "remainingHolds": [
+        "L1 turn 3 'günstiger gewesen' still relies on turn 0 for the comparison baseline; acceptable in context, no canonical change made.",
+        "Several choice arrays (L3 cloze participles, L7 cloze blank 0, L1 recall) still mix grammatical-but-contextually-wrong options with weak ones; reviewed as single-correct but not ideal.",
+        "Build graders must treat chip order as exact; marked alternatives (L3 'nicht mehr' before object) are unidiomatic and were not accepted.",
+        "L10 'drei Kollegen' kept as generic masculine; L9 interlocutor id 'brother' is metadata only.",
+        "spec-authority clozeTarget/synthesisTarget descriptions differ from implemented blanks (e.g., L1, L4, L10); spec is advisory, not amended here.",
+        "Status remains draft; no native-human review or release claim is made."
+      ]
+    },
+    {
+      "before": "8df4a2cf8b2960315c7404083736f682a944b1f3b00b96798cce5a589d2393d0",
+      "proposal": "0844508f8bcee67b301dc4cc1a5e6a5cdb745228f93cf081812786bc15c19875",
+      "after": "873300abb5961b830c670801a93bf6bb9aa3dbbaa5a4d2dc8536c235985c5290",
+      "edits": 26,
+      "mechanicalPointerCorrections": [],
+      "remainingHolds": [
+        "L5 recall remains a noun gap (Gäste/Zelte/Regenschirme/Versicherungen); not reopened, only one choice is sensible with 'wegbleiben'.",
+        "All lessons remain draft; no native-speaker sign-off or release status is claimed."
+      ]
+    }
+  ],
+  "validation": {
+    "scope": "scratch P4-only reuse of German gate with separate Fable spine allocation",
+    "lessons": 10,
+    "turns": 60,
+    "terms": 80,
+    "voiceTargets": 30,
+    "negativeControls": [
+      "missing whole-token trophy",
+      "second correct recall choice",
+      "lost build framing",
+      "unlicensed opening move",
+      "repeated challenge in caption",
+      "inflated approval"
+    ],
+    "sourceSha256": "873300abb5961b830c670801a93bf6bb9aa3dbbaa5a4d2dc8536c235985c5290",
+    "specSha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+    "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+  },
+  "lessons": [
+    {
+      "number": 1,
+      "slug": "frueher-gebucht",
+      "trophy": "rückblickend",
+      "sha256CompactSortedUTF8": "ed75bfc085afd883fd1b848c17887cc7ac57762e714547e6f7298903a1c3910d"
+    },
+    {
+      "number": 2,
+      "slug": "firma-geht-remote",
+      "trophy": "Zusammenhalt",
+      "sha256CompactSortedUTF8": "74b071af76304837027aafcbf5b93a0161da7acd1e994528411b4b51f6644275"
+    },
+    {
+      "number": 3,
+      "slug": "miete-steigt",
+      "trophy": "verkraften",
+      "sha256CompactSortedUTF8": "6d9b4425e3fe5b97449075c09fddcd51882f0eaa511724d53cf29c8270450a60"
+    },
+    {
+      "number": 4,
+      "slug": "anderer-job-damals",
+      "trophy": "bereuen",
+      "sha256CompactSortedUTF8": "438a26c25d73e5b547a97f6c71f7ec8eca6a4e1c5944323c84d7f07f3f734a14"
+    },
+    {
+      "number": 5,
+      "slug": "sommerfest-wetterrisiko",
+      "trophy": "absichern",
+      "sha256CompactSortedUTF8": "7233a600d75c447534b20563d99b8ca45640732d1ff1271068144ea7f9386a62"
+    },
+    {
+      "number": 6,
+      "slug": "einspruch-scheitert",
+      "trophy": "Ausweg",
+      "sha256CompactSortedUTF8": "200414a7a8b2632f88da2587c8fc0f859a73a0a8d7d21d6c3e49e29a2f203650"
+    },
+    {
+      "number": 7,
+      "slug": "scooter-verbot",
+      "trophy": "Verlagerung",
+      "sha256CompactSortedUTF8": "05de4fd21dc4e7e7d45d81d60e70f8e56ba6b978f09ad1de6a7ed99e338e2ab7"
+    },
+    {
+      "number": 8,
+      "slug": "auslandsjahr-verpasst",
+      "trophy": "Umweg",
+      "sha256CompactSortedUTF8": "4456c179b294ca88e3d1329239c7668ece0288e397f0664e6e9c1564df8df153"
+    },
+    {
+      "number": 9,
+      "slug": "geld-leihen",
+      "trophy": "zumuten",
+      "sha256CompactSortedUTF8": "426e4eea3b033e5926a8858a55144b455e1ba1d794d315228c235a5d06c0bcaf"
+    },
+    {
+      "number": 10,
+      "slug": "folgen-abschaetzen",
+      "trophy": "absehbar",
+      "sha256CompactSortedUTF8": "9856213f1c6009d191d3686e2295915efa005b93c5cdd35247cf7649b0c9e4d0"
+    }
+  ],
+  "reviewScope": "Complete offline unpublished German text; every human/publish/release flag remains pending. Parent's independent final verdict and delivered exercise behavior are separate."
+}

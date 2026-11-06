@@ -1,0 +1,29 @@
+{
+  "originalSource": "korean-capstone-final/p10.json",
+  "originalSha256": "9b068dbf8555c481f1760afb9c707941f0011d7673c4c6ac221ffcc998339740",
+  "resultSha256": "82f0f9f4c97faca18a83a54da7fbc8aa2de89e806f7cbc993a5855c6067f4c06",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 3,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 2 ended at 좋아해요.; boundary now inside 좋아해요. 지난해. Modifier clause 단풍이 예쁜 must precede 가을 산을, and 올랐던 must precede 설악산이, so only one order assembles. 5 chips, distinct from distractors."
+    },
+    {
+      "lesson": 6,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 2 ended at 됐어요.; boundary now inside 됐어요. 꽤 큰. 하게 됐어요 split is the only way to carry the period inward without a 4-eojeol chip; 요리를 하게 is forced before 됐어요. 4 chips, no distractor overlap."
+    },
+    {
+      "lesson": 10,
+      "field": "chunks",
+      "authority": "chip-ko-capstone",
+      "receiptSha256": "0d11d767d472570637e3b718d332bb418992913a4d5c52f55d8e699939af69f3",
+      "reason": "Old chip 3 ended at 거예요.; boundary now inside 거예요. 봄에는 제주도를. 여행하면서 fused with 건강도 챙기는 so it cannot migrate into the second sentence ('walk around Jeju while traveling', which would also be grammatical). 4 chips, all orders forced, distinct from distractors."
+    }
+  ]
+}

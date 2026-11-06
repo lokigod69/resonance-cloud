@@ -1,0 +1,659 @@
+{
+  "kind": "planning-only",
+  "receiptSha256": "c4bf4e5c072c03b55139245b2250655eed4637b3449f9da3d4480a58894aae7b",
+  "caution": "A reviewed complete episode supersedes its outline. No lesson count, native-human approval or recording authority is conferred by this plan. Read row evidence for later amendments.",
+  "plan": {
+    "targetLanguage": "German",
+    "level": "B2",
+    "paths": [
+      {
+        "pathNumber": 3,
+        "slug": "holding-a-view",
+        "title": "Holding a view",
+        "staging": "position: meines Erachtens (L1) · ich halte … für (L2) · ich bin der Ansicht, dass (L3) · ich sehe das anders (L4) · mein Standpunkt ist (L9) · nur zum Teil (L10); reason: zum einen … zum anderen (L2) · denn (L3, L6) · nicht nur … sondern auch (L4); concede: ich gebe zu, dass (L1) · mag sein, dass … aber (L2) · teilweise ja, aber solange (L3) · auch wenn (L5) · ich räume ein, dass (L6) · zwar … doch (L7) · was … angeht, hast du recht, insofern (L9); rebut: das überzeugt mich nicht, denn (L4) · greift zu kurz, denn (L7) · selbst wenn (L8) · keineswegs (L10); conclude: deshalb nur, wenn (L1) · daher (L5) · folglich (L6) · weder … noch (L7) · letzten Endes (L9) · aus diesen Gründen (L10). Syntax: dass-clause and weil (L1–2) → concessive subordinators auch wenn / selbst wenn (L5, L8) → generalising wer/was-clauses (L9) → Konjunktiv II only as politeness (L2, L8). All Sie except friend lessons (L3, L9) in du; all speakerGender neutral; shape challenge throughout; registerPlan constant.",
+        "lessons": [
+          {
+            "number": 1,
+            "slug": "neuer-schichtplan",
+            "title": "The new shift schedule",
+            "setting": {
+              "de": "Ab Mai gilt ein Zwei-Schicht-Plan. Ein Kollege findet ihn großartig und erwartet, dass Sie ihn in der Teamrunde mittragen.",
+              "en": "A two-shift schedule starts in May. A colleague thinks it is great and expects you to back it in tomorrow's team round."
+            },
+            "turns": [
+              "Der neue Schichtplan steht ab Mai fest, und ehrlich gesagt sehe ich nur Vorteile: endlich freie Nachmittage.",
+              "Meines Erachtens zerreißt der Plan das Team, und die Frühschicht wird für viele zur Belastung, weil der Schlaf fehlt.",
+              "Aber Sie haben Kinder, Sie profitieren doch am meisten von freien Nachmittagen.",
+              "Ich gebe zu, dass mir der freie Nachmittag hilft, doch dafür beginnt mein Tag um fünf, und das halte ich auf Dauer nicht durch.",
+              "Gut, und was sagen Sie morgen in der Teamrunde, dafür oder dagegen?",
+              "Ich stimme deshalb nur zu, wenn die Frühschicht alle zwei Wochen wechselt; sonst spreche ich mich dagegen aus."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Belastung",
+              "surface": "Belastung",
+              "familyKey": "Belastung",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Ich gebe zu, dass' (moveBlank) + form 'halte' (cue: durchhalten, ich, present, separable) + connector 'doch' (4 choices)",
+            "synthesisTarget": "turn 5: 'deshalb' + 'sonst' — learner states a conditional yes with the fallback"
+          },
+          {
+            "number": 2,
+            "slug": "ruhezeiten-im-haus",
+            "title": "Quiet hours in the building",
+            "setting": {
+              "de": "Die Hausverwaltung schlägt Ruhezeiten ab zwanzig Uhr vor. Ihr Nachbar hält das für übertrieben; die Hausversammlung stimmt bald ab.",
+              "en": "The property manager proposes quiet hours from eight p.m. Your neighbour finds that excessive; the owners' meeting votes soon."
+            },
+            "turns": [
+              "Die Hausverwaltung will Ruhezeiten ab zwanzig Uhr; ich finde das übertrieben, wir sind doch keine Kaserne.",
+              "Ich halte die neue Regel für sinnvoll, zum einen wegen der Kinder im ersten Stock, zum anderen, weil Streit um Lärm hier ständig eskaliert.",
+              "Aber dann darf ich abends nicht einmal mehr Gitarre üben, das nehmen Sie mir also weg?",
+              "Mag sein, dass zwanzig Uhr früh ist, aber verboten wird nicht das Üben, sondern nur die Lautstärke danach.",
+              "Und wenn die Hausversammlung über einundzwanzig Uhr abstimmt, tragen Sie das mit?",
+              "Ja, einundzwanzig Uhr wäre aus Rücksicht auf alle ein fairer Kompromiss, deshalb trage ich das mit."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Rücksicht",
+              "surface": "Rücksicht",
+              "familyKey": "Rücksicht",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Mag sein, dass' (moveBlank) + form 'verboten' (cue: verbieten, Partizip II, passive) + connector 'sondern' (4 choices)",
+            "synthesisTarget": "turn 5: 'aus Rücksicht auf' + 'deshalb' — agreeing to a compromise and naming the ground"
+          },
+          {
+            "number": 3,
+            "slug": "trinkgeld-kultur",
+            "title": "Tipping culture",
+            "setting": {
+              "de": "Nach dem Essen mit einem Freund geht es ums Trinkgeld. Er findet die deutsche Aufrunde-Gewohnheit knauserig.",
+              "en": "After dinner with a friend the bill comes. He finds the German habit of just rounding up stingy."
+            },
+            "turns": [
+              "In Deutschland rundet man nur auf; ich finde, wer gut bedient, verdient mehr als ein paar Cent.",
+              "Ich bin der Ansicht, dass zehn Prozent hier angemessen sind, denn Service ist Arbeit und verdient Wertschätzung.",
+              "Aber damit zahlst du doch den Lohn, den eigentlich der Chef zahlen müsste, oder?",
+              "Teilweise ja, aber solange die Löhne so niedrig bleiben, will ich nicht bei denen sparen, die mich bedient haben.",
+              "Und wenn der Service richtig schlecht war, gibst du dann trotzdem?",
+              "Nein, in dem Fall runde ich nur auf, denn Wertschätzung muss verdient sein, sonst verliert sie ihren Sinn."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "Wertschätzung",
+              "surface": "Wertschätzung",
+              "familyKey": "Wertschätzung",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Teilweise ja, aber' (moveBlank) + connector 'solange' (4 choices) + form 'bedient' (cue: bedienen, Partizip II)",
+            "synthesisTarget": "turn 5: 'in dem Fall' + 'sonst' — exception stated before the general rule"
+          },
+          {
+            "number": 4,
+            "slug": "hausaufgaben-last",
+            "title": "Homework load",
+            "setting": {
+              "de": "Vor dem Elternabend sagt eine andere Mutter, Hausaufgaben sollten ganz abgeschafft werden. Sie sehen das anders.",
+              "en": "Before the parents' evening another parent says homework should be scrapped entirely. You disagree."
+            },
+            "turns": [
+              "Meine Tochter sitzt täglich zwei Stunden an den Hausaufgaben; ich finde, die Schule sollte das komplett abschaffen.",
+              "Ich sehe das anders: Hausaufgaben sind nicht nur Wiederholung, sondern auch die einzige Übung im selbstständigen Arbeiten.",
+              "Aber Kinder, die zu Hause niemanden haben, der hilft, werden dadurch doch nur abgehängt.",
+              "Das überzeugt mich nicht ganz, denn abgehängt werden sie durch fehlende Betreuung, nicht durch die Aufgaben selbst.",
+              "Und was fordern Sie dann konkret beim Elternabend, Abschaffen oder Begrenzen?",
+              "Begrenzen: Ich werde deshalb eine Stunde als Obergrenze vorschlagen, damit niemand überfordert wird."
+            ],
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "überfordern",
+              "surface": "überfordert",
+              "familyKey": "überfordern",
+              "pos": "verb"
+            },
+            "clozeTarget": "turn 3: frame 'Das überzeugt mich nicht ganz' (moveBlank) + connector 'denn' (4 choices) + lexical 'Betreuung'",
+            "synthesisTarget": "turn 5: 'damit' + form 'überfordert wird' — purpose clause with passive"
+          },
+          {
+            "number": 5,
+            "slug": "videosprechstunde",
+            "title": "Remote healthcare",
+            "setting": {
+              "de": "Bei einer Podiumsdiskussion behauptet ein Experte, Videosprechstunden würden den Hausarztbesuch weitgehend ersetzen. Sie sitzen ihm gegenüber.",
+              "en": "On a panel an expert claims video consultations will largely replace GP visits. You sit opposite him."
+            },
+            "turns": [
+              "In zehn Jahren werden Videosprechstunden den Großteil der Hausarztbesuche ersetzen, davon bin ich überzeugt.",
+              "Ich halte diese Prognose für zu optimistisch, weil viele ältere Patienten die Technik nicht nutzen können und wollen.",
+              "Dieses Argument höre ich seit Jahren; aber gerade Ältere sparen sich doch den beschwerlichen Weg in die Praxis.",
+              "Auch wenn der Weg wegfällt, bleibt die Hürde bestehen, dass eine Kamera keine Hand auf den Bauch legen kann.",
+              "Wenn Sie der Ministerin einen einzigen Satz mitgeben müssten, wie lautet er?",
+              "Daher lautet mein Satz: Video als Ergänzung ja, als Ersatz für die Untersuchung nein."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Hürde",
+              "surface": "Hürde",
+              "familyKey": "Hürde",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: connector 'Auch wenn' (moveBlank, 4 choices) + form 'wegfällt' (cue: wegfallen, 3rd sg present) + frame 'bestehen'",
+            "synthesisTarget": "turn 5: 'Daher' + contrast pair 'ja … nein' — compressing the position into a slogan"
+          },
+          {
+            "number": 6,
+            "slug": "autofreie-innenstadt",
+            "title": "A car-free centre",
+            "setting": {
+              "de": "Eine Stadträtin bereitet den Beschluss zur autofreien Innenstadt vor und bittet Sie als Anwohner um Ihre Haltung.",
+              "en": "A council official is preparing the car-free city-centre decision and asks you, a resident, where you stand."
+            },
+            "turns": [
+              "Die Stadt will die Innenstadt in zwei Jahren autofrei machen; der Handel läuft bereits Sturm.",
+              "Ich unterstütze das Vorhaben, denn eine autofreie Innenstadt bringt Aufenthaltsqualität, und die lockt mehr Kunden als Parkplätze.",
+              "Die Händler sagen aber das Gegenteil: Ohne Parkplätze bleiben die Kunden aus dem Umland weg.",
+              "Ich räume ein, dass das Umland ein Problem ist, aber dafür braucht man Park-and-ride, nicht Parkplätze vor der Tür.",
+              "Welche Bedingung müsste der Rat beschließen, damit Sie den Beschluss öffentlich befürworten?",
+              "Der Einwand der Händler verdient eine Antwort, folglich befürworte ich den Beschluss nur zusammen mit kostenlosen Pendelbussen."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Einwand",
+              "surface": "Einwand",
+              "familyKey": "Einwand",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'räume ein, dass' (moveBlank) + lexical 'Umland' + connector 'nicht' contrast (4 choices)",
+            "synthesisTarget": "turn 5: 'folglich' + 'nur zusammen mit' — conclusion tied to a condition"
+          },
+          {
+            "number": 7,
+            "slug": "vorschlag-der-kollegin",
+            "title": "A colleague's proposal",
+            "setting": {
+              "de": "Eine Kollegin will die Wochenbesprechung durch schriftliche Berichte ersetzen und fragt Sie vor dem Teamtreffen nach Ihrer Meinung.",
+              "en": "A colleague wants to replace the weekly meeting with written reports and asks your view before the team meets."
+            },
+            "turns": [
+              "Mein Vorschlag ist einfach: Wir schaffen die wöchentliche Besprechung ab und schreiben stattdessen kurze Berichte.",
+              "Dieser Vorschlag greift zu kurz, denn Berichte liest niemand, und offene Fragen klärt man nicht per Text.",
+              "Das ist nicht fair; die Besprechung dauert eine Stunde, in der niemand arbeitet, das kostet uns mehr.",
+              "Zwar ist das Kostenargument stichhaltig, doch die Lösung wäre eine halbe Stunde mit fester Tagesordnung, nicht null.",
+              "Also, was schlagen wir dem Team gemeinsam vor, Ihre Variante oder meine?",
+              "Weder die eine noch die andere allein: Ich plädiere dafür, eine halbe Stunde Besprechung mit Ihrem Bericht als Vorbereitung zu verbinden."
+            ],
+            "moves": [
+              "rebut",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "stichhaltig",
+              "surface": "stichhaltig",
+              "familyKey": "stichhaltig",
+              "pos": "adjective"
+            },
+            "clozeTarget": "turn 3: connector pair 'Zwar' (moveBlank) + 'doch' (4 choices) + form 'wäre' (cue: sein, Konjunktiv II, 3rd sg)",
+            "synthesisTarget": "turn 5: 'Weder … noch' + 'plädiere dafür' — rejecting both and naming a third way"
+          },
+          {
+            "number": 8,
+            "slug": "handys-im-grossraumbuero",
+            "title": "Phones at work",
+            "setting": {
+              "de": "Ihre Chefin kündigt ein Totalverbot privater Handys im Großraumbüro an und erwartet Zustimmung.",
+              "en": "Your manager announces a total ban on private phones in the open-plan office and expects agreement."
+            },
+            "turns": [
+              "Ich werde private Handys im Großraumbüro ab nächster Woche komplett verbieten; die Ablenkung ist zu groß.",
+              "Ich verstehe das Ziel, bin aber der Ansicht, dass ein Totalverbot als Bevormundung ankommt und mehr Unruhe stiftet als die Handys.",
+              "Unruhe? Die Zahlen zeigen, dass die Fehlerquote seit einem Jahr steigt, und das wollen Sie wegdiskutieren?",
+              "Selbst wenn die Fehlerquote steigt, ist nicht belegt, dass die Handys der Grund sind; vielleicht liegt es am Lärm.",
+              "Gut, Sie haben bis Freitag: Was legen Sie mir als Alternative auf den Tisch?",
+              "Mein Vorschlag lautet daher: stille Zeiten von neun bis zwölf, und die Entscheidung bleibt selbstverständlich bei Ihnen."
+            ],
+            "moves": [
+              "position",
+              "rebut",
+              "propose"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Bevormundung",
+              "surface": "Bevormundung",
+              "familyKey": "Bevormundung",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: connector 'Selbst wenn' (moveBlank, 4 choices) + form 'belegt' (cue: belegen, Partizip II) + frame 'dass'",
+            "synthesisTarget": "turn 5: 'daher' + 'bleibt … bei Ihnen' — proposing while leaving the decision with the manager"
+          },
+          {
+            "number": 9,
+            "slug": "regional-oder-importiert",
+            "title": "Local versus imported food",
+            "setting": {
+              "de": "Eine Freundin erklärt beim Einkaufen, sie kaufe nur noch Regionales. Morgen kocht ihr zusammen.",
+              "en": "A friend announces while shopping that she now buys only local produce. You are cooking together tomorrow."
+            },
+            "turns": [
+              "Ich kaufe nur noch regional; alles, was eingeflogen wird, ist für mich tabu.",
+              "Mein Standpunkt ist weniger streng: Regional ist gut, aber ein Apfel aus dem Kühlhaus im April ist nicht automatisch klimafreundlicher.",
+              "Jetzt redest du dich raus; es geht doch auch um die Bauern hier.",
+              "Was die Bauern angeht, hast du recht, insofern kaufe ich Gemüse vom Markt, bei Obst schaue ich aber auf die Saison.",
+              "Und morgen beim Einkauf für unser Essen: Was landet im Korb?",
+              "Letzten Endes landen Kartoffeln vom Markt und Orangen aus Spanien im Korb, da Saison und Transportweg zusammen zählen, nicht die Grenze allein."
+            ],
+            "moves": [
+              "position",
+              "concede",
+              "conclude"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "Standpunkt",
+              "surface": "Standpunkt",
+              "familyKey": "Standpunkt",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Was … angeht' (moveBlank) + connector 'insofern' (4 choices) + form 'angeht' (cue: angehen, 3rd sg present)",
+            "synthesisTarget": "turn 5: 'Letzten Endes' + 'da' — concrete decision with causal justification"
+          },
+          {
+            "number": 10,
+            "slug": "sprachen-frueh-lernen",
+            "title": "Learning languages young",
+            "setting": {
+              "de": "In einem Radiointerview wird gefragt, ob nur Kinder eine Sprache wirklich lernen. Am Ende sollen Sie Eltern einen Rat geben.",
+              "en": "In a radio interview you are asked whether only children truly learn a language. At the end you must advise parents."
+            },
+            "turns": [
+              "Viele behaupten, nur wer als Kind beginnt, lernt eine Sprache wirklich; teilen Sie diese Auffassung?",
+              "Nur zum Teil: Kinder haben Vorteile bei der Aussprache, Erwachsene dagegen lernen bewusster und mit klarem Ziel.",
+              "Aber die Forschung zeigt doch eindeutig, dass das Zeitfenster für Grammatik mit der Pubertät schließt.",
+              "Eindeutig ist das keineswegs, denn dieselben Studien zeigen Erwachsene, die durch Motivation und Methode dasselbe Niveau erreichen.",
+              "Zum Schluss in einem Satz: Was raten Sie Eltern, die ihr Kind mit drei Jahren anmelden wollen?",
+              "Aus diesen Gründen rate ich: Früh anfangen schadet nicht, entscheidend ist aber, dass das Kind Freude daran behält."
+            ],
+            "moves": [
+              "position",
+              "rebut",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "entscheidend",
+              "surface": "entscheidend",
+              "familyKey": "entscheidend",
+              "pos": "adjective"
+            },
+            "clozeTarget": "turn 3: adverb 'keineswegs' (moveBlank, 4 choices) + connector 'denn' + form 'erreichen' (cue: erreichen, plural present, relative clause)",
+            "synthesisTarget": "turn 5: 'Aus diesen Gründen' + 'dass' — closing recommendation with the decisive criterion"
+          }
+        ]
+      },
+      {
+        "pathNumber": 4,
+        "slug": "what-if",
+        "title": "What if",
+        "staging": "hypothesize: hätte ich … gebucht, hätte/wäre (L1) · wenn … wegfiele, würden (L2) · falls … könnte/müsste (L3) · hätte … können (L4) · sollte … , dann (L5) · für den Fall, dass (L6) · angenommen, … dann (L7) · wenn ich … wäre, hätte … gedauert (L8) · wenn … scheitert, verlierst du (L9, open condition) · dürfte (L10, epistemic future); concede: rückblickend stimmt das (L1) · allerdings nur, weil (L2) · zugegeben, aber auch bei (L3) · das sehe ich ein (L6) · da hast du nicht ganz unrecht, nur (L8) · zugestanden (L9); rebut: hätte ich können, … trotzdem nicht (L4) · wer … , bekommt (L7) · kein …, sondern (L10) · zu viel; wer sich … absichert (L5); propose: ich schlage vor, … statt (L2) · erst …, denn … wäre voreilig (L3) · ich empfehle … , denn (L5) · damit wäre … geholfen (L7) · davon würde ich abraten, es sei denn (L9); conclude: wahrscheinlicher als (L1) · dennoch (L4) · sofern (L6) · ohne … zu (L8) · ob … liegt bei Ihnen (L10). Syntax: Konjunktiv II past with inversion (L1) → KII present with würde and strong forms (L2–3) → KII + modal (L4) → sollte-inversion (L5) → nominal conditionals für den Fall, dass / angenommen (L6–7) → es sei denn (L9) → epistemic dürfte (L10). Sie except friend/flatmate lessons (L3, L4, L8, L9) in du; all speakerGender neutral; shape challenge throughout; registerPlan constant.",
+        "lessons": [
+          {
+            "number": 1,
+            "slug": "frueher-gebucht",
+            "title": "Had you booked earlier",
+            "setting": {
+              "de": "Im Reisebüro ist der Flug zur Prüfung doppelt so teuer wie vor einem Monat. Die Beraterin erinnert Sie daran.",
+              "en": "At the travel agency the flight to your exam costs twice what it did a month ago. The agent reminds you of that."
+            },
+            "turns": [
+              "Der Flug kostet jetzt das Doppelte; vor einem Monat hätten Sie die Hälfte gezahlt.",
+              "Hätte ich früher gebucht, hätte ich zwar gespart, aber dann wäre ich jetzt an Termine gebunden, die sich inzwischen verschoben haben.",
+              "Dafür gibt es flexible Tarife; das Argument zieht also nicht wirklich.",
+              "Rückblickend stimmt das, der flexible Tarif wäre günstiger gewesen; nur kannte ich damals das Datum der Prüfung noch nicht.",
+              "Und jetzt: Buchen Sie zum aktuellen Preis oder warten Sie auf ein Last-Minute-Angebot?",
+              "Ich buche heute, denn ein weiterer Anstieg ist wahrscheinlicher als ein Rabatt, und noch einmal warten würde ich nicht riskieren."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "rückblickend",
+              "surface": "Rückblickend",
+              "familyKey": "rückblickend",
+              "pos": "adverb"
+            },
+            "clozeTarget": "turn 3: frame 'Rückblickend stimmt das' (moveBlank) + form 'wäre … gewesen' (cue: sein, Konjunktiv II Perfekt) + connector 'nur' (4 choices)",
+            "synthesisTarget": "turn 5: 'wahrscheinlicher als' + form 'würde' — decision justified by comparative likelihood"
+          },
+          {
+            "number": 2,
+            "slug": "firma-geht-remote",
+            "title": "If the company goes remote",
+            "setting": {
+              "de": "Die Geschäftsführung erwägt, das Büro aufzugeben. Ein Kollege bittet Sie, die Folgen für das Team durchzuspielen.",
+              "en": "Management is considering giving up the office. A colleague asks you to think through the consequences for the team."
+            },
+            "turns": [
+              "Die Geschäftsführung denkt darüber nach, das Büro aufzugeben und komplett remote zu arbeiten.",
+              "Wenn das Büro wegfiele, würden wir zwar Fahrzeit sparen, aber der Zusammenhalt im Team würde innerhalb eines Jahres bröckeln.",
+              "Bröckeln? Unser Team funktioniert seit zwei Jahren von zu Hause bestens, das weiß die Geschäftsführung.",
+              "Für uns stimmt das, allerdings nur, weil wir uns persönlich kennen; neue Kolleginnen hätten diesen Vorteil nicht.",
+              "Die Geschäftsführung fragt nach einem Vorschlag aus dem Team. Was tragen wir vor?",
+              "Ich schlage vor, das Büro zu verkleinern statt es aufzugeben und zwei feste Präsenztage im Monat einzuführen."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "propose"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Zusammenhalt",
+              "surface": "Zusammenhalt",
+              "familyKey": "Zusammenhalt",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'allerdings nur, weil' (moveBlank) + form 'hätten' (cue: haben, Konjunktiv II, plural) + lexical 'Vorteil'",
+            "synthesisTarget": "turn 5: 'Ich schlage vor' + 'statt' — proposal built as alternative to the announced plan"
+          },
+          {
+            "number": 3,
+            "slug": "miete-steigt",
+            "title": "If the rent rises",
+            "setting": {
+              "de": "Ihr Mitbewohner berichtet, der Vermieter habe eine Mieterhöhung angedeutet. Ihr überlegt gemeinsam, was zu tun ist.",
+              "en": "Your flatmate reports that the landlord has hinted at a rent increase. Together you work out what to do."
+            },
+            "turns": [
+              "Der Vermieter deutet an, dass die Miete nächstes Jahr um zweihundert Euro steigt.",
+              "Falls er das wirklich durchzieht, könnte ich meinen Anteil nicht mehr verkraften, und dann müsste einer von uns ausziehen.",
+              "Warte, so weit ist es nicht; vielleicht ist die Erhöhung gar nicht zulässig, hast du daran gedacht?",
+              "Daran habe ich nicht gedacht, zugegeben; aber auch bei einer zulässigen Erhöhung bliebe das Problem bestehen.",
+              "Also, was machen wir zuerst: Mieterverein oder gleich eine neue Wohnung suchen?",
+              "Erst der Mieterverein, denn ohne Prüfung zu kündigen wäre voreilig; nebenbei schaue ich mir trotzdem Angebote an."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "propose"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "verkraften",
+              "surface": "verkraften",
+              "familyKey": "verkraften",
+              "pos": "verb"
+            },
+            "clozeTarget": "turn 3: frame 'zugegeben' (moveBlank) + form 'bliebe' (cue: bleiben, Konjunktiv II, 3rd sg) + connector 'auch bei' (4 choices)",
+            "synthesisTarget": "turn 5: 'Erst … , denn' + form 'wäre voreilig' — ordered plan with a Konjunktiv II judgement"
+          },
+          {
+            "number": 4,
+            "slug": "anderer-job-damals",
+            "title": "Had you taken the other job",
+            "setting": {
+              "de": "Ein Freund erinnert dich an das Angebot aus München, das du vor Jahren abgelehnt hast, und fragt, ob du es bereust.",
+              "en": "A friend reminds you of the Munich job you turned down years ago and asks whether you regret it."
+            },
+            "turns": [
+              "Stell dir vor, du hättest damals das Angebot aus München angenommen; du hättest jetzt doppelt so viel Gehalt.",
+              "Hätte ich zugesagt, hätte ich mehr verdienen können, aber ich hätte meine Eltern nur noch an Feiertagen gesehen.",
+              "Das klingt nach einer Ausrede; du hättest doch jedes Wochenende pendeln können.",
+              "Pendeln hätte ich können, bereuen würde ich es trotzdem nicht; mein Vater war damals krank, und Zeit war wichtiger als Geld.",
+              "Und wenn morgen dasselbe Angebot noch einmal käme?",
+              "Heute würde ich zusagen, weil die Umstände andere sind; die Entscheidung von damals bleibt dennoch richtig."
+            ],
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "conclude"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "bereuen",
+              "surface": "bereuen",
+              "familyKey": "bereuen",
+              "pos": "verb"
+            },
+            "clozeTarget": "turn 3: form 'hätte … können' (cue: können, Konjunktiv II Perfekt, moveBlank frame) + adverb 'trotzdem' (recycled B1, 4 choices) + lexical 'wichtiger'",
+            "synthesisTarget": "turn 5: 'würde … zusagen' + 'dennoch' — distinguishing today's choice from yesterday's"
+          },
+          {
+            "number": 5,
+            "slug": "sommerfest-wetterrisiko",
+            "title": "Outdoor event weather risk",
+            "setting": {
+              "de": "Im Vereinsvorstand streiten Sie mit der Organisatorin über ein teures Zelt für das Sommerfest; der Vorstand entscheidet abends.",
+              "en": "On the club committee you argue with the organizer about an expensive marquee for the summer party; the board decides tonight."
+            },
+            "turns": [
+              "Das Sommerfest findet draußen statt; der Wetterbericht ist unsicher, aber ein Zelt kostet dreitausend Euro.",
+              "Sollte es regnen, dann verlieren wir nicht nur die Gäste, sondern auch die Technik; das Zelt wäre eine Versicherung, kein Luxus.",
+              "Eine Versicherung, die wir mit neunzig Prozent Wahrscheinlichkeit gar nicht brauchen; das Geld fehlt dann beim Catering.",
+              "Zehn Prozent Risiko bei einem Totalschaden sind zu viel; wer sich gegen den schlimmsten Fall absichert, zahlt am Ende weniger als nach einem ausgefallenen Fest.",
+              "Der Vorstand entscheidet heute Abend. Welche Variante empfehlen Sie, Zelt oder Ausfallversicherung?",
+              "Ich empfehle das Zelt, denn eine Versicherung ersetzt Geld, aber nicht das Fest, für das die Gäste gekommen sind."
+            ],
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "absichern",
+              "surface": "absichert",
+              "familyKey": "absichern",
+              "pos": "verb"
+            },
+            "clozeTarget": "turn 3: frame 'zu viel' (moveBlank) + connector 'wer' generalising relative (4 choices) + preposition frame 'gegen' (sich absichern gegen)",
+            "synthesisTarget": "turn 5: 'Ich empfehle … , denn' + 'aber nicht' — recommendation with contrastive reason"
+          },
+          {
+            "number": 6,
+            "slug": "einspruch-scheitert",
+            "title": "If the appeal fails",
+            "setting": {
+              "de": "Bei der Sozialberatung besprechen Sie Ihren laufenden Einspruch gegen eine Ablehnung und was danach käme.",
+              "en": "At the advice centre you discuss your pending appeal against a rejection and what would come next."
+            },
+            "turns": [
+              "Ihr Einspruch gegen die Ablehnung liegt beim Amt; mit einer Antwort rechnen wir in sechs Wochen.",
+              "Für den Fall, dass der Einspruch scheitert, bliebe mir nur die Klage, und die könnte ich mir finanziell kaum leisten.",
+              "Eine Klage dauert Jahre; ehrlich gesagt rate ich den meisten davon ab.",
+              "Das sehe ich ein, deshalb wäre ein Ausweg, parallel einen neuen Antrag mit besseren Unterlagen zu stellen, oder spricht etwas dagegen?",
+              "Ein neuer Antrag ist möglich, aber dann müssten Sie den Einspruch zurückziehen. Wie entscheiden Sie?",
+              "Dann ziehe ich den Einspruch zurück, sofern Sie die neuen Unterlagen vorher mit mir durchgehen."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Ausweg",
+              "surface": "Ausweg",
+              "familyKey": "Ausweg",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Das sehe ich ein' (moveBlank) + form 'wäre' (cue: sein, Konjunktiv II) + connector 'parallel' (4 choices)",
+            "synthesisTarget": "turn 5: 'sofern' + form 'ziehe … zurück' — decision with a condition on the adviser"
+          },
+          {
+            "number": 7,
+            "slug": "scooter-verbot",
+            "title": "If scooters are banned",
+            "setting": {
+              "de": "Ein Nachbar freut sich über ein geplantes E-Scooter-Verbot im Viertel. Sie sollen später in der Bezirksversammlung sprechen.",
+              "en": "A neighbour is delighted about a planned e-scooter ban in the district. You are due to speak at the district assembly later."
+            },
+            "turns": [
+              "Die Stadt will E-Scooter im ganzen Viertel verbieten; endlich liegen die Dinger nicht mehr auf dem Gehweg.",
+              "Angenommen, das Verbot kommt, dann verschwinden die Scooter nicht, sondern landen zwei Straßen weiter; wir hätten nur eine Verlagerung des Problems.",
+              "Mir ist egal, wo sie liegen, solange nicht vor meiner Tür; das ist doch legitim, oder?",
+              "Legitim ja, gelöst nein; wer das Problem nur verschiebt, bekommt es beim nächsten Verbot der Nachbarn zurück.",
+              "Dann sagen Sie mir, was Sie der Bezirksversammlung statt eines Verbots vorschlagen würden.",
+              "Feste Abstellzonen an jeder zweiten Kreuzung und Strafgebühren für Falschparken; damit wäre allen geholfen, auch Ihrer Haustür."
+            ],
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "propose"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "Verlagerung",
+              "surface": "Verlagerung",
+              "familyKey": "Verlagerung",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'Legitim ja, gelöst nein' (moveBlank) + connector 'wer' (4 choices) + form 'bekommt … zurück' (cue: zurückbekommen, 3rd sg present)",
+            "synthesisTarget": "turn 5: 'damit wäre … geholfen' — dative passive-like result frame after a concrete proposal"
+          },
+          {
+            "number": 8,
+            "slug": "auslandsjahr-verpasst",
+            "title": "Had you studied abroad",
+            "setting": {
+              "de": "Eine Freundin erinnert dich an das Auslandsjahr in Lissabon, das du nie gemacht hast, und fragt, ob du es heute nachholen würdest.",
+              "en": "A friend reminds you of the year in Lisbon you never took and asks whether you would make up for it now."
+            },
+            "turns": [
+              "Du wolltest doch immer ein Jahr nach Lissabon; wärst du gegangen, würdest du heute fließend Portugiesisch sprechen.",
+              "Wenn ich gegangen wäre, hätte ich die Sprache gelernt, aber mein Studium hätte ein Jahr länger gedauert, und das Stipendium wäre weggefallen.",
+              "Du rechnest alles in Semestern; manche Umwege lohnen sich eben erst später.",
+              "Da hast du nicht ganz unrecht, ein Umweg hätte mir Perspektive gegeben; nur hätte ich damals das Geld dafür gar nicht gehabt.",
+              "Und jetzt, mit festem Job: Würdest du den Umweg heute nachholen?",
+              "Nicht als Jahr, aber als drei Monate unbezahlter Auszeit; das wäre heute machbar, ohne alles aufs Spiel zu setzen."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "conclude"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "Umweg",
+              "surface": "Umweg",
+              "familyKey": "Umweg",
+              "pos": "noun"
+            },
+            "clozeTarget": "turn 3: frame 'nicht ganz unrecht' (moveBlank) + form 'hätte … gegeben' (cue: geben, Konjunktiv II Perfekt) + connector 'nur' (4 choices)",
+            "synthesisTarget": "turn 5: 'ohne … zu' + form 'wäre machbar' — scaled-down decision with a safeguard"
+          },
+          {
+            "number": 9,
+            "slug": "geld-leihen",
+            "title": "Lending money to a friend",
+            "setting": {
+              "de": "Ein Freund überlegt, seinem Bruder eine große Summe fürs Café zu leihen, und will deine ehrliche Einschätzung.",
+              "en": "A friend is considering lending his brother a large sum for a café and wants your honest assessment."
+            },
+            "turns": [
+              "Mein Bruder braucht fünftausend Euro für sein Café; ich überlege, ihm das Geld zu leihen.",
+              "Wenn das Café scheitert, verlierst du nicht nur das Geld, sondern vielleicht auch den Bruder; das Risiko trägt eure Beziehung, nicht nur dein Konto.",
+              "Also soll ich ihn hängen lassen? Er hat mir damals auch geholfen.",
+              "Zugestanden, das will ich dir nicht zumuten; aber helfen kannst du auch mit einer Bürgschaft oder einem Teilbetrag.",
+              "Wenn ich leihe, dann ohne Vertrag, unter Brüdern. Was hältst du davon?",
+              "Davon würde ich abraten, es sei denn, ihr schreibt wenigstens Betrag und Rückzahlung auf; am Ende entscheidest aber du."
+            ],
+            "moves": [
+              "hypothesize",
+              "concede",
+              "propose"
+            ],
+            "register": "du",
+            "trophy": {
+              "lemma": "zumuten",
+              "surface": "zumuten",
+              "familyKey": "zumuten",
+              "pos": "verb"
+            },
+            "clozeTarget": "turn 3: frame 'Zugestanden' (moveBlank) + connector 'aber' (4 choices) + form 'kannst' (cue: können, du, present, fronted infinitive helfen)",
+            "synthesisTarget": "turn 5: 'es sei denn' + 'am Ende entscheidest aber du' — advice with exception, authority left with the friend"
+          },
+          {
+            "number": 10,
+            "slug": "folgen-abschaetzen",
+            "title": "Forecast a decision's effects",
+            "setting": {
+              "de": "Ihre Chefin stellt im Januar auf ein neues Buchungssystem um und verlangt von Ihnen eine Abschätzung der Folgen für das erste Quartal.",
+              "en": "Your manager is switching to a new booking system in January and asks you to estimate the effects on the first quarter."
+            },
+            "turns": [
+              "Wir stellen ab Januar auf das neue Buchungssystem um; schätzen Sie mir die Folgen für das erste Quartal ab.",
+              "Im ersten Quartal dürfte die Fehlerquote zunächst steigen, weil zwei Systeme parallel laufen; danach dürften wir pro Buchung ein Drittel der Zeit sparen.",
+              "Ein Drittel klingt nach Wunschdenken; worauf stützen Sie das?",
+              "Das ist kein Wunschdenken, sondern der Wert aus dem Pilotteam; absehbar ist allerdings auch, dass drei Kollegen eine Schulung brauchen.",
+              "Und wenn die Fehlerquote im Februar immer noch über fünf Prozent liegt?",
+              "Dann würde ich empfehlen, den Parallelbetrieb um einen Monat zu verlängern; ob wir den Start verschieben, liegt bei Ihnen."
+            ],
+            "moves": [
+              "hypothesize",
+              "rebut",
+              "conclude"
+            ],
+            "register": "Sie",
+            "trophy": {
+              "lemma": "absehbar",
+              "surface": "absehbar",
+              "familyKey": "absehbar",
+              "pos": "adjective"
+            },
+            "clozeTarget": "turn 3: frame 'kein … , sondern' (moveBlank on 'sondern', 4 choices) + lexical 'Wunschdenken' + form 'brauchen' (cue: brauchen, plural present)",
+            "synthesisTarget": "turn 5: 'Dann würde ich empfehlen, … zu' + 'ob … liegt bei Ihnen' — recommendation with explicit deference"
+          }
+        ]
+      }
+    ],
+    "openIssues": [
+      "Trophy uniqueness: all 20 new lemmas (Belastung, Rücksicht, Wertschätzung, überfordern, Hürde, Einwand, stichhaltig, Bevormundung, Standpunkt, entscheidend, rückblickend, Zusammenhalt, verkraften, bereuen, absichern, Ausweg, Verlagerung, Umweg, zumuten, absehbar) checked by hand against the supplied 300 A1/A2/B1 surfaces, the 20 P1/P2 trophies and the 8 reserve rows: 0 lemma or familyKey collisions. Nearest neighbours flagged for check-ledger.ts: Zusammenhalt vs reserve Zusammenhang (distinct lemma); entscheidend vs any 'entscheiden/Entscheidung' family member in the full forbidden set (only the 300 surfaces were supplied; 'entscheiden' not among them); Belastung vs no 'belasten' row seen. Mechanical re-run at freeze remains binding.",
+      "P3 L8 you3 uses 'propose', which is in the global you3 slot set but not in the P3 moveWhitelist; the contract constrains only you1 by whitelist, but if the validator applies the whitelist to all three moves this turn must be relabelled 'conclude' (text works for either) or the P3 whitelist extended.",
+      "P4 L9 you1 is an open conditional ('Wenn das Café scheitert, verlierst du …'), labelled hypothesize; if the rail's hypothesize detector requires Konjunktiv II or a staged carrier, rewrite to 'Scheiterte das Café, verlörst du …' or 'Sollte das Café scheitern, …' (sollte is already staged in L5).",
+      "Several you turns run to 24–30 tokens (P3 L7 t5, P3 L9 t5, P4 L1 t1, P4 L5 t3, P4 L8 t1, P4 L10 t1); each needs trimming to the you1 ≤26 / you2 ≤24 / you3 ≤22 rail caps at drafting without losing the trophy surface or the move carrier.",
+      "Recycled B1 trophies appear as terms/blanks only: trotzdem (P4 L4 cloze choice), deshalb, sonst, denn, obwohl-type distractors — permitted per contract, never as B2 trophies. 'Einspruch' (P4 L6) is a term, distinct from P2 L6 trophy Widerspruch and P3 L6 trophy Einwand; keep Widerspruch out of P4 L6 text.",
+      "TTS/surface risks: 'E-Scooter' and 'Park-and-ride' are English loans with hyphens (TTS check needed); 'Last-Minute-Angebot' likewise; digits are avoided throughout but 'neunzig Prozent' / 'fünftausend' are long number words for the speak profile.",
+      "speakerGender neutral verified for every you turn (no agent nouns or participial adjectives about the speaker); P4 L4 opener was rewritten away from 'Teamleiterin' for that reason. Them turns name 'Ministerin', 'Stadträtin', 'Kolleginnen' about third parties only.",
+      "Authority rule: learner recommends but never decides for the manager (P3 L8, P4 L10), the board (P4 L5), the friend (P4 L9) or the official (P3 L6); P3 L1/L2 decisions concern the learner's own vote only.",
+      "Base texts (en) for turns, patterns, terms, cloze cues and trophy examples are not included here and must be authored in the draft files; setting texts are bilingual as required.",
+      "Native status for both paths is unreviewed until a native-model reviewer row exists; several idioms (Sturm laufen, hängen lassen, aufs Spiel setzen, sich rausreden) are colloquial and should be confirmed register-appropriate for Sie lessons (Sturm laufen appears only in a them turn)."
+    ]
+  }
+}

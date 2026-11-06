@@ -1,0 +1,2227 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Indirekt nachfragen",
+    "en": "Indirect inquiries"
+  },
+  "subtitle": {
+    "de": "Nach Verfahren, Fristen und Möglichkeiten fragen",
+    "en": "Ask about procedures, deadlines and options"
+  },
+  "anchor": "new-job onboarding, city office, university desk, bank, clinic",
+  "lessons": [
+    {
+      "slug": "bangbeop-transit-card",
+      "title": {
+        "de": "Eine Fahrkarte über den Arbeitgeber",
+        "en": "Applying for a transit card at work"
+      },
+      "situation": {
+        "de": "An deinem ersten Arbeitstag möchtest du die betriebliche Fahrkarte beantragen.",
+        "en": "On your first day at work, you'd like to apply for the company transit card."
+      },
+      "pedagogicalGoal": "Mit 어디서 … 받는지 nach einer Anlaufstelle und mit 어떻게 … 신청하는지 nach einem alternativen Verfahren fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "첫날이라 궁금한 게 많으시겠어요. 뭐부터 도와드릴까요?",
+          "baseText": {
+            "de": "Am ersten Tag haben Sie bestimmt viele Fragen. Womit kann ich Ihnen zuerst helfen?",
+            "en": "You must have lots of questions on your first day. What can I help you with first?"
+          }
+        },
+        {
+          "targetText": "교통카드 신청 방법 안내는 어디서 받는지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich erfahren kann, wie ich die Fahrkarte beantrage?",
+            "en": "Do you know where I can find out how to apply for the transit card?"
+          }
+        },
+        {
+          "targetText": "안내는 총무팀에서 받아요. 신청할 때는 신분증이 필요해요.",
+          "baseText": {
+            "de": "Auskünfte gibt die Verwaltung. Für den Antrag brauchen Sie Ihren Ausweis.",
+            "en": "The general affairs team can help. You'll need ID when you apply."
+          }
+        },
+        {
+          "targetText": "그런데 신분증이 없으면 대신 어떻게 신청하는지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie denn, wie ich den Antrag stattdessen stellen kann, wenn ich meinen Ausweis nicht dabeihabe?",
+            "en": "But do you know how I can apply instead if I don't have my ID?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "어디서 … -는지 아세요?",
+        "rule": {
+          "de": "Vor 아세요? steht die unbekannte Information als eingebettete Frage. 받다 wird dort zu 받는지.",
+          "en": "Put the information you want inside the question before 아세요? In that position 받다 becomes 받는지."
+        },
+        "examples": [
+          {
+            "targetText": "교통카드 신청 방법 안내는 어디서 받는지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich erfahren kann, wie ich die Fahrkarte beantrage?",
+              "en": "Do you know where I can find out how to apply for the transit card?"
+            },
+            "highlight": "어디서 받는지 아세요"
+          },
+          {
+            "targetText": "출입증을 어디서 찾는지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie, wo ich meinen Zugangsausweis abhole?",
+              "en": "Do you know where I can pick up my access pass?"
+            },
+            "highlight": "어디서 찾는지 아세요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "예컨대",
+            "거꾸로",
+            "첫째",
+            "그런데"
+          ]
+        },
+        " 신분증이 없으면 대신 ",
+        {
+          "kind": "choice",
+          "answer": "어떻게",
+          "choices": [
+            "몇 층을",
+            "어떻게",
+            "몇 시를",
+            "몇 사람을"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "신청하는지",
+          "cue": "Eingebettete Frage mit einem Tätigkeitsverb / embedded question with an action verb",
+          "choices": [
+            "신청하려고",
+            "신청하면",
+            "신청하거나",
+            "신청하는지"
+          ]
+        },
+        " 아세요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "교통카드",
+          "baseText": {
+            "de": "Fahrkarte",
+            "en": "transit card"
+          }
+        },
+        {
+          "targetText": "신청 방법 안내는",
+          "baseText": {
+            "de": "die Auskunft zum Antragsverfahren",
+            "en": "guidance on how to apply"
+          }
+        },
+        {
+          "targetText": "어디서 받는지",
+          "baseText": {
+            "de": "wo man sie bekommt",
+            "en": "where to get it"
+          }
+        },
+        {
+          "targetText": "아세요?",
+          "baseText": {
+            "de": "wissen Sie das?",
+            "en": "do you know?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "교통카드",
+          "baseText": {
+            "de": "Fahrkarte",
+            "en": "transit card"
+          }
+        },
+        {
+          "targetText": "신청 방법",
+          "baseText": {
+            "de": "Antragsverfahren",
+            "en": "how to apply"
+          }
+        },
+        {
+          "targetText": "안내",
+          "baseText": {
+            "de": "Auskunft",
+            "en": "guidance"
+          }
+        },
+        {
+          "targetText": "총무팀",
+          "baseText": {
+            "de": "Verwaltungsabteilung",
+            "en": "general affairs team"
+          }
+        },
+        {
+          "targetText": "신분증",
+          "baseText": {
+            "de": "Ausweis",
+            "en": "ID"
+          }
+        },
+        {
+          "targetText": "대신 신청하다",
+          "baseText": {
+            "de": "auf anderem Weg beantragen",
+            "en": "apply another way"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "교통카드",
+        "after": " 신청 방법 안내는 어디서 받는지 아세요?",
+        "fallbackChoices": [
+          "주차권",
+          "출입증",
+          "교통카드",
+          "식권"
+        ]
+      },
+      "speakRequired": [
+        "교통카드",
+        "방법",
+        "받는지"
+      ],
+      "sceneCaption": {
+        "de": "Am ersten Arbeitstag bietet dir ein Kollege Hilfe an. „첫날이라 궁금한 게 많으시겠어요. 뭐부터 도와드릴까요?“",
+        "en": "A colleague offers to help on your first day. “첫날이라 궁금한 게 많으시겠어요. 뭐부터 도와드릴까요?”"
+      },
+      "trophyWord": {
+        "word": "방법",
+        "meaning": {
+          "de": "Methode, Vorgehensweise",
+          "en": "method, way of doing something"
+        },
+        "example": "신청 방법 안내를 받을 수 있을까요?",
+        "whyThisWord": {
+          "de": "방법 vor 안내 verrät dir, dass es um die Vorgehensweise geht. So kannst du gezielt nach dem Ablauf fragen.",
+          "en": "방법 before 안내 tells you the guidance is about the process. Use it to ask how to get something done."
+        }
+      },
+      "distractors": [
+        "재발급 비용은",
+        "언제 끝나는지"
+      ],
+      "placeholderCaption": {
+        "de": "Am ersten Morgen im Büro",
+        "en": "The first morning at the office"
+      },
+      "songMood": "Curious piano taps over an easy walking beat.",
+      "visualNotes": "A new employee speaks with a colleague beside the office entrance."
+    },
+    {
+      "slug": "iyu-canceled-class",
+      "title": {
+        "de": "Warum fällt der Unterricht aus?",
+        "en": "Why was class canceled?"
+      },
+      "situation": {
+        "de": "Am Schwarzen Brett steht, dass dein Kurs ausfällt. Eine Erklärung fehlt.",
+        "en": "A notice says your class is canceled but gives no explanation."
+      },
+      "pedagogicalGoal": "Mit einer eingebetteten Frage zuerst nach der Begründung und dann nach dem Zeitpunkt der Bekanntgabe fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘 오후 수업은 갑자기 휴강하게 됐어요.",
+          "baseText": {
+            "de": "Der Unterricht heute Nachmittag fällt kurzfristig aus.",
+            "en": "This afternoon's class has been canceled at short notice."
+          }
+        },
+        {
+          "targetText": "휴강 이유 안내는 어디서 확인하는지 혹시 아세요?",
+          "baseText": {
+            "de": "Wissen Sie zufällig, wo ich die Begründung für den Unterrichtsausfall finden kann?",
+            "en": "Do you happen to know where I can find the reason for the cancellation?"
+          }
+        },
+        {
+          "targetText": "저도 이유는 몰라요. 홈페이지에 오늘 중으로 공지가 올라와요.",
+          "baseText": {
+            "de": "Den Grund kenne ich auch nicht. Die Mitteilung erscheint im Laufe des Tages auf der Website.",
+            "en": "I don't know the reason either. A notice will go up on the website sometime today."
+          }
+        },
+        {
+          "targetText": "그러면 공지가 대략 언제 올라오는지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie dann ungefähr, wann die Mitteilung erscheint?",
+            "en": "In that case, do you know roughly when the notice will go up?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "어디서 und 언제 mit -는지",
+        "rule": {
+          "de": "Mit -는지 bindest du eine Frage an 아세요? an. 어디서 erfragt den Ort und 언제 den Zeitpunkt.",
+          "en": "Use -는지 to embed a question before 아세요? 어디서 asks where, and 언제 asks when."
+        },
+        "examples": [
+          {
+            "targetText": "휴강 이유 안내는 어디서 확인하는지 혹시 아세요?",
+            "baseText": {
+              "de": "Wissen Sie zufällig, wo ich die Begründung für den Unterrichtsausfall finden kann?",
+              "en": "Do you happen to know where I can find the reason for the cancellation?"
+            },
+            "highlight": "어디서 확인하는지"
+          },
+          {
+            "targetText": "다음 수업은 몇 시쯤 끝나는지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie ungefähr, wann die nächste Stunde endet?",
+              "en": "Do you know approximately what time the next class finishes?"
+            },
+            "highlight": "몇 시쯤 끝나는지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "정반대로",
+            "예컨대",
+            "그러면",
+            "첫째"
+          ]
+        },
+        " 공지가 대략 ",
+        {
+          "kind": "choice",
+          "answer": "언제",
+          "choices": [
+            "어디에",
+            "누구를",
+            "언제",
+            "어느 분이"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "올라오는지",
+          "cue": "Eingebettete Frage nach einem Vorgang / embedded question about an event",
+          "choices": [
+            "올라오는지",
+            "올라오면",
+            "올라오려고",
+            "올라오면서"
+          ]
+        },
+        " 아세요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "휴강 이유 안내는",
+          "baseText": {
+            "de": "die Mitteilung zum Grund des Unterrichtsausfalls",
+            "en": "the notice explaining the cancellation"
+          }
+        },
+        {
+          "targetText": "어디서",
+          "baseText": {
+            "de": "wo",
+            "en": "where"
+          }
+        },
+        {
+          "targetText": "확인하는지",
+          "baseText": {
+            "de": "man sie nachlesen kann",
+            "en": "to check it"
+          }
+        },
+        {
+          "targetText": "혹시 아세요?",
+          "baseText": {
+            "de": "wissen Sie das zufällig?",
+            "en": "do you happen to know?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "휴강",
+          "baseText": {
+            "de": "Unterrichtsausfall",
+            "en": "class cancellation"
+          }
+        },
+        {
+          "targetText": "이유",
+          "baseText": {
+            "de": "Grund",
+            "en": "reason"
+          }
+        },
+        {
+          "targetText": "확인하다",
+          "baseText": {
+            "de": "nachsehen",
+            "en": "check"
+          }
+        },
+        {
+          "targetText": "홈페이지",
+          "baseText": {
+            "de": "Website",
+            "en": "website"
+          }
+        },
+        {
+          "targetText": "오늘 중으로",
+          "baseText": {
+            "de": "im Laufe des Tages",
+            "en": "sometime today"
+          }
+        },
+        {
+          "targetText": "공지가 올라오다",
+          "baseText": {
+            "de": "eine Mitteilung erscheint",
+            "en": "a notice is posted"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "휴강",
+        "after": " 이유 안내는 어디서 확인하는지 혹시 아세요?",
+        "fallbackChoices": [
+          "수료",
+          "휴강",
+          "입학",
+          "졸업"
+        ]
+      },
+      "speakRequired": [
+        "휴강",
+        "이유",
+        "확인하는지"
+      ],
+      "sceneCaption": {
+        "de": "Im Schulbüro gibt es eine kurzfristige Nachricht. „오늘 오후 수업은 갑자기 휴강하게 됐어요.“",
+        "en": "The school office has a last-minute announcement. “오늘 오후 수업은 갑자기 휴강하게 됐어요.”"
+      },
+      "trophyWord": {
+        "word": "이유",
+        "meaning": {
+          "de": "Grund",
+          "en": "reason"
+        },
+        "example": "취소 이유 안내가 문자로 왔어요.",
+        "whyThisWord": {
+          "de": "Mit 이유 unterscheidest du die Frage nach dem Grund von der Frage nach dem weiteren Ablauf.",
+          "en": "이유 singles out the reason for a decision rather than the steps that follow it."
+        }
+      },
+      "distractors": [
+        "수업 시간표는",
+        "누구를 만나는지"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kursankündigung im Schulbüro",
+        "en": "A class announcement at the school office"
+      },
+      "songMood": "Sparse mallet notes with a questioning cadence.",
+      "visualNotes": "A student stops by the office after reading a notice."
+    },
+    {
+      "slug": "iljeong-training-date",
+      "title": {
+        "de": "Der Schulungstermin",
+        "en": "The training date"
+      },
+      "situation": {
+        "de": "Du möchtest die Einarbeitung in deinen Kalender eintragen und fragst jemanden aus dem Team.",
+        "en": "You want to put an induction session in your calendar and ask someone on your team."
+      },
+      "pedagogicalGoal": "Mit -는지 die Bekanntgabe eines Plans und anschließend den Beginn der Schulung erfragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "다음 주에 신입 직원 교육이 있어요.",
+          "baseText": {
+            "de": "Nächste Woche gibt es eine Schulung für neue Mitarbeitende.",
+            "en": "There's an induction session for new staff next week."
+          }
+        },
+        {
+          "targetText": "신입 교육 일정 안내를 언제 보내는지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie, wann die Informationen zum Schulungsplan verschickt werden?",
+            "en": "Do you know when they'll send out the induction schedule?"
+          }
+        },
+        {
+          "targetText": "안내는 오늘 가는데 교육 날짜가 또 바뀌었어요.",
+          "baseText": {
+            "de": "Die Mitteilung geht heute raus, aber der Schulungstermin hat sich noch einmal geändert.",
+            "en": "The notice goes out today, but the training date has changed again."
+          }
+        },
+        {
+          "targetText": "그런데 새 일정으로는 교육이 언제 시작하는지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie denn, wann die Schulung nach dem neuen Plan beginnt?",
+            "en": "But do you know when the training starts on the new schedule?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "언제 보내는지 und 언제 시작하는지",
+        "rule": {
+          "de": "언제 steht in der eingebetteten Frage vor dem Verb. Ob du nach dem Versand oder nach dem Beginn fragst, erkennst du an 보내는지 oder 시작하는지.",
+          "en": "Put 언제 before the verb in the embedded question. 보내는지 asks about sending, while 시작하는지 asks when something starts."
+        },
+        "examples": [
+          {
+            "targetText": "신입 교육 일정 안내를 언제 보내는지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie, wann die Informationen zum Schulungsplan verschickt werden?",
+              "en": "Do you know when they'll send out the induction schedule?"
+            },
+            "highlight": "언제 보내는지"
+          },
+          {
+            "targetText": "이번 달에는 신청을 며칠에 받는지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie, an welchem Tag in diesem Monat Anträge angenommen werden?",
+              "en": "Do you know what date they're taking applications this month?"
+            },
+            "highlight": "며칠에 받는지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "거꾸로",
+            "그런데",
+            "예를 들어",
+            "둘째"
+          ]
+        },
+        " 새 일정으로는 교육이 ",
+        {
+          "kind": "choice",
+          "answer": "언제",
+          "choices": [
+            "몇 명을",
+            "얼마를",
+            "누구를",
+            "언제"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "시작하는지",
+          "cue": "Verb in einer eingebetteten Frage / verb in an embedded question",
+          "choices": [
+            "시작하면",
+            "시작하려고",
+            "시작하거나",
+            "시작하는지"
+          ]
+        },
+        " 아세요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "신입 교육",
+          "baseText": {
+            "de": "Einarbeitungsschulung",
+            "en": "new-staff training"
+          }
+        },
+        {
+          "targetText": "일정 안내를",
+          "baseText": {
+            "de": "die Terminübersicht",
+            "en": "the schedule notice"
+          }
+        },
+        {
+          "targetText": "언제 보내는지",
+          "baseText": {
+            "de": "wann sie verschickt wird",
+            "en": "when they send it"
+          }
+        },
+        {
+          "targetText": "아세요?",
+          "baseText": {
+            "de": "wissen Sie das?",
+            "en": "do you know?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "신입 직원",
+          "baseText": {
+            "de": "neuer Mitarbeiter",
+            "en": "new employee"
+          }
+        },
+        {
+          "targetText": "교육 일정",
+          "baseText": {
+            "de": "Schulungstermine",
+            "en": "training schedule"
+          }
+        },
+        {
+          "targetText": "안내를 보내다",
+          "baseText": {
+            "de": "Informationen verschicken",
+            "en": "send out a notice"
+          }
+        },
+        {
+          "targetText": "날짜가 바뀌다",
+          "baseText": {
+            "de": "der Termin verschiebt sich",
+            "en": "the date changes"
+          }
+        },
+        {
+          "targetText": "며칠에",
+          "baseText": {
+            "de": "an welchem Kalendertag",
+            "en": "on what date"
+          }
+        },
+        {
+          "targetText": "시작하다",
+          "baseText": {
+            "de": "beginnen",
+            "en": "start"
+          }
+        }
+      ],
+      "recall": {
+        "before": "신입 ",
+        "answer": "교육",
+        "after": " 일정 안내를 언제 보내는지 아세요?",
+        "fallbackChoices": [
+          "교육",
+          "배송",
+          "수리",
+          "진료"
+        ]
+      },
+      "speakRequired": [
+        "신입",
+        "일정",
+        "보내는지"
+      ],
+      "sceneCaption": {
+        "de": "Beim Einarbeiten erwähnt eine Kollegin die Schulung. „다음 주에 신입 직원 교육이 있어요.“",
+        "en": "A colleague mentions a training session during your induction. “다음 주에 신입 직원 교육이 있어요.”"
+      },
+      "trophyWord": {
+        "word": "일정",
+        "meaning": {
+          "de": "Zeitplan",
+          "en": "schedule"
+        },
+        "example": "출장 일정 안내가 오늘 나왔어요.",
+        "whyThisWord": {
+          "de": "일정 fasst Termine zu einem Plan zusammen. 날짜 bezeichnet dagegen ein einzelnes Datum.",
+          "en": "일정 refers to a schedule of events, while 날짜 refers to an individual date."
+        }
+      },
+      "distractors": [
+        "출장 경비를",
+        "얼마나 드는지"
+      ],
+      "placeholderCaption": {
+        "de": "Den Kalender für die Einarbeitung öffnen",
+        "en": "Checking the induction calendar"
+      },
+      "songMood": "Light syncopated keys with a practical office feel.",
+      "visualNotes": "A colleague leans over an open desk calendar."
+    },
+    {
+      "slug": "magam-extension-counter",
+      "title": {
+        "de": "Ist die Frist schon vorbei?",
+        "en": "Has the deadline passed?"
+      },
+      "situation": {
+        "de": "Im Bürgerbüro hast du das Formular dabei. Du bist dir über den letzten Abgabetag unsicher.",
+        "en": "You have the form with you at the city office, but you're unsure of the last day to submit it."
+      },
+      "pedagogicalGoal": "Mit 언제인지 nach einem Datum und mit 가능한지 nach einer noch offenen Möglichkeit fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "작성하신 신청서는 오늘 내시려고 가져오셨어요?",
+          "baseText": {
+            "de": "Haben Sie den ausgefüllten Antrag mitgebracht, um ihn heute abzugeben?",
+            "en": "Did you bring your completed form to submit it today?"
+          }
+        },
+        {
+          "targetText": "이 신청서 마감 날짜가 정확히 언제인지 아세요?",
+          "baseText": {
+            "de": "Wissen Sie, wann genau die Frist für diesen Antrag endet?",
+            "en": "Do you know exactly when the deadline for this form is?"
+          }
+        },
+        {
+          "targetText": "어제로 마감됐어요. 연장은 담당 창구에 문의하셔야 해요.",
+          "baseText": {
+            "de": "Die Frist ist gestern abgelaufen. Wegen einer Verlängerung müssen Sie am zuständigen Schalter nachfragen.",
+            "en": "It closed yesterday. You'll need to ask at the right counter about an extension."
+          }
+        },
+        {
+          "targetText": "그러면 창구가 둘인데 연장이 가능한지 어디서 물어볼 수 있을까요?",
+          "baseText": {
+            "de": "Hier sind aber zwei Schalter. Wo kann ich dann nachfragen, ob eine Verlängerung möglich ist?",
+            "en": "But there are two counters here. Where can I ask, then, whether an extension is possible?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "언제인지 und 가능한지",
+        "rule": {
+          "de": "Bei der Frage nach einem Datum wird 언제 mit 인지 verbunden. Beim Adjektiv 가능하다 lautet die eingebettete Form 가능한지.",
+          "en": "Use 언제인지 to ask what a date is. The adjective 가능하다 takes the embedded form 가능한지."
+        },
+        "examples": [
+          {
+            "targetText": "이 신청서 마감 날짜가 정확히 언제인지 아세요?",
+            "baseText": {
+              "de": "Wissen Sie, wann genau die Frist für diesen Antrag endet?",
+              "en": "Do you know exactly when the deadline for this form is?"
+            },
+            "highlight": "정확히 언제인지"
+          },
+          {
+            "targetText": "방문 예약이 가능한지 먼저 확인해 주세요.",
+            "baseText": {
+              "de": "Könnten Sie zuerst prüfen, ob ein Besuchstermin möglich ist?",
+              "en": "Could you first check whether it's possible to book a visit?"
+            },
+            "highlight": "예약이 가능한지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "그러면",
+            "이를테면",
+            "반대로",
+            "첫째"
+          ]
+        },
+        " 창구가 둘인데 연장이 ",
+        {
+          "kind": "form",
+          "answer": "가능한지",
+          "cue": "Adjektiv in einer eingebetteten Frage / adjective in an embedded question",
+          "choices": [
+            "가능하므로",
+            "가능하면",
+            "가능한지",
+            "가능하려고"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "어디서",
+          "choices": [
+            "누구를",
+            "얼마를",
+            "무엇을",
+            "어디서"
+          ]
+        },
+        " 물어볼 수 있을까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "이 신청서",
+          "baseText": {
+            "de": "für diesen Antrag",
+            "en": "for this form"
+          }
+        },
+        {
+          "targetText": "마감 날짜가",
+          "baseText": {
+            "de": "der letzte Abgabetag",
+            "en": "the deadline"
+          }
+        },
+        {
+          "targetText": "정확히 언제인지",
+          "baseText": {
+            "de": "wann genau er ist",
+            "en": "exactly when it is"
+          }
+        },
+        {
+          "targetText": "아세요?",
+          "baseText": {
+            "de": "wissen Sie das?",
+            "en": "do you know?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "작성하다",
+          "baseText": {
+            "de": "ausfüllen",
+            "en": "fill out"
+          }
+        },
+        {
+          "targetText": "마감 날짜",
+          "baseText": {
+            "de": "Abgabefrist",
+            "en": "deadline"
+          }
+        },
+        {
+          "targetText": "정확히",
+          "baseText": {
+            "de": "genau",
+            "en": "exactly"
+          }
+        },
+        {
+          "targetText": "연장",
+          "baseText": {
+            "de": "Verlängerung",
+            "en": "extension"
+          }
+        },
+        {
+          "targetText": "담당 창구",
+          "baseText": {
+            "de": "zuständiger Schalter",
+            "en": "designated counter"
+          }
+        },
+        {
+          "targetText": "가능한지",
+          "baseText": {
+            "de": "ob es möglich ist",
+            "en": "whether it's possible"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이 신청서 ",
+        "answer": "마감",
+        "after": " 날짜가 정확히 언제인지 아세요?",
+        "fallbackChoices": [
+          "발급",
+          "발송",
+          "작성",
+          "마감"
+        ]
+      },
+      "speakRequired": [
+        "신청서",
+        "마감",
+        "언제인지"
+      ],
+      "sceneCaption": {
+        "de": "Am Schalter fällt der Blick auf deinen Antrag. „작성하신 신청서는 오늘 내시려고 가져오셨어요?“",
+        "en": "The clerk notices the form in your hand. “작성하신 신청서는 오늘 내시려고 가져오셨어요?”"
+      },
+      "trophyWord": {
+        "word": "마감",
+        "meaning": {
+          "de": "Fristende, Annahmeschluss",
+          "en": "deadline, closing time for submissions"
+        },
+        "example": "마감 날짜를 달력에 적어 두세요.",
+        "whyThisWord": {
+          "de": "Mit 마감 날짜 fragst du nach dem letzten möglichen Tag für eine Abgabe oder Bewerbung.",
+          "en": "마감 날짜 asks about the last day you can submit or apply for something."
+        }
+      },
+      "distractors": [
+        "이력서 양식이",
+        "정확히 몇 장인지"
+      ],
+      "placeholderCaption": {
+        "de": "Mit einem Formular im Bürgerbüro",
+        "en": "At the city office with a form"
+      },
+      "songMood": "Steady muted notes and a slight pause before the reply.",
+      "visualNotes": "A visitor holds a form at a public service desk."
+    },
+    {
+      "slug": "sincheong-paper-application",
+      "title": {
+        "de": "Die Kursanmeldung",
+        "en": "Registering for a course"
+      },
+      "situation": {
+        "de": "Bei der Studienberatung möchtest du einen Kurs beantragen und zeigst den Link auf deinem Handy.",
+        "en": "At the university office, you want to apply for a course and show the link on your phone."
+      },
+      "pedagogicalGoal": "Mit 유효한지 nach der Gültigkeit eines Links und mit 어디서 받는지 nach dem Papierformular fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 강좌는 어떤 방식으로 신청하시겠어요?",
+          "baseText": {
+            "de": "Wie möchten Sie sich für diesen Kurs anmelden?",
+            "en": "How would you like to apply for this course?"
+          }
+        },
+        {
+          "targetText": "온라인 신청 링크가 아직 유효한지 잘 모르겠어요.",
+          "baseText": {
+            "de": "Ich bin mir nicht sicher, ob der Link zur Online-Anmeldung noch gültig ist.",
+            "en": "I'm not sure whether the link for the online application is still valid."
+          }
+        },
+        {
+          "targetText": "지금은 사이트가 멈췄지만 종이 신청서로도 신청할 수 있어요.",
+          "baseText": {
+            "de": "Die Website ist gerade ausgefallen, aber Sie können sich auch mit einem Papierantrag anmelden.",
+            "en": "The site is down at the moment, but you can also apply with a paper form."
+          }
+        },
+        {
+          "targetText": "그러면 창구가 여러 개인데 양식은 어디서 받는지 아세요?",
+          "baseText": {
+            "de": "Es gibt hier mehrere Schalter. Wissen Sie dann, wo ich das Formular bekomme?",
+            "en": "There are several counters here. In that case, do you know where I can get the form?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "유효한지 모르겠어요",
+        "rule": {
+          "de": "유효한지 bettet die Frage nach der Gültigkeit ein. Mit 잘 모르겠어요 gibst du zu verstehen, dass du dir selbst unsicher bist.",
+          "en": "유효한지 embeds the question of validity. 잘 모르겠어요 tells the listener you are unsure yourself."
+        },
+        "examples": [
+          {
+            "targetText": "온라인 신청 링크가 아직 유효한지 잘 모르겠어요.",
+            "baseText": {
+              "de": "Ich bin mir nicht sicher, ob der Link zur Online-Anmeldung noch gültig ist.",
+              "en": "I'm not sure whether the link for the online application is still valid."
+            },
+            "highlight": "유효한지 잘 모르겠어요"
+          },
+          {
+            "targetText": "이 학생증이 아직 유효한지 모르겠어요.",
+            "baseText": {
+              "de": "Ich weiß nicht, ob dieser Studierendenausweis noch gültig ist.",
+              "en": "I don't know whether this student ID is still valid."
+            },
+            "highlight": "유효한지 모르겠어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "가령",
+            "첫째",
+            "그러면"
+          ]
+        },
+        " 창구가 여러 개인데 양식은 ",
+        {
+          "kind": "choice",
+          "answer": "어디서",
+          "choices": [
+            "몇 개가",
+            "무엇을",
+            "어디서",
+            "누구를"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "받는지",
+          "cue": "Verb in der eingebetteten Frage / verb in the embedded question",
+          "choices": [
+            "받으려고",
+            "받는지",
+            "받으면",
+            "받으면서"
+          ]
+        },
+        " 아세요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "온라인 신청 링크가",
+          "baseText": {
+            "de": "der Link zur Online-Anmeldung",
+            "en": "the application link"
+          }
+        },
+        {
+          "targetText": "아직",
+          "baseText": {
+            "de": "noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "유효한지",
+          "baseText": {
+            "de": "ob er gültig ist",
+            "en": "whether it's valid"
+          }
+        },
+        {
+          "targetText": "잘 모르겠어요.",
+          "baseText": {
+            "de": "weiß ich nicht genau.",
+            "en": "I'm not sure."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "강좌",
+          "baseText": {
+            "de": "Kurs",
+            "en": "course"
+          }
+        },
+        {
+          "targetText": "온라인 신청",
+          "baseText": {
+            "de": "Online-Anmeldung",
+            "en": "online application"
+          }
+        },
+        {
+          "targetText": "링크",
+          "baseText": {
+            "de": "Link",
+            "en": "link"
+          }
+        },
+        {
+          "targetText": "유효하다",
+          "baseText": {
+            "de": "gültig sein",
+            "en": "be valid"
+          }
+        },
+        {
+          "targetText": "종이 신청서",
+          "baseText": {
+            "de": "Antragsformular auf Papier",
+            "en": "paper application"
+          }
+        },
+        {
+          "targetText": "양식을 받다",
+          "baseText": {
+            "de": "ein Formular bekommen",
+            "en": "get a form"
+          }
+        }
+      ],
+      "recall": {
+        "before": "온라인 신청 링크가 아직 ",
+        "answer": "유효한지",
+        "after": " 잘 모르겠어요.",
+        "fallbackChoices": [
+          "유효하니까",
+          "유효하면",
+          "유효한지",
+          "유효하던"
+        ]
+      },
+      "speakRequired": [
+        "온라인",
+        "신청",
+        "유효한지"
+      ],
+      "sceneCaption": {
+        "de": "Am Hochschulschalter geht es um die Kursanmeldung. „이번 강좌는 어떤 방식으로 신청하시겠어요?“",
+        "en": "The university desk asks about your course application. “이번 강좌는 어떤 방식으로 신청하시겠어요?”"
+      },
+      "trophyWord": {
+        "word": "신청",
+        "meaning": {
+          "de": "Anmeldung, Antrag",
+          "en": "application, registration"
+        },
+        "example": "수강 신청 기간이 언제인지 아세요?",
+        "whyThisWord": {
+          "de": "신청 passt zur Kursanmeldung ebenso wie zu einem Antrag auf eine Leistung. Das Wort davor macht den Zweck klar.",
+          "en": "신청 can refer to registering for a course or applying for a service. The word before it tells you which."
+        }
+      },
+      "distractors": [
+        "온라인 수업 자료가",
+        "벌써 끝났는지"
+      ],
+      "placeholderCaption": {
+        "de": "Bei der Kursanmeldung",
+        "en": "At the course registration desk"
+      },
+      "songMood": "Light, measured keyboard and a plucked answering phrase.",
+      "visualNotes": "A student shows an application page on a phone at a university desk."
+    },
+    {
+      "slug": "seoryu-copy-or-original",
+      "title": {
+        "de": "Reicht eine Kopie?",
+        "en": "Will a copy do?"
+      },
+      "situation": {
+        "de": "In der Bank möchtest du ein Konto eröffnen. Du hast Unterlagen dabei und möchtest wissen, ob sie ausreichen.",
+        "en": "You're opening a bank account. You have some documents and want to know whether they're enough."
+      },
+      "pedagogicalGoal": "Mit 무엇인지 eine Liste erfragen und mit -는지 eine Frage zur zulässigen Form eines Nachweises formulieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘은 어떤 업무를 보러 오셨어요?",
+          "baseText": {
+            "de": "Was möchten Sie heute bei uns erledigen?",
+            "en": "What can we help you with today?"
+          }
+        },
+        {
+          "targetText": "계좌를 만들 때 필요한 서류 목록이 무엇인지 모르겠어요.",
+          "baseText": {
+            "de": "Ich weiß nicht genau, welche Unterlagen ich für die Kontoeröffnung brauche.",
+            "en": "I'm not sure which documents I need to open an account."
+          }
+        },
+        {
+          "targetText": "신분증은 있는데 저희 은행은 주소 확인서 원본도 필요해요.",
+          "baseText": {
+            "de": "Ihren Ausweis haben Sie dabei, aber unsere Bank braucht auch den Adressnachweis im Original.",
+            "en": "You have your ID, but our bank also needs the original proof of address."
+          }
+        },
+        {
+          "targetText": "그런데 사본 말고 원본은 언제 내도 되는지 확인해 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie dann bitte prüfen, wann ich das Original statt der Kopie einreichen darf?",
+            "en": "Then could you check when I may submit the original rather than a copy?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "무엇인지 und -아/어도 되는지",
+        "rule": {
+          "de": "무엇인지 erfragt, was verlangt wird. 내도 되는지 verlagert die Frage darauf, ob eine bestimmte Form der Abgabe erlaubt ist.",
+          "en": "무엇인지 asks what is required. 내도 되는지 asks whether a particular way of submitting it is allowed."
+        },
+        "examples": [
+          {
+            "targetText": "계좌를 만들 때 필요한 서류 목록이 무엇인지 모르겠어요.",
+            "baseText": {
+              "de": "Ich weiß nicht genau, welche Unterlagen ich für die Kontoeröffnung brauche.",
+              "en": "I'm not sure which documents I need to open an account."
+            },
+            "highlight": "서류 목록이 무엇인지"
+          },
+          {
+            "targetText": "사진으로 보내도 되는지 먼저 확인해요.",
+            "baseText": {
+              "de": "Ich kläre zuerst, ob ich es als Foto schicken darf.",
+              "en": "I'll check first whether I can send it as a photo."
+            },
+            "highlight": "보내도 되는지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "첫째",
+            "거꾸로",
+            "그런데",
+            "예컨대"
+          ]
+        },
+        " 사본 말고 원본은 ",
+        {
+          "kind": "choice",
+          "answer": "언제",
+          "choices": [
+            "누구를",
+            "몇 층을",
+            "언제",
+            "얼마를"
+          ]
+        },
+        " 내도 ",
+        {
+          "kind": "form",
+          "answer": "되는지",
+          "cue": "Erlaubnis als eingebettete Frage / permission in an embedded question",
+          "choices": [
+            "되므로",
+            "되는지",
+            "되려면",
+            "되지만"
+          ]
+        },
+        " 확인해 주시겠어요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "계좌를 만들 때",
+          "baseText": {
+            "de": "bei der Kontoeröffnung",
+            "en": "when opening an account"
+          }
+        },
+        {
+          "targetText": "필요한 서류 목록이",
+          "baseText": {
+            "de": "die Liste der erforderlichen Unterlagen",
+            "en": "the list of required documents"
+          }
+        },
+        {
+          "targetText": "무엇인지",
+          "baseText": {
+            "de": "was darauf steht",
+            "en": "what's on it"
+          }
+        },
+        {
+          "targetText": "모르겠어요.",
+          "baseText": {
+            "de": "weiß ich nicht.",
+            "en": "I'm not sure."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "계좌를 만들다",
+          "baseText": {
+            "de": "ein Konto eröffnen",
+            "en": "open an account"
+          }
+        },
+        {
+          "targetText": "서류 목록",
+          "baseText": {
+            "de": "Unterlagenliste",
+            "en": "list of documents"
+          }
+        },
+        {
+          "targetText": "주소 확인서",
+          "baseText": {
+            "de": "Adressnachweis",
+            "en": "proof of address"
+          }
+        },
+        {
+          "targetText": "원본",
+          "baseText": {
+            "de": "Original",
+            "en": "original"
+          }
+        },
+        {
+          "targetText": "사본",
+          "baseText": {
+            "de": "Kopie",
+            "en": "copy"
+          }
+        },
+        {
+          "targetText": "내도 되다",
+          "baseText": {
+            "de": "einreichen dürfen",
+            "en": "be allowed to submit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "계좌를 만들 때 필요한 ",
+        "answer": "서류",
+        "after": " 목록이 무엇인지 모르겠어요.",
+        "fallbackChoices": [
+          "관광",
+          "서류",
+          "재생",
+          "식단"
+        ]
+      },
+      "speakRequired": [
+        "계좌를",
+        "서류",
+        "무엇인지"
+      ],
+      "sceneCaption": {
+        "de": "In der Filiale fragt eine Mitarbeiterin nach deinem Anliegen. „오늘은 어떤 업무를 보러 오셨어요?“",
+        "en": "At the branch, a bank clerk asks what you need. “오늘은 어떤 업무를 보러 오셨어요?”"
+      },
+      "trophyWord": {
+        "word": "서류",
+        "meaning": {
+          "de": "Unterlagen",
+          "en": "documents"
+        },
+        "example": "서류 목록을 문자로 보내 주시겠어요?",
+        "whyThisWord": {
+          "de": "서류 목록 bezeichnet alle Unterlagen, die du etwa für ein Konto oder eine Bewerbung vorlegen musst.",
+          "en": "서류 목록 is the complete list of documents you'll need for a task such as opening an account or applying for a job."
+        }
+      },
+      "distractors": [
+        "택배를 찾을 때",
+        "납부할 금액이"
+      ],
+      "placeholderCaption": {
+        "de": "Unterlagen am Bankschalter",
+        "en": "Documents at the bank counter"
+      },
+      "songMood": "Calm, clear piano with a short resolving phrase.",
+      "visualNotes": "A clerk checks the papers on a bank counter."
+    },
+    {
+      "slug": "yogeum-monthly-estimate",
+      "title": {
+        "de": "Was kostet es voraussichtlich im Monat?",
+        "en": "What might it cost each month?"
+      },
+      "situation": {
+        "de": "Im Handyladen möchtest du die laufenden Kosten eines Tarifs abschätzen.",
+        "en": "At a phone shop, you want an estimate of the ongoing cost of a plan."
+      },
+      "pedagogicalGoal": "Mit -(으)ㄹ지 궁금해요 nach einem voraussichtlichen Betrag fragen, der noch nicht feststeht.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어느 정도 가격대를 생각하고 오셨어요?",
+          "baseText": {
+            "de": "Welche Preisspanne schwebt Ihnen vor?",
+            "en": "What price range did you have in mind?"
+          }
+        },
+        {
+          "targetText": "매달 요금 총액이 얼마나 나올지 궁금해요.",
+          "baseText": {
+            "de": "Ich würde gern wissen, wie hoch der Gesamtbetrag im Monat wohl ausfällt.",
+            "en": "I'd like to know roughly how much the total monthly fee might come to."
+          }
+        },
+        {
+          "targetText": "데이터 사용량에 따라 달라요. 기본료도 요금제마다 달라요.",
+          "baseText": {
+            "de": "Das hängt vom Datenverbrauch ab. Auch die Grundgebühr ist je nach Tarif unterschiedlich.",
+            "en": "It depends on your data usage. The base charge varies by plan too."
+          }
+        },
+        {
+          "targetText": "그러면 가장 싼 요금제는 매달 얼마나 들지 궁금해요.",
+          "baseText": {
+            "de": "Dann würde ich gern wissen, was mich der günstigste Tarif im Monat ungefähr kostet.",
+            "en": "In that case, I'd like to know how much the cheapest plan might cost each month."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ지 궁금해요",
+        "rule": {
+          "de": "나올지 bezieht sich auf einen Betrag, der erst später feststeht. 궁금해요 lädt das Gegenüber ein, eine Schätzung zu geben.",
+          "en": "나올지 points to a total that is still uncertain. 궁금해요 invites the other person to estimate it."
+        },
+        "examples": [
+          {
+            "targetText": "매달 요금 총액이 얼마나 나올지 궁금해요.",
+            "baseText": {
+              "de": "Ich würde gern wissen, wie hoch der Gesamtbetrag im Monat wohl ausfällt.",
+              "en": "I'd like to know roughly how much the total monthly fee might come to."
+            },
+            "highlight": "얼마나 나올지 궁금해요"
+          },
+          {
+            "targetText": "수리비가 얼마나 나올지 미리 알고 싶어요.",
+            "baseText": {
+              "de": "Ich wüsste gern vorher, wie hoch die Reparaturkosten wohl werden.",
+              "en": "I'd like to know ahead of time how much the repair might cost."
+            },
+            "highlight": "얼마나 나올지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "그러면",
+            "첫째",
+            "예컨대"
+          ]
+        },
+        " 가장 싼 요금제는 매달 ",
+        {
+          "kind": "choice",
+          "answer": "얼마나",
+          "choices": [
+            "얼마나",
+            "몇 층으로",
+            "누구를",
+            "어느 분이"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "들지",
+          "cue": "Ungewisser künftiger Betrag / uncertain future amount",
+          "choices": [
+            "들려고",
+            "들고",
+            "들면서",
+            "들지"
+          ]
+        },
+        " 궁금해요."
+      ],
+      "chunks": [
+        {
+          "targetText": "매달",
+          "baseText": {
+            "de": "jeden Monat",
+            "en": "each month"
+          }
+        },
+        {
+          "targetText": "요금 총액이",
+          "baseText": {
+            "de": "der Gesamtbetrag",
+            "en": "the total charge"
+          }
+        },
+        {
+          "targetText": "얼마나 나올지",
+          "baseText": {
+            "de": "wie hoch er wohl ausfällt",
+            "en": "how much it might come to"
+          }
+        },
+        {
+          "targetText": "궁금해요.",
+          "baseText": {
+            "de": "das wüsste ich gern.",
+            "en": "I'd like to know."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "가격대",
+          "baseText": {
+            "de": "Preisspanne",
+            "en": "price range"
+          }
+        },
+        {
+          "targetText": "매달",
+          "baseText": {
+            "de": "monatlich",
+            "en": "each month"
+          }
+        },
+        {
+          "targetText": "요금 총액",
+          "baseText": {
+            "de": "Gesamtgebühr",
+            "en": "total charge"
+          }
+        },
+        {
+          "targetText": "기본료",
+          "baseText": {
+            "de": "Grundgebühr",
+            "en": "base charge"
+          }
+        },
+        {
+          "targetText": "데이터 사용량",
+          "baseText": {
+            "de": "Datenverbrauch",
+            "en": "data usage"
+          }
+        },
+        {
+          "targetText": "가장 싼 요금제",
+          "baseText": {
+            "de": "günstigster Tarif",
+            "en": "cheapest plan"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "매달",
+        "after": " 요금 총액이 얼마나 나올지 궁금해요.",
+        "fallbackChoices": [
+          "매달",
+          "매년",
+          "매주",
+          "매일"
+        ]
+      },
+      "speakRequired": [
+        "매달",
+        "요금",
+        "나올지"
+      ],
+      "sceneCaption": {
+        "de": "Im Handyladen fragt der Berater nach deinem Budget. „어느 정도 가격대를 생각하고 오셨어요?“",
+        "en": "The sales assistant asks about your budget. “어느 정도 가격대를 생각하고 오셨어요?”"
+      },
+      "trophyWord": {
+        "word": "요금",
+        "meaning": {
+          "de": "Gebühr, Entgelt",
+          "en": "fee, charge"
+        },
+        "example": "기본 요금 말고 더 내는 돈이 있어요?",
+        "whyThisWord": {
+          "de": "Mit 요금 kannst du sowohl feste Gebühren als auch verbrauchsabhängige Kosten erfragen.",
+          "en": "Use 요금 for a fixed fee or a charge that varies with use."
+        }
+      },
+      "distractors": [
+        "수리 일정이",
+        "언제 끝났는지"
+      ],
+      "placeholderCaption": {
+        "de": "Tarife im Handyladen vergleichen",
+        "en": "Comparing phone plans in a shop"
+      },
+      "songMood": "An unhurried beat with a rising estimate-like melody.",
+      "visualNotes": "Two plan cards lie side by side at a phone shop."
+    },
+    {
+      "slug": "gigan-processing-time",
+      "title": {
+        "de": "Wie lange dauert der Bescheid?",
+        "en": "How long until a decision?"
+      },
+      "situation": {
+        "de": "Im Bürgerbüro hast du einen Antrag abgegeben. Du brauchst den Bescheid bald.",
+        "en": "You've submitted an application at the city office and need the decision soon."
+      },
+      "pedagogicalGoal": "Mit 기간 und -(으)ㄹ지 die Dauer einer Bearbeitung abschätzen und nach der schnelleren Möglichkeit fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "접수는 끝났어요. 또 궁금한 게 있으세요?",
+          "baseText": {
+            "de": "Ihr Antrag ist eingegangen. Haben Sie noch eine Frage?",
+            "en": "Your application has been received. Is there anything else you'd like to know?"
+          }
+        },
+        {
+          "targetText": "요즘은 심사 기간 때문에 얼마나 기다릴지 모르겠어요.",
+          "baseText": {
+            "de": "Wegen der Prüfungsdauer weiß ich zurzeit nicht, wie lange ich warten muss.",
+            "en": "With the review period these days, I'm not sure how long I'll have to wait."
+          }
+        },
+        {
+          "targetText": "지금은 밀려서 보통 삼 주쯤 걸려요. 급행 접수도 있어요.",
+          "baseText": {
+            "de": "Wegen des Rückstaus dauert es zurzeit meist etwa drei Wochen. Es gibt auch ein Eilverfahren.",
+            "en": "There's a backlog, so it usually takes about three weeks. There's also an expedited service."
+          }
+        },
+        {
+          "targetText": "그러면 급행으로는 얼마나 빨리 결과가 나올지 알려 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie mir dann sagen, wie schnell das Ergebnis im Eilverfahren ungefähr vorliegen würde?",
+            "en": "In that case, could you tell me how quickly I might get a result with the expedited service?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "얼마나 … -(으)ㄹ지",
+        "rule": {
+          "de": "얼마나 kann sich auf die Wartezeit oder auf den Grad der Geschwindigkeit beziehen. Das Verb mit -(으)ㄹ지 lässt die genaue Dauer offen.",
+          "en": "얼마나 can ask about the length of a wait or how fast something will be. The ending -(으)ㄹ지 leaves the exact timing open."
+        },
+        "examples": [
+          {
+            "targetText": "요즘은 심사 기간 때문에 얼마나 기다릴지 모르겠어요.",
+            "baseText": {
+              "de": "Wegen der Prüfungsdauer weiß ich zurzeit nicht, wie lange ich warten muss.",
+              "en": "With the review period these days, I'm not sure how long I'll have to wait."
+            },
+            "highlight": "얼마나 기다릴지"
+          },
+          {
+            "targetText": "검사가 얼마나 오래 걸릴지 아직 모르겠어요.",
+            "baseText": {
+              "de": "Ich weiß noch nicht, wie lange die Untersuchung dauern wird.",
+              "en": "I don't yet know how long the examination might take."
+            },
+            "highlight": "얼마나 오래 걸릴지"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "그러면",
+            "예컨대",
+            "거꾸로",
+            "둘째"
+          ]
+        },
+        " 급행으로는 ",
+        {
+          "kind": "choice",
+          "answer": "얼마나",
+          "choices": [
+            "어느 분을",
+            "몇 명씩",
+            "무엇을",
+            "얼마나"
+          ]
+        },
+        " 빨리 결과가 ",
+        {
+          "kind": "form",
+          "answer": "나올지",
+          "cue": "Noch ungewisser Zeitpunkt des Ergebnisses / uncertain timing of the result",
+          "choices": [
+            "나오려고",
+            "나오거나",
+            "나올지",
+            "나오면서"
+          ]
+        },
+        " 알려 주시겠어요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "요즘은",
+          "baseText": {
+            "de": "zurzeit",
+            "en": "these days"
+          }
+        },
+        {
+          "targetText": "심사 기간 때문에",
+          "baseText": {
+            "de": "wegen der Bearbeitungsdauer",
+            "en": "because of the review period"
+          }
+        },
+        {
+          "targetText": "얼마나 기다릴지",
+          "baseText": {
+            "de": "wie lange ich wohl warten muss",
+            "en": "how long I might have to wait"
+          }
+        },
+        {
+          "targetText": "모르겠어요.",
+          "baseText": {
+            "de": "kann ich nicht einschätzen.",
+            "en": "I'm not sure."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "접수",
+          "baseText": {
+            "de": "Einreichung",
+            "en": "submission"
+          }
+        },
+        {
+          "targetText": "심사 기간",
+          "baseText": {
+            "de": "Bearbeitungszeit bei der Prüfung",
+            "en": "review period"
+          }
+        },
+        {
+          "targetText": "기다리다",
+          "baseText": {
+            "de": "warten",
+            "en": "wait"
+          }
+        },
+        {
+          "targetText": "밀리다",
+          "baseText": {
+            "de": "sich stauen",
+            "en": "back up"
+          }
+        },
+        {
+          "targetText": "급행 접수",
+          "baseText": {
+            "de": "Eilverfahren",
+            "en": "expedited processing"
+          }
+        },
+        {
+          "targetText": "결과가 나오다",
+          "baseText": {
+            "de": "das Ergebnis liegt vor",
+            "en": "get a result"
+          }
+        }
+      ],
+      "recall": {
+        "before": "요즘은 ",
+        "answer": "심사",
+        "after": " 기간 때문에 얼마나 기다릴지 모르겠어요.",
+        "fallbackChoices": [
+          "공연",
+          "운동",
+          "날씨",
+          "심사"
+        ]
+      },
+      "speakRequired": [
+        "심사",
+        "기간",
+        "기다릴지"
+      ],
+      "sceneCaption": {
+        "de": "Nach der Abgabe bleibt Zeit für eine Frage. „접수는 끝났어요. 또 궁금한 게 있으세요?“",
+        "en": "Once the application is in, there's time for a question. “접수는 끝났어요. 또 궁금한 게 있으세요?”"
+      },
+      "trophyWord": {
+        "word": "기간",
+        "meaning": {
+          "de": "Zeitraum, Dauer",
+          "en": "period, duration"
+        },
+        "example": "신청 기간 안에 서류를 내야 해요.",
+        "whyThisWord": {
+          "de": "Bei 심사 기간 geht es um die Dauer der Prüfung. 신청 기간 bezeichnet dagegen die Zeit, in der ein Antrag möglich ist.",
+          "en": "심사 기간 means the time taken for review. 신청 기간 is the period when applications can be submitted."
+        }
+      },
+      "distractors": [
+        "회의 시간 때문에",
+        "누가 왔는지"
+      ],
+      "placeholderCaption": {
+        "de": "Nach der Bearbeitungsdauer fragen",
+        "en": "Asking about processing time"
+      },
+      "songMood": "Low sustained keys and lightly ticking percussion.",
+      "visualNotes": "An applicant keeps the receipt at a municipal service desk."
+    },
+    {
+      "slug": "jogeon-membership-pause",
+      "title": {
+        "de": "Die Mitgliedschaft pausieren",
+        "en": "Putting a membership on hold"
+      },
+      "situation": {
+        "de": "An der Rezeption des Fitnessstudios kommst du auf eine frühere Frage zur Trainingspause zurück.",
+        "en": "At the gym desk, you return to a question you asked earlier about putting your membership on hold."
+      },
+      "pedagogicalGoal": "Mit -는지 물어봤는데요 die frühere Frage aufgreifen und unter der genannten Bedingung die Pause zusagen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "지난번에 회원권 정지를 문의하셨어요? 어떤 점이 궁금하세요?",
+          "baseText": {
+            "de": "Hatten Sie schon einmal nach einer Pause für Ihre Mitgliedschaft gefragt? Was möchten Sie wissen?",
+            "en": "Did you ask about putting your membership on hold before? What would you like to know?"
+          }
+        },
+        {
+          "targetText": "회원권을 정지할 수 있는지 물어봤는데 정지 조건 안내도 부탁드려요.",
+          "baseText": {
+            "de": "Ich hatte gefragt, ob ich die Mitgliedschaft pausieren kann. Könnten Sie mir auch die Bedingungen erklären?",
+            "en": "I asked whether I can put my membership on hold. Could you explain the conditions for doing that as well?"
+          }
+        },
+        {
+          "targetText": "한 달에 한 번만 가능해요. 시작 날짜는 직접 정하세요.",
+          "baseText": {
+            "de": "Das geht nur einmal im Monat. Den Starttermin können Sie selbst wählen.",
+            "en": "You can do it just once a month. You choose the start date."
+          }
+        },
+        {
+          "targetText": "그러면 한 번만 정지하고 언제 시작할지 오늘 알려 드릴게요.",
+          "baseText": {
+            "de": "Dann setze ich nur einmal aus und gebe Ihnen heute Bescheid, wann die Pause beginnen soll.",
+            "en": "In that case, I'll put it on hold just once and let you know today when it should start."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 수 있는지 물어봤는데",
+        "rule": {
+          "de": "수 있는지 물어봤는데 gibt eine frühere Frage nach einer Möglichkeit wieder. Danach kannst du die Information erbitten, die dir noch fehlt.",
+          "en": "수 있는지 물어봤는데 reports a question you asked about whether something was possible. Continue by asking for the information you still need."
+        },
+        "examples": [
+          {
+            "targetText": "회원권을 정지할 수 있는지 물어봤는데 정지 조건 안내도 부탁드려요.",
+            "baseText": {
+              "de": "Ich hatte gefragt, ob ich die Mitgliedschaft pausieren kann. Könnten Sie mir auch die Bedingungen erklären?",
+              "en": "I asked whether I can put my membership on hold. Could you explain the conditions for doing that as well?"
+            },
+            "highlight": "정지할 수 있는지 물어봤는데"
+          },
+          {
+            "targetText": "전에 이용 시간을 어디서 확인하는지 물어봤는데요.",
+            "baseText": {
+              "de": "Ich hatte schon einmal gefragt, wo ich die Nutzungszeiten nachsehen kann.",
+              "en": "I asked earlier where I could check the opening hours."
+            },
+            "highlight": "어디서 확인하는지 물어봤는데요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "예컨대",
+            "반대로",
+            "첫째",
+            "그러면"
+          ]
+        },
+        " 한 번만 정지하고 ",
+        {
+          "kind": "choice",
+          "answer": "언제",
+          "choices": [
+            "몇 층에",
+            "얼마를",
+            "언제",
+            "누구를"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "시작할지",
+          "cue": "Noch offener Beginn / start time still to be decided",
+          "choices": [
+            "시작하고",
+            "시작할지",
+            "시작하면서",
+            "시작하려고"
+          ]
+        },
+        " 오늘 알려 드릴게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "회원권을",
+          "baseText": {
+            "de": "die Mitgliedschaft",
+            "en": "my membership"
+          }
+        },
+        {
+          "targetText": "정지할 수 있는지",
+          "baseText": {
+            "de": "ob ich sie pausieren kann",
+            "en": "whether I can put it on hold"
+          }
+        },
+        {
+          "targetText": "물어봤는데",
+          "baseText": {
+            "de": "das hatte ich gefragt, und",
+            "en": "I asked that, and"
+          }
+        },
+        {
+          "targetText": "정지 조건 안내도",
+          "baseText": {
+            "de": "auch Auskunft zu den Bedingungen der Pause",
+            "en": "information about the conditions for a hold as well"
+          }
+        },
+        {
+          "targetText": "부탁드려요.",
+          "baseText": {
+            "de": "darum bitte ich Sie.",
+            "en": "could you give me that?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "회원권",
+          "baseText": {
+            "de": "Mitgliedschaft",
+            "en": "membership"
+          }
+        },
+        {
+          "targetText": "정지",
+          "baseText": {
+            "de": "vorübergehende Aussetzung",
+            "en": "temporary hold"
+          }
+        },
+        {
+          "targetText": "조건",
+          "baseText": {
+            "de": "Bedingung",
+            "en": "condition"
+          }
+        },
+        {
+          "targetText": "한 달에 한 번",
+          "baseText": {
+            "de": "einmal im Monat",
+            "en": "once a month"
+          }
+        },
+        {
+          "targetText": "시작 날짜",
+          "baseText": {
+            "de": "Starttermin",
+            "en": "start date"
+          }
+        },
+        {
+          "targetText": "알려 드리다",
+          "baseText": {
+            "de": "höflich Bescheid geben",
+            "en": "let someone know politely"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "회원권을",
+        "after": " 정지할 수 있는지 물어봤는데 정지 조건 안내도 부탁드려요.",
+        "fallbackChoices": [
+          "여권을",
+          "승차권을",
+          "회원권을",
+          "숙박권을"
+        ]
+      },
+      "speakRequired": [
+        "회원권을",
+        "물어봤는데",
+        "조건"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang erinnert man sich an deine frühere Anfrage. „지난번에 회원권 정지를 문의하셨어요? 어떤 점이 궁금하세요?“",
+        "en": "At reception, the staff remember your earlier inquiry. “지난번에 회원권 정지를 문의하셨어요? 어떤 점이 궁금하세요?”"
+      },
+      "trophyWord": {
+        "word": "조건",
+        "meaning": {
+          "de": "Bedingung, Voraussetzung",
+          "en": "condition, requirement"
+        },
+        "example": "할인 조건 안내를 어디서 받을 수 있어요?",
+        "whyThisWord": {
+          "de": "Mit 조건 안내 fragst du nach den Voraussetzungen eines Angebots, bevor du es nutzt.",
+          "en": "Ask for 조건 안내 to find out what requirements apply before using a service."
+        }
+      },
+      "distractors": [
+        "지난달 결제",
+        "몇 장 남았는지"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Pause im Fitnessstudio vereinbaren",
+        "en": "Arranging a gym membership hold"
+      },
+      "songMood": "Steady acoustic rhythm with a gentle answer phrase.",
+      "visualNotes": "A staff member and gym member talk beside a membership desk."
+    },
+    {
+      "slug": "sunseo-clinic-ticket",
+      "title": {
+        "de": "Wer ist als Nächstes dran?",
+        "en": "Who's next in line?"
+      },
+      "situation": {
+        "de": "In einer Praxis weißt du noch nicht, wie die Reihenfolge der Wartenden geregelt wird.",
+        "en": "At a clinic, you're unsure how patients are called in."
+      },
+      "pedagogicalGoal": "Mit -는지 물어봤는데 eine frühere Frage aufgreifen und mit 여쭤봐도 될까요? höflich eine Anschlussfrage stellen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "진료를 기다리시는 거예요? 무엇을 도와드릴까요?",
+          "baseText": {
+            "de": "Warten Sie auf Ihren Termin? Wie kann ich Ihnen helfen?",
+            "en": "Are you waiting to see the doctor? How can I help?"
+          }
+        },
+        {
+          "targetText": "진료 순서 어떻게 정하는지 물어봤는데 여기서 알려 주시겠어요?",
+          "baseText": {
+            "de": "Ich hatte gefragt, wie die Reihenfolge für die Behandlung festgelegt wird. Können Sie mir hier weiterhelfen?",
+            "en": "I asked how they decide which patient goes next. Could you tell me here?"
+          }
+        },
+        {
+          "targetText": "번호표대로 불러요. 번호표는 여기 말고 맞은편 접수대에서 뽑으세요.",
+          "baseText": {
+            "de": "Wir rufen nach Nummer auf. Ihre Nummer ziehen Sie nicht hier, sondern gegenüber am Empfang.",
+            "en": "We call patients by ticket number. Take a ticket at the reception desk opposite rather than here."
+          }
+        },
+        {
+          "targetText": "그러면 번호표를 뽑고 어디서 기다리는지 여쭤봐도 될까요?",
+          "baseText": {
+            "de": "Darf ich dann noch fragen, wo ich warte, nachdem ich die Nummer gezogen habe?",
+            "en": "Then may I also ask where I should wait after taking a ticket?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는지 물어봤는데",
+        "rule": {
+          "de": "Die Frage steht mit -는지 vor 물어봤는데. Mit 여쭤봐도 될까요? fragst du höflich, ob du noch etwas fragen darfst.",
+          "en": "Place the question before 물어봤는데 using -는지. 여쭤봐도 될까요? is a respectful way to ask whether you may ask one more thing."
+        },
+        "examples": [
+          {
+            "targetText": "진료 순서 어떻게 정하는지 물어봤는데 여기서 알려 주시겠어요?",
+            "baseText": {
+              "de": "Ich hatte gefragt, wie die Reihenfolge für die Behandlung festgelegt wird. Können Sie mir hier weiterhelfen?",
+              "en": "I asked how they decide which patient goes next. Could you tell me here?"
+            },
+            "highlight": "어떻게 정하는지 물어봤는데"
+          },
+          {
+            "targetText": "예약 시간을 어디서 바꾸는지 물어봤는데 아직 답이 없어요.",
+            "baseText": {
+              "de": "Ich habe gefragt, wo ich den Termin ändern kann, aber noch keine Antwort bekommen.",
+              "en": "I asked where I could change my appointment time, but haven't had an answer yet."
+            },
+            "highlight": "어디서 바꾸는지 물어봤는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "예컨대",
+            "반대로",
+            "그러면",
+            "첫째"
+          ]
+        },
+        " 번호표를 뽑고 ",
+        {
+          "kind": "choice",
+          "answer": "어디서",
+          "choices": [
+            "어느 분이",
+            "누구를",
+            "어디서",
+            "얼마를"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "기다리는지",
+          "cue": "Eingebettete Frage mit einem Tätigkeitsverb / embedded question with an action verb",
+          "choices": [
+            "기다리면서",
+            "기다리는지",
+            "기다리면",
+            "기다리거나"
+          ]
+        },
+        " 여쭤봐도 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "진료 순서",
+          "baseText": {
+            "de": "die Behandlungsreihenfolge",
+            "en": "the order of patients"
+          }
+        },
+        {
+          "targetText": "어떻게 정하는지",
+          "baseText": {
+            "de": "wie man sie festlegt",
+            "en": "how they decide it"
+          }
+        },
+        {
+          "targetText": "물어봤는데",
+          "baseText": {
+            "de": "danach hatte ich gefragt",
+            "en": "I asked about that"
+          }
+        },
+        {
+          "targetText": "여기서 알려 주시겠어요?",
+          "baseText": {
+            "de": "können Sie es mir hier erklären?",
+            "en": "could you tell me here?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "진료 순서",
+          "baseText": {
+            "de": "Behandlungsreihenfolge",
+            "en": "order in which patients are seen"
+          }
+        },
+        {
+          "targetText": "번호표",
+          "baseText": {
+            "de": "Wartenummer",
+            "en": "number ticket"
+          }
+        },
+        {
+          "targetText": "접수대",
+          "baseText": {
+            "de": "Anmeldeschalter",
+            "en": "reception desk"
+          }
+        },
+        {
+          "targetText": "맞은편",
+          "baseText": {
+            "de": "gegenüber",
+            "en": "opposite side"
+          }
+        },
+        {
+          "targetText": "번호표를 뽑다",
+          "baseText": {
+            "de": "eine Wartenummer ziehen",
+            "en": "take a number"
+          }
+        },
+        {
+          "targetText": "여쭤보다",
+          "baseText": {
+            "de": "höflich nachfragen",
+            "en": "ask respectfully"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "진료",
+        "after": " 순서 어떻게 정하는지 물어봤는데 여기서 알려 주시겠어요?",
+        "fallbackChoices": [
+          "납품",
+          "진료",
+          "공연",
+          "청소"
+        ]
+      },
+      "speakRequired": [
+        "진료",
+        "순서",
+        "정하는지"
+      ],
+      "sceneCaption": {
+        "de": "In der Praxis spricht dich eine Mitarbeiterin am Schalter an. „진료를 기다리시는 거예요? 무엇을 도와드릴까요?“",
+        "en": "A member of the clinic staff asks if you need help. “진료를 기다리시는 거예요? 무엇을 도와드릴까요?”"
+      },
+      "trophyWord": {
+        "word": "순서",
+        "meaning": {
+          "de": "Reihenfolge",
+          "en": "order, sequence"
+        },
+        "example": "발표 순서 안내는 어디서 볼 수 있어요?",
+        "whyThisWord": {
+          "de": "순서 hilft dir zu fragen, wer als Nächstes an der Reihe ist, beim Arzt genauso wie bei einer Präsentation.",
+          "en": "순서 is useful when asking who comes next, whether at a clinic or during presentations."
+        }
+      },
+      "distractors": [
+        "검사 비용",
+        "얼마나 비싼지"
+      ],
+      "placeholderCaption": {
+        "de": "Im Wartebereich der Praxis",
+        "en": "In the clinic waiting area"
+      },
+      "songMood": "Gentle call-and-response phrases with a soft ending.",
+      "visualNotes": "Two service desks face each other in a clinic."
+    }
+  ]
+}

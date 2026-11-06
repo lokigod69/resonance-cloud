@@ -1,0 +1,2125 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Ein Jahr hier",
+    "en": "A year here"
+  },
+  "subtitle": {
+    "de": "Erzähle, was dein erstes Jahr geprägt hat und was du als Nächstes vorhast.",
+    "en": "Tell someone what shaped your first year here and what you plan to do next."
+  },
+  "anchor": "Shape B, tú. Relato, valoración, contraste, consejo y plan del primer año. Consolidación sin gramática nueva.",
+  "lessons": [
+    {
+      "slug": "llaves-en-la-estacion",
+      "title": {
+        "de": "Die Schlüssel am Bahnhof",
+        "en": "Keys at the station"
+      },
+      "situation": {
+        "de": "Zur Erinnerung an dein erstes Jahr in Oviedo schaut sich eine Freundin mit dir Fotos vom Umzug an.",
+        "en": "To mark your first year in Oviedo, you and a friend look through photos of your move."
+      },
+      "pedagogicalGoal": "Das Imperfekt beschreibt hier das Wetter und die schwierige Orientierung. Für die einmalige Hilfe der Nachbarin wechselst du zum Indefinido.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué recuerdas de aquel primer día en la ciudad?",
+          "baseText": {
+            "de": "Was weißt du noch von deinem ersten Tag in der Stadt?",
+            "en": "What do you remember about your first day in the city?"
+          }
+        },
+        {
+          "targetText": "Recuerdo mi llegada a Oviedo: llovía y no encontraba la salida de la estación.",
+          "baseText": {
+            "de": "Ich erinnere mich an meine Ankunft in Oviedo. Es regnete, und ich fand den Ausgang des Bahnhofs nicht.",
+            "en": "I remember arriving in Oviedo. It was raining and I couldn't find the way out of the station."
+          }
+        },
+        {
+          "targetText": "¿Y cómo conseguiste llegar a tu piso con todas las cajas?",
+          "baseText": {
+            "de": "Und wie bist du mit all den Kisten zur Wohnung gekommen?",
+            "en": "So how did you get to your flat with all the boxes?"
+          }
+        },
+        {
+          "targetText": "Una vecina vino a buscarme y llevó dos cajas hasta casa.",
+          "baseText": {
+            "de": "Eine Nachbarin holte mich ab und trug zwei Kisten bis nach Hause.",
+            "en": "A neighbour came to meet me and carried two boxes all the way home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El fondo y el primer gesto",
+        "rule": {
+          "de": "Das Imperfekt beschreibt hier das Wetter und die schwierige Orientierung. Für die einmalige Hilfe der Nachbarin wechselst du zum Indefinido.",
+          "en": "The imperfect sets the weather and the difficulty finding your way. Switch to the preterite for the neighbour's one-off act of help."
+        },
+        "examples": [
+          {
+            "targetText": "Recuerdo mi llegada a Oviedo: llovía y no encontraba la salida de la estación.",
+            "baseText": {
+              "de": "Ich erinnere mich an meine Ankunft in Oviedo. Es regnete, und ich fand den Ausgang des Bahnhofs nicht.",
+              "en": "I remember arriving in Oviedo. It was raining and I couldn't find the way out of the station."
+            },
+            "highlight": "llovía y no encontraba"
+          },
+          {
+            "targetText": "Hacía frío cuando el portero abrió la puerta del edificio.",
+            "baseText": {
+              "de": "Es war kalt, als der Hausmeister die Eingangstür öffnete.",
+              "en": "It was cold when the caretaker opened the building door."
+            },
+            "highlight": "Hacía frío"
+          }
+        ]
+      },
+      "cloze": [
+        "Una vecina ",
+        {
+          "kind": "form",
+          "answer": "vino",
+          "choices": [
+            "venimos",
+            "vino",
+            "vine",
+            "vinieron"
+          ],
+          "cue": "venir (la vecina, hecho puntual)"
+        },
+        " a buscarme y ",
+        {
+          "kind": "form",
+          "answer": "llevó",
+          "choices": [
+            "llevé",
+            "llevaron",
+            "llevó",
+            "llevaste"
+          ],
+          "cue": "llevar (la vecina, hecho puntual)"
+        },
+        " dos cajas hasta casa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Recuerdo mi llegada a Oviedo:",
+          "baseText": {
+            "de": "Ich erinnere mich an meine Ankunft in Oviedo:",
+            "en": "I remember arriving in Oviedo:"
+          }
+        },
+        {
+          "targetText": "llovía",
+          "baseText": {
+            "de": "es regnete",
+            "en": "it was raining"
+          }
+        },
+        {
+          "targetText": "y no encontraba",
+          "baseText": {
+            "de": "und ich fand nicht",
+            "en": "and I couldn't find"
+          }
+        },
+        {
+          "targetText": "la salida de la estación.",
+          "baseText": {
+            "de": "den Ausgang aus dem Bahnhof.",
+            "en": "the way out of the station."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "llegada",
+          "baseText": {
+            "de": "Ankunft",
+            "en": "arrival"
+          }
+        },
+        {
+          "targetText": "llovía",
+          "baseText": {
+            "de": "es regnete",
+            "en": "it was raining"
+          }
+        },
+        {
+          "targetText": "la salida",
+          "baseText": {
+            "de": "der Ausgang",
+            "en": "the exit"
+          }
+        },
+        {
+          "targetText": "la estación",
+          "baseText": {
+            "de": "der Bahnhof",
+            "en": "the station"
+          }
+        },
+        {
+          "targetText": "buscarme",
+          "baseText": {
+            "de": "mich abholen",
+            "en": "come and get me"
+          }
+        },
+        {
+          "targetText": "dos cajas",
+          "baseText": {
+            "de": "zwei Kisten",
+            "en": "two boxes"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Recuerdo mi ",
+        "answer": "llegada",
+        "after": " a Oviedo: llovía y no encontraba la salida de la estación.",
+        "fallbackChoices": [
+          "llegando",
+          "llegar",
+          "llegué",
+          "llegada"
+        ]
+      },
+      "speakRequired": [
+        "llegada",
+        "llovía",
+        "estación"
+      ],
+      "sceneCaption": {
+        "de": "Zur Erinnerung an dein erstes Jahr in Oviedo schaut sich eine Freundin mit dir Fotos vom Umzug an. Du hörst: „¿Qué recuerdas de aquel primer día en la ciudad?“",
+        "en": "To mark your first year in Oviedo, you and a friend look through photos of your move. You hear: “¿Qué recuerdas de aquel primer día en la ciudad?”"
+      },
+      "trophyWord": {
+        "word": "llegada",
+        "meaning": {
+          "de": "Ankunft",
+          "en": "arrival"
+        },
+        "example": "Guardé el billete de mi llegada a Oviedo.",
+        "whyThisWord": {
+          "de": "Llegada benennt den Zeitpunkt, an dem deine Geschichte an einem neuen Ort beginnt.",
+          "en": "Llegada names the moment your story in a new place begins."
+        }
+      },
+      "distractors": [
+        "mi salida de Oviedo:",
+        "el tren de vuelta."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Umzugskisten stehen unter einem Bahnhofsvordach.",
+        "en": "Two moving boxes sit beneath a station canopy."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "Two moving boxes sit beneath a station canopy."
+    },
+    {
+      "slug": "el-primer-tramite",
+      "title": {
+        "de": "Der erste Antrag",
+        "en": "The first application"
+      },
+      "situation": {
+        "de": "Du hilfst einem Freund beim Ablegen von Unterlagen und entdeckst deinen ersten Antrag für den Bibliotheksausweis wieder.",
+        "en": "While helping a friend file some papers, you find your first library card application."
+      },
+      "pedagogicalGoal": "Me costó mit einem Infinitiv benennt eine konkrete Schwierigkeit. Mit porque und dem Imperfekt erklärst du die damalige Situation.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Por qué guardaste aquel formulario de la biblioteca?",
+          "baseText": {
+            "de": "Warum hast du dieses Formular von der Bibliothek aufgehoben?",
+            "en": "Why did you keep that library form?"
+          }
+        },
+        {
+          "targetText": "Me costó mucho esfuerzo rellenar la solicitud porque no entendía dos preguntas.",
+          "baseText": {
+            "de": "Es kostete mich viel Mühe, den Antrag auszufüllen, weil ich zwei Fragen nicht verstand.",
+            "en": "It took a lot of effort to fill in the application because I didn't understand two questions."
+          }
+        },
+        {
+          "targetText": "Esas casillas son bastante raras. ¿Cómo averiguaste qué poner?",
+          "baseText": {
+            "de": "Die Felder sind ziemlich ungewöhnlich. Wie hast du herausgefunden, was du eintragen solltest?",
+            "en": "Those boxes are unusual. How did you work out what to put?"
+          }
+        },
+        {
+          "targetText": "Pedí un ejemplo en el mostrador y completé las dos casillas.",
+          "baseText": {
+            "de": "Ich bat am Schalter um ein Beispiel und füllte die beiden Felder aus.",
+            "en": "I asked at the desk for an example and filled in both boxes."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Contar lo que costó",
+        "rule": {
+          "de": "Me costó mit einem Infinitiv benennt eine konkrete Schwierigkeit. Mit porque und dem Imperfekt erklärst du die damalige Situation.",
+          "en": "Me costó with an infinitive identifies something you found difficult. Porque with the imperfect explains the circumstances at the time."
+        },
+        "examples": [
+          {
+            "targetText": "Me costó mucho esfuerzo rellenar la solicitud porque no entendía dos preguntas.",
+            "baseText": {
+              "de": "Es kostete mich viel Mühe, den Antrag auszufüllen, weil ich zwei Fragen nicht verstand.",
+              "en": "It took a lot of effort to fill in the application because I didn't understand two questions."
+            },
+            "highlight": "Me costó mucho esfuerzo"
+          },
+          {
+            "targetText": "Me costó mucho reconocer la calle porque aún no tenía un plano.",
+            "baseText": {
+              "de": "Ich hatte Mühe, die Straße wiederzuerkennen, weil ich noch keinen Stadtplan hatte.",
+              "en": "I struggled to recognise the street because I didn't have a map yet."
+            },
+            "highlight": "Me costó mucho"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Pedí",
+          "choices": [
+            "Pidió",
+            "Pediste",
+            "Pedí",
+            "Pidieron"
+          ],
+          "cue": "pedir (yo, hecho puntual)"
+        },
+        " un ejemplo en el mostrador y ",
+        {
+          "kind": "form",
+          "answer": "completé",
+          "choices": [
+            "completaste",
+            "completaron",
+            "completó",
+            "completé"
+          ],
+          "cue": "completar (yo, hecho puntual)"
+        },
+        " las dos casillas."
+      ],
+      "chunks": [
+        {
+          "targetText": "Me costó mucho esfuerzo",
+          "baseText": {
+            "de": "Es kostete mich viel Mühe",
+            "en": "It took a lot of effort"
+          }
+        },
+        {
+          "targetText": "rellenar la solicitud",
+          "baseText": {
+            "de": "den Antrag auszufüllen",
+            "en": "to fill in the application"
+          }
+        },
+        {
+          "targetText": "porque no entendía",
+          "baseText": {
+            "de": "weil ich nicht verstand",
+            "en": "because I didn't understand"
+          }
+        },
+        {
+          "targetText": "dos preguntas.",
+          "baseText": {
+            "de": "zwei Fragen.",
+            "en": "two questions."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "esfuerzo",
+          "baseText": {
+            "de": "Mühe, Anstrengung",
+            "en": "effort"
+          }
+        },
+        {
+          "targetText": "rellenar",
+          "baseText": {
+            "de": "ausfüllen",
+            "en": "fill in"
+          }
+        },
+        {
+          "targetText": "la solicitud",
+          "baseText": {
+            "de": "der Antrag",
+            "en": "the application"
+          }
+        },
+        {
+          "targetText": "dos preguntas",
+          "baseText": {
+            "de": "zwei Fragen",
+            "en": "two questions"
+          }
+        },
+        {
+          "targetText": "el mostrador",
+          "baseText": {
+            "de": "der Schalter",
+            "en": "the desk"
+          }
+        },
+        {
+          "targetText": "las dos casillas",
+          "baseText": {
+            "de": "die beiden Felder",
+            "en": "both boxes"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me costó mucho esfuerzo rellenar la solicitud porque no ",
+        "answer": "entendía",
+        "after": " dos preguntas.",
+        "fallbackChoices": [
+          "entendíamos",
+          "entendían",
+          "entendía",
+          "entendías"
+        ]
+      },
+      "speakRequired": [
+        "esfuerzo",
+        "solicitud",
+        "preguntas"
+      ],
+      "sceneCaption": {
+        "de": "Du hilfst einem Freund beim Ablegen von Unterlagen und entdeckst deinen ersten Antrag für den Bibliotheksausweis wieder. Du hörst: „¿Por qué guardaste aquel formulario de la biblioteca?“",
+        "en": "While helping a friend file some papers, you find your first library card application. You hear: “¿Por qué guardaste aquel formulario de la biblioteca?”"
+      },
+      "trophyWord": {
+        "word": "esfuerzo",
+        "meaning": {
+          "de": "Mühe, Anstrengung",
+          "en": "effort"
+        },
+        "example": "El esfuerzo de aquella tarde mereció la pena.",
+        "whyThisWord": {
+          "de": "Esfuerzo beschreibt, wie viel dir eine Aufgabe abverlangte.",
+          "en": "Esfuerzo describes the effort a task required of you."
+        }
+      },
+      "distractors": [
+        "perdí poco dinero",
+        "cerrar el edificio"
+      ],
+      "placeholderCaption": {
+        "de": "Ein altes Antragsformular liegt neben einem Bibliotheksausweis.",
+        "en": "An old application form lies beside a library card."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "An old application form lies beside a library card."
+    },
+    {
+      "slug": "la-charla-del-mercado",
+      "title": {
+        "de": "Ein Gespräch am Marktstand",
+        "en": "A conversation at the market stall"
+      },
+      "situation": {
+        "de": "Auf dem Markt triffst du mit einem Freund die Verkäuferin, bei der du hier zum ersten Mal eingekauft hast.",
+        "en": "At the market you and a friend meet the first stallholder you ever bought from here."
+      },
+      "pedagogicalGoal": "Cuando und das Indefinido verknüpfen zwei konkrete Ereignisse. Mit dejar de und empezar a kannst du anschließend sagen, was sich in deinem Verhalten änderte.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Siempre te ha resultado fácil hablar con ella?",
+          "baseText": {
+            "de": "Ist es dir schon immer leichtgefallen, mit ihr zu sprechen?",
+            "en": "Have you always found it easy to talk to her?"
+          }
+        },
+        {
+          "targetText": "Gané confianza cuando la vendedora me explicó cómo pedir medio kilo.",
+          "baseText": {
+            "de": "Ich gewann Selbstvertrauen, als die Verkäuferin mir erklärte, wie man ein halbes Kilo bestellt.",
+            "en": "I gained confidence when the stallholder explained how to ask for half a kilo."
+          }
+        },
+        {
+          "targetText": "¿Se notó después cuando volviste al mercado?",
+          "baseText": {
+            "de": "Hat man das beim nächsten Marktbesuch gemerkt?",
+            "en": "Did it make a difference when you went back to the market?"
+          }
+        },
+        {
+          "targetText": "Sí, dejé de señalar la fruta y empecé a pedirla por kilos.",
+          "baseText": {
+            "de": "Ja, ich hörte auf, auf das Obst zu zeigen, und fing an, es kiloweise zu bestellen.",
+            "en": "Yes, I stopped pointing at the fruit and started asking for it by the kilo."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un momento que cambió algo",
+        "rule": {
+          "de": "Cuando und das Indefinido verknüpfen zwei konkrete Ereignisse. Mit dejar de und empezar a kannst du anschließend sagen, was sich in deinem Verhalten änderte.",
+          "en": "Cuando with the preterite connects two specific events. Dejar de and empezar a then let you describe what you stopped and started doing."
+        },
+        "examples": [
+          {
+            "targetText": "Gané confianza cuando la vendedora me explicó cómo pedir medio kilo.",
+            "baseText": {
+              "de": "Ich gewann Selbstvertrauen, als die Verkäuferin mir erklärte, wie man ein halbes Kilo bestellt.",
+              "en": "I gained confidence when the stallholder explained how to ask for half a kilo."
+            },
+            "highlight": "cuando la vendedora me explicó"
+          },
+          {
+            "targetText": "Encontré la parada cuando el conductor me indicó la esquina correcta.",
+            "baseText": {
+              "de": "Ich fand die Haltestelle, als der Fahrer mir die richtige Ecke zeigte.",
+              "en": "I found the stop when the driver pointed out the right corner."
+            },
+            "highlight": "cuando el conductor me indicó"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, ",
+        {
+          "kind": "form",
+          "answer": "dejé",
+          "choices": [
+            "dejó",
+            "dejé",
+            "dejaron",
+            "dejaste"
+          ],
+          "cue": "dejar (yo, hecho puntual)"
+        },
+        " de señalar la fruta y ",
+        {
+          "kind": "form",
+          "answer": "empecé",
+          "choices": [
+            "empezaste",
+            "empezó",
+            "empezaron",
+            "empecé"
+          ],
+          "cue": "empezar (yo, hecho puntual)"
+        },
+        " a pedirla por kilos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Gané confianza",
+          "baseText": {
+            "de": "Ich gewann Selbstvertrauen",
+            "en": "I gained confidence"
+          }
+        },
+        {
+          "targetText": "cuando la vendedora",
+          "baseText": {
+            "de": "als die Verkäuferin",
+            "en": "when the stallholder"
+          }
+        },
+        {
+          "targetText": "me explicó",
+          "baseText": {
+            "de": "mir erklärte",
+            "en": "explained to me"
+          }
+        },
+        {
+          "targetText": "cómo pedir medio kilo.",
+          "baseText": {
+            "de": "wie man ein halbes Kilo bestellt.",
+            "en": "how to ask for half a kilo."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "confianza",
+          "baseText": {
+            "de": "Selbstvertrauen",
+            "en": "confidence"
+          }
+        },
+        {
+          "targetText": "la vendedora",
+          "baseText": {
+            "de": "die Verkäuferin",
+            "en": "the stallholder"
+          }
+        },
+        {
+          "targetText": "medio kilo",
+          "baseText": {
+            "de": "ein halbes Kilo",
+            "en": "half a kilo"
+          }
+        },
+        {
+          "targetText": "señalar",
+          "baseText": {
+            "de": "zeigen auf",
+            "en": "point at"
+          }
+        },
+        {
+          "targetText": "la fruta",
+          "baseText": {
+            "de": "das Obst",
+            "en": "the fruit"
+          }
+        },
+        {
+          "targetText": "por kilos",
+          "baseText": {
+            "de": "kiloweise",
+            "en": "by the kilo"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "Gané",
+        "after": " confianza cuando la vendedora me explicó cómo pedir medio kilo.",
+        "fallbackChoices": [
+          "Ganaron",
+          "Ganaste",
+          "Gané",
+          "Ganó"
+        ]
+      },
+      "speakRequired": [
+        "confianza",
+        "vendedora",
+        "kilo"
+      ],
+      "sceneCaption": {
+        "de": "Auf dem Markt triffst du mit einem Freund die Verkäuferin, bei der du hier zum ersten Mal eingekauft hast. Du hörst: „¿Siempre te ha resultado fácil hablar con ella?“",
+        "en": "At the market you and a friend meet the first stallholder you ever bought from here. You hear: “¿Siempre te ha resultado fácil hablar con ella?”"
+      },
+      "trophyWord": {
+        "word": "confianza",
+        "meaning": {
+          "de": "Selbstvertrauen",
+          "en": "confidence"
+        },
+        "example": "Aquella conversación me dio confianza para preguntar otra vez.",
+        "whyThisWord": {
+          "de": "Mit ganar confianza beschreibst du, wie dir das Sprechen allmählich leichter fiel.",
+          "en": "Ganar confianza describes becoming more confident about speaking."
+        }
+      },
+      "distractors": [
+        "perdí el cambio",
+        "cómo vender el puesto."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Waage mit einer kleinen Papiertüte auf einem Marktstand.",
+        "en": "A scale and a small paper bag on a market stall."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "A scale and a small paper bag on a market stall."
+    },
+    {
+      "slug": "una-foto-al-mes",
+      "title": {
+        "de": "Jeden Monat ein neues Foto",
+        "en": "A new photo each month"
+      },
+      "situation": {
+        "de": "Beim Besuch einer kleinen Fotoausstellung fragt dich eine Freundin nach der Fotografin, deren Bilder ihr gerade anschaut.",
+        "en": "At a small exhibition, a friend asks you about the photographer whose pictures you are looking at."
+      },
+      "pedagogicalGoal": "Para mit Infinitiv gibt den Zweck des gemeinsamen Spaziergangs an. Das Präsens stellt anschließend die Verbindung zur heutigen Freundschaft her.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Dónde conociste a la chica que hizo estas fotos?",
+          "baseText": {
+            "de": "Wo hast du die junge Frau kennengelernt, die diese Fotos gemacht hat?",
+            "en": "Where did you meet the woman who took these photos?"
+          }
+        },
+        {
+          "targetText": "Nuestra amistad empezó durante un paseo para fotografiar los escaparates del barrio.",
+          "baseText": {
+            "de": "Unsere Freundschaft begann bei einem Spaziergang, auf dem wir die Schaufenster im Viertel fotografieren wollten.",
+            "en": "Our friendship began on a walk to photograph shop windows in the neighbourhood."
+          }
+        },
+        {
+          "targetText": "Ella vive ahora en otra ciudad. ¿Qué haces para mantener el contacto?",
+          "baseText": {
+            "de": "Sie wohnt jetzt in einer anderen Stadt. Wie hältst du den Kontakt aufrecht?",
+            "en": "She lives in another city now. What do you do to stay in touch?"
+          }
+        },
+        {
+          "targetText": "Nos mandamos una foto cada mes y comentamos los detalles.",
+          "baseText": {
+            "de": "Wir schicken uns jeden Monat ein Foto und besprechen die Details.",
+            "en": "We send each other a photo every month and talk about the details."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Para + infinitivo al contar un recuerdo",
+        "rule": {
+          "de": "Para mit Infinitiv gibt den Zweck des gemeinsamen Spaziergangs an. Das Präsens stellt anschließend die Verbindung zur heutigen Freundschaft her.",
+          "en": "Para with the infinitive explains the purpose of the walk. The present then connects the memory to your friendship today."
+        },
+        "examples": [
+          {
+            "targetText": "Nuestra amistad empezó durante un paseo para fotografiar los escaparates del barrio.",
+            "baseText": {
+              "de": "Unsere Freundschaft begann bei einem Spaziergang, auf dem wir die Schaufenster im Viertel fotografieren wollten.",
+              "en": "Our friendship began on a walk to photograph shop windows in the neighbourhood."
+            },
+            "highlight": "para fotografiar"
+          },
+          {
+            "targetText": "Nos apuntamos a una salida para dibujar las fachadas del casco viejo.",
+            "baseText": {
+              "de": "Wir meldeten uns zu einem Ausflug an, um die Häuserfassaden der Altstadt zu zeichnen.",
+              "en": "We joined an outing to sketch the façades in the old town."
+            },
+            "highlight": "para dibujar"
+          }
+        ]
+      },
+      "cloze": [
+        "Nos ",
+        {
+          "kind": "form",
+          "answer": "mandamos",
+          "choices": [
+            "mando",
+            "manda",
+            "mandamos",
+            "mandan"
+          ],
+          "cue": "mandar (nosotros, hábito actual)"
+        },
+        " una foto cada mes y ",
+        {
+          "kind": "form",
+          "answer": "comentamos",
+          "choices": [
+            "comentamos",
+            "comento",
+            "comenta",
+            "comentan"
+          ],
+          "cue": "comentar (nosotros)"
+        },
+        " los detalles."
+      ],
+      "chunks": [
+        {
+          "targetText": "Nuestra amistad empezó",
+          "baseText": {
+            "de": "Unsere Freundschaft begann",
+            "en": "Our friendship began"
+          }
+        },
+        {
+          "targetText": "durante un paseo",
+          "baseText": {
+            "de": "bei einem Spaziergang",
+            "en": "on a walk"
+          }
+        },
+        {
+          "targetText": "para fotografiar",
+          "baseText": {
+            "de": "um zu fotografieren",
+            "en": "to photograph"
+          }
+        },
+        {
+          "targetText": "los escaparates del barrio.",
+          "baseText": {
+            "de": "die Schaufenster im Viertel.",
+            "en": "the shop windows in the neighbourhood."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "amistad",
+          "baseText": {
+            "de": "Freundschaft",
+            "en": "friendship"
+          }
+        },
+        {
+          "targetText": "durante un paseo",
+          "baseText": {
+            "de": "bei einem Spaziergang",
+            "en": "on a walk"
+          }
+        },
+        {
+          "targetText": "los escaparates",
+          "baseText": {
+            "de": "die Schaufenster",
+            "en": "the shop windows"
+          }
+        },
+        {
+          "targetText": "una foto",
+          "baseText": {
+            "de": "ein Foto",
+            "en": "a photo"
+          }
+        },
+        {
+          "targetText": "cada mes",
+          "baseText": {
+            "de": "jeden Monat",
+            "en": "each month"
+          }
+        },
+        {
+          "targetText": "los detalles",
+          "baseText": {
+            "de": "die Einzelheiten",
+            "en": "the details"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Nuestra amistad empezó durante un paseo para ",
+        "answer": "fotografiar",
+        "after": " los escaparates del barrio.",
+        "fallbackChoices": [
+          "fotografiamos",
+          "fotografío",
+          "fotografiar",
+          "fotografiado"
+        ]
+      },
+      "speakRequired": [
+        "amistad",
+        "paseo",
+        "escaparates"
+      ],
+      "sceneCaption": {
+        "de": "Beim Besuch einer kleinen Fotoausstellung fragt dich eine Freundin nach der Fotografin, deren Bilder ihr gerade anschaut. Du hörst: „¿Dónde conociste a la chica que hizo estas fotos?“",
+        "en": "At a small exhibition, a friend asks you about the photographer whose pictures you are looking at. You hear: “¿Dónde conociste a la chica que hizo estas fotos?”"
+      },
+      "trophyWord": {
+        "word": "amistad",
+        "meaning": {
+          "de": "Freundschaft",
+          "en": "friendship"
+        },
+        "example": "La amistad empezó con una cámara prestada.",
+        "whyThisWord": {
+          "de": "Amistad benennt die Beziehung und lädt dazu ein, ihre Entstehung zu erzählen.",
+          "en": "Amistad names the relationship and gives you a way to tell how it started."
+        }
+      },
+      "distractors": [
+        "para cerrar",
+        "las calles del puerto."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei ausgedruckte Fotos von Schaufenstern hängen nebeneinander.",
+        "en": "Two photographs of shop windows hang side by side."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "Two photographs of shop windows hang side by side."
+    },
+    {
+      "slug": "la-etiqueta-del-jersey",
+      "title": {
+        "de": "Was auf dem Etikett steht",
+        "en": "What the label says"
+      },
+      "situation": {
+        "de": "Beim Wäschesortieren im Waschsalon sprichst du mit einer Freundin darüber, was du im ersten Jahr gelernt hast.",
+        "en": "While sorting clothes at a laundrette, you tell a friend what you learnt in your first year."
+      },
+      "pedagogicalGoal": "Mit antes de und dem Infinitiv ordnest du zwei Handlungen derselben Person. Danach kannst du einen konkreten Fall im Indefinido anführen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué has aprendido aquí que uses de verdad en casa?",
+          "baseText": {
+            "de": "Was hast du hier gelernt, das du zu Hause wirklich anwendest?",
+            "en": "What have you learnt here that you actually use at home?"
+          }
+        },
+        {
+          "targetText": "Un aprendizaje útil fue leer las etiquetas antes de elegir el programa de lavado.",
+          "baseText": {
+            "de": "Eine nützliche Erkenntnis war, die Etiketten vor der Wahl des Waschprogramms zu lesen.",
+            "en": "One useful thing I learnt was to read labels before choosing the wash cycle."
+          }
+        },
+        {
+          "targetText": "Eso suena práctico, pero ¿te ha servido con alguna prenda concreta?",
+          "baseText": {
+            "de": "Das klingt praktisch. Hat es dir bei einem bestimmten Kleidungsstück geholfen?",
+            "en": "That sounds practical. Has it helped you with any particular item?"
+          }
+        },
+        {
+          "targetText": "Ayer vi los treinta grados en la etiqueta y salvé mi jersey.",
+          "baseText": {
+            "de": "Gestern sah ich die dreißig Grad auf dem Etikett und rettete meinen Pullover.",
+            "en": "Yesterday I spotted the thirty-degree mark on the label and saved my jumper."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Antes de + infinitivo",
+        "rule": {
+          "de": "Mit antes de und dem Infinitiv ordnest du zwei Handlungen derselben Person. Danach kannst du einen konkreten Fall im Indefinido anführen.",
+          "en": "Antes de followed by an infinitive puts two actions by the same person in order. Follow it with a specific example in the preterite."
+        },
+        "examples": [
+          {
+            "targetText": "Un aprendizaje útil fue leer las etiquetas antes de elegir el programa de lavado.",
+            "baseText": {
+              "de": "Eine nützliche Erkenntnis war, die Etiketten vor der Wahl des Waschprogramms zu lesen.",
+              "en": "One useful thing I learnt was to read labels before choosing the wash cycle."
+            },
+            "highlight": "antes de elegir"
+          },
+          {
+            "targetText": "Miré el cable antes de encender la lámpara usada.",
+            "baseText": {
+              "de": "Ich sah mir das Kabel an, bevor ich die gebrauchte Lampe einschaltete.",
+              "en": "I checked the cable before switching on the second-hand lamp."
+            },
+            "highlight": "antes de encender"
+          }
+        ]
+      },
+      "cloze": [
+        "Ayer ",
+        {
+          "kind": "form",
+          "answer": "vi",
+          "choices": [
+            "vio",
+            "vieron",
+            "vi",
+            "viste"
+          ],
+          "cue": "ver (yo, hecho puntual)"
+        },
+        " los treinta grados en la etiqueta y ",
+        {
+          "kind": "form",
+          "answer": "salvé",
+          "choices": [
+            "salvaron",
+            "salvaste",
+            "salvé",
+            "salvó"
+          ],
+          "cue": "salvar (yo, hecho puntual)"
+        },
+        " mi jersey."
+      ],
+      "chunks": [
+        {
+          "targetText": "Un aprendizaje útil",
+          "baseText": {
+            "de": "Eine nützliche Erkenntnis",
+            "en": "One useful thing I learnt"
+          }
+        },
+        {
+          "targetText": "fue leer las etiquetas",
+          "baseText": {
+            "de": "war, die Etiketten zu lesen",
+            "en": "was to read the labels"
+          }
+        },
+        {
+          "targetText": "antes de elegir",
+          "baseText": {
+            "de": "bevor ich auswähle",
+            "en": "before choosing"
+          }
+        },
+        {
+          "targetText": "el programa de lavado.",
+          "baseText": {
+            "de": "das Waschprogramm.",
+            "en": "the wash cycle."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "aprendizaje",
+          "baseText": {
+            "de": "Lernerfahrung, Erkenntnis",
+            "en": "learning experience, lesson learnt"
+          }
+        },
+        {
+          "targetText": "leer las etiquetas",
+          "baseText": {
+            "de": "die Etiketten lesen",
+            "en": "read the labels"
+          }
+        },
+        {
+          "targetText": "elegir",
+          "baseText": {
+            "de": "auswählen",
+            "en": "choose"
+          }
+        },
+        {
+          "targetText": "el programa",
+          "baseText": {
+            "de": "das Programm",
+            "en": "the cycle"
+          }
+        },
+        {
+          "targetText": "treinta grados",
+          "baseText": {
+            "de": "dreißig Grad",
+            "en": "thirty degrees"
+          }
+        },
+        {
+          "targetText": "mi jersey",
+          "baseText": {
+            "de": "mein Pullover",
+            "en": "my jumper"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Un aprendizaje útil fue leer las etiquetas antes de ",
+        "answer": "elegir",
+        "after": " el programa de lavado.",
+        "fallbackChoices": [
+          "eligió",
+          "elegido",
+          "elegir",
+          "elige"
+        ]
+      },
+      "speakRequired": [
+        "aprendizaje",
+        "etiquetas",
+        "lavado"
+      ],
+      "sceneCaption": {
+        "de": "Beim Wäschesortieren im Waschsalon sprichst du mit einer Freundin darüber, was du im ersten Jahr gelernt hast. Du hörst: „¿Qué has aprendido aquí que uses de verdad en casa?“",
+        "en": "While sorting clothes at a laundrette, you tell a friend what you learnt in your first year. You hear: “¿Qué has aprendido aquí que uses de verdad en casa?”"
+      },
+      "trophyWord": {
+        "word": "aprendizaje",
+        "meaning": {
+          "de": "Lernerfahrung, Erkenntnis",
+          "en": "learning experience, lesson learnt"
+        },
+        "example": "Mi aprendizaje empezó con un jersey que encogió.",
+        "whyThisWord": {
+          "de": "Aprendizaje verbindet die praktische Erfahrung mit dem, was du daraus gelernt hast.",
+          "en": "Aprendizaje connects a practical experience with what you learnt from it."
+        }
+      },
+      "distractors": [
+        "después de tirar",
+        "el billete de ida."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Pulloveretikett liegt vor den Tasten eines Waschautomaten.",
+        "en": "A jumper label is held in front of a washing machine's controls."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "A jumper label is held in front of a washing machine's controls."
+    },
+    {
+      "slug": "la-pausa-del-mediodia",
+      "title": {
+        "de": "Die Mittagspause draußen",
+        "en": "Lunch breaks outside"
+      },
+      "situation": {
+        "de": "Ein Arbeitskollege setzt sich in der Mittagspause auf dem Platz neben dich.",
+        "en": "A colleague joins you in the square at lunchtime."
+      },
+      "pedagogicalGoal": "Era mit einem Infinitiv beschreibt eine frühere Gewohnheit. Ahora und ein Verb im Präsens zeigen, welche Gewohnheit sie abgelöst hat.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Ya comías aquí cuando empezaste en la oficina?",
+          "baseText": {
+            "de": "Hast du schon am Anfang deiner Zeit im Büro hier gegessen?",
+            "en": "Did you eat here when you first started at the office?"
+          }
+        },
+        {
+          "targetText": "Al principio mi rutina era comer frente al ordenador; ahora salgo a la plaza.",
+          "baseText": {
+            "de": "Anfangs bestand meine Routine darin, vor dem Computer zu essen. Jetzt gehe ich auf den Platz.",
+            "en": "At first my routine was to eat in front of the computer. Now I go out to the square."
+          }
+        },
+        {
+          "targetText": "En invierno llueve mucho en esta plaza. ¿Volverás a comer en tu mesa?",
+          "baseText": {
+            "de": "Im Winter regnet es viel auf diesem Platz. Wirst du wieder am Schreibtisch essen?",
+            "en": "It rains a lot in this square in winter. Will you go back to eating at your desk?"
+          }
+        },
+        {
+          "targetText": "Si llueve, hago la pausa bajo los soportales de la plaza.",
+          "baseText": {
+            "de": "Wenn es regnet, mache ich unter den Arkaden am Platz Pause.",
+            "en": "If it rains, I take my break under the arcades around the square."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Antes y ahora",
+        "rule": {
+          "de": "Era mit einem Infinitiv beschreibt eine frühere Gewohnheit. Ahora und ein Verb im Präsens zeigen, welche Gewohnheit sie abgelöst hat.",
+          "en": "Era with an infinitive describes a former routine. Ahora and a present-tense verb say what has taken its place."
+        },
+        "examples": [
+          {
+            "targetText": "Al principio mi rutina era comer frente al ordenador; ahora salgo a la plaza.",
+            "baseText": {
+              "de": "Anfangs bestand meine Routine darin, vor dem Computer zu essen. Jetzt gehe ich auf den Platz.",
+              "en": "At first my routine was to eat in front of the computer. Now I go out to the square."
+            },
+            "highlight": "era comer"
+          },
+          {
+            "targetText": "Mi costumbre era salir sin desayunar. Ahora como algo antes del trabajo.",
+            "baseText": {
+              "de": "Früher ging ich gewöhnlich ohne Frühstück los. Jetzt esse ich vor der Arbeit etwas.",
+              "en": "I used to leave without breakfast. Now I eat something before work."
+            },
+            "highlight": "era salir"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "choice",
+          "answer": "Si",
+          "choices": [
+            "Desde",
+            "Si",
+            "Durante",
+            "Tras"
+          ]
+        },
+        " llueve, ",
+        {
+          "kind": "form",
+          "answer": "hago",
+          "choices": [
+            "haces",
+            "hago",
+            "hacen",
+            "hacemos"
+          ],
+          "cue": "hacer (yo)"
+        },
+        " la pausa bajo los soportales de la plaza."
+      ],
+      "chunks": [
+        {
+          "targetText": "Al principio mi rutina",
+          "baseText": {
+            "de": "Anfangs bestand meine Routine",
+            "en": "At first my routine"
+          }
+        },
+        {
+          "targetText": "era comer",
+          "baseText": {
+            "de": "darin zu essen",
+            "en": "was to eat"
+          }
+        },
+        {
+          "targetText": "frente al ordenador;",
+          "baseText": {
+            "de": "vor dem Computer;",
+            "en": "in front of the computer;"
+          }
+        },
+        {
+          "targetText": "ahora salgo a la plaza.",
+          "baseText": {
+            "de": "jetzt gehe ich auf den Platz.",
+            "en": "now I go out to the square."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "rutina",
+          "baseText": {
+            "de": "Tagesablauf, Routine",
+            "en": "routine"
+          }
+        },
+        {
+          "targetText": "al principio",
+          "baseText": {
+            "de": "anfangs",
+            "en": "at first"
+          }
+        },
+        {
+          "targetText": "frente al ordenador",
+          "baseText": {
+            "de": "vor dem Computer",
+            "en": "in front of the computer"
+          }
+        },
+        {
+          "targetText": "la plaza",
+          "baseText": {
+            "de": "der Platz",
+            "en": "the square"
+          }
+        },
+        {
+          "targetText": "la pausa",
+          "baseText": {
+            "de": "die Pause",
+            "en": "the break"
+          }
+        },
+        {
+          "targetText": "los soportales",
+          "baseText": {
+            "de": "die Arkaden",
+            "en": "the arcades"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Al principio mi rutina ",
+        "answer": "era",
+        "after": " comer frente al ordenador; ahora salgo a la plaza.",
+        "fallbackChoices": [
+          "eran",
+          "era",
+          "éramos",
+          "eras"
+        ]
+      },
+      "speakRequired": [
+        "rutina",
+        "ordenador",
+        "plaza"
+      ],
+      "sceneCaption": {
+        "de": "Ein Arbeitskollege setzt sich in der Mittagspause auf dem Platz neben dich. Du hörst: „¿Ya comías aquí cuando empezaste en la oficina?“",
+        "en": "A colleague joins you in the square at lunchtime. You hear: “¿Ya comías aquí cuando empezaste en la oficina?”"
+      },
+      "trophyWord": {
+        "word": "rutina",
+        "meaning": {
+          "de": "Tagesablauf, Routine",
+          "en": "routine"
+        },
+        "example": "Mi rutina cambió cuando descubrí la plaza detrás de la oficina.",
+        "whyThisWord": {
+          "de": "Rutina fasst eine regelmäßig wiederkehrende Gewohnheit zusammen.",
+          "en": "Rutina names a repeated feature of everyday life."
+        }
+      },
+      "distractors": [
+        "era comprar",
+        "ahora duermo más."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mahlzeit in einer Dose steht auf einer Bank am Platz.",
+        "en": "A packed lunch sits on a bench in the square."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "A packed lunch sits on a bench in the square."
+    },
+    {
+      "slug": "primeros-contactos",
+      "title": {
+        "de": "Ein Rat für den Anfang",
+        "en": "Advice for a newcomer"
+      },
+      "situation": {
+        "de": "Eine neue Nachbarin fragt, wie sie in Oviedo Leute kennenlernen kann.",
+        "en": "A new neighbour asks how to meet people in Oviedo."
+      },
+      "pedagogicalGoal": "Mi consejo es mit dem Infinitiv spricht eine Empfehlung aus. Im Konditional kannst du den Rat danach an den Zeitplan der anderen Person anpassen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Acabo de llegar y apenas conozco a nadie. ¿Qué te funcionó a ti?",
+          "baseText": {
+            "de": "Ich bin gerade angekommen und kenne kaum jemanden. Was hat dir geholfen?",
+            "en": "I've just arrived and hardly know anyone. What worked for you?"
+          }
+        },
+        {
+          "targetText": "Mi consejo es empezar por una actividad semanal en un grupo pequeño.",
+          "baseText": {
+            "de": "Mein Rat ist, mit einer Aktivität anzufangen, die jede Woche in einer kleinen Gruppe stattfindet.",
+            "en": "My advice is to start with a weekly activity in a small group."
+          }
+        },
+        {
+          "targetText": "Mis turnos cambian cada semana. No puedo comprometerme con un día fijo.",
+          "baseText": {
+            "de": "Meine Schichten wechseln jede Woche. Ich kann mich nicht auf einen festen Tag festlegen.",
+            "en": "My shifts change every week. I can't commit to a fixed day."
+          }
+        },
+        {
+          "targetText": "Entonces probaría el centro social, que abre todos los días.",
+          "baseText": {
+            "de": "Dann würde ich das Stadtteilzentrum ausprobieren. Das ist jeden Tag geöffnet.",
+            "en": "Then I'd try the community centre, which is open every day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Dar un consejo y adaptarlo",
+        "rule": {
+          "de": "Mi consejo es mit dem Infinitiv spricht eine Empfehlung aus. Im Konditional kannst du den Rat danach an den Zeitplan der anderen Person anpassen.",
+          "en": "Mi consejo es plus an infinitive introduces a recommendation. The conditional lets you adapt that advice to the other person's schedule."
+        },
+        "examples": [
+          {
+            "targetText": "Mi consejo es empezar por una actividad semanal en un grupo pequeño.",
+            "baseText": {
+              "de": "Mein Rat ist, mit einer Aktivität anzufangen, die jede Woche in einer kleinen Gruppe stattfindet.",
+              "en": "My advice is to start with a weekly activity in a small group."
+            },
+            "highlight": "Mi consejo es empezar"
+          },
+          {
+            "targetText": "Mi consejo es elegir un grupo cerca de casa.",
+            "baseText": {
+              "de": "Mein Rat ist, eine Gruppe in der Nähe deines Zuhauses zu wählen.",
+              "en": "My advice is to choose a group close to home."
+            },
+            "highlight": "Mi consejo es elegir"
+          }
+        ]
+      },
+      "cloze": [
+        "Entonces ",
+        {
+          "kind": "form",
+          "answer": "probaría",
+          "choices": [
+            "probarías",
+            "probarían",
+            "probaríamos",
+            "probaría"
+          ],
+          "cue": "probar (yo, condicional)"
+        },
+        " el centro social, ",
+        {
+          "kind": "choice",
+          "answer": "que",
+          "choices": [
+            "cuya",
+            "cuyos",
+            "que",
+            "cuyas"
+          ]
+        },
+        " abre todos los días."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi consejo es",
+          "baseText": {
+            "de": "Mein Rat ist",
+            "en": "My advice is"
+          }
+        },
+        {
+          "targetText": "empezar por una actividad",
+          "baseText": {
+            "de": "mit einer Aktivität anzufangen",
+            "en": "to start with an activity"
+          }
+        },
+        {
+          "targetText": "semanal",
+          "baseText": {
+            "de": "wöchentlich",
+            "en": "weekly"
+          }
+        },
+        {
+          "targetText": "en un grupo pequeño.",
+          "baseText": {
+            "de": "in einer kleinen Gruppe.",
+            "en": "in a small group."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "consejo",
+          "baseText": {
+            "de": "Rat, Ratschlag",
+            "en": "advice"
+          }
+        },
+        {
+          "targetText": "una actividad",
+          "baseText": {
+            "de": "eine Aktivität",
+            "en": "an activity"
+          }
+        },
+        {
+          "targetText": "semanal",
+          "baseText": {
+            "de": "wöchentlich",
+            "en": "weekly"
+          }
+        },
+        {
+          "targetText": "mis turnos",
+          "baseText": {
+            "de": "meine Schichten",
+            "en": "my shifts"
+          }
+        },
+        {
+          "targetText": "un día fijo",
+          "baseText": {
+            "de": "ein fester Tag",
+            "en": "a fixed day"
+          }
+        },
+        {
+          "targetText": "el centro social",
+          "baseText": {
+            "de": "das Stadtteilzentrum",
+            "en": "the community centre"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi consejo es ",
+        "answer": "empezar",
+        "after": " por una actividad semanal en un grupo pequeño.",
+        "fallbackChoices": [
+          "empezando",
+          "empezar",
+          "empiezo",
+          "empiezan"
+        ]
+      },
+      "speakRequired": [
+        "consejo",
+        "actividad",
+        "grupo"
+      ],
+      "sceneCaption": {
+        "de": "Eine neue Nachbarin fragt, wie sie in Oviedo Leute kennenlernen kann. Du hörst: „Acabo de llegar y apenas conozco a nadie. ¿Qué te funcionó a ti?“",
+        "en": "A new neighbour asks how to meet people in Oviedo. You hear: “Acabo de llegar y apenas conozco a nadie. ¿Qué te funcionó a ti?”"
+      },
+      "trophyWord": {
+        "word": "consejo",
+        "meaning": {
+          "de": "Rat, Ratschlag",
+          "en": "advice"
+        },
+        "example": "El mejor consejo me lo dio una vecina.",
+        "whyThisWord": {
+          "de": "Consejo führt eine Empfehlung ein, die du nach einer Rückfrage anpassen kannst.",
+          "en": "Consejo introduces advice that you can adapt once you know more."
+        }
+      },
+      "distractors": [
+        "están empezando",
+        "un mes entero."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Aushang mit Aktivitäten hängt im Treppenhaus eines Wohnhauses.",
+        "en": "A list of activities is pinned up in a stairwell."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "A list of activities is pinned up in a stairwell."
+    },
+    {
+      "slug": "un-mapa-de-fuentes",
+      "title": {
+        "de": "Eine Karte der Trinkbrunnen",
+        "en": "A map of drinking fountains"
+      },
+      "situation": {
+        "de": "Bei einem Spaziergang am Fluss fragt dich ein Freund nach dem Vorhaben für dein zweites Jahr in Oviedo.",
+        "en": "On a riverside walk a friend asks what you plan to do in your second year in Oviedo."
+      },
+      "pedagogicalGoal": "Es mit Infinitiv beschreibt das Vorhaben. Mit para und einem Infinitiv sagst du, welchem Zweck der erste konkrete Schritt dient.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué te gustaría hacer por el barrio este año?",
+          "baseText": {
+            "de": "Was würdest du dieses Jahr gerne für das Viertel tun?",
+            "en": "What would you like to do for the neighbourhood this year?"
+          }
+        },
+        {
+          "targetText": "Mi proyecto es dibujar un mapa de las fuentes que funcionan en verano.",
+          "baseText": {
+            "de": "Mein Vorhaben ist, eine Karte der Trinkbrunnen zu zeichnen, die im Sommer funktionieren.",
+            "en": "My project is to draw a map of the drinking fountains that work in the summer."
+          }
+        },
+        {
+          "targetText": "En los mapas antiguos salen algunas que están cerradas. ¿Por dónde empiezas?",
+          "baseText": {
+            "de": "Auf den alten Karten sind einige eingetragen, die geschlossen sind. Womit fängst du an?",
+            "en": "The old maps show some that are closed. Where will you start?"
+          }
+        },
+        {
+          "targetText": "Mañana voy a visitar dos fuentes para comprobar si tienen agua.",
+          "baseText": {
+            "de": "Morgen werde ich zwei Trinkbrunnen aufsuchen, um zu prüfen, ob dort Wasser fließt.",
+            "en": "Tomorrow I'll visit two fountains to check whether they have water."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Nombrar el proyecto y el primer paso",
+        "rule": {
+          "de": "Es mit Infinitiv beschreibt das Vorhaben. Mit para und einem Infinitiv sagst du, welchem Zweck der erste konkrete Schritt dient.",
+          "en": "Es with an infinitive identifies the project. Para with an infinitive explains the purpose of the first concrete step."
+        },
+        "examples": [
+          {
+            "targetText": "Mi proyecto es dibujar un mapa de las fuentes que funcionan en verano.",
+            "baseText": {
+              "de": "Mein Vorhaben ist, eine Karte der Trinkbrunnen zu zeichnen, die im Sommer funktionieren.",
+              "en": "My project is to draw a map of the drinking fountains that work in the summer."
+            },
+            "highlight": "Mi proyecto es dibujar"
+          },
+          {
+            "targetText": "Mi proyecto es grabar los sonidos del mercado para un paseo guiado.",
+            "baseText": {
+              "de": "Mein Vorhaben ist, für einen geführten Spaziergang die Geräusche des Marktes aufzunehmen.",
+              "en": "My project is to record the sounds of the market for a guided walk."
+            },
+            "highlight": "Mi proyecto es grabar"
+          }
+        ]
+      },
+      "cloze": [
+        "Mañana ",
+        {
+          "kind": "form",
+          "answer": "voy",
+          "choices": [
+            "van",
+            "vas",
+            "voy",
+            "vamos"
+          ],
+          "cue": "ir (yo)"
+        },
+        " a visitar dos fuentes ",
+        {
+          "kind": "choice",
+          "answer": "para",
+          "choices": [
+            "aunque",
+            "porque",
+            "mientras",
+            "para"
+          ]
+        },
+        " comprobar si tienen agua."
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi proyecto es",
+          "baseText": {
+            "de": "Mein Vorhaben ist",
+            "en": "My project is"
+          }
+        },
+        {
+          "targetText": "dibujar un mapa",
+          "baseText": {
+            "de": "eine Karte zu zeichnen",
+            "en": "to draw a map"
+          }
+        },
+        {
+          "targetText": "de las fuentes",
+          "baseText": {
+            "de": "der Trinkbrunnen",
+            "en": "of the drinking fountains"
+          }
+        },
+        {
+          "targetText": "que funcionan en verano.",
+          "baseText": {
+            "de": "die im Sommer funktionieren.",
+            "en": "that work in the summer."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "proyecto",
+          "baseText": {
+            "de": "Projekt, Vorhaben",
+            "en": "project"
+          }
+        },
+        {
+          "targetText": "dibujar",
+          "baseText": {
+            "de": "zeichnen",
+            "en": "draw"
+          }
+        },
+        {
+          "targetText": "las fuentes",
+          "baseText": {
+            "de": "die Trinkbrunnen",
+            "en": "the drinking fountains"
+          }
+        },
+        {
+          "targetText": "en verano",
+          "baseText": {
+            "de": "im Sommer",
+            "en": "in summer"
+          }
+        },
+        {
+          "targetText": "los mapas antiguos",
+          "baseText": {
+            "de": "die alten Karten",
+            "en": "the old maps"
+          }
+        },
+        {
+          "targetText": "comprobar",
+          "baseText": {
+            "de": "überprüfen",
+            "en": "check"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi proyecto es ",
+        "answer": "dibujar",
+        "after": " un mapa de las fuentes que funcionan en verano.",
+        "fallbackChoices": [
+          "dibujo",
+          "dibujado",
+          "dibujar",
+          "dibujan"
+        ]
+      },
+      "speakRequired": [
+        "proyecto",
+        "mapa",
+        "fuentes"
+      ],
+      "sceneCaption": {
+        "de": "Bei einem Spaziergang am Fluss fragt dich ein Freund nach dem Vorhaben für dein zweites Jahr in Oviedo. Du hörst: „¿Qué te gustaría hacer por el barrio este año?“",
+        "en": "On a riverside walk a friend asks what you plan to do in your second year in Oviedo. You hear: “¿Qué te gustaría hacer por el barrio este año?”"
+      },
+      "trophyWord": {
+        "word": "proyecto",
+        "meaning": {
+          "de": "Projekt, Vorhaben",
+          "en": "project"
+        },
+        "example": "Mi proyecto empieza con un paseo por el barrio.",
+        "whyThisWord": {
+          "de": "Proyecto gibt einer größeren Idee einen Namen, bevor du den ersten Schritt erläuterst.",
+          "en": "Proyecto names a larger undertaking before you explain the first step."
+        }
+      },
+      "distractors": [
+        "de los teatros",
+        "que cerraron en enero."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einer handgezeichneten Karte sind zwei Brunnen mit Bleistift markiert.",
+        "en": "Two fountains are pencilled onto a hand-drawn map."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "Two fountains are pencilled onto a hand-drawn map."
+    },
+    {
+      "slug": "la-nota-a-isabel",
+      "title": {
+        "de": "Ein Dank an Isabel",
+        "en": "A thank-you for Isabel"
+      },
+      "situation": {
+        "de": "Du schreibst gemeinsam mit einem Freund Karten an die Menschen, die dir im ersten Jahr geholfen haben.",
+        "en": "You and a friend are writing cards to the people who helped you in your first year."
+      },
+      "pedagogicalGoal": "Mit que beschreibst du die Person über das, was sie getan hat. Eine Folge lässt sich mit así que anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Para quién es esa tarjeta con el dibujo de una escalera?",
+          "baseText": {
+            "de": "Für wen ist die Karte mit der Zeichnung einer Treppe?",
+            "en": "Who's the card with a drawing of a staircase for?"
+          }
+        },
+        {
+          "targetText": "Es una nota de agradecimiento para Isabel, que me ayudó durante la mudanza.",
+          "baseText": {
+            "de": "Es ist eine Dankesnachricht für Isabel, die mir beim Umzug geholfen hat.",
+            "en": "It's a thank-you note for Isabel, who helped me during my move."
+          }
+        },
+        {
+          "targetText": "¿Qué hizo exactamente cuando se estropeó el ascensor?",
+          "baseText": {
+            "de": "Was hat sie genau gemacht, als der Aufzug kaputtging?",
+            "en": "What exactly did she do when the lift broke down?"
+          }
+        },
+        {
+          "targetText": "Guardó mis cajas abajo, así que pude subirlas poco a poco.",
+          "baseText": {
+            "de": "Sie bewahrte meine Kisten unten auf, sodass ich sie nach und nach hinauftragen konnte.",
+            "en": "She kept my boxes downstairs, so I was able to carry them up a few at a time."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Precisar la ayuda y su efecto",
+        "rule": {
+          "de": "Mit que beschreibst du die Person über das, was sie getan hat. Eine Folge lässt sich mit así que anschließen.",
+          "en": "Use que to identify what the person did for you. Así que then links the help to its practical result."
+        },
+        "examples": [
+          {
+            "targetText": "Es una nota de agradecimiento para Isabel, que me ayudó durante la mudanza.",
+            "baseText": {
+              "de": "Es ist eine Dankesnachricht für Isabel, die mir beim Umzug geholfen hat.",
+              "en": "It's a thank-you note for Isabel, who helped me during my move."
+            },
+            "highlight": "que me ayudó"
+          },
+          {
+            "targetText": "Preparé una cena para Ana, que me prestó su furgoneta.",
+            "baseText": {
+              "de": "Ich kochte ein Abendessen für Ana, die mir ihren Lieferwagen lieh.",
+              "en": "I made dinner for Ana, who lent me her van."
+            },
+            "highlight": "que me prestó"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Guardó",
+          "choices": [
+            "Guardé",
+            "Guardó",
+            "Guardaron",
+            "Guardaste"
+          ],
+          "cue": "guardar (Isabel, hecho puntual)"
+        },
+        " mis cajas abajo, ",
+        {
+          "kind": "choice",
+          "answer": "así que",
+          "choices": [
+            "así que",
+            "a fin de",
+            "a pesar de",
+            "antes de"
+          ]
+        },
+        " pude subirlas poco a poco."
+      ],
+      "chunks": [
+        {
+          "targetText": "Es una nota",
+          "baseText": {
+            "de": "Es ist eine Nachricht",
+            "en": "It's a note"
+          }
+        },
+        {
+          "targetText": "de agradecimiento para Isabel,",
+          "baseText": {
+            "de": "als Dank für Isabel,",
+            "en": "of thanks for Isabel,"
+          }
+        },
+        {
+          "targetText": "que me ayudó",
+          "baseText": {
+            "de": "die mir half",
+            "en": "who helped me"
+          }
+        },
+        {
+          "targetText": "durante la mudanza.",
+          "baseText": {
+            "de": "beim Umzug.",
+            "en": "during my move."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "agradecimiento",
+          "baseText": {
+            "de": "Dank, Dankbarkeit",
+            "en": "thanks, gratitude"
+          }
+        },
+        {
+          "targetText": "una nota",
+          "baseText": {
+            "de": "eine Nachricht",
+            "en": "a note"
+          }
+        },
+        {
+          "targetText": "la mudanza",
+          "baseText": {
+            "de": "der Umzug",
+            "en": "the move"
+          }
+        },
+        {
+          "targetText": "el ascensor",
+          "baseText": {
+            "de": "der Aufzug",
+            "en": "the lift"
+          }
+        },
+        {
+          "targetText": "abajo",
+          "baseText": {
+            "de": "unten",
+            "en": "downstairs"
+          }
+        },
+        {
+          "targetText": "poco a poco",
+          "baseText": {
+            "de": "nach und nach",
+            "en": "little by little"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Es una nota de agradecimiento para Isabel, que me ",
+        "answer": "ayudó",
+        "after": " durante la mudanza.",
+        "fallbackChoices": [
+          "ayudaron",
+          "ayudó",
+          "ayudé",
+          "ayudaste"
+        ]
+      },
+      "speakRequired": [
+        "nota",
+        "agradecimiento",
+        "mudanza"
+      ],
+      "sceneCaption": {
+        "de": "Du schreibst gemeinsam mit einem Freund Karten an die Menschen, die dir im ersten Jahr geholfen haben. Du hörst: „¿Para quién es esa tarjeta con el dibujo de una escalera?“",
+        "en": "You and a friend are writing cards to the people who helped you in your first year. You hear: “¿Para quién es esa tarjeta con el dibujo de una escalera?”"
+      },
+      "trophyWord": {
+        "word": "agradecimiento",
+        "meaning": {
+          "de": "Dank, Dankbarkeit",
+          "en": "thanks, gratitude"
+        },
+        "example": "Le escribí una nota de agradecimiento por las cajas.",
+        "whyThisWord": {
+          "de": "Mit agradecimiento kannst du den Zweck einer persönlichen Nachricht benennen.",
+          "en": "Agradecimiento tells someone that your message is a gesture of thanks."
+        }
+      },
+      "distractors": [
+        "una cuenta",
+        "durante la clase."
+      ],
+      "placeholderCaption": {
+        "de": "Neben einer Dankeskarte liegt die Skizze einer Treppe.",
+        "en": "A sketch of a staircase lies beside a thank-you card."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "A sketch of a staircase lies beside a thank-you card."
+    },
+    {
+      "slug": "la-cena-del-aniversario",
+      "title": {
+        "de": "Ein Abendessen zum Jahrestag",
+        "en": "An anniversary dinner"
+      },
+      "situation": {
+        "de": "Am Ende deines ersten Jahres in Oviedo fragst du dich beim Abendessen mit einem Freund, was du noch einmal machen möchtest.",
+        "en": "At dinner with a friend at the end of your first year in Oviedo, you think about what you'd like to do again."
+      },
+      "pedagogicalGoal": "Mit fue und porque schließt du den Rückblick mit einer begründeten Wertung ab. Für einen neuen Plan kannst du einen Zweck mit para que anschließen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué momento de este año te gustaría recordar siempre?",
+          "baseText": {
+            "de": "An welchen Moment aus diesem Jahr würdest du dich gerne immer erinnern?",
+            "en": "Which moment from this year would you like to remember always?"
+          }
+        },
+        {
+          "targetText": "La cena del patio fue mi mejor experiencia porque allí conocí a mis vecinos.",
+          "baseText": {
+            "de": "Das Essen im Hof war mein schönstes Erlebnis, weil ich dort meine Nachbarn kennenlernte.",
+            "en": "The courtyard dinner was my best experience because that's where I met my neighbours."
+          }
+        },
+        {
+          "targetText": "Han vendido las mesas largas del patio. ¿Aun así repetirías la cena?",
+          "baseText": {
+            "de": "Die langen Tische aus dem Hof sind verkauft. Würdest du das Essen trotzdem wiederholen?",
+            "en": "They've sold the courtyard's long tables. Would you still hold the dinner again?"
+          }
+        },
+        {
+          "targetText": "Sí, juntaría mesas pequeñas para que cada familia tenga sitio.",
+          "baseText": {
+            "de": "Ja, ich würde kleine Tische zusammenstellen, damit jede Familie Platz hat.",
+            "en": "Yes, I'd put small tables together so each family has room."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Valorar y dar una razón",
+        "rule": {
+          "de": "Mit fue und porque schließt du den Rückblick mit einer begründeten Wertung ab. Für einen neuen Plan kannst du einen Zweck mit para que anschließen.",
+          "en": "Fue and porque close the retrospective with a judgment and a reason. For a new plan, use para que to add its purpose."
+        },
+        "examples": [
+          {
+            "targetText": "La cena del patio fue mi mejor experiencia porque allí conocí a mis vecinos.",
+            "baseText": {
+              "de": "Das Essen im Hof war mein schönstes Erlebnis, weil ich dort meine Nachbarn kennenlernte.",
+              "en": "The courtyard dinner was my best experience because that's where I met my neighbours."
+            },
+            "highlight": "fue mi mejor experiencia porque"
+          },
+          {
+            "targetText": "La visita al puerto fue especial porque mi prima me enseñó su barco.",
+            "baseText": {
+              "de": "Der Besuch im Hafen war etwas Besonderes, weil meine Cousine mir ihr Boot zeigte.",
+              "en": "The visit to the harbour was special because my cousin showed me her boat."
+            },
+            "highlight": "fue especial porque"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, juntaría mesas pequeñas ",
+        {
+          "kind": "choice",
+          "answer": "para que",
+          "choices": [
+            "a fin de",
+            "para que",
+            "a causa de",
+            "en lugar de"
+          ]
+        },
+        " cada familia ",
+        {
+          "kind": "form",
+          "answer": "tenga",
+          "choices": [
+            "tengan",
+            "tiene",
+            "tienen",
+            "tenga"
+          ],
+          "cue": "tener (cada familia, subjuntivo)"
+        },
+        " sitio."
+      ],
+      "chunks": [
+        {
+          "targetText": "La cena del patio",
+          "baseText": {
+            "de": "Das Essen im Hof",
+            "en": "The courtyard dinner"
+          }
+        },
+        {
+          "targetText": "fue mi mejor experiencia",
+          "baseText": {
+            "de": "war mein schönstes Erlebnis",
+            "en": "was my best experience"
+          }
+        },
+        {
+          "targetText": "porque allí conocí",
+          "baseText": {
+            "de": "weil ich dort kennenlernte",
+            "en": "because that's where I met"
+          }
+        },
+        {
+          "targetText": "a mis vecinos.",
+          "baseText": {
+            "de": "meine Nachbarn.",
+            "en": "my neighbours."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "experiencia",
+          "baseText": {
+            "de": "Erlebnis, Erfahrung",
+            "en": "experience"
+          }
+        },
+        {
+          "targetText": "la cena",
+          "baseText": {
+            "de": "das Abendessen",
+            "en": "the dinner"
+          }
+        },
+        {
+          "targetText": "el patio",
+          "baseText": {
+            "de": "der Innenhof",
+            "en": "the courtyard"
+          }
+        },
+        {
+          "targetText": "mi mejor",
+          "baseText": {
+            "de": "mein schönstes",
+            "en": "my best"
+          }
+        },
+        {
+          "targetText": "mis vecinos",
+          "baseText": {
+            "de": "meine Nachbarn",
+            "en": "my neighbours"
+          }
+        },
+        {
+          "targetText": "tenga sitio",
+          "baseText": {
+            "de": "Platz hat",
+            "en": "has room"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La cena del patio fue mi mejor experiencia porque allí ",
+        "answer": "conocí",
+        "after": " a mis vecinos.",
+        "fallbackChoices": [
+          "conocieron",
+          "conociste",
+          "conoció",
+          "conocí"
+        ]
+      },
+      "speakRequired": [
+        "experiencia",
+        "patio",
+        "vecinos"
+      ],
+      "sceneCaption": {
+        "de": "Am Ende deines ersten Jahres in Oviedo fragst du dich beim Abendessen mit einem Freund, was du noch einmal machen möchtest. Du hörst: „¿Qué momento de este año te gustaría recordar siempre?“",
+        "en": "At dinner with a friend at the end of your first year in Oviedo, you think about what you'd like to do again. You hear: “¿Qué momento de este año te gustaría recordar siempre?”"
+      },
+      "trophyWord": {
+        "word": "experiencia",
+        "meaning": {
+          "de": "Erlebnis, Erfahrung",
+          "en": "experience"
+        },
+        "example": "La experiencia del primer año me animó a quedarme.",
+        "whyThisWord": {
+          "de": "Experiencia erlaubt dir, das ganze Jahr oder einen einzelnen Abend zu bewerten.",
+          "en": "Experiencia can refer to the year as a whole or to one evening you want to reflect on."
+        }
+      },
+      "distractors": [
+        "mi peor recuerdo",
+        "a mis profesores."
+      ],
+      "placeholderCaption": {
+        "de": "Mehrere kleine Tische stehen zum Abendessen in einem Innenhof.",
+        "en": "Several small tables are ready for dinner in a courtyard."
+      },
+      "songMood": "Persönlich und zuversichtlich.",
+      "visualNotes": "Several small tables are ready for dinner in a courtyard."
+    }
+  ]
+}

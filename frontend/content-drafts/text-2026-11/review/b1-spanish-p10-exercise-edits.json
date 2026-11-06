@@ -1,0 +1,43 @@
+{
+  "originalSource": "es-p10-review/spanish-p10.json",
+  "originalSha256": "65200e97f5351c2ed3a81773153704267c34398e731ef2b7bfa6c0ec4cf03b91",
+  "resultSha256": "9c94cf48fb35eaf2711fd684d37da4d3d4b8cbaf753dccd86efca21d9363f834",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 6,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Honors revised 'llueve' (stale 'hace frío' not restored). Rival 'Cuando llueve' absent; Desde/Durante/Tras + 'llueve' invalid. 'hago' bounded by yo cue; drops ambiguous llovía/llovió tense distractors."
+    },
+    {
+      "lesson": 7,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Honors 'el centro social'. Rival 'porque abre todos los días' would be a valid counterexample but is not in set; cuya/cuyos/cuyas lack a following noun so only 'que' survives. 'probarías' blocked by yo cue. Cuyo distractors are B2 but eliminable by form alone."
+    },
+    {
+      "lesson": 8,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Infinitive 'comprobar' admits only 'para' (rival 'a' not offered); aunque/porque/mientras + infinitive ungrammatical. 'vas/van' blocked by yo cue."
+    },
+    {
+      "lesson": 9,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Finite 'pude' admits only 'así que'; 'a fin de/a pesar de/antes de' need infinitive or 'que'. 'Guardé' (yo) excluded by visible Isabel cue."
+    },
+    {
+      "lesson": 10,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Rival 'a fin de que' is offered without 'que', so only 'para que' licenses finite 'tenga'; 'a causa de/en lugar de' invalid. 'tiene' blocked by subjunctive cue, 'tengan' by singular 'cada familia'."
+    }
+  ]
+}

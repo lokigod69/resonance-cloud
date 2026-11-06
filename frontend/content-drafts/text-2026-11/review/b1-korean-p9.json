@@ -1,0 +1,44 @@
+{
+  "file": "p9.json",
+  "source": "5c8f97e4287954d166d2158cb86d1bf0b5b34d420cd89d07df70b61df74c7f2a",
+  "result": "3eefece6e21da92e5657ff43b3a0aec31d9f0053d12f7e779745fb3ef27d222b",
+  "edits": 21,
+  "preconditionNotes": [
+    "The final literal of L10 is cloze index 5, not 6. Exact unique complete oldValue and Fable replacement."
+  ],
+  "readThrough": [
+    {
+      "file": "p9.json",
+      "lessonsRead": [
+        "soeum-construction-hours",
+        "gojang-heater-visit",
+        "gongsa-hallway-clearance",
+        "naemsae-hallway-visit",
+        "bulpyeon-feedback-menu",
+        "silsu-double-charge",
+        "haegyeol-same-day-parcel",
+        "jeomgeom-water-pressure",
+        "gyoche-replacement-charger",
+        "jochi-lift-meeting"
+      ],
+      "concerns": [
+        "All ten turn sets counted: openings 4-6, first replies 8-10, follow-ups 6-9, final turns 6-9 eojeol; every final turn one sentence; chunk joins, recall splits, speak tokens and cloze concatenations reconstruct their turns exactly; trophies 소음/고장/공사/냄새/불편/실수/해결/점검/교체/조치 match the spec allocation and occur as bare whole eojeol in reply and example.",
+        "Register: 해요체 throughout, no 반말, no stray 습니다; -(으)시- only with staff/other as subject in learner lines; staff -(으)ㄹ게요 promises confined to staff turns; staging per lesson range honored (-는데요/것 같은데요 L1-3, -(으)ㄴ 지 됐어요 + -아/어 있어요 L4-6, 그러면/대신 + -(으)면 안 될까요 L7-8, -는데도 + -는지 L9-10).",
+        "Correct option indexes vary across lessons; cues name the function without quoting the answer; distractors are ungrammatical in slot or clearly wrong in visible context (L1 적혀 있었어요 and L10 화요일 낮에 are grammatical but contradicted by the fixed 그러면-request frame / preceding 퇴근하고).",
+        "Trust-critical repairs: L5 staff question 유효해요? too bureaucratic and learner reply did not confirm the address; L9 staff never answered the eligibility question before offering options; L10 learner presupposed a meeting room nobody mentioned and the day job was unestablished; L4 term 심하다 appears nowhere in the lesson; L1 German turn 4 invents Baufirma; L4 English turn 4 drops the 그러면 the cloze tests."
+      ]
+    },
+    {
+      "file": "B1_NATIVE_KOREAN_SPEC.json",
+      "lessonsRead": [],
+      "concerns": [
+        "Used as the governing architecture: eojeol rails, cloze shape, honorific direction, P9 staging and trophy list; no conflicts with the edits below."
+      ]
+    }
+  ],
+  "openIssues": [
+    "L7 title Das vermisste Paket / The missing parcel is slightly stronger than 이틀째 안 오는데; acceptable because the resend offer implies loss, left unchanged.",
+    "No trophyWord.surface/remainder extensions are declared; all ten trophies occur as exact bare eojeol so validation passes without them.",
+    "L1 form distractor 적혀 있었어요 and L10 choice distractor 화요일 낮에 are grammatical in slot and rejected only by visible context (그러면-request frame, 퇴근하고); accepted under the clearly-wrong-in-context rule."
+  ]
+}

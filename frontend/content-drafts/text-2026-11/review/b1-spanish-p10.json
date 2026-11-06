@@ -1,0 +1,51 @@
+{
+  "file": "spanish-p10.json",
+  "source": "f951f42672355870ac8ddeb4c28cc71c3b05380ce0dd0bd2aa3d1c3bb662ecaa",
+  "result": "65200e97f5351c2ed3a81773153704267c34398e731ef2b7bfa6c0ec4cf03b91",
+  "edits": 50,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "spanish-p10.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Trophies llegada,esfuerzo,confianza,amistad,aprendizaje,rutina,consejo,proyecto,agradecimiento,experiencia match the frozen plan and each sits in learner turn 1. Cloze, chunk and recall concatenations are byte-identical to their turns in all ten lessons; first turns 11–14 words, last turns 10–12; answer slots varied; cues never print the answer; every form blank has one correct chip in visible context (explicit subjects or cued person). Spanish is Spain usage (jersey, ordenador, piso, soportales, casillas, mostrador), gender-free, tú throughout as a consolidation path. Defects found: L1 them₁ DE is unidiomatic; L3 last turn (señalar los precios → preguntar) is disconnected from the medio-kilo skill and the situation DE/EN wording is off; L4 situation (person beside you in a group photo) contradicts them₁ (la chica que hizo estas fotos); L5 cold-water symbol is not a real label; L6 arcades against cold is weak in Oviedo (rain is the local reason) and the DE of turn 1 paraphrases away the era+infinitivo pattern; L7 a reading club open daily is implausible and the placeholder caption (shift rota) spoils them₂; L8 Trinkwasserstellen is bureaucratic German for Trinkbrunnen. L2, L9, L10 confirmed as the review describes (two fields only; Isabel keeps boxes downstairs; tengan/tiene/tienen are each ungrammatical after para que cada familia so tenga is the only correct chip)."
+    },
+    {
+      "file": "spanish-plan.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "P10 beats and trophies consistent with the episode file. Plan note 2 says the proposal introduces no tú; the Fable spec authorises tú at B1 and the P10 anchor states tú explicitly, so no edit; note is historical."
+    }
+  ],
+  "openIssues": [
+    "JSON pointers are relative to the file's root object (the stored data object); the sha256 f951f426… and the independent review's hash are superseded once edits apply.",
+    "All ten lessons carry register informal; the spec says P10 mostly tú. Acceptable for a friends-only consolidation path, but confirm the generalized validator does not require at least one formal lesson per path.",
+    "Typed cloze answers llevó, Pedí, completé, dejé, empecé, salvé, probaría, Guardó, juntaría carry accents or initial capitals; correctness depends on the es accent-stripping accepted-answer helper and lowercase NFC match from step 5 being wired into the scaffold before the device gate.",
+    "Base-en uses British spelling throughout (neighbour, learnt, jumper, flat, lift, laundrette, recognise, favour); internally consistent, but confirm the existing Spanish corpus base-en convention before edition regeneration; not changed here.",
+    "L7 learner text uses entonces, a taken trophy elsewhere; it is neither trophy, recall answer nor speak token here. Confirm the uniqueness check scopes trophies only, not running text.",
+    "L10 placeholder (small tables in a courtyard) hints at the learner's resolution but not at them₂ (long tables sold); left as is.",
+    "L1 and L9 both involve a neighbour helping with boxes; coherent if read as the same neighbour (Isabel), no edit made.",
+    "Pedagogical goals duplicate pattern.rule.de verbatim in all ten lessons; matches the German B1 shape, flag only if the base-edition collector double-counts."
+  ]
+}

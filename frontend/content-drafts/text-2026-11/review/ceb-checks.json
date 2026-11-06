@@ -1,0 +1,64 @@
+{
+  "language": "cebuano",
+  "stage": "accepted-cebuano",
+  "frozenCheckerSha256": "611b327889fdd11a12b87cb34686d4801e29453429d056860f8ee2371cc95abc",
+  "candidateHashes": {
+    "cebuano-b2-p1.json": "45a5395cdbbfb6b36256d46e2f895ff87e1b3d04745238e33be7382e0ecd0749",
+    "cebuano-b2-p2.json": "233b7fdc6c0628644d374669102c83c3384d8eb90834672a37996f8fa7cd82f5"
+  },
+  "structuralPass": true,
+  "errors": [],
+  "warnings": [],
+  "evidence": {
+    "verifiedV3Amendments": [
+      {
+        "reviewSha256": "a668a4e6a02ed8b92c0119153b039682978499150e76c006e4bdbf4596d267c5",
+        "streamSha256": "2cd28515ddb3a121c7fa1aaea40a9f5ebd0b334ac15ce0173ba4b1ba1d4372be",
+        "sourcePromptSha256": "177860b9102c9cde936e992798af60d715cf16ece1d648683490f16b5d33811d",
+        "specEdits": 4
+      },
+      {
+        "reviewSha256": "5d401cb27c560790e9a11c039936289e0353baec9b22013ac729e5769957f75f",
+        "streamSha256": "01331536d64e72dfeb912fe5d17536a7fbf265d41f07ef195d1c9568aa2c7dc0",
+        "sourcePromptSha256": "85709041ad4c63ef66bf53c2f1ab2c0e1fcf62199e045f1b85ee35fa39da3963",
+        "specEdits": 1
+      }
+    ],
+    "assertions": 8859,
+    "mutationControls": [
+      "wrong language",
+      "unbound authority",
+      "undeclared lesson goal",
+      "undeclared trophy explanation",
+      "full turn variants",
+      "full speech alternatives",
+      "missing English",
+      "foreign script",
+      "digits",
+      "Tagalog bleed",
+      "regional mi verb",
+      "unlicensed spelling",
+      "register change",
+      "invented gender",
+      "raised review flag",
+      "early trophy carrier",
+      "repeated move",
+      "caption leak",
+      "build bad frame",
+      "build too long",
+      "bare clitic chip",
+      "split marker",
+      "missing form cue",
+      "hyphenated blank",
+      "stored mi variant",
+      "recall substring",
+      "duplicate fallback",
+      "equivalent choice pair",
+      "unattested term",
+      "speech substring",
+      "speech clitic",
+      "trophy wrong surface",
+      "reserved trophy"
+    ]
+  }
+}

@@ -1,0 +1,1898 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Wir finden eine Lösung"
+  },
+  "subtitle": {
+    "de": "Schildern Sie ein Problem, reagieren Sie auf eine Einschränkung und vereinbaren Sie einen konkreten nächsten Schritt."
+  },
+  "anchor": "Shape A: Ein Gegenüber nennt ein Hindernis. Wiederholung von Vergangenheit, Passiv, höflichen Fragen, Gründen und Alternativen; be supposed to als feste Wendung. Keine neue Grammatik. Locker-höfliche Dienstleistungsgespräche in amerikanischem Englisch.",
+  "lessons": [
+    {
+      "slug": "two-card-payments",
+      "title": {
+        "de": "Zwei Kartenzahlungen"
+      },
+      "situation": {
+        "de": "An der Ladenkasse möchten Sie eine Zahlung für Ihren Einkauf klären.",
+        "en": "At a store checkout, you want to clarify the payment for your purchase."
+      },
+      "pedagogicalGoal": "Was charged beschreibt eine vergangene Abbuchung aus Sicht der betroffenen Person. Could you check whether …? bittet um eine Prüfung, ohne ihr Ergebnis vorwegzunehmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What seems to be the problem with your payment?",
+          "baseText": {
+            "de": "Welches Problem gibt es bei Ihrer Zahlung?"
+          }
+        },
+        {
+          "targetText": "I was charged twice for one purchase, but I only used my card once.",
+          "baseText": {
+            "de": "Mir wurde derselbe Einkauf zweimal berechnet, aber ich habe meine Karte nur einmal benutzt."
+          }
+        },
+        {
+          "targetText": "I only see one payment on this screen.",
+          "baseText": {
+            "de": "Auf diesem Bildschirm sehe ich nur eine Zahlung."
+          }
+        },
+        {
+          "targetText": "Could you check whether both payments went through yesterday?",
+          "baseText": {
+            "de": "Könnten Sie prüfen, ob beide Zahlungen gestern durchgegangen sind?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past passive and a request to check",
+        "rule": {
+          "de": "Was charged beschreibt eine vergangene Abbuchung aus Sicht der betroffenen Person. Could you check whether …? bittet um eine Prüfung, ohne ihr Ergebnis vorwegzunehmen."
+        },
+        "examples": [
+          {
+            "targetText": "I was charged twice for one purchase, but I only used my card once.",
+            "baseText": {
+              "de": "Mir wurde derselbe Einkauf zweimal berechnet, aber ich habe meine Karte nur einmal benutzt."
+            },
+            "highlight": "was charged twice"
+          },
+          {
+            "targetText": "I was billed twice for the same day of parking.",
+            "baseText": {
+              "de": "Mir wurde derselbe Parktag zweimal berechnet."
+            },
+            "highlight": "was billed twice"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you check ",
+        {
+          "kind": "connector",
+          "answer": "whether",
+          "choices": [
+            "which",
+            "what",
+            "whether",
+            "who"
+          ]
+        },
+        " both payments ",
+        {
+          "kind": "form",
+          "answer": "went",
+          "choices": [
+            "goes",
+            "gone",
+            "went",
+            "going"
+          ],
+          "cue": "go im simple past"
+        },
+        " through yesterday?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I was charged twice",
+          "baseText": {
+            "de": "Mir wurde der Betrag zweimal berechnet"
+          }
+        },
+        {
+          "targetText": "for one purchase,",
+          "baseText": {
+            "de": "für einen Einkauf,"
+          }
+        },
+        {
+          "targetText": "but I only used my card",
+          "baseText": {
+            "de": "aber ich habe meine Karte"
+          }
+        },
+        {
+          "targetText": "once.",
+          "baseText": {
+            "de": "nur einmal benutzt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "charged twice",
+          "baseText": {
+            "de": "zweimal belastet"
+          }
+        },
+        {
+          "targetText": "one purchase",
+          "baseText": {
+            "de": "ein Einkauf"
+          }
+        },
+        {
+          "targetText": "my card",
+          "baseText": {
+            "de": "meine Karte"
+          }
+        },
+        {
+          "targetText": "one payment",
+          "baseText": {
+            "de": "eine Zahlung"
+          }
+        },
+        {
+          "targetText": "on this screen",
+          "baseText": {
+            "de": "auf diesem Bildschirm"
+          }
+        },
+        {
+          "targetText": "went through",
+          "baseText": {
+            "de": "wurden ausgeführt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I was ",
+        "answer": "charged",
+        "after": " twice for one purchase, but I only used my card once.",
+        "fallbackChoices": [
+          "charging",
+          "charge",
+          "charges",
+          "charged"
+        ]
+      },
+      "speakRequired": [
+        "charged",
+        "twice",
+        "purchase"
+      ],
+      "sceneCaption": {
+        "de": "An der Kasse fragt der Mitarbeiter: „What seems to be the problem with your payment?“"
+      },
+      "trophyWord": {
+        "word": "charged",
+        "meaning": {
+          "de": "berechnet; belastet"
+        },
+        "example": "I was charged for two bags, but I only took one.",
+        "whyThisWord": {
+          "de": "Mit was charged können Sie sagen, was Ihnen berechnet wurde, auch wenn Sie nicht wissen, wer die Buchung ausgelöst hat."
+        }
+      },
+      "distractors": [
+        "before the purchase,",
+        "but I only signed the form"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kundin hält ihre Bankkarte neben das Kassenterminal."
+      },
+      "songMood": "Ruhig und sachlich.",
+      "visualNotes": "Eine Kundin hält ihre Bankkarte neben das Kassenterminal."
+    },
+    {
+      "slug": "the-blue-mug",
+      "title": {
+        "de": "Der Becher mit dem blauen Rand"
+      },
+      "situation": {
+        "de": "Im Haushaltswarengeschäft möchten Sie einen Preis auf Ihrem Kassenbon klären.",
+        "en": "At a housewares store, you want to check one price on your receipt."
+      },
+      "pedagogicalGoal": "Mit einem Relativsatz bestimmen Sie, welchen Gegenstand Sie meinen. Im Gespräch beschreibt was marked down den früheren Preis, has the rim dagegen ein sichtbares Merkmal.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which price would you like me to check?",
+          "baseText": {
+            "de": "Welchen Preis soll ich für Sie überprüfen?"
+          }
+        },
+        {
+          "targetText": "My receipt shows twelve dollars for a mug that was marked down to eight.",
+          "baseText": {
+            "de": "Auf meinem Kassenbon stehen zwölf Dollar für einen Becher, der auf acht Dollar reduziert war."
+          }
+        },
+        {
+          "targetText": "We have two mugs that look alike. Which one did you buy?",
+          "baseText": {
+            "de": "Wir haben zwei Becher, die sich sehr ähnlich sehen. Welchen haben Sie gekauft?"
+          }
+        },
+        {
+          "targetText": "I bought the one that has a blue rim.",
+          "baseText": {
+            "de": "Ich habe den mit dem blauen Rand gekauft."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Identifying the item",
+        "rule": {
+          "de": "Mit einem Relativsatz bestimmen Sie, welchen Gegenstand Sie meinen. Im Gespräch beschreibt was marked down den früheren Preis, has the rim dagegen ein sichtbares Merkmal."
+        },
+        "examples": [
+          {
+            "targetText": "My receipt shows twelve dollars for a mug that was marked down to eight.",
+            "baseText": {
+              "de": "Auf meinem Kassenbon stehen zwölf Dollar für einen Becher, der auf acht Dollar reduziert war."
+            },
+            "highlight": "that was marked down"
+          },
+          {
+            "targetText": "It's the bag that has a green stripe along the side.",
+            "baseText": {
+              "de": "Es ist die Tasche mit dem grünen Streifen an der Seite."
+            },
+            "highlight": "that has a green stripe"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "bought",
+          "choices": [
+            "buy",
+            "buys",
+            "bought",
+            "buying"
+          ],
+          "cue": "buy im simple past"
+        },
+        " the one ",
+        {
+          "kind": "connector",
+          "answer": "that",
+          "choices": [
+            "where",
+            "that",
+            "whose",
+            "what"
+          ]
+        },
+        " has a blue rim."
+      ],
+      "chunks": [
+        {
+          "targetText": "My receipt shows",
+          "baseText": {
+            "de": "Auf meinem Kassenbon stehen"
+          }
+        },
+        {
+          "targetText": "twelve dollars for a mug",
+          "baseText": {
+            "de": "zwölf Dollar für einen Becher,"
+          }
+        },
+        {
+          "targetText": "that was marked down",
+          "baseText": {
+            "de": "der reduziert war"
+          }
+        },
+        {
+          "targetText": "to eight.",
+          "baseText": {
+            "de": "auf acht Dollar."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "receipt",
+          "baseText": {
+            "de": "Kassenbon"
+          }
+        },
+        {
+          "targetText": "a mug",
+          "baseText": {
+            "de": "ein Becher"
+          }
+        },
+        {
+          "targetText": "marked down",
+          "baseText": {
+            "de": "reduziert"
+          }
+        },
+        {
+          "targetText": "look alike",
+          "baseText": {
+            "de": "sehen ähnlich aus"
+          }
+        },
+        {
+          "targetText": "bought",
+          "baseText": {
+            "de": "gekauft"
+          }
+        },
+        {
+          "targetText": "a blue rim",
+          "baseText": {
+            "de": "ein blauer Rand"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My receipt ",
+        "answer": "shows",
+        "after": " twelve dollars for a mug that was marked down to eight.",
+        "fallbackChoices": [
+          "shown",
+          "showing",
+          "shows",
+          "show"
+        ]
+      },
+      "speakRequired": [
+        "receipt",
+        "dollars",
+        "mug"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin am Kassentisch fragt: „Which price would you like me to check?“"
+      },
+      "trophyWord": {
+        "word": "receipt",
+        "meaning": {
+          "de": "Kassenbon"
+        },
+        "example": "The receipt lists three plates, but I bought two.",
+        "whyThisWord": {
+          "de": "Ein receipt ist ein Beleg für eine bereits erfolgte Zahlung."
+        }
+      },
+      "distractors": [
+        "from the airport,",
+        "that has a flat tire"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei ähnlich geformte Becher stehen neben einem Kassenbon."
+      },
+      "songMood": "Aufmerksam und freundlich.",
+      "visualNotes": "Zwei ähnlich geformte Becher stehen neben einem Kassenbon."
+    },
+    {
+      "slug": "the-kettle-switch",
+      "title": {
+        "de": "Der Schalter am Wasserkocher"
+      },
+      "situation": {
+        "de": "Sie bringen einen Wasserkocher an den Serviceschalter eines Elektrogeschäfts.",
+        "en": "You bring a kettle to the service desk at an appliance store."
+      },
+      "pedagogicalGoal": "Mit simple past und einer Zeitangabe lässt sich der Beginn einer Störung eingrenzen. Ob die Garantie gilt, entscheidet im Gespräch die zuständige Person.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What's wrong with the kettle you brought in?",
+          "baseText": {
+            "de": "Was ist an dem Wasserkocher defekt, den Sie mitgebracht haben?"
+          }
+        },
+        {
+          "targetText": "The switch stopped working yesterday. Does your store guarantee cover that?",
+          "baseText": {
+            "de": "Der Schalter funktioniert seit gestern nicht mehr. Ist das durch Ihre Ladengarantie abgedeckt?"
+          }
+        },
+        {
+          "targetText": "That depends. Was anything spilled on the switch?",
+          "baseText": {
+            "de": "Das kommt darauf an. Wurde etwas auf den Schalter verschüttet?"
+          }
+        },
+        {
+          "targetText": "No, it failed when I turned it on after lunch.",
+          "baseText": {
+            "de": "Nein, er fiel aus, als ich das Gerät nach dem Mittagessen einschaltete."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Simple past for a dated fault",
+        "rule": {
+          "de": "Mit simple past und einer Zeitangabe lässt sich der Beginn einer Störung eingrenzen. Ob die Garantie gilt, entscheidet im Gespräch die zuständige Person."
+        },
+        "examples": [
+          {
+            "targetText": "The switch stopped working yesterday. Does your store guarantee cover that?",
+            "baseText": {
+              "de": "Der Schalter funktioniert seit gestern nicht mehr. Ist das durch Ihre Ladengarantie abgedeckt?"
+            },
+            "highlight": "stopped working yesterday"
+          },
+          {
+            "targetText": "The display stopped working on Friday, right after the last delivery.",
+            "baseText": {
+              "de": "Das Display funktionierte am Freitag gleich nach der letzten Lieferung nicht mehr."
+            },
+            "highlight": "stopped working on Friday"
+          }
+        ]
+      },
+      "cloze": [
+        "No, it failed ",
+        {
+          "kind": "connector",
+          "answer": "when",
+          "choices": [
+            "whether",
+            "when",
+            "unless",
+            "whereas"
+          ]
+        },
+        " I ",
+        {
+          "kind": "form",
+          "answer": "turned",
+          "choices": [
+            "turn",
+            "turns",
+            "turning",
+            "turned"
+          ],
+          "cue": "turn im simple past"
+        },
+        " it on after lunch."
+      ],
+      "chunks": [
+        {
+          "targetText": "The switch",
+          "baseText": {
+            "de": "Der Schalter"
+          }
+        },
+        {
+          "targetText": "stopped working",
+          "baseText": {
+            "de": "funktioniert nicht mehr"
+          }
+        },
+        {
+          "targetText": "yesterday. Does your store guarantee",
+          "baseText": {
+            "de": "seit gestern. Deckt Ihre Ladengarantie"
+          }
+        },
+        {
+          "targetText": "cover that?",
+          "baseText": {
+            "de": "das ab?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "the switch",
+          "baseText": {
+            "de": "der Schalter"
+          }
+        },
+        {
+          "targetText": "stopped working",
+          "baseText": {
+            "de": "funktionierte nicht mehr"
+          }
+        },
+        {
+          "targetText": "yesterday",
+          "baseText": {
+            "de": "gestern"
+          }
+        },
+        {
+          "targetText": "store guarantee",
+          "baseText": {
+            "de": "Garantie des Geschäfts"
+          }
+        },
+        {
+          "targetText": "cover that",
+          "baseText": {
+            "de": "das abdecken"
+          }
+        },
+        {
+          "targetText": "after lunch",
+          "baseText": {
+            "de": "nach dem Mittagessen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The switch stopped ",
+        "answer": "working",
+        "after": " yesterday. Does your store guarantee cover that?",
+        "fallbackChoices": [
+          "work",
+          "works",
+          "working",
+          "worked"
+        ]
+      },
+      "speakRequired": [
+        "switch",
+        "working",
+        "guarantee"
+      ],
+      "sceneCaption": {
+        "de": "Der Mitarbeiter am Serviceschalter fragt: „What's wrong with the kettle you brought in?“"
+      },
+      "trophyWord": {
+        "word": "guarantee",
+        "meaning": {
+          "de": "Garantie; Zusage"
+        },
+        "example": "Does the store guarantee cover a broken handle?",
+        "whyThisWord": {
+          "de": "Mit cover können Sie nach dem Umfang einer konkreten Garantie fragen."
+        }
+      },
+      "distractors": [
+        "at no charge.",
+        "the recipe called for"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Wasserkocher steht mit eingerastetem Schalter auf dem Servicetisch."
+      },
+      "songMood": "Gelassen und klärend.",
+      "visualNotes": "Ein Wasserkocher steht mit eingerastetem Schalter auf dem Servicetisch."
+    },
+    {
+      "slug": "another-missed-visit",
+      "title": {
+        "de": "Ein weiterer verpasster Termin"
+      },
+      "situation": {
+        "de": "Sie rufen den Reparaturdienst wegen mehrerer vereinbarter Besuche an.",
+        "en": "You call a repair service about a series of scheduled visits."
+      },
+      "pedagogicalGoal": "I'd like to … eröffnet die Beschwerde höflich. Mit if nennt die Person die Voraussetzung, unter der sie den angebotenen Termin buchen würde.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to discuss about your repair appointments?",
+          "baseText": {
+            "de": "Was möchten Sie wegen Ihrer Reparaturtermine besprechen?"
+          }
+        },
+        {
+          "targetText": "I'd like to make a complaint. Both times I stayed home and nobody came.",
+          "baseText": {
+            "de": "Ich möchte mich beschweren. Beide Male bin ich zu Hause geblieben und niemand ist gekommen."
+          }
+        },
+        {
+          "targetText": "I can offer Friday, but I can't promise a time yet.",
+          "baseText": {
+            "de": "Ich kann Ihnen Freitag anbieten, aber noch keine Uhrzeit zusagen."
+          }
+        },
+        {
+          "targetText": "If I book Friday, could someone call before the technician leaves?",
+          "baseText": {
+            "de": "Wenn ich Freitag buche, könnte mich dann jemand vor der Abfahrt des Technikers anrufen?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Polite complaint and condition",
+        "rule": {
+          "de": "I'd like to … eröffnet die Beschwerde höflich. Mit if nennt die Person die Voraussetzung, unter der sie den angebotenen Termin buchen würde."
+        },
+        "examples": [
+          {
+            "targetText": "I'd like to make a complaint. Both times I stayed home and nobody came.",
+            "baseText": {
+              "de": "Ich möchte mich beschweren. Beide Male bin ich zu Hause geblieben und niemand ist gekommen."
+            },
+            "highlight": "I'd like to make a complaint"
+          },
+          {
+            "targetText": "I'd like to report a problem with yesterday's visit.",
+            "baseText": {
+              "de": "Ich möchte ein Problem mit dem gestrigen Besuch melden."
+            },
+            "highlight": "I'd like to report"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "connector",
+          "answer": "If",
+          "choices": [
+            "Whereas",
+            "Whether",
+            "If",
+            "Whose"
+          ]
+        },
+        " I book Friday, could someone call before the technician ",
+        {
+          "kind": "form",
+          "answer": "leaves",
+          "choices": [
+            "leave",
+            "leaves",
+            "leaving",
+            "to leave"
+          ],
+          "cue": "leave im simple present mit the technician"
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "I'd like to",
+          "baseText": {
+            "de": "Ich möchte"
+          }
+        },
+        {
+          "targetText": "make a complaint. Both times",
+          "baseText": {
+            "de": "mich beschweren. Beide Male"
+          }
+        },
+        {
+          "targetText": "I stayed home",
+          "baseText": {
+            "de": "bin ich zu Hause geblieben"
+          }
+        },
+        {
+          "targetText": "and nobody came.",
+          "baseText": {
+            "de": "und niemand ist gekommen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "a complaint",
+          "baseText": {
+            "de": "eine Beschwerde"
+          }
+        },
+        {
+          "targetText": "nobody came",
+          "baseText": {
+            "de": "niemand kam"
+          }
+        },
+        {
+          "targetText": "both times",
+          "baseText": {
+            "de": "beide Male"
+          }
+        },
+        {
+          "targetText": "offer Friday",
+          "baseText": {
+            "de": "Freitag anbieten"
+          }
+        },
+        {
+          "targetText": "promise a time",
+          "baseText": {
+            "de": "eine Uhrzeit zusagen"
+          }
+        },
+        {
+          "targetText": "the technician",
+          "baseText": {
+            "de": "der Techniker"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'd like to ",
+        "answer": "make",
+        "after": " a complaint. Both times I stayed home and nobody came.",
+        "fallbackChoices": [
+          "made",
+          "makes",
+          "making",
+          "make"
+        ]
+      },
+      "speakRequired": [
+        "complaint",
+        "nobody",
+        "home"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin des Reparaturdienstes fragt am Telefon: „What would you like to discuss about your repair appointments?“"
+      },
+      "trophyWord": {
+        "word": "complaint",
+        "meaning": {
+          "de": "Beschwerde"
+        },
+        "example": "Can I make a complaint about the missed delivery?",
+        "whyThisWord": {
+          "de": "A complaint benennt die Beschwerde; make a complaint ist die passende Verbindung."
+        }
+      },
+      "distractors": [
+        "Both addresses",
+        "and nobody paid."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch liegt ein Kalender mit zwei markierten Serviceterminen."
+      },
+      "songMood": "Bestimmt und höflich.",
+      "visualNotes": "Auf einem Tisch liegt ein Kalender mit zwei markierten Serviceterminen."
+    },
+    {
+      "slug": "call-after-three",
+      "title": {
+        "de": "Die fehlenden Kartons"
+      },
+      "situation": {
+        "de": "Sie erkundigen sich telefonisch nach einer Lieferung, auf die Sie noch warten.",
+        "en": "You call a store about a delivery you're still waiting for."
+      },
+      "pedagogicalGoal": "Mit could I …? erbitten Sie ein Gespräch. Nach when steht hier she gets back, auch wenn die Rückkehr noch bevorsteht.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "How can I help with your delivery today?",
+          "baseText": {
+            "de": "Wie kann ich Ihnen wegen Ihrer Lieferung weiterhelfen?"
+          }
+        },
+        {
+          "targetText": "Could I speak to the manager about the boxes that never arrived?",
+          "baseText": {
+            "de": "Könnte ich mit der Filialleitung über die Kartons sprechen, die nie angekommen sind?"
+          }
+        },
+        {
+          "targetText": "She's at another store until three. Would a call later work?",
+          "baseText": {
+            "de": "Sie ist bis drei Uhr in einer anderen Filiale. Käme ein späterer Rückruf für Sie infrage?"
+          }
+        },
+        {
+          "targetText": "Yes, please ask her to call when she gets back.",
+          "baseText": {
+            "de": "Ja, bitten Sie sie, mich nach ihrer Rückkehr anzurufen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Could I speak to …?",
+        "rule": {
+          "de": "Mit could I …? erbitten Sie ein Gespräch. Nach when steht hier she gets back, auch wenn die Rückkehr noch bevorsteht."
+        },
+        "examples": [
+          {
+            "targetText": "Could I speak to the manager about the boxes that never arrived?",
+            "baseText": {
+              "de": "Könnte ich mit der Filialleitung über die Kartons sprechen, die nie angekommen sind?"
+            },
+            "highlight": "Could I speak to the manager"
+          },
+          {
+            "targetText": "Could I speak to someone about a delivery that went to the wrong address?",
+            "baseText": {
+              "de": "Könnte ich mit jemandem über eine Lieferung sprechen, die an die falsche Adresse ging?"
+            },
+            "highlight": "Could I speak to someone"
+          }
+        ]
+      },
+      "cloze": [
+        "Yes, please ask her to call ",
+        {
+          "kind": "connector",
+          "answer": "when",
+          "choices": [
+            "whether",
+            "whose",
+            "when",
+            "what"
+          ]
+        },
+        " she ",
+        {
+          "kind": "form",
+          "answer": "gets",
+          "choices": [
+            "get",
+            "got",
+            "getting",
+            "gets"
+          ],
+          "cue": "get im simple present mit she"
+        },
+        " back."
+      ],
+      "chunks": [
+        {
+          "targetText": "Could I speak",
+          "baseText": {
+            "de": "Könnte ich sprechen"
+          }
+        },
+        {
+          "targetText": "to the manager",
+          "baseText": {
+            "de": "mit der Filialleiterin"
+          }
+        },
+        {
+          "targetText": "about the boxes",
+          "baseText": {
+            "de": "über die Kartons,"
+          }
+        },
+        {
+          "targetText": "that never arrived?",
+          "baseText": {
+            "de": "die nie angekommen sind?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "speak to the manager",
+          "baseText": {
+            "de": "mit der Filialleitung sprechen"
+          }
+        },
+        {
+          "targetText": "the boxes",
+          "baseText": {
+            "de": "die Kartons"
+          }
+        },
+        {
+          "targetText": "never arrived",
+          "baseText": {
+            "de": "sind nie angekommen"
+          }
+        },
+        {
+          "targetText": "another store",
+          "baseText": {
+            "de": "eine andere Filiale"
+          }
+        },
+        {
+          "targetText": "until three",
+          "baseText": {
+            "de": "bis drei Uhr"
+          }
+        },
+        {
+          "targetText": "gets back",
+          "baseText": {
+            "de": "kehrt zurück"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Could I ",
+        "answer": "speak",
+        "after": " to the manager about the boxes that never arrived?",
+        "fallbackChoices": [
+          "speaking",
+          "spoke",
+          "speaks",
+          "speak"
+        ]
+      },
+      "speakRequired": [
+        "speak",
+        "manager",
+        "boxes"
+      ],
+      "sceneCaption": {
+        "de": "Im Kundenservice meldet sich eine Mitarbeiterin: „How can I help with your delivery today?“"
+      },
+      "trophyWord": {
+        "word": "manager",
+        "meaning": {
+          "de": "Filialleitung; verantwortliche Person"
+        },
+        "example": "The manager can tell me who handles damaged deliveries.",
+        "whyThisWord": {
+          "de": "Manager bezeichnet die für das Geschäft oder Team verantwortliche Person."
+        }
+      },
+      "distractors": [
+        "about the tablecloth",
+        "that never opened it?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Person telefoniert neben einer Bestellbestätigung."
+      },
+      "songMood": "Geduldig und klar.",
+      "visualNotes": "Eine Person telefoniert neben einer Bestellbestätigung."
+    },
+    {
+      "slug": "lamp-without-a-receipt",
+      "title": {
+        "de": "Die Lampe vom Mai"
+      },
+      "situation": {
+        "de": "Sie bringen eine defekte Tischlampe zu dem Geschäft zurück, in dem Sie sie gekauft haben.",
+        "en": "You take a faulty desk lamp back to the store where you bought it."
+      },
+      "pedagogicalGoal": "Should drückt hier eine begründete Erwartung aus. Mit Would … work if …? schlagen Sie einen möglichen Nachweis vor und überlassen dem Gegenüber die Entscheidung.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "When did you buy the lamp?",
+          "baseText": {
+            "de": "Wann haben Sie die Lampe gekauft?"
+          }
+        },
+        {
+          "targetText": "The lamp should still be under warranty. I bought it here in May.",
+          "baseText": {
+            "de": "Die Lampe müsste noch unter die Garantie fallen. Ich habe sie im Mai hier gekauft."
+          }
+        },
+        {
+          "targetText": "I need proof of the date, but the receipt in this box has faded.",
+          "baseText": {
+            "de": "Ich brauche einen Nachweis für das Kaufdatum, aber der Bon in der Schachtel ist verblasst."
+          }
+        },
+        {
+          "targetText": "Would my bank statement work if it shows the date?",
+          "baseText": {
+            "de": "Würde mein Kontoauszug ausreichen, wenn das Datum darauf steht?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Should for an expectation",
+        "rule": {
+          "de": "Should drückt hier eine begründete Erwartung aus. Mit Would … work if …? schlagen Sie einen möglichen Nachweis vor und überlassen dem Gegenüber die Entscheidung."
+        },
+        "examples": [
+          {
+            "targetText": "The lamp should still be under warranty. I bought it here in May.",
+            "baseText": {
+              "de": "Die Lampe müsste noch unter die Garantie fallen. Ich habe sie im Mai hier gekauft."
+            },
+            "highlight": "should still be under warranty"
+          },
+          {
+            "targetText": "The replacement should be ready by Friday, but I'll check first.",
+            "baseText": {
+              "de": "Der Ersatz sollte bis Freitag bereitstehen. Ich frage aber zuerst nach."
+            },
+            "highlight": "should be ready"
+          }
+        ]
+      },
+      "cloze": [
+        "Would my bank statement work ",
+        {
+          "kind": "connector",
+          "answer": "if",
+          "choices": [
+            "whether",
+            "whose",
+            "what",
+            "if"
+          ]
+        },
+        " it ",
+        {
+          "kind": "form",
+          "answer": "shows",
+          "choices": [
+            "showed",
+            "shows",
+            "showing",
+            "show"
+          ],
+          "cue": "show im simple present mit it"
+        },
+        " the date?"
+      ],
+      "chunks": [
+        {
+          "targetText": "The lamp",
+          "baseText": {
+            "de": "Die Lampe"
+          }
+        },
+        {
+          "targetText": "should still be under warranty. I",
+          "baseText": {
+            "de": "müsste noch unter die Garantie fallen. Ich"
+          }
+        },
+        {
+          "targetText": "bought it here",
+          "baseText": {
+            "de": "habe sie hier gekauft"
+          }
+        },
+        {
+          "targetText": "in May.",
+          "baseText": {
+            "de": "im Mai."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "in May",
+          "baseText": {
+            "de": "im Mai"
+          }
+        },
+        {
+          "targetText": "under warranty",
+          "baseText": {
+            "de": "unter Garantie"
+          }
+        },
+        {
+          "targetText": "proof of the date",
+          "baseText": {
+            "de": "Nachweis des Datums"
+          }
+        },
+        {
+          "targetText": "the receipt",
+          "baseText": {
+            "de": "der Kassenbon"
+          }
+        },
+        {
+          "targetText": "bank statement",
+          "baseText": {
+            "de": "Kontoauszug"
+          }
+        },
+        {
+          "targetText": "shows the date",
+          "baseText": {
+            "de": "zeigt das Datum"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The lamp should still be under warranty. I ",
+        "answer": "bought",
+        "after": " it here in May.",
+        "fallbackChoices": [
+          "buy",
+          "buys",
+          "buying",
+          "bought"
+        ]
+      },
+      "speakRequired": [
+        "bought",
+        "still",
+        "warranty"
+      ],
+      "sceneCaption": {
+        "de": "Am Serviceschalter fragt der Mitarbeiter: „When did you buy the lamp?“"
+      },
+      "trophyWord": {
+        "word": "warranty",
+        "meaning": {
+          "de": "Produktgarantie"
+        },
+        "example": "Is the battery still under warranty?",
+        "whyThisWord": {
+          "de": "Under warranty beschreibt den möglichen Garantiestatus. Ob die Bedingungen erfüllt sind, muss erst geprüft werden."
+        }
+      },
+      "distractors": [
+        "on the warranty shelf.",
+        "I sold it in May,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Tischlampe in ihrer Schachtel steht auf einem Tresen."
+      },
+      "songMood": "Sachlich und zugewandt.",
+      "visualNotes": "Eine Tischlampe in ihrer Schachtel steht auf einem Tresen."
+    },
+    {
+      "slug": "pictures-of-the-box",
+      "title": {
+        "de": "Fotos vom Paket"
+      },
+      "situation": {
+        "de": "Sie melden einem Versandhändler am Telefon, in welchem Zustand Ihr Paket angekommen ist.",
+        "en": "You call a mail-order store about the condition of a package when it arrived."
+      },
+      "pedagogicalGoal": "Arrived with … beschreibt den Zustand bei der Ankunft. Bei einer Nachfrage verbindet where to … den gesuchten Ort mit dem nächsten Schritt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What condition was the package in when it reached you?",
+          "baseText": {
+            "de": "In welchem Zustand ist das Paket bei Ihnen angekommen?"
+          }
+        },
+        {
+          "targetText": "It arrived with a crushed corner, and I have photos as evidence.",
+          "baseText": {
+            "de": "Es kam mit einer eingedrückten Ecke an, und ich habe Fotos als Beleg."
+          }
+        },
+        {
+          "targetText": "That helps. For the claim, I also need a picture of the label.",
+          "baseText": {
+            "de": "Das hilft weiter. Für die Schadensmeldung brauche ich auch ein Bild des Etiketts."
+          }
+        },
+        {
+          "targetText": "Could you tell me where to send the extra photo?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wohin ich das zusätzliche Foto schicken soll?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Describing damage on arrival",
+        "rule": {
+          "de": "Arrived with … beschreibt den Zustand bei der Ankunft. Bei einer Nachfrage verbindet where to … den gesuchten Ort mit dem nächsten Schritt."
+        },
+        "examples": [
+          {
+            "targetText": "It arrived with a crushed corner, and I have photos as evidence.",
+            "baseText": {
+              "de": "Es kam mit einer eingedrückten Ecke an, und ich habe Fotos als Beleg."
+            },
+            "highlight": "arrived with a crushed corner"
+          },
+          {
+            "targetText": "The book arrived with a torn cover, so I took a picture.",
+            "baseText": {
+              "de": "Das Buch kam mit einem eingerissenen Einband an. Deshalb habe ich es fotografiert."
+            },
+            "highlight": "arrived with a torn cover"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you tell me ",
+        {
+          "kind": "connector",
+          "answer": "where",
+          "choices": [
+            "whose",
+            "where",
+            "which",
+            "who"
+          ]
+        },
+        " to ",
+        {
+          "kind": "form",
+          "answer": "send",
+          "choices": [
+            "sends",
+            "sent",
+            "send",
+            "sending"
+          ],
+          "cue": "schicken · Grundform nach to"
+        },
+        " the extra photo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "It arrived",
+          "baseText": {
+            "de": "Es ist angekommen"
+          }
+        },
+        {
+          "targetText": "with a crushed corner,",
+          "baseText": {
+            "de": "mit einer eingedrückten Ecke,"
+          }
+        },
+        {
+          "targetText": "and I have photos",
+          "baseText": {
+            "de": "und ich habe Fotos"
+          }
+        },
+        {
+          "targetText": "as evidence.",
+          "baseText": {
+            "de": "als Beleg."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "package",
+          "baseText": {
+            "de": "Paket"
+          }
+        },
+        {
+          "targetText": "a crushed corner",
+          "baseText": {
+            "de": "eine eingedrückte Ecke"
+          }
+        },
+        {
+          "targetText": "as evidence",
+          "baseText": {
+            "de": "als Beleg"
+          }
+        },
+        {
+          "targetText": "picture of the label",
+          "baseText": {
+            "de": "Bild des Etiketts"
+          }
+        },
+        {
+          "targetText": "send",
+          "baseText": {
+            "de": "schicken"
+          }
+        },
+        {
+          "targetText": "extra photo",
+          "baseText": {
+            "de": "zusätzliches Foto"
+          }
+        }
+      ],
+      "recall": {
+        "before": "It ",
+        "answer": "arrived",
+        "after": " with a crushed corner, and I have photos as evidence.",
+        "fallbackChoices": [
+          "arrive",
+          "arriving",
+          "arrived",
+          "arrives"
+        ]
+      },
+      "speakRequired": [
+        "arrived",
+        "photos",
+        "evidence"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt die Mitarbeiterin des Versandhändlers: „What condition was the package in when it reached you?“"
+      },
+      "trophyWord": {
+        "word": "evidence",
+        "meaning": {
+          "de": "Beleg; Beweismaterial"
+        },
+        "example": "I kept the photos as evidence of the damage.",
+        "whyThisWord": {
+          "de": "Evidence steht hier ohne a. Ein einzelnes Foto kann als Beleg dienen."
+        }
+      },
+      "distractors": [
+        "with a painted ceiling,",
+        "as a password."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Tisch liegen ein Paket und mehrere Fotos davon."
+      },
+      "songMood": "Ruhig und konzentriert.",
+      "visualNotes": "Auf einem Tisch liegen ein Paket und mehrere Fotos davon."
+    },
+    {
+      "slug": "which-maple-street",
+      "title": {
+        "de": "Die Adresse auf dem Auftrag"
+      },
+      "situation": {
+        "de": "Sie überprüfen telefonisch die Adresse für einen Reparaturbesuch.",
+        "en": "You call a dispatcher to check the address for a repair visit."
+      },
+      "pedagogicalGoal": "There seems to be … weist höflich auf einen möglichen Fehler hin. Der anschließende Relativsatz kann das gemeinte Gebäude eindeutig beschreiben.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What should we check before the driver leaves?",
+          "baseText": {
+            "de": "Was sollen wir überprüfen, bevor der Fahrer losfährt?"
+          }
+        },
+        {
+          "targetText": "There seems to be a mistake in the address on my repair order.",
+          "baseText": {
+            "de": "In der Adresse auf meinem Reparaturauftrag scheint ein Fehler zu sein."
+          }
+        },
+        {
+          "targetText": "I have Maple Avenue here. Is that the building with the red door?",
+          "baseText": {
+            "de": "Bei mir steht Maple Avenue. Ist das das Gebäude mit der roten Tür?"
+          }
+        },
+        {
+          "targetText": "It's Maple Street, the building that has a green door.",
+          "baseText": {
+            "de": "Es ist die Maple Street, das Gebäude mit der grünen Tür."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Softening a correction",
+        "rule": {
+          "de": "There seems to be … weist höflich auf einen möglichen Fehler hin. Der anschließende Relativsatz kann das gemeinte Gebäude eindeutig beschreiben."
+        },
+        "examples": [
+          {
+            "targetText": "There seems to be a mistake in the address on my repair order.",
+            "baseText": {
+              "de": "In der Adresse auf meinem Reparaturauftrag scheint ein Fehler zu sein."
+            },
+            "highlight": "There seems to be a mistake"
+          },
+          {
+            "targetText": "On this letter there seems to be a mistake in the date.",
+            "baseText": {
+              "de": "In diesem Brief scheint das Datum falsch zu sein."
+            },
+            "highlight": "there seems to be a mistake"
+          }
+        ]
+      },
+      "cloze": [
+        "It's Maple Street, the building ",
+        {
+          "kind": "connector",
+          "answer": "that",
+          "choices": [
+            "whose",
+            "where",
+            "what",
+            "that"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "has",
+          "choices": [
+            "had",
+            "having",
+            "has",
+            "have"
+          ],
+          "cue": "have im simple present mit the building"
+        },
+        " a green door."
+      ],
+      "chunks": [
+        {
+          "targetText": "There seems to be",
+          "baseText": {
+            "de": "Es gibt offenbar"
+          }
+        },
+        {
+          "targetText": "a mistake",
+          "baseText": {
+            "de": "einen Fehler"
+          }
+        },
+        {
+          "targetText": "in the address",
+          "baseText": {
+            "de": "in der Adresse"
+          }
+        },
+        {
+          "targetText": "on my repair order.",
+          "baseText": {
+            "de": "auf meinem Reparaturauftrag."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "a mistake",
+          "baseText": {
+            "de": "ein Fehler"
+          }
+        },
+        {
+          "targetText": "the address",
+          "baseText": {
+            "de": "die Adresse"
+          }
+        },
+        {
+          "targetText": "repair order",
+          "baseText": {
+            "de": "Reparaturauftrag"
+          }
+        },
+        {
+          "targetText": "the driver",
+          "baseText": {
+            "de": "der Fahrer"
+          }
+        },
+        {
+          "targetText": "the red door",
+          "baseText": {
+            "de": "die rote Tür"
+          }
+        },
+        {
+          "targetText": "a green door",
+          "baseText": {
+            "de": "eine grüne Tür"
+          }
+        }
+      ],
+      "recall": {
+        "before": "There seems to ",
+        "answer": "be",
+        "after": " a mistake in the address on my repair order.",
+        "fallbackChoices": [
+          "being",
+          "been",
+          "be",
+          "is"
+        ]
+      },
+      "speakRequired": [
+        "mistake",
+        "address",
+        "order"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin der Einsatzplanung fragt: „What should we check before the driver leaves?“"
+      },
+      "trophyWord": {
+        "word": "mistake",
+        "meaning": {
+          "de": "Fehler; Versehen"
+        },
+        "example": "There seems to be a mistake in the apartment number.",
+        "whyThisWord": {
+          "de": "A mistake lässt offen, wer das Versehen verursacht hat."
+        }
+      },
+      "distractors": [
+        "in the forecast",
+        "on the grocery shelf."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Schreibtisch liegen ein Reparaturauftrag und ein Stadtplan."
+      },
+      "songMood": "Aufmerksam und sachlich.",
+      "visualNotes": "Auf einem Schreibtisch liegen ein Reparaturauftrag und ein Stadtplan."
+    },
+    {
+      "slug": "when-it-gets-warm",
+      "title": {
+        "de": "Erst nach einer Weile"
+      },
+      "situation": {
+        "de": "Sie sprechen in einer Werkstatt über einen Ventilator, der schon einmal repariert wurde.",
+        "en": "You visit a repair shop about a fan that has already been repaired once."
+      },
+      "pedagogicalGoal": "After nennt den Zeitpunkt, ab dem der Fehler auftritt. Nach einer höflichen Bitte mit could folgt die Grundform; has warmed up bezeichnet das abgeschlossene Warmlaufen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What's happening with the fan now?",
+          "baseText": {
+            "de": "Was passiert jetzt mit dem Ventilator?"
+          }
+        },
+        {
+          "targetText": "The same fault comes back after the fan runs for about ten minutes.",
+          "baseText": {
+            "de": "Der gleiche Fehler tritt wieder auf, wenn der Ventilator ungefähr zehn Minuten gelaufen ist."
+          }
+        },
+        {
+          "targetText": "It worked during our quick test this morning.",
+          "baseText": {
+            "de": "Bei unserem kurzen Test heute Morgen hat er funktioniert."
+          }
+        },
+        {
+          "targetText": "Could you test it again after it has warmed up?",
+          "baseText": {
+            "de": "Könnten Sie ihn noch einmal testen, nachdem er warmgelaufen ist?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "After and a repeated problem",
+        "rule": {
+          "de": "After nennt den Zeitpunkt, ab dem der Fehler auftritt. Nach einer höflichen Bitte mit could folgt die Grundform; has warmed up bezeichnet das abgeschlossene Warmlaufen."
+        },
+        "examples": [
+          {
+            "targetText": "The same fault comes back after the fan runs for about ten minutes.",
+            "baseText": {
+              "de": "Der gleiche Fehler tritt wieder auf, wenn der Ventilator ungefähr zehn Minuten gelaufen ist."
+            },
+            "highlight": "after the fan runs"
+          },
+          {
+            "targetText": "The light starts flashing after the machine starts moving.",
+            "baseText": {
+              "de": "Die Leuchte beginnt zu blinken, nachdem die Maschine angelaufen ist."
+            },
+            "highlight": "after the machine starts"
+          }
+        ]
+      },
+      "cloze": [
+        "Could you test it again ",
+        {
+          "kind": "connector",
+          "answer": "after",
+          "choices": [
+            "whether",
+            "after",
+            "whereas",
+            "while"
+          ]
+        },
+        " it has ",
+        {
+          "kind": "form",
+          "answer": "warmed",
+          "choices": [
+            "warm",
+            "warms",
+            "warming",
+            "warmed"
+          ],
+          "cue": "warm als Partizip nach has"
+        },
+        " up?"
+      ],
+      "chunks": [
+        {
+          "targetText": "The same fault",
+          "baseText": {
+            "de": "Der gleiche Fehler"
+          }
+        },
+        {
+          "targetText": "comes back",
+          "baseText": {
+            "de": "tritt wieder auf"
+          }
+        },
+        {
+          "targetText": "after the fan runs",
+          "baseText": {
+            "de": "nachdem der Ventilator gelaufen ist"
+          }
+        },
+        {
+          "targetText": "for about ten minutes.",
+          "baseText": {
+            "de": "ungefähr zehn Minuten lang."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "the same fault",
+          "baseText": {
+            "de": "der gleiche Fehler"
+          }
+        },
+        {
+          "targetText": "comes back",
+          "baseText": {
+            "de": "tritt wieder auf"
+          }
+        },
+        {
+          "targetText": "the fan runs",
+          "baseText": {
+            "de": "der Ventilator läuft"
+          }
+        },
+        {
+          "targetText": "about ten minutes",
+          "baseText": {
+            "de": "ungefähr zehn Minuten"
+          }
+        },
+        {
+          "targetText": "quick test",
+          "baseText": {
+            "de": "kurzer Test"
+          }
+        },
+        {
+          "targetText": "warmed up",
+          "baseText": {
+            "de": "warmgelaufen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The same fault comes back after the fan ",
+        "answer": "runs",
+        "after": " for about ten minutes.",
+        "fallbackChoices": [
+          "run",
+          "runs",
+          "running",
+          "ran"
+        ]
+      },
+      "speakRequired": [
+        "fault",
+        "fan",
+        "minutes"
+      ],
+      "sceneCaption": {
+        "de": "Der Techniker stellt den Ventilator ab und fragt: „What's happening with the fan now?“"
+      },
+      "trophyWord": {
+        "word": "fault",
+        "meaning": {
+          "de": "Defekt; Fehler"
+        },
+        "example": "The fault appears only when the motor is hot.",
+        "whyThisWord": {
+          "de": "Fault kann eine Störung bezeichnen, ohne jemandem die Schuld zu geben."
+        }
+      },
+      "distractors": [
+        "before the fan arrives",
+        "for about ten people."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Ventilator steht vor einer Werkbank neben einer Stoppuhr."
+      },
+      "songMood": "Geduldig und genau.",
+      "visualNotes": "Ein Ventilator steht vor einer Werkbank neben einer Stoppuhr."
+    },
+    {
+      "slug": "the-friday-window",
+      "title": {
+        "de": "Ein neuer Liefertermin"
+      },
+      "situation": {
+        "de": "Sie klären telefonisch einen neuen Liefertermin für Ihr Sofa.",
+        "en": "You call a furniture store to arrange another delivery time for your sofa."
+      },
+      "pedagogicalGoal": "Be supposed to nennt einen bestehenden Plan. Ein Satz mit if kann festhalten, unter welcher Bedingung Sie einer Änderung zustimmen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Your sofa didn't go out today. When could you be home?",
+          "baseText": {
+            "de": "Ihr Sofa ist heute nicht rausgegangen. Wann könnten Sie zu Hause sein?"
+          }
+        },
+        {
+          "targetText": "One solution is a Friday delivery. I'm supposed to be home after lunch.",
+          "baseText": {
+            "de": "Eine Möglichkeit wäre eine Lieferung am Freitag. Nach dem Mittagessen müsste ich zu Hause sein."
+          }
+        },
+        {
+          "targetText": "Our only opening is Friday morning, between nine and ten.",
+          "baseText": {
+            "de": "Unser einziges freies Zeitfenster ist am Freitagmorgen zwischen neun und zehn."
+          }
+        },
+        {
+          "targetText": "I can change my plans if you confirm that time today.",
+          "baseText": {
+            "de": "Ich kann umplanen, wenn Sie mir diesen Termin heute bestätigen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Be supposed to and a workable condition",
+        "rule": {
+          "de": "Be supposed to nennt einen bestehenden Plan. Ein Satz mit if kann festhalten, unter welcher Bedingung Sie einer Änderung zustimmen."
+        },
+        "examples": [
+          {
+            "targetText": "One solution is a Friday delivery. I'm supposed to be home after lunch.",
+            "baseText": {
+              "de": "Eine Möglichkeit wäre eine Lieferung am Freitag. Nach dem Mittagessen müsste ich zu Hause sein."
+            },
+            "highlight": "I'm supposed to be"
+          },
+          {
+            "targetText": "The replacement is supposed to arrive on Tuesday morning.",
+            "baseText": {
+              "de": "Der Ersatz soll am Dienstagmorgen eintreffen."
+            },
+            "highlight": "is supposed to arrive"
+          }
+        ]
+      },
+      "cloze": [
+        "I can change my plans ",
+        {
+          "kind": "connector",
+          "answer": "if",
+          "choices": [
+            "whether",
+            "whose",
+            "what",
+            "if"
+          ]
+        },
+        " you ",
+        {
+          "kind": "form",
+          "answer": "confirm",
+          "choices": [
+            "confirms",
+            "confirm",
+            "confirming",
+            "confirmed"
+          ],
+          "cue": "bestätigen · simple present mit you"
+        },
+        " that time today."
+      ],
+      "chunks": [
+        {
+          "targetText": "One solution is",
+          "baseText": {
+            "de": "Eine Möglichkeit ist"
+          }
+        },
+        {
+          "targetText": "a Friday delivery. I'm supposed",
+          "baseText": {
+            "de": "eine Lieferung am Freitag. Ich müsste"
+          }
+        },
+        {
+          "targetText": "to be home",
+          "baseText": {
+            "de": "zu Hause sein"
+          }
+        },
+        {
+          "targetText": "after lunch.",
+          "baseText": {
+            "de": "nach dem Mittagessen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "one solution",
+          "baseText": {
+            "de": "eine Möglichkeit"
+          }
+        },
+        {
+          "targetText": "a Friday delivery",
+          "baseText": {
+            "de": "eine Freitagslieferung"
+          }
+        },
+        {
+          "targetText": "supposed to be",
+          "baseText": {
+            "de": "sollte sein"
+          }
+        },
+        {
+          "targetText": "after lunch",
+          "baseText": {
+            "de": "nach dem Mittagessen"
+          }
+        },
+        {
+          "targetText": "our only opening",
+          "baseText": {
+            "de": "unser einziges freies Zeitfenster"
+          }
+        },
+        {
+          "targetText": "confirm that time",
+          "baseText": {
+            "de": "diesen Termin bestätigen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "One solution is a Friday delivery. I'm supposed to ",
+        "answer": "be",
+        "after": " home after lunch.",
+        "fallbackChoices": [
+          "be",
+          "been",
+          "being",
+          "was"
+        ]
+      },
+      "speakRequired": [
+        "solution",
+        "Friday",
+        "home"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin der Möbelspedition fragt am Telefon: „Your sofa didn't go out today. When could you be home?“"
+      },
+      "trophyWord": {
+        "word": "solution",
+        "meaning": {
+          "de": "Lösung"
+        },
+        "example": "A later delivery might be a solution for both of us.",
+        "whyThisWord": {
+          "de": "Mit one solution stellen Sie eine konkrete Möglichkeit zur Diskussion."
+        }
+      },
+      "distractors": [
+        "a plastic bag.",
+        "I'm supposed to drive away"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Lieferkalender liegt neben dem Foto eines Sofas."
+      },
+      "songMood": "Lösungsorientiert und freundlich.",
+      "visualNotes": "Ein Lieferkalender liegt neben dem Foto eines Sofas."
+    }
+  ]
+}

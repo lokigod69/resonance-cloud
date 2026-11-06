@@ -1,0 +1,2269 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Schritt für Schritt und Ergebnis",
+    "en": "Processes and results"
+  },
+  "subtitle": {
+    "de": "Arbeitsschritte schildern und das Ergebnis prüfen",
+    "en": "Describe the steps and check the result"
+  },
+  "anchor": "cooking class, furniture assembly with neighbor, IT setup at work, move-in tasks",
+  "lessons": [
+    {
+      "slug": "jaeryo-soup-burner",
+      "title": {
+        "de": "Den Suppentopf umstellen",
+        "en": "Moving the soup pot"
+      },
+      "situation": {
+        "de": "Im Kochkurs bereitest du die Einlage für eine Suppe vor.",
+        "en": "You're preparing vegetables for soup in a cooking class."
+      },
+      "pedagogicalGoal": "Zwei aufeinanderfolgende Arbeitsschritte verbinden und wegen eines defekten Kochfelds um eine Ausweichmöglichkeit bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "국에 넣을 채소는 어디까지 손질했어요?",
+          "baseText": {
+            "de": "Wie weit sind Sie mit dem Gemüse für die Suppe?",
+            "en": "How far have you got with the vegetables for the soup?"
+          }
+        },
+        {
+          "targetText": "재료 중에 당근부터 씻어서 한입 크기로 썰었어요.",
+          "baseText": {
+            "de": "Von den Zutaten habe ich zuerst die Karotten gewaschen und in mundgerechte Stücke geschnitten.",
+            "en": "I started with the carrots, washed them and cut them into bite-sized pieces."
+          }
+        },
+        {
+          "targetText": "여기 화구는 고장이라 옆에서만 국을 끓일 수 있어요.",
+          "baseText": {
+            "de": "Dieses Kochfeld ist kaputt. Die Suppe lässt sich nur auf dem daneben kochen.",
+            "en": "This burner is broken. The one next to it is the only one you can cook the soup on."
+          }
+        },
+        {
+          "targetText": "그래서 냄비를 옮긴 다음에 옆 화구를 써도 될까요?",
+          "baseText": {
+            "de": "Kann ich den Topf also umstellen und dann auf dem Kochfeld daneben weiterkochen?",
+            "en": "So could I move the pot and then use the next burner?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어서",
+        "rule": {
+          "de": "씻어서 verbindet das Waschen mit dem anschließenden Schneiden derselben Karotten.",
+          "en": "씻어서 links washing the carrots to what you do with those same carrots next."
+        },
+        "examples": [
+          {
+            "targetText": "재료 중에 당근부터 씻어서 한입 크기로 썰었어요.",
+            "baseText": {
+              "de": "Von den Zutaten habe ich zuerst die Karotten gewaschen und in mundgerechte Stücke geschnitten.",
+              "en": "I started with the carrots, washed them and cut them into bite-sized pieces."
+            },
+            "highlight": "씻어서"
+          },
+          {
+            "targetText": "국수를 건져서 찬물에 헹궈요.",
+            "baseText": {
+              "de": "Man nimmt die Nudeln heraus und spült sie kalt ab.",
+              "en": "Take the noodles out and rinse them in cold water."
+            },
+            "highlight": "건져서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "예를 들어",
+            "그와 달리",
+            "그래서",
+            "첫째"
+          ]
+        },
+        " 냄비를 ",
+        {
+          "kind": "form",
+          "answer": "옮긴 다음에",
+          "choices": [
+            "옮긴 다음에",
+            "옮길 때마다",
+            "옮기는 대신",
+            "옮긴 덕분에"
+          ],
+          "cue": "Ein abgeschlossener Schritt vor dem nächsten / One completed step before the next"
+        },
+        " 옆 화구를 ",
+        {
+          "kind": "choice",
+          "answer": "써도",
+          "choices": [
+            "분리해도",
+            "닦아도",
+            "꺼도",
+            "써도"
+          ]
+        },
+        " 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "재료 중에",
+          "baseText": {
+            "de": "von den Zutaten",
+            "en": "of all the ingredients"
+          }
+        },
+        {
+          "targetText": "당근부터",
+          "baseText": {
+            "de": "zuerst die Karotten",
+            "en": "the carrots first"
+          }
+        },
+        {
+          "targetText": "씻어서",
+          "baseText": {
+            "de": "gewaschen und dann",
+            "en": "washed and then"
+          }
+        },
+        {
+          "targetText": "한입 크기로",
+          "baseText": {
+            "de": "in mundgerechte Stücke",
+            "en": "into bite-sized pieces"
+          }
+        },
+        {
+          "targetText": "썰었어요.",
+          "baseText": {
+            "de": "geschnitten",
+            "en": "cut them"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "재료",
+          "baseText": {
+            "de": "Zutat",
+            "en": "ingredient"
+          }
+        },
+        {
+          "targetText": "당근",
+          "baseText": {
+            "de": "Karotte",
+            "en": "carrot"
+          }
+        },
+        {
+          "targetText": "한입 크기",
+          "baseText": {
+            "de": "mundgerechte Größe",
+            "en": "bite size"
+          }
+        },
+        {
+          "targetText": "썰다",
+          "baseText": {
+            "de": "in Stücke schneiden",
+            "en": "cut up"
+          }
+        },
+        {
+          "targetText": "화구",
+          "baseText": {
+            "de": "Kochfeld, Brenner",
+            "en": "burner"
+          }
+        },
+        {
+          "targetText": "냄비",
+          "baseText": {
+            "de": "Kochtopf",
+            "en": "pot"
+          }
+        }
+      ],
+      "recall": {
+        "before": "재료 중에 당근부터 씻어서 한입 크기로 ",
+        "answer": "썰었어요",
+        "after": ".",
+        "fallbackChoices": [
+          "쪘어요",
+          "갈았어요",
+          "썰었어요",
+          "볶았어요"
+        ]
+      },
+      "speakRequired": [
+        "당근부터",
+        "씻어서",
+        "썰었어요"
+      ],
+      "sceneCaption": {
+        "de": "Im Kochkurs bereitest du die Einlage für eine Suppe vor. „국에 넣을 채소는 어디까지 손질했어요?“",
+        "en": "You're preparing vegetables for soup in a cooking class. “국에 넣을 채소는 어디까지 손질했어요?”"
+      },
+      "trophyWord": {
+        "word": "재료",
+        "meaning": {
+          "de": "Zutat",
+          "en": "ingredient"
+        },
+        "example": "남은 재료 중에 버섯도 있어요.",
+        "whyThisWord": {
+          "de": "Mit 재료 중에 greifst du eine Zutat aus mehreren heraus.",
+          "en": "Use 재료 중에 to single out one of several ingredients."
+        }
+      },
+      "distractors": [
+        "껍질째",
+        "아주 곱게"
+      ],
+      "placeholderCaption": {
+        "de": "Den Suppentopf umstellen",
+        "en": "Moving the soup pot"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A cook chops carrots beside a soup pot and two burners."
+    },
+    {
+      "slug": "junbi-spare-screw",
+      "title": {
+        "de": "Eine Schraube für das letzte Bein",
+        "en": "A screw for the last leg"
+      },
+      "situation": {
+        "de": "Du baust mit jemandem aus der Nachbarschaft einen Tisch auf.",
+        "en": "You're putting a table together with a neighbor."
+      },
+      "pedagogicalGoal": "Erst die abgeschlossene Vorbereitung schildern, dann um ein fehlendes Teil bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "탁자 조립은 어디까지 하셨어요?",
+          "baseText": {
+            "de": "Wie weit sind Sie mit dem Tisch?",
+            "en": "How far have you got with the table?"
+          }
+        },
+        {
+          "targetText": "설명서를 읽은 다음에 조립 준비 단계에서 나사를 크기별로 나눴어요.",
+          "baseText": {
+            "de": "Nach dem Lesen der Anleitung habe ich in der Vorbereitungsphase für den Aufbau die Schrauben nach Größe sortiert.",
+            "en": "After reading the instructions, I sorted the screws by size as part of the assembly prep."
+          }
+        },
+        {
+          "targetText": "다리 하나가 남았는데 긴 나사가 하나 모자라요.",
+          "baseText": {
+            "de": "Ein Bein fehlt noch, und wir haben eine lange Schraube zu wenig.",
+            "en": "We have one leg left to attach and we're short one long screw."
+          }
+        },
+        {
+          "targetText": "그래서 긴 나사를 하나 빌려서 다리를 마저 달아도 될까요?",
+          "baseText": {
+            "de": "Könnte ich mir also eine lange Schraube leihen und damit das letzte Bein anschrauben?",
+            "en": "So could I borrow a long screw and use it to attach the last leg?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 다음에",
+        "rule": {
+          "de": "읽은 다음에 nennt den abgeschlossenen ersten Schritt. Danach erfährst du, was die Person mit den Schrauben gemacht hat.",
+          "en": "읽은 다음에 marks reading as the completed first step. The next clause tells you what happened to the screws."
+        },
+        "examples": [
+          {
+            "targetText": "설명서를 읽은 다음에 조립 준비 단계에서 나사를 크기별로 나눴어요.",
+            "baseText": {
+              "de": "Nach dem Lesen der Anleitung habe ich in der Vorbereitungsphase für den Aufbau die Schrauben nach Größe sortiert.",
+              "en": "After reading the instructions, I sorted the screws by size as part of the assembly prep."
+            },
+            "highlight": "읽은 다음에"
+          },
+          {
+            "targetText": "벽 길이를 잰 다음에 선반을 골랐어요.",
+            "baseText": {
+              "de": "Ich habe erst die Wand ausgemessen und dann ein Regal ausgesucht.",
+              "en": "I measured the wall before choosing a shelf."
+            },
+            "highlight": "잰 다음에"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "반대로",
+            "그래서",
+            "예컨대",
+            "셋째"
+          ]
+        },
+        " 긴 나사를 하나 ",
+        {
+          "kind": "form",
+          "answer": "빌려서",
+          "choices": [
+            "빌리는 대신",
+            "빌리기 전에",
+            "빌릴 때마다",
+            "빌려서"
+          ],
+          "cue": "Zwei unmittelbar aufeinanderfolgende Handlungen / Two actions in direct sequence"
+        },
+        " 다리를 마저 ",
+        {
+          "kind": "choice",
+          "answer": "달아도",
+          "choices": [
+            "잘라도",
+            "접어도",
+            "달아도",
+            "떼어도"
+          ]
+        },
+        " 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "설명서를 읽은 다음에",
+          "baseText": {
+            "de": "nachdem ich die Anleitung gelesen hatte",
+            "en": "after reading the instructions"
+          }
+        },
+        {
+          "targetText": "조립 준비 단계에서",
+          "baseText": {
+            "de": "in der Vorbereitungsphase für den Aufbau",
+            "en": "at the assembly prep stage"
+          }
+        },
+        {
+          "targetText": "나사를 크기별로",
+          "baseText": {
+            "de": "die Schrauben nach Größe",
+            "en": "the screws by size"
+          }
+        },
+        {
+          "targetText": "나눴어요.",
+          "baseText": {
+            "de": "sortiert",
+            "en": "sorted them"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "준비",
+          "baseText": {
+            "de": "Vorbereitung",
+            "en": "preparation"
+          }
+        },
+        {
+          "targetText": "설명서",
+          "baseText": {
+            "de": "Anleitung",
+            "en": "instruction manual"
+          }
+        },
+        {
+          "targetText": "조립",
+          "baseText": {
+            "de": "Zusammenbau",
+            "en": "assembly"
+          }
+        },
+        {
+          "targetText": "크기별로",
+          "baseText": {
+            "de": "nach Größe",
+            "en": "by size"
+          }
+        },
+        {
+          "targetText": "나사",
+          "baseText": {
+            "de": "Schraube",
+            "en": "screw"
+          }
+        },
+        {
+          "targetText": "모자라다",
+          "baseText": {
+            "de": "nicht ausreichen",
+            "en": "be short of something"
+          }
+        },
+        {
+          "targetText": "다리를 달다",
+          "baseText": {
+            "de": "ein Bein befestigen",
+            "en": "attach a leg"
+          }
+        },
+        {
+          "targetText": "단계",
+          "baseText": {
+            "de": "Phase, Stufe",
+            "en": "stage"
+          }
+        }
+      ],
+      "recall": {
+        "before": "설명서를 읽은 다음에 조립 준비 단계에서 나사를 ",
+        "answer": "크기별로",
+        "after": " 나눴어요.",
+        "fallbackChoices": [
+          "날짜별로",
+          "주제별로",
+          "계절별로",
+          "크기별로"
+        ]
+      },
+      "speakRequired": [
+        "읽은",
+        "준비",
+        "크기별로"
+      ],
+      "sceneCaption": {
+        "de": "Du baust mit jemandem aus der Nachbarschaft einen Tisch auf. „탁자 조립은 어디까지 하셨어요?“",
+        "en": "You're putting a table together with a neighbor. “탁자 조립은 어디까지 하셨어요?”"
+      },
+      "trophyWord": {
+        "word": "준비",
+        "meaning": {
+          "de": "Vorbereitung",
+          "en": "preparation"
+        },
+        "example": "조립 준비 단계에서 부품 수를 세어 봐요.",
+        "whyThisWord": {
+          "de": "준비 단계 bezeichnet die Phase, in der du das Material zurechtlegst, bevor die eigentliche Arbeit anfängt.",
+          "en": "준비 단계 is the stage when you get things ready before the main work begins."
+        }
+      },
+      "distractors": [
+        "포장지를 뜯기 전에",
+        "상자째로"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Schraube für das letzte Bein",
+        "en": "A screw for the last leg"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A neighbor holds the last wooden leg next to sorted screws."
+    },
+    {
+      "slug": "seolchi-printer-network",
+      "title": {
+        "de": "Der Drucker ist noch offline",
+        "en": "The printer is still offline"
+      },
+      "situation": {
+        "de": "Beim Einrichten des Bürodruckers sprichst du mit dem IT-Support.",
+        "en": "You're setting up the office printer with IT support."
+      },
+      "pedagogicalGoal": "Die Reihenfolge einer Installation angeben und in einem Menü gezielt nach dem nächsten Schritt fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "새 프린터 연결은 잘 되고 있어요?",
+          "baseText": {
+            "de": "Kommen Sie mit dem Anschluss des neuen Druckers zurecht?",
+            "en": "How are you getting on with connecting the new printer?"
+          }
+        },
+        {
+          "targetText": "드라이버를 내려받은 다음에 설치 파일을 열어서 설치를 마쳤어요.",
+          "baseText": {
+            "de": "Ich habe den Treiber heruntergeladen, die Installationsdatei geöffnet und die Installation abgeschlossen.",
+            "en": "I downloaded the driver, opened the installer and finished the installation."
+          }
+        },
+        {
+          "targetText": "메뉴는 열렸는데 아직 오프라인이에요. 회사 네트워크에 연결해야 해요.",
+          "baseText": {
+            "de": "Das Menü ist offen, aber der Drucker ist noch offline. Sie müssen ihn mit dem Firmennetz verbinden.",
+            "en": "The menu's open but the printer's still offline. You need to connect it to the company network."
+          }
+        },
+        {
+          "targetText": "그다음에 어떤 항목을 눌러야 회사 네트워크를 찾아서 연결해요?",
+          "baseText": {
+            "de": "Worauf drücke ich als Nächstes, um das Firmennetz zu finden und mich damit zu verbinden?",
+            "en": "What do I press next to find the company network and connect to it?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 다음에",
+        "rule": {
+          "de": "내려받은 다음에 zeigt, dass der Download abgeschlossen ist, bevor die Datei geöffnet wird.",
+          "en": "내려받은 다음에 places the completed download before opening the file."
+        },
+        "examples": [
+          {
+            "targetText": "드라이버를 내려받은 다음에 설치 파일을 열어서 설치를 마쳤어요.",
+            "baseText": {
+              "de": "Ich habe den Treiber heruntergeladen, die Installationsdatei geöffnet und die Installation abgeschlossen.",
+              "en": "I downloaded the driver, opened the installer and finished the installation."
+            },
+            "highlight": "내려받은 다음에"
+          },
+          {
+            "targetText": "전원을 끈 다음에 케이블을 뽑아요.",
+            "baseText": {
+              "de": "Schalten Sie das Gerät aus und ziehen Sie dann das Kabel ab.",
+              "en": "Turn the device off before unplugging the cable."
+            },
+            "highlight": "끈 다음에"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그다음에",
+          "choices": [
+            "그다음에",
+            "정반대로",
+            "요약하면",
+            "예전에는"
+          ]
+        },
+        " 어떤 항목을 ",
+        {
+          "kind": "choice",
+          "answer": "눌러야",
+          "choices": [
+            "지워야",
+            "닫아야",
+            "눌러야",
+            "꺼야"
+          ]
+        },
+        " 회사 네트워크를 ",
+        {
+          "kind": "form",
+          "answer": "찾아서",
+          "choices": [
+            "찾는 대신",
+            "찾아서",
+            "찾지 말고",
+            "찾지 못해서"
+          ],
+          "cue": "Die zweite Handlung baut auf der ersten auf / The second action builds on the first"
+        },
+        " 연결해요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "드라이버를 내려받은 다음에",
+          "baseText": {
+            "de": "nach dem Herunterladen des Treibers",
+            "en": "after downloading the driver"
+          }
+        },
+        {
+          "targetText": "설치 파일을",
+          "baseText": {
+            "de": "die Installationsdatei",
+            "en": "the installer"
+          }
+        },
+        {
+          "targetText": "열어서",
+          "baseText": {
+            "de": "geöffnet und dann",
+            "en": "opened and then"
+          }
+        },
+        {
+          "targetText": "설치를 마쳤어요.",
+          "baseText": {
+            "de": "die Installation abgeschlossen",
+            "en": "finished the installation"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "설치",
+          "baseText": {
+            "de": "Installation",
+            "en": "installation"
+          }
+        },
+        {
+          "targetText": "드라이버",
+          "baseText": {
+            "de": "Treiber",
+            "en": "driver"
+          }
+        },
+        {
+          "targetText": "내려받다",
+          "baseText": {
+            "de": "herunterladen",
+            "en": "download"
+          }
+        },
+        {
+          "targetText": "파일을 열다",
+          "baseText": {
+            "de": "eine Datei öffnen",
+            "en": "open a file"
+          }
+        },
+        {
+          "targetText": "네트워크",
+          "baseText": {
+            "de": "Netzwerk",
+            "en": "network"
+          }
+        },
+        {
+          "targetText": "항목",
+          "baseText": {
+            "de": "Menüpunkt",
+            "en": "menu option"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "드라이버를",
+        "after": " 내려받은 다음에 설치 파일을 열어서 설치를 마쳤어요.",
+        "fallbackChoices": [
+          "청구서를",
+          "드라이버를",
+          "시간표를",
+          "주문서를"
+        ]
+      },
+      "speakRequired": [
+        "드라이버를",
+        "설치",
+        "마쳤어요"
+      ],
+      "sceneCaption": {
+        "de": "Beim Einrichten des Bürodruckers sprichst du mit dem IT-Support. „새 프린터 연결은 잘 되고 있어요?“",
+        "en": "You're setting up the office printer with IT support. “새 프린터 연결은 잘 되고 있어요?”"
+      },
+      "trophyWord": {
+        "word": "설치",
+        "meaning": {
+          "de": "Installation",
+          "en": "installation"
+        },
+        "example": "설치 파일은 어디서 받아요?",
+        "whyThisWord": {
+          "de": "설치 파일 ist die Datei, mit der du ein Programm einrichtest. 설치 allein bezeichnet den Vorgang.",
+          "en": "설치 파일 is the file you use to install software. 설치 itself names the process."
+        }
+      },
+      "distractors": [
+        "보내기 전에",
+        "화면을 잠갔어요."
+      ],
+      "placeholderCaption": {
+        "de": "Der Drucker ist noch offline",
+        "en": "The printer is still offline"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A printer settings panel is open beside an office printer."
+    },
+    {
+      "slug": "jorip-wobbly-shelf",
+      "title": {
+        "de": "Das Regal wackelt",
+        "en": "The wobbly shelf"
+      },
+      "situation": {
+        "de": "Ein Nachbar hilft dir, ein neues Regal an seinen Platz zu stellen.",
+        "en": "A neighbor is helping you put a new shelf in place."
+      },
+      "pedagogicalGoal": "Den absichtlich hergestellten Zustand beschreiben und nach einer sicheren Korrektur fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어제 사신 선반은 이제 다 됐어요?",
+          "baseText": {
+            "de": "Ist das Regal, das Sie gestern gekauft haben, jetzt fertig?",
+            "en": "Is the shelf you bought yesterday all set up now?"
+          }
+        },
+        {
+          "targetText": "선반 조립 끝내고 걸리지 않게 벽 쪽에 세워 뒀어요.",
+          "baseText": {
+            "de": "Ich habe das Regal fertig aufgebaut und an die Wand gestellt, damit es niemandem im Weg ist.",
+            "en": "I finished putting the shelf together and left it against the wall so it wouldn't be in the way."
+          }
+        },
+        {
+          "targetText": "종이를 받쳐 놓으셨네요. 그런데 나사가 헐거워서 그대로는 흔들려요.",
+          "baseText": {
+            "de": "Sie haben ja Papier untergelegt. Aber eine Schraube sitzt locker, so wackelt es weiter.",
+            "en": "I see you've put some paper underneath. But one screw is loose, so it still wobbles like this."
+          }
+        },
+        {
+          "targetText": "그런데 받쳐 놓은 종이는 빼고 나사부터 조이면 될까요?",
+          "baseText": {
+            "de": "Soll ich dann das untergelegte Papier wegnehmen und zuerst die Schraube festziehen?",
+            "en": "Then should I take out the paper I put under it and tighten the screw first?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 두다",
+        "rule": {
+          "de": "세워 뒀어요 sagt auch, dass das Regal nach dem Hinstellen an diesem Platz geblieben ist.",
+          "en": "세워 뒀어요 tells you the shelf was put upright and deliberately left there."
+        },
+        "examples": [
+          {
+            "targetText": "선반 조립 끝내고 걸리지 않게 벽 쪽에 세워 뒀어요.",
+            "baseText": {
+              "de": "Ich habe das Regal fertig aufgebaut und an die Wand gestellt, damit es niemandem im Weg ist.",
+              "en": "I finished putting the shelf together and left it against the wall so it wouldn't be in the way."
+            },
+            "highlight": "세워 뒀어요"
+          },
+          {
+            "targetText": "바닥에 깔 돗자리는 미리 펴 뒀어요.",
+            "baseText": {
+              "de": "Ich habe die Matte für den Boden schon ausgebreitet.",
+              "en": "I spread the floor mat out in advance."
+            },
+            "highlight": "펴 뒀어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "그런데",
+            "첫째",
+            "가령",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "받쳐 놓은",
+          "choices": [
+            "받치려던",
+            "받치지 않은",
+            "받쳐 놓은",
+            "받칠까 하는"
+          ],
+          "cue": "Ergebnis einer absichtlichen Vorbereitung / The lasting result of a deliberate action"
+        },
+        " 종이는 빼고 나사부터 ",
+        {
+          "kind": "choice",
+          "answer": "조이면",
+          "choices": [
+            "칠하면",
+            "조이면",
+            "풀면",
+            "닦으면"
+          ]
+        },
+        " 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "선반 조립 끝내고",
+          "baseText": {
+            "de": "nach dem Aufbau des Regals",
+            "en": "after assembling the shelf"
+          }
+        },
+        {
+          "targetText": "걸리지 않게",
+          "baseText": {
+            "de": "damit es aus dem Weg ist",
+            "en": "to keep it out of the way"
+          }
+        },
+        {
+          "targetText": "벽 쪽에",
+          "baseText": {
+            "de": "an die Wand",
+            "en": "by the wall"
+          }
+        },
+        {
+          "targetText": "세워 뒀어요.",
+          "baseText": {
+            "de": "habe ich es hingestellt",
+            "en": "I stood it up and left it there"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "조립",
+          "baseText": {
+            "de": "Aufbau, Montage",
+            "en": "assembly"
+          }
+        },
+        {
+          "targetText": "선반",
+          "baseText": {
+            "de": "Regal",
+            "en": "shelf"
+          }
+        },
+        {
+          "targetText": "벽 쪽",
+          "baseText": {
+            "de": "zur Wand hin",
+            "en": "toward the wall"
+          }
+        },
+        {
+          "targetText": "세우다",
+          "baseText": {
+            "de": "aufrecht hinstellen",
+            "en": "stand upright"
+          }
+        },
+        {
+          "targetText": "헐겁다",
+          "baseText": {
+            "de": "locker sitzen",
+            "en": "be loose"
+          }
+        },
+        {
+          "targetText": "받치다",
+          "baseText": {
+            "de": "unterlegen, stützen",
+            "en": "prop up"
+          }
+        },
+        {
+          "targetText": "조이다",
+          "baseText": {
+            "de": "festziehen",
+            "en": "tighten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "선반 조립 끝내고 걸리지 않게 벽 쪽에 ",
+        "answer": "세워",
+        "after": " 뒀어요.",
+        "fallbackChoices": [
+          "눕혀",
+          "접어",
+          "세워",
+          "말아"
+        ]
+      },
+      "speakRequired": [
+        "조립",
+        "벽",
+        "세워"
+      ],
+      "sceneCaption": {
+        "de": "Ein Nachbar hilft dir, ein neues Regal an seinen Platz zu stellen. „어제 사신 선반은 이제 다 됐어요?“",
+        "en": "A neighbor is helping you put a new shelf in place. “어제 사신 선반은 이제 다 됐어요?”"
+      },
+      "trophyWord": {
+        "word": "조립",
+        "meaning": {
+          "de": "Aufbau, Montage",
+          "en": "assembly"
+        },
+        "example": "조립 순서를 바꾸면 나사가 안 들어가요.",
+        "whyThisWord": {
+          "de": "조립 passt, wenn aus Einzelteilen ein Möbelstück oder Gerät entsteht.",
+          "en": "Use 조립 when individual parts are put together to make furniture or a device."
+        }
+      },
+      "distractors": [
+        "천장 쪽에",
+        "상자에 넣었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Das Regal wackelt",
+        "en": "The wobbly shelf"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A folded piece of paper sits under one foot of a wooden shelf."
+    },
+    {
+      "slug": "jeongni-missing-contract",
+      "title": {
+        "de": "Das Original fehlt",
+        "en": "Looking for the original"
+      },
+      "situation": {
+        "de": "Du übernimmst im Büro die Ablage der Verträge.",
+        "en": "You're filing the contracts at the office."
+      },
+      "pedagogicalGoal": "Erklären, wie Unterlagen für später abgelegt wurden, und beim Suchen Original und Kopie unterscheiden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "책상 위에 있던 계약서는 다 치우셨어요?",
+          "baseText": {
+            "de": "Haben Sie alle Verträge vom Schreibtisch weggeräumt?",
+            "en": "Have you cleared all the contracts off the desk?"
+          }
+        },
+        {
+          "targetText": "서류 정리 끝내고 계약서는 따로 맨 위 서랍에 넣어 뒀어요.",
+          "baseText": {
+            "de": "Ich habe die Unterlagen sortiert und die Verträge separat in die oberste Schublade gelegt.",
+            "en": "I sorted the paperwork and put the contracts away separately in the top drawer."
+          }
+        },
+        {
+          "targetText": "서랍 안에는 사본만 있고 서명한 원본 한 장이 빠졌어요.",
+          "baseText": {
+            "de": "In der Schublade liegen nur die Kopien, und ein unterschriebenes Original fehlt.",
+            "en": "The drawer only has the copies, and one signed original is missing."
+          }
+        },
+        {
+          "targetText": "그런데 서랍에 넣어 둔 건 사본이고 원본은 어디서 찾아봐요?",
+          "baseText": {
+            "de": "Aber was ich in die Schublade gelegt habe, sind dann Kopien. Wo suche ich denn nach dem Original?",
+            "en": "But then what I put in the drawer are copies, so where should I look for the original?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 두다",
+        "rule": {
+          "de": "넣어 뒀어요 verbindet das Einräumen mit dem Ergebnis. Die Verträge sollen in der Schublade griffbereit bleiben.",
+          "en": "넣어 뒀어요 links putting the contracts away to the result. They're meant to stay handy in the drawer."
+        },
+        "examples": [
+          {
+            "targetText": "서류 정리 끝내고 계약서는 따로 맨 위 서랍에 넣어 뒀어요.",
+            "baseText": {
+              "de": "Ich habe die Unterlagen sortiert und die Verträge separat in die oberste Schublade gelegt.",
+              "en": "I sorted the paperwork and put the contracts away separately in the top drawer."
+            },
+            "highlight": "넣어 뒀어요"
+          },
+          {
+            "targetText": "보낼 우편물은 층별로 갈라 뒀어요.",
+            "baseText": {
+              "de": "Die ausgehende Post habe ich nach Stockwerken getrennt hingelegt.",
+              "en": "I separated the outgoing mail by floor and left it ready."
+            },
+            "highlight": "갈라 뒀어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "거꾸로",
+            "예컨대",
+            "둘째",
+            "그런데"
+          ]
+        },
+        " 서랍에 ",
+        {
+          "kind": "form",
+          "answer": "넣어 둔",
+          "choices": [
+            "넣을까 하는",
+            "넣어 둔",
+            "넣기 전인",
+            "넣지 않을"
+          ],
+          "cue": "Etwas für später an seinem Platz lassen / Leaving something in place for later"
+        },
+        " 건 사본이고 원본은 어디서 ",
+        {
+          "kind": "choice",
+          "answer": "찾아봐요",
+          "choices": [
+            "찾아봐요",
+            "인쇄해요",
+            "복사해요",
+            "버려요"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "서류 정리 끝내고",
+          "baseText": {
+            "de": "nach dem Sortieren der Unterlagen",
+            "en": "after sorting the paperwork"
+          }
+        },
+        {
+          "targetText": "계약서는 따로",
+          "baseText": {
+            "de": "die Verträge getrennt",
+            "en": "the contracts separately"
+          }
+        },
+        {
+          "targetText": "맨 위 서랍에",
+          "baseText": {
+            "de": "in die oberste Schublade",
+            "en": "in the top drawer"
+          }
+        },
+        {
+          "targetText": "넣어 뒀어요.",
+          "baseText": {
+            "de": "habe ich sie abgelegt",
+            "en": "I put them away"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "정리",
+          "baseText": {
+            "de": "Sortieren, Aufräumen",
+            "en": "organizing, tidying up"
+          }
+        },
+        {
+          "targetText": "계약서",
+          "baseText": {
+            "de": "Vertrag",
+            "en": "contract"
+          }
+        },
+        {
+          "targetText": "서랍",
+          "baseText": {
+            "de": "Schublade",
+            "en": "drawer"
+          }
+        },
+        {
+          "targetText": "사본",
+          "baseText": {
+            "de": "Kopie",
+            "en": "copy"
+          }
+        },
+        {
+          "targetText": "서명하다",
+          "baseText": {
+            "de": "unterschreiben",
+            "en": "sign"
+          }
+        },
+        {
+          "targetText": "원본",
+          "baseText": {
+            "de": "Original",
+            "en": "original document"
+          }
+        }
+      ],
+      "recall": {
+        "before": "서류 정리 끝내고 계약서는 따로 맨 위 ",
+        "answer": "서랍에",
+        "after": " 넣어 뒀어요.",
+        "fallbackChoices": [
+          "서랍에",
+          "봉투에",
+          "가방에",
+          "상자에"
+        ]
+      },
+      "speakRequired": [
+        "정리",
+        "계약서는",
+        "서랍에"
+      ],
+      "sceneCaption": {
+        "de": "Du übernimmst im Büro die Ablage der Verträge. „책상 위에 있던 계약서는 다 치우셨어요?“",
+        "en": "You're filing the contracts at the office. “책상 위에 있던 계약서는 다 치우셨어요?”"
+      },
+      "trophyWord": {
+        "word": "정리",
+        "meaning": {
+          "de": "Ordnen, Sortieren",
+          "en": "organizing"
+        },
+        "example": "정리 작업이 끝나면 찾기 쉬울 거예요.",
+        "whyThisWord": {
+          "de": "서류 정리 bezeichnet das Ordnen von Papieren. Bei 책상 정리 räumst du den ganzen Schreibtisch auf.",
+          "en": "서류 정리 means organizing papers. 책상 정리 means tidying the whole desk."
+        }
+      },
+      "distractors": [
+        "회사 밖으로",
+        "다시 보냈어요."
+      ],
+      "placeholderCaption": {
+        "de": "Das Original fehlt",
+        "en": "Looking for the original"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "An open top drawer holds a neat stack of contract copies."
+    },
+    {
+      "slug": "seoljeong-phone-language",
+      "title": {
+        "de": "Die Sprache ist wieder verstellt",
+        "en": "The phone switched languages again"
+      },
+      "situation": {
+        "de": "Du richtest mit einem Kollegen ein Diensthandy ein.",
+        "en": "You and a colleague are setting up a work phone."
+      },
+      "pedagogicalGoal": "Ein gespeichertes Ergebnis beschreiben und nachfragen, wie sich eine einzelne Einstellung ohne Zurücksetzen des Geräts korrigieren lässt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "새 업무용 휴대폰은 쓰기 편하세요?",
+          "baseText": {
+            "de": "Kommen Sie mit dem neuen Diensthandy zurecht?",
+            "en": "Are you getting on well with the new work phone?"
+          }
+        },
+        {
+          "targetText": "설정 화면에서 언어를 한국어로 바꿔 놓고 저장까지 했어요.",
+          "baseText": {
+            "de": "Ich habe in den Einstellungen die Sprache auf Koreanisch umgestellt und die Änderung auch gespeichert.",
+            "en": "I changed the language to Korean in settings and even saved the change."
+          }
+        },
+        {
+          "targetText": "다시 켜니까 영어로 돌아갔네요. 초기화하면 사진까지 날아가요.",
+          "baseText": {
+            "de": "Nach dem Einschalten ist es wieder Englisch. Beim Zurücksetzen gehen auch die Fotos verloren.",
+            "en": "It went back to English when we turned it on again. If we reset it, the photos go too."
+          }
+        },
+        {
+          "targetText": "그런데 저장해 둔 사진은 남기고 언어만 다시 바꾸면 되나요?",
+          "baseText": {
+            "de": "Kann ich denn die gespeicherten Fotos behalten und nur die Sprache noch einmal umstellen?",
+            "en": "Then can I keep the photos I've saved and just switch the language again?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 놓다",
+        "rule": {
+          "de": "바꿔 놓고 bedeutet hier, dass die Änderung eingestellt bleiben sollte. Dann wurde sie noch gespeichert.",
+          "en": "바꿔 놓고 shows the change was meant to stay in effect. Saving it was a separate step."
+        },
+        "examples": [
+          {
+            "targetText": "설정 화면에서 언어를 한국어로 바꿔 놓고 저장까지 했어요.",
+            "baseText": {
+              "de": "Ich habe in den Einstellungen die Sprache auf Koreanisch umgestellt und die Änderung auch gespeichert.",
+              "en": "I changed the language to Korean in settings and even saved the change."
+            },
+            "highlight": "바꿔 놓고"
+          },
+          {
+            "targetText": "알람을 일곱 시에 맞춰 놓고 잤어요.",
+            "baseText": {
+              "de": "Ich habe den Wecker auf sieben gestellt und bin schlafen gegangen.",
+              "en": "I set the alarm for seven before going to sleep."
+            },
+            "highlight": "맞춰 놓고"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "반대로",
+            "예를 들면",
+            "그런데",
+            "셋째"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "저장해 둔",
+          "choices": [
+            "저장해 둔",
+            "저장하려던",
+            "저장하지 않은",
+            "저장할까 하는"
+          ],
+          "cue": "Absichtlich gespeichertes Ergebnis vor einem Nomen / A deliberately saved result modifying a noun"
+        },
+        " 사진은 남기고 언어만 다시 ",
+        {
+          "kind": "choice",
+          "answer": "바꾸면",
+          "choices": [
+            "지우면",
+            "찍으면",
+            "바꾸면",
+            "보내면"
+          ]
+        },
+        " 되나요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "설정 화면에서",
+          "baseText": {
+            "de": "in den Einstellungen",
+            "en": "in the settings menu"
+          }
+        },
+        {
+          "targetText": "언어를 한국어로",
+          "baseText": {
+            "de": "die Sprache auf Koreanisch",
+            "en": "the language to Korean"
+          }
+        },
+        {
+          "targetText": "바꿔 놓고",
+          "baseText": {
+            "de": "umgestellt und dann",
+            "en": "changed it and then"
+          }
+        },
+        {
+          "targetText": "저장까지 했어요.",
+          "baseText": {
+            "de": "sogar gespeichert",
+            "en": "even saved it"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "설정",
+          "baseText": {
+            "de": "Einstellungen",
+            "en": "settings"
+          }
+        },
+        {
+          "targetText": "업무용 휴대폰",
+          "baseText": {
+            "de": "Diensthandy",
+            "en": "work phone"
+          }
+        },
+        {
+          "targetText": "언어",
+          "baseText": {
+            "de": "Sprache",
+            "en": "language"
+          }
+        },
+        {
+          "targetText": "저장하다",
+          "baseText": {
+            "de": "speichern",
+            "en": "save"
+          }
+        },
+        {
+          "targetText": "다시 켜다",
+          "baseText": {
+            "de": "wieder einschalten",
+            "en": "turn back on"
+          }
+        },
+        {
+          "targetText": "초기화하다",
+          "baseText": {
+            "de": "zurücksetzen",
+            "en": "reset"
+          }
+        }
+      ],
+      "recall": {
+        "before": "설정 화면에서 언어를 ",
+        "answer": "한국어로",
+        "after": " 바꿔 놓고 저장까지 했어요.",
+        "fallbackChoices": [
+          "무음으로",
+          "한국어로",
+          "가로로",
+          "수동으로"
+        ]
+      },
+      "speakRequired": [
+        "설정",
+        "한국어로",
+        "저장까지"
+      ],
+      "sceneCaption": {
+        "de": "Du richtest mit einem Kollegen ein Diensthandy ein. „새 업무용 휴대폰은 쓰기 편하세요?“",
+        "en": "You and a colleague are setting up a work phone. “새 업무용 휴대폰은 쓰기 편하세요?”"
+      },
+      "trophyWord": {
+        "word": "설정",
+        "meaning": {
+          "de": "Einstellung, Einstellungen",
+          "en": "setting, settings"
+        },
+        "example": "설정 화면에서 글씨 크기도 바꿀 수 있어요.",
+        "whyThisWord": {
+          "de": "설정 화면 bezeichnet das Menü, in dem du etwa Sprache, Schriftgröße oder Töne ändern kannst.",
+          "en": "설정 화면 is the screen where you can change things such as the language, text size or sounds."
+        }
+      },
+      "distractors": [
+        "공장 출고 상태로",
+        "사진까지 지웠어요."
+      ],
+      "placeholderCaption": {
+        "de": "Die Sprache ist wieder verstellt",
+        "en": "The phone switched languages again"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A colleague studies a phone's language menu beside the learner."
+    },
+    {
+      "slug": "hwagin-open-oven",
+      "title": {
+        "de": "Wie heiß ist der Ofen jetzt?",
+        "en": "How hot is the oven now?"
+      },
+      "situation": {
+        "de": "Du prüfst im Backkurs den Ofen vor dem nächsten Blech.",
+        "en": "You're checking the oven before the next tray goes in."
+      },
+      "pedagogicalGoal": "Den sichtbaren Zustand der Tür vom Öffnen selbst unterscheiden und nach dem aktuellen Messwert fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오븐 쪽은 한번 보고 오셨어요?",
+          "baseText": {
+            "de": "Haben Sie schon nach dem Ofen gesehen?",
+            "en": "Have you had a look at the oven?"
+          }
+        },
+        {
+          "targetText": "오븐 확인 부탁하셔서 가 봤는데 문이 조금 열려 있어요.",
+          "baseText": {
+            "de": "Ich habe auf Ihre Bitte nach dem Ofen geschaut. Die Tür steht einen Spalt offen.",
+            "en": "I went to check the oven as you asked. The door is slightly open."
+          }
+        },
+        {
+          "targetText": "열이 꽤 빠졌겠어요. 숫자는 저한테만 보이네요.",
+          "baseText": {
+            "de": "Da ist bestimmt einiges an Wärme entwichen. Die Zahlen kann von hier nur ich sehen.",
+            "en": "It must have lost quite a bit of heat. Only I can see the numbers from here."
+          }
+        },
+        {
+          "targetText": "그래서 지금 화면에 표시돼 있는 온도를 읽어 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie mir dann die Temperatur vorlesen, die gerade angezeigt wird?",
+            "en": "Could you read me the temperature that's showing on the screen now, then?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 있다",
+        "rule": {
+          "de": "열려 있어요 beschreibt die offene Tür. Wer sie geöffnet hat, spielt hier keine Rolle.",
+          "en": "열려 있어요 describes the door as open. The speaker doesn't have to say who opened it."
+        },
+        "examples": [
+          {
+            "targetText": "오븐 확인 부탁하셔서 가 봤는데 문이 조금 열려 있어요.",
+            "baseText": {
+              "de": "Ich habe auf Ihre Bitte nach dem Ofen geschaut. Die Tür steht einen Spalt offen.",
+              "en": "I went to check the oven as you asked. The door is slightly open."
+            },
+            "highlight": "열려 있어요"
+          },
+          {
+            "targetText": "온도계가 빵 가운데 꽂혀 있어요.",
+            "baseText": {
+              "de": "Das Thermometer steckt mitten im Brot.",
+              "en": "The thermometer is sticking out of the middle of the bread."
+            },
+            "highlight": "꽂혀 있어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그와 달리",
+            "예전에는",
+            "그래서",
+            "예를 들어"
+          ]
+        },
+        " 지금 화면에 ",
+        {
+          "kind": "form",
+          "answer": "표시돼 있는",
+          "choices": [
+            "표시돼 있는",
+            "표시될 예정인",
+            "표시하려던",
+            "표시되지 않은"
+          ],
+          "cue": "Ein Ergebnis, das gerade sichtbar ist / A result that is visible now"
+        },
+        " 온도를 ",
+        {
+          "kind": "choice",
+          "answer": "읽어",
+          "choices": [
+            "닦아",
+            "꺼",
+            "읽어",
+            "열어"
+          ]
+        },
+        " 주시겠어요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "오븐 확인 부탁하셔서",
+          "baseText": {
+            "de": "weil Sie mich gebeten hatten, nach dem Ofen zu sehen",
+            "en": "since you asked me to check the oven"
+          }
+        },
+        {
+          "targetText": "가 봤는데",
+          "baseText": {
+            "de": "bin ich nachsehen gegangen",
+            "en": "I went to have a look"
+          }
+        },
+        {
+          "targetText": "문이 조금",
+          "baseText": {
+            "de": "die Tür einen Spalt",
+            "en": "the door slightly"
+          }
+        },
+        {
+          "targetText": "열려 있어요.",
+          "baseText": {
+            "de": "steht offen",
+            "en": "is open"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "확인",
+          "baseText": {
+            "de": "Überprüfung",
+            "en": "check"
+          }
+        },
+        {
+          "targetText": "온도",
+          "baseText": {
+            "de": "Temperatur",
+            "en": "temperature"
+          }
+        },
+        {
+          "targetText": "오븐 문",
+          "baseText": {
+            "de": "Ofentür",
+            "en": "oven door"
+          }
+        },
+        {
+          "targetText": "열려 있다",
+          "baseText": {
+            "de": "offen stehen",
+            "en": "be open"
+          }
+        },
+        {
+          "targetText": "열이 빠지다",
+          "baseText": {
+            "de": "Wärme entweicht",
+            "en": "lose heat"
+          }
+        },
+        {
+          "targetText": "표시되다",
+          "baseText": {
+            "de": "angezeigt werden",
+            "en": "be displayed"
+          }
+        }
+      ],
+      "recall": {
+        "before": "오븐 확인 부탁하셔서 가 봤는데 문이 조금 ",
+        "answer": "열려",
+        "after": " 있어요.",
+        "fallbackChoices": [
+          "깨져",
+          "휘어",
+          "찢어져",
+          "열려"
+        ]
+      },
+      "speakRequired": [
+        "확인",
+        "오븐",
+        "열려"
+      ],
+      "sceneCaption": {
+        "de": "Du prüfst im Backkurs den Ofen vor dem nächsten Blech. „오븐 쪽은 한번 보고 오셨어요?“",
+        "en": "You're checking the oven before the next tray goes in. “오븐 쪽은 한번 보고 오셨어요?”"
+      },
+      "trophyWord": {
+        "word": "확인",
+        "meaning": {
+          "de": "Überprüfung",
+          "en": "check, verification"
+        },
+        "example": "출발 전에 인원 확인 먼저 할게요.",
+        "whyThisWord": {
+          "de": "In 온도 확인 und 인원 확인 bestimmt das erste Nomen, was geprüft wird.",
+          "en": "In 온도 확인 and 인원 확인, the noun before 확인 names what you're checking."
+        }
+      },
+      "distractors": [
+        "완전히 닫혀 있어요.",
+        "손잡이가"
+      ],
+      "placeholderCaption": {
+        "de": "Wie heiß ist der Ofen jetzt?",
+        "en": "How hot is the oven now?"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A chef stands close enough to read an oven display while the door is ajar."
+    },
+    {
+      "slug": "jeojang-missing-attachment",
+      "title": {
+        "de": "Die Mail ohne Anhang",
+        "en": "The email without an attachment"
+      },
+      "situation": {
+        "de": "Am Arbeitsplatz erwartest du eine Rückmeldung zu einer Datei.",
+        "en": "At work you're waiting for feedback on a file."
+      },
+      "pedagogicalGoal": "Die Anzeige auf dem eigenen Bildschirm beschreiben und auf einen fehlenden Anhang reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "수정한 표는 메일로 보내 주셨어요?",
+          "baseText": {
+            "de": "Haben Sie die überarbeitete Tabelle per Mail geschickt?",
+            "en": "Did you email the revised table?"
+          }
+        },
+        {
+          "targetText": "저장 버튼을 누르고 첨부했어요. 제 화면에는 파일이 붙어 있어요.",
+          "baseText": {
+            "de": "Ich habe auf Speichern geklickt und sie angehängt. Auf meinem Bildschirm ist die Datei zu sehen.",
+            "en": "I pressed Save and attached it. The file shows up as attached on my screen."
+          }
+        },
+        {
+          "targetText": "받은 메일에는 첨부 파일이 없고 제목만 보여요.",
+          "baseText": {
+            "de": "In der Mail, die angekommen ist, fehlt der Anhang. Ich sehe nur den Betreff.",
+            "en": "There's no attachment in the message I received. I can only see the subject."
+          }
+        },
+        {
+          "targetText": "그래서 새 메일에 다시 첨부해서 붙어 있는지 확인하고 보낼게요.",
+          "baseText": {
+            "de": "Dann hänge ich sie noch einmal an eine neue Mail an, prüfe, ob sie dran ist, und schicke sie ab.",
+            "en": "Then I'll attach it to a new message again, check that it's actually there, and send it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-아/어 있다",
+        "rule": {
+          "de": "붙어 있어요 beschreibt, was auf dem Bildschirm zu sehen ist. 첨부했어요 berichtet dagegen, was die Person getan hat.",
+          "en": "붙어 있어요 reports what is visible on the screen. 첨부했어요 reports what the speaker did."
+        },
+        "examples": [
+          {
+            "targetText": "저장 버튼을 누르고 첨부했어요. 제 화면에는 파일이 붙어 있어요.",
+            "baseText": {
+              "de": "Ich habe auf Speichern geklickt und sie angehängt. Auf meinem Bildschirm ist die Datei zu sehen.",
+              "en": "I pressed Save and attached it. The file shows up as attached on my screen."
+            },
+            "highlight": "붙어 있어요"
+          },
+          {
+            "targetText": "봉투에 받는 사람 이름이 적혀 있어요.",
+            "baseText": {
+              "de": "Auf dem Umschlag steht der Name des Empfängers.",
+              "en": "The recipient's name is written on the envelope."
+            },
+            "highlight": "적혀 있어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "옛날에는",
+            "그래서",
+            "반면에",
+            "가령"
+          ]
+        },
+        " 새 메일에 다시 ",
+        {
+          "kind": "choice",
+          "answer": "첨부해서",
+          "choices": [
+            "삭제해서",
+            "숨겨서",
+            "첨부해서",
+            "빼서"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "붙어 있는지",
+          "choices": [
+            "붙이기 전에",
+            "붙어 있는지",
+            "붙일 때마다",
+            "붙이는 대신"
+          ],
+          "cue": "Zustand in einer eingebetteten Frage / A present state inside an embedded question"
+        },
+        " 확인하고 보낼게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "저장 버튼을 누르고",
+          "baseText": {
+            "de": "nach einem Klick auf Speichern",
+            "en": "after pressing Save"
+          }
+        },
+        {
+          "targetText": "첨부했어요. 제 화면에는",
+          "baseText": {
+            "de": "habe ich sie angehängt. Auf meinem Bildschirm",
+            "en": "I attached it. On my screen"
+          }
+        },
+        {
+          "targetText": "파일이",
+          "baseText": {
+            "de": "die Datei (Subjekt)",
+            "en": "the file (subject)"
+          }
+        },
+        {
+          "targetText": "붙어 있어요.",
+          "baseText": {
+            "de": "ist angehängt (hängt dran)",
+            "en": "is attached (stuck on)"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "저장",
+          "baseText": {
+            "de": "Speichern",
+            "en": "saving"
+          }
+        },
+        {
+          "targetText": "버튼을 누르다",
+          "baseText": {
+            "de": "eine Taste drücken",
+            "en": "press a button"
+          }
+        },
+        {
+          "targetText": "표",
+          "baseText": {
+            "de": "Tabelle",
+            "en": "table"
+          }
+        },
+        {
+          "targetText": "첨부하다",
+          "baseText": {
+            "de": "anhängen",
+            "en": "attach"
+          }
+        },
+        {
+          "targetText": "제목",
+          "baseText": {
+            "de": "Betreff",
+            "en": "subject line"
+          }
+        },
+        {
+          "targetText": "다시 보내다",
+          "baseText": {
+            "de": "noch einmal schicken",
+            "en": "resend"
+          }
+        }
+      ],
+      "recall": {
+        "before": "저장 버튼을 누르고 ",
+        "answer": "첨부했어요",
+        "after": ". 제 화면에는 파일이 붙어 있어요.",
+        "fallbackChoices": [
+          "첨부했어요",
+          "삭제했어요",
+          "복구했어요",
+          "인쇄했어요"
+        ]
+      },
+      "speakRequired": [
+        "저장",
+        "첨부했어요",
+        "화면에는"
+      ],
+      "sceneCaption": {
+        "de": "Am Arbeitsplatz erwartest du eine Rückmeldung zu einer Datei. „수정한 표는 메일로 보내 주셨어요?“",
+        "en": "At work you're waiting for feedback on a file. “수정한 표는 메일로 보내 주셨어요?”"
+      },
+      "trophyWord": {
+        "word": "저장",
+        "meaning": {
+          "de": "Speichern",
+          "en": "saving a file"
+        },
+        "example": "저장 버튼이 화면 아래에 있어요.",
+        "whyThisWord": {
+          "de": "저장 steht oft auf der Taste, mit der du Änderungen an einer Datei behältst.",
+          "en": "저장 is a common button label for keeping the changes you've made to a file."
+        }
+      },
+      "distractors": [
+        "휴지통에는",
+        "파일이 없어요."
+      ],
+      "placeholderCaption": {
+        "de": "Die Mail ohne Anhang",
+        "en": "The email without an attachment"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two coworkers compare an outgoing attachment with a received message."
+    },
+    {
+      "slug": "wanseong-salty-soup",
+      "title": {
+        "de": "Die Suppe ist zu salzig",
+        "en": "The soup is too salty"
+      },
+      "situation": {
+        "de": "Im Kochkurs ist deine erste Suppe bereit für ein Foto.",
+        "en": "Your first soup in cooking class is ready for a photo."
+      },
+      "pedagogicalGoal": "Das Ergebnis eines längeren Ablaufs schildern und die Reihenfolge einer Korrektur vorschlagen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘 끓인 국은 어디까지 됐어요?",
+          "baseText": {
+            "de": "Wie weit sind Sie mit der Suppe, die Sie heute gekocht haben?",
+            "en": "How far have you got with today's soup?"
+          }
+        },
+        {
+          "targetText": "국을 다 담고 나서 완성 사진까지 찍게 됐어요.",
+          "baseText": {
+            "de": "Nachdem ich die Suppe angerichtet hatte, kam ich sogar dazu, das Foto vom fertigen Gericht zu machen.",
+            "en": "After dishing up the soup, I even got to take the photo of the finished dish."
+          }
+        },
+        {
+          "targetText": "모양은 좋은데 국물이 짜네요. 물은 조금 남아 있어요.",
+          "baseText": {
+            "de": "Sieht gut aus, aber die Brühe ist salzig. Es ist noch etwas Wasser da.",
+            "en": "It looks good, but the broth is salty. There's a little water left."
+          }
+        },
+        {
+          "targetText": "그런데 국물을 조금 덜어낸 다음에 물을 보태면 괜찮을까요?",
+          "baseText": {
+            "de": "Könnte ich etwas Brühe abnehmen und dann Wasser dazugeben? Würde das helfen?",
+            "en": "Would it help if I took out a little broth and then added some water?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-게 되다",
+        "rule": {
+          "de": "찍게 됐어요 beschreibt, was der abgeschlossene Kochvorgang jetzt möglich macht. Es ist eher ein Ergebnis als ein vorher gefasster Entschluss.",
+          "en": "찍게 됐어요 describes what finishing the dish has made possible. It presents an outcome rather than an earlier decision."
+        },
+        "examples": [
+          {
+            "targetText": "국을 다 담고 나서 완성 사진까지 찍게 됐어요.",
+            "baseText": {
+              "de": "Nachdem ich die Suppe angerichtet hatte, kam ich sogar dazu, das Foto vom fertigen Gericht zu machen.",
+              "en": "After dishing up the soup, I even got to take the photo of the finished dish."
+            },
+            "highlight": "찍게 됐어요"
+          },
+          {
+            "targetText": "일손이 부족해서 제가 반찬을 맡게 됐어요.",
+            "baseText": {
+              "de": "Weil noch jemand fehlte, habe ich schließlich die Beilagen übernommen.",
+              "en": "They were short-handed, so I ended up taking charge of the side dishes."
+            },
+            "highlight": "맡게 됐어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "그런데",
+            "반대로",
+            "셋째",
+            "가령"
+          ]
+        },
+        " 국물을 조금 ",
+        {
+          "kind": "form",
+          "answer": "덜어낸 다음에",
+          "choices": [
+            "덜어낼 때마다",
+            "덜어낸 데 비해",
+            "덜어낸 다음에",
+            "덜어낼까 봐"
+          ],
+          "cue": "Ein abgeschlossener Schritt vor der Korrektur / A completed step before the adjustment"
+        },
+        " 물을 ",
+        {
+          "kind": "choice",
+          "answer": "보태면",
+          "choices": [
+            "졸이면",
+            "보태면",
+            "얼리면",
+            "버리면"
+          ]
+        },
+        " 괜찮을까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "국을 다",
+          "baseText": {
+            "de": "die ganze Suppe",
+            "en": "all the soup"
+          }
+        },
+        {
+          "targetText": "담고 나서",
+          "baseText": {
+            "de": "nach dem Anrichten",
+            "en": "after dishing it up"
+          }
+        },
+        {
+          "targetText": "완성 사진까지",
+          "baseText": {
+            "de": "sogar das Foto vom fertigen Gericht",
+            "en": "even the finished-dish photo"
+          }
+        },
+        {
+          "targetText": "찍게 됐어요.",
+          "baseText": {
+            "de": "konnte ich machen",
+            "en": "I got to take"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "완성",
+          "baseText": {
+            "de": "Fertigstellung",
+            "en": "completion"
+          }
+        },
+        {
+          "targetText": "완성 사진",
+          "baseText": {
+            "de": "Foto vom fertigen Ergebnis",
+            "en": "photo of the finished result"
+          }
+        },
+        {
+          "targetText": "국을 담다",
+          "baseText": {
+            "de": "Suppe portionieren",
+            "en": "dish up soup"
+          }
+        },
+        {
+          "targetText": "국물",
+          "baseText": {
+            "de": "Brühe",
+            "en": "broth"
+          }
+        },
+        {
+          "targetText": "짜다",
+          "baseText": {
+            "de": "salzig sein",
+            "en": "be salty"
+          }
+        },
+        {
+          "targetText": "덜어내다",
+          "baseText": {
+            "de": "einen Teil herausnehmen",
+            "en": "take some out"
+          }
+        },
+        {
+          "targetText": "보태다",
+          "baseText": {
+            "de": "hinzugeben",
+            "en": "add"
+          }
+        }
+      ],
+      "recall": {
+        "before": "국을 다 담고 나서 ",
+        "answer": "완성",
+        "after": " 사진까지 찍게 됐어요.",
+        "fallbackChoices": [
+          "준비",
+          "예약",
+          "완성",
+          "출발"
+        ]
+      },
+      "speakRequired": [
+        "담고",
+        "완성",
+        "찍게"
+      ],
+      "sceneCaption": {
+        "de": "Im Kochkurs ist deine erste Suppe bereit für ein Foto. „오늘 끓인 국은 어디까지 됐어요?“",
+        "en": "Your first soup in cooking class is ready for a photo. “오늘 끓인 국은 어디까지 됐어요?”"
+      },
+      "trophyWord": {
+        "word": "완성",
+        "meaning": {
+          "de": "Fertigstellung",
+          "en": "completion"
+        },
+        "example": "완성 사진 한 장을 조리법 옆에 붙였어요.",
+        "whyThisWord": {
+          "de": "완성 사진 zeigt das fertige Ergebnis. Damit kannst du es von Bildern einzelner Arbeitsschritte unterscheiden.",
+          "en": "A 완성 사진 shows the finished result. Use it to distinguish the final photo from pictures of individual steps."
+        }
+      },
+      "distractors": [
+        "간을 보기 전에",
+        "다시 데우게 됐어요."
+      ],
+      "placeholderCaption": {
+        "de": "Die Suppe ist zu salzig",
+        "en": "The soup is too salty"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A ladle and a small jug of water sit beside bowls of soup."
+    },
+    {
+      "slug": "mamuri-stair-access",
+      "title": {
+        "de": "Der letzte Gang beim Einzug",
+        "en": "The last trip upstairs"
+      },
+      "situation": {
+        "de": "Beim Einzug triffst du im Hausflur jemanden aus der Nachbarschaft.",
+        "en": "You're moving in and run into a neighbor in the hall."
+      },
+      "pedagogicalGoal": "Gleichzeitige Handlungen beim Einzug schildern und nach dem Zugang zum Treppenhaus fragen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이사는 이제 거의 다 끝나셨어요?",
+          "baseText": {
+            "de": "Sind Sie mit dem Einzug schon fast fertig?",
+            "en": "Are you nearly finished moving in?"
+          }
+        },
+        {
+          "targetText": "상자 하나만 남기고 마무리 청소까지 끝냈어요. 짐을 풀면서 옆집 분들과 인사하게 됐어요.",
+          "baseText": {
+            "de": "Bis auf eine Kiste habe ich sogar den letzten Hausputz erledigt. Beim Auspacken ergab sich die Gelegenheit, die Leute von nebenan zu begrüßen.",
+            "en": "Apart from one box, I've even finished the final cleanup. While I was unpacking I got to say hello to the people next door."
+          }
+        },
+        {
+          "targetText": "승강기가 고장이라 그 상자는 계단으로 올리셔야 해요. 입구는 저쪽에 있어요.",
+          "baseText": {
+            "de": "Der Aufzug ist kaputt, die Kiste müssen Sie also über die Treppe hochtragen. Der Zugang ist dort drüben.",
+            "en": "The elevator is broken, so you'll have to carry that box up the stairs. The entrance is over there."
+          }
+        },
+        {
+          "targetText": "그런데 계단 문이 잠겨 있으면 집 열쇠로 열면 되나요?",
+          "baseText": {
+            "de": "Und wenn die Tür zum Treppenhaus abgeschlossen ist, kann ich sie mit meinem Wohnungsschlüssel aufschließen?",
+            "en": "And if the stairwell door is locked, can I open it with my apartment key?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면서",
+        "rule": {
+          "de": "풀면서 verbindet zwei Vorgänge, die sich zeitlich überschneiden. 인사하게 됐어요 stellt die Begegnung als etwas dar, das sich dabei ergab.",
+          "en": "풀면서 links two things that overlap in time. 인사하게 됐어요 presents the meeting as something that happened along the way."
+        },
+        "examples": [
+          {
+            "targetText": "상자 하나만 남기고 마무리 청소까지 끝냈어요. 짐을 풀면서 옆집 분들과 인사하게 됐어요.",
+            "baseText": {
+              "de": "Bis auf eine Kiste habe ich sogar den letzten Hausputz erledigt. Beim Auspacken ergab sich die Gelegenheit, die Leute von nebenan zu begrüßen.",
+              "en": "Apart from one box, I've even finished the final cleanup. While I was unpacking I got to say hello to the people next door."
+            },
+            "highlight": "짐을 풀면서"
+          },
+          {
+            "targetText": "상자를 옮기면서 이웃한테 동네 이야기를 들었어요.",
+            "baseText": {
+              "de": "Beim Kistentragen hat mir ein Nachbar vom Viertel erzählt.",
+              "en": "While carrying boxes I heard about the neighborhood from a neighbor."
+            },
+            "highlight": "상자를 옮기면서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "그런데",
+            "가령",
+            "셋째",
+            "거꾸로"
+          ]
+        },
+        " 계단 문이 ",
+        {
+          "kind": "form",
+          "answer": "잠겨 있으면",
+          "choices": [
+            "잠글까 봐",
+            "잠그는 대신",
+            "잠겨 있으면",
+            "잠근 덕분에"
+          ],
+          "cue": "Ein bestehender Zustand als Bedingung / A continuing state as a condition"
+        },
+        " 집 열쇠로 ",
+        {
+          "kind": "choice",
+          "answer": "열면",
+          "choices": [
+            "잠그면",
+            "열면",
+            "막으면",
+            "고정하면"
+          ]
+        },
+        " 되나요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "상자 하나만 남기고",
+          "baseText": {
+            "de": "bis auf eine Kiste",
+            "en": "apart from one box"
+          }
+        },
+        {
+          "targetText": "마무리 청소까지",
+          "baseText": {
+            "de": "sogar den letzten Hausputz",
+            "en": "even the final cleanup"
+          }
+        },
+        {
+          "targetText": "끝냈어요. 짐을 풀면서",
+          "baseText": {
+            "de": "habe ich erledigt. Beim Auspacken",
+            "en": "I finished. While unpacking"
+          }
+        },
+        {
+          "targetText": "옆집 분들과",
+          "baseText": {
+            "de": "mit den Leuten von nebenan",
+            "en": "the people next door"
+          }
+        },
+        {
+          "targetText": "인사하게 됐어요.",
+          "baseText": {
+            "de": "bin ich ins Gespräch gekommen",
+            "en": "I got to say hello to them"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "마무리",
+          "baseText": {
+            "de": "Abschluss, letzter Schliff",
+            "en": "finishing up"
+          }
+        },
+        {
+          "targetText": "청소",
+          "baseText": {
+            "de": "Putzen",
+            "en": "cleaning"
+          }
+        },
+        {
+          "targetText": "짐을 풀다",
+          "baseText": {
+            "de": "auspacken",
+            "en": "unpack"
+          }
+        },
+        {
+          "targetText": "옆집",
+          "baseText": {
+            "de": "Nachbarwohnung",
+            "en": "home next door"
+          }
+        },
+        {
+          "targetText": "승강기",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "elevator"
+          }
+        },
+        {
+          "targetText": "계단 입구",
+          "baseText": {
+            "de": "Treppenhauszugang",
+            "en": "stairwell entrance"
+          }
+        },
+        {
+          "targetText": "잠겨 있다",
+          "baseText": {
+            "de": "abgeschlossen sein",
+            "en": "be locked"
+          }
+        }
+      ],
+      "recall": {
+        "before": "상자 하나만 남기고 마무리 청소까지 끝냈어요. 짐을 ",
+        "answer": "풀면서",
+        "after": " 옆집 분들과 인사하게 됐어요.",
+        "fallbackChoices": [
+          "예약하면서",
+          "반품하면서",
+          "주문하면서",
+          "풀면서"
+        ]
+      },
+      "speakRequired": [
+        "마무리",
+        "풀면서",
+        "인사하게"
+      ],
+      "sceneCaption": {
+        "de": "Beim Einzug triffst du im Hausflur jemanden aus der Nachbarschaft. „이사는 이제 거의 다 끝나셨어요?“",
+        "en": "You're moving in and run into a neighbor in the hall. “이사는 이제 거의 다 끝나셨어요?”"
+      },
+      "trophyWord": {
+        "word": "마무리",
+        "meaning": {
+          "de": "Abschluss, letzte Arbeiten",
+          "en": "finishing up"
+        },
+        "example": "마무리 작업은 얼마나 남았어요?",
+        "whyThisWord": {
+          "de": "마무리 vor 청소 oder 작업 nennt die letzten Handgriffe, die noch zu einer größeren Aufgabe gehören.",
+          "en": "마무리 before 청소 or 작업 refers to the final things you do as part of a larger job."
+        }
+      },
+      "distractors": [
+        "짐을 싸기 전에",
+        "아직 못 만났어요."
+      ],
+      "placeholderCaption": {
+        "de": "Der letzte Gang beim Einzug",
+        "en": "The last trip upstairs"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A new resident holding a key speaks to a neighbor near the elevator."
+    }
+  ]
+}

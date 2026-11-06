@@ -1,0 +1,3475 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "German",
+  "targetLanguageCode": "de-DE",
+  "authoredBaseLanguage": "English",
+  "level": "B2",
+  "pathNumber": 3,
+  "slug": "holding-a-view",
+  "pathTitle": {
+    "en": "Standing by a view"
+  },
+  "pathFunction": {
+    "en": "State a position, acknowledge a specific objection and decide under which conditions the position still holds."
+  },
+  "specRef": {
+    "pathSpec": "tmp/GUIDED_TEXT_20261106/german/final-checked/spec-authority.json",
+    "pathSpecSha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+    "ledger": "tmp/GUIDED_TEXT_20261106/german/next-ledger.json",
+    "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+  },
+  "authoring": {
+    "source": "gpt-6",
+    "runId": "german-b2-p3-20261106",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "neuer-schichtplan",
+      "title": {
+        "en": "Voting on the new shift schedule"
+      },
+      "situation": {
+        "de": "In der Pause spricht dich ein Kollege auf den neuen Schichtplan an. Morgen berät das Team darüber.",
+        "en": "A colleague brings up the new shift schedule during your break. The team will discuss it tomorrow."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "kollege",
+          "role": {
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A colleague brings up the new shift schedule during your break. The team will discuss it tomorrow. „Der neue Schichtplan soll ab Mai gelten, und ehrlich gesagt sehe ich nur Vorteile: endlich freie Nachmittage.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Der neue Schichtplan soll ab Mai gelten, und ehrlich gesagt sehe ich nur Vorteile: endlich freie Nachmittage.",
+          "base": {
+            "en": "The new shift schedule is meant to start in May, and frankly all I can see are benefits. We'll finally have afternoons off."
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Meines Erachtens zerreißt der Plan das Team, und die Frühschicht wird für viele zur Belastung, weil der Schlaf fehlt.",
+          "base": {
+            "en": "In my view the plan splits the team up, and the early shift will be a strain for many people because they won't get enough sleep."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Aber Sie haben Kinder, Sie profitieren doch am meisten von freien Nachmittagen.",
+          "base": {
+            "en": "But you have children. Surely you're the one who benefits most from afternoons off."
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich gebe zu, dass mir der freie Nachmittag hilft, doch dafür beginnt mein Tag um fünf, und das halte ich auf Dauer nicht durch.",
+          "base": {
+            "en": "I admit that having the afternoon off helps me. But my day starts at five in return, and I can't keep that up long term."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Gut, und was sagen Sie morgen in der Teamrunde, dafür oder dagegen?",
+          "base": {
+            "en": "All right. What will you tell the team tomorrow? Are you for it or against it?"
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich stimme deshalb nur zu, wenn die Frühschicht alle zwei Wochen wechselt; sonst spreche ich mich dagegen aus.",
+          "base": {
+            "en": "That's why I'll only vote in favour if the early shift rotates every two weeks. Otherwise I'll speak against it."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Meines Erachtens zerreißt der Plan das Team, ",
+        "chunks": [
+          "und die Frühschicht",
+          "wird",
+          "für viele",
+          "zur Belastung,",
+          "weil der Schlaf fehlt."
+        ],
+        "distractors": [
+          "zum Feiertag,",
+          "weil der Schlaf reicht."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mir der freie Nachmittag hilft, doch dafür beginnt mein Tag um fünf, und das "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ich auf Dauer nicht durch."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ich gebe zu, dass",
+            "acceptedAnswers": [
+              "Ich gebe zu, dass"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Ich gebe zu, dass",
+              "Ich gebe auf, weil",
+              "Ich gebe ab, wenn",
+              "Ich gebe nach, bis"
+            ]
+          },
+          {
+            "answer": "halte",
+            "acceptedAnswers": [
+              "halte"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use durchhalten in the present tense with ich. Its separable prefix is already in the sentence."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Ich "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", wenn die Frühschicht alle zwei Wochen wechselt; sonst spreche ich mich dagegen aus."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "stimme deshalb nur zu",
+            "acceptedAnswers": [
+              "stimme deshalb nur zu"
+            ],
+            "kind": "frame",
+            "choices": [
+              "stimme deshalb nur zu",
+              "stimme deshalb sofort ab",
+              "stimme deshalb nie bei",
+              "stimme deshalb immer aus"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Meines Erachtens zerreißt der Plan das Team, und die Frühschicht wird für viele zur ",
+        "answer": "Belastung",
+        "acceptedAnswers": [
+          "Belastung"
+        ],
+        "after": ", weil der Schlaf fehlt.",
+        "fallbackChoices": [
+          "Belastung",
+          "Beförderung",
+          "Entlastung",
+          "Belohnung"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Acknowledge a benefit without withdrawing an objection"
+        },
+        "rule": {
+          "en": "Name the other person's valid point with ich gebe zu, dass, then explain what it costs in practice."
+        },
+        "examples": [
+          {
+            "targetText": "Ich gebe zu, dass mir der freie Nachmittag hilft, doch dafür beginnt mein Tag um fünf, und das halte ich auf Dauer nicht durch.",
+            "base": {
+              "en": "I admit that having the afternoon off helps me. But my day starts at five in return, and I can't keep that up long term."
+            },
+            "highlights": [
+              "Ich gebe zu, dass"
+            ]
+          },
+          {
+            "targetText": "Ich gebe zu, dass der freie Freitag attraktiv ist, doch vier sehr lange Arbeitstage wären für mich schwierig.",
+            "base": {
+              "en": "I admit that a Friday off is attractive, but four very long workdays would be difficult for me."
+            },
+            "highlights": [
+              "Ich gebe zu, dass"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Meines Erachtens",
+          "kind": "frame",
+          "base": {
+            "en": "in my view"
+          }
+        },
+        {
+          "targetText": "Ich gebe zu",
+          "kind": "frame",
+          "base": {
+            "en": "I admit"
+          }
+        },
+        {
+          "targetText": "Schichtplan",
+          "kind": "noun",
+          "base": {
+            "en": "shift schedule"
+          }
+        },
+        {
+          "targetText": "Frühschicht",
+          "kind": "noun",
+          "base": {
+            "en": "early shift"
+          }
+        },
+        {
+          "targetText": "Belastung",
+          "kind": "noun",
+          "base": {
+            "en": "strain"
+          }
+        },
+        {
+          "targetText": "Schlaf",
+          "kind": "noun",
+          "base": {
+            "en": "sleep"
+          }
+        },
+        {
+          "targetText": "auf Dauer",
+          "kind": "phrase",
+          "base": {
+            "en": "in the long run"
+          }
+        },
+        {
+          "targetText": "wechselt",
+          "kind": "verb",
+          "base": {
+            "en": "rotates"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Frühschicht",
+            "Belastung",
+            "Schlaf"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Nachmittag",
+            "beginnt",
+            "Dauer"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Frühschicht",
+            "Wochen",
+            "dagegen"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Belastung",
+        "surface": "Belastung",
+        "familyKey": "Belastung",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "strain or burden"
+        },
+        "example": {
+          "targetText": "Die Belastung nimmt ab, wenn die Frühschicht regelmäßig wechselt.",
+          "base": {
+            "en": "The strain decreases when the early shift rotates regularly."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "ruhezeiten-im-haus",
+      "title": {
+        "en": "Agreeing quiet hours in the building"
+      },
+      "situation": {
+        "de": "Dein Nachbar möchte vor der Hausversammlung mit dir über einen Vorschlag der Hausverwaltung sprechen.",
+        "en": "Your neighbour wants to talk to you about the property manager's proposal before the residents meet."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "nachbar",
+          "role": {
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your neighbour wants to talk to you about the property manager's proposal before the residents meet. „Die Hausverwaltung will Ruhezeiten ab zwanzig Uhr; ich finde das übertrieben, wir sind doch keine Kaserne.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Die Hausverwaltung will Ruhezeiten ab zwanzig Uhr; ich finde das übertrieben, wir sind doch keine Kaserne.",
+          "base": {
+            "en": "The property manager wants quiet hours from eight. I think that's excessive. This is hardly a barracks."
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich halte die neue Regel für sinnvoll, zum einen wegen der Kinder im ersten Stock, zum anderen, weil Streit um Lärm hier ständig eskaliert.",
+          "base": {
+            "en": "I think the new rule makes sense, partly because of the children on the first floor and partly because arguments over noise here keep escalating."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Aber dann darf ich abends nicht einmal mehr Gitarre üben, das nehmen Sie mir also weg?",
+          "base": {
+            "en": "But then I won't even be able to practise the guitar in the evening. Are you taking that away from me?"
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mag sein, dass zwanzig Uhr früh ist, aber verboten wird nicht das Üben, sondern nur lautes Spielen danach; leise üben dürfen Sie weiterhin.",
+          "base": {
+            "en": "Eight may be early, but practising isn't what's being prohibited, only playing loudly after that time. You can still practise quietly."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und wenn die Hausversammlung über einundzwanzig Uhr abstimmt, tragen Sie das mit?",
+          "base": {
+            "en": "And if the residents vote on nine o'clock instead, will you support that?"
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ja, einundzwanzig Uhr wäre aus Rücksicht auf alle ein fairer Kompromiss, deshalb trage ich das mit.",
+          "base": {
+            "en": "Yes. Nine o'clock would be a fair compromise out of consideration for everyone, so I'll support it."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich halte die neue Regel für sinnvoll, ",
+        "chunks": [
+          "zum einen",
+          "wegen der Kinder",
+          "im ersten Stock,",
+          "zum anderen,",
+          "weil Streit"
+        ],
+        "distractors": [
+          "trotz der Kinder",
+          "obwohl Streit"
+        ],
+        "frameSuffix": " um Lärm hier ständig eskaliert."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " zwanzig Uhr früh ist, aber "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " wird nicht das Üben, sondern nur lautes Spielen danach; leise üben dürfen Sie weiterhin."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mag sein, dass",
+            "acceptedAnswers": [
+              "Mag sein, dass"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mag sein, dass",
+              "Mag sein, bis",
+              "Mag sein, damit",
+              "Mag sein, indem"
+            ]
+          },
+          {
+            "answer": "verboten",
+            "acceptedAnswers": [
+              "verboten"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use the past participle of verbieten in the passive construction."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Ja, einundzwanzig Uhr wäre aus Rücksicht auf alle ein fairer Kompromiss, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " trage ich das mit."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "deshalb",
+            "acceptedAnswers": [
+              "deshalb"
+            ],
+            "kind": "frame",
+            "choices": [
+              "deshalb",
+              "wo",
+              "während",
+              "sofern"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich halte die neue Regel für sinnvoll, zum einen wegen der Kinder im ersten Stock, zum anderen, weil Streit um ",
+        "answer": "Lärm",
+        "acceptedAnswers": [
+          "Lärm"
+        ],
+        "after": " hier ständig eskaliert.",
+        "fallbackChoices": [
+          "Lärm",
+          "Farbe",
+          "Wärme",
+          "Licht"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Concede the timing and narrow the point of disagreement"
+        },
+        "rule": {
+          "en": "Mag sein, dass acknowledges a possibility. The contrasting aber can then limit what the proposed rule would actually prohibit."
+        },
+        "examples": [
+          {
+            "targetText": "Mag sein, dass zwanzig Uhr früh ist, aber verboten wird nicht das Üben, sondern nur lautes Spielen danach; leise üben dürfen Sie weiterhin.",
+            "base": {
+              "en": "Eight may be early, but practising isn't what's being prohibited, only playing loudly after that time. You can still practise quietly."
+            },
+            "highlights": [
+              "Mag sein, dass"
+            ]
+          },
+          {
+            "targetText": "Mag sein, dass die Probe spät beginnt, aber mit Kopfhörern stört sie niemanden.",
+            "base": {
+              "en": "The rehearsal may start late, but with headphones it won't disturb anyone."
+            },
+            "highlights": [
+              "Mag sein, dass"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "zum einen",
+          "kind": "frame",
+          "base": {
+            "en": "for one thing"
+          }
+        },
+        {
+          "targetText": "zum anderen",
+          "kind": "frame",
+          "base": {
+            "en": "for another"
+          }
+        },
+        {
+          "targetText": "Ruhezeiten",
+          "kind": "noun",
+          "base": {
+            "en": "quiet hours"
+          }
+        },
+        {
+          "targetText": "eskaliert",
+          "kind": "verb",
+          "base": {
+            "en": "escalates"
+          }
+        },
+        {
+          "targetText": "Hausverwaltung",
+          "kind": "noun",
+          "base": {
+            "en": "property management"
+          }
+        },
+        {
+          "targetText": "leise",
+          "kind": "adjective",
+          "base": {
+            "en": "quietly"
+          }
+        },
+        {
+          "targetText": "Rücksicht",
+          "kind": "noun",
+          "base": {
+            "en": "consideration for others"
+          }
+        },
+        {
+          "targetText": "Kompromiss",
+          "kind": "noun",
+          "base": {
+            "en": "compromise"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Kinder",
+            "ersten",
+            "Streit"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "verboten",
+            "Üben",
+            "leise"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Rücksicht",
+            "fairer",
+            "Kompromiss"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Rücksicht",
+        "surface": "Rücksicht",
+        "familyKey": "Rücksicht",
+        "pos": "noun",
+        "turnIndex": 5,
+        "base": {
+          "en": "consideration for others"
+        },
+        "example": {
+          "targetText": "Aus Rücksicht auf die Kinder übe ich abends mit Kopfhörern.",
+          "base": {
+            "en": "Out of consideration for the children, I practise with headphones in the evening."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "trinkgeld-kultur",
+      "title": {
+        "en": "What does a tip recognise?"
+      },
+      "situation": {
+        "de": "Nach dem Abendessen sprichst du mit einem Freund darüber, wie ihr mit dem Trinkgeld umgehen wollt.",
+        "en": "After dinner, you and a friend discuss how you want to handle the tip."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "freund",
+          "role": {
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "After dinner, you and a friend discuss how you want to handle the tip. „Meine Freunde runden meist nur auf; ich finde, wer gut bedient, verdient mehr als ein paar Cent.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Meine Freunde runden meist nur auf; ich finde, wer gut bedient, verdient mehr als ein paar Cent.",
+          "base": {
+            "en": "My friends usually just round up. I think someone who gives good service deserves more than a few cents."
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich bin der Ansicht, dass zehn Prozent hier angemessen sind, denn Service ist Arbeit und verdient Wertschätzung.",
+          "base": {
+            "en": "I think ten per cent is appropriate here because serving people is work and deserves recognition."
+          },
+          "move": "position",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Aber damit zahlst du doch den Lohn, den eigentlich der Chef zahlen müsste, oder?",
+          "base": {
+            "en": "But then you're paying the wages that the boss ought to pay, aren't you?"
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Teilweise ja, aber solange die Löhne so niedrig bleiben, will ich nicht bei denen sparen, die mich bedient haben.",
+          "base": {
+            "en": "Partly, yes. But as long as wages stay so low, I don't want to save money at the expense of the people who served me."
+          },
+          "move": "concede",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und wenn der Service richtig schlecht war, gibst du dann trotzdem?",
+          "base": {
+            "en": "And if the service was really bad, do you still leave a tip?"
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nein, in dem Fall runde ich nur auf, denn Wertschätzung muss verdient sein, sonst verliert sie ihren Sinn.",
+          "base": {
+            "en": "No. In that case I only round up, because appreciation has to be earned. Otherwise it loses its meaning."
+          },
+          "move": "conclude",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich bin der Ansicht, ",
+        "chunks": [
+          "dass",
+          "zehn Prozent hier",
+          "angemessen sind,",
+          "denn Service",
+          "ist Arbeit"
+        ],
+        "distractors": [
+          "unangemessen sind,",
+          "denn Wechselgeld"
+        ],
+        "frameSuffix": " und verdient Wertschätzung."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", aber solange die Löhne so niedrig "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", will ich nicht bei denen sparen, die mich bedient haben."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Teilweise ja",
+            "acceptedAnswers": [
+              "Teilweise ja"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Teilweise ja",
+              "Leider nein",
+              "Umso besser",
+              "Gar nicht"
+            ]
+          },
+          {
+            "answer": "bleiben",
+            "acceptedAnswers": [
+              "bleiben"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use bleiben in the present tense. Its subject is die Löhne."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Nein, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " runde ich nur auf, denn Wertschätzung muss verdient sein, sonst verliert sie ihren Sinn."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "in dem Fall",
+            "acceptedAnswers": [
+              "in dem Fall"
+            ],
+            "kind": "frame",
+            "choices": [
+              "in dem Fall",
+              "in der Regel",
+              "auf jeden Fall",
+              "ohne Grund"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich bin der Ansicht, dass zehn Prozent hier angemessen sind, denn Service ist Arbeit und verdient ",
+        "answer": "Wertschätzung",
+        "acceptedAnswers": [
+          "Wertschätzung"
+        ],
+        "after": ".",
+        "fallbackChoices": [
+          "Wertschätzung",
+          "Abneigung",
+          "Geringschätzung",
+          "Verachtung"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Set a limit on your agreement"
+        },
+        "rule": {
+          "en": "Teilweise ja concedes part of an objection. A solange clause gives the condition under which your own reasoning still applies."
+        },
+        "examples": [
+          {
+            "targetText": "Teilweise ja, aber solange die Löhne so niedrig bleiben, will ich nicht bei denen sparen, die mich bedient haben.",
+            "base": {
+              "en": "Partly, yes. But as long as wages stay so low, I don't want to save money at the expense of the people who served me."
+            },
+            "highlights": [
+              "solange"
+            ]
+          },
+          {
+            "targetText": "Teilweise ja, aber solange der Lohn so niedrig ist, möchte ich weiterhin etwas geben.",
+            "base": {
+              "en": "Partly, yes, but as long as the pay is so low, I want to keep leaving something."
+            },
+            "highlights": [
+              "solange"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Ich bin der Ansicht",
+          "kind": "frame",
+          "base": {
+            "en": "I take the view"
+          }
+        },
+        {
+          "targetText": "solange",
+          "kind": "connector",
+          "base": {
+            "en": "as long as"
+          }
+        },
+        {
+          "targetText": "Lohn",
+          "kind": "noun",
+          "base": {
+            "en": "wages"
+          }
+        },
+        {
+          "targetText": "Wertschätzung",
+          "kind": "noun",
+          "base": {
+            "en": "appreciation"
+          }
+        },
+        {
+          "targetText": "angemessen",
+          "kind": "adjective",
+          "base": {
+            "en": "appropriate"
+          }
+        },
+        {
+          "targetText": "sparen",
+          "kind": "verb",
+          "base": {
+            "en": "to save money"
+          }
+        },
+        {
+          "targetText": "verdient",
+          "kind": "verb",
+          "base": {
+            "en": "deserves"
+          }
+        },
+        {
+          "targetText": "richtig schlecht",
+          "kind": "phrase",
+          "base": {
+            "en": "really poor"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Prozent",
+            "angemessen",
+            "Service"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Löhne",
+            "sparen",
+            "bedient"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Wertschätzung",
+            "verdient",
+            "Sinn"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Wertschätzung",
+        "surface": "Wertschätzung",
+        "familyKey": "Wertschätzung",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "appreciation"
+        },
+        "example": {
+          "targetText": "Das zusätzliche Geld ist ein Zeichen der Wertschätzung für den guten Service.",
+          "base": {
+            "en": "The extra money is a sign of appreciation for the good service."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "hausaufgaben-last",
+      "title": {
+        "en": "Setting a limit on homework"
+      },
+      "situation": {
+        "de": "Vor dem Elternabend unterhältst du dich mit einer Mutter über die Zeit, die Kinder nachmittags für Schulaufgaben brauchen.",
+        "en": "Before the parents' meeting you talk to a mother about how much time children spend on schoolwork after school."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "mutter",
+          "role": {
+            "en": "another parent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Before the parents' meeting you talk to a mother about how much time children spend on schoolwork after school. „Meine Tochter sitzt täglich zwei Stunden an den Hausaufgaben; ich finde, die Schule sollte das komplett abschaffen.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Meine Tochter sitzt täglich zwei Stunden an den Hausaufgaben; ich finde, die Schule sollte das komplett abschaffen.",
+          "base": {
+            "en": "My daughter spends two hours a day on homework. I think the school should get rid of it altogether."
+          },
+          "interlocutorId": "mutter"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich sehe das anders: Hausaufgaben sind nicht nur Wiederholung, sondern auch eine wichtige Übung im selbstständigen Arbeiten.",
+          "base": {
+            "en": "I see it differently. Homework provides more than revision. It's also important practice in working independently."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Aber Kinder, die zu Hause niemanden haben, der hilft, werden dadurch doch nur abgehängt.",
+          "base": {
+            "en": "But doesn't that just leave behind children who have nobody at home to help them?"
+          },
+          "interlocutorId": "mutter"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Das überzeugt mich nicht ganz, denn abgehängt werden sie durch fehlende Betreuung, nicht durch die Aufgaben selbst.",
+          "base": {
+            "en": "I'm not quite convinced. It's the lack of support that leaves them behind, rather than the tasks themselves."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und was fordern Sie dann konkret beim Elternabend, Abschaffen oder Begrenzen?",
+          "base": {
+            "en": "So what exactly will you call for at the parents' meeting? Getting rid of homework or limiting it?"
+          },
+          "interlocutorId": "mutter"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Begrenzen: Ich werde deshalb eine Stunde als Obergrenze vorschlagen, damit niemand überfordert wird.",
+          "base": {
+            "en": "Limiting it. That's why I'll propose a one-hour cap so that nobody is overwhelmed."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich sehe das anders: Hausaufgaben sind ",
+        "chunks": [
+          "nicht nur",
+          "Wiederholung,",
+          "sondern auch",
+          "eine wichtige",
+          "Übung"
+        ],
+        "distractors": [
+          "statt einer",
+          "eine letzte"
+        ],
+        "frameSuffix": " im selbstständigen Arbeiten."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ganz, denn abgehängt werden sie durch "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " Betreuung, nicht durch die Aufgaben selbst."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Das überzeugt mich nicht",
+            "acceptedAnswers": [
+              "Das überzeugt mich nicht"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Das überzeugt mich nicht",
+              "Das belohnt mich nicht",
+              "Das bezahlt mich nicht",
+              "Das überzeugt mir nicht"
+            ]
+          },
+          {
+            "answer": "fehlende",
+            "acceptedAnswers": [
+              "fehlende"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use the adjective fehlend before Betreuung after durch."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Begrenzen: Ich werde deshalb eine Stunde als Obergrenze vorschlagen, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " niemand überfordert wird."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "damit",
+            "acceptedAnswers": [
+              "damit"
+            ],
+            "kind": "frame",
+            "choices": [
+              "damit",
+              "seit",
+              "bisweilen",
+              "trotz"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich sehe das anders: ",
+        "answer": "Hausaufgaben",
+        "acceptedAnswers": [
+          "Hausaufgaben"
+        ],
+        "after": " sind nicht nur Wiederholung, sondern auch eine wichtige Übung im selbstständigen Arbeiten.",
+        "fallbackChoices": [
+          "Hausaufgaben",
+          "Ferien",
+          "Pausen",
+          "Feiertage"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "en": "Distinguish a problem from its cause"
+        },
+        "rule": {
+          "en": "Use durch to name the cause, then set it against the explanation you reject. This lets you accept the problem while disagreeing about the remedy."
+        },
+        "examples": [
+          {
+            "targetText": "Das überzeugt mich nicht ganz, denn abgehängt werden sie durch fehlende Betreuung, nicht durch die Aufgaben selbst.",
+            "base": {
+              "en": "I'm not quite convinced. It's the lack of support that leaves them behind, rather than the tasks themselves."
+            },
+            "highlights": [
+              "durch fehlende Betreuung"
+            ]
+          },
+          {
+            "targetText": "Die Kinder geraten durch fehlende Hilfe ins Hintertreffen, nicht durch kurze Übungen.",
+            "base": {
+              "en": "The children fall behind because they lack help, rather than because the exercises are short."
+            },
+            "highlights": [
+              "durch fehlende Hilfe"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Ich sehe das anders",
+          "kind": "frame",
+          "base": {
+            "en": "I see it differently"
+          }
+        },
+        {
+          "targetText": "sondern auch",
+          "kind": "connector",
+          "base": {
+            "en": "but also"
+          }
+        },
+        {
+          "targetText": "Hausaufgaben",
+          "kind": "noun",
+          "base": {
+            "en": "homework"
+          }
+        },
+        {
+          "targetText": "Wiederholung",
+          "kind": "noun",
+          "base": {
+            "en": "revision"
+          }
+        },
+        {
+          "targetText": "Betreuung",
+          "kind": "noun",
+          "base": {
+            "en": "support or supervision"
+          }
+        },
+        {
+          "targetText": "Obergrenze",
+          "kind": "noun",
+          "base": {
+            "en": "upper limit"
+          }
+        },
+        {
+          "targetText": "überfordert",
+          "kind": "verb",
+          "base": {
+            "en": "overwhelmed"
+          }
+        },
+        {
+          "targetText": "abschaffen",
+          "kind": "verb",
+          "base": {
+            "en": "to abolish"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Wiederholung",
+            "wichtige",
+            "Übung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "überzeugt",
+            "Betreuung",
+            "Aufgaben"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Stunde",
+            "Obergrenze",
+            "überfordert"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "überfordern",
+        "surface": "überfordert",
+        "familyKey": "überfordern",
+        "pos": "verb",
+        "turnIndex": 5,
+        "base": {
+          "en": "to overwhelm"
+        },
+        "example": {
+          "targetText": "Zu viele lange Aufgaben können ein Kind überfordern.",
+          "base": {
+            "en": "Too many long assignments can overwhelm a child."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "videosprechstunde",
+      "title": {
+        "en": "What can a video consultation replace?"
+      },
+      "situation": {
+        "de": "Auf einer Diskussionsveranstaltung fragt dich ein Experte, wofür sich Videosprechstunden in Zukunft eignen.",
+        "en": "At a discussion, an expert asks what video consultations might be suitable for in future."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "experte",
+          "role": {
+            "en": "expert discussing video consultations"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "At a discussion, an expert asks what video consultations might be suitable for in future. „In zehn Jahren werden Videosprechstunden den Großteil der Hausarztbesuche ersetzen, davon bin ich überzeugt.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "In zehn Jahren werden Videosprechstunden den Großteil der Hausarztbesuche ersetzen, davon bin ich überzeugt.",
+          "base": {
+            "en": "In ten years, video consultations will replace most GP visits. I'm convinced of it."
+          },
+          "interlocutorId": "experte"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich halte diese Prognose für zu optimistisch, weil längst nicht alle Patienten die Technik nutzen können oder wollen.",
+          "base": {
+            "en": "I think that prediction is too optimistic because far from all patients are able or willing to use the technology."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dieses Argument höre ich seit Jahren; aber gerade Ältere sparen sich doch den beschwerlichen Weg in die Praxis.",
+          "base": {
+            "en": "I've heard that argument for years. Yet it is precisely older people who are spared the difficult journey to the surgery."
+          },
+          "interlocutorId": "experte"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Auch wenn der Weg wegfällt, bleibt die Hürde bestehen, dass eine Kamera keine Hand auf den Bauch legen kann.",
+          "base": {
+            "en": "Even if the journey is eliminated, one obstacle remains. A camera can't put a hand on somebody's abdomen."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Wenn Sie der Ministerin einen einzigen Satz mitgeben müssten, wie lautet er?",
+          "base": {
+            "en": "If you could give the minister just one sentence to take away, what would you say?"
+          },
+          "interlocutorId": "experte"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Daher lautet mein Satz: Video als Ergänzung ja, als Ersatz für die Untersuchung nein.",
+          "base": {
+            "en": "So my message is this. Yes to video as a supplement, no to it as a replacement for an examination."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich halte diese Prognose ",
+        "chunks": [
+          "für zu optimistisch,",
+          "weil längst",
+          "nicht alle Patienten",
+          "die Technik",
+          "nutzen"
+        ],
+        "distractors": [
+          "für zu pessimistisch,",
+          "die Praxis"
+        ],
+        "frameSuffix": " können oder wollen."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " der Weg "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", bleibt die Hürde bestehen, dass eine Kamera keine Hand auf den Bauch legen kann."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Auch wenn",
+            "acceptedAnswers": [
+              "Auch wenn"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Auch wenn",
+              "Weil",
+              "Bevor",
+              "Damit"
+            ]
+          },
+          {
+            "answer": "wegfällt",
+            "acceptedAnswers": [
+              "wegfällt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use wegfallen in the present tense after the concession. The subject is der Weg."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mein Satz: Video als Ergänzung ja, als Ersatz für die Untersuchung nein."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Daher lautet",
+            "acceptedAnswers": [
+              "Daher lautet"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Daher lautet",
+              "Darunter steht",
+              "Davor stand",
+              "Darüber entscheidet"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich halte diese ",
+        "answer": "Prognose",
+        "acceptedAnswers": [
+          "Prognose"
+        ],
+        "after": " für zu optimistisch, weil längst nicht alle Patienten die Technik nutzen können oder wollen.",
+        "fallbackChoices": [
+          "Prognose",
+          "Kamera",
+          "Untersuchung",
+          "Fahrtzeit"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Concede what changes and identify what remains"
+        },
+        "rule": {
+          "en": "Auch wenn introduces the benefit you accept. Name the obstacle that remains in the main clause."
+        },
+        "examples": [
+          {
+            "targetText": "Auch wenn der Weg wegfällt, bleibt die Hürde bestehen, dass eine Kamera keine Hand auf den Bauch legen kann.",
+            "base": {
+              "en": "Even if the journey is eliminated, one obstacle remains. A camera can't put a hand on somebody's abdomen."
+            },
+            "highlights": [
+              "Auch wenn"
+            ]
+          },
+          {
+            "targetText": "Auch wenn die Anmeldung leichter wird, bleibt die Untersuchung vor Ort notwendig.",
+            "base": {
+              "en": "Even if registration becomes easier, the in-person examination is still necessary."
+            },
+            "highlights": [
+              "Auch wenn"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Ich halte",
+          "kind": "frame",
+          "base": {
+            "en": "I consider"
+          }
+        },
+        {
+          "targetText": "Auch wenn",
+          "kind": "connector",
+          "base": {
+            "en": "even if"
+          }
+        },
+        {
+          "targetText": "Prognose",
+          "kind": "noun",
+          "base": {
+            "en": "prediction"
+          }
+        },
+        {
+          "targetText": "Technik",
+          "kind": "noun",
+          "base": {
+            "en": "technology"
+          }
+        },
+        {
+          "targetText": "Weg",
+          "kind": "noun",
+          "base": {
+            "en": "journey"
+          }
+        },
+        {
+          "targetText": "Hürde",
+          "kind": "noun",
+          "base": {
+            "en": "obstacle"
+          }
+        },
+        {
+          "targetText": "Kamera",
+          "kind": "noun",
+          "base": {
+            "en": "camera"
+          }
+        },
+        {
+          "targetText": "Ergänzung",
+          "kind": "noun",
+          "base": {
+            "en": "supplement"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "optimistisch",
+            "Patienten",
+            "Technik"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "wegfällt",
+            "Hürde",
+            "Kamera"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Ergänzung",
+            "Ersatz",
+            "Untersuchung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Hürde",
+        "surface": "Hürde",
+        "familyKey": "Hürde",
+        "pos": "noun",
+        "turnIndex": 3,
+        "base": {
+          "en": "obstacle"
+        },
+        "example": {
+          "targetText": "Ohne stabile Verbindung bleibt das Bild eine Hürde für das Gespräch.",
+          "base": {
+            "en": "Without a stable connection, the picture remains an obstacle to the conversation."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "autofreie-innenstadt",
+      "title": {
+        "en": "A condition for supporting a car-free centre"
+      },
+      "situation": {
+        "de": "Eine Stadträtin fragt dich nach deiner Haltung zu einer autofreien Innenstadt.",
+        "en": "A councillor asks your view about making the city centre car-free."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "stadtraetin",
+          "role": {
+            "en": "city councillor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A councillor asks your view about making the city centre car-free. „Die Stadt will die Innenstadt in zwei Jahren autofrei machen; der Handel läuft bereits Sturm.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Die Stadt will die Innenstadt in zwei Jahren autofrei machen; der Handel läuft bereits Sturm.",
+          "base": {
+            "en": "The city wants to make the centre car-free in two years. Local businesses are already up in arms."
+          },
+          "interlocutorId": "stadtraetin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich unterstütze das Vorhaben, denn eine autofreie Innenstadt bringt Aufenthaltsqualität, und die zählt für mich mehr als Parkplätze.",
+          "base": {
+            "en": "I support the plan because a car-free centre makes it a nicer place to spend time, and that counts for more with me than parking spaces do."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Die Händler sehen das aber anders: Ohne Parkplätze bleiben die Kunden aus dem Umland weg.",
+          "base": {
+            "en": "But retailers see it differently. Without parking, customers from the surrounding area will stay away."
+          },
+          "interlocutorId": "stadtraetin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich räume ein, dass das Umland ein Problem ist, aber dafür braucht man Park-and-ride, nicht Parkplätze vor der Tür.",
+          "base": {
+            "en": "I admit that access from out of town is a problem. But that calls for park-and-ride, rather than parking outside the door."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Welche Bedingung müsste der Rat beschließen, damit Sie den Beschluss öffentlich befürworten?",
+          "base": {
+            "en": "What condition would the council have to adopt for you to support the decision in public?"
+          },
+          "interlocutorId": "stadtraetin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Der Einwand der Händler verdient eine Antwort, folglich befürworte ich den Beschluss nur zusammen mit kostenlosen Pendelbussen.",
+          "base": {
+            "en": "The retailers' objection deserves an answer. I therefore support the decision only if it includes free shuttle buses."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich unterstütze das Vorhaben, denn ",
+        "chunks": [
+          "eine autofreie",
+          "Innenstadt",
+          "bringt",
+          "Aufenthaltsqualität,",
+          "und die zählt",
+          "für mich mehr"
+        ],
+        "distractors": [
+          "eine vierspurige",
+          "für mich weniger"
+        ],
+        "frameSuffix": " als Parkplätze."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " das Umland ein Problem ist, aber dafür "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " man Park-and-ride, nicht Parkplätze vor der Tür."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ich räume ein, dass",
+            "acceptedAnswers": [
+              "Ich räume ein, dass"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Ich räume ein, dass",
+              "Ich rufe an, ob",
+              "Ich ziehe um, bis",
+              "Ich stelle aus, weil"
+            ]
+          },
+          {
+            "answer": "braucht",
+            "acceptedAnswers": [
+              "braucht"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use brauchen with the impersonal subject man in the present tense."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Der Einwand der Händler verdient eine Antwort, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " befürworte ich den Beschluss nur zusammen mit kostenlosen Pendelbussen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "folglich",
+            "acceptedAnswers": [
+              "folglich"
+            ],
+            "kind": "frame",
+            "choices": [
+              "folglich",
+              "wenn",
+              "ohne",
+              "sowohl"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich unterstütze das Vorhaben, denn eine autofreie Innenstadt bringt ",
+        "answer": "Aufenthaltsqualität",
+        "acceptedAnswers": [
+          "Aufenthaltsqualität"
+        ],
+        "after": ", und die zählt für mich mehr als Parkplätze.",
+        "fallbackChoices": [
+          "Aufenthaltsqualität",
+          "Parkplatzmangel",
+          "Lieferverkehr",
+          "Motorenlärm"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "en": "Make support conditional on a practical solution"
+        },
+        "rule": {
+          "en": "Folglich links the objection to your conclusion. Nur zusammen mit states what the proposal must include to win your support."
+        },
+        "examples": [
+          {
+            "targetText": "Der Einwand der Händler verdient eine Antwort, folglich befürworte ich den Beschluss nur zusammen mit kostenlosen Pendelbussen.",
+            "base": {
+              "en": "The retailers' objection deserves an answer. I therefore support the decision only if it includes free shuttle buses."
+            },
+            "highlights": [
+              "nur zusammen mit"
+            ]
+          },
+          {
+            "targetText": "Der letzte Bus fährt früh, folglich unterstütze ich die Sperrung nur zusammen mit einem Abendbus.",
+            "base": {
+              "en": "The last bus leaves early, so I support the closure only if an evening bus is included."
+            },
+            "highlights": [
+              "nur zusammen mit"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Ich räume ein",
+          "kind": "frame",
+          "base": {
+            "en": "I acknowledge"
+          }
+        },
+        {
+          "targetText": "folglich",
+          "kind": "connector",
+          "base": {
+            "en": "consequently"
+          }
+        },
+        {
+          "targetText": "Innenstadt",
+          "kind": "noun",
+          "base": {
+            "en": "city centre"
+          }
+        },
+        {
+          "targetText": "Aufenthaltsqualität",
+          "kind": "noun",
+          "base": {
+            "en": "how pleasant a place is to spend time in"
+          }
+        },
+        {
+          "targetText": "Umland",
+          "kind": "noun",
+          "base": {
+            "en": "surrounding region"
+          }
+        },
+        {
+          "targetText": "Einwand",
+          "kind": "noun",
+          "base": {
+            "en": "objection"
+          }
+        },
+        {
+          "targetText": "Beschluss",
+          "kind": "noun",
+          "base": {
+            "en": "formal decision"
+          }
+        },
+        {
+          "targetText": "Pendelbussen",
+          "kind": "noun",
+          "base": {
+            "en": "shuttle buses"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Innenstadt",
+            "Aufenthaltsqualität",
+            "Parkplätze"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Umland",
+            "braucht",
+            "Parkplätze"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Einwand",
+            "Beschluss",
+            "Pendelbussen"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Einwand",
+        "surface": "Einwand",
+        "familyKey": "Einwand",
+        "pos": "noun",
+        "turnIndex": 5,
+        "base": {
+          "en": "objection"
+        },
+        "example": {
+          "targetText": "Der Einwand betrifft den Rückweg aus der Innenstadt am späten Abend.",
+          "base": {
+            "en": "The objection concerns the journey home from the city centre late in the evening."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "vorschlag-der-kollegin",
+      "title": {
+        "en": "A written report or a shorter meeting?"
+      },
+      "situation": {
+        "de": "Eine Kollegin möchte wissen, ob du ihre Idee für die Wochenbesprechung beim Teamtreffen unterstützt.",
+        "en": "A colleague wants to know whether you'll support her idea for the weekly meeting when the team gets together."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "kollegin",
+          "role": {
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A colleague wants to know whether you'll support her idea for the weekly meeting when the team gets together. „Mein Vorschlag ist einfach: Wir schaffen die wöchentliche Besprechung ab und schreiben stattdessen kurze Berichte.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mein Vorschlag ist einfach: Wir schaffen die wöchentliche Besprechung ab und schreiben stattdessen kurze Berichte.",
+          "base": {
+            "en": "My proposal is simple. We drop the weekly meeting and write short reports instead."
+          },
+          "interlocutorId": "kollegin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dieser Vorschlag greift zu kurz, denn Berichte bleiben oft ungelesen, und offene Fragen klärt man nicht per Text.",
+          "base": {
+            "en": "That proposal falls short. Reports often go unread, and you can't resolve outstanding questions in writing."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Das ist nicht fair; die Besprechung dauert eine Stunde, in der die eigentliche Arbeit liegen bleibt, das kostet uns mehr.",
+          "base": {
+            "en": "That's unfair. The meeting takes an hour during which the actual work sits waiting. It costs us more."
+          },
+          "interlocutorId": "kollegin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zwar ist das Kostenargument stichhaltig, doch die Lösung wäre eine halbe Stunde mit fester Tagesordnung, nicht die komplette Abschaffung.",
+          "base": {
+            "en": "The cost argument is sound, but the solution would be half an hour with a fixed agenda, not scrapping the meeting altogether."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Also, was schlagen wir dem Team gemeinsam vor, Ihre Variante oder meine?",
+          "base": {
+            "en": "So what should we propose to the team together? Your version or mine?"
+          },
+          "interlocutorId": "kollegin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Weder die eine noch die andere allein: Ich plädiere dafür, eine halbe Stunde Besprechung mit Ihrem Bericht als Vorbereitung zu verbinden.",
+          "base": {
+            "en": "Neither version on its own. I favour combining a half-hour meeting with your report as preparation."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Dieser Vorschlag greift zu kurz, denn ",
+        "chunks": [
+          "Berichte",
+          "bleiben oft",
+          "ungelesen,",
+          "und offene Fragen",
+          "klärt man",
+          "nicht per Text."
+        ],
+        "distractors": [
+          "bleiben selten",
+          "nicht per Telefon."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ist das Kostenargument stichhaltig, doch die Lösung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " eine halbe Stunde mit fester Tagesordnung, nicht die komplette Abschaffung."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Zwar",
+            "acceptedAnswers": [
+              "Zwar"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Zwar",
+              "Falls",
+              "Weil",
+              "Sobald"
+            ]
+          },
+          {
+            "answer": "wäre",
+            "acceptedAnswers": [
+              "wäre"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use sein in the present subjunctive for a hypothetical solution. The subject is die Lösung."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " die eine noch die andere allein: Ich plädiere dafür, eine halbe Stunde Besprechung mit Ihrem Bericht als Vorbereitung zu verbinden."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Weder",
+            "acceptedAnswers": [
+              "Weder"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Weder",
+              "Wegen",
+              "Gegen",
+              "Zwischen"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Dieser Vorschlag greift zu kurz, denn ",
+        "answer": "Berichte",
+        "acceptedAnswers": [
+          "Berichte"
+        ],
+        "after": " bleiben oft ungelesen, und offene Fragen klärt man nicht per Text.",
+        "fallbackChoices": [
+          "Berichte",
+          "Sitzplätze",
+          "Gespräche",
+          "Tagesordnungen"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Acknowledge the cost without endorsing the remedy"
+        },
+        "rule": {
+          "en": "Zwar introduces the part you accept. Doch introduces a different response to the same concern."
+        },
+        "examples": [
+          {
+            "targetText": "Zwar ist das Kostenargument stichhaltig, doch die Lösung wäre eine halbe Stunde mit fester Tagesordnung, nicht die komplette Abschaffung.",
+            "base": {
+              "en": "The cost argument is sound, but the solution would be half an hour with a fixed agenda, not scrapping the meeting altogether."
+            },
+            "highlights": [
+              "Zwar"
+            ]
+          },
+          {
+            "targetText": "Zwar sparen kurze E-Mails Zeit, doch schwierige Fragen klären wir besser im Gespräch.",
+            "base": {
+              "en": "Short emails do save time, but we resolve difficult questions more effectively in conversation."
+            },
+            "highlights": [
+              "Zwar"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "greift zu kurz",
+          "kind": "frame",
+          "base": {
+            "en": "falls short"
+          }
+        },
+        {
+          "targetText": "doch",
+          "kind": "connector",
+          "base": {
+            "en": "but; however"
+          }
+        },
+        {
+          "targetText": "Berichte",
+          "kind": "noun",
+          "base": {
+            "en": "reports"
+          }
+        },
+        {
+          "targetText": "Besprechung",
+          "kind": "noun",
+          "base": {
+            "en": "meeting"
+          }
+        },
+        {
+          "targetText": "Kostenargument",
+          "kind": "noun",
+          "base": {
+            "en": "cost argument"
+          }
+        },
+        {
+          "targetText": "stichhaltig",
+          "kind": "adjective",
+          "base": {
+            "en": "sound; well-founded"
+          }
+        },
+        {
+          "targetText": "Tagesordnung",
+          "kind": "noun",
+          "base": {
+            "en": "agenda"
+          }
+        },
+        {
+          "targetText": "Vorbereitung",
+          "kind": "noun",
+          "base": {
+            "en": "preparation"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Berichte",
+            "Fragen",
+            "Text"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Kostenargument",
+            "stichhaltig",
+            "Tagesordnung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Besprechung",
+            "Bericht",
+            "Vorbereitung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "stichhaltig",
+        "surface": "stichhaltig",
+        "familyKey": "stichhaltig",
+        "pos": "adjective",
+        "turnIndex": 3,
+        "base": {
+          "en": "sound or well-founded"
+        },
+        "example": {
+          "targetText": "Der Einwand ist stichhaltig, weil die Besprechung tatsächlich eine Stunde dauert.",
+          "base": {
+            "en": "The objection is well-founded because the meeting really does last an hour."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "handys-im-grossraumbuero",
+      "title": {
+        "en": "Questioning a blanket phone ban"
+      },
+      "situation": {
+        "de": "Deine Vorgesetzte will private Handys aus dem Großraumbüro verbannen und bittet um deine Einschätzung.",
+        "en": "Your manager wants to ban private phones from the open-plan office and asks what you think."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "chefin",
+          "role": {
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your manager wants to ban private phones from the open-plan office and asks what you think. „Ich werde private Handys im Großraumbüro ab nächster Woche komplett verbieten; die Ablenkung ist zu groß.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ich werde private Handys im Großraumbüro ab nächster Woche komplett verbieten; die Ablenkung ist zu groß.",
+          "base": {
+            "en": "Starting next week I'll ban private phones in the open-plan office altogether. They're too distracting."
+          },
+          "interlocutorId": "chefin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich verstehe das Ziel, bin aber der Ansicht, dass ein Totalverbot als Bevormundung ankommt und mehr Unruhe stiftet als die Handys.",
+          "base": {
+            "en": "I understand the aim, but I think a blanket ban comes across as patronising and causes more disruption than the phones do."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Unruhe? Die Zahlen zeigen, dass die Fehlerquote seit einem Jahr steigt, und das wollen Sie wegdiskutieren?",
+          "base": {
+            "en": "Disruption? The figures show the error rate has been rising for a year. Are you trying to explain that away?"
+          },
+          "interlocutorId": "chefin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Selbst wenn die Fehlerquote steigt, ist nicht belegt, dass die Handys der Grund sind; vielleicht liegt es am Lärm.",
+          "base": {
+            "en": "Even if the error rate is rising, it hasn't been established that the phones are the cause. Perhaps it's the noise."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Gut, Sie haben bis Freitag: Was legen Sie mir als Alternative auf den Tisch?",
+          "base": {
+            "en": "All right. You have until Friday. What alternative will you put on my desk?"
+          },
+          "interlocutorId": "chefin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mein Vorschlag lautet daher: stille Zeiten von neun bis zwölf, und die Entscheidung bleibt selbstverständlich bei Ihnen.",
+          "base": {
+            "en": "My proposal, then, is quiet hours from nine until twelve. The decision naturally remains yours."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Ich verstehe das Ziel, bin aber der Ansicht, ",
+        "chunks": [
+          "dass ein Totalverbot",
+          "als Bevormundung",
+          "ankommt",
+          "und mehr Unruhe",
+          "stiftet"
+        ],
+        "distractors": [
+          "ankommen",
+          "stiften"
+        ],
+        "frameSuffix": " als die Handys."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " die Fehlerquote steigt, ist nicht "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", dass die Handys der Grund sind; vielleicht liegt es am Lärm."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Selbst wenn",
+            "acceptedAnswers": [
+              "Selbst wenn"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Selbst wenn",
+              "Anstatt mit",
+              "Trotz der",
+              "Wegen des"
+            ]
+          },
+          {
+            "answer": "belegt",
+            "acceptedAnswers": [
+              "belegt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use the past participle of belegen after ist."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " daher: stille Zeiten von neun bis zwölf, und die Entscheidung bleibt selbstverständlich bei Ihnen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mein Vorschlag lautet",
+            "acceptedAnswers": [
+              "Mein Vorschlag lautet"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mein Vorschlag lautet",
+              "Mein Vorschlag kostet",
+              "Mein Vorschlag gilt",
+              "Mein Vorschlag beginnt"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ich verstehe das Ziel, bin aber der Ansicht, dass ein Totalverbot als ",
+        "answer": "Bevormundung",
+        "acceptedAnswers": [
+          "Bevormundung"
+        ],
+        "after": " ankommt und mehr Unruhe stiftet als die Handys.",
+        "fallbackChoices": [
+          "Bevormundung",
+          "Anerkennung",
+          "Auszeichnung",
+          "Belohnung"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "en": "Separate a trend from its proposed cause"
+        },
+        "rule": {
+          "en": "Selbst wenn accepts a premise for the sake of argument. Ist nicht belegt, dass challenges the link from that premise to a conclusion."
+        },
+        "examples": [
+          {
+            "targetText": "Selbst wenn die Fehlerquote steigt, ist nicht belegt, dass die Handys der Grund sind; vielleicht liegt es am Lärm.",
+            "base": {
+              "en": "Even if the error rate is rising, it hasn't been established that the phones are the cause. Perhaps it's the noise."
+            },
+            "highlights": [
+              "ist nicht belegt"
+            ]
+          },
+          {
+            "targetText": "Selbst wenn die Zahl stimmt, ist nicht belegt, dass der neue Plan die Ursache ist.",
+            "base": {
+              "en": "Even if the figure is correct, it hasn't been established that the new plan is the cause."
+            },
+            "highlights": [
+              "ist nicht belegt"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "der Ansicht",
+          "kind": "frame",
+          "base": {
+            "en": "of the opinion"
+          }
+        },
+        {
+          "targetText": "Selbst wenn",
+          "kind": "connector",
+          "base": {
+            "en": "even if"
+          }
+        },
+        {
+          "targetText": "Totalverbot",
+          "kind": "noun",
+          "base": {
+            "en": "blanket ban"
+          }
+        },
+        {
+          "targetText": "Bevormundung",
+          "kind": "noun",
+          "base": {
+            "en": "patronising interference"
+          }
+        },
+        {
+          "targetText": "Fehlerquote",
+          "kind": "noun",
+          "base": {
+            "en": "error rate"
+          }
+        },
+        {
+          "targetText": "Ablenkung",
+          "kind": "noun",
+          "base": {
+            "en": "distraction"
+          }
+        },
+        {
+          "targetText": "Entscheidung",
+          "kind": "noun",
+          "base": {
+            "en": "decision"
+          }
+        },
+        {
+          "targetText": "wegdiskutieren",
+          "kind": "verb",
+          "base": {
+            "en": "explain away"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Totalverbot",
+            "Bevormundung",
+            "Unruhe"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Fehlerquote",
+            "belegt",
+            "Grund"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Vorschlag",
+            "Zeiten",
+            "Entscheidung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Bevormundung",
+        "surface": "Bevormundung",
+        "familyKey": "Bevormundung",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "patronising interference"
+        },
+        "example": {
+          "targetText": "Das Team empfindet das Verbot als Bevormundung.",
+          "base": {
+            "en": "The team feels the ban is patronising."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "regional-oder-importiert",
+      "title": {
+        "en": "Which food goes into the basket?"
+      },
+      "situation": {
+        "de": "Beim Einkaufen erzählt dir eine Freundin, worauf sie bei Lebensmitteln achtet. Ihr wollt morgen zusammen kochen.",
+        "en": "While shopping, a friend tells you how she chooses food. You plan to cook together tomorrow."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "freundin",
+          "role": {
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "While shopping, a friend tells you how she chooses food. You plan to cook together tomorrow. „Ich kaufe nur noch regional; alles, was eingeflogen wird, ist für mich tabu.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ich kaufe nur noch regional; alles, was eingeflogen wird, ist für mich tabu.",
+          "base": {
+            "en": "I buy only local food now. Anything flown in is off limits for me."
+          },
+          "interlocutorId": "freundin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mein Standpunkt ist weniger streng: Regional ist gut, aber ein Apfel aus dem Kühlhaus im April ist nicht automatisch klimafreundlicher.",
+          "base": {
+            "en": "My position is less strict. Local is good, but an apple from cold storage in April isn't automatically better for the climate."
+          },
+          "move": "position",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Jetzt redest du dich raus; es geht doch auch um die Bauern hier.",
+          "base": {
+            "en": "You're making excuses now. This is also about supporting the farmers here."
+          },
+          "interlocutorId": "freundin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Was die Bauern angeht, hast du recht, insofern kaufe ich Gemüse vom Markt, bei Obst schaue ich aber auf die Saison.",
+          "base": {
+            "en": "When it comes to the farmers, you're right. That's why I buy vegetables at the market, but for fruit I check what's in season."
+          },
+          "move": "concede",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und morgen beim Einkauf für unser Essen: Was landet im Korb?",
+          "base": {
+            "en": "And when we go shopping for our meal tomorrow, what will go in the basket?"
+          },
+          "interlocutorId": "freundin"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Letzten Endes landen Kartoffeln vom Markt und Orangen aus Spanien im Korb, da Saison und Transportweg zusammen zählen, nicht die Grenze allein.",
+          "base": {
+            "en": "Ultimately we'll put potatoes from the market and oranges from Spain in the basket, because both the season and the transport route count, rather than the border alone."
+          },
+          "move": "conclude",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "Mein Standpunkt ist weniger streng: ",
+        "chunks": [
+          "Regional",
+          "ist",
+          "gut,",
+          "aber ein Apfel",
+          "aus dem Kühlhaus"
+        ],
+        "distractors": [
+          "sind",
+          "aber einen Apfel"
+        ],
+        "frameSuffix": " im April ist nicht automatisch klimafreundlicher."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", hast du recht, insofern "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ich Gemüse vom Markt, bei Obst schaue ich aber auf die Saison."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Was die Bauern angeht",
+            "acceptedAnswers": [
+              "Was die Bauern angeht"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Was die Bauern angeht",
+              "Als die Bauern angehen",
+              "Ohne die Bauern angeht",
+              "Weil die Bauern angeht"
+            ]
+          },
+          {
+            "answer": "kaufe",
+            "acceptedAnswers": [
+              "kaufe"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use kaufen with ich in the present tense."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " landen Kartoffeln vom Markt und Orangen aus Spanien im Korb, da Saison und Transportweg zusammen zählen, nicht die Grenze allein."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Letzten Endes",
+            "acceptedAnswers": [
+              "Letzten Endes"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Letzten Endes",
+              "Vor lauter",
+              "Seit dem",
+              "Dank der"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Mein Standpunkt ist weniger streng: Regional ist gut, aber ein Apfel aus dem ",
+        "answer": "Kühlhaus",
+        "acceptedAnswers": [
+          "Kühlhaus"
+        ],
+        "after": " im April ist nicht automatisch klimafreundlicher.",
+        "fallbackChoices": [
+          "Kühlhaus",
+          "Kochtopf",
+          "Gewächshaus",
+          "Obstkorb"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Agree about one criterion and introduce another"
+        },
+        "rule": {
+          "en": "Was … angeht signals the specific point of agreement. A separate clause can then explain where you weigh another consideration."
+        },
+        "examples": [
+          {
+            "targetText": "Was die Bauern angeht, hast du recht, insofern kaufe ich Gemüse vom Markt, bei Obst schaue ich aber auf die Saison.",
+            "base": {
+              "en": "When it comes to the farmers, you're right. That's why I buy vegetables at the market, but for fruit I check what's in season."
+            },
+            "highlights": [
+              "Was die Bauern angeht"
+            ]
+          },
+          {
+            "targetText": "Was die Entfernung angeht, hast du recht, aber ich möchte auch die Lagerzeit berücksichtigen.",
+            "base": {
+              "en": "You're right about the distance, but I'd also like to take storage time into account."
+            },
+            "highlights": [
+              "Was die Entfernung angeht"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Mein Standpunkt",
+          "kind": "frame",
+          "base": {
+            "en": "my position"
+          }
+        },
+        {
+          "targetText": "insofern",
+          "kind": "connector",
+          "base": {
+            "en": "to that extent; in that respect"
+          }
+        },
+        {
+          "targetText": "Standpunkt",
+          "kind": "noun",
+          "base": {
+            "en": "point of view"
+          }
+        },
+        {
+          "targetText": "Kühlhaus",
+          "kind": "noun",
+          "base": {
+            "en": "cold store"
+          }
+        },
+        {
+          "targetText": "klimafreundlicher",
+          "kind": "adjective",
+          "base": {
+            "en": "more climate-friendly"
+          }
+        },
+        {
+          "targetText": "Saison",
+          "kind": "noun",
+          "base": {
+            "en": "season"
+          }
+        },
+        {
+          "targetText": "Transportweg",
+          "kind": "noun",
+          "base": {
+            "en": "transport route"
+          }
+        },
+        {
+          "targetText": "Grenze",
+          "kind": "noun",
+          "base": {
+            "en": "border"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Apfel",
+            "Kühlhaus",
+            "April"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Bauern",
+            "Gemüse",
+            "Saison"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Kartoffeln",
+            "Orangen",
+            "Transportweg"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Standpunkt",
+        "surface": "Standpunkt",
+        "familyKey": "Standpunkt",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "point of view"
+        },
+        "example": {
+          "targetText": "Mein Standpunkt hängt davon ab, wie lange das Obst gelagert wurde.",
+          "base": {
+            "en": "My position depends on how long the fruit was stored."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "sprachen-frueh-lernen",
+      "title": {
+        "en": "Is starting young decisive?"
+      },
+      "situation": {
+        "de": "In einem Radiointerview geht es darum, welche Rolle das Alter beim Sprachenlernen spielt.",
+        "en": "A radio interviewer asks what part age plays in learning a language."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "moderation",
+          "role": {
+            "en": "radio interviewer"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A radio interviewer asks what part age plays in learning a language. „Viele behaupten, nur wer als Kind beginnt, lernt eine Sprache wirklich; teilen Sie diese Auffassung?“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Viele behaupten, nur wer als Kind beginnt, lernt eine Sprache wirklich; teilen Sie diese Auffassung?",
+          "base": {
+            "en": "Many people say you only truly learn a language if you start as a child. Do you share that view?"
+          },
+          "interlocutorId": "moderation"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nur zum Teil: Kinder haben Vorteile bei der Aussprache, Erwachsene dagegen lernen bewusster und mit klarem Ziel.",
+          "base": {
+            "en": "Only in part. Children have an advantage with pronunciation, whereas adults learn more consciously and with a clear goal."
+          },
+          "move": "position",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Aber wer erst mit dreißig beginnt, erreicht doch nie das Niveau eines Kindes, das mit drei anfängt.",
+          "base": {
+            "en": "But surely someone who only starts at thirty never reaches the level of a child who begins at three."
+          },
+          "interlocutorId": "moderation"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Eindeutig ist das keineswegs, denn ich kenne Leute, die erst mit dreißig angefangen haben und heute mühelos in der neuen Sprache verhandeln.",
+          "base": {
+            "en": "That's by no means clear-cut. I know people who only started at thirty and now negotiate effortlessly in their new language."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Zum Schluss in einem Satz: Was raten Sie Eltern, die ihr Kind mit drei Jahren anmelden wollen?",
+          "base": {
+            "en": "One sentence to finish. What would you say to parents who want to enrol their child at age three?"
+          },
+          "interlocutorId": "moderation"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Aus diesen Gründen: Ist Ihr Kind selbst neugierig, darf es früh anfangen, entscheidend bleibt aber die Freude daran.",
+          "base": {
+            "en": "For those reasons: if your child is curious themselves, they can start early, but what stays decisive is that they enjoy it."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Nur zum Teil: ",
+        "chunks": [
+          "Kinder haben",
+          "Vorteile",
+          "bei der Aussprache,",
+          "Erwachsene dagegen",
+          "lernen bewusster"
+        ],
+        "distractors": [
+          "Vorteile an",
+          "lernen bewussten"
+        ],
+        "frameSuffix": " und mit klarem Ziel."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Eindeutig ist das "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", denn ich kenne Leute, die erst mit dreißig angefangen haben und heute mühelos in der neuen Sprache "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "keineswegs",
+            "acceptedAnswers": [
+              "keineswegs"
+            ],
+            "kind": "frame",
+            "choices": [
+              "keineswegs",
+              "zusammen",
+              "darunter",
+              "unterwegs"
+            ]
+          },
+          {
+            "answer": "verhandeln",
+            "acceptedAnswers": [
+              "verhandeln"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use verhandeln (to negotiate) in the present tense. The relative pronoun refers to Leute."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": Ist Ihr Kind selbst neugierig, darf es früh anfangen, entscheidend bleibt aber die Freude daran."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Aus diesen Gründen",
+            "acceptedAnswers": [
+              "Aus diesen Gründen"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Aus diesen Gründen",
+              "Entgegen meinem Rat",
+              "Anstelle der Eltern",
+              "Während der Anmeldung"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nur zum Teil: Kinder haben Vorteile bei der ",
+        "answer": "Aussprache",
+        "acceptedAnswers": [
+          "Aussprache"
+        ],
+        "after": ", Erwachsene dagegen lernen bewusster und mit klarem Ziel.",
+        "fallbackChoices": [
+          "Aussprache",
+          "Ausbildung",
+          "Absprache",
+          "Ausschreibung"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "en": "Dispute certainty and give a reason"
+        },
+        "rule": {
+          "en": "Keineswegs rejects an absolute claim. Denn supplies the reason for withholding agreement."
+        },
+        "examples": [
+          {
+            "targetText": "Eindeutig ist das keineswegs, denn ich kenne Leute, die erst mit dreißig angefangen haben und heute mühelos in der neuen Sprache verhandeln.",
+            "base": {
+              "en": "That's by no means clear-cut. I know people who only started at thirty and now negotiate effortlessly in their new language."
+            },
+            "highlights": [
+              "keineswegs"
+            ]
+          },
+          {
+            "targetText": "Sicher ist das keineswegs, denn zwei Personen mit demselben Kurs lernen unterschiedlich schnell.",
+            "base": {
+              "en": "That is by no means certain, because two people taking the same class learn at different speeds."
+            },
+            "highlights": [
+              "keineswegs"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Nur zum Teil",
+          "kind": "frame",
+          "base": {
+            "en": "only in part"
+          }
+        },
+        {
+          "targetText": "denn",
+          "kind": "connector",
+          "base": {
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "Aussprache",
+          "kind": "noun",
+          "base": {
+            "en": "pronunciation"
+          }
+        },
+        {
+          "targetText": "Auffassung",
+          "kind": "noun",
+          "base": {
+            "en": "view; opinion"
+          }
+        },
+        {
+          "targetText": "Niveau",
+          "kind": "noun",
+          "base": {
+            "en": "level"
+          }
+        },
+        {
+          "targetText": "mühelos",
+          "kind": "adjective",
+          "base": {
+            "en": "effortless; effortlessly"
+          }
+        },
+        {
+          "targetText": "verhandeln",
+          "kind": "verb",
+          "base": {
+            "en": "to negotiate"
+          }
+        },
+        {
+          "targetText": "entscheidend",
+          "kind": "adjective",
+          "base": {
+            "en": "decisive"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Vorteile",
+            "Aussprache",
+            "Erwachsene"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "keineswegs",
+            "dreißig",
+            "verhandeln"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Gründen",
+            "entscheidend",
+            "Freude"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "entscheidend",
+        "surface": "entscheidend",
+        "familyKey": "entscheidend",
+        "pos": "adjective",
+        "turnIndex": 5,
+        "base": {
+          "en": "decisive"
+        },
+        "example": {
+          "targetText": "Für dieses Kind ist die Freude am Spielen entscheidend.",
+          "base": {
+            "en": "For this child, the enjoyment of playing is decisive."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

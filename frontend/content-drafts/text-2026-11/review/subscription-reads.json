@@ -1,0 +1,1267 @@
+{
+  "scope": "Exact offline full-file editorial replays. An intermediate hash is not necessarily the selected version. Subsequent gates, mechanical alignments and decisions are identified separately in the index and dispositions.",
+  "rounds": [
+    {
+      "round": "en-p10-arbitration",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ad28a1d519d56cde7c39f995adf51901710ff91bec5602ad3ecf234fa19b6b76",
+      "verdict": "approve-with-edits",
+      "file": "english-p10.json",
+      "source": "97c37bbe81f5b276e4c30e2812959bee1b5938ca3983d3175ba7a03dee973317",
+      "result": "cd12822bf07e4b8fba1c3c86668ccb498dc7abc05a5c5fdfc8b90497defd717c",
+      "edits": 4,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "english-p10.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": [
+            "L10 recall: fallbackChoices contains belonged, which is also grammatical in 'I started to feel like I ___ here when the team saved me a seat' (past-tense agreement). Second valid answer.",
+            "L3 cloze[3], L5 cloze[1], L10 cloze[3]: answer is the bare base form and the cue prints that same lemma verbatim (make, choose, save), so the cue hands over the answer and grading is meaningless.",
+            "All other cloze cues (felt/feel, knocked/knock, showed/show, leaves/leave, used/use, made/make, met/meet, opened/open, changed/change, asking/ask, discovered/discover, fills/fill, arrived/arrive, invited/invite, comes/come) give a lemma that differs from the answer; no leak.",
+            "All other recall fallback sets have exactly one grammatical fit; L9 'brings' is only a tense-sequence misfit, acceptable.",
+            "Second pattern examples do not pre-print the follow-up line in any lesson; sceneCaptions quote only the opener; no early reveal found.",
+            "10 trophies intact: experience, challenge, achievement, friendship, opportunity, improvement, proud, surprised, grateful, belong. Register casual throughout."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Convention gap: whenever a form-cloze answer equals the bare base form, the lemma-first cue leaks it. Consider a validator rule (cue token before · must not equal answer) so this does not recur in other paths.",
+        "L9 recall fallback 'brings' fits only with a tense clash; left as is, but a non-finite form (bringing is already present) or 'brung' would be cleaner if a stricter audit follows."
+      ]
+    },
+    {
+      "round": "en-p10-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "e0d1107b1333bf4cc8732b442946f7ec5e0c15550fe05a9fa9f48b7577e6520c",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p10.json",
+      "source": "5583183229a8fc63530bfde2a0c312768412f257346706c3250e7912c9ae7c6c",
+      "result": "97c37bbe81f5b276e4c30e2812959bee1b5938ca3983d3175ba7a03dee973317",
+      "edits": 19,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "english-p10.json",
+          "lessonsRead": [
+            "the-night-the-lights-went-out",
+            "the-first-bus-map",
+            "a-table-of-my-own",
+            "the-spare-umbrella",
+            "the-radio-invitation",
+            "less-paper-on-the-kitchen-table",
+            "a-call-without-help",
+            "the-busy-square",
+            "the-woman-next-door",
+            "a-place-on-the-team"
+          ],
+          "concerns": [
+            "All ten lessons carry register 'informal'; the generalized type and validator accept only formal/casual for English, so the field must be 'casual' (P10 is mostly casual; no sir/ma'am present, rails hold).",
+            "L5 me2 uses a sentential relative 'which made it fun' (B2 in EGP; nondefining relatives are outside the English B1 plan). P10 is no-new-grammar, so recast to 'and that made it fun' in dialogue and cloze together; gloss already reads 'und genau das'.",
+            "L7 them1 gloss 'Was kannst du jetzt, das dir …' is ungrammatical German (relative to interrogative 'was' needs 'was').",
+            "L8 them2 gloss renders 'Have you tried that?' as 'erlebt' and term 'noise' as 'Trubel' only; fidelity edits.",
+            "L9 me2 gloss drops 'arrived' and 'over' ('da war', no 'zu mir') while the cloze cue tests arrive; align.",
+            "L3 me2 gloss narrows 'make anything' to 'bauen'.",
+            "L2 situation en says 'a friend' while de and sceneCaption say 'Bekannte'.",
+            "L1 term 'those first few weeks' loses 'few'.",
+            "Style, not blocking: four me1 lines open on a superlative frame (strangest/biggest experience/challenge/achievement/improvement); L4, L6, L8 me2 and L5 me1 open with Yes. Opinion-with-concession from the plan anchor is not recycled in any learner line.",
+            "L1 pedagogicalGoal/pattern rule describe an interrupted ongoing action but me1 uses a gerund complement ('was cooking dinner'); the second example carries real past continuous, acceptable for consolidation.",
+            "Checked and clean: all cloze concats match me2 verbatim; no blank spans an apostrophe (couldn't, we've, I'll, I'm stay in text segments); no contraction is a recall answer or speak token; all speak tokens and recall answers occur in me1; chip distractors are never alternative correct forms in slot; them2 is never foreshadowed by situation, sceneCaption or pattern examples; sceneCaptions quote them1 verbatim; no British spellings; all ten plan trophies retained in order; will appears in learner production only in L10 first conditional (allowed after P7)."
+          ]
+        },
+        {
+          "file": "english-plan.json",
+          "lessonsRead": [
+            "P10 L1 experience",
+            "P10 L2 challenge",
+            "P10 L3 achievement",
+            "P10 L4 friendship",
+            "P10 L5 opportunity",
+            "P10 L6 improvement",
+            "P10 L7 proud",
+            "P10 L8 surprised",
+            "P10 L9 grateful",
+            "P10 L10 belong"
+          ],
+          "concerns": [
+            "Trophy row and beats match the draft lesson by lesson; no edits to the plan."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Register value 'casual' depends on the type widening in guidedLessons.ts and the validator config generalization (Milestone 1 steps 1–2) landing first; until then the draft will not validate.",
+        "No independent review has been supplied; this read does not certify nativeness or learner-facing release. The phone gate (typed answers, both role-play turns in en-US recognizer) has not been run for English.",
+        "Any accepted edit to targetText changes the English corpus hash; the twelve explanation editions and the phrase-catalog migration must be regenerated in the Milestone 3 bundle, owner-gated, OpenRouter key currently dead.",
+        "Codex holds an in-flight claim on this scope today; these edits are a spec, not applied, until the claim clears.",
+        "Style notes left unedited for owner judgment: repeated superlative me1 frame (L1, L2, L3, L6) and four Yes openers; plan's opinion-with-concession recycle is absent from learner lines in P10."
+      ]
+    },
+    {
+      "round": "en-p6-arbitration",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c8cde11e575d553d547d7b0c0f3e87dff03155aceb72a00910854a374e66c72d",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p6.json",
+      "source": "62f49229016360b09a66f97a9394d3c059768d88c744a021ed73568a257a8f07",
+      "result": "9cbb5c188ebe747b76fad26c2346acef8784a469cb6d3420fc05dd64036fa642",
+      "edits": 35,
+      "readThrough": [
+        {
+          "file": "../english/english-p6.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Current bytes sha256 62f49229… already carry bulletin board (L8) and the other first-pass Fable edits. Still open in the current file: all ten pattern.examples[1] equal dialogue[3] verbatim; rules in L3, L4, L8, L9, L10 name the exact follow-up form; L5–L7 banks still contain 'to be' and the cue 'be (-ing form)' effectively prints the answer; L1 opening is a yes/no question answered only by a counterquestion; L2 you₂ asks about a full bin although them₂ names oversized boxes; L4 German gloss orders approval before the date decision. Staging (L1–4 present simple, L5–7 present continuous, L8–9 past simple, L10 mixed), register, chunk concatenation, recall blanks and all ten trophies (delivered, collected, replaced, approved, delayed, damaged, installed, canceled, confirmed, stored) are untouched by these edits. P7 current file was not supplied."
+        }
+      ],
+      "openIssues": [
+        "P7 (../english/english-p7.json) current bytes were not supplied; no edits issued. Pending for that file: one connector blank (typed, no cue; test 'in case' vs 'so that' vs 'to' against the visible context) plus one form blank per lesson with German operation cues (e.g. 'Grundform nach to', 'Präsens, 3. Person') instead of the printed answer; examples[1] replaced in all ten; L1 purpose example, L3 accept five o'clock, L4 cardstock, L6 entrance name.",
+        "After applying, recompute the P6 hash and run the B1 validator (cloze concat, highlight containment, trophy uniqueness).",
+        " L2 build distractor 'on the other side' is grammatically insertable but cannot complete you₁ without 'outside our building'; left as is.",
+        "Draft text only; no learner readiness claim."
+      ]
+    },
+    {
+      "round": "en-p6-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "cd8a5a9196c332f201a7c71e6b917955724d7488a54a5be67d0be5b4d8d0fbd0",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p6.json",
+      "source": "0e186a1286b42642a14fa4cef5692125ab33705b7836242a628637d431e15c6b",
+      "result": "62f49229016360b09a66f97a9394d3c059768d88c744a021ed73568a257a8f07",
+      "edits": 15,
+      "readThrough": [
+        {
+          "file": "english-p6.json",
+          "lessonsRead": [
+            "packages-at-the-front-desk",
+            "recycling-day",
+            "broken-access-card",
+            "room-requests",
+            "delay-at-the-depot",
+            "table-in-the-truck",
+            "internet-installation",
+            "canceled-class",
+            "repair-visit-on-monday",
+            "unclaimed-package"
+          ],
+          "concerns": "Staging matches the 03.10 architecture (L1-4 present simple passive, L5-7 continuous passive, L8-9 past passive, L10 mix); all ten trophies retained and each is the recall answer of the learner's first turn. All cloze segments concat byte-exactly to dialogue[3]; recall before/answer/after concat to dialogue[1]; every chip set has four same-category forms with no second correct answer; speak tokens and recall answers contain no contractions; no them-turn-2 is foreshadowed in a situation; formal rails hold (no yeah/gonna/hey). Repairs: L8 'notice board' is a British lexical item in an en-US path (fix to 'bulletin board' in all four coupled fields); L2/L6/L7 pattern-example glosses render the passive as active/without 'gerade', weakening the pattern point they illustrate; L1 opener gloss 'Adresse' misreads 'building' and the 'lockers' term gloss contradicts the dialogue gloss; L5-7 cue 'be after is' is an unidiomatic UI hint. L10 'Mine was delivered' has no explicit antecedent but is natural in context; L3 'I order a new one' is acceptable procedural present; left unchanged. Housing-heavy settings across L1-3 and L10 match the plan and are within Shape A variety tolerance."
+        }
+      ],
+      "openIssues": [
+        "Codex holds an in-flight claim on this scope; apply only after the BOARD claim clears.",
+        "No independent learner-facing review has been supplied; this read-through does not substitute for it.",
+        "The anchor field references the 03.10 staging, but english-plan.json P6 still carries the superseded past-passive-at-L4-7 staging and L4/L5/L7 beats; the plan should be marked superseded or regenerated so the two artifacts do not disagree.",
+        "L5-7 'being' chip sets exclude 'be' and 'been' correctly, but the device gate must confirm the typed path accepts 'being' before the second blank's leading space segment (cloze segment 3 is a single space)."
+      ]
+    },
+    {
+      "round": "en-p7-arbitration",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "41eeb4b539e990051e2b2513720d78759214b8f3b43509127796db1ae53c7488",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p7.json",
+      "source": "514a8c99d92dc49d5d6d7e987754ea4a7a6256053047943b968c1a85c07c0baf",
+      "result": "ed078374cca34e5db388b044b93e2ebf5ff54dcc8278e86a05ffdc3480df9a7a",
+      "edits": 53,
+      "preconditionNotes": [
+        "L1 oldValue omitted the space before people; replacement used verbatim."
+      ],
+      "readThrough": [
+        {
+          "file": "english-p7.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": [
+            "Disposition P7-multi (examples[1]=dialogue[3]): ACCEPT all 10; examples[1] replaced by transfer examples with German gloss and contiguous highlight; rules and mirrored pedagogicalGoal rewritten to stop naming the follow-up form.",
+            "Disposition P7-multi (all blanks form, cues print answer): ACCEPT all 10; every cloze now has one connector blank (no cue) and one form blank with an operation-only German cue; chips tested so no combination yields a second acceptable sentence in context (dropped if/when/until/unless/while where they produced one).",
+            "Disposition L1 (ask…to is a complement): ACCEPT; you₂ now ends in a true purpose infinitive 'to keep it simple'; transfer example per reviewer.",
+            "Disposition L2: no additional issue; 'so' expanded to 'so that' so the connector is gradeable.",
+            "Disposition L3 (five never accepted): ACCEPT; you₂ opens with 'Five works.' and keeps the division of work.",
+            "Disposition L4 (cardstock): already applied in current bytes; no edit.",
+            "Disposition L5, L7, L8, L10: no additional issue beyond the cross-lesson fixes.",
+            "Disposition L6 (address cannot distinguish entrances): ACCEPT; you₁ asks for the entrance; chunks, recall, terms, speakRequired, examples[0] updated.",
+            "Disposition L9: 'so' expanded to 'so that'; rule no longer prints 'so you can set up'.",
+            "Coupling checks after edits: dialogue[1]===recall before/answer/after and chunk concat in L6; cloze segments concatenate to dialogue[3] in L1,L2,L3,L9; trophies, staging and anchor text untouched."
+          ]
+        }
+      ],
+      "openIssues": [
+        "english-p6.json was not supplied in this turn, so no exact edits could be arbitrated for it; required P6 work per review: replace 'to be' with 'was' in the L5–L7 first-slot banks and update the cue, rewrite examples[1] in all ten lessons as transfer examples, remove follow-up details from rules, L1 opening question, L2 oversized-box reply with dependent fields, L4 German clause order, L8 'bulletin board' + rule reason. Supply the current P6 bytes for an exact-edit pass.",
+        "Connector blanks carry no cue (per design); the file format has no acceptedAnswers field, so a typed grader should match the single answer case-sensitively only for sentence-initial 'If'.",
+        "L1 pattern label 'Purpose and the to-infinitive' still matches; L3 you₂ uses a bare imperative 'Chop the carrots' to stay within 12 words — acceptable for du-register friends, flag if the owner prefers 'Could you'.",
+        "Recompute the file hash after applying; audio ids remain unfrozen."
+      ]
+    },
+    {
+      "round": "en-p7-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0c8b9b2e8b5c0d66bafb2522f40dfa4fbb77e1fa91eca2e0ce6a3f0c9b92c38d",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p7.json",
+      "source": "58e305c37a0e78bcb4b57321dafc834692ff0621453d44a462651c29bac13f15",
+      "result": "514a8c99d92dc49d5d6d7e987754ea4a7a6256053047943b968c1a85c07c0baf",
+      "edits": 13,
+      "readThrough": [
+        {
+          "file": "english-p7.json",
+          "lessonsRead": [
+            "courtyard-gathering",
+            "one-shopping-list",
+            "community-dinner",
+            "food-labels",
+            "cleanup-supplies",
+            "reminder-for-volunteers",
+            "meeting-after-work",
+            "the-hidden-entrance",
+            "outdoor-booth",
+            "rides-to-the-picnic"
+          ],
+          "concerns": [
+            "Staging matches the newer architecture (L1-3 to-purpose/so that…can, L4-6 first conditional with will, L7-8 in case/unless, L9-10 mix); the file anchor restates it correctly and all ten trophies (purpose, organize, share, prepare, supplies, remind, attend, prevent, volunteer, arrange) match the plan rows.",
+            "All ten lessons set register to 'informal', which is not a value in the widened register type (English carries formal|casual); validator would reject or ignore the tone rails. Mechanical fix below.",
+            "L4 them-turn 'one sheet of card left' is British lexis (US: cardstock); en-US variety rule. Coupled term fix below.",
+            "L7 situation.de says 'Eine Bekannte' while situation.en and the scene caption say colleague/Kollegin. Fix below.",
+            "L1 pattern label 'Purpose and the to-infinitive' but the second highlighted example 'to bring their own cups' is ask+object+to-infinitive, not purpose; the rule text explains the difference honestly, so not misleading, but the lesson's only learner line 4 carries no purpose form. Acceptable for L1 of the stage; noted.",
+            "All 20 cloze blanks are verb-form blanks; the spec lists 'connector, form' for P7 and no lesson blanks so that / in case / unless. Variety gap, not a trust fault; converting connector slots needs chip-plausibility work (if/unless/in case are often all grammatical), so left open.",
+            "L2 and L10 both open with the them-line tag 'Any ideas?'; recorded them-turns repeat verbatim. Variety only.",
+            "Checked: every chunk set concatenates to its dialogue line; every pattern highlight is a substring of its example; every recall answer and all speak tokens are uncontracted words present in line 2; fallback and cloze chip sets each contain exactly one correct form; no blank spans an apostrophe or takes a bare pronoun/article; scene captions quote only line 1; them₂ is never foreshadowed in line 1 or situation; base glosses are faithful (idiomatic rather than literal where needed, e.g. 'Es geht darum', 'und sei es nur'); them-only forms (I'd rather, There'll, won't, may) stay out of learner lines, blanks and patterns; no British spellings besides 'card'."
+          ]
+        },
+        {
+          "file": "english-plan.json",
+          "lessonsRead": [
+            "P7 rows 1-10, anchor"
+          ],
+          "concerns": [
+            "P7 anchor still carries the preliminary staging (L1-3 to, L4-6 so that, L7-10 first conditional) and omits in case/unless; superseded by the newer architecture and by the lesson file's own anchor. Plan is proposal-not-approved so no edit issued here.",
+            "Beats for L4-L7 differ from the drafted scenes (e.g. L7 beat 'accept an earlier meeting' vs drafted 'email the figures in case'); trophies and shape are preserved, which is what the beats bind."
+          ]
+        }
+      ],
+      "openIssues": [
+        "No connector blanks in P7 despite the spec's 'connector, form' blank kinds; decide whether L7/L8/L10 should blank in case/unless/so that, with chip sets vetted so that 'if' is not an also-correct chip.",
+        "L1 line 4 shows ask+to-infinitive rather than purpose; consider a line-4 recast that carries a purpose form, which would also change cloze, pattern example 2 and highlight (coupled rewrite not issued).",
+        "L2 and L10 them-line 1 both end 'Any ideas?'; if changed, the sceneCaption quote must change with it.",
+        "english-plan.json P7 anchor is stale relative to the newer staging; update when the plan is next revised.",
+        "Register edits assume the validator's English register pair is formal|casual as the architecture states; confirm against the generalized validator config before applying.",
+        "Corpus hash: these text edits change the English base text, so the twelve explanation editions and the phrase-catalog row for L4 (if it carries line 3) need regeneration in Milestone 3; owner-gated.",
+        "No independent review supplied; this read does not certify learner-facing content on its own."
+      ]
+    },
+    {
+      "round": "en-p8-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "1ff2191020d6ce98819d7d6b89a156b311c23c2e7dbe95e46927ed60f809130d",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p8.json",
+      "source": "fc2847e954ebf766e6eb2c3849197cf2a560a4a74759828bfe8b52951c79d4ed",
+      "result": "2419c6e93093f9db12a0a4309f81a7596565d18e717991596edccb47514e0209",
+      "edits": 32,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "english-p8.json",
+          "lessonsRead": [
+            "before-the-first-bus",
+            "under-the-stairs",
+            "saturday-everywhere",
+            "the-small-basket",
+            "through-the-park",
+            "from-the-front-door",
+            "phone-on-the-shelf",
+            "speaking-up-in-class",
+            "across-town",
+            "messages-without-a-script"
+          ],
+          "concerns": [
+            "Staging matches the newer architecture (L1-4 used to/didn't use to, L5-7 anymore/these days/comparatives/as…as, L8-9 for/since perfect, L10 mix); ten trophies retained and each appears in its learner line.",
+            "Form cues print the exact answer wherever the target form equals the lemma (14 blanks); the test collapses to copying. Fixed with operation-only German cues.",
+            "L4 rule 'deutlicher als beim Hören' implies an audible use/used distinction; none exists in US speech.",
+            "L5 'dauert kürzer als' is non-idiomatic German.",
+            "L6 causal since is correct and licensed by the trophy but the rule should name both readings explicitly since duration since only arrives in L8.",
+            "L7 story breaks: an alarm clock beside the coffee maker cannot replace the bedroom phone. Recast as a newly bought clock still on the kitchen table, matching 'I recently bought it.'",
+            "L4 gloss grab→greifen is off (sich schnappen); L6 recall fallbacks mix word classes (lengthen, length).",
+            "Distractors 'inside the receipt.' (L7) and 'onto a recipe.' (L9) are too implausible.",
+            "Verified: all cloze and chunk concats reproduce the dialogue lines; no contraction is a recall answer or speak token; all speak tokens occur in dialogue[1]; no sir/ma'am; no British spellings; pattern example 2 never reproduces dialogue[3]; situations never foreshadow them₂; each learner clip stands alone.",
+            "Light pre-stage comparatives 'as often' (L3) and 'more than I could carry' (L4) sit in unblanked learner lines as fixed adverbials; tolerated.",
+            "Plan P8 anchor still carries the preliminary 'L6-8 since/for' staging; the lesson file follows the newer architecture, which overrides it."
+          ]
+        },
+        {
+          "file": "english-plan.json",
+          "lessonsRead": [
+            "P8 L1-L10 beats and trophies"
+          ],
+          "concerns": [
+            "Trophy list identical to the lesson file; beats consistent with drafted lessons. Anchor text is preliminary and superseded; no edit, informational only."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Codex holds an in-flight claim on this scope; these edits are a spec for whoever owns the file, not applied here.",
+        "english-plan.json P8 anchor still states the preliminary L6-8 since/for staging; superseded by the newer architecture, update when the plan is next touched.",
+        "Cloze choices and recall fallbacks include the correct answer among four; assumed to match the German B1 chip format—validator should confirm.",
+        "Light pre-stage comparatives 'as often' (L3) and 'more than I could carry' (L4) tolerated as fixed adverbials in unblanked lines.",
+        "L10 gloss 'Manuskript' for script is acceptable but 'vorbereiteter Text' would match the Spickzettel framing better; not trust-critical.",
+        "Any accepted edit changes the English corpus hash; editions and catalog regeneration remain owner-gated per Milestone 3."
+      ]
+    },
+    {
+      "round": "en-p9-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ce9872f804507e95c48f890ab764467e391376dde24206a97dec49c297b2da9c",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "english-p9.json",
+      "source": "22dc282b7bb45a30258b95564b7935f2099f3bec02bfcabc011a8cc1d389eb82",
+      "result": "0264cbe0a9bc082ec9abdc4d6657356a3a2df31cb52ea63012f1b0c454e87a77",
+      "edits": 11,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "english-p9.json",
+          "lessonsRead": [
+            "two-card-payments",
+            "the-blue-mug",
+            "the-kettle-switch",
+            "another-missed-visit",
+            "call-after-three",
+            "lamp-without-a-receipt",
+            "pictures-of-the-box",
+            "which-maple-street",
+            "when-it-gets-warm",
+            "the-friday-window"
+          ],
+          "concerns": [
+            "Story logic, staging (no new grammar; recycles P1 past/P6 passive/P3 polite+conditional/P4 relatives/P5 indirect questions; be supposed to only L10), register (all 10 formal, no banned casual tokens; 'mostly formal' satisfied), base glosses, highlights (every highlight is a verbatim substring), timing (4 turns each), standalone utterances, recall/speak tokens (no contractions), trophies (10 of 10 match plan, none from the taken list) all verified.",
+            "L2 recall: fallback 'showed' is also correct in the visible context (My receipt ___ twelve dollars for a mug that was marked down to eight) — uniqueness breach, fixed.",
+            "Connector chips in L1, L3, L4, L6, L10 mix prepositions/possessive (during, despite, whose) into connector slots; L9 ships two grammatical alternatives (although, unless). Replaced with same-category chips that are never correct; answer index unchanged.",
+            "L6 them₂ 'the receipt in this box is blank' is implausible; faded thermal receipt is the credible US-counter version. L6 title 'Der Kaufnachweis' pre-announces them₂'s obstacle; retitled. Slug left (id-bearing, not learner-visible).",
+            "L10 them₁ gloss 'nicht mitgefahren' misreads 'didn't go out'; corrected.",
+            "pedagogicalGoal duplicates pattern.rule.de in every lesson — consistent with the draft convention, left as is.",
+            "L3 'Does your store guarantee cover that?' is acceptable US usage (compound 'store guarantee'); verb reading is blocked by the missing 'to'. Left unchanged.",
+            "Cues ('im simple past', 'simple present mit …', 'Partizip nach has', 'Grundform nach to') disambiguate every form blank whose other inflection would be grammatical (L2 buy, L6 show, L8 have, L10 confirm)."
+          ]
+        },
+        {
+          "file": "english-plan.json",
+          "lessonsRead": [
+            "P9 L1–L10 beats and trophies"
+          ],
+          "concerns": [
+            "P9 beats and the ten trophies match the drafted lessons. Plan's P4 note 'no whose' is superseded by the newer architecture (P4 L7–8 where, whose), so 'whose' chips in P9 are legitimate distractors."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Codex holds an in-flight claim on this scope; these edits are a spec for the claim holder, not an applied change.",
+        "L6 them-turn text changed; it has no TTS yet (draft), but any later recording must use the new string. Base-text change also alters the English corpus hash once merged (editions coupling per architecture).",
+        "All ten lessons are register 'formal'; acceptable under 'mostly formal', but P9 has no casual counterpoint — confirm the validator does not require a mix.",
+        "pedagogicalGoal mirrors pattern.rule.de in every lesson; confirm the B1 validator does not flag duplicate text.",
+        "L3 'Does your store guarantee cover that?' left as-is; 'store's guarantee' would be marginally clearer but requires four coupled edits (dialogue, pattern example, chunk, trophy example) — owner's call."
+      ]
+    },
+    {
+      "round": "es-p10-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "4cbe77ff49e70ca8da6bca66dc62cee988033d7a354b26d272cf14a610fe10c7",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p10.json",
+      "source": "f951f42672355870ac8ddeb4c28cc71c3b05380ce0dd0bd2aa3d1c3bb662ecaa",
+      "result": "65200e97f5351c2ed3a81773153704267c34398e731ef2b7bfa6c0ec4cf03b91",
+      "edits": 50,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p10.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Trophies llegada,esfuerzo,confianza,amistad,aprendizaje,rutina,consejo,proyecto,agradecimiento,experiencia match the frozen plan and each sits in learner turn 1. Cloze, chunk and recall concatenations are byte-identical to their turns in all ten lessons; first turns 11–14 words, last turns 10–12; answer slots varied; cues never print the answer; every form blank has one correct chip in visible context (explicit subjects or cued person). Spanish is Spain usage (jersey, ordenador, piso, soportales, casillas, mostrador), gender-free, tú throughout as a consolidation path. Defects found: L1 them₁ DE is unidiomatic; L3 last turn (señalar los precios → preguntar) is disconnected from the medio-kilo skill and the situation DE/EN wording is off; L4 situation (person beside you in a group photo) contradicts them₁ (la chica que hizo estas fotos); L5 cold-water symbol is not a real label; L6 arcades against cold is weak in Oviedo (rain is the local reason) and the DE of turn 1 paraphrases away the era+infinitivo pattern; L7 a reading club open daily is implausible and the placeholder caption (shift rota) spoils them₂; L8 Trinkwasserstellen is bureaucratic German for Trinkbrunnen. L2, L9, L10 confirmed as the review describes (two fields only; Isabel keeps boxes downstairs; tengan/tiene/tienen are each ungrammatical after para que cada familia so tenga is the only correct chip)."
+        },
+        {
+          "file": "spanish-plan.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "P10 beats and trophies consistent with the episode file. Plan note 2 says the proposal introduces no tú; the Fable spec authorises tú at B1 and the P10 anchor states tú explicitly, so no edit; note is historical."
+        }
+      ],
+      "openIssues": [
+        "JSON pointers are relative to the file's root object (the stored data object); the sha256 f951f426… and the independent review's hash are superseded once edits apply.",
+        "All ten lessons carry register informal; the spec says P10 mostly tú. Acceptable for a friends-only consolidation path, but confirm the generalized validator does not require at least one formal lesson per path.",
+        "Typed cloze answers llevó, Pedí, completé, dejé, empecé, salvé, probaría, Guardó, juntaría carry accents or initial capitals; correctness depends on the es accent-stripping accepted-answer helper and lowercase NFC match from step 5 being wired into the scaffold before the device gate.",
+        "Base-en uses British spelling throughout (neighbour, learnt, jumper, flat, lift, laundrette, recognise, favour); internally consistent, but confirm the existing Spanish corpus base-en convention before edition regeneration; not changed here.",
+        "L7 learner text uses entonces, a taken trophy elsewhere; it is neither trophy, recall answer nor speak token here. Confirm the uniqueness check scopes trophies only, not running text.",
+        "L10 placeholder (small tables in a courtyard) hints at the learner's resolution but not at them₂ (long tables sold); left as is.",
+        "L1 and L9 both involve a neighbour helping with boxes; coherent if read as the same neighbour (Isabel), no edit made.",
+        "Pedagogical goals duplicate pattern.rule.de verbatim in all ten lessons; matches the German B1 shape, flag only if the base-edition collector double-counts."
+      ]
+    },
+    {
+      "round": "es-p6-bounds",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "14f33cd9f155f96af9c02498bddd319513519c88a444831a5e6484b2ca9cf1db",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p6.json",
+      "source": "e3325bfc6f7597e7e013c38ebe3e9e6f723877e9210df91248ed58587fb676f6",
+      "result": "2beace8390425d8b27efceb75282f7bf0526f743903533237405dde38bdb2a84",
+      "edits": 8,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p6.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Follow-up word counts: L1 10, L2 13 (over), L3 11, L4 11, L5 9, L6 9, L7 9, L8 9, L9 14 (over), L10 10. All recall answers present in fallbackChoices; all cloze answers present in choices; cues disambiguate every form; trophies untouched. L2 fix drops redundant 'yo' (cue 'traer (yo)' keeps the form unambiguous; de/en bases already read 'ich/I' so unchanged). L9 fix drops the explicit 'su equipo' and addresses the office as ustedes ('están dando … revisan'), keeping estar + gerundio, 'para el cambio' and 'código postal'; second cloze answer and cue updated, choice set already contains 'revisan'. No staff turn pre-reveals a follow-up."
+        }
+      ],
+      "openIssues": [
+        "L9 pattern examples still highlight 'está revisando' with 'su equipo' from turn 2; follow-up now uses ustedes — acceptable, as turn 2 remains the canonical pattern line.",
+        "L9 cloze shows 'están' before the 'revisan' gap (plural visible); this mirrors the existing L1/L10 'yo' structure and is cue-backed, but flag if the designer wants zero number pre-reveal."
+      ]
+    },
+    {
+      "round": "es-p6-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "2fec48330fe6349dad80e999564b8961d55070eb2f83f6a681c61c34c1f39235",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p6.json",
+      "source": "aa1e2e81061dbc4cf1f5772e5e6b0eadb44680b05a0bfc37031931c8f3d7a1a1",
+      "result": "e3325bfc6f7597e7e013c38ebe3e9e6f723877e9210df91248ed58587fb676f6",
+      "edits": 34,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p6.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Base sha256 aa1e2e81…a1a1 read in full. Staging matches the P6 table (L1–4 se, L5–7 estar+participio, L8–9 estar+gerundio, L10 mix); pasiva con ser absent; futuro (L3) and subjuntivo (L10) only in them-turns; register uniformly formal singular; Spanish gender-free throughout (rota/parado/perdido all refer to objects, never the speaker). All ten cloze concats equal turn 4, all ten recall concats and chunk concats equal turn 2. Frozen trophies entrega, revisión, mantenimiento, instalación, reparación, actualización, confirmación, recogida, pendiente, resuelto all present, each produced in the learner's turn 2 and speak-required. No taken trophy (todavía, cita, funciona) reused as a trophy. No cue prints its answer (lemma only). Every slot has one correct choice in visible context; cue parentheses bind the subject where yo/usted could otherwise compete. Them₂ is not foreshadowed in any situation or sceneCaption. Findings that warrant edits: (a) answer position is never index 0 in any of the 30 slots and index 2 dominates cloze slot 1 — a learnable tell; (b) L2 turn 4 leaves it unclear that bringing the bike Monday depends on a booking for Monday; (c) L3 pattern example reuses this building's works/entrance and mientras dura el trabajo is lexically weak; (d) L8 rule says estar agrees with 'the person doing the work' while the lesson subject is el almacén; (e) L9 turn 4 'revisa el código' reads as software code and qué plazo lacks a referent; (f) L10 'aviso' is not the Spain support term for a ticket (incidencia) and de turn 3 'Zugangsdaten' breaks parity with clave/Passwort; (g) L8 title names the two boxes before them₂ splits the order. Reviewer's L1/L2 'si yo' note accepted as intentional subject binding; L4, L5, L6, L7 points verified clear; L8 '¿Qué caja falta?' judged natural as-is."
+        }
+      ],
+      "openIssues": [
+        "JSON pointers are relative to the lesson file root (the attachment's data object); prefix with /data if the on-disk file keeps the sha256 wrapper.",
+        "Register value is 'formal' while the spec names usted/tú for Spanish; decide which token the generalized validator's register pair expects before suites run, or the per-language config must accept both.",
+        "After applying, recompute the corpus hash: these edits change dialogue base text and pattern rules, so the twelve editions and the catalog row for P6 L2/L3/L9/L10 core phrases must be regenerated in Milestone 3 (owner-gated, not here).",
+        "L7 chunk en 'Is it also ready,' carries a trailing comma that reads oddly in the build cue; cosmetic, left unedited.",
+        "Codex holds an in-flight claim on this scope; this arbitration is read-only and should be applied by the claim holder or after the claim clears.",
+        "spanish-plan.json read for trophy freeze only; no edits, P6 allocation matches."
+      ]
+    },
+    {
+      "round": "es-p7-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "0feeda37cd476695db1173ad35429e1b64a3dee698660a1f98d0b2acf24caba8",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p7.json",
+      "source": "9bc64af1731f0aab91833ba1253e3af8ca09662273f88ad5296cb0a1d6cf987e",
+      "result": "d3f0530bea45520e9f9ec23c5b8a78229ead82503f5b321862675a11adaf20b8",
+      "edits": 37,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p7.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Staging matches the P7 anchor: L1-4 para+inf, L5-8 para que with whitelisted stems (funcione, llegue, puedan, tenga, haya), L9-10 mixed at path level. All ten frozen trophies present and recycled in learner turns; recall, speakRequired, chunk concat and cloze concat identities hold in every lesson. Spanish is Spain usage (coger el tren, vale, gasolina, móvil-era register), gender-free throughout (perderse is infinitive; L8 'la niña' is a third party, not the speaker). Fixed: L1 them-turn overstated the physical constraint; L2 'petrol' is British in en-US base; L3 'aprovechar la espera' too formal for friends; L4 'para dejarte tiempo con las invitaciones' stilted; L5-9 connector chips 'aunque' / 'mientras que' pair with the indicative form chips into grammatical sentences (aunque funciona, mientras que llega, mientras que haya sitio reads as a condition), breaking single-correct; L9 'entrar al centro' is LatAm-leaning, Spain says 'entrar en'; L8 term gloss 'Platz ist' is not German; register value 'informal' does not match the architecture's Spanish register pair usted/tú. Form cues never print the answer and identify the third-person subject (el micrófono, Marta, todos, nadie). Pattern examples teach the target form but do not reveal hidden-turn content. L10 timing is coherent as staged: agreement closes at eight, workshop ends at eight, fifteen-minute extension only if the group tidies, so they clean and close at eight-fifteen."
+        },
+        {
+          "file": "spanish-plan.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "P7 trophies and beats match the draft one to one; no edit. Note 2 ('esta propuesta no introduce tú') predates the architecture decision to introduce tú at B1; the draft follows the architecture (mostly tú for P7). No change to the plan file; owner decision recorded as open issue."
+        }
+      ],
+      "openIssues": [
+        "Register value: edits set 'tú' per the architecture's Spanish usted/tú pair; if the generalized validator config still keys the Spanish pair on formal/informal, revert these ten edits rather than the content. Owner decision on introducing tú at B1 is still pending and spanish-plan.json note 2 says the opposite.",
+        "L2 cloze starts with an empty '' text segment before the capitalized form blank 'Salimos'; confirm the cloze renderer and the lowercase matcher accept a leading empty segment and a capitalized answer.",
+        "L8 pattern example 'la niña ... junto a su padre' is third-person, not speaker, so it passes the gender rule; swap for 'el grupo' if the policy is tightened to all referents.",
+        "L9 and L10 pattern rules explain both para+inf and para que in one card by design of the mix lessons; grammar is shown, hidden-turn content is not, but a stricter spoiler reading would trim the L9 label to 'Para facilitar / para que + subjuntivo'.",
+        "L2 T4 German 'damit wir nur ein Auto brauchen' is a free rendering of 'para ir en un solo coche'; accepted for idiom, flag if literal fidelity is required.",
+        "No approval implied for validator run, edition regeneration, catalog SQL or TTS; Codex holds the in-flight claim on this scope."
+      ]
+    },
+    {
+      "round": "es-p8-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "bcb3a547e811c2ce4e248ec90b86b90d20e2c4454d06a7b062d3b94f9e8d98f6",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p8.json",
+      "source": "44a6eeb6be99be3a070c6d330bfcf3d6d3e06647996f95e70e167f639eba8e53",
+      "result": "06093d41959ae92252fcfdb9f9505280dfb86daf1102223531c61e23b8109c1b",
+      "edits": 28,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p8.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Concat identity holds for all ten cloze and recall reconstructions; all first learner turns are 10–15 words and all last turns 8–12; all ten frozen trophies sit in the first learner turn and in the terms; register informal throughout with one singular friend/neighbour per scene; no gendered speaker adjectives or participles (distinto agrees with horario, juntas with vecinas, solo is adverbial). Real defects: comitative or coordinated-subject plurals make a second legitimate recall answer in L1 (escuchábamos … con mi abuelo), L2 (íbamos … con dos primas), L3 (volvía … y desayunábamos), L5 (jugábamos … guardamos), L6 (veníamos … ahora vengo), L7 (solíamos … ya no voy) and L10 (compartía la cena). L4 them₂ invents an unestablished variety and asks mirar when the answer is touch. L5 el turno siguiente is ambiguous between a move and a round. L7 title names Tuesdays that never appear in the scene. L8 term de mesa glossed für den Spieltisch. L9 term la parada is not in the scene, desde hace en gloss is unidiomatic, and Fahrplan misreads a work schedule as a bus timetable. Cloze answer positions cluster (slot 1 index 2 for L5–L9, slot 2 index 3 for L6–L9)."
+        },
+        {
+          "file": "spanish-plan.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "P8 trophy list infancia, colegio, pueblo, huerto, recreo, domingos, solía, juegos, distinto, etapa matches the path exactly and is preserved. Plan note 2 still says B1 introduces no tú; the later architecture authorizes tú for P8, so the plan note is stale, not the path. Plan P8 anchor omits llevo + gerundio and desde hace, which the architecture stages at L8–L9; the path follows the architecture. No edits to this proposal file."
+        }
+      ],
+      "openIssues": [
+        "L1 recall escuchaba covers both yo and él readings, so the él/yo ambiguity never marks a learner wrong; no edit needed.",
+        "L2 cloze cruzábamos/inventábamos is disambiguated only by the (nosotros) cue; cruzaba/inventaba would be coherent without it. Accepted as cue-governed under the German B1 cloze contract; confirm the runtime always shows the cue.",
+        "Base en across the path uses neighbour, neighbourhood, football, holidays. The British-spelling ban in the spec targets the en-US tier; left untouched pending confirmation of the Spanish corpus convention for base en.",
+        "L7 slug el-taller-de-los-martes still names Tuesdays; left unchanged to avoid an id change before suite pins exist. Rename to el-taller-de-la-tarde only if the owner wants the slug fixed before the held commit.",
+        "Path uses tú throughout; spanish-plan.json note 2 still states B1 introduces no tú and awaits the owner's batch decision on introducing tú at B1.",
+        "No runtime, publishing, TTS, edition regeneration or catalog work implied; Codex holds the in-flight claim on this scope."
+      ]
+    },
+    {
+      "round": "es-p9-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "43420d8498abeeaa6322cefaae0801e2669d88003ae834580cc21907109c66d3",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "spanish-p9.json",
+      "source": "b44d8328a9626b3948ba68451a27484ebebb1e6a1ed1db824f71f5f02cb922d6",
+      "result": "b6623e7b148c4c86c03dc5c2a4d2e0b2f2d4421eb286945185b5f0f77371a7aa",
+      "edits": 34,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "spanish-p9.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Pointers are relative to the file root (data). All ten trophies match the frozen plan (avería, garantía, factura, técnico, pieza, presupuesto, solución, devolución, compensación, compromiso); none collides with the taken list. Register formal throughout, one singular interlocutor, no learner gender marking (preparado/revisado agree with presupuesto/contrato, not the speaker). First learner turns 10/14/12/12/10/11/11/10/12/11 words, last turns 9/9/10/12/7/10/9/10/8/9: in range. Cloze, recall and chunk concatenations reproduce the canonical turns; answer slots vary. Them₂ never surfaces in situation or caption. Accepted the review as follows: L1 timing and als/when fine as written; L2 'según mi recibo' scoped over the warranty date and a bare 7-month warranty read as a legal or stock period, fixed by making it the garantía comercial in its own clause; L3 staff saw an unsent file, fixed by having them₁ ask for a legible copy of the original and them₂ explain that scans often fail to open, so the photo turn stays a conditional proposal; L4 Friday morning is consistent with 'antes de mi turno'; L5 ordered vs arrived already distinct, but 'espera' (usted) was a second correct chip against the 'ellos' cue, replaced; L6 quote, approval and charge already distinct, British 'itemise' and two inconsistent chunk glosses fixed; L7 no legal loan claim, request stays a question; L8 condition of a final check honoured; L9 the request only asks to include receipts; L10 staff now name a personal and a work address so 'mi correo personal' identifies one, and the learner asks for the slot rather than assuming one. L2 EN rule had British 'enquiry'. L10 term 'la franja horaria' was not in scene."
+        },
+        {
+          "file": "spanish-plan.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Status proposal_not_approved; P9 beats and trophies match the drafted path exactly. No edits."
+        }
+      ],
+      "openIssues": [
+        "German meta text mixes du (L2 goal/rule, L2 whyThisWord, L4 rule, L7 rule) with Sie (situations, captions, other whyThisWord); align to the German B1 corpus convention before TTS or edition regeneration.",
+        "Ustedes forms (Tendrían, Podrían, enviarían) appear as chips where the cue pins usted; accepted because the spec fixes one singular interlocutor, but the validator's register pair check should confirm German B1 treats Sie/plural chips the same way.",
+        "songMood is uniformly 'Sachlich und ruhig.'; verify this matches the A2 Spanish module's genre strings as the spec requires.",
+        "L5 them₁ EN 'What do you need me to check?' is a free rendering of '¿Qué necesita comprobar?'; acceptable, flagged only.",
+        "Any accepted edit changes the Spanish corpus hash; editions and catalog remain owner-gated per the spec and are not touched here."
+      ]
+    },
+    {
+      "round": "fr-p5-final",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "a26d5b3fa793d287ec1c9faaa017834f6f38eb1974da36c49423bc2ed2adbf29",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "french-p5.json",
+      "source": "f8387c04e041a6d441a3f2dcc30117ee4de1b339f237c937e12bbd08f57717f8",
+      "result": "cb8b125ad4b8dcbb8d45175bd4dc6acd1c9199892279a7a5ad879a987e973284",
+      "edits": 1,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "french-p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "L1–L9 unchanged and acceptable; L6 chip order and L8 statement meaning already verified. L10: chip 'J'ai choisi un créneau en ligne.' is a standalone sentence, so order 2-3-4-1 ('Savez-vous quand je recevrai la confirmation écrite ? J'ai choisi un créneau en ligne.') is a second idiomatic answer. Fixed by moving the sentence boundary inside a chip."
+        }
+      ],
+      "openIssues": []
+    },
+    {
+      "round": "fr-p5-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "65a9b24c20706601828e094f8cba96283816c5a425e1ab0e9817a7a826494987",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "french-p5.json",
+      "source": "92a42175da2c4fa6b04e8a692aeaa42f18c4136e8d0382b1e87edf7ae87bbf3b",
+      "result": "f8387c04e041a6d441a3f2dcc30117ee4de1b339f237c937e12bbd08f57717f8",
+      "edits": 34,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "french-p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": [
+            "L1: you2 uses savez-vous before the L4–6 stage; L'accueil ferme à midi is ambiguous (the receptionist is at l'accueil) while DE adds dort; situation does not say what the dossier is; chunk gloss wo ich muss teaches wrong constituent; build chips off-topic",
+            "L2: comment je remplis is natural French (procedural present, cf. comment je fais ?); keep; no edits",
+            "L3: chunk gloss wann ich muss; pattern example 2 uses savez-vous and L4 trophy inscriptions ahead of stage; off-topic chips",
+            "L4: terms groupe complet is sign French, dialogue says le groupe est complet; dans la glaise chip; pour changer mon adresse ? forms a valid alternative final chunk",
+            "L5: DE Frist / EN waiting period less precise than Bearbeitungszeit / processing time for an applicant asking when counting starts",
+            "L6 HIGH: separate en ligne chip yields a second idiomatic order (faire en ligne toute la démarche depuis chez moi)",
+            "L7: par adresse provisoire substitutes grammatically for par signature originale; dans mon agenda remote",
+            "L8 HIGH: DE says data missing on the RIB, French says the document is missing; pendant ma pause. substitutes for pour cette demande.; RIB acronym first spoken by learner",
+            "L9 HIGH: Vous êtes resté genders the learner; you2 asks for a correction without answering whether the end date is wrong",
+            "L10: situation claims a booking the clerk later calls provisional; phone opener presumes knowledge the receptionist cannot have, so you1 answers nothing; lequel is contestable as a wrong choice next to feminine case; example 2 is not an embedded question",
+            "Path-wide: connector arrays recycle dont/lequel/combien de; retained because offering si/où/quand/comment near-misses would create second valid readings in most frames"
+          ]
+        }
+      ],
+      "openIssues": [
+        "Re-run validateB1Draft and the full read on the edited source; L9 you2 and L10 you1 now carry a leading sentence inside one learner turn (Oui. / J'ai choisi un créneau en ligne.), confirm the validator and speak recognizer accept two sentences in a single turn",
+        "Connector arrays still lean on dont/lequel/combien de; kept deliberately because si/où/quand/comment near-misses create second valid readings in most frames (e.g. L1 si le guichet rouvre, L2 quand je note); vary only where a frame excludes them",
+        "L2 comment je remplis retained as natural French; switch to comment je dois remplir only if the spec requires a modal in every L1–3 embedded clause",
+        "L1 situation now names the residence-permit renewal; confirm this does not clash with the shared P5 setting list",
+        "Codex holds the in-flight claim on this scope; this is a spec, no file was modified"
+      ]
+    },
+    {
+      "round": "ko-p10-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "9acd887de69f6bd20876b6459a91c3a7b89e7c13d0f082ba9579f0b28d5a9d91",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p10.json",
+      "source": "963f6461e9dce2cb84a5abafdfe61edbfcd75c61c92dffeae39a1f68d14d416c",
+      "result": "9b068dbf8555c481f1760afb9c707941f0011d7673c4c6ac221ffcc998339740",
+      "edits": 19,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "B1_NATIVE_KOREAN_SPEC.json",
+          "lessonsRead": [
+            "P10 staging/clozeSchema/trophies",
+            "registerPolicy",
+            "segmentation",
+            "mechanicalValidationRules",
+            "semanticReviewRules"
+          ],
+          "concerns": [
+            "P10 trophies 올해/작년/가을/겨울/경험/변화/도전/보람/다음/새해 all present in p10.json in order; retained."
+          ]
+        },
+        {
+          "file": "p10.json",
+          "lessonsRead": [
+            "olhae-spring-train",
+            "jangnyeon-first-assignment",
+            "gaeul-mountain-photos",
+            "gyeoul-korean-course",
+            "gyeongheom-public-speaking",
+            "byeonhwa-home-cooking",
+            "dojeon-korean-exam",
+            "boram-library-volunteering",
+            "daeum-moving-month",
+            "saehae-walking-first"
+          ],
+          "concerns": [
+            "Eojeol counts verified for all 40 turns: openings 5-7, first replies 7-11, follow-ups 7-9, final replies 7-9; every final learner turn is one sentence ending in 요-form.",
+            "All chunk joins, recall before+answer+after, cloze concatenations, speakRequired whole-eojeol matches, trophy surfaces (bare canonical in reply and example) and pattern example 0 = dialogue[1] verified by hand.",
+            "L3 turn4 German rendered -ㄹ게요 as 'kann' (ability) and split one relative-clause sentence into two; fixed to volitional single sentence.",
+            "L4 first reply/example/chunk bases erased the -게 됐어요 'it worked out that' sense the lesson teaches; restored in de/en.",
+            "L5 term 첫마디 never occurs in the lesson (dialogue uses 첫 문장); replaced.",
+            "L6 follow-up asked for the most confident dish while the reply reports frequency + improved skill; follow-up retargeted so the reply answers it directly; connector distractor 뜻밖에도 was contextually survivable, replaced.",
+            "L7 final reply assigned the learner authority over the exam time; recast as choosing an offered sitting (오후 두 시 시험을), cloze realigned, cue updated.",
+            "Orthography: 지난여름/지난달 are single words; two distractor strings fixed.",
+            "Connector/choice/form correct-index triples vary across the path (2-0-3,1-3-2,0-2-1,0-2-1,3-1-0,2-0-3,2-0-3,1-3-2,0-2-1,0-2-1); acceptable, not edited.",
+            "Season/month choice blanks echo the follow-up on purpose: the blank checks consistency with the exchange and all distractors are contextually wrong; no arbitrary-month guessing exists.",
+            "Recognition-only forms appear only in interlocutor lines (-다고 했지요 L1, 없던 L2, -는 줄 알았는데 L7); learner turns use only P1-P8 families."
+          ]
+        }
+      ],
+      "openIssues": [
+        "L3 turn 3 비가 많았잖아요 is attested but 비가 많이 왔잖아요 is the more common spoken form; left unchanged (9 eojeol if swapped).",
+        "L3 chunk glosses distribute 좋아해요 across chunks 1-2; readable in sequence, weaker in isolation; not changed.",
+        "L4 situation pairs a workplace colleague with 겨울 방학; coherent only for a working student, which visualNotes support; consider adding 'als Werkstudent/in' to the situation if testers stumble."
+      ]
+    },
+    {
+      "round": "ko-p3-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "da65b4955a47a0ec96abace91ab99336bbe103e15c6a4a0542688d139e2d2d85",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p3.json",
+      "source": "c045ad3a61d85c9ecb77794f7fa6ffe711520002fa791bb036a055eb2e3a3dc2",
+      "result": "bfa9fedff95fad9b9db47b87bd1c70ae0e5cf0c2e82287223be67a75f3dc88b8",
+      "edits": 12,
+      "readThrough": [
+        {
+          "file": "p3.json",
+          "lessonsRead": [
+            "hoksi-evening-class",
+            "manyak-phone-contract",
+            "ganeung-parcel-hours",
+            "daesin-window-table",
+            "miri-exam-room",
+            "jamsi-bank-locker",
+            "yeonjang-library-renewal",
+            "harin-coat-sale",
+            "hwanbul-shoe-exchange",
+            "yeollak-repair-call"
+          ],
+          "concerns": [
+            "All ten trophies match spec allocation (혹시 만약 가능 대신 미리 잠시 연장 할인 환불 연락); each surface is bare in reply one and in the example; no substring reliance.",
+            "Eojeol ranges verified per turn (opening/follow-up 4-10, reply one 6-12, reply two 5-9); chunks rejoin reply one exactly in all ten; recall before+answer+after and cloze concatenation reproduce the reply strings exactly; speakRequired are whole eojeol; captions quote dialogue[0] verbatim.",
+            "Staging honored: L1-3 -(으)면 + 수 있을까요, L4-6 주시면 안 될까요 / 주시면 좋겠어요, L7-8 것 같은데요 + 주시겠어요, L9-10 그러면/대신 accept-with-modification. 해요체 throughout, no 반말/습니다, honorific direction correct (humble 드리다 on staff self-offers, -(으)시- only with the other party as subject in learner lines).",
+            "L2: German base of the learner's first reply collapses the 만약…-(으)면 condition the pattern highlights; English and chunk glosses keep it — repaired in dialogue and the coupled pattern example.",
+            "L6: 빌려드려요 attached while every other 보조용언 in the path is spaced (빌려 주시면, 맡아 드리지만, 보내 드릴게요) — normalized; German base of the opening drops 오시겠어요 (bring it back) that English renders.",
+            "L8: follow-up 반값은 아니고 contrasts with a half-price sale never established in the opening — opening now names 반값 세일; German base of reply two added a sentence absent from Korean.",
+            "L7: German base of reply two drops the restrictive 만 (nur) that English renders as just."
+          ]
+        },
+        {
+          "file": "B1_NATIVE_KOREAN_SPEC.json",
+          "lessonsRead": [
+            "path 3 staging, clozeSchema, lesson beats; registerPolicy; segmentation; mechanicalValidationRules; semanticReviewRules"
+          ],
+          "concerns": [
+            "Used as the governing architecture; no conflicts with P3 beats found after edits."
+          ]
+        }
+      ],
+      "openIssues": [
+        "All ten connector blanks resolve to 그러면 (every second reply opens with it); structurally correct for shape C but predictable across the path — architecture decision, not edited.",
+        "L10: technician visits tomorrow while the confirmation call is moved to tomorrow afternoon; plausible only if the visit is late in the day. Beat-mandated (morning proposed, afternoon accepted); flagged, not changed.",
+        "L1 reply two 일곱 시 이후에 자리가 나면 is readable as either a class after seven or a notification after seven; German base disambiguates to the class, English stays ambiguous.",
+        "L3 staff 오시면 appears before its L7-8 recognition range; permitted by registerPolicy (staff -(으)시- toward the learner) and interlocutor-only, so not flagged as a gate violation.",
+        "Optional trophyWord.surface/remainder extensions are absent; all ten surfaces are bare so exact-form matching suffices.",
+        "No independent review was supplied; none is certified here."
+      ]
+    },
+    {
+      "round": "ko-p5-bounds",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "b9b8a534423a9437501c916f1a9fabd6cc07eacb36dad472fc1f1d89847d3598",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p5.json",
+      "source": "653942b096e8de5bce9717aa8dee1f946171b65d4806074287ffb485b591de7f",
+      "result": "df76a2445746f787395cee8af3a79be2a626ad9ade4a535df26a82a0648b0a18",
+      "edits": 10,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "L1–L5, L7–L9 each carry one connector, one question-word choice (어떻게/언제쯤/언제/어디서/어디서/얼마나/얼마나/언제), one form with a German/English cue; all slots are uniquely recoverable from turn 3 of the visible dialogue. L6 choice 사본을 is a noun, not a question word, and the turn-4 sentence has no slot where a question word fits, so turn 4 is rewritten to keep the copy-vs-original scene and the permission form 내도 되는지 while asking 언제까지 (clerk said the original is required; learner asks by when it may be handed in if a copy won't do). L10 cloze has only two blanks and starts mid-turn; a short 그러면 clause is prepended that only restates what the clerk already said (go to the desk opposite), so nothing new is spoiled and the thank-you remains intact. Trophies, recall, terms, chunks, status and sha untouched."
+        }
+      ],
+      "openIssues": [
+        "L4 pattern label (…가능한지) and L6 pattern label/rule (-아/어도 되는지, 내도 되는지) literally contain the form answer of turn 4; other lessons avoid this. Not edited now (not strictly necessary); consider generalising those labels in a later pass.",
+        "L6 title „Reicht eine Kopie?“ still fits the rewritten turn 4 (copy may not suffice, learner asks about the original deadline); confirm during QA that the German/English dialogue reads naturally in the app."
+      ]
+    },
+    {
+      "round": "ko-p5-l2",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "df7e14df058cc0958904976d824d6867ec3001ae299dd9aa01334f6e02ef5061",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p5.json",
+      "source": "90fe2f372d1b4ce9ce07ef1c452e3897a577b0041c62bc6dff5d04d7674f3f5f",
+      "result": "d7e116959e51a9f888a77f267ff4eaad1f7635a08d94573dc5e34cb1658be79b",
+      "edits": 4,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Only L2 is in scope. L2 follow-up 언제쯤 breaks the whole-word allocation (언제/어디서/어떻게/얼마나). Native check: 대략 언제 올라오는지 is idiomatic (slightly more formal than 언제쯤, appropriate for a school-office exchange); it preserves the 'ungefähr/roughly' meaning already in the frozen baseText, so no base-text change is needed. Resulting learner sentence 그러면 공지가 대략 언제 올라오는지 아세요? = 6 eojeol, one sentence. Existing distractors 어디에/누구를/어느 분이 remain coherent near misses after 대략 (wrong question-word slot, grammatically parallel). Pattern rule already states 언제 asks when, so it now matches the dialogue exactly. L2 pattern example 2 uses 몇 시쯤 but is an example, not the learner line, and is frozen. L1, L3–L10 unchanged and not re-arbitrated."
+        }
+      ],
+      "openIssues": [
+        "대략 is not listed in L2 terms (terms frozen); optional future addition if the glossary coverage gate flags it.",
+        "L2 pattern example 2 (다음 수업은 몇 시쯤 끝나는지 아세요?) still uses the -쯤 form; acceptable as an example only, left frozen."
+      ]
+    },
+    {
+      "round": "ko-p5-meter",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "db164badc67eade707a242ba7947fa47f143e43c4e3b3a76b7587f9bf53ec54b",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p5.json",
+      "source": "df76a2445746f787395cee8af3a79be2a626ad9ade4a535df26a82a0648b0a18",
+      "result": "90fe2f372d1b4ce9ce07ef1c452e3897a577b0041c62bc6dff5d04d7674f3f5f",
+      "edits": 13,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p5.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": "Turn counts (eojeol): L1 6/7/7/7, L2 6/7/8/5, L3 6/7/7/7, L4 5/7/7/9, L5 5/7/8/8, L6 5/8/8/10 (T4 over 9), L7 5/6/7/8, L8 6/7/9/8, L9 7/9/9/9, L10 5/8/8/11 (T4 over 9 and two sentences). All other cloze triplets are whole-eojeol connector + question word + conjugated form with non-revealing bilingual cues. L6 T4 also used 언제까지 instead of a bare listed question word. L10 T4 orphans nothing after edit if 여쭤보다 is retained via 여쭤봐도 될까요."
+        }
+      ],
+      "openIssues": [
+        "Precondition: p5.json sha256 df76a2445746f787395cee8af3a79be2a626ad9ade4a535df26a82a0648b0a18; apply all 14 edits together.",
+        "L2 T4 question word is 언제쯤 (whole eojeol, 언제+쯤) rather than bare 언제; left unchanged as valid.",
+        "L7 and L9 learner follow-ups are statements (no question mark); within the ≤1 limit and left unchanged.",
+        "L6 form answer 되는지 is the permission auxiliary taught by the lesson pattern (-아/어도 되는지), not a bare lexical verb; retained to keep pattern coupling."
+      ]
+    },
+    {
+      "round": "ko-p5-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "260fd50a2d195ed815e693c98e2a50e61a589e38e6e525f58f4701fb449baca0",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p5.json",
+      "source": "97fb54ed4160ae6e98e9add9dd649e9643b4fec6d8fd6cc0d60a43ce6bc8aea1",
+      "result": "653942b096e8de5bce9717aa8dee1f946171b65d4806074287ffb485b591de7f",
+      "edits": 43,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p5.json",
+          "lessonsRead": [
+            "bangbeop-transit-card",
+            "iyu-canceled-class",
+            "iljeong-training-date",
+            "magam-extension-counter",
+            "sincheong-paper-application",
+            "seoryu-copy-or-original",
+            "yogeum-monthly-estimate",
+            "gigan-processing-time",
+            "jogeon-membership-pause",
+            "sunseo-clinic-ticket"
+          ],
+          "concerns": [
+            "All ten trophies (방법 이유 일정 마감 신청 서류 요금 기간 조건 순서) match the spec allocation; each bare surface eojeol is present in dialogue[1] and trophyWord.example; retained unchanged.",
+            "Mechanical: all openings 5-6, first replies 6-9, follow-ups 6-9, second replies 5-9 eojeol; chunks rejoin dialogue[1]; recall rejoins dialogue[1]; cloze rejoins dialogue[3]; speakRequired are whole eojeol; captions quote dialogue[0] verbatim; no 반말, no 습니다, staff -(으)시- only toward learner, learner humble forms (부탁드려요, 알려 드릴게요) with learner subject.",
+            "Staging holds: L1-3 -는지 아세요?, L4-6 (이)ㄴ지/-(으)ㄴ지 모르겠어요, L7-8 -(으)ㄹ지 궁금해요/모르겠어요, L9-10 -는지 물어봤는데; recycled P3 frames (-(으)ㄹ 수 있을까요, -아/어 주시겠어요) used in L4/L6/L8 repairs.",
+            "Finding 1 (L1): turn 3 already separates guidance (총무팀에서 받아요) from submission (신청할 때는 신분증); 총무팀 is the natural owner of 교통카드 benefits. No dialogue edit; de chunk gloss tightened.",
+            "Finding 2 (L2): after 저도 몰라요 + 오늘 중으로, asking 언제 exactly presumed knowledge; hedged to 언제쯤, dropped redundant 오늘, and swapped one distractor to 어디에 (ruled out by 홈페이지).",
+            "Finding 3 (L3): 보내는지 vs 시작하는지 already distinct and taught in the pattern rule; accepted. Title de-spoilered (no 'neue').",
+            "Finding 4 (L4): 어디서 연장이 가능한지 확인해요? had no clear agent; rebuilt with recycled P3 frame 연장이 가능한지 어디서 물어볼 수 있을까요? (learner asks, staff decides).",
+            "Finding 5 (L5): staff 종이 신청서는 창구에서 받아요 read either as 'we accept' or 'you pick up', making the learner's 어디서 받는지 redundant; staff line now 종이 신청서로도 신청할 수 있어요 so the learner's several-counters question genuinely seeks the right counter.",
+            "Finding 6 (L6): 원본이 빠졌네요 implied a universal requirement; localized to 저희 은행은 … 원본도 필요해요. Also the learner asking the deciding clerk 어떻게 확인해요? was unnatural; replaced with 확인해 주시겠어요? and moved the choice blank to 사본을.",
+            "Finding 7 (L7): 얼마나 들지 궁금해요 keeps the cheapest plan's cost an estimate; accepted.",
+            "Finding 8 (L8): expedited outcome stays hedged (-(으)ㄹ지 알려 주시겠어요); accepted. de/en of dialogue[1] dropped 때문에/요즘 and were realigned; recall fallback 휴가/방학 formed plausible 기간 collocations and were replaced.",
+            "Finding 9 (L9): 한 번만 쓰고 → 한 번만 정지하고 pins the decision to the monthly suspension limit; chunk split 회원권을 정지할 | 수 있는지 broke the -(으)ㄹ 수 unit and was re-chunked (5 chunks).",
+            "Finding 10 (L10): 엉뚱한 데 여쭤봤는데 그래서 더 감사해요 replaced by idiomatic 알려 주셔서 감사해요 with 까지; title and placeholder caption no longer leak the wrong-desk twist.",
+            "Distractor set: remaining 몇 층/몇 명/누구를 chips are grammatically impossible in slot (spec-compliant); credible alternatives added only where a visible turn rules them out (L2 어디에, L6 원본을/신분증을/통장을).",
+            "No form cue prints its answer; chip positions of answers vary across lessons."
+          ]
+        }
+      ],
+      "openIssues": [
+        "L2 opening uses 휴강하게 됐어요 (-게 되다 is P6 L9-10 productive); acceptable in an interlocutor line, flag only if the grammar-range gate is extended to staff turns.",
+        "L8 급행 접수 is intelligible but not standard public-office wording (신속/긴급 처리 is more usual); left as fictional scene vocabulary, revisit if realism review objects.",
+        "L10 알려 주셔서 감사해요 is a fixed A-level thanks formula; confirm the gate treats -아/어 주셔서 감사해요 as a lexical chunk rather than productive -아/어서.",
+        "L1 교통카드 rendered as Fahrkarte (ticket); Verkehrskarte would be closer to a rechargeable transit card; cosmetic, not blocking.",
+        "Remaining counter-based distractors (몇 층/몇 명/누구를) are grammatically excluded and spec-compliant but low-challenge; richer alternatives would require more turn-3 cues than the four-turn A shape provides.",
+        "Rejected: no edit to L1/L3/L7 dialogues (findings 1, 3, 7 found already satisfied); no 삼 주쯤→3주쯤 change, since Hangul numerals read better for TTS and the spec's digit rule names prices/dates only."
+      ]
+    },
+    {
+      "round": "ko-p6-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "c2994968a1362a467592fe887e8d27c768b0cf394680a619cdb7070e97da1507",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p6.json",
+      "source": "b1da4d44a22d0a5d873fa0f6879434c91bdc8e769a82a17164df5767da0fd604",
+      "result": "a7e4eae5e1a8f67e5701b9d36c9932549132483a09d4a5b6f450e9a54d3f8480",
+      "edits": 69,
+      "preconditionNotes": [
+        "Exact list append at RFC 6902 /- pointer; no prior value.",
+        "Matched exact unique oldValue in same lesson/cloze: /lessons/2/cloze/3/choices → cloze/2/choices",
+        "Matched exact unique oldValue in same lesson/cloze: /lessons/6/cloze/5/choices → cloze/4/choices"
+      ],
+      "readThrough": [
+        {
+          "file": "p6.json",
+          "lessonsRead": [
+            "jaeryo-soup-burner",
+            "junbi-spare-screw",
+            "seolchi-printer-network",
+            "jorip-wobbly-shelf",
+            "jeongni-missing-contract",
+            "seoljeong-phone-language",
+            "hwagin-open-oven",
+            "jeojang-missing-attachment",
+            "wanseong-salty-soup",
+            "mamuri-stair-access"
+          ],
+          "concerns": [
+            "Mechanics verified on all ten: tuple4 roles, eojeol ranges (L1-10 reply1 7/9/8/9/10/8/9/9/10/9, reply2 8/9/8/9/9/8/8/9/8/8), chunk joins, recall joins, cloze joins, 3 distinct speakRequired eojeol, 6-8 terms, form-only cues, trophy bare surface in reply1 and example, no 반말/습니다, no gendered address, learner -(으)시- only on interlocutor subjects (부탁하셔서, 읽어 주시겠어요), staging per L1-3/4-6/7-8/9-10 honored (-아/어 놓다 first in learner line L4, -아/어 있다 first L7, -게 되다/-(으)면서 first L9). Captions quote openings verbatim; no opening leaks turn three.",
+            "L1 DE title 'Mit dem Suppentopf umziehen' misreads umziehen (move house); replace with umstellen. Dialogue logic sound.",
+            "L2 조립 준비 삼아 is scaffolding; 준비 단계에서 reuses the trophy example framing and whyThisWord naturally. L3 choice distractors 칠해야/찢어야/접어야 are outlandish; 열어야/선택해야 must stay out (would also fit).",
+            "L4 nobody introduced the paper shim before turn three, and keeping a shim while tightening is not a safe repair; neighbor now notices the shim, learner asks to remove it and tighten first. 갈면 (replace) was a plausible alternative verb.",
+            "L5 reply1 says contracts went in the drawer, turn three says copies, reply2 narrows silently; manager now reports drawer holds only copies, learner voices realization with 건 사본이고.",
+            "L6 reboot reverted to English, so 초기화 would not restore Korean and would risk photos; colleague now states reset wipes photos, learner asks whether just changing the language again keeps photos. Choice blank moved to 바꾸면.",
+            "L7 request to read the display needs a visible reason; instructor now states only she can see the digits. 설정해/올려/낮춰 were adjacent tasks; replaced with slot-impossible verbs.",
+            "L8 attaching to the already-sent open mail is impossible; learner now reattaches to a new mail, checks 붙어 있는지 (state kept in form blank, -는지 productive since P5), sends.",
+            "L9 저도 드디어 unmotivated; trimmed to 완성 사진까지 찍게 됐어요, recall moved onto bare trophy 완성.",
+            "L10 after 마무리 청소 nothing remained to carry; one box now remains, elevator line targets it, key is the resident's own 집 열쇠 so availability is self-evident without spoiling.",
+            "Register enum 'neutral' retained; all ten trophies retained unchanged."
+          ]
+        },
+        {
+          "file": "B1_NATIVE_KOREAN_SPEC.json",
+          "lessonsRead": [
+            "path 6 staging, clozeSchema, segmentation, registerPolicy, genderSafety, mechanicalValidationRules"
+          ],
+          "concerns": [
+            "Optional trophyWord.surface/remainder extensions absent in p6.json; all ten trophies occur bare so no remainder rows are needed."
+          ]
+        }
+      ],
+      "openIssues": [
+        "L8 term 다시 보내다 now only implied by context (보낼게요 after a failed send); acceptable, flag for next term sweep.",
+        "L10 reply1 sits at the 12-eojeol ceiling; any further wording change must not add an eojeol.",
+        "No trophyWord.surface/remainder rows added since all ten surfaces are bare; add when the validator extension lands."
+      ]
+    },
+    {
+      "round": "ko-p7-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "cbd131946e96db005c212271bdc912a520cd4418cd61b0a80a71b0be8bd8fab8",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p7.json",
+      "source": "deb9277345095c3f3ecb75c4cebed19a5bb84249d3778f6c0320e75269221b42",
+      "result": "5bbd0c1c47224a816a38a2051b24e1a98a8e1907737215be902879ebd8318aa5",
+      "edits": 20,
+      "preconditionNotes": [
+        "Leading space in replacement metadata key normalized; value unchanged."
+      ],
+      "readThrough": [
+        {
+          "file": "p7.json",
+          "lessonsRead": [
+            "mokpyo-weekend-runs",
+            "geongang-early-dinner",
+            "jagyeokjeung-after-the-exam",
+            "myeonjeop-practice-days",
+            "jeochuk-day-trip",
+            "hyuga-report-deadline",
+            "isa-first-day",
+            "deungnok-evening-prep",
+            "yeolsimhi-study-group",
+            "iljjik-avoid-traffic"
+          ],
+          "concerns": [
+            "All ten trophies match spec (목표 건강 자격증 면접 저축 휴가 이사 등록 열심히 일찍) and occur bare as whole eojeol in dialogue[1] and trophyWord.example; retained unchanged.",
+            "Mechanics verified per lesson: dialogue[1] 8-10 eojeol, dialogue[3] 6-8 (L7 becomes 9 after edit), openings/follow-ups 5-9; chunks 4-5 join exactly to dialogue[1]; recall before+answer+after exact; cloze concatenation exact; 3 distinct whole-eojeol speakRequired; terms 6-7; captions quote only the opening; no 반말/습니다/-(으)시- on learner subject.",
+            "Staging respected: L1-3 -(으)려고 해요, L4-6 -(으)려면…-아/어야 돼요, L7-8 -기 위해서/-(으)ㄹ 계획이에요, L9 -기로 했어요/해요, L10 -(으)ㄹ 예정이에요 with -(으)려고 purpose; 대신 and 때문에 are recycled from P3/A2.",
+            "Story logic faults found: L7 purpose clause made the date the aim of packing (fixed with 천천히 + bases); L10 역 + buying tickets + beating road traffic is incoherent for rail (fixed to 터미널, bus-consistent, visualNotes already says bus station).",
+            "Base fidelity faults: L1 DE dropped 'nur' for 에만 and glossed 걷다 as 'laufen' inside a running lesson; L2 transfer example DE rendered 때문에 as purpose (damit) contradicting the rule taught; L5 DE dropped the 그러면 connector that is a blank; L10 DE used pluperfect 'hatte geplant' for a present plan (also in pattern example 0).",
+            "Exercise uniqueness: L6 form distractor 쉬는 대신 is grammatical and contextually plausible (in exchange for Thursday off) → replaced; L7 choice distractor 이달 마지막 날에 is one of the two offered dates → replaced; L9 form blank upgraded from auxiliary eojeol 않으려면 to the lexical phrase 빠지지 않으려면 per cloze-variant rule. All other choice/connector distractors are ungrammatical or ruled out by visible dialogue info (e.g. 월수금→세 번, 화목→두 번, 당일치기→하루만, 퇴근하고→저녁).",
+            "Cues are functional German+English descriptions and expose no ending; recall fallbacks in L2 (아침을/약을/간식을) and L5 (기념품을) fit only out of context and are excluded by the visible dinner/hotel scene; accepted.",
+            "L3 '저는 그때 비어요' is natural colloquial 해요체; left. L2 dialogue[3] uses -(으)려고 해요 as acceptance, slightly stiff but within L1-3 staging and modified by 가볍게; left."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Form cues are functional descriptions (German + English) rather than the spec's form-label example; kept to avoid exposing answers — confirm policy.",
+        "Quotation frame -다고/-라고 하셨지요? appears in interlocutor turns (L1, L9) but is not listed in P7 staging; add to recognitionOnly or accept as interlocutor-only.",
+        "L9 learner line uses -는 대신; confirm the grammar-range gate treats it as covered by P3's productive 대신.",
+        "점심 시간으로 (L8 distractor) is spaced; dictionary headword is 점심시간 — decide spacing policy for 합성어 in choices.",
+        "trophyWord.surface/remainder extensions not declared; all ten surfaces are exact bare forms so the validator default suffices."
+      ]
+    },
+    {
+      "round": "ko-p8-listening",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "36c9cec2b763d2769e3fe477020ec4ffdb375d38d3370f82fdf8d0b5f797c542",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p8.json",
+      "source": "097c069b0aeceddf61d2d7122e0e8c34d3797f1a1f5bf71c9a8750abcbcc34ee",
+      "result": "f5181ec159e98b2e3399631e0f9deee7119512a8c8bdbccdeb7481d1af8224e8",
+      "edits": 1,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p8.json",
+          "lessonsRead": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "concerns": [
+            "Reported/presupposed-info forms occur only in interlocutor turn three: L2 산다면서요, L3 간다면서요, L10 없다면서요 (-다면서요), L7 보신다고 했는데 (-다고 했는데). No learner turn, cloze, chunk, recall, pattern example or speakRequired token carries either form.",
+            "Spec staging never lists -다면서요; -다고 하다 is scheduled recognition-only at P9 L7-8 and P10 L7-8. Prior quotative exposure before P8 is only -냐고 (P5 L9-10 staff report) and -더라고요 (P1 L7-8), so P8 is first contact with the declarative quotative base.",
+            "In every case the clause carrying the form is presuppositional (confirms offstage shared info) and is followed by a plain 해요체 question that alone licenses turn four: L2 요즘도 자주 드세요?, L3 그 밖에는 안 내려가요?, L7 무슨 방송을 보세요?, L10 할머니랑은 어떻게 연락하세요?. Turn four is reconstructable from scene plus that plain question; no learner production of the form is required.",
+            "Base texts already function as the bilingual recognition note (en 'You said …' in L3/L7/L10, en 'right?' / de 'doch' in L2, de 'ja' in L10); no exercise field needs a note added.",
+            "L7 presupposes a learner statement not in the dialogue; the opening 이사 오기 전에도 and the situation (comparing evenings before/after the move) license it as offstage earlier information. Acceptable.",
+            "L2 real listening hazard: 산다면서요 is homographic for 사다 (buy) and 살다 (live, ㄹ-drop → 산다), and L1 just made 지금은 도시에 살아요 productive. A learner without the quotative yet may hear 장에서 산다 as 'lives at the market'. -잖아요 (already in this path's interlocutor lines L1/L8/L9) removes the ambiguity, keeps the shared-knowledge meaning the de/en bases already render, and keeps 10 eojeol."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Amend B1_NATIVE_KOREAN_SPEC P8 staging recognitionOnly: lessons 1-3 add '-다면서요 in listener line (L3)', lessons 7-8 add '-다고 했는데 in listener line (L7)', lessons 9-10 add '-다면서요 in listener line (L10)', so the grammar-range gate does not flag out-of-stage recognition forms; also note P8 as pre-exposure to the -다고 family before P9/P10 L7-8.",
+        "L10 base texts render -다면서요 as de 'ja' vs en 'You said'; both faithful, no edit, flag only if base-locale parallelism is enforced later.",
+        "No instructional field exists for interlocutor-form notes; if the product later wants an explicit receptive gloss, add a schema field rather than reusing pattern.rule."
+      ]
+    },
+    {
+      "round": "ko-p8-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "36b219e0b754f7407df66a8be4b93a520a8dbd93234461d6ff734943c182515a",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p8.json",
+      "source": "10dc27b729703f5e690d69ae0e96470a862ebc821b20fc9fa765d6c9be531326",
+      "result": "097c069b0aeceddf61d2d7122e0e8c34d3797f1a1f5bf71c9a8750abcbcc34ee",
+      "edits": 30,
+      "preconditionNotes": [],
+      "readThrough": [
+        {
+          "file": "p8.json",
+          "lessonsRead": [
+            "yejeon-seaside-home",
+            "yennal-market-snacks",
+            "gohyang-holiday-hikes",
+            "chueok-afterschool-football",
+            "gakkeum-birthday-soup",
+            "jaju-reading-on-the-bus",
+            "geoui-evening-news",
+            "choegeun-weekend-hikes",
+            "seupgwan-morning-coffee",
+            "banghak-grandmothers-house"
+          ],
+          "concerns": [
+            "All ten trophies (예전 옛날 고향 추억 가끔 자주 거의 최근 습관 방학) match spec P8 beats and occur as bare surface eojeol in dialogue[1] and in trophyWord.example; retained.",
+            "Eojeol counts verified per turn: openings 5-6, first replies 8-11, follow-ups 6-9, second replies 7-9, all one sentence; chunks rejoin dialogue[1] exactly; recall before+answer+after and cloze concatenations reconstruct their lines exactly in every lesson; speakRequired tokens are whole eojeol of dialogue[1].",
+            "Staging: L1-3 learner turns use only 예전/그때는+았/었어요 vs 지금은 contrast (no -곤); L4-6 -곤 했어요; L7-8 -았/었었어요 and -(으)ㄴ 지 됐어요; L9-10 -았/었던 N and -게 됐어요. One off-inventory form found: 운전하느라 (L6 learner turn) is not in any B1 family; repaired to -아/어서.",
+            "Honorific direction correct everywhere: learner lines use humble 찾아뵙던/전화드리게 and 어머니가 끓여 주시곤 (subject = mother); -(으)시- toward learner only in interlocutor lines; 해요체 throughout, no 반말/습니다.",
+            "Logic/staging faults repaired: L2 learner turn ran now→then against the taught -았/었는데…지금은 pattern and mixed 사고/먹었어요 with a presupposing 아직도; L3 follow-up did not make 두 번만 the only contextually valid frequency; L8 매주 일했었는데 was ambiguous (every week vs every Saturday) and EN lost Saturday.",
+            "Distractor quality: enumerating fillers (첫째/둘째/셋째/거꾸로/가령/예컨대) and all-future connector sets let learners pattern-match; one distractor per affected lesson replaced with a time-frame connector that is definitively invalid in context (tense clash or contradiction with an earlier turn); correct-option indexes remain varied (connector 0,1,2,2,1,0,0,3,2,2; choice 2,1,3,0,3,2,1,1,0,0; form 1,1,0,3,2,1,2,0,3,3).",
+            "Gloss fidelity: minor DE chunk glosses off-meaning or ungrammatical (L2 probiert, L9 angenommen, L10 in jeden Schulferien), L5 DE added meiner Mutter not in Korean, L9 EN come to replace awkward for 바꾸게 됐어요, L10 humble-verb glosses lacked direction of respect; all repaired.",
+            "Captions quote openings verbatim; no caption or opening leaks turn three; recalls do not spoil blanks."
+          ]
+        },
+        {
+          "file": "B1_NATIVE_KOREAN_SPEC.json",
+          "lessonsRead": [],
+          "concerns": [
+            "Used as the governing architecture for P8 staging, segmentation, cloze schema, honorific direction and trophy allocation; registerPolicy and genderSafety satisfied (어머니/할머니 are narration referents, no address terms)."
+          ]
+        }
+      ],
+      "openIssues": [
+        "Reported-speech forms in interlocutor turns (L2 new/L3/L10 -다면서요, L7 보신다고 했는데) are not listed as P8 recognition forms; left as interlocutor-only exposure but the architect should confirm or add -다면서요 to P8 recognitionOnly.",
+        "Lesson register field keeps the existing enum value neutral while the spec names warm friend 해요체; retained per instruction, no enum change.",
+        "Re-run the ko-KR validator on the edited file and recompute the sha256; this review approves text only, not audio or publication."
+      ]
+    },
+    {
+      "round": "ko-p9-review",
+      "model": "claude-fable-5-1",
+      "receiptSha256": "ad8baff192a597eff3019b9bf8a17a51f6b0c373f5ab37a1e728522d6fe7a657",
+      "verdict": "APPLY_EXACT_EDITS",
+      "file": "p9.json",
+      "source": "5c8f97e4287954d166d2158cb86d1bf0b5b34d420cd89d07df70b61df74c7f2a",
+      "result": "3eefece6e21da92e5657ff43b3a0aec31d9f0053d12f7e779745fb3ef27d222b",
+      "edits": 21,
+      "preconditionNotes": [
+        "The final literal of L10 is cloze index 5, not 6. Exact unique complete oldValue and Fable replacement."
+      ],
+      "readThrough": [
+        {
+          "file": "p9.json",
+          "lessonsRead": [
+            "soeum-construction-hours",
+            "gojang-heater-visit",
+            "gongsa-hallway-clearance",
+            "naemsae-hallway-visit",
+            "bulpyeon-feedback-menu",
+            "silsu-double-charge",
+            "haegyeol-same-day-parcel",
+            "jeomgeom-water-pressure",
+            "gyoche-replacement-charger",
+            "jochi-lift-meeting"
+          ],
+          "concerns": [
+            "All ten turn sets counted: openings 4-6, first replies 8-10, follow-ups 6-9, final turns 6-9 eojeol; every final turn one sentence; chunk joins, recall splits, speak tokens and cloze concatenations reconstruct their turns exactly; trophies 소음/고장/공사/냄새/불편/실수/해결/점검/교체/조치 match the spec allocation and occur as bare whole eojeol in reply and example.",
+            "Register: 해요체 throughout, no 반말, no stray 습니다; -(으)시- only with staff/other as subject in learner lines; staff -(으)ㄹ게요 promises confined to staff turns; staging per lesson range honored (-는데요/것 같은데요 L1-3, -(으)ㄴ 지 됐어요 + -아/어 있어요 L4-6, 그러면/대신 + -(으)면 안 될까요 L7-8, -는데도 + -는지 L9-10).",
+            "Correct option indexes vary across lessons; cues name the function without quoting the answer; distractors are ungrammatical in slot or clearly wrong in visible context (L1 적혀 있었어요 and L10 화요일 낮에 are grammatical but contradicted by the fixed 그러면-request frame / preceding 퇴근하고).",
+            "Trust-critical repairs: L5 staff question 유효해요? too bureaucratic and learner reply did not confirm the address; L9 staff never answered the eligibility question before offering options; L10 learner presupposed a meeting room nobody mentioned and the day job was unestablished; L4 term 심하다 appears nowhere in the lesson; L1 German turn 4 invents Baufirma; L4 English turn 4 drops the 그러면 the cloze tests."
+          ]
+        },
+        {
+          "file": "B1_NATIVE_KOREAN_SPEC.json",
+          "lessonsRead": [],
+          "concerns": [
+            "Used as the governing architecture: eojeol rails, cloze shape, honorific direction, P9 staging and trophy list; no conflicts with the edits below."
+          ]
+        }
+      ],
+      "openIssues": [
+        "L7 title Das vermisste Paket / The missing parcel is slightly stronger than 이틀째 안 오는데; acceptable because the resend offer implies loss, left unchanged.",
+        "No trophyWord.surface/remainder extensions are declared; all ten trophies occur as exact bare eojeol so validation passes without them.",
+        "L1 form distractor 적혀 있었어요 and L10 choice distractor 화요일 낮에 are grammatical in slot and rejected only by visible context (그러면-request frame, 퇴근하고); accepted under the clearly-wrong-in-context rule."
+      ]
+    }
+  ]
+}

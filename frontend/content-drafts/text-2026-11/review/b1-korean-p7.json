@@ -1,0 +1,43 @@
+{
+  "file": "p7.json",
+  "source": "deb9277345095c3f3ecb75c4cebed19a5bb84249d3778f6c0320e75269221b42",
+  "result": "5bbd0c1c47224a816a38a2051b24e1a98a8e1907737215be902879ebd8318aa5",
+  "edits": 20,
+  "preconditionNotes": [
+    "Leading space in replacement metadata key normalized; value unchanged."
+  ],
+  "readThrough": [
+    {
+      "file": "p7.json",
+      "lessonsRead": [
+        "mokpyo-weekend-runs",
+        "geongang-early-dinner",
+        "jagyeokjeung-after-the-exam",
+        "myeonjeop-practice-days",
+        "jeochuk-day-trip",
+        "hyuga-report-deadline",
+        "isa-first-day",
+        "deungnok-evening-prep",
+        "yeolsimhi-study-group",
+        "iljjik-avoid-traffic"
+      ],
+      "concerns": [
+        "All ten trophies match spec (목표 건강 자격증 면접 저축 휴가 이사 등록 열심히 일찍) and occur bare as whole eojeol in dialogue[1] and trophyWord.example; retained unchanged.",
+        "Mechanics verified per lesson: dialogue[1] 8-10 eojeol, dialogue[3] 6-8 (L7 becomes 9 after edit), openings/follow-ups 5-9; chunks 4-5 join exactly to dialogue[1]; recall before+answer+after exact; cloze concatenation exact; 3 distinct whole-eojeol speakRequired; terms 6-7; captions quote only the opening; no 반말/습니다/-(으)시- on learner subject.",
+        "Staging respected: L1-3 -(으)려고 해요, L4-6 -(으)려면…-아/어야 돼요, L7-8 -기 위해서/-(으)ㄹ 계획이에요, L9 -기로 했어요/해요, L10 -(으)ㄹ 예정이에요 with -(으)려고 purpose; 대신 and 때문에 are recycled from P3/A2.",
+        "Story logic faults found: L7 purpose clause made the date the aim of packing (fixed with 천천히 + bases); L10 역 + buying tickets + beating road traffic is incoherent for rail (fixed to 터미널, bus-consistent, visualNotes already says bus station).",
+        "Base fidelity faults: L1 DE dropped 'nur' for 에만 and glossed 걷다 as 'laufen' inside a running lesson; L2 transfer example DE rendered 때문에 as purpose (damit) contradicting the rule taught; L5 DE dropped the 그러면 connector that is a blank; L10 DE used pluperfect 'hatte geplant' for a present plan (also in pattern example 0).",
+        "Exercise uniqueness: L6 form distractor 쉬는 대신 is grammatical and contextually plausible (in exchange for Thursday off) → replaced; L7 choice distractor 이달 마지막 날에 is one of the two offered dates → replaced; L9 form blank upgraded from auxiliary eojeol 않으려면 to the lexical phrase 빠지지 않으려면 per cloze-variant rule. All other choice/connector distractors are ungrammatical or ruled out by visible dialogue info (e.g. 월수금→세 번, 화목→두 번, 당일치기→하루만, 퇴근하고→저녁).",
+        "Cues are functional German+English descriptions and expose no ending; recall fallbacks in L2 (아침을/약을/간식을) and L5 (기념품을) fit only out of context and are excluded by the visible dinner/hotel scene; accepted.",
+        "L3 '저는 그때 비어요' is natural colloquial 해요체; left. L2 dialogue[3] uses -(으)려고 해요 as acceptance, slightly stiff but within L1-3 staging and modified by 가볍게; left."
+      ]
+    }
+  ],
+  "openIssues": [
+    "Form cues are functional descriptions (German + English) rather than the spec's form-label example; kept to avoid exposing answers — confirm policy.",
+    "Quotation frame -다고/-라고 하셨지요? appears in interlocutor turns (L1, L9) but is not listed in P7 staging; add to recognitionOnly or accept as interlocutor-only.",
+    "L9 learner line uses -는 대신; confirm the grammar-range gate treats it as covered by P3's productive 대신.",
+    "점심 시간으로 (L8 distractor) is spaced; dictionary headword is 점심시간 — decide spacing policy for 합성어 in choices.",
+    "trophyWord.surface/remainder extensions not declared; all ten surfaces are exact bare forms so the validator default suffices."
+  ]
+}

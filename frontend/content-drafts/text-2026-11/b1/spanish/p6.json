@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Wie steht es mit meinem Auftrag?",
+    "en": "What's happening with my request?"
+  },
+  "subtitle": {
+    "de": "Fragen Sie nach Abläufen, Ergebnissen und laufenden Arbeiten.",
+    "en": "Ask about procedures, completed work, and work still in progress."
+  },
+  "anchor": "Shape A, formal singular. L1–4 se pasiva/impersonal; L5–7 estar + participio; L8–9 estar + gerundio; L10 mix. Nuevo diseño Fable de octubre; premios originales.",
+  "lessons": [
+    {
+      "slug": "sofa-a-domicilio",
+      "title": {
+        "de": "Das Sofa kommt ins Haus",
+        "en": "Getting the sofa delivered"
+      },
+      "situation": {
+        "de": "Sie bestellen ein Sofa und fragen im Möbelgeschäft nach der Anlieferung.",
+        "en": "You're ordering a sofa and ask the furniture store about delivery."
+      },
+      "pedagogicalGoal": "Bei se organiza la entrega steht das Verb wegen la entrega im Singular. Bei mehreren Besuchen steht se organizan.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué necesita saber antes de encargar el sofá?",
+          "baseText": {
+            "de": "Was möchten Sie wissen, bevor Sie das Sofa bestellen?",
+            "en": "What would you like to know before ordering the sofa?"
+          }
+        },
+        {
+          "targetText": "¿Cómo se organiza la entrega del sofá en un edificio sin ascensor?",
+          "baseText": {
+            "de": "Wie läuft die Sofalieferung in einem Haus ohne Aufzug ab?",
+            "en": "How is sofa delivery arranged in a building without a lift?"
+          }
+        },
+        {
+          "targetText": "Lo subimos nosotros, pero la franja que queda es de nueve a once.",
+          "baseText": {
+            "de": "Wir tragen es hoch, aber das freie Zeitfenster ist von neun bis elf.",
+            "en": "We carry it upstairs, but the remaining time slot is from nine to eleven."
+          }
+        },
+        {
+          "targetText": "¿Se ofrecen otras franjas si yo trabajo por la mañana?",
+          "baseText": {
+            "de": "Gibt es andere Zeitfenster, wenn ich vormittags arbeite?",
+            "en": "Are other time slots available if I work in the morning?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se + verbo en singular o plural",
+        "rule": {
+          "de": "Bei se organiza la entrega steht das Verb wegen la entrega im Singular. Bei mehreren Besuchen steht se organizan.",
+          "en": "In se organiza la entrega, the singular verb agrees with la entrega. Several visits take the plural se organizan."
+        },
+        "examples": [
+          {
+            "targetText": "¿Cómo se organiza la entrega del sofá en un edificio sin ascensor?",
+            "baseText": {
+              "de": "Wie läuft die Sofalieferung in einem Haus ohne Aufzug ab?",
+              "en": "How is sofa delivery arranged in a building without a lift?"
+            },
+            "highlight": "se organiza la entrega"
+          },
+          {
+            "targetText": "¿Cómo se organizan las visitas al almacén?",
+            "baseText": {
+              "de": "Wie werden die Besuche im Lager organisiert?",
+              "en": "How are visits to the warehouse arranged?"
+            },
+            "highlight": "se organizan las visitas"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Se ",
+        {
+          "kind": "form",
+          "answer": "ofrecen",
+          "choices": [
+            "ofrece",
+            "ofrecemos",
+            "ofrecen",
+            "ofrezco"
+          ],
+          "cue": "ofrecer (otras franjas)"
+        },
+        " otras franjas si yo ",
+        {
+          "kind": "form",
+          "answer": "trabajo",
+          "choices": [
+            "trabajo",
+            "trabajas",
+            "trabaja",
+            "trabajan"
+          ],
+          "cue": "trabajar (yo)"
+        },
+        " por la mañana?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Cómo se organiza",
+          "baseText": {
+            "de": "Wie läuft ab",
+            "en": "How is it arranged"
+          }
+        },
+        {
+          "targetText": "la entrega del sofá",
+          "baseText": {
+            "de": "die Lieferung des Sofas",
+            "en": "the sofa delivery"
+          }
+        },
+        {
+          "targetText": "en un edificio",
+          "baseText": {
+            "de": "in einem Gebäude",
+            "en": "in a building"
+          }
+        },
+        {
+          "targetText": "sin ascensor?",
+          "baseText": {
+            "de": "ohne Aufzug?",
+            "en": "without a lift?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "encargar",
+          "baseText": {
+            "de": "bestellen",
+            "en": "order"
+          }
+        },
+        {
+          "targetText": "entrega",
+          "baseText": {
+            "de": "Lieferung",
+            "en": "delivery"
+          }
+        },
+        {
+          "targetText": "sin ascensor",
+          "baseText": {
+            "de": "ohne Aufzug",
+            "en": "without a lift"
+          }
+        },
+        {
+          "targetText": "la franja",
+          "baseText": {
+            "de": "das Zeitfenster",
+            "en": "the time slot"
+          }
+        },
+        {
+          "targetText": "de nueve a once",
+          "baseText": {
+            "de": "von neun bis elf",
+            "en": "from nine to eleven"
+          }
+        },
+        {
+          "targetText": "por la mañana",
+          "baseText": {
+            "de": "vormittags",
+            "en": "in the morning"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Cómo se ",
+        "answer": "organiza",
+        "after": " la entrega del sofá en un edificio sin ascensor?",
+        "fallbackChoices": [
+          "organizas",
+          "organiza",
+          "organizamos",
+          "organizan"
+        ]
+      },
+      "speakRequired": [
+        "organiza",
+        "entrega",
+        "ascensor"
+      ],
+      "sceneCaption": {
+        "de": "Im Möbelgeschäft fragt die Verkäuferin: „¿Qué necesita saber antes de encargar el sofá?“",
+        "en": "At the furniture store, the salesperson asks: “¿Qué necesita saber antes de encargar el sofá?”"
+      },
+      "trophyWord": {
+        "word": "entrega",
+        "meaning": {
+          "de": "Lieferung",
+          "en": "delivery"
+        },
+        "example": "La entrega incluye la subida al piso.",
+        "whyThisWord": {
+          "de": "Entrega bezeichnet hier die Lieferung bis zum vereinbarten Ort.",
+          "en": "Here entrega names delivery to the agreed location."
+        }
+      },
+      "distractors": [
+        "las patas del sofá",
+        "con otra factura."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Sofa steht neben einer Skizze des Treppenhauses.",
+        "en": "A sofa is displayed beside a sketch of the stairwell."
+      },
+      "songMood": "Praktisch und freundlich.",
+      "visualNotes": "A sofa is displayed beside a sketch of the stairwell."
+    },
+    {
+      "slug": "bicicleta-al-taller",
+      "title": {
+        "de": "Die Inspektion in der Werkstatt",
+        "en": "A bicycle check at the workshop"
+      },
+      "situation": {
+        "de": "Sie gehen mit Ihrem Fahrrad in eine Werkstatt und möchten es durchsehen lassen.",
+        "en": "You take your bicycle to a workshop to have it checked."
+      },
+      "pedagogicalGoal": "Se hace la revisión beschreibt den Ablauf ohne Angabe einer bestimmten Person. Bei pluralischem Subjekt heißt es se hacen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Viene por una avería o por una revisión general?",
+          "baseText": {
+            "de": "Kommen Sie wegen eines Defekts oder zur allgemeinen Inspektion?",
+            "en": "Are you here because of a fault or for a general check?"
+          }
+        },
+        {
+          "targetText": "¿Dónde se hace la revisión de una bicicleta que llega sin cita previa?",
+          "baseText": {
+            "de": "Wo wird ein Fahrrad ohne Termin durchgesehen?",
+            "en": "Where is a bicycle checked if it comes in without an appointment?"
+          }
+        },
+        {
+          "targetText": "Aquí, pero esta semana no quedan citas ni sitio para guardarla.",
+          "baseText": {
+            "de": "Hier, aber diese Woche sind alle Termine vergeben und wir haben keinen Platz zum Aufbewahren.",
+            "en": "Here, but this week we're out of appointments and have nowhere to store it."
+          }
+        },
+        {
+          "targetText": "¿Se aceptan reservas para el lunes si traigo la bici ese día?",
+          "baseText": {
+            "de": "Werden Reservierungen für Montag angenommen, wenn ich das Rad an dem Tag bringe?",
+            "en": "Are bookings accepted for Monday if I bring my bike in that day?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Se hace / se hacen",
+        "rule": {
+          "de": "Se hace la revisión beschreibt den Ablauf ohne Angabe einer bestimmten Person. Bei pluralischem Subjekt heißt es se hacen.",
+          "en": "Se hace la revisión describes the procedure without identifying a person. A plural subject takes se hacen."
+        },
+        "examples": [
+          {
+            "targetText": "¿Dónde se hace la revisión de una bicicleta que llega sin cita previa?",
+            "baseText": {
+              "de": "Wo wird ein Fahrrad ohne Termin durchgesehen?",
+              "en": "Where is a bicycle checked if it comes in without an appointment?"
+            },
+            "highlight": "se hace la revisión"
+          },
+          {
+            "targetText": "Las pruebas de frenos se hacen en el patio.",
+            "baseText": {
+              "de": "Die Bremsentests finden im Hof statt.",
+              "en": "The brake tests take place in the yard."
+            },
+            "highlight": "se hacen"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Se ",
+        {
+          "kind": "form",
+          "answer": "aceptan",
+          "choices": [
+            "acepto",
+            "acepta",
+            "aceptamos",
+            "aceptan"
+          ],
+          "cue": "aceptar (reservas)"
+        },
+        " reservas para el lunes si ",
+        {
+          "kind": "form",
+          "answer": "traigo",
+          "choices": [
+            "traen",
+            "traigo",
+            "trae",
+            "traes"
+          ],
+          "cue": "traer (yo)"
+        },
+        " la bici ese día?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Dónde se hace",
+          "baseText": {
+            "de": "Wo findet statt",
+            "en": "Where is it done"
+          }
+        },
+        {
+          "targetText": "la revisión",
+          "baseText": {
+            "de": "die Inspektion",
+            "en": "the check"
+          }
+        },
+        {
+          "targetText": "de una bicicleta",
+          "baseText": {
+            "de": "eines Fahrrads",
+            "en": "of a bicycle"
+          }
+        },
+        {
+          "targetText": "que llega sin cita previa?",
+          "baseText": {
+            "de": "das ohne Termin gebracht wird?",
+            "en": "that comes in without an appointment?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "avería",
+          "baseText": {
+            "de": "Defekt",
+            "en": "fault"
+          }
+        },
+        {
+          "targetText": "revisión general",
+          "baseText": {
+            "de": "allgemeine Inspektion",
+            "en": "general check"
+          }
+        },
+        {
+          "targetText": "bicicleta",
+          "baseText": {
+            "de": "Fahrrad",
+            "en": "bicycle"
+          }
+        },
+        {
+          "targetText": "sin cita previa",
+          "baseText": {
+            "de": "ohne Termin",
+            "en": "without an appointment"
+          }
+        },
+        {
+          "targetText": "guardarla",
+          "baseText": {
+            "de": "es aufbewahren",
+            "en": "store it"
+          }
+        },
+        {
+          "targetText": "reservas",
+          "baseText": {
+            "de": "Reservierungen",
+            "en": "bookings"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Dónde se ",
+        "answer": "hace",
+        "after": " la revisión de una bicicleta que llega sin cita previa?",
+        "fallbackChoices": [
+          "haces",
+          "hacen",
+          "hacemos",
+          "hace"
+        ]
+      },
+      "speakRequired": [
+        "hace",
+        "revisión",
+        "bicicleta"
+      ],
+      "sceneCaption": {
+        "de": "In der Werkstatt begrüßt Sie der Mechaniker: „¿Viene por una avería o por una revisión general?“",
+        "en": "At the workshop, the mechanic greets you: “¿Viene por una avería o por una revisión general?”"
+      },
+      "trophyWord": {
+        "word": "revisión",
+        "meaning": {
+          "de": "Inspektion; Durchsicht",
+          "en": "check; inspection"
+        },
+        "example": "La revisión de la bici dura una hora.",
+        "whyThisWord": {
+          "de": "Revisión bezeichnet die Überprüfung, auch wenn noch kein bestimmter Defekt feststeht.",
+          "en": "Revisión is a check, even if no particular fault has been identified."
+        }
+      },
+      "distractors": [
+        "la reparación de un coche",
+        "con billete de ida?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Fahrrad steht am Eingang einer Werkstatt.",
+        "en": "A bicycle stands at a repair shop entrance."
+      },
+      "songMood": "Aufgeschlossen und klar.",
+      "visualNotes": "A bicycle stands at a repair shop entrance."
+    },
+    {
+      "slug": "ascensor-del-portal",
+      "title": {
+        "de": "Der Aufzug im Haus",
+        "en": "The building's lift"
+      },
+      "situation": {
+        "de": "In Ihrem Wohnhaus hängt ein Aushang der Hausverwaltung zum Aufzug.",
+        "en": "There is a property management notice about the lift in your building."
+      },
+      "pedagogicalGoal": "Eine Tätigkeit kann mit se beschrieben werden, ohne die ausführende Person zu nennen. Se entra bedeutet hier man kommt hinein.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué duda tiene sobre el aviso del portal?",
+          "baseText": {
+            "de": "Welche Frage haben Sie zum Aushang im Hausflur?",
+            "en": "What question do you have about the notice in the entrance hall?"
+          }
+        },
+        {
+          "targetText": "¿Qué días se hace el mantenimiento del ascensor de este edificio?",
+          "baseText": {
+            "de": "An welchen Tagen wird der Aufzug in diesem Haus gewartet?",
+            "en": "On which days is the lift in this building serviced?"
+          }
+        },
+        {
+          "targetText": "Este miércoles estará parado toda la mañana y la entrada principal tiene escalones.",
+          "baseText": {
+            "de": "Diesen Mittwoch steht er den ganzen Vormittag still, und am Haupteingang gibt es Stufen.",
+            "en": "This Wednesday it'll be out of service all morning, and the main entrance has steps."
+          }
+        },
+        {
+          "targetText": "Mientras dura el mantenimiento, ¿por dónde se entra con un carrito?",
+          "baseText": {
+            "de": "Wo kommt man während der Wartung mit einem Kinderwagen hinein?",
+            "en": "While the maintenance is going on, where can you get in with a pushchair?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un procedimiento con se",
+        "rule": {
+          "de": "Eine Tätigkeit kann mit se beschrieben werden, ohne die ausführende Person zu nennen. Se entra bedeutet hier man kommt hinein.",
+          "en": "Se can describe a procedure without naming the person doing it. Here se entra means you can get in."
+        },
+        "examples": [
+          {
+            "targetText": "¿Qué días se hace el mantenimiento del ascensor de este edificio?",
+            "baseText": {
+              "de": "An welchen Tagen wird der Aufzug in diesem Haus gewartet?",
+              "en": "On which days is the lift in this building serviced?"
+            },
+            "highlight": "se hace el mantenimiento"
+          },
+          {
+            "targetText": "En este museo se entra por la puerta lateral.",
+            "baseText": {
+              "de": "In dieses Museum geht man durch die Seitentür hinein.",
+              "en": "You enter this museum through the side door."
+            },
+            "highlight": "se entra"
+          }
+        ]
+      },
+      "cloze": [
+        "Mientras ",
+        {
+          "kind": "form",
+          "answer": "dura",
+          "choices": [
+            "duran",
+            "duramos",
+            "dura",
+            "duro"
+          ],
+          "cue": "durar (el mantenimiento)"
+        },
+        " el mantenimiento, ¿por dónde se ",
+        {
+          "kind": "form",
+          "answer": "entra",
+          "choices": [
+            "entramos",
+            "entran",
+            "entras",
+            "entra"
+          ],
+          "cue": "entrar (uso impersonal con se)"
+        },
+        " con un carrito?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Qué días",
+          "baseText": {
+            "de": "An welchen Tagen",
+            "en": "On which days"
+          }
+        },
+        {
+          "targetText": "se hace el mantenimiento",
+          "baseText": {
+            "de": "findet die Wartung statt",
+            "en": "is maintenance carried out"
+          }
+        },
+        {
+          "targetText": "del ascensor",
+          "baseText": {
+            "de": "des Aufzugs",
+            "en": "on the lift"
+          }
+        },
+        {
+          "targetText": "de este edificio?",
+          "baseText": {
+            "de": "in diesem Gebäude?",
+            "en": "in this building?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "el portal",
+          "baseText": {
+            "de": "der Hauseingang",
+            "en": "the entrance hall"
+          }
+        },
+        {
+          "targetText": "mantenimiento",
+          "baseText": {
+            "de": "Wartung",
+            "en": "maintenance"
+          }
+        },
+        {
+          "targetText": "ascensor",
+          "baseText": {
+            "de": "Aufzug",
+            "en": "lift"
+          }
+        },
+        {
+          "targetText": "parado",
+          "baseText": {
+            "de": "außer Betrieb",
+            "en": "out of service"
+          }
+        },
+        {
+          "targetText": "escalones",
+          "baseText": {
+            "de": "Stufen",
+            "en": "steps"
+          }
+        },
+        {
+          "targetText": "un carrito",
+          "baseText": {
+            "de": "ein Kinderwagen",
+            "en": "a pushchair"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Qué días se ",
+        "answer": "hace",
+        "after": " el mantenimiento del ascensor de este edificio?",
+        "fallbackChoices": [
+          "hacen",
+          "hace",
+          "haces",
+          "hacemos"
+        ]
+      },
+      "speakRequired": [
+        "días",
+        "mantenimiento",
+        "ascensor"
+      ],
+      "sceneCaption": {
+        "de": "An der Tür der Hausverwaltung fragt eine Mitarbeiterin: „¿Qué duda tiene sobre el aviso del portal?“",
+        "en": "At the property office, a staff member asks: “¿Qué duda tiene sobre el aviso del portal?”"
+      },
+      "trophyWord": {
+        "word": "mantenimiento",
+        "meaning": {
+          "de": "Wartung",
+          "en": "maintenance"
+        },
+        "example": "El mantenimiento del ascensor se hace los miércoles.",
+        "whyThisWord": {
+          "de": "Mantenimiento bezeichnet die regelmäßige Pflege einer Anlage, im Unterschied zu einer einzelnen Reparatur.",
+          "en": "Mantenimiento refers to regular servicing, as distinct from an individual repair."
+        }
+      },
+      "distractors": [
+        "de los billetes",
+        "esta temperatura?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Aushang hängt neben einer geschlossenen Aufzugtür.",
+        "en": "A printed notice hangs beside a closed lift door."
+      },
+      "songMood": "Ruhig und praktisch.",
+      "visualNotes": "A printed notice hangs beside a closed lift door."
+    },
+    {
+      "slug": "alta-de-internet",
+      "title": {
+        "de": "Was gehört zum Anschluss?",
+        "en": "What's included in the connection?"
+      },
+      "situation": {
+        "de": "Im Laden eines Internetanbieters fragen Sie nach dem Anschluss für Ihre Wohnung.",
+        "en": "At an internet provider's shop, you ask about getting your flat connected."
+      },
+      "pedagogicalGoal": "Materiales ist der Plural, deshalb heißt es se incluyen. Beim singularischen tubo heißt es se cobra.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Quiere repasar el presupuesto antes de contratar la fibra?",
+          "baseText": {
+            "de": "Möchten Sie das Angebot vor Vertragsabschluss für den Glasfaseranschluss durchgehen?",
+            "en": "Would you like to go through the estimate before signing up for fibre?"
+          }
+        },
+        {
+          "targetText": "¿Qué materiales se incluyen en la instalación de internet en este piso?",
+          "baseText": {
+            "de": "Welche Materialien sind bei der Installation des Internetanschlusses in dieser Wohnung enthalten?",
+            "en": "Which materials are included when internet is installed in this flat?"
+          }
+        },
+        {
+          "targetText": "El cable está incluido; el tubo que lo protege se paga aparte.",
+          "baseText": {
+            "de": "Das Kabel ist inbegriffen. Das Schutzrohr wird extra berechnet.",
+            "en": "The cable is included; the tube that protects it costs extra."
+          }
+        },
+        {
+          "targetText": "¿El tubo se cobra por metros o tiene un precio fijo?",
+          "baseText": {
+            "de": "Wird das Rohr pro Meter berechnet oder hat es einen Festpreis?",
+            "en": "Is the tube charged by the metre or does it have a fixed price?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Concordancia en se incluyen",
+        "rule": {
+          "de": "Materiales ist der Plural, deshalb heißt es se incluyen. Beim singularischen tubo heißt es se cobra.",
+          "en": "Materiales is plural, so the verb is se incluyen. The singular tubo takes se cobra."
+        },
+        "examples": [
+          {
+            "targetText": "¿Qué materiales se incluyen en la instalación de internet en este piso?",
+            "baseText": {
+              "de": "Welche Materialien sind bei der Installation des Internetanschlusses in dieser Wohnung enthalten?",
+              "en": "Which materials are included when internet is installed in this flat?"
+            },
+            "highlight": "se incluyen"
+          },
+          {
+            "targetText": "En este paquete se incluyen dos cables y un adaptador.",
+            "baseText": {
+              "de": "Dieses Paket enthält zwei Kabel und einen Adapter.",
+              "en": "This package includes two cables and an adapter."
+            },
+            "highlight": "se incluyen dos cables"
+          }
+        ]
+      },
+      "cloze": [
+        "¿El tubo se ",
+        {
+          "kind": "form",
+          "answer": "cobra",
+          "choices": [
+            "cobran",
+            "cobramos",
+            "cobra",
+            "cobro"
+          ],
+          "cue": "cobrar (el tubo)"
+        },
+        " por metros o ",
+        {
+          "kind": "form",
+          "answer": "tiene",
+          "choices": [
+            "tienen",
+            "tienes",
+            "tengo",
+            "tiene"
+          ],
+          "cue": "tener (el tubo)"
+        },
+        " un precio fijo?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Qué materiales",
+          "baseText": {
+            "de": "Welche Materialien",
+            "en": "Which materials"
+          }
+        },
+        {
+          "targetText": "se incluyen",
+          "baseText": {
+            "de": "sind enthalten",
+            "en": "are included"
+          }
+        },
+        {
+          "targetText": "en la instalación de internet",
+          "baseText": {
+            "de": "bei der Installation des Internetanschlusses",
+            "en": "in the internet installation"
+          }
+        },
+        {
+          "targetText": "en este piso?",
+          "baseText": {
+            "de": "in dieser Wohnung?",
+            "en": "in this flat?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "el presupuesto",
+          "baseText": {
+            "de": "der Kostenvoranschlag",
+            "en": "the estimate"
+          }
+        },
+        {
+          "targetText": "la fibra",
+          "baseText": {
+            "de": "der Glasfaseranschluss",
+            "en": "the fibre connection"
+          }
+        },
+        {
+          "targetText": "materiales",
+          "baseText": {
+            "de": "Materialien",
+            "en": "materials"
+          }
+        },
+        {
+          "targetText": "instalación",
+          "baseText": {
+            "de": "Installation",
+            "en": "installation"
+          }
+        },
+        {
+          "targetText": "se paga aparte",
+          "baseText": {
+            "de": "wird extra berechnet",
+            "en": "costs extra"
+          }
+        },
+        {
+          "targetText": "precio fijo",
+          "baseText": {
+            "de": "Festpreis",
+            "en": "fixed price"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Qué materiales se ",
+        "answer": "incluyen",
+        "after": " en la instalación de internet en este piso?",
+        "fallbackChoices": [
+          "incluyo",
+          "incluye",
+          "incluimos",
+          "incluyen"
+        ]
+      },
+      "speakRequired": [
+        "materiales",
+        "incluyen",
+        "instalación"
+      ],
+      "sceneCaption": {
+        "de": "Der Verkäufer öffnet das Angebot und fragt: „¿Quiere repasar el presupuesto antes de contratar la fibra?“",
+        "en": "The salesperson opens the estimate and asks: “¿Quiere repasar el presupuesto antes de contratar la fibra?”"
+      },
+      "trophyWord": {
+        "word": "instalación",
+        "meaning": {
+          "de": "Installation; Anschlussarbeiten",
+          "en": "installation"
+        },
+        "example": "¿La instalación incluye la visita del técnico?",
+        "whyThisWord": {
+          "de": "Instalación kann sowohl die Arbeiten als auch den gesamten Service bezeichnen.",
+          "en": "Instalación can refer to the work or the installation service as a whole."
+        }
+      },
+      "distractors": [
+        "en otra factura?",
+        "los números ganadores"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kabelrolle liegt neben einem Kostenvoranschlag.",
+        "en": "A coil of cable rests beside an estimate."
+      },
+      "songMood": "Überlegt und klar.",
+      "visualNotes": "A coil of cable rests beside an estimate."
+    },
+    {
+      "slug": "permiso-para-la-lavadora",
+      "title": {
+        "de": "Der Reparaturauftrag",
+        "en": "Authorizing a repair"
+      },
+      "situation": {
+        "de": "Sie erkundigen sich nach dem Auftrag für Ihre Waschmaschine.",
+        "en": "You ask about the work order for your washing machine."
+      },
+      "pedagogicalGoal": "Autorizada beschreibt den aktuellen Zustand und stimmt mit la reparación überein. Bei los trabajos wird daraus autorizados.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Llama para preguntar por su lavadora?",
+          "baseText": {
+            "de": "Rufen Sie wegen Ihrer Waschmaschine an?",
+            "en": "Are you calling about your washing machine?"
+          }
+        },
+        {
+          "targetText": "¿La reparación de mi lavadora está autorizada o falta todavía mi firma?",
+          "baseText": {
+            "de": "Ist die Reparatur meiner Waschmaschine freigegeben oder fehlt noch meine Unterschrift?",
+            "en": "Has the repair of my washing machine been authorized, or do you still need my signature?"
+          }
+        },
+        {
+          "targetText": "Solo está autorizada la revisión. Hemos encontrado una pieza rota.",
+          "baseText": {
+            "de": "Freigegeben ist nur die Überprüfung. Wir haben ein defektes Bauteil gefunden.",
+            "en": "Only the inspection is authorized. We've found a broken part."
+          }
+        },
+        {
+          "targetText": "Si la pieza está rota, ¿cuánto cuesta el cambio?",
+          "baseText": {
+            "de": "Wenn das Teil kaputt ist, wie viel kostet dann der Austausch?",
+            "en": "If the part is broken, how much does replacement cost?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Estar + participio: autorización",
+        "rule": {
+          "de": "Autorizada beschreibt den aktuellen Zustand und stimmt mit la reparación überein. Bei los trabajos wird daraus autorizados.",
+          "en": "Autorizada describes the present state and agrees with la reparación. With los trabajos the form is autorizados."
+        },
+        "examples": [
+          {
+            "targetText": "¿La reparación de mi lavadora está autorizada o falta todavía mi firma?",
+            "baseText": {
+              "de": "Ist die Reparatur meiner Waschmaschine freigegeben oder fehlt noch meine Unterschrift?",
+              "en": "Has the repair of my washing machine been authorized, or do you still need my signature?"
+            },
+            "highlight": "está autorizada"
+          },
+          {
+            "targetText": "Los trabajos del garaje ya están autorizados.",
+            "baseText": {
+              "de": "Die Arbeiten in der Garage sind bereits genehmigt.",
+              "en": "The work in the garage is already authorized."
+            },
+            "highlight": "están autorizados"
+          }
+        ]
+      },
+      "cloze": [
+        "Si la pieza está ",
+        {
+          "kind": "form",
+          "answer": "rota",
+          "choices": [
+            "rota",
+            "rotas",
+            "roto",
+            "rotos"
+          ],
+          "cue": "roto (la pieza)"
+        },
+        ", ¿cuánto ",
+        {
+          "kind": "form",
+          "answer": "cuesta",
+          "choices": [
+            "cuestan",
+            "cuestas",
+            "cuesta",
+            "costamos"
+          ],
+          "cue": "costar (el cambio)"
+        },
+        " el cambio?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿La reparación de mi lavadora",
+          "baseText": {
+            "de": "Die Reparatur meiner Waschmaschine",
+            "en": "The repair of my washing machine"
+          }
+        },
+        {
+          "targetText": "está autorizada",
+          "baseText": {
+            "de": "ist sie freigegeben",
+            "en": "is it authorized"
+          }
+        },
+        {
+          "targetText": "o falta todavía",
+          "baseText": {
+            "de": "oder fehlt noch",
+            "en": "or do you still need"
+          }
+        },
+        {
+          "targetText": "mi firma?",
+          "baseText": {
+            "de": "meine Unterschrift?",
+            "en": "my signature?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "lavadora",
+          "baseText": {
+            "de": "Waschmaschine",
+            "en": "washing machine"
+          }
+        },
+        {
+          "targetText": "reparación",
+          "baseText": {
+            "de": "Reparatur",
+            "en": "repair"
+          }
+        },
+        {
+          "targetText": "autorizada",
+          "baseText": {
+            "de": "freigegeben",
+            "en": "authorized"
+          }
+        },
+        {
+          "targetText": "mi firma",
+          "baseText": {
+            "de": "meine Unterschrift",
+            "en": "my signature"
+          }
+        },
+        {
+          "targetText": "pieza rota",
+          "baseText": {
+            "de": "defektes Bauteil",
+            "en": "broken part"
+          }
+        },
+        {
+          "targetText": "el cambio",
+          "baseText": {
+            "de": "der Austausch",
+            "en": "the replacement"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿La reparación de mi lavadora está ",
+        "answer": "autorizada",
+        "after": " o falta todavía mi firma?",
+        "fallbackChoices": [
+          "autorizadas",
+          "autorizados",
+          "autorizado",
+          "autorizada"
+        ]
+      },
+      "speakRequired": [
+        "reparación",
+        "lavadora",
+        "firma"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon meldet sich der Kundendienst: „¿Llama para preguntar por su lavadora?“",
+        "en": "A customer service agent answers the phone: “¿Llama para preguntar por su lavadora?”"
+      },
+      "trophyWord": {
+        "word": "reparación",
+        "meaning": {
+          "de": "Reparatur",
+          "en": "repair"
+        },
+        "example": "La reparación está autorizada desde esta mañana.",
+        "whyThisWord": {
+          "de": "Reparación ist feminin. Deshalb beschreibt autorizada den Zustand mit der Endung -a.",
+          "en": "Reparación is feminine, so its state is described with autorizada ending in -a."
+        }
+      },
+      "distractors": [
+        "las llaves del coche?",
+        "están autorizados"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Waschmaschine steht neben einem geöffneten Reparaturauftrag.",
+        "en": "A washing machine stands next to an open work order."
+      },
+      "songMood": "Überlegt und ruhig.",
+      "visualNotes": "A washing machine stands next to an open work order."
+    },
+    {
+      "slug": "pantalla-de-informes",
+      "title": {
+        "de": "Nach der Aktualisierung",
+        "en": "After the update"
+      },
+      "situation": {
+        "de": "Am Telefon mit der Softwarebetreuung erkundigen Sie sich nach Ihrem Arbeitskonto.",
+        "en": "You call software support to ask about your work account."
+      },
+      "pedagogicalGoal": "Una actualización está terminada; dos revisiones están terminadas. Nach estar stimmt das Partizip in Geschlecht und Zahl mit dem Subjekt überein.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué quiere comprobar antes de volver a entrar en su cuenta?",
+          "baseText": {
+            "de": "Was möchten Sie vor der erneuten Anmeldung in Ihrem Konto überprüfen?",
+            "en": "What would you like to check before signing back into your account?"
+          }
+        },
+        {
+          "targetText": "¿La actualización está terminada o queda alguna función sin activar?",
+          "baseText": {
+            "de": "Ist die Aktualisierung abgeschlossen oder muss noch eine Funktion aktiviert werden?",
+            "en": "Is the update complete, or does a feature still need to be activated?"
+          }
+        },
+        {
+          "targetText": "Ya puede entrar, pero los informes de ventas siguen bloqueados.",
+          "baseText": {
+            "de": "Sie können sich wieder anmelden, aber die Verkaufsberichte sind noch gesperrt.",
+            "en": "You can sign in again, but the sales reports are still locked."
+          }
+        },
+        {
+          "targetText": "¿Qué opciones están activadas mientras los informes siguen bloqueados?",
+          "baseText": {
+            "de": "Welche Optionen sind aktiviert, solange die Berichte gesperrt sind?",
+            "en": "Which options are enabled while the reports remain locked?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "El resultado en singular y plural",
+        "rule": {
+          "de": "Una actualización está terminada; dos revisiones están terminadas. Nach estar stimmt das Partizip in Geschlecht und Zahl mit dem Subjekt überein.",
+          "en": "One update está terminada; two checks están terminadas. After estar, the participle agrees with the subject in gender and number."
+        },
+        "examples": [
+          {
+            "targetText": "¿La actualización está terminada o queda alguna función sin activar?",
+            "baseText": {
+              "de": "Ist die Aktualisierung abgeschlossen oder muss noch eine Funktion aktiviert werden?",
+              "en": "Is the update complete, or does a feature still need to be activated?"
+            },
+            "highlight": "está terminada"
+          },
+          {
+            "targetText": "Las dos revisiones están terminadas y ya puede consultar el resultado.",
+            "baseText": {
+              "de": "Beide Prüfungen sind abgeschlossen und Sie können das Ergebnis jetzt ansehen.",
+              "en": "Both checks are complete and you can now view the result."
+            },
+            "highlight": "están terminadas"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Qué opciones están ",
+        {
+          "kind": "form",
+          "answer": "activadas",
+          "choices": [
+            "activada",
+            "activadas",
+            "activados",
+            "activado"
+          ],
+          "cue": "activado (las opciones)"
+        },
+        " mientras los informes ",
+        {
+          "kind": "form",
+          "answer": "siguen",
+          "choices": [
+            "siguen",
+            "sigo",
+            "sigue",
+            "seguimos"
+          ],
+          "cue": "seguir (los informes)"
+        },
+        " bloqueados?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿La actualización",
+          "baseText": {
+            "de": "Die Aktualisierung",
+            "en": "The update"
+          }
+        },
+        {
+          "targetText": "está terminada",
+          "baseText": {
+            "de": "ist sie abgeschlossen",
+            "en": "is it complete"
+          }
+        },
+        {
+          "targetText": "o queda alguna función",
+          "baseText": {
+            "de": "oder gibt es noch eine Funktion",
+            "en": "or is there still a feature"
+          }
+        },
+        {
+          "targetText": "sin activar?",
+          "baseText": {
+            "de": "die nicht aktiviert ist?",
+            "en": "that hasn't been enabled?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "actualización",
+          "baseText": {
+            "de": "Aktualisierung",
+            "en": "update"
+          }
+        },
+        {
+          "targetText": "terminada",
+          "baseText": {
+            "de": "abgeschlossen",
+            "en": "complete"
+          }
+        },
+        {
+          "targetText": "función",
+          "baseText": {
+            "de": "Funktion",
+            "en": "feature"
+          }
+        },
+        {
+          "targetText": "activar",
+          "baseText": {
+            "de": "aktivieren",
+            "en": "activate"
+          }
+        },
+        {
+          "targetText": "informes de ventas",
+          "baseText": {
+            "de": "Verkaufsberichte",
+            "en": "sales reports"
+          }
+        },
+        {
+          "targetText": "bloqueados",
+          "baseText": {
+            "de": "gesperrt",
+            "en": "locked"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿La actualización está ",
+        "answer": "terminada",
+        "after": " o queda alguna función sin activar?",
+        "fallbackChoices": [
+          "terminado",
+          "terminadas",
+          "terminada",
+          "terminados"
+        ]
+      },
+      "speakRequired": [
+        "actualización",
+        "terminada",
+        "función"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt die Mitarbeiterin der Softwarebetreuung: „¿Qué quiere comprobar antes de volver a entrar en su cuenta?“",
+        "en": "On the phone, the support agent asks: “¿Qué quiere comprobar antes de volver a entrar en su cuenta?”"
+      },
+      "trophyWord": {
+        "word": "actualización",
+        "meaning": {
+          "de": "Aktualisierung",
+          "en": "update"
+        },
+        "example": "La actualización está terminada, pero tengo que volver a entrar.",
+        "whyThisWord": {
+          "de": "Actualización bezeichnet die Änderung am System; terminada bezeichnet ihren Abschluss.",
+          "en": "Actualización names the system change; terminada tells you it is complete."
+        }
+      },
+      "distractors": [
+        "están terminados",
+        "sin contrato?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Laptop zeigt die Anmeldeseite eines Arbeitskontos.",
+        "en": "A laptop shows a work account sign-in page."
+      },
+      "songMood": "Konzentriert und sachlich.",
+      "visualNotes": "A laptop shows a work account sign-in page."
+    },
+    {
+      "slug": "plaza-del-curso",
+      "title": {
+        "de": "Der Platz im Kurs",
+        "en": "A place on the course"
+      },
+      "situation": {
+        "de": "Im Sekretariat einer Sprachschule erkundigen Sie sich nach Ihrer Anmeldung.",
+        "en": "At a language school office, you ask about your registration."
+      },
+      "pedagogicalGoal": "La matrícula está aprobada gibt einen Status wieder. Bei las solicitudes wechselt das Partizip in den Plural: aprobadas.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Ha visto ya el estado de su matrícula en el portal?",
+          "baseText": {
+            "de": "Haben Sie den Status Ihrer Anmeldung im Portal schon gesehen?",
+            "en": "Have you checked your registration status in the portal yet?"
+          }
+        },
+        {
+          "targetText": "Mi matrícula está aprobada. ¿Está lista también la confirmación para mi empresa?",
+          "baseText": {
+            "de": "Meine Anmeldung ist genehmigt. Ist auch die Bestätigung für meinen Arbeitgeber fertig?",
+            "en": "My registration is approved. Is the confirmation for my employer ready too?"
+          }
+        },
+        {
+          "targetText": "Todavía no. Antes de enviarla tenemos que comprobar el domicilio.",
+          "baseText": {
+            "de": "Noch nicht. Vor dem Versand müssen wir die Anschrift prüfen.",
+            "en": "Not yet. We need to check the address before sending it."
+          }
+        },
+        {
+          "targetText": "¿Mi plaza está reservada mientras se comprueba el domicilio?",
+          "baseText": {
+            "de": "Bleibt mein Platz reserviert, während die Anschrift geprüft wird?",
+            "en": "Is my place reserved while the address is being checked?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un resultado: aprobado",
+        "rule": {
+          "de": "La matrícula está aprobada gibt einen Status wieder. Bei las solicitudes wechselt das Partizip in den Plural: aprobadas.",
+          "en": "La matrícula está aprobada states the status. With las solicitudes, the participle changes to the plural aprobadas."
+        },
+        "examples": [
+          {
+            "targetText": "Mi matrícula está aprobada. ¿Está lista también la confirmación para mi empresa?",
+            "baseText": {
+              "de": "Meine Anmeldung ist genehmigt. Ist auch die Bestätigung für meinen Arbeitgeber fertig?",
+              "en": "My registration is approved. Is the confirmation for my employer ready too?"
+            },
+            "highlight": "está aprobada"
+          },
+          {
+            "targetText": "Las dos solicitudes están aprobadas desde ayer.",
+            "baseText": {
+              "de": "Beide Anträge sind seit gestern genehmigt.",
+              "en": "Both applications have been approved since yesterday."
+            },
+            "highlight": "están aprobadas"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Mi plaza está ",
+        {
+          "kind": "form",
+          "answer": "reservada",
+          "choices": [
+            "reservado",
+            "reservadas",
+            "reservada",
+            "reservados"
+          ],
+          "cue": "reservado (mi plaza)"
+        },
+        " mientras se ",
+        {
+          "kind": "form",
+          "answer": "comprueba",
+          "choices": [
+            "comprobamos",
+            "comprueban",
+            "compruebo",
+            "comprueba"
+          ],
+          "cue": "comprobar (el domicilio)"
+        },
+        " el domicilio?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Mi matrícula",
+          "baseText": {
+            "de": "Meine Anmeldung",
+            "en": "My registration"
+          }
+        },
+        {
+          "targetText": "está aprobada. ¿Está lista también",
+          "baseText": {
+            "de": "ist genehmigt. Ist auch fertig",
+            "en": "is approved. Is it also ready"
+          }
+        },
+        {
+          "targetText": "la confirmación",
+          "baseText": {
+            "de": "die Bestätigung",
+            "en": "the confirmation"
+          }
+        },
+        {
+          "targetText": "para mi empresa?",
+          "baseText": {
+            "de": "für meinen Arbeitgeber?",
+            "en": "for my employer?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "matrícula",
+          "baseText": {
+            "de": "Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "aprobada",
+          "baseText": {
+            "de": "genehmigt",
+            "en": "approved"
+          }
+        },
+        {
+          "targetText": "confirmación",
+          "baseText": {
+            "de": "Bestätigung",
+            "en": "confirmation"
+          }
+        },
+        {
+          "targetText": "mi empresa",
+          "baseText": {
+            "de": "mein Arbeitgeber",
+            "en": "my employer"
+          }
+        },
+        {
+          "targetText": "mi plaza",
+          "baseText": {
+            "de": "mein Platz",
+            "en": "my place"
+          }
+        },
+        {
+          "targetText": "el domicilio",
+          "baseText": {
+            "de": "die Anschrift",
+            "en": "the address"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mi matrícula está ",
+        "answer": "aprobada",
+        "after": ". ¿Está lista también la confirmación para mi empresa?",
+        "fallbackChoices": [
+          "aprobadas",
+          "aprobada",
+          "aprobado",
+          "aprobados"
+        ]
+      },
+      "speakRequired": [
+        "matrícula",
+        "aprobada",
+        "confirmación"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang der Sprachschule fragt der Mitarbeiter: „¿Ha visto ya el estado de su matrícula en el portal?“",
+        "en": "At the language school reception, the clerk asks: “¿Ha visto ya el estado de su matrícula en el portal?”"
+      },
+      "trophyWord": {
+        "word": "confirmación",
+        "meaning": {
+          "de": "Bestätigung",
+          "en": "confirmation"
+        },
+        "example": "Necesito una confirmación por escrito para mi empresa.",
+        "whyThisWord": {
+          "de": "Confirmación bezeichnet hier das Dokument, mit dem sich die Anmeldung nachweisen lässt.",
+          "en": "Here confirmación is the written document that proves registration."
+        }
+      },
+      "distractors": [
+        "para mi cocina?",
+        "están aprobadas."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Anmeldebestätigung liegt neben einem Kursplan.",
+        "en": "A registration form lies beside a course schedule."
+      },
+      "songMood": "Aufmerksam und geduldig.",
+      "visualNotes": "A registration form lies beside a course schedule."
+    },
+    {
+      "slug": "dos-cajas",
+      "title": {
+        "de": "Die Abholung am Nachmittag",
+        "en": "Collecting this afternoon's order"
+      },
+      "situation": {
+        "de": "Am Abholschalter erkundigen Sie sich nach Ihrer Bestellung für den Nachmittag.",
+        "en": "At a collection counter, you ask about your order for the afternoon."
+      },
+      "pedagogicalGoal": "Está preparando beschreibt eine laufende Vorbereitung. Das Gerundium bleibt unverändert, während sich estar nach dem Subjekt richtet.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Tiene una pregunta sobre su pedido de hoy?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zu Ihrer heutigen Bestellung?",
+            "en": "Do you have a question about today's order?"
+          }
+        },
+        {
+          "targetText": "¿El almacén está preparando mi pedido para la recogida de esta tarde?",
+          "baseText": {
+            "de": "Bereitet das Lager meine Bestellung für die Abholung heute Nachmittag vor?",
+            "en": "Is the warehouse getting my order ready for collection this afternoon?"
+          }
+        },
+        {
+          "targetText": "Una caja ya está aquí, pero la otra sigue en el almacén central.",
+          "baseText": {
+            "de": "Ein Karton ist schon hier, aber der andere ist noch im Zentrallager.",
+            "en": "One box is here, but the other is still at the central warehouse."
+          }
+        },
+        {
+          "targetText": "¿Qué caja falta y quién está comprobando el envío?",
+          "baseText": {
+            "de": "Welcher Karton fehlt, und wer überprüft gerade die Sendung?",
+            "en": "Which box is missing, and who is checking the shipment?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Estar + gerundio: acción en curso",
+        "rule": {
+          "de": "Está preparando beschreibt eine laufende Vorbereitung. Das Gerundium bleibt unverändert, während sich estar nach dem Subjekt richtet.",
+          "en": "Está preparando describes preparation in progress. The gerund stays the same while estar agrees with the subject."
+        },
+        "examples": [
+          {
+            "targetText": "¿El almacén está preparando mi pedido para la recogida de esta tarde?",
+            "baseText": {
+              "de": "Bereitet das Lager meine Bestellung für die Abholung heute Nachmittag vor?",
+              "en": "Is the warehouse getting my order ready for collection this afternoon?"
+            },
+            "highlight": "está preparando mi pedido"
+          },
+          {
+            "targetText": "La encargada está preparando las etiquetas para el envío.",
+            "baseText": {
+              "de": "Die zuständige Mitarbeiterin bereitet gerade die Etiketten für den Versand vor.",
+              "en": "The supervisor is preparing the shipping labels."
+            },
+            "highlight": "está preparando"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Qué caja ",
+        {
+          "kind": "form",
+          "answer": "falta",
+          "choices": [
+            "faltan",
+            "falto",
+            "falta",
+            "faltamos"
+          ],
+          "cue": "faltar (qué caja)"
+        },
+        " y quién está ",
+        {
+          "kind": "form",
+          "answer": "comprobando",
+          "choices": [
+            "comprobada",
+            "comprobando",
+            "comprobado",
+            "comprueba"
+          ],
+          "cue": "comprobar (acción en curso)"
+        },
+        " el envío?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿El almacén",
+          "baseText": {
+            "de": "Das Lager",
+            "en": "The warehouse"
+          }
+        },
+        {
+          "targetText": "está preparando mi pedido",
+          "baseText": {
+            "de": "bereitet gerade meine Bestellung vor",
+            "en": "is getting my order ready"
+          }
+        },
+        {
+          "targetText": "para la recogida",
+          "baseText": {
+            "de": "für die Abholung",
+            "en": "for collection"
+          }
+        },
+        {
+          "targetText": "de esta tarde?",
+          "baseText": {
+            "de": "heute Nachmittag?",
+            "en": "this afternoon?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pedido",
+          "baseText": {
+            "de": "Bestellung",
+            "en": "order"
+          }
+        },
+        {
+          "targetText": "recogida",
+          "baseText": {
+            "de": "Abholung",
+            "en": "collection"
+          }
+        },
+        {
+          "targetText": "esta tarde",
+          "baseText": {
+            "de": "heute Nachmittag",
+            "en": "this afternoon"
+          }
+        },
+        {
+          "targetText": "una caja",
+          "baseText": {
+            "de": "ein Karton",
+            "en": "a box"
+          }
+        },
+        {
+          "targetText": "almacén central",
+          "baseText": {
+            "de": "Zentrallager",
+            "en": "central warehouse"
+          }
+        },
+        {
+          "targetText": "el envío",
+          "baseText": {
+            "de": "die Sendung",
+            "en": "the shipment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿El almacén está ",
+        "answer": "preparando",
+        "after": " mi pedido para la recogida de esta tarde?",
+        "fallbackChoices": [
+          "preparando",
+          "preparados",
+          "preparada",
+          "prepara"
+        ]
+      },
+      "speakRequired": [
+        "preparando",
+        "pedido",
+        "recogida"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin am Abholschalter fragt: „¿Tiene una pregunta sobre su pedido de hoy?“",
+        "en": "The assistant at the collection desk asks: “¿Tiene una pregunta sobre su pedido de hoy?”"
+      },
+      "trophyWord": {
+        "word": "recogida",
+        "meaning": {
+          "de": "Abholung",
+          "en": "collection"
+        },
+        "example": "La recogida del pedido empieza a las cuatro.",
+        "whyThisWord": {
+          "de": "Recogida ist die Abholung durch die Kundschaft; entrega ist die Zustellung.",
+          "en": "Recogida is collection by the customer; entrega is delivery."
+        }
+      },
+      "distractors": [
+        "mi receta",
+        "para la avería"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Abholschalter steht neben mehreren verschlossenen Kartons.",
+        "en": "A collection counter stands beside several sealed boxes."
+      },
+      "songMood": "Neugierig und praktisch.",
+      "visualNotes": "A collection counter stands beside several sealed boxes."
+    },
+    {
+      "slug": "domicilio-pendiente",
+      "title": {
+        "de": "Die neue Anschrift",
+        "en": "The new address"
+      },
+      "situation": {
+        "de": "Im Kundenbüro fragen Sie nach einer Adressänderung in Ihrem Vertrag.",
+        "en": "At a customer office, you ask about a change of address on your contract."
+      },
+      "pedagogicalGoal": "Está revisando bezeichnet die laufende Prüfung; pendiente bezeichnet den Status. Eine Anfrage kann also noch offen sein, obwohl schon daran gearbeitet wird.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué cambio quiere consultar en su contrato?",
+          "baseText": {
+            "de": "Zu welcher Änderung in Ihrem Vertrag haben Sie eine Frage?",
+            "en": "Which change to your contract would you like to check?"
+          }
+        },
+        {
+          "targetText": "¿Su equipo está revisando el cambio de dirección que todavía figura como pendiente?",
+          "baseText": {
+            "de": "Prüft Ihr Team gerade die Adressänderung, die noch als offen angezeigt wird?",
+            "en": "Is your team reviewing the change of address that's still shown as pending?"
+          }
+        },
+        {
+          "targetText": "Falta verificar el código postal; el número no coincide con el de la calle.",
+          "baseText": {
+            "de": "Die Postleitzahl muss noch überprüft werden. Die Nummer passt nicht zur Straße.",
+            "en": "We still have to verify the postcode; the number doesn't match the street."
+          }
+        },
+        {
+          "targetText": "¿Qué plazo están dando para el cambio mientras revisan el código postal?",
+          "baseText": {
+            "de": "Welchen Zeitrahmen geben Sie für die Änderung an, während Sie die Postleitzahl prüfen?",
+            "en": "What time frame are you giving for the change while you check the postcode?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Una comprobación en curso",
+        "rule": {
+          "de": "Está revisando bezeichnet die laufende Prüfung; pendiente bezeichnet den Status. Eine Anfrage kann also noch offen sein, obwohl schon daran gearbeitet wird.",
+          "en": "Está revisando names the ongoing review; pendiente is the status. A request can be pending even when someone is already working on it."
+        },
+        "examples": [
+          {
+            "targetText": "¿Su equipo está revisando el cambio de dirección que todavía figura como pendiente?",
+            "baseText": {
+              "de": "Prüft Ihr Team gerade die Adressänderung, die noch als offen angezeigt wird?",
+              "en": "Is your team reviewing the change of address that's still shown as pending?"
+            },
+            "highlight": "está revisando el cambio"
+          },
+          {
+            "targetText": "Una compañera está revisando los datos de la factura.",
+            "baseText": {
+              "de": "Eine Kollegin überprüft gerade die Daten auf der Rechnung.",
+              "en": "A colleague is checking the details on the invoice."
+            },
+            "highlight": "está revisando"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Qué plazo están ",
+        {
+          "kind": "form",
+          "answer": "dando",
+          "choices": [
+            "dado",
+            "dando",
+            "dados",
+            "da"
+          ],
+          "cue": "dar (acción en curso)"
+        },
+        " para el cambio mientras ",
+        {
+          "kind": "form",
+          "answer": "revisan",
+          "choices": [
+            "revisamos",
+            "revisan",
+            "revisa",
+            "reviso"
+          ],
+          "cue": "revisar (ustedes)"
+        },
+        " el código postal?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Su equipo está revisando",
+          "baseText": {
+            "de": "Prüft Ihr Team gerade",
+            "en": "Is your team reviewing"
+          }
+        },
+        {
+          "targetText": "el cambio de dirección",
+          "baseText": {
+            "de": "die Adressänderung,",
+            "en": "the change of address"
+          }
+        },
+        {
+          "targetText": "que todavía figura",
+          "baseText": {
+            "de": "die noch angezeigt wird",
+            "en": "that's still shown"
+          }
+        },
+        {
+          "targetText": "como pendiente?",
+          "baseText": {
+            "de": "als offen?",
+            "en": "as pending?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cambio de dirección",
+          "baseText": {
+            "de": "Adressänderung",
+            "en": "change of address"
+          }
+        },
+        {
+          "targetText": "figura",
+          "baseText": {
+            "de": "wird angezeigt",
+            "en": "is shown"
+          }
+        },
+        {
+          "targetText": "pendiente",
+          "baseText": {
+            "de": "offen",
+            "en": "pending"
+          }
+        },
+        {
+          "targetText": "código postal",
+          "baseText": {
+            "de": "Postleitzahl",
+            "en": "postcode"
+          }
+        },
+        {
+          "targetText": "no coincide",
+          "baseText": {
+            "de": "stimmt nicht überein",
+            "en": "doesn't match"
+          }
+        },
+        {
+          "targetText": "qué plazo",
+          "baseText": {
+            "de": "welcher Zeitrahmen",
+            "en": "what time frame"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Su equipo está ",
+        "answer": "revisando",
+        "after": " el cambio de dirección que todavía figura como pendiente?",
+        "fallbackChoices": [
+          "revisados",
+          "revisada",
+          "revisa",
+          "revisando"
+        ]
+      },
+      "speakRequired": [
+        "revisando",
+        "dirección",
+        "pendiente"
+      ],
+      "sceneCaption": {
+        "de": "Im Kundenbüro fragt der Mitarbeiter: „¿Qué cambio quiere consultar en su contrato?“",
+        "en": "At the customer office, the clerk asks: “¿Qué cambio quiere consultar en su contrato?”"
+      },
+      "trophyWord": {
+        "word": "pendiente",
+        "meaning": {
+          "de": "offen; ausstehend",
+          "en": "pending"
+        },
+        "example": "El cambio de dirección sigue pendiente.",
+        "whyThisWord": {
+          "de": "Pendiente beschreibt einen offenen Vorgang, ohne eine Ursache oder einen genauen Termin zu behaupten.",
+          "en": "Pendiente marks an unfinished request without claiming a cause or deadline."
+        }
+      },
+      "distractors": [
+        "como perdido?",
+        "la fecha de compra"
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem Schreibtisch liegen ein Vertrag und ein Adressformular.",
+        "en": "A contract and an address form lie on a desk."
+      },
+      "songMood": "Geduldig und konzentriert.",
+      "visualNotes": "A contract and an address form lie on a desk."
+    },
+    {
+      "slug": "probar-la-clave",
+      "title": {
+        "de": "Der letzte Zugangstest",
+        "en": "The final login check"
+      },
+      "situation": {
+        "de": "Sie melden sich beim Support wegen des Zugangs zu Ihrem Kundenkonto.",
+        "en": "You contact support about access to your customer account."
+      },
+      "pedagogicalGoal": "Está resuelto beschreibt ein Ergebnis; sigue revisando beschreibt die andauernde Arbeit. Mit der Rückfrage lässt sich der tatsächliche Stand klären.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Ha podido volver a entrar en su cuenta?",
+          "baseText": {
+            "de": "Konnten Sie sich wieder in Ihrem Konto anmelden?",
+            "en": "Have you been able to sign back into your account?"
+          }
+        },
+        {
+          "targetText": "¿El fallo de acceso está resuelto o su equipo sigue revisando mi cuenta?",
+          "baseText": {
+            "de": "Ist das Zugangsproblem behoben oder prüft Ihr Team mein Konto noch?",
+            "en": "Has the login problem been resolved, or is your team still checking my account?"
+          }
+        },
+        {
+          "targetText": "Aquí funciona, pero necesitamos que pruebe su clave desde su móvil.",
+          "baseText": {
+            "de": "Bei uns funktioniert es. Wir möchten aber, dass Sie Ihr Passwort auf Ihrem Handy testen.",
+            "en": "It works here, but we need you to try your password on your phone."
+          }
+        },
+        {
+          "targetText": "¿Se mantiene abierta la incidencia mientras yo pruebo la clave?",
+          "baseText": {
+            "de": "Bleibt die Störungsmeldung offen, während ich das Passwort teste?",
+            "en": "Will the ticket stay open while I test the password?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Resultado o trabajo en curso",
+        "rule": {
+          "de": "Está resuelto beschreibt ein Ergebnis; sigue revisando beschreibt die andauernde Arbeit. Mit der Rückfrage lässt sich der tatsächliche Stand klären.",
+          "en": "Está resuelto describes a result; sigue revisando describes continuing work. The follow-up checks which status actually applies."
+        },
+        "examples": [
+          {
+            "targetText": "¿El fallo de acceso está resuelto o su equipo sigue revisando mi cuenta?",
+            "baseText": {
+              "de": "Ist das Zugangsproblem behoben oder prüft Ihr Team mein Konto noch?",
+              "en": "Has the login problem been resolved, or is your team still checking my account?"
+            },
+            "highlight": "está resuelto"
+          },
+          {
+            "targetText": "El problema de la tarjeta está resuelto, pero están comprobando el lector.",
+            "baseText": {
+              "de": "Das Kartenproblem ist behoben, aber das Lesegerät wird gerade geprüft.",
+              "en": "The card problem has been resolved, but they're checking the reader."
+            },
+            "highlight": "está resuelto"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Se ",
+        {
+          "kind": "form",
+          "answer": "mantiene",
+          "choices": [
+            "mantienen",
+            "mantengo",
+            "mantenemos",
+            "mantiene"
+          ],
+          "cue": "mantener (la incidencia)"
+        },
+        " abierta la incidencia mientras yo ",
+        {
+          "kind": "form",
+          "answer": "pruebo",
+          "choices": [
+            "prueba",
+            "pruebo",
+            "pruebas",
+            "prueban"
+          ],
+          "cue": "probar (yo)"
+        },
+        " la clave?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿El fallo de acceso",
+          "baseText": {
+            "de": "Das Zugangsproblem",
+            "en": "The login problem"
+          }
+        },
+        {
+          "targetText": "está resuelto",
+          "baseText": {
+            "de": "ist es behoben",
+            "en": "has it been resolved"
+          }
+        },
+        {
+          "targetText": "o su equipo sigue revisando",
+          "baseText": {
+            "de": "oder prüft Ihr Team weiterhin",
+            "en": "or is your team still checking"
+          }
+        },
+        {
+          "targetText": "mi cuenta?",
+          "baseText": {
+            "de": "mein Konto?",
+            "en": "my account?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "fallo de acceso",
+          "baseText": {
+            "de": "Zugangsproblem",
+            "en": "login problem"
+          }
+        },
+        {
+          "targetText": "resuelto",
+          "baseText": {
+            "de": "behoben",
+            "en": "resolved"
+          }
+        },
+        {
+          "targetText": "mi cuenta",
+          "baseText": {
+            "de": "mein Konto",
+            "en": "my account"
+          }
+        },
+        {
+          "targetText": "desde su móvil",
+          "baseText": {
+            "de": "auf Ihrem Handy",
+            "en": "on your phone"
+          }
+        },
+        {
+          "targetText": "la incidencia",
+          "baseText": {
+            "de": "die Störungsmeldung",
+            "en": "the support ticket"
+          }
+        },
+        {
+          "targetText": "la clave",
+          "baseText": {
+            "de": "das Passwort",
+            "en": "the password"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿El fallo de acceso está ",
+        "answer": "resuelto",
+        "after": " o su equipo sigue revisando mi cuenta?",
+        "fallbackChoices": [
+          "resuelto",
+          "resueltos",
+          "resuelta",
+          "resueltas"
+        ]
+      },
+      "speakRequired": [
+        "fallo",
+        "resuelto",
+        "cuenta"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon fragt die Mitarbeiterin des Supports: „¿Ha podido volver a entrar en su cuenta?“",
+        "en": "On the phone, the support agent asks: “¿Ha podido volver a entrar en su cuenta?”"
+      },
+      "trophyWord": {
+        "word": "resuelto",
+        "meaning": {
+          "de": "gelöst; behoben",
+          "en": "resolved"
+        },
+        "example": "El fallo está resuelto y ya puedo entrar.",
+        "whyThisWord": {
+          "de": "Resuelto beschreibt den Zustand nach der Lösung eines Problems und stimmt mit fallo überein.",
+          "en": "Resuelto describes the state after a problem has been solved and agrees with fallo."
+        }
+      },
+      "distractors": [
+        "mis recibos?",
+        "están resueltas"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Handy liegt neben einem Laptop mit einer Anmeldemaske.",
+        "en": "A phone lies beside a laptop displaying a sign-in screen."
+      },
+      "songMood": "Konzentriert und abschließend.",
+      "visualNotes": "A phone lies beside a laptop displaying a sign-in screen."
+    }
+  ]
+}

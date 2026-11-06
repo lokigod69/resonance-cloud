@@ -1,0 +1,4092 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Polish",
+  "targetLanguageCode": "pl-PL",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explaining-causes-and-processes",
+  "pathTitle": {
+    "de": "Wie und warum: genau erklären",
+    "en": "How and why: explaining precisely"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären, Angaben präzisieren und Konsequenzen zusammenfassen.",
+    "en": "Explain causes and processes, make details precise and summarize consequences."
+  },
+  "specRef": {
+    "pathSpec": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+    "ledger": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+    "ledgerSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+  },
+  "authoring": {
+    "source": "Codex authored from the Fable Polish B2 V3 specification; unreviewed draft",
+    "runId": "polish-b2-p1-p2-20261006",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "invoice-difference",
+      "title": {
+        "de": "Eine höhere Rechnung erklären",
+        "en": "Explain a higher invoice"
+      },
+      "situation": {
+        "de": "Die Buchhalterin eines Kunden vergleicht die Rechnungen zweier Monate.",
+        "en": "A client's accountant compares invoices for two months."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Buchhalterin des Kunden",
+            "en": "client's female accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Rechnungsprüfung fragt sie: „Faktura za wrzesień jest o czterysta złotych wyższa niż za sierpień. Skąd ta różnica?”",
+        "en": "While checking the invoice, she asks: „Faktura za wrzesień jest o czterysta złotych wyższa niż za sierpień. Skąd ta różnica?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Faktura za wrzesień jest o czterysta złotych wyższa niż za sierpień. Skąd ta różnica?",
+          "base": {
+            "de": "Die Rechnung für September ist vierhundert Złoty höher als die für August. Woher kommt der Unterschied?",
+            "en": "The September invoice is four hundred zlotys higher than August's. What accounts for the difference?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Różnica powstała, ponieważ we wrześniu doliczono dwie dodatkowe godziny konsultacji oraz koszt dojazdu do klienta.",
+          "base": {
+            "de": "Der Unterschied entstand, weil im September zwei zusätzliche Beratungsstunden sowie die Fahrtkosten zum Kunden berechnet wurden.",
+            "en": "The difference arose because two additional hours of consultation and travel costs to the client were added in September."
+          },
+          "move": "explain",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dodatkowe godziny rozumiem. Ale proszę doprecyzować: ile dokładnie kosztował dojazd i na jakiej podstawie?",
+          "base": {
+            "de": "Die zusätzlichen Stunden verstehe ich. Aber bitte präzisieren Sie: Wie viel hat die Fahrt genau gekostet und auf welcher Grundlage?",
+            "en": "I understand the additional hours. But please clarify: exactly how much did the travel cost, and on what basis?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mówiąc dokładniej, dojazd to sto dwadzieścia złotych, czyli sześćdziesiąt kilometrów po dwa złote, zgodnie z umową.",
+          "base": {
+            "de": "Genauer gesagt kostet die Fahrt einhundertzwanzig Złoty, also sechzig Kilometer zu je zwei Złoty, entsprechend dem Vertrag.",
+            "en": "More precisely, the travel charge is one hundred and twenty zlotys: sixty kilometres at two zlotys each, in accordance with the contract."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dobrze. Do raportu dla zarządu potrzebuję jednego zdania z całym wyjaśnieniem.",
+          "base": {
+            "de": "Gut. Für den Bericht an die Geschäftsleitung brauche ich einen Satz mit der gesamten Erklärung.",
+            "en": "Good. For the report to management, I need one sentence with the full explanation."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Krótko mówiąc: faktura wzrosła o czterysta złotych przez dwie dodatkowe godziny i jeden dojazd rozliczony według umowy.",
+          "base": {
+            "de": "Kurz gesagt: Die Rechnung stieg wegen zweier zusätzlicher Stunden und einer vertragsgemäß abgerechneten Fahrt um vierhundert Złoty.",
+            "en": "In short: the invoice increased by four hundred zlotys because of two additional hours and one trip charged according to the contract."
+          },
+          "move": "summarize",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Różnica powstała,",
+          "ponieważ",
+          "we wrześniu doliczono dwie",
+          "dodatkowe godziny konsultacji",
+          "oraz koszt"
+        ],
+        "distractors": [
+          "Różnica powstał",
+          "doliczona"
+        ],
+        "frameSuffix": " dojazdu do klienta."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", dojazd to sto dwadzieścia złotych, czyli sześćdziesiąt kilometrów po dwa złote, zgodnie z "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mówiąc dokładniej",
+            "acceptedAnswers": [
+              "Mówiąc dokładniej",
+              "Mowiac dokladniej"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mówiąc dokładniej",
+              "Mówić dokładniej",
+              "Mówiono dokładniej",
+              "Mówi dokładniej"
+            ]
+          },
+          {
+            "answer": "umową",
+            "acceptedAnswers": [
+              "umową",
+              "umowa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze umowa nach zgodnie z in die richtige Form.",
+              "en": "Use the form of umowa required after zgodnie z."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": faktura wzrosła o czterysta złotych przez dwie dodatkowe godziny i jeden dojazd rozliczony według umowy."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Krótko mówiąc",
+            "acceptedAnswers": [
+              "Krótko mówiąc",
+              "Krotko mowiac"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Krótko mówiąc",
+              "Krótko mówi",
+              "Krótko mówić",
+              "Krótko mówiono"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Różnica powstała, ",
+        "answer": "ponieważ",
+        "acceptedAnswers": [
+          "ponieważ",
+          "poniewaz",
+          "bo",
+          "dlatego że",
+          "dlatego ze",
+          "gdyż",
+          "gdyz",
+          "jako że",
+          "jako ze"
+        ],
+        "after": " we wrześniu doliczono dwie dodatkowe godziny konsultacji oraz koszt dojazdu do klienta.",
+        "fallbackChoices": [
+          "ponieważ",
+          "którego",
+          "pomimo",
+          "wbrew"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Ursache im Hintergrund erklären",
+          "en": "Explain a background cause"
+        },
+        "rule": {
+          "de": "Ponieważ leitet einen Grund ein, und doliczono nennt die Handlung, ohne die handelnde Person anzugeben.",
+          "en": "Ponieważ introduces a reason, and doliczono names the action without identifying who carried it out."
+        },
+        "examples": [
+          {
+            "targetText": "Różnica powstała, ponieważ we wrześniu doliczono dwie dodatkowe godziny konsultacji oraz koszt dojazdu do klienta.",
+            "base": {
+              "de": "Der Unterschied entstand, weil im September zwei zusätzliche Beratungsstunden sowie die Fahrtkosten zum Kunden berechnet wurden.",
+              "en": "The difference arose because two additional hours of consultation and travel costs to the client were added in September."
+            },
+            "highlights": [
+              "ponieważ",
+              "doliczono"
+            ]
+          },
+          {
+            "targetText": "Cena wzrosła, ponieważ doliczono koszt transportu.",
+            "base": {
+              "de": "Der Preis stieg, weil die Transportkosten hinzugerechnet wurden.",
+              "en": "The price increased because transport costs were added."
+            },
+            "highlights": [
+              "ponieważ",
+              "doliczono"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "ponieważ",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          },
+          "acceptedAnswers": [
+            "ponieważ",
+            "poniewaz"
+          ]
+        },
+        {
+          "targetText": "Mówiąc dokładniej",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "more precisely"
+          },
+          "acceptedAnswers": [
+            "Mówiąc dokładniej",
+            "Mowiac dokladniej"
+          ]
+        },
+        {
+          "targetText": "Krótko mówiąc",
+          "kind": "frame",
+          "base": {
+            "de": "kurz gesagt",
+            "en": "in short"
+          },
+          "acceptedAnswers": [
+            "Krótko mówiąc",
+            "Krotko mowiac"
+          ]
+        },
+        {
+          "targetText": "faktura",
+          "kind": "noun",
+          "base": {
+            "de": "Rechnung",
+            "en": "invoice"
+          },
+          "acceptedAnswers": [
+            "faktura"
+          ]
+        },
+        {
+          "targetText": "doliczono",
+          "kind": "verb",
+          "base": {
+            "de": "es wurde hinzugerechnet",
+            "en": "was added"
+          },
+          "acceptedAnswers": [
+            "doliczono"
+          ],
+          "lemma": "doliczyć"
+        },
+        {
+          "targetText": "konsultacji",
+          "kind": "noun",
+          "base": {
+            "de": "Beratung",
+            "en": "consultation"
+          },
+          "acceptedAnswers": [
+            "konsultacji"
+          ],
+          "lemma": "konsultacja"
+        },
+        {
+          "targetText": "koszt",
+          "kind": "noun",
+          "base": {
+            "de": "Kosten",
+            "en": "cost"
+          },
+          "acceptedAnswers": [
+            "koszt"
+          ]
+        },
+        {
+          "targetText": "rozliczony",
+          "kind": "adjective",
+          "base": {
+            "de": "abgerechnet",
+            "en": "charged; accounted for"
+          },
+          "acceptedAnswers": [
+            "rozliczony"
+          ],
+          "lemma": "rozliczony"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "ponieważ",
+            "wrześniu",
+            "doliczono"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "dokładniej",
+            "dojazd",
+            "umową"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "krótko",
+            "faktura",
+            "rozliczony"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "ponieważ",
+        "familyKey": "ponieważ",
+        "surface": "ponieważ",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Różnica powstała, ponieważ we wrześniu doliczono dwie dodatkowe godziny konsultacji oraz koszt dojazdu do klienta.",
+          "base": {
+            "de": "Der Unterschied entstand, weil im September zwei zusätzliche Beratungsstunden sowie die Fahrtkosten zum Kunden berechnet wurden.",
+            "en": "The difference arose because two additional hours of consultation and travel costs to the client were added in September."
+          }
+        },
+        "base": {
+          "de": "weil",
+          "en": "because"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "five-bins",
+      "title": {
+        "de": "Die Regeln am Müllplatz",
+        "en": "The rules at the bin area"
+      },
+      "situation": {
+        "de": "Ein neuer Nachbar fragt am Müllplatz nach der Mülltrennung in Ihrer Wohnanlage.",
+        "en": "A new neighbour asks about waste sorting at your housing estate's bin area."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Neuer Nachbar",
+            "en": "new male neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor den Tonnen sagt der Nachbar: „Przeprowadziłem się w zeszłym tygodniu i nie rozumiem tych pięciu koszy. Jak to działa?”",
+        "en": "In front of the bins, the neighbour says: „Przeprowadziłem się w zeszłym tygodniu i nie rozumiem tych pięciu koszy. Jak to działa?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Przeprowadziłem się w zeszłym tygodniu i nie rozumiem tych pięciu koszy. Jak to działa?",
+          "base": {
+            "de": "Ich bin letzte Woche eingezogen und verstehe diese fünf Tonnen nicht. Wie funktioniert das?",
+            "en": "I moved in last week and don't understand these five bins. How does it work?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Odpady dzielimy na pięć frakcji, a powodem jest to, że osiedle płaci niższą opłatę za dobrze posortowane śmieci.",
+          "base": {
+            "de": "Wir trennen den Abfall in fünf Kategorien, und der Grund ist, dass die Wohnanlage für gut sortierten Müll weniger Gebühren zahlt.",
+            "en": "We divide waste into five categories, and the reason is that the estate pays a lower fee for properly sorted rubbish."
+          },
+          "move": "explain",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okej, ale konkretnie: karton po pizzy z resztkami tłuszczu to papier czy bio?",
+          "base": {
+            "de": "Okay, aber konkret: Gehört ein Pizzakarton mit Fettresten zum Papier oder zum Biomüll?",
+            "en": "Okay, but specifically: does a pizza box with grease on it go in paper or organic waste?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Taki karton to odpady zmieszane, bo tłuszcz uniemożliwia recykling papieru, a resztki jedzenia osobno do bio.",
+          "base": {
+            "de": "So ein Karton gehört in den Restmüll, weil das Fett das Papierrecycling verhindert; die Essensreste kommen getrennt in den Biomüll.",
+            "en": "That kind of box goes in mixed waste because the grease prevents paper recycling, and the food scraps go separately in organic waste."
+          },
+          "move": "clarify",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Jasne. A kiedy wywożą poszczególne kosze? Nie chcę trzymać bio w domu przez tydzień.",
+          "base": {
+            "de": "Klar. Und wann werden die einzelnen Tonnen geleert? Ich möchte Biomüll nicht eine Woche zu Hause haben.",
+            "en": "Right. And when are the different bins emptied? I don't want to keep organic waste at home for a week."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "W skrócie: bio i zmieszane w poniedziałki i czwartki, papier i plastik co drugą środę, a szkło raz w miesiącu.",
+          "base": {
+            "de": "Kurz zusammengefasst: Bio- und Restmüll montags und donnerstags, Papier und Plastik jeden zweiten Mittwoch und Glas einmal im Monat.",
+            "en": "In brief: organic and mixed waste on Mondays and Thursdays, paper and plastic every other Wednesday, and glass once a month."
+          },
+          "move": "summarize",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Odpady dzielimy na pięć frakcji, a ",
+        "chunks": [
+          "powodem",
+          "jest to,",
+          "że",
+          "osiedle płaci niższą opłatę",
+          "za dobrze posortowane śmieci."
+        ],
+        "distractors": [
+          "niższy opłatę",
+          "osiedle płacą"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Taki karton to odpady "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tłuszcz uniemożliwia recykling papieru, a resztki jedzenia osobno do bio."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "zmieszane",
+            "acceptedAnswers": [
+              "zmieszane"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze zmieszany passend zum Plural odpady ein.",
+              "en": "Use zmieszany in agreement with the plural odpady."
+            }
+          },
+          {
+            "answer": "bo",
+            "acceptedAnswers": [
+              "bo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "bo",
+              "którego",
+              "wbrew",
+              "pomimo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": bio i zmieszane w poniedziałki i czwartki, papier i plastik co drugą środę, a szkło raz w miesiącu."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "W skrócie",
+            "acceptedAnswers": [
+              "W skrócie",
+              "W skrocie"
+            ],
+            "kind": "frame",
+            "choices": [
+              "W skrócie",
+              "W skrótu",
+              "W skrótem",
+              "W skrótowi"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Odpady dzielimy na pięć frakcji, a ",
+        "answer": "powodem",
+        "acceptedAnswers": [
+          "powodem",
+          "przyczyną",
+          "przyczyna",
+          "uzasadnieniem"
+        ],
+        "after": " jest to, że osiedle płaci niższą opłatę za dobrze posortowane śmieci.",
+        "fallbackChoices": [
+          "powodem",
+          "powód",
+          "powodu",
+          "powodowi"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Den Grund ausdrücklich benennen",
+          "en": "Name the reason explicitly"
+        },
+        "rule": {
+          "de": "Powodem jest to, że kündigt einen Grund an, der im folgenden Satzteil erläutert wird.",
+          "en": "Powodem jest to, że announces a reason explained in the following clause."
+        },
+        "examples": [
+          {
+            "targetText": "Odpady dzielimy na pięć frakcji, a powodem jest to, że osiedle płaci niższą opłatę za dobrze posortowane śmieci.",
+            "base": {
+              "de": "Wir trennen den Abfall in fünf Kategorien, und der Grund ist, dass die Wohnanlage für gut sortierten Müll weniger Gebühren zahlt.",
+              "en": "We divide waste into five categories, and the reason is that the estate pays a lower fee for properly sorted rubbish."
+            },
+            "highlights": [
+              "powodem jest to, że"
+            ]
+          },
+          {
+            "targetText": "Powodem jest to, że w naszej umowie opłata zależy od ilości odpadów.",
+            "base": {
+              "de": "Der Grund ist, dass in unserem Vertrag die Gebühr von der Abfallmenge abhängt.",
+              "en": "The reason is that under our contract the fee depends on the amount of waste."
+            },
+            "highlights": [
+              "Powodem jest to, że"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "powodem",
+          "kind": "noun",
+          "base": {
+            "de": "Grund",
+            "en": "reason"
+          },
+          "acceptedAnswers": [
+            "powodem"
+          ],
+          "lemma": "powód"
+        },
+        {
+          "targetText": "bo",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          },
+          "acceptedAnswers": [
+            "bo"
+          ]
+        },
+        {
+          "targetText": "W skrócie",
+          "kind": "frame",
+          "base": {
+            "de": "kurz zusammengefasst",
+            "en": "in brief"
+          },
+          "acceptedAnswers": [
+            "W skrócie",
+            "W skrocie"
+          ]
+        },
+        {
+          "targetText": "odpady",
+          "kind": "noun",
+          "base": {
+            "de": "Abfälle",
+            "en": "waste"
+          },
+          "acceptedAnswers": [
+            "odpady"
+          ],
+          "lemma": "odpad"
+        },
+        {
+          "targetText": "frakcji",
+          "kind": "noun",
+          "base": {
+            "de": "Abfallkategorien",
+            "en": "waste categories"
+          },
+          "acceptedAnswers": [
+            "frakcji"
+          ],
+          "lemma": "frakcja"
+        },
+        {
+          "targetText": "posortowane",
+          "kind": "adjective",
+          "base": {
+            "de": "sortiert",
+            "en": "sorted"
+          },
+          "acceptedAnswers": [
+            "posortowane"
+          ],
+          "lemma": "posortowany"
+        },
+        {
+          "targetText": "tłuszcz",
+          "kind": "noun",
+          "base": {
+            "de": "Fett",
+            "en": "grease"
+          },
+          "acceptedAnswers": [
+            "tłuszcz",
+            "tluszcz"
+          ]
+        },
+        {
+          "targetText": "uniemożliwia",
+          "kind": "verb",
+          "base": {
+            "de": "verhindert",
+            "en": "prevents"
+          },
+          "acceptedAnswers": [
+            "uniemożliwia",
+            "uniemozliwia"
+          ],
+          "lemma": "uniemożliwiać"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "powodem",
+            "osiedle",
+            "opłatę"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "karton",
+            "tłuszcz",
+            "recykling"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "skrócie",
+            "poniedziałki",
+            "miesiącu"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "powód",
+        "familyKey": "powód",
+        "surface": "powodem",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Odpady dzielimy na pięć frakcji, a powodem jest to, że osiedle płaci niższą opłatę za dobrze posortowane śmieci.",
+          "base": {
+            "de": "Wir trennen den Abfall in fünf Kategorien, und der Grund ist, dass die Wohnanlage für gut sortierten Müll weniger Gebühren zahlt.",
+            "en": "We divide waste into five categories, and the reason is that the estate pays a lower fee for properly sorted rubbish."
+          }
+        },
+        "base": {
+          "de": "Grund",
+          "en": "reason"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "project-slipped",
+      "title": {
+        "de": "Eine Projektverzögerung erklären",
+        "en": "Explain a project delay"
+      },
+      "situation": {
+        "de": "Der Projektleiter fragt nach einem verpassten Abgabetermin.",
+        "en": "The project manager asks about a missed deadline."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Projektleiter",
+            "en": "male project manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Projektbesprechung sagt er: „Projekt miał być gotowy w piątek, a jest środa następnego tygodnia. Co się stało?”",
+        "en": "At the project meeting, he says: „Projekt miał być gotowy w piątek, a jest środa następnego tygodnia. Co się stało?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Projekt miał być gotowy w piątek, a jest środa następnego tygodnia. Co się stało?",
+          "base": {
+            "de": "Das Projekt sollte am Freitag fertig sein, und jetzt ist Mittwoch der Folgewoche. Was ist passiert?",
+            "en": "The project was supposed to be ready on Friday, and now it's Wednesday of the following week. What happened?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Problem polega na tym, że dostawca zmienił specyfikację w połowie prac, dlatego że jego poprzedni komponent przestał być produkowany.",
+          "base": {
+            "de": "Das Problem besteht darin, dass der Lieferant die Spezifikation mitten in der Arbeit geändert hat, weil sein bisheriges Bauteil nicht mehr hergestellt wurde.",
+            "en": "The problem is that the supplier changed the specification halfway through the work because its previous component was no longer being manufactured."
+          },
+          "move": "explain",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Kiedy dokładnie zespół dowiedział się o zmianie i dlaczego nie było wtedy informacji dla mnie?",
+          "base": {
+            "de": "Wann genau hat das Team von der Änderung erfahren, und warum wurde ich damals nicht informiert?",
+            "en": "When exactly did the team learn of the change, and why wasn't I informed then?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Informacja dotarła dwunastego, w czwartek, a zespół najpierw sprawdzał, czy stary komponent da się jeszcze zdobyć.",
+          "base": {
+            "de": "Die Information kam am zwölften, einem Donnerstag, und das Team prüfte zunächst, ob sich das alte Bauteil noch beschaffen ließ.",
+            "en": "The information arrived on the twelfth, a Thursday, and the team first checked whether the old component could still be obtained."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Rozumiem. Teraz najważniejsze: jaki jest nowy termin i co zrobimy, żeby to się nie powtórzyło?",
+          "base": {
+            "de": "Verstehe. Jetzt das Wichtigste: Was ist der neue Termin, und was tun wir, damit das nicht wieder passiert?",
+            "en": "I understand. Now the most important point: what is the new deadline, and what will we do to prevent this happening again?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nowy termin to przyszła środa, a na przyszłość proponuję, żeby każda zmiana od dostawcy trafiała do Pana tego samego dnia.",
+          "base": {
+            "de": "Der neue Termin ist nächsten Mittwoch, und für die Zukunft schlage ich vor, dass jede Lieferantenänderung Sie noch am selben Tag erreicht.",
+            "en": "The new deadline is next Wednesday, and for the future I propose that every supplier change reach you on the same day."
+          },
+          "move": "propose",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Problem ",
+        "chunks": [
+          "polega",
+          "na tym,",
+          "że",
+          "dostawca zmienił specyfikację",
+          "w połowie prac,"
+        ],
+        "distractors": [
+          "dostawca zmienili",
+          "na tego"
+        ],
+        "frameSuffix": " dlatego że jego poprzedni komponent przestał być produkowany."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Informacja dotarła "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", w czwartek, a zespół "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " sprawdzał, czy stary komponent da się jeszcze zdobyć."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "dwunastego",
+            "acceptedAnswers": [
+              "dwunastego"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze dwunasty als Tagesdatum ein.",
+              "en": "Use dwunasty as the day of a date."
+            }
+          },
+          {
+            "answer": "najpierw",
+            "acceptedAnswers": [
+              "najpierw"
+            ],
+            "kind": "connector",
+            "choices": [
+              "najpierw",
+              "pierwszą",
+              "pierwszego",
+              "pierwszym"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Nowy termin to przyszła środa, a na przyszłość "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " każda zmiana od dostawcy trafiała do Pana tego samego dnia."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "proponuję, żeby",
+            "acceptedAnswers": [
+              "proponuję, żeby",
+              "proponuje, zeby"
+            ],
+            "kind": "frame",
+            "choices": [
+              "proponuję, żeby",
+              "proponuję, że",
+              "proponuję, czy",
+              "proponuję, gdy"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Problem ",
+        "answer": "polega",
+        "acceptedAnswers": [
+          "polega",
+          "polegał",
+          "polegal"
+        ],
+        "after": " na tym, że dostawca zmienił specyfikację w połowie prac, dlatego że jego poprzedni komponent przestał być produkowany.",
+        "fallbackChoices": [
+          "polega",
+          "polegając",
+          "polegania",
+          "polegać"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Das Problem eingrenzen",
+          "en": "Define the problem"
+        },
+        "rule": {
+          "de": "Problem polega na tym, że leitet einen Satz ein, der den Kern des Problems beschreibt.",
+          "en": "Problem polega na tym, że introduces a clause describing the core of the problem."
+        },
+        "examples": [
+          {
+            "targetText": "Problem polega na tym, że dostawca zmienił specyfikację w połowie prac, dlatego że jego poprzedni komponent przestał być produkowany.",
+            "base": {
+              "de": "Das Problem besteht darin, dass der Lieferant die Spezifikation mitten in der Arbeit geändert hat, weil sein bisheriges Bauteil nicht mehr hergestellt wurde.",
+              "en": "The problem is that the supplier changed the specification halfway through the work because its previous component was no longer being manufactured."
+            },
+            "highlights": [
+              "Problem polega na tym, że"
+            ]
+          },
+          {
+            "targetText": "Problem polega na tym, że stary element nie pasuje do nowego urządzenia.",
+            "base": {
+              "de": "Das Problem besteht darin, dass das alte Teil nicht zum neuen Gerät passt.",
+              "en": "The problem is that the old part does not fit the new device."
+            },
+            "highlights": [
+              "Problem polega na tym, że"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "polega",
+          "kind": "verb",
+          "base": {
+            "de": "besteht darin",
+            "en": "consists in; is that"
+          },
+          "acceptedAnswers": [
+            "polega"
+          ],
+          "lemma": "polegać"
+        },
+        {
+          "targetText": "dlatego że",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          },
+          "acceptedAnswers": [
+            "dlatego że",
+            "dlatego ze"
+          ]
+        },
+        {
+          "targetText": "najpierw",
+          "kind": "connector",
+          "base": {
+            "de": "zunächst",
+            "en": "first"
+          },
+          "acceptedAnswers": [
+            "najpierw"
+          ]
+        },
+        {
+          "targetText": "dostawca",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferant",
+            "en": "supplier"
+          },
+          "acceptedAnswers": [
+            "dostawca"
+          ]
+        },
+        {
+          "targetText": "specyfikację",
+          "kind": "noun",
+          "base": {
+            "de": "Spezifikation",
+            "en": "specification"
+          },
+          "acceptedAnswers": [
+            "specyfikację",
+            "specyfikacje"
+          ],
+          "lemma": "specyfikacja"
+        },
+        {
+          "targetText": "komponent",
+          "kind": "noun",
+          "base": {
+            "de": "Bauteil",
+            "en": "component"
+          },
+          "acceptedAnswers": [
+            "komponent"
+          ]
+        },
+        {
+          "targetText": "zdobyć",
+          "kind": "verb",
+          "base": {
+            "de": "beschaffen",
+            "en": "obtain"
+          },
+          "acceptedAnswers": [
+            "zdobyć",
+            "zdobyc"
+          ]
+        },
+        {
+          "targetText": "przyszłość",
+          "kind": "noun",
+          "base": {
+            "de": "Zukunft",
+            "en": "future"
+          },
+          "acceptedAnswers": [
+            "przyszłość",
+            "przyszlosc"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "polega",
+            "dostawca",
+            "specyfikację"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "informacja",
+            "dwunastego",
+            "sprawdzał"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "termin",
+            "proponuję",
+            "zmiana"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "polegać",
+        "familyKey": "polegać",
+        "surface": "polega",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Problem polega na tym, że dostawca zmienił specyfikację w połowie prac, dlatego że jego poprzedni komponent przestał być produkowany.",
+          "base": {
+            "de": "Das Problem besteht darin, dass der Lieferant die Spezifikation mitten in der Arbeit geändert hat, weil sein bisheriges Bauteil nicht mehr hergestellt wurde.",
+            "en": "The problem is that the supplier changed the specification halfway through the work because its previous component was no longer being manufactured."
+          }
+        },
+        "base": {
+          "de": "bestehen in",
+          "en": "consist in"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "loyalty-points",
+      "title": {
+        "de": "Treuepunkte nachrechnen",
+        "en": "Work out loyalty points"
+      },
+      "situation": {
+        "de": "Eine Freundin möchte das Punktesystem der Cafékarte verstehen.",
+        "en": "A friend wants to understand the points system on a café card."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Freundin",
+            "en": "female friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Café fragt sie: „Ta karta lojalnościowa w kawiarni naprawdę coś daje? Nie rozumiem tych punktów.”",
+        "en": "In the café, she asks: „Ta karta lojalnościowa w kawiarni naprawdę coś daje? Nie rozumiem tych punktów.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ta karta lojalnościowa w kawiarni naprawdę coś daje? Nie rozumiem tych punktów.",
+          "base": {
+            "de": "Bringt diese Treuekarte im Café wirklich etwas? Ich verstehe diese Punkte nicht.",
+            "en": "Does this café loyalty card really get you anything? I don't understand the points."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Z regulaminu wynika, że za każde dziesięć złotych dostajesz punkt, a sto punktów zamienia się na darmowy napój.",
+          "base": {
+            "de": "Aus den Bedingungen geht hervor, dass du für jeweils zehn Złoty einen Punkt bekommst und hundert Punkte gegen ein kostenloses Getränk getauscht werden.",
+            "en": "The terms say that you get one point for every ten zlotys and that one hundred points can be exchanged for a free drink."
+          },
+          "move": "explain",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Czyli muszę wydać tysiąc złotych na jeden darmowy napój? Policz mi to dokładnie.",
+          "base": {
+            "de": "Also muss ich eintausend Złoty für ein kostenloses Getränk ausgeben? Rechne mir das genau vor.",
+            "en": "So I have to spend one thousand zlotys for one free drink? Work it out for me exactly."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nie całkiem: w poniedziałki punkty liczą się podwójnie, więc dwie kawy po dziesięć złotych co poniedziałek to pięćset złotych i napój po pół roku.",
+          "base": {
+            "de": "Nicht ganz: Montags zählen die Punkte doppelt; mit zwei Kaffees zu je zehn Złoty an jedem Montag kommst du also nach einem halben Jahr auf insgesamt fünfhundert Złoty und ein Getränk.",
+            "en": "Not quite: points count double on Mondays, so two coffees at ten zlotys each every Monday add up to five hundred zlotys in total and a drink after six months."
+          },
+          "move": "clarify",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pół roku na jedną kawę. Powiedz mi wprost: warto się rejestrować czy nie?",
+          "base": {
+            "de": "Sechs Monate für einen Kaffee. Sag mir direkt: Lohnt es sich, sich anzumelden, oder nicht?",
+            "en": "Six months for one coffee. Tell me straight: is it worth signing up or not?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wprost: jeśli i tak kupujesz tam kawę, rejestruj się, bo nic nie tracisz; specjalnie dla punktów nie chodź.",
+          "base": {
+            "de": "Direkt gesagt: Wenn du dort ohnehin Kaffee kaufst, melde dich an, denn du verlierst nichts; nur wegen der Punkte solltest du nicht hingehen.",
+            "en": "Straight answer: if you buy coffee there anyway, sign up, because you lose nothing; don't go specially for the points."
+          },
+          "move": "conclude",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Z regulaminu ",
+        "chunks": [
+          "wynika,",
+          "że",
+          "za każde dziesięć złotych",
+          "dostajesz punkt,",
+          "a sto punktów"
+        ],
+        "distractors": [
+          "dostając",
+          "za każdy dziesięć złotych"
+        ],
+        "frameSuffix": " zamienia się na darmowy napój."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": w poniedziałki punkty liczą się "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", więc dwie kawy po dziesięć złotych co poniedziałek to pięćset złotych i napój po pół roku."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Nie całkiem",
+            "acceptedAnswers": [
+              "Nie całkiem",
+              "Nie calkiem"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Nie całkiem",
+              "Nie całego",
+              "Nie całemu",
+              "Nie całej"
+            ]
+          },
+          {
+            "answer": "podwójnie",
+            "acceptedAnswers": [
+              "podwójnie",
+              "podwojnie"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Bilde das Adverb zu podwójny.",
+              "en": "Form the adverb from podwójny."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": jeśli i tak kupujesz tam kawę, rejestruj się, bo nic nie tracisz; specjalnie dla punktów nie chodź."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Wprost",
+            "acceptedAnswers": [
+              "Wprost"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Wprost",
+              "Prostą",
+              "Prostemu",
+              "Prostej"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Z regulaminu ",
+        "answer": "wynika",
+        "acceptedAnswers": [
+          "wynika",
+          "można wywnioskować",
+          "mozna wywnioskowac"
+        ],
+        "after": ", że za każde dziesięć złotych dostajesz punkt, a sto punktów zamienia się na darmowy napój.",
+        "fallbackChoices": [
+          "wynika",
+          "wynikając",
+          "wynikania",
+          "wynikać"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Regel aus den Bedingungen ableiten",
+          "en": "Draw a rule from the terms"
+        },
+        "rule": {
+          "de": "Z regulaminu wynika, że verweist auf eine Aussage, die sich aus den genannten Bedingungen ergibt.",
+          "en": "Z regulaminu wynika, że points to a statement derived from the specified terms."
+        },
+        "examples": [
+          {
+            "targetText": "Z regulaminu wynika, że za każde dziesięć złotych dostajesz punkt, a sto punktów zamienia się na darmowy napój.",
+            "base": {
+              "de": "Aus den Bedingungen geht hervor, dass du für jeweils zehn Złoty einen Punkt bekommst und hundert Punkte gegen ein kostenloses Getränk getauscht werden.",
+              "en": "The terms say that you get one point for every ten zlotys and that one hundred points can be exchanged for a free drink."
+            },
+            "highlights": [
+              "Z regulaminu wynika, że"
+            ]
+          },
+          {
+            "targetText": "Z regulaminu wynika, że kupon działa tylko w tej kawiarni.",
+            "base": {
+              "de": "Aus den Bedingungen geht hervor, dass der Gutschein nur in diesem Café gilt.",
+              "en": "The terms say that the voucher works only at this café."
+            },
+            "highlights": [
+              "Z regulaminu wynika, że"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "wynika",
+          "kind": "verb",
+          "base": {
+            "de": "geht hervor",
+            "en": "follows; is stated"
+          },
+          "acceptedAnswers": [
+            "wynika"
+          ],
+          "lemma": "wynikać"
+        },
+        {
+          "targetText": "Nie całkiem",
+          "kind": "frame",
+          "base": {
+            "de": "nicht ganz",
+            "en": "not quite"
+          },
+          "acceptedAnswers": [
+            "Nie całkiem",
+            "Nie calkiem"
+          ]
+        },
+        {
+          "targetText": "więc",
+          "kind": "connector",
+          "base": {
+            "de": "also",
+            "en": "so"
+          },
+          "acceptedAnswers": [
+            "więc",
+            "wiec"
+          ]
+        },
+        {
+          "targetText": "regulaminu",
+          "kind": "noun",
+          "base": {
+            "de": "Bedingungen",
+            "en": "terms; rules"
+          },
+          "acceptedAnswers": [
+            "regulaminu"
+          ],
+          "lemma": "regulamin"
+        },
+        {
+          "targetText": "darmowy",
+          "kind": "adjective",
+          "base": {
+            "de": "kostenlos",
+            "en": "free"
+          },
+          "acceptedAnswers": [
+            "darmowy"
+          ]
+        },
+        {
+          "targetText": "podwójnie",
+          "kind": "adverb",
+          "base": {
+            "de": "doppelt",
+            "en": "double"
+          },
+          "acceptedAnswers": [
+            "podwójnie",
+            "podwojnie"
+          ]
+        },
+        {
+          "targetText": "rejestrować",
+          "kind": "verb",
+          "base": {
+            "de": "registrieren",
+            "en": "register"
+          },
+          "acceptedAnswers": [
+            "rejestrować",
+            "rejestrowac"
+          ]
+        },
+        {
+          "targetText": "specjalnie",
+          "kind": "adverb",
+          "base": {
+            "de": "eigens; extra",
+            "en": "specially"
+          },
+          "acceptedAnswers": [
+            "specjalnie"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "wynika",
+            "dostajesz",
+            "punktów"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "kawy",
+            "podwójnie",
+            "poniedziałek"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "wprost",
+            "kupujesz",
+            "tracisz"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "wynikać",
+        "familyKey": "wynikać",
+        "surface": "wynika",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Z regulaminu wynika, że za każde dziesięć złotych dostajesz punkt, a sto punktów zamienia się na darmowy napój.",
+          "base": {
+            "de": "Aus den Bedingungen geht hervor, dass du für jeweils zehn Złoty einen Punkt bekommst und hundert Punkte gegen ein kostenloses Getränk getauscht werden.",
+            "en": "The terms say that you get one point for every ten zlotys and that one hundred points can be exchanged for a free drink."
+          }
+        },
+        "base": {
+          "de": "sich ergeben; hervorgehen",
+          "en": "follow; result"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "provider-switch",
+      "title": {
+        "de": "Den Internetanbieter wechseln",
+        "en": "Switch internet providers"
+      },
+      "situation": {
+        "de": "Eine Nachbarin erkundigt sich nach einem Technikerbesuch im Haus.",
+        "en": "A neighbour asks about a technician's visit to the building."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Nachbarin",
+            "en": "female neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Auf dem Treppenabsatz fragt sie: „Widziałam technika z innej sieci na klatce. To zmiana dostawcy internetu? Dlaczego?”",
+        "en": "On the landing, she asks: „Widziałam technika z innej sieci na klatce. To zmiana dostawcy internetu? Dlaczego?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Widziałam technika z innej sieci na klatce. To zmiana dostawcy internetu? Dlaczego?",
+          "base": {
+            "de": "Ich habe im Treppenhaus einen Techniker eines anderen Netzes gesehen. Wird der Internetanbieter gewechselt? Warum?",
+            "en": "I saw a technician from another network in the stairwell. Is this a change of internet provider? Why?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tak, bo na etapie przedłużania umowy stary dostawca podniósł cenę o czterdzieści procent, a prędkość została ta sama.",
+          "base": {
+            "de": "Ja, denn bei der Vertragsverlängerung erhöhte der bisherige Anbieter den Preis um vierzig Prozent, während die Geschwindigkeit gleich blieb.",
+            "en": "Yes, because at the contract renewal stage the old provider increased the price by forty percent, while the speed stayed the same."
+          },
+          "move": "explain",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Czterdzieści procent to dużo. Ale czy nowa sieć ma w ogóle zasięg w naszym budynku? U mnie często nie działa.",
+          "base": {
+            "de": "Vierzig Prozent sind viel. Aber hat das neue Netz überhaupt Empfang in unserem Gebäude? Bei mir funktioniert es oft nicht.",
+            "en": "Forty percent is a lot. But does the new network have coverage in our building at all? Mine often doesn't work."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mówiąc precyzyjnie: światłowód położono w maju do każdego mieszkania w budynku, więc sygnał wi-fi w mieszkaniu zależy głównie od routera.",
+          "base": {
+            "de": "Genau gesagt wurde im Mai Glasfaser in jede Wohnung im Gebäude gelegt; das WLAN-Signal in der Wohnung hängt also hauptsächlich vom Router ab.",
+            "en": "Precisely speaking, fibre was installed in every flat in the building in May, so the Wi-Fi signal in the flat depends mainly on the router."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "A gdybym ja chciała zmienić? Od czego zacząć, żeby nie zostać bez internetu?",
+          "base": {
+            "de": "Und wenn ich wechseln wollte? Womit sollte ich anfangen, damit ich nicht ohne Internet bleibe?",
+            "en": "And if I wanted to switch? Where should I start to avoid being left without internet?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "W trzech krokach: najpierw umowa z nową siecią, w dniu instalacji oba łącza działają równolegle, starą umowę wypowiada się dopiero potem.",
+          "base": {
+            "de": "In drei Schritten: zuerst ein Vertrag mit dem neuen Netz, am Installationstag laufen beide Anschlüsse parallel, erst danach kündigt man den alten Vertrag.",
+            "en": "In three steps: first a contract with the new network; on installation day both connections operate in parallel; only then is the old contract cancelled."
+          },
+          "move": "summarize",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Tak, bo na etapie przedłużania umowy ",
+        "chunks": [
+          "stary dostawca podniósł cenę",
+          "o czterdzieści procent,",
+          "a",
+          "prędkość",
+          "została ta sama."
+        ],
+        "distractors": [
+          "stary dostawca podniosła",
+          "ta samą"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": światłowód położono w maju do "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " mieszkania w budynku, więc sygnał wi-fi w mieszkaniu zależy głównie od routera."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mówiąc precyzyjnie",
+            "acceptedAnswers": [
+              "Mówiąc precyzyjnie",
+              "Mowiac precyzyjnie"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mówiąc precyzyjnie",
+              "Mówić precyzyjnie",
+              "Mówiono precyzyjnie",
+              "Mówi precyzyjnie"
+            ]
+          },
+          {
+            "answer": "każdego",
+            "acceptedAnswers": [
+              "każdego",
+              "kazdego"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze każdy passend zu do … mieszkania ein.",
+              "en": "Use każdy in the form required by do … mieszkania."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": najpierw umowa z nową siecią, w dniu instalacji oba łącza działają równolegle, starą umowę wypowiada się dopiero potem."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "W trzech krokach",
+            "acceptedAnswers": [
+              "W trzech krokach"
+            ],
+            "kind": "frame",
+            "choices": [
+              "W trzech krokach",
+              "W trzy krokach",
+              "W trzem krokach",
+              "W trzema krokach"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Tak, bo na ",
+        "answer": "etapie",
+        "acceptedAnswers": [
+          "etapie",
+          "początku",
+          "poczatku"
+        ],
+        "after": " przedłużania umowy stary dostawca podniósł cenę o czterdzieści procent, a prędkość została ta sama.",
+        "fallbackChoices": [
+          "etapie",
+          "etap",
+          "etapu",
+          "etapem"
+        ]
+      },
+      "pattern": {
+        "moveType": "summarize",
+        "label": {
+          "de": "Eine Reihenfolge absichern",
+          "en": "Make a sequence clear"
+        },
+        "rule": {
+          "de": "Najpierw und dopiero potem markieren eine Reihenfolge, bei der der spätere Schritt auf den ersten warten soll.",
+          "en": "Najpierw and dopiero potem mark a sequence in which the later step should wait for the first."
+        },
+        "examples": [
+          {
+            "targetText": "W trzech krokach: najpierw umowa z nową siecią, w dniu instalacji oba łącza działają równolegle, starą umowę wypowiada się dopiero potem.",
+            "base": {
+              "de": "In drei Schritten: zuerst ein Vertrag mit dem neuen Netz, am Installationstag laufen beide Anschlüsse parallel, erst danach kündigt man den alten Vertrag.",
+              "en": "In three steps: first a contract with the new network; on installation day both connections operate in parallel; only then is the old contract cancelled."
+            },
+            "highlights": [
+              "najpierw",
+              "dopiero potem"
+            ]
+          },
+          {
+            "targetText": "Najpierw sprawdzamy nowe łącze, a starą umowę wypowiadamy dopiero potem.",
+            "base": {
+              "de": "Zuerst prüfen wir den neuen Anschluss und kündigen erst danach den alten Vertrag.",
+              "en": "First we check the new connection, and only then do we cancel the old contract."
+            },
+            "highlights": [
+              "Najpierw",
+              "dopiero potem"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "etapie",
+          "kind": "noun",
+          "base": {
+            "de": "Phase; Stadium",
+            "en": "stage"
+          },
+          "acceptedAnswers": [
+            "etapie"
+          ],
+          "lemma": "etap"
+        },
+        {
+          "targetText": "Mówiąc precyzyjnie",
+          "kind": "frame",
+          "base": {
+            "de": "genau gesagt",
+            "en": "precisely speaking"
+          },
+          "acceptedAnswers": [
+            "Mówiąc precyzyjnie",
+            "Mowiac precyzyjnie"
+          ]
+        },
+        {
+          "targetText": "dopiero potem",
+          "kind": "frame",
+          "base": {
+            "de": "erst danach",
+            "en": "only then"
+          },
+          "acceptedAnswers": [
+            "dopiero potem"
+          ]
+        },
+        {
+          "targetText": "dostawca",
+          "kind": "noun",
+          "base": {
+            "de": "Anbieter",
+            "en": "provider"
+          },
+          "acceptedAnswers": [
+            "dostawca"
+          ]
+        },
+        {
+          "targetText": "światłowód",
+          "kind": "noun",
+          "base": {
+            "de": "Glasfaser",
+            "en": "fibre-optic cable"
+          },
+          "acceptedAnswers": [
+            "światłowód",
+            "swiatlowod"
+          ]
+        },
+        {
+          "targetText": "położono",
+          "kind": "verb",
+          "base": {
+            "de": "es wurde verlegt",
+            "en": "was installed"
+          },
+          "acceptedAnswers": [
+            "położono",
+            "polozono"
+          ],
+          "lemma": "położyć"
+        },
+        {
+          "targetText": "równolegle",
+          "kind": "adverb",
+          "base": {
+            "de": "parallel",
+            "en": "in parallel"
+          },
+          "acceptedAnswers": [
+            "równolegle",
+            "rownolegle"
+          ]
+        },
+        {
+          "targetText": "routera",
+          "kind": "noun",
+          "base": {
+            "de": "Router",
+            "en": "router"
+          },
+          "acceptedAnswers": [
+            "routera"
+          ],
+          "lemma": "router"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "dostawca",
+            "podniósł",
+            "prędkość"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "światłowód",
+            "położono",
+            "routera"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "najpierw",
+            "równolegle",
+            "wypowiada"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "etap",
+        "familyKey": "etap",
+        "surface": "etapie",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Tak, bo na etapie przedłużania umowy stary dostawca podniósł cenę o czterdzieści procent, a prędkość została ta sama.",
+          "base": {
+            "de": "Ja, denn bei der Vertragsverlängerung erhöhte der bisherige Anbieter den Preis um vierzig Prozent, während die Geschwindigkeit gleich blieb.",
+            "en": "Yes, because at the contract renewal stage the old provider increased the price by forty percent, while the speed stayed the same."
+          }
+        },
+        "base": {
+          "de": "Phase; Stadium",
+          "en": "stage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "garage-fine-appeal",
+      "title": {
+        "de": "Eine Zahlungsaufforderung anfechten",
+        "en": "Challenge a payment demand"
+      },
+      "situation": {
+        "de": "Ein Kollege zeigt eine Zahlungsaufforderung des Betreibers der Bürogarage.",
+        "en": "A colleague shows you a payment demand from the office garage operator."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Arbeitskollege",
+            "en": "male colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Büro sagt er: „Dostałem wezwanie do zapłaty z garażu pod biurem, dwieście złotych. Da się to jakoś odwołać?”",
+        "en": "At the office, he says: „Dostałem wezwanie do zapłaty z garażu pod biurem, dwieście złotych. Da się to jakoś odwołać?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Dostałem wezwanie do zapłaty z garażu pod biurem, dwieście złotych. Da się to jakoś odwołać?",
+          "base": {
+            "de": "Ich habe eine Zahlungsaufforderung aus der Garage unter dem Büro bekommen, zweihundert Złoty. Kann man dagegen irgendwie Einspruch einlegen?",
+            "en": "I got a payment demand from the garage under the office, two hundred zlotys. Is there any way to challenge it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Da się, mianowicie przez formularz na stronie operatora garażu, do którego dołączasz zdjęcie biletu i krótkie uzasadnienie.",
+          "base": {
+            "de": "Das geht, und zwar über das Formular auf der Website des Garagenbetreibers, dem du ein Foto des Tickets und eine kurze Begründung beifügst.",
+            "en": "You can, specifically through the form on the garage operator's website, to which you attach a photo of the ticket and a short explanation."
+          },
+          "move": "explain",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "A jeśli nie mam już biletu? Wyrzuciłem go. Co wtedy wpisać w uzasadnienie?",
+          "base": {
+            "de": "Und wenn ich das Ticket nicht mehr habe? Ich habe es weggeworfen. Was schreibe ich dann in die Begründung?",
+            "en": "And if I no longer have the ticket? I threw it away. What should I put in the explanation then?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Według instrukcji zamiast biletu podajesz godzinę wjazdu i wyjazdu, bo ten operator sprawdza wtedy nagrania z kamer.",
+          "base": {
+            "de": "Laut Anleitung gibst du statt des Tickets die Ein- und Ausfahrtszeit an, denn dieser Betreiber prüft dann die Kameraaufnahmen.",
+            "en": "According to the instructions, you enter your arrival and departure times instead of the ticket, because this operator then checks the camera recordings."
+          },
+          "move": "clarify",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Mam na to tylko siedem dni, a dziś piąty. Zrobimy to teraz razem?",
+          "base": {
+            "de": "Ich habe dafür nur sieben Tage, und heute ist der fünfte. Machen wir das jetzt zusammen?",
+            "en": "I only have seven days for this, and today is day five. Shall we do it together now?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tak, proponuję zrobić to zaraz: ty wypełniasz formularz, a ja szukam w kalendarzu godziny twojego spotkania z tego dnia.",
+          "base": {
+            "de": "Ja, ich schlage vor, es gleich zu machen: Du füllst das Formular aus, und ich suche im Kalender die Uhrzeit deines Termins an dem Tag.",
+            "en": "Yes, I suggest doing it now: you fill in the form, and I'll look in the calendar for the time of your meeting that day."
+          },
+          "move": "propose",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Da się,",
+          "mianowicie",
+          "przez formularz na stronie",
+          "operatora garażu,",
+          "do którego"
+        ],
+        "distractors": [
+          "Da siebie",
+          "do który"
+        ],
+        "frameSuffix": " dołączasz zdjęcie biletu i krótkie uzasadnienie."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Według instrukcji zamiast biletu podajesz godzinę "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " i wyjazdu, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ten operator sprawdza wtedy nagrania z kamer."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "wjazdu",
+            "acceptedAnswers": [
+              "wjazdu"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze wjazd als Ergänzung zu godzinę in den Genitiv.",
+              "en": "Use the genitive of wjazd after godzinę."
+            }
+          },
+          {
+            "answer": "bo",
+            "acceptedAnswers": [
+              "bo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "bo",
+              "którego",
+              "wbrew",
+              "pomimo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tak, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " to zaraz: ty wypełniasz formularz, a ja szukam w kalendarzu godziny twojego spotkania z tego dnia."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "proponuję zrobić",
+            "acceptedAnswers": [
+              "proponuję zrobić",
+              "proponuje zrobic"
+            ],
+            "kind": "frame",
+            "choices": [
+              "proponuję zrobić",
+              "proponuję zrobię",
+              "proponuję zrobił",
+              "proponuję zrobienia"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Da się, ",
+        "answer": "mianowicie",
+        "acceptedAnswers": [
+          "mianowicie",
+          "konkretnie",
+          "to znaczy",
+          "a konkretnie"
+        ],
+        "after": " przez formularz na stronie operatora garażu, do którego dołączasz zdjęcie biletu i krótkie uzasadnienie.",
+        "fallbackChoices": [
+          "mianowicie",
+          "mianowany",
+          "mianowana",
+          "mianowanego"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine konkrete Möglichkeit erläutern",
+          "en": "Specify a concrete option"
+        },
+        "rule": {
+          "de": "Mianowicie kündigt die nähere Erläuterung an, und do którego bezieht sich hier auf das Formular, dem etwas beigefügt wird.",
+          "en": "Mianowicie introduces the detail, and do którego refers here to the form to which something is attached."
+        },
+        "examples": [
+          {
+            "targetText": "Da się, mianowicie przez formularz na stronie operatora garażu, do którego dołączasz zdjęcie biletu i krótkie uzasadnienie.",
+            "base": {
+              "de": "Das geht, und zwar über das Formular auf der Website des Garagenbetreibers, dem du ein Foto des Tickets und eine kurze Begründung beifügst.",
+              "en": "You can, specifically through the form on the garage operator's website, to which you attach a photo of the ticket and a short explanation."
+            },
+            "highlights": [
+              "mianowicie",
+              "do którego"
+            ]
+          },
+          {
+            "targetText": "Potrzebny jest jeden dokument, mianowicie formularz, do którego dołączasz rachunek.",
+            "base": {
+              "de": "Es wird ein Dokument benötigt, und zwar das Formular, dem du die Rechnung beifügst.",
+              "en": "One document is needed, namely the form to which you attach the receipt."
+            },
+            "highlights": [
+              "mianowicie",
+              "do którego"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "mianowicie",
+          "kind": "connector",
+          "base": {
+            "de": "und zwar; nämlich",
+            "en": "namely; specifically"
+          },
+          "acceptedAnswers": [
+            "mianowicie"
+          ]
+        },
+        {
+          "targetText": "Da się",
+          "kind": "frame",
+          "base": {
+            "de": "es ist möglich",
+            "en": "it can be done"
+          },
+          "acceptedAnswers": [
+            "Da się",
+            "Da sie"
+          ]
+        },
+        {
+          "targetText": "zamiast",
+          "kind": "phrase",
+          "base": {
+            "de": "anstelle von",
+            "en": "instead of"
+          },
+          "acceptedAnswers": [
+            "zamiast"
+          ]
+        },
+        {
+          "targetText": "formularz",
+          "kind": "noun",
+          "base": {
+            "de": "Formular",
+            "en": "form"
+          },
+          "acceptedAnswers": [
+            "formularz"
+          ]
+        },
+        {
+          "targetText": "uzasadnienie",
+          "kind": "noun",
+          "base": {
+            "de": "Begründung",
+            "en": "explanation; justification"
+          },
+          "acceptedAnswers": [
+            "uzasadnienie"
+          ]
+        },
+        {
+          "targetText": "biletu",
+          "kind": "noun",
+          "base": {
+            "de": "Ticket",
+            "en": "ticket"
+          },
+          "acceptedAnswers": [
+            "biletu"
+          ],
+          "lemma": "bilet"
+        },
+        {
+          "targetText": "nagrania",
+          "kind": "noun",
+          "base": {
+            "de": "Aufnahmen",
+            "en": "recordings"
+          },
+          "acceptedAnswers": [
+            "nagrania"
+          ],
+          "lemma": "nagranie"
+        },
+        {
+          "targetText": "wypełniasz",
+          "kind": "verb",
+          "base": {
+            "de": "du füllst aus",
+            "en": "you fill in"
+          },
+          "acceptedAnswers": [
+            "wypełniasz",
+            "wypelniasz"
+          ],
+          "lemma": "wypełniać"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "mianowicie",
+            "formularz",
+            "operatora"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "instrukcji",
+            "wjazdu",
+            "nagrania"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "proponuję",
+            "wypełniasz",
+            "kalendarzu"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "mianowicie",
+        "familyKey": "mianowicie",
+        "surface": "mianowicie",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Da się, mianowicie przez formularz na stronie operatora garażu, do którego dołączasz zdjęcie biletu i krótkie uzasadnienie.",
+          "base": {
+            "de": "Das geht, und zwar über das Formular auf der Website des Garagenbetreibers, dem du ein Foto des Tickets und eine kurze Begründung beifügst.",
+            "en": "You can, specifically through the form on the garage operator's website, to which you attach a photo of the ticket and a short explanation."
+          }
+        },
+        "base": {
+          "de": "nämlich; und zwar",
+          "en": "namely; specifically"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "car-share-failed",
+      "title": {
+        "de": "Warum der gemeinsame Autokauf scheiterte",
+        "en": "Why the shared car purchase fell through"
+      },
+      "situation": {
+        "de": "Eine Bekannte fragt nach dem geplanten Autokauf mit Nachbarn.",
+        "en": "A friend asks about a planned car purchase with neighbours."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Bekannte",
+            "en": "female friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Wiedersehen fragt sie: „Co się stało z twoim planem wspólnego zakupu samochodu z sąsiadami? Cisza od miesiąca.”",
+        "en": "When you meet again, she asks: „Co się stało z twoim planem wspólnego zakupu samochodu z sąsiadami? Cisza od miesiąca.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Co się stało z twoim planem wspólnego zakupu samochodu z sąsiadami? Cisza od miesiąca.",
+          "base": {
+            "de": "Was ist aus deinem Plan geworden, mit den Nachbarn ein Auto zu kaufen? Seit einem Monat hört man nichts.",
+            "en": "What happened to your plan to buy a car together with the neighbours? It's been quiet for a month."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Plan upadł, bo ubezpieczenie trzeba było zapłacić z góry, a skutkiem tego dwie rodziny się wycofały.",
+          "base": {
+            "de": "Der Plan scheiterte, weil die Versicherung im Voraus bezahlt werden musste und deshalb zwei Familien ausstiegen.",
+            "en": "The plan fell through because the insurance had to be paid in advance, and as a result two families withdrew."
+          },
+          "move": "explain",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Z góry za cały rok? Ile to dokładnie wychodziło na rodzinę i kto to policzył?",
+          "base": {
+            "de": "Im Voraus für das ganze Jahr? Wie viel war das genau pro Familie, und wer hat es ausgerechnet?",
+            "en": "In advance for the whole year? How much exactly was that per family, and who worked it out?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dokładnie dziewięćset złotych na rodzinę, policzył to Marek, bo tylko on rozmawiał z ubezpieczycielem.",
+          "base": {
+            "de": "Genau neunhundert Złoty pro Familie; Marek hat es ausgerechnet, weil nur er mit dem Versicherer gesprochen hat.",
+            "en": "Exactly nine hundred zlotys per family; Marek worked it out because only he spoke to the insurer."
+          },
+          "move": "clarify",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "No to zawaliło się na pieniądzach. Co zrobisz z autem, które już oglądaliście?",
+          "base": {
+            "de": "Dann ist es am Geld gescheitert. Was machst du mit dem Auto, das ihr schon besichtigt habt?",
+            "en": "So it fell apart over money. What will you do about the car you've already viewed?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Z tego auta rezygnuję; wniosek na przyszłość jest prosty: najpierw pełne koszty na papierze, dopiero potem umowa.",
+          "base": {
+            "de": "Auf dieses Auto verzichte ich; die Lehre für die Zukunft ist einfach: zuerst die vollständigen Kosten auf Papier, erst danach der Vertrag.",
+            "en": "I'm giving up on that car; the lesson for the future is simple: first get the full costs on paper, and only then the contract."
+          },
+          "move": "conclude",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Plan upadł, bo ubezpieczenie trzeba było ",
+        "chunks": [
+          "zapłacić",
+          "z góry,",
+          "a",
+          "skutkiem tego",
+          "dwie rodziny się wycofały."
+        ],
+        "distractors": [
+          "z górę",
+          "dwie rodzina"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Dokładnie dziewięćset złotych na rodzinę, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " to Marek, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tylko on rozmawiał z ubezpieczycielem."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "policzył",
+            "acceptedAnswers": [
+              "policzył",
+              "policzyl"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze policzyć in die dritte Person Singular der Vergangenheit, passend zu Marek.",
+              "en": "Use policzyć in the third-person singular past tense, agreeing with Marek."
+            }
+          },
+          {
+            "answer": "bo",
+            "acceptedAnswers": [
+              "bo"
+            ],
+            "kind": "connector",
+            "choices": [
+              "bo",
+              "którego",
+              "wbrew",
+              "pomimo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Z tego auta rezygnuję; wniosek na przyszłość jest prosty: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " pełne koszty na papierze, dopiero potem umowa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "najpierw",
+            "acceptedAnswers": [
+              "najpierw"
+            ],
+            "kind": "connector",
+            "choices": [
+              "najpierw",
+              "pierwszy",
+              "pierwszą",
+              "pierwszego"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Plan upadł, bo ubezpieczenie trzeba było zapłacić z góry, a ",
+        "answer": "skutkiem",
+        "acceptedAnswers": [
+          "skutkiem",
+          "wskutek",
+          "w wyniku",
+          "w rezultacie"
+        ],
+        "after": " tego dwie rodziny się wycofały.",
+        "fallbackChoices": [
+          "skutkiem",
+          "skutek",
+          "skutku",
+          "skutkowi"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Folge benennen",
+          "en": "Name a consequence"
+        },
+        "rule": {
+          "de": "Skutkiem tego verweist auf die vorher genannte Ursache und führt deren Folge ein.",
+          "en": "Skutkiem tego refers to the preceding cause and introduces its consequence."
+        },
+        "examples": [
+          {
+            "targetText": "Plan upadł, bo ubezpieczenie trzeba było zapłacić z góry, a skutkiem tego dwie rodziny się wycofały.",
+            "base": {
+              "de": "Der Plan scheiterte, weil die Versicherung im Voraus bezahlt werden musste und deshalb zwei Familien ausstiegen.",
+              "en": "The plan fell through because the insurance had to be paid in advance, and as a result two families withdrew."
+            },
+            "highlights": [
+              "skutkiem tego"
+            ]
+          },
+          {
+            "targetText": "Cena wzrosła, a skutkiem tego część osób zrezygnowała z zakupu.",
+            "base": {
+              "de": "Der Preis stieg, und infolgedessen verzichtete ein Teil der Personen auf den Kauf.",
+              "en": "The price rose, and as a result some people decided against buying."
+            },
+            "highlights": [
+              "skutkiem tego"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "skutkiem",
+          "kind": "noun",
+          "base": {
+            "de": "Folge",
+            "en": "consequence"
+          },
+          "acceptedAnswers": [
+            "skutkiem"
+          ],
+          "lemma": "skutek"
+        },
+        {
+          "targetText": "bo",
+          "kind": "connector",
+          "base": {
+            "de": "weil",
+            "en": "because"
+          },
+          "acceptedAnswers": [
+            "bo"
+          ]
+        },
+        {
+          "targetText": "dopiero potem",
+          "kind": "frame",
+          "base": {
+            "de": "erst danach",
+            "en": "only then"
+          },
+          "acceptedAnswers": [
+            "dopiero potem"
+          ]
+        },
+        {
+          "targetText": "ubezpieczenie",
+          "kind": "noun",
+          "base": {
+            "de": "Versicherung",
+            "en": "insurance"
+          },
+          "acceptedAnswers": [
+            "ubezpieczenie"
+          ]
+        },
+        {
+          "targetText": "się wycofały",
+          "kind": "verb",
+          "base": {
+            "de": "sie zogen sich zurück",
+            "en": "they withdrew"
+          },
+          "acceptedAnswers": [
+            "się wycofały",
+            "sie wycofaly"
+          ],
+          "lemma": "wycofać się"
+        },
+        {
+          "targetText": "ubezpieczycielem",
+          "kind": "noun",
+          "base": {
+            "de": "Versicherer",
+            "en": "insurer"
+          },
+          "acceptedAnswers": [
+            "ubezpieczycielem"
+          ],
+          "lemma": "ubezpieczyciel"
+        },
+        {
+          "targetText": "rezygnuję",
+          "kind": "verb",
+          "base": {
+            "de": "ich verzichte",
+            "en": "I give up; withdraw"
+          },
+          "acceptedAnswers": [
+            "rezygnuję",
+            "rezygnuje"
+          ],
+          "lemma": "rezygnować"
+        },
+        {
+          "targetText": "wniosek",
+          "kind": "noun",
+          "base": {
+            "de": "Schlussfolgerung",
+            "en": "conclusion"
+          },
+          "acceptedAnswers": [
+            "wniosek"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "zapłacić",
+            "skutkiem",
+            "rodziny"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "dokładnie",
+            "rodzinę",
+            "ubezpieczycielem"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "rezygnuję",
+            "wniosek",
+            "koszty"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "skutek",
+        "familyKey": "skutek",
+        "surface": "skutkiem",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Plan upadł, bo ubezpieczenie trzeba było zapłacić z góry, a skutkiem tego dwie rodziny się wycofały.",
+          "base": {
+            "de": "Der Plan scheiterte, weil die Versicherung im Voraus bezahlt werden musste und deshalb zwei Familien ausstiegen.",
+            "en": "The plan fell through because the insurance had to be paid in advance, and as a result two families withdrew."
+          }
+        },
+        "base": {
+          "de": "Folge; Wirkung",
+          "en": "consequence; effect"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "booking-system",
+      "title": {
+        "de": "Den Buchungsablauf erklären",
+        "en": "Explain the booking process"
+      },
+      "situation": {
+        "de": "Sie erklären als Empfangskraft einer Zahnarztpraxis der IT-Beraterin den bisherigen Buchungsablauf.",
+        "en": "As a dental practice receptionist, you explain the current booking process to an IT consultant."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "IT-Beraterin",
+            "en": "female IT consultant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Beraterin beginnt mit einer Frage: „Zanim zaproponuję zmiany, proszę opisać, jak dziś wygląda u państwa rezerwacja wizyt.”",
+        "en": "The consultant starts with a question: „Zanim zaproponuję zmiany, proszę opisać, jak dziś wygląda u państwa rezerwacja wizyt.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Zanim zaproponuję zmiany, proszę opisać, jak dziś wygląda u państwa rezerwacja wizyt.",
+          "base": {
+            "de": "Bevor ich Änderungen vorschlage, beschreiben Sie bitte, wie bei Ihnen derzeit Termine gebucht werden.",
+            "en": "Before I propose changes, please describe how appointments are currently booked at your practice."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie dzień wcześniej; wprowadzono go, bo stary kalendarz papierowy doprowadził do podwójnych rezerwacji.",
+          "base": {
+            "de": "Der Patient bucht online, das System schickt eine Bestätigung und am Vortag eine Erinnerung; es wurde eingeführt, weil der alte Papierkalender zu Doppelbuchungen führte.",
+            "en": "The patient books online, and the system sends a confirmation and a reminder the day before; it was introduced because the old paper diary led to double bookings."
+          },
+          "move": "explain",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Jak często zdarzały się te podwójne rezerwacje i co dokładnie dzieje się, gdy pacjent nie przyjdzie?",
+          "base": {
+            "de": "Wie oft kamen diese Doppelbuchungen vor, und was genau passiert, wenn ein Patient nicht erscheint?",
+            "en": "How often did those double bookings happen, and what exactly happens when a patient doesn't turn up?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mniej więcej dwa razy w tygodniu; teraz po nieobecności system blokuje pacjentowi rezerwację online na trzydzieści dni.",
+          "base": {
+            "de": "Etwa zweimal pro Woche; jetzt sperrt das System nach einem versäumten Termin die Onlinebuchung für den Patienten für dreißig Tage.",
+            "en": "Roughly twice a week; now, after a missed appointment, the system blocks the patient's online booking for thirty days."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dziękuję. Proszę jeszcze o jedno zdanie podsumowujące dla raportu: co działa, co nie.",
+          "base": {
+            "de": "Danke. Bitte noch einen zusammenfassenden Satz für den Bericht: Was funktioniert und was nicht?",
+            "en": "Thank you. Please give me one more sentence for the report summarizing what works and what doesn't."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Podsumowując: rezerwacje i przypomnienia działają bez zarzutu, natomiast blokada po nieobecności zniechęca starszych pacjentów, którzy dzwonią zamiast rezerwować.",
+          "base": {
+            "de": "Zusammenfassend: Buchungen und Erinnerungen funktionieren einwandfrei, aber die Sperre nach einem versäumten Termin schreckt ältere Patienten ab, die anrufen statt online zu buchen.",
+            "en": "To sum up: bookings and reminders work without problems, whereas the block after a missed appointment discourages older patients, who phone instead of booking online."
+          },
+          "move": "summarize",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie ",
+        "chunks": [
+          "dzień wcześniej;",
+          "wprowadzono go,",
+          "bo",
+          "stary kalendarz papierowy doprowadził",
+          "do podwójnych rezerwacji."
+        ],
+        "distractors": [
+          "stary kalendarz papierową",
+          "doprowadziła"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " dwa razy w tygodniu; teraz po "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " system blokuje pacjentowi rezerwację online na trzydzieści dni."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mniej więcej",
+            "acceptedAnswers": [
+              "Mniej więcej",
+              "Mniej wiecej"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mniej więcej",
+              "Nie więcej",
+              "Coraz więcej",
+              "Tym więcej"
+            ]
+          },
+          {
+            "answer": "nieobecności",
+            "acceptedAnswers": [
+              "nieobecności",
+              "nieobecnosci"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze nieobecność in die Form nach po ein.",
+              "en": "Use nieobecność in the form required after po."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": rezerwacje i przypomnienia działają bez zarzutu, natomiast blokada po nieobecności zniechęca starszych pacjentów, którzy dzwonią zamiast rezerwować."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Podsumowując",
+            "acceptedAnswers": [
+              "Podsumowując",
+              "Podsumowujac"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Podsumowując",
+              "Podsumowaniu",
+              "Podsumowania",
+              "Podsumowaniem"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie dzień wcześniej; wprowadzono go, bo stary kalendarz papierowy ",
+        "answer": "doprowadził",
+        "acceptedAnswers": [
+          "doprowadził",
+          "doprowadzil",
+          "prowadził",
+          "prowadzil"
+        ],
+        "after": " do podwójnych rezerwacji.",
+        "fallbackChoices": [
+          "doprowadził",
+          "doprowadziła",
+          "doprowadziły",
+          "doprowadzili"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Ursache rückblickend benennen",
+          "en": "Describe a cause in retrospect"
+        },
+        "rule": {
+          "de": "Doprowadził do verbindet hier ein männliches Subjekt mit einer Folge im Genitiv.",
+          "en": "Here doprowadził do links a masculine subject to a consequence expressed in the genitive."
+        },
+        "examples": [
+          {
+            "targetText": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie dzień wcześniej; wprowadzono go, bo stary kalendarz papierowy doprowadził do podwójnych rezerwacji.",
+            "base": {
+              "de": "Der Patient bucht online, das System schickt eine Bestätigung und am Vortag eine Erinnerung; es wurde eingeführt, weil der alte Papierkalender zu Doppelbuchungen führte.",
+              "en": "The patient books online, and the system sends a confirmation and a reminder the day before; it was introduced because the old paper diary led to double bookings."
+            },
+            "highlights": [
+              "kalendarz papierowy doprowadził do podwójnych rezerwacji"
+            ]
+          },
+          {
+            "targetText": "Błąd w kalendarzu doprowadził do dwóch rezerwacji na tę samą godzinę.",
+            "base": {
+              "de": "Ein Fehler im Kalender führte zu zwei Buchungen für dieselbe Uhrzeit.",
+              "en": "An error in the diary led to two bookings for the same time."
+            },
+            "highlights": [
+              "Błąd",
+              "doprowadził do"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "doprowadził",
+          "kind": "verb",
+          "base": {
+            "de": "führte zu",
+            "en": "led to"
+          },
+          "acceptedAnswers": [
+            "doprowadził",
+            "doprowadzil"
+          ],
+          "lemma": "doprowadzić"
+        },
+        {
+          "targetText": "Mniej więcej",
+          "kind": "frame",
+          "base": {
+            "de": "ungefähr",
+            "en": "roughly"
+          },
+          "acceptedAnswers": [
+            "Mniej więcej",
+            "Mniej wiecej"
+          ]
+        },
+        {
+          "targetText": "Podsumowując",
+          "kind": "connector",
+          "base": {
+            "de": "zusammenfassend",
+            "en": "to sum up"
+          },
+          "acceptedAnswers": [
+            "Podsumowując",
+            "Podsumowujac"
+          ]
+        },
+        {
+          "targetText": "przypomnienie",
+          "kind": "noun",
+          "base": {
+            "de": "Erinnerung",
+            "en": "reminder"
+          },
+          "acceptedAnswers": [
+            "przypomnienie"
+          ]
+        },
+        {
+          "targetText": "wprowadzono",
+          "kind": "verb",
+          "base": {
+            "de": "es wurde eingeführt",
+            "en": "was introduced"
+          },
+          "acceptedAnswers": [
+            "wprowadzono"
+          ],
+          "lemma": "wprowadzić"
+        },
+        {
+          "targetText": "kalendarz",
+          "kind": "noun",
+          "base": {
+            "de": "Kalender",
+            "en": "diary; calendar"
+          },
+          "acceptedAnswers": [
+            "kalendarz"
+          ]
+        },
+        {
+          "targetText": "podwójnych",
+          "kind": "adjective",
+          "base": {
+            "de": "doppelten",
+            "en": "double"
+          },
+          "acceptedAnswers": [
+            "podwójnych",
+            "podwojnych"
+          ],
+          "lemma": "podwójny"
+        },
+        {
+          "targetText": "blokada",
+          "kind": "noun",
+          "base": {
+            "de": "Sperre",
+            "en": "block"
+          },
+          "acceptedAnswers": [
+            "blokada"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "wprowadzono",
+            "kalendarz",
+            "doprowadził"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "nieobecności",
+            "blokuje",
+            "trzydzieści"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "podsumowując",
+            "przypomnienia",
+            "zniechęca"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "doprowadzić",
+        "familyKey": "doprowadzać",
+        "surface": "doprowadził",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Pacjent rezerwuje online, system wysyła potwierdzenie i przypomnienie dzień wcześniej; wprowadzono go, bo stary kalendarz papierowy doprowadził do podwójnych rezerwacji.",
+          "base": {
+            "de": "Der Patient bucht online, das System schickt eine Bestätigung und am Vortag eine Erinnerung; es wurde eingeführt, weil der alte Papierkalender zu Doppelbuchungen führte.",
+            "en": "The patient books online, and the system sends a confirmation and a reminder the day before; it was introduced because the old paper diary led to double bookings."
+          }
+        },
+        "base": {
+          "de": "zu etwas führen",
+          "en": "lead to"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "bike-scheme",
+      "title": {
+        "de": "Wirkungen einer Verkehrsmaßnahme",
+        "en": "Effects of a transport scheme"
+      },
+      "situation": {
+        "de": "Ein Bekannter zweifelt am Nutzen der Leihräder in Ihrer Stadt.",
+        "en": "A friend doubts the usefulness of your city's hire bikes."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Skeptischer Bekannter",
+            "en": "sceptical male friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Gespräch über Verkehr sagt er: „Miasto wydaje miliony na rowery miejskie, a jeżdżą nimi głównie turyści. Po co to komu?”",
+        "en": "While discussing transport, he says: „Miasto wydaje miliony na rowery miejskie, a jeżdżą nimi głównie turyści. Po co to komu?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Miasto wydaje miliony na rowery miejskie, a jeżdżą nimi głównie turyści. Po co to komu?",
+          "base": {
+            "de": "Die Stadt gibt Millionen für Stadträder aus, und hauptsächlich Touristen fahren damit. Wem soll das helfen?",
+            "en": "The city spends millions on hire bikes, and it's mostly tourists who ride them. Who is that supposed to help?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Chodzi o konsekwencje dla całego ruchu: każda osoba na rowerze to o jeden samochód mniej w korku i jedno wolne miejsce parkingowe.",
+          "base": {
+            "de": "Es geht um die Auswirkungen auf den gesamten Verkehr: Jede Person auf dem Rad bedeutet ein Auto weniger im Stau und einen freien Parkplatz.",
+            "en": "It's about the consequences for traffic as a whole: each person on a bike means one less car in the traffic jam and one free parking space."
+          },
+          "move": "explain",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "To brzmi ładnie, ale skąd wiesz, że ci ludzie wcześniej jeździli samochodem, a nie autobusem?",
+          "base": {
+            "de": "Das klingt gut, aber woher weißt du, dass diese Leute vorher Auto gefahren sind und nicht Bus?",
+            "en": "That sounds nice, but how do you know those people used to drive rather than take the bus?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Przyznaję, że nie wszyscy; z ankiety na naszym osiedlu wynikało jednak, że mniej więcej jedna trzecia przesiadła się z auta.",
+          "base": {
+            "de": "Ich gebe zu, nicht alle; aus einer Umfrage in unserer Wohnanlage ging jedoch hervor, dass ungefähr ein Drittel vom Auto umgestiegen war.",
+            "en": "I admit not everyone did; however, a survey on our estate showed that roughly one third had switched from a car."
+          },
+          "move": "concede",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dobra, jedna trzecia. A gdyby te pieniądze poszły na autobusy nocne? Co by było lepsze?",
+          "base": {
+            "de": "Gut, ein Drittel. Und wenn das Geld in Nachtbusse fließen würde? Was wäre besser?",
+            "en": "Okay, one third. And what if the money went to night buses? What would be better?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Proponuję podzielić środki: połowa na rowery, połowa na nocne autobusy, bo pierwsze ułatwiają dojazdy za dnia, a drugie nocą.",
+          "base": {
+            "de": "Ich schlage vor, die Mittel aufzuteilen: die Hälfte für Fahrräder, die Hälfte für Nachtbusse, denn Erstere erleichtern tagsüber den Arbeitsweg, Letztere nachts.",
+            "en": "I suggest splitting the funds: half for bikes and half for night buses, because the former make daytime journeys easier and the latter help at night."
+          },
+          "move": "propose",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Chodzi",
+          "o konsekwencje",
+          "dla całego ruchu:",
+          "każda",
+          "osoba na rowerze"
+        ],
+        "distractors": [
+          "o konsekwencją",
+          "dla cały ruch"
+        ],
+        "frameSuffix": " to o jeden samochód mniej w korku i jedno wolne miejsce parkingowe."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " nie wszyscy; z ankiety na naszym osiedlu wynikało jednak, że mniej więcej jedna trzecia "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " z auta."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Przyznaję, że",
+            "acceptedAnswers": [
+              "Przyznaję, że",
+              "Przyznaje, ze"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Przyznaję, że",
+              "Przyznaję do",
+              "Przyznaję bez",
+              "Przyznaję na"
+            ]
+          },
+          {
+            "answer": "przesiadła się",
+            "acceptedAnswers": [
+              "przesiadła się",
+              "przesiadla sie",
+              "się przesiadła",
+              "sie przesiadla"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze przesiąść się in die dritte Person Singular der Vergangenheit, passend zu jedna trzecia.",
+              "en": "Use przesiąść się in the third-person singular past tense, agreeing with jedna trzecia."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " środki: połowa na rowery, połowa na nocne autobusy, bo pierwsze ułatwiają dojazdy za dnia, a drugie nocą."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Proponuję podzielić",
+            "acceptedAnswers": [
+              "Proponuję podzielić",
+              "Proponuje podzielic"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Proponuję podzielić",
+              "Proponuję podzielę",
+              "Proponuję podzielił",
+              "Proponuję podzielenia"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Chodzi o ",
+        "answer": "konsekwencje",
+        "acceptedAnswers": [
+          "konsekwencje",
+          "skutki",
+          "następstwa",
+          "nastepstwa",
+          "efekty"
+        ],
+        "after": " dla całego ruchu: każda osoba na rowerze to o jeden samochód mniej w korku i jedno wolne miejsce parkingowe.",
+        "fallbackChoices": [
+          "konsekwencje",
+          "konsekwencji",
+          "konsekwencjom",
+          "konsekwencjami"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Eine Verallgemeinerung einschränken",
+          "en": "Qualify a generalization"
+        },
+        "rule": {
+          "de": "Przyznaję, że räumt hier eine Einschränkung ein, bevor jednak eine konkrete Beobachtung einleitet.",
+          "en": "Here Przyznaję, że concedes a limitation before jednak introduces a specific observation."
+        },
+        "examples": [
+          {
+            "targetText": "Przyznaję, że nie wszyscy; z ankiety na naszym osiedlu wynikało jednak, że mniej więcej jedna trzecia przesiadła się z auta.",
+            "base": {
+              "de": "Ich gebe zu, nicht alle; aus einer Umfrage in unserer Wohnanlage ging jedoch hervor, dass ungefähr ein Drittel vom Auto umgestiegen war.",
+              "en": "I admit not everyone did; however, a survey on our estate showed that roughly one third had switched from a car."
+            },
+            "highlights": [
+              "Przyznaję, że",
+              "jednak"
+            ]
+          },
+          {
+            "targetText": "Przyznaję, że nie każdy korzysta z roweru; część mieszkańców jednak jeździ nim codziennie.",
+            "base": {
+              "de": "Ich gebe zu, dass nicht alle das Fahrrad nutzen; ein Teil der Bewohner fährt jedoch täglich damit.",
+              "en": "I admit that not everyone uses a bike; some residents do ride one every day, however."
+            },
+            "highlights": [
+              "Przyznaję, że",
+              "jednak"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "konsekwencje",
+          "kind": "noun",
+          "base": {
+            "de": "Auswirkungen",
+            "en": "consequences"
+          },
+          "acceptedAnswers": [
+            "konsekwencje"
+          ],
+          "lemma": "konsekwencja"
+        },
+        {
+          "targetText": "Chodzi o",
+          "kind": "frame",
+          "base": {
+            "de": "es geht um",
+            "en": "it is about"
+          },
+          "acceptedAnswers": [
+            "Chodzi o"
+          ]
+        },
+        {
+          "targetText": "Przyznaję, że",
+          "kind": "frame",
+          "base": {
+            "de": "Ich gebe zu, dass",
+            "en": "I admit that"
+          },
+          "acceptedAnswers": [
+            "Przyznaję, że",
+            "Przyznaje, ze"
+          ]
+        },
+        {
+          "targetText": "ruchu",
+          "kind": "noun",
+          "base": {
+            "de": "Verkehr",
+            "en": "traffic"
+          },
+          "acceptedAnswers": [
+            "ruchu"
+          ],
+          "lemma": "ruch"
+        },
+        {
+          "targetText": "korku",
+          "kind": "noun",
+          "base": {
+            "de": "Stau",
+            "en": "traffic jam"
+          },
+          "acceptedAnswers": [
+            "korku"
+          ],
+          "lemma": "korek"
+        },
+        {
+          "targetText": "ankiety",
+          "kind": "noun",
+          "base": {
+            "de": "Umfrage",
+            "en": "survey"
+          },
+          "acceptedAnswers": [
+            "ankiety"
+          ],
+          "lemma": "ankieta"
+        },
+        {
+          "targetText": "przesiadła się",
+          "kind": "verb",
+          "base": {
+            "de": "stieg um",
+            "en": "switched transport"
+          },
+          "acceptedAnswers": [
+            "przesiadła się",
+            "przesiadla sie"
+          ],
+          "lemma": "przesiąść się"
+        },
+        {
+          "targetText": "środki",
+          "kind": "noun",
+          "base": {
+            "de": "Mittel",
+            "en": "funds"
+          },
+          "acceptedAnswers": [
+            "środki",
+            "srodki"
+          ],
+          "lemma": "środek"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "chodzi",
+            "konsekwencje",
+            "ruchu"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "przyznaję",
+            "ankiety",
+            "trzecia"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "proponuję",
+            "środki",
+            "nocne"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "konsekwencja",
+        "familyKey": "konsekwencja",
+        "surface": "konsekwencje",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Chodzi o konsekwencje dla całego ruchu: każda osoba na rowerze to o jeden samochód mniej w korku i jedno wolne miejsce parkingowe.",
+          "base": {
+            "de": "Es geht um die Auswirkungen auf den gesamten Verkehr: Jede Person auf dem Rad bedeutet ein Auto weniger im Stau und einen freien Parkplatz.",
+            "en": "It's about the consequences for traffic as a whole: each person on a bike means one less car in the traffic jam and one free parking space."
+          }
+        },
+        "base": {
+          "de": "Auswirkung; Konsequenz",
+          "en": "consequence"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "roof-repair-chain",
+      "title": {
+        "de": "Eine verzögerte Dachreparatur",
+        "en": "A delayed roof repair"
+      },
+      "situation": {
+        "de": "Als Mitglied des Beirats erklären Sie dem Hausverwalter die Verschiebung der Dachreparatur.",
+        "en": "As a board member, you explain the postponed roof repair to the building administrator."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Hausverwalter",
+            "en": "male building administrator"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Verwalter bittet um Auskunft: „Mieszkańcy pytają, dlaczego remont dachu przesunięto na wiosnę. Proszę o pełne wyjaśnienie dla zarządu.”",
+        "en": "The administrator asks for information: „Mieszkańcy pytają, dlaczego remont dachu przesunięto na wiosnę. Proszę o pełne wyjaśnienie dla zarządu.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mieszkańcy pytają, dlaczego remont dachu przesunięto na wiosnę. Proszę o pełne wyjaśnienie dla zarządu.",
+          "base": {
+            "de": "Die Bewohner fragen, warum die Dachreparatur auf das Frühjahr verschoben wurde. Bitte geben Sie eine vollständige Erklärung für den Vorstand.",
+            "en": "Residents are asking why the roof repair was postponed until spring. Please provide a full explanation for the board."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Procedura była następująca: najpierw zebrano trzy oferty, w związku z czym wybór trwał do października, a wtedy wykonawca zażądał zaliczki.",
+          "base": {
+            "de": "Der Ablauf war folgender: Zuerst wurden drei Angebote eingeholt, wodurch die Auswahl bis Oktober dauerte, und dann verlangte der Auftragnehmer eine Anzahlung.",
+            "en": "The procedure was as follows: first three quotes were collected, which meant the selection took until October, and then the contractor demanded a deposit."
+          },
+          "move": "explain",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Zaliczki w jakiej wysokości i kto konkretnie podjął decyzję, żeby jej nie zapłacić?",
+          "base": {
+            "de": "Eine Anzahlung in welcher Höhe, und wer genau hat beschlossen, sie nicht zu zahlen?",
+            "en": "A deposit of what amount, and who exactly decided not to pay it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wysokość to trzydzieści procent, a decyzję podjął zarząd na zebraniu, ponieważ fundusz remontowy był w tym momencie zbyt niski.",
+          "base": {
+            "de": "Die Höhe beträgt dreißig Prozent, und die Entscheidung traf der Vorstand bei einer Sitzung, weil die Instandhaltungsrücklage damals zu niedrig war.",
+            "en": "The amount is thirty percent, and the board made the decision at a meeting because the maintenance fund was too low at that time."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Zrozumiałem. A gdyby wykonawca zrezygnował do wiosny? Jaki jest plan awaryjny?",
+          "base": {
+            "de": "Verstanden. Und wenn der Auftragnehmer bis zum Frühjahr abspringt? Was ist der Ersatzplan?",
+            "en": "Understood. And if the contractor pulls out before spring? What's the backup plan?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "W takim razie wracamy do drugiej oferty, ważnej do marca; jeśli i ten wykonawca odmówi, od razu ogłaszamy nowe zapytanie.",
+          "base": {
+            "de": "Dann kommen wir auf das zweite Angebot zurück, das bis März gilt; falls auch dieser Auftragnehmer ablehnt, schreiben wir sofort erneut aus.",
+            "en": "In that case, we'll return to the second quote, valid until March; if that contractor also refuses, we'll request new quotes straight away."
+          },
+          "move": "propose",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Procedura",
+          "była następująca:",
+          "najpierw zebrano",
+          "trzy oferty,",
+          "w związku z czym"
+        ],
+        "distractors": [
+          "był następujący",
+          "trzy ofertami"
+        ],
+        "frameSuffix": " wybór trwał do października, a wtedy wykonawca zażądał zaliczki."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Wysokość to trzydzieści procent, a decyzję "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " zarząd na zebraniu, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " fundusz remontowy był w tym momencie zbyt niski."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "podjął",
+            "acceptedAnswers": [
+              "podjął",
+              "podjal"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze podjąć in die dritte Person Singular der Vergangenheit, passend zu zarząd.",
+              "en": "Use podjąć in the third-person singular past tense, agreeing with zarząd."
+            }
+          },
+          {
+            "answer": "ponieważ",
+            "acceptedAnswers": [
+              "ponieważ",
+              "poniewaz"
+            ],
+            "kind": "connector",
+            "choices": [
+              "ponieważ",
+              "którego",
+              "pomimo",
+              "wbrew"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " wracamy do drugiej oferty, ważnej do marca; jeśli i ten wykonawca odmówi, od razu ogłaszamy nowe zapytanie."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "W takim razie",
+            "acceptedAnswers": [
+              "W takim razie"
+            ],
+            "kind": "frame",
+            "choices": [
+              "W takim razie",
+              "W taki razie",
+              "W takiego razie",
+              "W taką razie"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Procedura",
+        "acceptedAnswers": [
+          "Procedura",
+          "Kolejność działań",
+          "Kolejnosc dzialan"
+        ],
+        "after": " była następująca: najpierw zebrano trzy oferty, w związku z czym wybór trwał do października, a wtedy wykonawca zażądał zaliczki.",
+        "fallbackChoices": [
+          "Procedura",
+          "Procedurę",
+          "Procedurą",
+          "Procedury"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Abfolge mit Folge erläutern",
+          "en": "Explain a sequence and its consequence"
+        },
+        "rule": {
+          "de": "Procedura była następująca eröffnet den Ablauf, während w związku z czym die Folge des vorherigen Schritts anschließt.",
+          "en": "Procedura była następująca introduces the procedure, while w związku z czym adds a consequence of the preceding step."
+        },
+        "examples": [
+          {
+            "targetText": "Procedura była następująca: najpierw zebrano trzy oferty, w związku z czym wybór trwał do października, a wtedy wykonawca zażądał zaliczki.",
+            "base": {
+              "de": "Der Ablauf war folgender: Zuerst wurden drei Angebote eingeholt, wodurch die Auswahl bis Oktober dauerte, und dann verlangte der Auftragnehmer eine Anzahlung.",
+              "en": "The procedure was as follows: first three quotes were collected, which meant the selection took until October, and then the contractor demanded a deposit."
+            },
+            "highlights": [
+              "Procedura była następująca",
+              "w związku z czym"
+            ]
+          },
+          {
+            "targetText": "Procedura była następująca: zebrano oferty, w związku z czym można było wybrać wykonawcę.",
+            "base": {
+              "de": "Der Ablauf war folgender: Es wurden Angebote eingeholt, sodass man einen Auftragnehmer auswählen konnte.",
+              "en": "The procedure was as follows: quotes were collected, which made it possible to choose a contractor."
+            },
+            "highlights": [
+              "Procedura była następująca",
+              "w związku z czym"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Procedura",
+          "kind": "noun",
+          "base": {
+            "de": "Ablauf; Verfahren",
+            "en": "procedure"
+          },
+          "acceptedAnswers": [
+            "Procedura"
+          ]
+        },
+        {
+          "targetText": "w związku z czym",
+          "kind": "frame",
+          "base": {
+            "de": "wodurch; sodass",
+            "en": "as a result of which"
+          },
+          "acceptedAnswers": [
+            "w związku z czym",
+            "w zwiazku z czym"
+          ]
+        },
+        {
+          "targetText": "W takim razie",
+          "kind": "frame",
+          "base": {
+            "de": "in diesem Fall",
+            "en": "in that case"
+          },
+          "acceptedAnswers": [
+            "W takim razie"
+          ]
+        },
+        {
+          "targetText": "zebrano",
+          "kind": "verb",
+          "base": {
+            "de": "es wurde gesammelt",
+            "en": "were collected"
+          },
+          "acceptedAnswers": [
+            "zebrano"
+          ],
+          "lemma": "zebrać"
+        },
+        {
+          "targetText": "zaliczki",
+          "kind": "noun",
+          "base": {
+            "de": "Anzahlung",
+            "en": "deposit"
+          },
+          "acceptedAnswers": [
+            "zaliczki"
+          ],
+          "lemma": "zaliczka"
+        },
+        {
+          "targetText": "fundusz",
+          "kind": "noun",
+          "base": {
+            "de": "Fonds; Rücklage",
+            "en": "fund"
+          },
+          "acceptedAnswers": [
+            "fundusz"
+          ]
+        },
+        {
+          "targetText": "odmówi",
+          "kind": "verb",
+          "base": {
+            "de": "wird ablehnen",
+            "en": "will refuse"
+          },
+          "acceptedAnswers": [
+            "odmówi",
+            "odmowi"
+          ],
+          "lemma": "odmówić"
+        },
+        {
+          "targetText": "zapytanie",
+          "kind": "noun",
+          "base": {
+            "de": "Anfrage",
+            "en": "request for quotes"
+          },
+          "acceptedAnswers": [
+            "zapytanie"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "procedura",
+            "następująca",
+            "zebrano"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "wysokość",
+            "zarząd",
+            "fundusz"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "oferty",
+            "odmówi",
+            "zapytanie"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "procedura",
+        "familyKey": "procedura",
+        "surface": "Procedura",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Procedura była następująca: najpierw zebrano trzy oferty, w związku z czym wybór trwał do października, a wtedy wykonawca zażądał zaliczki.",
+          "base": {
+            "de": "Der Ablauf war folgender: Zuerst wurden drei Angebote eingeholt, wodurch die Auswahl bis Oktober dauerte, und dann verlangte der Auftragnehmer eine Anzahlung.",
+            "en": "The procedure was as follows: first three quotes were collected, which meant the selection took until October, and then the contractor demanded a deposit."
+          }
+        },
+        "base": {
+          "de": "Ablauf; Verfahren",
+          "en": "procedure"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

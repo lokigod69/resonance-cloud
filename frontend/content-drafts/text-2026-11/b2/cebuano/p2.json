@@ -1,0 +1,3984 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explaining-how-and-why",
+  "pathTitle": {
+    "de": "Wie und warum",
+    "en": "How and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären und auf Nachfragen präzisieren.",
+    "en": "Explain causes and processes and clarify them under questioning."
+  },
+  "specRef": {
+    "pathSpec": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+    "ledger": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+    "ledgerSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "cebuano-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "lahi-ang-resibo",
+      "title": {
+        "de": "Warum die Rechnung anders ist",
+        "en": "Why the invoice differs"
+      },
+      "situation": {
+        "de": "Die Buchhaltung deines Kunden fragt nach der veränderten Summe auf deiner Rechnung.",
+        "en": "Your client’s accountant asks about the changed amount on your invoice."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Buchhaltung",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung deines Kunden fragt nach der veränderten Summe auf deiner Rechnung. Die andere Person sagt: „Lahi ang kantidad sa inyong singil karong bulana kaysa sa miaging bulan. Mahimo ba ninyong ipasabot ngano?“",
+        "en": "Your client’s accountant asks about the changed amount on your invoice. The other person says: “Lahi ang kantidad sa inyong singil karong bulana kaysa sa miaging bulan. Mahimo ba ninyong ipasabot ngano?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Lahi ang kantidad sa inyong singil karong bulana kaysa sa miaging bulan. Mahimo ba ninyong ipasabot ngano?",
+          "base": {
+            "de": "Der Betrag auf Ihrer Rechnung unterscheidet sich diesen Monat vom letzten. Können Sie erklären, warum?",
+            "en": "The amount on your invoice this month differs from last month. Could you explain why?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Niusab ang presyo sa materyales sa tunga sa bulan, busa gipataas nako ang kantidad sa ikaduhang bahin sa trabaho.",
+          "base": {
+            "de": "Der Materialpreis änderte sich Mitte des Monats, deshalb habe ich den Betrag für den zweiten Teil der Arbeit erhöht.",
+            "en": "The price of materials changed halfway through the month, so I increased the amount for the second part of the work."
+          },
+          "move": "explain",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan wala kami nakadawat og pahibalo bahin sa bag-ong presyo. Kanus-a ninyo kini gisulti?",
+          "base": {
+            "de": "Wir haben aber keine Mitteilung über den neuen Preis erhalten. Wann haben Sie das gesagt?",
+            "en": "But we received no notice of the new price. When did you tell us?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Gipadala nako ang email sa ikanapulo sa bulan, apan tingali naabot kini sa laing opisina, busa ipadala nako pag-usab.",
+          "base": {
+            "de": "Ich habe die E-Mail am Zehnten des Monats geschickt. Vielleicht kam sie aber in einer anderen Abteilung an; deshalb schicke ich sie erneut.",
+            "en": "I sent the email on the tenth of the month, but perhaps it reached another department, so I will send it again."
+          },
+          "move": "clarify",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Para sa sunod, unsa ang proseso nga inyong gisugyot aron dili na kini mahitabo?",
+          "base": {
+            "de": "Gut. Welchen Ablauf schlagen Sie künftig vor, damit das nicht wieder passiert?",
+            "en": "All right. What process do you suggest for next time so this does not happen again?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Matag kausaban sa presyo, motawag ko una ug mopadala og email, ug magsugod lang ko kung naa nay inyong tubag nga oo.",
+          "base": {
+            "de": "Bei jeder Preisänderung rufe ich zuerst an und sende eine E-Mail. Ich beginne erst, wenn Ihre Zustimmung vorliegt.",
+            "en": "For every price change, I will call first and send an email, and only start once I have your agreement."
+          },
+          "move": "propose",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Niusab",
+          "ang presyo",
+          "sa materyales",
+          "sa tunga",
+          "sa bulan,",
+          "busa gipataas nako"
+        ],
+        "distractors": [
+          "Nikunhod",
+          "sa unang bahin,"
+        ],
+        "frameSuffix": " ang kantidad sa ikaduhang bahin sa trabaho."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " nako ang email sa ikanapulo sa bulan, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " naabot kini sa laing opisina, busa ipadala nako pag-usab."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Gipadala",
+            "acceptedAnswers": [
+              "Gipadala"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "padala, Objektfokus gi-, abgeschlossen, Satzanfang",
+              "en": "padala, object focus gi-, completed, sentence start"
+            }
+          },
+          {
+            "answer": "apan tingali",
+            "acceptedAnswers": [
+              "apan tingali"
+            ],
+            "kind": "frame",
+            "choices": [
+              "apan tingali",
+              "busa tingali",
+              "apan sigurado",
+              "kay tingali"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Matag kausaban sa presyo, motawag ko una ug mopadala og email, ug magsugod lang ko "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " inyong tubag nga oo."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "kung naa nay",
+            "acceptedAnswers": [
+              "kung naa nay"
+            ],
+            "kind": "frame",
+            "choices": [
+              "kung naa nay",
+              "kung walay",
+              "bisan walay",
+              "kung naa pay"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Niusab ang presyo sa materyales sa tunga sa bulan, busa ",
+        "answer": "gipataas",
+        "acceptedAnswers": [
+          "gipataas"
+        ],
+        "after": " nako ang kantidad sa ikaduhang bahin sa trabaho.",
+        "fallbackChoices": [
+          "gipataas",
+          "gipaubos",
+          "gikansela",
+          "gibalik"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine Mitteilung nachvollziehbar machen",
+          "en": "Tracing a notification"
+        },
+        "rule": {
+          "de": "Nenne das Datum als Tatsache, führe mit „apan tingali“ die mögliche Erklärung ein und schließe mit „busa“ die Folge an.",
+          "en": "State the date as fact, introduce the possible explanation with “apan tingali”, and attach the consequence with “busa”."
+        },
+        "examples": [
+          {
+            "targetText": "Gipadala nako ang email sa ikanapulo sa bulan, apan tingali naabot kini sa laing opisina, busa ipadala nako pag-usab.",
+            "base": {
+              "de": "Ich habe die E-Mail am Zehnten des Monats geschickt. Vielleicht kam sie aber in einer anderen Abteilung an; deshalb schicke ich sie erneut.",
+              "en": "I sent the email on the tenth of the month, but perhaps it reached another department, so I will send it again."
+            },
+            "highlights": [
+              "apan tingali"
+            ]
+          },
+          {
+            "targetText": "Gipadala nako ang email, apan tingali naabot kini sa laing opisina.",
+            "base": {
+              "de": "Ich habe die E-Mail gesendet, aber vielleicht kam sie in einer anderen Abteilung an.",
+              "en": "I sent the email, but perhaps it reached another department."
+            },
+            "highlights": [
+              "apan tingali"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "busa",
+          "kind": "connector",
+          "base": {
+            "de": "deshalb",
+            "en": "so, therefore"
+          },
+          "acceptedAnswers": [
+            "busa"
+          ]
+        },
+        {
+          "targetText": "Niusab",
+          "kind": "verb",
+          "base": {
+            "de": "änderte sich",
+            "en": "changed"
+          },
+          "acceptedAnswers": [
+            "Niusab"
+          ],
+          "lemma": "usab"
+        },
+        {
+          "targetText": "materyales",
+          "kind": "noun",
+          "base": {
+            "de": "Materialien",
+            "en": "materials"
+          },
+          "acceptedAnswers": [
+            "materyales"
+          ]
+        },
+        {
+          "targetText": "gipataas",
+          "kind": "verb",
+          "base": {
+            "de": "erhöht",
+            "en": "increased"
+          },
+          "acceptedAnswers": [
+            "gipataas"
+          ],
+          "lemma": "taas"
+        },
+        {
+          "targetText": "kantidad",
+          "kind": "noun",
+          "base": {
+            "de": "Betrag",
+            "en": "amount"
+          },
+          "acceptedAnswers": [
+            "kantidad"
+          ]
+        },
+        {
+          "targetText": "pahibalo",
+          "kind": "noun",
+          "base": {
+            "de": "Mitteilung",
+            "en": "notice"
+          },
+          "acceptedAnswers": [
+            "pahibalo"
+          ]
+        },
+        {
+          "targetText": "Gipadala",
+          "kind": "verb",
+          "base": {
+            "de": "gesendet",
+            "en": "sent"
+          },
+          "acceptedAnswers": [
+            "Gipadala"
+          ],
+          "lemma": "padala"
+        },
+        {
+          "targetText": "kausaban",
+          "kind": "noun",
+          "base": {
+            "de": "Änderung",
+            "en": "change"
+          },
+          "acceptedAnswers": [
+            "kausaban"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "niusab",
+            "presyo",
+            "gipataas"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "gipadala",
+            "email",
+            "opisina"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "kausaban",
+            "motawag",
+            "mopadala"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "busa",
+        "familyKey": "busa",
+        "surface": "busa",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Niusab ang presyo, busa motawag ko una.",
+          "base": {
+            "de": "Der Preis hat sich geändert, deshalb rufe ich zuerst an.",
+            "en": "The price has changed, so I will call first."
+          }
+        },
+        "base": {
+          "de": "deshalb",
+          "en": "so, therefore"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "paglain-sa-basura",
+      "title": {
+        "de": "Die Müllsäcke dieser Straße",
+        "en": "This street’s rubbish bags"
+      },
+      "situation": {
+        "de": "Ein neuer Nachbar oder eine neue Nachbarin fragt nach der Mülltrennung in eurer Straße.",
+        "en": "A new neighbour asks how rubbish is separated on your street."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "neue Person in der Nachbarschaft",
+            "en": "new neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein neuer Nachbar oder eine neue Nachbarin fragt nach der Mülltrennung in eurer Straße. Die andere Person sagt: „Bag-o pa ko dinhi. Giunsa man ang basura dinhi, kay nakita nako nga lahi ang kolor sa mga sako?“",
+        "en": "A new neighbour asks how rubbish is separated on your street. The other person says: “Bag-o pa ko dinhi. Giunsa man ang basura dinhi, kay nakita nako nga lahi ang kolor sa mga sako?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Bag-o pa ko dinhi. Giunsa man ang basura dinhi, kay nakita nako nga lahi ang kolor sa mga sako?",
+          "base": {
+            "de": "Ich bin erst seit Kurzem hier. Wie macht man das hier mit dem Müll? Ich habe verschiedenfarbige Säcke gesehen.",
+            "en": "I am new here. How is rubbish handled here? I noticed the sacks are different colours."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sanglit lahi ang adlaw sa pagkuha sa matag klase sa basura, gilain nato kini: itom nga sako sa mabulok, berde sa plastik ug botelya.",
+          "base": {
+            "de": "Da jede Müllart an einem anderen Tag abgeholt wird, haben wir den Müll getrennt: schwarzer Sack für Verrottbares, grüner für Plastik und Flaschen.",
+            "en": "Since each type of rubbish is collected on a different day, we have separated it: black sacks for biodegradable waste, green for plastic and bottles."
+          },
+          "move": "explain",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero unsa man ang mahitabo kung masagol nako? Naa bay multa?",
+          "base": {
+            "de": "Was passiert aber, wenn ich es vermische? Gibt es eine Strafe?",
+            "en": "But what happens if I mix it? Is there a fine?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Walay multa dinhi sa atong dalan, apan dili kuhaon ang sako nga gisagol, ug mobaho kini hangtod sa sunod nga pagkuha.",
+          "base": {
+            "de": "Hier in unserer Straße gibt es keine Strafe. Ein Sack mit gemischtem Müll wird aber nicht abgeholt und stinkt bis zur nächsten Abholung.",
+            "en": "There is no fine on our street, but a mixed sack is not collected and will smell until the next collection."
+          },
+          "move": "clarify",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okey. Ug ang mga lata ug papel, asa man kana? Isumaryo palihug para masulat nako.",
+          "base": {
+            "de": "Okay. Und Dosen und Papier, wohin kommen die? Fass es bitte zusammen, damit ich es aufschreiben kann.",
+            "en": "Okay. And tins and paper, where do they go? Please summarise it so I can write it down."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Itom ang mabulok, berde ang plastik ug botelya, ug ang lata ug papel ihatag sa mga nangolekta matag Sabado.",
+          "base": {
+            "de": "Schwarz für Verrottbares, grün für Plastik und Flaschen. Dosen und Papier gibst du den Leuten, die sie jeden Samstag sammeln.",
+            "en": "Black for biodegradable waste, green for plastic and bottles, and give tins and paper to the collectors every Saturday."
+          },
+          "move": "summarize",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Sanglit lahi",
+          "ang adlaw",
+          "sa pagkuha",
+          "sa matag klase",
+          "sa basura,"
+        ],
+        "distractors": [
+          "Sanglit pareho",
+          "sa matag balay"
+        ],
+        "frameSuffix": " gilain nato kini: itom nga sako sa mabulok, berde sa plastik ug botelya."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " dinhi sa atong dalan, apan dili "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ang sako nga gisagol, ug mobaho kini hangtod sa sunod nga pagkuha."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Walay multa",
+            "acceptedAnswers": [
+              "Walay multa"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Walay multa",
+              "Naay multa",
+              "Dakong multa",
+              "Walay sako"
+            ]
+          },
+          {
+            "answer": "kuhaon",
+            "acceptedAnswers": [
+              "kuhaon"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "kuha, Objektfokus -on, nach dili",
+              "en": "kuha, object focus -on, after dili"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Itom ang mabulok, berde ang plastik ug botelya, ug ang lata ug papel "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sa mga nangolekta matag Sabado."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ihatag",
+            "acceptedAnswers": [
+              "ihatag"
+            ],
+            "kind": "frame",
+            "choices": [
+              "ihatag",
+              "gihatag",
+              "ilabay",
+              "isagol"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sanglit lahi ang adlaw sa pagkuha sa matag klase sa basura, ",
+        "answer": "gilain",
+        "acceptedAnswers": [
+          "gilain"
+        ],
+        "after": " nato kini: itom nga sako sa mabulok, berde sa plastik ug botelya.",
+        "fallbackChoices": [
+          "gilain",
+          "gisagol",
+          "gisunog",
+          "gilubong"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die örtliche Folge präzisieren",
+          "en": "Specifying the local consequence"
+        },
+        "rule": {
+          "de": "Verneine mit „Walay …“ die vermutete Strafe und nenne mit „apan“ die tatsächliche Folge.",
+          "en": "Deny the presumed fine with “Walay …” and name the actual consequence with “apan”."
+        },
+        "examples": [
+          {
+            "targetText": "Walay multa dinhi sa atong dalan, apan dili kuhaon ang sako nga gisagol, ug mobaho kini hangtod sa sunod nga pagkuha.",
+            "base": {
+              "de": "Hier in unserer Straße gibt es keine Strafe. Ein Sack mit gemischtem Müll wird aber nicht abgeholt und stinkt bis zur nächsten Abholung.",
+              "en": "There is no fine on our street, but a mixed sack is not collected and will smell until the next collection."
+            },
+            "highlights": [
+              "Walay multa"
+            ]
+          },
+          {
+            "targetText": "Walay multa dinhi, apan dili kuhaon ang gisagol nga basura.",
+            "base": {
+              "de": "Hier gibt es keine Strafe, aber gemischter Müll wird nicht abgeholt.",
+              "en": "There is no fine here, but mixed rubbish is not collected."
+            },
+            "highlights": [
+              "Walay multa"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Sanglit",
+          "kind": "connector",
+          "base": {
+            "de": "da, weil",
+            "en": "since, because"
+          },
+          "acceptedAnswers": [
+            "Sanglit"
+          ]
+        },
+        {
+          "targetText": "basura",
+          "kind": "noun",
+          "base": {
+            "de": "Müll",
+            "en": "rubbish"
+          },
+          "acceptedAnswers": [
+            "basura"
+          ]
+        },
+        {
+          "targetText": "sako",
+          "kind": "noun",
+          "base": {
+            "de": "Sack",
+            "en": "sack"
+          },
+          "acceptedAnswers": [
+            "sako"
+          ]
+        },
+        {
+          "targetText": "mabulok",
+          "kind": "adjective",
+          "base": {
+            "de": "verrottbar",
+            "en": "biodegradable"
+          },
+          "acceptedAnswers": [
+            "mabulok"
+          ],
+          "lemma": "bulok"
+        },
+        {
+          "targetText": "plastik",
+          "kind": "noun",
+          "base": {
+            "de": "Plastik",
+            "en": "plastic"
+          },
+          "acceptedAnswers": [
+            "plastik"
+          ]
+        },
+        {
+          "targetText": "multa",
+          "kind": "noun",
+          "base": {
+            "de": "Geldstrafe",
+            "en": "fine"
+          },
+          "acceptedAnswers": [
+            "multa"
+          ]
+        },
+        {
+          "targetText": "mobaho",
+          "kind": "verb",
+          "base": {
+            "de": "stinken werden",
+            "en": "will smell"
+          },
+          "acceptedAnswers": [
+            "mobaho"
+          ],
+          "lemma": "baho"
+        },
+        {
+          "targetText": "nangolekta",
+          "kind": "verb",
+          "base": {
+            "de": "sammeln",
+            "en": "collect"
+          },
+          "acceptedAnswers": [
+            "nangolekta"
+          ],
+          "lemma": "kolekta"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sanglit",
+            "adlaw",
+            "gilain"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "multa",
+            "kuhaon",
+            "mobaho"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "itom",
+            "berde",
+            "ihatag"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sanglit",
+        "familyKey": "sanglit",
+        "surface": "sanglit",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Sanglit lahi ang adlaw sa pagkuha, gilain nato ang basura.",
+          "base": {
+            "de": "Da die Abholtage verschieden sind, haben wir den Müll getrennt.",
+            "en": "Since collection days differ, we have separated the rubbish."
+          }
+        },
+        "base": {
+          "de": "da, weil",
+          "en": "since, because"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "naulahi-ang-proyekto",
+      "title": {
+        "de": "Eine Verzögerung genauer erklären",
+        "en": "Explaining a delay precisely"
+      },
+      "situation": {
+        "de": "Die Teamleitung fragt nach dem verspäteten Projekt und den Folgen für das Budget.",
+        "en": "Your manager asks about the delayed project and its effect on the budget."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Teamleitung fragt nach dem verspäteten Projekt und den Folgen für das Budget. Die andere Person sagt: „Naulahi og duha ka semana ang proyekto. Unsa ang hinungdan ug unsa ang epekto niini sa budget?“",
+        "en": "Your manager asks about the delayed project and its effect on the budget. The other person says: “Naulahi og duha ka semana ang proyekto. Unsa ang hinungdan ug unsa ang epekto niini sa budget?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Naulahi og duha ka semana ang proyekto. Unsa ang hinungdan ug unsa ang epekto niini sa budget?",
+          "base": {
+            "de": "Das Projekt ist zwei Wochen verspätet. Was ist die Ursache, und wie wirkt sich das auf das Budget aus?",
+            "en": "The project is two weeks late. What caused it, and what is the effect on the budget?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Naulahi ang mga piyesa gikan sa Manila, ug ang epekto niini mao nga wala makasugod ang mga trabahante sa unang adlaw sa plano.",
+          "base": {
+            "de": "Die Teile aus Manila kamen zu spät. Dadurch konnten die Beschäftigten am ersten geplanten Tag nicht anfangen.",
+            "en": "The parts from Manila were delayed, which meant the workers could not start on the first planned day."
+          },
+          "move": "reason",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan gisulti ninyo sa miaging miting nga naa na ang mga piyesa. Ngano man nga lahi karon?",
+          "base": {
+            "de": "Sie sagten beim letzten Treffen aber, die Teile seien schon da. Warum ist das jetzt anders?",
+            "en": "But at the last meeting you said the parts were already here. Why is it different now?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ang naabot kaniadto mao lamang ang unang kahon; ang ikaduha, nga mas importante, niabot sa Lunes pa.",
+          "base": {
+            "de": "Damals war nur der erste Karton angekommen. Der zweite, wichtigere kam erst am Montag.",
+            "en": "Only the first box had arrived then; the second, more important one did not arrive until Monday."
+          },
+          "move": "clarify",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Sa ato pa, pila ang dugang nga gasto, ug mahimo pa ba nga mahuman sa Disyembre?",
+          "base": {
+            "de": "Gut. Wie hoch sind also die zusätzlichen Kosten, und können wir noch im Dezember fertig werden?",
+            "en": "All right. So how much extra will it cost, and can it still be finished in December?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mga lima ka porsyento ang dugang tungod sa overtime, apan mahuman gihapon sa Disyembre kung walay laing problema.",
+          "base": {
+            "de": "Wegen der Überstunden etwa fünf Prozent mehr. Es wird aber trotzdem im Dezember fertig, wenn kein weiteres Problem auftritt.",
+            "en": "About five percent extra because of overtime, but it will still be finished in December if there are no other problems."
+          },
+          "move": "conclude",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "Naulahi ang mga piyesa gikan sa Manila, ug ang epekto niini mao ",
+        "chunks": [
+          "nga wala",
+          "makasugod",
+          "ang mga trabahante",
+          "sa unang adlaw",
+          "sa plano."
+        ],
+        "distractors": [
+          "makapadayon",
+          "sa ikaduhang adlaw"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Ang naabot kaniadto "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang unang kahon; ang ikaduha, nga mas importante, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " sa Lunes pa."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "mao lamang",
+            "acceptedAnswers": [
+              "mao lamang"
+            ],
+            "kind": "frame",
+            "choices": [
+              "mao lamang",
+              "mao usab",
+              "dili lamang",
+              "mao gihapon"
+            ]
+          },
+          {
+            "answer": "niabot",
+            "acceptedAnswers": [
+              "niabot"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "abot, Aktorfokus ni-, abgeschlossen",
+              "en": "abot, actor focus ni-, completed"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Mga lima ka porsyento ang dugang tungod sa overtime, apan mahuman gihapon sa Disyembre "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " laing problema."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "kung walay",
+            "acceptedAnswers": [
+              "kung walay"
+            ],
+            "kind": "frame",
+            "choices": [
+              "kung walay",
+              "kung naay",
+              "hangtod walay",
+              "aron walay"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Naulahi ang mga piyesa gikan sa Manila, ug ang ",
+        "answer": "epekto",
+        "acceptedAnswers": [
+          "epekto"
+        ],
+        "after": " niini mao nga wala makasugod ang mga trabahante sa unang adlaw sa plano.",
+        "fallbackChoices": [
+          "epekto",
+          "presyo",
+          "kolor",
+          "ngalan"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine zu pauschale Aussage korrigieren",
+          "en": "Correcting an overgeneral statement"
+        },
+        "rule": {
+          "de": "Grenze mit „mao lamang“ die frühere Aussage ein und nenne mit „… pa“ den späteren Zeitpunkt.",
+          "en": "Narrow the earlier statement with “mao lamang” and give the later time with “… pa”."
+        },
+        "examples": [
+          {
+            "targetText": "Ang naabot kaniadto mao lamang ang unang kahon; ang ikaduha, nga mas importante, niabot sa Lunes pa.",
+            "base": {
+              "de": "Damals war nur der erste Karton angekommen. Der zweite, wichtigere kam erst am Montag.",
+              "en": "Only the first box had arrived then; the second, more important one did not arrive until Monday."
+            },
+            "highlights": [
+              "mao lamang"
+            ]
+          },
+          {
+            "targetText": "Ang naabot kaniadto mao lamang ang unang kahon.",
+            "base": {
+              "de": "Damals war nur der erste Karton angekommen.",
+              "en": "Only the first box had arrived then."
+            },
+            "highlights": [
+              "mao lamang"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "epekto",
+          "kind": "noun",
+          "base": {
+            "de": "Auswirkung",
+            "en": "effect"
+          },
+          "acceptedAnswers": [
+            "epekto"
+          ]
+        },
+        {
+          "targetText": "piyesa",
+          "kind": "noun",
+          "base": {
+            "de": "Teil",
+            "en": "part"
+          },
+          "acceptedAnswers": [
+            "piyesa"
+          ]
+        },
+        {
+          "targetText": "trabahante",
+          "kind": "noun",
+          "base": {
+            "de": "Beschäftigte",
+            "en": "workers"
+          },
+          "acceptedAnswers": [
+            "trabahante"
+          ]
+        },
+        {
+          "targetText": "makasugod",
+          "kind": "verb",
+          "base": {
+            "de": "anfangen können",
+            "en": "be able to start"
+          },
+          "acceptedAnswers": [
+            "makasugod"
+          ],
+          "lemma": "sugod"
+        },
+        {
+          "targetText": "kahon",
+          "kind": "noun",
+          "base": {
+            "de": "Karton",
+            "en": "box"
+          },
+          "acceptedAnswers": [
+            "kahon"
+          ]
+        },
+        {
+          "targetText": "importante",
+          "kind": "adjective",
+          "base": {
+            "de": "wichtig",
+            "en": "important"
+          },
+          "acceptedAnswers": [
+            "importante"
+          ]
+        },
+        {
+          "targetText": "overtime",
+          "kind": "noun",
+          "base": {
+            "de": "Überstunden",
+            "en": "overtime"
+          },
+          "acceptedAnswers": [
+            "overtime"
+          ]
+        },
+        {
+          "targetText": "Disyembre",
+          "kind": "noun",
+          "base": {
+            "de": "Dezember",
+            "en": "December"
+          },
+          "acceptedAnswers": [
+            "Disyembre"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "naulahi",
+            "piyesa",
+            "epekto"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "naabot",
+            "kahon",
+            "niabot"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "porsyento",
+            "overtime",
+            "disyembre"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "epekto",
+        "familyKey": "epekto",
+        "surface": "epekto",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ang epekto sa ulahi nga piyesa mao ang dugang nga gasto.",
+          "base": {
+            "de": "Die Folge des verspäteten Teils sind zusätzliche Kosten.",
+            "en": "The effect of the late part is extra cost."
+          }
+        },
+        "base": {
+          "de": "Auswirkung",
+          "en": "effect"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "puntos-sa-tindahan",
+      "title": {
+        "de": "Punkte verständlich berechnen",
+        "en": "Making reward points understandable"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt nach der Kundenkarte deines Lebensmittelgeschäfts und dessen konkretem Punktesystem.",
+        "en": "A friend asks about your grocery shop’s card and its particular points scheme."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt nach der Kundenkarte deines Lebensmittelgeschäfts und dessen konkretem Punktesystem. Die andere Person sagt: „Nakita nako nga naa kay card sa grocery. Naa bay pulos kana, o sayang lang?“",
+        "en": "A friend asks about your grocery shop’s card and its particular points scheme. The other person says: “Nakita nako nga naa kay card sa grocery. Naa bay pulos kana, o sayang lang?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nakita nako nga naa kay card sa grocery. Naa bay pulos kana, o sayang lang?",
+          "base": {
+            "de": "Ich habe gesehen, dass du eine Kundenkarte für den Supermarkt hast. Bringt sie etwas oder ist sie nutzlos?",
+            "en": "I saw that you have a grocery card. Is it useful or just a waste?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Usa ka puntos matag gatos, usa ka piso kada puntos; sa akong dos mil matag bulan, dos syentos kwarenta ang sangputanan sa usa ka tuig.",
+          "base": {
+            "de": "Ein Punkt je hundert, ein Peso pro Punkt: Bei meinen zweitausend pro Monat sind das zweihundertvierzig im Jahr.",
+            "en": "One point per hundred, one peso per point: on my two thousand a month, the result is two hundred and forty a year."
+          },
+          "move": "explain",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang akong igsoon nagsulti nga mas mahal ang mga butang didto kaysa sa merkado.",
+          "base": {
+            "de": "Eines meiner Geschwister sagt aber, dort seien die Waren teurer als auf dem Markt.",
+            "en": "But my sibling says the goods there are more expensive than at the market."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tinuod nga mas mahal ang gulay didto, busa gulay sa merkado ug lata ug sabon lang sa grocery ang akong paliton.",
+          "base": {
+            "de": "Gemüse ist dort tatsächlich teurer. Deshalb kaufe ich Gemüse auf dem Markt und nur Konserven und Seife im Supermarkt.",
+            "en": "Vegetables really are more expensive there, so I buy vegetables at the market and only tins and soap at the grocery shop."
+          },
+          "move": "concede",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okey. Kung mopalit ko og singko mil matag bulan, pila ang akong makuha sa katapusan sa tuig?",
+          "base": {
+            "de": "Okay. Wenn ich jeden Monat fünftausend ausgebe, wie viel bekomme ich am Jahresende?",
+            "en": "Okay. If I spend five thousand each month, how much will I get at the end of the year?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Singko mil matag bulan singkwenta ka puntos, busa mga unom ka gatos ang diskwento sa usa ka tuig.",
+          "base": {
+            "de": "Fünftausend pro Monat ergeben fünfzig Punkte, also etwa sechshundert Rabatt im Jahr.",
+            "en": "Five thousand each month gives fifty points, so about six hundred in discounts over a year."
+          },
+          "move": "conclude",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Usa ka puntos",
+          "matag gatos,",
+          "usa",
+          "ka piso",
+          "kada puntos;"
+        ],
+        "distractors": [
+          "matag libo,",
+          "ka dolyar"
+        ],
+        "frameSuffix": " sa akong dos mil matag bulan, dos syentos kwarenta ang sangputanan sa usa ka tuig."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mas mahal ang gulay didto, busa gulay sa merkado ug lata ug sabon lang sa grocery ang akong "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tinuod nga",
+            "acceptedAnswers": [
+              "Tinuod nga"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tinuod nga",
+              "Dili tinuod nga",
+              "Bakak nga",
+              "Dili"
+            ]
+          },
+          {
+            "answer": "paliton",
+            "acceptedAnswers": [
+              "paliton"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "palit, Objektfokus -on",
+              "en": "palit, object focus -on"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Singko mil matag bulan singkwenta ka puntos, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mga unom ka gatos ang diskwento sa usa ka tuig."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "busa",
+            "acceptedAnswers": [
+              "busa"
+            ],
+            "kind": "connector",
+            "choices": [
+              "busa",
+              "apan",
+              "kung",
+              "aron"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Usa ka puntos matag gatos, usa ka piso kada puntos; sa akong dos mil matag bulan, dos syentos kwarenta ang ",
+        "answer": "sangputanan",
+        "acceptedAnswers": [
+          "sangputanan"
+        ],
+        "after": " sa usa ka tuig.",
+        "fallbackChoices": [
+          "sangputanan",
+          "sinugdanan",
+          "pangutana",
+          "pangandoy"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Preisvergleich und Punkte trennen",
+          "en": "Separating prices from rewards"
+        },
+        "rule": {
+          "de": "Gib mit „Tinuod nga …“ den Preisunterschied zu und ziehe mit „busa“ die praktische Folge.",
+          "en": "Concede the price difference with “Tinuod nga …” and draw the practical consequence with “busa”."
+        },
+        "examples": [
+          {
+            "targetText": "Tinuod nga mas mahal ang gulay didto, busa gulay sa merkado ug lata ug sabon lang sa grocery ang akong paliton.",
+            "base": {
+              "de": "Gemüse ist dort tatsächlich teurer. Deshalb kaufe ich Gemüse auf dem Markt und nur Konserven und Seife im Supermarkt.",
+              "en": "Vegetables really are more expensive there, so I buy vegetables at the market and only tins and soap at the grocery shop."
+            },
+            "highlights": [
+              "Tinuod nga"
+            ]
+          },
+          {
+            "targetText": "Tinuod nga mas mahal ang gulay, busa sa merkado nako kini paliton.",
+            "base": {
+              "de": "Das Gemüse ist tatsächlich teurer, deshalb kaufe ich es auf dem Markt.",
+              "en": "The vegetables really are more expensive, so I buy them at the market."
+            },
+            "highlights": [
+              "Tinuod nga"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "sangputanan",
+          "kind": "noun",
+          "base": {
+            "de": "Ergebnis",
+            "en": "result"
+          },
+          "acceptedAnswers": [
+            "sangputanan"
+          ]
+        },
+        {
+          "targetText": "puntos",
+          "kind": "noun",
+          "base": {
+            "de": "Punkt",
+            "en": "point"
+          },
+          "acceptedAnswers": [
+            "puntos"
+          ]
+        },
+        {
+          "targetText": "piso",
+          "kind": "noun",
+          "base": {
+            "de": "Peso",
+            "en": "peso"
+          },
+          "acceptedAnswers": [
+            "piso"
+          ]
+        },
+        {
+          "targetText": "dos mil",
+          "kind": "phrase",
+          "base": {
+            "de": "zweitausend",
+            "en": "two thousand"
+          },
+          "acceptedAnswers": [
+            "dos mil"
+          ]
+        },
+        {
+          "targetText": "dos syentos kwarenta",
+          "kind": "phrase",
+          "base": {
+            "de": "zweihundertvierzig",
+            "en": "two hundred and forty"
+          },
+          "acceptedAnswers": [
+            "dos syentos kwarenta"
+          ]
+        },
+        {
+          "targetText": "gulay",
+          "kind": "noun",
+          "base": {
+            "de": "Gemüse",
+            "en": "vegetables"
+          },
+          "acceptedAnswers": [
+            "gulay"
+          ]
+        },
+        {
+          "targetText": "sabon",
+          "kind": "noun",
+          "base": {
+            "de": "Seife",
+            "en": "soap"
+          },
+          "acceptedAnswers": [
+            "sabon"
+          ]
+        },
+        {
+          "targetText": "diskwento",
+          "kind": "noun",
+          "base": {
+            "de": "Rabatt",
+            "en": "discount"
+          },
+          "acceptedAnswers": [
+            "diskwento"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "puntos",
+            "kwarenta",
+            "sangputanan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tinuod",
+            "gulay",
+            "sabon"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "singkwenta",
+            "puntos",
+            "diskwento"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sangputanan",
+        "familyKey": "sangpot",
+        "surface": "sangputanan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Dos syentos kwarenta ka piso ang sangputanan sa usa ka tuig.",
+          "base": {
+            "de": "Das Ergebnis nach einem Jahr sind zweihundertvierzig Peso.",
+            "en": "The result over a year is two hundred and forty pesos."
+          }
+        },
+        "base": {
+          "de": "Ergebnis",
+          "en": "result"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "nibalhin-og-internet",
+      "title": {
+        "de": "Die Leitung als Ursache",
+        "en": "The line as the cause"
+      },
+      "situation": {
+        "de": "Eine Person aus der Nachbarschaft fragt, warum du den Internetanbieter gewechselt hast.",
+        "en": "A neighbour asks why you changed internet providers."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus der Nachbarschaft fragt, warum du den Internetanbieter gewechselt hast. Die andere Person sagt: „Nibalhin ka og internet provider? Ngano man, kay okey ra man ang ilang serbisyo dinhi sa amoa.“",
+        "en": "A neighbour asks why you changed internet providers. The other person says: “Nibalhin ka og internet provider? Ngano man, kay okey ra man ang ilang serbisyo dinhi sa amoa.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nibalhin ka og internet provider? Ngano man, kay okey ra man ang ilang serbisyo dinhi sa amoa.",
+          "base": {
+            "de": "Hast du den Internetanbieter gewechselt? Warum denn? Bei uns ist deren Dienst doch in Ordnung.",
+            "en": "Did you switch internet providers? Why? Their service is fine at our place."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ang tinubdan sa problema mao ang linya sa eskina nga kanunay maputol kung kusog ang ulan, ug tulo na ka bulan nga wala kini ayoha.",
+          "base": {
+            "de": "Die Ursache ist die Leitung an der Ecke. Bei starkem Regen fällt sie ständig aus, und seit drei Monaten wurde sie nicht repariert.",
+            "en": "The source of the problem is the line at the corner, which keeps failing in heavy rain and has not been repaired for three months."
+          },
+          "move": "reason",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang bag-o nimo mas mahal og duha ka gatos. Dili ba mas maayo nga nagreklamo ka lang?",
+          "base": {
+            "de": "Dein neuer Anbieter kostet aber zweihundert mehr. Wäre es nicht besser gewesen, dich einfach zu beschweren?",
+            "en": "But your new provider costs two hundred more. Would it not have been better just to complain?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nireklamo ko kaupat, ug kada higayon lahi ang tubag; ang duha ka gatos mas barato kaysa sa trabaho nga mawala.",
+          "base": {
+            "de": "Ich habe mich viermal beschwert und jedes Mal eine andere Antwort erhalten. Die zweihundert kosten weniger als die verlorene Arbeit.",
+            "en": "I complained four times and got a different answer each time; the two hundred costs less than the work I would lose."
+          },
+          "move": "rebut",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sa ato pa, kung ayohon nila kini og sakto, mobalik ka ba kanila?",
+          "base": {
+            "de": "Wenn sie das also ordentlich reparieren, gehst du dann zu ihnen zurück?",
+            "en": "So, if they fix it properly, will you return to them?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mobalik lang ko kung ilisan nila ang linya sa eskina, kay mao kana ang tinubdan, dili ang akong router.",
+          "base": {
+            "de": "Ich gehe nur zurück, wenn sie die Leitung an der Ecke austauschen, denn dort liegt die Ursache, nicht bei meinem Router.",
+            "en": "I will return only if they replace the line at the corner because that is the source of the problem, not my router."
+          },
+          "move": "conclude",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Ang tinubdan",
+          "sa problema",
+          "mao ang linya",
+          "sa eskina",
+          "nga kanunay maputol"
+        ],
+        "distractors": [
+          "mao ang router",
+          "nga panagsa maputol"
+        ],
+        "frameSuffix": " kung kusog ang ulan, ug tulo na ka bulan nga wala kini ayoha."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ko kaupat, ug kada higayon lahi ang tubag; ang duha ka gatos "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kaysa sa trabaho nga mawala."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Nireklamo",
+            "acceptedAnswers": [
+              "Nireklamo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "reklamo, Aktorfokus ni-, abgeschlossen, Satzanfang",
+              "en": "reklamo, actor focus ni-, completed, sentence start"
+            }
+          },
+          {
+            "answer": "mas barato",
+            "acceptedAnswers": [
+              "mas barato"
+            ],
+            "kind": "frame",
+            "choices": [
+              "mas barato",
+              "mas mahal",
+              "mas dako",
+              "mas taas"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " kung ilisan nila ang linya sa eskina, kay mao kana ang tinubdan, dili ang akong router."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mobalik lang ko",
+            "acceptedAnswers": [
+              "Mobalik lang ko"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mobalik lang ko",
+              "Dili ko mobalik",
+              "Nibalik lang ko",
+              "Mobalik lang kamo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ang ",
+        "answer": "tinubdan",
+        "acceptedAnswers": [
+          "tinubdan"
+        ],
+        "after": " sa problema mao ang linya sa eskina nga kanunay maputol kung kusog ang ulan, ug tulo na ka bulan nga wala kini ayoha.",
+        "fallbackChoices": [
+          "tinubdan",
+          "sulbad",
+          "tumong",
+          "ngalan"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Erfolglose Versuche belegen",
+          "en": "Showing unsuccessful attempts"
+        },
+        "rule": {
+          "de": "Belege die Versuche mit einer Zahl (kaupat) und vergleiche mit „mas barato kaysa sa“ Preis und Verlust.",
+          "en": "Show the attempts with a number (kaupat) and compare price and loss with “mas barato kaysa sa”."
+        },
+        "examples": [
+          {
+            "targetText": "Nireklamo ko kaupat, ug kada higayon lahi ang tubag; ang duha ka gatos mas barato kaysa sa trabaho nga mawala.",
+            "base": {
+              "de": "Ich habe mich viermal beschwert und jedes Mal eine andere Antwort erhalten. Die zweihundert kosten weniger als die verlorene Arbeit.",
+              "en": "I complained four times and got a different answer each time; the two hundred costs less than the work I would lose."
+            },
+            "highlights": [
+              "mas barato"
+            ]
+          },
+          {
+            "targetText": "Nireklamo ko kaupat, apan lahi ang tubag kada higayon.",
+            "base": {
+              "de": "Ich habe mich viermal beschwert, aber jedes Mal war die Antwort anders.",
+              "en": "I complained four times, but the answer was different each time."
+            },
+            "highlights": [
+              "Nireklamo ko"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "tinubdan",
+          "kind": "noun",
+          "base": {
+            "de": "Ursache, Quelle",
+            "en": "source"
+          },
+          "acceptedAnswers": [
+            "tinubdan"
+          ]
+        },
+        {
+          "targetText": "linya",
+          "kind": "noun",
+          "base": {
+            "de": "Leitung",
+            "en": "line"
+          },
+          "acceptedAnswers": [
+            "linya"
+          ]
+        },
+        {
+          "targetText": "eskina",
+          "kind": "noun",
+          "base": {
+            "de": "Ecke",
+            "en": "corner"
+          },
+          "acceptedAnswers": [
+            "eskina"
+          ]
+        },
+        {
+          "targetText": "maputol",
+          "kind": "verb",
+          "base": {
+            "de": "unterbrochen werden",
+            "en": "be cut off"
+          },
+          "acceptedAnswers": [
+            "maputol"
+          ],
+          "lemma": "putol"
+        },
+        {
+          "targetText": "ayoha",
+          "kind": "verb",
+          "base": {
+            "de": "reparieren",
+            "en": "repair"
+          },
+          "acceptedAnswers": [
+            "ayoha"
+          ],
+          "lemma": "ayo"
+        },
+        {
+          "targetText": "Nireklamo",
+          "kind": "verb",
+          "base": {
+            "de": "habe mich beschwert",
+            "en": "complained"
+          },
+          "acceptedAnswers": [
+            "Nireklamo"
+          ],
+          "lemma": "reklamo"
+        },
+        {
+          "targetText": "kaupat",
+          "kind": "adverb",
+          "base": {
+            "de": "viermal",
+            "en": "four times"
+          },
+          "acceptedAnswers": [
+            "kaupat"
+          ]
+        },
+        {
+          "targetText": "router",
+          "kind": "noun",
+          "base": {
+            "de": "Router",
+            "en": "router"
+          },
+          "acceptedAnswers": [
+            "router"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "tinubdan",
+            "linya",
+            "maputol"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "nireklamo",
+            "kaupat",
+            "barato"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mobalik",
+            "ilisan",
+            "router"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "tinubdan",
+        "familyKey": "tubod",
+        "surface": "tinubdan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ang linya sa eskina mao ang tinubdan sa problema.",
+          "base": {
+            "de": "Die Leitung an der Ecke ist die Ursache des Problems.",
+            "en": "The line at the corner is the source of the problem."
+          }
+        },
+        "base": {
+          "de": "Ursache, Quelle",
+          "en": "source"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "pag-apelar-sa-multa",
+      "title": {
+        "de": "Die Frist dieses Einkaufszentrums",
+        "en": "This mall’s appeal period"
+      },
+      "situation": {
+        "de": "Eine Person aus dem Kollegenkreis fragt nach deiner Erfahrung mit dem Einspruchsverfahren dieses Einkaufszentrums.",
+        "en": "A colleague asks about your experience with this mall’s parking-appeal procedure."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus dem Kollegenkreis fragt nach deiner Erfahrung mit dem Einspruchsverfahren dieses Einkaufszentrums. Die andere Person sagt: „Nakadawat ko og multa sa parking sa mall gahapon. Giunsa nimo pag-apelar kadtong imo kaniadto?“",
+        "en": "A colleague asks about your experience with this mall’s parking-appeal procedure. The other person says: “Nakadawat ko og multa sa parking sa mall gahapon. Giunsa nimo pag-apelar kadtong imo kaniadto?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nakadawat ko og multa sa parking sa mall gahapon. Giunsa nimo pag-apelar kadtong imo kaniadto?",
+          "base": {
+            "de": "Ich habe gestern im Einkaufszentrum eine Parkstrafe bekommen. Wie hast du damals gegen deine Strafe Einspruch eingelegt?",
+            "en": "I received a parking penalty at the mall yesterday. How did you appeal yours before?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Gitakda sa mall nga sulod sa pito ka adlaw ipasa ang sulat sa opisina sa security, uban ang resibo ug litrato sa karatula.",
+          "base": {
+            "de": "Das Einkaufszentrum verlangt, dass man den Brief innerhalb von sieben Tagen beim Sicherheitsbüro abgibt, zusammen mit dem Beleg und einem Foto des Schildes.",
+            "en": "The mall stipulates that the letter must be submitted to the security office within seven days, with the receipt and a photo of the sign."
+          },
+          "move": "explain",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero wala koy litrato sa karatula. Mawala ba dayon ang akong apela?",
+          "base": {
+            "de": "Ich habe aber kein Foto vom Schild. Ist mein Einspruch dann sofort hinfällig?",
+            "en": "But I have no photo of the sign. Will my appeal fail immediately?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sumala sa staff kaniadto, dili dayon mawala; ipasabot lang sa sulat nganong wala kay litrato, ug mahimo nimong hangyoon nga susihon nila ang CCTV.",
+          "base": {
+            "de": "Laut der damaligen Auskunft des Personals nicht sofort. Erkläre im Brief nur, warum du kein Foto hast; du kannst auch um Prüfung der Kameraaufnahmen bitten.",
+            "en": "According to the staff then, not immediately; just explain in the letter why you have no photo, and you can ask them to check the CCTV."
+          },
+          "move": "clarify",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Isumaryo ang mga lakang, kay ugma pa ko makaadto.",
+          "base": {
+            "de": "Gut. Fass die Schritte zusammen, denn ich kann erst morgen hingehen.",
+            "en": "All right. Summarise the steps because I can only go tomorrow."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Una, isulat ang sulat; ikaduha, ilakip ang resibo; dayon ipasa sa security sulod sa pito ka adlaw.",
+          "base": {
+            "de": "Zuerst den Brief schreiben, zweitens den Beleg beilegen, dann innerhalb von sieben Tagen bei der Sicherheit abgeben.",
+            "en": "First write the letter; second attach the receipt; then submit it to security within seven days."
+          },
+          "move": "summarize",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Gitakda",
+          "sa mall",
+          "nga sulod",
+          "sa pito",
+          "ka adlaw"
+        ],
+        "distractors": [
+          "sa tindahan",
+          "ka semana"
+        ],
+        "frameSuffix": " ipasa ang sulat sa opisina sa security, uban ang resibo ug litrato sa karatula."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " kaniadto, dili dayon mawala; ipasabot lang sa sulat nganong wala kay litrato, ug mahimo nimong "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " nga susihon nila ang CCTV."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Sumala sa staff",
+            "acceptedAnswers": [
+              "Sumala sa staff"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Sumala sa staff",
+              "Sumala sa akong igsoon",
+              "Bisan sa staff",
+              "Supak sa staff"
+            ]
+          },
+          {
+            "answer": "hangyoon",
+            "acceptedAnswers": [
+              "hangyoon"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "hangyo, Objektfokus -on",
+              "en": "hangyo, object focus -on"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", isulat ang sulat; ikaduha, ilakip ang resibo; dayon ipasa sa security sulod sa pito ka adlaw."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Una",
+            "acceptedAnswers": [
+              "Una"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Una",
+              "Dayon",
+              "Ikaduha",
+              "Ikatulo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Gitakda",
+        "acceptedAnswers": [
+          "Gitakda"
+        ],
+        "after": " sa mall nga sulod sa pito ka adlaw ipasa ang sulat sa opisina sa security, uban ang resibo ug litrato sa karatula.",
+        "fallbackChoices": [
+          "Gitakda",
+          "gikansela",
+          "gilimtan",
+          "gibaliwala"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die Quelle einer Ausnahme nennen",
+          "en": "Naming the source of an exception"
+        },
+        "rule": {
+          "de": "Nenne mit „Sumala sa …“ die Quelle und gib mit „mahimo nimong“ den möglichen Ausweg.",
+          "en": "Name the source with “Sumala sa …” and give the possible way out with “mahimo nimong”."
+        },
+        "examples": [
+          {
+            "targetText": "Sumala sa staff kaniadto, dili dayon mawala; ipasabot lang sa sulat nganong wala kay litrato, ug mahimo nimong hangyoon nga susihon nila ang CCTV.",
+            "base": {
+              "de": "Laut der damaligen Auskunft des Personals nicht sofort. Erkläre im Brief nur, warum du kein Foto hast; du kannst auch um Prüfung der Kameraaufnahmen bitten.",
+              "en": "According to the staff then, not immediately; just explain in the letter why you have no photo, and you can ask them to check the CCTV."
+            },
+            "highlights": [
+              "Sumala sa staff"
+            ]
+          },
+          {
+            "targetText": "Sumala sa staff, mahimo nimong hangyoon nga susihon ang CCTV.",
+            "base": {
+              "de": "Laut dem Personal kannst du darum bitten, die Kameraaufnahmen zu prüfen.",
+              "en": "According to the staff, you can ask for the CCTV to be checked."
+            },
+            "highlights": [
+              "Sumala sa staff"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Gitakda",
+          "kind": "verb",
+          "base": {
+            "de": "festgelegt",
+            "en": "stipulated"
+          },
+          "acceptedAnswers": [
+            "Gitakda"
+          ],
+          "lemma": "takda"
+        },
+        {
+          "targetText": "sulat",
+          "kind": "noun",
+          "base": {
+            "de": "Brief",
+            "en": "letter"
+          },
+          "acceptedAnswers": [
+            "sulat"
+          ]
+        },
+        {
+          "targetText": "security",
+          "kind": "noun",
+          "base": {
+            "de": "Sicherheitsdienst",
+            "en": "security"
+          },
+          "acceptedAnswers": [
+            "security"
+          ]
+        },
+        {
+          "targetText": "litrato",
+          "kind": "noun",
+          "base": {
+            "de": "Foto",
+            "en": "photo"
+          },
+          "acceptedAnswers": [
+            "litrato"
+          ]
+        },
+        {
+          "targetText": "karatula",
+          "kind": "noun",
+          "base": {
+            "de": "Schild",
+            "en": "sign"
+          },
+          "acceptedAnswers": [
+            "karatula"
+          ]
+        },
+        {
+          "targetText": "apela",
+          "kind": "noun",
+          "base": {
+            "de": "Einspruch",
+            "en": "appeal"
+          },
+          "acceptedAnswers": [
+            "apela"
+          ]
+        },
+        {
+          "targetText": "hangyoon",
+          "kind": "verb",
+          "base": {
+            "de": "bitten",
+            "en": "ask"
+          },
+          "acceptedAnswers": [
+            "hangyoon"
+          ],
+          "lemma": "hangyo"
+        },
+        {
+          "targetText": "ilakip",
+          "kind": "verb",
+          "base": {
+            "de": "beilegen",
+            "en": "attach"
+          },
+          "acceptedAnswers": [
+            "ilakip"
+          ],
+          "lemma": "lakip"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "gitakda",
+            "sulod",
+            "resibo"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "sumala",
+            "staff",
+            "susihon"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "isulat",
+            "ilakip",
+            "ipasa"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "gitakda",
+        "familyKey": "takda",
+        "surface": "gitakda",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Gitakda sa mall nga ipasa ang sulat sulod sa pito ka adlaw.",
+          "base": {
+            "de": "Das Einkaufszentrum schreibt vor, den Brief innerhalb von sieben Tagen abzugeben.",
+            "en": "The mall stipulates that the letter be submitted within seven days."
+          }
+        },
+        "base": {
+          "de": "festgelegt",
+          "en": "stipulated"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "nganong-wala-nahimo",
+      "title": {
+        "de": "Warum der Stand ausfiel",
+        "en": "Why the stall never opened"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt, warum euer geplanter Essensstand beim örtlichen Fest nicht zustande kam.",
+        "en": "A friend asks why your planned food stall at the local fiesta never happened."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt, warum euer geplanter Essensstand beim örtlichen Fest nicht zustande kam. Die andere Person sagt: „Wala ba mahitabo ang inyong food stall sa fiesta? Nagdahom ko nga makita ta didto.“",
+        "en": "A friend asks why your planned food stall at the local fiesta never happened. The other person says: “Wala ba mahitabo ang inyong food stall sa fiesta? Nagdahom ko nga makita ta didto.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Wala ba mahitabo ang inyong food stall sa fiesta? Nagdahom ko nga makita ta didto.",
+          "base": {
+            "de": "Hat euer Essensstand beim Fest nicht stattgefunden? Ich hatte gehofft, dass wir uns dort sehen.",
+            "en": "Did your food stall at the fiesta not happen? I expected we would see each other there."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wala, kay daghan ang kakulian: naulahi ang permit, nisaka ang presyo sa karne, ug nagsakit ang akong kauban sa adlaw mismo.",
+          "base": {
+            "de": "Nein, es gab viele Schwierigkeiten: Die Genehmigung kam spät, Fleisch wurde teurer, und die Person, mit der ich arbeite, wurde genau an dem Tag krank.",
+            "en": "No, there were many difficulties: the permit was late, meat prices rose, and my co-worker was ill on the day itself."
+          },
+          "move": "explain",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang permit, dili ba sayo nimo kini gipangayo? Ngano man nga naulahi?",
+          "base": {
+            "de": "Hast du die Genehmigung aber nicht früh beantragt? Warum kam sie zu spät?",
+            "en": "But did you not request the permit early? Why was it late?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Gipangayo nako sayo, apan ang organisador sa fiesta nangayo usab og clearance sa health, ug wala kana sa unang listahan nila.",
+          "base": {
+            "de": "Ich habe sie früh beantragt, aber der Veranstalter verlangte zusätzlich eine Gesundheitsfreigabe, die nicht auf seiner ersten Liste stand.",
+            "en": "I requested it early, but the fiesta organiser also asked for health clearance, which was not on their original list."
+          },
+          "move": "clarify",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sa ato pa, unsa ang imong buhaton sa sunod tuig aron dili na mabalik ang mga kakulian?",
+          "base": {
+            "de": "Was wirst du also nächstes Jahr tun, damit diese Schwierigkeiten nicht wieder auftreten?",
+            "en": "So what will you do next year to prevent these difficulties recurring?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sunod tuig mangutana ko sa organisador og kompleto nga listahan sa Enero, ug magpangita og ikaduhang kauban.",
+          "base": {
+            "de": "Nächstes Jahr frage ich den Veranstalter schon im Januar nach einer vollständigen Liste und suche eine zweite Person zur Mitarbeit.",
+            "en": "Next year I will ask the organiser for a complete list in January and look for a second co-worker."
+          },
+          "move": "propose",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Wala,",
+          "kay daghan",
+          "ang kakulian:",
+          "naulahi",
+          "ang permit,"
+        ],
+        "distractors": [
+          "kay gamay",
+          "ang bayad,"
+        ],
+        "frameSuffix": " nisaka ang presyo sa karne, ug nagsakit ang akong kauban sa adlaw mismo."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", apan ang organisador sa fiesta "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " usab og clearance sa health, ug wala kana sa unang listahan nila."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Gipangayo nako sayo",
+            "acceptedAnswers": [
+              "Gipangayo nako sayo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Gipangayo nako sayo",
+              "Dili nako pangayoon",
+              "Gipangayo nako ulahi",
+              "Gipangayo nila sayo"
+            ]
+          },
+          {
+            "answer": "nangayo",
+            "acceptedAnswers": [
+              "nangayo"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "pangayo, Aktorfokus nang-, abgeschlossen",
+              "en": "pangayo, actor focus nang-, completed"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mangutana ko sa organisador og kompleto nga listahan sa Enero, ug magpangita og ikaduhang kauban."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Sunod tuig",
+            "acceptedAnswers": [
+              "Sunod tuig"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Sunod tuig",
+              "Miaging tuig",
+              "Karong tuig",
+              "Sunod semana"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Wala, kay daghan ang ",
+        "answer": "kakulian",
+        "acceptedAnswers": [
+          "kakulian"
+        ],
+        "after": ": naulahi ang permit, nisaka ang presyo sa karne, ug nagsakit ang akong kauban sa adlaw mismo.",
+        "fallbackChoices": [
+          "kakulian",
+          "kalampusan",
+          "ganti",
+          "bisita"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine fehlende Voraussetzung erklären",
+          "en": "Explaining a missing requirement"
+        },
+        "rule": {
+          "de": "Nenne zuerst deine eigene Handlung (Gipangayo nako) und führe mit „apan“ die zusätzliche Forderung ein.",
+          "en": "State your own action first (Gipangayo nako) and introduce the extra requirement with “apan”."
+        },
+        "examples": [
+          {
+            "targetText": "Gipangayo nako sayo, apan ang organisador sa fiesta nangayo usab og clearance sa health, ug wala kana sa unang listahan nila.",
+            "base": {
+              "de": "Ich habe sie früh beantragt, aber der Veranstalter verlangte zusätzlich eine Gesundheitsfreigabe, die nicht auf seiner ersten Liste stand.",
+              "en": "I requested it early, but the fiesta organiser also asked for health clearance, which was not on their original list."
+            },
+            "highlights": [
+              "Gipangayo nako sayo"
+            ]
+          },
+          {
+            "targetText": "Gipangayo nako sayo ang permit, apan kulang ang unang listahan sa organisador.",
+            "base": {
+              "de": "Ich beantragte die Genehmigung früh, aber die erste Liste des Veranstalters war unvollständig.",
+              "en": "I requested the permit early, but the organiser’s first list was incomplete."
+            },
+            "highlights": [
+              "Gipangayo nako sayo"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "kakulian",
+          "kind": "noun",
+          "base": {
+            "de": "Schwierigkeiten",
+            "en": "difficulties"
+          },
+          "acceptedAnswers": [
+            "kakulian"
+          ]
+        },
+        {
+          "targetText": "permit",
+          "kind": "noun",
+          "base": {
+            "de": "Genehmigung",
+            "en": "permit"
+          },
+          "acceptedAnswers": [
+            "permit"
+          ]
+        },
+        {
+          "targetText": "nisaka",
+          "kind": "verb",
+          "base": {
+            "de": "stieg",
+            "en": "rose"
+          },
+          "acceptedAnswers": [
+            "nisaka"
+          ],
+          "lemma": "saka"
+        },
+        {
+          "targetText": "karne",
+          "kind": "noun",
+          "base": {
+            "de": "Fleisch",
+            "en": "meat"
+          },
+          "acceptedAnswers": [
+            "karne"
+          ]
+        },
+        {
+          "targetText": "kauban",
+          "kind": "noun",
+          "base": {
+            "de": "mitarbeitende Person",
+            "en": "co-worker"
+          },
+          "acceptedAnswers": [
+            "kauban"
+          ]
+        },
+        {
+          "targetText": "organisador",
+          "kind": "noun",
+          "base": {
+            "de": "Veranstalter",
+            "en": "organiser"
+          },
+          "acceptedAnswers": [
+            "organisador"
+          ]
+        },
+        {
+          "targetText": "clearance",
+          "kind": "noun",
+          "base": {
+            "de": "Freigabe",
+            "en": "clearance"
+          },
+          "acceptedAnswers": [
+            "clearance"
+          ]
+        },
+        {
+          "targetText": "kompleto",
+          "kind": "adjective",
+          "base": {
+            "de": "vollständig",
+            "en": "complete"
+          },
+          "acceptedAnswers": [
+            "kompleto"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "daghan",
+            "kakulian",
+            "permit"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "gipangayo",
+            "organisador",
+            "clearance"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mangutana",
+            "kompleto",
+            "enero"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "kakulian",
+        "familyKey": "kuli",
+        "surface": "kakulian",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Daghan ang kakulian kung kulang ang listahan.",
+          "base": {
+            "de": "Es gibt viele Schwierigkeiten, wenn die Liste unvollständig ist.",
+            "en": "There are many difficulties when the list is incomplete."
+          }
+        },
+        "base": {
+          "de": "Schwierigkeiten",
+          "en": "difficulties"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "proseso-sa-appointment",
+      "title": {
+        "de": "Der Buchungsablauf der Praxis",
+        "en": "The clinic’s booking process"
+      },
+      "situation": {
+        "de": "Vor einer Umgestaltung fragt die IT-Beratung nach dem aktuellen Buchungsablauf eurer Zahnarztpraxis.",
+        "en": "Before redesigning it, an IT consultant asks about your dental clinic’s current booking process."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "IT-Beratung",
+            "en": "IT consultant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor einer Umgestaltung fragt die IT-Beratung nach dem aktuellen Buchungsablauf eurer Zahnarztpraxis. Die andere Person sagt: „Sa dili pa nako usbon ang inyong sistema, palihug ipasabot kung giunsa karon ang pagkuha og appointment sa inyong klinika.“",
+        "en": "Before redesigning it, an IT consultant asks about your dental clinic’s current booking process. The other person says: “Sa dili pa nako usbon ang inyong sistema, palihug ipasabot kung giunsa karon ang pagkuha og appointment sa inyong klinika.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Sa dili pa nako usbon ang inyong sistema, palihug ipasabot kung giunsa karon ang pagkuha og appointment sa inyong klinika.",
+          "base": {
+            "de": "Bevor ich Ihr System ändere, erklären Sie bitte, wie man derzeit in Ihrer Praxis einen Termin bekommt.",
+            "en": "Before I change your system, please explain how appointments are currently made at your clinic."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sukad sa Enero online na ang pagkuha: mopili ang pasyente og adlaw sa website, dayon motawag ang staff sa buntag aron kumpirmahon.",
+          "base": {
+            "de": "Seit Januar wird online gebucht: Man wählt auf der Website einen Tag, dann ruft das Personal morgens zur Bestätigung an.",
+            "en": "Since January, booking has been online: the patient selects a day on the website, then staff call in the morning to confirm."
+          },
+          "move": "explain",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan ngano nga kinahanglan pa ang tawag kung online na man? Dili ba doble kana nga trabaho?",
+          "base": {
+            "de": "Warum ist der Anruf aber nötig, wenn schon online gebucht wird? Ist das nicht doppelte Arbeit?",
+            "en": "But why is a call still necessary when booking is already online? Is that not double work?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Doble kini, apan sa among rekord tunga sa mga nagpalista online wala moabot kung walay tawag, busa mas gamay karon ang bakante.",
+          "base": {
+            "de": "Es ist doppelte Arbeit, aber laut unseren Aufzeichnungen erschien ohne Anruf die Hälfte der online Angemeldeten nicht. Deshalb haben wir jetzt weniger freie Termine.",
+            "en": "It is double work, but our records show that half of those registered online did not arrive without a call, so we now have fewer empty slots."
+          },
+          "move": "concede",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Kung mopadala kami og text imbes tawag, unsa ang inyong gipaabot nga mahitabo?",
+          "base": {
+            "de": "Gut. Wenn wir statt anzurufen eine Textnachricht schicken, was erwarten Sie dann?",
+            "en": "All right. If we send a text instead of calling, what do you expect to happen?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tingali mas barato ug mas paspas, apan sulayan una sa usa ka bulan ug ihapon kung pila ang dili moabot.",
+          "base": {
+            "de": "Vermutlich wäre es günstiger und schneller. Wir sollten es aber erst einen Monat ausprobieren und zählen, wie viele nicht kommen.",
+            "en": "Perhaps it would be cheaper and faster, but try it for a month first and count how many do not arrive."
+          },
+          "move": "conclude",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Sukad",
+          "sa Enero",
+          "online na",
+          "ang pagkuha:",
+          "mopili ang pasyente"
+        ],
+        "distractors": [
+          "sa Pebrero",
+          "motawag ang pasyente"
+        ],
+        "frameSuffix": " og adlaw sa website, dayon motawag ang staff sa buntag aron kumpirmahon."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", apan sa among rekord tunga sa mga nagpalista online "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kung walay tawag, busa mas gamay karon ang bakante."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Doble kini",
+            "acceptedAnswers": [
+              "Doble kini"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Doble kini",
+              "Dili kini doble",
+              "Usa ra kini",
+              "Doble kamo"
+            ]
+          },
+          {
+            "answer": "wala moabot",
+            "acceptedAnswers": [
+              "wala moabot"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "wala + abot, Aktorfokus mo- nach wala",
+              "en": "wala + abot, actor focus mo- after wala"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tingali mas barato ug mas paspas, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sa usa ka bulan ug ihapon kung pila ang dili moabot."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "apan sulayan una",
+            "acceptedAnswers": [
+              "apan sulayan una"
+            ],
+            "kind": "frame",
+            "choices": [
+              "apan sulayan una",
+              "apan dili sulayan",
+              "busa dili sulayan",
+              "apan sulayan kaniadto"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sukad sa Enero online na ang pagkuha: mopili ang pasyente og adlaw sa website, dayon motawag ang staff sa buntag aron ",
+        "answer": "kumpirmahon",
+        "acceptedAnswers": [
+          "kumpirmahon"
+        ],
+        "after": ".",
+        "fallbackChoices": [
+          "kumpirmahon",
+          "kanselahon",
+          "ibalhin",
+          "ilisan"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Zusatzschritt mit eigenen Daten begründen",
+          "en": "Explaining an extra step with local data"
+        },
+        "rule": {
+          "de": "Gib mit „Doble kini, apan …“ den Zusatzaufwand zu und begründe ihn mit „sa among rekord“ und „busa“.",
+          "en": "Concede the extra work with “Doble kini, apan …” and justify it with “sa among rekord” and “busa”."
+        },
+        "examples": [
+          {
+            "targetText": "Doble kini, apan sa among rekord tunga sa mga nagpalista online wala moabot kung walay tawag, busa mas gamay karon ang bakante.",
+            "base": {
+              "de": "Es ist doppelte Arbeit, aber laut unseren Aufzeichnungen erschien ohne Anruf die Hälfte der online Angemeldeten nicht. Deshalb haben wir jetzt weniger freie Termine.",
+              "en": "It is double work, but our records show that half of those registered online did not arrive without a call, so we now have fewer empty slots."
+            },
+            "highlights": [
+              "Doble kini"
+            ]
+          },
+          {
+            "targetText": "Doble kini, apan mas gamay ang bakante kung motawag ang staff.",
+            "base": {
+              "de": "Das ist doppelte Arbeit, aber wenn das Personal anruft, bleiben weniger Termine frei.",
+              "en": "It is double work, but fewer slots are empty if the staff call."
+            },
+            "highlights": [
+              "Doble kini"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Sukad",
+          "kind": "connector",
+          "base": {
+            "de": "seit",
+            "en": "since"
+          },
+          "acceptedAnswers": [
+            "Sukad"
+          ]
+        },
+        {
+          "targetText": "pagkuha",
+          "kind": "noun",
+          "base": {
+            "de": "Buchung, Erhalt",
+            "en": "booking, obtaining"
+          },
+          "acceptedAnswers": [
+            "pagkuha"
+          ]
+        },
+        {
+          "targetText": "mopili",
+          "kind": "verb",
+          "base": {
+            "de": "auswählen",
+            "en": "choose"
+          },
+          "acceptedAnswers": [
+            "mopili"
+          ],
+          "lemma": "pili"
+        },
+        {
+          "targetText": "pasyente",
+          "kind": "noun",
+          "base": {
+            "de": "Patientin oder Patient",
+            "en": "patient"
+          },
+          "acceptedAnswers": [
+            "pasyente"
+          ]
+        },
+        {
+          "targetText": "website",
+          "kind": "noun",
+          "base": {
+            "de": "Website",
+            "en": "website"
+          },
+          "acceptedAnswers": [
+            "website"
+          ]
+        },
+        {
+          "targetText": "kumpirmahon",
+          "kind": "verb",
+          "base": {
+            "de": "bestätigen",
+            "en": "confirm"
+          },
+          "acceptedAnswers": [
+            "kumpirmahon"
+          ],
+          "lemma": "kumpirma"
+        },
+        {
+          "targetText": "rekord",
+          "kind": "noun",
+          "base": {
+            "de": "Aufzeichnungen",
+            "en": "records"
+          },
+          "acceptedAnswers": [
+            "rekord"
+          ]
+        },
+        {
+          "targetText": "bakante",
+          "kind": "adjective",
+          "base": {
+            "de": "frei, unbesetzt",
+            "en": "vacant"
+          },
+          "acceptedAnswers": [
+            "bakante"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "sukad",
+            "pagkuha",
+            "kumpirmahon"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "doble",
+            "rekord",
+            "bakante"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "barato",
+            "sulayan",
+            "ihapon"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "sukad",
+        "familyKey": "sukad",
+        "surface": "sukad",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Sukad sa Enero online na ang pagkuha og appointment.",
+          "base": {
+            "de": "Seit Januar werden Termine online gebucht.",
+            "en": "Appointments have been booked online since January."
+          }
+        },
+        "base": {
+          "de": "seit",
+          "en": "since"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "nganong-bisikleta",
+      "title": {
+        "de": "Der Radweg in unserer Straße",
+        "en": "The bike lane on our street"
+      },
+      "situation": {
+        "de": "Eine skeptische Person aus der Nachbarschaft fragt nach deiner Unterstützung für den geplanten Radweg in eurer Straße.",
+        "en": "A sceptical neighbour questions your support for the proposed bike lane on your street."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine skeptische Person aus der Nachbarschaft fragt nach deiner Unterstützung für den geplanten Radweg in eurer Straße. Die andere Person sagt: „Ngano man nga nagsuporta ka sa bike lane sa atong dalan? Mas daghan ang trapik ug walay mogamit.“",
+        "en": "A sceptical neighbour questions your support for the proposed bike lane on your street. The other person says: “Ngano man nga nagsuporta ka sa bike lane sa atong dalan? Mas daghan ang trapik ug walay mogamit.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ngano man nga nagsuporta ka sa bike lane sa atong dalan? Mas daghan ang trapik ug walay mogamit.",
+          "base": {
+            "de": "Warum unterstützt du den Radweg in unserer Straße? Es gibt mehr Stau, und niemand wird ihn benutzen.",
+            "en": "Why are you supporting the bike lane on our street? There is more traffic and nobody will use it."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nagsuporta ko kay mas gamay ang kadaut sa hangin kung bisikleta ang gamiton sa duol, ug sumala sa plano sa barangay mas luwas ang mga bata.",
+          "base": {
+            "de": "Ich unterstütze ihn, weil kurze Wege per Fahrrad die Luft weniger belasten. Laut dem Plan des Viertels sind auch die Kinder sicherer.",
+            "en": "I support it because using bicycles for short trips causes less harm to the air, and according to the neighbourhood plan the children will be safer."
+          },
+          "move": "reason",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang usa ka linya sa sakyanan mawala. Dili ba mas dako kana nga kadaut sa mga tindahan dinhi?",
+          "base": {
+            "de": "Eine Fahrspur für Autos fällt aber weg. Ist das nicht ein größerer Schaden für die Geschäfte hier?",
+            "en": "But one car lane will disappear. Is that not greater harm to the shops here?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dili siguro, kay ang mga nagbisikleta mas sayon mohunong ug mopalit sa daplin kaysa sa mga nagsakyanan nga molabay lang.",
+          "base": {
+            "de": "Vermutlich nicht, denn Radfahrende können leichter am Straßenrand anhalten und einkaufen als Menschen im Auto, die nur vorbeifahren.",
+            "en": "Probably not, because cyclists can stop and shop at the roadside more easily than people in cars who just pass by."
+          },
+          "move": "rebut",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sa ato pa, kung sa tulo ka bulan gamay ra ang mogamit, mouyon ka ba nga kuhaon kini?",
+          "base": {
+            "de": "Wenn also nach drei Monaten nur wenige ihn nutzen, stimmst du dann seiner Entfernung zu?",
+            "en": "So, if few people use it after three months, will you agree to remove it?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mouyon ko nga susihon human sa unom ka bulan, dili tulo, kay kinahanglan og panahon una mausab ang batasan.",
+          "base": {
+            "de": "Ich stimme einer Prüfung nach sechs statt drei Monaten zu, weil es Zeit braucht, bis sich Gewohnheiten ändern.",
+            "en": "I agree to review it after six months, not three, because habits take time to change."
+          },
+          "move": "counteroffer",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "Nagsuporta ko kay ",
+        "chunks": [
+          "mas gamay",
+          "ang kadaut sa hangin",
+          "kung bisikleta",
+          "ang gamiton",
+          "sa duol,"
+        ],
+        "distractors": [
+          "mas dako",
+          "kung sakyanan"
+        ],
+        "frameSuffix": " ug sumala sa plano sa barangay mas luwas ang mga bata."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kay ang mga nagbisikleta mas sayon "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ug mopalit sa daplin kaysa sa mga nagsakyanan nga molabay lang."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dili siguro",
+            "acceptedAnswers": [
+              "Dili siguro"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dili siguro",
+              "Oo siguro",
+              "Tinuod",
+              "Siguro"
+            ]
+          },
+          {
+            "answer": "mohunong",
+            "acceptedAnswers": [
+              "mohunong"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "hunong, Aktorfokus mo-",
+              "en": "hunong, actor focus mo-"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " nga susihon human sa unom ka bulan, dili tulo, kay kinahanglan og panahon una mausab ang batasan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mouyon ko",
+            "acceptedAnswers": [
+              "Mouyon ko"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mouyon ko",
+              "Mosupak ko",
+              "Mouyon ka",
+              "Niuyon ko"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nagsuporta ko kay mas gamay ang kadaut sa ",
+        "answer": "hangin",
+        "acceptedAnswers": [
+          "hangin"
+        ],
+        "after": " kung bisikleta ang gamiton sa duol, ug sumala sa plano sa barangay mas luwas ang mga bata.",
+        "fallbackChoices": [
+          "hangin",
+          "tubig",
+          "yuta",
+          "pagkaon"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Einen Einwand mit Verhalten vergleichen",
+          "en": "Answering an objection by comparing behaviour"
+        },
+        "rule": {
+          "de": "Widersprich vorsichtig mit „Dili siguro, kay …“ und vergleiche mit „mas sayon … kaysa sa“.",
+          "en": "Push back cautiously with “Dili siguro, kay …” and compare with “mas sayon … kaysa sa”."
+        },
+        "examples": [
+          {
+            "targetText": "Dili siguro, kay ang mga nagbisikleta mas sayon mohunong ug mopalit sa daplin kaysa sa mga nagsakyanan nga molabay lang.",
+            "base": {
+              "de": "Vermutlich nicht, denn Radfahrende können leichter am Straßenrand anhalten und einkaufen als Menschen im Auto, die nur vorbeifahren.",
+              "en": "Probably not, because cyclists can stop and shop at the roadside more easily than people in cars who just pass by."
+            },
+            "highlights": [
+              "Dili siguro"
+            ]
+          },
+          {
+            "targetText": "Dili siguro, kay mas sayon mohunong ang mga nagbisikleta.",
+            "base": {
+              "de": "Vermutlich nicht, denn Radfahrende können leichter anhalten.",
+              "en": "Probably not, because cyclists can stop more easily."
+            },
+            "highlights": [
+              "Dili siguro"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "kadaut",
+          "kind": "noun",
+          "base": {
+            "de": "Schaden",
+            "en": "harm"
+          },
+          "acceptedAnswers": [
+            "kadaut"
+          ]
+        },
+        {
+          "targetText": "hangin",
+          "kind": "noun",
+          "base": {
+            "de": "Luft",
+            "en": "air"
+          },
+          "acceptedAnswers": [
+            "hangin"
+          ]
+        },
+        {
+          "targetText": "gamiton",
+          "kind": "verb",
+          "base": {
+            "de": "benutzen",
+            "en": "use"
+          },
+          "acceptedAnswers": [
+            "gamiton"
+          ],
+          "lemma": "gamit"
+        },
+        {
+          "targetText": "luwas",
+          "kind": "adjective",
+          "base": {
+            "de": "sicher",
+            "en": "safe"
+          },
+          "acceptedAnswers": [
+            "luwas"
+          ]
+        },
+        {
+          "targetText": "nagbisikleta",
+          "kind": "verb",
+          "base": {
+            "de": "Rad fahren",
+            "en": "cycle"
+          },
+          "acceptedAnswers": [
+            "nagbisikleta"
+          ],
+          "lemma": "bisikleta"
+        },
+        {
+          "targetText": "mohunong",
+          "kind": "verb",
+          "base": {
+            "de": "anhalten",
+            "en": "stop"
+          },
+          "acceptedAnswers": [
+            "mohunong"
+          ],
+          "lemma": "hunong"
+        },
+        {
+          "targetText": "susihon",
+          "kind": "verb",
+          "base": {
+            "de": "prüfen",
+            "en": "review"
+          },
+          "acceptedAnswers": [
+            "susihon"
+          ],
+          "lemma": "susi"
+        },
+        {
+          "targetText": "batasan",
+          "kind": "noun",
+          "base": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          },
+          "acceptedAnswers": [
+            "batasan"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "nagsuporta",
+            "kadaut",
+            "hangin"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "nagbisikleta",
+            "mohunong",
+            "mopalit"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mouyon",
+            "susihon",
+            "batasan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "kadaut",
+        "familyKey": "daut",
+        "surface": "kadaut",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Mas gamay ang kadaut sa hangin kung bisikleta ang gamiton.",
+          "base": {
+            "de": "Die Luft wird weniger belastet, wenn man das Fahrrad benutzt.",
+            "en": "There is less harm to the air when a bicycle is used."
+          }
+        },
+        "base": {
+          "de": "Schaden",
+          "en": "harm"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "giunsa-ang-desisyon",
+      "title": {
+        "de": "Wie die Torschließung beschlossen wurde",
+        "en": "How the gate closure was decided"
+      },
+      "situation": {
+        "de": "Das Sekretariat eurer Wohnvereinigung fragt dich als Ausschussmitglied nach der örtlichen Entscheidung zur nächtlichen Torschließung.",
+        "en": "Your homeowners association’s secretary asks you, as a committee member, about the local decision to close the gate at night."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Sekretariat der Wohnvereinigung",
+            "en": "association secretary"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Das Sekretariat eurer Wohnvereinigung fragt dich als Ausschussmitglied nach der örtlichen Entscheidung zur nächtlichen Torschließung. Die andere Person sagt: „Alang sa minutes, palihug ipasabot kanako kung giunsa pag-abot sa inyong komite ang desisyon nga sirhan ang gate sa gabii.“",
+        "en": "Your homeowners association’s secretary asks you, as a committee member, about the local decision to close the gate at night. The other person says: “Alang sa minutes, palihug ipasabot kanako kung giunsa pag-abot sa inyong komite ang desisyon nga sirhan ang gate sa gabii.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Alang sa minutes, palihug ipasabot kanako kung giunsa pag-abot sa inyong komite ang desisyon nga sirhan ang gate sa gabii.",
+          "base": {
+            "de": "Erklären Sie mir für das Protokoll bitte, wie Ihr Ausschuss zu der Entscheidung kam, das Tor nachts zu schließen.",
+            "en": "For the minutes, please explain how your committee reached the decision to close the gate at night."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nagsugod kini sa reklamo sa tulo ka pamilya, dayon gisusi sa komite ang CCTV, ug sa katapusan nagboto ang kadaghanan nga sirhan kini alas dyes.",
+          "base": {
+            "de": "Es begann mit Beschwerden von drei Familien. Dann prüfte der Ausschuss die Kameraaufnahmen, und schließlich stimmte die Mehrheit für eine Schließung um zehn.",
+            "en": "It began with complaints from three families, then the committee checked the CCTV, and finally the majority voted to close it at ten."
+          },
+          "move": "explain",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan duha ka miyembro ang nisupak sumala sa akong nadungog. Giunsa ninyo pagdawat ang ilang punto?",
+          "base": {
+            "de": "Zwei Mitglieder haben aber widersprochen, wie ich gehört habe. Wie sind Sie mit ihrem Argument umgegangen?",
+            "en": "But two members objected, from what I heard. How did you deal with their point?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Gidungog namo ang ilang punto bahin sa mga nagtrabaho sa gabii, busa gidugang ang kodigo sa gate alang sa mga residente.",
+          "base": {
+            "de": "Wir hörten ihr Argument zu den nachts Arbeitenden an. Deshalb wurde ein Torcode für die Bewohner ergänzt.",
+            "en": "We listened to their point about people working at night, so a gate code was added for residents."
+          },
+          "move": "clarify",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Sa usa ka linya lang, unsa ang katapusan nga desisyon ug kanus-a kini magsugod?",
+          "base": {
+            "de": "Gut. In einer Zeile: Was ist die endgültige Entscheidung, und wann tritt sie in Kraft?",
+            "en": "All right. In one line, what is the final decision and when does it start?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sirhan ang gate alas dyes sa gabii sugod sunod Lunes, ug naa ang kodigo alang sa mga residente nga naulahi.",
+          "base": {
+            "de": "Ab nächstem Montag wird das Tor abends um zehn geschlossen. Für spät zurückkehrende Bewohner gibt es den Code.",
+            "en": "The gate will close at ten at night starting next Monday, and the code is available for residents arriving late."
+          },
+          "move": "summarize",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "Nagsugod kini sa reklamo sa tulo ka pamilya, dayon gisusi sa komite ang CCTV, ",
+        "chunks": [
+          "ug sa katapusan",
+          "nagboto",
+          "ang kadaghanan",
+          "nga sirhan kini",
+          "alas dyes."
+        ],
+        "distractors": [
+          "ang minoriya",
+          "alas onse."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang ilang punto bahin sa mga nagtrabaho sa gabii, busa "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ang kodigo sa gate alang sa mga residente."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Gidungog namo",
+            "acceptedAnswers": [
+              "Gidungog namo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Gidungog namo",
+              "Gidungog nato",
+              "Wala namo dungga",
+              "Gisupak namo"
+            ]
+          },
+          {
+            "answer": "gidugang",
+            "acceptedAnswers": [
+              "gidugang"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "dugang, Objektfokus gi-, abgeschlossen",
+              "en": "dugang, object focus gi-, completed"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Sirhan ang gate alas dyes sa gabii "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", ug naa ang kodigo alang sa mga residente nga naulahi."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "sugod sunod Lunes",
+            "acceptedAnswers": [
+              "sugod sunod Lunes"
+            ],
+            "kind": "frame",
+            "choices": [
+              "sugod sunod Lunes",
+              "sugod miaging Lunes",
+              "hangtod sunod Lunes",
+              "sugod gabii"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Nagsugod kini sa reklamo sa tulo ka pamilya, dayon gisusi sa komite ang CCTV, ug sa katapusan nagboto ang ",
+        "answer": "kadaghanan",
+        "acceptedAnswers": [
+          "kadaghanan"
+        ],
+        "after": " nga sirhan kini alas dyes.",
+        "fallbackChoices": [
+          "kadaghanan",
+          "minoriya",
+          "bisita",
+          "bata"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Zeigen, wie der Einwand berücksichtigt wurde",
+          "en": "Showing how an objection was addressed"
+        },
+        "rule": {
+          "de": "Sprich mit „namo“ für den Ausschuss ohne das Sekretariat und schließe mit „busa“ die Änderung an.",
+          "en": "Speak with “namo” for the committee without the secretary and attach the change with “busa”."
+        },
+        "examples": [
+          {
+            "targetText": "Gidungog namo ang ilang punto bahin sa mga nagtrabaho sa gabii, busa gidugang ang kodigo sa gate alang sa mga residente.",
+            "base": {
+              "de": "Wir hörten ihr Argument zu den nachts Arbeitenden an. Deshalb wurde ein Torcode für die Bewohner ergänzt.",
+              "en": "We listened to their point about people working at night, so a gate code was added for residents."
+            },
+            "highlights": [
+              "Gidungog namo"
+            ]
+          },
+          {
+            "targetText": "Gidungog namo ang ilang punto, busa gidugang ang kodigo alang sa mga residente.",
+            "base": {
+              "de": "Wir hörten ihr Argument an, deshalb wurde der Code für die Bewohner ergänzt.",
+              "en": "We heard their point, so the code was added for residents."
+            },
+            "highlights": [
+              "Gidungog namo"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "katapusan",
+          "kind": "noun",
+          "base": {
+            "de": "Ende, Abschluss",
+            "en": "end"
+          },
+          "acceptedAnswers": [
+            "katapusan"
+          ]
+        },
+        {
+          "targetText": "komite",
+          "kind": "noun",
+          "base": {
+            "de": "Ausschuss",
+            "en": "committee"
+          },
+          "acceptedAnswers": [
+            "komite"
+          ]
+        },
+        {
+          "targetText": "nagboto",
+          "kind": "verb",
+          "base": {
+            "de": "stimmte ab",
+            "en": "voted"
+          },
+          "acceptedAnswers": [
+            "nagboto"
+          ],
+          "lemma": "boto"
+        },
+        {
+          "targetText": "kadaghanan",
+          "kind": "noun",
+          "base": {
+            "de": "Mehrheit",
+            "en": "majority"
+          },
+          "acceptedAnswers": [
+            "kadaghanan"
+          ]
+        },
+        {
+          "targetText": "nisupak",
+          "kind": "verb",
+          "base": {
+            "de": "widersprachen",
+            "en": "objected"
+          },
+          "acceptedAnswers": [
+            "nisupak"
+          ],
+          "lemma": "supak"
+        },
+        {
+          "targetText": "Gidungog",
+          "kind": "verb",
+          "base": {
+            "de": "angehört",
+            "en": "heard"
+          },
+          "acceptedAnswers": [
+            "Gidungog"
+          ],
+          "lemma": "dungog"
+        },
+        {
+          "targetText": "gidugang",
+          "kind": "verb",
+          "base": {
+            "de": "hinzugefügt",
+            "en": "added"
+          },
+          "acceptedAnswers": [
+            "gidugang"
+          ],
+          "lemma": "dugang"
+        },
+        {
+          "targetText": "kodigo",
+          "kind": "noun",
+          "base": {
+            "de": "Code",
+            "en": "code"
+          },
+          "acceptedAnswers": [
+            "kodigo"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "nagsugod",
+            "katapusan",
+            "kadaghanan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "gidungog",
+            "gidugang",
+            "kodigo"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "sirhan",
+            "kodigo",
+            "residente"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "katapusan",
+        "familyKey": "tapos",
+        "surface": "katapusan",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Sa katapusan nagboto ang kadaghanan nga sirhan ang gate.",
+          "base": {
+            "de": "Schließlich stimmte die Mehrheit dafür, das Tor zu schließen.",
+            "en": "In the end, the majority voted to close the gate."
+          }
+        },
+        "base": {
+          "de": "Ende, Abschluss",
+          "en": "end"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "originalSource": "korean-next-final/p8.json",
+  "originalSha256": "f5181ec159e98b2e3399631e0f9deee7119512a8c8bdbccdeb7481d1af8224e8",
+  "resultSha256": "e19db24eda07cc64f02a74ae12f9925b26f93617335b7904d6d86ba7f986ca52",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 1,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Pulled '지금은' into the chip ending the first sentence; '예전 집' remains distinct from distractor '지금 집'."
+    },
+    {
+      "lesson": 3,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Period internal to chip 2; four 2–3-eojeol chips, no identical chips or distractor overlap."
+    },
+    {
+      "lesson": 4,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Period internal to chip 3; '공을 차곤 했어요.' remains distinct from distractor '수영을 배우곤 했어요.'."
+    }
+  ]
+}

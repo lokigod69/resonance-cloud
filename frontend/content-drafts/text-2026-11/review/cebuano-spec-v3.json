@@ -1,0 +1,869 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Cebuano",
+  "code": "ceb-PH",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": "Two rail registers, constant per lesson (mode constant, all three you turns equal; no shift/relay lesson in P1/P2; interlocutor speaks turns 0,2,4 only). polite = single professional addressee (agent, manager, rental staff, shop owner, mentor, board, accountant, consultant, association secretary): kamo/ninyo/inyo/inyoha for the addressee as this course's chosen polite convention (widely used in formal Cebuano address but not a grammatical rule of the language; ka to a professional is not wrong Cebuano, only outside this course's polite register), palihug on request lines only, full sentences, no slang clitics (bitaw, uy, diay); learner is ko/nako/ako, exclusive mi/namo for the learner's own team, inclusive ta/nato only when the addressee is genuinely part of the group. casual = friend, neighbor, colleague, newcomer: ka/nimo/imo, lang/man/gyud softeners allowed in learner lines (never as speak tokens), inclusive ta/nato when deciding together. Sir/Ma'am borrowings only inside them-lines, never learner lines, chips, recall or trophies. Honorific direction: learner never uses kamo to a friend and never ka to the polite addressee within one lesson. Banned everywhere: po, opo, pakisuyo, kayo, hindi, kasi, kumain, magkano, Tagalog ng/ay ('kayo' is not a Cebuano spelling; Cebuano 'kaayo' is a different token and unaffected).",
+  "genderSafety": "No grammatical gender; siya/niya, adjectives and verbs never agree. All 20 lessons speakerGender neutral, no alternates, in both de and en base texts. Learner lines never self-label gender or marital status; gendered words for third parties are allowed because they describe someone else, never the speaker (inahan 'mother' in P1 L9 is such a case; igsoon, uyab, kauban are the gender-neutral kin and companion terms used elsewhere); captions name roles. Generic gender detector pass is empty by design; genderClaimVerified reviewed as not applicable.",
+  "orthography": "Standard Visayan spelling continuous with A1/A2/B1: ni- completed canonical in learner lines and, for TTS consistency, in them-lines of these twenty lessons (mi- recognised in reading as a regional variant only; never an authored token, accepted answer or full-line variant in this batch), nag- progressive, mo-/mag- future; object focus gi-/-on/i- and -a/-i imperatives productive from P1 L1 (B1 staging was prerequisite, not a ban); 'ug' conjunction, 'og' indefinite marker; 'kung' canonical, 'kon' listed variant; fused koy/kay/tay without apostrophe in dialogue only; glottal hyphen words (bug-at, pag-usab, tan-awon, bag-o, nakat-onan, mag-abang) allowed in dialogue text, never as speak token, blank answer, recall answer or trophy. Loanwords fixed now: bentaha, disbentaha, epekto, gasto, proseso, kalidad, prayoridad, porsyento, diskwento, kodigo, kumpirmahon, rekomendasyon, rekord, piso; English scene nouns kept lowercase as used (app, website, email, text, card, staff, weekend, parking, slot, offer, router, drill, security, overtime, grocery, permit, clearance), CCTV uppercase. Decided spellings with no accepted alternative: card (not kard), text (not teks), kumpirmahon (not kompirmahon), kadaghanan (not kadaghan); 'sentence' is not used, 'linya' is. Numbers: native for counts (duha, tulo, lima, pito), Spanish-derived for money/time (singko mil, dos mil, dos syentos kwarenta, alas dyes, singkwenta); no digits in voiced text. kaysa written as one word canonical; 'kay sa' accepted variant only where listed.",
+  "segmentation": "Unit = token (letters/digits with internal hyphen/apostrophe), scale 1, joiner U+0020. Lengths: them 6-20, you1 14-26 (build focus span 7-12), you2 12-24, you3 10-22. Build: 5-8 chunks of 1-4 tokens, framePrefix + chunks + frameSuffix reconstruct dialogue[1] exactly; second-position clitics (ba, na, pa, man, ra, lang, gyud, kaha, diay, sad) and pronoun enclitics (ko, ka, siya, mi, ta, nato, nako, ninyo, nila) never a chip alone and stay in their host chunk; nga and sa attach to the following chunk; kay/kung/aron/bisan/sanglit/busa open their clause chunk; focus and aspect affixes never split. Cloze/synthesis: blanks are whole inflected words or phrases of at most 3 tokens, never a bare clitic, pronoun, marker or bound morpheme; recall answer 1-3 tokens content word. Speak: 3 targets (turn 1,3,5), 2-4 distinct whole tokens each, no clitics, no hyphen/apostrophe tokens; profile b2-long on turn 1, b2-short on 3 and 5. Trophy = exact lowercase whole token of the named turn; affixed form is the trophy when the taught form is affixed (itandi, isugyot, gitakda, magsalig, mapuslanon); no substring anchoring.",
+  "acceptedInput": "Only explicitly authored acceptedAnswers per blank/recall/term (shared strict fields): kung/kon, og/ug, kaysa/kay sa where listed; no variant for kadaghanan, kumpirmahon, text or card. No full-line learner-turn or speakTarget variant lists exist in this batch: turn and speakTarget carry no acceptedVariants/acceptedAnswers key, mi- forms are never accepted answers, and any future full-line variant support is deferred to a later explicit specification exception. Intended normalization NFC + trim + collapse spaces + casefold + strip terminal punctuation only; no clitic dropping, no synonym substitution, no reordering, no prefix substitution, no autocorrection. Planned, not implemented: no ceb-PH B2 variant handling or normalization exists in the runtime or validator today.",
+  "carriersStaged": {
+    "P1": [
+      {
+        "lessons": "1-3",
+        "productive": "mas X kaysa (sa) Y; bentaha/disbentaha sa; gasto sa; concession frame 'Tinuod nga ..., apan ...' (staged productive from L1 because every lesson concedes or rebuts); conclusion frame 'Mao kana/kanay ...' and 'Sa akong hunahuna'; -a/-i imperatives and -on/i- object focus on familiar verbs (ihapon, ihapa, ibalhin, sulayi, kuhaon); kung ... mas conditional comparison",
+        "recognitionOnly": "labaw nga, takos ba, itandi, magsalig sa, unsa kaha kung, sa ato pa, isugyot (them-lines)"
+      },
+      {
+        "lessons": "4-7",
+        "productive": "labaw nga + adjective, preference with mas gusto pa nako nga + verb, itandi nato/nako, haom alang sa, takos ba / takos gihapon, sa ato pa uptake, counteroffer with kung + imperative (pangitaa, gamita, bantayi)",
+        "recognitionOnly": "mapuslanon, magsalig ko sa + person, pilion, isugyot nako nga"
+      },
+      {
+        "lessons": "8-10",
+        "productive": "mapuslanon alang sa, magsalig (una) ko sa + person NP, isugyot nako (ang/nga), pilion/kuhaon nako, mosupak, summarizing list with ug; consolidation, no new recognition set",
+        "recognitionOnly": "none new"
+      }
+    ],
+    "P2": [
+      {
+        "lessons": "1-3",
+        "productive": "tungod kay + clause (B2 introduction in P2 L1-3, extending the attested B1 tungod sa + noun; no B1 clause source), busa result link, sanglit + reason clause, epekto niini/sa + NP, mao nga, una/dayon/ikaduha process steps (B1 P6), gi- completed object focus in narration (gipataas, gilain, gipadala), wala + ma- (wala makasugod)",
+        "recognitionOnly": "sangputanan, tinubdan, gitakda, gumikan sa, sumala sa, sa katapusan, unsa kaha kung"
+      },
+      {
+        "lessons": "4-6",
+        "productive": "sangputanan sa, tinubdan sa problema, gitakda sa X nga + clause, gumikan sa, sumala sa, -on/i- instructions in summaries (isulat, ilakip, ipasa, kumpirmahon), kada/matag computations",
+        "recognitionOnly": "kakulian, kadaut, sukad sa, sa katapusan, napugos"
+      },
+      {
+        "lessons": "7-10",
+        "productive": "daghan ang kakulian + list, kadaut sa, sukad sa + time, sa katapusan, sa ato pa, buot ipasabot, nagsugod kini sa ... dayon ... sa katapusan narrative chain, exclusive namo vs inclusive nato in committee talk",
+        "recognitionOnly": "unsa kaha kung ... pa hypothesis, kon wala pa"
+      }
+    ]
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Mas maayo ba kaysa ... — weighing options",
+      "function": "compare advantages and disadvantages of two or three options and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "polite default (agent, manager, rental staff, shop owner, mentor, board); casual in L2, L5, L7, L9 (colleague, friend, friend, neighbor); constant within each lesson",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "kaysa, bentaha, gasto, tinuod nga ... apan, mao kana, -a/-i and -on/i- on familiar verbs",
+          "recognitionOnly": "labaw, takos, itandi, magsalig, isugyot, unsa kaha kung"
+        },
+        {
+          "lessons": "4-7",
+          "productive": "labaw, itandi, haom, takos, sa ato pa, kung + imperative counteroffer",
+          "recognitionOnly": "mapuslanon, magsalig, pilion, isugyot"
+        },
+        {
+          "lessons": "8-10",
+          "productive": "mapuslanon, magsalig, isugyot, pilion, mosupak, list summary",
+          "recognitionOnly": "none new"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "abang-batok-biyahe",
+          "scene": "letting agent shows two rooms: expensive one downtown near work, cheap one in Talamban far away",
+          "interlocutor": "letting agent",
+          "register": "polite",
+          "openingMove": {
+            "them": "Duha ang bakante: mahal ang sa sentro apan duol sa inyong trabaho, barato ang sa Talamban apan layo. Asa kamo?",
+            "you1": "Mas barato ang kwarto sa Talamban kaysa sa sentro, apan kada adlaw duha ka oras ang biyahe, ug pliti usab kana.",
+            "move": "compare"
+          },
+          "challenge": "Apan ang abang sa sentro tulo ka libo ang dugang matag bulan. Dili ba mas dako kana kaysa sa pliti?",
+          "answerMove": {
+            "you2": "Dili, kay kung ihapon nako ang pliti ug ang oras nga mawala, mas mahal gihapon ang Talamban.",
+            "move": "rebut"
+          },
+          "steer": "Sige. Kung mopirma kamo karon, mahatagan nako og lima ka porsyento nga diskwento ang sentro. Unsa ang inyong desisyon?",
+          "closingMove": {
+            "you3": "Kuhaon nako ang kwarto sa sentro uban sa diskwento, kay mas daghan ang akong oras nga maluwas.",
+            "move": "conclude"
+          },
+          "trophyLemma": "kaysa",
+          "trophySurface": "kaysa",
+          "trophyFamilyKey": "kaysa",
+          "pos": "connector",
+          "requiredCarrier": "mas + adjective + NP + kaysa sa + NP",
+          "recycles": "A2 mas comparatives, B1 P7 kung condition, B1 P2 apan"
+        },
+        {
+          "number": 2,
+          "slug": "sakyanan-o-jeep",
+          "scene": "colleague thinks about buying a used car instead of riding the jeepney to work",
+          "interlocutor": "colleague",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nagplano ko nga mopalit og gamit na nga sakyanan para sa trabaho. Mas maayo ba kaha kana kaysa jeep?",
+            "you1": "Sa akong hunahuna, ang bentaha sa sakyanan mao ang kagawasan sa oras, apan ang jeep mas barato ug wala kay problema sa parking.",
+            "move": "compare"
+          },
+          "challenge": "Pero gikapoy na ko sa paghulat sa jeep matag buntag. Dili ba bentaha usab ang dili na maghulat?",
+          "answerMove": {
+            "you2": "Tinuod nga bentaha kana, apan ihapa ang gasolina, ang parking ug ang mekaniko kada bulan.",
+            "move": "concede"
+          },
+          "steer": "Okey, unsa kaha kung magsakay ko og jeep sa adlaw sa trabaho ug sakyanan lang sa weekend?",
+          "closingMove": {
+            "you3": "Mao kanay maayo: jeep sa adlaw sa trabaho, sakyanan sa weekend, apan mag-abang ka una og sakyanan sa duha ka weekend.",
+            "move": "propose"
+          },
+          "trophyLemma": "bentaha",
+          "trophySurface": "bentaha",
+          "trophyFamilyKey": "bentaha",
+          "pos": "noun",
+          "requiredCarrier": "ang bentaha sa + NP mao ang + NP",
+          "recycles": "B1 P2 sa akong hunahuna, B1 P8 matag/kada, L1 kaysa"
+        },
+        {
+          "number": 3,
+          "slug": "balay-o-opisina",
+          "scene": "manager asks whether the learner keeps working from home or returns to the office next month",
+          "interlocutor": "manager",
+          "register": "polite",
+          "openingMove": {
+            "them": "Gusto nako mahibaloan kung mopadayon kamo sa pagtrabaho sa balay o mobalik sa opisina sugod sunod bulan.",
+            "you1": "Mas gusto nako ang balay tulo ka adlaw matag semana, kay mas gamay ang akong gasto sa pliti ug mas taas ang oras sa pagtrabaho.",
+            "move": "position"
+          },
+          "challenge": "Apan ang team nagreklamo nga hinay ang tubag ninyo kung naa kamo sa balay. Unsa ang inyong ikasulti niana?",
+          "answerMove": {
+            "you2": "Dili ako ang hinay kondili ang internet sa hapon; sa buntag mas sayo pa ko motubag kaysa sa opisina.",
+            "move": "clarify"
+          },
+          "steer": "Sige, apan kinahanglan nga anaa kamo sa opisina matag Lunes ug Huwebes alang sa miting. Mouyon ba kamo?",
+          "closingMove": {
+            "you3": "Mouyon ko sa Lunes, apan palihug ibalhin ang Huwebes ngadto sa Miyerkules, kay naa koy klase sa tibuok Huwebes.",
+            "move": "counteroffer"
+          },
+          "trophyLemma": "gasto",
+          "trophySurface": "gasto",
+          "trophyFamilyKey": "gasto",
+          "pos": "noun",
+          "requiredCarrier": "mas gamay/dako ang akong gasto sa + NP",
+          "recycles": "B1 P3 ibalhin, B1 P2 uyon, L1 kaysa"
+        },
+        {
+          "number": 4,
+          "slug": "palit-o-abang",
+          "scene": "tool rental counter: rent or buy a drill for a two-week project",
+          "interlocutor": "rental staff",
+          "register": "polite",
+          "openingMove": {
+            "them": "Para sa inyong proyekto nga duha ka semana, mahimo ninyong abangan ang drill o paliton. Asa ang gusto ninyo?",
+            "you1": "Sa akong panglantaw, labaw nga maayo nga abangan lang ang drill, kay duha lang ka semana ang trabaho ug wala koy lugar sa pagbutang niini.",
+            "move": "reason"
+          },
+          "challenge": "Apan kung moabot sa tulo ka semana ang trabaho, mas mahal na ang abang kaysa sa presyo sa bag-o.",
+          "answerMove": {
+            "you2": "Tinuod kana, apan mas gusto pa nako nga mobayad og gamay nga dugang kaysa moatiman og gamit nga dili na nako gamiton.",
+            "move": "concede"
+          },
+          "steer": "Sa ato pa, abang. Gusto ba ninyo ang usa ka semana una ug dayon ipadugang kung kinahanglan?",
+          "closingMove": {
+            "you3": "Oo, usa ka semana una, ug motawag ko kung magkinahanglan pa og dugang nga adlaw.",
+            "move": "conclude"
+          },
+          "trophyLemma": "labaw",
+          "trophySurface": "labaw",
+          "trophyFamilyKey": "labaw",
+          "pos": "adverb",
+          "requiredCarrier": "labaw nga + adjective (labaw nga maayo nga ...)",
+          "recycles": "B1 P7 kung future, B1 P3 motawag, L1 kaysa"
+        },
+        {
+          "number": 5,
+          "slug": "duha-ka-bakasyon",
+          "scene": "friend in Cebu City cannot choose between Siargao for surfing and Bohol with the family",
+          "interlocutor": "friend",
+          "register": "casual",
+          "openingMove": {
+            "them": "Dili ko makadesisyon: Siargao para sa surf o Bohol para sa pamilya. Tabangi ko.",
+            "you1": "Itandi nato ang duha: sa Siargao mas lingaw apan mahal ang pliti, sa Bohol mas barato ug makauban ang tanan.",
+            "move": "compare"
+          },
+          "challenge": "Pero ang akong igsoon dili ganahan og dagat. Dili ba sayang ang Bohol kung dili siya moligo?",
+          "answerMove": {
+            "you2": "Dili sayang, kay sa Bohol naa ang Chocolate Hills ug ang mga tarsier, dili lang dagat ang makita.",
+            "move": "rebut"
+          },
+          "steer": "Okey. Kung lima lang ka adlaw ang bakasyon, asa gyud ang imong isugyot?",
+          "closingMove": {
+            "you3": "Bohol, kay gikan sa Cebu mas mubo ang biyahe kaysa sa Siargao, ug mas daghan ang mahimo sa lima ka adlaw.",
+            "move": "conclude"
+          },
+          "trophyLemma": "itandi",
+          "trophySurface": "itandi",
+          "trophyFamilyKey": "tandi",
+          "pos": "verb",
+          "requiredCarrier": "Itandi nato/nako ang duha: ... , ...",
+          "recycles": "B1 P7 bakasyon, B1 P2 sayon, inclusive nato (friend)"
+        },
+        {
+          "number": 6,
+          "slug": "kuwarta-o-app",
+          "scene": "small shop owner asks a regular customer whether to accept app payments",
+          "interlocutor": "shop owner",
+          "register": "polite",
+          "openingMove": {
+            "them": "Nagduhaduha ko kung modawat og bayad pinaagi sa app. Kamo nga kostumer, unsa ang mas angay sa among tindahan?",
+            "you1": "Para sa gamay nga tindahan sama sa inyoha, haom ang duha: cash alang sa mga naandan niini, ug app alang sa mga nangutana na niana.",
+            "move": "position"
+          },
+          "challenge": "Apan ang app mokuha og duha ka porsyento sa matag bayad. Dili ba kana puro gasto para nako?",
+          "answerMove": {
+            "you2": "Duha ka porsyento ang gasto, apan tingali mas daghan ang mopalit kung dili na sila mangita og sukli; sulayan lang una.",
+            "move": "concede"
+          },
+          "steer": "Sige. Kung sulayan nako ang app sa usa ka bulan, unsa ang angay nakong bantayan?",
+          "closingMove": {
+            "you3": "Bantayi kung pila ang nagbayad pinaagi sa app ug kung mas dako ba ang ilang palit kaysa sa cash.",
+            "move": "propose"
+          },
+          "trophyLemma": "haom",
+          "trophySurface": "haom",
+          "trophyFamilyKey": "haom",
+          "pos": "adjective",
+          "requiredCarrier": "haom ang + NP alang sa + NP",
+          "recycles": "A2 sukli/bayad, L3 gasto, L1 kaysa"
+        },
+        {
+          "number": 7,
+          "slug": "klase-o-app",
+          "scene": "friend learning Cebuano on an app is urged by their partner to take a class",
+          "interlocutor": "friend",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nagtuon ko og Cebuano sa app, apan gusto sa akong uyab nga moeskwela ko sa klase. Sakto ba kana?",
+            "you1": "Takos ang klase kung gusto ka mosulti og tarong, kay naa kay tawo nga motubag dayon; sa akong app mga pulong lang ang akong nakat-onan.",
+            "move": "reason"
+          },
+          "challenge": "Pero mahal ang klase, duha ka libo matag bulan, ug wala koy oras sa gabii.",
+          "answerMove": {
+            "you2": "Kung mahal, pangitaa ang mas barato nga klase sa grupo kausa sa semana, sa Sabado sa buntag, ug gamita ang app sa ubang adlaw.",
+            "move": "counteroffer"
+          },
+          "steer": "Unsa kaha kung tulo lang ka bulan ang klase? Takos pa ba kana?",
+          "closingMove": {
+            "you3": "Para nako takos gihapon, kay sa tulo ka bulan mas daghan ka makaistorya kaysa sa app lang.",
+            "move": "conclude"
+          },
+          "trophyLemma": "takos",
+          "trophySurface": "takos",
+          "trophyFamilyKey": "takos",
+          "pos": "adjective",
+          "requiredCarrier": "Takos (gihapon) ang + NP kung/kay ...",
+          "recycles": "B1 P8 kausa/matag, B1 P9 tarong, -a imperatives from L2"
+        },
+        {
+          "number": 8,
+          "slug": "duha-ka-trabaho",
+          "scene": "mentor reviews two job offers: high contract salary vs low permanent salary",
+          "interlocutor": "mentor",
+          "register": "polite",
+          "openingMove": {
+            "them": "Duha ang offer: dako ang sweldo apan kontrata lang ang usa, gamay apan permanente ang usa. Unsa ang inyong gitan-aw?",
+            "you1": "Mas mapuslanon alang nako ang permanente, kay bisan gamay ang sweldo, sa ilang offer naa ang seguro ug ang pagtuon nga bayran sa kompanya.",
+            "move": "compare"
+          },
+          "challenge": "Apan sa kontrata makatigom kamo og dako sulod sa usa ka tuig. Dili ba mas mapuslanon kana sa inyong edad?",
+          "answerMove": {
+            "you2": "Tinuod nga makatigom ko, apan kung dili ipadugay ang kontrata, human sa usa ka tuig mobalik ko sa pagpangita og trabaho.",
+            "move": "concede"
+          },
+          "steer": "Sa ato pa, kung ang kompanya nga permanente mohatag og dugang nga lima ka porsyento, modawat ba kamo?",
+          "closingMove": {
+            "you3": "Modawat ko, kay mas mapuslanon ang kasiguroan karon kaysa sa dako nga sweldo nga mahuman sa usa ka tuig.",
+            "move": "conclude"
+          },
+          "trophyLemma": "mapuslanon",
+          "trophySurface": "mapuslanon",
+          "trophyFamilyKey": "pulos",
+          "pos": "adjective",
+          "requiredCarrier": "mas mapuslanon alang nako ang + NP kay ...",
+          "recycles": "B1 P2 bisan, B1 P7 tigom, L1 kaysa"
+        },
+        {
+          "number": 9,
+          "slug": "balhin-o-magpabilin",
+          "scene": "neighbor heard about a job offer in Davao and asks whether the learner will move",
+          "interlocutor": "neighbor",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nabalitaan ko nga gitanyagan ka og trabaho sa Davao. Mobalhin ka ba o magpabilin dinhi?",
+            "you1": "Magsalig una ko sa akong igsoon nga naa na sa Davao; kung makauban ko ang akong inahan ug mas barato ang abang didto, mobalhin ko.",
+            "move": "reason"
+          },
+          "challenge": "Pero ang imong mga amigo ug ang imong barangay naa dinhi. Dili ba mas bug-at kana kaysa sa abang?",
+          "answerMove": {
+            "you2": "Bug-at gyud kana, apan ang mga amigo matawagan ug mabisita kung bakasyon; ang sweldo ug ang abang matag adlaw ang akong atubangon.",
+            "move": "concede"
+          },
+          "steer": "Sige. Kung dili ka mobalhin, unsa man ang imong buhaton aron mosaka ang imong kita dinhi?",
+          "closingMove": {
+            "you3": "Mangita ko og dugang nga trabaho online ug maghulat og usa ka tuig una modesisyon.",
+            "move": "propose"
+          },
+          "trophyLemma": "magsalig",
+          "trophySurface": "magsalig",
+          "trophyFamilyKey": "salig",
+          "pos": "verb",
+          "requiredCarrier": "Magsalig (una) ko sa + person NP; kung ... , mobalhin ko",
+          "recycles": "B1 P7 aron/kung plans, B1 P1 narration, L1 kaysa"
+        },
+        {
+          "number": 10,
+          "slug": "duha-ka-palisiya",
+          "scene": "subdivision homeowners board asks a resident to recommend one of two parking rules (fictional, this subdivision only)",
+          "interlocutor": "board secretary",
+          "register": "polite",
+          "openingMove": {
+            "them": "Duha ang sugyot sa parking dinhi: bayad matag gabii o usa ka slot matag balay. Unsa ang irekomendar ninyo?",
+            "you1": "Isugyot nako ang usa ka slot matag balay, kay patas kini ug dili na kinahanglan og tawo nga mokolekta matag gabii.",
+            "move": "position"
+          },
+          "challenge": "Apan ang mga balay nga duha ang sakyanan mosupak gyud. Unsa ang inyong tubag niana?",
+          "answerMove": {
+            "you2": "Mahimo nga ang ikaduha nga sakyanan mobayad og gamay matag bulan; mas patas kana, sa akong hunahuna, para sa mga walay sakyanan.",
+            "move": "counteroffer"
+          },
+          "steer": "Sige. Palihug isumaryo ang inyong rekomendasyon sa usa ka linya lang para sa miting.",
+          "closingMove": {
+            "you3": "Usa ka libre nga slot matag balay, bayad sa ikaduha nga sakyanan, ug dili na kinahanglan og kolektor matag gabii.",
+            "move": "summarize"
+          },
+          "trophyLemma": "isugyot",
+          "trophySurface": "isugyot",
+          "trophyFamilyKey": "sugyot",
+          "pos": "verb",
+          "requiredCarrier": "Isugyot nako ang + NP, kay ...",
+          "recycles": "B1 P6 ikaduha, B1 P8 matag, B1 P3 mahimo, L2 bentaha reasoning"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Busa mao kini ang nahitabo — explaining how and why",
+      "function": "give a detailed explanation of causes, consequences or a process and sustain it under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "polite in L1, L3, L8, L10 (accountant, manager, consultant, association secretary); casual in L2, L4, L5, L6, L7, L9 (newcomer, friend, neighbor, colleague, friend, skeptic neighbor); constant within each lesson",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "busa, sanglit, epekto, tungod kay, mao nga, gi- narration, una/dayon",
+          "recognitionOnly": "sangputanan, tinubdan, gitakda, gumikan, sumala, sa katapusan"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "sangputanan, tinubdan, gitakda, gumikan sa, sumala sa, -on/i- summaries",
+          "recognitionOnly": "kakulian, kadaut, sukad, sa katapusan, napugos"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "kakulian, kadaut, sukad, katapusan, sa ato pa, buot ipasabot",
+          "recognitionOnly": "unsa kaha kung ... pa, kon wala pa"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "lahi-ang-resibo",
+          "scene": "client's accountant asks why this month's invoice from the learner differs from last month",
+          "interlocutor": "accountant",
+          "register": "polite",
+          "openingMove": {
+            "them": "Lahi ang kantidad sa inyong singil karong bulana kaysa sa miaging bulan. Mahimo ba ninyong ipasabot ngano?",
+            "you1": "Niusab ang presyo sa materyales sa tunga sa bulan, busa gipataas nako ang kantidad sa ikaduhang bahin sa trabaho.",
+            "move": "explain"
+          },
+          "challenge": "Apan wala kami nakadawat og pahibalo bahin sa bag-ong presyo. Kanus-a ninyo kini gisulti?",
+          "answerMove": {
+            "you2": "Gipadala nako ang email sa ikanapulo sa bulan, apan tingali naabot kini sa laing opisina, busa ipadala nako pag-usab.",
+            "move": "clarify"
+          },
+          "steer": "Sige. Para sa sunod, unsa ang proseso nga inyong gisugyot aron dili na kini mahitabo?",
+          "closingMove": {
+            "you3": "Matag kausaban sa presyo, motawag ko una ug mopadala og email, ug magsugod lang ko kung naa nay inyong tubag nga oo.",
+            "move": "propose"
+          },
+          "trophyLemma": "busa",
+          "trophySurface": "busa",
+          "trophyFamilyKey": "busa",
+          "pos": "connector",
+          "requiredCarrier": "clause, busa + result clause",
+          "recycles": "B1 P1 ni- narration, B1 P10 kausaban, B1 P5 pahibalo"
+        },
+        {
+          "number": 2,
+          "slug": "paglain-sa-basura",
+          "scene": "newcomer asks how waste is separated on this street (fictional barangay practice, scene-specific)",
+          "interlocutor": "newcomer neighbor",
+          "register": "casual",
+          "openingMove": {
+            "them": "Bag-o pa ko dinhi. Giunsa man ang basura dinhi, kay nakita nako nga lahi ang kolor sa mga sako?",
+            "you1": "Sanglit lahi ang adlaw sa pagkuha sa matag klase sa basura, gilain nato kini: itom nga sako sa mabulok, berde sa plastik ug botelya.",
+            "move": "explain"
+          },
+          "challenge": "Pero unsa man ang mahitabo kung masagol nako? Naa bay multa?",
+          "answerMove": {
+            "you2": "Walay multa dinhi sa atong dalan, apan dili kuhaon ang sako nga gisagol, ug mobaho kini hangtod sa sunod nga pagkuha.",
+            "move": "clarify"
+          },
+          "steer": "Okey. Ug ang mga lata ug papel, asa man kana? Isumaryo palihug para masulat nako.",
+          "closingMove": {
+            "you3": "Itom ang mabulok, berde ang plastik ug botelya, ug ang lata ug papel ihatag sa mga nangolekta matag Sabado.",
+            "move": "summarize"
+          },
+          "trophyLemma": "sanglit",
+          "trophySurface": "sanglit",
+          "trophyFamilyKey": "sanglit",
+          "pos": "connector",
+          "requiredCarrier": "Sanglit + reason clause, + main clause",
+          "recycles": "B1 P6 gisagol/gi- focus, B1 P4 kolor nga, inclusive nato (street community)"
+        },
+        {
+          "number": 3,
+          "slug": "naulahi-ang-proyekto",
+          "scene": "manager asks why the project slipped two weeks and what it does to the budget",
+          "interlocutor": "manager",
+          "register": "polite",
+          "openingMove": {
+            "them": "Naulahi og duha ka semana ang proyekto. Unsa ang hinungdan ug unsa ang epekto niini sa budget?",
+            "you1": "Naulahi ang mga piyesa gikan sa Manila, ug ang epekto niini mao nga wala makasugod ang mga trabahante sa unang adlaw sa plano.",
+            "move": "reason"
+          },
+          "challenge": "Apan gisulti ninyo sa miaging miting nga naa na ang mga piyesa. Ngano man nga lahi karon?",
+          "answerMove": {
+            "you2": "Ang naabot kaniadto mao lamang ang unang kahon; ang ikaduha, nga mas importante, niabot sa Lunes pa.",
+            "move": "clarify"
+          },
+          "steer": "Sige. Sa ato pa, pila ang dugang nga gasto, ug mahimo pa ba nga mahuman sa Disyembre?",
+          "closingMove": {
+            "you3": "Mga lima ka porsyento ang dugang tungod sa overtime, apan mahuman gihapon sa Disyembre kung walay laing problema.",
+            "move": "conclude"
+          },
+          "trophyLemma": "epekto",
+          "trophySurface": "epekto",
+          "trophyFamilyKey": "epekto",
+          "pos": "noun",
+          "requiredCarrier": "ang epekto niini mao nga + clause",
+          "recycles": "B1 P1 naulahi/niabot, B1 P1 tungod sa, P1 L3 gasto"
+        },
+        {
+          "number": 4,
+          "slug": "puntos-sa-tindahan",
+          "scene": "friend asks whether the grocery loyalty card is worth anything (fictional scheme of this store)",
+          "interlocutor": "friend",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nakita nako nga naa kay card sa grocery. Naa bay pulos kana, o sayang lang?",
+            "you1": "Usa ka puntos matag gatos, usa ka piso kada puntos; sa akong dos mil matag bulan, dos syentos kwarenta ang sangputanan sa usa ka tuig.",
+            "move": "explain"
+          },
+          "challenge": "Pero ang akong igsoon nagsulti nga mas mahal ang mga butang didto kaysa sa merkado.",
+          "answerMove": {
+            "you2": "Tinuod nga mas mahal ang gulay didto, busa gulay sa merkado ug lata ug sabon lang sa grocery ang akong paliton.",
+            "move": "concede"
+          },
+          "steer": "Okey. Kung mopalit ko og singko mil matag bulan, pila ang akong makuha sa katapusan sa tuig?",
+          "closingMove": {
+            "you3": "Singko mil matag bulan singkwenta ka puntos, busa mga unom ka gatos ang diskwento sa usa ka tuig.",
+            "move": "conclude"
+          },
+          "trophyLemma": "sangputanan",
+          "trophySurface": "sangputanan",
+          "trophyFamilyKey": "sangpot",
+          "pos": "noun",
+          "requiredCarrier": "amount + ang sangputanan sa + time span (after stated spending premise)",
+          "recycles": "L1 busa, A2 money numbers, B1 P2 tinuod nga concession"
+        },
+        {
+          "number": 5,
+          "slug": "nibalhin-og-internet",
+          "scene": "neighbor wonders why the learner switched internet provider",
+          "interlocutor": "neighbor",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nibalhin ka og internet provider? Ngano man, kay okey ra man ang ilang serbisyo dinhi sa amoa.",
+            "you1": "Ang tinubdan sa problema mao ang linya sa eskina nga kanunay maputol kung kusog ang ulan, ug tulo na ka bulan nga wala kini ayoha.",
+            "move": "reason"
+          },
+          "challenge": "Pero ang bag-o nimo mas mahal og duha ka gatos. Dili ba mas maayo nga nagreklamo ka lang?",
+          "answerMove": {
+            "you2": "Nireklamo ko kaupat, ug kada higayon lahi ang tubag; ang duha ka gatos mas barato kaysa sa trabaho nga mawala.",
+            "move": "rebut"
+          },
+          "steer": "Sa ato pa, kung ayohon nila kini og sakto, mobalik ka ba kanila?",
+          "closingMove": {
+            "you3": "Mobalik lang ko kung ilisan nila ang linya sa eskina, kay mao kana ang tinubdan, dili ang akong router.",
+            "move": "conclude"
+          },
+          "trophyLemma": "tinubdan",
+          "trophySurface": "tinubdan",
+          "trophyFamilyKey": "tubod",
+          "pos": "noun",
+          "requiredCarrier": "ang tinubdan sa problema mao ang + NP",
+          "recycles": "B1 P9 reklamo narration, B1 P3 ilisan, P1 L1 kaysa"
+        },
+        {
+          "number": 6,
+          "slug": "pag-apelar-sa-multa",
+          "scene": "colleague got a mall parking penalty and asks how the learner appealed theirs (fictional mall notice, scene-specific)",
+          "interlocutor": "colleague",
+          "register": "casual",
+          "openingMove": {
+            "them": "Nakadawat ko og multa sa parking sa mall gahapon. Giunsa nimo pag-apelar kadtong imo kaniadto?",
+            "you1": "Gitakda sa mall nga sulod sa pito ka adlaw ipasa ang sulat sa opisina sa security, uban ang resibo ug litrato sa karatula.",
+            "move": "explain"
+          },
+          "challenge": "Pero wala koy litrato sa karatula. Mawala ba dayon ang akong apela?",
+          "answerMove": {
+            "you2": "Sumala sa staff kaniadto, dili dayon mawala; ipasabot lang sa sulat nganong wala kay litrato, ug mahimo nimong hangyoon nga susihon nila ang CCTV.",
+            "move": "clarify"
+          },
+          "steer": "Sige. Isumaryo ang mga lakang, kay ugma pa ko makaadto.",
+          "closingMove": {
+            "you3": "Una, isulat ang sulat; ikaduha, ilakip ang resibo; dayon ipasa sa security sulod sa pito ka adlaw.",
+            "move": "summarize"
+          },
+          "trophyLemma": "gitakda",
+          "trophySurface": "gitakda",
+          "trophyFamilyKey": "takda",
+          "pos": "verb",
+          "requiredCarrier": "Gitakda sa + agent nga + clause",
+          "recycles": "B1 P6 una/ikaduha/dayon, B1 P6 i- instructions, B1 P9 resibo"
+        },
+        {
+          "number": 7,
+          "slug": "nganong-wala-nahimo",
+          "scene": "friend asks why the planned fiesta food stall never happened",
+          "interlocutor": "friend",
+          "register": "casual",
+          "openingMove": {
+            "them": "Wala ba mahitabo ang inyong food stall sa fiesta? Nagdahom ko nga makita ta didto.",
+            "you1": "Wala, kay daghan ang kakulian: naulahi ang permit, nisaka ang presyo sa karne, ug nagsakit ang akong kauban sa adlaw mismo.",
+            "move": "explain"
+          },
+          "challenge": "Pero ang permit, dili ba sayo nimo kini gipangayo? Ngano man nga naulahi?",
+          "answerMove": {
+            "you2": "Gipangayo nako sayo, apan ang organisador sa fiesta nangayo usab og clearance sa health, ug wala kana sa unang listahan nila.",
+            "move": "clarify"
+          },
+          "steer": "Sa ato pa, unsa ang imong buhaton sa sunod tuig aron dili na mabalik ang mga kakulian?",
+          "closingMove": {
+            "you3": "Sunod tuig mangutana ko sa organisador og kompleto nga listahan sa Enero, ug magpangita og ikaduhang kauban.",
+            "move": "propose"
+          },
+          "trophyLemma": "kakulian",
+          "trophySurface": "kakulian",
+          "trophyFamilyKey": "kuli",
+          "pos": "noun",
+          "requiredCarrier": "daghan ang kakulian: + three-item list",
+          "recycles": "B1 P1 wala + ma-/na- narration, B1 P3 mangayo, B1 P7 aron"
+        },
+        {
+          "number": 8,
+          "slug": "proseso-sa-appointment",
+          "scene": "IT consultant asks the learner to explain the dental clinic's current booking process before redesigning it",
+          "interlocutor": "consultant",
+          "register": "polite",
+          "openingMove": {
+            "them": "Sa dili pa nako usbon ang inyong sistema, palihug ipasabot kung giunsa karon ang pagkuha og appointment sa inyong klinika.",
+            "you1": "Sukad sa Enero online na ang pagkuha: mopili ang pasyente og adlaw sa website, dayon motawag ang staff sa buntag aron kumpirmahon.",
+            "move": "explain"
+          },
+          "challenge": "Apan ngano nga kinahanglan pa ang tawag kung online na man? Dili ba doble kana nga trabaho?",
+          "answerMove": {
+            "you2": "Doble kini, apan sa among rekord tunga sa mga nagpalista online wala moabot kung walay tawag, busa mas gamay karon ang bakante.",
+            "move": "concede"
+          },
+          "steer": "Sige. Kung mopadala kami og text imbes tawag, unsa ang inyong gipaabot nga mahitabo?",
+          "closingMove": {
+            "you3": "Tingali mas barato ug mas paspas, apan sulayan una sa usa ka bulan ug ihapon kung pila ang dili moabot.",
+            "move": "conclude"
+          },
+          "trophyLemma": "sukad",
+          "trophySurface": "sukad",
+          "trophyFamilyKey": "sukad",
+          "pos": "connector",
+          "requiredCarrier": "Sukad sa + time, + present-state clause",
+          "recycles": "B1 P6 process steps, L1 busa, B1 P5 kung embedded"
+        },
+        {
+          "number": 9,
+          "slug": "nganong-bisikleta",
+          "scene": "skeptical neighbor challenges the learner's support for a bike lane on their street",
+          "interlocutor": "neighbor",
+          "register": "casual",
+          "openingMove": {
+            "them": "Ngano man nga nagsuporta ka sa bike lane sa atong dalan? Mas daghan ang trapik ug walay mogamit.",
+            "you1": "Nagsuporta ko kay mas gamay ang kadaut sa hangin kung bisikleta ang gamiton sa duol, ug sumala sa plano sa barangay mas luwas ang mga bata.",
+            "move": "reason"
+          },
+          "challenge": "Pero ang usa ka linya sa sakyanan mawala. Dili ba mas dako kana nga kadaut sa mga tindahan dinhi?",
+          "answerMove": {
+            "you2": "Dili siguro, kay ang mga nagbisikleta mas sayon mohunong ug mopalit sa daplin kaysa sa mga nagsakyanan nga molabay lang.",
+            "move": "rebut"
+          },
+          "steer": "Sa ato pa, kung sa tulo ka bulan gamay ra ang mogamit, mouyon ka ba nga kuhaon kini?",
+          "closingMove": {
+            "you3": "Mouyon ko nga susihon human sa unom ka bulan, dili tulo, kay kinahanglan og panahon una mausab ang batasan.",
+            "move": "counteroffer"
+          },
+          "trophyLemma": "kadaut",
+          "trophySurface": "kadaut",
+          "trophyFamilyKey": "daut",
+          "pos": "noun",
+          "requiredCarrier": "mas gamay/dako ang kadaut sa + NP",
+          "recycles": "B1 P7 kung condition, B1 P8 batasan/nausab, B1 P2 uyon, P1 L1 kaysa"
+        },
+        {
+          "number": 10,
+          "slug": "giunsa-ang-desisyon",
+          "scene": "homeowners association secretary asks a committee member to trace how the night gate closure was decided (fictional association, scene-specific)",
+          "interlocutor": "association secretary",
+          "register": "polite",
+          "openingMove": {
+            "them": "Alang sa minutes, palihug ipasabot kanako kung giunsa pag-abot sa inyong komite ang desisyon nga sirhan ang gate sa gabii.",
+            "you1": "Nagsugod kini sa reklamo sa tulo ka pamilya, dayon gisusi sa komite ang CCTV, ug sa katapusan nagboto ang kadaghanan nga sirhan kini alas dyes.",
+            "move": "explain"
+          },
+          "challenge": "Apan duha ka miyembro ang nisupak sumala sa akong nadungog. Giunsa ninyo pagdawat ang ilang punto?",
+          "answerMove": {
+            "you2": "Gidungog namo ang ilang punto bahin sa mga nagtrabaho sa gabii, busa gidugang ang kodigo sa gate alang sa mga residente.",
+            "move": "clarify"
+          },
+          "steer": "Sige. Sa usa ka linya lang, unsa ang katapusan nga desisyon ug kanus-a kini magsugod?",
+          "closingMove": {
+            "you3": "Sirhan ang gate alas dyes sa gabii sugod sunod Lunes, ug naa ang kodigo alang sa mga residente nga naulahi.",
+            "move": "summarize"
+          },
+          "trophyLemma": "katapusan",
+          "trophySurface": "katapusan",
+          "trophyFamilyKey": "tapos",
+          "pos": "noun",
+          "requiredCarrier": "Nagsugod kini sa ..., dayon ..., ug sa katapusan ...",
+          "recycles": "B1 P1 dayon narration, B1 P9 reklamo, L1 busa, exclusive namo"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "kaysa",
+        "familyKey": "kaysa",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "bentaha",
+        "familyKey": "bentaha",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "gasto",
+        "familyKey": "gasto",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "labaw",
+        "familyKey": "labaw",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "itandi",
+        "familyKey": "tandi",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "haom",
+        "familyKey": "haom",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "takos",
+        "familyKey": "takos",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "mapuslanon",
+        "familyKey": "pulos",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "magsalig",
+        "familyKey": "salig",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "isugyot",
+        "familyKey": "sugyot",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "busa",
+        "familyKey": "busa",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "sanglit",
+        "familyKey": "sanglit",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "epekto",
+        "familyKey": "epekto",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "sangputanan",
+        "familyKey": "sangpot",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "tinubdan",
+        "familyKey": "tubod",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "gitakda",
+        "familyKey": "takda",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "kakulian",
+        "familyKey": "kuli",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "sukad",
+        "familyKey": "sukad",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "kadaut",
+        "familyKey": "daut",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "katapusan",
+        "familyKey": "tapos",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "All 20 lemmas and all 20 familyKeys checked by hand under NFC+casefold against the frozen forbiddenTrophies list in the prerequisite (no separate sha is recorded for that list; 831742a6… is b1AllocationSha256, the B1 allocation ledger) and against each other: 20/20 lemmas absent, 20/20 familyKeys absent, no duplicates. All 100 B1 reservations (10 paths x 10, including paths without reviewed lessons) remain allocated and untouched; the ledger must list B1 rows before any B2 row. Trophy turnIndex is 1 for all 20; surfaces are whole tokens of dialogue[1] as written above. A mechanical re-check waits for the ceb-PH ledger tooling.",
+    "nearFamilyDecisions": [
+      "Excluded because the root is a reserved B1 or earlier trophy: motuo/nagtuo (tuo), pamaagi/pinaagi (paagi), kaayohan (maayo), kasagaran (sagad), sinugdanan (sugod), mahinungdanon (hinungdan), panginahanglan (kinahanglan), angayan (angay), kalainan (lain/lahi), gawas as connector (mogawas), kaugmaon (ugma), kasabotan (kasabot), makatarunganon (tarong), kasiguroan (sigurado), moresulta (resulta).",
+      "Single-family loan decision: epekto (noun) and apekto/nakaapekto (verb) are one family 'epekto'; only epekto is a trophy, nakaapekto may appear as a term.",
+      "mapuslanon is the trophy of family 'pulos'; pulos appears as a term only (P2 L4 them-line).",
+      "disbentaha is a derivation inside family 'bentaha'; term only, never a trophy.",
+      "kabahin/bahin and 'sa laing bahin' are terms in family 'bahin'; not trophies.",
+      "Affixed trophies are frozen as the affixed token (itandi, isugyot, gitakda, magsalig); gitandi, isalig, itakda, nagsugyot are same-family terms and never separate trophies.",
+      "kahimtang, katungod, kaakohan, kasinatian, proseso, sumala, gumikan, napugos, luwas, kalidad, prayoridad are unallocated terms available to later ceb B2 paths; not consumed here."
+    ]
+  },
+  "mechanicalValidationRules": [
+    "Exactly 2 paths, 10 lessons each; dialogue exactly 6 turns them/you alternating; you moves pairwise distinct; only you1 is checked against the path moveWhitelist; you2 in {concede,rebut,clarify,explain,compare,counteroffer}; you3 in {conclude,propose,summarize,counteroffer,request} (no relay in P1/P2); registerPlan.mode constant, registers equal and in {polite,casual}.",
+    "Token lengths: them 6-20, you1 14-26, you2 12-24, you3 10-22; build 5-8 chunks of 1-4 tokens, framePrefix + chunks.join(' ') + frameSuffix NFC-equal to dialogue[1]; cloze/synthesis/recall reconstruct exactly as in the contract.",
+    "Trophy: lowercase single token, no hyphen/apostrophe/digit, NFC+casefold unique against A1/A2 trophies, all 100 B1 ledger rows and all B2 rows; familyKey unique the same way; surface is a whole token of dialogue[trophyIndex] and appears in trophy.example.",
+    "Clitic/pronoun enclitic alone as chip, blank answer or recall answer → error (ba, na, pa, man, ra, lang, gyud, kaha, diay, sad, ko, ka, siya, mi, ta, nato, nako, ninyo, nila, kamo); marker alone (ang, sa, og, ug, nga, kay) → error; chunk beginning with nga/sa must contain its following word.",
+    "Banned tokens anywhere in target text → error: po, opo, pakisuyo, kayo, hindi, kasi, kumain, magkano, ng, ay; digits in voiced text → error; hyphenated or apostrophe tokens in speak requiredTokens, blank answers, recall answers, trophies → error.",
+    "Register tokens: polite lesson learner turns containing ka/nimo/imo/imoha addressing the interlocutor → warning; casual lesson learner turns containing kamo/ninyo/inyo → warning; Sir/Ma'am in any you turn → error.",
+    "Choices: exactly 4 distinct after normalization, exactly one accepted; the pairs apan/pero, kung/kon, og/ug, lang/ra, busa/maong, kaysa/kay sa, ni-/mi- forms never co-occur in one choice set → error; at most one choices-bearing blank per cloze.",
+    "Aspect flags (warning, never auto-fix): 'dili' directly before ni-/nag-/naka-/gi-/naa; 'wala' directly before ni-/nag-; base-text tense licence as in B1 rule (completed needs ni-/naka-/gi-/na- or wala + mo-/mag-/ka-; future needs mo-/mag-/ma- or future time word or kung/aron/basta clause).",
+    "Orthography: unattested spelling variants of corpus words → warning; term.targetText must occur verbatim (folded) in dialogue or a pattern example; acceptedAnswers include the answer.",
+    "Scene-specific notices (P1 L10 parking rule, P2 L2 sack colours, L4 loyalty points, L6 mall appeal window, L7 fiesta permit list, L10 gate code) are recorded in the lesson scene field as this interlocutor's local arrangement and checked under semantic review rule 9; no phrase check in product copy and no validator gate, because the ceb-PH B2 validator is not implemented."
+  ],
+  "semanticReviewRules": [
+    "Challenge at turn 2 genuinely attacks the content of you1 (price, missing proof, counter-case), not a repeat; steer at turn 4 changes the task (discount, time cap, single-sentence summary, edge case, new condition); you3 answers the steer, not you1.",
+    "P1 you turns compare at least two options and the closing recommendation is qualified (kung/apan/una ... sulayi); P2 you turns name a cause, a consequence or ordered steps and hold the explanation under the precision request; reject padded B1 (list of harder nouns without argument).",
+    "Aspect and focus naturalness: gi-/na- completed vs mo-/mag- future vs -on/i- instruction match the base meaning; within these twenty lessons a reviewer flags, never rewrites, actor/object focus mixing inside one clause, 'wala' followed by ni-/nag-, busa without a stated cause, and sanglit not opening its reason clause; these are authored-pattern review items, not universal rules of Cebuano grammar.",
+    "kaysa sa before a definite noun phrase, bare kaysa before a verb phrase or predicate; reviewer flags, never auto-rewrites.",
+    "Register coherence per lesson against the named interlocutor; inclusive nato/ta only where the addressee shares the decision (P1 L5, P2 L2), exclusive namo for the learner's committee (P2 L10); honorific direction never flips inside a lesson.",
+    "Visayan idiom, no Tagalog or Hiligaynon calque, no German or English word order calque; loan nouns used only where Cebuano speakers would (app, website, CCTV); 'pulos', 'takos', 'haom' used as natives use them, not as glosses of 'nützlich/wert/passend'.",
+    "Distractors and second-valid-choice check: every chip permutation and every alternative choice reviewed for being wrong in context, not merely non-canonical; near-synonyms never as distractors.",
+    "German and English base texts idiomatic and mutually independent; both carry the aspect the Cebuano licenses; the reuse value of the exact trophy surface (e.g. itandi as object-focus invitation to compare) is shown by trophy.example, a natural sentence containing the surface, and explained in the external author report; no pedagogicalGoal, whyThisWord or other key outside the strict shared contract is authored.",
+    "Scene-specific notices (parking rule, waste sacks, mall appeal window, loyalty points, gate code) are presented as this interlocutor's local arrangement; no universal legal, medical, municipal or financial claim.",
+    "Recycling honored: each lesson visibly reuses the listed B1 carriers and earlier B2 trophies (kaysa in P1 L3-L9, busa in P2 L4/L8/L10) in dialogue, not only in metadata."
+  ],
+  "requiredSchemaExtensions": [
+    "Registry: ceb-PH B2 rail row with registers ['polite','casual'], unit token, scale 1, joiner U+0020, baseRule de+en, speak profiles b2-long/b2-short (thresholds are audit metadata, not schema).",
+    "Ledger: the forbidden set for ceb B2 must be computed from frozen A1/A2 trophies plus all 100 B1 ledger rows (not only live B1 lessons), as the b2BeforeB1 resolution already requires; no new field.",
+    "Validator config (no schema change, pending, not implemented): ceb-PH clitic/enclitic stoplist, Tagalog banned-token list, register token lists, never-co-occur choice pairs; no fictional-notice phrase check.",
+    "No other change: lesson, turn, build, cloze, blank, recall, pattern, term, speakTarget, trophy and review shapes stay as in the strict contract; no pedagogicalGoal, whyThisWord, turn acceptedVariants or speakTarget acceptedAnswers keys; gender alternates unused; any Cebuano-only explanation lives in trophy.example or the external author report."
+  ],
+  "unresolvedDecisions": [
+    "Independent native read of every line for clitic order after longer hosts, kaysa sa vs kaysa, gyud in casual learner lines, and the pulos/takos/haom/panglantaw usages; reviewer flags only.",
+    "Token counts were recounted by hand with the stated unit; two turns sit exactly on a bound (P1 L7 you2 24, P2 L9 you1 26), P2 L4 you1 is 25 and P1 L5 you3 is 21 after the V2 repairs, and any later edit must recount; no validator confirms this yet.",
+    "Full lessons (base texts, build, cloze, synthesis, recall, pattern, terms, speak targets), the ceb-PH B2 validator and ledger tooling, Fable full read of the authored lessons, independent native review and TTS remain pending; nothing here asserts readiness."
+  ]
+}

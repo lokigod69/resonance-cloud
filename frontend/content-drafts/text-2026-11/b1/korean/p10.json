@@ -1,0 +1,2227 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Mein Jahr und was kommt",
+    "en": "The year told, the year ahead"
+  },
+  "subtitle": {
+    "de": "Von diesem Jahr erzählen und Pläne fürs nächste schmieden",
+    "en": "Tell stories from this year and make plans for the next"
+  },
+  "anchor": "year-end chats with colleague, friend, language partner, mentor",
+  "lessons": [
+    {
+      "slug": "olhae-spring-train",
+      "title": {
+        "de": "Eine Reise bleibt in Erinnerung",
+        "en": "A trip to remember"
+      },
+      "situation": {
+        "de": "Bei der letzten gemeinsamen Mittagspause des Jahres sprecht ihr im Büro über schöne Erlebnisse.",
+        "en": "During your last office lunch together this year, you talk about favorite memories."
+      },
+      "pedagogicalGoal": "Eine abgeschlossene Reise aus dem Jahresrückblick herausgreifen und auf Nachfrage das Reiseziel nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "올해는 어떤 일이 제일 기억에 남아요?",
+          "baseText": {
+            "de": "Was ist dir dieses Jahr am meisten in Erinnerung geblieben?",
+            "en": "What do you remember most from this year?"
+          }
+        },
+        {
+          "targetText": "올해 제일 기억에 남는 건 봄에 가족과 갔던 기차 여행이에요.",
+          "baseText": {
+            "de": "Am meisten ist mir dieses Jahr die Zugreise in Erinnerung geblieben, die ich im Frühling mit meiner Familie gemacht habe.",
+            "en": "What I remember most from this year is the train trip I took with my family in spring."
+          }
+        },
+        {
+          "targetText": "바다가 보고 싶다고 했지요? 봄 여행은 어디로 갔어요?",
+          "baseText": {
+            "de": "Du wolltest doch ans Meer, oder? Wohin ging eure Reise im Frühling?",
+            "en": "You wanted to see the sea, right? Where did you go on your spring trip?"
+          }
+        },
+        {
+          "targetText": "그래서 올봄에는 기차를 타고 강릉 바닷가로 갔어요.",
+          "baseText": {
+            "de": "Deshalb sind wir diesen Frühling mit dem Zug an die Küste bei Gangneung gefahren.",
+            "en": "So this spring we took the train to the coast at Gangneung."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 N",
+        "rule": {
+          "de": "갔던 기차 여행 nennt eine bestimmte Reise, auf die du zurückblickst. Mit einem Orts- oder Zeitdetail machst du daraus deine eigene Geschichte.",
+          "en": "갔던 기차 여행 picks out a particular trip you remember taking. A detail about when or where turns it into your own story."
+        },
+        "examples": [
+          {
+            "targetText": "올해 제일 기억에 남는 건 봄에 가족과 갔던 기차 여행이에요.",
+            "baseText": {
+              "de": "Am meisten ist mir dieses Jahr die Zugreise in Erinnerung geblieben, die ich im Frühling mit meiner Familie gemacht habe.",
+              "en": "What I remember most from this year is the train trip I took with my family in spring."
+            },
+            "highlight": "갔던 기차 여행"
+          },
+          {
+            "targetText": "여름에 묵었던 숙소가 역 바로 앞에 있었어요.",
+            "baseText": {
+              "de": "Die Unterkunft, in der wir im Sommer gewohnt haben, lag direkt vor dem Bahnhof.",
+              "en": "The place we stayed in summer was right across from the station."
+            },
+            "highlight": "묵었던 숙소"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그와 반대로",
+            "거꾸로",
+            "그래서",
+            "그전까지는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "올봄에는",
+          "choices": [
+            "올봄에는",
+            "지난겨울에는",
+            "올가을에는",
+            "작년 여름에는"
+          ]
+        },
+        " 기차를 타고 강릉 바닷가로 ",
+        {
+          "kind": "form",
+          "answer": "갔어요",
+          "choices": [
+            "갈 예정이에요",
+            "가기로 해요",
+            "가세요",
+            "갔어요"
+          ],
+          "cue": "Abgeschlossene Fahrt in einer persönlichen Erzählung / Completed trip in a personal account"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "올해 제일",
+          "baseText": {
+            "de": "dieses Jahr am meisten",
+            "en": "most of all this year"
+          }
+        },
+        {
+          "targetText": "기억에 남는 건",
+          "baseText": {
+            "de": "in Erinnerung geblieben ist mir",
+            "en": "what I remember is"
+          }
+        },
+        {
+          "targetText": "봄에 가족과",
+          "baseText": {
+            "de": "im Frühling mit meiner Familie",
+            "en": "with my family in spring"
+          }
+        },
+        {
+          "targetText": "갔던 기차 여행이에요.",
+          "baseText": {
+            "de": "die Zugreise, die ich gemacht habe",
+            "en": "the train trip I took"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "올해",
+          "baseText": {
+            "de": "dieses Jahr",
+            "en": "this year"
+          }
+        },
+        {
+          "targetText": "기억에 남다",
+          "baseText": {
+            "de": "in Erinnerung bleiben",
+            "en": "stick in one's memory"
+          }
+        },
+        {
+          "targetText": "봄",
+          "baseText": {
+            "de": "Frühling",
+            "en": "spring"
+          }
+        },
+        {
+          "targetText": "기차 여행",
+          "baseText": {
+            "de": "Zugreise",
+            "en": "train trip"
+          }
+        },
+        {
+          "targetText": "바닷가",
+          "baseText": {
+            "de": "Küste, Strand",
+            "en": "coast, seaside"
+          }
+        },
+        {
+          "targetText": "가족",
+          "baseText": {
+            "de": "Familie",
+            "en": "family"
+          }
+        }
+      ],
+      "recall": {
+        "before": "올해 제일 기억에 남는 건 봄에 가족과 갔던 ",
+        "answer": "기차",
+        "after": " 여행이에요.",
+        "fallbackChoices": [
+          "야근",
+          "계산",
+          "기차",
+          "수리"
+        ]
+      },
+      "speakRequired": [
+        "올해",
+        "봄에",
+        "여행이에요"
+      ],
+      "sceneCaption": {
+        "de": "Bei der letzten gemeinsamen Mittagspause des Jahres sprecht ihr im Büro über schöne Erlebnisse. „올해는 어떤 일이 제일 기억에 남아요?“",
+        "en": "During your last office lunch together this year, you talk about favorite memories. “올해는 어떤 일이 제일 기억에 남아요?”"
+      },
+      "trophyWord": {
+        "word": "올해",
+        "meaning": {
+          "de": "dieses Jahr",
+          "en": "this year"
+        },
+        "example": "올해 가장 많이 들은 노래가 뭐예요?",
+        "whyThisWord": {
+          "de": "Mit 올해 grenzt du deinen Rückblick auf dieses Jahr ein. Danach kannst du mit 봄에 oder im Gespräch mit einem Monatsnamen genauer werden.",
+          "en": "올해 limits a memory to this year. Follow it with 봄에 or a particular month to say when it happened."
+        }
+      },
+      "distractors": [
+        "혼자 떠나는",
+        "내년에 탈 비행기예요."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Reise bleibt in Erinnerung",
+        "en": "A trip to remember"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two colleagues looking back over the year during lunch."
+    },
+    {
+      "slug": "jangnyeon-first-assignment",
+      "title": {
+        "de": "Die erste Aufgabe im neuen Job",
+        "en": "That first assignment at work"
+      },
+      "situation": {
+        "de": "Mit einem Freund blickst du auf das erste Jahr in deinem Job zurück.",
+        "en": "You're looking back on your first year in a job with a friend."
+      },
+      "pedagogicalGoal": "Eine frühere Schwierigkeit mit dem heutigen Können vergleichen und erklären, wie du die Aufgabe gelernt hast.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "일은 작년 이맘때랑 비교하면 어때요?",
+          "baseText": {
+            "de": "Wie läuft die Arbeit im Vergleich zur gleichen Zeit im letzten Jahr?",
+            "en": "How's work compared with this time last year?"
+          }
+        },
+        {
+          "targetText": "작년 겨울에 맡았던 업무는 어려웠는데 이제는 혼자서도 해요.",
+          "baseText": {
+            "de": "Die Aufgabe, die ich letzten Winter übernommen habe, war schwierig. Jetzt schaffe ich sie sogar allein.",
+            "en": "The work I took on last winter was hard, but now I can do it on my own."
+          }
+        },
+        {
+          "targetText": "설명서도 없던 그 겨울에 어떻게 일을 익혔어요?",
+          "baseText": {
+            "de": "Wie hast du die Arbeit damals im Winter gelernt, wo es doch nicht einmal eine Anleitung gab?",
+            "en": "How did you learn to do it that winter when there wasn't even a manual?"
+          }
+        },
+        {
+          "targetText": "그래서 지난겨울에는 모르는 게 생길 때마다 동료에게 물어봤어요.",
+          "baseText": {
+            "de": "Deshalb habe ich letzten Winter jedes Mal jemanden aus dem Team gefragt, wenn ich etwas nicht wusste.",
+            "en": "So last winter, whenever I ran into something I didn't know, I asked a colleague."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 N",
+        "rule": {
+          "de": "맡았던 업무 holt die damalige Aufgabe in die Erzählung. Der Wechsel zu 이제는 zeigt, wie du heute damit zurechtkommst.",
+          "en": "맡았던 업무 brings the assignment you took on into the story. 이제는 shifts the focus to how you handle it now."
+        },
+        "examples": [
+          {
+            "targetText": "작년 겨울에 맡았던 업무는 어려웠는데 이제는 혼자서도 해요.",
+            "baseText": {
+              "de": "Die Aufgabe, die ich letzten Winter übernommen habe, war schwierig. Jetzt schaffe ich sie sogar allein.",
+              "en": "The work I took on last winter was hard, but now I can do it on my own."
+            },
+            "highlight": "맡았던 업무"
+          },
+          {
+            "targetText": "첫 직장에서 배웠던 기술을 지금도 써요.",
+            "baseText": {
+              "de": "Eine Technik, die ich an meinem ersten Arbeitsplatz gelernt habe, benutze ich heute noch.",
+              "en": "I still use a skill I learned at my first job."
+            },
+            "highlight": "배웠던 기술"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그와 반대로",
+            "그래서",
+            "이를테면",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "지난겨울에는",
+          "choices": [
+            "올가을에는",
+            "지난여름에는",
+            "다음 겨울에는",
+            "지난겨울에는"
+          ]
+        },
+        " 모르는 게 생길 때마다 동료에게 ",
+        {
+          "kind": "form",
+          "answer": "물어봤어요",
+          "choices": [
+            "물어볼 예정이에요",
+            "물어보세요",
+            "물어봤어요",
+            "물어보기로 해요"
+          ],
+          "cue": "Rückblick auf wiederholte abgeschlossene Handlungen / Looking back on repeated past actions"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "작년 겨울에",
+          "baseText": {
+            "de": "letzten Winter",
+            "en": "last winter"
+          }
+        },
+        {
+          "targetText": "맡았던 업무는",
+          "baseText": {
+            "de": "die Aufgabe, die ich übernommen hatte",
+            "en": "the work I took on"
+          }
+        },
+        {
+          "targetText": "어려웠는데",
+          "baseText": {
+            "de": "war schwierig",
+            "en": "was difficult"
+          }
+        },
+        {
+          "targetText": "이제는 혼자서도 해요.",
+          "baseText": {
+            "de": "jetzt schaffe ich sie sogar allein",
+            "en": "now I can do it on my own"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "작년",
+          "baseText": {
+            "de": "letztes Jahr",
+            "en": "last year"
+          }
+        },
+        {
+          "targetText": "업무",
+          "baseText": {
+            "de": "Aufgabe bei der Arbeit",
+            "en": "work assignment"
+          }
+        },
+        {
+          "targetText": "맡다",
+          "baseText": {
+            "de": "übernehmen",
+            "en": "take on"
+          }
+        },
+        {
+          "targetText": "혼자서",
+          "baseText": {
+            "de": "allein",
+            "en": "on one's own"
+          }
+        },
+        {
+          "targetText": "설명서",
+          "baseText": {
+            "de": "Anleitung",
+            "en": "manual"
+          }
+        },
+        {
+          "targetText": "동료",
+          "baseText": {
+            "de": "Kollege oder Kollegin",
+            "en": "colleague"
+          }
+        }
+      ],
+      "recall": {
+        "before": "작년 겨울에 맡았던 ",
+        "answer": "업무는",
+        "after": " 어려웠는데 이제는 혼자서도 해요.",
+        "fallbackChoices": [
+          "계절은",
+          "좌석은",
+          "영수증은",
+          "업무는"
+        ]
+      },
+      "speakRequired": [
+        "작년",
+        "맡았던",
+        "혼자서도"
+      ],
+      "sceneCaption": {
+        "de": "Mit einem Freund blickst du auf das erste Jahr in deinem Job zurück. „일은 작년 이맘때랑 비교하면 어때요?“",
+        "en": "You're looking back on your first year in a job with a friend. “일은 작년 이맘때랑 비교하면 어때요?”"
+      },
+      "trophyWord": {
+        "word": "작년",
+        "meaning": {
+          "de": "letztes Jahr",
+          "en": "last year"
+        },
+        "example": "작년 이맘때는 처음 출근할 준비를 하고 있었어요.",
+        "whyThisWord": {
+          "de": "작년 이맘때 stellt denselben Zeitpunkt im Vorjahr dem heutigen gegenüber. Mit 작년 겨울에 kannst du ein Erlebnis noch genauer einordnen.",
+          "en": "작년 이맘때 compares now with the same time last year. 작년 겨울에 places an experience more specifically in last winter."
+        }
+      },
+      "distractors": [
+        "내년 여름에",
+        "아직도 배우기 전이에요."
+      ],
+      "placeholderCaption": {
+        "de": "Die erste Aufgabe im neuen Job",
+        "en": "That first assignment at work"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A friend listens as an office worker describes learning a new role."
+    },
+    {
+      "slug": "gaeul-mountain-photos",
+      "title": {
+        "de": "Unterwegs im Herbst",
+        "en": "On the trail in autumn"
+      },
+      "situation": {
+        "de": "Beim Sprachaustausch erzählt ihr euch, in welcher Jahreszeit ihr am liebsten wandert.",
+        "en": "At a language exchange, you talk about your favorite season for hiking."
+      },
+      "pedagogicalGoal": "An eine bestimmte Herbstwanderung erinnern und auf die Bitte um ein Foto eingehen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "산에 갈 때는 어떤 계절을 제일 좋아해요?",
+          "baseText": {
+            "de": "In welcher Jahreszeit gehst du am liebsten in die Berge?",
+            "en": "What's your favorite season for going to the mountains?"
+          }
+        },
+        {
+          "targetText": "저는 단풍이 예쁜 가을 산을 좋아해요. 지난해 올랐던 설악산이 생각나요.",
+          "baseText": {
+            "de": "Ich mag die Berge im Herbst, wenn das Laub so schön bunt ist. Da denke ich an meine Wanderung am Seoraksan im letzten Jahr.",
+            "en": "I like the mountains in autumn, when the leaves turn such beautiful colors. I think of Mount Seorak, where I hiked last year."
+          }
+        },
+        {
+          "targetText": "지난가을에는 비가 많았잖아요. 그때 사진 좀 보여 주실래요?",
+          "baseText": {
+            "de": "Letzten Herbst hat es doch viel geregnet. Zeigst du mir ein Foto von damals?",
+            "en": "It rained a lot last autumn. Would you show me a photo from then?"
+          }
+        },
+        {
+          "targetText": "그래도 지난가을에 비가 그쳤을 때 찍었던 사진은 보여 드릴게요.",
+          "baseText": {
+            "de": "Trotzdem zeige ich dir gern ein Foto, das ich letzten Herbst aufgenommen habe, als der Regen aufgehört hatte.",
+            "en": "Still, I'll show you a photo I took last autumn when the rain let up."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 N",
+        "rule": {
+          "de": "올랐던 ruft einen Aufstieg in Erinnerung. Vor einem Bergnamen beschreibt die Form, welchen Gipfel du damals bestiegen hast.",
+          "en": "올랐던 recalls a climb. Before the name of a mountain it identifies the peak you climbed on that occasion."
+        },
+        "examples": [
+          {
+            "targetText": "저는 단풍이 예쁜 가을 산을 좋아해요. 지난해 올랐던 설악산이 생각나요.",
+            "baseText": {
+              "de": "Ich mag die Berge im Herbst, wenn das Laub so schön bunt ist. Da denke ich an meine Wanderung am Seoraksan im letzten Jahr.",
+              "en": "I like the mountains in autumn, when the leaves turn such beautiful colors. I think of Mount Seorak, where I hiked last year."
+            },
+            "highlight": "올랐던 설악산"
+          },
+          {
+            "targetText": "비가 온 뒤에 걸었던 산길이 아직도 기억나요.",
+            "baseText": {
+              "de": "Ich erinnere mich noch an den Bergweg, den ich nach dem Regen entlanggegangen bin.",
+              "en": "I still remember the mountain trail I walked after the rain."
+            },
+            "highlight": "걸었던 산길"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "그래도",
+            "그 결과",
+            "그 덕분에",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "지난가을에",
+          "choices": [
+            "작년 봄에",
+            "지난겨울에",
+            "지난가을에",
+            "올여름에"
+          ]
+        },
+        " 비가 그쳤을 때 ",
+        {
+          "kind": "form",
+          "answer": "찍었던",
+          "choices": [
+            "찍으려는",
+            "찍었던",
+            "찍어야 할",
+            "앞으로 찍을"
+          ],
+          "cue": "Rückblick auf die Aufnahme eines vorhandenen Fotos / Recalling when an existing photo was taken"
+        },
+        " 사진은 보여 드릴게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "저는 단풍이 예쁜",
+          "baseText": {
+            "de": "ich … mit schön buntem Laub",
+            "en": "I … with beautiful fall foliage"
+          }
+        },
+        {
+          "targetText": "가을 산을",
+          "baseText": {
+            "de": "die Berge im Herbst",
+            "en": "the autumn mountains"
+          }
+        },
+        {
+          "targetText": "좋아해요. 지난해",
+          "baseText": {
+            "de": "mag ich. Letztes Jahr",
+            "en": "like. Last year"
+          }
+        },
+        {
+          "targetText": "올랐던 설악산이",
+          "baseText": {
+            "de": "der Seoraksan, den ich bestiegen habe",
+            "en": "Mount Seorak, which I climbed"
+          }
+        },
+        {
+          "targetText": "생각나요.",
+          "baseText": {
+            "de": "kommt mir in den Sinn",
+            "en": "comes to mind"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "가을",
+          "baseText": {
+            "de": "Herbst",
+            "en": "autumn"
+          }
+        },
+        {
+          "targetText": "단풍",
+          "baseText": {
+            "de": "Herbstlaub",
+            "en": "fall foliage"
+          }
+        },
+        {
+          "targetText": "산",
+          "baseText": {
+            "de": "Berg",
+            "en": "mountain"
+          }
+        },
+        {
+          "targetText": "지난해",
+          "baseText": {
+            "de": "vergangenes Jahr",
+            "en": "last year"
+          }
+        },
+        {
+          "targetText": "걷다",
+          "baseText": {
+            "de": "zu Fuß gehen, wandern",
+            "en": "walk, hike"
+          }
+        },
+        {
+          "targetText": "비가 그치다",
+          "baseText": {
+            "de": "der Regen hört auf",
+            "en": "the rain stops"
+          }
+        }
+      ],
+      "recall": {
+        "before": "저는 ",
+        "answer": "단풍이",
+        "after": " 예쁜 가을 산을 좋아해요. 지난해 올랐던 설악산이 생각나요.",
+        "fallbackChoices": [
+          "영수증이",
+          "단풍이",
+          "접수증이",
+          "난방비가"
+        ]
+      },
+      "speakRequired": [
+        "단풍이",
+        "가을",
+        "올랐던"
+      ],
+      "sceneCaption": {
+        "de": "Beim Sprachaustausch erzählt ihr euch, in welcher Jahreszeit ihr am liebsten wandert. „산에 갈 때는 어떤 계절을 제일 좋아해요?“",
+        "en": "At a language exchange, you talk about your favorite season for hiking. “산에 갈 때는 어떤 계절을 제일 좋아해요?”"
+      },
+      "trophyWord": {
+        "word": "가을",
+        "meaning": {
+          "de": "Herbst",
+          "en": "autumn, fall"
+        },
+        "example": "가을 산은 같은 길도 색이 달라 보여요.",
+        "whyThisWord": {
+          "de": "가을 산 sind die Berge im Herbst. Nach demselben Muster kannst du mit 가을 하늘 über den Herbsthimmel sprechen.",
+          "en": "가을 산 means the mountains in autumn. The same pattern gives you 가을 하늘 for the autumn sky."
+        }
+      },
+      "distractors": [
+        "여름 바다를",
+        "내년에 걸을"
+      ],
+      "placeholderCaption": {
+        "de": "Unterwegs im Herbst",
+        "en": "On the trail in autumn"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A language partner and a hiker at a café with a phone resting face down."
+    },
+    {
+      "slug": "gyeoul-korean-course",
+      "title": {
+        "de": "Arbeiten und Koreanisch lernen",
+        "en": "Working and learning Korean"
+      },
+      "situation": {
+        "de": "Im Pausenraum fragt dich eine Kollegin nach deinen Plänen für den Winter.",
+        "en": "In the break room, a colleague asks about your plans for the winter."
+      },
+      "pedagogicalGoal": "Zwei parallele Tätigkeiten benennen und auf Nachfrage die dazu passende Kurswahl begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 겨울 방학은 어떻게 보낼 거예요?",
+          "baseText": {
+            "de": "Wie verbringst du die Winterferien dieses Mal?",
+            "en": "How are you spending this winter break?"
+          }
+        },
+        {
+          "targetText": "이번 겨울 방학에는 낮에 일하면서 한국어를 배우게 됐어요.",
+          "baseText": {
+            "de": "In diesen Winterferien hat es sich so ergeben, dass ich tagsüber arbeite und dabei Koreanisch lerne.",
+            "en": "This winter break it's worked out that I'm learning Korean alongside my day job."
+          }
+        },
+        {
+          "targetText": "낮에는 일하니까 시간이 없겠네요. 1월에는 어느 반을 들어요?",
+          "baseText": {
+            "de": "Wenn du tagsüber arbeitest, hast du da wohl kaum Zeit. Welchen Kurs besuchst du im Januar?",
+            "en": "I suppose you won't have much time during the day if you're working. Which class are you taking in January?"
+          }
+        },
+        {
+          "targetText": "그래서 1월에는 퇴근하고 갈 수 있는 저녁반을 골랐어요.",
+          "baseText": {
+            "de": "Deshalb habe ich für Januar einen Abendkurs gewählt, zu dem ich nach der Arbeit gehen kann.",
+            "en": "That's why I chose an evening class for January that I can get to after work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면서 … -게 됐어요",
+        "rule": {
+          "de": "일하면서 verbindet die Arbeit mit einer zweiten Tätigkeit. 배우게 됐어요 beschreibt, was sich für dich nun ergeben hat.",
+          "en": "일하면서 connects your job with another activity. 배우게 됐어요 describes what you've now arranged or ended up doing."
+        },
+        "examples": [
+          {
+            "targetText": "이번 겨울 방학에는 낮에 일하면서 한국어를 배우게 됐어요.",
+            "baseText": {
+              "de": "In diesen Winterferien hat es sich so ergeben, dass ich tagsüber arbeite und dabei Koreanisch lerne.",
+              "en": "This winter break it's worked out that I'm learning Korean alongside my day job."
+            },
+            "highlight": "일하면서"
+          },
+          {
+            "targetText": "학교에 다니면서 주말에는 서점에서 일하게 됐어요.",
+            "baseText": {
+              "de": "Ich gehe weiter zur Schule und arbeite jetzt am Wochenende in einer Buchhandlung.",
+              "en": "I'm still in school, and I've started working at a bookstore on weekends."
+            },
+            "highlight": "다니면서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그래서",
+            "그와 반대로",
+            "거꾸로",
+            "그때까지는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "1월에는",
+          "choices": [
+            "6월에는",
+            "9월에는",
+            "1월에는",
+            "지난달에는"
+          ]
+        },
+        " 퇴근하고 갈 수 있는 저녁반을 ",
+        {
+          "kind": "form",
+          "answer": "골랐어요",
+          "choices": [
+            "고르지 않았어요",
+            "골랐어요",
+            "고르지 마세요",
+            "고를 리 없어요"
+          ],
+          "cue": "Rückblick auf die bereits getroffene Kurswahl / Recalling a class choice already made"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "이번 겨울 방학에는",
+          "baseText": {
+            "de": "in diesen Winterferien",
+            "en": "this winter break"
+          }
+        },
+        {
+          "targetText": "낮에 일하면서",
+          "baseText": {
+            "de": "während ich tagsüber arbeite",
+            "en": "alongside my day job"
+          }
+        },
+        {
+          "targetText": "한국어를",
+          "baseText": {
+            "de": "Koreanisch",
+            "en": "Korean"
+          }
+        },
+        {
+          "targetText": "배우게 됐어요.",
+          "baseText": {
+            "de": "hat es sich ergeben, dass ich lerne",
+            "en": "it's worked out that I'm learning"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "겨울",
+          "baseText": {
+            "de": "Winter",
+            "en": "winter"
+          }
+        },
+        {
+          "targetText": "방학",
+          "baseText": {
+            "de": "Schulferien, Semesterferien",
+            "en": "school or college break"
+          }
+        },
+        {
+          "targetText": "낮",
+          "baseText": {
+            "de": "tagsüber, Tageszeit",
+            "en": "daytime"
+          }
+        },
+        {
+          "targetText": "퇴근하다",
+          "baseText": {
+            "de": "Feierabend machen",
+            "en": "finish work"
+          }
+        },
+        {
+          "targetText": "저녁반",
+          "baseText": {
+            "de": "Abendkurs",
+            "en": "evening class"
+          }
+        },
+        {
+          "targetText": "고르다",
+          "baseText": {
+            "de": "auswählen",
+            "en": "choose"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이번 겨울 방학에는 낮에 일하면서 ",
+        "answer": "한국어를",
+        "after": " 배우게 됐어요.",
+        "fallbackChoices": [
+          "충전기를",
+          "영수증을",
+          "한국어를",
+          "좌석을"
+        ]
+      },
+      "speakRequired": [
+        "겨울",
+        "일하면서",
+        "배우게"
+      ],
+      "sceneCaption": {
+        "de": "Im Pausenraum fragt dich eine Kollegin nach deinen Plänen für den Winter. „이번 겨울 방학은 어떻게 보낼 거예요?“",
+        "en": "In the break room, a colleague asks about your plans for the winter. “이번 겨울 방학은 어떻게 보낼 거예요?”"
+      },
+      "trophyWord": {
+        "word": "겨울",
+        "meaning": {
+          "de": "Winter",
+          "en": "winter"
+        },
+        "example": "겨울 방학에는 도서관이 일찍 닫아요.",
+        "whyThisWord": {
+          "de": "Mit 겨울 방학 kannst du die Winterferien als Zeitraum für Pläne nennen. 겨울 allein bezeichnet die ganze Jahreszeit.",
+          "en": "Use 겨울 방학 to discuss plans for winter break. 겨울 on its own refers to the whole season."
+        }
+      },
+      "distractors": [
+        "지난여름에는",
+        "수업을 마쳤어요."
+      ],
+      "placeholderCaption": {
+        "de": "Arbeiten und Koreanisch lernen",
+        "en": "Working and learning Korean"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A work rota and an unmarked term calendar in an employee break room."
+    },
+    {
+      "slug": "gyeongheom-public-speaking",
+      "title": {
+        "de": "Der erste Satz vor Publikum",
+        "en": "The first sentence in front of an audience"
+      },
+      "situation": {
+        "de": "Im Jahresgespräch fragt eine Mentorin, was dir bei Vorträgen inzwischen leichter fällt.",
+        "en": "During an end-of-year conversation, your mentor asks what's become easier when you give presentations."
+      },
+      "pedagogicalGoal": "Erklären, welche Fähigkeit aus der Erfahrung gewachsen ist, und eine konkrete Vorbereitungshilfe weitergeben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "올해 발표하면서 어떤 걸 배웠어요?",
+          "baseText": {
+            "de": "Was hast du dieses Jahr bei deinen Vorträgen gelernt?",
+            "en": "What did you learn from giving presentations this year?"
+          }
+        },
+        {
+          "targetText": "발표 경험 덕분에 손이 떨려도 청중을 보면서 말하게 됐어요.",
+          "baseText": {
+            "de": "Durch die Vorträge habe ich gelernt, beim Sprechen ins Publikum zu schauen, selbst wenn mir die Hände zittern.",
+            "en": "Giving presentations has taught me to look at the audience as I speak, even when my hands shake."
+          }
+        },
+        {
+          "targetText": "지난봄에는 소리 내서 연습했지요? 그때 또 뭐가 도움이 됐어요?",
+          "baseText": {
+            "de": "Letzten Frühling hast du laut geübt, oder? Was hat dir damals noch geholfen?",
+            "en": "You practiced aloud last spring, right? What else helped you then?"
+          }
+        },
+        {
+          "targetText": "그리고 지난봄 발표 때는 첫 문장도 미리 외워 두었어요.",
+          "baseText": {
+            "de": "Und für den Vortrag letzten Frühling habe ich auch den ersten Satz vorher auswendig gelernt.",
+            "en": "And for the talk last spring, I also memorized the first sentence beforehand."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면서 … -게 됐어요",
+        "rule": {
+          "de": "보면서 beschreibt, was du gleichzeitig mit dem Sprechen tust. 말하게 됐어요 zeigt die Veränderung, die mit der Übung gekommen ist.",
+          "en": "보면서 describes what you do while speaking. 말하게 됐어요 signals a change that came about with practice."
+        },
+        "examples": [
+          {
+            "targetText": "발표 경험 덕분에 손이 떨려도 청중을 보면서 말하게 됐어요.",
+            "baseText": {
+              "de": "Durch die Vorträge habe ich gelernt, beim Sprechen ins Publikum zu schauen, selbst wenn mir die Hände zittern.",
+              "en": "Giving presentations has taught me to look at the audience as I speak, even when my hands shake."
+            },
+            "highlight": "보면서 말하게 됐어요"
+          },
+          {
+            "targetText": "손님이 오면 웃으면서 인사하게 됐어요.",
+            "baseText": {
+              "de": "Ich habe mir angewöhnt, die Kundschaft beim Hereinkommen mit einem Lächeln zu begrüßen.",
+              "en": "I've gotten into the habit of greeting customers with a smile when they come in."
+            },
+            "highlight": "웃으면서 인사하게 됐어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그리고",
+          "choices": [
+            "그와 반대로",
+            "그 전날까지만",
+            "거꾸로",
+            "그리고"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "지난봄",
+          "choices": [
+            "지난가을",
+            "지난봄",
+            "올겨울",
+            "내년 봄"
+          ]
+        },
+        " 발표 때는 첫 문장도 미리 ",
+        {
+          "kind": "form",
+          "answer": "외워 두었어요",
+          "choices": [
+            "외워 두었어요",
+            "외워 두세요",
+            "외워 둘 예정이에요",
+            "외워 두지 마세요"
+          ],
+          "cue": "Rückblick auf eine abgeschlossene Vorbereitung / Recalling something prepared beforehand"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "발표 경험 덕분에",
+          "baseText": {
+            "de": "durch meine Erfahrung mit Vorträgen",
+            "en": "thanks to my experience giving presentations"
+          }
+        },
+        {
+          "targetText": "손이 떨려도",
+          "baseText": {
+            "de": "selbst wenn mir die Hände zittern",
+            "en": "even when my hands shake"
+          }
+        },
+        {
+          "targetText": "청중을 보면서",
+          "baseText": {
+            "de": "mit Blick ins Publikum",
+            "en": "looking at the audience"
+          }
+        },
+        {
+          "targetText": "말하게 됐어요.",
+          "baseText": {
+            "de": "spreche ich inzwischen",
+            "en": "I've come to speak"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "경험",
+          "baseText": {
+            "de": "Erfahrung",
+            "en": "experience"
+          }
+        },
+        {
+          "targetText": "발표",
+          "baseText": {
+            "de": "Vortrag, Präsentation",
+            "en": "presentation"
+          }
+        },
+        {
+          "targetText": "청중",
+          "baseText": {
+            "de": "Publikum, Zuhörerschaft",
+            "en": "audience"
+          }
+        },
+        {
+          "targetText": "손이 떨리다",
+          "baseText": {
+            "de": "zitternde Hände haben",
+            "en": "have shaky hands"
+          }
+        },
+        {
+          "targetText": "첫 문장",
+          "baseText": {
+            "de": "erster Satz",
+            "en": "first sentence"
+          }
+        },
+        {
+          "targetText": "외우다",
+          "baseText": {
+            "de": "auswendig lernen",
+            "en": "memorize"
+          }
+        }
+      ],
+      "recall": {
+        "before": "발표 경험 덕분에 손이 떨려도 ",
+        "answer": "청중을",
+        "after": " 보면서 말하게 됐어요.",
+        "fallbackChoices": [
+          "청중을",
+          "영수증을",
+          "물가를",
+          "배달비를"
+        ]
+      },
+      "speakRequired": [
+        "경험",
+        "떨려도",
+        "보면서"
+      ],
+      "sceneCaption": {
+        "de": "Im Jahresgespräch fragt eine Mentorin, was dir bei Vorträgen inzwischen leichter fällt. „올해 발표하면서 어떤 걸 배웠어요?“",
+        "en": "During an end-of-year conversation, your mentor asks what's become easier when you give presentations. “올해 발표하면서 어떤 걸 배웠어요?”"
+      },
+      "trophyWord": {
+        "word": "경험",
+        "meaning": {
+          "de": "Erfahrung",
+          "en": "experience"
+        },
+        "example": "발표 경험 덕분에 면접에서도 덜 떨렸어요.",
+        "whyThisWord": {
+          "de": "경험 덕분에 führt von einer Erfahrung zu dem, was du daraus mitgenommen hast. Vor 경험 kannst du den Bereich nennen, etwa 발표 für Vorträge.",
+          "en": "경험 덕분에 connects an experience to something you gained from it. Put a field before 경험, such as 발표 for presentations."
+        }
+      },
+      "distractors": [
+        "말을 멈췄어요.",
+        "시작하기 전에"
+      ],
+      "placeholderCaption": {
+        "de": "Der erste Satz vor Publikum",
+        "en": "The first sentence in front of an audience"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A mentor and a colleague talking in a quiet meeting room."
+    },
+    {
+      "slug": "byeonhwa-home-cooking",
+      "title": {
+        "de": "Eine eigene Küche",
+        "en": "Cooking for one"
+      },
+      "situation": {
+        "de": "Es ist dein erstes Jahresende in der eigenen Wohnung. Ein Freund fragt nach deinem Alltag.",
+        "en": "It's the end of your first year in a place of your own. A friend asks about everyday life there."
+      },
+      "pedagogicalGoal": "Eine Veränderung im Alltag schildern und an einem Gericht zeigen, was mit der Übung leichter geworden ist.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "혼자 살고 나서 뭐가 제일 많이 달라졌어요?",
+          "baseText": {
+            "de": "Was hat sich am meisten geändert, seit du allein wohnst?",
+            "en": "What's changed the most since you started living on your own?"
+          }
+        },
+        {
+          "targetText": "혼자 살면서 요리를 하게 됐어요. 꽤 큰 변화 같아요.",
+          "baseText": {
+            "de": "Seit ich allein wohne, habe ich angefangen zu kochen. Das ist für mich eine ziemlich große Veränderung.",
+            "en": "Living on my own got me cooking for myself. I think that's quite a big change."
+          }
+        },
+        {
+          "targetText": "올여름엔 정말 더웠잖아요. 그때 무슨 요리를 제일 많이 만들었어요?",
+          "baseText": {
+            "de": "Diesen Sommer war es doch richtig heiß. Was hast du da am häufigsten gekocht?",
+            "en": "It was really hot this summer. What dish did you cook most often then?"
+          }
+        },
+        {
+          "targetText": "그래서 올여름엔 오이냉국을 자주 만들면서 솜씨가 늘었어요.",
+          "baseText": {
+            "de": "Deshalb habe ich diesen Sommer oft kalte Gurkensuppe gemacht und wurde darin immer besser.",
+            "en": "So this summer I made cold cucumber soup a lot and got better at it."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면서 … -게 됐어요",
+        "rule": {
+          "de": "혼자 살면서 gibt den Lebensumstand an. Mit 요리를 하게 됐어요 erzählst du, welche neue Gewohnheit sich daraus ergeben hat.",
+          "en": "혼자 살면서 gives the living situation. 요리를 하게 됐어요 tells the listener what new habit grew out of it."
+        },
+        "examples": [
+          {
+            "targetText": "혼자 살면서 요리를 하게 됐어요. 꽤 큰 변화 같아요.",
+            "baseText": {
+              "de": "Seit ich allein wohne, habe ich angefangen zu kochen. Das ist für mich eine ziemlich große Veränderung.",
+              "en": "Living on my own got me cooking for myself. I think that's quite a big change."
+            },
+            "highlight": "살면서"
+          },
+          {
+            "targetText": "강아지를 키우면서 아침마다 동네를 걷게 됐어요.",
+            "baseText": {
+              "de": "Seit ich einen Hund habe, gehe ich jeden Morgen in der Nachbarschaft spazieren.",
+              "en": "Having a dog got me walking around the neighborhood every morning."
+            },
+            "highlight": "키우면서"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그와 반대로",
+            "그전까지는",
+            "그래서",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "올여름엔",
+          "choices": [
+            "올여름엔",
+            "지난겨울엔",
+            "내년 여름엔",
+            "올봄엔"
+          ]
+        },
+        " 오이냉국을 자주 만들면서 솜씨가 ",
+        {
+          "kind": "form",
+          "answer": "늘었어요",
+          "choices": [
+            "늘 예정이에요",
+            "늘지 않았어요",
+            "줄기만 했어요",
+            "늘었어요"
+          ],
+          "cue": "Rückblick auf eine bereits eingetretene Veränderung / Looking back on a change that's already happened"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "혼자 살면서",
+          "baseText": {
+            "de": "seit ich allein wohne",
+            "en": "living on my own"
+          }
+        },
+        {
+          "targetText": "요리를 하게",
+          "baseText": {
+            "de": "zum Kochen",
+            "en": "to cooking"
+          }
+        },
+        {
+          "targetText": "됐어요. 꽤 큰",
+          "baseText": {
+            "de": "bin ich gekommen. Eine ziemlich große",
+            "en": "I've come around. Quite a big"
+          }
+        },
+        {
+          "targetText": "변화 같아요.",
+          "baseText": {
+            "de": "Veränderung, finde ich",
+            "en": "change, I think"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "변화",
+          "baseText": {
+            "de": "Veränderung",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "혼자 살다",
+          "baseText": {
+            "de": "allein wohnen",
+            "en": "live alone"
+          }
+        },
+        {
+          "targetText": "요리",
+          "baseText": {
+            "de": "Kochen, Gericht",
+            "en": "cooking, dish"
+          }
+        },
+        {
+          "targetText": "오이냉국",
+          "baseText": {
+            "de": "kalte Gurkensuppe",
+            "en": "cold cucumber soup"
+          }
+        },
+        {
+          "targetText": "솜씨",
+          "baseText": {
+            "de": "Geschick, Können",
+            "en": "skill"
+          }
+        },
+        {
+          "targetText": "자주",
+          "baseText": {
+            "de": "oft",
+            "en": "often"
+          }
+        }
+      ],
+      "recall": {
+        "before": "혼자 살면서 ",
+        "answer": "요리를",
+        "after": " 하게 됐어요. 꽤 큰 변화 같아요.",
+        "fallbackChoices": [
+          "좌석을",
+          "요리를",
+          "우표를",
+          "난방비를"
+        ]
+      },
+      "speakRequired": [
+        "살면서",
+        "요리를",
+        "변화"
+      ],
+      "sceneCaption": {
+        "de": "Es ist dein erstes Jahresende in der eigenen Wohnung. Ein Freund fragt nach deinem Alltag. „혼자 살고 나서 뭐가 제일 많이 달라졌어요?“",
+        "en": "It's the end of your first year in a place of your own. A friend asks about everyday life there. “혼자 살고 나서 뭐가 제일 많이 달라졌어요?”"
+      },
+      "trophyWord": {
+        "word": "변화",
+        "meaning": {
+          "de": "Veränderung",
+          "en": "change"
+        },
+        "example": "올해 생긴 변화 중에 뭐가 제일 반가워요?",
+        "whyThisWord": {
+          "de": "큰 변화 같아요 ist eine persönliche Einschätzung. Damit kannst du sagen, wie viel eine neue Gewohnheit für dich verändert hat.",
+          "en": "큰 변화 같아요 gives a personal assessment. Use it to say how much difference a new habit has made to you."
+        }
+      },
+      "distractors": [
+        "같이 살면서",
+        "배달만 시켜요."
+      ],
+      "placeholderCaption": {
+        "de": "Eine eigene Küche",
+        "en": "Cooking for one"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A friend sits at the kitchen table as someone describes learning to cook."
+    },
+    {
+      "slug": "dojeon-korean-exam",
+      "title": {
+        "de": "Zur Prüfung antreten",
+        "en": "Taking the exam"
+      },
+      "situation": {
+        "de": "Kurz vor Dezember trefft ihr euch zum letzten Sprachaustausch des Jahres.",
+        "en": "Shortly before December, you meet for your last language exchange of the year."
+      },
+      "pedagogicalGoal": "Eine Entscheidung als persönliche Herausforderung vorstellen und eine Annahme zum Prüfungstermin berichtigen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "올해가 가기 전에 뭘 해 보고 싶어요?",
+          "baseText": {
+            "de": "Was möchtest du noch ausprobieren, bevor das Jahr vorbei ist?",
+            "en": "What would you like to try before the year is out?"
+          }
+        },
+        {
+          "targetText": "올해 마지막 도전 과제로 한국어 시험을 보기로 했어요.",
+          "baseText": {
+            "de": "Als letzte Herausforderung in diesem Jahr habe ich beschlossen, die Koreanischprüfung abzulegen.",
+            "en": "For my last challenge this year, I've decided to take the Korean exam."
+          }
+        },
+        {
+          "targetText": "12월 시험이군요. 아침에 보는 줄 알았는데 몇 시예요?",
+          "baseText": {
+            "de": "Also die Prüfung im Dezember. Ich dachte, die wäre morgens. Um wie viel Uhr ist sie?",
+            "en": "So it's the December exam. I thought it was in the morning. What time is it?"
+          }
+        },
+        {
+          "targetText": "그런데 12월에는 오후 두 시 시험을 보기로 했어요.",
+          "baseText": {
+            "de": "Im Dezember habe ich mich aber für die Prüfung um zwei Uhr nachmittags entschieden.",
+            "en": "Actually, in December I've decided to take the two p.m. sitting."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기로 했어요",
+        "rule": {
+          "de": "보기로 했어요 drückt eine getroffene Entscheidung aus. Vor dem Verb steht, welche Prüfung du ablegen willst.",
+          "en": "보기로 했어요 expresses a decision you've made. The words before the verb tell the listener which exam you've committed to taking."
+        },
+        "examples": [
+          {
+            "targetText": "올해 마지막 도전 과제로 한국어 시험을 보기로 했어요.",
+            "baseText": {
+              "de": "Als letzte Herausforderung in diesem Jahr habe ich beschlossen, die Koreanischprüfung abzulegen.",
+              "en": "For my last challenge this year, I've decided to take the Korean exam."
+            },
+            "highlight": "보기로 했어요"
+          },
+          {
+            "targetText": "다음 학기에는 수어를 배우기로 했어요.",
+            "baseText": {
+              "de": "Ich habe beschlossen, nächstes Semester Gebärdensprache zu lernen.",
+              "en": "I've decided to learn sign language next term."
+            },
+            "highlight": "배우기로 했어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "그 말대로",
+            "그 덕분에",
+            "그런데",
+            "이를테면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "12월에는",
+          "choices": [
+            "12월에는",
+            "7월에는",
+            "9월에는",
+            "3월에는"
+          ]
+        },
+        " 오후 두 시 시험을 ",
+        {
+          "kind": "form",
+          "answer": "보기로 했어요",
+          "choices": [
+            "보지 않았어요",
+            "보곤 했어요",
+            "보세요",
+            "보기로 했어요"
+          ],
+          "cue": "Eigene Entscheidung für einen angebotenen Prüfungstermin / Personal decision on an offered sitting"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "올해 마지막",
+          "baseText": {
+            "de": "als letzte in diesem Jahr",
+            "en": "as my last one this year"
+          }
+        },
+        {
+          "targetText": "도전 과제로",
+          "baseText": {
+            "de": "Herausforderung",
+            "en": "challenge"
+          }
+        },
+        {
+          "targetText": "한국어 시험을",
+          "baseText": {
+            "de": "die Koreanischprüfung",
+            "en": "the Korean exam"
+          }
+        },
+        {
+          "targetText": "보기로 했어요.",
+          "baseText": {
+            "de": "habe ich mich entschieden abzulegen",
+            "en": "I've decided to take"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "도전",
+          "baseText": {
+            "de": "Herausforderung",
+            "en": "challenge"
+          }
+        },
+        {
+          "targetText": "도전 과제",
+          "baseText": {
+            "de": "anspruchsvolle Aufgabe",
+            "en": "challenging task"
+          }
+        },
+        {
+          "targetText": "시험을 보다",
+          "baseText": {
+            "de": "eine Prüfung ablegen",
+            "en": "take an exam"
+          }
+        },
+        {
+          "targetText": "올해",
+          "baseText": {
+            "de": "dieses Jahr",
+            "en": "this year"
+          }
+        },
+        {
+          "targetText": "오후",
+          "baseText": {
+            "de": "Nachmittag",
+            "en": "afternoon"
+          }
+        },
+        {
+          "targetText": "두 시",
+          "baseText": {
+            "de": "zwei Uhr",
+            "en": "two o'clock"
+          }
+        }
+      ],
+      "recall": {
+        "before": "올해 마지막 도전 과제로 한국어 ",
+        "answer": "시험을",
+        "after": " 보기로 했어요.",
+        "fallbackChoices": [
+          "난방을",
+          "택배를",
+          "기온을",
+          "시험을"
+        ]
+      },
+      "speakRequired": [
+        "도전",
+        "한국어",
+        "보기로"
+      ],
+      "sceneCaption": {
+        "de": "Kurz vor Dezember trefft ihr euch zum letzten Sprachaustausch des Jahres. „올해가 가기 전에 뭘 해 보고 싶어요?“",
+        "en": "Shortly before December, you meet for your last language exchange of the year. “올해가 가기 전에 뭘 해 보고 싶어요?”"
+      },
+      "trophyWord": {
+        "word": "도전",
+        "meaning": {
+          "de": "Herausforderung",
+          "en": "challenge"
+        },
+        "example": "새로운 도전 앞에서 조금 긴장했어요.",
+        "whyThisWord": {
+          "de": "도전 과제 kann auch eine selbst gewählte Herausforderung sein. Damit kannst du erklären, warum eine ganz normale Prüfung für dich etwas Besonderes ist.",
+          "en": "A 도전 과제 can be a challenge you set yourself. Use it to explain why an ordinary exam matters to you personally."
+        }
+      },
+      "distractors": [
+        "한국어 수업을",
+        "그만두기로 했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zur Prüfung antreten",
+        "en": "Taking the exam"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two language partners discussing an upcoming exam over tea."
+    },
+    {
+      "slug": "boram-library-volunteering",
+      "title": {
+        "de": "Zeit für die Bibliothek",
+        "en": "Making time for the library"
+      },
+      "situation": {
+        "de": "Auf dem Heimweg fragt dich ein Kollege nach deinem Ehrenamt in der Bibliothek.",
+        "en": "On your way home, a colleague asks about your volunteer work at the library."
+      },
+      "pedagogicalGoal": "Den Wert einer anstrengenden Tätigkeit erklären und vorsichtig einschätzen, wie oft sie künftig in deinen Alltag passt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "올해 해 본 도서관 봉사는 어땠어요?",
+          "baseText": {
+            "de": "Wie war die ehrenamtliche Arbeit in der Bibliothek dieses Jahr für dich?",
+            "en": "How was your volunteer work at the library this year?"
+          }
+        },
+        {
+          "targetText": "도서관 봉사는 피곤해도 보람 있는 일이라서 내년에도 계속하기로 했어요.",
+          "baseText": {
+            "de": "Die Arbeit in der Bibliothek macht mich zwar müde, aber sie lohnt sich. Deshalb mache ich auch nächstes Jahr weiter.",
+            "en": "Volunteering at the library is tiring, but I find it rewarding, so I've decided to keep doing it next year."
+          }
+        },
+        {
+          "targetText": "여름에는 야근도 많잖아요. 얼마나 자주 갈 수 있을까요?",
+          "baseText": {
+            "de": "Im Sommer machst du doch viele Überstunden. Wie oft kannst du dann wohl hingehen?",
+            "en": "You work a lot of overtime in summer. How often do you think you'll be able to go then?"
+          }
+        },
+        {
+          "targetText": "그래도 여름에는 한 달에 두 번은 갈 것 같아요.",
+          "baseText": {
+            "de": "Trotzdem schaffe ich es im Sommer wohl mindestens zweimal im Monat.",
+            "en": "Still, I think I can manage at least twice a month in summer."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기로 했어요",
+        "rule": {
+          "de": "계속하기로 했어요 beschreibt deine feste Zusage an dich selbst. Ob du im Sommer oft Zeit hast, kann dagegen noch offen sein.",
+          "en": "계속하기로 했어요 marks a commitment you've made. How often you'll actually have time in the summer can still be open."
+        },
+        "examples": [
+          {
+            "targetText": "도서관 봉사는 피곤해도 보람 있는 일이라서 내년에도 계속하기로 했어요.",
+            "baseText": {
+              "de": "Die Arbeit in der Bibliothek macht mich zwar müde, aber sie lohnt sich. Deshalb mache ich auch nächstes Jahr weiter.",
+              "en": "Volunteering at the library is tiring, but I find it rewarding, so I've decided to keep doing it next year."
+            },
+            "highlight": "계속하기로 했어요"
+          },
+          {
+            "targetText": "행사가 끝나도 한 달에 한 번은 돕기로 했어요.",
+            "baseText": {
+              "de": "Ich habe beschlossen, auch nach der Veranstaltung einmal im Monat zu helfen.",
+              "en": "I've decided to help once a month even after the event ends."
+            },
+            "highlight": "돕기로 했어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "그 덕분에",
+            "그래도",
+            "말 그대로",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "여름에는",
+          "choices": [
+            "봄에는",
+            "가을에는",
+            "겨울에는",
+            "여름에는"
+          ]
+        },
+        " 한 달에 두 번은 ",
+        {
+          "kind": "form",
+          "answer": "갈 것 같아요",
+          "choices": [
+            "다녀온 적이 있어요",
+            "가고 있었어요",
+            "갈 것 같아요",
+            "가지 마세요"
+          ],
+          "cue": "Vorsichtige Einschätzung einer künftigen Möglichkeit / Tentative estimate of a future possibility"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "도서관 봉사는",
+          "baseText": {
+            "de": "die ehrenamtliche Arbeit in der Bibliothek",
+            "en": "volunteering at the library"
+          }
+        },
+        {
+          "targetText": "피곤해도",
+          "baseText": {
+            "de": "selbst wenn sie müde macht",
+            "en": "even though it's tiring"
+          }
+        },
+        {
+          "targetText": "보람 있는 일이라서",
+          "baseText": {
+            "de": "weil sie sich lohnt",
+            "en": "because it feels worthwhile"
+          }
+        },
+        {
+          "targetText": "내년에도 계속하기로 했어요.",
+          "baseText": {
+            "de": "habe ich beschlossen, auch nächstes Jahr weiterzumachen",
+            "en": "I've decided to keep going next year"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "보람",
+          "baseText": {
+            "de": "Gefühl, dass sich die Mühe lohnt",
+            "en": "sense of fulfillment"
+          }
+        },
+        {
+          "targetText": "보람 있는 일",
+          "baseText": {
+            "de": "lohnende Tätigkeit",
+            "en": "rewarding work"
+          }
+        },
+        {
+          "targetText": "봉사",
+          "baseText": {
+            "de": "ehrenamtliche Arbeit",
+            "en": "volunteer work"
+          }
+        },
+        {
+          "targetText": "피곤하다",
+          "baseText": {
+            "de": "müde sein",
+            "en": "be tired"
+          }
+        },
+        {
+          "targetText": "계속하다",
+          "baseText": {
+            "de": "weitermachen",
+            "en": "continue"
+          }
+        },
+        {
+          "targetText": "야근",
+          "baseText": {
+            "de": "Überstunden am Abend",
+            "en": "working late"
+          }
+        }
+      ],
+      "recall": {
+        "before": "도서관 ",
+        "answer": "봉사는",
+        "after": " 피곤해도 보람 있는 일이라서 내년에도 계속하기로 했어요.",
+        "fallbackChoices": [
+          "봉사는",
+          "영수증은",
+          "반납함은",
+          "기압은"
+        ]
+      },
+      "speakRequired": [
+        "봉사는",
+        "보람",
+        "계속하기로"
+      ],
+      "sceneCaption": {
+        "de": "Auf dem Heimweg fragt dich ein Kollege nach deinem Ehrenamt in der Bibliothek. „올해 해 본 도서관 봉사는 어땠어요?“",
+        "en": "On your way home, a colleague asks about your volunteer work at the library. “올해 해 본 도서관 봉사는 어땠어요?”"
+      },
+      "trophyWord": {
+        "word": "보람",
+        "meaning": {
+          "de": "Gefühl, dass sich die Mühe lohnt",
+          "en": "sense of fulfillment"
+        },
+        "example": "힘들어도 보람 있는 일을 하고 싶어요.",
+        "whyThisWord": {
+          "de": "보람 있는 일 drückt aus, was dir eine Tätigkeit persönlich gibt. Du kannst damit auch bei anstrengender Arbeit begründen, warum du weitermachst.",
+          "en": "보람 있는 일 conveys what you get out of an activity personally. It helps explain why you'll keep doing something even when it takes real effort."
+        }
+      },
+      "distractors": [
+        "도서관 맞은편에",
+        "잠시 쉬기로 했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zeit für die Bibliothek",
+        "en": "Making time for the library"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two colleagues walking past a neighborhood library after work."
+    },
+    {
+      "slug": "daeum-moving-month",
+      "title": {
+        "de": "Der bevorstehende Umzug",
+        "en": "The upcoming move"
+      },
+      "situation": {
+        "de": "Beim letzten Besuch des Jahres sieht ein Freund die Kartons in deinem Flur.",
+        "en": "On his last visit of the year, a friend sees the boxes in your hallway."
+      },
+      "pedagogicalGoal": "Einen fest geplanten Umzug ankündigen und auf ein Hilfsangebot mit einer konkreten Bitte reagieren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "복도에 상자가 많네요. 무슨 계획이 있어요?",
+          "baseText": {
+            "de": "Da stehen ja viele Kartons im Flur. Was hast du vor?",
+            "en": "That's a lot of boxes in your hallway. What are you planning?"
+          }
+        },
+        {
+          "targetText": "다음 달에 이사할 예정이라 이삿짐센터를 벌써 예약했어요.",
+          "baseText": {
+            "de": "Ich ziehe nächsten Monat um und habe das Umzugsunternehmen schon gebucht.",
+            "en": "I'm due to move next month, and I've already booked the movers."
+          }
+        },
+        {
+          "targetText": "1월에 업체가 오지요? 저도 도울 일이 있을까요?",
+          "baseText": {
+            "de": "Im Januar kommt also die Umzugsfirma. Kann ich dir auch bei etwas helfen?",
+            "en": "The movers are coming in January, right? Is there anything I could help with too?"
+          }
+        },
+        {
+          "targetText": "그래도 1월 이사 때 화분은 직접 옮길 예정인데 도와주실래요?",
+          "baseText": {
+            "de": "Die Topfpflanzen will ich beim Umzug im Januar aber selbst transportieren. Hilfst du mir dabei?",
+            "en": "Still, I'm planning to move the potted plants myself during the January move. Would you help me with them?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 예정이라",
+        "rule": {
+          "de": "이사할 예정이라 nennt einen bereits geplanten Umzug als Grund für das, was du schon erledigt hast.",
+          "en": "이사할 예정이라 gives a scheduled move as the reason you've already taken action."
+        },
+        "examples": [
+          {
+            "targetText": "다음 달에 이사할 예정이라 이삿짐센터를 벌써 예약했어요.",
+            "baseText": {
+              "de": "Ich ziehe nächsten Monat um und habe das Umzugsunternehmen schon gebucht.",
+              "en": "I'm due to move next month, and I've already booked the movers."
+            },
+            "highlight": "이사할 예정이라"
+          },
+          {
+            "targetText": "주말에 떠날 예정이라 우편물을 미리 정리했어요.",
+            "baseText": {
+              "de": "Weil ich am Wochenende verreise, habe ich die Post schon vorher sortiert.",
+              "en": "I'm due to leave this weekend, so I sorted my mail in advance."
+            },
+            "highlight": "떠날 예정이라"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "그래도",
+            "그 반대로",
+            "그 전까지는",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "1월",
+          "choices": [
+            "5월",
+            "7월",
+            "1월",
+            "9월"
+          ]
+        },
+        " 이사 때 화분은 직접 ",
+        {
+          "kind": "form",
+          "answer": "옮길 예정인데",
+          "choices": [
+            "옮긴 적이 없는데",
+            "옮길 예정인데",
+            "옮기곤 했는데",
+            "옮기지 않았는데"
+          ],
+          "cue": "Konkreter eigener Plan als Hintergrund für eine Bitte / Specific personal plan as background for a request"
+        },
+        " 도와주실래요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "다음 달에",
+          "baseText": {
+            "de": "nächsten Monat",
+            "en": "next month"
+          }
+        },
+        {
+          "targetText": "이사할 예정이라",
+          "baseText": {
+            "de": "weil mein Umzug geplant ist",
+            "en": "since I'm due to move"
+          }
+        },
+        {
+          "targetText": "이삿짐센터를",
+          "baseText": {
+            "de": "ein Umzugsunternehmen",
+            "en": "a moving company"
+          }
+        },
+        {
+          "targetText": "벌써 예약했어요.",
+          "baseText": {
+            "de": "habe ich schon gebucht",
+            "en": "I've already booked"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "다음",
+          "baseText": {
+            "de": "nächste, nächster",
+            "en": "next"
+          }
+        },
+        {
+          "targetText": "다음 달",
+          "baseText": {
+            "de": "nächster Monat",
+            "en": "next month"
+          }
+        },
+        {
+          "targetText": "이사하다",
+          "baseText": {
+            "de": "umziehen",
+            "en": "move house"
+          }
+        },
+        {
+          "targetText": "이삿짐센터",
+          "baseText": {
+            "de": "Umzugsunternehmen",
+            "en": "moving company"
+          }
+        },
+        {
+          "targetText": "예약하다",
+          "baseText": {
+            "de": "buchen",
+            "en": "book"
+          }
+        },
+        {
+          "targetText": "화분",
+          "baseText": {
+            "de": "Topfpflanze, Blumentopf",
+            "en": "potted plant, flowerpot"
+          }
+        }
+      ],
+      "recall": {
+        "before": "다음 달에 이사할 예정이라 ",
+        "answer": "이삿짐센터를",
+        "after": " 벌써 예약했어요.",
+        "fallbackChoices": [
+          "피아노를",
+          "난방비를",
+          "이삿짐센터를",
+          "주소를"
+        ]
+      },
+      "speakRequired": [
+        "다음",
+        "이사할",
+        "예약했어요"
+      ],
+      "sceneCaption": {
+        "de": "Beim letzten Besuch des Jahres sieht ein Freund die Kartons in deinem Flur. „복도에 상자가 많네요. 무슨 계획이 있어요?“",
+        "en": "On his last visit of the year, a friend sees the boxes in your hallway. “복도에 상자가 많네요. 무슨 계획이 있어요?”"
+      },
+      "trophyWord": {
+        "word": "다음",
+        "meaning": {
+          "de": "nächste, nächster",
+          "en": "next"
+        },
+        "example": "다음 달 월세는 어느 계좌로 보내면 돼요?",
+        "whyThisWord": {
+          "de": "다음 bestimmt in 다음 달 den Monat direkt nach dem jetzigen. Auch Wochentage lassen sich mit 다음 genauer einordnen.",
+          "en": "In 다음 달, 다음 identifies the month immediately after this one. You can use 다음 with days of the week as well."
+        }
+      },
+      "distractors": [
+        "지난달에",
+        "예약을 취소했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Der bevorstehende Umzug",
+        "en": "The upcoming move"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A visiting friend and a resident step around boxes in a hallway."
+    },
+    {
+      "slug": "saehae-walking-first",
+      "title": {
+        "de": "Zu Fuß ins neue Jahr",
+        "en": "Walking into the new year"
+      },
+      "situation": {
+        "de": "Bei eurem letzten Kaffee vor dem Jahreswechsel kommt das Gespräch auf Reisen und Gesundheit.",
+        "en": "Over your last coffee together before New Year, you and a colleague talk about travel and health."
+      },
+      "pedagogicalGoal": "Zwei Vorhaben miteinander verbinden und erklären, womit du im neuen Jahr anfangen willst.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "새해에 꼭 하고 싶은 일이 뭐예요?",
+          "baseText": {
+            "de": "Was möchtest du im neuen Jahr unbedingt machen?",
+            "en": "What do you really want to do in the new year?"
+          }
+        },
+        {
+          "targetText": "새해 목표는 여행하면서 건강도 챙기는 거예요. 봄에는 제주도를 걸어서 돌 예정이에요.",
+          "baseText": {
+            "de": "Im neuen Jahr möchte ich reisen und dabei etwas für meine Gesundheit tun. Im Frühling will ich die Insel Jeju zu Fuß umrunden.",
+            "en": "In the new year I want to travel and look after my health at the same time. This spring I'm planning to walk around Jeju Island."
+          }
+        },
+        {
+          "targetText": "제주에서는 오래 걸어야 하잖아요. 1월에는 뭘 먼저 할 거예요?",
+          "baseText": {
+            "de": "Auf Jeju wirst du lange Strecken laufen müssen. Womit fängst du im Januar an?",
+            "en": "You'll have a lot of walking to do on Jeju. What will you start with in January?"
+          }
+        },
+        {
+          "targetText": "그래서 1월부터는 여행 준비로 매일 동네를 걸을 예정이에요.",
+          "baseText": {
+            "de": "Deshalb will ich ab Januar zur Vorbereitung auf die Reise jeden Tag in meiner Nachbarschaft zu Fuß gehen.",
+            "en": "So starting in January, I'm planning to walk around my neighborhood every day to get ready for the trip."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 예정이에요",
+        "rule": {
+          "de": "돌 예정이에요 stellt die Reise als konkreten Plan vor. Mit 봄에는 nennst du gleich den Zeitraum, in dem du ihn umsetzen willst.",
+          "en": "돌 예정이에요 presents the trip as a concrete plan. 봄에는 tells your listener when you intend to carry it out."
+        },
+        "examples": [
+          {
+            "targetText": "새해 목표는 여행하면서 건강도 챙기는 거예요. 봄에는 제주도를 걸어서 돌 예정이에요.",
+            "baseText": {
+              "de": "Im neuen Jahr möchte ich reisen und dabei etwas für meine Gesundheit tun. Im Frühling will ich die Insel Jeju zu Fuß umrunden.",
+              "en": "In the new year I want to travel and look after my health at the same time. This spring I'm planning to walk around Jeju Island."
+            },
+            "highlight": "돌 예정이에요"
+          },
+          {
+            "targetText": "가을에는 자전거로 섬을 가로질러 다리를 건널 예정이에요.",
+            "baseText": {
+              "de": "Im Herbst will ich mit dem Fahrrad quer über die Insel und dann über die Brücke fahren.",
+              "en": "In autumn I'm planning to ride my bike across the island and then cross the bridge."
+            },
+            "highlight": "건널 예정이에요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래서",
+          "choices": [
+            "그래서",
+            "그와 반대로",
+            "이미 그전에",
+            "거꾸로"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "1월부터는",
+          "choices": [
+            "6월부터는",
+            "작년 1월부터는",
+            "1월부터는",
+            "가을부터는"
+          ]
+        },
+        " 여행 준비로 매일 동네를 ",
+        {
+          "kind": "form",
+          "answer": "걸을 예정이에요",
+          "choices": [
+            "걷곤 했어요",
+            "걸을 예정이에요",
+            "걷고 있었어요",
+            "걸은 적이 없어요"
+          ],
+          "cue": "Konkreter Plan ab einem künftigen Zeitpunkt / Specific plan starting at a future time"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "새해 목표는",
+          "baseText": {
+            "de": "mein Ziel fürs neue Jahr ist",
+            "en": "my aim for the new year is"
+          }
+        },
+        {
+          "targetText": "여행하면서 건강도 챙기는",
+          "baseText": {
+            "de": "auf Reisen auch auf meine Gesundheit zu achten",
+            "en": "looking after my health too while traveling"
+          }
+        },
+        {
+          "targetText": "거예요. 봄에는 제주도를",
+          "baseText": {
+            "de": "das ist es. Im Frühling die Insel Jeju",
+            "en": "that's it. In spring, Jeju Island"
+          }
+        },
+        {
+          "targetText": "걸어서 돌 예정이에요.",
+          "baseText": {
+            "de": "will ich zu Fuß umrunden",
+            "en": "I'm planning to go around on foot"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "새해",
+          "baseText": {
+            "de": "neues Jahr",
+            "en": "new year"
+          }
+        },
+        {
+          "targetText": "목표",
+          "baseText": {
+            "de": "Ziel",
+            "en": "goal"
+          }
+        },
+        {
+          "targetText": "건강을 챙기다",
+          "baseText": {
+            "de": "auf die Gesundheit achten",
+            "en": "look after one's health"
+          }
+        },
+        {
+          "targetText": "걸어서",
+          "baseText": {
+            "de": "zu Fuß",
+            "en": "on foot"
+          }
+        },
+        {
+          "targetText": "섬을 돌다",
+          "baseText": {
+            "de": "eine Insel umrunden",
+            "en": "go around an island"
+          }
+        },
+        {
+          "targetText": "여행 준비",
+          "baseText": {
+            "de": "Reisevorbereitung",
+            "en": "trip preparation"
+          }
+        }
+      ],
+      "recall": {
+        "before": "새해 목표는 여행하면서 건강도 챙기는 거예요. 봄에는 제주도를 ",
+        "answer": "걸어서",
+        "after": " 돌 예정이에요.",
+        "fallbackChoices": [
+          "접어서",
+          "끓여서",
+          "잠가서",
+          "걸어서"
+        ]
+      },
+      "speakRequired": [
+        "새해",
+        "제주도를",
+        "예정이에요"
+      ],
+      "sceneCaption": {
+        "de": "Bei eurem letzten Kaffee vor dem Jahreswechsel kommt das Gespräch auf Reisen und Gesundheit. „새해에 꼭 하고 싶은 일이 뭐예요?“",
+        "en": "Over your last coffee together before New Year, you and a colleague talk about travel and health. “새해에 꼭 하고 싶은 일이 뭐예요?”"
+      },
+      "trophyWord": {
+        "word": "새해",
+        "meaning": {
+          "de": "neues Jahr",
+          "en": "new year"
+        },
+        "example": "새해 첫날에는 가까운 산에 오를 거예요.",
+        "whyThisWord": {
+          "de": "새해 목표 sind Ziele für das neue Jahr. Du kannst damit einen Wunsch einleiten und anschließend sagen, welchen ersten Schritt du dafür planst.",
+          "en": "새해 목표 are goals for the new year. Use the phrase to introduce a wish and then explain the first step you plan to take."
+        }
+      },
+      "distractors": [
+        "지난달부터",
+        "차로 돌아왔어요."
+      ],
+      "placeholderCaption": {
+        "de": "Zu Fuß ins neue Jahr",
+        "en": "Walking into the new year"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two coworkers sharing coffee beside a folded island map."
+    }
+  ]
+}

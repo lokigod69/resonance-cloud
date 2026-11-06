@@ -1,0 +1,29 @@
+{
+  "file": "p5.json",
+  "source": "90fe2f372d1b4ce9ce07ef1c452e3897a577b0041c62bc6dff5d04d7674f3f5f",
+  "result": "d7e116959e51a9f888a77f267ff4eaad1f7635a08d94573dc5e34cb1658be79b",
+  "edits": 4,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "p5.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Only L2 is in scope. L2 follow-up 언제쯤 breaks the whole-word allocation (언제/어디서/어떻게/얼마나). Native check: 대략 언제 올라오는지 is idiomatic (slightly more formal than 언제쯤, appropriate for a school-office exchange); it preserves the 'ungefähr/roughly' meaning already in the frozen baseText, so no base-text change is needed. Resulting learner sentence 그러면 공지가 대략 언제 올라오는지 아세요? = 6 eojeol, one sentence. Existing distractors 어디에/누구를/어느 분이 remain coherent near misses after 대략 (wrong question-word slot, grammatically parallel). Pattern rule already states 언제 asks when, so it now matches the dialogue exactly. L2 pattern example 2 uses 몇 시쯤 but is an example, not the learner line, and is frozen. L1, L3–L10 unchanged and not re-arbitrated."
+    }
+  ],
+  "openIssues": [
+    "대략 is not listed in L2 terms (terms frozen); optional future addition if the glossary coverage gate flags it.",
+    "L2 pattern example 2 (다음 수업은 몇 시쯤 끝나는지 아세요?) still uses the -쯤 form; acceptable as an example only, left frozen."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "file": "french-p5.json",
+  "source": "92a42175da2c4fa6b04e8a692aeaa42f18c4136e8d0382b1e87edf7ae87bbf3b",
+  "result": "f8387c04e041a6d441a3f2dcc30117ee4de1b339f237c937e12bbd08f57717f8",
+  "edits": 34,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "french-p5.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": [
+        "L1: you2 uses savez-vous before the L4–6 stage; L'accueil ferme à midi is ambiguous (the receptionist is at l'accueil) while DE adds dort; situation does not say what the dossier is; chunk gloss wo ich muss teaches wrong constituent; build chips off-topic",
+        "L2: comment je remplis is natural French (procedural present, cf. comment je fais ?); keep; no edits",
+        "L3: chunk gloss wann ich muss; pattern example 2 uses savez-vous and L4 trophy inscriptions ahead of stage; off-topic chips",
+        "L4: terms groupe complet is sign French, dialogue says le groupe est complet; dans la glaise chip; pour changer mon adresse ? forms a valid alternative final chunk",
+        "L5: DE Frist / EN waiting period less precise than Bearbeitungszeit / processing time for an applicant asking when counting starts",
+        "L6 HIGH: separate en ligne chip yields a second idiomatic order (faire en ligne toute la démarche depuis chez moi)",
+        "L7: par adresse provisoire substitutes grammatically for par signature originale; dans mon agenda remote",
+        "L8 HIGH: DE says data missing on the RIB, French says the document is missing; pendant ma pause. substitutes for pour cette demande.; RIB acronym first spoken by learner",
+        "L9 HIGH: Vous êtes resté genders the learner; you2 asks for a correction without answering whether the end date is wrong",
+        "L10: situation claims a booking the clerk later calls provisional; phone opener presumes knowledge the receptionist cannot have, so you1 answers nothing; lequel is contestable as a wrong choice next to feminine case; example 2 is not an embedded question",
+        "Path-wide: connector arrays recycle dont/lequel/combien de; retained because offering si/où/quand/comment near-misses would create second valid readings in most frames"
+      ]
+    }
+  ],
+  "openIssues": [
+    "Re-run validateB1Draft and the full read on the edited source; L9 you2 and L10 you1 now carry a leading sentence inside one learner turn (Oui. / J'ai choisi un créneau en ligne.), confirm the validator and speak recognizer accept two sentences in a single turn",
+    "Connector arrays still lean on dont/lequel/combien de; kept deliberately because si/où/quand/comment near-misses create second valid readings in most frames (e.g. L1 si le guichet rouvre, L2 quand je note); vary only where a frame excludes them",
+    "L2 comment je remplis retained as natural French; switch to comment je dois remplir only if the spec requires a modal in every L1–3 embedded clause",
+    "L1 situation now names the residence-permit renewal; confirm this does not clash with the shared P5 setting list",
+    "Codex holds the in-flight claim on this scope; this is a spec, no file was modified"
+  ]
+}

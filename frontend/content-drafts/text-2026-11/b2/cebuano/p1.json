@@ -1,0 +1,3978 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Cebuano",
+  "targetLanguageCode": "ceb-PH",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Möglichkeiten abwägen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Optionen vergleichen und eine Empfehlung an neue Bedingungen anpassen.",
+    "en": "Compare options and adapt a recommendation to new conditions."
+  },
+  "specRef": {
+    "pathSpec": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+    "ledger": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+    "ledgerSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "cebuano-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "abang-batok-biyahe",
+      "title": {
+        "de": "Miete und Fahrtkosten",
+        "en": "Rent and travel costs"
+      },
+      "situation": {
+        "de": "Bei einer Zimmerbesichtigung vergleichst du mit der Vermittlung die Angebote im Zentrum und in Talamban.",
+        "en": "At a room viewing, you compare the central and Talamban offers with the letting agent."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Zimmervermittlung",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei einer Zimmerbesichtigung vergleichst du mit der Vermittlung die Angebote im Zentrum und in Talamban. Die andere Person sagt: „Duha ang bakante: mahal ang sa sentro apan duol sa inyong trabaho, barato ang sa Talamban apan layo. Asa kamo?“",
+        "en": "At a room viewing, you compare the central and Talamban offers with the letting agent. The other person says: “Duha ang bakante: mahal ang sa sentro apan duol sa inyong trabaho, barato ang sa Talamban apan layo. Asa kamo?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Duha ang bakante: mahal ang sa sentro apan duol sa inyong trabaho, barato ang sa Talamban apan layo. Asa kamo?",
+          "base": {
+            "de": "Zwei Zimmer sind frei: Das zentrale ist teuer, aber nahe Ihrer Arbeit, das in Talamban günstig, aber weit weg. Welches möchten Sie?",
+            "en": "Two rooms are vacant: the central one is expensive but near your work, the Talamban one cheap but far away. Which would you like?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mas barato ang kwarto sa Talamban kaysa sa sentro, apan kada adlaw duha ka oras ang biyahe, ug pliti usab kana.",
+          "base": {
+            "de": "Das Zimmer in Talamban ist günstiger als das im Zentrum, aber täglich sind es zwei Stunden Fahrt, und die kostet auch Geld.",
+            "en": "The room in Talamban is cheaper than the central one, but the journey takes two hours each day and costs money too."
+          },
+          "move": "compare",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan ang abang sa sentro tulo ka libo ang dugang matag bulan. Dili ba mas dako kana kaysa sa pliti?",
+          "base": {
+            "de": "Die Miete im Zentrum ist aber dreitausend im Monat höher. Ist das nicht mehr als die Fahrtkosten?",
+            "en": "But the central rent is three thousand more a month. Is that not more than the fare?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dili, kay kung ihapon nako ang pliti ug ang oras nga mawala, mas mahal gihapon ang Talamban.",
+          "base": {
+            "de": "Nein, denn wenn ich die Fahrtkosten und die verlorene Zeit zusammenrechne, ist Talamban trotzdem teurer.",
+            "en": "No, because if I count the fare and the time lost, Talamban is still more expensive."
+          },
+          "move": "rebut",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Kung mopirma kamo karon, mahatagan nako og lima ka porsyento nga diskwento ang sentro. Unsa ang inyong desisyon?",
+          "base": {
+            "de": "Gut. Wenn Sie heute unterschreiben, kann ich beim zentralen Zimmer fünf Prozent Rabatt geben. Wie entscheiden Sie sich?",
+            "en": "All right. If you sign today, I can give five percent off the central room. What is your decision?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Kuhaon nako ang kwarto sa sentro uban sa diskwento, kay mas daghan ang akong oras nga maluwas.",
+          "base": {
+            "de": "Ich nehme das zentrale Zimmer mit dem Rabatt, weil mir dadurch mehr Zeit bleibt.",
+            "en": "I will take the central room with the discount because it saves me more time."
+          },
+          "move": "conclude",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Mas barato",
+          "ang kwarto sa Talamban",
+          "kaysa",
+          "sa sentro,",
+          "apan kada adlaw"
+        ],
+        "distractors": [
+          "Mas mahal",
+          "sa opisina,"
+        ],
+        "frameSuffix": " duha ka oras ang biyahe, ug pliti usab kana."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " kung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " nako ang pliti ug ang oras nga mawala, mas mahal gihapon ang Talamban."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dili, kay",
+            "acceptedAnswers": [
+              "Dili, kay"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dili, kay",
+              "Oo, kay",
+              "Wala, kay",
+              "Siguro, kay"
+            ]
+          },
+          {
+            "answer": "ihapon",
+            "acceptedAnswers": [
+              "ihapon"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ihap, Objektfokus -on, Bedingung nach kung",
+              "en": "ihap, object focus -on, condition after kung"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang kwarto sa sentro uban sa diskwento, kay mas daghan ang akong oras nga maluwas."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kuhaon nako",
+            "acceptedAnswers": [
+              "Kuhaon nako"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Kuhaon nako",
+              "Kuhaa nako",
+              "Mokuha nako",
+              "Gikuha nako"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Mas ",
+        "answer": "barato",
+        "acceptedAnswers": [
+          "barato"
+        ],
+        "after": " ang kwarto sa Talamban kaysa sa sentro, apan kada adlaw duha ka oras ang biyahe, ug pliti usab kana.",
+        "fallbackChoices": [
+          "barato",
+          "hilom",
+          "limpyo",
+          "lapad"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Kosten vollständig vergleichen",
+          "en": "Comparing the full cost"
+        },
+        "rule": {
+          "de": "Weise die Behauptung mit „Dili, kay …“ zurück und liefere im selben Satz die Gegenrechnung.",
+          "en": "Reject the claim with “Dili, kay …” and give the counter-calculation in the same sentence."
+        },
+        "examples": [
+          {
+            "targetText": "Dili, kay kung ihapon nako ang pliti ug ang oras nga mawala, mas mahal gihapon ang Talamban.",
+            "base": {
+              "de": "Nein, denn wenn ich die Fahrtkosten und die verlorene Zeit zusammenrechne, ist Talamban trotzdem teurer.",
+              "en": "No, because if I count the fare and the time lost, Talamban is still more expensive."
+            },
+            "highlights": [
+              "Dili, kay"
+            ]
+          },
+          {
+            "targetText": "Dili, kay mas mahal ang pliti kung layo ang balay.",
+            "base": {
+              "de": "Nein, denn die Fahrt kostet mehr, wenn das Haus weit entfernt ist.",
+              "en": "No, because the fare is higher if the house is far away."
+            },
+            "highlights": [
+              "Dili, kay"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "kaysa",
+          "kind": "connector",
+          "base": {
+            "de": "als, im Vergleich zu",
+            "en": "than"
+          },
+          "acceptedAnswers": [
+            "kaysa"
+          ]
+        },
+        {
+          "targetText": "kwarto",
+          "kind": "noun",
+          "base": {
+            "de": "Zimmer",
+            "en": "room"
+          },
+          "acceptedAnswers": [
+            "kwarto"
+          ]
+        },
+        {
+          "targetText": "sentro",
+          "kind": "noun",
+          "base": {
+            "de": "Zentrum",
+            "en": "centre"
+          },
+          "acceptedAnswers": [
+            "sentro"
+          ]
+        },
+        {
+          "targetText": "pliti",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrtkosten",
+            "en": "fare"
+          },
+          "acceptedAnswers": [
+            "pliti"
+          ]
+        },
+        {
+          "targetText": "ihapon",
+          "kind": "verb",
+          "base": {
+            "de": "zusammenrechnen",
+            "en": "count"
+          },
+          "acceptedAnswers": [
+            "ihapon"
+          ],
+          "lemma": "ihap"
+        },
+        {
+          "targetText": "diskwento",
+          "kind": "noun",
+          "base": {
+            "de": "Rabatt",
+            "en": "discount"
+          },
+          "acceptedAnswers": [
+            "diskwento"
+          ]
+        },
+        {
+          "targetText": "maluwas",
+          "kind": "verb",
+          "base": {
+            "de": "eingespart werden",
+            "en": "be saved"
+          },
+          "acceptedAnswers": [
+            "maluwas"
+          ],
+          "lemma": "luwas"
+        },
+        {
+          "targetText": "kada adlaw",
+          "kind": "phrase",
+          "base": {
+            "de": "jeden Tag",
+            "en": "every day"
+          },
+          "acceptedAnswers": [
+            "kada adlaw"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "barato",
+            "kwarto",
+            "pliti"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ihapon",
+            "oras",
+            "mahal"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "kuhaon",
+            "diskwento",
+            "maluwas"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "kaysa",
+        "familyKey": "kaysa",
+        "surface": "kaysa",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Mas barato ang jeep kaysa sa taksi.",
+          "base": {
+            "de": "Der Jeepney ist günstiger als das Taxi.",
+            "en": "The jeepney is cheaper than the taxi."
+          }
+        },
+        "base": {
+          "de": "als",
+          "en": "than"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "sakyanan-o-jeep",
+      "title": {
+        "de": "Auto oder Jeepney?",
+        "en": "Car or jeepney?"
+      },
+      "situation": {
+        "de": "Eine Person aus dem Kollegenkreis überlegt, für den Arbeitsweg einen Gebrauchtwagen zu kaufen.",
+        "en": "A colleague is considering buying a used car for the commute."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus dem Kollegenkreis überlegt, für den Arbeitsweg einen Gebrauchtwagen zu kaufen. Die andere Person sagt: „Nagplano ko nga mopalit og gamit na nga sakyanan para sa trabaho. Mas maayo ba kaha kana kaysa jeep?“",
+        "en": "A colleague is considering buying a used car for the commute. The other person says: “Nagplano ko nga mopalit og gamit na nga sakyanan para sa trabaho. Mas maayo ba kaha kana kaysa jeep?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nagplano ko nga mopalit og gamit na nga sakyanan para sa trabaho. Mas maayo ba kaha kana kaysa jeep?",
+          "base": {
+            "de": "Ich plane, einen Gebrauchtwagen für die Arbeit zu kaufen. Wäre das wohl besser als der Jeepney?",
+            "en": "I am planning to buy a used car for work. Would that be better than the jeepney?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sa akong hunahuna, ang bentaha sa sakyanan mao ang kagawasan sa oras, apan ang jeep mas barato ug wala kay problema sa parking.",
+          "base": {
+            "de": "Meiner Meinung nach ist der Vorteil des Autos die zeitliche Freiheit. Der Jeepney ist aber günstiger, und du hast kein Parkplatzproblem.",
+            "en": "In my opinion, the car’s advantage is freedom over your schedule, but the jeepney is cheaper and you have no parking problem."
+          },
+          "move": "compare",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero gikapoy na ko sa paghulat sa jeep matag buntag. Dili ba bentaha usab ang dili na maghulat?",
+          "base": {
+            "de": "Ich bin es aber leid, jeden Morgen auf den Jeepney zu warten. Ist es nicht auch ein Vorteil, nicht mehr warten zu müssen?",
+            "en": "But I am tired of waiting for the jeepney every morning. Is not having to wait also an advantage?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tinuod nga bentaha kana, apan ihapa ang gasolina, ang parking ug ang mekaniko kada bulan.",
+          "base": {
+            "de": "Das ist tatsächlich ein Vorteil, aber rechne jeden Monat Benzin, Parken und die Werkstatt dazu.",
+            "en": "That is indeed an advantage, but count petrol, parking and the mechanic each month."
+          },
+          "move": "concede",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okey, unsa kaha kung magsakay ko og jeep sa adlaw sa trabaho ug sakyanan lang sa weekend?",
+          "base": {
+            "de": "Okay, wie wäre es, wenn ich an Arbeitstagen den Jeepney nehme und das Auto nur am Wochenende?",
+            "en": "Okay, what if I take the jeepney on workdays and use a car only at weekends?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mao kanay maayo: jeep sa adlaw sa trabaho, sakyanan sa weekend, apan mag-abang ka una og sakyanan sa duha ka weekend.",
+          "base": {
+            "de": "Das wäre gut: Jeepney an Arbeitstagen, Auto am Wochenende. Miete aber zunächst an zwei Wochenenden ein Auto.",
+            "en": "That sounds good: jeepney on workdays, car at weekends, but first rent a car for two weekends."
+          },
+          "move": "propose",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "Sa akong hunahuna, ",
+        "chunks": [
+          "ang bentaha",
+          "sa sakyanan",
+          "mao ang kagawasan",
+          "sa oras,",
+          "apan ang jeep"
+        ],
+        "distractors": [
+          "ang disbentaha",
+          "sa gasolina,"
+        ],
+        "frameSuffix": " mas barato ug wala kay problema sa parking."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " kana, apan "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ang gasolina, ang parking ug ang mekaniko kada bulan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tinuod nga bentaha",
+            "acceptedAnswers": [
+              "Tinuod nga bentaha"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tinuod nga bentaha",
+              "Dili bentaha",
+              "Tinuod nga disbentaha",
+              "Walay bentaha"
+            ]
+          },
+          {
+            "answer": "ihapa",
+            "acceptedAnswers": [
+              "ihapa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ihap, Imperativ -a",
+              "en": "ihap, imperative -a"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": jeep sa adlaw sa trabaho, sakyanan sa weekend, apan mag-abang ka una og sakyanan sa duha ka weekend."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mao kanay maayo",
+            "acceptedAnswers": [
+              "Mao kanay maayo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mao kanay maayo",
+              "Dili kana maayo",
+              "Mao kanay mahal",
+              "Wala kanay maayo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sa akong hunahuna, ang bentaha sa sakyanan mao ang ",
+        "answer": "kagawasan",
+        "acceptedAnswers": [
+          "kagawasan"
+        ],
+        "after": " sa oras, apan ang jeep mas barato ug wala kay problema sa parking.",
+        "fallbackChoices": [
+          "kagawasan",
+          "kakulang",
+          "kahadlok",
+          "kasakit"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Vorteil mit Kosten abwägen",
+          "en": "Weighing a benefit against costs"
+        },
+        "rule": {
+          "de": "Räume mit „Tinuod nga …“ den Punkt ein und setze mit „apan“ die Gegenkosten dagegen.",
+          "en": "Grant the point with “Tinuod nga …” and set the counter-costs against it with “apan”."
+        },
+        "examples": [
+          {
+            "targetText": "Tinuod nga bentaha kana, apan ihapa ang gasolina, ang parking ug ang mekaniko kada bulan.",
+            "base": {
+              "de": "Das ist tatsächlich ein Vorteil, aber rechne jeden Monat Benzin, Parken und die Werkstatt dazu.",
+              "en": "That is indeed an advantage, but count petrol, parking and the mechanic each month."
+            },
+            "highlights": [
+              "Tinuod nga bentaha"
+            ]
+          },
+          {
+            "targetText": "Tinuod nga bentaha ang kagawasan, apan naa usab ang gasto sa gasolina.",
+            "base": {
+              "de": "Die Freiheit ist tatsächlich ein Vorteil, aber es gibt auch Benzinkosten.",
+              "en": "Freedom is indeed an advantage, but there is also the cost of petrol."
+            },
+            "highlights": [
+              "Tinuod nga bentaha"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "bentaha",
+          "kind": "noun",
+          "base": {
+            "de": "Vorteil",
+            "en": "advantage"
+          },
+          "acceptedAnswers": [
+            "bentaha"
+          ]
+        },
+        {
+          "targetText": "sakyanan",
+          "kind": "noun",
+          "base": {
+            "de": "Auto",
+            "en": "car"
+          },
+          "acceptedAnswers": [
+            "sakyanan"
+          ]
+        },
+        {
+          "targetText": "kagawasan",
+          "kind": "noun",
+          "base": {
+            "de": "Freiheit",
+            "en": "freedom"
+          },
+          "acceptedAnswers": [
+            "kagawasan"
+          ]
+        },
+        {
+          "targetText": "parking",
+          "kind": "noun",
+          "base": {
+            "de": "Parken",
+            "en": "parking"
+          },
+          "acceptedAnswers": [
+            "parking"
+          ]
+        },
+        {
+          "targetText": "gasolina",
+          "kind": "noun",
+          "base": {
+            "de": "Benzin",
+            "en": "petrol"
+          },
+          "acceptedAnswers": [
+            "gasolina"
+          ]
+        },
+        {
+          "targetText": "mekaniko",
+          "kind": "noun",
+          "base": {
+            "de": "Mechaniker, Werkstatt",
+            "en": "mechanic"
+          },
+          "acceptedAnswers": [
+            "mekaniko"
+          ]
+        },
+        {
+          "targetText": "ihapa",
+          "kind": "verb",
+          "base": {
+            "de": "rechne mit",
+            "en": "count"
+          },
+          "acceptedAnswers": [
+            "ihapa"
+          ],
+          "lemma": "ihap"
+        },
+        {
+          "targetText": "adlaw sa trabaho",
+          "kind": "phrase",
+          "base": {
+            "de": "Arbeitstag",
+            "en": "workday"
+          },
+          "acceptedAnswers": [
+            "adlaw sa trabaho"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "bentaha",
+            "kagawasan",
+            "parking"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tinuod",
+            "ihapa",
+            "gasolina"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "maayo",
+            "sakyanan",
+            "weekend"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "bentaha",
+        "familyKey": "bentaha",
+        "surface": "bentaha",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ang bentaha sa jeep mao ang barato nga pliti.",
+          "base": {
+            "de": "Der Vorteil des Jeepneys sind die niedrigen Fahrtkosten.",
+            "en": "The jeepney’s advantage is the low fare."
+          }
+        },
+        "base": {
+          "de": "Vorteil",
+          "en": "advantage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "balay-o-opisina",
+      "title": {
+        "de": "Drei Tage zu Hause",
+        "en": "Three days at home"
+      },
+      "situation": {
+        "de": "Die Teamleitung fragt nach deinem Arbeitsmodell für den kommenden Monat; neben der Arbeit besuchst du an einem festen Wochentag ganztags einen Weiterbildungskurs.",
+        "en": "Your manager asks about your working arrangements for next month; alongside work you attend an all-day training course on one fixed weekday."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Teamleitung fragt nach deinem Arbeitsmodell für den kommenden Monat; neben der Arbeit besuchst du an einem festen Wochentag ganztags einen Weiterbildungskurs. Die andere Person sagt: „Gusto nako mahibaloan kung mopadayon kamo sa pagtrabaho sa balay o mobalik sa opisina sugod sunod bulan.“",
+        "en": "Your manager asks about your working arrangements for next month; alongside work you attend an all-day training course on one fixed weekday. The other person says: “Gusto nako mahibaloan kung mopadayon kamo sa pagtrabaho sa balay o mobalik sa opisina sugod sunod bulan.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Gusto nako mahibaloan kung mopadayon kamo sa pagtrabaho sa balay o mobalik sa opisina sugod sunod bulan.",
+          "base": {
+            "de": "Ich möchte wissen, ob Sie ab nächstem Monat weiter zu Hause arbeiten oder ins Büro zurückkehren.",
+            "en": "I would like to know whether you will keep working from home or return to the office next month."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mas gusto nako ang balay tulo ka adlaw matag semana, kay mas gamay ang akong gasto sa pliti ug mas taas ang oras sa pagtrabaho.",
+          "base": {
+            "de": "Ich bevorzuge drei Tage pro Woche zu Hause, weil meine Fahrtkosten geringer sind und mir mehr Arbeitszeit bleibt.",
+            "en": "I prefer being at home three days a week because I spend less on fares and have more time to work."
+          },
+          "move": "position",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan ang team nagreklamo nga hinay ang tubag ninyo kung naa kamo sa balay. Unsa ang inyong ikasulti niana?",
+          "base": {
+            "de": "Das Team beklagt aber, dass Sie zu Hause langsam antworten. Was sagen Sie dazu?",
+            "en": "But the team complains that you reply slowly when you are at home. What do you say to that?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dili ako ang hinay kondili ang internet sa hapon; sa buntag mas sayo pa ko motubag kaysa sa opisina.",
+          "base": {
+            "de": "Nicht ich bin langsam, sondern nachmittags das Internet. Morgens antworte ich sogar früher als im Büro.",
+            "en": "It is not me who is slow but the internet in the afternoon; in the morning I reply even earlier than at the office."
+          },
+          "move": "clarify",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige, apan kinahanglan nga anaa kamo sa opisina matag Lunes ug Huwebes alang sa miting. Mouyon ba kamo?",
+          "base": {
+            "de": "Gut, aber für die Besprechungen müssen Sie jeden Montag und Donnerstag im Büro sein. Stimmen Sie zu?",
+            "en": "All right, but you need to be in the office every Monday and Thursday for meetings. Do you agree?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mouyon ko sa Lunes, apan palihug ibalhin ang Huwebes ngadto sa Miyerkules, kay naa koy klase sa tibuok Huwebes.",
+          "base": {
+            "de": "Montags bin ich einverstanden, aber verlegen Sie den Donnerstag bitte auf Mittwoch, weil ich donnerstags den ganzen Tag Unterricht habe.",
+            "en": "I agree to Mondays, but please move Thursday to Wednesday because I have classes all day on Thursdays."
+          },
+          "move": "counteroffer",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "Mas gusto nako ang balay tulo ka adlaw matag semana, kay mas gamay ",
+        "chunks": [
+          "ang akong gasto",
+          "sa pliti",
+          "ug mas taas",
+          "ang oras",
+          "sa pagtrabaho."
+        ],
+        "distractors": [
+          "ang akong sweldo",
+          "sa pagkaon."
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang hinay kondili ang internet sa hapon; sa buntag mas sayo pa ko "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kaysa sa opisina."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dili ako",
+            "acceptedAnswers": [
+              "Dili ako"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dili ako",
+              "Dili kamo",
+              "Ako",
+              "Dili ang"
+            ]
+          },
+          {
+            "answer": "motubag",
+            "acceptedAnswers": [
+              "motubag"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "tubag, Aktorfokus mo-, gewohnheitsmäßig",
+              "en": "tubag, actor focus mo-, habitual"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " sa Lunes, apan palihug ibalhin ang Huwebes ngadto sa Miyerkules, kay naa koy klase sa tibuok Huwebes."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mouyon ko",
+            "acceptedAnswers": [
+              "Mouyon ko"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mouyon ko",
+              "Mosupak ko",
+              "Mouyon kamo",
+              "Niuyon ko"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Mas gusto nako ang balay tulo ka adlaw matag semana, kay mas gamay ang akong ",
+        "answer": "gasto",
+        "acceptedAnswers": [
+          "gasto"
+        ],
+        "after": " sa pliti ug mas taas ang oras sa pagtrabaho.",
+        "fallbackChoices": [
+          "gasto",
+          "sweldo",
+          "utang",
+          "ganansiya"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die Ursache genauer benennen",
+          "en": "Identifying the cause more precisely"
+        },
+        "rule": {
+          "de": "Korrigiere mit „Dili X kondili Y“ die falsche Ursache und belege es mit einem Beispiel.",
+          "en": "Correct the wrong cause with “Dili X kondili Y” and back it with an example."
+        },
+        "examples": [
+          {
+            "targetText": "Dili ako ang hinay kondili ang internet sa hapon; sa buntag mas sayo pa ko motubag kaysa sa opisina.",
+            "base": {
+              "de": "Nicht ich bin langsam, sondern nachmittags das Internet. Morgens antworte ich sogar früher als im Büro.",
+              "en": "It is not me who is slow but the internet in the afternoon; in the morning I reply even earlier than at the office."
+            },
+            "highlights": [
+              "Dili ako"
+            ]
+          },
+          {
+            "targetText": "Dili ako ang hinay kondili ang internet sa hapon.",
+            "base": {
+              "de": "Nicht ich bin langsam, sondern das Internet am Nachmittag.",
+              "en": "It is not me who is slow but the internet in the afternoon."
+            },
+            "highlights": [
+              "Dili ako"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "gasto",
+          "kind": "noun",
+          "base": {
+            "de": "Ausgaben",
+            "en": "spending"
+          },
+          "acceptedAnswers": [
+            "gasto"
+          ]
+        },
+        {
+          "targetText": "pliti",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrtkosten",
+            "en": "fare"
+          },
+          "acceptedAnswers": [
+            "pliti"
+          ]
+        },
+        {
+          "targetText": "motubag",
+          "kind": "verb",
+          "base": {
+            "de": "antworten",
+            "en": "reply"
+          },
+          "acceptedAnswers": [
+            "motubag"
+          ],
+          "lemma": "tubag"
+        },
+        {
+          "targetText": "internet",
+          "kind": "noun",
+          "base": {
+            "de": "Internet",
+            "en": "internet"
+          },
+          "acceptedAnswers": [
+            "internet"
+          ]
+        },
+        {
+          "targetText": "buntag",
+          "kind": "noun",
+          "base": {
+            "de": "Morgen",
+            "en": "morning"
+          },
+          "acceptedAnswers": [
+            "buntag"
+          ]
+        },
+        {
+          "targetText": "ibalhin",
+          "kind": "verb",
+          "base": {
+            "de": "verlegen",
+            "en": "move"
+          },
+          "acceptedAnswers": [
+            "ibalhin"
+          ],
+          "lemma": "balhin"
+        },
+        {
+          "targetText": "Miyerkules",
+          "kind": "noun",
+          "base": {
+            "de": "Mittwoch",
+            "en": "Wednesday"
+          },
+          "acceptedAnswers": [
+            "Miyerkules"
+          ]
+        },
+        {
+          "targetText": "tibuok Huwebes",
+          "kind": "phrase",
+          "base": {
+            "de": "den ganzen Donnerstag",
+            "en": "all Thursday"
+          },
+          "acceptedAnswers": [
+            "tibuok Huwebes"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "gamay",
+            "gasto",
+            "pliti"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "hinay",
+            "internet",
+            "motubag"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mouyon",
+            "ibalhin",
+            "miyerkules"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "gasto",
+        "familyKey": "gasto",
+        "surface": "gasto",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Mas gamay ang akong gasto sa pliti kung magtrabaho ko sa balay.",
+          "base": {
+            "de": "Meine Fahrtkosten sind geringer, wenn ich zu Hause arbeite.",
+            "en": "I spend less on fares when I work from home."
+          }
+        },
+        "base": {
+          "de": "Ausgaben",
+          "en": "spending"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "palit-o-abang",
+      "title": {
+        "de": "Die Bohrmaschine mieten",
+        "en": "Renting the drill"
+      },
+      "situation": {
+        "de": "Am Werkzeugverleih vergleichst du Kauf und Miete einer Bohrmaschine für ein zweiwöchiges Projekt.",
+        "en": "At a tool-hire counter, you compare buying and renting a drill for a two-week project."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Verleihpersonal",
+            "en": "rental assistant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Werkzeugverleih vergleichst du Kauf und Miete einer Bohrmaschine für ein zweiwöchiges Projekt. Die andere Person sagt: „Para sa inyong proyekto nga duha ka semana, mahimo ninyong abangan ang drill o paliton. Asa ang gusto ninyo?“",
+        "en": "At a tool-hire counter, you compare buying and renting a drill for a two-week project. The other person says: “Para sa inyong proyekto nga duha ka semana, mahimo ninyong abangan ang drill o paliton. Asa ang gusto ninyo?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Para sa inyong proyekto nga duha ka semana, mahimo ninyong abangan ang drill o paliton. Asa ang gusto ninyo?",
+          "base": {
+            "de": "Für Ihr zweiwöchiges Projekt können Sie die Bohrmaschine mieten oder kaufen. Was möchten Sie?",
+            "en": "For your two-week project, you can rent or buy the drill. Which would you like?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sa akong panglantaw, labaw nga maayo nga abangan lang ang drill, kay duha lang ka semana ang trabaho ug wala koy lugar sa pagbutang niini.",
+          "base": {
+            "de": "Aus meiner Sicht ist Mieten deutlich besser: Die Arbeit dauert nur zwei Wochen, und ich habe keinen Platz, sie aufzubewahren.",
+            "en": "In my view, renting the drill is much better because the work lasts only two weeks and I have nowhere to store it."
+          },
+          "move": "reason",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan kung moabot sa tulo ka semana ang trabaho, mas mahal na ang abang kaysa sa presyo sa bag-o.",
+          "base": {
+            "de": "Wenn die Arbeit aber drei Wochen dauert, ist die Miete schon teurer als eine neue Bohrmaschine.",
+            "en": "But if the work takes three weeks, the rent will cost more than a new one."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tinuod kana, apan mas gusto pa nako nga mobayad og gamay nga dugang kaysa moatiman og gamit nga dili na nako gamiton.",
+          "base": {
+            "de": "Das stimmt, aber ich zahle lieber etwas mehr, als mich um ein Gerät zu kümmern, das ich nicht mehr benutze.",
+            "en": "That is true, but I would rather pay a little extra than look after equipment I will no longer use."
+          },
+          "move": "concede",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sa ato pa, abang. Gusto ba ninyo ang usa ka semana una ug dayon ipadugang kung kinahanglan?",
+          "base": {
+            "de": "Also mieten. Möchten Sie zunächst eine Woche und dann bei Bedarf verlängern?",
+            "en": "So, renting. Would you like one week first and then extend if necessary?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Oo, usa ka semana una, ug motawag ko kung magkinahanglan pa og dugang nga adlaw.",
+          "base": {
+            "de": "Ja, zunächst eine Woche. Ich rufe an, wenn ich weitere Tage brauche.",
+            "en": "Yes, one week first, and I will call if I need more days."
+          },
+          "move": "conclude",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "Sa akong panglantaw, labaw nga maayo ",
+        "chunks": [
+          "nga abangan lang",
+          "ang drill,",
+          "kay duha lang",
+          "ka semana",
+          "ang trabaho"
+        ],
+        "distractors": [
+          "nga paliton lang",
+          "kay tulo lang"
+        ],
+        "frameSuffix": " ug wala koy lugar sa pagbutang niini."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", apan mas gusto pa nako nga "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " og gamay nga dugang kaysa moatiman og gamit nga dili na nako gamiton."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tinuod kana",
+            "acceptedAnswers": [
+              "Tinuod kana"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tinuod kana",
+              "Dili kana tinuod",
+              "Bakak kana",
+              "Tinuod kamo"
+            ]
+          },
+          {
+            "answer": "mobayad",
+            "acceptedAnswers": [
+              "mobayad"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "bayad, Aktorfokus mo-, Zukunft",
+              "en": "bayad, actor focus mo-, future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Oo, usa ka semana una, ug motawag ko "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " pa og dugang nga adlaw."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "kung magkinahanglan",
+            "acceptedAnswers": [
+              "kung magkinahanglan"
+            ],
+            "kind": "frame",
+            "choices": [
+              "kung magkinahanglan",
+              "kung wala",
+              "kung mahuman",
+              "bisan magkinahanglan"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sa akong panglantaw, labaw nga maayo nga ",
+        "answer": "abangan",
+        "acceptedAnswers": [
+          "abangan"
+        ],
+        "after": " lang ang drill, kay duha lang ka semana ang trabaho ug wala koy lugar sa pagbutang niini.",
+        "fallbackChoices": [
+          "abangan",
+          "paliton",
+          "ibaligya",
+          "ipahulam"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Mehrkosten bewusst akzeptieren",
+          "en": "Accepting extra cost deliberately"
+        },
+        "rule": {
+          "de": "Gib mit „Tinuod kana, apan …“ das Risiko zu und begründe mit „mas gusto pa nako“ deine Vorliebe.",
+          "en": "Admit the risk with “Tinuod kana, apan …” and justify your preference with “mas gusto pa nako”."
+        },
+        "examples": [
+          {
+            "targetText": "Tinuod kana, apan mas gusto pa nako nga mobayad og gamay nga dugang kaysa moatiman og gamit nga dili na nako gamiton.",
+            "base": {
+              "de": "Das stimmt, aber ich zahle lieber etwas mehr, als mich um ein Gerät zu kümmern, das ich nicht mehr benutze.",
+              "en": "That is true, but I would rather pay a little extra than look after equipment I will no longer use."
+            },
+            "highlights": [
+              "Tinuod kana"
+            ]
+          },
+          {
+            "targetText": "Tinuod kana, apan mas gusto pa nako nga mag-abang kaysa moatiman og kaugalingong gamit.",
+            "base": {
+              "de": "Das stimmt, aber ich miete lieber, als mich um eigene Geräte zu kümmern.",
+              "en": "That is true, but I would rather rent than look after my own equipment."
+            },
+            "highlights": [
+              "Tinuod kana"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "labaw",
+          "kind": "adverb",
+          "base": {
+            "de": "deutlich mehr",
+            "en": "more, to a greater degree"
+          },
+          "acceptedAnswers": [
+            "labaw"
+          ]
+        },
+        {
+          "targetText": "panglantaw",
+          "kind": "noun",
+          "base": {
+            "de": "Sichtweise",
+            "en": "perspective"
+          },
+          "acceptedAnswers": [
+            "panglantaw"
+          ]
+        },
+        {
+          "targetText": "abangan",
+          "kind": "verb",
+          "base": {
+            "de": "mieten",
+            "en": "rent"
+          },
+          "acceptedAnswers": [
+            "abangan"
+          ],
+          "lemma": "abang"
+        },
+        {
+          "targetText": "drill",
+          "kind": "noun",
+          "base": {
+            "de": "Bohrmaschine",
+            "en": "drill"
+          },
+          "acceptedAnswers": [
+            "drill"
+          ]
+        },
+        {
+          "targetText": "moatiman",
+          "kind": "verb",
+          "base": {
+            "de": "sich kümmern",
+            "en": "look after"
+          },
+          "acceptedAnswers": [
+            "moatiman"
+          ],
+          "lemma": "atiman"
+        },
+        {
+          "targetText": "gamit",
+          "kind": "noun",
+          "base": {
+            "de": "Gerät",
+            "en": "equipment"
+          },
+          "acceptedAnswers": [
+            "gamit"
+          ]
+        },
+        {
+          "targetText": "ipadugang",
+          "kind": "verb",
+          "base": {
+            "de": "verlängern",
+            "en": "extend"
+          },
+          "acceptedAnswers": [
+            "ipadugang"
+          ],
+          "lemma": "dugang"
+        },
+        {
+          "targetText": "motawag",
+          "kind": "verb",
+          "base": {
+            "de": "anrufen",
+            "en": "call"
+          },
+          "acceptedAnswers": [
+            "motawag"
+          ],
+          "lemma": "tawag"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "labaw",
+            "abangan",
+            "drill"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "tinuod",
+            "mobayad",
+            "moatiman"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "semana",
+            "motawag",
+            "magkinahanglan"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "labaw",
+        "familyKey": "labaw",
+        "surface": "labaw",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "Labaw nga maayo nga sulayan una ang drill.",
+          "base": {
+            "de": "Es ist deutlich besser, die Bohrmaschine zuerst auszuprobieren.",
+            "en": "It is much better to try the drill first."
+          }
+        },
+        "base": {
+          "de": "deutlich mehr",
+          "en": "more, to a greater degree"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "duha-ka-bakasyon",
+      "title": {
+        "de": "Siargao oder Bohol?",
+        "en": "Siargao or Bohol?"
+      },
+      "situation": {
+        "de": "Eine befreundete Person in Cebu City schwankt zwischen einem Surfurlaub auf Siargao und einer Familienreise nach Bohol; sie hat beide Anreisen ab Cebu City schon verglichen: nach Bohol eine Vormittagsfähre, nach Siargao ein Flug mit Umstieg und Wartezeit.",
+        "en": "A friend in Cebu City is choosing between a surfing trip to Siargao and a family holiday in Bohol; they have already compared both journeys from Cebu City: a morning ferry to Bohol, a flight with a stopover and waiting time to Siargao."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person in Cebu City schwankt zwischen einem Surfurlaub auf Siargao und einer Familienreise nach Bohol; sie hat beide Anreisen ab Cebu City schon verglichen: nach Bohol eine Vormittagsfähre, nach Siargao ein Flug mit Umstieg und Wartezeit. Die andere Person sagt: „Dili ko makadesisyon: Siargao para sa surf o Bohol para sa pamilya. Tabangi ko.“",
+        "en": "A friend in Cebu City is choosing between a surfing trip to Siargao and a family holiday in Bohol; they have already compared both journeys from Cebu City: a morning ferry to Bohol, a flight with a stopover and waiting time to Siargao. The other person says: “Dili ko makadesisyon: Siargao para sa surf o Bohol para sa pamilya. Tabangi ko.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Dili ko makadesisyon: Siargao para sa surf o Bohol para sa pamilya. Tabangi ko.",
+          "base": {
+            "de": "Ich kann mich nicht entscheiden: Siargao zum Surfen oder Bohol für die Familie. Hilf mir.",
+            "en": "I cannot decide: Siargao for surfing or Bohol for the family. Help me."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Itandi nato ang duha: sa Siargao mas lingaw apan mahal ang pliti, sa Bohol mas barato ug makauban ang tanan.",
+          "base": {
+            "de": "Vergleichen wir beide: Siargao macht mehr Spaß, aber die Anreise ist teuer. Bohol ist günstiger, und alle können mitkommen.",
+            "en": "Let us compare the two: Siargao is more fun but the fare is expensive; Bohol is cheaper and everyone can come along."
+          },
+          "move": "compare",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang akong igsoon dili ganahan og dagat. Dili ba sayang ang Bohol kung dili siya moligo?",
+          "base": {
+            "de": "Eines meiner Geschwister mag aber das Meer nicht. Ist Bohol dann nicht vergeudet, wenn das Schwimmen ausfällt?",
+            "en": "But my sibling does not like the sea. Is Bohol not a waste if they will not swim?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dili sayang, kay sa Bohol naa ang Chocolate Hills ug ang mga tarsier, dili lang dagat ang makita.",
+          "base": {
+            "de": "Nicht vergeudet: Auf Bohol gibt es die Chocolate Hills und die Koboldmakis, nicht nur das Meer ist dort zu sehen.",
+            "en": "It is not a waste: Bohol has the Chocolate Hills and tarsiers, not just the sea to see."
+          },
+          "move": "rebut",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okey. Kung lima lang ka adlaw ang bakasyon, asa gyud ang imong isugyot?",
+          "base": {
+            "de": "Okay. Wenn der Urlaub nur fünf Tage dauert, was empfiehlst du dann wirklich?",
+            "en": "Okay. If the holiday is only five days, which place would you actually recommend?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Bohol, kay gikan sa Cebu mas mubo ang biyahe kaysa sa Siargao, ug mas daghan ang mahimo sa lima ka adlaw.",
+          "base": {
+            "de": "Bohol, weil die Anreise von Cebu kürzer ist als nach Siargao und man in fünf Tagen mehr machen kann.",
+            "en": "Bohol, because the trip from Cebu is shorter than to Siargao and there is more you can do in five days."
+          },
+          "move": "conclude",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Itandi nato",
+          "ang duha:",
+          "sa Siargao mas lingaw",
+          "apan mahal",
+          "ang pliti,"
+        ],
+        "distractors": [
+          "sa Siargao mas mingaw",
+          "apan barato"
+        ],
+        "frameSuffix": " sa Bohol mas barato ug makauban ang tanan."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kay sa Bohol naa ang Chocolate Hills ug ang mga tarsier, dili lang dagat ang "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dili sayang",
+            "acceptedAnswers": [
+              "Dili sayang"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dili sayang",
+              "Sayang",
+              "Dili mahal",
+              "Wala sayang"
+            ]
+          },
+          {
+            "answer": "makita",
+            "acceptedAnswers": [
+              "makita"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "kita, Potential ma- (kurze Form, ohne -an)",
+              "en": "kita, potential ma- (short form, no -an)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Bohol, kay gikan sa Cebu "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang biyahe kaysa sa Siargao, ug mas daghan ang mahimo sa lima ka adlaw."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "mas mubo",
+            "acceptedAnswers": [
+              "mas mubo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "mas mubo",
+              "mas taas",
+              "mas mahal",
+              "mas layo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Itandi nato ang duha: sa Siargao mas ",
+        "answer": "lingaw",
+        "acceptedAnswers": [
+          "lingaw"
+        ],
+        "after": " apan mahal ang pliti, sa Bohol mas barato ug makauban ang tanan.",
+        "fallbackChoices": [
+          "lingaw",
+          "mingaw",
+          "hilom",
+          "hugaw"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine Alternative zur Hauptattraktion nennen",
+          "en": "Offering an alternative attraction"
+        },
+        "rule": {
+          "de": "Weise den Einwand mit „Dili sayang, kay …“ zurück und nenne konkrete Alternativen.",
+          "en": "Reject the objection with “Dili sayang, kay …” and name specific alternatives."
+        },
+        "examples": [
+          {
+            "targetText": "Dili sayang, kay sa Bohol naa ang Chocolate Hills ug ang mga tarsier, dili lang dagat ang makita.",
+            "base": {
+              "de": "Nicht vergeudet: Auf Bohol gibt es die Chocolate Hills und die Koboldmakis, nicht nur das Meer ist dort zu sehen.",
+              "en": "It is not a waste: Bohol has the Chocolate Hills and tarsiers, not just the sea to see."
+            },
+            "highlights": [
+              "Dili sayang"
+            ]
+          },
+          {
+            "targetText": "Dili sayang ang Bohol, kay naa usab ang Chocolate Hills.",
+            "base": {
+              "de": "Bohol ist keine verlorene Reise, denn dort gibt es auch die Chocolate Hills.",
+              "en": "Bohol is not a wasted trip because it also has the Chocolate Hills."
+            },
+            "highlights": [
+              "Dili sayang"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Itandi",
+          "kind": "verb",
+          "base": {
+            "de": "vergleichen wir",
+            "en": "let us compare"
+          },
+          "acceptedAnswers": [
+            "Itandi"
+          ],
+          "lemma": "tandi"
+        },
+        {
+          "targetText": "lingaw",
+          "kind": "adjective",
+          "base": {
+            "de": "unterhaltsam",
+            "en": "fun"
+          },
+          "acceptedAnswers": [
+            "lingaw"
+          ]
+        },
+        {
+          "targetText": "pliti",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrtkosten",
+            "en": "fare"
+          },
+          "acceptedAnswers": [
+            "pliti"
+          ]
+        },
+        {
+          "targetText": "makauban",
+          "kind": "verb",
+          "base": {
+            "de": "mitkommen können",
+            "en": "be able to join"
+          },
+          "acceptedAnswers": [
+            "makauban"
+          ],
+          "lemma": "uban"
+        },
+        {
+          "targetText": "igsoon",
+          "kind": "noun",
+          "base": {
+            "de": "Geschwister",
+            "en": "sibling"
+          },
+          "acceptedAnswers": [
+            "igsoon"
+          ]
+        },
+        {
+          "targetText": "tarsier",
+          "kind": "noun",
+          "base": {
+            "de": "Koboldmaki",
+            "en": "tarsier"
+          },
+          "acceptedAnswers": [
+            "tarsier"
+          ]
+        },
+        {
+          "targetText": "makita",
+          "kind": "verb",
+          "base": {
+            "de": "sehen können",
+            "en": "be able to see"
+          },
+          "acceptedAnswers": [
+            "makita"
+          ],
+          "lemma": "kita"
+        },
+        {
+          "targetText": "biyahe",
+          "kind": "noun",
+          "base": {
+            "de": "Reise",
+            "en": "journey"
+          },
+          "acceptedAnswers": [
+            "biyahe"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "itandi",
+            "lingaw",
+            "mahal"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "sayang",
+            "tarsier",
+            "makita"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "bohol",
+            "mubo",
+            "mahimo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "itandi",
+        "familyKey": "tandi",
+        "surface": "itandi",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Itandi nato ang pliti ug ang oras sa biyahe.",
+          "base": {
+            "de": "Vergleichen wir Fahrtkosten und Reisezeit.",
+            "en": "Let us compare the fare and journey time."
+          }
+        },
+        "base": {
+          "de": "vergleichen",
+          "en": "compare"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "kuwarta-o-app",
+      "title": {
+        "de": "Barzahlung und App",
+        "en": "Cash and app payments"
+      },
+      "situation": {
+        "de": "Die Person, der dein kleiner Stammladen gehört, fragt dich nach Zahlungen per App.",
+        "en": "The owner of your small local shop asks what you think about app payments."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Ladeninhaber oder Ladeninhaberin",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Person, der dein kleiner Stammladen gehört, fragt dich nach Zahlungen per App. Die andere Person sagt: „Nagduhaduha ko kung modawat og bayad pinaagi sa app. Kamo nga kostumer, unsa ang mas angay sa among tindahan?“",
+        "en": "The owner of your small local shop asks what you think about app payments. The other person says: “Nagduhaduha ko kung modawat og bayad pinaagi sa app. Kamo nga kostumer, unsa ang mas angay sa among tindahan?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nagduhaduha ko kung modawat og bayad pinaagi sa app. Kamo nga kostumer, unsa ang mas angay sa among tindahan?",
+          "base": {
+            "de": "Ich bin unsicher, ob ich Zahlungen per App annehmen soll. Was passt aus Ihrer Kundensicht besser zu unserem Laden?",
+            "en": "I am unsure whether to accept payments through an app. As a customer, what do you think suits our shop better?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Para sa gamay nga tindahan sama sa inyoha, haom ang duha: cash alang sa mga naandan niini, ug app alang sa mga nangutana na niana.",
+          "base": {
+            "de": "Für einen kleinen Laden wie Ihren passt beides: Bargeld für diejenigen, die es gewohnt sind, und die App für diejenigen, die schon danach gefragt haben.",
+            "en": "For a small shop like yours, both fit: cash for those used to it and the app for those who have already asked about it."
+          },
+          "move": "position",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan ang app mokuha og duha ka porsyento sa matag bayad. Dili ba kana puro gasto para nako?",
+          "base": {
+            "de": "Die App nimmt aber zwei Prozent von jeder Zahlung. Ist das für mich nicht bloß eine Ausgabe?",
+            "en": "But the app takes two percent of every payment. Is that not just a cost to me?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Duha ka porsyento ang gasto, apan tingali mas daghan ang mopalit kung dili na sila mangita og sukli; sulayan lang una.",
+          "base": {
+            "de": "Zwei Prozent kostet es, aber vielleicht kaufen mehr Leute, wenn sie nicht mehr nach Wechselgeld suchen müssen. Probieren Sie es zunächst aus.",
+            "en": "The cost is two percent, but perhaps more people will buy if they no longer need to look for change; try it first."
+          },
+          "move": "concede",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Kung sulayan nako ang app sa usa ka bulan, unsa ang angay nakong bantayan?",
+          "base": {
+            "de": "Gut. Wenn ich die App einen Monat ausprobiere, worauf sollte ich achten?",
+            "en": "All right. If I try the app for a month, what should I watch?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Bantayi kung pila ang nagbayad pinaagi sa app ug kung mas dako ba ang ilang palit kaysa sa cash.",
+          "base": {
+            "de": "Achten Sie darauf, wie viele per App bezahlen und ob sie mehr kaufen als die Barzahler.",
+            "en": "Watch how many pay through the app and whether their purchases are larger than cash purchases."
+          },
+          "move": "propose",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "Para ",
+        "chunks": [
+          "sa gamay",
+          "nga tindahan",
+          "sama sa inyoha,",
+          "haom",
+          "ang duha:"
+        ],
+        "distractors": [
+          "nga opisina",
+          "dili haom"
+        ],
+        "frameSuffix": " cash alang sa mga naandan niini, ug app alang sa mga nangutana na niana."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang gasto, apan tingali mas daghan ang "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " kung dili na sila mangita og sukli; sulayan lang una."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Duha ka porsyento",
+            "acceptedAnswers": [
+              "Duha ka porsyento"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Duha ka porsyento",
+              "Duha ka piso",
+              "Lima ka porsyento",
+              "Duha ka libo"
+            ]
+          },
+          {
+            "answer": "mopalit",
+            "acceptedAnswers": [
+              "mopalit"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "palit, Aktorfokus mo-, Zukunft",
+              "en": "palit, actor focus mo-, future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang nagbayad pinaagi sa app ug kung mas dako ba ang ilang palit kaysa sa cash."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Bantayi kung pila",
+            "acceptedAnswers": [
+              "Bantayi kung pila"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Bantayi kung pila",
+              "Ibalhin kung pila",
+              "Ihapa kung asa",
+              "Bantayi kung asa"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Para sa gamay nga tindahan sama sa inyoha, ",
+        "answer": "haom",
+        "acceptedAnswers": [
+          "haom"
+        ],
+        "after": " ang duha: cash alang sa mga naandan niini, ug app alang sa mga nangutana na niana.",
+        "fallbackChoices": [
+          "haom",
+          "hugaw",
+          "bugnaw",
+          "hilom"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Eine Gebühr mit möglichem Nutzen abwägen",
+          "en": "Weighing a fee against possible benefit"
+        },
+        "rule": {
+          "de": "Nenne die Gebühr zuerst als Tatsache, stelle mit „apan tingali“ den möglichen Nutzen dagegen und schlage einen Versuch vor.",
+          "en": "State the fee first as a fact, set the possible benefit against it with “apan tingali”, and propose a trial."
+        },
+        "examples": [
+          {
+            "targetText": "Duha ka porsyento ang gasto, apan tingali mas daghan ang mopalit kung dili na sila mangita og sukli; sulayan lang una.",
+            "base": {
+              "de": "Zwei Prozent kostet es, aber vielleicht kaufen mehr Leute, wenn sie nicht mehr nach Wechselgeld suchen müssen. Probieren Sie es zunächst aus.",
+              "en": "The cost is two percent, but perhaps more people will buy if they no longer need to look for change; try it first."
+            },
+            "highlights": [
+              "Duha ka porsyento"
+            ]
+          },
+          {
+            "targetText": "Duha ka porsyento ang gasto, apan sulayan lang una ang app sa usa ka bulan.",
+            "base": {
+              "de": "Die Gebühr beträgt zwei Prozent, aber probieren Sie die App zunächst einen Monat aus.",
+              "en": "The fee is two percent, but try the app for one month first."
+            },
+            "highlights": [
+              "Duha ka porsyento"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "haom",
+          "kind": "adjective",
+          "base": {
+            "de": "passend",
+            "en": "suitable"
+          },
+          "acceptedAnswers": [
+            "haom"
+          ]
+        },
+        {
+          "targetText": "tindahan",
+          "kind": "noun",
+          "base": {
+            "de": "Laden",
+            "en": "shop"
+          },
+          "acceptedAnswers": [
+            "tindahan"
+          ]
+        },
+        {
+          "targetText": "cash",
+          "kind": "noun",
+          "base": {
+            "de": "Bargeld",
+            "en": "cash"
+          },
+          "acceptedAnswers": [
+            "cash"
+          ]
+        },
+        {
+          "targetText": "porsyento",
+          "kind": "noun",
+          "base": {
+            "de": "Prozent",
+            "en": "percent"
+          },
+          "acceptedAnswers": [
+            "porsyento"
+          ]
+        },
+        {
+          "targetText": "sukli",
+          "kind": "noun",
+          "base": {
+            "de": "Wechselgeld",
+            "en": "change"
+          },
+          "acceptedAnswers": [
+            "sukli"
+          ]
+        },
+        {
+          "targetText": "sulayan",
+          "kind": "verb",
+          "base": {
+            "de": "ausprobieren",
+            "en": "try"
+          },
+          "acceptedAnswers": [
+            "sulayan"
+          ],
+          "lemma": "sulay"
+        },
+        {
+          "targetText": "Bantayi",
+          "kind": "verb",
+          "base": {
+            "de": "achten Sie darauf",
+            "en": "monitor"
+          },
+          "acceptedAnswers": [
+            "Bantayi"
+          ],
+          "lemma": "bantay"
+        },
+        {
+          "targetText": "pinaagi sa app",
+          "kind": "phrase",
+          "base": {
+            "de": "über die App",
+            "en": "through the app"
+          },
+          "acceptedAnswers": [
+            "pinaagi sa app"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "tindahan",
+            "haom",
+            "nangutana"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "porsyento",
+            "mopalit",
+            "sukli"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "bantayi",
+            "nagbayad",
+            "palit"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "haom",
+        "familyKey": "haom",
+        "surface": "haom",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Haom ang duha alang sa gamay nga tindahan.",
+          "base": {
+            "de": "Beides passt zu einem kleinen Laden.",
+            "en": "Both are suitable for a small shop."
+          }
+        },
+        "base": {
+          "de": "passend",
+          "en": "suitable"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "klase-o-app",
+      "title": {
+        "de": "Vom App-Lernen zum Gespräch",
+        "en": "From app study to conversation"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt, ob zusätzlich zur Lern-App ein Cebuano-Kurs sinnvoll wäre.",
+        "en": "A friend asks whether a Cebuano class would be worthwhile alongside a learning app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt, ob zusätzlich zur Lern-App ein Cebuano-Kurs sinnvoll wäre. Die andere Person sagt: „Nagtuon ko og Cebuano sa app, apan gusto sa akong uyab nga moeskwela ko sa klase. Sakto ba kana?“",
+        "en": "A friend asks whether a Cebuano class would be worthwhile alongside a learning app. The other person says: “Nagtuon ko og Cebuano sa app, apan gusto sa akong uyab nga moeskwela ko sa klase. Sakto ba kana?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nagtuon ko og Cebuano sa app, apan gusto sa akong uyab nga moeskwela ko sa klase. Sakto ba kana?",
+          "base": {
+            "de": "Ich lerne Cebuano mit einer App, aber die Person, mit der ich zusammen bin, möchte, dass ich einen Kurs besuche. Ist das richtig?",
+            "en": "I am learning Cebuano on an app, but my partner wants me to take a class. Is that right?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Takos ang klase kung gusto ka mosulti og tarong, kay naa kay tawo nga motubag dayon; sa akong app mga pulong lang ang akong nakat-onan.",
+          "base": {
+            "de": "Ein Kurs lohnt sich, wenn du richtig sprechen möchtest, weil jemand direkt antwortet. Mit meiner App habe ich nur Wörter gelernt.",
+            "en": "A class is worthwhile if you want to speak properly because someone can answer straight away; on my app I only learned words."
+          },
+          "move": "reason",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero mahal ang klase, duha ka libo matag bulan, ug wala koy oras sa gabii.",
+          "base": {
+            "de": "Der Kurs ist aber teuer, zweitausend im Monat, und abends habe ich keine Zeit.",
+            "en": "But the class is expensive, two thousand a month, and I have no time in the evening."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Kung mahal, pangitaa ang mas barato nga klase sa grupo kausa sa semana, sa Sabado sa buntag, ug gamita ang app sa ubang adlaw.",
+          "base": {
+            "de": "Wenn er teuer ist, such einen günstigeren Gruppenkurs einmal pro Woche am Samstagmorgen und nutze die App an den anderen Tagen.",
+            "en": "If it is expensive, find a cheaper group class once a week on Saturday morning and use the app on the other days."
+          },
+          "move": "counteroffer",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Unsa kaha kung tulo lang ka bulan ang klase? Takos pa ba kana?",
+          "base": {
+            "de": "Wie wäre es, wenn der Kurs nur drei Monate dauert? Lohnt sich das noch?",
+            "en": "What if the class lasts only three months? Is it still worthwhile?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Para nako takos gihapon, kay sa tulo ka bulan mas daghan ka makaistorya kaysa sa app lang.",
+          "base": {
+            "de": "Für mich lohnt es sich trotzdem, weil du in drei Monaten mit mehr Menschen sprechen kannst als nur mit der App.",
+            "en": "For me it is still worthwhile because in three months you can talk to more people than with the app alone."
+          },
+          "move": "conclude",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Takos",
+          "ang klase",
+          "kung gusto ka",
+          "mosulti",
+          "og tarong,"
+        ],
+        "distractors": [
+          "Dili takos",
+          "og hinay,"
+        ],
+        "frameSuffix": " kay naa kay tawo nga motubag dayon; sa akong app mga pulong lang ang akong nakat-onan."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ang mas barato nga klase sa grupo kausa sa semana, sa Sabado sa buntag, ug gamita ang app sa ubang adlaw."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Kung mahal",
+            "acceptedAnswers": [
+              "Kung mahal"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Kung mahal",
+              "Kung barato",
+              "Kung layo",
+              "Kung sayon"
+            ]
+          },
+          {
+            "answer": "pangitaa",
+            "acceptedAnswers": [
+              "pangitaa"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "pangita, Imperativ -a",
+              "en": "pangita, imperative -a"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Para nako "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kay sa tulo ka bulan mas daghan ka makaistorya kaysa sa app lang."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "takos gihapon",
+            "acceptedAnswers": [
+              "takos gihapon"
+            ],
+            "kind": "frame",
+            "choices": [
+              "takos gihapon",
+              "dili takos",
+              "mahal gihapon",
+              "sayang gihapon"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Takos ang klase kung gusto ka ",
+        "answer": "mosulti",
+        "acceptedAnswers": [
+          "mosulti"
+        ],
+        "after": " og tarong, kay naa kay tawo nga motubag dayon; sa akong app mga pulong lang ang akong nakat-onan.",
+        "fallbackChoices": [
+          "mosulti",
+          "mosulat",
+          "maminaw",
+          "mobasa"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine günstigere Lernform anbieten",
+          "en": "Offering a cheaper way to learn"
+        },
+        "rule": {
+          "de": "Öffne mit „Kung mahal, …“ und antworte mit pangitaa und gamita als Anweisung.",
+          "en": "Open with “Kung mahal, …” and answer with pangitaa and gamita as instructions."
+        },
+        "examples": [
+          {
+            "targetText": "Kung mahal, pangitaa ang mas barato nga klase sa grupo kausa sa semana, sa Sabado sa buntag, ug gamita ang app sa ubang adlaw.",
+            "base": {
+              "de": "Wenn er teuer ist, such einen günstigeren Gruppenkurs einmal pro Woche am Samstagmorgen und nutze die App an den anderen Tagen.",
+              "en": "If it is expensive, find a cheaper group class once a week on Saturday morning and use the app on the other days."
+            },
+            "highlights": [
+              "Kung mahal"
+            ]
+          },
+          {
+            "targetText": "Kung mahal ang klase, pangitaa ang mas barato nga grupo.",
+            "base": {
+              "de": "Wenn der Kurs teuer ist, such eine günstigere Gruppe.",
+              "en": "If the class is expensive, look for a cheaper group."
+            },
+            "highlights": [
+              "Kung mahal"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "takos",
+          "kind": "adjective",
+          "base": {
+            "de": "lohnend",
+            "en": "worthwhile"
+          },
+          "acceptedAnswers": [
+            "takos"
+          ]
+        },
+        {
+          "targetText": "klase",
+          "kind": "noun",
+          "base": {
+            "de": "Kurs",
+            "en": "class"
+          },
+          "acceptedAnswers": [
+            "klase"
+          ]
+        },
+        {
+          "targetText": "mosulti",
+          "kind": "verb",
+          "base": {
+            "de": "sprechen",
+            "en": "speak"
+          },
+          "acceptedAnswers": [
+            "mosulti"
+          ],
+          "lemma": "sulti"
+        },
+        {
+          "targetText": "motubag",
+          "kind": "verb",
+          "base": {
+            "de": "antworten",
+            "en": "reply"
+          },
+          "acceptedAnswers": [
+            "motubag"
+          ],
+          "lemma": "tubag"
+        },
+        {
+          "targetText": "grupo",
+          "kind": "noun",
+          "base": {
+            "de": "Gruppe",
+            "en": "group"
+          },
+          "acceptedAnswers": [
+            "grupo"
+          ]
+        },
+        {
+          "targetText": "pangitaa",
+          "kind": "verb",
+          "base": {
+            "de": "such",
+            "en": "find"
+          },
+          "acceptedAnswers": [
+            "pangitaa"
+          ],
+          "lemma": "pangita"
+        },
+        {
+          "targetText": "gamita",
+          "kind": "verb",
+          "base": {
+            "de": "nutze",
+            "en": "use"
+          },
+          "acceptedAnswers": [
+            "gamita"
+          ],
+          "lemma": "gamit"
+        },
+        {
+          "targetText": "makaistorya",
+          "kind": "verb",
+          "base": {
+            "de": "mit jemandem sprechen können",
+            "en": "be able to converse"
+          },
+          "acceptedAnswers": [
+            "makaistorya"
+          ],
+          "lemma": "istorya"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "takos",
+            "klase",
+            "mosulti"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "pangitaa",
+            "barato",
+            "grupo"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "takos",
+            "bulan",
+            "makaistorya"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "takos",
+        "familyKey": "takos",
+        "surface": "takos",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Takos ang klase kung adunay higayon nga makaistorya.",
+          "base": {
+            "de": "Der Kurs lohnt sich, wenn es Gelegenheit zum Gespräch gibt.",
+            "en": "The class is worthwhile if there is an opportunity to converse."
+          }
+        },
+        "base": {
+          "de": "lohnend",
+          "en": "worthwhile"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "duha-ka-trabaho",
+      "title": {
+        "de": "Gehalt oder Sicherheit?",
+        "en": "Salary or security?"
+      },
+      "situation": {
+        "de": "Mit einer Mentorin oder einem Mentor vergleichst du ein befristetes und ein unbefristetes Stellenangebot.",
+        "en": "You compare a contract job and a permanent offer with a mentor."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mentorin oder Mentor",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Mit einer Mentorin oder einem Mentor vergleichst du ein befristetes und ein unbefristetes Stellenangebot. Die andere Person sagt: „Duha ang offer: dako ang sweldo apan kontrata lang ang usa, gamay apan permanente ang usa. Unsa ang inyong gitan-aw?“",
+        "en": "You compare a contract job and a permanent offer with a mentor. The other person says: “Duha ang offer: dako ang sweldo apan kontrata lang ang usa, gamay apan permanente ang usa. Unsa ang inyong gitan-aw?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Duha ang offer: dako ang sweldo apan kontrata lang ang usa, gamay apan permanente ang usa. Unsa ang inyong gitan-aw?",
+          "base": {
+            "de": "Es gibt zwei Angebote: eines mit hohem Gehalt, aber nur befristet, das andere niedriger bezahlt, aber dauerhaft. Worauf achten Sie?",
+            "en": "There are two offers: one pays well but is only a contract, the other pays less but is permanent. What are you considering?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mas mapuslanon alang nako ang permanente, kay bisan gamay ang sweldo, sa ilang offer naa ang seguro ug ang pagtuon nga bayran sa kompanya.",
+          "base": {
+            "de": "Für mich ist die feste Stelle nützlicher: Auch wenn das Gehalt niedrig ist, enthält ihr Angebot Versicherung und eine von der Firma bezahlte Weiterbildung.",
+            "en": "The permanent position is more useful to me because, despite the low salary, their offer includes insurance and study paid for by the company."
+          },
+          "move": "compare",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan sa kontrata makatigom kamo og dako sulod sa usa ka tuig. Dili ba mas mapuslanon kana sa inyong edad?",
+          "base": {
+            "de": "Mit dem Vertrag könnten Sie in einem Jahr aber viel sparen. Ist das in Ihrem Alter nicht nützlicher?",
+            "en": "But on the contract you could save a lot in a year. Is that not more useful at your age?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tinuod nga makatigom ko, apan kung dili ipadugay ang kontrata, human sa usa ka tuig mobalik ko sa pagpangita og trabaho.",
+          "base": {
+            "de": "Es stimmt, dass ich sparen kann. Wird der Vertrag aber nicht verlängert, suche ich nach einem Jahr wieder Arbeit.",
+            "en": "It is true that I can save, but if the contract is not extended, after a year I will be looking for work again."
+          },
+          "move": "concede",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sa ato pa, kung ang kompanya nga permanente mohatag og dugang nga lima ka porsyento, modawat ba kamo?",
+          "base": {
+            "de": "Wenn das Unternehmen mit der festen Stelle also fünf Prozent mehr bietet, nehmen Sie an?",
+            "en": "So, if the company offering the permanent job adds five percent, will you accept?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Modawat ko, kay mas mapuslanon ang kasiguroan karon kaysa sa dako nga sweldo nga mahuman sa usa ka tuig.",
+          "base": {
+            "de": "Ich nehme an, weil Sicherheit jetzt nützlicher ist als ein hohes Gehalt, das nach einem Jahr endet.",
+            "en": "I will accept because security now is more useful than a high salary that ends after a year."
+          },
+          "move": "conclude",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Mas mapuslanon",
+          "alang nako",
+          "ang permanente,",
+          "kay bisan gamay",
+          "ang sweldo,"
+        ],
+        "distractors": [
+          "ang kontrata,",
+          "kay bisan dako"
+        ],
+        "frameSuffix": " sa ilang offer naa ang seguro ug ang pagtuon nga bayran sa kompanya."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ko, apan kung dili ipadugay ang kontrata, human sa usa ka tuig "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ko sa pagpangita og trabaho."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Tinuod nga makatigom",
+            "acceptedAnswers": [
+              "Tinuod nga makatigom"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Tinuod nga makatigom",
+              "Dili makatigom",
+              "Tinuod nga mogasto",
+              "Bakak nga makatigom"
+            ]
+          },
+          {
+            "answer": "mobalik",
+            "acceptedAnswers": [
+              "mobalik"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "balik, Aktorfokus mo-, Zukunft",
+              "en": "balik, actor focus mo-, future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", kay mas mapuslanon ang kasiguroan karon kaysa sa dako nga sweldo nga mahuman sa usa ka tuig."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Modawat ko",
+            "acceptedAnswers": [
+              "Modawat ko"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Modawat ko",
+              "Mobalibad ko",
+              "Modawat kamo",
+              "Nidawat ko"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Mas ",
+        "answer": "mapuslanon",
+        "acceptedAnswers": [
+          "mapuslanon"
+        ],
+        "after": " alang nako ang permanente, kay bisan gamay ang sweldo, sa ilang offer naa ang seguro ug ang pagtuon nga bayran sa kompanya.",
+        "fallbackChoices": [
+          "mapuslanon",
+          "delikado",
+          "makapakapoy",
+          "makapaguol"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen kurzfristigen Gewinn begrenzen",
+          "en": "Putting a short-term gain in context"
+        },
+        "rule": {
+          "de": "Räume mit „Tinuod nga …“ den Vorteil ein und zeige mit „apan kung …“ das Risiko danach.",
+          "en": "Concede the benefit with “Tinuod nga …” and show the later risk with “apan kung …”."
+        },
+        "examples": [
+          {
+            "targetText": "Tinuod nga makatigom ko, apan kung dili ipadugay ang kontrata, human sa usa ka tuig mobalik ko sa pagpangita og trabaho.",
+            "base": {
+              "de": "Es stimmt, dass ich sparen kann. Wird der Vertrag aber nicht verlängert, suche ich nach einem Jahr wieder Arbeit.",
+              "en": "It is true that I can save, but if the contract is not extended, after a year I will be looking for work again."
+            },
+            "highlights": [
+              "Tinuod nga makatigom"
+            ]
+          },
+          {
+            "targetText": "Tinuod nga makatigom ko, apan ang kontrata mahuman sa usa ka tuig.",
+            "base": {
+              "de": "Es stimmt, dass ich sparen kann, aber der Vertrag endet nach einem Jahr.",
+              "en": "It is true that I can save, but the contract ends after one year."
+            },
+            "highlights": [
+              "Tinuod nga makatigom"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "mapuslanon",
+          "kind": "adjective",
+          "base": {
+            "de": "nützlich, vorteilhaft",
+            "en": "useful, beneficial"
+          },
+          "acceptedAnswers": [
+            "mapuslanon"
+          ]
+        },
+        {
+          "targetText": "permanente",
+          "kind": "adjective",
+          "base": {
+            "de": "dauerhaft",
+            "en": "permanent"
+          },
+          "acceptedAnswers": [
+            "permanente"
+          ]
+        },
+        {
+          "targetText": "sweldo",
+          "kind": "noun",
+          "base": {
+            "de": "Gehalt",
+            "en": "salary"
+          },
+          "acceptedAnswers": [
+            "sweldo"
+          ]
+        },
+        {
+          "targetText": "seguro",
+          "kind": "noun",
+          "base": {
+            "de": "Versicherung",
+            "en": "insurance"
+          },
+          "acceptedAnswers": [
+            "seguro"
+          ]
+        },
+        {
+          "targetText": "pagtuon",
+          "kind": "noun",
+          "base": {
+            "de": "Lernen, Weiterbildung",
+            "en": "study"
+          },
+          "acceptedAnswers": [
+            "pagtuon"
+          ]
+        },
+        {
+          "targetText": "kompanya",
+          "kind": "noun",
+          "base": {
+            "de": "Firma",
+            "en": "company"
+          },
+          "acceptedAnswers": [
+            "kompanya"
+          ]
+        },
+        {
+          "targetText": "kontrata",
+          "kind": "noun",
+          "base": {
+            "de": "Vertrag",
+            "en": "contract"
+          },
+          "acceptedAnswers": [
+            "kontrata"
+          ]
+        },
+        {
+          "targetText": "kasiguroan",
+          "kind": "noun",
+          "base": {
+            "de": "Sicherheit",
+            "en": "security"
+          },
+          "acceptedAnswers": [
+            "kasiguroan"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "mapuslanon",
+            "permanente",
+            "seguro"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "makatigom",
+            "kontrata",
+            "trabaho"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "modawat",
+            "kasiguroan",
+            "sweldo"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "mapuslanon",
+        "familyKey": "pulos",
+        "surface": "mapuslanon",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Mapuslanon alang nako ang seguro nga apil sa offer.",
+          "base": {
+            "de": "Die im Angebot enthaltene Versicherung ist für mich nützlich.",
+            "en": "The insurance included in the offer is useful to me."
+          }
+        },
+        "base": {
+          "de": "nützlich, vorteilhaft",
+          "en": "useful, beneficial"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "balhin-o-magpabilin",
+      "title": {
+        "de": "Umziehen oder bleiben?",
+        "en": "Move or stay?"
+      },
+      "situation": {
+        "de": "Eine Person aus der Nachbarschaft fragt dich nach dem Stellenangebot in Davao.",
+        "en": "A neighbour asks about your job offer in Davao."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "casual",
+          "casual",
+          "casual"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus der Nachbarschaft fragt dich nach dem Stellenangebot in Davao. Die andere Person sagt: „Nabalitaan ko nga gitanyagan ka og trabaho sa Davao. Mobalhin ka ba o magpabilin dinhi?“",
+        "en": "A neighbour asks about your job offer in Davao. The other person says: “Nabalitaan ko nga gitanyagan ka og trabaho sa Davao. Mobalhin ka ba o magpabilin dinhi?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Nabalitaan ko nga gitanyagan ka og trabaho sa Davao. Mobalhin ka ba o magpabilin dinhi?",
+          "base": {
+            "de": "Ich habe gehört, dir wurde eine Stelle in Davao angeboten. Ziehst du um oder bleibst du hier?",
+            "en": "I heard you were offered a job in Davao. Will you move or stay here?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Magsalig una ko sa akong igsoon nga naa na sa Davao; kung makauban ko ang akong inahan ug mas barato ang abang didto, mobalhin ko.",
+          "base": {
+            "de": "Zuerst verlasse ich mich auf meinen Bruder oder meine Schwester, die schon in Davao leben. Wenn meine Mutter mitkommen kann und die Miete dort günstiger ist, ziehe ich um.",
+            "en": "At first I will rely on my sibling who is already in Davao; if my mother can come along and the rent there is cheaper, I will move."
+          },
+          "move": "reason",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Pero ang imong mga amigo ug ang imong barangay naa dinhi. Dili ba mas bug-at kana kaysa sa abang?",
+          "base": {
+            "de": "Deine Freunde und dein Viertel sind aber hier. Wiegt das nicht schwerer als die Miete?",
+            "en": "But your friends and your neighbourhood are here. Does that not weigh more than the rent?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Bug-at gyud kana, apan ang mga amigo matawagan ug mabisita kung bakasyon; ang sweldo ug ang abang matag adlaw ang akong atubangon.",
+          "base": {
+            "de": "Das wiegt wirklich schwer, aber Freunde kann ich anrufen und im Urlaub besuchen. Mit Gehalt und Miete muss ich mich jeden Tag befassen.",
+            "en": "That does weigh heavily, but friends can be called and visited on holiday; salary and rent are what I have to face every day."
+          },
+          "move": "concede",
+          "register": "casual"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Kung dili ka mobalhin, unsa man ang imong buhaton aron mosaka ang imong kita dinhi?",
+          "base": {
+            "de": "Gut. Wenn du nicht umziehst, was wirst du tun, damit dein Einkommen hier steigt?",
+            "en": "All right. If you do not move, what will you do to raise your income here?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mangita ko og dugang nga trabaho online ug maghulat og usa ka tuig una modesisyon.",
+          "base": {
+            "de": "Ich suche mir zusätzliche Arbeit online und warte ein Jahr, bevor ich entscheide.",
+            "en": "I will look for additional work online and wait a year before deciding."
+          },
+          "move": "propose",
+          "register": "casual"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Magsalig una ko",
+          "sa akong",
+          "igsoon",
+          "nga naa na",
+          "sa Davao;"
+        ],
+        "distractors": [
+          "sa imong",
+          "nga mobiya na"
+        ],
+        "frameSuffix": " kung makauban ko ang akong inahan ug mas barato ang abang didto, mobalhin ko."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Bug-at gyud kana, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang mga amigo matawagan ug mabisita kung bakasyon; ang sweldo ug ang abang matag adlaw ang akong "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "apan",
+            "acceptedAnswers": [
+              "apan"
+            ],
+            "kind": "connector",
+            "choices": [
+              "apan",
+              "kay",
+              "busa",
+              "aron"
+            ]
+          },
+          {
+            "answer": "atubangon",
+            "acceptedAnswers": [
+              "atubangon"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "atubang, Objektfokus -on",
+              "en": "atubang, object focus -on"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " og dugang nga trabaho online ug maghulat og usa ka tuig una modesisyon."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mangita ko",
+            "acceptedAnswers": [
+              "Mangita ko"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mangita ko",
+              "Mobalhin ko",
+              "Nangita ko",
+              "Mangita kamo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Magsalig una ko sa akong ",
+        "answer": "igsoon",
+        "acceptedAnswers": [
+          "igsoon"
+        ],
+        "after": " nga naa na sa Davao; kung makauban ko ang akong inahan ug mas barato ang abang didto, mobalhin ko.",
+        "fallbackChoices": [
+          "igsoon",
+          "silingan",
+          "inahan",
+          "maestro"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Bindungen anerkennen und gewichten",
+          "en": "Acknowledging and weighing ties"
+        },
+        "rule": {
+          "de": "Erkenne mit „… gyud kana“ das Gewicht an und stelle mit „apan“ die täglichen Bedingungen dagegen.",
+          "en": "Acknowledge the weight with “… gyud kana” and set the everyday conditions against it with “apan”."
+        },
+        "examples": [
+          {
+            "targetText": "Bug-at gyud kana, apan ang mga amigo matawagan ug mabisita kung bakasyon; ang sweldo ug ang abang matag adlaw ang akong atubangon.",
+            "base": {
+              "de": "Das wiegt wirklich schwer, aber Freunde kann ich anrufen und im Urlaub besuchen. Mit Gehalt und Miete muss ich mich jeden Tag befassen.",
+              "en": "That does weigh heavily, but friends can be called and visited on holiday; salary and rent are what I have to face every day."
+            },
+            "highlights": [
+              "apan"
+            ]
+          },
+          {
+            "targetText": "Bug-at ang pagbiya sa mga amigo, apan matawagan sila matag semana.",
+            "base": {
+              "de": "Freunde zurückzulassen fällt schwer, aber man kann sie jede Woche anrufen.",
+              "en": "Leaving friends behind is hard, but they can be called each week."
+            },
+            "highlights": [
+              "apan"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Magsalig",
+          "kind": "verb",
+          "base": {
+            "de": "sich verlassen auf",
+            "en": "rely on"
+          },
+          "acceptedAnswers": [
+            "Magsalig"
+          ],
+          "lemma": "salig"
+        },
+        {
+          "targetText": "abang",
+          "kind": "noun",
+          "base": {
+            "de": "Miete",
+            "en": "rent"
+          },
+          "acceptedAnswers": [
+            "abang"
+          ]
+        },
+        {
+          "targetText": "igsoon",
+          "kind": "noun",
+          "base": {
+            "de": "Bruder oder Schwester",
+            "en": "sibling"
+          },
+          "acceptedAnswers": [
+            "igsoon"
+          ]
+        },
+        {
+          "targetText": "matawagan",
+          "kind": "verb",
+          "base": {
+            "de": "anrufen können",
+            "en": "be able to call"
+          },
+          "acceptedAnswers": [
+            "matawagan"
+          ],
+          "lemma": "tawag"
+        },
+        {
+          "targetText": "mabisita",
+          "kind": "verb",
+          "base": {
+            "de": "besuchen können",
+            "en": "be able to visit"
+          },
+          "acceptedAnswers": [
+            "mabisita"
+          ],
+          "lemma": "bisita"
+        },
+        {
+          "targetText": "atubangon",
+          "kind": "verb",
+          "base": {
+            "de": "sich stellen",
+            "en": "face"
+          },
+          "acceptedAnswers": [
+            "atubangon"
+          ],
+          "lemma": "atubang"
+        },
+        {
+          "targetText": "kita",
+          "kind": "noun",
+          "base": {
+            "de": "Einkommen",
+            "en": "income"
+          },
+          "acceptedAnswers": [
+            "kita"
+          ]
+        },
+        {
+          "targetText": "modesisyon",
+          "kind": "verb",
+          "base": {
+            "de": "entscheiden",
+            "en": "decide"
+          },
+          "acceptedAnswers": [
+            "modesisyon"
+          ],
+          "lemma": "desisyon"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "magsalig",
+            "igsoon",
+            "inahan"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "amigo",
+            "matawagan",
+            "atubangon"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "mangita",
+            "trabaho",
+            "modesisyon"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "magsalig",
+        "familyKey": "salig",
+        "surface": "magsalig",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Magsalig una ko sa akong igsoon sa unang bulan sa Davao.",
+          "base": {
+            "de": "Im ersten Monat in Davao verlasse ich mich zuerst auf meinen Bruder oder meine Schwester.",
+            "en": "In the first month in Davao I will rely on my sibling."
+          }
+        },
+        "base": {
+          "de": "sich verlassen auf",
+          "en": "rely on"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "duha-ka-palisiya",
+      "title": {
+        "de": "Eine Parkregel für die Siedlung",
+        "en": "A parking rule for the subdivision"
+      },
+      "situation": {
+        "de": "Der Beirat deiner Wohnsiedlung fragt nach deiner Empfehlung für die beiden hier vorgeschlagenen Parkregelungen.",
+        "en": "Your subdivision board asks for your recommendation on the two parking arrangements proposed here."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "polite",
+          "polite",
+          "polite"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Sekretariat des Wohnbeirats",
+            "en": "board secretary"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Beirat deiner Wohnsiedlung fragt nach deiner Empfehlung für die beiden hier vorgeschlagenen Parkregelungen. Die andere Person sagt: „Duha ang sugyot sa parking dinhi: bayad matag gabii o usa ka slot matag balay. Unsa ang irekomendar ninyo?“",
+        "en": "Your subdivision board asks for your recommendation on the two parking arrangements proposed here. The other person says: “Duha ang sugyot sa parking dinhi: bayad matag gabii o usa ka slot matag balay. Unsa ang irekomendar ninyo?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Duha ang sugyot sa parking dinhi: bayad matag gabii o usa ka slot matag balay. Unsa ang irekomendar ninyo?",
+          "base": {
+            "de": "Hier gibt es zwei Parkvorschläge: jede Nacht bezahlen oder ein Stellplatz pro Haus. Was empfehlen Sie?",
+            "en": "There are two parking proposals here: pay each night or one space per house. What do you recommend?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Isugyot nako ang usa ka slot matag balay, kay patas kini ug dili na kinahanglan og tawo nga mokolekta matag gabii.",
+          "base": {
+            "de": "Ich schlage einen Stellplatz pro Haus vor. Das ist fair, und dann braucht niemand jede Nacht Geld einzusammeln.",
+            "en": "I suggest one space per house because it is fair and there is no need for someone to collect money every night."
+          },
+          "move": "position",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Apan ang mga balay nga duha ang sakyanan mosupak gyud. Unsa ang inyong tubag niana?",
+          "base": {
+            "de": "Die Haushalte mit zwei Autos werden aber sicher widersprechen. Was antworten Sie darauf?",
+            "en": "But households with two cars will certainly object. What is your response?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mahimo nga ang ikaduha nga sakyanan mobayad og gamay matag bulan; mas patas kana, sa akong hunahuna, para sa mga walay sakyanan.",
+          "base": {
+            "de": "Das zweite Auto könnte monatlich einen kleinen Betrag kosten. Das wäre meiner Meinung nach fairer für die Haushalte ohne Auto.",
+            "en": "There could be a small monthly charge for the second car; in my view, that is fairer to those without a car."
+          },
+          "move": "counteroffer",
+          "register": "polite"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Sige. Palihug isumaryo ang inyong rekomendasyon sa usa ka linya lang para sa miting.",
+          "base": {
+            "de": "Gut. Fassen Sie Ihre Empfehlung für die Sitzung bitte in einer Zeile zusammen.",
+            "en": "All right. Please summarise your recommendation in one line for the meeting."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Usa ka libre nga slot matag balay, bayad sa ikaduha nga sakyanan, ug dili na kinahanglan og kolektor matag gabii.",
+          "base": {
+            "de": "Ein kostenloser Stellplatz pro Haus, eine Gebühr für das zweite Auto und kein nächtlicher Kassierdienst mehr.",
+            "en": "One free space per house, a charge for the second car, and no need for a collector every night."
+          },
+          "move": "summarize",
+          "register": "polite"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Isugyot nako",
+          "ang usa",
+          "ka slot",
+          "matag balay,",
+          "kay patas kini"
+        ],
+        "distractors": [
+          "matag sakyanan,",
+          "kay mahal kini"
+        ],
+        "frameSuffix": " ug dili na kinahanglan og tawo nga mokolekta matag gabii."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ang ikaduha nga sakyanan "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " og gamay matag bulan; mas patas kana, sa akong hunahuna, para sa mga walay sakyanan."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mahimo nga",
+            "acceptedAnswers": [
+              "Mahimo nga"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mahimo nga",
+              "Dili mahimo nga",
+              "Tinuod nga",
+              "Mahimo kay"
+            ]
+          },
+          {
+            "answer": "mobayad",
+            "acceptedAnswers": [
+              "mobayad"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "bayad, Aktorfokus mo-, Zukunft",
+              "en": "bayad, actor focus mo-, future"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Usa ka libre nga slot matag balay, bayad sa ikaduha nga sakyanan, ug "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " og kolektor matag gabii."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "dili na kinahanglan",
+            "acceptedAnswers": [
+              "dili na kinahanglan"
+            ],
+            "kind": "frame",
+            "choices": [
+              "dili na kinahanglan",
+              "kinahanglan pa",
+              "kinahanglan na",
+              "dili na mahimo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Isugyot nako ang usa ka slot matag balay, kay ",
+        "answer": "patas",
+        "acceptedAnswers": [
+          "patas"
+        ],
+        "after": " kini ug dili na kinahanglan og tawo nga mokolekta matag gabii.",
+        "fallbackChoices": [
+          "patas",
+          "hugaw",
+          "init",
+          "hilom"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Einen Einwand durch eine Zusatzregel auffangen",
+          "en": "Addressing an objection with an extra rule"
+        },
+        "rule": {
+          "de": "Öffne den Gegenvorschlag mit „Mahimo nga …“ und begründe ihn mit „mas patas kana“.",
+          "en": "Open the counterproposal with “Mahimo nga …” and justify it with “mas patas kana”."
+        },
+        "examples": [
+          {
+            "targetText": "Mahimo nga ang ikaduha nga sakyanan mobayad og gamay matag bulan; mas patas kana, sa akong hunahuna, para sa mga walay sakyanan.",
+            "base": {
+              "de": "Das zweite Auto könnte monatlich einen kleinen Betrag kosten. Das wäre meiner Meinung nach fairer für die Haushalte ohne Auto.",
+              "en": "There could be a small monthly charge for the second car; in my view, that is fairer to those without a car."
+            },
+            "highlights": [
+              "Mahimo nga"
+            ]
+          },
+          {
+            "targetText": "Mahimo nga ang ikaduha nga sakyanan mobayad matag bulan.",
+            "base": {
+              "de": "Das zweite Auto könnte jeden Monat gebührenpflichtig sein.",
+              "en": "There could be a monthly charge for the second car."
+            },
+            "highlights": [
+              "Mahimo nga"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Isugyot",
+          "kind": "verb",
+          "base": {
+            "de": "vorschlagen",
+            "en": "suggest"
+          },
+          "acceptedAnswers": [
+            "Isugyot"
+          ],
+          "lemma": "sugyot"
+        },
+        {
+          "targetText": "slot",
+          "kind": "noun",
+          "base": {
+            "de": "Stellplatz",
+            "en": "space"
+          },
+          "acceptedAnswers": [
+            "slot"
+          ]
+        },
+        {
+          "targetText": "patas",
+          "kind": "adjective",
+          "base": {
+            "de": "fair",
+            "en": "fair"
+          },
+          "acceptedAnswers": [
+            "patas"
+          ]
+        },
+        {
+          "targetText": "mokolekta",
+          "kind": "verb",
+          "base": {
+            "de": "einsammeln",
+            "en": "collect"
+          },
+          "acceptedAnswers": [
+            "mokolekta"
+          ],
+          "lemma": "kolekta"
+        },
+        {
+          "targetText": "mosupak",
+          "kind": "verb",
+          "base": {
+            "de": "widersprechen",
+            "en": "object"
+          },
+          "acceptedAnswers": [
+            "mosupak"
+          ],
+          "lemma": "supak"
+        },
+        {
+          "targetText": "ikaduha",
+          "kind": "adjective",
+          "base": {
+            "de": "zweite",
+            "en": "second"
+          },
+          "acceptedAnswers": [
+            "ikaduha"
+          ]
+        },
+        {
+          "targetText": "rekomendasyon",
+          "kind": "noun",
+          "base": {
+            "de": "Empfehlung",
+            "en": "recommendation"
+          },
+          "acceptedAnswers": [
+            "rekomendasyon"
+          ]
+        },
+        {
+          "targetText": "kolektor",
+          "kind": "noun",
+          "base": {
+            "de": "Person, die kassiert",
+            "en": "collector"
+          },
+          "acceptedAnswers": [
+            "kolektor"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "isugyot",
+            "patas",
+            "mokolekta"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ikaduha",
+            "sakyanan",
+            "hunahuna"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "libre",
+            "kolektor",
+            "gabii"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "isugyot",
+        "familyKey": "sugyot",
+        "surface": "isugyot",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Isugyot nako ang usa ka slot matag balay.",
+          "base": {
+            "de": "Ich schlage einen Stellplatz pro Haus vor.",
+            "en": "I suggest one space per house."
+          }
+        },
+        "base": {
+          "de": "vorschlagen",
+          "en": "suggest"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

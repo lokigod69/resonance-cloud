@@ -1,0 +1,687 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Japanese",
+  "code": "ja-JP",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "plan": "constant for every lesson: registers[1]=[2]=[3]; no relay shape in P1/P2, so no shift",
+    "teinei": "です/ます main clauses; plain forms licensed in subordinate, quoted and noun-modifying positions (〜ば、〜なら、〜ものの、〜と思います、〜わけです); sentence-final plain never in you turns",
+    "keigo": "teinei throughout; in keigo lessons the three you turns together contain at least one keigo-set form, each used only where the role calls for it (〜ていただく/ご〜いただく for the learner's own receipt, おっしゃる for the interlocutor's speech, 〜ております/いたします/申し上げます for the learner's own actions); no per-turn minimum and no padding; an honorific on the learner's own action (self-honorific) and させていただく in you turns are errors; them turns of officials/managers/agents use keigo freely; the detector inspects main-clause endings only and never plain forms in embedded, quoted or noun-modifying positions",
+    "casual": "not licensed anywhere in P1/P2 (no declared friend-casual scenes; friends keep teinei with ね/よ)",
+    "youSets": "you1 ∈ path moveWhitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; three you moves pairwise distinct per lesson",
+    "earlyStagedFrames": "concession frame 確かに〜が/ね、ただ〜 productive from P1 L1 and P2 L1 (no new grammar); closing frames つまり〜ということです / そのため〜 productive from P1 L1 and P2 L2; 〜方が〜と思います and 〜なら recycled from B1"
+  },
+  "genderSafety": "no agreement; learner lines use 私 or subject drop; 僕/俺/あたし/うち and わ/ぞ/ぜ/かしら/command な are hard errors in you turns; all 20 lessons speakerGender neutral, no alternates; interlocutor roles described gender-neutrally in situation.de (die Hausverwaltung, die Chefin/der Chef alternated by lesson parity, ご家族 not 奥さん)",
+  "orthography": "canonical text contains no U+0020/U+3000; full-width 。、「」; numerals in kanji (一万円, 二十四時間, 三パーセント), never Arabic digits; loanwords katakana (アプリ, レンタカー, プロジェクター); kanji policy fixed: jōyō kanji as conventionally written in N2-level material, words conventionally written in kana stay kana (すすめる, ほとんど, はがす, ひも, ところ), the reviewer keeps a per-path kana list in the review sheet and no further inventory decision is open; fictional company names are written in kanji (大和, 北山), no Latin letters anywhere; each you/them turn and each trophy.example carries one reviewed all-kana variant (readingVariant) with identical punctuation; terms and trophy carry hiragana reading; no rōmaji anywhere",
+  "segmentation": {
+    "unit": "letter = kanji/hiragana/katakana/ー; punctuation excluded; bounds: them 16–52, you1 36–68, focus span 18–31, you2 31–62, you3 26–57; these are provisional authoring limits scaled from the rail, not a proven duration; a listening pilot re-confirms them before freeze and no runtime value depends on them",
+    "joiner": "empty string; framePrefix+chunks.join('')+frameSuffix === dialogue[1].targetText; since every you1 exceeds the 31-letter focus span, at least one frame is non-empty in every lesson; frames hold the non-focus remainder on unit boundaries",
+    "chunk": "one bunsetsu-level unit of 2–8 letters: noun+particle (家賃を), verb+auxiliaries (合っていると), connective+punct (一方、), adjective+copula (安いですが); a particle, copula or 、 never a chip alone; punctuation attached to the preceding chunk; 5–8 chunks cover the focus span, remainder goes to framePrefix/frameSuffix",
+    "offsets": "boundaries are declared only by turn.units (every you turn: bunsetsu-level strings of 1–8 letters whose concatenation equals targetText, punctuation attached to the preceding unit, a particle, copula or punctuation mark never a unit alone), by the chunk list (build) and by the segment list (cloze/synthesis/recall); chunks, blank edges, recall edges and speak tokens must coincide with unit boundaries; no auto-tokenizer; the validator checks concatenation, boundary coincidence, non-adjacency of blanks and chunk length only; no normalization, parser or Japanese runtime support exists yet",
+    "kanaAlternatives": "turn.readingUnits is parallel to turn.units index by index; the kana twin of any build chunk, blank answer, recall answer or speak token is the concatenation of the corresponding readingUnits; speak requiredTokens authored as {canonical,kana}; readings are reviewed by a native-model row, never generated; the only mechanical check is index parallelism",
+    "trophyAnchor": "surface = the trophy lemma; it must begin one whole declared unit of the stated you turn; if that unit ends in exactly one 、 or 。, that mark is recorded in trophy.surfaceChunk.trailingPunct (else trailingPunct is the empty string) and the remainder is compared with the mark removed; the remainder must be exactly one entry of the closed tail list: particles を が は に で の と も へ から まで より か ね よ; stacked には では とは のは のが のも; copula です ですが ですね; suru tails する した して します しました しています するなら したところ すると — suru tails are accepted only when trophy.surfaceChunk.tailKind is 'suru' and the lemma is in suruLemmas (判断, 比較, 妥協); empty remainder allowed with tailKind 'none'; the validator strips nothing except the declared trailingPunct, which must equal the unit's actual final mark; never a general substring search; trophy.exampleChunk records the example's unit under the same rule"
+  },
+  "acceptedInput": "comparison: NFC, strip whitespace, unify half/full width, strip terminal 。？, preserve ー; accepted = canonical plus explicitly authored kana twin plus any reviewed alternative kanji split listed in acceptedAnswers; no automatic kana conversion, no synonym acceptance, no particle dropping; cloze choices plain strings, exactly one accepted",
+  "carriersStaged": {
+    "P1": {
+      "1-3": {
+        "productive": "〜方が〜と思います; 〜に比べて/〜を比べれば; 一方（で）; 確かに〜が/ね、ただ〜; 〜なら (B1 recycle); 〜ので; keigo set 〜ております/いたします/〜ていただく/ご〜いただく/おっしゃる in keigo lessons from L1 (register, not staged grammar)",
+        "recognitionOnly": "〜ほど〜ない; 〜わけではない; 〜となると"
+      },
+      "4-6": {
+        "productive": "〜ほど〜ない; 〜に対して; 〜わけではない; 〜のはどうでしょうか; 〜となると/その場合は; 〜ことで",
+        "recognitionOnly": "〜とはいえ; 〜ものの; 〜としたら"
+      },
+      "7-10": {
+        "productive": "〜とはいえ; 〜ものの; 〜としたら; 〜以上; 〜と思われます; 〜いたします; 〜まま; 〜がたい; 〜たところ; 〜てはどうでしょうか; 〜ことにします (B1 recycle)",
+        "recognitionOnly": "〜ざるを得ない; 〜ば〜のに"
+      }
+    },
+    "P2": {
+      "1-3": {
+        "productive": "〜ため（に）(cause); 〜ことです/〜こと nominalization; そのため; 〜ことになっています (local rule); つまり〜ということです (from L2); 〜たところ; 〜べきだ/〜べきです (from L3); keigo set 〜ております/いたします/〜ていただく/ご〜いただく/おっしゃる in keigo lessons from L1 (register, not staged grammar)",
+        "recognitionOnly": "〜計算です; 〜というより; 〜わけです"
+      },
+      "4-6": {
+        "productive": "〜とすると…計算です; 〜というより; 〜わけではない; 〜だけではなく; 〜はず (B1 recycle); 〜かもしれません (B1 recycle)",
+        "recognitionOnly": "〜ものの; 〜としたら"
+      },
+      "7-10": {
+        "productive": "〜ものの; 〜わけです; 〜としたら; 〜ことになっています (recycle); 〜ように変える/〜ようにする; 〜に至った (them only)",
+        "recognitionOnly": "〜限り; 〜と言っていた/〜そうだ (relay, not used in P2)"
+      }
+    }
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Abwägen und empfehlen / Weighing options",
+      "function": "compare two or three options with their advantages and disadvantages and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "keigo for agent/manager/service/mentor/committee lessons (1,3,4,8,10); teinei for colleague/friend/shop owner/neighbor lessons (2,5,6,7,9); constant plan",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜方が〜と思います; 〜に比べて/比べれば; 一方（で）; 確かに〜が/ね、ただ〜; 〜なら; keigo set in keigo lessons from L1 (register, not staged grammar)",
+          "recognitionOnly": "〜ほど〜ない; 〜わけではない; 〜となると"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜ほど〜ない; 〜に対して; 〜わけではない; 〜のはどうでしょうか; 〜となると; 〜ことで",
+          "recognitionOnly": "〜とはいえ; 〜ものの; 〜としたら"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜とはいえ; 〜ものの; 〜としたら; 〜以上; 〜と思われます; 〜いたします; 〜まま; 〜がたい; 〜たところ; 〜てはどうでしょうか",
+          "recognitionOnly": "〜ざるを得ない; 〜ば〜のに"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "yachin-ka-tsuukin",
+          "scene": "letting agent compares a flat by the station with a cheaper suburban one",
+          "interlocutor": "letting agent",
+          "register": "keigo",
+          "openingMove": "them: 駅前の物件と郊外の物件、どちらがご希望に近いでしょうか。家賃は一万円ほど違います。 you1(compare): 家賃を比べれば郊外の方が安いですが、通勤時間を考えると駅前の方が総合的には合っていると思います。",
+          "challenge": "駅前は家賃が高い分、更新料も高くなりますが、それでもよろしいですか。",
+          "answerMove": "you2(concede): おっしゃるとおり更新料は負担になりますね。ただ、毎日の往復が一時間短くなるなら、その分の価値はあると思います。",
+          "steer": "来年転勤の可能性もあるとおっしゃっていましたが、その場合はどう判断されますか。",
+          "closingMove": "you3(conclude): 転勤が一年以内に決まるなら契約の短い郊外にしますが、そうでなければ駅前の方でお願いいたします。",
+          "trophyLemma": "家賃",
+          "trophySurface": "家賃 (chunk 家賃を, tail を, tailKind particle; example chunk 家賃は, tail は)",
+          "trophyFamilyKey": "yachin",
+          "pos": "noun",
+          "requiredCarrier": "〜方が〜と思います; 〜を比べれば; 確かに/おっしゃるとおり〜ね、ただ〜",
+          "recycles": "B1 〜なら, 往復, 転勤 noun"
+        },
+        {
+          "number": 2,
+          "slug": "kuruma-ka-densha",
+          "scene": "colleague weighs driving against the train for the daily commute",
+          "interlocutor": "colleague",
+          "register": "teinei",
+          "openingMove": "them: 来月から車で通うか迷っているんですが、電車とどっちがいいと思いますか。 you1(compare): 通勤に車を使えば時間は自由になりますが、駐車場代やガソリン代を考えると、電車の方が安く済むと思います。",
+          "challenge": "でも朝の電車は座れないし、乗り換えも二回あるんですよ。",
+          "answerMove": "you2(rebut): 座れないのは確かに疲れますが、車だと渋滞で時間が読めない日もあるので、最終的には電車の方が確実だと思います。",
+          "steer": "週に二日だけ在宅になるとしたら、答えは変わりますか。",
+          "closingMove": "you3(conclude): 週三日なら片道三百円の切符で月八千円ほどで、一万円の定期より安いので、定期はやめて車と使い分けるのが現実的です。",
+          "trophyLemma": "通勤",
+          "trophySurface": "通勤 (chunk 通勤に, tail に; example chunk 通勤が)",
+          "trophyFamilyKey": "tsuukin",
+          "pos": "noun",
+          "requiredCarrier": "〜ば…が、〜方が〜と思います; 確かに〜が; 〜なら",
+          "recycles": "B1 〜し〜し (them), 乗り換え"
+        },
+        {
+          "number": 3,
+          "slug": "zaitaku-ka-shussha",
+          "scene": "manager asks preference for remote or on-site work next term",
+          "interlocutor": "manager",
+          "register": "keigo",
+          "openingMove": "them: 来期の勤務形態について、在宅と出社のどちらを希望しますか。理由も聞かせてください。 you1(position): 基本は在宅を希望します。集中して作業できる一方、チームとの相談は出社の方がやりやすいので、週一回は出社したいと考えております。",
+          "challenge": "新人の教育は在宅では難しいという声もあります。その点はどうしますか。",
+          "answerMove": "you2(explain): 教育については、最初の一か月は出社日を増やして対応したいと思います。慣れてからは画面共有でも十分ではないでしょうか。",
+          "steer": "部全体のルールとして決めるとしたら、どんな形が公平だと思いますか。",
+          "closingMove": "you3(propose): 部全体では週二日出社を基本にして、担当業務によって調整できる形が公平だと思います。",
+          "trophyLemma": "一方",
+          "trophySurface": "一方 (chunk 一方、, tail empty, tailKind none, trailingPunct 、; example chunk 一方で, tail で, tailKind particle)",
+          "trophyFamilyKey": "ippou",
+          "pos": "connector",
+          "requiredCarrier": "一方（で）; 〜ので; 〜ております (keigo set)",
+          "recycles": "B1 相談, 対応 as plain words; 〜ではないでしょうか"
+        },
+        {
+          "number": 4,
+          "slug": "kounyuu-ka-rentaru",
+          "scene": "service counter: buy or rent a projector",
+          "interlocutor": "rental service clerk",
+          "register": "keigo",
+          "openingMove": "them: プロジェクターはご購入とレンタル、どちらをご検討ですか。レンタルは一日三千円です。 you1(compare): 年に数回しか使わないので、費用の面ではレンタルの方が助かります。ただ毎回予約が必要なのが少し面倒です。",
+          "challenge": "購入ですと五万円ですが、三年保証が付きます。長い目で見ると安くないでしょうか。",
+          "answerMove": "you2(concede): 確かに十七回以上使えば購入の方が安くなりますね。ただ、置き場所や故障の時の手間を考えると、まだレンタルに傾いております。",
+          "steer": "来年から月一回の社内研修で使うとなると、どう判断されますか。",
+          "closingMove": "you3(conclude): 月一回使うなら年間で三万六千円かかり、二年で購入額を超えるので、保証付きの購入にします。今年はレンタルでお願いいたします。",
+          "trophyLemma": "費用",
+          "trophySurface": "費用 (chunk 費用の, tail の; example 費用が)",
+          "trophyFamilyKey": "hiyou",
+          "pos": "noun",
+          "requiredCarrier": "〜なら (B1 recycle); 確かに〜ね、ただ〜; 〜方が助かります; 〜ております (keigo set)",
+          "recycles": "B1 予約, 保証, 故障 as words; 〜しか〜ない"
+        },
+        {
+          "number": 5,
+          "slug": "okinawa-ka-hokkaidou",
+          "scene": "friend torn between a package tour and a rental-car trip",
+          "interlocutor": "friend",
+          "register": "teinei",
+          "openingMove": "them: 夏休み、沖縄のツアーと北海道のレンタカー旅行で迷っています。どっちがいいと思いますか。 you1(compare): ツアーは手配が楽ですが、日程は変えられません。レンタカーなら天気に合わせて柔軟に動けるので、私は北海道の方をすすめます。",
+          "challenge": "でも運転は私一人になるんですよ。それでも北海道ですか。",
+          "answerMove": "you2(counteroffer): 一人で長距離は確かにきついですね。それなら移動の少ない道東だけに絞るか、沖縄のツアーで自由行動の日を増やすのはどうでしょうか。",
+          "steer": "予算が二万円減ったら、おすすめは変わりますか。",
+          "closingMove": "you3(conclude): 予算が減るなら、見積もりの安い道東に絞って一日短くする方が満足度は高いと思います。運転が一人なので長距離は避けましょう。",
+          "trophyLemma": "柔軟",
+          "trophySurface": "柔軟 (chunk 柔軟に, tail に, tailKind particle; example chunk 柔軟に, e.g. 予定を柔軟に変えられるのが利点です。)",
+          "trophyFamilyKey": "juunan",
+          "pos": "adjective",
+          "requiredCarrier": "〜のはどうでしょうか; 〜なら; 〜方が〜と思います",
+          "recycles": "B1 〜たら, 〜ましょう, 旅行 word"
+        },
+        {
+          "number": 6,
+          "slug": "genkin-ka-apuri",
+          "scene": "shop owner asks whether to add app payments",
+          "interlocutor": "shop owner",
+          "register": "teinei",
+          "openingMove": "them: うちの店でもアプリ決済を入れるか迷っているんです。お客さんの立場でどう思いますか。 you1(position): お客の立場ではアプリが使える店の方が入りやすいです。ただ手数料がお店の負担になるのも分かるので、少額は現金でもいいと思います。",
+          "challenge": "手数料は三パーセントです。それでも導入する価値がありますか。",
+          "answerMove": "you2(rebut): 確かに小さくありません。ただ、現金しか使えないことで逃している客がいるかは、三か月試して売上と手数料を比べないと分かりません。",
+          "steer": "常連さんは年配の方が多いんです。その人たちに合わせるべきでしょうか。",
+          "closingMove": "you3(propose): 常連さん向けには現金のレジを残して、アプリは新しいお客さん向けに加える形なら、どちらも困らないと思います。",
+          "trophyLemma": "負担",
+          "trophySurface": "負担 (chunk 負担に, tail に; example 負担が)",
+          "trophyFamilyKey": "futan",
+          "pos": "noun",
+          "requiredCarrier": "〜ことで; 〜しか〜ない (B1 recycle); 〜方が入りやすいです (comparison, you1); 〜と思います (opinion, you1 and you3); 確かに〜。ただ〜",
+          "recycles": "B1 手数料 word, 〜しか〜ない, 〜ば"
+        },
+        {
+          "number": 7,
+          "slug": "kyoushitsu-ka-apuri",
+          "scene": "friend starting Korean: class or app",
+          "interlocutor": "friend",
+          "register": "teinei",
+          "openingMove": "them: 韓国語を始めたいんですが、教室と単語アプリのどちらが身につくと思いますか。 you1(compare): 単語を覚えるだけならアプリの方が効率はいいとはいえ、そのアプリには会話の練習がないので、話す力を付けたいなら週一回の教室をすすめます。",
+          "challenge": "教室は月一万円ですよ。アプリなら無料なのに、それでも教室ですか。",
+          "answerMove": "you2(concede): 無料なのは大きいですね。ただ、単語アプリでは発音の間違いを直してもらえないまま続けるので、後で直すのに時間がかかります。",
+          "steer": "半年後に旅行で使えれば十分だとしたら、どうですか。",
+          "closingMove": "you3(conclude): 旅行会話が目的なら、まずアプリで三か月やって、出発前の二か月だけ教室に通うのが無駄が少ないと思います。",
+          "trophyLemma": "効率",
+          "trophySurface": "効率 (chunk 効率は, tail は; example 効率が)",
+          "trophyFamilyKey": "kouritsu",
+          "pos": "noun",
+          "requiredCarrier": "〜とはいえ; 〜まま; 〜なら (B1 recycle)",
+          "recycles": "B1 間違い word, 〜と conditional, 練習 word"
+        },
+        {
+          "number": 8,
+          "slug": "futatsu-no-naitei",
+          "scene": "mentor asks which of two job offers the learner leans to",
+          "interlocutor": "mentor",
+          "register": "keigo",
+          "openingMove": "them: 二つの内定、給料の高い大和と残業の少ない北山で迷っていると聞きました。今はどちらに傾いていますか。 you1(position): 給料だけで判断するなら大和ですが、家族との時間を考えると北山の方が長く続けられると思います。今は北山に傾いております。",
+          "challenge": "北山は昇進が遅いという評判があります。五年後を考えても同じですか。",
+          "answerMove": "you2(concede): 昇進の遅さは確かに気になります。ただ、残業が多いと家族との時間が取れず続けにくいので、五年後も同じなら北山を選ぶと思います。",
+          "steer": "もし大和が残業を月二十時間までと約束したら、判断は変わりますか。",
+          "closingMove": "you3(conclude): 残業が月二十時間以内で書面に残るなら、大和を選びます。約束が口頭だけなら、やはり北山でいくことにします。",
+          "trophyLemma": "判断",
+          "trophySurface": "判断 (chunk 判断するなら, tail するなら, tailKind suru; example chunk 判断が, tail が)",
+          "trophyFamilyKey": "handan",
+          "pos": "noun",
+          "requiredCarrier": "〜なら (B1 recycle); 〜以内で; 〜ことにします (B1 recycle); 〜ております (keigo set)",
+          "recycles": "B1 約束 word, 〜てしまって, 〜たら"
+        },
+        {
+          "number": 9,
+          "slug": "oosaka-ni-utsuru",
+          "scene": "neighbor doubts the learner's plan to move to Osaka for a job",
+          "interlocutor": "neighbor",
+          "register": "teinei",
+          "openingMove": "them: 大阪への転職を考えているんですよね。このあたりを離れるのはもったいない気もしますが。 you1(compare): ここは静かで近所づきあいも良いので離れがたいです。一方で大阪の仕事は内容が今よりずっと面白いので、どこかで妥協が必要だと思っています。",
+          "challenge": "向こうでは知り合いが一人もいないんでしょう。寂しくなりませんか。",
+          "answerMove": "you2(rebut): 最初は寂しいと思います。でも今の仕事を続けても、三年後に同じことで悩んでいる気がするので、動くなら今だと思います。",
+          "steer": "ご家族の意見は聞きましたか。それ次第じゃないですか。",
+          "closingMove": "you3(conclude): 家族は半年だけ試してみようと言ってくれました。半年後に戻りたいと言ったら戻る、という条件で大阪に行くことにします。",
+          "trophyLemma": "妥協",
+          "trophySurface": "妥協 (chunk 妥協が, tail が; example 妥協する)",
+          "trophyFamilyKey": "dakyou",
+          "pos": "noun",
+          "requiredCarrier": "一方で (recycle L3); 〜がたい; 〜ても; 〜ことにします",
+          "recycles": "B1 静か, 意見, 条件 words; 〜ようと思っています relay in reported speech"
+        },
+        {
+          "number": 10,
+          "slug": "bousai-bihin-an",
+          "scene": "neighborhood committee: central storage versus household distribution of emergency supplies (fictional local proposal)",
+          "interlocutor": "committee chair",
+          "register": "keigo",
+          "openingMove": "them: 町内会の防災備品について、備蓄倉庫を新設する案と各家庭に配布する案があります。ご意見をお聞かせください。 you1(compare): 二つの案を費用と使いやすさで比較したところ、配布案の方が初期費用は高いものの、災害時にすぐ使える点で優れていると思われます。",
+          "challenge": "ただ、配布した備品が各家庭で管理されず、期限切れになる恐れがありますが。",
+          "answerMove": "you2(counteroffer): その懸念はもっともです。それなら年に一度、町内会で点検日を設けて交換する仕組みにすれば、管理の問題は防げると考えます。",
+          "steer": "予算は一案分しかありません。最終的にどちらを推薦されますか。",
+          "closingMove": "you3(conclude): 予算が一案分である以上、点検制度付きの配布案を推薦いたします。倉庫案は将来の追加予算の際に検討してはどうでしょうか。",
+          "trophyLemma": "比較",
+          "trophySurface": "比較 (chunk 比較したところ、, tail したところ, tailKind suru, trailingPunct 、; example chunk 比較すると、, tail すると, tailKind suru, trailingPunct 、)",
+          "trophyFamilyKey": "hikaku",
+          "pos": "noun",
+          "requiredCarrier": "〜たところ; 〜ものの; 〜以上; 〜と思われます; 〜いたします; 〜てはどうでしょうか",
+          "recycles": "L4 費用, P2 仕組み preview as recognition; B1 期限, 問題 words"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Wie und warum / Explaining how and why",
+      "function": "give a detailed explanation of causes, consequences or a process and sustain it under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "keigo for accountant/manager/consultant/official lessons (1,3,8,10); teinei for newcomer/friend/neighbor/colleague/skeptic lessons (2,4,5,6,7,9); constant plan",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "〜ため（に）cause; 〜ことです; そのため; 〜ことになっています; つまり〜ということです (from L2); 〜たところ; 〜べきだ/〜べきです (from L3); keigo set in keigo lessons from L1 (register, not staged grammar)",
+          "recognitionOnly": "〜計算です; 〜というより; 〜わけです"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "〜とすると…計算です; 〜というより; 〜わけではない; 〜だけではなく; 〜はず; 〜かもしれません",
+          "recognitionOnly": "〜ものの; 〜としたら"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "〜ものの; 〜わけです; 〜としたら; 〜ようにする/変える; 〜ことになっています",
+          "recognitionOnly": "〜限り; 〜に至った (them)"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "seikyuu-no-sagaku",
+          "scene": "client accountant asks why the invoice exceeds the quote",
+          "interlocutor": "client-side accountant",
+          "register": "keigo",
+          "openingMove": "them: 先月の請求額が見積もりより一万二千円高いのですが、内訳を説明してもらえますか。 you1(explain): 差額の理由は二つあります。一つは追加でご依頼いただいた翻訳三ページ分、もう一つは納期が早まったために発生した特急料金です。",
+          "challenge": "特急料金については事前に聞いていません。合意なしで請求できるのですか。",
+          "answerMove": "you2(clarify): ご指摘のとおり事前のご説明が不足しておりました。契約書には納期短縮時の割増がありますが、金額は確かにお伝えしておりませんでした。",
+          "steer": "では今後はどういう流れにすれば、こうした行き違いを防げますか。",
+          "closingMove": "you3(propose): 今後は追加が発生した時点で金額を書面でお送りし、ご承認をいただいてから作業に入る流れにいたします。",
+          "trophyLemma": "理由",
+          "trophySurface": "理由 (chunk 理由は, tail は; example 理由を)",
+          "trophyFamilyKey": "riyuu",
+          "pos": "noun",
+          "requiredCarrier": "〜ために発生した; 一つは…もう一つは…; ご〜いただく; 〜ておりました",
+          "recycles": "B1 説明, 確認 words; 〜てから"
+        },
+        {
+          "number": 2,
+          "slug": "gomi-no-dashikata",
+          "scene": "newcomer asks how waste sorting works in this district (fictional local notice, scene-specific)",
+          "interlocutor": "new neighbor",
+          "register": "teinei",
+          "openingMove": "them: 引っ越してきたばかりで、ごみの出し方がよく分かりません。この地区はどういう決まりですか。 you1(explain): この地区の仕組みは、燃えるごみが月曜と木曜、プラスチックが水曜、びんと缶が第二と第四の金曜です。袋は指定のものを使うことになっています。",
+          "challenge": "紙はどこにも入っていませんね。新聞や段ボールはどうするんですか。",
+          "answerMove": "you2(clarify): 紙は収集車ではなく、公園横の回収箱に出すことになっています。段ボールはひもで縛って、新聞は雑誌と分けて入れてください。",
+          "steer": "要するに、初めての週に気をつけることを三つに絞ると何ですか。",
+          "closingMove": "you3(summarize): つまり、指定袋を買うこと、曜日を冷蔵庫に貼ること、紙は回収箱に持っていくこと、この三つを守れば大丈夫ということです。",
+          "trophyLemma": "仕組み",
+          "trophySurface": "仕組み (chunk 仕組みは, tail は; example 仕組みが)",
+          "trophyFamilyKey": "shikumi",
+          "pos": "noun",
+          "requiredCarrier": "〜ことになっています; つまり〜ということです; 〜こと listing",
+          "recycles": "B1 weekdays, 〜たばかり, 〜てください"
+        },
+        {
+          "number": 3,
+          "slug": "nouki-ga-okureta-ken",
+          "scene": "manager asks for a cause report on a two-week delay",
+          "interlocutor": "manager",
+          "register": "keigo",
+          "openingMove": "them: 納期が二週間遅れた件について、原因をまとめて報告してください。 you1(explain): 一番の原因は、外部データの到着が想定より十日遅かったことです。そのため検証工程が後ろにずれ、担当者の休暇とも重なりました。",
+          "challenge": "データの遅れは最初から分かっていたはずです。なぜその時点で報告しなかったのですか。",
+          "answerMove": "you2(clarify): 遅れが分かった時点では、三日程度の遅れだと聞いておりました。十日と分かったのは二週目で、その日のうちに課長には伝えております。",
+          "steer": "同じことを繰り返さないために、工程のどこを変えるべきだと考えますか。",
+          "closingMove": "you3(conclude): 外部データの工程は、サンプルで検証を始める形に変えるべきだと考えます。報告は遅れ幅に関係なく即日にいたします。",
+          "trophyLemma": "想定",
+          "trophySurface": "想定 (chunk 想定より, tail より; example 想定が)",
+          "trophyFamilyKey": "soutei",
+          "pos": "noun",
+          "requiredCarrier": "〜ことです; そのため; 〜形に変える (lexical); 〜ておりました; 〜いたします (keigo set)",
+          "recycles": "B1 原因, 担当, 休み words as non-trophies; 〜はず (them)"
+        },
+        {
+          "number": 4,
+          "slug": "pointo-kaado-no-shikumi",
+          "scene": "friend asks whether the supermarket loyalty card is worth it",
+          "interlocutor": "friend",
+          "register": "teinei",
+          "openingMove": "them: あのスーパーのポイントカード、作る価値ありますか。仕組みが複雑そうなんです。 you1(explain): レジの案内では、仕組みは二百円ごとに一ポイントたまり、五百ポイントで五百円分使えます。特典はそれだけではなく、火曜日はポイントが三倍になります。",
+          "challenge": "でも週に一回しか行かないんですよ。それでもたまりますか。",
+          "answerMove": "you2(clarify): 週一回で五千円使うとすると、普通の日なら年に千三百ポイント、全部火曜に行けば三千九百ポイントたまる計算です。",
+          "steer": "じゃあ結論として、どう使うのが一番得ですか。",
+          "closingMove": "you3(summarize): つまり、買い物を火曜日に寄せて、五百たまるごとに使うということです。三千五百円分は戻りますが、期限だけ確認してください。",
+          "trophyLemma": "特典",
+          "trophySurface": "特典 (chunk 特典は, tail は; example 特典が)",
+          "trophyFamilyKey": "tokuten",
+          "pos": "noun",
+          "requiredCarrier": "〜とすると…計算です; 〜だけではなく; つまり〜ということです",
+          "recycles": "L2 仕組み; B1 〜ごとに, 〜ば"
+        },
+        {
+          "number": 5,
+          "slug": "keitai-gaisha-o-kaeta",
+          "scene": "neighbor asks why the learner switched mobile providers",
+          "interlocutor": "neighbor",
+          "register": "teinei",
+          "openingMove": "them: 携帯の会社を変えたそうですね。何か不満があったんですか。 you1(reason): 一番の理由は料金が上がったことです。二年契約の割引が切れて月に二千円高くなったので、同じ内容で安い会社に移りました。",
+          "challenge": "安い会社は電波が弱いって聞きますよ。実際どうですか。",
+          "answerMove": "you2(clarify): 家と職場では以前と変わりません。ただ地下鉄の中で一時的に切れることがあるので、通話が多い人には向かないかもしれません。",
+          "steer": "私も変えようか迷っています。手続きで面倒なところを教えてください。",
+          "closingMove": "you3(propose): まず更新月を確認してください。私は違約金のない月に移って三十分ほどで済みましたが、会社によって違うかもしれません。",
+          "trophyLemma": "料金",
+          "trophySurface": "料金 (chunk 料金が, tail が; example 料金は)",
+          "trophyFamilyKey": "ryoukin",
+          "pos": "noun",
+          "requiredCarrier": "〜ことです; 〜ことがある (B1 recycle); 〜かもしれません",
+          "recycles": "L1 理由; B1 手続き, 確認 words; 〜そうです hearsay (them)"
+        },
+        {
+          "number": 6,
+          "slug": "tekkyo-ni-igi",
+          "scene": "colleague's bicycle was removed where no sign stood; learner explains the appeal route written on the removal notice (fictional notice, scene-specific)",
+          "interlocutor": "colleague",
+          "register": "teinei",
+          "openingMove": "them: 駐輪禁止の張り紙がない場所で自転車を撤去されました。納得できないんですが、どうすればいいですか。 you1(explain): 撤去の通知の裏に、異議を出す窓口と期限が書いてあるはずです。標識がなかったことを示す記録を添えて、期限内に書面を出すのが通知にある流れです。",
+          "challenge": "でもその日の写真は撮っていません。証拠がなければ無理でしょう。",
+          "answerMove": "you2(rebut): 証拠がゼロというわけではありません。現場の写真と撤去の日時を出せば、どの記録が証拠になるかは窓口で確認できます。",
+          "steer": "結局、申し立てて通る見込みはどのくらいだと思いますか。",
+          "closingMove": "you3(conclude): 標識がなかったのなら、出す価値はあると思います。ただ通知では、撤去費用は先に払ってから異議を出す決まりになっています。",
+          "trophyLemma": "異議",
+          "trophySurface": "異議 (chunk 異議を, tail を; example 異議が)",
+          "trophyFamilyKey": "igi",
+          "pos": "noun",
+          "requiredCarrier": "〜わけではない; 〜はず (B1 recycle); 〜ば; 〜ことになっています (recycle); 通知では attribution",
+          "recycles": "B1 自転車, 納得 words; 〜てもらえます; 〜ても"
+        },
+        {
+          "number": 7,
+          "slug": "kafe-keikaku-no-keii",
+          "scene": "friend asks what happened to the planned joint café",
+          "interlocutor": "friend",
+          "register": "teinei",
+          "openingMove": "them: 去年話していたカフェの共同経営、やめたんですよね。何があったんですか。 you1(explain): 簡単に経緯を話すと、物件は決まったものの、改装費が見積もりの二倍になり、共同経営者が資金を出せなくなって計画が止まりました。",
+          "challenge": "二倍って大きいですね。見積もりがそんなに外れるものですか。",
+          "answerMove": "you2(clarify): 古い建物だったので、床をはがしてから配管の交換が必要だと分かったんです。最初の見積もりは表面しか見ていなかったわけです。",
+          "steer": "同じことをもう一度やるとしたら、何を変えますか。",
+          "closingMove": "you3(conclude): 次にやるなら、契約前に専門家に床下まで調べてもらい、改装費の上限を共同経営者と書面で決めておきます。",
+          "trophyLemma": "経緯",
+          "trophySurface": "経緯 (chunk 経緯を, tail を; example 経緯は)",
+          "trophyFamilyKey": "keii",
+          "pos": "noun",
+          "requiredCarrier": "〜ものの; 〜わけです; 〜ておきます (B1 recycle)",
+          "recycles": "B1 計画, 交換, 必要 words; 〜てから; 〜てもらう"
+        },
+        {
+          "number": 8,
+          "slug": "shoshin-yoyaku-no-nagare",
+          "scene": "learner at a clinic reception explains the online booking flow to a visiting consultant (fictional clinic procedure)",
+          "interlocutor": "consultant",
+          "register": "keigo",
+          "openingMove": "them: 予約の流れを最初から最後まで説明してください。特に初診の方の場合をお願いします。 you1(explain): 初診の方の流れは、まずサイトで仮予約をしていただき、通常は二十四時間以内に確認メールが届きます。その後、来院時に問診票を書いていただきます。",
+          "challenge": "確認メールが届かない場合はどうなりますか。そこが一番問い合わせが多いはずです。",
+          "answerMove": "you2(clarify): 届かない場合は迷惑メールをご確認いただき、そこにもなければ受付へお電話ください。仮予約は三日で無効になることになっております。",
+          "steer": "高齢の方でネットを使わない場合、この流れは使えませんね。代わりはありますか。",
+          "closingMove": "you3(propose): ネットを使わない方には電話での予約を残しております。その場合は確認メールの代わりに、受付から折り返しお電話いたします。",
+          "trophyLemma": "流れ",
+          "trophySurface": "流れ (chunk 流れは, tail は; example 流れを)",
+          "trophyFamilyKey": "nagare",
+          "pos": "noun",
+          "requiredCarrier": "〜ことになっております; 〜ていただく/ご〜いただく; 〜場合は",
+          "recycles": "B1 予約, 確認, 迷惑, 代わり words; 〜ば"
+        },
+        {
+          "number": 9,
+          "slug": "shea-jitensha-no-kouka",
+          "scene": "skeptical neighbor doubts the town's bike-share scheme",
+          "interlocutor": "skeptical neighbor",
+          "register": "teinei",
+          "openingMove": "them: 駅前のシェア自転車、誰も使っていないように見えますよ。あれに町のお金を使う意味がありますか。 you1(explain): 効果が見えにくいのは確かですが、駅までのバスが減った分を補うために町が置いたものです。町の利用記録では、朝の時間帯に半分以上が動いています。",
+          "challenge": "朝だけ使われても、昼間は放置されているなら無駄じゃないですか。",
+          "answerMove": "you2(rebut): 昼に止まっているのは無駄というより、夕方の利用者のために置いてある状態です。試算では、バスを一本増やす費用の半分以下ということです。",
+          "steer": "では、半年後に利用が増えていなかったら、やめるべきですか。",
+          "closingMove": "you3(conclude): 半年で判断するなら、朝の利用率が四割を切ったらやめると決めておくべきです。それ以上なら反対側でも試すべきです。",
+          "trophyLemma": "効果",
+          "trophySurface": "効果 (chunk 効果が, tail が; example 効果は)",
+          "trophyFamilyKey": "kouka",
+          "pos": "noun",
+          "requiredCarrier": "〜ために; 〜というより; 〜ということです (attributed figure); 〜べきだ",
+          "recycles": "P1 費用, 判断; B1 半分 word; 〜てある"
+        },
+        {
+          "number": 10,
+          "slug": "kouen-yakan-heisa-no-keika",
+          "scene": "town official asks the learner to trace how the residents' request to close the park at night came about (fictional local request)",
+          "interlocutor": "town official",
+          "register": "keigo",
+          "openingMove": "them: 公園の夜間閉鎖を要望された件ですが、どのような経過でその結論に至ったのか、順を追って説明してください。 you1(explain): 住民から夜の騒音の苦情が出て、町内会が三か月記録しました。その結果週末の深夜に集中していたため、影響の少ない時間帯だけの閉鎖を要望しました。",
+          "challenge": "閉鎖すると夜勤帰りの方が通れなくなります。その影響は考えましたか。",
+          "answerMove": "you2(clarify): 影響を小さくするため、閉鎖するのは東側の広場だけで、夜勤の方が使う南北の通路は通れる形を提案しております。",
+          "steer": "最終的に要望書として出す内容を、一文でまとめるとどうなりますか。",
+          "closingMove": "you3(summarize): つまり、週末の零時から五時まで東側の広場だけを閉鎖し、南北の通路は常に通れるようにする、ということです。",
+          "trophyLemma": "影響",
+          "trophySurface": "影響 (chunk 影響の, tail の in you1; example 影響を)",
+          "trophyFamilyKey": "eikyou",
+          "pos": "noun",
+          "requiredCarrier": "〜ため cause; その結果; 〜ようにする; つまり〜ということです; 〜ております",
+          "recycles": "B1 騒音, 問題, 週末 words; P2 L7 経緯 (them 経過)"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "家賃",
+        "familyKey": "yachin",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "通勤",
+        "familyKey": "tsuukin",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "一方",
+        "familyKey": "ippou",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "費用",
+        "familyKey": "hiyou",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "柔軟",
+        "familyKey": "juunan",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "負担",
+        "familyKey": "futan",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "効率",
+        "familyKey": "kouritsu",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "判断",
+        "familyKey": "handan",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "妥協",
+        "familyKey": "dakyou",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "比較",
+        "familyKey": "hikaku",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "理由",
+        "familyKey": "riyuu",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "仕組み",
+        "familyKey": "shikumi",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "想定",
+        "familyKey": "soutei",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "特典",
+        "familyKey": "tokuten",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "料金",
+        "familyKey": "ryoukin",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "異議",
+        "familyKey": "igi",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "経緯",
+        "familyKey": "keii",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "流れ",
+        "familyKey": "nagare",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "効果",
+        "familyKey": "kouka",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "影響",
+        "familyKey": "eikyou",
+        "pos": "noun"
+      }
+    ],
+    "forbiddenCheck": "all 20 lemmas compared under NFC+casefold against the supplied forbidden list (A1/A2 plus the 100 reserved B1 allocations from B1_NATIVE_JAPANESE_SPEC.json, sha 45a1a098…): zero hits; 20 lemmas and 20 familyKeys pairwise unique; the 100 B1 rows stay reserved untouched",
+    "nearFamilyDecisions": [
+      "効率 (P1-7) and 効果 (P2-9): distinct lemmas and families; shared kanji is not family membership",
+      "料金 vs reserved 手数料/料理: distinct lemma; 料金 is not a derivation of either",
+      "理由 vs reserved 原因: distinct lemma; 原因 appears as a plain word in P2 them turns, never as trophy",
+      "想定 vs reserved 予定: distinct lemma",
+      "仕組み vs reserved 手続き, 流れ vs reserved 順番: distinct lemmas",
+      "比較/判断/妥協 are suru nouns recorded pos noun; their suru surfaces (比較したところ, 判断するなら, 妥協する, 比較すると) match through the closed suru tail list only because the lemma is in suruLemmas and the lesson records tailKind suru; the verb forms are the same family, not new trophies",
+      "rejected as evasions: 可能性 (derives 可能), 不便 (derives 便利), 遅れ (nominalizes 遅れます), 相談 (reserved), 結局 (reserved at B1 P1L6, independent word), 一方で as adverbial of 一方 (一方 counted once, L3)"
+    ]
+  },
+  "mechanicalValidationRules": [
+    "exactly 2 paths × 10 lessons; 6 turns them/you alternating; you1 from the path moveWhitelist, you2 and you3 from their independent contract sets, three you moves pairwise distinct; registerPlan constant with registers equal to the lesson register",
+    "no U+0020/U+3000 in any targetText, chunk, blank answer or term; full-width punctuation; no Latin letters anywhere (P1-8 companies are 大和 and 北山)",
+    "no Arabic digits; kanji/kana numerals only",
+    "lengths in letters per segmentation.unit: them 16–52, you1 36–68, focus 18–31, you2 31–62, you3 26–57; provisional authoring bounds re-confirmed by a listening pilot before freeze; hand counts in this spec are not a validator result",
+    "declared units: every you turn carries turn.units (bunsetsu-level strings of 1–8 letters, concatenation equals targetText, punctuation attached to the preceding unit, a particle, copula or punctuation mark never alone) and turn.readingUnits parallel index by index; build chunks, cloze/synthesis segment edges, recall before/answer/after edges and every speak requiredToken coincide with unit boundaries (one unit or adjacent units); no auto-tokenizer: the validator checks concatenation and boundary coincidence only",
+    "build: 5–8 chunks of 2–8 letters covering the focus span, each one unit or adjacent units, no chunk a bare particle/copula/punctuation, NFC(framePrefix+chunks.join('')+frameSuffix)===dialogue[1].targetText; 2 distractors of the same shape",
+    "cloze/synthesis/recall reconstruct by concatenation; two blanks are never adjacent (a non-empty text segment lies between them); blank edges on declared unit boundaries; no blank a bare particle/pronoun/copula; at most one blank carries choices, exactly 4 distinct after normalization, exactly one accepted; moveBlankIndex points at a carrier of the you2 move",
+    "trophy: lemma equals ledger row; lemma begins one whole declared unit of dialogue[turnIndex]; chunk === lemma+tail+trailingPunct exactly, trailingPunct ∈ {'',、,。} equal to the unit's single final mark if any, and tail is exactly one entry of the closed tail list in segmentation.trophyAnchor or empty with tailKind none (suru tails only with tailKind suru and lemma in suruLemmas); trophy.surfaceChunk and trophy.exampleChunk recorded and checked by the same rule; reading present; never a substring search",
+    "speak: 3 targets turnIndex 1/3/5, requiredTokens 2–4 distinct whole declared units of that turn, each {canonical, kana} with kana equal to the corresponding readingUnits concatenation; profile b2-long for you1/you2, b2-short for you3",
+    "readingVariant present for every turn and the trophy example with identical punctuation; readingUnits parallel to units for every you turn; the mechanical check is index parallelism only, reading correctness is native review",
+    "register detector: main-clause endings only; sentence-final plain verb/adjective/だ in you turns → error; gendered pronoun/particle list → error; self-honorific or させていただく in you turns → error; keigo lessons: the three you turns together contain ≥1 keigo-set form else warning B2-JA-KEIGO-MISSING; plain forms in embedded, quoted or noun-modifying positions are never inspected",
+    "carrier staging: each requiredCarrier entry names a surface the author lists per entry; it appears verbatim in a you turn and is productive at or before the lesson's range (productive sets are cumulative within the path; B1-staged forms and the keigo set are always available and marked as recycle); entries marked (them) never appear in requiredCarrier; recognitionOnly carriers appear only in them turns; no morphological parse is claimed",
+    "terms 8–10: term.targetText is the attested surface occurring verbatim in a dialogue turn or pattern example; when inflected, term.lemma holds the dictionary form and is not itself required verbatim; a suru noun is attested when it begins a declared unit whose remainder is a listed suru tail; every term carries reading; the trophy lemma is one of the terms",
+    "no B2 validator gate, Japanese parser, normalization or runtime support exists yet; the existing B1 check expects wakachigaki and must not be run on B2 text; every rule above describes the gate still to be built"
+  ],
+  "semanticReviewRules": [
+    "P1: you1 names at least two options and a criterion; recommendation in you3 is conditional on the steer (qualified, not flat)",
+    "P2: you1 gives ≥2 causal links or ≥3 process steps; you2 answers the exact precision request; you3 reflects the steer (bottom line, edge case, summary)",
+    "challenge turn introduces a fact not deducible from turn 0; steer changes the task, not just repeats the challenge",
+    "concession frames are honest: the conceded point stays true in you3",
+    "learner never asserts another party's decision (contract award, refund, approval)",
+    "fictional notices (waste calendar P2-2, removal notice P2-6, clinic flow P2-8, park request P2-10) are framed as scene-local and reviewer confirms no sentence reads as a general legal/medical/municipal rule",
+    "idiomaticity: no 私は stacking, no literal と思います chains; 〜わけです/〜ものの used with their nuance; keigo direction correct (いただく for own receipt, おっしゃる for interlocutor)",
+    "chip permutations and second-valid-choice check on every cloze and build; kana twin reviewed by a native-model reviewer row before nativeStatus model-reviewed",
+    "base texts de/en accurate; situation.de gender-neutral role nouns",
+    "kanji choice conventional (すすめる not 勧める/薦める in canonical; reviewer lists alternative kanji as acceptedAnswers where ASR commonly differs)"
+  ],
+  "requiredSchemaExtensions": [
+    "turn.readingVariant: S? — reviewed all-kana twin of targetText with identical punctuation; required for ja; feeds acceptedPhraseVariant rows; no generated conversion",
+    "turn.units: [S] and turn.readingUnits: [S] — required for ja you turns; declared bunsetsu-level boundaries (concatenation equals targetText / readingVariant), parallel index by index; the only boundary source for chunks, blanks, recall and speak tokens",
+    "trophy.surfaceChunk and trophy.exampleChunk: {chunk:S, tail:S, tailKind:E[none,particle,copula,suru], trailingPunct:E['','、','。']} — replace substring binding for ja/ko; chunk === lemma+tail+trailingPunct must hold exactly; validator checks start-anchored exact remainder against the closed tail list in segmentation.trophyAnchor",
+    "build.chunkReadings and blank.kanaAnswer: [S]/S? — kana twins equal to the corresponding readingUnits concatenation (optional until speak/cloze consume them)",
+    "speakTarget.requiredTokens entries may be {canonical:S, kana:S} for ja (array of objects accepted alongside strings)",
+    "tail list for ja is spec-owned data read by the validator and identical to segmentation.trophyAnchor: particles を が は に で の と も へ から まで より か ね よ; stacked には では とは のは のが のも; copula です ですが ですね; suru する した して します しました しています するなら したところ すると; suruLemmas 判断 比較 妥協; trailingPunct values '' 、 。 are a separate field, never tail entries",
+    "the fieldReference bundled with this spec is not amended here; turn.units/readingUnits, trophy.exampleChunk and the tail-list data must be mirrored in the field reference and the zod mirror before any ja B2 draft is validated"
+  ],
+  "unresolvedDecisions": [
+    "RESOLVED: no Latin placeholders; P1-8 uses the fictional companies 大和 and 北山",
+    "exact letter bounds (them 16–52, you1 36–68, you2 31–62, you3 26–57) are provisional authoring limits; a listening pilot confirms them before freeze; no runtime change here",
+    "RESOLVED: 比較, 判断 and 妥協 are recorded pos noun; suru surfaces match only through the closed suru tail list with tailKind suru and the suruLemmas set",
+    "RESOLVED: kanji policy is jōyō kanji as conventionally written in N2-level material with a reviewer-kept kana list; no inventory decision remains open",
+    "RESOLVED: keigo lessons need one role-appropriate keigo-set form per lesson across the you turns, not per turn",
+    "full lessons, turn.units/readingUnits authoring, the new validator gate, Fable full read, independent native review and TTS all remain pending; nothing in this spec claims readiness or runtime behavior"
+  ]
+}

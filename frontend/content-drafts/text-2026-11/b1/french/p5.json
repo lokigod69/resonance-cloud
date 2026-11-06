@@ -1,0 +1,2120 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "French",
+  "targetLanguageCode": "fr-FR",
+  "baseLanguage": "German",
+  "pathNumber": 5,
+  "title": {
+    "de": "Am richtigen Schalter",
+    "en": "At the right counter"
+  },
+  "subtitle": {
+    "de": "Hol verlässliche Auskünfte ein und hake nach, wenn etwas unklar bleibt.",
+    "en": "Get the information you need and follow up when a detail is unclear."
+  },
+  "anchor": "Shape A. L1–3 pouvez-vous me dire où/comment/quand ohne Inversion im eingebetteten Satz; L4–6 savez-vous si; L7–8 je voudrais savoir ce que; L9–10 Kombination. Formelle Anrede vous, einzelne Ansprechperson, situative französische Verwaltungsbeispiele ohne allgemeine Rechtsbehauptungen. Zehn ursprüngliche Trophäen, spätere Oktober-Stufung; Transferbeispiele greifen dem Dialog nicht vor.",
+  "lessons": [
+    {
+      "slug": "depot-a-la-prefecture",
+      "title": {
+        "de": "Am Empfang der Präfektur",
+        "en": "At the prefecture reception desk"
+      },
+      "situation": {
+        "de": "Du stehst mit den Unterlagen für die Verlängerung deines Aufenthaltstitels am Empfang einer Präfektur. Frage nach der richtigen Anlaufstelle.",
+        "en": "You are at the reception desk of a prefecture with the paperwork for renewing your residence permit. Find out where to go."
+      },
+      "pedagogicalGoal": "Im übergeordneten Satz fragst du höflich mit pouvez-vous. Nach où folgt dagegen je dois: Subjekt vor Verb, ohne eine zweite Frageumstellung.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Bonjour, que venez-vous faire aujourd'hui ?",
+          "baseText": {
+            "de": "Guten Tag, was führt Sie heute zu uns?",
+            "en": "Hello, what brings you here today?"
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire où je dois déposer mon dossier de renouvellement ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wo ich meine Unterlagen für die Verlängerung abgeben muss?",
+            "en": "Could you tell me where I should submit my renewal application?"
+          }
+        },
+        {
+          "targetText": "Pour un titre de séjour, c'est au deuxième étage. Le guichet ferme à midi.",
+          "baseText": {
+            "de": "Für einen Aufenthaltstitel ist das im zweiten Stock. Der Schalter schließt um zwölf.",
+            "en": "For a residence permit, that's on the second floor. The counter closes at noon."
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire quand le guichet rouvre cet après-midi ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wann der Schalter heute Nachmittag wieder öffnet?",
+            "en": "Could you tell me when the counter reopens this afternoon?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Une question dans une question",
+        "rule": {
+          "de": "Im übergeordneten Satz fragst du höflich mit pouvez-vous. Nach où folgt dagegen je dois: Subjekt vor Verb, ohne eine zweite Frageumstellung.",
+          "en": "Use pouvez-vous in the polite main question. After où, keep the subject before the verb, as in je dois."
+        },
+        "examples": [
+          {
+            "targetText": "Pouvez-vous me dire où je dois déposer mon dossier de renouvellement ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wo ich meine Unterlagen für die Verlängerung abgeben muss?",
+              "en": "Could you tell me where I should submit my renewal application?"
+            },
+            "highlight": "où je dois déposer mon dossier"
+          },
+          {
+            "targetText": "Pouvez-vous me dire où vous gardez les plans ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wo Sie die Pläne aufbewahren?",
+              "en": "Could you tell me where you keep the plans?"
+            },
+            "highlight": "où vous gardez les plans"
+          }
+        ]
+      },
+      "cloze": [
+        "Pouvez-vous me dire ",
+        {
+          "kind": "connector",
+          "answer": "quand",
+          "choices": [
+            "dont",
+            "quand",
+            "lequel",
+            "combien de"
+          ]
+        },
+        " le guichet ",
+        {
+          "kind": "form",
+          "answer": "rouvre",
+          "choices": [
+            "rouvrons",
+            "rouvrent",
+            "rouvrez",
+            "rouvre"
+          ],
+          "cue": "rouvrir (le guichet)"
+        },
+        " cet après-midi ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pouvez-vous me dire",
+          "baseText": {
+            "de": "Können Sie mir sagen,",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "où je dois",
+          "baseText": {
+            "de": "wo ich … muss",
+            "en": "where I should"
+          }
+        },
+        {
+          "targetText": "déposer mon dossier",
+          "baseText": {
+            "de": "meine Unterlagen abgeben",
+            "en": "submit my application"
+          }
+        },
+        {
+          "targetText": "de renouvellement ?",
+          "baseText": {
+            "de": "für die Verlängerung?",
+            "en": "for renewal?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "déposer",
+          "baseText": {
+            "de": "abgeben, einreichen",
+            "en": "submit"
+          }
+        },
+        {
+          "targetText": "mon dossier",
+          "baseText": {
+            "de": "meine Antragsunterlagen",
+            "en": "my application file"
+          }
+        },
+        {
+          "targetText": "de renouvellement",
+          "baseText": {
+            "de": "für die Verlängerung",
+            "en": "for renewal"
+          }
+        },
+        {
+          "targetText": "titre de séjour",
+          "baseText": {
+            "de": "Aufenthaltstitel",
+            "en": "residence permit"
+          }
+        },
+        {
+          "targetText": "deuxième étage",
+          "baseText": {
+            "de": "zweiter Stock",
+            "en": "second floor"
+          }
+        },
+        {
+          "targetText": "le guichet",
+          "baseText": {
+            "de": "der Schalter",
+            "en": "the counter"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pouvez-vous me dire où je dois ",
+        "answer": "déposer",
+        "after": " mon dossier de renouvellement ?",
+        "fallbackChoices": [
+          "déposez",
+          "déposé",
+          "déposer",
+          "déposons"
+        ]
+      },
+      "speakRequired": [
+        "dire",
+        "déposer",
+        "dossier"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang begrüßt dich die Mitarbeiterin: „Bonjour, que venez-vous faire aujourd'hui ?“",
+        "en": "The receptionist greets you: “Bonjour, que venez-vous faire aujourd'hui ?”"
+      },
+      "trophyWord": {
+        "word": "dossier",
+        "meaning": {
+          "de": "Antragsunterlagen",
+          "en": "application file"
+        },
+        "example": "Je viens déposer mon dossier au guichet.",
+        "whyThisWord": {
+          "de": "Dossier bezeichnet hier alle Unterlagen zu einem Antrag.",
+          "en": "Here dossier means the complete set of papers for an application."
+        }
+      },
+      "distractors": [
+        "où dois-je",
+        "de renouveler ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Wegweiser zu mehreren Stockwerken neben einem Empfangsschalter.",
+        "en": "A sign lists the floors beside a reception desk."
+      },
+      "songMood": "Konzentriert und höflich.",
+      "visualNotes": "A sign lists the floors beside a reception desk."
+    },
+    {
+      "slug": "rubrique-sur-le-formulaire",
+      "title": {
+        "de": "Eine Rubrik im Formular",
+        "en": "A box on the form"
+      },
+      "situation": {
+        "de": "Du bringst einen Antrag ins Rathaus. Bei einer Rubrik bist du dir unsicher.",
+        "en": "You take an application to the town hall. One box isn't clear to you."
+      },
+      "pedagogicalGoal": "Mit comment fragst du nach dem Vorgehen. Im eingebetteten Fragesatz bleibt das Verb hinter je oder vous.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez une question sur la première page ?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zur ersten Seite?",
+            "en": "Do you have a question about the first page?"
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire comment je remplis cette partie du formulaire ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wie ich diesen Teil des Formulars ausfülle?",
+            "en": "Could you tell me how to fill in this part of the form?"
+          }
+        },
+        {
+          "targetText": "Indiquez votre adresse actuelle. Si vous déménagez bientôt, ajoutez la date prévue.",
+          "baseText": {
+            "de": "Tragen Sie Ihre jetzige Adresse ein. Wenn Sie bald umziehen, ergänzen Sie das geplante Datum.",
+            "en": "Enter your current address. If you're moving soon, add the planned date."
+          }
+        },
+        {
+          "targetText": "Pouvez-vous préciser où je note la date du déménagement ?",
+          "baseText": {
+            "de": "Können Sie genauer sagen, wo ich das Umzugsdatum eintrage?",
+            "en": "Could you clarify where I should write the moving date?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Comment + sujet + verbe",
+        "rule": {
+          "de": "Mit comment fragst du nach dem Vorgehen. Im eingebetteten Fragesatz bleibt das Verb hinter je oder vous.",
+          "en": "Use comment to ask about the procedure. In the embedded question the verb stays after je or vous."
+        },
+        "examples": [
+          {
+            "targetText": "Pouvez-vous me dire comment je remplis cette partie du formulaire ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wie ich diesen Teil des Formulars ausfülle?",
+              "en": "Could you tell me how to fill in this part of the form?"
+            },
+            "highlight": "comment je remplis"
+          },
+          {
+            "targetText": "Pouvez-vous me montrer comment vous classez ces feuilles ?",
+            "baseText": {
+              "de": "Können Sie mir zeigen, wie Sie diese Blätter sortieren?",
+              "en": "Could you show me how you file these sheets?"
+            },
+            "highlight": "comment vous classez ces feuilles"
+          }
+        ]
+      },
+      "cloze": [
+        "Pouvez-vous préciser ",
+        {
+          "kind": "connector",
+          "answer": "où",
+          "choices": [
+            "dont",
+            "où",
+            "lequel",
+            "combien de"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "note",
+          "choices": [
+            "notent",
+            "notez",
+            "notons",
+            "note"
+          ],
+          "cue": "noter (je)"
+        },
+        " la date du déménagement ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pouvez-vous me dire",
+          "baseText": {
+            "de": "Können Sie mir sagen,",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "comment je remplis",
+          "baseText": {
+            "de": "wie ich ausfülle",
+            "en": "how I fill in"
+          }
+        },
+        {
+          "targetText": "cette partie",
+          "baseText": {
+            "de": "diesen Teil",
+            "en": "this part"
+          }
+        },
+        {
+          "targetText": "du formulaire ?",
+          "baseText": {
+            "de": "des Formulars?",
+            "en": "of the form?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "première page",
+          "baseText": {
+            "de": "erste Seite",
+            "en": "first page"
+          }
+        },
+        {
+          "targetText": "cette partie",
+          "baseText": {
+            "de": "dieser Teil",
+            "en": "this part"
+          }
+        },
+        {
+          "targetText": "du formulaire",
+          "baseText": {
+            "de": "des Formulars",
+            "en": "of the form"
+          }
+        },
+        {
+          "targetText": "adresse actuelle",
+          "baseText": {
+            "de": "derzeitige Adresse",
+            "en": "current address"
+          }
+        },
+        {
+          "targetText": "date prévue",
+          "baseText": {
+            "de": "geplantes Datum",
+            "en": "planned date"
+          }
+        },
+        {
+          "targetText": "déménagement",
+          "baseText": {
+            "de": "Umzug",
+            "en": "move to a new address"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pouvez-vous me dire comment je ",
+        "answer": "remplis",
+        "after": " cette partie du formulaire ?",
+        "fallbackChoices": [
+          "remplissons",
+          "remplis",
+          "remplissent",
+          "remplissez"
+        ]
+      },
+      "speakRequired": [
+        "remplis",
+        "partie",
+        "formulaire"
+      ],
+      "sceneCaption": {
+        "de": "Im Rathaus schaut der Mitarbeiter auf die erste Seite: „Vous avez une question sur la première page ?“",
+        "en": "At the town hall the clerk looks at the first page: “Vous avez une question sur la première page ?”"
+      },
+      "trophyWord": {
+        "word": "formulaire",
+        "meaning": {
+          "de": "Formular",
+          "en": "form"
+        },
+        "example": "Je vérifie le formulaire avant de le signer.",
+        "whyThisWord": {
+          "de": "Ein formulaire hat Felder, die du ausfüllst; ein dossier kann mehrere solcher Formulare enthalten.",
+          "en": "A formulaire has spaces to fill in; a dossier may contain several such forms."
+        }
+      },
+      "distractors": [
+        "pour les deux bureaux",
+        "le dernier bus ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Formular mit Adresszeilen liegt auf einem Holzschalter.",
+        "en": "A form with address lines lies on a wooden counter."
+      },
+      "songMood": "Geduldig und aufmerksam.",
+      "visualNotes": "A form with address lines lies on a wooden counter."
+    },
+    {
+      "slug": "un-justificatif-recent",
+      "title": {
+        "de": "Das Datum auf dem Beleg",
+        "en": "The date on the document"
+      },
+      "situation": {
+        "de": "Für deinen Termin hast du einen Adressnachweis dabei. Erkundige dich bei der Sachbearbeiterin nach dem Zeitpunkt der Vorlage.",
+        "en": "You have proof of address for your appointment. Ask the clerk at what stage she needs to see it."
+      },
+      "pedagogicalGoal": "Quand fragt nach dem Zeitpunkt. Im Nebensatz lautet die Reihenfolge quand je dois, nicht quand dois-je.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez apporté les papiers pour votre nouvelle adresse ?",
+          "baseText": {
+            "de": "Haben Sie die Unterlagen für Ihre neue Adresse mitgebracht?",
+            "en": "Did you bring the paperwork for your new address?"
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire quand je dois présenter mon justificatif de domicile ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wann ich meinen Adressnachweis vorlegen muss?",
+            "en": "Could you tell me when I need to show my proof of address?"
+          }
+        },
+        {
+          "targetText": "Maintenant, si vous voulez. Mais votre facture date de l'an dernier ; il m'en faut une plus récente.",
+          "baseText": {
+            "de": "Jetzt, wenn Sie möchten. Ihre Rechnung ist aber vom letzten Jahr; ich brauche eine neuere.",
+            "en": "Now, if you like. But your bill is from last year; I need a more recent one."
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire où je peux imprimer ma dernière facture ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wo ich meine neueste Rechnung ausdrucken kann?",
+            "en": "Could you tell me where I can print my latest bill?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quand dans une interrogation indirecte",
+        "rule": {
+          "de": "Quand fragt nach dem Zeitpunkt. Im Nebensatz lautet die Reihenfolge quand je dois, nicht quand dois-je.",
+          "en": "Quand asks for the time. Inside another question use quand je dois, without inverting dois and je."
+        },
+        "examples": [
+          {
+            "targetText": "Pouvez-vous me dire quand je dois présenter mon justificatif de domicile ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wann ich meinen Adressnachweis vorlegen muss?",
+              "en": "Could you tell me when I need to show my proof of address?"
+            },
+            "highlight": "quand je dois présenter"
+          },
+          {
+            "targetText": "Pouvez-vous me dire quand les cours reprennent ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wann die Kurse wieder beginnen?",
+              "en": "Could you tell me when the classes start again?"
+            },
+            "highlight": "quand les cours reprennent"
+          }
+        ]
+      },
+      "cloze": [
+        "Pouvez-vous me dire ",
+        {
+          "kind": "connector",
+          "answer": "où",
+          "choices": [
+            "combien de",
+            "lequel",
+            "dont",
+            "où"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "peuvent",
+            "pouvez",
+            "peux",
+            "pouvons"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " imprimer ma dernière facture ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Pouvez-vous me dire",
+          "baseText": {
+            "de": "Können Sie mir sagen,",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "quand je dois",
+          "baseText": {
+            "de": "wann ich … muss",
+            "en": "when I need to"
+          }
+        },
+        {
+          "targetText": "présenter mon justificatif",
+          "baseText": {
+            "de": "meinen Nachweis vorlegen",
+            "en": "show my proof"
+          }
+        },
+        {
+          "targetText": "de domicile ?",
+          "baseText": {
+            "de": "für den Wohnsitz?",
+            "en": "of address?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "les papiers",
+          "baseText": {
+            "de": "die Unterlagen",
+            "en": "the paperwork"
+          }
+        },
+        {
+          "targetText": "présenter",
+          "baseText": {
+            "de": "vorlegen",
+            "en": "show, present"
+          }
+        },
+        {
+          "targetText": "justificatif de domicile",
+          "baseText": {
+            "de": "Adressnachweis",
+            "en": "proof of address"
+          }
+        },
+        {
+          "targetText": "facture",
+          "baseText": {
+            "de": "Rechnung",
+            "en": "bill"
+          }
+        },
+        {
+          "targetText": "de l'an dernier",
+          "baseText": {
+            "de": "vom letzten Jahr",
+            "en": "from last year"
+          }
+        },
+        {
+          "targetText": "plus récente",
+          "baseText": {
+            "de": "neueren Datums",
+            "en": "more recent"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pouvez-vous me dire quand je dois ",
+        "answer": "présenter",
+        "after": " mon justificatif de domicile ?",
+        "fallbackChoices": [
+          "présentez",
+          "présentant",
+          "présenter",
+          "présenté"
+        ]
+      },
+      "speakRequired": [
+        "présenter",
+        "justificatif",
+        "domicile"
+      ],
+      "sceneCaption": {
+        "de": "Die Sachbearbeiterin zeigt auf die Mappe in deiner Hand: „Vous avez apporté les papiers pour votre nouvelle adresse ?“",
+        "en": "The clerk points to the folder in your hand: “Vous avez apporté les papiers pour votre nouvelle adresse ?”"
+      },
+      "trophyWord": {
+        "word": "justificatif",
+        "meaning": {
+          "de": "Beleg, Nachweis",
+          "en": "supporting document"
+        },
+        "example": "Ce justificatif porte bien votre nom et votre adresse.",
+        "whyThisWord": {
+          "de": "Mit justificatif fragst du nach einem Dokument, das eine Angabe belegt.",
+          "en": "Justificatif identifies a document that supports a piece of information."
+        }
+      },
+      "distractors": [
+        "quand dois-je",
+        "présenter ma justificatif"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mappe mit einer Rechnung und einem Brief auf einem Schreibtisch.",
+        "en": "A folder containing a bill and a letter sits on a desk."
+      },
+      "songMood": "Ruhig und genau.",
+      "visualNotes": "A folder containing a bill and a letter sits on a desk."
+    },
+    {
+      "slug": "atelier-de-ceramique",
+      "title": {
+        "de": "Ein Platz im Keramikkurs",
+        "en": "A place in the pottery class"
+      },
+      "situation": {
+        "de": "Am Rathaus hängt ein Plakat für einen Keramikkurs. Du gehst zum Empfang.",
+        "en": "A pottery workshop is advertised at the town hall. You stop at reception."
+      },
+      "pedagogicalGoal": "Si bedeutet hier ob. Es leitet eine eingebettete Frage ein, auf die die andere Person mit Ja oder Nein antworten könnte.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous venez pour les activités du mercredi ?",
+          "baseText": {
+            "de": "Kommen Sie wegen der Aktivitäten am Mittwoch?",
+            "en": "Are you here about the Wednesday activities?"
+          }
+        },
+        {
+          "targetText": "Savez-vous si une inscription est encore possible pour l'atelier de céramique ?",
+          "baseText": {
+            "de": "Wissen Sie, ob man sich für den Keramikkurs noch anmelden kann?",
+            "en": "Do you know whether it's still possible to register for the pottery workshop?"
+          }
+        },
+        {
+          "targetText": "Le groupe est complet. Je peux vous mettre sur la liste d'attente.",
+          "baseText": {
+            "de": "Die Gruppe ist voll. Ich kann Sie auf die Warteliste setzen.",
+            "en": "The group is full. I can put you on the waiting list."
+          }
+        },
+        {
+          "targetText": "Savez-vous comment on me prévient si une place se libère ?",
+          "baseText": {
+            "de": "Wissen Sie, wie ich benachrichtigt werde, wenn ein Platz frei wird?",
+            "en": "Do you know how I'll be notified if a place opens up?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si pour une question fermée",
+        "rule": {
+          "de": "Si bedeutet hier ob. Es leitet eine eingebettete Frage ein, auf die die andere Person mit Ja oder Nein antworten könnte.",
+          "en": "Here si means whether. It introduces an embedded question the listener could answer yes or no."
+        },
+        "examples": [
+          {
+            "targetText": "Savez-vous si une inscription est encore possible pour l'atelier de céramique ?",
+            "baseText": {
+              "de": "Wissen Sie, ob man sich für den Keramikkurs noch anmelden kann?",
+              "en": "Do you know whether it's still possible to register for the pottery workshop?"
+            },
+            "highlight": "si une inscription est encore possible"
+          },
+          {
+            "targetText": "Savez-vous si le cours commence demain ?",
+            "baseText": {
+              "de": "Wissen Sie, ob der Kurs morgen beginnt?",
+              "en": "Do you know whether the course starts tomorrow?"
+            },
+            "highlight": "si le cours commence demain"
+          }
+        ]
+      },
+      "cloze": [
+        "Savez-vous ",
+        {
+          "kind": "connector",
+          "answer": "comment",
+          "choices": [
+            "lequel",
+            "dont",
+            "comment",
+            "combien de"
+          ]
+        },
+        " on me ",
+        {
+          "kind": "form",
+          "answer": "prévient",
+          "choices": [
+            "préviennent",
+            "prévenez",
+            "prévenons",
+            "prévient"
+          ],
+          "cue": "prévenir (on)"
+        },
+        " si une place se libère ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Savez-vous",
+          "baseText": {
+            "de": "Wissen Sie,",
+            "en": "Do you know"
+          }
+        },
+        {
+          "targetText": "si une inscription",
+          "baseText": {
+            "de": "ob eine Anmeldung",
+            "en": "whether registration"
+          }
+        },
+        {
+          "targetText": "est encore possible",
+          "baseText": {
+            "de": "noch möglich ist",
+            "en": "is still possible"
+          }
+        },
+        {
+          "targetText": "pour l'atelier de céramique ?",
+          "baseText": {
+            "de": "für den Keramikkurs?",
+            "en": "for the pottery workshop?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "activités du mercredi",
+          "baseText": {
+            "de": "Mittwochsangebote",
+            "en": "Wednesday activities"
+          }
+        },
+        {
+          "targetText": "une inscription",
+          "baseText": {
+            "de": "eine Anmeldung",
+            "en": "registration"
+          }
+        },
+        {
+          "targetText": "encore possible",
+          "baseText": {
+            "de": "noch möglich",
+            "en": "still possible"
+          }
+        },
+        {
+          "targetText": "atelier de céramique",
+          "baseText": {
+            "de": "Keramikkurs",
+            "en": "pottery workshop"
+          }
+        },
+        {
+          "targetText": "le groupe est complet",
+          "baseText": {
+            "de": "die Gruppe ist voll",
+            "en": "the group is full"
+          }
+        },
+        {
+          "targetText": "liste d'attente",
+          "baseText": {
+            "de": "Warteliste",
+            "en": "waiting list"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Savez-vous si une inscription est encore ",
+        "answer": "possible",
+        "after": " pour l'atelier de céramique ?",
+        "fallbackChoices": [
+          "possibles",
+          "possible",
+          "possibilité",
+          "possibilités"
+        ]
+      },
+      "speakRequired": [
+        "inscription",
+        "possible",
+        "céramique"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Kursplakat begrüßt dich der Mitarbeiter: „Vous venez pour les activités du mercredi ?“",
+        "en": "The clerk greets you beside the workshop poster: “Vous venez pour les activités du mercredi ?”"
+      },
+      "trophyWord": {
+        "word": "inscription",
+        "meaning": {
+          "de": "Anmeldung",
+          "en": "registration"
+        },
+        "example": "Votre inscription à l'atelier se fait sur place.",
+        "whyThisWord": {
+          "de": "Inscription bezeichnet die Anmeldung zu einem Kurs oder Angebot.",
+          "en": "Inscription can refer to signing up for a class or activity."
+        }
+      },
+      "distractors": [
+        "est encore possibles",
+        "pour l'atelier de la céramique ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein buntes Kursplakat mit einer Tonschale neben dem Empfang.",
+        "en": "A workshop poster showing a clay bowl hangs beside the desk."
+      },
+      "songMood": "Interessiert und freundlich.",
+      "visualNotes": "A workshop poster showing a clay bowl hangs beside the desk."
+    },
+    {
+      "slug": "point-de-depart-du-delai",
+      "title": {
+        "de": "Ab wann zählt die Bearbeitungszeit?",
+        "en": "When does the processing time start?"
+      },
+      "situation": {
+        "de": "Du hast Unterlagen eingereicht und liest den Bearbeitungshinweis auf deiner Empfangsbestätigung.",
+        "en": "You've submitted some paperwork and are reading the processing note on your receipt."
+      },
+      "pedagogicalGoal": "Savez-vous si le délai commence ist eine Frage nach dem Beginn einer Frist. Nach si stehen Subjekt und Verb wie in einem Aussagesatz.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous souhaitez une précision sur le suivi de votre demande ?",
+          "baseText": {
+            "de": "Möchten Sie etwas Genaueres zum Stand Ihres Antrags wissen?",
+            "en": "Would you like more detail about how your application is tracked?"
+          }
+        },
+        {
+          "targetText": "Savez-vous si le délai commence le jour où vous recevez ma demande ?",
+          "baseText": {
+            "de": "Wissen Sie, ob die Bearbeitungszeit an dem Tag beginnt, an dem Sie meinen Antrag erhalten?",
+            "en": "Do you know whether the processing time starts the day you receive my application?"
+          }
+        },
+        {
+          "targetText": "Ici, on compte à partir du dossier complet. Il nous manque encore la photo.",
+          "baseText": {
+            "de": "Hier zählen wir ab dem Zeitpunkt, zu dem die Unterlagen vollständig sind. Uns fehlt noch das Foto.",
+            "en": "Here we count from when the file is complete. We still need the photo."
+          }
+        },
+        {
+          "targetText": "Savez-vous si je peux vous envoyer la photo aujourd'hui ?",
+          "baseText": {
+            "de": "Wissen Sie, ob ich Ihnen das Foto heute schicken kann?",
+            "en": "Do you know whether I can send you the photo today?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Si + sujet + verbe",
+        "rule": {
+          "de": "Savez-vous si le délai commence ist eine Frage nach dem Beginn einer Frist. Nach si stehen Subjekt und Verb wie in einem Aussagesatz.",
+          "en": "Savez-vous si le délai commence asks about the start of a processing period. After si, use ordinary subject–verb order."
+        },
+        "examples": [
+          {
+            "targetText": "Savez-vous si le délai commence le jour où vous recevez ma demande ?",
+            "baseText": {
+              "de": "Wissen Sie, ob die Bearbeitungszeit an dem Tag beginnt, an dem Sie meinen Antrag erhalten?",
+              "en": "Do you know whether the processing time starts the day you receive my application?"
+            },
+            "highlight": "si le délai commence"
+          },
+          {
+            "targetText": "Savez-vous si la salle est ouverte le samedi ?",
+            "baseText": {
+              "de": "Wissen Sie, ob der Saal samstags geöffnet ist?",
+              "en": "Do you know whether the room is open on Saturdays?"
+            },
+            "highlight": "si la salle est ouverte"
+          }
+        ]
+      },
+      "cloze": [
+        "Savez-vous ",
+        {
+          "kind": "connector",
+          "answer": "si",
+          "choices": [
+            "lequel",
+            "si",
+            "dont",
+            "combien de"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "peux",
+          "choices": [
+            "pouvons",
+            "pouvez",
+            "peuvent",
+            "peux"
+          ],
+          "cue": "pouvoir (je)"
+        },
+        " vous envoyer la photo aujourd'hui ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Savez-vous",
+          "baseText": {
+            "de": "Wissen Sie,",
+            "en": "Do you know"
+          }
+        },
+        {
+          "targetText": "si le délai commence",
+          "baseText": {
+            "de": "ob die Bearbeitungszeit beginnt",
+            "en": "whether the processing time starts"
+          }
+        },
+        {
+          "targetText": "le jour où",
+          "baseText": {
+            "de": "an dem Tag, an dem",
+            "en": "on the day when"
+          }
+        },
+        {
+          "targetText": "vous recevez ma demande ?",
+          "baseText": {
+            "de": "Sie meinen Antrag erhalten?",
+            "en": "you receive my application?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "une précision",
+          "baseText": {
+            "de": "eine genauere Angabe",
+            "en": "a clarification"
+          }
+        },
+        {
+          "targetText": "suivi de votre demande",
+          "baseText": {
+            "de": "Bearbeitungsstand Ihres Antrags",
+            "en": "tracking your application"
+          }
+        },
+        {
+          "targetText": "le délai",
+          "baseText": {
+            "de": "die Frist",
+            "en": "the time allowed or required"
+          }
+        },
+        {
+          "targetText": "le jour où",
+          "baseText": {
+            "de": "an dem Tag, an dem",
+            "en": "on the day when"
+          }
+        },
+        {
+          "targetText": "à partir de",
+          "baseText": {
+            "de": "ab, von … an",
+            "en": "starting from"
+          }
+        },
+        {
+          "targetText": "dossier complet",
+          "baseText": {
+            "de": "vollständige Unterlagen",
+            "en": "complete application file"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Savez-vous si le délai commence le jour où vous ",
+        "answer": "recevez",
+        "after": " ma demande ?",
+        "fallbackChoices": [
+          "recevons",
+          "reçoivent",
+          "recevez",
+          "recevoir"
+        ]
+      },
+      "speakRequired": [
+        "délai",
+        "commence",
+        "demande"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin sieht, dass du den Hinweis auf dem Empfangsbeleg liest: „Vous souhaitez une précision sur le suivi de votre demande ?“",
+        "en": "The clerk sees you reading the note on your receipt: “Vous souhaitez une précision sur le suivi de votre demande ?”"
+      },
+      "trophyWord": {
+        "word": "délai",
+        "meaning": {
+          "de": "Frist, Bearbeitungszeit",
+          "en": "time limit or processing period"
+        },
+        "example": "Le délai indiqué sur ce reçu est de deux semaines.",
+        "whyThisWord": {
+          "de": "Délai kann eine Frist oder eine Wartezeit bezeichnen; der Zusammenhang zeigt, was gemeint ist.",
+          "en": "Délai may mean a deadline or a length of time; context tells you which."
+        }
+      },
+      "distractors": [
+        "où je range mon vélo",
+        "le jour férié suivant."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Empfangsbestätigung liegt neben einer Unterlagenmappe.",
+        "en": "A receipt lies beside an application folder."
+      },
+      "songMood": "Aufmerksam und sachlich.",
+      "visualNotes": "A receipt lies beside an application folder."
+    },
+    {
+      "slug": "une-demarche-en-ligne",
+      "title": {
+        "de": "Online oder vor Ort?",
+        "en": "Online or in person?"
+      },
+      "situation": {
+        "de": "An einer Servicestelle erkundigst du dich nach der Erneuerung deiner Karte. Du möchtest einen weiteren Weg vermeiden.",
+        "en": "At a service desk you ask about renewing your card. You hope to avoid another trip."
+      },
+      "pedagogicalGoal": "Mit si je peux fragst du, ob dir eine Möglichkeit offensteht. Si leitet die Frage ein; peux bleibt bei je.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous voulez préparer le renouvellement de votre carte ?",
+          "baseText": {
+            "de": "Möchten Sie die Verlängerung Ihrer Karte vorbereiten?",
+            "en": "Would you like to prepare your card renewal?"
+          }
+        },
+        {
+          "targetText": "Savez-vous si je peux faire toute la démarche en ligne depuis chez moi ?",
+          "baseText": {
+            "de": "Wissen Sie, ob ich das ganze Verfahren von zu Hause aus online erledigen kann?",
+            "en": "Do you know whether I can complete the whole process online from home?"
+          }
+        },
+        {
+          "targetText": "Vous pouvez envoyer le formulaire, mais la photo doit être prise ici.",
+          "baseText": {
+            "de": "Sie können das Formular einschicken, aber das Foto muss hier gemacht werden.",
+            "en": "You can send the form, but the photo has to be taken here."
+          }
+        },
+        {
+          "targetText": "Savez-vous si je dois prendre rendez-vous pour la photo ?",
+          "baseText": {
+            "de": "Wissen Sie, ob ich für das Foto einen Termin vereinbaren muss?",
+            "en": "Do you know whether I need to book an appointment for the photo?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Poser une question sur une possibilité",
+        "rule": {
+          "de": "Mit si je peux fragst du, ob dir eine Möglichkeit offensteht. Si leitet die Frage ein; peux bleibt bei je.",
+          "en": "Use si je peux to ask whether an option is open to you. Si introduces the question; peux agrees with je."
+        },
+        "examples": [
+          {
+            "targetText": "Savez-vous si je peux faire toute la démarche en ligne depuis chez moi ?",
+            "baseText": {
+              "de": "Wissen Sie, ob ich das ganze Verfahren von zu Hause aus online erledigen kann?",
+              "en": "Do you know whether I can complete the whole process online from home?"
+            },
+            "highlight": "si je peux faire toute la démarche"
+          },
+          {
+            "targetText": "Savez-vous si les bureaux ferment tôt le vendredi ?",
+            "baseText": {
+              "de": "Wissen Sie, ob die Büros freitags früh schließen?",
+              "en": "Do you know whether the offices close early on Fridays?"
+            },
+            "highlight": "si les bureaux ferment tôt"
+          }
+        ]
+      },
+      "cloze": [
+        "Savez-vous ",
+        {
+          "kind": "connector",
+          "answer": "si",
+          "choices": [
+            "dont",
+            "lequel",
+            "si",
+            "combien de"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "dois",
+          "choices": [
+            "doit",
+            "devons",
+            "devez",
+            "dois"
+          ],
+          "cue": "devoir (je)"
+        },
+        " prendre rendez-vous pour la photo ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Savez-vous si",
+          "baseText": {
+            "de": "Wissen Sie, ob",
+            "en": "Do you know whether"
+          }
+        },
+        {
+          "targetText": "je peux faire",
+          "baseText": {
+            "de": "ich erledigen kann",
+            "en": "I can complete"
+          }
+        },
+        {
+          "targetText": "toute la démarche en ligne",
+          "baseText": {
+            "de": "das ganze Verfahren online",
+            "en": "the whole process online"
+          }
+        },
+        {
+          "targetText": "depuis chez moi ?",
+          "baseText": {
+            "de": "von zu Hause aus?",
+            "en": "from home?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le renouvellement",
+          "baseText": {
+            "de": "die Verlängerung",
+            "en": "the renewal"
+          }
+        },
+        {
+          "targetText": "ma carte",
+          "baseText": {
+            "de": "meine Karte",
+            "en": "my card"
+          }
+        },
+        {
+          "targetText": "la démarche",
+          "baseText": {
+            "de": "das Verfahren",
+            "en": "the administrative process"
+          }
+        },
+        {
+          "targetText": "en ligne",
+          "baseText": {
+            "de": "online",
+            "en": "online"
+          }
+        },
+        {
+          "targetText": "depuis chez moi",
+          "baseText": {
+            "de": "von zu Hause aus",
+            "en": "from home"
+          }
+        },
+        {
+          "targetText": "prendre rendez-vous",
+          "baseText": {
+            "de": "einen Termin vereinbaren",
+            "en": "book an appointment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Savez-vous si je peux ",
+        "answer": "faire",
+        "after": " toute la démarche en ligne depuis chez moi ?",
+        "fallbackChoices": [
+          "fait",
+          "faisant",
+          "faire",
+          "faites"
+        ]
+      },
+      "speakRequired": [
+        "démarche",
+        "ligne",
+        "moi"
+      ],
+      "sceneCaption": {
+        "de": "Am Servicetresen schaut der Mitarbeiter auf deine Karte: „Vous voulez préparer le renouvellement de votre carte ?“",
+        "en": "At the service desk the clerk looks at your card: “Vous voulez préparer le renouvellement de votre carte ?”"
+      },
+      "trophyWord": {
+        "word": "démarche",
+        "meaning": {
+          "de": "Behördengang, Verfahren",
+          "en": "administrative procedure"
+        },
+        "example": "Cette démarche commence par un court formulaire.",
+        "whyThisWord": {
+          "de": "Démarche bezeichnet hier die Schritte, die man für ein Anliegen erledigt.",
+          "en": "Here démarche means the steps needed to get something done."
+        }
+      },
+      "distractors": [
+        "à la gare voisine",
+        "une photo de vacances"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kartenschalter mit Computer und einer leeren Dokumentenablage.",
+        "en": "A card service desk with a computer and an empty document tray."
+      },
+      "songMood": "Praktisch und konzentriert.",
+      "visualNotes": "A card service desk with a computer and an empty document tray."
+    },
+    {
+      "slug": "la-signature-du-mandat",
+      "title": {
+        "de": "Der Auftrag für die Bank",
+        "en": "The bank authorization"
+      },
+      "situation": {
+        "de": "In der Bank liest du ein Formular für eine Einzugsermächtigung. Kläre, welche Art von Unterschrift gemeint ist.",
+        "en": "At the bank you're reading a direct-debit form. Clarify what kind of signature it requires."
+      },
+      "pedagogicalGoal": "Ce que steht für das unbekannte Objekt von entendez. Nach ce que folgt das Subjekt vous, dann das Verb.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Quelle partie du mandat souhaitez-vous vérifier ?",
+          "baseText": {
+            "de": "Welchen Teil der Ermächtigung möchten Sie prüfen?",
+            "en": "Which part of the authorization would you like to check?"
+          }
+        },
+        {
+          "targetText": "Je voudrais savoir ce que vous entendez par signature originale sur ce mandat.",
+          "baseText": {
+            "de": "Ich würde gern wissen, was Sie auf dieser Ermächtigung unter einer Originalunterschrift verstehen.",
+            "en": "I'd like to know what you mean by an original signature on this authorization."
+          }
+        },
+        {
+          "targetText": "Il nous faut le papier signé à la main, pas seulement une copie par courriel.",
+          "baseText": {
+            "de": "Wir brauchen das handschriftlich unterzeichnete Papier, nicht nur eine Kopie per E-Mail.",
+            "en": "We need the paper signed by hand, not just a copy sent by email."
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire où je dois envoyer le mandat signé ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, wohin ich die unterschriebene Ermächtigung schicken muss?",
+            "en": "Could you tell me where I should send the signed authorization?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ce que comme objet",
+        "rule": {
+          "de": "Ce que steht für das unbekannte Objekt von entendez. Nach ce que folgt das Subjekt vous, dann das Verb.",
+          "en": "Ce que stands for the unknown object of entendez. The subject vous and the verb follow it."
+        },
+        "examples": [
+          {
+            "targetText": "Je voudrais savoir ce que vous entendez par signature originale sur ce mandat.",
+            "baseText": {
+              "de": "Ich würde gern wissen, was Sie auf dieser Ermächtigung unter einer Originalunterschrift verstehen.",
+              "en": "I'd like to know what you mean by an original signature on this authorization."
+            },
+            "highlight": "ce que vous entendez par"
+          },
+          {
+            "targetText": "Je voudrais savoir ce que vous proposez pour demain.",
+            "baseText": {
+              "de": "Ich würde gern wissen, was Sie für morgen vorschlagen.",
+              "en": "I'd like to know what you suggest for tomorrow."
+            },
+            "highlight": "ce que vous proposez"
+          }
+        ]
+      },
+      "cloze": [
+        "Pouvez-vous me dire ",
+        {
+          "kind": "connector",
+          "answer": "où",
+          "choices": [
+            "combien de",
+            "où",
+            "dont",
+            "lequel"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "dois",
+          "choices": [
+            "devons",
+            "doivent",
+            "dois",
+            "devez"
+          ],
+          "cue": "devoir (je)"
+        },
+        " envoyer le mandat signé ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Je voudrais savoir",
+          "baseText": {
+            "de": "Ich würde gern wissen,",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "ce que vous entendez",
+          "baseText": {
+            "de": "was Sie verstehen",
+            "en": "what you mean"
+          }
+        },
+        {
+          "targetText": "par signature originale",
+          "baseText": {
+            "de": "unter Originalunterschrift",
+            "en": "by an original signature"
+          }
+        },
+        {
+          "targetText": "sur ce mandat.",
+          "baseText": {
+            "de": "auf dieser Ermächtigung.",
+            "en": "on this authorization."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "le mandat",
+          "baseText": {
+            "de": "die Ermächtigung",
+            "en": "the authorization"
+          }
+        },
+        {
+          "targetText": "vérifier",
+          "baseText": {
+            "de": "prüfen",
+            "en": "check"
+          }
+        },
+        {
+          "targetText": "ce que vous entendez par",
+          "baseText": {
+            "de": "was Sie unter … verstehen",
+            "en": "what you mean by"
+          }
+        },
+        {
+          "targetText": "signature originale",
+          "baseText": {
+            "de": "Originalunterschrift",
+            "en": "original signature"
+          }
+        },
+        {
+          "targetText": "à la main",
+          "baseText": {
+            "de": "von Hand",
+            "en": "by hand"
+          }
+        },
+        {
+          "targetText": "par courriel",
+          "baseText": {
+            "de": "per E-Mail",
+            "en": "by email"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je voudrais savoir ce que vous ",
+        "answer": "entendez",
+        "after": " par signature originale sur ce mandat.",
+        "fallbackChoices": [
+          "entendons",
+          "entendent",
+          "entendre",
+          "entendez"
+        ]
+      },
+      "speakRequired": [
+        "savoir",
+        "signature",
+        "mandat"
+      ],
+      "sceneCaption": {
+        "de": "In der Bank zeigt die Beraterin auf die Ermächtigung: „Quelle partie du mandat souhaitez-vous vérifier ?“",
+        "en": "At the bank the adviser points to the authorization form: “Quelle partie du mandat souhaitez-vous vérifier ?”"
+      },
+      "trophyWord": {
+        "word": "signature",
+        "meaning": {
+          "de": "Unterschrift",
+          "en": "signature"
+        },
+        "example": "Votre signature doit figurer au bas de ce mandat.",
+        "whyThisWord": {
+          "de": "Signature ist die Unterschrift; signer bezeichnet die Handlung.",
+          "en": "Signature is the written signature; signer is the act of signing."
+        }
+      },
+      "distractors": [
+        "ce qui vous entendez",
+        "sur cette mandat."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mandatsformular und ein Kugelschreiber liegen auf dem Tisch.",
+        "en": "An authorization form and a pen are on the table."
+      },
+      "songMood": "Bedacht und verbindlich.",
+      "visualNotes": "An authorization form and a pen are on the table."
+    },
+    {
+      "slug": "une-piece-sur-la-liste",
+      "title": {
+        "de": "Zwei Dokumente mit ähnlichen Namen",
+        "en": "Two similarly named documents"
+      },
+      "situation": {
+        "de": "Du zeigst einer Mitarbeiterin den Brief zu deinem Antrag. In der Liste der Unterlagen ist ein Eintrag markiert.",
+        "en": "You show a clerk the letter about your application. One item on its list of documents is marked."
+      },
+      "pedagogicalGoal": "Je dois fournir verlangt ein Objekt. Ce que ersetzt dieses Objekt in der indirekten Frage; je bleibt als Subjekt sichtbar.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Vous avez une question sur la lettre que nous vous avons envoyée ?",
+          "baseText": {
+            "de": "Haben Sie eine Frage zu dem Brief, den wir Ihnen geschickt haben?",
+            "en": "Do you have a question about the letter we sent you?"
+          }
+        },
+        {
+          "targetText": "Je voudrais savoir ce que je dois fournir comme pièce pour cette demande.",
+          "baseText": {
+            "de": "Ich würde gern wissen, welche Unterlage ich für diesen Antrag einreichen muss.",
+            "en": "I'd like to know what document I need to provide for this application."
+          }
+        },
+        {
+          "targetText": "Il manque le relevé d'identité bancaire, le RIB. Un relevé de compte, c'est autre chose.",
+          "baseText": {
+            "de": "Es fehlt der Nachweis Ihrer Bankverbindung, der RIB. Ein Kontoauszug ist etwas anderes.",
+            "en": "The bank details document, the RIB, is missing. A bank statement is something different."
+          }
+        },
+        {
+          "targetText": "Savez-vous où je trouve le RIB dans mon application bancaire ?",
+          "baseText": {
+            "de": "Wissen Sie, wo ich das RIB in meiner Banking-App finde?",
+            "en": "Do you know where I can find the RIB in my banking app?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ce que devant un sujet",
+        "rule": {
+          "de": "Je dois fournir verlangt ein Objekt. Ce que ersetzt dieses Objekt in der indirekten Frage; je bleibt als Subjekt sichtbar.",
+          "en": "Je dois fournir needs an object. Ce que replaces that object inside the embedded question; je remains the subject."
+        },
+        "examples": [
+          {
+            "targetText": "Je voudrais savoir ce que je dois fournir comme pièce pour cette demande.",
+            "baseText": {
+              "de": "Ich würde gern wissen, welche Unterlage ich für diesen Antrag einreichen muss.",
+              "en": "I'd like to know what document I need to provide for this application."
+            },
+            "highlight": "ce que je dois fournir"
+          },
+          {
+            "targetText": "Je voudrais savoir ce que nous devons garder après le cours.",
+            "baseText": {
+              "de": "Ich würde gern wissen, was wir nach dem Kurs behalten sollen.",
+              "en": "I'd like to know what we should keep after the class."
+            },
+            "highlight": "ce que nous devons garder"
+          }
+        ]
+      },
+      "cloze": [
+        "Savez-vous ",
+        {
+          "kind": "connector",
+          "answer": "où",
+          "choices": [
+            "dont",
+            "combien de",
+            "lequel",
+            "où"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "trouve",
+          "choices": [
+            "trouvons",
+            "trouve",
+            "trouvez",
+            "trouvent"
+          ],
+          "cue": "trouver (je)"
+        },
+        " le RIB dans mon application bancaire ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Je voudrais savoir",
+          "baseText": {
+            "de": "Ich würde gern wissen,",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "ce que je dois fournir",
+          "baseText": {
+            "de": "was ich einreichen muss",
+            "en": "what I need to provide"
+          }
+        },
+        {
+          "targetText": "comme pièce",
+          "baseText": {
+            "de": "als Unterlage",
+            "en": "as a document"
+          }
+        },
+        {
+          "targetText": "pour cette demande.",
+          "baseText": {
+            "de": "für diesen Antrag.",
+            "en": "for this application."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "la lettre",
+          "baseText": {
+            "de": "der Brief",
+            "en": "the letter"
+          }
+        },
+        {
+          "targetText": "fournir",
+          "baseText": {
+            "de": "einreichen, vorlegen",
+            "en": "provide"
+          }
+        },
+        {
+          "targetText": "comme pièce",
+          "baseText": {
+            "de": "als Unterlage",
+            "en": "as a supporting document"
+          }
+        },
+        {
+          "targetText": "relevé de compte",
+          "baseText": {
+            "de": "Kontoauszug",
+            "en": "bank statement"
+          }
+        },
+        {
+          "targetText": "autre chose",
+          "baseText": {
+            "de": "etwas anderes",
+            "en": "something different"
+          }
+        },
+        {
+          "targetText": "application bancaire",
+          "baseText": {
+            "de": "Banking-App",
+            "en": "banking app"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Je voudrais savoir ce que je dois ",
+        "answer": "fournir",
+        "after": " comme pièce pour cette demande.",
+        "fallbackChoices": [
+          "fourni",
+          "fournissent",
+          "fournir",
+          "fournissant"
+        ]
+      },
+      "speakRequired": [
+        "fournir",
+        "pièce",
+        "demande"
+      ],
+      "sceneCaption": {
+        "de": "Die Mitarbeiterin schaut sich den Brief an und fragt: „Vous avez une question sur la lettre que nous vous avons envoyée ?“",
+        "en": "The clerk looks at the letter and asks: “Vous avez une question sur la lettre que nous vous avons envoyée ?”"
+      },
+      "trophyWord": {
+        "word": "pièce",
+        "meaning": {
+          "de": "Unterlage, Beleg",
+          "en": "supporting document"
+        },
+        "example": "Joignez une pièce qui porte votre nom.",
+        "whyThisWord": {
+          "de": "Pièce steht in einem Antrag oft für einen Beleg und nicht für ein Zimmer.",
+          "en": "In an application, pièce often means a supporting document rather than a room."
+        }
+      },
+      "distractors": [
+        "ce qui je dois fournir",
+        "pour cette demandes."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Brief mit einer kurzen Dokumentenliste und einem markierten Eintrag.",
+        "en": "A letter with a short list of documents and one highlighted entry."
+      },
+      "songMood": "Fragend, dann klar.",
+      "visualNotes": "A letter with a short list of documents and one highlighted entry."
+    },
+    {
+      "slug": "attestation-du-stage",
+      "title": {
+        "de": "Welcher Zeitraum ist bescheinigt?",
+        "en": "Which period is covered?"
+      },
+      "situation": {
+        "de": "Im Sekretariat liegt deine Praktikumsbescheinigung zur Abholung bereit. Du möchtest die Daten prüfen.",
+        "en": "Your internship certificate is ready at the office. You want to check the dates."
+      },
+      "pedagogicalGoal": "Si prüft, ob eine Vermutung stimmt; comment fragt, auf welche Weise etwas geschieht. In beiden eingebetteten Fragen bleibt das Subjekt vor dem Verb.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Souhaitez-vous relire le document avant de partir ?",
+          "baseText": {
+            "de": "Möchten Sie das Dokument noch einmal lesen, bevor Sie gehen?",
+            "en": "Would you like to read over the document before you leave?"
+          }
+        },
+        {
+          "targetText": "Pouvez-vous me dire si cette attestation couvre aussi ma dernière semaine de stage ?",
+          "baseText": {
+            "de": "Können Sie mir sagen, ob diese Bescheinigung auch meine letzte Praktikumswoche abdeckt?",
+            "en": "Could you tell me whether this certificate also covers the final week of my internship?"
+          }
+        },
+        {
+          "targetText": "Elle s'arrête au vingt. Vous avez travaillé jusqu'à la fin du mois ?",
+          "baseText": {
+            "de": "Sie geht bis zum Zwanzigsten. Haben Sie bis zum Monatsende gearbeitet?",
+            "en": "It runs through the twentieth. Did you work until the end of the month?"
+          }
+        },
+        {
+          "targetText": "Oui. Je voudrais savoir comment vous corrigez la date de fin.",
+          "baseText": {
+            "de": "Ja. Ich würde gern wissen, wie Sie das Enddatum berichtigen.",
+            "en": "Yes. I'd like to know how you correct the end date."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Vérifier puis demander une précision",
+        "rule": {
+          "de": "Si prüft, ob eine Vermutung stimmt; comment fragt, auf welche Weise etwas geschieht. In beiden eingebetteten Fragen bleibt das Subjekt vor dem Verb.",
+          "en": "Si checks whether an assumption is correct; comment asks how something happens. In both embedded questions the subject stays before the verb."
+        },
+        "examples": [
+          {
+            "targetText": "Pouvez-vous me dire si cette attestation couvre aussi ma dernière semaine de stage ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, ob diese Bescheinigung auch meine letzte Praktikumswoche abdeckt?",
+              "en": "Could you tell me whether this certificate also covers the final week of my internship?"
+            },
+            "highlight": "si cette attestation couvre"
+          },
+          {
+            "targetText": "Pouvez-vous me dire comment la liste est classée ?",
+            "baseText": {
+              "de": "Können Sie mir sagen, wie die Liste geordnet ist?",
+              "en": "Could you tell me how the list is organized?"
+            },
+            "highlight": "comment la liste est classée"
+          }
+        ]
+      },
+      "cloze": [
+        "Oui. Je voudrais savoir ",
+        {
+          "kind": "connector",
+          "answer": "comment",
+          "choices": [
+            "dont",
+            "comment",
+            "lequel",
+            "combien de"
+          ]
+        },
+        " vous ",
+        {
+          "kind": "form",
+          "answer": "corrigez",
+          "choices": [
+            "corrige",
+            "corrigeons",
+            "corrigent",
+            "corrigez"
+          ],
+          "cue": "corriger (vous)"
+        },
+        " la date de fin."
+      ],
+      "chunks": [
+        {
+          "targetText": "Pouvez-vous me dire",
+          "baseText": {
+            "de": "Können Sie mir sagen,",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "si cette attestation couvre",
+          "baseText": {
+            "de": "ob diese Bescheinigung abdeckt",
+            "en": "whether this certificate covers"
+          }
+        },
+        {
+          "targetText": "aussi ma dernière semaine",
+          "baseText": {
+            "de": "auch meine letzte Woche",
+            "en": "my final week as well"
+          }
+        },
+        {
+          "targetText": "de stage ?",
+          "baseText": {
+            "de": "im Praktikum?",
+            "en": "of the internship?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "relire",
+          "baseText": {
+            "de": "noch einmal lesen",
+            "en": "read over"
+          }
+        },
+        {
+          "targetText": "cette attestation",
+          "baseText": {
+            "de": "diese Bescheinigung",
+            "en": "this certificate"
+          }
+        },
+        {
+          "targetText": "couvre",
+          "baseText": {
+            "de": "deckt ab",
+            "en": "covers"
+          }
+        },
+        {
+          "targetText": "semaine de stage",
+          "baseText": {
+            "de": "Praktikumswoche",
+            "en": "week of an internship"
+          }
+        },
+        {
+          "targetText": "fin du mois",
+          "baseText": {
+            "de": "Monatsende",
+            "en": "end of the month"
+          }
+        },
+        {
+          "targetText": "date de fin",
+          "baseText": {
+            "de": "Enddatum",
+            "en": "end date"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Pouvez-vous me dire si cette attestation ",
+        "answer": "couvre",
+        "after": " aussi ma dernière semaine de stage ?",
+        "fallbackChoices": [
+          "couvrent",
+          "couvrons",
+          "couvre",
+          "couvrez"
+        ]
+      },
+      "speakRequired": [
+        "attestation",
+        "couvre",
+        "semaine"
+      ],
+      "sceneCaption": {
+        "de": "Im Sekretariat legt der Mitarbeiter das Dokument auf den Tisch: „Souhaitez-vous relire le document avant de partir ?“",
+        "en": "At the office the clerk places the document on the desk: “Souhaitez-vous relire le document avant de partir ?”"
+      },
+      "trophyWord": {
+        "word": "attestation",
+        "meaning": {
+          "de": "Bescheinigung",
+          "en": "certificate, written statement"
+        },
+        "example": "Cette attestation précise les dates de mon stage.",
+        "whyThisWord": {
+          "de": "Eine attestation bescheinigt einen Sachverhalt, hier einen Zeitraum.",
+          "en": "An attestation is a document certifying a fact, here a period of time."
+        }
+      },
+      "distractors": [
+        "sa prochaine réunion",
+        "sur mon passeport ?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Praktikumsbescheinigung und ein Kalender liegen nebeneinander.",
+        "en": "An internship certificate and a calendar lie side by side."
+      },
+      "songMood": "Sorgfältig und sachlich.",
+      "visualNotes": "An internship certificate and a calendar lie side by side."
+    },
+    {
+      "slug": "confirmation-du-rendez-vous",
+      "title": {
+        "de": "Die Nachricht nach der Buchung",
+        "en": "The message after booking"
+      },
+      "situation": {
+        "de": "Du hast online einen Termin ausgewählt und wartest auf die Bestätigung. Dein Postfach bleibt leer, also rufst du am Empfang an.",
+        "en": "You chose an appointment slot online and are waiting for the confirmation. Your inbox stays empty, so you call reception."
+      },
+      "pedagogicalGoal": "Quand fragt nach einem Zeitpunkt. Ce que ersetzt das fehlende Objekt eines Verbs; auf ce que folgt deshalb noch ein Subjekt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Service des rendez-vous, bonjour. Je vous écoute.",
+          "baseText": {
+            "de": "Terminservice, guten Tag. Was kann ich für Sie tun?",
+            "en": "Appointments desk, hello. How can I help you?"
+          }
+        },
+        {
+          "targetText": "J'ai choisi un créneau en ligne. Savez-vous quand je recevrai la confirmation écrite ?",
+          "baseText": {
+            "de": "Ich habe online einen Termin ausgewählt. Wissen Sie, wann ich die schriftliche Bestätigung erhalte?",
+            "en": "I chose an appointment slot online. Do you know when I'll receive the written confirmation?"
+          }
+        },
+        {
+          "targetText": "Je ne vois qu'une demande provisoire. Il reste une case à cocher sur la dernière page.",
+          "baseText": {
+            "de": "Ich sehe nur eine vorläufige Anfrage. Auf der letzten Seite muss noch ein Kästchen angekreuzt werden.",
+            "en": "I can only see a provisional request. There's one more box to check on the last page."
+          }
+        },
+        {
+          "targetText": "Pouvez-vous préciser ce que je dois cocher pour valider ma demande ?",
+          "baseText": {
+            "de": "Können Sie genauer sagen, was ich ankreuzen muss, um meine Anfrage abzuschließen?",
+            "en": "Could you clarify what I need to check to confirm my request?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Quand et ce que",
+        "rule": {
+          "de": "Quand fragt nach einem Zeitpunkt. Ce que ersetzt das fehlende Objekt eines Verbs; auf ce que folgt deshalb noch ein Subjekt.",
+          "en": "Quand asks about a time. Ce que replaces the missing object of a verb, so a subject still follows ce que."
+        },
+        "examples": [
+          {
+            "targetText": "J'ai choisi un créneau en ligne. Savez-vous quand je recevrai la confirmation écrite ?",
+            "baseText": {
+              "de": "Ich habe online einen Termin ausgewählt. Wissen Sie, wann ich die schriftliche Bestätigung erhalte?",
+              "en": "I chose an appointment slot online. Do you know when I'll receive the written confirmation?"
+            },
+            "highlight": "quand je recevrai la confirmation"
+          },
+          {
+            "targetText": "Pouvez-vous préciser ce que vous attendez de moi ?",
+            "baseText": {
+              "de": "Können Sie genauer sagen, was Sie von mir erwarten?",
+              "en": "Could you clarify what you expect from me?"
+            },
+            "highlight": "ce que vous attendez"
+          }
+        ]
+      },
+      "cloze": [
+        "Pouvez-vous préciser ",
+        {
+          "kind": "connector",
+          "answer": "ce que",
+          "choices": [
+            "ce que",
+            "ce qui",
+            "dont",
+            "quoi"
+          ]
+        },
+        " je ",
+        {
+          "kind": "form",
+          "answer": "dois",
+          "choices": [
+            "doivent",
+            "devez",
+            "dois",
+            "devons"
+          ],
+          "cue": "devoir (je)"
+        },
+        " cocher pour valider ma demande ?"
+      ],
+      "chunks": [
+        {
+          "targetText": "J'ai choisi un créneau",
+          "baseText": {
+            "de": "Ich habe einen Termin ausgewählt",
+            "en": "I chose an appointment slot"
+          }
+        },
+        {
+          "targetText": "en ligne. Savez-vous quand",
+          "baseText": {
+            "de": "online. Wissen Sie, wann",
+            "en": "online. Do you know when"
+          }
+        },
+        {
+          "targetText": "je recevrai",
+          "baseText": {
+            "de": "ich erhalten werde",
+            "en": "I'll receive"
+          }
+        },
+        {
+          "targetText": "la confirmation écrite ?",
+          "baseText": {
+            "de": "die schriftliche Bestätigung?",
+            "en": "the written confirmation?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "choisir un créneau",
+          "baseText": {
+            "de": "einen Termin auswählen",
+            "en": "choose a time slot"
+          }
+        },
+        {
+          "targetText": "je vous écoute",
+          "baseText": {
+            "de": "ich höre, bitte sprechen Sie",
+            "en": "go ahead, I'm listening"
+          }
+        },
+        {
+          "targetText": "confirmation écrite",
+          "baseText": {
+            "de": "schriftliche Bestätigung",
+            "en": "written confirmation"
+          }
+        },
+        {
+          "targetText": "demande provisoire",
+          "baseText": {
+            "de": "vorläufige Anfrage",
+            "en": "provisional request"
+          }
+        },
+        {
+          "targetText": "une case à cocher",
+          "baseText": {
+            "de": "ein anzukreuzendes Kästchen",
+            "en": "a checkbox"
+          }
+        },
+        {
+          "targetText": "valider",
+          "baseText": {
+            "de": "bestätigen, abschließen",
+            "en": "confirm, finalize"
+          }
+        }
+      ],
+      "recall": {
+        "before": "J'ai choisi un créneau en ligne. Savez-vous quand je ",
+        "answer": "recevrai",
+        "after": " la confirmation écrite ?",
+        "fallbackChoices": [
+          "recevrez",
+          "recevrons",
+          "recevrai",
+          "recevront"
+        ]
+      },
+      "speakRequired": [
+        "recevrai",
+        "confirmation",
+        "écrite"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon meldet sich die Mitarbeiterin: „Service des rendez-vous, bonjour. Je vous écoute.“",
+        "en": "The receptionist answers the phone: “Service des rendez-vous, bonjour. Je vous écoute.”"
+      },
+      "trophyWord": {
+        "word": "confirmation",
+        "meaning": {
+          "de": "Bestätigung",
+          "en": "confirmation"
+        },
+        "example": "Sans confirmation écrite, je préfère vérifier l'heure du rendez-vous.",
+        "whyThisWord": {
+          "de": "Eine confirmation zeigt, dass eine Buchung tatsächlich bestätigt wurde.",
+          "en": "A confirmation tells you that a booking has actually been confirmed."
+        }
+      },
+      "distractors": [
+        "mon prochain train",
+        "la confirmation écrit ?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Laptop zeigt eine Terminseite; daneben liegt ein Notizzettel.",
+        "en": "A laptop shows an appointment page, with a piece of notepaper beside it."
+      },
+      "songMood": "Zielgerichtet und freundlich.",
+      "visualNotes": "A laptop shows an appointment page, with a piece of notepaper beside it."
+    }
+  ]
+}

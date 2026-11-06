@@ -1,0 +1,50 @@
+{
+  "file": "english-p9.json",
+  "source": "22dc282b7bb45a30258b95564b7935f2099f3bec02bfcabc011a8cc1d389eb82",
+  "result": "0264cbe0a9bc082ec9abdc4d6657356a3a2df31cb52ea63012f1b0c454e87a77",
+  "edits": 11,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "english-p9.json",
+      "lessonsRead": [
+        "two-card-payments",
+        "the-blue-mug",
+        "the-kettle-switch",
+        "another-missed-visit",
+        "call-after-three",
+        "lamp-without-a-receipt",
+        "pictures-of-the-box",
+        "which-maple-street",
+        "when-it-gets-warm",
+        "the-friday-window"
+      ],
+      "concerns": [
+        "Story logic, staging (no new grammar; recycles P1 past/P6 passive/P3 polite+conditional/P4 relatives/P5 indirect questions; be supposed to only L10), register (all 10 formal, no banned casual tokens; 'mostly formal' satisfied), base glosses, highlights (every highlight is a verbatim substring), timing (4 turns each), standalone utterances, recall/speak tokens (no contractions), trophies (10 of 10 match plan, none from the taken list) all verified.",
+        "L2 recall: fallback 'showed' is also correct in the visible context (My receipt ___ twelve dollars for a mug that was marked down to eight) — uniqueness breach, fixed.",
+        "Connector chips in L1, L3, L4, L6, L10 mix prepositions/possessive (during, despite, whose) into connector slots; L9 ships two grammatical alternatives (although, unless). Replaced with same-category chips that are never correct; answer index unchanged.",
+        "L6 them₂ 'the receipt in this box is blank' is implausible; faded thermal receipt is the credible US-counter version. L6 title 'Der Kaufnachweis' pre-announces them₂'s obstacle; retitled. Slug left (id-bearing, not learner-visible).",
+        "L10 them₁ gloss 'nicht mitgefahren' misreads 'didn't go out'; corrected.",
+        "pedagogicalGoal duplicates pattern.rule.de in every lesson — consistent with the draft convention, left as is.",
+        "L3 'Does your store guarantee cover that?' is acceptable US usage (compound 'store guarantee'); verb reading is blocked by the missing 'to'. Left unchanged.",
+        "Cues ('im simple past', 'simple present mit …', 'Partizip nach has', 'Grundform nach to') disambiguate every form blank whose other inflection would be grammatical (L2 buy, L6 show, L8 have, L10 confirm)."
+      ]
+    },
+    {
+      "file": "english-plan.json",
+      "lessonsRead": [
+        "P9 L1–L10 beats and trophies"
+      ],
+      "concerns": [
+        "P9 beats and the ten trophies match the drafted lessons. Plan's P4 note 'no whose' is superseded by the newer architecture (P4 L7–8 where, whose), so 'whose' chips in P9 are legitimate distractors."
+      ]
+    }
+  ],
+  "openIssues": [
+    "Codex holds an in-flight claim on this scope; these edits are a spec for the claim holder, not an applied change.",
+    "L6 them-turn text changed; it has no TTS yet (draft), but any later recording must use the new string. Base-text change also alters the English corpus hash once merged (editions coupling per architecture).",
+    "All ten lessons are register 'formal'; acceptable under 'mostly formal', but P9 has no casual counterpoint — confirm the validator does not require a mix.",
+    "pedagogicalGoal mirrors pattern.rule.de in every lesson; confirm the B1 validator does not flag duplicate text.",
+    "L3 'Does your store guarantee cover that?' left as-is; 'store's guarantee' would be marginally clearer but requires four coupled edits (dialogue, pattern example, chunk, trophy example) — owner's call."
+  ]
+}

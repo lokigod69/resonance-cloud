@@ -1,0 +1,1914 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 6,
+  "title": {
+    "de": "Was passiert mit meinem Auftrag?"
+  },
+  "subtitle": {
+    "de": "Unterscheide feste Abläufe, laufende Arbeiten und abgeschlossene Vorgänge."
+  },
+  "anchor": "Shape A: Eine Rückfrage greift eine neu aufgetauchte Einschränkung auf. Neuere Fable-Stufung vom 03.10.2026: L1–4 present simple passive, L5–7 present continuous passive, L8–9 past simple passive, L10 gemischt. Szenen und feste Trophäen der Planung wurden an diese Stufung angepasst. Formelle Einzelsituationen im amerikanischen Englisch. Unveröffentlichter Textentwurf; keine Freigabe.",
+  "lessons": [
+    {
+      "slug": "packages-at-the-front-desk",
+      "title": {
+        "de": "Pakete an der Rezeption"
+      },
+      "situation": {
+        "de": "Du erwartest ein Paket in deinem neuen Wohnhaus. Erkundige dich an der Rezeption nach dem Ablauf.",
+        "en": "You're expecting a package at your new apartment building. Ask at the front desk how deliveries work."
+      },
+      "pedagogicalGoal": "Bei einem regelmäßigen Ablauf steht are beim Plural vor dem Partizip. In der Frage rückt are vor das Subjekt: Are small packages … delivered?",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What would you like to know about deliveries here?",
+          "baseText": {
+            "de": "Was möchten Sie über Lieferungen hier wissen?"
+          }
+        },
+        {
+          "targetText": "Are small packages usually delivered to the front desk here?",
+          "baseText": {
+            "de": "Werden kleine Pakete hier normalerweise an der Rezeption abgegeben?"
+          }
+        },
+        {
+          "targetText": "Only until six. After that, drivers use the lockers by the stairs.",
+          "baseText": {
+            "de": "Nur bis sechs. Danach nutzen die Fahrer die Paketfächer an der Treppe."
+          }
+        },
+        {
+          "targetText": "How are the locker codes sent to residents?",
+          "baseText": {
+            "de": "Wie werden die Abholcodes an die Bewohner verschickt?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Present simple passive",
+        "rule": {
+          "de": "Bei einem regelmäßigen Ablauf steht are beim Plural vor dem Partizip. In der Frage rückt are vor das Subjekt: Are small packages … delivered?"
+        },
+        "examples": [
+          {
+            "targetText": "Are small packages usually delivered to the front desk here?",
+            "baseText": {
+              "de": "Werden kleine Pakete hier normalerweise an der Rezeption abgegeben?"
+            },
+            "highlight": "Are small packages usually delivered"
+          },
+          {
+            "targetText": "Are the mailboxes emptied every morning?",
+            "baseText": {
+              "de": "Werden die Briefkästen jeden Morgen geleert?"
+            },
+            "highlight": "Are the mailboxes emptied"
+          }
+        ]
+      },
+      "cloze": [
+        "How ",
+        {
+          "kind": "form",
+          "answer": "are",
+          "cue": "be",
+          "choices": [
+            "am",
+            "are",
+            "is",
+            "be"
+          ]
+        },
+        " the locker codes ",
+        {
+          "kind": "form",
+          "answer": "sent",
+          "cue": "send",
+          "choices": [
+            "sending",
+            "sends",
+            "send",
+            "sent"
+          ]
+        },
+        " to residents?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Are small packages",
+          "baseText": {
+            "de": "Werden kleine Pakete"
+          }
+        },
+        {
+          "targetText": "usually delivered",
+          "baseText": {
+            "de": "normalerweise abgegeben"
+          }
+        },
+        {
+          "targetText": "to the front desk",
+          "baseText": {
+            "de": "an der Rezeption"
+          }
+        },
+        {
+          "targetText": "here?",
+          "baseText": {
+            "de": "hier?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "small packages",
+          "baseText": {
+            "de": "kleine Pakete"
+          }
+        },
+        {
+          "targetText": "usually",
+          "baseText": {
+            "de": "normalerweise"
+          }
+        },
+        {
+          "targetText": "front desk",
+          "baseText": {
+            "de": "Rezeption"
+          }
+        },
+        {
+          "targetText": "lockers",
+          "baseText": {
+            "de": "Paketfächer"
+          }
+        },
+        {
+          "targetText": "by the stairs",
+          "baseText": {
+            "de": "an der Treppe"
+          }
+        },
+        {
+          "targetText": "locker codes",
+          "baseText": {
+            "de": "Abholcodes für die Paketfächer"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Are small packages usually ",
+        "answer": "delivered",
+        "after": " to the front desk here?",
+        "fallbackChoices": [
+          "delivers",
+          "delivered",
+          "delivering",
+          "deliver"
+        ]
+      },
+      "speakRequired": [
+        "packages",
+        "delivered",
+        "desk"
+      ],
+      "sceneCaption": {
+        "de": "An der Rezeption sieht die Mitarbeiterin vom Empfangsbuch auf: „What would you like to know about deliveries here?“"
+      },
+      "trophyWord": {
+        "word": "delivered",
+        "meaning": {
+          "de": "zugestellt"
+        },
+        "example": "Letters are delivered to each apartment.",
+        "whyThisWord": {
+          "de": "Mit delivered kannst du nach dem Ziel einer Lieferung fragen, ohne den Zusteller zu kennen."
+        }
+      },
+      "distractors": [
+        "behind the stairs",
+        "usually carry"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Rezeption im Eingangsbereich eines Wohnhauses; auf dem Tresen liegt ein Empfangsbuch."
+      },
+      "songMood": "Ruhige Neugier beim Einzug.",
+      "visualNotes": "Eine Rezeption im Eingangsbereich eines Wohnhauses; auf dem Tresen liegt ein Empfangsbuch."
+    },
+    {
+      "slug": "recycling-day",
+      "title": {
+        "de": "Der Tag für Altpapier"
+      },
+      "situation": {
+        "de": "Nach dem Auspacken stehen Kartons in deiner Wohnung. Frage den Hausmeister nach der Abholung.",
+        "en": "You've finished unpacking and have some cardboard boxes. Ask the building manager about collection."
+      },
+      "pedagogicalGoal": "Cardboard bezeichnet hier das Material und steht mit is. Bei einzelnen Kartons, boxes, brauchst du are. Das Partizip bleibt unverändert.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Are you looking for the recycling calendar?",
+          "baseText": {
+            "de": "Suchen Sie den Abholkalender?"
+          }
+        },
+        {
+          "targetText": "Is cardboard collected outside our building on the same day as glass?",
+          "baseText": {
+            "de": "Wird Karton vor unserem Haus am selben Tag abgeholt wie Glas?"
+          }
+        },
+        {
+          "targetText": "Yes, on Tuesday, but large boxes don't fit in the blue bin.",
+          "baseText": {
+            "de": "Ja, am Dienstag, aber große Kartons passen nicht in die blaue Tonne."
+          }
+        },
+        {
+          "targetText": "Where are large boxes left on Tuesday?",
+          "baseText": {
+            "de": "Wo werden große Kartons am Dienstag abgestellt?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Passive with material nouns",
+        "rule": {
+          "de": "Cardboard bezeichnet hier das Material und steht mit is. Bei einzelnen Kartons, boxes, brauchst du are. Das Partizip bleibt unverändert."
+        },
+        "examples": [
+          {
+            "targetText": "Is cardboard collected outside our building on the same day as glass?",
+            "baseText": {
+              "de": "Wird Karton vor unserem Haus am selben Tag abgeholt wie Glas?"
+            },
+            "highlight": "Is cardboard collected"
+          },
+          {
+            "targetText": "Are empty bottles collected at the same time?",
+            "baseText": {
+              "de": "Werden leere Flaschen zur selben Zeit abgeholt?"
+            },
+            "highlight": "Are empty bottles collected"
+          }
+        ]
+      },
+      "cloze": [
+        "Where ",
+        {
+          "kind": "form",
+          "answer": "are",
+          "cue": "be",
+          "choices": [
+            "is",
+            "be",
+            "are",
+            "am"
+          ]
+        },
+        " large boxes ",
+        {
+          "kind": "form",
+          "answer": "left",
+          "cue": "leave",
+          "choices": [
+            "leaving",
+            "leave",
+            "leaves",
+            "left"
+          ]
+        },
+        " on Tuesday?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Is cardboard collected",
+          "baseText": {
+            "de": "Wird Karton abgeholt"
+          }
+        },
+        {
+          "targetText": "outside our building",
+          "baseText": {
+            "de": "vor unserem Haus"
+          }
+        },
+        {
+          "targetText": "on the same day",
+          "baseText": {
+            "de": "am selben Tag"
+          }
+        },
+        {
+          "targetText": "as glass?",
+          "baseText": {
+            "de": "wie Glas?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cardboard",
+          "baseText": {
+            "de": "Karton als Material"
+          }
+        },
+        {
+          "targetText": "outside our building",
+          "baseText": {
+            "de": "vor unserem Haus"
+          }
+        },
+        {
+          "targetText": "the same day",
+          "baseText": {
+            "de": "derselbe Tag"
+          }
+        },
+        {
+          "targetText": "glass",
+          "baseText": {
+            "de": "Glas"
+          }
+        },
+        {
+          "targetText": "blue bin",
+          "baseText": {
+            "de": "blaue Tonne"
+          }
+        },
+        {
+          "targetText": "don't fit in",
+          "baseText": {
+            "de": "passen nicht hinein"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Is cardboard ",
+        "answer": "collected",
+        "after": " outside our building on the same day as glass?",
+        "fallbackChoices": [
+          "collected",
+          "collects",
+          "collect",
+          "collecting"
+        ]
+      },
+      "speakRequired": [
+        "cardboard",
+        "collected",
+        "glass"
+      ],
+      "sceneCaption": {
+        "de": "Im Hausflur hält der Hausmeister einen Papierkalender hoch: „Are you looking for the recycling calendar?“"
+      },
+      "trophyWord": {
+        "word": "collected",
+        "meaning": {
+          "de": "abgeholt"
+        },
+        "example": "Glass is collected every other week.",
+        "whyThisWord": {
+          "de": "Mit collected fragst du, wann etwas zur Abholung bereitstehen muss."
+        }
+      },
+      "distractors": [
+        "inside our kitchen",
+        "on the other side"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Hausflur mit einem Abholkalender und flach zusammengelegten Kartons."
+      },
+      "songMood": "Sachlich und zupackend.",
+      "visualNotes": "Ein Hausflur mit einem Abholkalender und flach zusammengelegten Kartons."
+    },
+    {
+      "slug": "broken-access-card",
+      "title": {
+        "de": "Die Zugangskarte"
+      },
+      "situation": {
+        "de": "Deine Zugangskarte funktioniert nicht. Erkläre dem Hausverwalter, worüber du Auskunft brauchst.",
+        "en": "Your access card doesn't work. Tell the property manager what you need to know."
+      },
+      "pedagogicalGoal": "How are … replaced fragt nach dem Verfahren. Für eine Ja-Nein-Frage lässt du das Fragewort weg und beginnst direkt mit Are.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What seems to be wrong with your access card?",
+          "baseText": {
+            "de": "Was scheint mit Ihrer Zugangskarte nicht zu stimmen?"
+          }
+        },
+        {
+          "targetText": "The chip is cracked. How are broken access cards replaced here?",
+          "baseText": {
+            "de": "Der Chip hat einen Riss. Wie werden defekte Zugangskarten hier ersetzt?"
+          }
+        },
+        {
+          "targetText": "I order a new one, but it won't arrive until Monday.",
+          "baseText": {
+            "de": "Ich bestelle eine neue, aber sie kommt erst am Montag."
+          }
+        },
+        {
+          "targetText": "Are temporary passes issued at this desk?",
+          "baseText": {
+            "de": "Werden an diesem Schalter vorläufige Ausweise ausgegeben?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Passive questions",
+        "rule": {
+          "de": "How are … replaced fragt nach dem Verfahren. Für eine Ja-Nein-Frage lässt du das Fragewort weg und beginnst direkt mit Are."
+        },
+        "examples": [
+          {
+            "targetText": "The chip is cracked. How are broken access cards replaced here?",
+            "baseText": {
+              "de": "Der Chip hat einen Riss. Wie werden defekte Zugangskarten hier ersetzt?"
+            },
+            "highlight": "How are broken access cards replaced"
+          },
+          {
+            "targetText": "Are new keys handed out at the main office?",
+            "baseText": {
+              "de": "Werden neue Schlüssel im Hauptbüro ausgegeben?"
+            },
+            "highlight": "Are new keys handed out"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Are",
+          "cue": "be",
+          "choices": [
+            "Be",
+            "Am",
+            "Are",
+            "Is"
+          ]
+        },
+        " temporary passes ",
+        {
+          "kind": "form",
+          "answer": "issued",
+          "cue": "issue",
+          "choices": [
+            "issues",
+            "issuing",
+            "issue",
+            "issued"
+          ]
+        },
+        " at this desk?"
+      ],
+      "chunks": [
+        {
+          "targetText": "The chip",
+          "baseText": {
+            "de": "Der Chip"
+          }
+        },
+        {
+          "targetText": "is cracked. How are",
+          "baseText": {
+            "de": "hat einen Riss. Wie werden"
+          }
+        },
+        {
+          "targetText": "broken access cards",
+          "baseText": {
+            "de": "defekte Zugangskarten"
+          }
+        },
+        {
+          "targetText": "replaced here?",
+          "baseText": {
+            "de": "hier ersetzt?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "chip",
+          "baseText": {
+            "de": "Chip"
+          }
+        },
+        {
+          "targetText": "cracked",
+          "baseText": {
+            "de": "mit einem Riss"
+          }
+        },
+        {
+          "targetText": "broken access cards",
+          "baseText": {
+            "de": "defekte Zugangskarten"
+          }
+        },
+        {
+          "targetText": "order a new one",
+          "baseText": {
+            "de": "eine neue bestellen"
+          }
+        },
+        {
+          "targetText": "temporary passes",
+          "baseText": {
+            "de": "vorläufige Ausweise"
+          }
+        },
+        {
+          "targetText": "at this desk",
+          "baseText": {
+            "de": "an diesem Schalter"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The chip is cracked. How are broken access cards ",
+        "answer": "replaced",
+        "after": " here?",
+        "fallbackChoices": [
+          "replace",
+          "replacing",
+          "replaced",
+          "replaces"
+        ]
+      },
+      "speakRequired": [
+        "chip",
+        "cards",
+        "replaced"
+      ],
+      "sceneCaption": {
+        "de": "Der Hausverwalter deutet auf die Karte in deiner Hand: „What seems to be wrong with your access card?“"
+      },
+      "trophyWord": {
+        "word": "replaced",
+        "meaning": {
+          "de": "ersetzt"
+        },
+        "example": "Lost keys are replaced at the main office.",
+        "whyThisWord": {
+          "de": "Du kannst nach Ersatz fragen, ohne schon zu wissen, wer ihn beschafft."
+        }
+      },
+      "distractors": [
+        "the nearest entrance",
+        "working again?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein kleiner Schalter im Wohnbüro; eine Zugangskarte liegt neben dem Lesegerät."
+      },
+      "songMood": "Leicht besorgt, dann lösungsorientiert.",
+      "visualNotes": "Ein kleiner Schalter im Wohnbüro; eine Zugangskarte liegt neben dem Lesegerät."
+    },
+    {
+      "slug": "room-requests",
+      "title": {
+        "de": "Ein Raum für die Lesegruppe"
+      },
+      "situation": {
+        "de": "Du fragst im Nachbarschaftszentrum nach einem Raum für eure Lesegruppe.",
+        "en": "You're asking about a room for your reading group at the community center."
+      },
+      "pedagogicalGoal": "Bei mehreren Anfragen heißt es are … approved. Steht nur eine einzelne Angabe als Subjekt, wechselt are zu is.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you have a date in mind for the reading group?",
+          "baseText": {
+            "de": "Haben Sie schon einen Termin für die Lesegruppe im Sinn?"
+          }
+        },
+        {
+          "targetText": "Before I choose a date, how are room requests approved here?",
+          "baseText": {
+            "de": "Bevor ich mich auf einen Termin festlege: Wie werden Raumanfragen hier genehmigt?"
+          }
+        },
+        {
+          "targetText": "The director signs them on Fridays. She needs the group size first.",
+          "baseText": {
+            "de": "Die Leiterin unterschreibt sie freitags. Zuerst braucht sie die Gruppengröße."
+          }
+        },
+        {
+          "targetText": "Where is the group size entered on this form?",
+          "baseText": {
+            "de": "Wo wird die Gruppengröße auf diesem Formular eingetragen?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Present passive of procedures",
+        "rule": {
+          "de": "Bei mehreren Anfragen heißt es are … approved. Steht nur eine einzelne Angabe als Subjekt, wechselt are zu is."
+        },
+        "examples": [
+          {
+            "targetText": "Before I choose a date, how are room requests approved here?",
+            "baseText": {
+              "de": "Bevor ich mich auf einen Termin festlege: Wie werden Raumanfragen hier genehmigt?"
+            },
+            "highlight": "how are room requests approved"
+          },
+          {
+            "targetText": "Where is the fee paid after the booking?",
+            "baseText": {
+              "de": "Wo wird die Gebühr nach der Buchung bezahlt?"
+            },
+            "highlight": "is the fee paid"
+          }
+        ]
+      },
+      "cloze": [
+        "Where ",
+        {
+          "kind": "form",
+          "answer": "is",
+          "cue": "be",
+          "choices": [
+            "be",
+            "is",
+            "are",
+            "am"
+          ]
+        },
+        " the group size ",
+        {
+          "kind": "form",
+          "answer": "entered",
+          "cue": "enter",
+          "choices": [
+            "enters",
+            "entering",
+            "entered",
+            "enter"
+          ]
+        },
+        " on this form?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Before I choose a date,",
+          "baseText": {
+            "de": "Bevor ich mich auf einen Termin festlege,"
+          }
+        },
+        {
+          "targetText": "how are",
+          "baseText": {
+            "de": "wie werden"
+          }
+        },
+        {
+          "targetText": "room requests",
+          "baseText": {
+            "de": "Raumanfragen"
+          }
+        },
+        {
+          "targetText": "approved here?",
+          "baseText": {
+            "de": "hier genehmigt?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "choose a date",
+          "baseText": {
+            "de": "einen Termin auswählen"
+          }
+        },
+        {
+          "targetText": "room requests",
+          "baseText": {
+            "de": "Raumanfragen"
+          }
+        },
+        {
+          "targetText": "director",
+          "baseText": {
+            "de": "Leiterin"
+          }
+        },
+        {
+          "targetText": "on Fridays",
+          "baseText": {
+            "de": "freitags"
+          }
+        },
+        {
+          "targetText": "group size",
+          "baseText": {
+            "de": "Gruppengröße"
+          }
+        },
+        {
+          "targetText": "on this form",
+          "baseText": {
+            "de": "auf diesem Formular"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Before I choose a date, how are room requests ",
+        "answer": "approved",
+        "after": " here?",
+        "fallbackChoices": [
+          "approve",
+          "approved",
+          "approving",
+          "approves"
+        ]
+      },
+      "speakRequired": [
+        "date",
+        "requests",
+        "approved"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang des Nachbarschaftszentrums öffnet der Mitarbeiter den Kalender: „Do you have a date in mind for the reading group?“"
+      },
+      "trophyWord": {
+        "word": "approved",
+        "meaning": {
+          "de": "genehmigt"
+        },
+        "example": "Room requests are approved once a week.",
+        "whyThisWord": {
+          "de": "Approved unterscheidet eine genehmigte Anfrage von einer bloß eingereichten."
+        }
+      },
+      "distractors": [
+        "after the meeting",
+        "room keys"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Wochenkalender, ein Bleistift und ein leeres Formular auf dem Empfangstresen."
+      },
+      "songMood": "Offen und planend.",
+      "visualNotes": "Ein Wochenkalender, ein Bleistift und ein leeres Formular auf dem Empfangstresen."
+    },
+    {
+      "slug": "delay-at-the-depot",
+      "title": {
+        "de": "Eine Sendung im Depot"
+      },
+      "situation": {
+        "de": "Die Sendungsverfolgung zeigt seit gestern dasselbe Depot. Du rufst beim Paketdienst an.",
+        "en": "Your tracking page has shown the same depot since yesterday. You call the delivery company."
+      },
+      "pedagogicalGoal": "Mit is being + Partizip beschreibst du einen Vorgang, der gerade andauert. In der indirekten Frage why my delivery is being delayed bleibt das Subjekt vor is.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "I have the tracking page open. What would you like me to check?",
+          "baseText": {
+            "de": "Ich habe die Sendungsverfolgung geöffnet. Was soll ich für Sie nachsehen?"
+          }
+        },
+        {
+          "targetText": "Can you tell me why my delivery is being delayed at the depot?",
+          "baseText": {
+            "de": "Können Sie mir sagen, warum sich meine Lieferung gerade im Depot verzögert?"
+          }
+        },
+        {
+          "targetText": "The street number is missing from the label. Someone is checking the order now.",
+          "baseText": {
+            "de": "Auf dem Etikett fehlt die Hausnummer. Jemand prüft gerade die Bestellung."
+          }
+        },
+        {
+          "targetText": "Is the address being checked against my original order?",
+          "baseText": {
+            "de": "Wird die Adresse gerade mit meiner ursprünglichen Bestellung abgeglichen?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Present continuous passive",
+        "rule": {
+          "de": "Mit is being + Partizip beschreibst du einen Vorgang, der gerade andauert. In der indirekten Frage why my delivery is being delayed bleibt das Subjekt vor is."
+        },
+        "examples": [
+          {
+            "targetText": "Can you tell me why my delivery is being delayed at the depot?",
+            "baseText": {
+              "de": "Können Sie mir sagen, warum sich meine Lieferung gerade im Depot verzögert?"
+            },
+            "highlight": "my delivery is being delayed"
+          },
+          {
+            "targetText": "My package is being loaded onto the truck now.",
+            "baseText": {
+              "de": "Mein Paket wird gerade auf den Lastwagen geladen."
+            },
+            "highlight": "is being loaded"
+          }
+        ]
+      },
+      "cloze": [
+        "Is the address ",
+        {
+          "kind": "form",
+          "answer": "being",
+          "cue": "be, ongoing",
+          "choices": [
+            "been",
+            "be",
+            "being",
+            "was"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "checked",
+          "cue": "check",
+          "choices": [
+            "checks",
+            "checked",
+            "check",
+            "checking"
+          ]
+        },
+        " against my original order?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Can you tell me",
+          "baseText": {
+            "de": "Können Sie mir sagen,"
+          }
+        },
+        {
+          "targetText": "why my delivery",
+          "baseText": {
+            "de": "warum meine Lieferung"
+          }
+        },
+        {
+          "targetText": "is being delayed",
+          "baseText": {
+            "de": "sich gerade verzögert"
+          }
+        },
+        {
+          "targetText": "at the depot?",
+          "baseText": {
+            "de": "im Depot?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "tracking page",
+          "baseText": {
+            "de": "Seite zur Sendungsverfolgung"
+          }
+        },
+        {
+          "targetText": "delivery",
+          "baseText": {
+            "de": "Lieferung"
+          }
+        },
+        {
+          "targetText": "at the depot",
+          "baseText": {
+            "de": "im Depot"
+          }
+        },
+        {
+          "targetText": "street number",
+          "baseText": {
+            "de": "Hausnummer"
+          }
+        },
+        {
+          "targetText": "label",
+          "baseText": {
+            "de": "Etikett"
+          }
+        },
+        {
+          "targetText": "original order",
+          "baseText": {
+            "de": "ursprüngliche Bestellung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Can you tell me why my delivery is being ",
+        "answer": "delayed",
+        "after": " at the depot?",
+        "fallbackChoices": [
+          "delaying",
+          "delays",
+          "delayed",
+          "delay"
+        ]
+      },
+      "speakRequired": [
+        "delivery",
+        "delayed",
+        "depot"
+      ],
+      "sceneCaption": {
+        "de": "Am Telefon ruft der Mitarbeiter die Angaben zur Sendung auf: „I have the tracking page open. What would you like me to check?“"
+      },
+      "trophyWord": {
+        "word": "delayed",
+        "meaning": {
+          "de": "verzögert"
+        },
+        "example": "Traffic is being delayed by roadwork near the depot.",
+        "whyThisWord": {
+          "de": "Das Wort benennt eine Verzögerung; es sagt noch nicht, dass etwas ausfällt."
+        }
+      },
+      "distractors": [
+        "at the wrong counter",
+        "when my train"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Telefon neben einem Laptop mit einer offenen Sendungsverfolgung."
+      },
+      "songMood": "Geduldig, mit wachsender Klarheit.",
+      "visualNotes": "Ein Telefon neben einem Laptop mit einer offenen Sendungsverfolgung."
+    },
+    {
+      "slug": "table-in-the-truck",
+      "title": {
+        "de": "Der Tisch im Möbelwagen"
+      },
+      "situation": {
+        "de": "Du nimmst einen Tisch entgegen und sprichst den Fahrer beim Abladen an.",
+        "en": "You're receiving a table and speak to the driver as it's being unloaded."
+      },
+      "pedagogicalGoal": "Is being damaged lenkt den Blick auf den Schaden, der in diesem Moment entsteht. By that strap nennt die Ursache.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Could you stand back while I lower the table?",
+          "baseText": {
+            "de": "Könnten Sie bitte zurücktreten, während ich den Tisch herunterlasse?"
+          }
+        },
+        {
+          "targetText": "Please stop for a moment. The edge is being damaged by that strap.",
+          "baseText": {
+            "de": "Halten Sie bitte kurz an. Die Kante wird gerade von diesem Gurt beschädigt."
+          }
+        },
+        {
+          "targetText": "I'll loosen it. My partner is taking pictures for the store.",
+          "baseText": {
+            "de": "Ich lockere ihn. Mein Kollege macht Fotos für das Geschäft."
+          }
+        },
+        {
+          "targetText": "Is the whole table being photographed for the report?",
+          "baseText": {
+            "de": "Wird für den Bericht gerade der ganze Tisch fotografiert?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Being plus past participle",
+        "rule": {
+          "de": "Is being damaged lenkt den Blick auf den Schaden, der in diesem Moment entsteht. By that strap nennt die Ursache."
+        },
+        "examples": [
+          {
+            "targetText": "Please stop for a moment. The edge is being damaged by that strap.",
+            "baseText": {
+              "de": "Halten Sie bitte kurz an. Die Kante wird gerade von diesem Gurt beschädigt."
+            },
+            "highlight": "The edge is being damaged"
+          },
+          {
+            "targetText": "The floor is being scratched by the wheels.",
+            "baseText": {
+              "de": "Der Boden wird gerade von den Rädern zerkratzt."
+            },
+            "highlight": "is being scratched"
+          }
+        ]
+      },
+      "cloze": [
+        "Is the whole table ",
+        {
+          "kind": "form",
+          "answer": "being",
+          "cue": "be, ongoing",
+          "choices": [
+            "being",
+            "been",
+            "was",
+            "be"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "photographed",
+          "cue": "photograph",
+          "choices": [
+            "photographing",
+            "photographs",
+            "photographed",
+            "photograph"
+          ]
+        },
+        " for the report?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Please stop",
+          "baseText": {
+            "de": "Halten Sie bitte an"
+          }
+        },
+        {
+          "targetText": "for a moment. The edge",
+          "baseText": {
+            "de": "für einen Moment. Die Kante"
+          }
+        },
+        {
+          "targetText": "is being damaged",
+          "baseText": {
+            "de": "wird gerade beschädigt"
+          }
+        },
+        {
+          "targetText": "by that strap.",
+          "baseText": {
+            "de": "durch diesen Gurt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "stand back",
+          "baseText": {
+            "de": "zurücktreten"
+          }
+        },
+        {
+          "targetText": "lower the table",
+          "baseText": {
+            "de": "den Tisch herunterlassen"
+          }
+        },
+        {
+          "targetText": "edge",
+          "baseText": {
+            "de": "Kante"
+          }
+        },
+        {
+          "targetText": "strap",
+          "baseText": {
+            "de": "Gurt"
+          }
+        },
+        {
+          "targetText": "loosen it",
+          "baseText": {
+            "de": "ihn lockern"
+          }
+        },
+        {
+          "targetText": "report",
+          "baseText": {
+            "de": "Bericht"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Please stop for a moment. The edge is being ",
+        "answer": "damaged",
+        "after": " by that strap.",
+        "fallbackChoices": [
+          "damage",
+          "damages",
+          "damaging",
+          "damaged"
+        ]
+      },
+      "speakRequired": [
+        "edge",
+        "damaged",
+        "strap"
+      ],
+      "sceneCaption": {
+        "de": "An der offenen Ladefläche wendet sich der Fahrer an dich: „Could you stand back while I lower the table?“"
+      },
+      "trophyWord": {
+        "word": "damaged",
+        "meaning": {
+          "de": "beschädigt"
+        },
+        "example": "The box is being damaged by the rain.",
+        "whyThisWord": {
+          "de": "Mit damaged kannst du rechtzeitig auf einen entstehenden Schaden hinweisen."
+        }
+      },
+      "distractors": [
+        "on the receipt.",
+        "has already left"
+      ],
+      "placeholderCaption": {
+        "de": "An der Ladefläche eines Möbelwagens hängt ein Holztisch in einem Tragegurt."
+      },
+      "songMood": "Wachsam und bestimmt.",
+      "visualNotes": "An der Ladefläche eines Möbelwagens hängt ein Holztisch in einem Tragegurt."
+    },
+    {
+      "slug": "internet-installation",
+      "title": {
+        "de": "Während der Installation"
+      },
+      "situation": {
+        "de": "Ein Techniker arbeitet an deinem Internetanschluss. Du musst heute noch ein Videogespräch führen.",
+        "en": "A technician is working on your internet connection. You have a video call later today."
+      },
+      "pedagogicalGoal": "Equipment bezeichnet die Ausstattung als Ganzes und nimmt is, auch wenn du im Deutschen mehrere Geräte meinst. Being installed bezeichnet die laufende Installation.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you need to use the connection this afternoon?",
+          "baseText": {
+            "de": "Brauchen Sie den Anschluss heute Nachmittag?"
+          }
+        },
+        {
+          "targetText": "Yes. Is the new equipment being installed in my office right now?",
+          "baseText": {
+            "de": "Ja. Werden die neuen Geräte gerade in meinem Arbeitszimmer installiert?"
+          }
+        },
+        {
+          "targetText": "Just the router. The line itself still needs a test downstairs.",
+          "baseText": {
+            "de": "Nur der Router. Die Leitung selbst muss unten noch geprüft werden."
+          }
+        },
+        {
+          "targetText": "Is the line being tested while you work up here?",
+          "baseText": {
+            "de": "Wird die Leitung gerade geprüft, während Sie hier oben arbeiten?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Continuous passive with equipment",
+        "rule": {
+          "de": "Equipment bezeichnet die Ausstattung als Ganzes und nimmt is, auch wenn du im Deutschen mehrere Geräte meinst. Being installed bezeichnet die laufende Installation."
+        },
+        "examples": [
+          {
+            "targetText": "Yes. Is the new equipment being installed in my office right now?",
+            "baseText": {
+              "de": "Ja. Werden die neuen Geräte gerade in meinem Arbeitszimmer installiert?"
+            },
+            "highlight": "Is the new equipment being installed"
+          },
+          {
+            "targetText": "Is the furniture being moved to the other room?",
+            "baseText": {
+              "de": "Werden die Möbel gerade in das andere Zimmer gebracht?"
+            },
+            "highlight": "Is the furniture being moved"
+          }
+        ]
+      },
+      "cloze": [
+        "Is the line ",
+        {
+          "kind": "form",
+          "answer": "being",
+          "cue": "be, ongoing",
+          "choices": [
+            "was",
+            "being",
+            "be",
+            "been"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "tested",
+          "cue": "test",
+          "choices": [
+            "tests",
+            "testing",
+            "tested",
+            "test"
+          ]
+        },
+        " while you work up here?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Yes. Is the new",
+          "baseText": {
+            "de": "Ja. Werden die neuen"
+          }
+        },
+        {
+          "targetText": "equipment being installed",
+          "baseText": {
+            "de": "Geräte gerade installiert"
+          }
+        },
+        {
+          "targetText": "in my office",
+          "baseText": {
+            "de": "in meinem Arbeitszimmer"
+          }
+        },
+        {
+          "targetText": "right now?",
+          "baseText": {
+            "de": "in diesem Moment?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "connection",
+          "baseText": {
+            "de": "Anschluss"
+          }
+        },
+        {
+          "targetText": "new equipment",
+          "baseText": {
+            "de": "neue Geräte"
+          }
+        },
+        {
+          "targetText": "right now",
+          "baseText": {
+            "de": "gerade jetzt"
+          }
+        },
+        {
+          "targetText": "router",
+          "baseText": {
+            "de": "Router"
+          }
+        },
+        {
+          "targetText": "the line itself",
+          "baseText": {
+            "de": "die Leitung selbst"
+          }
+        },
+        {
+          "targetText": "downstairs",
+          "baseText": {
+            "de": "unten"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Yes. Is the new equipment being ",
+        "answer": "installed",
+        "after": " in my office right now?",
+        "fallbackChoices": [
+          "installs",
+          "installed",
+          "install",
+          "installing"
+        ]
+      },
+      "speakRequired": [
+        "equipment",
+        "installed",
+        "office"
+      ],
+      "sceneCaption": {
+        "de": "Der Techniker legt sein Werkzeug ab und fragt: „Do you need to use the connection this afternoon?“"
+      },
+      "trophyWord": {
+        "word": "installed",
+        "meaning": {
+          "de": "installiert"
+        },
+        "example": "A new router is being installed upstairs.",
+        "whyThisWord": {
+          "de": "Installed hilft dir zu klären, welcher Teil einer Anlage eingebaut wird."
+        }
+      },
+      "distractors": [
+        "in my car",
+        "last weekend?"
+      ],
+      "placeholderCaption": {
+        "de": "Werkzeug neben einem Router; eine Kabelrolle liegt auf dem Boden des Arbeitszimmers."
+      },
+      "songMood": "Konzentriert und erwartungsvoll.",
+      "visualNotes": "Werkzeug neben einem Router; eine Kabelrolle liegt auf dem Boden des Arbeitszimmers."
+    },
+    {
+      "slug": "canceled-class",
+      "title": {
+        "de": "Vor dem leeren Kursraum"
+      },
+      "situation": {
+        "de": "Der Raum für deinen Zeichenkurs ist leer. Am Empfang suchst du nach dem Grund.",
+        "en": "The room for your drawing class is empty. You stop at reception to find out why."
+      },
+      "pedagogicalGoal": "Last night legt ein abgeschlossenes Ereignis fest: was canceled. Bei einem Subjekt im Singular und einem abgeschlossenen Vorgang steht in der Frage Was vor dem Subjekt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Which class were you hoping to attend?",
+          "baseText": {
+            "de": "Welchen Kurs wollten Sie besuchen?"
+          }
+        },
+        {
+          "targetText": "My drawing class was canceled last night, according to this note.",
+          "baseText": {
+            "de": "Laut diesem Zettel wurde mein Zeichenkurs gestern Abend abgesagt."
+          }
+        },
+        {
+          "targetText": "That's right. We sent an email, but some addresses were missing.",
+          "baseText": {
+            "de": "Das stimmt. Wir haben eine E-Mail verschickt, aber einige Adressen fehlten."
+          }
+        },
+        {
+          "targetText": "Was a copy also posted on the bulletin board?",
+          "baseText": {
+            "de": "Wurde auch ein Exemplar am Schwarzen Brett ausgehängt?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past simple passive",
+        "rule": {
+          "de": "Last night legt ein abgeschlossenes Ereignis fest: was canceled. Bei einem Subjekt im Singular und einem abgeschlossenen Vorgang steht in der Frage Was vor dem Subjekt."
+        },
+        "examples": [
+          {
+            "targetText": "My drawing class was canceled last night, according to this note.",
+            "baseText": {
+              "de": "Laut diesem Zettel wurde mein Zeichenkurs gestern Abend abgesagt."
+            },
+            "highlight": "was canceled last night"
+          },
+          {
+            "targetText": "The lecture was postponed last Monday.",
+            "baseText": {
+              "de": "Der Vortrag wurde letzten Montag verschoben."
+            },
+            "highlight": "was postponed"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Was",
+          "cue": "be in the past",
+          "choices": [
+            "Were",
+            "Being",
+            "Was",
+            "Been"
+          ]
+        },
+        " a copy also ",
+        {
+          "kind": "form",
+          "answer": "posted",
+          "cue": "post",
+          "choices": [
+            "posted",
+            "posts",
+            "post",
+            "posting"
+          ]
+        },
+        " on the bulletin board?"
+      ],
+      "chunks": [
+        {
+          "targetText": "My drawing class",
+          "baseText": {
+            "de": "Mein Zeichenkurs"
+          }
+        },
+        {
+          "targetText": "was canceled",
+          "baseText": {
+            "de": "wurde abgesagt"
+          }
+        },
+        {
+          "targetText": "last night,",
+          "baseText": {
+            "de": "gestern Abend,"
+          }
+        },
+        {
+          "targetText": "according to this note.",
+          "baseText": {
+            "de": "laut diesem Zettel."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "drawing class",
+          "baseText": {
+            "de": "Zeichenkurs"
+          }
+        },
+        {
+          "targetText": "last night",
+          "baseText": {
+            "de": "gestern Abend"
+          }
+        },
+        {
+          "targetText": "according to",
+          "baseText": {
+            "de": "laut"
+          }
+        },
+        {
+          "targetText": "note",
+          "baseText": {
+            "de": "Zettel"
+          }
+        },
+        {
+          "targetText": "addresses",
+          "baseText": {
+            "de": "Adressen"
+          }
+        },
+        {
+          "targetText": "bulletin board",
+          "baseText": {
+            "de": "Schwarzes Brett"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My drawing class was ",
+        "answer": "canceled",
+        "after": " last night, according to this note.",
+        "fallbackChoices": [
+          "canceling",
+          "cancel",
+          "cancels",
+          "canceled"
+        ]
+      },
+      "speakRequired": [
+        "drawing",
+        "canceled",
+        "note"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang schaut die Mitarbeiterin vom Stundenplan hoch: „Which class were you hoping to attend?“"
+      },
+      "trophyWord": {
+        "word": "canceled",
+        "meaning": {
+          "de": "abgesagt"
+        },
+        "example": "The evening class was canceled on Tuesday.",
+        "whyThisWord": {
+          "de": "Canceled bedeutet, dass der Termin ausfiel; delayed würde nur eine Verzögerung ausdrücken."
+        }
+      },
+      "distractors": [
+        "my bus ticket",
+        "according to the recipe."
+      ],
+      "placeholderCaption": {
+        "de": "Ein leerer Kursraum, ein Zettel an der Tür und ein Empfangstresen im Flur."
+      },
+      "songMood": "Überrascht, dann sachlich.",
+      "visualNotes": "Ein leerer Kursraum, ein Zettel an der Tür und ein Empfangstresen im Flur."
+    },
+    {
+      "slug": "repair-visit-on-monday",
+      "title": {
+        "de": "Zwei Termine im Kalender"
+      },
+      "situation": {
+        "de": "Du rufst beim Reparaturdienst an, um den vereinbarten Hausbesuch zu besprechen.",
+        "en": "You call the repair service to discuss a visit to your home."
+      },
+      "pedagogicalGoal": "Was confirmed benennt die Bestätigung in der Vergangenheit. Auch eine Frage nach einem weiteren abgeschlossenen Vorgang bleibt bei was: Was, Subjekt, Partizip.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "What date do you have for the repair visit?",
+          "baseText": {
+            "de": "Welchen Termin haben Sie für den Reparaturbesuch?"
+          }
+        },
+        {
+          "targetText": "My visit was confirmed for Monday when I called last week.",
+          "baseText": {
+            "de": "Als ich letzte Woche anrief, wurde mir Montag als Besuchstermin bestätigt."
+          }
+        },
+        {
+          "targetText": "I see Tuesday here. We changed the route on Friday morning.",
+          "baseText": {
+            "de": "Bei mir steht Dienstag. Wir haben die Route am Freitagmorgen geändert."
+          }
+        },
+        {
+          "targetText": "Was my visit moved before or after that change?",
+          "baseText": {
+            "de": "Wurde mein Termin vor oder nach dieser Änderung verschoben?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Past passive for an appointment",
+        "rule": {
+          "de": "Was confirmed benennt die Bestätigung in der Vergangenheit. Auch eine Frage nach einem weiteren abgeschlossenen Vorgang bleibt bei was: Was, Subjekt, Partizip."
+        },
+        "examples": [
+          {
+            "targetText": "My visit was confirmed for Monday when I called last week.",
+            "baseText": {
+              "de": "Als ich letzte Woche anrief, wurde mir Montag als Besuchstermin bestätigt."
+            },
+            "highlight": "was confirmed for Monday"
+          },
+          {
+            "targetText": "My check-up was booked for March when I called.",
+            "baseText": {
+              "de": "Mein Kontrolltermin wurde für März gebucht, als ich anrief."
+            },
+            "highlight": "was booked for March"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Was",
+          "cue": "be in the past",
+          "choices": [
+            "Were",
+            "Been",
+            "Was",
+            "Being"
+          ]
+        },
+        " my visit ",
+        {
+          "kind": "form",
+          "answer": "moved",
+          "cue": "move",
+          "choices": [
+            "moving",
+            "move",
+            "moves",
+            "moved"
+          ]
+        },
+        " before or after that change?"
+      ],
+      "chunks": [
+        {
+          "targetText": "My visit",
+          "baseText": {
+            "de": "Mein Besuchstermin"
+          }
+        },
+        {
+          "targetText": "was confirmed",
+          "baseText": {
+            "de": "wurde bestätigt"
+          }
+        },
+        {
+          "targetText": "for Monday",
+          "baseText": {
+            "de": "für Montag"
+          }
+        },
+        {
+          "targetText": "when I called",
+          "baseText": {
+            "de": "als ich anrief"
+          }
+        },
+        {
+          "targetText": "last week.",
+          "baseText": {
+            "de": "letzte Woche."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "repair visit",
+          "baseText": {
+            "de": "Reparaturbesuch"
+          }
+        },
+        {
+          "targetText": "for Monday",
+          "baseText": {
+            "de": "für Montag"
+          }
+        },
+        {
+          "targetText": "called",
+          "baseText": {
+            "de": "anrief"
+          }
+        },
+        {
+          "targetText": "last week",
+          "baseText": {
+            "de": "letzte Woche"
+          }
+        },
+        {
+          "targetText": "route",
+          "baseText": {
+            "de": "Route"
+          }
+        },
+        {
+          "targetText": "after that change",
+          "baseText": {
+            "de": "nach dieser Änderung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My visit was ",
+        "answer": "confirmed",
+        "after": " for Monday when I called last week.",
+        "fallbackChoices": [
+          "confirm",
+          "confirming",
+          "confirmed",
+          "confirms"
+        ]
+      },
+      "speakRequired": [
+        "visit",
+        "confirmed",
+        "Monday"
+      ],
+      "sceneCaption": {
+        "de": "Der Mitarbeiter des Reparaturdienstes öffnet den Terminkalender: „What date do you have for the repair visit?“"
+      },
+      "trophyWord": {
+        "word": "confirmed",
+        "meaning": {
+          "de": "bestätigt"
+        },
+        "example": "The date was confirmed by phone.",
+        "whyThisWord": {
+          "de": "Mit confirmed gibst du an, dass ein Termin bereits verbindlich zugesagt wurde."
+        }
+      },
+      "distractors": [
+        "in my toolbox",
+        "when the bus comes"
+      ],
+      "placeholderCaption": {
+        "de": "Ein aufgeklappter Kalender mit zwei markierten Wochentagen neben einem Telefon."
+      },
+      "songMood": "Freundlich, aber hartnäckig.",
+      "visualNotes": "Ein aufgeklappter Kalender mit zwei markierten Wochentagen neben einem Telefon."
+    },
+    {
+      "slug": "unclaimed-package",
+      "title": {
+        "de": "Das Paket vom Freitag"
+      },
+      "situation": {
+        "de": "Du warst verreist und möchtest eine Lieferung im Haus abholen.",
+        "en": "You've been away and want to pick up a delivery at your building."
+      },
+      "pedagogicalGoal": "Usually verweist auf den üblichen Lagerort: are … stored. On Friday bezeichnet eine bestimmte Lieferung: was delivered. Beim Plural in der Vergangenheit wird aus was were.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Do you know when the driver came?",
+          "baseText": {
+            "de": "Wissen Sie, wann der Fahrer da war?"
+          }
+        },
+        {
+          "targetText": "Mine was delivered on Friday. Where are unclaimed packages usually stored?",
+          "baseText": {
+            "de": "Meins wurde am Freitag geliefert. Wo werden nicht abgeholte Pakete normalerweise aufbewahrt?"
+          }
+        },
+        {
+          "targetText": "In the locked room downstairs, but we moved Friday's deliveries during the leak.",
+          "baseText": {
+            "de": "Im abgeschlossenen Raum unten, aber wegen des Wasserschadens haben wir die Lieferungen vom Freitag umgeräumt."
+          }
+        },
+        {
+          "targetText": "Were those packages taken to the office instead?",
+          "baseText": {
+            "de": "Wurden diese Pakete stattdessen ins Büro gebracht?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Routine or one past event?",
+        "rule": {
+          "de": "Usually verweist auf den üblichen Lagerort: are … stored. On Friday bezeichnet eine bestimmte Lieferung: was delivered. Beim Plural in der Vergangenheit wird aus was were."
+        },
+        "examples": [
+          {
+            "targetText": "Mine was delivered on Friday. Where are unclaimed packages usually stored?",
+            "baseText": {
+              "de": "Meins wurde am Freitag geliefert. Wo werden nicht abgeholte Pakete normalerweise aufbewahrt?"
+            },
+            "highlight": "are unclaimed packages usually stored"
+          },
+          {
+            "targetText": "Were the keys returned to the front desk?",
+            "baseText": {
+              "de": "Wurden die Schlüssel an der Rezeption zurückgegeben?"
+            },
+            "highlight": "Were the keys returned"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Were",
+          "cue": "be in the past",
+          "choices": [
+            "Was",
+            "Been",
+            "Being",
+            "Were"
+          ]
+        },
+        " those packages ",
+        {
+          "kind": "form",
+          "answer": "taken",
+          "cue": "take",
+          "choices": [
+            "took",
+            "taken",
+            "take",
+            "taking"
+          ]
+        },
+        " to the office instead?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Mine was delivered",
+          "baseText": {
+            "de": "Meins wurde geliefert"
+          }
+        },
+        {
+          "targetText": "on Friday. Where are",
+          "baseText": {
+            "de": "am Freitag. Wo werden"
+          }
+        },
+        {
+          "targetText": "unclaimed packages",
+          "baseText": {
+            "de": "nicht abgeholte Pakete"
+          }
+        },
+        {
+          "targetText": "usually stored?",
+          "baseText": {
+            "de": "normalerweise aufbewahrt?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "driver",
+          "baseText": {
+            "de": "Fahrer"
+          }
+        },
+        {
+          "targetText": "on Friday",
+          "baseText": {
+            "de": "am Freitag"
+          }
+        },
+        {
+          "targetText": "unclaimed packages",
+          "baseText": {
+            "de": "nicht abgeholte Pakete"
+          }
+        },
+        {
+          "targetText": "usually stored",
+          "baseText": {
+            "de": "normalerweise aufbewahrt"
+          }
+        },
+        {
+          "targetText": "locked room",
+          "baseText": {
+            "de": "abgeschlossener Raum"
+          }
+        },
+        {
+          "targetText": "instead",
+          "baseText": {
+            "de": "stattdessen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Mine was delivered on Friday. Where are unclaimed packages usually ",
+        "answer": "stored",
+        "after": "?",
+        "fallbackChoices": [
+          "storing",
+          "store",
+          "stores",
+          "stored"
+        ]
+      },
+      "speakRequired": [
+        "Friday",
+        "packages",
+        "stored"
+      ],
+      "sceneCaption": {
+        "de": "Der Hausmeister schaut im Eingangsbereich auf die Lieferliste: „Do you know when the driver came?“"
+      },
+      "trophyWord": {
+        "word": "stored",
+        "meaning": {
+          "de": "aufbewahrt"
+        },
+        "example": "Unclaimed boxes are stored near the office.",
+        "whyThisWord": {
+          "de": "Stored fragt nach dem Lagerort und nicht nach dem ursprünglichen Lieferziel."
+        }
+      },
+      "distractors": [
+        "on the receipt.",
+        "usually return?"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Lieferliste mit Datumsspalte hängt an der Wand eines Wohnhauses."
+      },
+      "songMood": "Rätselnd, dann zielgerichtet.",
+      "visualNotes": "Eine Lieferliste mit Datumsspalte hängt an der Wand eines Wohnhauses."
+    }
+  ]
+}

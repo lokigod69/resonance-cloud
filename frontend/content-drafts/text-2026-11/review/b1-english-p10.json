@@ -1,0 +1,62 @@
+{
+  "file": "english-p10.json",
+  "source": "5583183229a8fc63530bfde2a0c312768412f257346706c3250e7912c9ae7c6c",
+  "result": "97c37bbe81f5b276e4c30e2812959bee1b5938ca3983d3175ba7a03dee973317",
+  "edits": 19,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "english-p10.json",
+      "lessonsRead": [
+        "the-night-the-lights-went-out",
+        "the-first-bus-map",
+        "a-table-of-my-own",
+        "the-spare-umbrella",
+        "the-radio-invitation",
+        "less-paper-on-the-kitchen-table",
+        "a-call-without-help",
+        "the-busy-square",
+        "the-woman-next-door",
+        "a-place-on-the-team"
+      ],
+      "concerns": [
+        "All ten lessons carry register 'informal'; the generalized type and validator accept only formal/casual for English, so the field must be 'casual' (P10 is mostly casual; no sir/ma'am present, rails hold).",
+        "L5 me2 uses a sentential relative 'which made it fun' (B2 in EGP; nondefining relatives are outside the English B1 plan). P10 is no-new-grammar, so recast to 'and that made it fun' in dialogue and cloze together; gloss already reads 'und genau das'.",
+        "L7 them1 gloss 'Was kannst du jetzt, das dir …' is ungrammatical German (relative to interrogative 'was' needs 'was').",
+        "L8 them2 gloss renders 'Have you tried that?' as 'erlebt' and term 'noise' as 'Trubel' only; fidelity edits.",
+        "L9 me2 gloss drops 'arrived' and 'over' ('da war', no 'zu mir') while the cloze cue tests arrive; align.",
+        "L3 me2 gloss narrows 'make anything' to 'bauen'.",
+        "L2 situation en says 'a friend' while de and sceneCaption say 'Bekannte'.",
+        "L1 term 'those first few weeks' loses 'few'.",
+        "Style, not blocking: four me1 lines open on a superlative frame (strangest/biggest experience/challenge/achievement/improvement); L4, L6, L8 me2 and L5 me1 open with Yes. Opinion-with-concession from the plan anchor is not recycled in any learner line.",
+        "L1 pedagogicalGoal/pattern rule describe an interrupted ongoing action but me1 uses a gerund complement ('was cooking dinner'); the second example carries real past continuous, acceptable for consolidation.",
+        "Checked and clean: all cloze concats match me2 verbatim; no blank spans an apostrophe (couldn't, we've, I'll, I'm stay in text segments); no contraction is a recall answer or speak token; all speak tokens and recall answers occur in me1; chip distractors are never alternative correct forms in slot; them2 is never foreshadowed by situation, sceneCaption or pattern examples; sceneCaptions quote them1 verbatim; no British spellings; all ten plan trophies retained in order; will appears in learner production only in L10 first conditional (allowed after P7)."
+      ]
+    },
+    {
+      "file": "english-plan.json",
+      "lessonsRead": [
+        "P10 L1 experience",
+        "P10 L2 challenge",
+        "P10 L3 achievement",
+        "P10 L4 friendship",
+        "P10 L5 opportunity",
+        "P10 L6 improvement",
+        "P10 L7 proud",
+        "P10 L8 surprised",
+        "P10 L9 grateful",
+        "P10 L10 belong"
+      ],
+      "concerns": [
+        "Trophy row and beats match the draft lesson by lesson; no edits to the plan."
+      ]
+    }
+  ],
+  "openIssues": [
+    "Register value 'casual' depends on the type widening in guidedLessons.ts and the validator config generalization (Milestone 1 steps 1–2) landing first; until then the draft will not validate.",
+    "No independent review has been supplied; this read does not certify nativeness or learner-facing release. The phone gate (typed answers, both role-play turns in en-US recognizer) has not been run for English.",
+    "Any accepted edit to targetText changes the English corpus hash; the twelve explanation editions and the phrase-catalog migration must be regenerated in the Milestone 3 bundle, owner-gated, OpenRouter key currently dead.",
+    "Codex holds an in-flight claim on this scope today; these edits are a spec, not applied, until the claim clears.",
+    "Style notes left unedited for owner judgment: repeated superlative me1 frame (L1, L2, L3, L6) and four Yes openers; plan's opinion-with-concession recycle is absent from learner lines in P10."
+  ]
+}

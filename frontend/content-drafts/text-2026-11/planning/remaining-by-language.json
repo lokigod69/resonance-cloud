@@ -1,0 +1,457 @@
+{
+  "scope": "Full 12-language target: 100 lessons per level. Completely written draft bodies count toward writing only.",
+  "queue": [
+    {
+      "language": "English",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pathsToWrite": [],
+      "remainingLessonCount": 0
+    },
+    {
+      "language": "English",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Spanish",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pathsToWrite": [],
+      "remainingLessonCount": 0
+    },
+    {
+      "language": "Spanish",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Italian",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3
+      ],
+      "pathsToWrite": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 70
+    },
+    {
+      "language": "Italian",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "French",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pathsToWrite": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 50
+    },
+    {
+      "language": "French",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Portuguese",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pathsToWrite": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 50
+    },
+    {
+      "language": "Portuguese",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "German",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pathsToWrite": [],
+      "remainingLessonCount": 0
+    },
+    {
+      "language": "German",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "pathsToWrite": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 60
+    },
+    {
+      "language": "Cebuano",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Cebuano",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Indonesian",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Indonesian",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Polish",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Polish",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Korean",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pathsToWrite": [],
+      "remainingLessonCount": 0
+    },
+    {
+      "language": "Korean",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2,
+        3
+      ],
+      "pathsToWrite": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 70
+    },
+    {
+      "language": "Russian",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Russian",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Japanese",
+      "level": "B1",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    },
+    {
+      "language": "Japanese",
+      "level": "B2",
+      "writtenPaths": [
+        1,
+        2
+      ],
+      "pathsToWrite": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "remainingLessonCount": 80
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "originalSource": "es-p9-review/spanish-p9.json",
+  "originalSha256": "b6623e7b148c4c86c03dc5c2a4d2e0b2f2d4421eb286945185b5f0f77371a7aa",
+  "resultSha256": "0894a59f8326420c6cfed70af8b0c94fe9a6d175b7aa6fe096d706f4fa3db546",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 8,
+      "field": "chunks",
+      "authority": "chip-es-later",
+      "receiptSha256": "ea3b7d08e7a824b4ad575a899eaabc768a7345bd85af379c43f9ec4cb83f3145",
+      "reason": "Old chip 1 ended on the internal sentence boundary, so the two sentences could be swapped into a second valid order. The period now sits inside chip 2 (\"pararse. ¿Podría\"); only \"La lavadora\" can begin (sole capitalized chip), chip 2 is the only chip that can follow it, and chip 3 must precede \"del importe?\", giving a unique order. Cross-sentence chip has honest glosses for both ends in de/en. Text, punctuation, and joins are byte-identical to the canonical speech; no chip duplicates another or a distractor."
+    },
+    {
+      "lesson": 1,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Rival 'mientras' not offered; desde/durante/tras + preterite 'oí' ungrammatical. 'giraban' excluded by singular 'el tambor' cue. Imperfect-vs-preterite contrast still visible via 'cuando oí'."
+    },
+    {
+      "lesson": 3,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Rival 'cuando se lee' absent; para/desde/durante cannot precede 'se lee'. 'servirían' blocked by singular 'una foto' cue."
+    },
+    {
+      "lesson": 5,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Indirect question needs accented 'cuándo'; durante/hacia/entre invalid before 'esperan'. No unaccented 'cuando' trap. 'Podrían' (ustedes) formal plural excluded by explicit usted cue; warehouse plural stays in untouched 'esperan'."
+    },
+    {
+      "lesson": 6,
+      "field": "cloze",
+      "authority": "Spanish independent grading + subscription arbitration",
+      "receiptSha256": "4ae0e406b921cae7e2fd3cb0a1404ef52de7045943af895f91eb38b6ebf755a2",
+      "reason": "Infinitive 'aceptar' licenses only 'antes de'; 'hasta que/mientras que/dado que' require finite verbs. 'Podríamos' excluded by usted cue; dropping 'Quiero' blank removes the credible 'Queremos' household reading."
+    }
+  ]
+}

@@ -1,0 +1,878 @@
+{
+  "scope": "Exact parsed comparison with the frozen 80 October B2 drafts; stable lesson slugs and trophy lemma/surface checked. An empty changed field list means reviewed without a change to that lesson.",
+  "lessons": [
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 1,
+      "slug": "yachin-ka-tsuukin",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 2,
+      "slug": "kuruma-ka-densha",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 3,
+      "slug": "zaitaku-ka-shussha",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 4,
+      "slug": "kounyuu-ka-rentaru",
+      "changedLessonFields": [
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 5,
+      "slug": "okinawa-ka-hokkaidou",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 6,
+      "slug": "genkin-ka-apuri",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 7,
+      "slug": "kyoushitsu-ka-apuri",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 8,
+      "slug": "futatsu-no-naitei",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 9,
+      "slug": "oosaka-ni-utsuru",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 1,
+      "lesson": 10,
+      "slug": "bousai-bihin-an",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 1,
+      "slug": "seikyuu-no-sagaku",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 2,
+      "slug": "gomi-no-dashikata",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 3,
+      "slug": "nouki-ga-okureta-ken",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 4,
+      "slug": "pointo-kaado-no-shikumi",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 5,
+      "slug": "keitai-gaisha-o-kaeta",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 6,
+      "slug": "tekkyo-ni-igi",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 7,
+      "slug": "kafe-keikaku-no-keii",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 8,
+      "slug": "shoshin-yoyaku-no-nagare",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 9,
+      "slug": "shea-jitensha-no-kouka",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "lesson": 10,
+      "slug": "kouen-yakan-heisa-no-keika",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 1,
+      "slug": "rent-vs-commute",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 2,
+      "slug": "car-vs-metro",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 3,
+      "slug": "remote-or-office",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 4,
+      "slug": "buy-or-rent-drill",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 5,
+      "slug": "two-holiday-plans",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 6,
+      "slug": "cash-or-app",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 7,
+      "slug": "class-or-app",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 8,
+      "slug": "two-job-offers",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 9,
+      "slug": "move-or-stay",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "lesson": 10,
+      "slug": "barrier-or-rota",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 1,
+      "slug": "invoice-differs",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 2,
+      "slug": "yard-recycling",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 3,
+      "slug": "project-slipped",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 4,
+      "slug": "loyalty-points",
+      "changedLessonFields": [
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 5,
+      "slug": "new-provider",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 6,
+      "slug": "parking-fine-appeal",
+      "changedLessonFields": [
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 7,
+      "slug": "plan-failed",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 8,
+      "slug": "exam-registration",
+      "changedLessonFields": [
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 9,
+      "slug": "bike-share-skeptic",
+      "changedLessonFields": [],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "lesson": 10,
+      "slug": "heating-delay-chain",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 1,
+      "slug": "rent-vs-commute",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "dialogue",
+        "speak",
+        "synthesis",
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": [
+        6
+      ]
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 2,
+      "slug": "car-vs-tram",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 3,
+      "slug": "remote-vs-office",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 4,
+      "slug": "buy-vs-rent-gear",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 5,
+      "slug": "two-holiday-plans",
+      "changedLessonFields": [
+        "build",
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 6,
+      "slug": "cash-vs-app",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 7,
+      "slug": "class-vs-app",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 8,
+      "slug": "two-job-offers",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "terms",
+        "trophy"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 9,
+      "slug": "move-or-stay",
+      "changedLessonFields": [
+        "cloze",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 1,
+      "lesson": 10,
+      "slug": "courtyard-options",
+      "changedLessonFields": [
+        "build",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 1,
+      "slug": "invoice-difference",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "synthesis",
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 2,
+      "slug": "five-bins",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 3,
+      "slug": "project-slipped",
+      "changedLessonFields": [
+        "build",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 4,
+      "slug": "loyalty-points",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "dialogue",
+        "speak"
+      ],
+      "changedSpokenTurnNumbers": [
+        4
+      ]
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 5,
+      "slug": "provider-switch",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "recall"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 6,
+      "slug": "garage-fine-appeal",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 7,
+      "slug": "car-share-failed",
+      "changedLessonFields": [
+        "build"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 8,
+      "slug": "booking-system",
+      "changedLessonFields": [
+        "build",
+        "cloze"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 9,
+      "slug": "bike-scheme",
+      "changedLessonFields": [
+        "build",
+        "pattern"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Polish",
+      "path": 2,
+      "lesson": 10,
+      "slug": "roof-repair-chain",
+      "changedLessonFields": [
+        "dialogue",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": [
+        6
+      ]
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 1,
+      "slug": "abang-batok-biyahe",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 2,
+      "slug": "sakyanan-o-jeep",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 3,
+      "slug": "balay-o-opisina",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "pattern",
+        "sceneCaption",
+        "situation",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 4,
+      "slug": "palit-o-abang",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis",
+        "terms"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 5,
+      "slug": "duha-ka-bakasyon",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "dialogue",
+        "pattern",
+        "sceneCaption",
+        "situation",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 6,
+      "slug": "kuwarta-o-app",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 7,
+      "slug": "klase-o-app",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 8,
+      "slug": "duha-ka-trabaho",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 9,
+      "slug": "balhin-o-magpabilin",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "dialogue",
+        "pattern",
+        "recall",
+        "speak",
+        "synthesis",
+        "terms",
+        "trophy"
+      ],
+      "changedSpokenTurnNumbers": [
+        2
+      ]
+    },
+    {
+      "language": "Cebuano",
+      "path": 1,
+      "lesson": 10,
+      "slug": "duha-ka-palisiya",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 1,
+      "slug": "lahi-ang-resibo",
+      "changedLessonFields": [
+        "cloze",
+        "dialogue",
+        "pattern",
+        "sceneCaption",
+        "synthesis",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": [
+        1
+      ]
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 2,
+      "slug": "paglain-sa-basura",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 3,
+      "slug": "naulahi-ang-proyekto",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 4,
+      "slug": "puntos-sa-tindahan",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 5,
+      "slug": "nibalhin-og-internet",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 6,
+      "slug": "pag-apelar-sa-multa",
+      "changedLessonFields": [
+        "cloze",
+        "dialogue",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 7,
+      "slug": "nganong-wala-nahimo",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 8,
+      "slug": "proseso-sa-appointment",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "pattern",
+        "synthesis",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 9,
+      "slug": "nganong-bisikleta",
+      "changedLessonFields": [
+        "build",
+        "cloze",
+        "pattern",
+        "synthesis",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    },
+    {
+      "language": "Cebuano",
+      "path": 2,
+      "lesson": 10,
+      "slug": "giunsa-ang-desisyon",
+      "changedLessonFields": [
+        "cloze",
+        "pattern",
+        "synthesis",
+        "title"
+      ],
+      "changedSpokenTurnNumbers": []
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "language": "polish",
+  "stage": "final-candidates",
+  "frozenCheckerSha256": "22ff57820a8f983c9c2983b4f97ee49c7c1b2ad2860918eb7881fef9acebef97",
+  "candidateHashes": {
+    "polish-b2-p1.json": "cb16f4815199decb4f6ec5605cc7019a6c81087da8971ca0ba235789dbe57620",
+    "polish-b2-p2.json": "a5bf56358c6ff1c9f72ad2823630d50d99b1d8975a2337c0ce76ee8bfa540179"
+  },
+  "structuralPass": true,
+  "errors": [],
+  "warnings": [],
+  "evidence": {
+    "mutationControls": [
+      "IDENTITY",
+      "AUTHORITY_BINDING",
+      "REGISTER_PLAN",
+      "TURN_LENGTH",
+      "BUILD_RECONSTRUCTION",
+      "BUILD_LENGTH",
+      "DETACHED_CLITIC",
+      "CLOZE_RECONSTRUCTION",
+      "ACCEPTED_FORMS",
+      "ONE_ACCEPTED_CHOICE",
+      "VISIBLE_FORM_CUE",
+      "TERM_ATTESTATION",
+      "TROPHY_ALLOCATION",
+      "TROPHY_WHOLE",
+      "SPEAK_TOKENS",
+      "CAPTION_OPENER",
+      "NO_REVIEW_CLAIM",
+      "CONFIRMED_SELF_GENDER",
+      "ADDRESS_REGISTER",
+      "FORWARD_TROPHY_SURFACE",
+      "NAMED_CARRIER_STAGING",
+      "TARGET_LATIN_SCRIPT",
+      "FULL20_ALLOCATION_COLLISION"
+    ],
+    "schemaControls": [
+      "identity",
+      "register",
+      "extra",
+      "missing"
+    ],
+    "assertions": 84384
+  }
+}

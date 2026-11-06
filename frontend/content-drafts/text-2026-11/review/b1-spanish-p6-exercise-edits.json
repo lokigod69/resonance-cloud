@@ -1,0 +1,15 @@
+{
+  "originalSource": "es-p6-bounds/reconstructed.json",
+  "originalSha256": "e28eaef40680fcf514738ea62e9f3f37d41c064b9440bc6425cecf5ddff87e51",
+  "resultSha256": "61632c4258fd94947faf814453e8cb0cc4056ae47953330bd93aa136e570340d",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 7,
+      "field": "chunks",
+      "authority": "chip-latin-earlier",
+      "receiptSha256": "377b4456d5ccef28c9a15d7f859067636345956404c8609fc6a4168680447121",
+      "reason": "Period and inverted question mark inside chip 2; both de/en glosses kept; 'empresa' rendered as Arbeitgeber/employer to match the canonical turn; chips distinct from 'están aprobadas.' / 'para mi cocina?'; only one grammatical order."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "originalSource": "korean/arbitrated-p3/p3.json",
+  "originalSha256": "9abae76bf3ae7240a0a1207da3e244dae11ebc5e38d72d7df3595ef541cb5253",
+  "resultSha256": "f0e48563ba3b4504328fdaf4e6e28f086380c2c408a387ff32bfef68ceaa66e2",
+  "scope": "Exact offline exercise-only corrections; no canonical dialogue changed. Changed chips bind the sentence boundary and changed cloze choices test discourse, not only verb endings.",
+  "edits": [
+    {
+      "lesson": 3,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Moved the first '?' inside chip 3 so the two questions cannot be swapped; 4 chips of 1–3 eojeol, all words/joins preserved, no clash with distractors."
+    },
+    {
+      "lesson": 7,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Period now sits inside chip 3; sentence order forced. Chips 1 and 4 unchanged."
+    },
+    {
+      "lesson": 8,
+      "field": "chunks",
+      "authority": "chip-ko-earlier",
+      "receiptSha256": "3c9ae6371047a2ec84123bb0cf071ffa70539edf1387a1fc8a507ac0752cfbf0",
+      "reason": "Period moved inside chip 3; '확인해 주시겠어요?' is distinct from distractor '배송지를 확인해'."
+    }
+  ]
+}

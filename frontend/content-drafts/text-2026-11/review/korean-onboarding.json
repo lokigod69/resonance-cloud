@@ -1,0 +1,40 @@
+{
+  "ranAt": "2026-11-06T11:26:50.912Z",
+  "durationMs": 2855,
+  "results": [
+    {
+      "id": "korean-onboarding",
+      "name": "New-user target selector offers Korean",
+      "status": "pass",
+      "checks": [
+        {
+          "name": "nine onboarding radio options",
+          "ok": true,
+          "detail": "EnglishEnglisch, Deutsch, FrançaisFranzösisch, ItalianoItalienisch, Bisaya, 한국어Koreanisch, Bahasa IndonesiaIndonesisch, EspañolSpanisch, PortuguêsPortugiesisch"
+        },
+        {
+          "name": "native and German titles present",
+          "ok": true,
+          "detail": "한국어Koreanisch"
+        },
+        {
+          "name": "click selects the Korean radio",
+          "ok": true,
+          "detail": "한국어Koreanisch"
+        },
+        {
+          "name": "no uncaught page errors",
+          "ok": true,
+          "detail": ""
+        }
+      ],
+      "notes": [],
+      "error": "",
+      "failed": [],
+      "screenshots": [
+        "korean-onboarding-final.png"
+      ],
+      "ms": 787
+    }
+  ]
+}

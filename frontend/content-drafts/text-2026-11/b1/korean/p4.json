@@ -1,0 +1,2133 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 4,
+  "title": {
+    "de": "Beschreiben und Wiedererkennen",
+    "en": "Describing and identifying"
+  },
+  "subtitle": {
+    "de": "Menschen, Gegenstände und Orte anhand ihrer Merkmale wiedererkennen",
+    "en": "Identify people, belongings and places by their features"
+  },
+  "anchor": "reception and lost-and-found desks, real-estate agent, meeting points with friends",
+  "lessons": [
+    {
+      "slug": "angyeong-colleague-at-reception",
+      "title": {
+        "de": "Wer wartet am Fenster?",
+        "en": "Who's waiting by the window?"
+      },
+      "situation": {
+        "de": "Im Empfangsbereich eines Büros verabredest du dich mit jemandem aus deinem Team.",
+        "en": "You're meeting someone from your team in an office lobby."
+      },
+      "pedagogicalGoal": "Mit -는 vor einem Nomen eine Person anhand einer typischen Handlung beschreiben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘은 어떤 분을 만나러 오셨어요?",
+          "baseText": {
+            "de": "Wen möchten Sie heute besuchen?",
+            "en": "Who are you here to see today?"
+          }
+        },
+        {
+          "targetText": "늘 안경 쓰고 파란 코트를 입는 동료를 만나러 왔어요.",
+          "baseText": {
+            "de": "Ich möchte zu meinem Kollegen, der immer eine Brille und einen blauen Mantel trägt.",
+            "en": "I'm here to see my colleague who always wears glasses and a blue coat."
+          }
+        },
+        {
+          "targetText": "창가 쪽에 세 분이 앉아 계세요. 어느 분이세요?",
+          "baseText": {
+            "de": "Am Fenster sitzen drei Personen. Welche davon ist es?",
+            "en": "There are three people seated by the window. Which one is it?"
+          }
+        },
+        {
+          "targetText": "네, 창가에서 책을 읽는 분이 제 동료예요.",
+          "baseText": {
+            "de": "Also, die Person, die am Fenster liest, ist mein Kollege.",
+            "en": "Well, the person reading by the window is my colleague."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-는 vor einer Personenbezeichnung",
+        "rule": {
+          "de": "입는 동료 beschreibt eine Gewohnheit. In 읽는 분 bezeichnet dieselbe Form die Person, die du gerade lesen siehst.",
+          "en": "입는 동료 describes a habit. In 읽는 분 the same form identifies the person you can see reading right now."
+        },
+        "examples": [
+          {
+            "targetText": "늘 안경 쓰고 파란 코트를 입는 동료를 만나러 왔어요.",
+            "baseText": {
+              "de": "Ich möchte zu meinem Kollegen, der immer eine Brille und einen blauen Mantel trägt.",
+              "en": "I'm here to see my colleague who always wears glasses and a blue coat."
+            },
+            "highlight": "입는 동료를"
+          },
+          {
+            "targetText": "저기 신문을 보는 분이 제 동료예요.",
+            "baseText": {
+              "de": "Die Person da drüben, die Zeitung liest, ist mein Kollege.",
+              "en": "The person reading the newspaper over there is my colleague."
+            },
+            "highlight": "신문을 보는 분"
+          }
+        ]
+      },
+      "cloze": [
+        "네, ",
+        {
+          "kind": "choice",
+          "answer": "창가에서",
+          "choices": [
+            "복도에서",
+            "문밖에서",
+            "계단에서",
+            "창가에서"
+          ]
+        },
+        " 책을 ",
+        {
+          "kind": "form",
+          "answer": "읽는",
+          "cue": "Laufende Handlung als Attribut vor dem Nomen / ongoing action as a modifier before the noun",
+          "choices": [
+            "읽으면",
+            "읽고",
+            "읽는",
+            "읽으려고"
+          ]
+        },
+        " 분이 제 동료예요."
+      ],
+      "chunks": [
+        {
+          "targetText": "늘 안경 쓰고",
+          "baseText": {
+            "de": "immer eine Brille trägt und",
+            "en": "always wears glasses and"
+          }
+        },
+        {
+          "targetText": "파란 코트를",
+          "baseText": {
+            "de": "einen blauen Mantel",
+            "en": "a blue coat"
+          }
+        },
+        {
+          "targetText": "입는 동료를",
+          "baseText": {
+            "de": "den Kollegen, der ihn trägt",
+            "en": "the colleague who wears it"
+          }
+        },
+        {
+          "targetText": "만나러 왔어요.",
+          "baseText": {
+            "de": "möchte ich besuchen.",
+            "en": "I'm here to see."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "안경",
+          "baseText": {
+            "de": "Brille",
+            "en": "glasses"
+          }
+        },
+        {
+          "targetText": "파란 코트",
+          "baseText": {
+            "de": "blauer Mantel",
+            "en": "blue coat"
+          }
+        },
+        {
+          "targetText": "동료",
+          "baseText": {
+            "de": "Kollege oder Kollegin",
+            "en": "colleague"
+          }
+        },
+        {
+          "targetText": "늘",
+          "baseText": {
+            "de": "immer",
+            "en": "always"
+          }
+        },
+        {
+          "targetText": "창가에서",
+          "baseText": {
+            "de": "am Fenster",
+            "en": "by the window"
+          }
+        },
+        {
+          "targetText": "책을 읽다",
+          "baseText": {
+            "de": "ein Buch lesen",
+            "en": "read a book"
+          }
+        }
+      ],
+      "recall": {
+        "before": "늘 ",
+        "answer": "안경",
+        "after": " 쓰고 파란 코트를 입는 동료를 만나러 왔어요.",
+        "fallbackChoices": [
+          "운동화",
+          "양말",
+          "안경",
+          "장갑"
+        ]
+      },
+      "speakRequired": [
+        "안경",
+        "코트를",
+        "동료를"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang wird nach deinem Besuch gefragt. „오늘은 어떤 분을 만나러 오셨어요?“",
+        "en": "The receptionist asks whom you are visiting. “오늘은 어떤 분을 만나러 오셨어요?”"
+      },
+      "trophyWord": {
+        "word": "안경",
+        "meaning": {
+          "de": "Brille",
+          "en": "glasses"
+        },
+        "example": "안경 쓰고 일하는 분을 찾고 있어요.",
+        "whyThisWord": {
+          "de": "안경 쓰다 ist im Gespräch eine kurze, geläufige Art, jemanden an seiner Brille zu erkennen.",
+          "en": "안경 쓰다 is a common conversational way to identify someone by their glasses."
+        }
+      },
+      "distractors": [
+        "하얀 셔츠를",
+        "벗는 동료를"
+      ],
+      "placeholderCaption": {
+        "de": "Im Wartebereich eines Büros",
+        "en": "In an office waiting area"
+      },
+      "songMood": "Gentle interlocking guitar notes and a steady beat.",
+      "visualNotes": "A reception counter faces a seating area by tall windows."
+    },
+    {
+      "slug": "gabang-many-pockets",
+      "title": {
+        "de": "Eine Tasche mit vielen Fächern",
+        "en": "A bag with lots of pockets"
+      },
+      "situation": {
+        "de": "Im Fundbüro liegen mehrere Taschen. Du beschreibst deine und nennst zwei Dinge, die darin sind.",
+        "en": "There are several bags at the lost-and-found desk. You describe yours and name two things inside it."
+      },
+      "pedagogicalGoal": "Mit 많은 und einem Nomen ein Merkmal nennen und mit 쓰는 eine Gewohnheit beschreiben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어떤 물건을 잃어버리셨어요? 특징이 있어요?",
+          "baseText": {
+            "de": "Was haben Sie verloren? Woran erkennt man es?",
+            "en": "What have you lost? Does it have any distinctive features?"
+          }
+        },
+        {
+          "targetText": "양옆에 주머니가 많은 검은 가방 하나를 찾고 있어요.",
+          "baseText": {
+            "de": "Ich suche eine schwarze Tasche mit vielen Seitentaschen.",
+            "en": "I'm looking for a black bag with lots of pockets on the sides."
+          }
+        },
+        {
+          "targetText": "검은 가방이 두 개네요. 안에 있는 물건이 전부 문구류예요?",
+          "baseText": {
+            "de": "Hier sind zwei schwarze Taschen. Sind in Ihrer nur Schreibsachen drin?",
+            "en": "We have two black bags. Is everything in yours stationery?"
+          }
+        },
+        {
+          "targetText": "네, 매일 쓰는 수첩과 빨간 필통이 들어 있어요.",
+          "baseText": {
+            "de": "Ja, darin sind mein Notizbuch, das ich jeden Tag benutze, und ein rotes Mäppchen.",
+            "en": "Yes, inside are the notebook I use every day and a red pencil case."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "많은 und 쓰는 vor einem Nomen",
+        "rule": {
+          "de": "많은 beschreibt ein Merkmal der Tasche. Bei einer Tätigkeit wie 쓰다 steht dagegen 쓰는 vor dem Nomen.",
+          "en": "많은 describes a feature of the bag. An action verb such as 쓰다 takes the form 쓰는 before a noun."
+        },
+        "examples": [
+          {
+            "targetText": "양옆에 주머니가 많은 검은 가방 하나를 찾고 있어요.",
+            "baseText": {
+              "de": "Ich suche eine schwarze Tasche mit vielen Seitentaschen.",
+              "en": "I'm looking for a black bag with lots of pockets on the sides."
+            },
+            "highlight": "주머니가 많은"
+          },
+          {
+            "targetText": "서랍이 많은 책상에 자주 쓰는 사전이 있어요.",
+            "baseText": {
+              "de": "Auf dem Schreibtisch mit den vielen Schubladen liegt das Wörterbuch, das ich oft benutze.",
+              "en": "The dictionary I use often is on the desk with lots of drawers."
+            },
+            "highlight": "자주 쓰는 사전"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 매일 ",
+        {
+          "kind": "form",
+          "answer": "쓰는",
+          "cue": "Gewohnheit als Attribut vor dem Nomen / habitual action as a modifier before the noun",
+          "choices": [
+            "쓰려고",
+            "쓰면서",
+            "쓰는",
+            "쓰고"
+          ]
+        },
+        " 수첩과 ",
+        {
+          "kind": "choice",
+          "answer": "빨간 필통이",
+          "choices": [
+            "겨울 코트가",
+            "수영복이",
+            "빨간 필통이",
+            "우산이"
+          ]
+        },
+        " 들어 있어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "양옆에",
+          "baseText": {
+            "de": "an beiden Seiten",
+            "en": "on both sides"
+          }
+        },
+        {
+          "targetText": "주머니가 많은",
+          "baseText": {
+            "de": "mit vielen Außentaschen",
+            "en": "with lots of pockets"
+          }
+        },
+        {
+          "targetText": "검은 가방 하나를",
+          "baseText": {
+            "de": "eine schwarze Tasche",
+            "en": "a black bag"
+          }
+        },
+        {
+          "targetText": "찾고 있어요.",
+          "baseText": {
+            "de": "suche ich.",
+            "en": "I'm looking for."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "양옆",
+          "baseText": {
+            "de": "beide Seiten",
+            "en": "both sides"
+          }
+        },
+        {
+          "targetText": "주머니",
+          "baseText": {
+            "de": "Tasche an einem Gegenstand",
+            "en": "pocket"
+          }
+        },
+        {
+          "targetText": "검은 가방",
+          "baseText": {
+            "de": "schwarze Tasche",
+            "en": "black bag"
+          }
+        },
+        {
+          "targetText": "특징",
+          "baseText": {
+            "de": "besonderes Merkmal",
+            "en": "distinctive feature"
+          }
+        },
+        {
+          "targetText": "수첩",
+          "baseText": {
+            "de": "Notizbuch",
+            "en": "notebook"
+          }
+        },
+        {
+          "targetText": "필통",
+          "baseText": {
+            "de": "Federmäppchen",
+            "en": "pencil case"
+          }
+        },
+        {
+          "targetText": "문구류",
+          "baseText": {
+            "de": "Schreibwaren",
+            "en": "stationery"
+          }
+        }
+      ],
+      "recall": {
+        "before": "양옆에 주머니가 많은 ",
+        "answer": "검은",
+        "after": " 가방 하나를 찾고 있어요.",
+        "fallbackChoices": [
+          "파란",
+          "검은",
+          "하얀",
+          "노란"
+        ]
+      },
+      "speakRequired": [
+        "주머니가",
+        "검은",
+        "가방"
+      ],
+      "sceneCaption": {
+        "de": "Im Fundbüro wird nach einem Erkennungsmerkmal gefragt. „어떤 물건을 잃어버리셨어요? 특징이 있어요?“",
+        "en": "At the lost-and-found desk, a member of staff asks what the item looks like. “어떤 물건을 잃어버리셨어요? 특징이 있어요?”"
+      },
+      "trophyWord": {
+        "word": "가방",
+        "meaning": {
+          "de": "Tasche",
+          "en": "bag"
+        },
+        "example": "분실물 센터에 작은 가방 하나가 있어요.",
+        "whyThisWord": {
+          "de": "Bei 가방 kannst du Farbe, Fächer oder Inhalt ergänzen, damit jemand die richtige Tasche findet.",
+          "en": "Add the color, pockets or contents to 가방 to help someone identify the right bag."
+        }
+      },
+      "distractors": [
+        "손잡이가 긴",
+        "흰 운동화 한 켤레를"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei ähnliche Taschen im Fundbüro",
+        "en": "Similar bags at lost and found"
+      },
+      "songMood": "Soft double bass with light key taps.",
+      "visualNotes": "Two closed bags sit on a shelf behind a lost-and-found counter."
+    },
+    {
+      "slug": "changmun-sunlit-room",
+      "title": {
+        "de": "Ein Zimmer mit Tageslicht",
+        "en": "A room with daylight"
+      },
+      "situation": {
+        "de": "Bei der Wohnungssuche erklärst du, welche Art von Zimmer du besichtigen möchtest.",
+        "en": "While looking for a place to live, you explain what kind of room you'd like to view."
+      },
+      "pedagogicalGoal": "Ein Fenster mit 큰 beschreiben und mit 햇빛이 잘 드는 den Lichteinfall als Zimmermerkmal nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어떤 방을 찾으세요? 중요하게 생각하는 게 있어요?",
+          "baseText": {
+            "de": "Was für ein Zimmer suchen Sie? Was ist Ihnen besonders wichtig?",
+            "en": "What kind of room are you looking for? Is there something that matters to you?"
+          }
+        },
+        {
+          "targetText": "큰 창문 너머로 햇빛이 잘 드는 방을 찾고 있어요.",
+          "baseText": {
+            "de": "Ich suche ein Zimmer, in das durch ein großes Fenster viel Sonne fällt.",
+            "en": "I'm looking for a room that gets plenty of sunlight through a big window."
+          }
+        },
+        {
+          "targetText": "위층은 볕이 잘 들어요. 몇 층을 보고 싶으세요?",
+          "baseText": {
+            "de": "Die oberen Etagen sind schön sonnig. Welche Etage würden Sie gern sehen?",
+            "en": "The upper floors get plenty of sun. Which floor would you like to see?"
+          }
+        },
+        {
+          "targetText": "햇빛이 잘 드는 3층 방을 보고 싶어요.",
+          "baseText": {
+            "de": "Ich würde gern das sonnige Zimmer im zweiten Stock sehen.",
+            "en": "I'd like to see the sunny room on the third floor."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "큰 창문 und 햇빛이 잘 드는 방",
+        "rule": {
+          "de": "크다 wird vor 창문 zu 큰. Die Verbgruppe 햇빛이 잘 들다 wird zu 햇빛이 잘 드는 und beschreibt das ganze Zimmer.",
+          "en": "크다 becomes 큰 before 창문. The verb phrase 햇빛이 잘 들다 becomes 햇빛이 잘 드는 and describes the room as a whole."
+        },
+        "examples": [
+          {
+            "targetText": "큰 창문 너머로 햇빛이 잘 드는 방을 찾고 있어요.",
+            "baseText": {
+              "de": "Ich suche ein Zimmer, in das durch ein großes Fenster viel Sonne fällt.",
+              "en": "I'm looking for a room that gets plenty of sunlight through a big window."
+            },
+            "highlight": "햇빛이 잘 드는 방"
+          },
+          {
+            "targetText": "큰 나무가 보이는 방도 있어요.",
+            "baseText": {
+              "de": "Es gibt auch ein Zimmer mit Blick auf einen großen Baum.",
+              "en": "There's also a room where you can see a large tree."
+            },
+            "highlight": "큰 나무가 보이는 방"
+          }
+        ]
+      },
+      "cloze": [
+        "햇빛이 잘 ",
+        {
+          "kind": "form",
+          "answer": "드는",
+          "cue": "Verb als Zimmermerkmal vor dem Nomen / verb describing the room before the noun",
+          "choices": [
+            "들고",
+            "드는",
+            "들면",
+            "들려고"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "3층",
+          "choices": [
+            "3층",
+            "지하",
+            "1층",
+            "반지하"
+          ]
+        },
+        " 방을 보고 싶어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "큰 창문 너머로",
+          "baseText": {
+            "de": "durch ein großes Fenster",
+            "en": "through a large window"
+          }
+        },
+        {
+          "targetText": "햇빛이 잘 드는",
+          "baseText": {
+            "de": "in das viel Sonne fällt",
+            "en": "that gets plenty of sun"
+          }
+        },
+        {
+          "targetText": "방을",
+          "baseText": {
+            "de": "ein Zimmer",
+            "en": "a room"
+          }
+        },
+        {
+          "targetText": "찾고 있어요.",
+          "baseText": {
+            "de": "suche ich.",
+            "en": "I'm looking for."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "큰 창문",
+          "baseText": {
+            "de": "großes Fenster",
+            "en": "large window"
+          }
+        },
+        {
+          "targetText": "너머로",
+          "baseText": {
+            "de": "hinter etwas, über etwas hinweg",
+            "en": "beyond, through to the other side"
+          }
+        },
+        {
+          "targetText": "햇빛",
+          "baseText": {
+            "de": "Sonnenlicht",
+            "en": "sunlight"
+          }
+        },
+        {
+          "targetText": "볕이 들다",
+          "baseText": {
+            "de": "Sonne bekommen",
+            "en": "get sunlight"
+          }
+        },
+        {
+          "targetText": "위층",
+          "baseText": {
+            "de": "obere Etage",
+            "en": "upper floor"
+          }
+        },
+        {
+          "targetText": "3층",
+          "baseText": {
+            "de": "zweiter Stock",
+            "en": "third floor"
+          }
+        }
+      ],
+      "recall": {
+        "before": "큰 창문 너머로 ",
+        "answer": "햇빛이",
+        "after": " 잘 드는 방을 찾고 있어요.",
+        "fallbackChoices": [
+          "햇빛이",
+          "빗물이",
+          "바람이",
+          "소음이"
+        ]
+      },
+      "speakRequired": [
+        "창문",
+        "햇빛이",
+        "드는"
+      ],
+      "sceneCaption": {
+        "de": "Bei der Besichtigung fragt die Maklerin nach deinen Wünschen. „어떤 방을 찾으세요? 중요하게 생각하는 게 있어요?“",
+        "en": "The agent asks about your preferences for the viewing. “어떤 방을 찾으세요? 중요하게 생각하는 게 있어요?”"
+      },
+      "trophyWord": {
+        "word": "창문",
+        "meaning": {
+          "de": "Fenster",
+          "en": "window"
+        },
+        "example": "큰 창문 옆에 책상을 놓고 싶어요.",
+        "whyThisWord": {
+          "de": "Mit 창문 kannst du beim Besichtigen nach Licht, Größe oder Aussicht fragen.",
+          "en": "창문 is useful on a viewing when you want to talk about light, size or the view."
+        }
+      },
+      "distractors": [
+        "어두운 방을",
+        "비가 자주 새는"
+      ],
+      "placeholderCaption": {
+        "de": "Beim Gespräch über die Wohnungssuche",
+        "en": "Discussing a room search"
+      },
+      "songMood": "Open piano chords with a bright, airy melody.",
+      "visualNotes": "A housing agent holds up a floor plan near a window."
+    },
+    {
+      "slug": "wichi-yesterdays-cafe",
+      "title": {
+        "de": "Das Café von gestern",
+        "en": "The café from yesterday"
+      },
+      "situation": {
+        "de": "Du suchst mit einer Bekannten einen gut gelegenen Treffpunkt für morgen.",
+        "en": "You and a friend are looking for a convenient place to meet tomorrow."
+      },
+      "pedagogicalGoal": "Mit 간 an einen abgeschlossenen Besuch erinnern und mit 본 die Quelle einer Zeitangabe nennen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "내일 만나기 좋은 카페가 어디 있을까요?",
+          "baseText": {
+            "de": "Welches Café wäre morgen ein guter Treffpunkt?",
+            "en": "Which café would be a good place to meet tomorrow?"
+          }
+        },
+        {
+          "targetText": "어제 간 카페가 위치 하나는 정말 좋아요.",
+          "baseText": {
+            "de": "Das Café, in dem ich gestern war, hat zumindest eine wirklich gute Lage.",
+            "en": "The café I went to yesterday has a really good location, at least."
+          }
+        },
+        {
+          "targetText": "아홉 시 전에 만나고 싶은데 그 시간에 열어요?",
+          "baseText": {
+            "de": "Ich würde mich gern vor neun treffen. Hat es da schon auf?",
+            "en": "I'd like to meet before nine. Is it open by then?"
+          }
+        },
+        {
+          "targetText": "네, 어제 본 안내판에 따르면 아침 여덟 시에 열어요.",
+          "baseText": {
+            "de": "Ja, laut dem Schild, das ich gestern gesehen habe, öffnet es morgens um acht.",
+            "en": "Yes, according to the sign I saw yesterday, it opens at eight in the morning."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ vor einem Nomen nach einer Handlung",
+        "rule": {
+          "de": "Bei einem abgeschlossenen Besuch wird 가다 vor 카페 zu 간. Entsprechend heißt das Schild, das du gesehen hast, 본 안내판.",
+          "en": "For a completed visit, 가다 becomes 간 before 카페. Similarly, 본 안내판 means the sign you saw."
+        },
+        "examples": [
+          {
+            "targetText": "어제 간 카페가 위치 하나는 정말 좋아요.",
+            "baseText": {
+              "de": "Das Café, in dem ich gestern war, hat zumindest eine wirklich gute Lage.",
+              "en": "The café I went to yesterday has a really good location, at least."
+            },
+            "highlight": "어제 간 카페"
+          },
+          {
+            "targetText": "지난주에 본 메뉴판에는 점심 세트가 있었어요.",
+            "baseText": {
+              "de": "Auf der Speisekarte, die ich letzte Woche gesehen habe, gab es ein Mittagsmenü.",
+              "en": "The menu I saw last week had a lunch set."
+            },
+            "highlight": "지난주에 본 메뉴판"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 어제 ",
+        {
+          "kind": "form",
+          "answer": "본",
+          "cue": "Abgeschlossene Handlung als Attribut vor dem Nomen / completed action as a modifier before the noun",
+          "choices": [
+            "보면",
+            "본",
+            "보려고",
+            "보고"
+          ]
+        },
+        " 안내판에 따르면 ",
+        {
+          "kind": "choice",
+          "answer": "아침 여덟 시에",
+          "choices": [
+            "오후 세 시에",
+            "아침 여덟 시에",
+            "밤 열 시에",
+            "저녁 여섯 시에"
+          ]
+        },
+        " 열어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "어제 간",
+          "baseText": {
+            "de": "das ich gestern besucht habe",
+            "en": "that I went to yesterday"
+          }
+        },
+        {
+          "targetText": "카페가",
+          "baseText": {
+            "de": "das Café",
+            "en": "the café"
+          }
+        },
+        {
+          "targetText": "위치 하나는",
+          "baseText": {
+            "de": "was die Lage angeht",
+            "en": "when it comes to location"
+          }
+        },
+        {
+          "targetText": "정말 좋아요.",
+          "baseText": {
+            "de": "ist es wirklich gut.",
+            "en": "is really good."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "어제 간 카페",
+          "baseText": {
+            "de": "das gestern besuchte Café",
+            "en": "the café I went to yesterday"
+          }
+        },
+        {
+          "targetText": "위치",
+          "baseText": {
+            "de": "Lage",
+            "en": "location"
+          }
+        },
+        {
+          "targetText": "만나기 좋다",
+          "baseText": {
+            "de": "sich gut als Treffpunkt eignen",
+            "en": "be a good place to meet"
+          }
+        },
+        {
+          "targetText": "안내판",
+          "baseText": {
+            "de": "Hinweisschild",
+            "en": "information sign"
+          }
+        },
+        {
+          "targetText": "아침 일찍",
+          "baseText": {
+            "de": "früh am Morgen",
+            "en": "early in the morning"
+          }
+        },
+        {
+          "targetText": "여덟 시",
+          "baseText": {
+            "de": "acht Uhr",
+            "en": "eight o'clock"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "어제",
+        "after": " 간 카페가 위치 하나는 정말 좋아요.",
+        "fallbackChoices": [
+          "내일",
+          "모레",
+          "오늘",
+          "어제"
+        ]
+      },
+      "speakRequired": [
+        "어제",
+        "카페가",
+        "위치"
+      ],
+      "sceneCaption": {
+        "de": "Deine Bekannte sucht einen Treffpunkt. „내일 만나기 좋은 카페가 어디 있을까요?“",
+        "en": "Your friend is looking for a meeting place. “내일 만나기 좋은 카페가 어디 있을까요?”"
+      },
+      "trophyWord": {
+        "word": "위치",
+        "meaning": {
+          "de": "Lage, Standort",
+          "en": "location"
+        },
+        "example": "이 카페는 위치 하나는 마음에 들어요.",
+        "whyThisWord": {
+          "de": "Wenn du 위치 hervorhebst, bewertest du die Lage eines Ortes. Über das Essen oder den Service sagst du damit noch nichts.",
+          "en": "Emphasizing 위치 lets you praise a place for its location while leaving its food and service open."
+        }
+      },
+      "distractors": [
+        "다음 주에 갈",
+        "분위기 하나는"
+      ],
+      "placeholderCaption": {
+        "de": "Einen Treffpunkt für morgen aussuchen",
+        "en": "Choosing tomorrow's meeting place"
+      },
+      "songMood": "Easy acoustic swing and a relaxed answering phrase.",
+      "visualNotes": "Two friends look at a simple neighborhood map."
+    },
+    {
+      "slug": "gyotong-old-work-neighborhood",
+      "title": {
+        "de": "Zurück ins frühere Arbeitsviertel",
+        "en": "Back to the old work neighborhood"
+      },
+      "situation": {
+        "de": "Bei der Wohnungssuche möchtest du eine Gegend mit guten Verbindungen zeigen, die du von früher kennst.",
+        "en": "While looking for a home, you mention a well-connected area you know from working there."
+      },
+      "pedagogicalGoal": "Mit 일한 einen früheren Arbeitsort und mit 살 eine künftige Wohnung eingrenzen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어느 동네부터 집을 알아보고 싶으세요?",
+          "baseText": {
+            "de": "In welchem Viertel würden Sie mit der Wohnungssuche gern anfangen?",
+            "en": "Which neighborhood would you like to start your search in?"
+          }
+        },
+        {
+          "targetText": "전에 일한 동네가 교통 여건이 좋아서 거기부터 보고 싶어요.",
+          "baseText": {
+            "de": "In dem Viertel, in dem ich früher gearbeitet habe, ist die Verkehrsanbindung gut. Dort möchte ich anfangen.",
+            "en": "The neighborhood where I used to work has good transport links, so I'd like to start there."
+          }
+        },
+        {
+          "targetText": "역 근처는 월세가 60만 원은 넘는데 괜찮으세요?",
+          "baseText": {
+            "de": "In Bahnhofsnähe liegt die Monatsmiete über 600.000 Won. Ist das für Sie in Ordnung?",
+            "en": "Near the station the monthly rent is over 600,000 won. Is that all right for you?"
+          }
+        },
+        {
+          "targetText": "네, 제가 살 방은 월세로 70만 원까지 생각하고 있어요.",
+          "baseText": {
+            "de": "Ja, für mein künftiges Zimmer stelle ich mir bis zu 700.000 Won Miete im Monat vor.",
+            "en": "Yes, for the room I'll live in, I'm thinking of up to 700,000 won a month."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "일한 동네 und 살 방",
+        "rule": {
+          "de": "일한 ordnet die Arbeit der Vergangenheit zu. 살 weist bei der Wohnung auf die Zukunft, denn du wohnst noch nicht dort.",
+          "en": "일한 places the work in the past. 살 looks ahead to the room where you'll live."
+        },
+        "examples": [
+          {
+            "targetText": "전에 일한 동네가 교통 여건이 좋아서 거기부터 보고 싶어요.",
+            "baseText": {
+              "de": "In dem Viertel, in dem ich früher gearbeitet habe, ist die Verkehrsanbindung gut. Dort möchte ich anfangen.",
+              "en": "The neighborhood where I used to work has good transport links, so I'd like to start there."
+            },
+            "highlight": "전에 일한 동네"
+          },
+          {
+            "targetText": "내년에 일할 곳은 역에서 가까워요.",
+            "baseText": {
+              "de": "Mein künftiger Arbeitsplatz für nächstes Jahr ist in Bahnhofsnähe.",
+              "en": "The place I'll work next year is close to the station."
+            },
+            "highlight": "내년에 일할 곳"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 제가 ",
+        {
+          "kind": "form",
+          "answer": "살",
+          "cue": "Künftige Handlung als Attribut vor dem Nomen / future action as a modifier before the noun",
+          "choices": [
+            "살고",
+            "살",
+            "살면",
+            "살면서"
+          ]
+        },
+        " 방은 월세로 ",
+        {
+          "kind": "choice",
+          "answer": "70만 원까지",
+          "choices": [
+            "40만 원까지",
+            "70만 원까지",
+            "50만 원까지",
+            "30만 원까지"
+          ]
+        },
+        " 생각하고 있어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "전에 일한 동네가",
+          "baseText": {
+            "de": "das Viertel, in dem ich früher gearbeitet habe",
+            "en": "the neighborhood where I used to work"
+          }
+        },
+        {
+          "targetText": "교통 여건이",
+          "baseText": {
+            "de": "die Verkehrsanbindung",
+            "en": "the transport links"
+          }
+        },
+        {
+          "targetText": "좋아서",
+          "baseText": {
+            "de": "weil sie gut ist",
+            "en": "because they're good"
+          }
+        },
+        {
+          "targetText": "거기부터 보고 싶어요.",
+          "baseText": {
+            "de": "dort möchte ich zuerst schauen.",
+            "en": "I'd like to look there first."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "전에 일한 동네",
+          "baseText": {
+            "de": "früheres Arbeitsviertel",
+            "en": "neighborhood where I used to work"
+          }
+        },
+        {
+          "targetText": "교통 여건",
+          "baseText": {
+            "de": "Verkehrsanbindung",
+            "en": "transport links"
+          }
+        },
+        {
+          "targetText": "역 근처",
+          "baseText": {
+            "de": "in Bahnhofsnähe",
+            "en": "near the station"
+          }
+        },
+        {
+          "targetText": "월세",
+          "baseText": {
+            "de": "Monatsmiete",
+            "en": "monthly rent"
+          }
+        },
+        {
+          "targetText": "70만 원",
+          "baseText": {
+            "de": "700.000 Won",
+            "en": "700,000 won"
+          }
+        },
+        {
+          "targetText": "살 방",
+          "baseText": {
+            "de": "Zimmer, in dem ich wohnen werde",
+            "en": "room I'll live in"
+          }
+        }
+      ],
+      "recall": {
+        "before": "전에 일한 동네가 ",
+        "answer": "교통",
+        "after": " 여건이 좋아서 거기부터 보고 싶어요.",
+        "fallbackChoices": [
+          "교육",
+          "생활",
+          "교통",
+          "주차"
+        ]
+      },
+      "speakRequired": [
+        "일한",
+        "교통",
+        "거기부터"
+      ],
+      "sceneCaption": {
+        "de": "Die Maklerin fragt, wo sie mit dir anfangen soll. „어느 동네부터 집을 알아보고 싶으세요?“",
+        "en": "The agent asks where you'd like to start. “어느 동네부터 집을 알아보고 싶으세요?”"
+      },
+      "trophyWord": {
+        "word": "교통",
+        "meaning": {
+          "de": "Verkehr, Verkehrsverbindungen",
+          "en": "transport, transport links"
+        },
+        "example": "이 동네는 교통 여건이 어때요?",
+        "whyThisWord": {
+          "de": "Mit 교통 여건 fragst du bei der Wohnungssuche nach den Verbindungen in einem Viertel.",
+          "en": "교통 여건 is a useful way to ask about a neighborhood's transport connections."
+        }
+      },
+      "distractors": [
+        "처음 가는 동네가",
+        "월세가 낮아서"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Stadtviertel für die Wohnungssuche",
+        "en": "Choosing an area to live in"
+      },
+      "songMood": "Steady bass movement under a thoughtful piano line.",
+      "visualNotes": "A transit map beside a rental listing on an agent's desk."
+    },
+    {
+      "slug": "bunwigi-farewell-dinner",
+      "title": {
+        "de": "Ein Lokal fürs Abschiedsessen",
+        "en": "A place for the farewell dinner"
+      },
+      "situation": {
+        "de": "Im Team plant ihr ein Abschiedsessen. Dir fällt ein gemütliches Restaurant ein, das ihr schon kennt.",
+        "en": "Your team is planning a farewell dinner. You remember a cozy restaurant you've been to together."
+      },
+      "pedagogicalGoal": "Mit 간 식당 auf ein gemeinsames Erlebnis und mit 올 사람 auf die erwarteten Gäste verweisen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 송별회는 어디에서 하면 좋을까요?",
+          "baseText": {
+            "de": "Wo könnten wir diesmal unser Abschiedsessen veranstalten?",
+            "en": "Where would be a good place for the farewell dinner this time?"
+          }
+        },
+        {
+          "targetText": "지난번에 같이 간 식당이 분위기 좋은 곳이라서 송별회에 어울려요.",
+          "baseText": {
+            "de": "Das Restaurant, in dem wir letztes Mal zusammen waren, ist gemütlich und würde gut zum Abschiedsessen passen.",
+            "en": "The restaurant we went to together last time has a nice atmosphere and would suit the farewell dinner."
+          }
+        },
+        {
+          "targetText": "예약하려면 인원을 알아야 해요. 부장님 빼고 일곱 명 다 와요?",
+          "baseText": {
+            "de": "Für die Reservierung brauche ich die Personenzahl. Kommen alle sieben, den Abteilungsleiter nicht mitgezählt?",
+            "en": "I'll need a head count to book. Not counting the department head, are all seven coming?"
+          }
+        },
+        {
+          "targetText": "네, 송별회에 올 사람은 부장님까지 모두 여덟 명이에요.",
+          "baseText": {
+            "de": "Ja, zum Abschiedsessen kommen mit dem Abteilungsleiter insgesamt acht Leute.",
+            "en": "Yes, including the department head, eight people in all are coming to the farewell dinner."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "간 식당 und 올 사람",
+        "rule": {
+          "de": "간 verweist auf den früheren Restaurantbesuch. 올 beschreibt die Personen, die du zum künftigen Essen erwartest.",
+          "en": "간 refers back to a visit you've already made. 올 describes the people you expect at the upcoming meal."
+        },
+        "examples": [
+          {
+            "targetText": "지난번에 같이 간 식당이 분위기 좋은 곳이라서 송별회에 어울려요.",
+            "baseText": {
+              "de": "Das Restaurant, in dem wir letztes Mal zusammen waren, ist gemütlich und würde gut zum Abschiedsessen passen.",
+              "en": "The restaurant we went to together last time has a nice atmosphere and would suit the farewell dinner."
+            },
+            "highlight": "같이 간 식당"
+          },
+          {
+            "targetText": "같이 먹을 사람은 모두 몇 명이에요?",
+            "baseText": {
+              "de": "Wie viele Personen werden insgesamt mitessen?",
+              "en": "How many people will be eating with us in total?"
+            },
+            "highlight": "같이 먹을 사람"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 송별회에 ",
+        {
+          "kind": "form",
+          "answer": "올",
+          "cue": "Erwartete Handlung als Attribut vor dem Nomen / expected action as a modifier before the noun",
+          "choices": [
+            "오면서",
+            "와서",
+            "올",
+            "오면"
+          ]
+        },
+        " 사람은 부장님까지 모두 ",
+        {
+          "kind": "choice",
+          "answer": "여덟 명이에요",
+          "choices": [
+            "일곱 명이에요",
+            "아홉 명이에요",
+            "여덟 명이에요",
+            "열 명이에요"
+          ]
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "지난번에 같이 간",
+          "baseText": {
+            "de": "wo wir letztes Mal zusammen waren",
+            "en": "that we went to together last time"
+          }
+        },
+        {
+          "targetText": "식당이",
+          "baseText": {
+            "de": "das Restaurant",
+            "en": "the restaurant"
+          }
+        },
+        {
+          "targetText": "분위기 좋은 곳이라서",
+          "baseText": {
+            "de": "weil es dort gemütlich ist",
+            "en": "because it has a nice atmosphere"
+          }
+        },
+        {
+          "targetText": "송별회에 어울려요.",
+          "baseText": {
+            "de": "passt zum Abschiedsessen.",
+            "en": "would suit the farewell dinner."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "지난번에",
+          "baseText": {
+            "de": "beim letzten Mal",
+            "en": "last time"
+          }
+        },
+        {
+          "targetText": "분위기",
+          "baseText": {
+            "de": "Atmosphäre",
+            "en": "atmosphere"
+          }
+        },
+        {
+          "targetText": "송별회",
+          "baseText": {
+            "de": "Abschiedsfeier",
+            "en": "farewell party"
+          }
+        },
+        {
+          "targetText": "어울리다",
+          "baseText": {
+            "de": "passen",
+            "en": "be suited to"
+          }
+        },
+        {
+          "targetText": "인원",
+          "baseText": {
+            "de": "Personenzahl",
+            "en": "head count"
+          }
+        },
+        {
+          "targetText": "부장님까지",
+          "baseText": {
+            "de": "den Abteilungsleiter eingeschlossen",
+            "en": "including the department head"
+          }
+        },
+        {
+          "targetText": "빼고",
+          "baseText": {
+            "de": "ohne, nicht mitgezählt",
+            "en": "not counting, apart from"
+          }
+        }
+      ],
+      "recall": {
+        "before": "지난번에 같이 간 식당이 분위기 좋은 곳이라서 ",
+        "answer": "송별회에",
+        "after": " 어울려요.",
+        "fallbackChoices": [
+          "입학식에",
+          "송별회에",
+          "면접에",
+          "회식에"
+        ]
+      },
+      "speakRequired": [
+        "식당이",
+        "분위기",
+        "송별회에"
+      ],
+      "sceneCaption": {
+        "de": "Im Team kommt die Frage nach dem Lokal auf. „이번 송별회는 어디에서 하면 좋을까요?“",
+        "en": "A teammate asks about the venue. “이번 송별회는 어디에서 하면 좋을까요?”"
+      },
+      "trophyWord": {
+        "word": "분위기",
+        "meaning": {
+          "de": "Atmosphäre, Stimmung",
+          "en": "atmosphere"
+        },
+        "example": "분위기 좋은 식당을 추천해 주세요.",
+        "whyThisWord": {
+          "de": "Mit 분위기 kannst du ein Lokal danach auswählen, wie man sich dort fühlt.",
+          "en": "분위기 lets you choose a restaurant for the way it feels to be there."
+        }
+      },
+      "distractors": [
+        "처음 가는 식당이",
+        "혼자 먹기에"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Abschiedsessen planen",
+        "en": "Planning a farewell dinner"
+      },
+      "songMood": "Warm jazz-piano voicings and quiet percussion.",
+      "visualNotes": "Colleagues compare restaurant ideas at a break-room table."
+    },
+    {
+      "slug": "ipgu-festival-entrance",
+      "title": {
+        "de": "Wieder am selben Eingang",
+        "en": "The same entrance again"
+      },
+      "situation": {
+        "de": "Du triffst eine Bekannte bei einem Festival, das ihr beide vom letzten Mal kennt.",
+        "en": "You're meeting a friend at a festival you both know from last time."
+      },
+      "pedagogicalGoal": "Mit -던 an einen wiederholt benutzten Eingang oder einen früheren regelmäßigen Treffpunkt erinnern.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 축제 때는 어디에서 만날까요?",
+          "baseText": {
+            "de": "Wo sollen wir uns diesmal beim Festival treffen?",
+            "en": "Where shall we meet at the festival this time?"
+          }
+        },
+        {
+          "targetText": "지난 축제 때 늘 쓰던 입구 앞에서 만나요.",
+          "baseText": {
+            "de": "Treffen wir uns vor dem Eingang, den wir beim letzten Festival immer genommen haben.",
+            "en": "Let's meet outside the entrance we always used at the last festival."
+          }
+        },
+        {
+          "targetText": "그 입구라면 알아요. 이번에도 지난번처럼 여덟 시에 만날까요?",
+          "baseText": {
+            "de": "Den Eingang kenne ich. Treffen wir uns diesmal wieder um acht wie letztes Mal?",
+            "en": "I know the one. Shall we meet at eight again, like last time?"
+          }
+        },
+        {
+          "targetText": "늘 만나던 시간보다 조금 늦게 아홉 시가 어때요?",
+          "baseText": {
+            "de": "Wie wäre es mit neun Uhr, etwas später als unsere frühere übliche Zeit?",
+            "en": "How about nine, a little later than the time we used to meet?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-던 für eine frühere Gewohnheit",
+        "rule": {
+          "de": "쓰던 입구 ruft den Eingang in Erinnerung, den ihr früher immer wieder benutzt habt. 늘 macht die Wiederholung deutlich.",
+          "en": "쓰던 입구 recalls an entrance you used repeatedly in the past. 늘 makes the repetition explicit."
+        },
+        "examples": [
+          {
+            "targetText": "지난 축제 때 늘 쓰던 입구 앞에서 만나요.",
+            "baseText": {
+              "de": "Treffen wir uns vor dem Eingang, den wir beim letzten Festival immer genommen haben.",
+              "en": "Let's meet outside the entrance we always used at the last festival."
+            },
+            "highlight": "늘 쓰던 입구"
+          },
+          {
+            "targetText": "매일 지나던 골목에서 다시 만나요.",
+            "baseText": {
+              "de": "Treffen wir uns wieder in der Gasse, durch die wir früher jeden Tag gingen.",
+              "en": "Let's meet again in the alley we used to walk through every day."
+            },
+            "highlight": "매일 지나던 골목"
+          }
+        ]
+      },
+      "cloze": [
+        "늘 ",
+        {
+          "kind": "form",
+          "answer": "만나던",
+          "cue": "Frühere Gewohnheit als Attribut vor dem Nomen / past habit as a modifier before the noun",
+          "choices": [
+            "만나고",
+            "만나던",
+            "만나면",
+            "만나려고"
+          ]
+        },
+        " 시간보다 조금 늦게 ",
+        {
+          "kind": "choice",
+          "answer": "아홉 시가",
+          "choices": [
+            "여덟 시가",
+            "아홉 시가",
+            "일곱 시가",
+            "여섯 시가"
+          ]
+        },
+        " 어때요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "지난 축제 때",
+          "baseText": {
+            "de": "beim letzten Festival",
+            "en": "at the last festival"
+          }
+        },
+        {
+          "targetText": "늘 쓰던",
+          "baseText": {
+            "de": "den wir immer benutzt haben",
+            "en": "that we always used"
+          }
+        },
+        {
+          "targetText": "입구 앞에서",
+          "baseText": {
+            "de": "vor dem Eingang",
+            "en": "outside the entrance"
+          }
+        },
+        {
+          "targetText": "만나요.",
+          "baseText": {
+            "de": "treffen wir uns.",
+            "en": "let's meet."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "지난 축제",
+          "baseText": {
+            "de": "letztes Festival",
+            "en": "last festival"
+          }
+        },
+        {
+          "targetText": "늘 쓰던",
+          "baseText": {
+            "de": "früher regelmäßig benutzt",
+            "en": "that we always used"
+          }
+        },
+        {
+          "targetText": "입구",
+          "baseText": {
+            "de": "Eingang",
+            "en": "entrance"
+          }
+        },
+        {
+          "targetText": "앞에서",
+          "baseText": {
+            "de": "vor einem Ort",
+            "en": "in front of a place"
+          }
+        },
+        {
+          "targetText": "만나던 시간",
+          "baseText": {
+            "de": "die frühere übliche Treffzeit",
+            "en": "the time we used to meet"
+          }
+        },
+        {
+          "targetText": "조금 늦게",
+          "baseText": {
+            "de": "etwas später",
+            "en": "a little later"
+          }
+        }
+      ],
+      "recall": {
+        "before": "지난 축제 때 늘 쓰던 ",
+        "answer": "입구",
+        "after": " 앞에서 만나요.",
+        "fallbackChoices": [
+          "입구",
+          "무대",
+          "매표소",
+          "화장실"
+        ]
+      },
+      "speakRequired": [
+        "축제",
+        "쓰던",
+        "입구"
+      ],
+      "sceneCaption": {
+        "de": "Deine Bekannte möchte den Treffpunkt fürs Festival festlegen. „이번 축제 때는 어디에서 만날까요?“",
+        "en": "Your friend wants to settle on a meeting place for the festival. “이번 축제 때는 어디에서 만날까요?”"
+      },
+      "trophyWord": {
+        "word": "입구",
+        "meaning": {
+          "de": "Eingang",
+          "en": "entrance"
+        },
+        "example": "늘 이용하던 입구 앞에 안내판이 있어요.",
+        "whyThisWord": {
+          "de": "Mit 입구 앞 benennst du einen genauen Treffpunkt, auch wenn das Gelände selbst groß ist.",
+          "en": "입구 앞 gives someone a precise place to meet even on a large site."
+        }
+      },
+      "distractors": [
+        "새로 생긴",
+        "출구 뒤에서"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Treffpunkt am Festivalgelände",
+        "en": "A meeting point at the festival"
+      },
+      "songMood": "Light walking rhythm with a familiar recurring motif.",
+      "visualNotes": "A festival gate and a footpath leading up to it."
+    },
+    {
+      "slug": "geonmul-former-bank",
+      "title": {
+        "de": "Das frühere Bankgebäude",
+        "en": "The former bank building"
+      },
+      "situation": {
+        "de": "Am Telefon hilfst du einem Lieferdienst, dein Büro in einem umgenutzten Gebäude zu finden.",
+        "en": "Over the phone, you help a courier find your office in a repurposed building."
+      },
+      "pedagogicalGoal": "Mit -던 die frühere Nutzung eines Gebäudes und den ehemaligen Standort eines Schalters beschreiben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "주소 근처에 도착했는데 어느 건물로 들어갈까요?",
+          "baseText": {
+            "de": "Ich bin in der Nähe der Adresse. In welches Gebäude soll ich gehen?",
+            "en": "I'm near the address now. Which building should I go into?"
+          }
+        },
+        {
+          "targetText": "예전에 은행으로 쓰던 건물 안에 사무실이 있어요.",
+          "baseText": {
+            "de": "Mein Büro ist in dem Gebäude, das früher als Bank diente.",
+            "en": "My office is inside the building they used to use as a bank."
+          }
+        },
+        {
+          "targetText": "건물 앞에 도착했는데 위층으로 올라가야 해요?",
+          "baseText": {
+            "de": "Ich bin jetzt vor dem Gebäude. Muss ich nach oben gehen?",
+            "en": "I'm outside the building now. Do I need to go upstairs?"
+          }
+        },
+        {
+          "targetText": "아니요, 은행 창구가 있던 1층으로 오시면 돼요.",
+          "baseText": {
+            "de": "Nein, kommen Sie ins Erdgeschoss, wo früher die Bankschalter waren.",
+            "en": "No, come to the ground floor, where the bank counters used to be."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-던 für eine frühere Nutzung oder Lage",
+        "rule": {
+          "de": "쓰던 beschreibt die frühere Nutzung des Gebäudes. 있던 erinnert daran, wo sich etwas früher befand.",
+          "en": "쓰던 describes the building's former use. 있던 recalls where something used to be."
+        },
+        "examples": [
+          {
+            "targetText": "예전에 은행으로 쓰던 건물 안에 사무실이 있어요.",
+            "baseText": {
+              "de": "Mein Büro ist in dem Gebäude, das früher als Bank diente.",
+              "en": "My office is inside the building they used to use as a bank."
+            },
+            "highlight": "은행으로 쓰던 건물"
+          },
+          {
+            "targetText": "매표소가 있던 자리에 카페가 생겼어요.",
+            "baseText": {
+              "de": "Dort, wo früher der Fahrkartenschalter war, gibt es jetzt ein Café.",
+              "en": "A café has opened where the ticket office used to be."
+            },
+            "highlight": "매표소가 있던 자리"
+          }
+        ]
+      },
+      "cloze": [
+        "아니요, 은행 창구가 ",
+        {
+          "kind": "form",
+          "answer": "있던",
+          "cue": "Früherer Standort als Attribut vor dem Nomen / former location as a modifier before the noun",
+          "choices": [
+            "있던",
+            "있으면",
+            "있고",
+            "있으면서"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "1층으로",
+          "choices": [
+            "3층으로",
+            "1층으로",
+            "2층으로",
+            "5층으로"
+          ]
+        },
+        " 오시면 돼요."
+      ],
+      "chunks": [
+        {
+          "targetText": "예전에",
+          "baseText": {
+            "de": "früher",
+            "en": "in the past"
+          }
+        },
+        {
+          "targetText": "은행으로 쓰던",
+          "baseText": {
+            "de": "das als Bank diente",
+            "en": "that they used as a bank"
+          }
+        },
+        {
+          "targetText": "건물 안에",
+          "baseText": {
+            "de": "in dem Gebäude",
+            "en": "inside the building"
+          }
+        },
+        {
+          "targetText": "사무실이 있어요.",
+          "baseText": {
+            "de": "ist mein Büro.",
+            "en": "is my office."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "주소 근처",
+          "baseText": {
+            "de": "in der Nähe der Adresse",
+            "en": "near the address"
+          }
+        },
+        {
+          "targetText": "은행",
+          "baseText": {
+            "de": "Bank",
+            "en": "bank"
+          }
+        },
+        {
+          "targetText": "건물",
+          "baseText": {
+            "de": "Gebäude",
+            "en": "building"
+          }
+        },
+        {
+          "targetText": "사무실",
+          "baseText": {
+            "de": "Büro",
+            "en": "office"
+          }
+        },
+        {
+          "targetText": "은행 창구",
+          "baseText": {
+            "de": "Bankschalter",
+            "en": "bank counter"
+          }
+        },
+        {
+          "targetText": "1층",
+          "baseText": {
+            "de": "Erdgeschoss",
+            "en": "ground floor"
+          }
+        }
+      ],
+      "recall": {
+        "before": "예전에 ",
+        "answer": "은행으로",
+        "after": " 쓰던 건물 안에 사무실이 있어요.",
+        "fallbackChoices": [
+          "극장으로",
+          "병원으로",
+          "학교로",
+          "은행으로"
+        ]
+      },
+      "speakRequired": [
+        "은행으로",
+        "건물",
+        "사무실이"
+      ],
+      "sceneCaption": {
+        "de": "Der Lieferdienst ruft aus deiner Straße an. „주소 근처에 도착했는데 어느 건물로 들어갈까요?“",
+        "en": "The courier calls from your street. “주소 근처에 도착했는데 어느 건물로 들어갈까요?”"
+      },
+      "trophyWord": {
+        "word": "건물",
+        "meaning": {
+          "de": "Gebäude",
+          "en": "building"
+        },
+        "example": "예전에 극장으로 쓰던 건물 안에 가게가 있어요.",
+        "whyThisWord": {
+          "de": "Mit 건물 und seiner früheren Nutzung kannst du einen Ort beschreiben, dessen heutiger Name noch wenig bekannt ist.",
+          "en": "Pair 건물 with a former use to help someone recognize a place whose current name may be unfamiliar."
+        }
+      },
+      "distractors": [
+        "새로 지은",
+        "사무실 옆에"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Lieferdienst sucht das Büro",
+        "en": "A courier looks for the office"
+      },
+      "songMood": "Subtle rhythmic footsteps and a mellow bass phrase.",
+      "visualNotes": "A courier stops outside a converted commercial building."
+    },
+    {
+      "slug": "moyang-busan-keyring",
+      "title": {
+        "de": "Der runde Anhänger aus Busan",
+        "en": "The round charm from Busan"
+      },
+      "situation": {
+        "de": "Im Fundbüro beschreibst du einen Schlüsselanhänger und überlegst, wann du ihn verloren hast.",
+        "en": "At the lost-and-found desk, you describe a keyring and recall when you lost it."
+      },
+      "pedagogicalGoal": "Mit 샀던 an einen abgeschlossenen Kauf erinnern und mit 모양 den gesuchten Gegenstand genauer bestimmen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "분실하신 물건이 어떻게 생겼는지 설명해 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie beschreiben, wie der verlorene Gegenstand aussieht?",
+            "en": "Could you describe what the item you lost looks like?"
+          }
+        },
+        {
+          "targetText": "제가 찾는 건 부산에서 샀던 동그란 동전 모양 열쇠고리예요.",
+          "baseText": {
+            "de": "Ich suche einen runden, münzförmigen Schlüsselanhänger, den ich in Busan gekauft habe.",
+            "en": "I'm looking for a round, coin-shaped keyring that I bought in Busan."
+          }
+        },
+        {
+          "targetText": "비슷한 게 몇 개 있는데 혹시 오늘 카페에 들르셨어요?",
+          "baseText": {
+            "de": "Wir haben ein paar ähnliche. Waren Sie heute zufällig in einem Café?",
+            "en": "We have a few similar ones. Did you happen to stop by a café today?"
+          }
+        },
+        {
+          "targetText": "네, 오늘 아침에 들렀던 카페에서 나올 때 떨어뜨렸어요.",
+          "baseText": {
+            "de": "Ja, ich habe ihn beim Verlassen des Cafés fallen lassen, in dem ich heute Morgen kurz war.",
+            "en": "Yes, I dropped it as I was leaving the café I'd stopped by this morning."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 für ein abgeschlossenes Erlebnis",
+        "rule": {
+          "de": "샀던 erinnert an den abgeschlossenen Kauf. 동그란 동전 모양 beschreibt die Form des Gegenstands, den du damals gekauft hast.",
+          "en": "샀던 looks back on the completed purchase. 동그란 동전 모양 describes the shape of the item you bought."
+        },
+        "examples": [
+          {
+            "targetText": "제가 찾는 건 부산에서 샀던 동그란 동전 모양 열쇠고리예요.",
+            "baseText": {
+              "de": "Ich suche einen runden, münzförmigen Schlüsselanhänger, den ich in Busan gekauft habe.",
+              "en": "I'm looking for a round, coin-shaped keyring that I bought in Busan."
+            },
+            "highlight": "부산에서 샀던"
+          },
+          {
+            "targetText": "여행 때 샀던 별 모양 장식이 없어졌어요.",
+            "baseText": {
+              "de": "Der sternförmige Anhänger, den ich auf der Reise gekauft habe, ist verschwunden.",
+              "en": "The star-shaped charm I bought on my trip is missing."
+            },
+            "highlight": "여행 때 샀던"
+          }
+        ]
+      },
+      "cloze": [
+        "네, 오늘 아침에 ",
+        {
+          "kind": "form",
+          "answer": "들렀던",
+          "cue": "Rückblick auf einen abgeschlossenen Besuch vor dem Nomen / looking back on a completed visit before the noun",
+          "choices": [
+            "들르면",
+            "들르면서",
+            "들르려고",
+            "들렀던"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "카페에서",
+          "choices": [
+            "집에서",
+            "카페에서",
+            "서점에서",
+            "약국에서"
+          ]
+        },
+        " 나올 때 떨어뜨렸어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "제가 찾는 건",
+          "baseText": {
+            "de": "was ich suche, ist",
+            "en": "what I'm looking for is"
+          }
+        },
+        {
+          "targetText": "부산에서 샀던",
+          "baseText": {
+            "de": "den ich in Busan gekauft habe",
+            "en": "that I bought in Busan"
+          }
+        },
+        {
+          "targetText": "동그란 동전 모양",
+          "baseText": {
+            "de": "rund und münzförmig",
+            "en": "round and coin-shaped"
+          }
+        },
+        {
+          "targetText": "열쇠고리예요.",
+          "baseText": {
+            "de": "ein Schlüsselanhänger.",
+            "en": "a keyring."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "열쇠고리",
+          "baseText": {
+            "de": "Schlüsselanhänger",
+            "en": "keyring"
+          }
+        },
+        {
+          "targetText": "동전",
+          "baseText": {
+            "de": "Münze",
+            "en": "coin"
+          }
+        },
+        {
+          "targetText": "모양",
+          "baseText": {
+            "de": "Form",
+            "en": "shape"
+          }
+        },
+        {
+          "targetText": "동그란",
+          "baseText": {
+            "de": "rund",
+            "en": "round"
+          }
+        },
+        {
+          "targetText": "들렀던 카페",
+          "baseText": {
+            "de": "das Café, in dem ich kurz war",
+            "en": "the café I stopped by"
+          }
+        },
+        {
+          "targetText": "떨어뜨리다",
+          "baseText": {
+            "de": "fallen lassen",
+            "en": "drop"
+          }
+        }
+      ],
+      "recall": {
+        "before": "제가 찾는 건 ",
+        "answer": "부산에서",
+        "after": " 샀던 동그란 동전 모양 열쇠고리예요.",
+        "fallbackChoices": [
+          "대구에서",
+          "광주에서",
+          "부산에서",
+          "서울에서"
+        ]
+      },
+      "speakRequired": [
+        "부산에서",
+        "샀던",
+        "모양"
+      ],
+      "sceneCaption": {
+        "de": "Im Fundbüro bittet dich der Mitarbeiter um eine Beschreibung. „분실하신 물건이 어떻게 생겼는지 설명해 주시겠어요?“",
+        "en": "The lost-and-found clerk asks for a description. “분실하신 물건이 어떻게 생겼는지 설명해 주시겠어요?”"
+      },
+      "trophyWord": {
+        "word": "모양",
+        "meaning": {
+          "de": "Form, Gestalt",
+          "en": "shape"
+        },
+        "example": "하트 모양 장식이 달린 열쇠고리를 찾고 있어요.",
+        "whyThisWord": {
+          "de": "Mit 동전 모양 oder 하트 모양 vergleichst du einen Gegenstand mit einer vertrauten Form.",
+          "en": "Use 모양 after a familiar object such as a coin or heart to describe the shape of something else."
+        }
+      },
+      "distractors": [
+        "네모난 사진 모양",
+        "지갑이에요."
+      ],
+      "placeholderCaption": {
+        "de": "Einen verlorenen Anhänger beschreiben",
+        "en": "Describing a lost keyring"
+      },
+      "songMood": "A quiet, searching melody with rounded bell tones.",
+      "visualNotes": "A lost-and-found shelf with small objects in separate trays."
+    },
+    {
+      "slug": "saekkkal-jacket-in-crowd",
+      "title": {
+        "de": "Die Jacke in der Menge",
+        "en": "The jacket in the crowd"
+      },
+      "situation": {
+        "de": "Vor einem belebten Eingang triffst du eine Bekannte. Vorher hat sie dir ihre Jacke beschrieben.",
+        "en": "You're meeting an acquaintance at a busy entrance. She told you earlier what her jacket looked like."
+      },
+      "pedagogicalGoal": "Mit 말씀하셨던 höflich an eine frühere Beschreibung anknüpfen und mehrere Merkmale vor 분 verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오래 기다리셨어요? 저를 금방 알아보셨어요?",
+          "baseText": {
+            "de": "Warten Sie schon lange? Haben Sie mich gleich erkannt?",
+            "en": "Have you been waiting long? Did you recognize me right away?"
+          }
+        },
+        {
+          "targetText": "전에 말씀하셨던 재킷 색깔 덕분에 바로 알아봤어요.",
+          "baseText": {
+            "de": "Ich habe Sie an der Jackenfarbe, die Sie mir vorher genannt hatten, sofort erkannt.",
+            "en": "I recognized you straight away from the color you told me your jacket would be."
+          }
+        },
+        {
+          "targetText": "여기 사람이 이렇게 많은데 어떻게 확신하셨어요?",
+          "baseText": {
+            "de": "Hier sind so viele Leute. Wie konnten Sie sich so sicher sein?",
+            "en": "There are so many people here. How could you be sure?"
+          }
+        },
+        {
+          "targetText": "말씀하셨던 노란 재킷을 입은 분은 여기 한 분뿐이었어요.",
+          "baseText": {
+            "de": "Die gelbe Jacke, die Sie beschrieben hatten, trug hier nur eine Person.",
+            "en": "Only one person here was wearing the yellow jacket you described."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 und mehrere Angaben vor 분",
+        "rule": {
+          "de": "말씀하셨던 blickt höflich auf die Beschreibung zurück. In 노란 재킷을 입은 분 bezieht sich 노란 auf die Jacke und 입은 auf die Person.",
+          "en": "말씀하셨던 politely looks back on the other person's description. In 노란 재킷을 입은 분, 노란 describes the jacket and 입은 identifies the person wearing it."
+        },
+        "examples": [
+          {
+            "targetText": "전에 말씀하셨던 재킷 색깔 덕분에 바로 알아봤어요.",
+            "baseText": {
+              "de": "Ich habe Sie an der Jackenfarbe, die Sie mir vorher genannt hatten, sofort erkannt.",
+              "en": "I recognized you straight away from the color you told me your jacket would be."
+            },
+            "highlight": "전에 말씀하셨던"
+          },
+          {
+            "targetText": "사진에서 봤던 빨간 모자를 쓴 분이 여기 계세요.",
+            "baseText": {
+              "de": "Die Person mit der roten Mütze, die ich auf dem Foto gesehen habe, ist hier.",
+              "en": "The person wearing the red hat I saw in the photo is here."
+            },
+            "highlight": "사진에서 봤던 빨간 모자를 쓴 분"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "form",
+          "answer": "말씀하셨던",
+          "cue": "Rückblick auf die frühere Aussage vor dem Nomen / recalling an earlier statement before the noun",
+          "choices": [
+            "말씀하시려고",
+            "말씀하시면서",
+            "말씀하셨던",
+            "말씀하시면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "노란 재킷을",
+          "choices": [
+            "노란 가방을",
+            "노란 재킷을",
+            "노란 모자를",
+            "노란 구두를"
+          ]
+        },
+        " 입은 분은 여기 한 분뿐이었어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "전에 말씀하셨던",
+          "baseText": {
+            "de": "die Sie vorher genannt hatten",
+            "en": "that you told me about earlier"
+          }
+        },
+        {
+          "targetText": "재킷 색깔",
+          "baseText": {
+            "de": "die Farbe der Jacke",
+            "en": "the color of the jacket"
+          }
+        },
+        {
+          "targetText": "덕분에 바로",
+          "baseText": {
+            "de": "dank ihr sofort",
+            "en": "thanks to it, straight away"
+          }
+        },
+        {
+          "targetText": "알아봤어요.",
+          "baseText": {
+            "de": "habe ich Sie erkannt.",
+            "en": "I recognized you."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "재킷",
+          "baseText": {
+            "de": "Jacke",
+            "en": "jacket"
+          }
+        },
+        {
+          "targetText": "색깔",
+          "baseText": {
+            "de": "Farbe",
+            "en": "color"
+          }
+        },
+        {
+          "targetText": "말씀하셨던",
+          "baseText": {
+            "de": "die Sie erwähnt hatten",
+            "en": "that you mentioned"
+          }
+        },
+        {
+          "targetText": "덕분에",
+          "baseText": {
+            "de": "dank",
+            "en": "thanks to"
+          }
+        },
+        {
+          "targetText": "알아보다",
+          "baseText": {
+            "de": "wiedererkennen",
+            "en": "recognize"
+          }
+        },
+        {
+          "targetText": "한 분뿐",
+          "baseText": {
+            "de": "nur eine Person",
+            "en": "only one person"
+          }
+        }
+      ],
+      "recall": {
+        "before": "전에 말씀하셨던 재킷 ",
+        "answer": "색깔",
+        "after": " 덕분에 바로 알아봤어요.",
+        "fallbackChoices": [
+          "상표",
+          "색깔",
+          "가격",
+          "크기"
+        ]
+      },
+      "speakRequired": [
+        "말씀하셨던",
+        "색깔",
+        "알아봤어요"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang spricht dich deine Bekannte an. „오래 기다리셨어요? 저를 금방 알아보셨어요?“",
+        "en": "Your acquaintance greets you at the entrance. “오래 기다리셨어요? 저를 금방 알아보셨어요?”"
+      },
+      "trophyWord": {
+        "word": "색깔",
+        "meaning": {
+          "de": "Farbe",
+          "en": "color"
+        },
+        "example": "우산 색깔 덕분에 멀리서도 알아봤어요.",
+        "whyThisWord": {
+          "de": "Mit 색깔 kannst du jemandem ein visuelles Merkmal nennen, das auch in einer Menschenmenge auffällt.",
+          "en": "색깔 lets you give someone a visual clue that stands out even in a crowd."
+        }
+      },
+      "distractors": [
+        "재킷 가격",
+        "나중에야"
+      ],
+      "placeholderCaption": {
+        "de": "Beim ersten Treffen am Eingang",
+        "en": "Meeting at a busy entrance"
+      },
+      "songMood": "Sparse piano opens into a warm resolving chord.",
+      "visualNotes": "Two people meet beside a busy entrance as others pass."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "file": "english-p8.json",
+  "source": "fc2847e954ebf766e6eb2c3849197cf2a560a4a74759828bfe8b52951c79d4ed",
+  "result": "2419c6e93093f9db12a0a4309f81a7596565d18e717991596edccb47514e0209",
+  "edits": 32,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "english-p8.json",
+      "lessonsRead": [
+        "before-the-first-bus",
+        "under-the-stairs",
+        "saturday-everywhere",
+        "the-small-basket",
+        "through-the-park",
+        "from-the-front-door",
+        "phone-on-the-shelf",
+        "speaking-up-in-class",
+        "across-town",
+        "messages-without-a-script"
+      ],
+      "concerns": [
+        "Staging matches the newer architecture (L1-4 used to/didn't use to, L5-7 anymore/these days/comparatives/as…as, L8-9 for/since perfect, L10 mix); ten trophies retained and each appears in its learner line.",
+        "Form cues print the exact answer wherever the target form equals the lemma (14 blanks); the test collapses to copying. Fixed with operation-only German cues.",
+        "L4 rule 'deutlicher als beim Hören' implies an audible use/used distinction; none exists in US speech.",
+        "L5 'dauert kürzer als' is non-idiomatic German.",
+        "L6 causal since is correct and licensed by the trophy but the rule should name both readings explicitly since duration since only arrives in L8.",
+        "L7 story breaks: an alarm clock beside the coffee maker cannot replace the bedroom phone. Recast as a newly bought clock still on the kitchen table, matching 'I recently bought it.'",
+        "L4 gloss grab→greifen is off (sich schnappen); L6 recall fallbacks mix word classes (lengthen, length).",
+        "Distractors 'inside the receipt.' (L7) and 'onto a recipe.' (L9) are too implausible.",
+        "Verified: all cloze and chunk concats reproduce the dialogue lines; no contraction is a recall answer or speak token; all speak tokens occur in dialogue[1]; no sir/ma'am; no British spellings; pattern example 2 never reproduces dialogue[3]; situations never foreshadow them₂; each learner clip stands alone.",
+        "Light pre-stage comparatives 'as often' (L3) and 'more than I could carry' (L4) sit in unblanked learner lines as fixed adverbials; tolerated.",
+        "Plan P8 anchor still carries the preliminary 'L6-8 since/for' staging; the lesson file follows the newer architecture, which overrides it."
+      ]
+    },
+    {
+      "file": "english-plan.json",
+      "lessonsRead": [
+        "P8 L1-L10 beats and trophies"
+      ],
+      "concerns": [
+        "Trophy list identical to the lesson file; beats consistent with drafted lessons. Anchor text is preliminary and superseded; no edit, informational only."
+      ]
+    }
+  ],
+  "openIssues": [
+    "Codex holds an in-flight claim on this scope; these edits are a spec for whoever owns the file, not applied here.",
+    "english-plan.json P8 anchor still states the preliminary L6-8 since/for staging; superseded by the newer architecture, update when the plan is next touched.",
+    "Cloze choices and recall fallbacks include the correct answer among four; assumed to match the German B1 chip format—validator should confirm.",
+    "Light pre-stage comparatives 'as often' (L3) and 'more than I could carry' (L4) tolerated as fixed adverbials in unblanked lines.",
+    "L10 gloss 'Manuskript' for script is acceptable but 'vorbereiteter Text' would match the Spickzettel framing better; not trust-critical.",
+    "Any accepted edit changes the English corpus hash; editions and catalog regeneration remain owner-gated per Milestone 3."
+  ]
+}

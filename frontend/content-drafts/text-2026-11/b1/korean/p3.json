@@ -1,0 +1,2230 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 3,
+  "title": {
+    "de": "Höfliche Bitten, Was-wäre-wenn",
+    "en": "Soft requests and hypotheticals"
+  },
+  "subtitle": {
+    "de": "Nach Möglichkeiten fragen und einen Gegenvorschlag aushandeln",
+    "en": "Ask what is possible and negotiate a change"
+  },
+  "anchor": "gym desk, phone shop, building management office, library, school office, rental agent",
+  "lessons": [
+    {
+      "slug": "hoksi-evening-class",
+      "title": {
+        "de": "Ein Platz am Abend",
+        "en": "A place in the evening class"
+      },
+      "situation": {
+        "de": "Am Empfang des Fitnessstudios stehen fast nur Vormittagskurse auf dem Plan.",
+        "en": "At the gym desk, most of the classes on the schedule are in the morning."
+      },
+      "pedagogicalGoal": "Mit 혹시 eine vorsichtige Frage einleiten und angeben, unter welcher Bedingung ein Kurs passt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "지금 바로 등록할 수 있는 건 오전 수업이에요.",
+          "baseText": {
+            "de": "Sofort anmelden können Sie sich für den Vormittagskurs.",
+            "en": "You can sign up for the morning class straight away."
+          }
+        },
+        {
+          "targetText": "혹시 자리가 나면 저녁 수업을 들을 수 있을까요?",
+          "baseText": {
+            "de": "Könnte ich vielleicht in den Abendkurs, wenn ein Platz frei wird?",
+            "en": "If a place opens up, could I possibly take the evening class?"
+          }
+        },
+        {
+          "targetText": "저녁 수업은 대기 명단에 올려 드릴 수 있어요.",
+          "baseText": {
+            "de": "Für den Abendkurs kann ich Sie auf die Warteliste setzen.",
+            "en": "I can put you on the waiting list for the evening class."
+          }
+        },
+        {
+          "targetText": "그러면 일곱 시 이후 수업에 자리가 나면 연락 주세요.",
+          "baseText": {
+            "de": "Dann geben Sie mir bitte Bescheid, wenn in einem Kurs nach sieben ein Platz frei wird.",
+            "en": "In that case, please let me know if a place opens up in a class after seven."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면 … -(으)ㄹ 수 있을까요?",
+        "rule": {
+          "de": "Mit 나면 formulierst du die Bedingung. 들을 수 있을까요? macht daraus eine vorsichtige Frage nach einer Möglichkeit.",
+          "en": "나면 sets a condition. 들을 수 있을까요? politely asks whether taking the class would be possible."
+        },
+        "examples": [
+          {
+            "targetText": "혹시 자리가 나면 저녁 수업을 들을 수 있을까요?",
+            "baseText": {
+              "de": "Könnte ich vielleicht in den Abendkurs, wenn ein Platz frei wird?",
+              "en": "If a place opens up, could I possibly take the evening class?"
+            },
+            "highlight": "들을 수 있을까요"
+          },
+          {
+            "targetText": "비가 오면 실내에서 연습할 수 있을까요?",
+            "baseText": {
+              "de": "Könnten wir drinnen trainieren, wenn es regnet?",
+              "en": "If it rains, could we train indoors?"
+            },
+            "highlight": "비가 오면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "예컨대",
+            "반대로",
+            "첫째",
+            "그러면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "일곱 시 이후",
+          "choices": [
+            "오전 열 시",
+            "점심시간",
+            "일곱 시 이후",
+            "새벽"
+          ]
+        },
+        " 수업에 자리가 ",
+        {
+          "kind": "form",
+          "answer": "나면",
+          "cue": "Bedingung -(으)면 / condition -(으)면",
+          "choices": [
+            "나는",
+            "나면",
+            "나려고",
+            "나니까요"
+          ]
+        },
+        " 연락 주세요."
+      ],
+      "chunks": [
+        {
+          "targetText": "혹시",
+          "baseText": {
+            "de": "vielleicht",
+            "en": "by any chance"
+          }
+        },
+        {
+          "targetText": "자리가 나면",
+          "baseText": {
+            "de": "wenn ein Platz frei wird",
+            "en": "if a place opens up"
+          }
+        },
+        {
+          "targetText": "저녁 수업을",
+          "baseText": {
+            "de": "den Abendkurs",
+            "en": "the evening class"
+          }
+        },
+        {
+          "targetText": "들을 수 있을까요?",
+          "baseText": {
+            "de": "könnte ich besuchen?",
+            "en": "could I take?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "혹시",
+          "baseText": {
+            "de": "vielleicht, wenn man vorsichtig fragt",
+            "en": "by any chance"
+          }
+        },
+        {
+          "targetText": "자리가 나다",
+          "baseText": {
+            "de": "ein Platz wird frei",
+            "en": "a place opens up"
+          }
+        },
+        {
+          "targetText": "저녁 수업",
+          "baseText": {
+            "de": "Abendkurs",
+            "en": "evening class"
+          }
+        },
+        {
+          "targetText": "오전 수업",
+          "baseText": {
+            "de": "Vormittagskurs",
+            "en": "morning class"
+          }
+        },
+        {
+          "targetText": "대기 명단",
+          "baseText": {
+            "de": "Warteliste",
+            "en": "waiting list"
+          }
+        },
+        {
+          "targetText": "등록하다",
+          "baseText": {
+            "de": "sich anmelden",
+            "en": "sign up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "혹시 자리가 나면 ",
+        "answer": "저녁",
+        "after": " 수업을 들을 수 있을까요?",
+        "fallbackChoices": [
+          "점심",
+          "새벽",
+          "저녁",
+          "오전"
+        ]
+      },
+      "speakRequired": [
+        "자리가",
+        "저녁",
+        "수업을"
+      ],
+      "sceneCaption": {
+        "de": "Am Empfang erklärt die Mitarbeiterin den Kursplan. „지금 바로 등록할 수 있는 건 오전 수업이에요.“",
+        "en": "The receptionist points out which class is open. “지금 바로 등록할 수 있는 건 오전 수업이에요.”"
+      },
+      "trophyWord": {
+        "word": "혹시",
+        "meaning": {
+          "de": "vielleicht, unter Umständen",
+          "en": "by any chance"
+        },
+        "example": "혹시 빈 사물함이 있어요?",
+        "whyThisWord": {
+          "de": "혹시 leitet eine Frage ein, bei der du auch mit einem Nein rechnest.",
+          "en": "혹시 softens a question when you know the answer might be no."
+        }
+      },
+      "distractors": [
+        "주말 수업을",
+        "등록을 취소할까요?"
+      ],
+      "placeholderCaption": {
+        "de": "Am Empfang des Fitnessstudios",
+        "en": "At the gym front desk"
+      },
+      "songMood": "Light acoustic pulse with a gentle upward phrase.",
+      "visualNotes": "A staff member points to the morning column on a gym schedule."
+    },
+    {
+      "slug": "manyak-phone-contract",
+      "title": {
+        "de": "Wenn ich früher kündige",
+        "en": "If I cancel early"
+      },
+      "situation": {
+        "de": "Im Handyladen lässt du dir einen Tarif mit Vertragsbindung erklären.",
+        "en": "At a phone shop, you ask about a plan that comes with a contract."
+      },
+      "pedagogicalGoal": "Mit 만약 und -(으)면 eine mögliche spätere Kündigung durchspielen und eine passende Alternative wählen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이 요금제는 일 년 약정이 있어요.",
+          "baseText": {
+            "de": "Dieser Tarif hat eine Mindestlaufzeit von einem Jahr.",
+            "en": "This plan comes with a one-year contract."
+          }
+        },
+        {
+          "targetText": "만약 중간에 해지하면 위약금 없이 그만둘 수 있을까요?",
+          "baseText": {
+            "de": "Falls ich vorzeitig kündige, könnte ich dann ohne Vertragsstrafe aussteigen?",
+            "en": "If I cancel early, could I leave without paying a fee?"
+          }
+        },
+        {
+          "targetText": "위약금이 있어요. 더 저렴한 요금제는 약정이 없어요.",
+          "baseText": {
+            "de": "Es fällt eine Gebühr an. Beim günstigeren Tarif gibt es keine Vertragsbindung.",
+            "en": "There is a fee. The cheaper plan has no fixed term."
+          }
+        },
+        {
+          "targetText": "그러면 약정이 없으면 더 저렴한 요금제로 할게요.",
+          "baseText": {
+            "de": "Wenn es keine Vertragsbindung gibt, nehme ich dann den günstigeren Tarif.",
+            "en": "In that case, if there's no fixed term, I'll take the cheaper plan."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "만약 … -(으)면",
+        "rule": {
+          "de": "만약 markiert ausdrücklich einen angenommenen Fall. Das Verb mit -(으)면 nennt die Bedingung.",
+          "en": "만약 marks an imagined situation. The verb ending -(으)면 states the condition."
+        },
+        "examples": [
+          {
+            "targetText": "만약 중간에 해지하면 위약금 없이 그만둘 수 있을까요?",
+            "baseText": {
+              "de": "Falls ich vorzeitig kündige, könnte ich dann ohne Vertragsstrafe aussteigen?",
+              "en": "If I cancel early, could I leave without paying a fee?"
+            },
+            "highlight": "만약 중간에 해지하면"
+          },
+          {
+            "targetText": "만약 이사하면 같은 번호를 쓸 수 있을까요?",
+            "baseText": {
+              "de": "Könnte ich bei einem Umzug dieselbe Nummer behalten?",
+              "en": "If I move, could I keep the same number?"
+            },
+            "highlight": "만약 이사하면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "즉",
+            "그러면",
+            "게다가",
+            "혹은"
+          ]
+        },
+        " 약정이 ",
+        {
+          "kind": "form",
+          "answer": "없으면",
+          "cue": "Bedingung -(으)면 / condition -(으)면",
+          "choices": [
+            "없는",
+            "없으면",
+            "없을",
+            "없고요"
+          ]
+        },
+        " 더 ",
+        {
+          "kind": "choice",
+          "answer": "저렴한",
+          "choices": [
+            "저렴한",
+            "비싼",
+            "긴",
+            "복잡한"
+          ]
+        },
+        " 요금제로 할게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "만약 중간에",
+          "baseText": {
+            "de": "falls ich vorzeitig",
+            "en": "if I were to … early"
+          }
+        },
+        {
+          "targetText": "해지하면",
+          "baseText": {
+            "de": "kündige",
+            "en": "cancel"
+          }
+        },
+        {
+          "targetText": "위약금 없이",
+          "baseText": {
+            "de": "ohne Vertragsstrafe",
+            "en": "without a cancellation fee"
+          }
+        },
+        {
+          "targetText": "그만둘 수 있을까요?",
+          "baseText": {
+            "de": "könnte ich aussteigen?",
+            "en": "could I leave the plan?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "만약",
+          "baseText": {
+            "de": "falls, angenommen",
+            "en": "if, supposing"
+          }
+        },
+        {
+          "targetText": "약정",
+          "baseText": {
+            "de": "Vertragsbindung",
+            "en": "fixed contract term"
+          }
+        },
+        {
+          "targetText": "중간에 해지하다",
+          "baseText": {
+            "de": "vorzeitig kündigen",
+            "en": "cancel early"
+          }
+        },
+        {
+          "targetText": "위약금",
+          "baseText": {
+            "de": "Vertragsstrafe",
+            "en": "early termination fee"
+          }
+        },
+        {
+          "targetText": "저렴한 요금제",
+          "baseText": {
+            "de": "günstiger Tarif",
+            "en": "cheaper plan"
+          }
+        },
+        {
+          "targetText": "일 년",
+          "baseText": {
+            "de": "ein Jahr",
+            "en": "one year"
+          }
+        }
+      ],
+      "recall": {
+        "before": "만약 중간에 해지하면 ",
+        "answer": "위약금",
+        "after": " 없이 그만둘 수 있을까요?",
+        "fallbackChoices": [
+          "충전기",
+          "위약금",
+          "휴대폰",
+          "인터넷"
+        ]
+      },
+      "speakRequired": [
+        "중간에",
+        "해지하면",
+        "위약금"
+      ],
+      "sceneCaption": {
+        "de": "Im Laden erklärt der Berater die Laufzeit. „이 요금제는 일 년 약정이 있어요.“",
+        "en": "The assistant explains the contract term. “이 요금제는 일 년 약정이 있어요.”"
+      },
+      "trophyWord": {
+        "word": "만약",
+        "meaning": {
+          "de": "falls, angenommen",
+          "en": "if, supposing"
+        },
+        "example": "만약 번호를 바꾸면 비용이 들어요?",
+        "whyThisWord": {
+          "de": "Mit 만약 kannst du Folgen erfragen, bevor du dich auf etwas festlegst.",
+          "en": "만약 lets you ask about a possible consequence before making a commitment."
+        }
+      },
+      "distractors": [
+        "일 년 뒤에",
+        "번호를 바꿀까요?"
+      ],
+      "placeholderCaption": {
+        "de": "Im Gespräch über einen Handytarif",
+        "en": "Looking at a phone plan"
+      },
+      "songMood": "Measured bass and a questioning melodic turn.",
+      "visualNotes": "A phone shop counter with a contract leaflet open."
+    },
+    {
+      "slug": "ganeung-parcel-hours",
+      "title": {
+        "de": "Wann kann ich das Paket abholen?",
+        "en": "When can I collect the parcel?"
+      },
+      "situation": {
+        "de": "Dein Paket liegt im Verwaltungsbüro. Du kommst erst nach der Arbeit nach Hause.",
+        "en": "Your parcel is at the building office. You'll get home after work."
+      },
+      "pedagogicalGoal": "Mit -(으)면 nach der Abholung nach Feierabend fragen und 수령 가능 시간 als Zeitfenster verstehen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "택배가 와서 관리실에 보관하고 있어요.",
+          "baseText": {
+            "de": "Ihr Paket ist angekommen. Wir bewahren es im Verwaltungsbüro auf.",
+            "en": "Your parcel arrived, and we're keeping it at the building office."
+          }
+        },
+        {
+          "targetText": "퇴근하면 택배를 찾을 수 있을까요? 수령 가능 시간이 어떻게 돼요?",
+          "baseText": {
+            "de": "Kann ich das Paket nach der Arbeit abholen? Wie sind die Abholzeiten?",
+            "en": "Could I collect the parcel after work? What are the pickup hours?"
+          }
+        },
+        {
+          "targetText": "오늘은 저녁 일곱 시까지 관리실이 열려 있어요.",
+          "baseText": {
+            "de": "Heute ist das Verwaltungsbüro bis sieben Uhr abends geöffnet.",
+            "en": "The office is open until seven this evening."
+          }
+        },
+        {
+          "targetText": "그러면 퇴근하면 여섯 시 반에 찾으러 갈게요.",
+          "baseText": {
+            "de": "Dann komme ich nach der Arbeit um halb sieben zur Abholung.",
+            "en": "In that case, I'll come and get it at six thirty once I finish work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)면 und 가능 시간",
+        "rule": {
+          "de": "퇴근하면 setzt den Feierabend als Bedingung. 가능 steht vor 시간 in der kompakten Wendung für ein verfügbares Zeitfenster.",
+          "en": "퇴근하면 makes finishing work the condition. 가능 comes before 시간 in a compact expression for the hours something is available."
+        },
+        "examples": [
+          {
+            "targetText": "퇴근하면 택배를 찾을 수 있을까요? 수령 가능 시간이 어떻게 돼요?",
+            "baseText": {
+              "de": "Kann ich das Paket nach der Arbeit abholen? Wie sind die Abholzeiten?",
+              "en": "Could I collect the parcel after work? What are the pickup hours?"
+            },
+            "highlight": "찾을 수 있을까요"
+          },
+          {
+            "targetText": "일찍 가면 앞자리에 앉을 수 있을까요?",
+            "baseText": {
+              "de": "Könnte ich vorne sitzen, wenn ich früh komme?",
+              "en": "If I get there early, could I sit at the front?"
+            },
+            "highlight": "일찍 가면"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "왜냐하면",
+            "그러면",
+            "또한",
+            "반대로"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "퇴근하면",
+          "cue": "Bedingung -(으)면 / condition -(으)면",
+          "choices": [
+            "퇴근하면",
+            "퇴근할",
+            "퇴근하는",
+            "퇴근하려고"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "여섯 시 반에",
+          "choices": [
+            "여덟 시에",
+            "아홉 시에",
+            "열 시에",
+            "여섯 시 반에"
+          ]
+        },
+        " 찾으러 갈게요."
+      ],
+      "chunks": [
+        {
+          "targetText": "퇴근하면",
+          "baseText": {
+            "de": "wenn ich Feierabend habe",
+            "en": "once I finish work"
+          }
+        },
+        {
+          "targetText": "택배를 찾을 수",
+          "baseText": {
+            "de": "das Paket abholen können",
+            "en": "be able to collect the parcel"
+          }
+        },
+        {
+          "targetText": "있을까요? 수령 가능",
+          "baseText": {
+            "de": "wäre das möglich? Die Abhol-",
+            "en": "would that work? Pickup availability"
+          }
+        },
+        {
+          "targetText": "시간이 어떻게 돼요?",
+          "baseText": {
+            "de": "Zeiten, wie sind sie?",
+            "en": "hours, what are they?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "택배",
+          "baseText": {
+            "de": "Paket",
+            "en": "parcel"
+          }
+        },
+        {
+          "targetText": "관리실",
+          "baseText": {
+            "de": "Verwaltungsbüro",
+            "en": "building management office"
+          }
+        },
+        {
+          "targetText": "보관하다",
+          "baseText": {
+            "de": "aufbewahren",
+            "en": "keep in storage"
+          }
+        },
+        {
+          "targetText": "퇴근하다",
+          "baseText": {
+            "de": "Feierabend machen",
+            "en": "finish work"
+          }
+        },
+        {
+          "targetText": "수령 가능 시간",
+          "baseText": {
+            "de": "mögliche Abholzeiten",
+            "en": "available pickup hours"
+          }
+        },
+        {
+          "targetText": "찾으러 가다",
+          "baseText": {
+            "de": "abholen gehen",
+            "en": "go to pick up"
+          }
+        }
+      ],
+      "recall": {
+        "before": "퇴근하면 ",
+        "answer": "택배를",
+        "after": " 찾을 수 있을까요? 수령 가능 시간이 어떻게 돼요?",
+        "fallbackChoices": [
+          "택배를",
+          "열쇠를",
+          "안경을",
+          "지갑을"
+        ]
+      },
+      "speakRequired": [
+        "퇴근하면",
+        "택배를",
+        "수령"
+      ],
+      "sceneCaption": {
+        "de": "Aus dem Verwaltungsbüro kommt eine Nachricht. „택배가 와서 관리실에 보관하고 있어요.“",
+        "en": "You hear from the building office. “택배가 와서 관리실에 보관하고 있어요.”"
+      },
+      "trophyWord": {
+        "word": "가능",
+        "meaning": {
+          "de": "möglich, verfügbar",
+          "en": "possible, available"
+        },
+        "example": "상담 가능 시간을 알려 주세요.",
+        "whyThisWord": {
+          "de": "가능 steht in Angaben wie 수령 가능 시간 und 상담 가능 시간. Daran erkennst du, wann etwas möglich ist.",
+          "en": "In expressions such as 수령 가능 시간 and 상담 가능 시간, 가능 tells you when a service is available."
+        }
+      },
+      "distractors": [
+        "출근하기 전에",
+        "방문 기록이"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Paket im Verwaltungsbüro",
+        "en": "A parcel at the building office"
+      },
+      "songMood": "Warm, unhurried late-day groove.",
+      "visualNotes": "A parcel with its label turned away stands on an office shelf."
+    },
+    {
+      "slug": "daesin-window-table",
+      "title": {
+        "de": "Lieber am Fenster",
+        "en": "A table by the window"
+      },
+      "situation": {
+        "de": "Deine Reservierung steht. Du würdest gern an einem ruhigeren Tisch am Fenster sitzen.",
+        "en": "Your reservation is confirmed. You would prefer a quieter table by the window."
+      },
+      "pedagogicalGoal": "Mit 대신 einen Tausch vorschlagen und mit 주시면 안 될까요? um Hilfe bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "예약하신 테이블은 입구 쪽에 있어요.",
+          "baseText": {
+            "de": "Ihr reservierter Tisch ist beim Eingang.",
+            "en": "The table you booked is near the entrance."
+          }
+        },
+        {
+          "targetText": "빈자리가 있으면 입구 자리 대신 창가로 바꿔 주시면 안 될까요?",
+          "baseText": {
+            "de": "Wenn dort noch Platz ist, könnten Sie uns statt an den Eingang ans Fenster setzen?",
+            "en": "If there's a free table, could you seat us by the window instead of near the entrance?"
+          }
+        },
+        {
+          "targetText": "창가는 지금 만석인데 여섯 시부터 두 자리가 비어요.",
+          "baseText": {
+            "de": "Am Fenster ist gerade alles besetzt. Ab sechs werden dort zwei Plätze frei.",
+            "en": "The window tables are all taken, but two seats will be free from six."
+          }
+        },
+        {
+          "targetText": "그러면 여섯 시 반으로 예약을 옮겨 주시면 안 될까요?",
+          "baseText": {
+            "de": "Könnten Sie unsere Reservierung dann auf halb sieben verlegen?",
+            "en": "In that case, could you move our booking to six thirty?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "대신 und -아/어 주시면 안 될까요?",
+        "rule": {
+          "de": "Vor 대신 steht die Option, die du ersetzen möchtest. Mit 바꿔 주시면 안 될까요? bittest du das Personal höflich um den Wechsel.",
+          "en": "The option you want to replace goes before 대신. 바꿔 주시면 안 될까요? politely asks the staff to make the change."
+        },
+        "examples": [
+          {
+            "targetText": "빈자리가 있으면 입구 자리 대신 창가로 바꿔 주시면 안 될까요?",
+            "baseText": {
+              "de": "Wenn dort noch Platz ist, könnten Sie uns statt an den Eingang ans Fenster setzen?",
+              "en": "If there's a free table, could you seat us by the window instead of near the entrance?"
+            },
+            "highlight": "창가로 바꿔 주시면 안 될까요"
+          },
+          {
+            "targetText": "종이 영수증 대신 문자로 보내 주시면 안 될까요?",
+            "baseText": {
+              "de": "Könnten Sie mir die Quittung per SMS schicken statt auf Papier?",
+              "en": "Could you text me the receipt instead of giving me a paper one?"
+            },
+            "highlight": "종이 영수증 대신"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "게다가",
+            "그러면",
+            "혹은",
+            "즉"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "여섯 시 반으로",
+          "choices": [
+            "오전 아홉 시로",
+            "점심때로",
+            "오후 두 시로",
+            "여섯 시 반으로"
+          ]
+        },
+        " 예약을 옮겨 ",
+        {
+          "kind": "form",
+          "answer": "주시면",
+          "cue": "Höfliche Bitte: 주시다 in der Bedingungsform / polite request: 주시다 in the conditional",
+          "choices": [
+            "주실",
+            "주는",
+            "주시면",
+            "주려고"
+          ]
+        },
+        " 안 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "빈자리가 있으면",
+          "baseText": {
+            "de": "wenn ein Platz frei ist",
+            "en": "if there's a free spot"
+          }
+        },
+        {
+          "targetText": "입구 자리 대신",
+          "baseText": {
+            "de": "statt des Platzes am Eingang",
+            "en": "instead of the seat by the entrance"
+          }
+        },
+        {
+          "targetText": "창가로 바꿔",
+          "baseText": {
+            "de": "an einen Fensterplatz wechseln",
+            "en": "move to a window seat"
+          }
+        },
+        {
+          "targetText": "주시면 안 될까요?",
+          "baseText": {
+            "de": "könnten Sie das für uns machen?",
+            "en": "could you do that for us?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "빈자리",
+          "baseText": {
+            "de": "freier Platz",
+            "en": "free seat"
+          }
+        },
+        {
+          "targetText": "입구 쪽",
+          "baseText": {
+            "de": "beim Eingang",
+            "en": "near the entrance"
+          }
+        },
+        {
+          "targetText": "대신",
+          "baseText": {
+            "de": "anstelle von",
+            "en": "instead of"
+          }
+        },
+        {
+          "targetText": "창가",
+          "baseText": {
+            "de": "Fensterplatz",
+            "en": "window seat"
+          }
+        },
+        {
+          "targetText": "만석",
+          "baseText": {
+            "de": "voll besetzt",
+            "en": "fully booked"
+          }
+        },
+        {
+          "targetText": "예약을 옮기다",
+          "baseText": {
+            "de": "eine Reservierung verlegen",
+            "en": "move a reservation"
+          }
+        }
+      ],
+      "recall": {
+        "before": "빈자리가 있으면 입구 자리 대신 ",
+        "answer": "창가로",
+        "after": " 바꿔 주시면 안 될까요?",
+        "fallbackChoices": [
+          "밖으로",
+          "입구로",
+          "지하로",
+          "창가로"
+        ]
+      },
+      "speakRequired": [
+        "빈자리가",
+        "자리",
+        "창가로"
+      ],
+      "sceneCaption": {
+        "de": "Im Café zeigt die Mitarbeiterin auf den reservierten Tisch. „예약하신 테이블은 입구 쪽에 있어요.“",
+        "en": "At the café, the host points out your reserved table. “예약하신 테이블은 입구 쪽에 있어요.”"
+      },
+      "trophyWord": {
+        "word": "대신",
+        "meaning": {
+          "de": "anstelle von",
+          "en": "instead of"
+        },
+        "example": "오전 대신 오후로 바꿀 수 있어요?",
+        "whyThisWord": {
+          "de": "Mit 대신 kannst du den bisherigen Termin oder Platz nennen und gleich eine Alternative anbieten.",
+          "en": "Use 대신 to name the original time or place before offering an alternative."
+        }
+      },
+      "distractors": [
+        "그 자리 그대로",
+        "예약을 취소해"
+      ],
+      "placeholderCaption": {
+        "de": "Ein reservierter Tisch im Café",
+        "en": "A café reservation"
+      },
+      "songMood": "Soft brushes and a relaxed café guitar.",
+      "visualNotes": "Entrance tables in the foreground and window booths in the distance."
+    },
+    {
+      "slug": "miri-exam-room",
+      "title": {
+        "de": "Vorher Bescheid bekommen",
+        "en": "Getting advance notice"
+      },
+      "situation": {
+        "de": "Im Schulbüro hängt der aktuelle Raumplan für die Prüfung aus.",
+        "en": "The school office has posted the current exam room list."
+      },
+      "pedagogicalGoal": "Mit 미리 und 주시면 안 될까요? um eine rechtzeitige Nachricht bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "시험은 지금 안내된 강의실에서 볼 예정이에요.",
+          "baseText": {
+            "de": "Die Prüfung soll in dem Raum stattfinden, der gerade angegeben ist.",
+            "en": "The exam is scheduled to take place in the room currently listed."
+          }
+        },
+        {
+          "targetText": "시험장이 바뀌면 미리 알려 주시면 안 될까요?",
+          "baseText": {
+            "de": "Könnten Sie mir vorher Bescheid geben, falls sich der Prüfungsort ändert?",
+            "en": "Could you let me know in advance if the exam venue changes?"
+          }
+        },
+        {
+          "targetText": "바뀌면 문자로 보내 드릴게요. 신청서에 적힌 번호로 보내면 될까요?",
+          "baseText": {
+            "de": "Bei einer Änderung schicken wir eine SMS. Können wir sie an die Nummer auf dem Anmeldeformular schicken?",
+            "en": "If it changes, we'll text you. Can we send it to the number on your registration form?"
+          }
+        },
+        {
+          "targetText": "그 번호 대신 제 업무용 번호로 보내 주시면 좋겠어요.",
+          "baseText": {
+            "de": "Mir wäre lieber, Sie schicken sie statt an diese Nummer an meine Dienstnummer.",
+            "en": "I'd prefer you send it to my work number instead of that one."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "미리 und -아/어 주시면 안 될까요?",
+        "rule": {
+          "de": "미리 gibt an, wann die Nachricht kommen soll. Mit 알려 주시면 안 될까요? erbittest du die Nachricht. 주시면 좋겠어요 formuliert anschließend deinen Wunsch.",
+          "en": "미리 asks for advance notice. 알려 주시면 안 될까요? makes the request, and 주시면 좋겠어요 then expresses your preference."
+        },
+        "examples": [
+          {
+            "targetText": "시험장이 바뀌면 미리 알려 주시면 안 될까요?",
+            "baseText": {
+              "de": "Könnten Sie mir vorher Bescheid geben, falls sich der Prüfungsort ändert?",
+              "en": "Could you let me know in advance if the exam venue changes?"
+            },
+            "highlight": "미리 알려 주시면 안 될까요"
+          },
+          {
+            "targetText": "회의 시간이 바뀌면 미리 메일로 알려 주시면 좋겠어요.",
+            "baseText": {
+              "de": "Wenn sich die Besprechungszeit ändert, wäre es mir lieb, vorher per E-Mail Bescheid zu bekommen.",
+              "en": "If the meeting time changes, I'd appreciate a heads-up by email in advance."
+            },
+            "highlight": "주시면 좋겠어요"
+          }
+        ]
+      },
+      "cloze": [
+        "그 번호 ",
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "대신",
+            "때문에",
+            "덕분에",
+            "그리고"
+          ]
+        },
+        " 제 ",
+        {
+          "kind": "choice",
+          "answer": "업무용 번호로",
+          "choices": [
+            "집 주소로",
+            "업무용 번호로",
+            "학번으로",
+            "사물함 번호로"
+          ]
+        },
+        " 보내 ",
+        {
+          "kind": "form",
+          "answer": "주시면",
+          "cue": "Wunsch: 주시다 in der Bedingungsform / wish: 주시다 in the conditional",
+          "choices": [
+            "주실",
+            "주시는",
+            "주시면",
+            "주시려고"
+          ]
+        },
+        " 좋겠어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "시험장이 바뀌면",
+          "baseText": {
+            "de": "wenn sich der Prüfungsort ändert",
+            "en": "if the exam venue changes"
+          }
+        },
+        {
+          "targetText": "미리",
+          "baseText": {
+            "de": "vorher",
+            "en": "in advance"
+          }
+        },
+        {
+          "targetText": "알려 주시면",
+          "baseText": {
+            "de": "wenn Sie mir Bescheid geben",
+            "en": "if you could let me know"
+          }
+        },
+        {
+          "targetText": "안 될까요?",
+          "baseText": {
+            "de": "wäre das möglich?",
+            "en": "would that be possible?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "시험장",
+          "baseText": {
+            "de": "Prüfungsort",
+            "en": "exam venue"
+          }
+        },
+        {
+          "targetText": "강의실",
+          "baseText": {
+            "de": "Unterrichtsraum",
+            "en": "classroom"
+          }
+        },
+        {
+          "targetText": "바뀌다",
+          "baseText": {
+            "de": "sich ändern",
+            "en": "change"
+          }
+        },
+        {
+          "targetText": "미리",
+          "baseText": {
+            "de": "im Voraus",
+            "en": "in advance"
+          }
+        },
+        {
+          "targetText": "문자",
+          "baseText": {
+            "de": "SMS",
+            "en": "text message"
+          }
+        },
+        {
+          "targetText": "업무용 번호",
+          "baseText": {
+            "de": "Dienstnummer",
+            "en": "work number"
+          }
+        }
+      ],
+      "recall": {
+        "before": "시험장이 바뀌면 ",
+        "answer": "미리",
+        "after": " 알려 주시면 안 될까요?",
+        "fallbackChoices": [
+          "늦게",
+          "미리",
+          "천천히",
+          "자주"
+        ]
+      },
+      "speakRequired": [
+        "시험장이",
+        "바뀌면",
+        "미리"
+      ],
+      "sceneCaption": {
+        "de": "Im Schulbüro wird der Prüfungsraum bekannt gegeben. „시험은 지금 안내된 강의실에서 볼 예정이에요.“",
+        "en": "The school office announces the exam room. “시험은 지금 안내된 강의실에서 볼 예정이에요.”"
+      },
+      "trophyWord": {
+        "word": "미리",
+        "meaning": {
+          "de": "im Voraus",
+          "en": "in advance"
+        },
+        "example": "방문하기 전에 미리 전화해 주세요.",
+        "whyThisWord": {
+          "de": "Mit 미리 sagst du ausdrücklich, dass die Nachricht vor dem Ereignis kommen soll.",
+          "en": "미리 makes it clear that you need the message before the event."
+        }
+      },
+      "distractors": [
+        "시간이 지나도",
+        "이름을 적어"
+      ],
+      "placeholderCaption": {
+        "de": "Der Raumplan im Schulbüro",
+        "en": "A room list in the school office"
+      },
+      "songMood": "Clear, lightly syncopated piano.",
+      "visualNotes": "An office worker indicates the room notice while the student holds a registration form."
+    },
+    {
+      "slug": "jamsi-bank-locker",
+      "title": {
+        "de": "Die Tasche kurz abstellen",
+        "en": "Leaving a bag for a moment"
+      },
+      "situation": {
+        "de": "Am Bankschalter musst du noch eine Kopie machen. Deine Tasche ist schwer.",
+        "en": "You need to make a copy at the bank counter. Your bag is heavy."
+      },
+      "pedagogicalGoal": "Mit 잠시 um eine kurze Gefälligkeit bitten und einen anderen Aufbewahrungsort vereinbaren.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "지금 창구가 붐비는데 서류를 한 장 복사해 오시겠어요?",
+          "baseText": {
+            "de": "Am Schalter ist gerade viel los. Könnten Sie eine Kopie von dem Dokument machen und damit zurückkommen?",
+            "en": "The counter is busy. Could you make a copy of the document and bring it back?"
+          }
+        },
+        {
+          "targetText": "서류를 복사할 때 가방을 잠시 맡아 주시면 안 될까요?",
+          "baseText": {
+            "de": "Könnten Sie kurz auf meine Tasche aufpassen, während ich das Dokument kopiere?",
+            "en": "Could you look after my bag for a moment while I copy the document?"
+          }
+        },
+        {
+          "targetText": "창구에서는 못 맡아 드리지만 보관함 열쇠를 빌려 드려요.",
+          "baseText": {
+            "de": "Am Schalter können wir die Tasche leider nicht annehmen. Wir können Ihnen aber einen Schließfachschlüssel leihen.",
+            "en": "We can't keep your bag at the counter, but we can lend you a locker key."
+          }
+        },
+        {
+          "targetText": "그러면 복사할 동안만 보관함 열쇠를 빌려 주시면 안 될까요?",
+          "baseText": {
+            "de": "Könnten Sie mir dann einen Schließfachschlüssel leihen, nur solange ich kopiere?",
+            "en": "In that case, could you lend me a locker key just while I make the copy?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "잠시 und 맡아 주시면 안 될까요?",
+        "rule": {
+          "de": "잠시 begrenzt die erbetene Hilfe zeitlich. 맡아 주시면 안 될까요? bittet das Gegenüber, etwas für dich zu hüten.",
+          "en": "잠시 puts a short time limit on the favor. 맡아 주시면 안 될까요? asks someone to look after something for you."
+        },
+        "examples": [
+          {
+            "targetText": "서류를 복사할 때 가방을 잠시 맡아 주시면 안 될까요?",
+            "baseText": {
+              "de": "Könnten Sie kurz auf meine Tasche aufpassen, während ich das Dokument kopiere?",
+              "en": "Could you look after my bag for a moment while I copy the document?"
+            },
+            "highlight": "잠시 맡아 주시면 안 될까요"
+          },
+          {
+            "targetText": "기차표를 살 때 이 짐을 잠시 맡아 주시면 안 될까요?",
+            "baseText": {
+              "de": "Könnten Sie kurz auf dieses Gepäck aufpassen, während ich die Zugfahrkarte kaufe?",
+              "en": "Could you watch this luggage for a moment while I buy a train ticket?"
+            },
+            "highlight": "잠시 맡아 주시면 안 될까요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "반대로",
+            "예컨대",
+            "그러면",
+            "왜냐하면"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "복사할 동안만",
+          "choices": [
+            "하루 종일",
+            "복사할 동안만",
+            "다음 주까지",
+            "한 달 동안"
+          ]
+        },
+        " 보관함 열쇠를 빌려 ",
+        {
+          "kind": "form",
+          "answer": "주시면",
+          "cue": "Höfliche Bitte: 주시다 in der Bedingungsform / polite request: 주시다 in the conditional",
+          "choices": [
+            "주실",
+            "주시면",
+            "주신",
+            "주시려고"
+          ]
+        },
+        " 안 될까요?"
+      ],
+      "chunks": [
+        {
+          "targetText": "서류를 복사할 때",
+          "baseText": {
+            "de": "während ich das Dokument kopiere",
+            "en": "while I copy the document"
+          }
+        },
+        {
+          "targetText": "가방을",
+          "baseText": {
+            "de": "meine Tasche",
+            "en": "my bag"
+          }
+        },
+        {
+          "targetText": "잠시 맡아",
+          "baseText": {
+            "de": "kurz aufbewahren",
+            "en": "look after it briefly"
+          }
+        },
+        {
+          "targetText": "주시면 안 될까요?",
+          "baseText": {
+            "de": "könnten Sie das für mich tun?",
+            "en": "could you do that for me?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "창구",
+          "baseText": {
+            "de": "Schalter",
+            "en": "counter"
+          }
+        },
+        {
+          "targetText": "붐비다",
+          "baseText": {
+            "de": "voll sein",
+            "en": "be crowded"
+          }
+        },
+        {
+          "targetText": "복사하다",
+          "baseText": {
+            "de": "kopieren",
+            "en": "make a copy"
+          }
+        },
+        {
+          "targetText": "잠시",
+          "baseText": {
+            "de": "für einen Augenblick",
+            "en": "for a moment"
+          }
+        },
+        {
+          "targetText": "맡아 주다",
+          "baseText": {
+            "de": "für jemanden auf etwas aufpassen",
+            "en": "look after something for someone"
+          }
+        },
+        {
+          "targetText": "보관함",
+          "baseText": {
+            "de": "Schließfach",
+            "en": "locker"
+          }
+        }
+      ],
+      "recall": {
+        "before": "서류를 복사할 때 가방을 ",
+        "answer": "잠시",
+        "after": " 맡아 주시면 안 될까요?",
+        "fallbackChoices": [
+          "오래",
+          "잠시",
+          "계속",
+          "매일"
+        ]
+      },
+      "speakRequired": [
+        "서류를",
+        "가방을",
+        "맡아"
+      ],
+      "sceneCaption": {
+        "de": "Am vollen Schalter bittet die Mitarbeiterin um eine Kopie. „지금 창구가 붐비는데 서류를 한 장 복사해 오시겠어요?“",
+        "en": "At the busy counter, the clerk asks for a copy. “지금 창구가 붐비는데 서류를 한 장 복사해 오시겠어요?”"
+      },
+      "trophyWord": {
+        "word": "잠시",
+        "meaning": {
+          "de": "kurz, einen Augenblick",
+          "en": "briefly, for a moment"
+        },
+        "example": "잠시 여기서 기다려도 돼요?",
+        "whyThisWord": {
+          "de": "잠시 passt gut zu kleinen Gefälligkeiten, weil du gleich ihre kurze Dauer angibst.",
+          "en": "잠시 helps when asking a small favor because it tells the listener it will only take a moment."
+        }
+      },
+      "distractors": [
+        "하루 종일",
+        "집으로 보내"
+      ],
+      "placeholderCaption": {
+        "de": "Vor dem Kopierer in der Bank",
+        "en": "By the copier at the bank"
+      },
+      "songMood": "A short, quiet percussive figure and warm keys.",
+      "visualNotes": "Busy bank counter, bag and copier in view."
+    },
+    {
+      "slug": "yeonjang-library-renewal",
+      "title": {
+        "de": "Eine Woche mehr Zeit",
+        "en": "An extra week"
+      },
+      "situation": {
+        "de": "Am Rückgabeschalter der Bibliothek ist dein Buch heute fällig. Du liest noch daran.",
+        "en": "Your library book is due today, and you haven't finished it yet."
+      },
+      "pedagogicalGoal": "Mit 것 같은데요 den Zeitbedarf vorsichtig schätzen und mit 주시겠어요? um eine Verlängerung bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "오늘이 반납일인데 책은 다 읽으셨어요?",
+          "baseText": {
+            "de": "Heute ist der Rückgabetermin. Sind Sie mit dem Buch fertig?",
+            "en": "The book is due today. Have you finished it?"
+          }
+        },
+        {
+          "targetText": "두 주는 더 걸릴 것 같은데요. 연장 신청을 받아 주시겠어요?",
+          "baseText": {
+            "de": "Ich brauche wohl noch zwei Wochen. Könnte ich die Leihfrist verlängern lassen?",
+            "en": "I think I'll need two more weeks. Could I apply for a renewal?"
+          }
+        },
+        {
+          "targetText": "최대 일주일까지만 연장할 수 있어요. 두 주는 어려워요.",
+          "baseText": {
+            "de": "Wir können die Frist höchstens um eine Woche verlängern. Zwei Wochen gehen leider nicht.",
+            "en": "The longest renewal is one week. Two weeks isn't possible, I'm afraid."
+          }
+        },
+        {
+          "targetText": "그래도 오늘부터 일주일만 더 연장해 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie die Leihfrist trotzdem ab heute um nur eine Woche verlängern?",
+            "en": "Could you still renew it for just one more week from today?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 것 같은데요 und -아/어 주시겠어요?",
+        "rule": {
+          "de": "걸릴 것 같은데요 lässt offen, wie lange du wirklich brauchst. Mit 주시겠어요? bittest du die zuständige Person um die Verlängerung.",
+          "en": "걸릴 것 같은데요 makes the time estimate tentative. 주시겠어요? asks the person handling the loan to renew it."
+        },
+        "examples": [
+          {
+            "targetText": "두 주는 더 걸릴 것 같은데요. 연장 신청을 받아 주시겠어요?",
+            "baseText": {
+              "de": "Ich brauche wohl noch zwei Wochen. Könnte ich die Leihfrist verlängern lassen?",
+              "en": "I think I'll need two more weeks. Could I apply for a renewal?"
+            },
+            "highlight": "걸릴 것 같은데요"
+          },
+          {
+            "targetText": "이사 준비는 한 달은 더 걸릴 것 같은데요.",
+            "baseText": {
+              "de": "Die Umzugsvorbereitungen dauern wohl noch einen Monat.",
+              "en": "I think getting ready for the move will take another month."
+            },
+            "highlight": "걸릴 것 같은데요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그래도",
+          "choices": [
+            "예컨대",
+            "그래도",
+            "첫째",
+            "즉"
+          ]
+        },
+        " 오늘부터 ",
+        {
+          "kind": "choice",
+          "answer": "일주일만",
+          "choices": [
+            "일주일만",
+            "보름만",
+            "한 달만",
+            "세 주만"
+          ]
+        },
+        " 더 연장해 ",
+        {
+          "kind": "form",
+          "answer": "주시겠어요",
+          "cue": "Höfliche Bitte: 주시다 mit -겠- als Frage / polite request: 주시다 with -겠- as a question",
+          "choices": [
+            "주시려고",
+            "주실 때",
+            "주신 뒤",
+            "주시겠어요"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "두 주는 더",
+          "baseText": {
+            "de": "noch zwei Wochen",
+            "en": "two more weeks"
+          }
+        },
+        {
+          "targetText": "걸릴 것",
+          "baseText": {
+            "de": "wird es dauern",
+            "en": "it is going to take"
+          }
+        },
+        {
+          "targetText": "같은데요. 연장 신청을",
+          "baseText": {
+            "de": "denke ich. Einen Verlängerungsantrag",
+            "en": "I think. A renewal request"
+          }
+        },
+        {
+          "targetText": "받아 주시겠어요?",
+          "baseText": {
+            "de": "würden Sie annehmen?",
+            "en": "could you take?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "반납일",
+          "baseText": {
+            "de": "Rückgabetermin",
+            "en": "due date"
+          }
+        },
+        {
+          "targetText": "두 주",
+          "baseText": {
+            "de": "zwei Wochen",
+            "en": "two weeks"
+          }
+        },
+        {
+          "targetText": "걸리다",
+          "baseText": {
+            "de": "dauern",
+            "en": "take time"
+          }
+        },
+        {
+          "targetText": "연장",
+          "baseText": {
+            "de": "Verlängerung",
+            "en": "renewal"
+          }
+        },
+        {
+          "targetText": "신청",
+          "baseText": {
+            "de": "Antrag",
+            "en": "application"
+          }
+        },
+        {
+          "targetText": "최대 일주일",
+          "baseText": {
+            "de": "höchstens eine Woche",
+            "en": "up to one week"
+          }
+        }
+      ],
+      "recall": {
+        "before": "두 주는 더 걸릴 것 같은데요. ",
+        "answer": "연장",
+        "after": " 신청을 받아 주시겠어요?",
+        "fallbackChoices": [
+          "연장",
+          "폐기",
+          "환불",
+          "교환"
+        ]
+      },
+      "speakRequired": [
+        "걸릴",
+        "연장",
+        "신청을"
+      ],
+      "sceneCaption": {
+        "de": "Am Rückgabeschalter schaut die Mitarbeiterin ins Leihkonto. „오늘이 반납일인데 책은 다 읽으셨어요?“",
+        "en": "At the returns desk, the librarian checks the loan. “오늘이 반납일인데 책은 다 읽으셨어요?”"
+      },
+      "trophyWord": {
+        "word": "연장",
+        "meaning": {
+          "de": "Verlängerung einer Frist",
+          "en": "extension, renewal"
+        },
+        "example": "연장 신청은 어디에서 해요?",
+        "whyThisWord": {
+          "de": "연장 신청 kannst du auch bei einer Mitgliedschaft oder einer anderen Frist verwenden.",
+          "en": "연장 신청 is also useful for asking to extend a membership or a deadline."
+        }
+      },
+      "distractors": [
+        "두 시간쯤",
+        "반납 도장을"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Buch am Rückgabeschalter",
+        "en": "A book at the returns desk"
+      },
+      "songMood": "Unhurried pizzicato and a small rising cadence.",
+      "visualNotes": "A bookmark protrudes from a library book beside the scanner."
+    },
+    {
+      "slug": "harin-coat-sale",
+      "title": {
+        "de": "Gilt die Aktion für diesen Mantel?",
+        "en": "Is this coat included in the sale?"
+      },
+      "situation": {
+        "de": "In einem Bekleidungsgeschäft hängt ein Mantel neben dem Aktionsständer.",
+        "en": "In a clothing shop, a coat hangs next to the sale rack."
+      },
+      "pedagogicalGoal": "Eine Vermutung mit 것 같은데요 äußern und um Bestätigung des tatsächlichen Preises bitten.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이번 주에는 겨울옷 일부를 반값 세일하고 있어요.",
+          "baseText": {
+            "de": "Diese Woche gibt es einige Wintersachen zum halben Preis.",
+            "en": "Some of our winter clothes are half price this week."
+          }
+        },
+        {
+          "targetText": "이 코트도 할인 대상일 것 같은데요. 가격을 확인해 주시겠어요?",
+          "baseText": {
+            "de": "Dieser Mantel könnte auch zur Aktion gehören. Würden Sie den Preis nachsehen?",
+            "en": "I think this coat might be included. Could you check the price?"
+          }
+        },
+        {
+          "targetText": "그 코트는 반값은 아니고 십 퍼센트만 할인돼요.",
+          "baseText": {
+            "de": "Der Mantel ist nicht um die Hälfte reduziert. Für ihn gibt es zehn Prozent.",
+            "en": "That coat isn't half price. It's ten percent off."
+          }
+        },
+        {
+          "targetText": "그러면 십 퍼센트 할인 가격으로 카드 결제해 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie dann den Preis mit zehn Prozent Rabatt von meiner Karte abbuchen?",
+            "en": "In that case, could you charge the price with ten percent off to my card?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄹ 것 같은데요 bei einer Vermutung",
+        "rule": {
+          "de": "Bei einem Nomen steht 일 것 같은데요. 대상일 것 같은데요 lässt der anderen Person Raum, deine Vermutung zu bestätigen oder zu korrigieren.",
+          "en": "With a noun, use 일 것 같은데요. 대상일 것 같은데요 leaves the other person room to confirm or correct your guess."
+        },
+        "examples": [
+          {
+            "targetText": "이 코트도 할인 대상일 것 같은데요. 가격을 확인해 주시겠어요?",
+            "baseText": {
+              "de": "Dieser Mantel könnte auch zur Aktion gehören. Würden Sie den Preis nachsehen?",
+              "en": "I think this coat might be included. Could you check the price?"
+            },
+            "highlight": "대상일 것 같은데요"
+          },
+          {
+            "targetText": "오늘은 주차장이 무료일 것 같은데요.",
+            "baseText": {
+              "de": "Ich glaube, heute ist der Parkplatz kostenlos.",
+              "en": "I think the parking lot is free today."
+            },
+            "highlight": "무료일 것 같은데요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그러면",
+          "choices": [
+            "또한",
+            "그러면",
+            "혹은",
+            "가령"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "십 퍼센트",
+          "choices": [
+            "오십 퍼센트",
+            "삼십 퍼센트",
+            "이십 퍼센트",
+            "십 퍼센트"
+          ]
+        },
+        " 할인 가격으로 카드 결제해 ",
+        {
+          "kind": "form",
+          "answer": "주시겠어요",
+          "cue": "Höfliche Bitte: 주시다 mit -겠- als Frage / polite request: 주시다 with -겠- as a question",
+          "choices": [
+            "주시는",
+            "주실 때",
+            "주시겠어요",
+            "주시려고"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "이 코트도",
+          "baseText": {
+            "de": "auch dieser Mantel",
+            "en": "this coat too"
+          }
+        },
+        {
+          "targetText": "할인 대상일 것",
+          "baseText": {
+            "de": "wohl zur Aktion gehört",
+            "en": "probably qualifies for the discount"
+          }
+        },
+        {
+          "targetText": "같은데요. 가격을",
+          "baseText": {
+            "de": "denke ich. Den Preis",
+            "en": "I think. The price"
+          }
+        },
+        {
+          "targetText": "확인해 주시겠어요?",
+          "baseText": {
+            "de": "würden Sie nachsehen?",
+            "en": "could you check?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "코트",
+          "baseText": {
+            "de": "Mantel",
+            "en": "coat"
+          }
+        },
+        {
+          "targetText": "할인",
+          "baseText": {
+            "de": "Ermäßigung",
+            "en": "discount"
+          }
+        },
+        {
+          "targetText": "할인 대상",
+          "baseText": {
+            "de": "für den Rabatt berechtigter Artikel",
+            "en": "item eligible for the discount"
+          }
+        },
+        {
+          "targetText": "겨울옷",
+          "baseText": {
+            "de": "Winterkleidung",
+            "en": "winter clothing"
+          }
+        },
+        {
+          "targetText": "반값",
+          "baseText": {
+            "de": "halber Preis",
+            "en": "half price"
+          }
+        },
+        {
+          "targetText": "카드 결제",
+          "baseText": {
+            "de": "Kartenzahlung",
+            "en": "card payment"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이 코트도 할인 대상일 것 같은데요. ",
+        "answer": "가격을",
+        "after": " 확인해 주시겠어요?",
+        "fallbackChoices": [
+          "주소를",
+          "날씨를",
+          "시간을",
+          "가격을"
+        ]
+      },
+      "speakRequired": [
+        "코트도",
+        "할인",
+        "가격을"
+      ],
+      "sceneCaption": {
+        "de": "Am Kleiderständer macht dich der Verkäufer auf eine Aktion aufmerksam. „이번 주에는 겨울옷 일부를 반값 세일하고 있어요.“",
+        "en": "A sales assistant points out the promotion by the clothing rack. “이번 주에는 겨울옷 일부를 반값 세일하고 있어요.”"
+      },
+      "trophyWord": {
+        "word": "할인",
+        "meaning": {
+          "de": "Rabatt",
+          "en": "discount"
+        },
+        "example": "학생 할인 대상인지 확인해 주세요.",
+        "whyThisWord": {
+          "de": "할인 대상 bezeichnet die Waren oder Personen, für die ein bestimmter Rabatt gilt.",
+          "en": "할인 대상 identifies the items or people that qualify for a particular discount."
+        }
+      },
+      "distractors": [
+        "정가 그대로",
+        "배송지를 확인해"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Mantel beim Aktionsständer",
+        "en": "A coat by the sale rack"
+      },
+      "songMood": "Brisk but quiet brushed drums with a light bass line.",
+      "visualNotes": "An unmarked coat hangs across the edge of the sale rail."
+    },
+    {
+      "slug": "hwanbul-shoe-exchange",
+      "title": {
+        "de": "Der Schuh drückt",
+        "en": "A shoe that pinches"
+      },
+      "situation": {
+        "de": "Mit dem Schuhkarton und dem Kassenbon gehst du zum Kundenservice.",
+        "en": "You bring your shoebox and receipt to the customer service desk."
+      },
+      "pedagogicalGoal": "Nach einer Erstattung fragen und bei einem Umtauschangebot die gewünschte Größe angeben.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "신발하고 영수증을 가져오셨네요. 어떤 점이 불편하세요?",
+          "baseText": {
+            "de": "Sie haben die Schuhe und den Kassenbon dabei. Was passt denn nicht?",
+            "en": "I see you've brought the shoes and receipt. What's the problem with them?"
+          }
+        },
+        {
+          "targetText": "신발이 너무 작은데 교환 말고 환불 신청을 할 수 있을까요?",
+          "baseText": {
+            "de": "Die Schuhe sind zu klein. Könnte ich mein Geld zurückbekommen, statt sie umzutauschen?",
+            "en": "The shoes are too small. Could I ask for a refund instead of an exchange?"
+          }
+        },
+        {
+          "targetText": "이 상품은 교환만 가능해요. 같은 색으로 다른 사이즈가 있어요.",
+          "baseText": {
+            "de": "Diesen Artikel können Sie nur umtauschen. Wir haben dieselbe Farbe in einer anderen Größe.",
+            "en": "We can only exchange this item. We have the same color in another size."
+          }
+        },
+        {
+          "targetText": "그러면 환불 대신 한 사이즈 크게 교환해 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie sie dann statt einer Erstattung in eine Nummer größer umtauschen?",
+            "en": "In that case, could I exchange them for one size up instead of getting a refund?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "말고 / 대신 beim Gegenvorschlag",
+        "rule": {
+          "de": "Vor 말고 steht die Option, die du nicht möchtest; danach nennst du, was du stattdessen willst. 할 수 있을까요? fragt vorsichtig, ob das möglich ist. Nach einem Nomen kann statt 말고 auch 대신 stehen.",
+          "en": "The option you don't want goes before 말고, followed by what you want instead. 할 수 있을까요? gently asks whether that is possible. After a noun, 대신 can take the place of 말고."
+        },
+        "examples": [
+          {
+            "targetText": "신발이 너무 작은데 교환 말고 환불 신청을 할 수 있을까요?",
+            "baseText": {
+              "de": "Die Schuhe sind zu klein. Könnte ich mein Geld zurückbekommen, statt sie umzutauschen?",
+              "en": "The shoes are too small. Could I ask for a refund instead of an exchange?"
+            },
+            "highlight": "교환 말고 환불 신청을"
+          },
+          {
+            "targetText": "현금 말고 카드로 계산할 수 있을까요?",
+            "baseText": {
+              "de": "Könnte ich mit Karte statt bar bezahlen?",
+              "en": "Could I pay by card instead of cash?"
+            },
+            "highlight": "현금 말고 카드로"
+          }
+        ]
+      },
+      "cloze": [
+        "그러면 환불 ",
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "전에",
+            "대신",
+            "덕분에",
+            "때문에"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "한 사이즈 크게",
+          "choices": [
+            "원래 크기로",
+            "두 사이즈 작게",
+            "한 사이즈 크게",
+            "한 사이즈 작게"
+          ]
+        },
+        " 교환해 ",
+        {
+          "kind": "form",
+          "answer": "주시겠어요",
+          "cue": "Höfliche Bitte: 주시다 mit -겠- als Frage / polite request: 주시다 with -겠- as a question",
+          "choices": [
+            "주실 때",
+            "주시겠어요",
+            "주신 뒤",
+            "주시려고"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "신발이 너무 작은데",
+          "baseText": {
+            "de": "die Schuhe sind zu klein",
+            "en": "the shoes are too small"
+          }
+        },
+        {
+          "targetText": "교환 말고",
+          "baseText": {
+            "de": "statt eines Umtauschs",
+            "en": "rather than an exchange"
+          }
+        },
+        {
+          "targetText": "환불 신청을",
+          "baseText": {
+            "de": "eine Erstattung",
+            "en": "a refund"
+          }
+        },
+        {
+          "targetText": "할 수 있을까요?",
+          "baseText": {
+            "de": "könnte ich beantragen?",
+            "en": "could I ask for?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "신발",
+          "baseText": {
+            "de": "Schuhe",
+            "en": "shoes"
+          }
+        },
+        {
+          "targetText": "영수증",
+          "baseText": {
+            "de": "Kassenbon",
+            "en": "receipt"
+          }
+        },
+        {
+          "targetText": "작다",
+          "baseText": {
+            "de": "klein sein",
+            "en": "be small"
+          }
+        },
+        {
+          "targetText": "환불",
+          "baseText": {
+            "de": "Erstattung",
+            "en": "refund"
+          }
+        },
+        {
+          "targetText": "교환",
+          "baseText": {
+            "de": "Umtausch",
+            "en": "exchange"
+          }
+        },
+        {
+          "targetText": "사이즈",
+          "baseText": {
+            "de": "Größe",
+            "en": "size"
+          }
+        }
+      ],
+      "recall": {
+        "before": "신발이 너무 작은데 교환 말고 ",
+        "answer": "환불",
+        "after": " 신청을 할 수 있을까요?",
+        "fallbackChoices": [
+          "수강",
+          "채용",
+          "환불",
+          "입학"
+        ]
+      },
+      "speakRequired": [
+        "신발이",
+        "작은데",
+        "환불"
+      ],
+      "sceneCaption": {
+        "de": "Am Serviceschalter fragt der Mitarbeiter nach. „신발하고 영수증을 가져오셨네요. 어떤 점이 불편하세요?“",
+        "en": "At the service desk, the assistant asks what's wrong. “신발하고 영수증을 가져오셨네요. 어떤 점이 불편하세요?”"
+      },
+      "trophyWord": {
+        "word": "환불",
+        "meaning": {
+          "de": "Erstattung des Kaufpreises",
+          "en": "refund"
+        },
+        "example": "환불 신청에 영수증이 필요해요?",
+        "whyThisWord": {
+          "de": "환불 신청 macht deutlich, dass du dein Geld zurückhaben möchtest. Beim 교환 bekommst du einen anderen Artikel.",
+          "en": "환불 신청 asks for your money back. 교환 means swapping the item for another one."
+        }
+      },
+      "distractors": [
+        "신발이 너무 커서",
+        "수선을 부탁해요."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Schuhkarton am Serviceschalter",
+        "en": "A shoebox at customer service"
+      },
+      "songMood": "Steady conversational guitar with an easy resolution.",
+      "visualNotes": "Closed shoebox and a receipt on the returns counter."
+    },
+    {
+      "slug": "yeollak-repair-call",
+      "title": {
+        "de": "Vor dem Reparaturtermin anrufen",
+        "en": "A call before the repair visit"
+      },
+      "situation": {
+        "de": "Die Hausverwaltung plant einen Reparaturbesuch. Du musst wissen, wann du zu Hause sein sollst, bist aber vormittags in Besprechungen und kannst nicht telefonieren.",
+        "en": "The rental agent is arranging a repair visit. You need to know when to be home, but you're in meetings all morning and can't take calls."
+      },
+      "pedagogicalGoal": "Mit 연락 und 주시겠어요? um Vorankündigung bitten und die vorgeschlagene Anrufzeit ändern.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "다음 주에 수리 기사님이 댁에 방문할 예정이에요.",
+          "baseText": {
+            "de": "Nächste Woche soll der Reparaturdienst zu Ihnen nach Hause kommen.",
+            "en": "A repair technician is scheduled to visit your home next week."
+          }
+        },
+        {
+          "targetText": "기사님이 오시기 전에 저한테 먼저 연락 한번 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie sich kurz bei mir melden, bevor der Techniker kommt?",
+            "en": "Could you get in touch with me before the technician arrives?"
+          }
+        },
+        {
+          "targetText": "내일 오전에 전화로 방문 시간을 알려 드릴까요?",
+          "baseText": {
+            "de": "Soll ich Sie morgen Vormittag anrufen und Ihnen die Besuchszeit durchgeben?",
+            "en": "Shall I call tomorrow morning to let you know when the visit will be?"
+          }
+        },
+        {
+          "targetText": "그러면 오전 대신 오후에 전화로 알려 주시겠어요?",
+          "baseText": {
+            "de": "Könnten Sie mich dann statt vormittags nachmittags anrufen und mir die Zeit durchgeben?",
+            "en": "In that case, could you call in the afternoon instead of the morning to let me know?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-기 전에 … 연락 주시겠어요?",
+        "rule": {
+          "de": "-기 전에 nennt den Zeitpunkt, vor dem etwas passieren soll. Mit 연락 한번 주시겠어요? bittest du höflich um eine kurze Nachricht. Vor 대신 steht immer die Option, die du nicht möchtest.",
+          "en": "-기 전에 marks the point before which something should happen. 연락 한번 주시겠어요? politely asks for a quick message. The option you don't want always goes before 대신."
+        },
+        "examples": [
+          {
+            "targetText": "기사님이 오시기 전에 저한테 먼저 연락 한번 주시겠어요?",
+            "baseText": {
+              "de": "Könnten Sie sich kurz bei mir melden, bevor der Techniker kommt?",
+              "en": "Could you get in touch with me before the technician arrives?"
+            },
+            "highlight": "연락 한번 주시겠어요"
+          },
+          {
+            "targetText": "이메일 대신 우편으로 서류를 보내 주시겠어요?",
+            "baseText": {
+              "de": "Könnten Sie mir die Unterlagen per Post statt per E-Mail schicken?",
+              "en": "Could you send the documents by post instead of email?"
+            },
+            "highlight": "이메일 대신 우편으로"
+          }
+        ]
+      },
+      "cloze": [
+        "그러면 오전 ",
+        {
+          "kind": "connector",
+          "answer": "대신",
+          "choices": [
+            "덕분에",
+            "그리고",
+            "대신",
+            "때문에"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "오후에",
+          "choices": [
+            "점심 전에",
+            "오후에",
+            "오전 중에",
+            "밤늦게"
+          ]
+        },
+        " 전화로 알려 ",
+        {
+          "kind": "form",
+          "answer": "주시겠어요",
+          "cue": "Höfliche Bitte: 주시다 mit -겠- als Frage / polite request: 주시다 with -겠- as a question",
+          "choices": [
+            "주신 뒤",
+            "주시려고",
+            "주실 때",
+            "주시겠어요"
+          ]
+        },
+        "?"
+      ],
+      "chunks": [
+        {
+          "targetText": "기사님이",
+          "baseText": {
+            "de": "der Techniker",
+            "en": "the technician"
+          }
+        },
+        {
+          "targetText": "오시기 전에",
+          "baseText": {
+            "de": "vor dessen Ankunft",
+            "en": "before they arrive"
+          }
+        },
+        {
+          "targetText": "저한테 먼저",
+          "baseText": {
+            "de": "zuerst bei mir",
+            "en": "with me first"
+          }
+        },
+        {
+          "targetText": "연락 한번",
+          "baseText": {
+            "de": "kurz melden",
+            "en": "get in touch briefly"
+          }
+        },
+        {
+          "targetText": "주시겠어요?",
+          "baseText": {
+            "de": "könnten Sie das bitte tun?",
+            "en": "could you do that?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "수리 기사님",
+          "baseText": {
+            "de": "Reparaturfachkraft",
+            "en": "repair technician"
+          }
+        },
+        {
+          "targetText": "방문 시간",
+          "baseText": {
+            "de": "Besuchszeit",
+            "en": "time of the visit"
+          }
+        },
+        {
+          "targetText": "오시기 전에",
+          "baseText": {
+            "de": "vor der Ankunft",
+            "en": "before they arrive"
+          }
+        },
+        {
+          "targetText": "연락",
+          "baseText": {
+            "de": "Kontakt, Nachricht",
+            "en": "contact, word from someone"
+          }
+        },
+        {
+          "targetText": "예정",
+          "baseText": {
+            "de": "geplanter Termin, Vorhaben",
+            "en": "plan, something scheduled"
+          }
+        },
+        {
+          "targetText": "전화로 알리다",
+          "baseText": {
+            "de": "telefonisch Bescheid geben",
+            "en": "let someone know by phone"
+          }
+        }
+      ],
+      "recall": {
+        "before": "기사님이 오시기 전에 저한테 먼저 ",
+        "answer": "연락",
+        "after": " 한번 주시겠어요?",
+        "fallbackChoices": [
+          "환불",
+          "연락",
+          "교환",
+          "반품"
+        ]
+      },
+      "speakRequired": [
+        "기사님이",
+        "먼저",
+        "연락"
+      ],
+      "sceneCaption": {
+        "de": "Die Mietvermittlung kündigt den Besuch an. „다음 주에 수리 기사님이 댁에 방문할 예정이에요.“",
+        "en": "The rental agent lets you know about the visit. “다음 주에 수리 기사님이 댁에 방문할 예정이에요.”"
+      },
+      "trophyWord": {
+        "word": "연락",
+        "meaning": {
+          "de": "Kontakt, Nachricht",
+          "en": "contact, word from someone"
+        },
+        "example": "도착하기 전에 연락 한번 주세요.",
+        "whyThisWord": {
+          "de": "연락 주세요 lässt das Kommunikationsmittel offen. Mit 전화로 kannst du ausdrücklich um einen Anruf bitten.",
+          "en": "연락 주세요 leaves the method open. Add 전화로 when you specifically want a call."
+        }
+      },
+      "distractors": [
+        "기사님이 가신 뒤에",
+        "옆집에 먼저"
+      ],
+      "placeholderCaption": {
+        "de": "Einen Reparaturbesuch absprechen",
+        "en": "Arranging a repair visit"
+      },
+      "songMood": "Calm alternating piano phrases over a slow pulse.",
+      "visualNotes": "A home repair appointment on a blank calendar."
+    }
+  ]
+}

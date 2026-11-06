@@ -1,0 +1,111 @@
+{
+  "language": "German",
+  "level": "B2",
+  "path": 3,
+  "scope": "offline complete unpublished text, source-bound German P3 validation",
+  "file": "final-checked/german-b2-p3.json",
+  "sourceSha256": "e4964104fd1ae0a92842da0c12afb0aecf6ab3d900cf6e7ef09dcf42929af657",
+  "sourceBytes": 103170,
+  "firstReviewEdits": 51,
+  "secondReviewEdits": 25,
+  "newBlockerEdits": 3,
+  "sources": {
+    "firstDraft": "d92c9473705f5852d4b4fb244f740cb65ec41efed4a58ebb1796684c08948b81",
+    "architectureReceipt": "c4bf4e5c072c03b55139245b2250655eed4637b3449f9da3d4480a58894aae7b",
+    "originalIndependentRead": "3409b438d410b2154bcdb9339a8384b01a090d16e1caa41839c1f8639286318e",
+    "firstReceipt": "7a923ff48f8445da2244dd017a830898b6d09ae001ea0cd14016dcccbe499d69",
+    "secondReceipt": "5b39f91de70c46287307d4a869de8ce5f8f5c09fdb2108e26f370e80726fa40c",
+    "blockerReceipt": "8524fa8f26155006e27fa30b917c5b038fdbd9d60192b3c1a3900ed8a6c0c49c",
+    "finalAuthority": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+    "ledger": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+  },
+  "lessons": [
+    {
+      "n": 1,
+      "slug": "neuer-schichtplan",
+      "trophy": "Belastung",
+      "sha256CompactSortedUTF8": "d5c792836ef952b4a575fe64045510a3cba32db9e117313c1744e4adc607cc5c"
+    },
+    {
+      "n": 2,
+      "slug": "ruhezeiten-im-haus",
+      "trophy": "Rücksicht",
+      "sha256CompactSortedUTF8": "c146d09f7c52492cef0906e03ced78d4004cf2754238ef956c83c8fa530eb183"
+    },
+    {
+      "n": 3,
+      "slug": "trinkgeld-kultur",
+      "trophy": "Wertschätzung",
+      "sha256CompactSortedUTF8": "672202248e038014a343dac689ec21c96968882c82757e809b1d0cf3a6adb45f"
+    },
+    {
+      "n": 4,
+      "slug": "hausaufgaben-last",
+      "trophy": "überfordern",
+      "sha256CompactSortedUTF8": "5ec1a1946d089067a7f55edc1fccc196a4c6b98fb421ae4255a40dd2d4e8b0da"
+    },
+    {
+      "n": 5,
+      "slug": "videosprechstunde",
+      "trophy": "Hürde",
+      "sha256CompactSortedUTF8": "bc3b6295702d2dad39ccb2ac77679174790879f6c1f2a32624f323ac62b0bc78"
+    },
+    {
+      "n": 6,
+      "slug": "autofreie-innenstadt",
+      "trophy": "Einwand",
+      "sha256CompactSortedUTF8": "50c22edfd7ef379713a8e2a6a66a4b2cdb4181fba6429728cc32b7516b393b4a"
+    },
+    {
+      "n": 7,
+      "slug": "vorschlag-der-kollegin",
+      "trophy": "stichhaltig",
+      "sha256CompactSortedUTF8": "836e9d3bc6c485adbb938d59a66d4a283f9743e619ee45c0cb8d3f5f82a71b85"
+    },
+    {
+      "n": 8,
+      "slug": "handys-im-grossraumbuero",
+      "trophy": "Bevormundung",
+      "sha256CompactSortedUTF8": "29b7bbda08550a09d862c8cc11ed0ea19acde6b5c4a01ee727daae90c77a0822"
+    },
+    {
+      "n": 9,
+      "slug": "regional-oder-importiert",
+      "trophy": "Standpunkt",
+      "sha256CompactSortedUTF8": "680ce5e2fb3d662df89991746f224a178f6df5510314570d5b9479a73e8949d3"
+    },
+    {
+      "n": 10,
+      "slug": "sprachen-frueh-lernen",
+      "trophy": "entscheidend",
+      "sha256CompactSortedUTF8": "658b81ac9934006e0d07830e4374537a8c356e209369e4732fb9858c63d4744f"
+    }
+  ],
+  "noApprovalsChanged": true,
+  "gate": {
+    "scope": "scratch P3-only reuse of German gate with separate Fable spine allocation",
+    "lessons": 10,
+    "turns": 60,
+    "terms": 80,
+    "voiceTargets": 30,
+    "negativeControls": [
+      "missing whole-token trophy",
+      "second correct recall choice",
+      "lost build framing",
+      "unlicensed opening move",
+      "repeated challenge in caption",
+      "inflated approval"
+    ],
+    "sourceSha256": "e4964104fd1ae0a92842da0c12afb0aecf6ab3d900cf6e7ef09dcf42929af657",
+    "specSha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+    "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+  },
+  "secondFableHolds": [
+    "Native-human review of all ten lessons still pending (nativeStatus unreviewed; review flags untouched).",
+    "Device/renderer grading of builds and normalisation cannot be verified offline; only canonical text and exact join reconstruction checked.",
+    "L6 distractors judged scene-excluded by the fixed prefix, not reworked; confirm in native pass.",
+    "spec-authority L3 setting still says 'deutsche Aufrunde-Gewohnheit'; derive revised spec from the new canonical opener."
+  ],
+  "blockerHolds": [],
+  "remainingChecks": "Final independent editorial verdict, native-human review and delivered exercise/answer behavior are separate. All approval flags pending."
+}

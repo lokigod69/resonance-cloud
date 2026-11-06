@@ -1,0 +1,1895 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 7,
+  "title": {
+    "de": "Damit es klappt"
+  },
+  "subtitle": {
+    "de": "Plane mit anderen, nenne einen Zweck und handle einen Ausweichplan aus."
+  },
+  "anchor": "Shape C: gemeinsam planen und eine zweite Möglichkeit aushandeln. L1–3 to zur Zweckangabe und so that … can; L4–6 erster Konditionalsatz mit will; L7–8 in case und unless; L9–10 gemischte Anwendung. Amerikanisches Englisch; Gespräche mit einzelnen Bekannten. Neue Stufung aus der Oktober-Architektur, zehn bestehende Trophäenzuordnungen. Textentwurf, nicht freigegeben.",
+  "lessons": [
+    {
+      "slug": "courtyard-gathering",
+      "title": {
+        "de": "Ein Abend im Innenhof"
+      },
+      "situation": {
+        "de": "Du planst mit einer Nachbarin ein kleines Treffen im Haus. Sie möchte wissen, was ihr damit erreichen wollt.",
+        "en": "You're planning a get-together with a neighbor. She wants to know what you hope people will get out of it."
+      },
+      "pedagogicalGoal": "The purpose is to meet nennt das Ziel eines Plans. Nach to steht die Grundform; so hängst du den Zweck direkt an eine Handlung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Do we really need a big party this year?",
+          "baseText": {
+            "de": "Brauchen wir dieses Jahr wirklich ein großes Fest?"
+          }
+        },
+        {
+          "targetText": "The purpose is to meet our new neighbors, even over a quick coffee.",
+          "baseText": {
+            "de": "Es geht darum, unsere neuen Nachbarn kennenzulernen, und sei es nur bei einem kurzen Kaffee."
+          }
+        },
+        {
+          "targetText": "I can bring coffee outside, but I only have six cups.",
+          "baseText": {
+            "de": "Ich kann Kaffee nach draußen bringen, aber ich habe nur sechs Tassen."
+          }
+        },
+        {
+          "targetText": "Let's ask people to bring their own cups to keep it simple.",
+          "baseText": {
+            "de": "Bitten wir die Leute, ihre eigenen Tassen mitzubringen, um es einfach zu halten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Purpose and the to-infinitive",
+        "rule": {
+          "de": "The purpose is to meet nennt das Ziel eines Plans. Nach to steht die Grundform; so hängst du den Zweck direkt an eine Handlung."
+        },
+        "examples": [
+          {
+            "targetText": "The purpose is to meet our new neighbors, even over a quick coffee.",
+            "baseText": {
+              "de": "Es geht darum, unsere neuen Nachbarn kennenzulernen, und sei es nur bei einem kurzen Kaffee."
+            },
+            "highlight": "to meet our new neighbors"
+          },
+          {
+            "targetText": "We can meet outside to welcome the new neighbors.",
+            "baseText": {
+              "de": "Wir können uns draußen treffen, um die neuen Nachbarn zu begrüßen."
+            },
+            "highlight": "to welcome the new neighbors"
+          }
+        ]
+      },
+      "cloze": [
+        "Let's ask people to ",
+        {
+          "kind": "form",
+          "answer": "bring",
+          "choices": [
+            "bring",
+            "bringing",
+            "brought",
+            "brings"
+          ],
+          "cue": "Grundform nach to"
+        },
+        " their own cups ",
+        {
+          "kind": "connector",
+          "answer": "to",
+          "choices": [
+            "until",
+            "to",
+            "that",
+            "than"
+          ]
+        },
+        " keep it simple."
+      ],
+      "chunks": [
+        {
+          "targetText": "The purpose is",
+          "baseText": {
+            "de": "Der Zweck ist,"
+          }
+        },
+        {
+          "targetText": "to meet our new neighbors,",
+          "baseText": {
+            "de": "unsere neuen Nachbarn kennenzulernen,"
+          }
+        },
+        {
+          "targetText": "even over",
+          "baseText": {
+            "de": "und sei es nur bei"
+          }
+        },
+        {
+          "targetText": "a quick coffee.",
+          "baseText": {
+            "de": "einem kurzen Kaffee."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "purpose",
+          "baseText": {
+            "de": "Zweck"
+          }
+        },
+        {
+          "targetText": "new neighbors",
+          "baseText": {
+            "de": "neue Nachbarn"
+          }
+        },
+        {
+          "targetText": "over a quick coffee",
+          "baseText": {
+            "de": "bei einem kurzen Kaffee"
+          }
+        },
+        {
+          "targetText": "outside",
+          "baseText": {
+            "de": "nach draußen"
+          }
+        },
+        {
+          "targetText": "six cups",
+          "baseText": {
+            "de": "sechs Tassen"
+          }
+        },
+        {
+          "targetText": "their own cups",
+          "baseText": {
+            "de": "ihre eigenen Tassen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The purpose is to ",
+        "answer": "meet",
+        "after": " our new neighbors, even over a quick coffee.",
+        "fallbackChoices": [
+          "met",
+          "meet",
+          "meets",
+          "meeting"
+        ]
+      },
+      "speakRequired": [
+        "purpose",
+        "meet",
+        "neighbors"
+      ],
+      "sceneCaption": {
+        "de": "Im Innenhof schaut deine Nachbarin auf die wenigen freien Tische: „Do we really need a big party this year?“"
+      },
+      "trophyWord": {
+        "word": "purpose",
+        "meaning": {
+          "de": "Zweck"
+        },
+        "example": "The purpose of the walk is to welcome new residents.",
+        "whyThisWord": {
+          "de": "Purpose hilft euch, vom Ziel aus zu entscheiden, wie groß das Treffen sein muss."
+        }
+      },
+      "distractors": [
+        "to leave our old building,",
+        "a quiet train."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Nachbarn betrachten die Tische im Innenhof eines Wohnhauses."
+      },
+      "songMood": "Ungezwungen und einladend.",
+      "visualNotes": "Zwei Nachbarn betrachten die Tische im Innenhof eines Wohnhauses."
+    },
+    {
+      "slug": "one-shopping-list",
+      "title": {
+        "de": "Eine Liste für alle"
+      },
+      "situation": {
+        "de": "Du kaufst mit einem Freund für einen Spieleabend ein. Ihr wollt eure Besorgungen abstimmen.",
+        "en": "You and a friend are shopping for game night. You want to coordinate what you buy."
+      },
+      "pedagogicalGoal": "So that führt das gewünschte Ergebnis eines Plans ein. Danach steht oft can mit der Grundform: so that we can see.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "We both bought chips last time. Any ideas?",
+          "baseText": {
+            "de": "Letztes Mal haben wir beide Chips gekauft. Hast du eine Idee?"
+          }
+        },
+        {
+          "targetText": "I can organize one list so that we can see what everyone needs.",
+          "baseText": {
+            "de": "Ich kann eine gemeinsame Liste anlegen, damit wir sehen, was alle brauchen."
+          }
+        },
+        {
+          "targetText": "My phone's broken. I can only use a paper list today.",
+          "baseText": {
+            "de": "Mein Handy ist kaputt. Ich kann heute nur eine Papierliste benutzen."
+          }
+        },
+        {
+          "targetText": "Let's leave it downstairs so that everyone can add things.",
+          "baseText": {
+            "de": "Legen wir sie unten hin, damit alle etwas ergänzen können."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "So that with can",
+        "rule": {
+          "de": "So that führt das gewünschte Ergebnis eines Plans ein. Danach steht oft can mit der Grundform: so that we can see."
+        },
+        "examples": [
+          {
+            "targetText": "I can organize one list so that we can see what everyone needs.",
+            "baseText": {
+              "de": "Ich kann eine gemeinsame Liste anlegen, damit wir sehen, was alle brauchen."
+            },
+            "highlight": "so that we can see"
+          },
+          {
+            "targetText": "I'll send you a photo so that you can check the prices.",
+            "baseText": {
+              "de": "Ich schicke dir ein Foto, damit du die Preise prüfen kannst."
+            },
+            "highlight": "so that you can check"
+          }
+        ]
+      },
+      "cloze": [
+        "Let's ",
+        {
+          "kind": "form",
+          "answer": "leave",
+          "choices": [
+            "left",
+            "leaves",
+            "leaving",
+            "leave"
+          ],
+          "cue": "Grundform nach let's"
+        },
+        " it downstairs ",
+        {
+          "kind": "connector",
+          "answer": "so that",
+          "choices": [
+            "so that",
+            "before",
+            "although",
+            "instead of"
+          ]
+        },
+        " everyone can add things."
+      ],
+      "chunks": [
+        {
+          "targetText": "I can organize",
+          "baseText": {
+            "de": "Ich kann anlegen"
+          }
+        },
+        {
+          "targetText": "one list",
+          "baseText": {
+            "de": "eine gemeinsame Liste"
+          }
+        },
+        {
+          "targetText": "so that we can see",
+          "baseText": {
+            "de": "damit wir sehen können,"
+          }
+        },
+        {
+          "targetText": "what everyone needs.",
+          "baseText": {
+            "de": "was alle brauchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "bought chips",
+          "baseText": {
+            "de": "Chips gekauft"
+          }
+        },
+        {
+          "targetText": "one list",
+          "baseText": {
+            "de": "eine gemeinsame Liste"
+          }
+        },
+        {
+          "targetText": "everyone needs",
+          "baseText": {
+            "de": "alle brauchen"
+          }
+        },
+        {
+          "targetText": "paper list",
+          "baseText": {
+            "de": "Papierliste"
+          }
+        },
+        {
+          "targetText": "downstairs",
+          "baseText": {
+            "de": "unten"
+          }
+        },
+        {
+          "targetText": "add things",
+          "baseText": {
+            "de": "Dinge ergänzen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I can ",
+        "answer": "organize",
+        "after": " one list so that we can see what everyone needs.",
+        "fallbackChoices": [
+          "organizing",
+          "organized",
+          "organize",
+          "organizes"
+        ]
+      },
+      "speakRequired": [
+        "organize",
+        "list",
+        "needs"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Einkauf hält dein Freund die leere Einkaufstasche hoch: „We both bought chips last time. Any ideas?“"
+      },
+      "trophyWord": {
+        "word": "organize",
+        "meaning": {
+          "de": "organisieren"
+        },
+        "example": "Could you organize a list of the food we need?",
+        "whyThisWord": {
+          "de": "Organize passt, wenn du eine Aufgabe übernimmst und die Beiträge mehrerer Leute zusammenbringst."
+        }
+      },
+      "distractors": [
+        "two separate trips",
+        "what the driver wants."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Einkaufstasche und ein Notizblock liegen auf einem Küchentisch."
+      },
+      "songMood": "Praktisch und freundschaftlich.",
+      "visualNotes": "Eine Einkaufstasche und ein Notizblock liegen auf einem Küchentisch."
+    },
+    {
+      "slug": "community-dinner",
+      "title": {
+        "de": "Bevor die Gäste kommen"
+      },
+      "situation": {
+        "de": "Du und eine Freundin bereitet ein Essen im Gemeindehaus vor. Ihr müsst euch auf einen Treffpunkt und eine Zeit einigen.",
+        "en": "You and a friend are setting up a community dinner. You need to agree on when and where to meet."
+      },
+      "pedagogicalGoal": "Bei gleichem Handelnden genügt to: meet … to share. Wechselt die Person, zeigt so that … can, wer durch den Plan etwas tun kann.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What time should I meet you at the hall?",
+          "baseText": {
+            "de": "Wann soll ich dich im Saal treffen?"
+          }
+        },
+        {
+          "targetText": "Let's meet at four to share the work before the guests arrive.",
+          "baseText": {
+            "de": "Treffen wir uns um vier, um uns die Arbeit vor der Ankunft der Gäste zu teilen."
+          }
+        },
+        {
+          "targetText": "I can't get there until five. I can chop vegetables at home, though.",
+          "baseText": {
+            "de": "Ich kann erst um fünf dort sein. Ich kann aber zu Hause Gemüse schneiden."
+          }
+        },
+        {
+          "targetText": "Five works. Chop the carrots so that I can set the tables.",
+          "baseText": {
+            "de": "Fünf passt. Schneide die Karotten, damit ich die Tische decken kann."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Two ways to name a purpose",
+        "rule": {
+          "de": "Bei gleichem Handelnden genügt to: meet … to share. Wechselt die Person, zeigt so that … can, wer durch den Plan etwas tun kann."
+        },
+        "examples": [
+          {
+            "targetText": "Let's meet at four to share the work before the guests arrive.",
+            "baseText": {
+              "de": "Treffen wir uns um vier, um uns die Arbeit vor der Ankunft der Gäste zu teilen."
+            },
+            "highlight": "to share the work"
+          },
+          {
+            "targetText": "I'll bring the speaker so that you can play some music.",
+            "baseText": {
+              "de": "Ich bringe den Lautsprecher mit, damit du Musik abspielen kannst."
+            },
+            "highlight": "so that you can play"
+          }
+        ]
+      },
+      "cloze": [
+        "Five works. Chop the carrots ",
+        {
+          "kind": "connector",
+          "answer": "so that",
+          "choices": [
+            "even if",
+            "instead of",
+            "so that",
+            "before"
+          ]
+        },
+        " I can ",
+        {
+          "kind": "form",
+          "answer": "set",
+          "choices": [
+            "sets",
+            "setting",
+            "to set",
+            "set"
+          ],
+          "cue": "Grundform nach can"
+        },
+        " the tables."
+      ],
+      "chunks": [
+        {
+          "targetText": "Let's meet at four",
+          "baseText": {
+            "de": "Treffen wir uns um vier,"
+          }
+        },
+        {
+          "targetText": "to share the work",
+          "baseText": {
+            "de": "um uns die Arbeit zu teilen,"
+          }
+        },
+        {
+          "targetText": "before the guests",
+          "baseText": {
+            "de": "bevor die Gäste"
+          }
+        },
+        {
+          "targetText": "arrive.",
+          "baseText": {
+            "de": "kommen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "hall",
+          "baseText": {
+            "de": "Saal"
+          }
+        },
+        {
+          "targetText": "at four",
+          "baseText": {
+            "de": "um vier"
+          }
+        },
+        {
+          "targetText": "share the work",
+          "baseText": {
+            "de": "sich die Arbeit teilen"
+          }
+        },
+        {
+          "targetText": "guests",
+          "baseText": {
+            "de": "Gäste"
+          }
+        },
+        {
+          "targetText": "chop vegetables",
+          "baseText": {
+            "de": "Gemüse klein schneiden"
+          }
+        },
+        {
+          "targetText": "set the tables",
+          "baseText": {
+            "de": "die Tische decken"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Let's meet at four to ",
+        "answer": "share",
+        "after": " the work before the guests arrive.",
+        "fallbackChoices": [
+          "shares",
+          "sharing",
+          "share",
+          "shared"
+        ]
+      },
+      "speakRequired": [
+        "share",
+        "work",
+        "guests"
+      ],
+      "sceneCaption": {
+        "de": "Im Gemeindehaus betrachtet deine Freundin den leeren Saal: „What time should I meet you at the hall?“"
+      },
+      "trophyWord": {
+        "word": "share",
+        "meaning": {
+          "de": "teilen"
+        },
+        "example": "Let's share the work so we both get a break.",
+        "whyThisWord": {
+          "de": "Mit share the work vereinbart ihr, wer welchen Teil der Vorbereitung übernimmt."
+        }
+      },
+      "distractors": [
+        "after the lights",
+        "to watch the game"
+      ],
+      "placeholderCaption": {
+        "de": "In einem Saal stehen noch ungedeckte Tische; an der Wand hängt eine Uhr."
+      },
+      "songMood": "Tatkräftig und kameradschaftlich.",
+      "visualNotes": "In einem Saal stehen noch ungedeckte Tische; an der Wand hängt eine Uhr."
+    },
+    {
+      "slug": "food-labels",
+      "title": {
+        "de": "Schilder für das Buffet"
+      },
+      "situation": {
+        "de": "Du hilfst einem Freund mit dem Buffet für das Straßenfest. Ihr überlegt, was vor dem Aufbau noch zu tun ist.",
+        "en": "You're helping a friend with the buffet for a block party. You discuss what to do before setup."
+      },
+      "pedagogicalGoal": "Im if-Satz steht das Präsens, obwohl es um die Zukunft geht: If you send. Im Hauptsatz sagst du mit I'll zu, was du unter dieser Bedingung übernimmst.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What can we do about the mystery dishes this time?",
+          "baseText": {
+            "de": "Was machen wir diesmal mit den Gerichten, bei denen niemand weiß, was es ist?"
+          }
+        },
+        {
+          "targetText": "If you send me the menu, I'll prepare a label for each dish.",
+          "baseText": {
+            "de": "Wenn du mir das Menü schickst, bereite ich für jedes Gericht ein Schild vor."
+          }
+        },
+        {
+          "targetText": "The menu's ready, but there's only one sheet of cardstock left.",
+          "baseText": {
+            "de": "Das Menü steht, aber wir haben nur noch einen Bogen Karton."
+          }
+        },
+        {
+          "targetText": "If you cut strips, I'll write the names smaller.",
+          "baseText": {
+            "de": "Wenn du Streifen schneidest, schreibe ich die Namen kleiner."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "First conditional: sharing tasks",
+        "rule": {
+          "de": "Im if-Satz steht das Präsens, obwohl es um die Zukunft geht: If you send. Im Hauptsatz sagst du mit I'll zu, was du unter dieser Bedingung übernimmst."
+        },
+        "examples": [
+          {
+            "targetText": "If you send me the menu, I'll prepare a label for each dish.",
+            "baseText": {
+              "de": "Wenn du mir das Menü schickst, bereite ich für jedes Gericht ein Schild vor."
+            },
+            "highlight": "If you send me the menu, I'll prepare"
+          },
+          {
+            "targetText": "If you bring the plates, I'll set up the table.",
+            "baseText": {
+              "de": "Wenn du die Teller mitbringst, baue ich den Tisch auf."
+            },
+            "highlight": "If you bring the plates, I'll set up"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "If",
+          "choices": [
+            "Because",
+            "Until",
+            "If",
+            "Although"
+          ]
+        },
+        " you ",
+        {
+          "kind": "form",
+          "answer": "cut",
+          "choices": [
+            "cuts",
+            "cutting",
+            "will cut",
+            "cut"
+          ],
+          "cue": "Präsens (keine Zukunftsform)"
+        },
+        " strips, I'll write the names smaller."
+      ],
+      "chunks": [
+        {
+          "targetText": "If you send me the menu,",
+          "baseText": {
+            "de": "Wenn du mir das Menü schickst,"
+          }
+        },
+        {
+          "targetText": "I'll prepare",
+          "baseText": {
+            "de": "bereite ich vor"
+          }
+        },
+        {
+          "targetText": "a label",
+          "baseText": {
+            "de": "ein Schild"
+          }
+        },
+        {
+          "targetText": "for each dish.",
+          "baseText": {
+            "de": "für jedes Gericht."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "mystery dishes",
+          "baseText": {
+            "de": "unbekannte Gerichte"
+          }
+        },
+        {
+          "targetText": "menu",
+          "baseText": {
+            "de": "Menü"
+          }
+        },
+        {
+          "targetText": "prepare a label",
+          "baseText": {
+            "de": "ein Schild vorbereiten"
+          }
+        },
+        {
+          "targetText": "each dish",
+          "baseText": {
+            "de": "jedes Gericht"
+          }
+        },
+        {
+          "targetText": "sheet of cardstock",
+          "baseText": {
+            "de": "Bogen Karton"
+          }
+        },
+        {
+          "targetText": "cut strips",
+          "baseText": {
+            "de": "Streifen schneiden"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If you send me the menu, I'll ",
+        "answer": "prepare",
+        "after": " a label for each dish.",
+        "fallbackChoices": [
+          "preparing",
+          "prepares",
+          "prepare",
+          "prepared"
+        ]
+      },
+      "speakRequired": [
+        "menu",
+        "prepare",
+        "dish"
+      ],
+      "sceneCaption": {
+        "de": "Neben einer leeren Auflaufform tippt dein Freund auf die Buffetliste: „What can we do about the mystery dishes this time?“"
+      },
+      "trophyWord": {
+        "word": "prepare",
+        "meaning": {
+          "de": "vorbereiten"
+        },
+        "example": "I'll prepare the signs if you send the names tonight.",
+        "whyThisWord": {
+          "de": "Mit prepare teilst du eine Aufgabe ein, die vor dem eigentlichen Treffen erledigt sein muss."
+        }
+      },
+      "distractors": [
+        "If you taste it",
+        "for each chair."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Menüentwurf und eine leere Auflaufform stehen auf der Küchenanrichte."
+      },
+      "songMood": "Erfinderisch und unkompliziert.",
+      "visualNotes": "Ein Menüentwurf und eine leere Auflaufform stehen auf der Küchenanrichte."
+    },
+    {
+      "slug": "cleanup-supplies",
+      "title": {
+        "de": "Gemeinsam aufräumen"
+      },
+      "situation": {
+        "de": "Nach dem Hoffest steht der gemeinsame Putztag an. Deine Nachbarin sucht einen guten Platz für das Material.",
+        "en": "After the courtyard party, it's time for cleanup. Your neighbor is looking for a good place for the equipment."
+      },
+      "pedagogicalGoal": "Im if-Satz steht das Präsens: If we keep. Will im Hauptsatz nennt die erwartete Folge (people will find) oder eine Zusage.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Where should I put the things for cleanup?",
+          "baseText": {
+            "de": "Wohin soll ich die Sachen zum Aufräumen stellen?"
+          }
+        },
+        {
+          "targetText": "If we keep the supplies together, people will find what they need.",
+          "baseText": {
+            "de": "Wenn wir das Material zusammenlassen, finden alle, was sie brauchen."
+          }
+        },
+        {
+          "targetText": "There'll be kids here. I'd rather keep the cleaning liquid out of reach.",
+          "baseText": {
+            "de": "Es werden Kinder da sein. Ich würde den Reiniger lieber außer Reichweite stellen."
+          }
+        },
+        {
+          "targetText": "If you lock it away, I'll hand it out myself.",
+          "baseText": {
+            "de": "Wenn du ihn einschließt, gebe ich ihn selbst aus."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "First conditional: a practical consequence",
+        "rule": {
+          "de": "Im if-Satz steht das Präsens: If we keep. Will im Hauptsatz nennt die erwartete Folge (people will find) oder eine Zusage."
+        },
+        "examples": [
+          {
+            "targetText": "If we keep the supplies together, people will find what they need.",
+            "baseText": {
+              "de": "Wenn wir das Material zusammenlassen, finden alle, was sie brauchen."
+            },
+            "highlight": "If we keep the supplies together, people will find"
+          },
+          {
+            "targetText": "If we start early, we'll finish before lunch.",
+            "baseText": {
+              "de": "Wenn wir früh anfangen, sind wir vor dem Mittagessen fertig."
+            },
+            "highlight": "If we start early, we'll finish"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "If",
+          "choices": [
+            "While",
+            "If",
+            "Although",
+            "Because"
+          ]
+        },
+        " you lock it away, I'll ",
+        {
+          "kind": "form",
+          "answer": "hand",
+          "choices": [
+            "handed",
+            "handing",
+            "hand",
+            "hands"
+          ],
+          "cue": "Grundform nach I'll"
+        },
+        " it out myself."
+      ],
+      "chunks": [
+        {
+          "targetText": "If we keep the supplies together,",
+          "baseText": {
+            "de": "Wenn wir das Material zusammenlassen,"
+          }
+        },
+        {
+          "targetText": "people",
+          "baseText": {
+            "de": "die Leute"
+          }
+        },
+        {
+          "targetText": "will find",
+          "baseText": {
+            "de": "werden finden,"
+          }
+        },
+        {
+          "targetText": "what they need.",
+          "baseText": {
+            "de": "was sie brauchen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "cleanup",
+          "baseText": {
+            "de": "Aufräumen"
+          }
+        },
+        {
+          "targetText": "supplies",
+          "baseText": {
+            "de": "Material"
+          }
+        },
+        {
+          "targetText": "together",
+          "baseText": {
+            "de": "beisammen"
+          }
+        },
+        {
+          "targetText": "cleaning liquid",
+          "baseText": {
+            "de": "flüssiges Reinigungsmittel"
+          }
+        },
+        {
+          "targetText": "out of reach",
+          "baseText": {
+            "de": "außer Reichweite"
+          }
+        },
+        {
+          "targetText": "hand it out",
+          "baseText": {
+            "de": "es ausgeben"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If we ",
+        "answer": "keep",
+        "after": " the supplies together, people will find what they need.",
+        "fallbackChoices": [
+          "keeps",
+          "keeping",
+          "keep",
+          "to keep"
+        ]
+      },
+      "speakRequired": [
+        "supplies",
+        "together",
+        "find"
+      ],
+      "sceneCaption": {
+        "de": "Am Eingang zum Hof trägt deine Nachbarin eine Kiste und fragt: „Where should I put the things for cleanup?“"
+      },
+      "trophyWord": {
+        "word": "supplies",
+        "meaning": {
+          "de": "Material und Verbrauchsartikel"
+        },
+        "example": "We'll bring the cleaning supplies on Saturday.",
+        "whyThisWord": {
+          "de": "Mit supplies könnt ihr über mehrere benötigte Dinge sprechen, ohne sie alle aufzuzählen."
+        }
+      },
+      "distractors": [
+        "if the hall closes",
+        "the invitations separately,"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Kiste mit Putzmaterial steht neben einem Besenschrank am Hofeingang."
+      },
+      "songMood": "Umsichtig und hilfsbereit.",
+      "visualNotes": "Eine Kiste mit Putzmaterial steht neben einem Besenschrank am Hofeingang."
+    },
+    {
+      "slug": "reminder-for-volunteers",
+      "title": {
+        "de": "Der Treffpunkt für Samstag"
+      },
+      "situation": {
+        "de": "Ein Freund teilt Freiwillige für einen Flohmarkt ein. Hilf ihm bei der Absprache.",
+        "en": "A friend is organizing volunteers for a yard sale. Help him coordinate the group."
+      },
+      "pedagogicalGoal": "Der if-Satz im Präsens legt die Bedingung fest. Mit I'll und einer Zeitangabe wird der Hauptsatz zu einer Zusage für einen festen Zeitpunkt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "People keep asking which entrance to use on Saturday.",
+          "baseText": {
+            "de": "Die Leute fragen immer wieder, welchen Eingang sie am Samstag nehmen sollen."
+          }
+        },
+        {
+          "targetText": "If you tell me the entrance, I'll remind everyone where to meet.",
+          "baseText": {
+            "de": "Wenn du mir den Eingang nennst, erinnere ich alle daran, wo wir uns treffen."
+          }
+        },
+        {
+          "targetText": "Could you send it tonight? Some of them leave before seven tomorrow.",
+          "baseText": {
+            "de": "Könntest du sie heute Abend schicken? Einige fahren morgen schon vor sieben los."
+          }
+        },
+        {
+          "targetText": "If you text me now, I'll send it before dinner.",
+          "baseText": {
+            "de": "Wenn du mir jetzt schreibst, schicke ich sie vor dem Abendessen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "First conditional: timing a promise",
+        "rule": {
+          "de": "Der if-Satz im Präsens legt die Bedingung fest. Mit I'll und einer Zeitangabe wird der Hauptsatz zu einer Zusage für einen festen Zeitpunkt."
+        },
+        "examples": [
+          {
+            "targetText": "If you tell me the entrance, I'll remind everyone where to meet.",
+            "baseText": {
+              "de": "Wenn du mir den Eingang nennst, erinnere ich alle daran, wo wir uns treffen."
+            },
+            "highlight": "If you tell me the entrance, I'll remind"
+          },
+          {
+            "targetText": "If you call me after lunch, I'll book the room right away.",
+            "baseText": {
+              "de": "Wenn du mich nach dem Mittagessen anrufst, buche ich den Raum sofort."
+            },
+            "highlight": "If you call me after lunch, I'll book"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "If",
+          "choices": [
+            "If",
+            "Although",
+            "Because",
+            "Until"
+          ]
+        },
+        " you ",
+        {
+          "kind": "form",
+          "answer": "text",
+          "choices": [
+            "will text",
+            "text",
+            "texts",
+            "texting"
+          ],
+          "cue": "Präsens (keine Zukunftsform)"
+        },
+        " me now, I'll send it before dinner."
+      ],
+      "chunks": [
+        {
+          "targetText": "If you tell me the entrance,",
+          "baseText": {
+            "de": "Wenn du mir den Eingang nennst,"
+          }
+        },
+        {
+          "targetText": "I'll remind",
+          "baseText": {
+            "de": "erinnere ich"
+          }
+        },
+        {
+          "targetText": "everyone",
+          "baseText": {
+            "de": "alle daran,"
+          }
+        },
+        {
+          "targetText": "where to meet.",
+          "baseText": {
+            "de": "wo wir uns treffen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "entrance",
+          "baseText": {
+            "de": "Eingang"
+          }
+        },
+        {
+          "targetText": "tell me the entrance",
+          "baseText": {
+            "de": "nenn mir den Eingang"
+          }
+        },
+        {
+          "targetText": "remind everyone",
+          "baseText": {
+            "de": "alle erinnern"
+          }
+        },
+        {
+          "targetText": "where to meet",
+          "baseText": {
+            "de": "wo man sich trifft"
+          }
+        },
+        {
+          "targetText": "tonight",
+          "baseText": {
+            "de": "heute Abend"
+          }
+        },
+        {
+          "targetText": "before dinner",
+          "baseText": {
+            "de": "vor dem Abendessen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If you tell me the entrance, I'll ",
+        "answer": "remind",
+        "after": " everyone where to meet.",
+        "fallbackChoices": [
+          "reminds",
+          "reminding",
+          "reminded",
+          "remind"
+        ]
+      },
+      "speakRequired": [
+        "entrance",
+        "remind",
+        "meet"
+      ],
+      "sceneCaption": {
+        "de": "Am Gartentor schaut dein Freund auf die Nachrichten auf seinem Handy: „People keep asking which entrance to use on Saturday.“"
+      },
+      "trophyWord": {
+        "word": "remind",
+        "meaning": {
+          "de": "erinnern"
+        },
+        "example": "I'll remind the group to use the side entrance.",
+        "whyThisWord": {
+          "de": "Mit remind gibst du eine Information weiter, die andere schon kennen, aber vergessen könnten."
+        }
+      },
+      "distractors": [
+        "the ticket price,",
+        "where to eat."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Handy mit Gruppennachrichten liegt neben einer Skizze der Eingänge."
+      },
+      "songMood": "Zuverlässig und freundlich.",
+      "visualNotes": "Ein Handy mit Gruppennachrichten liegt neben einer Skizze der Eingänge."
+    },
+    {
+      "slug": "meeting-after-work",
+      "title": {
+        "de": "Die Besprechung nach Feierabend"
+      },
+      "situation": {
+        "de": "Eine Kollegin plant die nächste Teamsitzung. Klärt, wie du dabei sein kannst.",
+        "en": "A colleague is planning the next team meeting. Work out how you can take part."
+      },
+      "pedagogicalGoal": "Unless nennt die eine Ausnahme, unter der ein Plan nicht gilt. In case begründet eine Vorsichtsmaßnahme, die du jetzt triffst, ohne zu wissen, ob der Fall eintritt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Should I put you down for Thursday's meeting?",
+          "baseText": {
+            "de": "Soll ich dich für die Sitzung am Donnerstag eintragen?"
+          }
+        },
+        {
+          "targetText": "I can attend unless my shift runs late again on Thursday.",
+          "baseText": {
+            "de": "Ich kann teilnehmen, es sei denn, meine Schicht dauert am Donnerstag wieder länger."
+          }
+        },
+        {
+          "targetText": "We need your numbers first. I can't move that part to the end.",
+          "baseText": {
+            "de": "Wir brauchen deine Zahlen zuerst. Den Punkt kann ich nicht ans Ende verschieben."
+          }
+        },
+        {
+          "targetText": "I'll email the figures in case my shift runs late.",
+          "baseText": {
+            "de": "Ich maile die Zahlen vorsichtshalber, falls meine Schicht länger dauert."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Unless and in case",
+        "rule": {
+          "de": "Unless nennt die eine Ausnahme, unter der ein Plan nicht gilt. In case begründet eine Vorsichtsmaßnahme, die du jetzt triffst, ohne zu wissen, ob der Fall eintritt."
+        },
+        "examples": [
+          {
+            "targetText": "I can attend unless my shift runs late again on Thursday.",
+            "baseText": {
+              "de": "Ich kann teilnehmen, es sei denn, meine Schicht dauert am Donnerstag wieder länger."
+            },
+            "highlight": "unless my shift runs late"
+          },
+          {
+            "targetText": "Take an umbrella in case it rains on the way.",
+            "baseText": {
+              "de": "Nimm einen Schirm mit, falls es unterwegs regnet."
+            },
+            "highlight": "in case it rains"
+          }
+        ]
+      },
+      "cloze": [
+        "I'll email the figures ",
+        {
+          "kind": "connector",
+          "answer": "in case",
+          "choices": [
+            "in case",
+            "so that",
+            "although",
+            "until"
+          ]
+        },
+        " my shift ",
+        {
+          "kind": "form",
+          "answer": "runs",
+          "choices": [
+            "to run",
+            "runs",
+            "run",
+            "running"
+          ],
+          "cue": "Präsens, 3. Person Singular"
+        },
+        " late."
+      ],
+      "chunks": [
+        {
+          "targetText": "I can attend",
+          "baseText": {
+            "de": "Ich kann teilnehmen,"
+          }
+        },
+        {
+          "targetText": "unless my shift",
+          "baseText": {
+            "de": "es sei denn, meine Schicht"
+          }
+        },
+        {
+          "targetText": "runs late again",
+          "baseText": {
+            "de": "dauert wieder länger"
+          }
+        },
+        {
+          "targetText": "on Thursday.",
+          "baseText": {
+            "de": "am Donnerstag."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "put you down",
+          "baseText": {
+            "de": "dich eintragen"
+          }
+        },
+        {
+          "targetText": "attend",
+          "baseText": {
+            "de": "teilnehmen"
+          }
+        },
+        {
+          "targetText": "shift",
+          "baseText": {
+            "de": "Arbeitsschicht"
+          }
+        },
+        {
+          "targetText": "runs late",
+          "baseText": {
+            "de": "dauert länger als geplant"
+          }
+        },
+        {
+          "targetText": "figures",
+          "baseText": {
+            "de": "Zahlen"
+          }
+        },
+        {
+          "targetText": "to the end",
+          "baseText": {
+            "de": "ans Ende"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I can ",
+        "answer": "attend",
+        "after": " unless my shift runs late again on Thursday.",
+        "fallbackChoices": [
+          "attending",
+          "attended",
+          "attends",
+          "attend"
+        ]
+      },
+      "speakRequired": [
+        "attend",
+        "shift",
+        "Thursday"
+      ],
+      "sceneCaption": {
+        "de": "Eine Kollegin fragt dich mit dem Sitzungsplan in der Hand: „Should I put you down for Thursday's meeting?“"
+      },
+      "trophyWord": {
+        "word": "attend",
+        "meaning": {
+          "de": "teilnehmen"
+        },
+        "example": "I can attend the meeting unless my shift changes.",
+        "whyThisWord": {
+          "de": "Attend braucht vor meeting kein at; so kannst du direkt zusagen oder deine Zusage einschränken."
+        }
+      },
+      "distractors": [
+        "after my vacation",
+        "misses the bus"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Kollegen am Ende des Arbeitstags, zwischen ihnen ein Kalender und ein Notizblock."
+      },
+      "songMood": "Abwägend und verbindlich.",
+      "visualNotes": "Zwei Kollegen am Ende des Arbeitstags, zwischen ihnen ein Kalender und ein Notizblock."
+    },
+    {
+      "slug": "the-hidden-entrance",
+      "title": {
+        "de": "Der richtige Eingang"
+      },
+      "situation": {
+        "de": "Mit einem Freund bereitest du eine Lesung vor. Die Gäste kennen den Veranstaltungsort noch nicht.",
+        "en": "You and a friend are setting up a reading. The guests haven't been to the venue before."
+      },
+      "pedagogicalGoal": "In case begründet eine Vorsichtsmaßnahme: in case nobody's at the gate. Unless nennt die eine Ausnahme, unter der ein Plan nicht gilt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How can we help people find the side door?",
+          "baseText": {
+            "de": "Wie helfen wir den Leuten, den Seiteneingang zu finden?"
+          }
+        },
+        {
+          "targetText": "Let's put up a sign to prevent confusion in case nobody's at the gate.",
+          "baseText": {
+            "de": "Hängen wir ein Schild auf, um Verwirrung zu vermeiden, falls niemand am Tor ist."
+          }
+        },
+        {
+          "targetText": "There's a tree in front of the gate. A sign there is hard to see.",
+          "baseText": {
+            "de": "Vor dem Tor steht ein Baum. Ein Schild dort sieht man schlecht."
+          }
+        },
+        {
+          "targetText": "I'll stand outside unless someone else can meet the guests.",
+          "baseText": {
+            "de": "Ich stelle mich nach draußen, sofern nicht jemand anderes die Gäste empfangen kann."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "In case and unless",
+        "rule": {
+          "de": "In case begründet eine Vorsichtsmaßnahme: in case nobody's at the gate. Unless nennt die eine Ausnahme, unter der ein Plan nicht gilt."
+        },
+        "examples": [
+          {
+            "targetText": "Let's put up a sign to prevent confusion in case nobody's at the gate.",
+            "baseText": {
+              "de": "Hängen wir ein Schild auf, um Verwirrung zu vermeiden, falls niemand am Tor ist."
+            },
+            "highlight": "to prevent confusion in case"
+          },
+          {
+            "targetText": "We'll start at seven unless the room is still locked.",
+            "baseText": {
+              "de": "Wir fangen um sieben an, es sei denn, der Raum ist noch abgeschlossen."
+            },
+            "highlight": "unless the room is still locked"
+          }
+        ]
+      },
+      "cloze": [
+        "I'll stand outside ",
+        {
+          "kind": "connector",
+          "answer": "unless",
+          "choices": [
+            "in case",
+            "because",
+            "instead of",
+            "unless"
+          ]
+        },
+        " someone else can ",
+        {
+          "kind": "form",
+          "answer": "meet",
+          "choices": [
+            "meet",
+            "meets",
+            "meeting",
+            "met"
+          ],
+          "cue": "Grundform nach can"
+        },
+        " the guests."
+      ],
+      "chunks": [
+        {
+          "targetText": "Let's put up",
+          "baseText": {
+            "de": "Hängen wir etwas auf:"
+          }
+        },
+        {
+          "targetText": "a sign",
+          "baseText": {
+            "de": "ein Schild,"
+          }
+        },
+        {
+          "targetText": "to prevent confusion",
+          "baseText": {
+            "de": "um Verwirrung zu vermeiden,"
+          }
+        },
+        {
+          "targetText": "in case nobody's at the gate.",
+          "baseText": {
+            "de": "falls niemand am Tor ist."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "side door",
+          "baseText": {
+            "de": "Seiteneingang"
+          }
+        },
+        {
+          "targetText": "put up a sign",
+          "baseText": {
+            "de": "ein Schild aufhängen"
+          }
+        },
+        {
+          "targetText": "prevent confusion",
+          "baseText": {
+            "de": "Verwirrung vermeiden"
+          }
+        },
+        {
+          "targetText": "at the gate",
+          "baseText": {
+            "de": "am Tor"
+          }
+        },
+        {
+          "targetText": "hard to see",
+          "baseText": {
+            "de": "schwer zu sehen"
+          }
+        },
+        {
+          "targetText": "stand outside",
+          "baseText": {
+            "de": "draußen stehen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Let's put up a sign to ",
+        "answer": "prevent",
+        "after": " confusion in case nobody's at the gate.",
+        "fallbackChoices": [
+          "preventing",
+          "prevent",
+          "prevents",
+          "prevented"
+        ]
+      },
+      "speakRequired": [
+        "sign",
+        "prevent",
+        "gate"
+      ],
+      "sceneCaption": {
+        "de": "Vor der Lesung zeigt dein Freund auf den Eingang neben dem Haus: „How can we help people find the side door?“"
+      },
+      "trophyWord": {
+        "word": "prevent",
+        "meaning": {
+          "de": "verhindern"
+        },
+        "example": "A map at the corner could prevent confusion.",
+        "whyThisWord": {
+          "de": "Prevent beschreibt, welches Problem eine Maßnahme gar nicht erst entstehen lassen soll."
+        }
+      },
+      "distractors": [
+        "inside the book",
+        "to cancel the show"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Seiteneingang und ein schmaler Weg neben einem Veranstaltungsraum."
+      },
+      "songMood": "Aufmerksam und vorausschauend.",
+      "visualNotes": "Ein Seiteneingang und ein schmaler Weg neben einem Veranstaltungsraum."
+    },
+    {
+      "slug": "outdoor-booth",
+      "title": {
+        "de": "Eine Aufgabe beim Fest"
+      },
+      "situation": {
+        "de": "Ein Bekannter verteilt Aufgaben für ein Nachbarschaftsfest. Du hast am Nachmittag Zeit.",
+        "en": "Someone you know is assigning jobs for a neighborhood fair. You're free in the afternoon."
+      },
+      "pedagogicalGoal": "If you still need macht ein Angebot von einer Bedingung abhängig. So that … can erklärt, was ein Angebot der anderen Person ermöglicht.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Have you decided how you'd like to help on Saturday?",
+          "baseText": {
+            "de": "Hast du schon entschieden, wie du am Samstag helfen möchtest?"
+          }
+        },
+        {
+          "targetText": "If you still need help outside, I can volunteer at the ticket booth.",
+          "baseText": {
+            "de": "Wenn du draußen noch Hilfe brauchst, kann ich freiwillig am Kartenstand aushelfen."
+          }
+        },
+        {
+          "targetText": "We're moving inside because of the rain. The ticket booth won't open.",
+          "baseText": {
+            "de": "Wegen des Regens ziehen wir nach drinnen um. Der Kartenstand bleibt geschlossen."
+          }
+        },
+        {
+          "targetText": "I'll greet people inside so that you can set up.",
+          "baseText": {
+            "de": "Ich begrüße die Leute drinnen, damit du aufbauen kannst."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Condition and purpose",
+        "rule": {
+          "de": "If you still need macht ein Angebot von einer Bedingung abhängig. So that … can erklärt, was ein Angebot der anderen Person ermöglicht."
+        },
+        "examples": [
+          {
+            "targetText": "If you still need help outside, I can volunteer at the ticket booth.",
+            "baseText": {
+              "de": "Wenn du draußen noch Hilfe brauchst, kann ich freiwillig am Kartenstand aushelfen."
+            },
+            "highlight": "If you still need help outside"
+          },
+          {
+            "targetText": "I'll watch the door so that you can finish the signs.",
+            "baseText": {
+              "de": "Ich passe auf die Tür auf, damit du die Schilder fertig machen kannst."
+            },
+            "highlight": "so that you can finish"
+          }
+        ]
+      },
+      "cloze": [
+        "I'll greet people inside ",
+        {
+          "kind": "connector",
+          "answer": "so that",
+          "choices": [
+            "unless",
+            "although",
+            "so that",
+            "in case"
+          ]
+        },
+        " you can ",
+        {
+          "kind": "form",
+          "answer": "set",
+          "choices": [
+            "setting",
+            "to set",
+            "sets",
+            "set"
+          ],
+          "cue": "Grundform nach can"
+        },
+        " up."
+      ],
+      "chunks": [
+        {
+          "targetText": "If you still need help",
+          "baseText": {
+            "de": "Wenn du noch Hilfe brauchst"
+          }
+        },
+        {
+          "targetText": "outside,",
+          "baseText": {
+            "de": "draußen,"
+          }
+        },
+        {
+          "targetText": "I can volunteer",
+          "baseText": {
+            "de": "kann ich freiwillig aushelfen"
+          }
+        },
+        {
+          "targetText": "at the ticket booth.",
+          "baseText": {
+            "de": "am Kartenstand."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "help outside",
+          "baseText": {
+            "de": "draußen helfen"
+          }
+        },
+        {
+          "targetText": "volunteer",
+          "baseText": {
+            "de": "freiwillig aushelfen"
+          }
+        },
+        {
+          "targetText": "ticket booth",
+          "baseText": {
+            "de": "Kartenstand"
+          }
+        },
+        {
+          "targetText": "moving inside",
+          "baseText": {
+            "de": "nach drinnen umziehen"
+          }
+        },
+        {
+          "targetText": "greet people",
+          "baseText": {
+            "de": "die Leute begrüßen"
+          }
+        },
+        {
+          "targetText": "set up",
+          "baseText": {
+            "de": "aufbauen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "If you still need help outside, I can ",
+        "answer": "volunteer",
+        "after": " at the ticket booth.",
+        "fallbackChoices": [
+          "volunteering",
+          "volunteers",
+          "volunteer",
+          "volunteered"
+        ]
+      },
+      "speakRequired": [
+        "outside",
+        "volunteer",
+        "booth"
+      ],
+      "sceneCaption": {
+        "de": "Vor dem Fest geht dein Bekannter die Aufgabenliste durch: „Have you decided how you'd like to help on Saturday?“"
+      },
+      "trophyWord": {
+        "word": "volunteer",
+        "meaning": {
+          "de": "sich freiwillig melden"
+        },
+        "example": "I can volunteer at the welcome desk this afternoon.",
+        "whyThisWord": {
+          "de": "Als Verb bezeichnet volunteer die freiwillige Übernahme einer konkreten Aufgabe."
+        }
+      },
+      "distractors": [
+        "under the clock.",
+        "if the game ends"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Aufgabenliste mit freien Feldern liegt auf einem Klapptisch."
+      },
+      "songMood": "Flexibel und zuversichtlich.",
+      "visualNotes": "Eine Aufgabenliste mit freien Feldern liegt auf einem Klapptisch."
+    },
+    {
+      "slug": "rides-to-the-picnic",
+      "title": {
+        "de": "Gemeinsam zum Picknick"
+      },
+      "situation": {
+        "de": "Du besprichst mit einer Freundin, wie eure Nachbarn zum Picknick am See kommen.",
+        "en": "You're talking with a friend about how the neighbors can get to a picnic by the lake."
+      },
+      "pedagogicalGoal": "So that … can nennt das gemeinsame Ziel: so that both families can get. In case begründet eine Vorsichtsmaßnahme für den Fall, dass etwas dazwischenkommt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Two families don't have a way to get to the lake. Any ideas?",
+          "baseText": {
+            "de": "Zwei Familien wissen noch nicht, wie sie zum See kommen. Hast du eine Idee?"
+          }
+        },
+        {
+          "targetText": "I'll arrange rides so that both families can get to the picnic.",
+          "baseText": {
+            "de": "Ich organisiere Mitfahrgelegenheiten, damit beide Familien zum Picknick kommen können."
+          }
+        },
+        {
+          "targetText": "Sam may need his car for work. That leaves us three seats short.",
+          "baseText": {
+            "de": "Sam braucht sein Auto vielleicht für die Arbeit. Dann fehlen uns drei Plätze."
+          }
+        },
+        {
+          "targetText": "Let's check the bus times in case Sam needs his car.",
+          "baseText": {
+            "de": "Schauen wir vorsichtshalber nach den Buszeiten, falls Sam sein Auto braucht."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Purpose and a backup plan",
+        "rule": {
+          "de": "So that … can nennt das gemeinsame Ziel: so that both families can get. In case begründet eine Vorsichtsmaßnahme für den Fall, dass etwas dazwischenkommt."
+        },
+        "examples": [
+          {
+            "targetText": "I'll arrange rides so that both families can get to the picnic.",
+            "baseText": {
+              "de": "Ich organisiere Mitfahrgelegenheiten, damit beide Familien zum Picknick kommen können."
+            },
+            "highlight": "so that both families can get"
+          },
+          {
+            "targetText": "Bring a blanket in case the grass is still wet.",
+            "baseText": {
+              "de": "Bring eine Decke mit, falls das Gras noch nass ist."
+            },
+            "highlight": "in case the grass is still wet"
+          }
+        ]
+      },
+      "cloze": [
+        "Let's check the bus times ",
+        {
+          "kind": "connector",
+          "answer": "in case",
+          "choices": [
+            "so that",
+            "although",
+            "in case",
+            "unless"
+          ]
+        },
+        " Sam ",
+        {
+          "kind": "form",
+          "answer": "needs",
+          "choices": [
+            "needing",
+            "to need",
+            "need",
+            "needs"
+          ],
+          "cue": "Präsens, 3. Person Singular"
+        },
+        " his car."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'll arrange rides",
+          "baseText": {
+            "de": "Ich organisiere Mitfahrgelegenheiten,"
+          }
+        },
+        {
+          "targetText": "so that both families",
+          "baseText": {
+            "de": "damit beide Familien"
+          }
+        },
+        {
+          "targetText": "can get",
+          "baseText": {
+            "de": "kommen können"
+          }
+        },
+        {
+          "targetText": "to the picnic.",
+          "baseText": {
+            "de": "zum Picknick."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "families",
+          "baseText": {
+            "de": "Familien"
+          }
+        },
+        {
+          "targetText": "lake",
+          "baseText": {
+            "de": "See"
+          }
+        },
+        {
+          "targetText": "arrange rides",
+          "baseText": {
+            "de": "Mitfahrgelegenheiten organisieren"
+          }
+        },
+        {
+          "targetText": "three seats short",
+          "baseText": {
+            "de": "drei Plätze zu wenig"
+          }
+        },
+        {
+          "targetText": "bus times",
+          "baseText": {
+            "de": "Busfahrzeiten"
+          }
+        },
+        {
+          "targetText": "for work",
+          "baseText": {
+            "de": "für die Arbeit"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'll ",
+        "answer": "arrange",
+        "after": " rides so that both families can get to the picnic.",
+        "fallbackChoices": [
+          "arranged",
+          "arranges",
+          "arrange",
+          "arranging"
+        ]
+      },
+      "speakRequired": [
+        "arrange",
+        "families",
+        "picnic"
+      ],
+      "sceneCaption": {
+        "de": "Beim Planen des Ausflugs zählt deine Freundin die Mitfahrenden: „Two families don't have a way to get to the lake. Any ideas?“"
+      },
+      "trophyWord": {
+        "word": "arrange",
+        "meaning": {
+          "de": "organisieren, vereinbaren"
+        },
+        "example": "We can arrange rides for anyone who wants to come.",
+        "whyThisWord": {
+          "de": "Arrange rides bedeutet hier, Fahrer und Mitfahrende zusammenzubringen, nicht selbst alle zu fahren."
+        }
+      },
+      "distractors": [
+        "from both garages",
+        "to the office."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Karte mit einem See, daneben eine Liste mit Namen und freien Sitzplätzen."
+      },
+      "songMood": "Gemeinschaftlich und gelassen.",
+      "visualNotes": "Eine Karte mit einem See, daneben eine Liste mit Namen und freien Sitzplätzen."
+    }
+  ]
+}

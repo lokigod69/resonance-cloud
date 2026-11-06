@@ -1,0 +1,17 @@
+# Cebuano B2 P1/P2, final text disposition
+
+**Independent recheck: PASS for the twenty corrected text candidates, with the qualifications below.** The final pair uses the separately saved, hash-bound V3 specification. Every learner-facing change was prescribed by Fable. The October author sources, V2 specification and checker remain intact.
+
+| Path | Final file under `accepted-cebuano/` | SHA-256 |
+|---|---|---|
+| P1, 10 lessons | `cebuano-b2-p1.json` | `45a5395cdbbfb6b36256d46e2f895ff87e1b3d04745238e33be7382e0ecd0749` |
+| P2, 10 lessons | `cebuano-b2-p2.json` | `233b7fdc6c0628644d374669102c83c3384d8eb90834672a37996f8fa7cd82f5` |
+| V3 authority | `B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json` | `8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a` |
+
+The authenticated `claude-fable-5-1` full read has a successful terminal result and two explicit ten-lesson arrays. The tool recovered the complete JSON across the CLI's output boundary; every expected old value matched on replay. The full read supplied 98 exact edits. The original October checker caught five chip/focus violations in three lessons after those changes. Fable's 17 arbitration edits brought the candidates back to a clean V2 pass. Two remaining spoken issues conflicted with the V2 specification itself. Fable issued five exact V2-to-V3 specification edits, explicitly approved them, and supplied 22 coupled source edits. Four final English/German gloss edits followed. All **141 learner-source edits** have exact replay evidence. The separate binding step touched only the four spec-reference values per file. No trophy allocation, ID, role or existing production source was modified.
+
+I checked the original CB01–CB10 findings against the final artifacts. P1 L5's exact-order witness is removed, its German polarity now matches Cebuano, and the lexical trivia blank was replaced with a cued form. The route context is pinned to the compared trips. P1 L7's second valid choice “Kay mahal” was removed. In P1 L9 a person relies on a sibling in Davao, preserving the `magsalig` award; both the original impersonal line and its required-carrier description were superseded. P2 L1 distinguishes an amount billed (`singil`) from P2 L6's receipt (`resibo`). Both late solution titles were neutralized. Fable accepted P1's vehicle-pays metonymy and the dependent negative `wala kini ayoha` at P2 L5; those are recorded native-model judgments. The adjudicated open connectors now have actual four-choice sets.
+
+Final verification first authenticates and replays the untouched October V2 chain and imports the frozen earlier corpus. It then verifies both successful V3 model replies against the streams and exact old values, checks every reserved award and lesson identity, and uses the **original unmodified checker functions** with the V3 authority name and digest. Final result: 8,859 assertions, 33 mutation controls, zero errors or warnings. See `CEBUANO_FULL_READ_RECEIPT.json`, `authority-ceb-p{1,2}/review.json`, `final-candidates/cebuano-v3-binding.json`, `accepted-cebuano/cebuano-candidate-check.json`, and the stage-specific exact ledgers.
+
+This disposition is evidence for text staging. The author checker remains an offline mirror; the actual B2 display of cues, graded chip order, and native-human review remain open. The German gloss of the gender-unspecified sibling uses a coordinated brother-or-sister phrase. Native editorial polish can improve its rhythm without assigning the character a gender. No audio was requested or produced.

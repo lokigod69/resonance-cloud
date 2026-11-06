@@ -1,0 +1,2125 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Damals und heute",
+    "en": "Back then and now"
+  },
+  "subtitle": {
+    "de": "Erzähle von früheren Gewohnheiten und davon, was sich inzwischen verändert hat.",
+    "en": "Describe past habits and say what has changed since then."
+  },
+  "anchor": "Shape B, tú. L1–4 imperfecto habitual, antes y ahora, solía. L5–7 ya no, todavía y comparativos. L8–9 llevo + gerundio y desde hace. L10 mezcla.",
+  "lessons": [
+    {
+      "slug": "la-radio-de-la-cocina",
+      "title": {
+        "de": "Das Küchenradio",
+        "en": "The kitchen radio"
+      },
+      "situation": {
+        "de": "Beim Sortieren alter Fotos in Valencia fällt einer Freundin das Radio in eurer früheren Küche auf.",
+        "en": "While sorting old photos in Valencia, a friend notices the radio in your old kitchen."
+      },
+      "pedagogicalGoal": "Das Imperfekt beschreibt hier, was regelmäßig geschah. Der Zeitraum steht am Anfang, ohne ein bestimmtes Spiel herauszugreifen.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué escuchabas en esa radio tan pequeña?",
+          "baseText": {
+            "de": "Was hast du mit diesem kleinen Radio gehört?",
+            "en": "What did you listen to on that little radio?"
+          }
+        },
+        {
+          "targetText": "En mi infancia escuchaba los partidos en la cocina con mi abuelo.",
+          "baseText": {
+            "de": "In meiner Kindheit hörte ich mit meinem Opa die Spiele in der Küche.",
+            "en": "As a child I used to listen to the matches in the kitchen with my grandfather."
+          }
+        },
+        {
+          "targetText": "Pero en la foto no hay ni una silla. ¿Dónde te sentabas?",
+          "baseText": {
+            "de": "Auf dem Foto ist aber kein einziger Stuhl. Wo hast du gesessen?",
+            "en": "But there isn't a single chair in the photo. Where did you sit?"
+          }
+        },
+        {
+          "targetText": "Mi abuelo acercaba dos cajas y yo ponía los cojines.",
+          "baseText": {
+            "de": "Mein Opa schob zwei Kisten heran, und ich legte die Kissen darauf.",
+            "en": "My grandfather pulled up two crates and I put the cushions on them."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Imperfecto habitual",
+        "rule": {
+          "de": "Das Imperfekt beschreibt hier, was regelmäßig geschah. Der Zeitraum steht am Anfang, ohne ein bestimmtes Spiel herauszugreifen.",
+          "en": "The imperfect describes a repeated activity. The opening sets a period of life without picking out a particular match."
+        },
+        "examples": [
+          {
+            "targetText": "En mi infancia escuchaba los partidos en la cocina con mi abuelo.",
+            "baseText": {
+              "de": "In meiner Kindheit hörte ich mit meinem Opa die Spiele in der Küche.",
+              "en": "As a child I used to listen to the matches in the kitchen with my grandfather."
+            },
+            "highlight": "escuchaba los partidos"
+          },
+          {
+            "targetText": "De joven guardaba las entradas en una caja de zapatos.",
+            "baseText": {
+              "de": "Als junger Mensch bewahrte ich die Eintrittskarten in einem Schuhkarton auf.",
+              "en": "When I was young, I kept the tickets in a shoebox."
+            },
+            "highlight": "guardaba las entradas"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi abuelo ",
+        {
+          "kind": "form",
+          "answer": "acercaba",
+          "choices": [
+            "acercaba",
+            "acercaban",
+            "acercamos",
+            "acercabas"
+          ],
+          "cue": "acercar (él)"
+        },
+        " dos cajas y yo ",
+        {
+          "kind": "form",
+          "answer": "ponía",
+          "choices": [
+            "ponían",
+            "ponías",
+            "ponía",
+            "ponéis"
+          ],
+          "cue": "poner (yo)"
+        },
+        " los cojines."
+      ],
+      "chunks": [
+        {
+          "targetText": "En mi infancia",
+          "baseText": {
+            "de": "In meiner Kindheit",
+            "en": "In my childhood"
+          }
+        },
+        {
+          "targetText": "escuchaba los partidos",
+          "baseText": {
+            "de": "hörte ich die Spiele",
+            "en": "I listened to the matches"
+          }
+        },
+        {
+          "targetText": "en la cocina",
+          "baseText": {
+            "de": "in der Küche",
+            "en": "in the kitchen"
+          }
+        },
+        {
+          "targetText": "con mi abuelo.",
+          "baseText": {
+            "de": "mit meinem Opa.",
+            "en": "with my grandfather."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "infancia",
+          "baseText": {
+            "de": "Kindheit",
+            "en": "childhood"
+          }
+        },
+        {
+          "targetText": "escuchaba",
+          "baseText": {
+            "de": "ich hörte regelmäßig",
+            "en": "I used to listen"
+          }
+        },
+        {
+          "targetText": "los partidos",
+          "baseText": {
+            "de": "die Spiele",
+            "en": "the matches"
+          }
+        },
+        {
+          "targetText": "la cocina",
+          "baseText": {
+            "de": "die Küche",
+            "en": "the kitchen"
+          }
+        },
+        {
+          "targetText": "dos cajas",
+          "baseText": {
+            "de": "zwei Kisten",
+            "en": "two crates"
+          }
+        },
+        {
+          "targetText": "los cojines",
+          "baseText": {
+            "de": "die Kissen",
+            "en": "the cushions"
+          }
+        }
+      ],
+      "recall": {
+        "before": "En mi infancia ",
+        "answer": "escuchaba",
+        "after": " los partidos en la cocina con mi abuelo.",
+        "fallbackChoices": [
+          "escuchaban",
+          "escuchabas",
+          "escuchaba",
+          "escuchabais"
+        ]
+      },
+      "speakRequired": [
+        "infancia",
+        "partidos",
+        "abuelo"
+      ],
+      "sceneCaption": {
+        "de": "Beim Sortieren alter Fotos in Valencia fällt einer Freundin das Radio in eurer früheren Küche auf. Du hörst: „¿Qué escuchabas en esa radio tan pequeña?“",
+        "en": "While sorting old photos in Valencia, a friend notices the radio in your old kitchen. You hear: “¿Qué escuchabas en esa radio tan pequeña?”"
+      },
+      "trophyWord": {
+        "word": "infancia",
+        "meaning": {
+          "de": "Kindheit",
+          "en": "childhood"
+        },
+        "example": "En mi infancia había una radio junto a la ventana.",
+        "whyThisWord": {
+          "de": "Mit infancia gibst du einer Erinnerung einen längeren zeitlichen Rahmen.",
+          "en": "Infancia places a memory within a whole period of life."
+        }
+      },
+      "distractors": [
+        "en su despacho",
+        "escuchaban las noticias"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Foto von einem Küchenradio neben zwei Kisten.",
+        "en": "A photo of a kitchen radio beside two crates."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A photo of a kitchen radio beside two crates."
+    },
+    {
+      "slug": "camino-del-colegio",
+      "title": {
+        "de": "Der Weg zur Schule",
+        "en": "The walk to school"
+      },
+      "situation": {
+        "de": "Du gehst in Burgos mit einem Freund an deiner alten Grundschule vorbei.",
+        "en": "You and a friend pass your old primary school in Burgos."
+      },
+      "pedagogicalGoal": "Antes mit dem Imperfekt verortet eine frühere Gewohnheit. Über den ganzen gemeinsamen Weg sprichst du im Plural.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Cómo llegabas a clase desde tu calle?",
+          "baseText": {
+            "de": "Wie bist du von deiner Straße aus zum Unterricht gekommen?",
+            "en": "How did you get to school from your street?"
+          }
+        },
+        {
+          "targetText": "Antes iba al colegio por el puente con dos primas que vivían cerca.",
+          "baseText": {
+            "de": "Früher ging ich mit zwei Cousinen aus der Nachbarschaft über die Brücke zur Schule.",
+            "en": "I used to walk to school over the bridge with two cousins who lived nearby."
+          }
+        },
+        {
+          "targetText": "Ese camino parece largo. ¿Cómo pasabas el rato?",
+          "baseText": {
+            "de": "Der Weg sieht lang aus. Wie hast du dir die Zeit vertrieben?",
+            "en": "That looks like a long way. How did you pass the time?"
+          }
+        },
+        {
+          "targetText": "Mientras cruzábamos el puente, inventábamos adivinanzas por turnos.",
+          "baseText": {
+            "de": "Während wir die Brücke überquerten, dachten wir uns abwechselnd Rätsel aus.",
+            "en": "While we crossed the bridge, we took turns making up riddles."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Antes + imperfecto",
+        "rule": {
+          "de": "Antes mit dem Imperfekt verortet eine frühere Gewohnheit. Über den ganzen gemeinsamen Weg sprichst du im Plural.",
+          "en": "Antes with the imperfect introduces a former habit. Switch to the plural to describe what the group did together."
+        },
+        "examples": [
+          {
+            "targetText": "Antes iba al colegio por el puente con dos primas que vivían cerca.",
+            "baseText": {
+              "de": "Früher ging ich mit zwei Cousinen aus der Nachbarschaft über die Brücke zur Schule.",
+              "en": "I used to walk to school over the bridge with two cousins who lived nearby."
+            },
+            "highlight": "Antes iba"
+          },
+          {
+            "targetText": "Antes cogía el tranvía en la plaza; ahora voy en bici.",
+            "baseText": {
+              "de": "Früher nahm ich auf dem Platz die Straßenbahn. Jetzt fahre ich Rad.",
+              "en": "I used to take the tram in the square. Now I cycle."
+            },
+            "highlight": "Antes cogía"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "choice",
+          "answer": "Mientras",
+          "choices": [
+            "Mientras",
+            "Durante",
+            "Desde",
+            "Tras"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "cruzábamos",
+          "choices": [
+            "cruzaba",
+            "cruzabas",
+            "cruzábamos",
+            "cruzaban"
+          ],
+          "cue": "cruzar (nosotros)"
+        },
+        " el puente, inventábamos adivinanzas por turnos."
+      ],
+      "chunks": [
+        {
+          "targetText": "Antes iba al colegio",
+          "baseText": {
+            "de": "Früher ging ich zur Schule",
+            "en": "I used to go to school"
+          }
+        },
+        {
+          "targetText": "por el puente",
+          "baseText": {
+            "de": "über die Brücke",
+            "en": "over the bridge"
+          }
+        },
+        {
+          "targetText": "con dos primas",
+          "baseText": {
+            "de": "mit zwei Cousinen",
+            "en": "with two cousins"
+          }
+        },
+        {
+          "targetText": "que vivían cerca.",
+          "baseText": {
+            "de": "die in der Nähe wohnten.",
+            "en": "who lived nearby."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "colegio",
+          "baseText": {
+            "de": "Schule",
+            "en": "school"
+          }
+        },
+        {
+          "targetText": "el puente",
+          "baseText": {
+            "de": "die Brücke",
+            "en": "the bridge"
+          }
+        },
+        {
+          "targetText": "cerca",
+          "baseText": {
+            "de": "in der Nähe",
+            "en": "nearby"
+          }
+        },
+        {
+          "targetText": "pasar el rato",
+          "baseText": {
+            "de": "sich die Zeit vertreiben",
+            "en": "pass the time"
+          }
+        },
+        {
+          "targetText": "cruzábamos",
+          "baseText": {
+            "de": "wir überquerten",
+            "en": "we used to cross"
+          }
+        },
+        {
+          "targetText": "adivinanzas",
+          "baseText": {
+            "de": "Rätsel",
+            "en": "riddles"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Antes ",
+        "answer": "iba",
+        "after": " al colegio por el puente con dos primas que vivían cerca.",
+        "fallbackChoices": [
+          "ibas",
+          "iba",
+          "iban",
+          "ibais"
+        ]
+      },
+      "speakRequired": [
+        "colegio",
+        "puente",
+        "primas"
+      ],
+      "sceneCaption": {
+        "de": "Du gehst in Burgos mit einem Freund an deiner alten Grundschule vorbei. Du hörst: „¿Cómo llegabas a clase desde tu calle?“",
+        "en": "You and a friend pass your old primary school in Burgos. You hear: “¿Cómo llegabas a clase desde tu calle?”"
+      },
+      "trophyWord": {
+        "word": "colegio",
+        "meaning": {
+          "de": "Schule",
+          "en": "school"
+        },
+        "example": "El camino al colegio pasaba junto al río.",
+        "whyThisWord": {
+          "de": "Colegio benennt den Ort und hilft dir, den Weg dorthin zu erzählen.",
+          "en": "Colegio names the place and lets you describe the journey there."
+        }
+      },
+      "distractors": [
+        "con aquel autobús",
+        "que trabajaban lejos."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Weg führt über eine Brücke zu einem Schulgebäude.",
+        "en": "A path crosses a bridge toward a school building."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A path crosses a bridge toward a school building."
+    },
+    {
+      "slug": "el-horno-del-pueblo",
+      "title": {
+        "de": "Sommer beim Backofen",
+        "en": "Summers by the oven"
+      },
+      "situation": {
+        "de": "Eine Freundin betrachtet eine Postkarte aus dem Dorf, in dem du früher die Ferien verbracht hast.",
+        "en": "A friend is looking at a postcard from the village where you spent your holidays."
+      },
+      "pedagogicalGoal": "Cada verano markiert eine Wiederholung. Die Endung -íamos ordnet volvíamos der Gruppe zu, die jedes Jahr zurückkehrte.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Pasabas allí todo el verano?",
+          "baseText": {
+            "de": "Hast du dort den ganzen Sommer verbracht?",
+            "en": "Did you spend the whole summer there?"
+          }
+        },
+        {
+          "targetText": "Cada verano volvíamos al pueblo y desayunábamos junto al horno.",
+          "baseText": {
+            "de": "Jeden Sommer kehrten wir ins Dorf zurück und frühstückten neben dem Backofen.",
+            "en": "Every summer we went back to the village and had breakfast beside the oven."
+          }
+        },
+        {
+          "targetText": "¿Y cómo sabías cuándo estaba listo el pan?",
+          "baseText": {
+            "de": "Und woher wusstest du, wann das Brot fertig war?",
+            "en": "And how did you know when the bread was ready?"
+          }
+        },
+        {
+          "targetText": "Cuando el panadero abría la ventana, nosotros llevábamos la cesta.",
+          "baseText": {
+            "de": "Wenn der Bäcker das Fenster öffnete, brachten wir den Korb.",
+            "en": "When the baker opened the window, we brought the basket."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Cada + periodo",
+        "rule": {
+          "de": "Cada verano markiert eine Wiederholung. Die Endung -íamos ordnet volvíamos der Gruppe zu, die jedes Jahr zurückkehrte.",
+          "en": "Cada verano signals repetition. The ending -íamos in volvíamos identifies the group that returned each year."
+        },
+        "examples": [
+          {
+            "targetText": "Cada verano volvíamos al pueblo y desayunábamos junto al horno.",
+            "baseText": {
+              "de": "Jeden Sommer kehrten wir ins Dorf zurück und frühstückten neben dem Backofen.",
+              "en": "Every summer we went back to the village and had breakfast beside the oven."
+            },
+            "highlight": "Cada verano volvíamos"
+          },
+          {
+            "targetText": "Cada otoño recogíamos nueces antes de la primera helada.",
+            "baseText": {
+              "de": "Jeden Herbst sammelten wir vor dem ersten Frost Nüsse.",
+              "en": "Every autumn we gathered walnuts before the first frost."
+            },
+            "highlight": "Cada otoño recogíamos"
+          }
+        ]
+      },
+      "cloze": [
+        "Cuando el panadero ",
+        {
+          "kind": "form",
+          "answer": "abría",
+          "choices": [
+            "abríamos",
+            "abrían",
+            "abrías",
+            "abría"
+          ],
+          "cue": "abrir (él)"
+        },
+        " la ventana, nosotros ",
+        {
+          "kind": "form",
+          "answer": "llevábamos",
+          "choices": [
+            "llevaban",
+            "llevábamos",
+            "llevabas",
+            "llevaba"
+          ],
+          "cue": "llevar (nosotros)"
+        },
+        " la cesta."
+      ],
+      "chunks": [
+        {
+          "targetText": "Cada verano",
+          "baseText": {
+            "de": "Jeden Sommer",
+            "en": "Every summer"
+          }
+        },
+        {
+          "targetText": "volvíamos al pueblo",
+          "baseText": {
+            "de": "kehrten wir ins Dorf zurück",
+            "en": "we returned to the village"
+          }
+        },
+        {
+          "targetText": "y desayunábamos",
+          "baseText": {
+            "de": "und frühstückten",
+            "en": "and had breakfast"
+          }
+        },
+        {
+          "targetText": "junto al horno.",
+          "baseText": {
+            "de": "neben dem Backofen.",
+            "en": "beside the oven."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pueblo",
+          "baseText": {
+            "de": "Dorf",
+            "en": "village"
+          }
+        },
+        {
+          "targetText": "cada verano",
+          "baseText": {
+            "de": "jeden Sommer",
+            "en": "every summer"
+          }
+        },
+        {
+          "targetText": "desayunábamos",
+          "baseText": {
+            "de": "wir frühstückten",
+            "en": "we had breakfast"
+          }
+        },
+        {
+          "targetText": "el panadero",
+          "baseText": {
+            "de": "der Bäcker",
+            "en": "the baker"
+          }
+        },
+        {
+          "targetText": "la ventana",
+          "baseText": {
+            "de": "das Fenster",
+            "en": "the window"
+          }
+        },
+        {
+          "targetText": "la cesta",
+          "baseText": {
+            "de": "der Korb",
+            "en": "the basket"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Cada verano ",
+        "answer": "volvíamos",
+        "after": " al pueblo y desayunábamos junto al horno.",
+        "fallbackChoices": [
+          "volvían",
+          "volvíamos",
+          "volvíais",
+          "volvías"
+        ]
+      },
+      "speakRequired": [
+        "pueblo",
+        "verano",
+        "horno"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin betrachtet eine Postkarte aus dem Dorf, in dem du früher die Ferien verbracht hast. Du hörst: „¿Pasabas allí todo el verano?“",
+        "en": "A friend is looking at a postcard from the village where you spent your holidays. You hear: “¿Pasabas allí todo el verano?”"
+      },
+      "trophyWord": {
+        "word": "pueblo",
+        "meaning": {
+          "de": "Dorf",
+          "en": "village"
+        },
+        "example": "Mi pueblo tenía un horno junto a la fuente.",
+        "whyThisWord": {
+          "de": "Pueblo gibt deinem Rückblick einen konkreten Schauplatz.",
+          "en": "Pueblo gives your recollection a specific setting."
+        }
+      },
+      "distractors": [
+        "solo esta tarde",
+        "junto al puerto."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Korb steht unter dem geöffneten Fenster einer Dorfbäckerei.",
+        "en": "A basket sits under the open window of a village bakery."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A basket sits under the open window of a village bakery."
+    },
+    {
+      "slug": "tomates-del-huerto",
+      "title": {
+        "de": "Reif für die Ernte",
+        "en": "Ready to pick"
+      },
+      "situation": {
+        "de": "Beim Gemüsekaufen in Murcia spricht dich ein Freund auf deine Erfahrung mit Tomaten an.",
+        "en": "While buying vegetables in Murcia, a friend asks about your experience with tomatoes."
+      },
+      "pedagogicalGoal": "Solía mit Infinitiv macht eine frühere Gewohnheit ausdrücklich. Nur solía wird nach Person und Zeit gebeugt.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Dónde aprendiste a escoger los tomates?",
+          "baseText": {
+            "de": "Wo hast du gelernt, Tomaten auszuwählen?",
+            "en": "Where did you learn to choose tomatoes?"
+          }
+        },
+        {
+          "targetText": "En el huerto familiar solía recoger tomates con mi tía antes de comer.",
+          "baseText": {
+            "de": "Im Familiengarten pflückte ich früher oft vor dem Mittagessen mit meiner Tante Tomaten.",
+            "en": "In our family vegetable garden, I used to pick tomatoes with my aunt before lunch."
+          }
+        },
+        {
+          "targetText": "Por fuera todos parecen iguales. ¿En qué te fijabas entonces?",
+          "baseText": {
+            "de": "Von außen sehen alle gleich aus. Worauf hast du dann geachtet?",
+            "en": "They all look the same on the outside. What did you pay attention to, then?"
+          }
+        },
+        {
+          "targetText": "Mi tía tocaba la piel y yo repetía el gesto.",
+          "baseText": {
+            "de": "Meine Tante berührte die Schale, und ich machte es ihr nach.",
+            "en": "My aunt felt the skin and I copied the gesture."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Solía + infinitivo",
+        "rule": {
+          "de": "Solía mit Infinitiv macht eine frühere Gewohnheit ausdrücklich. Nur solía wird nach Person und Zeit gebeugt.",
+          "en": "Solía plus an infinitive explicitly marks a past habit. Only solía changes for person and tense."
+        },
+        "examples": [
+          {
+            "targetText": "En el huerto familiar solía recoger tomates con mi tía antes de comer.",
+            "baseText": {
+              "de": "Im Familiengarten pflückte ich früher oft vor dem Mittagessen mit meiner Tante Tomaten.",
+              "en": "In our family vegetable garden, I used to pick tomatoes with my aunt before lunch."
+            },
+            "highlight": "solía recoger"
+          },
+          {
+            "targetText": "Mi vecina solía regar las lechugas al amanecer.",
+            "baseText": {
+              "de": "Meine Nachbarin goss den Salat früher immer bei Tagesanbruch.",
+              "en": "My neighbour used to water the lettuces at dawn."
+            },
+            "highlight": "solía regar"
+          }
+        ]
+      },
+      "cloze": [
+        "Mi tía ",
+        {
+          "kind": "form",
+          "answer": "tocaba",
+          "choices": [
+            "tocabais",
+            "tocaba",
+            "tocábamos",
+            "tocaban"
+          ],
+          "cue": "tocar (ella)"
+        },
+        " la piel y yo ",
+        {
+          "kind": "form",
+          "answer": "repetía",
+          "choices": [
+            "repetíamos",
+            "repetías",
+            "repetía",
+            "repetían"
+          ],
+          "cue": "repetir (yo)"
+        },
+        " el gesto."
+      ],
+      "chunks": [
+        {
+          "targetText": "En el huerto familiar",
+          "baseText": {
+            "de": "Im Familiengarten",
+            "en": "In our family vegetable garden"
+          }
+        },
+        {
+          "targetText": "solía recoger tomates",
+          "baseText": {
+            "de": "pflückte ich früher oft Tomaten",
+            "en": "I used to pick tomatoes"
+          }
+        },
+        {
+          "targetText": "con mi tía",
+          "baseText": {
+            "de": "mit meiner Tante",
+            "en": "with my aunt"
+          }
+        },
+        {
+          "targetText": "antes de comer.",
+          "baseText": {
+            "de": "vor dem Mittagessen.",
+            "en": "before lunch."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "huerto",
+          "baseText": {
+            "de": "Gemüsegarten",
+            "en": "vegetable garden"
+          }
+        },
+        {
+          "targetText": "recoger",
+          "baseText": {
+            "de": "pflücken",
+            "en": "pick"
+          }
+        },
+        {
+          "targetText": "antes de comer",
+          "baseText": {
+            "de": "vor dem Mittagessen",
+            "en": "before lunch"
+          }
+        },
+        {
+          "targetText": "por fuera",
+          "baseText": {
+            "de": "von außen",
+            "en": "on the outside"
+          }
+        },
+        {
+          "targetText": "la piel",
+          "baseText": {
+            "de": "die Schale",
+            "en": "the skin"
+          }
+        },
+        {
+          "targetText": "el gesto",
+          "baseText": {
+            "de": "die Geste",
+            "en": "the gesture"
+          }
+        }
+      ],
+      "recall": {
+        "before": "En el huerto familiar solía ",
+        "answer": "recoger",
+        "after": " tomates con mi tía antes de comer.",
+        "fallbackChoices": [
+          "recogía",
+          "recogen",
+          "recoger",
+          "recogido"
+        ]
+      },
+      "speakRequired": [
+        "huerto",
+        "recoger",
+        "tomates"
+      ],
+      "sceneCaption": {
+        "de": "Beim Gemüsekaufen in Murcia spricht dich ein Freund auf deine Erfahrung mit Tomaten an. Du hörst: „¿Dónde aprendiste a escoger los tomates?“",
+        "en": "While buying vegetables in Murcia, a friend asks about your experience with tomatoes. You hear: “¿Dónde aprendiste a escoger los tomates?”"
+      },
+      "trophyWord": {
+        "word": "huerto",
+        "meaning": {
+          "de": "Gemüsegarten",
+          "en": "vegetable garden"
+        },
+        "example": "Mi familia cuidaba un huerto detrás de la casa.",
+        "whyThisWord": {
+          "de": "Huerto ist der Garten, in dem man Obst oder Gemüse anbaut.",
+          "en": "Huerto refers to a garden where people grow fruit or vegetables."
+        }
+      },
+      "distractors": [
+        "después de cenar.",
+        "vendían tomates"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Hand prüft eine Tomate an der Pflanze.",
+        "en": "A hand feels a tomato on the vine."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A hand feels a tomato on the vine."
+    },
+    {
+      "slug": "el-turno-del-recreo",
+      "title": {
+        "de": "Später ins Spiel einsteigen",
+        "en": "Joining the game late"
+      },
+      "situation": {
+        "de": "Ein Freund findet in einem Schuhkarton deine alten Murmeln.",
+        "en": "A friend finds your old marbles in a shoebox."
+      },
+      "pedagogicalGoal": "Más que vergleicht hier, wie häufig ihr zwei Spiele gespielt habt. Todavía verbindet die Erinnerung mit einem Gegenstand von heute.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Te acuerdas de las reglas de ese juego?",
+          "baseText": {
+            "de": "Weißt du noch, wie das Spiel ging?",
+            "en": "Do you remember the rules of that game?"
+          }
+        },
+        {
+          "targetText": "En el recreo jugábamos a las canicas más que al fútbol; todavía guardo estas tres.",
+          "baseText": {
+            "de": "In der großen Pause spielten wir öfter Murmeln als Fußball. Diese drei habe ich noch.",
+            "en": "At break time we played marbles more than football. I still keep these three."
+          }
+        },
+        {
+          "targetText": "¿Y qué pasaba si alguien salía tarde de clase?",
+          "baseText": {
+            "de": "Und was war, wenn jemand später aus dem Unterricht kam?",
+            "en": "What happened if someone got out of class late?"
+          }
+        },
+        {
+          "targetText": "Quien llegaba tarde entraba cuando terminaba la ronda.",
+          "baseText": {
+            "de": "Wer zu spät kam, stieg ein, sobald die Runde vorbei war.",
+            "en": "Anyone who arrived late joined in when the round ended."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Más que / todavía",
+        "rule": {
+          "de": "Más que vergleicht hier, wie häufig ihr zwei Spiele gespielt habt. Todavía verbindet die Erinnerung mit einem Gegenstand von heute.",
+          "en": "Más que compares how often you played two games. Todavía links the memory to an object you still have."
+        },
+        "examples": [
+          {
+            "targetText": "En el recreo jugábamos a las canicas más que al fútbol; todavía guardo estas tres.",
+            "baseText": {
+              "de": "In der großen Pause spielten wir öfter Murmeln als Fußball. Diese drei habe ich noch.",
+              "en": "At break time we played marbles more than football. I still keep these three."
+            },
+            "highlight": "más que al fútbol"
+          },
+          {
+            "targetText": "Antes jugaba al tenis más que al baloncesto.",
+            "baseText": {
+              "de": "Früher spielte ich häufiger Tennis als Basketball.",
+              "en": "I used to play tennis more often than basketball."
+            },
+            "highlight": "más que al baloncesto"
+          }
+        ]
+      },
+      "cloze": [
+        "Quien llegaba tarde ",
+        {
+          "kind": "form",
+          "answer": "entraba",
+          "choices": [
+            "entraban",
+            "entraba",
+            "entrabas",
+            "entrábamos"
+          ],
+          "cue": "entrar (quien)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "cuando",
+          "choices": [
+            "desde",
+            "cuando",
+            "durante",
+            "tras"
+          ]
+        },
+        " terminaba la ronda."
+      ],
+      "chunks": [
+        {
+          "targetText": "En el recreo",
+          "baseText": {
+            "de": "In der großen Pause",
+            "en": "At break time"
+          }
+        },
+        {
+          "targetText": "jugábamos a las canicas",
+          "baseText": {
+            "de": "spielten wir Murmeln",
+            "en": "we played marbles"
+          }
+        },
+        {
+          "targetText": "más que al fútbol;",
+          "baseText": {
+            "de": "öfter als Fußball;",
+            "en": "more than football;"
+          }
+        },
+        {
+          "targetText": "todavía guardo estas tres.",
+          "baseText": {
+            "de": "diese drei habe ich immer noch.",
+            "en": "I still keep these three."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "recreo",
+          "baseText": {
+            "de": "Schulpause",
+            "en": "school break"
+          }
+        },
+        {
+          "targetText": "las canicas",
+          "baseText": {
+            "de": "die Murmeln",
+            "en": "marbles"
+          }
+        },
+        {
+          "targetText": "todavía",
+          "baseText": {
+            "de": "immer noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "guardo",
+          "baseText": {
+            "de": "ich bewahre auf",
+            "en": "I keep"
+          }
+        },
+        {
+          "targetText": "llegaba tarde",
+          "baseText": {
+            "de": "kam zu spät",
+            "en": "arrived late"
+          }
+        },
+        {
+          "targetText": "la ronda",
+          "baseText": {
+            "de": "die Runde",
+            "en": "the round"
+          }
+        }
+      ],
+      "recall": {
+        "before": "En el recreo jugábamos a las canicas más que al fútbol; todavía ",
+        "answer": "guardo",
+        "after": " estas tres.",
+        "fallbackChoices": [
+          "guardo",
+          "guardan",
+          "guarda",
+          "guardáis"
+        ]
+      },
+      "speakRequired": [
+        "recreo",
+        "canicas",
+        "todavía"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund findet in einem Schuhkarton deine alten Murmeln. Du hörst: „¿Te acuerdas de las reglas de ese juego?“",
+        "en": "A friend finds your old marbles in a shoebox. You hear: “¿Te acuerdas de las reglas de ese juego?”"
+      },
+      "trophyWord": {
+        "word": "recreo",
+        "meaning": {
+          "de": "Schulpause",
+          "en": "school break"
+        },
+        "example": "Durante el recreo dibujábamos un círculo para las canicas.",
+        "whyThisWord": {
+          "de": "Recreo benennt die Schulpause, in der das Spiel stattfand.",
+          "en": "Recreo names the school break when the game took place."
+        }
+      },
+      "distractors": [
+        "menos que al cine;",
+        "perdí esas tres."
+      ],
+      "placeholderCaption": {
+        "de": "Drei Murmeln liegen in einem offenen Schuhkarton.",
+        "en": "Three marbles lie in an open shoebox."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "Three marbles lie in an open shoebox."
+    },
+    {
+      "slug": "domingos-en-el-mercado",
+      "title": {
+        "de": "Der frühere Sonntagsmarkt",
+        "en": "Our old Sunday market"
+      },
+      "situation": {
+        "de": "In Zaragoza gehst du mit einem Freund am geschlossenen Markt vorbei.",
+        "en": "In Zaragoza you and a friend pass the closed market."
+      },
+      "pedagogicalGoal": "Menos que antes vergleicht die heutige Häufigkeit mit der früheren. Todavía beschreibt, welche Gewohnheit bis heute besteht.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Siempre comprabas aquí la verdura?",
+          "baseText": {
+            "de": "Hast du hier früher immer Gemüse gekauft?",
+            "en": "Did you always buy your vegetables here?"
+          }
+        },
+        {
+          "targetText": "Antes venía los domingos con mi madre; ahora vengo menos que antes.",
+          "baseText": {
+            "de": "Früher kam ich sonntags mit meiner Mutter hierher. Jetzt komme ich seltener.",
+            "en": "I used to come here on Sundays with my mother. Now I come less often."
+          }
+        },
+        {
+          "targetText": "¿Ya no preparas aquella sopa de verduras?",
+          "baseText": {
+            "de": "Kochst du die Gemüsesuppe von damals denn nicht mehr?",
+            "en": "Don't you make that vegetable soup anymore?"
+          }
+        },
+        {
+          "targetText": "Todavía preparo la sopa, pero compro las verduras cerca de casa.",
+          "baseText": {
+            "de": "Ich koche die Suppe noch, kaufe das Gemüse aber in meiner Nähe.",
+            "en": "I still make the soup, but I buy the vegetables near home."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Menos que antes",
+        "rule": {
+          "de": "Menos que antes vergleicht die heutige Häufigkeit mit der früheren. Todavía beschreibt, welche Gewohnheit bis heute besteht.",
+          "en": "Menos que antes compares the current frequency with the former one. Todavía identifies a habit that continues."
+        },
+        "examples": [
+          {
+            "targetText": "Antes venía los domingos con mi madre; ahora vengo menos que antes.",
+            "baseText": {
+              "de": "Früher kam ich sonntags mit meiner Mutter hierher. Jetzt komme ich seltener.",
+              "en": "I used to come here on Sundays with my mother. Now I come less often."
+            },
+            "highlight": "menos que antes"
+          },
+          {
+            "targetText": "Ahora llamo al timbre menos que antes porque tengo llave.",
+            "baseText": {
+              "de": "Ich klingele jetzt seltener als früher, weil ich einen Schlüssel habe.",
+              "en": "Now I ring the doorbell less often than before because I have a key."
+            },
+            "highlight": "menos que antes"
+          }
+        ]
+      },
+      "cloze": [
+        "Todavía ",
+        {
+          "kind": "form",
+          "answer": "preparo",
+          "choices": [
+            "preparas",
+            "preparan",
+            "preparo",
+            "preparamos"
+          ],
+          "cue": "preparar (yo)"
+        },
+        " la sopa, pero ",
+        {
+          "kind": "form",
+          "answer": "compro",
+          "choices": [
+            "compramos",
+            "compro",
+            "compras",
+            "compran"
+          ],
+          "cue": "comprar (yo)"
+        },
+        " las verduras cerca de casa."
+      ],
+      "chunks": [
+        {
+          "targetText": "Antes venía los domingos",
+          "baseText": {
+            "de": "Früher kam ich sonntags",
+            "en": "I used to come on Sundays"
+          }
+        },
+        {
+          "targetText": "con mi madre;",
+          "baseText": {
+            "de": "mit meiner Mutter;",
+            "en": "with my mother;"
+          }
+        },
+        {
+          "targetText": "ahora vengo",
+          "baseText": {
+            "de": "jetzt komme ich",
+            "en": "now I come"
+          }
+        },
+        {
+          "targetText": "menos que antes.",
+          "baseText": {
+            "de": "seltener als früher.",
+            "en": "less often than before."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "domingos",
+          "baseText": {
+            "de": "Sonntage, sonntags",
+            "en": "Sundays"
+          }
+        },
+        {
+          "targetText": "antes",
+          "baseText": {
+            "de": "früher",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "venía",
+          "baseText": {
+            "de": "ich kam regelmäßig",
+            "en": "I used to come"
+          }
+        },
+        {
+          "targetText": "menos que antes",
+          "baseText": {
+            "de": "seltener als früher",
+            "en": "less often than before"
+          }
+        },
+        {
+          "targetText": "todavía",
+          "baseText": {
+            "de": "immer noch",
+            "en": "still"
+          }
+        },
+        {
+          "targetText": "las verduras",
+          "baseText": {
+            "de": "das Gemüse",
+            "en": "the vegetables"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Antes ",
+        "answer": "venía",
+        "after": " los domingos con mi madre; ahora vengo menos que antes.",
+        "fallbackChoices": [
+          "venían",
+          "venía",
+          "veníais",
+          "venías"
+        ]
+      },
+      "speakRequired": [
+        "domingos",
+        "madre",
+        "menos"
+      ],
+      "sceneCaption": {
+        "de": "In Zaragoza gehst du mit einem Freund am geschlossenen Markt vorbei. Du hörst: „¿Siempre comprabas aquí la verdura?“",
+        "en": "In Zaragoza you and a friend pass the closed market. You hear: “¿Siempre comprabas aquí la verdura?”"
+      },
+      "trophyWord": {
+        "word": "domingos",
+        "meaning": {
+          "de": "Sonntage, sonntags",
+          "en": "Sundays"
+        },
+        "example": "Los domingos aquel puesto abría a las nueve.",
+        "whyThisWord": {
+          "de": "Los domingos bezeichnet einen wiederkehrenden Termin.",
+          "en": "Los domingos describes a recurring Sunday activity."
+        }
+      },
+      "distractors": [
+        "los jueves",
+        "más que nunca."
+      ],
+      "placeholderCaption": {
+        "de": "Ein geschlossener Gemüsestand an einem Marktplatz.",
+        "en": "A closed vegetable stall in a market square."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A closed vegetable stall in a market square."
+    },
+    {
+      "slug": "el-taller-de-los-martes",
+      "title": {
+        "de": "Nach dem Unterricht in der Werkstatt",
+        "en": "After class at the workshop"
+      },
+      "situation": {
+        "de": "Beim Reparieren eines wackligen Stuhls fragt dich eine Freundin nach deinem alten Hobby.",
+        "en": "As you fix a wobbly chair, a friend asks about your old hobby."
+      },
+      "pedagogicalGoal": "Ya no markiert das Ende einer Gewohnheit. Todavía zeigt, was weiterhin gilt. Das folgende Verb steht für die heutige Situation im Präsens.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿De dónde te viene la afición por arreglar muebles?",
+          "baseText": {
+            "de": "Woher kommt deine Freude daran, Möbel zu reparieren?",
+            "en": "Where did your interest in fixing furniture come from?"
+          }
+        },
+        {
+          "targetText": "Después de clase solía arreglar sillas en un taller; ya no voy.",
+          "baseText": {
+            "de": "Nach dem Unterricht habe ich früher oft in einer Werkstatt Stühle repariert. Jetzt gehe ich nicht mehr hin.",
+            "en": "After class I used to repair chairs in a workshop. I don't go there anymore."
+          }
+        },
+        {
+          "targetText": "¿Perdiste el interés o pasó otra cosa?",
+          "baseText": {
+            "de": "Hast du das Interesse verloren oder ist etwas anderes passiert?",
+            "en": "Did you lose interest or did something else happen?"
+          }
+        },
+        {
+          "targetText": "Todavía disfruto con las herramientas, pero el taller cerró.",
+          "baseText": {
+            "de": "Ich arbeite noch immer gerne mit den Werkzeugen, aber die Werkstatt hat geschlossen.",
+            "en": "I still enjoy working with the tools, but the workshop closed."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Ya no frente a todavía",
+        "rule": {
+          "de": "Ya no markiert das Ende einer Gewohnheit. Todavía zeigt, was weiterhin gilt. Das folgende Verb steht für die heutige Situation im Präsens.",
+          "en": "Ya no marks the end of a habit, while todavía identifies what remains true. Use the present for the situation today."
+        },
+        "examples": [
+          {
+            "targetText": "Después de clase solía arreglar sillas en un taller; ya no voy.",
+            "baseText": {
+              "de": "Nach dem Unterricht habe ich früher oft in einer Werkstatt Stühle repariert. Jetzt gehe ich nicht mehr hin.",
+              "en": "After class I used to repair chairs in a workshop. I don't go there anymore."
+            },
+            "highlight": "ya no voy"
+          },
+          {
+            "targetText": "Vendí la bicicleta y ya no reparto los periódicos del barrio.",
+            "baseText": {
+              "de": "Ich habe mein Rad verkauft und trage die Zeitungen im Viertel nicht mehr aus.",
+              "en": "I sold my bicycle and no longer deliver the neighbourhood newspapers."
+            },
+            "highlight": "ya no reparto"
+          }
+        ]
+      },
+      "cloze": [
+        "Todavía ",
+        {
+          "kind": "form",
+          "answer": "disfruto",
+          "choices": [
+            "disfruto",
+            "disfrutan",
+            "disfrutamos",
+            "disfrutas"
+          ],
+          "cue": "disfrutar (yo)"
+        },
+        " con las herramientas, pero el taller ",
+        {
+          "kind": "form",
+          "answer": "cerró",
+          "choices": [
+            "cerraron",
+            "cerraste",
+            "cerramos",
+            "cerró"
+          ],
+          "cue": "cerrar (el taller)"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "Después de clase",
+          "baseText": {
+            "de": "Nach dem Unterricht",
+            "en": "After class"
+          }
+        },
+        {
+          "targetText": "solía arreglar sillas",
+          "baseText": {
+            "de": "reparierte ich früher oft Stühle",
+            "en": "I used to repair chairs"
+          }
+        },
+        {
+          "targetText": "en un taller;",
+          "baseText": {
+            "de": "in einer Werkstatt;",
+            "en": "in a workshop;"
+          }
+        },
+        {
+          "targetText": "ya no voy.",
+          "baseText": {
+            "de": "jetzt gehe ich nicht mehr hin.",
+            "en": "I no longer go."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "solía",
+          "baseText": {
+            "de": "ich pflegte, früher oft",
+            "en": "I used to"
+          }
+        },
+        {
+          "targetText": "después de clase",
+          "baseText": {
+            "de": "nach dem Unterricht",
+            "en": "after class"
+          }
+        },
+        {
+          "targetText": "arreglar sillas",
+          "baseText": {
+            "de": "Stühle reparieren",
+            "en": "repair chairs"
+          }
+        },
+        {
+          "targetText": "ya no",
+          "baseText": {
+            "de": "nicht mehr",
+            "en": "no longer"
+          }
+        },
+        {
+          "targetText": "el taller",
+          "baseText": {
+            "de": "die Werkstatt",
+            "en": "the workshop"
+          }
+        },
+        {
+          "targetText": "las herramientas",
+          "baseText": {
+            "de": "die Werkzeuge",
+            "en": "the tools"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Después de clase ",
+        "answer": "solía",
+        "after": " arreglar sillas en un taller; ya no voy.",
+        "fallbackChoices": [
+          "solíais",
+          "solías",
+          "solían",
+          "solía"
+        ]
+      },
+      "speakRequired": [
+        "solía",
+        "arreglar",
+        "taller"
+      ],
+      "sceneCaption": {
+        "de": "Beim Reparieren eines wackligen Stuhls fragt dich eine Freundin nach deinem alten Hobby. Du hörst: „¿De dónde te viene la afición por arreglar muebles?“",
+        "en": "As you fix a wobbly chair, a friend asks about your old hobby. You hear: “¿De dónde te viene la afición por arreglar muebles?”"
+      },
+      "trophyWord": {
+        "word": "solía",
+        "meaning": {
+          "de": "ich pflegte, früher oft",
+          "en": "I used to"
+        },
+        "example": "Antes solía arreglar mis propios muebles.",
+        "whyThisWord": {
+          "de": "Solía verbindet eine vergangene Gewohnheit mit einem Verb im Infinitiv.",
+          "en": "Solía combines with an infinitive to express a past habit."
+        }
+      },
+      "distractors": [
+        "antes de clase",
+        "todavía voy."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Stuhl und ein Schraubenschlüssel auf einer Werkbank.",
+        "en": "A chair and a spanner on a workbench."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A chair and a spanner on a workbench."
+    },
+    {
+      "slug": "juegos-del-club",
+      "title": {
+        "de": "Die Spielecke im Club",
+        "en": "The club's games corner"
+      },
+      "situation": {
+        "de": "In einem Nachbarschaftsclub in Bilbao zeigt dir ein Freund die neue Spielecke.",
+        "en": "A friend shows you the new games corner at a neighbourhood club in Bilbao."
+      },
+      "pedagogicalGoal": "Llevo, eine Zeitspanne und das Gerundium bezeichnen eine Tätigkeit, die früher begonnen hat und weiterläuft. Probando nennt die Tätigkeit.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Has vuelto a jugar desde que abrieron esta sala?",
+          "baseText": {
+            "de": "Spielst du wieder, seit dieser Raum geöffnet hat?",
+            "en": "Have you taken up playing again since this room opened?"
+          }
+        },
+        {
+          "targetText": "Llevo tres meses probando juegos de mesa; antes prefería los de cartas.",
+          "baseText": {
+            "de": "Seit drei Monaten probiere ich Brettspiele aus. Früher mochte ich Kartenspiele lieber.",
+            "en": "I've been trying out board games for three months. I used to prefer card games."
+          }
+        },
+        {
+          "targetText": "Entonces, ¿qué te gusta tanto de los dos tipos?",
+          "baseText": {
+            "de": "Was gefällt dir dann an beiden Spielarten so gut?",
+            "en": "So what do you like so much about both kinds?"
+          }
+        },
+        {
+          "targetText": "Todavía disfruto tanto como antes cuando una partida se decide al final.",
+          "baseText": {
+            "de": "Ich genieße es noch genauso wie früher, wenn sich ein Spiel erst am Ende entscheidet.",
+            "en": "I still enjoy it just as much as before when a game is decided at the very end."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Llevar + duración + gerundio",
+        "rule": {
+          "de": "Llevo, eine Zeitspanne und das Gerundium bezeichnen eine Tätigkeit, die früher begonnen hat und weiterläuft. Probando nennt die Tätigkeit.",
+          "en": "Llevo, a length of time and a gerund describe an activity that began earlier and continues now. Probando names the activity."
+        },
+        "examples": [
+          {
+            "targetText": "Llevo tres meses probando juegos de mesa; antes prefería los de cartas.",
+            "baseText": {
+              "de": "Seit drei Monaten probiere ich Brettspiele aus. Früher mochte ich Kartenspiele lieber.",
+              "en": "I've been trying out board games for three months. I used to prefer card games."
+            },
+            "highlight": "Llevo tres meses probando"
+          },
+          {
+            "targetText": "Llevo dos semanas buscando una baraja como la de mi abuela.",
+            "baseText": {
+              "de": "Seit zwei Wochen suche ich nach einem Kartenspiel wie dem meiner Oma.",
+              "en": "I've been looking for a deck like my grandmother's for two weeks."
+            },
+            "highlight": "Llevo dos semanas buscando"
+          }
+        ]
+      },
+      "cloze": [
+        "Todavía ",
+        {
+          "kind": "form",
+          "answer": "disfruto",
+          "choices": [
+            "disfrutamos",
+            "disfrutas",
+            "disfrutan",
+            "disfruto"
+          ],
+          "cue": "disfrutar (yo)"
+        },
+        " tanto ",
+        {
+          "kind": "choice",
+          "answer": "como",
+          "choices": [
+            "que",
+            "de",
+            "como",
+            "para"
+          ]
+        },
+        " antes cuando una partida se decide al final."
+      ],
+      "chunks": [
+        {
+          "targetText": "Llevo tres meses",
+          "baseText": {
+            "de": "Seit drei Monaten",
+            "en": "For three months I've been"
+          }
+        },
+        {
+          "targetText": "probando juegos de mesa;",
+          "baseText": {
+            "de": "probiere ich Brettspiele aus;",
+            "en": "trying board games;"
+          }
+        },
+        {
+          "targetText": "antes prefería",
+          "baseText": {
+            "de": "früher bevorzugte ich",
+            "en": "I used to prefer"
+          }
+        },
+        {
+          "targetText": "los de cartas.",
+          "baseText": {
+            "de": "Kartenspiele.",
+            "en": "card games."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "juegos",
+          "baseText": {
+            "de": "Spiele",
+            "en": "games"
+          }
+        },
+        {
+          "targetText": "llevo tres meses",
+          "baseText": {
+            "de": "ich bin seit drei Monaten dabei",
+            "en": "I've been doing this for three months"
+          }
+        },
+        {
+          "targetText": "juegos de mesa",
+          "baseText": {
+            "de": "Brettspiele",
+            "en": "board games"
+          }
+        },
+        {
+          "targetText": "juegos de cartas",
+          "baseText": {
+            "de": "Kartenspiele",
+            "en": "card games"
+          }
+        },
+        {
+          "targetText": "una partida",
+          "baseText": {
+            "de": "eine Spielrunde",
+            "en": "a game"
+          }
+        },
+        {
+          "targetText": "al final",
+          "baseText": {
+            "de": "ganz am Schluss",
+            "en": "at the end"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Llevo tres meses ",
+        "answer": "probando",
+        "after": " juegos de mesa; antes prefería los de cartas.",
+        "fallbackChoices": [
+          "probado",
+          "probar",
+          "pruebo",
+          "probando"
+        ]
+      },
+      "speakRequired": [
+        "juegos",
+        "meses",
+        "cartas"
+      ],
+      "sceneCaption": {
+        "de": "In einem Nachbarschaftsclub in Bilbao zeigt dir ein Freund die neue Spielecke. Du hörst: „¿Has vuelto a jugar desde que abrieron esta sala?“",
+        "en": "A friend shows you the new games corner at a neighbourhood club in Bilbao. You hear: “¿Has vuelto a jugar desde que abrieron esta sala?”"
+      },
+      "trophyWord": {
+        "word": "juegos",
+        "meaning": {
+          "de": "Spiele",
+          "en": "games"
+        },
+        "example": "Los juegos de mesa también pueden durar poco.",
+        "whyThisWord": {
+          "de": "Juegos benennt verschiedene Spiele, deren Gemeinsamkeiten du beschreiben kannst.",
+          "en": "Juegos names the games whose common features you can describe."
+        }
+      },
+      "distractors": [
+        "he dejado de",
+        "las de cartas."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Spielbrett steht neben einem Stapel Spielkarten.",
+        "en": "A board game sits beside a deck of cards."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A board game sits beside a deck of cards."
+    },
+    {
+      "slug": "el-autobus-del-barrio",
+      "title": {
+        "de": "Anschluss an den Stadtbus",
+        "en": "Finding the right bus"
+      },
+      "situation": {
+        "de": "Eine Nachbarin fragt dich in Málaga, wie sich dein Arbeitsweg seit dem Umzug verändert hat.",
+        "en": "A neighbour in Málaga asks how your journey to work has changed since you moved."
+      },
+      "pedagogicalGoal": "Desde hace mit einer Zeitspanne und dem Präsens sagt, wie lange eine Situation schon besteht. Tenía beschreibt den früheren Zustand.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Te costó acostumbrarte al horario de aquí?",
+          "baseText": {
+            "de": "Hat es gedauert, bis du dich an den Zeitplan hier gewöhnt hast?",
+            "en": "Did it take you a while to get used to the schedule here?"
+          }
+        },
+        {
+          "targetText": "Al llegar tenía un horario distinto; desde hace seis meses entro más tarde.",
+          "baseText": {
+            "de": "Als ich hier ankam, hatte ich einen anderen Zeitplan. Seit sechs Monaten fange ich später an.",
+            "en": "When I arrived I had a different schedule. For six months now I've been starting later."
+          }
+        },
+        {
+          "targetText": "¿Y en qué se nota ese cambio cuando sales de casa?",
+          "baseText": {
+            "de": "Und was merkst du von der Änderung, wenn du aus dem Haus gehst?",
+            "en": "What difference does that make when you leave home?"
+          }
+        },
+        {
+          "targetText": "Ahora salgo sin prisas porque el autobús pasa después de las ocho.",
+          "baseText": {
+            "de": "Jetzt gehe ich ohne Eile los, weil der Bus nach acht kommt.",
+            "en": "Now I leave without rushing because the bus comes after eight."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Desde hace + duración",
+        "rule": {
+          "de": "Desde hace mit einer Zeitspanne und dem Präsens sagt, wie lange eine Situation schon besteht. Tenía beschreibt den früheren Zustand.",
+          "en": "Desde hace with a length of time and the present says how long a situation has been true. Tenía describes the earlier situation."
+        },
+        "examples": [
+          {
+            "targetText": "Al llegar tenía un horario distinto; desde hace seis meses entro más tarde.",
+            "baseText": {
+              "de": "Als ich hier ankam, hatte ich einen anderen Zeitplan. Seit sechs Monaten fange ich später an.",
+              "en": "When I arrived I had a different schedule. For six months now I've been starting later."
+            },
+            "highlight": "desde hace seis meses"
+          },
+          {
+            "targetText": "Desde hace dos días tengo una parada delante de casa.",
+            "baseText": {
+              "de": "Seit zwei Tagen gibt es direkt vor meinem Haus eine Haltestelle.",
+              "en": "For two days now I've had a stop right outside my house."
+            },
+            "highlight": "Desde hace dos días"
+          }
+        ]
+      },
+      "cloze": [
+        "Ahora ",
+        {
+          "kind": "form",
+          "answer": "salgo",
+          "choices": [
+            "salen",
+            "salgo",
+            "sale",
+            "salimos"
+          ],
+          "cue": "salir (yo)"
+        },
+        " sin prisas ",
+        {
+          "kind": "choice",
+          "answer": "porque",
+          "choices": [
+            "desde",
+            "durante",
+            "hacia",
+            "porque"
+          ]
+        },
+        " el autobús pasa después de las ocho."
+      ],
+      "chunks": [
+        {
+          "targetText": "Al llegar",
+          "baseText": {
+            "de": "Als ich ankam",
+            "en": "When I arrived"
+          }
+        },
+        {
+          "targetText": "tenía un horario distinto;",
+          "baseText": {
+            "de": "hatte ich einen anderen Zeitplan;",
+            "en": "I had a different schedule;"
+          }
+        },
+        {
+          "targetText": "desde hace seis meses",
+          "baseText": {
+            "de": "seit sechs Monaten",
+            "en": "for six months"
+          }
+        },
+        {
+          "targetText": "entro más tarde.",
+          "baseText": {
+            "de": "fange ich später an.",
+            "en": "I've been starting later."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "distinto",
+          "baseText": {
+            "de": "anders, verschieden",
+            "en": "different"
+          }
+        },
+        {
+          "targetText": "al llegar",
+          "baseText": {
+            "de": "bei der Ankunft",
+            "en": "on arriving"
+          }
+        },
+        {
+          "targetText": "el horario",
+          "baseText": {
+            "de": "der Zeitplan",
+            "en": "the schedule"
+          }
+        },
+        {
+          "targetText": "desde hace",
+          "baseText": {
+            "de": "seit",
+            "en": "for (a length of time)"
+          }
+        },
+        {
+          "targetText": "sin prisas",
+          "baseText": {
+            "de": "ohne Eile",
+            "en": "without rushing"
+          }
+        },
+        {
+          "targetText": "el autobús pasa",
+          "baseText": {
+            "de": "der Bus kommt",
+            "en": "the bus comes by"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Al llegar tenía un horario ",
+        "answer": "distinto",
+        "after": "; desde hace seis meses entro más tarde.",
+        "fallbackChoices": [
+          "distintas",
+          "distintos",
+          "distinta",
+          "distinto"
+        ]
+      },
+      "speakRequired": [
+        "horario",
+        "distinto",
+        "meses"
+      ],
+      "sceneCaption": {
+        "de": "Eine Nachbarin fragt dich in Málaga, wie sich dein Arbeitsweg seit dem Umzug verändert hat. Du hörst: „¿Te costó acostumbrarte al horario de aquí?“",
+        "en": "A neighbour in Málaga asks how your journey to work has changed since you moved. You hear: “¿Te costó acostumbrarte al horario de aquí?”"
+      },
+      "trophyWord": {
+        "word": "distinto",
+        "meaning": {
+          "de": "anders, verschieden",
+          "en": "different"
+        },
+        "example": "Ahora sigo un horario distinto en la tienda.",
+        "whyThisWord": {
+          "de": "Distinto richtet sich hier nach horario und ermöglicht einen Vergleich der beiden Zeitpläne.",
+          "en": "Distinto agrees with horario here and lets you compare the two schedules."
+        }
+      },
+      "distractors": [
+        "hace seis días ya acabé",
+        "entro antes."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bushaltestelle im Morgenlicht.",
+        "en": "A bus stop in the morning light."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "A bus stop in the morning light."
+    },
+    {
+      "slug": "la-mesa-larga",
+      "title": {
+        "de": "Ein Platz am langen Tisch",
+        "en": "A place at the long table"
+      },
+      "situation": {
+        "de": "Vor einem gemeinsamen Abendessen in Madrid fragt dich ein Freund nach deiner Zeit in einer Wohngemeinschaft.",
+        "en": "Before a dinner in Madrid, a friend asks about the time you spent in a shared flat."
+      },
+      "pedagogicalGoal": "Das Imperfekt beschreibt das regelmäßige Abendessen von damals. Mit desde hace und dem Präsens kannst du erzählen, seit wann du heute an der Gewohnheit anknüpfst.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué recuerdas mejor de aquel piso?",
+          "baseText": {
+            "de": "Woran erinnerst du dich bei der alten Wohnung am besten?",
+            "en": "What do you remember best about that flat?"
+          }
+        },
+        {
+          "targetText": "Durante aquella etapa compartíamos la cena los jueves aunque cada persona tenía un horario distinto.",
+          "baseText": {
+            "de": "Damals aßen wir donnerstags zusammen, obwohl alle einen anderen Zeitplan hatten.",
+            "en": "During that period we had dinner together on Thursdays even though everyone had a different schedule."
+          }
+        },
+        {
+          "targetText": "Ahora vives en otro sitio. ¿Te llevaste alguna costumbre?",
+          "baseText": {
+            "de": "Jetzt wohnst du woanders. Hast du einen Brauch von damals beibehalten?",
+            "en": "You live somewhere else now. Did you keep any of those habits?"
+          }
+        },
+        {
+          "targetText": "Sí, desde hace un mes invito a mis vecinos los jueves.",
+          "baseText": {
+            "de": "Ja, seit einem Monat lade ich donnerstags meine Nachbarn ein.",
+            "en": "Yes. For a month now I've been inviting my neighbours over on Thursdays."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un hábito de entonces y una decisión de ahora",
+        "rule": {
+          "de": "Das Imperfekt beschreibt das regelmäßige Abendessen von damals. Mit desde hace und dem Präsens kannst du erzählen, seit wann du heute an der Gewohnheit anknüpfst.",
+          "en": "The imperfect describes the old dinner routine. Use desde hace with the present to say how long you've kept a version of that habit going."
+        },
+        "examples": [
+          {
+            "targetText": "Durante aquella etapa compartíamos la cena los jueves aunque cada persona tenía un horario distinto.",
+            "baseText": {
+              "de": "Damals aßen wir donnerstags zusammen, obwohl alle einen anderen Zeitplan hatten.",
+              "en": "During that period we had dinner together on Thursdays even though everyone had a different schedule."
+            },
+            "highlight": "compartíamos la cena los jueves"
+          },
+          {
+            "targetText": "Mi hermana decía que las vecinas merendaban juntas los sábados.",
+            "baseText": {
+              "de": "Meine Schwester erzählte, dass die Nachbarinnen samstags zusammen eine kleine Mahlzeit aßen.",
+              "en": "My sister said the neighbours used to have an afternoon snack together on Saturdays."
+            },
+            "highlight": "merendaban juntas los sábados"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, ",
+        {
+          "kind": "choice",
+          "answer": "desde",
+          "choices": [
+            "desde",
+            "entre",
+            "hacia",
+            "durante"
+          ]
+        },
+        " hace un mes ",
+        {
+          "kind": "form",
+          "answer": "invito",
+          "choices": [
+            "invitan",
+            "invito",
+            "invitas",
+            "invitamos"
+          ],
+          "cue": "invitar (yo)"
+        },
+        " a mis vecinos los jueves."
+      ],
+      "chunks": [
+        {
+          "targetText": "Durante aquella etapa",
+          "baseText": {
+            "de": "In dieser Zeit",
+            "en": "During that period"
+          }
+        },
+        {
+          "targetText": "compartíamos la cena los jueves",
+          "baseText": {
+            "de": "teilten wir donnerstags das Abendessen",
+            "en": "we shared dinner on Thursdays"
+          }
+        },
+        {
+          "targetText": "aunque cada persona",
+          "baseText": {
+            "de": "auch wenn jede Person",
+            "en": "even though each person"
+          }
+        },
+        {
+          "targetText": "tenía un horario distinto.",
+          "baseText": {
+            "de": "einen anderen Zeitplan hatte.",
+            "en": "had a different schedule."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "etapa",
+          "baseText": {
+            "de": "Lebensabschnitt, Phase",
+            "en": "period, stage"
+          }
+        },
+        {
+          "targetText": "durante",
+          "baseText": {
+            "de": "während",
+            "en": "during"
+          }
+        },
+        {
+          "targetText": "los jueves",
+          "baseText": {
+            "de": "donnerstags",
+            "en": "on Thursdays"
+          }
+        },
+        {
+          "targetText": "cada persona",
+          "baseText": {
+            "de": "jede Person",
+            "en": "each person"
+          }
+        },
+        {
+          "targetText": "otro sitio",
+          "baseText": {
+            "de": "ein anderer Ort",
+            "en": "another place"
+          }
+        },
+        {
+          "targetText": "mis vecinos",
+          "baseText": {
+            "de": "meine Nachbarn",
+            "en": "my neighbours"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Durante aquella etapa ",
+        "answer": "compartíamos",
+        "after": " la cena los jueves aunque cada persona tenía un horario distinto.",
+        "fallbackChoices": [
+          "compartían",
+          "compartíais",
+          "compartíamos",
+          "compartías"
+        ]
+      },
+      "speakRequired": [
+        "etapa",
+        "compartíamos",
+        "jueves"
+      ],
+      "sceneCaption": {
+        "de": "Vor einem gemeinsamen Abendessen in Madrid fragt dich ein Freund nach deiner Zeit in einer Wohngemeinschaft. Du hörst: „¿Qué recuerdas mejor de aquel piso?“",
+        "en": "Before a dinner in Madrid, a friend asks about the time you spent in a shared flat. You hear: “¿Qué recuerdas mejor de aquel piso?”"
+      },
+      "trophyWord": {
+        "word": "etapa",
+        "meaning": {
+          "de": "Lebensabschnitt, Phase",
+          "en": "period, stage"
+        },
+        "example": "Guardo una foto de aquella etapa en el piso compartido.",
+        "whyThisWord": {
+          "de": "Etapa fasst mehrere Erinnerungen aus einem zusammenhängenden Lebensabschnitt zusammen.",
+          "en": "Etapa lets you group several memories from one period of your life."
+        }
+      },
+      "distractors": [
+        "durante aquella hora",
+        "tenían el mismo horario."
+      ],
+      "placeholderCaption": {
+        "de": "Auf einem langen Tisch liegen mehrere Teller.",
+        "en": "There are several plates on a long table."
+      },
+      "songMood": "Ruhig und erzählerisch.",
+      "visualNotes": "There are several plates on a long table."
+    }
+  ]
+}

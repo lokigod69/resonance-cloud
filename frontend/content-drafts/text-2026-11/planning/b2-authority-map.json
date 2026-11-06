@@ -1,0 +1,182 @@
+{
+  "scope": "Portable copies of the curriculum specifications and vocabulary assignments. Original receipt hashes and references are retained; subscription envelopes are excluded. Use this map when inspecting the archive outside its original scratch folders.",
+  "documents": {
+    "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481": {
+      "artifact": "planning/authorities/65e1d470486ac92a3b93.json",
+      "artifactSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+      "sourceSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+      "kind": "curriculum document"
+    },
+    "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4": {
+      "artifact": "planning/authorities/625000a5d5084f1b22dc.json",
+      "artifactSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+      "sourceSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+      "kind": "curriculum document"
+    },
+    "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02": {
+      "artifact": "planning/authorities/1c200b27fb97407f69a6.json",
+      "artifactSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+      "sourceSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+      "kind": "curriculum document"
+    },
+    "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a": {
+      "artifact": "planning/authorities/8bca32d39b314be8e3e5.json",
+      "artifactSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+      "sourceSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+      "kind": "curriculum document"
+    },
+    "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641": {
+      "artifact": "planning/authorities/6c9115932c1234c7771b.json",
+      "artifactSha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+      "sourceSha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+      "kind": "curriculum document"
+    },
+    "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94": {
+      "artifact": "planning/authorities/e3d641cdcce4d78f876f.json",
+      "artifactSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94",
+      "sourceSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94",
+      "kind": "curriculum document"
+    },
+    "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e": {
+      "artifact": "planning/authorities/ec928dc6f7a2d7336c9d.json",
+      "artifactSha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+      "sourceSha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+      "kind": "curriculum document"
+    },
+    "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe": {
+      "artifact": "planning/authorities/797e3923836c80578694.json",
+      "artifactSha256": "c6825629ecb6bb1780207a50904305e48a3ef8d5177f42e92a5ceec2915a70e7",
+      "sourceSha256": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+      "kind": "curriculum result extracted from subscription receipt"
+    },
+    "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525": {
+      "artifact": "planning/authorities/bd0cf103f0c68db865a7.json",
+      "artifactSha256": "bde576303773557f899ebec7d4afad1408004c3d8f7979924b1c33da94e72bf5",
+      "sourceSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525",
+      "kind": "curriculum result extracted from subscription receipt"
+    }
+  },
+  "paths": [
+    {
+      "path": "b2/japanese/p1.json",
+      "sourcePointers": {
+        "pathSpec": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json",
+        "pathSpecSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+        "ledger": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+        "ledgerSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+      },
+      "authoritySha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+      "trophyLedgerAuthoritySha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+    },
+    {
+      "path": "b2/japanese/p2.json",
+      "sourcePointers": {
+        "pathSpec": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json",
+        "pathSpecSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+        "ledger": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+        "ledgerSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+      },
+      "authoritySha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+      "trophyLedgerAuthoritySha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+    },
+    {
+      "path": "b2/russian/p1.json",
+      "sourcePointers": {
+        "pathSpec": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+        "ledger": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+        "ledgerSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+      },
+      "authoritySha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+      "trophyLedgerAuthoritySha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+    },
+    {
+      "path": "b2/russian/p2.json",
+      "sourcePointers": {
+        "pathSpec": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+        "ledger": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+        "ledgerSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+      },
+      "authoritySha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+      "trophyLedgerAuthoritySha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+    },
+    {
+      "path": "b2/polish/p1.json",
+      "sourcePointers": {
+        "pathSpec": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+        "ledger": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+        "ledgerSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+      },
+      "authoritySha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+      "trophyLedgerAuthoritySha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+    },
+    {
+      "path": "b2/polish/p2.json",
+      "sourcePointers": {
+        "pathSpec": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+        "ledger": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+        "ledgerSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+      },
+      "authoritySha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+      "trophyLedgerAuthoritySha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+    },
+    {
+      "path": "b2/cebuano/p1.json",
+      "sourcePointers": {
+        "pathSpec": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+        "ledger": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+        "ledgerSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+      },
+      "authoritySha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+      "trophyLedgerAuthoritySha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+    },
+    {
+      "path": "b2/cebuano/p2.json",
+      "sourcePointers": {
+        "pathSpec": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json",
+        "pathSpecSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+        "ledger": "B2_CEBUANO_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+        "ledgerSha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+      },
+      "authoritySha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a",
+      "trophyLedgerAuthoritySha256": "8bca32d39b314be8e3e54843e3e80acc4bb708ffe274d5995bb8529cd69fad9a"
+    },
+    {
+      "path": "b2/german/p3.json",
+      "sourcePointers": {
+        "pathSpec": "tmp/GUIDED_TEXT_20261106/german/final-checked/spec-authority.json",
+        "pathSpecSha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+        "ledger": "tmp/GUIDED_TEXT_20261106/german/next-ledger.json",
+        "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+      },
+      "authoritySha256": "6c9115932c1234c7771b1760e8de58970c7c4fab0047e90d4480533774633641",
+      "trophyLedgerAuthoritySha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+    },
+    {
+      "path": "b2/german/p4.json",
+      "sourcePointers": {
+        "pathSpec": "tmp/GUIDED_TEXT_20261106/german/p4/reviewed-2/spec-authority.json",
+        "pathSpecSha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+        "ledger": "tmp/GUIDED_TEXT_20261106/german/p4/next-ledger.json",
+        "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+      },
+      "authoritySha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+      "trophyLedgerAuthoritySha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+    },
+    {
+      "path": "b2/korean/p3.json",
+      "sourcePointers": {
+        "pathSpec": "../../architecture-amendment-response.json",
+        "pathSpecSha256": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+        "ledger": "../../../ko-b2-spine-alignment/response.json#/result/paths/0/lessons",
+        "ledgerSha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+      },
+      "authoritySha256": "797e3923836c805786945032ed673e1c418f1fc6e612b1a06cc7e4c169e31fbe",
+      "trophyLedgerAuthoritySha256": "bd0cf103f0c68db865a7f4d8bf99041050c2c6f10141c78226b77057f95a4525"
+    }
+  ]
+}

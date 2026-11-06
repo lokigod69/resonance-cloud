@@ -1,0 +1,4101 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Polish",
+  "targetLanguageCode": "pl-PL",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Vor- und Nachteile abwägen",
+    "en": "Weighing pros and cons"
+  },
+  "pathFunction": {
+    "de": "Optionen vergleichen, Einwände beantworten und eine begründete Empfehlung anpassen.",
+    "en": "Compare options, respond to objections and adapt a reasoned recommendation."
+  },
+  "specRef": {
+    "pathSpec": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02",
+    "ledger": "B2_POLISH_P1_P2_AUTHORING_SPEC_V3.json",
+    "ledgerSha256": "1c200b27fb97407f69a63c69d1ef85febe75c44ed8f944035c38fc9f13752f02"
+  },
+  "authoring": {
+    "source": "Codex authored from the Fable Polish B2 V3 specification; unreviewed draft",
+    "runId": "polish-b2-p1-p2-20261006",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "rent-vs-commute",
+      "title": {
+        "de": "Miete gegen Fahrzeit abwägen",
+        "en": "Weigh rent against travel time"
+      },
+      "situation": {
+        "de": "Eine Maklerin stellt zwei Wohnungen mit unterschiedlichen Mieten und Lagen vor.",
+        "en": "An estate agent presents two flats with different rents and locations."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Immobilienmaklerin",
+            "en": "estate agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Wohnungsbesichtigung sagt die Maklerin: „Mamy dwie oferty: mieszkanie w centrum za trzy tysiące i na obrzeżach za dwa tysiące dwieście.”",
+        "en": "At the viewing, the agent says: „Mamy dwie oferty: mieszkanie w centrum za trzy tysiące i na obrzeżach za dwa tysiące dwieście.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mamy dwie oferty: mieszkanie w centrum za trzy tysiące i na obrzeżach za dwa tysiące dwieście.",
+          "base": {
+            "de": "Wir haben zwei Angebote: eine Wohnung im Zentrum für dreitausend und eine am Stadtrand für zweitausendzweihundert.",
+            "en": "We have two offers: a flat in the centre for three thousand and one on the outskirts for two thousand two hundred."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Z jednej strony czynsz w centrum jest o osiemset złotych wyższy, z drugiej strony dojazd do pracy zajmuje tylko kwadrans.",
+          "base": {
+            "de": "Einerseits ist die Miete im Zentrum achthundert Złoty höher, andererseits dauert der Arbeitsweg nur eine Viertelstunde.",
+            "en": "On the one hand, the rent in the centre is eight hundred zlotys higher; on the other, getting to work takes only fifteen minutes."
+          },
+          "move": "compare",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Osiemset złotych miesięcznie to prawie dziesięć tysięcy rocznie. Czy to naprawdę się opłaca?",
+          "base": {
+            "de": "Achthundert Złoty im Monat sind fast zehntausend im Jahr. Lohnt sich das wirklich?",
+            "en": "Eight hundred zlotys a month is almost ten thousand a year. Is it really worth it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Przyznaję, że różnica jest duża, ale bilet miesięczny i dwie godziny dziennie w autobusie też kosztują.",
+          "base": {
+            "de": "Ich gebe zu, dass der Unterschied groß ist, aber eine Monatskarte und täglich zwei Stunden im Bus kosten auch etwas.",
+            "en": "I admit the difference is large, but a monthly pass and two hours on the bus every day have a cost too."
+          },
+          "move": "concede",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Rozumiem. Właściciel chce decyzji do piątku. Które mieszkanie mam zarezerwować?",
+          "base": {
+            "de": "Verstehe. Der Eigentümer möchte bis Freitag eine Entscheidung. Welche Wohnung soll ich reservieren?",
+            "en": "I see. The owner wants a decision by Friday. Which flat should I reserve?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Podsumowując, wybieram mieszkanie w centrum, bo krótszy dojazd i więcej wolnego czasu rekompensują mi wyższy czynsz.",
+          "base": {
+            "de": "Zusammenfassend wähle ich die Wohnung im Zentrum, denn der kürzere Arbeitsweg und mehr Freizeit gleichen die höhere Miete für mich aus.",
+            "en": "To sum up, I choose the flat in the centre because the shorter commute and extra free time compensate me for the higher rent."
+          },
+          "move": "conclude",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Z jednej strony ",
+        "chunks": [
+          "czynsz w centrum",
+          "jest",
+          "o osiemset złotych wyższy,",
+          "z drugiej strony",
+          "dojazd"
+        ],
+        "distractors": [
+          "czynszu",
+          "wyższa"
+        ],
+        "frameSuffix": " do pracy zajmuje tylko kwadrans."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " różnica jest "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", ale bilet miesięczny i dwie godziny dziennie w autobusie też kosztują."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Przyznaję, że",
+            "acceptedAnswers": [
+              "Przyznaję, że",
+              "Przyznaje, ze"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Przyznaję, że",
+              "Przyznaję się do",
+              "Nie sądzę, żeby",
+              "Dlatego proponuję"
+            ]
+          },
+          {
+            "answer": "duża",
+            "acceptedAnswers": [
+              "duża",
+              "duza"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze duży passend zu różnica ein.",
+              "en": "Use duży in agreement with różnica."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", wybieram mieszkanie w centrum, bo krótszy dojazd i więcej wolnego czasu rekompensują mi wyższy czynsz."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Podsumowując",
+            "acceptedAnswers": [
+              "Podsumowując",
+              "Podsumowujac"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Podsumowując",
+              "Podsumowaniu",
+              "Podsumowaniem",
+              "Podsumowania"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Z jednej strony ",
+        "answer": "czynsz",
+        "acceptedAnswers": [
+          "czynsz",
+          "koszt wynajmu",
+          "koszt najmu"
+        ],
+        "after": " w centrum jest o osiemset złotych wyższy, z drugiej strony dojazd do pracy zajmuje tylko kwadrans.",
+        "fallbackChoices": [
+          "czynsz",
+          "czynszu",
+          "czynszem",
+          "czynsze"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Zwei Seiten abwägen",
+          "en": "Weigh two sides"
+        },
+        "rule": {
+          "de": "Z jednej strony und z drugiej strony stellen zwei Gesichtspunkte gegenüber.",
+          "en": "Z jednej strony and z drugiej strony contrast two aspects."
+        },
+        "examples": [
+          {
+            "targetText": "Z jednej strony czynsz w centrum jest o osiemset złotych wyższy, z drugiej strony dojazd do pracy zajmuje tylko kwadrans.",
+            "base": {
+              "de": "Einerseits ist die Miete im Zentrum achthundert Złoty höher, andererseits dauert der Arbeitsweg nur eine Viertelstunde.",
+              "en": "On the one hand, the rent in the centre is eight hundred zlotys higher; on the other, getting to work takes only fifteen minutes."
+            },
+            "highlights": [
+              "Z jednej strony",
+              "z drugiej strony"
+            ]
+          },
+          {
+            "targetText": "Z jednej strony pokój jest mały, z drugiej strony ma dużo światła.",
+            "base": {
+              "de": "Einerseits ist das Zimmer klein, andererseits ist es sehr hell.",
+              "en": "On the one hand, the room is small; on the other, it has plenty of light."
+            },
+            "highlights": [
+              "Z jednej strony",
+              "z drugiej strony"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "z jednej strony",
+          "kind": "frame",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          },
+          "acceptedAnswers": [
+            "z jednej strony"
+          ]
+        },
+        {
+          "targetText": "z drugiej strony",
+          "kind": "frame",
+          "base": {
+            "de": "andererseits",
+            "en": "on the other hand"
+          },
+          "acceptedAnswers": [
+            "z drugiej strony"
+          ]
+        },
+        {
+          "targetText": "czynsz",
+          "kind": "noun",
+          "base": {
+            "de": "Miete",
+            "en": "rent"
+          },
+          "acceptedAnswers": [
+            "czynsz"
+          ]
+        },
+        {
+          "targetText": "wyższy",
+          "kind": "adjective",
+          "base": {
+            "de": "höher",
+            "en": "higher"
+          },
+          "acceptedAnswers": [
+            "wyższy",
+            "wyzszy"
+          ],
+          "lemma": "wysoki"
+        },
+        {
+          "targetText": "dojazd",
+          "kind": "noun",
+          "base": {
+            "de": "Anfahrt; Arbeitsweg",
+            "en": "journey; commute"
+          },
+          "acceptedAnswers": [
+            "dojazd"
+          ]
+        },
+        {
+          "targetText": "kwadrans",
+          "kind": "noun",
+          "base": {
+            "de": "Viertelstunde",
+            "en": "fifteen minutes"
+          },
+          "acceptedAnswers": [
+            "kwadrans"
+          ]
+        },
+        {
+          "targetText": "rekompensują",
+          "kind": "verb",
+          "base": {
+            "de": "gleichen aus",
+            "en": "compensate for"
+          },
+          "acceptedAnswers": [
+            "rekompensują",
+            "rekompensuja"
+          ],
+          "lemma": "rekompensować"
+        },
+        {
+          "targetText": "Przyznaję, że",
+          "kind": "frame",
+          "base": {
+            "de": "Ich gebe zu, dass",
+            "en": "I admit that"
+          },
+          "acceptedAnswers": [
+            "Przyznaję, że",
+            "Przyznaje, ze"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "czynsz",
+            "centrum",
+            "wyższy"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "różnica",
+            "bilet",
+            "autobusie"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "wybieram",
+            "rekompensują",
+            "dojazd"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "czynsz",
+        "familyKey": "czynsz",
+        "surface": "czynsz",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Z jednej strony czynsz w centrum jest o osiemset złotych wyższy, z drugiej strony dojazd do pracy zajmuje tylko kwadrans.",
+          "base": {
+            "de": "Einerseits ist die Miete im Zentrum achthundert Złoty höher, andererseits dauert der Arbeitsweg nur eine Viertelstunde.",
+            "en": "On the one hand, the rent in the centre is eight hundred zlotys higher; on the other, getting to work takes only fifteen minutes."
+          }
+        },
+        "base": {
+          "de": "Miete",
+          "en": "rent"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "car-vs-tram",
+      "title": {
+        "de": "Auto oder Straßenbahn",
+        "en": "Car or tram"
+      },
+      "situation": {
+        "de": "Ein Kollege überlegt, wie er künftig zur Arbeit fahren soll.",
+        "en": "A colleague is considering how to travel to work."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Arbeitskollege",
+            "en": "male colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Vor Arbeitsbeginn fragt der Kollege: „Słuchaj, dojeżdżasz samochodem czy tramwajem? Zastanawiam się, co wybrać.”",
+        "en": "Before work, your colleague asks: „Słuchaj, dojeżdżasz samochodem czy tramwajem? Zastanawiam się, co wybrać.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Słuchaj, dojeżdżasz samochodem czy tramwajem? Zastanawiam się, co wybrać.",
+          "base": {
+            "de": "Sag mal, fährst du mit dem Auto oder mit der Straßenbahn zur Arbeit? Ich überlege, was ich wählen soll.",
+            "en": "Tell me, do you commute by car or tram? I'm wondering which to choose."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Samochodem jest wygodniej, ale jego największą wadą są korki i koszty parkowania, tramwaj natomiast jeździ regularnie i tanio.",
+          "base": {
+            "de": "Mit dem Auto ist es bequemer, aber sein größter Nachteil sind Staus und Parkkosten; die Straßenbahn dagegen fährt regelmäßig und günstig.",
+            "en": "The car is more comfortable, but its biggest drawback is traffic jams and parking costs, whereas the tram runs regularly and cheaply."
+          },
+          "move": "compare",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Tanio? Mój tramwaj spóźnia się prawie codziennie, a rano jest tak pełny, że nie da się wejść.",
+          "base": {
+            "de": "Günstig? Meine Straßenbahn verspätet sich fast täglich, und morgens ist sie so voll, dass man nicht einsteigen kann.",
+            "en": "Cheaply? My tram is late almost every day, and in the morning it's so full you can't get on."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "To prawda, ale w samochodzie stoisz w tych samych korkach, tylko płacisz za to o wiele więcej.",
+          "base": {
+            "de": "Das stimmt, aber im Auto stehst du in denselben Staus und zahlst dafür nur viel mehr.",
+            "en": "That's true, but in the car you sit in the same traffic jams, only you pay much more for it."
+          },
+          "move": "rebut",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dobra, a gdybym musiał wozić dzieci do szkoły po drodze? Co wtedy?",
+          "base": {
+            "de": "Gut, und wenn ich unterwegs die Kinder zur Schule bringen müsste? Was dann?",
+            "en": "Okay, and what if I had to take the children to school on the way? What then?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wtedy proponuję rozwiązanie mieszane: samochodem tylko w dni szkolne, a resztę tygodnia tramwajem.",
+          "base": {
+            "de": "Dann schlage ich eine Mischung vor: mit dem Auto nur an Schultagen und den Rest der Woche mit der Straßenbahn.",
+            "en": "Then I suggest a mixed approach: by car only on school days and by tram for the rest of the week."
+          },
+          "move": "propose",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Samochodem jest wygodniej, ale ",
+        "chunks": [
+          "jego największą wadą",
+          "są korki",
+          "i koszty parkowania,",
+          "tramwaj natomiast",
+          "jeździ"
+        ],
+        "distractors": [
+          "jego największa wada",
+          "jest"
+        ],
+        "frameSuffix": " regularnie i tanio."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", ale w samochodzie stoisz w "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " korkach, tylko płacisz za to o wiele więcej."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "To prawda",
+            "acceptedAnswers": [
+              "To prawda"
+            ],
+            "kind": "frame",
+            "choices": [
+              "To prawda",
+              "Nic podobnego",
+              "W żadnym razie",
+              "Wcale nie"
+            ]
+          },
+          {
+            "answer": "tych samych",
+            "acceptedAnswers": [
+              "tych samych"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze ten sam passend zu w … korkach ein.",
+              "en": "Use ten sam in the form required by w … korkach."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Wtedy "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " rozwiązanie mieszane: samochodem tylko w dni szkolne, a resztę tygodnia tramwajem."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "proponuję",
+            "acceptedAnswers": [
+              "proponuję",
+              "proponuje"
+            ],
+            "kind": "frame",
+            "choices": [
+              "proponuję",
+              "propozycją",
+              "proponować",
+              "proponując"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Samochodem jest wygodniej, ale jego największą ",
+        "answer": "wadą",
+        "acceptedAnswers": [
+          "wadą",
+          "wada",
+          "niedogodnością",
+          "niedogodnoscia",
+          "słabością",
+          "slaboscia"
+        ],
+        "after": " są korki i koszty parkowania, tramwaj natomiast jeździ regularnie i tanio.",
+        "fallbackChoices": [
+          "wadą",
+          "wadzie",
+          "wadę",
+          "wady"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Einen Nachteil benennen",
+          "en": "Name a drawback"
+        },
+        "rule": {
+          "de": "Nach największą wadą są steht hier eine Aufzählung im Nominativ.",
+          "en": "Here największą wadą są is followed by a list in the nominative."
+        },
+        "examples": [
+          {
+            "targetText": "Samochodem jest wygodniej, ale jego największą wadą są korki i koszty parkowania, tramwaj natomiast jeździ regularnie i tanio.",
+            "base": {
+              "de": "Mit dem Auto ist es bequemer, aber sein größter Nachteil sind Staus und Parkkosten; die Straßenbahn dagegen fährt regelmäßig und günstig.",
+              "en": "The car is more comfortable, but its biggest drawback is traffic jams and parking costs, whereas the tram runs regularly and cheaply."
+            },
+            "highlights": [
+              "największą wadą są"
+            ]
+          },
+          {
+            "targetText": "Największą wadą tej trasy są korki i częste remonty.",
+            "base": {
+              "de": "Der größte Nachteil dieser Strecke sind Staus und häufige Bauarbeiten.",
+              "en": "The biggest drawback of this route is traffic jams and frequent roadworks."
+            },
+            "highlights": [
+              "Największą wadą",
+              "są"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "wadą",
+          "kind": "noun",
+          "base": {
+            "de": "Nachteil",
+            "en": "drawback"
+          },
+          "acceptedAnswers": [
+            "wadą",
+            "wada"
+          ],
+          "lemma": "wada"
+        },
+        {
+          "targetText": "natomiast",
+          "kind": "connector",
+          "base": {
+            "de": "dagegen",
+            "en": "whereas"
+          },
+          "acceptedAnswers": [
+            "natomiast"
+          ]
+        },
+        {
+          "targetText": "To prawda",
+          "kind": "frame",
+          "base": {
+            "de": "Das stimmt",
+            "en": "That's true"
+          },
+          "acceptedAnswers": [
+            "To prawda"
+          ]
+        },
+        {
+          "targetText": "korki",
+          "kind": "noun",
+          "base": {
+            "de": "Staus",
+            "en": "traffic jams"
+          },
+          "acceptedAnswers": [
+            "korki"
+          ],
+          "lemma": "korek"
+        },
+        {
+          "targetText": "parkowania",
+          "kind": "noun",
+          "base": {
+            "de": "Parken",
+            "en": "parking"
+          },
+          "acceptedAnswers": [
+            "parkowania"
+          ],
+          "lemma": "parkowanie"
+        },
+        {
+          "targetText": "regularnie",
+          "kind": "adverb",
+          "base": {
+            "de": "regelmäßig",
+            "en": "regularly"
+          },
+          "acceptedAnswers": [
+            "regularnie"
+          ]
+        },
+        {
+          "targetText": "pełny",
+          "kind": "adjective",
+          "base": {
+            "de": "voll",
+            "en": "full"
+          },
+          "acceptedAnswers": [
+            "pełny",
+            "pelny"
+          ]
+        },
+        {
+          "targetText": "proponuję",
+          "kind": "verb",
+          "base": {
+            "de": "ich schlage vor",
+            "en": "I suggest"
+          },
+          "acceptedAnswers": [
+            "proponuję",
+            "proponuje"
+          ],
+          "lemma": "proponować"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "wadą",
+            "korki",
+            "koszty"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "prawda",
+            "samochodzie",
+            "więcej"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "proponuję",
+            "mieszane",
+            "szkolne"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "wada",
+        "familyKey": "wada",
+        "surface": "wadą",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Samochodem jest wygodniej, ale jego największą wadą są korki i koszty parkowania, tramwaj natomiast jeździ regularnie i tanio.",
+          "base": {
+            "de": "Mit dem Auto ist es bequemer, aber sein größter Nachteil sind Staus und Parkkosten; die Straßenbahn dagegen fährt regelmäßig und günstig.",
+            "en": "The car is more comfortable, but its biggest drawback is traffic jams and parking costs, whereas the tram runs regularly and cheaply."
+          }
+        },
+        "base": {
+          "de": "Nachteil",
+          "en": "drawback"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "remote-vs-office",
+      "title": {
+        "de": "Ein Arbeitsmodell empfehlen",
+        "en": "Recommend a working arrangement"
+      },
+      "situation": {
+        "de": "Die Teamleiterin bespricht die Wahl zwischen Büroarbeit und Arbeit von zu Hause.",
+        "en": "The team manager discusses office work and working from home."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Teamleiterin",
+            "en": "female team manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Teamgespräch fragt die Leiterin: „Od stycznia zespół może pracować zdalnie albo w biurze. Jaki model byłby najlepszy dla zespołu?”",
+        "en": "At the team meeting, the manager asks: „Od stycznia zespół może pracować zdalnie albo w biurze. Jaki model byłby najlepszy dla zespołu?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Od stycznia zespół może pracować zdalnie albo w biurze. Jaki model byłby najlepszy dla zespołu?",
+          "base": {
+            "de": "Ab Januar kann das Team von zu Hause oder im Büro arbeiten. Welches Modell wäre für das Team am besten?",
+            "en": "From January, the team can work remotely or in the office. Which arrangement would be best for the team?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Moim zdaniem największa zaleta pracy zdalnej to spokój i brak dojazdów, natomiast w biurze szybciej rozwiązujemy problemy.",
+          "base": {
+            "de": "Meiner Meinung nach liegt der größte Vorteil der Arbeit von zu Hause in der Ruhe und dem entfallenden Arbeitsweg; im Büro lösen wir dagegen Probleme schneller.",
+            "en": "In my view, the biggest advantage of remote work is the peace and quiet and no commute, whereas in the office we solve problems faster."
+          },
+          "move": "position",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dane pokazują jednak, że w ostatnim kwartale zdalni pracownicy oddawali projekty z opóźnieniem.",
+          "base": {
+            "de": "Die Daten zeigen aber, dass Beschäftigte im Homeoffice im letzten Quartal Projekte verspätet abgegeben haben.",
+            "en": "The data show, however, that remote staff submitted projects late in the last quarter."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Mówiąc dokładniej, opóźnienia dotyczyły tylko nowych osób, które potrzebowały wprowadzenia na miejscu.",
+          "base": {
+            "de": "Genauer gesagt betrafen die Verspätungen nur neue Mitarbeitende, die eine Einführung vor Ort brauchten.",
+            "en": "More precisely, the delays affected only new staff who needed an introduction on site."
+          },
+          "move": "clarify",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dobrze. Zarząd prosi o jedną konkretną rekomendację do końca tygodnia.",
+          "base": {
+            "de": "Gut. Die Geschäftsleitung bittet bis Ende der Woche um eine konkrete Empfehlung.",
+            "en": "Good. The management asks for one concrete recommendation by the end of the week."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dlatego proponuję model hybrydowy: nowi pracownicy trzy dni w biurze, pozostali dwa, z jednym wspólnym dniem dla wszystkich.",
+          "base": {
+            "de": "Deshalb schlage ich ein hybrides Modell vor: neue Mitarbeitende drei Tage im Büro, die anderen zwei, mit einem gemeinsamen Tag für alle.",
+            "en": "Therefore I propose a hybrid arrangement: new staff in the office for three days, the others for two, with one shared day for everyone."
+          },
+          "move": "conclude",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Moim zdaniem ",
+        "chunks": [
+          "największa zaleta",
+          "pracy zdalnej",
+          "to spokój",
+          "i brak dojazdów,",
+          "natomiast"
+        ],
+        "distractors": [
+          "największą zaletą",
+          "spokojnie"
+        ],
+        "frameSuffix": " w biurze szybciej rozwiązujemy problemy."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", opóźnienia dotyczyły tylko nowych osób, które "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " wprowadzenia na miejscu."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Mówiąc dokładniej",
+            "acceptedAnswers": [
+              "Mówiąc dokładniej",
+              "Mowiac dokladniej"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Mówiąc dokładniej",
+              "Mówię dokładniej",
+              "Dokładniejsze",
+              "Dlatego proponuję"
+            ]
+          },
+          {
+            "answer": "potrzebowały",
+            "acceptedAnswers": [
+              "potrzebowały",
+              "potrzebowaly"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze potrzebować in die dritte Person Plural der Vergangenheit, passend zu osoby.",
+              "en": "Use potrzebować in the past tense, third-person plural, agreeing with osoby."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " model hybrydowy: nowi pracownicy trzy dni w biurze, pozostali dwa, z jednym wspólnym dniem dla wszystkich."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dlatego proponuję",
+            "acceptedAnswers": [
+              "Dlatego proponuję",
+              "Dlatego proponuje"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dlatego proponuję",
+              "Dlatego propozycją",
+              "Dlatego proponować",
+              "Dlatego propozycji"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Moim zdaniem największa ",
+        "answer": "zaleta",
+        "acceptedAnswers": [
+          "zaleta",
+          "korzyść",
+          "korzysc"
+        ],
+        "after": " pracy zdalnej to spokój i brak dojazdów, natomiast w biurze szybciej rozwiązujemy problemy.",
+        "fallbackChoices": [
+          "zaleta",
+          "zaletę",
+          "zaletą",
+          "zalety"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine Behauptung präzisieren",
+          "en": "Make a claim more precise"
+        },
+        "rule": {
+          "de": "Mówiąc dokładniej kündigt eine genauere Eingrenzung der vorherigen Aussage an.",
+          "en": "Mówiąc dokładniej introduces a more precise qualification of the previous claim."
+        },
+        "examples": [
+          {
+            "targetText": "Mówiąc dokładniej, opóźnienia dotyczyły tylko nowych osób, które potrzebowały wprowadzenia na miejscu.",
+            "base": {
+              "de": "Genauer gesagt betrafen die Verspätungen nur neue Mitarbeitende, die eine Einführung vor Ort brauchten.",
+              "en": "More precisely, the delays affected only new staff who needed an introduction on site."
+            },
+            "highlights": [
+              "Mówiąc dokładniej"
+            ]
+          },
+          {
+            "targetText": "Mówiąc dokładniej, problem dotyczy tylko nowych projektów.",
+            "base": {
+              "de": "Genauer gesagt betrifft das Problem nur neue Projekte.",
+              "en": "More precisely, the problem affects only new projects."
+            },
+            "highlights": [
+              "Mówiąc dokładniej"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "zaleta",
+          "kind": "noun",
+          "base": {
+            "de": "Vorteil",
+            "en": "advantage"
+          },
+          "acceptedAnswers": [
+            "zaleta"
+          ]
+        },
+        {
+          "targetText": "Moim zdaniem",
+          "kind": "frame",
+          "base": {
+            "de": "meiner Meinung nach",
+            "en": "in my view"
+          },
+          "acceptedAnswers": [
+            "Moim zdaniem"
+          ]
+        },
+        {
+          "targetText": "Mówiąc dokładniej",
+          "kind": "frame",
+          "base": {
+            "de": "genauer gesagt",
+            "en": "more precisely"
+          },
+          "acceptedAnswers": [
+            "Mówiąc dokładniej",
+            "Mowiac dokladniej"
+          ]
+        },
+        {
+          "targetText": "spokój",
+          "kind": "noun",
+          "base": {
+            "de": "Ruhe",
+            "en": "peace and quiet"
+          },
+          "acceptedAnswers": [
+            "spokój",
+            "spokoj"
+          ]
+        },
+        {
+          "targetText": "rozwiązujemy",
+          "kind": "verb",
+          "base": {
+            "de": "wir lösen",
+            "en": "we solve"
+          },
+          "acceptedAnswers": [
+            "rozwiązujemy",
+            "rozwiazujemy"
+          ],
+          "lemma": "rozwiązywać"
+        },
+        {
+          "targetText": "opóźnienia",
+          "kind": "noun",
+          "base": {
+            "de": "Verspätungen",
+            "en": "delays"
+          },
+          "acceptedAnswers": [
+            "opóźnienia",
+            "opoznienia"
+          ],
+          "lemma": "opóźnienie"
+        },
+        {
+          "targetText": "wprowadzenia",
+          "kind": "noun",
+          "base": {
+            "de": "Einführung",
+            "en": "introduction"
+          },
+          "acceptedAnswers": [
+            "wprowadzenia"
+          ],
+          "lemma": "wprowadzenie"
+        },
+        {
+          "targetText": "hybrydowy",
+          "kind": "adjective",
+          "base": {
+            "de": "hybrid",
+            "en": "hybrid"
+          },
+          "acceptedAnswers": [
+            "hybrydowy"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "zaleta",
+            "spokój",
+            "dojazdów"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "dokładniej",
+            "opóźnienia",
+            "nowych"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "proponuję",
+            "hybrydowy",
+            "wspólnym"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "zaleta",
+        "familyKey": "zaleta",
+        "surface": "zaleta",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Moim zdaniem największa zaleta pracy zdalnej to spokój i brak dojazdów, natomiast w biurze szybciej rozwiązujemy problemy.",
+          "base": {
+            "de": "Meiner Meinung nach liegt der größte Vorteil der Arbeit von zu Hause in der Ruhe und dem entfallenden Arbeitsweg; im Büro lösen wir dagegen Probleme schneller.",
+            "en": "In my view, the biggest advantage of remote work is the peace and quiet and no commute, whereas in the office we solve problems faster."
+          }
+        },
+        "base": {
+          "de": "Vorteil",
+          "en": "advantage"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "buy-vs-rent-gear",
+      "title": {
+        "de": "Kaufen oder ausleihen",
+        "en": "Buy or rent"
+      },
+      "situation": {
+        "de": "Im Skiverleih stehen Kauf und Wochenendmiete zur Wahl.",
+        "en": "At a ski rental shop, you can buy equipment or rent it for a weekend."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Mitarbeiter des Skiverleihs",
+            "en": "ski rental employee"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Tresen erklärt der Mitarbeiter: „Sprzęt można kupić za dwa tysiące albo wypożyczać za czterysta złotych za weekend. Co wybieramy?”",
+        "en": "At the counter, the employee explains: „Sprzęt można kupić za dwa tysiące albo wypożyczać za czterysta złotych za weekend. Co wybieramy?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Sprzęt można kupić za dwa tysiące albo wypożyczać za czterysta złotych za weekend. Co wybieramy?",
+          "base": {
+            "de": "Die Ausrüstung kann man für zweitausend kaufen oder für vierhundert Złoty pro Wochenende mieten. Was nehmen wir?",
+            "en": "You can buy the equipment for two thousand or rent it for four hundred zlotys per weekend. Which shall we choose?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Przy dwóch wyjazdach rocznie koszty wypożyczenia są niższe i zalety wynajmu wyraźnie przeważają, bo nie muszę niczego przechowywać ani serwisować.",
+          "base": {
+            "de": "Bei zwei Ausflügen im Jahr sind die Mietkosten niedriger, und die Vorteile des Mietens überwiegen deutlich, denn ich muss nichts lagern oder warten.",
+            "en": "For two trips a year, rental costs are lower and the advantages of renting clearly outweigh the disadvantages, because I don't have to store or maintain anything."
+          },
+          "move": "compare",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "A jeśli w tym sezonie wyjazdów będzie sześć lub siedem? Wtedy zakup wychodzi taniej.",
+          "base": {
+            "de": "Und wenn es in dieser Saison sechs oder sieben Ausflüge werden? Dann ist Kaufen günstiger.",
+            "en": "And if there are six or seven trips this season? Then buying works out cheaper."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Przyznaję, że przy sześciu wyjazdach zakup byłby tańszy, ale takiej częstotliwości na razie nie planuję.",
+          "base": {
+            "de": "Ich gebe zu, bei sechs Ausflügen wäre der Kauf günstiger, aber so häufig plane ich vorerst nicht zu fahren.",
+            "en": "I admit that buying would be cheaper for six trips, but for now I don't plan to go that often."
+          },
+          "move": "concede",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "W porządku. Mamy też opcję pośrednią: wynajem sezonowy za sześćset złotych. Co ostatecznie wybieramy?",
+          "base": {
+            "de": "In Ordnung. Wir haben auch eine Zwischenlösung: Saisonmiete für sechshundert Złoty. Was nehmen wir letztendlich?",
+            "en": "All right. We also have an intermediate option: seasonal rental for six hundred zlotys. What shall we choose in the end?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wezmę wynajem sezonowy, pod warunkiem że mogę w połowie sezonu wymienić narty na inny model.",
+          "base": {
+            "de": "Ich nehme die Saisonmiete, unter der Bedingung, dass ich die Ski mitten in der Saison gegen ein anderes Modell tauschen kann.",
+            "en": "I'll take the seasonal rental, provided I can exchange the skis for a different model halfway through the season."
+          },
+          "move": "counteroffer",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Przy dwóch wyjazdach rocznie koszty wypożyczenia są niższe i ",
+        "chunks": [
+          "zalety wynajmu wyraźnie przeważają,",
+          "bo",
+          "nie muszę",
+          "niczego przechowywać",
+          "ani serwisować."
+        ],
+        "distractors": [
+          "wyraźnie przeważa",
+          "niczego przechowuję"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " przy sześciu wyjazdach zakup "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " tańszy, ale takiej częstotliwości na razie nie planuję."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Przyznaję, że",
+            "acceptedAnswers": [
+              "Przyznaję, że",
+              "Przyznaje, ze"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Przyznaję, że",
+              "Przyznaję się do",
+              "Nie sądzę, żeby",
+              "Dlatego proponuję"
+            ]
+          },
+          {
+            "answer": "byłby",
+            "acceptedAnswers": [
+              "byłby",
+              "bylby",
+              "by był",
+              "by byl"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze być in die dritte Person Singular des Konditionals, passend zu zakup.",
+              "en": "Use być in the third-person singular conditional, agreeing with zakup."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Wezmę wynajem sezonowy, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " mogę w połowie sezonu wymienić narty na inny model."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "pod warunkiem że",
+            "acceptedAnswers": [
+              "pod warunkiem że",
+              "pod warunkiem ze"
+            ],
+            "kind": "frame",
+            "choices": [
+              "pod warunkiem że",
+              "pod warunkiem którego",
+              "pod warunkiem aby",
+              "pod warunkiem żeby"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Przy dwóch wyjazdach rocznie koszty wypożyczenia są niższe i zalety wynajmu wyraźnie ",
+        "answer": "przeważają",
+        "acceptedAnswers": [
+          "przeważają",
+          "przewazaja",
+          "dominują",
+          "dominuja"
+        ],
+        "after": ", bo nie muszę niczego przechowywać ani serwisować.",
+        "fallbackChoices": [
+          "przeważają",
+          "przeważa",
+          "przeważasz",
+          "przeważać"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine Bedingung aushandeln",
+          "en": "Negotiate a condition"
+        },
+        "rule": {
+          "de": "Pod warunkiem że leitet die Bedingung ein, an die eine Zusage geknüpft ist.",
+          "en": "Pod warunkiem że introduces a condition attached to an agreement."
+        },
+        "examples": [
+          {
+            "targetText": "Wezmę wynajem sezonowy, pod warunkiem że mogę w połowie sezonu wymienić narty na inny model.",
+            "base": {
+              "de": "Ich nehme die Saisonmiete, unter der Bedingung, dass ich die Ski mitten in der Saison gegen ein anderes Modell tauschen kann.",
+              "en": "I'll take the seasonal rental, provided I can exchange the skis for a different model halfway through the season."
+            },
+            "highlights": [
+              "pod warunkiem że"
+            ]
+          },
+          {
+            "targetText": "Wezmę ten model, pod warunkiem że mogę go jutro odebrać.",
+            "base": {
+              "de": "Ich nehme dieses Modell, sofern ich es morgen abholen kann.",
+              "en": "I'll take this model, provided I can collect it tomorrow."
+            },
+            "highlights": [
+              "pod warunkiem że"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "przeważają",
+          "kind": "verb",
+          "base": {
+            "de": "überwiegen",
+            "en": "outweigh"
+          },
+          "acceptedAnswers": [
+            "przeważają",
+            "przewazaja"
+          ],
+          "lemma": "przeważać"
+        },
+        {
+          "targetText": "Przyznaję, że",
+          "kind": "frame",
+          "base": {
+            "de": "Ich gebe zu, dass",
+            "en": "I admit that"
+          },
+          "acceptedAnswers": [
+            "Przyznaję, że",
+            "Przyznaje, ze"
+          ]
+        },
+        {
+          "targetText": "pod warunkiem że",
+          "kind": "frame",
+          "base": {
+            "de": "unter der Bedingung, dass",
+            "en": "provided that"
+          },
+          "acceptedAnswers": [
+            "pod warunkiem że",
+            "pod warunkiem ze"
+          ]
+        },
+        {
+          "targetText": "wynajmu",
+          "kind": "noun",
+          "base": {
+            "de": "des Mietens",
+            "en": "of renting"
+          },
+          "acceptedAnswers": [
+            "wynajmu"
+          ],
+          "lemma": "wynajem"
+        },
+        {
+          "targetText": "przechowywać",
+          "kind": "verb",
+          "base": {
+            "de": "aufbewahren",
+            "en": "store"
+          },
+          "acceptedAnswers": [
+            "przechowywać",
+            "przechowywac"
+          ]
+        },
+        {
+          "targetText": "serwisować",
+          "kind": "verb",
+          "base": {
+            "de": "warten",
+            "en": "maintain"
+          },
+          "acceptedAnswers": [
+            "serwisować",
+            "serwisowac"
+          ]
+        },
+        {
+          "targetText": "sezonowy",
+          "kind": "adjective",
+          "base": {
+            "de": "für die Saison",
+            "en": "seasonal"
+          },
+          "acceptedAnswers": [
+            "sezonowy"
+          ]
+        },
+        {
+          "targetText": "częstotliwości",
+          "kind": "noun",
+          "base": {
+            "de": "Häufigkeit",
+            "en": "frequency"
+          },
+          "acceptedAnswers": [
+            "częstotliwości",
+            "czestotliwosci"
+          ],
+          "lemma": "częstotliwość"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "zalety",
+            "przeważają",
+            "przechowywać"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "zakup",
+            "tańszy",
+            "częstotliwości"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "wynajem",
+            "warunkiem",
+            "wymienić"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "przeważać",
+        "familyKey": "przeważać",
+        "surface": "przeważają",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Przy dwóch wyjazdach rocznie koszty wypożyczenia są niższe i zalety wynajmu wyraźnie przeważają, bo nie muszę niczego przechowywać ani serwisować.",
+          "base": {
+            "de": "Bei zwei Ausflügen im Jahr sind die Mietkosten niedriger, und die Vorteile des Mietens überwiegen deutlich, denn ich muss nichts lagern oder warten.",
+            "en": "For two trips a year, rental costs are lower and the advantages of renting clearly outweigh the disadvantages, because I don't have to store or maintain anything."
+          }
+        },
+        "base": {
+          "de": "überwiegen",
+          "en": "outweigh"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "two-holiday-plans",
+      "title": {
+        "de": "Urlaubspläne vergleichen",
+        "en": "Compare holiday plans"
+      },
+      "situation": {
+        "de": "Eine Freundin schlägt zwei Möglichkeiten für den gemeinsamen Urlaub vor.",
+        "en": "A friend suggests two options for a holiday together."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Freundin",
+            "en": "female friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Urlaubsplanung sagt sie: „Mam dwa pomysły na urlop: tydzień nad morzem albo cztery dni w górach i resztę w domu. Co myślisz?”",
+        "en": "While planning the holiday, she says: „Mam dwa pomysły na urlop: tydzień nad morzem albo cztery dni w górach i resztę w domu. Co myślisz?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mam dwa pomysły na urlop: tydzień nad morzem albo cztery dni w górach i resztę w domu. Co myślisz?",
+          "base": {
+            "de": "Ich habe zwei Urlaubsideen: eine Woche am Meer oder vier Tage in den Bergen und den Rest zu Hause. Was meinst du?",
+            "en": "I have two holiday ideas: a week by the sea or four days in the mountains and the rest at home. What do you think?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Oferta nad morzem jest korzystniejsza cenowo, bo hotel jest w pakiecie, podczas gdy w górach płacimy osobno za każdy nocleg.",
+          "base": {
+            "de": "Das Angebot am Meer ist preislich günstiger, weil das Hotel im Paket enthalten ist, während wir in den Bergen jede Übernachtung einzeln bezahlen.",
+            "en": "The seaside offer is better value because the hotel is included in the package, whereas in the mountains we pay separately for each night."
+          },
+          "move": "compare",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ale nad morzem w sierpniu jest tłum i deszcz co drugi dzień. W górach przynajmniej jest spokój.",
+          "base": {
+            "de": "Aber am Meer ist im August alles voll, und es regnet jeden zweiten Tag. In den Bergen ist es wenigstens ruhig.",
+            "en": "But the seaside is crowded in August and it rains every other day. At least it's peaceful in the mountains."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Deszcz pada też w górach, a tłumu unikniemy, jeśli wybierzemy mniejszą miejscowość zamiast kurortu.",
+          "base": {
+            "de": "In den Bergen regnet es auch, und die Menschenmengen vermeiden wir, wenn wir einen kleineren Ort statt eines Ferienzentrums wählen.",
+            "en": "It rains in the mountains too, and we'll avoid the crowds if we choose a smaller town instead of a resort."
+          },
+          "move": "rebut",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Okej, ale decyduj szybko: promocja na hotel kończy się dziś o północy. Rezerwujemy?",
+          "base": {
+            "de": "Okay, aber entscheide dich schnell: Das Hotelangebot endet heute um Mitternacht. Buchen wir?",
+            "en": "Okay, but decide quickly: the hotel offer ends at midnight tonight. Shall we book?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Tak, rezerwujemy morze, ale w mniejszej miejscowości, a górom damy szansę jesienią.",
+          "base": {
+            "de": "Ja, wir buchen am Meer, aber in einem kleineren Ort, und den Bergen geben wir im Herbst eine Chance.",
+            "en": "Yes, let's book the seaside, but in a smaller town, and give the mountains a chance in autumn."
+          },
+          "move": "conclude",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Oferta nad morzem ",
+        "chunks": [
+          "jest",
+          "korzystniejsza cenowo,",
+          "bo",
+          "hotel jest w pakiecie,",
+          "podczas gdy"
+        ],
+        "distractors": [
+          "korzystniejszy cenowo",
+          "w pakiet"
+        ],
+        "frameSuffix": " w górach płacimy osobno za każdy nocleg."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Deszcz pada też w górach, a tłumu unikniemy, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " wybierzemy "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " miejscowość zamiast kurortu."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "jeśli",
+            "acceptedAnswers": [
+              "jeśli",
+              "jesli"
+            ],
+            "kind": "connector",
+            "choices": [
+              "jeśli",
+              "którego",
+              "zamiast",
+              "podczas"
+            ]
+          },
+          {
+            "answer": "mniejszą",
+            "acceptedAnswers": [
+              "mniejszą",
+              "mniejsza"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze mały im Komparativ ein, passend zu miejscowość als Objekt von wybierzemy.",
+              "en": "Use the comparative of mały in agreement with miejscowość as the object of wybierzemy."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tak, rezerwujemy morze, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " w mniejszej miejscowości, a górom damy szansę jesienią."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ale",
+            "acceptedAnswers": [
+              "ale"
+            ],
+            "kind": "connector",
+            "choices": [
+              "ale",
+              "który",
+              "podczas",
+              "mimo"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Oferta nad morzem jest ",
+        "answer": "korzystniejsza",
+        "acceptedAnswers": [
+          "korzystniejsza",
+          "atrakcyjniejsza",
+          "lepsza",
+          "tańsza",
+          "tansza"
+        ],
+        "after": " cenowo, bo hotel jest w pakiecie, podczas gdy w górach płacimy osobno za każdy nocleg.",
+        "fallbackChoices": [
+          "korzystniejsza",
+          "korzystniejszy",
+          "korzystniejszą",
+          "korzystniejszego"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Angebote gegenüberstellen",
+          "en": "Contrast offers"
+        },
+        "rule": {
+          "de": "Podczas gdy verbindet hier zwei Aussagen, deren Inhalte gegenübergestellt werden.",
+          "en": "Here podczas gdy connects two contrasting statements."
+        },
+        "examples": [
+          {
+            "targetText": "Oferta nad morzem jest korzystniejsza cenowo, bo hotel jest w pakiecie, podczas gdy w górach płacimy osobno za każdy nocleg.",
+            "base": {
+              "de": "Das Angebot am Meer ist preislich günstiger, weil das Hotel im Paket enthalten ist, während wir in den Bergen jede Übernachtung einzeln bezahlen.",
+              "en": "The seaside offer is better value because the hotel is included in the package, whereas in the mountains we pay separately for each night."
+            },
+            "highlights": [
+              "podczas gdy"
+            ]
+          },
+          {
+            "targetText": "Ten hotel ma własną kuchnię, podczas gdy drugi oferuje tylko śniadania.",
+            "base": {
+              "de": "Dieses Hotel hat eine eigene Küche, während das andere nur Frühstück anbietet.",
+              "en": "This hotel has its own kitchen, whereas the other offers only breakfast."
+            },
+            "highlights": [
+              "podczas gdy"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "korzystniejsza",
+          "kind": "adjective",
+          "base": {
+            "de": "günstiger; vorteilhafter",
+            "en": "better value; more advantageous"
+          },
+          "acceptedAnswers": [
+            "korzystniejsza"
+          ],
+          "lemma": "korzystny"
+        },
+        {
+          "targetText": "podczas gdy",
+          "kind": "connector",
+          "base": {
+            "de": "während (gegenüberstellend)",
+            "en": "whereas"
+          },
+          "acceptedAnswers": [
+            "podczas gdy"
+          ]
+        },
+        {
+          "targetText": "jeśli",
+          "kind": "connector",
+          "base": {
+            "de": "wenn",
+            "en": "if"
+          },
+          "acceptedAnswers": [
+            "jeśli",
+            "jesli"
+          ]
+        },
+        {
+          "targetText": "cenowo",
+          "kind": "adverb",
+          "base": {
+            "de": "preislich",
+            "en": "in terms of price"
+          },
+          "acceptedAnswers": [
+            "cenowo"
+          ]
+        },
+        {
+          "targetText": "pakiecie",
+          "kind": "noun",
+          "base": {
+            "de": "Paket",
+            "en": "package"
+          },
+          "acceptedAnswers": [
+            "pakiecie"
+          ],
+          "lemma": "pakiet"
+        },
+        {
+          "targetText": "nocleg",
+          "kind": "noun",
+          "base": {
+            "de": "Übernachtung",
+            "en": "overnight stay"
+          },
+          "acceptedAnswers": [
+            "nocleg"
+          ]
+        },
+        {
+          "targetText": "unikniemy",
+          "kind": "verb",
+          "base": {
+            "de": "wir werden vermeiden",
+            "en": "we will avoid"
+          },
+          "acceptedAnswers": [
+            "unikniemy"
+          ],
+          "lemma": "uniknąć"
+        },
+        {
+          "targetText": "kurortu",
+          "kind": "noun",
+          "base": {
+            "de": "Kurort; Ferienort",
+            "en": "resort"
+          },
+          "acceptedAnswers": [
+            "kurortu"
+          ],
+          "lemma": "kurort"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "korzystniejsza",
+            "cenowo",
+            "pakiecie"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "unikniemy",
+            "wybierzemy",
+            "miejscowość"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "rezerwujemy",
+            "mniejszej",
+            "jesienią"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "korzystny",
+        "familyKey": "korzystny",
+        "surface": "korzystniejsza",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Oferta nad morzem jest korzystniejsza cenowo, bo hotel jest w pakiecie, podczas gdy w górach płacimy osobno za każdy nocleg.",
+          "base": {
+            "de": "Das Angebot am Meer ist preislich günstiger, weil das Hotel im Paket enthalten ist, während wir in den Bergen jede Übernachtung einzeln bezahlen.",
+            "en": "The seaside offer is better value because the hotel is included in the package, whereas in the mountains we pay separately for each night."
+          }
+        },
+        "base": {
+          "de": "günstig; vorteilhaft",
+          "en": "advantageous; good value"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "cash-vs-app",
+      "title": {
+        "de": "Bargeld oder App",
+        "en": "Cash or app"
+      },
+      "situation": {
+        "de": "Die Ladeninhaberin bittet Sie als Teil ihrer Stammkundschaft um eine Einschätzung zu Zahlungsarten.",
+        "en": "A shop owner asks a regular customer for a view on payment methods."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Ladeninhaberin",
+            "en": "female shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Laden fragt die Inhaberin: „Zastanawiam się, czy wprowadzić płatności aplikacją, czy zostać przy gotówce i kartach. Jak to wygląda z punktu widzenia klienta?”",
+        "en": "In the shop, the owner asks: „Zastanawiam się, czy wprowadzić płatności aplikacją, czy zostać przy gotówce i kartach. Jak to wygląda z punktu widzenia klienta?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Zastanawiam się, czy wprowadzić płatności aplikacją, czy zostać przy gotówce i kartach. Jak to wygląda z punktu widzenia klienta?",
+          "base": {
+            "de": "Ich überlege, ob ich App-Zahlungen einführen oder bei Bargeld und Karten bleiben soll. Wie sieht das aus Kundensicht aus?",
+            "en": "I'm wondering whether to introduce app payments or stay with cash and cards. How does it look from the customer's point of view?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Z punktu widzenia klienta aplikacja jest wygodniejsza, ale dla sklepu największe ryzyko to awaria systemu w godzinach szczytu.",
+          "base": {
+            "de": "Aus Kundensicht ist die App bequemer, aber für den Laden ist ein Systemausfall zu Stoßzeiten das größte Risiko.",
+            "en": "From the customer's point of view, the app is more convenient, but for the shop the biggest risk is a system failure at peak times."
+          },
+          "move": "position",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Awarie są rzadkie. Mnie bardziej martwi prowizja: dwa procent od każdej transakcji. Czy to się opłaca?",
+          "base": {
+            "de": "Ausfälle sind selten. Mich beschäftigt eher die Gebühr: zwei Prozent pro Transaktion. Lohnt sich das?",
+            "en": "Failures are rare. I'm more concerned about the fee: two percent per transaction. Is it worthwhile?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Jeśli zestawić prowizję z kosztem liczenia i wożenia gotówki do banku, różnica jest mniejsza, niż się wydaje.",
+          "base": {
+            "de": "Vergleicht man die Gebühr mit den Kosten für das Zählen und den Transport des Bargelds zur Bank, ist der Unterschied kleiner, als es scheint.",
+            "en": "If you compare the fee with the cost of counting and taking cash to the bank, the difference is smaller than it seems."
+          },
+          "move": "compare",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dobrze. Na razie wprowadzamy jedną opcję na próbę przez miesiąc. Którą?",
+          "base": {
+            "de": "Gut. Wir führen vorerst eine Option einen Monat lang zur Probe ein. Welche?",
+            "en": "Good. For now, we'll introduce one option for a month's trial. Which one?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Proponuję aplikację jako dodatek, a nie zamiennik gotówki, z osobą na kasie, która pomoże pierwszym klientom.",
+          "base": {
+            "de": "Ich schlage die App als Ergänzung und nicht als Ersatz für Bargeld vor, mit einer Person an der Kasse, die den ersten Kunden hilft.",
+            "en": "I suggest the app as an addition rather than a replacement for cash, with someone at the till to help the first customers."
+          },
+          "move": "propose",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Z punktu widzenia klienta ",
+        "chunks": [
+          "aplikacja",
+          "jest wygodniejsza,",
+          "ale",
+          "dla sklepu największe ryzyko",
+          "to awaria systemu"
+        ],
+        "distractors": [
+          "największy ryzyko",
+          "dla sklep"
+        ],
+        "frameSuffix": " w godzinach szczytu."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " prowizję z kosztem liczenia i wożenia gotówki do banku, różnica jest "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", niż się wydaje."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Jeśli zestawić",
+            "acceptedAnswers": [
+              "Jeśli zestawić",
+              "Jesli zestawic"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Jeśli zestawić",
+              "Po zestawieniu",
+              "W zestawieniu",
+              "Zestawić"
+            ]
+          },
+          {
+            "answer": "mniejsza",
+            "acceptedAnswers": [
+              "mniejsza"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze mały im Komparativ ein, passend zu różnica.",
+              "en": "Use the comparative of mały in agreement with różnica."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " aplikację jako dodatek, a nie zamiennik gotówki, z osobą na kasie, która pomoże pierwszym klientom."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Proponuję",
+            "acceptedAnswers": [
+              "Proponuję",
+              "Proponuje"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Proponuję",
+              "Propozycją",
+              "Proponować",
+              "Proponując"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Z punktu widzenia klienta aplikacja jest wygodniejsza, ale dla sklepu największe ",
+        "answer": "ryzyko",
+        "acceptedAnswers": [
+          "ryzyko",
+          "zagrożenie",
+          "zagrozenie",
+          "niebezpieczeństwo",
+          "niebezpieczenstwo"
+        ],
+        "after": " to awaria systemu w godzinach szczytu.",
+        "fallbackChoices": [
+          "ryzyko",
+          "ryzyka",
+          "ryzykiem",
+          "ryzyku"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Kosten gegeneinander abwägen",
+          "en": "Weigh costs against each other"
+        },
+        "rule": {
+          "de": "Jeśli zestawić X z Y eröffnet einen Vergleich, aus dem der folgende Satz eine Folgerung zieht.",
+          "en": "Jeśli zestawić X z Y introduces a comparison from which the following clause draws a conclusion."
+        },
+        "examples": [
+          {
+            "targetText": "Jeśli zestawić prowizję z kosztem liczenia i wożenia gotówki do banku, różnica jest mniejsza, niż się wydaje.",
+            "base": {
+              "de": "Vergleicht man die Gebühr mit den Kosten für das Zählen und den Transport des Bargelds zur Bank, ist der Unterschied kleiner, als es scheint.",
+              "en": "If you compare the fee with the cost of counting and taking cash to the bank, the difference is smaller than it seems."
+            },
+            "highlights": [
+              "Jeśli zestawić",
+              "z kosztem"
+            ]
+          },
+          {
+            "targetText": "Jeśli zestawić cenę biletu z kosztem paliwa, autobus jest tańszy.",
+            "base": {
+              "de": "Vergleicht man den Ticketpreis mit den Kraftstoffkosten, ist der Bus günstiger.",
+              "en": "If you compare the ticket price with fuel costs, the bus is cheaper."
+            },
+            "highlights": [
+              "Jeśli zestawić",
+              "z kosztem"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "ryzyko",
+          "kind": "noun",
+          "base": {
+            "de": "Risiko",
+            "en": "risk"
+          },
+          "acceptedAnswers": [
+            "ryzyko"
+          ]
+        },
+        {
+          "targetText": "Z punktu widzenia",
+          "kind": "frame",
+          "base": {
+            "de": "aus der Sicht von",
+            "en": "from the point of view of"
+          },
+          "acceptedAnswers": [
+            "Z punktu widzenia"
+          ]
+        },
+        {
+          "targetText": "Jeśli zestawić",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man vergleicht",
+            "en": "if one compares"
+          },
+          "acceptedAnswers": [
+            "Jeśli zestawić",
+            "Jesli zestawic"
+          ]
+        },
+        {
+          "targetText": "awaria",
+          "kind": "noun",
+          "base": {
+            "de": "Ausfall",
+            "en": "failure"
+          },
+          "acceptedAnswers": [
+            "awaria"
+          ]
+        },
+        {
+          "targetText": "prowizja",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühr; Provision",
+            "en": "fee; commission"
+          },
+          "acceptedAnswers": [
+            "prowizja"
+          ]
+        },
+        {
+          "targetText": "liczenia",
+          "kind": "noun",
+          "base": {
+            "de": "des Zählens",
+            "en": "of counting"
+          },
+          "acceptedAnswers": [
+            "liczenia"
+          ],
+          "lemma": "liczenie"
+        },
+        {
+          "targetText": "zamiennik",
+          "kind": "noun",
+          "base": {
+            "de": "Ersatz",
+            "en": "replacement"
+          },
+          "acceptedAnswers": [
+            "zamiennik"
+          ]
+        },
+        {
+          "targetText": "pomoże",
+          "kind": "verb",
+          "base": {
+            "de": "wird helfen",
+            "en": "will help"
+          },
+          "acceptedAnswers": [
+            "pomoże",
+            "pomoze"
+          ],
+          "lemma": "pomóc"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "aplikacja",
+            "ryzyko",
+            "awaria"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "zestawić",
+            "prowizję",
+            "różnica"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "proponuję",
+            "dodatek",
+            "zamiennik"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "ryzyko",
+        "familyKey": "ryzyko",
+        "surface": "ryzyko",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Z punktu widzenia klienta aplikacja jest wygodniejsza, ale dla sklepu największe ryzyko to awaria systemu w godzinach szczytu.",
+          "base": {
+            "de": "Aus Kundensicht ist die App bequemer, aber für den Laden ist ein Systemausfall zu Stoßzeiten das größte Risiko.",
+            "en": "From the customer's point of view, the app is more convenient, but for the shop the biggest risk is a system failure at peak times."
+          }
+        },
+        "base": {
+          "de": "Risiko",
+          "en": "risk"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "class-vs-app",
+      "title": {
+        "de": "Kurs oder App",
+        "en": "Course or app"
+      },
+      "situation": {
+        "de": "Ein Bekannter vergleicht einen Spanischkurs mit einer Lern-App.",
+        "en": "A friend compares a Spanish course with a learning app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "ty",
+          "ty",
+          "ty"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Bekannter",
+            "en": "male friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Beim Gespräch über Spanischlernen sagt er: „Chcę się uczyć hiszpańskiego. Kurs w szkole kosztuje tysiąc dwieście, a aplikacja sto rocznie. Aplikacja chyba wystarczy, nie?”",
+        "en": "While discussing learning Spanish, he says: „Chcę się uczyć hiszpańskiego. Kurs w szkole kosztuje tysiąc dwieście, a aplikacja sto rocznie. Aplikacja chyba wystarczy, nie?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Chcę się uczyć hiszpańskiego. Kurs w szkole kosztuje tysiąc dwieście, a aplikacja sto rocznie. Aplikacja chyba wystarczy, nie?",
+          "base": {
+            "de": "Ich will Spanisch lernen. Der Schulkurs kostet eintausendzweihundert, die App hundert im Jahr. Die App reicht wohl, oder?",
+            "en": "I want to learn Spanish. The school course costs one thousand two hundred, and the app costs one hundred a year. The app should be enough, right?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Aplikacja dobrze uczy słówek, ale wątpię, żeby sama nauczyła cię mówić, bo nikt nie poprawia twojej wymowy ani gramatyki.",
+          "base": {
+            "de": "Mit der App lernt man gut Vokabeln, aber ich bezweifle, dass sie dir allein das Sprechen beibringt, denn niemand korrigiert deine Aussprache oder Grammatik.",
+            "en": "The app teaches vocabulary well, but I doubt it can teach you to speak on its own, because nobody corrects your pronunciation or grammar."
+          },
+          "move": "position",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Mój kuzyn nauczył się tylko z aplikacji i mówi całkiem nieźle. To chyba kwestia samodyscypliny.",
+          "base": {
+            "de": "Mein Cousin hat nur mit einer App gelernt und spricht ziemlich gut. Das ist wohl eine Frage der Selbstdisziplin.",
+            "en": "My cousin learned only with an app and speaks quite well. I suppose it's a matter of self-discipline."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zgadzam się, że przy dużej samodyscyplinie da się dużo osiągnąć, ale twój kuzyn ćwiczył też z ludźmi w pracy.",
+          "base": {
+            "de": "Ich stimme zu, dass man mit viel Selbstdisziplin viel erreichen kann, aber dein Cousin hat auch mit Leuten bei der Arbeit geübt.",
+            "en": "I agree that with strong self-discipline you can achieve a lot, but your cousin also practised with people at work."
+          },
+          "move": "concede",
+          "register": "ty"
+        },
+        {
+          "speaker": "them",
+          "targetText": "No dobra. Mam tylko tysiąc złotych i trzy miesiące do wyjazdu. Jak to rozegrać?",
+          "base": {
+            "de": "Na gut. Ich habe nur eintausend Złoty und drei Monate bis zur Reise. Wie gehen wir vor?",
+            "en": "All right. I have only one thousand zlotys and three months before the trip. How should we approach it?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "W tej sytuacji aplikacja na słówka plus dwie godziny tygodniowo z korepetytorem online po trzydzieści złotych; to zmieści się w budżecie.",
+          "base": {
+            "de": "In diesem Fall eine App für Vokabeln plus zwei Stunden pro Woche mit einer Online-Nachhilfekraft für je dreißig Złoty; das passt ins Budget.",
+            "en": "In that case, an app for vocabulary plus two hours a week with an online tutor at thirty zlotys an hour; that will fit the budget."
+          },
+          "move": "propose",
+          "register": "ty"
+        }
+      ],
+      "build": {
+        "framePrefix": "Aplikacja dobrze uczy słówek, ale ",
+        "chunks": [
+          "wątpię, żeby",
+          "sama nauczyła cię",
+          "mówić,",
+          "bo",
+          "nikt nie poprawia"
+        ],
+        "distractors": [
+          "sama nauczył cię",
+          "nikogo nie poprawia"
+        ],
+        "frameSuffix": " twojej wymowy ani gramatyki."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " przy dużej samodyscyplinie da się dużo osiągnąć, ale twój kuzyn "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " też z ludźmi w pracy."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Zgadzam się, że",
+            "acceptedAnswers": [
+              "Zgadzam się, że",
+              "Zgadzam sie, ze"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Zgadzam się, że",
+              "Zgadzam się na",
+              "Wątpię, żeby",
+              "Nie zgadzam się, że"
+            ]
+          },
+          {
+            "answer": "ćwiczył",
+            "acceptedAnswers": [
+              "ćwiczył",
+              "cwiczyl"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze ćwiczyć in die dritte Person Singular der Vergangenheit, passend zu kuzyn.",
+              "en": "Use ćwiczyć in the third-person singular past tense, agreeing with kuzyn."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " aplikacja na słówka plus dwie godziny tygodniowo z korepetytorem online po trzydzieści złotych; to zmieści się w budżecie."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "W tej sytuacji",
+            "acceptedAnswers": [
+              "W tej sytuacji"
+            ],
+            "kind": "frame",
+            "choices": [
+              "W tej sytuacji",
+              "W tego sytuacji",
+              "W tę sytuacji",
+              "W tym sytuacji"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Aplikacja dobrze uczy słówek, ale ",
+        "answer": "wątpię",
+        "acceptedAnswers": [
+          "wątpię",
+          "watpie",
+          "nie sądzę",
+          "nie sadze",
+          "nie wierzę",
+          "nie wierze"
+        ],
+        "after": ", żeby sama nauczyła cię mówić, bo nikt nie poprawia twojej wymowy ani gramatyki.",
+        "fallbackChoices": [
+          "wątpię",
+          "wątpliwości",
+          "wątpiąc",
+          "wątpieniu"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Begründete Zweifel äußern",
+          "en": "Express a reasoned doubt"
+        },
+        "rule": {
+          "de": "Nach wątpię, żeby steht das Verb in der Vergangenheitsform und drückt eine bezweifelte Möglichkeit aus.",
+          "en": "After wątpię, żeby the verb takes its past-tense form and expresses a doubted possibility."
+        },
+        "examples": [
+          {
+            "targetText": "Aplikacja dobrze uczy słówek, ale wątpię, żeby sama nauczyła cię mówić, bo nikt nie poprawia twojej wymowy ani gramatyki.",
+            "base": {
+              "de": "Mit der App lernt man gut Vokabeln, aber ich bezweifle, dass sie dir allein das Sprechen beibringt, denn niemand korrigiert deine Aussprache oder Grammatik.",
+              "en": "The app teaches vocabulary well, but I doubt it can teach you to speak on its own, because nobody corrects your pronunciation or grammar."
+            },
+            "highlights": [
+              "wątpię, żeby",
+              "nauczyła"
+            ]
+          },
+          {
+            "targetText": "Wątpię, żeby ta książka zastąpiła rozmowę z drugą osobą.",
+            "base": {
+              "de": "Ich bezweifle, dass dieses Buch das Gespräch mit einer anderen Person ersetzt.",
+              "en": "I doubt that this book can replace talking to another person."
+            },
+            "highlights": [
+              "Wątpię, żeby",
+              "zastąpiła"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "wątpię",
+          "kind": "verb",
+          "base": {
+            "de": "ich bezweifle",
+            "en": "I doubt"
+          },
+          "acceptedAnswers": [
+            "wątpię",
+            "watpie"
+          ],
+          "lemma": "wątpić"
+        },
+        {
+          "targetText": "Zgadzam się, że",
+          "kind": "frame",
+          "base": {
+            "de": "Ich stimme zu, dass",
+            "en": "I agree that"
+          },
+          "acceptedAnswers": [
+            "Zgadzam się, że",
+            "Zgadzam sie, ze"
+          ]
+        },
+        {
+          "targetText": "W tej sytuacji",
+          "kind": "frame",
+          "base": {
+            "de": "in diesem Fall",
+            "en": "in that situation"
+          },
+          "acceptedAnswers": [
+            "W tej sytuacji"
+          ]
+        },
+        {
+          "targetText": "wymowy",
+          "kind": "noun",
+          "base": {
+            "de": "Aussprache",
+            "en": "pronunciation"
+          },
+          "acceptedAnswers": [
+            "wymowy"
+          ],
+          "lemma": "wymowa"
+        },
+        {
+          "targetText": "samodyscypliny",
+          "kind": "noun",
+          "base": {
+            "de": "Selbstdisziplin",
+            "en": "self-discipline"
+          },
+          "acceptedAnswers": [
+            "samodyscypliny"
+          ],
+          "lemma": "samodyscyplina"
+        },
+        {
+          "targetText": "osiągnąć",
+          "kind": "verb",
+          "base": {
+            "de": "erreichen",
+            "en": "achieve"
+          },
+          "acceptedAnswers": [
+            "osiągnąć",
+            "osiagnac"
+          ]
+        },
+        {
+          "targetText": "korepetytorem",
+          "kind": "noun",
+          "base": {
+            "de": "Nachhilfekraft",
+            "en": "tutor"
+          },
+          "acceptedAnswers": [
+            "korepetytorem"
+          ],
+          "lemma": "korepetytor"
+        },
+        {
+          "targetText": "budżecie",
+          "kind": "noun",
+          "base": {
+            "de": "Budget",
+            "en": "budget"
+          },
+          "acceptedAnswers": [
+            "budżecie",
+            "budzecie"
+          ],
+          "lemma": "budżet"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "wątpię",
+            "nauczyła",
+            "poprawia"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "zgadzam",
+            "samodyscyplinie",
+            "ćwiczył"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "aplikacja",
+            "tygodniowo",
+            "budżecie"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "wątpić",
+        "familyKey": "wątpić",
+        "surface": "wątpię",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Aplikacja dobrze uczy słówek, ale wątpię, żeby sama nauczyła cię mówić, bo nikt nie poprawia twojej wymowy ani gramatyki.",
+          "base": {
+            "de": "Mit der App lernt man gut Vokabeln, aber ich bezweifle, dass sie dir allein das Sprechen beibringt, denn niemand korrigiert deine Aussprache oder Grammatik.",
+            "en": "The app teaches vocabulary well, but I doubt it can teach you to speak on its own, because nobody corrects your pronunciation or grammar."
+          }
+        },
+        "base": {
+          "de": "bezweifeln",
+          "en": "doubt"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "two-job-offers",
+      "title": {
+        "de": "Zwischen zwei Jobangeboten",
+        "en": "Between two job offers"
+      },
+      "situation": {
+        "de": "Bei einem Kaffee besprechen Sie zwei unterschiedliche Jobangebote mit einem Mentor.",
+        "en": "Over coffee, you discuss two different job offers with a mentor."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Mentor",
+            "en": "male mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Der Mentor eröffnet das Gespräch: „Dwie oferty na stole: korporacja z wyższą pensją i startup z udziałami. Co przemawia za którą?”",
+        "en": "The mentor opens the conversation: „Dwie oferty na stole: korporacja z wyższą pensją i startup z udziałami. Co przemawia za którą?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Dwie oferty na stole: korporacja z wyższą pensją i startup z udziałami. Co przemawia za którą?",
+          "base": {
+            "de": "Zwei Angebote liegen auf dem Tisch: ein Konzern mit höherem Gehalt und ein Start-up mit Anteilen. Was spricht jeweils dafür?",
+            "en": "Two offers are on the table: a corporation with a higher salary and a startup with shares. What speaks in favour of each?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Skłaniam się ku startupowi, bo nauczę się tam o wiele więcej, chociaż pensja w korporacji jest o trzydzieści procent wyższa.",
+          "base": {
+            "de": "Ich tendiere zum Start-up, weil ich dort viel mehr lernen werde, obwohl das Gehalt im Konzern dreißig Prozent höher ist.",
+            "en": "I'm leaning towards the startup because I'll learn much more there, although the salary at the corporation is thirty percent higher."
+          },
+          "move": "position",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Udziały w startupie często nie są nic warte. Z pięciu startupów, które znam, trzy upadły w ciągu dwóch lat.",
+          "base": {
+            "de": "Start-up-Anteile sind oft nichts wert. Von fünf Start-ups, die ich kenne, sind drei innerhalb von zwei Jahren gescheitert.",
+            "en": "Startup shares are often worthless. Of five startups I know, three failed within two years."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "To prawda, ryzyko jest realne, ale w moim wieku mogę sobie pozwolić na jedną nieudaną próbę.",
+          "base": {
+            "de": "Das stimmt, das Risiko ist real, aber in meinem Alter kann ich mir einen gescheiterten Versuch leisten.",
+            "en": "That's true, the risk is real, but at my age I can afford one unsuccessful attempt."
+          },
+          "move": "concede",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Korporacja właśnie dorzuciła możliwość pracy nad własnym projektem jeden dzień w tygodniu. Czy to coś zmienia?",
+          "base": {
+            "de": "Der Konzern hat gerade die Möglichkeit ergänzt, einen Tag pro Woche an einem eigenen Projekt zu arbeiten. Ändert das etwas?",
+            "en": "The corporation has just added the option of working on your own project one day a week. Does that change anything?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zmienia sporo, ale ostatecznie wybieram startup, bo jeden dzień tygodniowo to za mało, żeby naprawdę się rozwijać.",
+          "base": {
+            "de": "Das ändert einiges, aber letztendlich wähle ich das Start-up, denn ein Tag pro Woche ist zu wenig, um mich wirklich weiterzuentwickeln.",
+            "en": "It changes quite a lot, but ultimately I choose the startup, because one day a week is too little to really develop."
+          },
+          "move": "conclude",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Skłaniam się ku startupowi,",
+          "bo",
+          "nauczę się tam",
+          "o wiele więcej,",
+          "chociaż"
+        ],
+        "distractors": [
+          "Skłaniam się ku startupu",
+          "o wielu więcej"
+        ],
+        "frameSuffix": " pensja w korporacji jest o trzydzieści procent wyższa."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", ryzyko jest realne, ale w moim wieku mogę sobie pozwolić na jedną "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " próbę."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "To prawda",
+            "acceptedAnswers": [
+              "To prawda"
+            ],
+            "kind": "frame",
+            "choices": [
+              "To prawda",
+              "Nic podobnego",
+              "Wręcz przeciwnie",
+              "Nie zgadzam się"
+            ]
+          },
+          {
+            "answer": "nieudaną",
+            "acceptedAnswers": [
+              "nieudaną",
+              "nieudana"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze nieudany passend zu próbę ein.",
+              "en": "Use nieudany in agreement with próbę."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Zmienia sporo, ale "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " wybieram startup, bo jeden dzień tygodniowo to za mało, żeby naprawdę się rozwijać."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ostatecznie",
+            "acceptedAnswers": [
+              "ostatecznie"
+            ],
+            "kind": "connector",
+            "choices": [
+              "ostatecznie",
+              "ostateczny",
+              "ostatecznego",
+              "ostateczną"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Skłaniam",
+        "acceptedAnswers": [
+          "Skłaniam",
+          "Sklaniam"
+        ],
+        "after": " się ku startupowi, bo nauczę się tam o wiele więcej, chociaż pensja w korporacji jest o trzydzieści procent wyższa.",
+        "fallbackChoices": [
+          "Skłaniam",
+          "Skłaniając",
+          "Skłanianiu",
+          "Skłaniać"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Eine Tendenz begründen",
+          "en": "Explain a preference"
+        },
+        "rule": {
+          "de": "Skłaniam się ku verlangt den Dativ und drückt hier eine noch nicht endgültige Präferenz aus.",
+          "en": "Skłaniam się ku takes the dative and expresses a preference that is not yet final here."
+        },
+        "examples": [
+          {
+            "targetText": "Skłaniam się ku startupowi, bo nauczę się tam o wiele więcej, chociaż pensja w korporacji jest o trzydzieści procent wyższa.",
+            "base": {
+              "de": "Ich tendiere zum Start-up, weil ich dort viel mehr lernen werde, obwohl das Gehalt im Konzern dreißig Prozent höher ist.",
+              "en": "I'm leaning towards the startup because I'll learn much more there, although the salary at the corporation is thirty percent higher."
+            },
+            "highlights": [
+              "Skłaniam się ku startupowi"
+            ]
+          },
+          {
+            "targetText": "Skłaniam się ku drugiej ofercie, bo daje więcej czasu na naukę.",
+            "base": {
+              "de": "Ich tendiere zum zweiten Angebot, weil es mehr Zeit zum Lernen lässt.",
+              "en": "I'm leaning towards the second offer because it allows more time for learning."
+            },
+            "highlights": [
+              "Skłaniam się ku drugiej ofercie"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Skłaniam",
+          "kind": "verb",
+          "base": {
+            "de": "ich neige zu, ich tendiere zu (skłaniam się ku)",
+            "en": "I lean towards (skłaniam się ku)"
+          },
+          "acceptedAnswers": [
+            "Skłaniam",
+            "Sklaniam"
+          ],
+          "lemma": "skłaniać"
+        },
+        {
+          "targetText": "chociaż",
+          "kind": "connector",
+          "base": {
+            "de": "obwohl",
+            "en": "although"
+          },
+          "acceptedAnswers": [
+            "chociaż",
+            "chociaz"
+          ]
+        },
+        {
+          "targetText": "ostatecznie",
+          "kind": "connector",
+          "base": {
+            "de": "letztendlich",
+            "en": "ultimately"
+          },
+          "acceptedAnswers": [
+            "ostatecznie"
+          ]
+        },
+        {
+          "targetText": "udziałami",
+          "kind": "noun",
+          "base": {
+            "de": "Anteilen",
+            "en": "shares"
+          },
+          "acceptedAnswers": [
+            "udziałami",
+            "udzialami"
+          ],
+          "lemma": "udział"
+        },
+        {
+          "targetText": "pensja",
+          "kind": "noun",
+          "base": {
+            "de": "Gehalt",
+            "en": "salary"
+          },
+          "acceptedAnswers": [
+            "pensja"
+          ]
+        },
+        {
+          "targetText": "upadły",
+          "kind": "verb",
+          "base": {
+            "de": "sie scheiterten",
+            "en": "they failed"
+          },
+          "acceptedAnswers": [
+            "upadły",
+            "upadly"
+          ],
+          "lemma": "upaść"
+        },
+        {
+          "targetText": "próbę",
+          "kind": "noun",
+          "base": {
+            "de": "Versuch",
+            "en": "attempt"
+          },
+          "acceptedAnswers": [
+            "próbę",
+            "probe"
+          ],
+          "lemma": "próba"
+        },
+        {
+          "targetText": "rozwijać",
+          "kind": "verb",
+          "base": {
+            "de": "entwickeln",
+            "en": "develop"
+          },
+          "acceptedAnswers": [
+            "rozwijać",
+            "rozwijac"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "skłaniam",
+            "startupowi",
+            "nauczę"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "ryzyko",
+            "realne",
+            "próbę"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "ostatecznie",
+            "wybieram",
+            "rozwijać"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "skłaniać",
+        "familyKey": "skłaniać",
+        "surface": "Skłaniam",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Skłaniam się ku startupowi, bo nauczę się tam o wiele więcej, chociaż pensja w korporacji jest o trzydzieści procent wyższa.",
+          "base": {
+            "de": "Ich tendiere zum Start-up, weil ich dort viel mehr lernen werde, obwohl das Gehalt im Konzern dreißig Prozent höher ist.",
+            "en": "I'm leaning towards the startup because I'll learn much more there, although the salary at the corporation is thirty percent higher."
+          }
+        },
+        "base": {
+          "de": "sich neigen zu, tendieren zu (skłaniać się ku)",
+          "en": "lean towards, incline towards (skłaniać się ku)"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "move-or-stay",
+      "title": {
+        "de": "Umziehen oder bleiben",
+        "en": "Move or stay"
+      },
+      "situation": {
+        "de": "Im Treppenhaus spricht eine Nachbarin Sie auf ein Jobangebot in einer anderen Stadt an.",
+        "en": "In the stairwell, a neighbour asks about a job offer in another city."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Ältere Nachbarin",
+            "en": "older female neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Nachbarin sagt: „Słyszałam o propozycji pracy w Gdańsku. To trudna decyzja: zostać czy wyjechać?”",
+        "en": "The neighbour says: „Słyszałam o propozycji pracy w Gdańsku. To trudna decyzja: zostać czy wyjechać?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Słyszałam o propozycji pracy w Gdańsku. To trudna decyzja: zostać czy wyjechać?",
+          "base": {
+            "de": "Ich habe von dem Jobangebot in Danzig gehört. Eine schwierige Entscheidung: bleiben oder wegziehen?",
+            "en": "I heard about the job offer in Gdańsk. A difficult decision: stay or move away?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "W porównaniu z Krakowem Gdańsk oferuje wyższe zarobki i mieszkanie bliżej morza, ale tutaj mam rodzinę i znajomych.",
+          "base": {
+            "de": "Im Vergleich zu Krakau bietet Danzig höhere Verdienste und eine Wohnung näher am Meer, aber hier habe ich Familie und Freunde.",
+            "en": "Compared with Kraków, Gdańsk offers higher earnings and a flat closer to the sea, but here I have family and friends."
+          },
+          "move": "compare",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Rodzina to podstawa. Ja wyjechałam kiedyś za pracą i żałowałam. A gdyby praca w Gdańsku okazała się rozczarowaniem?",
+          "base": {
+            "de": "Familie ist das Wichtigste. Ich bin einmal wegen der Arbeit weggezogen und habe es bereut. Und wenn die Stelle in Danzig enttäuschend wäre?",
+            "en": "Family comes first. I once moved away for work and regretted it. What if the job in Gdańsk turned out to be disappointing?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Gdyby tak było, mogę wrócić; umowa jest na rok, a mieszkanie tutaj zostawiam bratu, nie sprzedaję.",
+          "base": {
+            "de": "Wenn es so wäre, kann ich zurückkommen; der Vertrag läuft ein Jahr, und die Wohnung hier überlasse ich meinem Bruder, ich verkaufe sie nicht.",
+            "en": "If that happened, I can come back; the contract is for a year, and I'm leaving the flat here to my brother, not selling it."
+          },
+          "move": "rebut",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "W takim razie jaka jest ostateczna decyzja, jeśli można zapytać?",
+          "base": {
+            "de": "Wie lautet dann die endgültige Entscheidung, wenn ich fragen darf?",
+            "en": "So what is the final decision, if I may ask?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ostatecznie jadę na ten rok, w przeciwnym razie zawsze będę się zastanawiać, co by było.",
+          "base": {
+            "de": "Letztendlich fahre ich für dieses eine Jahr hin, sonst werde ich mich immer fragen, was gewesen wäre.",
+            "en": "Ultimately I'm going for that year; otherwise I'll always wonder what might have been."
+          },
+          "move": "conclude",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "W porównaniu z Krakowem Gdańsk ",
+        "chunks": [
+          "oferuje",
+          "wyższe zarobki",
+          "i mieszkanie",
+          "bliżej morza,",
+          "ale",
+          "tutaj mam"
+        ],
+        "distractors": [
+          "wyższych zarobków",
+          "bliższy morza"
+        ],
+        "frameSuffix": " rodzinę i znajomych."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", mogę wrócić; umowa jest na rok, a mieszkanie tutaj zostawiam bratu, nie "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Gdyby tak było",
+            "acceptedAnswers": [
+              "Gdyby tak było",
+              "Gdyby tak bylo"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Gdyby tak było",
+              "Gdyby tak jest",
+              "Gdyby tak będzie",
+              "Gdyby tak byłoby"
+            ]
+          },
+          {
+            "answer": "sprzedaję",
+            "acceptedAnswers": [
+              "sprzedaję",
+              "sprzedaje"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze sprzedawać in die erste Person Singular der Gegenwart.",
+              "en": "Use sprzedawać in the first-person singular present tense."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Ostatecznie jadę na ten rok, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " zawsze będę się zastanawiać, co by było."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "w przeciwnym razie",
+            "acceptedAnswers": [
+              "w przeciwnym razie"
+            ],
+            "kind": "frame",
+            "choices": [
+              "w przeciwnym razie",
+              "w przeciwny razie",
+              "w przeciwnego razie",
+              "w przeciwnej razie"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "W ",
+        "answer": "porównaniu",
+        "acceptedAnswers": [
+          "porównaniu",
+          "porownaniu",
+          "zestawieniu"
+        ],
+        "after": " z Krakowem Gdańsk oferuje wyższe zarobki i mieszkanie bliżej morza, ale tutaj mam rodzinę i znajomych.",
+        "fallbackChoices": [
+          "porównaniu",
+          "porównanie",
+          "porównania",
+          "porównaniem"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine Rückfalloption erklären",
+          "en": "Explain a fallback option"
+        },
+        "rule": {
+          "de": "Gdyby tak było greift eine gedachte Situation auf und leitet die Antwort darauf ein.",
+          "en": "Gdyby tak było refers back to a hypothetical situation and introduces the response to it."
+        },
+        "examples": [
+          {
+            "targetText": "Gdyby tak było, mogę wrócić; umowa jest na rok, a mieszkanie tutaj zostawiam bratu, nie sprzedaję.",
+            "base": {
+              "de": "Wenn es so wäre, kann ich zurückkommen; der Vertrag läuft ein Jahr, und die Wohnung hier überlasse ich meinem Bruder, ich verkaufe sie nicht.",
+              "en": "If that happened, I can come back; the contract is for a year, and I'm leaving the flat here to my brother, not selling it."
+            },
+            "highlights": [
+              "Gdyby tak było"
+            ]
+          },
+          {
+            "targetText": "Gdyby tak było, mam jeszcze drugą ofertę i mogę zmienić plan.",
+            "base": {
+              "de": "Wenn es so wäre, habe ich noch ein zweites Angebot und kann den Plan ändern.",
+              "en": "If that happened, I still have a second offer and can change the plan."
+            },
+            "highlights": [
+              "Gdyby tak było"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "porównaniu",
+          "kind": "noun",
+          "base": {
+            "de": "Vergleich",
+            "en": "comparison"
+          },
+          "acceptedAnswers": [
+            "porównaniu",
+            "porownaniu"
+          ],
+          "lemma": "porównanie"
+        },
+        {
+          "targetText": "Gdyby tak było",
+          "kind": "frame",
+          "base": {
+            "de": "wenn es so wäre",
+            "en": "if that happened"
+          },
+          "acceptedAnswers": [
+            "Gdyby tak było",
+            "Gdyby tak bylo"
+          ]
+        },
+        {
+          "targetText": "w przeciwnym razie",
+          "kind": "frame",
+          "base": {
+            "de": "andernfalls",
+            "en": "otherwise"
+          },
+          "acceptedAnswers": [
+            "w przeciwnym razie"
+          ]
+        },
+        {
+          "targetText": "zarobki",
+          "kind": "noun",
+          "base": {
+            "de": "Verdienst",
+            "en": "earnings"
+          },
+          "acceptedAnswers": [
+            "zarobki"
+          ],
+          "lemma": "zarobek"
+        },
+        {
+          "targetText": "rozczarowaniem",
+          "kind": "noun",
+          "base": {
+            "de": "Enttäuschung",
+            "en": "disappointment"
+          },
+          "acceptedAnswers": [
+            "rozczarowaniem"
+          ],
+          "lemma": "rozczarowanie"
+        },
+        {
+          "targetText": "umowa",
+          "kind": "noun",
+          "base": {
+            "de": "Vertrag",
+            "en": "contract"
+          },
+          "acceptedAnswers": [
+            "umowa"
+          ]
+        },
+        {
+          "targetText": "sprzedaję",
+          "kind": "verb",
+          "base": {
+            "de": "ich verkaufe",
+            "en": "I sell"
+          },
+          "acceptedAnswers": [
+            "sprzedaję",
+            "sprzedaje"
+          ],
+          "lemma": "sprzedawać"
+        },
+        {
+          "targetText": "ostateczna",
+          "kind": "adjective",
+          "base": {
+            "de": "endgültig",
+            "en": "final"
+          },
+          "acceptedAnswers": [
+            "ostateczna"
+          ],
+          "lemma": "ostateczny"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "oferuje",
+            "zarobki",
+            "mieszkanie"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "wrócić",
+            "umowa",
+            "sprzedaję"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "ostatecznie",
+            "przeciwnym",
+            "zastanawiać"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "porównanie",
+        "familyKey": "porównanie",
+        "surface": "porównaniu",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "W porównaniu z Krakowem Gdańsk oferuje wyższe zarobki i mieszkanie bliżej morza, ale tutaj mam rodzinę i znajomych.",
+          "base": {
+            "de": "Im Vergleich zu Krakau bietet Danzig höhere Verdienste und eine Wohnung näher am Meer, aber hier habe ich Familie und Freunde.",
+            "en": "Compared with Kraków, Gdańsk offers higher earnings and a flat closer to the sea, but here I have family and friends."
+          }
+        },
+        "base": {
+          "de": "Vergleich",
+          "en": "comparison"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "courtyard-options",
+      "title": {
+        "de": "Drei Ideen für den Hof",
+        "en": "Three ideas for the courtyard"
+      },
+      "situation": {
+        "de": "Die Gemeinschaft vergleicht drei Vorschläge zur Gestaltung ihres Hofs.",
+        "en": "The residents' association compares three proposals for its courtyard."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Pan",
+          "Pan",
+          "Pan"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "partner",
+          "role": {
+            "de": "Vorsitzender der Eigentümergemeinschaft",
+            "en": "chairman of the residents' association"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Versammlung sagt der Vorsitzende: „Mamy trzy warianty zagospodarowania podwórka: parking, plac zabaw albo ogród sąsiedzki. Prosimy o rekomendację.”",
+        "en": "At the meeting, the chairman says: „Mamy trzy warianty zagospodarowania podwórka: parking, plac zabaw albo ogród sąsiedzki. Prosimy o rekomendację.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mamy trzy warianty zagospodarowania podwórka: parking, plac zabaw albo ogród sąsiedzki. Prosimy o rekomendację.",
+          "base": {
+            "de": "Wir haben drei Varianten für die Hofgestaltung: Parkplatz, Spielplatz oder Gemeinschaftsgarten. Wir bitten um eine Empfehlung.",
+            "en": "We have three options for the courtyard: parking, a playground or a communal garden. We'd like a recommendation."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Po rozważeniu wszystkich trzech wariantów radzę wybrać ogród, bo jest najtańszy z całej trójki, podczas gdy parking byłby najdroższy, a plac zabaw służy tylko dzieciom.",
+          "base": {
+            "de": "Nach Abwägung aller drei Varianten rate ich zum Garten, denn er ist von allen am günstigsten, während der Parkplatz am teuersten wäre und der Spielplatz nur Kindern dient.",
+            "en": "Having considered all three options, I recommend the garden because it is the cheapest of the three, whereas parking would be the most expensive and the playground serves only children."
+          },
+          "move": "position",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ale dwadzieścia rodzin ma samochody i nie ma gdzie parkować. Ogród nie rozwiąże tego problemu.",
+          "base": {
+            "de": "Aber zwanzig Familien haben Autos und keinen Parkplatz. Ein Garten löst dieses Problem nicht.",
+            "en": "But twenty families have cars and nowhere to park. A garden won't solve that problem."
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Można połączyć warianty: ogród na dwóch trzecich podwórka i osiem miejsc parkingowych przy bramie.",
+          "base": {
+            "de": "Man kann die Varianten verbinden: ein Garten auf zwei Dritteln des Hofs und acht Parkplätze am Tor.",
+            "en": "The options can be combined: a garden on two thirds of the courtyard and eight parking spaces by the gate."
+          },
+          "move": "counteroffer",
+          "register": "Pan"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Budżet pozwala jednak tylko na jeden wariant w tym roku. Który ma być pierwszy?",
+          "base": {
+            "de": "Das Budget erlaubt dieses Jahr aber nur eine Variante. Welche soll zuerst kommen?",
+            "en": "The budget only allows one option this year, though. Which should come first?"
+          },
+          "interlocutorId": "partner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Podsumowując: w tym roku ogród, bo jest najtańszy, a parking w przyszłym, gdyby wspólnota nadal go potrzebowała.",
+          "base": {
+            "de": "Zusammenfassend: dieses Jahr der Garten, weil er am günstigsten ist, und nächstes Jahr der Parkplatz, falls die Gemeinschaft ihn weiterhin benötigt.",
+            "en": "To sum up: the garden this year because it is the cheapest, and parking next year if the association still needs it."
+          },
+          "move": "summarize",
+          "register": "Pan"
+        }
+      ],
+      "build": {
+        "framePrefix": "Po rozważeniu wszystkich trzech wariantów ",
+        "chunks": [
+          "radzę wybrać",
+          "ogród,",
+          "bo",
+          "jest",
+          "najtańszy z całej trójki,",
+          "podczas gdy"
+        ],
+        "distractors": [
+          "radzę wybieram",
+          "jest najtańsza"
+        ],
+        "frameSuffix": " parking byłby najdroższy, a plac zabaw służy tylko dzieciom."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " warianty: ogród na "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " podwórka i osiem miejsc parkingowych przy bramie."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Można połączyć",
+            "acceptedAnswers": [
+              "Można połączyć",
+              "Mozna polaczyc"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Można połączyć",
+              "Można połączę",
+              "Można połączył",
+              "Można połączenia"
+            ]
+          },
+          {
+            "answer": "dwóch trzecich",
+            "acceptedAnswers": [
+              "dwóch trzecich",
+              "dwoch trzecich",
+              "dwu trzecich"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "Setze dwie trzecie in die Form ein, die nach na für die Lage verlangt wird.",
+              "en": "Use dwie trzecie in the form required after na for a location."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": w tym roku ogród, bo jest najtańszy, a parking w przyszłym, gdyby wspólnota nadal go potrzebowała."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Podsumowując",
+            "acceptedAnswers": [
+              "Podsumowując",
+              "Podsumowujac"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Podsumowując",
+              "Podsumowaniu",
+              "Podsumowania",
+              "Podsumowaniem"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Po rozważeniu wszystkich trzech wariantów ",
+        "answer": "radzę",
+        "acceptedAnswers": [
+          "radzę",
+          "radze",
+          "proponuję",
+          "proponuje",
+          "sugeruję",
+          "sugeruje",
+          "doradzam"
+        ],
+        "after": " wybrać ogród, bo jest najtańszy z całej trójki, podczas gdy parking byłby najdroższy, a plac zabaw służy tylko dzieciom.",
+        "fallbackChoices": [
+          "radzę",
+          "radząc",
+          "radzenia",
+          "radzeniu"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Nach Abwägung empfehlen",
+          "en": "Recommend after considering"
+        },
+        "rule": {
+          "de": "Po rozważeniu mit Genitiv nennt die Grundlage für eine Empfehlung mit radzę und Infinitiv.",
+          "en": "Po rozważeniu with the genitive gives the basis for a recommendation using radzę and an infinitive."
+        },
+        "examples": [
+          {
+            "targetText": "Po rozważeniu wszystkich trzech wariantów radzę wybrać ogród, bo jest najtańszy z całej trójki, podczas gdy parking byłby najdroższy, a plac zabaw służy tylko dzieciom.",
+            "base": {
+              "de": "Nach Abwägung aller drei Varianten rate ich zum Garten, denn er ist von allen am günstigsten, während der Parkplatz am teuersten wäre und der Spielplatz nur Kindern dient.",
+              "en": "Having considered all three options, I recommend the garden because it is the cheapest of the three, whereas parking would be the most expensive and the playground serves only children."
+            },
+            "highlights": [
+              "Po rozważeniu",
+              "radzę wybrać"
+            ]
+          },
+          {
+            "targetText": "Po rozważeniu obu ofert radzę wybrać tańszą, bo zakres prac jest taki sam.",
+            "base": {
+              "de": "Nach Abwägung beider Angebote rate ich zum günstigeren, denn der Arbeitsumfang ist gleich.",
+              "en": "Having considered both offers, I recommend the cheaper one because the scope of work is the same."
+            },
+            "highlights": [
+              "Po rozważeniu",
+              "radzę wybrać"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "radzę",
+          "kind": "verb",
+          "base": {
+            "de": "ich rate",
+            "en": "I advise"
+          },
+          "acceptedAnswers": [
+            "radzę",
+            "radze"
+          ],
+          "lemma": "radzić"
+        },
+        {
+          "targetText": "Po rozważeniu",
+          "kind": "frame",
+          "base": {
+            "de": "nach Abwägung",
+            "en": "having considered"
+          },
+          "acceptedAnswers": [
+            "Po rozważeniu",
+            "Po rozwazeniu"
+          ]
+        },
+        {
+          "targetText": "Podsumowując",
+          "kind": "connector",
+          "base": {
+            "de": "zusammenfassend",
+            "en": "to sum up"
+          },
+          "acceptedAnswers": [
+            "Podsumowując",
+            "Podsumowujac"
+          ]
+        },
+        {
+          "targetText": "wariantów",
+          "kind": "noun",
+          "base": {
+            "de": "Varianten",
+            "en": "options"
+          },
+          "acceptedAnswers": [
+            "wariantów",
+            "wariantow"
+          ],
+          "lemma": "wariant"
+        },
+        {
+          "targetText": "ogród",
+          "kind": "noun",
+          "base": {
+            "de": "Garten",
+            "en": "garden"
+          },
+          "acceptedAnswers": [
+            "ogród",
+            "ogrod"
+          ]
+        },
+        {
+          "targetText": "najtańszy",
+          "kind": "adjective",
+          "base": {
+            "de": "am günstigsten",
+            "en": "cheapest"
+          },
+          "acceptedAnswers": [
+            "najtańszy",
+            "najtanszy"
+          ],
+          "lemma": "tani"
+        },
+        {
+          "targetText": "połączyć",
+          "kind": "verb",
+          "base": {
+            "de": "verbinden",
+            "en": "combine"
+          },
+          "acceptedAnswers": [
+            "połączyć",
+            "polaczyc"
+          ]
+        },
+        {
+          "targetText": "potrzebowała",
+          "kind": "verb",
+          "base": {
+            "de": "sie würde benötigen",
+            "en": "it would need"
+          },
+          "acceptedAnswers": [
+            "potrzebowała",
+            "potrzebowala"
+          ],
+          "lemma": "potrzebować"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "radzę",
+            "ogród",
+            "najtańszy"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "połączyć",
+            "warianty",
+            "parkingowych"
+          ],
+          "profile": "b2-short"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "podsumowując",
+            "najtańszy",
+            "potrzebowała"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "radzić",
+        "familyKey": "radzić",
+        "surface": "radzę",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Po rozważeniu wszystkich trzech wariantów radzę wybrać ogród, bo jest najtańszy z całej trójki, podczas gdy parking byłby najdroższy, a plac zabaw służy tylko dzieciom.",
+          "base": {
+            "de": "Nach Abwägung aller drei Varianten rate ich zum Garten, denn er ist von allen am günstigsten, während der Parkplatz am teuersten wäre und der Spielplatz nur Kindern dient.",
+            "en": "Having considered all three options, I recommend the garden because it is the cheapest of the three, whereas parking would be the most expensive and the playground serves only children."
+          }
+        },
+        "base": {
+          "de": "raten; empfehlen",
+          "en": "advise; recommend"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

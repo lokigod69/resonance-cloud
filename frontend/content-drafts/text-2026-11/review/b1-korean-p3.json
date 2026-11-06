@@ -1,0 +1,37 @@
+{
+  "status": "draft",
+  "checks": "passed",
+  "chains": [
+    {
+      "path": 3,
+      "original": "c045ad3a61d85c9ecb77794f7fa6ffe711520002fa791bb036a055eb2e3a3dc2",
+      "first_pass": "bfa9fedff95fad9b9db47b87bd1c70ae0e5cf0c2e82287223be67a75f3dc88b8",
+      "first_edits": 12,
+      "arbitrated": "9abae76bf3ae7240a0a1207da3e244dae11ebc5e38d72d7df3595ef541cb5253",
+      "arbitration_edits": 36,
+      "independent_findings_sha256": "6426e8eaa880566636b7a4b16f070739bcee21d92b145d298e9b11f4d0ba64dc",
+      "first_response_sha256": "da65b4955a47a0ec96abace91ab99336bbe103e15c6a4a0542688d139e2d2d85",
+      "arbitration_response_sha256": "b4648b5323ffea771bb63d21a7930ae637b1c13055ae1e94c7e8310ff40225c2",
+      "open": []
+    },
+    {
+      "path": 4,
+      "original": "e3c2ada171a198c9fe36fe51f45c45f2a6fc63e89640d786b81a3dee2c9c887d",
+      "first_pass": "58c8434d214a8ad7ffe6569a7c093737d7ca7f0124870bb116148c2d005c82af",
+      "first_edits": 15,
+      "arbitrated": "7845ae98b8ecd9772998f887446b7499a3b9766acd3505851e32b3fa6d23ea23",
+      "arbitration_edits": 31,
+      "independent_findings_sha256": "6426e8eaa880566636b7a4b16f070739bcee21d92b145d298e9b11f4d0ba64dc",
+      "before_residual": "17366191779395a6ed3b618a7b0e3e38451c8dd31fe05f50aca9549b575e2313",
+      "residual_edits": 6,
+      "residual_response_sha256": "55b2daafbedd5e48c68861844c82b77fb781168bc65bdaceaaeed117a0898309",
+      "first_response_sha256": "2dde88590bb3f7d9c33250746ee30b093d40c16b931853fd05a81335289cf003",
+      "arbitration_response_sha256": "2d5825f49c27fa07164da8ec25ee2f957dae5f4451242acb798b420352b75c2d",
+      "open": [
+        "L6 pattern example 2 (같이 먹을 사람은 모두 몇 명이에요?) still parallels the turn-4 frame without the number; carried over from the first arbitration, not reworked here.",
+        "L3 큰 창문 너머로 and L4 안내판에 따르면 remain slightly formal; unchanged because they cascade through chunks, recall and speech tokens.",
+        "L9 staff line now uses the lemma 들르다 (들르셨어요) that all four form choices share; it does not show the -았/었던 form, but a reviewer may still prefer 가셨어요 if any lemma echo is considered too strong."
+      ]
+    }
+  ]
+}

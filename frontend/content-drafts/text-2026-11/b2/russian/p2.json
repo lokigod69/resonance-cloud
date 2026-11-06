@@ -1,0 +1,4130 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Russian",
+  "targetLanguageCode": "ru-RU",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explaining-how-and-why",
+  "pathTitle": {
+    "de": "Wie und warum",
+    "en": "How and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen und Abläufe erklären, Rückfragen präzisieren und Konsequenzen zusammenfassen.",
+    "en": "Explain causes and processes, clarify questions and summarise consequences."
+  },
+  "specRef": {
+    "pathSpec": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+    "ledger": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+    "ledgerSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "russian-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "invoice-differs",
+      "title": {
+        "de": "Die zusätzliche Rechnungszeile",
+        "en": "The extra invoice line"
+      },
+      "situation": {
+        "de": "Die Buchhaltung fragt nach einer Abweichung zwischen einer Rechnung und dem Vertrag.",
+        "en": "An accountant asks about a discrepancy between an invoice and the contract."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Buchhaltung",
+            "en": "accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung fragt nach einer Abweichung zwischen einer Rechnung und dem Vertrag. Die andere Person sagt: „В счёте за октябрь сумма на три тысячи больше, чем в договоре. Объясните, пожалуйста.“",
+        "en": "An accountant asks about a discrepancy between an invoice and the contract. The other person says: “В счёте за октябрь сумма на три тысячи больше, чем в договоре. Объясните, пожалуйста.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "В счёте за октябрь сумма на три тысячи больше, чем в договоре. Объясните, пожалуйста.",
+          "base": {
+            "de": "Die Oktoberrechnung liegt dreitausend über der Vertragssumme. Erklären Sie das bitte.",
+            "en": "The October invoice is three thousand above the contract amount. Please explain."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Причина простая: в октябре было две дополнительные доставки, потому что склад попросил срочную партию, и они указаны отдельной строкой.",
+          "base": {
+            "de": "Der Grund ist einfach: Im Oktober gab es zwei zusätzliche Lieferungen, weil das Lager eine dringende Partie angefordert hat; sie stehen in einer eigenen Zeile.",
+            "en": "The reason is simple: there were two extra deliveries in October because the warehouse requested an urgent batch, and they are listed separately."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но в договоре срочные доставки не упоминаются. На каком основании они оплачиваются?",
+          "base": {
+            "de": "Im Vertrag werden dringende Lieferungen aber nicht erwähnt. Auf welcher Grundlage werden sie berechnet?",
+            "en": "But urgent deliveries are not mentioned in the contract. On what basis are they being charged?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Я имею в виду пункт о внеплановых заказах: он на второй странице, и там как раз тариф за срочность.",
+          "base": {
+            "de": "Ich meine die Klausel zu außerplanmäßigen Aufträgen auf der zweiten Seite; dort steht der Eilzuschlag.",
+            "en": "I mean the clause on unscheduled orders on the second page; that is where the urgency charge is listed."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Допустим. Что мне написать директору в одну строку?",
+          "base": {
+            "de": "Angenommen. Was soll ich der Geschäftsleitung in einer Zeile schreiben?",
+            "en": "Suppose so. What should I write to the director in one line?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Иными словами: сумма выше из-за двух срочных доставок по пункту о внеплановых заказах, остальное по договору.",
+          "base": {
+            "de": "Anders gesagt: Die Summe ist wegen zweier Eillieferungen nach der Klausel zu außerplanmäßigen Aufträgen höher, alles andere entspricht dem Vertrag.",
+            "en": "In other words, the amount is higher because of two urgent deliveries under the unscheduled-orders clause; everything else follows the contract."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Причина простая:",
+          "в октябре было",
+          "две дополнительные",
+          "доставки,",
+          "потому что склад"
+        ],
+        "distractors": [
+          "Причина сложная:",
+          "три дополнительные"
+        ],
+        "frameSuffix": " попросил срочную партию, и они указаны отдельной строкой."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " пункт о внеплановых заказах: он на второй странице, и там как раз тариф за "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Я имею в виду",
+            "acceptedAnswers": [
+              "Я имею в виду"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Я имею в виду",
+              "Я не имею в виду",
+              "Я имею право на",
+              "Я имею дело с"
+            ]
+          },
+          {
+            "answer": "срочность",
+            "acceptedAnswers": [
+              "срочность"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "срочность – Akkusativ nach «за»",
+              "en": "urgency (срочность) – accusative after «за»"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": сумма выше из-за двух срочных доставок по пункту о внеплановых заказах, остальное по договору."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Иными словами",
+            "acceptedAnswers": [
+              "Иными словами"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Иными словами",
+              "Иными делами",
+              "Теми же словами",
+              "Другими вопросами"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Причина",
+        "acceptedAnswers": [
+          "Причина"
+        ],
+        "after": " простая: в октябре было две дополнительные доставки, потому что склад попросил срочную партию, и они указаны отдельной строкой.",
+        "fallbackChoices": [
+          "Причина",
+          "Квартира",
+          "Погода",
+          "Программа"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die einschlägige Stelle nennen",
+          "en": "Identifying the relevant clause"
+        },
+        "rule": {
+          "de": "Nenne die gemeinte Vertragsstelle und zeige genau, wo der fragliche Tarif steht.",
+          "en": "Name the contract clause you mean and show exactly where the disputed charge appears."
+        },
+        "examples": [
+          {
+            "targetText": "Я имею в виду пункт о внеплановых заказах: он на второй странице, и там как раз тариф за срочность.",
+            "base": {
+              "de": "Ich meine die Klausel zu außerplanmäßigen Aufträgen auf der zweiten Seite; dort steht der Eilzuschlag.",
+              "en": "I mean the clause on unscheduled orders on the second page; that is where the urgency charge is listed."
+            },
+            "highlights": [
+              "Я имею в виду"
+            ]
+          },
+          {
+            "targetText": "Я имею в виду пункт о доставке, а не цену самого товара.",
+            "base": {
+              "de": "Ich meine die Lieferklausel, nicht den Warenpreis.",
+              "en": "I mean the delivery clause, not the price of the goods themselves."
+            },
+            "highlights": [
+              "Я имею в виду"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Причина",
+          "kind": "noun",
+          "base": {
+            "de": "Grund",
+            "en": "reason"
+          },
+          "acceptedAnswers": [
+            "Причина"
+          ],
+          "lemma": "причина"
+        },
+        {
+          "targetText": "доставки",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferungen",
+            "en": "deliveries"
+          },
+          "acceptedAnswers": [
+            "доставки"
+          ],
+          "lemma": "доставка"
+        },
+        {
+          "targetText": "склад",
+          "kind": "noun",
+          "base": {
+            "de": "Lager",
+            "en": "warehouse"
+          },
+          "acceptedAnswers": [
+            "склад"
+          ]
+        },
+        {
+          "targetText": "партию",
+          "kind": "noun",
+          "base": {
+            "de": "Partie, Charge",
+            "en": "batch"
+          },
+          "acceptedAnswers": [
+            "партию"
+          ],
+          "lemma": "партия"
+        },
+        {
+          "targetText": "строкой",
+          "kind": "noun",
+          "base": {
+            "de": "Zeile",
+            "en": "line"
+          },
+          "acceptedAnswers": [
+            "строкой"
+          ],
+          "lemma": "строка"
+        },
+        {
+          "targetText": "внеплановых",
+          "kind": "adjective",
+          "base": {
+            "de": "außerplanmäßigen",
+            "en": "unscheduled"
+          },
+          "acceptedAnswers": [
+            "внеплановых"
+          ],
+          "lemma": "внеплановый"
+        },
+        {
+          "targetText": "срочность",
+          "kind": "noun",
+          "base": {
+            "de": "Dringlichkeit",
+            "en": "urgency"
+          },
+          "acceptedAnswers": [
+            "срочность"
+          ]
+        },
+        {
+          "targetText": "Иными словами",
+          "kind": "frame",
+          "base": {
+            "de": "anders gesagt",
+            "en": "in other words"
+          },
+          "acceptedAnswers": [
+            "Иными словами"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "причина",
+            "октябре",
+            "доставки"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "пункт",
+            "второй",
+            "странице"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "сумма",
+            "срочных",
+            "доставок"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "причина",
+        "familyKey": "причина",
+        "surface": "Причина",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Причина задержки указана в письме.",
+          "base": {
+            "de": "Der Grund für die Verzögerung steht im Brief.",
+            "en": "The reason for the delay is given in the letter."
+          }
+        },
+        "base": {
+          "de": "Grund",
+          "en": "reason"
+        },
+        "whyThisWord": {
+          "de": "Dieses Nomen eröffnet eine Erklärung. In «причина задержки» benennst du, was erklärt werden soll.",
+          "en": "This noun opens an explanation. In «причина задержки», you name what needs explaining."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] было: plural/impersonal gender-free"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] попросил: third-person subject: склад"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "yard-recycling",
+      "title": {
+        "de": "Drei Tonnen im Hof",
+        "en": "Three bins in the courtyard"
+      },
+      "situation": {
+        "de": "Ein neuer Nachbar fragt nach dem fiktiven Sortiersystem in eurem Hof.",
+        "en": "A new neighbour asks about the fictional sorting scheme in your courtyard."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "neuer Nachbar",
+            "en": "new neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Ein neuer Nachbar fragt nach dem fiktiven Sortiersystem in eurem Hof. Die andere Person sagt: „Я только переехал. Во дворе три контейнера разного цвета — куда что бросать?“",
+        "en": "A new neighbour asks about the fictional sorting scheme in your courtyard. The other person says: “Я только переехал. Во дворе три контейнера разного цвета — куда что бросать?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Я только переехал. Во дворе три контейнера разного цвета — куда что бросать?",
+          "base": {
+            "de": "Ich bin gerade eingezogen. Im Hof stehen drei verschiedenfarbige Tonnen. Was kommt wohin?",
+            "en": "I have just moved in. There are three different-coloured bins in the courtyard. What goes where?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Объясню, как у нас во дворе: в синий — бумагу и картон, в жёлтый — пластик и жестяные банки, поскольку их потом сортируют вместе, а стекло — в зелёный.",
+          "base": {
+            "de": "Ich erkläre, wie es bei uns im Hof ist: Papier und Karton in Blau, Kunststoff und Konservendosen in Gelb, weil sie später gemeinsam sortiert werden, und Glas in Grün.",
+            "en": "I will explain our courtyard’s system: paper and cardboard go in blue, plastic and tin cans in yellow because they are sorted together later, and glass in green."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А коробка из-под пиццы с жиром — это картон или уже мусор?",
+          "base": {
+            "de": "Und ein fettiger Pizzakarton: Ist das Karton oder schon Restmüll?",
+            "en": "What about a greasy pizza box: is that cardboard or general rubbish?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Хороший вопрос: грязный картон у нас не берут, так что жирная коробка идёт в обычный серый бак, чистая крышка — в синий.",
+          "base": {
+            "de": "Gute Frage: Verschmutzten Karton nimmt man bei uns nicht an. Der fettige Karton gehört also in die normale graue Tonne, der saubere Deckel in die blaue.",
+            "en": "Good question: dirty cardboard is not accepted here, so the greasy box goes in the ordinary grey bin and the clean lid in blue."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А батарейки и лампочки? Их куда-то отдельно, или тоже в серый?",
+          "base": {
+            "de": "Und Batterien und Glühbirnen? Kommen die gesondert irgendwohin oder auch in Grau?",
+            "en": "And batteries and light bulbs? Do they go somewhere separately or in grey too?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Их ни в коем случае не в серый: у входа в магазин напротив стоит ящик, туда и батарейки, и лампы.",
+          "base": {
+            "de": "Die auf keinen Fall in Grau: Am Eingang des Geschäfts gegenüber steht eine Box; dorthin gehören sowohl Batterien als auch Lampen.",
+            "en": "Those must never go in grey: there is a box at the entrance of the shop opposite; both batteries and bulbs go there."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Объясню, как у нас во дворе: в синий — бумагу и картон, ",
+        "chunks": [
+          "в жёлтый —",
+          "пластик",
+          "и жестяные банки,",
+          "поскольку",
+          "их потом",
+          "сортируют вместе,"
+        ],
+        "distractors": [
+          "в красный —",
+          "и стеклянные банки,"
+        ],
+        "frameSuffix": " а стекло — в зелёный."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": грязный картон у нас "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", так что жирная коробка идёт в обычный серый бак, чистая крышка — в синий."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Хороший вопрос",
+            "acceptedAnswers": [
+              "Хороший вопрос"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Хороший вопрос",
+              "Плохой вопрос",
+              "Хороший ответ",
+              "Хорошая новость"
+            ]
+          },
+          {
+            "answer": "не берут",
+            "acceptedAnswers": [
+              "не берут"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "брать – 3. Person Plural, verneint",
+              "en": "take (брать) – 3rd person plural, negated"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Их "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " не в серый: у входа в магазин напротив стоит ящик, туда и батарейки, и лампы."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ни в коем случае",
+            "acceptedAnswers": [
+              "ни в коем случае"
+            ],
+            "kind": "frame",
+            "choices": [
+              "ни в коем случае",
+              "в крайнем случае",
+              "на всякий случай",
+              "в таком случае"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Объясню, как у нас во дворе: в синий — бумагу и картон, в жёлтый — пластик и жестяные банки, ",
+        "answer": "поскольку",
+        "acceptedAnswers": [
+          "поскольку"
+        ],
+        "after": " их потом сортируют вместе, а стекло — в зелёный.",
+        "fallbackChoices": [
+          "поскольку",
+          "хотя",
+          "словно",
+          "пока"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den Grenzfall genau zuordnen",
+          "en": "Classifying the edge case precisely"
+        },
+        "rule": {
+          "de": "Trenne beim Beispiel den verschmutzten Karton vom sauberen Deckel und nenne die örtliche Regel.",
+          "en": "Distinguish the dirty box from its clean lid and name the local rule."
+        },
+        "examples": [
+          {
+            "targetText": "Хороший вопрос: грязный картон у нас не берут, так что жирная коробка идёт в обычный серый бак, чистая крышка — в синий.",
+            "base": {
+              "de": "Gute Frage: Verschmutzten Karton nimmt man bei uns nicht an. Der fettige Karton gehört also in die normale graue Tonne, der saubere Deckel in die blaue.",
+              "en": "Good question: dirty cardboard is not accepted here, so the greasy box goes in the ordinary grey bin and the clean lid in blue."
+            },
+            "highlights": [
+              "Хороший вопрос"
+            ]
+          },
+          {
+            "targetText": "Хороший вопрос: у нас чистый картон принимают, а грязный идёт в серый бак.",
+            "base": {
+              "de": "Gute Frage: Bei uns wird sauberer Karton angenommen, schmutziger kommt in die graue Tonne.",
+              "en": "Good question: clean cardboard is accepted here, while dirty cardboard goes in the grey bin."
+            },
+            "highlights": [
+              "Хороший вопрос"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "поскольку",
+          "kind": "connector",
+          "base": {
+            "de": "weil, da",
+            "en": "because, since"
+          },
+          "acceptedAnswers": [
+            "поскольку"
+          ]
+        },
+        {
+          "targetText": "контейнера",
+          "kind": "noun",
+          "base": {
+            "de": "Container, Tonnen",
+            "en": "containers"
+          },
+          "acceptedAnswers": [
+            "контейнера"
+          ],
+          "lemma": "контейнер"
+        },
+        {
+          "targetText": "картон",
+          "kind": "noun",
+          "base": {
+            "de": "Karton",
+            "en": "cardboard"
+          },
+          "acceptedAnswers": [
+            "картон"
+          ]
+        },
+        {
+          "targetText": "жестяные банки",
+          "kind": "phrase",
+          "base": {
+            "de": "Konservendosen",
+            "en": "tin cans"
+          },
+          "acceptedAnswers": [
+            "жестяные банки"
+          ]
+        },
+        {
+          "targetText": "жирная",
+          "kind": "adjective",
+          "base": {
+            "de": "fettige",
+            "en": "greasy"
+          },
+          "acceptedAnswers": [
+            "жирная"
+          ],
+          "lemma": "жирный"
+        },
+        {
+          "targetText": "крышка",
+          "kind": "noun",
+          "base": {
+            "de": "Deckel",
+            "en": "lid"
+          },
+          "acceptedAnswers": [
+            "крышка"
+          ]
+        },
+        {
+          "targetText": "батарейки",
+          "kind": "noun",
+          "base": {
+            "de": "Batterien",
+            "en": "batteries"
+          },
+          "acceptedAnswers": [
+            "батарейки"
+          ],
+          "lemma": "батарейка"
+        },
+        {
+          "targetText": "ни в коем случае",
+          "kind": "frame",
+          "base": {
+            "de": "auf keinen Fall",
+            "en": "under no circumstances"
+          },
+          "acceptedAnswers": [
+            "ни в коем случае"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "объясню",
+            "жёлтый",
+            "поскольку"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "грязный",
+            "картон",
+            "коробка"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "серый",
+            "магазин",
+            "напротив"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "поскольку",
+        "familyKey": "поскольку",
+        "surface": "поскольку",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Крышку кладём отдельно, поскольку она чистая.",
+          "base": {
+            "de": "Den Deckel legen wir getrennt ab, weil er sauber ist.",
+            "en": "We put the lid aside separately because it is clean."
+          }
+        },
+        "base": {
+          "de": "weil, da",
+          "en": "because, since"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verbindungswort begründest du einen Schritt. Es führt hier den Grund für die Trennung ein.",
+          "en": "Use this connector to explain a step. Here it introduces the reason for separating the lid."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "project-slipped",
+      "title": {
+        "de": "Warum der Bericht fehlt",
+        "en": "Why the report is late"
+      },
+      "situation": {
+        "de": "Die Teamleitung fragt nach einem noch ausstehenden Bericht und der Ursache der Verzögerung.",
+        "en": "Your manager asks about an overdue report and the cause of the delay."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Teamleitung fragt nach einem noch ausstehenden Bericht und der Ursache der Verzögerung. Die andere Person sagt: „Срок сдачи был первое октября, сегодня десятое, а отчёта нет. Что произошло?“",
+        "en": "Your manager asks about an overdue report and the cause of the delay. The other person says: “Срок сдачи был первое октября, сегодня десятое, а отчёта нет. Что произошло?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Срок сдачи был первое октября, сегодня десятое, а отчёта нет. Что произошло?",
+          "base": {
+            "de": "Die Abgabefrist war der erste Oktober, heute ist der zehnte, und der Bericht fehlt. Was ist passiert?",
+            "en": "The deadline was the first of October; today is the tenth and there is no report. What happened?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Дело в том, что заказчик поменял требования в середине сентября, поэтому половину расчётов пришлось переделать с нуля.",
+          "base": {
+            "de": "Es ist so: Der Kunde änderte Mitte September die Anforderungen, deshalb musste die Hälfte der Berechnungen ganz neu gemacht werden.",
+            "en": "The thing is, the client changed the requirements in mid-September, so half the calculations had to be redone from scratch."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Почему я узнаю об этом только сейчас, а не в сентябре?",
+          "base": {
+            "de": "Warum erfahre ich das erst jetzt und nicht schon im September?",
+            "en": "Why am I only hearing about this now rather than in September?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Признаю, об этом нужно было сказать сразу; мы надеялись уложиться, но объём оказался вдвое больше.",
+          "base": {
+            "de": "Ich gebe zu, das hätten wir sofort sagen müssen. Wir hofften, es zu schaffen, aber der Umfang erwies sich als doppelt so groß.",
+            "en": "I admit we should have said so immediately. We hoped to finish on time, but the workload turned out to be twice as large."
+          },
+          "move": "concede",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ладно. Назовите реальную дату и что вам для неё нужно.",
+          "base": {
+            "de": "Gut. Nennen Sie ein realistisches Datum und was Sie dafür brauchen.",
+            "en": "All right. Give me a realistic date and what you need to meet it."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Реальная дата — двадцатое октября, если заказчик до пятницы подтвердит новые требования письменно.",
+          "base": {
+            "de": "Realistisch ist der zwanzigste Oktober, wenn der Kunde bis Freitag die neuen Anforderungen schriftlich bestätigt.",
+            "en": "A realistic date is the twentieth of October, if the client confirms the new requirements in writing by Friday."
+          },
+          "move": "propose",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Дело в том, что ",
+        "chunks": [
+          "заказчик поменял требования",
+          "в середине",
+          "сентября,",
+          "поэтому",
+          "половину расчётов пришлось переделать"
+        ],
+        "distractors": [
+          "заказчик сохранил требования",
+          "в начале"
+        ],
+        "frameSuffix": " с нуля."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", об этом нужно было "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " сразу; мы надеялись уложиться, но объём оказался вдвое больше."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Признаю",
+            "acceptedAnswers": [
+              "Признаю"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Признаю",
+              "Отрицаю",
+              "Обещаю",
+              "Запрещаю"
+            ]
+          },
+          {
+            "answer": "сказать",
+            "acceptedAnswers": [
+              "сказать"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "сказать – vollendeter Infinitiv",
+              "en": "say (сказать) – perfective infinitive"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Реальная дата — двадцатое октября, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " до пятницы подтвердит новые требования письменно."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "если заказчик",
+            "acceptedAnswers": [
+              "если заказчик"
+            ],
+            "kind": "frame",
+            "choices": [
+              "если заказчик",
+              "хотя заказчик",
+              "пока заказчик",
+              "чтобы заказчик"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Дело в том, что заказчик поменял требования в середине сентября, ",
+        "answer": "поэтому",
+        "acceptedAnswers": [
+          "поэтому"
+        ],
+        "after": " половину расчётов пришлось переделать с нуля.",
+        "fallbackChoices": [
+          "поэтому",
+          "хотя",
+          "словно",
+          "пока"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Verantwortung für die Kommunikation übernehmen",
+          "en": "Taking responsibility for communication"
+        },
+        "rule": {
+          "de": "Gib den versäumten Hinweis zu und erkläre die damalige Einschätzung, ohne die Verantwortung abzuweisen.",
+          "en": "Acknowledge the missed notification and explain the earlier assessment without shifting responsibility."
+        },
+        "examples": [
+          {
+            "targetText": "Признаю, об этом нужно было сказать сразу; мы надеялись уложиться, но объём оказался вдвое больше.",
+            "base": {
+              "de": "Ich gebe zu, das hätten wir sofort sagen müssen. Wir hofften, es zu schaffen, aber der Umfang erwies sich als doppelt so groß.",
+              "en": "I admit we should have said so immediately. We hoped to finish on time, but the workload turned out to be twice as large."
+            },
+            "highlights": [
+              "Признаю"
+            ]
+          },
+          {
+            "targetText": "Признаю, сообщить нужно было сразу, а не ждать точной даты.",
+            "base": {
+              "de": "Ich gebe zu, wir hätten sofort Bescheid sagen müssen, statt auf ein genaues Datum zu warten.",
+              "en": "I admit we should have reported it immediately rather than waiting for an exact date."
+            },
+            "highlights": [
+              "Признаю"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "поэтому",
+          "kind": "connector",
+          "base": {
+            "de": "deshalb",
+            "en": "therefore"
+          },
+          "acceptedAnswers": [
+            "поэтому"
+          ]
+        },
+        {
+          "targetText": "заказчик",
+          "kind": "noun",
+          "base": {
+            "de": "Auftraggeber",
+            "en": "client"
+          },
+          "acceptedAnswers": [
+            "заказчик"
+          ]
+        },
+        {
+          "targetText": "требования",
+          "kind": "noun",
+          "base": {
+            "de": "Anforderungen",
+            "en": "requirements"
+          },
+          "acceptedAnswers": [
+            "требования"
+          ],
+          "lemma": "требование"
+        },
+        {
+          "targetText": "расчётов",
+          "kind": "noun",
+          "base": {
+            "de": "Berechnungen",
+            "en": "calculations"
+          },
+          "acceptedAnswers": [
+            "расчётов"
+          ],
+          "lemma": "расчёт"
+        },
+        {
+          "targetText": "переделать",
+          "kind": "verb",
+          "base": {
+            "de": "neu machen",
+            "en": "redo"
+          },
+          "acceptedAnswers": [
+            "переделать"
+          ]
+        },
+        {
+          "targetText": "Признаю",
+          "kind": "verb",
+          "base": {
+            "de": "ich gebe zu",
+            "en": "I admit"
+          },
+          "acceptedAnswers": [
+            "Признаю"
+          ],
+          "lemma": "признавать"
+        },
+        {
+          "targetText": "объём",
+          "kind": "noun",
+          "base": {
+            "de": "Umfang",
+            "en": "workload"
+          },
+          "acceptedAnswers": [
+            "объём"
+          ]
+        },
+        {
+          "targetText": "письменно",
+          "kind": "adverb",
+          "base": {
+            "de": "schriftlich",
+            "en": "in writing"
+          },
+          "acceptedAnswers": [
+            "письменно"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "заказчик",
+            "требования",
+            "поэтому"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "признаю",
+            "надеялись",
+            "объём"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "реальная",
+            "октября",
+            "подтвердит"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "поэтому",
+        "familyKey": "поэтому",
+        "surface": "поэтому",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Требования изменились, поэтому расчёты нужно проверить заново.",
+          "base": {
+            "de": "Die Anforderungen haben sich geändert, deshalb müssen die Berechnungen erneut geprüft werden.",
+            "en": "The requirements have changed, so the calculations need checking again."
+          }
+        },
+        "base": {
+          "de": "deshalb",
+          "en": "therefore"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verbindungswort leitest du eine Folge ein. Hier verbindet es geänderte Anforderungen mit der nötigen Prüfung.",
+          "en": "Use this connector to introduce a consequence. Here it links changed requirements to the necessary checks."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] поменял: third-person subject: заказчик"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] пришлось: plural/impersonal gender-free"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] было: plural/impersonal gender-free"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] надеялись: plural/impersonal gender-free: мы"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] оказался: third-person subject: объём"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "loyalty-points",
+      "title": {
+        "de": "Was Bonuspunkte wirklich bedeuten",
+        "en": "What reward points mean"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt nach der Bonuskarte einer fiktiven örtlichen Kaffeebar.",
+        "en": "A friend asks about the reward card at a fictional local café."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt nach der Bonuskarte einer fiktiven örtlichen Kaffeebar. Die andere Person sagt: „Мне предлагают карту лояльности в кофейне: десять процентов баллами. Это вообще стоит того?“",
+        "en": "A friend asks about the reward card at a fictional local café. The other person says: “Мне предлагают карту лояльности в кофейне: десять процентов баллами. Это вообще стоит того?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Мне предлагают карту лояльности в кофейне: десять процентов баллами. Это вообще стоит того?",
+          "base": {
+            "de": "Mir wird in einer Kaffeebar eine Bonuskarte angeboten: zehn Prozent in Punkten. Lohnt sich das überhaupt?",
+            "en": "A café is offering me a loyalty card: ten percent back in points. Is it worth it at all?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Смотрите, десять процентов баллами означает, что вы платите полную цену сейчас, а скидку получаете только при следующей покупке.",
+          "base": {
+            "de": "Sehen Sie, zehn Prozent in Punkten heißt, dass Sie jetzt voll bezahlen und den Rabatt erst beim nächsten Einkauf erhalten.",
+            "en": "You see, ten percent in points means you pay the full price now and only get the discount on your next purchase."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но я же всё равно туда хожу каждый день.",
+          "base": {
+            "de": "Aber ich gehe doch ohnehin jeden Tag dorthin.",
+            "en": "But I go there every day anyway."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Тогда сравните: при ежедневных визитах баллы быстро превращаются в скидку, тогда как редкий гость до неё просто не доходит.",
+          "base": {
+            "de": "Dann vergleichen Sie: Bei täglichen Besuchen werden die Punkte schnell zum Rabatt, während seltene Gäste ihn einfach nicht erreichen.",
+            "en": "Then compare: with daily visits, points quickly turn into a discount, whereas an occasional customer never reaches it."
+          },
+          "move": "compare",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А подвох есть? Я слышал, баллы сгорают.",
+          "base": {
+            "de": "Gibt es einen Haken? Ich habe gehört, dass Punkte verfallen.",
+            "en": "Is there a catch? I heard that points expire."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Есть: по правилам этой кофейни баллы живут три месяца, так что копить на год бессмысленно — тратьте сразу.",
+          "base": {
+            "de": "Ja: Nach den Regeln dieser Kaffeebar gelten Punkte drei Monate. Ein Jahr zu sammeln ist also sinnlos; nutzen Sie sie gleich.",
+            "en": "Yes: under this café’s rules, points last three months, so saving them for a year makes no sense; use them straight away."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Смотрите, десять процентов баллами означает, что ",
+        "chunks": [
+          "вы платите полную цену",
+          "сейчас,",
+          "а скидку получаете",
+          "только при следующей",
+          "покупке."
+        ],
+        "distractors": [
+          "вы платите неполную цену",
+          "только при первой"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": при ежедневных визитах баллы быстро "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " в скидку, тогда как редкий гость до неё просто не доходит."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Тогда сравните",
+            "acceptedAnswers": [
+              "Тогда сравните"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Тогда сравните",
+              "Тогда спросите",
+              "Тогда забудьте",
+              "Тогда платите"
+            ]
+          },
+          {
+            "answer": "превращаются",
+            "acceptedAnswers": [
+              "превращаются"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "sich verwandeln – wiederkehrender Vorgang",
+              "en": "turn into – recurring process"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Есть: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " баллы живут три месяца, так что копить на год бессмысленно — тратьте сразу."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "по правилам этой кофейни",
+            "acceptedAnswers": [
+              "по правилам этой кофейни"
+            ],
+            "kind": "frame",
+            "choices": [
+              "по правилам этой кофейни",
+              "по правилам этой пекарни",
+              "по размерам этой кофейни",
+              "по правилам всех кофеен"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Смотрите, десять процентов баллами ",
+        "answer": "означает",
+        "acceptedAnswers": [
+          "означает"
+        ],
+        "after": ", что вы платите полную цену сейчас, а скидку получаете только при следующей покупке.",
+        "fallbackChoices": [
+          "означает",
+          "отменяет",
+          "повторяет",
+          "обещает"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Häufigkeit mit Nutzen verbinden",
+          "en": "Linking frequency to benefit"
+        },
+        "rule": {
+          "de": "Vergleiche den Nutzen für tägliche und seltene Gäste, statt einen pauschalen Gewinn zu versprechen.",
+          "en": "Compare the benefit for daily and occasional customers instead of promising a universal gain."
+        },
+        "examples": [
+          {
+            "targetText": "Тогда сравните: при ежедневных визитах баллы быстро превращаются в скидку, тогда как редкий гость до неё просто не доходит.",
+            "base": {
+              "de": "Dann vergleichen Sie: Bei täglichen Besuchen werden die Punkte schnell zum Rabatt, während seltene Gäste ihn einfach nicht erreichen.",
+              "en": "Then compare: with daily visits, points quickly turn into a discount, whereas an occasional customer never reaches it."
+            },
+            "highlights": [
+              "Тогда сравните"
+            ]
+          },
+          {
+            "targetText": "Сравните: постоянный гость использует скидку, тогда как редкий может её потерять.",
+            "base": {
+              "de": "Vergleichen Sie: Ein Stammgast nutzt den Rabatt, während ein seltener Gast ihn verlieren kann.",
+              "en": "Compare: a regular customer uses the discount, whereas an occasional visitor may lose it."
+            },
+            "highlights": [
+              "тогда как"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "означает",
+          "kind": "verb",
+          "base": {
+            "de": "bedeutet",
+            "en": "means"
+          },
+          "acceptedAnswers": [
+            "означает"
+          ],
+          "lemma": "означать"
+        },
+        {
+          "targetText": "лояльности",
+          "kind": "noun",
+          "base": {
+            "de": "Treue",
+            "en": "loyalty"
+          },
+          "acceptedAnswers": [
+            "лояльности"
+          ],
+          "lemma": "лояльность"
+        },
+        {
+          "targetText": "баллами",
+          "kind": "noun",
+          "base": {
+            "de": "in Punkten",
+            "en": "in points"
+          },
+          "acceptedAnswers": [
+            "баллами"
+          ],
+          "lemma": "балл"
+        },
+        {
+          "targetText": "полную",
+          "kind": "adjective",
+          "base": {
+            "de": "vollen",
+            "en": "full"
+          },
+          "acceptedAnswers": [
+            "полную"
+          ],
+          "lemma": "полный"
+        },
+        {
+          "targetText": "следующей покупке",
+          "kind": "phrase",
+          "base": {
+            "de": "nächsten Einkauf",
+            "en": "next purchase"
+          },
+          "acceptedAnswers": [
+            "следующей покупке"
+          ]
+        },
+        {
+          "targetText": "ежедневных",
+          "kind": "adjective",
+          "base": {
+            "de": "täglichen",
+            "en": "daily"
+          },
+          "acceptedAnswers": [
+            "ежедневных"
+          ],
+          "lemma": "ежедневный"
+        },
+        {
+          "targetText": "сгорают",
+          "kind": "verb",
+          "base": {
+            "de": "verfallen",
+            "en": "expire"
+          },
+          "acceptedAnswers": [
+            "сгорают"
+          ],
+          "lemma": "сгорать"
+        },
+        {
+          "targetText": "подвох",
+          "kind": "noun",
+          "base": {
+            "de": "Haken",
+            "en": "catch"
+          },
+          "acceptedAnswers": [
+            "подвох"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "процентов",
+            "означает",
+            "скидку"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "сравните",
+            "визитах",
+            "баллы"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "правилам",
+            "кофейни",
+            "месяца"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "означать",
+        "familyKey": "означать",
+        "surface": "означает",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Это означает, что скидка действует только при следующей покупке.",
+          "base": {
+            "de": "Das bedeutet, dass der Rabatt erst beim nächsten Einkauf gilt.",
+            "en": "This means the discount only applies to the next purchase."
+          }
+        },
+        "base": {
+          "de": "bedeuten",
+          "en": "mean"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verb erklärst du die praktische Bedeutung eines Angebots. «Означает» passt hier zu «это».",
+          "en": "Use this verb to explain what an offer means in practice. «Означает» fits «это» here."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "new-provider",
+      "title": {
+        "de": "Warum ein neuer Anbieter?",
+        "en": "Why a new provider?"
+      },
+      "situation": {
+        "de": "Eine Person aus der Nachbarschaft fragt nach deinem Wechsel des Internetanbieters.",
+        "en": "A neighbour asks about your change of internet provider."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus der Nachbarschaft fragt nach deinem Wechsel des Internetanbieters. Die andere Person sagt: „Вы перешли на другого интернет-провайдера? У меня тот же старый, и вроде нормально.“",
+        "en": "A neighbour asks about your change of internet provider. The other person says: “Вы перешли на другого интернет-провайдера? У меня тот же старый, и вроде нормально.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Вы перешли на другого интернет-провайдера? У меня тот же старый, и вроде нормально.",
+          "base": {
+            "de": "Sind Sie zu einem anderen Internetanbieter gewechselt? Ich bin noch beim alten, und es scheint in Ordnung.",
+            "en": "Have you switched internet providers? I still have the old one and it seems fine."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Да, и на решение больше всего влияет не цена, а поддержка: у старого на звонок отвечали по часу, у нового — за минуту.",
+          "base": {
+            "de": "Ja, und für die Entscheidung zählt vor allem die Unterstützung, nicht der Preis: Beim alten wartete ich eine Stunde auf eine Antwort, beim neuen eine Minute.",
+            "en": "Yes, and support influences the decision most, not price: the old provider took an hour to answer a call, the new one a minute."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но у нового тариф на двести рублей дороже, я смотрел.",
+          "base": {
+            "de": "Der neue Tarif ist aber zweihundert Rubel teurer, ich habe nachgesehen.",
+            "en": "But the new tariff is two hundred roubles more expensive; I checked."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Это так, но в тариф входит роутер и телевидение, за которые старому приходилось доплачивать отдельно.",
+          "base": {
+            "de": "Das stimmt, aber Router und Fernsehen sind enthalten; dafür musste man beim alten extra zahlen.",
+            "en": "That is true, but the tariff includes a router and television, which cost extra with the old provider."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А переход сложный? Мне придётся сидеть без связи неделю?",
+          "base": {
+            "de": "Ist der Wechsel kompliziert? Muss ich eine Woche ohne Verbindung auskommen?",
+            "en": "Is switching complicated? Will I have to go without a connection for a week?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Если коротко: заявка онлайн, мастер приходит через два дня, а старый отключают только после подключения нового.",
+          "base": {
+            "de": "Kurz gesagt: Onlineantrag, nach zwei Tagen kommt ein Techniker, und der alte Anschluss wird erst nach Aktivierung des neuen abgeschaltet.",
+            "en": "Briefly: apply online, a technician comes in two days, and the old connection is only disconnected after the new one is connected."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Да, и на решение больше всего ",
+        "chunks": [
+          "влияет",
+          "не цена,",
+          "а поддержка:",
+          "у старого на звонок",
+          "отвечали по часу,"
+        ],
+        "distractors": [
+          "а реклама:",
+          "отвечали за минуту,"
+        ],
+        "frameSuffix": " у нового — за минуту."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " в тариф входит роутер и телевидение, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " старому приходилось доплачивать отдельно."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Это так, но",
+            "acceptedAnswers": [
+              "Это так, но"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Это так, но",
+              "Это не так, но",
+              "Это так, или",
+              "Это так, если"
+            ]
+          },
+          {
+            "answer": "за которые",
+            "acceptedAnswers": [
+              "за которые"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "für Router und Fernsehen – Relativverbindung",
+              "en": "for the router and television – relative link"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": заявка онлайн, мастер приходит через два дня, а старый отключают только после подключения нового."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Если коротко",
+            "acceptedAnswers": [
+              "Если коротко"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Если коротко",
+              "Если долго",
+              "Если нет",
+              "Если подробно"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Да, и на решение больше всего влияет не цена, а ",
+        "answer": "поддержка",
+        "acceptedAnswers": [
+          "поддержка"
+        ],
+        "after": ": у старого на звонок отвечали по часу, у нового — за минуту.",
+        "fallbackChoices": [
+          "поддержка",
+          "реклама",
+          "погода",
+          "привычка"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Den Mehrpreis aufschlüsseln",
+          "en": "Breaking down the higher price"
+        },
+        "rule": {
+          "de": "Bestätige den höheren Tarif und erkläre, welche vorher zusätzlichen Leistungen darin enthalten sind.",
+          "en": "Confirm the higher tariff and explain which previously extra services it includes."
+        },
+        "examples": [
+          {
+            "targetText": "Это так, но в тариф входит роутер и телевидение, за которые старому приходилось доплачивать отдельно.",
+            "base": {
+              "de": "Das stimmt, aber Router und Fernsehen sind enthalten; dafür musste man beim alten extra zahlen.",
+              "en": "That is true, but the tariff includes a router and television, which cost extra with the old provider."
+            },
+            "highlights": [
+              "Это так, но"
+            ]
+          },
+          {
+            "targetText": "Это так, но в цену входит оборудование, за которое раньше нужно было платить отдельно.",
+            "base": {
+              "de": "Das stimmt, aber Geräte sind enthalten, für die man früher zusätzlich zahlen musste.",
+              "en": "That is true, but the price includes equipment that previously cost extra."
+            },
+            "highlights": [
+              "Это так, но"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "влияет",
+          "kind": "verb",
+          "base": {
+            "de": "beeinflusst",
+            "en": "influences"
+          },
+          "acceptedAnswers": [
+            "влияет"
+          ],
+          "lemma": "влиять"
+        },
+        {
+          "targetText": "поддержка",
+          "kind": "noun",
+          "base": {
+            "de": "Unterstützung",
+            "en": "support"
+          },
+          "acceptedAnswers": [
+            "поддержка"
+          ]
+        },
+        {
+          "targetText": "тариф",
+          "kind": "noun",
+          "base": {
+            "de": "Tarif",
+            "en": "tariff"
+          },
+          "acceptedAnswers": [
+            "тариф"
+          ]
+        },
+        {
+          "targetText": "роутер",
+          "kind": "noun",
+          "base": {
+            "de": "Router",
+            "en": "router"
+          },
+          "acceptedAnswers": [
+            "роутер"
+          ]
+        },
+        {
+          "targetText": "телевидение",
+          "kind": "noun",
+          "base": {
+            "de": "Fernsehen",
+            "en": "television"
+          },
+          "acceptedAnswers": [
+            "телевидение"
+          ]
+        },
+        {
+          "targetText": "доплачивать",
+          "kind": "verb",
+          "base": {
+            "de": "zusätzlich zahlen",
+            "en": "pay extra"
+          },
+          "acceptedAnswers": [
+            "доплачивать"
+          ]
+        },
+        {
+          "targetText": "подключения",
+          "kind": "noun",
+          "base": {
+            "de": "Anschluss, Aktivierung",
+            "en": "connection"
+          },
+          "acceptedAnswers": [
+            "подключения"
+          ],
+          "lemma": "подключение"
+        },
+        {
+          "targetText": "за которые",
+          "kind": "frame",
+          "base": {
+            "de": "für die",
+            "en": "for which"
+          },
+          "acceptedAnswers": [
+            "за которые"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "решение",
+            "влияет",
+            "поддержка"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "тариф",
+            "роутер",
+            "телевидение"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "заявка",
+            "мастер",
+            "подключения"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "влиять",
+        "familyKey": "влиять",
+        "surface": "влияет",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Качество поддержки влияет на мой выбор.",
+          "base": {
+            "de": "Die Qualität der Unterstützung beeinflusst meine Wahl.",
+            "en": "The quality of support influences my choice."
+          }
+        },
+        "base": {
+          "de": "beeinflussen",
+          "en": "influence"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verb benennst du einen Einfluss auf deine Entscheidung. «Влияет» passt hier zu «качество».",
+          "en": "Use this verb to name an influence on your decision. «Влияет» fits «качество» here."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] отвечали: plural/impersonal gender-free"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] приходилось: plural/impersonal gender-free"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "parking-fine-appeal",
+      "title": {
+        "de": "Die Regel dieses Geschäftszentrums",
+        "en": "This business centre’s rule"
+      },
+      "situation": {
+        "de": "Im Kollegenkreis geht es um eine Parkgebühr und das Einspruchsverfahren eines fiktiven Geschäftszentrums.",
+        "en": "A colleague asks about a parking penalty and the objection procedure at a fictional business centre."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Kollegenkreis geht es um eine Parkgebühr und das Einspruchsverfahren eines fiktiven Geschäftszentrums. Die andere Person sagt: „Мне пришёл штраф от бизнес-центра за парковку на чужом месте. Я же стоял там пять минут.“",
+        "en": "A colleague asks about a parking penalty and the objection procedure at a fictional business centre. The other person says: “Мне пришёл штраф от бизнес-центра за парковку на чужом месте. Я же стоял там пять минут.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Мне пришёл штраф от бизнес-центра за парковку на чужом месте. Я же стоял там пять минут.",
+          "base": {
+            "de": "Ich habe vom Geschäftszentrum eine Strafe bekommen, weil ich auf einem fremden Parkplatz stand. Es waren doch nur fünf Minuten.",
+            "en": "The business centre sent me a parking penalty for using someone else’s space. I was only there for five minutes."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Объясню, как это устроено здесь: у центра своё правило, и последствия одинаковые для всех, но оспорить можно через администрацию в течение недели.",
+          "base": {
+            "de": "Ich erkläre, wie es hier läuft: Das Zentrum hat eine eigene Regel mit gleichen Folgen für alle; über die Verwaltung kann man innerhalb einer Woche Einspruch einlegen.",
+            "en": "I will explain how it works here: the centre has its own rule with the same consequences for everyone, but you can object through the administration within a week."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "И что писать? Что я не видел таблички?",
+          "base": {
+            "de": "Was soll ich schreiben? Dass ich das Schild nicht gesehen habe?",
+            "en": "What should I write? That I did not see the sign?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Не совсем: нужно указать время, номер места и приложить фото, из которого видно, что табличка была закрыта фургоном.",
+          "base": {
+            "de": "Nicht ganz: Nennen Sie Zeit und Stellplatznummer und legen Sie ein Foto bei, auf dem man sieht, dass ein Lieferwagen das Schild verdeckt hat.",
+            "en": "Not quite: give the time and space number and attach a photo showing that a van obscured the sign."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А если откажут? Платить тогда вдвойне?",
+          "base": {
+            "de": "Und wenn sie ablehnen? Muss ich dann das Doppelte zahlen?",
+            "en": "What if they reject it? Do I then pay double?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Нет, по правилам центра сумма не растёт, пока идёт разбор, так что заявление вам ничем не грозит.",
+          "base": {
+            "de": "Nein, nach den Regeln des Zentrums steigt die Summe während der Prüfung nicht; der Antrag bringt Ihnen also keine Nachteile.",
+            "en": "No, under the centre’s rules the amount does not increase during the review, so submitting the request poses no risk to you."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Объясню, как это устроено здесь: ",
+        "chunks": [
+          "у центра",
+          "своё",
+          "правило,",
+          "и последствия",
+          "одинаковые",
+          "для всех,"
+        ],
+        "distractors": [
+          "чужое",
+          "и привилегии"
+        ],
+        "frameSuffix": " но оспорить можно через администрацию в течение недели."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": нужно указать время, номер места и приложить фото, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " видно, что табличка была закрыта фургоном."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Не совсем",
+            "acceptedAnswers": [
+              "Не совсем"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Не совсем",
+              "Не только",
+              "Не сразу",
+              "Не всегда"
+            ]
+          },
+          {
+            "answer": "из которого",
+            "acceptedAnswers": [
+              "из которого"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "который – mit «из», Genitiv Singular",
+              "en": "which (который) – with «из», genitive singular"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Нет, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " сумма не растёт, пока идёт разбор, так что заявление вам ничем не грозит."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "по правилам центра",
+            "acceptedAnswers": [
+              "по правилам центра"
+            ],
+            "kind": "frame",
+            "choices": [
+              "по правилам центра",
+              "по правилам кофейни",
+              "по размерам центра",
+              "по правилам погоды"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Объясню, как это устроено здесь: у центра своё правило, и ",
+        "answer": "последствия",
+        "acceptedAnswers": [
+          "последствия"
+        ],
+        "after": " одинаковые для всех, но оспорить можно через администрацию в течение недели.",
+        "fallbackChoices": [
+          "последствия",
+          "привилегии",
+          "расписания",
+          "объявления"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den Inhalt des Einspruchs präzisieren",
+          "en": "Specifying the objection’s contents"
+        },
+        "rule": {
+          "de": "Korrigiere die allgemeine Aussage und nenne die konkreten Angaben und den Beleg.",
+          "en": "Correct the general statement and name the specific details and evidence required."
+        },
+        "examples": [
+          {
+            "targetText": "Не совсем: нужно указать время, номер места и приложить фото, из которого видно, что табличка была закрыта фургоном.",
+            "base": {
+              "de": "Nicht ganz: Nennen Sie Zeit und Stellplatznummer und legen Sie ein Foto bei, auf dem man sieht, dass ein Lieferwagen das Schild verdeckt hat.",
+              "en": "Not quite: give the time and space number and attach a photo showing that a van obscured the sign."
+            },
+            "highlights": [
+              "Не совсем"
+            ]
+          },
+          {
+            "targetText": "Не совсем: нужен снимок, из которого видно расположение таблички.",
+            "base": {
+              "de": "Nicht ganz: Man braucht ein Bild, auf dem die Position des Schildes erkennbar ist.",
+              "en": "Not quite: a picture showing the sign’s position is needed."
+            },
+            "highlights": [
+              "Не совсем"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "последствия",
+          "kind": "noun",
+          "base": {
+            "de": "Folgen",
+            "en": "consequences"
+          },
+          "acceptedAnswers": [
+            "последствия"
+          ],
+          "lemma": "последствие"
+        },
+        {
+          "targetText": "оспорить",
+          "kind": "verb",
+          "base": {
+            "de": "anfechten",
+            "en": "challenge"
+          },
+          "acceptedAnswers": [
+            "оспорить"
+          ]
+        },
+        {
+          "targetText": "администрацию",
+          "kind": "noun",
+          "base": {
+            "de": "Verwaltung",
+            "en": "administration"
+          },
+          "acceptedAnswers": [
+            "администрацию"
+          ],
+          "lemma": "администрация"
+        },
+        {
+          "targetText": "табличка",
+          "kind": "noun",
+          "base": {
+            "de": "Schild",
+            "en": "sign"
+          },
+          "acceptedAnswers": [
+            "табличка"
+          ]
+        },
+        {
+          "targetText": "фургоном",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferwagen",
+            "en": "van"
+          },
+          "acceptedAnswers": [
+            "фургоном"
+          ],
+          "lemma": "фургон"
+        },
+        {
+          "targetText": "разбор",
+          "kind": "noun",
+          "base": {
+            "de": "Prüfung",
+            "en": "review"
+          },
+          "acceptedAnswers": [
+            "разбор"
+          ]
+        },
+        {
+          "targetText": "из которого",
+          "kind": "frame",
+          "base": {
+            "de": "aus dem",
+            "en": "from which"
+          },
+          "acceptedAnswers": [
+            "из которого"
+          ]
+        },
+        {
+          "targetText": "по правилам центра",
+          "kind": "frame",
+          "base": {
+            "de": "nach den Regeln des Zentrums",
+            "en": "under the centre’s rules"
+          },
+          "acceptedAnswers": [
+            "по правилам центра"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "объясню",
+            "центра",
+            "последствия"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "указать",
+            "места",
+            "табличка"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "правилам",
+            "сумма",
+            "заявление"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "последствие",
+        "familyKey": "последствие",
+        "surface": "последствия",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Последствия ошибки нужно обсудить спокойно.",
+          "base": {
+            "de": "Die Folgen des Fehlers sollten ruhig besprochen werden.",
+            "en": "The consequences of the mistake should be discussed calmly."
+          }
+        },
+        "base": {
+          "de": "Folge",
+          "en": "consequence"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Nomen sprichst du über das, was auf eine Handlung folgt. «Последствия» nennt hier mehrere mögliche Folgen.",
+          "en": "Use this noun to discuss what follows an action. «Последствия» refers to several possible consequences here."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] была: third-person subject: табличка"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] закрыта: third-person subject: табличка"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "plan-failed",
+      "title": {
+        "de": "Wenn der Zeitplan verschwindet",
+        "en": "When the schedule disappears"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt nach deinem nicht erreichten Chinesisch-Lernziel.",
+        "en": "A friend asks about your unsuccessful Chinese-learning goal."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt nach deinem nicht erreichten Chinesisch-Lernziel. Die andere Person sagt: „Ваш план выучить китайский за год провалился? Вы же так уверенно начинали.“",
+        "en": "A friend asks about your unsuccessful Chinese-learning goal. The other person says: “Ваш план выучить китайский за год провалился? Вы же так уверенно начинали.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ваш план выучить китайский за год провалился? Вы же так уверенно начинали.",
+          "base": {
+            "de": "Ist Ihr Plan, in einem Jahr Chinesisch zu lernen, gescheitert? Sie waren anfangs doch so zuversichtlich.",
+            "en": "Did your plan to learn Chinese in a year fail? You started so confidently."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Провалился, и всё закономерно: цель без расписания приводит к тому, что занятия откладываются, пока не исчезают совсем.",
+          "base": {
+            "de": "Ja, und das ist folgerichtig: Ein Ziel ohne Zeitplan führt dazu, dass man Lerntermine verschiebt, bis sie ganz verschwinden.",
+            "en": "It did, and it is quite predictable: a goal without a schedule leads to lessons being postponed until they disappear altogether."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Так просто? Но мне кажется, дело в лени, а не в расписании.",
+          "base": {
+            "de": "So einfach? Ich glaube aber, es liegt an Faulheit, nicht am Zeitplan.",
+            "en": "That simple? But I think it is laziness rather than the schedule."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Лень здесь ни при чём: три месяца занятия шли ежедневно, а сорвалось всё в неделю переезда, когда расписание исчезло.",
+          "base": {
+            "de": "Faulheit hat damit nichts zu tun: Drei Monate fand das Lernen täglich statt. Alles brach in der Umzugswoche zusammen, als der Zeitplan wegfiel.",
+            "en": "Laziness has nothing to do with it: lessons took place daily for three months. Everything fell apart during the moving week, when the schedule disappeared."
+          },
+          "move": "rebut",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ладно, а что делать иначе, если начать заново?",
+          "base": {
+            "de": "Gut, was würden Sie bei einem Neustart anders machen?",
+            "en": "All right, what should be done differently if you start again?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Начать с малого: пятнадцать минут в одно и то же время, а при срыве не ругать себя, а просто вернуться завтра.",
+          "base": {
+            "de": "Klein anfangen: täglich zur selben Zeit fünfzehn Minuten; fällt es einmal aus, sich nicht beschimpfen, sondern morgen einfach wieder einsteigen.",
+            "en": "Start small: fifteen minutes at the same time, and if you slip up, do not scold yourself; just return tomorrow."
+          },
+          "move": "propose",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Провалился, и всё закономерно: ",
+        "chunks": [
+          "цель без расписания",
+          "приводит к тому, что",
+          "занятия",
+          "откладываются,",
+          "пока не исчезают"
+        ],
+        "distractors": [
+          "цель без причины",
+          "останавливаются,"
+        ],
+        "frameSuffix": " совсем."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Лень здесь "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": три месяца занятия шли ежедневно, а "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " всё в неделю переезда, когда расписание исчезло."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ни при чём",
+            "acceptedAnswers": [
+              "ни при чём"
+            ],
+            "kind": "frame",
+            "choices": [
+              "ни при чём",
+              "при чём",
+              "при этом",
+              "ни за что"
+            ]
+          },
+          {
+            "answer": "сорвалось",
+            "acceptedAnswers": [
+              "сорвалось"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "zusammenbrechen – Bezug auf «всё»",
+              "en": "fall apart – referring to «всё»"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Начать с малого: пятнадцать минут в одно и то же время, а "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " не ругать себя, а просто вернуться завтра."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "при срыве",
+            "acceptedAnswers": [
+              "при срыве"
+            ],
+            "kind": "frame",
+            "choices": [
+              "при срыве",
+              "при успехе",
+              "при встрече",
+              "при оплате"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Провалился, и всё закономерно: цель без ",
+        "answer": "расписания",
+        "acceptedAnswers": [
+          "расписания"
+        ],
+        "after": " приводит к тому, что занятия откладываются, пока не исчезают совсем.",
+        "fallbackChoices": [
+          "расписания",
+          "перевода",
+          "учебника",
+          "карандаша"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine falsche Ursache zurückweisen",
+          "en": "Rejecting the wrong cause"
+        },
+        "rule": {
+          "de": "Widerlege den Vorwurf mit der regelmäßigen Lernphase und benenne den konkreten Bruch.",
+          "en": "Counter the accusation with the period of regular study and identify the specific disruption."
+        },
+        "examples": [
+          {
+            "targetText": "Лень здесь ни при чём: три месяца занятия шли ежедневно, а сорвалось всё в неделю переезда, когда расписание исчезло.",
+            "base": {
+              "de": "Faulheit hat damit nichts zu tun: Drei Monate fand das Lernen täglich statt. Alles brach in der Umzugswoche zusammen, als der Zeitplan wegfiel.",
+              "en": "Laziness has nothing to do with it: lessons took place daily for three months. Everything fell apart during the moving week, when the schedule disappeared."
+            },
+            "highlights": [
+              "ни при чём"
+            ]
+          },
+          {
+            "targetText": "Лень ни при чём: проблема начинается, когда занятия теряют постоянное время.",
+            "base": {
+              "de": "Faulheit hat nichts damit zu tun: Das Problem beginnt, wenn das Lernen seine feste Zeit verliert.",
+              "en": "Laziness has nothing to do with it: the problem begins when lessons lose their fixed time."
+            },
+            "highlights": [
+              "ни при чём"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "приводит",
+          "kind": "verb",
+          "base": {
+            "de": "führt",
+            "en": "leads"
+          },
+          "acceptedAnswers": [
+            "приводит"
+          ],
+          "lemma": "приводить"
+        },
+        {
+          "targetText": "закономерно",
+          "kind": "adverb",
+          "base": {
+            "de": "folgerichtig",
+            "en": "predictably"
+          },
+          "acceptedAnswers": [
+            "закономерно"
+          ]
+        },
+        {
+          "targetText": "откладываются",
+          "kind": "verb",
+          "base": {
+            "de": "werden verschoben",
+            "en": "are postponed"
+          },
+          "acceptedAnswers": [
+            "откладываются"
+          ],
+          "lemma": "откладываться"
+        },
+        {
+          "targetText": "лень",
+          "kind": "noun",
+          "base": {
+            "de": "Faulheit",
+            "en": "laziness"
+          },
+          "acceptedAnswers": [
+            "лень"
+          ]
+        },
+        {
+          "targetText": "ежедневно",
+          "kind": "adverb",
+          "base": {
+            "de": "täglich",
+            "en": "daily"
+          },
+          "acceptedAnswers": [
+            "ежедневно"
+          ]
+        },
+        {
+          "targetText": "переезда",
+          "kind": "noun",
+          "base": {
+            "de": "Umzug",
+            "en": "move"
+          },
+          "acceptedAnswers": [
+            "переезда"
+          ],
+          "lemma": "переезд"
+        },
+        {
+          "targetText": "срыве",
+          "kind": "noun",
+          "base": {
+            "de": "Rückschlag",
+            "en": "lapse"
+          },
+          "acceptedAnswers": [
+            "срыве"
+          ],
+          "lemma": "срыв"
+        },
+        {
+          "targetText": "ни при чём",
+          "kind": "frame",
+          "base": {
+            "de": "hat nichts damit zu tun",
+            "en": "has nothing to do with it"
+          },
+          "acceptedAnswers": [
+            "ни при чём"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "цель",
+            "расписания",
+            "приводит"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "месяца",
+            "занятия",
+            "переезда"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "начать",
+            "пятнадцать",
+            "вернуться"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "приводить",
+        "familyKey": "приводить",
+        "surface": "приводит",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Постоянный перенос занятий приводит к потере привычки.",
+          "base": {
+            "de": "Ständiges Verschieben des Lernens führt zum Verlust der Gewohnheit.",
+            "en": "Constantly postponing lessons leads to losing the habit."
+          }
+        },
+        "base": {
+          "de": "führen zu",
+          "en": "lead to"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verb verbindest du eine Ursache mit ihrer Folge. «Приводит» passt hier zum ständigen Verschieben.",
+          "en": "Use this verb to connect a cause with its consequence. «Приводит» fits the repeated postponement here."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] Провалился: third-person subject: план"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] шли: third-person subject: занятия"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] сорвалось: third-person subject: всё"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] исчезло: third-person subject: расписание"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "exam-registration",
+      "title": {
+        "de": "Schrittweise zur Prüfungsanmeldung",
+        "en": "Registering for an exam step by step"
+      },
+      "situation": {
+        "de": "Die Verwaltung einer fiktiven Sprachschule bittet dich, den neuen Teilnehmenden das Anmeldeverfahren zu erklären.",
+        "en": "A fictional language school’s administrator asks you to explain registration to new students."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Schulverwaltung",
+            "en": "school administrator"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Verwaltung einer fiktiven Sprachschule bittet dich, den neuen Teilnehmenden das Anmeldeverfahren zu erklären. Die andere Person sagt: „Вы объясните новичкам, как записаться на экзамен? Там многие путаются с этапами.“",
+        "en": "A fictional language school’s administrator asks you to explain registration to new students. The other person says: “Вы объясните новичкам, как записаться на экзамен? Там многие путаются с этапами.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Вы объясните новичкам, как записаться на экзамен? Там многие путаются с этапами.",
+          "base": {
+            "de": "Erklären Sie den Neuen, wie man sich zur Prüfung anmeldet? Viele bringen die Schritte durcheinander.",
+            "en": "Will you explain to newcomers how to register for the exam? Many get the stages mixed up."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Да, объясню поэтапно: в нашей школе сначала регистрация на сайте, затем оплата в течение трёх дней, и только после неё приходит письмо с датой.",
+          "base": {
+            "de": "Ja, Schritt für Schritt: Bei uns an der Schule registriert man sich zuerst auf der Website, zahlt dann binnen drei Tagen und erhält erst danach einen Brief mit dem Termin.",
+            "en": "Yes, step by step: at our school, first register on the website, then pay within three days; only after payment does a letter with the date arrive."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А если оплата не прошла за три дня, регистрация сгорает?",
+          "base": {
+            "de": "Und wenn die Zahlung nicht innerhalb von drei Tagen durchgeht, verfällt die Anmeldung?",
+            "en": "If the payment does not go through within three days, does the registration expire?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Уточню: не сгорает, а переходит в лист ожидания, то есть место за вами, но дата может сдвинуться на следующий поток.",
+          "base": {
+            "de": "Zur Klarstellung: Sie verfällt nicht, sondern kommt auf die Warteliste. Der Platz bleibt also für Sie, aber der Termin kann sich auf den nächsten Durchgang verschieben.",
+            "en": "To clarify, it does not expire but moves to the waiting list: the place is still yours, but the date may move to the next intake."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Хорошо. Сведите всё к трём пунктам для памятки.",
+          "base": {
+            "de": "Gut. Fassen Sie alles für ein Merkblatt in drei Punkten zusammen.",
+            "en": "All right. Reduce it to three points for an information sheet."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Три пункта: зарегистрироваться на сайте, оплатить за три дня, дождаться письма; при задержке оплаты — лист ожидания.",
+          "base": {
+            "de": "Drei Punkte: auf der Website registrieren, binnen drei Tagen bezahlen, auf den Brief warten; bei verspäteter Zahlung kommt man auf die Warteliste.",
+            "en": "Three points: register on the website, pay within three days, wait for the letter; late payment means the waiting list."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Да, объясню поэтапно: в нашей школе ",
+        "chunks": [
+          "сначала регистрация",
+          "на сайте,",
+          "затем оплата",
+          "в течение",
+          "трёх дней,"
+        ],
+        "distractors": [
+          "затем отмена",
+          "четырёх дней,"
+        ],
+        "frameSuffix": " и только после неё приходит письмо с датой."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": не сгорает, а переходит в лист ожидания, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " место за вами, но дата может сдвинуться на следующий поток."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Уточню",
+            "acceptedAnswers": [
+              "Уточню"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "уточнить – ich, vollendete Zukunft",
+              "en": "clarify (уточнить) – I, perfective future"
+            }
+          },
+          {
+            "answer": "то есть",
+            "acceptedAnswers": [
+              "то есть"
+            ],
+            "kind": "connector",
+            "choices": [
+              "то есть",
+              "иначе",
+              "пока",
+              "словно"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Три пункта: зарегистрироваться на сайте, оплатить за три дня, дождаться письма; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " — лист ожидания."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "при задержке оплаты",
+            "acceptedAnswers": [
+              "при задержке оплаты"
+            ],
+            "kind": "frame",
+            "choices": [
+              "при задержке оплаты",
+              "при отмене оплаты",
+              "при задержке письма",
+              "при регистрации"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Да, объясню ",
+        "answer": "поэтапно",
+        "acceptedAnswers": [
+          "поэтапно"
+        ],
+        "after": ": в нашей школе сначала регистрация на сайте, затем оплата в течение трёх дней, и только после неё приходит письмо с датой.",
+        "fallbackChoices": [
+          "поэтапно",
+          "тайно",
+          "наспех",
+          "неохотно"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Verfall von Verschiebung unterscheiden",
+          "en": "Distinguishing expiry from postponement"
+        },
+        "rule": {
+          "de": "Korrigiere die Annahme des Verfalls und erkläre, was sich am Termin ändern kann.",
+          "en": "Correct the assumption that registration expires and explain how the date may change."
+        },
+        "examples": [
+          {
+            "targetText": "Уточню: не сгорает, а переходит в лист ожидания, то есть место за вами, но дата может сдвинуться на следующий поток.",
+            "base": {
+              "de": "Zur Klarstellung: Sie verfällt nicht, sondern kommt auf die Warteliste. Der Platz bleibt also für Sie, aber der Termin kann sich auf den nächsten Durchgang verschieben.",
+              "en": "To clarify, it does not expire but moves to the waiting list: the place is still yours, but the date may move to the next intake."
+            },
+            "highlights": [
+              "Уточню"
+            ]
+          },
+          {
+            "targetText": "Уточню: заявка остаётся, то есть повторная регистрация не нужна.",
+            "base": {
+              "de": "Zur Klarstellung: Der Antrag bleibt bestehen, eine erneute Registrierung ist also nicht nötig.",
+              "en": "To clarify, the application remains, meaning you do not need to register again."
+            },
+            "highlights": [
+              "Уточню"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "поэтапно",
+          "kind": "adverb",
+          "base": {
+            "de": "schrittweise",
+            "en": "step by step"
+          },
+          "acceptedAnswers": [
+            "поэтапно"
+          ]
+        },
+        {
+          "targetText": "регистрация",
+          "kind": "noun",
+          "base": {
+            "de": "Registrierung",
+            "en": "registration"
+          },
+          "acceptedAnswers": [
+            "регистрация"
+          ]
+        },
+        {
+          "targetText": "оплата",
+          "kind": "noun",
+          "base": {
+            "de": "Zahlung",
+            "en": "payment"
+          },
+          "acceptedAnswers": [
+            "оплата"
+          ]
+        },
+        {
+          "targetText": "письмо",
+          "kind": "noun",
+          "base": {
+            "de": "Brief, Nachricht",
+            "en": "letter, message"
+          },
+          "acceptedAnswers": [
+            "письмо"
+          ]
+        },
+        {
+          "targetText": "лист ожидания",
+          "kind": "phrase",
+          "base": {
+            "de": "Warteliste",
+            "en": "waiting list"
+          },
+          "acceptedAnswers": [
+            "лист ожидания"
+          ]
+        },
+        {
+          "targetText": "поток",
+          "kind": "noun",
+          "base": {
+            "de": "Durchgang, Jahrgang",
+            "en": "intake"
+          },
+          "acceptedAnswers": [
+            "поток"
+          ]
+        },
+        {
+          "targetText": "памятки",
+          "kind": "noun",
+          "base": {
+            "de": "Merkblatt",
+            "en": "information sheet"
+          },
+          "acceptedAnswers": [
+            "памятки"
+          ],
+          "lemma": "памятка"
+        },
+        {
+          "targetText": "то есть",
+          "kind": "connector",
+          "base": {
+            "de": "das heißt",
+            "en": "that is"
+          },
+          "acceptedAnswers": [
+            "то есть"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "объясню",
+            "поэтапно",
+            "регистрация"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "уточню",
+            "переходит",
+            "ожидания"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "пункта",
+            "зарегистрироваться",
+            "оплатить"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "поэтапно",
+        "familyKey": "поэтапно",
+        "surface": "поэтапно",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "Объясню поэтапно, как заполнить заявку.",
+          "base": {
+            "de": "Ich erkläre Schritt für Schritt, wie man den Antrag ausfüllt.",
+            "en": "I will explain step by step how to fill in the application."
+          }
+        },
+        "base": {
+          "de": "schrittweise",
+          "en": "step by step"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Adverb kündigst du eine geordnete Erklärung an. Es beschreibt hier die Art des Erklärens.",
+          "en": "Use this adverb to introduce an orderly explanation. Here it describes how you will explain."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "bike-share-skeptic",
+      "title": {
+        "de": "Wozu Leihräder im Viertel?",
+        "en": "Why shared bikes in the district?"
+      },
+      "situation": {
+        "de": "Eine skeptische Person aus der Nachbarschaft stellt die Leihradstation in eurem fiktiven Viertel infrage.",
+        "en": "A sceptical neighbour questions the shared-bike station in your fictional district."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "skeptische Person aus der Nachbarschaft",
+            "en": "sceptical neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine skeptische Person aus der Nachbarschaft stellt die Leihradstation in eurem fiktiven Viertel infrage. Die andere Person sagt: „Городской велопрокат — это игрушка для туристов. Зачем он нашему району?“",
+        "en": "A sceptical neighbour questions the shared-bike station in your fictional district. The other person says: “Городской велопрокат — это игрушка для туристов. Зачем он нашему району?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Городской велопрокат — это игрушка для туристов. Зачем он нашему району?",
+          "base": {
+            "de": "Städtische Leihräder sind ein Spielzeug für Touristen. Wozu braucht unser Viertel das?",
+            "en": "City bike hire is a toy for tourists. Why does our district need it?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Очевидно, что польза есть: от метро до нашего района автобус идёт сорок минут, а на велосипеде — двенадцать.",
+          "base": {
+            "de": "Der Nutzen liegt auf der Hand: Von der Metro in unser Viertel braucht der Bus vierzig Minuten, das Fahrrad dagegen zwölf.",
+            "en": "There is an obvious benefit: from the metro to our district, the bus takes forty minutes but a bicycle takes twelve."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но зимой на велосипеде никто не поедет, а платить за стоянки будем круглый год.",
+          "base": {
+            "de": "Aber im Winter fährt doch niemand Fahrrad, während wir die Stationen das ganze Jahr bezahlen.",
+            "en": "But nobody will cycle in winter, while we pay for the stations all year."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Зимой — верно, спрос падает, но плата за стоянки небольшая: это аренда двух парковочных мест, а не целой улицы.",
+          "base": {
+            "de": "Im Winter, richtig, sinkt die Nachfrage. Aber die Zahlung für die Stationen ist gering: Es ist die Miete für zwei Parkplätze, nicht für eine ganze Straße.",
+            "en": "In winter, true, demand falls, but the payment for the stations is small: it is the rent for two parking spaces, not a whole street."
+          },
+          "move": "concede",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ну и чем это кончится лет через пять, по-вашему?",
+          "base": {
+            "de": "Und worauf läuft das Ihrer Meinung nach in fünf Jahren hinaus?",
+            "en": "And how do you think it will turn out in about five years?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "В конечном счёте — меньше машин у метро и свободные дворы; если же спроса не будет, стоянки просто уберут.",
+          "base": {
+            "de": "Letztlich auf weniger Autos an der Metro und freie Höfe; bleibt die Nachfrage aus, werden die Stationen einfach entfernt.",
+            "en": "Ultimately, fewer cars by the metro and clear courtyards; if there is no demand, the stations will simply be removed."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Очевидно, что польза есть: от метро до нашего района ",
+        "chunks": [
+          "автобус идёт",
+          "сорок",
+          "минут,",
+          "а на велосипеде —",
+          "двенадцать."
+        ],
+        "distractors": [
+          "пятьдесят",
+          "а на автобусе —"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", спрос падает, но плата за стоянки небольшая: это "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " двух парковочных мест, а не целой улицы."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Зимой — верно",
+            "acceptedAnswers": [
+              "Зимой — верно"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Зимой — верно",
+              "Зимой — неверно",
+              "Летом — верно",
+              "Зимой — нет"
+            ]
+          },
+          {
+            "answer": "аренда",
+            "acceptedAnswers": [
+              "аренда"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "аренда – Nominativ Singular",
+              "en": "rent (аренда) – nominative singular"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " — меньше машин у метро и свободные дворы; если же спроса не будет, стоянки просто уберут."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "В конечном счёте",
+            "acceptedAnswers": [
+              "В конечном счёте"
+            ],
+            "kind": "frame",
+            "choices": [
+              "В конечном счёте",
+              "В крайнем случае",
+              "В первую очередь",
+              "В противном случае"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "Очевидно",
+        "acceptedAnswers": [
+          "Очевидно"
+        ],
+        "after": ", что польза есть: от метро до нашего района автобус идёт сорок минут, а на велосипеде — двенадцать.",
+        "fallbackChoices": [
+          "Очевидно",
+          "Случайно",
+          "Изредка",
+          "Нарочно"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen saisonalen Einwand anerkennen",
+          "en": "Acknowledging a seasonal objection"
+        },
+        "rule": {
+          "de": "Bestätige die geringere Winternachfrage und zeige dann, dass die Zahlung für die Stationen nur die Miete für zwei Parkplätze ist.",
+          "en": "Confirm lower winter demand, then show that the payment for the stations is only the rent for two parking spaces."
+        },
+        "examples": [
+          {
+            "targetText": "Зимой — верно, спрос падает, но плата за стоянки небольшая: это аренда двух парковочных мест, а не целой улицы.",
+            "base": {
+              "de": "Im Winter, richtig, sinkt die Nachfrage. Aber die Zahlung für die Stationen ist gering: Es ist die Miete für zwei Parkplätze, nicht für eine ganze Straße.",
+              "en": "In winter, true, demand falls, but the payment for the stations is small: it is the rent for two parking spaces, not a whole street."
+            },
+            "highlights": [
+              "Зимой — верно"
+            ]
+          },
+          {
+            "targetText": "Зимой — верно, поездок меньше, но летом станция сокращает путь к метро.",
+            "base": {
+              "de": "Im Winter, richtig, gibt es weniger Fahrten; im Sommer verkürzt die Station aber den Weg zur Metro.",
+              "en": "In winter, true, there are fewer trips, but in summer the station shortens the journey to the metro."
+            },
+            "highlights": [
+              "Зимой — верно"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Очевидно",
+          "kind": "adverb",
+          "base": {
+            "de": "offensichtlich",
+            "en": "obviously"
+          },
+          "acceptedAnswers": [
+            "Очевидно"
+          ],
+          "lemma": "очевидно"
+        },
+        {
+          "targetText": "велопрокат",
+          "kind": "noun",
+          "base": {
+            "de": "Fahrradverleih",
+            "en": "bike hire"
+          },
+          "acceptedAnswers": [
+            "велопрокат"
+          ]
+        },
+        {
+          "targetText": "польза",
+          "kind": "noun",
+          "base": {
+            "de": "Nutzen",
+            "en": "benefit"
+          },
+          "acceptedAnswers": [
+            "польза"
+          ]
+        },
+        {
+          "targetText": "спрос",
+          "kind": "noun",
+          "base": {
+            "de": "Nachfrage",
+            "en": "demand"
+          },
+          "acceptedAnswers": [
+            "спрос"
+          ]
+        },
+        {
+          "targetText": "стоянки",
+          "kind": "noun",
+          "base": {
+            "de": "Stationen, Abstellplätze",
+            "en": "stations, parking areas"
+          },
+          "acceptedAnswers": [
+            "стоянки"
+          ],
+          "lemma": "стоянка"
+        },
+        {
+          "targetText": "парковочных",
+          "kind": "adjective",
+          "base": {
+            "de": "Park-",
+            "en": "parking"
+          },
+          "acceptedAnswers": [
+            "парковочных"
+          ],
+          "lemma": "парковочный"
+        },
+        {
+          "targetText": "В конечном счёте",
+          "kind": "frame",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          },
+          "acceptedAnswers": [
+            "В конечном счёте"
+          ]
+        },
+        {
+          "targetText": "если же",
+          "kind": "frame",
+          "base": {
+            "de": "falls hingegen",
+            "en": "if, on the other hand"
+          },
+          "acceptedAnswers": [
+            "если же"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "очевидно",
+            "польза",
+            "автобус"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "верно",
+            "спрос",
+            "стоянки"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "конечном",
+            "машин",
+            "дворы"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "очевидно",
+        "familyKey": "очевидно",
+        "surface": "Очевидно",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "Очевидно, что короткий путь экономит время.",
+          "base": {
+            "de": "Offensichtlich spart ein kurzer Weg Zeit.",
+            "en": "Obviously, a short route saves time."
+          }
+        },
+        "base": {
+          "de": "offensichtlich",
+          "en": "obviously"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Adverb kennzeichnest du eine für dich klare Schlussfolgerung. Die anschließende Begründung zeigt, worauf sie beruht.",
+          "en": "Use this adverb to mark a conclusion you see as clear. The reason that follows shows what it rests on."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "heating-delay-chain",
+      "title": {
+        "de": "Warum die Heizung später startete",
+        "en": "Why the heating started late"
+      },
+      "situation": {
+        "de": "Als Vertretung der Bewohner erläuterst du im Hausbeirat die fiktiven Ereignisse vor dem verspäteten Heizungsstart.",
+        "en": "As a residents’ representative, you explain the fictional events behind a late heating start to the committee."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Vorsitz des Hausbeirats",
+            "en": "residents’ committee chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Als Vertretung der Bewohner erläuterst du im Hausbeirat die fiktiven Ereignisse vor dem verspäteten Heizungsstart. Die andere Person sagt: „Жильцы спрашивают, почему отопление включили только в октябре. Восстановите, пожалуйста, цепочку решений.“",
+        "en": "As a residents’ representative, you explain the fictional events behind a late heating start to the committee. The other person says: “Жильцы спрашивают, почему отопление включили только в октябре. Восстановите, пожалуйста, цепочку решений.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Жильцы спрашивают, почему отопление включили только в октябре. Восстановите, пожалуйста, цепочку решений.",
+          "base": {
+            "de": "Die Bewohner fragen, warum die Heizung erst im Oktober eingeschaltet wurde. Rekonstruieren Sie bitte die Entscheidungskette.",
+            "en": "Residents are asking why heating was only turned on in October. Please reconstruct the chain of decisions."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "По порядку: в сентябре трубы в подвале протекли, следовательно, запуск отложили до ремонта, а подрядчик приехал лишь первого октября.",
+          "base": {
+            "de": "Der Reihe nach: Im September wurden die Kellerrohre undicht, deshalb verschob man den Start bis zur Reparatur; der Auftragnehmer kam erst am ersten Oktober.",
+            "en": "In order: the basement pipes leaked in September, so the start was postponed until repairs; the contractor only arrived on the first of October."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но соседний дом включили в сентябре. Значит, дело не в погоде, а в вас?",
+          "base": {
+            "de": "Im Nachbarhaus wurde aber schon im September eingeschaltet. Liegt es also nicht am Wetter, sondern an Ihnen?",
+            "en": "But the neighbouring building turned it on in September. So is the problem you rather than the weather?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Не в нас, а в трубах: у соседей подвал сухой, у нас же без ремонта запуск был опасен, так что ждали.",
+          "base": {
+            "de": "Nicht an uns, sondern an den Rohren: Dort ist der Keller trocken, bei uns wäre der Start ohne Reparatur gefährlich gewesen, also warteten wir.",
+            "en": "Not us, the pipes: their basement is dry, whereas starting ours without repairs was dangerous, so we waited."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Хорошо. Что вы скажете собранию в двух фразах и что обещаете на следующий год?",
+          "base": {
+            "de": "Gut. Was sagen Sie der Versammlung in zwei Sätzen, und was versprechen Sie für nächstes Jahr?",
+            "en": "All right. What will you tell the meeting in two sentences, and what do you promise for next year?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Если коротко: задержка вызвана протечкой и сроками подрядчика; на следующий год осмотр подвала проведём в августе.",
+          "base": {
+            "de": "Kurz gesagt: Das Leck und der Zeitplan des Auftragnehmers verursachten die Verzögerung; nächstes Jahr prüfen wir den Keller im August.",
+            "en": "Briefly, the delay was caused by the leak and the contractor’s schedule; next year we will inspect the basement in August."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "По порядку: в сентябре ",
+        "chunks": [
+          "трубы в подвале",
+          "протекли,",
+          "следовательно,",
+          "запуск отложили",
+          "до ремонта,"
+        ],
+        "distractors": [
+          "трубы на крыше",
+          "запуск ускорили"
+        ],
+        "frameSuffix": " а подрядчик приехал лишь первого октября."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": у соседей подвал сухой, у нас же без ремонта запуск "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", так что ждали."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Не в нас, а в трубах",
+            "acceptedAnswers": [
+              "Не в нас, а в трубах"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Не в нас, а в трубах",
+              "Не в трубах, а в нас",
+              "В нас, а не в трубах",
+              "Не в трубах, а в погоде"
+            ]
+          },
+          {
+            "answer": "был опасен",
+            "acceptedAnswers": [
+              "был опасен"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "опасный – Kurzform, Vergangenheit mit «был»",
+              "en": "dangerous (опасный) – short form, past with «был»"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": задержка вызвана протечкой и сроками подрядчика; на следующий год осмотр подвала проведём в августе."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Если коротко",
+            "acceptedAnswers": [
+              "Если коротко"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Если коротко",
+              "Если долго",
+              "Если нет",
+              "Если подробно"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "По порядку: в сентябре трубы в подвале протекли, ",
+        "answer": "следовательно",
+        "acceptedAnswers": [
+          "следовательно"
+        ],
+        "after": ", запуск отложили до ремонта, а подрядчик приехал лишь первого октября.",
+        "fallbackChoices": [
+          "следовательно",
+          "впрочем",
+          "наоборот",
+          "кстати"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den entscheidenden Unterschied erklären",
+          "en": "Explaining the decisive difference"
+        },
+        "rule": {
+          "de": "Grenze die Ursache von einem persönlichen Vorwurf ab und vergleiche den Zustand beider Keller.",
+          "en": "Separate the cause from a personal accusation and compare the two basements’ conditions."
+        },
+        "examples": [
+          {
+            "targetText": "Не в нас, а в трубах: у соседей подвал сухой, у нас же без ремонта запуск был опасен, так что ждали.",
+            "base": {
+              "de": "Nicht an uns, sondern an den Rohren: Dort ist der Keller trocken, bei uns wäre der Start ohne Reparatur gefährlich gewesen, also warteten wir.",
+              "en": "Not us, the pipes: their basement is dry, whereas starting ours without repairs was dangerous, so we waited."
+            },
+            "highlights": [
+              "Не в нас, а в трубах"
+            ]
+          },
+          {
+            "targetText": "Не в погоде дело, а в трубах: до ремонта запуск небезопасен.",
+            "base": {
+              "de": "Es liegt nicht am Wetter, sondern an den Rohren: Vor der Reparatur ist der Start unsicher.",
+              "en": "It is not the weather but the pipes: starting before repairs is unsafe."
+            },
+            "highlights": [
+              "Не в погоде дело, а в трубах"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "следовательно",
+          "kind": "connector",
+          "base": {
+            "de": "folglich",
+            "en": "therefore"
+          },
+          "acceptedAnswers": [
+            "следовательно"
+          ]
+        },
+        {
+          "targetText": "цепочку",
+          "kind": "noun",
+          "base": {
+            "de": "Kette",
+            "en": "chain"
+          },
+          "acceptedAnswers": [
+            "цепочку"
+          ],
+          "lemma": "цепочка"
+        },
+        {
+          "targetText": "трубы",
+          "kind": "noun",
+          "base": {
+            "de": "Rohre",
+            "en": "pipes"
+          },
+          "acceptedAnswers": [
+            "трубы"
+          ],
+          "lemma": "труба"
+        },
+        {
+          "targetText": "подвале",
+          "kind": "noun",
+          "base": {
+            "de": "Keller",
+            "en": "basement"
+          },
+          "acceptedAnswers": [
+            "подвале"
+          ],
+          "lemma": "подвал"
+        },
+        {
+          "targetText": "подрядчик",
+          "kind": "noun",
+          "base": {
+            "de": "Auftragnehmer",
+            "en": "contractor"
+          },
+          "acceptedAnswers": [
+            "подрядчик"
+          ]
+        },
+        {
+          "targetText": "запуск",
+          "kind": "noun",
+          "base": {
+            "de": "Start",
+            "en": "start-up"
+          },
+          "acceptedAnswers": [
+            "запуск"
+          ]
+        },
+        {
+          "targetText": "протечкой",
+          "kind": "noun",
+          "base": {
+            "de": "Leck",
+            "en": "leak"
+          },
+          "acceptedAnswers": [
+            "протечкой"
+          ],
+          "lemma": "протечка"
+        },
+        {
+          "targetText": "вызвана",
+          "kind": "verb",
+          "base": {
+            "de": "verursacht",
+            "en": "caused"
+          },
+          "acceptedAnswers": [
+            "вызвана"
+          ],
+          "lemma": "вызвать"
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "сентябре",
+            "трубы",
+            "следовательно"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "трубах",
+            "соседей",
+            "ремонта"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "задержка",
+            "протечкой",
+            "проведём"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "следовательно",
+        "familyKey": "следовательно",
+        "surface": "следовательно",
+        "turnIndex": 1,
+        "pos": "connector",
+        "example": {
+          "targetText": "Трубы протекли, следовательно, сначала нужен ремонт.",
+          "base": {
+            "de": "Die Rohre sind undicht geworden, folglich muss zuerst repariert werden.",
+            "en": "The pipes have leaked, so repairs are needed first."
+          }
+        },
+        "base": {
+          "de": "folglich",
+          "en": "therefore"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verbindungswort formulierst du eine Folgerung aus einer genannten Ursache. Es macht die Entscheidungskette sichtbar.",
+          "en": "Use this connector to state a consequence of a named cause. It makes the chain of decisions clear."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] протекли: third-person subject: трубы"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] отложили: plural/impersonal gender-free"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] приехал: third-person subject: подрядчик"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] был: third-person subject: запуск"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] опасен: third-person subject: запуск"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[3] ждали: plural/impersonal gender-free: мы"
+          },
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[5] вызвана: third-person subject: задержка"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,3497 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "German",
+  "targetLanguageCode": "de-DE",
+  "authoredBaseLanguage": "English",
+  "level": "B2",
+  "pathNumber": 4,
+  "slug": "what-if",
+  "pathTitle": {
+    "en": "What if?"
+  },
+  "pathFunction": {
+    "en": "Compare a possible outcome with what actually happened, weigh a risk, and explain a conditional decision."
+  },
+  "specRef": {
+    "pathSpec": "tmp/GUIDED_TEXT_20261106/german/p4/reviewed-2/spec-authority.json",
+    "pathSpecSha256": "ec928dc6f7a2d7336c9dce3ddb52a6f85b20ad1b8c702e1707622888c7721a0e",
+    "ledger": "tmp/GUIDED_TEXT_20261106/german/p4/next-ledger.json",
+    "ledgerSha256": "e3d641cdcce4d78f876f2e93363570c4201efa7718aef189579691080475dd94"
+  },
+  "authoring": {
+    "source": "gpt-6",
+    "runId": "german-b2-p4-20261106",
+    "date": "2026-11-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "frueher-gebucht",
+      "title": {
+        "en": "Booking before the exam date was known"
+      },
+      "situation": {
+        "de": "Du brauchst einen Flug zu einer Prüfung. Im Reisebüro vergleichst du den heutigen Preis mit dem Angebot von vor einem Monat.",
+        "en": "You need a flight for an exam. At the travel agency, you compare today's fare with the offer you saw a month earlier."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "reiseberatung",
+          "role": {
+            "en": "travel agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "You need a flight for an exam. At the travel agency, you compare today's fare with the offer you saw a month earlier. „Der Flug kostet jetzt das Doppelte; vor einem Monat hätten Sie die Hälfte gezahlt.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Der Flug kostet jetzt das Doppelte; vor einem Monat hätten Sie die Hälfte gezahlt.",
+          "base": {
+            "en": "The flight now costs twice as much. A month ago, you'd have paid half as much."
+          },
+          "interlocutorId": "reiseberatung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Hätte ich früher gebucht, hätte ich zwar gespart, aber dann wäre ich jetzt an Termine gebunden, die sich inzwischen verschoben haben.",
+          "base": {
+            "en": "If I'd booked earlier I would have saved money, but now I'd be tied to dates that have since changed."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dafür gibt es flexible Tarife; selbst die hätten damals weniger gekostet als der heutige Preis, das Argument zieht also nicht.",
+          "base": {
+            "en": "That's what flexible fares are for; even those would have cost less back then than today's price, so your argument doesn't hold."
+          },
+          "interlocutorId": "reiseberatung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Rückblickend stimmt das, der flexible Tarif wäre günstiger gewesen; nur stand damals nicht einmal fest, ob die Prüfung überhaupt stattfindet.",
+          "base": {
+            "en": "In hindsight, that's true. The flexible fare would have been cheaper, but back then it wasn't even certain the exam would take place."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und jetzt: Buchen Sie zum aktuellen Preis oder warten Sie auf ein Last-Minute-Angebot?",
+          "base": {
+            "en": "What about now? Will you book at the current fare or wait for a last-minute offer?"
+          },
+          "interlocutorId": "reiseberatung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich buche heute, denn ein weiterer Anstieg ist wahrscheinlicher als ein Rabatt, und noch einmal warten würde ich nicht riskieren.",
+          "base": {
+            "en": "I'll book today because another increase is more likely than a discount, and I wouldn't risk waiting again."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Hätte ich",
+          "früher gebucht,",
+          "hätte ich zwar",
+          "gespart,",
+          "aber dann"
+        ],
+        "distractors": [
+          "früher storniert,",
+          "verzichtet,"
+        ],
+        "frameSuffix": " wäre ich jetzt an Termine gebunden, die sich inzwischen verschoben haben."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", der flexible Tarif wäre günstiger gewesen; nur "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " damals nicht einmal fest, ob die Prüfung überhaupt stattfindet."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Rückblickend stimmt das",
+            "acceptedAnswers": [
+              "Rückblickend stimmt das"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Rückblickend stimmt das",
+              "Rückblickend bestreite ich das",
+              "Rückwirkend stimmt das",
+              "Rückblickend fehlt das"
+            ]
+          },
+          {
+            "answer": "stand",
+            "acceptedAnswers": [
+              "stand"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use feststehen in the simple past. The separable prefix is already later in the clause."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Ich buche heute, denn ein weiterer Anstieg ist "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ein Rabatt, und noch einmal warten würde ich nicht riskieren."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "wahrscheinlicher als",
+            "acceptedAnswers": [
+              "wahrscheinlicher als"
+            ],
+            "kind": "frame",
+            "choices": [
+              "wahrscheinlicher als",
+              "unwahrscheinlicher als",
+              "wahrscheinlicher wie",
+              "wahrscheinlich wegen"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Hätte ich früher gebucht, hätte ich zwar gespart, aber dann wäre ich jetzt an ",
+        "answer": "Termine",
+        "acceptedAnswers": [
+          "Termine"
+        ],
+        "after": " gebunden, die sich inzwischen verschoben haben.",
+        "fallbackChoices": [
+          "Termine",
+          "Tarife",
+          "Rabatte",
+          "Angebote"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Separate hindsight from what you knew then"
+        },
+        "rule": {
+          "en": "Use rückblickend to acknowledge what later proved true, then identify the information you lacked at the time."
+        },
+        "examples": [
+          {
+            "targetText": "Rückblickend stimmt das, der flexible Tarif wäre günstiger gewesen; nur stand damals nicht einmal fest, ob die Prüfung überhaupt stattfindet.",
+            "base": {
+              "en": "In hindsight, that's true. The flexible fare would have been cheaper, but back then it wasn't even certain the exam would take place."
+            },
+            "highlights": [
+              "Rückblickend"
+            ]
+          },
+          {
+            "targetText": "Rückblickend war der Preis günstig, aber damals stand mein Urlaub noch nicht fest.",
+            "base": {
+              "en": "Looking back, the price was good, but my holiday dates hadn't yet been settled."
+            },
+            "highlights": [
+              "Rückblickend"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Hätte ich",
+          "kind": "frame",
+          "base": {
+            "en": "had I"
+          }
+        },
+        {
+          "targetText": "Rückblickend",
+          "kind": "adverb",
+          "base": {
+            "en": "in hindsight"
+          }
+        },
+        {
+          "targetText": "nur",
+          "kind": "connector",
+          "base": {
+            "en": "but; the catch is"
+          }
+        },
+        {
+          "targetText": "Flug",
+          "kind": "noun",
+          "base": {
+            "en": "flight"
+          }
+        },
+        {
+          "targetText": "Tarife",
+          "kind": "noun",
+          "base": {
+            "en": "fares"
+          }
+        },
+        {
+          "targetText": "Prüfung",
+          "kind": "noun",
+          "base": {
+            "en": "exam"
+          }
+        },
+        {
+          "targetText": "Anstieg",
+          "kind": "noun",
+          "base": {
+            "en": "increase"
+          }
+        },
+        {
+          "targetText": "Rabatt",
+          "kind": "noun",
+          "base": {
+            "en": "discount"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "gebucht",
+            "früher",
+            "gespart"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Rückblickend",
+            "Tarif",
+            "Prüfung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Anstieg",
+            "Rabatt",
+            "riskieren"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "rückblickend",
+        "surface": "Rückblickend",
+        "familyKey": "rückblickend",
+        "pos": "adverb",
+        "turnIndex": 3,
+        "base": {
+          "en": "in hindsight"
+        },
+        "example": {
+          "targetText": "Rückblickend war es richtig, zuerst den Prüfungstermin abzuwarten.",
+          "base": {
+            "en": "In hindsight, waiting for the exam date first was the right thing to do."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "firma-geht-remote",
+      "title": {
+        "en": "What would a fully remote company lose?"
+      },
+      "situation": {
+        "de": "In der Firma wird über die Zukunft des Büros diskutiert. Eine Person aus deinem Team will die möglichen Folgen mit dir durchgehen.",
+        "en": "Your company is discussing the future of the office. Someone on your team wants to talk through the possible effects."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "kollege",
+          "role": {
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your company is discussing the future of the office. Someone on your team wants to talk through the possible effects. „Die Geschäftsführung denkt darüber nach, das Büro aufzugeben und komplett remote zu arbeiten.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Die Geschäftsführung denkt darüber nach, das Büro aufzugeben und komplett remote zu arbeiten.",
+          "base": {
+            "en": "Management is considering giving up the office and switching to fully remote work."
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wenn das Büro wegfiele, würden wir zwar Fahrzeit sparen, aber der Zusammenhalt im Team könnte mit der Zeit bröckeln.",
+          "base": {
+            "en": "If the office disappeared, we would save commuting time, but over time the team's cohesion could start to crumble."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Bröckeln? Unser Team funktioniert seit zwei Jahren von zu Hause bestens, das weiß die Geschäftsführung.",
+          "base": {
+            "en": "Fray? Our team has been working very well from home for two years. Management knows that."
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Für uns stimmt das, allerdings nur, weil wir uns persönlich kennen; neue Kolleginnen und Kollegen hätten diesen Vorteil nicht.",
+          "base": {
+            "en": "That's true for us, but only because we already know each other in person. New colleagues wouldn't have that advantage."
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Die Geschäftsführung fragt nach einem Vorschlag aus dem Team. Was tragen wir vor?",
+          "base": {
+            "en": "Management has asked for a suggestion from the team. What should we put forward?"
+          },
+          "interlocutorId": "kollege"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich schlage vor, das Büro zu verkleinern, statt es aufzugeben, und zwei feste Präsenztage im Monat einzuführen.",
+          "base": {
+            "en": "I suggest downsizing the office instead of giving it up and introducing two fixed in-person days per month."
+          },
+          "move": "propose",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Wenn das Büro",
+          "wegfiele,",
+          "würden wir",
+          "zwar Fahrzeit",
+          "sparen,"
+        ],
+        "distractors": [
+          "wegfielen,",
+          "zwar der Fahrzeit"
+        ],
+        "frameSuffix": " aber der Zusammenhalt im Team könnte mit der Zeit bröckeln."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Für uns stimmt das, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " wir uns persönlich kennen; neue Kolleginnen und Kollegen "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " diesen Vorteil nicht."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "allerdings nur, weil",
+            "acceptedAnswers": [
+              "allerdings nur, weil"
+            ],
+            "kind": "frame",
+            "choices": [
+              "allerdings nur, weil",
+              "nur für den Fall",
+              "trotz des Grundes",
+              "allerdings nur, damit"
+            ]
+          },
+          {
+            "answer": "hätten",
+            "acceptedAnswers": [
+              "hätten"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use haben in the subjunctive for a hypothetical situation. The subject is neue Kolleginnen und Kollegen."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", das Büro zu verkleinern, statt es aufzugeben, und zwei feste Präsenztage im Monat einzuführen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ich schlage vor",
+            "acceptedAnswers": [
+              "Ich schlage vor"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Ich schlage vor",
+              "Ich stelle vor",
+              "Ich schlage zu",
+              "Ich stelle ab"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Wenn das Büro wegfiele, würden wir zwar Fahrzeit sparen, aber der ",
+        "answer": "Zusammenhalt",
+        "acceptedAnswers": [
+          "Zusammenhalt"
+        ],
+        "after": " im Team könnte mit der Zeit bröckeln.",
+        "fallbackChoices": [
+          "Zusammenhalt",
+          "Grundriss",
+          "Parkplatz",
+          "Drucker"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Give a condition for an apparent exception"
+        },
+        "rule": {
+          "en": "Allerdings nur, weil acknowledges that one team does well, then identifies why that result may not transfer to a different team."
+        },
+        "examples": [
+          {
+            "targetText": "Für uns stimmt das, allerdings nur, weil wir uns persönlich kennen; neue Kolleginnen und Kollegen hätten diesen Vorteil nicht.",
+            "base": {
+              "en": "That's true for us, but only because we already know each other in person. New colleagues wouldn't have that advantage."
+            },
+            "highlights": [
+              "allerdings nur, weil"
+            ]
+          },
+          {
+            "targetText": "Bei uns klappt das, allerdings nur, weil die Abläufe allen schon vertraut sind.",
+            "base": {
+              "en": "It works for us, but only because everyone already knows the procedures."
+            },
+            "highlights": [
+              "allerdings nur, weil"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Wenn",
+          "kind": "connector",
+          "base": {
+            "en": "if"
+          }
+        },
+        {
+          "targetText": "allerdings nur",
+          "kind": "frame",
+          "base": {
+            "en": "but only"
+          }
+        },
+        {
+          "targetText": "wegfiele",
+          "kind": "verb",
+          "base": {
+            "en": "were to disappear"
+          }
+        },
+        {
+          "targetText": "Fahrzeit",
+          "kind": "noun",
+          "base": {
+            "en": "commuting time"
+          }
+        },
+        {
+          "targetText": "Zusammenhalt",
+          "kind": "noun",
+          "base": {
+            "en": "cohesion"
+          }
+        },
+        {
+          "targetText": "Vorteil",
+          "kind": "noun",
+          "base": {
+            "en": "advantage"
+          }
+        },
+        {
+          "targetText": "verkleinern",
+          "kind": "verb",
+          "base": {
+            "en": "to reduce in size"
+          }
+        },
+        {
+          "targetText": "Präsenztage",
+          "kind": "noun",
+          "base": {
+            "en": "days spent in the office"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Büro",
+            "wegfiele",
+            "Fahrzeit"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "persönlich",
+            "kennen",
+            "Vorteil"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "verkleinern",
+            "Präsenztage",
+            "Monat"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Zusammenhalt",
+        "surface": "Zusammenhalt",
+        "familyKey": "Zusammenhalt",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "cohesion"
+        },
+        "example": {
+          "targetText": "Gemeinsame Projekte stärken den Zusammenhalt, auch wenn das Team nicht täglich zusammenkommt.",
+          "base": {
+            "en": "Joint projects strengthen cohesion even if the team doesn't meet every day."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "miete-steigt",
+      "title": {
+        "en": "If our rent really goes up"
+      },
+      "situation": {
+        "de": "Dein Mitbewohner berichtet von einer möglichen Mieterhöhung. Ihr habt noch keine schriftliche Mitteilung erhalten.",
+        "en": "Your flatmate tells you about a possible rent increase. You haven't received a written notice yet."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "mitbewohner",
+          "role": {
+            "en": "flatmate"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your flatmate tells you about a possible rent increase. You haven't received a written notice yet. „Der Vermieter deutet an, dass die Miete nächstes Jahr um zweihundert Euro steigt.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Der Vermieter deutet an, dass die Miete nächstes Jahr um zweihundert Euro steigt.",
+          "base": {
+            "en": "The landlord has hinted that the rent will rise by two hundred euros next year."
+          },
+          "interlocutorId": "mitbewohner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Falls er das wirklich durchzieht, könnte ich meinen Anteil nicht mehr verkraften, und dann müssten wir uns etwas Günstigeres suchen.",
+          "base": {
+            "en": "If he really goes through with it, I couldn't manage my share any more, and then we'd have to look for somewhere cheaper."
+          },
+          "move": "hypothesize",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Warte, so weit ist es nicht; vielleicht ist die Erhöhung gar nicht zulässig, hast du daran gedacht?",
+          "base": {
+            "en": "Hang on, we're not there yet. Maybe the increase isn't even permissible. Have you thought of that?"
+          },
+          "interlocutorId": "mitbewohner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Daran habe ich nicht gedacht, zugegeben; aber auch bei einer zulässigen Erhöhung bliebe das Problem bestehen.",
+          "base": {
+            "en": "I hadn't thought of that, I admit. But even if the increase were permissible, the problem would remain."
+          },
+          "move": "concede",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Also, was machen wir zuerst: Mieterverein oder gleich eine neue Wohnung suchen?",
+          "base": {
+            "en": "So what's our first move? Contact the tenants' association or look for a new flat straight away?"
+          },
+          "interlocutorId": "mitbewohner"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Erst der Mieterverein, denn ohne Prüfung zu kündigen wäre voreilig; nebenbei schaue ich mir trotzdem Angebote an.",
+          "base": {
+            "en": "The tenants' association first. Giving notice without checking would be premature. I'll still look at listings on the side."
+          },
+          "move": "propose",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "Falls er das wirklich durchzieht, ",
+        "chunks": [
+          "könnte ich",
+          "meinen Anteil",
+          "nicht mehr",
+          "verkraften,",
+          "und dann"
+        ],
+        "distractors": [
+          "meiner Anteil",
+          "verkaufen,"
+        ],
+        "frameSuffix": " müssten wir uns etwas Günstigeres suchen."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Daran habe ich nicht gedacht, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; aber auch bei einer zulässigen Erhöhung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " das Problem bestehen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "zugegeben",
+            "acceptedAnswers": [
+              "zugegeben"
+            ],
+            "kind": "frame",
+            "choices": [
+              "zugegeben",
+              "vorgeworfen",
+              "abgesagt",
+              "untersagt"
+            ]
+          },
+          {
+            "answer": "bliebe",
+            "acceptedAnswers": [
+              "bliebe"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use bleiben in the subjunctive for a hypothetical result. The subject is das Problem."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Erst der Mieterverein, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " ohne Prüfung zu kündigen wäre voreilig; nebenbei schaue ich mir trotzdem Angebote an."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "denn",
+            "acceptedAnswers": [
+              "denn"
+            ],
+            "kind": "frame",
+            "choices": [
+              "denn",
+              "obwohl",
+              "sofern",
+              "während"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Falls er das wirklich durchzieht, ",
+        "answer": "könnte",
+        "acceptedAnswers": [
+          "könnte"
+        ],
+        "after": " ich meinen Anteil nicht mehr verkraften, und dann müssten wir uns etwas Günstigeres suchen.",
+        "fallbackChoices": [
+          "könnte",
+          "konnte",
+          "könnten",
+          "kannst"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "en": "Concede an uncertainty but keep the underlying concern"
+        },
+        "rule": {
+          "en": "Auch bei introduces a case that still wouldn't remove the practical problem. Bliebe makes the result hypothetical."
+        },
+        "examples": [
+          {
+            "targetText": "Daran habe ich nicht gedacht, zugegeben; aber auch bei einer zulässigen Erhöhung bliebe das Problem bestehen.",
+            "base": {
+              "en": "I hadn't thought of that, I admit. But even if the increase were permissible, the problem would remain."
+            },
+            "highlights": [
+              "auch bei"
+            ]
+          },
+          {
+            "targetText": "Auch bei einer kleineren Erhöhung bliebe für mich die Frage, was ich monatlich bezahlen kann.",
+            "base": {
+              "en": "Even with a smaller increase, the question of what I could afford each month would remain."
+            },
+            "highlights": [
+              "Auch bei"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Falls",
+          "kind": "connector",
+          "base": {
+            "en": "if; in the event that"
+          }
+        },
+        {
+          "targetText": "auch bei",
+          "kind": "frame",
+          "base": {
+            "en": "even in the event of"
+          }
+        },
+        {
+          "targetText": "Anteil",
+          "kind": "noun",
+          "base": {
+            "en": "share"
+          }
+        },
+        {
+          "targetText": "verkraften",
+          "kind": "verb",
+          "base": {
+            "en": "to manage or absorb a burden"
+          }
+        },
+        {
+          "targetText": "Erhöhung",
+          "kind": "noun",
+          "base": {
+            "en": "increase"
+          }
+        },
+        {
+          "targetText": "zulässig",
+          "kind": "adjective",
+          "base": {
+            "en": "permissible"
+          }
+        },
+        {
+          "targetText": "Mieterverein",
+          "kind": "noun",
+          "base": {
+            "en": "tenants' association"
+          }
+        },
+        {
+          "targetText": "voreilig",
+          "kind": "adjective",
+          "base": {
+            "en": "premature"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Anteil",
+            "verkraften",
+            "Günstigeres"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "zulässigen",
+            "Erhöhung",
+            "Problem"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Mieterverein",
+            "Prüfung",
+            "voreilig"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "verkraften",
+        "surface": "verkraften",
+        "familyKey": "verkraften",
+        "pos": "verb",
+        "turnIndex": 1,
+        "base": {
+          "en": "to manage or absorb a burden"
+        },
+        "example": {
+          "targetText": "Eine einmalige Zahlung kann ich verkraften, eine dauerhafte Erhöhung kaum.",
+          "base": {
+            "en": "I can manage a one-off payment, but I'd struggle with a permanent increase."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "anderer-job-damals",
+      "title": {
+        "en": "The job I didn't take"
+      },
+      "situation": {
+        "de": "Ein Freund erinnert dich an ein Stellenangebot aus München, das du vor einigen Jahren ausgeschlagen hast.",
+        "en": "A friend reminds you of a job offer from Munich that you turned down some years ago."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "freund",
+          "role": {
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A friend reminds you of a job offer from Munich that you turned down some years ago. „Stell dir vor, du hättest damals das Angebot aus München angenommen; du hättest jetzt doppelt so viel Gehalt.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Stell dir vor, du hättest damals das Angebot aus München angenommen; du hättest jetzt doppelt so viel Gehalt.",
+          "base": {
+            "en": "Imagine you'd taken that offer in Munich back then. You'd be earning twice as much now."
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Hätte ich zugesagt, hätte ich mehr verdienen können, aber ich hätte meine Eltern nur noch an Feiertagen gesehen.",
+          "base": {
+            "en": "If I'd accepted, I could have earned more, but I would only have seen my parents on public holidays."
+          },
+          "move": "hypothesize",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Das klingt nach einer Ausrede; du hättest doch jedes Wochenende pendeln können.",
+          "base": {
+            "en": "That sounds like an excuse. You could have commuted every weekend."
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Pendeln hätte ich können, bereuen würde ich die Absage trotzdem nicht; mein Vater war damals krank, und Zeit war wichtiger als Geld.",
+          "base": {
+            "en": "I could have commuted, but I still wouldn't regret turning the offer down. My father was ill then, and time mattered more than money."
+          },
+          "move": "rebut",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und wenn morgen dasselbe Angebot noch einmal käme?",
+          "base": {
+            "en": "And if the same offer came up again tomorrow?"
+          },
+          "interlocutorId": "freund"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Heute würde ich zusagen, weil die Umstände andere sind; die Entscheidung von damals bleibt dennoch richtig.",
+          "base": {
+            "en": "Today I'd accept, because the circumstances are different. Even so, the decision I made back then was right."
+          },
+          "move": "conclude",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "Hätte ich zugesagt, hätte ich mehr verdienen können, ",
+        "chunks": [
+          "aber ich",
+          "hätte meine Eltern",
+          "nur noch",
+          "an Feiertagen",
+          "gesehen."
+        ],
+        "distractors": [
+          "hätten meine Eltern",
+          "an Feiertage"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Pendeln hätte ich können, bereuen würde ich die Absage "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; mein Vater war damals krank, und Zeit war "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " als Geld."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "trotzdem nicht",
+            "acceptedAnswers": [
+              "trotzdem nicht"
+            ],
+            "kind": "frame",
+            "choices": [
+              "trotzdem nicht",
+              "umso häufiger",
+              "vor dem Geld",
+              "mit dem Gehalt"
+            ]
+          },
+          {
+            "answer": "wichtiger",
+            "acceptedAnswers": [
+              "wichtiger"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Compare two priorities with the comparative form of the adjective meaning “important.”"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Heute würde ich zusagen, weil die Umstände andere sind; die Entscheidung von damals bleibt "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " richtig."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "dennoch",
+            "acceptedAnswers": [
+              "dennoch"
+            ],
+            "kind": "frame",
+            "choices": [
+              "dennoch",
+              "wenn",
+              "damit",
+              "obwohl"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Hätte ich zugesagt, hätte ich mehr verdienen ",
+        "answer": "können",
+        "acceptedAnswers": [
+          "können"
+        ],
+        "after": ", aber ich hätte meine Eltern nur noch an Feiertagen gesehen.",
+        "fallbackChoices": [
+          "können",
+          "gekonnt",
+          "konnte",
+          "kann"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "en": "Keep a past decision distinct from today's choice"
+        },
+        "rule": {
+          "en": "Heute würde ich is a present hypothetical about an offer that hasn't come; the earlier turns use hätte … gesehen / hätte … können for a past that didn't happen. Judge each decision by the circumstances at the time."
+        },
+        "examples": [
+          {
+            "targetText": "Heute würde ich zusagen, weil die Umstände andere sind; die Entscheidung von damals bleibt dennoch richtig.",
+            "base": {
+              "en": "Today I'd accept, because the circumstances are different. Even so, the decision I made back then was right."
+            },
+            "highlights": [
+              "Heute würde ich"
+            ]
+          },
+          {
+            "targetText": "Heute würde ich umziehen. Damals wollte ich in der Nähe meiner Familie bleiben.",
+            "base": {
+              "en": "I'd move today. Back then I wanted to stay close to my family."
+            },
+            "highlights": [
+              "Heute würde ich"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Hätte ich",
+          "kind": "frame",
+          "base": {
+            "en": "had I"
+          }
+        },
+        {
+          "targetText": "dennoch",
+          "kind": "connector",
+          "base": {
+            "en": "even so"
+          }
+        },
+        {
+          "targetText": "zugesagt",
+          "kind": "verb",
+          "base": {
+            "en": "accepted the offer"
+          }
+        },
+        {
+          "targetText": "pendeln",
+          "kind": "verb",
+          "base": {
+            "en": "commute"
+          }
+        },
+        {
+          "targetText": "bereuen",
+          "kind": "verb",
+          "base": {
+            "en": "regret"
+          }
+        },
+        {
+          "targetText": "Absage",
+          "kind": "noun",
+          "base": {
+            "en": "rejection of the offer"
+          }
+        },
+        {
+          "targetText": "Umstände",
+          "kind": "noun",
+          "base": {
+            "en": "circumstances"
+          }
+        },
+        {
+          "targetText": "Feiertagen",
+          "kind": "noun",
+          "base": {
+            "en": "public holidays"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Eltern",
+            "Feiertagen",
+            "gesehen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Pendeln",
+            "bereuen",
+            "Vater"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "zusagen",
+            "Umstände",
+            "Entscheidung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "bereuen",
+        "surface": "bereuen",
+        "familyKey": "bereuen",
+        "pos": "verb",
+        "turnIndex": 3,
+        "base": {
+          "en": "to regret"
+        },
+        "example": {
+          "targetText": "Den Verzicht auf das höhere Gehalt musste ich nicht bereuen.",
+          "base": {
+            "en": "I had no reason to regret foregoing the higher salary."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "sommerfest-wetterrisiko",
+      "title": {
+        "en": "A marquee or cancellation cover?"
+      },
+      "situation": {
+        "de": "Im Verein steht die Planung eines Sommerfests an. Bei der Besprechung fragt die Veranstaltungsleitung nach dem Nutzen eines Zelts.",
+        "en": "Your club is planning a summer event. At the meeting the organiser asks what a marquee would achieve."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "veranstaltungsleitung",
+          "role": {
+            "en": "event organiser"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Your club is planning a summer event. At the meeting the organiser asks what a marquee would achieve. „Das Sommerfest findet draußen statt; der Wetterbericht ist unsicher, aber ein Zelt kostet dreitausend Euro.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Das Sommerfest findet draußen statt; der Wetterbericht ist unsicher, aber ein Zelt kostet dreitausend Euro.",
+          "base": {
+            "en": "The summer event is outdoors. The forecast is uncertain, but a marquee costs three thousand euros."
+          },
+          "interlocutorId": "veranstaltungsleitung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Sollte es regnen, dann bleiben wohl viele Gäste weg, und auch die Technik wäre in Gefahr; das Zelt wäre eine Schutzmaßnahme, kein Luxus.",
+          "base": {
+            "en": "If it rains, many guests will probably stay away, and the equipment would be at risk too. The marquee would be a protective measure, not a luxury."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Eine Schutzmaßnahme, die wir mit neunzig Prozent Wahrscheinlichkeit gar nicht brauchen; das Geld fehlt dann beim Catering.",
+          "base": {
+            "en": "A protective measure that there's a ninety per cent chance we won't even need. Then we'd be short of money for catering."
+          },
+          "interlocutorId": "veranstaltungsleitung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zehn Prozent Risiko sind mir zu viel; wer sich gegen den schlimmsten Fall absichert, zahlt zwar dreitausend, kann aber bei Regen feiern.",
+          "base": {
+            "en": "A ten per cent risk is too much for me. Whoever protects against the worst case pays three thousand, but can still celebrate in the rain."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Der Vorstand entscheidet heute Abend. Welche Variante empfehlen Sie, Zelt oder Ausfallversicherung?",
+          "base": {
+            "en": "The board decides this evening. Which option do you recommend, the marquee or cancellation insurance?"
+          },
+          "interlocutorId": "veranstaltungsleitung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ich empfehle das Zelt, denn eine Versicherung ersetzt allenfalls Kosten, aber nicht das Fest, für das die Gäste gekommen sind.",
+          "base": {
+            "en": "I recommend the marquee. Insurance would at most cover costs, but it doesn't replace the event the guests came for."
+          },
+          "move": "propose",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Sollte es",
+          "regnen,",
+          "dann bleiben",
+          "wohl viele",
+          "Gäste weg,"
+        ],
+        "distractors": [
+          "regnet,",
+          "dann fehlen"
+        ],
+        "frameSuffix": " und auch die Technik wäre in Gefahr; das Zelt wäre eine Schutzmaßnahme, kein Luxus."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Zehn Prozent Risiko sind mir "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; wer sich gegen den schlimmsten Fall "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", zahlt zwar dreitausend, kann aber bei Regen feiern."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "zu viel",
+            "acceptedAnswers": [
+              "zu viel"
+            ],
+            "kind": "frame",
+            "choices": [
+              "zu viel",
+              "zu wenig",
+              "zu spät",
+              "zu knapp"
+            ]
+          },
+          {
+            "answer": "absichert",
+            "acceptedAnswers": [
+              "absichert"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use sich absichern in the present tense with wer. Write the verb in its joined subordinate-clause form."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " das Zelt, denn eine Versicherung ersetzt allenfalls Kosten, aber nicht das Fest, für das die Gäste gekommen sind."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Ich empfehle",
+            "acceptedAnswers": [
+              "Ich empfehle"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Ich empfehle",
+              "Ich erwarte",
+              "Ich empfinde",
+              "Ich entferne"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Sollte es regnen, dann bleiben wohl viele ",
+        "answer": "Gäste",
+        "acceptedAnswers": [
+          "Gäste"
+        ],
+        "after": " weg, und auch die Technik wäre in Gefahr; das Zelt wäre eine Schutzmaßnahme, kein Luxus.",
+        "fallbackChoices": [
+          "Gäste",
+          "Zelte",
+          "Regenschirme",
+          "Versicherungen"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "en": "Contrast the financial and practical outcome"
+        },
+        "rule": {
+          "en": "Compare what each option actually protects. Aber nicht distinguishes reimbursing a monetary loss from allowing the event to go ahead."
+        },
+        "examples": [
+          {
+            "targetText": "Ich empfehle das Zelt, denn eine Versicherung ersetzt allenfalls Kosten, aber nicht das Fest, für das die Gäste gekommen sind.",
+            "base": {
+              "en": "I recommend the marquee. Insurance would at most cover costs, but it doesn't replace the event the guests came for."
+            },
+            "highlights": [
+              "aber nicht"
+            ]
+          },
+          {
+            "targetText": "Die Police ersetzt vielleicht einen Teil der Ausgaben, aber nicht den gemeinsamen Nachmittag.",
+            "base": {
+              "en": "The policy may reimburse part of the expenses, but it doesn't give us back the afternoon together."
+            },
+            "highlights": [
+              "aber nicht"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Sollte es",
+          "kind": "frame",
+          "base": {
+            "en": "should it"
+          }
+        },
+        {
+          "targetText": "und auch",
+          "kind": "connector",
+          "base": {
+            "en": "and also"
+          }
+        },
+        {
+          "targetText": "Gäste",
+          "kind": "noun",
+          "base": {
+            "en": "guests"
+          }
+        },
+        {
+          "targetText": "Technik",
+          "kind": "noun",
+          "base": {
+            "en": "equipment"
+          }
+        },
+        {
+          "targetText": "Versicherung",
+          "kind": "noun",
+          "base": {
+            "en": "insurance"
+          }
+        },
+        {
+          "targetText": "Schutzmaßnahme",
+          "kind": "noun",
+          "base": {
+            "en": "protective measure"
+          }
+        },
+        {
+          "targetText": "absichert",
+          "kind": "verb",
+          "base": {
+            "en": "protects against a risk"
+          }
+        },
+        {
+          "targetText": "Vorstand",
+          "kind": "noun",
+          "base": {
+            "en": "board"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Sollte",
+            "regnen",
+            "Gäste"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Risiko",
+            "absichert",
+            "Regen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Zelt",
+            "Versicherung",
+            "Fest"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "absichern",
+        "surface": "absichert",
+        "familyKey": "absichern",
+        "pos": "verb",
+        "turnIndex": 3,
+        "base": {
+          "en": "to protect against a risk"
+        },
+        "example": {
+          "targetText": "Wer sich vor dem Fest absichert, kann auch bei Regen einen Teil des Programms anbieten.",
+          "base": {
+            "en": "Someone who takes precautions before the event can still offer part of the programme if it rains."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "einspruch-scheitert",
+      "title": {
+        "en": "If the programme turns down the appeal"
+      },
+      "situation": {
+        "de": "Bei einer Beratungsstelle gehst du das Schreiben eines Förderprogramms durch. Dein Einspruch ist noch offen.",
+        "en": "At an advice centre, you read through a letter about a funding programme. Your appeal is still pending."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "beratung",
+          "role": {
+            "en": "adviser discussing the programme letter"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "At an advice centre, you read through a letter about a funding programme. Your appeal is still pending. „Ihr Einspruch gegen die Ablehnung des Förderprogramms liegt beim Amt; laut Schreiben rechnen wir in sechs Wochen mit einer Antwort.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ihr Einspruch gegen die Ablehnung des Förderprogramms liegt beim Amt; laut Schreiben rechnen wir in sechs Wochen mit einer Antwort.",
+          "base": {
+            "en": "The office has your appeal against the funding programme's rejection. According to the letter, we should receive an answer in six weeks."
+          },
+          "interlocutorId": "beratung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Für den Fall, dass der Einspruch scheitert, bliebe mir laut dem Schreiben nur die Klage, und die könnte ich mir finanziell kaum leisten.",
+          "base": {
+            "en": "If the appeal fails, the letter says my only remaining option would be court action, which I'd find very hard to afford."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Eine Klage kann sich lange hinziehen; ehrlich gesagt wäre das in Ihrer Lage ein großes Risiko.",
+          "base": {
+            "en": "Court action can drag on for a long time. To be honest, in your situation that would be a big risk."
+          },
+          "interlocutorId": "beratung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Das sehe ich ein, deshalb wäre ein Ausweg, parallel einen neuen Antrag mit besseren Unterlagen zu stellen, oder spricht etwas dagegen?",
+          "base": {
+            "en": "I take your point. One way out might be to submit a new application with better supporting documents in parallel. Is there an objection to doing that?"
+          },
+          "move": "concede",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ein neuer Antrag ist möglich; laut dem Schreiben müssten Sie den Einspruch dafür allerdings zurückziehen. Wie entscheiden Sie?",
+          "base": {
+            "en": "A new application is possible; according to the letter, though, you would have to withdraw the appeal for that. What will you decide?"
+          },
+          "interlocutorId": "beratung"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zurückziehen würde ich den Einspruch nur, sofern vorher feststeht, dass der neue Antrag bessere Chancen hat; bis dahin bleibt er offen.",
+          "base": {
+            "en": "I would withdraw the appeal only if it were established beforehand that the new application stands a better chance; until then it stays pending."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Für",
+          "den Fall,",
+          "dass",
+          "der Einspruch",
+          "scheitert,"
+        ],
+        "distractors": [
+          "scheitern,",
+          "dem Einspruch"
+        ],
+        "frameSuffix": " bliebe mir laut dem Schreiben nur die Klage, und die könnte ich mir finanziell kaum leisten."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", deshalb "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " ein Ausweg, parallel einen neuen Antrag mit besseren Unterlagen zu stellen, oder spricht etwas dagegen?"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Das sehe ich ein",
+            "acceptedAnswers": [
+              "Das sehe ich ein"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Das sehe ich ein",
+              "Das sehe ich an",
+              "Das sehe ich nach",
+              "Das sehe ich durch"
+            ]
+          },
+          {
+            "answer": "wäre",
+            "acceptedAnswers": [
+              "wäre"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use sein in the subjunctive. The proposed alternative is only a possibility."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Zurückziehen würde ich den Einspruch nur, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " vorher feststeht, dass der neue Antrag bessere Chancen hat; bis dahin bleibt er offen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "sofern",
+            "acceptedAnswers": [
+              "sofern"
+            ],
+            "kind": "frame",
+            "choices": [
+              "sofern",
+              "obwohl",
+              "damit",
+              "bevor"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Für den Fall, dass der Einspruch scheitert, bliebe mir laut dem Schreiben nur die ",
+        "answer": "Klage",
+        "acceptedAnswers": [
+          "Klage"
+        ],
+        "after": ", und die könnte ich mir finanziell kaum leisten.",
+        "fallbackChoices": [
+          "Klage",
+          "Auszahlung",
+          "Förderung",
+          "Zusage"
+        ]
+      },
+      "pattern": {
+        "moveType": "conclude",
+        "label": {
+          "en": "Give a conditional commitment"
+        },
+        "rule": {
+          "en": "Use sofern to name the condition under which you would act; with würde the commitment stays hypothetical, and the appeal stays pending until the condition is actually met. The verb goes to the end of the sofern clause."
+        },
+        "examples": [
+          {
+            "targetText": "Zurückziehen würde ich den Einspruch nur, sofern vorher feststeht, dass der neue Antrag bessere Chancen hat; bis dahin bleibt er offen.",
+            "base": {
+              "en": "I would withdraw the appeal only if it were established beforehand that the new application stands a better chance; until then it stays pending."
+            },
+            "highlights": [
+              "sofern"
+            ]
+          },
+          {
+            "targetText": "Ich reiche den Antrag ein, sofern die Beratungsstelle die Unterlagen vorher prüft.",
+            "base": {
+              "en": "I'll submit the application provided the advice centre checks the documents first."
+            },
+            "highlights": [
+              "sofern"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Für den Fall",
+          "kind": "frame",
+          "base": {
+            "en": "in the event"
+          }
+        },
+        {
+          "targetText": "sofern",
+          "kind": "connector",
+          "base": {
+            "en": "provided that"
+          }
+        },
+        {
+          "targetText": "Einspruch",
+          "kind": "noun",
+          "base": {
+            "en": "objection; appeal"
+          }
+        },
+        {
+          "targetText": "Schreiben",
+          "kind": "noun",
+          "base": {
+            "en": "official letter"
+          }
+        },
+        {
+          "targetText": "Klage",
+          "kind": "noun",
+          "base": {
+            "en": "court action"
+          }
+        },
+        {
+          "targetText": "Ausweg",
+          "kind": "noun",
+          "base": {
+            "en": "way out"
+          }
+        },
+        {
+          "targetText": "Unterlagen",
+          "kind": "noun",
+          "base": {
+            "en": "supporting documents"
+          }
+        },
+        {
+          "targetText": "Antrag",
+          "kind": "noun",
+          "base": {
+            "en": "application"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Fall",
+            "Einspruch",
+            "scheitert"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Ausweg",
+            "Antrag",
+            "Unterlagen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Einspruch",
+            "Antrag",
+            "Chancen"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Ausweg",
+        "surface": "Ausweg",
+        "familyKey": "Ausweg",
+        "pos": "noun",
+        "turnIndex": 3,
+        "base": {
+          "en": "way out"
+        },
+        "example": {
+          "targetText": "Ein zweiter Antrag könnte ein Ausweg für dieses Programm sein.",
+          "base": {
+            "en": "A second application could be a way out under this programme."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "scooter-verbot",
+      "title": {
+        "en": "Would a ban move the problem elsewhere?"
+      },
+      "situation": {
+        "de": "Ein Nachbar freut sich über ein mögliches Verbot von E-Scootern. Du willst bei der Bezirksversammlung über die Idee sprechen.",
+        "en": "A neighbour is pleased about a possible ban on e-scooters. You plan to discuss the idea at the district assembly."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "nachbar",
+          "role": {
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "A neighbour is pleased about a possible ban on e-scooters. You plan to discuss the idea at the district assembly. „Die Stadt will E-Scooter im ganzen Viertel verbieten; endlich liegen die Dinger nicht mehr auf dem Gehweg.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Die Stadt will E-Scooter im ganzen Viertel verbieten; endlich liegen die Dinger nicht mehr auf dem Gehweg.",
+          "base": {
+            "en": "The city wants to ban e-scooters throughout the district. At last the things won't be lying on the pavement."
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Angenommen, das Verbot kommt, dann verschwinden die Scooter vermutlich nicht, sondern landen zwei Straßen weiter; wir hätten nur eine Verlagerung des Problems.",
+          "base": {
+            "en": "Suppose the ban goes ahead. The scooters probably won't disappear; they'll end up two streets away. We'd just have moved the problem elsewhere."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Mir ist egal, wo sie liegen, solange nicht vor meiner Tür; das ist doch legitim, oder?",
+          "base": {
+            "en": "I don't care where they are as long as they're not outside my door. That's fair enough, isn't it?"
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Legitim ja, gelöst nein; wer das Problem nur verschiebt, bekommt es beim nächsten Verbot im Nachbarviertel zurück.",
+          "base": {
+            "en": "Fair enough, yes. Solved, no. Whoever merely shifts the problem gets it back with the next ban in the neighbouring district."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Dann sagen Sie mir, was Sie der Bezirksversammlung statt eines Verbots vorschlagen würden.",
+          "base": {
+            "en": "Then tell me what you'd propose to the district assembly instead of a ban."
+          },
+          "interlocutorId": "nachbar"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Abstellzonen an jeder zweiten Kreuzung und eine Gebühr fürs Falschparken; damit wäre allen geholfen, und Ihre Haustür bliebe frei.",
+          "base": {
+            "en": "Parking zones at every other junction, plus a charge for parking incorrectly; that would help everyone, and your front door would stay clear."
+          },
+          "move": "propose",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Angenommen, das Verbot kommt, ",
+        "chunks": [
+          "dann verschwinden",
+          "die Scooter",
+          "vermutlich nicht,",
+          "sondern landen",
+          "zwei Straßen weiter;"
+        ],
+        "distractors": [
+          "sondern fallen durch",
+          "zwei Wochen früher;"
+        ],
+        "frameSuffix": " wir hätten nur eine Verlagerung des Problems."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "; wer das Problem nur verschiebt, "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " es beim nächsten Verbot im Nachbarviertel zurück."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Legitim ja, gelöst nein",
+            "acceptedAnswers": [
+              "Legitim ja, gelöst nein"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Legitim ja, gelöst nein",
+              "Legitim nein, gelöst ja",
+              "Gelöst und beendet",
+              "Nicht einmal erlaubt"
+            ]
+          },
+          {
+            "answer": "bekommt",
+            "acceptedAnswers": [
+              "bekommt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use zurückbekommen in the present tense with wer. The separable prefix appears later."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Abstellzonen an jeder zweiten Kreuzung und eine Gebühr fürs Falschparken; "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " allen geholfen, und Ihre Haustür bliebe frei."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "damit wäre",
+            "acceptedAnswers": [
+              "damit wäre"
+            ],
+            "kind": "frame",
+            "choices": [
+              "damit wäre",
+              "damit wären",
+              "damit hätte",
+              "damit würden"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Angenommen, das Verbot kommt, dann verschwinden die Scooter vermutlich nicht, sondern landen zwei Straßen weiter; wir hätten nur eine ",
+        "answer": "Verlagerung",
+        "acceptedAnswers": [
+          "Verlagerung"
+        ],
+        "after": " des Problems.",
+        "fallbackChoices": [
+          "Verlagerung",
+          "Beseitigung",
+          "Reparatur",
+          "Entsorgung"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "en": "Distinguish whose problem it is from whether it's solved"
+        },
+        "rule": {
+          "en": "Wer …, bekommt … zurück explains how shifting a problem to another person can eventually bring it back."
+        },
+        "examples": [
+          {
+            "targetText": "Legitim ja, gelöst nein; wer das Problem nur verschiebt, bekommt es beim nächsten Verbot im Nachbarviertel zurück.",
+            "base": {
+              "en": "Fair enough, yes. Solved, no. Whoever merely shifts the problem gets it back with the next ban in the neighbouring district."
+            },
+            "highlights": [
+              "wer das Problem nur verschiebt"
+            ]
+          },
+          {
+            "targetText": "Wer den Müll nur in die nächste Straße stellt, bekommt ihn beim nächsten Streit wieder zurück.",
+            "base": {
+              "en": "Someone who just puts the rubbish on the next street will get it back in the next dispute."
+            },
+            "highlights": [
+              "Wer den Müll nur in die nächste Straße stellt"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Angenommen",
+          "kind": "frame",
+          "base": {
+            "en": "suppose"
+          }
+        },
+        {
+          "targetText": "sondern",
+          "kind": "connector",
+          "base": {
+            "en": "but instead"
+          }
+        },
+        {
+          "targetText": "Gehweg",
+          "kind": "noun",
+          "base": {
+            "en": "pavement"
+          }
+        },
+        {
+          "targetText": "Verbot",
+          "kind": "noun",
+          "base": {
+            "en": "ban"
+          }
+        },
+        {
+          "targetText": "Verlagerung",
+          "kind": "noun",
+          "base": {
+            "en": "displacement; shift"
+          }
+        },
+        {
+          "targetText": "verschiebt",
+          "kind": "verb",
+          "base": {
+            "en": "shifts elsewhere"
+          }
+        },
+        {
+          "targetText": "Kreuzung",
+          "kind": "noun",
+          "base": {
+            "en": "junction"
+          }
+        },
+        {
+          "targetText": "Gebühr",
+          "kind": "noun",
+          "base": {
+            "en": "charge"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "verschwinden",
+            "Scooter",
+            "Straßen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Problem",
+            "verschiebt",
+            "Verbot"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Abstellzonen",
+            "Kreuzung",
+            "Gebühr"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Verlagerung",
+        "surface": "Verlagerung",
+        "familyKey": "Verlagerung",
+        "pos": "noun",
+        "turnIndex": 1,
+        "base": {
+          "en": "displacement"
+        },
+        "example": {
+          "targetText": "Eine Verlagerung in die Nebenstraße hilft den Menschen dort kaum.",
+          "base": {
+            "en": "Moving the problem to a side street is little help to the people there."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "auslandsjahr-verpasst",
+      "title": {
+        "en": "A year in Lisbon"
+      },
+      "situation": {
+        "de": "Du sprichst mit einer befreundeten Person über ein Auslandsjahr, das du damals erwogen hast.",
+        "en": "You and a friend are talking about a year abroad you once considered."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "friend",
+          "role": {
+            "en": "A friend who remembers the original plan"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "You and a friend are talking about a year abroad you once considered. „Du wolltest doch immer ein Jahr nach Lissabon; wärst du gegangen, würdest du heute wahrscheinlich fließend Portugiesisch sprechen.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Du wolltest doch immer ein Jahr nach Lissabon; wärst du gegangen, würdest du heute wahrscheinlich fließend Portugiesisch sprechen.",
+          "base": {
+            "en": "You always wanted to spend a year in Lisbon. If you had gone, you'd probably be fluent in Portuguese today."
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wenn ich gegangen wäre, hätte ich die Sprache gelernt, aber mein Studium hätte ein Jahr länger gedauert, und das Stipendium wäre wohl weggefallen.",
+          "base": {
+            "en": "If I had gone, I would have learned the language. But my degree would have taken a year longer, and I would probably have lost my scholarship."
+          },
+          "move": "hypothesize",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Du rechnest alles in Semestern; manche Umwege lohnen sich eben erst später.",
+          "base": {
+            "en": "You measure everything in semesters. Some detours only pay off later."
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Da hast du nicht ganz unrecht, ein Umweg hätte mir Perspektive gegeben; nur hätte ich damals das Geld dafür gar nicht gehabt.",
+          "base": {
+            "en": "You have a point. Taking a detour would have given me perspective. It's just that I wouldn't have had the money for it back then."
+          },
+          "move": "concede",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und jetzt, mit festem Job: Würdest du den Umweg heute nachholen?",
+          "base": {
+            "en": "And now, with a steady job, would you take that detour after all?"
+          },
+          "interlocutorId": "friend"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Nicht als Jahr, aber als dreimonatige unbezahlte Auszeit; das wäre vielleicht machbar, ohne alles aufs Spiel zu setzen, falls die Firma mitspielt.",
+          "base": {
+            "en": "Not for a year, but perhaps as a three-month unpaid break. That might be feasible without putting everything at risk, if the company goes along with it."
+          },
+          "move": "conclude",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Wenn ich",
+          "gegangen wäre,",
+          "hätte ich",
+          "die Sprache",
+          "gelernt,"
+        ],
+        "distractors": [
+          "ging ich",
+          "zu lernen"
+        ],
+        "frameSuffix": " aber mein Studium hätte ein Jahr länger gedauert, und das Stipendium wäre wohl weggefallen."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " nicht ganz unrecht, ein Umweg hätte mir Perspektive gegeben; nur hätte ich damals das Geld dafür gar nicht "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Da hast du",
+            "acceptedAnswers": [
+              "Da hast du"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Da hast du",
+              "Da hast du es",
+              "Da hast du dich",
+              "Da hast du mir"
+            ]
+          },
+          {
+            "answer": "gehabt",
+            "acceptedAnswers": [
+              "gehabt"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Complete the past conditional with the past participle of the verb meaning “to have.”"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Nicht als Jahr, aber als dreimonatige unbezahlte Auszeit; das wäre vielleicht machbar, ohne alles aufs Spiel zu setzen, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " die Firma mitspielt."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "falls",
+            "acceptedAnswers": [
+              "falls"
+            ],
+            "kind": "frame",
+            "choices": [
+              "falls",
+              "obwohl",
+              "bis",
+              "seit"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Wenn ich gegangen wäre, hätte ich die Sprache gelernt, aber mein Studium hätte ein Jahr länger gedauert, und das ",
+        "answer": "Stipendium",
+        "acceptedAnswers": [
+          "Stipendium"
+        ],
+        "after": " wäre wohl weggefallen.",
+        "fallbackChoices": [
+          "Stipendium",
+          "Aufenthalt",
+          "Umzug",
+          "Umweg"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "en": "Imagine an unreal past"
+        },
+        "rule": {
+          "en": "Pair a past participle with the subjunctive of its usual perfect auxiliary to imagine a past event that did not happen."
+        },
+        "examples": [
+          {
+            "targetText": "Wenn ich gegangen wäre, hätte ich die Sprache gelernt, aber mein Studium hätte ein Jahr länger gedauert, und das Stipendium wäre wohl weggefallen.",
+            "base": {
+              "en": "If I had gone, I would have learned the language. But my degree would have taken a year longer, and I would probably have lost my scholarship."
+            },
+            "highlights": [
+              "Wenn ich gegangen wäre"
+            ]
+          },
+          {
+            "targetText": "Wenn ich geblieben wäre, hätte ich das Konzert verpasst.",
+            "base": {
+              "en": "If I had stayed, I would have missed the concert."
+            },
+            "highlights": [
+              "Wenn ich geblieben wäre"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "Wenn",
+          "kind": "connector",
+          "base": {
+            "en": "if"
+          }
+        },
+        {
+          "targetText": "falls",
+          "kind": "connector",
+          "base": {
+            "en": "if; in case"
+          }
+        },
+        {
+          "targetText": "Stipendium",
+          "kind": "noun",
+          "base": {
+            "en": "scholarship"
+          }
+        },
+        {
+          "targetText": "Umweg",
+          "kind": "noun",
+          "base": {
+            "en": "detour"
+          }
+        },
+        {
+          "targetText": "Perspektive",
+          "kind": "noun",
+          "base": {
+            "en": "perspective"
+          }
+        },
+        {
+          "targetText": "Auszeit",
+          "kind": "noun",
+          "base": {
+            "en": "break from work"
+          }
+        },
+        {
+          "targetText": "mitspielt",
+          "kind": "verb",
+          "base": {
+            "en": "goes along with it"
+          }
+        },
+        {
+          "targetText": "unbezahlte",
+          "kind": "adjective",
+          "base": {
+            "en": "unpaid"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "gegangen",
+            "Sprache",
+            "Stipendium"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Umweg",
+            "Perspektive",
+            "Geld"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Auszeit",
+            "Firma",
+            "mitspielt"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "Umweg",
+        "surface": "Umweg",
+        "familyKey": "Umweg",
+        "pos": "noun",
+        "turnIndex": 3,
+        "base": {
+          "en": "detour"
+        },
+        "example": {
+          "targetText": "Der Umweg hat mir Zeit zum Nachdenken gegeben.",
+          "base": {
+            "en": "The detour gave me time to think."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "geld-leihen",
+      "title": {
+        "en": "Lending to a sibling"
+      },
+      "situation": {
+        "de": "Beim Kaffee erzählt dir jemand, dass sein Bruder um ein Darlehen gebeten hat.",
+        "en": "Over coffee, a friend tells you his brother has asked for a loan."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "du",
+          "du",
+          "du"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "brother",
+          "role": {
+            "en": "A friend considering a loan to his brother"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "Over coffee, a friend tells you his brother has asked for a loan. „Mein Bruder braucht fünftausend Euro für sein Café; ich überlege, ihm das Geld zu leihen.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Mein Bruder braucht fünftausend Euro für sein Café; ich überlege, ihm das Geld zu leihen.",
+          "base": {
+            "en": "My brother needs five thousand euros for his café. I'm thinking of lending him the money."
+          },
+          "interlocutorId": "brother"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Wenn das Café scheitert, verlierst du nicht nur Geld, sondern vielleicht auch das Vertrauen zwischen euch; das Risiko trägt eure Beziehung, nicht nur dein Konto.",
+          "base": {
+            "en": "If the café fails, you don't just lose money; you might also lose the trust between you. The risk falls on your relationship, not just your bank account."
+          },
+          "move": "hypothesize",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Also soll ich ihn hängen lassen? Er hat mir damals auch geholfen.",
+          "base": {
+            "en": "So I should leave him in the lurch? He helped me back then, too."
+          },
+          "interlocutorId": "brother"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Zugestanden, das will ich dir nicht zumuten; aber helfen kannst du auch mit einem Betrag, den du verschmerzen könntest, oder mit Zeit und Kontakten.",
+          "base": {
+            "en": "Granted, I don't want to ask that of you. But you could also help with an amount you could afford to lose, or with your time and contacts."
+          },
+          "move": "concede",
+          "register": "du"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Wenn ich leihe, dann ohne Vertrag, unter Brüdern. Was hältst du davon?",
+          "base": {
+            "en": "If I lend him the money, it'll be without a contract, between brothers. What do you think?"
+          },
+          "interlocutorId": "brother"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Davon würde ich abraten, es sei denn, ihr schreibt wenigstens Betrag und Rückzahlung auf; das Risiko bleibt, aber entscheiden musst du.",
+          "base": {
+            "en": "I'd advise against that, unless you at least write down the amount and the repayment terms; the risk remains, but the decision has to be yours."
+          },
+          "move": "propose",
+          "register": "du"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Wenn das Café",
+          "scheitert,",
+          "verlierst du",
+          "nicht nur",
+          "Geld,"
+        ],
+        "distractors": [
+          "ohne zu",
+          "dem Verlust"
+        ],
+        "frameSuffix": " sondern vielleicht auch das Vertrauen zwischen euch; das Risiko trägt eure Beziehung, nicht nur dein Konto."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", das will ich dir nicht zumuten; aber helfen kannst du auch mit einem Betrag, den du verschmerzen "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", oder mit Zeit und Kontakten."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Zugestanden",
+            "acceptedAnswers": [
+              "Zugestanden"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Zugestanden",
+              "Zugesagt",
+              "Zugesehen",
+              "Andernfalls"
+            ]
+          },
+          {
+            "answer": "könntest",
+            "acceptedAnswers": [
+              "könntest"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use the second-person singular subjunctive of the modal meaning “can.”"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Davon würde ich abraten, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", ihr schreibt wenigstens Betrag und Rückzahlung auf; das Risiko bleibt, aber entscheiden musst du."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "es sei denn",
+            "acceptedAnswers": [
+              "es sei denn"
+            ],
+            "kind": "frame",
+            "choices": [
+              "es sei denn",
+              "seitdem",
+              "umso mehr",
+              "wegen"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Wenn das Café scheitert, ",
+        "answer": "verlierst",
+        "acceptedAnswers": [
+          "verlierst"
+        ],
+        "after": " du nicht nur Geld, sondern vielleicht auch das Vertrauen zwischen euch; das Risiko trägt eure Beziehung, nicht nur dein Konto.",
+        "fallbackChoices": [
+          "verlierst",
+          "verliert",
+          "verlieren",
+          "verlorst"
+        ]
+      },
+      "pattern": {
+        "moveType": "propose",
+        "label": {
+          "en": "Leave room for an exception"
+        },
+        "rule": {
+          "en": "Use “es sei denn” to introduce the one condition under which you would reconsider your advice."
+        },
+        "examples": [
+          {
+            "targetText": "Davon würde ich abraten, es sei denn, ihr schreibt wenigstens Betrag und Rückzahlung auf; das Risiko bleibt, aber entscheiden musst du.",
+            "base": {
+              "en": "I'd advise against that, unless you at least write down the amount and the repayment terms; the risk remains, but the decision has to be yours."
+            },
+            "highlights": [
+              "es sei denn"
+            ]
+          },
+          {
+            "targetText": "Ich würde den Termin beibehalten, es sei denn, du musst am Freitag arbeiten.",
+            "base": {
+              "en": "I would keep the appointment unless you have to work on Friday."
+            },
+            "highlights": [
+              "es sei denn"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "es sei denn",
+          "kind": "frame",
+          "base": {
+            "en": "unless"
+          }
+        },
+        {
+          "targetText": "sondern",
+          "kind": "connector",
+          "base": {
+            "en": "but also; but rather"
+          }
+        },
+        {
+          "targetText": "scheitert",
+          "kind": "verb",
+          "base": {
+            "en": "fails"
+          }
+        },
+        {
+          "targetText": "Beziehung",
+          "kind": "noun",
+          "base": {
+            "en": "relationship"
+          }
+        },
+        {
+          "targetText": "zumuten",
+          "kind": "verb",
+          "base": {
+            "en": "ask someone to put up with something"
+          }
+        },
+        {
+          "targetText": "Betrag",
+          "kind": "noun",
+          "base": {
+            "en": "amount"
+          }
+        },
+        {
+          "targetText": "Rückzahlung",
+          "kind": "noun",
+          "base": {
+            "en": "repayment"
+          }
+        },
+        {
+          "targetText": "verschmerzen",
+          "kind": "verb",
+          "base": {
+            "en": "absorb a loss"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Café",
+            "scheitert",
+            "Beziehung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "zumuten",
+            "Betrag",
+            "verschmerzen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "abraten",
+            "Betrag",
+            "Rückzahlung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "zumuten",
+        "surface": "zumuten",
+        "familyKey": "zumuten",
+        "pos": "verb",
+        "turnIndex": 3,
+        "base": {
+          "en": "ask someone to put up with something"
+        },
+        "example": {
+          "targetText": "So viel Arbeit möchte ich dir allein nicht zumuten.",
+          "base": {
+            "en": "I don't want to ask you to take on that much work alone."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "folgen-abschaetzen",
+      "title": {
+        "en": "Forecasting the switch"
+      },
+      "situation": {
+        "de": "Die Abteilungsleitung bittet dich um eine Einschätzung zur geplanten Umstellung des Buchungssystems.",
+        "en": "The head of your department asks for your assessment of the planned switch to a new booking system."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "Sie",
+          "Sie",
+          "Sie"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "manager",
+          "role": {
+            "en": "A department head planning the transition"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "en": "The head of your department asks for your assessment of the planned switch to a new booking system. „Ab Januar läuft das neue Buchungssystem parallel zum alten; schätzen Sie mir die Folgen für das erste Quartal ab.“"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Ab Januar läuft das neue Buchungssystem parallel zum alten; schätzen Sie mir die Folgen für das erste Quartal ab.",
+          "base": {
+            "en": "From January, the new booking system will run alongside the old one. Estimate what that means for the first quarter."
+          },
+          "interlocutorId": "manager"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Im ersten Quartal dürfte die Fehlerquote zunächst steigen, weil zwei Systeme parallel laufen; danach dürften wir pro Buchung ein Drittel der Zeit sparen.",
+          "base": {
+            "en": "The error rate will probably rise at first in the first quarter because two systems will be running in parallel. After that we should save a third of the time per booking."
+          },
+          "move": "hypothesize",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Ein Drittel klingt nach Wunschdenken; worauf stützen Sie das?",
+          "base": {
+            "en": "A third sounds like wishful thinking. What are you basing that on?"
+          },
+          "interlocutorId": "manager"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Das ist kein Wunschdenken, sondern der Wert aus dem Pilotteam; absehbar ist allerdings auch, dass drei Kolleginnen und Kollegen eine Schulung brauchen.",
+          "base": {
+            "en": "It isn't wishful thinking. It's the figure from the pilot team. What we can also see coming is that three colleagues will need training."
+          },
+          "move": "rebut",
+          "register": "Sie"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Und wenn die Fehlerquote im Februar immer noch über fünf Prozent liegt?",
+          "base": {
+            "en": "What if the error rate is still above five percent in February?"
+          },
+          "interlocutorId": "manager"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Dann würde ich empfehlen, den Parallelbetrieb um einen Monat zu verlängern; ob wir die endgültige Umstellung verschieben, liegt bei Ihnen.",
+          "base": {
+            "en": "Then I'd recommend extending the parallel operation by a month. Whether we postpone the final switch is up to you."
+          },
+          "move": "conclude",
+          "register": "Sie"
+        }
+      ],
+      "build": {
+        "framePrefix": "Im ersten Quartal dürfte ",
+        "chunks": [
+          "die Fehlerquote zunächst",
+          "steigen,",
+          "weil zwei",
+          "Systeme parallel",
+          "laufen;"
+        ],
+        "distractors": [
+          "gestiegen ist",
+          "durch zwei"
+        ],
+        "frameSuffix": " danach dürften wir pro Buchung ein Drittel der Zeit sparen."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Das ist "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", sondern der Wert aus dem Pilotteam; absehbar ist allerdings auch, dass drei Kolleginnen und Kollegen eine Schulung "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "kein Wunschdenken",
+            "acceptedAnswers": [
+              "kein Wunschdenken"
+            ],
+            "kind": "frame",
+            "choices": [
+              "kein Wunschdenken",
+              "kaum möglich",
+              "nicht absehbar",
+              "längst genug"
+            ]
+          },
+          {
+            "answer": "brauchen",
+            "acceptedAnswers": [
+              "brauchen"
+            ],
+            "kind": "form",
+            "cue": {
+              "en": "Use the present-tense form of “to need” that agrees with the three colleagues."
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " empfehlen, den Parallelbetrieb um einen Monat zu verlängern; ob wir die endgültige Umstellung verschieben, liegt bei Ihnen."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Dann würde ich",
+            "acceptedAnswers": [
+              "Dann würde ich"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Dann würde ich",
+              "Seitdem muss ich",
+              "Gestern wollte ich",
+              "Deshalb musste ich"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Im ersten Quartal ",
+        "answer": "dürfte",
+        "acceptedAnswers": [
+          "dürfte"
+        ],
+        "after": " die Fehlerquote zunächst steigen, weil zwei Systeme parallel laufen; danach dürften wir pro Buchung ein Drittel der Zeit sparen.",
+        "fallbackChoices": [
+          "dürfte",
+          "durften",
+          "dürft",
+          "durftest"
+        ]
+      },
+      "pattern": {
+        "moveType": "hypothesize",
+        "label": {
+          "en": "Calibrate a forecast"
+        },
+        "rule": {
+          "en": "Dürfte + infinitive marks an epistemic forecast: probable, not certain, and here backed by pilot data. It differs from a real condition (wenn … liegt) and from a past counterfactual (hätte … gedauert). The finite verb agrees with the subject."
+        },
+        "examples": [
+          {
+            "targetText": "Im ersten Quartal dürfte die Fehlerquote zunächst steigen, weil zwei Systeme parallel laufen; danach dürften wir pro Buchung ein Drittel der Zeit sparen.",
+            "base": {
+              "en": "The error rate will probably rise at first in the first quarter because two systems will be running in parallel. After that we should save a third of the time per booking."
+            },
+            "highlights": [
+              "dürfte die Fehlerquote zunächst steigen"
+            ]
+          },
+          {
+            "targetText": "Im Sommer dürften die Kosten sinken.",
+            "base": {
+              "en": "Costs will probably fall in the summer."
+            },
+            "highlights": [
+              "dürften die Kosten sinken"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "weil",
+          "kind": "connector",
+          "base": {
+            "en": "because"
+          }
+        },
+        {
+          "targetText": "allerdings",
+          "kind": "connector",
+          "base": {
+            "en": "however"
+          }
+        },
+        {
+          "targetText": "Fehlerquote",
+          "kind": "noun",
+          "base": {
+            "en": "error rate"
+          }
+        },
+        {
+          "targetText": "Wunschdenken",
+          "kind": "noun",
+          "base": {
+            "en": "wishful thinking"
+          }
+        },
+        {
+          "targetText": "absehbar",
+          "kind": "adjective",
+          "base": {
+            "en": "foreseeable"
+          }
+        },
+        {
+          "targetText": "Schulung",
+          "kind": "noun",
+          "base": {
+            "en": "training session"
+          }
+        },
+        {
+          "targetText": "Parallelbetrieb",
+          "kind": "noun",
+          "base": {
+            "en": "parallel operation"
+          }
+        },
+        {
+          "targetText": "Umstellung",
+          "kind": "noun",
+          "base": {
+            "en": "switchover"
+          }
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "Fehlerquote",
+            "Systeme",
+            "sparen"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "Wunschdenken",
+            "absehbar",
+            "Schulung"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "Parallelbetrieb",
+            "Monat",
+            "Umstellung"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "absehbar",
+        "surface": "absehbar",
+        "familyKey": "absehbar",
+        "pos": "adjective",
+        "turnIndex": 3,
+        "base": {
+          "en": "foreseeable"
+        },
+        "example": {
+          "targetText": "Bei zwei parallelen Verfahren sind zusätzliche Rückfragen absehbar.",
+          "base": {
+            "en": "When two procedures run in parallel, extra questions are foreseeable."
+          }
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

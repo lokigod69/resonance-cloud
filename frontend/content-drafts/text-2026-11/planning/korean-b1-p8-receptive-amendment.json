@@ -1,0 +1,12 @@
+{
+  "path": 8,
+  "sourceSpec": "b1-native-2026-10/korean/specification.json (October remains immutable)",
+  "authorityReceiptSha256": "36c9cec2b763d2769e3fe477020ec4ffdb375d38d3370f82fdf8d0b5f797c542",
+  "recognitionOnly": {
+    "approveReceptiveOnly": true,
+    "scope": "P8 L3 간다면서요, L7 보신다고 했는데, L10 없다면서요 in dialogue[2] only; L2 resolved by exact edit to -잖아요",
+    "why": "Forms sit exclusively in interlocutor turn three as presupposed-information openers, each followed by a plain 해요체 question that independently licenses the learner's cloze-reconstructed reply; base texts gloss the reported meaning; no learner turn, cloze, chunk, recall, pattern example or speech token requires the form; the exposure is sensible pre-staging for the -다고 하다 recognition slots in P9/P10 L7-8. Only L2 failed the accessibility test (homograph with freshly productive 살다), so it was replaced with an already-used plain form rather than waived."
+  },
+  "implementation": "Amend B1_NATIVE_KOREAN_SPEC P8 staging recognitionOnly: lessons 1-3 add '-다면서요 in listener line (L3)', lessons 7-8 add '-다고 했는데 in listener line (L7)', lessons 9-10 add '-다면서요 in listener line (L10)', so the grammar-range gate does not flag out-of-stage recognition forms; also note P8 as pre-exposure to the -다고 family before P9/P10 L7-8.",
+  "noProductionRequirement": true
+}

@@ -1,0 +1,241 @@
+{
+  "date": "2026-11-06",
+  "scope": "offline learner-text staging of Japanese and Russian B2, P1/P2 only",
+  "verdict": "PASS for four named candidate paths",
+  "reviewer": "Independent Codex reader of October content and November Fable-only edits; not native-human certification",
+  "japaneseFixturePatch": "japanese-fixtures.patch",
+  "russianGate": "russian-round-3/guidedRussianB2Drafts.ts",
+  "russianFixturePatch": "russian-round-3/fixtures.patch",
+  "russianB1Fixture": "russian-round-3/b1-reservation.json",
+  "paths": [
+    {
+      "language": "Japanese",
+      "path": 1,
+      "file": "japanese-final-v2/p1.json",
+      "sha256": "2d78ee4c4e8e73fd16b0b0430ede8a6723ef69827e5ff3af93a409bb2a7eae25",
+      "lessonDigests": [
+        {
+          "number": 1,
+          "sha256CompactSortedUTF8": "ca3a93845aabbc26eb9e6ec02e6a16178972fa56f698d66219097953c976e350"
+        },
+        {
+          "number": 2,
+          "sha256CompactSortedUTF8": "60ecb568a5f89a5192f24aaa9991a3be912da666dd2b56b1b6017be8322a403c"
+        },
+        {
+          "number": 3,
+          "sha256CompactSortedUTF8": "79af41fd494dac28393d7e1e7e7e7791decadf272923717119c570ca740c1f2f"
+        },
+        {
+          "number": 4,
+          "sha256CompactSortedUTF8": "01ef991fdbc7ce44f549d8c10d8f8f4bf9c22ff6e93596ed82c3fae4e7181b62"
+        },
+        {
+          "number": 5,
+          "sha256CompactSortedUTF8": "29b933e334b949b8ff4f216bd42f8fac2e8a9f3220bc27e4239ac3db9acc4f35"
+        },
+        {
+          "number": 6,
+          "sha256CompactSortedUTF8": "2a1af261aad5bcb211570fc21ef5bf28bb93f40d32018a5dc299959d95e9c95a"
+        },
+        {
+          "number": 7,
+          "sha256CompactSortedUTF8": "a1b31009738c4921af441abdb901d9c79e318df71c3de7c9dcb8388cb6298900"
+        },
+        {
+          "number": 8,
+          "sha256CompactSortedUTF8": "a9cece97f4b0ef161f6ba283519ea8608d3c00795f0e6b2ff990910bd946f7aa"
+        },
+        {
+          "number": 9,
+          "sha256CompactSortedUTF8": "5ec12a3ee01281bcfd3a179ed7ea75d1dd1d53d751c8338d8d388427a2c64237"
+        },
+        {
+          "number": 10,
+          "sha256CompactSortedUTF8": "8a6660152e526fc012cf3d263c962b77a8e074d20e667fded89bf57c4fd2fb67"
+        }
+      ],
+      "novemberExactContentEditsAcrossBothPaths": [
+        12,
+        2
+      ],
+      "verdict": "PASS for offline text staging",
+      "checked": "96/96 offline native suites, zero warnings"
+    },
+    {
+      "language": "Japanese",
+      "path": 2,
+      "file": "japanese-final-v2/p2.json",
+      "sha256": "1e709d11f7aa78c30e7b1f9841b7996ee310f01a98aa5cfbc3e61b6c0d695cf2",
+      "lessonDigests": [
+        {
+          "number": 1,
+          "sha256CompactSortedUTF8": "7d073c30aab5db178634346fd5e2a70458f3226fc297aac7131632d07e210a4d"
+        },
+        {
+          "number": 2,
+          "sha256CompactSortedUTF8": "8dcb2c0a5ebc8dfe4a4f9126d0f40cb6f5bda7e71f182810790865fa2f0b0829"
+        },
+        {
+          "number": 3,
+          "sha256CompactSortedUTF8": "e4d242d6dfaacf2a6cb953f8c7fa829fe68d5ebaa1ee537f1d61210af3969ae0"
+        },
+        {
+          "number": 4,
+          "sha256CompactSortedUTF8": "620556ec740fc6f4577663fab9f02425ebdce423d395aec387169acbf6ea1c43"
+        },
+        {
+          "number": 5,
+          "sha256CompactSortedUTF8": "c910578f81d7d83c7f379cde40c07011e4f595ee08f5eb934c884fd36a7d8489"
+        },
+        {
+          "number": 6,
+          "sha256CompactSortedUTF8": "97540138321f1236cc503d7f3252d9f9028c41fbf7614e5422738b09d3671e06"
+        },
+        {
+          "number": 7,
+          "sha256CompactSortedUTF8": "8b3c1c053c101f493947e6c214ad3d0390fc39576338977dd798011889c17112"
+        },
+        {
+          "number": 8,
+          "sha256CompactSortedUTF8": "070246a65b98cafe782a7111ff6e81e0d7c5d4b9b3adac0515a23a103c824d6a"
+        },
+        {
+          "number": 9,
+          "sha256CompactSortedUTF8": "0d13899f4d08e1b1f39dfa22ee117059e8cafb74ffa1c37bd69b5f8212f6d8d7"
+        },
+        {
+          "number": 10,
+          "sha256CompactSortedUTF8": "3b2bcb6a7fe3488aa27f881e2a8f66b3d68e1ffa81001711912bb2567d96d1f5"
+        }
+      ],
+      "novemberExactContentEditsAcrossBothPaths": [
+        12,
+        2
+      ],
+      "verdict": "PASS for offline text staging",
+      "checked": "96/96 offline native suites, zero warnings"
+    },
+    {
+      "language": "Russian",
+      "path": 1,
+      "file": "russian-round-3/p1.json",
+      "sha256": "c4efd85938504536e963b15aaeebbbc47ff6d7f3651430fc564f8325d25f1efc",
+      "lessonDigests": [
+        {
+          "number": 1,
+          "sha256CompactSortedUTF8": "d487d822b525729e72e933d592b5011d23ac46a4a53b5767ce58eadf7a08b9fb"
+        },
+        {
+          "number": 2,
+          "sha256CompactSortedUTF8": "db923de00b1f187ee7f88c6b2daa93570bb17e4b6bc73d276634ba8c9b4b85d5"
+        },
+        {
+          "number": 3,
+          "sha256CompactSortedUTF8": "427dcc8a8a3ebed2174613719ff3afe8825661d44547bb2139c2d299ba504ba1"
+        },
+        {
+          "number": 4,
+          "sha256CompactSortedUTF8": "31fa017a760d411c9d89756f85b56ff87e8381a09df15e4c0f52ffac173a8da8"
+        },
+        {
+          "number": 5,
+          "sha256CompactSortedUTF8": "47d6c5ba5089a6ea1209aba09f40948ce3f82de9aaf231df6c3f517923edf555"
+        },
+        {
+          "number": 6,
+          "sha256CompactSortedUTF8": "792df3b6feed9a69d6d97d6bbc6a6dadd7bf32a5b96930156258717b73adcfe8"
+        },
+        {
+          "number": 7,
+          "sha256CompactSortedUTF8": "89acd35003625def93b4bf20282c7ff71c7c0d16e6f40aab2424bd85b394c580"
+        },
+        {
+          "number": 8,
+          "sha256CompactSortedUTF8": "eadac198f99da966dbcf09e51f1ddfa304c32511d045df42488f06ee129701b4"
+        },
+        {
+          "number": 9,
+          "sha256CompactSortedUTF8": "78823aec165f80f6f5d46f229b7601492e14238d1bdd84a44f0960adb465a3fc"
+        },
+        {
+          "number": 10,
+          "sha256CompactSortedUTF8": "929e69053646f87dcb0ca30c505011e17835a5fd74729e08a15da15cd219ecb5"
+        }
+      ],
+      "novemberExactContentEditsAcrossBothPaths": [
+        9,
+        12,
+        2
+      ],
+      "verdict": "PASS for offline text staging",
+      "checked": "12/12 offline native test groups including regression cluster; 1 P1 + 22 P2 acknowledged gender warnings"
+    },
+    {
+      "language": "Russian",
+      "path": 2,
+      "file": "russian-round-3/p2.json",
+      "sha256": "505ccd9026b866ec1c6c68ecfad664ddebfaf1971b7023449e7d1452f8668c24",
+      "lessonDigests": [
+        {
+          "number": 1,
+          "sha256CompactSortedUTF8": "82f5971061cd66e22157f5db669f7bbf5dccac1fdc8fdd803209b7276c1b4c3f"
+        },
+        {
+          "number": 2,
+          "sha256CompactSortedUTF8": "f690c7de5286496641af0a133ca47b32f9986a7a586196e716f25c82987f006b"
+        },
+        {
+          "number": 3,
+          "sha256CompactSortedUTF8": "fd38f752c8569f4d969cc60f800390f73955395cb0babd691abf38d9d862700d"
+        },
+        {
+          "number": 4,
+          "sha256CompactSortedUTF8": "c41c9a0443cf8906a3fe735018b100187bfeb8078db073f66363c3571cea6f0a"
+        },
+        {
+          "number": 5,
+          "sha256CompactSortedUTF8": "c87bf5b8e8a9c6edb48efa4fd1e138b8a74acfe7695ed2076600b38e235237c9"
+        },
+        {
+          "number": 6,
+          "sha256CompactSortedUTF8": "5e9ae26f66fcbc830ef1baf37e5705d28c171edc51c46100bb90b424fbee780c"
+        },
+        {
+          "number": 7,
+          "sha256CompactSortedUTF8": "659e34f5efeb2401f9dbf38e2225056ee6a7077c6d030c5436c2a4be32aacddf"
+        },
+        {
+          "number": 8,
+          "sha256CompactSortedUTF8": "a89ec3961d73232df3b7ee16d65c256dcacaaf8fbd4c3fa5f3f10310d181ee64"
+        },
+        {
+          "number": 9,
+          "sha256CompactSortedUTF8": "ea4d7d26516d4d023a3b9421eaaf3b812b4ed573a2c5d550e5ea915b235c175d"
+        },
+        {
+          "number": 10,
+          "sha256CompactSortedUTF8": "ffd13793cf7cf330f3b3fa593ac690764cfc7db1b503d674b9151ac57e59dc64"
+        }
+      ],
+      "novemberExactContentEditsAcrossBothPaths": [
+        9,
+        12,
+        2
+      ],
+      "verdict": "PASS for offline text staging",
+      "checked": "12/12 offline native test groups including regression cluster; 1 P1 + 22 P2 acknowledged gender warnings"
+    }
+  ],
+  "russianFableGateEdits": [
+    6,
+    2
+  ],
+  "strictTypecheck": "PASS both staged fixture copies + gates",
+  "holds": [
+    "Native-human and served exercise/feedback checks are outstanding. Exercise meaning, pragmatic alternatives and feature visibility require testing in delivered clients.",
+    "One V3 rule refers to a B2 native speaker; all content review flags stay pending and no native-human certification is implied.",
+    "P1L5 Japanese retains the published review assumption of selecting a tour package with more free days before making the booking; Russian P1L10 qualifies a fictional barrier proposal through subsequent dialogue.",
+    "All audio, recording, database, publishing and activation outside this independent text review."
+  ]
+}

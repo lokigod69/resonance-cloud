@@ -1,0 +1,855 @@
+{
+  "status": "fable-authoring-spec",
+  "targetLanguage": "Russian",
+  "code": "ru-RU",
+  "level": "B2",
+  "baseLocales": [
+    "de",
+    "en"
+  ],
+  "authoredBaseLanguage": "German",
+  "registerContract": {
+    "mode": "constant вы in all 20 lessons (shiftAtTurn unused, no relay shape); friends, neighbours and colleagues stay on вы as in A1–B1; interlocutor lines neutral polite Russian (учтите, допустим, скажите); no ты/тебя/тебе/твой tokens in learner turns; generic 2sg verb forms (стоишь, читаешь) avoided in learner lines",
+    "moveSlots": "you1 ∈ path moveWhitelist; you2 ∈ {concede,rebut,clarify,explain,compare,counteroffer}; you3 ∈ {conclude,propose,summarize,counteroffer,relay,request}; three you moves pairwise distinct per lesson",
+    "sixTurns": "0 them opener with hook · 1 you1 (build/recall/speak) · 2 them delayed challenge (counter-fact, objection or precision request, ends with ? or explicit cue) · 3 you2 (cloze/speak) · 4 them steer changing the constraint (new option, protocol line, edge case, time horizon) · 5 you3 (synthesis/speak)"
+  },
+  "genderSafety": "All 20 lessons speakerGender neutral, no alternates authored. Learner first-person built on gender-free carriers: present 1sg (склоняюсь, сомневаюсь, рекомендую, признаю, объясню, ищу), perfective future (не стану спорить, проведём, подведём итог), impersonals (пришлось, нужно было, мне выгодно), nominal/infinitive positions (мой выбор —, начать с малого), мы-forms (мы надеялись). Closed denylist tokens (хотел/а, рад/а, должен/должна, привык/ла, готов/а, смог/ла, забыл/а, решил/а, сам/а) absent from every learner turn. Policy for past -л forms in learner turns: each is either a gender-free plural/impersonal form (мы-forms, impersonal pl, impersonal neuter) or has a non-speaker third-person subject; no singular form agrees with the speaker. Complete list for later review: P1 L9 складывалось (всё); P2 L1 было (impersonal), попросил (склад); P2 L3 поменял (заказчик), оказался (объём), надеялись (мы, plural gender-free); P2 L5 отвечали (impersonal pl), приходилось (impersonal); P2 L6 была закрыта (табличка); P2 L7 провалился (план), сорвалось (всё), шли (занятия), исчезло (расписание); P2 L10 протекли (трубы), отложили (impersonal pl), приехал (подрядчик), был опасен (запуск), вызвана (задержка), ждали (мы, plural gender-free). Rail gender detectors fire on these as warnings; the authoring draft acknowledges each with code B2-GENDER-THIRD-PERSON and reason 'third-person subject' or 'plural/impersonal gender-free' only when full lessons are authored; no acknowledgement, reviewer row or review flag is pre-filled by this spec. Interlocutor lines may be gendered freely (я стоял, я смотрел, слышала).",
+  "orthography": "Cyrillic only; ё canonical everywhere (подведём, всё-таки, жильё, объём, счёте, трёх, растёт, проведём, своё), е-fold accepted on every accepted answer; numbers as words with numeral case reviewed (три тысячи, двадцать минут, полтора часа, двадцатое октября); hyphenated compounds (онлайн-урок, всё-таки, из-под) are single tokens; no digits, Latin, stress marks; « » optional, em-dash for predicate ellipsis; Вы capitalisation folded in comparison.",
+  "segmentation": "Shared rail: token = maximal letter run with internal hyphens; joiner single space; build chunks 5–8 of 1–4 tokens, framePrefix/Suffix carry boundary whitespace; бы, ли, не, же, и stay inside the host chunk; a chunk boundary never falls inside 'тогда как', 'с одной стороны', 'дело в том, что', 'то есть', 'при условии, что', 'в конечном счёте', 'если коротко' (multi-token carriers are whole chunks); punctuation attached to preceding chunk; recall answer 1–3 tokens, always a content carrier or the trophy surface, never a pronoun; cloze blanks start and end on token boundaries.",
+  "acceptedInput": "Learner turns carry only canonical targetText (strict turn and speakTarget schemas have no acceptedAnswers); no authored or generated full-string word-order variants; no gender alternates because no lesson is marked; no autocorrection of case endings or aspect. Blanks/terms accept only authored acceptedAnswers (canonical surface plus at most one listed comma-free variant). ё→е, Вы/вы casefold, NFC, whitespace and terminal-punctuation folding are comparison normalisation in validator/runtime config, never stored data; canonical text always keeps ё.",
+  "carriersStaged": {
+    "P1": {
+      "L1-3": "productive: с одной стороны … с другой; comparative + чем; position frames (я за X, мне выгодно/удобнее, главный недостаток X — Y); concession opener 'отчасти вы правы, но' / 'правда, но'; consequence 'так что'; closing 'подведём итог:' / 'предлагаю так:' / 'скорее нет/да:'. recognitionOnly: тогда как, если бы … бы in them lines",
+      "L4-6": "productive: тогда как; зависит от того, как/сколько; я имею в виду; 'не стану спорить, но'; если … иначе; closing 'итак' / 'тогда другое дело' / 'это меняет дело'. recognitionOnly: несмотря на, при условии что, всё-таки, третий вариант offers",
+      "L7-10": "productive: несмотря на + acc; при условии, что; всё-таки; если коротко; рекомендую + acc; 'если нет — остаюсь'. recognitionOnly: деепричастия (посчитав, подав), несмотря на то что, protocol register (для протокола)"
+    },
+    "P2": {
+      "L1-3": "productive: дело в том, что; потому что / поскольку; поэтому / так что; я имею в виду + noun; 'хороший вопрос:'; concession 'признаю, …'; closing 'иными словами:' / 'реальная дата — … если'. recognitionOnly: на каком основании, тогда как",
+      "L4-6": "productive: означает, что; тогда как (recycled P1); то есть; 'это так, но'; relative clauses with instrument (за которые, из которого); если коротко; scene-specific rules frame 'по правилам этой кофейни/центра'. recognitionOnly: в конечном счёте, следовательно, деепричастия",
+      "L7-10": "productive: приводит к тому, что; при + noun condition (при срыве, при задержке); если же; в конечном счёте; следовательно; passive result 'вызвана + instr'; summarize in numbered points. recognitionOnly: в противном случае, деепричастия, official written register"
+    }
+  },
+  "paths": [
+    {
+      "pathNumber": 1,
+      "title": "Взвешиваем варианты",
+      "function": "compare advantages and disadvantages of two or three options and give a qualified recommendation",
+      "moveWhitelist": [
+        "compare",
+        "position",
+        "reason",
+        "concede",
+        "rebut",
+        "conclude"
+      ],
+      "registerPolicy": "constant вы; letting agent, colleague, manager, service, friend, shop owner, mentor, neighbour, house committee all on вы",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "с одной стороны/с другой; comparatives + чем; position frames; 'отчасти вы правы, но'; 'так что'; 'подведём итог' / 'предлагаю так'",
+          "recognitionOnly": "тогда как; если бы in interlocutor steer"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "тогда как; зависит от того, как; я имею в виду; 'не стану спорить, но'; если … иначе; 'итак' / 'тогда другое дело'",
+          "recognitionOnly": "несмотря на; при условии что; всё-таки"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "несмотря на + acc; при условии, что; всё-таки; если коротко; рекомендую + acc",
+          "recognitionOnly": "деепричастия; несмотря на то что; protocol register"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "rent-vs-commute",
+          "scene": "letting agent shows two flats: central and pricey vs cheap and an hour away",
+          "interlocutor": "риелтор",
+          "register": "вы",
+          "openingMove": {
+            "them": "Есть две квартиры: одна в центре, но дороже, другая дешевле, но час до работы. Какую смотрим?",
+            "move": "compare",
+            "you": "С одной стороны, квартира в центре дороже, с другой — экономит мне два часа в день, а это серьёзное преимущество."
+          },
+          "challenge": "Но учтите: в центре коммунальные платежи выше, и парковки там почти нет.",
+          "answerMove": {
+            "move": "concede",
+            "you": "Отчасти вы правы, но машины у меня нет, а разницу в платежах покроет экономия на проезде."
+          },
+          "steer": "Хорошо. А если хозяин центра попросит оплату за три месяца вперёд?",
+          "closingMove": {
+            "move": "propose",
+            "you": "Тогда подведём итог: я беру центр, но прошу договор на год и оплату помесячно."
+          },
+          "trophyLemma": "преимущество",
+          "trophySurface": "преимущество",
+          "trophyFamilyKey": "преимущество",
+          "pos": "noun",
+          "requiredCarrier": "с одной стороны … с другой",
+          "recycles": "B1 P2 concession; A2 comparatives"
+        },
+        {
+          "number": 2,
+          "slug": "car-vs-metro",
+          "scene": "colleague is surprised you commute by metro",
+          "interlocutor": "коллега",
+          "register": "вы",
+          "openingMove": {
+            "them": "Вы правда ездите на работу на метро? Я на машине, так намного удобнее.",
+            "move": "position",
+            "you": "Я за метро: главный недостаток машины — пробки: утром час в пути, а в метро можно читать или спать."
+          },
+          "challenge": "Зато зимой в метро толпа, а в машине тепло и своё кресло.",
+          "answerMove": {
+            "move": "rebut",
+            "you": "Толпа — да, но она на двадцать минут, а пробка зимой растягивается на полтора часа."
+          },
+          "steer": "А если бы компания оплачивала парковку, вы бы пересели?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "Скорее нет: парковка решает деньги, но не время, так что метро всё равно выигрывает."
+          },
+          "trophyLemma": "недостаток",
+          "trophySurface": "недостаток",
+          "trophyFamilyKey": "недостаток",
+          "pos": "noun",
+          "requiredCarrier": "я за X: главный недостаток Y — Z",
+          "recycles": "B1 P8 раньше/сейчас contrast; A2 time expressions"
+        },
+        {
+          "number": 3,
+          "slug": "remote-or-office",
+          "scene": "manager plans next year's work format",
+          "interlocutor": "руководитель",
+          "register": "вы",
+          "openingMove": {
+            "them": "Мы обсуждаем формат работы на следующий год. Вам удобнее из дома или в офисе?",
+            "move": "reason",
+            "you": "Мне выгодно работать из дома три дня: экономлю два часа дороги, а в офис прихожу на встречи."
+          },
+          "challenge": "Но команда жалуется, что удалённых коллег трудно поймать в течение дня.",
+          "answerMove": {
+            "move": "counteroffer",
+            "you": "Правда, но это решается: фиксируем часы, когда я точно на связи, скажем, с десяти до четырёх."
+          },
+          "steer": "Допустим. А новичков кто будет учить, если половина команды дома?",
+          "closingMove": {
+            "move": "propose",
+            "you": "Предлагаю так: в дни новичков я в офисе, а остальные дни удалённо, и через квартал подведём итог."
+          },
+          "trophyLemma": "выгодно",
+          "trophySurface": "выгодно",
+          "trophyFamilyKey": "выгодно",
+          "pos": "adverb",
+          "requiredCarrier": "мне выгодно + inf; 'предлагаю так:'",
+          "recycles": "B1 P7 planning; B1 P5 time ranges"
+        },
+        {
+          "number": 4,
+          "slug": "buy-or-rent-drill",
+          "scene": "tool-hire desk: buy a drill or rent it",
+          "interlocutor": "менеджер проката",
+          "register": "вы",
+          "openingMove": {
+            "them": "Дрель можно купить за восемь тысяч или взять в прокат за пятьсот в день. Что выбираете?",
+            "move": "compare",
+            "you": "Это зависит от того, как часто она нужна: для одного ремонта прокат дешевле, тогда как на годы выгоднее покупка."
+          },
+          "challenge": "Учтите, прокатная дрель уже старая, и если сломается, платите вы.",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Уточню: я имею в виду один ремонт на неделю, не больше, так что риск поломки для меня невелик."
+          },
+          "steer": "Тогда есть третий вариант: подержанная дрель за три тысячи с гарантией месяц.",
+          "closingMove": {
+            "move": "counteroffer",
+            "you": "Это меняет дело: беру подержанную, если гарантия покроет и аккумулятор, иначе остаюсь на прокате."
+          },
+          "trophyLemma": "зависеть",
+          "trophySurface": "зависит",
+          "trophyFamilyKey": "зависеть",
+          "pos": "verb",
+          "requiredCarrier": "зависит от того, как; тогда как",
+          "recycles": "L3 выгодно family in text; B1 P3 иначе"
+        },
+        {
+          "number": 5,
+          "slug": "two-holiday-plans",
+          "scene": "friend chooses between Baikal by car and Kaliningrad by train",
+          "interlocutor": "друг",
+          "register": "вы",
+          "openingMove": {
+            "them": "Так куда едем в августе: на Байкал на машине или в Калининград на поезде?",
+            "move": "position",
+            "you": "Я склоняюсь к Калининграду: поездом дешевле и спокойнее, а Байкал на машине — это неделя только дороги."
+          },
+          "challenge": "Но в Калининграде в августе дожди, а на Байкале как раз лучший сезон.",
+          "answerMove": {
+            "move": "concede",
+            "you": "Не стану спорить, погода там хуже, но отпуск у нас десять дней, и четыре из них на дорогу — слишком много."
+          },
+          "steer": "А если бы мы летели на Байкал самолётом? Билеты по акции.",
+          "closingMove": {
+            "move": "counteroffer",
+            "you": "Тогда другое дело: если билеты туда и обратно выходят не дороже поезда, я за Байкал."
+          },
+          "trophyLemma": "склоняться",
+          "trophySurface": "склоняюсь",
+          "trophyFamilyKey": "склоняться",
+          "pos": "verb",
+          "requiredCarrier": "я склоняюсь к + dat; 'не стану спорить, но'",
+          "recycles": "B1 P7 L2 travel plans; A2 transport"
+        },
+        {
+          "number": 6,
+          "slug": "cash-or-app",
+          "scene": "shop owner wants to drop app payments because of commission",
+          "interlocutor": "владелец магазина",
+          "register": "вы",
+          "openingMove": {
+            "them": "Половина покупателей платит через приложение, но комиссия съедает процент. Может, вернуться к наличным?",
+            "move": "compare",
+            "you": "Приложение — более безопасный способ, чем касса с наличными: меньше недостач и ошибок со сдачей, тогда как комиссия — это всего один процент."
+          },
+          "challenge": "Один процент с миллиона в месяц — это десять тысяч. Для меня это деньги.",
+          "answerMove": {
+            "move": "rebut",
+            "you": "Понимаю, но посчитайте и обратное: инкассация, пересчёт и ошибки кассира обходятся точно не дешевле."
+          },
+          "steer": "Хорошо, а пожилые клиенты, у которых приложения нет?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "Итак, оставляем оба способа, но приложение — основной, а наличные для тех, кому так удобнее."
+          },
+          "trophyLemma": "безопасный",
+          "trophySurface": "безопасный",
+          "trophyFamilyKey": "безопасный",
+          "pos": "adjective",
+          "requiredCarrier": "более + adj, чем; 'итак'",
+          "recycles": "B1 P5 numerals; B1 P4 у которых"
+        },
+        {
+          "number": 7,
+          "slug": "class-or-app",
+          "scene": "friend wants to improve German: course or app",
+          "interlocutor": "друг",
+          "register": "вы",
+          "openingMove": {
+            "them": "Я хочу подтянуть немецкий: курсы или приложение? Вы же через это прошли.",
+            "move": "reason",
+            "you": "Курсы, несмотря на цену, дают гораздо больше: там приходится говорить, а приложение терпит молчание месяцами."
+          },
+          "challenge": "Но курсы — это два вечера в неделю в одно время, а у меня сменный график.",
+          "answerMove": {
+            "move": "explain",
+            "you": "Тогда объясню, как сочетать: приложение для слов, а раз в неделю онлайн-разговор с преподавателем по вашему графику."
+          },
+          "steer": "А если коротко: с чего начать уже в этом месяце?",
+          "closingMove": {
+            "move": "propose",
+            "you": "Начните с пробного онлайн-урока, и при условии, что он понравится, добавляйте приложение как домашнее задание."
+          },
+          "trophyLemma": "гораздо",
+          "trophySurface": "гораздо",
+          "trophyFamilyKey": "гораздо",
+          "pos": "adverb",
+          "requiredCarrier": "несмотря на + acc; гораздо + comparative; при условии, что",
+          "recycles": "B1 P7 чтобы/успеть learning plans"
+        },
+        {
+          "number": 8,
+          "slug": "two-job-offers",
+          "scene": "mentor asks about a corporate offer vs a startup with equity",
+          "interlocutor": "наставник",
+          "register": "вы",
+          "openingMove": {
+            "them": "Два предложения: большая компания с окладом выше или стартап с долей. Вы уже решили?",
+            "move": "compare",
+            "you": "Ищу компромисс: компания даёт стабильность и понятный рост, тогда как стартап — риск, но и редкий опыт."
+          },
+          "challenge": "Компромисса не бывает: стартап через год может закрыться, и доля ничего не стоит.",
+          "answerMove": {
+            "move": "concede",
+            "you": "Отчасти вы правы, доля может обнулиться, но и в корпорации сокращения случаются, а резюме со стартапом сильнее."
+          },
+          "steer": "Допустим. Если считать только ближайшие два года, что вы выберете?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "На два года — стартап, при условии, что оклад покрывает аренду; иначе всё-таки корпорация."
+          },
+          "trophyLemma": "компромисс",
+          "trophySurface": "компромисс",
+          "trophyFamilyKey": "компромисс",
+          "pos": "noun",
+          "requiredCarrier": "при условии, что; всё-таки",
+          "recycles": "L4 тогда как; B1 P2 отчасти concession"
+        },
+        {
+          "number": 9,
+          "slug": "move-or-stay",
+          "scene": "neighbour hears you may relocate to Kazan",
+          "interlocutor": "соседка",
+          "register": "вы",
+          "openingMove": {
+            "them": "Слышала, вам предлагают переехать в Казань. Неужели уедете? Здесь же всё налажено.",
+            "move": "position",
+            "you": "Честно, сомневаюсь: там зарплата выше и жильё дешевле, но здесь друзья, врач, спортзал — всё, что годами складывалось."
+          },
+          "challenge": "Друзей и там заведёте, а вот такую квартиру за эти деньги больше не найдёте.",
+          "answerMove": {
+            "move": "rebut",
+            "you": "Квартира — довод, но временный: через два года аренда и здесь вырастет, а разница в зарплате останется."
+          },
+          "steer": "Хорошо, а есть что-то, что решило бы вопрос окончательно?",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Если коротко: если фирма даст удалённую работу два дня в неделю, я еду, если нет — остаюсь."
+          },
+          "trophyLemma": "сомневаться",
+          "trophySurface": "сомневаюсь",
+          "trophyFamilyKey": "сомневаться",
+          "pos": "verb",
+          "requiredCarrier": "если коротко; 'если нет — остаюсь'",
+          "recycles": "B1 P10 переезд theme; L3 remote work"
+        },
+        {
+          "number": 10,
+          "slug": "barrier-or-rota",
+          "scene": "house committee votes: paid gate barrier vs free parking rota (fictional building rule)",
+          "interlocutor": "председатель совета дома",
+          "register": "вы",
+          "openingMove": {
+            "them": "Совет дома выбирает: платный шлагбаум во дворе или бесплатная парковка по очереди. Ваше слово.",
+            "move": "position",
+            "you": "Я рекомендую шлагбаум: он дороже, но очередь без контроля превращается в споры, тогда как шлагбаум решает вопрос раз и навсегда."
+          },
+          "challenge": "Шлагбаум — это взносы с каждой квартиры, а треть жильцов машин не имеет и платить откажется.",
+          "answerMove": {
+            "move": "counteroffer",
+            "you": "Тогда промежуточный вариант: платят только владельцы машин, а остальные получают бесплатный пропуск для гостей."
+          },
+          "steer": "Подведите итог для протокола: что совет предлагает собранию?",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Итак, совет предлагает шлагбаум с оплатой только владельцами машин, при условии, что гостевой проезд остаётся бесплатным."
+          },
+          "trophyLemma": "рекомендовать",
+          "trophySurface": "рекомендую",
+          "trophyFamilyKey": "рекомендовать",
+          "pos": "verb",
+          "requiredCarrier": "рекомендую + acc; при условии, что; protocol summary",
+          "recycles": "whole path: тогда как, итак, counteroffer"
+        }
+      ]
+    },
+    {
+      "pathNumber": 2,
+      "title": "Как и почему",
+      "function": "explain causes, consequences and processes in detail and hold the line under requests for precision",
+      "moveWhitelist": [
+        "explain",
+        "reason",
+        "clarify",
+        "compare",
+        "summarize",
+        "conclude"
+      ],
+      "registerPolicy": "constant вы; accountant, newcomer, manager, friend, neighbour, colleague, registrar, skeptic, building official all on вы",
+      "staging": [
+        {
+          "lessons": "1-3",
+          "productive": "дело в том, что; потому что / поскольку; поэтому / так что; я имею в виду + noun; 'признаю, …'; 'иными словами:'",
+          "recognitionOnly": "на каком основании; тогда как"
+        },
+        {
+          "lessons": "4-6",
+          "productive": "означает, что; тогда как; то есть; 'это так, но'; за которые / из которого; если коротко; scene-specific 'по правилам …'",
+          "recognitionOnly": "в конечном счёте; следовательно"
+        },
+        {
+          "lessons": "7-10",
+          "productive": "приводит к тому, что; при + noun condition; если же; в конечном счёте; следовательно; вызвана + instr; numbered summary",
+          "recognitionOnly": "в противном случае; деепричастия; official written register"
+        }
+      ],
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "invoice-differs",
+          "scene": "accountant queries an October invoice above the contract sum",
+          "interlocutor": "бухгалтер",
+          "register": "вы",
+          "openingMove": {
+            "them": "В счёте за октябрь сумма на три тысячи больше, чем в договоре. Объясните, пожалуйста.",
+            "move": "explain",
+            "you": "Причина простая: в октябре было две дополнительные доставки, потому что склад попросил срочную партию, и они указаны отдельной строкой."
+          },
+          "challenge": "Но в договоре срочные доставки не упоминаются. На каком основании они оплачиваются?",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Я имею в виду пункт о внеплановых заказах: он на второй странице, и там как раз тариф за срочность."
+          },
+          "steer": "Допустим. Что мне написать директору в одну строку?",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Иными словами: сумма выше из-за двух срочных доставок по пункту о внеплановых заказах, остальное по договору."
+          },
+          "trophyLemma": "причина",
+          "trophySurface": "Причина",
+          "trophyFamilyKey": "причина",
+          "pos": "noun",
+          "requiredCarrier": "причина простая: …; иными словами",
+          "recycles": "B1 P6 доставка; B1 P9 ошибка frames"
+        },
+        {
+          "number": 2,
+          "slug": "yard-recycling",
+          "scene": "newcomer asks how the three colour bins in your yard work (fictional yard scheme)",
+          "interlocutor": "новый сосед",
+          "register": "вы",
+          "openingMove": {
+            "them": "Я только переехал. Во дворе три контейнера разного цвета — куда что бросать?",
+            "move": "explain",
+            "you": "Объясню, как у нас во дворе: в синий — бумагу и картон, в жёлтый — пластик и жестяные банки, поскольку их потом сортируют вместе, а стекло — в зелёный."
+          },
+          "challenge": "А коробка из-под пиццы с жиром — это картон или уже мусор?",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Хороший вопрос: грязный картон у нас не берут, так что жирная коробка идёт в обычный серый бак, чистая крышка — в синий."
+          },
+          "steer": "А батарейки и лампочки? Их куда-то отдельно, или тоже в серый?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "Их ни в коем случае не в серый: у входа в магазин напротив стоит ящик, туда и батарейки, и лампы."
+          },
+          "trophyLemma": "поскольку",
+          "trophySurface": "поскольку",
+          "trophyFamilyKey": "поскольку",
+          "pos": "connector",
+          "requiredCarrier": "объясню, как у нас; поскольку; так что",
+          "recycles": "B1 P4 colours; B1 P6 participles in them lines"
+        },
+        {
+          "number": 3,
+          "slug": "project-slipped",
+          "scene": "manager asks why the report is ten days late",
+          "interlocutor": "руководитель",
+          "register": "вы",
+          "openingMove": {
+            "them": "Срок сдачи был первое октября, сегодня десятое, а отчёта нет. Что произошло?",
+            "move": "reason",
+            "you": "Дело в том, что заказчик поменял требования в середине сентября, поэтому половину расчётов пришлось переделать с нуля."
+          },
+          "challenge": "Почему я узнаю об этом только сейчас, а не в сентябре?",
+          "answerMove": {
+            "move": "concede",
+            "you": "Признаю, об этом нужно было сказать сразу; мы надеялись уложиться, но объём оказался вдвое больше."
+          },
+          "steer": "Ладно. Назовите реальную дату и что вам для неё нужно.",
+          "closingMove": {
+            "move": "propose",
+            "you": "Реальная дата — двадцатое октября, если заказчик до пятницы подтвердит новые требования письменно."
+          },
+          "trophyLemma": "поэтому",
+          "trophySurface": "поэтому",
+          "trophyFamilyKey": "поэтому",
+          "pos": "connector",
+          "requiredCarrier": "дело в том, что … поэтому; признаю",
+          "recycles": "B1 P7 deadlines; B1 P9 calm complaint register"
+        },
+        {
+          "number": 4,
+          "slug": "loyalty-points",
+          "scene": "friend asks whether a café loyalty card is worth it (fictional café rule)",
+          "interlocutor": "друг",
+          "register": "вы",
+          "openingMove": {
+            "them": "Мне предлагают карту лояльности в кофейне: десять процентов баллами. Это вообще стоит того?",
+            "move": "explain",
+            "you": "Смотрите, десять процентов баллами означает, что вы платите полную цену сейчас, а скидку получаете только при следующей покупке."
+          },
+          "challenge": "Ну и что, я же всё равно туда хожу каждый день.",
+          "answerMove": {
+            "move": "compare",
+            "you": "Тогда сравните: при ежедневных визитах баллы быстро превращаются в скидку, тогда как редкий гость до неё просто не доходит."
+          },
+          "steer": "А подвох есть? Я слышал, баллы сгорают.",
+          "closingMove": {
+            "move": "conclude",
+            "you": "Есть: по правилам этой кофейни баллы живут три месяца, так что копить на год бессмысленно — тратьте сразу."
+          },
+          "trophyLemma": "означать",
+          "trophySurface": "означает",
+          "trophyFamilyKey": "означать",
+          "pos": "verb",
+          "requiredCarrier": "X означает, что; тогда как",
+          "recycles": "B1 P3 скидка theme; P1 L6 commission arithmetic"
+        },
+        {
+          "number": 5,
+          "slug": "new-provider",
+          "scene": "neighbour asks why you switched internet provider",
+          "interlocutor": "сосед",
+          "register": "вы",
+          "openingMove": {
+            "them": "Вы перешли на другого интернет-провайдера? У меня тот же старый, и вроде нормально.",
+            "move": "reason",
+            "you": "Да, и на решение больше всего влияет не цена, а поддержка: у старого на звонок отвечали по часу, у нового — за минуту."
+          },
+          "challenge": "Но у нового тариф на двести рублей дороже, я смотрел.",
+          "answerMove": {
+            "move": "explain",
+            "you": "Это так, но в тариф входит роутер и телевидение, за которые старому приходилось доплачивать отдельно."
+          },
+          "steer": "А переход сложный? Мне придётся сидеть без связи неделю?",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Если коротко: заявка онлайн, мастер приходит через два дня, а старый отключают только после подключения нового."
+          },
+          "trophyLemma": "влиять",
+          "trophySurface": "влияет",
+          "trophyFamilyKey": "влиять",
+          "pos": "verb",
+          "requiredCarrier": "влияет не X, а Y; это так, но; если коротко",
+          "recycles": "B1 P6 process verbs in steps; P1 L2 time contrast"
+        },
+        {
+          "number": 6,
+          "slug": "parking-fine-appeal",
+          "scene": "colleague got a business-centre parking penalty (fictional building rule) and asks how appeals work there",
+          "interlocutor": "коллега",
+          "register": "вы",
+          "openingMove": {
+            "them": "Мне пришёл штраф от бизнес-центра за парковку на чужом месте. Я же стоял там пять минут.",
+            "move": "explain",
+            "you": "Объясню, как это устроено здесь: у центра своё правило, и последствия одинаковые для всех, но оспорить можно через администрацию в течение недели."
+          },
+          "challenge": "И что писать? Что я не видел таблички?",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Не совсем: нужно указать время, номер места и приложить фото, из которого видно, что табличка была закрыта фургоном."
+          },
+          "steer": "А если откажут? Платить тогда вдвойне?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "Нет, по правилам центра сумма не растёт, пока идёт разбор, так что заявление вам ничем не грозит."
+          },
+          "trophyLemma": "последствие",
+          "trophySurface": "последствия",
+          "trophyFamilyKey": "последствие",
+          "pos": "noun",
+          "requiredCarrier": "как это устроено; из которого видно, что; по правилам центра",
+          "recycles": "B1 P9 жалоба; B1 P5 срок"
+        },
+        {
+          "number": 7,
+          "slug": "plan-failed",
+          "scene": "friend asks why your learn-Chinese-in-a-year plan failed",
+          "interlocutor": "друг",
+          "register": "вы",
+          "openingMove": {
+            "them": "Ваш план выучить китайский за год провалился? Вы же так уверенно начинали.",
+            "move": "reason",
+            "you": "Провалился, и всё закономерно: цель без расписания приводит к тому, что занятия откладываются, пока не исчезают совсем."
+          },
+          "challenge": "Так просто? Мне кажется, дело в лени, а не в расписании.",
+          "answerMove": {
+            "move": "rebut",
+            "you": "Лень здесь ни при чём: три месяца занятия шли ежедневно, а сорвалось всё в неделю переезда, когда расписание исчезло."
+          },
+          "steer": "Ладно, а что делать иначе, если начать заново?",
+          "closingMove": {
+            "move": "propose",
+            "you": "Начать с малого: пятнадцать минут в одно и то же время, а при срыве не ругать себя, а просто вернуться завтра."
+          },
+          "trophyLemma": "приводить",
+          "trophySurface": "приводит",
+          "trophyFamilyKey": "приводить",
+          "pos": "verb",
+          "requiredCarrier": "приводит к тому, что; при + noun",
+          "recycles": "B1 P1 narration aspects; B1 P8 habits"
+        },
+        {
+          "number": 8,
+          "slug": "exam-registration",
+          "scene": "language-school registrar asks you to explain exam sign-up steps (fictional school procedure)",
+          "interlocutor": "администратор школы",
+          "register": "вы",
+          "openingMove": {
+            "them": "Вы объясните новичкам, как записаться на экзамен? Там многие путаются с этапами.",
+            "move": "explain",
+            "you": "Да, объясню поэтапно: в нашей школе сначала регистрация на сайте, затем оплата в течение трёх дней, и только после неё приходит письмо с датой."
+          },
+          "challenge": "А если оплата не прошла за три дня, регистрация сгорает?",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Уточню: не сгорает, а переходит в лист ожидания, то есть место за вами, но дата может сдвинуться на следующий поток."
+          },
+          "steer": "Хорошо. Сведите всё к трём пунктам для памятки.",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Три пункта: зарегистрироваться на сайте, оплатить за три дня, дождаться письма; при задержке оплаты — лист ожидания."
+          },
+          "trophyLemma": "поэтапно",
+          "trophySurface": "поэтапно",
+          "trophyFamilyKey": "поэтапно",
+          "pos": "adverb",
+          "requiredCarrier": "сначала … затем … только после; то есть; numbered summary",
+          "recycles": "B1 P1 sequencers; B1 P5 inquiry frames"
+        },
+        {
+          "number": 9,
+          "slug": "bike-share-skeptic",
+          "scene": "skeptical neighbour doubts a bike-share station in your district",
+          "interlocutor": "сосед-скептик",
+          "register": "вы",
+          "openingMove": {
+            "them": "Городской велопрокат — это игрушка для туристов. Зачем он нашему району?",
+            "move": "reason",
+            "you": "Очевидно, что польза есть: от метро до нашего района автобус идёт сорок минут, а на велосипеде — двенадцать."
+          },
+          "challenge": "Зимой на велосипеде никто не поедет, а платить за стоянки будем круглый год.",
+          "answerMove": {
+            "move": "concede",
+            "you": "Зимой — верно, спрос падает, но стоянки занимают по два парковочных места, а не целую улицу, так что цена невелика."
+          },
+          "steer": "Ну и чем это кончится лет через пять, по-вашему?",
+          "closingMove": {
+            "move": "conclude",
+            "you": "В конечном счёте — меньше машин у метро и свободные дворы; если же спроса не будет, стоянки просто уберут."
+          },
+          "trophyLemma": "очевидно",
+          "trophySurface": "Очевидно",
+          "trophyFamilyKey": "очевидно",
+          "pos": "adverb",
+          "requiredCarrier": "очевидно, что; в конечном счёте; если же",
+          "recycles": "P1 L2 commute numbers; B1 P2 concession"
+        },
+        {
+          "number": 10,
+          "slug": "heating-delay-chain",
+          "scene": "building committee chair asks you (resident representative) to reconstruct why heating started late (fictional building events)",
+          "interlocutor": "председатель совета дома",
+          "register": "вы",
+          "openingMove": {
+            "them": "Жильцы спрашивают, почему отопление включили только в октябре. Восстановите, пожалуйста, цепочку решений.",
+            "move": "explain",
+            "you": "По порядку: в сентябре трубы в подвале протекли, следовательно, запуск отложили до ремонта, а подрядчик приехал лишь первого октября."
+          },
+          "challenge": "Но соседний дом включили в сентябре. Значит, дело не в погоде, а в вас?",
+          "answerMove": {
+            "move": "clarify",
+            "you": "Не в нас, а в трубах: у соседей подвал сухой, у нас же без ремонта запуск был опасен, так что ждали."
+          },
+          "steer": "Хорошо. Что вы скажете собранию в двух фразах и что обещаете на следующий год?",
+          "closingMove": {
+            "move": "summarize",
+            "you": "Если коротко: задержка вызвана протечкой и сроками подрядчика; на следующий год осмотр подвала проведём в августе."
+          },
+          "trophyLemma": "следовательно",
+          "trophySurface": "следовательно",
+          "trophyFamilyKey": "следовательно",
+          "pos": "connector",
+          "requiredCarrier": "следовательно; вызвана + instr; если коротко",
+          "recycles": "whole path: causal chain, clarify, summarize"
+        }
+      ]
+    }
+  ],
+  "trophyLedger": {
+    "rows": [
+      {
+        "pathNumber": 1,
+        "lessonNumber": 1,
+        "lemma": "преимущество",
+        "familyKey": "преимущество",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 2,
+        "lemma": "недостаток",
+        "familyKey": "недостаток",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 3,
+        "lemma": "выгодно",
+        "familyKey": "выгодно",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 4,
+        "lemma": "зависеть",
+        "familyKey": "зависеть",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 5,
+        "lemma": "склоняться",
+        "familyKey": "склоняться",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 6,
+        "lemma": "безопасный",
+        "familyKey": "безопасный",
+        "pos": "adjective"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 7,
+        "lemma": "гораздо",
+        "familyKey": "гораздо",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 8,
+        "lemma": "компромисс",
+        "familyKey": "компромисс",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 9,
+        "lemma": "сомневаться",
+        "familyKey": "сомневаться",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 1,
+        "lessonNumber": 10,
+        "lemma": "рекомендовать",
+        "familyKey": "рекомендовать",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 1,
+        "lemma": "причина",
+        "familyKey": "причина",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 2,
+        "lemma": "поскольку",
+        "familyKey": "поскольку",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 3,
+        "lemma": "поэтому",
+        "familyKey": "поэтому",
+        "pos": "connector"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 4,
+        "lemma": "означать",
+        "familyKey": "означать",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 5,
+        "lemma": "влиять",
+        "familyKey": "влиять",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 6,
+        "lemma": "последствие",
+        "familyKey": "последствие",
+        "pos": "noun"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 7,
+        "lemma": "приводить",
+        "familyKey": "приводить",
+        "pos": "verb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 8,
+        "lemma": "поэтапно",
+        "familyKey": "поэтапно",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 9,
+        "lemma": "очевидно",
+        "familyKey": "очевидно",
+        "pos": "adverb"
+      },
+      {
+        "pathNumber": 2,
+        "lessonNumber": 10,
+        "lemma": "следовательно",
+        "familyKey": "следовательно",
+        "pos": "connector"
+      }
+    ],
+    "forbiddenCheck": "20 lemmas and 20 familyKeys pairwise distinct under NFC+casefold; none equals any entry of prerequisite.forbiddenTrophies (list not repeated here); the 100 B1 allocations (b1AllocationSha256 ff031e74…) remain reserved and untouched; ledger order: B1 rows first, then these 20 B2 rows. Surface→lemma anchors: зависит→зависеть, склоняюсь→склоняться, сомневаюсь→сомневаться, рекомендую→рекомендовать, означает→означать, влияет→влиять, приводит→приводить (present 1sg/3sg whole tokens, imperfective familyKey; aspect partners привести, порекомендовать excluded from future ledgers), последствия→последствие (nom pl whole token), Причина/Очевидно→casefold; all others identical. Trophy surface is always a whole mechanical token of dialogue[1] (maximal letter run with internal hyphens, so attached punctuation such as 'сомневаюсь:' is stripped by tokenisation), compared under NFC+casefold with ё preserved in canonical targetText; no substring matching.",
+    "nearFamilyDecisions": [
+      "рекомендовать is a distinct family from forbidden совет/посоветовать (different root); future ledgers may not add рекомендация.",
+      "приводить (вод-) is distinct from forbidden привычка (вык-); привести excluded as aspect partner.",
+      "безопасный chosen over надёжный because надёжный shares the надеж- root with forbidden надеяться.",
+      "выгодно (adverb) owns the family; выгода, выгоднее (used free in P1 L4 text) are not separately allocatable.",
+      "сомневаться owns сомнение; влиять owns влияние; последствие owns последствия; preсеdence to the first allocated row.",
+      "поэтапно is distinct from forbidden этаж (этап vs этаж); поэтому distinct from forbidden потом.",
+      "Multi-token carriers (тогда как, с одной стороны, иными словами, в конечном счёте, при условии что) are terms/pattern highlights only, never trophies."
+    ]
+  },
+  "mechanicalValidationRules": [
+    "Exactly 2 paths numbered 1,2; exactly 10 lessons each numbered 1..10; 20 trophies distinct from each other and from the forbidden set and from all 100 B1 ledger rows under NFC+casefold.",
+    "dialogue length 6; speakers them/you alternating from them; interlocutorId on every them turn; move + register on every you turn; registerPlan.mode constant, registers ['вы','вы','вы'].",
+    "Move slots: dialogue[1].move ∈ path moveWhitelist; dialogue[3].move ∈ {concede,rebut,clarify,explain,compare,counteroffer}; dialogue[5].move ∈ {conclude,propose,summarize,counteroffer,relay,request}; the three pairwise distinct; dialogue[2] ends with ? or contains a challenge cue (но, учтите, зато, а если, почему).",
+    "Token bounds (letter runs with internal hyphens): them 6–20; you1 14–26; you2 12–24; you3 10–22; build focus span 7–12.",
+    "Build: NFC(framePrefix + chunks.join(' ') + frameSuffix) === NFC(dialogue[1].targetText); chunks 5–8 of 1–4 tokens; distractors exactly 2; no chunk boundary inside a listed multi-token carrier.",
+    "Cloze on dialogue[3], synthesis on dialogue[5] (1–2 blanks), recall on dialogue[1]: byte-exact reconstruction; blanks 2–4; moveBlankIndex points at a blank on the carrier of that turn's move; at most one blank carries choices (4 distinct after normalisation, exactly one accepted).",
+    "Trophy: surface is a whole token of dialogue[1]; lemma equals ledger row; pos ∈ enum; example.targetText contains surface or lemma.",
+    "Speak: 3 targets at turnIndex 1,3,5; requiredTokens 2–4 distinct whole tokens of that turn, ≥4 letters, not pronouns/particles, not denylist tokens.",
+    "Every targetText matches /^[А-Яа-яЁё\\s.,!?;:«»()—-]+$/ ; curated ё-lexicon always carries ё; stored acceptedAnswers (blanks, terms, recall) list only canonical surfaces with ё plus at most one authored comma-free variant and never a hand-listed е-fold; ё→е, Вы/вы casefold, NFC, whitespace and terminal-punctuation folding apply at comparison time in validator/runtime config (to be implemented; nothing here asserts it exists).",
+    "Register: no ты/тебя/тебе/тебя/твой/твоя/твои tokens in you turns; вы present as address in each you turn or the turn is addressee-free.",
+    "Gender: no closed-denylist token in any you turn; speakerGender neutral in all 20 lessons; -л/-ла/-ло/-ли tokens in you turns raise warning B2-GENDER-THIRD-PERSON that the authored lesson acknowledges per token from the genderSafety list (third-person subject or plural/impersonal gender-free); acknowledgements exist only in authored drafts, never in this spec.",
+    "Staging gate (validator config keyed path × lesson range from path.staging): productive carriers of a later range may not appear in you turns of an earlier range (тогда как ≥ P1 L4; несмотря на, при условии что, всё-таки, если коротко ≥ P1 L7; то есть, означает что, если коротко ≥ P2 L4; следовательно, в конечном счёте, приводит к тому что, если же ≥ P2 L7).",
+    "Terms 8–10 per lesson, each verbatim (folded) in dialogue or a pattern example; pattern.examples 2–3 with ≥1 equal to a you turn; highlights contiguous substrings.",
+    "sceneCaption de/en each contain dialogue[0].targetText verbatim; neither contains dialogue[2] or dialogue[4] in full or any 4-token run of them.",
+    "Scene-rule guard: lessons tagged fictional-rule (P2 L2 you1 'у нас во дворе' and you2 'у нас'; P2 L4 you3 'по правилам этой кофейни'; P2 L6 you1 'у центра своё правило' and you3 'по правилам центра'; P2 L8 you1 'в нашей школе') must carry that scene-local scoping in the named you turn that asserts the rule; P1 L10 (proposed decision) and P2 L10 (fictional events) are tagged fictional-event and exempt; warning B2-SCENE-RULE-SCOPE fires only on a named rule turn lacking its scoping phrase."
+  ],
+  "semanticReviewRules": [
+    "Challenge is genuinely delayed: turn 2 introduces a fact turn 1 could not foresee (commission arithmetic, shift schedule, contract clause, wet cardboard, sister building) and turn 4 changes the constraint (third option, protocol line, five-year horizon, memo format).",
+    "Three learner moves are rhetorically distinct and each carrier matches its move label (concede opens with partial agreement, rebut negates then re-argues, clarify narrows scope, counteroffer names a changed deal).",
+    "P1 you3 contains a qualified recommendation (condition or exception), not a flat choice; P2 you turns trace cause → mechanism → consequence or sequential steps with explicit sequencers.",
+    "B2 not inflated B1: argument carriers do the work; no rare nouns substituted for reasoning; register is spoken native Russian without bureaucratic calques (осуществлять, являться, в связи с вышеизложенным).",
+    "Fictional rules stay scene-local (this café, this business centre, this school, this building); no claims about Russian law, medicine, municipal or banking regulation; prices realistic, city unnamed except named destinations in P1 L5/L9.",
+    "Distractors (build and cloze chips) are grammatical but produce wrong aspect, case, connector or meaning; chip permutations and second-valid-choice checks run on full content, not here.",
+    "Gender audit semantic: every -л form in you turns is either a gender-free plural/impersonal form (мы-forms, impersonal plural, impersonal neuter) or has a non-speaker third-person subject, per the genderSafety list; no singular past form, adjective or participle agrees with the speaker.",
+    "Base texts de/en render the same Russian meaning idiomatically; German must not formalise вы into archaic Russian back-translation; English keeps hedges (отчасти, скорее, честно).",
+    "ё/е homograph blanks (все/всё) prohibited; numeral case and aspect in requests checked by a native-model reviewer before any nativeStatus change.",
+    "Trophy example.base de/en is an accurate idiomatic translation of example.targetText only (same baseTextsAccurate standard as every other base field). Reuse value and why the chosen form (1sg present, nom pl, connector) is natural are stated in the bilingual extension trophy.whyThisWord {de,en} (1–2 sentences each, no metalanguage beyond the pos label), declared in requiredSchemaExtensions; a draft may carry the key only once the validator schema admits it."
+  ],
+  "requiredSchemaExtensions": [
+    "One additive data extension: trophy.whyThisWord {de:S,en:S} (optional bilingual reuse/form explanation), to be added to the strict trophy schema mirror before Russian B2 drafts are validated; all other lesson/turn/build/cloze/recall/trophy/review shapes carry everything above unchanged; trophy.example.base stays a translation; speakerGender neutral and alternates absent in all 20 lessons. No runtime support is claimed by this spec.",
+    "Validator config only (no JSON field): staging gate table per path × lesson range derived from path.staging; scene-rule scoping warning list; acknowledgedWarnings codes B2-GENDER-THIRD-PERSON and B2-SCENE-RULE-SCOPE added to the warning enum.",
+    "Ledger file gains 20 rows after the 100 reserved B1 rows; trophy.lemma for verbs is the imperfective infinitive; no new ledger columns."
+  ],
+  "unresolvedDecisions": [
+    "Whether friends in B2 move to ты (rail default 'ты with friends') or stay on вы as authored here; this spec keeps вы for continuity with A1–B1 and recommends a single ты relay path only in a later B2 extension.",
+    "Resolved by genderSafety policy: P2 L7 keeps Провалился (subject план), сорвалось (всё), шли (занятия), исчезло (расписание) as listed third-person-subject forms; no rewrite. The B2-GENDER-THIRD-PERSON acknowledgement for these tokens is written only in the authored draft's review.acknowledgedWarnings; this spec pre-fills no acknowledgement, review flag or reviewer row.",
+    "Resolved: ё→е acceptance is comparison normalisation (loader/runtime), never hand-listed data; blanks list only canonical surface plus at most one authored variant.",
+    "Whether 'тогда как' is additionally staged recognition-only in P1 L1–3 them lines or withheld until L4; current draft withholds it from them lines in L1–3.",
+    "Roster/voice assignment for B2 (odd f / even m canonical parity is irrelevant while all lessons are neutral) pending TTS plan; full lessons, gate implementation, Fable full read, independent native review and TTS all pending."
+  ]
+}

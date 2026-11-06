@@ -1,0 +1,55 @@
+{
+  "file": "p6.json",
+  "source": "b1da4d44a22d0a5d873fa0f6879434c91bdc8e769a82a17164df5767da0fd604",
+  "result": "a7e4eae5e1a8f67e5701b9d36c9932549132483a09d4a5b6f450e9a54d3f8480",
+  "edits": 69,
+  "preconditionNotes": [
+    "Exact list append at RFC 6902 /- pointer; no prior value.",
+    "Matched exact unique oldValue in same lesson/cloze: /lessons/2/cloze/3/choices → cloze/2/choices",
+    "Matched exact unique oldValue in same lesson/cloze: /lessons/6/cloze/5/choices → cloze/4/choices"
+  ],
+  "readThrough": [
+    {
+      "file": "p6.json",
+      "lessonsRead": [
+        "jaeryo-soup-burner",
+        "junbi-spare-screw",
+        "seolchi-printer-network",
+        "jorip-wobbly-shelf",
+        "jeongni-missing-contract",
+        "seoljeong-phone-language",
+        "hwagin-open-oven",
+        "jeojang-missing-attachment",
+        "wanseong-salty-soup",
+        "mamuri-stair-access"
+      ],
+      "concerns": [
+        "Mechanics verified on all ten: tuple4 roles, eojeol ranges (L1-10 reply1 7/9/8/9/10/8/9/9/10/9, reply2 8/9/8/9/9/8/8/9/8/8), chunk joins, recall joins, cloze joins, 3 distinct speakRequired eojeol, 6-8 terms, form-only cues, trophy bare surface in reply1 and example, no 반말/습니다, no gendered address, learner -(으)시- only on interlocutor subjects (부탁하셔서, 읽어 주시겠어요), staging per L1-3/4-6/7-8/9-10 honored (-아/어 놓다 first in learner line L4, -아/어 있다 first L7, -게 되다/-(으)면서 first L9). Captions quote openings verbatim; no opening leaks turn three.",
+        "L1 DE title 'Mit dem Suppentopf umziehen' misreads umziehen (move house); replace with umstellen. Dialogue logic sound.",
+        "L2 조립 준비 삼아 is scaffolding; 준비 단계에서 reuses the trophy example framing and whyThisWord naturally. L3 choice distractors 칠해야/찢어야/접어야 are outlandish; 열어야/선택해야 must stay out (would also fit).",
+        "L4 nobody introduced the paper shim before turn three, and keeping a shim while tightening is not a safe repair; neighbor now notices the shim, learner asks to remove it and tighten first. 갈면 (replace) was a plausible alternative verb.",
+        "L5 reply1 says contracts went in the drawer, turn three says copies, reply2 narrows silently; manager now reports drawer holds only copies, learner voices realization with 건 사본이고.",
+        "L6 reboot reverted to English, so 초기화 would not restore Korean and would risk photos; colleague now states reset wipes photos, learner asks whether just changing the language again keeps photos. Choice blank moved to 바꾸면.",
+        "L7 request to read the display needs a visible reason; instructor now states only she can see the digits. 설정해/올려/낮춰 were adjacent tasks; replaced with slot-impossible verbs.",
+        "L8 attaching to the already-sent open mail is impossible; learner now reattaches to a new mail, checks 붙어 있는지 (state kept in form blank, -는지 productive since P5), sends.",
+        "L9 저도 드디어 unmotivated; trimmed to 완성 사진까지 찍게 됐어요, recall moved onto bare trophy 완성.",
+        "L10 after 마무리 청소 nothing remained to carry; one box now remains, elevator line targets it, key is the resident's own 집 열쇠 so availability is self-evident without spoiling.",
+        "Register enum 'neutral' retained; all ten trophies retained unchanged."
+      ]
+    },
+    {
+      "file": "B1_NATIVE_KOREAN_SPEC.json",
+      "lessonsRead": [
+        "path 6 staging, clozeSchema, segmentation, registerPolicy, genderSafety, mechanicalValidationRules"
+      ],
+      "concerns": [
+        "Optional trophyWord.surface/remainder extensions absent in p6.json; all ten trophies occur bare so no remainder rows are needed."
+      ]
+    }
+  ],
+  "openIssues": [
+    "L8 term 다시 보내다 now only implied by context (보낼게요 after a failed send); acceptable, flag for next term sweep.",
+    "L10 reply1 sits at the 12-eojeol ceiling; any further wording change must not add an eojeol.",
+    "No trophyWord.surface/remainder rows added since all ten surfaces are bare; add when the validator extension lands."
+  ]
+}

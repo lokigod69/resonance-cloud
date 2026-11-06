@@ -1,0 +1,44 @@
+{
+  "file": "english-p7.json",
+  "source": "514a8c99d92dc49d5d6d7e987754ea4a7a6256053047943b968c1a85c07c0baf",
+  "result": "ed078374cca34e5db388b044b93e2ebf5ff54dcc8278e86a05ffdc3480df9a7a",
+  "edits": 53,
+  "preconditionNotes": [
+    "L1 oldValue omitted the space before people; replacement used verbatim."
+  ],
+  "readThrough": [
+    {
+      "file": "english-p7.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": [
+        "Disposition P7-multi (examples[1]=dialogue[3]): ACCEPT all 10; examples[1] replaced by transfer examples with German gloss and contiguous highlight; rules and mirrored pedagogicalGoal rewritten to stop naming the follow-up form.",
+        "Disposition P7-multi (all blanks form, cues print answer): ACCEPT all 10; every cloze now has one connector blank (no cue) and one form blank with an operation-only German cue; chips tested so no combination yields a second acceptable sentence in context (dropped if/when/until/unless/while where they produced one).",
+        "Disposition L1 (ask…to is a complement): ACCEPT; you₂ now ends in a true purpose infinitive 'to keep it simple'; transfer example per reviewer.",
+        "Disposition L2: no additional issue; 'so' expanded to 'so that' so the connector is gradeable.",
+        "Disposition L3 (five never accepted): ACCEPT; you₂ opens with 'Five works.' and keeps the division of work.",
+        "Disposition L4 (cardstock): already applied in current bytes; no edit.",
+        "Disposition L5, L7, L8, L10: no additional issue beyond the cross-lesson fixes.",
+        "Disposition L6 (address cannot distinguish entrances): ACCEPT; you₁ asks for the entrance; chunks, recall, terms, speakRequired, examples[0] updated.",
+        "Disposition L9: 'so' expanded to 'so that'; rule no longer prints 'so you can set up'.",
+        "Coupling checks after edits: dialogue[1]===recall before/answer/after and chunk concat in L6; cloze segments concatenate to dialogue[3] in L1,L2,L3,L9; trophies, staging and anchor text untouched."
+      ]
+    }
+  ],
+  "openIssues": [
+    "english-p6.json was not supplied in this turn, so no exact edits could be arbitrated for it; required P6 work per review: replace 'to be' with 'was' in the L5–L7 first-slot banks and update the cue, rewrite examples[1] in all ten lessons as transfer examples, remove follow-up details from rules, L1 opening question, L2 oversized-box reply with dependent fields, L4 German clause order, L8 'bulletin board' + rule reason. Supply the current P6 bytes for an exact-edit pass.",
+    "Connector blanks carry no cue (per design); the file format has no acceptedAnswers field, so a typed grader should match the single answer case-sensitively only for sentence-initial 'If'.",
+    "L1 pattern label 'Purpose and the to-infinitive' still matches; L3 you₂ uses a bare imperative 'Chop the carrots' to stay within 12 words — acceptable for du-register friends, flag if the owner prefers 'Could you'.",
+    "Recompute the file hash after applying; audio ids remain unfrozen."
+  ]
+}

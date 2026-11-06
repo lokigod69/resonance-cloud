@@ -2,6 +2,10 @@
 Newest first. Never delete a decision — mark it `⚠️ superseded → [[#the newer one]]` instead.
 Wrong turns are part of the memory.
 
+## 2026-11-06 — Expose Korean for testing; resume guided text separately from audio
+
+The owner wants to test Korean directly. Include it in onboarding, Today, Library, generation and Speak pickers; preserve separate mode-specific input capabilities. Its 100 A1 and 100 A2 lessons and twelve explanation editions already exist. Resume B1/B2 text authoring and review only. Count a repaired path once. Keep intermediate drafts offline until their own acceptance and integration work is complete. The October stop remains in force for curriculum audio; no replacement TTS provider was selected.
+
 ## 2026-09-26 — Speak runs on Groq openai/gpt-oss-120b; storage deletion only inside the owner's own folder
 **Status:** active; agent decisions under the owner's standing authorization (push after checks), each independently reviewed.
 **Decision:** Groq shut down `llama-3.3-70b-versatile` on 2026-08-16; Speak's tutor and corrections use Groq's named replacement `openai/gpt-oss-120b` with `reasoning_effort: low` (cheaper; replies verified with real calls). Worker retries fall back to `openai/gpt-4.1-mini` after `x-ai/grok-4.1-fast` left OpenRouter. Any automated file deletion (account deletion, storage-cleanup sweep) may only remove objects under the owning user's folder, never a path merely named in a word's URL; the landing showcase decks and `guided-today/` are protected; the sweep stays in preview until the owner OKs the counts.

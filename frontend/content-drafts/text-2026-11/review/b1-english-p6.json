@@ -1,0 +1,30 @@
+{
+  "file": "english-p6.json",
+  "source": "62f49229016360b09a66f97a9394d3c059768d88c744a021ed73568a257a8f07",
+  "result": "9cbb5c188ebe747b76fad26c2346acef8784a469cb6d3420fc05dd64036fa642",
+  "edits": 35,
+  "readThrough": [
+    {
+      "file": "../english/english-p6.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Current bytes sha256 62f49229… already carry bulletin board (L8) and the other first-pass Fable edits. Still open in the current file: all ten pattern.examples[1] equal dialogue[3] verbatim; rules in L3, L4, L8, L9, L10 name the exact follow-up form; L5–L7 banks still contain 'to be' and the cue 'be (-ing form)' effectively prints the answer; L1 opening is a yes/no question answered only by a counterquestion; L2 you₂ asks about a full bin although them₂ names oversized boxes; L4 German gloss orders approval before the date decision. Staging (L1–4 present simple, L5–7 present continuous, L8–9 past simple, L10 mixed), register, chunk concatenation, recall blanks and all ten trophies (delivered, collected, replaced, approved, delayed, damaged, installed, canceled, confirmed, stored) are untouched by these edits. P7 current file was not supplied."
+    }
+  ],
+  "openIssues": [
+    "P7 (../english/english-p7.json) current bytes were not supplied; no edits issued. Pending for that file: one connector blank (typed, no cue; test 'in case' vs 'so that' vs 'to' against the visible context) plus one form blank per lesson with German operation cues (e.g. 'Grundform nach to', 'Präsens, 3. Person') instead of the printed answer; examples[1] replaced in all ten; L1 purpose example, L3 accept five o'clock, L4 cardstock, L6 entrance name.",
+    "After applying, recompute the P6 hash and run the B1 validator (cloze concat, highlight containment, trophy uniqueness).",
+    " L2 build distractor 'on the other side' is grammatically insertable but cannot complete you₁ without 'outside our building'; left as is.",
+    "Draft text only; no learner readiness claim."
+  ]
+}

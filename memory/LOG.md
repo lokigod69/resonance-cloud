@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-06 — Korean selectable; Guided Path text resumed
+
+Korean is now the ninth selectable target in onboarding, Today, Library, generation and Speak. Vercel production `dpl_2ffNtuYHNJD58U8Y8Gfcfq5epDbW` served app change `59f63cfb` on lingwave.ai. The local phone-sized German fixture selected Korean without a deep link and opened A1 P1 with the correct Hangul and German explanation; the onboarding radio also worked. All 100 A1 and 100 A2 Korean bodies exist, and the twelve explanation editions validated. Frontend verify, build and 28/28 enabled offline suites passed. Existing general typed-study mode gates remain in place.
+
+The owner resumed **text only**. See `frontend/content-drafts/text-2026-11/index.json` for current paths, hashes and review states, and `planning/remaining-by-language.json` inside that folder for the outstanding writing. Japanese, Russian, Polish and Cebuano B2 P1/P2 (80 existing lessons) passed the new offline editorial reviews. The corrected versions preserve lesson identity and vocabulary; a per-lesson comparison lives in `review/october-revisions.json`. The October sources and original receipts remain unchanged. November did not run TTS, choose a provider, activate new intermediate lessons, write production data or change mini books. Absolute desktop report: `D:/CODING/ResonanceTEST/investigations/lingwave-guided-text-2026-11-06.html`.
+
 ## 2026-10-06 — Mini-books pilot closing evidence; curriculum remains stopped
 - Separate storybook implementation `3819977e` is committed/pushed. Its owner reports five offline tests and independent rereview PASS for the isolated website pilot helper; root records that reported validation without rerunning paid or curriculum work.
 - Root read `tmp/STORYBOOKS_20261006/status.json` and independently matched both request keys against the existing ledger. Spanish `dbac7fc89b083ce5d12dcbd0d5e6ac8a1424a21081568b21e61ad4843298b419` is ready, charged 39; its physical MP3 hash matches `857a536ce3c428021e010faecb73e6016f753a0228a8d1b272a1a6551168bf08`. English `9899e0a809701a2a294f1c159b2df8734dc819951576142490b3a7aaafdb704f` is settled, charged zero, with no audio. The owner reports provider history/subscription reconciliation and 9,961 remaining; no retries or full books ran.

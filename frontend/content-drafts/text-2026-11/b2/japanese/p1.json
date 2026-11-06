@@ -1,0 +1,5680 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Japanese",
+  "targetLanguageCode": "ja-JP",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Abwägen und empfehlen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Optionen anhand konkreter Kriterien vergleichen und unter neuen Bedingungen begründet empfehlen.",
+    "en": "Compare options using concrete criteria and give a justified recommendation under new conditions."
+  },
+  "specRef": {
+    "pathSpec": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json",
+    "pathSpecSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+    "ledger": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+    "ledgerSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "japanese-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "yachin-ka-tsuukin",
+      "title": {
+        "de": "Miete oder Pendelzeit?",
+        "en": "Rent or commuting time?"
+      },
+      "situation": {
+        "de": "Bei der Wohnungsvermittlung vergleichst du eine Wohnung am Bahnhof mit einer günstigeren am Stadtrand.",
+        "en": "At a letting agency, you compare a flat by the station with a cheaper one in the suburbs."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Wohnungsvermittlung",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Wohnungsvermittlung vergleichst du eine Wohnung am Bahnhof mit einer günstigeren am Stadtrand. Die andere Person sagt: „駅前の物件と郊外の物件、どちらがご希望に近いでしょうか。家賃は一万円ほど違います。“",
+        "en": "At a letting agency, you compare a flat by the station with a cheaper one in the suburbs. The other person says: “駅前の物件と郊外の物件、どちらがご希望に近いでしょうか。家賃は一万円ほど違います。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "駅前の物件と郊外の物件、どちらがご希望に近いでしょうか。家賃は一万円ほど違います。",
+          "base": {
+            "de": "Welche Wohnung entspricht Ihren Wünschen eher: die am Bahnhof oder die am Stadtrand? Die Mieten unterscheiden sich um etwa zehntausend Yen.",
+            "en": "Which flat is closer to what you want: the one by the station or the suburban one? The rents differ by about ten thousand yen."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "えきまえのぶっけんとこうがいのぶっけん、どちらがごきぼうにちかいでしょうか。やちんはいちまんえんほどちがいます。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "家賃を比べれば郊外の方が安いですが、通勤時間を考えると駅前の方が総合的には合っていると思います。",
+          "base": {
+            "de": "Beim Mietvergleich ist die am Stadtrand günstiger, aber mit Blick auf den Arbeitsweg passt die am Bahnhof insgesamt besser, denke ich.",
+            "en": "Comparing rents, the suburban one is cheaper, but considering commuting time, I think the one by the station suits me better overall."
+          },
+          "move": "compare",
+          "register": "keigo",
+          "units": [
+            "家賃を",
+            "比べれば",
+            "郊外の",
+            "方が",
+            "安いですが、",
+            "通勤時間を",
+            "考えると",
+            "駅前の",
+            "方が",
+            "総合的には",
+            "合っていると",
+            "思います。"
+          ],
+          "readingUnits": [
+            "やちんを",
+            "くらべれば",
+            "こうがいの",
+            "ほうが",
+            "やすいですが、",
+            "つうきんじかんを",
+            "かんがえると",
+            "えきまえの",
+            "ほうが",
+            "そうごうてきには",
+            "あっていると",
+            "おもいます。"
+          ],
+          "readingVariant": "やちんをくらべればこうがいのほうがやすいですが、つうきんじかんをかんがえるとえきまえのほうがそうごうてきにはあっているとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "駅前は家賃が高い分、更新料も高くなりますが、それでもよろしいですか。",
+          "base": {
+            "de": "Bei der Wohnung am Bahnhof ist mit der höheren Miete auch die Verlängerungsgebühr höher. Ist das trotzdem in Ordnung?",
+            "en": "The flat by the station has a higher renewal fee as well as higher rent. Is that still all right?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "えきまえはやちんがたかいぶん、こうしんりょうもたかくなりますが、それでもよろしいですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "おっしゃるとおり更新料は負担になりますね。ただ、毎日の往復が一時間短くなるなら、その分の価値はあると思います。",
+          "base": {
+            "de": "Wie Sie sagen, ist die Verlängerungsgebühr eine Belastung. Wenn ich täglich eine Stunde Hin- und Rückweg spare, ist es mir das aber wert.",
+            "en": "As you say, the renewal fee is a burden. But if the daily round trip becomes an hour shorter, I think that is worth it."
+          },
+          "move": "concede",
+          "register": "keigo",
+          "units": [
+            "おっしゃるとおり",
+            "更新料は",
+            "負担に",
+            "なりますね。",
+            "ただ、",
+            "毎日の",
+            "往復が",
+            "一時間",
+            "短くなるなら、",
+            "その分の",
+            "価値は",
+            "あると",
+            "思います。"
+          ],
+          "readingUnits": [
+            "おっしゃるとおり",
+            "こうしんりょうは",
+            "ふたんに",
+            "なりますね。",
+            "ただ、",
+            "まいにちの",
+            "おうふくが",
+            "いちじかん",
+            "みじかくなるなら、",
+            "そのぶんの",
+            "かちは",
+            "あると",
+            "おもいます。"
+          ],
+          "readingVariant": "おっしゃるとおりこうしんりょうはふたんになりますね。ただ、まいにちのおうふくがいちじかんみじかくなるなら、そのぶんのかちはあるとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "来年転勤の可能性もあるとおっしゃっていましたが、その場合はどう判断されますか。",
+          "base": {
+            "de": "Sie sagten, dass nächstes Jahr möglicherweise eine Versetzung ansteht. Wie entscheiden Sie in diesem Fall?",
+            "en": "You mentioned a possible transfer next year. How would you decide in that case?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "らいねんてんきんのかのうせいもあるとおっしゃっていましたが、そのばあいはどうはんだんされますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "転勤が一年以内に決まるなら契約の短い郊外にしますが、そうでなければ駅前の方でお願いいたします。",
+          "base": {
+            "de": "Wenn die Versetzung innerhalb eines Jahres feststeht, nehme ich die Wohnung am Stadtrand mit der kürzeren Vertragsdauer; sonst bitte die am Bahnhof.",
+            "en": "If a transfer is confirmed within a year, I will take the suburban flat with the shorter contract; otherwise, I would like the one by the station."
+          },
+          "move": "conclude",
+          "register": "keigo",
+          "units": [
+            "転勤が",
+            "一年以内に",
+            "決まるなら",
+            "契約の",
+            "短い",
+            "郊外に",
+            "しますが、",
+            "そうでなければ",
+            "駅前の",
+            "方で",
+            "お願いいたします。"
+          ],
+          "readingUnits": [
+            "てんきんが",
+            "いちねんいないに",
+            "きまるなら",
+            "けいやくの",
+            "みじかい",
+            "こうがいに",
+            "しますが、",
+            "そうでなければ",
+            "えきまえの",
+            "ほうで",
+            "おねがいいたします。"
+          ],
+          "readingVariant": "てんきんがいちねんいないにきまるならけいやくのみじかいこうがいにしますが、そうでなければえきまえのほうでおねがいいたします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "家賃を",
+        "chunks": [
+          "比べれば郊外の",
+          "方が",
+          "安いですが、",
+          "通勤時間を",
+          "考えると"
+        ],
+        "chunkReadings": [
+          "くらべればこうがいの",
+          "ほうが",
+          "やすいですが、",
+          "つうきんじかんを",
+          "かんがえると"
+        ],
+        "distractors": [
+          "比べれば郊外に",
+          "高いですが、"
+        ],
+        "frameSuffix": "駅前の方が総合的には合っていると思います。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "更新料は負担になりますね。ただ、毎日の往復が一時間"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "その分の価値はあると思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "おっしゃるとおり",
+            "acceptedAnswers": [
+              "おっしゃるとおり"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "おっしゃるとおり",
+            "choices": [
+              "おっしゃるとおり",
+              "おっしゃるので",
+              "おっしゃるまで",
+              "おっしゃるものの"
+            ]
+          },
+          {
+            "answer": "短くなるなら、",
+            "acceptedAnswers": [
+              "短くなるなら、",
+              "みじかくなるなら、"
+            ],
+            "kind": "form",
+            "kanaAnswer": "みじかくなるなら、",
+            "cue": {
+              "de": "kürzer werden + なら (Bedingung)",
+              "en": "become shorter + なら (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "転勤が一年以内に"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "契約の短い郊外にしますが、そうでなければ駅前の方でお願いいたします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "決まるなら",
+            "acceptedAnswers": [
+              "決まるなら",
+              "きまるなら"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "きまるなら",
+            "choices": [
+              "決まるなら",
+              "決まっても",
+              "決まるまで",
+              "決まったので"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "家賃を",
+        "acceptedAnswers": [
+          "家賃を",
+          "やちんを"
+        ],
+        "after": "比べれば郊外の方が安いですが、通勤時間を考えると駅前の方が総合的には合っていると思います。",
+        "fallbackChoices": [
+          "家賃を",
+          "食費を",
+          "学費を",
+          "旅費を"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Einwand anerkennen",
+          "en": "Acknowledging an objection"
+        },
+        "rule": {
+          "de": "Bestätige die genannten Mehrkosten und erkläre dann, unter welcher Bedingung der Vorteil sie aufwiegt.",
+          "en": "Acknowledge the extra cost, then explain the condition under which the benefit outweighs it."
+        },
+        "examples": [
+          {
+            "targetText": "おっしゃるとおり更新料は負担になりますね。ただ、毎日の往復が一時間短くなるなら、その分の価値はあると思います。",
+            "base": {
+              "de": "Wie Sie sagen, ist die Verlängerungsgebühr eine Belastung. Wenn ich täglich eine Stunde Hin- und Rückweg spare, ist es mir das aber wert.",
+              "en": "As you say, the renewal fee is a burden. But if the daily round trip becomes an hour shorter, I think that is worth it."
+            },
+            "highlights": [
+              "おっしゃるとおり"
+            ]
+          },
+          {
+            "targetText": "おっしゃるとおり費用は増えますね。ただ、通勤の時間は短くなります。",
+            "base": {
+              "de": "Wie Sie sagen, steigen die Kosten. Dafür wird der Arbeitsweg kürzer.",
+              "en": "As you say, the cost rises. But commuting time becomes shorter."
+            },
+            "highlights": [
+              "おっしゃるとおり"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "家賃",
+          "kind": "noun",
+          "base": {
+            "de": "Miete",
+            "en": "rent"
+          },
+          "reading": "やちん",
+          "acceptedAnswers": [
+            "家賃",
+            "やちん"
+          ]
+        },
+        {
+          "targetText": "郊外",
+          "kind": "noun",
+          "base": {
+            "de": "Stadtrand",
+            "en": "suburbs"
+          },
+          "reading": "こうがい",
+          "acceptedAnswers": [
+            "郊外",
+            "こうがい"
+          ]
+        },
+        {
+          "targetText": "通勤時間",
+          "kind": "noun",
+          "base": {
+            "de": "Pendelzeit",
+            "en": "commuting time"
+          },
+          "reading": "つうきんじかん",
+          "acceptedAnswers": [
+            "通勤時間",
+            "つうきんじかん"
+          ]
+        },
+        {
+          "targetText": "更新料",
+          "kind": "noun",
+          "base": {
+            "de": "Verlängerungsgebühr",
+            "en": "renewal fee"
+          },
+          "reading": "こうしんりょう",
+          "acceptedAnswers": [
+            "更新料",
+            "こうしんりょう"
+          ]
+        },
+        {
+          "targetText": "価値",
+          "kind": "noun",
+          "base": {
+            "de": "Wert",
+            "en": "value"
+          },
+          "reading": "かち",
+          "acceptedAnswers": [
+            "価値",
+            "かち"
+          ]
+        },
+        {
+          "targetText": "契約",
+          "kind": "noun",
+          "base": {
+            "de": "Vertrag",
+            "en": "contract"
+          },
+          "reading": "けいやく",
+          "acceptedAnswers": [
+            "契約",
+            "けいやく"
+          ]
+        },
+        {
+          "targetText": "比べれば",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man vergleicht",
+            "en": "when comparing"
+          },
+          "reading": "くらべれば",
+          "acceptedAnswers": [
+            "比べれば",
+            "くらべれば"
+          ]
+        },
+        {
+          "targetText": "おっしゃるとおり",
+          "kind": "frame",
+          "base": {
+            "de": "wie Sie sagen",
+            "en": "as you say"
+          },
+          "reading": "おっしゃるとおり",
+          "acceptedAnswers": [
+            "おっしゃるとおり"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "家賃を",
+              "kana": "やちんを"
+            },
+            {
+              "canonical": "比べれば",
+              "kana": "くらべれば"
+            },
+            {
+              "canonical": "郊外の",
+              "kana": "こうがいの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "更新料は",
+              "kana": "こうしんりょうは"
+            },
+            {
+              "canonical": "負担に",
+              "kana": "ふたんに"
+            },
+            {
+              "canonical": "毎日の",
+              "kana": "まいにちの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "転勤が",
+              "kana": "てんきんが"
+            },
+            {
+              "canonical": "一年以内に",
+              "kana": "いちねんいないに"
+            },
+            {
+              "canonical": "決まるなら",
+              "kana": "きまるなら"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "家賃",
+        "familyKey": "yachin",
+        "surface": "家賃",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "やちん",
+        "example": {
+          "targetText": "家賃は駅からの距離で変わります。",
+          "base": {
+            "de": "Die Miete hängt von der Entfernung zum Bahnhof ab.",
+            "en": "Rent varies with the distance from the station."
+          },
+          "readingVariant": "やちんはえきからのきょりでかわります。"
+        },
+        "base": {
+          "de": "Miete",
+          "en": "rent"
+        },
+        "surfaceChunk": {
+          "chunk": "家賃を",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "家賃は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "kuruma-ka-densha",
+      "title": {
+        "de": "Auto oder Bahn?",
+        "en": "Car or train?"
+      },
+      "situation": {
+        "de": "Im Kollegenkreis vergleichst du für den täglichen Arbeitsweg Auto und Bahn.",
+        "en": "You discuss driving and taking the train for the daily commute with a colleague."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Kollegenkreis vergleichst du für den täglichen Arbeitsweg Auto und Bahn. Die andere Person sagt: „来月から車で通うか迷っているんですが、電車とどっちがいいと思いますか。“",
+        "en": "You discuss driving and taking the train for the daily commute with a colleague. The other person says: “来月から車で通うか迷っているんですが、電車とどっちがいいと思いますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "来月から車で通うか迷っているんですが、電車とどっちがいいと思いますか。",
+          "base": {
+            "de": "Ich überlege, ab nächsten Monat mit dem Auto zu fahren. Was ist besser, Auto oder Bahn?",
+            "en": "I am considering driving from next month. Which do you think is better, driving or the train?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "らいげつからくるまでかようかまよっているんですが、でんしゃとどっちがいいとおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "通勤に車を使えば時間は自由になりますが、駐車場代やガソリン代を考えると、電車の方が安く済むと思います。",
+          "base": {
+            "de": "Mit dem Auto ist man zeitlich flexibler, aber wenn man Park- und Benzinkosten berücksichtigt, kommt man mit der Bahn wohl günstiger weg.",
+            "en": "Driving gives you more freedom over your schedule, but considering parking and petrol costs, I think the train works out cheaper."
+          },
+          "move": "compare",
+          "register": "teinei",
+          "units": [
+            "通勤に",
+            "車を",
+            "使えば",
+            "時間は",
+            "自由に",
+            "なりますが、",
+            "駐車場代や",
+            "ガソリン代を",
+            "考えると、",
+            "電車の",
+            "方が",
+            "安く",
+            "済むと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "つうきんに",
+            "くるまを",
+            "つかえば",
+            "じかんは",
+            "じゆうに",
+            "なりますが、",
+            "ちゅうしゃじょうだいや",
+            "ガソリンだいを",
+            "かんがえると、",
+            "でんしゃの",
+            "ほうが",
+            "やすく",
+            "すむと",
+            "おもいます。"
+          ],
+          "readingVariant": "つうきんにくるまをつかえばじかんはじゆうになりますが、ちゅうしゃじょうだいやガソリンだいをかんがえると、でんしゃのほうがやすくすむとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "でも朝の電車は座れないし、乗り換えも二回あるんですよ。",
+          "base": {
+            "de": "Morgens bekomme ich aber keinen Sitzplatz und muss zweimal umsteigen.",
+            "en": "But I cannot get a seat in the morning, and I have to change twice."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "でもあさのでんしゃはすわれないし、のりかえもにかいあるんですよ。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "座れないのは確かに疲れますが、車だと渋滞で時間が読めない日もあるので、最終的には電車の方が確実だと思います。",
+          "base": {
+            "de": "Stehen ist sicher anstrengend, aber im Auto sind die Fahrzeiten wegen Staus manchmal unberechenbar, daher halte ich die Bahn letztlich für zuverlässiger.",
+            "en": "Not getting a seat is certainly tiring, but traffic makes driving times unpredictable on some days, so overall I think the train is more reliable."
+          },
+          "move": "rebut",
+          "register": "teinei",
+          "units": [
+            "座れないのは",
+            "確かに",
+            "疲れますが、",
+            "車だと",
+            "渋滞で",
+            "時間が",
+            "読めない",
+            "日も",
+            "あるので、",
+            "最終的には",
+            "電車の",
+            "方が",
+            "確実だと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "すわれないのは",
+            "たしかに",
+            "つかれますが、",
+            "くるまだと",
+            "じゅうたいで",
+            "じかんが",
+            "よめない",
+            "ひも",
+            "あるので、",
+            "さいしゅうてきには",
+            "でんしゃの",
+            "ほうが",
+            "かくじつだと",
+            "おもいます。"
+          ],
+          "readingVariant": "すわれないのはたしかにつかれますが、くるまだとじゅうたいでじかんがよめないひもあるので、さいしゅうてきにはでんしゃのほうがかくじつだとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "週に二日だけ在宅になるとしたら、答えは変わりますか。",
+          "base": {
+            "de": "Wäre Ihre Antwort anders, wenn ich an zwei Tagen pro Woche zu Hause arbeite?",
+            "en": "Would your answer change if I worked from home two days a week?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "しゅうにふつかだけざいたくになるとしたら、こたえはかわりますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "週三日なら片道三百円の切符で月八千円ほどで、一万円の定期より安いので、定期はやめて車と使い分けるのが現実的です。",
+          "base": {
+            "de": "An drei Tagen pro Woche kosten Einzelfahrten zu dreihundert Yen etwa achttausend Yen im Monat, weniger als die Monatskarte für zehntausend; sinnvoll wäre also, die Monatskarte aufzugeben und je nach Bedarf Auto oder Bahn zu nutzen.",
+            "en": "For three days a week, single tickets at three hundred yen each way cost about eight thousand yen a month, less than the ten-thousand-yen pass, so dropping the pass and using either the car or train as appropriate is practical."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "週三日なら",
+            "片道三百円の",
+            "切符で",
+            "月八千円ほどで、",
+            "一万円の",
+            "定期より",
+            "安いので、",
+            "定期は",
+            "やめて",
+            "車と",
+            "使い分けるのが",
+            "現実的です。"
+          ],
+          "readingUnits": [
+            "しゅうみっかなら",
+            "かたみちさんびゃくえんの",
+            "きっぷで",
+            "つきはっせんえんほどで、",
+            "いちまんえんの",
+            "ていきより",
+            "やすいので、",
+            "ていきは",
+            "やめて",
+            "くるまと",
+            "つかいわけるのが",
+            "げんじつてきです。"
+          ],
+          "readingVariant": "しゅうみっかならかたみちさんびゃくえんのきっぷでつきはっせんえんほどで、いちまんえんのていきよりやすいので、ていきはやめてくるまとつかいわけるのがげんじつてきです。"
+        }
+      ],
+      "build": {
+        "framePrefix": "通勤に車を使えば時間は自由になりますが、",
+        "chunks": [
+          "駐車場代や",
+          "ガソリン代を",
+          "考えると、電車の",
+          "方が",
+          "安く済むと"
+        ],
+        "chunkReadings": [
+          "ちゅうしゃじょうだいや",
+          "ガソリンだいを",
+          "かんがえると、でんしゃの",
+          "ほうが",
+          "やすくすむと"
+        ],
+        "distractors": [
+          "考えると、車も",
+          "高くつくと"
+        ],
+        "frameSuffix": "思います。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "座れないのは確かに疲れますが、"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "渋滞で時間が読めない日もあるので、最終的には電車の方が"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "車だと",
+            "acceptedAnswers": [
+              "車だと",
+              "くるまだと"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "くるまだと",
+            "choices": [
+              "車だと",
+              "電車だと",
+              "徒歩だと",
+              "自転車だと"
+            ]
+          },
+          {
+            "answer": "確実だと",
+            "acceptedAnswers": [
+              "確実だと",
+              "かくじつだと"
+            ],
+            "kind": "form",
+            "kanaAnswer": "かくじつだと",
+            "cue": {
+              "de": "zuverlässig – vor „denken“",
+              "en": "reliable – before “think”"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "片道三百円の切符で月八千円ほどで、一万円の定期より安いので、定期はやめて車と使い分けるのが現実的です。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "週三日なら",
+            "acceptedAnswers": [
+              "週三日なら",
+              "しゅうみっかなら"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "しゅうみっかなら",
+            "choices": [
+              "週三日なら",
+              "週五日なら",
+              "週二日なら",
+              "週一日なら"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "通勤に",
+        "acceptedAnswers": [
+          "通勤に",
+          "つうきんに"
+        ],
+        "after": "車を使えば時間は自由になりますが、駐車場代やガソリン代を考えると、電車の方が安く済むと思います。",
+        "fallbackChoices": [
+          "通勤に",
+          "通学に",
+          "買い物に",
+          "旅行に"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Mit Zuverlässigkeit argumentieren",
+          "en": "Arguing from reliability"
+        },
+        "rule": {
+          "de": "Erkenne den Nachteil an und begründe dann, warum das andere Risiko stärker wiegt.",
+          "en": "Acknowledge the disadvantage, then explain why the alternative risk carries more weight."
+        },
+        "examples": [
+          {
+            "targetText": "座れないのは確かに疲れますが、車だと渋滞で時間が読めない日もあるので、最終的には電車の方が確実だと思います。",
+            "base": {
+              "de": "Stehen ist sicher anstrengend, aber im Auto sind die Fahrzeiten wegen Staus manchmal unberechenbar, daher halte ich die Bahn letztlich für zuverlässiger.",
+              "en": "Not getting a seat is certainly tiring, but traffic makes driving times unpredictable on some days, so overall I think the train is more reliable."
+            },
+            "highlights": [
+              "車だと"
+            ]
+          },
+          {
+            "targetText": "車だと渋滞で遅れる日もあるので、電車の方が確実だと思います。",
+            "base": {
+              "de": "Mit dem Auto kommt man an manchen Tagen wegen Staus zu spät, deshalb halte ich die Bahn für zuverlässiger.",
+              "en": "Driving can mean arriving late on congested days, so I think the train is more reliable."
+            },
+            "highlights": [
+              "車だと"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "通勤",
+          "kind": "noun",
+          "base": {
+            "de": "Pendeln zur Arbeit",
+            "en": "commuting"
+          },
+          "reading": "つうきん",
+          "acceptedAnswers": [
+            "通勤",
+            "つうきん"
+          ]
+        },
+        {
+          "targetText": "駐車場代",
+          "kind": "noun",
+          "base": {
+            "de": "Parkkosten",
+            "en": "parking costs"
+          },
+          "reading": "ちゅうしゃじょうだい",
+          "acceptedAnswers": [
+            "駐車場代",
+            "ちゅうしゃじょうだい"
+          ]
+        },
+        {
+          "targetText": "ガソリン代",
+          "kind": "noun",
+          "base": {
+            "de": "Benzinkosten",
+            "en": "petrol costs"
+          },
+          "reading": "がそりんだい",
+          "acceptedAnswers": [
+            "ガソリン代",
+            "がそりんだい"
+          ]
+        },
+        {
+          "targetText": "渋滞",
+          "kind": "noun",
+          "base": {
+            "de": "Stau",
+            "en": "traffic congestion"
+          },
+          "reading": "じゅうたい",
+          "acceptedAnswers": [
+            "渋滞",
+            "じゅうたい"
+          ]
+        },
+        {
+          "targetText": "定期",
+          "kind": "noun",
+          "base": {
+            "de": "Zeitkarte",
+            "en": "commuter pass"
+          },
+          "reading": "ていき",
+          "acceptedAnswers": [
+            "定期",
+            "ていき"
+          ]
+        },
+        {
+          "targetText": "使い分ける",
+          "kind": "verb",
+          "base": {
+            "de": "je nach Bedarf unterschiedlich nutzen",
+            "en": "use selectively"
+          },
+          "reading": "つかいわける",
+          "acceptedAnswers": [
+            "使い分ける",
+            "つかいわける"
+          ]
+        },
+        {
+          "targetText": "最終的には",
+          "kind": "frame",
+          "base": {
+            "de": "letztlich",
+            "en": "ultimately"
+          },
+          "reading": "さいしゅうてきには",
+          "acceptedAnswers": [
+            "最終的には",
+            "さいしゅうてきには"
+          ]
+        },
+        {
+          "targetText": "車だと",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man mit dem Auto fährt",
+            "en": "when driving"
+          },
+          "reading": "くるまだと",
+          "acceptedAnswers": [
+            "車だと",
+            "くるまだと"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "通勤に",
+              "kana": "つうきんに"
+            },
+            {
+              "canonical": "車を",
+              "kana": "くるまを"
+            },
+            {
+              "canonical": "使えば",
+              "kana": "つかえば"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "座れないのは",
+              "kana": "すわれないのは"
+            },
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "canonical": "車だと",
+              "kana": "くるまだと"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "週三日なら",
+              "kana": "しゅうみっかなら"
+            },
+            {
+              "canonical": "片道三百円の",
+              "kana": "かたみちさんびゃくえんの"
+            },
+            {
+              "canonical": "切符で",
+              "kana": "きっぷで"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "通勤",
+        "familyKey": "tsuukin",
+        "surface": "通勤",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "つうきん",
+        "example": {
+          "targetText": "通勤が短くなると朝に余裕ができます。",
+          "base": {
+            "de": "Ein kürzerer Arbeitsweg lässt morgens mehr Zeit.",
+            "en": "A shorter commute leaves more time in the morning."
+          },
+          "readingVariant": "つうきんがみじかくなるとあさによゆうができます。"
+        },
+        "base": {
+          "de": "Pendeln zur Arbeit",
+          "en": "commuting"
+        },
+        "surfaceChunk": {
+          "chunk": "通勤に",
+          "tail": "に",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "通勤が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "zaitaku-ka-shussha",
+      "title": {
+        "de": "Zu Hause oder im Büro?",
+        "en": "Remote or on site?"
+      },
+      "situation": {
+        "de": "Die Geschäftsleitung fragt nach deiner bevorzugten Mischung aus Heimarbeit und Präsenz.",
+        "en": "Your manager asks about your preferred balance of remote and on-site work."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Geschäftsleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Geschäftsleitung fragt nach deiner bevorzugten Mischung aus Heimarbeit und Präsenz. Die andere Person sagt: „来期の勤務形態について、在宅と出社のどちらを希望しますか。理由も聞かせてください。“",
+        "en": "Your manager asks about your preferred balance of remote and on-site work. The other person says: “来期の勤務形態について、在宅と出社のどちらを希望しますか。理由も聞かせてください。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "来期の勤務形態について、在宅と出社のどちらを希望しますか。理由も聞かせてください。",
+          "base": {
+            "de": "Bevorzugen Sie in der nächsten Periode Heimarbeit oder Präsenz? Bitte nennen Sie auch Ihre Gründe.",
+            "en": "For the coming period, do you prefer remote or on-site work? Please explain your reasons."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "らいきのきんむけいたいについて、ざいたくとしゅっしゃのどちらをきぼうしますか。りゆうもきかせてください。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "基本は在宅を希望します。集中して作業できる一方、チームとの相談は出社の方がやりやすいので、週一回は出社したいと考えております。",
+          "base": {
+            "de": "Grundsätzlich möchte ich zu Hause arbeiten. Dort kann ich konzentriert arbeiten, während Absprachen im Team vor Ort leichter sind; daher würde ich gern einmal pro Woche ins Büro kommen.",
+            "en": "I would mainly prefer remote work. I can concentrate, while consulting the team is easier on site, so I am thinking of coming in once a week."
+          },
+          "move": "position",
+          "register": "keigo",
+          "units": [
+            "基本は",
+            "在宅を",
+            "希望します。",
+            "集中して",
+            "作業できる",
+            "一方、",
+            "チームとの",
+            "相談は",
+            "出社の",
+            "方が",
+            "やりやすいので、",
+            "週一回は",
+            "出社したいと",
+            "考えております。"
+          ],
+          "readingUnits": [
+            "きほんは",
+            "ざいたくを",
+            "きぼうします。",
+            "しゅうちゅうして",
+            "さぎょうできる",
+            "いっぽう、",
+            "チームとの",
+            "そうだんは",
+            "しゅっしゃの",
+            "ほうが",
+            "やりやすいので、",
+            "しゅういっかいは",
+            "しゅっしゃしたいと",
+            "かんがえております。"
+          ],
+          "readingVariant": "きほんはざいたくをきぼうします。しゅうちゅうしてさぎょうできるいっぽう、チームとのそうだんはしゅっしゃのほうがやりやすいので、しゅういっかいはしゅっしゃしたいとかんがえております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "新人の教育は在宅では難しいという声もあります。その点はどうしますか。",
+          "base": {
+            "de": "Manche sagen, dass die Einarbeitung neuer Leute aus der Ferne schwierig ist. Wie gehen Sie damit um?",
+            "en": "Some people say training new staff remotely is difficult. How would you handle that?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "しんじんのきょういくはざいたくではむずかしいというこえもあります。そのてんはどうしますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "教育については、最初の一か月は出社日を増やして対応したいと思います。慣れてからは画面共有でも十分ではないでしょうか。",
+          "base": {
+            "de": "Für die Einarbeitung würde ich im ersten Monat häufiger kommen. Sobald die neuen Leute eingearbeitet sind, sollte Bildschirmteilen doch ausreichen.",
+            "en": "For training, I would increase my on-site days during the first month. Once they are familiar with the work, would screen sharing not be sufficient?"
+          },
+          "move": "explain",
+          "register": "keigo",
+          "units": [
+            "教育については、",
+            "最初の",
+            "一か月は",
+            "出社日を",
+            "増やして",
+            "対応したいと",
+            "思います。",
+            "慣れてからは",
+            "画面共有でも",
+            "十分では",
+            "ないでしょうか。"
+          ],
+          "readingUnits": [
+            "きょういくについては、",
+            "さいしょの",
+            "いっかげつは",
+            "しゅっしゃびを",
+            "ふやして",
+            "たいおうしたいと",
+            "おもいます。",
+            "なれてからは",
+            "がめんきょうゆうでも",
+            "じゅうぶんでは",
+            "ないでしょうか。"
+          ],
+          "readingVariant": "きょういくについては、さいしょのいっかげつはしゅっしゃびをふやしてたいおうしたいとおもいます。なれてからはがめんきょうゆうでもじゅうぶんではないでしょうか。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "部全体のルールとして決めるとしたら、どんな形が公平だと思いますか。",
+          "base": {
+            "de": "Wie sähe eine faire Regelung für die gesamte Abteilung aus?",
+            "en": "What would be a fair arrangement as a rule for the whole department?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ぶぜんたいのルールとしてきめるとしたら、どんなかたちがこうへいだとおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "部全体では週二日出社を基本にして、担当業務によって調整できる形が公平だと思います。",
+          "base": {
+            "de": "Für die Abteilung wären zwei Präsenztage pro Woche als Grundregel fair, mit Anpassungen je nach Aufgabenbereich.",
+            "en": "I think two on-site days a week as a departmental baseline, adjustable according to duties, would be fair."
+          },
+          "move": "propose",
+          "register": "keigo",
+          "units": [
+            "部全体では",
+            "週二日出社を",
+            "基本にして、",
+            "担当業務によって",
+            "調整できる",
+            "形が",
+            "公平だと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "ぶぜんたいでは",
+            "しゅうふつかしゅっしゃを",
+            "きほんにして、",
+            "たんとうぎょうむによって",
+            "ちょうせいできる",
+            "かたちが",
+            "こうへいだと",
+            "おもいます。"
+          ],
+          "readingVariant": "ぶぜんたいではしゅうふつかしゅっしゃをきほんにして、たんとうぎょうむによってちょうせいできるかたちがこうへいだとおもいます。"
+        }
+      ],
+      "build": {
+        "framePrefix": "基本は在宅を希望します。集中して作業できる一方、チームとの相談は出社の",
+        "chunks": [
+          "方が",
+          "やりやすいので、",
+          "週一回は",
+          "出社したいと",
+          "考えております。"
+        ],
+        "chunkReadings": [
+          "ほうが",
+          "やりやすいので、",
+          "しゅういっかいは",
+          "しゅっしゃしたいと",
+          "かんがえております。"
+        ],
+        "distractors": [
+          "毎日は",
+          "出張したいと"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "最初の一か月は出社日を"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "対応したいと思います。慣れてからは画面共有でも十分ではないでしょうか。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "教育については、",
+            "acceptedAnswers": [
+              "教育については、",
+              "きょういくについては、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "きょういくについては、",
+            "choices": [
+              "教育については、",
+              "休暇については、",
+              "給料については、",
+              "出張については、"
+            ]
+          },
+          {
+            "answer": "増やして",
+            "acceptedAnswers": [
+              "増やして",
+              "ふやして"
+            ],
+            "kind": "form",
+            "kanaAnswer": "ふやして",
+            "cue": {
+              "de": "erhöhen – verbindende Form",
+              "en": "increase – linking form"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "部全体では週二日出社を"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "担当業務によって調整できる形が公平だと思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "基本にして、",
+            "acceptedAnswers": [
+              "基本にして、",
+              "きほんにして、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "きほんにして、",
+            "choices": [
+              "基本にして、",
+              "基本なので、",
+              "基本のように、",
+              "基本まで、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "基本は",
+        "answer": "在宅を",
+        "acceptedAnswers": [
+          "在宅を",
+          "ざいたくを"
+        ],
+        "after": "希望します。集中して作業できる一方、チームとの相談は出社の方がやりやすいので、週一回は出社したいと考えております。",
+        "fallbackChoices": [
+          "在宅を",
+          "出張を",
+          "退職を",
+          "異動を"
+        ]
+      },
+      "pattern": {
+        "moveType": "position",
+        "label": {
+          "de": "Zwei Arbeitsweisen verbinden",
+          "en": "Combining two ways of working"
+        },
+        "rule": {
+          "de": "Stelle einen Vorteil mit 一方 einem anderen gegenüber und leite daraus deinen Arbeitsplan ab.",
+          "en": "Use 一方 to contrast two advantages and derive your work arrangement from them."
+        },
+        "examples": [
+          {
+            "targetText": "基本は在宅を希望します。集中して作業できる一方、チームとの相談は出社の方がやりやすいので、週一回は出社したいと考えております。",
+            "base": {
+              "de": "Grundsätzlich möchte ich zu Hause arbeiten. Dort kann ich konzentriert arbeiten, während Absprachen im Team vor Ort leichter sind; daher würde ich gern einmal pro Woche ins Büro kommen.",
+              "en": "I would mainly prefer remote work. I can concentrate, while consulting the team is easier on site, so I am thinking of coming in once a week."
+            },
+            "highlights": [
+              "一方、"
+            ]
+          },
+          {
+            "targetText": "在宅は静かな一方、出社すると相談がしやすいです。",
+            "base": {
+              "de": "Zu Hause ist es ruhig, während Absprachen im Büro leichter sind.",
+              "en": "Working at home is quiet, while consulting others is easier in the office."
+            },
+            "highlights": [
+              "一方、"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "一方",
+          "kind": "connector",
+          "base": {
+            "de": "andererseits; während (Gegenüberstellung)",
+            "en": "on the other hand; while (contrast)"
+          },
+          "reading": "いっぽう",
+          "acceptedAnswers": [
+            "一方",
+            "いっぽう"
+          ]
+        },
+        {
+          "targetText": "在宅",
+          "kind": "noun",
+          "base": {
+            "de": "Heimarbeit",
+            "en": "working from home"
+          },
+          "reading": "ざいたく",
+          "acceptedAnswers": [
+            "在宅",
+            "ざいたく"
+          ]
+        },
+        {
+          "targetText": "出社",
+          "kind": "noun",
+          "base": {
+            "de": "Arbeiten vor Ort",
+            "en": "coming into the office"
+          },
+          "reading": "しゅっしゃ",
+          "acceptedAnswers": [
+            "出社",
+            "しゅっしゃ"
+          ]
+        },
+        {
+          "targetText": "勤務形態",
+          "kind": "noun",
+          "base": {
+            "de": "Arbeitsmodell",
+            "en": "work arrangement"
+          },
+          "reading": "きんむけいたい",
+          "acceptedAnswers": [
+            "勤務形態",
+            "きんむけいたい"
+          ]
+        },
+        {
+          "targetText": "教育",
+          "kind": "noun",
+          "base": {
+            "de": "Schulung, Einarbeitung",
+            "en": "training"
+          },
+          "reading": "きょういく",
+          "acceptedAnswers": [
+            "教育",
+            "きょういく"
+          ]
+        },
+        {
+          "targetText": "画面共有",
+          "kind": "noun",
+          "base": {
+            "de": "Bildschirmteilen",
+            "en": "screen sharing"
+          },
+          "reading": "がめんきょうゆう",
+          "acceptedAnswers": [
+            "画面共有",
+            "がめんきょうゆう"
+          ]
+        },
+        {
+          "targetText": "やりやすいので",
+          "kind": "frame",
+          "base": {
+            "de": "weil es leichter zu machen ist",
+            "en": "because it is easier to do"
+          },
+          "reading": "やりやすいので",
+          "acceptedAnswers": [
+            "やりやすいので"
+          ]
+        },
+        {
+          "targetText": "考えております",
+          "kind": "frame",
+          "base": {
+            "de": "ich erwäge höflich",
+            "en": "I am considering, politely"
+          },
+          "reading": "かんがえております",
+          "acceptedAnswers": [
+            "考えております",
+            "かんがえております"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "基本は",
+              "kana": "きほんは"
+            },
+            {
+              "canonical": "在宅を",
+              "kana": "ざいたくを"
+            },
+            {
+              "canonical": "集中して",
+              "kana": "しゅうちゅうして"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "最初の",
+              "kana": "さいしょの"
+            },
+            {
+              "canonical": "一か月は",
+              "kana": "いっかげつは"
+            },
+            {
+              "canonical": "出社日を",
+              "kana": "しゅっしゃびを"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "部全体では",
+              "kana": "ぶぜんたいでは"
+            },
+            {
+              "canonical": "週二日出社を",
+              "kana": "しゅうふつかしゅっしゃを"
+            },
+            {
+              "canonical": "担当業務によって",
+              "kana": "たんとうぎょうむによって"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "一方",
+        "familyKey": "ippou",
+        "surface": "一方",
+        "turnIndex": 1,
+        "pos": "connector",
+        "reading": "いっぽう",
+        "example": {
+          "targetText": "在宅は静かな一方で相談には工夫が必要です。",
+          "base": {
+            "de": "Zu Hause ist es ruhig, andererseits erfordern Absprachen etwas Einfallsreichtum.",
+            "en": "Working at home is quiet, while consulting others requires some ingenuity."
+          },
+          "readingVariant": "ざいたくはしずかないっぽうでそうだんにはくふうがひつようです。"
+        },
+        "base": {
+          "de": "andererseits; während (Gegenüberstellung)",
+          "en": "on the other hand; while (contrast)"
+        },
+        "surfaceChunk": {
+          "chunk": "一方、",
+          "tail": "",
+          "tailKind": "none",
+          "trailingPunct": "、"
+        },
+        "exampleChunk": {
+          "chunk": "一方で",
+          "tail": "で",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "kounyuu-ka-rentaru",
+      "title": {
+        "de": "Projektor: kaufen oder mieten?",
+        "en": "Projector: buy or rent?"
+      },
+      "situation": {
+        "de": "Am Verleihschalter vergleichst du Kauf und Miete eines Projektors für deine Firma.",
+        "en": "At a rental counter, you compare buying and renting a projector for your company."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Verleihpersonal",
+            "en": "rental clerk"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Verleihschalter vergleichst du Kauf und Miete eines Projektors für deine Firma. Die andere Person sagt: „プロジェクターはご購入とレンタル、どちらをご検討ですか。レンタルは一日三千円です。“",
+        "en": "At a rental counter, you compare buying and renting a projector for your company. The other person says: “プロジェクターはご購入とレンタル、どちらをご検討ですか。レンタルは一日三千円です。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "プロジェクターはご購入とレンタル、どちらをご検討ですか。レンタルは一日三千円です。",
+          "base": {
+            "de": "Erwägen Sie den Kauf oder die Miete des Projektors? Die Miete kostet dreitausend Yen am Tag.",
+            "en": "Are you considering buying or renting the projector? Rental is three thousand yen a day."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "プロジェクターはごこうにゅうとレンタル、どちらをごけんとうですか。レンタルはいちにちさんぜんえんです。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "年に数回しか使わないので、費用の面ではレンタルの方が助かります。ただ毎回予約が必要なのが少し面倒です。",
+          "base": {
+            "de": "Da ich ihn nur ein paarmal im Jahr nutze, wäre Mieten günstiger für mich. Nur die jedes Mal nötige Reservierung ist etwas umständlich.",
+            "en": "I only use it a few times a year, so renting helps with costs. Having to book every time is a little inconvenient, though."
+          },
+          "move": "compare",
+          "register": "keigo",
+          "units": [
+            "年に",
+            "数回しか",
+            "使わないので、",
+            "費用の",
+            "面では",
+            "レンタルの",
+            "方が",
+            "助かります。",
+            "ただ",
+            "毎回",
+            "予約が",
+            "必要なのが",
+            "少し",
+            "面倒です。"
+          ],
+          "readingUnits": [
+            "ねんに",
+            "すうかいしか",
+            "つかわないので、",
+            "ひようの",
+            "めんでは",
+            "レンタルの",
+            "ほうが",
+            "たすかります。",
+            "ただ",
+            "まいかい",
+            "よやくが",
+            "ひつようなのが",
+            "すこし",
+            "めんどうです。"
+          ],
+          "readingVariant": "ねんにすうかいしかつかわないので、ひようのめんではレンタルのほうがたすかります。ただまいかいよやくがひつようなのがすこしめんどうです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "購入ですと五万円ですが、三年保証が付きます。長い目で見ると安くないでしょうか。",
+          "base": {
+            "de": "Der Kauf kostet fünfzigtausend Yen mit drei Jahren Garantie. Ist das auf lange Sicht nicht günstiger?",
+            "en": "Buying costs fifty thousand yen with a three-year warranty. Would that not be cheaper in the long run?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "こうにゅうですとごまんえんですが、さんねんほしょうがつきます。ながいめでみるとやすくないでしょうか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "確かに十七回以上使えば購入の方が安くなりますね。ただ、置き場所や故障の時の手間を考えると、まだレンタルに傾いております。",
+          "base": {
+            "de": "Ab siebzehn Einsätzen ist der Kauf tatsächlich günstiger. Wenn ich Lagerplatz und Aufwand bei Defekten bedenke, tendiere ich aber noch zur Miete.",
+            "en": "Buying is indeed cheaper from seventeen uses onward. But considering storage and the trouble if it breaks, I still lean toward renting."
+          },
+          "move": "concede",
+          "register": "keigo",
+          "units": [
+            "確かに",
+            "十七回以上",
+            "使えば",
+            "購入の",
+            "方が",
+            "安くなりますね。",
+            "ただ、",
+            "置き場所や",
+            "故障の",
+            "時の",
+            "手間を",
+            "考えると、",
+            "まだ",
+            "レンタルに",
+            "傾いております。"
+          ],
+          "readingUnits": [
+            "たしかに",
+            "じゅうななかいいじょう",
+            "つかえば",
+            "こうにゅうの",
+            "ほうが",
+            "やすくなりますね。",
+            "ただ、",
+            "おきばしょや",
+            "こしょうの",
+            "ときの",
+            "てまを",
+            "かんがえると、",
+            "まだ",
+            "レンタルに",
+            "かたむいております。"
+          ],
+          "readingVariant": "たしかにじゅうななかいいじょうつかえばこうにゅうのほうがやすくなりますね。ただ、おきばしょやこしょうのときのてまをかんがえると、まだレンタルにかたむいております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "来年から月一回の社内研修で使うとなると、どう判断されますか。",
+          "base": {
+            "de": "Wie entscheiden Sie, wenn Sie ihn ab nächstem Jahr einmal im Monat für interne Schulungen brauchen?",
+            "en": "How would you decide if you needed it once a month for staff training from next year?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "らいねんからつきいっかいのしゃないけんしゅうでつかうとなると、どうはんだんされますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "月一回使うなら年間で三万六千円かかり、二年で購入額を超えるので、保証付きの購入にします。今年はレンタルでお願いいたします。",
+          "base": {
+            "de": "Monatliche Nutzung kostet jährlich sechsunddreißigtausend Yen und übersteigt in zwei Jahren den Kaufpreis, deshalb kaufe ich dann mit Garantie. Für dieses Jahr bitte Miete.",
+            "en": "Monthly use costs thirty-six thousand yen a year and exceeds the purchase price in two years, so I will buy with the warranty then. For this year, I would like to rent."
+          },
+          "move": "conclude",
+          "register": "keigo",
+          "units": [
+            "月一回",
+            "使うなら",
+            "年間で",
+            "三万六千円",
+            "かかり、",
+            "二年で",
+            "購入額を",
+            "超えるので、",
+            "保証付きの",
+            "購入に",
+            "します。",
+            "今年は",
+            "レンタルで",
+            "お願いいたします。"
+          ],
+          "readingUnits": [
+            "つきいっかい",
+            "つかうなら",
+            "ねんかんで",
+            "さんまんろくせんえん",
+            "かかり、",
+            "にねんで",
+            "こうにゅうがくを",
+            "こえるので、",
+            "ほしょうつきの",
+            "こうにゅうに",
+            "します。",
+            "ことしは",
+            "レンタルで",
+            "おねがいいたします。"
+          ],
+          "readingVariant": "つきいっかいつかうならねんかんでさんまんろくせんえんかかり、にねんでこうにゅうがくをこえるので、ほしょうつきのこうにゅうにします。ことしはレンタルでおねがいいたします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "年に数回しか使わないので、費用の面ではレンタルの",
+        "chunks": [
+          "方が",
+          "助かります。",
+          "ただ",
+          "毎回予約が",
+          "必要なのが",
+          "少し面倒です。"
+        ],
+        "chunkReadings": [
+          "ほうが",
+          "たすかります。",
+          "ただ",
+          "まいかいよやくが",
+          "ひつようなのが",
+          "すこしめんどうです。"
+        ],
+        "distractors": [
+          "毎月予約が",
+          "少し便利です。"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "十七回以上"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "購入の方が安くなりますね。ただ、置き場所や故障の時の手間を考えると、まだレンタルに傾いております。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "確かに",
+            "acceptedAnswers": [
+              "確かに",
+              "たしかに"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "たしかに",
+            "choices": [
+              "確かに",
+              "しかし",
+              "ところで",
+              "むしろ"
+            ]
+          },
+          {
+            "answer": "使えば",
+            "acceptedAnswers": [
+              "使えば",
+              "つかえば"
+            ],
+            "kind": "form",
+            "kanaAnswer": "つかえば",
+            "cue": {
+              "de": "nutzen + ば (Bedingung)",
+              "en": "use + ば (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "月一回"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "年間で三万六千円かかり、二年で購入額を超えるので、保証付きの購入にします。今年はレンタルでお願いいたします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "使うなら",
+            "acceptedAnswers": [
+              "使うなら",
+              "つかうなら"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "つかうなら",
+            "choices": [
+              "使うなら",
+              "使っても",
+              "使うまで",
+              "使ったので"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "年に数回しか使わないので、",
+        "answer": "費用の",
+        "acceptedAnswers": [
+          "費用の",
+          "ひようの"
+        ],
+        "after": "面ではレンタルの方が助かります。ただ毎回予約が必要なのが少し面倒です。",
+        "fallbackChoices": [
+          "費用の",
+          "音量の",
+          "明るさの",
+          "重さの"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Den Nutzungsumfang einbeziehen",
+          "en": "Accounting for frequency of use"
+        },
+        "rule": {
+          "de": "Gib dem Kostenargument recht und wäge anschließend Lagerung und Aufwand dagegen ab.",
+          "en": "Acknowledge the cost argument, then weigh storage and inconvenience against it."
+        },
+        "examples": [
+          {
+            "targetText": "確かに十七回以上使えば購入の方が安くなりますね。ただ、置き場所や故障の時の手間を考えると、まだレンタルに傾いております。",
+            "base": {
+              "de": "Ab siebzehn Einsätzen ist der Kauf tatsächlich günstiger. Wenn ich Lagerplatz und Aufwand bei Defekten bedenke, tendiere ich aber noch zur Miete.",
+              "en": "Buying is indeed cheaper from seventeen uses onward. But considering storage and the trouble if it breaks, I still lean toward renting."
+            },
+            "highlights": [
+              "確かに"
+            ]
+          },
+          {
+            "targetText": "確かに購入の方が安くなりますね。ただ、置き場所も必要です。",
+            "base": {
+              "de": "Der Kauf wird tatsächlich günstiger. Man braucht allerdings auch einen Aufbewahrungsplatz.",
+              "en": "Buying does become cheaper. But storage space is also necessary."
+            },
+            "highlights": [
+              "確かに"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "費用",
+          "kind": "noun",
+          "base": {
+            "de": "Kosten",
+            "en": "cost"
+          },
+          "reading": "ひよう",
+          "acceptedAnswers": [
+            "費用",
+            "ひよう"
+          ]
+        },
+        {
+          "targetText": "購入",
+          "kind": "noun",
+          "base": {
+            "de": "Kauf",
+            "en": "purchase"
+          },
+          "reading": "こうにゅう",
+          "acceptedAnswers": [
+            "購入",
+            "こうにゅう"
+          ]
+        },
+        {
+          "targetText": "レンタル",
+          "kind": "noun",
+          "base": {
+            "de": "Miete (von Geräten)",
+            "en": "rental"
+          },
+          "reading": "れんたる",
+          "acceptedAnswers": [
+            "レンタル",
+            "れんたる"
+          ]
+        },
+        {
+          "targetText": "置き場所",
+          "kind": "noun",
+          "base": {
+            "de": "Aufbewahrungsplatz",
+            "en": "storage space"
+          },
+          "reading": "おきばしょ",
+          "acceptedAnswers": [
+            "置き場所",
+            "おきばしょ"
+          ]
+        },
+        {
+          "targetText": "手間",
+          "kind": "noun",
+          "base": {
+            "de": "Aufwand",
+            "en": "trouble"
+          },
+          "reading": "てま",
+          "acceptedAnswers": [
+            "手間",
+            "てま"
+          ]
+        },
+        {
+          "targetText": "年間",
+          "kind": "noun",
+          "base": {
+            "de": "pro Jahr",
+            "en": "per year"
+          },
+          "reading": "ねんかん",
+          "acceptedAnswers": [
+            "年間",
+            "ねんかん"
+          ]
+        },
+        {
+          "targetText": "使えば",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man es nutzt",
+            "en": "if used"
+          },
+          "reading": "つかえば",
+          "acceptedAnswers": [
+            "使えば",
+            "つかえば"
+          ]
+        },
+        {
+          "targetText": "傾いております",
+          "kind": "frame",
+          "base": {
+            "de": "ich tendiere höflich dazu",
+            "en": "I am leaning toward it, politely"
+          },
+          "reading": "かたむいております",
+          "acceptedAnswers": [
+            "傾いております",
+            "かたむいております"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "費用の",
+              "kana": "ひようの"
+            },
+            {
+              "canonical": "年に",
+              "kana": "ねんに"
+            },
+            {
+              "canonical": "数回しか",
+              "kana": "すうかいしか"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "canonical": "十七回以上",
+              "kana": "じゅうななかいいじょう"
+            },
+            {
+              "canonical": "使えば",
+              "kana": "つかえば"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "月一回",
+              "kana": "つきいっかい"
+            },
+            {
+              "canonical": "使うなら",
+              "kana": "つかうなら"
+            },
+            {
+              "canonical": "年間で",
+              "kana": "ねんかんで"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "費用",
+        "familyKey": "hiyou",
+        "surface": "費用",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "ひよう",
+        "example": {
+          "targetText": "費用が予算を超えるなら別の案も比べます。",
+          "base": {
+            "de": "Übersteigen die Kosten das Budget, vergleiche ich auch andere Optionen.",
+            "en": "If the cost exceeds the budget, I will compare other options too."
+          },
+          "readingVariant": "ひようがよさんをこえるならべつのあんもくらべます。"
+        },
+        "base": {
+          "de": "Kosten",
+          "en": "cost"
+        },
+        "surfaceChunk": {
+          "chunk": "費用の",
+          "tail": "の",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "費用が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "okinawa-ka-hokkaidou",
+      "title": {
+        "de": "Die Reise flexibel halten",
+        "en": "Keeping the trip flexible"
+      },
+      "situation": {
+        "de": "Eine befreundete Person überlegt zwischen einer Okinawa-Pauschalreise und einer Mietwagenreise auf Hokkaido.",
+        "en": "A friend is choosing between an Okinawa package tour and a rental-car trip in Hokkaido."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person überlegt zwischen einer Okinawa-Pauschalreise und einer Mietwagenreise auf Hokkaido. Die andere Person sagt: „夏休み、沖縄のツアーと北海道のレンタカー旅行で迷っています。どっちがいいと思いますか。“",
+        "en": "A friend is choosing between an Okinawa package tour and a rental-car trip in Hokkaido. The other person says: “夏休み、沖縄のツアーと北海道のレンタカー旅行で迷っています。どっちがいいと思いますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "夏休み、沖縄のツアーと北海道のレンタカー旅行で迷っています。どっちがいいと思いますか。",
+          "base": {
+            "de": "Für die Sommerferien schwanke ich zwischen einer Okinawa-Tour und einer Mietwagenreise auf Hokkaido. Was ist besser?",
+            "en": "For the summer holiday, I am torn between an Okinawa tour and a rental-car trip in Hokkaido. Which is better?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "なつやすみ、おきなわのツアーとほっかいどうのレンタカーりょこうでまよっています。どっちがいいとおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "ツアーは手配が楽ですが、日程は変えられません。レンタカーなら天気に合わせて柔軟に動けるので、私は北海道の方をすすめます。",
+          "base": {
+            "de": "Die Tour ist leicht zu organisieren, aber der Ablauf lässt sich nicht ändern. Im Mietwagen kann man flexibel aufs Wetter reagieren, deshalb empfehle ich Hokkaido.",
+            "en": "The tour is easy to arrange, but you cannot change the itinerary. With a rental car, you can adapt flexibly to the weather, so I recommend Hokkaido."
+          },
+          "move": "compare",
+          "register": "teinei",
+          "units": [
+            "ツアーは",
+            "手配が",
+            "楽ですが、",
+            "日程は",
+            "変えられません。",
+            "レンタカーなら",
+            "天気に",
+            "合わせて",
+            "柔軟に",
+            "動けるので、",
+            "私は",
+            "北海道の",
+            "方を",
+            "すすめます。"
+          ],
+          "readingUnits": [
+            "ツアーは",
+            "てはいが",
+            "らくですが、",
+            "にっていは",
+            "かえられません。",
+            "レンタカーなら",
+            "てんきに",
+            "あわせて",
+            "じゅうなんに",
+            "うごけるので、",
+            "わたしは",
+            "ほっかいどうの",
+            "ほうを",
+            "すすめます。"
+          ],
+          "readingVariant": "ツアーはてはいがらくですが、にっていはかえられません。レンタカーならてんきにあわせてじゅうなんにうごけるので、わたしはほっかいどうのほうをすすめます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "でも運転は私一人になるんですよ。それでも北海道ですか。",
+          "base": {
+            "de": "Ich müsste allerdings allein fahren. Empfehlen Sie trotzdem Hokkaido?",
+            "en": "I would be the only driver, though. Would you still recommend Hokkaido?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "でもうんてんはわたしひとりになるんですよ。それでもほっかいどうですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "一人で長距離は確かにきついですね。それなら移動の少ない道東だけに絞るか、沖縄のツアーで自由行動の日を増やすのはどうでしょうか。",
+          "base": {
+            "de": "Lange Strecken allein sind tatsächlich anstrengend. Wie wäre es, nur den Osten Hokkaidos mit weniger Fahrten zu besuchen oder bei der Okinawa-Tour mehr freie Tage einzuplanen?",
+            "en": "Long distances alone are certainly tiring. How about limiting the trip to eastern Hokkaido with less travel, or adding more free days to the Okinawa tour?"
+          },
+          "move": "counteroffer",
+          "register": "teinei",
+          "units": [
+            "一人で",
+            "長距離は",
+            "確かに",
+            "きついですね。",
+            "それなら",
+            "移動の",
+            "少ない",
+            "道東だけに",
+            "絞るか、",
+            "沖縄の",
+            "ツアーで",
+            "自由行動の",
+            "日を",
+            "増やすのは",
+            "どうでしょうか。"
+          ],
+          "readingUnits": [
+            "ひとりで",
+            "ちょうきょりは",
+            "たしかに",
+            "きついですね。",
+            "それなら",
+            "いどうの",
+            "すくない",
+            "どうとうだけに",
+            "しぼるか、",
+            "おきなわの",
+            "ツアーで",
+            "じゆうこうどうの",
+            "ひを",
+            "ふやすのは",
+            "どうでしょうか。"
+          ],
+          "readingVariant": "ひとりでちょうきょりはたしかにきついですね。それならいどうのすくないどうとうだけにしぼるか、おきなわのツアーでじゆうこうどうのひをふやすのはどうでしょうか。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "予算が二万円減ったら、おすすめは変わりますか。",
+          "base": {
+            "de": "Ändert sich Ihre Empfehlung, wenn mein Budget um zwanzigtausend Yen sinkt?",
+            "en": "Would your recommendation change if the budget fell by twenty thousand yen?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "よさんがにまんえんへったら、おすすめはかわりますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "予算が減るなら、見積もりの安い道東に絞って一日短くする方が満足度は高いと思います。運転が一人なので長距離は避けましょう。",
+          "base": {
+            "de": "Bei weniger Budget wäre es wohl befriedigender, sich auf das günstigere Angebot für Ost-Hokkaido zu beschränken und einen Tag zu kürzen. Da nur eine Person fährt, sollten wir lange Strecken vermeiden.",
+            "en": "With a lower budget, I think limiting the trip to the cheaper quote for eastern Hokkaido and cutting one day would be more satisfying. With only one driver, let us avoid long distances."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "予算が",
+            "減るなら、",
+            "見積もりの",
+            "安い",
+            "道東に",
+            "絞って",
+            "一日",
+            "短くする",
+            "方が",
+            "満足度は",
+            "高いと",
+            "思います。",
+            "運転が",
+            "一人なので",
+            "長距離は",
+            "避けましょう。"
+          ],
+          "readingUnits": [
+            "よさんが",
+            "へるなら、",
+            "みつもりの",
+            "やすい",
+            "どうとうに",
+            "しぼって",
+            "いちにち",
+            "みじかくする",
+            "ほうが",
+            "まんぞくどは",
+            "たかいと",
+            "おもいます。",
+            "うんてんが",
+            "ひとりなので",
+            "ちょうきょりは",
+            "さけましょう。"
+          ],
+          "readingVariant": "よさんがへるなら、みつもりのやすいどうとうにしぼっていちにちみじかくするほうがまんぞくどはたかいとおもいます。うんてんがひとりなのでちょうきょりはさけましょう。"
+        }
+      ],
+      "build": {
+        "framePrefix": "ツアーは手配が楽ですが、日程は変えられません。レンタカーなら",
+        "chunks": [
+          "天気に合わせて",
+          "柔軟に動けるので、",
+          "私は北海道の",
+          "方を",
+          "すすめます。"
+        ],
+        "chunkReadings": [
+          "てんきにあわせて",
+          "じゅうなんにうごけるので、",
+          "わたしはほっかいどうの",
+          "ほうを",
+          "すすめます。"
+        ],
+        "distractors": [
+          "私は沖縄の",
+          "避けます。"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "一人で長距離は確かにきついですね。"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "移動の少ない道東だけに絞るか、沖縄のツアーで自由行動の日を"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "それなら",
+            "acceptedAnswers": [
+              "それなら"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "それなら",
+            "choices": [
+              "それなら",
+              "つまり",
+              "ところで",
+              "むしろ"
+            ]
+          },
+          {
+            "answer": "増やすのはどうでしょうか。",
+            "acceptedAnswers": [
+              "増やすのはどうでしょうか。",
+              "ふやすのはどうでしょうか。"
+            ],
+            "kind": "form",
+            "kanaAnswer": "ふやすのはどうでしょうか。",
+            "cue": {
+              "de": "vermehren (増やす) + のはどうでしょうか (Vorschlag)",
+              "en": "increase (増やす) + のはどうでしょうか (suggestion)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "予算が"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "見積もりの安い道東に絞って一日短くする方が満足度は高いと思います。運転が一人なので長距離は避けましょう。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "減るなら、",
+            "acceptedAnswers": [
+              "減るなら、",
+              "へるなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "へるなら、",
+            "choices": [
+              "減るなら、",
+              "減っても、",
+              "減るまで、",
+              "減ったので、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "ツアーは手配が楽ですが、日程は変えられません。",
+        "answer": "レンタカーなら",
+        "acceptedAnswers": [
+          "レンタカーなら"
+        ],
+        "after": "天気に合わせて柔軟に動けるので、私は北海道の方をすすめます。",
+        "fallbackChoices": [
+          "レンタカーなら",
+          "ツアーなら",
+          "沖縄なら",
+          "飛行機なら"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine Reise anpassen",
+          "en": "Adapting a trip"
+        },
+        "rule": {
+          "de": "Nimm die Belastung ernst und biete mit それなら eine veränderte Route oder mehr freie Zeit an.",
+          "en": "Take the burden seriously and use それなら to offer a revised route or more free time."
+        },
+        "examples": [
+          {
+            "targetText": "一人で長距離は確かにきついですね。それなら移動の少ない道東だけに絞るか、沖縄のツアーで自由行動の日を増やすのはどうでしょうか。",
+            "base": {
+              "de": "Lange Strecken allein sind tatsächlich anstrengend. Wie wäre es, nur den Osten Hokkaidos mit weniger Fahrten zu besuchen oder bei der Okinawa-Tour mehr freie Tage einzuplanen?",
+              "en": "Long distances alone are certainly tiring. How about limiting the trip to eastern Hokkaido with less travel, or adding more free days to the Okinawa tour?"
+            },
+            "highlights": [
+              "それなら"
+            ]
+          },
+          {
+            "targetText": "それなら移動を一日一回に減らすのはどうでしょうか。",
+            "base": {
+              "de": "Wie wäre es dann, die Fahrten auf einmal täglich zu begrenzen?",
+              "en": "In that case, how about reducing travel to once a day?"
+            },
+            "highlights": [
+              "それなら"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "柔軟",
+          "kind": "adjective",
+          "base": {
+            "de": "flexibel",
+            "en": "flexible"
+          },
+          "reading": "じゅうなん",
+          "acceptedAnswers": [
+            "柔軟",
+            "じゅうなん"
+          ]
+        },
+        {
+          "targetText": "手配",
+          "kind": "noun",
+          "base": {
+            "de": "Organisation, Buchung",
+            "en": "arrangements"
+          },
+          "reading": "てはい",
+          "acceptedAnswers": [
+            "手配",
+            "てはい"
+          ]
+        },
+        {
+          "targetText": "日程",
+          "kind": "noun",
+          "base": {
+            "de": "Reiseplan",
+            "en": "itinerary"
+          },
+          "reading": "にってい",
+          "acceptedAnswers": [
+            "日程",
+            "にってい"
+          ]
+        },
+        {
+          "targetText": "長距離",
+          "kind": "noun",
+          "base": {
+            "de": "lange Strecke",
+            "en": "long distance"
+          },
+          "reading": "ちょうきょり",
+          "acceptedAnswers": [
+            "長距離",
+            "ちょうきょり"
+          ]
+        },
+        {
+          "targetText": "自由行動",
+          "kind": "noun",
+          "base": {
+            "de": "freie Zeit auf einer Reise",
+            "en": "free time on a tour"
+          },
+          "reading": "じゆうこうどう",
+          "acceptedAnswers": [
+            "自由行動",
+            "じゆうこうどう"
+          ]
+        },
+        {
+          "targetText": "満足度",
+          "kind": "noun",
+          "base": {
+            "de": "Zufriedenheit",
+            "en": "satisfaction"
+          },
+          "reading": "まんぞくど",
+          "acceptedAnswers": [
+            "満足度",
+            "まんぞくど"
+          ]
+        },
+        {
+          "targetText": "それなら",
+          "kind": "connector",
+          "base": {
+            "de": "wenn das so ist",
+            "en": "in that case"
+          },
+          "reading": "それなら",
+          "acceptedAnswers": [
+            "それなら"
+          ]
+        },
+        {
+          "targetText": "絞るか",
+          "kind": "frame",
+          "base": {
+            "de": "sich darauf beschränken oder",
+            "en": "narrow it down or"
+          },
+          "reading": "しぼるか",
+          "acceptedAnswers": [
+            "絞るか",
+            "しぼるか"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "柔軟に",
+              "kana": "じゅうなんに"
+            },
+            {
+              "canonical": "ツアーは",
+              "kana": "ツアーは"
+            },
+            {
+              "canonical": "手配が",
+              "kana": "てはいが"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "一人で",
+              "kana": "ひとりで"
+            },
+            {
+              "canonical": "長距離は",
+              "kana": "ちょうきょりは"
+            },
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "予算が",
+              "kana": "よさんが"
+            },
+            {
+              "canonical": "見積もりの",
+              "kana": "みつもりの"
+            },
+            {
+              "canonical": "安い",
+              "kana": "やすい"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "柔軟",
+        "familyKey": "juunan",
+        "surface": "柔軟",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "reading": "じゅうなん",
+        "example": {
+          "targetText": "予定を柔軟に変えられるのが利点です。",
+          "base": {
+            "de": "Ein Vorteil ist, dass sich die Pläne flexibel ändern lassen.",
+            "en": "Being able to change plans flexibly is an advantage."
+          },
+          "readingVariant": "よていをじゅうなんにかえられるのがりてんです。"
+        },
+        "base": {
+          "de": "flexibel",
+          "en": "flexible"
+        },
+        "surfaceChunk": {
+          "chunk": "柔軟に",
+          "tail": "に",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "柔軟に",
+          "tail": "に",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "genkin-ka-apuri",
+      "title": {
+        "de": "Bargeld oder App?",
+        "en": "Cash or app?"
+      },
+      "situation": {
+        "de": "Die Ladenleitung fragt dich nach deiner Sicht auf zusätzliche App-Zahlungen.",
+        "en": "A shop owner asks your view on adding app payments."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Ladenleitung",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Ladenleitung fragt dich nach deiner Sicht auf zusätzliche App-Zahlungen. Die andere Person sagt: „うちの店でもアプリ決済を入れるか迷っているんです。お客さんの立場でどう思いますか。“",
+        "en": "A shop owner asks your view on adding app payments. The other person says: “うちの店でもアプリ決済を入れるか迷っているんです。お客さんの立場でどう思いますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "うちの店でもアプリ決済を入れるか迷っているんです。お客さんの立場でどう思いますか。",
+          "base": {
+            "de": "Ich überlege, auch in unserem Laden App-Zahlungen einzuführen. Wie sehen Sie das aus Kundensicht?",
+            "en": "I am considering introducing app payments in our shop too. What do you think as a customer?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "うちのみせでもアプリけっさいをいれるかまよっているんです。おきゃくさんのたちばでどうおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "お客の立場ではアプリが使える店の方が入りやすいです。ただ手数料がお店の負担になるのも分かるので、少額は現金でもいいと思います。",
+          "base": {
+            "de": "Als Kunde betritt man eher einen Laden, in dem Apps funktionieren. Ich verstehe aber, dass die Gebühren den Laden belasten, deshalb finde ich Bargeld bei kleinen Beträgen auch in Ordnung.",
+            "en": "As a customer, a shop that accepts app payments is easier to enter. But I understand the fees burden the shop, so I think cash is fine for small amounts."
+          },
+          "move": "position",
+          "register": "teinei",
+          "units": [
+            "お客の",
+            "立場では",
+            "アプリが",
+            "使える",
+            "店の",
+            "方が",
+            "入りやすいです。",
+            "ただ",
+            "手数料が",
+            "お店の",
+            "負担に",
+            "なるのも",
+            "分かるので、",
+            "少額は",
+            "現金でも",
+            "いいと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "おきゃくの",
+            "たちばでは",
+            "アプリが",
+            "つかえる",
+            "みせの",
+            "ほうが",
+            "はいりやすいです。",
+            "ただ",
+            "てすうりょうが",
+            "おみせの",
+            "ふたんに",
+            "なるのも",
+            "わかるので、",
+            "しょうがくは",
+            "げんきんでも",
+            "いいと",
+            "おもいます。"
+          ],
+          "readingVariant": "おきゃくのたちばではアプリがつかえるみせのほうがはいりやすいです。ただてすうりょうがおみせのふたんになるのもわかるので、しょうがくはげんきんでもいいとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "手数料は三パーセントです。それでも導入する価値がありますか。",
+          "base": {
+            "de": "Die Gebühr beträgt drei Prozent. Lohnt sich die Einführung trotzdem?",
+            "en": "The fee is three percent. Is introducing it still worthwhile?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "てすうりょうはさんパーセントです。それでもどうにゅうするかちがありますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "確かに小さくありません。ただ、現金しか使えないことで逃している客がいるかは、三か月試して売上と手数料を比べないと分かりません。",
+          "base": {
+            "de": "Das ist tatsächlich nicht wenig. Ob Ihnen durch reine Barzahlung Kundschaft entgeht, lässt sich aber erst nach einem dreimonatigen Versuch und einem Vergleich von Umsatz und Gebühren sagen.",
+            "en": "That is certainly not small. But you cannot know whether cash-only payment loses customers without trying it for three months and comparing sales with fees."
+          },
+          "move": "rebut",
+          "register": "teinei",
+          "units": [
+            "確かに",
+            "小さくありません。",
+            "ただ、",
+            "現金しか",
+            "使えないことで",
+            "逃している",
+            "客が",
+            "いるかは、",
+            "三か月",
+            "試して",
+            "売上と",
+            "手数料を",
+            "比べないと",
+            "分かりません。"
+          ],
+          "readingUnits": [
+            "たしかに",
+            "ちいさくありません。",
+            "ただ、",
+            "げんきんしか",
+            "つかえないことで",
+            "のがしている",
+            "きゃくが",
+            "いるかは、",
+            "さんかげつ",
+            "ためして",
+            "うりあげと",
+            "てすうりょうを",
+            "くらべないと",
+            "わかりません。"
+          ],
+          "readingVariant": "たしかにちいさくありません。ただ、げんきんしかつかえないことでのがしているきゃくがいるかは、さんかげつためしてうりあげとてすうりょうをくらべないとわかりません。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "常連さんは年配の方が多いんです。その人たちに合わせるべきでしょうか。",
+          "base": {
+            "de": "Viele unserer Stammkunden sind älter. Sollten wir uns nach ihnen richten?",
+            "en": "Many of our regular customers are older. Should we adapt to them?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "じょうれんさんはねんぱいのかたがおおいんです。そのひとたちにあわせるべきでしょうか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "常連さん向けには現金のレジを残して、アプリは新しいお客さん向けに加える形なら、どちらも困らないと思います。",
+          "base": {
+            "de": "Wenn die Barkasse für die Stammkundschaft bleibt und die App für neue Kunden hinzukommt, kommt meiner Meinung nach niemand in Schwierigkeiten.",
+            "en": "If you keep the cash register for regulars and add the app for new customers, I think neither group will have trouble."
+          },
+          "move": "propose",
+          "register": "teinei",
+          "units": [
+            "常連さん向けには",
+            "現金の",
+            "レジを",
+            "残して、",
+            "アプリは",
+            "新しい",
+            "お客さん向けに",
+            "加える",
+            "形なら、",
+            "どちらも",
+            "困らないと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "じょうれんさんむけには",
+            "げんきんの",
+            "レジを",
+            "のこして、",
+            "アプリは",
+            "あたらしい",
+            "おきゃくさんむけに",
+            "くわえる",
+            "かたちなら、",
+            "どちらも",
+            "こまらないと",
+            "おもいます。"
+          ],
+          "readingVariant": "じょうれんさんむけにはげんきんのレジをのこして、アプリはあたらしいおきゃくさんむけにくわえるかたちなら、どちらもこまらないとおもいます。"
+        }
+      ],
+      "build": {
+        "framePrefix": "お客の立場では",
+        "chunks": [
+          "アプリが",
+          "使える",
+          "店の",
+          "方が",
+          "入りやすいです。"
+        ],
+        "chunkReadings": [
+          "アプリが",
+          "つかえる",
+          "みせの",
+          "ほうが",
+          "はいりやすいです。"
+        ],
+        "distractors": [
+          "高いです。",
+          "使えても"
+        ],
+        "frameSuffix": "ただ手数料がお店の負担になるのも分かるので、少額は現金でもいいと思います。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "確かに小さくありません。"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "現金しか"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "逃している客がいるかは、三か月試して売上と手数料を比べないと分かりません。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ただ、",
+            "acceptedAnswers": [
+              "ただ、"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "ただ、",
+            "choices": [
+              "ただ、",
+              "つまり、",
+              "そのため、",
+              "むしろ、"
+            ]
+          },
+          {
+            "answer": "使えないことで",
+            "acceptedAnswers": [
+              "使えないことで",
+              "つかえないことで"
+            ],
+            "kind": "form",
+            "kanaAnswer": "つかえないことで",
+            "cue": {
+              "de": "nicht nutzen können + ことで (Ursache)",
+              "en": "cannot use + ことで (cause)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "常連さん向けには現金のレジを残して、アプリは新しいお客さん向けに加える"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "どちらも困らないと思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "形なら、",
+            "acceptedAnswers": [
+              "形なら、",
+              "かたちなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "かたちなら、",
+            "choices": [
+              "形なら、",
+              "形まで、",
+              "形から、",
+              "形のように、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "お客の立場ではアプリが使える店の方が入りやすいです。ただ",
+        "answer": "手数料が",
+        "acceptedAnswers": [
+          "手数料が",
+          "てすうりょうが"
+        ],
+        "after": "お店の負担になるのも分かるので、少額は現金でもいいと思います。",
+        "fallbackChoices": [
+          "手数料が",
+          "光熱費が",
+          "人件費が",
+          "材料費が"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Mit einem Versuch antworten",
+          "en": "Answering with a trial"
+        },
+        "rule": {
+          "de": "Bestätige die Kosten und erkläre, welche Beobachtung für eine Entscheidung noch fehlt.",
+          "en": "Acknowledge the cost and explain what evidence is still missing for a decision."
+        },
+        "examples": [
+          {
+            "targetText": "確かに小さくありません。ただ、現金しか使えないことで逃している客がいるかは、三か月試して売上と手数料を比べないと分かりません。",
+            "base": {
+              "de": "Das ist tatsächlich nicht wenig. Ob Ihnen durch reine Barzahlung Kundschaft entgeht, lässt sich aber erst nach einem dreimonatigen Versuch und einem Vergleich von Umsatz und Gebühren sagen.",
+              "en": "That is certainly not small. But you cannot know whether cash-only payment loses customers without trying it for three months and comparing sales with fees."
+            },
+            "highlights": [
+              "ただ、"
+            ]
+          },
+          {
+            "targetText": "現金しか使えないことで客が減るかは、試さないと分かりません。",
+            "base": {
+              "de": "Ob reine Barzahlung Kundschaft kostet, lässt sich ohne Versuch nicht sagen.",
+              "en": "We cannot know whether cash-only payment loses customers without trying it."
+            },
+            "highlights": [
+              "試さないと"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "負担",
+          "kind": "noun",
+          "base": {
+            "de": "Belastung",
+            "en": "burden"
+          },
+          "reading": "ふたん",
+          "acceptedAnswers": [
+            "負担",
+            "ふたん"
+          ]
+        },
+        {
+          "targetText": "決済",
+          "kind": "noun",
+          "base": {
+            "de": "Zahlungsabwicklung",
+            "en": "payment"
+          },
+          "reading": "けっさい",
+          "acceptedAnswers": [
+            "決済",
+            "けっさい"
+          ]
+        },
+        {
+          "targetText": "少額",
+          "kind": "noun",
+          "base": {
+            "de": "kleiner Betrag",
+            "en": "small amount"
+          },
+          "reading": "しょうがく",
+          "acceptedAnswers": [
+            "少額",
+            "しょうがく"
+          ]
+        },
+        {
+          "targetText": "売上",
+          "kind": "noun",
+          "base": {
+            "de": "Umsatz",
+            "en": "sales"
+          },
+          "reading": "うりあげ",
+          "acceptedAnswers": [
+            "売上",
+            "うりあげ"
+          ]
+        },
+        {
+          "targetText": "常連",
+          "kind": "noun",
+          "base": {
+            "de": "Stammkundschaft",
+            "en": "regular customers"
+          },
+          "reading": "じょうれん",
+          "acceptedAnswers": [
+            "常連",
+            "じょうれん"
+          ]
+        },
+        {
+          "targetText": "現金",
+          "kind": "noun",
+          "base": {
+            "de": "Bargeld",
+            "en": "cash"
+          },
+          "reading": "げんきん",
+          "acceptedAnswers": [
+            "現金",
+            "げんきん"
+          ]
+        },
+        {
+          "targetText": "使えないことで",
+          "kind": "frame",
+          "base": {
+            "de": "dadurch, dass man es nicht nutzen kann",
+            "en": "because it cannot be used"
+          },
+          "reading": "つかえないことで",
+          "acceptedAnswers": [
+            "使えないことで",
+            "つかえないことで"
+          ]
+        },
+        {
+          "targetText": "比べないと",
+          "kind": "frame",
+          "base": {
+            "de": "ohne zu vergleichen",
+            "en": "unless compared"
+          },
+          "reading": "くらべないと",
+          "acceptedAnswers": [
+            "比べないと",
+            "くらべないと"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "負担に",
+              "kana": "ふたんに"
+            },
+            {
+              "canonical": "お客の",
+              "kana": "おきゃくの"
+            },
+            {
+              "canonical": "立場では",
+              "kana": "たちばでは"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            },
+            {
+              "canonical": "現金しか",
+              "kana": "げんきんしか"
+            },
+            {
+              "canonical": "使えないことで",
+              "kana": "つかえないことで"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "常連さん向けには",
+              "kana": "じょうれんさんむけには"
+            },
+            {
+              "canonical": "現金の",
+              "kana": "げんきんの"
+            },
+            {
+              "canonical": "レジを",
+              "kana": "レジを"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "負担",
+        "familyKey": "futan",
+        "surface": "負担",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "ふたん",
+        "example": {
+          "targetText": "負担が増えるなら短期間だけ試します。",
+          "base": {
+            "de": "Wenn die Belastung steigt, testen wir es nur kurz.",
+            "en": "If the burden increases, we will try it only for a short period."
+          },
+          "readingVariant": "ふたんがふえるならたんきかんだけためします。"
+        },
+        "base": {
+          "de": "Belastung",
+          "en": "burden"
+        },
+        "surfaceChunk": {
+          "chunk": "負担に",
+          "tail": "に",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "負担が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "kyoushitsu-ka-apuri",
+      "title": {
+        "de": "App oder Sprachkurs?",
+        "en": "App or language class?"
+      },
+      "situation": {
+        "de": "Eine befreundete Person möchte Koreanisch lernen und vergleicht einen Kurs mit einer Vokabel-App.",
+        "en": "A friend wants to learn Korean and compares a class with a vocabulary app."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person möchte Koreanisch lernen und vergleicht einen Kurs mit einer Vokabel-App. Die andere Person sagt: „韓国語を始めたいんですが、教室と単語アプリのどちらが身につくと思いますか。“",
+        "en": "A friend wants to learn Korean and compares a class with a vocabulary app. The other person says: “韓国語を始めたいんですが、教室と単語アプリのどちらが身につくと思いますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "韓国語を始めたいんですが、教室と単語アプリのどちらが身につくと思いますか。",
+          "base": {
+            "de": "Ich möchte Koreanisch lernen. Was bleibt besser hängen: Unterricht oder eine Vokabel-App?",
+            "en": "I want to start Korean. Which helps it stick better, a class or a vocabulary app?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "かんこくごをはじめたいんですが、きょうしつとたんごアプリのどちらがみにつくとおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "単語を覚えるだけならアプリの方が効率はいいとはいえ、そのアプリには会話の練習がないので、話す力を付けたいなら週一回の教室をすすめます。",
+          "base": {
+            "de": "Für reines Vokabellernen ist die App zwar effizienter, doch diese App enthält keine Gesprächsübungen; wer sprechen lernen will, dem empfehle ich einen wöchentlichen Kurs.",
+            "en": "Although the app is more efficient for memorising vocabulary alone, that app has no conversation practice, so I recommend a weekly class if you want to develop speaking skills."
+          },
+          "move": "compare",
+          "register": "teinei",
+          "units": [
+            "単語を",
+            "覚えるだけなら",
+            "アプリの",
+            "方が",
+            "効率は",
+            "いいとはいえ、",
+            "そのアプリには",
+            "会話の",
+            "練習が",
+            "ないので、",
+            "話す",
+            "力を",
+            "付けたいなら",
+            "週一回の",
+            "教室を",
+            "すすめます。"
+          ],
+          "readingUnits": [
+            "たんごを",
+            "おぼえるだけなら",
+            "アプリの",
+            "ほうが",
+            "こうりつは",
+            "いいとはいえ、",
+            "そのアプリには",
+            "かいわの",
+            "れんしゅうが",
+            "ないので、",
+            "はなす",
+            "ちからを",
+            "つけたいなら",
+            "しゅういっかいの",
+            "きょうしつを",
+            "すすめます。"
+          ],
+          "readingVariant": "たんごをおぼえるだけならアプリのほうがこうりつはいいとはいえ、そのアプリにはかいわのれんしゅうがないので、はなすちからをつけたいならしゅういっかいのきょうしつをすすめます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "教室は月一万円ですよ。アプリなら無料なのに、それでも教室ですか。",
+          "base": {
+            "de": "Der Kurs kostet aber zehntausend Yen im Monat. Empfehlen Sie ihn trotzdem, obwohl die App kostenlos ist?",
+            "en": "The class costs ten thousand yen a month. Would you still recommend it when the app is free?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "きょうしつはつきいちまんえんですよ。アプリならむりょうなのに、それでもきょうしつですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "無料なのは大きいですね。ただ、このアプリでは発音の間違いを直してもらえないまま続けるので、後で直すのに時間がかかります。",
+          "base": {
+            "de": "Kostenlos ist ein großer Vorteil. Mit dieser App übt man aber weiter, ohne Aussprachefehler korrigiert zu bekommen; später braucht deren Korrektur Zeit.",
+            "en": "Being free is a major advantage. But with this app, you keep going without having pronunciation mistakes corrected, so correcting them later takes time."
+          },
+          "move": "concede",
+          "register": "teinei",
+          "units": [
+            "無料なのは",
+            "大きいですね。",
+            "ただ、",
+            "このアプリでは",
+            "発音の",
+            "間違いを",
+            "直してもらえない",
+            "まま",
+            "続けるので、",
+            "後で",
+            "直すのに",
+            "時間が",
+            "かかります。"
+          ],
+          "readingUnits": [
+            "むりょうなのは",
+            "おおきいですね。",
+            "ただ、",
+            "このアプリでは",
+            "はつおんの",
+            "まちがいを",
+            "なおしてもらえない",
+            "まま",
+            "つづけるので、",
+            "あとで",
+            "なおすのに",
+            "じかんが",
+            "かかります。"
+          ],
+          "readingVariant": "むりょうなのはおおきいですね。ただ、このアプリでははつおんのまちがいをなおしてもらえないままつづけるので、あとでなおすのにじかんがかかります。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "半年後に旅行で使えれば十分だとしたら、どうですか。",
+          "base": {
+            "de": "Und wenn es reicht, die Sprache in einem halben Jahr auf Reisen zu nutzen?",
+            "en": "What if I only need to use it on a trip in six months?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "はんとしごにりょこうでつかえればじゅうぶんだとしたら、どうですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "旅行会話が目的なら、まずアプリで三か月やって、出発前の二か月だけ教室に通うのが無駄が少ないと思います。",
+          "base": {
+            "de": "Für Reisegespräche wäre es wohl am wenigsten verschwenderisch, zunächst drei Monate mit der App zu lernen und nur in den letzten zwei Monaten vor der Abreise einen Kurs zu besuchen.",
+            "en": "If travel conversation is the goal, I think it wastes least to use the app for three months first and attend class only during the two months before departure."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "旅行会話が",
+            "目的なら、",
+            "まず",
+            "アプリで",
+            "三か月",
+            "やって、",
+            "出発前の",
+            "二か月だけ",
+            "教室に",
+            "通うのが",
+            "無駄が",
+            "少ないと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "りょこうかいわが",
+            "もくてきなら、",
+            "まず",
+            "アプリで",
+            "さんかげつ",
+            "やって、",
+            "しゅっぱつまえの",
+            "にかげつだけ",
+            "きょうしつに",
+            "かようのが",
+            "むだが",
+            "すくないと",
+            "おもいます。"
+          ],
+          "readingVariant": "りょこうかいわがもくてきなら、まずアプリでさんかげつやって、しゅっぱつまえのにかげつだけきょうしつにかようのがむだがすくないとおもいます。"
+        }
+      ],
+      "build": {
+        "framePrefix": "単語を",
+        "chunks": [
+          "覚えるだけなら",
+          "アプリの",
+          "方が効率は",
+          "いいとはいえ、",
+          "そのアプリには"
+        ],
+        "chunkReadings": [
+          "おぼえるだけなら",
+          "アプリの",
+          "ほうがこうりつは",
+          "いいとはいえ、",
+          "そのアプリには"
+        ],
+        "distractors": [
+          "教室の",
+          "悪いとはいえ、"
+        ],
+        "frameSuffix": "会話の練習がないので、話す力を付けたいなら週一回の教室をすすめます。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "大きいですね。ただ、このアプリでは発音の間違いを"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "続けるので、後で直すのに時間がかかります。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "無料なのは",
+            "acceptedAnswers": [
+              "無料なのは",
+              "むりょうなのは"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "むりょうなのは",
+            "choices": [
+              "無料なのは",
+              "無料なので",
+              "無料なのに",
+              "無料まで"
+            ]
+          },
+          {
+            "answer": "直してもらえないまま",
+            "acceptedAnswers": [
+              "直してもらえないまま",
+              "なおしてもらえないまま"
+            ],
+            "kind": "form",
+            "kanaAnswer": "なおしてもらえないまま",
+            "cue": {
+              "de": "nicht korrigiert bekommen + まま (unveränderter Zustand)",
+              "en": "not have corrected + まま (unchanged state)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "旅行会話が"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "まずアプリで三か月やって、出発前の二か月だけ教室に通うのが無駄が少ないと思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "目的なら、",
+            "acceptedAnswers": [
+              "目的なら、",
+              "もくてきなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "もくてきなら、",
+            "choices": [
+              "目的なら、",
+              "目的まで、",
+              "目的から、",
+              "目的のように、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "単語を覚えるだけならアプリの方が効率はいいとはいえ、そのアプリには",
+        "answer": "会話の",
+        "acceptedAnswers": [
+          "会話の",
+          "かいわの"
+        ],
+        "after": "練習がないので、話す力を付けたいなら週一回の教室をすすめます。",
+        "fallbackChoices": [
+          "会話の",
+          "計算の",
+          "料理の",
+          "水泳の"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Effizienz gegen Sprechpraxis abwägen",
+          "en": "Weighing efficiency against speaking practice"
+        },
+        "rule": {
+          "de": "Mit とはいえ erkennst du einen Vorteil an, bevor du erklärst, für welches Ziel er nicht ausreicht.",
+          "en": "Use とはいえ to acknowledge a benefit before explaining the goal for which it is insufficient."
+        },
+        "examples": [
+          {
+            "targetText": "単語を覚えるだけならアプリの方が効率はいいとはいえ、そのアプリには会話の練習がないので、話す力を付けたいなら週一回の教室をすすめます。",
+            "base": {
+              "de": "Für reines Vokabellernen ist die App zwar effizienter, doch diese App enthält keine Gesprächsübungen; wer sprechen lernen will, dem empfehle ich einen wöchentlichen Kurs.",
+              "en": "Although the app is more efficient for memorising vocabulary alone, that app has no conversation practice, so I recommend a weekly class if you want to develop speaking skills."
+            },
+            "highlights": [
+              "いいとはいえ"
+            ]
+          },
+          {
+            "targetText": "無料とはいえ、話す練習がないなら目的には合いません。",
+            "base": {
+              "de": "Kostenlos hin oder her: Ohne Sprechübung passt es nicht zum Ziel.",
+              "en": "Although it is free, it does not suit the goal if it lacks speaking practice."
+            },
+            "highlights": [
+              "無料とはいえ"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "効率",
+          "kind": "noun",
+          "base": {
+            "de": "Effizienz",
+            "en": "efficiency"
+          },
+          "reading": "こうりつ",
+          "acceptedAnswers": [
+            "効率",
+            "こうりつ"
+          ]
+        },
+        {
+          "targetText": "単語",
+          "kind": "noun",
+          "base": {
+            "de": "Vokabel",
+            "en": "vocabulary word"
+          },
+          "reading": "たんご",
+          "acceptedAnswers": [
+            "単語",
+            "たんご"
+          ]
+        },
+        {
+          "targetText": "発音",
+          "kind": "noun",
+          "base": {
+            "de": "Aussprache",
+            "en": "pronunciation"
+          },
+          "reading": "はつおん",
+          "acceptedAnswers": [
+            "発音",
+            "はつおん"
+          ]
+        },
+        {
+          "targetText": "無料",
+          "kind": "noun",
+          "base": {
+            "de": "Kostenfreiheit",
+            "en": "being free of charge"
+          },
+          "reading": "むりょう",
+          "acceptedAnswers": [
+            "無料",
+            "むりょう"
+          ]
+        },
+        {
+          "targetText": "目的",
+          "kind": "noun",
+          "base": {
+            "de": "Ziel",
+            "en": "goal"
+          },
+          "reading": "もくてき",
+          "acceptedAnswers": [
+            "目的",
+            "もくてき"
+          ]
+        },
+        {
+          "targetText": "無駄",
+          "kind": "noun",
+          "base": {
+            "de": "Verschwendung",
+            "en": "waste"
+          },
+          "reading": "むだ",
+          "acceptedAnswers": [
+            "無駄",
+            "むだ"
+          ]
+        },
+        {
+          "targetText": "いいとはいえ",
+          "kind": "frame",
+          "base": {
+            "de": "obwohl es gut ist",
+            "en": "although it is good"
+          },
+          "reading": "いいとはいえ",
+          "acceptedAnswers": [
+            "いいとはいえ"
+          ]
+        },
+        {
+          "targetText": "直してもらえないまま",
+          "kind": "frame",
+          "base": {
+            "de": "ohne es korrigiert zu bekommen",
+            "en": "without having it corrected"
+          },
+          "reading": "なおしてもらえないまま",
+          "acceptedAnswers": [
+            "直してもらえないまま",
+            "なおしてもらえないまま"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "効率は",
+              "kana": "こうりつは"
+            },
+            {
+              "canonical": "単語を",
+              "kana": "たんごを"
+            },
+            {
+              "canonical": "覚えるだけなら",
+              "kana": "おぼえるだけなら"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "無料なのは",
+              "kana": "むりょうなのは"
+            },
+            {
+              "canonical": "このアプリでは",
+              "kana": "このアプリでは"
+            },
+            {
+              "canonical": "発音の",
+              "kana": "はつおんの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "旅行会話が",
+              "kana": "りょこうかいわが"
+            },
+            {
+              "canonical": "アプリで",
+              "kana": "アプリで"
+            },
+            {
+              "canonical": "三か月",
+              "kana": "さんかげつ"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "効率",
+        "familyKey": "kouritsu",
+        "surface": "効率",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "こうりつ",
+        "example": {
+          "targetText": "効率が良い方法でも会話の練習は必要です。",
+          "base": {
+            "de": "Auch bei einer effizienten Methode ist Gesprächsübung nötig.",
+            "en": "Conversation practice is necessary even with an efficient method."
+          },
+          "readingVariant": "こうりつがよいほうほうでもかいわのれんしゅうはひつようです。"
+        },
+        "base": {
+          "de": "Effizienz",
+          "en": "efficiency"
+        },
+        "surfaceChunk": {
+          "chunk": "効率は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "効率が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "futatsu-no-naitei",
+      "title": {
+        "de": "Zwei Stellenangebote",
+        "en": "Two job offers"
+      },
+      "situation": {
+        "de": "Im Mentoringgespräch vergleichst du die fiktiven Firmen Yamato und Kitayama nach Gehalt und Arbeitszeit.",
+        "en": "In a mentoring conversation, you compare the fictional firms Yamato and Kitayama by pay and working hours."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mentoringperson",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Mentoringgespräch vergleichst du die fiktiven Firmen Yamato und Kitayama nach Gehalt und Arbeitszeit. Die andere Person sagt: „二つの内定、給料の高い大和と残業の少ない北山で迷っていると聞きました。今はどちらに傾いていますか。“",
+        "en": "In a mentoring conversation, you compare the fictional firms Yamato and Kitayama by pay and working hours. The other person says: “二つの内定、給料の高い大和と残業の少ない北山で迷っていると聞きました。今はどちらに傾いていますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "二つの内定、給料の高い大和と残業の少ない北山で迷っていると聞きました。今はどちらに傾いていますか。",
+          "base": {
+            "de": "Sie schwanken wohl zwischen Yamato mit höherem Gehalt und Kitayama mit weniger Überstunden. Wozu tendieren Sie gerade?",
+            "en": "I hear you are torn between the offers from higher-paying Yamato and Kitayama with less overtime. Which way are you leaning?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ふたつのないてい、きゅうりょうのたかいやまととざんぎょうのすくないきたやまでまよっているとききました。いまはどちらにかたむいていますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "給料だけで判断するなら大和ですが、家族との時間を考えると北山の方が長く続けられると思います。今は北山に傾いております。",
+          "base": {
+            "de": "Nach dem Gehalt wäre es Yamato, aber mit Blick auf die Familienzeit könnte ich wohl länger bei Kitayama bleiben. Dorthin tendiere ich im Moment.",
+            "en": "Judging by pay alone, it would be Yamato, but considering family time, I think I could stay at Kitayama longer. That is where I am leaning now."
+          },
+          "move": "position",
+          "register": "keigo",
+          "units": [
+            "給料だけで",
+            "判断するなら",
+            "大和ですが、",
+            "家族との",
+            "時間を",
+            "考えると",
+            "北山の",
+            "方が",
+            "長く",
+            "続けられると",
+            "思います。",
+            "今は",
+            "北山に",
+            "傾いております。"
+          ],
+          "readingUnits": [
+            "きゅうりょうだけで",
+            "はんだんするなら",
+            "やまとですが、",
+            "かぞくとの",
+            "じかんを",
+            "かんがえると",
+            "きたやまの",
+            "ほうが",
+            "ながく",
+            "つづけられると",
+            "おもいます。",
+            "いまは",
+            "きたやまに",
+            "かたむいております。"
+          ],
+          "readingVariant": "きゅうりょうだけではんだんするならやまとですが、かぞくとのじかんをかんがえるときたやまのほうがながくつづけられるとおもいます。いまはきたやまにかたむいております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "北山は昇進が遅いという評判があります。五年後を考えても同じですか。",
+          "base": {
+            "de": "Kitayama gilt als langsam bei Beförderungen. Entscheiden Sie auch mit Blick auf fünf Jahre so?",
+            "en": "Kitayama has a reputation for slow promotion. Would you still choose it looking five years ahead?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "きたやまはしょうしんがおそいというひょうばんがあります。ごねんごをかんがえてもおなじですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "昇進の遅さは確かに気になります。ただ、残業が多いと家族との時間が取れず続けにくいので、五年後も同じなら北山を選ぶと思います。",
+          "base": {
+            "de": "Die langsame Beförderung beschäftigt mich durchaus. Bei vielen Überstunden fehlt aber Familienzeit und das Durchhalten wird schwer; wenn es in fünf Jahren genauso wäre, würde ich wohl Kitayama wählen.",
+            "en": "Slow promotion does concern me. But heavy overtime leaves no family time and makes it hard to stay, so if things were the same in five years, I think I would choose Kitayama."
+          },
+          "move": "concede",
+          "register": "keigo",
+          "units": [
+            "昇進の",
+            "遅さは",
+            "確かに",
+            "気になります。",
+            "ただ、",
+            "残業が",
+            "多いと",
+            "家族との",
+            "時間が",
+            "取れず",
+            "続けにくいので、",
+            "五年後も",
+            "同じなら",
+            "北山を",
+            "選ぶと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "しょうしんの",
+            "おそさは",
+            "たしかに",
+            "きになります。",
+            "ただ、",
+            "ざんぎょうが",
+            "おおいと",
+            "かぞくとの",
+            "じかんが",
+            "とれず",
+            "つづけにくいので、",
+            "ごねんごも",
+            "おなじなら",
+            "きたやまを",
+            "えらぶと",
+            "おもいます。"
+          ],
+          "readingVariant": "しょうしんのおそさはたしかにきになります。ただ、ざんぎょうがおおいとかぞくとのじかんがとれずつづけにくいので、ごねんごもおなじならきたやまをえらぶとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "もし大和が残業を月二十時間までと約束したら、判断は変わりますか。",
+          "base": {
+            "de": "Würde sich Ihre Entscheidung ändern, wenn Yamato höchstens zwanzig Überstunden pro Monat verspräche?",
+            "en": "Would your decision change if Yamato promised no more than twenty overtime hours a month?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "もしやまとがざんぎょうをつきにじゅうじかんまでとやくそくしたら、はんだんはかわりますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "残業が月二十時間以内で書面に残るなら、大和を選びます。約束が口頭だけなら、やはり北山でいくことにします。",
+          "base": {
+            "de": "Wenn höchstens zwanzig Überstunden monatlich schriftlich festgehalten werden, wähle ich Yamato. Bei einer rein mündlichen Zusage bleibe ich bei Kitayama.",
+            "en": "If overtime of no more than twenty hours a month is put in writing, I will choose Yamato. If the promise is only verbal, I will still go with Kitayama."
+          },
+          "move": "conclude",
+          "register": "keigo",
+          "units": [
+            "残業が",
+            "月二十時間以内で",
+            "書面に",
+            "残るなら、",
+            "大和を",
+            "選びます。",
+            "約束が",
+            "口頭だけなら、",
+            "やはり",
+            "北山で",
+            "いくことにします。"
+          ],
+          "readingUnits": [
+            "ざんぎょうが",
+            "つきにじゅうじかんいないで",
+            "しょめんに",
+            "のこるなら、",
+            "やまとを",
+            "えらびます。",
+            "やくそくが",
+            "こうとうだけなら、",
+            "やはり",
+            "きたやまで",
+            "いくことにします。"
+          ],
+          "readingVariant": "ざんぎょうがつきにじゅうじかんいないでしょめんにのこるなら、やまとをえらびます。やくそくがこうとうだけなら、やはりきたやまでいくことにします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "給料だけで判断するなら大和ですが、家族との時間を考えると北山の",
+        "chunks": [
+          "方が",
+          "長く",
+          "続けられると",
+          "思います。",
+          "今は北山に",
+          "傾いております。"
+        ],
+        "chunkReadings": [
+          "ほうが",
+          "ながく",
+          "つづけられると",
+          "おもいます。",
+          "いまはきたやまに",
+          "かたむいております。"
+        ],
+        "distractors": [
+          "短く",
+          "今は大和に"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "昇進の遅さは"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "気になります。ただ、残業が多いと家族との時間が取れず続けにくいので、五年後も"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "北山を選ぶと思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "確かに",
+            "acceptedAnswers": [
+              "確かに",
+              "たしかに"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "たしかに",
+            "choices": [
+              "確かに",
+              "つまり",
+              "そのため",
+              "むしろ"
+            ]
+          },
+          {
+            "answer": "同じなら",
+            "acceptedAnswers": [
+              "同じなら",
+              "おなじなら"
+            ],
+            "kind": "form",
+            "kanaAnswer": "おなじなら",
+            "cue": {
+              "de": "gleich (同じ) + なら (Bedingung)",
+              "en": "the same (同じ) + なら (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "残業が月二十時間以内で書面に"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "大和を選びます。約束が口頭だけなら、やはり北山でいくことにします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "残るなら、",
+            "acceptedAnswers": [
+              "残るなら、",
+              "のこるなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "のこるなら、",
+            "choices": [
+              "残るなら、",
+              "残っても、",
+              "残るまで、",
+              "残ったので、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "",
+        "answer": "給料だけで",
+        "acceptedAnswers": [
+          "給料だけで",
+          "きゅうりょうだけで"
+        ],
+        "after": "判断するなら大和ですが、家族との時間を考えると北山の方が長く続けられると思います。今は北山に傾いております。",
+        "fallbackChoices": [
+          "給料だけで",
+          "通勤だけで",
+          "評判だけで",
+          "規模だけで"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Langfristig entscheiden",
+          "en": "Deciding for the long term"
+        },
+        "rule": {
+          "de": "Erkenne die Sorge um die Karriere an und prüfe dann, ob die Arbeitsbedingungen dauerhaft tragbar sind.",
+          "en": "Acknowledge the career concern, then consider whether the working conditions are sustainable."
+        },
+        "examples": [
+          {
+            "targetText": "昇進の遅さは確かに気になります。ただ、残業が多いと家族との時間が取れず続けにくいので、五年後も同じなら北山を選ぶと思います。",
+            "base": {
+              "de": "Die langsame Beförderung beschäftigt mich durchaus. Bei vielen Überstunden fehlt aber Familienzeit und das Durchhalten wird schwer; wenn es in fünf Jahren genauso wäre, würde ich wohl Kitayama wählen.",
+              "en": "Slow promotion does concern me. But heavy overtime leaves no family time and makes it hard to stay, so if things were the same in five years, I think I would choose Kitayama."
+            },
+            "highlights": [
+              "確かに"
+            ]
+          },
+          {
+            "targetText": "給料の差は確かに大きいです。ただ、家族との時間も大事です。",
+            "base": {
+              "de": "Der Gehaltsunterschied ist tatsächlich groß. Aber Zeit mit der Familie ist auch wichtig.",
+              "en": "The pay difference is indeed large. But time with family matters too."
+            },
+            "highlights": [
+              "確かに"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "判断",
+          "kind": "noun",
+          "base": {
+            "de": "Urteil, Entscheidung",
+            "en": "judgement"
+          },
+          "reading": "はんだん",
+          "acceptedAnswers": [
+            "判断",
+            "はんだん"
+          ]
+        },
+        {
+          "targetText": "内定",
+          "kind": "noun",
+          "base": {
+            "de": "Stellenzusage",
+            "en": "job offer"
+          },
+          "reading": "ないてい",
+          "acceptedAnswers": [
+            "内定",
+            "ないてい"
+          ]
+        },
+        {
+          "targetText": "残業",
+          "kind": "noun",
+          "base": {
+            "de": "Überstunden",
+            "en": "overtime"
+          },
+          "reading": "ざんぎょう",
+          "acceptedAnswers": [
+            "残業",
+            "ざんぎょう"
+          ]
+        },
+        {
+          "targetText": "昇進",
+          "kind": "noun",
+          "base": {
+            "de": "Beförderung",
+            "en": "promotion"
+          },
+          "reading": "しょうしん",
+          "acceptedAnswers": [
+            "昇進",
+            "しょうしん"
+          ]
+        },
+        {
+          "targetText": "書面",
+          "kind": "noun",
+          "base": {
+            "de": "schriftliches Dokument",
+            "en": "writing"
+          },
+          "reading": "しょめん",
+          "acceptedAnswers": [
+            "書面",
+            "しょめん"
+          ]
+        },
+        {
+          "targetText": "口頭",
+          "kind": "noun",
+          "base": {
+            "de": "mündliche Form",
+            "en": "spoken form"
+          },
+          "reading": "こうとう",
+          "acceptedAnswers": [
+            "口頭",
+            "こうとう"
+          ]
+        },
+        {
+          "targetText": "判断するなら",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man danach entscheidet",
+            "en": "if judging by it"
+          },
+          "reading": "はんだんするなら",
+          "acceptedAnswers": [
+            "判断するなら",
+            "はんだんするなら"
+          ]
+        },
+        {
+          "targetText": "同じなら",
+          "kind": "frame",
+          "base": {
+            "de": "wenn es genauso ist",
+            "en": "if it is the same"
+          },
+          "reading": "おなじなら",
+          "acceptedAnswers": [
+            "同じなら",
+            "おなじなら"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "判断するなら",
+              "kana": "はんだんするなら"
+            },
+            {
+              "canonical": "給料だけで",
+              "kana": "きゅうりょうだけで"
+            },
+            {
+              "canonical": "家族との",
+              "kana": "かぞくとの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "昇進の",
+              "kana": "しょうしんの"
+            },
+            {
+              "canonical": "遅さは",
+              "kana": "おそさは"
+            },
+            {
+              "canonical": "確かに",
+              "kana": "たしかに"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "残業が",
+              "kana": "ざんぎょうが"
+            },
+            {
+              "canonical": "月二十時間以内で",
+              "kana": "つきにじゅうじかんいないで"
+            },
+            {
+              "canonical": "書面に",
+              "kana": "しょめんに"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "判断",
+        "familyKey": "handan",
+        "surface": "判断",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "はんだん",
+        "example": {
+          "targetText": "判断が変わる条件を先に決めておきます。",
+          "base": {
+            "de": "Ich lege vorher fest, unter welchen Bedingungen sich meine Entscheidung ändert.",
+            "en": "I will decide in advance which conditions would change my judgement."
+          },
+          "readingVariant": "はんだんがかわるじょうけんをさきにきめておきます。"
+        },
+        "base": {
+          "de": "Urteil, Entscheidung",
+          "en": "judgement"
+        },
+        "surfaceChunk": {
+          "chunk": "判断するなら",
+          "tail": "するなら",
+          "tailKind": "suru",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "判断が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "oosaka-ni-utsuru",
+      "title": {
+        "de": "Nach Osaka ziehen?",
+        "en": "Moving to Osaka?"
+      },
+      "situation": {
+        "de": "In der Nachbarschaft wirst du gefragt, warum du für eine neue Stelle nach Osaka ziehen möchtest.",
+        "en": "A neighbour asks why you want to move to Osaka for a new job."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Nachbarschaft wirst du gefragt, warum du für eine neue Stelle nach Osaka ziehen möchtest. Die andere Person sagt: „大阪への転職を考えているんですよね。このあたりを離れるのはもったいない気もしますが。“",
+        "en": "A neighbour asks why you want to move to Osaka for a new job. The other person says: “大阪への転職を考えているんですよね。このあたりを離れるのはもったいない気もしますが。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "大阪への転職を考えているんですよね。このあたりを離れるのはもったいない気もしますが。",
+          "base": {
+            "de": "Sie denken über einen Stellenwechsel nach Osaka nach, oder? Es wäre doch irgendwie schade, diese Gegend zu verlassen.",
+            "en": "You are thinking of changing jobs and moving to Osaka, right? It seems a shame to leave this neighbourhood."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "おおさかへのてんしょくをかんがえているんですよね。このあたりをはなれるのはもったいないきもしますが。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "ここは静かで近所づきあいも良いので離れがたいです。一方で大阪の仕事は内容が今よりずっと面白いので、どこかで妥協が必要だと思っています。",
+          "base": {
+            "de": "Hier ist es ruhig und ich komme gut mit den Nachbarn aus, deshalb fällt das Weggehen schwer. Die Arbeit in Osaka ist jedoch viel interessanter; irgendwo muss ich wohl einen Kompromiss eingehen.",
+            "en": "It is quiet here and I get on well with the neighbours, so it is hard to leave. On the other hand, the work in Osaka is much more interesting, so I think some compromise is necessary."
+          },
+          "move": "compare",
+          "register": "teinei",
+          "units": [
+            "ここは",
+            "静かで",
+            "近所づきあいも",
+            "良いので",
+            "離れがたいです。",
+            "一方で",
+            "大阪の",
+            "仕事は",
+            "内容が",
+            "今より",
+            "ずっと",
+            "面白いので、",
+            "どこかで",
+            "妥協が",
+            "必要だと",
+            "思っています。"
+          ],
+          "readingUnits": [
+            "ここは",
+            "しずかで",
+            "きんじょづきあいも",
+            "よいので",
+            "はなれがたいです。",
+            "いっぽうで",
+            "おおさかの",
+            "しごとは",
+            "ないようが",
+            "いまより",
+            "ずっと",
+            "おもしろいので、",
+            "どこかで",
+            "だきょうが",
+            "ひつようだと",
+            "おもっています。"
+          ],
+          "readingVariant": "ここはしずかできんじょづきあいもよいのではなれがたいです。いっぽうでおおさかのしごとはないようがいまよりずっとおもしろいので、どこかでだきょうがひつようだとおもっています。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "向こうでは知り合いが一人もいないんでしょう。寂しくなりませんか。",
+          "base": {
+            "de": "Dort kennen Sie doch niemanden. Wird das nicht einsam?",
+            "en": "You do not know anyone there, do you? Will you not be lonely?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "むこうではしりあいがひとりもいないんでしょう。さびしくなりませんか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "最初は寂しいと思います。でも今の仕事を続けても、三年後に同じことで悩んでいる気がするので、動くなら今だと思います。",
+          "base": {
+            "de": "Am Anfang bestimmt. Aber wenn ich in der jetzigen Stelle bleibe, grüble ich wohl in drei Jahren noch über dasselbe, deshalb wäre jetzt der Moment für den Schritt.",
+            "en": "I think I will be lonely at first. But even if I stay in my current job, I feel I will still be worrying about the same thing in three years, so if I am going to move, now is the time."
+          },
+          "move": "rebut",
+          "register": "teinei",
+          "units": [
+            "最初は",
+            "寂しいと",
+            "思います。",
+            "でも",
+            "今の",
+            "仕事を",
+            "続けても、",
+            "三年後に",
+            "同じことで",
+            "悩んでいる",
+            "気がするので、",
+            "動くなら",
+            "今だと",
+            "思います。"
+          ],
+          "readingUnits": [
+            "さいしょは",
+            "さびしいと",
+            "おもいます。",
+            "でも",
+            "いまの",
+            "しごとを",
+            "つづけても、",
+            "さんねんごに",
+            "おなじことで",
+            "なやんでいる",
+            "きがするので、",
+            "うごくなら",
+            "いまだと",
+            "おもいます。"
+          ],
+          "readingVariant": "さいしょはさびしいとおもいます。でもいまのしごとをつづけても、さんねんごにおなじことでなやんでいるきがするので、うごくならいまだとおもいます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "ご家族の意見は聞きましたか。それ次第じゃないですか。",
+          "base": {
+            "de": "Haben Sie Ihre Familie gefragt? Hängt es nicht davon ab?",
+            "en": "Have you asked your family what they think? Does it not depend on that?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ごかぞくのいけんはききましたか。それしだいじゃないですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "家族は半年だけ試してみようと言ってくれました。半年後に戻りたいと言ったら戻る、という条件で大阪に行くことにします。",
+          "base": {
+            "de": "Meine Familie hat vorgeschlagen, es ein halbes Jahr zu versuchen. Ich ziehe unter der Bedingung nach Osaka, dass wir zurückkommen, wenn wir nach sechs Monaten zurückwollen.",
+            "en": "My family suggested trying it for six months. I will go to Osaka on the condition that we return if, after six months, we say we want to come back."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "家族は",
+            "半年だけ",
+            "試してみようと",
+            "言ってくれました。",
+            "半年後に",
+            "戻りたいと",
+            "言ったら",
+            "戻る、",
+            "という",
+            "条件で",
+            "大阪に",
+            "行くことにします。"
+          ],
+          "readingUnits": [
+            "かぞくは",
+            "はんとしだけ",
+            "ためしてみようと",
+            "いってくれました。",
+            "はんとしごに",
+            "もどりたいと",
+            "いったら",
+            "もどる、",
+            "という",
+            "じょうけんで",
+            "おおさかに",
+            "いくことにします。"
+          ],
+          "readingVariant": "かぞくははんとしだけためしてみようといってくれました。はんとしごにもどりたいといったらもどる、というじょうけんでおおさかにいくことにします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "ここは静かで",
+        "chunks": [
+          "近所づきあいも",
+          "良いので",
+          "離れがたいです。",
+          "一方で",
+          "大阪の"
+        ],
+        "chunkReadings": [
+          "きんじょづきあいも",
+          "よいので",
+          "はなれがたいです。",
+          "いっぽうで",
+          "おおさかの"
+        ],
+        "distractors": [
+          "悪いので",
+          "近所の"
+        ],
+        "frameSuffix": "仕事は内容が今よりずっと面白いので、どこかで妥協が必要だと思っています。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "最初は寂しいと思います。でも今の仕事を"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "三年後に同じことで悩んでいる気がするので、"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "今だと思います。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "続けても、",
+            "acceptedAnswers": [
+              "続けても、",
+              "つづけても、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "つづけても、",
+            "choices": [
+              "続けても、",
+              "続けたので、",
+              "続けずに、",
+              "続けないと、"
+            ]
+          },
+          {
+            "answer": "動くなら",
+            "acceptedAnswers": [
+              "動くなら",
+              "うごくなら"
+            ],
+            "kind": "form",
+            "kanaAnswer": "うごくなら",
+            "cue": {
+              "de": "den Schritt machen (動く) + なら (Bedingung)",
+              "en": "make the move (動く) + なら (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "家族は半年だけ試してみようと言ってくれました。半年後に戻りたいと言ったら戻る、という条件で大阪に"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "行くことにします。",
+            "acceptedAnswers": [
+              "行くことにします。",
+              "いくことにします。"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "いくことにします。",
+            "choices": [
+              "行くことにします。",
+              "行かないことにします。",
+              "行ったことにします。",
+              "行くことができます。"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "ここは静かで近所づきあいも良いので離れがたいです。一方で大阪の仕事は内容が今よりずっと面白いので、どこかで",
+        "answer": "妥協が",
+        "acceptedAnswers": [
+          "妥協が",
+          "だきょうが"
+        ],
+        "after": "必要だと思っています。",
+        "fallbackChoices": [
+          "妥協が",
+          "引退が",
+          "退学が",
+          "閉店が"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Trotz Unsicherheit handeln",
+          "en": "Acting despite uncertainty"
+        },
+        "rule": {
+          "de": "Gib die erwartete Schwierigkeit zu und begründe, warum weiteres Abwarten sie nicht löst.",
+          "en": "Admit the expected difficulty and explain why waiting longer will not solve it."
+        },
+        "examples": [
+          {
+            "targetText": "最初は寂しいと思います。でも今の仕事を続けても、三年後に同じことで悩んでいる気がするので、動くなら今だと思います。",
+            "base": {
+              "de": "Am Anfang bestimmt. Aber wenn ich in der jetzigen Stelle bleibe, grüble ich wohl in drei Jahren noch über dasselbe, deshalb wäre jetzt der Moment für den Schritt.",
+              "en": "I think I will be lonely at first. But even if I stay in my current job, I feel I will still be worrying about the same thing in three years, so if I am going to move, now is the time."
+            },
+            "highlights": [
+              "続けても、"
+            ]
+          },
+          {
+            "targetText": "今の仕事を続けても悩みが残るので、新しい仕事を選びます。",
+            "base": {
+              "de": "Auch wenn ich in der jetzigen Stelle bleibe, bleibt das Problem bestehen; deshalb wähle ich die neue.",
+              "en": "Even if I stay in the current job, the concern remains, so I will choose the new job."
+            },
+            "highlights": [
+              "続けても"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "妥協",
+          "kind": "noun",
+          "base": {
+            "de": "Kompromiss",
+            "en": "compromise"
+          },
+          "reading": "だきょう",
+          "acceptedAnswers": [
+            "妥協",
+            "だきょう"
+          ]
+        },
+        {
+          "targetText": "近所づきあい",
+          "kind": "noun",
+          "base": {
+            "de": "nachbarschaftliche Beziehungen",
+            "en": "neighbourly relations"
+          },
+          "reading": "きんじょづきあい",
+          "acceptedAnswers": [
+            "近所づきあい",
+            "きんじょづきあい"
+          ]
+        },
+        {
+          "targetText": "内容",
+          "kind": "noun",
+          "base": {
+            "de": "Inhalt",
+            "en": "content"
+          },
+          "reading": "ないよう",
+          "acceptedAnswers": [
+            "内容",
+            "ないよう"
+          ]
+        },
+        {
+          "targetText": "知り合い",
+          "kind": "noun",
+          "base": {
+            "de": "Bekannte",
+            "en": "acquaintances"
+          },
+          "reading": "しりあい",
+          "acceptedAnswers": [
+            "知り合い",
+            "しりあい"
+          ]
+        },
+        {
+          "targetText": "寂しい",
+          "kind": "adjective",
+          "base": {
+            "de": "einsam",
+            "en": "lonely"
+          },
+          "reading": "さびしい",
+          "acceptedAnswers": [
+            "寂しい",
+            "さびしい"
+          ]
+        },
+        {
+          "targetText": "転職",
+          "kind": "noun",
+          "base": {
+            "de": "Stellenwechsel",
+            "en": "changing jobs"
+          },
+          "reading": "てんしょく",
+          "acceptedAnswers": [
+            "転職",
+            "てんしょく"
+          ]
+        },
+        {
+          "targetText": "離れがたい",
+          "kind": "frame",
+          "base": {
+            "de": "schwer zu verlassen",
+            "en": "hard to leave"
+          },
+          "reading": "はなれがたい",
+          "acceptedAnswers": [
+            "離れがたい",
+            "はなれがたい"
+          ]
+        },
+        {
+          "targetText": "続けても",
+          "kind": "frame",
+          "base": {
+            "de": "auch wenn man weitermacht",
+            "en": "even if one continues"
+          },
+          "reading": "つづけても",
+          "acceptedAnswers": [
+            "続けても",
+            "つづけても"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "妥協が",
+              "kana": "だきょうが"
+            },
+            {
+              "canonical": "静かで",
+              "kana": "しずかで"
+            },
+            {
+              "canonical": "近所づきあいも",
+              "kana": "きんじょづきあいも"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "最初は",
+              "kana": "さいしょは"
+            },
+            {
+              "canonical": "寂しいと",
+              "kana": "さびしいと"
+            },
+            {
+              "canonical": "今の",
+              "kana": "いまの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "家族は",
+              "kana": "かぞくは"
+            },
+            {
+              "canonical": "半年だけ",
+              "kana": "はんとしだけ"
+            },
+            {
+              "canonical": "試してみようと",
+              "kana": "ためしてみようと"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "妥協",
+        "familyKey": "dakyou",
+        "surface": "妥協",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "だきょう",
+        "example": {
+          "targetText": "妥協する前に大事な条件を確認します。",
+          "base": {
+            "de": "Vor einem Kompromiss prüfe ich die wichtigen Bedingungen.",
+            "en": "Before compromising, I check the important conditions."
+          },
+          "readingVariant": "だきょうするまえにだいじなじょうけんをかくにんします。"
+        },
+        "base": {
+          "de": "Kompromiss",
+          "en": "compromise"
+        },
+        "surfaceChunk": {
+          "chunk": "妥協が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "妥協する",
+          "tail": "する",
+          "tailKind": "suru",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "bousai-bihin-an",
+      "title": {
+        "de": "Notvorräte verteilen?",
+        "en": "Distributing emergency supplies?"
+      },
+      "situation": {
+        "de": "Im Nachbarschaftsausschuss vergleichst du für einen örtlichen Vorschlag ein zentrales Lager mit der Verteilung von Notvorräten an Haushalte.",
+        "en": "In a neighbourhood committee, you compare a central store with household distribution of emergency supplies for a local proposal."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Ausschussvorsitz",
+            "en": "committee chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Nachbarschaftsausschuss vergleichst du für einen örtlichen Vorschlag ein zentrales Lager mit der Verteilung von Notvorräten an Haushalte. Die andere Person sagt: „町内会の防災備品について、備蓄倉庫を新設する案と各家庭に配布する案があります。ご意見をお聞かせください。“",
+        "en": "In a neighbourhood committee, you compare a central store with household distribution of emergency supplies for a local proposal. The other person says: “町内会の防災備品について、備蓄倉庫を新設する案と各家庭に配布する案があります。ご意見をお聞かせください。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "町内会の防災備品について、備蓄倉庫を新設する案と各家庭に配布する案があります。ご意見をお聞かせください。",
+          "base": {
+            "de": "Für die Notvorräte der Nachbarschaft stehen ein neues Lager und die Verteilung an Haushalte zur Wahl. Bitte sagen Sie uns Ihre Meinung.",
+            "en": "For the neighbourhood emergency supplies, we can build a storage facility or distribute them to each household. Please share your view."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ちょうないかいのぼうさいびひんについて、びちくそうこをしんせつするあんとかくかていにはいふするあんがあります。ごいけんをおきかせください。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "二つの案を費用と使いやすさで比較したところ、配布案の方が初期費用は高いものの、災害時にすぐ使える点で優れていると思われます。",
+          "base": {
+            "de": "Beim Vergleich von Kosten und Nutzbarkeit scheint die Verteilung trotz höherer Anfangskosten überlegen, weil die Vorräte im Notfall sofort verfügbar sind.",
+            "en": "Comparing the two options by cost and usability, distribution appears better because supplies can be used immediately in a disaster, although its initial cost is higher."
+          },
+          "move": "compare",
+          "register": "keigo",
+          "units": [
+            "二つの",
+            "案を",
+            "費用と",
+            "使いやすさで",
+            "比較したところ、",
+            "配布案の",
+            "方が",
+            "初期費用は",
+            "高いものの、",
+            "災害時に",
+            "すぐ",
+            "使える",
+            "点で",
+            "優れていると",
+            "思われます。"
+          ],
+          "readingUnits": [
+            "ふたつの",
+            "あんを",
+            "ひようと",
+            "つかいやすさで",
+            "ひかくしたところ、",
+            "はいふあんの",
+            "ほうが",
+            "しょきひようは",
+            "たかいものの、",
+            "さいがいじに",
+            "すぐ",
+            "つかえる",
+            "てんで",
+            "すぐれていると",
+            "おもわれます。"
+          ],
+          "readingVariant": "ふたつのあんをひようとつかいやすさでひかくしたところ、はいふあんのほうがしょきひようはたかいものの、さいがいじにすぐつかえるてんですぐれているとおもわれます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "ただ、配布した備品が各家庭で管理されず、期限切れになる恐れがありますが。",
+          "base": {
+            "de": "Es besteht allerdings die Gefahr, dass die Haushalte die Vorräte nicht pflegen und sie ablaufen.",
+            "en": "However, the distributed supplies may not be maintained in each household and may expire."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ただ、はいふしたびひんがかくかていでかんりされず、きげんぎれになるおそれがありますが。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "その懸念はもっともです。それなら年に一度、町内会で点検日を設けて交換する仕組みにすれば、管理の問題は防げると考えます。",
+          "base": {
+            "de": "Die Sorge ist berechtigt. Wenn die Nachbarschaft jährlich einen Kontrolltag mit Austausch einrichtet, lässt sich das Verwaltungsproblem meiner Meinung nach vermeiden.",
+            "en": "That concern is reasonable. If the neighbourhood sets an annual inspection day and a replacement system, I think the management problem can be prevented."
+          },
+          "move": "counteroffer",
+          "register": "keigo",
+          "units": [
+            "その懸念は",
+            "もっともです。",
+            "それなら",
+            "年に",
+            "一度、",
+            "町内会で",
+            "点検日を",
+            "設けて",
+            "交換する",
+            "仕組みにすれば、",
+            "管理の",
+            "問題は",
+            "防げると",
+            "考えます。"
+          ],
+          "readingUnits": [
+            "そのけねんは",
+            "もっともです。",
+            "それなら",
+            "ねんに",
+            "いちど、",
+            "ちょうないかいで",
+            "てんけんびを",
+            "もうけて",
+            "こうかんする",
+            "しくみにすれば、",
+            "かんりの",
+            "もんだいは",
+            "ふせげると",
+            "かんがえます。"
+          ],
+          "readingVariant": "そのけねんはもっともです。それならねんにいちど、ちょうないかいでてんけんびをもうけてこうかんするしくみにすれば、かんりのもんだいはふせげるとかんがえます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "予算は一案分しかありません。最終的にどちらを推薦されますか。",
+          "base": {
+            "de": "Das Budget reicht nur für einen Vorschlag. Welchen empfehlen Sie letztlich?",
+            "en": "The budget covers only one option. Which do you ultimately recommend?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "よさんはいちあんぶんしかありません。さいしゅうてきにどちらをすいせんされますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "予算が一案分である以上、点検制度付きの配布案を推薦いたします。倉庫案は将来の追加予算の際に検討してはどうでしょうか。",
+          "base": {
+            "de": "Da das Budget nur für einen Vorschlag reicht, empfehle ich die Verteilung mit Kontrollsystem. Wie wäre es, das Lager bei einem späteren Zusatzbudget zu prüfen?",
+            "en": "Since the budget covers only one option, I recommend distribution with an inspection system. How about considering the storage option when additional funding becomes available?"
+          },
+          "move": "conclude",
+          "register": "keigo",
+          "units": [
+            "予算が",
+            "一案分である以上、",
+            "点検制度付きの",
+            "配布案を",
+            "推薦いたします。",
+            "倉庫案は",
+            "将来の",
+            "追加予算の",
+            "際に",
+            "検討しては",
+            "どうでしょうか。"
+          ],
+          "readingUnits": [
+            "よさんが",
+            "いちあんぶんであるいじょう、",
+            "てんけんせいどつきの",
+            "はいふあんを",
+            "すいせんいたします。",
+            "そうこあんは",
+            "しょうらいの",
+            "ついかよさんの",
+            "さいに",
+            "けんとうしては",
+            "どうでしょうか。"
+          ],
+          "readingVariant": "よさんがいちあんぶんであるいじょう、てんけんせいどつきのはいふあんをすいせんいたします。そうこあんはしょうらいのついかよさんのさいにけんとうしてはどうでしょうか。"
+        }
+      ],
+      "build": {
+        "framePrefix": "二つの案を費用と使いやすさで比較したところ、配布案の",
+        "chunks": [
+          "方が",
+          "初期費用は",
+          "高いものの、",
+          "災害時にすぐ",
+          "使える",
+          "点で"
+        ],
+        "chunkReadings": [
+          "ほうが",
+          "しょきひようは",
+          "たかいものの、",
+          "さいがいじにすぐ",
+          "つかえる",
+          "てんで"
+        ],
+        "distractors": [
+          "安いものの、",
+          "災害後にだけ"
+        ],
+        "frameSuffix": "優れていると思われます。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "その懸念はもっともです。"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "年に一度、町内会で点検日を設けて交換する"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "管理の問題は防げると考えます。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "それなら",
+            "acceptedAnswers": [
+              "それなら"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "それなら",
+            "choices": [
+              "それなら",
+              "つまり",
+              "ところで",
+              "むしろ"
+            ]
+          },
+          {
+            "answer": "仕組みにすれば、",
+            "acceptedAnswers": [
+              "仕組みにすれば、",
+              "しくみにすれば、"
+            ],
+            "kind": "form",
+            "kanaAnswer": "しくみにすれば、",
+            "cue": {
+              "de": "zu einem System machen (仕組みにする) + ば (Bedingung)",
+              "en": "make into a system (仕組みにする) + ば (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "予算が"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "点検制度付きの配布案を推薦いたします。倉庫案は将来の追加予算の際に検討してはどうでしょうか。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "一案分である以上、",
+            "acceptedAnswers": [
+              "一案分である以上、",
+              "いちあんぶんであるいじょう、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "いちあんぶんであるいじょう、",
+            "choices": [
+              "一案分である以上、",
+              "一案分であるものの、",
+              "一案分であるとはいえ、",
+              "一案分であっても、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "二つの案を",
+        "answer": "費用と",
+        "acceptedAnswers": [
+          "費用と",
+          "ひようと"
+        ],
+        "after": "使いやすさで比較したところ、配布案の方が初期費用は高いものの、災害時にすぐ使える点で優れていると思われます。",
+        "fallbackChoices": [
+          "費用と",
+          "色と",
+          "重さと",
+          "音と"
+        ]
+      },
+      "pattern": {
+        "moveType": "compare",
+        "label": {
+          "de": "Einen Nachteil mittragen",
+          "en": "Accepting a disadvantage"
+        },
+        "rule": {
+          "de": "Mit ものの räumst du höhere Anfangskosten ein und begründest trotzdem den praktischen Vorteil.",
+          "en": "Use ものの to acknowledge higher initial costs while explaining the practical advantage."
+        },
+        "examples": [
+          {
+            "targetText": "二つの案を費用と使いやすさで比較したところ、配布案の方が初期費用は高いものの、災害時にすぐ使える点で優れていると思われます。",
+            "base": {
+              "de": "Beim Vergleich von Kosten und Nutzbarkeit scheint die Verteilung trotz höherer Anfangskosten überlegen, weil die Vorräte im Notfall sofort verfügbar sind.",
+              "en": "Comparing the two options by cost and usability, distribution appears better because supplies can be used immediately in a disaster, although its initial cost is higher."
+            },
+            "highlights": [
+              "高いものの"
+            ]
+          },
+          {
+            "targetText": "初期費用は高いものの、すぐ使える点で配布案が優れています。",
+            "base": {
+              "de": "Die Anfangskosten sind zwar hoch, aber die Verteilung ist durch die schnelle Verfügbarkeit überlegen.",
+              "en": "Although the initial cost is high, distribution is better in terms of immediate availability."
+            },
+            "highlights": [
+              "高いものの"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "比較",
+          "kind": "noun",
+          "base": {
+            "de": "Vergleich",
+            "en": "comparison"
+          },
+          "reading": "ひかく",
+          "acceptedAnswers": [
+            "比較",
+            "ひかく"
+          ]
+        },
+        {
+          "targetText": "備蓄倉庫",
+          "kind": "noun",
+          "base": {
+            "de": "Vorratslager",
+            "en": "stockpile storage"
+          },
+          "reading": "びちくそうこ",
+          "acceptedAnswers": [
+            "備蓄倉庫",
+            "びちくそうこ"
+          ]
+        },
+        {
+          "targetText": "配布案",
+          "kind": "noun",
+          "base": {
+            "de": "Verteilungsvorschlag",
+            "en": "distribution proposal"
+          },
+          "reading": "はいふあん",
+          "acceptedAnswers": [
+            "配布案",
+            "はいふあん"
+          ]
+        },
+        {
+          "targetText": "初期費用",
+          "kind": "noun",
+          "base": {
+            "de": "Anfangskosten",
+            "en": "initial cost"
+          },
+          "reading": "しょきひよう",
+          "acceptedAnswers": [
+            "初期費用",
+            "しょきひよう"
+          ]
+        },
+        {
+          "targetText": "点検日",
+          "kind": "noun",
+          "base": {
+            "de": "Kontrolltag",
+            "en": "inspection day"
+          },
+          "reading": "てんけんび",
+          "acceptedAnswers": [
+            "点検日",
+            "てんけんび"
+          ]
+        },
+        {
+          "targetText": "懸念",
+          "kind": "noun",
+          "base": {
+            "de": "Bedenken",
+            "en": "concern"
+          },
+          "reading": "けねん",
+          "acceptedAnswers": [
+            "懸念",
+            "けねん"
+          ]
+        },
+        {
+          "targetText": "高いものの",
+          "kind": "frame",
+          "base": {
+            "de": "obwohl es teuer ist",
+            "en": "although it is expensive"
+          },
+          "reading": "たかいものの",
+          "acceptedAnswers": [
+            "高いものの",
+            "たかいものの"
+          ]
+        },
+        {
+          "targetText": "思われます",
+          "kind": "frame",
+          "base": {
+            "de": "es scheint",
+            "en": "it appears"
+          },
+          "reading": "おもわれます",
+          "acceptedAnswers": [
+            "思われます",
+            "おもわれます"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "二つの",
+              "kana": "ふたつの"
+            },
+            {
+              "canonical": "案を",
+              "kana": "あんを"
+            },
+            {
+              "canonical": "費用と",
+              "kana": "ひようと"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "その懸念は",
+              "kana": "そのけねんは"
+            },
+            {
+              "canonical": "年に",
+              "kana": "ねんに"
+            },
+            {
+              "canonical": "町内会で",
+              "kana": "ちょうないかいで"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "予算が",
+              "kana": "よさんが"
+            },
+            {
+              "canonical": "点検制度付きの",
+              "kana": "てんけんせいどつきの"
+            },
+            {
+              "canonical": "配布案を",
+              "kana": "はいふあんを"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "比較",
+        "familyKey": "hikaku",
+        "surface": "比較",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "ひかく",
+        "example": {
+          "targetText": "比較すると、配布案は早く使える点で優れています。",
+          "base": {
+            "de": "Im Vergleich ist die Verteilung besser, weil die Vorräte schneller nutzbar sind.",
+            "en": "In comparison, distribution is better because the supplies can be used sooner."
+          },
+          "readingVariant": "ひかくすると、はいふあんははやくつかえるてんですぐれています。"
+        },
+        "base": {
+          "de": "Vergleich",
+          "en": "comparison"
+        },
+        "surfaceChunk": {
+          "chunk": "比較したところ、",
+          "tail": "したところ",
+          "tailKind": "suru",
+          "trailingPunct": "、"
+        },
+        "exampleChunk": {
+          "chunk": "比較すると、",
+          "tail": "すると",
+          "tailKind": "suru",
+          "trailingPunct": "、"
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

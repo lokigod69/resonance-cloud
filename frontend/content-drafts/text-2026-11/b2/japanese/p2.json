@@ -1,0 +1,5680 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Japanese",
+  "targetLanguageCode": "ja-JP",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 2,
+  "slug": "explaining-how-and-why",
+  "pathTitle": {
+    "de": "Wie und warum",
+    "en": "Explaining how and why"
+  },
+  "pathFunction": {
+    "de": "Ursachen oder Abläufe erklären, auf Rückfragen präzise eingehen und die Konsequenz zusammenfassen.",
+    "en": "Explain causes or processes, answer requests for precision and summarise the consequence."
+  },
+  "specRef": {
+    "pathSpec": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json",
+    "pathSpecSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481",
+    "ledger": "B2_JAPANESE_P1_P2_AUTHORING_SPEC_V2.json#/trophyLedger/rows",
+    "ledgerSha256": "65e1d470486ac92a3b93faf459e256765d41aa47a2b4e82a699fff808eaca481"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "japanese-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "seikyuu-no-sagaku",
+      "title": {
+        "de": "Die Rechnung erklären",
+        "en": "Explaining the invoice"
+      },
+      "situation": {
+        "de": "Die Buchhaltung eines Kunden fragt nach der Abweichung zwischen Angebot und Rechnung.",
+        "en": "A client’s accountant asks about the difference between a quote and an invoice."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Buchhaltung des Kunden",
+            "en": "client accountant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Buchhaltung eines Kunden fragt nach der Abweichung zwischen Angebot und Rechnung. Die andere Person sagt: „先月の請求額が見積もりより一万二千円高いのですが、内訳を説明してもらえますか。“",
+        "en": "A client’s accountant asks about the difference between a quote and an invoice. The other person says: “先月の請求額が見積もりより一万二千円高いのですが、内訳を説明してもらえますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "先月の請求額が見積もりより一万二千円高いのですが、内訳を説明してもらえますか。",
+          "base": {
+            "de": "Die Rechnung vom letzten Monat liegt zwölftausend Yen über dem Angebot. Können Sie die Posten erläutern?",
+            "en": "Last month’s invoice is twelve thousand yen above the quote. Could you explain the breakdown?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "せんげつのせいきゅうがくがみつもりよりいちまんにせんえんたかいのですが、うちわけをせつめいしてもらえますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "差額の理由は二つあります。一つは追加でご依頼いただいた翻訳三ページ分、もう一つは納期が早まったために発生した特急料金です。",
+          "base": {
+            "de": "Die Differenz hat zwei Gründe: drei zusätzlich beauftragte Übersetzungsseiten und einen Eilzuschlag wegen der vorgezogenen Frist.",
+            "en": "There are two reasons for the difference: three extra translation pages you requested, and an express fee caused by the earlier deadline."
+          },
+          "move": "explain",
+          "register": "keigo",
+          "units": [
+            "差額の",
+            "理由は",
+            "二つ",
+            "あります。",
+            "一つは",
+            "追加で",
+            "ご依頼いただいた",
+            "翻訳三ページ分、",
+            "もう一つは",
+            "納期が",
+            "早まったために",
+            "発生した",
+            "特急料金です。"
+          ],
+          "readingUnits": [
+            "さがくの",
+            "りゆうは",
+            "ふたつ",
+            "あります。",
+            "ひとつは",
+            "ついかで",
+            "ごいらいいただいた",
+            "ほんやくさんページぶん、",
+            "もうひとつは",
+            "のうきが",
+            "はやまったために",
+            "はっせいした",
+            "とっきゅうりょうきんです。"
+          ],
+          "readingVariant": "さがくのりゆうはふたつあります。ひとつはついかでごいらいいただいたほんやくさんページぶん、もうひとつはのうきがはやまったためにはっせいしたとっきゅうりょうきんです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "特急料金については事前に聞いていません。合意なしで請求できるのですか。",
+          "base": {
+            "de": "Von dem Eilzuschlag wusste ich vorher nichts. Können Sie ihn ohne Zustimmung berechnen?",
+            "en": "I was not told about the express fee beforehand. Can you charge it without agreement?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "とっきゅうりょうきんについてはじぜんにきいていません。ごういなしでせいきゅうできるのですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "ご指摘のとおり事前の説明を忘れておりました。契約書には納期短縮時の割増がありますが、金額は確かにお伝えしておりませんでした。",
+          "base": {
+            "de": "Sie haben recht, wir haben die vorherige Erklärung vergessen. Im Vertrag steht ein Zuschlag bei verkürzter Frist, aber den Betrag haben wir Ihnen tatsächlich nicht mitgeteilt.",
+            "en": "As you point out, we forgot to explain it beforehand. The contract includes a surcharge for shorter deadlines, but we indeed did not communicate the amount."
+          },
+          "move": "clarify",
+          "register": "keigo",
+          "units": [
+            "ご指摘のとおり",
+            "事前の",
+            "説明を",
+            "忘れておりました。",
+            "契約書には",
+            "納期短縮時の",
+            "割増が",
+            "ありますが、",
+            "金額は",
+            "確かに",
+            "お伝えして",
+            "おりませんでした。"
+          ],
+          "readingUnits": [
+            "ごしてきのとおり",
+            "じぜんの",
+            "せつめいを",
+            "わすれておりました。",
+            "けいやくしょには",
+            "のうきたんしゅくじの",
+            "わりましが",
+            "ありますが、",
+            "きんがくは",
+            "たしかに",
+            "おつたえして",
+            "おりませんでした。"
+          ],
+          "readingVariant": "ごしてきのとおりじぜんのせつめいをわすれておりました。けいやくしょにはのうきたんしゅくじのわりましがありますが、きんがくはたしかにおつたえしておりませんでした。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "では今後はどういう流れにすれば、こうした行き違いを防げますか。",
+          "base": {
+            "de": "Wie sollte der Ablauf künftig aussehen, damit solche Missverständnisse nicht mehr entstehen?",
+            "en": "What process should we use in future to prevent this kind of misunderstanding?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ではこんごはどういうながれにすれば、こうしたいきちがいをふせげますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "今後は追加が発生した時点で金額を書面でお送りし、ご承認をいただいてから作業に入る流れにいたします。",
+          "base": {
+            "de": "Sobald eine Zusatzleistung entsteht, senden wir künftig den Betrag schriftlich und beginnen erst nach Ihrer Zustimmung mit der Arbeit.",
+            "en": "In future, when extra work arises, we will send the amount in writing and begin work after receiving your approval."
+          },
+          "move": "propose",
+          "register": "keigo",
+          "units": [
+            "今後は",
+            "追加が",
+            "発生した",
+            "時点で",
+            "金額を",
+            "書面で",
+            "お送りし、",
+            "ご承認を",
+            "いただいてから",
+            "作業に",
+            "入る",
+            "流れに",
+            "いたします。"
+          ],
+          "readingUnits": [
+            "こんごは",
+            "ついかが",
+            "はっせいした",
+            "じてんで",
+            "きんがくを",
+            "しょめんで",
+            "おおくりし、",
+            "ごしょうにんを",
+            "いただいてから",
+            "さぎょうに",
+            "はいる",
+            "ながれに",
+            "いたします。"
+          ],
+          "readingVariant": "こんごはついかがはっせいしたじてんできんがくをしょめんでおおくりし、ごしょうにんをいただいてからさぎょうにはいるながれにいたします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "差額の理由は二つあります。一つは追加でご依頼いただいた翻訳三ページ分、",
+        "chunks": [
+          "もう一つは",
+          "納期が",
+          "早まったために",
+          "発生した",
+          "特急料金です。"
+        ],
+        "chunkReadings": [
+          "もうひとつは",
+          "のうきが",
+          "はやまったために",
+          "はっせいした",
+          "とっきゅうりょうきんです。"
+        ],
+        "distractors": [
+          "通常料金です。",
+          "遅れたために"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "事前の説明を"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "契約書には納期短縮時の割増がありますが、金額は確かにお伝えしておりませんでした。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ご指摘のとおり",
+            "acceptedAnswers": [
+              "ご指摘のとおり",
+              "ごしてきのとおり"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "ごしてきのとおり",
+            "choices": [
+              "ご指摘のとおり",
+              "ご依頼のとおり",
+              "ご予定のとおり",
+              "ご希望のとおり"
+            ]
+          },
+          {
+            "answer": "忘れておりました。",
+            "acceptedAnswers": [
+              "忘れておりました。",
+              "わすれておりました。"
+            ],
+            "kind": "form",
+            "kanaAnswer": "わすれておりました。",
+            "cue": {
+              "de": "vergessen – bescheidene Vergangenheitsform",
+              "en": "forget – humble past"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "今後は追加が発生した時点で金額を書面でお送りし、ご承認を"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "作業に入る流れにいたします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "いただいてから",
+            "acceptedAnswers": [
+              "いただいてから"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "いただいてから",
+            "choices": [
+              "いただいてから",
+              "いただくまで",
+              "いただかずに",
+              "いただいても"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "差額の理由は二つあります。一つは追加でご依頼いただいた翻訳三ページ分、もう一つは",
+        "answer": "納期が",
+        "acceptedAnswers": [
+          "納期が",
+          "のうきが"
+        ],
+        "after": "早まったために発生した特急料金です。",
+        "fallbackChoices": [
+          "納期が",
+          "入金が",
+          "開店が",
+          "休暇が"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Vertragsklausel und Mitteilung trennen",
+          "en": "Separating a clause from communication"
+        },
+        "rule": {
+          "de": "Bestätige die fehlende Mitteilung, ohne eine Vertragsklausel mit einer erfolgten Zustimmung gleichzusetzen.",
+          "en": "Acknowledge the missing communication without equating a contract clause with consent already given."
+        },
+        "examples": [
+          {
+            "targetText": "ご指摘のとおり事前の説明を忘れておりました。契約書には納期短縮時の割増がありますが、金額は確かにお伝えしておりませんでした。",
+            "base": {
+              "de": "Sie haben recht, wir haben die vorherige Erklärung vergessen. Im Vertrag steht ein Zuschlag bei verkürzter Frist, aber den Betrag haben wir Ihnen tatsächlich nicht mitgeteilt.",
+              "en": "As you point out, we forgot to explain it beforehand. The contract includes a surcharge for shorter deadlines, but we indeed did not communicate the amount."
+            },
+            "highlights": [
+              "ご指摘のとおり"
+            ]
+          },
+          {
+            "targetText": "ご指摘のとおり、契約書にはありますが金額はお伝えしておりませんでした。",
+            "base": {
+              "de": "Wie Sie richtig sagen: Es steht im Vertrag, aber den Betrag haben wir Ihnen nicht mitgeteilt.",
+              "en": "As you point out, it is in the contract, but we did not communicate the amount."
+            },
+            "highlights": [
+              "ご指摘のとおり"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "理由",
+          "kind": "noun",
+          "base": {
+            "de": "Grund",
+            "en": "reason"
+          },
+          "reading": "りゆう",
+          "acceptedAnswers": [
+            "理由",
+            "りゆう"
+          ]
+        },
+        {
+          "targetText": "差額",
+          "kind": "noun",
+          "base": {
+            "de": "Differenzbetrag",
+            "en": "difference in amount"
+          },
+          "reading": "さがく",
+          "acceptedAnswers": [
+            "差額",
+            "さがく"
+          ]
+        },
+        {
+          "targetText": "内訳",
+          "kind": "noun",
+          "base": {
+            "de": "Aufschlüsselung",
+            "en": "breakdown"
+          },
+          "reading": "うちわけ",
+          "acceptedAnswers": [
+            "内訳",
+            "うちわけ"
+          ]
+        },
+        {
+          "targetText": "納期",
+          "kind": "noun",
+          "base": {
+            "de": "Lieferfrist",
+            "en": "delivery deadline"
+          },
+          "reading": "のうき",
+          "acceptedAnswers": [
+            "納期",
+            "のうき"
+          ]
+        },
+        {
+          "targetText": "特急料金",
+          "kind": "noun",
+          "base": {
+            "de": "Eilzuschlag",
+            "en": "express fee"
+          },
+          "reading": "とっきゅうりょうきん",
+          "acceptedAnswers": [
+            "特急料金",
+            "とっきゅうりょうきん"
+          ]
+        },
+        {
+          "targetText": "割増",
+          "kind": "noun",
+          "base": {
+            "de": "Zuschlag",
+            "en": "surcharge"
+          },
+          "reading": "わりまし",
+          "acceptedAnswers": [
+            "割増",
+            "わりまし"
+          ]
+        },
+        {
+          "targetText": "早まったために",
+          "kind": "frame",
+          "base": {
+            "de": "weil es vorgezogen wurde",
+            "en": "because it was brought forward"
+          },
+          "reading": "はやまったために",
+          "acceptedAnswers": [
+            "早まったために",
+            "はやまったために"
+          ]
+        },
+        {
+          "targetText": "ご指摘のとおり",
+          "kind": "frame",
+          "base": {
+            "de": "wie Sie richtig anmerken",
+            "en": "as you point out"
+          },
+          "reading": "ごしてきのとおり",
+          "acceptedAnswers": [
+            "ご指摘のとおり",
+            "ごしてきのとおり"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "理由は",
+              "kana": "りゆうは"
+            },
+            {
+              "canonical": "差額の",
+              "kana": "さがくの"
+            },
+            {
+              "canonical": "二つ",
+              "kana": "ふたつ"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "ご指摘のとおり",
+              "kana": "ごしてきのとおり"
+            },
+            {
+              "canonical": "事前の",
+              "kana": "じぜんの"
+            },
+            {
+              "canonical": "説明を",
+              "kana": "せつめいを"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "今後は",
+              "kana": "こんごは"
+            },
+            {
+              "canonical": "追加が",
+              "kana": "ついかが"
+            },
+            {
+              "canonical": "発生した",
+              "kana": "はっせいした"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "理由",
+        "familyKey": "riyuu",
+        "surface": "理由",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "りゆう",
+        "example": {
+          "targetText": "理由を二つに分けて説明いたします。",
+          "base": {
+            "de": "Ich erläutere die Gründe in zwei Punkten.",
+            "en": "I will explain the reasons in two parts."
+          },
+          "readingVariant": "りゆうをふたつにわけてせつめいいたします。"
+        },
+        "base": {
+          "de": "Grund",
+          "en": "reason"
+        },
+        "surfaceChunk": {
+          "chunk": "理由は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "理由を",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "gomi-no-dashikata",
+      "title": {
+        "de": "Die örtliche Müllabfuhr",
+        "en": "The local collection system"
+      },
+      "situation": {
+        "de": "Anhand des Aushangs dieses fiktiven Wohnviertels erklärst du einer neu zugezogenen Person die Mülltrennung.",
+        "en": "Using the notice in this fictional neighbourhood, you explain waste sorting to a new resident."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "neu zugezogene Person",
+            "en": "new resident"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Anhand des Aushangs dieses fiktiven Wohnviertels erklärst du einer neu zugezogenen Person die Mülltrennung. Die andere Person sagt: „引っ越してきたばかりで、ごみの出し方がよく分かりません。この地区はどういう決まりですか。“",
+        "en": "Using the notice in this fictional neighbourhood, you explain waste sorting to a new resident. The other person says: “引っ越してきたばかりで、ごみの出し方がよく分かりません。この地区はどういう決まりですか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "引っ越してきたばかりで、ごみの出し方がよく分かりません。この地区はどういう決まりですか。",
+          "base": {
+            "de": "Ich bin gerade hergezogen und kenne die Müllregeln noch nicht. Was gilt in diesem Viertel?",
+            "en": "I have just moved here and do not know how to put out rubbish. What are the rules in this district?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ひっこしてきたばかりで、ごみのだしかたがよくわかりません。このちくはどういうきまりですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "この地区の仕組みは、燃えるごみが月曜と木曜、プラスチックが水曜、びんと缶が第二と第四の金曜です。袋は指定のものを使うことになっています。",
+          "base": {
+            "de": "Hier wird brennbarer Müll montags und donnerstags, Plastik mittwochs sowie Glas und Dosen am zweiten und vierten Freitag abgeholt. Vorgeschriebene Säcke sind zu verwenden.",
+            "en": "The system here is burnable rubbish on Mondays and Thursdays, plastic on Wednesdays, and bottles and cans on the second and fourth Fridays. The designated bags must be used."
+          },
+          "move": "explain",
+          "register": "teinei",
+          "units": [
+            "この地区の",
+            "仕組みは、",
+            "燃える",
+            "ごみが",
+            "月曜と",
+            "木曜、",
+            "プラスチックが",
+            "水曜、",
+            "びんと",
+            "缶が",
+            "第二と",
+            "第四の",
+            "金曜です。",
+            "袋は",
+            "指定の",
+            "ものを",
+            "使うことに",
+            "なっています。"
+          ],
+          "readingUnits": [
+            "このちくの",
+            "しくみは、",
+            "もえる",
+            "ごみが",
+            "げつようと",
+            "もくよう、",
+            "プラスチックが",
+            "すいよう、",
+            "びんと",
+            "かんが",
+            "だいにと",
+            "だいよんの",
+            "きんようです。",
+            "ふくろは",
+            "していの",
+            "ものを",
+            "つかうことに",
+            "なっています。"
+          ],
+          "readingVariant": "このちくのしくみは、もえるごみがげつようともくよう、プラスチックがすいよう、びんとかんがだいにとだいよんのきんようです。ふくろはしていのものをつかうことになっています。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "紙はどこにも入っていませんね。新聞や段ボールはどうするんですか。",
+          "base": {
+            "de": "Papier kam gar nicht vor. Was mache ich mit Zeitungen und Kartons?",
+            "en": "Paper was not mentioned. What should I do with newspapers and cardboard?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "かみはどこにもはいっていませんね。しんぶんやだんボールはどうするんですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "紙は収集車ではなく、公園横の回収箱に出すことになっています。段ボールはひもで縛って、新聞は雑誌と分けて入れてください。",
+          "base": {
+            "de": "Papier kommt nicht in den Müllwagen, sondern in die Sammelbox neben dem Park. Kartons bitte zusammenbinden und Zeitungen getrennt von Zeitschriften einlegen.",
+            "en": "Paper goes into the collection box beside the park rather than the collection truck. Tie cardboard with string and put newspapers in separately from magazines."
+          },
+          "move": "clarify",
+          "register": "teinei",
+          "units": [
+            "紙は",
+            "収集車ではなく、",
+            "公園横の",
+            "回収箱に",
+            "出すことに",
+            "なっています。",
+            "段ボールは",
+            "ひもで",
+            "縛って、",
+            "新聞は",
+            "雑誌と",
+            "分けて",
+            "入れてください。"
+          ],
+          "readingUnits": [
+            "かみは",
+            "しゅうしゅうしゃではなく、",
+            "こうえんよこの",
+            "かいしゅうばこに",
+            "だすことに",
+            "なっています。",
+            "だんボールは",
+            "ひもで",
+            "しばって、",
+            "しんぶんは",
+            "ざっしと",
+            "わけて",
+            "いれてください。"
+          ],
+          "readingVariant": "かみはしゅうしゅうしゃではなく、こうえんよこのかいしゅうばこにだすことになっています。だんボールはひもでしばって、しんぶんはざっしとわけていれてください。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "要するに、初めての週に気をつけることを三つに絞ると何ですか。",
+          "base": {
+            "de": "Wenn Sie die erste Woche auf drei wichtige Dinge reduzieren: Welche sind das?",
+            "en": "To narrow it down to three things to watch in the first week, what are they?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ようするに、はじめてのしゅうにきをつけることをみっつにしぼるとなんですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "つまり、指定袋を買うこと、曜日を冷蔵庫に貼ること、紙は回収箱に持っていくこと、この三つを守れば大丈夫ということです。",
+          "base": {
+            "de": "Kurz gesagt: die vorgeschriebenen Säcke kaufen, die Wochentage am Kühlschrank anbringen und Papier zur Sammelbox bringen. Wer diese drei Punkte beachtet, kommt zurecht.",
+            "en": "In short, buy the designated bags, put the collection days on the fridge, and take paper to the collection box. Following those three points will be fine."
+          },
+          "move": "summarize",
+          "register": "teinei",
+          "units": [
+            "つまり、",
+            "指定袋を",
+            "買うこと、",
+            "曜日を",
+            "冷蔵庫に",
+            "貼ること、",
+            "紙は",
+            "回収箱に",
+            "持っていくこと、",
+            "この三つを",
+            "守れば",
+            "大丈夫という",
+            "ことです。"
+          ],
+          "readingUnits": [
+            "つまり、",
+            "していぶくろを",
+            "かうこと、",
+            "ようびを",
+            "れいぞうこに",
+            "はること、",
+            "かみは",
+            "かいしゅうばこに",
+            "もっていくこと、",
+            "このみっつを",
+            "まもれば",
+            "だいじょうぶという",
+            "ことです。"
+          ],
+          "readingVariant": "つまり、していぶくろをかうこと、ようびをれいぞうこにはること、かみはかいしゅうばこにもっていくこと、このみっつをまもればだいじょうぶということです。"
+        }
+      ],
+      "build": {
+        "framePrefix": "この地区の仕組みは、燃えるごみが月曜と木曜、プラスチックが水曜、びんと缶が第二と第四の金曜です。",
+        "chunks": [
+          "袋は",
+          "指定の",
+          "ものを",
+          "使うことに",
+          "なっています。"
+        ],
+        "chunkReadings": [
+          "ふくろは",
+          "していの",
+          "ものを",
+          "つかうことに",
+          "なっています。"
+        ],
+        "distractors": [
+          "自由な",
+          "捨てることに"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "紙は"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "公園横の回収箱に出すことになっています。段ボールはひもで"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "新聞は雑誌と分けて入れてください。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "収集車ではなく、",
+            "acceptedAnswers": [
+              "収集車ではなく、",
+              "しゅうしゅうしゃではなく、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "しゅうしゅうしゃではなく、",
+            "choices": [
+              "収集車ではなく、",
+              "収集車なので、",
+              "収集車のように、",
+              "収集車のほかに、"
+            ]
+          },
+          {
+            "answer": "縛って、",
+            "acceptedAnswers": [
+              "縛って、",
+              "しばって、"
+            ],
+            "kind": "form",
+            "kanaAnswer": "しばって、",
+            "cue": {
+              "de": "zusammenbinden – verbindende Form",
+              "en": "tie – linking form"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "指定袋を買うこと、曜日を冷蔵庫に貼ること、紙は回収箱に持っていくこと、この三つを守れば大丈夫ということです。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "つまり、",
+            "acceptedAnswers": [
+              "つまり、"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "つまり、",
+            "choices": [
+              "つまり、",
+              "しかし、",
+              "一方、",
+              "そのため、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "この地区の仕組みは、燃えるごみが月曜と木曜、プラスチックが水曜、びんと缶が第二と第四の金曜です。",
+        "answer": "袋は",
+        "acceptedAnswers": [
+          "袋は",
+          "ふくろは"
+        ],
+        "after": "指定のものを使うことになっています。",
+        "fallbackChoices": [
+          "袋は",
+          "切符は",
+          "名札は",
+          "制服は"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Eine Ausnahme im Ablauf klären",
+          "en": "Clarifying an exception in a process"
+        },
+        "rule": {
+          "de": "Nenne für den fehlenden Mülltyp den eigenen Abgabeweg und die konkrete Vorbereitung.",
+          "en": "For the missing waste type, name its separate disposal route and preparation."
+        },
+        "examples": [
+          {
+            "targetText": "紙は収集車ではなく、公園横の回収箱に出すことになっています。段ボールはひもで縛って、新聞は雑誌と分けて入れてください。",
+            "base": {
+              "de": "Papier kommt nicht in den Müllwagen, sondern in die Sammelbox neben dem Park. Kartons bitte zusammenbinden und Zeitungen getrennt von Zeitschriften einlegen.",
+              "en": "Paper goes into the collection box beside the park rather than the collection truck. Tie cardboard with string and put newspapers in separately from magazines."
+            },
+            "highlights": [
+              "収集車ではなく、"
+            ]
+          },
+          {
+            "targetText": "新聞はごみ袋ではなく、回収箱に出すことになっています。",
+            "base": {
+              "de": "Zeitungen gehören laut Regelung in die Sammelbox statt in Müllsäcke.",
+              "en": "The rule is to put newspapers in the collection box rather than rubbish bags."
+            },
+            "highlights": [
+              "ごみ袋ではなく、"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "仕組み",
+          "kind": "noun",
+          "base": {
+            "de": "System, Funktionsweise",
+            "en": "system"
+          },
+          "reading": "しくみ",
+          "acceptedAnswers": [
+            "仕組み",
+            "しくみ"
+          ]
+        },
+        {
+          "targetText": "指定",
+          "kind": "noun",
+          "base": {
+            "de": "Vorgabe",
+            "en": "designation"
+          },
+          "reading": "してい",
+          "acceptedAnswers": [
+            "指定",
+            "してい"
+          ]
+        },
+        {
+          "targetText": "収集車",
+          "kind": "noun",
+          "base": {
+            "de": "Müllwagen",
+            "en": "collection truck"
+          },
+          "reading": "しゅうしゅうしゃ",
+          "acceptedAnswers": [
+            "収集車",
+            "しゅうしゅうしゃ"
+          ]
+        },
+        {
+          "targetText": "回収箱",
+          "kind": "noun",
+          "base": {
+            "de": "Sammelbox",
+            "en": "collection box"
+          },
+          "reading": "かいしゅうばこ",
+          "acceptedAnswers": [
+            "回収箱",
+            "かいしゅうばこ"
+          ]
+        },
+        {
+          "targetText": "段ボール",
+          "kind": "noun",
+          "base": {
+            "de": "Karton",
+            "en": "cardboard"
+          },
+          "reading": "だんぼーる",
+          "acceptedAnswers": [
+            "段ボール",
+            "だんぼーる"
+          ]
+        },
+        {
+          "targetText": "ひも",
+          "kind": "noun",
+          "base": {
+            "de": "Schnur",
+            "en": "string"
+          },
+          "reading": "ひも",
+          "acceptedAnswers": [
+            "ひも"
+          ]
+        },
+        {
+          "targetText": "出すことになっています",
+          "kind": "frame",
+          "base": {
+            "de": "es ist vorgesehen, es abzugeben",
+            "en": "the arrangement is to put it out"
+          },
+          "reading": "だすことになっています",
+          "acceptedAnswers": [
+            "出すことになっています",
+            "だすことになっています"
+          ]
+        },
+        {
+          "targetText": "つまり",
+          "kind": "connector",
+          "base": {
+            "de": "kurz gesagt",
+            "en": "in other words"
+          },
+          "reading": "つまり",
+          "acceptedAnswers": [
+            "つまり"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "この地区の",
+              "kana": "このちくの"
+            },
+            {
+              "canonical": "燃える",
+              "kana": "もえる"
+            },
+            {
+              "canonical": "月曜と",
+              "kana": "げつようと"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "紙は",
+              "kana": "かみは"
+            },
+            {
+              "canonical": "公園横の",
+              "kana": "こうえんよこの"
+            },
+            {
+              "canonical": "回収箱に",
+              "kana": "かいしゅうばこに"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "指定袋を",
+              "kana": "していぶくろを"
+            },
+            {
+              "canonical": "曜日を",
+              "kana": "ようびを"
+            },
+            {
+              "canonical": "冷蔵庫に",
+              "kana": "れいぞうこに"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "仕組み",
+        "familyKey": "shikumi",
+        "surface": "仕組み",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "しくみ",
+        "example": {
+          "targetText": "仕組みが分かれば分別に迷いません。",
+          "base": {
+            "de": "Wer das System versteht, ist beim Sortieren nicht unsicher.",
+            "en": "Once you understand the system, sorting is no longer confusing."
+          },
+          "readingVariant": "しくみがわかればぶんべつにまよいません。"
+        },
+        "base": {
+          "de": "System, Funktionsweise",
+          "en": "system"
+        },
+        "surfaceChunk": {
+          "chunk": "仕組みは、",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": "、"
+        },
+        "exampleChunk": {
+          "chunk": "仕組みが",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "nouki-ga-okureta-ken",
+      "title": {
+        "de": "Warum sich der Termin verschob",
+        "en": "Why the deadline slipped"
+      },
+      "situation": {
+        "de": "Die Geschäftsleitung verlangt einen Bericht über eine Lieferverzögerung von zwei Wochen.",
+        "en": "Your manager requests a report on a two-week delivery delay."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Geschäftsleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Geschäftsleitung verlangt einen Bericht über eine Lieferverzögerung von zwei Wochen. Die andere Person sagt: „納期が二週間遅れた件について、原因をまとめて報告してください。“",
+        "en": "Your manager requests a report on a two-week delivery delay. The other person says: “納期が二週間遅れた件について、原因をまとめて報告してください。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "納期が二週間遅れた件について、原因をまとめて報告してください。",
+          "base": {
+            "de": "Bitte berichten Sie zusammenfassend über die Ursachen der zweiwöchigen Verzögerung.",
+            "en": "Please summarise the causes of the two-week delay."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "のうきがにしゅうかんおくれたけんについて、げんいんをまとめてほうこくしてください。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "一番の原因は、外部データの到着が想定より十日遅かったことです。そのため検証工程が後ろにずれ、担当者の休暇とも重なりました。",
+          "base": {
+            "de": "Hauptursache war, dass externe Daten zehn Tage später als angenommen eintrafen. Dadurch verschob sich die Prüfung und fiel zudem mit dem Urlaub der zuständigen Person zusammen.",
+            "en": "The main cause was external data arriving ten days later than expected. That pushed back verification, which also overlapped with the responsible person’s leave."
+          },
+          "move": "explain",
+          "register": "keigo",
+          "units": [
+            "一番の",
+            "原因は、",
+            "外部データの",
+            "到着が",
+            "想定より",
+            "十日",
+            "遅かったことです。",
+            "そのため",
+            "検証工程が",
+            "後ろに",
+            "ずれ、",
+            "担当者の",
+            "休暇とも",
+            "重なりました。"
+          ],
+          "readingUnits": [
+            "いちばんの",
+            "げんいんは、",
+            "がいぶデータの",
+            "とうちゃくが",
+            "そうていより",
+            "とおか",
+            "おそかったことです。",
+            "そのため",
+            "けんしょうこうていが",
+            "うしろに",
+            "ずれ、",
+            "たんとうしゃの",
+            "きゅうかとも",
+            "かさなりました。"
+          ],
+          "readingVariant": "いちばんのげんいんは、がいぶデータのとうちゃくがそうていよりとおかおそかったことです。そのためけんしょうこうていがうしろにずれ、たんとうしゃのきゅうかともかさなりました。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "データの遅れは最初から分かっていたはずです。なぜその時点で報告しなかったのですか。",
+          "base": {
+            "de": "Die Datenverzögerung war doch von Anfang an bekannt. Warum meldeten Sie sie nicht damals?",
+            "en": "You must have known about the data delay from the start. Why did you not report it then?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "データのおくれはさいしょからわかっていたはずです。なぜそのじてんでほうこくしなかったのですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "遅れが分かった時点では、三日程度の遅れだと聞いておりました。十日と分かったのは二週目で、その日のうちに課長には伝えております。",
+          "base": {
+            "de": "Als die Verzögerung bekannt wurde, war von etwa drei Tagen die Rede. Dass es zehn Tage würden, erfuhren wir in der zweiten Woche und informierten die Abteilungsleitung noch am selben Tag.",
+            "en": "When we learned of the delay, we had been told it would be about three days. We learned it was ten days in the second week and informed the section manager that day."
+          },
+          "move": "clarify",
+          "register": "keigo",
+          "units": [
+            "遅れが",
+            "分かった",
+            "時点では、",
+            "三日程度の",
+            "遅れだと",
+            "聞いておりました。",
+            "十日と",
+            "分かったのは",
+            "二週目で、",
+            "その日の",
+            "うちに",
+            "課長には",
+            "伝えております。"
+          ],
+          "readingUnits": [
+            "おくれが",
+            "わかった",
+            "じてんでは、",
+            "みっかていどの",
+            "おくれだと",
+            "きいておりました。",
+            "とおかと",
+            "わかったのは",
+            "にしゅうめで、",
+            "そのひの",
+            "うちに",
+            "かちょうには",
+            "つたえております。"
+          ],
+          "readingVariant": "おくれがわかったじてんでは、みっかていどのおくれだときいておりました。とおかとわかったのはにしゅうめで、そのひのうちにかちょうにはつたえております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "同じことを繰り返さないために、工程のどこを変えるべきだと考えますか。",
+          "base": {
+            "de": "Welchen Prozessschritt sollten wir ändern, damit sich das nicht wiederholt?",
+            "en": "Which part of the process should we change to prevent a repeat?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "おなじことをくりかえさないために、こうていのどこをかえるべきだとかんがえますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "外部データの工程は、サンプルで検証を始める形に変えるべきだと考えます。報告は遅れ幅に関係なく即日にいたします。",
+          "base": {
+            "de": "Bei externen Daten sollten wir die Prüfung zunächst mit Beispieldaten beginnen. Verzögerungen werde ich unabhängig von ihrer Länge noch am selben Tag melden.",
+            "en": "For external data, I think we should begin verification with samples. I will report delays on the same day regardless of their length."
+          },
+          "move": "conclude",
+          "register": "keigo",
+          "units": [
+            "外部データの",
+            "工程は、",
+            "サンプルで",
+            "検証を",
+            "始める",
+            "形に",
+            "変えるべきだと",
+            "考えます。",
+            "報告は",
+            "遅れ幅に",
+            "関係なく",
+            "即日に",
+            "いたします。"
+          ],
+          "readingUnits": [
+            "がいぶデータの",
+            "こうていは、",
+            "サンプルで",
+            "けんしょうを",
+            "はじめる",
+            "かたちに",
+            "かえるべきだと",
+            "かんがえます。",
+            "ほうこくは",
+            "おくれはばに",
+            "かんけいなく",
+            "そくじつに",
+            "いたします。"
+          ],
+          "readingVariant": "がいぶデータのこうていは、サンプルでけんしょうをはじめるかたちにかえるべきだとかんがえます。ほうこくはおくれはばにかんけいなくそくじつにいたします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "一番の",
+          "原因は、",
+          "外部データの",
+          "到着が想定より",
+          "十日",
+          "遅かったことです。"
+        ],
+        "chunkReadings": [
+          "いちばんの",
+          "げんいんは、",
+          "がいぶデータの",
+          "とうちゃくがそうていより",
+          "とおか",
+          "おそかったことです。"
+        ],
+        "distractors": [
+          "早かったことです。",
+          "外部データで"
+        ],
+        "frameSuffix": "そのため検証工程が後ろにずれ、担当者の休暇とも重なりました。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "遅れが分かった"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "三日程度の遅れだと"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "十日と分かったのは二週目で、その日のうちに課長には伝えております。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "時点では、",
+            "acceptedAnswers": [
+              "時点では、",
+              "じてんでは、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "じてんでは、",
+            "choices": [
+              "時点では、",
+              "時点ほど、",
+              "時点まで、",
+              "時点なら、"
+            ]
+          },
+          {
+            "answer": "聞いておりました。",
+            "acceptedAnswers": [
+              "聞いておりました。",
+              "きいておりました。"
+            ],
+            "kind": "form",
+            "kanaAnswer": "きいておりました。",
+            "cue": {
+              "de": "hören – bescheidene Vergangenheitsform",
+              "en": "hear – humble past"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "外部データの工程は、サンプルで検証を始める形に"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "考えます。報告は遅れ幅に関係なく即日にいたします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "変えるべきだと",
+            "acceptedAnswers": [
+              "変えるべきだと",
+              "かえるべきだと"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "かえるべきだと",
+            "choices": [
+              "変えるべきだと",
+              "変えるはずだと",
+              "変えるつもりだと",
+              "変えたばかりだと"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "一番の原因は、外部データの",
+        "answer": "到着が",
+        "acceptedAnswers": [
+          "到着が",
+          "とうちゃくが"
+        ],
+        "after": "想定より十日遅かったことです。そのため検証工程が後ろにずれ、担当者の休暇とも重なりました。",
+        "fallbackChoices": [
+          "到着が",
+          "出発が",
+          "出荷が",
+          "返却が"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den damaligen Wissensstand erklären",
+          "en": "Explaining what was known then"
+        },
+        "rule": {
+          "de": "Trenne die erste Schätzung vom später bestätigten Ausmaß und nenne den Zeitpunkt deiner Mitteilung.",
+          "en": "Distinguish the initial estimate from the later confirmed extent and state when you communicated it."
+        },
+        "examples": [
+          {
+            "targetText": "遅れが分かった時点では、三日程度の遅れだと聞いておりました。十日と分かったのは二週目で、その日のうちに課長には伝えております。",
+            "base": {
+              "de": "Als die Verzögerung bekannt wurde, war von etwa drei Tagen die Rede. Dass es zehn Tage würden, erfuhren wir in der zweiten Woche und informierten die Abteilungsleitung noch am selben Tag.",
+              "en": "When we learned of the delay, we had been told it would be about three days. We learned it was ten days in the second week and informed the section manager that day."
+            },
+            "highlights": [
+              "時点では、"
+            ]
+          },
+          {
+            "targetText": "三日だと聞いておりましたが、実際は十日でした。",
+            "base": {
+              "de": "Uns waren drei Tage genannt worden, tatsächlich waren es zehn.",
+              "en": "We had been told three days, but it was actually ten."
+            },
+            "highlights": [
+              "聞いておりました"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "想定",
+          "kind": "noun",
+          "base": {
+            "de": "Annahme",
+            "en": "assumption"
+          },
+          "reading": "そうてい",
+          "acceptedAnswers": [
+            "想定",
+            "そうてい"
+          ]
+        },
+        {
+          "targetText": "外部データ",
+          "kind": "noun",
+          "base": {
+            "de": "externe Daten",
+            "en": "external data"
+          },
+          "reading": "がいぶでーた",
+          "acceptedAnswers": [
+            "外部データ",
+            "がいぶでーた"
+          ]
+        },
+        {
+          "targetText": "到着",
+          "kind": "noun",
+          "base": {
+            "de": "Eintreffen",
+            "en": "arrival"
+          },
+          "reading": "とうちゃく",
+          "acceptedAnswers": [
+            "到着",
+            "とうちゃく"
+          ]
+        },
+        {
+          "targetText": "検証工程",
+          "kind": "noun",
+          "base": {
+            "de": "Prüfprozess",
+            "en": "verification process"
+          },
+          "reading": "けんしょうこうてい",
+          "acceptedAnswers": [
+            "検証工程",
+            "けんしょうこうてい"
+          ]
+        },
+        {
+          "targetText": "休暇",
+          "kind": "noun",
+          "base": {
+            "de": "Urlaub",
+            "en": "leave"
+          },
+          "reading": "きゅうか",
+          "acceptedAnswers": [
+            "休暇",
+            "きゅうか"
+          ]
+        },
+        {
+          "targetText": "即日",
+          "kind": "noun",
+          "base": {
+            "de": "am selben Tag",
+            "en": "the same day"
+          },
+          "reading": "そくじつ",
+          "acceptedAnswers": [
+            "即日",
+            "そくじつ"
+          ]
+        },
+        {
+          "targetText": "そのため",
+          "kind": "connector",
+          "base": {
+            "de": "deshalb",
+            "en": "as a result"
+          },
+          "reading": "そのため",
+          "acceptedAnswers": [
+            "そのため"
+          ]
+        },
+        {
+          "targetText": "変えるべきだと",
+          "kind": "frame",
+          "base": {
+            "de": "dass man es ändern sollte",
+            "en": "that it should be changed"
+          },
+          "reading": "かえるべきだと",
+          "acceptedAnswers": [
+            "変えるべきだと",
+            "かえるべきだと"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "想定より",
+              "kana": "そうていより"
+            },
+            {
+              "canonical": "一番の",
+              "kana": "いちばんの"
+            },
+            {
+              "canonical": "外部データの",
+              "kana": "がいぶデータの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "遅れが",
+              "kana": "おくれが"
+            },
+            {
+              "canonical": "分かった",
+              "kana": "わかった"
+            },
+            {
+              "canonical": "三日程度の",
+              "kana": "みっかていどの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "外部データの",
+              "kana": "がいぶデータの"
+            },
+            {
+              "canonical": "サンプルで",
+              "kana": "サンプルで"
+            },
+            {
+              "canonical": "検証を",
+              "kana": "けんしょうを"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "想定",
+        "familyKey": "soutei",
+        "surface": "想定",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "そうてい",
+        "example": {
+          "targetText": "想定が変わった時点で工程を見直します。",
+          "base": {
+            "de": "Sobald sich die Annahme ändert, überprüfen wir den Prozess.",
+            "en": "When the assumption changes, we review the process."
+          },
+          "readingVariant": "そうていがかわったじてんでこうていをみなおします。"
+        },
+        "base": {
+          "de": "Annahme",
+          "en": "assumption"
+        },
+        "surfaceChunk": {
+          "chunk": "想定より",
+          "tail": "より",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "想定が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "pointo-kaado-no-shikumi",
+      "title": {
+        "de": "Was bringen die Punkte?",
+        "en": "What are the points worth?"
+      },
+      "situation": {
+        "de": "Du erklärst einer befreundeten Person die Regeln auf dem Aushang eines Supermarkts.",
+        "en": "You explain the rules on a supermarket notice to a friend."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du erklärst einer befreundeten Person die Regeln auf dem Aushang eines Supermarkts. Die andere Person sagt: „あのスーパーのポイントカード、作る価値ありますか。仕組みが複雑そうなんです。“",
+        "en": "You explain the rules on a supermarket notice to a friend. The other person says: “あのスーパーのポイントカード、作る価値ありますか。仕組みが複雑そうなんです。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "あのスーパーのポイントカード、作る価値ありますか。仕組みが複雑そうなんです。",
+          "base": {
+            "de": "Lohnt sich die Kundenkarte dieses Supermarkts? Das System wirkt kompliziert.",
+            "en": "Is that supermarket’s loyalty card worth getting? The system looks complicated."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "あのスーパーのポイントカード、つくるかちありますか。しくみがふくざつそうなんです。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "レジの案内では、仕組みは二百円ごとに一ポイントたまり、五百ポイントで五百円分使えます。特典はそれだけではなく、火曜日はポイントが三倍になります。",
+          "base": {
+            "de": "Laut Hinweis an der Kasse gibt es pro zweihundert Yen einen Punkt; fünfhundert Punkte lassen sich für fünfhundert Yen einlösen. Dazu kommen dienstags dreifache Punkte.",
+            "en": "According to the checkout notice, you earn one point per two hundred yen and can spend five hundred points as five hundred yen. That is not the only benefit: points are tripled on Tuesdays."
+          },
+          "move": "explain",
+          "register": "teinei",
+          "units": [
+            "レジの",
+            "案内では、",
+            "仕組みは",
+            "二百円ごとに",
+            "一ポイント",
+            "たまり、",
+            "五百ポイントで",
+            "五百円分",
+            "使えます。",
+            "特典は",
+            "それだけではなく、",
+            "火曜日は",
+            "ポイントが",
+            "三倍に",
+            "なります。"
+          ],
+          "readingUnits": [
+            "レジの",
+            "あんないでは、",
+            "しくみは",
+            "にひゃくえんごとに",
+            "いちポイント",
+            "たまり、",
+            "ごひゃくポイントで",
+            "ごひゃくえんぶん",
+            "つかえます。",
+            "とくてんは",
+            "それだけではなく、",
+            "かようびは",
+            "ポイントが",
+            "さんばいに",
+            "なります。"
+          ],
+          "readingVariant": "レジのあんないでは、しくみはにひゃくえんごとにいちポイントたまり、ごひゃくポイントでごひゃくえんぶんつかえます。とくてんはそれだけではなく、かようびはポイントがさんばいになります。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "でも週に一回しか行かないんですよ。それでもたまりますか。",
+          "base": {
+            "de": "Ich gehe aber nur einmal pro Woche hin. Kommen trotzdem Punkte zusammen?",
+            "en": "But I only go once a week. Will the points still add up?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "でもしゅうにいっかいしかいかないんですよ。それでもたまりますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "週一回で五千円使うとすると、普通の日なら年に千三百ポイント、全部火曜に行けば三千九百ポイントたまる計算です。",
+          "base": {
+            "de": "Bei wöchentlich fünftausend Yen sind es an normalen Tagen jährlich dreizehnhundert Punkte, bei lauter Dienstagen rechnerisch dreitausendneunhundert.",
+            "en": "If you spend five thousand yen once a week, that works out to thirteen hundred points a year on ordinary days, or thirty-nine hundred if you always go on Tuesdays."
+          },
+          "move": "clarify",
+          "register": "teinei",
+          "units": [
+            "週一回で",
+            "五千円",
+            "使うとすると、",
+            "普通の",
+            "日なら",
+            "年に",
+            "千三百ポイント、",
+            "全部",
+            "火曜に",
+            "行けば",
+            "三千九百ポイント",
+            "たまる",
+            "計算です。"
+          ],
+          "readingUnits": [
+            "しゅういっかいで",
+            "ごせんえん",
+            "つかうとすると、",
+            "ふつうの",
+            "ひなら",
+            "ねんに",
+            "せんさんびゃくポイント、",
+            "ぜんぶ",
+            "かように",
+            "いけば",
+            "さんぜんきゅうひゃくポイント",
+            "たまる",
+            "けいさんです。"
+          ],
+          "readingVariant": "しゅういっかいでごせんえんつかうとすると、ふつうのひならねんにせんさんびゃくポイント、ぜんぶかようにいけばさんぜんきゅうひゃくポイントたまるけいさんです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "じゃあ結論として、どう使うのが一番得ですか。",
+          "base": {
+            "de": "Wie nutze ich die Karte also am vorteilhaftesten?",
+            "en": "So, in conclusion, what is the most profitable way to use it?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "じゃあけつろんとして、どうつかうのがいちばんとくですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "つまり、買い物を火曜日に寄せて、五百たまるごとに使うということです。三千五百円分は戻りますが、期限だけ確認してください。",
+          "base": {
+            "de": "Die Einkäufe auf Dienstag legen und jeweils fünfhundert Punkte einlösen. So bekommen Sie dreitausendfünfhundert Yen zurück; achten Sie nur auf das Ablaufdatum.",
+            "en": "In short, move your shopping to Tuesdays and spend points whenever you reach five hundred. You get thirty-five hundred yen back, but check the expiry date."
+          },
+          "move": "summarize",
+          "register": "teinei",
+          "units": [
+            "つまり、",
+            "買い物を",
+            "火曜日に",
+            "寄せて、",
+            "五百",
+            "たまるごとに",
+            "使うという",
+            "ことです。",
+            "三千五百円分は",
+            "戻りますが、",
+            "期限だけ",
+            "確認してください。"
+          ],
+          "readingUnits": [
+            "つまり、",
+            "かいものを",
+            "かようびに",
+            "よせて、",
+            "ごひゃく",
+            "たまるごとに",
+            "つかうという",
+            "ことです。",
+            "さんぜんごひゃくえんぶんは",
+            "もどりますが、",
+            "きげんだけ",
+            "かくにんしてください。"
+          ],
+          "readingVariant": "つまり、かいものをかようびによせて、ごひゃくたまるごとにつかうということです。さんぜんごひゃくえんぶんはもどりますが、きげんだけかくにんしてください。"
+        }
+      ],
+      "build": {
+        "framePrefix": "レジの案内では、仕組みは",
+        "chunks": [
+          "二百円ごとに",
+          "一ポイント",
+          "たまり、",
+          "五百ポイントで",
+          "五百円分使えます。"
+        ],
+        "chunkReadings": [
+          "にひゃくえんごとに",
+          "いちポイント",
+          "たまり、",
+          "ごひゃくポイントで",
+          "ごひゃくえんぶんつかえます。"
+        ],
+        "distractors": [
+          "二百回ごとに",
+          "五千円分使えます。"
+        ],
+        "frameSuffix": "特典はそれだけではなく、火曜日はポイントが三倍になります。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "週一回で五千円"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "普通の日なら年に千三百ポイント、全部火曜に行けば三千九百ポイントたまる"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "使うとすると、",
+            "acceptedAnswers": [
+              "使うとすると、",
+              "つかうとすると、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "つかうとすると、",
+            "choices": [
+              "使うとすると、",
+              "使うように、",
+              "使うまで、",
+              "使ったので、"
+            ]
+          },
+          {
+            "answer": "計算です。",
+            "acceptedAnswers": [
+              "計算です。",
+              "けいさんです。"
+            ],
+            "kind": "form",
+            "kanaAnswer": "けいさんです。",
+            "cue": {
+              "de": "Berechnung (計算) + です",
+              "en": "calculation (計算) + です"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "買い物を火曜日に寄せて、五百たまるごとに使うということです。三千五百円分は戻りますが、期限だけ確認してください。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "つまり、",
+            "acceptedAnswers": [
+              "つまり、"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "つまり、",
+            "choices": [
+              "つまり、",
+              "しかし、",
+              "一方、",
+              "そのため、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "レジの案内では、仕組みは二百円ごとに一ポイントたまり、五百ポイントで五百円分使えます。特典は",
+        "answer": "それだけではなく、",
+        "acceptedAnswers": [
+          "それだけではなく、"
+        ],
+        "after": "火曜日はポイントが三倍になります。",
+        "fallbackChoices": [
+          "それだけではなく、",
+          "そのかわりに、",
+          "そのため、",
+          "それとも、"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Mit Zahlen präzisieren",
+          "en": "Clarifying with figures"
+        },
+        "rule": {
+          "de": "Lege den wöchentlichen Betrag zugrunde und vergleiche damit normale Tage und den Bonustag.",
+          "en": "State the assumed weekly spending and compare ordinary days with the bonus day."
+        },
+        "examples": [
+          {
+            "targetText": "週一回で五千円使うとすると、普通の日なら年に千三百ポイント、全部火曜に行けば三千九百ポイントたまる計算です。",
+            "base": {
+              "de": "Bei wöchentlich fünftausend Yen sind es an normalen Tagen jährlich dreizehnhundert Punkte, bei lauter Dienstagen rechnerisch dreitausendneunhundert.",
+              "en": "If you spend five thousand yen once a week, that works out to thirteen hundred points a year on ordinary days, or thirty-nine hundred if you always go on Tuesdays."
+            },
+            "highlights": [
+              "使うとすると、"
+            ]
+          },
+          {
+            "targetText": "年に千三百ポイントなら、千円分使って三百ポイント残る計算です。",
+            "base": {
+              "de": "Bei dreizehnhundert Punkten pro Jahr lassen sich rechnerisch tausend Yen nutzen, während dreihundert Punkte bleiben.",
+              "en": "With thirteen hundred points a year, you can spend one thousand yen and have three hundred points left."
+            },
+            "highlights": [
+              "計算です"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "特典",
+          "kind": "noun",
+          "base": {
+            "de": "Vergünstigung",
+            "en": "benefit"
+          },
+          "reading": "とくてん",
+          "acceptedAnswers": [
+            "特典",
+            "とくてん"
+          ]
+        },
+        {
+          "targetText": "案内",
+          "kind": "noun",
+          "base": {
+            "de": "Hinweis",
+            "en": "information notice"
+          },
+          "reading": "あんない",
+          "acceptedAnswers": [
+            "案内",
+            "あんない"
+          ]
+        },
+        {
+          "targetText": "ポイント",
+          "kind": "noun",
+          "base": {
+            "de": "Treuepunkt",
+            "en": "loyalty point"
+          },
+          "reading": "ぽいんと",
+          "acceptedAnswers": [
+            "ポイント",
+            "ぽいんと"
+          ]
+        },
+        {
+          "targetText": "三倍",
+          "kind": "noun",
+          "base": {
+            "de": "das Dreifache",
+            "en": "three times as much"
+          },
+          "reading": "さんばい",
+          "acceptedAnswers": [
+            "三倍",
+            "さんばい"
+          ]
+        },
+        {
+          "targetText": "期限",
+          "kind": "noun",
+          "base": {
+            "de": "Ablaufdatum",
+            "en": "expiry date"
+          },
+          "reading": "きげん",
+          "acceptedAnswers": [
+            "期限",
+            "きげん"
+          ]
+        },
+        {
+          "targetText": "計算",
+          "kind": "noun",
+          "base": {
+            "de": "Berechnung",
+            "en": "calculation"
+          },
+          "reading": "けいさん",
+          "acceptedAnswers": [
+            "計算",
+            "けいさん"
+          ]
+        },
+        {
+          "targetText": "使うとすると",
+          "kind": "frame",
+          "base": {
+            "de": "wenn man annimmt, dass man ausgibt",
+            "en": "assuming you spend"
+          },
+          "reading": "つかうとすると",
+          "acceptedAnswers": [
+            "使うとすると",
+            "つかうとすると"
+          ]
+        },
+        {
+          "targetText": "それだけではなく",
+          "kind": "frame",
+          "base": {
+            "de": "nicht nur das",
+            "en": "not only that"
+          },
+          "reading": "それだけではなく",
+          "acceptedAnswers": [
+            "それだけではなく"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "特典は",
+              "kana": "とくてんは"
+            },
+            {
+              "canonical": "レジの",
+              "kana": "レジの"
+            },
+            {
+              "canonical": "仕組みは",
+              "kana": "しくみは"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "週一回で",
+              "kana": "しゅういっかいで"
+            },
+            {
+              "canonical": "五千円",
+              "kana": "ごせんえん"
+            },
+            {
+              "canonical": "普通の",
+              "kana": "ふつうの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "買い物を",
+              "kana": "かいものを"
+            },
+            {
+              "canonical": "火曜日に",
+              "kana": "かようびに"
+            },
+            {
+              "canonical": "五百",
+              "kana": "ごひゃく"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "特典",
+        "familyKey": "tokuten",
+        "surface": "特典",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "とくてん",
+        "example": {
+          "targetText": "特典が使える曜日を先に確認します。",
+          "base": {
+            "de": "Ich prüfe zuerst, an welchen Wochentagen die Vergünstigung gilt.",
+            "en": "I first check which days the benefit is available."
+          },
+          "readingVariant": "とくてんがつかえるようびをさきにかくにんします。"
+        },
+        "base": {
+          "de": "Vergünstigung",
+          "en": "benefit"
+        },
+        "surfaceChunk": {
+          "chunk": "特典は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "特典が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "keitai-gaisha-o-kaeta",
+      "title": {
+        "de": "Den Mobilfunkanbieter wechseln",
+        "en": "Changing mobile providers"
+      },
+      "situation": {
+        "de": "In der Nachbarschaft wirst du nach deinem kürzlichen Anbieterwechsel gefragt.",
+        "en": "A neighbour asks about your recent change of mobile provider."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus der Nachbarschaft",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "In der Nachbarschaft wirst du nach deinem kürzlichen Anbieterwechsel gefragt. Die andere Person sagt: „携帯の会社を変えたそうですね。何か不満があったんですか。“",
+        "en": "A neighbour asks about your recent change of mobile provider. The other person says: “携帯の会社を変えたそうですね。何か不満があったんですか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "携帯の会社を変えたそうですね。何か不満があったんですか。",
+          "base": {
+            "de": "Sie haben wohl den Mobilfunkanbieter gewechselt. Waren Sie mit etwas unzufrieden?",
+            "en": "I hear you changed mobile providers. Were you unhappy with something?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "けいたいのかいしゃをかえたそうですね。なにかふまんがあったんですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "一番の理由は料金が上がったことです。二年契約の割引が切れて月に二千円高くなったので、同じ内容で安い会社に移りました。",
+          "base": {
+            "de": "Der Hauptgrund war die Preiserhöhung. Nach Ablauf des Rabatts für den Zweijahresvertrag kostete es monatlich zweitausend Yen mehr, deshalb wechselte ich zu einem günstigeren Anbieter mit derselben Leistung.",
+            "en": "The main reason was the price increase. The two-year contract discount ended, raising the monthly cost by two thousand yen, so I moved to a cheaper provider with the same service."
+          },
+          "move": "reason",
+          "register": "teinei",
+          "units": [
+            "一番の",
+            "理由は",
+            "料金が",
+            "上がったことです。",
+            "二年契約の",
+            "割引が",
+            "切れて",
+            "月に",
+            "二千円",
+            "高くなったので、",
+            "同じ",
+            "内容で",
+            "安い",
+            "会社に",
+            "移りました。"
+          ],
+          "readingUnits": [
+            "いちばんの",
+            "りゆうは",
+            "りょうきんが",
+            "あがったことです。",
+            "にねんけいやくの",
+            "わりびきが",
+            "きれて",
+            "つきに",
+            "にせんえん",
+            "たかくなったので、",
+            "おなじ",
+            "ないようで",
+            "やすい",
+            "かいしゃに",
+            "うつりました。"
+          ],
+          "readingVariant": "いちばんのりゆうはりょうきんがあがったことです。にねんけいやくのわりびきがきれてつきににせんえんたかくなったので、おなじないようでやすいかいしゃにうつりました。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "安い会社は電波が弱いって聞きますよ。実際どうですか。",
+          "base": {
+            "de": "Bei günstigen Anbietern soll der Empfang schwach sein. Wie ist es tatsächlich?",
+            "en": "I hear cheap providers have weak reception. What is it actually like?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "やすいかいしゃはでんぱがよわいってききますよ。じっさいどうですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "家と職場では以前と変わりません。ただ地下鉄の中で一時的に切れることがあるので、通話が多い人には向かないかもしれません。",
+          "base": {
+            "de": "Zu Hause und bei der Arbeit ist es unverändert. In der U-Bahn fällt die Verbindung manchmal kurz aus; für Menschen mit vielen Telefonaten eignet sich der Anbieter daher vielleicht nicht.",
+            "en": "At home and work it is unchanged. But the connection sometimes drops briefly in the subway, so it may not suit people who make many calls."
+          },
+          "move": "clarify",
+          "register": "teinei",
+          "units": [
+            "家と",
+            "職場では",
+            "以前と",
+            "変わりません。",
+            "ただ",
+            "地下鉄の",
+            "中で",
+            "一時的に",
+            "切れることが",
+            "あるので、",
+            "通話が",
+            "多い",
+            "人には",
+            "向かないかも",
+            "しれません。"
+          ],
+          "readingUnits": [
+            "いえと",
+            "しょくばでは",
+            "いぜんと",
+            "かわりません。",
+            "ただ",
+            "ちかてつの",
+            "なかで",
+            "いちじてきに",
+            "きれることが",
+            "あるので、",
+            "つうわが",
+            "おおい",
+            "ひとには",
+            "むかないかも",
+            "しれません。"
+          ],
+          "readingVariant": "いえとしょくばではいぜんとかわりません。ただちかてつのなかでいちじてきにきれることがあるので、つうわがおおいひとにはむかないかもしれません。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "私も変えようか迷っています。手続きで面倒なところを教えてください。",
+          "base": {
+            "de": "Ich überlege auch zu wechseln. Was ist beim Verfahren umständlich?",
+            "en": "I am considering switching too. Please tell me which parts of the process are troublesome."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "わたしもかえようかまよっています。てつづきでめんどうなところをおしえてください。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "まず更新月を確認してください。私は違約金のない月に移って三十分ほどで済みましたが、会社によって違うかもしれません。",
+          "base": {
+            "de": "Prüfen Sie zuerst den Verlängerungsmonat. Ich wechselte in einem Monat ohne Vertragsstrafe und war in etwa dreißig Minuten fertig; je nach Anbieter kann das anders sein.",
+            "en": "Check your renewal month first. I switched in a month without an early termination fee and finished in about thirty minutes, but it may differ by provider."
+          },
+          "move": "propose",
+          "register": "teinei",
+          "units": [
+            "まず",
+            "更新月を",
+            "確認してください。",
+            "私は",
+            "違約金の",
+            "ない",
+            "月に",
+            "移って",
+            "三十分ほどで",
+            "済みましたが、",
+            "会社によって",
+            "違うかも",
+            "しれません。"
+          ],
+          "readingUnits": [
+            "まず",
+            "こうしんづきを",
+            "かくにんしてください。",
+            "わたしは",
+            "いやくきんの",
+            "ない",
+            "つきに",
+            "うつって",
+            "さんじゅっぷんほどで",
+            "すみましたが、",
+            "かいしゃによって",
+            "ちがうかも",
+            "しれません。"
+          ],
+          "readingVariant": "まずこうしんづきをかくにんしてください。わたしはいやくきんのないつきにうつってさんじゅっぷんほどですみましたが、かいしゃによってちがうかもしれません。"
+        }
+      ],
+      "build": {
+        "framePrefix": "一番の理由は料金が上がったことです。",
+        "chunks": [
+          "二年契約の",
+          "割引が",
+          "切れて",
+          "月に二千円",
+          "高くなったので、"
+        ],
+        "chunkReadings": [
+          "にねんけいやくの",
+          "わりびきが",
+          "きれて",
+          "つきににせんえん",
+          "たかくなったので、"
+        ],
+        "distractors": [
+          "安くなったので、",
+          "月に二千回"
+        ],
+        "frameSuffix": "同じ内容で安い会社に移りました。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "家と職場では以前と変わりません。"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "地下鉄の中で一時的に"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "あるので、通話が多い人には向かないかもしれません。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "ただ",
+            "acceptedAnswers": [
+              "ただ"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "ただ",
+            "choices": [
+              "ただ",
+              "つまり",
+              "そのため",
+              "むしろ"
+            ]
+          },
+          {
+            "answer": "切れることが",
+            "acceptedAnswers": [
+              "切れることが",
+              "きれることが"
+            ],
+            "kind": "form",
+            "kanaAnswer": "きれることが",
+            "cue": {
+              "de": "abbrechen (切れる) + ことがある (gelegentlich)",
+              "en": "drop (切れる) + ことがある (sometimes)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "まず更新月を確認してください。私は違約金のない月に移って三十分ほどで済みましたが、会社によって"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "違うかもしれません。",
+            "acceptedAnswers": [
+              "違うかもしれません。",
+              "ちがうかもしれません。"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "ちがうかもしれません。",
+            "choices": [
+              "違うかもしれません。",
+              "違わないかもしれません。",
+              "違ったかもしれません。",
+              "違いません。"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "一番の理由は",
+        "answer": "料金が",
+        "acceptedAnswers": [
+          "料金が",
+          "りょうきんが"
+        ],
+        "after": "上がったことです。二年契約の割引が切れて月に二千円高くなったので、同じ内容で安い会社に移りました。",
+        "fallbackChoices": [
+          "料金が",
+          "給料が",
+          "気温が",
+          "水位が"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Die eigene Erfahrung begrenzen",
+          "en": "Limiting a personal claim"
+        },
+        "rule": {
+          "de": "Beschreibe, wo die Verbindung funktioniert und wo sie ausfällt, ohne das auf alle Nutzer zu übertragen.",
+          "en": "Describe where the connection works and where it drops without generalising to all users."
+        },
+        "examples": [
+          {
+            "targetText": "家と職場では以前と変わりません。ただ地下鉄の中で一時的に切れることがあるので、通話が多い人には向かないかもしれません。",
+            "base": {
+              "de": "Zu Hause und bei der Arbeit ist es unverändert. In der U-Bahn fällt die Verbindung manchmal kurz aus; für Menschen mit vielen Telefonaten eignet sich der Anbieter daher vielleicht nicht.",
+              "en": "At home and work it is unchanged. But the connection sometimes drops briefly in the subway, so it may not suit people who make many calls."
+            },
+            "highlights": [
+              "ただ"
+            ]
+          },
+          {
+            "targetText": "家では問題ありません。ただ、地下では通話が切れることがあります。",
+            "base": {
+              "de": "Zu Hause gibt es kein Problem, aber unterirdisch brechen Telefonate manchmal ab.",
+              "en": "There is no problem at home, but underground calls sometimes disconnect."
+            },
+            "highlights": [
+              "ただ、"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "料金",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühr, Tarif",
+            "en": "charge, rate"
+          },
+          "reading": "りょうきん",
+          "acceptedAnswers": [
+            "料金",
+            "りょうきん"
+          ]
+        },
+        {
+          "targetText": "割引",
+          "kind": "noun",
+          "base": {
+            "de": "Rabatt",
+            "en": "discount"
+          },
+          "reading": "わりびき",
+          "acceptedAnswers": [
+            "割引",
+            "わりびき"
+          ]
+        },
+        {
+          "targetText": "電波",
+          "kind": "noun",
+          "base": {
+            "de": "Funksignal",
+            "en": "signal"
+          },
+          "reading": "でんぱ",
+          "acceptedAnswers": [
+            "電波",
+            "でんぱ"
+          ]
+        },
+        {
+          "targetText": "一時的",
+          "kind": "adjective",
+          "base": {
+            "de": "vorübergehend",
+            "en": "temporary"
+          },
+          "reading": "いちじてき",
+          "acceptedAnswers": [
+            "一時的",
+            "いちじてき"
+          ]
+        },
+        {
+          "targetText": "通話",
+          "kind": "noun",
+          "base": {
+            "de": "Telefonat",
+            "en": "phone call"
+          },
+          "reading": "つうわ",
+          "acceptedAnswers": [
+            "通話",
+            "つうわ"
+          ]
+        },
+        {
+          "targetText": "違約金",
+          "kind": "noun",
+          "base": {
+            "de": "Vertragsstrafe",
+            "en": "contract penalty"
+          },
+          "reading": "いやくきん",
+          "acceptedAnswers": [
+            "違約金",
+            "いやくきん"
+          ]
+        },
+        {
+          "targetText": "切れることがある",
+          "kind": "frame",
+          "base": {
+            "de": "es fällt manchmal aus",
+            "en": "it sometimes disconnects"
+          },
+          "reading": "きれることがある",
+          "acceptedAnswers": [
+            "切れることがある",
+            "きれることがある"
+          ]
+        },
+        {
+          "targetText": "違うかもしれません",
+          "kind": "frame",
+          "base": {
+            "de": "es könnte anders sein",
+            "en": "it may differ"
+          },
+          "reading": "ちがうかもしれません",
+          "acceptedAnswers": [
+            "違うかもしれません",
+            "ちがうかもしれません"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "料金が",
+              "kana": "りょうきんが"
+            },
+            {
+              "canonical": "一番の",
+              "kana": "いちばんの"
+            },
+            {
+              "canonical": "理由は",
+              "kana": "りゆうは"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "家と",
+              "kana": "いえと"
+            },
+            {
+              "canonical": "職場では",
+              "kana": "しょくばでは"
+            },
+            {
+              "canonical": "以前と",
+              "kana": "いぜんと"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "更新月を",
+              "kana": "こうしんづきを"
+            },
+            {
+              "canonical": "私は",
+              "kana": "わたしは"
+            },
+            {
+              "canonical": "違約金の",
+              "kana": "いやくきんの"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "料金",
+        "familyKey": "ryoukin",
+        "surface": "料金",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "りょうきん",
+        "example": {
+          "targetText": "料金は同じでも使える内容が違います。",
+          "base": {
+            "de": "Auch bei gleichem Preis können die Leistungen verschieden sein.",
+            "en": "Even at the same price, the available services can differ."
+          },
+          "readingVariant": "りょうきんはおなじでもつかえるないようがちがいます。"
+        },
+        "base": {
+          "de": "Gebühr, Tarif",
+          "en": "charge, rate"
+        },
+        "surfaceChunk": {
+          "chunk": "料金が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "料金は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "tekkyo-ni-igi",
+      "title": {
+        "de": "Was auf dem Bescheid steht",
+        "en": "What the notice says"
+      },
+      "situation": {
+        "de": "Eine Person aus dem Kollegenkreis fragt nach dem Einspruchsweg auf einem fiktiven Bescheid zur Fahrradentfernung.",
+        "en": "A colleague asks about the objection procedure on a fictional bicycle-removal notice."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person aus dem Kollegenkreis fragt nach dem Einspruchsweg auf einem fiktiven Bescheid zur Fahrradentfernung. Die andere Person sagt: „駐輪禁止の張り紙がない場所で自転車を撤去されました。納得できないんですが、どうすればいいですか。“",
+        "en": "A colleague asks about the objection procedure on a fictional bicycle-removal notice. The other person says: “駐輪禁止の張り紙がない場所で自転車を撤去されました。納得できないんですが、どうすればいいですか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "駐輪禁止の張り紙がない場所で自転車を撤去されました。納得できないんですが、どうすればいいですか。",
+          "base": {
+            "de": "Mein Fahrrad wurde an einer Stelle ohne Verbotsschild entfernt. Ich finde das nicht nachvollziehbar. Was soll ich tun?",
+            "en": "My bicycle was removed from a place without a no-parking sign. I cannot accept that. What should I do?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "ちゅうりんきんしのはりがみがないばしょでじてんしゃをてっきょされました。なっとくできないんですが、どうすればいいですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "撤去の通知の裏に、異議を出す窓口と期限が書いてあるはずです。標識がなかったことを示す記録を添えて、期限内に書面を出すのが通知にある流れです。",
+          "base": {
+            "de": "Auf der Rückseite des Bescheids sollten Einspruchsstelle und Frist stehen. Laut Bescheid reichen Sie innerhalb der Frist ein Schreiben mit Belegen für das fehlende Schild ein.",
+            "en": "The back of the removal notice should list the office and deadline for objections. The procedure on the notice is to submit a written objection within the deadline, attaching records showing there was no sign."
+          },
+          "move": "explain",
+          "register": "teinei",
+          "units": [
+            "撤去の",
+            "通知の",
+            "裏に、",
+            "異議を",
+            "出す",
+            "窓口と",
+            "期限が",
+            "書いてある",
+            "はずです。",
+            "標識が",
+            "なかったことを",
+            "示す",
+            "記録を",
+            "添えて、",
+            "期限内に",
+            "書面を",
+            "出すのが",
+            "通知に",
+            "ある",
+            "流れです。"
+          ],
+          "readingUnits": [
+            "てっきょの",
+            "つうちの",
+            "うらに、",
+            "いぎを",
+            "だす",
+            "まどぐちと",
+            "きげんが",
+            "かいてある",
+            "はずです。",
+            "ひょうしきが",
+            "なかったことを",
+            "しめす",
+            "きろくを",
+            "そえて、",
+            "きげんないに",
+            "しょめんを",
+            "だすのが",
+            "つうちに",
+            "ある",
+            "ながれです。"
+          ],
+          "readingVariant": "てっきょのつうちのうらに、いぎをだすまどぐちときげんがかいてあるはずです。ひょうしきがなかったことをしめすきろくをそえて、きげんないにしょめんをだすのがつうちにあるながれです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "でもその日の写真は撮っていません。証拠がなければ無理でしょう。",
+          "base": {
+            "de": "Ich habe aber an jenem Tag keine Fotos gemacht. Ohne Beweise geht es wohl nicht.",
+            "en": "But I did not take photos that day. Without evidence, it must be impossible."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "でもそのひのしゃしんはとっていません。しょうこがなければむりでしょう。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "証拠がゼロというわけではありません。現場の写真と撤去の日時を出せば、どの記録が証拠になるかは窓口で確認できます。",
+          "base": {
+            "de": "Das bedeutet nicht, dass es gar keine Beweise gibt. Mit Fotos des Ortes und dem Zeitpunkt der Entfernung können Sie am Schalter klären, welche Unterlagen als Belege dienen.",
+            "en": "It does not mean there is no evidence at all. With photos of the location and the removal date and time, the office can confirm which records can serve as evidence."
+          },
+          "move": "rebut",
+          "register": "teinei",
+          "units": [
+            "証拠が",
+            "ゼロという",
+            "わけでは",
+            "ありません。",
+            "現場の",
+            "写真と",
+            "撤去の",
+            "日時を",
+            "出せば、",
+            "どの記録が",
+            "証拠になるかは",
+            "窓口で",
+            "確認できます。"
+          ],
+          "readingUnits": [
+            "しょうこが",
+            "ゼロという",
+            "わけでは",
+            "ありません。",
+            "げんばの",
+            "しゃしんと",
+            "てっきょの",
+            "にちじを",
+            "だせば、",
+            "どのきろくが",
+            "しょうこになるかは",
+            "まどぐちで",
+            "かくにんできます。"
+          ],
+          "readingVariant": "しょうこがゼロというわけではありません。げんばのしゃしんとてっきょのにちじをだせば、どのきろくがしょうこになるかはまどぐちでかくにんできます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "結局、申し立てて通る見込みはどのくらいだと思いますか。",
+          "base": {
+            "de": "Wie hoch schätzen Sie letztlich die Erfolgsaussichten eines Einspruchs ein?",
+            "en": "Ultimately, how likely do you think an objection is to succeed?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "けっきょく、もうしたててとおるみこみはどのくらいだとおもいますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "標識がなかったのなら、出す価値はあると思います。ただ通知では、撤去費用は先に払ってから異議を出すことになっています。",
+          "base": {
+            "de": "Wenn das Schild fehlte, halte ich den Einspruch für einen Versuch wert. Dieser Bescheid schreibt aber vor, zuerst die Entfernungskosten zu zahlen und danach Einspruch einzulegen.",
+            "en": "If there was no sign, I think it is worth submitting. But according to this notice, the rule is to pay the removal fee first and then object."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "標識が",
+            "なかったのなら、",
+            "出す",
+            "価値は",
+            "あると",
+            "思います。",
+            "ただ",
+            "通知では、",
+            "撤去費用は",
+            "先に",
+            "払ってから",
+            "異議を",
+            "出すことに",
+            "なっています。"
+          ],
+          "readingUnits": [
+            "ひょうしきが",
+            "なかったのなら、",
+            "だす",
+            "かちは",
+            "あると",
+            "おもいます。",
+            "ただ",
+            "つうちでは、",
+            "てっきょひようは",
+            "さきに",
+            "はらってから",
+            "いぎを",
+            "だすことに",
+            "なっています。"
+          ],
+          "readingVariant": "ひょうしきがなかったのなら、だすかちはあるとおもいます。ただつうちでは、てっきょひようはさきにはらってからいぎをだすことになっています。"
+        }
+      ],
+      "build": {
+        "framePrefix": "撤去の通知の裏に、",
+        "chunks": [
+          "異議を",
+          "出す",
+          "窓口と",
+          "期限が",
+          "書いてある",
+          "はずです。"
+        ],
+        "chunkReadings": [
+          "いぎを",
+          "だす",
+          "まどぐちと",
+          "きげんが",
+          "かいてある",
+          "はずです。"
+        ],
+        "distractors": [
+          "予約を",
+          "写真が"
+        ],
+        "frameSuffix": "標識がなかったことを示す記録を添えて、期限内に書面を出すのが通知にある流れです。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "証拠がゼロという"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "現場の写真と撤去の日時を"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "どの記録が証拠になるかは窓口で確認できます。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "わけではありません。",
+            "acceptedAnswers": [
+              "わけではありません。"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "わけではありません。",
+            "choices": [
+              "わけではありません。",
+              "わけです。",
+              "はずです。",
+              "ことになっています。"
+            ]
+          },
+          {
+            "answer": "出せば、",
+            "acceptedAnswers": [
+              "出せば、",
+              "だせば、"
+            ],
+            "kind": "form",
+            "kanaAnswer": "だせば、",
+            "cue": {
+              "de": "vorlegen + ば (Bedingung)",
+              "en": "submit + ば (condition)"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "標識が"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "出す価値はあると思います。ただ通知では、撤去費用は先に払ってから異議を出すことになっています。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "なかったのなら、",
+            "acceptedAnswers": [
+              "なかったのなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "なかったのなら、",
+            "choices": [
+              "なかったのなら、",
+              "なかったのに、",
+              "なかったとしても、",
+              "なかったかのように、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "撤去の通知の裏に、",
+        "answer": "異議を",
+        "acceptedAnswers": [
+          "異議を",
+          "いぎを"
+        ],
+        "after": "出す窓口と期限が書いてあるはずです。標識がなかったことを示す記録を添えて、期限内に書面を出すのが通知にある流れです。",
+        "fallbackChoices": [
+          "異議を",
+          "予約を",
+          "注文を",
+          "見積もりを"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Eine vorschnelle Schlussfolgerung entkräften",
+          "en": "Challenging a premature conclusion"
+        },
+        "rule": {
+          "de": "Mit わけではありません bestreitest du den Schluss, dass fehlende Tagesfotos automatisch gar keine Belege bedeuten.",
+          "en": "Use わけではありません to challenge the conclusion that missing photos from that day means there is no evidence at all."
+        },
+        "examples": [
+          {
+            "targetText": "証拠がゼロというわけではありません。現場の写真と撤去の日時を出せば、どの記録が証拠になるかは窓口で確認できます。",
+            "base": {
+              "de": "Das bedeutet nicht, dass es gar keine Beweise gibt. Mit Fotos des Ortes und dem Zeitpunkt der Entfernung können Sie am Schalter klären, welche Unterlagen als Belege dienen.",
+              "en": "It does not mean there is no evidence at all. With photos of the location and the removal date and time, the office can confirm which records can serve as evidence."
+            },
+            "highlights": [
+              "ゼロというわけではありません。"
+            ]
+          },
+          {
+            "targetText": "その日の写真がなくても、証拠がないわけではありません。",
+            "base": {
+              "de": "Auch ohne Fotos von diesem Tag bedeutet das nicht, dass es keine Belege gibt.",
+              "en": "Even without photos from that day, it does not mean there is no evidence."
+            },
+            "highlights": [
+              "わけではありません"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "異議",
+          "kind": "noun",
+          "base": {
+            "de": "Einspruch",
+            "en": "objection"
+          },
+          "reading": "いぎ",
+          "acceptedAnswers": [
+            "異議",
+            "いぎ"
+          ]
+        },
+        {
+          "targetText": "撤去",
+          "kind": "noun",
+          "base": {
+            "de": "Entfernung",
+            "en": "removal"
+          },
+          "reading": "てっきょ",
+          "acceptedAnswers": [
+            "撤去",
+            "てっきょ"
+          ]
+        },
+        {
+          "targetText": "通知",
+          "kind": "noun",
+          "base": {
+            "de": "Bescheid",
+            "en": "notice"
+          },
+          "reading": "つうち",
+          "acceptedAnswers": [
+            "通知",
+            "つうち"
+          ]
+        },
+        {
+          "targetText": "標識",
+          "kind": "noun",
+          "base": {
+            "de": "Schild",
+            "en": "sign"
+          },
+          "reading": "ひょうしき",
+          "acceptedAnswers": [
+            "標識",
+            "ひょうしき"
+          ]
+        },
+        {
+          "targetText": "証拠",
+          "kind": "noun",
+          "base": {
+            "de": "Beweis",
+            "en": "evidence"
+          },
+          "reading": "しょうこ",
+          "acceptedAnswers": [
+            "証拠",
+            "しょうこ"
+          ]
+        },
+        {
+          "targetText": "日時",
+          "kind": "noun",
+          "base": {
+            "de": "Datum und Uhrzeit",
+            "en": "date and time"
+          },
+          "reading": "にちじ",
+          "acceptedAnswers": [
+            "日時",
+            "にちじ"
+          ]
+        },
+        {
+          "targetText": "書いてある",
+          "kind": "frame",
+          "base": {
+            "de": "es steht geschrieben",
+            "en": "it is written"
+          },
+          "reading": "かいてある",
+          "acceptedAnswers": [
+            "書いてある",
+            "かいてある"
+          ]
+        },
+        {
+          "targetText": "わけではありません",
+          "kind": "frame",
+          "base": {
+            "de": "es bedeutet nicht, dass",
+            "en": "it does not mean that"
+          },
+          "reading": "わけではありません",
+          "acceptedAnswers": [
+            "わけではありません"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "異議を",
+              "kana": "いぎを"
+            },
+            {
+              "canonical": "撤去の",
+              "kana": "てっきょの"
+            },
+            {
+              "canonical": "通知の",
+              "kana": "つうちの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "証拠が",
+              "kana": "しょうこが"
+            },
+            {
+              "canonical": "ゼロという",
+              "kana": "ゼロという"
+            },
+            {
+              "canonical": "現場の",
+              "kana": "げんばの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "標識が",
+              "kana": "ひょうしきが"
+            },
+            {
+              "canonical": "出す",
+              "kana": "だす"
+            },
+            {
+              "canonical": "価値は",
+              "kana": "かちは"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "異議",
+        "familyKey": "igi",
+        "surface": "異議",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "いぎ",
+        "example": {
+          "targetText": "異議がある場合は通知の窓口を確認します。",
+          "base": {
+            "de": "Bei Einwänden prüft man die im Bescheid genannte Anlaufstelle.",
+            "en": "If you have an objection, check the office listed on the notice."
+          },
+          "readingVariant": "いぎがあるばあいはつうちのまどぐちをかくにんします。"
+        },
+        "base": {
+          "de": "Einspruch",
+          "en": "objection"
+        },
+        "surfaceChunk": {
+          "chunk": "異議を",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "異議が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "kafe-keikaku-no-keii",
+      "title": {
+        "de": "Warum der Caféplan stoppte",
+        "en": "Why the café plan stalled"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt, was aus der geplanten gemeinsamen Cafégründung geworden ist.",
+        "en": "A friend asks what happened to the planned joint café business."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt, was aus der geplanten gemeinsamen Cafégründung geworden ist. Die andere Person sagt: „去年話していたカフェの共同経営、やめたんですよね。何があったんですか。“",
+        "en": "A friend asks what happened to the planned joint café business. The other person says: “去年話していたカフェの共同経営、やめたんですよね。何があったんですか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "去年話していたカフェの共同経営、やめたんですよね。何があったんですか。",
+          "base": {
+            "de": "Sie haben den Plan für das gemeinsame Café vom letzten Jahr aufgegeben, oder? Was ist passiert?",
+            "en": "You gave up the joint café plan you mentioned last year, right? What happened?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "きょねんはなしていたカフェのきょうどうけいえい、やめたんですよね。なにがあったんですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "簡単に経緯を話すと、物件は決まったものの、改装費が見積もりの二倍になり、共同経営者の資金が足りなくなって計画が止まりました。",
+          "base": {
+            "de": "Kurz zum Verlauf: Wir fanden zwar ein Objekt, doch die Umbaukosten stiegen auf das Doppelte des Angebots. Das Geld der mitgründenden Person reichte nicht mehr, und der Plan kam zum Stillstand.",
+            "en": "Briefly, we found premises, but refurbishment costs rose to twice the estimate. My business partner’s funds were no longer sufficient, and the plan stalled."
+          },
+          "move": "explain",
+          "register": "teinei",
+          "units": [
+            "簡単に",
+            "経緯を",
+            "話すと、",
+            "物件は",
+            "決まったものの、",
+            "改装費が",
+            "見積もりの",
+            "二倍になり、",
+            "共同経営者の",
+            "資金が",
+            "足りなくなって",
+            "計画が",
+            "止まりました。"
+          ],
+          "readingUnits": [
+            "かんたんに",
+            "けいいを",
+            "はなすと、",
+            "ぶっけんは",
+            "きまったものの、",
+            "かいそうひが",
+            "みつもりの",
+            "にばいになり、",
+            "きょうどうけいえいしゃの",
+            "しきんが",
+            "たりなくなって",
+            "けいかくが",
+            "とまりました。"
+          ],
+          "readingVariant": "かんたんにけいいをはなすと、ぶっけんはきまったものの、かいそうひがみつもりのにばいになり、きょうどうけいえいしゃのしきんがたりなくなってけいかくがとまりました。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "二倍って大きいですね。見積もりがそんなに外れるものですか。",
+          "base": {
+            "de": "Das Doppelte ist viel. Kann ein Angebot so weit danebenliegen?",
+            "en": "Twice as much is a lot. Can an estimate really be that far off?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "にばいっておおきいですね。みつもりがそんなにはずれるものですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "古い建物だったので、床をはがしてから配管の交換が必要だと分かったんです。最初の見積もりは表面しか見ていなかったわけです。",
+          "base": {
+            "de": "Es war ein altes Gebäude. Erst nach dem Entfernen des Bodens erkannten wir, dass die Rohre ersetzt werden mussten. Beim ersten Angebot war also nur die Oberfläche betrachtet worden.",
+            "en": "It was an old building, and only after removing the floor did we discover the pipes needed replacing. The initial estimate had only looked at the surface."
+          },
+          "move": "clarify",
+          "register": "teinei",
+          "units": [
+            "古い",
+            "建物だったので、",
+            "床を",
+            "はがしてから",
+            "配管の",
+            "交換が",
+            "必要だと",
+            "分かったんです。",
+            "最初の",
+            "見積もりは",
+            "表面しか",
+            "見ていなかった",
+            "わけです。"
+          ],
+          "readingUnits": [
+            "ふるい",
+            "たてものだったので、",
+            "ゆかを",
+            "はがしてから",
+            "はいかんの",
+            "こうかんが",
+            "ひつようだと",
+            "わかったんです。",
+            "さいしょの",
+            "みつもりは",
+            "ひょうめんしか",
+            "みていなかった",
+            "わけです。"
+          ],
+          "readingVariant": "ふるいたてものだったので、ゆかをはがしてからはいかんのこうかんがひつようだとわかったんです。さいしょのみつもりはひょうめんしかみていなかったわけです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "同じことをもう一度やるとしたら、何を変えますか。",
+          "base": {
+            "de": "Was würden Sie ändern, wenn Sie es noch einmal versuchen?",
+            "en": "What would you change if you tried the same thing again?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "おなじことをもういちどやるとしたら、なにをかえますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "次にやるなら、契約前に専門家に床下まで調べてもらい、改装費の上限を共同経営者と書面で決めておきます。",
+          "base": {
+            "de": "Beim nächsten Mal lasse ich vor Vertragsabschluss fachkundig bis unter den Boden prüfen und halte mit der mitgründenden Person eine Obergrenze für die Umbaukosten schriftlich fest.",
+            "en": "Next time, before signing, I will have an expert inspect under the floor and agree a written refurbishment budget limit with my business partner."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "次に",
+            "やるなら、",
+            "契約前に",
+            "専門家に",
+            "床下まで",
+            "調べてもらい、",
+            "改装費の",
+            "上限を",
+            "共同経営者と",
+            "書面で",
+            "決めておきます。"
+          ],
+          "readingUnits": [
+            "つぎに",
+            "やるなら、",
+            "けいやくまえに",
+            "せんもんかに",
+            "ゆかしたまで",
+            "しらべてもらい、",
+            "かいそうひの",
+            "じょうげんを",
+            "きょうどうけいえいしゃと",
+            "しょめんで",
+            "きめておきます。"
+          ],
+          "readingVariant": "つぎにやるなら、けいやくまえにせんもんかにゆかしたまでしらべてもらい、かいそうひのじょうげんをきょうどうけいえいしゃとしょめんできめておきます。"
+        }
+      ],
+      "build": {
+        "framePrefix": "簡単に経緯を話すと、物件は決まったものの、改装費が見積もりの二倍になり、",
+        "chunks": [
+          "共同経営者の",
+          "資金が",
+          "足りなくなって",
+          "計画が",
+          "止まりました。"
+        ],
+        "chunkReadings": [
+          "きょうどうけいえいしゃの",
+          "しきんが",
+          "たりなくなって",
+          "けいかくが",
+          "とまりました。"
+        ],
+        "distractors": [
+          "余るようになって",
+          "進みました。"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "古い建物だったので、床を"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "配管の交換が必要だと分かったんです。最初の見積もりは表面しか見ていなかった"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "はがしてから",
+            "acceptedAnswers": [
+              "はがしてから"
+            ],
+            "kind": "form",
+            "kanaAnswer": "はがしてから",
+            "cue": {
+              "de": "abreißen (はがす) + てから (nachdem)",
+              "en": "strip off (はがす) + てから (after)"
+            }
+          },
+          {
+            "answer": "わけです。",
+            "acceptedAnswers": [
+              "わけです。"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "わけです。",
+            "choices": [
+              "わけです。",
+              "ことにします。",
+              "つもりです。",
+              "ばかりです。"
+            ]
+          }
+        ],
+        "moveBlankIndex": 1
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "次に"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "契約前に専門家に床下まで調べてもらい、改装費の上限を共同経営者と書面で決めておきます。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "やるなら、",
+            "acceptedAnswers": [
+              "やるなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "やるなら、",
+            "choices": [
+              "やるなら、",
+              "やったなら、",
+              "やらないなら、",
+              "やっても、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "簡単に経緯を話すと、物件は",
+        "answer": "決まったものの、",
+        "acceptedAnswers": [
+          "決まったものの、",
+          "きまったものの、"
+        ],
+        "after": "改装費が見積もりの二倍になり、共同経営者の資金が足りなくなって計画が止まりました。",
+        "fallbackChoices": [
+          "決まったものの、",
+          "決まったので、",
+          "決まらないものの、",
+          "決まったように、"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den entscheidenden Fund erklären",
+          "en": "Explaining the decisive discovery"
+        },
+        "rule": {
+          "de": "Zeige, was erst beim Öffnen des Bodens sichtbar wurde, und erkläre damit den zu niedrigen Kostenvoranschlag.",
+          "en": "Show what only became visible when the floor was opened and use that to explain the low estimate."
+        },
+        "examples": [
+          {
+            "targetText": "古い建物だったので、床をはがしてから配管の交換が必要だと分かったんです。最初の見積もりは表面しか見ていなかったわけです。",
+            "base": {
+              "de": "Es war ein altes Gebäude. Erst nach dem Entfernen des Bodens erkannten wir, dass die Rohre ersetzt werden mussten. Beim ersten Angebot war also nur die Oberfläche betrachtet worden.",
+              "en": "It was an old building, and only after removing the floor did we discover the pipes needed replacing. The initial estimate had only looked at the surface."
+            },
+            "highlights": [
+              "はがしてから"
+            ]
+          },
+          {
+            "targetText": "床をはがしてから、配管の交換が必要だと分かりました。",
+            "base": {
+              "de": "Erst nach dem Entfernen des Bodens merkten wir, dass die Rohre ersetzt werden mussten.",
+              "en": "After removing the floor, we discovered the pipes needed replacing."
+            },
+            "highlights": [
+              "はがしてから"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "経緯",
+          "kind": "noun",
+          "base": {
+            "de": "Verlauf, Vorgeschichte",
+            "en": "course of events"
+          },
+          "reading": "けいい",
+          "acceptedAnswers": [
+            "経緯",
+            "けいい"
+          ]
+        },
+        {
+          "targetText": "改装費",
+          "kind": "noun",
+          "base": {
+            "de": "Umbaukosten",
+            "en": "refurbishment cost"
+          },
+          "reading": "かいそうひ",
+          "acceptedAnswers": [
+            "改装費",
+            "かいそうひ"
+          ]
+        },
+        {
+          "targetText": "共同経営者",
+          "kind": "noun",
+          "base": {
+            "de": "Mitinhaber, Geschäftspartner",
+            "en": "business partner"
+          },
+          "reading": "きょうどうけいえいしゃ",
+          "acceptedAnswers": [
+            "共同経営者",
+            "きょうどうけいえいしゃ"
+          ]
+        },
+        {
+          "targetText": "資金",
+          "kind": "noun",
+          "base": {
+            "de": "Finanzmittel",
+            "en": "funds"
+          },
+          "reading": "しきん",
+          "acceptedAnswers": [
+            "資金",
+            "しきん"
+          ]
+        },
+        {
+          "targetText": "配管",
+          "kind": "noun",
+          "base": {
+            "de": "Rohrleitungen",
+            "en": "pipes"
+          },
+          "reading": "はいかん",
+          "acceptedAnswers": [
+            "配管",
+            "はいかん"
+          ]
+        },
+        {
+          "targetText": "上限",
+          "kind": "noun",
+          "base": {
+            "de": "Obergrenze",
+            "en": "upper limit"
+          },
+          "reading": "じょうげん",
+          "acceptedAnswers": [
+            "上限",
+            "じょうげん"
+          ]
+        },
+        {
+          "targetText": "決まったものの",
+          "kind": "frame",
+          "base": {
+            "de": "obwohl es feststand",
+            "en": "although it was settled"
+          },
+          "reading": "きまったものの",
+          "acceptedAnswers": [
+            "決まったものの",
+            "きまったものの"
+          ]
+        },
+        {
+          "targetText": "わけです",
+          "kind": "frame",
+          "base": {
+            "de": "so erklärt es sich",
+            "en": "that explains it"
+          },
+          "reading": "わけです",
+          "acceptedAnswers": [
+            "わけです"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "経緯を",
+              "kana": "けいいを"
+            },
+            {
+              "canonical": "簡単に",
+              "kana": "かんたんに"
+            },
+            {
+              "canonical": "物件は",
+              "kana": "ぶっけんは"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "古い",
+              "kana": "ふるい"
+            },
+            {
+              "canonical": "床を",
+              "kana": "ゆかを"
+            },
+            {
+              "canonical": "配管の",
+              "kana": "はいかんの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "次に",
+              "kana": "つぎに"
+            },
+            {
+              "canonical": "契約前に",
+              "kana": "けいやくまえに"
+            },
+            {
+              "canonical": "専門家に",
+              "kana": "せんもんかに"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "経緯",
+        "familyKey": "keii",
+        "surface": "経緯",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "けいい",
+        "example": {
+          "targetText": "経緯は分かったので次の対策を考えます。",
+          "base": {
+            "de": "Da der Verlauf klar ist, überlegen wir die nächsten Maßnahmen.",
+            "en": "Now that the course of events is clear, we will consider the next measures."
+          },
+          "readingVariant": "けいいはわかったのでつぎのたいさくをかんがえます。"
+        },
+        "base": {
+          "de": "Verlauf, Vorgeschichte",
+          "en": "course of events"
+        },
+        "surfaceChunk": {
+          "chunk": "経緯を",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "経緯は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "shoshin-yoyaku-no-nagare",
+      "title": {
+        "de": "Von der Vormerkung zum Besuch",
+        "en": "From provisional booking to a visit"
+      },
+      "situation": {
+        "de": "Du arbeitest am Empfang einer fiktiven Praxis und erläuterst einer Beratungsperson den örtlichen Buchungsablauf.",
+        "en": "You work at a fictional clinic reception and explain its booking process to a consultant."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Beratungsperson",
+            "en": "consultant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Du arbeitest am Empfang einer fiktiven Praxis und erläuterst einer Beratungsperson den örtlichen Buchungsablauf. Die andere Person sagt: „予約の流れを最初から最後まで説明してください。特に初診の方の場合をお願いします。“",
+        "en": "You work at a fictional clinic reception and explain its booking process to a consultant. The other person says: “予約の流れを最初から最後まで説明してください。特に初診の方の場合をお願いします。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "予約の流れを最初から最後まで説明してください。特に初診の方の場合をお願いします。",
+          "base": {
+            "de": "Bitte erklären Sie den gesamten Buchungsablauf, besonders für Personen beim Erstbesuch.",
+            "en": "Please explain the booking process from start to finish, particularly for first-time patients."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "よやくのながれをさいしょからさいごまでせつめいしてください。とくにしょしんのかたのばあいをおねがいします。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "初診の方の流れは、まずサイトで仮予約をしていただき、通常は二十四時間以内に確認メールが届きます。その後、来院時に問診票を書いていただきます。",
+          "base": {
+            "de": "Beim Erstbesuch buchen die Personen zunächst vorläufig auf der Website. Normalerweise kommt die Bestätigung binnen vierundzwanzig Stunden; beim Besuch füllen sie dann den Anamnesebogen aus.",
+            "en": "For first-time patients, we first have them make a provisional booking on the website. A confirmation email normally arrives within twenty-four hours. They then fill in the medical questionnaire when they visit."
+          },
+          "move": "explain",
+          "register": "keigo",
+          "units": [
+            "初診の",
+            "方の",
+            "流れは、",
+            "まず",
+            "サイトで",
+            "仮予約を",
+            "していただき、",
+            "通常は",
+            "二十四時間以内に",
+            "確認メールが",
+            "届きます。",
+            "その後、",
+            "来院時に",
+            "問診票を",
+            "書いて",
+            "いただきます。"
+          ],
+          "readingUnits": [
+            "しょしんの",
+            "かたの",
+            "ながれは、",
+            "まず",
+            "サイトで",
+            "かりよやくを",
+            "していただき、",
+            "つうじょうは",
+            "にじゅうよじかんいないに",
+            "かくにんメールが",
+            "とどきます。",
+            "そのご、",
+            "らいいんじに",
+            "もんしんひょうを",
+            "かいて",
+            "いただきます。"
+          ],
+          "readingVariant": "しょしんのかたのながれは、まずサイトでかりよやくをしていただき、つうじょうはにじゅうよじかんいないにかくにんメールがとどきます。そのご、らいいんじにもんしんひょうをかいていただきます。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "確認メールが届かない場合はどうなりますか。そこが一番問い合わせが多いはずです。",
+          "base": {
+            "de": "Was passiert, wenn die Bestätigung nicht ankommt? Dazu gibt es vermutlich die meisten Anfragen.",
+            "en": "What happens if the confirmation email does not arrive? That must be the most common enquiry."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "かくにんメールがとどかないばあいはどうなりますか。そこがいちばんといあわせがおおいはずです。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "届かない場合は迷惑メールをご確認いただき、そこにもなければ受付へお電話いただきます。仮予約は三日で無効になることになっております。",
+          "base": {
+            "de": "Wenn sie nicht ankommt, prüfen die Betreffenden ihre Spam-Mails und rufen andernfalls am Empfang an. Die Vormerkung wird nach drei Tagen ungültig.",
+            "en": "If it does not arrive, they check their spam mail and, if it is not there either, call reception. Provisional bookings are set to become invalid after three days."
+          },
+          "move": "clarify",
+          "register": "keigo",
+          "units": [
+            "届かない",
+            "場合は",
+            "迷惑メールを",
+            "ご確認いただき、",
+            "そこにも",
+            "なければ",
+            "受付へ",
+            "お電話",
+            "いただきます。",
+            "仮予約は",
+            "三日で",
+            "無効になることに",
+            "なっております。"
+          ],
+          "readingUnits": [
+            "とどかない",
+            "ばあいは",
+            "めいわくメールを",
+            "ごかくにんいただき、",
+            "そこにも",
+            "なければ",
+            "うけつけへ",
+            "おでんわ",
+            "いただきます。",
+            "かりよやくは",
+            "みっかで",
+            "むこうになることに",
+            "なっております。"
+          ],
+          "readingVariant": "とどかないばあいはめいわくメールをごかくにんいただき、そこにもなければうけつけへおでんわいただきます。かりよやくはみっかでむこうになることになっております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "高齢の方でネットを使わない場合、この流れは使えませんね。代わりはありますか。",
+          "base": {
+            "de": "Ältere Menschen ohne Internet können diesen Ablauf nicht nutzen. Gibt es eine Alternative?",
+            "en": "Older people who do not use the internet cannot use this process. Is there an alternative?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "こうれいのかたでネットをつかわないばあい、このながれはつかえませんね。かわりはありますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "ネットを使わない方には電話での予約を残しております。その場合は確認メールの代わりに、受付から折り返しお電話いたします。",
+          "base": {
+            "de": "Für Menschen ohne Internet bieten wir weiterhin Telefonbuchungen an. In diesem Fall ruft der Empfang zur Bestätigung zurück, statt eine E-Mail zu senden.",
+            "en": "We retain telephone booking for people who do not use the internet. In that case, reception calls back instead of sending a confirmation email."
+          },
+          "move": "propose",
+          "register": "keigo",
+          "units": [
+            "ネットを",
+            "使わない",
+            "方には",
+            "電話での",
+            "予約を",
+            "残しております。",
+            "その場合は",
+            "確認メールの",
+            "代わりに、",
+            "受付から",
+            "折り返し",
+            "お電話いたします。"
+          ],
+          "readingUnits": [
+            "ネットを",
+            "つかわない",
+            "かたには",
+            "でんわでの",
+            "よやくを",
+            "のこしております。",
+            "そのばあいは",
+            "かくにんメールの",
+            "かわりに、",
+            "うけつけから",
+            "おりかえし",
+            "おでんわいたします。"
+          ],
+          "readingVariant": "ネットをつかわないかたにはでんわでのよやくをのこしております。そのばあいはかくにんメールのかわりに、うけつけからおりかえしおでんわいたします。"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "初診の",
+          "方の",
+          "流れは、まず",
+          "サイトで仮予約を",
+          "していただき、"
+        ],
+        "chunkReadings": [
+          "しょしんの",
+          "かたの",
+          "ながれは、まず",
+          "サイトでかりよやくを",
+          "していただき、"
+        ],
+        "distractors": [
+          "サイトで仮予約が",
+          "取り消して、"
+        ],
+        "frameSuffix": "通常は二十四時間以内に確認メールが届きます。その後、来院時に問診票を書いていただきます。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "迷惑メールを"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "そこにもなければ受付へお電話いただきます。仮予約は三日で無効になることになっております。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "届かない場合は",
+            "acceptedAnswers": [
+              "届かない場合は",
+              "とどかないばあいは"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "とどかないばあいは",
+            "choices": [
+              "届かない場合は",
+              "届いた場合は",
+              "届かなくても",
+              "届く前に"
+            ]
+          },
+          {
+            "answer": "ご確認いただき、",
+            "acceptedAnswers": [
+              "ご確認いただき、",
+              "ごかくにんいただき、"
+            ],
+            "kind": "form",
+            "kanaAnswer": "ごかくにんいただき、",
+            "cue": {
+              "de": "prüfen lassen – höflich um Prüfung bitten",
+              "en": "have checked – politely request checking"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "ネットを使わない方には電話での予約を残しております。"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "確認メールの代わりに、受付から折り返しお電話いたします。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "その場合は",
+            "acceptedAnswers": [
+              "その場合は",
+              "そのばあいは"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "そのばあいは",
+            "choices": [
+              "その場合は",
+              "その代わりに",
+              "そのために",
+              "その結果"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "初診の方の流れは、まずサイトで仮予約をしていただき、通常は二十四時間以内に確認メールが届きます。その後、来院時に",
+        "answer": "問診票を",
+        "acceptedAnswers": [
+          "問診票を",
+          "もんしんひょうを"
+        ],
+        "after": "書いていただきます。",
+        "fallbackChoices": [
+          "問診票を",
+          "契約書を",
+          "履歴書を",
+          "領収書を"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Einen Ausnahmefall abfangen",
+          "en": "Handling an exception"
+        },
+        "rule": {
+          "de": "Erkläre zuerst die Prüfung bei fehlender E-Mail und nenne danach die örtliche Ablaufregel für die Vormerkung.",
+          "en": "First explain what to check when the email is missing, then give the clinic’s expiry rule for provisional bookings."
+        },
+        "examples": [
+          {
+            "targetText": "届かない場合は迷惑メールをご確認いただき、そこにもなければ受付へお電話いただきます。仮予約は三日で無効になることになっております。",
+            "base": {
+              "de": "Wenn sie nicht ankommt, prüfen die Betreffenden ihre Spam-Mails und rufen andernfalls am Empfang an. Die Vormerkung wird nach drei Tagen ungültig.",
+              "en": "If it does not arrive, they check their spam mail and, if it is not there either, call reception. Provisional bookings are set to become invalid after three days."
+            },
+            "highlights": [
+              "届かない場合は"
+            ]
+          },
+          {
+            "targetText": "届かない場合は迷惑メールをご確認いただき、それでもなければお電話ください。",
+            "base": {
+              "de": "Wenn die E-Mail nicht ankommt, prüfen Sie bitte die Spam-Mails und rufen Sie an, falls sie auch dort fehlt.",
+              "en": "If the email does not arrive, please check your spam mail and call if it is still missing."
+            },
+            "highlights": [
+              "届かない場合は"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "流れ",
+          "kind": "noun",
+          "base": {
+            "de": "Ablauf",
+            "en": "flow, process"
+          },
+          "reading": "ながれ",
+          "acceptedAnswers": [
+            "流れ",
+            "ながれ"
+          ]
+        },
+        {
+          "targetText": "初診",
+          "kind": "noun",
+          "base": {
+            "de": "Erstbesuch in der Praxis",
+            "en": "first consultation"
+          },
+          "reading": "しょしん",
+          "acceptedAnswers": [
+            "初診",
+            "しょしん"
+          ]
+        },
+        {
+          "targetText": "仮予約",
+          "kind": "noun",
+          "base": {
+            "de": "vorläufige Buchung",
+            "en": "provisional booking"
+          },
+          "reading": "かりよやく",
+          "acceptedAnswers": [
+            "仮予約",
+            "かりよやく"
+          ]
+        },
+        {
+          "targetText": "問診票",
+          "kind": "noun",
+          "base": {
+            "de": "Anamnesebogen",
+            "en": "medical questionnaire"
+          },
+          "reading": "もんしんひょう",
+          "acceptedAnswers": [
+            "問診票",
+            "もんしんひょう"
+          ]
+        },
+        {
+          "targetText": "無効",
+          "kind": "noun",
+          "base": {
+            "de": "Ungültigkeit",
+            "en": "invalidity"
+          },
+          "reading": "むこう",
+          "acceptedAnswers": [
+            "無効",
+            "むこう"
+          ]
+        },
+        {
+          "targetText": "折り返し",
+          "kind": "adverb",
+          "base": {
+            "de": "mit Rückruf",
+            "en": "by return call"
+          },
+          "reading": "おりかえし",
+          "acceptedAnswers": [
+            "折り返し",
+            "おりかえし"
+          ]
+        },
+        {
+          "targetText": "ご確認いただき",
+          "kind": "frame",
+          "base": {
+            "de": "(höflich) prüfen lassen",
+            "en": "respectfully have someone check"
+          },
+          "reading": "ごかくにんいただき",
+          "acceptedAnswers": [
+            "ご確認いただき",
+            "ごかくにんいただき"
+          ]
+        },
+        {
+          "targetText": "その場合は",
+          "kind": "frame",
+          "base": {
+            "de": "in diesem Fall",
+            "en": "in that case"
+          },
+          "reading": "そのばあいは",
+          "acceptedAnswers": [
+            "その場合は",
+            "そのばあいは"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "初診の",
+              "kana": "しょしんの"
+            },
+            {
+              "canonical": "方の",
+              "kana": "かたの"
+            },
+            {
+              "canonical": "サイトで",
+              "kana": "サイトで"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "届かない",
+              "kana": "とどかない"
+            },
+            {
+              "canonical": "場合は",
+              "kana": "ばあいは"
+            },
+            {
+              "canonical": "迷惑メールを",
+              "kana": "めいわくメールを"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "ネットを",
+              "kana": "ネットを"
+            },
+            {
+              "canonical": "使わない",
+              "kana": "つかわない"
+            },
+            {
+              "canonical": "方には",
+              "kana": "かたには"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "流れ",
+        "familyKey": "nagare",
+        "surface": "流れ",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "ながれ",
+        "example": {
+          "targetText": "流れを確認してから予約を進めます。",
+          "base": {
+            "de": "Nach Prüfung des Ablaufs gehen wir mit der Buchung weiter.",
+            "en": "After checking the process, we proceed with the booking."
+          },
+          "readingVariant": "ながれをかくにんしてからよやくをすすめます。"
+        },
+        "base": {
+          "de": "Ablauf",
+          "en": "flow, process"
+        },
+        "surfaceChunk": {
+          "chunk": "流れは、",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": "、"
+        },
+        "exampleChunk": {
+          "chunk": "流れを",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "shea-jitensha-no-kouka",
+      "title": {
+        "de": "Die Wirkung der Leihräder",
+        "en": "The effect of the shared bikes"
+      },
+      "situation": {
+        "de": "Eine skeptische Person aus der Nachbarschaft stellt das örtliche Leihradsystem infrage. Du beziehst dich auf die Nutzungsdaten dieser fiktiven Gemeinde.",
+        "en": "A sceptical neighbour questions the local shared-bike scheme. You refer to the usage records of this fictional town."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "teinei",
+          "teinei",
+          "teinei"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "skeptische Person aus der Nachbarschaft",
+            "en": "sceptical neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine skeptische Person aus der Nachbarschaft stellt das örtliche Leihradsystem infrage. Du beziehst dich auf die Nutzungsdaten dieser fiktiven Gemeinde. Die andere Person sagt: „駅前のシェア自転車、誰も使っていないように見えますよ。あれに町のお金を使う意味がありますか。“",
+        "en": "A sceptical neighbour questions the local shared-bike scheme. You refer to the usage records of this fictional town. The other person says: “駅前のシェア自転車、誰も使っていないように見えますよ。あれに町のお金を使う意味がありますか。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "駅前のシェア自転車、誰も使っていないように見えますよ。あれに町のお金を使う意味がありますか。",
+          "base": {
+            "de": "Die Leihräder am Bahnhof scheinen ungenutzt. Hat es Sinn, dafür Gemeindegeld auszugeben?",
+            "en": "The shared bikes by the station look unused. Is there any point spending town money on them?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "えきまえのシェアじてんしゃ、だれもつかっていないようにみえますよ。あれにまちのおかねをつかういみがありますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "効果が見えにくいのは確かですが、駅までのバスが減った分を補うために町が置いたものです。町の利用記録では、朝の時間帯に半分以上が動いています。",
+          "base": {
+            "de": "Die Wirkung ist tatsächlich schwer zu erkennen. Die Gemeinde stellte sie aber als Ausgleich für weniger Busse zum Bahnhof auf; laut Nutzungsdaten fährt morgens mindestens die Hälfte.",
+            "en": "The effect is admittedly hard to see, but the town installed them to make up for reduced bus services to the station. The town’s records show at least half are in use in the morning."
+          },
+          "move": "explain",
+          "register": "teinei",
+          "units": [
+            "効果が",
+            "見えにくいのは",
+            "確かですが、",
+            "駅までの",
+            "バスが",
+            "減った",
+            "分を",
+            "補うために",
+            "町が",
+            "置いたものです。",
+            "町の",
+            "利用記録では、",
+            "朝の",
+            "時間帯に",
+            "半分以上が",
+            "動いています。"
+          ],
+          "readingUnits": [
+            "こうかが",
+            "みえにくいのは",
+            "たしかですが、",
+            "えきまでの",
+            "バスが",
+            "へった",
+            "ぶんを",
+            "おぎなうために",
+            "まちが",
+            "おいたものです。",
+            "まちの",
+            "りようきろくでは、",
+            "あさの",
+            "じかんたいに",
+            "はんぶんいじょうが",
+            "うごいています。"
+          ],
+          "readingVariant": "こうかがみえにくいのはたしかですが、えきまでのバスがへったぶんをおぎなうためにまちがおいたものです。まちのりようきろくでは、あさのじかんたいにはんぶんいじょうがうごいています。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "朝だけ使われても、昼間は放置されているなら無駄じゃないですか。",
+          "base": {
+            "de": "Wenn sie nur morgens genutzt werden und tagsüber herumstehen, ist das nicht Verschwendung?",
+            "en": "If they are only used in the morning and left standing during the day, is that not wasteful?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "あさだけつかわれても、ひるまはほうちされているならむだじゃないですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "昼に止まっているのは無駄というより、夕方の利用者のために置いてある状態です。試算では、バスを一本増やす費用の半分以下ということです。",
+          "base": {
+            "de": "Dass sie mittags stehen, ist eher Bereitstellung für die Abendnutzer als Verschwendung. Laut Schätzung kostet das höchstens die Hälfte einer zusätzlichen Busfahrt.",
+            "en": "Their standing idle at midday is not so much waste as a state of being kept ready for evening users. According to the estimate, it costs at most half as much as adding one bus service."
+          },
+          "move": "rebut",
+          "register": "teinei",
+          "units": [
+            "昼に",
+            "止まっているのは",
+            "無駄というより、",
+            "夕方の",
+            "利用者のために",
+            "置いてある",
+            "状態です。",
+            "試算では、",
+            "バスを",
+            "一本",
+            "増やす",
+            "費用の",
+            "半分以下という",
+            "ことです。"
+          ],
+          "readingUnits": [
+            "ひるに",
+            "とまっているのは",
+            "むだというより、",
+            "ゆうがたの",
+            "りようしゃのために",
+            "おいてある",
+            "じょうたいです。",
+            "しさんでは、",
+            "バスを",
+            "いっぽん",
+            "ふやす",
+            "ひようの",
+            "はんぶんいかという",
+            "ことです。"
+          ],
+          "readingVariant": "ひるにとまっているのはむだというより、ゆうがたのりようしゃのためにおいてあるじょうたいです。しさんでは、バスをいっぽんふやすひようのはんぶんいかということです。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "では、半年後に利用が増えていなかったら、やめるべきですか。",
+          "base": {
+            "de": "Sollten wir also aufhören, wenn die Nutzung in einem halben Jahr nicht gestiegen ist?",
+            "en": "So, should we stop if usage has not increased in six months?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "では、はんとしごにりようがふえていなかったら、やめるべきですか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "半年で判断するなら、朝の利用率が四割を切ったらやめると決めるべきです。それ以上なら反対側でも試すべきです。",
+          "base": {
+            "de": "Wenn wir nach sechs Monaten entscheiden, sollten wir festlegen: Unter vierzig Prozent Morgennutzung wird eingestellt. Bei vierzig Prozent oder mehr sollten wir es auch auf der anderen Seite versuchen.",
+            "en": "If we judge after six months, we should decide to stop if morning usage falls below forty percent. At forty percent or more, we should try the other side too."
+          },
+          "move": "conclude",
+          "register": "teinei",
+          "units": [
+            "半年で",
+            "判断するなら、",
+            "朝の",
+            "利用率が",
+            "四割を",
+            "切ったら",
+            "やめると",
+            "決めるべきです。",
+            "それ以上なら",
+            "反対側でも",
+            "試すべきです。"
+          ],
+          "readingUnits": [
+            "はんとしで",
+            "はんだんするなら、",
+            "あさの",
+            "りようりつが",
+            "よんわりを",
+            "きったら",
+            "やめると",
+            "きめるべきです。",
+            "それいじょうなら",
+            "はんたいがわでも",
+            "ためすべきです。"
+          ],
+          "readingVariant": "はんとしではんだんするなら、あさのりようりつがよんわりをきったらやめるときめるべきです。それいじょうならはんたいがわでもためすべきです。"
+        }
+      ],
+      "build": {
+        "framePrefix": "効果が見えにくいのは確かですが、",
+        "chunks": [
+          "駅までの",
+          "バスが",
+          "減った",
+          "分を",
+          "補うために町が"
+        ],
+        "chunkReadings": [
+          "えきまでの",
+          "バスが",
+          "へった",
+          "ぶんを",
+          "おぎなうためにまちが"
+        ],
+        "distractors": [
+          "増えた",
+          "補うために店が"
+        ],
+        "frameSuffix": "置いたものです。町の利用記録では、朝の時間帯に半分以上が動いています。"
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "昼に止まっているのは"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "夕方の利用者のために"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": "状態です。試算では、バスを一本増やす費用の半分以下ということです。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "無駄というより、",
+            "acceptedAnswers": [
+              "無駄というより、",
+              "むだというより、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "むだというより、",
+            "choices": [
+              "無駄というより、",
+              "無駄なので、",
+              "無駄のうえに、",
+              "無駄だとしても、"
+            ]
+          },
+          {
+            "answer": "置いてある",
+            "acceptedAnswers": [
+              "置いてある",
+              "おいてある"
+            ],
+            "kind": "form",
+            "kanaAnswer": "おいてある",
+            "cue": {
+              "de": "aufstellen – bereitgestellter Zustand",
+              "en": "place – state of having been put there"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "半年で"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "朝の利用率が四割を切ったらやめると決めるべきです。それ以上なら反対側でも試すべきです。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "判断するなら、",
+            "acceptedAnswers": [
+              "判断するなら、",
+              "はんだんするなら、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "はんだんするなら、",
+            "choices": [
+              "判断するなら、",
+              "判断したので、",
+              "判断しないなら、",
+              "判断するまで、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "効果が見えにくいのは確かですが、駅までのバスが減った分を補うために町が置いたものです。町の",
+        "answer": "利用記録では、",
+        "acceptedAnswers": [
+          "利用記録では、",
+          "りようきろくでは、"
+        ],
+        "after": "朝の時間帯に半分以上が動いています。",
+        "fallbackChoices": [
+          "利用記録では、",
+          "天気予報では、",
+          "料理本では、",
+          "求人票では、"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Den Nutzen anders einordnen",
+          "en": "Reframing the benefit"
+        },
+        "rule": {
+          "de": "Ordne die Standzeit als Bereitstellung ein und stütze den Vergleich auf die ausdrücklich genannte Schätzung.",
+          "en": "Reframe the idle time as availability and base the comparison on the stated estimate."
+        },
+        "examples": [
+          {
+            "targetText": "昼に止まっているのは無駄というより、夕方の利用者のために置いてある状態です。試算では、バスを一本増やす費用の半分以下ということです。",
+            "base": {
+              "de": "Dass sie mittags stehen, ist eher Bereitstellung für die Abendnutzer als Verschwendung. Laut Schätzung kostet das höchstens die Hälfte einer zusätzlichen Busfahrt.",
+              "en": "Their standing idle at midday is not so much waste as a state of being kept ready for evening users. According to the estimate, it costs at most half as much as adding one bus service."
+            },
+            "highlights": [
+              "無駄というより、"
+            ]
+          },
+          {
+            "targetText": "昼は無駄というより、夕方に使えるように置いてあるのです。",
+            "base": {
+              "de": "Mittags ist es eher eine Bereitstellung für den Abend als Verschwendung.",
+              "en": "At midday, rather than being waste, they are kept there ready for evening use."
+            },
+            "highlights": [
+              "無駄というより"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "効果",
+          "kind": "noun",
+          "base": {
+            "de": "Wirkung",
+            "en": "effect"
+          },
+          "reading": "こうか",
+          "acceptedAnswers": [
+            "効果",
+            "こうか"
+          ]
+        },
+        {
+          "targetText": "利用記録",
+          "kind": "noun",
+          "base": {
+            "de": "Nutzungsaufzeichnung",
+            "en": "usage record"
+          },
+          "reading": "りようきろく",
+          "acceptedAnswers": [
+            "利用記録",
+            "りようきろく"
+          ]
+        },
+        {
+          "targetText": "時間帯",
+          "kind": "noun",
+          "base": {
+            "de": "Tageszeitfenster",
+            "en": "time period"
+          },
+          "reading": "じかんたい",
+          "acceptedAnswers": [
+            "時間帯",
+            "じかんたい"
+          ]
+        },
+        {
+          "targetText": "試算",
+          "kind": "noun",
+          "base": {
+            "de": "vorläufige Berechnung",
+            "en": "estimate"
+          },
+          "reading": "しさん",
+          "acceptedAnswers": [
+            "試算",
+            "しさん"
+          ]
+        },
+        {
+          "targetText": "利用率",
+          "kind": "noun",
+          "base": {
+            "de": "Nutzungsquote",
+            "en": "usage rate"
+          },
+          "reading": "りようりつ",
+          "acceptedAnswers": [
+            "利用率",
+            "りようりつ"
+          ]
+        },
+        {
+          "targetText": "反対側",
+          "kind": "noun",
+          "base": {
+            "de": "gegenüberliegende Seite",
+            "en": "opposite side"
+          },
+          "reading": "はんたいがわ",
+          "acceptedAnswers": [
+            "反対側",
+            "はんたいがわ"
+          ]
+        },
+        {
+          "targetText": "無駄というより",
+          "kind": "frame",
+          "base": {
+            "de": "eher … als Verschwendung",
+            "en": "rather than waste"
+          },
+          "reading": "むだというより",
+          "acceptedAnswers": [
+            "無駄というより",
+            "むだというより"
+          ]
+        },
+        {
+          "targetText": "試すべきです",
+          "kind": "frame",
+          "base": {
+            "de": "man sollte es ausprobieren",
+            "en": "it should be tried"
+          },
+          "reading": "ためすべきです",
+          "acceptedAnswers": [
+            "試すべきです",
+            "ためすべきです"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "効果が",
+              "kana": "こうかが"
+            },
+            {
+              "canonical": "見えにくいのは",
+              "kana": "みえにくいのは"
+            },
+            {
+              "canonical": "駅までの",
+              "kana": "えきまでの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "昼に",
+              "kana": "ひるに"
+            },
+            {
+              "canonical": "止まっているのは",
+              "kana": "とまっているのは"
+            },
+            {
+              "canonical": "夕方の",
+              "kana": "ゆうがたの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "半年で",
+              "kana": "はんとしで"
+            },
+            {
+              "canonical": "朝の",
+              "kana": "あさの"
+            },
+            {
+              "canonical": "利用率が",
+              "kana": "りようりつが"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "効果",
+        "familyKey": "kouka",
+        "surface": "効果",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "こうか",
+        "example": {
+          "targetText": "効果は利用記録を見てから判断します。",
+          "base": {
+            "de": "Die Wirkung beurteilen wir nach Prüfung der Nutzungsdaten.",
+            "en": "We judge the effect after looking at usage records."
+          },
+          "readingVariant": "こうかはりようきろくをみてからはんだんします。"
+        },
+        "base": {
+          "de": "Wirkung",
+          "en": "effect"
+        },
+        "surfaceChunk": {
+          "chunk": "効果が",
+          "tail": "が",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "効果は",
+          "tail": "は",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "kouen-yakan-heisa-no-keika",
+      "title": {
+        "de": "Wie der Antrag zur Parksperre entstand",
+        "en": "How the park closure request came about"
+      },
+      "situation": {
+        "de": "Bei der Gemeindeverwaltung erläuterst du, wie der fiktive örtliche Antrag auf eine nächtliche Parksperre entstand.",
+        "en": "At the town office, you explain how a fictional local request for a night-time park closure developed."
+      },
+      "episodeShape": "precision",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "keigo",
+          "keigo",
+          "keigo"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Gemeindeverwaltung",
+            "en": "town official"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Gemeindeverwaltung erläuterst du, wie der fiktive örtliche Antrag auf eine nächtliche Parksperre entstand. Die andere Person sagt: „公園の夜間閉鎖を要望された件ですが、どのような経過でその結論に至ったのか、順を追って説明してください。“",
+        "en": "At the town office, you explain how a fictional local request for a night-time park closure developed. The other person says: “公園の夜間閉鎖を要望された件ですが、どのような経過でその結論に至ったのか、順を追って説明してください。”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "公園の夜間閉鎖を要望された件ですが、どのような経過でその結論に至ったのか、順を追って説明してください。",
+          "base": {
+            "de": "Zum Antrag auf nächtliche Parksperrung: Bitte erläutern Sie der Reihe nach, wie es zu diesem Schluss kam.",
+            "en": "Regarding your request to close the park at night, please explain step by step how you reached that conclusion."
+          },
+          "interlocutorId": "a",
+          "readingVariant": "こうえんのやかんへいさをようぼうされたけんですが、どのようなけいかでそのけつろんにいたったのか、じゅんをおってせつめいしてください。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "住民から夜の騒音の苦情が出て、町内会が三か月記録しました。その結果週末の深夜に集中していたため、影響の少ない時間帯だけの閉鎖を要望しました。",
+          "base": {
+            "de": "Nach Lärmbeschwerden der Anwohner führte die Nachbarschaft drei Monate lang Protokoll. Der Lärm konzentrierte sich auf späte Wochenendnächte, deshalb beantragten wir eine Sperre nur für Zeiten mit geringen Auswirkungen.",
+            "en": "After residents complained about night-time noise, the neighbourhood association kept records for three months. The noise was concentrated late at night on weekends, so we requested closure only during less disruptive hours."
+          },
+          "move": "explain",
+          "register": "keigo",
+          "units": [
+            "住民から",
+            "夜の",
+            "騒音の",
+            "苦情が",
+            "出て、",
+            "町内会が",
+            "三か月",
+            "記録しました。",
+            "その結果",
+            "週末の",
+            "深夜に",
+            "集中していたため、",
+            "影響の",
+            "少ない",
+            "時間帯だけの",
+            "閉鎖を",
+            "要望しました。"
+          ],
+          "readingUnits": [
+            "じゅうみんから",
+            "よるの",
+            "そうおんの",
+            "くじょうが",
+            "でて、",
+            "ちょうないかいが",
+            "さんかげつ",
+            "きろくしました。",
+            "そのけっか",
+            "しゅうまつの",
+            "しんやに",
+            "しゅうちゅうしていたため、",
+            "えいきょうの",
+            "すくない",
+            "じかんたいだけの",
+            "へいさを",
+            "ようぼうしました。"
+          ],
+          "readingVariant": "じゅうみんからよるのそうおんのくじょうがでて、ちょうないかいがさんかげつきろくしました。そのけっかしゅうまつのしんやにしゅうちゅうしていたため、えいきょうのすくないじかんたいだけのへいさをようぼうしました。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "閉鎖すると夜勤帰りの方が通れなくなります。その影響は考えましたか。",
+          "base": {
+            "de": "Bei einer Sperre können Menschen nach der Nachtschicht nicht hindurchgehen. Haben Sie diese Auswirkung bedacht?",
+            "en": "Closing it would block people returning from night shifts. Have you considered that impact?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "へいさするとやきんがえりのかたがとおれなくなります。そのえいきょうはかんがえましたか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "影響を小さくするため、閉鎖するのは東側の広場だけで、夜勤の方が使う南北の通路は通れる形を提案しております。",
+          "base": {
+            "de": "Um die Auswirkungen klein zu halten, schlagen wir nur die Sperre des östlichen Platzes vor; die von Nachtschichtarbeitenden genutzte Nord-Süd-Passage bleibt begehbar.",
+            "en": "To minimise the impact, we propose closing only the eastern square, with the north-south path used by night-shift workers remaining passable."
+          },
+          "move": "clarify",
+          "register": "keigo",
+          "units": [
+            "影響を",
+            "小さくするため、",
+            "閉鎖するのは",
+            "東側の",
+            "広場だけで、",
+            "夜勤の",
+            "方が",
+            "使う",
+            "南北の",
+            "通路は",
+            "通れる",
+            "形を",
+            "提案しております。"
+          ],
+          "readingUnits": [
+            "えいきょうを",
+            "ちいさくするため、",
+            "へいさするのは",
+            "ひがしがわの",
+            "ひろばだけで、",
+            "やきんの",
+            "かたが",
+            "つかう",
+            "なんぼくの",
+            "つうろは",
+            "とおれる",
+            "かたちを",
+            "ていあんしております。"
+          ],
+          "readingVariant": "えいきょうをちいさくするため、へいさするのはひがしがわのひろばだけで、やきんのかたがつかうなんぼくのつうろはとおれるかたちをていあんしております。"
+        },
+        {
+          "speaker": "them",
+          "targetText": "最終的に要望書として出す内容を、一文でまとめるとどうなりますか。",
+          "base": {
+            "de": "Wie lautet der endgültige Inhalt des Antrags in einem Satz?",
+            "en": "How would you summarise the final written request in one sentence?"
+          },
+          "interlocutorId": "a",
+          "readingVariant": "さいしゅうてきにようぼうしょとしてだすないようを、いちぶんでまとめるとどうなりますか。"
+        },
+        {
+          "speaker": "you",
+          "targetText": "つまり、週末の零時から五時まで東側の広場だけを閉鎖し、南北の通路は常に通れるようにする、ということです。",
+          "base": {
+            "de": "Kurz gesagt: Am Wochenende wird nur der östliche Platz von null bis fünf Uhr gesperrt, während die Nord-Süd-Passage stets begehbar bleibt.",
+            "en": "In short, close only the eastern square from midnight to five on weekends, while keeping the north-south path passable at all times."
+          },
+          "move": "summarize",
+          "register": "keigo",
+          "units": [
+            "つまり、",
+            "週末の",
+            "零時から",
+            "五時まで",
+            "東側の",
+            "広場だけを",
+            "閉鎖し、",
+            "南北の",
+            "通路は",
+            "常に",
+            "通れるようにする、",
+            "という",
+            "ことです。"
+          ],
+          "readingUnits": [
+            "つまり、",
+            "しゅうまつの",
+            "れいじから",
+            "ごじまで",
+            "ひがしがわの",
+            "ひろばだけを",
+            "へいさし、",
+            "なんぼくの",
+            "つうろは",
+            "つねに",
+            "とおれるようにする、",
+            "という",
+            "ことです。"
+          ],
+          "readingVariant": "つまり、しゅうまつのれいじからごじまでひがしがわのひろばだけをへいさし、なんぼくのつうろはつねにとおれるようにする、ということです。"
+        }
+      ],
+      "build": {
+        "framePrefix": "住民から夜の騒音の苦情が出て、町内会が三か月記録しました。その結果週末の深夜に集中していたため、",
+        "chunks": [
+          "影響の",
+          "少ない",
+          "時間帯だけの",
+          "閉鎖を",
+          "要望しました。"
+        ],
+        "chunkReadings": [
+          "えいきょうの",
+          "すくない",
+          "じかんたいだけの",
+          "へいさを",
+          "ようぼうしました。"
+        ],
+        "distractors": [
+          "多い",
+          "工事を"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "影響を"
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "閉鎖するのは東側の広場だけで、夜勤の方が使う南北の通路は通れる形を"
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "小さくするため、",
+            "acceptedAnswers": [
+              "小さくするため、",
+              "ちいさくするため、"
+            ],
+            "kind": "frame",
+            "kanaAnswer": "ちいさくするため、",
+            "choices": [
+              "小さくするため、",
+              "小さくしたため、",
+              "小さくするまで、",
+              "小さくするものの、"
+            ]
+          },
+          {
+            "answer": "提案しております。",
+            "acceptedAnswers": [
+              "提案しております。",
+              "ていあんしております。"
+            ],
+            "kind": "form",
+            "kanaAnswer": "ていあんしております。",
+            "cue": {
+              "de": "vorschlagen – höfliche laufende Handlung",
+              "en": "propose – humble ongoing form"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": "週末の零時から五時まで東側の広場だけを閉鎖し、南北の通路は常に通れるようにする、ということです。"
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "つまり、",
+            "acceptedAnswers": [
+              "つまり、"
+            ],
+            "kind": "connector",
+            "kanaAnswer": "つまり、",
+            "choices": [
+              "つまり、",
+              "しかし、",
+              "一方、",
+              "そのため、"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "住民から夜の騒音の",
+        "answer": "苦情が",
+        "acceptedAnswers": [
+          "苦情が",
+          "くじょうが"
+        ],
+        "after": "出て、町内会が三か月記録しました。その結果週末の深夜に集中していたため、影響の少ない時間帯だけの閉鎖を要望しました。",
+        "fallbackChoices": [
+          "苦情が",
+          "歓声が",
+          "笑い声が",
+          "拍手が"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den Umfang des Antrags abgrenzen",
+          "en": "Defining the scope of a request"
+        },
+        "rule": {
+          "de": "Unterscheide den zu sperrenden Platz vom weiterhin nutzbaren Durchgang, um den Einwand genau zu beantworten.",
+          "en": "Distinguish the square proposed for closure from the passage that remains usable to answer the objection precisely."
+        },
+        "examples": [
+          {
+            "targetText": "影響を小さくするため、閉鎖するのは東側の広場だけで、夜勤の方が使う南北の通路は通れる形を提案しております。",
+            "base": {
+              "de": "Um die Auswirkungen klein zu halten, schlagen wir nur die Sperre des östlichen Platzes vor; die von Nachtschichtarbeitenden genutzte Nord-Süd-Passage bleibt begehbar.",
+              "en": "To minimise the impact, we propose closing only the eastern square, with the north-south path used by night-shift workers remaining passable."
+            },
+            "highlights": [
+              "小さくするため、"
+            ]
+          },
+          {
+            "targetText": "影響を小さくするため、広場だけを閉鎖する形を提案しております。",
+            "base": {
+              "de": "Um die Auswirkungen gering zu halten, schlagen wir die Sperrung nur des Platzes vor.",
+              "en": "To minimise the impact, we propose closing only the square."
+            },
+            "highlights": [
+              "小さくするため"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "影響",
+          "kind": "noun",
+          "base": {
+            "de": "Auswirkung",
+            "en": "impact"
+          },
+          "reading": "えいきょう",
+          "acceptedAnswers": [
+            "影響",
+            "えいきょう"
+          ]
+        },
+        {
+          "targetText": "苦情",
+          "kind": "noun",
+          "base": {
+            "de": "Beschwerde",
+            "en": "complaint"
+          },
+          "reading": "くじょう",
+          "acceptedAnswers": [
+            "苦情",
+            "くじょう"
+          ]
+        },
+        {
+          "targetText": "夜間閉鎖",
+          "kind": "noun",
+          "base": {
+            "de": "nächtliche Sperrung",
+            "en": "night-time closure"
+          },
+          "reading": "やかんへいさ",
+          "acceptedAnswers": [
+            "夜間閉鎖",
+            "やかんへいさ"
+          ]
+        },
+        {
+          "targetText": "要望",
+          "kind": "noun",
+          "base": {
+            "de": "Antrag, Wunsch",
+            "en": "request"
+          },
+          "reading": "ようぼう",
+          "acceptedAnswers": [
+            "要望",
+            "ようぼう"
+          ]
+        },
+        {
+          "targetText": "夜勤",
+          "kind": "noun",
+          "base": {
+            "de": "Nachtschicht",
+            "en": "night shift"
+          },
+          "reading": "やきん",
+          "acceptedAnswers": [
+            "夜勤",
+            "やきん"
+          ]
+        },
+        {
+          "targetText": "通路",
+          "kind": "noun",
+          "base": {
+            "de": "Durchgang",
+            "en": "passage"
+          },
+          "reading": "つうろ",
+          "acceptedAnswers": [
+            "通路",
+            "つうろ"
+          ]
+        },
+        {
+          "targetText": "その結果",
+          "kind": "connector",
+          "base": {
+            "de": "infolgedessen",
+            "en": "as a result"
+          },
+          "reading": "そのけっか",
+          "acceptedAnswers": [
+            "その結果",
+            "そのけっか"
+          ]
+        },
+        {
+          "targetText": "小さくするため",
+          "kind": "frame",
+          "base": {
+            "de": "um es gering zu halten",
+            "en": "to minimise it"
+          },
+          "reading": "ちいさくするため",
+          "acceptedAnswers": [
+            "小さくするため",
+            "ちいさくするため"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            {
+              "canonical": "影響の",
+              "kana": "えいきょうの"
+            },
+            {
+              "canonical": "住民から",
+              "kana": "じゅうみんから"
+            },
+            {
+              "canonical": "夜の",
+              "kana": "よるの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            {
+              "canonical": "影響を",
+              "kana": "えいきょうを"
+            },
+            {
+              "canonical": "閉鎖するのは",
+              "kana": "へいさするのは"
+            },
+            {
+              "canonical": "東側の",
+              "kana": "ひがしがわの"
+            }
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            {
+              "canonical": "週末の",
+              "kana": "しゅうまつの"
+            },
+            {
+              "canonical": "零時から",
+              "kana": "れいじから"
+            },
+            {
+              "canonical": "五時まで",
+              "kana": "ごじまで"
+            }
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "影響",
+        "familyKey": "eikyou",
+        "surface": "影響",
+        "turnIndex": 1,
+        "pos": "noun",
+        "reading": "えいきょう",
+        "example": {
+          "targetText": "影響を調べてから閉鎖する時間を提案します。",
+          "base": {
+            "de": "Nach Prüfung der Auswirkungen schlagen wir Sperrzeiten vor.",
+            "en": "After examining the impact, we propose hours for closure."
+          },
+          "readingVariant": "えいきょうをしらべてからへいさするじかんをていあんします。"
+        },
+        "base": {
+          "de": "Auswirkung",
+          "en": "impact"
+        },
+        "surfaceChunk": {
+          "chunk": "影響の",
+          "tail": "の",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        },
+        "exampleChunk": {
+          "chunk": "影響を",
+          "tail": "を",
+          "tailKind": "particle",
+          "trailingPunct": ""
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

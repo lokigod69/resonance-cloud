@@ -1,0 +1,4028 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "targetLanguage": "Russian",
+  "targetLanguageCode": "ru-RU",
+  "authoredBaseLanguage": "German",
+  "level": "B2",
+  "pathNumber": 1,
+  "slug": "weighing-options",
+  "pathTitle": {
+    "de": "Möglichkeiten abwägen",
+    "en": "Weighing options"
+  },
+  "pathFunction": {
+    "de": "Optionen vergleichen und Empfehlungen an neue Bedingungen anpassen.",
+    "en": "Compare options and adapt recommendations to new conditions."
+  },
+  "specRef": {
+    "pathSpec": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json",
+    "pathSpecSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4",
+    "ledger": "B2_RUSSIAN_P1_P2_AUTHORING_SPEC_V3.json#/trophyLedger/rows",
+    "ledgerSha256": "625000a5d5084f1b22dcb1eabee9981e45dd246d663b0ebecf714ab941cc73d4"
+  },
+  "authoring": {
+    "source": "Codex GPT-6",
+    "runId": "russian-b2-p1-p2-20261006-author",
+    "date": "2026-10-06"
+  },
+  "lessons": [
+    {
+      "lessonNumber": 1,
+      "slug": "rent-vs-commute",
+      "title": {
+        "de": "Miete gegen Fahrzeit",
+        "en": "Rent versus travel time"
+      },
+      "situation": {
+        "de": "Bei der Wohnungsbesichtigung vergleichst du zwei Angebote mit der Immobilienberatung.",
+        "en": "At a viewing, you compare two flats with the letting agent."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Immobilienberatung",
+            "en": "letting agent"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Bei der Wohnungsbesichtigung vergleichst du zwei Angebote mit der Immobilienberatung. Die andere Person sagt: „Есть две квартиры: одна в центре, но дороже, другая дешевле, но час до работы. Какую смотрим?“",
+        "en": "At a viewing, you compare two flats with the letting agent. The other person says: “Есть две квартиры: одна в центре, но дороже, другая дешевле, но час до работы. Какую смотрим?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Есть две квартиры: одна в центре, но дороже, другая дешевле, но час до работы. Какую смотрим?",
+          "base": {
+            "de": "Es gibt zwei Wohnungen: eine zentral, aber teurer, die andere günstiger, aber eine Stunde von der Arbeit entfernt. Welche besichtigen wir?",
+            "en": "There are two flats: one central but more expensive, the other cheaper but an hour from work. Which shall we view?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "С одной стороны, квартира в центре дороже, с другой — экономит мне два часа в день, а это серьёзное преимущество.",
+          "base": {
+            "de": "Einerseits ist die Wohnung im Zentrum teurer, andererseits spart sie mir täglich zwei Stunden, und das ist ein erheblicher Vorteil.",
+            "en": "On the one hand, the central flat costs more; on the other, it saves me two hours a day, which is a significant advantage."
+          },
+          "move": "compare",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но учтите: в центре коммунальные платежи выше, и парковки там почти нет.",
+          "base": {
+            "de": "Bedenken Sie aber: Im Zentrum sind die Nebenkosten höher, und Parkplätze gibt es kaum.",
+            "en": "But bear in mind that utility charges are higher in the centre and there is hardly any parking."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Отчасти вы правы, но машины у меня нет, а разницу в платежах покроет экономия на проезде.",
+          "base": {
+            "de": "Zum Teil haben Sie recht, aber ich habe kein Auto, und die Ersparnis bei den Fahrkosten gleicht die höheren Nebenkosten aus.",
+            "en": "You are partly right, but I do not have a car, and the travel savings will cover the difference in utility charges."
+          },
+          "move": "concede",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Хорошо. А если хозяин квартиры в центре попросит оплату за три месяца вперёд?",
+          "base": {
+            "de": "Gut. Und wenn der Vermieter im Zentrum drei Monatsmieten im Voraus verlangt?",
+            "en": "All right. What if the landlord of the central flat asks for three months in advance?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Тогда подведём итог: я беру центр, но прошу договор на год и оплату помесячно.",
+          "base": {
+            "de": "Dann halten wir fest: Ich nehme die zentrale Wohnung, bitte aber um einen Jahresvertrag und monatliche Zahlung.",
+            "en": "Then let us sum up: I will take the central flat, but I am asking for a one-year contract and monthly payments."
+          },
+          "move": "propose",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "С одной стороны,",
+          "квартира в центре",
+          "дороже,",
+          "с другой —",
+          "экономит"
+        ],
+        "distractors": [
+          "дешевле,",
+          "тратит"
+        ],
+        "frameSuffix": " мне два часа в день, а это серьёзное преимущество."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", но машины у меня нет, а разницу в платежах "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " экономия на проезде."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Отчасти вы правы",
+            "acceptedAnswers": [
+              "Отчасти вы правы"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Отчасти вы правы",
+              "Отчасти вы опоздали",
+              "Отчасти вы виноваты",
+              "Вы не правы"
+            ]
+          },
+          {
+            "answer": "покроет",
+            "acceptedAnswers": [
+              "покроет"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "ausgleichen – künftiges Ergebnis",
+              "en": "cover – future result"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Тогда "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": я беру центр, но прошу договор на год и оплату помесячно."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "подведём итог",
+            "acceptedAnswers": [
+              "подведём итог"
+            ],
+            "kind": "frame",
+            "choices": [
+              "подведём итог",
+              "подведём часы",
+              "проведём итог",
+              "подведём счёт"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "С одной стороны, квартира в центре дороже, с другой — экономит мне два часа в день, а это серьёзное ",
+        "answer": "преимущество",
+        "acceptedAnswers": [
+          "преимущество"
+        ],
+        "after": ".",
+        "fallbackChoices": [
+          "преимущество",
+          "обязательство",
+          "ограничение",
+          "препятствие"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Einwand teilweise anerkennen",
+          "en": "Conceding part of an objection"
+        },
+        "rule": {
+          "de": "Gib dem Einwand teilweise recht und erkläre dann, warum er deine Wahl nicht ändert.",
+          "en": "Concede part of the objection, then explain why it does not change your choice."
+        },
+        "examples": [
+          {
+            "targetText": "Отчасти вы правы, но машины у меня нет, а разницу в платежах покроет экономия на проезде.",
+            "base": {
+              "de": "Zum Teil haben Sie recht, aber ich habe kein Auto, und die Ersparnis bei den Fahrkosten gleicht die höheren Nebenkosten aus.",
+              "en": "You are partly right, but I do not have a car, and the travel savings will cover the difference in utility charges."
+            },
+            "highlights": [
+              "Отчасти вы правы"
+            ]
+          },
+          {
+            "targetText": "Отчасти вы правы, но экономия времени для меня важнее.",
+            "base": {
+              "de": "Zum Teil haben Sie recht, aber die Zeitersparnis ist mir wichtiger.",
+              "en": "You are partly right, but saving time matters more to me."
+            },
+            "highlights": [
+              "Отчасти вы правы"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "преимущество",
+          "kind": "noun",
+          "base": {
+            "de": "Vorteil",
+            "en": "advantage"
+          },
+          "acceptedAnswers": [
+            "преимущество"
+          ]
+        },
+        {
+          "targetText": "коммунальные платежи",
+          "kind": "phrase",
+          "base": {
+            "de": "Nebenkosten",
+            "en": "utility charges"
+          },
+          "acceptedAnswers": [
+            "коммунальные платежи"
+          ]
+        },
+        {
+          "targetText": "парковки",
+          "kind": "noun",
+          "base": {
+            "de": "Parkplätze",
+            "en": "parking spaces"
+          },
+          "acceptedAnswers": [
+            "парковки"
+          ],
+          "lemma": "парковка"
+        },
+        {
+          "targetText": "платежах",
+          "kind": "noun",
+          "base": {
+            "de": "Zahlungen",
+            "en": "payments"
+          },
+          "acceptedAnswers": [
+            "платежах"
+          ],
+          "lemma": "платёж"
+        },
+        {
+          "targetText": "экономия",
+          "kind": "noun",
+          "base": {
+            "de": "Ersparnis",
+            "en": "saving"
+          },
+          "acceptedAnswers": [
+            "экономия"
+          ]
+        },
+        {
+          "targetText": "помесячно",
+          "kind": "adverb",
+          "base": {
+            "de": "monatlich",
+            "en": "monthly"
+          },
+          "acceptedAnswers": [
+            "помесячно"
+          ]
+        },
+        {
+          "targetText": "с одной стороны",
+          "kind": "frame",
+          "base": {
+            "de": "einerseits",
+            "en": "on the one hand"
+          },
+          "acceptedAnswers": [
+            "с одной стороны"
+          ]
+        },
+        {
+          "targetText": "Отчасти вы правы",
+          "kind": "frame",
+          "base": {
+            "de": "zum Teil haben Sie recht",
+            "en": "you are partly right"
+          },
+          "acceptedAnswers": [
+            "Отчасти вы правы"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "квартира",
+            "преимущество",
+            "экономит"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "правы",
+            "платежах",
+            "экономия"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "подведём",
+            "договор",
+            "помесячно"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "преимущество",
+        "familyKey": "преимущество",
+        "surface": "преимущество",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Это преимущество заметно каждый рабочий день.",
+          "base": {
+            "de": "Dieser Vorteil macht sich an jedem Arbeitstag bemerkbar.",
+            "en": "This advantage is noticeable every working day."
+          }
+        },
+        "base": {
+          "de": "Vorteil",
+          "en": "advantage"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Nomen benennst du einen konkreten Vorteil beim Abwägen. Die Form passt nach «это».",
+          "en": "Use this noun to name a concrete advantage when weighing options. This form fits after «это»."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 2,
+      "slug": "car-vs-metro",
+      "title": {
+        "de": "Auto oder Metro?",
+        "en": "Car or metro?"
+      },
+      "situation": {
+        "de": "Im Kollegenkreis kommt dein täglicher Arbeitsweg mit der Metro zur Sprache.",
+        "en": "A colleague brings up your daily commute by metro."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person aus dem Kollegenkreis",
+            "en": "colleague"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Kollegenkreis kommt dein täglicher Arbeitsweg mit der Metro zur Sprache. Die andere Person sagt: „Вы правда ездите на работу на метро? Я на машине, так намного удобнее.“",
+        "en": "A colleague brings up your daily commute by metro. The other person says: “Вы правда ездите на работу на метро? Я на машине, так намного удобнее.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Вы правда ездите на работу на метро? Я на машине, так намного удобнее.",
+          "base": {
+            "de": "Fahren Sie wirklich mit der Metro zur Arbeit? Ich nehme das Auto, das ist viel bequemer.",
+            "en": "Do you really take the metro to work? I drive; it is much more convenient."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Я за метро: главный недостаток машины — пробки: утром час в пути, а в метро можно читать или спать.",
+          "base": {
+            "de": "Ich bin für die Metro: Der größte Nachteil des Autos sind die Staus. Morgens ist man eine Stunde unterwegs, in der Metro kann man dagegen lesen oder schlafen.",
+            "en": "I favour the metro: the main drawback of driving is traffic jams. It is an hour on the road in the morning, while on the metro you can read or sleep."
+          },
+          "move": "position",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Зато зимой в метро толпа, а в машине тепло и своё кресло.",
+          "base": {
+            "de": "Dafür ist die Metro im Winter voll, während es im Auto warm ist und man seinen eigenen Sitz hat.",
+            "en": "But the metro is crowded in winter, while your car is warm and you have your own seat."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Толпа — да, но она на двадцать минут, а пробка зимой растягивается на полтора часа.",
+          "base": {
+            "de": "Gedränge, ja, aber nur zwanzig Minuten; ein Stau dauert im Winter dagegen anderthalb Stunden.",
+            "en": "Crowds, yes, but for twenty minutes, while a winter traffic jam stretches to an hour and a half."
+          },
+          "move": "rebut",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А если бы компания оплачивала парковку, вы бы пересели?",
+          "base": {
+            "de": "Würden Sie wechseln, wenn die Firma den Parkplatz bezahlen würde?",
+            "en": "Would you switch if the company paid for parking?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Скорее нет: оплата парковки решает вопрос денег, но не времени, так что метро всё равно выигрывает.",
+          "base": {
+            "de": "Eher nicht: Bezahltes Parken löst die Geldfrage, aber nicht die Zeitfrage, also gewinnt die Metro trotzdem.",
+            "en": "Probably not: paid parking solves the money issue but not the time issue, so the metro still wins."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Я за метро:",
+          "главный",
+          "недостаток",
+          "машины —",
+          "пробки:"
+        ],
+        "distractors": [
+          "достоинство",
+          "велосипеда —"
+        ],
+        "frameSuffix": " утром час в пути, а в метро можно читать или спать."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " она на двадцать минут, а пробка зимой "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " на полтора часа."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Толпа — да, но",
+            "acceptedAnswers": [
+              "Толпа — да, но"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Толпа — да, но",
+              "Толпа — нет, но",
+              "Толпа — да, поэтому",
+              "Толпа — да, или"
+            ]
+          },
+          {
+            "answer": "растягивается",
+            "acceptedAnswers": [
+              "растягивается"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "sich hinziehen – gegenwärtiger Verlauf",
+              "en": "stretch out – present process"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": оплата парковки решает вопрос денег, но не времени, так что метро всё равно выигрывает."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Скорее нет",
+            "acceptedAnswers": [
+              "Скорее нет"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Скорее нет",
+              "Скорее да",
+              "Точно да",
+              "Конечно да"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Я за метро: главный ",
+        "answer": "недостаток",
+        "acceptedAnswers": [
+          "недостаток"
+        ],
+        "after": " машины — пробки: утром час в пути, а в метро можно читать или спать.",
+        "fallbackChoices": [
+          "недостаток",
+          "владелец",
+          "водитель",
+          "производитель"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Einen Nachteil ins Verhältnis setzen",
+          "en": "Putting a drawback in perspective"
+        },
+        "rule": {
+          "de": "Erkenne das Gedränge an und vergleiche seine Dauer mit der längeren Fahrt im Stau.",
+          "en": "Acknowledge the crowds and compare their duration with the longer journey in traffic."
+        },
+        "examples": [
+          {
+            "targetText": "Толпа — да, но она на двадцать минут, а пробка зимой растягивается на полтора часа.",
+            "base": {
+              "de": "Gedränge, ja, aber nur zwanzig Minuten; ein Stau dauert im Winter dagegen anderthalb Stunden.",
+              "en": "Crowds, yes, but for twenty minutes, while a winter traffic jam stretches to an hour and a half."
+            },
+            "highlights": [
+              "Толпа — да, но"
+            ]
+          },
+          {
+            "targetText": "Шум — да, но поездка длится всего двадцать минут.",
+            "base": {
+              "de": "Lärm, ja, aber die Fahrt dauert nur zwanzig Minuten.",
+              "en": "Noise, yes, but the journey only lasts twenty minutes."
+            },
+            "highlights": [
+              "Шум — да, но"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "недостаток",
+          "kind": "noun",
+          "base": {
+            "de": "Nachteil",
+            "en": "drawback"
+          },
+          "acceptedAnswers": [
+            "недостаток"
+          ]
+        },
+        {
+          "targetText": "пробки",
+          "kind": "noun",
+          "base": {
+            "de": "Staus",
+            "en": "traffic jams"
+          },
+          "acceptedAnswers": [
+            "пробки"
+          ],
+          "lemma": "пробка"
+        },
+        {
+          "targetText": "толпа",
+          "kind": "noun",
+          "base": {
+            "de": "Gedränge",
+            "en": "crowd"
+          },
+          "acceptedAnswers": [
+            "толпа"
+          ]
+        },
+        {
+          "targetText": "кресло",
+          "kind": "noun",
+          "base": {
+            "de": "Sitz",
+            "en": "seat"
+          },
+          "acceptedAnswers": [
+            "кресло"
+          ]
+        },
+        {
+          "targetText": "растягивается",
+          "kind": "verb",
+          "base": {
+            "de": "zieht sich hin",
+            "en": "stretches out"
+          },
+          "acceptedAnswers": [
+            "растягивается"
+          ],
+          "lemma": "растягиваться"
+        },
+        {
+          "targetText": "парковку",
+          "kind": "noun",
+          "base": {
+            "de": "Parken",
+            "en": "parking"
+          },
+          "acceptedAnswers": [
+            "парковку"
+          ],
+          "lemma": "парковка"
+        },
+        {
+          "targetText": "главный",
+          "kind": "adjective",
+          "base": {
+            "de": "größte, wichtigste",
+            "en": "main"
+          },
+          "acceptedAnswers": [
+            "главный"
+          ]
+        },
+        {
+          "targetText": "Скорее нет",
+          "kind": "frame",
+          "base": {
+            "de": "eher nicht",
+            "en": "probably not"
+          },
+          "acceptedAnswers": [
+            "Скорее нет"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "недостаток",
+            "машины",
+            "пробки"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "толпа",
+            "минут",
+            "пробка"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "оплата",
+            "денег",
+            "времени"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "недостаток",
+        "familyKey": "недостаток",
+        "surface": "недостаток",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Главный недостаток этого маршрута — долгая пересадка.",
+          "base": {
+            "de": "Der größte Nachteil dieser Strecke ist der lange Umstieg.",
+            "en": "The main drawback of this route is the long transfer."
+          }
+        },
+        "base": {
+          "de": "Nachteil",
+          "en": "drawback"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Nomen benennst du den Haken einer Möglichkeit. In «главный недостаток» steht er klar im Mittelpunkt.",
+          "en": "Use this noun to name the drawback of an option. In «главный недостаток», it is the focus of the comparison."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 3,
+      "slug": "remote-or-office",
+      "title": {
+        "de": "Drei Tage von zu Hause",
+        "en": "Three days working from home"
+      },
+      "situation": {
+        "de": "Die Teamleitung bespricht mit dir das Arbeitsmodell für das kommende Jahr.",
+        "en": "Your manager discusses next year’s working arrangements with you."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Teamleitung",
+            "en": "manager"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Die Teamleitung bespricht mit dir das Arbeitsmodell für das kommende Jahr. Die andere Person sagt: „Мы обсуждаем формат работы на следующий год. Вам удобнее из дома или в офисе?“",
+        "en": "Your manager discusses next year’s working arrangements with you. The other person says: “Мы обсуждаем формат работы на следующий год. Вам удобнее из дома или в офисе?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Мы обсуждаем формат работы на следующий год. Вам удобнее из дома или в офисе?",
+          "base": {
+            "de": "Wir besprechen das Arbeitsmodell für nächstes Jahr. Was ist Ihnen lieber, zu Hause oder im Büro?",
+            "en": "We are discussing next year’s work format. Is home or the office more convenient for you?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Мне выгодно работать из дома три дня: экономлю два часа дороги, а в офис прихожу на встречи.",
+          "base": {
+            "de": "Drei Tage zu Hause zu arbeiten lohnt sich für mich: Ich spare zwei Stunden Fahrt und komme für Besprechungen ins Büro.",
+            "en": "Working from home for three days benefits me: I save two hours of travel and come to the office for meetings."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но команда жалуется, что удалённых коллег трудно поймать в течение дня.",
+          "base": {
+            "de": "Das Team beklagt aber, dass die entfernt arbeitenden Kollegen tagsüber schwer zu erreichen sind.",
+            "en": "But the team complains that remote colleagues are hard to reach during the day."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Правда, но это решается: фиксируем часы, когда я точно на связи, скажем, с десяти до четырёх.",
+          "base": {
+            "de": "Stimmt, aber das lässt sich lösen: Wir legen Zeiten fest, zu denen ich sicher erreichbar bin, etwa von zehn bis vier.",
+            "en": "True, but that can be solved: we fix hours when I am definitely available, say from ten to four."
+          },
+          "move": "counteroffer",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Допустим. А новичков кто будет учить, если половина команды дома?",
+          "base": {
+            "de": "Nehmen wir das an. Wer arbeitet dann neue Leute ein, wenn das halbe Team zu Hause ist?",
+            "en": "Let us suppose so. Who will train new staff if half the team is at home?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Предлагаю так: в дни обучения новичков я в офисе, а остальные дни удалённо, и через квартал подведём итог.",
+          "base": {
+            "de": "Mein Vorschlag: An Tagen mit Einarbeitung bin ich im Büro, sonst arbeite ich von zu Hause; nach einem Quartal ziehen wir Bilanz.",
+            "en": "Here is my proposal: I am in the office on days when new staff are being trained, otherwise I work remotely, and we review things after a quarter."
+          },
+          "move": "propose",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Мне выгодно ",
+        "chunks": [
+          "работать из дома",
+          "три дня:",
+          "экономлю",
+          "два часа",
+          "дороги,"
+        ],
+        "distractors": [
+          "работать из офиса",
+          "два дня:"
+        ],
+        "frameSuffix": " а в офис прихожу на встречи."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " это решается: "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " часы, когда я точно на связи, скажем, с десяти до четырёх."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Правда, но",
+            "acceptedAnswers": [
+              "Правда, но"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Правда, но",
+              "Неправда, но",
+              "Правда, или",
+              "Правда, если"
+            ]
+          },
+          {
+            "answer": "фиксируем",
+            "acceptedAnswers": [
+              "фиксируем"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "фиксировать – wir, Präsens, unvollendet",
+              "en": "fix (фиксировать) – we, present, imperfective"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": в дни обучения новичков я в офисе, а остальные дни удалённо, и через квартал подведём итог."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Предлагаю так",
+            "acceptedAnswers": [
+              "Предлагаю так"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Предлагаю так",
+              "Запрещаю так",
+              "Отказываюсь так",
+              "Жалуюсь так"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Мне ",
+        "answer": "выгодно",
+        "acceptedAnswers": [
+          "выгодно"
+        ],
+        "after": " работать из дома три дня: экономлю два часа дороги, а в офис прихожу на встречи.",
+        "fallbackChoices": [
+          "выгодно",
+          "скучно",
+          "тревожно",
+          "стыдно"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Eine Sorge mit einem Plan beantworten",
+          "en": "Answering a concern with a plan"
+        },
+        "rule": {
+          "de": "Bestätige das Problem und biete feste Erreichbarkeitszeiten als konkrete Änderung an.",
+          "en": "Acknowledge the problem and offer fixed availability hours as a concrete change."
+        },
+        "examples": [
+          {
+            "targetText": "Правда, но это решается: фиксируем часы, когда я точно на связи, скажем, с десяти до четырёх.",
+            "base": {
+              "de": "Stimmt, aber das lässt sich lösen: Wir legen Zeiten fest, zu denen ich sicher erreichbar bin, etwa von zehn bis vier.",
+              "en": "True, but that can be solved: we fix hours when I am definitely available, say from ten to four."
+            },
+            "highlights": [
+              "Правда, но"
+            ]
+          },
+          {
+            "targetText": "Правда, но это решается: фиксируем общие часы для звонков.",
+            "base": {
+              "de": "Stimmt, aber das lässt sich lösen: Wir legen gemeinsame Zeiten für Anrufe fest.",
+              "en": "True, but that can be solved: we fix shared hours for calls."
+            },
+            "highlights": [
+              "Правда, но"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "выгодно",
+          "kind": "adverb",
+          "base": {
+            "de": "lohnend",
+            "en": "beneficial"
+          },
+          "acceptedAnswers": [
+            "выгодно"
+          ]
+        },
+        {
+          "targetText": "удалённых",
+          "kind": "adjective",
+          "base": {
+            "de": "entfernt arbeitenden",
+            "en": "remote"
+          },
+          "acceptedAnswers": [
+            "удалённых"
+          ],
+          "lemma": "удалённый"
+        },
+        {
+          "targetText": "фиксируем",
+          "kind": "verb",
+          "base": {
+            "de": "wir legen fest",
+            "en": "we fix"
+          },
+          "acceptedAnswers": [
+            "фиксируем"
+          ],
+          "lemma": "фиксировать"
+        },
+        {
+          "targetText": "на связи",
+          "kind": "phrase",
+          "base": {
+            "de": "erreichbar",
+            "en": "available"
+          },
+          "acceptedAnswers": [
+            "на связи"
+          ]
+        },
+        {
+          "targetText": "новичков",
+          "kind": "noun",
+          "base": {
+            "de": "neue Mitarbeitende",
+            "en": "new staff"
+          },
+          "acceptedAnswers": [
+            "новичков"
+          ],
+          "lemma": "новичок"
+        },
+        {
+          "targetText": "квартал",
+          "kind": "noun",
+          "base": {
+            "de": "Quartal",
+            "en": "quarter"
+          },
+          "acceptedAnswers": [
+            "квартал"
+          ]
+        },
+        {
+          "targetText": "из дома",
+          "kind": "phrase",
+          "base": {
+            "de": "von zu Hause",
+            "en": "from home"
+          },
+          "acceptedAnswers": [
+            "из дома"
+          ]
+        },
+        {
+          "targetText": "Предлагаю так",
+          "kind": "frame",
+          "base": {
+            "de": "mein Vorschlag ist",
+            "en": "here is my proposal"
+          },
+          "acceptedAnswers": [
+            "Предлагаю так"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "выгодно",
+            "работать",
+            "экономлю"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "решается",
+            "фиксируем",
+            "десяти"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "обучения",
+            "удалённо",
+            "квартал"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "выгодно",
+        "familyKey": "выгодно",
+        "surface": "выгодно",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "Мне выгодно работать рядом с домом.",
+          "base": {
+            "de": "Es lohnt sich für mich, in der Nähe meiner Wohnung zu arbeiten.",
+            "en": "Working near home benefits me."
+          }
+        },
+        "base": {
+          "de": "lohnend",
+          "en": "beneficial"
+        },
+        "whyThisWord": {
+          "de": "Mit «мне выгодно» erklärst du einen persönlichen Nutzen, ohne dein Geschlecht auszudrücken. Das Adverb lässt sich mit einer Handlung verbinden.",
+          "en": "Use «мне выгодно» to explain a personal benefit without expressing your gender. The adverb combines with an action."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 4,
+      "slug": "buy-or-rent-drill",
+      "title": {
+        "de": "Bohrmaschine kaufen oder leihen?",
+        "en": "Buy or hire a drill?"
+      },
+      "situation": {
+        "de": "Am Werkzeugverleih vergleichst du Miete und Kauf einer Bohrmaschine.",
+        "en": "At a tool-hire counter, you compare renting and buying a drill."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Person am Verleihschalter",
+            "en": "tool-hire assistant"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Am Werkzeugverleih vergleichst du Miete und Kauf einer Bohrmaschine. Die andere Person sagt: „Дрель можно купить за восемь тысяч или взять в прокат за пятьсот в день. Что выбираете?“",
+        "en": "At a tool-hire counter, you compare renting and buying a drill. The other person says: “Дрель можно купить за восемь тысяч или взять в прокат за пятьсот в день. Что выбираете?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Дрель можно купить за восемь тысяч или взять в прокат за пятьсот в день. Что выбираете?",
+          "base": {
+            "de": "Die Bohrmaschine können Sie für achttausend kaufen oder für fünfhundert am Tag mieten. Was wählen Sie?",
+            "en": "You can buy the drill for eight thousand or rent it for five hundred a day. Which do you choose?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Это зависит от того, как часто она нужна: для одного ремонта прокат дешевле, тогда как на годы выгоднее покупка.",
+          "base": {
+            "de": "Das hängt davon ab, wie oft man sie braucht: Für eine Renovierung ist Mieten günstiger, für Jahre lohnt sich dagegen der Kauf.",
+            "en": "It depends how often it is needed: renting is cheaper for one renovation, whereas buying is better value over years."
+          },
+          "move": "compare",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Учтите, прокатная дрель уже старая, и если сломается, платите вы.",
+          "base": {
+            "de": "Bedenken Sie: Die Leihbohrmaschine ist schon alt, und wenn sie kaputtgeht, zahlen Sie.",
+            "en": "Bear in mind the hire drill is already old, and if it breaks, you pay."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Уточню: я имею в виду один ремонт на неделю, не больше, так что риск поломки для меня невелик.",
+          "base": {
+            "de": "Zur Klarstellung: Ich meine nur eine Renovierung von einer Woche, daher ist das Ausfallrisiko für mich gering.",
+            "en": "To clarify, I mean one renovation lasting a week, no more, so the risk of breakage is small for me."
+          },
+          "move": "clarify",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Тогда есть третий вариант: подержанная дрель за три тысячи с гарантией месяц.",
+          "base": {
+            "de": "Dann gibt es eine dritte Möglichkeit: eine gebrauchte Bohrmaschine für dreitausend mit einem Monat Garantie.",
+            "en": "Then there is a third option: a used drill for three thousand with a one-month guarantee."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Это меняет дело: беру подержанную, если гарантия покроет и аккумулятор, иначе остаюсь на прокате.",
+          "base": {
+            "de": "Das ändert die Sache: Ich nehme die gebrauchte, wenn die Garantie auch den Akku abdeckt; sonst bleibe ich beim Mieten.",
+            "en": "That changes things: I will take the used one if the guarantee also covers the battery; otherwise I will stick with renting."
+          },
+          "move": "counteroffer",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Это зависит от того, как часто она нужна: ",
+        "chunks": [
+          "для одного ремонта",
+          "прокат дешевле,",
+          "тогда как",
+          "на годы",
+          "выгоднее покупка."
+        ],
+        "distractors": [
+          "прокат дороже,",
+          "на часы"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Уточню: "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " один ремонт на неделю, не больше, так что риск "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " для меня невелик."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "я имею в виду",
+            "acceptedAnswers": [
+              "я имею в виду"
+            ],
+            "kind": "frame",
+            "choices": [
+              "я имею в виду",
+              "я не имею в виду",
+              "я имею право на",
+              "я имею дело с"
+            ]
+          },
+          {
+            "answer": "поломки",
+            "acceptedAnswers": [
+              "поломки"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "поломка – Genitiv Singular",
+              "en": "breakage (поломка) – genitive singular"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": беру подержанную, если гарантия покроет и аккумулятор, иначе остаюсь на прокате."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Это меняет дело",
+            "acceptedAnswers": [
+              "Это меняет дело"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Это меняет дело",
+              "Это ничего не меняет",
+              "Это мешает делу",
+              "Это не дело"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Это зависит от того, как часто она нужна: для одного ремонта ",
+        "answer": "прокат",
+        "acceptedAnswers": [
+          "прокат"
+        ],
+        "after": " дешевле, тогда как на годы выгоднее покупка.",
+        "fallbackChoices": [
+          "прокат",
+          "подарок",
+          "возврат",
+          "штраф"
+        ]
+      },
+      "pattern": {
+        "moveType": "clarify",
+        "label": {
+          "de": "Den gemeinten Umfang eingrenzen",
+          "en": "Narrowing the intended scope"
+        },
+        "rule": {
+          "de": "Nenne mit «я имею в виду» die konkrete Dauer, auf die sich deine Einschätzung bezieht.",
+          "en": "Use «я имею в виду» to specify the duration your assessment concerns."
+        },
+        "examples": [
+          {
+            "targetText": "Уточню: я имею в виду один ремонт на неделю, не больше, так что риск поломки для меня невелик.",
+            "base": {
+              "de": "Zur Klarstellung: Ich meine nur eine Renovierung von einer Woche, daher ist das Ausfallrisiko für mich gering.",
+              "en": "To clarify, I mean one renovation lasting a week, no more, so the risk of breakage is small for me."
+            },
+            "highlights": [
+              "я имею в виду"
+            ]
+          },
+          {
+            "targetText": "Я имею в виду короткий ремонт, а не работу на годы.",
+            "base": {
+              "de": "Ich meine eine kurze Renovierung, keine Arbeit über Jahre.",
+              "en": "I mean a short renovation, not years of work."
+            },
+            "highlights": [
+              "Я имею в виду"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "зависит",
+          "kind": "verb",
+          "base": {
+            "de": "hängt ab",
+            "en": "depends"
+          },
+          "acceptedAnswers": [
+            "зависит"
+          ],
+          "lemma": "зависеть"
+        },
+        {
+          "targetText": "прокат",
+          "kind": "noun",
+          "base": {
+            "de": "Miete, Verleih",
+            "en": "hire"
+          },
+          "acceptedAnswers": [
+            "прокат"
+          ]
+        },
+        {
+          "targetText": "подержанная",
+          "kind": "adjective",
+          "base": {
+            "de": "gebrauchte",
+            "en": "used"
+          },
+          "acceptedAnswers": [
+            "подержанная"
+          ],
+          "lemma": "подержанный"
+        },
+        {
+          "targetText": "гарантией",
+          "kind": "noun",
+          "base": {
+            "de": "Garantie",
+            "en": "guarantee"
+          },
+          "acceptedAnswers": [
+            "гарантией"
+          ],
+          "lemma": "гарантия"
+        },
+        {
+          "targetText": "аккумулятор",
+          "kind": "noun",
+          "base": {
+            "de": "Akku",
+            "en": "battery"
+          },
+          "acceptedAnswers": [
+            "аккумулятор"
+          ]
+        },
+        {
+          "targetText": "поломки",
+          "kind": "noun",
+          "base": {
+            "de": "Defekt",
+            "en": "breakage"
+          },
+          "acceptedAnswers": [
+            "поломки"
+          ],
+          "lemma": "поломка"
+        },
+        {
+          "targetText": "тогда как",
+          "kind": "connector",
+          "base": {
+            "de": "während dagegen",
+            "en": "whereas"
+          },
+          "acceptedAnswers": [
+            "тогда как"
+          ]
+        },
+        {
+          "targetText": "я имею в виду",
+          "kind": "frame",
+          "base": {
+            "de": "ich meine",
+            "en": "I mean"
+          },
+          "acceptedAnswers": [
+            "я имею в виду"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "зависит",
+            "часто",
+            "прокат"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "уточню",
+            "ремонт",
+            "поломки"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "меняет",
+            "гарантия",
+            "аккумулятор"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "зависеть",
+        "familyKey": "зависеть",
+        "surface": "зависит",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Выбор зависит от частоты использования.",
+          "base": {
+            "de": "Die Wahl hängt von der Nutzungshäufigkeit ab.",
+            "en": "The choice depends on how often it is used."
+          }
+        },
+        "base": {
+          "de": "abhängen",
+          "en": "depend"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Verb machst du eine Entscheidung von einer Bedingung abhängig. «Зависит» passt hier zu «выбор».",
+          "en": "Use this verb to make a decision depend on a condition. «Зависит» fits «выбор» here."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 5,
+      "slug": "two-holiday-plans",
+      "title": {
+        "de": "Zugreise oder Baikal?",
+        "en": "Train trip or Lake Baikal?"
+      },
+      "situation": {
+        "de": "Mit einer befreundeten Person vergleichst du zwei Reisepläne für August.",
+        "en": "You compare two August holiday plans with a friend."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Mit einer befreundeten Person vergleichst du zwei Reisepläne für August. Die andere Person sagt: „Так куда едем в августе: на Байкал на машине или в Калининград на поезде?“",
+        "en": "You compare two August holiday plans with a friend. The other person says: “Так куда едем в августе: на Байкал на машине или в Калининград на поезде?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Так куда едем в августе: на Байкал на машине или в Калининград на поезде?",
+          "base": {
+            "de": "Wohin fahren wir also im August: mit dem Auto zum Baikal oder mit dem Zug nach Kaliningrad?",
+            "en": "So where are we going in August: to Lake Baikal by car or to Kaliningrad by train?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Я склоняюсь к Калининграду: поездом дешевле и спокойнее, а Байкал на машине — это неделя только дороги.",
+          "base": {
+            "de": "Ich tendiere zu Kaliningrad: Der Zug ist günstiger und entspannter, während wir mit dem Auto zum Baikal eine Woche nur unterwegs wären.",
+            "en": "I lean towards Kaliningrad: the train is cheaper and calmer, while driving to Lake Baikal means a week just on the road."
+          },
+          "move": "position",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но в Калининграде в августе дожди, а на Байкале как раз лучший сезон.",
+          "base": {
+            "de": "In Kaliningrad regnet es im August aber, während am Baikal gerade die beste Saison ist.",
+            "en": "But it rains in Kaliningrad in August, while it is the best season at Lake Baikal."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Не стану спорить, погода там хуже, но отпуск у нас десять дней, и семь из них на дорогу — слишком много.",
+          "base": {
+            "de": "Da widerspreche ich nicht, das Wetter ist dort schlechter. Aber wir haben zehn Tage Urlaub, und sieben davon für die Fahrt sind zu viel.",
+            "en": "I will not argue: the weather there is worse. But we have ten days off, and seven of them on the road is too much."
+          },
+          "move": "concede",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А если бы мы летели на Байкал самолётом? Билеты по акции.",
+          "base": {
+            "de": "Und wenn wir zum Baikal fliegen würden? Es gibt Sonderangebote für die Flüge.",
+            "en": "What if we flew to Lake Baikal? There are promotional fares."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Тогда другое дело: если билеты туда и обратно выходят не дороже поезда, я за Байкал.",
+          "base": {
+            "de": "Dann sieht es anders aus: Wenn Hin- und Rückflug zusammen nicht mehr kosten als der Zug, bin ich für den Baikal.",
+            "en": "Then that is different: if the return flights cost no more than the train, I am for Lake Baikal."
+          },
+          "move": "counteroffer",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Я склоняюсь",
+          "к Калининграду:",
+          "поездом дешевле",
+          "и спокойнее,",
+          "а Байкал на машине —"
+        ],
+        "distractors": [
+          "к Байкалу:",
+          "и тревожнее,"
+        ],
+        "frameSuffix": " это неделя только дороги."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", погода там "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", но отпуск у нас десять дней, и семь из них на дорогу — слишком много."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Не стану спорить",
+            "acceptedAnswers": [
+              "Не стану спорить"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Не стану спорить",
+              "Не стану ждать",
+              "Не стану считать",
+              "Не стану звонить"
+            ]
+          },
+          {
+            "answer": "хуже",
+            "acceptedAnswers": [
+              "хуже"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "плохой – Komparativ",
+              "en": "bad (плохой) – comparative"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": если билеты туда и обратно выходят не дороже поезда, я за Байкал."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Тогда другое дело",
+            "acceptedAnswers": [
+              "Тогда другое дело"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Тогда другое дело",
+              "Тогда то же дело",
+              "Тогда не дело",
+              "Тогда моё дело"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Я ",
+        "answer": "склоняюсь",
+        "acceptedAnswers": [
+          "склоняюсь"
+        ],
+        "after": " к Калининграду: поездом дешевле и спокойнее, а Байкал на машине — это неделя только дороги.",
+        "fallbackChoices": [
+          "склоняюсь",
+          "привыкаю",
+          "приближаюсь",
+          "прикасаюсь"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Einen Vorteil anerkennen und gewichten",
+          "en": "Acknowledging and weighing an advantage"
+        },
+        "rule": {
+          "de": "Erkenne das bessere Wetter an und stelle ihm die begrenzte Urlaubszeit gegenüber.",
+          "en": "Acknowledge the better weather and weigh it against the limited holiday time."
+        },
+        "examples": [
+          {
+            "targetText": "Не стану спорить, погода там хуже, но отпуск у нас десять дней, и семь из них на дорогу — слишком много.",
+            "base": {
+              "de": "Da widerspreche ich nicht, das Wetter ist dort schlechter. Aber wir haben zehn Tage Urlaub, und sieben davon für die Fahrt sind zu viel.",
+              "en": "I will not argue: the weather there is worse. But we have ten days off, and seven of them on the road is too much."
+            },
+            "highlights": [
+              "Не стану спорить"
+            ]
+          },
+          {
+            "targetText": "Не стану спорить, место красивое, но дорога слишком долгая.",
+            "base": {
+              "de": "Ich widerspreche nicht, der Ort ist schön, aber die Fahrt ist zu lang.",
+              "en": "I will not argue: it is a beautiful place, but the journey is too long."
+            },
+            "highlights": [
+              "Не стану спорить"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "склоняюсь",
+          "kind": "verb",
+          "base": {
+            "de": "ich tendiere",
+            "en": "I lean"
+          },
+          "acceptedAnswers": [
+            "склоняюсь"
+          ],
+          "lemma": "склоняться"
+        },
+        {
+          "targetText": "поездом",
+          "kind": "noun",
+          "base": {
+            "de": "mit dem Zug",
+            "en": "by train"
+          },
+          "acceptedAnswers": [
+            "поездом"
+          ],
+          "lemma": "поезд"
+        },
+        {
+          "targetText": "дожди",
+          "kind": "noun",
+          "base": {
+            "de": "Regenfälle",
+            "en": "rain"
+          },
+          "acceptedAnswers": [
+            "дожди"
+          ],
+          "lemma": "дождь"
+        },
+        {
+          "targetText": "сезон",
+          "kind": "noun",
+          "base": {
+            "de": "Saison",
+            "en": "season"
+          },
+          "acceptedAnswers": [
+            "сезон"
+          ]
+        },
+        {
+          "targetText": "самолётом",
+          "kind": "noun",
+          "base": {
+            "de": "mit dem Flugzeug",
+            "en": "by plane"
+          },
+          "acceptedAnswers": [
+            "самолётом"
+          ],
+          "lemma": "самолёт"
+        },
+        {
+          "targetText": "по акции",
+          "kind": "phrase",
+          "base": {
+            "de": "im Sonderangebot",
+            "en": "on promotion"
+          },
+          "acceptedAnswers": [
+            "по акции"
+          ]
+        },
+        {
+          "targetText": "Не стану спорить",
+          "kind": "frame",
+          "base": {
+            "de": "ich widerspreche nicht",
+            "en": "I will not argue"
+          },
+          "acceptedAnswers": [
+            "Не стану спорить"
+          ]
+        },
+        {
+          "targetText": "Тогда другое дело",
+          "kind": "frame",
+          "base": {
+            "de": "dann sieht es anders aus",
+            "en": "then that is different"
+          },
+          "acceptedAnswers": [
+            "Тогда другое дело"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "склоняюсь",
+            "поездом",
+            "спокойнее"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "спорить",
+            "погода",
+            "отпуск"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "билеты",
+            "обратно",
+            "дороже"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "склоняться",
+        "familyKey": "склоняться",
+        "surface": "склоняюсь",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Я склоняюсь к поездке на поезде.",
+          "base": {
+            "de": "Ich tendiere zu einer Zugreise.",
+            "en": "I lean towards travelling by train."
+          }
+        },
+        "base": {
+          "de": "tendieren",
+          "en": "lean towards"
+        },
+        "whyThisWord": {
+          "de": "Mit «склоняюсь» nennst du deine Tendenz, ohne eine endgültige Entscheidung zu behaupten. Die Form passt zu «я» und bleibt geschlechtsneutral.",
+          "en": "Use «склоняюсь» to give your leaning without claiming a final decision. This form fits «я» and stays gender-neutral."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 6,
+      "slug": "cash-or-app",
+      "title": {
+        "de": "App oder Bargeld?",
+        "en": "App or cash?"
+      },
+      "situation": {
+        "de": "Eine Person mit eigenem Geschäft überlegt, Zahlungen per App wegen der Gebühren aufzugeben.",
+        "en": "A shop owner is considering dropping app payments because of the fees."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "geschäftsführende Person",
+            "en": "shop owner"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Person mit eigenem Geschäft überlegt, Zahlungen per App wegen der Gebühren aufzugeben. Die andere Person sagt: „Половина покупателей платит через приложение, но комиссия съедает процент. Может, вернуться к наличным?“",
+        "en": "A shop owner is considering dropping app payments because of the fees. The other person says: “Половина покупателей платит через приложение, но комиссия съедает процент. Может, вернуться к наличным?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Половина покупателей платит через приложение, но комиссия съедает процент. Может, вернуться к наличным?",
+          "base": {
+            "de": "Die Hälfte der Kundschaft zahlt per App, aber die Gebühr frisst ein Prozent auf. Vielleicht zurück zum Bargeld?",
+            "en": "Half the customers pay through the app, but the fee eats up one percent. Should we go back to cash?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Приложение — более безопасный способ, чем касса с наличными: меньше недостач и ошибок со сдачей, тогда как комиссия — это всего один процент.",
+          "base": {
+            "de": "Die App ist sicherer als eine Bargeldkasse: Es gibt weniger Fehlbeträge und Wechselgeldfehler, während die Gebühr nur ein Prozent beträgt.",
+            "en": "The app is a safer method than a cash till: there are fewer shortfalls and change errors, whereas the fee is just one percent."
+          },
+          "move": "compare",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но один процент с миллиона в месяц — это десять тысяч. Для меня это деньги.",
+          "base": {
+            "de": "Aber ein Prozent von einer Million im Monat sind zehntausend. Das ist für mich viel Geld.",
+            "en": "But one percent of a million a month is ten thousand. That is real money to me."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Понимаю, но посчитайте и обратное: инкассация, пересчёт и ошибки кассира тоже стоят денег, их нужно сравнить с комиссией.",
+          "base": {
+            "de": "Verstehe, aber rechnen Sie auch die andere Seite: Geldtransport, Nachzählen und Kassenfehler kosten ebenfalls Geld; das muss man mit der Gebühr vergleichen.",
+            "en": "I understand, but calculate the other side too: cash collection, counting and cashier errors also cost money; those costs need comparing with the fee."
+          },
+          "move": "rebut",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Хорошо, а пожилые клиенты, у которых приложения нет?",
+          "base": {
+            "de": "Gut, und ältere Kunden ohne App?",
+            "en": "All right, what about older customers who do not have the app?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Итак, оставляем оба способа, но приложение — основной, а наличные для тех, кому так удобнее.",
+          "base": {
+            "de": "Also behalten wir beide Möglichkeiten: hauptsächlich die App und Bargeld für alle, denen das lieber ist.",
+            "en": "So we keep both methods, with the app as the main one and cash for people who prefer it."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Приложение —",
+          "более безопасный",
+          "способ,",
+          "чем касса",
+          "с наличными:"
+        ],
+        "distractors": [
+          "менее безопасный",
+          "без наличных:"
+        ],
+        "frameSuffix": " меньше недостач и ошибок со сдачей, тогда как комиссия — это всего один процент."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " посчитайте и обратное: инкассация, пересчёт и ошибки кассира тоже стоят денег, их нужно "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " с комиссией."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Понимаю, но",
+            "acceptedAnswers": [
+              "Понимаю, но"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Понимаю, но",
+              "Не понимаю, но",
+              "Понимаю, хотя",
+              "Понимаю, если"
+            ]
+          },
+          {
+            "answer": "сравнить",
+            "acceptedAnswers": [
+              "сравнить"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "vergleichen – vollständiger Vergleich",
+              "en": "compare – complete comparison"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", оставляем оба способа, но приложение — основной, а наличные для тех, кому так удобнее."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Итак",
+            "acceptedAnswers": [
+              "Итак"
+            ],
+            "kind": "connector",
+            "choices": [
+              "Итак",
+              "Иначе",
+              "Зато",
+              "Хотя"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Приложение — более ",
+        "answer": "безопасный",
+        "acceptedAnswers": [
+          "безопасный"
+        ],
+        "after": " способ, чем касса с наличными: меньше недостач и ошибок со сдачей, тогда как комиссия — это всего один процент.",
+        "fallbackChoices": [
+          "безопасный",
+          "случайный",
+          "неизвестный",
+          "запрещённый"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Die andere Kostenseite einbeziehen",
+          "en": "Including the other side of the costs"
+        },
+        "rule": {
+          "de": "Antworte auf die hohe Gebühr mit den Kosten der Alternative, ohne eine unbelegte Gesamtersparnis zu versprechen.",
+          "en": "Answer the high fee by considering the alternative’s costs without promising an unsupported overall saving."
+        },
+        "examples": [
+          {
+            "targetText": "Понимаю, но посчитайте и обратное: инкассация, пересчёт и ошибки кассира тоже стоят денег, их нужно сравнить с комиссией.",
+            "base": {
+              "de": "Verstehe, aber rechnen Sie auch die andere Seite: Geldtransport, Nachzählen und Kassenfehler kosten ebenfalls Geld; das muss man mit der Gebühr vergleichen.",
+              "en": "I understand, but calculate the other side too: cash collection, counting and cashier errors also cost money; those costs need comparing with the fee."
+            },
+            "highlights": [
+              "Понимаю, но"
+            ]
+          },
+          {
+            "targetText": "Понимаю, но наличные тоже требуют расходов на пересчёт и хранение.",
+            "base": {
+              "de": "Verstehe, aber auch Bargeld verursacht Kosten für Nachzählen und Aufbewahrung.",
+              "en": "I understand, but cash also requires spending on counting and storage."
+            },
+            "highlights": [
+              "Понимаю, но"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "безопасный",
+          "kind": "adjective",
+          "base": {
+            "de": "sicher",
+            "en": "safe"
+          },
+          "acceptedAnswers": [
+            "безопасный"
+          ]
+        },
+        {
+          "targetText": "комиссия",
+          "kind": "noun",
+          "base": {
+            "de": "Gebühr",
+            "en": "fee"
+          },
+          "acceptedAnswers": [
+            "комиссия"
+          ]
+        },
+        {
+          "targetText": "наличными",
+          "kind": "noun",
+          "base": {
+            "de": "Bargeld",
+            "en": "cash"
+          },
+          "acceptedAnswers": [
+            "наличными"
+          ],
+          "lemma": "наличные"
+        },
+        {
+          "targetText": "недостач",
+          "kind": "noun",
+          "base": {
+            "de": "Fehlbeträge",
+            "en": "shortfalls"
+          },
+          "acceptedAnswers": [
+            "недостач"
+          ],
+          "lemma": "недостача"
+        },
+        {
+          "targetText": "инкассация",
+          "kind": "noun",
+          "base": {
+            "de": "Geldtransport",
+            "en": "cash collection"
+          },
+          "acceptedAnswers": [
+            "инкассация"
+          ]
+        },
+        {
+          "targetText": "пересчёт",
+          "kind": "noun",
+          "base": {
+            "de": "Nachzählen",
+            "en": "recounting"
+          },
+          "acceptedAnswers": [
+            "пересчёт"
+          ]
+        },
+        {
+          "targetText": "основной",
+          "kind": "adjective",
+          "base": {
+            "de": "hauptsächlich, wichtigste",
+            "en": "main"
+          },
+          "acceptedAnswers": [
+            "основной"
+          ]
+        },
+        {
+          "targetText": "Итак",
+          "kind": "connector",
+          "base": {
+            "de": "also",
+            "en": "so"
+          },
+          "acceptedAnswers": [
+            "Итак"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "безопасный",
+            "недостач",
+            "комиссия"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "посчитайте",
+            "инкассация",
+            "пересчёт"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "оставляем",
+            "способа",
+            "основной"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "безопасный",
+        "familyKey": "безопасный",
+        "surface": "безопасный",
+        "turnIndex": 1,
+        "pos": "adjective",
+        "example": {
+          "targetText": "Это безопасный способ хранить документы.",
+          "base": {
+            "de": "Das ist eine sichere Art, Dokumente aufzubewahren.",
+            "en": "This is a safe way to store documents."
+          }
+        },
+        "base": {
+          "de": "sicher",
+          "en": "safe"
+        },
+        "whyThisWord": {
+          "de": "Dieses Adjektiv hilft beim Vergleich von Risiken. «Безопасный» passt im Beispiel zu «способ».",
+          "en": "This adjective helps compare risks. «Безопасный» fits «способ» in the example."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 7,
+      "slug": "class-or-app",
+      "title": {
+        "de": "Kurs oder App?",
+        "en": "Course or app?"
+      },
+      "situation": {
+        "de": "Eine befreundete Person fragt dich nach einem Weg, ihr Deutsch zu verbessern.",
+        "en": "A friend asks how to improve their German."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "befreundete Person",
+            "en": "friend"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine befreundete Person fragt dich nach einem Weg, ihr Deutsch zu verbessern. Die andere Person sagt: „Я хочу подтянуть немецкий: курсы или приложение? Вы же через это прошли.“",
+        "en": "A friend asks how to improve their German. The other person says: “Я хочу подтянуть немецкий: курсы или приложение? Вы же через это прошли.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Я хочу подтянуть немецкий: курсы или приложение? Вы же через это прошли.",
+          "base": {
+            "de": "Ich möchte mein Deutsch verbessern: Kurse oder eine App? Sie haben das doch schon durchgemacht.",
+            "en": "I want to improve my German: classes or an app? You have been through this, after all."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Курсы, несмотря на цену, дают гораздо больше: там приходится говорить, а приложение терпит молчание месяцами.",
+          "base": {
+            "de": "Kurse bieten trotz des Preises viel mehr: Dort muss man sprechen, eine App lässt dagegen monatelanges Schweigen zu.",
+            "en": "Despite the cost, classes offer much more: you have to speak there, while an app tolerates months of silence."
+          },
+          "move": "reason",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но курсы — это два вечера в неделю в одно время, а у меня сменный график.",
+          "base": {
+            "de": "Ein Kurs findet aber an zwei festen Abenden pro Woche statt, und ich arbeite im Schichtdienst.",
+            "en": "But classes take up two evenings a week at fixed times, and I work shifts."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Тогда объясню, как сочетать: приложение для слов, а раз в неделю онлайн-разговор с преподавателем по вашему графику.",
+          "base": {
+            "de": "Dann erkläre ich die Kombination: eine App für Wörter und einmal pro Woche ein Onlinegespräch mit einer Lehrkraft nach Ihrem Zeitplan.",
+            "en": "Then I will explain how to combine them: an app for vocabulary and an online conversation with a teacher once a week around your schedule."
+          },
+          "move": "explain",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "А если коротко: с чего начать уже в этом месяце?",
+          "base": {
+            "de": "Kurz gefragt: Womit fange ich noch diesen Monat an?",
+            "en": "Briefly, what should I start with this month?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Начните с пробного онлайн-урока, и при условии, что он понравится, добавляйте приложение как домашнее задание.",
+          "base": {
+            "de": "Beginnen Sie mit einer Online-Probestunde und nehmen Sie, wenn sie Ihnen gefällt, die App als Hausaufgabe hinzu.",
+            "en": "Start with a trial online lesson and, provided you like it, add the app as homework."
+          },
+          "move": "propose",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "Курсы, несмотря на цену, ",
+        "chunks": [
+          "дают",
+          "гораздо больше:",
+          "там приходится",
+          "говорить,",
+          "а приложение",
+          "терпит",
+          "молчание месяцами."
+        ],
+        "distractors": [
+          "гораздо меньше:",
+          "требует"
+        ],
+        "frameSuffix": ""
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": приложение для слов, а раз в неделю онлайн-разговор с "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " по вашему графику."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Тогда объясню, как сочетать",
+            "acceptedAnswers": [
+              "Тогда объясню, как сочетать"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Тогда объясню, как сочетать",
+              "Тогда объясню, как спорить",
+              "Тогда объясню, как молчать",
+              "Тогда объясню, как платить"
+            ]
+          },
+          {
+            "answer": "преподавателем",
+            "acceptedAnswers": [
+              "преподавателем"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "преподаватель – Instrumental Singular",
+              "en": "teacher (преподаватель) – instrumental singular"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Начните с пробного онлайн-урока, и "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " он понравится, добавляйте приложение как домашнее задание."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "при условии, что",
+            "acceptedAnswers": [
+              "при условии, что"
+            ],
+            "kind": "frame",
+            "choices": [
+              "при условии, что",
+              "несмотря на то, что",
+              "до того, как",
+              "потому что"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Курсы, несмотря на цену, дают ",
+        "answer": "гораздо",
+        "acceptedAnswers": [
+          "гораздо"
+        ],
+        "after": " больше: там приходится говорить, а приложение терпит молчание месяцами.",
+        "fallbackChoices": [
+          "гораздо",
+          "едва",
+          "почти",
+          "примерно"
+        ]
+      },
+      "pattern": {
+        "moveType": "explain",
+        "label": {
+          "de": "Eine Kombination erklären",
+          "en": "Explaining a combination"
+        },
+        "rule": {
+          "de": "Ordne jeder Lernform eine Aufgabe zu und passe den Gesprächsteil an den Zeitplan an.",
+          "en": "Give each learning method a role and fit the conversation practice around the schedule."
+        },
+        "examples": [
+          {
+            "targetText": "Тогда объясню, как сочетать: приложение для слов, а раз в неделю онлайн-разговор с преподавателем по вашему графику.",
+            "base": {
+              "de": "Dann erkläre ich die Kombination: eine App für Wörter und einmal pro Woche ein Onlinegespräch mit einer Lehrkraft nach Ihrem Zeitplan.",
+              "en": "Then I will explain how to combine them: an app for vocabulary and an online conversation with a teacher once a week around your schedule."
+            },
+            "highlights": [
+              "Тогда объясню, как сочетать"
+            ]
+          },
+          {
+            "targetText": "Объясню, как сочетать: слова учим в приложении, а говорить тренируемся на уроке.",
+            "base": {
+              "de": "Ich erkläre die Kombination: Wörter lernen wir in der App, Sprechen üben wir im Unterricht.",
+              "en": "I will explain how to combine them: we learn vocabulary in the app and practise speaking in the lesson."
+            },
+            "highlights": [
+              "Объясню, как сочетать"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "гораздо",
+          "kind": "adverb",
+          "base": {
+            "de": "viel, erheblich",
+            "en": "much, considerably"
+          },
+          "acceptedAnswers": [
+            "гораздо"
+          ]
+        },
+        {
+          "targetText": "несмотря на цену",
+          "kind": "frame",
+          "base": {
+            "de": "trotz des Preises",
+            "en": "despite the cost"
+          },
+          "acceptedAnswers": [
+            "несмотря на цену"
+          ]
+        },
+        {
+          "targetText": "молчание",
+          "kind": "noun",
+          "base": {
+            "de": "Schweigen",
+            "en": "silence"
+          },
+          "acceptedAnswers": [
+            "молчание"
+          ]
+        },
+        {
+          "targetText": "сменный график",
+          "kind": "phrase",
+          "base": {
+            "de": "Schichtplan",
+            "en": "shift schedule"
+          },
+          "acceptedAnswers": [
+            "сменный график"
+          ]
+        },
+        {
+          "targetText": "сочетать",
+          "kind": "verb",
+          "base": {
+            "de": "kombinieren",
+            "en": "combine"
+          },
+          "acceptedAnswers": [
+            "сочетать"
+          ],
+          "lemma": "сочетать"
+        },
+        {
+          "targetText": "преподавателем",
+          "kind": "noun",
+          "base": {
+            "de": "Lehrkraft",
+            "en": "teacher"
+          },
+          "acceptedAnswers": [
+            "преподавателем"
+          ],
+          "lemma": "преподаватель"
+        },
+        {
+          "targetText": "пробного",
+          "kind": "adjective",
+          "base": {
+            "de": "Probe-",
+            "en": "trial"
+          },
+          "acceptedAnswers": [
+            "пробного"
+          ],
+          "lemma": "пробный"
+        },
+        {
+          "targetText": "при условии, что",
+          "kind": "frame",
+          "base": {
+            "de": "unter der Bedingung, dass",
+            "en": "provided that"
+          },
+          "acceptedAnswers": [
+            "при условии, что"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "курсы",
+            "гораздо",
+            "говорить"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "объясню",
+            "сочетать",
+            "приложение"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "начните",
+            "пробного",
+            "понравится"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "гораздо",
+        "familyKey": "гораздо",
+        "surface": "гораздо",
+        "turnIndex": 1,
+        "pos": "adverb",
+        "example": {
+          "targetText": "С преподавателем говорить гораздо легче.",
+          "base": {
+            "de": "Mit einer Lehrkraft fällt das Sprechen viel leichter.",
+            "en": "Speaking is much easier with a teacher."
+          }
+        },
+        "base": {
+          "de": "viel, erheblich",
+          "en": "much, considerably"
+        },
+        "whyThisWord": {
+          "de": "Mit diesem Adverb verstärkst du einen Vergleich. In «гораздо легче» bleibt die Aussage genauer als ein bloßes Lob.",
+          "en": "Use this adverb to strengthen a comparison. «Гораздо легче» makes a more precise claim than simple praise."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 8,
+      "slug": "two-job-offers",
+      "title": {
+        "de": "Sicherheit oder Start-up-Erfahrung?",
+        "en": "Security or start-up experience?"
+      },
+      "situation": {
+        "de": "Mit einer Mentorin oder einem Mentor vergleichst du zwei konkrete Stellenangebote.",
+        "en": "You compare two concrete job offers with a mentor."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Mentorin oder Mentor",
+            "en": "mentor"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Mit einer Mentorin oder einem Mentor vergleichst du zwei konkrete Stellenangebote. Die andere Person sagt: „Два предложения: большая компания с окладом выше или стартап с долей. Вы уже решили?“",
+        "en": "You compare two concrete job offers with a mentor. The other person says: “Два предложения: большая компания с окладом выше или стартап с долей. Вы уже решили?”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Два предложения: большая компания с окладом выше или стартап с долей. Вы уже решили?",
+          "base": {
+            "de": "Zwei Angebote: ein Großunternehmen mit höherem Gehalt oder ein Start-up mit Beteiligung. Haben Sie sich schon entschieden?",
+            "en": "Two offers: a large company with a higher salary or a start-up with equity. Have you decided yet?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Ищу компромисс: компания даёт стабильность и понятный рост, тогда как стартап — риск, но и редкий опыт.",
+          "base": {
+            "de": "Ich suche einen Kompromiss: Das Unternehmen bietet Stabilität und klare Aufstiegsmöglichkeiten, das Start-up dagegen Risiko, aber auch seltene Erfahrungen.",
+            "en": "I am looking for a compromise: the company offers stability and a clear career path, whereas the start-up brings risk but also unusual experience."
+          },
+          "move": "compare",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но компромисса не бывает: стартап через год может закрыться, и доля ничего не стоит.",
+          "base": {
+            "de": "Aber einen Kompromiss gibt es nicht: Das Start-up kann in einem Jahr schließen, und die Beteiligung ist nichts wert.",
+            "en": "But there is no compromise: the start-up could close in a year and the equity is worth nothing."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Отчасти вы правы, доля может обнулиться, но и в корпорации сокращения случаются, а резюме со стартапом сильнее.",
+          "base": {
+            "de": "Zum Teil haben Sie recht, die Beteiligung kann wertlos werden. Aber auch Konzerne bauen Stellen ab, und Start-up-Erfahrung stärkt den Lebenslauf.",
+            "en": "You are partly right: the equity could become worthless. But corporations also make redundancies, and start-up experience makes a stronger CV."
+          },
+          "move": "concede",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Допустим. Если считать только ближайшие два года, что вы выберете?",
+          "base": {
+            "de": "Angenommen. Was würden Sie wählen, wenn nur die nächsten zwei Jahre zählen?",
+            "en": "Suppose so. What would you choose if you only consider the next two years?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "На два года — стартап, при условии, что оклад покрывает аренду; иначе всё-таки корпорация.",
+          "base": {
+            "de": "Für zwei Jahre das Start-up, sofern das Gehalt die Miete deckt; sonst doch der Konzern.",
+            "en": "For two years, the start-up, provided the salary covers the rent; otherwise, the corporation after all."
+          },
+          "move": "conclude",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Ищу компромисс:",
+          "компания даёт",
+          "стабильность",
+          "и понятный рост,",
+          "тогда как стартап —"
+        ],
+        "distractors": [
+          "нестабильность",
+          "и случайный рост,"
+        ],
+        "frameSuffix": " риск, но и редкий опыт."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ", доля может "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", но и в корпорации сокращения случаются, а резюме со стартапом сильнее."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Отчасти вы правы",
+            "acceptedAnswers": [
+              "Отчасти вы правы"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Отчасти вы правы",
+              "Отчасти вы опоздали",
+              "Отчасти вы виноваты",
+              "Вы не правы"
+            ]
+          },
+          {
+            "answer": "обнулиться",
+            "acceptedAnswers": [
+              "обнулиться"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "wertlos werden – mögliches Ergebnis",
+              "en": "become worthless – possible result"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "На два года — стартап, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " оклад покрывает аренду; иначе всё-таки корпорация."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "при условии, что",
+            "acceptedAnswers": [
+              "при условии, что"
+            ],
+            "kind": "frame",
+            "choices": [
+              "при условии, что",
+              "несмотря на то, что",
+              "до того, как",
+              "потому что"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Ищу ",
+        "answer": "компромисс",
+        "acceptedAnswers": [
+          "компромисс"
+        ],
+        "after": ": компания даёт стабильность и понятный рост, тогда как стартап — риск, но и редкий опыт.",
+        "fallbackChoices": [
+          "компромисс",
+          "вакансию",
+          "поручение",
+          "сотрудника"
+        ]
+      },
+      "pattern": {
+        "moveType": "concede",
+        "label": {
+          "de": "Ein Risiko anerkennen und vergleichen",
+          "en": "Acknowledging and comparing risk"
+        },
+        "rule": {
+          "de": "Erkenne den möglichen Verlust an und zeige, dass auch die andere Option nicht risikofrei ist.",
+          "en": "Acknowledge the possible loss and show that the other option also carries risk."
+        },
+        "examples": [
+          {
+            "targetText": "Отчасти вы правы, доля может обнулиться, но и в корпорации сокращения случаются, а резюме со стартапом сильнее.",
+            "base": {
+              "de": "Zum Teil haben Sie recht, die Beteiligung kann wertlos werden. Aber auch Konzerne bauen Stellen ab, und Start-up-Erfahrung stärkt den Lebenslauf.",
+              "en": "You are partly right: the equity could become worthless. But corporations also make redundancies, and start-up experience makes a stronger CV."
+            },
+            "highlights": [
+              "Отчасти вы правы"
+            ]
+          },
+          {
+            "targetText": "Отчасти вы правы, риск есть, но и большая компания не даёт полной гарантии.",
+            "base": {
+              "de": "Zum Teil haben Sie recht, es gibt ein Risiko; aber auch ein Großunternehmen bietet keine volle Garantie.",
+              "en": "You are partly right: there is a risk, but a large company does not offer a complete guarantee either."
+            },
+            "highlights": [
+              "Отчасти вы правы"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "компромисс",
+          "kind": "noun",
+          "base": {
+            "de": "Kompromiss",
+            "en": "compromise"
+          },
+          "acceptedAnswers": [
+            "компромисс"
+          ]
+        },
+        {
+          "targetText": "оклад",
+          "kind": "noun",
+          "base": {
+            "de": "Grundgehalt",
+            "en": "salary"
+          },
+          "acceptedAnswers": [
+            "оклад"
+          ]
+        },
+        {
+          "targetText": "долей",
+          "kind": "noun",
+          "base": {
+            "de": "Beteiligung",
+            "en": "equity"
+          },
+          "acceptedAnswers": [
+            "долей"
+          ],
+          "lemma": "доля"
+        },
+        {
+          "targetText": "стабильность",
+          "kind": "noun",
+          "base": {
+            "de": "Stabilität",
+            "en": "stability"
+          },
+          "acceptedAnswers": [
+            "стабильность"
+          ]
+        },
+        {
+          "targetText": "сокращения",
+          "kind": "noun",
+          "base": {
+            "de": "Stellenabbau",
+            "en": "redundancies"
+          },
+          "acceptedAnswers": [
+            "сокращения"
+          ],
+          "lemma": "сокращение"
+        },
+        {
+          "targetText": "обнулиться",
+          "kind": "verb",
+          "base": {
+            "de": "wertlos werden",
+            "en": "become worthless"
+          },
+          "acceptedAnswers": [
+            "обнулиться"
+          ]
+        },
+        {
+          "targetText": "резюме",
+          "kind": "noun",
+          "base": {
+            "de": "Lebenslauf",
+            "en": "CV"
+          },
+          "acceptedAnswers": [
+            "резюме"
+          ]
+        },
+        {
+          "targetText": "всё-таки",
+          "kind": "adverb",
+          "base": {
+            "de": "doch, letztlich",
+            "en": "after all"
+          },
+          "acceptedAnswers": [
+            "всё-таки"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "компромисс",
+            "стабильность",
+            "стартап"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "правы",
+            "доля",
+            "сокращения"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "стартап",
+            "оклад",
+            "аренду"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "компромисс",
+        "familyKey": "компромисс",
+        "surface": "компромисс",
+        "turnIndex": 1,
+        "pos": "noun",
+        "example": {
+          "targetText": "Ищу компромисс между доходом и интересной работой.",
+          "base": {
+            "de": "Ich suche einen Kompromiss zwischen Einkommen und interessanter Arbeit.",
+            "en": "I am looking for a compromise between income and interesting work."
+          }
+        },
+        "base": {
+          "de": "Kompromiss",
+          "en": "compromise"
+        },
+        "whyThisWord": {
+          "de": "Dieses Nomen benennt einen Ausgleich zwischen konkurrierenden Wünschen. In «ищу компромисс» sagst du, wonach du suchst.",
+          "en": "This noun names a balance between competing wishes. In «ищу компромисс», you state what you are seeking."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    },
+    {
+      "lessonNumber": 9,
+      "slug": "move-or-stay",
+      "title": {
+        "de": "Nach Kasan oder bleiben?",
+        "en": "Kazan or stay?"
+      },
+      "situation": {
+        "de": "Eine Nachbarin spricht dich auf ein Stellenangebot in Kasan an.",
+        "en": "A neighbour asks about a job offer in Kazan."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Nachbarin",
+            "en": "neighbour"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Eine Nachbarin spricht dich auf ein Stellenangebot in Kasan an. Die andere Person sagt: „Слышала, вам предлагают переехать в Казань. Неужели уедете? Здесь же всё налажено.“",
+        "en": "A neighbour asks about a job offer in Kazan. The other person says: “Слышала, вам предлагают переехать в Казань. Неужели уедете? Здесь же всё налажено.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Слышала, вам предлагают переехать в Казань. Неужели уедете? Здесь же всё налажено.",
+          "base": {
+            "de": "Ich habe gehört, Ihnen wird ein Umzug nach Kasan angeboten. Gehen Sie wirklich? Hier ist doch alles eingespielt.",
+            "en": "I heard you have been offered a move to Kazan. Will you really leave? Everything is settled here."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Честно, сомневаюсь: там зарплата выше и жильё дешевле, но здесь друзья, врач, спортзал — всё, что годами складывалось.",
+          "base": {
+            "de": "Ehrlich gesagt zweifle ich: Dort ist das Gehalt höher und Wohnen günstiger. Hier sind aber Freunde, Arzt und Fitnessstudio, alles, was über Jahre gewachsen ist.",
+            "en": "Honestly, I am unsure: salaries are higher and housing cheaper there, but my friends, doctor and gym are here, everything built up over years."
+          },
+          "move": "position",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но друзей и там заведёте, а вот такую квартиру за эти деньги больше не найдёте.",
+          "base": {
+            "de": "Aber Freunde finden Sie auch dort; eine solche Wohnung bekommen Sie für das Geld dagegen nie wieder.",
+            "en": "But you will make friends there too; you will never find a flat like this for that money again."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Квартира — довод, но временный: через два года аренда и здесь вырастет, а разница в зарплате останется.",
+          "base": {
+            "de": "Die Wohnung ist ein Argument, aber nur vorübergehend: In zwei Jahren steigt auch hier die Miete, während der Gehaltsunterschied bleibt.",
+            "en": "The flat is an argument, but a temporary one: in two years rent will rise here too, while the salary difference will remain."
+          },
+          "move": "rebut",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Хорошо, а есть что-то, что решило бы вопрос окончательно?",
+          "base": {
+            "de": "Gut, gibt es etwas, das die Entscheidung endgültig klären würde?",
+            "en": "All right, is there anything that would settle the question for good?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Если коротко: если фирма даст удалённую работу два дня в неделю, я еду, если нет — остаюсь.",
+          "base": {
+            "de": "Kurz gesagt: Wenn die Firma zwei Tage pro Woche von zu Hause erlaubt, ziehe ich um; wenn nicht, bleibe ich.",
+            "en": "Briefly: if the company allows two days of remote work a week, I will move; if not, I will stay."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Честно,",
+          "сомневаюсь:",
+          "там зарплата выше",
+          "и жильё дешевле,",
+          "но здесь друзья,"
+        ],
+        "distractors": [
+          "возражаю:",
+          "и жильё дороже,"
+        ],
+        "frameSuffix": " врач, спортзал — всё, что годами складывалось."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": через два года аренда и здесь "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": ", а разница в зарплате останется."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Квартира — довод, но временный",
+            "acceptedAnswers": [
+              "Квартира — довод, но временный"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Квартира — довод, но временный",
+              "Квартира — довод, но вечный",
+              "Квартира — не довод, а временный",
+              "Квартира — довод, но постоянный"
+            ]
+          },
+          {
+            "answer": "вырастет",
+            "acceptedAnswers": [
+              "вырастет"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "steigen – künftiges Ergebnis",
+              "en": "rise – future result"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": если фирма даст удалённую работу два дня в неделю, я еду, если нет — остаюсь."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Если коротко",
+            "acceptedAnswers": [
+              "Если коротко"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Если коротко",
+              "Если долго",
+              "Если нет",
+              "Если подробно"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Честно, ",
+        "answer": "сомневаюсь",
+        "acceptedAnswers": [
+          "сомневаюсь"
+        ],
+        "after": ": там зарплата выше и жильё дешевле, но здесь друзья, врач, спортзал — всё, что годами складывалось.",
+        "fallbackChoices": [
+          "сомневаюсь",
+          "возмущаюсь",
+          "восхищаюсь",
+          "улыбаюсь"
+        ]
+      },
+      "pattern": {
+        "moveType": "rebut",
+        "label": {
+          "de": "Ein Argument zeitlich begrenzen",
+          "en": "Limiting an argument in time"
+        },
+        "rule": {
+          "de": "Nimm den Wohnvorteil ernst, zeige aber, warum er den langfristigen Gehaltsunterschied nicht aufhebt.",
+          "en": "Take the housing advantage seriously but explain why it does not remove the long-term salary difference."
+        },
+        "examples": [
+          {
+            "targetText": "Квартира — довод, но временный: через два года аренда и здесь вырастет, а разница в зарплате останется.",
+            "base": {
+              "de": "Die Wohnung ist ein Argument, aber nur vorübergehend: In zwei Jahren steigt auch hier die Miete, während der Gehaltsunterschied bleibt.",
+              "en": "The flat is an argument, but a temporary one: in two years rent will rise here too, while the salary difference will remain."
+            },
+            "highlights": [
+              "Квартира — довод, но временный"
+            ]
+          },
+          {
+            "targetText": "Низкая аренда — довод, но временный: цена может вырасти.",
+            "base": {
+              "de": "Die niedrige Miete ist ein Argument, aber nur vorübergehend: Der Preis kann steigen.",
+              "en": "Low rent is an argument, but a temporary one: the price may rise."
+            },
+            "highlights": [
+              "довод, но временный"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "сомневаюсь",
+          "kind": "verb",
+          "base": {
+            "de": "ich bin unsicher",
+            "en": "I am unsure"
+          },
+          "acceptedAnswers": [
+            "сомневаюсь"
+          ],
+          "lemma": "сомневаться"
+        },
+        {
+          "targetText": "жильё",
+          "kind": "noun",
+          "base": {
+            "de": "Wohnraum",
+            "en": "housing"
+          },
+          "acceptedAnswers": [
+            "жильё"
+          ]
+        },
+        {
+          "targetText": "складывалось",
+          "kind": "verb",
+          "base": {
+            "de": "hat sich entwickelt",
+            "en": "developed"
+          },
+          "acceptedAnswers": [
+            "складывалось"
+          ],
+          "lemma": "складываться"
+        },
+        {
+          "targetText": "довод",
+          "kind": "noun",
+          "base": {
+            "de": "Argument",
+            "en": "argument"
+          },
+          "acceptedAnswers": [
+            "довод"
+          ]
+        },
+        {
+          "targetText": "временный",
+          "kind": "adjective",
+          "base": {
+            "de": "vorübergehend",
+            "en": "temporary"
+          },
+          "acceptedAnswers": [
+            "временный"
+          ]
+        },
+        {
+          "targetText": "аренда",
+          "kind": "noun",
+          "base": {
+            "de": "Miete",
+            "en": "rent"
+          },
+          "acceptedAnswers": [
+            "аренда"
+          ]
+        },
+        {
+          "targetText": "останется",
+          "kind": "verb",
+          "base": {
+            "de": "wird bleiben",
+            "en": "will remain"
+          },
+          "acceptedAnswers": [
+            "останется"
+          ],
+          "lemma": "остаться"
+        },
+        {
+          "targetText": "Если коротко",
+          "kind": "frame",
+          "base": {
+            "de": "kurz gesagt",
+            "en": "briefly"
+          },
+          "acceptedAnswers": [
+            "Если коротко"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "сомневаюсь",
+            "зарплата",
+            "жильё"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "квартира",
+            "довод",
+            "вырастет"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "коротко",
+            "фирма",
+            "остаюсь"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "сомневаться",
+        "familyKey": "сомневаться",
+        "surface": "сомневаюсь",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Сомневаюсь, что переезд решит все проблемы.",
+          "base": {
+            "de": "Ich bezweifle, dass ein Umzug alle Probleme löst.",
+            "en": "I doubt that moving will solve every problem."
+          }
+        },
+        "base": {
+          "de": "zweifeln",
+          "en": "doubt"
+        },
+        "whyThisWord": {
+          "de": "Mit «сомневаюсь» drückst du Unsicherheit aus, ohne dich schon festzulegen. Die Form spricht für «я» und enthält keine Geschlechtsangabe.",
+          "en": "Use «сомневаюсь» to express uncertainty before committing yourself. This form speaks for «я» without marking gender."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": [
+          {
+            "code": "B2-GENDER-THIRD-PERSON",
+            "reason": "dialogue[1] складывалось: third-person subject: всё"
+          }
+        ]
+      }
+    },
+    {
+      "lessonNumber": 10,
+      "slug": "barrier-or-rota",
+      "title": {
+        "de": "Schranke oder Parkreihenfolge?",
+        "en": "Barrier or parking rota?"
+      },
+      "situation": {
+        "de": "Im Hausbeirat vergleichst du zwei vorgeschlagene Parkregelungen für ein fiktives Wohnhaus.",
+        "en": "On a residents’ committee, you compare two proposed parking arrangements for a fictional building."
+      },
+      "episodeShape": "challenge",
+      "registerPlan": {
+        "mode": "constant",
+        "registers": [
+          "вы",
+          "вы",
+          "вы"
+        ]
+      },
+      "interlocutors": [
+        {
+          "id": "a",
+          "role": {
+            "de": "Vorsitz des Hausbeirats",
+            "en": "residents’ committee chair"
+          },
+          "voiceRole": "A"
+        }
+      ],
+      "speakerGender": "neutral",
+      "sceneCaption": {
+        "de": "Im Hausbeirat vergleichst du zwei vorgeschlagene Parkregelungen für ein fiktives Wohnhaus. Die andere Person sagt: „Совет дома выбирает: платный шлагбаум во дворе или бесплатная парковка по очереди. Ваше слово.“",
+        "en": "On a residents’ committee, you compare two proposed parking arrangements for a fictional building. The other person says: “Совет дома выбирает: платный шлагбаум во дворе или бесплатная парковка по очереди. Ваше слово.”"
+      },
+      "dialogue": [
+        {
+          "speaker": "them",
+          "targetText": "Совет дома выбирает: платный шлагбаум во дворе или бесплатная парковка по очереди. Ваше слово.",
+          "base": {
+            "de": "Der Hausbeirat entscheidet zwischen einer kostenpflichtigen Schranke im Hof und kostenlosem Parken im Wechsel. Sie haben das Wort.",
+            "en": "The residents’ committee is choosing between a paid barrier in the courtyard and free parking by rota. Your view?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Я рекомендую шлагбаум: он дороже, но очередь без контроля превращается в споры, тогда как шлагбаум решает вопрос раз и навсегда.",
+          "base": {
+            "de": "Ich empfehle die Schranke: Sie kostet mehr, aber eine unkontrollierte Reihenfolge führt zu Streit, während die Schranke das Problem ein für alle Mal löst.",
+            "en": "I recommend the barrier: it costs more, but a rota without oversight turns into arguments, whereas the barrier solves the issue once and for all."
+          },
+          "move": "position",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Но шлагбаум — это взносы с каждой квартиры, а треть жильцов машин не имеет и платить откажется.",
+          "base": {
+            "de": "Aber die Schranke bedeutet Beiträge aus jeder Wohnung, und ein Drittel der Bewohner hat kein Auto und wird die Zahlung verweigern.",
+            "en": "But the barrier means contributions from every flat, and a third of residents have no car and will refuse to pay."
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Тогда промежуточный вариант: платят только владельцы машин, а остальные получают бесплатный пропуск для гостей.",
+          "base": {
+            "de": "Dann ein Mittelweg: Nur die Autobesitzer zahlen, die anderen erhalten einen kostenlosen Zugang für Gäste.",
+            "en": "Then an intermediate option: only car owners pay, while the others receive a free guest pass."
+          },
+          "move": "counteroffer",
+          "register": "вы"
+        },
+        {
+          "speaker": "them",
+          "targetText": "Подведите итог для протокола: что совет предлагает собранию?",
+          "base": {
+            "de": "Fassen Sie es für das Protokoll zusammen: Was schlägt der Beirat der Versammlung vor?",
+            "en": "Sum it up for the minutes: what does the committee propose to the residents’ meeting?"
+          },
+          "interlocutorId": "a"
+        },
+        {
+          "speaker": "you",
+          "targetText": "Итак, совет предлагает шлагбаум с оплатой только владельцами машин, при условии, что гостевой проезд остаётся бесплатным.",
+          "base": {
+            "de": "Also schlägt der Beirat eine Schranke vor, die nur Autobesitzer bezahlen, unter der Bedingung, dass Gäste weiterhin kostenlos einfahren können.",
+            "en": "So the committee proposes a barrier paid for only by car owners, provided guest access remains free."
+          },
+          "move": "summarize",
+          "register": "вы"
+        }
+      ],
+      "build": {
+        "framePrefix": "",
+        "chunks": [
+          "Я рекомендую",
+          "шлагбаум:",
+          "он дороже,",
+          "но очередь без контроля",
+          "превращается в споры,"
+        ],
+        "distractors": [
+          "превращается в согласие,",
+          "но очередь с контролем"
+        ],
+        "frameSuffix": " тогда как шлагбаум решает вопрос раз и навсегда."
+      },
+      "cloze": {
+        "segments": [
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": ": платят только владельцы машин, а остальные "
+          },
+          {
+            "kind": "blank",
+            "index": 1
+          },
+          {
+            "kind": "text",
+            "text": " бесплатный пропуск для гостей."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "Тогда промежуточный вариант",
+            "acceptedAnswers": [
+              "Тогда промежуточный вариант"
+            ],
+            "kind": "frame",
+            "choices": [
+              "Тогда промежуточный вариант",
+              "Тогда опасный вариант",
+              "Тогда прежний вариант",
+              "Тогда никакой вариант"
+            ]
+          },
+          {
+            "answer": "получают",
+            "acceptedAnswers": [
+              "получают"
+            ],
+            "kind": "form",
+            "cue": {
+              "de": "получать – sie, Präsens, unvollendet",
+              "en": "receive (получать) – they, present, imperfective"
+            }
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "synthesis": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Итак, совет предлагает шлагбаум с оплатой только владельцами машин, "
+          },
+          {
+            "kind": "blank",
+            "index": 0
+          },
+          {
+            "kind": "text",
+            "text": " гостевой проезд остаётся бесплатным."
+          }
+        ],
+        "blanks": [
+          {
+            "answer": "при условии, что",
+            "acceptedAnswers": [
+              "при условии, что"
+            ],
+            "kind": "frame",
+            "choices": [
+              "при условии, что",
+              "несмотря на то, что",
+              "до того, как",
+              "потому что"
+            ]
+          }
+        ],
+        "moveBlankIndex": 0
+      },
+      "recall": {
+        "before": "Я ",
+        "answer": "рекомендую",
+        "acceptedAnswers": [
+          "рекомендую"
+        ],
+        "after": " шлагбаум: он дороже, но очередь без контроля превращается в споры, тогда как шлагбаум решает вопрос раз и навсегда.",
+        "fallbackChoices": [
+          "рекомендую",
+          "ремонтирую",
+          "перевожу",
+          "разбираю"
+        ]
+      },
+      "pattern": {
+        "moveType": "counteroffer",
+        "label": {
+          "de": "Einen Mittelweg vorschlagen",
+          "en": "Proposing a middle ground"
+        },
+        "rule": {
+          "de": "Ändere die Finanzierung und nenne den Ausgleich für die übrigen Bewohner.",
+          "en": "Change the funding arrangement and name the provision for the other residents."
+        },
+        "examples": [
+          {
+            "targetText": "Тогда промежуточный вариант: платят только владельцы машин, а остальные получают бесплатный пропуск для гостей.",
+            "base": {
+              "de": "Dann ein Mittelweg: Nur die Autobesitzer zahlen, die anderen erhalten einen kostenlosen Zugang für Gäste.",
+              "en": "Then an intermediate option: only car owners pay, while the others receive a free guest pass."
+            },
+            "highlights": [
+              "Тогда промежуточный вариант"
+            ]
+          },
+          {
+            "targetText": "Тогда промежуточный вариант: платят пользователи, а гостевой доступ бесплатный.",
+            "base": {
+              "de": "Dann ein Mittelweg: Die Nutzer zahlen, der Zugang für Gäste ist kostenlos.",
+              "en": "Then an intermediate option: users pay and guest access is free."
+            },
+            "highlights": [
+              "Тогда промежуточный вариант"
+            ]
+          }
+        ]
+      },
+      "terms": [
+        {
+          "targetText": "рекомендую",
+          "kind": "verb",
+          "base": {
+            "de": "ich empfehle",
+            "en": "I recommend"
+          },
+          "acceptedAnswers": [
+            "рекомендую"
+          ],
+          "lemma": "рекомендовать"
+        },
+        {
+          "targetText": "шлагбаум",
+          "kind": "noun",
+          "base": {
+            "de": "Schranke",
+            "en": "barrier"
+          },
+          "acceptedAnswers": [
+            "шлагбаум"
+          ]
+        },
+        {
+          "targetText": "контроля",
+          "kind": "noun",
+          "base": {
+            "de": "Kontrolle",
+            "en": "oversight"
+          },
+          "acceptedAnswers": [
+            "контроля"
+          ],
+          "lemma": "контроль"
+        },
+        {
+          "targetText": "взносы",
+          "kind": "noun",
+          "base": {
+            "de": "Beiträge",
+            "en": "contributions"
+          },
+          "acceptedAnswers": [
+            "взносы"
+          ],
+          "lemma": "взнос"
+        },
+        {
+          "targetText": "пропуск",
+          "kind": "noun",
+          "base": {
+            "de": "Zugangsausweis",
+            "en": "pass"
+          },
+          "acceptedAnswers": [
+            "пропуск"
+          ]
+        },
+        {
+          "targetText": "промежуточный",
+          "kind": "adjective",
+          "base": {
+            "de": "dazwischenliegend",
+            "en": "intermediate"
+          },
+          "acceptedAnswers": [
+            "промежуточный"
+          ]
+        },
+        {
+          "targetText": "бесплатным",
+          "kind": "adjective",
+          "base": {
+            "de": "kostenlos",
+            "en": "free of charge"
+          },
+          "acceptedAnswers": [
+            "бесплатным"
+          ],
+          "lemma": "бесплатный"
+        },
+        {
+          "targetText": "для протокола",
+          "kind": "phrase",
+          "base": {
+            "de": "für das Protokoll",
+            "en": "for the minutes"
+          },
+          "acceptedAnswers": [
+            "для протокола"
+          ]
+        }
+      ],
+      "speak": [
+        {
+          "turnIndex": 1,
+          "requiredTokens": [
+            "рекомендую",
+            "шлагбаум",
+            "очередь"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 3,
+          "requiredTokens": [
+            "промежуточный",
+            "владельцы",
+            "пропуск"
+          ],
+          "profile": "b2-long"
+        },
+        {
+          "turnIndex": 5,
+          "requiredTokens": [
+            "предлагает",
+            "владельцами",
+            "гостевой"
+          ],
+          "profile": "b2-short"
+        }
+      ],
+      "trophy": {
+        "lemma": "рекомендовать",
+        "familyKey": "рекомендовать",
+        "surface": "рекомендую",
+        "turnIndex": 1,
+        "pos": "verb",
+        "example": {
+          "targetText": "Я рекомендую обсудить расходы до голосования.",
+          "base": {
+            "de": "Ich empfehle, die Kosten vor der Abstimmung zu besprechen.",
+            "en": "I recommend discussing the costs before the vote."
+          }
+        },
+        "base": {
+          "de": "empfehlen",
+          "en": "recommend"
+        },
+        "whyThisWord": {
+          "de": "Mit «рекомендую» gibst du eine klare Empfehlung, ohne allein zu entscheiden. Die Form passt zu «я» und bleibt geschlechtsneutral.",
+          "en": "Use «рекомендую» to give a clear recommendation without deciding alone. The form fits «я» and stays gender-neutral."
+        }
+      },
+      "review": {
+        "flags": {
+          "argumentCoherent": false,
+          "challengeGenuine": false,
+          "steerGenuine": false,
+          "b2NotInflatedB1": false,
+          "registerNative": false,
+          "genderClaimVerified": false,
+          "distractorsNotAlsoCorrect": false,
+          "patternTruthful": false,
+          "baseTextsAccurate": false,
+          "ttsReadable": false,
+          "carriersStaged": false,
+          "noFiller": false
+        },
+        "verdict": "pending",
+        "failingCriteria": [],
+        "reviewers": [],
+        "nativeStatus": "unreviewed",
+        "acknowledgedWarnings": []
+      }
+    }
+  ]
+}

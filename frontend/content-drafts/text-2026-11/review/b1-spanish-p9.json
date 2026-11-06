@@ -1,0 +1,48 @@
+{
+  "file": "spanish-p9.json",
+  "source": "b44d8328a9626b3948ba68451a27484ebebb1e6a1ed1db824f71f5f02cb922d6",
+  "result": "b6623e7b148c4c86c03dc5c2a4d2e0b2f2d4421eb286945185b5f0f77371a7aa",
+  "edits": 34,
+  "preconditionNotes": [],
+  "readThrough": [
+    {
+      "file": "spanish-p9.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Pointers are relative to the file root (data). All ten trophies match the frozen plan (avería, garantía, factura, técnico, pieza, presupuesto, solución, devolución, compensación, compromiso); none collides with the taken list. Register formal throughout, one singular interlocutor, no learner gender marking (preparado/revisado agree with presupuesto/contrato, not the speaker). First learner turns 10/14/12/12/10/11/11/10/12/11 words, last turns 9/9/10/12/7/10/9/10/8/9: in range. Cloze, recall and chunk concatenations reproduce the canonical turns; answer slots vary. Them₂ never surfaces in situation or caption. Accepted the review as follows: L1 timing and als/when fine as written; L2 'según mi recibo' scoped over the warranty date and a bare 7-month warranty read as a legal or stock period, fixed by making it the garantía comercial in its own clause; L3 staff saw an unsent file, fixed by having them₁ ask for a legible copy of the original and them₂ explain that scans often fail to open, so the photo turn stays a conditional proposal; L4 Friday morning is consistent with 'antes de mi turno'; L5 ordered vs arrived already distinct, but 'espera' (usted) was a second correct chip against the 'ellos' cue, replaced; L6 quote, approval and charge already distinct, British 'itemise' and two inconsistent chunk glosses fixed; L7 no legal loan claim, request stays a question; L8 condition of a final check honoured; L9 the request only asks to include receipts; L10 staff now name a personal and a work address so 'mi correo personal' identifies one, and the learner asks for the slot rather than assuming one. L2 EN rule had British 'enquiry'. L10 term 'la franja horaria' was not in scene."
+    },
+    {
+      "file": "spanish-plan.json",
+      "lessonsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "concerns": "Status proposal_not_approved; P9 beats and trophies match the drafted path exactly. No edits."
+    }
+  ],
+  "openIssues": [
+    "German meta text mixes du (L2 goal/rule, L2 whyThisWord, L4 rule, L7 rule) with Sie (situations, captions, other whyThisWord); align to the German B1 corpus convention before TTS or edition regeneration.",
+    "Ustedes forms (Tendrían, Podrían, enviarían) appear as chips where the cue pins usted; accepted because the spec fixes one singular interlocutor, but the validator's register pair check should confirm German B1 treats Sie/plural chips the same way.",
+    "songMood is uniformly 'Sachlich und ruhig.'; verify this matches the A2 Spanish module's genre strings as the spec requires.",
+    "L5 them₁ EN 'What do you need me to check?' is a free rendering of '¿Qué necesita comprobar?'; acceptable, flagged only.",
+    "Any accepted edit changes the Spanish corpus hash; editions and catalog remain owner-gated per the spec and are not touched here."
+  ]
+}

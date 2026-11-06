@@ -1,0 +1,1906 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "English",
+  "targetLanguageCode": "en-US",
+  "baseLanguage": "German",
+  "pathNumber": 10,
+  "title": {
+    "de": "Dein Jahr hier"
+  },
+  "subtitle": {
+    "de": "Erzähl, was dir in deinem ersten Jahr passiert ist und was du als Nächstes vorhast."
+  },
+  "anchor": "Shape B: Eine vertraute Person hört interessiert zu. Keine neue Grammatik. Zeitlich verankerte Erinnerungen, früher und heute, Erfahrung und Ergebnis, Relativsätze, Begründung, Einschränkung und mögliche nächste Schritte. Die getrennten Transferbeispiele nehmen die spätere Rückfrage nicht vorweg. en-US, informelle Gespräche; Entwurf.",
+  "lessons": [
+    {
+      "slug": "the-night-the-lights-went-out",
+      "title": {
+        "de": "Eine Nacht im ersten Monat"
+      },
+      "situation": {
+        "de": "Du blätterst mit einem Freund durch Fotos von deinem ersten Monat in der Stadt.",
+        "en": "You and a friend are looking through photos from your first month in town."
+      },
+      "pedagogicalGoal": "Mit when kannst du das einzelne Ereignis nennen, das eine laufende Handlung unterbricht. Das Ereignis selbst steht im simple past.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Which night do you remember best from those first few weeks?",
+          "baseText": {
+            "de": "An welchen Abend aus den ersten Wochen erinnerst du dich am besten?"
+          }
+        },
+        {
+          "targetText": "My strangest experience was cooking dinner when everything suddenly went dark.",
+          "baseText": {
+            "de": "Mein seltsamstes Erlebnis war, dass beim Kochen plötzlich alles dunkel wurde."
+          }
+        },
+        {
+          "targetText": "I remember that storm! Were you scared there on your own?",
+          "baseText": {
+            "de": "An den Sturm erinnere ich mich! Hattest du da allein Angst?"
+          }
+        },
+        {
+          "targetText": "I felt better when my neighbor knocked on the door.",
+          "baseText": {
+            "de": "Mir ging es besser, als mein Nachbar an die Tür klopfte."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A moment in a story",
+        "rule": {
+          "de": "Mit when kannst du das einzelne Ereignis nennen, das eine laufende Handlung unterbricht. Das Ereignis selbst steht im simple past."
+        },
+        "examples": [
+          {
+            "targetText": "My strangest experience was cooking dinner when everything suddenly went dark.",
+            "baseText": {
+              "de": "Mein seltsamstes Erlebnis war, dass beim Kochen plötzlich alles dunkel wurde."
+            },
+            "highlight": "when everything suddenly went dark"
+          },
+          {
+            "targetText": "We were crossing the street when the bus stopped.",
+            "baseText": {
+              "de": "Wir überquerten gerade die Straße, als der Bus anhielt."
+            },
+            "highlight": "when the bus stopped"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "felt",
+          "choices": [
+            "feels",
+            "feeling",
+            "felt",
+            "feel"
+          ],
+          "cue": "feel · abgeschlossene Vergangenheit"
+        },
+        " better when my neighbor ",
+        {
+          "kind": "form",
+          "answer": "knocked",
+          "choices": [
+            "knocks",
+            "knocked",
+            "knocking",
+            "knock"
+          ],
+          "cue": "knock · abgeschlossene Vergangenheit"
+        },
+        " on the door."
+      ],
+      "chunks": [
+        {
+          "targetText": "My strangest experience",
+          "baseText": {
+            "de": "Mein seltsamstes Erlebnis"
+          }
+        },
+        {
+          "targetText": "was cooking dinner",
+          "baseText": {
+            "de": "war das Abendessenkochen,"
+          }
+        },
+        {
+          "targetText": "when everything",
+          "baseText": {
+            "de": "als alles"
+          }
+        },
+        {
+          "targetText": "suddenly went dark.",
+          "baseText": {
+            "de": "plötzlich dunkel wurde."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "those first few weeks",
+          "baseText": {
+            "de": "diese ersten paar Wochen"
+          }
+        },
+        {
+          "targetText": "experience",
+          "baseText": {
+            "de": "Erlebnis"
+          }
+        },
+        {
+          "targetText": "cooking dinner",
+          "baseText": {
+            "de": "Abendessen kochen"
+          }
+        },
+        {
+          "targetText": "went dark",
+          "baseText": {
+            "de": "wurde dunkel"
+          }
+        },
+        {
+          "targetText": "storm",
+          "baseText": {
+            "de": "Sturm"
+          }
+        },
+        {
+          "targetText": "on your own",
+          "baseText": {
+            "de": "ganz allein"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My strangest ",
+        "answer": "experience",
+        "after": " was cooking dinner when everything suddenly went dark.",
+        "fallbackChoices": [
+          "experiencing",
+          "experienced",
+          "experience",
+          "experiences"
+        ]
+      },
+      "speakRequired": [
+        "experience",
+        "dinner",
+        "dark"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund bleibt bei den ersten Fotos stehen: „Which night do you remember best from those first few weeks?“"
+      },
+      "trophyWord": {
+        "word": "experience",
+        "meaning": {
+          "de": "Erlebnis"
+        },
+        "example": "That first night in our new house was quite an experience.",
+        "whyThisWord": {
+          "de": "Für ein einzelnes Erlebnis ist experience zählbar; für Erfahrung als Wissen oft nicht."
+        }
+      },
+      "distractors": [
+        "to buy dessert",
+        "stayed on the shelf."
+      ],
+      "placeholderCaption": {
+        "de": "Ein geöffnetes Fotoalbum auf dem Küchentisch; zwei Freunde blättern darin."
+      },
+      "songMood": "Erinnernd, mit einem kleinen Schreck.",
+      "visualNotes": "Ein geöffnetes Fotoalbum auf dem Küchentisch; zwei Freunde blättern darin."
+    },
+    {
+      "slug": "the-first-bus-map",
+      "title": {
+        "de": "Die ersten Wege zur Arbeit"
+      },
+      "situation": {
+        "de": "Auf dem Weg zur Haltestelle sprichst du mit einer Bekannten über deinen Start in der Stadt.",
+        "en": "Walking to the bus stop, you and someone you know talk about your first weeks in town."
+      },
+      "pedagogicalGoal": "Der Relativsatz mit that grenzt ein, welcher Bus oder welcher Laden gemeint ist. Das Verb richtet sich nach dem Bezugswort.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What was harder than you expected when you moved here?",
+          "baseText": {
+            "de": "Was war schwieriger als erwartet, als du hergezogen bist?"
+          }
+        },
+        {
+          "targetText": "My biggest challenge was finding a bus that ran before my shift started.",
+          "baseText": {
+            "de": "Am schwierigsten war es, einen Bus zu finden, der vor Beginn meiner Schicht fuhr."
+          }
+        },
+        {
+          "targetText": "You always get there on time now. What finally helped?",
+          "baseText": {
+            "de": "Jetzt kommst du immer pünktlich an. Was hat dir schließlich geholfen?"
+          }
+        },
+        {
+          "targetText": "A driver showed me where the first bus leaves from.",
+          "baseText": {
+            "de": "Ein Fahrer hat mir gezeigt, wo der erste Bus abfährt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Describing the one you need",
+        "rule": {
+          "de": "Der Relativsatz mit that grenzt ein, welcher Bus oder welcher Laden gemeint ist. Das Verb richtet sich nach dem Bezugswort."
+        },
+        "examples": [
+          {
+            "targetText": "My biggest challenge was finding a bus that ran before my shift started.",
+            "baseText": {
+              "de": "Am schwierigsten war es, einen Bus zu finden, der vor Beginn meiner Schicht fuhr."
+            },
+            "highlight": "a bus that ran"
+          },
+          {
+            "targetText": "We need a shop that stays open late.",
+            "baseText": {
+              "de": "Wir brauchen einen Laden, der lange geöffnet bleibt."
+            },
+            "highlight": "a shop that stays open"
+          }
+        ]
+      },
+      "cloze": [
+        "A driver ",
+        {
+          "kind": "form",
+          "answer": "showed",
+          "choices": [
+            "showed",
+            "showing",
+            "shows",
+            "show"
+          ],
+          "cue": "show · abgeschlossene Vergangenheit"
+        },
+        " me where the first bus ",
+        {
+          "kind": "form",
+          "answer": "leaves",
+          "choices": [
+            "leaving",
+            "leave",
+            "leaves",
+            "to leave"
+          ],
+          "cue": "leave · Gegenwart, ein Bus"
+        },
+        " from."
+      ],
+      "chunks": [
+        {
+          "targetText": "My biggest challenge",
+          "baseText": {
+            "de": "Meine größte Herausforderung"
+          }
+        },
+        {
+          "targetText": "was finding a bus",
+          "baseText": {
+            "de": "war es, einen Bus zu finden,"
+          }
+        },
+        {
+          "targetText": "that ran",
+          "baseText": {
+            "de": "der fuhr,"
+          }
+        },
+        {
+          "targetText": "before my shift started.",
+          "baseText": {
+            "de": "bevor meine Schicht begann."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "challenge",
+          "baseText": {
+            "de": "Herausforderung"
+          }
+        },
+        {
+          "targetText": "finding a bus",
+          "baseText": {
+            "de": "einen Bus finden"
+          }
+        },
+        {
+          "targetText": "shift",
+          "baseText": {
+            "de": "Arbeitsschicht"
+          }
+        },
+        {
+          "targetText": "on time",
+          "baseText": {
+            "de": "pünktlich"
+          }
+        },
+        {
+          "targetText": "finally",
+          "baseText": {
+            "de": "schließlich"
+          }
+        },
+        {
+          "targetText": "leaves from",
+          "baseText": {
+            "de": "abfährt von"
+          }
+        }
+      ],
+      "recall": {
+        "before": "My biggest challenge was ",
+        "answer": "finding",
+        "after": " a bus that ran before my shift started.",
+        "fallbackChoices": [
+          "finds",
+          "finding",
+          "find",
+          "found"
+        ]
+      },
+      "speakRequired": [
+        "challenge",
+        "bus",
+        "shift"
+      ],
+      "sceneCaption": {
+        "de": "Deine Bekannte wirft einen Blick auf den Fahrplan: „What was harder than you expected when you moved here?“"
+      },
+      "trophyWord": {
+        "word": "challenge",
+        "meaning": {
+          "de": "Herausforderung"
+        },
+        "example": "Finding a place near work was a real challenge.",
+        "whyThisWord": {
+          "de": "Challenge bezeichnet hier eine schwierige Aufgabe, keine Aufforderung zu einem Wettkampf."
+        }
+      },
+      "distractors": [
+        "without my keys",
+        "after the office shuts."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Menschen warten neben einem Linienplan an einer Haltestelle."
+      },
+      "songMood": "Nachdenklich und erleichtert.",
+      "visualNotes": "Zwei Menschen warten neben einem Linienplan an einer Haltestelle."
+    },
+    {
+      "slug": "a-table-of-my-own",
+      "title": {
+        "de": "Etwas Selbstgemachtes"
+      },
+      "situation": {
+        "de": "Ein Freund schaut sich in deiner Wohnung um. Ihr redet darüber, was du im vergangenen Jahr gelernt hast.",
+        "en": "A friend is looking around your apartment. You talk about what you've learned this past year."
+      },
+      "pedagogicalGoal": "Eine Tätigkeit auf -ing kann das Subjekt des Satzes sein. Building that little table nennt die Leistung, bevor du sie bewertest.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Which thing in this apartment means the most to you?",
+          "baseText": {
+            "de": "Welcher Gegenstand in dieser Wohnung bedeutet dir am meisten?"
+          }
+        },
+        {
+          "targetText": "Building that little table was my biggest achievement this year.",
+          "baseText": {
+            "de": "Diesen kleinen Tisch zu bauen war dieses Jahr mein größter Erfolg."
+          }
+        },
+        {
+          "targetText": "It's a nice table. Why does that count for more than buying one?",
+          "baseText": {
+            "de": "Der Tisch ist schön. Warum bedeutet dir das mehr, als einen zu kaufen?"
+          }
+        },
+        {
+          "targetText": "I used to think I couldn't make anything myself.",
+          "baseText": {
+            "de": "Früher dachte ich, ich könnte überhaupt nichts selbst machen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Naming an achievement",
+        "rule": {
+          "de": "Eine Tätigkeit auf -ing kann das Subjekt des Satzes sein. Building that little table nennt die Leistung, bevor du sie bewertest."
+        },
+        "examples": [
+          {
+            "targetText": "Building that little table was my biggest achievement this year.",
+            "baseText": {
+              "de": "Diesen kleinen Tisch zu bauen war dieses Jahr mein größter Erfolg."
+            },
+            "highlight": "Building that little table"
+          },
+          {
+            "targetText": "Fixing my bike was the best part of the weekend.",
+            "baseText": {
+              "de": "Mein Fahrrad zu reparieren war der schönste Teil des Wochenendes."
+            },
+            "highlight": "Fixing my bike"
+          }
+        ]
+      },
+      "cloze": [
+        "I ",
+        {
+          "kind": "form",
+          "answer": "used",
+          "choices": [
+            "using",
+            "use",
+            "used",
+            "uses"
+          ],
+          "cue": "use · frühere Gewohnheit, feste Form vor to"
+        },
+        " to think I couldn't ",
+        {
+          "kind": "form",
+          "answer": "make",
+          "choices": [
+            "making",
+            "make",
+            "made",
+            "makes"
+          ],
+          "cue": "machen · Grundform nach couldn't"
+        },
+        " anything myself."
+      ],
+      "chunks": [
+        {
+          "targetText": "Building that little table",
+          "baseText": {
+            "de": "Diesen kleinen Tisch zu bauen"
+          }
+        },
+        {
+          "targetText": "was my",
+          "baseText": {
+            "de": "war mein"
+          }
+        },
+        {
+          "targetText": "biggest achievement",
+          "baseText": {
+            "de": "größter Erfolg"
+          }
+        },
+        {
+          "targetText": "this year.",
+          "baseText": {
+            "de": "in diesem Jahr."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "means the most",
+          "baseText": {
+            "de": "bedeutet am meisten"
+          }
+        },
+        {
+          "targetText": "building a table",
+          "baseText": {
+            "de": "einen Tisch bauen"
+          }
+        },
+        {
+          "targetText": "achievement",
+          "baseText": {
+            "de": "Erfolg, eigene Leistung"
+          }
+        },
+        {
+          "targetText": "this year",
+          "baseText": {
+            "de": "dieses Jahr"
+          }
+        },
+        {
+          "targetText": "buying one",
+          "baseText": {
+            "de": "einen kaufen"
+          }
+        },
+        {
+          "targetText": "myself",
+          "baseText": {
+            "de": "selbst"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Building that little table was my biggest ",
+        "answer": "achievement",
+        "after": " this year.",
+        "fallbackChoices": [
+          "achievements",
+          "achieved",
+          "achievement",
+          "achieving"
+        ]
+      },
+      "speakRequired": [
+        "building",
+        "table",
+        "achievement"
+      ],
+      "sceneCaption": {
+        "de": "Im Wohnzimmer fragt dein Freund nach deinen Lieblingsstücken: „Which thing in this apartment means the most to you?“"
+      },
+      "trophyWord": {
+        "word": "achievement",
+        "meaning": {
+          "de": "Leistung, Erfolg"
+        },
+        "example": "Finishing my first hike felt like a real achievement.",
+        "whyThisWord": {
+          "de": "Ein achievement kann etwas ganz Persönliches sein, das du geschafft hast."
+        }
+      },
+      "distractors": [
+        "behind the sofa",
+        "selling those chairs"
+      ],
+      "placeholderCaption": {
+        "de": "Ein kleiner Holztisch mit leicht ungleichen Beinen neben einem Sessel."
+      },
+      "songMood": "Zufrieden und persönlich.",
+      "visualNotes": "Ein kleiner Holztisch mit leicht ungleichen Beinen neben einem Sessel."
+    },
+    {
+      "slug": "the-spare-umbrella",
+      "title": {
+        "de": "Die Geschichte einer Freundschaft"
+      },
+      "situation": {
+        "de": "Beim Spaziergang fragt dich eine Freundin nach jemandem, mit dem du oft unterwegs bist.",
+        "en": "While you're out for a walk, a friend asks about someone you often spend time with."
+      },
+      "pedagogicalGoal": "Ein einfacher Hauptsatz beschreibt, was begann. Mit when und einem zweiten Verb im simple past erzählst du, bei welcher Gelegenheit das war.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "How did you and Maya get to know each other?",
+          "baseText": {
+            "de": "Wie habt ihr beide, Maya und du, euch kennengelernt?"
+          }
+        },
+        {
+          "targetText": "Our friendship started when Maya lent me an umbrella outside the laundromat.",
+          "baseText": {
+            "de": "Unsere Freundschaft begann, als Maya mir vor dem Waschsalon einen Regenschirm lieh."
+          }
+        },
+        {
+          "targetText": "Did you ever get a chance to give it back?",
+          "baseText": {
+            "de": "Hattest du jemals die Gelegenheit, ihn zurückzugeben?"
+          }
+        },
+        {
+          "targetText": "Yes, and we've met for coffee every Friday since then.",
+          "baseText": {
+            "de": "Ja, und seitdem treffen wir uns jeden Freitag auf einen Kaffee."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "The beginning of a story",
+        "rule": {
+          "de": "Ein einfacher Hauptsatz beschreibt, was begann. Mit when und einem zweiten Verb im simple past erzählst du, bei welcher Gelegenheit das war."
+        },
+        "examples": [
+          {
+            "targetText": "Our friendship started when Maya lent me an umbrella outside the laundromat.",
+            "baseText": {
+              "de": "Unsere Freundschaft begann, als Maya mir vor dem Waschsalon einen Regenschirm lieh."
+            },
+            "highlight": "when Maya lent me an umbrella"
+          },
+          {
+            "targetText": "We started talking when we found the same book.",
+            "baseText": {
+              "de": "Wir kamen ins Gespräch, als wir dasselbe Buch fanden."
+            },
+            "highlight": "when we found the same book"
+          }
+        ]
+      },
+      "cloze": [
+        "Yes, and we've ",
+        {
+          "kind": "form",
+          "answer": "met",
+          "choices": [
+            "meets",
+            "meeting",
+            "meet",
+            "met"
+          ],
+          "cue": "meet · Partizip nach have"
+        },
+        " for coffee every Friday ",
+        {
+          "kind": "connector",
+          "answer": "since",
+          "choices": [
+            "until",
+            "during",
+            "since",
+            "while"
+          ]
+        },
+        " then."
+      ],
+      "chunks": [
+        {
+          "targetText": "Our friendship started",
+          "baseText": {
+            "de": "Unsere Freundschaft begann,"
+          }
+        },
+        {
+          "targetText": "when Maya lent me",
+          "baseText": {
+            "de": "als Maya mir lieh"
+          }
+        },
+        {
+          "targetText": "an umbrella",
+          "baseText": {
+            "de": "einen Regenschirm"
+          }
+        },
+        {
+          "targetText": "outside the laundromat.",
+          "baseText": {
+            "de": "vor dem Waschsalon."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "get to know each other",
+          "baseText": {
+            "de": "einander kennenlernen"
+          }
+        },
+        {
+          "targetText": "friendship",
+          "baseText": {
+            "de": "Freundschaft"
+          }
+        },
+        {
+          "targetText": "lent me",
+          "baseText": {
+            "de": "lieh mir"
+          }
+        },
+        {
+          "targetText": "umbrella",
+          "baseText": {
+            "de": "Regenschirm"
+          }
+        },
+        {
+          "targetText": "laundromat",
+          "baseText": {
+            "de": "Waschsalon"
+          }
+        },
+        {
+          "targetText": "give it back",
+          "baseText": {
+            "de": "ihn zurückgeben"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Our friendship started when Maya ",
+        "answer": "lent",
+        "after": " me an umbrella outside the laundromat.",
+        "fallbackChoices": [
+          "lending",
+          "lend",
+          "lent",
+          "lends"
+        ]
+      },
+      "speakRequired": [
+        "friendship",
+        "umbrella",
+        "laundromat"
+      ],
+      "sceneCaption": {
+        "de": "Bei eurem Spaziergang kommt deine Freundin auf Maya zu sprechen: „How did you and Maya get to know each other?“"
+      },
+      "trophyWord": {
+        "word": "friendship",
+        "meaning": {
+          "de": "Freundschaft"
+        },
+        "example": "Our friendship grew slowly after that first conversation.",
+        "whyThisWord": {
+          "de": "Friendship benennt die Beziehung; friend ist die Person."
+        }
+      },
+      "distractors": [
+        "inside the freezer.",
+        "never noticed"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Waschsalon an einer Straßenecke; ein Regenschirm lehnt an der Bank davor."
+      },
+      "songMood": "Warm und beiläufig.",
+      "visualNotes": "Ein Waschsalon an einer Straßenecke; ein Regenschirm lehnt an der Bank davor."
+    },
+    {
+      "slug": "the-radio-invitation",
+      "title": {
+        "de": "Eine Einladung im Herbst"
+      },
+      "situation": {
+        "de": "Ein Freund hat deine Stimme im Lokalradio erkannt. Du erzählst, wie es dazu kam.",
+        "en": "A friend recognized your voice on a local radio station. You tell him how it happened."
+      },
+      "pedagogicalGoal": "Nach the opportunity kannst du mit to und der Grundform des Verbs präzisieren, was dir möglich wurde.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Was that really you on the radio yesterday?",
+          "baseText": {
+            "de": "Warst du das gestern wirklich im Radio?"
+          }
+        },
+        {
+          "targetText": "Yes! Last fall I got the opportunity to host a short music show.",
+          "baseText": {
+            "de": "Ja! Letzten Herbst bekam ich die Gelegenheit, eine kurze Musiksendung zu moderieren."
+          }
+        },
+        {
+          "targetText": "You used to hate microphones. What made you say yes?",
+          "baseText": {
+            "de": "Früher hast du Mikrofone gehasst. Warum hast du zugesagt?"
+          }
+        },
+        {
+          "targetText": "They let me choose the songs, and that made it fun.",
+          "baseText": {
+            "de": "Ich durfte die Lieder aussuchen, und genau das hat mir Spaß gemacht."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "An opportunity to do something",
+        "rule": {
+          "de": "Nach the opportunity kannst du mit to und der Grundform des Verbs präzisieren, was dir möglich wurde."
+        },
+        "examples": [
+          {
+            "targetText": "Yes! Last fall I got the opportunity to host a short music show.",
+            "baseText": {
+              "de": "Ja! Letzten Herbst bekam ich die Gelegenheit, eine kurze Musiksendung zu moderieren."
+            },
+            "highlight": "the opportunity to host"
+          },
+          {
+            "targetText": "I had the opportunity to teach a dance class.",
+            "baseText": {
+              "de": "Ich hatte die Gelegenheit, einen Tanzkurs zu geben."
+            },
+            "highlight": "the opportunity to teach"
+          }
+        ]
+      },
+      "cloze": [
+        "They let me ",
+        {
+          "kind": "form",
+          "answer": "choose",
+          "choices": [
+            "chooses",
+            "chose",
+            "choosing",
+            "choose"
+          ],
+          "cue": "aussuchen · Grundform nach let me"
+        },
+        " the songs, and that ",
+        {
+          "kind": "form",
+          "answer": "made",
+          "choices": [
+            "makes",
+            "making",
+            "made",
+            "make"
+          ],
+          "cue": "make · abgeschlossene Vergangenheit"
+        },
+        " it fun."
+      ],
+      "chunks": [
+        {
+          "targetText": "Yes! Last fall",
+          "baseText": {
+            "de": "Ja! Letzten Herbst"
+          }
+        },
+        {
+          "targetText": "I got the opportunity",
+          "baseText": {
+            "de": "bekam ich die Gelegenheit,"
+          }
+        },
+        {
+          "targetText": "to host",
+          "baseText": {
+            "de": "zu moderieren:"
+          }
+        },
+        {
+          "targetText": "a short music show.",
+          "baseText": {
+            "de": "eine kurze Musiksendung."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "local radio",
+          "baseText": {
+            "de": "Lokalradio"
+          }
+        },
+        {
+          "targetText": "last fall",
+          "baseText": {
+            "de": "letzten Herbst"
+          }
+        },
+        {
+          "targetText": "opportunity",
+          "baseText": {
+            "de": "Gelegenheit"
+          }
+        },
+        {
+          "targetText": "host a show",
+          "baseText": {
+            "de": "eine Sendung moderieren"
+          }
+        },
+        {
+          "targetText": "microphones",
+          "baseText": {
+            "de": "Mikrofone"
+          }
+        },
+        {
+          "targetText": "choose the songs",
+          "baseText": {
+            "de": "die Lieder auswählen"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Yes! Last fall I got the opportunity to ",
+        "answer": "host",
+        "after": " a short music show.",
+        "fallbackChoices": [
+          "hosting",
+          "hosts",
+          "hosted",
+          "host"
+        ]
+      },
+      "speakRequired": [
+        "opportunity",
+        "host",
+        "music"
+      ],
+      "sceneCaption": {
+        "de": "Beim Treffen erinnert sich dein Freund an eine Stimme aus dem Radio: „Was that really you on the radio yesterday?“"
+      },
+      "trophyWord": {
+        "word": "opportunity",
+        "meaning": {
+          "de": "Gelegenheit"
+        },
+        "example": "An open studio gave us the opportunity to try recording.",
+        "whyThisWord": {
+          "de": "Opportunity passt, wenn sich eine konkrete Möglichkeit eröffnet."
+        }
+      },
+      "distractors": [
+        "from the station",
+        "without a ticket."
+      ],
+      "placeholderCaption": {
+        "de": "Ein kleiner Radiowecker auf der Fensterbank, daneben eine handgeschriebene Liste mit Liedern."
+      },
+      "songMood": "Lebhaft und ein wenig überrascht.",
+      "visualNotes": "Ein kleiner Radiowecker auf der Fensterbank, daneben eine handgeschriebene Liste mit Liedern."
+    },
+    {
+      "slug": "less-paper-on-the-kitchen-table",
+      "title": {
+        "de": "Was im Alltag leichter fällt"
+      },
+      "situation": {
+        "de": "Beim Frühstück fällt einer Freundin auf, dass dein Küchentisch anders aussieht als früher.",
+        "en": "Over breakfast, a friend notices that your kitchen table looks different than it used to."
+      },
+      "pedagogicalGoal": "As soon as verbindet zwei Handlungen, die unmittelbar aufeinander folgen. Bei einer Gewohnheit stehen beide Verben im simple present.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Where are all those envelopes you used to leave here?",
+          "baseText": {
+            "de": "Wo sind all die Umschläge, die du früher immer hier liegen gelassen hast?"
+          }
+        },
+        {
+          "targetText": "The biggest improvement is that I open my mail as soon as it arrives.",
+          "baseText": {
+            "de": "Die größte Verbesserung ist, dass ich meine Post öffne, sobald sie ankommt."
+          }
+        },
+        {
+          "targetText": "Was there a letter that made you change that habit?",
+          "baseText": {
+            "de": "Gab es einen Brief, der dich dazu gebracht hat, das zu ändern?"
+          }
+        },
+        {
+          "targetText": "Yes. I missed a concert because I opened the invitation late.",
+          "baseText": {
+            "de": "Ja. Ich habe ein Konzert verpasst, weil ich die Einladung zu spät geöffnet habe."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "As soon as for a routine",
+        "rule": {
+          "de": "As soon as verbindet zwei Handlungen, die unmittelbar aufeinander folgen. Bei einer Gewohnheit stehen beide Verben im simple present."
+        },
+        "examples": [
+          {
+            "targetText": "The biggest improvement is that I open my mail as soon as it arrives.",
+            "baseText": {
+              "de": "Die größte Verbesserung ist, dass ich meine Post öffne, sobald sie ankommt."
+            },
+            "highlight": "as soon as it arrives"
+          },
+          {
+            "targetText": "Our dog runs outside as soon as the door opens.",
+            "baseText": {
+              "de": "Unser Hund läuft nach draußen, sobald die Tür aufgeht."
+            },
+            "highlight": "as soon as the door opens"
+          }
+        ]
+      },
+      "cloze": [
+        "Yes. I missed a concert ",
+        {
+          "kind": "connector",
+          "answer": "because",
+          "choices": [
+            "although",
+            "unless",
+            "because",
+            "despite"
+          ]
+        },
+        " I ",
+        {
+          "kind": "form",
+          "answer": "opened",
+          "choices": [
+            "opens",
+            "opened",
+            "opening",
+            "open"
+          ],
+          "cue": "open · abgeschlossene Vergangenheit"
+        },
+        " the invitation late."
+      ],
+      "chunks": [
+        {
+          "targetText": "The biggest improvement is",
+          "baseText": {
+            "de": "Die größte Verbesserung ist,"
+          }
+        },
+        {
+          "targetText": "that I open my mail",
+          "baseText": {
+            "de": "dass ich meine Post öffne,"
+          }
+        },
+        {
+          "targetText": "as soon as",
+          "baseText": {
+            "de": "sobald"
+          }
+        },
+        {
+          "targetText": "it arrives.",
+          "baseText": {
+            "de": "sie ankommt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "envelopes",
+          "baseText": {
+            "de": "Briefumschläge"
+          }
+        },
+        {
+          "targetText": "used to leave",
+          "baseText": {
+            "de": "früher liegen ließ"
+          }
+        },
+        {
+          "targetText": "improvement",
+          "baseText": {
+            "de": "Verbesserung"
+          }
+        },
+        {
+          "targetText": "open my mail",
+          "baseText": {
+            "de": "meine Post öffnen"
+          }
+        },
+        {
+          "targetText": "as soon as",
+          "baseText": {
+            "de": "sobald"
+          }
+        },
+        {
+          "targetText": "invitation",
+          "baseText": {
+            "de": "Einladung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "The biggest improvement is that I open my mail as soon as it ",
+        "answer": "arrives",
+        "after": ".",
+        "fallbackChoices": [
+          "arrive",
+          "arrives",
+          "arriving",
+          "to arrive"
+        ]
+      },
+      "speakRequired": [
+        "improvement",
+        "mail",
+        "arrives"
+      ],
+      "sceneCaption": {
+        "de": "Am Frühstückstisch blickt deine Freundin auf die freie Tischplatte: „Where are all those envelopes you used to leave here?“"
+      },
+      "trophyWord": {
+        "word": "improvement",
+        "meaning": {
+          "de": "Verbesserung"
+        },
+        "example": "Answering letters on time has been a real improvement.",
+        "whyThisWord": {
+          "de": "Improvement benennt eine Veränderung zum Besseren, auch wenn sie im Alltag klein aussieht."
+        }
+      },
+      "distractors": [
+        "without a stamp",
+        "the old address is"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Frühstückstasse auf einem aufgeräumten Küchentisch; daneben ein Stapel alter Umschläge."
+      },
+      "songMood": "Gelassen und selbstironisch.",
+      "visualNotes": "Eine Frühstückstasse auf einem aufgeräumten Küchentisch; daneben ein Stapel alter Umschläge."
+    },
+    {
+      "slug": "a-call-without-help",
+      "title": {
+        "de": "Ein Anruf ohne Hilfe"
+      },
+      "situation": {
+        "de": "Mit einem Freund vergleichst du, welche alltäglichen Gespräche dir inzwischen leichter fallen.",
+        "en": "You and a friend compare everyday conversations that have gotten easier for you."
+      },
+      "pedagogicalGoal": "Um auszudrücken, was beim Handeln wegfällt, verwendest du without und die -ing-Form. Without planning beschreibt die neu gewonnene Spontaneität.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "What can you do now that seemed impossible last winter?",
+          "baseText": {
+            "de": "Was kannst du jetzt, was dir letzten Winter noch unmöglich erschien?"
+          }
+        },
+        {
+          "targetText": "I'm proud that I can finally make phone calls without planning every sentence.",
+          "baseText": {
+            "de": "Ich bin stolz darauf, dass ich endlich telefonieren kann, ohne jeden Satz zu planen."
+          }
+        },
+        {
+          "targetText": "Was there a moment when you knew you could do it?",
+          "baseText": {
+            "de": "Gab es einen Moment, in dem du wusstest, dass du das schaffst?"
+          }
+        },
+        {
+          "targetText": "Yesterday I changed a booking without asking anyone for help.",
+          "baseText": {
+            "de": "Gestern habe ich eine Buchung geändert, ohne jemanden um Hilfe zu bitten."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Without and the -ing form",
+        "rule": {
+          "de": "Um auszudrücken, was beim Handeln wegfällt, verwendest du without und die -ing-Form. Without planning beschreibt die neu gewonnene Spontaneität."
+        },
+        "examples": [
+          {
+            "targetText": "I'm proud that I can finally make phone calls without planning every sentence.",
+            "baseText": {
+              "de": "Ich bin stolz darauf, dass ich endlich telefonieren kann, ohne jeden Satz zu planen."
+            },
+            "highlight": "without planning every sentence"
+          },
+          {
+            "targetText": "She remembered the route without taking notes.",
+            "baseText": {
+              "de": "Sie merkte sich den Weg, ohne sich Notizen zu machen."
+            },
+            "highlight": "without taking notes"
+          }
+        ]
+      },
+      "cloze": [
+        "Yesterday I ",
+        {
+          "kind": "form",
+          "answer": "changed",
+          "choices": [
+            "changing",
+            "changed",
+            "change",
+            "changes"
+          ],
+          "cue": "change · abgeschlossene Vergangenheit"
+        },
+        " a booking without ",
+        {
+          "kind": "form",
+          "answer": "asking",
+          "choices": [
+            "asked",
+            "asks",
+            "to ask",
+            "asking"
+          ],
+          "cue": "ask · nach without"
+        },
+        " anyone for help."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'm proud",
+          "baseText": {
+            "de": "Ich bin stolz darauf,"
+          }
+        },
+        {
+          "targetText": "that I can finally",
+          "baseText": {
+            "de": "dass ich endlich kann:"
+          }
+        },
+        {
+          "targetText": "make phone calls",
+          "baseText": {
+            "de": "telefonieren"
+          }
+        },
+        {
+          "targetText": "without planning every sentence.",
+          "baseText": {
+            "de": "ohne jeden Satz zu planen."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "last winter",
+          "baseText": {
+            "de": "letzten Winter"
+          }
+        },
+        {
+          "targetText": "proud",
+          "baseText": {
+            "de": "stolz"
+          }
+        },
+        {
+          "targetText": "finally",
+          "baseText": {
+            "de": "endlich"
+          }
+        },
+        {
+          "targetText": "make phone calls",
+          "baseText": {
+            "de": "telefonieren"
+          }
+        },
+        {
+          "targetText": "every sentence",
+          "baseText": {
+            "de": "jeder Satz"
+          }
+        },
+        {
+          "targetText": "a booking",
+          "baseText": {
+            "de": "eine Buchung"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'm proud that I can finally make phone calls without ",
+        "answer": "planning",
+        "after": " every sentence.",
+        "fallbackChoices": [
+          "plan",
+          "planned",
+          "planning",
+          "plans"
+        ]
+      },
+      "speakRequired": [
+        "proud",
+        "calls",
+        "sentence"
+      ],
+      "sceneCaption": {
+        "de": "Beim Spaziergang lenkt dein Freund das Gespräch auf deinen Fortschritt: „What can you do now that seemed impossible last winter?“"
+      },
+      "trophyWord": {
+        "word": "proud",
+        "meaning": {
+          "de": "stolz"
+        },
+        "example": "I'm proud of the questions I managed to ask.",
+        "whyThisWord": {
+          "de": "Mit proud kannst du einen Fortschritt persönlich bewerten."
+        }
+      },
+      "distractors": [
+        "behind every chair.",
+        "by reading the whole script."
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Freunde gehen nebeneinander her; einer steckt sein Handy ein."
+      },
+      "songMood": "Erleichtert und selbstbewusst.",
+      "visualNotes": "Zwei Freunde gehen nebeneinander her; einer steckt sein Handy ein."
+    },
+    {
+      "slug": "the-busy-square",
+      "title": {
+        "de": "Ein neuer Blick auf den Platz"
+      },
+      "situation": {
+        "de": "Du sitzt mit einer Nachbarin auf dem Stadtplatz. Ihr sprecht über deinen ersten Eindruck.",
+        "en": "You're sitting in the town square with a neighbor and talking about first impressions."
+      },
+      "pedagogicalGoal": "Nach how quiet folgt im eingebetteten Satz das Subjekt vor dem Verb: how quiet the square got. Du brauchst hier keine Fragewortstellung.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Does anything about this square still feel strange to you?",
+          "baseText": {
+            "de": "Kommt dir an diesem Platz noch irgendetwas ungewohnt vor?"
+          }
+        },
+        {
+          "targetText": "At first I was surprised by how quiet the square got after six.",
+          "baseText": {
+            "de": "Anfangs hat es mich überrascht, wie ruhig der Platz nach sechs wurde."
+          }
+        },
+        {
+          "targetText": "Funny, I come here for the noise on Saturday mornings. Have you tried that?",
+          "baseText": {
+            "de": "Komisch, ich komme samstagmorgens gerade wegen des Trubels her. Hast du das schon mal ausprobiert?"
+          }
+        },
+        {
+          "targetText": "Yes, I've discovered a market that fills the whole square.",
+          "baseText": {
+            "de": "Ja, ich habe einen Markt entdeckt, der den ganzen Platz füllt."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "How in an embedded clause",
+        "rule": {
+          "de": "Nach how quiet folgt im eingebetteten Satz das Subjekt vor dem Verb: how quiet the square got. Du brauchst hier keine Fragewortstellung."
+        },
+        "examples": [
+          {
+            "targetText": "At first I was surprised by how quiet the square got after six.",
+            "baseText": {
+              "de": "Anfangs hat es mich überrascht, wie ruhig der Platz nach sechs wurde."
+            },
+            "highlight": "how quiet the square got"
+          },
+          {
+            "targetText": "I noticed how quickly the crowd disappeared.",
+            "baseText": {
+              "de": "Mir fiel auf, wie schnell die Menschenmenge verschwand."
+            },
+            "highlight": "how quickly the crowd disappeared"
+          }
+        ]
+      },
+      "cloze": [
+        "Yes, I've ",
+        {
+          "kind": "form",
+          "answer": "discovered",
+          "choices": [
+            "discovers",
+            "discovering",
+            "discover",
+            "discovered"
+          ],
+          "cue": "discover · Partizip nach have"
+        },
+        " a market that ",
+        {
+          "kind": "form",
+          "answer": "fills",
+          "choices": [
+            "filling",
+            "fill",
+            "fills",
+            "to fill"
+          ],
+          "cue": "fill · Gegenwart, ein Markt"
+        },
+        " the whole square."
+      ],
+      "chunks": [
+        {
+          "targetText": "At first",
+          "baseText": {
+            "de": "Anfangs"
+          }
+        },
+        {
+          "targetText": "I was surprised",
+          "baseText": {
+            "de": "war ich überrascht"
+          }
+        },
+        {
+          "targetText": "by how quiet",
+          "baseText": {
+            "de": "darüber, wie ruhig"
+          }
+        },
+        {
+          "targetText": "the square got after six.",
+          "baseText": {
+            "de": "der Platz nach sechs wurde."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "at first",
+          "baseText": {
+            "de": "anfangs"
+          }
+        },
+        {
+          "targetText": "surprised",
+          "baseText": {
+            "de": "überrascht"
+          }
+        },
+        {
+          "targetText": "square",
+          "baseText": {
+            "de": "Platz"
+          }
+        },
+        {
+          "targetText": "after six",
+          "baseText": {
+            "de": "nach sechs"
+          }
+        },
+        {
+          "targetText": "noise",
+          "baseText": {
+            "de": "Lärm, Trubel"
+          }
+        },
+        {
+          "targetText": "market",
+          "baseText": {
+            "de": "Markt"
+          }
+        }
+      ],
+      "recall": {
+        "before": "At first I was ",
+        "answer": "surprised",
+        "after": " by how quiet the square got after six.",
+        "fallbackChoices": [
+          "surprises",
+          "surprising",
+          "surprise",
+          "surprised"
+        ]
+      },
+      "speakRequired": [
+        "surprised",
+        "quiet",
+        "square"
+      ],
+      "sceneCaption": {
+        "de": "Deine Nachbarin sieht sich mit dir auf dem Stadtplatz um: „Does anything about this square still feel strange to you?“"
+      },
+      "trophyWord": {
+        "word": "surprised",
+        "meaning": {
+          "de": "überrascht"
+        },
+        "example": "I was surprised by how good the food was.",
+        "whyThisWord": {
+          "de": "Surprised beschreibt dein Gefühl; surprising beschreibt, was es ausgelöst hat."
+        }
+      },
+      "distractors": [
+        "the buses were purple.",
+        "by which street"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bank am Rand eines Stadtplatzes im frühen Abendlicht."
+      },
+      "songMood": "Neugierig und versöhnlich.",
+      "visualNotes": "Eine Bank am Rand eines Stadtplatzes im frühen Abendlicht."
+    },
+    {
+      "slug": "the-woman-next-door",
+      "title": {
+        "de": "Eine kleine Geste"
+      },
+      "situation": {
+        "de": "Du erzählst einem Freund von der Zeit, als deine Umzugskartons noch ungeöffnet im Flur standen.",
+        "en": "You tell a friend about the days when your moving boxes were still stacked in the hall."
+      },
+      "pedagogicalGoal": "Who leitet einen Relativsatz über eine Person ein und übernimmt darin die Subjektrolle. Danach folgt das Verb, ohne ein zweites she oder he.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "Who made those first few days a little easier?",
+          "baseText": {
+            "de": "Wer hat dir die ersten Tage ein bisschen leichter gemacht?"
+          }
+        },
+        {
+          "targetText": "I'm grateful to the neighbor who brought breakfast before my kitchen was ready.",
+          "baseText": {
+            "de": "Ich bin der Nachbarin dankbar, die mir Frühstück brachte, bevor meine Küche fertig war."
+          }
+        },
+        {
+          "targetText": "That sounds like her. Did you ever get to thank her?",
+          "baseText": {
+            "de": "Das klingt nach ihr. Konntest du dich bei ihr bedanken?"
+          }
+        },
+        {
+          "targetText": "When my stove arrived, I invited her over for dinner.",
+          "baseText": {
+            "de": "Als mein Herd ankam, habe ich sie zu mir zum Abendessen eingeladen."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "A relative clause about a person",
+        "rule": {
+          "de": "Who leitet einen Relativsatz über eine Person ein und übernimmt darin die Subjektrolle. Danach folgt das Verb, ohne ein zweites she oder he."
+        },
+        "examples": [
+          {
+            "targetText": "I'm grateful to the neighbor who brought breakfast before my kitchen was ready.",
+            "baseText": {
+              "de": "Ich bin der Nachbarin dankbar, die mir Frühstück brachte, bevor meine Küche fertig war."
+            },
+            "highlight": "the neighbor who brought breakfast"
+          },
+          {
+            "targetText": "I called the friend who carried the boxes.",
+            "baseText": {
+              "de": "Ich habe den Freund angerufen, der die Kartons getragen hat."
+            },
+            "highlight": "the friend who carried the boxes"
+          }
+        ]
+      },
+      "cloze": [
+        "When my stove ",
+        {
+          "kind": "form",
+          "answer": "arrived",
+          "choices": [
+            "arrives",
+            "arriving",
+            "arrived",
+            "arrive"
+          ],
+          "cue": "arrive · abgeschlossene Vergangenheit"
+        },
+        ", I ",
+        {
+          "kind": "form",
+          "answer": "invited",
+          "choices": [
+            "invite",
+            "invited",
+            "inviting",
+            "invites"
+          ],
+          "cue": "invite · abgeschlossene Vergangenheit"
+        },
+        " her over for dinner."
+      ],
+      "chunks": [
+        {
+          "targetText": "I'm grateful",
+          "baseText": {
+            "de": "Ich bin dankbar"
+          }
+        },
+        {
+          "targetText": "to the neighbor",
+          "baseText": {
+            "de": "der Nachbarin,"
+          }
+        },
+        {
+          "targetText": "who brought breakfast",
+          "baseText": {
+            "de": "die Frühstück brachte,"
+          }
+        },
+        {
+          "targetText": "before my kitchen was ready.",
+          "baseText": {
+            "de": "bevor meine Küche fertig war."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "grateful",
+          "baseText": {
+            "de": "dankbar"
+          }
+        },
+        {
+          "targetText": "neighbor",
+          "baseText": {
+            "de": "Nachbarin"
+          }
+        },
+        {
+          "targetText": "brought breakfast",
+          "baseText": {
+            "de": "brachte Frühstück"
+          }
+        },
+        {
+          "targetText": "kitchen",
+          "baseText": {
+            "de": "Küche"
+          }
+        },
+        {
+          "targetText": "stove",
+          "baseText": {
+            "de": "Herd"
+          }
+        },
+        {
+          "targetText": "invited her over",
+          "baseText": {
+            "de": "lud sie zu mir ein"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I'm grateful to the neighbor who ",
+        "answer": "brought",
+        "after": " breakfast before my kitchen was ready.",
+        "fallbackChoices": [
+          "bringing",
+          "brings",
+          "brought",
+          "bring"
+        ]
+      },
+      "speakRequired": [
+        "grateful",
+        "neighbor",
+        "breakfast"
+      ],
+      "sceneCaption": {
+        "de": "Dein Freund hört sich deine Geschichte vom Einzug an: „Who made those first few days a little easier?“"
+      },
+      "trophyWord": {
+        "word": "grateful",
+        "meaning": {
+          "de": "dankbar"
+        },
+        "example": "I'm grateful to my neighbor for those early morning visits.",
+        "whyThisWord": {
+          "de": "Grateful to nennt die Person, grateful for den Anlass deines Dankes."
+        }
+      },
+      "distractors": [
+        "after every train.",
+        "the breakfast menu"
+      ],
+      "placeholderCaption": {
+        "de": "Umzugskartons im Flur und zwei Teller auf einem kleinen Küchentisch."
+      },
+      "songMood": "Herzlich und dankbar.",
+      "visualNotes": "Umzugskartons im Flur und zwei Teller auf einem kleinen Küchentisch."
+    },
+    {
+      "slug": "a-place-on-the-team",
+      "title": {
+        "de": "Nächstes Jahr im Viertel"
+      },
+      "situation": {
+        "de": "Ein Jahr nach deinem Umzug stehst du mit einem Freund am Spielfeldrand. Ihr sprecht darüber, was sich verändert hat.",
+        "en": "A year after your move, you're standing beside a playing field with a friend and talking about what's changed."
+      },
+      "pedagogicalGoal": "Belong bezeichnet hier ein gegenwärtiges Zugehörigkeitsgefühl. Mit started to feel … when erklärst du, wann dieses Gefühl seinen Anfang nahm.",
+      "register": "informal",
+      "dialogue": [
+        {
+          "targetText": "When did this neighborhood start feeling like home?",
+          "baseText": {
+            "de": "Wann hast du angefangen, dich in diesem Viertel zu Hause zu fühlen?"
+          }
+        },
+        {
+          "targetText": "I started to feel like I belong here when the team saved me a seat.",
+          "baseText": {
+            "de": "Ich hatte zum ersten Mal das Gefühl dazuzugehören, als mir die Mannschaft einen Platz freihielt."
+          }
+        },
+        {
+          "targetText": "Next spring there'll be new people on the team. What would you like to do?",
+          "baseText": {
+            "de": "Im nächsten Frühjahr kommen neue Leute in die Mannschaft. Was würdest du gern tun?"
+          }
+        },
+        {
+          "targetText": "If anyone comes alone, I'll save them a seat too.",
+          "baseText": {
+            "de": "Wenn jemand allein kommt, halte ich der Person auch einen Platz frei."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Belong and a sense of place",
+        "rule": {
+          "de": "Belong bezeichnet hier ein gegenwärtiges Zugehörigkeitsgefühl. Mit started to feel … when erklärst du, wann dieses Gefühl seinen Anfang nahm."
+        },
+        "examples": [
+          {
+            "targetText": "I started to feel like I belong here when the team saved me a seat.",
+            "baseText": {
+              "de": "Ich hatte zum ersten Mal das Gefühl dazuzugehören, als mir die Mannschaft einen Platz freihielt."
+            },
+            "highlight": "I belong here"
+          },
+          {
+            "targetText": "These small invitations make me feel like I belong in this group.",
+            "baseText": {
+              "de": "Durch diese kleinen Einladungen fühle ich mich der Gruppe zugehörig."
+            },
+            "highlight": "I belong in this group"
+          }
+        ]
+      },
+      "cloze": [
+        "If anyone ",
+        {
+          "kind": "form",
+          "answer": "comes",
+          "choices": [
+            "come",
+            "coming",
+            "comes",
+            "to come"
+          ],
+          "cue": "come · Gegenwart nach anyone"
+        },
+        " alone, I'll ",
+        {
+          "kind": "form",
+          "answer": "save",
+          "choices": [
+            "saves",
+            "saving",
+            "saved",
+            "save"
+          ],
+          "cue": "freihalten · Grundform nach I'll"
+        },
+        " them a seat too."
+      ],
+      "chunks": [
+        {
+          "targetText": "I started to feel",
+          "baseText": {
+            "de": "Ich bekam das Gefühl,"
+          }
+        },
+        {
+          "targetText": "like I belong here",
+          "baseText": {
+            "de": "hier dazuzugehören,"
+          }
+        },
+        {
+          "targetText": "when the team",
+          "baseText": {
+            "de": "als die Mannschaft"
+          }
+        },
+        {
+          "targetText": "saved me a seat.",
+          "baseText": {
+            "de": "mir einen Platz freihielt."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "feel like home",
+          "baseText": {
+            "de": "sich wie zu Hause anfühlen"
+          }
+        },
+        {
+          "targetText": "belong here",
+          "baseText": {
+            "de": "hier dazugehören"
+          }
+        },
+        {
+          "targetText": "team",
+          "baseText": {
+            "de": "Mannschaft"
+          }
+        },
+        {
+          "targetText": "saved me a seat",
+          "baseText": {
+            "de": "hielt mir einen Platz frei"
+          }
+        },
+        {
+          "targetText": "next spring",
+          "baseText": {
+            "de": "nächstes Frühjahr"
+          }
+        },
+        {
+          "targetText": "alone",
+          "baseText": {
+            "de": "allein"
+          }
+        }
+      ],
+      "recall": {
+        "before": "I started to feel like I ",
+        "answer": "belong",
+        "after": " here when the team saved me a seat.",
+        "fallbackChoices": [
+          "belongs",
+          "belongings",
+          "belonging",
+          "belong"
+        ]
+      },
+      "speakRequired": [
+        "belong",
+        "team",
+        "seat"
+      ],
+      "sceneCaption": {
+        "de": "Am Rand des Spielfelds blickt dein Freund auf das vergangene Jahr zurück: „When did this neighborhood start feeling like home?“"
+      },
+      "trophyWord": {
+        "word": "belong",
+        "meaning": {
+          "de": "dazugehören"
+        },
+        "example": "I feel like I belong here whenever someone calls my name.",
+        "whyThisWord": {
+          "de": "Belong beschreibt Zugehörigkeit ohne Besitz; du musst den Ort oder die Gruppe nicht dein Eigen nennen."
+        }
+      },
+      "distractors": [
+        "never learned my name.",
+        "with an empty bag"
+      ],
+      "placeholderCaption": {
+        "de": "Eine Mannschaftsbank am Spielfeldrand mit einem freien Platz zwischen zwei Taschen."
+      },
+      "songMood": "Ruhig, herzlich und zuversichtlich.",
+      "visualNotes": "Eine Mannschaftsbank am Spielfeldrand mit einem freien Platz zwischen zwei Taschen."
+    }
+  ]
+}

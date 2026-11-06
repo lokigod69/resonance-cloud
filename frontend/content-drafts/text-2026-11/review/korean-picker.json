@@ -1,0 +1,52 @@
+{
+  "ranAt": "2026-11-06T11:24:55.070Z",
+  "durationMs": 3315,
+  "results": [
+    {
+      "id": "korean-a1-picker",
+      "name": "Open Korean in the normal Today picker from English",
+      "status": "pass",
+      "checks": [
+        {
+          "name": "start at ordinary Today with English selected",
+          "ok": true,
+          "detail": "/today EnglischA1 P1"
+        },
+        {
+          "name": "Korean is one of nine visible language options",
+          "ok": true,
+          "detail": "Englisch, Spanisch, Italienisch, Französisch, Portugiesisch, Deutsch, Cebuano, Indonesisch, Koreanisch"
+        },
+        {
+          "name": "A1 P1 selected with ten lessons",
+          "ok": true,
+          "detail": "A1 P10/10"
+        },
+        {
+          "name": "first Korean lesson displays Hangul",
+          "ok": true,
+          "detail": "Lektion 1Erster KontaktZurück zum Pfad1 von 5KernsatzAnhören안녕하세요. 혹시 영어를 할 수 있어요?Guten Tag. Sprechen Sie vielleicht Englisch?LektionsszeneMorgendliches Cafélicht und eine höfliche Frage an der Theke.SituationAn einem Café-Tresen in Seoul begrüßt du die Bedienung und fragst höflich, ob sie Englisch spricht.WeiterZurück"
+        },
+        {
+          "name": "German title and explanation",
+          "ok": true,
+          "detail": "Lektion 1Erster KontaktZurück zum Pfad1 von 5KernsatzAnhören안녕하세요. 혹시 영어를 할 수 있어요?Guten Tag. Sprechen Sie vielleicht Englisch?LektionsszeneMorgendliches Cafélicht und eine höfliche Frage an der Theke.SituationAn einem Café-Tresen in Seoul begrüßt du die Bedienung und fragst höflich, ob sie Englisch spricht.WeiterZurück"
+        },
+        {
+          "name": "no uncaught page errors",
+          "ok": true,
+          "detail": ""
+        }
+      ],
+      "notes": [],
+      "error": "",
+      "failed": [],
+      "screenshots": [
+        "korean-a1-picker-language-choices.png",
+        "korean-a1-picker-korean-a1-p1.png",
+        "korean-a1-picker-final.png"
+      ],
+      "ms": 1122
+    }
+  ]
+}

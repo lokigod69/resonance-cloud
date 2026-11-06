@@ -1,0 +1,2126 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Spanish",
+  "targetLanguageCode": "es-ES",
+  "baseLanguage": "German",
+  "pathNumber": 9,
+  "title": {
+    "de": "Eine Reparatur klären",
+    "en": "Sorting out a repair"
+  },
+  "subtitle": {
+    "de": "Klären Sie eine Reklamation von der ersten Störungsmeldung bis zur schriftlichen Vereinbarung.",
+    "en": "Follow up a complaint from reporting the fault to confirming the agreement in writing."
+  },
+  "anchor": "Shape A, usted. Una reclamación por una lavadora, desde la avería hasta el compromiso escrito. Reciclaje de P1, P3, P6 y P2.",
+  "lessons": [
+    {
+      "slug": "primer-paron",
+      "title": {
+        "de": "Als die Trommel stehen blieb",
+        "en": "When the drum stopped"
+      },
+      "situation": {
+        "de": "Sie melden dem Kundendienst in Sevilla, dass Ihre Waschmaschine mitten im Programm stehen geblieben ist.",
+        "en": "You call customer service in Seville after your washing machine stopped in the middle of a cycle."
+      },
+      "pedagogicalGoal": "Empezó benennt den einzelnen Zeitpunkt, centrifugaba die Handlung im Hintergrund. Mientras verbindet die beiden Beobachtungen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Qué pasó con la lavadora y cuándo ocurrió?",
+          "baseText": {
+            "de": "Was ist mit der Waschmaschine passiert und wann?",
+            "en": "What happened to the washing machine, and when?"
+          }
+        },
+        {
+          "targetText": "La avería empezó ayer mientras la máquina centrifugaba unas toallas.",
+          "baseText": {
+            "de": "Die Störung begann gestern, während die Maschine ein paar Handtücher schleuderte.",
+            "en": "The fault started yesterday while the machine was spinning some towels."
+          }
+        },
+        {
+          "targetText": "Antes de pararse, ¿oyó algún ruido poco habitual?",
+          "baseText": {
+            "de": "Haben Sie vor dem Stillstand ein ungewöhnliches Geräusch gehört?",
+            "en": "Did you hear any unusual noise before it stopped?"
+          }
+        },
+        {
+          "targetText": "Sí, el tambor giraba cuando oí tres golpes seguidos.",
+          "baseText": {
+            "de": "Ja, die Trommel drehte sich, als ich drei Schläge hintereinander hörte.",
+            "en": "Yes, the drum was turning when I heard three knocks in a row."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Un hecho dentro de una acción",
+        "rule": {
+          "de": "Empezó benennt den einzelnen Zeitpunkt, centrifugaba die Handlung im Hintergrund. Mientras verbindet die beiden Beobachtungen.",
+          "en": "Empezó marks the event and centrifugaba the activity already going on. Mientras connects the observations."
+        },
+        "examples": [
+          {
+            "targetText": "La avería empezó ayer mientras la máquina centrifugaba unas toallas.",
+            "baseText": {
+              "de": "Die Störung begann gestern, während die Maschine ein paar Handtücher schleuderte.",
+              "en": "The fault started yesterday while the machine was spinning some towels."
+            },
+            "highlight": "empezó ayer mientras"
+          },
+          {
+            "targetText": "La pantalla se apagó mientras buscaba el número de serie.",
+            "baseText": {
+              "de": "Der Bildschirm ging aus, während ich die Seriennummer suchte.",
+              "en": "The display went off while I was looking for the serial number."
+            },
+            "highlight": "se apagó mientras"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, el tambor ",
+        {
+          "kind": "form",
+          "answer": "giraba",
+          "choices": [
+            "giraban",
+            "girábamos",
+            "girabas",
+            "giraba"
+          ],
+          "cue": "girar (el tambor)"
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "cuando",
+          "choices": [
+            "desde",
+            "cuando",
+            "durante",
+            "tras"
+          ]
+        },
+        " oí tres golpes seguidos."
+      ],
+      "chunks": [
+        {
+          "targetText": "La avería empezó ayer",
+          "baseText": {
+            "de": "Die Störung begann gestern",
+            "en": "The fault started yesterday"
+          }
+        },
+        {
+          "targetText": "mientras la máquina",
+          "baseText": {
+            "de": "während die Maschine",
+            "en": "while the machine"
+          }
+        },
+        {
+          "targetText": "centrifugaba",
+          "baseText": {
+            "de": "schleuderte",
+            "en": "was spinning"
+          }
+        },
+        {
+          "targetText": "unas toallas.",
+          "baseText": {
+            "de": "ein paar Handtücher.",
+            "en": "some towels."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "avería",
+          "baseText": {
+            "de": "Störung, Defekt",
+            "en": "fault, breakdown"
+          }
+        },
+        {
+          "targetText": "la máquina",
+          "baseText": {
+            "de": "die Maschine",
+            "en": "the machine"
+          }
+        },
+        {
+          "targetText": "unas toallas",
+          "baseText": {
+            "de": "ein paar Handtücher",
+            "en": "some towels"
+          }
+        },
+        {
+          "targetText": "el tambor",
+          "baseText": {
+            "de": "die Trommel",
+            "en": "the drum"
+          }
+        },
+        {
+          "targetText": "tres golpes",
+          "baseText": {
+            "de": "drei Schläge",
+            "en": "three knocks"
+          }
+        },
+        {
+          "targetText": "seguidos",
+          "baseText": {
+            "de": "hintereinander",
+            "en": "in succession"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La avería ",
+        "answer": "empezó",
+        "after": " ayer mientras la máquina centrifugaba unas toallas.",
+        "fallbackChoices": [
+          "empezaron",
+          "empezó",
+          "empezaste",
+          "empezamos"
+        ]
+      },
+      "speakRequired": [
+        "avería",
+        "ayer",
+        "centrifugaba"
+      ],
+      "sceneCaption": {
+        "de": "Sie melden dem Kundendienst in Sevilla, dass Ihre Waschmaschine mitten im Programm stehen geblieben ist. Sie hören: „¿Qué pasó con la lavadora y cuándo ocurrió?“",
+        "en": "You call customer service in Seville after your washing machine stopped in the middle of a cycle. You hear: “¿Qué pasó con la lavadora y cuándo ocurrió?”"
+      },
+      "trophyWord": {
+        "word": "avería",
+        "meaning": {
+          "de": "Störung, Defekt",
+          "en": "fault, breakdown"
+        },
+        "example": "La avería dejó la lavadora parada a mitad del programa.",
+        "whyThisWord": {
+          "de": "Avería benennt den Defekt, ohne bereits seine technische Ursache festzulegen.",
+          "en": "Avería names a breakdown without making a technical diagnosis."
+        }
+      },
+      "distractors": [
+        "la semana próxima",
+        "unas cortinas."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Waschmaschine mit nassen Handtüchern in der Trommel.",
+        "en": "A washing machine with wet towels inside the drum."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A washing machine with wet towels inside the drum."
+    },
+    {
+      "slug": "fecha-del-recibo",
+      "title": {
+        "de": "Welches Datum gilt für den Kauf?",
+        "en": "Which date records the purchase?"
+      },
+      "situation": {
+        "de": "Beim selben Kundendienst geht es um das Kaufdatum Ihrer Waschmaschine und die Garantieunterlagen.",
+        "en": "You discuss the purchase date and warranty paperwork for the same washing machine with customer service."
+      },
+      "pedagogicalGoal": "Im Indefinido ordnest du abgeschlossene Handlungen konkreten Zeitpunkten zu. So kannst du den Kauf von einer früheren Anfrage unterscheiden.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "¿Conserva algún documento con la fecha de compra?",
+          "baseText": {
+            "de": "Haben Sie noch ein Dokument mit dem Kaufdatum?",
+            "en": "Do you still have a document showing the purchase date?"
+          }
+        },
+        {
+          "targetText": "Sí, según mi recibo la compré en mayo; la garantía comercial termina en diciembre.",
+          "baseText": {
+            "de": "Ja, laut meinem Beleg habe ich sie im Mai gekauft; die Herstellergarantie endet im Dezember.",
+            "en": "Yes, according to my receipt I bought it in May; the manufacturer's warranty ends in December."
+          }
+        },
+        {
+          "targetText": "Aquí figura marzo como fecha de compra. ¿Puede comprobar la suya?",
+          "baseText": {
+            "de": "Bei uns steht März als Kaufdatum. Können Sie Ihres überprüfen?",
+            "en": "We have March as the purchase date here. Can you check yours?"
+          }
+        },
+        {
+          "targetText": "Sí, pagué en mayo; en marzo solo pedí información.",
+          "baseText": {
+            "de": "Ja, ich habe im Mai bezahlt. Im März habe ich nur Informationen angefragt.",
+            "en": "Yes, I paid in May. In March I only asked for information."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Fechar dos hechos",
+        "rule": {
+          "de": "Im Indefinido ordnest du abgeschlossene Handlungen konkreten Zeitpunkten zu. So kannst du den Kauf von einer früheren Anfrage unterscheiden.",
+          "en": "Use the preterite to date completed actions. That lets you distinguish a purchase from an earlier inquiry."
+        },
+        "examples": [
+          {
+            "targetText": "Sí, según mi recibo la compré en mayo; la garantía comercial termina en diciembre.",
+            "baseText": {
+              "de": "Ja, laut meinem Beleg habe ich sie im Mai gekauft; die Herstellergarantie endet im Dezember.",
+              "en": "Yes, according to my receipt I bought it in May; the manufacturer's warranty ends in December."
+            },
+            "highlight": "la compré en mayo"
+          },
+          {
+            "targetText": "Lo encargué en marzo y lo recogí en abril.",
+            "baseText": {
+              "de": "Ich bestellte es im März und holte es im April ab.",
+              "en": "I ordered it in March and collected it in April."
+            },
+            "highlight": "lo recogí en abril"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, ",
+        {
+          "kind": "form",
+          "answer": "pagué",
+          "choices": [
+            "pagaron",
+            "pagó",
+            "pagué",
+            "pagaste"
+          ],
+          "cue": "pagar (yo, hecho puntual)"
+        },
+        " en mayo; en marzo solo ",
+        {
+          "kind": "form",
+          "answer": "pedí",
+          "choices": [
+            "pidió",
+            "pediste",
+            "pidieron",
+            "pedí"
+          ],
+          "cue": "pedir (yo, hecho puntual)"
+        },
+        " información."
+      ],
+      "chunks": [
+        {
+          "targetText": "Sí, según mi recibo",
+          "baseText": {
+            "de": "Ja, laut meinem Beleg",
+            "en": "Yes, according to my receipt"
+          }
+        },
+        {
+          "targetText": "la compré en mayo;",
+          "baseText": {
+            "de": "kaufte ich sie im Mai;",
+            "en": "I bought it in May;"
+          }
+        },
+        {
+          "targetText": "la garantía comercial",
+          "baseText": {
+            "de": "die Herstellergarantie",
+            "en": "the manufacturer's warranty"
+          }
+        },
+        {
+          "targetText": "termina en diciembre.",
+          "baseText": {
+            "de": "endet im Dezember.",
+            "en": "ends in December."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "garantía",
+          "baseText": {
+            "de": "Garantie",
+            "en": "warranty"
+          }
+        },
+        {
+          "targetText": "según mi recibo",
+          "baseText": {
+            "de": "laut meinem Beleg",
+            "en": "according to my receipt"
+          }
+        },
+        {
+          "targetText": "en mayo",
+          "baseText": {
+            "de": "im Mai",
+            "en": "in May"
+          }
+        },
+        {
+          "targetText": "termina",
+          "baseText": {
+            "de": "sie endet",
+            "en": "it ends"
+          }
+        },
+        {
+          "targetText": "fecha de compra",
+          "baseText": {
+            "de": "Kaufdatum",
+            "en": "purchase date"
+          }
+        },
+        {
+          "targetText": "pedí información",
+          "baseText": {
+            "de": "ich bat um Informationen",
+            "en": "I asked for information"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sí, según mi recibo la ",
+        "answer": "compré",
+        "after": " en mayo; la garantía comercial termina en diciembre.",
+        "fallbackChoices": [
+          "compró",
+          "compraste",
+          "compraron",
+          "compré"
+        ]
+      },
+      "speakRequired": [
+        "recibo",
+        "garantía",
+        "diciembre"
+      ],
+      "sceneCaption": {
+        "de": "Beim selben Kundendienst geht es um das Kaufdatum Ihrer Waschmaschine und die Garantieunterlagen. Sie hören: „¿Conserva algún documento con la fecha de compra?“",
+        "en": "You discuss the purchase date and warranty paperwork for the same washing machine with customer service. You hear: “¿Conserva algún documento con la fecha de compra?”"
+      },
+      "trophyWord": {
+        "word": "garantía",
+        "meaning": {
+          "de": "Garantie",
+          "en": "warranty"
+        },
+        "example": "La fecha aparece en mi documento de garantía.",
+        "whyThisWord": {
+          "de": "Mit garantía kannst du über die im Dokument genannte Deckung sprechen.",
+          "en": "Garantía names the coverage described in the paperwork."
+        }
+      },
+      "distractors": [
+        "la vendí en mayo",
+        "terminaron en diciembre."
+      ],
+      "placeholderCaption": {
+        "de": "Ein Kaufbeleg liegt neben einer Garantiekarte.",
+        "en": "A purchase receipt lies beside a warranty card."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A purchase receipt lies beside a warranty card."
+    },
+    {
+      "slug": "adjuntar-la-factura",
+      "title": {
+        "de": "Eine lesbare Rechnung",
+        "en": "A readable invoice"
+      },
+      "situation": {
+        "de": "Sie sollen dem Kundendienst nun einen Kaufnachweis für die Waschmaschine schicken.",
+        "en": "Customer service asks you to send proof of purchase for the washing machine."
+      },
+      "pedagogicalGoal": "Podría mit einem Infinitiv leitet eine höfliche Bitte an eine einzelne Person mit usted ein. Die anschließende indirekte Frage benennt die Information, die fehlt.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Para comprobar el pago necesitamos una copia legible de la factura original.",
+          "baseText": {
+            "de": "Um die Zahlung zu überprüfen, brauchen wir eine lesbare Kopie der Originalrechnung.",
+            "en": "To verify the payment we need a legible copy of the original invoice."
+          }
+        },
+        {
+          "targetText": "¿Podría indicarme cómo enviar la factura con el número de mi expediente?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wie ich die Rechnung mit meiner Vorgangsnummer schicken kann?",
+            "en": "Could you tell me how to send the invoice with my case number?"
+          }
+        },
+        {
+          "targetText": "Puede adjuntarla aquí. Muchos archivos escaneados no se abren en nuestro sistema.",
+          "baseText": {
+            "de": "Sie können sie hier anhängen. Viele gescannte Dateien lassen sich in unserem System nicht öffnen.",
+            "en": "You can attach it here. Many scanned files won't open in our system."
+          }
+        },
+        {
+          "targetText": "¿Le serviría una foto si se lee bien el importe?",
+          "baseText": {
+            "de": "Würde ein Foto genügen, wenn der Betrag gut lesbar ist?",
+            "en": "Would a photo work if the amount is clearly legible?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Pedir instrucciones con cortesía",
+        "rule": {
+          "de": "Podría mit einem Infinitiv leitet eine höfliche Bitte an eine einzelne Person mit usted ein. Die anschließende indirekte Frage benennt die Information, die fehlt.",
+          "en": "Podría plus an infinitive introduces a polite request to one person addressed as usted. The indirect question identifies the missing information."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría indicarme cómo enviar la factura con el número de mi expediente?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, wie ich die Rechnung mit meiner Vorgangsnummer schicken kann?",
+              "en": "Could you tell me how to send the invoice with my case number?"
+            },
+            "highlight": "Podría indicarme"
+          },
+          {
+            "targetText": "¿Podría decirme dónde escribo la referencia del pedido?",
+            "baseText": {
+              "de": "Könnten Sie mir sagen, wo ich die Bestellreferenz eintrage?",
+              "en": "Could you tell me where to enter the order reference?"
+            },
+            "highlight": "Podría decirme"
+          }
+        ]
+      },
+      "cloze": [
+        "¿Le ",
+        {
+          "kind": "form",
+          "answer": "serviría",
+          "choices": [
+            "servirían",
+            "servirías",
+            "serviríamos",
+            "serviría"
+          ],
+          "cue": "servir (una foto, condicional)"
+        },
+        " una foto ",
+        {
+          "kind": "choice",
+          "answer": "si",
+          "choices": [
+            "para",
+            "desde",
+            "si",
+            "durante"
+          ]
+        },
+        " se lee bien el importe?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría indicarme",
+          "baseText": {
+            "de": "Könnten Sie mir sagen",
+            "en": "Could you tell me"
+          }
+        },
+        {
+          "targetText": "cómo enviar la factura",
+          "baseText": {
+            "de": "wie ich die Rechnung schicken kann",
+            "en": "how to send the invoice"
+          }
+        },
+        {
+          "targetText": "con el número",
+          "baseText": {
+            "de": "mit der Nummer",
+            "en": "with the number"
+          }
+        },
+        {
+          "targetText": "de mi expediente?",
+          "baseText": {
+            "de": "meines Vorgangs?",
+            "en": "of my case?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "factura",
+          "baseText": {
+            "de": "Rechnung",
+            "en": "invoice"
+          }
+        },
+        {
+          "targetText": "el número",
+          "baseText": {
+            "de": "die Nummer",
+            "en": "the number"
+          }
+        },
+        {
+          "targetText": "mi expediente",
+          "baseText": {
+            "de": "mein Vorgang",
+            "en": "my case"
+          }
+        },
+        {
+          "targetText": "el pago",
+          "baseText": {
+            "de": "die Zahlung",
+            "en": "the payment"
+          }
+        },
+        {
+          "targetText": "una copia legible",
+          "baseText": {
+            "de": "eine lesbare Kopie",
+            "en": "a legible copy"
+          }
+        },
+        {
+          "targetText": "el importe",
+          "baseText": {
+            "de": "der Betrag",
+            "en": "the amount"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría indicarme cómo ",
+        "answer": "enviar",
+        "after": " la factura con el número de mi expediente?",
+        "fallbackChoices": [
+          "envío",
+          "envían",
+          "enviar",
+          "enviada"
+        ]
+      },
+      "speakRequired": [
+        "indicarme",
+        "factura",
+        "expediente"
+      ],
+      "sceneCaption": {
+        "de": "Sie sollen dem Kundendienst nun einen Kaufnachweis für die Waschmaschine schicken. Sie hören: „Para comprobar el pago necesitamos una copia legible de la factura original.“",
+        "en": "Customer service asks you to send proof of purchase for the washing machine. You hear: “Para comprobar el pago necesitamos una copia legible de la factura original.”"
+      },
+      "trophyWord": {
+        "word": "factura",
+        "meaning": {
+          "de": "Rechnung",
+          "en": "invoice"
+        },
+        "example": "La factura incluye la fecha y el importe de la compra.",
+        "whyThisWord": {
+          "de": "Factura ist das Dokument, mit dem Sie den Kauf in diesem Gespräch belegen.",
+          "en": "Factura is the document you use here to substantiate the purchase."
+        }
+      },
+      "distractors": [
+        "cómo romper la factura",
+        "de su garantía."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Rechnung wird neben einem geöffneten Kontaktformular fotografiert.",
+        "en": "An invoice is being photographed beside an open contact form."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "An invoice is being photographed beside an open contact form."
+    },
+    {
+      "slug": "franja-de-visita",
+      "title": {
+        "de": "Ein Termin für den Hausbesuch",
+        "en": "A time for the home visit"
+      },
+      "situation": {
+        "de": "Der Kundendienst hat die Rechnung gelesen und plant den ersten Besuch bei Ihnen.",
+        "en": "Customer service has read the invoice and is arranging the first visit to your home."
+      },
+      "pedagogicalGoal": "Podría mit einem Infinitiv fragt nach einem möglichen Termin. Mit tendría un hueco kannst du beim Kundendienst eine andere Zeit erfragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ya tenemos la factura. ¿Cuándo puede recibir una visita?",
+          "baseText": {
+            "de": "Die Rechnung liegt uns jetzt vor. Wann können Sie jemanden empfangen?",
+            "en": "We have the invoice now. When can someone visit you?"
+          }
+        },
+        {
+          "targetText": "¿Podría venir el técnico el jueves por la mañana, antes de mi turno?",
+          "baseText": {
+            "de": "Könnte der Techniker am Donnerstagvormittag vor meiner Schicht kommen?",
+            "en": "Could the technician come on Thursday morning before my shift?"
+          }
+        },
+        {
+          "targetText": "El jueves solo queda una visita a las cuatro de la tarde.",
+          "baseText": {
+            "de": "Am Donnerstag gibt es nur noch einen Termin um vier Uhr nachmittags.",
+            "en": "On Thursday the only visit left is at four in the afternoon."
+          }
+        },
+        {
+          "targetText": "A esa hora trabajo. ¿Tendría un hueco el viernes por la mañana?",
+          "baseText": {
+            "de": "Um diese Zeit arbeite ich. Hätten Sie am Freitagvormittag einen freien Termin?",
+            "en": "I'm working then. Would you have an opening on Friday morning?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Preguntar por una posibilidad",
+        "rule": {
+          "de": "Podría mit einem Infinitiv fragt nach einem möglichen Termin. Mit tendría un hueco kannst du beim Kundendienst eine andere Zeit erfragen.",
+          "en": "Podría plus an infinitive asks whether an appointment is possible. Tendría un hueco lets you ask the service agent about an alternative slot."
+        },
+        "examples": [
+          {
+            "targetText": "¿Podría venir el técnico el jueves por la mañana, antes de mi turno?",
+            "baseText": {
+              "de": "Könnte der Techniker am Donnerstagvormittag vor meiner Schicht kommen?",
+              "en": "Could the technician come on Thursday morning before my shift?"
+            },
+            "highlight": "Podría venir"
+          },
+          {
+            "targetText": "¿Podría pasar el instalador después del mediodía?",
+            "baseText": {
+              "de": "Könnte der Monteur nach dem Mittag vorbeikommen?",
+              "en": "Could the installer come by after midday?"
+            },
+            "highlight": "Podría pasar"
+          }
+        ]
+      },
+      "cloze": [
+        "A esa hora ",
+        {
+          "kind": "form",
+          "answer": "trabajo",
+          "choices": [
+            "trabaja",
+            "trabajo",
+            "trabajamos",
+            "trabajan"
+          ],
+          "cue": "trabajar (yo)"
+        },
+        ". ¿",
+        {
+          "kind": "form",
+          "answer": "Tendría",
+          "choices": [
+            "Tendrías",
+            "Tendrían",
+            "Tendría",
+            "Tendríamos"
+          ],
+          "cue": "tener (usted, condicional)"
+        },
+        " un hueco el viernes por la mañana?"
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Podría venir el técnico",
+          "baseText": {
+            "de": "Könnte der Techniker kommen",
+            "en": "Could the technician come"
+          }
+        },
+        {
+          "targetText": "el jueves por la mañana,",
+          "baseText": {
+            "de": "am Donnerstagvormittag,",
+            "en": "on Thursday morning,"
+          }
+        },
+        {
+          "targetText": "antes de",
+          "baseText": {
+            "de": "vor",
+            "en": "before"
+          }
+        },
+        {
+          "targetText": "mi turno?",
+          "baseText": {
+            "de": "meiner Schicht?",
+            "en": "my shift?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "técnico",
+          "baseText": {
+            "de": "Techniker",
+            "en": "technician"
+          }
+        },
+        {
+          "targetText": "el jueves",
+          "baseText": {
+            "de": "am Donnerstag",
+            "en": "on Thursday"
+          }
+        },
+        {
+          "targetText": "por la mañana",
+          "baseText": {
+            "de": "vormittags",
+            "en": "in the morning"
+          }
+        },
+        {
+          "targetText": "mi turno",
+          "baseText": {
+            "de": "meine Schicht",
+            "en": "my shift"
+          }
+        },
+        {
+          "targetText": "a esa hora",
+          "baseText": {
+            "de": "um diese Zeit",
+            "en": "at that time"
+          }
+        },
+        {
+          "targetText": "un hueco",
+          "baseText": {
+            "de": "ein freier Termin",
+            "en": "an opening"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Podría ",
+        "answer": "venir",
+        "after": " el técnico el jueves por la mañana, antes de mi turno?",
+        "fallbackChoices": [
+          "venía",
+          "venir",
+          "viene",
+          "venido"
+        ]
+      },
+      "speakRequired": [
+        "técnico",
+        "jueves",
+        "turno"
+      ],
+      "sceneCaption": {
+        "de": "Der Kundendienst hat die Rechnung gelesen und plant den ersten Besuch bei Ihnen. Sie hören: „Ya tenemos la factura. ¿Cuándo puede recibir una visita?“",
+        "en": "Customer service has read the invoice and is arranging the first visit to your home. You hear: “Ya tenemos la factura. ¿Cuándo puede recibir una visita?”"
+      },
+      "trophyWord": {
+        "word": "técnico",
+        "meaning": {
+          "de": "Techniker",
+          "en": "technician"
+        },
+        "example": "El técnico necesita entrar en la cocina para ver la lavadora.",
+        "whyThisWord": {
+          "de": "Técnico bezeichnet die Fachperson, für deren Besuch Sie einen Termin suchen.",
+          "en": "Técnico identifies the person whose visit you are trying to schedule."
+        }
+      },
+      "distractors": [
+        "el jueves por la noche,",
+        "después de"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Schichtplan und ein Terminkalender liegen nebeneinander.",
+        "en": "A shift rota and appointment calendar lie side by side."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A shift rota and appointment calendar lie side by side."
+    },
+    {
+      "slug": "repuesto-pendiente",
+      "title": {
+        "de": "Das fehlende Ersatzteil",
+        "en": "The missing part"
+      },
+      "situation": {
+        "de": "Beim Besuch wurde ein Ersatzteil für Ihre Maschine bestellt. Sie rufen wegen des Lieferstands an.",
+        "en": "A replacement part was ordered during the visit. You call to ask about its delivery."
+      },
+      "pedagogicalGoal": "Estar mit einem Adjektiv fragt nach dem aktuellen Zustand. Ya fragt hier, ob die erwartete Verfügbarkeit inzwischen eingetreten ist.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Tengo su expediente abierto. ¿Qué necesita comprobar?",
+          "baseText": {
+            "de": "Ich habe Ihren Vorgang geöffnet. Was möchten Sie prüfen?",
+            "en": "I have your case open. What do you need me to check?"
+          }
+        },
+        {
+          "targetText": "Quería saber si la pieza ya está disponible para la reparación.",
+          "baseText": {
+            "de": "Ich wollte wissen, ob das Ersatzteil für die Reparatur schon verfügbar ist.",
+            "en": "I'd like to know whether the part is available for the repair yet."
+          }
+        },
+        {
+          "targetText": "Ya está pedida, pero todavía no ha llegado al almacén.",
+          "baseText": {
+            "de": "Es ist bestellt, aber noch nicht im Lager eingetroffen.",
+            "en": "It's been ordered, but it hasn't reached the warehouse yet."
+          }
+        },
+        {
+          "targetText": "¿Podría decirme cuándo esperan recibirla para poder organizarme?",
+          "baseText": {
+            "de": "Könnten Sie mir sagen, wann Sie mit dem Teil rechnen, damit ich planen kann?",
+            "en": "Could you tell me when you expect to receive it so I can plan?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Consultar el estado",
+        "rule": {
+          "de": "Estar mit einem Adjektiv fragt nach dem aktuellen Zustand. Ya fragt hier, ob die erwartete Verfügbarkeit inzwischen eingetreten ist.",
+          "en": "Estar plus an adjective asks about present status. Here ya asks whether the part has become available yet."
+        },
+        "examples": [
+          {
+            "targetText": "Quería saber si la pieza ya está disponible para la reparación.",
+            "baseText": {
+              "de": "Ich wollte wissen, ob das Ersatzteil für die Reparatur schon verfügbar ist.",
+              "en": "I'd like to know whether the part is available for the repair yet."
+            },
+            "highlight": "ya está disponible"
+          },
+          {
+            "targetText": "Quería saber si el paquete ya está listo para recoger.",
+            "baseText": {
+              "de": "Ich wollte wissen, ob das Paket schon zum Abholen bereitliegt.",
+              "en": "I'd like to know whether the parcel is ready for collection yet."
+            },
+            "highlight": "ya está listo"
+          }
+        ]
+      },
+      "cloze": [
+        "¿",
+        {
+          "kind": "form",
+          "answer": "Podría",
+          "choices": [
+            "Podrías",
+            "Podrían",
+            "Podría",
+            "Podríamos"
+          ],
+          "cue": "poder (usted, condicional)"
+        },
+        " decirme ",
+        {
+          "kind": "choice",
+          "answer": "cuándo",
+          "choices": [
+            "durante",
+            "cuándo",
+            "hacia",
+            "entre"
+          ]
+        },
+        " esperan recibirla para poder organizarme?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Quería saber",
+          "baseText": {
+            "de": "Ich wollte wissen",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "si la pieza",
+          "baseText": {
+            "de": "ob das Ersatzteil",
+            "en": "whether the part"
+          }
+        },
+        {
+          "targetText": "ya está disponible",
+          "baseText": {
+            "de": "schon verfügbar ist",
+            "en": "is available yet"
+          }
+        },
+        {
+          "targetText": "para la reparación.",
+          "baseText": {
+            "de": "für die Reparatur.",
+            "en": "for the repair."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "pieza",
+          "baseText": {
+            "de": "Teil, Ersatzteil",
+            "en": "part, replacement part"
+          }
+        },
+        {
+          "targetText": "quería saber",
+          "baseText": {
+            "de": "ich wollte wissen",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "la reparación",
+          "baseText": {
+            "de": "die Reparatur",
+            "en": "the repair"
+          }
+        },
+        {
+          "targetText": "está pedida",
+          "baseText": {
+            "de": "es ist bestellt",
+            "en": "it has been ordered"
+          }
+        },
+        {
+          "targetText": "el almacén",
+          "baseText": {
+            "de": "das Lager",
+            "en": "the warehouse"
+          }
+        },
+        {
+          "targetText": "organizarme",
+          "baseText": {
+            "de": "meinen Zeitplan abstimmen",
+            "en": "plan my time"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Quería saber si la pieza ya está ",
+        "answer": "disponible",
+        "after": " para la reparación.",
+        "fallbackChoices": [
+          "disponibles",
+          "disponible",
+          "disponibilidad",
+          "disponer"
+        ]
+      },
+      "speakRequired": [
+        "pieza",
+        "disponible",
+        "reparación"
+      ],
+      "sceneCaption": {
+        "de": "Beim Besuch wurde ein Ersatzteil für Ihre Maschine bestellt. Sie rufen wegen des Lieferstands an. Sie hören: „Tengo su expediente abierto. ¿Qué necesita comprobar?“",
+        "en": "A replacement part was ordered during the visit. You call to ask about its delivery. You hear: “Tengo su expediente abierto. ¿Qué necesita comprobar?”"
+      },
+      "trophyWord": {
+        "word": "pieza",
+        "meaning": {
+          "de": "Teil, Ersatzteil",
+          "en": "part, replacement part"
+        },
+        "example": "La pieza se pidió después de la visita.",
+        "whyThisWord": {
+          "de": "Pieza benennt das einzelne Bauteil, auf das die Reparatur wartet.",
+          "en": "Pieza names the individual component the repair is waiting for."
+        }
+      },
+      "distractors": [
+        "ya estaba rota",
+        "para la venta."
+      ],
+      "placeholderCaption": {
+        "de": "Eine Bestellbestätigung für ein Ersatzteil liegt neben der Maschine.",
+        "en": "A replacement-part order confirmation lies beside the machine."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A replacement-part order confirmation lies beside the machine."
+    },
+    {
+      "slug": "el-importe-del-viaje",
+      "title": {
+        "de": "Der Posten für die Anfahrt",
+        "en": "The travel charge"
+      },
+      "situation": {
+        "de": "Während das Ersatzteil unterwegs ist, bitten Sie die Werkstatt um Auskunft zu den Kosten.",
+        "en": "While the part is on its way, you ask the workshop about the costs."
+      },
+      "pedagogicalGoal": "Preparado und revisado bezeichnen das Ergebnis einer abgeschlossenen Arbeit. Das Partizip richtet sich nach dem Gegenstand, nach dessen Zustand Sie fragen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Ya hemos revisado las condiciones de su garantía.",
+          "baseText": {
+            "de": "Wir haben Ihre Garantiebedingungen jetzt geprüft.",
+            "en": "We've now checked the terms of your warranty."
+          }
+        },
+        {
+          "targetText": "¿Está preparado el presupuesto o falta calcular el coste de la visita?",
+          "baseText": {
+            "de": "Ist der Kostenvoranschlag fertig oder müssen die Kosten des Besuchs noch berechnet werden?",
+            "en": "Is the estimate ready, or do you still need to work out the cost of the visit?"
+          }
+        },
+        {
+          "targetText": "Está preparado. La pieza está cubierta, pero aquí aparece un cargo por desplazamiento.",
+          "baseText": {
+            "de": "Er ist fertig. Das Teil ist abgedeckt, hier steht aber eine Anfahrtspauschale.",
+            "en": "It's ready. The part is covered, but there's a travel charge here."
+          }
+        },
+        {
+          "targetText": "¿Podría detallar ese cargo? Quiero comprobarlo antes de aceptar el presupuesto.",
+          "baseText": {
+            "de": "Könnten Sie diesen Posten aufschlüsseln? Ich möchte ihn vor der Annahme des Kostenvoranschlags prüfen.",
+            "en": "Could you itemize that charge? I want to check it before accepting the estimate."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Estar + participio",
+        "rule": {
+          "de": "Preparado und revisado bezeichnen das Ergebnis einer abgeschlossenen Arbeit. Das Partizip richtet sich nach dem Gegenstand, nach dessen Zustand Sie fragen.",
+          "en": "Preparado and revisado describe the result of completed work. The participle agrees with the item whose status you are asking about."
+        },
+        "examples": [
+          {
+            "targetText": "¿Está preparado el presupuesto o falta calcular el coste de la visita?",
+            "baseText": {
+              "de": "Ist der Kostenvoranschlag fertig oder müssen die Kosten des Besuchs noch berechnet werden?",
+              "en": "Is the estimate ready, or do you still need to work out the cost of the visit?"
+            },
+            "highlight": "Está preparado el presupuesto"
+          },
+          {
+            "targetText": "¿Está revisado el contrato que envié el lunes?",
+            "baseText": {
+              "de": "Ist der Vertrag, den ich am Montag geschickt habe, geprüft?",
+              "en": "Has the contract I sent on Monday been reviewed?"
+            },
+            "highlight": "Está revisado el contrato"
+          }
+        ]
+      },
+      "cloze": [
+        "¿",
+        {
+          "kind": "form",
+          "answer": "Podría",
+          "choices": [
+            "Podría",
+            "Podrían",
+            "Podrías",
+            "Podríamos"
+          ],
+          "cue": "poder (usted, condicional)"
+        },
+        " detallar ese cargo? Quiero comprobarlo ",
+        {
+          "kind": "choice",
+          "answer": "antes de",
+          "choices": [
+            "hasta que",
+            "antes de",
+            "mientras que",
+            "dado que"
+          ]
+        },
+        " aceptar el presupuesto."
+      ],
+      "chunks": [
+        {
+          "targetText": "¿Está preparado el presupuesto",
+          "baseText": {
+            "de": "Ist der Kostenvoranschlag fertig",
+            "en": "Is the estimate ready"
+          }
+        },
+        {
+          "targetText": "o falta calcular",
+          "baseText": {
+            "de": "oder muss noch berechnet werden",
+            "en": "or do you still need to calculate"
+          }
+        },
+        {
+          "targetText": "el coste",
+          "baseText": {
+            "de": "die Kosten",
+            "en": "the cost"
+          }
+        },
+        {
+          "targetText": "de la visita?",
+          "baseText": {
+            "de": "des Besuchs?",
+            "en": "of the visit?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "presupuesto",
+          "baseText": {
+            "de": "Kostenvoranschlag",
+            "en": "estimate"
+          }
+        },
+        {
+          "targetText": "preparado",
+          "baseText": {
+            "de": "fertig erstellt",
+            "en": "prepared"
+          }
+        },
+        {
+          "targetText": "el coste",
+          "baseText": {
+            "de": "die Kosten",
+            "en": "the cost"
+          }
+        },
+        {
+          "targetText": "la visita",
+          "baseText": {
+            "de": "der Besuch",
+            "en": "the visit"
+          }
+        },
+        {
+          "targetText": "un cargo",
+          "baseText": {
+            "de": "ein Kostenposten",
+            "en": "a charge"
+          }
+        },
+        {
+          "targetText": "por desplazamiento",
+          "baseText": {
+            "de": "für die Anfahrt",
+            "en": "for travel"
+          }
+        }
+      ],
+      "recall": {
+        "before": "¿Está ",
+        "answer": "preparado",
+        "after": " el presupuesto o falta calcular el coste de la visita?",
+        "fallbackChoices": [
+          "preparados",
+          "preparada",
+          "preparado",
+          "preparadas"
+        ]
+      },
+      "speakRequired": [
+        "presupuesto",
+        "calcular",
+        "visita"
+      ],
+      "sceneCaption": {
+        "de": "Während das Ersatzteil unterwegs ist, bitten Sie die Werkstatt um Auskunft zu den Kosten. Sie hören: „Ya hemos revisado las condiciones de su garantía.“",
+        "en": "While the part is on its way, you ask the workshop about the costs. You hear: “Ya hemos revisado las condiciones de su garantía.”"
+      },
+      "trophyWord": {
+        "word": "presupuesto",
+        "meaning": {
+          "de": "Kostenvoranschlag",
+          "en": "estimate"
+        },
+        "example": "Antes de decidir quiero leer el presupuesto completo.",
+        "whyThisWord": {
+          "de": "Presupuesto bezeichnet hier den Kostenvoranschlag, den Sie vor einer Entscheidung prüfen.",
+          "en": "Presupuesto here means the estimate you want to review before deciding."
+        }
+      },
+      "distractors": [
+        "Está pagada la factura",
+        "de la venta?"
+      ],
+      "placeholderCaption": {
+        "de": "In einem Kostenvoranschlag ist der Posten für die Anfahrt markiert.",
+        "en": "The travel charge is highlighted on an estimate."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "The travel charge is highlighted on an estimate."
+    },
+    {
+      "slug": "lavado-provisional",
+      "title": {
+        "de": "Wäsche für die Nachtschicht",
+        "en": "Laundry for the night shift"
+      },
+      "situation": {
+        "de": "Das Ersatzteil verspätet sich. Sie besprechen mit dem Kundendienst, wie Sie die Wartezeit überbrücken könnten.",
+        "en": "The part is delayed. You ask customer service how you might manage in the meantime."
+      },
+      "pedagogicalGoal": "Mit entiendo erkennst du das Hindernis an. Pero führt zum Bedarf, für den du eine konkrete Lösung erfragst.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "El proveedor acaba de retrasar la entrega otros tres días.",
+          "baseText": {
+            "de": "Der Lieferant hat die Lieferung gerade um weitere drei Tage verschoben.",
+            "en": "The supplier has just delayed delivery by another three days."
+          }
+        },
+        {
+          "targetText": "Entiendo el retraso, pero necesito una solución provisional para lavar mi uniforme.",
+          "baseText": {
+            "de": "Ich verstehe die Verzögerung, aber ich brauche eine Übergangslösung, um meine Arbeitskleidung zu waschen.",
+            "en": "I understand the delay, but I need a temporary way to wash my uniform."
+          }
+        },
+        {
+          "targetText": "No tenemos máquinas de préstamo esta semana. ¿Qué necesita con más urgencia?",
+          "baseText": {
+            "de": "Wir haben diese Woche keine Leihgeräte. Was brauchen Sie am dringendsten?",
+            "en": "We have no loan machines this week. What do you need most urgently?"
+          }
+        },
+        {
+          "targetText": "Trabajo esta noche. ¿Podría la empresa cubrir hoy un lavado?",
+          "baseText": {
+            "de": "Ich arbeite heute Nacht. Könnte Ihr Betrieb heute einen Waschgang bezahlen?",
+            "en": "I work tonight. Could your company cover one wash today?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Reconocer el obstáculo y pedir ayuda",
+        "rule": {
+          "de": "Mit entiendo erkennst du das Hindernis an. Pero führt zum Bedarf, für den du eine konkrete Lösung erfragst.",
+          "en": "Entiendo acknowledges the obstacle. Pero introduces the need for which you are requesting a specific solution."
+        },
+        "examples": [
+          {
+            "targetText": "Entiendo el retraso, pero necesito una solución provisional para lavar mi uniforme.",
+            "baseText": {
+              "de": "Ich verstehe die Verzögerung, aber ich brauche eine Übergangslösung, um meine Arbeitskleidung zu waschen.",
+              "en": "I understand the delay, but I need a temporary way to wash my uniform."
+            },
+            "highlight": "Entiendo el retraso, pero"
+          },
+          {
+            "targetText": "Entiendo la norma, pero necesito otra forma de recoger las llaves.",
+            "baseText": {
+              "de": "Ich verstehe die Regel, brauche aber eine andere Möglichkeit, die Schlüssel abzuholen.",
+              "en": "I understand the rule, but I need another way to collect the keys."
+            },
+            "highlight": "Entiendo la norma, pero"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Trabajo",
+          "choices": [
+            "Trabaja",
+            "Trabajamos",
+            "Trabajo",
+            "Trabajan"
+          ],
+          "cue": "trabajar (yo)"
+        },
+        " esta noche. ¿",
+        {
+          "kind": "form",
+          "answer": "Podría",
+          "choices": [
+            "Podría",
+            "Podrías",
+            "Podríamos",
+            "Podrían"
+          ],
+          "cue": "poder (la empresa, condicional)"
+        },
+        " la empresa cubrir hoy un lavado?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Entiendo el retraso,",
+          "baseText": {
+            "de": "Ich verstehe die Verzögerung,",
+            "en": "I understand the delay,"
+          }
+        },
+        {
+          "targetText": "pero necesito",
+          "baseText": {
+            "de": "aber ich brauche",
+            "en": "but I need"
+          }
+        },
+        {
+          "targetText": "una solución provisional",
+          "baseText": {
+            "de": "eine Übergangslösung",
+            "en": "a temporary solution"
+          }
+        },
+        {
+          "targetText": "para lavar mi uniforme.",
+          "baseText": {
+            "de": "um meine Arbeitskleidung zu waschen.",
+            "en": "to wash my uniform."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "solución",
+          "baseText": {
+            "de": "Lösung",
+            "en": "solution"
+          }
+        },
+        {
+          "targetText": "el retraso",
+          "baseText": {
+            "de": "die Verzögerung",
+            "en": "the delay"
+          }
+        },
+        {
+          "targetText": "provisional",
+          "baseText": {
+            "de": "vorübergehend",
+            "en": "temporary"
+          }
+        },
+        {
+          "targetText": "lavar",
+          "baseText": {
+            "de": "waschen",
+            "en": "wash"
+          }
+        },
+        {
+          "targetText": "mi uniforme",
+          "baseText": {
+            "de": "meine Arbeitskleidung",
+            "en": "my uniform"
+          }
+        },
+        {
+          "targetText": "un lavado",
+          "baseText": {
+            "de": "ein Waschgang",
+            "en": "one wash"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Entiendo el retraso, pero ",
+        "answer": "necesito",
+        "after": " una solución provisional para lavar mi uniforme.",
+        "fallbackChoices": [
+          "necesitan",
+          "necesitamos",
+          "necesitas",
+          "necesito"
+        ]
+      },
+      "speakRequired": [
+        "retraso",
+        "solución",
+        "uniforme"
+      ],
+      "sceneCaption": {
+        "de": "Das Ersatzteil verspätet sich. Sie besprechen mit dem Kundendienst, wie Sie die Wartezeit überbrücken könnten. Sie hören: „El proveedor acaba de retrasar la entrega otros tres días.“",
+        "en": "The part is delayed. You ask customer service how you might manage in the meantime. You hear: “El proveedor acaba de retrasar la entrega otros tres días.”"
+      },
+      "trophyWord": {
+        "word": "solución",
+        "meaning": {
+          "de": "Lösung",
+          "en": "solution"
+        },
+        "example": "Busco una solución para poder lavar el uniforme esta tarde.",
+        "whyThisWord": {
+          "de": "Solución lässt offen, welche Hilfe der Kundendienst anbieten kann.",
+          "en": "Solución leaves room for the service team to say what help it can offer."
+        }
+      },
+      "distractors": [
+        "una respuesta definitiva",
+        "para vender mi uniforme."
+      ],
+      "placeholderCaption": {
+        "de": "Arbeitskleidung liegt neben einem leeren Wäschekorb.",
+        "en": "A work uniform lies beside an empty laundry basket."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A work uniform lies beside an empty laundry basket."
+    },
+    {
+      "slug": "ultima-comprobacion",
+      "title": {
+        "de": "Ein letzter Prüftermin",
+        "en": "One final check"
+      },
+      "situation": {
+        "de": "Nach dem Einbau des Ersatzteils bleibt die Waschmaschine erneut stehen. Sie sprechen wieder mit dem Kundendienst.",
+        "en": "After the part is fitted, the machine stops again. You contact customer service once more."
+      },
+      "pedagogicalGoal": "Volver a mit Infinitiv benennt das erneute Auftreten eines Problems. Eine höfliche Anschlussfrage kann klären, welcher nächste Schritt möglich ist.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "He visto el parte de reparación. ¿Qué ha pasado desde la visita?",
+          "baseText": {
+            "de": "Ich habe den Reparaturbericht gesehen. Was ist seit dem Besuch passiert?",
+            "en": "I've seen the repair report. What's happened since the visit?"
+          }
+        },
+        {
+          "targetText": "La lavadora volvió a pararse. ¿Podría solicitar la devolución del importe?",
+          "baseText": {
+            "de": "Die Waschmaschine blieb wieder stehen. Könnte ich die Rückerstattung des Betrags beantragen?",
+            "en": "The washing machine stopped again. Could I request a refund of the amount paid?"
+          }
+        },
+        {
+          "targetText": "Antes necesitamos una última comprobación. ¿Puede recibir al técnico el lunes?",
+          "baseText": {
+            "de": "Zuerst brauchen wir eine letzte Überprüfung. Können Sie den Techniker am Montag empfangen?",
+            "en": "We need one last check first. Can you let the technician in on Monday?"
+          }
+        },
+        {
+          "targetText": "Sí, puedo el lunes. ¿Me enviaría después el resultado por escrito?",
+          "baseText": {
+            "de": "Ja, am Montag geht es. Würden Sie mir das Ergebnis danach schriftlich schicken?",
+            "en": "Yes, Monday works. Would you send me the result in writing afterwards?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Volver a + infinitivo",
+        "rule": {
+          "de": "Volver a mit Infinitiv benennt das erneute Auftreten eines Problems. Eine höfliche Anschlussfrage kann klären, welcher nächste Schritt möglich ist.",
+          "en": "Volver a plus an infinitive marks a problem recurring. A polite follow-up can ask which next step is possible."
+        },
+        "examples": [
+          {
+            "targetText": "La lavadora volvió a pararse. ¿Podría solicitar la devolución del importe?",
+            "baseText": {
+              "de": "Die Waschmaschine blieb wieder stehen. Könnte ich die Rückerstattung des Betrags beantragen?",
+              "en": "The washing machine stopped again. Could I request a refund of the amount paid?"
+            },
+            "highlight": "volvió a pararse"
+          },
+          {
+            "targetText": "La alarma volvió a sonar después de cambiar la batería.",
+            "baseText": {
+              "de": "Nach dem Batteriewechsel ertönte der Alarm wieder.",
+              "en": "The alarm sounded again after the battery was changed."
+            },
+            "highlight": "volvió a sonar"
+          }
+        ]
+      },
+      "cloze": [
+        "Sí, ",
+        {
+          "kind": "form",
+          "answer": "puedo",
+          "choices": [
+            "puede",
+            "pueden",
+            "puedo",
+            "podemos"
+          ],
+          "cue": "poder (yo)"
+        },
+        " el lunes. ¿Me ",
+        {
+          "kind": "form",
+          "answer": "enviaría",
+          "choices": [
+            "enviarías",
+            "enviaría",
+            "enviaríamos",
+            "enviarían"
+          ],
+          "cue": "enviar (usted, condicional)"
+        },
+        " después el resultado por escrito?"
+      ],
+      "chunks": [
+        {
+          "targetText": "La lavadora",
+          "baseText": {
+            "de": "Die Waschmaschine",
+            "en": "The washing machine"
+          }
+        },
+        {
+          "targetText": "volvió a pararse. ¿Podría",
+          "baseText": {
+            "de": "blieb wieder stehen. Könnte ich",
+            "en": "stopped again. Could I"
+          }
+        },
+        {
+          "targetText": "solicitar la devolución",
+          "baseText": {
+            "de": "die Rückerstattung beantragen",
+            "en": "request a refund"
+          }
+        },
+        {
+          "targetText": "del importe?",
+          "baseText": {
+            "de": "des Betrags?",
+            "en": "of the amount paid?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "devolución",
+          "baseText": {
+            "de": "Rückerstattung",
+            "en": "refund"
+          }
+        },
+        {
+          "targetText": "volvió a pararse",
+          "baseText": {
+            "de": "sie blieb wieder stehen",
+            "en": "it stopped again"
+          }
+        },
+        {
+          "targetText": "solicitar",
+          "baseText": {
+            "de": "beantragen",
+            "en": "request"
+          }
+        },
+        {
+          "targetText": "el importe",
+          "baseText": {
+            "de": "der Betrag",
+            "en": "the amount"
+          }
+        },
+        {
+          "targetText": "una última comprobación",
+          "baseText": {
+            "de": "eine letzte Überprüfung",
+            "en": "one final check"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        }
+      ],
+      "recall": {
+        "before": "La lavadora ",
+        "answer": "volvió",
+        "after": " a pararse. ¿Podría solicitar la devolución del importe?",
+        "fallbackChoices": [
+          "volvieron",
+          "volvió",
+          "volviste",
+          "volvimos"
+        ]
+      },
+      "speakRequired": [
+        "lavadora",
+        "devolución",
+        "importe"
+      ],
+      "sceneCaption": {
+        "de": "Nach dem Einbau des Ersatzteils bleibt die Waschmaschine erneut stehen. Sie sprechen wieder mit dem Kundendienst. Sie hören: „He visto el parte de reparación. ¿Qué ha pasado desde la visita?“",
+        "en": "After the part is fitted, the machine stops again. You contact customer service once more. You hear: “He visto el parte de reparación. ¿Qué ha pasado desde la visita?”"
+      },
+      "trophyWord": {
+        "word": "devolución",
+        "meaning": {
+          "de": "Rückerstattung",
+          "en": "refund"
+        },
+        "example": "Pido información sobre la devolución del importe.",
+        "whyThisWord": {
+          "de": "Devolución del importe macht deutlich, dass Sie nach einer Rückzahlung fragen.",
+          "en": "Devolución del importe specifies that you are asking about money being returned."
+        }
+      },
+      "distractors": [
+        "se puso a funcionar.",
+        "del recambio?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein Reparaturbericht liegt auf der stillstehenden Maschine.",
+        "en": "A repair report lies on top of the stopped machine."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "A repair report lies on top of the stopped machine."
+    },
+    {
+      "slug": "dos-recibos",
+      "title": {
+        "de": "Zwei Belege vom Waschsalon",
+        "en": "Two laundry receipts"
+      },
+      "situation": {
+        "de": "Nach der letzten Überprüfung besprechen Sie zusätzlich die Ausgaben während der Wartezeit.",
+        "en": "After the final check, you also raise the expenses you incurred during the wait."
+      },
+      "pedagogicalGoal": "Me gustaría saber si leitet eine höfliche Frage nach einer Möglichkeit ein. Ob ein Anspruch besteht, bleibt im Gespräch offen.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Tengo el informe del lunes. ¿Quiere añadir algo al expediente?",
+          "baseText": {
+            "de": "Ich habe den Bericht vom Montag. Möchten Sie dem Vorgang etwas hinzufügen?",
+            "en": "I have Monday's report. Would you like to add anything to the file?"
+          }
+        },
+        {
+          "targetText": "Me gustaría saber si ofrecen alguna compensación por los días sin lavadora.",
+          "baseText": {
+            "de": "Ich würde gerne wissen, ob Sie für die Tage ohne Waschmaschine einen Ausgleich anbieten.",
+            "en": "I'd like to know whether you offer any compensation for the days without a washing machine."
+          }
+        },
+        {
+          "targetText": "Solo podemos estudiar gastos de lavandería si conserva los recibos.",
+          "baseText": {
+            "de": "Wir können nur Waschsalonkosten prüfen, wenn Sie die Belege noch haben.",
+            "en": "We can only consider laundry expenses if you've kept the receipts."
+          }
+        },
+        {
+          "targetText": "Conservo dos recibos. ¿Podría incluir ambos en la solicitud?",
+          "baseText": {
+            "de": "Ich habe zwei Belege. Könnten Sie beide in den Antrag aufnehmen?",
+            "en": "I kept two receipts. Could you include both in the request?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Me gustaría saber si…",
+        "rule": {
+          "de": "Me gustaría saber si leitet eine höfliche Frage nach einer Möglichkeit ein. Ob ein Anspruch besteht, bleibt im Gespräch offen.",
+          "en": "Me gustaría saber si politely asks whether an option exists. The question leaves the outcome open."
+        },
+        "examples": [
+          {
+            "targetText": "Me gustaría saber si ofrecen alguna compensación por los días sin lavadora.",
+            "baseText": {
+              "de": "Ich würde gerne wissen, ob Sie für die Tage ohne Waschmaschine einen Ausgleich anbieten.",
+              "en": "I'd like to know whether you offer any compensation for the days without a washing machine."
+            },
+            "highlight": "Me gustaría saber si"
+          },
+          {
+            "targetText": "Me gustaría saber si aceptan una copia del billete perdido.",
+            "baseText": {
+              "de": "Ich würde gern wissen, ob Sie eine Kopie der verlorenen Fahrkarte akzeptieren.",
+              "en": "I'd like to know whether you accept a copy of the lost ticket."
+            },
+            "highlight": "Me gustaría saber si"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Conservo",
+          "choices": [
+            "Conserva",
+            "Conservas",
+            "Conservo",
+            "Conservan"
+          ],
+          "cue": "conservar (yo)"
+        },
+        " dos recibos. ¿",
+        {
+          "kind": "form",
+          "answer": "Podría",
+          "choices": [
+            "Podríamos",
+            "Podrían",
+            "Podrías",
+            "Podría"
+          ],
+          "cue": "poder (usted, condicional)"
+        },
+        " incluir ambos en la solicitud?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Me gustaría saber",
+          "baseText": {
+            "de": "Ich würde gerne wissen",
+            "en": "I'd like to know"
+          }
+        },
+        {
+          "targetText": "si ofrecen alguna compensación",
+          "baseText": {
+            "de": "ob Sie einen Ausgleich anbieten",
+            "en": "whether you offer any compensation"
+          }
+        },
+        {
+          "targetText": "por los días",
+          "baseText": {
+            "de": "für die Tage",
+            "en": "for the days"
+          }
+        },
+        {
+          "targetText": "sin lavadora.",
+          "baseText": {
+            "de": "ohne Waschmaschine.",
+            "en": "without a washing machine."
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "compensación",
+          "baseText": {
+            "de": "Entschädigung, Ausgleich",
+            "en": "compensation"
+          }
+        },
+        {
+          "targetText": "los días",
+          "baseText": {
+            "de": "die Tage",
+            "en": "the days"
+          }
+        },
+        {
+          "targetText": "sin lavadora",
+          "baseText": {
+            "de": "ohne Waschmaschine",
+            "en": "without a washing machine"
+          }
+        },
+        {
+          "targetText": "gastos de lavandería",
+          "baseText": {
+            "de": "Waschsalonkosten",
+            "en": "laundry expenses"
+          }
+        },
+        {
+          "targetText": "dos recibos",
+          "baseText": {
+            "de": "zwei Belege",
+            "en": "two receipts"
+          }
+        },
+        {
+          "targetText": "la solicitud",
+          "baseText": {
+            "de": "der Antrag",
+            "en": "the request"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Me gustaría saber si ofrecen alguna ",
+        "answer": "compensación",
+        "after": " por los días sin lavadora.",
+        "fallbackChoices": [
+          "compensar",
+          "compensado",
+          "compensando",
+          "compensación"
+        ]
+      },
+      "speakRequired": [
+        "gustaría",
+        "compensación",
+        "lavadora"
+      ],
+      "sceneCaption": {
+        "de": "Nach der letzten Überprüfung besprechen Sie zusätzlich die Ausgaben während der Wartezeit. Sie hören: „Tengo el informe del lunes. ¿Quiere añadir algo al expediente?“",
+        "en": "After the final check, you also raise the expenses you incurred during the wait. You hear: “Tengo el informe del lunes. ¿Quiere añadir algo al expediente?”"
+      },
+      "trophyWord": {
+        "word": "compensación",
+        "meaning": {
+          "de": "Entschädigung, Ausgleich",
+          "en": "compensation"
+        },
+        "example": "Me gustaría consultar la compensación por los gastos de lavandería.",
+        "whyThisWord": {
+          "de": "Mit compensación fragen Sie, für welche Ausgaben ein Ausgleich in Betracht kommt.",
+          "en": "Compensación opens the question of which expense can be considered without fixing the outcome."
+        }
+      },
+      "distractors": [
+        "que rechacen mi factura",
+        "por las horas de sueño"
+      ],
+      "placeholderCaption": {
+        "de": "Zwei Waschsalonbelege liegen neben einer Vorgangsnummer.",
+        "en": "Two laundry receipts lie beside a case number."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "Two laundry receipts lie beside a case number."
+    },
+    {
+      "slug": "el-acuerdo-por-escrito",
+      "title": {
+        "de": "Die Zusage schriftlich erhalten",
+        "en": "Getting the agreement in writing"
+      },
+      "situation": {
+        "de": "Sie führen das abschließende Gespräch zum Austausch der defekten Waschmaschine.",
+        "en": "You have the final conversation about replacing the faulty washing machine."
+      },
+      "pedagogicalGoal": "Podría und der Infinitiv halten die Bitte höflich. Por escrito legt fest, wie die Vereinbarung festgehalten werden soll.",
+      "register": "formal",
+      "dialogue": [
+        {
+          "targetText": "Podemos cambiar la máquina el jueves por la tarde. ¿Le parece bien?",
+          "baseText": {
+            "de": "Wir können die Maschine am Donnerstagnachmittag austauschen. Passt Ihnen das?",
+            "en": "We can exchange the machine on Thursday afternoon. Does that work for you?"
+          }
+        },
+        {
+          "targetText": "Sí, ¿podría enviarme por escrito el compromiso de cambio para ese jueves?",
+          "baseText": {
+            "de": "Ja, könnten Sie mir schriftlich zusagen, dass der Austausch an diesem Donnerstag stattfindet?",
+            "en": "Yes, could you send me written confirmation of the commitment to replace it that Thursday?"
+          }
+        },
+        {
+          "targetText": "Sí. En su ficha tengo un correo personal y otro del trabajo. ¿A cuál mando la confirmación del jueves?",
+          "baseText": {
+            "de": "Ja. In Ihren Daten habe ich eine private und eine berufliche E-Mail-Adresse. An welche soll die Bestätigung für Donnerstag?",
+            "en": "Yes. On file I have a personal email and a work email. Which should I use for Thursday's confirmation?"
+          }
+        },
+        {
+          "targetText": "Prefiero mi correo personal. ¿Podría confirmar la franja del jueves?",
+          "baseText": {
+            "de": "Ich bevorzuge meine private E-Mail-Adresse. Könnten Sie das Zeitfenster am Donnerstag bestätigen?",
+            "en": "I prefer my personal email. Could you confirm the time slot on Thursday?"
+          }
+        }
+      ],
+      "pattern": {
+        "label": "Cerrar con una confirmación",
+        "rule": {
+          "de": "Podría und der Infinitiv halten die Bitte höflich. Por escrito legt fest, wie die Vereinbarung festgehalten werden soll.",
+          "en": "Podría plus the infinitive keeps the request polite. Por escrito specifies how you want the agreement recorded."
+        },
+        "examples": [
+          {
+            "targetText": "Sí, ¿podría enviarme por escrito el compromiso de cambio para ese jueves?",
+            "baseText": {
+              "de": "Ja, könnten Sie mir schriftlich zusagen, dass der Austausch an diesem Donnerstag stattfindet?",
+              "en": "Yes, could you send me written confirmation of the commitment to replace it that Thursday?"
+            },
+            "highlight": "podría enviarme por escrito"
+          },
+          {
+            "targetText": "¿Podría confirmarme por escrito el día de recogida?",
+            "baseText": {
+              "de": "Könnten Sie mir den Abholtag schriftlich bestätigen?",
+              "en": "Could you confirm the collection day in writing?"
+            },
+            "highlight": "Podría confirmarme por escrito"
+          }
+        ]
+      },
+      "cloze": [
+        "",
+        {
+          "kind": "form",
+          "answer": "Prefiero",
+          "choices": [
+            "Prefieren",
+            "Prefiero",
+            "Preferimos",
+            "Prefiere"
+          ],
+          "cue": "preferir (yo)"
+        },
+        " mi correo personal. ¿",
+        {
+          "kind": "form",
+          "answer": "Podría",
+          "choices": [
+            "Podríamos",
+            "Podrían",
+            "Podría",
+            "Podrías"
+          ],
+          "cue": "poder (usted, condicional)"
+        },
+        " confirmar la franja del jueves?"
+      ],
+      "chunks": [
+        {
+          "targetText": "Sí, ¿podría enviarme",
+          "baseText": {
+            "de": "Ja, könnten Sie mir schicken",
+            "en": "Yes, could you send me"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        },
+        {
+          "targetText": "el compromiso de cambio",
+          "baseText": {
+            "de": "die Austauschzusage",
+            "en": "the replacement commitment"
+          }
+        },
+        {
+          "targetText": "para ese jueves?",
+          "baseText": {
+            "de": "für diesen Donnerstag?",
+            "en": "for that Thursday?"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "compromiso",
+          "baseText": {
+            "de": "Zusage, Verpflichtung",
+            "en": "commitment"
+          }
+        },
+        {
+          "targetText": "por escrito",
+          "baseText": {
+            "de": "schriftlich",
+            "en": "in writing"
+          }
+        },
+        {
+          "targetText": "el cambio",
+          "baseText": {
+            "de": "der Austausch",
+            "en": "the exchange"
+          }
+        },
+        {
+          "targetText": "ese jueves",
+          "baseText": {
+            "de": "an diesem Donnerstag",
+            "en": "that Thursday"
+          }
+        },
+        {
+          "targetText": "mi correo personal",
+          "baseText": {
+            "de": "meine private E-Mail-Adresse",
+            "en": "my personal email address"
+          }
+        },
+        {
+          "targetText": "la franja",
+          "baseText": {
+            "de": "das Zeitfenster",
+            "en": "the time slot"
+          }
+        }
+      ],
+      "recall": {
+        "before": "Sí, ¿podría enviarme por ",
+        "answer": "escrito",
+        "after": " el compromiso de cambio para ese jueves?",
+        "fallbackChoices": [
+          "escribir",
+          "escribo",
+          "escrito",
+          "escribiendo"
+        ]
+      },
+      "speakRequired": [
+        "escrito",
+        "compromiso",
+        "cambio"
+      ],
+      "sceneCaption": {
+        "de": "Sie führen das abschließende Gespräch zum Austausch der defekten Waschmaschine. Sie hören: „Podemos cambiar la máquina el jueves por la tarde. ¿Le parece bien?“",
+        "en": "You have the final conversation about replacing the faulty washing machine. You hear: “Podemos cambiar la máquina el jueves por la tarde. ¿Le parece bien?”"
+      },
+      "trophyWord": {
+        "word": "compromiso",
+        "meaning": {
+          "de": "Zusage, Verpflichtung",
+          "en": "commitment"
+        },
+        "example": "El compromiso incluye el cambio de la máquina el jueves.",
+        "whyThisWord": {
+          "de": "Compromiso benennt die konkrete Zusage, die Sie dokumentieren lassen möchten.",
+          "en": "Compromiso names the specific undertaking you want recorded."
+        }
+      },
+      "distractors": [
+        "el presupuesto de pintura",
+        "para el año próximo?"
+      ],
+      "placeholderCaption": {
+        "de": "Ein E-Mail-Entwurf liegt neben einem Terminkalender für Donnerstag.",
+        "en": "An email draft is open beside a calendar showing Thursday."
+      },
+      "songMood": "Sachlich und ruhig.",
+      "visualNotes": "An email draft is open beside a calendar showing Thursday."
+    }
+  ]
+}

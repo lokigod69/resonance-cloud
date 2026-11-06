@@ -1,0 +1,2221 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "level": "B1",
+  "targetLanguage": "Korean",
+  "targetLanguageCode": "ko-KR",
+  "baseLanguage": "German",
+  "pathNumber": 8,
+  "title": {
+    "de": "Früher und heute",
+    "en": "Then and now"
+  },
+  "subtitle": {
+    "de": "Frühere Gewohnheiten mit dem Alltag heute vergleichen",
+    "en": "Compare old habits with life today"
+  },
+  "anchor": "neighbor friend over photos, hometown chat, language partner, routines",
+  "lessons": [
+    {
+      "slug": "yejeon-seaside-home",
+      "title": {
+        "de": "Das Meer vor der alten Haustür",
+        "en": "The sea outside the old front door"
+      },
+      "situation": {
+        "de": "Eine Freundin zeigt dir ein Foto von der Küste, an der du gelebt hast.",
+        "en": "A friend shows you a photo of the coast where you used to live."
+      },
+      "pedagogicalGoal": "An einem Foto erklären, was früher vor der Haustür lag und was einem heute fehlt.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이 사진 속 바닷가가 어디인지 기억나요?",
+          "baseText": {
+            "de": "Erinnerst du dich, wo der Strand auf diesem Foto liegt?",
+            "en": "Do you remember where the beach in this photo is?"
+          }
+        },
+        {
+          "targetText": "저기 보이는 바닷가가 예전 집 바로 앞이었어요. 지금은 도시에 살아요.",
+          "baseText": {
+            "de": "Der Strand dort lag direkt vor meiner alten Haustür. Heute wohne ich in der Stadt.",
+            "en": "That beach was right outside my old home. I live in the city now."
+          }
+        },
+        {
+          "targetText": "매일 보던 바다였잖아요. 도시에서도 그리울 때가 있어요?",
+          "baseText": {
+            "de": "Du hast das Meer ja jeden Tag gesehen. Vermisst du es manchmal in der Stadt?",
+            "en": "You saw the sea every day. Do you ever miss it in the city?"
+          }
+        },
+        {
+          "targetText": "그때는 날마다 봤는데 요즘은 파도 소리까지 그리워요.",
+          "baseText": {
+            "de": "Damals habe ich es jeden Tag gesehen. Heute fehlt mir sogar das Rauschen der Wellen.",
+            "en": "I saw it every day then. These days I even miss the sound of the waves."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "이었어요 / 지금은 … 살아요",
+        "rule": {
+          "de": "앞이었어요 ordnet die Lage dem früheren Zuhause zu. 지금은 eröffnet den Gegensatz zum heutigen Wohnort.",
+          "en": "앞이었어요 locates the beach relative to the old home. 지금은 opens the contrast with where you live now."
+        },
+        "examples": [
+          {
+            "targetText": "저기 보이는 바닷가가 예전 집 바로 앞이었어요. 지금은 도시에 살아요.",
+            "baseText": {
+              "de": "Der Strand dort lag direkt vor meiner alten Haustür. Heute wohne ich in der Stadt.",
+              "en": "That beach was right outside my old home. I live in the city now."
+            },
+            "highlight": "바로 앞이었어요"
+          },
+          {
+            "targetText": "여기가 전에는 제 방이었어요. 지금은 가게예요.",
+            "baseText": {
+              "de": "Das hier war früher mein Zimmer. Heute ist es ein Laden.",
+              "en": "This used to be my room. Now it's a shop."
+            },
+            "highlight": "지금은 가게예요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그때는",
+          "choices": [
+            "그때는",
+            "도시에서는",
+            "이사 온 뒤에는",
+            "앞으로는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "날마다",
+          "choices": [
+            "한 번만",
+            "명절에만",
+            "날마다",
+            "월말에만"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "봤는데",
+          "choices": [
+            "볼 텐데",
+            "봤는데",
+            "볼 예정인데",
+            "보려는데"
+          ],
+          "cue": "Rückblick auf etwas, das damals regelmäßig geschah / Looking back at something that happened regularly then"
+        },
+        " 요즘은 파도 소리까지 그리워요."
+      ],
+      "chunks": [
+        {
+          "targetText": "저기 보이는 바닷가가",
+          "baseText": {
+            "de": "die Küste, die man dort sieht",
+            "en": "the shore you see there"
+          }
+        },
+        {
+          "targetText": "예전 집",
+          "baseText": {
+            "de": "mein altes Zuhause",
+            "en": "my old home"
+          }
+        },
+        {
+          "targetText": "바로 앞이었어요. 지금은",
+          "baseText": {
+            "de": "lag direkt davor. Heute",
+            "en": "was right outside. Now"
+          }
+        },
+        {
+          "targetText": "도시에 살아요.",
+          "baseText": {
+            "de": "wohne ich in der Stadt",
+            "en": "I live in the city"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "예전",
+          "baseText": {
+            "de": "früher, frühere Zeit",
+            "en": "the past, former times"
+          }
+        },
+        {
+          "targetText": "바닷가",
+          "baseText": {
+            "de": "Meeresküste",
+            "en": "seashore"
+          }
+        },
+        {
+          "targetText": "바로 앞",
+          "baseText": {
+            "de": "direkt davor",
+            "en": "right in front"
+          }
+        },
+        {
+          "targetText": "도시",
+          "baseText": {
+            "de": "Stadt",
+            "en": "city"
+          }
+        },
+        {
+          "targetText": "파도 소리",
+          "baseText": {
+            "de": "Rauschen der Wellen",
+            "en": "sound of the waves"
+          }
+        },
+        {
+          "targetText": "그립다",
+          "baseText": {
+            "de": "vermissen",
+            "en": "miss"
+          }
+        }
+      ],
+      "recall": {
+        "before": "저기 보이는 바닷가가 예전 집 바로 앞이었어요. 지금은 ",
+        "answer": "도시에",
+        "after": " 살아요.",
+        "fallbackChoices": [
+          "도시에",
+          "배에서",
+          "섬에서",
+          "산장에"
+        ]
+      },
+      "speakRequired": [
+        "바닷가가",
+        "예전",
+        "도시에"
+      ],
+      "sceneCaption": {
+        "de": "Eine Freundin zeigt dir ein Foto von der Küste, an der du gelebt hast. „이 사진 속 바닷가가 어디인지 기억나요?“",
+        "en": "A friend shows you a photo of the coast where you used to live. “이 사진 속 바닷가가 어디인지 기억나요?”"
+      },
+      "trophyWord": {
+        "word": "예전",
+        "meaning": {
+          "de": "frühere Zeit, früher",
+          "en": "the past, former"
+        },
+        "example": "예전 집 근처에는 작은 항구도 있었어요.",
+        "whyThisWord": {
+          "de": "Vor 집 bezeichnet 예전 dein früheres Zuhause. Mit 예전 사진 sprichst du von einem Bild aus früherer Zeit.",
+          "en": "Before 집, 예전 points to your former home. 예전 사진 refers to a photo from an earlier time."
+        }
+      },
+      "distractors": [
+        "지금 집",
+        "아주 멀었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Das Meer vor der alten Haustür",
+        "en": "The sea outside the old front door"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Friends look at an old beach photo with a row of houses by the shore."
+    },
+    {
+      "slug": "yennal-market-snacks",
+      "title": {
+        "de": "Knabbereien vom Markttag",
+        "en": "Snacks from the market"
+      },
+      "situation": {
+        "de": "Beim Blick auf eine alte Keksdose sprecht ihr über Süßigkeiten aus der Kindheit.",
+        "en": "An old biscuit tin gets you talking about childhood snacks."
+      },
+      "pedagogicalGoal": "Frühere Vorlieben mit einem heutigen Einkauf am monatlichen Markttag vergleichen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어릴 때 즐겨 먹던 간식은 뭐예요?",
+          "baseText": {
+            "de": "Was hast du als Kind besonders gern genascht?",
+            "en": "What snacks did you especially like as a child?"
+          }
+        },
+        {
+          "targetText": "어릴 때는 옛날 과자를 골고루 먹었는데 지금은 쌀과자만 찾아요.",
+          "baseText": {
+            "de": "Als Kind habe ich ganz verschiedene traditionelle Süßigkeiten gegessen. Heute greife ich nur noch zu Reiscrackern.",
+            "en": "As a child I ate all kinds of old-fashioned snacks. These days I only go for rice crackers."
+          }
+        },
+        {
+          "targetText": "한 달에 한 번 서는 장에서 사잖아요. 요즘도 자주 드세요?",
+          "baseText": {
+            "de": "Du kaufst sie doch auf dem Markt, der einmal im Monat stattfindet. Isst du sie heute noch oft?",
+            "en": "You buy them at that market that's held once a month, right? Do you still eat them often?"
+          }
+        },
+        {
+          "targetText": "전에는 날마다 먹었는데 지금은 매달 장날에만 사요.",
+          "baseText": {
+            "de": "Früher habe ich sie jeden Tag gegessen. Heute kaufe ich sie nur noch am monatlichen Markttag.",
+            "en": "I used to eat them every day. Now I only buy them on the monthly market day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었는데 … 지금은",
+        "rule": {
+          "de": "먹었는데 nennt hier die frühere Vorliebe. 지금은 lenkt den Blick auf die kleinere Auswahl von heute.",
+          "en": "먹었는데 introduces the earlier preference. 지금은 switches to the much narrower choice today."
+        },
+        "examples": [
+          {
+            "targetText": "어릴 때는 옛날 과자를 골고루 먹었는데 지금은 쌀과자만 찾아요.",
+            "baseText": {
+              "de": "Als Kind habe ich ganz verschiedene traditionelle Süßigkeiten gegessen. Heute greife ich nur noch zu Reiscrackern.",
+              "en": "As a child I ate all kinds of old-fashioned snacks. These days I only go for rice crackers."
+            },
+            "highlight": "먹었는데"
+          },
+          {
+            "targetText": "학생 때는 우유를 자주 마셨는데 지금은 물을 더 좋아해요.",
+            "baseText": {
+              "de": "Als ich zur Schule ging, habe ich oft Milch getrunken. Heute mag ich Wasser lieber.",
+              "en": "I drank milk a lot at school. Now I prefer water."
+            },
+            "highlight": "마셨는데"
+          }
+        ]
+      },
+      "cloze": [
+        "전에는 날마다 ",
+        {
+          "kind": "form",
+          "answer": "먹었는데",
+          "choices": [
+            "먹는데",
+            "먹었는데",
+            "먹을 건데",
+            "먹으려는데"
+          ],
+          "cue": "Vergangenheit im Gegensatz zum heutigen Einkauf / Past action contrasted with the current shopping habit"
+        },
+        " ",
+        {
+          "kind": "connector",
+          "answer": "지금은",
+          "choices": [
+            "내년부터는",
+            "지금은",
+            "거꾸로",
+            "예전에는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "매달",
+          "choices": [
+            "매주",
+            "매달",
+            "매일",
+            "매시간"
+          ]
+        },
+        " 장날에만 사요."
+      ],
+      "chunks": [
+        {
+          "targetText": "어릴 때는",
+          "baseText": {
+            "de": "als Kind",
+            "en": "as a child"
+          }
+        },
+        {
+          "targetText": "옛날 과자를",
+          "baseText": {
+            "de": "traditionelle Süßigkeiten",
+            "en": "old-fashioned snacks"
+          }
+        },
+        {
+          "targetText": "골고루 먹었는데",
+          "baseText": {
+            "de": "habe ich von allem etwas gegessen",
+            "en": "I ate all kinds"
+          }
+        },
+        {
+          "targetText": "지금은 쌀과자만 찾아요.",
+          "baseText": {
+            "de": "heute greife ich nur noch zu Reiscrackern",
+            "en": "now I only go for rice crackers"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "옛날",
+          "baseText": {
+            "de": "früher, alte Zeiten",
+            "en": "the old days"
+          }
+        },
+        {
+          "targetText": "과자",
+          "baseText": {
+            "de": "Knabberei, Süßigkeit",
+            "en": "snack, sweet"
+          }
+        },
+        {
+          "targetText": "골고루",
+          "baseText": {
+            "de": "von allem etwas",
+            "en": "a bit of everything"
+          }
+        },
+        {
+          "targetText": "쌀과자",
+          "baseText": {
+            "de": "Reiscracker",
+            "en": "rice cracker"
+          }
+        },
+        {
+          "targetText": "장이 서다",
+          "baseText": {
+            "de": "ein Markt findet statt",
+            "en": "a market is held"
+          }
+        },
+        {
+          "targetText": "장날",
+          "baseText": {
+            "de": "Markttag",
+            "en": "market day"
+          }
+        }
+      ],
+      "recall": {
+        "before": "어릴 때는 옛날 과자를 골고루 먹었는데 지금은 ",
+        "answer": "쌀과자만",
+        "after": " 찾아요.",
+        "fallbackChoices": [
+          "강정만",
+          "쌀과자만",
+          "약과만",
+          "사탕만"
+        ]
+      },
+      "speakRequired": [
+        "옛날",
+        "골고루",
+        "쌀과자만"
+      ],
+      "sceneCaption": {
+        "de": "Beim Blick auf eine alte Keksdose sprecht ihr über Süßigkeiten aus der Kindheit. „어릴 때 즐겨 먹던 간식은 뭐예요?“",
+        "en": "An old biscuit tin gets you talking about childhood snacks. “어릴 때 즐겨 먹던 간식은 뭐예요?”"
+      },
+      "trophyWord": {
+        "word": "옛날",
+        "meaning": {
+          "de": "früher, alte Zeiten",
+          "en": "the old days"
+        },
+        "example": "이 가게에는 옛날 과자가 아직 많아요.",
+        "whyThisWord": {
+          "de": "옛날 과자 nennt man Sorten, die man mit früher verbindet. Man kann sie auch heute noch kaufen.",
+          "en": "옛날 과자 refers to snacks associated with earlier times, even ones you can still buy today."
+        }
+      },
+      "distractors": [
+        "한 가지만",
+        "도무지 안 먹어요."
+      ],
+      "placeholderCaption": {
+        "de": "Knabbereien vom Markttag",
+        "en": "Snacks from the market"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "An old snack tin sits next to a paper bag full of rice crackers."
+    },
+    {
+      "slug": "gohyang-holiday-hikes",
+      "title": {
+        "de": "Zweimal im Jahr nach Hause",
+        "en": "Two trips home a year"
+      },
+      "situation": {
+        "de": "Du erzählst im Gespräch, wie es in deinem kleinen Heimatort war.",
+        "en": "You're telling a friend what your small hometown was like."
+      },
+      "pedagogicalGoal": "Eine frühere Freizeitbeschäftigung von der heutigen Besuchshäufigkeit unterscheiden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어릴 때 살던 동네는 어땠어요?",
+          "baseText": {
+            "de": "Wie war der Ort, in dem du als Kind gelebt hast?",
+            "en": "What was the place where you lived as a child like?"
+          }
+        },
+        {
+          "targetText": "제 고향 마을은 작았어요. 그때는 친구들과 자주 산에 올랐어요.",
+          "baseText": {
+            "de": "Mein Heimatdorf war klein. Damals bin ich mit Freunden oft in die Berge gegangen.",
+            "en": "My hometown was a small village. I often went hiking with friends back then."
+          }
+        },
+        {
+          "targetText": "설하고 추석에만 간다면서요. 그 밖에는 안 내려가요?",
+          "baseText": {
+            "de": "Du fährst ja nur zu Seollal und Chuseok hin. Sonst fährst du gar nicht nach Hause?",
+            "en": "You said you only go back for Seollal and Chuseok. Don't you go at other times?"
+          }
+        },
+        {
+          "targetText": "그때는 등산도 즐겼지만 요즘은 일 년에 두 번만 내려가요.",
+          "baseText": {
+            "de": "Damals bin ich dort auch gern gewandert. Heute fahre ich nur noch zweimal im Jahr nach Hause.",
+            "en": "I enjoyed hiking there back then too. Now I go back home only twice a year."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "그때는 … -았/었어요",
+        "rule": {
+          "de": "작았어요 beschreibt, wie der Ort damals war. 올랐어요 berichtet, was du dort gemacht hast.",
+          "en": "작았어요 describes what the place was like then. 올랐어요 tells what you did there."
+        },
+        "examples": [
+          {
+            "targetText": "제 고향 마을은 작았어요. 그때는 친구들과 자주 산에 올랐어요.",
+            "baseText": {
+              "de": "Mein Heimatdorf war klein. Damals bin ich mit Freunden oft in die Berge gegangen.",
+              "en": "My hometown was a small village. I often went hiking with friends back then."
+            },
+            "highlight": "자주 산에 올랐어요"
+          },
+          {
+            "targetText": "그때는 집 근처 강에서 놀았어요.",
+            "baseText": {
+              "de": "Damals habe ich am Fluss bei uns zu Hause gespielt.",
+              "en": "Back then I played by the river near our house."
+            },
+            "highlight": "강에서 놀았어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그때는",
+          "choices": [
+            "다음 명절에는",
+            "앞으로는",
+            "그때는",
+            "내년부터는"
+          ]
+        },
+        " 등산도 ",
+        {
+          "kind": "form",
+          "answer": "즐겼지만",
+          "choices": [
+            "즐겼지만",
+            "즐길까 봐",
+            "즐기려고",
+            "즐길 예정이지만"
+          ],
+          "cue": "Eine vergangene Tätigkeit der heutigen Situation gegenüberstellen / Contrasting a past activity with the situation today"
+        },
+        " 요즘은 일 년에 ",
+        {
+          "kind": "choice",
+          "answer": "두 번만",
+          "choices": [
+            "한 번만",
+            "열 번씩",
+            "스무 번씩",
+            "두 번만"
+          ]
+        },
+        " 내려가요."
+      ],
+      "chunks": [
+        {
+          "targetText": "제 고향 마을은",
+          "baseText": {
+            "de": "mein Heimatdorf",
+            "en": "my hometown"
+          }
+        },
+        {
+          "targetText": "작았어요. 그때는",
+          "baseText": {
+            "de": "war klein. Damals",
+            "en": "was small. Back then"
+          }
+        },
+        {
+          "targetText": "친구들과 자주",
+          "baseText": {
+            "de": "mit Freunden oft",
+            "en": "often with friends"
+          }
+        },
+        {
+          "targetText": "산에 올랐어요.",
+          "baseText": {
+            "de": "bin ich in die Berge gegangen",
+            "en": "I went up into the hills"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "고향",
+          "baseText": {
+            "de": "Heimatort",
+            "en": "hometown"
+          }
+        },
+        {
+          "targetText": "마을",
+          "baseText": {
+            "de": "Dorf",
+            "en": "village"
+          }
+        },
+        {
+          "targetText": "산에 오르다",
+          "baseText": {
+            "de": "in die Berge steigen",
+            "en": "hike up a mountain"
+          }
+        },
+        {
+          "targetText": "설",
+          "baseText": {
+            "de": "koreanisches Neujahrsfest",
+            "en": "Lunar New Year"
+          }
+        },
+        {
+          "targetText": "추석",
+          "baseText": {
+            "de": "koreanisches Erntedankfest",
+            "en": "Chuseok harvest festival"
+          }
+        },
+        {
+          "targetText": "내려가다",
+          "baseText": {
+            "de": "in den Heimatort fahren",
+            "en": "go back to one's hometown"
+          }
+        }
+      ],
+      "recall": {
+        "before": "제 고향 마을은 작았어요. 그때는 친구들과 자주 ",
+        "answer": "산에",
+        "after": " 올랐어요.",
+        "fallbackChoices": [
+          "배에",
+          "말에",
+          "기차에",
+          "산에"
+        ]
+      },
+      "speakRequired": [
+        "고향",
+        "친구들과",
+        "올랐어요"
+      ],
+      "sceneCaption": {
+        "de": "Du erzählst im Gespräch, wie es in deinem kleinen Heimatort war. „어릴 때 살던 동네는 어땠어요?“",
+        "en": "You're telling a friend what your small hometown was like. “어릴 때 살던 동네는 어땠어요?”"
+      },
+      "trophyWord": {
+        "word": "고향",
+        "meaning": {
+          "de": "Heimatort",
+          "en": "hometown"
+        },
+        "example": "고향 마을에는 지금도 친구들이 살아요.",
+        "whyThisWord": {
+          "de": "고향 마을 ist das Dorf, aus dem du kommst. Du kannst von ihm sprechen, auch wenn du inzwischen anderswo lebst.",
+          "en": "고향 마을 is the village you come from, even if you live somewhere else now."
+        }
+      },
+      "distractors": [
+        "대도시 한복판은",
+        "혼자 실내에서"
+      ],
+      "placeholderCaption": {
+        "de": "Zweimal im Jahr nach Hause",
+        "en": "Two trips home a year"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two friends trace a mountain trail on an old map of a village."
+    },
+    {
+      "slug": "chueok-afterschool-football",
+      "title": {
+        "de": "Nach dem Unterricht auf den Platz",
+        "en": "On the field after class"
+      },
+      "situation": {
+        "de": "Ein altes Mannschaftsfoto weckt Erinnerungen an die Schulzeit.",
+        "en": "An old team photo brings back memories of school."
+      },
+      "pedagogicalGoal": "Eine wiederkehrende Handlung aus der Schulzeit schildern und erklären, warum heute eine Pause nötig ist.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "학교 다닐 때 뭐가 제일 기억나요?",
+          "baseText": {
+            "de": "Was ist dir aus deiner Schulzeit am besten in Erinnerung geblieben?",
+            "en": "What do you remember most about your school days?"
+          }
+        },
+        {
+          "targetText": "학교 추억 중에는 축구가 먼저 떠올라요. 방과 후마다 공을 차곤 했어요.",
+          "baseText": {
+            "de": "Wenn ich an die Schule denke, fällt mir zuerst Fußball ein. Nach dem Unterricht haben wir immer gekickt.",
+            "en": "Soccer is the first thing I think of from school. We used to kick a ball around after class every day."
+          }
+        },
+        {
+          "targetText": "그렇게 공을 좋아하셨는데 요즘도 운동장에 나가세요?",
+          "baseText": {
+            "de": "Du hast so gern Fußball gespielt. Gehst du heute noch auf den Platz?",
+            "en": "You loved playing ball. Do you still head out to the field?"
+          }
+        },
+        {
+          "targetText": "지금은 무릎이 아파서 쉬지만 전에는 방과 후마다 차곤 했어요.",
+          "baseText": {
+            "de": "Im Moment pausiere ich wegen meines Knies. Früher habe ich nach jedem Schultag gespielt.",
+            "en": "I'm taking a break now because my knee hurts, but I used to play after school every day."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-곤 했어요",
+        "rule": {
+          "de": "차곤 했어요 sagt, dass das Fußballspielen zur Gewohnheit wurde. 방과 후마다 benennt die wiederkehrende Gelegenheit.",
+          "en": "차곤 했어요 presents playing soccer as a repeated habit. 방과 후마다 says when the opportunity came around."
+        },
+        "examples": [
+          {
+            "targetText": "학교 추억 중에는 축구가 먼저 떠올라요. 방과 후마다 공을 차곤 했어요.",
+            "baseText": {
+              "de": "Wenn ich an die Schule denke, fällt mir zuerst Fußball ein. Nach dem Unterricht haben wir immer gekickt.",
+              "en": "Soccer is the first thing I think of from school. We used to kick a ball around after class every day."
+            },
+            "highlight": "차곤 했어요"
+          },
+          {
+            "targetText": "점심시간에는 친구들과 계단에 모이곤 했어요.",
+            "baseText": {
+              "de": "In der Mittagspause haben wir uns oft auf der Treppe getroffen.",
+              "en": "My friends and I used to gather on the steps at lunchtime."
+            },
+            "highlight": "모이곤 했어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "지금은",
+          "choices": [
+            "내년부터는",
+            "가령",
+            "지금은",
+            "어릴 때는"
+          ]
+        },
+        " 무릎이 아파서 쉬지만 전에는 ",
+        {
+          "kind": "choice",
+          "answer": "방과 후마다",
+          "choices": [
+            "방과 후마다",
+            "방학에만",
+            "명절에만",
+            "학기 말에만"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "차곤 했어요",
+          "choices": [
+            "찰 예정이에요",
+            "차 볼까요",
+            "차지 않을게요",
+            "차곤 했어요"
+          ],
+          "cue": "Eine immer wieder ausgeübte Tätigkeit in der Vergangenheit / An activity repeated in the past"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "학교 추억 중에는",
+          "baseText": {
+            "de": "von meinen Erinnerungen an die Schule",
+            "en": "of my school memories"
+          }
+        },
+        {
+          "targetText": "축구가 먼저",
+          "baseText": {
+            "de": "Fußball zuerst",
+            "en": "soccer first"
+          }
+        },
+        {
+          "targetText": "떠올라요. 방과 후마다",
+          "baseText": {
+            "de": "fällt mir ein. Immer nach dem Unterricht",
+            "en": "comes to mind. After school every day"
+          }
+        },
+        {
+          "targetText": "공을 차곤 했어요.",
+          "baseText": {
+            "de": "habe ich Fußball gespielt",
+            "en": "I used to kick a ball around"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "추억",
+          "baseText": {
+            "de": "Erinnerung",
+            "en": "memory"
+          }
+        },
+        {
+          "targetText": "떠오르다",
+          "baseText": {
+            "de": "in den Sinn kommen",
+            "en": "come to mind"
+          }
+        },
+        {
+          "targetText": "방과 후",
+          "baseText": {
+            "de": "nach der Schule",
+            "en": "after school"
+          }
+        },
+        {
+          "targetText": "공을 차다",
+          "baseText": {
+            "de": "Fußball spielen, einen Ball treten",
+            "en": "kick a ball"
+          }
+        },
+        {
+          "targetText": "운동장",
+          "baseText": {
+            "de": "Sportplatz",
+            "en": "playing field"
+          }
+        },
+        {
+          "targetText": "무릎",
+          "baseText": {
+            "de": "Knie",
+            "en": "knee"
+          }
+        }
+      ],
+      "recall": {
+        "before": "학교 추억 중에는 ",
+        "answer": "축구가",
+        "after": " 먼저 떠올라요. 방과 후마다 공을 차곤 했어요.",
+        "fallbackChoices": [
+          "축구가",
+          "수영이",
+          "독서가",
+          "피아노가"
+        ]
+      },
+      "speakRequired": [
+        "추억",
+        "방과",
+        "차곤"
+      ],
+      "sceneCaption": {
+        "de": "Ein altes Mannschaftsfoto weckt Erinnerungen an die Schulzeit. „학교 다닐 때 뭐가 제일 기억나요?“",
+        "en": "An old team photo brings back memories of school. “학교 다닐 때 뭐가 제일 기억나요?”"
+      },
+      "trophyWord": {
+        "word": "추억",
+        "meaning": {
+          "de": "Erinnerung an Erlebtes",
+          "en": "memory, recollection"
+        },
+        "example": "학교 추억 이야기를 하면 시간이 금방 가요.",
+        "whyThisWord": {
+          "de": "학교 추억 lenkt das Gespräch auf persönliche Erinnerungen an die Schulzeit, etwa ein Spiel nach dem Unterricht.",
+          "en": "학교 추억 brings up personal memories of school, such as an after-school game."
+        }
+      },
+      "distractors": [
+        "시험 때만",
+        "수영을 배우곤 했어요."
+      ],
+      "placeholderCaption": {
+        "de": "Nach dem Unterricht auf den Platz",
+        "en": "On the field after class"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Friends point to an old team photo with a worn football beside it."
+    },
+    {
+      "slug": "gakkeum-birthday-soup",
+      "title": {
+        "de": "Die Geburtstagssuppe selbst kochen",
+        "en": "Making the birthday soup yourself"
+      },
+      "situation": {
+        "de": "Beim Austausch über Familienrezepte erzählst du von der Küche deiner Mutter.",
+        "en": "While sharing family recipes, you remember your mother's cooking."
+      },
+      "pedagogicalGoal": "Eine frühere Gewohnheit der Mutter von der heutigen eigenen Rolle beim Kochen unterscheiden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "집에서 국도 직접 끓여 드세요?",
+          "baseText": {
+            "de": "Kochst du dir zu Hause auch selbst Suppe?",
+            "en": "Do you make your own soup at home too?"
+          }
+        },
+        {
+          "targetText": "전에는 어머니가 끓여 주시곤 했는데 이제는 제가 가끔 국을 끓여요.",
+          "baseText": {
+            "de": "Früher hat meine Mutter mir oft Suppe gekocht. Heute mache ich mir manchmal selbst welche.",
+            "en": "My mother used to make soup for me. Now I sometimes make it myself."
+          }
+        },
+        {
+          "targetText": "생일마다 어머니가 끓여 주신 국은 지금도 만드세요?",
+          "baseText": {
+            "de": "Kochst du die Suppe noch, die deine Mutter dir an jedem Geburtstag gemacht hat?",
+            "en": "Do you still make the soup your mother used to cook for every birthday?"
+          }
+        },
+        {
+          "targetText": "그때는 생일마다 미역국을 먹곤 했는데 이제는 제가 끓여요.",
+          "baseText": {
+            "de": "Damals habe ich an jedem Geburtstag Algensuppe gegessen. Heute koche ich sie selbst.",
+            "en": "I used to eat seaweed soup every birthday. Now I cook it myself."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-곤 했는데",
+        "rule": {
+          "de": "주시곤 했는데 erzählt von dem, was deine Mutter immer wieder für dich getan hat. 이제는 제가 wechselt zu dir als der Person, die heute kocht.",
+          "en": "주시곤 했는데 recalls something your mother repeatedly did for you. 이제는 제가 makes you the person doing the cooking now."
+        },
+        "examples": [
+          {
+            "targetText": "전에는 어머니가 끓여 주시곤 했는데 이제는 제가 가끔 국을 끓여요.",
+            "baseText": {
+              "de": "Früher hat meine Mutter mir oft Suppe gekocht. Heute mache ich mir manchmal selbst welche.",
+              "en": "My mother used to make soup for me. Now I sometimes make it myself."
+            },
+            "highlight": "주시곤 했는데"
+          },
+          {
+            "targetText": "동생에게 간식을 사 주곤 했는데 이제는 같이 만들어요.",
+            "baseText": {
+              "de": "Früher habe ich meinem jüngeren Geschwisterkind oft etwas zum Naschen gekauft. Heute machen wir es zusammen.",
+              "en": "I used to buy snacks for my younger sibling. Now we make them together."
+            },
+            "highlight": "주곤 했는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그때는",
+          "choices": [
+            "내일부터는",
+            "그때는",
+            "거꾸로",
+            "이제는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "생일마다",
+          "choices": [
+            "월요일마다",
+            "장날마다",
+            "시험마다",
+            "생일마다"
+          ]
+        },
+        " 미역국을 ",
+        {
+          "kind": "form",
+          "answer": "먹곤 했는데",
+          "choices": [
+            "먹을까 하는데",
+            "먹을 예정인데",
+            "먹곤 했는데",
+            "먹기로 하는데"
+          ],
+          "cue": "Frühere Gewohnheit vor dem Wechsel der handelnden Person / A past habit before a change in who does the action"
+        },
+        " 이제는 제가 끓여요."
+      ],
+      "chunks": [
+        {
+          "targetText": "전에는 어머니가",
+          "baseText": {
+            "de": "früher meine Mutter",
+            "en": "my mother used to"
+          }
+        },
+        {
+          "targetText": "끓여 주시곤 했는데",
+          "baseText": {
+            "de": "hat sie mir oft gekocht",
+            "en": "make it for me"
+          }
+        },
+        {
+          "targetText": "이제는 제가 가끔",
+          "baseText": {
+            "de": "heute manchmal ich selbst",
+            "en": "now I sometimes"
+          }
+        },
+        {
+          "targetText": "국을 끓여요.",
+          "baseText": {
+            "de": "koche die Suppe",
+            "en": "make soup"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "가끔",
+          "baseText": {
+            "de": "manchmal",
+            "en": "sometimes"
+          }
+        },
+        {
+          "targetText": "어머니",
+          "baseText": {
+            "de": "Mutter",
+            "en": "mother"
+          }
+        },
+        {
+          "targetText": "국을 끓이다",
+          "baseText": {
+            "de": "Suppe kochen",
+            "en": "make soup"
+          }
+        },
+        {
+          "targetText": "생일",
+          "baseText": {
+            "de": "Geburtstag",
+            "en": "birthday"
+          }
+        },
+        {
+          "targetText": "미역국",
+          "baseText": {
+            "de": "Algensuppe",
+            "en": "seaweed soup"
+          }
+        },
+        {
+          "targetText": "직접",
+          "baseText": {
+            "de": "selbst",
+            "en": "oneself"
+          }
+        }
+      ],
+      "recall": {
+        "before": "전에는 ",
+        "answer": "어머니가",
+        "after": " 끓여 주시곤 했는데 이제는 제가 가끔 국을 끓여요.",
+        "fallbackChoices": [
+          "기사님이",
+          "직원분이",
+          "어머니가",
+          "선생님이"
+        ]
+      },
+      "speakRequired": [
+        "어머니가",
+        "가끔",
+        "끓여요"
+      ],
+      "sceneCaption": {
+        "de": "Beim Austausch über Familienrezepte erzählst du von der Küche deiner Mutter. „집에서 국도 직접 끓여 드세요?“",
+        "en": "While sharing family recipes, you remember your mother's cooking. “집에서 국도 직접 끓여 드세요?”"
+      },
+      "trophyWord": {
+        "word": "가끔",
+        "meaning": {
+          "de": "manchmal, gelegentlich",
+          "en": "sometimes, occasionally"
+        },
+        "example": "요즘은 가끔 친구 몫도 같이 끓여요.",
+        "whyThisWord": {
+          "de": "가끔 lässt offen, wie oft genau du kochst. Mit 생일마다 legst du dagegen einen festen Anlass fest.",
+          "en": "가끔 leaves the exact frequency open. 생일마다 ties the action to a specific repeated occasion."
+        }
+      },
+      "distractors": [
+        "친구가 매일",
+        "이미 다 먹었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Die Geburtstagssuppe selbst kochen",
+        "en": "Making the birthday soup yourself"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Seaweed soup simmers beside a handwritten family recipe."
+    },
+    {
+      "slug": "jaju-reading-on-the-bus",
+      "title": {
+        "de": "Früher war die Fahrt Lesezeit",
+        "en": "When the bus ride was reading time"
+      },
+      "situation": {
+        "de": "Ein Freund erinnert sich daran, dass du im Bus immer ein Buch dabeihattest.",
+        "en": "A friend remembers that you always had a book with you on the bus."
+      },
+      "pedagogicalGoal": "Eine verschwundene Lesegewohnheit schildern und die Änderung mit dem heutigen Arbeitsweg begründen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "요즘도 가방에 책 한 권씩 넣고 다니세요?",
+          "baseText": {
+            "de": "Hast du heutzutage noch immer ein Buch in der Tasche?",
+            "en": "Do you still carry a book in your bag these days?"
+          }
+        },
+        {
+          "targetText": "버스에서 책을 자주 읽곤 했는데 요즘은 거의 못 읽어요.",
+          "baseText": {
+            "de": "Früher habe ich im Bus oft gelesen. Heute komme ich kaum noch dazu.",
+            "en": "I used to read a lot on the bus, but I hardly get to read these days."
+          }
+        },
+        {
+          "targetText": "출근길마다 책을 펴셨는데 요즘은 왜 못 읽으세요?",
+          "baseText": {
+            "de": "Früher hast du auf jedem Arbeitsweg ein Buch aufgeschlagen. Warum geht das heute nicht mehr?",
+            "en": "You used to open a book on every trip to work. Why can't you read these days?"
+          }
+        },
+        {
+          "targetText": "지금은 운전해서 못 읽지만 전에는 출근길마다 읽곤 했어요.",
+          "baseText": {
+            "de": "Jetzt fahre ich selbst und kann dabei nicht lesen. Früher habe ich auf jedem Weg zur Arbeit gelesen.",
+            "en": "I'm driving now, so I can't read. I used to read on every trip to work."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-곤 했는데",
+        "rule": {
+          "de": "읽곤 했는데 führt eine frühere Gewohnheit ein. 못 읽어요 sagt hier, dass die Gelegenheit dazu fehlt.",
+          "en": "읽곤 했는데 introduces an old habit. 못 읽어요 says the speaker now lacks the opportunity."
+        },
+        "examples": [
+          {
+            "targetText": "버스에서 책을 자주 읽곤 했는데 요즘은 거의 못 읽어요.",
+            "baseText": {
+              "de": "Früher habe ich im Bus oft gelesen. Heute komme ich kaum noch dazu.",
+              "en": "I used to read a lot on the bus, but I hardly get to read these days."
+            },
+            "highlight": "읽곤 했는데"
+          },
+          {
+            "targetText": "설거지할 때 라디오를 듣곤 했는데 요즘은 가족과 이야기해요.",
+            "baseText": {
+              "de": "Früher habe ich beim Abwasch oft Radio gehört. Heute unterhalte ich mich dabei mit meiner Familie.",
+              "en": "I used to listen to the radio while doing dishes. Now I talk with my family instead."
+            },
+            "highlight": "듣곤 했는데"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "지금은",
+          "choices": [
+            "지금은",
+            "거꾸로",
+            "예전에는",
+            "내년에는"
+          ]
+        },
+        " 운전해서 못 읽지만 전에는 ",
+        {
+          "kind": "choice",
+          "answer": "출근길마다",
+          "choices": [
+            "명절에만",
+            "방학에만",
+            "출근길마다",
+            "퇴근길에만"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "읽곤 했어요",
+          "choices": [
+            "읽을까 해요",
+            "읽곤 했어요",
+            "읽을게요",
+            "읽으러 가요"
+          ],
+          "cue": "Frühere regelmäßige Tätigkeit / Repeated activity in the past"
+        },
+        "."
+      ],
+      "chunks": [
+        {
+          "targetText": "버스에서 책을",
+          "baseText": {
+            "de": "im Bus Bücher",
+            "en": "books on the bus"
+          }
+        },
+        {
+          "targetText": "자주 읽곤 했는데",
+          "baseText": {
+            "de": "habe ich früher oft gelesen",
+            "en": "I used to read often"
+          }
+        },
+        {
+          "targetText": "요즘은",
+          "baseText": {
+            "de": "heutzutage",
+            "en": "these days"
+          }
+        },
+        {
+          "targetText": "거의 못 읽어요.",
+          "baseText": {
+            "de": "komme ich kaum zum Lesen",
+            "en": "I hardly get to read"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "자주",
+          "baseText": {
+            "de": "oft",
+            "en": "often"
+          }
+        },
+        {
+          "targetText": "한 권",
+          "baseText": {
+            "de": "ein Buch, ein Band",
+            "en": "one volume"
+          }
+        },
+        {
+          "targetText": "책을 펴다",
+          "baseText": {
+            "de": "ein Buch aufschlagen",
+            "en": "open a book"
+          }
+        },
+        {
+          "targetText": "출근길",
+          "baseText": {
+            "de": "Weg zur Arbeit",
+            "en": "journey to work"
+          }
+        },
+        {
+          "targetText": "운전하다",
+          "baseText": {
+            "de": "selbst fahren",
+            "en": "drive"
+          }
+        },
+        {
+          "targetText": "거의 못 읽다",
+          "baseText": {
+            "de": "kaum zum Lesen kommen",
+            "en": "hardly get to read"
+          }
+        }
+      ],
+      "recall": {
+        "before": "",
+        "answer": "버스에서",
+        "after": " 책을 자주 읽곤 했는데 요즘은 거의 못 읽어요.",
+        "fallbackChoices": [
+          "책방에서",
+          "집에서",
+          "교실에서",
+          "버스에서"
+        ]
+      },
+      "speakRequired": [
+        "버스에서",
+        "자주",
+        "읽곤"
+      ],
+      "sceneCaption": {
+        "de": "Ein Freund erinnert sich daran, dass du im Bus immer ein Buch dabeihattest. „요즘도 가방에 책 한 권씩 넣고 다니세요?“",
+        "en": "A friend remembers that you always had a book with you on the bus. “요즘도 가방에 책 한 권씩 넣고 다니세요?”"
+      },
+      "trophyWord": {
+        "word": "자주",
+        "meaning": {
+          "de": "oft, häufig",
+          "en": "often"
+        },
+        "example": "그때는 자주 도서관에 들렀어요.",
+        "whyThisWord": {
+          "de": "자주 bezeichnet eine hohe, aber unbestimmte Häufigkeit. 출근길마다 macht die Gelegenheiten genauer greifbar.",
+          "en": "자주 describes a high but unspecified frequency. 출근길마다 identifies the specific repeated occasion."
+        }
+      },
+      "distractors": [
+        "요즘에야 비로소",
+        "거의 안 탔어요."
+      ],
+      "placeholderCaption": {
+        "de": "Früher war die Fahrt Lesezeit",
+        "en": "When the bus ride was reading time"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A book rests beside a car key while a bus passes outside."
+    },
+    {
+      "slug": "geoui-evening-news",
+      "title": {
+        "de": "Vom ausgeschalteten Fernseher zu den Nachrichten",
+        "en": "From hardly watching to the evening news"
+      },
+      "situation": {
+        "de": "Ihr vergleicht eure Abende vor und nach deinem Umzug.",
+        "en": "You're comparing your evenings before and after you moved."
+      },
+      "pedagogicalGoal": "Mit doppelter Vergangenheitsform eine ältere, inzwischen abgelöste Fernsehgewohnheit einordnen.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "이사 오기 전에도 텔레비전을 즐겨 보셨어요?",
+          "baseText": {
+            "de": "Hast du schon vor dem Umzug gern ferngesehen?",
+            "en": "Did you enjoy watching TV even before the move?"
+          }
+        },
+        {
+          "targetText": "이사 오기 전에는 집에서 텔레비전을 거의 안 봤었어요.",
+          "baseText": {
+            "de": "Bevor ich hierhergezogen bin, habe ich zu Hause fast nie ferngesehen.",
+            "en": "Before I moved here, I hardly ever watched TV at home."
+          }
+        },
+        {
+          "targetText": "이제는 매일 저녁 보신다고 했는데 무슨 방송을 보세요?",
+          "baseText": {
+            "de": "Jetzt schaust du ja jeden Abend. Was für eine Sendung siehst du dir an?",
+            "en": "You said you watch every evening now. What do you watch?"
+          }
+        },
+        {
+          "targetText": "그때는 거의 안 봤었는데 요즘은 저녁마다 뉴스를 챙겨 봐요.",
+          "baseText": {
+            "de": "Damals habe ich fast nie ferngesehen. Heute schaue ich jeden Abend die Nachrichten.",
+            "en": "I hardly ever watched back then. Now I make a point of watching the news every evening."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었었어요",
+        "rule": {
+          "de": "안 봤었어요 blickt auf die Zeit vor dem Umzug zurück. Die heutige Gewohnheit ist eine andere. Das doppelte Vergangenheitszeichen passt zu diesem Bruch.",
+          "en": "안 봤었어요 looks back at life before the move. The habit has changed, which is why the doubled past ending fits here."
+        },
+        "examples": [
+          {
+            "targetText": "이사 오기 전에는 집에서 텔레비전을 거의 안 봤었어요.",
+            "baseText": {
+              "de": "Bevor ich hierhergezogen bin, habe ich zu Hause fast nie ferngesehen.",
+              "en": "Before I moved here, I hardly ever watched TV at home."
+            },
+            "highlight": "안 봤었어요"
+          },
+          {
+            "targetText": "고치기 전에는 이 방이 꽤 좁았었어요.",
+            "baseText": {
+              "de": "Vor dem Umbau war dieses Zimmer ziemlich eng.",
+              "en": "This room used to be quite cramped before the renovation."
+            },
+            "highlight": "좁았었어요"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그때는",
+          "choices": [
+            "그때는",
+            "내일부터는",
+            "첫째",
+            "이제는"
+          ]
+        },
+        " 거의 ",
+        {
+          "kind": "form",
+          "answer": "안 봤었는데",
+          "choices": [
+            "안 볼 텐데",
+            "안 보려고",
+            "안 봤었는데",
+            "안 보러 가서"
+          ],
+          "cue": "Vergangene Gewohnheit, die heute anders ist / A past habit that has since changed"
+        },
+        " 요즘은 ",
+        {
+          "kind": "choice",
+          "answer": "저녁마다",
+          "choices": [
+            "새벽에만",
+            "저녁마다",
+            "점심마다",
+            "주말에만"
+          ]
+        },
+        " 뉴스를 챙겨 봐요."
+      ],
+      "chunks": [
+        {
+          "targetText": "이사 오기 전에는",
+          "baseText": {
+            "de": "vor meinem Umzug hierher",
+            "en": "before I moved here"
+          }
+        },
+        {
+          "targetText": "집에서",
+          "baseText": {
+            "de": "zu Hause",
+            "en": "at home"
+          }
+        },
+        {
+          "targetText": "텔레비전을",
+          "baseText": {
+            "de": "Fernsehen",
+            "en": "TV"
+          }
+        },
+        {
+          "targetText": "거의 안 봤었어요.",
+          "baseText": {
+            "de": "habe ich fast nie geschaut",
+            "en": "I hardly ever watched"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "거의",
+          "baseText": {
+            "de": "fast, nahezu",
+            "en": "almost, hardly with a negative"
+          }
+        },
+        {
+          "targetText": "이사 오다",
+          "baseText": {
+            "de": "hierherziehen",
+            "en": "move here"
+          }
+        },
+        {
+          "targetText": "텔레비전",
+          "baseText": {
+            "de": "Fernseher, Fernsehen",
+            "en": "television"
+          }
+        },
+        {
+          "targetText": "방송",
+          "baseText": {
+            "de": "Sendung",
+            "en": "broadcast"
+          }
+        },
+        {
+          "targetText": "뉴스",
+          "baseText": {
+            "de": "Nachrichten",
+            "en": "news"
+          }
+        },
+        {
+          "targetText": "챙겨 보다",
+          "baseText": {
+            "de": "sich eine Sendung bewusst ansehen",
+            "en": "make a point of watching"
+          }
+        }
+      ],
+      "recall": {
+        "before": "이사 오기 전에는 집에서 ",
+        "answer": "텔레비전을",
+        "after": " 거의 안 봤었어요.",
+        "fallbackChoices": [
+          "신문을",
+          "텔레비전을",
+          "소설을",
+          "서류를"
+        ]
+      },
+      "speakRequired": [
+        "오기",
+        "텔레비전을",
+        "봤었어요"
+      ],
+      "sceneCaption": {
+        "de": "Ihr vergleicht eure Abende vor und nach deinem Umzug. „이사 오기 전에도 텔레비전을 즐겨 보셨어요?“",
+        "en": "You're comparing your evenings before and after you moved. “이사 오기 전에도 텔레비전을 즐겨 보셨어요?”"
+      },
+      "trophyWord": {
+        "word": "거의",
+        "meaning": {
+          "de": "fast, nahezu",
+          "en": "almost, nearly"
+        },
+        "example": "예전에는 저녁 뉴스도 거의 안 봤어요.",
+        "whyThisWord": {
+          "de": "거의 vor einer Verneinung wie 안 봤어요 bedeutet, dass etwas fast nie geschah. Es lässt seltene Ausnahmen zu.",
+          "en": "거의 with a negative such as 안 봤어요 means something almost never happened, leaving room for rare exceptions."
+        }
+      },
+      "distractors": [
+        "아침마다 꼭",
+        "늘 챙겨 봤어요."
+      ],
+      "placeholderCaption": {
+        "de": "Vom ausgeschalteten Fernseher zu den Nachrichten",
+        "en": "From hardly watching to the evening news"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Two friends talk in a living room as the evening news comes on."
+    },
+    {
+      "slug": "choegeun-weekend-hikes",
+      "title": {
+        "de": "Seit einem Monat in der Wandergruppe",
+        "en": "A month with the hiking group"
+      },
+      "situation": {
+        "de": "Am Wochenende triffst du jemanden aus deiner Nachbarschaft mit Wanderschuhen vor dem Haus.",
+        "en": "A neighbor catches you outside with your hiking boots on at the weekend."
+      },
+      "pedagogicalGoal": "Die Dauer einer neuen Gewohnheit nennen und eine frühere Wochenendarbeit als inzwischen beendeten Zustand schildern.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "주말에는 요즘 주로 뭐 하세요?",
+          "baseText": {
+            "de": "Was machst du zurzeit meistens am Wochenende?",
+            "en": "What do you usually do on weekends these days?"
+          }
+        },
+        {
+          "targetText": "최근 시작한 등산 모임에 매주 나간 지 한 달쯤 됐어요.",
+          "baseText": {
+            "de": "Seit rund einem Monat gehe ich jede Woche bei einer neuen Wandergruppe mit.",
+            "en": "I've been going along to a new hiking group every week for about a month."
+          }
+        },
+        {
+          "targetText": "전에는 토요일마다 일하셨잖아요. 어떻게 매번 가실 수 있어요?",
+          "baseText": {
+            "de": "Früher hast du doch jeden Samstag gearbeitet. Wie schaffst du es, jedes Mal mitzugehen?",
+            "en": "You used to work every Saturday. How do you manage to go every time?"
+          }
+        },
+        {
+          "targetText": "그때는 매주 토요일에 일했었는데 이제는 토요일이 쉬는 날이에요.",
+          "baseText": {
+            "de": "Damals habe ich jeden Samstag gearbeitet, aber inzwischen ist der Samstag mein freier Tag.",
+            "en": "I used to work every Saturday back then, but now Saturday is my day off."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-(으)ㄴ 지 … 됐어요",
+        "rule": {
+          "de": "나간 지 한 달쯤 됐어요 misst die Zeit seit dem Einstieg in die Gruppe. 매주 verdeutlicht, dass es um regelmäßige Teilnahme geht.",
+          "en": "나간 지 한 달쯤 됐어요 measures the time since joining in. 매주 makes it clear that the attendance is ongoing."
+        },
+        "examples": [
+          {
+            "targetText": "최근 시작한 등산 모임에 매주 나간 지 한 달쯤 됐어요.",
+            "baseText": {
+              "de": "Seit rund einem Monat gehe ich jede Woche bei einer neuen Wandergruppe mit.",
+              "en": "I've been going along to a new hiking group every week for about a month."
+            },
+            "highlight": "나간 지 한 달쯤 됐어요"
+          },
+          {
+            "targetText": "수영을 배운 지 반년 됐어요.",
+            "baseText": {
+              "de": "Ich lerne seit einem halben Jahr schwimmen.",
+              "en": "I've been learning to swim for half a year."
+            },
+            "highlight": "배운 지 반년"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그때는",
+          "choices": [
+            "다음 달부터는",
+            "요즘은",
+            "내년부터는",
+            "그때는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "매주",
+          "choices": [
+            "격주로만",
+            "매주",
+            "한 달에 한 번",
+            "한 번만"
+          ]
+        },
+        " 토요일에 ",
+        {
+          "kind": "form",
+          "answer": "일했었는데",
+          "choices": [
+            "일했었는데",
+            "일할 예정인데",
+            "일할까 하는데",
+            "일하러 가려고"
+          ],
+          "cue": "Ein früherer, inzwischen beendeter regelmäßiger Zustand / A former regular situation that no longer holds"
+        },
+        " 이제는 토요일이 쉬는 날이에요."
+      ],
+      "chunks": [
+        {
+          "targetText": "최근 시작한",
+          "baseText": {
+            "de": "vor Kurzem gegründet",
+            "en": "recently started"
+          }
+        },
+        {
+          "targetText": "등산 모임에",
+          "baseText": {
+            "de": "bei der Wandergruppe",
+            "en": "with the hiking group"
+          }
+        },
+        {
+          "targetText": "매주 나간 지",
+          "baseText": {
+            "de": "seit ich jede Woche mitgehe",
+            "en": "since I started going every week"
+          }
+        },
+        {
+          "targetText": "한 달쯤 됐어요.",
+          "baseText": {
+            "de": "seit ungefähr einem Monat",
+            "en": "it's been about a month"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "최근",
+          "baseText": {
+            "de": "in letzter Zeit, neulich",
+            "en": "recently"
+          }
+        },
+        {
+          "targetText": "등산 모임",
+          "baseText": {
+            "de": "Wandergruppe",
+            "en": "hiking group"
+          }
+        },
+        {
+          "targetText": "매주",
+          "baseText": {
+            "de": "jede Woche",
+            "en": "every week"
+          }
+        },
+        {
+          "targetText": "한 달쯤",
+          "baseText": {
+            "de": "ungefähr ein Monat",
+            "en": "about a month"
+          }
+        },
+        {
+          "targetText": "토요일마다",
+          "baseText": {
+            "de": "jeden Samstag",
+            "en": "every Saturday"
+          }
+        },
+        {
+          "targetText": "쉬는 날",
+          "baseText": {
+            "de": "arbeitsfreier Tag",
+            "en": "day off"
+          }
+        }
+      ],
+      "recall": {
+        "before": "최근 시작한 ",
+        "answer": "등산",
+        "after": " 모임에 매주 나간 지 한 달쯤 됐어요.",
+        "fallbackChoices": [
+          "독서",
+          "영화",
+          "등산",
+          "수영"
+        ]
+      },
+      "speakRequired": [
+        "최근",
+        "매주",
+        "나간"
+      ],
+      "sceneCaption": {
+        "de": "Am Wochenende triffst du jemanden aus deiner Nachbarschaft mit Wanderschuhen vor dem Haus. „주말에는 요즘 주로 뭐 하세요?“",
+        "en": "A neighbor catches you outside with your hiking boots on at the weekend. “주말에는 요즘 주로 뭐 하세요?”"
+      },
+      "trophyWord": {
+        "word": "최근",
+        "meaning": {
+          "de": "in letzter Zeit, vor Kurzem",
+          "en": "recently"
+        },
+        "example": "최근 몇 주는 토요일마다 날씨가 좋았어요.",
+        "whyThisWord": {
+          "de": "최근 vor 몇 주 grenzt den Zeitraum auf die jüngsten Wochen ein. 한 달쯤 nennt dagegen die ungefähre Dauer.",
+          "en": "최근 before 몇 주 limits the reference to the last few weeks. 한 달쯤 gives an approximate duration."
+        }
+      },
+      "distractors": [
+        "하루도 빠짐없이",
+        "열 해가 넘었어요."
+      ],
+      "placeholderCaption": {
+        "de": "Seit einem Monat in der Wandergruppe",
+        "en": "A month with the hiking group"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "A pair of hiking boots sits by the door next to a Saturday walking route."
+    },
+    {
+      "slug": "seupgwan-morning-coffee",
+      "title": {
+        "de": "Morgens Kaffee, abends Gerstentee",
+        "en": "Morning coffee, evening barley tea"
+      },
+      "situation": {
+        "de": "Beim gemeinsamen Frühstück sprecht ihr über Gewohnheiten aus der Studienzeit.",
+        "en": "Over breakfast you talk about habits from your student days."
+      },
+      "pedagogicalGoal": "Eine bis heute bestehende Gewohnheit von einem inzwischen ersetzten Teil der Routine unterscheiden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "아침마다 커피를 직접 내려 드세요?",
+          "baseText": {
+            "de": "Brühst du dir jeden Morgen selbst Kaffee auf?",
+            "en": "Do you make your own coffee every morning?"
+          }
+        },
+        {
+          "targetText": "학생 때 들였던 습관 덕분에 아침마다 커피를 직접 내려요.",
+          "baseText": {
+            "de": "Das habe ich mir während des Studiums angewöhnt. Deshalb brühe ich meinen Kaffee jeden Morgen selbst auf.",
+            "en": "It's a habit I picked up as a student. That's why I brew my own coffee every morning."
+          }
+        },
+        {
+          "targetText": "저녁에도 꼭 커피 드셨잖아요. 차도 드세요?",
+          "baseText": {
+            "de": "Abends hast du doch auch immer Kaffee getrunken. Trinkst du auch Tee?",
+            "en": "You always had coffee in the evening as well. Do you drink tea too?"
+          }
+        },
+        {
+          "targetText": "그런데 저녁마다 마시던 커피는 이제 보리차로 바꾸게 됐어요.",
+          "baseText": {
+            "de": "Den Kaffee, den ich früher jeden Abend getrunken habe, habe ich inzwischen allerdings durch Gerstentee ersetzt.",
+            "en": "But I've ended up switching the coffee I used to drink every evening to barley tea."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 … / -게 되다",
+        "rule": {
+          "de": "들였던 beschreibt die Gewohnheit über ihren früheren Ursprung. Der zweite Satzteil zeigt, dass sie morgens weiterhin besteht.",
+          "en": "들였던 describes the habit by referring back to when it was acquired. The next clause shows that the morning habit continues."
+        },
+        "examples": [
+          {
+            "targetText": "학생 때 들였던 습관 덕분에 아침마다 커피를 직접 내려요.",
+            "baseText": {
+              "de": "Das habe ich mir während des Studiums angewöhnt. Deshalb brühe ich meinen Kaffee jeden Morgen selbst auf.",
+              "en": "It's a habit I picked up as a student. That's why I brew my own coffee every morning."
+            },
+            "highlight": "학생 때 들였던"
+          },
+          {
+            "targetText": "전에 썼던 주전자를 다시 쓰게 됐어요.",
+            "baseText": {
+              "de": "Inzwischen benutze ich wieder den Wasserkessel von früher.",
+              "en": "I've ended up using my old kettle again."
+            },
+            "highlight": "전에 썼던"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "그런데",
+          "choices": [
+            "거꾸로",
+            "그러면",
+            "그런데",
+            "예컨대"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "저녁마다",
+          "choices": [
+            "저녁마다",
+            "등교 전에만",
+            "아침마다",
+            "점심때마다"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "마시던",
+          "choices": [
+            "마실 예정인",
+            "마실까 하는",
+            "마시지 않던",
+            "마시던"
+          ],
+          "cue": "Eine frühere, wiederkehrende Handlung vor einem Nomen / A former repeated action modifying a noun"
+        },
+        " 커피는 이제 보리차로 바꾸게 됐어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "학생 때 들였던",
+          "baseText": {
+            "de": "im Studium angewöhnt",
+            "en": "that I picked up as a student"
+          }
+        },
+        {
+          "targetText": "습관 덕분에",
+          "baseText": {
+            "de": "dank dieser Gewohnheit",
+            "en": "thanks to that habit"
+          }
+        },
+        {
+          "targetText": "아침마다 커피를",
+          "baseText": {
+            "de": "jeden Morgen Kaffee",
+            "en": "coffee every morning"
+          }
+        },
+        {
+          "targetText": "직접 내려요.",
+          "baseText": {
+            "de": "brühe ich selbst auf",
+            "en": "I brew myself"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "습관",
+          "baseText": {
+            "de": "Gewohnheit",
+            "en": "habit"
+          }
+        },
+        {
+          "targetText": "습관을 들이다",
+          "baseText": {
+            "de": "sich etwas angewöhnen",
+            "en": "form a habit"
+          }
+        },
+        {
+          "targetText": "학생 때",
+          "baseText": {
+            "de": "in der Schul- oder Studienzeit",
+            "en": "when one was a student"
+          }
+        },
+        {
+          "targetText": "커피를 내리다",
+          "baseText": {
+            "de": "Kaffee aufbrühen",
+            "en": "brew coffee"
+          }
+        },
+        {
+          "targetText": "보리차",
+          "baseText": {
+            "de": "Gerstentee",
+            "en": "barley tea"
+          }
+        },
+        {
+          "targetText": "바꾸다",
+          "baseText": {
+            "de": "ersetzen, wechseln",
+            "en": "switch, replace"
+          }
+        }
+      ],
+      "recall": {
+        "before": "학생 때 들였던 습관 덕분에 ",
+        "answer": "아침마다",
+        "after": " 커피를 직접 내려요.",
+        "fallbackChoices": [
+          "아침마다",
+          "저녁마다",
+          "밤마다",
+          "점심마다"
+        ]
+      },
+      "speakRequired": [
+        "들였던",
+        "습관",
+        "아침마다"
+      ],
+      "sceneCaption": {
+        "de": "Beim gemeinsamen Frühstück sprecht ihr über Gewohnheiten aus der Studienzeit. „아침마다 커피를 직접 내려 드세요?“",
+        "en": "Over breakfast you talk about habits from your student days. “아침마다 커피를 직접 내려 드세요?”"
+      },
+      "trophyWord": {
+        "word": "습관",
+        "meaning": {
+          "de": "Gewohnheit",
+          "en": "habit"
+        },
+        "example": "좋은 습관 하나가 하루를 바꿀 수 있어요.",
+        "whyThisWord": {
+          "de": "습관을 들이다 heißt, sich etwas anzugewöhnen. 들였던 습관 lässt dich später darauf zurückblicken.",
+          "en": "습관을 들이다 means to form a habit. 들였던 습관 lets you look back on a habit you picked up."
+        }
+      },
+      "distractors": [
+        "점심때만",
+        "주문해서 마셔요."
+      ],
+      "placeholderCaption": {
+        "de": "Morgens Kaffee, abends Gerstentee",
+        "en": "Morning coffee, evening barley tea"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "Coffee drips into a mug while barley tea cools in a glass jug."
+    },
+    {
+      "slug": "banghak-grandmothers-house",
+      "title": {
+        "de": "Ferien bei der Großmutter",
+        "en": "School breaks at Grandma's house"
+      },
+      "situation": {
+        "de": "Ihr sprecht darüber, wo ihr als Kinder die Sommerferien verbracht habt.",
+        "en": "You're talking about where you spent your summer holidays as children."
+      },
+      "pedagogicalGoal": "Eine wiederkehrende Erinnerung an die Schulferien mit der heutigen Form des Kontakts verbinden.",
+      "register": "neutral",
+      "dialogue": [
+        {
+          "targetText": "어릴 때 여름은 주로 어디서 보내셨어요?",
+          "baseText": {
+            "de": "Wo hast du als Kind die Sommer meistens verbracht?",
+            "en": "Where did you usually spend your summers as a child?"
+          }
+        },
+        {
+          "targetText": "방학 때마다 갔던 할머니 댁에서 사촌들하고 여름을 보내곤 했어요.",
+          "baseText": {
+            "de": "Ich habe die Sommer mit meinen Cousinen und Cousins bei meiner Großmutter verbracht. In den Ferien bin ich jedes Mal zu ihr gefahren.",
+            "en": "I used to spend the summer with my cousins at my grandmother's house. I went there every school break."
+          }
+        },
+        {
+          "targetText": "요즘은 긴 휴가가 없다면서요. 할머니랑은 어떻게 연락하세요?",
+          "baseText": {
+            "de": "Du hast ja kaum noch längere Urlaube. Wie hältst du heute Kontakt zu deiner Großmutter?",
+            "en": "You said you don't get long breaks now. How do you stay in touch with your grandmother?"
+          }
+        },
+        {
+          "targetText": "지금은 방학마다 찾아뵙던 할머니께 토요일에 전화드리게 됐어요.",
+          "baseText": {
+            "de": "Meine Großmutter, die ich früher in allen Ferien besucht habe, rufe ich inzwischen samstags an.",
+            "en": "These days I call my grandmother on Saturdays. I used to visit her every school break."
+          }
+        }
+      ],
+      "pattern": {
+        "label": "-았/었던 … / -곤 했어요",
+        "rule": {
+          "de": "갔던 beschreibt das Haus als einen Ort aus der Erinnerung. 보내곤 했어요 macht aus den Sommeraufenthalten ein wiederkehrendes Erlebnis.",
+          "en": "갔던 describes the house as a place you remember visiting. 보내곤 했어요 presents those summer stays as a recurring experience."
+        },
+        "examples": [
+          {
+            "targetText": "방학 때마다 갔던 할머니 댁에서 사촌들하고 여름을 보내곤 했어요.",
+            "baseText": {
+              "de": "Ich habe die Sommer mit meinen Cousinen und Cousins bei meiner Großmutter verbracht. In den Ferien bin ich jedes Mal zu ihr gefahren.",
+              "en": "I used to spend the summer with my cousins at my grandmother's house. I went there every school break."
+            },
+            "highlight": "때마다 갔던"
+          },
+          {
+            "targetText": "어릴 때 자주 놀았던 마당에 꽃을 심게 됐어요.",
+            "baseText": {
+              "de": "In dem Hof, in dem ich als Kind oft gespielt habe, pflanze ich inzwischen Blumen.",
+              "en": "I've ended up planting flowers in the yard where I often played as a child."
+            },
+            "highlight": "자주 놀았던"
+          }
+        ]
+      },
+      "cloze": [
+        {
+          "kind": "connector",
+          "answer": "지금은",
+          "choices": [
+            "내년부터는",
+            "졸업하기 전에는",
+            "지금은",
+            "초등학생 때는"
+          ]
+        },
+        " ",
+        {
+          "kind": "choice",
+          "answer": "방학마다",
+          "choices": [
+            "방학마다",
+            "시험 때만",
+            "월요일마다",
+            "이사 때만"
+          ]
+        },
+        " ",
+        {
+          "kind": "form",
+          "answer": "찾아뵙던",
+          "choices": [
+            "찾아뵐 예정인",
+            "찾아뵙지 않았던",
+            "찾아뵙지 못했던",
+            "찾아뵙던"
+          ],
+          "cue": "Wiederholte frühere Besuche als Beschreibung / Past repeated visits describing a person"
+        },
+        " 할머니께 토요일에 전화드리게 됐어요."
+      ],
+      "chunks": [
+        {
+          "targetText": "방학 때마다 갔던",
+          "baseText": {
+            "de": "in allen Schulferien besucht",
+            "en": "that I visited every school break"
+          }
+        },
+        {
+          "targetText": "할머니 댁에서",
+          "baseText": {
+            "de": "bei meiner Großmutter zu Hause",
+            "en": "at my grandmother's house"
+          }
+        },
+        {
+          "targetText": "사촌들하고 여름을",
+          "baseText": {
+            "de": "den Sommer mit meinen Cousins und Cousinen",
+            "en": "the summer with my cousins"
+          }
+        },
+        {
+          "targetText": "보내곤 했어요.",
+          "baseText": {
+            "de": "habe ich oft verbracht",
+            "en": "I used to spend"
+          }
+        }
+      ],
+      "terms": [
+        {
+          "targetText": "방학",
+          "baseText": {
+            "de": "Schulferien",
+            "en": "school break"
+          }
+        },
+        {
+          "targetText": "할머니 댁",
+          "baseText": {
+            "de": "das Zuhause der Großmutter",
+            "en": "grandmother's home"
+          }
+        },
+        {
+          "targetText": "사촌",
+          "baseText": {
+            "de": "Cousin, Cousine",
+            "en": "cousin"
+          }
+        },
+        {
+          "targetText": "여름을 보내다",
+          "baseText": {
+            "de": "den Sommer verbringen",
+            "en": "spend the summer"
+          }
+        },
+        {
+          "targetText": "찾아뵙다",
+          "baseText": {
+            "de": "eine respektierte Person besuchen (bescheidene Form)",
+            "en": "visit a respected person (humble form)"
+          }
+        },
+        {
+          "targetText": "전화드리다",
+          "baseText": {
+            "de": "eine respektierte Person anrufen (bescheidene Form)",
+            "en": "call a respected person (humble form)"
+          }
+        }
+      ],
+      "recall": {
+        "before": "방학 때마다 갔던 할머니 댁에서 ",
+        "answer": "사촌들하고",
+        "after": " 여름을 보내곤 했어요.",
+        "fallbackChoices": [
+          "동료들하고",
+          "사촌들하고",
+          "직원들하고",
+          "손님들하고"
+        ]
+      },
+      "speakRequired": [
+        "방학",
+        "갔던",
+        "사촌들하고"
+      ],
+      "sceneCaption": {
+        "de": "Ihr sprecht darüber, wo ihr als Kinder die Sommerferien verbracht habt. „어릴 때 여름은 주로 어디서 보내셨어요?“",
+        "en": "You're talking about where you spent your summer holidays as children. “어릴 때 여름은 주로 어디서 보내셨어요?”"
+      },
+      "trophyWord": {
+        "word": "방학",
+        "meaning": {
+          "de": "Schulferien, Semesterferien",
+          "en": "school or university vacation"
+        },
+        "example": "이번 방학 때는 사촌이 먼저 내려왔어요.",
+        "whyThisWord": {
+          "de": "방학 benennt die unterrichtsfreie Zeit. Für eine Auszeit von der Arbeit verwendest du 휴가.",
+          "en": "방학 refers to a break from school or university. 휴가 is the word for leave from a job."
+        }
+      },
+      "distractors": [
+        "시험 전날만",
+        "처음 가 보려고 해요."
+      ],
+      "placeholderCaption": {
+        "de": "Ferien bei der Großmutter",
+        "en": "School breaks at Grandma's house"
+      },
+      "songMood": "Gentle, conversational acoustic groove.",
+      "visualNotes": "An old summer family photo lies beside a phone showing a Saturday call."
+    }
+  ]
+}

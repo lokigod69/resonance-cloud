@@ -1,0 +1,16 @@
+# German B2 P3 independent review
+
+Reviewed 10 original episodes (d92c9473705f5852d4b4fb244f740cb65ec41efed4a58ebb1796684c08948b81), not authored by this reviewer. Verdict: REWORK. No opinion here is a research or policy claim.
+
+- L1 build: “und die Frühschicht wird zur Belastung, für viele weil der Schlaf fehlt” is awkward with this punctuation, but an ordinary speaker would also say “wird zur Belastung für viele”. Preserve useful grammatical boundaries; avoid forcing unnatural fixed order. “Der neue Schichtplan steht ab Mai fest” followed by a vote is unclear: a proposal should still be open to change.
+- L2: a quiet period is said to ban “die Lautstärke”, an odd collocation (any sound has a volume). Clarify that practice is permitted if quiet. The alternatives such as “wegen den Kinder” make a B2 choice trivial.
+- L3: “In Deutschland rundet man nur auf” states a national custom as universal despite considerable variation. Anchor to the speaking character’s own experience. “Fast niemals wem / Anders als ob / Keineswegs falls” are not plausible rivals for the concession.
+- L4: “die einzige Übung im selbstständigen Arbeiten” sounds like an unsupported absolute, weaken to one concrete opportunity in this fictional class. Distinguish concern from dismissal in the rebuttal.
+- L5: the suggested resistance to technology generalizes about older patients. Give a concrete limit in a named practice or a speaker’s family rather than imputing reluctance to an age group. “können und wollen” following nicht is also scope-ambiguous. The concern about the physical examination is specific and useful.
+- L6: avoid an exercise where enough semantically plausible chips (autofrei/vierspurig, mehr/weniger Kunden) can reverse the policy reasoning. Preserve the fictional setting; keep the same person’s second argument about customers arriving from outside the city.
+- L7: a compromise that combines a shorter meeting with a report is a useful third move. “nicht null”, “Postleitzahl” and “schreibt niemandem” deserve an idiom/distractor pass: difficulty should come from rhetoric rather than nonsense.
+- L8: the same chips can coherently say that the ban is *seen as paternalistic but causes less unrest*. Check mixed combinations, not just swapping both distractors to the opposite stance. Grade a constrained continuation if mixed choices remain meaningful.
+- L9: this is a qualified disagreement. The final source and season for food should be claims about the planned shopping, not unsourced claims about environmental effects. Watch chunk order, especially “aus dem Kühlhaus im April” (time of purchase, not necessarily of taking it from storage).
+- L10: the two parties cite an unspecified body of research for a hard puberty cutoff then same-outcome rebuttal; neither claim is established by the scene. Replace with bounded disagreement over observed learners / what one example can show, also checking coupled forms. Avoid “Früh anfangen schadet nicht” as a universal guarantee.
+
+Global: compare every transfer example with the hidden third to sixth turns; don't reveal answers early. Closed choices should be credible in isolation and uniquely appropriate in the actual dialogue. Keep independent difficulty qualifications if this pass can only establish written text, not device grading.

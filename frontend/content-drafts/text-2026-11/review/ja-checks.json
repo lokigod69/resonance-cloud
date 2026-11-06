@@ -1,0 +1,123 @@
+{
+  "exit": 0,
+  "totals": {
+    "tests": "96",
+    "pass": "96",
+    "fail": "0"
+  },
+  "log": "japanese-final-v2.tap",
+  "changes": 2,
+  "paths": {
+    "p1.json": {
+      "fileSha256": "2d78ee4c4e8e73fd16b0b0430ede8a6723ef69827e5ff3af93a409bb2a7eae25",
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "yachin-ka-tsuukin",
+          "sha256CompactSortedUTF8": "ca3a93845aabbc26eb9e6ec02e6a16178972fa56f698d66219097953c976e350"
+        },
+        {
+          "number": 2,
+          "slug": "kuruma-ka-densha",
+          "sha256CompactSortedUTF8": "60ecb568a5f89a5192f24aaa9991a3be912da666dd2b56b1b6017be8322a403c"
+        },
+        {
+          "number": 3,
+          "slug": "zaitaku-ka-shussha",
+          "sha256CompactSortedUTF8": "79af41fd494dac28393d7e1e7e7e7791decadf272923717119c570ca740c1f2f"
+        },
+        {
+          "number": 4,
+          "slug": "kounyuu-ka-rentaru",
+          "sha256CompactSortedUTF8": "01ef991fdbc7ce44f549d8c10d8f8f4bf9c22ff6e93596ed82c3fae4e7181b62"
+        },
+        {
+          "number": 5,
+          "slug": "okinawa-ka-hokkaidou",
+          "sha256CompactSortedUTF8": "29b933e334b949b8ff4f216bd42f8fac2e8a9f3220bc27e4239ac3db9acc4f35"
+        },
+        {
+          "number": 6,
+          "slug": "genkin-ka-apuri",
+          "sha256CompactSortedUTF8": "2a1af261aad5bcb211570fc21ef5bf28bb93f40d32018a5dc299959d95e9c95a"
+        },
+        {
+          "number": 7,
+          "slug": "kyoushitsu-ka-apuri",
+          "sha256CompactSortedUTF8": "a1b31009738c4921af441abdb901d9c79e318df71c3de7c9dcb8388cb6298900"
+        },
+        {
+          "number": 8,
+          "slug": "futatsu-no-naitei",
+          "sha256CompactSortedUTF8": "a9cece97f4b0ef161f6ba283519ea8608d3c00795f0e6b2ff990910bd946f7aa"
+        },
+        {
+          "number": 9,
+          "slug": "oosaka-ni-utsuru",
+          "sha256CompactSortedUTF8": "5ec12a3ee01281bcfd3a179ed7ea75d1dd1d53d751c8338d8d388427a2c64237"
+        },
+        {
+          "number": 10,
+          "slug": "bousai-bihin-an",
+          "sha256CompactSortedUTF8": "8a6660152e526fc012cf3d263c962b77a8e074d20e667fded89bf57c4fd2fb67"
+        }
+      ]
+    },
+    "p2.json": {
+      "fileSha256": "1e709d11f7aa78c30e7b1f9841b7996ee310f01a98aa5cfbc3e61b6c0d695cf2",
+      "lessons": [
+        {
+          "number": 1,
+          "slug": "seikyuu-no-sagaku",
+          "sha256CompactSortedUTF8": "7d073c30aab5db178634346fd5e2a70458f3226fc297aac7131632d07e210a4d"
+        },
+        {
+          "number": 2,
+          "slug": "gomi-no-dashikata",
+          "sha256CompactSortedUTF8": "8dcb2c0a5ebc8dfe4a4f9126d0f40cb6f5bda7e71f182810790865fa2f0b0829"
+        },
+        {
+          "number": 3,
+          "slug": "nouki-ga-okureta-ken",
+          "sha256CompactSortedUTF8": "e4d242d6dfaacf2a6cb953f8c7fa829fe68d5ebaa1ee537f1d61210af3969ae0"
+        },
+        {
+          "number": 4,
+          "slug": "pointo-kaado-no-shikumi",
+          "sha256CompactSortedUTF8": "620556ec740fc6f4577663fab9f02425ebdce423d395aec387169acbf6ea1c43"
+        },
+        {
+          "number": 5,
+          "slug": "keitai-gaisha-o-kaeta",
+          "sha256CompactSortedUTF8": "c910578f81d7d83c7f379cde40c07011e4f595ee08f5eb934c884fd36a7d8489"
+        },
+        {
+          "number": 6,
+          "slug": "tekkyo-ni-igi",
+          "sha256CompactSortedUTF8": "97540138321f1236cc503d7f3252d9f9028c41fbf7614e5422738b09d3671e06"
+        },
+        {
+          "number": 7,
+          "slug": "kafe-keikaku-no-keii",
+          "sha256CompactSortedUTF8": "8b3c1c053c101f493947e6c214ad3d0390fc39576338977dd798011889c17112"
+        },
+        {
+          "number": 8,
+          "slug": "shoshin-yoyaku-no-nagare",
+          "sha256CompactSortedUTF8": "070246a65b98cafe782a7111ff6e81e0d7c5d4b9b3adac0515a23a103c824d6a"
+        },
+        {
+          "number": 9,
+          "slug": "shea-jitensha-no-kouka",
+          "sha256CompactSortedUTF8": "0d13899f4d08e1b1f39dfa22ee117059e8cafb74ffa1c37bd69b5f8212f6d8d7"
+        },
+        {
+          "number": 10,
+          "slug": "kouen-yakan-heisa-no-keika",
+          "sha256CompactSortedUTF8": "3b2bcb6a7fe3488aa27f881e2a8f66b3d68e1ffa81001711912bb2567d96d1f5"
+        }
+      ]
+    }
+  },
+  "failedTests": []
+}
