@@ -25,7 +25,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.
 - Guided progress and drafts are device-local; kept phrases are account-backed.
 - The machine-authored guided explanation editions and the nine lazy UI packs are not native-proofread.
-- Lingwave 1.0 (2) is available in the Lingwave Owner internal TestFlight group, but the owner found signed-in header overlap and keyboard zoom. Repairs in `e60016f6` are live on the web and passed real-shell offline fixtures plus iPhone 16/17 simulator checks. Version 1.0 (3) uploaded successfully; Apple processing and internal-group availability still need confirmation after account sign-in. Physical camera/audio remain unverified. The Mac release guide is `frontend/ios/TESTFLIGHT.md`.
+- Lingwave 1.0 (3), with the signed-in safe-area and keyboard-zoom repairs from `e60016f6`, is processed and Testing in the Lingwave Owner internal TestFlight group (one tester). The same repairs are live on the web and passed real-shell offline fixtures plus iPhone 16/17 simulator checks. Physical camera/audio remain unverified. The Mac release guide is `frontend/ios/TESTFLIGHT.md`.
 - Live token expiry is not a socket-cost ceiling; relay/revocation remains.
 - Production Text and Standard cards are blocked by a confirmed OpenRouter 401 on November 7; repair `OPENROUTER_API_KEY` in both Vercel and Railway. Lens is blocked by direct Gemini 402; AI Studio requires prepay setup, but the production key/project mapping still needs confirmation. Supabase and Railway are running. Account access and an approved live-test budget remain necessary. Gemini TTS and xAI Live migration follow-ups are separate.
 - 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
@@ -33,7 +33,7 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- Restore OpenRouter credentials and resolve Google payment/access, then verify bounded live Text, Standard and Lens runs with an approved budget. Complete the repaired internal iPhone release and physical-device pass; offline checks do not prove provider recovery.
+- Restore OpenRouter credentials and resolve Google payment/access, then verify bounded live Text, Standard and Lens runs with an approved budget. Install internal build 1.0 (3) and complete the physical-device pass; offline checks do not prove provider recovery.
 - Continue other languages from their first missing ten-lesson path. French and Portuguese B1 each need P6–P10. Use the verified source hashes and check alternative correct answers. Korean intermediate text is available for personal testing in the local reader. Recording and mini books stay paused.
 - Owner: rotate the credentials pasted into April–May Codex prompts; the physical iPhone pass; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).

@@ -2,6 +2,12 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Repaired build 3 available in TestFlight
+
+After the owner restored App Store Connect sign-in, build 1.0 (3) was Ready to Test. Added that processed internal-only build to the existing Lingwave Owner group and verified Testing, one tester and three builds. Apple build ID `5908d458-3720-4a47-8a26-a37bad38aa28`; source remains `e60016f6`. Evidence is `/Users/saya/Desktop/Lingwave/investigations/ios-qa-2026-11-07/testflight-build-3.jpg`. No new binary or application code was needed for this assignment.
+
+The existing OpenRouter tab still showed Sign In after refresh despite the reported login; owner clarification was requested. Google AI Studio's llm arena prepay setup showed a zero credit balance and €5/€20/€100 purchase options. The payment dialog was cancelled without submission because production's key-to-project mapping remains unproven. No credentials, billing, paid calls or production data were changed. Provider recovery and the physical-device pass remain open.
+
 ## 2026-11-07 — Repair deployed and internal iPhone build 3 uploaded
 
 Repair source `e60016f6` is pushed to main. Vercel `g5MFo2obhyZ5ovHhV6q1YDgBTiv6` and Railway `e681e397-9336-477d-bae1-5eadc04af672` both reported successful deployments. The live website returned 200, native API preflights returned 204 with the correct origin, and the worker health endpoint returned 200. These confirm deployment/connectivity, not recovery of the rejected provider credentials or Google payment access.
