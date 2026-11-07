@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Loader2, RotateCcw, Trash2 } from 'lucide-react'
+import { Loader2, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/dialog'
 import { useDeleteImagelessCard } from '@/hooks/useDeleteImagelessCard'
 import { useEditImagelessCard } from '@/hooks/useEditImagelessCard'
-import { useRegenerateImagelessTts } from '@/hooks/useRegenerateImagelessTts'
 import { useTranslation } from '@/hooks/useTranslation'
 
 type EditableImagelessWord = {
@@ -40,16 +39,14 @@ export default function ImagelessCardEditModal({
   const { t } = useTranslation()
   const { editImagelessCard, updating, error: editError } = useEditImagelessCard()
   const { deleteImagelessCard, deleting, error: deleteError } = useDeleteImagelessCard()
-  const { regenerateImagelessTts, generating, error: ttsError } = useRegenerateImagelessTts()
   const [wordValue, setWordValue] = useState(() => word?.word ?? '')
   const [translationValue, setTranslationValue] = useState(() => word?.translation ?? '')
   const [ipaValue, setIpaValue] = useState(() => word?.ipa ?? '')
-  const [ttsStatus, setTtsStatus] = useState<string | null>(null)
 
   const trimmedWord = wordValue.trim()
   const trimmedTranslation = translationValue.trim()
   const trimmedIpa = ipaValue.trim()
-  const canSave = Boolean(word && trimmedWord && trimmedTranslation && !updating && !generating && !deleting)
+  const canSave = Boolean(word && trimmedWord && trimmedTranslation && !updating && !deleting)
   const changed = useMemo(() => {
     if (!word) return false
     return (
@@ -61,47 +58,22 @@ export default function ImagelessCardEditModal({
 
   if (!word) return null
 
-  async function handleRegenerate() {
-    if (!word) return
-    setTtsStatus(null)
-    const result = await regenerateImagelessTts({ word_id: word.id })
-    const refreshed = result.results.find((item) => item.word_id === word.id)
-    if (refreshed?.tts_audio_url) {
-      onSaved({
-        ...word,
-        tts_audio_url: refreshed.tts_audio_url,
-      })
-    }
-    setTtsStatus(t('imageless.edit.regenerated'))
-  }
-
   async function handleSave() {
     if (!word || !canSave) return
-    const wordChanged = trimmedWord !== word.word
-    const updated = await editImagelessCard({
-      word_id: word.id,
-      word: trimmedWord,
-      translation: trimmedTranslation,
-      ipa: trimmedIpa || null,
-    }) as EditableImagelessWord | null
+    try {
+      const updated = await editImagelessCard({
+        word_id: word.id,
+        word: trimmedWord,
+        translation: trimmedTranslation,
+        ipa: trimmedIpa || null,
+        invalidatePronunciation: trimmedWord !== word.word,
+      }) as EditableImagelessWord
 
-    const regenerated = wordChanged
-      ? await regenerateImagelessTts({ word_id: word.id })
-      : null
-    const regeneratedAudioUrl = regenerated?.results.find((item) => item.word_id === word.id)?.tts_audio_url
-
-    const updatedWord = updated ?? {
-      id: word.id,
-      word: trimmedWord,
-      translation: trimmedTranslation,
-      ipa: trimmedIpa || null,
+      onSaved(updated)
+      onClose()
+    } catch {
+      // The hook displays the save error. Keep the draft open for a retry.
     }
-
-    onSaved({
-      ...updatedWord,
-      tts_audio_url: regeneratedAudioUrl ?? word.tts_audio_url,
-    })
-    onClose()
   }
 
   async function handleDelete() {
@@ -116,8 +88,8 @@ export default function ImagelessCardEditModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg bg-[#0d0d12] border-white/10 text-white">
-        <DialogHeader>
+      <DialogContent className="sm:max-w-lg bg-[#0d0d12] border-white/10 text-white [&>[data-slot=dialog-close]]:top-4">
+        <DialogHeader className="pr-12">
           <DialogTitle>{t('imageless.edit.title')}</DialogTitle>
           <DialogDescription>{t('imageless.edit.description')}</DialogDescription>
         </DialogHeader>
@@ -150,29 +122,6 @@ export default function ImagelessCardEditModal({
             />
           </label>
 
-          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={handleRegenerate}
-              disabled={generating || deleting || updating}
-              className="border-white/10"
-            >
-              {generating ? (
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              ) : (
-                <RotateCcw className="h-4 w-4 mr-2" />
-              )}
-              {t('imageless.edit.regenerateTts')}
-            </Button>
-            {(ttsStatus || ttsError) && (
-              <p className={`mt-2 text-xs ${ttsError ? 'text-red-300' : 'text-emerald-300'}`}>
-                {ttsError || ttsStatus}
-              </p>
-            )}
-          </div>
-
           {(editError || deleteError) && (
             <p className="text-sm text-red-300">{editError || deleteError}</p>
           )}
@@ -184,7 +133,7 @@ export default function ImagelessCardEditModal({
             variant="outline"
             className="border-red-500/40 text-red-300 hover:bg-red-500/10 hover:text-red-200 sm:mr-auto"
             onClick={handleDelete}
-            disabled={deleting || updating || generating}
+            disabled={deleting || updating}
           >
             {deleting ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Trash2 className="h-4 w-4 mr-2" />}
             {t('imageless.edit.delete')}
@@ -193,7 +142,7 @@ export default function ImagelessCardEditModal({
             {t('imageless.edit.cancel')}
           </Button>
           <Button type="button" onClick={handleSave} disabled={!canSave || !changed}>
-            {(updating || (generating && changed)) && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+            {updating && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
             {t('imageless.edit.save')}
           </Button>
         </DialogFooter>

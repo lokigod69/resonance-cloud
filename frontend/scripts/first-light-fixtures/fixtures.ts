@@ -464,12 +464,17 @@ function manualGenerationFixture(lane: 'card_standard' | 'card_text', width: num
       }
       const deck = lane === 'card_text' ? 'text-deck' : 'picture-deck'
       await waitFor('generated deck route', () => (window as any).__location.startsWith(`/deck/${deck}`))
+      // The old audio trigger starts after navigation and a word-id lookup.
+      // Observe it even though its rejected fetch was swallowed by the page.
+      await settle(100)
       const calls = (window as any).__calls as any[]
       if (lane === 'card_text') {
         const translated = calls.filter((call) => call.kind === 'api:translate-and-ipa')
         const imported = calls.filter((call) => call.kind === 'rpc:submit_imageless_import')
         ctx.check('only explicit text attempts and one successful import', translated.length === (translationFailsOnce ? 2 : 1) && imported.length === 1)
         ctx.check('text words and languages are preserved', translated[0]?.payload.target_language === 'en' && translated[0]?.payload.base_language === 'de' && JSON.stringify(translated[0]?.payload.items.map((item: any) => item.word)) === JSON.stringify(['Perspicuity', 'Perspicacity']), JSON.stringify(translated[0]?.payload))
+        ctx.check('Text creation never calls the undeployed audio endpoint', !calls.some((call) => call.kind === 'fetch' && call.payload === '/api/generate-imageless-tts'))
+        ctx.check('Text creation does not load word IDs for obsolete background audio', !calls.some((call) => call.kind === 'select:deck-word-ids'))
       } else {
         const submitted = calls.filter((call) => call.kind === 'rpc:submit_generation')
         ctx.check('one Standard generation after double press', submitted.length === 1)
@@ -479,7 +484,140 @@ function manualGenerationFixture(lane: 'card_standard' | 'card_text', width: num
   }
 }
 
+function textEditFixture(changeWord: boolean, editFailsOnce = false): Fixture {
+  const t = createT('de')
+  return {
+    id: `42-text-edit-${changeWord ? 'headword' : 'translation'}-393-de${editFailsOnce ? '-retry' : ''}`,
+    name: `Text card ${changeWord ? 'headword' : 'translation'} edit${editFailsOnce ? ' after failed save' : ''}, German 393px`,
+    viewport: { width: 393, height: 852 }, language: 'English', route: '/edit-text',
+    safeArea: { top: 59, bottom: 34 },
+    scenario: {
+      baseLanguage: 'German', activeLanguage: 'English', offlineGeneration: true, editFailsOnce,
+      editableWord: { id: 'text-word', word: 'Perspicuity', translation: 'Klarheit', ipa: '/test/', tts_audio_url: 'https://cdn.example/old-word.mp3' },
+    },
+    async run(ctx) {
+      await waitFor('real Text edit modal', dialog)
+      await settle(300)
+      const inputs = qa<HTMLInputElement>('[role="dialog"] input')
+      ctx.check('no unavailable regeneration promise', !textOf(dialog()).includes(t('imageless.edit.regenerateTts')))
+      ctx.check('mobile edit inputs avoid focus zoom', inputs.every((input) => parseFloat(getComputedStyle(input).fontSize) >= 16))
+      ctx.check('modal fits phone width', dialog()!.getBoundingClientRect().left >= 0 && dialog()!.getBoundingClientRect().right <= innerWidth + 1)
+      const closeBounds = q('[data-slot="dialog-close"]')!.getBoundingClientRect()
+      ctx.check('close control stays beside the header within the centered modal', closeBounds.top - dialog()!.getBoundingClientRect().top < 24 && q('[data-slot="dialog-description"]')!.getBoundingClientRect().right < closeBounds.left)
+      typeInto(inputs[changeWord ? 0 : 1], changeWord ? 'Perspicacity' : 'Verständlichkeit')
+      await settle(80)
+      await shot('draft')
+      clickText('[role="dialog"] button', t('imageless.edit.save'))
+      if (editFailsOnce) {
+        await waitFor('save failure', () => textOf(dialog()).includes('Save unavailable (fixture)'))
+        ctx.check('failed save retains edited draft', inputs[0].value === 'Perspicacity')
+        ctx.check('failed save stays open without claiming success', !(window as any).__calls.some((call: any) => call.kind === 'edit:saved' || call.kind === 'edit:closed'))
+        await shot('failed-save')
+        clickText('[role="dialog"] button', t('imageless.edit.save'))
+      }
+      await waitGone('saved dialog', dialog)
+      const calls = (window as any).__calls as any[]
+      const writes = calls.filter((call) => call.kind === 'update:words')
+      const saved = calls.filter((call) => call.kind === 'edit:saved')
+      const updates = writes.at(-1).payload.updates
+      ctx.check('one save success closes the editor', saved.length === 1 && calls.filter((call) => call.kind === 'edit:closed').length === 1)
+      ctx.check('only explicit saves reach database', writes.length === (editFailsOnce ? 2 : 1))
+      ctx.check('save targets selected word', writes.every((call) => call.payload.filters.some((filter: any) => filter.method === 'eq' && filter.args[0] === 'id' && filter.args[1] === 'text-word')))
+      ctx.check('edited text is delivered to the parent', saved[0].payload[changeWord ? 'word' : 'translation'] === (changeWord ? 'Perspicacity' : 'Verständlichkeit'))
+      ctx.check('headword changes clear stale recording atomically; other edits preserve it', changeWord
+        ? updates.tts_audio_url === null && updates.tts_status === null && updates.tts_generated_at === null && saved[0].payload.tts_audio_url === null
+        : !('tts_audio_url' in updates) && saved[0].payload.tts_audio_url === 'https://cdn.example/old-word.mp3')
+      ctx.check('editing never calls the undeployed audio endpoint', !calls.some((call) => call.kind === 'fetch' && call.payload === '/api/generate-imageless-tts'))
+    },
+  }
+}
+
+function editedHomeAudioFixture(source: 'stream' | 'import', audio: 'embedded' | 'lookup', delayed = false, caseOnly = false): Fixture {
+  const audioUrl = 'https://cdn.example/apple.mp3'
+  const originalWord = caseOnly ? 'Polish' : 'apple'
+  const editedWord = caseOnly ? 'polish' : 'pear'
+  return {
+    id: `43-edited-home-audio-${source}-${audio}${delayed ? '-late' : ''}${caseOnly ? '-case' : ''}`,
+    name: `Edited ${source} text rejects ${audio}${delayed ? ' late' : ''} pronunciation`,
+    viewport: { width: 393, height: 852 }, language: 'English', route: '/home-detail',
+    scenario: {
+      staticAudioUrl: audioUrl, staticAudioDelayMs: delayed ? 500 : 0,
+      homeDetailRows: [{
+        id: 'detail-word', word: originalWord, translation: 'Apfel',
+        // Imported target identity takes precedence over generic source input.
+        original_input: source === 'stream' ? originalWord : 'Apfel',
+        curriculum_entry_term: source === 'import' ? originalWord : null,
+        tts_audio_url: null, thumbnail_url: null,
+        metadata: {
+          ...(source === 'stream' ? { origin: 'word_stream' } : {}),
+          curriculum: {
+            source: 'static_thematic_library', source_category_slug: 'food',
+            source_concept_id: 'food.apple', source_target_language_code: 'en', source_level_number: 1,
+            ...(audio === 'embedded' ? { static_tts_public_url: audioUrl } : {}),
+          },
+        },
+      }],
+    },
+    async run(ctx) {
+      const w = window as any
+      if (delayed) {
+        await waitFor('old static audio request', () => w.__calls.some((call: any) => call.kind === 'static:playback'))
+        ctx.check('lookup is unresolved before editing', w.__homeDetails?.ttsResolved === false)
+      } else {
+        await waitFor('unchanged source audio', () => w.__homeDetails?.ttsResolved && w.__homeDetails.ttsAudioUrl === audioUrl)
+        ctx.check('unchanged source keeps curated recording', w.__homeDetails.ttsAudioUrl === audioUrl)
+        w.__scenario.homeDetailRows[0].translation = 'Ein Apfel'
+        w.__refreshDetail()
+        await settle(50)
+        ctx.check('translation-only change preserves cached audio', w.__homeDetails.ttsAudioUrl === audioUrl)
+      }
+      w.__scenario.homeDetailRows[0].word = editedWord
+      w.__setDetailText(editedWord)
+      await waitFor('edited text resolves without old audio', () => w.__homeDetails?.ttsResolved && w.__homeDetails.ttsAudioUrl === null)
+      await settle(delayed ? 600 : 40)
+      ctx.check('same-session edit never restores old source audio', w.__homeDetails.ttsAudioUrl === null && w.__homeDetails.ttsResolved)
+      ctx.check('edited headword refetches its details', w.__calls.filter((call: any) => call.kind === 'select:home-details').length === 2)
+      ctx.check('edited source never starts another concept lookup', w.__calls.filter((call: any) => call.kind === 'static:playback').length === (audio === 'lookup' ? 1 : 0))
+    },
+  }
+}
+
 export const FIXTURES: Fixture[] = [
+  {
+    id: '43-edited-home-audio-held-sheet', name: 'Recorded pronunciation remains on a correctly graded card until Next',
+    viewport: MOBILE, language: 'German',
+    scenario: {
+      words: dueRows(1),
+      homeDetailRows: [{ id: 'w-0', word: 'der Hund', tts_audio_url: 'https://cdn.example/hund.mp3', thumbnail_url: null, metadata: null }],
+    },
+    async run(ctx) {
+      await awaitHero(ctx)
+      await waitFor('due buoy', () => dueBuoys().length === 1)
+      await waitFor('recording loaded', () => (window as any).__calls.some((call: any) => call.kind === 'prefetch' && call.payload.url === 'https://cdn.example/hund.mp3'))
+      dueBuoys()[0].click()
+      await waitFor('practice sheet', dialog)
+      await solveCurrentCard('der Hund')
+      await waitFor('correct grade written', () => inserts().length === 1)
+      await waitFor('Next enabled while sheet holds', advanceButton)
+      await waitFor('graded buoy finishes leaving the water', () => dueBuoys().length === 0)
+      ctx.check('correctly graded word has left the due buoys', dueBuoys().length === 0)
+      ctx.check('graded card remains open before Next', Boolean(dialog()))
+      const before = (window as any).__calls.filter((call: any) => call.kind === 'pronounce').length
+      const replay = q<HTMLButtonElement>('[role="dialog"] button[aria-label="Play pronunciation for der Hund"]')!
+      replay.click()
+      await settle(60)
+      const played = (window as any).__calls.filter((call: any) => call.kind === 'pronounce')
+      ctx.check('replay uses the unchanged recording after grading', played.length === before + 1 && played.at(-1).payload.audioUrl === 'https://cdn.example/hund.mp3' && played.at(-1).payload.allowSpeechFallback === false)
+    },
+  },
+  editedHomeAudioFixture('stream', 'embedded'),
+  editedHomeAudioFixture('stream', 'embedded', false, true),
+  editedHomeAudioFixture('stream', 'lookup'),
+  editedHomeAudioFixture('import', 'embedded'),
+  editedHomeAudioFixture('stream', 'lookup', true),
+  textEditFixture(true),
+  textEditFixture(false),
+  textEditFixture(true, true),
   signedInHomeFixture(393, 852),
   signedInHomeFixture(320, 568),
   manualGenerationFixture('card_standard', 393, 852),

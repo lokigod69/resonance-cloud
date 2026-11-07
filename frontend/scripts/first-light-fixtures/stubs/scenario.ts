@@ -41,6 +41,11 @@ export type Scenario = {
   activeLanguage?: string
   offlineGeneration?: boolean
   translationFailsOnce?: boolean
+  editableWord?: { id: string; word: string; translation: string; ipa: string | null; tts_audio_url: string | null }
+  editFailsOnce?: boolean
+  homeDetailRows?: Array<Record<string, unknown>>
+  staticAudioUrl?: string
+  staticAudioDelayMs?: number
   /** compute_word_states behaviour. */
   rpc?: 'ok' | 'error' | 'never'
   rpcDelayMs?: number

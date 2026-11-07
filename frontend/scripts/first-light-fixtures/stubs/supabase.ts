@@ -70,8 +70,19 @@ function resolveBuilder(state: BuilderState): Promise<Res> {
   }
 
   if (state.table === 'words') {
+    if (state.op === 'update' && s.editableWord) {
+      record('update:words', { updates: state.payload, filters: state.calls })
+      const attempt = (window as any).__calls.filter((call: any) => call.kind === 'update:words').length
+      if (s.editFailsOnce && attempt === 1) return settle({ data: null, error: { message: 'Save unavailable (fixture)' } }, 100)
+      return settle({ data: { ...s.editableWord, ...(state.payload as object) }, error: null }, 100)
+    }
     // Word Stream kept-today count: select('id', { count, head }) + jsonb filters.
     const selectCall = state.calls.find((c) => c.method === 'select')
+    const deckFilter = state.calls.find((c) => c.method === 'eq' && c.args[0] === 'deck_id')
+    if (s.offlineGeneration && selectCall?.args[0] === 'id' && deckFilter) {
+      record('select:deck-word-ids', deckFilter.args[1])
+      return settle({ data: [{ id: 'text-word-1' }, { id: 'text-word-2' }], error: null }, 10)
+    }
     const options = selectCall?.args?.[1] as { count?: string; head?: boolean } | undefined
     if (options?.head) {
       record('count:words', state.calls)
@@ -79,6 +90,10 @@ function resolveBuilder(state: BuilderState): Promise<Res> {
     }
     const inCall = state.calls.find((c) => c.method === 'in')
     const ids = (inCall?.args?.[1] as string[]) ?? []
+    if (s.homeDetailRows) {
+      record('select:home-details', ids)
+      return settle({ data: s.homeDetailRows.filter((row) => ids.includes(row.id as string)), error: null }, 10)
+    }
     const data = ids.map((id) => ({ id, thumbnail_url: null, tts_audio_url: null, metadata: null }))
     return settle({ data, error: null }, 10)
   }

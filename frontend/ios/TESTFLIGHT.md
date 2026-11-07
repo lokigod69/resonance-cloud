@@ -17,7 +17,9 @@ From `frontend/` on the Mac:
 npm run verify && npm run test:local && npm run build:ios
 ```
 
-`build:ios` checks the signed-in shell fixtures and alphabet inventory, builds the app, strips the remotely served media, syncs Capacitor, and compares the native copy with the fresh build. The production origins and native sign-in callback come from `.env.ios`. The offline UI gate uses Chrome or Brave (or `CHROME_PATH`) and real Home/Generate components inside PolishGlassLayout, with fake auth and providers. It covers phone safe areas, 320px/393px German forms, Standard selection, Text generation, pending editing locks and failed-request recovery. Run it separately with `npm run test:ios-ui`.
+`build:ios` checks the signed-in shell fixtures and alphabet inventory, builds the app, strips the remotely served media, syncs Capacitor, and compares the native copy with the fresh build. The production origins and native sign-in callback come from `.env.ios`. The offline UI gate uses Chrome or Brave (or `CHROME_PATH`) and real Home/Generate components inside PolishGlassLayout, with fake auth and providers. It covers phone safe areas, 320px/393px German forms, Standard selection, Text generation, pending editing locks, failed-request recovery, Text editing and Home recording validity/replay. Run it separately with `npm run test:ios-ui`.
+
+Text cards use device pronunciation when no recording exists. Editing the headword clears its obsolete recording; translation-only changes retain it. The legacy generated-pronunciation endpoint was never deployed, so successful Text saves must not wait for it or claim a recording was regenerated. Physical playback still needs a device check.
 
 Before calling a release verified, inspect the signed-in Home and Media screens in an iPhone web view. Enter and lock two words, open and dismiss the software keyboard, then scroll. Check header clearance, no horizontal clipping or focus zoom, and all six bottom tabs. Also inspect the signed-out landing screen. Keep audio muted. Physical camera/audio checks must be reported separately from simulator evidence.
 

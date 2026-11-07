@@ -6,6 +6,7 @@ export type EditImagelessCardInput = {
   word?: string
   translation?: string
   ipa?: string | null
+  invalidatePronunciation?: boolean
 }
 
 export function useEditImagelessCard() {
@@ -17,6 +18,12 @@ export function useEditImagelessCard() {
     if (input.word !== undefined) updates.word = input.word
     if (input.translation !== undefined) updates.translation = input.translation
     if (input.ipa !== undefined) updates.ipa = input.ipa
+    if (input.invalidatePronunciation && input.word !== undefined) {
+      // An old recording must never pronounce a newly edited headword.
+      updates.tts_audio_url = null
+      updates.tts_status = null
+      updates.tts_generated_at = null
+    }
 
     if (!input.word_id) throw new Error('Card is required')
     if (Object.keys(updates).length === 0) return null
@@ -32,6 +39,7 @@ export function useEditImagelessCard() {
         .single()
 
       if (updateError) throw new Error(updateError.message)
+      if (!data) throw new Error('Could not update card')
       return data
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Could not update card'

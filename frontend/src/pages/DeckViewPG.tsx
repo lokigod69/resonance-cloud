@@ -246,7 +246,7 @@ export default function DeckViewPG() {
           word: updatedWord.word,
           translation: updatedWord.translation,
           ipa: updatedWord.ipa,
-          tts_audio_url: updatedWord.tts_audio_url ?? word.tts_audio_url,
+          tts_audio_url: updatedWord.tts_audio_url === undefined ? word.tts_audio_url : updatedWord.tts_audio_url,
         }
         : word
     )))
@@ -989,7 +989,7 @@ export default function DeckViewPG() {
                               /* Word + translation already live on the card face — keep only the speak affordance */
                               <button
                                 type="button"
-                                onClick={() => { void playWord(word) }}
+                                onClick={() => { void playWord({ ...word, target_language: deck.target_language }) }}
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 transition-colors hover:bg-white/10 hover:text-white"
                                 aria-label={`Play pronunciation for ${word.word}`}
                               >
@@ -998,7 +998,7 @@ export default function DeckViewPG() {
                             ) : (
                               <button
                                 type="button"
-                                onClick={() => { void playWord(word) }}
+                                onClick={() => { void playWord({ ...word, target_language: deck.target_language }) }}
                                 className="bg-transparent border-0 p-0 text-2xl font-bold text-white long-copy cursor-pointer hover:opacity-85 transition-opacity"
                               >
                                 {word.word}

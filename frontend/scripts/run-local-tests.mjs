@@ -27,6 +27,7 @@ const SCRIPTS = [
   'test:speak-personas',
   'test:lens',
   'test:translation-provider',
+  'test:pronunciation-hook',
   'test:oauth-onboarding',
   'test:admin-layer2-lab',
   'test:card-generation-progress',

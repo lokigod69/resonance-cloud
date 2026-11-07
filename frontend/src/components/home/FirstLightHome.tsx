@@ -456,10 +456,16 @@ export default function FirstLightHome({
       .slice(0, REST_BUOY_COUNT)
   }, [duePool, showRestBuoys, wordStates.data])
 
-  // Detail lookup budget: the visible buoys only (5 mobile / 12 desktop, §7).
+  // Keep the open card's audio after grading removes its buoy from the pool.
+  // The lookup stays bounded to visible buoys plus that one active card.
   const detailLemmas = useMemo(
-    () => (showRestBuoys ? restLemmas : visibleDue),
-    [restLemmas, showRestBuoys, visibleDue],
+    () => {
+      const visible = showRestBuoys ? restLemmas : visibleDue
+      return sheet && !visible.some((lemma) => lemma.wordIds[0] === sheet.lemma.wordIds[0])
+        ? [...visible, sheet.lemma]
+        : visible
+    },
+    [restLemmas, showRestBuoys, visibleDue, sheet],
   )
   const details = useHomeWordDetails(detailLemmas, activeLanguage)
 

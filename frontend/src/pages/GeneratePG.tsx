@@ -45,7 +45,6 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { useTranslateAndIpa } from '@/hooks/useTranslateAndIpa'
 import { useSubmitImagelessImport } from '@/hooks/useSubmitImagelessImport'
 import { useAppendImagelessCards } from '@/hooks/useAppendImagelessCards'
-import { useGenerateImagelessTts } from '@/hooks/useGenerateImagelessTts'
 import { LingwaveLoader } from '@/components/ui/LingwaveLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import {
@@ -71,30 +70,6 @@ function isLaneLockedDeckType(deckType: ExistingDeck['deck_type'] | null | undef
   return deckType === 'video' || deckType === 'card_text'
 }
 
-async function fetchAllWordIds(deckId: string): Promise<string[]> {
-  const { data, error } = await supabase
-    .from('words')
-    .select('id')
-    .eq('deck_id', deckId)
-    .order('created_at', { ascending: true })
-    .order('id', { ascending: true })
-  if (error) throw new Error(error.message)
-  return (data ?? []).map((row) => row.id as string)
-}
-
-async function fetchLatestWordIds(deckId: string, count: number): Promise<string[]> {
-  if (count <= 0) return []
-  const { data, error } = await supabase
-    .from('words')
-    .select('id')
-    .eq('deck_id', deckId)
-    .order('created_at', { ascending: false })
-    .order('id', { ascending: false })
-    .limit(count)
-  if (error) throw new Error(error.message)
-  return (data ?? []).map((row) => row.id as string).reverse()
-}
-
 /* ─── Main Component ────────────────────────────── */
 
 export default function GeneratePG() {
@@ -117,7 +92,6 @@ export default function GeneratePG() {
   const { translateAndIpa } = useTranslateAndIpa()
   const { submitImagelessImport } = useSubmitImagelessImport()
   const { appendImagelessCards } = useAppendImagelessCards()
-  const { generateImagelessTts } = useGenerateImagelessTts()
 
   useEffect(() => {
     prefetchPlan()
@@ -274,12 +248,11 @@ export default function GeneratePG() {
         let targetDeckId: string
         if (existingDeck?.id) {
           targetDeckId = existingDeck.id
-          const insertedCount = await appendImagelessCards({
+          await appendImagelessCards({
             p_deck_id: existingDeck.id,
             p_items: items.map((item) => ({ ...item, base_language: baseLanguageValue })),
             p_origin: origin,
           })
-          triggerImagelessTts(() => fetchLatestWordIds(existingDeck.id, insertedCount))
         } else {
           targetDeckId = await submitImagelessImport({
             deckName: state.deckName.trim() || 'Text Deck',
@@ -288,7 +261,6 @@ export default function GeneratePG() {
             origin,
             items,
           })
-          triggerImagelessTts(() => fetchAllWordIds(targetDeckId))
         }
         setGeneratedDeckId(targetDeckId)
         setGenerated(true)
@@ -328,17 +300,6 @@ export default function GeneratePG() {
   }
 
   /* ─── Quick Generate path ─── */
-
-  function triggerImagelessTts(loadWordIds: () => Promise<string[]>) {
-    void loadWordIds()
-      .then((wordIds) => {
-        if (wordIds.length > 0) {
-          return generateImagelessTts({ word_ids: wordIds })
-        }
-        return undefined
-      })
-      .catch(() => undefined)
-  }
 
   function handleQuickGenerate(words: string[]) {
     // Quick Generate: drop video-only customisations and submit immediately.

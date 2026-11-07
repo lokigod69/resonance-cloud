@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { playPronunciation } from '../src/hooks/usePronunciation'
 
-type SpeechRecord = { text: string; lang?: string }
+type SpeechRecord = { text: string; lang?: string; voice?: string }
 
 const state = {
   audioConstructed: 0,
@@ -10,6 +10,7 @@ const state = {
   speechSpoken: [] as SpeechRecord[],
   speechCancelled: 0,
   rejectAudio: false,
+  voices: [] as Array<{ name: string; lang: string }>,
 }
 
 class FakeAudio {
@@ -34,6 +35,7 @@ class FakeAudio {
 class FakeSpeechSynthesisUtterance {
   text: string
   lang = ''
+  voice: { name: string; lang: string } | null = null
 
   constructor(text: string) {
     this.text = text
@@ -44,11 +46,12 @@ Object.assign(globalThis, {
   Audio: FakeAudio,
   SpeechSynthesisUtterance: FakeSpeechSynthesisUtterance,
   speechSynthesis: {
+    getVoices() { return state.voices },
     cancel() {
       state.speechCancelled += 1
     },
     speak(utterance: FakeSpeechSynthesisUtterance) {
-      state.speechSpoken.push({ text: utterance.text, lang: utterance.lang })
+      state.speechSpoken.push({ text: utterance.text, lang: utterance.lang, ...(utterance.voice ? { voice: utterance.voice.name } : {}) })
     },
   },
 })
@@ -60,6 +63,7 @@ function reset() {
   state.speechSpoken = []
   state.speechCancelled = 0
   state.rejectAudio = false
+  state.voices = []
 }
 
 async function main() {
@@ -77,11 +81,21 @@ async function main() {
   assert.equal(state.speechCancelled, 1)
 
   reset()
+  state.voices = [{ name: 'German voice', lang: 'de-DE' }, { name: 'English voice', lang: 'en-GB' }]
+  assert.equal(await playPronunciation({ text: 'Perspicacity', audioUrl: null, lang: 'English' }), 'speech')
+  assert.deepEqual(state.speechSpoken, [{ text: 'Perspicacity', lang: 'en-GB', voice: 'English voice' }], 'canonical target language selects a matching installed device voice')
+
+  reset()
   state.rejectAudio = true
   await playPronunciation({ text: 'ciao', audioUrl: 'https://cdn.example/ciao.mp3', lang: 'it' })
   assert.equal(state.audioConstructed, 1)
   assert.equal(state.audioPlayed, 1)
   assert.deepEqual(state.speechSpoken, [{ text: 'ciao', lang: 'it' }])
+
+  reset()
+  state.rejectAudio = true
+  assert.equal(await playPronunciation({ text: 'ciao', audioUrl: 'https://cdn.example/ciao.mp3', lang: 'it', allowSpeechFallback: false }), 'none')
+  assert.equal(state.speechSpoken.length, 0, 'recorded-audio-only callers must remain silent if playback fails')
 
   reset()
   await playPronunciation({ text: 'eins', audioUrl: 'https://cdn.example/eins.mp3', lang: 'de' })

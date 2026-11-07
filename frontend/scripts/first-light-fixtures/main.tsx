@@ -13,6 +13,9 @@ import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import FirstLightHome from '@/components/home/FirstLightHome'
 import GenerateGO from '@/pages/GenerateGO'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
+import ImagelessCardEditModal from '@/components/ImagelessCardEditModal'
+import { useHomeWordDetails } from '@/lib/homeWordDetails'
+import type { LemmaState } from '@/hooks/useWordStates'
 import { record } from './stubs/scenario'
 import './harness.css'
 import { FIXTURES } from './fixtures'
@@ -63,6 +66,32 @@ function Harness({ fixture }: { fixture: (typeof FIXTURES)[number] }) {
   )
 }
 
+function TextEditHarness({ fixture }: { fixture: (typeof FIXTURES)[number] }) {
+  const [open, setOpen] = useState(true)
+  const [word, setWord] = useState(fixture.scenario.editableWord!)
+  return <div className="theme-rainy-day skin-glassy dark">
+    <span data-saved-word>{word.word}</span>
+    <ImagelessCardEditModal
+      word={word}
+      isOpen={open}
+      onClose={() => { record('edit:closed', null); setOpen(false) }}
+      onSaved={(updated) => { record('edit:saved', updated); setWord(updated as typeof word) }}
+      onDeleted={() => { throw new Error('Unexpected delete in edit fixture') }}
+    />
+  </div>
+}
+
+function HomeDetailHarness() {
+  const [text, setText] = useState(String(w.__scenario.homeDetailRows[0].word))
+  const [, refresh] = useState(0)
+  const visible = [{ wordIds: ['detail-word'], displayWord: text }] as LemmaState[]
+  const details = useHomeWordDetails(visible, 'English')
+  w.__setDetailText = setText
+  w.__refreshDetail = () => refresh((value) => value + 1)
+  w.__homeDetails = details.get('detail-word') ?? null
+  return <span data-detail-text>{text}</span>
+}
+
 async function main() {
   const params = new URLSearchParams(location.search)
   const id = params.get('f')
@@ -97,6 +126,7 @@ async function main() {
     // paid provider from receiving these fixture requests.
     window.fetch = async (input, init) => {
       const url = new URL(typeof input === 'string' ? input : input instanceof URL ? input.href : input.url, location.origin)
+      record('fetch', url.pathname)
       if (url.pathname === '/api/entitlements') {
         return Response.json({ plan: 'free', is_admin: false })
       }
@@ -133,6 +163,8 @@ async function main() {
         </Route> : <>
         <Route path="/dashboard" element={<Harness fixture={fixture} />} />
         <Route path="/generate" element={<div className="theme-cosmos"><GenerateGO /></div>} />
+        <Route path="/edit-text" element={<TextEditHarness fixture={fixture} />} />
+        <Route path="/home-detail" element={<HomeDetailHarness />} />
         <Route path="/deck/:id" element={<div>Generated deck</div>} />
         </>}
       </Routes>

@@ -463,3 +463,8 @@ Keep working rules in AGENTS and the feature/skill/check map in frontend/README.
 - Preserve the approved app design and existing fixed navigation; repair safe-area clearance, WebKit focus zoom and in-flight editing. Do not disable accessibility zoom or replace the app architecture to compensate for small text inputs.
 - Include real signed-in shell fixtures in every iOS web build. Require native keyboard/layout evidence and separately report provider readiness. Signed-out launch, file integrity, mocked calls and worker liveness are insufficient evidence of a working full app.
 - Fail immediately on deterministic provider auth/payment rejection and ambiguous timeout; do not hide it behind repeated calls. Keep infrastructure failures eligible for existing Lens refunds and log only sanitized status/classification. Credentials/billing recovery is operational work, not a reason to switch models or bypass auth.
+
+## 2026-11-07 — Text-card pronunciation and successful edits
+
+- Keep the existing device-speech fallback for Text cards and remove calls to the legacy audio route that never shipped. Restoring basic saves does not justify introducing a new paid pipeline or pretending a recording was regenerated.
+- A headword edit invalidates its prior recording atomically. Every playback fallback must respect source-text identity, including case, while translation-only edits retain existing recordings. Home caches include content identity and keep the current sheet's recording until Next.

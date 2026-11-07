@@ -225,7 +225,7 @@ export default function DeckView() {
           word: updatedWord.word,
           translation: updatedWord.translation,
           ipa: updatedWord.ipa,
-          tts_audio_url: updatedWord.tts_audio_url ?? word.tts_audio_url,
+          tts_audio_url: updatedWord.tts_audio_url === undefined ? word.tts_audio_url : updatedWord.tts_audio_url,
         }
         : word
     )))

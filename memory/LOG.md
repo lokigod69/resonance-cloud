@@ -2,6 +2,16 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Text-card saves and pronunciation repaired
+
+The account-recovery audit found `/api/generate-imageless-tts` returns 404 on both GET and OPTIONS. Its only implementation was the never-deployed local DAW router deleted in `be208ef6`; this is older than the iPhone regression. Active Text generation and editing still called it. Generation swallowed failure; a headword edit persisted text but then failed before refreshing/closing. The broader learner-route inventory found no other absent HTTP handler; this is source coverage, not proof of provider health.
+
+Removed the dead background call and regeneration control. Text cards retain the existing device-speech fallback and now pass the deck target language. Save failure keeps the draft; success returns the saved row. Changed headwords clear denormalized audio in the same update and preserve explicit null in both deck views. Home rejects static audio for changed source text, keeps its cache tied to content identity, rejects late obsolete results and retains an open graded card's recording until Next. Unchanged and translation-only cards retain their recordings. No new provider, schema or production data operation.
+
+Independent review found stale Home metadata fallback and a vacuous no-legacy-call assertion; both fixed. The single re-review found held-sheet replay loss and case-insensitive source comparison; those narrow corrections were then verified locally with real Home fixtures, within the project review-round cap. No final independent PASS is claimed. Counterfactual old code fails the strengthened generation assertions and held-sheet replay test. Final verify passed (zero errors/two existing warnings), 31/31 offline suites passed with five known-stale skips, web build passed, and final `build:ios` passed all 16 UI scenarios/180 assertions and matched 4,226 packaged files. Deployment/upload evidence follows after completion.
+
+Real iPhone 16 WKWebView fixture verified Text edit failure/retry with all 13 assertions passing, using isolated fake services. The German modal fits, has 16px fields and clears its close button. Evidence: `/Users/saya/Desktop/Lingwave/investigations/ios-qa-2026-11-07/iphone16-text-edit.jpg` and `native-text-edit-verdict.json`. Physical audio/camera and paid providers remain unverified. The Mac locked during account work; owner unlock and the actual OpenRouter sign-in are pending.
+
 ## 2026-11-07 — Repaired build 3 available in TestFlight
 
 After the owner restored App Store Connect sign-in, build 1.0 (3) was Ready to Test. Added that processed internal-only build to the existing Lingwave Owner group and verified Testing, one tester and three builds. Apple build ID `5908d458-3720-4a47-8a26-a37bad38aa28`; source remains `e60016f6`. Evidence is `/Users/saya/Desktop/Lingwave/investigations/ios-qa-2026-11-07/testflight-build-3.jpg`. No new binary or application code was needed for this assignment.
