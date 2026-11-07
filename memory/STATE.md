@@ -1,18 +1,18 @@
 # Current State
 Last updated: 2026-11-07
 
-Current truth and next actions only. Deployment ids, check tallies and release evidence live in LOG.md and the notes; the full 2026-09-07 snapshot is [[archive/state-2026-09-07]].
+Current truth and next actions. Release evidence is in LOG.md; older snapshot: [[archive/state-2026-09-07]].
 
 ## Live on lingwave.ai
-- September releases are live: hardening, Home, Speak/Lens, Today/guided, twelve bases, café visuals, native input and critic fixes. Release commits are in LOG and the linked notes. Waves are unchanged.
-- All twelve learning targets have 100 A1 and 100 A2 lessons in Today. Home, Library and Media follow the selected target. Home and Today link to optional Hangul, hiragana and Cyrillic practice. Every symbol, Japanese and Russian example word, and all 3,192 Hangul builder choices have recordings. The UI and guided explanations support twelve bases.
-- Today remembers the selected path per learner and language. Matching requires two distinguishable pairs in the learner’s base. Drafts resume at the next exercise if matching is skipped. Guided lesson bodies load per language.
+- September Home, Speak/Lens, Today/guided, hardening and visual releases are live; commits in LOG. Waves unchanged.
+- Twelve targets each have 100 A1 and 100 A2 Today lessons; Home/Library/Media follow the target. Optional Hangul/hiragana/Cyrillic practice includes recorded symbols/examples and all 3,192 Hangul choices. UI/guided explanations support twelve bases.
+- Today remembers paths per learner/language. Matching needs two distinguishable pairs in the base language; skipped matching resumes at the next exercise. Lesson bodies load per language.
 - Speak: `4c4804a9` replaced Groq’s discontinued Llama with openai/gpt-oss-120b. Real provider calls passed; signed-in owner verification remains.
-- Lens has stable language decks, exact save receipts and bounded scans. Live voice reserves ten minutes and refunds once on definitive failure. Request deadlines apply; spending calls never auto-retry.
+- Lens has language decks, exact save receipts and bounded scans. Live reserves ten minutes, refunds once on definitive failure and has request deadlines; spending calls never auto-retry.
 - Money: exact idempotent generation refunds; Stripe sandbox subscription flow passed. `STRIPE_BILLING_ENABLED` stays off until launch.
 - Study recall attempts persist offline (IndexedDB) with stable receipts.
 - All eighteen hardening/Today/base migrations applied; direct client INSERT removed and worker columns guarded. Cron’s missing analytics table fixed in `39c10136`; subsequent execution unobserved.
-- Production quotas fail closed; auth email confirmation and secure password change on, CAPTCHA off. Reset requires PASSWORD_RECOVERY. Vercel secret values are unreadable via CLI, not necessarily empty.
+- Quotas fail closed. Email confirmation/secure password change on, CAPTCHA off; reset requires PASSWORD_RECOVERY. Unreadable Vercel secrets are not necessarily empty.
 - Tooling: AGENTS owns rules; frontend README maps checks. `verify` and `test:local` cover frontend/offline contracts. Full Python baseline had 16 known September failures.
 
 ## In progress
@@ -25,17 +25,17 @@ Current truth and next actions only. Deployment ids, check tallies and release e
 - Today's visual target (8+/10) is unmet at 7.8 after the three-round cap: Trophy wording and wrapping, reward grouping, small-phone overview spacing.
 - Guided progress and drafts are device-local; kept phrases are account-backed.
 - The machine-authored guided explanation editions and the nine lazy UI packs are not native-proofread.
-- Lingwave 1.0 (3), with the signed-in safe-area and keyboard-zoom repairs from `e60016f6`, is processed and Testing in the Lingwave Owner internal TestFlight group (one tester). The same repairs are live on the web and passed real-shell offline fixtures plus iPhone 16/17 simulator checks. Physical camera/audio remain unverified. The Mac release guide is `frontend/ios/TESTFLIGHT.md`.
+- Lingwave 1.0 (4), source `323ca7bf`, is Testing in Lingwave Owner (one tester). It includes safe-area/zoom and Text-save/audio fixes. Web and iPhone simulator checks passed; physical camera/audio remain unverified. Release guide: `frontend/ios/TESTFLIGHT.md`.
 - Live token expiry is not a socket-cost ceiling; relay/revocation remains.
-- Production Text and Standard cards are blocked by a confirmed OpenRouter 401 on November 7; repair `OPENROUTER_API_KEY` in both Vercel and Railway. Lens is blocked by direct Gemini 402; AI Studio requires prepay setup, but the production key/project mapping still needs confirmation. Supabase and Railway are running. Account access and an approved live-test budget remain necessary. Gemini TTS and xAI Live migration follow-ups are separate.
-- Text cards use existing device pronunciation when no recording exists. Calls to the never-deployed legacy audio endpoint and its false regeneration control are removed. Edits save independently, clear obsolete recordings on changed headwords and retain recordings on translation-only edits, including Home. This follow-up requires iPhone build 4; release status is in LOG.
+- Text/Standard failed with OpenRouter 401. The owner's new key passed read-only authentication and balance checks; its Vercel/Railway updates await owner entry in prepared forms, then redeployment. Google now shows the owner's €20 credit purchase; Lens recovery and production key ownership remain unverified. Google also supplies Gemini speech in Speak. A live-test budget is still needed.
+- Text repair `323ca7bf` is live: saves no longer await the never-deployed audio endpoint; changed headwords clear obsolete recordings, translation edits retain them, and device pronunciation remains available. iPhone build 4 release status is in LOG.
 - 27 historical ambiguous generation operations (147 credits charged) need reconciliation before any manual refund.
 - Deleted-word storage queue has 255 entries: 97 deletable and 158 unsafe/protected. Preview sweep only; deletion needs explicit owner approval for the 97 and `STORAGE_CLEANUP_MODE=delete` or one-off commit.
 - Platform follow-ups: CAPTCHA (needs client work), CSP still report-only, `SUNO_CALLBACK_BASE_URL` defaults to the dead resonanz.pro, full historical Supabase replay needs Docker.
 
 ## Next actions
-- Restore OpenRouter credentials and resolve Google payment/access, then verify bounded live Text, Standard and Lens runs with an approved budget. Install internal build 1.0 (3) and complete the physical-device pass; offline checks do not prove provider recovery.
-- Continue other languages from their first missing ten-lesson path. French and Portuguese B1 each need P6–P10. Use the verified source hashes and check alternative correct answers. Korean intermediate text is available for personal testing in the local reader. Recording and mini books stay paused.
+- Finish the prepared OpenRouter updates and redeploy, then verify bounded live Text, Standard and Lens runs with an approved budget. Install internal build 1.0 (4) and complete the physical-device pass; offline checks do not prove provider recovery.
+- Continue Indonesian/Japanese/Polish/Russian B1 P3–P10 with verified hashes and alternative-answer checks. Korean intermediate text is in the local reader. Recording/mini books stay paused. The old French/Portuguese P6–P10 action is superseded by their completed B1 writing.
 - Owner: rotate the credentials pasted into April–May Codex prompts; the physical iPhone pass; the six hardening decisions; PostHog credentials to switch analytics on; the Supabase outstanding-invoice warning.
 - Agents: after an owner OK, run the storage deletion; migrate the Gemini TTS and xAI Live models with a paid sample; the Today visual leftovers are the next product design scope (use `ui-critic-loop`).
 

@@ -2,6 +2,16 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Build 4 available; provider account access restored
+
+Text repair `323ca7bf` deployed successfully to Vercel (`CkUYXqvXTcRGBEGRDqun6mxeMQeT`) and Railway (`4b080466-ec35-4557-a097-e756e0dab966`). Website and worker health returned 200; native translation preflight returned 204 with the correct origin. These are connectivity checks, not live paid feature checks.
+
+Signed archive `/Users/saya/Library/Developer/Xcode/Archives/2026-11-07/Lingwave-1.0-4-TextRepair.xcarchive` is version 1.0 build 4 with all 4,226 packaged files matching. Xcode uploaded it successfully at 18:26 Manila. Apple processed build `79933aeb-21b4-4a42-82ff-1a358ae47ae7`; it was added to Lingwave Owner and verified Testing (one tester, four builds). Evidence: `/Users/saya/Desktop/Lingwave/investigations/ios-qa-2026-11-07/testflight-build-4.jpg`. No physical camera or audible playback pass is claimed.
+
+The Mac and account sessions are accessible again. The owner created and authorized a replacement OpenRouter key; read-only key and credits endpoints returned 200, with about $53.44 account credit. The value is not stored in git. Vercel and Railway replacement forms are prepared, awaiting owner entry/submission required by the browser credential handoff rule; neither replacement has been saved or deployed yet.
+
+The owner purchased Google credit personally; AI Studio visibly confirms €20 on llm arena, auto-reload off. Production's exact key/project match and recovery from Gemini 402 remain unverified. Code confirms Google serves Lens and Gemini speech in Speak, while Text has device pronunciation and bundled alphabet playback consumes no Google credit. No paid generation, SQL, refunds, old-job replay or migrations were run. Next: finish the credential handoff, deploy, then obtain a bounded live-test budget and verify the affected paths.
+
 ## 2026-11-07 — Text-card saves and pronunciation repaired
 
 The account-recovery audit found `/api/generate-imageless-tts` returns 404 on both GET and OPTIONS. Its only implementation was the never-deployed local DAW router deleted in `be208ef6`; this is older than the iPhone regression. Active Text generation and editing still called it. Generation swallowed failure; a headword edit persisted text but then failed before refreshing/closing. The broader learner-route inventory found no other absent HTTP handler; this is source coverage, not proof of provider health.
