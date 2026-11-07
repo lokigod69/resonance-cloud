@@ -196,9 +196,12 @@ async function handlePost(req: Request): Promise<Response> {
       : `${baseSystemPrompt}\n\nYour previous response was invalid. Return exactly ${body.items.length} items in the same order, preserving every input word verbatim.`
 
     const startedAt = Date.now()
+    let providerResponded = false
     try {
       const llmRes = await callOpenRouter(apiKey, systemPrompt, userPrompt)
+      providerResponded = true
       if (!llmRes.ok) {
+        console.error('[translate-and-ipa] OpenRouter request failed:', { status: llmRes.status })
         lastDetail = llmRes.status === 429
           ? 'Too many requests. Please wait a moment.'
           : 'Translation service unavailable'
@@ -208,6 +211,9 @@ async function handlePost(req: Request): Promise<Response> {
           latencyMs: Date.now() - startedAt, errorType: `http_${llmRes.status}`,
           metadata: { attempt },
         })
+        // Retrying cannot repair provider credentials, billing or a rejected
+        // request. Keep those upstream failures separate from learner auth.
+        if (llmRes.status < 500) break
         continue
       }
 
@@ -245,16 +251,23 @@ async function handlePost(req: Request): Promise<Response> {
       })
       return jsonResponse(req, { items }, 200)
     } catch (err) {
-      console.error('[translate-and-ipa] OpenRouter attempt failed:', err instanceof Error ? err.message : err)
-      lastDetail = err instanceof TypeError && err.message.includes('fetch')
+      const errorType = err instanceof Error && ['AbortError', 'TimeoutError', 'TypeError', 'SyntaxError'].includes(err.name)
+        ? err.name
+        : 'provider_error'
+      console.error('[translate-and-ipa] OpenRouter attempt failed:', { errorType })
+      const networkFailure = !providerResponded && err instanceof TypeError
+      lastDetail = networkFailure
         ? 'Translation service unreachable'
         : 'Translation service unavailable'
       await writeUsageEvent({
         userId, feature: 'translate_ipa', stage: 'enrichment', status: 'failed',
         modelProvider: 'openrouter', modelName: TRANSLATE_MODEL,
         latencyMs: Date.now() - startedAt,
-        errorType: err instanceof Error ? err.name : 'unknown', metadata: { attempt },
+        errorType, metadata: { attempt },
       })
+      // A timed-out/aborted request may already have incurred provider work.
+      // Do not spend again, or retry a body that the provider already returned.
+      if (!networkFailure) break
     }
   }
 

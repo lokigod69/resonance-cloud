@@ -35,17 +35,25 @@
 }
 
 .skin-glassy .gen-container {
+  --generate-safe-top: var(--app-safe-top);
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 0;
   width: 100%;
   max-width: 100%;
-  padding: clamp(16px, 3vw, 34px) 20px 120px;
+  padding: calc(var(--generate-safe-top) + clamp(16px, 3vw, 34px)) 20px 120px;
   box-sizing: border-box;
   overscroll-behavior-x: none;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+@media (min-width: 768px) {
+  .skin-glassy .gen-container {
+    /* The desktop layout already reserves the header and its safe area. */
+    --generate-safe-top: 0px;
+  }
 }
 
 .skin-glassy .gen-container::-webkit-scrollbar {
@@ -1367,7 +1375,7 @@
 
   /* Generate orbs mobile */
   .skin-glassy .gen-container {
-    padding: 16px 12px 100px;
+    padding: calc(var(--generate-safe-top) + 16px) 12px 100px;
   }
 
   .skin-glassy .gen-section h3 {

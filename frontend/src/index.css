@@ -191,6 +191,16 @@ body,
   overflow-x: clip;
 }
 
+/* WebKit zooms the whole visual viewport when a small text field receives
+   focus. Keep compact controls readable on phones without disabling pinch
+   zoom or reducing the larger type used by study exercises. */
+@media (max-width: 767px) {
+  :is(input, textarea, select, [contenteditable="true"]):is(.text-xs, .text-sm),
+  .skin-glassy .gen-orb.input-orb input {
+    font-size: max(16px, 1rem);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

@@ -1,3 +1,5 @@
+import { scenario } from './scenario'
+
 export function useLanguage() {
-  return { activeLanguage: 'German', setActiveLanguage() {}, languageReady: true }
+  return { activeLanguage: scenario().activeLanguage ?? 'German', setActiveLanguage() {}, languageReady: true }
 }

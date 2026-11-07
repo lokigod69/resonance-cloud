@@ -2,4 +2,6 @@
    frontend/src for utilities (auto-detection would otherwise only look next to
    this file, and the harness would render unstyled). */
 @import "../../src/index.css";
+@import "../../src/themes/theme-contract.css";
+@import "../../src/themes/rainy-day.css";
 @source "../../src";

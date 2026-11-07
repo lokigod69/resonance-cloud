@@ -12,6 +12,8 @@ import { createRoot } from 'react-dom/client'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import FirstLightHome from '@/components/home/FirstLightHome'
 import GenerateGO from '@/pages/GenerateGO'
+import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
+import { record } from './stubs/scenario'
 import './harness.css'
 import { FIXTURES } from './fixtures'
 import { Ctx } from './utils'
@@ -81,6 +83,35 @@ async function main() {
   w.__scenario = fixture.scenario
   w.__inserts = []
   w.__calls = []
+  // Native simulator runs keep WebKit's actual env(safe-area-inset-*) values.
+  if (!params.has('native')) {
+    document.documentElement.style.setProperty('--app-safe-top', `${fixture.safeArea?.top ?? 0}px`)
+    document.documentElement.style.setProperty('--app-safe-bottom', `${fixture.safeArea?.bottom ?? 0}px`)
+  }
+  if (fixture.shell) {
+    document.documentElement.className = 'theme-rainy-day skin-glassy dark'
+    document.getElementById('app-topnav-right-slot')?.remove()
+  }
+  if (fixture.scenario.offlineGeneration) {
+    // Exercise the real hooks and payloads, while preventing any service or
+    // paid provider from receiving these fixture requests.
+    window.fetch = async (input, init) => {
+      const url = new URL(typeof input === 'string' ? input : input instanceof URL ? input.href : input.url, location.origin)
+      if (url.pathname === '/api/entitlements') {
+        return Response.json({ plan: 'free', is_admin: false })
+      }
+      if (url.pathname === '/api/translate-and-ipa') {
+        const payload = JSON.parse(String(init?.body ?? '{}'))
+        record('api:translate-and-ipa', payload)
+        await new Promise((resolve) => setTimeout(resolve, 900))
+        if (fixture.scenario.translationFailsOnce && w.__calls.filter((call: any) => call.kind === 'api:translate-and-ipa').length === 1) {
+          return Response.json({ error: 'Translation service unavailable' }, { status: 503 })
+        }
+        return Response.json({ items: payload.items.map((item: any) => ({ ...item, translation: `${item.word} meaning`, ipa: '/test/' })) })
+      }
+      throw new Error(`Unexpected fixture fetch: ${url.pathname}`)
+    }
+  }
   try {
     localStorage.clear()
     // useTodayMission caches the day's mission per tab — a previous fixture's
@@ -92,15 +123,25 @@ async function main() {
   }
 
   createRoot(document.getElementById('root')!).render(
-    <MemoryRouter initialEntries={['/dashboard']}>
+    <MemoryRouter initialEntries={[fixture.route ?? '/dashboard']}>
       <LocationProbe />
       <Routes>
+        {fixture.shell ? <Route element={<PolishGlassLayout />}>
+          <Route path="/dashboard" element={<Harness fixture={fixture} />} />
+          <Route path="/generate" element={<GenerateGO />} />
+          <Route path="/deck/:id" element={<div>Generated deck</div>} />
+        </Route> : <>
         <Route path="/dashboard" element={<Harness fixture={fixture} />} />
         <Route path="/generate" element={<div className="theme-cosmos"><GenerateGO /></div>} />
         <Route path="/deck/:id" element={<div>Generated deck</div>} />
+        </>}
       </Routes>
     </MemoryRouter>,
   )
+
+  // Let the native simulator interact with real WKWebView focus and keyboard
+  // behavior, without a scripted click racing the operator.
+  if (params.has('manual')) return
 
   const ctx = new Ctx()
   let error = ''

@@ -338,6 +338,111 @@ console.log('\n[gemini provider transient retry]')
     assert('persistent failure retries exactly once', calls === 2, calls)
     assert('persistent failure surfaces as 502', thrown instanceof ApiError && thrown.status === 502, thrown)
   }
+
+  {
+    let calls = 0
+    const provider = createGeminiVisualScanProvider('test-key', async () => {
+      calls += 1
+      if (calls === 1) throw new TypeError('fetch failed')
+      return geminiSuccess()
+    })
+    const result = await provider.scan(baseBody)
+    assert('network failure still gets one retry', calls === 2 && result.items.length === 1)
+  }
+
+  for (const name of ['AbortError', 'TimeoutError']) {
+    let calls = 0
+    const provider = createGeminiVisualScanProvider('test-key', async () => {
+      calls += 1
+      throw new DOMException('timed out', name)
+    })
+    let thrown: unknown = null
+    try {
+      await provider.scan(baseBody)
+    } catch (error) {
+      thrown = error
+    }
+    assert(`${name} does not start another provider call`, calls === 1)
+    assert(`${name} remains an infrastructure failure`, thrown instanceof ApiError && thrown.status === 502)
+  }
+}
+
+console.log('\n[provider rejection fails fast and refunds Lens allowance]')
+for (const providerStatus of [401, 402, 403, 404, 408, 429]) {
+  let calls = 0
+  let debits = 0
+  let refunds = 0
+  const logs: unknown[][] = []
+  const originalError = console.error
+  const provider = createGeminiVisualScanProvider('private-test-key', async () => {
+    calls += 1
+    return new Response('private upstream account details', { status: providerStatus })
+  })
+  const post = createVisualScanPostHandler({
+    requireUser: async () => ({ id: 'user-123', email: null, appMetadata: {}, userMetadata: {} }),
+    consumeQuota: async () => undefined,
+    consumeAllowance: async () => {
+      debits += 1
+      return { refund: async () => { refunds += 1 } }
+    },
+    writeUsage: async () => undefined,
+    provider,
+  })
+  let res: Response
+  try {
+    console.error = (...args: unknown[]) => { logs.push(args) }
+    res = await post(jsonRequest(baseBody))
+  } finally {
+    console.error = originalError
+  }
+  const body = await readJson(res)
+  assert(`${providerStatus}: no automatic retry`, calls === 1, calls)
+  assert(`${providerStatus}: outward status stays 502`, res.status === 502, body)
+  assert(`${providerStatus}: debited allowance refunded exactly once`, debits === 1 && refunds === 1, { debits, refunds })
+  assert(`${providerStatus}: response stays sanitized`, JSON.stringify(body) === JSON.stringify({ error: 'Vision service unavailable' }), body)
+  assert(`${providerStatus}: logs contain only provider label and HTTP status`,
+    JSON.stringify(logs) === JSON.stringify([['[visual-scan] Gemini request failed:', { status: providerStatus }]]), logs)
+}
+
+console.log('\n[malformed provider HTTP 200 refunds without leaking response content]')
+{
+  let calls = 0
+  let debits = 0
+  let refunds = 0
+  const logs: unknown[][] = []
+  const usage: unknown[] = []
+  const originalError = console.error
+  const provider = createGeminiVisualScanProvider('private-test-key', async () => {
+    calls += 1
+    return new Response('private upstream account details private-test-key', { status: 200 })
+  })
+  const post = createVisualScanPostHandler({
+    requireUser: async () => ({ id: 'user-123', email: null, appMetadata: {}, userMetadata: {} }),
+    consumeQuota: async () => undefined,
+    consumeAllowance: async () => {
+      debits += 1
+      return { refund: async () => { refunds += 1 } }
+    },
+    writeUsage: async (event) => { usage.push(event) },
+    provider,
+  })
+  let res: Response
+  try {
+    console.error = (...args: unknown[]) => { logs.push(args) }
+    res = await post(jsonRequest(baseBody))
+  } finally {
+    console.error = originalError
+  }
+  const body = await readJson(res)
+  assert('malformed provider JSON does not retry', calls === 1)
+  assert('malformed provider JSON is an infrastructure failure', res.status === 502)
+  assert('malformed provider JSON refunds the allowance exactly once', debits === 1 && refunds === 1)
+  assert('malformed provider JSON returns a sanitized message',
+    JSON.stringify(body) === JSON.stringify({ error: 'Vision service returned an invalid result' }), body)
+  assert('malformed provider JSON logs only a safe classification',
+    JSON.stringify(logs) === JSON.stringify([['[visual-scan] Gemini response failed:', { status: 200, errorType: 'invalid_json' }]]), logs)
+  assert('malformed provider JSON telemetry excludes upstream body and key',
+    usage.length === 1 && !JSON.stringify(usage).includes('private'), usage)
 }
 
 if (failures > 0) {

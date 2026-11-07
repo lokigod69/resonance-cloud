@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, Wand2 } from 'lucide-react'
+import { LoaderCircle, Sparkles, Wand2 } from 'lucide-react'
 import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
 import PillButton from '../shared/PillButton'
 import PremiumQuickModePanel from '../shared/PremiumQuickModePanel'
@@ -23,6 +23,7 @@ interface WordsStepProps {
   onQuickGenerate: (words: string[]) => void
   onPremiumQuickModeGenerate?: (words: string[], mode: PremiumQuickMode) => void
   onCustomize?: () => void
+  submitting?: boolean
 }
 
 export default function WordsStep({
@@ -31,6 +32,7 @@ export default function WordsStep({
   onQuickGenerate,
   onPremiumQuickModeGenerate,
   onCustomize,
+  submitting = false,
 }: WordsStepProps) {
   const { t, tp } = useTranslation()
   const { isPremiumUi } = usePlan()
@@ -79,25 +81,28 @@ export default function WordsStep({
   }
 
   function handleQuickGenerate() {
+    if (submitting) return
     const allWords = collectWords()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
     onQuickGenerate(allWords)
   }
 
   function handleModeGenerate(mode: PremiumQuickMode) {
+    if (submitting) return
     const allWords = collectWords()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
     onPremiumQuickModeGenerate?.(allWords, mode)
   }
 
   function handleCustomize() {
+    if (submitting) return
     glassInputRef.current?.flush()
     dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
     onCustomize?.()
   }
 
   return (
-    <div className="flex w-full min-w-0 flex-col items-center px-2 pt-6 sm:min-h-[60vh] sm:px-4 sm:pt-8">
+    <fieldset disabled={submitting} aria-busy={submitting} className="flex w-full min-w-0 flex-col items-center px-2 pt-6 sm:min-h-[60vh] sm:px-4 sm:pt-8">
       <motion.h2
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -131,6 +136,7 @@ export default function WordsStep({
           <GlassInput
             ref={glassInputRef}
             onLock={handleLock}
+            disabled={submitting}
             autoFocus
             placeholder={t('generate.words.unifiedPlaceholder')}
           />
@@ -179,15 +185,17 @@ export default function WordsStep({
                 <>
                   <PillButton
                     glow
+                    disabled={submitting}
                     onClick={handleQuickGenerate}
                     className="px-10 py-4 text-base font-semibold"
                   >
-                    <Sparkles className="h-5 w-5" />
-                    {t('generate.primaryGenerate')}
+                    {submitting ? <LoaderCircle className="h-5 w-5 animate-spin" aria-hidden /> : <Sparkles className="h-5 w-5" />}
+                    {submitting ? t('common.loading') : t('generate.primaryGenerate')}
                   </PillButton>
                   {state.productLane === 'card_standard' && (
                     <PillButton
                       variant="secondary"
+                      disabled={submitting}
                       onClick={handleCustomize}
                       className="px-6 py-2.5 text-xs font-medium"
                     >
@@ -200,7 +208,8 @@ export default function WordsStep({
             </motion.div>
           )}
         </AnimatePresence>
+        {submitting && <p role="status" className="text-center text-sm text-muted-foreground">{t('generate.forgingMemories')}</p>}
       </div>
-    </div>
+    </fieldset>
   )
 }

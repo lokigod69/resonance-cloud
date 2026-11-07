@@ -457,3 +457,9 @@ Keep working rules in AGENTS and the feature/skill/check map in frontend/README.
 ## 2026-11-07 — First internal iPhone release
 
 - Package the released React app with all Script Lab recordings. Verify production auth access before building and compare the native copy and signed archive with the fresh iOS payload. The Mac owns signing and upload. Internal release completion requires Apple processing and access for the owner's tester group.
+
+## 2026-11-07 — Signed-in iPhone and provider release gates
+
+- Preserve the approved app design and existing fixed navigation; repair safe-area clearance, WebKit focus zoom and in-flight editing. Do not disable accessibility zoom or replace the app architecture to compensate for small text inputs.
+- Include real signed-in shell fixtures in every iOS web build. Require native keyboard/layout evidence and separately report provider readiness. Signed-out launch, file integrity, mocked calls and worker liveness are insufficient evidence of a working full app.
+- Fail immediately on deterministic provider auth/payment rejection and ambiguous timeout; do not hide it behind repeated calls. Keep infrastructure failures eligible for existing Lens refunds and log only sanitized status/classification. Credentials/billing recovery is operational work, not a reason to switch models or bypass auth.

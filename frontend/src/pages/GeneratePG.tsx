@@ -435,6 +435,7 @@ export default function GeneratePG() {
   return (
     <div className="generate-flow-shell max-w-4xl mx-auto px-4 pt-6 sm:pt-10">
       <BreadcrumbPills
+        submitting={submitting}
         pgStep={pgStep}
         setPgStep={setPgStep}
         existingDeck={!!existingDeck}
@@ -445,6 +446,7 @@ export default function GeneratePG() {
       />
       {pgStep > 0 && pgStep < reviewStep && (
         <GenerateSelectionSummary
+          submitting={submitting}
           state={state}
           pgStep={pgStep}
           setPgStep={setPgStep}
@@ -489,6 +491,7 @@ export default function GeneratePG() {
             <WordsStep
               state={state}
               dispatch={dispatch}
+              submitting={submitting}
               onQuickGenerate={(words) => handleQuickGenerate(words)}
               onPremiumQuickModeGenerate={(words, mode) => handlePremiumQuickModeGenerate(words, mode)}
               onCustomize={() => setPgStep(3)}
@@ -579,6 +582,7 @@ export default function GeneratePG() {
 /* ─── Breadcrumb Pills ──────────────────────────── */
 
 function BreadcrumbPills({
+  submitting,
   pgStep,
   setPgStep,
   existingDeck,
@@ -587,6 +591,7 @@ function BreadcrumbPills({
   textLane,
   premiumCardLane,
 }: {
+  submitting: boolean
   pgStep: number
   setPgStep: (s: number) => void
   existingDeck: boolean
@@ -633,7 +638,7 @@ function BreadcrumbPills({
           <button
             key={label}
             onClick={() => completed && setPgStep(i)}
-            disabled={!completed}
+            disabled={submitting || !completed}
             className={`
               px-3 py-1.5 rounded-full text-xs font-display font-medium transition-all
               ${completed
@@ -657,6 +662,7 @@ function BreadcrumbPills({
 /* ─── Step 0: Language ──────────────────────────── */
 
 function GenerateSelectionSummary({
+  submitting,
   state,
   pgStep,
   setPgStep,
@@ -664,6 +670,7 @@ function GenerateSelectionSummary({
   cardLane,
   textLane,
 }: {
+  submitting: boolean
   state: WizardState
   pgStep: number
   setPgStep: (s: number) => void
@@ -756,7 +763,7 @@ function GenerateSelectionSummary({
     })
   }
 
-  return <PremiumSummaryRow items={items} className="generate-selection-summary" />
+  return <PremiumSummaryRow items={items} disabled={submitting} className="generate-selection-summary" />
 }
 
 function StepResolving({ label }: { label: string }) {

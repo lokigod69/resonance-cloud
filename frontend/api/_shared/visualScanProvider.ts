@@ -162,6 +162,12 @@ export function parseGeminiVisionJson(text: string): VisualScanResponse {
 const RETRY_DELAY_MS = 350
 const RETRY_ELAPSED_BUDGET_MS = 8000
 
+class TransientVisionError extends ApiError {
+  constructor() {
+    super(502, 'Vision service unavailable')
+  }
+}
+
 export function createGeminiVisualScanProvider(
   apiKey = process.env.GOOGLE_AI_API_KEY,
   fetchImpl: typeof fetch = fetch,
@@ -192,20 +198,32 @@ export function createGeminiVisualScanProvider(
         }),
       }, 20_000, fetchImpl)
     } catch (error) {
-      if (error instanceof Error && error.name === 'AbortError') {
+      if (error instanceof Error && (error.name === 'AbortError' || error.name === 'TimeoutError')) {
         throw new ApiError(502, 'Vision service timed out')
       }
-      throw new ApiError(502, 'Vision service unavailable')
+      throw new TransientVisionError()
     }
 
     if (!response.ok) {
+      console.error('[visual-scan] Gemini request failed:', { status: response.status })
       if (response.status === 400 || response.status === 422) {
         throw new ApiError(422, 'Image could not be processed')
       }
+      if (response.status >= 500) throw new TransientVisionError()
+      // Provider auth/billing/model errors are service failures, not learner
+      // errors. Keep 502 for allowance refunds, but do not retry the request.
       throw new ApiError(502, 'Vision service unavailable')
     }
 
-    const data = await response.json() as GeminiGenerateContentResponse
+    let data: GeminiGenerateContentResponse
+    try {
+      data = await response.json() as GeminiGenerateContentResponse
+    } catch {
+      // JSON parser errors can include upstream body text. Keep that text out
+      // of endpoint logs/telemetry and preserve the infrastructure refund path.
+      console.error('[visual-scan] Gemini response failed:', { status: response.status, errorType: 'invalid_json' })
+      throw new ApiError(502, 'Vision service returned an invalid result')
+    }
     const candidate = data.candidates?.[0]
     if (candidate?.finishReason === 'SAFETY') {
       throw new ApiError(422, 'Vision model refused the image')
@@ -233,9 +251,7 @@ export function createGeminiVisualScanProvider(
         // Gemini 5xx). Timeouts already spent 20s and 4xx-class errors are
         // deterministic — both surface immediately. The quota was consumed
         // once for this scan, so retrying here never double-charges the user.
-        const transient = error instanceof ApiError
-          && error.status === 502
-          && error.message === 'Vision service unavailable'
+        const transient = error instanceof TransientVisionError
         if (!transient || Date.now() - startedAt > RETRY_ELAPSED_BUDGET_MS) throw error
         assertRequestActive()
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))

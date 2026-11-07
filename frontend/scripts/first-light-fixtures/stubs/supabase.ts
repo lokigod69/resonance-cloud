@@ -124,7 +124,10 @@ export const supabase: any = {
     const s = scenario()
     record(`rpc:${name}`, params)
     if (name === 'submit_generation') {
-      return settle({ data: { success: true, deck_id: 'picture-deck' }, error: null }, 100)
+      return settle({ data: { success: true, deck_id: 'picture-deck' }, error: null }, s.offlineGeneration ? 900 : 100)
+    }
+    if (name === 'submit_imageless_import') {
+      return settle({ data: 'text-deck', error: null }, 100)
     }
     if (name === 'submit_word_stream_save') {
       const mode = s.streamKeep ?? 'ok'
@@ -149,7 +152,7 @@ export const supabase: any = {
     return settle({ data: rowsForLanguage(params?.p_target_language ?? ''), error: null }, s.rpcDelayMs ?? 10)
   },
   auth: {
-    getSession: async () => ({ data: { session: null }, error: null }),
+    getSession: async () => ({ data: { session: scenario().offlineGeneration ? { access_token: 'offline-fixture-only', user: { id: 'u1' } } : null }, error: null }),
     onAuthStateChange: () => ({ data: { subscription: { unsubscribe() {} } } }),
   },
   channel: () => ({ on: () => ({ subscribe: () => ({}) }), subscribe: () => ({}) }),

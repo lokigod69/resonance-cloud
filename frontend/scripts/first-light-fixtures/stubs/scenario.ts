@@ -38,6 +38,9 @@ export type Scenario = {
   userId?: string
   baseLanguage?: string
   credits?: number
+  activeLanguage?: string
+  offlineGeneration?: boolean
+  translationFailsOnce?: boolean
   /** compute_word_states behaviour. */
   rpc?: 'ok' | 'error' | 'never'
   rpcDelayMs?: number

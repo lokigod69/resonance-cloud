@@ -99,9 +99,10 @@ export interface PremiumSummaryItem {
 interface PremiumSummaryRowProps {
   items: PremiumSummaryItem[]
   className?: string
+  disabled?: boolean
 }
 
-export function PremiumSummaryRow({ items, className }: PremiumSummaryRowProps) {
+export function PremiumSummaryRow({ items, className, disabled = false }: PremiumSummaryRowProps) {
   const { t } = useTranslation()
 
   if (items.length === 0) return null
@@ -114,7 +115,7 @@ export function PremiumSummaryRow({ items, className }: PremiumSummaryRowProps) 
           type="button"
           className="premium-summary-orb"
           onClick={item.onClick}
-          disabled={!item.onClick}
+          disabled={disabled || !item.onClick}
           aria-label={item.ariaLabel}
           data-tone={item.tone}
         >

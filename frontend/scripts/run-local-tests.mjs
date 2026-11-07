@@ -26,6 +26,7 @@ const SCRIPTS = [
   'test:speak-polish',
   'test:speak-personas',
   'test:lens',
+  'test:translation-provider',
   'test:oauth-onboarding',
   'test:admin-layer2-lab',
   'test:card-generation-progress',

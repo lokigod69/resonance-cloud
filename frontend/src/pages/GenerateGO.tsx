@@ -1061,7 +1061,7 @@ export default function GenerateGO() {
 
   return (
     <div className="gen-container">
-      {(!focusedWordSeed || step !== 3) && <PremiumSummaryRow items={summaryItems} className="generate-selection-summary" />}
+      {(!focusedWordSeed || step !== 3) && <PremiumSummaryRow items={summaryItems} disabled={submitting} className="generate-selection-summary" />}
       {/* ── Step 1: Language ── */}
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
@@ -1145,6 +1145,7 @@ export default function GenerateGO() {
               <WordsStep
                 state={wordsStepState}
                 dispatch={wordsStepDispatch}
+                submitting={submitting}
                 onQuickGenerate={(qw) => handleQuickGenerate(qw)}
                 onPremiumQuickModeGenerate={(qw, mode) => handlePremiumQuickModeGenerate(qw, mode)}
                 onCustomize={() => setStep(4)}

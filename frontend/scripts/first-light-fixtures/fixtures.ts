@@ -41,6 +41,10 @@ export type Fixture = {
   reduceMotion?: boolean
   language: string
   scenario: Scenario
+  /** Shell cases exercise the actual signed-in layout, navigation and route. */
+  shell?: boolean
+  route?: string
+  safeArea?: { top: number; bottom: number }
   localStorageSeed?: Record<string, string>
   /** Set when the case cannot be simulated in this harness — the runner records
    * it as not-run with this reason instead of navigating. */
@@ -372,7 +376,117 @@ async function awaitCardWord(): Promise<string> {
 
 // ── the matrix ─────────────────────────────────────────────────────────────
 
+function shellGeometry(ctx: Ctx, label: string) {
+  const nav = q<HTMLElement>('.app-bottomnav')!
+  const mobile = window.innerWidth < 768
+  const rect = nav.getBoundingClientRect()
+  ctx.check(`${label}: no horizontal overflow`, document.documentElement.scrollWidth <= window.innerWidth + 1, `${document.documentElement.scrollWidth}/${window.innerWidth}`)
+  if (mobile) {
+    ctx.check(`${label}: bottom navigation stays on viewport`, getComputedStyle(nav).position === 'fixed' && Math.abs(rect.bottom - window.innerHeight) < 2, JSON.stringify({ top: rect.top, bottom: rect.bottom, height: window.innerHeight }))
+    ctx.check(`${label}: every navigation item fits`, qa<HTMLElement>('.app-bottomnav a').every((item) => {
+      const bounds = item.getBoundingClientRect()
+      return bounds.left >= 0 && bounds.right <= window.innerWidth + 1
+    }))
+  } else {
+    ctx.check(`${label}: desktop navigation replaces bottom bar`, getComputedStyle(nav).display === 'none' && getComputedStyle(q('.app-topnav')!).display !== 'none')
+  }
+}
+
+function signedInHomeFixture(width: number, height: number): Fixture {
+  return {
+    id: `40-shell-home-${width}-de`, name: `Signed-in Home, German ${width}px, safe area`,
+    viewport: { width, height }, language: 'English', shell: true,
+    safeArea: { top: width === 320 ? 20 : 59, bottom: width === 320 ? 0 : 34 },
+    scenario: { baseLanguage: 'German', activeLanguage: 'English', words: dueRows(5) },
+    async run(ctx) {
+      const account = await waitFor('signed-in account controls', () => q<HTMLElement>('[aria-label="Account controls"]'))
+      await settle()
+      const safeTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-safe-top'))
+      ctx.check('account controls clear the status bar', account.getBoundingClientRect().top >= safeTop, `${account.getBoundingClientRect().top}/${safeTop}`)
+      shellGeometry(ctx, 'home')
+      await shot('home-safe-area')
+    },
+  }
+}
+
+function manualGenerationFixture(lane: 'card_standard' | 'card_text', width: number, height: number, translationFailsOnce = false): Fixture {
+  const t = createT('de')
+  return {
+    id: `41-shell-${lane}-${width}-de${translationFailsOnce ? '-retry' : ''}`, name: `Manual ${lane}, German ${width}px${translationFailsOnce ? ', failed translation then retry' : ''}`,
+    viewport: { width, height }, language: 'English', shell: true, route: '/generate',
+    safeArea: { top: width >= 768 ? 0 : width === 320 ? 20 : 59, bottom: width === 393 ? 34 : 0 },
+    scenario: { baseLanguage: 'German', activeLanguage: 'English', offlineGeneration: true, translationFailsOnce },
+    async run(ctx) {
+      const option = await waitFor('initial product choice', () => q<HTMLButtonElement>(`[data-option-value="${lane}"]`))
+      await settle(500)
+      const safeTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-safe-top'))
+      const containerPadding = parseFloat(getComputedStyle(q('.gen-container')!).paddingTop)
+      ctx.check('generation container reserves its own mobile safe inset', width >= 768 || containerPadding >= safeTop + 16, `${containerPadding}/${safeTop + 16}`)
+      ctx.check('generation header clears status bar', q<HTMLElement>('.premium-product-step h3')!.getBoundingClientRect().top >= safeTop)
+      shellGeometry(ctx, 'product choice')
+      await shot('product-choice')
+      option.click()
+      const input = await waitFor('word input', () => q<HTMLInputElement>('fieldset input[type="text"]'))
+      await settle(500)
+      if (width < 768) ctx.check('mobile input prevents focus auto-zoom', parseFloat(getComputedStyle(input).fontSize) >= 16, getComputedStyle(input).fontSize)
+      typeInto(input, 'Perspicuity')
+      await settle(50)
+      q<HTMLButtonElement>(`button[aria-label="${t('generate.words.addWordAriaLabel')}"]`)!.click()
+      await waitFor('first word chip', () => textOf(q('fieldset')).includes('Perspicuity'))
+      typeInto(input, 'Perspicacity')
+      await settle(50)
+      q<HTMLButtonElement>(`button[aria-label="${t('generate.words.addWordAriaLabel')}"]`)!.click()
+      await waitFor('second word chip', () => textOf(q('fieldset')).includes('Perspicacity'))
+      input.blur()
+      await settle(500)
+      shellGeometry(ctx, 'word entry')
+      ctx.check('selected card type is retained', !q('.premium-product-step') && textOf(q('.generate-selection-summary')).includes(t(lane === 'card_text' ? 'generate.productLane.cardText.label' : 'generate.productLane.standard.label')))
+      await shot('words')
+      const generate = byText('fieldset button', t('generate.primaryGenerate')) as HTMLButtonElement
+      generate.scrollIntoView({ block: 'center' })
+      await settle(200)
+      shellGeometry(ctx, 'after scroll')
+      generate.click()
+      generate.click()
+      await waitFor('visible submitting state', () => q('fieldset[aria-busy="true"]'))
+      ctx.check('pending submission disables all route editing controls', qa<HTMLInputElement>('.gen-container input, .gen-container button, .gen-container select').every((control) => control.matches(':disabled')))
+      ctx.check('pending submission announces progress', textOf(q('[role="status"]')).includes(t('generate.forgingMemories')))
+      ctx.check('Generate does not reopen product selection', !q('.premium-product-step'))
+      await shot('submitting')
+      if (translationFailsOnce) {
+        await waitFor('translation error unlocks form', () => !q('fieldset[aria-busy="true"]') && (window as any).__calls.some((call: any) => call.kind === 'toast'))
+        ctx.check('failed translation preserves words and selected tier', textOf(q('fieldset')).includes('Perspicuity') && textOf(q('fieldset')).includes('Perspicacity') && !q('.premium-product-step'))
+        ctx.check('failed translation is reported without saving or automatic retry', (window as any).__calls.some((call: any) => call.kind === 'toast' && call.payload.message === 'Translation service unavailable') && !(window as any).__calls.some((call: any) => call.kind === 'rpc:submit_imageless_import') && (window as any).__calls.filter((call: any) => call.kind === 'api:translate-and-ipa').length === 1)
+        ctx.check('failed translation restores controls', !generate.disabled && !input.disabled && qa<HTMLButtonElement>('.generate-selection-summary button').every((button) => !button.disabled))
+        await shot('failed-retry-ready')
+        generate.click()
+        await waitFor('explicit retry starts', () => q('fieldset[aria-busy="true"]'))
+      }
+      const deck = lane === 'card_text' ? 'text-deck' : 'picture-deck'
+      await waitFor('generated deck route', () => (window as any).__location.startsWith(`/deck/${deck}`))
+      const calls = (window as any).__calls as any[]
+      if (lane === 'card_text') {
+        const translated = calls.filter((call) => call.kind === 'api:translate-and-ipa')
+        const imported = calls.filter((call) => call.kind === 'rpc:submit_imageless_import')
+        ctx.check('only explicit text attempts and one successful import', translated.length === (translationFailsOnce ? 2 : 1) && imported.length === 1)
+        ctx.check('text words and languages are preserved', translated[0]?.payload.target_language === 'en' && translated[0]?.payload.base_language === 'de' && JSON.stringify(translated[0]?.payload.items.map((item: any) => item.word)) === JSON.stringify(['Perspicuity', 'Perspicacity']), JSON.stringify(translated[0]?.payload))
+      } else {
+        const submitted = calls.filter((call) => call.kind === 'rpc:submit_generation')
+        ctx.check('one Standard generation after double press', submitted.length === 1)
+        ctx.check('selected Standard tier and words reach job', submitted[0]?.payload.p_job_payload.settings_override.card_image_model === 'zturbo' && JSON.stringify(submitted[0]?.payload.p_word_list) === JSON.stringify(['Perspicuity', 'Perspicacity']), JSON.stringify(submitted[0]?.payload))
+      }
+    },
+  }
+}
+
 export const FIXTURES: Fixture[] = [
+  signedInHomeFixture(393, 852),
+  signedInHomeFixture(320, 568),
+  manualGenerationFixture('card_standard', 393, 852),
+  manualGenerationFixture('card_text', 393, 852),
+  manualGenerationFixture('card_text', 393, 852, true),
+  manualGenerationFixture('card_standard', 320, 568),
+  manualGenerationFixture('card_text', 1440, 1000),
   pictureFixture('26-picture-en-mobile', 'en', 390),
   pictureFixture('27-picture-de-se', 'de', 320),
   pictureFixture('28-picture-fr-desktop', 'fr', 1440),
