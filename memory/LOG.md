@@ -2,6 +2,14 @@
 Newest first. Append-only — entries are never rewritten.
 When this file exceeds ~300 lines, move the oldest half to `archive/log-2026.md`.
 
+## 2026-11-07 — Repair deployed and internal iPhone build 3 uploaded
+
+Repair source `e60016f6` is pushed to main. Vercel `g5MFo2obhyZ5ovHhV6q1YDgBTiv6` and Railway `e681e397-9336-477d-bae1-5eadc04af672` both reported successful deployments. The live website returned 200, native API preflights returned 204 with the correct origin, and the worker health endpoint returned 200. These confirm deployment/connectivity, not recovery of the rejected provider credentials or Google payment access.
+
+Final verify passed with zero lint errors/two existing warnings; all 30 offline suites passed with five documented stale suites skipped. The final iOS build passed its seven signed-in UI scenarios and all packaging checks. A signed 1.0 (3) archive matched all 4,226 web files and was uploaded through Xcode as internal-TestFlight-only. Apple accepted it and began processing at 16:21 Manila. App Store Connect browser sign-in had expired, so processing completion and assignment/availability in Lingwave Owner remain unverified. The owner was asked to sign in; no new credential or billing change was performed.
+
+The two required follow-ups remain provider account recovery (OpenRouter key on both hosts; direct Gemini 402/prepay investigation) and Apple processing/tester availability. No paid live generation was run. Full local report and iPhone 16 screenshots are in `/Users/saya/Desktop/Lingwave/investigations/`.
+
 ## 2026-11-07 — iPhone regression investigation and repairs
 
 The owner's physical-phone report exposed signed-in header overlap, keyboard zoom/clipping and dead generation. Both Mac clones use the same GitHub repository; the older `resonance-cloud` folder remains at `c0e1ce78` with local native changes preserved. Work used `resonance-cloud-testflight`, fast-forwarded to `c4a81ad2`. Build 2's archived web resources matched the inspected native copy. The prior release verified the signed-out landing only; that evidence did not establish signed-in usability or provider readiness.
